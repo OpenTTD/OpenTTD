@@ -87,8 +87,47 @@ enum GrfDataType {
 static byte _grf_data_blocks;
 static GrfDataType _grf_data_type;
 
+class OTTDByteReaderSignal { };
 
-typedef void (*SpecialSpriteHandler)(byte *buf, size_t len);
+class ByteReader {
+protected:
+	byte *data;
+	byte *end;
+
+public:
+	ByteReader(byte *data, byte *end) : data(data), end(end) { }
+
+	FORCEINLINE byte ReadByte()
+	{
+		if (data < end) return *(data)++;
+		throw OTTDByteReaderSignal();
+	}
+
+	FORCEINLINE size_t Remaining() const
+	{
+		return (int)(end - data);
+	}
+
+	FORCEINLINE bool HasData() const
+	{
+		return data < end;
+	}
+
+	FORCEINLINE byte *Data()
+	{
+		return data;
+	}
+
+	FORCEINLINE void Skip(size_t len)
+	{
+		data += len;
+		/* It is valid to move the buffer to exactly the end of the data,
+		 * as there may not be any more data read. */
+		if (data > end) throw OTTDByteReaderSignal();
+	}
+};
+
+typedef void (*SpecialSpriteHandler)(ByteReader *buf);
 
 enum {
 	MAX_STATIONS = 256,
@@ -153,25 +192,18 @@ void CDECL grfmsg(int severity, const char *str, ...)
 	DEBUG(grf, severity, "[%s:%d] %s", _cur_grfconfig->filename, _nfo_line, buf);
 }
 
-static inline bool check_length(size_t real, size_t wanted, const char *str)
+static inline byte grf_load_byte(ByteReader **buf)
 {
-	if (real >= wanted) return true;
-	grfmsg(0, "%s: Invalid pseudo sprite length " PRINTF_SIZE " (expected " PRINTF_SIZE ")!", str, real, wanted);
-	return false;
+	return (*buf)->ReadByte();
 }
 
-static inline byte grf_load_byte(byte **buf)
-{
-	return *(*buf)++;
-}
-
-static uint16 grf_load_word(byte **buf)
+static uint16 grf_load_word(ByteReader **buf)
 {
 	uint16 val = grf_load_byte(buf);
 	return val | (grf_load_byte(buf) << 8);
 }
 
-static uint16 grf_load_extended(byte** buf)
+static uint16 grf_load_extended(ByteReader **buf)
 {
 	uint16 val;
 	val = grf_load_byte(buf);
@@ -179,13 +211,13 @@ static uint16 grf_load_extended(byte** buf)
 	return val;
 }
 
-static uint32 grf_load_dword(byte **buf)
+static uint32 grf_load_dword(ByteReader **buf)
 {
 	uint32 val = grf_load_word(buf);
 	return val | (grf_load_word(buf) << 16);
 }
 
-static uint32 grf_load_var(byte size, byte **buf)
+static uint32 grf_load_var(byte size, ByteReader **buf)
 {
 	switch (size) {
 		case 1: return grf_load_byte(buf);
@@ -197,20 +229,21 @@ static uint32 grf_load_var(byte size, byte **buf)
 	}
 }
 
-static const char *grf_load_string(byte **buf, size_t max_len)
+static const char *grf_load_string(ByteReader **bufp)
 {
-	const char *string   = *(const char **)buf;
-	size_t string_length = ttd_strnlen(string, max_len);
+	ByteReader *buf = *bufp;
+	char *string = reinterpret_cast<char *>(buf->Data());
+	size_t string_length = ttd_strnlen(string, buf->Remaining());
 
-	if (string_length == max_len) {
+	if (string_length == buf->Remaining()) {
 		/* String was not NUL terminated, so make sure it is now. */
-		(*buf)[string_length - 1] = '\0';
+		string[string_length - 1] = '\0';
 		grfmsg(7, "String was not terminated with a zero byte.");
 	} else {
 		/* Increase the string length to include the NUL byte. */
 		string_length++;
 	}
-	*buf += string_length;
+	buf->Skip(string_length);
 
 	return string;
 }
@@ -447,9 +480,9 @@ enum ChangeInfoResult {
 	CIR_INVALID_ID, ///< Attempt to modify an invalid ID
 };
 
-typedef ChangeInfoResult (*VCI_Handler)(uint engine, int numinfo, int prop, byte **buf, int len);
+typedef ChangeInfoResult (*VCI_Handler)(uint engine, int numinfo, int prop, ByteReader *buf);
 
-static ChangeInfoResult CommonVehicleChangeInfo(EngineInfo *ei, int prop, byte **buf)
+static ChangeInfoResult CommonVehicleChangeInfo(EngineInfo *ei, int prop, ByteReader **buf)
 {
 	switch (prop) {
 		case 0x00: // Introduction date
@@ -487,9 +520,8 @@ static ChangeInfoResult CommonVehicleChangeInfo(EngineInfo *ei, int prop, byte *
 	return CIR_SUCCESS;
 }
 
-static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **bufp, int len)
+static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop, ByteReader *buf)
 {
-	byte *buf = *bufp;
 	ChangeInfoResult ret = CIR_SUCCESS;
 
 	for (int i = 0; i < numinfo; i++) {
@@ -730,13 +762,11 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 		}
 	}
 
-	*bufp = buf;
 	return ret;
 }
 
-static ChangeInfoResult RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **bufp, int len)
+static ChangeInfoResult RoadVehicleChangeInfo(uint engine, int numinfo, int prop, ByteReader *buf)
 {
-	byte *buf = *bufp;
 	ChangeInfoResult ret = CIR_SUCCESS;
 
 	for (int i = 0; i < numinfo; i++) {
@@ -859,13 +889,11 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint engine, int numinfo, int prop
 		}
 	}
 
-	*bufp = buf;
 	return ret;
 }
 
-static ChangeInfoResult ShipVehicleChangeInfo(uint engine, int numinfo, int prop, byte **bufp, int len)
+static ChangeInfoResult ShipVehicleChangeInfo(uint engine, int numinfo, int prop, ByteReader *buf)
 {
-	byte *buf = *bufp;
 	ChangeInfoResult ret = CIR_SUCCESS;
 
 	for (int i = 0; i < numinfo; i++) {
@@ -975,13 +1003,11 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint engine, int numinfo, int prop
 		}
 	}
 
-	*bufp = buf;
 	return ret;
 }
 
-static ChangeInfoResult AircraftVehicleChangeInfo(uint engine, int numinfo, int prop, byte **bufp, int len)
+static ChangeInfoResult AircraftVehicleChangeInfo(uint engine, int numinfo, int prop, ByteReader *buf)
 {
-	byte *buf = *bufp;
 	ChangeInfoResult ret = CIR_SUCCESS;
 
 	for (int i = 0; i < numinfo; i++) {
@@ -1087,13 +1113,11 @@ static ChangeInfoResult AircraftVehicleChangeInfo(uint engine, int numinfo, int 
 		}
 	}
 
-	*bufp = buf;
 	return ret;
 }
 
-static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int len)
+static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, ByteReader *buf)
 {
-	byte *buf = *bufp;
 	ChangeInfoResult ret = CIR_SUCCESS;
 
 	if (stid + numinfo > MAX_STATIONS) {
@@ -1146,7 +1170,7 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, byte
 
 					MapSpriteMappingRecolour(&dts->ground);
 
-					while (buf < *bufp + len) {
+					while (buf->HasData()) {
 						/* no relative bounding box support */
 						dts->seq = ReallocT(const_cast<DrawTileSeqStruct *>(dts->seq), ++seq_count);
 						DrawTileSeqStruct *dtss = const_cast<DrawTileSeqStruct *>(&dts->seq[seq_count - 1]);
@@ -1197,7 +1221,7 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, byte
 			case 0x0E: // Define custom layout
 				statspec->copied_layouts = false;
 
-				while (buf < *bufp + len) {
+				while (buf->HasData()) {
 					byte length = grf_load_byte(&buf);
 					byte number = grf_load_byte(&buf);
 					StationLayout layout;
@@ -1228,10 +1252,15 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, byte
 
 					p = 0;
 					layout = MallocT<byte>(length * number);
-					for (l = 0; l < length; l++) {
-						for (p = 0; p < number; p++) {
-							layout[l * number + p] = grf_load_byte(&buf);
+					try {
+						for (l = 0; l < length; l++) {
+							for (p = 0; p < number; p++) {
+								layout[l * number + p] = grf_load_byte(&buf);
+							}
 						}
+					} catch (...) {
+						free(layout);
+						throw;
 					}
 
 					l--;
@@ -1294,13 +1323,11 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, byte
 		}
 	}
 
-	*bufp = buf;
 	return ret;
 }
 
-static ChangeInfoResult CanalChangeInfo(uint id, int numinfo, int prop, byte **bufp, int len)
+static ChangeInfoResult CanalChangeInfo(uint id, int numinfo, int prop, ByteReader *buf)
 {
-	byte *buf = *bufp;
 	ChangeInfoResult ret = CIR_SUCCESS;
 
 	if (id + numinfo > CF_END) {
@@ -1326,13 +1353,11 @@ static ChangeInfoResult CanalChangeInfo(uint id, int numinfo, int prop, byte **b
 		}
 	}
 
-	*bufp = buf;
 	return ret;
 }
 
-static ChangeInfoResult BridgeChangeInfo(uint brid, int numinfo, int prop, byte **bufp, int len)
+static ChangeInfoResult BridgeChangeInfo(uint brid, int numinfo, int prop, ByteReader *buf)
 {
-	byte *buf = *bufp;
 	ChangeInfoResult ret = CIR_SUCCESS;
 
 	if (brid + numinfo > MAX_BRIDGES) {
@@ -1428,13 +1453,11 @@ static ChangeInfoResult BridgeChangeInfo(uint brid, int numinfo, int prop, byte 
 		}
 	}
 
-	*bufp = buf;
 	return ret;
 }
 
-static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, byte **bufp, int len)
+static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, ByteReader *buf)
 {
-	byte *buf = *bufp;
 	ChangeInfoResult ret = CIR_SUCCESS;
 
 	if (hid + numinfo > HOUSE_MAX) {
@@ -1652,13 +1675,11 @@ static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, byt
 		}
 	}
 
-	*bufp = buf;
 	return ret;
 }
 
-static ChangeInfoResult GlobalVarChangeInfo(uint gvid, int numinfo, int prop, byte **bufp, int len)
+static ChangeInfoResult GlobalVarChangeInfo(uint gvid, int numinfo, int prop, ByteReader *buf)
 {
-	byte *buf = *bufp;
 	ChangeInfoResult ret = CIR_SUCCESS;
 
 	for (int i = 0; i < numinfo; i++) {
@@ -1677,7 +1698,7 @@ static ChangeInfoResult GlobalVarChangeInfo(uint gvid, int numinfo, int prop, by
 			case 0x09: // Cargo translation table
 				/* This is loaded during the reservation stage, so just skip it here. */
 				/* Each entry is 4 bytes. */
-				buf += 4;
+				buf->Skip(4);
 				break;
 
 			case 0x0A: { // Currency display names
@@ -1756,8 +1777,8 @@ static ChangeInfoResult GlobalVarChangeInfo(uint gvid, int numinfo, int prop, by
 			case 0x10: // Snow line height table
 				if (numinfo > 1 || IsSnowLineSet()) {
 					grfmsg(1, "GlobalVarChangeInfo: The snowline can only be set once (%d)", numinfo);
-				} else if (len < SNOW_LINE_MONTHS * SNOW_LINE_DAYS) {
-					grfmsg(1, "GlobalVarChangeInfo: Not enough entries set in the snowline table (%d)", len);
+				} else if (buf->Remaining() < SNOW_LINE_MONTHS * SNOW_LINE_DAYS) {
+					grfmsg(1, "GlobalVarChangeInfo: Not enough entries set in the snowline table (" PRINTF_SIZE ")", buf->Remaining());
 				} else {
 					byte table[SNOW_LINE_MONTHS][SNOW_LINE_DAYS];
 
@@ -1773,13 +1794,13 @@ static ChangeInfoResult GlobalVarChangeInfo(uint gvid, int numinfo, int prop, by
 			case 0x11: // GRF match for engine allocation
 				/* This is loaded during the reservation stage, so just skip it here. */
 				/* Each entry is 8 bytes. */
-				buf += 8;
+				buf->Skip(8);
 				break;
 
 			case 0x12: // Rail type translation table
 				/* This is loaded during the reservation stage, so just skip it here. */
 				/* Each entry is 4 bytes. */
-				buf += 4;
+				buf->Skip(4);
 				break;
 
 			default:
@@ -1788,13 +1809,11 @@ static ChangeInfoResult GlobalVarChangeInfo(uint gvid, int numinfo, int prop, by
 		}
 	}
 
-	*bufp = buf;
 	return ret;
 }
 
-static ChangeInfoResult GlobalVarReserveInfo(uint gvid, int numinfo, int prop, byte **bufp, int len)
+static ChangeInfoResult GlobalVarReserveInfo(uint gvid, int numinfo, int prop, ByteReader *buf)
 {
-	byte *buf = *bufp;
 	ChangeInfoResult ret = CIR_SUCCESS;
 
 	for (int i = 0; i < numinfo; i++) {
@@ -1833,7 +1852,7 @@ static ChangeInfoResult GlobalVarReserveInfo(uint gvid, int numinfo, int prop, b
 				break;
 
 			case 0x10: // Snow line height table
-				buf += SNOW_LINE_MONTHS * SNOW_LINE_DAYS;
+				buf->Skip(SNOW_LINE_MONTHS * SNOW_LINE_DAYS);
 				break;
 
 			case 0x11: { // GRF match for engine allocation
@@ -1866,14 +1885,12 @@ static ChangeInfoResult GlobalVarReserveInfo(uint gvid, int numinfo, int prop, b
 		}
 	}
 
-	*bufp = buf;
 	return ret;
 }
 
 
-static ChangeInfoResult CargoChangeInfo(uint cid, int numinfo, int prop, byte **bufp, int len)
+static ChangeInfoResult CargoChangeInfo(uint cid, int numinfo, int prop, ByteReader *buf)
 {
-	byte *buf = *bufp;
 	ChangeInfoResult ret = CIR_SUCCESS;
 
 	if (cid + numinfo > NUM_CARGO) {
@@ -1992,14 +2009,12 @@ static ChangeInfoResult CargoChangeInfo(uint cid, int numinfo, int prop, byte **
 		}
 	}
 
-	*bufp = buf;
 	return ret;
 }
 
 
-static ChangeInfoResult SoundEffectChangeInfo(uint sid, int numinfo, int prop, byte **bufp, int len)
+static ChangeInfoResult SoundEffectChangeInfo(uint sid, int numinfo, int prop, ByteReader *buf)
 {
-	byte *buf = *bufp;
 	ChangeInfoResult ret = CIR_SUCCESS;
 
 	if (_cur_grffile->sound_offset == 0) {
@@ -2044,13 +2059,11 @@ static ChangeInfoResult SoundEffectChangeInfo(uint sid, int numinfo, int prop, b
 		}
 	}
 
-	*bufp = buf;
 	return ret;
 }
 
-static ChangeInfoResult IndustrytilesChangeInfo(uint indtid, int numinfo, int prop, byte **bufp, int len)
+static ChangeInfoResult IndustrytilesChangeInfo(uint indtid, int numinfo, int prop, ByteReader *buf)
 {
-	byte *buf = *bufp;
 	ChangeInfoResult ret = CIR_SUCCESS;
 
 	if (indtid + numinfo > NUM_INDUSTRYTILES) {
@@ -2154,7 +2167,6 @@ static ChangeInfoResult IndustrytilesChangeInfo(uint indtid, int numinfo, int pr
 		}
 	}
 
-	*bufp = buf;
 	return ret;
 }
 
@@ -2177,9 +2189,8 @@ static bool ValidateIndustryLayout(const IndustryTileTable *layout, int size)
 	return true;
 }
 
-static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, byte **bufp, int len)
+static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, ByteReader *buf)
 {
-	byte *buf = *bufp;
 	ChangeInfoResult ret = CIR_SUCCESS;
 
 	if (indid + numinfo > NUM_INDUSTRYTYPES) {
@@ -2261,76 +2272,83 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 				uint size;
 				const IndustryTileTable *copy_from;
 
-				for (byte j = 0; j < indsp->num_table; j++) {
-					for (uint k = 0;; k++) {
-						if (k >= def_num_tiles) {
-							grfmsg(3, "IndustriesChangeInfo: Incorrect size for industry tile layout definition for industry %u.", indid);
-							/* Size reported by newgrf was not big enough so enlarge the array. */
-							def_num_tiles *= 2;
-							itt = ReallocT<IndustryTileTable>(itt, def_num_tiles);
-						}
-
-						itt[k].ti.x = grf_load_byte(&buf); // Offsets from northermost tile
-
-						if (itt[k].ti.x == 0xFE && k == 0) {
-							/* This means we have to borrow the layout from an old industry */
-							IndustryType type = grf_load_byte(&buf);  // industry holding required layout
-							byte laynbr = grf_load_byte(&buf);        // layout number to borrow
-
-							copy_from = _origin_industry_specs[type].table[laynbr];
-							for (size = 1;; size++) {
-								if (copy_from[size - 1].ti.x == -0x80 && copy_from[size - 1].ti.y == 0) break;
+				try {
+					for (byte j = 0; j < indsp->num_table; j++) {
+						for (uint k = 0;; k++) {
+							if (k >= def_num_tiles) {
+								grfmsg(3, "IndustriesChangeInfo: Incorrect size for industry tile layout definition for industry %u.", indid);
+								/* Size reported by newgrf was not big enough so enlarge the array. */
+								def_num_tiles *= 2;
+								itt = ReallocT<IndustryTileTable>(itt, def_num_tiles);
 							}
-							break;
-						}
 
-						itt[k].ti.y = grf_load_byte(&buf); // Or table definition finalisation
+							itt[k].ti.x = grf_load_byte(&buf); // Offsets from northermost tile
 
-						if (itt[k].ti.x == 0 && itt[k].ti.y == 0x80) {
-							/*  Not the same terminator.  The one we are using is rather
-							 x = -80, y = x .  So, adjust it. */
-							itt[k].ti.x = -0x80;
-							itt[k].ti.y =  0;
-							itt[k].gfx  =  0;
+							if (itt[k].ti.x == 0xFE && k == 0) {
+								/* This means we have to borrow the layout from an old industry */
+								IndustryType type = grf_load_byte(&buf);  // industry holding required layout
+								byte laynbr = grf_load_byte(&buf);        // layout number to borrow
 
-							size = k + 1;
-							copy_from = itt;
-							break;
-						}
+								copy_from = _origin_industry_specs[type].table[laynbr];
+								for (size = 1;; size++) {
+									if (copy_from[size - 1].ti.x == -0x80 && copy_from[size - 1].ti.y == 0) break;
+								}
+								break;
+							}
 
-						itt[k].gfx = grf_load_byte(&buf);
+							itt[k].ti.y = grf_load_byte(&buf); // Or table definition finalisation
 
-						if (itt[k].gfx == 0xFE) {
-							/* Use a new tile from this GRF */
-							int local_tile_id = grf_load_word(&buf);
+							if (itt[k].ti.x == 0 && itt[k].ti.y == 0x80) {
+								/*  Not the same terminator.  The one we are using is rather
+								 x = -80, y = x .  So, adjust it. */
+								itt[k].ti.x = -0x80;
+								itt[k].ti.y =  0;
+								itt[k].gfx  =  0;
 
-							/* Read the ID from the _industile_mngr. */
-							int tempid = _industile_mngr.GetID(local_tile_id, _cur_grffile->grfid);
-
-							if (tempid == INVALID_INDUSTRYTILE) {
-								grfmsg(2, "IndustriesChangeInfo: Attempt to use industry tile %u with industry id %u, not yet defined. Ignoring.", local_tile_id, indid);
-							} else {
-								/* Declared as been valid, can be used */
-								itt[k].gfx = tempid;
 								size = k + 1;
 								copy_from = itt;
+								break;
 							}
-						} else if (itt[k].gfx == 0xFF) {
-							itt[k].ti.x = (int8)GB(itt[k].ti.x, 0, 8);
-							itt[k].ti.y = (int8)GB(itt[k].ti.y, 0, 8);
+
+							itt[k].gfx = grf_load_byte(&buf);
+
+							if (itt[k].gfx == 0xFE) {
+								/* Use a new tile from this GRF */
+								int local_tile_id = grf_load_word(&buf);
+
+								/* Read the ID from the _industile_mngr. */
+								int tempid = _industile_mngr.GetID(local_tile_id, _cur_grffile->grfid);
+
+								if (tempid == INVALID_INDUSTRYTILE) {
+									grfmsg(2, "IndustriesChangeInfo: Attempt to use industry tile %u with industry id %u, not yet defined. Ignoring.", local_tile_id, indid);
+								} else {
+									/* Declared as been valid, can be used */
+									itt[k].gfx = tempid;
+									size = k + 1;
+									copy_from = itt;
+								}
+							} else if (itt[k].gfx == 0xFF) {
+								itt[k].ti.x = (int8)GB(itt[k].ti.x, 0, 8);
+								itt[k].ti.y = (int8)GB(itt[k].ti.y, 0, 8);
+							}
+						}
+
+						if (!ValidateIndustryLayout(copy_from, size)) {
+							/* The industry layout was not valid, so skip this one. */
+							grfmsg(1, "IndustriesChangeInfo: Invalid industry layout for industry id %u. Ignoring", indid);
+							indsp->num_table--;
+							j--;
+						} else {
+							tile_table[j] = CallocT<IndustryTileTable>(size);
+							memcpy(tile_table[j], copy_from, sizeof(*copy_from) * size);
 						}
 					}
-
-					if (!ValidateIndustryLayout(copy_from, size)) {
-						/* The industry layout was not valid, so skip this one. */
-						grfmsg(1, "IndustriesChangeInfo: Invalid industry layout for industry id %u. Ignoring", indid);
-						indsp->num_table--;
-						j--;
-					} else {
-						tile_table[j] = CallocT<IndustryTileTable>(size);
-						memcpy(tile_table[j], copy_from, sizeof(*copy_from) * size);
-					}
+				} catch (...) {
+					free(tile_table);
+					free(itt);
+					throw;
 				}
+
 				/* Install final layout construction in the industry spec */
 				indsp->table = tile_table;
 				SetBit(indsp->cleanup_flag, 1);
@@ -2386,7 +2404,15 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 				indsp->number_of_sounds = grf_load_byte(&buf);
 				uint8 *sounds = MallocT<uint8>(indsp->number_of_sounds);
 
-				for (uint8 j = 0; j < indsp->number_of_sounds; j++) sounds[j] = grf_load_byte(&buf);
+				try {
+					for (uint8 j = 0; j < indsp->number_of_sounds; j++) {
+						sounds[j] = grf_load_byte(&buf);
+					}
+				} catch (...) {
+					free(sounds);
+					throw;
+				}
+
 				indsp->random_sounds = sounds;
 				SetBit(indsp->cleanup_flag, 0);
 			} break;
@@ -2454,7 +2480,6 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 		}
 	}
 
-	*bufp = buf;
 	return ret;
 }
 
@@ -2486,10 +2511,8 @@ static bool HandleChangeInfoResult(const char *caller, ChangeInfoResult cir, uin
 }
 
 /* Action 0x00 */
-static void FeatureChangeInfo(byte *buf, size_t len)
+static void FeatureChangeInfo(ByteReader *buf)
 {
-	byte *bufend = buf + len;
-
 	/* <00> <feature> <num-props> <num-info> <id> (<property <new-info>)...
 	 *
 	 * B feature
@@ -2517,8 +2540,6 @@ static void FeatureChangeInfo(byte *buf, size_t len)
 		/* GSF_SOUNDFX */      SoundEffectChangeInfo,
 	};
 
-	if (!check_length(len, 6, "FeatureChangeInfo")) return;
-	buf++;
 	uint8 feature  = grf_load_byte(&buf);
 	uint8 numprops = grf_load_byte(&buf);
 	uint numinfo  = grf_load_byte(&buf);
@@ -2535,19 +2556,17 @@ static void FeatureChangeInfo(byte *buf, size_t len)
 	/* Mark the feature as used by the grf */
 	SetBit(_cur_grffile->grf_features, feature);
 
-	while (numprops-- && buf < bufend) {
+	while (numprops-- && buf->HasData()) {
 		uint8 prop = grf_load_byte(&buf);
 
-		ChangeInfoResult cir = handler[feature](engine, numinfo, prop, &buf, bufend - buf);
+		ChangeInfoResult cir = handler[feature](engine, numinfo, prop, buf);
 		if (HandleChangeInfoResult("FeatureChangeInfo", cir, feature, prop)) return;
 	}
 }
 
 /* Action 0x00 (GLS_SAFETYSCAN) */
-static void SafeChangeInfo(byte *buf, size_t len)
+static void SafeChangeInfo(ByteReader *buf)
 {
-	if (!check_length(len, 6, "SafeChangeInfo")) return;
-	buf++;
 	uint8 feature  = grf_load_byte(&buf);
 	uint8 numprops = grf_load_byte(&buf);
 	uint numinfo = grf_load_byte(&buf);
@@ -2583,12 +2602,8 @@ static void SafeChangeInfo(byte *buf, size_t len)
 }
 
 /* Action 0x00 (GLS_RESERVE) */
-static void ReserveChangeInfo(byte *buf, size_t len)
+static void ReserveChangeInfo(ByteReader *buf)
 {
-	byte *bufend = buf + len;
-
-	if (!check_length(len, 6, "ReserveChangeInfo")) return;
-	buf++;
 	uint8 feature  = grf_load_byte(&buf);
 
 	if (feature != GSF_CARGOS && feature != GSF_GLOBALVAR) return;
@@ -2597,18 +2612,18 @@ static void ReserveChangeInfo(byte *buf, size_t len)
 	uint8 numinfo  = grf_load_byte(&buf);
 	uint8 index    = grf_load_extended(&buf);
 
-	while (numprops-- && buf < bufend) {
+	while (numprops-- && buf->HasData()) {
 		uint8 prop = grf_load_byte(&buf);
 		ChangeInfoResult cir = CIR_SUCCESS;
 
 		switch (feature) {
 			default: NOT_REACHED();
 			case GSF_CARGOS:
-				cir = CargoChangeInfo(index, numinfo, prop, &buf, bufend - buf);
+				cir = CargoChangeInfo(index, numinfo, prop, buf);
 				break;
 
 			case GSF_GLOBALVAR:
-				cir = GlobalVarReserveInfo(index, numinfo, prop, &buf, bufend - buf);
+				cir = GlobalVarReserveInfo(index, numinfo, prop, buf);
 				break;
 		}
 
@@ -2617,7 +2632,7 @@ static void ReserveChangeInfo(byte *buf, size_t len)
 }
 
 /* Action 0x01 */
-static void NewSpriteSet(byte *buf, size_t len)
+static void NewSpriteSet(ByteReader *buf)
 {
 	/* <01> <feature> <num-sets> <num-ent>
 	 *
@@ -2631,8 +2646,6 @@ static void NewSpriteSet(byte *buf, size_t len)
 	 *                         In that case, use num-dirs=4.
 	 */
 
-	if (!check_length(len, 4, "NewSpriteSet")) return;
-	buf++;
 	uint8 feature   = grf_load_byte(&buf);
 	uint8 num_sets  = grf_load_byte(&buf);
 	uint16 num_ents = grf_load_extended(&buf);
@@ -2653,10 +2666,8 @@ static void NewSpriteSet(byte *buf, size_t len)
 }
 
 /* Action 0x01 (SKIP) */
-static void SkipAct1(byte *buf, size_t len)
+static void SkipAct1(ByteReader *buf)
 {
-	if (!check_length(len, 4, "SkipAct1")) return;
-	buf++;
 	grf_load_byte(&buf);
 	uint8 num_sets  = grf_load_byte(&buf);
 	uint16 num_ents = grf_load_extended(&buf);
@@ -2712,7 +2723,7 @@ static const SpriteGroup *CreateGroupFromGroupID(byte feature, byte setid, byte 
 }
 
 /* Action 0x02 */
-static void NewSpriteGroup(byte *buf, size_t len)
+static void NewSpriteGroup(ByteReader *buf)
 {
 	/* <02> <feature> <set-id> <type/num-entries> <feature-specific-data...>
 	 *
@@ -2725,10 +2736,6 @@ static void NewSpriteGroup(byte *buf, size_t len)
 	 *                 meaning depends on the feature
 	 * V feature-specific-data (huge mess, don't even look it up --pasky) */
 	SpriteGroup *act_group = NULL;
-	byte *bufend = buf + len;
-
-	if (!check_length(len, 5, "NewSpriteGroup")) return;
-	buf++;
 
 	uint8 feature = grf_load_byte(&buf);
 	uint8 setid   = grf_load_byte(&buf);
@@ -2743,6 +2750,10 @@ static void NewSpriteGroup(byte *buf, size_t len)
 		}
 	}
 
+	/* Sprite Groups are created here but they are allocated from a pool, so
+	 * we do not need to delete anything if there is an exception from the
+	 * ByteReader. */
+
 	switch (type) {
 		/* Deterministic Sprite Group */
 		case 0x81: // Self scope, byte
@@ -2755,9 +2766,6 @@ static void NewSpriteGroup(byte *buf, size_t len)
 			byte varadjust;
 			byte varsize;
 
-			/* Check we can load the var size parameter */
-			if (!check_length(bufend - buf, 1, "NewSpriteGroup (Deterministic) (1)")) return;
-
 			DeterministicSpriteGroup *group = new DeterministicSpriteGroup();
 			act_group = group;
 			group->var_scope = HasBit(type, 1) ? VSG_SCOPE_PARENT : VSG_SCOPE_SELF;
@@ -2769,16 +2777,10 @@ static void NewSpriteGroup(byte *buf, size_t len)
 				case 2: group->size = DSG_SIZE_DWORD; varsize = 4; break;
 			}
 
-			if (!check_length(bufend - buf, 5 + varsize, "NewSpriteGroup (Deterministic) (2)")) return;
-
 			/* Loop through the var adjusts. Unfortunately we don't know how many we have
 			 * from the outset, so we shall have to keep reallocing. */
 			do {
 				DeterministicSpriteGroupAdjust *adjust;
-
-				if (group->num_adjusts > 0) {
-					if (!check_length(bufend - buf, 2 + varsize + 3, "NewSpriteGroup (Deterministic) (3)")) return;
-				}
 
 				group->num_adjusts++;
 				group->adjusts = ReallocT(group->adjusts, group->num_adjusts);
@@ -2814,8 +2816,6 @@ static void NewSpriteGroup(byte *buf, size_t len)
 			group->num_ranges = grf_load_byte(&buf);
 			if (group->num_ranges > 0) group->ranges = CallocT<DeterministicSpriteGroupRange>(group->num_ranges);
 
-			if (!check_length(bufend - buf, 2 + (2 + 2 * varsize) * group->num_ranges, "NewSpriteGroup (Deterministic)")) return;
-
 			for (uint i = 0; i < group->num_ranges; i++) {
 				group->ranges[i].group = GetGroupFromGroupID(setid, type, grf_load_word(&buf));
 				group->ranges[i].low   = grf_load_var(varsize, &buf);
@@ -2831,8 +2831,6 @@ static void NewSpriteGroup(byte *buf, size_t len)
 		case 0x83: // Parent scope
 		case 0x84: // Relative scope
 		{
-			if (!check_length(bufend - buf, HasBit(type, 2) ? 8 : 7, "NewSpriteGroup (Randomized) (1)")) return;
-
 			RandomizedSpriteGroup *group = new RandomizedSpriteGroup();
 			act_group = group;
 			group->var_scope = HasBit(type, 1) ? VSG_SCOPE_PARENT : VSG_SCOPE_SELF;
@@ -2848,8 +2846,6 @@ static void NewSpriteGroup(byte *buf, size_t len)
 			group->lowest_randbit = grf_load_byte(&buf);
 			group->num_groups     = grf_load_byte(&buf);
 			group->groups = CallocT<const SpriteGroup*>(group->num_groups);
-
-			if (!check_length(bufend - buf, 2 * group->num_groups, "NewSpriteGroup (Randomized) (2)")) return;
 
 			for (uint i = 0; i < group->num_groups; i++) {
 				group->groups[i] = GetGroupFromGroupID(setid, type, grf_load_word(&buf));
@@ -2878,8 +2874,6 @@ static void NewSpriteGroup(byte *buf, size_t len)
 						grfmsg(0, "NewSpriteGroup: No sprite set to work on! Skipping");
 						return;
 					}
-
-					if (!check_length(bufend - buf, 2 * num_loaded + 2 * num_loading, "NewSpriteGroup (Real) (1)")) return;
 
 					RealSpriteGroup *group = new RealSpriteGroup();
 					act_group = group;
@@ -3084,7 +3078,7 @@ static bool IsValidGroupID(uint16 groupid, const char *function)
 	return true;
 }
 
-static void VehicleMapSpriteGroup(byte *buf, byte feature, uint8 idcount)
+static void VehicleMapSpriteGroup(ByteReader *buf, byte feature, uint8 idcount)
 {
 	static EngineID *last_engines;
 	static uint last_engines_count;
@@ -3158,7 +3152,7 @@ static void VehicleMapSpriteGroup(byte *buf, byte feature, uint8 idcount)
 }
 
 
-static void CanalMapSpriteGroup(byte *buf, uint8 idcount)
+static void CanalMapSpriteGroup(ByteReader *buf, uint8 idcount)
 {
 	CanalFeature *cfs = AllocaM(CanalFeature, idcount);
 	for (uint i = 0; i < idcount; i++) {
@@ -3166,7 +3160,7 @@ static void CanalMapSpriteGroup(byte *buf, uint8 idcount)
 	}
 
 	uint8 cidcount = grf_load_byte(&buf);
-	buf += cidcount * 3;
+	buf->Skip(cidcount * 3);
 
 	uint16 groupid = grf_load_word(&buf);
 	if (!IsValidGroupID(groupid, "CanalMapSpriteGroup")) return;
@@ -3185,7 +3179,7 @@ static void CanalMapSpriteGroup(byte *buf, uint8 idcount)
 }
 
 
-static void StationMapSpriteGroup(byte *buf, uint8 idcount)
+static void StationMapSpriteGroup(ByteReader *buf, uint8 idcount)
 {
 	uint8 *stations = AllocaM(uint8, idcount);
 	for (uint i = 0; i < idcount; i++) {
@@ -3232,7 +3226,7 @@ static void StationMapSpriteGroup(byte *buf, uint8 idcount)
 }
 
 
-static void TownHouseMapSpriteGroup(byte *buf, uint8 idcount)
+static void TownHouseMapSpriteGroup(ByteReader *buf, uint8 idcount)
 {
 	uint8 *houses = AllocaM(uint8, idcount);
 	for (uint i = 0; i < idcount; i++) {
@@ -3241,7 +3235,7 @@ static void TownHouseMapSpriteGroup(byte *buf, uint8 idcount)
 
 	/* Skip the cargo type section, we only care about the default group */
 	uint8 cidcount = grf_load_byte(&buf);
-	buf += cidcount * 3;
+	buf->Skip(cidcount * 3);
 
 	uint16 groupid = grf_load_word(&buf);
 	if (!IsValidGroupID(groupid, "TownHouseMapSpriteGroup")) return;
@@ -3263,7 +3257,7 @@ static void TownHouseMapSpriteGroup(byte *buf, uint8 idcount)
 	}
 }
 
-static void IndustryMapSpriteGroup(byte *buf, uint8 idcount)
+static void IndustryMapSpriteGroup(ByteReader *buf, uint8 idcount)
 {
 	uint8 *industries = AllocaM(uint8, idcount);
 	for (uint i = 0; i < idcount; i++) {
@@ -3272,7 +3266,7 @@ static void IndustryMapSpriteGroup(byte *buf, uint8 idcount)
 
 	/* Skip the cargo type section, we only care about the default group */
 	uint8 cidcount = grf_load_byte(&buf);
-	buf += cidcount * 3;
+	buf->Skip(cidcount * 3);
 
 	uint16 groupid = grf_load_word(&buf);
 	if (!IsValidGroupID(groupid, "IndustryMapSpriteGroup")) return;
@@ -3294,7 +3288,7 @@ static void IndustryMapSpriteGroup(byte *buf, uint8 idcount)
 	}
 }
 
-static void IndustrytileMapSpriteGroup(byte *buf, uint8 idcount)
+static void IndustrytileMapSpriteGroup(ByteReader *buf, uint8 idcount)
 {
 	uint8 *indtiles = AllocaM(uint8, idcount);
 	for (uint i = 0; i < idcount; i++) {
@@ -3303,7 +3297,7 @@ static void IndustrytileMapSpriteGroup(byte *buf, uint8 idcount)
 
 	/* Skip the cargo type section, we only care about the default group */
 	uint8 cidcount = grf_load_byte(&buf);
-	buf += cidcount * 3;
+	buf->Skip(cidcount * 3);
 
 	uint16 groupid = grf_load_word(&buf);
 	if (!IsValidGroupID(groupid, "IndustrytileMapSpriteGroup")) return;
@@ -3325,7 +3319,7 @@ static void IndustrytileMapSpriteGroup(byte *buf, uint8 idcount)
 	}
 }
 
-static void CargoMapSpriteGroup(byte *buf, uint8 idcount)
+static void CargoMapSpriteGroup(ByteReader *buf, uint8 idcount)
 {
 	CargoID *cargos = AllocaM(CargoID, idcount);
 	for (uint i = 0; i < idcount; i++) {
@@ -3334,7 +3328,7 @@ static void CargoMapSpriteGroup(byte *buf, uint8 idcount)
 
 	/* Skip the cargo type section, we only care about the default group */
 	uint8 cidcount = grf_load_byte(&buf);
-	buf += cidcount * 3;
+	buf->Skip(cidcount * 3);
 
 	uint16 groupid = grf_load_word(&buf);
 	if (!IsValidGroupID(groupid, "CargoMapSpriteGroup")) return;
@@ -3355,7 +3349,7 @@ static void CargoMapSpriteGroup(byte *buf, uint8 idcount)
 
 
 /* Action 0x03 */
-static void FeatureMapSpriteGroup(byte *buf, size_t len)
+static void FeatureMapSpriteGroup(ByteReader *buf)
 {
 	/* <03> <feature> <n-id> <ids>... <num-cid> [<cargo-type> <cid>]... <def-cid>
 	 * id-list    := [<id>] [id-list]
@@ -3376,9 +3370,6 @@ static void FeatureMapSpriteGroup(byte *buf, size_t len)
 		return;
 	}
 
-	if (!check_length(len, 6, "FeatureMapSpriteGroup")) return;
-
-	buf++;
 	uint8 feature = grf_load_byte(&buf);
 	uint8 idcount = grf_load_byte(&buf);
 
@@ -3438,7 +3429,7 @@ static void FeatureMapSpriteGroup(byte *buf, size_t len)
 }
 
 /* Action 0x04 */
-static void FeatureNewName(byte *buf, size_t len)
+static void FeatureNewName(ByteReader *buf)
 {
 	/* <04> <veh-type> <language-id> <num-veh> <offset> <data...>
 	 *
@@ -3458,8 +3449,6 @@ static void FeatureNewName(byte *buf, size_t len)
 
 	bool new_scheme = _cur_grffile->grf_version >= 7;
 
-	if (!check_length(len, 6, "FeatureNewName")) return;
-	buf++;
 	uint8 feature  = grf_load_byte(&buf);
 	uint8 lang     = grf_load_byte(&buf);
 	uint8 num      = grf_load_byte(&buf);
@@ -3480,14 +3469,8 @@ static void FeatureNewName(byte *buf, size_t len)
 	grfmsg(6, "FeatureNewName: About to rename engines %d..%d (feature %d) in language 0x%02X",
 	               id, endid, feature, lang);
 
-	len -= generic ? 6 : 5;
-
-	for (; id < endid && len > 0; id++) {
-		const char *name   = grf_load_string(&buf, len);
-		size_t name_length = strlen(name) + 1;
-
-		len -= (int)name_length;
-
+	for (; id < endid && buf->HasData(); id++) {
+		const char *name = grf_load_string(&buf);
 		grfmsg(8, "FeatureNewName: 0x%04X <- %s", id, name);
 
 		switch (feature) {
@@ -3600,7 +3583,7 @@ static uint16 SanitizeSpriteOffset(uint16& num, uint16 offset, int max_sprites, 
 }
 
 /* Action 0x05 */
-static void GraphicsNew(byte *buf, size_t len)
+static void GraphicsNew(ByteReader *buf)
 {
 	/* <05> <graphics-type> <num-sprites> <other data...>
 	 *
@@ -3648,8 +3631,6 @@ static void GraphicsNew(byte *buf, size_t len)
 		/* 0x15 */ { A5BLOCK_ALLOW_OFFSET, SPR_OPENTTD_BASE,             1, OPENTTD_SPRITE_COUNT,                        "OpenTTD GUI graphics"  },
 	};
 
-	if (!check_length(len, 2, "GraphicsNew")) return;
-	buf++;
 	uint8 type = grf_load_byte(&buf);
 	uint16 num = grf_load_extended(&buf);
 	uint16 offset = HasBit(type, 7) ? grf_load_extended(&buf) : 0;
@@ -3714,11 +3695,8 @@ static void GraphicsNew(byte *buf, size_t len)
 }
 
 /* Action 0x05 (SKIP) */
-static void SkipAct5(byte *buf, size_t len)
+static void SkipAct5(ByteReader *buf)
 {
-	if (!check_length(len, 2, "SkipAct5")) return;
-	buf++;
-
 	/* Ignore type byte */
 	grf_load_byte(&buf);
 
@@ -3906,7 +3884,7 @@ static uint32 GetParamVal(byte param, uint32 *cond_val)
 }
 
 /* Action 0x06 */
-static void CfgApply(byte *buf, size_t len)
+static void CfgApply(ByteReader *buf)
 {
 	/* <06> <param-num> <param-size> <offset> ... <FF>
 	 *
@@ -3950,7 +3928,6 @@ static void CfgApply(byte *buf, size_t len)
 	}
 
 	/* Now perform the Action 0x06 on our data. */
-	buf++;
 
 	for (;;) {
 		uint i;
@@ -4030,7 +4007,7 @@ static void DisableStaticNewGRFInfluencingNonStaticNewGRFs(GRFConfig *c)
 
 /* Action 0x07
  * Action 0x09 */
-static void SkipIf(byte *buf, size_t len)
+static void SkipIf(ByteReader *buf)
 {
 	/* <07/09> <param-num> <param-size> <condition-type> <value> <num-sprites>
 	 *
@@ -4044,8 +4021,6 @@ static void SkipIf(byte *buf, size_t len)
 	uint32 mask = 0;
 	bool result;
 
-	if (!check_length(len, 6, "SkipIf")) return;
-	buf++;
 	uint8 param     = grf_load_byte(&buf);
 	uint8 paramsize = grf_load_byte(&buf);
 	uint8 condtype  = grf_load_byte(&buf);
@@ -4196,10 +4171,8 @@ static void SkipIf(byte *buf, size_t len)
 
 
 /* Action 0x08 (GLS_FILESCAN) */
-static void ScanInfo(byte *buf, size_t len)
+static void ScanInfo(ByteReader *buf)
 {
-	if (!check_length(len, 8, "Info")) return;
-	buf++;
 	grf_load_byte(&buf);
 	uint32 grfid  = grf_load_dword(&buf);
 
@@ -4208,13 +4181,11 @@ static void ScanInfo(byte *buf, size_t len)
 	/* GRF IDs starting with 0xFF are reserved for internal TTDPatch use */
 	if (GB(grfid, 24, 8) == 0xFF) SetBit(_cur_grfconfig->flags, GCF_SYSTEM);
 
-	len -= 6;
-	const char *name = grf_load_string(&buf, len);
+	const char *name = grf_load_string(&buf);
 	_cur_grfconfig->name = TranslateTTDPatchCodes(grfid, name);
 
-	len -= strlen(name) + 1;
-	if (len > 0) {
-		const char *info = grf_load_string(&buf, len);
+	if (buf->HasData()) {
+		const char *info = grf_load_string(&buf);
 		_cur_grfconfig->info = TranslateTTDPatchCodes(grfid, info);
 	}
 
@@ -4223,7 +4194,7 @@ static void ScanInfo(byte *buf, size_t len)
 }
 
 /* Action 0x08 */
-static void GRFInfo(byte *buf, size_t len)
+static void GRFInfo(ByteReader *buf)
 {
 	/* <08> <version> <grf-id> <name> <info>
 	 *
@@ -4232,11 +4203,9 @@ static void GRFInfo(byte *buf, size_t len)
 	 * S name          name of this .grf set
 	 * S info          string describing the set, and e.g. author and copyright */
 
-	if (!check_length(len, 8, "GRFInfo")) return;
-	buf++;
 	uint8 version    = grf_load_byte(&buf);
 	uint32 grfid     = grf_load_dword(&buf);
-	const char *name = grf_load_string(&buf, len - 6);
+	const char *name = grf_load_string(&buf);
 
 	if (_cur_stage < GLS_RESERVE && _cur_grfconfig->status != GCS_UNKNOWN) {
 		_cur_grfconfig->status = GCS_DISABLED;
@@ -4257,7 +4226,7 @@ static void GRFInfo(byte *buf, size_t len)
 }
 
 /* Action 0x0A */
-static void SpriteReplace(byte *buf, size_t len)
+static void SpriteReplace(ByteReader *buf)
 {
 	/* <0A> <num-sets> <set1> [<set2> ...]
 	 * <set>: <num-sprites> <first-sprite>
@@ -4267,7 +4236,6 @@ static void SpriteReplace(byte *buf, size_t len)
 	 * B num-sprites   How many sprites are in this set
 	 * W first-sprite  First sprite number to replace */
 
-	buf++; // skip action byte
 	uint8 num_sets = grf_load_byte(&buf);
 
 	for (uint i = 0; i < num_sets; i++) {
@@ -4293,9 +4261,8 @@ static void SpriteReplace(byte *buf, size_t len)
 }
 
 /* Action 0x0A (SKIP) */
-static void SkipActA(byte *buf, size_t len)
+static void SkipActA(ByteReader *buf)
 {
-	buf++;
 	uint8 num_sets = grf_load_byte(&buf);
 
 	for (uint i = 0; i < num_sets; i++) {
@@ -4309,7 +4276,7 @@ static void SkipActA(byte *buf, size_t len)
 }
 
 /* Action 0x0B */
-static void GRFLoadError(byte *buf, size_t len)
+static void GRFLoadError(ByteReader *buf)
 {
 	/* <0B> <severity> <language-id> <message-id> [<message...> 00] [<data...>] 00 [<parnum>]
 	 *
@@ -4343,16 +4310,12 @@ static void GRFLoadError(byte *buf, size_t len)
 		STR_NEWGRF_ERROR_MSG_FATAL
 	};
 
-	if (!check_length(len, 6, "GRFLoadError")) return;
-
 	/* For now we can only show one message per newgrf file. */
 	if (_cur_grfconfig->error != NULL) return;
 
-	buf++; // Skip the action byte.
 	byte severity   = grf_load_byte(&buf);
 	byte lang       = grf_load_byte(&buf);
 	byte message_id = grf_load_byte(&buf);
-	len -= 4;
 
 	/* Skip the error if it isn't valid for the current language. */
 	if (!CheckGrfLangID(lang, _cur_grffile->grf_version)) return;
@@ -4381,7 +4344,7 @@ static void GRFLoadError(byte *buf, size_t len)
 		return;
 	}
 
-	if (len <= 1) {
+	if (buf->Remaining() <= 1) {
 		grfmsg(7, "GRFLoadError: No message data supplied.");
 		return;
 	}
@@ -4392,17 +4355,20 @@ static void GRFLoadError(byte *buf, size_t len)
 
 	if (message_id == 0xFF) {
 		/* This is a custom error message. */
-		const char *message = grf_load_string(&buf, len);
-		len -= (strlen(message) + 1);
+		if (buf->HasData()) {
+			const char *message = grf_load_string(&buf);
 
-		error->custom_message = TranslateTTDPatchCodes(_cur_grffile->grfid, message);
+			error->custom_message = TranslateTTDPatchCodes(_cur_grffile->grfid, message);
+		} else {
+			grfmsg(7, "GRFLoadError: No custom message supplied.");
+			error->custom_message = strdup("");
+		}
 	} else {
 		error->message = msgstr[message_id];
 	}
 
-	if (len > 0) {
-		const char *data = grf_load_string(&buf, len);
-		len -= (strlen(data) + 1);
+	if (buf->HasData()) {
+		const char *data = grf_load_string(&buf);
 
 		error->data = TranslateTTDPatchCodes(_cur_grffile->grfid, data);
 	} else {
@@ -4412,10 +4378,9 @@ static void GRFLoadError(byte *buf, size_t len)
 
 	/* Only two parameter numbers can be used in the string. */
 	uint i = 0;
-	for (; i < 2 && len > 0; i++) {
+	for (; i < 2 && buf->HasData(); i++) {
 		uint param_number = grf_load_byte(&buf);
 		error->param_value[i] = _cur_grffile->GetParam(param_number);
-		len--;
 	}
 	error->num_params = i;
 
@@ -4423,24 +4388,21 @@ static void GRFLoadError(byte *buf, size_t len)
 }
 
 /* Action 0x0C */
-static void GRFComment(byte *buf, size_t len)
+static void GRFComment(ByteReader *buf)
 {
 	/* <0C> [<ignored...>]
 	 *
 	 * V ignored       Anything following the 0C is ignored */
 
-	if (len == 1) return;
+	if (!buf->HasData()) return;
 
-	size_t text_len = len - 1;
-	const char *text = (const char*)(buf + 1);
-	grfmsg(2, "GRFComment: %.*s", (int)text_len, text);
+	const char *text = grf_load_string(&buf);
+	grfmsg(2, "GRFComment: %s", text);
 }
 
 /* Action 0x0D (GLS_SAFETYSCAN) */
-static void SafeParamSet(byte *buf, size_t len)
+static void SafeParamSet(ByteReader *buf)
 {
-	if (!check_length(len, 5, "SafeParamSet")) return;
-	buf++;
 	uint8 target = grf_load_byte(&buf);
 
 	/* Only writing GRF parameters is considered safe */
@@ -4570,7 +4532,7 @@ static uint32 PerformGRM(uint32 *grm, uint16 num_ids, uint16 count, uint8 op, ui
 
 
 /* Action 0x0D */
-static void ParamSet(byte *buf, size_t len)
+static void ParamSet(ByteReader *buf)
 {
 	/* <0D> <target> <operation> <source1> <source2> [<data>]
 	 *
@@ -4594,15 +4556,13 @@ static void ParamSet(byte *buf, size_t len)
 	 *         (source2 like in 05, and source1 as well)
 	 */
 
-	if (!check_length(len, 5, "ParamSet")) return;
-	buf++;
 	uint8 target = grf_load_byte(&buf);
 	uint8 oper   = grf_load_byte(&buf);
 	uint32 src1  = grf_load_byte(&buf);
 	uint32 src2  = grf_load_byte(&buf);
 
 	uint32 data = 0;
-	if (len >= 8) data = grf_load_dword(&buf);
+	if (buf->Remaining() >= 4) data = grf_load_dword(&buf);
 
 	/* You can add 80 to the operation to make it apply only if the target
 	 * is not defined yet.  In this respect, a parameter is taken to be
@@ -4873,17 +4833,14 @@ static void ParamSet(byte *buf, size_t len)
 }
 
 /* Action 0x0E (GLS_SAFETYSCAN) */
-static void SafeGRFInhibit(byte *buf, size_t len)
+static void SafeGRFInhibit(ByteReader *buf)
 {
 	/* <0E> <num> <grfids...>
 	 *
 	 * B num           Number of GRFIDs that follow
 	 * D grfids        GRFIDs of the files to deactivate */
 
-	if (!check_length(len, 2, "GRFInhibit")) return;
-	buf++;
 	uint8 num = grf_load_byte(&buf);
-	if (!check_length(len, 2 + 4 * num, "GRFInhibit")) return;
 
 	for (uint i = 0; i < num; i++) {
 		uint32 grfid = grf_load_dword(&buf);
@@ -4901,17 +4858,14 @@ static void SafeGRFInhibit(byte *buf, size_t len)
 }
 
 /* Action 0x0E */
-static void GRFInhibit(byte *buf, size_t len)
+static void GRFInhibit(ByteReader *buf)
 {
 	/* <0E> <num> <grfids...>
 	 *
 	 * B num           Number of GRFIDs that follow
 	 * D grfids        GRFIDs of the files to deactivate */
 
-	if (!check_length(len, 2, "GRFInhibit")) return;
-	buf++;
 	uint8 num = grf_load_byte(&buf);
-	if (!check_length(len, 2 + 4 * num, "GRFInhibit")) return;
 
 	for (uint i = 0; i < num; i++) {
 		uint32 grfid = grf_load_dword(&buf);
@@ -4926,7 +4880,7 @@ static void GRFInhibit(byte *buf, size_t len)
 }
 
 /* Action 0x0F */
-static void FeatureTownName(byte *buf, size_t len)
+static void FeatureTownName(ByteReader *buf)
 {
 	/* <0F> <id> <style-name> <num-parts> <parts>
 	 *
@@ -4935,15 +4889,11 @@ static void FeatureTownName(byte *buf, size_t len)
 	 * B num-parts   Number of parts in this definition
 	 * V parts       The parts */
 
-	if (!check_length(len, 1, "FeatureTownName: definition ID")) return;
-	buf++; len--;
-
 	uint32 grfid = _cur_grffile->grfid;
 
 	GRFTownName *townname = AddGRFTownName(grfid);
 
 	byte id = grf_load_byte(&buf);
-	len--;
 	grfmsg(6, "FeatureTownName: definition 0x%02X", id & 0x7F);
 
 	if (HasBit(id, 7)) {
@@ -4951,17 +4901,13 @@ static void FeatureTownName(byte *buf, size_t len)
 		ClrBit(id, 7);
 		bool new_scheme = _cur_grffile->grf_version >= 7;
 
-		if (!check_length(len, 1, "FeatureTownName: lang_id")) return;
 		byte lang = grf_load_byte(&buf);
-		len--;
 
 		byte nb_gen = townname->nb_gen;
 		do {
 			ClrBit(lang, 7);
 
-			if (!check_length(len, 1, "FeatureTownName: style name")) return;
-			const char *name = grf_load_string(&buf, len);
-			len -= strlen(name) + 1;
+			const char *name = grf_load_string(&buf);
 
 			char *lang_name = TranslateTTDPatchCodes(grfid, name);
 			grfmsg(6, "FeatureTownName: lang 0x%X -> '%s'", lang, lang_name);
@@ -4969,41 +4915,32 @@ static void FeatureTownName(byte *buf, size_t len)
 
 			townname->name[nb_gen] = AddGRFString(grfid, id, lang, new_scheme, name, STR_UNDEFINED);
 
-			if (!check_length(len, 1, "FeatureTownName: lang_id")) return;
 			lang = grf_load_byte(&buf);
-			len--;
 		} while (lang != 0);
 		townname->id[nb_gen] = id;
 		townname->nb_gen++;
 	}
 
-	if (!check_length(len, 1, "FeatureTownName: number of parts")) return;
 	byte nb = grf_load_byte(&buf);
-	len--;
 	grfmsg(6, "FeatureTownName: %u parts", nb);
 
 	townname->nbparts[id] = nb;
 	townname->partlist[id] = CallocT<NamePartList>(nb);
 
 	for (int i = 0; i < nb; i++) {
-		if (!check_length(len, 3, "FeatureTownName: parts header")) return;
 		byte nbtext =  grf_load_byte(&buf);
 		townname->partlist[id][i].bitstart  = grf_load_byte(&buf);
 		townname->partlist[id][i].bitcount  = grf_load_byte(&buf);
 		townname->partlist[id][i].maxprob   = 0;
 		townname->partlist[id][i].partcount = nbtext;
 		townname->partlist[id][i].parts     = CallocT<NamePart>(nbtext);
-		len -= 3;
 		grfmsg(6, "FeatureTownName: part %d contains %d texts and will use GB(seed, %d, %d)", i, nbtext, townname->partlist[id][i].bitstart, townname->partlist[id][i].bitcount);
 
 		for (int j = 0; j < nbtext; j++) {
-			if (!check_length(len, 2, "FeatureTownName: part")) return;
 			byte prob = grf_load_byte(&buf);
-			len--;
 
 			if (HasBit(prob, 7)) {
 				byte ref_id = grf_load_byte(&buf);
-				len--;
 
 				if (townname->nbparts[ref_id] == 0) {
 					grfmsg(0, "FeatureTownName: definition 0x%02X doesn't exist, deactivating", ref_id);
@@ -5017,8 +4954,7 @@ static void FeatureTownName(byte *buf, size_t len)
 				grfmsg(6, "FeatureTownName: part %d, text %d, uses intermediate definition 0x%02X (with probability %d)", i, j, ref_id, prob & 0x7F);
 				townname->partlist[id][i].parts[j].data.id = ref_id;
 			} else {
-				const char *text = grf_load_string(&buf, len);
-				len -= strlen(text) + 1;
+				const char *text = grf_load_string(&buf);
 				townname->partlist[id][i].parts[j].data.text = TranslateTTDPatchCodes(grfid, text);
 				grfmsg(6, "FeatureTownName: part %d, text %d, '%s' (with probability %d)", i, j, townname->partlist[id][i].parts[j].data.text, prob);
 			}
@@ -5030,18 +4966,17 @@ static void FeatureTownName(byte *buf, size_t len)
 }
 
 /* Action 0x10 */
-static void DefineGotoLabel(byte *buf, size_t len)
+static void DefineGotoLabel(ByteReader *buf)
 {
 	/* <10> <label> [<comment>]
 	 *
 	 * B label      The label to define
 	 * V comment    Optional comment - ignored */
 
-	if (!check_length(len, 1, "DefineGotoLabel")) return;
-	buf++; len--;
+	byte nfo_label = grf_load_byte(&buf);
 
 	GRFLabel *label = MallocT<GRFLabel>(1);
-	label->label    = grf_load_byte(&buf);
+	label->label    = nfo_label;
 	label->nfo_line = _nfo_line;
 	label->pos      = FioGetPos();
 	label->next     = NULL;
@@ -5060,14 +4995,12 @@ static void DefineGotoLabel(byte *buf, size_t len)
 }
 
 /* Action 0x11 */
-static void GRFSound(byte *buf, size_t len)
+static void GRFSound(ByteReader *buf)
 {
 	/* <11> <num>
 	 *
 	 * W num      Number of sound files that follow */
 
-	if (!check_length(len, 1, "GRFSound")) return;
-	buf++;
 	uint16 num = grf_load_word(&buf);
 
 	_grf_data_blocks = num;
@@ -5077,20 +5010,18 @@ static void GRFSound(byte *buf, size_t len)
 }
 
 /* Action 0x11 (SKIP) */
-static void SkipAct11(byte *buf, size_t len)
+static void SkipAct11(ByteReader *buf)
 {
 	/* <11> <num>
 	 *
 	 * W num      Number of sound files that follow */
 
-	if (!check_length(len, 1, "SkipAct11")) return;
-	buf++;
 	_skip_sprites = grf_load_word(&buf);
 
 	grfmsg(3, "SkipAct11: Skipping %d sprites", _skip_sprites);
 }
 
-static void ImportGRFSound(byte *buf, int len)
+static void ImportGRFSound(ByteReader *buf)
 {
 	const GRFFile *file;
 	SoundEntry *sound = AllocateSound();
@@ -5118,14 +5049,12 @@ static void ImportGRFSound(byte *buf, int len)
 }
 
 /* 'Action 0xFE' */
-static void GRFImportBlock(byte *buf, int len)
+static void GRFImportBlock(ByteReader *buf)
 {
 	if (_grf_data_blocks == 0) {
 		grfmsg(2, "GRFImportBlock: Unexpected import block, skipping");
 		return;
 	}
-
-	buf++;
 
 	_grf_data_blocks--;
 
@@ -5136,15 +5065,13 @@ static void GRFImportBlock(byte *buf, int len)
 	}
 
 	switch (_grf_data_type) {
-		case GDT_SOUND: ImportGRFSound(buf, len - 1); break;
+		case GDT_SOUND: ImportGRFSound(buf); break;
 		default: NOT_REACHED();
 	}
 }
 
-static void LoadGRFSound(byte *buf, uint len)
+static void LoadGRFSound(ByteReader *buf)
 {
-	byte *buf_start = buf;
-
 	/* Allocate a sound entry. This is done even if the data is not loaded
 	 * so that the indices used elsewhere are still correct. */
 	SoundEntry *sound = AllocateSound();
@@ -5155,7 +5082,7 @@ static void LoadGRFSound(byte *buf, uint len)
 	}
 
 	uint32 total_size = grf_load_dword(&buf);
-	if (total_size > len + 8) {
+	if (total_size > buf->Remaining()) {
 		grfmsg(1, "LoadGRFSound: RIFF was truncated");
 		return;
 	}
@@ -5194,7 +5121,7 @@ static void LoadGRFSound(byte *buf, uint len)
 
 			case 'atad': // 'data'
 				sound->file_size   = size;
-				sound->file_offset = FioGetPos() - (len - (buf - buf_start));
+				sound->file_offset = FioGetPos() - buf->Remaining();
 				sound->file_slot   = _file_index;
 
 				/* Set default volume and priority */
@@ -5220,7 +5147,7 @@ static void LoadGRFSound(byte *buf, uint len)
 }
 
 /* Action 0x12 */
-static void LoadFontGlyph(byte *buf, size_t len)
+static void LoadFontGlyph(ByteReader *buf)
 {
 	/* <12> <num_def> <font_size> <num_char> <base_char>
 	 *
@@ -5229,12 +5156,7 @@ static void LoadFontGlyph(byte *buf, size_t len)
 	 * B num_char     Number of consecutive glyphs
 	 * W base_char    First character index */
 
-	buf++; len--;
-	if (!check_length(len, 1, "LoadFontGlyph")) return;
-
 	uint8 num_def = grf_load_byte(&buf);
-
-	if (!check_length(len, 1 + num_def * 4, "LoadFontGlyph")) return;
 
 	for (uint i = 0; i < num_def; i++) {
 		FontSize size    = (FontSize)grf_load_byte(&buf);
@@ -5252,7 +5174,7 @@ static void LoadFontGlyph(byte *buf, size_t len)
 }
 
 /* Action 0x12 (SKIP) */
-static void SkipAct12(byte *buf, size_t len)
+static void SkipAct12(ByteReader *buf)
 {
 	/* <12> <num_def> <font_size> <num_char> <base_char>
 	 *
@@ -5261,11 +5183,7 @@ static void SkipAct12(byte *buf, size_t len)
 	 * B num_char     Number of consecutive glyphs
 	 * W base_char    First character index */
 
-	buf++; len--;
-	if (!check_length(len, 1, "SkipAct12")) return;
 	uint8 num_def = grf_load_byte(&buf);
-
-	if (!check_length(len, 1 + num_def * 4, "SkipAct12")) return;
 
 	for (uint i = 0; i < num_def; i++) {
 		/* Ignore 'size' byte */
@@ -5282,7 +5200,7 @@ static void SkipAct12(byte *buf, size_t len)
 }
 
 /* Action 0x13 */
-static void TranslateGRFStrings(byte *buf, size_t len)
+static void TranslateGRFStrings(ByteReader *buf)
 {
 	/* <13> <grfid> <num-ent> <offset> <text...>
 	 *
@@ -5290,9 +5208,6 @@ static void TranslateGRFStrings(byte *buf, size_t len)
 	 * B   num-ent   Number of strings
 	 * W   offset    First text ID
 	 * S   text...   Zero-terminated strings */
-
-	buf++; len--;
-	if (!check_length(len, 7, "TranslateGRFString")) return;
 
 	uint32 grfid = grf_load_dword(&buf);
 	const GRFConfig *c = GetGRFConfig(grfid);
@@ -5330,15 +5245,10 @@ static void TranslateGRFStrings(byte *buf, size_t len)
 		return;
 	}
 
-	len -= 7;
+	for (uint i = 0; i < num_strings && buf->HasData(); i++) {
+		const char *string = grf_load_string(&buf);
 
-	for (uint i = 0; i < num_strings && len > 0; i++) {
-		const char *string   = grf_load_string(&buf, len);
-		size_t string_length = strlen(string) + 1;
-
-		len -= (int)string_length;
-
-		if (string_length == 1) {
+		if (StrEmpty(string)) {
 			grfmsg(7, "TranslateGRFString: Ignoring empty string.");
 			continue;
 		}
@@ -5353,7 +5263,7 @@ static void TranslateGRFStrings(byte *buf, size_t len)
 }
 
 /* 'Action 0xFF' */
-static void GRFDataBlock(byte *buf, int len)
+static void GRFDataBlock(ByteReader *buf)
 {
 	/* <FF> <name_len> <name> '\0' <data> */
 
@@ -5362,12 +5272,9 @@ static void GRFDataBlock(byte *buf, int len)
 		return;
 	}
 
-	if (!check_length(len, 3, "GRFDataBlock")) return;
-
-	buf++;
 	uint8 name_len = grf_load_byte(&buf);
-	const char *name = (const char *)buf;
-	buf += name_len;
+	const char *name = reinterpret_cast<const char *>(buf->Data());
+	buf->Skip(name_len);
 
 	/* Test string termination */
 	if (grf_load_byte(&buf) != 0) {
@@ -5375,21 +5282,19 @@ static void GRFDataBlock(byte *buf, int len)
 		return;
 	}
 
-	if (!check_length(len, 3 + name_len, "GRFDataBlock")) return;
-
 	grfmsg(2, "GRFDataBlock: block name '%s'...", name);
 
 	_grf_data_blocks--;
 
 	switch (_grf_data_type) {
-		case GDT_SOUND: LoadGRFSound(buf, len - name_len - 3); break;
+		case GDT_SOUND: LoadGRFSound(buf); break;
 		default: NOT_REACHED();
 	}
 }
 
 
 /* Used during safety scan on unsafe actions */
-static void GRFUnsafe(byte *buf, size_t len)
+static void GRFUnsafe(ByteReader *buf)
 {
 	SetBit(_cur_grfconfig->flags, GCF_UNSAFE);
 
@@ -6045,21 +5950,34 @@ static void DecodeSpecialSprite(byte *buf, uint num, GrfLoadingStage stage)
 		FioSeekTo(num, SEEK_CUR);
 	}
 
-	byte action = buf[0];
+	ByteReader br(buf, buf + num);
+	ByteReader *bufp = &br;
 
-	if (action == 0xFF) {
-		grfmsg(7, "DecodeSpecialSprite: Handling data block in stage %d", stage);
-		GRFDataBlock(buf, num);
-	} else if (action == 0xFE) {
-		grfmsg(7, "DecodeSpecialSprite: Handling import block in stage %d", stage);
-		GRFImportBlock(buf, num);
-	} else if (action >= lengthof(handlers)) {
-		grfmsg(7, "DecodeSpecialSprite: Skipping unknown action 0x%02X", action);
-	} else if (handlers[action][stage] == NULL) {
-		grfmsg(7, "DecodeSpecialSprite: Skipping action 0x%02X in stage %d", action, stage);
-	} else {
-		grfmsg(7, "DecodeSpecialSprite: Handling action 0x%02X in stage %d", action, stage);
-		handlers[action][stage](buf, num);
+	try {
+		byte action = grf_load_byte(&bufp);
+
+		if (action == 0xFF) {
+			grfmsg(7, "DecodeSpecialSprite: Handling data block in stage %d", stage);
+			GRFDataBlock(bufp);
+		} else if (action == 0xFE) {
+			grfmsg(7, "DecodeSpecialSprite: Handling import block in stage %d", stage);
+			GRFImportBlock(bufp);
+		} else if (action >= lengthof(handlers)) {
+			grfmsg(7, "DecodeSpecialSprite: Skipping unknown action 0x%02X", action);
+		} else if (handlers[action][stage] == NULL) {
+			grfmsg(7, "DecodeSpecialSprite: Skipping action 0x%02X in stage %d", action, stage);
+		} else {
+			grfmsg(7, "DecodeSpecialSprite: Handling action 0x%02X in stage %d", action, stage);
+			handlers[action][stage](bufp);
+		}
+	} catch (...) {
+		grfmsg(1, "DecodeSpecialSprite: Tried to read past end of pseudo-sprite data");
+
+		_skip_sprites = -1;
+		_cur_grfconfig->status = GCS_DISABLED;
+		_cur_grfconfig->error  = CallocT<GRFError>(1);
+		_cur_grfconfig->error->severity = STR_NEWGRF_ERROR_MSG_FATAL;
+		_cur_grfconfig->error->message  = STR_NEWGRF_ERROR_READ_BOUNDS;
 	}
 }
 
