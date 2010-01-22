@@ -1507,9 +1507,8 @@ static const PaletteID PALETTE_TO_TRANSPARENT      = 0x322; // This sets the spr
 static const PaletteID PALETTE_TO_STRUCT_GREY      = 0x323;
 static const PaletteID PALETTE_CRASH               = 0x324;
 
-/* XXX another place where structures are coloured.
- * I'm not sure which colours these are */
-static const PaletteID PALETTE_59E                 = 0x59E;
-static const PaletteID PALETTE_59F                 = 0x59F;
+/* Two recolourings only used by the church */
+static const PaletteID PALETTE_CHURCH_RED          = 0x59E;
+static const PaletteID PALETTE_CHURCH_CREAM        = 0x59F;
 
 #endif /* SPRITES_H */
