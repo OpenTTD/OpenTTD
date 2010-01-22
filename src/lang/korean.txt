@@ -1066,6 +1066,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :신경 안씀
 STR_CITY_APPROVAL_TOLERANT                                      :신경 씀
 STR_CITY_APPROVAL_HOSTILE                                       :싫어함
 
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}사용하기 적합한 AI가 없습니다...{}'온라인 콘텐츠' 시스템을 통해 AI를 다운받을 수 있습니다.
 STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}이 행위는 난이도를 사용자 설정으로 변경합니다
 
 # Advanced settings window

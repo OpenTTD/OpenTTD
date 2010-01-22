@@ -1065,6 +1065,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Salliva
 STR_CITY_APPROVAL_TOLERANT                                      :Suvaitseva
 STR_CITY_APPROVAL_HOSTILE                                       :Vihamielinen
 
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Ei soveltuvia tekoälyjä saatavilla...{}Voit ladata tekoälyjä 'Online-Sisältö'-palvelulla
 STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Tehty toiminto vaihtoi vaikeustason mukautetuksi
 
 # Advanced settings window
@@ -2369,6 +2370,7 @@ STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Tuntematon Acti
 STR_NEWGRF_ERROR_INVALID_ID                                     :Virheellisen ID:n käyttöyritys.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} sisältää korruptoituneen spriten. Kaikki korruptoituneet spritet näkyvät punaisina kysymysmerkkeinä (?).
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Sisältää useamman Action 8 -kohdan.
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Luku pseudo-spriten ohi.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Varoitus!

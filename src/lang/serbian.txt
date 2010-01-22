@@ -1250,6 +1250,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Popustljiv
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerantan
 STR_CITY_APPROVAL_HOSTILE                                       :Neprijateljski
 
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Nisu dostupne odgovarajuće VI...{}Možete skinuti nekoliko VI preko sistema za preuzimanje dodataka
 STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Ova izmena je prebacila nivo težine na sopstven
 
 # Advanced settings window
@@ -2554,6 +2555,7 @@ STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Nepoznato svojs
 STR_NEWGRF_ERROR_INVALID_ID                                     :Pokušano korišćenje nepostojećeg ID-ja.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} sadrži neispravan sprajt. Svi neispravni sprajtovi će biti prikazani kao crveni znakovi pitanja (?).
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Sadrži višestruke Action 8 unose.
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Čitanje posle završetka pseudo-sprajta.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Oprez!
@@ -3405,7 +3407,7 @@ STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Naziv VI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Ponovno učitavanje
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Zaustavlja Veštačku Inteligenciju, ponovo učitava skriptu, i restartuje je
 
-STR_ERROR_AI_NO_AI_FOUND                                        :Nije pronađena nijadna prikladna VI.{}Učitana VI je kao zamena i neće raditi ništa.{}Možete skinuti nekoliko VI preko sistema za preuzimanje dodataka.
+STR_ERROR_AI_NO_AI_FOUND                                        :Nije pronađena nijadna prikladna VI.{}Učitana zamena neće raditi ništa.{}Možete skinuti nekoliko VI preko sistema za preuzimanje dodataka.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Jedna od VI je krahirala. Molimo vas da prijavite grešku autoru VI-e sa slikom prozora VI Korekcije .
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Prozor VI Korekcije je dostupna samo na serveru
 

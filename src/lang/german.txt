@@ -1066,6 +1066,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Hoch
 STR_CITY_APPROVAL_TOLERANT                                      :Mäßig
 STR_CITY_APPROVAL_HOSTILE                                       :Gering
 
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Keine KI gefunden...{}Verschiedene KI sind via 'Erweiterungen herunterladen' verfügbar.
 STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Hierdurch wurde der Schwierigkeitsgrad auf "benutzerdefiniert" gestellt.
 
 # Advanced settings window
@@ -2370,6 +2371,7 @@ STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :NewGRF Fehler: 
 STR_NEWGRF_ERROR_INVALID_ID                                     :Es wurde versucht, eine ungültige ID zu verwenden.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} enthält kaputte Sprites. Diese werden als rote Fragezeichen (?) dargestellt.
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Enthält mehrere "Action 8" Einträge.
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lesezugriff über das Ende des Pseudosprites hinaus
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Achtung!

@@ -1107,6 +1107,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Dopustno
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerantno
 STR_CITY_APPROVAL_HOSTILE                                       :Sovražno
 
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Ni na voljo nobene uporabne UI.{}UI so na voljo preko 'Prenosa vsebin'.
 STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Zamenjava stopnje na način "po meri"
 
 # Advanced settings window
@@ -2411,6 +2412,7 @@ STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Neznan ukaz 0 l
 STR_NEWGRF_ERROR_INVALID_ID                                     :Poskus uporabe neveljavnega ID-ja.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} vsebuje eno poškodovano sličico. Vse poškodovane sličice se bodo prikazale kot rdeči vprašaji (?).
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Vsebuje večkratne Action 8 vnose.
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Preberi po koncu navidezne sličice.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Pozor!
@@ -3252,7 +3254,7 @@ STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Ime UI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Ponovno naloži UI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Uniči UI, ponovno naloži skripto in ponovno zaženi UI
 
-STR_ERROR_AI_NO_AI_FOUND                                        :Ni na voljo nobene uporabne UI.{}Ta UI je navidezen in ne bo storil ničesar. UI so navoljo preko 'Prenosa vsebin'.
+STR_ERROR_AI_NO_AI_FOUND                                        :Ni na voljo nobene uporabne UI.{}Ta UI je navidezen in ne bo storil ničesar. UI so na voljo preko 'Prenosa vsebin'.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Ena izmed zagnanih UI se je sesula. Prosim, javi to avtorju UI s priloženo sliko zaslona v orodju za čiščenje UI.
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}okno UI čiščenja je na voljo samo za strežnik
 
@@ -3374,7 +3376,7 @@ STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Tukaj ni
 STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Tukaj ni možno nižanje terena ...
 STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Nemogoča izravnava zemlje tukaj...
 STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}Izkop bi lahko poškodoval predor...
-STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}Že na morski gladini
+STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}... že na morski gladini
 STR_ERROR_TOO_HIGH                                              :{WHITE}Previsoko
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... je že zravnana
 

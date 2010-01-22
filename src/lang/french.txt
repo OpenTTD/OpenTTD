@@ -1066,6 +1066,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Laxiste
 STR_CITY_APPROVAL_TOLERANT                                      :Tolérant
 STR_CITY_APPROVAL_HOSTILE                                       :Hostile
 
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Aucune IA utilisables...{}Vous pouvez télécharger diverses IA via le système de 'Contenu en ligne'
 STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Cette action a modifié le niveau de difficulté en personnalisé
 
 # Advanced settings window
@@ -2370,6 +2371,7 @@ STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Propriété d'A
 STR_NEWGRF_ERROR_INVALID_ID                                     :Tentative d'utilisation d'un ID invalide.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} contient un sprite corrompu. Tous les sprites corrompus seront remplacés par un point d'interrogation rouge (?).
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Contient plusieurs Action 8.
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lecture après la fin d'un pseudo-sprite.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Attention!

@@ -565,8 +565,8 @@ STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total:
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Quantitat de vehicles que han donat beneficis durant el darrer any; Inclou els automòbils, trens, vaixells i avions
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Quantitat de parts d'una es estació revisades. Cada part d'una estació (ex. estació de tren, parada d'autobús, aeroport) es compta, encara que estigui connectada com una sola estació.
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}El benefici del vehicle amb els menors ingressos (només s'han considerat els vehicles més antics de 2 anys)
-STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Quantitat de diners fets durant el mes amb el mínim benefici dels darrers 12 trimestres
-STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Quantitat de diners fets durant el mes amb el màxim benefici dels darrers 12 trimestres
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Quantitat de diners fets durant el quatrimestre amb el mínim benefici dels darrers 12 quatrimestres
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Quantitat de diners fets durant el quatrimestre amb el màxim benefici dels darrers 12 quatrimestres
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Unitats de càrrega entregades en els darrers quatre trimestres.
 STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Tipus de càrrega entregada durant el darrer trimestre.
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Quantitats de diners en efectiu
@@ -1066,6 +1066,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Permissiu
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
 STR_CITY_APPROVAL_HOSTILE                                       :Hostil
 
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}No hi ha IAs adequades disponibles...{}Pots descarregar diverses IAs via el sistema de 'Contingut en línia'
 STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Aquesta acció canviarà el nivell de dificultat a personalitzat
 
 # Advanced settings window
@@ -2370,6 +2371,7 @@ STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Acció desconeg
 STR_NEWGRF_ERROR_INVALID_ID                                     :Intenta utilitzar una ID invàlida.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} conté un sprite corrupte. Tots els sprites corruptes seran mostrats amb un interrogant vermell (?).
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Conté múltiples Accions 8 entrades.
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lectura després de la fi d'un pseudo-sprite.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Alerta!
