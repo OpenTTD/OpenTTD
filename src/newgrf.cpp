@@ -103,6 +103,54 @@ public:
 		throw OTTDByteReaderSignal();
 	}
 
+	uint16 ReadWord()
+	{
+		uint16 val = ReadByte();
+		return val | (ReadByte() << 8);
+	}
+
+	uint16 ReadExtended()
+	{
+		uint16 val = ReadByte();
+		return val == 0xFF ? ReadWord() : val;
+	}
+
+	uint32 ReadDWord()
+	{
+		uint32 val = ReadWord();
+		return val | (ReadWord() << 16);
+	}
+
+	uint32 ReadVarSize(byte size)
+	{
+		switch (size) {
+			case 1: return ReadByte();
+			case 2: return ReadWord();
+			case 4: return ReadDWord();
+			default:
+				NOT_REACHED();
+				return 0;
+		}
+	}
+
+	const char *ReadString()
+	{
+		char *string = reinterpret_cast<char *>(data);
+		size_t string_length = ttd_strnlen(string, Remaining());
+
+		if (string_length == Remaining()) {
+			/* String was not NUL terminated, so make sure it is now. */
+			string[string_length - 1] = '\0';
+			grfmsg(7, "String was not terminated with a zero byte.");
+		} else {
+			/* Increase the string length to include the NUL byte. */
+			string_length++;
+		}
+		Skip(string_length);
+
+		return string;
+	}
+
 	FORCEINLINE size_t Remaining() const
 	{
 		return end - data;
@@ -190,62 +238,6 @@ void CDECL grfmsg(int severity, const char *str, ...)
 	va_end(va);
 
 	DEBUG(grf, severity, "[%s:%d] %s", _cur_grfconfig->filename, _nfo_line, buf);
-}
-
-static inline byte grf_load_byte(ByteReader **buf)
-{
-	return (*buf)->ReadByte();
-}
-
-static uint16 grf_load_word(ByteReader **buf)
-{
-	uint16 val = grf_load_byte(buf);
-	return val | (grf_load_byte(buf) << 8);
-}
-
-static uint16 grf_load_extended(ByteReader **buf)
-{
-	uint16 val;
-	val = grf_load_byte(buf);
-	if (val == 0xFF) val = grf_load_word(buf);
-	return val;
-}
-
-static uint32 grf_load_dword(ByteReader **buf)
-{
-	uint32 val = grf_load_word(buf);
-	return val | (grf_load_word(buf) << 16);
-}
-
-static uint32 grf_load_var(byte size, ByteReader **buf)
-{
-	switch (size) {
-		case 1: return grf_load_byte(buf);
-		case 2: return grf_load_word(buf);
-		case 4: return grf_load_dword(buf);
-		default:
-			NOT_REACHED();
-			return 0;
-	}
-}
-
-static const char *grf_load_string(ByteReader **bufp)
-{
-	ByteReader *buf = *bufp;
-	char *string = reinterpret_cast<char *>(buf->Data());
-	size_t string_length = ttd_strnlen(string, buf->Remaining());
-
-	if (string_length == buf->Remaining()) {
-		/* String was not NUL terminated, so make sure it is now. */
-		string[string_length - 1] = '\0';
-		grfmsg(7, "String was not terminated with a zero byte.");
-	} else {
-		/* Increase the string length to include the NUL byte. */
-		string_length++;
-	}
-	buf->Skip(string_length);
-
-	return string;
 }
 
 static GRFFile *GetFileByGRFID(uint32 grfid)
@@ -482,27 +474,27 @@ enum ChangeInfoResult {
 
 typedef ChangeInfoResult (*VCI_Handler)(uint engine, int numinfo, int prop, ByteReader *buf);
 
-static ChangeInfoResult CommonVehicleChangeInfo(EngineInfo *ei, int prop, ByteReader **buf)
+static ChangeInfoResult CommonVehicleChangeInfo(EngineInfo *ei, int prop, ByteReader *buf)
 {
 	switch (prop) {
 		case 0x00: // Introduction date
-			ei->base_intro = grf_load_word(buf) + DAYS_TILL_ORIGINAL_BASE_YEAR;
+			ei->base_intro = buf->ReadWord() + DAYS_TILL_ORIGINAL_BASE_YEAR;
 			break;
 
 		case 0x02: // Decay speed
-			ei->decay_speed = grf_load_byte(buf);
+			ei->decay_speed = buf->ReadByte();
 			break;
 
 		case 0x03: // Vehicle life
-			ei->lifelength = grf_load_byte(buf);
+			ei->lifelength = buf->ReadByte();
 			break;
 
 		case 0x04: // Model life
-			ei->base_life = grf_load_byte(buf);
+			ei->base_life = buf->ReadByte();
 			break;
 
 		case 0x06: // Climates available
-			ei->climates = grf_load_byte(buf);
+			ei->climates = buf->ReadByte();
 			/* Sometimes a GRF wants hidden vehicles. Setting climates to
 			 * zero may cause the ID to be reallocated. */
 			if (ei->climates == 0) ei->climates = 0x80;
@@ -510,7 +502,7 @@ static ChangeInfoResult CommonVehicleChangeInfo(EngineInfo *ei, int prop, ByteRe
 
 		case 0x07: // Loading speed
 			/* Amount of cargo loaded during a vehicle's "loading tick" */
-			ei->load_amount = grf_load_byte(buf);
+			ei->load_amount = buf->ReadByte();
 			break;
 
 		default:
@@ -531,7 +523,7 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 
 		switch (prop) {
 			case 0x05: { // Track type
-				uint8 tracktype = grf_load_byte(&buf);
+				uint8 tracktype = buf->ReadByte();
 
 				if (tracktype < _cur_grffile->railtype_max) {
 					RailType railtype = GetRailTypeByLabel(_cur_grffile->railtype_list[tracktype]);
@@ -557,18 +549,18 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 			case 0x08: // AI passenger service
 				/* Tells the AI that this engine is designed for
 				 * passenger services and shouldn't be used for freight. */
-				rvi->ai_passenger_only = grf_load_byte(&buf);
+				rvi->ai_passenger_only = buf->ReadByte();
 				break;
 
 			case PROP_TRAIN_SPEED: { // 0x09 Speed (1 unit is 1 km-ish/h)
-				uint16 speed = grf_load_word(&buf);
+				uint16 speed = buf->ReadWord();
 				if (speed == 0xFFFF) speed = 0;
 
 				rvi->max_speed = speed;
 			} break;
 
 			case PROP_TRAIN_POWER: // 0x0B Power
-				rvi->power = grf_load_word(&buf);
+				rvi->power = buf->ReadWord();
 
 				/* Set engine / wagon state based on power */
 				if (rvi->power != 0) {
@@ -581,15 +573,15 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 				break;
 
 			case PROP_TRAIN_RUNNING_COST_FACTOR: // 0x0D Running cost factor
-				rvi->running_cost = grf_load_byte(&buf);
+				rvi->running_cost = buf->ReadByte();
 				break;
 
 			case 0x0E: // Running cost base
-				ConvertTTDBasePrice(grf_load_dword(&buf), "RailVehicleChangeInfo", &rvi->running_cost_class);
+				ConvertTTDBasePrice(buf->ReadDWord(), "RailVehicleChangeInfo", &rvi->running_cost_class);
 				break;
 
 			case 0x12: { // Sprite ID
-				uint8 spriteid = grf_load_byte(&buf);
+				uint8 spriteid = buf->ReadByte();
 
 				/* TTD sprite IDs point to a location in a 16bit array, but we use it
 				 * as an array index, so we need it to be half the original value. */
@@ -599,7 +591,7 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 			} break;
 
 			case 0x13: { // Dual-headed
-				uint8 dual = grf_load_byte(&buf);
+				uint8 dual = buf->ReadByte();
 
 				if (dual != 0) {
 					rvi->railveh_type = RAILVEH_MULTIHEAD;
@@ -610,11 +602,11 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 			} break;
 
 			case PROP_TRAIN_CARGO_CAPACITY: // 0x14 Cargo capacity
-				rvi->capacity = grf_load_byte(&buf);
+				rvi->capacity = buf->ReadByte();
 				break;
 
 			case 0x15: { // Cargo type
-				uint8 ctype = grf_load_byte(&buf);
+				uint8 ctype = buf->ReadByte();
 
 				if (ctype < NUM_CARGO && HasBit(_cargo_mask, ctype)) {
 					ei->cargo_type = ctype;
@@ -628,16 +620,16 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 			} break;
 
 			case PROP_TRAIN_WEIGHT: // 0x16 Weight
-				SB(rvi->weight, 0, 8, grf_load_byte(&buf));
+				SB(rvi->weight, 0, 8, buf->ReadByte());
 				break;
 
 			case PROP_TRAIN_COST_FACTOR: // 0x17 Cost factor
-				rvi->cost_factor = grf_load_byte(&buf);
+				rvi->cost_factor = buf->ReadByte();
 				break;
 
 			case 0x18: // AI rank
 				grfmsg(2, "RailVehicleChangeInfo: Property 0x18 'AI rank' not used by NoAI, ignored.");
-				grf_load_byte(&buf);
+				buf->ReadByte();
 				break;
 
 			case 0x19: { // Engine traction type
@@ -648,7 +640,7 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 				 * 0x32 .. 0x37: Monorail
 				 * 0x38 .. 0x41: Maglev
 				 */
-				uint8 traction = grf_load_byte(&buf);
+				uint8 traction = buf->ReadByte();
 				EngineClass engclass;
 
 				if (traction <= 0x07) {
@@ -676,51 +668,51 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 			} break;
 
 			case 0x1A: // Alter purchase list sort order
-				AlterVehicleListOrder(e->index, grf_load_extended(&buf));
+				AlterVehicleListOrder(e->index, buf->ReadExtended());
 				break;
 
 			case 0x1B: // Powered wagons power bonus
-				rvi->pow_wag_power = grf_load_word(&buf);
+				rvi->pow_wag_power = buf->ReadWord();
 				break;
 
 			case 0x1C: // Refit cost
-				ei->refit_cost = grf_load_byte(&buf);
+				ei->refit_cost = buf->ReadByte();
 				break;
 
 			case 0x1D: // Refit cargo
-				ei->refit_mask = grf_load_dword(&buf);
+				ei->refit_mask = buf->ReadDWord();
 				_gted[e->index].refitmask_valid = true;
 				break;
 
 			case 0x1E: // Callback
-				ei->callback_mask = grf_load_byte(&buf);
+				ei->callback_mask = buf->ReadByte();
 				break;
 
 			case PROP_TRAIN_TRACTIVE_EFFORT: // 0x1F Tractive effort coefficient
-				rvi->tractive_effort = grf_load_byte(&buf);
+				rvi->tractive_effort = buf->ReadByte();
 				break;
 
 			case 0x20: // Air drag
 				/** @todo Air drag for trains. */
-				grf_load_byte(&buf);
+				buf->ReadByte();
 				ret = CIR_UNHANDLED;
 				break;
 
 			case 0x21: // Shorter vehicle
-				rvi->shorten_factor = grf_load_byte(&buf);
+				rvi->shorten_factor = buf->ReadByte();
 				break;
 
 			case 0x22: // Visual effect
 				/** @see note in engine.h about rvi->visual_effect */
-				rvi->visual_effect = grf_load_byte(&buf);
+				rvi->visual_effect = buf->ReadByte();
 				break;
 
 			case 0x23: // Powered wagons weight bonus
-				rvi->pow_wag_weight = grf_load_byte(&buf);
+				rvi->pow_wag_weight = buf->ReadByte();
 				break;
 
 			case 0x24: { // High byte of vehicle weight
-				byte weight = grf_load_byte(&buf);
+				byte weight = buf->ReadByte();
 
 				if (weight > 4) {
 					grfmsg(2, "RailVehicleChangeInfo: Nonsensical weight of %d tons, ignoring", weight << 8);
@@ -730,34 +722,34 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 			} break;
 
 			case PROP_TRAIN_USER_DATA: // 0x25 User-defined bit mask to set when checking veh. var. 42
-				rvi->user_def_data = grf_load_byte(&buf);
+				rvi->user_def_data = buf->ReadByte();
 				break;
 
 			case 0x26: // Retire vehicle early
-				ei->retire_early = grf_load_byte(&buf);
+				ei->retire_early = buf->ReadByte();
 				break;
 
 			case 0x27: // Miscellaneous flags
-				ei->misc_flags = grf_load_byte(&buf);
+				ei->misc_flags = buf->ReadByte();
 				_loaded_newgrf_features.has_2CC |= HasBit(ei->misc_flags, EF_USES_2CC);
 				break;
 
 			case 0x28: // Cargo classes allowed
-				_gted[e->index].cargo_allowed = grf_load_word(&buf);
+				_gted[e->index].cargo_allowed = buf->ReadWord();
 				_gted[e->index].refitmask_valid = true;
 				break;
 
 			case 0x29: // Cargo classes disallowed
-				_gted[e->index].cargo_disallowed = grf_load_word(&buf);
+				_gted[e->index].cargo_disallowed = buf->ReadWord();
 				_gted[e->index].refitmask_valid = true;
 				break;
 
 			case 0x2A: // Long format introduction date (days since year 0)
-				ei->base_intro = grf_load_dword(&buf);
+				ei->base_intro = buf->ReadDWord();
 				break;
 
 			default:
-				ret = CommonVehicleChangeInfo(ei, prop, &buf);
+				ret = CommonVehicleChangeInfo(ei, prop, buf);
 				break;
 		}
 	}
@@ -776,19 +768,19 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint engine, int numinfo, int prop
 
 		switch (prop) {
 			case 0x08: // Speed (1 unit is 0.5 kmh)
-				rvi->max_speed = grf_load_byte(&buf);
+				rvi->max_speed = buf->ReadByte();
 				break;
 
 			case PROP_ROADVEH_RUNNING_COST_FACTOR: // 0x09 Running cost factor
-				rvi->running_cost = grf_load_byte(&buf);
+				rvi->running_cost = buf->ReadByte();
 				break;
 
 			case 0x0A: // Running cost base
-				ConvertTTDBasePrice(grf_load_dword(&buf), "RoadVehicleChangeInfo", &rvi->running_cost_class);
+				ConvertTTDBasePrice(buf->ReadDWord(), "RoadVehicleChangeInfo", &rvi->running_cost_class);
 				break;
 
 			case 0x0E: { // Sprite ID
-				uint8 spriteid = grf_load_byte(&buf);
+				uint8 spriteid = buf->ReadByte();
 
 				/* cars have different custom id in the GRF file */
 				if (spriteid == 0xFF) spriteid = 0xFD;
@@ -799,11 +791,11 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint engine, int numinfo, int prop
 			} break;
 
 			case PROP_ROADVEH_CARGO_CAPACITY: // 0x0F Cargo capacity
-				rvi->capacity = grf_load_byte(&buf);
+				rvi->capacity = buf->ReadByte();
 				break;
 
 			case 0x10: { // Cargo type
-				uint8 cargo = grf_load_byte(&buf);
+				uint8 cargo = buf->ReadByte();
 
 				if (cargo < NUM_CARGO && HasBit(_cargo_mask, cargo)) {
 					ei->cargo_type = cargo;
@@ -816,75 +808,75 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint engine, int numinfo, int prop
 			} break;
 
 			case PROP_ROADVEH_COST_FACTOR: // 0x11 Cost factor
-				rvi->cost_factor = grf_load_byte(&buf);
+				rvi->cost_factor = buf->ReadByte();
 				break;
 
 			case 0x12: // SFX
-				rvi->sfx = grf_load_byte(&buf);
+				rvi->sfx = buf->ReadByte();
 				break;
 
 			case 0x13: // Power in 10hp
-				rvi->power = grf_load_byte(&buf);
+				rvi->power = buf->ReadByte();
 				break;
 
 			case 0x14: // Weight in 1/4 tons
-				rvi->weight = grf_load_byte(&buf);
+				rvi->weight = buf->ReadByte();
 				break;
 
 			case 0x15: // Speed in mph/0.8
-				_gted[e->index].rv_max_speed = grf_load_byte(&buf);
+				_gted[e->index].rv_max_speed = buf->ReadByte();
 				break;
 
 			case 0x16: // Cargos available for refitting
-				ei->refit_mask = grf_load_dword(&buf);
+				ei->refit_mask = buf->ReadDWord();
 				_gted[e->index].refitmask_valid = true;
 				break;
 
 			case 0x17: // Callback mask
-				ei->callback_mask = grf_load_byte(&buf);
+				ei->callback_mask = buf->ReadByte();
 				break;
 
 			case 0x18: // Tractive effort
-				rvi->tractive_effort = grf_load_byte(&buf);
+				rvi->tractive_effort = buf->ReadByte();
 				break;
 
 			case 0x19: // Air drag
-				rvi->air_drag = grf_load_byte(&buf);
+				rvi->air_drag = buf->ReadByte();
 				break;
 
 			case 0x1A: // Refit cost
-				ei->refit_cost = grf_load_byte(&buf);
+				ei->refit_cost = buf->ReadByte();
 				break;
 
 			case 0x1B: // Retire vehicle early
-				ei->retire_early = grf_load_byte(&buf);
+				ei->retire_early = buf->ReadByte();
 				break;
 
 			case 0x1C: // Miscellaneous flags
-				ei->misc_flags = grf_load_byte(&buf);
+				ei->misc_flags = buf->ReadByte();
 				_loaded_newgrf_features.has_2CC |= HasBit(ei->misc_flags, EF_USES_2CC);
 				break;
 
 			case 0x1D: // Cargo classes allowed
-				_gted[e->index].cargo_allowed = grf_load_word(&buf);
+				_gted[e->index].cargo_allowed = buf->ReadWord();
 				_gted[e->index].refitmask_valid = true;
 				break;
 
 			case 0x1E: // Cargo classes disallowed
-				_gted[e->index].cargo_disallowed = grf_load_word(&buf);
+				_gted[e->index].cargo_disallowed = buf->ReadWord();
 				_gted[e->index].refitmask_valid = true;
 				break;
 
 			case 0x1F: // Long format introduction date (days since year 0)
-				ei->base_intro = grf_load_dword(&buf);
+				ei->base_intro = buf->ReadDWord();
 				break;
 
 			case 0x20: // Alter purchase list sort order
-				AlterVehicleListOrder(e->index, grf_load_extended(&buf));
+				AlterVehicleListOrder(e->index, buf->ReadExtended());
 				break;
 
 			default:
-				ret = CommonVehicleChangeInfo(ei, prop, &buf);
+				ret = CommonVehicleChangeInfo(ei, prop, buf);
 				break;
 		}
 	}
@@ -903,7 +895,7 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint engine, int numinfo, int prop
 
 		switch (prop) {
 			case 0x08: { // Sprite ID
-				uint8 spriteid = grf_load_byte(&buf);
+				uint8 spriteid = buf->ReadByte();
 
 				/* ships have different custom id in the GRF file */
 				if (spriteid == 0xFF) spriteid = 0xFD;
@@ -914,19 +906,19 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint engine, int numinfo, int prop
 			} break;
 
 			case 0x09: // Refittable
-				svi->old_refittable = (grf_load_byte(&buf) != 0);
+				svi->old_refittable = (buf->ReadByte() != 0);
 				break;
 
 			case PROP_SHIP_COST_FACTOR: // 0x0A Cost factor
-				svi->cost_factor = grf_load_byte(&buf);
+				svi->cost_factor = buf->ReadByte();
 				break;
 
 			case PROP_SHIP_SPEED: // 0x0B Speed (1 unit is 0.5 km-ish/h)
-				svi->max_speed = grf_load_byte(&buf);
+				svi->max_speed = buf->ReadByte();
 				break;
 
 			case 0x0C: { // Cargo type
-				uint8 cargo = grf_load_byte(&buf);
+				uint8 cargo = buf->ReadByte();
 
 				if (cargo < NUM_CARGO && HasBit(_cargo_mask, cargo)) {
 					ei->cargo_type = cargo;
@@ -939,66 +931,66 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint engine, int numinfo, int prop
 			} break;
 
 			case PROP_SHIP_CARGO_CAPACITY: // 0x0D Cargo capacity
-				svi->capacity = grf_load_word(&buf);
+				svi->capacity = buf->ReadWord();
 				break;
 
 			case PROP_SHIP_RUNNING_COST_FACTOR: // 0x0F Running cost factor
-				svi->running_cost = grf_load_byte(&buf);
+				svi->running_cost = buf->ReadByte();
 				break;
 
 			case 0x10: // SFX
-				svi->sfx = grf_load_byte(&buf);
+				svi->sfx = buf->ReadByte();
 				break;
 
 			case 0x11: // Cargos available for refitting
-				ei->refit_mask = grf_load_dword(&buf);
+				ei->refit_mask = buf->ReadDWord();
 				_gted[e->index].refitmask_valid = true;
 				break;
 
 			case 0x12: // Callback mask
-				ei->callback_mask = grf_load_byte(&buf);
+				ei->callback_mask = buf->ReadByte();
 				break;
 
 			case 0x13: // Refit cost
-				ei->refit_cost = grf_load_byte(&buf);
+				ei->refit_cost = buf->ReadByte();
 				break;
 
 			case 0x14: // Ocean speed fraction
 			case 0x15: // Canal speed fraction
 				/** @todo Speed fractions for ships on oceans and canals */
-				grf_load_byte(&buf);
+				buf->ReadByte();
 				ret = CIR_UNHANDLED;
 				break;
 
 			case 0x16: // Retire vehicle early
-				ei->retire_early = grf_load_byte(&buf);
+				ei->retire_early = buf->ReadByte();
 				break;
 
 			case 0x17: // Miscellaneous flags
-				ei->misc_flags = grf_load_byte(&buf);
+				ei->misc_flags = buf->ReadByte();
 				_loaded_newgrf_features.has_2CC |= HasBit(ei->misc_flags, EF_USES_2CC);
 				break;
 
 			case 0x18: // Cargo classes allowed
-				_gted[e->index].cargo_allowed = grf_load_word(&buf);
+				_gted[e->index].cargo_allowed = buf->ReadWord();
 				_gted[e->index].refitmask_valid = true;
 				break;
 
 			case 0x19: // Cargo classes disallowed
-				_gted[e->index].cargo_disallowed = grf_load_word(&buf);
+				_gted[e->index].cargo_disallowed = buf->ReadWord();
 				_gted[e->index].refitmask_valid = true;
 				break;
 
 			case 0x1A: // Long format introduction date (days since year 0)
-				ei->base_intro = grf_load_dword(&buf);
+				ei->base_intro = buf->ReadDWord();
 				break;
 
 			case 0x1B: // Alter purchase list sort order
-				AlterVehicleListOrder(e->index, grf_load_extended(&buf));
+				AlterVehicleListOrder(e->index, buf->ReadExtended());
 				break;
 
 			default:
-				ret = CommonVehicleChangeInfo(ei, prop, &buf);
+				ret = CommonVehicleChangeInfo(ei, prop, buf);
 				break;
 		}
 	}
@@ -1017,7 +1009,7 @@ static ChangeInfoResult AircraftVehicleChangeInfo(uint engine, int numinfo, int 
 
 		switch (prop) {
 			case 0x08: { // Sprite ID
-				uint8 spriteid = grf_load_byte(&buf);
+				uint8 spriteid = buf->ReadByte();
 
 				/* aircraft have different custom id in the GRF file */
 				if (spriteid == 0xFF) spriteid = 0xFD;
@@ -1028,7 +1020,7 @@ static ChangeInfoResult AircraftVehicleChangeInfo(uint engine, int numinfo, int 
 			} break;
 
 			case 0x09: // Helicopter
-				if (grf_load_byte(&buf) == 0) {
+				if (buf->ReadByte() == 0) {
 					avi->subtype = AIR_HELI;
 				} else {
 					SB(avi->subtype, 0, 1, 1); // AIR_CTOL
@@ -1036,79 +1028,79 @@ static ChangeInfoResult AircraftVehicleChangeInfo(uint engine, int numinfo, int 
 				break;
 
 			case 0x0A: // Large
-				SB(avi->subtype, 1, 1, (grf_load_byte(&buf) != 0 ? 1 : 0)); // AIR_FAST
+				SB(avi->subtype, 1, 1, (buf->ReadByte() != 0 ? 1 : 0)); // AIR_FAST
 				break;
 
 			case PROP_AIRCRAFT_COST_FACTOR: // 0x0B Cost factor
-				avi->cost_factor = grf_load_byte(&buf);
+				avi->cost_factor = buf->ReadByte();
 				break;
 
 			case PROP_AIRCRAFT_SPEED: // 0x0C Speed (1 unit is 8 mph, we translate to 1 unit is 1 km/h)
-				avi->max_speed = (grf_load_byte(&buf) * 129) / 10;
+				avi->max_speed = (buf->ReadByte() * 129) / 10;
 				break;
 
 			case 0x0D: // Acceleration
-				avi->acceleration = (grf_load_byte(&buf) * 129) / 10;
+				avi->acceleration = (buf->ReadByte() * 129) / 10;
 				break;
 
 			case PROP_AIRCRAFT_RUNNING_COST_FACTOR: // 0x0E Running cost factor
-				avi->running_cost = grf_load_byte(&buf);
+				avi->running_cost = buf->ReadByte();
 				break;
 
 			case 0x0F: // Passenger capacity
-				avi->passenger_capacity = grf_load_word(&buf);
+				avi->passenger_capacity = buf->ReadWord();
 				break;
 
 			case 0x11: // Mail capacity
-				avi->mail_capacity = grf_load_byte(&buf);
+				avi->mail_capacity = buf->ReadByte();
 				break;
 
 			case 0x12: // SFX
-				avi->sfx = grf_load_byte(&buf);
+				avi->sfx = buf->ReadByte();
 				break;
 
 			case 0x13: // Cargos available for refitting
-				ei->refit_mask = grf_load_dword(&buf);
+				ei->refit_mask = buf->ReadDWord();
 				_gted[e->index].refitmask_valid = true;
 				break;
 
 			case 0x14: // Callback mask
-				ei->callback_mask = grf_load_byte(&buf);
+				ei->callback_mask = buf->ReadByte();
 				break;
 
 			case 0x15: // Refit cost
-				ei->refit_cost = grf_load_byte(&buf);
+				ei->refit_cost = buf->ReadByte();
 				break;
 
 			case 0x16: // Retire vehicle early
-				ei->retire_early = grf_load_byte(&buf);
+				ei->retire_early = buf->ReadByte();
 				break;
 
 			case 0x17: // Miscellaneous flags
-				ei->misc_flags = grf_load_byte(&buf);
+				ei->misc_flags = buf->ReadByte();
 				_loaded_newgrf_features.has_2CC |= HasBit(ei->misc_flags, EF_USES_2CC);
 				break;
 
 			case 0x18: // Cargo classes allowed
-				_gted[e->index].cargo_allowed = grf_load_word(&buf);
+				_gted[e->index].cargo_allowed = buf->ReadWord();
 				_gted[e->index].refitmask_valid = true;
 				break;
 
 			case 0x19: // Cargo classes disallowed
-				_gted[e->index].cargo_disallowed = grf_load_word(&buf);
+				_gted[e->index].cargo_disallowed = buf->ReadWord();
 				_gted[e->index].refitmask_valid = true;
 				break;
 
 			case 0x1A: // Long format introduction date (days since year 0)
-				ei->base_intro = grf_load_dword(&buf);
+				ei->base_intro = buf->ReadDWord();
 				break;
 
 			case 0x1B: // Alter purchase list sort order
-				AlterVehicleListOrder(e->index, grf_load_extended(&buf));
+				AlterVehicleListOrder(e->index, buf->ReadExtended());
 				break;
 
 			default:
-				ret = CommonVehicleChangeInfo(ei, prop, &buf);
+				ret = CommonVehicleChangeInfo(ei, prop, buf);
 				break;
 		}
 	}
@@ -1145,12 +1137,12 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 				if (*spec == NULL) *spec = CallocT<StationSpec>(1);
 
 				/* Swap classid because we read it in BE meaning WAYP or DFLT */
-				uint32 classid = grf_load_dword(&buf);
+				uint32 classid = buf->ReadDWord();
 				(*spec)->sclass = AllocateStationClass(BSWAP32(classid));
 			} break;
 
 			case 0x09: // Define sprite layout
-				statspec->tiles = grf_load_extended(&buf);
+				statspec->tiles = buf->ReadExtended();
 				statspec->renderdata = CallocT<DrawTileSprites>(statspec->tiles);
 				statspec->copied_renderdata = false;
 
@@ -1159,8 +1151,8 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 					uint seq_count = 0;
 
 					dts->seq = NULL;
-					dts->ground.sprite = grf_load_word(&buf);
-					dts->ground.pal = grf_load_word(&buf);
+					dts->ground.sprite = buf->ReadWord();
+					dts->ground.pal = buf->ReadWord();
 					if (dts->ground.sprite == 0) continue;
 					if (HasBit(dts->ground.pal, 15)) {
 						/* Use sprite from Action 1 */
@@ -1175,15 +1167,15 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 						dts->seq = ReallocT(const_cast<DrawTileSeqStruct *>(dts->seq), ++seq_count);
 						DrawTileSeqStruct *dtss = const_cast<DrawTileSeqStruct *>(&dts->seq[seq_count - 1]);
 
-						dtss->delta_x = grf_load_byte(&buf);
+						dtss->delta_x = buf->ReadByte();
 						if ((byte) dtss->delta_x == 0x80) break;
-						dtss->delta_y = grf_load_byte(&buf);
-						dtss->delta_z = grf_load_byte(&buf);
-						dtss->size_x = grf_load_byte(&buf);
-						dtss->size_y = grf_load_byte(&buf);
-						dtss->size_z = grf_load_byte(&buf);
-						dtss->image.sprite = grf_load_word(&buf);
-						dtss->image.pal = grf_load_word(&buf);
+						dtss->delta_y = buf->ReadByte();
+						dtss->delta_z = buf->ReadByte();
+						dtss->size_x = buf->ReadByte();
+						dtss->size_y = buf->ReadByte();
+						dtss->size_z = buf->ReadByte();
+						dtss->image.sprite = buf->ReadWord();
+						dtss->image.pal = buf->ReadWord();
 
 						if (HasBit(dtss->image.pal, 15)) {
 							ClrBit(dtss->image.pal, 15);
@@ -1198,7 +1190,7 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 				break;
 
 			case 0x0A: { // Copy sprite layout
-				byte srcid = grf_load_byte(&buf);
+				byte srcid = buf->ReadByte();
 				const StationSpec *srcstatspec = _cur_grffile->stations[srcid];
 
 				statspec->tiles = srcstatspec->tiles;
@@ -1207,23 +1199,23 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 			} break;
 
 			case 0x0B: // Callback mask
-				statspec->callback_mask = grf_load_byte(&buf);
+				statspec->callback_mask = buf->ReadByte();
 				break;
 
 			case 0x0C: // Disallowed number of platforms
-				statspec->disallowed_platforms = grf_load_byte(&buf);
+				statspec->disallowed_platforms = buf->ReadByte();
 				break;
 
 			case 0x0D: // Disallowed platform lengths
-				statspec->disallowed_lengths = grf_load_byte(&buf);
+				statspec->disallowed_lengths = buf->ReadByte();
 				break;
 
 			case 0x0E: // Define custom layout
 				statspec->copied_layouts = false;
 
 				while (buf->HasData()) {
-					byte length = grf_load_byte(&buf);
-					byte number = grf_load_byte(&buf);
+					byte length = buf->ReadByte();
+					byte number = buf->ReadByte();
 					StationLayout layout;
 					uint l, p;
 
@@ -1255,7 +1247,7 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 					try {
 						for (l = 0; l < length; l++) {
 							for (p = 0; p < number; p++) {
-								layout[l * number + p] = grf_load_byte(&buf);
+								layout[l * number + p] = buf->ReadByte();
 							}
 						}
 					} catch (...) {
@@ -1271,7 +1263,7 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 				break;
 
 			case 0x0F: { // Copy custom layout
-				byte srcid = grf_load_byte(&buf);
+				byte srcid = buf->ReadByte();
 				const StationSpec *srcstatspec = _cur_grffile->stations[srcid];
 
 				statspec->lengths   = srcstatspec->lengths;
@@ -1281,40 +1273,40 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 			} break;
 
 			case 0x10: // Little/lots cargo threshold
-				statspec->cargo_threshold = grf_load_word(&buf);
+				statspec->cargo_threshold = buf->ReadWord();
 				break;
 
 			case 0x11: // Pylon placement
-				statspec->pylons = grf_load_byte(&buf);
+				statspec->pylons = buf->ReadByte();
 				break;
 
 			case 0x12: // Cargo types for random triggers
-				statspec->cargo_triggers = grf_load_dword(&buf);
+				statspec->cargo_triggers = buf->ReadDWord();
 				break;
 
 			case 0x13: // General flags
-				statspec->flags = grf_load_byte(&buf);
+				statspec->flags = buf->ReadByte();
 				break;
 
 			case 0x14: // Overhead wire placement
-				statspec->wires = grf_load_byte(&buf);
+				statspec->wires = buf->ReadByte();
 				break;
 
 			case 0x15: // Blocked tiles
-				statspec->blocked = grf_load_byte(&buf);
+				statspec->blocked = buf->ReadByte();
 				break;
 
 			case 0x16: // Animation info
-				statspec->anim_frames = grf_load_byte(&buf);
-				statspec->anim_status = grf_load_byte(&buf);
+				statspec->anim_frames = buf->ReadByte();
+				statspec->anim_status = buf->ReadByte();
 				break;
 
 			case 0x17: // Animation speed
-				statspec->anim_speed = grf_load_byte(&buf);
+				statspec->anim_speed = buf->ReadByte();
 				break;
 
 			case 0x18: // Animation triggers
-				statspec->anim_triggers = grf_load_word(&buf);
+				statspec->anim_triggers = buf->ReadWord();
 				break;
 
 			default:
@@ -1340,11 +1332,11 @@ static ChangeInfoResult CanalChangeInfo(uint id, int numinfo, int prop, ByteRead
 
 		switch (prop) {
 			case 0x08:
-				wf->callback_mask = grf_load_byte(&buf);
+				wf->callback_mask = buf->ReadByte();
 				break;
 
 			case 0x09:
-				wf->flags = grf_load_byte(&buf);
+				wf->flags = buf->ReadByte();
 				break;
 
 			default:
@@ -1371,30 +1363,30 @@ static ChangeInfoResult BridgeChangeInfo(uint brid, int numinfo, int prop, ByteR
 		switch (prop) {
 			case 0x08: { // Year of availability
 				/* We treat '0' as always available */
-				byte year = grf_load_byte(&buf);
+				byte year = buf->ReadByte();
 				bridge->avail_year = (year > 0 ? ORIGINAL_BASE_YEAR + year : 0);
 				break;
 			}
 
 			case 0x09: // Minimum length
-				bridge->min_length = grf_load_byte(&buf);
+				bridge->min_length = buf->ReadByte();
 				break;
 
 			case 0x0A: // Maximum length
-				bridge->max_length = grf_load_byte(&buf);
+				bridge->max_length = buf->ReadByte();
 				break;
 
 			case 0x0B: // Cost factor
-				bridge->price = grf_load_byte(&buf);
+				bridge->price = buf->ReadByte();
 				break;
 
 			case 0x0C: // Maximum speed
-				bridge->speed = grf_load_word(&buf);
+				bridge->speed = buf->ReadWord();
 				break;
 
 			case 0x0D: { // Bridge sprite tables
-				byte tableid = grf_load_byte(&buf);
-				byte numtables = grf_load_byte(&buf);
+				byte tableid = buf->ReadByte();
+				byte numtables = buf->ReadByte();
 
 				if (bridge->sprite_table == NULL) {
 					/* Allocate memory for sprite table pointers and zero out */
@@ -1404,7 +1396,7 @@ static ChangeInfoResult BridgeChangeInfo(uint brid, int numinfo, int prop, ByteR
 				for (; numtables-- != 0; tableid++) {
 					if (tableid >= 7) { // skip invalid data
 						grfmsg(1, "BridgeChangeInfo: Table %d >= 7, skipping", tableid);
-						for (byte sprite = 0; sprite < 32; sprite++) grf_load_dword(&buf);
+						for (byte sprite = 0; sprite < 32; sprite++) buf->ReadDWord();
 						continue;
 					}
 
@@ -1413,8 +1405,8 @@ static ChangeInfoResult BridgeChangeInfo(uint brid, int numinfo, int prop, ByteR
 					}
 
 					for (byte sprite = 0; sprite < 32; sprite++) {
-						SpriteID image = grf_load_word(&buf);
-						PaletteID pal  = grf_load_word(&buf);
+						SpriteID image = buf->ReadWord();
+						PaletteID pal  = buf->ReadWord();
 
 						bridge->sprite_table[tableid][sprite].sprite = image;
 						bridge->sprite_table[tableid][sprite].pal    = pal;
@@ -1425,26 +1417,26 @@ static ChangeInfoResult BridgeChangeInfo(uint brid, int numinfo, int prop, ByteR
 			} break;
 
 			case 0x0E: // Flags; bit 0 - disable far pillars
-				bridge->flags = grf_load_byte(&buf);
+				bridge->flags = buf->ReadByte();
 				break;
 
 			case 0x0F: // Long format year of availability (year since year 0)
-				bridge->avail_year = Clamp(grf_load_dword(&buf), MIN_YEAR, MAX_YEAR);
+				bridge->avail_year = Clamp(buf->ReadDWord(), MIN_YEAR, MAX_YEAR);
 				break;
 
 			case 0x10: { // purchase string
-				StringID newone = GetGRFStringID(_cur_grffile->grfid, grf_load_word(&buf));
+				StringID newone = GetGRFStringID(_cur_grffile->grfid, buf->ReadWord());
 				if (newone != STR_UNDEFINED) bridge->material = newone;
 				} break;
 
 			case 0x11: // description of bridge with rails or roads
 			case 0x12: {
-				StringID newone = GetGRFStringID(_cur_grffile->grfid, grf_load_word(&buf));
+				StringID newone = GetGRFStringID(_cur_grffile->grfid, buf->ReadWord());
 				if (newone != STR_UNDEFINED) bridge->transport_name[prop - 0x11] = newone;
 				} break;
 
 			case 0x13: // 16 bits cost multiplier
-				bridge->price = grf_load_word(&buf);
+				bridge->price = buf->ReadWord();
 				break;
 
 			default:
@@ -1481,7 +1473,7 @@ static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, Byt
 		switch (prop) {
 			case 0x08: { // Substitute building type, and definition of a new house
 				HouseSpec **house = &_cur_grffile->housespec[hid + i];
-				byte subs_id = grf_load_byte(&buf);
+				byte subs_id = buf->ReadByte();
 
 				if (subs_id == 0xFF) {
 					/* Instead of defining a new house, a substitute house id
@@ -1529,30 +1521,30 @@ static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, Byt
 			} break;
 
 			case 0x09: // Building flags
-				housespec->building_flags = (BuildingFlags)grf_load_byte(&buf);
+				housespec->building_flags = (BuildingFlags)buf->ReadByte();
 				break;
 
 			case 0x0A: { // Availability years
-				uint16 years = grf_load_word(&buf);
+				uint16 years = buf->ReadWord();
 				housespec->min_year = GB(years, 0, 8) > 150 ? MAX_YEAR : ORIGINAL_BASE_YEAR + GB(years, 0, 8);
 				housespec->max_year = GB(years, 8, 8) > 150 ? MAX_YEAR : ORIGINAL_BASE_YEAR + GB(years, 8, 8);
 			} break;
 
 			case 0x0B: // Population
-				housespec->population = grf_load_byte(&buf);
+				housespec->population = buf->ReadByte();
 				break;
 
 			case 0x0C: // Mail generation multiplier
-				housespec->mail_generation = grf_load_byte(&buf);
+				housespec->mail_generation = buf->ReadByte();
 				break;
 
 			case 0x0D: // Passenger acceptance
 			case 0x0E: // Mail acceptance
-				housespec->cargo_acceptance[prop - 0x0D] = grf_load_byte(&buf);
+				housespec->cargo_acceptance[prop - 0x0D] = buf->ReadByte();
 				break;
 
 			case 0x0F: { // Goods/candy, food/fizzy drinks acceptance
-				int8 goods = grf_load_byte(&buf);
+				int8 goods = buf->ReadByte();
 
 				/* If value of goods is negative, it means in fact food or, if in toyland, fizzy_drink acceptance.
 				 * Else, we have "standard" 3rd cargo type, goods or candy, for toyland once more */
@@ -1567,28 +1559,28 @@ static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, Byt
 			} break;
 
 			case 0x10: // Local authority rating decrease on removal
-				housespec->remove_rating_decrease = grf_load_word(&buf);
+				housespec->remove_rating_decrease = buf->ReadWord();
 				break;
 
 			case 0x11: // Removal cost multiplier
-				housespec->removal_cost = grf_load_byte(&buf);
+				housespec->removal_cost = buf->ReadByte();
 				break;
 
 			case 0x12: // Building name ID
-				housespec->building_name = grf_load_word(&buf);
+				housespec->building_name = buf->ReadWord();
 				_string_to_grf_mapping[&housespec->building_name] = _cur_grffile->grfid;
 				break;
 
 			case 0x13: // Building availability mask
-				housespec->building_availability = (HouseZones)grf_load_word(&buf);
+				housespec->building_availability = (HouseZones)buf->ReadWord();
 				break;
 
 			case 0x14: // House callback mask
-				housespec->callback_mask |= grf_load_byte(&buf);
+				housespec->callback_mask |= buf->ReadByte();
 				break;
 
 			case 0x15: { // House override byte
-				byte override = grf_load_byte(&buf);
+				byte override = buf->ReadByte();
 
 				/* The house being overridden must be an original house. */
 				if (override >= NEW_HOUSE_OFFSET) {
@@ -1600,39 +1592,39 @@ static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, Byt
 			} break;
 
 			case 0x16: // Periodic refresh multiplier
-				housespec->processing_time = grf_load_byte(&buf);
+				housespec->processing_time = buf->ReadByte();
 				break;
 
 			case 0x17: // Four random colours to use
-				for (uint j = 0; j < 4; j++) housespec->random_colour[j] = grf_load_byte(&buf);
+				for (uint j = 0; j < 4; j++) housespec->random_colour[j] = buf->ReadByte();
 				break;
 
 			case 0x18: // Relative probability of appearing
-				housespec->probability = grf_load_byte(&buf);
+				housespec->probability = buf->ReadByte();
 				break;
 
 			case 0x19: // Extra flags
-				housespec->extra_flags = (HouseExtraFlags)grf_load_byte(&buf);
+				housespec->extra_flags = (HouseExtraFlags)buf->ReadByte();
 				break;
 
 			case 0x1A: // Animation frames
-				housespec->animation_frames = grf_load_byte(&buf);
+				housespec->animation_frames = buf->ReadByte();
 				break;
 
 			case 0x1B: // Animation speed
-				housespec->animation_speed = Clamp(grf_load_byte(&buf), 2, 16);
+				housespec->animation_speed = Clamp(buf->ReadByte(), 2, 16);
 				break;
 
 			case 0x1C: // Class of the building type
-				housespec->class_id = AllocateHouseClassID(grf_load_byte(&buf), _cur_grffile->grfid);
+				housespec->class_id = AllocateHouseClassID(buf->ReadByte(), _cur_grffile->grfid);
 				break;
 
 			case 0x1D: // Callback mask part 2
-				housespec->callback_mask |= (grf_load_byte(&buf) << 8);
+				housespec->callback_mask |= (buf->ReadByte() << 8);
 				break;
 
 			case 0x1E: { // Accepted cargo types
-				uint32 cargotypes = grf_load_dword(&buf);
+				uint32 cargotypes = buf->ReadDWord();
 
 				/* Check if the cargo types should not be changed */
 				if (cargotypes == 0xFFFFFFFF) break;
@@ -1652,21 +1644,21 @@ static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, Byt
 			} break;
 
 			case 0x1F: // Minimum life span
-				housespec->minimum_life = grf_load_byte(&buf);
+				housespec->minimum_life = buf->ReadByte();
 				break;
 
 			case 0x20: { // @todo Cargo acceptance watch list
-				byte count = grf_load_byte(&buf);
-				for (byte j = 0; j < count; j++) grf_load_byte(&buf);
+				byte count = buf->ReadByte();
+				for (byte j = 0; j < count; j++) buf->ReadByte();
 				ret = CIR_UNHANDLED;
 			} break;
 
 			case 0x21: // long introduction year
-				housespec->min_year = grf_load_word(&buf);
+				housespec->min_year = buf->ReadWord();
 				break;
 
 			case 0x22: // long maximum year
-				housespec->max_year = grf_load_word(&buf);
+				housespec->max_year = buf->ReadWord();
 				break;
 
 			default:
@@ -1685,7 +1677,7 @@ static ChangeInfoResult GlobalVarChangeInfo(uint gvid, int numinfo, int prop, By
 	for (int i = 0; i < numinfo; i++) {
 		switch (prop) {
 			case 0x08: { // Cost base factor
-				int factor = grf_load_byte(&buf);
+				int factor = buf->ReadByte();
 				uint price = gvid + i;
 
 				if (price < PR_END) {
@@ -1703,7 +1695,7 @@ static ChangeInfoResult GlobalVarChangeInfo(uint gvid, int numinfo, int prop, By
 
 			case 0x0A: { // Currency display names
 				uint curidx = GetNewgrfCurrencyIdConverted(gvid + i);
-				StringID newone = GetGRFStringID(_cur_grffile->grfid, grf_load_word(&buf));
+				StringID newone = GetGRFStringID(_cur_grffile->grfid, buf->ReadWord());
 
 				if ((newone != STR_UNDEFINED) && (curidx < NUM_CURRENCY)) {
 					_currency_specs[curidx].name = newone;
@@ -1712,7 +1704,7 @@ static ChangeInfoResult GlobalVarChangeInfo(uint gvid, int numinfo, int prop, By
 
 			case 0x0B: { // Currency multipliers
 				uint curidx = GetNewgrfCurrencyIdConverted(gvid + i);
-				uint32 rate = grf_load_dword(&buf);
+				uint32 rate = buf->ReadDWord();
 
 				if (curidx < NUM_CURRENCY) {
 					/* TTDPatch uses a multiple of 1000 for its conversion calculations,
@@ -1726,7 +1718,7 @@ static ChangeInfoResult GlobalVarChangeInfo(uint gvid, int numinfo, int prop, By
 
 			case 0x0C: { // Currency options
 				uint curidx = GetNewgrfCurrencyIdConverted(gvid + i);
-				uint16 options = grf_load_word(&buf);
+				uint16 options = buf->ReadWord();
 
 				if (curidx < NUM_CURRENCY) {
 					_currency_specs[curidx].separator[0] = GB(options, 0, 8);
@@ -1741,7 +1733,7 @@ static ChangeInfoResult GlobalVarChangeInfo(uint gvid, int numinfo, int prop, By
 
 			case 0x0D: { // Currency prefix symbol
 				uint curidx = GetNewgrfCurrencyIdConverted(gvid + i);
-				uint32 tempfix = grf_load_dword(&buf);
+				uint32 tempfix = buf->ReadDWord();
 
 				if (curidx < NUM_CURRENCY) {
 					memcpy(_currency_specs[curidx].prefix, &tempfix, 4);
@@ -1753,7 +1745,7 @@ static ChangeInfoResult GlobalVarChangeInfo(uint gvid, int numinfo, int prop, By
 
 			case 0x0E: { // Currency suffix symbol
 				uint curidx = GetNewgrfCurrencyIdConverted(gvid + i);
-				uint32 tempfix = grf_load_dword(&buf);
+				uint32 tempfix = buf->ReadDWord();
 
 				if (curidx < NUM_CURRENCY) {
 					memcpy(&_currency_specs[curidx].suffix, &tempfix, 4);
@@ -1765,7 +1757,7 @@ static ChangeInfoResult GlobalVarChangeInfo(uint gvid, int numinfo, int prop, By
 
 			case 0x0F: { //  Euro introduction dates
 				uint curidx = GetNewgrfCurrencyIdConverted(gvid + i);
-				Year year_euro = grf_load_word(&buf);
+				Year year_euro = buf->ReadWord();
 
 				if (curidx < NUM_CURRENCY) {
 					_currency_specs[curidx].to_euro = year_euro;
@@ -1784,7 +1776,7 @@ static ChangeInfoResult GlobalVarChangeInfo(uint gvid, int numinfo, int prop, By
 
 					for (uint i = 0; i < SNOW_LINE_MONTHS; i++) {
 						for (uint j = 0; j < SNOW_LINE_DAYS; j++) {
-							table[i][j] = grf_load_byte(&buf);
+							table[i][j] = buf->ReadByte();
 						}
 					}
 					SetSnowLine(table);
@@ -1819,7 +1811,7 @@ static ChangeInfoResult GlobalVarReserveInfo(uint gvid, int numinfo, int prop, B
 	for (int i = 0; i < numinfo; i++) {
 		switch (prop) {
 			case 0x08: // Cost base factor
-				grf_load_byte(&buf);
+				buf->ReadByte();
 				break;
 
 			case 0x09: { // Cargo Translation Table
@@ -1834,7 +1826,7 @@ static ChangeInfoResult GlobalVarReserveInfo(uint gvid, int numinfo, int prop, B
 					_cur_grffile->cargo_list = MallocT<CargoLabel>(numinfo);
 				}
 
-				CargoLabel cl = grf_load_dword(&buf);
+				CargoLabel cl = buf->ReadDWord();
 				_cur_grffile->cargo_list[i] = BSWAP32(cl);
 				break;
 			}
@@ -1842,13 +1834,13 @@ static ChangeInfoResult GlobalVarReserveInfo(uint gvid, int numinfo, int prop, B
 			case 0x0A: // Currency display names
 			case 0x0C: // Currency options
 			case 0x0F: // Euro introduction dates
-				grf_load_word(&buf);
+				buf->ReadWord();
 				break;
 
 			case 0x0B: // Currency multipliers
 			case 0x0D: // Currency prefix symbol
 			case 0x0E: // Currency suffix symbol
-				grf_load_dword(&buf);
+				buf->ReadDWord();
 				break;
 
 			case 0x10: // Snow line height table
@@ -1856,8 +1848,8 @@ static ChangeInfoResult GlobalVarReserveInfo(uint gvid, int numinfo, int prop, B
 				break;
 
 			case 0x11: { // GRF match for engine allocation
-				uint32 s = grf_load_dword(&buf);
-				uint32 t = grf_load_dword(&buf);
+				uint32 s = buf->ReadDWord();
+				uint32 t = buf->ReadDWord();
 				SetNewGRFOverride(s, t);
 				break;
 			}
@@ -1874,7 +1866,7 @@ static ChangeInfoResult GlobalVarReserveInfo(uint gvid, int numinfo, int prop, B
 					_cur_grffile->railtype_list = MallocT<RailTypeLabel>(numinfo);
 				}
 
-				RailTypeLabel rtl = grf_load_dword(&buf);
+				RailTypeLabel rtl = buf->ReadDWord();
 				_cur_grffile->railtype_list[i] = BSWAP32(rtl);
 				break;
 			}
@@ -1903,7 +1895,7 @@ static ChangeInfoResult CargoChangeInfo(uint cid, int numinfo, int prop, ByteRea
 
 		switch (prop) {
 			case 0x08: // Bit number of cargo
-				cs->bitnum = grf_load_byte(&buf);
+				cs->bitnum = buf->ReadByte();
 				if (cs->IsValid()) {
 					cs->grffile = _cur_grffile;
 					SetBit(_cargo_mask, cid + i);
@@ -1913,75 +1905,75 @@ static ChangeInfoResult CargoChangeInfo(uint cid, int numinfo, int prop, ByteRea
 				break;
 
 			case 0x09: // String ID for cargo type name
-				cs->name = grf_load_word(&buf);
+				cs->name = buf->ReadWord();
 				_string_to_grf_mapping[&cs->name] = _cur_grffile->grfid;
 				break;
 
 			case 0x0A: // String for 1 unit of cargo
-				cs->name_single = grf_load_word(&buf);
+				cs->name_single = buf->ReadWord();
 				_string_to_grf_mapping[&cs->name_single] = _cur_grffile->grfid;
 				break;
 
 			case 0x0B:
 				/* String for units of cargo. This is different in OpenTTD to TTDPatch
 				 * (e.g. 10 tonnes of coal) */
-				cs->units_volume = grf_load_word(&buf);
+				cs->units_volume = buf->ReadWord();
 				_string_to_grf_mapping[&cs->units_volume] = _cur_grffile->grfid;
 				break;
 
 			case 0x0C: // String for quantity of cargo (e.g. 10 tonnes of coal)
-				cs->quantifier = grf_load_word(&buf);
+				cs->quantifier = buf->ReadWord();
 				_string_to_grf_mapping[&cs->quantifier] = _cur_grffile->grfid;
 				break;
 
 			case 0x0D: // String for two letter cargo abbreviation
-				cs->abbrev = grf_load_word(&buf);
+				cs->abbrev = buf->ReadWord();
 				_string_to_grf_mapping[&cs->abbrev] = _cur_grffile->grfid;
 				break;
 
 			case 0x0E: // Sprite ID for cargo icon
-				cs->sprite = grf_load_word(&buf);
+				cs->sprite = buf->ReadWord();
 				break;
 
 			case 0x0F: // Weight of one unit of cargo
-				cs->weight = grf_load_byte(&buf);
+				cs->weight = buf->ReadByte();
 				break;
 
 			case 0x10: // Used for payment calculation
-				cs->transit_days[0] = grf_load_byte(&buf);
+				cs->transit_days[0] = buf->ReadByte();
 				break;
 
 			case 0x11: // Used for payment calculation
-				cs->transit_days[1] = grf_load_byte(&buf);
+				cs->transit_days[1] = buf->ReadByte();
 				break;
 
 			case 0x12: // Base cargo price
-				cs->initial_payment = grf_load_dword(&buf);
+				cs->initial_payment = buf->ReadDWord();
 				break;
 
 			case 0x13: // Colour for station rating bars
-				cs->rating_colour = MapDOSColour(grf_load_byte(&buf));
+				cs->rating_colour = MapDOSColour(buf->ReadByte());
 				break;
 
 			case 0x14: // Colour for cargo graph
-				cs->legend_colour = MapDOSColour(grf_load_byte(&buf));
+				cs->legend_colour = MapDOSColour(buf->ReadByte());
 				break;
 
 			case 0x15: // Freight status
-				cs->is_freight = (grf_load_byte(&buf) != 0);
+				cs->is_freight = (buf->ReadByte() != 0);
 				break;
 
 			case 0x16: // Cargo classes
-				cs->classes = grf_load_word(&buf);
+				cs->classes = buf->ReadWord();
 				break;
 
 			case 0x17: // Cargo label
-				cs->label = grf_load_dword(&buf);
+				cs->label = buf->ReadDWord();
 				cs->label = BSWAP32(cs->label);
 				break;
 
 			case 0x18: { // Town growth substitute type
-				uint8 substitute_type = grf_load_byte(&buf);
+				uint8 substitute_type = buf->ReadByte();
 
 				switch (substitute_type) {
 					case 0x00: cs->town_effect = TE_PASSENGERS; break;
@@ -1996,11 +1988,11 @@ static ChangeInfoResult CargoChangeInfo(uint cid, int numinfo, int prop, ByteRea
 			} break;
 
 			case 0x19: // Town growth coefficient
-				cs->multipliertowngrowth = grf_load_word(&buf);
+				cs->multipliertowngrowth = buf->ReadWord();
 				break;
 
 			case 0x1A: // Bitmask of callbacks to use
-				cs->callback_mask = grf_load_byte(&buf);
+				cs->callback_mask = buf->ReadByte();
 				break;
 
 			default:
@@ -2032,15 +2024,15 @@ static ChangeInfoResult SoundEffectChangeInfo(uint sid, int numinfo, int prop, B
 
 		switch (prop) {
 			case 0x08: // Relative volume
-				GetSound(sound)->volume = grf_load_byte(&buf);
+				GetSound(sound)->volume = buf->ReadByte();
 				break;
 
 			case 0x09: // Priority
-				GetSound(sound)->priority = grf_load_byte(&buf);
+				GetSound(sound)->priority = buf->ReadByte();
 				break;
 
 			case 0x0A: { // Override old sound
-				SoundID orig_sound = grf_load_byte(&buf);
+				SoundID orig_sound = buf->ReadByte();
 
 				if (orig_sound >= ORIGINAL_SAMPLE_COUNT) {
 					grfmsg(1, "SoundEffectChangeInfo: Original sound %d not defined (max %d)", orig_sound, ORIGINAL_SAMPLE_COUNT);
@@ -2087,7 +2079,7 @@ static ChangeInfoResult IndustrytilesChangeInfo(uint indtid, int numinfo, int pr
 		switch (prop) {
 			case 0x08: { // Substitute industry tile type
 				IndustryTileSpec **tilespec = &_cur_grffile->indtspec[indtid + i];
-				byte subs_id = grf_load_byte(&buf);
+				byte subs_id = buf->ReadByte();
 
 				if (subs_id >= NEW_INDUSTRYTILEOFFSET) {
 					/* The substitute id must be one of the original industry tile. */
@@ -2118,7 +2110,7 @@ static ChangeInfoResult IndustrytilesChangeInfo(uint indtid, int numinfo, int pr
 			} break;
 
 			case 0x09: { // Industry tile override
-				byte ovrid = grf_load_byte(&buf);
+				byte ovrid = buf->ReadByte();
 
 				/* The industry being overridden must be an original industry. */
 				if (ovrid >= NEW_INDUSTRYTILEOFFSET) {
@@ -2132,33 +2124,33 @@ static ChangeInfoResult IndustrytilesChangeInfo(uint indtid, int numinfo, int pr
 			case 0x0A: // Tile acceptance
 			case 0x0B:
 			case 0x0C: {
-				uint16 acctp = grf_load_word(&buf);
+				uint16 acctp = buf->ReadWord();
 				tsp->accepts_cargo[prop - 0x0A] = GetCargoTranslation(GB(acctp, 0, 8), _cur_grffile);
 				tsp->acceptance[prop - 0x0A] = GB(acctp, 8, 8);
 			} break;
 
 			case 0x0D: // Land shape flags
-				tsp->slopes_refused = (Slope)grf_load_byte(&buf);
+				tsp->slopes_refused = (Slope)buf->ReadByte();
 				break;
 
 			case 0x0E: // Callback mask
-				tsp->callback_mask = grf_load_byte(&buf);
+				tsp->callback_mask = buf->ReadByte();
 				break;
 
 			case 0x0F: // Animation information
-				tsp->animation_info = grf_load_word(&buf);
+				tsp->animation_info = buf->ReadWord();
 				break;
 
 			case 0x10: // Animation speed
-				tsp->animation_speed = grf_load_byte(&buf);
+				tsp->animation_speed = buf->ReadByte();
 				break;
 
 			case 0x11: // Triggers for callback 25
-				tsp->animation_triggers = grf_load_byte(&buf);
+				tsp->animation_triggers = buf->ReadByte();
 				break;
 
 			case 0x12: // Special flags
-				tsp->animation_special_flags = grf_load_byte(&buf);
+				tsp->animation_special_flags = buf->ReadByte();
 				break;
 
 			default:
@@ -2216,7 +2208,7 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 		switch (prop) {
 			case 0x08: { // Substitute industry type
 				IndustrySpec **indspec = &_cur_grffile->industryspec[indid + i];
-				byte subs_id = grf_load_byte(&buf);
+				byte subs_id = buf->ReadByte();
 
 				if (subs_id == 0xFF) {
 					/* Instead of defining a new industry, a substitute industry id
@@ -2248,7 +2240,7 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 			} break;
 
 			case 0x09: { // Industry type override
-				byte ovrid = grf_load_byte(&buf);
+				byte ovrid = buf->ReadByte();
 
 				/* The industry being overridden must be an original industry. */
 				if (ovrid >= NEW_INDUSTRYOFFSET) {
@@ -2260,13 +2252,13 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 			} break;
 
 			case 0x0A: { // Set industry layout(s)
-				indsp->num_table = grf_load_byte(&buf); // Number of layaouts
+				indsp->num_table = buf->ReadByte(); // Number of layaouts
 				/* We read the total size in bytes, but we can't rely on the
 				 * newgrf to provide a sane value. First assume the value is
 				 * sane but later on we make sure we enlarge the array if the
 				 * newgrf contains more data. Each tile uses either 3 or 5
 				 * bytes, so to play it safe we assume 3. */
-				uint32 def_num_tiles = grf_load_dword(&buf) / 3 + 1;
+				uint32 def_num_tiles = buf->ReadDWord() / 3 + 1;
 				IndustryTileTable **tile_table = CallocT<IndustryTileTable*>(indsp->num_table); // Table with tiles to compose an industry
 				IndustryTileTable *itt = CallocT<IndustryTileTable>(def_num_tiles); // Temporary array to read the tile layouts from the GRF
 				uint size;
@@ -2282,12 +2274,12 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 								itt = ReallocT<IndustryTileTable>(itt, def_num_tiles);
 							}
 
-							itt[k].ti.x = grf_load_byte(&buf); // Offsets from northermost tile
+							itt[k].ti.x = buf->ReadByte(); // Offsets from northermost tile
 
 							if (itt[k].ti.x == 0xFE && k == 0) {
 								/* This means we have to borrow the layout from an old industry */
-								IndustryType type = grf_load_byte(&buf);  // industry holding required layout
-								byte laynbr = grf_load_byte(&buf);        // layout number to borrow
+								IndustryType type = buf->ReadByte();  // industry holding required layout
+								byte laynbr = buf->ReadByte();        // layout number to borrow
 
 								copy_from = _origin_industry_specs[type].table[laynbr];
 								for (size = 1;; size++) {
@@ -2296,7 +2288,7 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 								break;
 							}
 
-							itt[k].ti.y = grf_load_byte(&buf); // Or table definition finalisation
+							itt[k].ti.y = buf->ReadByte(); // Or table definition finalisation
 
 							if (itt[k].ti.x == 0 && itt[k].ti.y == 0x80) {
 								/*  Not the same terminator.  The one we are using is rather
@@ -2310,11 +2302,11 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 								break;
 							}
 
-							itt[k].gfx = grf_load_byte(&buf);
+							itt[k].gfx = buf->ReadByte();
 
 							if (itt[k].gfx == 0xFE) {
 								/* Use a new tile from this GRF */
-								int local_tile_id = grf_load_word(&buf);
+								int local_tile_id = buf->ReadWord();
 
 								/* Read the ID from the _industile_mngr. */
 								int tempid = _industile_mngr.GetID(local_tile_id, _cur_grffile->grfid);
@@ -2359,57 +2351,57 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 			} break;
 
 			case 0x0B: // Industry production flags
-				indsp->life_type = (IndustryLifeType)grf_load_byte(&buf);
+				indsp->life_type = (IndustryLifeType)buf->ReadByte();
 				break;
 
 			case 0x0C: // Industry closure message
-				indsp->closure_text = grf_load_word(&buf);
+				indsp->closure_text = buf->ReadWord();
 				_string_to_grf_mapping[&indsp->closure_text] = _cur_grffile->grfid;
 				break;
 
 			case 0x0D: // Production increase message
-				indsp->production_up_text = grf_load_word(&buf);
+				indsp->production_up_text = buf->ReadWord();
 				_string_to_grf_mapping[&indsp->production_up_text] = _cur_grffile->grfid;
 				break;
 
 			case 0x0E: // Production decrease message
-				indsp->production_down_text = grf_load_word(&buf);
+				indsp->production_down_text = buf->ReadWord();
 				_string_to_grf_mapping[&indsp->production_down_text] = _cur_grffile->grfid;
 				break;
 
 			case 0x0F: // Fund cost multiplier
-				indsp->cost_multiplier = grf_load_byte(&buf);
+				indsp->cost_multiplier = buf->ReadByte();
 				break;
 
 			case 0x10: // Production cargo types
 				for (byte j = 0; j < 2; j++) {
-					indsp->produced_cargo[j] = GetCargoTranslation(grf_load_byte(&buf), _cur_grffile);
+					indsp->produced_cargo[j] = GetCargoTranslation(buf->ReadByte(), _cur_grffile);
 				}
 				break;
 
 			case 0x11: // Acceptance cargo types
 				for (byte j = 0; j < 3; j++) {
-					indsp->accepts_cargo[j] = GetCargoTranslation(grf_load_byte(&buf), _cur_grffile);
+					indsp->accepts_cargo[j] = GetCargoTranslation(buf->ReadByte(), _cur_grffile);
 				}
-				grf_load_byte(&buf); // Unnused, eat it up
+				buf->ReadByte(); // Unnused, eat it up
 				break;
 
 			case 0x12: // Production multipliers
 			case 0x13:
-				indsp->production_rate[prop - 0x12] = grf_load_byte(&buf);
+				indsp->production_rate[prop - 0x12] = buf->ReadByte();
 				break;
 
 			case 0x14: // Minimal amount of cargo distributed
-				indsp->minimal_cargo = grf_load_byte(&buf);
+				indsp->minimal_cargo = buf->ReadByte();
 				break;
 
 			case 0x15: { // Random sound effects
-				indsp->number_of_sounds = grf_load_byte(&buf);
+				indsp->number_of_sounds = buf->ReadByte();
 				uint8 *sounds = MallocT<uint8>(indsp->number_of_sounds);
 
 				try {
 					for (uint8 j = 0; j < indsp->number_of_sounds; j++) {
-						sounds[j] = grf_load_byte(&buf);
+						sounds[j] = buf->ReadByte();
 					}
 				} catch (...) {
 					free(sounds);
@@ -2421,59 +2413,59 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 			} break;
 
 			case 0x16: // Conflicting industry types
-				for (byte j = 0; j < 3; j++) indsp->conflicting[j] = grf_load_byte(&buf);
+				for (byte j = 0; j < 3; j++) indsp->conflicting[j] = buf->ReadByte();
 				break;
 
 			case 0x17: // Probability in random game
-				indsp->appear_creation[_settings_game.game_creation.landscape] = grf_load_byte(&buf);
+				indsp->appear_creation[_settings_game.game_creation.landscape] = buf->ReadByte();
 				break;
 
 			case 0x18: // Probability during gameplay
-				indsp->appear_ingame[_settings_game.game_creation.landscape] = grf_load_byte(&buf);
+				indsp->appear_ingame[_settings_game.game_creation.landscape] = buf->ReadByte();
 				break;
 
 			case 0x19: // Map colour
-				indsp->map_colour = MapDOSColour(grf_load_byte(&buf));
+				indsp->map_colour = MapDOSColour(buf->ReadByte());
 				break;
 
 			case 0x1A: // Special industry flags to define special behavior
-				indsp->behaviour = (IndustryBehaviour)grf_load_dword(&buf);
+				indsp->behaviour = (IndustryBehaviour)buf->ReadDWord();
 				break;
 
 			case 0x1B: // New industry text ID
-				indsp->new_industry_text = grf_load_word(&buf);
+				indsp->new_industry_text = buf->ReadWord();
 				_string_to_grf_mapping[&indsp->new_industry_text] = _cur_grffile->grfid;
 				break;
 
 			case 0x1C: // Input cargo multipliers for the three input cargo types
 			case 0x1D:
 			case 0x1E: {
-					uint32 multiples = grf_load_dword(&buf);
+					uint32 multiples = buf->ReadDWord();
 					indsp->input_cargo_multiplier[prop - 0x1C][0] = GB(multiples, 0, 16);
 					indsp->input_cargo_multiplier[prop - 0x1C][1] = GB(multiples, 16, 16);
 				} break;
 
 			case 0x1F: // Industry name
-				indsp->name = grf_load_word(&buf);
+				indsp->name = buf->ReadWord();
 				_string_to_grf_mapping[&indsp->name] = _cur_grffile->grfid;
 				break;
 
 			case 0x20: // Prospecting success chance
-				indsp->prospecting_chance = grf_load_dword(&buf);
+				indsp->prospecting_chance = buf->ReadDWord();
 				break;
 
 			case 0x21:   // Callback mask
 			case 0x22: { // Callback additional mask
-				byte aflag = grf_load_byte(&buf);
+				byte aflag = buf->ReadByte();
 				SB(indsp->callback_mask, (prop - 0x21) * 8, 8, aflag);
 			} break;
 
 			case 0x23: // removal cost multiplier
-				indsp->removal_cost_multiplier = grf_load_dword(&buf);
+				indsp->removal_cost_multiplier = buf->ReadDWord();
 				break;
 
 			case 0x24: // name for nearby station
-				indsp->station_name = grf_load_word(&buf);
+				indsp->station_name = buf->ReadWord();
 				_string_to_grf_mapping[&indsp->station_name] = _cur_grffile->grfid;
 				break;
 
@@ -2543,10 +2535,10 @@ static void FeatureChangeInfo(ByteReader *buf)
 		/* GSF_SOUNDFX */      SoundEffectChangeInfo,
 	};
 
-	uint8 feature  = grf_load_byte(&buf);
-	uint8 numprops = grf_load_byte(&buf);
-	uint numinfo  = grf_load_byte(&buf);
-	uint engine   = grf_load_extended(&buf);
+	uint8 feature  = buf->ReadByte();
+	uint8 numprops = buf->ReadByte();
+	uint numinfo  = buf->ReadByte();
+	uint engine   = buf->ReadExtended();
 
 	grfmsg(6, "FeatureChangeInfo: feature %d, %d properties, to apply to %d+%d",
 	               feature, numprops, engine, numinfo);
@@ -2560,7 +2552,7 @@ static void FeatureChangeInfo(ByteReader *buf)
 	SetBit(_cur_grffile->grf_features, feature);
 
 	while (numprops-- && buf->HasData()) {
-		uint8 prop = grf_load_byte(&buf);
+		uint8 prop = buf->ReadByte();
 
 		ChangeInfoResult cir = handler[feature](engine, numinfo, prop, buf);
 		if (HandleChangeInfoResult("FeatureChangeInfo", cir, feature, prop)) return;
@@ -2570,24 +2562,24 @@ static void FeatureChangeInfo(ByteReader *buf)
 /* Action 0x00 (GLS_SAFETYSCAN) */
 static void SafeChangeInfo(ByteReader *buf)
 {
-	uint8 feature  = grf_load_byte(&buf);
-	uint8 numprops = grf_load_byte(&buf);
-	uint numinfo = grf_load_byte(&buf);
-	grf_load_extended(&buf); // id
+	uint8 feature  = buf->ReadByte();
+	uint8 numprops = buf->ReadByte();
+	uint numinfo = buf->ReadByte();
+	buf->ReadExtended(); // id
 
 	if (feature == GSF_BRIDGE && numprops == 1) {
-		uint8 prop = grf_load_byte(&buf);
+		uint8 prop = buf->ReadByte();
 		/* Bridge property 0x0D is redefinition of sprite layout tables, which
 		 * is considered safe. */
 		if (prop == 0x0D) return;
 	} else if (feature == GSF_GLOBALVAR && numprops == 1) {
-		uint8 prop = grf_load_byte(&buf);
+		uint8 prop = buf->ReadByte();
 		/* Engine ID Mappings are safe, if the source is static */
 		if (prop == 0x11) {
 			bool is_safe = true;
 			for (uint i = 0; i < numinfo; i++) {
-				uint32 s = grf_load_dword(&buf);
-				grf_load_dword(&buf); // dest
+				uint32 s = buf->ReadDWord();
+				buf->ReadDWord(); // dest
 				const GRFConfig *grfconfig = GetGRFConfig(s);
 				if (grfconfig != NULL && !HasBit(grfconfig->flags, GCF_STATIC)) {
 					is_safe = false;
@@ -2607,16 +2599,16 @@ static void SafeChangeInfo(ByteReader *buf)
 /* Action 0x00 (GLS_RESERVE) */
 static void ReserveChangeInfo(ByteReader *buf)
 {
-	uint8 feature  = grf_load_byte(&buf);
+	uint8 feature  = buf->ReadByte();
 
 	if (feature != GSF_CARGOS && feature != GSF_GLOBALVAR) return;
 
-	uint8 numprops = grf_load_byte(&buf);
-	uint8 numinfo  = grf_load_byte(&buf);
-	uint8 index    = grf_load_extended(&buf);
+	uint8 numprops = buf->ReadByte();
+	uint8 numinfo  = buf->ReadByte();
+	uint8 index    = buf->ReadExtended();
 
 	while (numprops-- && buf->HasData()) {
-		uint8 prop = grf_load_byte(&buf);
+		uint8 prop = buf->ReadByte();
 		ChangeInfoResult cir = CIR_SUCCESS;
 
 		switch (feature) {
@@ -2649,9 +2641,9 @@ static void NewSpriteSet(ByteReader *buf)
 	 *                         In that case, use num-dirs=4.
 	 */
 
-	uint8 feature   = grf_load_byte(&buf);
-	uint8 num_sets  = grf_load_byte(&buf);
-	uint16 num_ents = grf_load_extended(&buf);
+	uint8 feature   = buf->ReadByte();
+	uint8 num_sets  = buf->ReadByte();
+	uint16 num_ents = buf->ReadExtended();
 
 	_cur_grffile->spriteset_start = _cur_spriteid;
 	_cur_grffile->spriteset_feature = feature;
@@ -2671,9 +2663,9 @@ static void NewSpriteSet(ByteReader *buf)
 /* Action 0x01 (SKIP) */
 static void SkipAct1(ByteReader *buf)
 {
-	grf_load_byte(&buf);
-	uint8 num_sets  = grf_load_byte(&buf);
-	uint16 num_ents = grf_load_extended(&buf);
+	buf->ReadByte();
+	uint8 num_sets  = buf->ReadByte();
+	uint16 num_ents = buf->ReadExtended();
 
 	_skip_sprites = num_sets * num_ents;
 
@@ -2740,9 +2732,9 @@ static void NewSpriteGroup(ByteReader *buf)
 	 * V feature-specific-data (huge mess, don't even look it up --pasky) */
 	SpriteGroup *act_group = NULL;
 
-	uint8 feature = grf_load_byte(&buf);
-	uint8 setid   = grf_load_byte(&buf);
-	uint8 type    = grf_load_byte(&buf);
+	uint8 feature = buf->ReadByte();
+	uint8 setid   = buf->ReadByte();
+	uint8 type    = buf->ReadByte();
 
 	if (setid >= _cur_grffile->spritegroups_count) {
 		/* Allocate memory for new sprite group references. */
@@ -2791,23 +2783,23 @@ static void NewSpriteGroup(ByteReader *buf)
 				adjust = &group->adjusts[group->num_adjusts - 1];
 
 				/* The first var adjust doesn't have an operation specified, so we set it to add. */
-				adjust->operation = group->num_adjusts == 1 ? DSGA_OP_ADD : (DeterministicSpriteGroupAdjustOperation)grf_load_byte(&buf);
-				adjust->variable  = grf_load_byte(&buf);
+				adjust->operation = group->num_adjusts == 1 ? DSGA_OP_ADD : (DeterministicSpriteGroupAdjustOperation)buf->ReadByte();
+				adjust->variable  = buf->ReadByte();
 				if (adjust->variable == 0x7E) {
 					/* Link subroutine group */
-					adjust->subroutine = GetGroupFromGroupID(setid, type, grf_load_byte(&buf));
+					adjust->subroutine = GetGroupFromGroupID(setid, type, buf->ReadByte());
 				} else {
-					adjust->parameter = IsInsideMM(adjust->variable, 0x60, 0x80) ? grf_load_byte(&buf) : 0;
+					adjust->parameter = IsInsideMM(adjust->variable, 0x60, 0x80) ? buf->ReadByte() : 0;
 				}
 
-				varadjust = grf_load_byte(&buf);
+				varadjust = buf->ReadByte();
 				adjust->shift_num = GB(varadjust, 0, 5);
 				adjust->type      = (DeterministicSpriteGroupAdjustType)GB(varadjust, 6, 2);
-				adjust->and_mask  = grf_load_var(varsize, &buf);
+				adjust->and_mask  = buf->ReadVarSize(varsize);
 
 				if (adjust->type != DSGA_TYPE_NONE) {
-					adjust->add_val    = grf_load_var(varsize, &buf);
-					adjust->divmod_val = grf_load_var(varsize, &buf);
+					adjust->add_val    = buf->ReadVarSize(varsize);
+					adjust->divmod_val = buf->ReadVarSize(varsize);
 				} else {
 					adjust->add_val    = 0;
 					adjust->divmod_val = 0;
@@ -2816,16 +2808,16 @@ static void NewSpriteGroup(ByteReader *buf)
 				/* Continue reading var adjusts while bit 5 is set. */
 			} while (HasBit(varadjust, 5));
 
-			group->num_ranges = grf_load_byte(&buf);
+			group->num_ranges = buf->ReadByte();
 			if (group->num_ranges > 0) group->ranges = CallocT<DeterministicSpriteGroupRange>(group->num_ranges);
 
 			for (uint i = 0; i < group->num_ranges; i++) {
-				group->ranges[i].group = GetGroupFromGroupID(setid, type, grf_load_word(&buf));
-				group->ranges[i].low   = grf_load_var(varsize, &buf);
-				group->ranges[i].high  = grf_load_var(varsize, &buf);
+				group->ranges[i].group = GetGroupFromGroupID(setid, type, buf->ReadWord());
+				group->ranges[i].low   = buf->ReadVarSize(varsize);
+				group->ranges[i].high  = buf->ReadVarSize(varsize);
 			}
 
-			group->default_group = GetGroupFromGroupID(setid, type, grf_load_word(&buf));
+			group->default_group = GetGroupFromGroupID(setid, type, buf->ReadWord());
 			break;
 		}
 
@@ -2840,18 +2832,18 @@ static void NewSpriteGroup(ByteReader *buf)
 
 			if (HasBit(type, 2)) {
 				if (feature <= GSF_AIRCRAFT) group->var_scope = VSG_SCOPE_RELATIVE;
-				group->count = grf_load_byte(&buf);
+				group->count = buf->ReadByte();
 			}
 
-			uint8 triggers = grf_load_byte(&buf);
+			uint8 triggers = buf->ReadByte();
 			group->triggers       = GB(triggers, 0, 7);
 			group->cmp_mode       = HasBit(triggers, 7) ? RSG_CMP_ALL : RSG_CMP_ANY;
-			group->lowest_randbit = grf_load_byte(&buf);
-			group->num_groups     = grf_load_byte(&buf);
+			group->lowest_randbit = buf->ReadByte();
+			group->num_groups     = buf->ReadByte();
 			group->groups = CallocT<const SpriteGroup*>(group->num_groups);
 
 			for (uint i = 0; i < group->num_groups; i++) {
-				group->groups[i] = GetGroupFromGroupID(setid, type, grf_load_word(&buf));
+				group->groups[i] = GetGroupFromGroupID(setid, type, buf->ReadWord());
 			}
 
 			break;
@@ -2871,7 +2863,7 @@ static void NewSpriteGroup(ByteReader *buf)
 				{
 					byte sprites     = _cur_grffile->spriteset_numents;
 					byte num_loaded  = type;
-					byte num_loading = grf_load_byte(&buf);
+					byte num_loading = buf->ReadByte();
 
 					if (_cur_grffile->spriteset_start == 0) {
 						grfmsg(0, "NewSpriteGroup: No sprite set to work on! Skipping");
@@ -2890,13 +2882,13 @@ static void NewSpriteGroup(ByteReader *buf)
 							setid, sprites, num_loaded, num_loading);
 
 					for (uint i = 0; i < num_loaded; i++) {
-						uint16 spriteid = grf_load_word(&buf);
+						uint16 spriteid = buf->ReadWord();
 						group->loaded[i] = CreateGroupFromGroupID(feature, setid, type, spriteid, sprites);
 						grfmsg(8, "NewSpriteGroup: + rg->loaded[%i]  = subset %u", i, spriteid);
 					}
 
 					for (uint i = 0; i < num_loading; i++) {
-						uint16 spriteid = grf_load_word(&buf);
+						uint16 spriteid = buf->ReadWord();
 						group->loading[i] = CreateGroupFromGroupID(feature, setid, type, spriteid, sprites);
 						grfmsg(8, "NewSpriteGroup: + rg->loading[%i] = subset %u", i, spriteid);
 					}
@@ -2918,8 +2910,8 @@ static void NewSpriteGroup(ByteReader *buf)
 					group->dts = CallocT<DrawTileSprites>(1);
 
 					/* Groundsprite */
-					group->dts->ground.sprite = grf_load_word(&buf);
-					group->dts->ground.pal    = grf_load_word(&buf);
+					group->dts->ground.sprite = buf->ReadWord();
+					group->dts->ground.pal    = buf->ReadWord();
 
 					/* Remap transparent/colour modifier bits */
 					MapSpriteMappingRecolour(&group->dts->ground);
@@ -2945,10 +2937,10 @@ static void NewSpriteGroup(ByteReader *buf)
 					for (i = 0; i < num_building_sprites; i++) {
 						DrawTileSeqStruct *seq = const_cast<DrawTileSeqStruct*>(&group->dts->seq[i]);
 
-						seq->image.sprite = grf_load_word(&buf);
-						seq->image.pal    = grf_load_word(&buf);
-						seq->delta_x = grf_load_byte(&buf);
-						seq->delta_y = grf_load_byte(&buf);
+						seq->image.sprite = buf->ReadWord();
+						seq->image.pal    = buf->ReadWord();
+						seq->delta_x = buf->ReadByte();
+						seq->delta_y = buf->ReadByte();
 
 						MapSpriteMappingRecolour(&seq->image);
 
@@ -2969,13 +2961,13 @@ static void NewSpriteGroup(ByteReader *buf)
 						}
 
 						if (type > 0) {
-							seq->delta_z = grf_load_byte(&buf);
+							seq->delta_z = buf->ReadByte();
 							if ((byte)seq->delta_z == 0x80) continue;
 						}
 
-						seq->size_x = grf_load_byte(&buf);
-						seq->size_y = grf_load_byte(&buf);
-						seq->size_z = grf_load_byte(&buf);
+						seq->size_x = buf->ReadByte();
+						seq->size_y = buf->ReadByte();
+						seq->size_z = buf->ReadByte();
 					}
 
 					/* Set the terminator value. */
@@ -2995,20 +2987,20 @@ static void NewSpriteGroup(ByteReader *buf)
 					group->version = type;
 					if (type == 0) {
 						for (uint i = 0; i < 3; i++) {
-							group->subtract_input[i] = (int16)grf_load_word(&buf); // signed
+							group->subtract_input[i] = (int16)buf->ReadWord(); // signed
 						}
 						for (uint i = 0; i < 2; i++) {
-							group->add_output[i] = grf_load_word(&buf); // unsigned
+							group->add_output[i] = buf->ReadWord(); // unsigned
 						}
-						group->again = grf_load_byte(&buf);
+						group->again = buf->ReadByte();
 					} else {
 						for (uint i = 0; i < 3; i++) {
-							group->subtract_input[i] = grf_load_byte(&buf);
+							group->subtract_input[i] = buf->ReadByte();
 						}
 						for (uint i = 0; i < 2; i++) {
-							group->add_output[i] = grf_load_byte(&buf);
+							group->add_output[i] = buf->ReadByte();
 						}
-						group->again = grf_load_byte(&buf);
+						group->again = buf->ReadByte();
 					}
 					break;
 				}
@@ -3109,14 +3101,14 @@ static void VehicleMapSpriteGroup(ByteReader *buf, byte feature, uint8 idcount)
 
 	EngineID *engines = AllocaM(EngineID, idcount);
 	for (uint i = 0; i < idcount; i++) {
-		engines[i] = GetNewEngine(_cur_grffile, (VehicleType)feature, grf_load_extended(&buf))->index;
+		engines[i] = GetNewEngine(_cur_grffile, (VehicleType)feature, buf->ReadExtended())->index;
 		if (!wagover) last_engines[i] = engines[i];
 	}
 
-	uint8 cidcount = grf_load_byte(&buf);
+	uint8 cidcount = buf->ReadByte();
 	for (uint c = 0; c < cidcount; c++) {
-		uint8 ctype = grf_load_byte(&buf);
-		uint16 groupid = grf_load_word(&buf);
+		uint8 ctype = buf->ReadByte();
+		uint16 groupid = buf->ReadWord();
 		if (!IsValidGroupID(groupid, "VehicleMapSpriteGroup")) continue;
 
 		grfmsg(8, "VehicleMapSpriteGroup: * [%d] Cargo type 0x%X, group id 0x%02X", c, ctype, groupid);
@@ -3137,7 +3129,7 @@ static void VehicleMapSpriteGroup(ByteReader *buf, byte feature, uint8 idcount)
 		}
 	}
 
-	uint16 groupid = grf_load_word(&buf);
+	uint16 groupid = buf->ReadWord();
 	if (!IsValidGroupID(groupid, "VehicleMapSpriteGroup")) return;
 
 	grfmsg(8, "-- Default group id 0x%04X", groupid);
@@ -3159,13 +3151,13 @@ static void CanalMapSpriteGroup(ByteReader *buf, uint8 idcount)
 {
 	CanalFeature *cfs = AllocaM(CanalFeature, idcount);
 	for (uint i = 0; i < idcount; i++) {
-		cfs[i] = (CanalFeature)grf_load_byte(&buf);
+		cfs[i] = (CanalFeature)buf->ReadByte();
 	}
 
-	uint8 cidcount = grf_load_byte(&buf);
+	uint8 cidcount = buf->ReadByte();
 	buf->Skip(cidcount * 3);
 
-	uint16 groupid = grf_load_word(&buf);
+	uint16 groupid = buf->ReadWord();
 	if (!IsValidGroupID(groupid, "CanalMapSpriteGroup")) return;
 
 	for (uint i = 0; i < idcount; i++) {
@@ -3186,13 +3178,13 @@ static void StationMapSpriteGroup(ByteReader *buf, uint8 idcount)
 {
 	uint8 *stations = AllocaM(uint8, idcount);
 	for (uint i = 0; i < idcount; i++) {
-		stations[i] = grf_load_byte(&buf);
+		stations[i] = buf->ReadByte();
 	}
 
-	uint8 cidcount = grf_load_byte(&buf);
+	uint8 cidcount = buf->ReadByte();
 	for (uint c = 0; c < cidcount; c++) {
-		uint8 ctype = grf_load_byte(&buf);
-		uint16 groupid = grf_load_word(&buf);
+		uint8 ctype = buf->ReadByte();
+		uint16 groupid = buf->ReadWord();
 		if (!IsValidGroupID(groupid, "StationMapSpriteGroup")) continue;
 
 		ctype = TranslateCargo(GSF_STATION, ctype);
@@ -3210,7 +3202,7 @@ static void StationMapSpriteGroup(ByteReader *buf, uint8 idcount)
 		}
 	}
 
-	uint16 groupid = grf_load_word(&buf);
+	uint16 groupid = buf->ReadWord();
 	if (!IsValidGroupID(groupid, "StationMapSpriteGroup")) return;
 
 	for (uint i = 0; i < idcount; i++) {
@@ -3233,14 +3225,14 @@ static void TownHouseMapSpriteGroup(ByteReader *buf, uint8 idcount)
 {
 	uint8 *houses = AllocaM(uint8, idcount);
 	for (uint i = 0; i < idcount; i++) {
-		houses[i] = grf_load_byte(&buf);
+		houses[i] = buf->ReadByte();
 	}
 
 	/* Skip the cargo type section, we only care about the default group */
-	uint8 cidcount = grf_load_byte(&buf);
+	uint8 cidcount = buf->ReadByte();
 	buf->Skip(cidcount * 3);
 
-	uint16 groupid = grf_load_word(&buf);
+	uint16 groupid = buf->ReadWord();
 	if (!IsValidGroupID(groupid, "TownHouseMapSpriteGroup")) return;
 
 	if (_cur_grffile->housespec == NULL) {
@@ -3264,14 +3256,14 @@ static void IndustryMapSpriteGroup(ByteReader *buf, uint8 idcount)
 {
 	uint8 *industries = AllocaM(uint8, idcount);
 	for (uint i = 0; i < idcount; i++) {
-		industries[i] = grf_load_byte(&buf);
+		industries[i] = buf->ReadByte();
 	}
 
 	/* Skip the cargo type section, we only care about the default group */
-	uint8 cidcount = grf_load_byte(&buf);
+	uint8 cidcount = buf->ReadByte();
 	buf->Skip(cidcount * 3);
 
-	uint16 groupid = grf_load_word(&buf);
+	uint16 groupid = buf->ReadWord();
 	if (!IsValidGroupID(groupid, "IndustryMapSpriteGroup")) return;
 
 	if (_cur_grffile->industryspec == NULL) {
@@ -3295,14 +3287,14 @@ static void IndustrytileMapSpriteGroup(ByteReader *buf, uint8 idcount)
 {
 	uint8 *indtiles = AllocaM(uint8, idcount);
 	for (uint i = 0; i < idcount; i++) {
-		indtiles[i] = grf_load_byte(&buf);
+		indtiles[i] = buf->ReadByte();
 	}
 
 	/* Skip the cargo type section, we only care about the default group */
-	uint8 cidcount = grf_load_byte(&buf);
+	uint8 cidcount = buf->ReadByte();
 	buf->Skip(cidcount * 3);
 
-	uint16 groupid = grf_load_word(&buf);
+	uint16 groupid = buf->ReadWord();
 	if (!IsValidGroupID(groupid, "IndustrytileMapSpriteGroup")) return;
 
 	if (_cur_grffile->indtspec == NULL) {
@@ -3326,14 +3318,14 @@ static void CargoMapSpriteGroup(ByteReader *buf, uint8 idcount)
 {
 	CargoID *cargos = AllocaM(CargoID, idcount);
 	for (uint i = 0; i < idcount; i++) {
-		cargos[i] = grf_load_byte(&buf);
+		cargos[i] = buf->ReadByte();
 	}
 
 	/* Skip the cargo type section, we only care about the default group */
-	uint8 cidcount = grf_load_byte(&buf);
+	uint8 cidcount = buf->ReadByte();
 	buf->Skip(cidcount * 3);
 
-	uint16 groupid = grf_load_word(&buf);
+	uint16 groupid = buf->ReadWord();
 	if (!IsValidGroupID(groupid, "CargoMapSpriteGroup")) return;
 
 	for (uint i = 0; i < idcount; i++) {
@@ -3373,14 +3365,14 @@ static void FeatureMapSpriteGroup(ByteReader *buf)
 		return;
 	}
 
-	uint8 feature = grf_load_byte(&buf);
-	uint8 idcount = grf_load_byte(&buf);
+	uint8 feature = buf->ReadByte();
+	uint8 idcount = buf->ReadByte();
 
 	/* If idcount is zero, this is a feature callback */
 	if (idcount == 0) {
 		/* Skip number of cargo ids? */
-		grf_load_byte(&buf);
-		uint16 groupid = grf_load_word(&buf);
+		buf->ReadByte();
+		uint16 groupid = buf->ReadWord();
 
 		grfmsg(6, "FeatureMapSpriteGroup: Adding generic feature callback for feature %d", feature);
 
@@ -3452,17 +3444,17 @@ static void FeatureNewName(ByteReader *buf)
 
 	bool new_scheme = _cur_grffile->grf_version >= 7;
 
-	uint8 feature  = grf_load_byte(&buf);
-	uint8 lang     = grf_load_byte(&buf);
-	uint8 num      = grf_load_byte(&buf);
+	uint8 feature  = buf->ReadByte();
+	uint8 lang     = buf->ReadByte();
+	uint8 num      = buf->ReadByte();
 	bool generic   = HasBit(lang, 7);
 	uint16 id;
 	if (generic) {
-		id = grf_load_word(&buf);
+		id = buf->ReadWord();
 	} else if (feature <= GSF_AIRCRAFT) {
-		id = grf_load_extended(&buf);
+		id = buf->ReadExtended();
 	} else {
-		id = grf_load_byte(&buf);
+		id = buf->ReadByte();
 	}
 
 	ClrBit(lang, 7);
@@ -3473,7 +3465,7 @@ static void FeatureNewName(ByteReader *buf)
 	               id, endid, feature, lang);
 
 	for (; id < endid && buf->HasData(); id++) {
-		const char *name = grf_load_string(&buf);
+		const char *name = buf->ReadString();
 		grfmsg(8, "FeatureNewName: 0x%04X <- %s", id, name);
 
 		switch (feature) {
@@ -3634,9 +3626,9 @@ static void GraphicsNew(ByteReader *buf)
 		/* 0x15 */ { A5BLOCK_ALLOW_OFFSET, SPR_OPENTTD_BASE,             1, OPENTTD_SPRITE_COUNT,                        "OpenTTD GUI graphics"  },
 	};
 
-	uint8 type = grf_load_byte(&buf);
-	uint16 num = grf_load_extended(&buf);
-	uint16 offset = HasBit(type, 7) ? grf_load_extended(&buf) : 0;
+	uint8 type = buf->ReadByte();
+	uint16 num = buf->ReadExtended();
+	uint16 offset = HasBit(type, 7) ? buf->ReadExtended() : 0;
 	ClrBit(type, 7); // Clear the high bit as that only indicates whether there is an offset.
 
 	if ((type == 0x0D) && (num == 10) && _cur_grffile->is_ottdfile) {
@@ -3701,10 +3693,10 @@ static void GraphicsNew(ByteReader *buf)
 static void SkipAct5(ByteReader *buf)
 {
 	/* Ignore type byte */
-	grf_load_byte(&buf);
+	buf->ReadByte();
 
 	/* Skip the sprites of this action */
-	_skip_sprites = grf_load_extended(&buf);
+	_skip_sprites = buf->ReadExtended();
 
 	grfmsg(3, "SkipAct5: Skipping %d sprites", _skip_sprites);
 }
@@ -3940,12 +3932,12 @@ static void CfgApply(ByteReader *buf)
 		bool add_value;
 
 		/* Read the parameter to apply. 0xFF indicates no more data to change. */
-		param_num = grf_load_byte(&buf);
+		param_num = buf->ReadByte();
 		if (param_num == 0xFF) break;
 
 		/* Get the size of the parameter to use. If the size covers multiple
 		 * double words, sequential parameter values are used. */
-		param_size = grf_load_byte(&buf);
+		param_size = buf->ReadByte();
 
 		/* Bit 7 of param_size indicates we should add to the original value
 		 * instead of replacing it. */
@@ -3953,7 +3945,7 @@ static void CfgApply(ByteReader *buf)
 		param_size = GB(param_size, 0, 7);
 
 		/* Where to apply the data to within the pseudo sprite data. */
-		offset     = grf_load_extended(&buf);
+		offset     = buf->ReadExtended();
 
 		/* If the parameter is a GRF parameter (not an internal variable) check
 		 * if it (and all further sequential parameters) has been defined. */
@@ -4024,9 +4016,9 @@ static void SkipIf(ByteReader *buf)
 	uint32 mask = 0;
 	bool result;
 
-	uint8 param     = grf_load_byte(&buf);
-	uint8 paramsize = grf_load_byte(&buf);
-	uint8 condtype  = grf_load_byte(&buf);
+	uint8 param     = buf->ReadByte();
+	uint8 paramsize = buf->ReadByte();
+	uint8 condtype  = buf->ReadByte();
 
 	if (condtype < 2) {
 		/* Always 1 for bit tests, the given value should be ignored. */
@@ -4034,10 +4026,10 @@ static void SkipIf(ByteReader *buf)
 	}
 
 	switch (paramsize) {
-		case 8: cond_val = grf_load_dword(&buf); mask = grf_load_dword(&buf); break;
-		case 4: cond_val = grf_load_dword(&buf); mask = 0xFFFFFFFF; break;
-		case 2: cond_val = grf_load_word(&buf);  mask = 0x0000FFFF; break;
-		case 1: cond_val = grf_load_byte(&buf);  mask = 0x000000FF; break;
+		case 8: cond_val = buf->ReadDWord(); mask = buf->ReadDWord(); break;
+		case 4: cond_val = buf->ReadDWord(); mask = 0xFFFFFFFF; break;
+		case 2: cond_val = buf->ReadWord();  mask = 0x0000FFFF; break;
+		case 1: cond_val = buf->ReadByte();  mask = 0x000000FF; break;
 		default: break;
 	}
 
@@ -4130,7 +4122,7 @@ static void SkipIf(ByteReader *buf)
 		return;
 	}
 
-	uint8 numsprites = grf_load_byte(&buf);
+	uint8 numsprites = buf->ReadByte();
 
 	/* numsprites can be a GOTO label if it has been defined in the GRF
 	 * file. The jump will always be the first matching label that follows
@@ -4176,19 +4168,19 @@ static void SkipIf(ByteReader *buf)
 /* Action 0x08 (GLS_FILESCAN) */
 static void ScanInfo(ByteReader *buf)
 {
-	grf_load_byte(&buf);
-	uint32 grfid  = grf_load_dword(&buf);
+	buf->ReadByte();
+	uint32 grfid  = buf->ReadDWord();
 
 	_cur_grfconfig->grfid = grfid;
 
 	/* GRF IDs starting with 0xFF are reserved for internal TTDPatch use */
 	if (GB(grfid, 24, 8) == 0xFF) SetBit(_cur_grfconfig->flags, GCF_SYSTEM);
 
-	const char *name = grf_load_string(&buf);
+	const char *name = buf->ReadString();
 	_cur_grfconfig->name = TranslateTTDPatchCodes(grfid, name);
 
 	if (buf->HasData()) {
-		const char *info = grf_load_string(&buf);
+		const char *info = buf->ReadString();
 		_cur_grfconfig->info = TranslateTTDPatchCodes(grfid, info);
 	}
 
@@ -4206,9 +4198,9 @@ static void GRFInfo(ByteReader *buf)
 	 * S name          name of this .grf set
 	 * S info          string describing the set, and e.g. author and copyright */
 
-	uint8 version    = grf_load_byte(&buf);
-	uint32 grfid     = grf_load_dword(&buf);
-	const char *name = grf_load_string(&buf);
+	uint8 version    = buf->ReadByte();
+	uint32 grfid     = buf->ReadDWord();
+	const char *name = buf->ReadString();
 
 	if (_cur_stage < GLS_RESERVE && _cur_grfconfig->status != GCS_UNKNOWN) {
 		_cur_grfconfig->status = GCS_DISABLED;
@@ -4239,11 +4231,11 @@ static void SpriteReplace(ByteReader *buf)
 	 * B num-sprites   How many sprites are in this set
 	 * W first-sprite  First sprite number to replace */
 
-	uint8 num_sets = grf_load_byte(&buf);
+	uint8 num_sets = buf->ReadByte();
 
 	for (uint i = 0; i < num_sets; i++) {
-		uint8 num_sprites = grf_load_byte(&buf);
-		uint16 first_sprite = grf_load_word(&buf);
+		uint8 num_sprites = buf->ReadByte();
+		uint16 first_sprite = buf->ReadWord();
 
 		grfmsg(2, "SpriteReplace: [Set %d] Changing %d sprites, beginning with %d",
 			i, num_sprites, first_sprite
@@ -4266,13 +4258,13 @@ static void SpriteReplace(ByteReader *buf)
 /* Action 0x0A (SKIP) */
 static void SkipActA(ByteReader *buf)
 {
-	uint8 num_sets = grf_load_byte(&buf);
+	uint8 num_sets = buf->ReadByte();
 
 	for (uint i = 0; i < num_sets; i++) {
 		/* Skip the sprites this replaces */
-		_skip_sprites += grf_load_byte(&buf);
+		_skip_sprites += buf->ReadByte();
 		/* But ignore where they go */
-		grf_load_word(&buf);
+		buf->ReadWord();
 	}
 
 	grfmsg(3, "SkipActA: Skipping %d sprites", _skip_sprites);
@@ -4316,9 +4308,9 @@ static void GRFLoadError(ByteReader *buf)
 	/* For now we can only show one message per newgrf file. */
 	if (_cur_grfconfig->error != NULL) return;
 
-	byte severity   = grf_load_byte(&buf);
-	byte lang       = grf_load_byte(&buf);
-	byte message_id = grf_load_byte(&buf);
+	byte severity   = buf->ReadByte();
+	byte lang       = buf->ReadByte();
+	byte message_id = buf->ReadByte();
 
 	/* Skip the error if it isn't valid for the current language. */
 	if (!CheckGrfLangID(lang, _cur_grffile->grf_version)) return;
@@ -4359,7 +4351,7 @@ static void GRFLoadError(ByteReader *buf)
 	if (message_id == 0xFF) {
 		/* This is a custom error message. */
 		if (buf->HasData()) {
-			const char *message = grf_load_string(&buf);
+			const char *message = buf->ReadString();
 
 			error->custom_message = TranslateTTDPatchCodes(_cur_grffile->grfid, message);
 		} else {
@@ -4371,7 +4363,7 @@ static void GRFLoadError(ByteReader *buf)
 	}
 
 	if (buf->HasData()) {
-		const char *data = grf_load_string(&buf);
+		const char *data = buf->ReadString();
 
 		error->data = TranslateTTDPatchCodes(_cur_grffile->grfid, data);
 	} else {
@@ -4382,7 +4374,7 @@ static void GRFLoadError(ByteReader *buf)
 	/* Only two parameter numbers can be used in the string. */
 	uint i = 0;
 	for (; i < 2 && buf->HasData(); i++) {
-		uint param_number = grf_load_byte(&buf);
+		uint param_number = buf->ReadByte();
 		error->param_value[i] = _cur_grffile->GetParam(param_number);
 	}
 	error->num_params = i;
@@ -4399,14 +4391,14 @@ static void GRFComment(ByteReader *buf)
 
 	if (!buf->HasData()) return;
 
-	const char *text = grf_load_string(&buf);
+	const char *text = buf->ReadString();
 	grfmsg(2, "GRFComment: %s", text);
 }
 
 /* Action 0x0D (GLS_SAFETYSCAN) */
 static void SafeParamSet(ByteReader *buf)
 {
-	uint8 target = grf_load_byte(&buf);
+	uint8 target = buf->ReadByte();
 
 	/* Only writing GRF parameters is considered safe */
 	if (target < 0x80) return;
@@ -4559,13 +4551,13 @@ static void ParamSet(ByteReader *buf)
 	 *         (source2 like in 05, and source1 as well)
 	 */
 
-	uint8 target = grf_load_byte(&buf);
-	uint8 oper   = grf_load_byte(&buf);
-	uint32 src1  = grf_load_byte(&buf);
-	uint32 src2  = grf_load_byte(&buf);
+	uint8 target = buf->ReadByte();
+	uint8 oper   = buf->ReadByte();
+	uint32 src1  = buf->ReadByte();
+	uint32 src2  = buf->ReadByte();
 
 	uint32 data = 0;
-	if (buf->Remaining() >= 4) data = grf_load_dword(&buf);
+	if (buf->Remaining() >= 4) data = buf->ReadDWord();
 
 	/* You can add 80 to the operation to make it apply only if the target
 	 * is not defined yet.  In this respect, a parameter is taken to be
@@ -4843,10 +4835,10 @@ static void SafeGRFInhibit(ByteReader *buf)
 	 * B num           Number of GRFIDs that follow
 	 * D grfids        GRFIDs of the files to deactivate */
 
-	uint8 num = grf_load_byte(&buf);
+	uint8 num = buf->ReadByte();
 
 	for (uint i = 0; i < num; i++) {
-		uint32 grfid = grf_load_dword(&buf);
+		uint32 grfid = buf->ReadDWord();
 
 		/* GRF is unsafe it if tries to deactivate other GRFs */
 		if (grfid != _cur_grfconfig->grfid) {
@@ -4868,10 +4860,10 @@ static void GRFInhibit(ByteReader *buf)
 	 * B num           Number of GRFIDs that follow
 	 * D grfids        GRFIDs of the files to deactivate */
 
-	uint8 num = grf_load_byte(&buf);
+	uint8 num = buf->ReadByte();
 
 	for (uint i = 0; i < num; i++) {
-		uint32 grfid = grf_load_dword(&buf);
+		uint32 grfid = buf->ReadDWord();
 		GRFConfig *file = GetGRFConfig(grfid);
 
 		/* Unset activation flag */
@@ -4896,7 +4888,7 @@ static void FeatureTownName(ByteReader *buf)
 
 	GRFTownName *townname = AddGRFTownName(grfid);
 
-	byte id = grf_load_byte(&buf);
+	byte id = buf->ReadByte();
 	grfmsg(6, "FeatureTownName: definition 0x%02X", id & 0x7F);
 
 	if (HasBit(id, 7)) {
@@ -4904,13 +4896,13 @@ static void FeatureTownName(ByteReader *buf)
 		ClrBit(id, 7);
 		bool new_scheme = _cur_grffile->grf_version >= 7;
 
-		byte lang = grf_load_byte(&buf);
+		byte lang = buf->ReadByte();
 
 		byte nb_gen = townname->nb_gen;
 		do {
 			ClrBit(lang, 7);
 
-			const char *name = grf_load_string(&buf);
+			const char *name = buf->ReadString();
 
 			char *lang_name = TranslateTTDPatchCodes(grfid, name);
 			grfmsg(6, "FeatureTownName: lang 0x%X -> '%s'", lang, lang_name);
@@ -4918,32 +4910,32 @@ static void FeatureTownName(ByteReader *buf)
 
 			townname->name[nb_gen] = AddGRFString(grfid, id, lang, new_scheme, name, STR_UNDEFINED);
 
-			lang = grf_load_byte(&buf);
+			lang = buf->ReadByte();
 		} while (lang != 0);
 		townname->id[nb_gen] = id;
 		townname->nb_gen++;
 	}
 
-	byte nb = grf_load_byte(&buf);
+	byte nb = buf->ReadByte();
 	grfmsg(6, "FeatureTownName: %u parts", nb);
 
 	townname->nbparts[id] = nb;
 	townname->partlist[id] = CallocT<NamePartList>(nb);
 
 	for (int i = 0; i < nb; i++) {
-		byte nbtext =  grf_load_byte(&buf);
-		townname->partlist[id][i].bitstart  = grf_load_byte(&buf);
-		townname->partlist[id][i].bitcount  = grf_load_byte(&buf);
+		byte nbtext =  buf->ReadByte();
+		townname->partlist[id][i].bitstart  = buf->ReadByte();
+		townname->partlist[id][i].bitcount  = buf->ReadByte();
 		townname->partlist[id][i].maxprob   = 0;
 		townname->partlist[id][i].partcount = nbtext;
 		townname->partlist[id][i].parts     = CallocT<NamePart>(nbtext);
 		grfmsg(6, "FeatureTownName: part %d contains %d texts and will use GB(seed, %d, %d)", i, nbtext, townname->partlist[id][i].bitstart, townname->partlist[id][i].bitcount);
 
 		for (int j = 0; j < nbtext; j++) {
-			byte prob = grf_load_byte(&buf);
+			byte prob = buf->ReadByte();
 
 			if (HasBit(prob, 7)) {
-				byte ref_id = grf_load_byte(&buf);
+				byte ref_id = buf->ReadByte();
 
 				if (townname->nbparts[ref_id] == 0) {
 					grfmsg(0, "FeatureTownName: definition 0x%02X doesn't exist, deactivating", ref_id);
@@ -4957,7 +4949,7 @@ static void FeatureTownName(ByteReader *buf)
 				grfmsg(6, "FeatureTownName: part %d, text %d, uses intermediate definition 0x%02X (with probability %d)", i, j, ref_id, prob & 0x7F);
 				townname->partlist[id][i].parts[j].data.id = ref_id;
 			} else {
-				const char *text = grf_load_string(&buf);
+				const char *text = buf->ReadString();
 				townname->partlist[id][i].parts[j].data.text = TranslateTTDPatchCodes(grfid, text);
 				grfmsg(6, "FeatureTownName: part %d, text %d, '%s' (with probability %d)", i, j, townname->partlist[id][i].parts[j].data.text, prob);
 			}
@@ -4976,7 +4968,7 @@ static void DefineGotoLabel(ByteReader *buf)
 	 * B label      The label to define
 	 * V comment    Optional comment - ignored */
 
-	byte nfo_label = grf_load_byte(&buf);
+	byte nfo_label = buf->ReadByte();
 
 	GRFLabel *label = MallocT<GRFLabel>(1);
 	label->label    = nfo_label;
@@ -5004,7 +4996,7 @@ static void GRFSound(ByteReader *buf)
 	 *
 	 * W num      Number of sound files that follow */
 
-	uint16 num = grf_load_word(&buf);
+	uint16 num = buf->ReadWord();
 
 	_grf_data_blocks = num;
 	_grf_data_type   = GDT_SOUND;
@@ -5019,7 +5011,7 @@ static void SkipAct11(ByteReader *buf)
 	 *
 	 * W num      Number of sound files that follow */
 
-	_skip_sprites = grf_load_word(&buf);
+	_skip_sprites = buf->ReadWord();
 
 	grfmsg(3, "SkipAct11: Skipping %d sprites", _skip_sprites);
 }
@@ -5028,8 +5020,8 @@ static void ImportGRFSound(ByteReader *buf)
 {
 	const GRFFile *file;
 	SoundEntry *sound = AllocateSound();
-	uint32 grfid = grf_load_dword(&buf);
-	SoundID sound_id = grf_load_word(&buf);
+	uint32 grfid = buf->ReadDWord();
+	SoundID sound_id = buf->ReadWord();
 
 	file = GetFileByGRFID(grfid);
 	if (file == NULL || file->sound_offset == 0) {
@@ -5063,7 +5055,7 @@ static void GRFImportBlock(ByteReader *buf)
 
 	/* XXX 'Action 0xFE' isn't really specified. It is only mentioned for
 	 * importing sounds, so this is probably all wrong... */
-	if (grf_load_byte(&buf) != _grf_data_type) {
+	if (buf->ReadByte() != _grf_data_type) {
 		grfmsg(1, "GRFImportBlock: Import type mismatch");
 	}
 
@@ -5079,25 +5071,25 @@ static void LoadGRFSound(ByteReader *buf)
 	 * so that the indices used elsewhere are still correct. */
 	SoundEntry *sound = AllocateSound();
 
-	if (grf_load_dword(&buf) != BSWAP32('RIFF')) {
+	if (buf->ReadDWord() != BSWAP32('RIFF')) {
 		grfmsg(1, "LoadGRFSound: Missing RIFF header");
 		return;
 	}
 
-	uint32 total_size = grf_load_dword(&buf);
+	uint32 total_size = buf->ReadDWord();
 	if (total_size > buf->Remaining()) {
 		grfmsg(1, "LoadGRFSound: RIFF was truncated");
 		return;
 	}
 
-	if (grf_load_dword(&buf) != BSWAP32('WAVE')) {
+	if (buf->ReadDWord() != BSWAP32('WAVE')) {
 		grfmsg(1, "LoadGRFSound: Invalid RIFF type");
 		return;
 	}
 
 	while (total_size >= 8) {
-		uint32 tag  = grf_load_dword(&buf);
-		uint32 size = grf_load_dword(&buf);
+		uint32 tag  = buf->ReadDWord();
+		uint32 size = buf->ReadDWord();
 		total_size -= 8;
 		if (total_size < size) {
 			grfmsg(1, "LoadGRFSound: Invalid RIFF");
@@ -5108,15 +5100,15 @@ static void LoadGRFSound(ByteReader *buf)
 		switch (tag) {
 			case ' tmf': // 'fmt '
 				/* Audio format, must be 1 (PCM) */
-				if (size < 16 || grf_load_word(&buf) != 1) {
+				if (size < 16 || buf->ReadWord() != 1) {
 					grfmsg(1, "LoadGRFSound: Invalid audio format");
 					return;
 				}
-				sound->channels = grf_load_word(&buf);
-				sound->rate = grf_load_dword(&buf);
-				grf_load_dword(&buf);
-				grf_load_word(&buf);
-				sound->bits_per_sample = grf_load_word(&buf);
+				sound->channels = buf->ReadWord();
+				sound->rate = buf->ReadDWord();
+				buf->ReadDWord();
+				buf->ReadWord();
+				sound->bits_per_sample = buf->ReadWord();
 
 				/* The rest will be skipped */
 				size -= 16;
@@ -5140,7 +5132,7 @@ static void LoadGRFSound(ByteReader *buf)
 		}
 
 		/* Skip rest of chunk */
-		for (; size > 0; size--) grf_load_byte(&buf);
+		for (; size > 0; size--) buf->ReadByte();
 	}
 
 	grfmsg(1, "LoadGRFSound: RIFF does not contain any sound data");
@@ -5159,12 +5151,12 @@ static void LoadFontGlyph(ByteReader *buf)
 	 * B num_char     Number of consecutive glyphs
 	 * W base_char    First character index */
 
-	uint8 num_def = grf_load_byte(&buf);
+	uint8 num_def = buf->ReadByte();
 
 	for (uint i = 0; i < num_def; i++) {
-		FontSize size    = (FontSize)grf_load_byte(&buf);
-		uint8  num_char  = grf_load_byte(&buf);
-		uint16 base_char = grf_load_word(&buf);
+		FontSize size    = (FontSize)buf->ReadByte();
+		uint8  num_char  = buf->ReadByte();
+		uint16 base_char = buf->ReadWord();
 
 		grfmsg(7, "LoadFontGlyph: Loading %u glyph(s) at 0x%04X for size %u", num_char, base_char, size);
 
@@ -5186,17 +5178,17 @@ static void SkipAct12(ByteReader *buf)
 	 * B num_char     Number of consecutive glyphs
 	 * W base_char    First character index */
 
-	uint8 num_def = grf_load_byte(&buf);
+	uint8 num_def = buf->ReadByte();
 
 	for (uint i = 0; i < num_def; i++) {
 		/* Ignore 'size' byte */
-		grf_load_byte(&buf);
+		buf->ReadByte();
 
 		/* Sum up number of characters */
-		_skip_sprites += grf_load_byte(&buf);
+		_skip_sprites += buf->ReadByte();
 
 		/* Ignore 'base_char' word */
-		grf_load_word(&buf);
+		buf->ReadWord();
 	}
 
 	grfmsg(3, "SkipAct12: Skipping %d sprites", _skip_sprites);
@@ -5212,7 +5204,7 @@ static void TranslateGRFStrings(ByteReader *buf)
 	 * W   offset    First text ID
 	 * S   text...   Zero-terminated strings */
 
-	uint32 grfid = grf_load_dword(&buf);
+	uint32 grfid = buf->ReadDWord();
 	const GRFConfig *c = GetGRFConfig(grfid);
 	if (c == NULL || (c->status != GCS_INITIALISED && c->status != GCS_ACTIVATED)) {
 		grfmsg(7, "TranslateGRFStrings: GRFID 0x%08x unknown, skipping action 13", BSWAP32(grfid));
@@ -5240,8 +5232,8 @@ static void TranslateGRFStrings(ByteReader *buf)
 		return;
 	}
 
-	byte num_strings = grf_load_byte(&buf);
-	uint16 first_id  = grf_load_word(&buf);
+	byte num_strings = buf->ReadByte();
+	uint16 first_id  = buf->ReadWord();
 
 	if (!((first_id >= 0xD000 && first_id + num_strings <= 0xD3FF) || (first_id >= 0xDC00 && first_id + num_strings <= 0xDCFF))) {
 		grfmsg(7, "TranslateGRFStrings: Attempting to set out-of-range string IDs in action 13 (first: 0x%4X, number: 0x%2X)", first_id, num_strings);
@@ -5249,7 +5241,7 @@ static void TranslateGRFStrings(ByteReader *buf)
 	}
 
 	for (uint i = 0; i < num_strings && buf->HasData(); i++) {
-		const char *string = grf_load_string(&buf);
+		const char *string = buf->ReadString();
 
 		if (StrEmpty(string)) {
 			grfmsg(7, "TranslateGRFString: Ignoring empty string.");
@@ -5275,12 +5267,12 @@ static void GRFDataBlock(ByteReader *buf)
 		return;
 	}
 
-	uint8 name_len = grf_load_byte(&buf);
+	uint8 name_len = buf->ReadByte();
 	const char *name = reinterpret_cast<const char *>(buf->Data());
 	buf->Skip(name_len);
 
 	/* Test string termination */
-	if (grf_load_byte(&buf) != 0) {
+	if (buf->ReadByte() != 0) {
 		grfmsg(2, "GRFDataBlock: Name not properly terminated");
 		return;
 	}
@@ -5957,7 +5949,7 @@ static void DecodeSpecialSprite(byte *buf, uint num, GrfLoadingStage stage)
 	ByteReader *bufp = &br;
 
 	try {
-		byte action = grf_load_byte(&bufp);
+		byte action = bufp->ReadByte();
 
 		if (action == 0xFF) {
 			grfmsg(7, "DecodeSpecialSprite: Handling data block in stage %d", stage);
