@@ -24,38 +24,31 @@ static FSoundDriver_Win32 iFSoundDriver_Win32;
 static HWAVEOUT _waveout;
 static WAVEHDR _wave_hdr[2];
 static int _bufsize;
+static HANDLE _thread;
+static DWORD _threadId;
 
 static void PrepareHeader(WAVEHDR *hdr)
 {
 	hdr->dwBufferLength = _bufsize * 4;
 	hdr->dwFlags = 0;
 	hdr->lpData = MallocT<char>(_bufsize * 4);
-	if (waveOutPrepareHeader(_waveout, hdr, sizeof(WAVEHDR)) != MMSYSERR_NOERROR)
-		usererror("waveOutPrepareHeader failed");
+	if (waveOutPrepareHeader(_waveout, hdr, sizeof(WAVEHDR)) != MMSYSERR_NOERROR) usererror("waveOutPrepareHeader failed");
 }
 
-static void FillHeaders()
+static DWORD WINAPI SoundThread(LPVOID arg)
 {
+	MSG msg;
 	WAVEHDR *hdr;
 
-	for (hdr = _wave_hdr; hdr != endof(_wave_hdr); hdr++) {
-		if (!(hdr->dwFlags & WHDR_INQUEUE)) {
+	while (_waveout != NULL) {
+		for (hdr = _wave_hdr; hdr != endof(_wave_hdr); hdr++) {
+			if ((hdr->dwFlags & WHDR_INQUEUE) != 0) continue;
 			MxMixSamples(hdr->lpData, hdr->dwBufferLength / 4);
-			if (waveOutWrite(_waveout, hdr, sizeof(WAVEHDR)) != MMSYSERR_NOERROR)
-				usererror("waveOutWrite failed");
+			if (waveOutWrite(_waveout, hdr, sizeof(WAVEHDR)) != MMSYSERR_NOERROR) usererror("waveOutWrite failed");
 		}
+		GetMessage(&msg, NULL, MM_WOM_DONE, MM_WOM_DONE);
 	}
-}
-
-static void CALLBACK waveOutProc(HWAVEOUT hwo, UINT uMsg, DWORD_PTR dwInstance,
-	DWORD dwParam1, DWORD dwParam2)
-{
-	switch (uMsg) {
-		case WOM_DONE:
-			if (_waveout != NULL) FillHeaders();
-			break;
-		default: break;
-	}
+	return 0;
 }
 
 const char *SoundDriver_Win32::Start(const char * const *parm)
@@ -70,14 +63,17 @@ const char *SoundDriver_Win32::Start(const char * const *parm)
 
 	_bufsize = GetDriverParamInt(parm, "bufsize", (GB(GetVersion(), 0, 8) > 5) ? 8192 : 4096);
 
-	if (waveOutOpen(&_waveout, WAVE_MAPPER, &wfex, (DWORD_PTR)&waveOutProc, 0, CALLBACK_FUNCTION) != MMSYSERR_NOERROR)
-		return "waveOutOpen failed";
+	if (NULL == (_thread = CreateThread(NULL, 8192, SoundThread, 0, CREATE_SUSPENDED, &_threadId))) return "Failed to create thread";
+
+	if (waveOutOpen(&_waveout, WAVE_MAPPER, &wfex, (DWORD_PTR)_threadId, 0, CALLBACK_THREAD) != MMSYSERR_NOERROR) return "waveOutOpen failed";
 
 	MxInitialize(wfex.nSamplesPerSec);
 
 	PrepareHeader(&_wave_hdr[0]);
 	PrepareHeader(&_wave_hdr[1]);
-	FillHeaders();
+
+	ResumeThread(_thread);
+
 	return NULL;
 }
 
@@ -86,8 +82,12 @@ void SoundDriver_Win32::Stop()
 	HWAVEOUT waveout = _waveout;
 
 	_waveout = NULL;
+	WaitForMultipleObjects(1, &_thread, true, INFINITE);
+
 	waveOutReset(waveout);
 	waveOutUnprepareHeader(waveout, &_wave_hdr[0], sizeof(WAVEHDR));
 	waveOutUnprepareHeader(waveout, &_wave_hdr[1], sizeof(WAVEHDR));
 	waveOutClose(waveout);
+
+	CloseHandle(_thread);
 }
