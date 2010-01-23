@@ -95,15 +95,6 @@ public:
 	virtual void SetPixel(void *video, int x, int y, uint8 colour) = 0;
 
 	/**
-	 * Draw a pixel with a given colour on the video-buffer if there is currently a black pixel.
-	 * @param video The destination pointer (video-buffer).
-	 * @param x The x position within video-buffer.
-	 * @param y The y position within video-buffer.
-	 * @param colour A 8bpp mapping colour.
-	 */
-	virtual void SetPixelIfEmpty(void *video, int x, int y, uint8 colour) = 0;
-
-	/**
 	 * Make a single horizontal line in a single colour on the video-buffer.
 	 * @param video The destination pointer (video-buffer).
 	 * @param width The length of the line.

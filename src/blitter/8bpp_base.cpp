@@ -33,12 +33,6 @@ void Blitter_8bppBase::SetPixel(void *video, int x, int y, uint8 colour)
 	*((uint8 *)video + x + y * _screen.pitch) = colour;
 }
 
-void Blitter_8bppBase::SetPixelIfEmpty(void *video, int x, int y, uint8 colour)
-{
-	uint8 *dst = (uint8 *)video + x + y * _screen.pitch;
-	if (*dst == 0) *dst = colour;
-}
-
 void Blitter_8bppBase::DrawRect(void *video, int width, int height, uint8 colour)
 {
 	do {
