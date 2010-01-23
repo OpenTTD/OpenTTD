@@ -250,11 +250,14 @@ The TTD artwork files listed in the section 4.1 "(Required) 3rd party files"
 can be placed in a few different locations:
 	1. The current working directory (from where you started OpenTTD)
 	2. Your personal directory
-		Windows: C:\Documents and Settings\<username>\My Documents\OpenTTD
+		Windows: C:\My Documents (95, 98, ME)
+		         C:\Documents and Settings\<username>\My Documents\OpenTTD (2000, XP)
+		         C:\Users\<username>\Documents\OpenTTD (Vista, 7)
 		Mac OSX: ~/Documents/OpenTTD
 		Linux:   ~/.openttd
 	3. The shared directory
-		Windows: C:\Documents and Settings\All Users\Documents\OpenTTD
+		Windows: C:\Documents and Settings\All Users\Shared Documents\OpenTTD (2000, XP)
+		         C:\Users\Public\Documents\OpenTTD (Vista, 7)
 		Mac OSX: /Library/Application Support/OpenTTD
 		Linux:   not available
 	4. The binary directory (where the OpenTTD executable is)
