@@ -1643,7 +1643,7 @@ struct GameSettingsWindow : Window {
 
 				this->valuewindow_entry = pe;
 				SetDParam(0, value);
-				ShowQueryString(STR_JUST_INT, STR_CONFIG_SETTING_QUERY_CAPTION, 10, 100, this, CS_NUMERAL, QSF_NONE);
+				ShowQueryString(STR_JUST_INT, STR_CONFIG_SETTING_QUERY_CAPTION, 10, 100, this, CS_NUMERAL, QSF_ENABLE_DEFAULT);
 			}
 		}
 	}
@@ -1659,22 +1659,29 @@ struct GameSettingsWindow : Window {
 
 	virtual void OnQueryTextFinished(char *str)
 	{
+		/* The user pressed cancel */
+		if (str == NULL) return;
+
+		assert(this->valuewindow_entry != NULL);
+		assert((this->valuewindow_entry->flags & SEF_KIND_MASK) == SEF_SETTING_KIND);
+		const SettingDesc *sd = this->valuewindow_entry->d.entry.setting;
+
+		int32 value;
 		if (!StrEmpty(str)) {
-			assert(this->valuewindow_entry != NULL);
-			assert((this->valuewindow_entry->flags & SEF_KIND_MASK) == SEF_SETTING_KIND);
-			const SettingDesc *sd = this->valuewindow_entry->d.entry.setting;
-			int32 value = atoi(str);
+			value = atoi(str);
 
 			/* Save the correct currency-translated value */
 			if (sd->desc.flags & SGF_CURRENCY) value /= _currency->rate;
-
-			if ((sd->desc.flags & SGF_PER_COMPANY) != 0) {
-				SetCompanySetting(this->valuewindow_entry->d.entry.index, value);
-			} else {
-				SetSettingValue(this->valuewindow_entry->d.entry.index, value);
-			}
-			this->SetDirty();
+		} else {
+			value = (int32)sd->desc.def;
 		}
+
+		if ((sd->desc.flags & SGF_PER_COMPANY) != 0) {
+			SetCompanySetting(this->valuewindow_entry->d.entry.index, value);
+		} else {
+			SetSettingValue(this->valuewindow_entry->d.entry.index, value);
+		}
+		this->SetDirty();
 	}
 
 	virtual void OnResize()
