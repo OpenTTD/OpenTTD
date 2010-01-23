@@ -1673,7 +1673,7 @@ struct GameSettingsWindow : Window {
 			/* Save the correct currency-translated value */
 			if (sd->desc.flags & SGF_CURRENCY) value /= _currency->rate;
 		} else {
-			value = (int32)sd->desc.def;
+			value = (int32)(size_t)sd->desc.def;
 		}
 
 		if ((sd->desc.flags & SGF_PER_COMPANY) != 0) {
