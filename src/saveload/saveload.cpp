@@ -1252,7 +1252,8 @@ static const uint LZO_BUFFER_SIZE = 8192;
 
 static size_t ReadLZO()
 {
-	byte out[LZO_BUFFER_SIZE + LZO_BUFFER_SIZE / 64 + 16 + 3 + 8];
+	/* Buffer size is from the LZO docs plus the chunk header size. */
+	byte out[LZO_BUFFER_SIZE + LZO_BUFFER_SIZE / 16 + 64 + 3 + sizeof(uint32) * 2];
 	uint32 tmp[2];
 	uint32 size;
 	lzo_uint len;
@@ -1281,22 +1282,31 @@ static size_t ReadLZO()
 	return len;
 }
 
-/* p contains the pointer to the buffer, len contains the pointer to the length.
- * len bytes will be written, p and l will be updated to reflect the next buffer. */
 static void WriteLZO(size_t size)
 {
-	byte out[LZO_BUFFER_SIZE + LZO_BUFFER_SIZE / 64 + 16 + 3 + 8];
-	byte wrkmem[sizeof(byte*) * 4096];
+	const lzo_bytep in = _sl.buf;
+	/* Buffer size is from the LZO docs plus the chunk header size. */
+	byte out[LZO_BUFFER_SIZE + LZO_BUFFER_SIZE / 16 + 64 + 3 + sizeof(uint32) * 2];
+	byte wrkmem[LZO1X_1_MEM_COMPRESS];
 	lzo_uint outlen;
 
-	lzo1x_1_compress(_sl.buf, (lzo_uint)size, out + sizeof(uint32) * 2, &outlen, wrkmem);
-	((uint32*)out)[1] = TO_BE32((uint32)outlen);
-	((uint32*)out)[0] = TO_BE32(lzo_adler32(0, out + sizeof(uint32), outlen + sizeof(uint32)));
-	if (fwrite(out, outlen + sizeof(uint32) * 2, 1, _sl.fh) != 1) SlError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE);
+	do {
+		/* Compress up to LZO_BUFFER_SIZE bytes at once. */
+		lzo_uint len = size > LZO_BUFFER_SIZE ? LZO_BUFFER_SIZE : (lzo_uint)size;
+		lzo1x_1_compress(in, len, out + sizeof(uint32) * 2, &outlen, wrkmem);
+		((uint32*)out)[1] = TO_BE32((uint32)outlen);
+		((uint32*)out)[0] = TO_BE32(lzo_adler32(0, out + sizeof(uint32), outlen + sizeof(uint32)));
+		if (fwrite(out, outlen + sizeof(uint32) * 2, 1, _sl.fh) != 1) SlError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE);
+
+		/* Move to next data chunk. */
+		size -= len;
+		in += len;
+	} while (size > 0);
 }
 
 static bool InitLZO(byte compression)
 {
+	if (lzo_init() != LZO_E_OK) return false;
 	_sl.bufsize = LZO_BUFFER_SIZE;
 	_sl.buf = _sl.buf_ori = MallocT<byte>(LZO_BUFFER_SIZE);
 	return true;
