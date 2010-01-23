@@ -1065,6 +1065,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Ettergivende
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
 STR_CITY_APPROVAL_HOSTILE                                       :Fientlig
 
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Ingen egnet AI tilgjengelig...{}Du kan laste ned flere AIer via 'Online Content'-systemet
 STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Denne handlingen endret vanskelighetsgraden til egendefinert
 
 # Advanced settings window
@@ -1242,6 +1243,7 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Farge i
 STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Start spillet i år: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Jevn økonomi (flere mindre endringer): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Tillat aksjekjøp i andre firmaer: {ORANGE}{STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Prosent av etappefortjeneste å betale i tilbringersystemer: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Ved dra-og-slipp, plasser signal på hver {ORANGE}{STRING}. rute
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Bygg semaforer automatisk før: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Slå på signalgrensesnittet: {ORANGE}{STRING}
@@ -1338,7 +1340,7 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Flerspil
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Spillinnstillinger
 STR_INTRO_DIFFICULTY                                            :{BLACK}Vanskelighetsgrad ({STRING})
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Avanserte Innstillinger
-STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-instillinger
+STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-innstillinger
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Se etter innhold på nettet
 STR_INTRO_AI_SETTINGS                                           :{BLACK}AI-innstillinger
 STR_INTRO_QUIT                                                  :{BLACK}Avslutt
@@ -2011,8 +2013,8 @@ STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Velg st�
 
 STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Liten
 STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}By
-STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Metropolflyplass
-STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Internasjonal flyplass
+STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Metropol
+STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Internasjonal
 STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Pendler
 STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Interkontinental
 STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Heliport
@@ -2368,6 +2370,7 @@ STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Ukjent hendelse
 STR_NEWGRF_ERROR_INVALID_ID                                     :Forsøk på å bruke ugyldig ID.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} inneholder en ødelagt grafikk. All ødelagt grafikk vil bli vist som røde spørsmålstegn (?).
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Inneholder flere "Action 8" oppføringer
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Leste forbi slutten på pseudo-sprite.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Advarsel!
@@ -3204,6 +3207,7 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Velg år
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}AI-feilsøking
+STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Navnet til AIen
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Last inn AI på nytt
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Slå av AI, last skript på nytt, og start AI på nytt

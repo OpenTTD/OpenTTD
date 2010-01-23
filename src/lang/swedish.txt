@@ -21,7 +21,7 @@
 ##id 0x0000
 STR_NULL                                                        :
 STR_EMPTY                                                       :
-STR_UNDEFINED                                                   :(oidentifierad sträng)
+STR_UNDEFINED                                                   :(odefinierad sträng)
 STR_JUST_NOTHING                                                :Inget
 
 # Cargo related strings
@@ -75,7 +75,7 @@ STR_CARGO_SINGULAR_VALUABLES                                    :Värdesaker
 STR_CARGO_SINGULAR_COPPER_ORE                                   :Kopparmalm
 STR_CARGO_SINGULAR_MAIZE                                        :Majs
 STR_CARGO_SINGULAR_FRUIT                                        :Frukt
-STR_CARGO_SINGULAR_DIAMOND                                      :Diamanter
+STR_CARGO_SINGULAR_DIAMOND                                      :Diamant
 STR_CARGO_SINGULAR_FOOD                                         :Mat
 STR_CARGO_SINGULAR_PAPER                                        :Papper
 STR_CARGO_SINGULAR_GOLD                                         :Guld
@@ -83,13 +83,13 @@ STR_CARGO_SINGULAR_WATER                                        :Vatten
 STR_CARGO_SINGULAR_WHEAT                                        :Spannmål
 STR_CARGO_SINGULAR_RUBBER                                       :Gummi
 STR_CARGO_SINGULAR_SUGAR                                        :Socker
-STR_CARGO_SINGULAR_TOY                                          :Leksaker
+STR_CARGO_SINGULAR_TOY                                          :Leksak
 STR_CARGO_SINGULAR_CANDY                                        :Godis
 STR_CARGO_SINGULAR_COLA                                         :Kola
 STR_CARGO_SINGULAR_COTTON_CANDY                                 :Sockervadd
-STR_CARGO_SINGULAR_BUBBLE                                       :Bubblor
+STR_CARGO_SINGULAR_BUBBLE                                       :Bubbla
 STR_CARGO_SINGULAR_TOFFEE                                       :Knäck
-STR_CARGO_SINGULAR_BATTERY                                      :Batterier
+STR_CARGO_SINGULAR_BATTERY                                      :Batteri
 STR_CARGO_SINGULAR_PLASTIC                                      :Plast
 STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Läsk
 
@@ -176,7 +176,7 @@ STR_NOTHING                                                     :
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Mörkblå
-STR_COLOUR_PALE_GREEN                                           :Mattgrön
+STR_COLOUR_PALE_GREEN                                           :Blekgrön
 STR_COLOUR_PINK                                                 :Rosa
 STR_COLOUR_YELLOW                                               :Gul
 STR_COLOUR_RED                                                  :Röd
@@ -201,7 +201,7 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hk
 STR_UNITS_POWER_METRIC                                          :{COMMA}hk
 STR_UNITS_POWER_SI                                              :{COMMA}kW
 
-STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}T
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} ton
@@ -230,12 +230,12 @@ STR_BUTTON_RENAME                                               :{BLACK}Byt namn
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Stäng fönster
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Fönstertitel - dra för att flytta fönstret
 STR_TOOLTIP_SHADE                                               :{BLACK}Dölj fönster - Visa bara namnlisten
-STR_TOOLTIP_STICKY                                              :{BLACK}Markera detta fönster så att det finns kvar även fast man använder 'Stäng alla fönster' knappen
+STR_TOOLTIP_STICKY                                              :{BLACK}Markera att fönstret ska lämnas öppet när 'Stäng alla fönster'-knappen används
 STR_TOOLTIP_RESIZE                                              :{BLACK}Klicka och dra för att förstora fönstret
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Växla stor/liten fönsterstorlek
-STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Scrollbar - scrolla listan upp/ned
+STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Rullningslist - rullar listan upp/ned
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Rullningslist - rullar listan höger/vänster
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Riv ned byggnader etc. på en ruta mark
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Riv byggnader etc. på en markruta
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Standardinställning
@@ -274,16 +274,16 @@ STR_SORT_BY_MODEL                                               :Modell
 STR_SORT_BY_VALUE                                               :Värde
 STR_SORT_BY_LENGTH                                              :Längd
 STR_SORT_BY_LIFE_TIME                                           :Återstående livstid
-STR_SORT_BY_TIMETABLE_DELAY                                     :Tidtabellsfördröjning
+STR_SORT_BY_TIMETABLE_DELAY                                     :Tidtabellsförsening
 STR_SORT_BY_FACILITY                                            :Stationstyp
-STR_SORT_BY_WAITING                                             :Väntande last-värde
+STR_SORT_BY_WAITING                                             :Värde på väntande last
 STR_SORT_BY_RATING_MAX                                          :Högsta rating för last
 STR_SORT_BY_RATING_MIN                                          :Lägsta rating för last
-STR_SORT_BY_ENGINE_ID                                           :MotorID (Klassisk Sort)
+STR_SORT_BY_ENGINE_ID                                           :MotorID (klassisk sortering)
 STR_SORT_BY_COST                                                :Kostnad
-STR_SORT_BY_POWER                                               :Elektriskt
+STR_SORT_BY_POWER                                               :Kraft
 STR_SORT_BY_INTRO_DATE                                          :Introduktionsdatum
-STR_SORT_BY_RUNNING_COST                                        :Driftkostnad
+STR_SORT_BY_RUNNING_COST                                        :Driftskostnad
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Kraft/Driftkostnad
 STR_SORT_BY_CARGO_CAPACITY                                      :Lastkapacitet
 
@@ -292,7 +292,7 @@ STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pausa sp
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Snabbspola spelet
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Inställningar
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Spara spelet, avbryt spelet, avsluta spelet
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Visa karta
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Visa karta, extra vyfönster eller skyltlista
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Visa lista över städer
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Visa subventioner
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Visa lista över företagets stationer
@@ -304,14 +304,14 @@ STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Bekosta 
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Visa lista över företagets tåg. Ctrl+Musklick döljer listan över grupper
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Visa lista över företagets vägfordon. Ctrl+Musklick döljer listan över grupper
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Visa lista över företagets skepp. Ctrl+Musklick döljer listan över grupper
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Visa lista av företagets flygplan. Ctrl+Musklick döljer listan över grupper
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Visa lista över företagets flygplan. Ctrl+Musklick döljer listan över grupper
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Zooma in
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Zooma ut
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Bygg järnväg
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Bygg vägar
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Bygg hamnar
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Bygg flygplatser
-STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Öppna landskapsarkitektursverktygen för att bla höja/sänka land, plantera träd, osv
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Öppna landskapsarkitektursverktygen för att höja/sänka land, plantera träd, etc.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Visa ljud-/musikfönster
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Visa senaste meddelandet/nyheten, visa meddelandeinställningar
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Markinformation, konsoll, AI debug, skärmdumpar, om OpenTTD
@@ -323,8 +323,8 @@ STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Scenario-editor
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Flytta startdatumet 1 år bakåt
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Flytta startdatumet 1 år framåt
-STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Visa karta, lista av städer
-STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Skapa landskap
+STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Visa karta, lista över städer
+STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Generera landskap
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Generera städer
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Generera industrier
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Bygg vägar
@@ -344,13 +344,13 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Avsluta
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spelinställningar
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Svårighetsgrad
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Avancerade inställningar
-STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF inställningar
-STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Genomskinlighetsinställningar
+STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF-inställningar
+STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Inställningar för genomskinlighet
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Stadsnamn visas
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Stationsnamn visas
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Riktmärken visas
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Skyltar visas
-STR_SETTINGS_MENU_FULL_ANIMATION                                :Full animation
+STR_SETTINGS_MENU_FULL_ANIMATION                                :Full animering
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Full detaljnivå
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Genomskinliga byggnader
 STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Genomskinliga stationsskyltar
@@ -398,22 +398,22 @@ STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Bekosta ny indu
 
 ############ range for railway construction menu starts
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Bygg järnväg
-STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Elektrifierad järnvägskonstruktion
+STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Bygg elektrifierad järnväg
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Bygg monorail
-STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Bygg MagLev
+STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Bygg maglev
 ############ range ends here
 
 ############ range for road construction menu starts
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Bygg väg
-STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Spårvagnskonstruktion
+STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Bygg spårväg
 ############ range ends here
 
 ############ range for waterways construction menu starts
-STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Farledskonstruktion
+STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Bygg kanal
 ############ range ends here
 
 ############ range for airport construction menu starts
-STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Flygplatskonstruktion
+STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Bygg flygplats
 ############ range ends here
 
 ############ range for landscaping menu starts
@@ -436,9 +436,9 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Meddelandehisto
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Information om mark
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Visa/dölj konsolen
-STR_ABOUT_MENU_AI_DEBUG                                         :AI Debug
-STR_ABOUT_MENU_SCREENSHOT                                       :Screenshot (Ctrl-S)
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Gigantisk skärmdump(Ctrl-G)
+STR_ABOUT_MENU_AI_DEBUG                                         :AI-debug
+STR_ABOUT_MENU_SCREENSHOT                                       :Skärmdump (Ctrl-S)
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Gigantisk skärmdump (Ctrl-G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Om 'OpenTTD'
 ############ range ends here
 
@@ -524,7 +524,7 @@ STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLAC
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Växla graf för godstyp av/på
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 
-STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Visa detaljerad prestanda-ratings
+STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Visa detaljerad prestationsvärdering
 
 # Graph key window
 STR_GRAPH_KEY_CAPTION                                           :{WHITE}Nyckel till företagsgrafer
@@ -533,18 +533,18 @@ STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Klicka h
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Företagstabell
 STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Ingenjör
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Lokförare
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Trafikledare
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Transportkoordinator
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ROUTE_SUPERVISOR           :Ruttkontrollant
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Transportsamordnare
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ROUTE_SUPERVISOR           :Linjeförman
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_DIRECTOR                   :Chef
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHIEF_EXECUTIVE            :Direktör
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHAIRMAN                   :Ordförande
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :Verkställande direktör
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Tycoon
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Pamp
 
 # Performance detail window
-STR_PERFORMANCE_DETAIL                                          :{WHITE}Detaljerade prestandabetyg
+STR_PERFORMANCE_DETAIL                                          :{WHITE}Detaljerad prestationsvärdering
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detaljer
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
@@ -562,14 +562,14 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Lån:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Totalt:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Antal fordon som gick med vinst förra året. Inkluderar vägfordon, tåg, skepp och flygplan
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Antalet nyligen servade stationsdela är sammansatta till enr. Varje del av en station (ex: tågstation, bushållplats, flygplats) räknas, även om de station
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Vinsten för det fordon med lägst inkomst (endast fordon äldre än 2 år)
-STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Mängden tjänade pengar den månad med lägst vinst de senaste 12 kvartalen.
-STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Mängden tjänade pengar den månad med högsta vinsten de senaste 12 kvartalen.
-STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Enheter av gods levererat de senaste fyra kvartalen.
-STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Typer av gods levererat det senaste kvartalet.
-STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Mängden pengar på hand
-STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}Mängd pengar detta företag har lånat
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Antalet nyligen betjänade stationsdelar. Varje del av en station (t.ex. tågstation, bushållplats, flygplats) räknas, även om de är sammanbyggda till en station
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Vinsten för det fordon med lägst inkomst (endast fordon äldre än två år)
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Intjänade pengar det kvartal med lägst vinst av de senaste 12 kvartalen
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Intjänade pengar det kvartal med högst vinst de senaste 12 kvartalen
+STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Antalet enheter gods levererat de senaste fyra kvartalen.
+STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Antal olika typer av gods levererat det senaste kvartalet.
+STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Summa som företaget har på bankkontot
+STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}Summa som företaget har lånat
 STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Totalt antal poäng utav möjligt antal poäng
 
 # Music window
@@ -592,7 +592,7 @@ STR_MUSIC_TITLE_NAME                                            :{TINYFONT}{DKGR
 STR_MUSIC_TRACK                                                 :{TINYFONT}{BLACK}Spår
 STR_MUSIC_XTITLE                                                :{TINYFONT}{BLACK}Titel
 STR_MUSIC_SHUFFLE                                               :{TINYFONT}{BLACK}Slumpa
-STR_MUSIC_PROGRAM                                               :{TINYFONT}{BLACK}Program
+STR_MUSIC_PROGRAM                                               :{TINYFONT}{BLACK}Spellista
 STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Byt till föregående spår
 STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Byt till nästa spår
 STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Sluta spela musik
@@ -601,7 +601,7 @@ STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}Dra för
 STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM                     :{BLACK}Välj spellistan 'alla'
 STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}Välj spellistan 'gammaldags'
 STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}Välj spellistan 'modern'
-STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Välj 'Ezy Street style music'-program
+STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Välj spellistan 'Ezy Street style music'
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Välj spellistan 'Personlig 1' (användardefinerad)
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Välj spellistan 'Personlig 2' (användardefinerad)
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Växla slumpning av/på
@@ -610,16 +610,16 @@ STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Visa fö
 STR_ERROR_NO_SONGS                                              :{WHITE}Ett musikpaket utan låtar har valts. Ingen musik kommer att spelas
 
 # Playlist window
-STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Musikprogram
+STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Konstruera spellista
 STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}Spårindex
-STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}Program - '{STRING}'
+STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}Spellista - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}Töm
 STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}Spara
-STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Töm aktuellt program (Enbart Personlig1 eller Personlig2)
+STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Töm aktuell spellista (enbart Personlig1 eller Personlig2)
 STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Spara ljudinställningar
-STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klicka på ett spår för att lägga till den till spellistan (Enbart Personlig1 eller Personlig2)
-STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klicka på musikstycket för att ta bort det från den aktuella listan (endast Personlig1 och Personlig2)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klicka på ett musikstycke för att lägga till det i spellistan (enbart Personlig1 eller Personlig2)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klicka på ett musikstycket för att ta bort det från spellistan (endast Personlig1 och Personlig2)
 
 # Highscore window
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}De bästa företagen som nådde {NUM}{}(nivå {STRING})
@@ -631,11 +631,11 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Industrialist
 STR_HIGHSCORE_PERFORMANCE_TITLE_CAPITALIST                      :Kapitalist
 STR_HIGHSCORE_PERFORMANCE_TITLE_MAGNATE                         :Magnat
 STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :Mogul
-STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Århundradets Tycoon
+STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Århundradets pamp
 STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESIDENTNAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
-STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIGFONT}{BLACK}{COMPANY} uppnår '{STRING}' status!
-STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIGFONT}{WHITE}{PRESIDENTNAME} från {COMPANY} uppnår '{STRING}' status!
+STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIGFONT}{BLACK}{COMPANY} uppnår '{STRING}'status!
+STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIGFONT}{WHITE}{PRESIDENTNAME} från {COMPANY} uppnår '{STRING}'status!
 
 # Smallmap window
 STR_SMALLMAP_CAPTION                                            :{WHITE}Karta - {STRING}
@@ -687,11 +687,11 @@ STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINYFONT}{BLAC
 STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLACK}Öken
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}Snö
 
-STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Växla stadsnamn av/på på kartan
+STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Växla stadsnamn på/av på kartan
 STR_SMALLMAP_CENTER                                             :{BLACK}Centrera den lilla kartan på den nuvarande positionen
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
-STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Deaktivera alla
+STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Inaktivera alla
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Aktivera alla
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Visa höjd
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL                                :{BLACK}Visa inga industrier på kartan
@@ -707,7 +707,7 @@ STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  SPAR
 
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Meddelandehistorik
-STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}En lista av dom senaste nyheterna
+STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}En lista med de senaste nyheterna
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 # Message settings window
@@ -716,36 +716,36 @@ STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}Meddelan
 STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Inställning för alla meddelandetyper (på/av/summarisk)
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Spela upp ljud för summariska nyhetsmeddelanden
 STR_NEWS_MESSAGES_OFF                                           :Av
-STR_NEWS_MESSAGES_SUMMARY                                       :Summering
-STR_NEWS_MESSAGES_FULL                                          :Full
+STR_NEWS_MESSAGES_SUMMARY                                       :Summarisk
+STR_NEWS_MESSAGES_FULL                                          :På
 
 STR_NEWS_MESSAGE_TYPES                                          :{BLACK}Meddelandetyper:
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Ankomst av första fordonet vid spelarens stn.
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Ankomst av första fordonet vid konkurrenternas stn.
+STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Första fordonets ankomst till spelarens stn.
+STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Första fordonets ankomst till konkurrents stn.
 STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Olyckor / katastrofer
 STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}Företagsinformation
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}Industriöppning
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}Industristängning
-STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}Förändringar av ekonomin
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Produktionsförändring vid industrier som företaget använder
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Förändringar i produktion vid industrier trafikerad av motståndare
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Andra förändringar i produktion vid industrier.
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}Invigning av industrier
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}Nedläggning av Industrier
+STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}Ekonomiska förändringar
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Produktionsförändring vid industri som företaget betjänar
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Produktionsförändring vid industri som motståndare betjänar
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Andra produktionsförändringar vid industrier.
 STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Råd / information om företagets fordon
 STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Nya fordon
 STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Ändringar i godsacceptans
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Subventioner
-STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Generell information
+STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Övergripande information
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIGFONT}{BLACK}Invånarna firar . . .{}Första tåget ankommer till {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIGFONT}{BLACK}Invånarna firar . . .{}Första bussen ankommer till {STATION}!
 STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIGFONT}{BLACK}Invånarna firar . . .{}Första lastbilen ankommer till {STATION}!
 STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIGFONT}{BLACK}Invånarna firar . . .{}Första passagerarspårvagnen anländer till {STATION}!
-STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIGFONT}{BLACK}Invånarna firar . . .{}Första fraktspårvagnen anländer till {STATION}!
-STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIGFONT}{BLACK}Invånarna firar . . .{}Första skeppet ankommer till {STATION}!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIGFONT}{BLACK}Invånarna firar . . .{}Första godsspårvagnen anländer till {STATION}!
+STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIGFONT}{BLACK}Invånarna firar . . .{}Första fartyget ankommer till {STATION}!
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIGFONT}{BLACK}Invånarna firar . . .{}Första flygplanet ankommer till {STATION}!
 
 STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK}Tågkrash!{}{COMMA} dog i eldklot efter kollision
-STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}Vägfordonskrash!{}förare dör i eldklot efter kollision med tåg
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}Vägfordonskrash!{}Förare dör i eldklot efter kollision med tåg
 STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIGFONT}{BLACK}Vägfordonskrash!{}{COMMA} dör i eldklot efter kollision med tåg
 STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK}Flygplanskrasch!{}{COMMA} dör i eldklot på {STATION}
 STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}Flygplanskrasch!{}Flygplanet fick slut på bränsle, {COMMA} dör i eldklot!
@@ -753,13 +753,13 @@ STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIGFONT}{BLACK}Zeppelinare-katastrof på {STATION}!
 STR_NEWS_DISASTER_SMALL_UFO                                     :{BIGFONT}{BLACK}Vägfordon förstört i 'UFO'-kollision!
 STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIGFONT}{BLACK}Oljeraffinaderi exploderade nära {TOWN}!
-STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIGFONT}{BLACK}Fabrik förstörd i misstänkta omständigheter nära {TOWN}!
+STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIGFONT}{BLACK}Fabrik förstörd under misstänkta omständigheter nära {TOWN}!
 STR_NEWS_DISASTER_BIG_UFO                                       :{BIGFONT}{BLACK}'UFO' landar nära {TOWN}!
-STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIGFONT}{BLACK}Kolgruva sjunker - lämnar spår av katastrof nära {TOWN}!
-STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIGFONT}{BLACK}Översvämning!{}Minst {COMMA} förmodas saknade eller döda efter dödlig översvämning!
+STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIGFONT}{BLACK}Kolgruva rasar - lämnar spår av sättningar nära {TOWN}!
+STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIGFONT}{BLACK}Översvämning!{}Minst {COMMA} saknas, förmodas döda efter betydande översvämning!
 
 STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIGFONT}{BLACK}Transportföretag har problem!
-STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIGFONT}{BLACK}{STRING} kommer att säljas eller gå bankrutt om det inte går bättre snart!
+STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIGFONT}{BLACK}{STRING} kommer att säljas eller förklaras bankrutt om det inte går bättre snart!
 STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIGFONT}{BLACK}Transportföretag slås ihop!
 STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} har sålts till {STRING} för {CURRENCY}!
 STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIGFONT}{BLACK}Bankrutt!
@@ -778,8 +778,8 @@ STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK
 STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}Leveransproblem får {STRING} att meddela att de stänger ner snarast!
 STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}Avsaknad av träd får {STRING} att meddela att de stänger ner snarast!
 
-STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}Europeiska Valutasystemet!{}{}Euron introduceras och ditt land går över till den som dess enda valuta!
-STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}Lågkonjuktur!{}{}Finansexperter befarar det värsta när ekonomin sjunker!
+STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}Europeiska Valutasystemet!{}{}Euron introduceras som enda valuta i ditt land!
+STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}Lågkonjuktur!{}{}Finansexperter befarar det värsta när ekonomin rasar!
 STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}Lågkonjuktur Över!{}{}Uppsving i byteshandeln ger tillförsikt till industrier när ekonomin stärks!
 
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} ökar produktionen!
@@ -788,38 +788,38 @@ STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}Nya jordbruksmetoder vid {INDUSTRY} ger fördubblad produktion!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK}Produktionen av {STRING} vid {INDUSTRY} upp med {COMMA}%!
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}Produktionen vid {INDUSTRY} går ned med 50%
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}Problem med insekter orsakar kris vid {INDUSTRY}!{}Produktionen ned med 50%
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}Invasion av insekter orsakar ödeläggelse vid {INDUSTRY}!{}Produktionen ned med 50%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK}Produktionen av {STRING} vid {INDUSTRY} ned med {COMMA}%!
 
 STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} väntar i depån
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} väntar i depån
 STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} väntar i depån
-STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} väntar i flygplatshangaren
+STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} väntar i hangaren
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
 STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} har för få ordrar i schemat
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} har en ogiltig order
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} har dubblerade destinationer
-STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} har en felaktig station ibland destinationerna
+STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} har en felaktig station bland destinationerna
 # end of order system
 
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} börjar bli gammal
-STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} börjar bli väldigt gammal
-STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} börjar bli väldigt gammal och bör bytas ut omgående
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} börjar bli mycket gammal
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} börjar bli mycket gammal och bör bytas ut omgående
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} kan inte hitta en rutt för att fortsätta
 STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} är vilse.
-STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}'s vinst förra året var {CURRENCY}
+STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}s vinst förra året var {CURRENCY}
 
-STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} stoppades för att en beordrad förändring av frakttyp misslyckades
-STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Autoförnya misslyckades på {VEHICLE}{}{STRING}
+STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} stoppades för att en beställd anpassning av frakttyp misslyckades
+STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Förnya automatiskt misslyckades på {VEHICLE}{}{STRING}
 
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}Ny {STRING} tillgänglig!
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIGFONT}{BLACK}{ENGINE}
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Nya {STRING} är nu tillgänglig  -  {ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Ny {STRING} är nu tillgänglig  -  {ENGINE}
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} tar inte längre emot {STRING}
-STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} tar inte längre emot {STRING} och {STRING}
+STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} tar inte längre emot {STRING} eller {STRING}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} tar nu emot {STRING}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} tar nu emot {STRING} och {STRING}
 
@@ -1065,6 +1065,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Eftergiven
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
 STR_CITY_APPROVAL_HOSTILE                                       :Fientlig
 
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Ingen passande AI tillgänglig...{}Du kan ladda ner ett flertal AIs via 'Online Content'-systemet
 STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Denna åtgärd ändrade svårighetsgraden till egen-inställd
 
 # Advanced settings window
@@ -1242,6 +1243,7 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Färgad
 STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Startdatum: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Lugn ekonomi (flera små ändringar): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Tillåt inköp av aktier från andra företag: {ORANGE}{STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Andel av vinsten som betalas till etapper i ett matarsystem: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Vid utdragning av signaler, placera en signal var: {ORANGE}{STRING} ruta
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Bygg automatiskt semaforer innan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Använd signal-GUI: {ORANGE}{STRING}
@@ -2011,7 +2013,7 @@ STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Välj st
 
 STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Liten
 STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}Stad
-STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Storstads-Flygplats
+STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Storstads-flygplats
 STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Internationell flygplats
 STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Pendlare
 STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Interkontinental

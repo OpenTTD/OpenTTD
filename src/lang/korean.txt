@@ -2371,6 +2371,7 @@ STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :알수없는 �
 STR_NEWGRF_ERROR_INVALID_ID                                     :유효하지 않은 ID 사용 시도
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} 에 손상된 스프라이트가 있습니다. 모든 손상된 스프라이트는 붉은 물음표(?)로 보일 것입니다.
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Action 8 엔트리가 여러개 존재합니다.
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :pseudo-sprite의 읽기 범위를 초과했습니다.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}경고!

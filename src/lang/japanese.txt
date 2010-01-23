@@ -250,10 +250,11 @@ STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}長さ�
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}地域：{NUM} x {NUM}{}高さの違い：{NUM} m
 
 
-# The first three are also used as 'Sort by' buttons, the rest only in dropdowns
+# These are used in buttons
 STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}人口
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}名前
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}日付
+# These are used in dropdowns
 STR_SORT_BY_PRODUCTION                                          :生産量
 STR_SORT_BY_TYPE                                                :種類
 STR_SORT_BY_TRANSPORTED                                         :運送済み
@@ -292,10 +293,10 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}会社�
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}グラフを表示します
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}会社の成績表を表示します
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}新規産業の建設を出資
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}会社の列車のリストを表示します
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}会社の道路車両のリストを表示します
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}会社の船舶のリストを表示します
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}会社の飛行機のリストを表示します
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}会社の列車のリストを表示します。コントロール+クリックはグループ／車両のリストを示すのをトグルします
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}会社の道路車両のリストを表示します。コントロール+クリックはグループ／車両のリストを示すのをトグルします
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}会社の船舶のリストを表示します。コントロール+クリックはグループ／車両のリストを示すのをトグルします
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}会社の飛行機のリストを表示します。コントロール+クリックはグループ／車両のリストを示すのをトグルします
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}ズームインします
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}ズームアウトします
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}鉄道を建設します
@@ -305,7 +306,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}空港�
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}整地したり、植林したりするには、地形のツールバーを開きます
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}エフェクト／音楽のウィンドウを表示します
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}最後のメッセージ、メッセージの設定を表示します
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}地域情報
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}地域情報、コンソール、AIデバグ、スクリーンショット、OpenTTDいついて
 
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}シナリオを開く、保存、エディタを終了など
@@ -359,7 +360,8 @@ STR_MAP_MENU_EXTRA_VIEW_PORT                                    :特別ビュー
 STR_MAP_MENU_SIGN_LIST                                          :標示のリスト
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :市町村のリスト
-############ both ranges ends here
+############ end of the 'Display map' dropdown
+############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :助成金
@@ -551,8 +553,8 @@ STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}合計�
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}車両数：道路車両、列車、船舶や飛行機を含みます
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}駅数：駅のすべての部分（駅、バス停、空港）を一つとして数えます
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}最小収益のある（年齢2年以上の）車両の損益を表示します
-STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}先一年間の最小収益のある一ヶ月間の収益を表示します
-STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}先一年間の最大収益のある一ヶ月間の収益を表示します
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}先一年間の最小収益のある三ヶ月間の収益を表示します
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}先一年間の最大収益のある三ヶ月間の収益を表示します
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}一年間に運送した貨物単位を表示します
 STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}直前の四半期に運送した貨物種類数を表示します
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}この会社の残高を表示します
@@ -590,6 +592,8 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}プレ�
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}プレイリスト「カスタム 2」を選択します
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}プレイリストのシャッフルを入／切にします
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}曲選択のウィンドウを表示します
+
+STR_ERROR_NO_SONGS                                              :{WHITE}曲のない音楽セットは選択されました。曲は演じません
 
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}プレイリストの選択
@@ -675,6 +679,10 @@ STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRI
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}すべてを切
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}すべてを入
+STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}雪の高さ
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL                                :{BLACK}地図に産業を示さないようにします
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL                                 :{BLACK}地図のぜんぶの産業を示す
+STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}ハイトマップを示すのをトグルします
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}最後のメッセージ／報道を表示します
@@ -746,6 +754,7 @@ STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING}が{TOWN}の付近に建設を開始します！
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING}が{STRING}に買収！
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}（社長）
+
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}新しい{STRING}が{TOWN}町に工事中！
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}新しい{STRING}が{TOWN}町に植林中！
@@ -918,6 +927,10 @@ STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}使用�
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}ベースGRFセットについての追加情報
 
 
+STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}ベース音楽セット
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}使用する音楽の選択
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}ベース音楽セットについて追加情報
+
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}フルスクリーンモードが設定できません
 
 # Custom currency window
@@ -978,6 +991,7 @@ STR_NUM_LOW                                                     :低い
 STR_NUM_NORMAL                                                  :通常
 STR_NUM_HIGH                                                    :高い
 STR_NUM_CUSTOM                                                  :カスタム
+
 
 STR_AI_SPEED_VERY_SLOW                                          :特に遅い
 STR_AI_SPEED_SLOW                                               :遅い
@@ -1198,6 +1212,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :改善の道路
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :格子状（2x2）
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :格子状（3x3）
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :ランダム
+
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}メインツールバーの位置：{ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :左
@@ -1727,6 +1742,7 @@ STR_CONTENT_TYPE_AI                                             :AI
 STR_CONTENT_TYPE_AI_LIBRARY                                     :AI ライブラリ
 STR_CONTENT_TYPE_SCENARIO                                       :シナリオ
 STR_CONTENT_TYPE_HEIGHTMAP                                      :ハイトマップ
+STR_CONTENT_TYPE_BASE_MUSIC                                     :ベース音楽
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}項目をダウンロード中...
@@ -1964,6 +1980,7 @@ STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}ラン�
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}ランダムなところに町を建設します
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}多くのランダムな市町村
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}地図にたくさんの市町村を建設します
+
 
 STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}町のサイズ：
 STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}村
@@ -3025,6 +3042,7 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}この�
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}この車両は現在{STRING}遅刻しています
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}この車両は現在{STRING}早刻しています
 
+
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}時間を変更
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}選択した指令の実行時間を変更します
 
@@ -3035,6 +3053,12 @@ STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}遅刻�
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}遅刻回数をリセットして、車両が定刻になります
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}自動時刻
+
+
+
+
+# Date window (for timetable)
+
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}AI デバッグ
@@ -3050,6 +3074,7 @@ STR_AI_CONFIG_CAPTION                                           :{WHITE}AI の�
 STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}次のゲームにすべての使用する AI を表示します。
 STR_AI_CONFIG_HUMAN_PLAYER                                      :人間のプレヤー
 STR_AI_CONFIG_RANDOM_AI                                         :ランダムな AI
+
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}AI を選択
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}ほかの AI を開きます
@@ -3888,7 +3913,6 @@ STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
-
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
 STR_BLACK_1                                                     :{BLACK}1
@@ -3904,4 +3928,3 @@ STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
-

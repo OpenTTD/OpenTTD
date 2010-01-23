@@ -1066,6 +1066,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Permisiva
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerante
 STR_CITY_APPROVAL_HOSTILE                                       :Hostil
 
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}No se encontraron IAs apropiadas...{}Puedes descargar IAs a través del sistema de 'Contenido Online'
 STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Esta acción cambia el nivel de dificultad a personalizado
 
 # Advanced settings window
@@ -1339,9 +1340,9 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Multijug
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Opciones de Juego
 STR_INTRO_DIFFICULTY                                            :{BLACK}Dificultad ({STRING})
-STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Opciones avanzadas
+STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Opciones Avanzadas
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Configuración NewGRF
-STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Consultar contenido online
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Consultar Contenido Online
 STR_INTRO_AI_SETTINGS                                           :{BLACK}Ajustes de la IA
 STR_INTRO_QUIT                                                  :{BLACK}Salir
 
@@ -2370,6 +2371,7 @@ STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Acción 0 con p
 STR_NEWGRF_ERROR_INVALID_ID                                     :Intento de usar un ID incorrecto
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} contiene un sprite corrupto. Todos los sprites corruptos serán mostrados como un interrogante rojo (?).
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Contiene múltiples entradas Action 8.
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lectura después del final del pseudo-sprite.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Precaución!
