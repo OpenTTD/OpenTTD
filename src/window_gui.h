@@ -719,8 +719,9 @@ public:
 
 	/**
 	 * The query window opened from this window has closed.
-	 * @param str the new value of the string or NULL if the window
-	 *            was cancelled.
+	 * @param str the new value of the string, NULL if the window
+	 *            was cancelled or an empty string when the default
+	 *            button was pressed, i.e. StrEmpty(str).
 	 */
 	virtual void OnQueryTextFinished(char *str) {}
 
