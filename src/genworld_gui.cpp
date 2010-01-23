@@ -732,6 +732,9 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 
 	virtual void OnQueryTextFinished(char *str)
 	{
+		/* Was 'cancel' pressed? */
+		if (str == NULL) return;
+
 		int32 value;
 		if (!StrEmpty(str)) {
 			value = atoi(str);
