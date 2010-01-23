@@ -2521,15 +2521,17 @@ static void GetTileDesc_Station(TileIndex tile, TileDesc *td)
 	}
 	td->build_date = BaseStation::GetByTile(tile)->build_date;
 
-	const StationSpec *spec = GetStationSpec(tile);
+	if (HasStationTileRail(tile)) {
+		const StationSpec *spec = GetStationSpec(tile);
 
-	if (spec != NULL) {
-		td->station_class = GetStationClassName(spec->sclass);
-		td->station_name = spec->name;
+		if (spec != NULL) {
+			td->station_class = GetStationClassName(spec->sclass);
+			td->station_name  = spec->name;
 
-		if (spec->grffile != NULL) {
-			const GRFConfig *gc = GetGRFConfig(spec->grffile->grfid);
-			td->grf = gc->name;
+			if (spec->grffile != NULL) {
+				const GRFConfig *gc = GetGRFConfig(spec->grffile->grfid);
+				td->grf = gc->name;
+			}
 		}
 	}
 
