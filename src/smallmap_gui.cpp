@@ -410,19 +410,6 @@ static inline uint32 GetSmallMapOwnerPixels(TileIndex tile)
 	return _owner_colours[o];
 }
 
-
-static const uint32 _smallmap_mask_left[3] = {
-	MKCOLOUR(0xFF000000),
-	MKCOLOUR(0xFFFF0000),
-	MKCOLOUR(0xFFFFFF00),
-};
-
-static const uint32 _smallmap_mask_right[] = {
-	MKCOLOUR(0x000000FF),
-	MKCOLOUR(0x0000FFFF),
-	MKCOLOUR(0x00FFFFFF),
-};
-
 /* Each tile has 4 x pixels and 1 y pixel */
 
 /** Holds function pointers to determine tile colour in the smallmap for each smallmap mode. */
@@ -500,15 +487,16 @@ class SmallMapWindow : public Window {
 	 * @param yc The Y coordinate of the first tile in the column
 	 * @param pitch Number of pixels to advance in the screen buffer each time a pixel is written.
 	 * @param reps Number of lines to draw
-	 * @param mask Some bytes may need to be masked out when at the border of drawn area
+	 * @param start_pos Position of first pixel to draw.
+	 * @param end_pos Position of last pixel to draw (exclusive).
 	 * @param blitter current blitter
 	 * @param proc Pointer to the colour function
+	 * @note If pixel position is below \c 0, skip drawing.
 	 * @see GetSmallMapPixels(TileIndex)
 	 */
-	void DrawSmallMapStuff(void *dst, uint xc, uint yc, int pitch, int reps, uint32 mask, Blitter *blitter, GetSmallMapPixels *proc) const
+	void DrawSmallMapStuff(void *dst, uint xc, uint yc, int pitch, int reps, int start_pos, int end_pos, Blitter *blitter, GetSmallMapPixels *proc) const
 	{
 		void *dst_ptr_abs_end = blitter->MoveTo(_screen.dst_ptr, 0, _screen.height);
-		void *dst_ptr_end = blitter->MoveTo(dst_ptr_abs_end, -4, 0);
 
 		do {
 			/* Check if the tile (xc,yc) is within the map range */
@@ -518,21 +506,12 @@ class SmallMapWindow : public Window {
 				if (dst < _screen.dst_ptr) continue;
 				if (dst >= dst_ptr_abs_end) continue;
 
-				uint32 val = proc(TileXY(xc, yc)) & mask;
+				uint32 val = proc(TileXY(xc, yc));
 				uint8 *val8 = (uint8 *)&val;
-
-				if (dst <= dst_ptr_end) {
-					blitter->SetPixelIfEmpty(dst, 0, 0, val8[0]);
-					blitter->SetPixelIfEmpty(dst, 1, 0, val8[1]);
-					blitter->SetPixelIfEmpty(dst, 2, 0, val8[2]);
-					blitter->SetPixelIfEmpty(dst, 3, 0, val8[3]);
-				} else {
-					/* It happens that there are only 1, 2 or 3 pixels left to fill, so
-					 * in that special case, write till the end of the video-buffer */
-					int i = 0;
-					do {
-						blitter->SetPixelIfEmpty(dst, 0, 0, val8[i]);
-					} while (i++, dst = blitter->MoveTo(dst, 1, 0), dst < dst_ptr_abs_end);
+				int idx = max(0, -start_pos);
+				for (int pos = max(0, start_pos); pos < end_pos; pos++) {
+					blitter->SetPixel(dst, idx, 0, val8[idx]);
+					idx++;
 				}
 			}
 		/* Switch to next tile in the column */
@@ -733,27 +712,14 @@ class SmallMapWindow : public Window {
 		int y = 0;
 
 		for (;;) {
-			uint32 mask = 0xFFFFFFFF;
-
 			/* Distance from left edge */
 			if (x >= -3) {
-				if (x < 0) {
-					/* Mask to use at the left edge */
-					mask = _smallmap_mask_left[x + 3];
-				}
+				if (x >= dpi->width) break; // Exit the loop.
 
-				/* Distance from right edge */
-				int t = dpi->width - x;
-				if (t < 4) {
-					if (t <= 0) break; // Exit loop
-					/* Mask to use at the right edge */
-					mask &= _smallmap_mask_right[t - 1];
-				}
-
-				/* Number of lines */
-				int reps = (dpi->height - y + 1) / 2;
+				int end_pos = min(dpi->width, x + 4);
+				int reps = (dpi->height - y + 1) / 2; // Number of lines.
 				if (reps > 0) {
-					this->DrawSmallMapStuff(ptr, tile_x, tile_y, dpi->pitch * 2, reps, mask, blitter, _smallmap_draw_procs[this->map_type]);
+					this->DrawSmallMapStuff(ptr, tile_x, tile_y, dpi->pitch * 2, reps, x, end_pos, blitter, _smallmap_draw_procs[this->map_type]);
 				}
 			}
 
