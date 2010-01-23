@@ -586,7 +586,7 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 			case GLAND_START_DATE_TEXT: // Year text
 				this->widget_id = GLAND_START_DATE_TEXT;
 				SetDParam(0, _settings_newgame.game_creation.starting_year);
-				ShowQueryString(STR_JUST_INT, STR_MAPGEN_START_DATE_QUERY_CAPT, 8, 100, this, CS_NUMERAL, QSF_NONE);
+				ShowQueryString(STR_JUST_INT, STR_MAPGEN_START_DATE_QUERY_CAPT, 8, 100, this, CS_NUMERAL, QSF_ENABLE_DEFAULT);
 				break;
 
 			case GLAND_SNOW_LEVEL_DOWN:
@@ -604,7 +604,7 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 			case GLAND_SNOW_LEVEL_TEXT: // Snow line text
 				this->widget_id = GLAND_SNOW_LEVEL_TEXT;
 				SetDParam(0, _settings_newgame.game_creation.snow_line_height);
-				ShowQueryString(STR_JUST_INT, STR_MAPGEN_SNOW_LINE_QUERY_CAPT, 3, 100, this, CS_NUMERAL, QSF_NONE);
+				ShowQueryString(STR_JUST_INT, STR_MAPGEN_SNOW_LINE_QUERY_CAPT, 3, 100, this, CS_NUMERAL, QSF_ENABLE_DEFAULT);
 				break;
 
 			case GLAND_TREE_PULLDOWN: // Tree placer
@@ -743,7 +743,6 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 			switch (this->widget_id) {
 				case GLAND_START_DATE_TEXT: value = DEF_START_YEAR; break;
 				case GLAND_SNOW_LEVEL_TEXT: value = DEF_SNOWLINE_HEIGHT; break;
-				case GLAND_TOWN_PULLDOWN:   value = 1; break; // There's not really a default
 				default: NOT_REACHED();
 			}
 		}
