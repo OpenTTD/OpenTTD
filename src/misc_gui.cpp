@@ -1252,7 +1252,9 @@ struct QueryStringWindow : public QueryStringBaseWindow
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		if (widget == QUERY_STR_WIDGET_DEFAULT && (this->flags & QSF_ENABLE_DEFAULT) == 0) {
-			this->GetWidget<NWidgetCore>(widget)->SetFill(0, 1);
+			/* We don't want this widget to show! */
+			fill->width = 0;
+			resize->width = 0;
 			size->width = 0;
 		}
 	}
