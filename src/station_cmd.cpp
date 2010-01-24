@@ -46,6 +46,7 @@
 #include "core/random_func.hpp"
 #include "company_base.h"
 #include "newgrf.h"
+#include "table/airporttile_ids.h"
 
 #include "table/strings.h"
 
@@ -2345,6 +2346,27 @@ static void DrawTile_Station(TileInfo *ti)
 		total_offset = 0;
 		custom_ground_offset = 0;
 	}
+
+	if (IsAirport(ti->tile)) {
+		switch (GetStationGfx(ti->tile)) {
+			case APT_RADAR_GRASS_FENCE_SW:
+				t = &_station_display_datas_airport_radar_grass_fence_sw[GetStationAnimationFrame(ti->tile)];
+				break;
+			case APT_GRASS_FENCE_NE_FLAG:
+				t = &_station_display_datas_airport_flag_grass_fence_ne[GetStationAnimationFrame(ti->tile)];
+				break;
+			case APT_RADAR_FENCE_SW:
+				t = &_station_display_datas_airport_radar_fence_sw[GetStationAnimationFrame(ti->tile)];
+				break;
+			case APT_RADAR_FENCE_NE:
+				t = &_station_display_datas_airport_radar_fence_ne[GetStationAnimationFrame(ti->tile)];
+				break;
+			case APT_GRASS_FENCE_NE_FLAG_2:
+				t = &_station_display_datas_airport_flag_grass_fence_ne_2[GetStationAnimationFrame(ti->tile)];
+				break;
+		}
+	}
+
 	Owner owner = GetTileOwner(ti->tile);
 
 	PaletteID palette;
@@ -2602,7 +2624,7 @@ static void TileLoop_Station(TileIndex tile)
 	 * hardcoded.....not good */
 	switch (GetStationType(tile)) {
 		case STATION_AIRPORT:
-			if (AirportTileSpec::Get(GetStationGfx(tile))->anim_next != AIRPORTTILE_NOANIM) {
+			if (AirportTileSpec::Get(GetStationGfx(tile))->animation_info != 0xFFFF) {
 				AddAnimatedTile(tile);
 			}
 			break;
@@ -2630,8 +2652,10 @@ static void AnimateTile_Station(TileIndex tile)
 	if (IsAirport(tile)) {
 		const AirportTileSpec *ats = AirportTileSpec::Get(GetStationGfx(tile));
 		uint16 mask = (1 << ats->animation_speed) - 1;
-		if (ats->anim_next != AIRPORTTILE_NOANIM && (_tick_counter & mask) == 0) {
-			SetStationGfx(tile, ats->anim_next);
+		if (ats->animation_info != 0xFFFF && (_tick_counter & mask) == 0) {
+			uint8 next_frame = GetStationAnimationFrame(tile) + 1;
+			if (next_frame >= GB(ats->animation_info, 0, 8)) next_frame = 0;
+			SetStationAnimationFrame(tile, next_frame);
 			MarkTileDirtyByTile(tile);
 		}
 	}

@@ -2026,6 +2026,43 @@ bool AfterLoadGame()
 		}
 	}
 
+	/* Airport tile animation uses animation frame instead of other graphics id */
+	if (CheckSavegameVersion(137)) {
+		struct AirportTileConversion {
+			byte old_start;
+			byte num_frames;
+		};
+		static const AirportTileConversion atc[] = {
+			{31,  12}, // APT_RADAR_GRASS_FENCE_SW
+			{50,   4}, // APT_GRASS_FENCE_NE_FLAG
+			{62,   2}, // 1 unused tile
+			{66,  12}, // APT_RADAR_FENCE_SW
+			{78,  12}, // APT_RADAR_FENCE_NE
+			{101, 10}, // 9 unused tiles
+			{111,  8}, // 7 unused tiles
+			{119, 15}, // 14 unused tiles (radar)
+			{140,  4}, // APT_GRASS_FENCE_NE_FLAG_2
+		};
+		for (TileIndex t = 0; t < map_size; t++) {
+			if (IsAirportTile(t)) {
+				StationGfx old_gfx = GetStationGfx(t);
+				byte offset = 0;
+				for (uint i = 0; i < lengthof(atc); i++) {
+					if (old_gfx < atc[i].old_start) {
+						SetStationGfx(t, old_gfx - offset);
+						break;
+					}
+					if (old_gfx < atc[i].old_start + atc[i].num_frames) {
+						SetStationAnimationFrame(t, old_gfx - atc[i].old_start);
+						SetStationGfx(t, atc[i].old_start - offset);
+						break;
+					}
+					offset += atc[i].num_frames - 1;
+				}
+			}
+		}
+	}
+
 	/* Road stops is 'only' updating some caches */
 	AfterLoadRoadStops();
 	AfterLoadLabelMaps();

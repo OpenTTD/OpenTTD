@@ -12,189 +12,101 @@
 #ifndef AIRPORTTILES_H
 #define AIRPORTTILES_H
 
-
 /** Writes all airport tile properties in the AirportTile struct */
-#define AT(anim_next, anim_speed) {anim_next, anim_speed}
+#define AT(num_frames, anim_speed) {(1 << 8) | num_frames, anim_speed}
+/** Writes an airport tile without animation in the AirportTile struct */
+#define AT_NOANIM {0xFFFF, 2}
+
 /** All default airport tiles.
  * @see AirportTiles for a list of names. */
 static const AirportTileSpec _origin_airporttile_specs[] = {
 	/* 0..9 */
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
+	AT_NOANIM,
+	AT_NOANIM,
+	AT_NOANIM,
+	AT_NOANIM,
+	AT_NOANIM,
+	AT_NOANIM,
+	AT_NOANIM,
+	AT_NOANIM,
+	AT_NOANIM,
+	AT_NOANIM,
 
-	/* 10..19 */
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
+	AT_NOANIM,
+	AT_NOANIM,
+	AT_NOANIM,
+	AT_NOANIM,
+	AT_NOANIM,
+	AT_NOANIM,
+	AT_NOANIM,
+	AT_NOANIM,
+	AT_NOANIM,
+	AT_NOANIM,
 
-	/* 20..29*/
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
+	AT_NOANIM,
+	AT_NOANIM,
+	AT_NOANIM,
+	AT_NOANIM,
+	AT_NOANIM,
+	AT_NOANIM,
+	AT_NOANIM,
+	AT_NOANIM,
+	AT_NOANIM,
+	AT_NOANIM,
 
-	/* 30..39*/
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(                32, 2),
-	AT(                33, 2),
-	AT(                34, 2),
-	AT(                35, 2),
-	AT(                36, 2),
-	AT(                37, 2),
-	AT(                38, 2),
-	AT(                39, 2),
-	AT(                40, 2),
+	AT_NOANIM,
+	AT(12, 2), // APT_RADAR_GRASS_FENCE_SW
+	AT_NOANIM,
+	AT_NOANIM,
+	AT_NOANIM,
+	AT_NOANIM,
+	AT_NOANIM,
+	AT_NOANIM,
+	AT_NOANIM,
+	AT(4, 1), // APT_GRASS_FENCE_NE_FLAG
 
-	/* 40..49 */
-	AT(                41, 2),
-	AT(                42, 2),
-	AT(                31, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
+	AT_NOANIM,
+	AT_NOANIM,
+	AT_NOANIM,
+	AT_NOANIM,
+	AT_NOANIM,
+	AT_NOANIM,
+	AT_NOANIM,
+	AT_NOANIM,
+	AT_NOANIM,
+	AT_NOANIM,
 
-	/* 50..59 */
-	AT(                51, 1),
-	AT(                52, 1),
-	AT(                53, 1),
-	AT(                50, 1),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
+	AT_NOANIM,
+	AT(12, 2), // APT_RADAR_FENCE_SW
+	AT(12, 2), // APT_RADAR_FENCE_NE
+	AT_NOANIM,
+	AT_NOANIM,
+	AT_NOANIM,
+	AT_NOANIM,
+	AT_NOANIM,
+	AT_NOANIM,
+	AT_NOANIM,
 
-	/* 60..69 */
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(                67, 2),
-	AT(                68, 2),
-	AT(                69, 2),
-	AT(                70, 2),
+	AT_NOANIM,
+	AT_NOANIM,
+	AT_NOANIM,
+	AT_NOANIM,
+	AT_NOANIM,
+	AT_NOANIM,
+	AT_NOANIM,
+	AT_NOANIM,
+	AT_NOANIM,
+	AT_NOANIM,
 
-	/* 70..79 */
-	AT(                71, 2),
-	AT(                72, 2),
-	AT(                73, 2),
-	AT(                74, 2),
-	AT(                75, 2),
-	AT(                76, 2),
-	AT(                77, 2),
-	AT(                66, 2),
-	AT(                79, 2),
-	AT(                80, 2),
-
-	/* 80..89 */
-	AT(                81, 2),
-	AT(                82, 2),
-	AT(                83, 2),
-	AT(                84, 2),
-	AT(                85, 2),
-	AT(                86, 2),
-	AT(                87, 2),
-	AT(                88, 2),
-	AT(                89, 2),
-	AT(                78, 2),
-
-	/* 90..99 */
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-
-	/* 100..109 */
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-
-	/* 110..119 */
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-
-	/* 120..129 */
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(               122, 2),
-	AT(               123, 2),
-	AT(               124, 2),
-	AT(               125, 2),
-	AT(               126, 2),
-	AT(               127, 2),
-	AT(               128, 2),
-	AT(               129, 2),
-	AT(               130, 2),
-
-	/* 130..139 */
-	AT(               131, 2),
-	AT(               132, 2),
-	AT(               121, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-	AT(AIRPORTTILE_NOANIM, 2),
-
-	/* 140..143 */
-	AT(               141, 1),
-	AT(               142, 1),
-	AT(               143, 1),
-	AT(               140, 1),
+	AT_NOANIM,
+	AT_NOANIM,
+	AT_NOANIM,
+	AT(4, 1), // APT_GRASS_FENCE_NE_FLAG_2
 };
 
 assert_compile(NUM_AIRPORTTILES == lengthof(_origin_airporttile_specs));
 
+#undef AT_NOANIM
 #undef AT
 
 #endif /* AIRPORTTILES_H */
