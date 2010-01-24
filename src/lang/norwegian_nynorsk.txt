@@ -3204,6 +3204,7 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Vel år
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}AI feilsøking
+STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Namnet til datamaskinspelaren
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Last datamaskinspelaren på ny
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Drep datamaskinspelaren, last skriptet på ny og starte om datamaskinspelaren

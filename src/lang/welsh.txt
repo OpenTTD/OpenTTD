@@ -597,6 +597,7 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Dewis y 
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Togu cymysgu trefn raglen ymlaen neu i ffwrdd
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Dangos y ffenestr dewis traciau cerddoriaeth
 
+
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Dewisiadau Rhaglen Gerddoriaeth
 STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
@@ -928,6 +929,7 @@ STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} ar g
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}gwybodaeth ychwanegol am y set sall graffeg
 
 
+
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Methodd y modd sgrin llawn
 
 # Custom currency window
@@ -994,6 +996,7 @@ STR_NUM_LOW                                                     :Isel
 STR_NUM_NORMAL                                                  :Arferol
 STR_NUM_HIGH                                                    :Anodd
 STR_NUM_CUSTOM                                                  :Addasedig
+
 
 STR_AI_SPEED_VERY_SLOW                                          :Araf Iawn
 STR_AI_SPEED_SLOW                                               :Araf
@@ -1228,6 +1231,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :grid 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :ar hap
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Caiff trefi adeiladu ffyrdd: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Caniatáu i drefi reoli lefel swn meysydd awyrenau: {ORANGE}{STRING}
+
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Safle'r prif far offer: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Chwith
@@ -2301,6 +2305,7 @@ STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Priodwedd Gweit
 STR_NEWGRF_ERROR_INVALID_ID                                     :Ceisio defnyddio ID annilys.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}Mae'r {STRING} yn cynnwys corlun llygredig. Bydd corluniaid llygredig yn cael eu dangos gyda mark cwestiwn coch (?).
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Mae'n cynnwys nifer o gofnodion Gweithred 8.
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Ddarllen ar ol diwedd y psuedo-sprite
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Rhybudd!
@@ -3108,6 +3113,7 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Llenwch 
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}Dadfygio AI
+STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Enw'r AI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Ail-lwytho AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}lladd yr AI, ail-lwytho'r sgript ac ailgychwyn yr AI

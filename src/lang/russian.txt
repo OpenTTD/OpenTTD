@@ -1219,6 +1219,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Дозволя�
 STR_CITY_APPROVAL_TOLERANT                                      :Терпимое
 STR_CITY_APPROVAL_HOSTILE                                       :Враждебное
 
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Модули ИИ отсутствуют.{}Их можно скачать через систему проверки онлайн-контента.
 STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Ваши действия сменили уровень сложности на пользовательский
 
 # Advanced settings window
@@ -2529,6 +2530,7 @@ STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Неизвес�
 STR_NEWGRF_ERROR_INVALID_ID                                     :Используется неправильный ID.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} содержит неправильный спрайт. Все неправльные спрайты будут показаны красным знаком вопроса (?).
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Содержит несколько Action 8 действий.
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Данные внезапно закончились.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Осторожно!

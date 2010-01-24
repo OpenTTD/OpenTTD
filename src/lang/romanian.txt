@@ -1065,6 +1065,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :permisivă
 STR_CITY_APPROVAL_TOLERANT                                      :tolerantă
 STR_CITY_APPROVAL_HOSTILE                                       :ostilă
 
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Nu este disponibil niciun modul de Inteligenţă artificială...{}Puteţi descărca diferite module de Inteligenţă Artificială prin sistemul de 'Conţinut Online'
 STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Această acţiune a setat nivelul de difficultate în "Personalizat"
 
 # Advanced settings window
@@ -2369,6 +2370,7 @@ STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Actiune necunos
 STR_NEWGRF_ERROR_INVALID_ID                                     :Incercare de folosire a unui ID invalid
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING}Contine un sprite corupt. Toate sprite-urile corupte vor fi aratate ca si semne de intrebare (?) de culoare rosie.
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Conţine multiple intrari "Acţiunea 8"
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Citire dincolo de sfârşitul pseudo-spriteului.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Atentie!

@@ -565,8 +565,8 @@ STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}: סה"�
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}מספר כלי תחבורה שהציגו רווחים; נכללים רכבים, רכבות, כלי טייס וכלי שייט
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}מספר חלקי התחנות שנתנו שירות. כל חלק של תחנה (למשל, תחנות רכבת, תחנות אוטובוס, נמלי תעופה) נחשבים, אפילו אם הם מחוברים כתחנה אחת
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}(הרווח של כלי התחבורה בעלי ההכנסה הנמוכה ביותר (רק כלים בני שנתיים ויותר נלקחים בחשבון
-STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}כמות הכסף שהרוויחה החברה בחודש הגרוע ביותר ב -12 הריבעונים האחרונים
-STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}כמות הכסף שהרוויחה החברה בחודש המוצלח ביותר ב -12 הריבעונים האחרונים
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}כמות הכסף שהרוויחה החברה בחודש הגרוע ביותר ב-12 הריבעונים האחרונים
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}כמות הכסף שהרוויחה החברה בחודש המוצלח ביותר ב-12 הריבעונים האחרונים
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}מספר יחידות המטען ששונעו בארבעת הריבעונים הארונים
 STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}מספר יחידות המטען ששונעו בריבעון האחרון
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}מאזן חשבון הבנק של החברה
@@ -1375,7 +1375,7 @@ STR_QUIT_NO                                                     :{BLACK}לא
 STR_OSNAME_WINDOWS                                              :חלונות
 STR_OSNAME_DOS                                                  :דוס
 STR_OSNAME_UNIX                                                 :יוניקס
-STR_OSNAME_OSX                                                  :X מערכת הפעלה
+STR_OSNAME_OSX                                                  :OS{NBSP}X
 STR_OSNAME_BEOS                                                 :מערכת הפעלה בי
 STR_OSNAME_HAIKU                                                :הייקו
 STR_OSNAME_MORPHOS                                              :מערכת הפעלה מורפ
@@ -2013,8 +2013,8 @@ STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}בחר �
 
 STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}קטן
 STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}עירוני
-STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}שדה תעופה מחוזי
-STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}שדה תעופה לאומי
+STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}מחוזי
+STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}בינלאומי
 STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}שדה תעופה מאסף
 STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}שדה תעופה בינלאומי
 STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}מנחת מסוקים
