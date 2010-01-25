@@ -766,6 +766,7 @@ static const DrawTileSeqStruct _station_display_datas_waypoint_Y[] = {
  * @param dtss  Sequence child sprites of the tile
  */
 #define TILE_SPRITE_LINE(img, dtss) { {img, PAL_NONE}, dtss },
+#define TILE_SPRITE_NULL() { {0, 0}, NULL },
 
 static const DrawTileSprites _station_display_datas_rail[] = {
 	TILE_SPRITE_LINE(SPR_RAIL_TRACK_X,               _station_display_datas_0)
@@ -810,7 +811,7 @@ static const DrawTileSprites _station_display_datas_airport[] = {
 	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_passenger_tunnel) // APT_PIER
 	TILE_SPRITE_LINE(SPR_FLAT_GRASS_TILE,            _station_display_nothing)   // APT_EMPTY
 	TILE_SPRITE_LINE(SPR_FLAT_GRASS_TILE,            _station_display_fence_ne)  // APT_EMPTY_FENCE_NE
-	{0, NULL}, // APT_RADAR_GRASS_FENCE_SW
+	TILE_SPRITE_NULL() // APT_RADAR_GRASS_FENCE_SW
 	TILE_SPRITE_LINE(SPR_FLAT_GRASS_TILE,            _station_display_transmitter_fence_ne) // APT_RADIO_TOWER_FENCE_NE
 	TILE_SPRITE_LINE(SPR_AIRFIELD_TERM_A,            _station_display_nothing)   // APT_SMALL_BUILDING_3
 	TILE_SPRITE_LINE(SPR_AIRFIELD_TERM_B,            _station_display_nothing)   // APT_SMALL_BUILDING_2
@@ -818,7 +819,7 @@ static const DrawTileSprites _station_display_datas_airport[] = {
 	TILE_SPRITE_LINE(SPR_AIRFIELD_APRON_A,           _station_display_fence_sw)  // APT_GRASS_FENCE_SW
 	TILE_SPRITE_LINE(SPR_AIRFIELD_APRON_B,           _station_display_nothing)   // APT_GRASS_2
 	TILE_SPRITE_LINE(SPR_AIRFIELD_APRON_C,           _station_display_nothing)   // APT_GRASS_1
-	{0, NULL}, // APT_GRASS_FENCE_NE_FLAG
+	TILE_SPRITE_NULL() // APT_GRASS_FENCE_NE_FLAG
 	TILE_SPRITE_LINE(SPR_AIRFIELD_RUNWAY_NEAR_END,   _station_display_fence_se)  // APT_RUNWAY_SMALL_NEAR_END
 	TILE_SPRITE_LINE(SPR_AIRFIELD_RUNWAY_MIDDLE,     _station_display_fence_se)  // APT_RUNWAY_SMALL_MIDDLE
 	TILE_SPRITE_LINE(SPR_AIRFIELD_RUNWAY_FAR_END,    _station_display_fence_se)  // APT_RUNWAY_SMALL_FAR_END
@@ -830,8 +831,8 @@ static const DrawTileSprites _station_display_datas_airport[] = {
 	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_fence_ne)  // APT_APRON_FENCE_NE
 	TILE_SPRITE_LINE(SPR_AIRPORT_RUNWAY_END,         _station_display_fence_nw)  // APT_RUNWAY_END_FENCE_NW
 	TILE_SPRITE_LINE(SPR_AIRPORT_RUNWAY_EXIT_B,      _station_display_fence_nw)  // APT_RUNWAY_FENCE_NW
-	{0, NULL}, // APT_RADAR_FENCE_SW
-	{0, NULL}, // APT_RADAR_FENCE_NE
+	TILE_SPRITE_NULL() // APT_RADAR_FENCE_SW
+	TILE_SPRITE_NULL() // APT_RADAR_FENCE_NE
 	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_helipad_fence_sw) // APT_HELIPAD_1
 	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_helipad_fence_nw) // APT_HELIPAD_2_FENCE_NW
 	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_helipad)     // APT_HELIPAD_2
@@ -852,7 +853,7 @@ static const DrawTileSprites _station_display_datas_airport[] = {
 	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_fence_ne_se) // APT_APRON_FENCE_NE_SE
 	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_grass_west) // APT_APRON_HALF_EAST
 	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_grass_east) // APT_APRON_HALF_WEST
-	{0, NULL}, // APT_GRASS_FENCE_NE_FLAG_2
+	TILE_SPRITE_NULL() // APT_GRASS_FENCE_NE_FLAG_2
 };
 
 static const DrawTileSprites _station_display_datas_airport_radar_grass_fence_sw[] = {
@@ -956,6 +957,7 @@ static const DrawTileSprites _station_display_datas_waypoint[] = {
 };
 
 #undef TILE_SPRITE_LINE
+#undef TILE_SPRITE_NULL
 
 static const DrawTileSprites * const _station_display_datas[] = {
 	_station_display_datas_rail,
