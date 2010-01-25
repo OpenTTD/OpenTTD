@@ -30,6 +30,7 @@
 #include "company_base.h"
 #include "company_func.h"
 
+#include <time.h>
 
 /* static */ const char *CrashLog::message = NULL;
 /* static */ char *CrashLog::gamelog_buffer = NULL;
