@@ -1445,6 +1445,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Przyjazne
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerancyjne
 STR_CITY_APPROVAL_HOSTILE                                       :Wrogie
 
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Brak pasujących SI...{}Możesz pobrać wszystkie SI przez system "Zawartości online"
 STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Zmieniono poziom trudności na "własny"
 
 # Advanced settings window

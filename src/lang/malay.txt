@@ -1065,6 +1065,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Mengizinkan
 STR_CITY_APPROVAL_TOLERANT                                      :Bertoleransi
 STR_CITY_APPROVAL_HOSTILE                                       :Kurang mengizinkan
 
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Tiada AI yang bersesuaian...{}Anda boleh memuat turun beberapa AI dari sistem 'Kandungan Atas Talian'
 STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Perbuatan ini telah menukar tahap kesukaran kepada pilihan diri
 
 # Advanced settings window
@@ -2369,6 +2370,7 @@ STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Unknown Action 
 STR_NEWGRF_ERROR_INVALID_ID                                     :Percubaan menggunakan ID yang tidak sah.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} mengandungi sprite yang rosak. Semua sprite yang rosak akan dipaparkan menggunakan tanda soal (?) merah.
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Contains multiple Action 8 entries.
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Pembacaan melebihi hujung pseudo-sprite.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Amaran!
@@ -2814,15 +2816,30 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Anda ak
 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Pesanan daripada pengusaha kenderaan
+STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Kami baru sahaja mereka {STRING} yang baru - adakah anda berminat untuk menggunakan kenderaan ini secara eksklusif, supaya kami dapat menilai tahap kelancarannya sebelum kami menjualnya kepada pihak awam?
+STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :keretapi
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :kenderaan jalanraya
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :pesawat
+STR_ENGINE_PREVIEW_SHIP                                         :kapal
+STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :keretapi monorel
+STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :keretapi maglev
 
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Kos: {CURRENCY} Berat: {WEIGHT_S}{}Kelajuan: {VELOCITY}  Kuasa: {POWER}{}Kos Pengendalian: {CURRENCY}/thn{}Kapasiti: {CARGO}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Kos: {CURRENCY} Berat: {WEIGHT_S}{}Kelajuan: {VELOCITY}  Kuasa: {POWER}  Maks. E.K.: {6:FORCE}{}Kos Pengendalian: {4:CURRENCY}/thn{}Kapasiti: {5:CARGO}
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Kos: {CURRENCY} Kelajuan Maks.: {VELOCITY}{}Kapasiti: {CARGO}, {CARGO}{}Kos Pengendalian: {CURRENCY}/thn
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Kos: {CURRENCY} Kelajuan Maks.: {VELOCITY}{}Kapasiti: {CARGO}{}Kos Pengendalian: {CURRENCY}/thn
 
 # Autoreplace window
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Gantikan {STRING}
 STR_REPLACE_VEHICLE_TRAIN                                       :Keretapi
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Kenderaan Jalanraya
 STR_REPLACE_VEHICLE_SHIP                                        :Kapal
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Pesawat
 
+STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Pilih jenis enjin untuk diganti
+STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Pilih jenis enjin baru yang anda ingin guna untuk menggantikan jenis enjin sebelah kiri
 
+STR_REPLACE_VEHICLES_START                                      :{BLACK}Mulakan Penggantian Kenderaan
 
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Menggantikan: {ORANGE}{STRING}
 STR_REPLACE_ENGINES                                             :Enjin

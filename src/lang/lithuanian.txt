@@ -254,9 +254,9 @@ STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Įveskit
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Įveskite raktažodį filtruoti sąrašui dėl
 STR_LIST_FILTER_TITLE                                           :{BLACK}Įrašo filtravimas:
 
-STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Pasirink rikiavimo tvarka (mazejimo/didejimo)
+STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Pasirink rikiavimo tvarką (mažėjimo/didėjimo)
 STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Pasirink rikiavimo kriteriju
-STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Pasirinkite filtravimo kriterijas
+STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Pasirinkite filtravimo kriterijus
 STR_BUTTON_SORT_BY                                              :{BLACK}Rikiuoti pagal
 STR_BUTTON_LOCATION                                             :{BLACK}Vieta
 STR_BUTTON_RENAME                                               :{BLACK}Pervadinti
@@ -382,7 +382,7 @@ STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Papild. grafiko
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Permatomumo nustatymai
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Rodyti miestų pavadinimus
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Rodyti stotelių pavadinimus
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Rodyti tarpinės stotelės
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Rodyti tarpines stoteles
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Rodyti ženklus
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Visa animacija
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Visos smulkmenos
@@ -578,7 +578,7 @@ STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :Prezidentas
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Magnatas
 
 # Performance detail window
-STR_PERFORMANCE_DETAIL                                          :{WHITE}Issamus veiklos ivertinimas
+STR_PERFORMANCE_DETAIL                                          :{WHITE}Išsamus veiklos vertinimas
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detaliai
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
@@ -586,7 +586,7 @@ STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Automobiliai:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stotelės:
-STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}MIn. pelnas:
+STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Min. pelnas:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Min. pajamos:
 STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Didž. pajamos:
 STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}Pristatyta:
@@ -601,13 +601,13 @@ STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Mažiaus
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Kiekis uždirbtų pinigų per ketvirtį su žemiausiu pelno rodikliu per paskutinius 12 ketvirčių
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Kiekis uždirbtų pinigų per ketvirtį su didžiausiu paskutiniu 12 ketvirčių pelnu
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Per paskutinius metus (4 ketv.) kroviniu kiekis
-STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Per paskutini ketvirti perveztu kroviniu rusiu kiekis
+STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Paskutiniojo ketvirčio pervežtų krovinių rušių kiekis
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Kompanijos pinigų kiekis banko sąskaitoje
-STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}Kompanijos pasiskolintu pinigu kiekis
+STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}Kompanijos pasiskolintu pinigų kiekis
 STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Viso taškų (iš visų galimų)
 
 # Music window
-STR_MUSIC_JAZZ_JUKEBOX_CAPTION                                  :{WHITE}Jazz Jukebox
+STR_MUSIC_JAZZ_JUKEBOX_CAPTION                                  :{WHITE}Džiazo grotuvas
 STR_MUSIC_PLAYLIST_ALL                                          :{TINYFONT}{BLACK}Visi
 STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINYFONT}{BLACK}Senas stilius
 STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}{BLACK}Naujas stilius
@@ -1270,7 +1270,7 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Lėktuv
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Laivų remonto intervalas: {ORANGE}{STRING} (d. ar %)
 STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Laivų remonto intervalas: {ORANGE} išjungta
 STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Atjungti techninę apžiūrą, jei gedimai nenaudojami: {ORANGE}{STRING}
-STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Suaktyvinti vagonų greičio apribojimą: {ORANGE}{STRING}
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Aktyvuoti vagonų greičio apribojimą: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}Uždrausti elektrinius bėgius: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Spalvotos naujienos atsiranda: {ORANGE}{STRING} metais
@@ -2166,7 +2166,7 @@ STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Dykuma
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Geležinkelio bėgiai
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Gelezinkelio bėgiai su paprastais šviesoforais
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Gelezinkelio bėgiai su pre-šviesoforais
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Geležinkelio bėgiai su pre-šviesoforais
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Gelezinkelio bėgiai su exit-šviesoforais
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :geležinkelio bėgiai su kombo signalais
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Geležinkelis su krypties šviesoforais
@@ -2892,7 +2892,7 @@ STR_REPLACE_ELRAIL_VEHICLES                                     :Elektrifikuoti 
 STR_REPLACE_MONORAIL_VEHICLES                                   :Vienbegiai traukiniai
 STR_REPLACE_MAGLEV_VEHICLES                                     :„Maglev“ traukiniai
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagono pasalinimas: {ORANGE}{STRING}
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagono pašalinimas: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Pakeitimo metu išlaikyti traukinio ilgį atjungiant vagonus (pradedant juo priekio), jeigu pakeitus garvežį traukinys pailgėtų.
 
 # Vehicle view
@@ -2903,13 +2903,13 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Rodyti a
 STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Rodyti laivą ekrano centre. Ctrl+Paspaudimas seka laivą pagrindiniame lange
 STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Rodyti lėktuvą ektrano centre. Ctrl+Paspaudimas seka lėktuvą pagrindiniame lange
 
-STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Siusti traukini i depa
+STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Nukreipti traukinį į depą. Ctrl+Paspaudimas nukreips tik aptarnavimui.
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Siusti automobili i artimiausia garaza
-STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Nukreipti laiva i depa
-STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Siusti lektuva i angara
+STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Nukreipti laivą į depą. Ctrl+Paspaudimas nukreips tik aptarnavimui.
+STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Nukreipti lėktuvą į angarą. Ctrl+Paspaudimas nukreips tik aptarnavimui.
 
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Tai nupirks traukinio kopiją su visais vagonais. Spragtelėjus laikant VALD (CTRL) nukopijuojami nurodymai
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Tai nupirks automobilio kopiją. Spragtelėjus laikant VALD (CTRL) nukopijuojami nurodymai
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Bus nupirkta traukinio kopija su visais vagonais. Spragtelėjus laikant VALD (CTRL) nukopijuojami nurodymai
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Bus nupirkta automobilio kopija. Spragtelėjus laikant VALD (CTRL) nukopijuojami nurodymai
 STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Tai nupirks laivo kopiją. Spragtelėjus laikant VALD (CTRL) nukopijuojami nurodymai
 STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Tai nupirks lėktuvo kopiją. Spragtelėjus laikant VALD (CTRL) nukopijuojami nurodymai
 
@@ -3407,7 +3407,7 @@ STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}...per a
 STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}...pirma reikia pastatyti miestą
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... mieste gali būti tik vienas
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... gali būti pastatyta tik miestuose, kuriuose yra bent 1200 gyventojų
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... gali būti statomas tik drėgnose miškingose teritorijose
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... gali būti statomas tik džiunglėse
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... gali būti statomas tik dykumose
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... gali būti statomas tik miestuose
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... gali būti tik prie žemėlapio kraštų

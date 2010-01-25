@@ -755,7 +755,7 @@ STR_NEWS_DISASTER_SMALL_UFO                                     :{BIGFONT}{BLACK
 STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIGFONT}{BLACK}Oljeraffinaderi exploderade nära {TOWN}!
 STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIGFONT}{BLACK}Fabrik förstörd under misstänkta omständigheter nära {TOWN}!
 STR_NEWS_DISASTER_BIG_UFO                                       :{BIGFONT}{BLACK}'UFO' landar nära {TOWN}!
-STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIGFONT}{BLACK}Kolgruva rasar - lämnar spår av sättningar nära {TOWN}!
+STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIGFONT}{BLACK}Kolgruva rasar - lämnar spår av förödelse nära {TOWN}!
 STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIGFONT}{BLACK}Översvämning!{}Minst {COMMA} saknas, förmodas döda efter betydande översvämning!
 
 STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIGFONT}{BLACK}Transportföretag har problem!
@@ -780,7 +780,7 @@ STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK
 
 STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}Europeiska Valutasystemet!{}{}Euron introduceras som enda valuta i ditt land!
 STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}Lågkonjuktur!{}{}Finansexperter befarar det värsta när ekonomin rasar!
-STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}Lågkonjuktur Över!{}{}Uppsving i byteshandeln ger tillförsikt till industrier när ekonomin stärks!
+STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}Lågkonjuktur Över!{}{}Uppsving i handeln ger tillförsikt till industrier när ekonomin stärks!
 
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} ökar produktionen!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}Nytt lager av kol funnet vid {INDUSTRY}!{}Produktionen fördubblas!
@@ -881,7 +881,7 @@ STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Mätenhe
 STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Val av mätenheter
 
 ############ start of measuring units region
-STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :Engelsk
+STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :Imperialistisk
 STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :Metrisk
 STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :SI
 ############ end of measuring units region
@@ -908,7 +908,7 @@ STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Polska
 STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Slovakiska
 STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Norska
 STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Ungerska
-STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Österrikisk
+STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Österrikiska
 STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Rumänska
 STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Tjeckiska
 STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Schweiziska
@@ -918,7 +918,7 @@ STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Italienska
 STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Katalanska
 ############ end of townname region
 
-STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Autosparning
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Spara automatiskt
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Välj intervall mellan automatiskt sparande
 
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Avstängd
@@ -941,7 +941,7 @@ STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Välj fi
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Grafikpaket som standard
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Välj vilket grafikpaket som ska användas som standard
-STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} saknad/korrumperad fil{P "" s}
+STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} saknad/trasig fil{P "" s}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Ytterligare information om bas-grafik settet
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Grundljudspaket

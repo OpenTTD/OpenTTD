@@ -3330,7 +3330,7 @@ STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Kan ikke
 STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Kan ikke sænke landet her...
 STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Kan ikke hæve landet her...
 STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}Udgravning ville skade en tunnel
-STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}Allerede ved havoverfladen
+STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}... allerede ved havoverfladen
 STR_ERROR_TOO_HIGH                                              :{WHITE}... for højt
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... allerede fladt
 
