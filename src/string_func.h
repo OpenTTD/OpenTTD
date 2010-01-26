@@ -256,7 +256,7 @@ char *strndup(const char *s, size_t len);
 #	undef DEFINE_STRCASESTR
 #else
 #	define DEFINE_STRCASESTR
-const char *strcasestr(const char *haystack, const char *needle);
+char *strcasestr(const char *haystack, const char *needle);
 #endif /* strcasestr is available */
 
 #endif /* STRING_FUNC_H */

@@ -385,12 +385,12 @@ char *strndup(const char *s, size_t len)
 #endif /* !_GNU_SOURCE */
 
 #ifdef DEFINE_STRCASESTR
-const char *strcasestr(const char *haystack, const char *needle)
+char *strcasestr(const char *haystack, const char *needle)
 {
 	size_t hay_len = strlen(haystack);
 	size_t needle_len = strlen(needle);
 	while (hay_len >= needle_len) {
-		if (strncasecmp(haystack, needle, needle_len) == 0) return haystack;
+		if (strncasecmp(haystack, needle, needle_len) == 0) return const_cast<char *>(haystack);
 
 		haystack++;
 		hay_len--;
