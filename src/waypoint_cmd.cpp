@@ -306,7 +306,7 @@ CommandCost CmdBuildRailWaypoint(TileIndex start_tile, DoCommandFlag flags, uint
 
 		for (int i = 0; i < count; i++) {
 			TileIndex tile = start_tile + i * offset;
-			byte old_specindex = IsTileType(tile, MP_STATION) ? GetCustomStationSpecIndex(tile) : 0;
+			byte old_specindex = HasStationTileRail(tile) ? GetCustomStationSpecIndex(tile) : 0;
 			bool reserved = IsTileType(tile, MP_RAILWAY) ?
 					HasBit(GetRailReservationTrackBits(tile), AxisToTrack(axis)) :
 					HasStationReservation(tile);

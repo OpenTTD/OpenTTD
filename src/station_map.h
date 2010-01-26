@@ -407,13 +407,13 @@ static inline bool IsCustomStationSpecIndex(TileIndex t)
 
 static inline void SetCustomStationSpecIndex(TileIndex t, byte specindex)
 {
-	assert(IsTileType(t, MP_STATION));
+	assert(HasStationTileRail(t));
 	_m[t].m4 = specindex;
 }
 
 static inline uint GetCustomStationSpecIndex(TileIndex t)
 {
-	assert(IsTileType(t, MP_STATION));
+	assert(HasStationTileRail(t));
 	return _m[t].m4;
 }
 

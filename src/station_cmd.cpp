@@ -1121,7 +1121,7 @@ CommandCost CmdBuildRailStation(TileIndex tile_org, DoCommandFlag flags, uint32 
 
 				/* Remove animation if overbuilding */
 				DeleteAnimatedTile(tile);
-				byte old_specindex = IsTileType(tile, MP_STATION) ? GetCustomStationSpecIndex(tile) : 0;
+				byte old_specindex = HasStationTileRail(tile) ? GetCustomStationSpecIndex(tile) : 0;
 				MakeRailStation(tile, st->owner, st->index, axis, layout & ~1, rt);
 				/* Free the spec if we overbuild something */
 				DeallocateSpecFromStation(st, old_specindex);
