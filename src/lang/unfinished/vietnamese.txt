@@ -651,7 +651,7 @@ STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}Hiện p
 STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Hiện cụm công nghiệp trên b/đồ
 STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Hiện tuyến vận tải trên bản đồ
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Hiện cụm nông nghiệp trên b/đồ
-STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Hiện sở hữu đất trên bản đồ
+STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Hiện chủ sở hữu đất trên bản đồ
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}Đường bộ
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLACK}Đường ray
@@ -684,7 +684,7 @@ STR_SMALLMAP_LEGENDA_WATER                                      :{TINYFONT}{BLAC
 STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINYFONT}{BLACK}Không có chủ sở hữu
 STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINYFONT}{BLACK}Thị trấn
 STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINYFONT}{BLACK}Ngành công nghiệp
-STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLACK}Sa mạc
+STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLACK}Hoang mạc
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}Tuyết
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Bật/tắt tên thị trấn trên bản đồ
@@ -693,8 +693,10 @@ STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRI
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Tắt tất cả
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Bật tất cả
+STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Hiển thị độ cao
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL                                :{BLACK}Không hiện khu công nghiệp trên bản đồ
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL                                 :{BLACK}Hiện tất cả khu công nghiệp trên bản đồ
+STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Hiển thị bản đồ địa hình
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Hiện thông điệp hoặc tin tức cuối cùng
@@ -1063,6 +1065,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Dễ dãi
 STR_CITY_APPROVAL_TOLERANT                                      :Khả Dung
 STR_CITY_APPROVAL_HOSTILE                                       :Thù Địch
 
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Không có AI nào phù hợp...{}Bạn có thể tải các AI từ mục 'Online Content'
 STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Hành động này thay đổi độ khó về tự tùy chỉnh
 
 # Advanced settings window
@@ -1080,6 +1083,7 @@ STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Bật c
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Kiểu tăng tốc của tàu hỏa: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Gốc
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Thật
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Thêm độ dốc cho tàu hoả {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Cấm tàu hỏa và tàu thủy quay 90 độ: {ORANGE}{STRING} {LTBLUE} (vô hiệu với OPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Nhập ga xe lửa xây kế nhau: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Cho phép nhập trạm không kế nhau: {ORANGE}{STRING}
@@ -1239,6 +1243,7 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Tin t�
 STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Năm bắt đầu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Nền kinh tế ít biến động: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Cho phép mua cổ phần của các công ty khác: {ORANGE}{STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Tỉ lệ của một nhánh lợi nhuận trong ngành: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Khi kéo/thả, đặt đèn tín hiệu lên mỗi : {ORANGE}{STRING} ô
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Tự động xây tín hiệu cánh trước: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Bật GUI đèn tín hiệu : {ORANGE}{STRING}
@@ -1326,9 +1331,9 @@ STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Thay đ�
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Chơi mới
-STR_INTRO_LOAD_GAME                                             :{BLACK}Nạp Game
+STR_INTRO_LOAD_GAME                                             :{BLACK}Nạp ván chơi
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Chơi Kịch Bản
-STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Chơi Heightmap
+STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Chơi màn cao nguyên
 STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Trình biên tập kịch bản
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Nhiều người chơi
 
@@ -1425,7 +1430,7 @@ STR_LIVERY_PASSENGER_WAGON_STEAM                                :Toa Hành Khác
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Toa Hành Khách (Diesel)
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Toa Hành Khách (Điện)
 STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Toa Hành Khách (Ray Đơn)
-STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Toa Hành Khách (Ray Đệm)
+STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Toa Hành Khách (Ray đệm từ)
 STR_LIVERY_FREIGHT_WAGON                                        :Toa Chở Hàng
 STR_LIVERY_BUS                                                  :Bus
 STR_LIVERY_TRUCK                                                :Xe Tải
@@ -1580,45 +1585,180 @@ STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Bắt đ
 STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Nạp Game
 STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Tiếp tục một game đã được lưu (chắc chắn rằng đã kết nối với đúng người)
 
+STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Nhập tên của ván chơi mạng
 
 # Network game languages
 ############ Leave those lines in this order!!
+STR_NETWORK_LANG_ANY                                            :bất kỳ
+STR_NETWORK_LANG_ENGLISH                                        :Tiếng Anh
+STR_NETWORK_LANG_GERMAN                                         :Tiếng Đức
+STR_NETWORK_LANG_FRENCH                                         :Tiếng Pháp
+STR_NETWORK_LANG_BRAZILIAN                                      :Tiếng Brazil
+STR_NETWORK_LANG_BULGARIAN                                      :Tiếng Bun-ga-ri
+STR_NETWORK_LANG_CHINESE                                        :Tiếng Trung Quốc
+STR_NETWORK_LANG_CZECH                                          :Tiếng Séc
+STR_NETWORK_LANG_DANISH                                         :Tiếng Đan Mạch
+STR_NETWORK_LANG_DUTCH                                          :Tiếng Hà Lan
+STR_NETWORK_LANG_ESPERANTO                                      :Tiếng Quốc tế ngữ Esperanto
+STR_NETWORK_LANG_FINNISH                                        :Tiếng Phần Lan
+STR_NETWORK_LANG_HUNGARIAN                                      :Tiếng Hung-ga-ri
+STR_NETWORK_LANG_ICELANDIC                                      :Tiếng Ai-len
+STR_NETWORK_LANG_ITALIAN                                        :Tiếng Ý
+STR_NETWORK_LANG_JAPANESE                                       :Tiếng Nhật Bản
+STR_NETWORK_LANG_KOREAN                                         :Tiếng Hàn Quốc
+STR_NETWORK_LANG_LITHUANIAN                                     :Tiếng Lát-vi
+STR_NETWORK_LANG_NORWEGIAN                                      :Tiếng Na-uy
+STR_NETWORK_LANG_POLISH                                         :Tiếng Ba Lan
+STR_NETWORK_LANG_PORTUGUESE                                     :Tiếng Bồ Đào Nha
+STR_NETWORK_LANG_ROMANIAN                                       :Tiếng Ru-ma-ni
+STR_NETWORK_LANG_RUSSIAN                                        :Tiếng Nga
+STR_NETWORK_LANG_SLOVAK                                         :Tiếng Slo-va-kia
+STR_NETWORK_LANG_SLOVENIAN                                      :Tiếng Slo-ven-nhi-a
+STR_NETWORK_LANG_SPANISH                                        :Tiếng Tây Ban Nha
+STR_NETWORK_LANG_SWEDISH                                        :Tiếng Thuỵ Điển
+STR_NETWORK_LANG_TURKISH                                        :Tiếng Thổ Nhĩ Kỳ
+STR_NETWORK_LANG_UKRAINIAN                                      :Tiếng U-crai-na
+STR_NETWORK_LANG_AFRIKAANS                                      :Tiếng Nam Phi
+STR_NETWORK_LANG_CROATIAN                                       :Tiếng Croa-ti-a
+STR_NETWORK_LANG_CATALAN                                        :Tiếng Catalan
+STR_NETWORK_LANG_ESTONIAN                                       :Tiếng Esto-nhi-a
+STR_NETWORK_LANG_GALICIAN                                       :Tiếng Galician
+STR_NETWORK_LANG_GREEK                                          :Tiếng Hy Lạp
+STR_NETWORK_LANG_LATVIAN                                        :Tiếng Lat-via
 ############ End of leave-in-this-order
 
 # Network game lobby
+STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Sảnh chơi game nhiều người
 
+STR_NETWORK_GAME_LOBBY_PREPARE_TO_JOIN                          :{BLACK}Chuẩn bị tham gia: {ORANGE}{STRING}
+STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}Danh sách tất cả các công ty đang ở trong ván chơi. Bạn có thể gia nhập một công ty hiện có hoặc tạo mới nếu còn chỗ
 
+STR_NETWORK_GAME_LOBBY_COMPANY_INFO                             :{SILVER}THÔNG TIN CÔNG TY
+STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}Tên công ty: {WHITE}{STRING}
+STR_NETWORK_GAME_LOBBY_INAUGURATION_YEAR                        :{SILVER}Khánh thành: {WHITE}{NUM}
+STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}Giá trị Công ty: {WHITE}{CURRENCY}
+STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}Số dư hiện thời: {WHITE}{CURRENCY}
+STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}Thu nhập năm ngoái: {WHITE}{CURRENCY}
+STR_NETWORK_GAME_LOBBY_PERFORMANCE                              :{SILVER}Hiệu quả: {WHITE}{NUM}
 
+STR_NETWORK_GAME_LOBBY_VEHICLES                                 :{SILVER}Phương tiện giao thông: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_GAME_LOBBY_STATIONS                                 :{SILVER}Ga, bến, cảng: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_GAME_LOBBY_PLAYERS                                  :{SILVER}Người chơi: {WHITE}{STRING}
 
+STR_NETWORK_GAME_LOBBY_NEW_COMPANY                              :{BLACK}Tân công ty
+STR_NETWORK_GAME_LOBBY_NEW_COMPANY_TOOLTIP                      :{BLACK}Khai sinh một công ty
+STR_NETWORK_GAME_LOBBY_SPECTATE_GAME                            :{BLACK}Xem ván chơi
+STR_NETWORK_GAME_LOBBY_SPECTATE_GAME_TOOLTIP                    :{BLACK}Vào ván chơi như là một người xem
+STR_NETWORK_GAME_LOBBY_JOIN_COMPANY                             :{BLACK}Gia nhập công ty
+STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP                     :{BLACK}Trợ giúp quản lý công ty này
 
 # Network connecting window
+STR_NETWORK_CONNECTING_CAPTION                                  :{WHITE}Tạo kết nối...
 
 ############ Leave those lines in this order!!
+STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Tạo kết nối..
+STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Xác thực..
+STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Đợi..
+STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Tải bản đồ..
+STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Xử lý..
+STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Đăng nhập..
 
+STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Tải thông tin ván chơi..
+STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Tải thông tin công ty..
 ############ End of leave-in-this-order
+STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} client{P "" s} phía trước bạn
+STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} đã tải xong
 
+STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Ngắt kết nối
 
+STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server yêu cầu xác thực. Nhập mật khẩu
+STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Công ty yêu cầu xác thực. Nhập mật khẩu
 
 # Network company list added strings
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Danh sách máy con
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Xem
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Tân công ty
 
 # Network client list
+STR_NETWORK_CLIENTLIST_KICK                                     :Đá
 STR_NETWORK_CLIENTLIST_BAN                                      :Cấm
+STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Cho tiền
+STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Nói với tất cả
+STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Nói cho công ty
+STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Thông điệp riêng
 
+STR_NETWORK_SERVER                                              :Server
+STR_NETWORK_CLIENT                                              :Máy con
+STR_NETWORK_SPECTATORS                                          :Người xem
 
+STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Nhập số tiền muốn cho đi
 
 # Network set password
+STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Không được ghi mật khẩu đã nhập
+STR_COMPANY_PASSWORD_OK                                         :{BLACK}Nhập mật khẩu mới cho công ty
+STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Mật khẩu công ty
+STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Mật khẩu công ty mặc định
+STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Dùng mật khẩu công ty này là mật khẩu mặc định cho các công ty mới
 
 # Network company info join/password
+STR_COMPANY_VIEW_JOIN                                           :{BLACK}Vào
+STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Vào và làm chủ công ty này
+STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Mật khẩu
+STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Công ty đòi hỏi xác thực mật khẩu sẽ ngăn không cho người khác gia nhập, điều khiển
+STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Đặt mật khẩu công ty
 
 # Network chat
+STR_NETWORK_CHAT_SEND                                           :{BLACK}Gửi
+STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Nhóm] :
+STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Riêng] {STRING}:
+STR_NETWORK_CHAT_ALL_CAPTION                                    :[Chung] :
 
+STR_NETWORK_CHAT_COMPANY                                        :[Nhóm] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[Nhóm] tới {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_CLIENT                                         :[Riêng] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Riêng] Tới {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_ALL                                            :[Chung] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Nhập thông điệp chat
 
 # Network messages
+STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Không có thiết bị mạng hoặc không thiết lập ENABLE_NETWORK
+STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Không tìm thấy ván chơi mạng nào
+STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Server không trả lời yêu cầu
+STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Không thể kết nối vì NewGRF không hợp
+STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Đồng bộ ván chơi mạng bị lỗi
+STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Ván chơi mạng mất kết nối
+STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Không thể nạp savegame
+STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Không thể bắt đầu chạy server
+STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Không thể tạo kết nối
+STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Kết nối #{NUM} quá lâu
+STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Có lỗi trong giao thức và kết nối bị đóng
+STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Phiên bản của máy con không hợp với phiên bản máy server
+STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Sai mật khẩu
+STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Server bị đầy
+STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Bạn bị từ chối ở server này
+STR_NETWORK_ERROR_KICKED                                        :{WHITE}Bạn bị đá khỏi ván chơi
+STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Cheat không được phép ở server này
 
 ############ Leave those lines in this order!!
+STR_NETWORK_ERROR_CLIENT_GENERAL                                :lỗi chung
+STR_NETWORK_ERROR_CLIENT_DESYNC                                 :lỗi mất đồng bộ
+STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :không nạp được bản đồ
+STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :mất kết nối
+STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :lỗi giao thức
+STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :NewGRF không hợp
+STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :không xác thực được
+STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :nhận được gói lạ
+STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :sai phiên bản
+STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :tên đã dùng rồi
+STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :sai mật khẩu
+STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :sai công ty trong DoCommand
+STR_NETWORK_ERROR_CLIENT_KICKED                                 :bí đá bởi server
+STR_NETWORK_ERROR_CLIENT_CHEATER                                :đã cố sử dụng cheat
+STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :server đầy
 ############ End of leave-in-this-order
 
 # Network related errors
+STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
 ############ Leave those lines in this order!!
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Dừng game ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Game đang dừng ({STRING})
@@ -1629,70 +1769,304 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :không đủ ng
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :kết nối đến clients
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :tự chọn
 ############ End of leave-in-this-order
+STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :máy con rời
+STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} máy con gia nhập ván chơi
 STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} đã vào trò chơi (Client #{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} gia nhập công ty #{2:NUM}
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} vào xem ván chơi
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} khai trương công ty mới (#{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} rời bỏ ván chơi ({2:STRING})
+STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} đổi tên thành {STRING}
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} tặng công ty bạn {2:CURRENCY}
+STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Bạn cho {1:STRING} {2:CURRENCY}
+STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE} Server kết thúc phiên
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE} Server khởi động lại...{}Xin chờ...
 
 # Content downloading window
+STR_CONTENT_TITLE                                               :{WHITE}Đang tải nội dung
+STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Kiểu
+STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}Loại nội dung
+STR_CONTENT_NAME_CAPTION                                        :{BLACK}Tên
+STR_CONTENT_NAME_CAPTION_TOOLTIP                                :{BLACK}Tên nội dung
+STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}Bấm vào dòng để xem chi tiết{}Bấm vào checkbox để chọn tải về
+STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Chọn tất
+STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK}Đánh dấu tất cả để tải về
+STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Chọn các nâng cấp
+STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Đánh dấu tất cả các nội dung có bản cập nhật để tải về
+STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Bỏ chọn tất cả
+STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Chọn tất cả các nội dung không tải về
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}Lọc theo tên:
+STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Tải về
+STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Tải các nội dung đã chọn về
+STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Tổng dung lượng tải: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_TITLE                                        :{SILVER}THÔNG TIN NỘI DUNG
+STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Bạn chưa chọn cái này để tải về
+STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Bạn đã chọn cái này để tải về
+STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Cái này phụ thuộc, cần phải chọn để tải về
+STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Bạn đã có cái này rồi
+STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Nội dung này không có và không thể tải về trong OpenTTD
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Cái này they thế cái đã có {STRING}
+STR_CONTENT_DETAIL_NAME                                         :{SILVER}Tên: {WHITE}{STRING}
+STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Phiên bản: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Mô tả: {WHITE}{STRING}
+STR_CONTENT_DETAIL_URL                                          :{SILVER}URL: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TYPE                                         :{SILVER}Kiểu: {WHITE}{STRING}
+STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Kích thước tải: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Được chọn vì: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Các phụ thuộc: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Tags: {WHITE}{STRING}
+STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD không thiết lập hỗ trợ "zlib"...
+STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... không thể tải nội dung này
 
 # Order of these is important!
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Đồ hoạ cơ sở
+STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
+STR_CONTENT_TYPE_AI                                             :AI
+STR_CONTENT_TYPE_AI_LIBRARY                                     :Thư viện AI
+STR_CONTENT_TYPE_SCENARIO                                       :Màn chơi
+STR_CONTENT_TYPE_HEIGHTMAP                                      :Bản đồ đồi núi
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Âm thanh chuẩn
 STR_CONTENT_TYPE_BASE_MUSIC                                     :Nhạc chuẩn
 
 # Content downloading progress window
+STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Đang tải nội dung...
+STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Đang yêu cầu file...
+STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Đang tải {STRING} ({NUM} trên {NUM})
+STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Tải hoành thành
+STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} trên {BYTES} đã tải xong ({NUM} %)
 
 # Content downloading error messages
+STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Không thể kết nối tới server nội dung...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Tải bất thành...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... kết nối bị đứt
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... không ghi được file
+STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Không thể giải nétn file đã tải
 
 # Transparency settings window
+STR_TRANSPARENCY_CAPTION                                        :{WHITE}Tuỳ chọn hiệu ứng trong suốt
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Bật hiệu ứng trong suốt cho đèn tín hiệu. Ctrl+Click để khoá.
+STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Bật hiệu ứng trong suốt cho cây cối. Ctrl+Click để khoá.
+STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Bật hiệu ứng trong suốt cho nhà cửa. Ctrl+Click để khoá.
+STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Bật hiệu ứng trong suốt cho nhà máy. Ctrl+Click để khoá.
+STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Bật hiệu ứng trong suốt cho các công trình nhà ga, xưởng và điểm dừng. Ctrl+Click để khoá.
+STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Bật hiệu ứng trong suốt cho cầu. Ctrl+Click để khoá.
+STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Bật hiệu ứng trong suốt cho đèn biển, ăn-ten... Ctrl+Click để khoá.
+STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Bật hiệu ứng trong suốt cho các mắt xích. Ctrl+Click để khoá.
+STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Bật hiệu ứng trong suốt cho bảng báo hiệu nạp. Ctrl+Click để khoá.
+STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Đặt các đối ẩn đi thay vì trong suốt
 
 # Base for station construction window(s)
+STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Hiện rõ vùng phủ ảnh hưởng
+STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Tắt
+STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}Bật
+STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Không hiện vùng che phủ của điểm đề xuất.
+STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Hiện vùng che phủ của điểm đề xuất
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Chấp nhận: {GOLD}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Cung cấp: {GOLD}
 
 # Join station window
+STR_JOIN_STATION_CAPTION                                        :{WHITE}Nối ga, bến
+STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Tạo một ga, bến riêng rẽ
 
+STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Nối điểm dừng
+STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Tạo một điểm dừng riêng rẽ
 
 # Rail construction toolbar
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}Xây dựng đường ray
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Xây dựng đường ray điện
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Xây dựng đường ray đơn
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Xây dựng ray đệm từ
 
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Xây dựng đường ray. Ctrl để đổi chế độ xây/phá đường ray
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Xây dựng đường ray dùng cơ chế tự xây. Ctrl để đổi chế độ xây/phá đường ray
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Xây xưởng tàu hoả (để chế tạo và bảo dưỡng tàu)
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Chuyển từ ray sang điểm dừng. Ctrl để nối các điểm dừng
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Xây nhà ga tàu hoả. Ctrl để nối các nhà ga
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Xây đèn tín hiệu đường sắt. Ctrl đổi dùng đèn/cờ tín hiệu.{}Ctrl + kéo chuột theo đường ray khi xây sẽ xây loạt đèn tín hiệu cho tới điểm ngã ba, tư kế tiếp {}Ctrl+Click để mở cửa sổ chọn loại đèn tin hiệu
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Xây cầu tàu hoả
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Xây hầm tàu hoả
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Chuyển chế độ xây/phá cho đường ray, đèn tín hiệu, điểm dừng và nhà ga. Giữ Ctrl để phá bỏ đường ray tính từ điểm dừng hay nhà ga
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Chuyển đổi loại đường ray
 
 # Rail depot construction window
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Hướng của xưởng tàu hoả
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Chọn hướng đặt xưởng tàu hoả
 
 # Rail waypoint construction window
+STR_WAYPOINT_CAPTION                                            :{WHITE}Điểm dừng
+STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Chọn kiểu điểm dừng
 
 # Rail station construction window
+STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Chọn ga tàu hoả
+STR_STATION_BUILD_ORIENTATION                                   :{BLACK}Hướng
+STR_STATION_BUILD_RAILROAD_ORIENTATION_TOOLTIP                  :{BLACK}Chọn hướng xây ga tàu hoà
+STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}Số đường ray
+STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}Chọn độ dài của nền ga tàu hoả
+STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Độ dài nền ga
+STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Độ dài của ga tàu hoả
+STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Kéo & thả
+STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Xây dựng ga bằng các kéo & thả
 
+STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Chọn loại ga để hiển thị
+STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Chọn loại ga để xây dựng
 
+STR_STATION_CLASS_DFLT                                          :Ga mặc định
+STR_STATION_CLASS_WAYP                                          :Điểm dừng
 
 # Signal window
+STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Chọn đèn tín hiệu
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Đèn (cờ) tín hiệu khoá{}Đây là loại tín hiệu cơ bản, chỉ cho phép một đoàn tàu đi vào chỗ khoá cùng một thời điểm.
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Đèn (cờ) tín hiệu cửa nhập{}Sẽ xanh nếu một hoặc nhiều đèn tín hiệu cửa thoát ở phía sau màu xanh. Không thì sẽ đỏ.
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Đèn (cờ) tín hiệu cửa thoát{}Tương tự đèn tín hiệu khoá, nhưng cần có để đổi trạng thái của đèn tín hiệu loại cửa nhập & kết hợp nằm trước nó.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Đèn (cờ) tín hiệu kết hợp{}Nó vừa là đèn tín hiệu cửa thoát (với đèn nhập ở phía trước nó) và vừa là đèn tín hiệu cửa nhập (đối với đèn thoát ở sau nó). Loại đèn này cho phép tạo nhiều lớp đèn cho một hệ thống tín hiệu phức tạp.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Đèn (cờ) tín hiệu giành đường{}Đèn tín hiệu giành đường cho phép nhiều hơn 1 đoàn tàu có thể đi vào 1 khu vực khoá, nếu như mỗi đoàn tàu có thể giành lấy một con đường tới một điểm đến một cách an toàn. Đèn tín hiệu giành đường tiêu chuẩn cho thể cho phép đi qua từ phía sau của đèn.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Đèn (cờ) tín hiệu giành đường một chiều{}Đèn tín hiệu giành đường cho phép nhiều hơn 1 đoàn tàu có thể đi vào 1 khu vực khoá, nếu như mỗi đoàn tàu có thể giành lấy một con đường tới một điểm đến một cách an toàn. Đèn tín hiệu giành đường tiêu chuẩn cho thể cho phép đi qua từ phía sau của đèn.
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Đèn tín hiệu (điện) {}Đèn tín hiệu cơ bản, chỉ cho phép một đoàn toàn đi vào một khu vực khoá của đèn.
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Đèn tín hiệu cửa nhập (điện){}Sẽ xanh nếu một hoặc nhiều đèn tín hiệu cửa thoát ở phía sau màu xanh. Không thì sẽ đỏ.
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Đèn tín hiệu cửa thoát (điện){}Tương tự đèn tín hiệu khoá, nhưng cần có để đổi trạng thái của đèn tín hiệu loại cửa nhập & kết hợp nằm trước nó.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Đèn tín hiệu kết hợp (điện){}Nó vừa là đèn tín hiệu cửa thoát (với đèn nhập ở phía trước nó) và vừa là đèn tín hiệu cửa nhập (đối với đèn thoát ở sau nó). Loại đèn này cho phép tạo nhiều lớp đèn cho một hệ thống tín hiệu phức tạp.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Đèn tín hiệu giành đường (điện){}Đèn tín hiệu giành đường cho phép nhiều hơn 1 đoàn tàu có thể đi vào 1 khu vực khoá, nếu như mỗi đoàn tàu có thể giành lấy một con đường tới một điểm đến một cách an toàn. Đèn tín hiệu giành đường tiêu chuẩn cho thể cho phép đi qua từ phía sau của đèn.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Đèn tín hiệu giành đường một chiều (điện){}Đèn tín hiệu giành đường cho phép nhiều hơn 1 đoàn tàu có thể đi vào 1 khu vực khoá, nếu như mỗi đoàn tàu có thể giành lấy một con đường tới một điểm đến một cách an toàn. Đèn tín hiệu giành đường tiêu chuẩn cho thể cho phép đi qua từ phía sau của đèn.
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Chuyển đổi đèn tín hiệu{}Khi sử dụng, nháy vào đèn hiệu đang có, sẽ chuyển đổi loại đèn đã chọn, Ctrl+Click sẽ đổi loại đèn.
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Mật độ khi kéo chuỗi đèn hiệu
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Giảm mật độ kéo chuỗi đèn hiệu
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Tăng mật độ kéo chuỗi đèn hiệu
 
 # Bridge selection window
+STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Chọn loại cầu tàu hoả
+STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Chọn loại cầu đường bộ
+STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Chọn cầu - chọn loại cầu bạn muốn xây dựng
+STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
+STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Cầu treo thép
+STR_BRIDGE_NAME_GIRDER_STEEL                                    :Cầu dầm thép
+STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Cầu dầm chìa thép
+STR_BRIDGE_NAME_SUSPENSION_CONCRETE                             :Cầu treo bê tông
+STR_BRIDGE_NAME_WOODEN                                          :Cầu gỗ
+STR_BRIDGE_NAME_CONCRETE                                        :Cầu bê tông
+STR_BRIDGE_NAME_TUBULAR_STEEL                                   :Cầu ống thép
+STR_BRIDGE_TUBULAR_SILICON                                      :Cầu ống, Silicon
 
 
 # Road construction toolbar
+STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Xây đường bộ
+STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Xây đường xe điện
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Chọn xây đường bộ. Ctrl đổi chế độ xây/phá đường bộ
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Chọn xây đường xe điện. Ctrl đổi chế độ xây/phá đường xe điện
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Xây đường bộ dùng cơ chế tự xây. Ctrl đổi chế độ xây/phá đường bộ
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Xây đường xe điện dùng cơ chế tự xây. Ctrl đổi chế độ xây/phá đường xe điện
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Xây xưởng xe cộ (mua hoặc bảo trì xe cộ)
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Xây xưởng xe điện (mua hoặc bảo trì xe điện)
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Xây bến xe buýt. Ctrl để nối liền các bến
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Xây bến xe điện. Ctrl để nối các bến xe điện
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Xây trạm bốc dỡ hàng xe tải. Ctrl để nối các trạm
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Xây trạm bốc dỡ hàng cho xe điện. Ctrl để nối trạm
+STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Bật/tắt đường một chiều
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Xây cầu đường bộ
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Xây cầu đường xe điện
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Xây hầm đường bộ
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Xây hầm xe điện
+STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Bật chế độ xây/phá đường bộ
+STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Bật chế độ xây/phá đường xe điện
 
 # Road depot construction window
+STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Hướng của xưởng ôtô
+STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Chọn hướng đặt xưởng xe ôtô
+STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Hướng của xưởng xe điện
+STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Chọn hướng đặt xưởng xe điện
 
 # Road vehicle station construction window
+STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Chọn hướng của bến xe buýt
+STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Chọn hướng của bến xe buýt
+STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Chọn hướng của trạm bốc/dỡ
+STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Chọn hướng của trạm bốc/dỡ hàng xe tải
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Hướng của bến xe điện
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Chọn hướng đặt của bến xe điện
+STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Hướng trạm bốc/dỡ xe điện
+STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Chọn hướng trạm bốc/dỡ hàng cho xe điện
 
 # Waterways toolbar (last two for SE only)
+STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Xây đường thuỷ
+STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Đường thuỷ
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Xây kênh đào.
+STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Xây cửa kênh
+STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Xây xưởng tàu thuỷ (để mua và bảo trì tàu thuỷ)
+STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Xây cảng tàu. Ctrl để nối các cảng
+STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Đặt một phao hàng hải như là điểm dừng
+STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Xây cống
+STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Đặt tên vùng biển.{}Tạo một kênh đào, nếu ấn Ctrl thì giữ xuống tới mực nước biển, không thì sẽ bị ngập nước
+STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Đặt tên sông.
 
 # Ship depot construction window
+STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Hướng xưởng tàu
+STR_DEPOT_BUILD_SHIP_ORIENTATION_TOOLTIP                        :{BLACK}Chọn hướng đặt xưởng tàu
 
 # Dock construction window
+STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Hải cảng
 
 # Airport toolbar
+STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Sân bay
+STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Xây sân bay. Ctrl để nối các sân bay
 
 # Airport construction window
+STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Chọn loại sân bay
+STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Chọn kích cỡ và kiểu sân bay
 
+STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Nhỏ
+STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}Đô thị
+STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Trung tâm
+STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Quốc tế
+STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Cỡ trung
+STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Liên lục địa
+STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}SB lên thẳng
+STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}SB lên thắng trung
+STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}SB lên thẳng lớn
 
+STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}Sân bay nhỏ/trung
+STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Sân bay lớn
+STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Cảng trung chuyển
+STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}SB máy bay lên thẳng
 
+STR_STATION_BUILD_NOISE                                         :{BLACK}Độ ồn tạo ra: {GOLD}{COMMA}
 
 # Landscaping toolbar
+STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Xoay ngang
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Hạ thấp một góc đất
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Nâng cao một góc đất
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Làm bình địa
+STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Mua đất dành cho tương lai
 
 # Tree planting window (last two for SE only)
+STR_PLANT_TREE_CAPTION                                          :{WHITE}Cây cối
+STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Chọn loại cây để trồng
+STR_TREES_RANDOM_TYPE                                           :{BLACK}Loại cây ngẫu nhiên
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Trồng ngẫu nhiên các loại cây
+STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Trồng ngẫu nhiên
+STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Trồng cây ngẫu nhiên trên khoảnh đất
 
 # Land generation window (SE)
+STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}San lấp đất
+STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Đặt các nền đá trong vùng
+STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Đặt hải đăng
+STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Đặt tên hoang mạc.{}ấn Ctrl để xoá bỏ tên
+STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Đặt trạm phát sóng
+STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Tăng diện tích vùng đất để nâng/hạ
+STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Giảm diện tích vùng đất để nâng/hạ
+STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Tạo vùng đất ngẫu nhiên
+STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Tạo màn chơi mới
+STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Thiết lập lại nền đất
+STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Xoá mọi tài sản của người chơi trên bản đồ
 
+STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Thiết lập lại nền đất
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Bạn có chắc là xoá mọi tài sản của người chơi trên bản đồ?
 
 # Town generation window (SE)
+STR_FOUND_TOWN_CAPTION                                          :{WHITE}Lập đô thị
+STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Đô thị mới
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Tìm đô thị mới
+STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Tạo đô thị ngẫu nhiên
+STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Tìm đô thị vị trí ngẫu nhiên
+STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Nhiều đô thị ngẫu nhiên
+STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Phủ bản đồ bằng cách tạo đô thị ngẫu nhiên
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Tên thị trấn:
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Nhập tên thị trấn
@@ -1700,69 +2074,324 @@ STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Click đ
 STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Tên ngẫu nhiên
 STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Tạo một tên ngẫu nhiên
 
+STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}Quy mô đô thị:
+STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}Nhỏ
+STR_FOUND_TOWN_INITIAL_SIZE_MEDIUM_BUTTON                       :{BLACK}Trung bình
+STR_FOUND_TOWN_INITIAL_SIZE_LARGE_BUTTON                        :{BLACK}Lớn
+STR_FOUND_TOWN_SIZE_RANDOM                                      :{BLACK}Quy mô ngẫu nhiên
+STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Chọn quy mô đô thị
+STR_FOUND_TOWN_CITY                                             :{BLACK}Đô thị
+STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Thành phố phát triển nhanh hơn thị trấn{}Tuỳ thuộc thiết lập, chúng lớn hơn khi khai sinh
 
+STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Quy hoạch đường đô thị:
+STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Chọn để quy hoạch đường bộ trong đô thị
+STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Nguyên bản
+STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}Nhiều đường hơn
+STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}lưới 2x2
+STR_FOUND_TOWN_SELECT_LAYOUT_3X3_GRID                           :{BLACK}lưới 3x3
+STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Ngẫu nhiên
 
 # Fund new industry window
+STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Góp vốn xây nhà máy
+STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Chọn loại nhà máy thích hợp trong danh sách
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :Nhiều nhà máy ngẫu nhiên
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Phủ bản đồ bằng cách xây nhà máy ngẫu nhiên
+STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Chi phí: {YELLOW}{CURRENCY}
+STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Viễn cảnh
+STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Xây
+STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Góp vốn
 
 # Land area window
+STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Thông tin về vùng đất
+STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Chi phí giải toả: {LTBLUE}không
+STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Chi phí giải toả: {RED}{CURRENCY}
+STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Doanh thu khi giải toả: {LTBLUE}{CURRENCY}
+STR_LAND_AREA_INFORMATION_OWNER_N_A                             :Không
+STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}Chủ đất: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}Chủ đường bộ: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Chủ đường xe điện: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Chủ đường ray: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Chính quyền địa phương: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Không
+STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Toạ độ: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
+STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Xây lúc: {LTBLUE}{DATE_LONG}
+STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Loại ga,bến: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Kiểu ga,bến: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Hàng hoá chấp nhận: {LTBLUE}
+STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 
 # Description of land area of different tiles
+STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Đá
+STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :Đất gồ ghề
+STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Đất trống
+STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Bãi cỏ
+STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Cánh đồng
+STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Đất tuyết phủ
+STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Hoang mạc
 
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Đường ray tàu hoả
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Đường ray có đèn hiệu khoá
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Đường ray có đèn hiệu báo trước
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Đường ray có đèn hiệu cửa thoát
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Đường ray có đèn hiệu kết hợp
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Đường ray có đèn hiệu giành đường
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Đường ray có đèn hiệu giành đường một chiều
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Đường ray có đèn hiệu khoá và báo trước
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Đường ray có đèn hiệu khoá và cửa thoát
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Đường ray có đèn hiệu khoá và kết hợp
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Đường ray có đèn hiệu khoá và giành đường
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Đường ray có đèn hiệu khoá và giành đường một chiều
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Đường ray có đèn hiệu báo trước và cửa thoát
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Đường ray có đèn hiệu báo trước và kết hợp
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Đường ray có đèn hiệu báo trước và giành đường
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Đường ray có đèn hiệu báo trước và giành đường một chiều
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Đường ray có đèn hiệu cửa thoát và kết hợp
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Đường ray có đèn hiệu cửa thoát và giành đường
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Đường ray có đèn hiệu cửa thoát và giành đường một chiều
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Đường ray có đèn hiệu kết hợp và giành đường
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Đường ray có đèn hiệu kết hợp và giành đường một chiều
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Đường ray có đèn hiệu giành đường hai và một chiều
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Xưởng tàu hoả
 
+STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Đường bộ
+STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Đường bộ có đèn
+STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Đường bộ có trồng cây
+STR_LAI_ROAD_DESCRIPTION_ROAD_VEHICLE_DEPOT                     :Xưởng ôtô
+STR_LAI_ROAD_DESCRIPTION_ROAD_RAIL_LEVEL_CROSSING               :Đường bộ/đường tàu giao nhau
+STR_LAI_ROAD_DESCRIPTION_TRAMWAY                                :Đường xe điện
 
 # Houses come directly from their building names
+STR_LAI_TOWN_INDUSTRY_DESCRIPTION_UNDER_CONSTRUCTION            :{STRING} (đang xây dựng)
 
+STR_LAI_TREE_NAME_TREES                                         :Cây cối
+STR_LAI_TREE_NAME_RAINFOREST                                    :Rừng nhiệt đới
+STR_LAI_TREE_NAME_CACTUS_PLANTS                                 :Cây xương rồng
 
+STR_LAI_STATION_DESCRIPTION_RAILROAD_STATION                    :Nhà ga tàu hoả
+STR_LAI_STATION_DESCRIPTION_AIRCRAFT_HANGAR                     :Xưởng máy bay
+STR_LAI_STATION_DESCRIPTION_AIRPORT                             :Sân bay
+STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Trạm bốc dỡ hàng xe tải
+STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :Bến xe buýt
+STR_LAI_STATION_DESCRIPTION_SHIP_DOCK                           :Cảng tàu
+STR_LAI_STATION_DESCRIPTION_BUOY                                :Phao hàng hải
+STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :Điểm dừng
 
+STR_LAI_WATER_DESCRIPTION_WATER                                 :Nước
+STR_LAI_WATER_DESCRIPTION_CANAL                                 :Kênh đào
+STR_LAI_WATER_DESCRIPTION_LOCK                                  :Cửa kênh
+STR_LAI_WATER_DESCRIPTION_RIVER                                 :Sông
+STR_LAI_WATER_DESCRIPTION_COAST_OR_RIVERBANK                    :Bờ biển hoặc bờ sông
+STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT                            :Xưởng tàu thuỷ
 
 # Industries come directly from their industry names
 
+STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :Hầm tàu hoả
+STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :Hầm đường bộ
 
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :Cầu treo thép cho tàu hoả
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEELE                   :Cầu dầm thép cho tàu hoả
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :Cầu dầm chìa cho tàu hoả
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Cầu treo bê tông dự ứng lực cho tàu hoả
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :Cầu gỗ cho tàu hoả
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_CONCRETE                        :Cầu bê tông cho tàu hoả
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_TUBULAR_STEEL                   :Cầu ống cho tàu hoả
 
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_STEEL                :Cầu treo thép đường bộ
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_GIRDER_STEEL                    :Cầu dầm thép đường bộ
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_CANTILEVER_STEEL                :Cầu dầm chìa thép đường bộ
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_CONCRETE             :Cầu bê tông dự ứng lực đường bộ
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_WOODEN                          :Cầu gỗ đường bộ
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_CONCRETE                        :Cầu bê tông đường bộ
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                   :Cầu ống đường bộ
 
+STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT                             :Cống
 
+STR_LAI_UNMOVABLE_DESCRIPTION_TRANSMITTER                       :Trạm phát sóng
+STR_LAI_UNMOVABLE_DESCRIPTION_LIGHTHOUSE                        :Hải đăng
+STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_HEADQUARTERS              :Trụ sở công ty
+STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_OWNED_LAND                :Đất công ty sở hữu
 
 # About OpenTTD window
 STR_ABOUT_OPENTTD                                               :{WHITE}OpenTTD
+STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Nguyên tác bản quyền {COPYRIGHT} 1995 Chris Sawyer, All rights reserved
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD phiên bản {REV}
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2010 Nhóm OpenTTD
 
 # Save/load game/scenario
+STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}Lưu ván chơi
+STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Nạp ván chơi
+STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Lưu màn chơi
+STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Nạp màn chơi
+STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Nạp màn cao nguyên
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Nháy vào đây để tới thư mục mặc định hiện thời để nạp/lưu
+STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} còn trống
+STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Danh mục các ổ đĩa, thư mục và file lưu ván chơi (saved-game)
+STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Tên đã chọn của ván chơi lưu
+STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}Xoá bỏ
+STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}Xoá bỏ file lưu ván chơi
+STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Lưu
+STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Lưu ván chơi hiện tại, sử dụng tên đã chọn
 
+STR_SAVELOAD_OSKTITLE                                           :{BLACK}Nhập tên của ván chơi để lưu
 
 # World generation
+STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Khởi tạo bản đồ
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Kích thước bản đồ:
 STR_MAPGEN_BY                                                   :{BLACK}*
+STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Số lượng đô thị:
+STR_MAPGEN_DATE                                                 :{BLACK}Ngày:
+STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Số lượng nhà máy:
+STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Độ cao tuyết phủ:
+STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Di chuyển độ cao tuyết phủ lên cao
+STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Di chuyển độ cao tuyết phủ xuống thấp
+STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Cơ cấu ngẫu nhiên:
+STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Click để chọn cơ cấu ngẫu nhiên
+STR_MAPGEN_RANDOM                                               :{BLACK}Một cách ngẫu nhiên
+STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Thay đổi cơ cấu ngẫu nhiên để khởi tạo địa hình
+STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Tạo nền đất:
+STR_MAPGEN_TREE_PLACER                                          :{BLACK}Cơ chế trồng cây:
+STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Kiểu nền đất:
+STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Mực nước biển:
+STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Độ phẳng phiu:
 STR_MAPGEN_VARIETY                                              :{BLACK}Nhiều phân phối:
+STR_MAPGEN_GENERATE                                             :{WHITE}Khởi tạo
 
 # Strings for map borders at game generation
+STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Cạnh bản đồ:
+STR_MAPGEN_NORTHWEST                                            :{BLACK}Tây Bắc
+STR_MAPGEN_NORTHEAST                                            :{BLACK}Đông Bắc
+STR_MAPGEN_SOUTHEAST                                            :{BLACK}Đông Nam
+STR_MAPGEN_SOUTHWEST                                            :{BLACK}Tây Nam
+STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Dạng tự do
+STR_MAPGEN_BORDER_WATER                                         :{BLACK}Nước
+STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Ngẫu nhiên
+STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Ngẫu nhiên
+STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Bằng tay
 
+STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Xoay cao nguyên:
+STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Tên cao nguyên:
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Cỡ:
+STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
 
+STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Nhập cơ cấu ngẫu nhiên
+STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Thay đổi độ cao tuyết phủ
+STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Thay đổi năm khởi đầu
 
 # SE Map generation
+STR_SE_MAPGEN_CAPTION                                           :{WHITE}Kiểu màn chơi
+STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Đất bằng
+STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Tạo ra đất bằng
+STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Nền đất ngẫu nhiên
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Độ cao của nền đất:
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Nâng độ cao của nền đất
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Hạ độ cao của nền đất
 
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Thay đổi độ cao của nền đất
 
 # Map generation progress
+STR_GENERATION_WORLD                                            :{WHITE}Đang tạo màn...
+STR_GENERATION_ABORT                                            :{BLACK}Huỷ bỏ
+STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Huỷ việc tạo màn
+STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Bạn có chắc là huỷ việc tạo màn chơi?
+STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% hoàn thành
+STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
+STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Tạo màn
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Trồng cây
+STR_GENERATION_UNMOVABLE_GENERATION                             :{BLACK}Sinh đối tượng cứng
+STR_GENERATION_CLEARING_TILES                                   :{BLACK}Sinh đá và sự gồ ghề
+STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Thiết lập ván chơi
+STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Đang chạy sinh tile
+STR_GENERATION_PREPARING_GAME                                   :{BLACK}Chuẩn bị ván chơi
 
 # NewGRF settings
+STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Thiết lập NewGRF
+STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Nạp các thiết lập đã chọn
+STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Lưu thiết lập
+STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Lưu danh sách này như là thiết lập
+STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Tên của thiết lập
+STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Xoá thiết lập
+STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Xoá thiết lập đã chọn
+STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Thêm
+STR_NEWGRF_SETTINGS_ADD_TOOLTIP                                 :{BLACK}Thêm NewGRF vào danh sách
+STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Xoá
+STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Xoá NewGRF đã chọn trong danh sách
+STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Dịch lên
+STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Dịch NewGRF file lên phía trên
+STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Chuyển xuống
+STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Chuyển NewGRF file xuống dưới
+STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Danh sách NewGRF file đã cài đặt. Chọn một file để thay đổi tham số
 
+STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Đặt tham số
+STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Đổi bảng màu
+STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Đổi bảng màu của NewGRF.{}Hãy thực hiện việc này nếu NewGRF bị chuyển màu hồng trong khi chơi
+STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Áp dụng thay đổi
 
+STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Tìm kiếm nội dung thiếu online
+STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Kiểm tra xem nội dung thiếu có thể tải về hay không
 
+STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Tên file: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Bảng màu: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Tham số: {SILVER}{STRING}
 
+STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Không có thông tin gì cả
+STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}File hợp lệ không có
+STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Tắt
 
+STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Nhập NewGRF tham số
 
 # NewGRF add window
+STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Các NewGRF file sẵn có
+STR_NEWGRF_ADD_FILE                                             :{BLACK}Thêm vào file
+STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Thêm NewGRF file đã chọn vào cấu hình
+STR_NEWGRF_ADD_RESCAN_FILES                                     :{BLACK}Quét lại file
+STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}Cập nhật danh sách NewGRF file sẵn có
 
 # NewGRF (self) generated warnings/errors
+STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Cảnh báo: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Lỗi: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Lỗi nghiêm trọng: {SILVER}{STRING}
 STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Xảy ra lỗi NewGRF gây hư hỏng: {}{STRING}
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} sẽ không hoạt động với phiên bản TTDPatch version theo như báo cáo của OpenTTD.
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} để dành cho {STRING} phiên bản của TTD.
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} được thiết kế để xài với {STRING}
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Tham số không hợp lệ {1:STRING}: tham số {STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} phải được nạp trước {STRING}.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} phỉa được nạp sau {STRING}.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} yêu cầu phiên bản OpenTTD {STRING} hoặc cao hơn.
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF file được thiết kế để phiên dịch
+STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Quá nhiều NewGRFs đã nạp.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Nạp {STRING} như là NewGRF tĩnh với {STRING} có thể gây mất đồng bộ
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Sprite không mong muốn
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Không biết về thuộc tích action 0
+STR_NEWGRF_ERROR_INVALID_ID                                     :Sử dụng ID không hợp lệ.
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} bị hỏng sprite. Tất cả các sprite sẽ hiện thị với dấu hỏi (?) màu đỏ.
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Chứa nhiều mục action 8.
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Đọc tới điểm cuối của sprite-giả
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Chú ý!
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Bạn định thay đổi cho ván chơi đang chơi; việc này có thể làm treo OpenTTD.{}Bạn có chắc sẽ thực hiện không?
 
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Không thể thêm file: trùng lặp GRF ID
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}File hợp lệ không tìm thấy (GRF tương thích được nạp thay)
 
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}GRF tương thích được nạp thay cho các file thiếu.
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Các GRF file thiếu bị bỏ qua
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Thiếu GRF file
+STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Tiếp tục cso thể làm treo OpenTTD. Không nên báo cáo lỗi sau khi bị treo.{}Bạn có chắc là tiếp tục chơi?
 
 # NewGRF 'it's broken' warnings
+STR_NEWGRF_BROKEN                                               :{WHITE}Hoạt động của NewGRF '{0:STRING}' có thể gây mất đồng bộ hoặc bị treo.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Nó cắt ngắn độ dài của đoàn tàu '{1:ENGINE}' nếu không ở trong xưởng.
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Đoàn tàu '{VEHICLE}' của '{COMPANY}' có độ dài không hợp lệ. Có thể gây sự cố với NewGRFs. Ván chơi có thể mất đồng bộ hoặc bị treo
 
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' không hợp lệ.
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Danh mục hàng hoá/cải biến cho '{1:ENGINE}' khác với danh mục mua được sau khi đã có. Việc này khiến cho việc tự thay thế hay là tự cải biến không chính xác.
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' gây ra một vòng lặp vô tận khi gọi hàm callback.
 
 # Sign list window
 
@@ -2062,6 +2691,7 @@ STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Chọn x
 
 
 # AI debug window
+STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 
 
 # AI configuration window
@@ -2216,11 +2846,11 @@ STR_INDUSTRY_NAME_LUMBER_MILL                                   :Nhà máy chế
 STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :Nhà máy chế biến kẹo bông
 STR_INDUSTRY_NAME_CANDY_FACTORY                                 :Nhà máy sản xuất kẹo
 STR_INDUSTRY_NAME_BATTERY_FARM                                  :Nhà máy sản xuất pin
-STR_INDUSTRY_NAME_COLA_WELLS                                    :Nhà máy chế biến nước cola
+STR_INDUSTRY_NAME_COLA_WELLS                                    :Nhà máy đồ uống cola
 STR_INDUSTRY_NAME_TOY_SHOP                                      :Cửa hàng đồ chơi
 STR_INDUSTRY_NAME_TOY_FACTORY                                   :Nhà máy sản xuất đồ chơi
-STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :Nhà máy chế biến chất dẻo
-STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :Nhà máy chế biến nước uống có ga
+STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :Nhà máy chất dẻo
+STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :Nhà máy đồ uống có ga
 STR_INDUSTRY_NAME_SUGAR_MINE                                    :Mỏ đường
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame

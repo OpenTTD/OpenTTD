@@ -1065,6 +1065,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Tolerant
 STR_CITY_APPROVAL_TOLERANT                                      :Neutraal
 STR_CITY_APPROVAL_HOSTILE                                       :Negatief
 
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Geen bruikbare AIs beschikbaar...{}U kunt diverse AI's downloaden via het 'Online Content' systeem
 STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Deze actie past de moeilijkheidsgraad aan naar 'aangepast'
 
 # Advanced settings window
@@ -1076,7 +1077,7 @@ STR_CONFIG_SETTING_DISABLED                                     :uitgeschakeld
 STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Geef voertuigsnelheid weer in statusbalk: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Bouwen op hellingen en kusten toestaan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Omgeving aanpassen onder gebouwen, spoorwegen, enz. toestaan (autoslope): {ORANGE}{STRING}
-STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Gebruik realistisch handelsgebied: {ORANGE}{STRING}
+STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Gebruik meer realistische handelsgebieden: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Sta verwijderen van meer stedelijke wegen, bruggen, enz. toe: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Zeer lange treinen toestaan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Trein acceleratie model: {ORANGE}{STRING}
@@ -2369,6 +2370,7 @@ STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Onbekende 'Acti
 STR_NEWGRF_ERROR_INVALID_ID                                     :Poging tot gebruik ongeldig ID.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} bevat een ongeldige afbeelding. Alle ongeldige afbeeldingen worden getoond als een rood vraagteken (?).
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Bevat meerdere 'Action 8'-elementen.
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lees voorbij einde van pseudo-sprite.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Waarschuwing!
