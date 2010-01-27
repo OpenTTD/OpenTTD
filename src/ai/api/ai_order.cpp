@@ -188,8 +188,7 @@ static const Order *ResolveOrder(VehicleID vehicle_id, AIOrder::OrderPosition or
 		case OT_GOTO_STATION: {
 			const Station *st = ::Station::Get(order->GetDestination());
 			if (st->train_station.tile != INVALID_TILE) {
-				for (uint i = 0; i < st->train_station.w; i++) {
-					TileIndex t = st->train_station.tile + TileDiffXY(i, 0);
+				TILE_AREA_LOOP(t, st->train_station) {
 					if (st->TileBelongsToRailStation(t)) return t;
 				}
 			} else if (st->dock_tile != INVALID_TILE) {
@@ -206,7 +205,16 @@ static const Order *ResolveOrder(VehicleID vehicle_id, AIOrder::OrderPosition or
 			}
 			return INVALID_TILE;
 		}
-		case OT_GOTO_WAYPOINT: return ::Waypoint::Get(order->GetDestination())->xy;
+
+		case OT_GOTO_WAYPOINT: {
+			const Waypoint *wp = ::Waypoint::Get(order->GetDestination());
+			if (wp->train_station.tile != INVALID_TILE) {
+				TILE_AREA_LOOP(t, wp->train_station) {
+					if (wp->TileBelongsToRailStation(t)) return t;
+				}
+			}
+			return INVALID_TILE;
+		}
 		default:               return INVALID_TILE;
 	}
 }
