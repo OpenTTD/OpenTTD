@@ -439,7 +439,7 @@ struct TimetableWindow : Window {
 							DrawString(abbr_left, abbr_right, y, STR_TIMETABLE_ARRIVAL_ABBREVIATION, i == selected ? TC_WHITE : TC_BLACK);
 							if (this->show_expected && i / 2 == earlyID) {
 								SetArrivalDepartParams(0, 1, arr_dep[i / 2].arrival);
-								DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_GREEN_STRING, i == selected ? TC_WHITE : TC_BLACK);
+								DrawString(time_left, time_right, y, STR_GREEN_STRING, i == selected ? TC_WHITE : TC_BLACK);
 							} else {
 								SetArrivalDepartParams(0, 1, arr_dep[i / 2].arrival + offset);
 								DrawString(time_left, time_right, y, show_late ? STR_RED_STRING : STR_JUST_STRING, i == selected ? TC_WHITE : TC_BLACK);
