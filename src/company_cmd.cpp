@@ -663,7 +663,10 @@ CommandCost CmdSetAutoReplace(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 	CommandCost cost;
 
 	if (!Group::IsValidID(id_g) && !IsAllGroupID(id_g) && !IsDefaultGroupID(id_g)) return CMD_ERROR;
+	if (!Engine::IsValidID(old_engine_type)) return CMD_ERROR;
+
 	if (new_engine_type != INVALID_ENGINE) {
+		if (!Engine::IsValidID(new_engine_type)) return CMD_ERROR;
 		if (!CheckAutoreplaceValidity(old_engine_type, new_engine_type, _current_company)) return CMD_ERROR;
 
 		cost = AddEngineReplacementForCompany(c, old_engine_type, new_engine_type, id_g, flags);
@@ -671,7 +674,7 @@ CommandCost CmdSetAutoReplace(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 		cost = RemoveEngineReplacementForCompany(c, old_engine_type, id_g, flags);
 	}
 
-	if (IsLocalCompany()) InvalidateAutoreplaceWindow(old_engine_type, id_g);
+	if ((flags & DC_EXEC) && IsLocalCompany()) InvalidateAutoreplaceWindow(old_engine_type, id_g);
 
 	return cost;
 }

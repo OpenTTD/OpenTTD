@@ -50,9 +50,7 @@ static bool EnginesHaveCargoInCommon(EngineID engine_a, EngineID engine_b)
  */
 bool CheckAutoreplaceValidity(EngineID from, EngineID to, CompanyID company)
 {
-	/* First we make sure that it's a valid type the user requested
-	 * check that it's an engine that is in the engine array */
-	if (!Engine::IsValidID(from) || !Engine::IsValidID(to)) return false;
+	assert(Engine::IsValidID(from) && Engine::IsValidID(to));
 
 	/* we can't replace an engine into itself (that would be autorenew) */
 	if (from == to) return false;
