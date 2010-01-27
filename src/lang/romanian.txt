@@ -564,8 +564,8 @@ STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total:
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Numărul de vehicule profitabile anul precedent. Include autovehicule, trenuri, nave şi aeronave
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Numărul staţiilor. Se numără fiecare componentă în cazul unor staţii compuse din gări, aeroporturi, porturi, staţii de autobuz, etc.
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Profitul vehiculului cu cele mai mici încasări (doar vehiculele mai vechi de 2 ani sunt listate)
-STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Suma de bani obţinută în luna cu cel mai mic profit din ultimele 36 de luni.
-STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Suma de bani obţinută în luna cu cel mai mare profit din ultimele 36 de luni.
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Suma de bani obţinută în trimestrul cu cel mai mic profit din ultimele 12 trimestre.
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Suma de bani obţinută în trimestrul cu cel mai mare profit din ultimele 12 trimestre.
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Numărul de încărcături transportate în ultimele 12 luni.
 STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Tipuri de mărfuri transportate în ultimele 3 luni.
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Balanţa curentă
@@ -1065,7 +1065,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :permisivă
 STR_CITY_APPROVAL_TOLERANT                                      :tolerantă
 STR_CITY_APPROVAL_HOSTILE                                       :ostilă
 
-STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Nu este disponibil niciun modul de Inteligenţă artificială...{}Puteţi descărca diferite module de Inteligenţă Artificială prin sistemul de 'Conţinut Online'
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Nu este disponibil nici un modul de Inteligenţă Artificială...{}Puteţi descărca diferite module de Inteligenţă Artificială prin sistemul de 'Resurse Online'
 STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Această acţiune a setat nivelul de difficultate în "Personalizat"
 
 # Advanced settings window

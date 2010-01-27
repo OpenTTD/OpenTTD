@@ -1190,6 +1190,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :допусти�
 STR_CITY_APPROVAL_TOLERANT                                      :терпиме
 STR_CITY_APPROVAL_HOSTILE                                       :вороже
 
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Немає відповідних AI...{}Ви можете завантажити кілька AI через систему 'Вмісту в Інтернеті'
 STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Змінити рівень складності
 
 # Advanced settings window
@@ -2494,6 +2495,7 @@ STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Невідом�
 STR_NEWGRF_ERROR_INVALID_ID                                     :Спроба використання невірного ID.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} містить зіпсований спрайт. Усі зіпсовані спрайти будуть показані як червоний знак питання (?).
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Містить багато записів Action 8.
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Читання за кінцем псевдоспрайту.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Обережно!
