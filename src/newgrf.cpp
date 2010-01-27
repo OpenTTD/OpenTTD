@@ -1193,6 +1193,11 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 				byte srcid = buf->ReadByte();
 				const StationSpec *srcstatspec = _cur_grffile->stations[srcid];
 
+				if (srcstatspec == NULL) {
+					grfmsg(1, "StationChangeInfo: Station %u is not defined, cannot copy sprite layout to %u.", srcid, stid + i);
+					continue;
+				}
+
 				statspec->tiles = srcstatspec->tiles;
 				statspec->renderdata = srcstatspec->renderdata;
 				statspec->copied_renderdata = true;
@@ -1265,6 +1270,11 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 			case 0x0F: { // Copy custom layout
 				byte srcid = buf->ReadByte();
 				const StationSpec *srcstatspec = _cur_grffile->stations[srcid];
+
+				if (srcstatspec == NULL) {
+					grfmsg(1, "StationChangeInfo: Station %u is not defined, cannot copy tile layout to %u.", srcid, stid + i);
+					continue;
+				}
 
 				statspec->lengths   = srcstatspec->lengths;
 				statspec->platforms = srcstatspec->platforms;
