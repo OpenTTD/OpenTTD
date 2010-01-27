@@ -213,7 +213,8 @@ static const Order *ResolveOrder(VehicleID vehicle_id, AIOrder::OrderPosition or
 					if (wp->TileBelongsToRailStation(t)) return t;
 				}
 			}
-			return INVALID_TILE;
+			/* If the waypoint has no rail waypoint tiles, it must have a buoy */
+			return wp->xy;
 		}
 		default:               return INVALID_TILE;
 	}
