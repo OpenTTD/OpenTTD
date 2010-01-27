@@ -707,6 +707,21 @@
 			</FileConfiguration>
 		</File>
 		<File
+			RelativePath="..\src\lang\vietnamese.txt"
+			>
+			<FileConfiguration
+				Name="Debug|Win32"
+				>
+				<Tool
+					Name="VCCustomBuildTool"
+					Description="Generating vietnamese language file"
+					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+					AdditionalDependencies="..\src\lang\english.txt"
+					Outputs="..\bin\lang\vietnamese.lng"
+				/>
+			</FileConfiguration>
+		</File>
+		<File
 			RelativePath="..\src\lang\welsh.txt"
 			>
 			<FileConfiguration
