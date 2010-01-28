@@ -26,6 +26,7 @@ static WAVEHDR _wave_hdr[2];
 static int _bufsize;
 static HANDLE _thread;
 static DWORD _threadId;
+static HANDLE _event;
 
 static void PrepareHeader(WAVEHDR *hdr)
 {
@@ -37,18 +38,14 @@ static void PrepareHeader(WAVEHDR *hdr)
 
 static DWORD WINAPI SoundThread(LPVOID arg)
 {
-	MSG msg;
-
-	while (_waveout != NULL) {
+	do {
 		for (WAVEHDR *hdr = _wave_hdr; hdr != endof(_wave_hdr); hdr++) {
 			if ((hdr->dwFlags & WHDR_INQUEUE) != 0) continue;
 			MxMixSamples(hdr->lpData, hdr->dwBufferLength / 4);
 			if (waveOutWrite(_waveout, hdr, sizeof(WAVEHDR)) != MMSYSERR_NOERROR) usererror("waveOutWrite failed");
 		}
-
-		/* Wait for the device to be closed or ready to play new data. */
-		GetMessage(&msg, NULL, MM_WOM_CLOSE, MM_WOM_DONE);
-	}
+		WaitForSingleObject(_event, INFINITE);
+	} while (_waveout != NULL);
 
 	return 0;
 }
@@ -65,19 +62,16 @@ const char *SoundDriver_Win32::Start(const char * const *parm)
 
 	_bufsize = GetDriverParamInt(parm, "bufsize", (GB(GetVersion(), 0, 8) > 5) ? 8192 : 4096);
 
-	/* Create the sound thread in suspended state because we are not ready to play anything. */
-	if (NULL == (_thread = CreateThread(NULL, 8192, SoundThread, 0, CREATE_SUSPENDED, &_threadId))) return "Failed to create thread";
+	if (NULL == (_event = CreateEvent(NULL, FALSE, FALSE, NULL))) return "Failed to create event";
 
-	/* Open the sound device, it will send messages to sound thread. */
-	if (waveOutOpen(&_waveout, WAVE_MAPPER, &wfex, (DWORD_PTR)_threadId, 0, CALLBACK_THREAD) != MMSYSERR_NOERROR) return "waveOutOpen failed";
+	if (waveOutOpen(&_waveout, WAVE_MAPPER, &wfex, (DWORD_PTR)_event, 0, CALLBACK_EVENT) != MMSYSERR_NOERROR) return "waveOutOpen failed";
 
 	MxInitialize(wfex.nSamplesPerSec);
 
 	PrepareHeader(&_wave_hdr[0]);
 	PrepareHeader(&_wave_hdr[1]);
 
-	/* We are now ready to play sound, so resume the sound thread. */
-	ResumeThread(_thread);
+	if (NULL == (_thread = CreateThread(NULL, 8192, SoundThread, 0, 0, &_threadId))) return "Failed to create thread";
 
 	return NULL;
 }
@@ -86,16 +80,17 @@ void SoundDriver_Win32::Stop()
 {
 	HWAVEOUT waveout = _waveout;
 
-	/* Break the sound thread loop, but the thread can still be waiting for a message. */
+	/* Stop the sound thread. */
 	_waveout = NULL;
+	SetEvent(_event);
+	WaitForSingleObject(_thread, INFINITE);
 
-	/* Stop the playback (if any) and close the device. This will unlock the thread if it's waiting for a message. */
-	waveOutReset(waveout); // Triggers MM_WOM_DONE message if there were pending playbacks.
+	/* Close the sound device. */
+	waveOutReset(waveout);
 	waveOutUnprepareHeader(waveout, &_wave_hdr[0], sizeof(WAVEHDR));
 	waveOutUnprepareHeader(waveout, &_wave_hdr[1], sizeof(WAVEHDR));
-	waveOutClose(waveout); // Triggers MM_WOM_CLOSE message.
+	waveOutClose(waveout);
 
-	/* Now we can wait for the sound thread to finish because we know it will. */
-	WaitForMultipleObjects(1, &_thread, true, INFINITE);
 	CloseHandle(_thread);
+	CloseHandle(_event);
 }
