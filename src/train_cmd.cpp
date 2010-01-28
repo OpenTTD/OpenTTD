@@ -139,7 +139,7 @@ void Train::CargoChanged()
 	for (Train *u = this; u != NULL; u = u->Next()) {
 		uint32 current_weight = u->GetWeight();
 		weight += current_weight;
-		u->tcache.cached_slope_resistance = current_weight * 20 * _settings_game.vehicle.train_slope_steepness; //1% slope * slope steepness
+		u->tcache.cached_slope_resistance = current_weight * u->GetSlopeSteepness();
 	}
 
 	/* store consist weight in cache */

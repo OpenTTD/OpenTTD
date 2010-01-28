@@ -494,6 +494,15 @@ protected: /* These functions should not be called outside acceleration code. */
 	{
 		return GetRailTypeInfo(this->railtype)->acceleration_type;
 	}
+
+	/**
+	 * Returns the slope steepness used by this vehicle.
+	 * @return Slope steepness used by the vehicle.
+	 */
+	FORCEINLINE uint32 GetSlopeSteepness() const
+	{
+		return 20 * _settings_game.vehicle.train_slope_steepness; // 1% slope * slope steepness
+	}
 };
 
 #define FOR_ALL_TRAINS(var) FOR_ALL_VEHICLES_OF_TYPE(Train, var)
