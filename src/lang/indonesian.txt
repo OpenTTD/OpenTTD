@@ -564,8 +564,8 @@ STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total:
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Jumlah kendaraan yang menghasilkan keuntungan tahun lalu; termasuk bus/truk, kereta, kapal dan pesawat
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Jumlah bagian dari stasiun yang diservis baru-baru ini. Setiap bagian dari stasiun (misal: stasiun kereta , halte Bus, bandara) dihitung, meskipun mereka dihubungkan menjadi satu kesatuan stasiun
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Keuntungan dari kendaraan dengan pendapatan terendah (hanya kendaraan yang usianya melebihi 2 tahun yang diperhitungkan)
-STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Banyaknya uang tunai yang dihasilkan dalam satu bulan dengan keuntungan terendah pada 1/4 tahun terakhir
-STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Banyaknya uang tunai yang dihasilkan dalam satu bulan dengan keuntungan tertinggi pada 1/4 tahun terakhir
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Banyaknya uang yang dihasilkan dalam satu kuartal dengan keuntungan terendah pada 12 kuartal terakhir
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Banyaknya uang tunai yang dihasilkan dalam satu kuartal dengan keuntungan tertinggi pada 12 kuartal terakhir
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Jumlah kargo yang terkirim selama kuartal terakhir
 STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Jumlah jenis kargo yang terkirim selama kuartal terakhir
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Banyaknya uang yang dimiliki perusahaan ini yang tersimpan di bank
@@ -1065,6 +1065,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Selalu boleh
 STR_CITY_APPROVAL_TOLERANT                                      :Toleran
 STR_CITY_APPROVAL_HOSTILE                                       :Bermusuhan
 
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Tidak terdapat pemain AI ...{}anda dapat mengunduh beberapa versi AI lewat "Online Content"
 STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Tindakan ini menyebabkan tingkat kesulitan menjadi bebas
 
 # Advanced settings window
@@ -2012,8 +2013,8 @@ STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Pilih mo
 
 STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Bandara Kecil
 STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}Bandara Kota
-STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Bandara Metropolitan
-STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Bandara Internasional
+STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Metropolitan
+STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Internasional
 STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Bandara Komuter
 STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Bandara Antar Benua
 STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Helipad

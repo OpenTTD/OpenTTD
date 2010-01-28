@@ -95,24 +95,24 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Đồ uống c�
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
-STR_QUANTITY_PASSENGERS                                         :{COMMA} hành khách{P "" s}
+STR_QUANTITY_PASSENGERS                                         :{COMMA} hành khách
 STR_QUANTITY_COAL                                               :{WEIGHT} than
-STR_QUANTITY_MAIL                                               :{COMMA} túi{P "" s} bưu kiện
+STR_QUANTITY_MAIL                                               :{COMMA} túi bưu kiện
 STR_QUANTITY_OIL                                                :{VOLUME} dầu
-STR_QUANTITY_LIVESTOCK                                          :{COMMA} đầu{P "" s} gia súc
-STR_QUANTITY_GOODS                                              :{COMMA} thùng{P "" s} hàng
+STR_QUANTITY_LIVESTOCK                                          :{COMMA} đầu gia súc
+STR_QUANTITY_GOODS                                              :{COMMA} thùng hàng tiêu dùng
 STR_QUANTITY_GRAIN                                              :{WEIGHT} ngũ cốc
 STR_QUANTITY_WOOD                                               :{WEIGHT} gỗ
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT} quặng sắt
 STR_QUANTITY_STEEL                                              :{WEIGHT} thép
-STR_QUANTITY_VALUABLES                                          :{COMMA} túi{P "" s} đồ quý giá
+STR_QUANTITY_VALUABLES                                          :{COMMA} túi đồ quý giá
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} quặng đồng
 STR_QUANTITY_MAIZE                                              :{WEIGHT} ngô
 STR_QUANTITY_FRUIT                                              :{WEIGHT} hoa quả
-STR_QUANTITY_DIAMONDS                                           :{COMMA} túi{P "" s} kim cương
+STR_QUANTITY_DIAMONDS                                           :{COMMA} túi kim cương
 STR_QUANTITY_FOOD                                               :{WEIGHT} thực phẩm
 STR_QUANTITY_PAPER                                              :{WEIGHT} giấy
-STR_QUANTITY_GOLD                                               :{COMMA} túi{P "" s} vàng
+STR_QUANTITY_GOLD                                               :{COMMA} túi vàng
 STR_QUANTITY_WATER                                              :{VOLUME} nước
 STR_QUANTITY_WHEAT                                              :{WEIGHT} bột mì
 STR_QUANTITY_RUBBER                                             :{VOLUME} cao su
@@ -121,7 +121,7 @@ STR_QUANTITY_TOYS                                               :{COMMA} đồ c
 STR_QUANTITY_SWEETS                                             :{COMMA} túi kẹo
 STR_QUANTITY_COLA                                               :{VOLUME} nước cola
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} kẹo bông
-STR_QUANTITY_BUBBLES                                            :{COMMA} bong bóng{P "" s}
+STR_QUANTITY_BUBBLES                                            :{COMMA} bong bóng
 STR_QUANTITY_TOFFEE                                             :{WEIGHT} kẹo bơ cứng
 STR_QUANTITY_BATTERIES                                          :{COMMA} cái pin
 STR_QUANTITY_PLASTIC                                            :{VOLUME} chất dẻo
@@ -291,7 +291,7 @@ STR_SORT_BY_CARGO_CAPACITY                                      :Khả năng ch�
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Tạm dừng trò chơi
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Game tua nhanh
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Tuỳ chọn
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Lưu, thoat trò chơi, thoát
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Lưu, bỏ ván chơi, thoát chương trình
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Hiển thị bản đồ
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Hiển thị thư mục thị trấn
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Hiện tiền trợ cấp
@@ -318,9 +318,9 @@ STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Thông t
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Chuyển thanh công cụ
 
 # Extra tooltips for the scenario editor toolbar
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Lưu kịch bản, nạp kịch bản, bỏ trình chỉnh sửa kịch bản, thoát
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Lưu, nạp màn chơi kịch bản, thoát trình chỉnh sửa màn chơi, thoát chương trình
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
-STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Trình Biên Tập Kịch Bản
+STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Trình Biên Tập màn chơi kịch bản
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Chuyển ngày bắt đầu về phía sau 1 năm
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Chuyển ngày bắt đầu về phía trước 1 năm
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Hiển thị bản đồ, thư mục thị trấn
@@ -332,9 +332,9 @@ STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Trồng 
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Tạo bảng ký hiệu
 
 ############ range for SE file menu starts
-STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Lưu kịch bản
-STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Nạp kịch bản
-STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Tải bản đồ độ cao
+STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Lưu màn chơi kịch bản
+STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Nạp màn chơi kịch bản
+STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Tải bản đồ địa hình
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Thoat khỏi trình biên tập
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Thoát
@@ -348,7 +348,7 @@ STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Thông số New
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Thiết lập độ trong suốt
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Hiển thị tên thị trấn
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Hiển thị tên nhà ga
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Hiển thị tên Waypoint
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Hiển thị tên điểm mốc
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Hiển thị ký hiệu
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Animation đầy đủ
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Chi tiết
@@ -736,13 +736,13 @@ STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Thay đ
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Tiền trợ cấp
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Thông tin chung
 
-STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIGFONT}{BLACK}Người dân chúc mừng . . .{}Tàu lửa đầu tiên đến trạm {STATION}!
-STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIGFONT}{BLACK}Người dân chúc mừng . . .{}Xe bus đầu tiên đến trạm {STATION}!
-STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIGFONT}{BLACK}Người dân chúc mừng . . .{}Xe tải đầu tiên đến trạm {STATION}!
-STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIGFONT}{BLACK}Người dân chúc mừng . . .{}Xe điện chở khách đầu tiên đến trạm {STATION}!
-STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIGFONT}{BLACK}Người dân chúc mừng . . .{}Xe tải điện đầu tiên đến trạm {STATION}!
-STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIGFONT}{BLACK}Người dân chúc mừng . . .{}Tàu thủy đầu tiên đến trạm {STATION}!
-STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIGFONT}{BLACK}Người dân chúc mừng . . .{}Máy bay đầu tiên đến trạm {STATION}!
+STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIGFONT}{BLACK}Người dân chào đón . . .{}Tàu lửa đầu tiên đến trạm {STATION}!
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIGFONT}{BLACK}Người dân chào đón . . .{}Xe bus đầu tiên đến trạm {STATION}!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIGFONT}{BLACK}Người dân chào đón . . .{}Xe tải đầu tiên đến trạm {STATION}!
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIGFONT}{BLACK}Người dân chào đón . . .{}Xe điện chở khách đầu tiên đến trạm {STATION}!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIGFONT}{BLACK}Người dân chào đón . . .{}Xe tải điện đầu tiên đến trạm {STATION}!
+STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIGFONT}{BLACK}Người dân chào đón . . .{}Tàu thủy đầu tiên đến trạm {STATION}!
+STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIGFONT}{BLACK}Người dân chào đón . . .{}Máy bay đầu tiên đến trạm {STATION}!
 
 STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK}Đâm Tàu!{}{COMMA} người chết sau tai nạn đáng tiếc
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}Bị Tàu Đâm!{}Người lái xe đã tử nạn sau tai nạn đáng tiếc
@@ -923,9 +923,9 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Lựa ch
 
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Tắt
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Hàng tháng
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Mỗi 3 tháng
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Mỗi 6 tháng
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Mỗi 12 tháng
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Hàng quý
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Hàng nửa năm
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Hàng năm
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Ngôn ngữ
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Lựa chọn sử dụng ngôn ngữ giao diện
@@ -941,7 +941,7 @@ STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Chọn �
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Gói đồ họa
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Chọn gói đồ họa để sử dụng
-STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} thiếu/hỏng file{P "" s}
+STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} thiếu/hỏng file
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Thông tin thêm về gói đồ họa
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Bộ âm thanh chuẩn
@@ -950,7 +950,7 @@ STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Thông t
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Bộ nhạc chuẩn
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Chọn gói nhạc để sử dụng
-STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} file bị hỏng{P "" s}
+STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} file bị hỏng
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Thông tin thêm về gói nhạc chuẩn
 
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Thất bại khi bật chế độ fullscreen
@@ -1140,7 +1140,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Cấu t
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Gốc
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Khoảng cách tối đa từ đường biên tới nhà máy lọc dầu {ORANGE}{STRING}
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Độ mỏng của tuyết: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Độ cao tuyết phủ: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Độ gồ ghề của địa chất (cho TerraGenesis) : {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Rất Phẳng
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Phẳng
@@ -1150,10 +1150,10 @@ STR_CONFIG_SETTING_TREE_PLACER                                  :{LTBLUE}Thuật
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :không
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Gốc
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Tối Ưu Hóa
-STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}Xoay heightmap: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}Xoay bản đồ địa hình: {ORANGE}{STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Ngược chiều đồng hồ
-STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Chiều đồng hồ
-STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Độ cao của một bản đồ kịch bản có được: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Xuôi chiều đồng hồ
+STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Độ cao của một màn chơi đồng bằng là: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Có thể thay đổi địa chất ở vùng biên: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Một hoặc nhiều ô đất ở vùng biên phía bắc không được trống
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Một hoặc nhiều ô đất ở vùng biên không phải là biển
@@ -1182,8 +1182,8 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Tắt
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Cuộn chuột trái: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Sử dụng định dạng ngày {ORANGE}{STRING}{LTBLUE} cho tên savegame.
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :dài (31st Dec 2008)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Sử dụng định dạng ngày {ORANGE}{STRING}{LTBLUE} cho tên file lưu ván chơi.
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :đầy đủ (31st Dec 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :ngắn (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
@@ -1332,9 +1332,9 @@ STR_INTRO_CAPTION                                               :{WHITE}OpenTTD 
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Chơi mới
 STR_INTRO_LOAD_GAME                                             :{BLACK}Nạp ván chơi
-STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Chơi Kịch Bản
-STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Chơi màn cao nguyên
-STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Trình biên tập kịch bản
+STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Chơi Màn chơi kịch bản
+STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Chơi bản đồ địa hình
+STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Trình biên tập màn chơi kịch bản
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Nhiều người chơi
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Tùy chọn trò chơi
@@ -1347,9 +1347,9 @@ STR_INTRO_QUIT                                                  :{BLACK}Thoát
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Màn chơi mới.Ctrl+Click để bỏ qua phần điều chỉnh màn
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Tải trò chơi
-STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Chơi game mới, dùng heightmap làm quang cảnh
-STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Chơi game mới, dùng kịch bản đã chỉnh sửa
-STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Tạo kịch bản/thế giới đã chỉnh sửa
+STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Chơi ván mới, dùng bản đồ địa hình làm nền đất
+STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Chơi ván mới, dùng màn chơi kịch bản theo ý riêng
+STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Tạo màn chơi kịch bản/bản đồ theo ý riêng
 STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Bắt đầu game nhiều người chơi
 
 STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}Chọn kiểu quang cảnh 'ôn hòa'
@@ -1386,7 +1386,7 @@ STR_OSNAME_SUNOS                                                :SunOS
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Thoát
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Bạn có chắc chắn muốn thoát khỏi trò chơi không?
-STR_ABANDOM_SCENARIO_QUERY                                      :{YELLOW}Bạn có chắc bạn muốn bỏ kịch bản này?
+STR_ABANDOM_SCENARIO_QUERY                                      :{YELLOW}Bạn có chắc bạn muốn bỏ màn chơi kịch bản này?
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Cheats
@@ -1439,7 +1439,7 @@ STR_LIVERY_FREIGHT_SHIP                                         :Thuyền Chở 
 STR_LIVERY_HELICOPTER                                           :Trực Thăng
 STR_LIVERY_SMALL_PLANE                                          :Máy Bay Nhỏ
 STR_LIVERY_LARGE_PLANE                                          :Máy Bay Lớn
-STR_LIVERY_PASSENGER_TRAM                                       :Tàu Khách Điện
+STR_LIVERY_PASSENGER_TRAM                                       :Xe khách điện
 STR_LIVERY_FREIGHT_TRAM                                         :Tàu Hàng Điện
 
 # Face selection window
@@ -1452,7 +1452,7 @@ STR_FACE_MALE_TOOLTIP                                           :{BLACK}Chọn v
 STR_FACE_FEMALE_BUTTON                                          :{BLACK}Nữ
 STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Chọn vẻ mặt nữ
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Vẻ Mặt Mới
-STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Tự động tạo vẻ mặt mới
+STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Chọn ngẫu nhiên vẻ mặt mới
 STR_FACE_ADVANCED                                               :{BLACK}Cấp Cao
 STR_FACE_ADVANCED_TOOLTIP                                       :{BLACK}Tùy chọn vẻ mặt cấp cao.
 STR_FACE_SIMPLE                                                 :{BLACK}Đơn giản
@@ -1568,20 +1568,20 @@ STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Khởi tạo ng
 
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internet
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (lên list)
-STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} máy con{P "" s}
+STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} máy con
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Máy con tối đa:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Chọn số máy con tối đa. Không cần thiết phải vào đầy
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} công ty{P y ies}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Số công ty tối đa:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Giới hạn số công ty trong server
-STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} người xem{P "" s}
+STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} người khán giả
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Số người xem tối đa:
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Giới hạn số người xem trong server
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Ngôn ngữ trò chuyện:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Những người chơi sẽ biết ngôn ngữ dùng để trao đổi trong server
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Chạy Game
-STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Bắt đầu game mạng từ một bản đồ ngẫu nhiên, hoặc kich bản
+STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Bắt đầu ván chơi mạng với một bản đồ ngẫu nhiên, hoặc màn chơi kịch bản
 STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Nạp Game
 STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Tiếp tục một game đã được lưu (chắc chắn rằng đã kết nối với đúng người)
 
@@ -1666,7 +1666,7 @@ STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Đ
 STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Tải thông tin ván chơi..
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Tải thông tin công ty..
 ############ End of leave-in-this-order
-STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} client{P "" s} phía trước bạn
+STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} máy con phía trước bạn
 STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} đã tải xong
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Ngắt kết nối
@@ -1823,8 +1823,8 @@ STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Đồ hoạ cơ
 STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
 STR_CONTENT_TYPE_AI                                             :AI
 STR_CONTENT_TYPE_AI_LIBRARY                                     :Thư viện AI
-STR_CONTENT_TYPE_SCENARIO                                       :Màn chơi
-STR_CONTENT_TYPE_HEIGHTMAP                                      :Bản đồ đồi núi
+STR_CONTENT_TYPE_SCENARIO                                       :Màn chơi kịch bản
+STR_CONTENT_TYPE_HEIGHTMAP                                      :Bản đồ địa hình
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Âm thanh chuẩn
 STR_CONTENT_TYPE_BASE_MUSIC                                     :Nhạc chuẩn
 
@@ -1848,7 +1848,7 @@ STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Bật hi
 STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Bật hiệu ứng trong suốt cho cây cối. Ctrl+Click để khoá.
 STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Bật hiệu ứng trong suốt cho nhà cửa. Ctrl+Click để khoá.
 STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Bật hiệu ứng trong suốt cho nhà máy. Ctrl+Click để khoá.
-STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Bật hiệu ứng trong suốt cho các công trình nhà ga, xưởng và điểm dừng. Ctrl+Click để khoá.
+STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Bật hiệu ứng trong suốt cho các công trình nhà ga, xưởng và điểm mốc. Ctrl+Click để khoá.
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Bật hiệu ứng trong suốt cho cầu. Ctrl+Click để khoá.
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Bật hiệu ứng trong suốt cho đèn biển, ăn-ten... Ctrl+Click để khoá.
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Bật hiệu ứng trong suốt cho các mắt xích. Ctrl+Click để khoá.
@@ -1868,8 +1868,8 @@ STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Cung c�
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Nối ga, bến
 STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Tạo một ga, bến riêng rẽ
 
-STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Nối điểm dừng
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Tạo một điểm dừng riêng rẽ
+STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Nối điểm mốc
+STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Tạo một điểm mốc riêng rẽ
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}Xây dựng đường ray
@@ -1880,12 +1880,12 @@ STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Xây d�
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Xây dựng đường ray. Ctrl để đổi chế độ xây/phá đường ray
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Xây dựng đường ray dùng cơ chế tự xây. Ctrl để đổi chế độ xây/phá đường ray
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Xây xưởng tàu hoả (để chế tạo và bảo dưỡng tàu)
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Chuyển từ ray sang điểm dừng. Ctrl để nối các điểm dừng
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Chuyển từ ray sang điểm mốc. Ctrl để nối các điểm mốc
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Xây nhà ga tàu hoả. Ctrl để nối các nhà ga
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Xây đèn tín hiệu đường sắt. Ctrl đổi dùng đèn/cờ tín hiệu.{}Ctrl + kéo chuột theo đường ray khi xây sẽ xây loạt đèn tín hiệu cho tới điểm ngã ba, tư kế tiếp {}Ctrl+Click để mở cửa sổ chọn loại đèn tin hiệu
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Xây cầu tàu hoả
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Xây hầm tàu hoả
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Chuyển chế độ xây/phá cho đường ray, đèn tín hiệu, điểm dừng và nhà ga. Giữ Ctrl để phá bỏ đường ray tính từ điểm dừng hay nhà ga
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Chuyển chế độ xây/phá cho đường ray, đèn tín hiệu, điểm mốc và nhà ga. Giữ Ctrl để phá bỏ đường ray tính từ điểm mốc hay nhà ga
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Chuyển đổi loại đường ray
 
 # Rail depot construction window
@@ -1893,8 +1893,8 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Hướng
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Chọn hướng đặt xưởng tàu hoả
 
 # Rail waypoint construction window
-STR_WAYPOINT_CAPTION                                            :{WHITE}Điểm dừng
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Chọn kiểu điểm dừng
+STR_WAYPOINT_CAPTION                                            :{WHITE}Điểm mốc
+STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Chọn kiểu điểm mốc
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Chọn ga tàu hoả
@@ -1911,7 +1911,7 @@ STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Chọn l
 STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Chọn loại ga để xây dựng
 
 STR_STATION_CLASS_DFLT                                          :Ga mặc định
-STR_STATION_CLASS_WAYP                                          :Điểm dừng
+STR_STATION_CLASS_WAYP                                          :Điểm mốc
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Chọn đèn tín hiệu
@@ -1944,7 +1944,7 @@ STR_BRIDGE_NAME_SUSPENSION_CONCRETE                             :Cầu treo bê 
 STR_BRIDGE_NAME_WOODEN                                          :Cầu gỗ
 STR_BRIDGE_NAME_CONCRETE                                        :Cầu bê tông
 STR_BRIDGE_NAME_TUBULAR_STEEL                                   :Cầu ống thép
-STR_BRIDGE_TUBULAR_SILICON                                      :Cầu ống, Silicon
+STR_BRIDGE_TUBULAR_SILICON                                      :Cầu ống Silicon
 
 
 # Road construction toolbar
@@ -1991,7 +1991,7 @@ STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Xây kê
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Xây cửa kênh
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Xây xưởng tàu thuỷ (để mua và bảo trì tàu thuỷ)
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Xây cảng tàu. Ctrl để nối các cảng
-STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Đặt một phao hàng hải như là điểm dừng
+STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Đặt một phao hàng hải như là điểm mốc trên đường đi
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Xây cống
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Đặt tên vùng biển.{}Tạo một kênh đào, nếu ấn Ctrl thì giữ xuống tới mực nước biển, không thì sẽ bị ngập nước
 STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Đặt tên sông.
@@ -2052,7 +2052,7 @@ STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Đặt t
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Tăng diện tích vùng đất để nâng/hạ
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Giảm diện tích vùng đất để nâng/hạ
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Tạo vùng đất ngẫu nhiên
-STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Tạo màn chơi mới
+STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Tạo màn chơi kịch bản mới
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Thiết lập lại nền đất
 STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Xoá mọi tài sản của người chơi trên bản đồ
 
@@ -2175,7 +2175,7 @@ STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Trạm bốc d�
 STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :Bến xe buýt
 STR_LAI_STATION_DESCRIPTION_SHIP_DOCK                           :Cảng tàu
 STR_LAI_STATION_DESCRIPTION_BUOY                                :Phao hàng hải
-STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :Điểm dừng
+STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :Điểm mốc
 
 STR_LAI_WATER_DESCRIPTION_WATER                                 :Nước
 STR_LAI_WATER_DESCRIPTION_CANAL                                 :Kênh đào
@@ -2221,9 +2221,9 @@ STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD 
 # Save/load game/scenario
 STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}Lưu ván chơi
 STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Nạp ván chơi
-STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Lưu màn chơi
-STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Nạp màn chơi
-STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Nạp màn cao nguyên
+STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Lưu màn chơi kịch bản
+STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Nạp màn chơi kịch bản
+STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Nạp bản đồ địa hình
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Nháy vào đây để tới thư mục mặc định hiện thời để nạp/lưu
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} còn trống
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Danh mục các ổ đĩa, thư mục và file lưu ván chơi (saved-game)
@@ -2245,10 +2245,10 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Số lư
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Độ cao tuyết phủ:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Di chuyển độ cao tuyết phủ lên cao
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Di chuyển độ cao tuyết phủ xuống thấp
-STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Cơ cấu ngẫu nhiên:
-STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Click để chọn cơ cấu ngẫu nhiên
+STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Số ngẫu nhiên:
+STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Chọn để nhập con số ngẫu nhiên khi tạo bản đồ
 STR_MAPGEN_RANDOM                                               :{BLACK}Một cách ngẫu nhiên
-STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Thay đổi cơ cấu ngẫu nhiên để khởi tạo địa hình
+STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Thay đổi con số ngẫu nhiên để khởi tạo địa hình ngẫu nhiên
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Tạo nền đất:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Cơ chế trồng cây:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Kiểu nền đất:
@@ -2269,12 +2269,12 @@ STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Ngẫu n
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Ngẫu nhiên
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Bằng tay
 
-STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Xoay cao nguyên:
-STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Tên cao nguyên:
+STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Xoay bản đồ địa hình:
+STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Tên bản đồ địa hình:
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Cỡ:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
 
-STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Nhập cơ cấu ngẫu nhiên
+STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Nhập một số ngẫu nhiên
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Thay đổi độ cao tuyết phủ
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Thay đổi năm khởi đầu
 
@@ -2283,11 +2283,11 @@ STR_SE_MAPGEN_CAPTION                                           :{WHITE}Kiểu m
 STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Đất bằng
 STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Tạo ra đất bằng
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Nền đất ngẫu nhiên
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Độ cao của nền đất:
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Nâng độ cao của nền đất
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Hạ độ cao của nền đất
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Độ cao của đồng bằng:
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Hạ độ cao của đồng bằng xuống một
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Nâng độ cao của đồng bằng lên một
 
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Thay đổi độ cao của nền đất
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Thay đổi độ cao của đồng bằng
 
 # Map generation progress
 STR_GENERATION_WORLD                                            :{WHITE}Đang tạo màn...
@@ -2394,7 +2394,7 @@ STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Danh m�
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' gây ra một vòng lặp vô tận khi gọi hàm callback.
 
 # Sign list window
-STR_SIGN_LIST_CAPTION                                           :{WHITE}Danh sách biển hiệu - {COMMA} Biển hiệu{P "" s}
+STR_SIGN_LIST_CAPTION                                           :{WHITE}Danh sách biển hiệu - {COMMA} Biển hiệu
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Sửa biển hiệu
@@ -2472,7 +2472,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Nháy v�
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Các nhà ga, bến, cảng - nháy vào tên để xem vị trí nhà ga,bến, cảng. Ctrl+Click mở cửa sổ mới để xem
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Giữ nút Ctrl để chọn nhiều mục
-STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Ga, bến, cảng {P "" s}
+STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Ga, bến, cảng
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- không -
@@ -2518,12 +2518,12 @@ STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Đổi tên ga,
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Xem vị trí của điểm dừng. Ctrl+Click mở cửa sổ mới để xem
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Đổi tên điểm dừng
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Xem vị trí của điểm mốc. Ctrl+Click mở cửa sổ mới để xem
+STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Đổi tên điểm mốc
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Xem vị trí phao hàng hải. Ctrl+Click mở cửa sổ mới
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Đổi tên phao
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Sửa tên điểm dừng
+STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Sửa tên điểm mốc
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Tài chính công ty {COMPANY} {BLACK}{COMPANYNUM}
@@ -2561,10 +2561,10 @@ STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDE
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Thành lập: {WHITE}{NUM}
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Phối màu:
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Phương tiện:
-STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} tàu hoả{P "" s}
-STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} xe ôtô{P "" s}
+STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} tàu hoả
+STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} xe ôtô
 STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} máy bay
-STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} tàu thuỷ{P "" s}
+STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} tàu thuỷ
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Không
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Giá trị công ty: {WHITE}{CURRENCY}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% cổ phần sở hữu bởi {COMPANY})
@@ -2625,9 +2625,9 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Sản l�
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Thay đổi sản lượng (bội số của 8, max 2040)
 
 # Vehicle lists
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Tàu hoả{P "" s}
-STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} Xe ôtô{P "" s}
-STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Tàu thuỷ{P "" s}
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Tàu hoả
+STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} Xe ôtô
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Tàu thuỷ
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Máy bay
 
 STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Tàu hoả - nháy vào tàu hoả để xem chi tiết
@@ -2656,7 +2656,7 @@ STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Gửi về Hang
 STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP                         :{BLACK}Ấn để dừng mọi phương tiện trong danh sách
 STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}Ấn để chạy mọi phương tiện trong danh sách
 
-STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}Lộ trình chia sẻ với {COMMA} phương tiện{P "" s}
+STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}Lộ trình chia sẻ với {COMMA} phương tiện
 
 # Group window
 STR_GROUP_ALL_TRAINS                                            :Tất cả tàu hoả
@@ -2747,7 +2747,7 @@ STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}Xưởng
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
-STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} phương tiện{P "" s}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} phương tiện{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
 STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Tàu hoả - nháy vào đoàn tàu để xem chi tiết, kéo thả để thêm/bớt toa tàu
@@ -2920,8 +2920,8 @@ STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Nhắm 
 STR_VEHICLE_STATUS_NO_ORDERS                                    :{LTBLUE}Không lộ trình
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Không lộ trình, {VELOCITY}
 
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Nhắm tới điểm {WAYPOINT}
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Nhắm tới điểm {WAYPOINT}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Nhắm tới {WAYPOINT}
+STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Nhắm tới {WAYPOINT}, {VELOCITY}
 
 STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT                      :{ORANGE}Nhắm tới xưởng tàu hoả {TOWN}
 STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_VEL                  :{ORANGE}Nhắm tới xưởng tàu hoả {TOWN}, {VELOCITY}
@@ -2952,8 +2952,8 @@ STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Đổi t
 
 STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Tuổi: {LTBLUE}{STRING}{BLACK} Chi phí hoạt động: {LTBLUE}{CURRENCY}/năm
 # The next two need to stay in this order
-STR_VEHICLE_INFO_AGE                                            :{COMMA} năm{P "" s} ({COMMA})
-STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} năm{P "" s} ({COMMA})
+STR_VEHICLE_INFO_AGE                                            :{COMMA} năm ({COMMA})
+STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} năm tuổi ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Tốc độ tối đa: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Tải trọng: {LTBLUE}{WEIGHT_S} {BLACK}Công suất: {LTBLUE}{POWER}{BLACK} Tốc độ tối đa: {LTBLUE}{VELOCITY}
@@ -3097,7 +3097,7 @@ STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Đi tớ
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Đi tới xưởng gần nhất
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Đi tới xưởng ở sân bay gần nhất
 STR_ORDER_CONDITIONAL                                           :Điểm lộ trình có điều kiện
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Thêm một điểm mới trước điểm lộ trình đã chọn, hoặc thêm nó vào cuối danh sách. Ctrl để 'bốc xếp đủ bất kỳ hàng nào' tại ga, điểm dừng là điểm 'đi suốt' và điểm xưởng là điểm 'bảo trì'
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Thêm một điểm lộ trình trước điểm đã chọn, hoặc thêm nó vào cuối danh sách. Ctrl để là ga thì 'bốc xếp đủ bất kỳ hàng nào', là điểm mốc thì 'đi suốt' và là xưởng thì 'bảo trì'
 STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Thêm một điểm lộ trình tuỳ biến
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Hiện tất cả phương tiện chia sẻ lộ trình này
@@ -3161,8 +3161,8 @@ STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Di chuyển (kh
 STR_TIMETABLE_TRAVEL_FOR                                        :Di chuyển trong {STRING}
 STR_TIMETABLE_STAY_FOR                                          :và ở lại trong {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :và di chuyển trong {STRING}
-STR_TIMETABLE_DAYS                                              :{COMMA} ngày{P "" s}
-STR_TIMETABLE_TICKS                                             :{COMMA} nhịp{P "" s}
+STR_TIMETABLE_DAYS                                              :{COMMA} ngày
+STR_TIMETABLE_TICKS                                             :{COMMA} nhịp
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Lộ trình thời gian này sẽ mất {STRING} để hoàn thành
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Lộ trình thời gian này sẽ mất ít nhất {STRING} để hoàn thành (không phải tất cả đều bó buộc thời gian)
@@ -3272,7 +3272,7 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Thu nh�
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Đang lưu vào đĩa,{}hãy chờ cho đến khi hoàn thành!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Tự lưu gặp lỗi
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Không đọc được đĩa
-STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Lưu ván chơi thất bại{}{STRING}
+STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Lưu ván chơi có lỗi{}{STRING}
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Không thể xoá file
 STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Nạp ván chơi thất bại{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Lỗi kỹ thuật: {STRING}
@@ -3285,7 +3285,7 @@ STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Lưu vá
 
 # Map generation messages
 STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Sinh bản đồ bị ngưng...{}... không có nơi đặt đô thị
-STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... không có đô thị nào ở màn chơi này
+STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... không có đô thị nào ở màn chơi kịch bản này
 
 STR_ERROR_PNGMAP                                                :{WHITE}Không thể nạp nền từ file PNG...
 STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... không tìm thấy file.
@@ -3420,10 +3420,10 @@ STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Phải b
 STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Phải bỏ sân bay đi trước
 
 # Waypoint related errors
-STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Kết nối nhiều hơn một cột mốc đã tồn tại
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Quá gần cột mốc khác
+STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Kết nối nhiều hơn một điểm mốc đã tồn tại
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Quá gần điểm mốc khác
 
-STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Không thể xây cột mốc tàu hoả ở đây...
+STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Không thể xây điểm mốc tàu hoả ở đây...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Không thể xây phao hàng hải ở đây...
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Không thể thay đổi tên điểm mốc...
 
@@ -3462,53 +3462,194 @@ STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Không t
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(tự thay vượt hạn mức tiền)
 
 # Rail construction errors
+STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Không thể hoà trộn các đường ray
+STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Không có đường ray thích hợp
+STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Phải phá bỏ đường ray trước
+STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Đường một chiều hoặc bị chặn
+STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Không thể xây đèn hiệu ở đây...
+STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Không thể xây đường ray ở đây...
+STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Không thể phá bỏ đường ray ở đây...
+STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Không thể phá bỏ đèn hiệu ở đây...
+STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Không thể chuyển đổi đèn hiệu ở đây...
 
+STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Không thể đổi kiểu đường ray ở đây...
 
 # Road construction errors
+STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}Phải bỏ đường ôtô trước
+STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}... đường một chiều không thể có ngả rẽ
+STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Không thể xây đường ôtô ở đây...
+STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Không thể xây đường xe điện ở đây...
+STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Không thể phá dỡ đường ôtô ở đây...
+STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Không thể phá dỡ đường xe điện ở đây...
 
 # Waterway construction errors
+STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Không thể xây kênh đào ở đây...
+STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Không thể xây cửa kênh ở đây...
+STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Không thể đặt sông ở đây...
+STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... phải xây trên mặt nước
+STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... không thể xây trên nước
+STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Phải lấp kênh đào trước
+STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Không thể xây cống ở đây...
 
 # Tree related errors
+STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... có cây cối rồi
+STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Không thể trồng cây ở đây...
 
 # Bridge related errors
+STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}Không thể xây cầu ở đây...
+STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Phải phá dỡ cầu trước đã
+STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Không thể bắt đầu và kết thúc ở cùng một điểm
+STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Hai đầu cầu không ở cùng độ cao
+STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Cầu thấp quá so với mặt đất
+STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Điểu đầu và cuối phải trên 1 đường thẳng
+STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... hai đầu cầu phải được gá vào đất
 
 # Tunnel related errors
+STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Không thể đào hầm ở đây...
+STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}Vị trí không thích hợp cho cửa vào hầm
+STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Phải phá hầm trước
+STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Có hầm khác trên cùng đường
+STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Một đầu hầm kéo ra ngoài bản đồ
+STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Không thể đào đất để làm đầu kia của hầm
 
 # Unmovable related errors
+STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Có vật thể trên đường
+STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... trụ sở công ty nằm trên đường
+STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Không thể mua được mảnh đất này...
+STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... bạn đã có nó rồi!
 
 # Group related errors
+STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Không thể tạo nhóm...
+STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}Không thể xoá bỏ nhóm...
+STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Không thể đổi tên nhóm...
+STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}Không thể bỏ các phương tiện trong nhóm này...
+STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}Không thể thêm phương tiện vào nhóm này...
+STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Không thể thêm phương tiện được chia sẻ vào nhóm...
 
 # Generic vehicle errors
+STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Tàu đang ở trên đường
+STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Ôtô đang ở trên đường
+STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Tàu thuỷ đang ở trên đường
+STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Máy bay đang ở trên đường
 
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Không thể cải biến tàu hoả...
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Không thể cải biến ôtô...
+STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Không thể cải biến tàu thuỷ...
+STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Không thể cải biến máy bay...
 
+STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Không thể đổi tên tàu hoả...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Không thể đổi tên ôtô...
+STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}Không thể đổi tên tàu thuỷ...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}Không thể đổi tên máy bay...
 
+STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Không thể chạy/dừng tàu hoả...
+STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Không thể chạy/dừng ôtô...
+STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Không thể chạy/dừng tàu thuỷ...
+STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Không thể chạy/dừng máy bay...
 
+STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Không thể gửi tàu về xưởng...
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Không thể gửi ôtô về xưởng...
+STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Không thể gửi tàu thuỷ về xưởng...
+STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Không thể gửi máy bay về xưởng...
 
 STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Không thể mua tàu hỏa này...
 STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Không thể mua xe này...
 STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Không thể mua tàu này...
 STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Không thể mua phi cơ này...
 
+STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Không thể đổi tên kiểu tàu hoả...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Không thể đổi tên kiểu ôtô...
+STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Không thể đổi tên kiểu tàu thuỷ...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Không thể đổi tên kiểu máy bay...
 
+STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Không thể bán tàu hoả...
+STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Không thể bán ôtô...
+STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Không thể bán tàu thuỷ...
+STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Không thể bán máy bay...
 
+STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :{WHITE}Đầu/toa xe không sẵn có
+STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :{WHITE}Ôtô không sẵn có
+STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}Tàu thuỷ không sẵn có
+STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Máy bay không sẵn có
 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Quá nhiều phương tiện trong trò chơi
+STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Không thể thay đổi tần suất bảo trì...
 
+STR_ERROR_CAN_T_SELL_DESTROYED_VEHICLE                          :{WHITE}Không thể bán phương tiện đã hỏng...
+STR_ERROR_CAN_T_REFIT_DESTROYED_VEHICLE                         :{WHITE}Không thể cải biến phương tiện đã hỏng...
 
 # Specific vehicle errors
+STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Không thể để tàu hoả qua tín hiệu đèn khi nguy hiểm...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Không thể đổi hướng đoàn tàu...
+STR_ERROR_TRAIN_START_NO_CATENARY                               :Đường ray không liền mạch, nên tàu không thể khởi hành
 
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Không thể làm xe quay lại được...
 
+STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}Máy bay đang bay
 
 # Order related errors
+STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}Không đủ chỗ cho lộ trình
+STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}Quá nhiều lộ trình
+STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}Không thể thêm điểm lộ trình...
+STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :{WHITE}Không thể xoá điểm lộ trình này...
+STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}Không thể thay đổi điểm lộ trình...
+STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Không thể chuyển điểm lộ trình này...
+STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Không thể bỏ qua điểm lộ trình hiện tại...
+STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Không thể chuyển lộ trình tới điểm đã chọn...
+STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... phương tiện không thể tới được mọi ga, bến
+STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... phương tiện không thể tới ga, bến đó được
+STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... phương tiện dùng lộ trình chia sẻ này không tới được ga, bến đó
 
+STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Không thể chia sẻ lộ trình...
+STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Không thể copy lộ trình...
+STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... quá xa điểm lộ trình kế trước
 
 # Timetable related errors
+STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Không thể lập lịch lộ trình cho phương tiện...
+STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Phương tiện chỉ có thể chờ ở nhà ga, bến, cảng.
+STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Phương tiện này không dừng lại tại ga, bến theo lịch lộ trình.
 
 # Sign related errors
+STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... quá nhiều biển hiệu
+STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Không thể đặt biển hiệu ở đây...
+STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Không thể đổi tên biển hiệu...
+STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Không thể xoá biển hiệu...
 
 ##id 0x2000
 # Town building names
+STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1                      :Cao ốc văn phòng
+STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_1                           :Toà nhà văn phòng
+STR_TOWN_BUILDING_NAME_SMALL_BLOCK_OF_FLATS_1                   :Chung cư nhỏ
+STR_TOWN_BUILDING_NAME_CHURCH_1                                 :Nhà thờ
+STR_TOWN_BUILDING_NAME_LARGE_OFFICE_BLOCK_1                     :Toà nhà văn phòng lớn
+STR_TOWN_BUILDING_NAME_TOWN_HOUSES_1                            :Nhà đô thị
+STR_TOWN_BUILDING_NAME_HOTEL_1                                  :Khách sạn
+STR_TOWN_BUILDING_NAME_STATUE_1                                 :Tượng đài
+STR_TOWN_BUILDING_NAME_FOUNTAIN_1                               :Vòi phun nước
+STR_TOWN_BUILDING_NAME_PARK_1                                   :Công viên
+STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_2                           :Toà nhà văn phòng
+STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_1                      :Cửa hàng và văn phòng
+STR_TOWN_BUILDING_NAME_MODERN_OFFICE_BUILDING_1                 :Toà nhà văn phòng cao cấp
+STR_TOWN_BUILDING_NAME_WAREHOUSE_1                              :Nhà kho
+STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_3                           :Toà nhà văn phòng
+STR_TOWN_BUILDING_NAME_STADIUM_1                                :Sân vận động
+STR_TOWN_BUILDING_NAME_OLD_HOUSES_1                             :Nhà cổ
+STR_TOWN_BUILDING_NAME_COTTAGES_1                               :Nhà tranh
+STR_TOWN_BUILDING_NAME_HOUSES_1                                 :Nhà riêng
+STR_TOWN_BUILDING_NAME_FLATS_1                                  :Chung cư
+STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_2                      :Cao ốc văn phòng
+STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_2                      :Cửa hàng và văn phòng
+STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_3                      :Cửa hàng và văn phòng
+STR_TOWN_BUILDING_NAME_THEATER_1                                :Rạp hát
+STR_TOWN_BUILDING_NAME_STADIUM_2                                :Sân vận động
+STR_TOWN_BUILDING_NAME_OFFICES_1                                :Văn phòng
+STR_TOWN_BUILDING_NAME_HOUSES_2                                 :Nhà riêng
+STR_TOWN_BUILDING_NAME_CINEMA_1                                 :Rạp chiếu phim
+STR_TOWN_BUILDING_NAME_SHOPPING_MALL_1                          :Trung tâm mua sắm
+STR_TOWN_BUILDING_NAME_IGLOO_1                                  :Túp lều
+STR_TOWN_BUILDING_NAME_TEPEES_1                                 :Lều vải
+STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :Nhà ấm trà
+STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Nhà con heo đất
 
 ##id 0x4800
 # industry names
@@ -3546,17 +3687,308 @@ STR_INDUSTRY_NAME_TOY_SHOP                                      :Cửa hàng đ�
 STR_INDUSTRY_NAME_TOY_FACTORY                                   :Nhà máy sản xuất đồ chơi
 STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :Nhà máy chất dẻo
 STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :Nhà máy đồ uống có ga
+STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :Nhà máy tạo bong bóng
+STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :Mỏ kẹo bơ cứng
 STR_INDUSTRY_NAME_SUGAR_MINE                                    :Mỏ đường
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
 ############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
+STR_SV_EMPTY                                                    :
+STR_SV_UNNAMED                                                  :Chưa đặt tên
+STR_SV_TRAIN_NAME                                               :Đoàn tàu {COMMA}
+STR_SV_ROAD_VEHICLE_NAME                                        :Ôtô {COMMA}
+STR_SV_SHIP_NAME                                                :Tàu thuỷ {COMMA}
+STR_SV_AIRCRAFT_NAME                                            :Máy bay {COMMA}
 
+STR_SV_STNAME                                                   :{STRING}
+STR_SV_STNAME_NORTH                                             :Bắc {STRING}
+STR_SV_STNAME_SOUTH                                             :Nam {STRING}
+STR_SV_STNAME_EAST                                              :Đông {STRING}
+STR_SV_STNAME_WEST                                              :Tây {STRING}
+STR_SV_STNAME_CENTRAL                                           :Trung tâm {STRING}
+STR_SV_STNAME_TRANSFER                                          :Trung chuyển {STRING}
+STR_SV_STNAME_HALT                                              :Trạm nghỉ {STRING}
+STR_SV_STNAME_VALLEY                                            :Thung lũng {STRING}
+STR_SV_STNAME_HEIGHTS                                           :Cao nguyên {STRING}
+STR_SV_STNAME_WOODS                                             :Hàng hoá {STRING}
+STR_SV_STNAME_LAKESIDE                                          :Bờ hồ {STRING}
+STR_SV_STNAME_EXCHANGE                                          :Hoán đổi {STRING}
+STR_SV_STNAME_AIRPORT                                           :Sân bay {STRING}
+STR_SV_STNAME_OILFIELD                                          :Giàn khoan dầu {STRING}
+STR_SV_STNAME_MINES                                             :Mỏ {STRING}
+STR_SV_STNAME_DOCKS                                             :Cảng {STRING}
+STR_SV_STNAME_BUOY                                              :{STRING}
+STR_SV_STNAME_WAYPOINT                                          :{STRING}
 ##id 0x6020
+STR_SV_STNAME_ANNEXE                                            :{STRING} phụ
+STR_SV_STNAME_SIDINGS                                           :{STRING} kế
+STR_SV_STNAME_BRANCH                                            :Nhánh {STRING}
+STR_SV_STNAME_UPPER                                             :{STRING} thượng
+STR_SV_STNAME_LOWER                                             :{STRING} Hạ
+STR_SV_STNAME_HELIPORT                                          :SB lên thẳng {STRING}
+STR_SV_STNAME_FOREST                                            :Rừng {STRING}
+STR_SV_STNAME_FALLBACK                                          :Bến {STRING} số #{NUM}
 ############ end of savegame specific region!
 
 ##id 0x8000
 # Vehicle names
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KIRBY_PAUL_TANK_STEAM        :Kirby Paul Tank (Hơi nước)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_250_DIESEL               :MJS 250 (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_CHOO_CHOO         :Ploddyphut Choo-Choo
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_CHOO_CHOO          :Powernaut Choo-Choo
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MIGHTYMOVER_CHOO_CHOO        :Mightymover Choo-Choo
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_DIESEL            :Ploddyphut Diesel
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_DIESEL             :Powernaut Diesel
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_WILLS_2_8_0_STEAM            :Wills 2-8-0 (Hơi nước)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CHANEY_JUBILEE_STEAM         :Chaney 'Jubilee' (Hơi nước)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_GINZU_A4_STEAM               :Ginzu 'A4' (Hơi nước)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_8P_STEAM                  :SH '8P' (Hơi nước)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MANLEY_MOREL_DMU_DIESEL      :Manley-Morel DMU (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_DASH_DIESEL                  :'Dash' (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_HENDRY_25_DIESEL          :SH/Hendry '25' (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_UU_37_DIESEL                 :UU '37' (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_FLOSS_47_DIESEL              :Floss '47' (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CS_4000_DIESEL               :CS 4000 (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CS_2400_DIESEL               :CS 2400 (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CENTENNIAL_DIESEL            :Centennial (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KELLING_3100_DIESEL          :Kelling 3100 (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_TURNER_TURBO_DIESEL          :Turner Turbo (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_1000_DIESEL              :MJS 1000 (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_125_DIESEL                :SH '125' (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_30_ELECTRIC               :SH '30' (Điện)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_40_ELECTRIC               :SH '40' (Điện)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_T_I_M_ELECTRIC               :'T.I.M.' (Điện)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_ASIASTAR_ELECTRIC            :'AsiaStar' (Điện)
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PASSENGER_CAR                 :Toa xe hành khách
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_MAIL_VAN                      :Toa bưu kiện
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COAL_CAR                      :Toa chở than
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_OIL_TANKER                    :Toa chở dầu
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_LIVESTOCK_VAN                 :Toa chở gia súc
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GOODS_VAN                     :Toa hàng tiêu dùng
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GRAIN_HOPPER                  :Toa ngũ cốc
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WOOD_TRUCK                    :Toa chở gỗ
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_IRON_ORE_HOPPER               :Toa chở quặng sắt
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_STEEL_TRUCK                   :Toa chở thép
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_ARMORED_VAN                   :Toa két an toàn
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FOOD_VAN                      :Toa chở thực phẩm
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PAPER_TRUCK                   :Toa chở giấy
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COPPER_ORE_HOPPER             :Toa chở quặng đồng
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WATER_TANKER                  :Toa chở nước
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FRUIT_TRUCK                   :Toa chở hoa quả
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_RUBBER_TRUCK                  :Toa chở cao su
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_SUGAR_TRUCK                   :Toa chở đường
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COTTON_CANDY_HOPPER           :Toa chở kẹo
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOFFEE_HOPPER                 :Toa kẹo bơ cứng
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BUBBLE_VAN                    :Toa chở bong bóng
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COLA_TANKER                   :Toa nước Cola
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_CANDY_VAN                     :Toa kẹo ngọt
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOY_VAN                       :Toa đồ chơi
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BATTERY_TRUCK                 :Toa chở pin
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FIZZY_DRINK_TRUCK             :Toa đồ uống có ga
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PLASTIC_TRUCK                 :Toa chở chất dẻo
+STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :'X2001' (Điện)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_MILLENNIUM_Z1_ELECTRIC   :'Millennium Z1' (Điện)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_WIZZOWOW_Z99             :Wizzowow Z99
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PASSENGER_CAR             :Toa hành khách
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_MAIL_VAN                  :Toa bưu kiện
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COAL_CAR                  :Toa than
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_OIL_TANKER                :Toa chở dầu
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_LIVESTOCK_VAN             :Toa chở gia súc
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GOODS_VAN                 :Toa hàng tiêu dùng
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GRAIN_HOPPER              :Toa ngũ cốc
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WOOD_TRUCK                :Toa chở gỗ
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_IRON_ORE_HOPPER           :Toa chở quặng sắt
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_STEEL_TRUCK               :Toa chở thép
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_ARMORED_VAN               :Toa két an toàn
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FOOD_VAN                  :Toa thực phẩm
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PAPER_TRUCK               :Toa chở giấy
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COPPER_ORE_HOPPER         :Toa chở quặng đồng
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WATER_TANKER              :Toa chở nước
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FRUIT_TRUCK               :Toa chở hoa quả
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_RUBBER_TRUCK              :Toa chở cao su
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_SUGAR_TRUCK               :Toa chở đường
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COTTON_CANDY_HOPPER       :Toa chở kẹo bông
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOFFEE_HOPPER             :Toa kẹo bơ cứng
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BUBBLE_VAN                :Toa chở bong bóng
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COLA_TANKER               :Toa nước Cola
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_CANDY_VAN                 :Toa kẹo ngọt
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOY_VAN                   :Toa đồ chơi
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BATTERY_TRUCK             :Toa chở pin
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FIZZY_DRINK_TRUCK         :Toa đồ uống có ga
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PLASTIC_TRUCK             :Toa chất dẻo
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV1_LEVIATHAN_ELECTRIC    :Lev1 'Leviathan' (Điện)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV2_CYCLOPS_ELECTRIC      :Lev2 'Cyclops' (Điện)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV3_PEGASUS_ELECTRIC      :Lev3 'Pegasus' (Điện)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV4_CHIMAERA_ELECTRIC     :Lev4 'Chimaera' (Điện)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_WIZZOWOW_ROCKETEER         :Wizzowow Rocketeer
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PASSENGER_CAR               :Toa hành khách
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_MAIL_VAN                    :Toa bưu kiện
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COAL_CAR                    :Toa than
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_OIL_TANKER                  :Toa chở dầu
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_LIVESTOCK_VAN               :Toa chở gia súc
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GOODS_VAN                   :Toa hàng tiêu dùng
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GRAIN_HOPPER                :Toa chở ngũ cốc
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WOOD_TRUCK                  :Toa chở gỗ
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_IRON_ORE_HOPPER             :Toa chở quặng sắt
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_STEEL_TRUCK                 :Toa chở thép
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_ARMORED_VAN                 :Toa két an toàn
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FOOD_VAN                    :Toa thực phẩm
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PAPER_TRUCK                 :Toa chở giấy
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COPPER_ORE_HOPPER           :Toa chở quặng đồng
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WATER_TANKER                :Toa chở nước
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FRUIT_TRUCK                 :Toa chở hoa quả
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_RUBBER_TRUCK                :Toa chở cao su
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_SUGAR_TRUCK                 :Toa chở đường
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COTTON_CANDY_HOPPER         :Toa chở kẹo bông
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOFFEE_HOPPER               :Toa kẹo bơ cứng
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BUBBLE_VAN                  :Toa chở bong bóng
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COLA_TANKER                 :Toa chở nước Cola
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_CANDY_VAN                   :Toa chở kẹo ngọt
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOY_VAN                     :Toa đồ chơi
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BATTERY_TRUCK               :Toa chở pin
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FIZZY_DRINK_TRUCK           :Toa đồ uống có ga
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PLASTIC_TRUCK               :Toa chất dẻo
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_REGAL_BUS                     :Xe khách MPS
+STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_LEOPARD_BUS              :Xe khách Hereford Leopard
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_BUS                        :Xe khách Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_MKII_SUPERBUS              :Xe khách Foster MkII
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKI_BUS                :Xe khách Ploddyphut MkI
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKII_BUS               :Xe khách Ploddyphut MkII
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKIII_BUS              :Xe khách Ploddyphut MkIII
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_COAL_TRUCK                 :Xe than Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COAL_TRUCK                    :Xe than Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_DW_COAL_TRUCK                     :Xe than DW
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_MAIL_TRUCK                    :Xe bưu kiện MPS
+STR_VEHICLE_NAME_ROAD_VEHICLE_REYNARD_MAIL_TRUCK                :Xe bưu kiện Reynard
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_MAIL_TRUCK                  :Xe bưu kiện Perry
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_MAIL_TRUCK            :Xe bưu kiện MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_MAIL_TRUCK            :Xe bưu kiện Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_MAIL_TRUCK               :Xe bưu kiện Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_OIL_TANKER               :Xe bồn dầu Witcombe
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_OIL_TANKER                 :Xe bồn dầu Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_OIL_TANKER                  :Xe bồn dầu Perry
+STR_VEHICLE_NAME_ROAD_VEHICLE_TALBOTT_LIVESTOCK_VAN             :Xe gia súc Talbott
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_LIVESTOCK_VAN                 :Xe gia súc Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_LIVESTOCK_VAN              :Xe gia súc Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_GOODS_TRUCK                :Xe hàng Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_CRAIGHEAD_GOODS_TRUCK             :Xe hàng Craighead
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GOODS_TRUCK                  :Xe hàng Goss
+STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_GRAIN_TRUCK              :Xe ngũ cốc Hereford
+STR_VEHICLE_NAME_ROAD_VEHICLE_THOMAS_GRAIN_TRUCK                :Xe ngũ cốc Thomas
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GRAIN_TRUCK                  :Xe ngũ cốc Goss
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_WOOD_TRUCK               :Xe gỗ Witcombe
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_WOOD_TRUCK                 :Xe gỗ Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_MORELAND_WOOD_TRUCK               :Xe gỗ Moreland
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_IRON_ORE_TRUCK                :Xe quặng sắt MPS
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_IRON_ORE_TRUCK                :Xe quặng sắt Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_IRON_ORE_TRUCK             :Xe quặng sắt Chippy
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_STEEL_TRUCK                :Xe tải thép Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_STEEL_TRUCK                   :Xe tải thép Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_STEEL_TRUCK               :Xe tải thép Kelling
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_ARMORED_TRUCK              :Xe két an toàn Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_ARMORED_TRUCK                 :Xe két an toàn Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_ARMORED_TRUCK              :Xe két an toàn Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_FOOD_VAN                   :Xe thực phẩm Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_FOOD_VAN                    :Xe thực phẩm Perry
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_FOOD_VAN                   :Xe thực phẩm Chippy
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_PAPER_TRUCK                   :Xe tải giấy Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_PAPER_TRUCK                :Xe tải giấy Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_PAPER_TRUCK                   :Xe tải giấy MPS
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_COPPER_ORE_TRUCK              :Xe quặng đồng MPS
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COPPER_ORE_TRUCK              :Xe quặng đồng Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_COPPER_ORE_TRUCK             :Xe quặng đồng Goss
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_WATER_TANKER                  :Xe bồn nước Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_WATER_TANKER               :Xe bồn nước Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_WATER_TANKER                  :Xe bồn nước MPS
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_FRUIT_TRUCK                :Xe hoa quả Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_FRUIT_TRUCK                   :Xe hoa quả Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_FRUIT_TRUCK               :Xe hoa quả Kelling
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_RUBBER_TRUCK               :Xe cao su Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_RUBBER_TRUCK                  :Xe cao su Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_RMT_RUBBER_TRUCK                  :Xe cao su RMT
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_SUGAR_TRUCK           :Xe tải đường MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_SUGAR_TRUCK           :Xe tải đường Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_SUGAR_TRUCK              :Xe tải đường Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COLA_TRUCK            :Xe cola MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COLA_TRUCK            :Xe cola Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COLA_TRUCK               :Xe cola Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COTTON_CANDY          :Xe kẹo MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COTTON_CANDY          :Xe kẹo Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COTTON_CANDY_TRUCK       :Xe kẹo Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOFFEE_TRUCK          :Xe kẹo bơ cứng MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOFFEE_TRUCK          :Xe kẹo bơ cứng Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOFFEE_TRUCK             :Xe kẹo bơ cứng Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOY_VAN               :Xe đồ chơi MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOY_VAN               :Xe đồ chơi Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOY_VAN                  :Xe đồ chơi Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_CANDY_TRUCK           :Xe kẹo ngọt MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_CANDY_TRUCK           :Xe kẹo ngọt Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_CANDY_TRUCK              :Xe kẹo ngọt Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BATTERY_TRUCK         :Xe tải pin MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BATTERY_TRUCK         :Xe tải pin Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BATTERY_TRUCK            :Xe tải pin Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_FIZZY_DRINK           :Xe đồ uống có ga MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_FIZZY_DRINK           :Xe đồ uống có ga Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_FIZZY_DRINK_TRUCK        :Xe đồ uống có ga Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_PLASTIC_TRUCK         :Xe chở chất dẻo MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_PLASTIC_TRUCK         :Xe chở chất dẻo Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_PLASTIC_TRUCK            :Xe chở chất dẻo Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BUBBLE_TRUCK          :Xe bong bóng MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BUBBLE_TRUCK          :Xe bong bóng Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BUBBLE_TRUCK             :Xe bong bóng Wizzowow
+STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER                            :Tàu chở dầu MPS
+STR_VEHICLE_NAME_SHIP_CS_INC_OIL_TANKER                         :Tàu chở dầu CS-Inc.
+STR_VEHICLE_NAME_SHIP_MPS_PASSENGER_FERRY                       :Phà khách MPS
+STR_VEHICLE_NAME_SHIP_FFP_PASSENGER_FERRY                       :Phà khách FFP
+STR_VEHICLE_NAME_SHIP_BAKEWELL_300_HOVERCRAFT                   :Tàu khách đệm khí Bakewell 300
+STR_VEHICLE_NAME_SHIP_CHUGGER_CHUG_PASSENGER                    :Phà khách Chugger-Chug
+STR_VEHICLE_NAME_SHIP_SHIVERSHAKE_PASSENGER_FERRY               :Phà khách Shivershake
+STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :Tàu hàng Yate
+STR_VEHICLE_NAME_SHIP_BAKEWELL_CARGO_SHIP                       :Tàu hàng Bakewell
+STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :Tàu hàng Mightymover
+STR_VEHICLE_NAME_SHIP_POWERNAUT_CARGO_SHIP                      :Tàu hàng Powernaut
+STR_VEHICLE_NAME_AIRCRAFT_SAMPSON_U52                           :Sampson U52
+STR_VEHICLE_NAME_AIRCRAFT_COLEMAN_COUNT                         :Coleman Count
+STR_VEHICLE_NAME_AIRCRAFT_FFP_DART                              :FFP Dart
+STR_VEHICLE_NAME_AIRCRAFT_YATE_HAUGAN                           :Yate Haugan
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_COTSWALD_LB_3                :Bakewell Cotswald LB-3
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_8                 :Bakewell Luckett LB-8
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_9                 :Bakewell Luckett LB-9
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB80                 :Bakewell Luckett LB80
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_10                :Bakewell Luckett LB-10
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_11                :Bakewell Luckett LB-11
+STR_VEHICLE_NAME_AIRCRAFT_YATE_AEROSPACE_YAC_1_11               :Yate Aerospace YAC 1-11
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_100                            :Darwin 100
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_200                            :Darwin 200
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_300                            :Darwin 300
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_400                            :Darwin 400
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_500                            :Darwin 500
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_600                            :Darwin 600
+STR_VEHICLE_NAME_AIRCRAFT_GURU_GALAXY                           :Guru Galaxy
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A21                           :Taxi hàng không A21
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A31                           :Taxi hàng không A31
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A32                           :Taxi hàng không A32
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A33                           :Taxi hàng không A33
+STR_VEHICLE_NAME_AIRCRAFT_YATE_AEROSPACE_YAE46                  :Yate Aerospace YAe46
+STR_VEHICLE_NAME_AIRCRAFT_DINGER_100                            :Dinger 100
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A34_1000                      :Taxi hàng không A34-1000
+STR_VEHICLE_NAME_AIRCRAFT_YATE_Z_SHUTTLE                        :Yate Z-Shuttle
+STR_VEHICLE_NAME_AIRCRAFT_KELLING_K1                            :Kelling K1
+STR_VEHICLE_NAME_AIRCRAFT_KELLING_K6                            :Kelling K6
+STR_VEHICLE_NAME_AIRCRAFT_KELLING_K7                            :Kelling K7
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_700                            :Darwin 700
+STR_VEHICLE_NAME_AIRCRAFT_FFP_HYPERDART_2                       :FFP Hyperdart 2
+STR_VEHICLE_NAME_AIRCRAFT_DINGER_200                            :Dinger 200
+STR_VEHICLE_NAME_AIRCRAFT_DINGER_1000                           :Dinger 1000
+STR_VEHICLE_NAME_AIRCRAFT_PLODDYPHUT_100                        :Ploddyphut 100
+STR_VEHICLE_NAME_AIRCRAFT_PLODDYPHUT_500                        :Ploddyphut 500
+STR_VEHICLE_NAME_AIRCRAFT_FLASHBANG_X1                          :Flashbang X1
+STR_VEHICLE_NAME_AIRCRAFT_JUGGERPLANE_M1                        :Juggerplane M1
+STR_VEHICLE_NAME_AIRCRAFT_FLASHBANG_WIZZER                      :Flashbang Wizzer
+STR_VEHICLE_NAME_AIRCRAFT_TRICARIO_HELICOPTER                   :Trực thăng Tricario
+STR_VEHICLE_NAME_AIRCRAFT_GURU_X2_HELICOPTER                    :Trực thăng Guru X2
+STR_VEHICLE_NAME_AIRCRAFT_POWERNAUT_HELICOPTER                  :Trực thăng Powernaut
 
 ##id 0x8800
 # Formatting of some strings
@@ -3565,9 +3997,20 @@ STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
 STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
 STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
 
+STR_FORMAT_BUOY_NAME                                            :Phao {TOWN}
+STR_FORMAT_BUOY_NAME_SERIAL                                     :Phao {TOWN} số #{COMMA}
+STR_FORMAT_COMPANY_NUM                                          :(Công ty {COMMA})
+STR_FORMAT_GROUP_NAME                                           :Nhóm {COMMA}
+STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
+STR_FORMAT_WAYPOINT_NAME                                        :Điểm mốc {TOWN}
+STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Điểm mốc {TOWN} số #{COMMA}
 
+STR_UNKNOWN_STATION                                             :Ga,bến không biết
+STR_DEFAULT_SIGN_NAME                                           :Biển hiệu
 STR_COMPANY_SOMEONE                                             :ai đó
 
+STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}
+STR_SAVEGAME_NAME_SPECTATOR                                     :Spectator, {1:STRING}
 
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})
@@ -3608,6 +4051,7 @@ STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
 STR_JUST_DATE_LONG                                              :{DATE_LONG}
 STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_STRING_SPACE_STRING                                    :{STRING} {STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
@@ -3631,6 +4075,8 @@ STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
 STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
+STR_GREEN_STRING                                                :{GREEN}{STRING}
+STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}

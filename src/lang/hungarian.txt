@@ -1099,6 +1099,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Engedékeny
 STR_CITY_APPROVAL_TOLERANT                                      :Toleráns
 STR_CITY_APPROVAL_HOSTILE                                       :Ellenséges
 
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Nincsen megfelelő MI...{}Letölthetsz néhány MI-t a tartalomletöltő rendszeren keresztül
 STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Ez a módosítás megváltoztatta a nehézségi szintet egyedire.
 
 # Advanced settings window
@@ -2403,6 +2404,7 @@ STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Ismeretlen "Act
 STR_NEWGRF_ERROR_INVALID_ID                                     :Érvénytelen ID-használati kisérlet.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} hibás sprite-ot tartalmaz. Minden hibás sprite piros kérdőjellel (?) kerül jelölésre.
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Túl sok Action 8 bejegyzést tartalmaz.
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Ál-sprite távoli végének olvasása.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Figyelem!

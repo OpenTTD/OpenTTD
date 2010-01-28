@@ -27,7 +27,7 @@ STR_JUST_NOTHING                                                :Nada
 
 # Cargo related strings
 # Plural cargo name
-STR_CARGO_PLURAL_NOTHING                                        :
+STR_CARGO_PLURAL_NOTHING                                        :Nada
 STR_CARGO_PLURAL_PASSENGERS                                     :Pasajeros
 STR_CARGO_PLURAL_COAL                                           :Carbón
 STR_CARGO_PLURAL_MAIL                                           :Correo
@@ -41,9 +41,9 @@ STR_CARGO_PLURAL_STEEL                                          :Acero
 STR_CARGO_PLURAL_VALUABLES                                      :Objetos de valor
 STR_CARGO_PLURAL_COPPER_ORE                                     :Mineral de cobre
 STR_CARGO_PLURAL_MAIZE                                          :Maíz
-STR_CARGO_PLURAL_FRUIT                                          :Fruta
+STR_CARGO_PLURAL_FRUIT                                          :Frutas
 STR_CARGO_PLURAL_DIAMONDS                                       :Diamantes
-STR_CARGO_PLURAL_FOOD                                           :Alimento
+STR_CARGO_PLURAL_FOOD                                           :Alimentos
 STR_CARGO_PLURAL_PAPER                                          :Papel
 STR_CARGO_PLURAL_GOLD                                           :Oro
 STR_CARGO_PLURAL_WATER                                          :Agua
@@ -55,19 +55,19 @@ STR_CARGO_PLURAL_CANDY                                          :Dulces
 STR_CARGO_PLURAL_COLA                                           :Cola
 STR_CARGO_PLURAL_COTTON_CANDY                                   :Algodón de azúcar
 STR_CARGO_PLURAL_BUBBLES                                        :Burbujas
-STR_CARGO_PLURAL_TOFFEE                                         :Caramelo
+STR_CARGO_PLURAL_TOFFEE                                         :Caramelos
 STR_CARGO_PLURAL_BATTERIES                                      :Pilas
 STR_CARGO_PLURAL_PLASTIC                                        :Plástico
 STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Refrescos
 
 # Singular cargo name
-STR_CARGO_SINGULAR_NOTHING                                      :
+STR_CARGO_SINGULAR_NOTHING                                      :Nada
 STR_CARGO_SINGULAR_PASSENGER                                    :Pasajero
 STR_CARGO_SINGULAR_COAL                                         :Carbón
 STR_CARGO_SINGULAR_MAIL                                         :Correo
 STR_CARGO_SINGULAR_OIL                                          :Petróleo
 STR_CARGO_SINGULAR_LIVESTOCK                                    :Ganado
-STR_CARGO_SINGULAR_GOODS                                        :Mercancías
+STR_CARGO_SINGULAR_GOODS                                        :Mercancía
 STR_CARGO_SINGULAR_GRAIN                                        :Grano
 STR_CARGO_SINGULAR_WOOD                                         :Madera
 STR_CARGO_SINGULAR_IRON_ORE                                     :Mineral de hierro
@@ -98,7 +98,7 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Refresco
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} pasajero{P "" s}
 STR_QUANTITY_COAL                                               :{WEIGHT} de carbón
-STR_QUANTITY_MAIL                                               :{COMMA} saca{P "" s} de correo
+STR_QUANTITY_MAIL                                               :{COMMA} saco{P "" s} de correo
 STR_QUANTITY_OIL                                                :{VOLUME} de petróleo
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} cabeza{P "" s} de ganado
 STR_QUANTITY_GOODS                                              :{COMMA} caja{P "" s} de mercancía{P "" s}
