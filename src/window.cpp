@@ -1513,6 +1513,9 @@ static bool HandleWindowDragging()
 	/* Get out immediately if no window is being dragged at all. */
 	if (!_dragging_window) return true;
 
+	/* If button still down, but cursor hasn't moved, there is nothing to do. */
+	if (_left_button_down && _cursor.delta.x == 0 && _cursor.delta.y == 0) return false;
+
 	/* Otherwise find the window... */
 	Window *w;
 	FOR_ALL_WINDOWS_FROM_BACK(w) {
