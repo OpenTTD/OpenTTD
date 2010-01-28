@@ -1291,14 +1291,18 @@ static void CrashAirplane(Aircraft *v)
 
 static void MaybeCrashAirplane(Aircraft *v)
 {
+	if (_settings_game.vehicle.plane_crashes == 0) return;
+
 	Station *st = Station::Get(v->targetairport);
 
 	/* FIXME -- MaybeCrashAirplane -> increase crashing chances of very modern airplanes on smaller than AT_METROPOLITAN airports */
-	uint16 prob = 0x10000 / 1500;
+	uint32 prob = (0x40000 >> _settings_game.vehicle.plane_crashes);
 	if ((st->Airport()->flags & AirportFTAClass::SHORT_STRIP) &&
 			(AircraftVehInfo(v->engine_type)->subtype & AIR_FAST) &&
 			!_cheats.no_jetcrash.value) {
-		prob = 0x10000 / 20;
+		prob /= 20;
+	} else {
+		prob /= 1500;
 	}
 
 	if (GB(Random(), 0, 22) > prob) return;
