@@ -711,8 +711,20 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 		case 0x0B: return v->current_order.GetDestination();
 		case 0x0C: return v->GetNumOrders();
 		case 0x0D: return v->cur_order_index;
-		case 0x10: return v->load_unload_ticks;
-		case 0x11: return GB(v->load_unload_ticks, 8, 8);
+		case 0x10:
+		case 0x11: {
+			uint ticks;
+			if (v->current_order.IsType(OT_LOADING)) {
+				ticks = v->load_unload_ticks;
+			} else {
+				switch (v->type) {
+					case VEH_TRAIN:    ticks = Train::From(v)->wait_counter; break;
+					case VEH_AIRCRAFT: ticks = Aircraft::From(v)->turn_counter; break;
+					default:           ticks = 0; break;
+				}
+			}
+			return (variable - 0x80) == 0x10 ? ticks : GB(ticks, 8, 8);
+		}
 		case 0x12: return max(v->date_of_last_service - DAYS_TILL_ORIGINAL_BASE_YEAR, 0);
 		case 0x13: return GB(max(v->date_of_last_service - DAYS_TILL_ORIGINAL_BASE_YEAR, 0), 8, 8);
 		case 0x14: return v->service_interval;
