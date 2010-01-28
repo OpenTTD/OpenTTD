@@ -1515,8 +1515,9 @@ CommandCost CmdChangeCompanySetting(TileIndex tile, DoCommandFlag flags, uint32 
  * @param index offset in the SettingDesc array of the Settings struct which
  * identifies the setting member we want to change
  * @param value new value of the setting
+ * @param force_newgame force the newgame settings
  */
-bool SetSettingValue(uint index, int32 value)
+bool SetSettingValue(uint index, int32 value, bool force_newgame)
 {
 	const SettingDesc *sd = &_settings[index];
 	/* If an item is company-based, we do not send it over the network
@@ -1533,6 +1534,12 @@ bool SetSettingValue(uint index, int32 value)
 		}
 		if (sd->desc.proc != NULL) sd->desc.proc((int32)ReadValue(var, sd->save.conv));
 		SetWindowDirty(WC_GAME_OPTIONS, 0);
+		return true;
+	}
+
+	if (force_newgame) {
+		void *var2 = GetVariableAddress(&_settings_newgame, &sd->save);
+		Write_ValidateSetting(var2, sd, value);
 		return true;
 	}
 
@@ -1661,7 +1668,7 @@ const SettingDesc *GetSettingFromName(const char *name, uint *i)
 
 /* Those 2 functions need to be here, else we have to make some stuff non-static
  * and besides, it is also better to keep stuff like this at the same place */
-void IConsoleSetSetting(const char *name, const char *value)
+void IConsoleSetSetting(const char *name, const char *value, bool force_newgame)
 {
 	uint index;
 	const SettingDesc *sd = GetSettingFromName(name, &index);
@@ -1683,7 +1690,7 @@ void IConsoleSetSetting(const char *name, const char *value)
 			return;
 		}
 
-		success = SetSettingValue(index, val);
+		success = SetSettingValue(index, val, force_newgame);
 	}
 
 	if (!success) {
@@ -1706,8 +1713,9 @@ void IConsoleSetSetting(const char *name, int value)
 /**
  * Output value of a specific setting to the console
  * @param name  Name of the setting to output its value
+ * @param force_newgame force the newgame settings
  */
-void IConsoleGetSetting(const char *name)
+void IConsoleGetSetting(const char *name, bool force_newgame)
 {
 	char value[20];
 	uint index;
@@ -1719,7 +1727,7 @@ void IConsoleGetSetting(const char *name)
 		return;
 	}
 
-	ptr = GetVariableAddress((_game_mode == GM_MENU) ? &_settings_newgame : &_settings_game, &sd->save);
+	ptr = GetVariableAddress((_game_mode == GM_MENU || force_newgame) ? &_settings_newgame : &_settings_game, &sd->save);
 
 	if (sd->desc.cmd == SDT_STRING) {
 		IConsolePrintF(CC_WARNING, "Current value for '%s' is: '%s'", name, (const char *)ptr);

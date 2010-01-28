@@ -1713,6 +1713,25 @@ DEF_CONSOLE_CMD(ConSetting)
 	return true;
 }
 
+DEF_CONSOLE_CMD(ConSettingNewgame)
+{
+	if (argc == 0) {
+		IConsoleHelp("Change setting for the next game. Usage: 'setting_newgame <name> [<value>]'");
+		IConsoleHelp("Omitting <value> will print out the current value of the setting.");
+		return true;
+	}
+
+	if (argc == 1 || argc > 3) return false;
+
+	if (argc == 2) {
+		IConsoleGetSetting(argv[1], true);
+	} else {
+		IConsoleSetSetting(argv[1], argv[2], true);
+	}
+
+	return true;
+}
+
 DEF_CONSOLE_CMD(ConListSettings)
 {
 	if (argc == 0) {
@@ -1818,6 +1837,7 @@ void IConsoleStdLibRegister()
 	IConsoleCmdRegister("pwd",          ConPrintWorkingDirectory);
 	IConsoleCmdRegister("clear",        ConClearBuffer);
 	IConsoleCmdRegister("setting",      ConSetting);
+	IConsoleCmdRegister("setting_newgame", ConSettingNewgame);
 	IConsoleCmdRegister("list_settings",ConListSettings);
 	IConsoleCmdRegister("gamelog",      ConGamelogPrint);
 
@@ -1828,6 +1848,7 @@ void IConsoleStdLibRegister()
 	IConsoleAliasRegister("new_game",     "newgame");
 	IConsoleAliasRegister("patch",        "setting %+");
 	IConsoleAliasRegister("set",          "setting %+");
+	IConsoleAliasRegister("set_newgame",  "setting_newgame %+");
 	IConsoleAliasRegister("list_patches", "list_settings %+");
 
 
