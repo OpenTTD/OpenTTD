@@ -1282,12 +1282,9 @@ static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable 
 
 	do {
 		IndustryGfx gfx = GetTranslatedIndustryTileID(it->gfx);
-		if (TileX(tile) + it->ti.x >= MapSizeX()) return false;
-		if (TileY(tile) + it->ti.y >= MapSizeY()) return false;
-		TileIndex cur_tile = tile + ToTileIndexDiff(it->ti);
+		TileIndex cur_tile = TileAddWrap(tile, it->ti.x, it->ti.y);
 
 		if (!IsValidTile(cur_tile)) {
-			if (gfx == GFX_WATERTILE_SPECIALCHECK) continue;
 			return false;
 		}
 
