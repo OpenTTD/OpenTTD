@@ -836,6 +836,9 @@ static byte AircraftGetEntryPoint(const Aircraft *v, const AirportFTAClass *apc)
 	return apc->entry_points[dir];
 }
 
+
+static void MaybeCrashAirplane(Aircraft *v);
+
 /**
  * Controls the movement of an aircraft. This function actually moves the vehicle
  * on the map and takes care of minor things like sound playback.
@@ -965,6 +968,11 @@ static bool AircraftController(Aircraft *v)
 
 		SetAircraftPosition(v, v->x_pos, v->y_pos, v->z_pos);
 		return false;
+	}
+
+	if (amd->flag & AMED_BRAKE && v->cur_speed > SPEED_LIMIT_TAXI * _settings_game.vehicle.plane_speed) {
+		MaybeCrashAirplane(v);
+		if ((v->vehstatus & VS_CRASHED) != 0) return false;
 	}
 
 	uint speed_limit = SPEED_LIMIT_TAXI;
@@ -1293,7 +1301,7 @@ static void MaybeCrashAirplane(Aircraft *v)
 		prob = 0x10000 / 20;
 	}
 
-	if (GB(Random(), 0, 16) > prob) return;
+	if (GB(Random(), 0, 22) > prob) return;
 
 	/* Crash the airplane. Remove all goods stored at the station. */
 	for (CargoID i = 0; i < NUM_CARGO; i++) {
@@ -1336,7 +1344,6 @@ static void AircraftLandAirplane(Aircraft *v)
 	if (!PlayVehicleSound(v, VSE_TOUCHDOWN)) {
 		SndPlayVehicleFx(SND_17_SKID_PLANE, v);
 	}
-	MaybeCrashAirplane(v);
 }
 
 
