@@ -3122,6 +3122,9 @@ uint Train::Crash(bool flooded)
 		* but must be updated after the train has been marked crashed */
 		TileIndex crossing = TrainApproachingCrossingTile(this);
 		if (crossing != INVALID_TILE) UpdateLevelCrossing(crossing);
+
+		/* Remove the loading indicators (if any) */
+		HideFillingPercent(&this->fill_percent_te_id);
 	}
 
 	pass += Vehicle::Crash(flooded);
