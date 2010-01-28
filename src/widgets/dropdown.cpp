@@ -260,9 +260,16 @@ struct DropdownWindow : Window {
 
 	virtual void OnTick()
 	{
-		this->vscroll.UpdatePosition(this->scrolling);
-		this->scrolling = 0;
-		this->SetDirty();
+		if (this->scrolling != 0) {
+			int pos = this->vscroll.GetPosition();
+
+			this->vscroll.UpdatePosition(this->scrolling);
+			this->scrolling = 0;
+
+			if (pos != this->vscroll.GetPosition()) {
+				this->SetDirty();
+			}
+		}
 	}
 
 	virtual void OnMouseLoop()
@@ -310,8 +317,10 @@ struct DropdownWindow : Window {
 				if (!this->GetDropDownItem(item)) return;
 			}
 
-			this->selected_index = item;
-			this->SetDirty();
+			if (this->selected_index != item) {
+				this->selected_index = item;
+				this->SetDirty();
+			}
 		}
 	}
 };
