@@ -33,7 +33,7 @@ static CommandCost ClearTile_Clear(TileIndex tile, DoCommandFlag flags)
 		PR_CLEAR_GRASS,
 		PR_CLEAR_ROUGH,
 		PR_CLEAR_ROCKS,
-		PR_CLEAR_FILEDS,
+		PR_CLEAR_FIELDS,
 		PR_CLEAR_ROUGH,
 		PR_CLEAR_ROUGH,
 	};
