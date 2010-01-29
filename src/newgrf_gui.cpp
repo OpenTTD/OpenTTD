@@ -768,7 +768,7 @@ struct NewGRFWindow : public Window {
 
 				this->sel = newsel;
 				this->preset = -1;
-				this->InvalidateData();
+				this->InvalidateData(3);
 				this->DeleteChildWindows(WC_QUERY_STRING); // Remove the parameter query window
 				break;
 			}
