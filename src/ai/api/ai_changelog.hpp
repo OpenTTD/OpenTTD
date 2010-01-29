@@ -23,14 +23,19 @@
  * \li AIEngine::IsBuildable
  * \li AIEventCompanyAskMerger
  * \li AIIndustry::GetLastMonthTransportedPercentage
+ * \li AIInfo::AICONFIG_INGAME
+ * \li AIMarine::GetBuildCost
  * \li AIOrder::AIOF_GOTO_NEAREST_DEPOT
  * \li AIRail::RemoveRailStationTileRectangle
  * \li AIRail::RemoveRailWaypointTileRectangle
+ * \li AIRail::GetBuildCost
+ * \li AIRoad::GetBuildCost
  * \li AISubsidy::SubsidyParticipantType
  * \li AISubsidy::GetSourceType
  * \li AISubsidy::GetSourceIndex
  * \li AISubsidy::GetDestinationType
  * \li AISubsidy::GetDestinationIndex
+ * \li AITile::GetBuildCost
  * \li AITown::GetLastMonthTransportedPercentage
  * \li AIVehicleList_Depot
  * \li AIWaypoint::WaypointType
