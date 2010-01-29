@@ -13,6 +13,7 @@
 #include "ai_station.hpp"
 #include "../../station_base.h"
 #include "../../tile_cmd.h"
+#include "../../economy_func.h"
 
 
 /* static */ bool AIMarine::IsWaterDepotTile(TileIndex tile)
@@ -148,4 +149,14 @@
 	EnforcePrecondition(false, IsCanalTile(tile));
 
 	return AIObject::DoCommand(tile, 0, 0, CMD_LANDSCAPE_CLEAR);
+}
+
+/* static */ Money AIMarine::GetBuildCost(BuildType build_type)
+{
+	switch (build_type) {
+		case BT_DOCK:  return ::GetPrice(PR_BUILD_STATION_DOCK, 1, NULL);
+		case BT_DEPOT: return ::GetPrice(PR_BUILD_DEPOT_SHIP, 1, NULL);
+		case BT_BUOY:  return ::GetPrice(PR_BUILD_WAYPOINT_BUOY, 1, NULL);
+		default: return -1;
+	}
 }

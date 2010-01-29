@@ -504,6 +504,45 @@ function Regression::EngineList()
 	}
 }
 
+function Regression::Prices()
+{
+	print("");
+	print("--Prices--");
+	print(" -Rail-");
+	print("  0,BT_TRACK:    " + AIRail.GetBuildCost(0, AIRail.BT_TRACK));
+	print("  0,BT_SIGNAL:   " + AIRail.GetBuildCost(0, AIRail.BT_SIGNAL));
+	print("  0,BT_DEPOT:    " + AIRail.GetBuildCost(0, AIRail.BT_DEPOT));
+	print("  0,BT_STATION:  " + AIRail.GetBuildCost(0, AIRail.BT_STATION));
+	print("  0,BT_WAYPOINT: " + AIRail.GetBuildCost(0, AIRail.BT_WAYPOINT));
+	print("  1,BT_TRACK:    " + AIRail.GetBuildCost(1, AIRail.BT_TRACK));
+	print("  1,BT_SIGNAL:   " + AIRail.GetBuildCost(1, AIRail.BT_SIGNAL));
+	print("  1,BT_DEPOT:    " + AIRail.GetBuildCost(1, AIRail.BT_DEPOT));
+	print("  1,BT_STATION:  " + AIRail.GetBuildCost(1, AIRail.BT_STATION));
+	print("  1,BT_WAYPOINT: " + AIRail.GetBuildCost(1, AIRail.BT_WAYPOINT));
+	print(" -Road-");
+	print("  ROADTYPE_ROAD,BT_ROAD:       " + AIRoad.GetBuildCost(AIRoad.ROADTYPE_ROAD, AIRoad.BT_ROAD));
+	print("  ROADTYPE_ROAD,BT_DEPOT:      " + AIRoad.GetBuildCost(AIRoad.ROADTYPE_ROAD, AIRoad.BT_DEPOT));
+	print("  ROADTYPE_ROAD,BT_BUS_STOP:   " + AIRoad.GetBuildCost(AIRoad.ROADTYPE_ROAD, AIRoad.BT_BUS_STOP));
+	print("  ROADTYPE_ROAD,BT_TRUCK_STOP: " + AIRoad.GetBuildCost(AIRoad.ROADTYPE_ROAD, AIRoad.BT_TRUCK_STOP));
+	print("  ROADTYPE_TRAM,BT_ROAD:       " + AIRoad.GetBuildCost(AIRoad.ROADTYPE_TRAM, AIRoad.BT_ROAD));
+	print("  ROADTYPE_TRAM,BT_DEPOT:      " + AIRoad.GetBuildCost(AIRoad.ROADTYPE_TRAM, AIRoad.BT_DEPOT));
+	print("  ROADTYPE_TRAM,BT_BUS_STOP:   " + AIRoad.GetBuildCost(AIRoad.ROADTYPE_TRAM, AIRoad.BT_BUS_STOP));
+	print("  ROADTYPE_TRAM,BT_TRUCK_STOP: " + AIRoad.GetBuildCost(AIRoad.ROADTYPE_TRAM, AIRoad.BT_TRUCK_STOP));
+	print(" -Water-");
+	print("  BT_DOCK:  " + AIMarine.GetBuildCost(AIMarine.BT_DOCK));
+	print("  BT_DEPOT: " + AIMarine.GetBuildCost(AIMarine.BT_DEPOT));
+	print("  BT_BUOY:  " + AIMarine.GetBuildCost(AIMarine.BT_BUOY));
+	print(" -Tile-");
+	print("  BT_FOUNDATION:   " + AITile.GetBuildCost(AITile.BT_FOUNDATION));
+	print("  BT_TERRAFORM:    " + AITile.GetBuildCost(AITile.BT_TERRAFORM));
+	print("  BT_BUILD_TREES:  " + AITile.GetBuildCost(AITile.BT_BUILD_TREES));
+	print("  BT_CLEAR_GRASS:  " + AITile.GetBuildCost(AITile.BT_CLEAR_GRASS));
+	print("  BT_CLEAR_ROUGH:  " + AITile.GetBuildCost(AITile.BT_CLEAR_ROUGH));
+	print("  BT_CLEAR_ROCKY:  " + AITile.GetBuildCost(AITile.BT_CLEAR_ROCKY));
+	print("  BT_CLEAR_FIELDS: " + AITile.GetBuildCost(AITile.BT_CLEAR_FIELDS));
+	print("  BT_CLEAR_HOUSE:  " + AITile.GetBuildCost(AITile.BT_CLEAR_HOUSE));
+}
+
 function cost_callback(old_path, new_tile, new_direction, self) { if (old_path == null) return 0; return old_path.GetCost() + 1; }
 function estimate_callback(tile, direction, goals, self) { return goals[0] - tile; }
 function neighbours_callback(path, cur_tile, self) { return [[cur_tile + 1, 1]]; }
@@ -1699,6 +1738,7 @@ function Regression::Start()
 	this.IndustryTypeList();
 	this.Map();
 	this.Marine();
+	this.Prices();
 	this.Rail();
 	this.RailTypeList();
 	this.Road();

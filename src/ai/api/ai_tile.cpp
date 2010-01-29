@@ -19,6 +19,7 @@
 #include "../../tree_map.h"
 #include "../../town.h"
 #include "../../landscape.h"
+#include "../../economy_func.h"
 
 /* static */ bool AITile::IsBuildable(TileIndex tile)
 {
@@ -270,4 +271,19 @@
 	if (!::IsValidTile(tile)) return INVALID_TOWN;
 
 	return ::ClosestTownFromTile(tile, UINT_MAX)->index;
+}
+
+/* static */ Money AITile::GetBuildCost(BuildType build_type)
+{
+	switch (build_type) {
+		case BT_FOUNDATION:   return ::GetPrice(PR_BUILD_FOUNDATION, 1, NULL);
+		case BT_TERRAFORM:    return ::GetPrice(PR_TERRAFORM, 1, NULL);
+		case BT_BUILD_TREES:  return ::GetPrice(PR_BUILD_TREES, 1, NULL);
+		case BT_CLEAR_GRASS:  return ::GetPrice(PR_CLEAR_GRASS, 1, NULL);
+		case BT_CLEAR_ROUGH:  return ::GetPrice(PR_CLEAR_ROUGH, 1, NULL);
+		case BT_CLEAR_ROCKY:  return ::GetPrice(PR_CLEAR_ROCKS, 1, NULL);
+		case BT_CLEAR_FIELDS: return ::GetPrice(PR_CLEAR_FIELDS, 1, NULL);
+		case BT_CLEAR_HOUSE:  return ::GetPrice(PR_CLEAR_HOUSE, 1, NULL);
+		default: return -1;
+	}
 }

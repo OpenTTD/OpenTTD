@@ -7121,6 +7121,41 @@
   BuildWaterDepot():    true
   BuildDock():          true
 
+--Prices--
+ -Rail-
+  0,BT_TRACK:    75
+  0,BT_SIGNAL:   48
+  0,BT_DEPOT:    450
+  0,BT_STATION:  285
+  0,BT_WAYPOINT: 450
+  1,BT_TRACK:    -1
+  1,BT_SIGNAL:   -1
+  1,BT_DEPOT:    -1
+  1,BT_STATION:  -1
+  1,BT_WAYPOINT: -1
+ -Road-
+  ROADTYPE_ROAD,BT_ROAD:       71
+  ROADTYPE_ROAD,BT_DEPOT:      375
+  ROADTYPE_ROAD,BT_BUS_STOP:   150
+  ROADTYPE_ROAD,BT_TRUCK_STOP: 150
+  ROADTYPE_TRAM,BT_ROAD:       -1
+  ROADTYPE_TRAM,BT_DEPOT:      -1
+  ROADTYPE_TRAM,BT_BUS_STOP:   -1
+  ROADTYPE_TRAM,BT_TRUCK_STOP: -1
+ -Water-
+  BT_DOCK:  262
+  BT_DEPOT: 525
+  BT_BUOY:  262
+ -Tile-
+  BT_FOUNDATION:   187
+  BT_TERRAFORM:    187
+  BT_BUILD_TREES:  15
+  BT_CLEAR_GRASS:  15
+  BT_CLEAR_ROUGH:  30
+  BT_CLEAR_ROCKY:  150
+  BT_CLEAR_FIELDS: 375
+  BT_CLEAR_HOUSE:  1200
+
 --Rail--
     IsRailTile():                  false
     BuildRailTrack():              true

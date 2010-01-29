@@ -64,6 +64,16 @@ public:
 	};
 
 	/**
+	 * Types of road-related objects in the game.
+	 */
+	enum BuildType {
+		BT_ROAD,       //!< Build a piece of road
+		BT_DEPOT,      //!< Build a road depot
+		BT_BUS_STOP,   //!< Build a bus stop
+		BT_TRUCK_STOP, //!< Build a truck stop
+	};
+
+	/**
 	 * Determines whether a busstop or a truckstop is needed to transport a certain cargo.
 	 * @param cargo_type The cargo to test.
 	 * @pre AICargo::IsValidCargo(cargo_type).
@@ -450,6 +460,15 @@ public:
 	 * @return Whether the station has been/can be removed or not.
 	 */
 	static bool RemoveRoadStation(TileIndex tile);
+
+	/**
+	 * Get the baseprice of building a road-related object.
+	 * @param roadtype the roadtype that is build (on)
+	 * @param build_type the type of object to build
+	 * @pre IsRoadTypeAvailable(railtype)
+	 * @return The baseprice of building the given object.
+	 */
+	static Money GetBuildCost(RoadType roadtype, BuildType build_type);
 
 private:
 

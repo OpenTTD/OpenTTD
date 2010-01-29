@@ -11,6 +11,7 @@
 
 #include "ai_gamesettings.hpp"
 #include "../../settings_internal.h"
+#include "../../economy_func.h"
 
 /* static */ bool AIGameSettings::IsValid(const char *setting)
 {

@@ -15,6 +15,8 @@ namespace SQConvert {
 	/* Allow enums to be used as Squirrel parameters */
 	template <> AIMarine::ErrorMessages GetParam(ForceType<AIMarine::ErrorMessages>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIMarine::ErrorMessages)tmp; }
 	template <> int Return<AIMarine::ErrorMessages>(HSQUIRRELVM vm, AIMarine::ErrorMessages res) { sq_pushinteger(vm, (int32)res); return 1; }
+	template <> AIMarine::BuildType GetParam(ForceType<AIMarine::BuildType>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIMarine::BuildType)tmp; }
+	template <> int Return<AIMarine::BuildType>(HSQUIRRELVM vm, AIMarine::BuildType res) { sq_pushinteger(vm, (int32)res); return 1; }
 
 	/* Allow AIMarine to be used as Squirrel parameter */
 	template <> AIMarine *GetParam(ForceType<AIMarine *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIMarine *)instance; }
@@ -32,6 +34,9 @@ void SQAIMarine_Register(Squirrel *engine)
 
 	SQAIMarine.DefSQConst(engine, AIMarine::ERR_MARINE_BASE,                   "ERR_MARINE_BASE");
 	SQAIMarine.DefSQConst(engine, AIMarine::ERR_MARINE_MUST_BE_BUILT_ON_WATER, "ERR_MARINE_MUST_BE_BUILT_ON_WATER");
+	SQAIMarine.DefSQConst(engine, AIMarine::BT_DOCK,                           "BT_DOCK");
+	SQAIMarine.DefSQConst(engine, AIMarine::BT_DEPOT,                          "BT_DEPOT");
+	SQAIMarine.DefSQConst(engine, AIMarine::BT_BUOY,                           "BT_BUOY");
 
 	AIError::RegisterErrorMap(STR_ERROR_MUST_BE_BUILT_ON_WATER, AIMarine::ERR_MARINE_MUST_BE_BUILT_ON_WATER);
 
@@ -53,6 +58,7 @@ void SQAIMarine_Register(Squirrel *engine)
 	SQAIMarine.DefSQStaticMethod(engine, &AIMarine::RemoveBuoy,             "RemoveBuoy",             2, ".i");
 	SQAIMarine.DefSQStaticMethod(engine, &AIMarine::RemoveLock,             "RemoveLock",             2, ".i");
 	SQAIMarine.DefSQStaticMethod(engine, &AIMarine::RemoveCanal,            "RemoveCanal",            2, ".i");
+	SQAIMarine.DefSQStaticMethod(engine, &AIMarine::GetBuildCost,           "GetBuildCost",           2, ".i");
 
 	SQAIMarine.PostRegister(engine);
 }

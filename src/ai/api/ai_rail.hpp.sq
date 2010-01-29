@@ -21,6 +21,8 @@ namespace SQConvert {
 	template <> int Return<AIRail::RailTrack>(HSQUIRRELVM vm, AIRail::RailTrack res) { sq_pushinteger(vm, (int32)res); return 1; }
 	template <> AIRail::SignalType GetParam(ForceType<AIRail::SignalType>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIRail::SignalType)tmp; }
 	template <> int Return<AIRail::SignalType>(HSQUIRRELVM vm, AIRail::SignalType res) { sq_pushinteger(vm, (int32)res); return 1; }
+	template <> AIRail::BuildType GetParam(ForceType<AIRail::BuildType>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIRail::BuildType)tmp; }
+	template <> int Return<AIRail::BuildType>(HSQUIRRELVM vm, AIRail::BuildType res) { sq_pushinteger(vm, (int32)res); return 1; }
 
 	/* Allow AIRail to be used as Squirrel parameter */
 	template <> AIRail *GetParam(ForceType<AIRail *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIRail *)instance; }
@@ -60,6 +62,11 @@ void SQAIRail_Register(Squirrel *engine)
 	SQAIRail.DefSQConst(engine, AIRail::SIGNALTYPE_EXIT_TWOWAY,           "SIGNALTYPE_EXIT_TWOWAY");
 	SQAIRail.DefSQConst(engine, AIRail::SIGNALTYPE_COMBO_TWOWAY,          "SIGNALTYPE_COMBO_TWOWAY");
 	SQAIRail.DefSQConst(engine, AIRail::SIGNALTYPE_NONE,                  "SIGNALTYPE_NONE");
+	SQAIRail.DefSQConst(engine, AIRail::BT_TRACK,                         "BT_TRACK");
+	SQAIRail.DefSQConst(engine, AIRail::BT_SIGNAL,                        "BT_SIGNAL");
+	SQAIRail.DefSQConst(engine, AIRail::BT_DEPOT,                         "BT_DEPOT");
+	SQAIRail.DefSQConst(engine, AIRail::BT_STATION,                       "BT_STATION");
+	SQAIRail.DefSQConst(engine, AIRail::BT_WAYPOINT,                      "BT_WAYPOINT");
 
 	AIError::RegisterErrorMap(STR_ERROR_CROSSING_ON_ONEWAY_ROAD,        AIRail::ERR_CROSSING_ON_ONEWAY_ROAD);
 	AIError::RegisterErrorMap(STR_ERROR_NO_SUITABLE_RAILROAD_TRACK,     AIRail::ERR_UNSUITABLE_TRACK);
@@ -98,6 +105,7 @@ void SQAIRail_Register(Squirrel *engine)
 	SQAIRail.DefSQStaticMethod(engine, &AIRail::GetSignalType,                   "GetSignalType",                   3, ".ii");
 	SQAIRail.DefSQStaticMethod(engine, &AIRail::BuildSignal,                     "BuildSignal",                     4, ".iii");
 	SQAIRail.DefSQStaticMethod(engine, &AIRail::RemoveSignal,                    "RemoveSignal",                    3, ".ii");
+	SQAIRail.DefSQStaticMethod(engine, &AIRail::GetBuildCost,                    "GetBuildCost",                    3, ".ii");
 
 	SQAIRail.PostRegister(engine);
 }

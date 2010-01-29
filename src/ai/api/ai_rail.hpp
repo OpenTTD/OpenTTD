@@ -82,6 +82,17 @@ public:
 	};
 
 	/**
+	 * Types of rail-related objects in the game.
+	 */
+	enum BuildType {
+		BT_TRACK,    //!< Build a track
+		BT_SIGNAL,   //!< Build a signal
+		BT_DEPOT,    //!< Build a depot
+		BT_STATION,  //!< Build a station
+		BT_WAYPOINT, //!< Build a rail waypoint
+	};
+
+	/**
 	 * Checks whether the given tile is actually a tile with rail that can be
 	 *  used to traverse a tile. This excludes rail depots but includes
 	 *  stations and waypoints.
@@ -419,6 +430,15 @@ public:
 	 * @return Whether the signal has been/can be removed or not.
 	 */
 	static bool RemoveSignal(TileIndex tile, TileIndex front);
+
+	/**
+	 * Get the baseprice of building a rail-related object.
+	 * @param railtype the railtype that is build (on)
+	 * @param build_type the type of object to build
+	 * @pre IsRailTypeAvailable(railtype)
+	 * @return The baseprice of building the given object.
+	 */
+	static Money GetBuildCost(RailType railtype, BuildType build_type);
 };
 
 #endif /* AI_RAIL_HPP */

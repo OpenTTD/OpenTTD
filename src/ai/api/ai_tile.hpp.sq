@@ -21,6 +21,8 @@ namespace SQConvert {
 	template <> int Return<AITile::Slope>(HSQUIRRELVM vm, AITile::Slope res) { sq_pushinteger(vm, (int32)res); return 1; }
 	template <> AITile::TransportType GetParam(ForceType<AITile::TransportType>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AITile::TransportType)tmp; }
 	template <> int Return<AITile::TransportType>(HSQUIRRELVM vm, AITile::TransportType res) { sq_pushinteger(vm, (int32)res); return 1; }
+	template <> AITile::BuildType GetParam(ForceType<AITile::BuildType>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AITile::BuildType)tmp; }
+	template <> int Return<AITile::BuildType>(HSQUIRRELVM vm, AITile::BuildType res) { sq_pushinteger(vm, (int32)res); return 1; }
 
 	/* Allow AITile to be used as Squirrel parameter */
 	template <> AITile *GetParam(ForceType<AITile *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AITile *)instance; }
@@ -73,6 +75,14 @@ void SQAITile_Register(Squirrel *engine)
 	SQAITile.DefSQConst(engine, AITile::TRANSPORT_WATER,             "TRANSPORT_WATER");
 	SQAITile.DefSQConst(engine, AITile::TRANSPORT_AIR,               "TRANSPORT_AIR");
 	SQAITile.DefSQConst(engine, AITile::TRANSPORT_INVALID,           "TRANSPORT_INVALID");
+	SQAITile.DefSQConst(engine, AITile::BT_FOUNDATION,               "BT_FOUNDATION");
+	SQAITile.DefSQConst(engine, AITile::BT_TERRAFORM,                "BT_TERRAFORM");
+	SQAITile.DefSQConst(engine, AITile::BT_BUILD_TREES,              "BT_BUILD_TREES");
+	SQAITile.DefSQConst(engine, AITile::BT_CLEAR_GRASS,              "BT_CLEAR_GRASS");
+	SQAITile.DefSQConst(engine, AITile::BT_CLEAR_ROUGH,              "BT_CLEAR_ROUGH");
+	SQAITile.DefSQConst(engine, AITile::BT_CLEAR_ROCKY,              "BT_CLEAR_ROCKY");
+	SQAITile.DefSQConst(engine, AITile::BT_CLEAR_FIELDS,             "BT_CLEAR_FIELDS");
+	SQAITile.DefSQConst(engine, AITile::BT_CLEAR_HOUSE,              "BT_CLEAR_HOUSE");
 
 	AIError::RegisterErrorMap(STR_ERROR_ALREADY_AT_SEA_LEVEL,    AITile::ERR_TILE_TOO_HIGH);
 	AIError::RegisterErrorMap(STR_ERROR_ALREADY_AT_SEA_LEVEL,    AITile::ERR_TILE_TOO_LOW);
@@ -116,6 +126,7 @@ void SQAITile_Register(Squirrel *engine)
 	SQAITile.DefSQStaticMethod(engine, &AITile::PlantTreeRectangle,         "PlantTreeRectangle",         4, ".iii");
 	SQAITile.DefSQStaticMethod(engine, &AITile::IsWithinTownInfluence,      "IsWithinTownInfluence",      3, ".ii");
 	SQAITile.DefSQStaticMethod(engine, &AITile::GetClosestTown,             "GetClosestTown",             2, ".i");
+	SQAITile.DefSQStaticMethod(engine, &AITile::GetBuildCost,               "GetBuildCost",               2, ".i");
 
 	SQAITile.PostRegister(engine);
 }

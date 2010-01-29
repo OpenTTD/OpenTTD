@@ -104,6 +104,20 @@ public:
 	};
 
 	/**
+	 * Get the base cost for building/clearing several things.
+	 */
+	enum BuildType {
+		BT_FOUNDATION,   //!< Build a foundation under something
+		BT_TERRAFORM,    //!< Terraform
+		BT_BUILD_TREES,  //!< Build trees
+		BT_CLEAR_GRASS,  //!< Clear a tile with just grass
+		BT_CLEAR_ROUGH,  //!< Clear a rough tile
+		BT_CLEAR_ROCKY,  //!< Clear a tile with rocks
+		BT_CLEAR_FIELDS, //!< Clear a tile with farm fields
+		BT_CLEAR_HOUSE,  //!< Clear a tile with a house
+	};
+
+	/**
 	 * Check if this tile is buildable, i.e. no things on it that needs
 	 *  demolishing.
 	 * @param tile The tile to check on.
@@ -435,6 +449,13 @@ public:
 	 * @return The TownID of the town closest to the tile.
 	 */
 	static TownID GetClosestTown(TileIndex tile);
+
+	/**
+	 * Get the baseprice of building/clearing various tile-related things.
+	 * @param build_type the type to build
+	 * @return The baseprice of building or removing the given object.
+	 */
+	static Money GetBuildCost(BuildType build_type);
 };
 
 #endif /* AI_TILE_HPP */

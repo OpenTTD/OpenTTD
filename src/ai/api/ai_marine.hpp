@@ -34,6 +34,15 @@ public:
 	};
 
 	/**
+	 * Types of water-related objects in the game.
+	 */
+	enum BuildType {
+		BT_DOCK,  //!< Build a dock
+		BT_DEPOT, //!< Build a ship depot
+		BT_BUOY,  //!< Build a buoy
+	};
+
+	/**
 	 * Checks whether the given tile is actually a tile with a water depot.
 	 * @param tile The tile to check.
 	 * @pre AIMap::IsValidTile(tile).
@@ -191,6 +200,13 @@ public:
 	 * @return Whether the canal has been/can be removed or not.
 	 */
 	static bool RemoveCanal(TileIndex tile);
+
+	/**
+	 * Get the baseprice of building a water-related object.
+	 * @param build_type the type of object to build
+	 * @return The baseprice of building the given object.
+	 */
+	static Money GetBuildCost(BuildType build_type);
 };
 
 #endif /* AI_MARINE_HPP */

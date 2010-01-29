@@ -19,6 +19,7 @@
 #include "../../newgrf.h"
 #include "../../newgrf_generic.h"
 #include "../../newgrf_station.h"
+#include "../../economy_func.h"
 
 /* static */ bool AIRail::IsRailTile(TileIndex tile)
 {
@@ -453,4 +454,18 @@ static bool IsValidSignalType(int signal_type)
 	EnforcePrecondition(false, track != INVALID_TRACK);
 
 	return AIObject::DoCommand(tile, track, 0, CMD_REMOVE_SIGNALS);
+}
+
+/* static */ Money AIRail::GetBuildCost(RailType railtype, BuildType build_type)
+{
+	if (!AIRail::IsRailTypeAvailable(railtype)) return -1;
+
+	switch (build_type) {
+		case BT_TRACK:    return ::RailBuildCost((::RailType)railtype);
+		case BT_SIGNAL:   return ::GetPrice(PR_BUILD_SIGNALS, 1, NULL);
+		case BT_DEPOT:    return ::GetPrice(PR_BUILD_DEPOT_TRAIN, 1, NULL);
+		case BT_STATION:  return ::GetPrice(PR_BUILD_STATION_RAIL, 1, NULL) + ::GetPrice(PR_BUILD_STATION_RAIL_LENGTH, 1, NULL);
+		case BT_WAYPOINT: return ::GetPrice(PR_BUILD_WAYPOINT_RAIL, 1, NULL);
+		default: return -1;
+	}
 }
