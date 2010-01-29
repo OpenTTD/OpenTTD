@@ -300,7 +300,7 @@ static inline VarType GetVarFileType(VarType type)
  * @param conv the type to check
  * @return True if it's a numeric type.
  */
-static bool IsNumericType(VarType conv)
+static inline bool IsNumericType(VarType conv)
 {
 	return GetVarMemType(conv) <= SLE_VAR_U64;
 }
