@@ -10,6 +10,7 @@
 /** @file ai_gui.cpp Window for configuring the AIs */
 
 #include "../stdafx.h"
+#include "../openttd.h"
 #include "../gui.h"
 #include "../window_gui.h"
 #include "../company_func.h"
@@ -256,7 +257,9 @@ struct AISettingsWindow : public Window {
 	{
 		this->ai_config = AIConfig::GetConfig(slot);
 
-		this->InitNested(desc);  // Initializes 'this->line_height' as side effect.
+		this->InitNested(desc, slot);  // Initializes 'this->line_height' as side effect.
+
+		this->SetWidgetDisabledState(AIS_WIDGET_RESET, _game_mode != GM_MENU);
 
 		this->vscroll.SetCount((int)this->ai_config->GetConfigList()->size());
 	}
@@ -297,12 +300,13 @@ struct AISettingsWindow : public Window {
 		int y = r.top;
 		for (; this->vscroll.IsVisible(i) && it != config->GetConfigList()->end(); i++, it++) {
 			int current_value = config->GetSetting((*it).name);
+			bool editable = (_game_mode == GM_MENU) || ((it->flags & AICONFIG_INGAME) != 0);
 
 			uint x = rtl ? r.right : r.left;
 			if (((*it).flags & AICONFIG_BOOLEAN) != 0) {
 				DrawFrameRect(buttons_left, y  + 2, buttons_left + 19, y + 10, (current_value != 0) ? COLOUR_GREEN : COLOUR_RED, (current_value != 0) ? FR_LOWERED : FR_NONE);
 			} else {
-				DrawArrowButtons(buttons_left, y + 2, COLOUR_YELLOW, (this->clicked_button == i) ? 1 + (this->clicked_increase != rtl) : 0, current_value > (*it).min_value, current_value < (*it).max_value);
+				DrawArrowButtons(buttons_left, y + 2, COLOUR_YELLOW, (this->clicked_button == i) ? 1 + (this->clicked_increase != rtl) : 0, editable && current_value > (*it).min_value, editable && current_value < (*it).max_value);
 				if (it->labels != NULL && it->labels->Find(current_value) != it->labels->End()) {
 					x = DrawString(value_left, value_right, y + WD_MATRIX_TOP, it->labels->Find(current_value)->second, TC_ORANGE);
 				} else {
@@ -318,9 +322,13 @@ struct AISettingsWindow : public Window {
 
 	void CheckDifficultyLevel()
 	{
-		if (_settings_newgame.difficulty.diff_level != 3) {
-			_settings_newgame.difficulty.diff_level = 3;
-			ShowErrorMessage(STR_WARNING_DIFFICULTY_TO_CUSTOM, INVALID_STRING_ID, 0, 0);
+		if (_game_mode == GM_MENU) {
+			if (_settings_newgame.difficulty.diff_level != 3) {
+				_settings_newgame.difficulty.diff_level = 3;
+				ShowErrorMessage(STR_WARNING_DIFFICULTY_TO_CUSTOM, INVALID_STRING_ID, 0, 0);
+			}
+		} else if (_settings_game.difficulty.diff_level != 3) {
+			IConsoleSetSetting("difficulty.diff_level", 3);
 		}
 	}
 
@@ -335,6 +343,8 @@ struct AISettingsWindow : public Window {
 				AIConfigItemList::const_iterator it = this->ai_config->GetConfigList()->begin();
 				for (int i = 0; i < num; i++) it++;
 				AIConfigItem config_item = *it;
+				if (_game_mode != GM_MENU && (config_item.flags & AICONFIG_INGAME) == 0) return;
+
 				bool bool_item = (config_item.flags & AICONFIG_BOOLEAN) != 0;
 
 				int x = pt.x - wid->pos_x;
@@ -685,6 +695,7 @@ void ShowAIConfigWindow()
 enum AIDebugWindowWidgets {
 	AID_WIDGET_VIEW,
 	AID_WIDGET_NAME_TEXT,
+	AID_WIDGET_SETTINGS,
 	AID_WIDGET_RELOAD_TOGGLE,
 	AID_WIDGET_LOG_PANEL,
 	AID_WIDGET_SCROLLBAR,
@@ -712,6 +723,7 @@ struct AIDebugWindow : public Window {
 			this->SetWidgetDisabledState(i + AID_WIDGET_COMPANY_BUTTON_START, !Company::IsValidAiID(i));
 		}
 		this->DisableWidget(AID_WIDGET_RELOAD_TOGGLE);
+		this->DisableWidget(AID_WIDGET_SETTINGS);
 
 		this->last_vscroll_pos = 0;
 		this->autoscroll = true;
@@ -751,8 +763,11 @@ struct AIDebugWindow : public Window {
 			}
 		}
 
-		/* Update "Reload AI" button */
-		this->SetWidgetDisabledState(AID_WIDGET_RELOAD_TOGGLE, ai_debug_company == INVALID_COMPANY);
+		/* Update "Reload AI" and "AI settings" buttons */
+		this->SetWidgetsDisabledState(ai_debug_company == INVALID_COMPANY,
+			AID_WIDGET_RELOAD_TOGGLE,
+			AID_WIDGET_SETTINGS,
+			WIDGET_LIST_END);
 
 		/* Draw standard stuff */
 		this->DrawWidgets();
@@ -892,6 +907,8 @@ struct AIDebugWindow : public Window {
 		this->autoscroll = true;
 		this->last_vscroll_pos = this->vscroll.GetPosition();
 		this->SetDirty();
+		/* Close AI settings window to prevent confusion */
+		DeleteWindowByClass(WC_AI_SETTINGS);
 	}
 
 	virtual void OnClick(Point pt, int widget)
@@ -903,16 +920,24 @@ struct AIDebugWindow : public Window {
 				ChangeToAI((CompanyID)(widget - AID_WIDGET_COMPANY_BUTTON_START));
 			}
 		}
-		if (widget == AID_WIDGET_RELOAD_TOGGLE && !this->IsWidgetDisabled(widget)) {
-			/* First kill the company of the AI, then start a new one. This should start the current AI again */
-			DoCommandP(0, 2, ai_debug_company, CMD_COMPANY_CTRL);
-			DoCommandP(0, 1, ai_debug_company, CMD_COMPANY_CTRL);
+
+		switch (widget) {
+			case AID_WIDGET_RELOAD_TOGGLE:
+				/* First kill the company of the AI, then start a new one. This should start the current AI again */
+				DoCommandP(0, 2, ai_debug_company, CMD_COMPANY_CTRL);
+				DoCommandP(0, 1, ai_debug_company, CMD_COMPANY_CTRL);
+				break;
+
+			case AID_WIDGET_SETTINGS:
+				ShowAISettingsWindow(ai_debug_company);
+				break;
 		}
 	}
 
 	virtual void OnTimeout()
 	{
 		this->RaiseWidget(AID_WIDGET_RELOAD_TOGGLE);
+		this->RaiseWidget(AID_WIDGET_SETTINGS);
 		this->SetDirty();
 	}
 
@@ -981,7 +1006,8 @@ static const NWidgetPart _nested_ai_debug_widgets[] = {
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_TEXTBTN, COLOUR_GREY, AID_WIDGET_NAME_TEXT), SetFill(1, 0), SetResize(1, 0), SetDataTip(STR_JUST_STRING, STR_AI_DEBUG_NAME_TOOLTIP),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, AID_WIDGET_RELOAD_TOGGLE), SetMinimalSize(149, 20), SetDataTip(STR_AI_DEBUG_RELOAD, STR_AI_DEBUG_RELOAD_TOOLTIP),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, AID_WIDGET_SETTINGS), SetMinimalSize(100, 20), SetDataTip(STR_AI_DEBUG_SETTINGS, STR_AI_DEBUG_SETTINGS_TOOLTIP),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, AID_WIDGET_RELOAD_TOGGLE), SetMinimalSize(100, 20), SetDataTip(STR_AI_DEBUG_RELOAD, STR_AI_DEBUG_RELOAD_TOOLTIP),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_PANEL, COLOUR_GREY, AID_WIDGET_LOG_PANEL), SetMinimalSize(287, 180), SetResize(1, 1),

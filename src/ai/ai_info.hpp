@@ -20,6 +20,7 @@ enum AIConfigFlags {
 	AICONFIG_NONE    = 0x0,
 	AICONFIG_RANDOM  = 0x1, //!< When randomizing the AI, pick any value between min_value and max_value when on custom difficulty setting.
 	AICONFIG_BOOLEAN = 0x2, //!< This value is a boolean (either 0 (false) or 1 (true) ).
+	AICONFIG_INGAME  = 0x4, //!< This setting can be changed while the AI is running.
 };
 
 typedef SmallMap<int, char *> LabelMapping;

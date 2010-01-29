@@ -39,8 +39,10 @@ AIScanner::AIScanner() :
 	SQAIInfo.AddConstructor<void (AIInfo::*)(), 1>(engine, "x");
 	SQAIInfo.DefSQAdvancedMethod(this->engine, &AIInfo::AddSetting, "AddSetting");
 	SQAIInfo.DefSQAdvancedMethod(this->engine, &AIInfo::AddLabels, "AddLabels");
+	SQAIInfo.DefSQConst(engine, AICONFIG_NONE, "AICONFIG_NONE");
 	SQAIInfo.DefSQConst(engine, AICONFIG_RANDOM, "AICONFIG_RANDOM");
 	SQAIInfo.DefSQConst(engine, AICONFIG_BOOLEAN, "AICONFIG_BOOLEAN");
+	SQAIInfo.DefSQConst(engine, AICONFIG_INGAME, "AICONFIG_INGAME");
 	SQAIInfo.PostRegister(engine);
 	this->engine->AddMethod("RegisterAI", &AIInfo::Constructor, 2, "tx");
 	this->engine->AddMethod("RegisterDummyAI", &AIInfo::DummyConstructor, 2, "tx");

@@ -105,6 +105,7 @@
 	_current_company = old_company;
 
 	InvalidateWindowData(WC_AI_DEBUG, 0, -1);
+	DeleteWindowById(WC_AI_SETTINGS, company);
 }
 
 /* static */ void AI::KillAll()
