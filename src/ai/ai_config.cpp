@@ -16,11 +16,11 @@
 #include "ai.hpp"
 #include "ai_config.hpp"
 
-void AIConfig::ChangeAI(const char *name, int version, bool is_random_ai)
+void AIConfig::ChangeAI(const char *name, int version, bool force_exact_match, bool is_random_ai)
 {
 	free((void *)this->name);
 	this->name = (name == NULL) ? NULL : strdup(name);
-	this->info = (name == NULL) ? NULL : AI::FindInfo(this->name, version);
+	this->info = (name == NULL) ? NULL : AI::FindInfo(this->name, version, force_exact_match);
 	this->version = (info == NULL) ? -1 : info->GetVersion();
 	this->is_random_ai = is_random_ai;
 	if (this->config_list != NULL) delete this->config_list;
@@ -79,7 +79,7 @@ AIInfo *AIConfig::GetInfo() const
 
 bool AIConfig::ResetInfo()
 {
-	this->info = AI::FindInfo(this->name, -1);
+	this->info = AI::FindInfo(this->name, -1, false);
 	return this->info != NULL;
 }
 

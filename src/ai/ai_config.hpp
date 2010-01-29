@@ -36,9 +36,11 @@ public:
 	 * Set another AI to be loaded in this slot.
 	 * @param name The name of the AI.
 	 * @param version The version of the AI to load, or -1 of latest.
+	 * @param force_exact_match If true try to find the exact same version
+	 *   as specified. If false any compatible version is ok.
 	 * @param is_random Is the AI chosen randomly?
 	 */
-	void ChangeAI(const char *name, int version = -1, bool is_random = false);
+	void ChangeAI(const char *name, int version = -1, bool force_exact_match = false, bool is_random = false);
 
 	/**
 	 * When ever the AI Scanner is reloaded, all infos become invalid. This

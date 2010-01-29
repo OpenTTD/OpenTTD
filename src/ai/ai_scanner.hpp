@@ -48,7 +48,7 @@ public:
 	/**
 	 * Find an AI by name.
 	 */
-	class AIInfo *FindInfo(const char *name, int version);
+	class AIInfo *FindInfo(const char *name, int version, bool force_exact_match);
 
 	/**
 	 * Get the list of available AIs for the console.

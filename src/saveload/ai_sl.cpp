@@ -75,13 +75,13 @@ static void Load_AIPL()
 		AIConfig *config = AIConfig::GetConfig(index);
 		if (StrEmpty(_ai_saveload_name)) {
 			/* A random AI. */
-			config->ChangeAI(NULL, -1, true);
+			config->ChangeAI(NULL, -1, false, true);
 		} else {
-			config->ChangeAI(_ai_saveload_name, _ai_saveload_version, _ai_saveload_is_random);
+			config->ChangeAI(_ai_saveload_name, _ai_saveload_version, false, _ai_saveload_is_random);
 			if (!config->HasAI()) {
 				/* No version of the AI available that can load the data. Try to load the
 				 * latest version of the AI instead. */
-				config->ChangeAI(_ai_saveload_name, -1, _ai_saveload_is_random);
+				config->ChangeAI(_ai_saveload_name, -1, false, _ai_saveload_is_random);
 				if (!config->HasAI()) {
 					if (strcmp(_ai_saveload_name, "%_dummy") != 0) {
 						DEBUG(ai, 0, "The savegame has an AI by the name '%s', version %d which is no longer available.", _ai_saveload_name, _ai_saveload_version);

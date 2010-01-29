@@ -44,7 +44,7 @@
 		info = AI::ai_scanner->SelectRandomAI();
 		assert(info != NULL);
 		/* Load default data and store the name in the settings */
-		config->ChangeAI(info->GetName(), -1, true);
+		config->ChangeAI(info->GetName(), -1, false, true);
 	}
 
 	_current_company = company;
@@ -288,9 +288,9 @@ void CcAI(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
 	return AI::ai_scanner->GetUniqueAIInfoList();
 }
 
-/* static */ AIInfo *AI::FindInfo(const char *name, int version)
+/* static */ AIInfo *AI::FindInfo(const char *name, int version, bool force_exact_match)
 {
-	return AI::ai_scanner->FindInfo(name, version);
+	return AI::ai_scanner->FindInfo(name, version, force_exact_match);
 }
 
 /* static */ bool AI::ImportLibrary(const char *library, const char *class_name, int version, HSQUIRRELVM vm)

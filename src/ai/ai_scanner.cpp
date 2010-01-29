@@ -274,7 +274,7 @@ AIInfo *AIScanner::SelectRandomAI() const
 	return (*it).second;
 }
 
-AIInfo *AIScanner::FindInfo(const char *nameParam, int versionParam)
+AIInfo *AIScanner::FindInfo(const char *nameParam, int versionParam, bool force_exact_match)
 {
 	if (this->info_list.size() == 0) return NULL;
 	if (nameParam == NULL) return NULL;
@@ -299,21 +299,19 @@ AIInfo *AIScanner::FindInfo(const char *nameParam, int versionParam)
 		/* Fall-through, like we were calling this function with a version */
 	}
 
-	/* Try to find a direct 'name.version' match */
-	char ai_name_tmp[1024];
-	snprintf(ai_name_tmp, sizeof(ai_name_tmp), "%s.%d", ai_name, versionParam);
-	strtolower(ai_name_tmp);
-	if (this->info_list.find(ai_name_tmp) != this->info_list.end()) return this->info_list[ai_name_tmp];
+	if (force_exact_match) {
+		/* Try to find a direct 'name.version' match */
+		char ai_name_tmp[1024];
+		snprintf(ai_name_tmp, sizeof(ai_name_tmp), "%s.%d", ai_name, versionParam);
+		strtolower(ai_name_tmp);
+		if (this->info_list.find(ai_name_tmp) != this->info_list.end()) return this->info_list[ai_name_tmp];
+	}
 
 	/* See if there is a compatible AI which goes by that name, with the highest
 	 *  version which allows loading the requested version */
 	AIInfoList::iterator it = this->info_list.begin();
 	for (; it != this->info_list.end(); it++) {
-		char ai_name_compare[1024];
-		snprintf(ai_name_compare, sizeof(ai_name_compare), "%s", (*it).second->GetName());
-		strtolower(ai_name_compare);
-
-		if (strcasecmp(ai_name, ai_name_compare) == 0 && (*it).second->CanLoadFromVersion(versionParam) && (version == -1 || (*it).second->GetVersion() > version)) {
+		if (strcasecmp(ai_name, (*it).second->GetName()) == 0 && (*it).second->CanLoadFromVersion(versionParam) && (version == -1 || (*it).second->GetVersion() > version)) {
 			version = (*it).second->GetVersion();
 			info = (*it).second;
 		}
