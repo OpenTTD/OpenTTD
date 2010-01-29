@@ -777,7 +777,8 @@ struct NewGRFWindow : public Window {
 				GRFConfig **pc, *c;
 				if (this->sel == NULL) break;
 
-				for (pc = &this->list; (c = *pc) != NULL; pc = &c->next) {
+				int pos = 0;
+				for (pc = &this->list; (c = *pc) != NULL; pc = &c->next, pos++) {
 					if (c->next == this->sel) {
 						c->next = this->sel->next;
 						this->sel->next = c;
@@ -785,6 +786,7 @@ struct NewGRFWindow : public Window {
 						break;
 					}
 				}
+				this->vscroll.ScrollTowards(pos);
 				this->preset = -1;
 				this->InvalidateData();
 				break;
@@ -794,7 +796,8 @@ struct NewGRFWindow : public Window {
 				GRFConfig **pc, *c;
 				if (this->sel == NULL) break;
 
-				for (pc = &this->list; (c = *pc) != NULL; pc = &c->next) {
+				int pos = 1; // Start at 1 as we swap the selected newgrf with the next one
+				for (pc = &this->list; (c = *pc) != NULL; pc = &c->next, pos++) {
 					if (c == this->sel) {
 						*pc = c->next;
 						c->next = c->next->next;
@@ -802,6 +805,7 @@ struct NewGRFWindow : public Window {
 						break;
 					}
 				}
+				this->vscroll.ScrollTowards(pos);
 				this->preset = -1;
 				this->InvalidateData();
 				break;

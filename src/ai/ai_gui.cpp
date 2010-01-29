@@ -604,6 +604,7 @@ struct AIConfigWindow : public Window {
 				if (this->selected_slot > 1) {
 					Swap(_settings_newgame.ai_config[this->selected_slot], _settings_newgame.ai_config[this->selected_slot - 1]);
 					this->selected_slot--;
+					this->vscroll.ScrollTowards(this->selected_slot);
 					this->InvalidateData();
 				}
 				break;
@@ -612,6 +613,7 @@ struct AIConfigWindow : public Window {
 				if (this->selected_slot < _settings_newgame.difficulty.max_no_competitors) {
 					Swap(_settings_newgame.ai_config[this->selected_slot], _settings_newgame.ai_config[this->selected_slot + 1]);
 					this->selected_slot++;
+					this->vscroll.ScrollTowards(this->selected_slot);
 					this->InvalidateData();
 				}
 				break;
