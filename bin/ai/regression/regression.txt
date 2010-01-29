@@ -584,7 +584,7 @@
   GetBankBalance():            100000
   GetName():                   (null : 0x00000000)
   GetLoanAmount():             100000
-  GetMaxLoanAmount():          2000000000
+  GetMaxLoanAmount():          500000
   GetLoanInterval():           10000
   SetLoanAmount(1):            false
   SetLoanAmount(100):          false
@@ -596,8 +596,8 @@
   GetBankBalance():            40000
   GetLoanAmount():             40000
   SetLoanAmount(10000):        true
-  GetBankBalance():            2000000000
-  GetLoanAmount():             2000000000
+  GetBankBalance():            500000
+  GetLoanAmount():             500000
   GetCompanyHQ():              -1
   BuildCompanyHQ():            true
   GetCompanyHQ():              33151
@@ -681,7 +681,7 @@
   GetAirportWidth(9):               -1
   GetAirportHeight(9):              -1
   GetAirportCoverageRadius(9):      -1
-  GetBankBalance():     1999999790
+  GetBankBalance():     499790
   GetPrice():           5400
   BuildAirport():       true
   IsHangarTile():       false
@@ -691,11 +691,11 @@
   IsHangarTile():       true
   IsAirportTile():      true
   GetAirportType():     0
-  GetBankBalance():     1999989890
+  GetBankBalance():     489890
   RemoveAirport():      true
   IsHangarTile():       false
   IsAirportTile():      false
-  GetBankBalance():     1999989626
+  GetBankBalance():     489626
   BuildAirport():       true
 
 --Bridge--
@@ -7085,7 +7085,7 @@
   IsBuoyTile():         false
   IsLockTile():         false
   IsCanalTile():        false
-  GetBankBalance():     1999980703
+  GetBankBalance():     480703
   BuildWaterDepot():    true
   BuildDock():          true
   BuildBuoy():          true
@@ -7098,7 +7098,7 @@
   IsBuoyTile():         true
   IsLockTile():         true
   IsCanalTile():        true
-  GetBankBalance():     1999951154
+  GetBankBalance():     451154
 
 --AIWaypointList(BUOY)--
   Count():             1
@@ -7117,7 +7117,7 @@
   IsBuoyTile():         false
   IsLockTile():         false
   IsCanalTile():        false
-  GetBankBalance():     1999928509
+  GetBankBalance():     428509
   BuildWaterDepot():    true
   BuildDock():          true
 

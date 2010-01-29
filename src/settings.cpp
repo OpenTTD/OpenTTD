@@ -1784,6 +1784,7 @@ static void LoadSettings(const SettingDesc *osd, void *object)
 		void *ptr = GetVariableAddress(object, sld);
 
 		if (!SlObjectMember(ptr, sld)) continue;
+		Write_ValidateSetting(ptr, osd, ReadValue(ptr, sld->conv));
 	}
 }
 
