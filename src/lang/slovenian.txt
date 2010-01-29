@@ -1157,6 +1157,10 @@ STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Dovoli 
 STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Neenake postaje: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Koeficient teže tovora za simulacijo težkih vlakov: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Faktor hitrosti letal: {ORANGE}1 / {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Število letalskih nesreč: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :brez
+STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :zmanjšano
+STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normalno
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Dovoli prehodne postaje na cestah v lasti mest: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Dovoli prevoženja postaj na tekmečevih cestah: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Dovoli gradnjo združljivih postaj: {ORANGE}{STRING}

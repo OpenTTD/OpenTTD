@@ -1149,6 +1149,10 @@ STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Lehesse
 STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Különböző vágánytípusok engedélyezése egy állomáson: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Tömegszorzó tehervonatoknak (szimulációs célból): {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Repülőgép sebességszorzó: {ORANGE}1 / {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Számú repülőgép lezuhan: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :nincs
+STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :csökkentette
+STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normál
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Áthajtó állomások engedélyezése városi tulajdonú utakra: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Áthajtó állomások engedélyezése vetélytárs tulajdonában lévő utakon: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Érintkező állomások építésének engedélyezése: {ORANGE}{STRING}

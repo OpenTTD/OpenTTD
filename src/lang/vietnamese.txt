@@ -22,7 +22,7 @@
 STR_NULL                                                        :
 STR_EMPTY                                                       :
 STR_UNDEFINED                                                   :(chuỗi không xác định)
-STR_JUST_NOTHING                                                :Không màu
+STR_JUST_NOTHING                                                :Trống rỗng
 
 # Cargo related strings
 # Plural cargo name
@@ -1112,34 +1112,38 @@ STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Tự d�
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Cho phép hối lộ chính quyền địa phương: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Cho phép mua quyền vận tải độc quyền: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Cho phép chuyển tiền cho các công ty khác: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Trạm biến tính: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Ga không đồng kiểu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Cân nặng nhân với số hàng hóa để mô phỏng sức nặng của tàu hỏa: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Hệ số tốc độ máy bay: {ORANGE}1 / {STRING}
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Cho phép xây trạm tiện dụng trên đường của thị trấn: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Cho phép xây trạm tiện dụng trên đường của đối thủ: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Cho phép xây trạm gần nhau: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Bật engine chạy nhiều gói NewGRF: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Số máy bay gặp tai nạn: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :không
+STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :giảm bớt
+STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :bình thường
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Cho phép xây điểm dừng xe buýt trên đường của thị trấn: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Cho phép xây điểm dừng xe buýt trên đường của đối thủ: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Cho phép xây ga, bến, cảng sát nhau: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Bật chạy nhiều gói NewGRF cho phương tiện: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Không thể đổi thiết đặt này khi vẫn còn các phương tiện giao thông.
 
-STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Sân bay không bao giờ hết hạn: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Sân bay không bao giờ thành đồ cổ: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Cảnh báo nếu mất tàu: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Xem lại các ph.tiện đã mua: {ORANGE}{STRING}
+STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Cảnh báo nếu tàu mất phương hướng: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Xem lại lộ trình của các phương tiện: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :không
-STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :có, nhưng trừ các ph.tiện đã ngưng
+STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :có, nhưng trừ các ph.tiện đang dừng
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :tất cả ph.tiện
-STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Cảnh báo nếu thu nhập của ph.tiện là âm: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Ph.tiện không bao giờ hết hạn: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Tự làm mới ph.tiện nếu nó quá cũ: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Tự làm mới ph.tiện vào {ORANGE}{STRING}{LTBLUE} tháng trước/sau khi quá tuổi
-STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Số tiền tối thiểu cần cho việc tự làm mới ph.tiện: {ORANGE}{STRING}
+STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Cảnh báo nếu thu nhập của ph.tiện bị âm: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Ph.tiện không bao giờ thành đồ cổ: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Tự thay mới ph.tiện nếu nó hết tuổi: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Tự thay mới ph.tiện vào {ORANGE}{STRING}{LTBLUE} tháng trước/sau khi quá tuổi
+STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Số tiền tối thiểu cần cho việc tự thay mới ph.tiện: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Khoảng thời gian hiện báo lỗi: {ORANGE}{STRING}
-STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Hiện dân số thị trấn trong nhãn tên của thị trấn: {ORANGE}{STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Hiện dân số đô thị trong nhãn tên của đô thị: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Cấu tạo đất đai: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Gốc
-STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Khoảng cách tối đa từ đường biên tới nhà máy lọc dầu {ORANGE}{STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Tạo nền đất: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Nguyên bản
+STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :Đất liền
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Khoảng cách tối đa từ mép bản đồ tới nhà máy lọc dầu {ORANGE}{STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Độ cao tuyết phủ: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Độ gồ ghề của địa chất (cho TerraGenesis) : {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Rất Phẳng

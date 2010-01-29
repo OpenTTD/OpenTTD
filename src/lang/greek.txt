@@ -659,8 +659,8 @@ STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Σύνο
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Αριθμός οχημάτων που είχαν κέρδος, αυτό περιλαμβάνει οχήματα δρόμου, τραίνα, πλοία και αεροπλάνα
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Αριθμός των πρόσφατα επισκευασμένων κομματιών σταθμών. Κάθε κομμάτι ενός σταθμού (π.χ. στάθμος τρένου, στάση λεωφορείου, αεροδρόμιο) προσμετριέται, ακόμα και αν είναι συνδεμένα ως ένας σταθμός
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Το κέρδος του οχήματος με το μικρότερο εισόδημα (μόνο οχήματα παλιότερα των 2 ετών θα λαμβάνονται υπόψην)
-STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Το ποσό των χρημάτων που έγιναν με το μικρότερο κέρδος των τελευταίων 12 τετάρτων
-STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Το ποσό των χρημάτων που έγιναν με το μεγαλύτερο κέρδος των τελευταίων 12 τετάρτων
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Το ποσό των χρημάτων που έγιναν σε ένα τρίμηνο με το μικρότερο κέρδος των τελευταίων 12 τριμήνων
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Το ποσό των χρημάτων που έγιναν σε ένα τρίμηνο με το μεγαλύτερο κέρδος των τελευταίων 12 τριμήνων
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Μονάδες εμπορεύματος που παραδόθηκαν στα τελευταία τέσσερα τετράμηνα
 STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Αριθμός των τύπων εμπορεύματων που παραδόθηκαν το τελευταίο τετράμηνο
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Ποσό χρημάτων που διαθέτει η εταιρία στην τράπεζα
@@ -1160,6 +1160,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Ανεκτικ�
 STR_CITY_APPROVAL_TOLERANT                                      :Υπομονετικό
 STR_CITY_APPROVAL_HOSTILE                                       :Εχθρικό
 
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Δεν είναι διαθέσιμο κανένα κατάλληλο Als...{}Μπορείτε να κατεβάσετε αρκετά AIs μέσω του συστήματος 'Online περιεχομένου'
 STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Αυτή η ενέργεια άλλαξε το επίπεδο δυσκολίας στο προσαρμοσμένο
 
 # Advanced settings window
@@ -1337,6 +1338,7 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Τα έ
 STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Έτος εκκίνησης: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Ενεργοποίηση ομαλής οικονομίας (περισσότερες, μικρότερες αλλαγές): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Ενεργοποίηση δυνατότητας αγοράς μετοχών από άλλες εταιρίες: {ORANGE}{STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Ποσοστό προμήθειας για πληρωμή στα συστήματα τροφοδοσίας: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Κατά το σύρσιμο, τοποθέτησε σήματα κάθε: {ORANGE}{STRING} τετράγωνο(α)
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Αυτόματο χτίσιμο σηματοφόρων πρίν από το: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Ενεργοποίηση του μενού σηματοδοτών: {ORANGE}{STRING}
@@ -2106,8 +2108,8 @@ STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Επιλ
 
 STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Μικρό
 STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}Πόλης
-STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Μητροπολιτικό αεροδρόμιο
-STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Διεθνές αεροδρόμιο
+STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Μητροπολιτικό
+STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Διεθνές
 STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Ταξιδιωτικό
 STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Διηπειρωτικό
 STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Ελικοδρόμιο
@@ -2463,6 +2465,7 @@ STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Άγνωστη 
 STR_NEWGRF_ERROR_INVALID_ID                                     :Προσπάθεια να χρησιμοποιήθει λάθος ID.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} περιέχει ένα κατεστραμμένο sprite. Όλα τα κατεστραμμένα sprites θα εμφανίζονται ως ένα κόκκινο ερωματικό (?).
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Περιέχει πολλαπλές Action 8.
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Διάβασμα τέλους του ψεύδο-sprite
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Προσοχή!

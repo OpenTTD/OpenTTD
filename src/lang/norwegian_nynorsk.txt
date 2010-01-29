@@ -1116,6 +1116,10 @@ STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Gje hø
 STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Ikkje-einsarta stasjonar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Vektmultiplikator for frakt til å simulere tunge tog: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Flyfartfaktor: {ORANGE}1 / {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Antal flystyrtar: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :ingen
+STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :redusert
+STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normalt
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Tillat å køyre gjennom stoppestadar på vegar som byane eig: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Tillat gjennomkøyrings-stasjonar på vegar eigd av konkurentar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Tillat å byggje stasjonar inntil andre: {ORANGE}{STRING}

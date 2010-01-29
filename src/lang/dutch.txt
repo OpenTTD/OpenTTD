@@ -1115,6 +1115,10 @@ STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Geld ge
 STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Vrij gevormde stations: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Gewichtsverhouding voor vracht om zware treinen te simuleren: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Vliegtuigsnelheidsverhouding: {ORANGE}1 / {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Aantal vliegtuigcrashes: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Geen
+STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Verminderd
+STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normaal
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Sta toe dat doorrijwegstops worden geplaatst op door stad beheerde wegen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Sta doorrijhaltes op wegen van tegenstanders toe: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Bouwen van aangrenzende stations toestaan: {ORANGE}{STRING}
@@ -1270,7 +1274,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :toestaan
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :toestaan, eigen wegpatroon
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}Plaatsing van bomen in het spel: {ORANGE}{STRING}
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :geen {RED}(breekt houtzagerij)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :geen {RED}(houtzagerij werkt niet)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :alleen in regenwouden
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :overal
 
@@ -2013,7 +2017,7 @@ STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Kies gro
 
 STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Klein
 STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}Stad
-STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Hoofdstedelijk vliegveld
+STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Hoofdstedelijk
 STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Internationaal vliegveld
 STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Pendel
 STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Intercontinentaal

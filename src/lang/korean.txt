@@ -1116,6 +1116,10 @@ STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}다른 
 STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}이미 지어진 역에 추가로 역을 증축하는 것을 허용 : {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}무거운 열차를 운행하기 위해 화물에 무게를 가함 : {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}비행기 속도 인수: {ORANGE}1 / {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}비행기 추락 횟수: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :없음
+STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :적음
+STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :보통
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}도시 소유의 도로 위에 버스 정류장 건설 허용: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}경쟁자가 소유중인 도로를 통과하는 버스 정류장 건설 허용: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}정거장 근처에 건물 짓기 허용: {ORANGE}{STRING}

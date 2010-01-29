@@ -632,8 +632,8 @@ STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Celkem:
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Počet dopravních prostředků které vykázaly poslední rok zisk; zahrnuje silniční vozidla, vlaky, lodě a letadla
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Počet součástí obsluhovaných stanic. Každá součást stanice (napr. nádraží, autobusová zastávka, letiště) se započítává, i když patří jediné stanici
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Minimální hrubý zisk (= s provoz. náklady) vozidla s nejnižším příjmem (staršího 2 let)
-STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Čistý zisk (= bez provoz. nakladu) v nejslabším měsíci za posledních 12 čtvrtletí
-STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Čistý zisk v měsíci s největším příjmem za posledních 12 čtvrtletí
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Čistý zisk (= bez provoz. nakladu) v nejslabším čtvrtletí za posledních 12 čtvrtletí
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Čistý zisk ve čtvrtletí s největším příjmem za posledních 12 čtvrtletí
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Počet doručených jednotek nákladu za poslední rok (4Q)
 STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Počet doručených druhu nákladu za poslední 3 měsíce (1Q)
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Současná hotovost společnosti
@@ -1133,6 +1133,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :nezaujatý
 STR_CITY_APPROVAL_TOLERANT                                      :tolerantní
 STR_CITY_APPROVAL_HOSTILE                                       :zaujatý
 
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Žádné vhodné AI není k dispozici...{}některé Ai lze stáhnout pomocí služby 'Stahovat součásti'
 STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Tato akce změnila úroveň obtížnosti na 'vlastní'
 
 # Advanced settings window
@@ -1182,6 +1183,10 @@ STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Umožni
 STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Nejednolité stanice: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Pro simulaci těžkých vlaků vynásobit hmotnost nákladu: {ORANGE}{STRING}x
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Činitel rychlosti letadel: {ORANGE}1/{STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Počet leteckých havárií: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :žádné
+STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :snížené
+STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normální
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Stavba průjezdných zastávek na obecních silnicích: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Stavba průjezdných zastávek na silnicích vlastněných konkurencí: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Povolit stavění přilehlých stanic: {ORANGE}{STRING}
@@ -2437,6 +2442,7 @@ STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Neznámá vlast
 STR_NEWGRF_ERROR_INVALID_ID                                     :Pokus o použití neplatného ID.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} obsahuje poškozený sprite. Všechny takové se zobrazí jako červený otazník (?).
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Obsahuje víc GRF akcí 8.
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Čtení za koncem pseudo-spritu.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Varování!

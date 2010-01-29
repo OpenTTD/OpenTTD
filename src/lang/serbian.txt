@@ -1300,6 +1300,10 @@ STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Dozvolj
 STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Dozvoljene stanice različitih oblika: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Množilac težine tovara za simulaciju opterećenja vozova: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Delitelj brzine leta aviona: {ORANGE}1 / {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Broj avionskih nesreća: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :nikakav
+STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :umanjen
+STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normalan
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Dozvoljene ulične stanice na kolovozima u vlasništvu naselja: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Dozvoljene ulične stanice na kolovozima u vlasništvu drugih preduzeća: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Dozvoljena gradnja stanica jedne pored druge: {ORANGE}{STRING}

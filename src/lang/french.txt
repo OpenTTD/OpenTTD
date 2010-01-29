@@ -1116,6 +1116,10 @@ STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Autoris
 STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Gares non uniformes{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Multiplier le poids pour les trains fret (simule des trains lourds){NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Facteur de vitesse des aéroplanes{NBSP}: {ORANGE}1 / {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Nombre d'accidents d'avion{NBSP}: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :aucun
+STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :réduit
+STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normal
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Autoriser les arrêts de bus sur les routes des municipalités{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Autoriser les arrêts de bus sur les routes des concurrents{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Autoriser la construction de stations adjacentes{NBSP}: {ORANGE}{STRING}

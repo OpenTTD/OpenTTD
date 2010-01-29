@@ -1115,6 +1115,10 @@ STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Salli r
 STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Epäyhtenäiset asemat: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Rahdin painokerroin raskaiden junien simulointia varten: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Lentokoneen nopeuskerroin: {ORANGE}1/{STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Lentokoneonnettomuuksien määrä: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :ei yhtään
+STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :vähennetty
+STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :tavallinen
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Läpiajettavat pysäkit kaupungin teille: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Salli läpiajettavat pysäkit kilpailijoiden omistamilla teillä: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Vierekkäiset asemat: {ORANGE}{STRING}
