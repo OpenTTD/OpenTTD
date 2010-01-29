@@ -316,6 +316,14 @@ struct AISettingsWindow : public Window {
 		}
 	}
 
+	void CheckDifficultyLevel()
+	{
+		if (_settings_newgame.difficulty.diff_level != 3) {
+			_settings_newgame.difficulty.diff_level = 3;
+			ShowErrorMessage(STR_WARNING_DIFFICULTY_TO_CUSTOM, INVALID_STRING_ID, 0, 0);
+		}
+	}
+
 	virtual void OnClick(Point pt, int widget)
 	{
 		switch (widget) {
@@ -353,10 +361,7 @@ struct AISettingsWindow : public Window {
 					this->clicked_button = num;
 					this->timeout = 5;
 
-					if (_settings_newgame.difficulty.diff_level != 3) {
-						_settings_newgame.difficulty.diff_level = 3;
-						ShowErrorMessage(STR_WARNING_DIFFICULTY_TO_CUSTOM, INVALID_STRING_ID, 0, 0);
-					}
+					this->CheckDifficultyLevel();
 				} else if (!bool_item) {
 					/* Display a query box so users can enter a custom value. */
 					this->clicked_row = num;
@@ -386,6 +391,7 @@ struct AISettingsWindow : public Window {
 		for (int i = 0; i < this->clicked_row; i++) it++;
 		int32 value = atoi(str);
 		this->ai_config->SetSetting((*it).name, value);
+		this->CheckDifficultyLevel();
 		this->SetDirty();
 	}
 
