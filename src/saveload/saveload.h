@@ -295,6 +295,16 @@ static inline VarType GetVarFileType(VarType type)
 	return type & 0xF; // GB(type, 0, 4);
 }
 
+/**
+ * Check if the given saveload type is a numeric type.
+ * @param conv the type to check
+ * @return True if it's a numeric type.
+ */
+static bool IsNumericType(VarType conv)
+{
+	return GetVarMemType(conv) <= SLE_VAR_U64;
+}
+
 /** Get the address of the variable. Which one to pick depends on the object
  * pointer. If it is NULL we are dealing with global variables so the address
  * is taken. If non-null only the offset is stored in the union and we need
