@@ -462,10 +462,42 @@ class SmallMapWindow : public Window {
 	 * @param tile_y Y coordinate of the tile.
 	 * @return Position to draw on.
 	 */
-	inline Point RemapTile(int tile_x, int tile_y) const
+	FORCEINLINE Point RemapTile(int tile_x, int tile_y) const
 	{
 		return RemapCoords(tile_x - this->scroll_x / TILE_SIZE,
 				tile_y - this->scroll_y / TILE_SIZE, 0);
+	}
+
+	/**
+	 * Determine the tile relative to the base tile of the smallmap, and the pixel position at
+	 * that tile for a point in the smallmap.
+	 * @param px Horizontal coordinate of the pixel.
+	 * @param py Vertical coordinate of the pixel.
+	 * @param sub[out] Pixel position at the tile (0..3).
+	 * @return Tile being displayed at the given position relative to #scroll_x and #scroll_y.
+	 * @note The #subscroll offset is already accounted for.
+	 */
+	FORCEINLINE Point PixelToTile(int dx, int dy, int *sub) const
+	{
+		dx += this->subscroll;  // Total horizontal offset.
+
+		/* For each two rows down, add a x and a y tile, and
+		 * For each four pixels to the right, move a tile to the right. */
+		Point pt = {(dy >> 1) - (dx >> 2), (dy >> 1) + (dx >> 2)};
+		dx &= 3;
+
+		if (dy & 1) { // Odd number of rows, handle the 2 pixel shift.
+			if (dx < 2) {
+				pt.x++;
+				dx += 2;
+			} else {
+				pt.y++;
+				dx -= 2;
+			}
+		}
+
+		*sub = dx;
+		return pt;
 	}
 
 	/**
@@ -522,19 +554,12 @@ class SmallMapWindow : public Window {
 
 			/* Remap into flat coordinates. */
 			Point pt = RemapTile(v->x_pos / TILE_SIZE, v->y_pos / TILE_SIZE);
-			int x = pt.x;
-			int y = pt.y;
 
-			/* Check if y is out of bounds? */
-			y -= dpi->top;
-			if (!IsInsideMM(y, 0, dpi->height)) continue;
+			int y = pt.y - dpi->top;
+			if (!IsInsideMM(y, 0, dpi->height)) continue; // y is out of bounds.
 
-			/* Default is to draw both pixels. */
-			bool skip = false;
-
-			/* Offset X coordinate */
-			x -= this->subscroll + 3 + dpi->left;
-
+			bool skip = false; // Default is to draw both pixels.
+			int x = pt.x - this->subscroll - 3 - dpi->left; // Offset X coordinate.
 			if (x < 0) {
 				/* if x+1 is 0, that means we're on the very left edge,
 				 * and should thus only draw a single pixel */
@@ -669,27 +694,11 @@ class SmallMapWindow : public Window {
 			}
 		}
 
-		int tile_x = this->scroll_x / TILE_SIZE;
-		int tile_y = this->scroll_y / TILE_SIZE;
-
-		int dx = dpi->left + this->subscroll;
-		tile_x -= dx / 4;
-		tile_y += dx / 4;
-		dx &= 3;
-
-		int dy = dpi->top;
-		tile_x += dy / 2;
-		tile_y += dy / 2;
-
-		if (dy & 1) {
-			tile_x++;
-			dx += 2;
-			if (dx > 3) {
-				dx -= 4;
-				tile_x--;
-				tile_y++;
-			}
-		}
+		/* Which tile is displayed at (dpi->left, dpi->top)? */
+		int dx;
+		Point tile = PixelToTile(dpi->left, dpi->top, &dx);
+		int tile_x = this->scroll_x / TILE_SIZE + tile.x;
+		int tile_y = this->scroll_y / TILE_SIZE + tile.y;
 
 		void *ptr = blitter->MoveTo(dpi->dst_ptr, -dx - 4, 0);
 		int x = - dx - 4;
@@ -1021,27 +1030,11 @@ public:
 	{
 		_cursor.fix_at = true;
 
-		int x = this->scroll_x;
-		int y = this->scroll_y;
-
-		int sub = this->subscroll + delta.x;
-
-		x -= (sub >> 2) << 4;
-		y += (sub >> 2) << 4;
-		sub &= 3;
-
-		x += (delta.y >> 1) << 4;
-		y += (delta.y >> 1) << 4;
-
-		if (delta.y & 1) {
-			x += TILE_SIZE;
-			sub += 2;
-			if (sub > 3) {
-				sub -= 4;
-				x -= TILE_SIZE;
-				y += TILE_SIZE;
-			}
-		}
+		/* While tile is at (delta.x, delta.y)? */
+		int sub;
+		Point pt = PixelToTile(delta.x, delta.y, &sub);
+		int x = this->scroll_x + pt.x * TILE_SIZE;
+		int y = this->scroll_y + pt.y * TILE_SIZE;
 
 		const NWidgetBase *wi = this->GetWidget<NWidgetBase>(SM_WIDGET_MAP);
 		int hx = wi->current_x / 2;
