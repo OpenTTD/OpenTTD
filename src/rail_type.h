@@ -27,7 +27,7 @@ enum RailType {
 	RAILTYPE_ELECTRIC = 1,          ///< Electric rails
 	RAILTYPE_MONO     = 2,          ///< Monorail
 	RAILTYPE_MAGLEV   = 3,          ///< Maglev
-	RAILTYPE_END,                   ///< Used for iterations
+	RAILTYPE_END      = 16,         ///< Used for iterations
 	INVALID_RAILTYPE  = 0xFF,       ///< Flag for invalid railtype
 
 	DEF_RAILTYPE_FIRST = RAILTYPE_END, ///< Default railtype: first available
