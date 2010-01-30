@@ -392,7 +392,7 @@ int Train::GetCurveSpeedLimit() const
 	static const int absolute_max_speed = UINT16_MAX;
 	int max_speed = absolute_max_speed;
 
-	if (_settings_game.vehicle.train_acceleration_model == TAM_ORIGINAL) return max_speed;
+	if (_settings_game.vehicle.train_acceleration_model == AM_ORIGINAL) return max_speed;
 
 	int curvecount[2] = {0, 0};
 
@@ -1989,7 +1989,7 @@ CommandCost CmdReverseTrainDirection(TileIndex tile, DoCommandFlag flags, uint32
 			v->force_proceed = 0;
 			SetWindowDirty(WC_VEHICLE_VIEW, v->index);
 
-			if (_settings_game.vehicle.train_acceleration_model != TAM_ORIGINAL && v->cur_speed != 0) {
+			if (_settings_game.vehicle.train_acceleration_model != AM_ORIGINAL && v->cur_speed != 0) {
 				ToggleBit(v->flags, VRF_REVERSING);
 			} else {
 				v->cur_speed = 0;
@@ -2941,8 +2941,10 @@ int Train::UpdateSpeed()
 
 	switch (_settings_game.vehicle.train_acceleration_model) {
 		default: NOT_REACHED();
-		case TAM_ORIGINAL: accel = this->acceleration * (this->GetAccelerationStatus() == AS_BRAKE ? -4 : 2); break;
-		case TAM_REALISTIC:
+		case AM_ORIGINAL:
+			accel = this->acceleration * (this->GetAccelerationStatus() == AS_BRAKE ? -4 : 2);
+			break;
+		case AM_REALISTIC:
 			this->max_speed = this->GetCurrentMaxSpeed();
 			accel = this->GetAcceleration();
 			break;
@@ -3055,7 +3057,7 @@ static const RailtypeSlowdownParams _railtype_slowdown[] = {
 /** Modify the speed of the vehicle due to a change in altitude */
 static inline void AffectSpeedByZChange(Train *v, byte old_z)
 {
-	if (old_z == v->z_pos || _settings_game.vehicle.train_acceleration_model != TAM_ORIGINAL) return;
+	if (old_z == v->z_pos || _settings_game.vehicle.train_acceleration_model != AM_ORIGINAL) return;
 
 	const RailtypeSlowdownParams *rsp = &_railtype_slowdown[v->railtype];
 
@@ -3451,7 +3453,7 @@ static void TrainController(Train *v, Vehicle *nomove)
 				update_signals_crossing = true;
 
 				if (chosen_dir != v->direction) {
-					if (prev == NULL && _settings_game.vehicle.train_acceleration_model == TAM_ORIGINAL) {
+					if (prev == NULL && _settings_game.vehicle.train_acceleration_model == AM_ORIGINAL) {
 						const RailtypeSlowdownParams *rsp = &_railtype_slowdown[v->railtype];
 						DirDiff diff = DirDifference(v->direction, chosen_dir);
 						v->cur_speed -= (diff == DIRDIFF_45RIGHT || diff == DIRDIFF_45LEFT ? rsp->small_turn : rsp->large_turn) * v->cur_speed >> 8;

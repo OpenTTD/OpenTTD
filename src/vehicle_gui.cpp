@@ -1532,7 +1532,7 @@ struct VehicleDetailsWindow : Window {
 						SetDParam(1, Train::From(v)->tcache.cached_power);
 						SetDParam(0, Train::From(v)->tcache.cached_weight);
 						SetDParam(3, Train::From(v)->tcache.cached_max_te / 1000);
-						DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, (_settings_game.vehicle.train_acceleration_model != TAM_ORIGINAL && GetRailTypeInfo(Train::From(v)->railtype)->acceleration_type != 2) ?
+						DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, (_settings_game.vehicle.train_acceleration_model != AM_ORIGINAL && GetRailTypeInfo(Train::From(v)->railtype)->acceleration_type != 2) ?
 								STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE : STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED);
 						break;
 
