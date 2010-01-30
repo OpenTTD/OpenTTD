@@ -457,25 +457,15 @@ class SmallMapWindow : public Window {
 	uint8 refresh; ///< refresh counter, zeroed every FORCE_REFRESH_PERIOD ticks
 
 	/**
-	 * Remap a map's tile X coordinate (TileX(TileIndex)) to
-	 * a location on this smallmap.
-	 * @param tile_x the tile's X coordinate.
-	 * @return the X coordinate to draw on.
+	 * Remap tile to location on this smallmap.
+	 * @param tile_x X coordinate of the tile.
+	 * @param tile_y Y coordinate of the tile.
+	 * @return Position to draw on.
 	 */
-	inline int RemapX(int tile_x) const
+	inline Point RemapTile(int tile_x, int tile_y) const
 	{
-		return tile_x - this->scroll_x / TILE_SIZE;
-	}
-
-	/**
-	 * Remap a map's tile Y coordinate (TileY(TileIndex)) to
-	 * a location on this smallmap.
-	 * @param tile_y the tile's Y coordinate.
-	 * @return the Y coordinate to draw on.
-	 */
-	inline int RemapY(int tile_y) const
-	{
-		return tile_y - this->scroll_y / TILE_SIZE;
+		return RemapCoords(tile_x - this->scroll_x / TILE_SIZE,
+				tile_y - this->scroll_y / TILE_SIZE, 0);
 	}
 
 	/**
@@ -531,10 +521,7 @@ class SmallMapWindow : public Window {
 			if (v->vehstatus & (VS_HIDDEN | VS_UNCLICKABLE)) continue;
 
 			/* Remap into flat coordinates. */
-			Point pt = RemapCoords(
-					this->RemapX(v->x_pos / TILE_SIZE),
-					this->RemapY(v->y_pos / TILE_SIZE),
-					0);
+			Point pt = RemapTile(v->x_pos / TILE_SIZE, v->y_pos / TILE_SIZE);
 			int x = pt.x;
 			int y = pt.y;
 
@@ -577,10 +564,7 @@ class SmallMapWindow : public Window {
 		const Town *t;
 		FOR_ALL_TOWNS(t) {
 			/* Remap the town coordinate */
-			Point pt = RemapCoords(
-					this->RemapX(TileX(t->xy)),
-					this->RemapY(TileY(t->xy)),
-					0);
+			Point pt = RemapTile(TileX(t->xy), TileY(t->xy));
 			int x = pt.x - this->subscroll - (t->sign.width_small >> 1);
 			int y = pt.y;
 
