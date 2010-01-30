@@ -699,7 +699,7 @@ public:
 				this->SetDirty();
 
 				/* FIXME the disabling should go into some InvalidateData, which is called instead of the SetDirty */
-				if (!this->IsWidgetDisabled(NGWW_JOIN)) this->OnClick(pt, NGWW_JOIN, 1);
+				if (click_count > 1 && !this->IsWidgetDisabled(NGWW_JOIN)) this->OnClick(pt, NGWW_JOIN, 1);
 			} break;
 
 			case NGWW_LASTJOINED: {
@@ -718,7 +718,7 @@ public:
 					this->SetDirty();
 
 					/* FIXME the disabling should go into some InvalidateData, which is called instead of the SetDirty */
-					if (!this->IsWidgetDisabled(NGWW_JOIN)) this->OnClick(pt, NGWW_JOIN, 1);
+					if (click_count > 1 && !this->IsWidgetDisabled(NGWW_JOIN)) this->OnClick(pt, NGWW_JOIN, 1);
 				}
 			} break;
 
@@ -1636,7 +1636,7 @@ struct NetworkLobbyWindow : public Window {
 				this->SetDirty();
 
 				/* FIXME the disabling should go into some InvalidateData, which is called instead of the SetDirty */
-				if (!this->IsWidgetDisabled(NLWW_JOIN)) this->OnClick(pt, NLWW_JOIN, 1);
+				if (click_count > 1 && !this->IsWidgetDisabled(NLWW_JOIN)) this->OnClick(pt, NLWW_JOIN, 1);
 			} break;
 
 			case NLWW_JOIN:     // Join company
