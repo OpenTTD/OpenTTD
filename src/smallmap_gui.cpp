@@ -553,7 +553,7 @@ class SmallMapWindow : public Window {
 			if (v->vehstatus & (VS_HIDDEN | VS_UNCLICKABLE)) continue;
 
 			/* Remap into flat coordinates. */
-			Point pt = RemapTile(v->x_pos / TILE_SIZE, v->y_pos / TILE_SIZE);
+			Point pt = this->RemapTile(v->x_pos / TILE_SIZE, v->y_pos / TILE_SIZE);
 
 			int y = pt.y - dpi->top;
 			if (!IsInsideMM(y, 0, dpi->height)) continue; // y is out of bounds.
@@ -589,7 +589,7 @@ class SmallMapWindow : public Window {
 		const Town *t;
 		FOR_ALL_TOWNS(t) {
 			/* Remap the town coordinate */
-			Point pt = RemapTile(TileX(t->xy), TileY(t->xy));
+			Point pt = this->RemapTile(TileX(t->xy), TileY(t->xy));
 			int x = pt.x - this->subscroll - (t->sign.width_small >> 1);
 			int y = pt.y;
 
@@ -696,7 +696,7 @@ class SmallMapWindow : public Window {
 
 		/* Which tile is displayed at (dpi->left, dpi->top)? */
 		int dx;
-		Point tile = PixelToTile(dpi->left, dpi->top, &dx);
+		Point tile = this->PixelToTile(dpi->left, dpi->top, &dx);
 		int tile_x = this->scroll_x / TILE_SIZE + tile.x;
 		int tile_y = this->scroll_y / TILE_SIZE + tile.y;
 
@@ -1032,7 +1032,7 @@ public:
 
 		/* While tile is at (delta.x, delta.y)? */
 		int sub;
-		Point pt = PixelToTile(delta.x, delta.y, &sub);
+		Point pt = this->PixelToTile(delta.x, delta.y, &sub);
 		int x = this->scroll_x + pt.x * TILE_SIZE;
 		int y = this->scroll_y + pt.y * TILE_SIZE;
 
