@@ -2488,6 +2488,155 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 	return ret;
 }
 
+static ChangeInfoResult RailTypeChangeInfo(uint id, int numinfo, int prop, ByteReader *buf)
+{
+	ChangeInfoResult ret = CIR_SUCCESS;
+
+	extern RailtypeInfo _railtypes[RAILTYPE_END];
+
+	for (int i = 0; i < numinfo; i++) {
+		RailType rt = _cur_grffile->railtype_map[id + i];
+		if (rt == INVALID_RAILTYPE) return CIR_INVALID_ID;
+
+		RailtypeInfo *rti = &_railtypes[rt];
+
+		switch (prop) {
+			case 0x08: // Label of rail type
+				/* Skipped here as this is loaded during reservation stage. */
+				buf->ReadDWord();
+				break;
+
+			case 0x09: // Name of railtype
+				rti->strings.toolbar_caption = buf->ReadWord();
+				_string_to_grf_mapping[&rti->strings.toolbar_caption] = _cur_grffile->grfid;
+				break;
+
+			case 0x0A: // Menu text of railtype
+				rti->strings.menu_text = buf->ReadWord();
+				_string_to_grf_mapping[&rti->strings.menu_text] = _cur_grffile->grfid;
+				break;
+
+			case 0x0B: // Build window caption
+				rti->strings.build_caption = buf->ReadWord();
+				_string_to_grf_mapping[&rti->strings.build_caption] = _cur_grffile->grfid;
+				break;
+
+			case 0x0C: // Autoreplace text
+				rti->strings.replace_text = buf->ReadWord();
+				_string_to_grf_mapping[&rti->strings.replace_text] = _cur_grffile->grfid;
+				break;
+
+			case 0x0D: // New locomotive text
+				rti->strings.new_loco = buf->ReadWord();
+				_string_to_grf_mapping[&rti->strings.new_loco] = _cur_grffile->grfid;
+				break;
+
+			case 0x0E: // Compatible railtype list
+			case 0x0F: // Powered railtype list
+			{
+				/* Rail type compatibility bits are added to the existing bits
+				 * to allow multiple GRFs to modify compatibility with the
+				 * default rail types. */
+				int n = buf->ReadByte();
+				for (int j = 0; j != n; j++) {
+					RailTypeLabel label = buf->ReadDWord();
+					RailType rt = GetRailTypeByLabel(BSWAP32(label));
+					if (rt != INVALID_RAILTYPE) {
+						if (prop == 0x0E) {
+							SetBit(rti->compatible_railtypes, rt);
+						} else {
+							SetBit(rti->powered_railtypes, rt);
+						}
+					}
+				}
+				break;
+			}
+
+			case 0x10: // Rail Type flags
+				rti->flags = (RailTypeFlags)buf->ReadByte();
+				break;
+
+			case 0x11: // Curve speed advantage
+				rti->curve_speed = buf->ReadByte();
+				break;
+
+			case 0x12: // Station graphic
+				rti->total_offset = Clamp(buf->ReadByte(), 0, 2) * 88;
+				break;
+
+			case 0x13: // Construction cost factor
+				rti->cost_multiplier = buf->ReadByte();
+				break;
+
+			case 0x14: // Speed limit
+				buf->ReadWord();
+				break;
+
+			case 0x15: // Acceleration model
+				rti->acceleration_type = Clamp(buf->ReadByte(), 0, 2);
+				break;
+
+			default:
+				ret = CIR_UNKNOWN;
+				break;
+		}
+	}
+
+	return ret;
+}
+
+static ChangeInfoResult RailTypeReserveInfo(uint id, int numinfo, int prop, ByteReader *buf)
+{
+	ChangeInfoResult ret = CIR_SUCCESS;
+
+	for (int i = 0; i < numinfo; i++) {
+		switch (prop) {
+			case 0x08: // Label of rail type
+			{
+				RailTypeLabel rtl = buf->ReadDWord();
+				rtl = BSWAP32(rtl);
+
+				RailType rt = GetRailTypeByLabel(rtl);
+				if (rt == INVALID_RAILTYPE) {
+					/* Set up new rail type */
+					rt = AllocateRailType(rtl);
+				}
+
+				_cur_grffile->railtype_map[id + i] = rt;
+				break;
+			}
+
+			case 0x09: // Name of railtype
+			case 0x0A: // Menu text
+			case 0x0B: // Build window caption
+			case 0x0C: // Autoreplace text
+			case 0x0D: // New loco
+			case 0x14: // Speed limit
+				buf->ReadWord();
+				break;
+
+			case 0x0E: // Compatible railtype list
+			case 0x0F: // Powered railtype list
+				for (int j = buf->ReadByte(); j != 0; j--) buf->ReadDWord();
+				break;
+
+			case 0x10: // Rail Type flags
+			case 0x11: // Curve speed advantage
+			case 0x12: // Station graphic
+			case 0x13: // Construction cost
+			case 0x15: // Acceleration model
+				buf->ReadByte();
+				break;
+
+			default:
+				ret = CIR_UNKNOWN;
+				break;
+		}
+	}
+
+	return ret;
+}
+
 static bool HandleChangeInfoResult(const char *caller, ChangeInfoResult cir, uint8 feature, uint8 property)
 {
 	switch (cir) {
@@ -2543,6 +2692,10 @@ static void FeatureChangeInfo(ByteReader *buf)
 		/* GSF_INDUSTRIES */   IndustriesChangeInfo,
 		/* GSF_CARGOS */       NULL, // Cargo is handled during reservation
 		/* GSF_SOUNDFX */      SoundEffectChangeInfo,
+		/* GSF_AIRPORTS */     NULL,
+		/* GSF_SIGNALS */      NULL,
+		/* GSF_OBJECTS */      NULL,
+		/* GSF_RAILTYPES */    RailTypeChangeInfo,
 	};
 
 	uint8 feature  = buf->ReadByte();
@@ -2611,7 +2764,7 @@ static void ReserveChangeInfo(ByteReader *buf)
 {
 	uint8 feature  = buf->ReadByte();
 
-	if (feature != GSF_CARGOS && feature != GSF_GLOBALVAR) return;
+	if (feature != GSF_CARGOS && feature != GSF_GLOBALVAR && feature != GSF_RAILTYPES) return;
 
 	uint8 numprops = buf->ReadByte();
 	uint8 numinfo  = buf->ReadByte();
@@ -2629,6 +2782,10 @@ static void ReserveChangeInfo(ByteReader *buf)
 
 			case GSF_GLOBALVAR:
 				cir = GlobalVarReserveInfo(index, numinfo, prop, buf);
+				break;
+
+			case GSF_RAILTYPES:
+				cir = RailTypeReserveInfo(index, numinfo, prop, buf);
 				break;
 		}
 

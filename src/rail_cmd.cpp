@@ -52,6 +52,26 @@ void ResetRailTypes()
 	memcpy(_railtypes, _original_railtypes, sizeof(_original_railtypes));
 }
 
+RailType AllocateRailType(RailTypeLabel label)
+{
+	for (RailType rt = RAILTYPE_BEGIN; rt != RAILTYPE_END; rt++) {
+		RailtypeInfo *rti = &_railtypes[rt];
+
+		if (rti->label == 0) {
+			/* Set up new rail type */
+			memcpy(rti, &_railtypes[RAILTYPE_RAIL], sizeof(*rti));
+			rti->label = label;
+
+			/* Make us compatible with ourself. */
+			rti->powered_railtypes    = (RailTypes)(1 << rt);
+			rti->compatible_railtypes = (RailTypes)(1 << rt);
+			return rt;
+		}
+	}
+
+	return INVALID_RAILTYPE;
+}
+
 static const byte _track_sloped_sprites[14] = {
 	14, 15, 22, 13,
 	 0, 21, 17, 12,

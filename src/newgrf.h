@@ -54,6 +54,10 @@ enum GrfSpecFeature {
 	GSF_INDUSTRIES,
 	GSF_CARGOS,
 	GSF_SOUNDFX,
+	GSF_AIRPORTS,
+	GSF_SIGNALS,
+	GSF_OBJECTS,
+	GSF_RAILTYPES,
 	GSF_END,
 };
 
@@ -111,6 +115,7 @@ struct GRFFile {
 
 	uint8 railtype_max;
 	RailTypeLabel *railtype_list;
+	RailType railtype_map[RAILTYPE_END];
 
 	int traininfo_vehicle_pitch;  ///< Vertical offset for draing train images in depot GUI and vehicle details
 	int traininfo_vehicle_width;  ///< Width (in pixels) of a 8/8 train vehicle in depot GUI and vehicle details

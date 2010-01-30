@@ -281,4 +281,9 @@ RailType GetRailTypeByLabel(RailTypeLabel label);
  */
 void ResetRailTypes();
 
+/**
+ * Allocate a new rail type label
+ */
+RailType AllocateRailType(RailTypeLabel label);
+
 #endif /* RAIL_H */
