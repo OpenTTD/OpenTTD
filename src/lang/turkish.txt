@@ -2397,14 +2397,14 @@ STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Yeni binalar ya
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Ayrıcalıklı nakliyat haklarını satın al
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Belediyeye rüşvet ver
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{WHITE}{STRING}{}{YELLOW} Müsteri çekmek için duvarlara poster yapıştır.{} Fiyat: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{WHITE}{STRING}{}{YELLOW} Müsteri çekmek için radyoya reklam ver.{} Fiyat: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{WHITE}{STRING}{}{YELLOW} Müsteri çekmek için televizyona reklam ver.{} Fiyat: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{WHITE}{STRING}{}{YELLOW} Yol tamirleri için belediyeye bağış yap. 6 ay boyunca şehrin yolları kullanılamaz.{} Fiyat: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{WHITE}{STRING}{}{YELLOW}Şirket sahibinin heykelini dik.{}Fiyatı: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{WHITE}{STRING}{}{YELLOW}Şehirde ticari binaların yapımı için bağış yap.{}Fiyatı: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{WHITE}{STRING}{}{YELLOW} Bir yıllık ayrıcalıklı nakliyat haklarını satın al. Belediye şehirde sadece senin şirketine yolcu ve kargo taşıma izni verir.{} Fiyat: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{WHITE}{STRING}{}{YELLOW}Yakalanma riskini göze alarak belediyeye rüşvet ver.{} Fiyat: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW} Müsteri çekmek için duvarlara poster yapıştır.{} Fiyat: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW} Müsteri çekmek için radyoya reklam ver.{} Fiyat: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW} Müsteri çekmek için televizyona reklam ver.{} Fiyat: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW} Yol tamirleri için belediyeye bağış yap. 6 ay boyunca şehrin yolları kullanılamaz.{} Fiyat: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Şirket sahibinin heykelini dik.{}Fiyatı: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Şehirde ticari binaların yapımı için bağış yap.{}Fiyatı: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW} Bir yıllık ayrıcalıklı nakliyat haklarını satın al. Belediye şehirde sadece senin şirketine yolcu ve kargo taşıma izni verir.{} Fiyat: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Yakalanma riskini göze alarak belediyeye rüşvet ver.{} Fiyat: {CURRENCY}
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Sübvansiyonlar

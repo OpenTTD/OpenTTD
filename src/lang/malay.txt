@@ -2451,14 +2451,14 @@ STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Biaya pembinaan
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Beli hak pengangkutan eksklusif
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Rasuah pihak berkuasa tempatan
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{WHITE}{STRING}{}{YELLOW}Lakukan kempen pengiklanan yang kecil, untuk menarik lebih pelanggan dan kargo kepada perkhidmatan pengangkutan anda.{}Kos: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{WHITE}{STRING}{}{YELLOW}Lakukan kempen pengiklanan yang sederhana, untuk menarik lebih pelanggan dan kargo kepada perkhidmatan pengangkutan anda.{}Kos: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{WHITE}{STRING}{}{YELLOW}Lakukan kempen pengiklanan yang besar, untuk menarik lebih pelanggan dan kargo kepada perkhidmatan pengangkutan anda.{}Kos: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{WHITE}{STRING}{}{YELLOW}Biaya pembinaan semula rangkaian jalanraya bandar. Menyebabkan kesesakan lalulintas selama 6 bulan.{}Kos: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{WHITE}{STRING}{}{YELLOW}Bina tugu sebagai penghormatan kepada syarikat anda.{}Kos: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{WHITE}{STRING}{}{YELLOW}Biaya pembinaan bangunan komersil baru dalam bandar.{}Kos: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{WHITE}{STRING}{}{YELLOW}Beli hak pengangkutan eksklusif selama 1 tahun di bandar ini. Pihak berkuasa bandar akan hanya membenarkan penumpang dan kargo menggunakan stesen-stesen syarikat anda.{}Kos: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{WHITE}{STRING}{}{YELLOW}Rasuah pihak berkuasa bandar untuk meninggikan penarafan anda, dengan risiko hukuman yang sangat berat.{}Kos: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Lakukan kempen pengiklanan yang kecil, untuk menarik lebih pelanggan dan kargo kepada perkhidmatan pengangkutan anda.{}Kos: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Lakukan kempen pengiklanan yang sederhana, untuk menarik lebih pelanggan dan kargo kepada perkhidmatan pengangkutan anda.{}Kos: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Lakukan kempen pengiklanan yang besar, untuk menarik lebih pelanggan dan kargo kepada perkhidmatan pengangkutan anda.{}Kos: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Biaya pembinaan semula rangkaian jalanraya bandar. Menyebabkan kesesakan lalulintas selama 6 bulan.{}Kos: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Bina tugu sebagai penghormatan kepada syarikat anda.{}Kos: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Biaya pembinaan bangunan komersil baru dalam bandar.{}Kos: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Beli hak pengangkutan eksklusif selama 1 tahun di bandar ini. Pihak berkuasa bandar akan hanya membenarkan penumpang dan kargo menggunakan stesen-stesen syarikat anda.{}Kos: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Rasuah pihak berkuasa bandar untuk meninggikan penarafan anda, dengan risiko hukuman yang sangat berat.{}Kos: {CURRENCY}
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsidi

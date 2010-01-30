@@ -1397,10 +1397,10 @@ STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Subsidiearje lo
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Bou stânbyld fan bedrieuwseigner
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Betelje bouw fan nije gebouwen
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{WHITE}{STRING}{}{YELLOW}Begjin in lytse advertinsjecampanje, om mear passazjiers en fracht nei dyn transporttsjinsten te lûken.{}Kostet: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{WHITE}{STRING}{}{YELLOW}Begjin in middelgrutte advertinsjecampanje, om mear passazjiers en fracht nei dyn transporttsjinsten te lûken.{}Kostet: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{WHITE}{STRING}{}{YELLOW}Begjin in grutte advertinsjecampanje, om mear passazjiers en fracht nei dyn transport tsjinsten te lûken.{}Kostet: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{WHITE}{STRING}{}{YELLOW}Bou in stânbyld ter eare fan jo bedriuw.{}Kostet: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Begjin in lytse advertinsjecampanje, om mear passazjiers en fracht nei dyn transporttsjinsten te lûken.{}Kostet: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Begjin in middelgrutte advertinsjecampanje, om mear passazjiers en fracht nei dyn transporttsjinsten te lûken.{}Kostet: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Begjin in grutte advertinsjecampanje, om mear passazjiers en fracht nei dyn transport tsjinsten te lûken.{}Kostet: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Bou in stânbyld ter eare fan jo bedriuw.{}Kostet: {CURRENCY}
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsydzjes

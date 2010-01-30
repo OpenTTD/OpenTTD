@@ -2376,14 +2376,14 @@ STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Fjármagna nýj
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Kaupa einkarétt á flutningi
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Múta bæjaryfirvöldum
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{WHITE}{STRING}{}{YELLOW} Hleypa af stokkunum lítilli auglýsingaherferð til að laða að fleiri farþega og meiri farm til að flytja.{}  Cost: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{WHITE}{STRING}{}{YELLOW} Hleypa af stokkunum miðlungs auglýsingaherferð til að laða að fleiri farþega og meiri farm til að flytja.{}  Cost: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{WHITE}{STRING}{}{YELLOW} Hleypa af stokkunum mikilli auglýsingaherferð til að laða að fleiri farþega og meiri farm til að flytja.{}  Kostnaður: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{WHITE}{STRING}{}{YELLOW} Kosta endurbætur á vegakerfi úthverfanna. Veldur töluverðri röskun á umferð í allt að 6 mánuði.{}  Kostnaður: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{WHITE}{STRING}{}{YELLOW} Byggja styttu til heiðurs fyrirtækinu þínu.{} Kostnaður: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{WHITE}{STRING}{}{YELLOW} Kosta byggingu verslunarhúsnæðis í bænum.{}  Kostnaður: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{WHITE}{STRING}{}{YELLOW} Kaupa 1 árs flutningsrétt í þessum bæ. Bæjaryfirvöld munu aðeins leyfa notkun á þínum flutningsleiðum.{} Kostnaður: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{WHITE}{STRING}{}{YELLOW} Múta bæjaryfirvöldum til að auka við fylgi þitt, með hættu á þungri refsingu komist það upp.{}  Kostnaður: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW} Hleypa af stokkunum lítilli auglýsingaherferð til að laða að fleiri farþega og meiri farm til að flytja.{}  Cost: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW} Hleypa af stokkunum miðlungs auglýsingaherferð til að laða að fleiri farþega og meiri farm til að flytja.{}  Cost: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW} Hleypa af stokkunum mikilli auglýsingaherferð til að laða að fleiri farþega og meiri farm til að flytja.{}  Kostnaður: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW} Kosta endurbætur á vegakerfi úthverfanna. Veldur töluverðri röskun á umferð í allt að 6 mánuði.{}  Kostnaður: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW} Byggja styttu til heiðurs fyrirtækinu þínu.{} Kostnaður: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW} Kosta byggingu verslunarhúsnæðis í bænum.{}  Kostnaður: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW} Kaupa 1 árs flutningsrétt í þessum bæ. Bæjaryfirvöld munu aðeins leyfa notkun á þínum flutningsleiðum.{} Kostnaður: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW} Múta bæjaryfirvöldum til að auka við fylgi þitt, með hættu á þungri refsingu komist það upp.{}  Kostnaður: {CURRENCY}
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Samstarfssamningar

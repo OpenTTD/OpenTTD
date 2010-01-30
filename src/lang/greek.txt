@@ -2546,14 +2546,14 @@ STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Επιχορή�
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Αγορά αποκλειστικών δικαιωμάτων μεταφοράς
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Δωροδοκίστε την τοπική αρχή
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{WHITE}{STRING}{}{YELLOW}'Eναρξη μικρής τοπικής διαφημιστικής καμπάνιας, για να προσελκύσετε περισσότερους επιβάτες και εμπορεύματα στις μεταφορικές σας υπηρεσίες.{} Κόστος: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{WHITE}{STRING}{}{YELLOW} Έναρξη μεσαίας τοπικής διαφημιστικής καμπάνιας, για να προσελκύσετε περισσότερους επιβάτες και εμπορεύματα στις μεταφορικές σας υπηρεσίες.{} Κόστος: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{WHITE}{STRING}{}{YELLOW} Έναρξη μεγάλης τοπικής διαφημιστικής καμπάνιας, για να προσελκύσετε περισσότερους επιβάτες και εμπορεύματα στις μεταφορικές σας υπηρεσίες.{} Κόστος: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{WHITE}{STRING}{}{YELLOW} Επιχορηγήστε την ανακατασκευή του τοπικού οδικού δικτύου. Προκαλεί σοβαρή ενόχληση στην τοπικό οδικό δίκτυο για έως 6 μήνες.{} Κόστος: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{WHITE}{STRING}{}{YELLOW}Χτίστε ένα άγαλμα προς τιμήν της εταιρίας σας.{} Κόστος: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{WHITE}{STRING}{}{YELLOW}Χρηματοδοτήστε την κατασκευή νέων εμπορικών κτιρίων στην πόλη.{} Κόστος: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{WHITE}{STRING}{}{YELLOW}Αγορά αποκλειστικών δικαιωμάτων διάρκειας 1 χρόνου για την πόλη. Η τοπική αρχή θα επιτρέπει στους επιβάτες και τα φορτία να χρησιμοποιούν μόνο τους σταθμούς της εταιρίας σας.{} Κόστος: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{WHITE}{STRING}{}{YELLOW}Δωροδοκίστε τις τοπικές αρχές για να αυξησετε τα ποσοστά σας, με ρίσκο ένα μεγάλο πρόστιμο εαν συλληφθείτε.{}Κόστος: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}'Eναρξη μικρής τοπικής διαφημιστικής καμπάνιας, για να προσελκύσετε περισσότερους επιβάτες και εμπορεύματα στις μεταφορικές σας υπηρεσίες.{} Κόστος: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW} Έναρξη μεσαίας τοπικής διαφημιστικής καμπάνιας, για να προσελκύσετε περισσότερους επιβάτες και εμπορεύματα στις μεταφορικές σας υπηρεσίες.{} Κόστος: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW} Έναρξη μεγάλης τοπικής διαφημιστικής καμπάνιας, για να προσελκύσετε περισσότερους επιβάτες και εμπορεύματα στις μεταφορικές σας υπηρεσίες.{} Κόστος: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW} Επιχορηγήστε την ανακατασκευή του τοπικού οδικού δικτύου. Προκαλεί σοβαρή ενόχληση στην τοπικό οδικό δίκτυο για έως 6 μήνες.{} Κόστος: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Χτίστε ένα άγαλμα προς τιμήν της εταιρίας σας.{} Κόστος: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Χρηματοδοτήστε την κατασκευή νέων εμπορικών κτιρίων στην πόλη.{} Κόστος: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Αγορά αποκλειστικών δικαιωμάτων διάρκειας 1 χρόνου για την πόλη. Η τοπική αρχή θα επιτρέπει στους επιβάτες και τα φορτία να χρησιμοποιούν μόνο τους σταθμούς της εταιρίας σας.{} Κόστος: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Δωροδοκίστε τις τοπικές αρχές για να αυξησετε τα ποσοστά σας, με ρίσκο ένα μεγάλο πρόστιμο εαν συλληφθείτε.{}Κόστος: {CURRENCY}
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Χρηματοδοτήσεις

@@ -2350,14 +2350,14 @@ STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Subvencionar no
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Compra-los dereitos de transporte exclusivos
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Suborna-la autoridade local
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{WHITE}{STRING}{}{YELLOW}Iniciar unha campaña de publicidade pequena, para atraer máis pasaxeiros e mercadorías os teus servizos de transporte.{}Custo: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{WHITE}{STRING}{}{YELLOW}Iniciar unha campaña de publicidade mediana, para atraer máis pasaxeiros e mercadorías os teus servizos de transporte.{}Custo: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{WHITE}{STRING}{}{YELLOW}Iniciar unha gran campaña de publicidade, para atraer máis pasaxeiros e mercadorías ós teus servizos de transporte.{}Custo: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{WHITE}{STRING}{}{YELLOW}Subvenciona-la reconstrución da rede de estradas urbanas. Provoca unha considerable interrupción no tráfico durante seis meses.{}Custo: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{WHITE}{STRING}{}{YELLOW}Construír unha estatua en honor a túa compañía.{}Custo: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{WHITE}{STRING}{}{YELLOW} Subvenciona-la construción de novos edificios comerciais na cidade.{}Custo: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{WHITE}{STRING}{}{YELLOW}Compra-los dereitos exclusivos de transporte na cidade durante 1 ano. A autoridade só permitirá que os pasaxeiros e as mercadorías usen as estacións da túa compañía.{}Custo: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{WHITE}{STRING}{}{YELLOW}Suborna-la autoridade local para mellorá-la túa puntuación, co risco dunha gran penalización se o descobren.{}Custo: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Iniciar unha campaña de publicidade pequena, para atraer máis pasaxeiros e mercadorías os teus servizos de transporte.{}Custo: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Iniciar unha campaña de publicidade mediana, para atraer máis pasaxeiros e mercadorías os teus servizos de transporte.{}Custo: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Iniciar unha gran campaña de publicidade, para atraer máis pasaxeiros e mercadorías ós teus servizos de transporte.{}Custo: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Subvenciona-la reconstrución da rede de estradas urbanas. Provoca unha considerable interrupción no tráfico durante seis meses.{}Custo: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Construír unha estatua en honor a túa compañía.{}Custo: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW} Subvenciona-la construción de novos edificios comerciais na cidade.{}Custo: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Compra-los dereitos exclusivos de transporte na cidade durante 1 ano. A autoridade só permitirá que os pasaxeiros e as mercadorías usen as estacións da túa compañía.{}Custo: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Suborna-la autoridade local para mellorá-la túa puntuación, co risco dunha gran penalización se o descobren.{}Custo: {CURRENCY}
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsidios

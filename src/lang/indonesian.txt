@@ -2450,14 +2450,14 @@ STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Danai pembangun
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Beli hak transportasi eksklusif
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Suap pemkot setempat
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{WHITE}{STRING}{}{YELLOW}Prakarsai kampanye iklan kecil, agar penumpang dan kargo lebih mengutamakan jasa perusahaan transportasi anda.{}Biaya:{CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{WHITE}{STRING}{}{YELLOW}Prakarsai kampanye iklan sedang, agar penumpang dan kargo lebih mengutamakan jasa perusahaan transportasi anda.{}Biaya:{CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{WHITE}{STRING}{}{YELLOW}Prakarsai kampanye iklan besar, agar penumpang dan kargo lebih mengutamakan jasa perusahaan transportasi anda.{}Biaya: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{WHITE}{STRING}{}{YELLOW}Danai perbaikan jalan. Akan menyebabkan kemacetan arus lalu lintas hingga 6 bulan.{}Biaya: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{WHITE}{STRING}{}{YELLOW}Bangun patung sebagai kebanggaan perusahaan anda.{}Biaya: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{WHITE}{STRING}{}{YELLOW}Biayai pembangunan gedung komersil di kota.{}Biaya: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{WHITE}{STRING}{}{YELLOW}Beli hak monopoli transportasi di kota ini untuk 1 tahun. Penumpang dan kargo di kota ini hanya akan menggunakan stasiun milik perusahaan anda.{} Biaya: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{WHITE}{STRING}{}{YELLOW}Kolusi dengan pemkot agar naik peringkat, beresiko terkena hukuman jika tertangkap.{}Biaya: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Prakarsai kampanye iklan kecil, agar penumpang dan kargo lebih mengutamakan jasa perusahaan transportasi anda.{}Biaya:{CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Prakarsai kampanye iklan sedang, agar penumpang dan kargo lebih mengutamakan jasa perusahaan transportasi anda.{}Biaya:{CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Prakarsai kampanye iklan besar, agar penumpang dan kargo lebih mengutamakan jasa perusahaan transportasi anda.{}Biaya: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Danai perbaikan jalan. Akan menyebabkan kemacetan arus lalu lintas hingga 6 bulan.{}Biaya: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Bangun patung sebagai kebanggaan perusahaan anda.{}Biaya: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Biayai pembangunan gedung komersil di kota.{}Biaya: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Beli hak monopoli transportasi di kota ini untuk 1 tahun. Penumpang dan kargo di kota ini hanya akan menggunakan stasiun milik perusahaan anda.{} Biaya: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Kolusi dengan pemkot agar naik peringkat, beresiko terkena hukuman jika tertangkap.{}Biaya: {CURRENCY}
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsidi

@@ -2348,14 +2348,14 @@ STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :市街地開発
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :独占的運送権を購入
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :町議会を買収
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{WHITE}{STRING}{}{YELLOW}あなたの運送経路の利用率を増やす為に、{}町内の小型広告キャンペーンを行います。{}  価格：{CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{WHITE}{STRING}{}{YELLOW}あなたの運送経路の利用率を増やす為に、{}町内の中型広告キャンペーンを行います。{}  価格：{CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{WHITE}{STRING}{}{YELLOW}あなたの運送経路の利用率を増やす為に、{}町内の大型広告キャンペーンを行います。{}  価格：{CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{WHITE}{STRING}{}{YELLOW}町内の道路の再建に出資します。{}最高6ヶ月間まで、道路交通に途絶を与えます。{}  価格：{CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{WHITE}{STRING}{}{YELLOW}会社長の栄誉を称える彫像を建設{}価格：{CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{WHITE}{STRING}{}{YELLOW}町内の市街地の開発に出資{}　価格：{CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{WHITE}{STRING}{}{YELLOW}一年間の独占的運送権を購入します。{}町議会は乗客や貨物があなたの交通会社の運送経路の使用のみを制御します。{}価格：{CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{WHITE}{STRING}{}{YELLOW}町議会間の評価を高めるに買収する。注意：露見された場合は処罰が厳しいです！{}価格：{CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}あなたの運送経路の利用率を増やす為に、{}町内の小型広告キャンペーンを行います。{}  価格：{CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}あなたの運送経路の利用率を増やす為に、{}町内の中型広告キャンペーンを行います。{}  価格：{CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}あなたの運送経路の利用率を増やす為に、{}町内の大型広告キャンペーンを行います。{}  価格：{CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}町内の道路の再建に出資します。{}最高6ヶ月間まで、道路交通に途絶を与えます。{}  価格：{CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}会社長の栄誉を称える彫像を建設{}価格：{CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}町内の市街地の開発に出資{}　価格：{CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}一年間の独占的運送権を購入します。{}町議会は乗客や貨物があなたの交通会社の運送経路の使用のみを制御します。{}価格：{CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}町議会間の評価を高めるに買収する。注意：露見された場合は処罰が厳しいです！{}価格：{CURRENCY}
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}助成金

@@ -2449,14 +2449,14 @@ STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :مول انشا
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :اشتري حقوق النقل الحصرية للمدينة
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :ارشي السلطات المحلية
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{WHITE}{STRING}{}{YELLOW}البدء في حملة دعائية صغيرة للشركة, لكي تجلب ركاب و بضائع اكثر لمحطاتك. {} التكلفة: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{WHITE}{STRING}{}{YELLOW} البدء في حملة دعائية متوسطة للشركة, لكي تجلب ركاب و بضائع اكثر لمحطاتك. {} التكلفة: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{WHITE}{STRING}{}{YELLOW}البدء في حملة دعائية كبيرة للشركة, لكي تجلب ركاب و بضائع اكثر لمحطاتك. {} التكلفة: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{WHITE}{STRING}{}{YELLOW} مول اعمال الصيانة للطرق و الشوارع بالمدينة. يتسبب في تعطيل حركة النقل داخل المدينة لمدة قد تصل ستة اشهر. {} التكلفة {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{WHITE}{STRING}{}{YELLOW} بناء مجسم تقديرا للشركة في اعمال النقل. {} التكلفة {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{WHITE}{STRING}{}{YELLOW} مول بناء مباني تجارية جديدة في المدينة. {}التكلفة {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{WHITE}{STRING}{}{YELLOW} اشتري حقوق النقل لسنة كاملة في هذة المدينة و المصانع التابعة لها. البلدية سوف تسمح للركاب و البضائع باستخدام محطاتك فقط. {}التكلفة: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{WHITE}{STRING}{}{YELLOW} ارشي السلطات المحلية لزيادة كفائة الشركة. هناك عقاب شديد اذا ما اكتشفت الرشوة. {} التكلفة: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}البدء في حملة دعائية صغيرة للشركة, لكي تجلب ركاب و بضائع اكثر لمحطاتك. {} التكلفة: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW} البدء في حملة دعائية متوسطة للشركة, لكي تجلب ركاب و بضائع اكثر لمحطاتك. {} التكلفة: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}البدء في حملة دعائية كبيرة للشركة, لكي تجلب ركاب و بضائع اكثر لمحطاتك. {} التكلفة: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW} مول اعمال الصيانة للطرق و الشوارع بالمدينة. يتسبب في تعطيل حركة النقل داخل المدينة لمدة قد تصل ستة اشهر. {} التكلفة {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW} بناء مجسم تقديرا للشركة في اعمال النقل. {} التكلفة {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW} مول بناء مباني تجارية جديدة في المدينة. {}التكلفة {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW} اشتري حقوق النقل لسنة كاملة في هذة المدينة و المصانع التابعة لها. البلدية سوف تسمح للركاب و البضائع باستخدام محطاتك فقط. {}التكلفة: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW} ارشي السلطات المحلية لزيادة كفائة الشركة. هناك عقاب شديد اذا ما اكتشفت الرشوة. {} التكلفة: {CURRENCY}
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}العروض

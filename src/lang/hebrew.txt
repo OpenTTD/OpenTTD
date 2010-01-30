@@ -2450,14 +2450,14 @@ STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :ממן מבני
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :קניית זכויות הובלה בלעדיות
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :שחד את העיריה המקומית
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{WHITE}{STRING}{}{YELLOW}.התחל מסע פירסום מקומי קטן, כדי למשוך יותר נוסעים וסחורה לשירותי התחבורה שלך.{}עלות: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{WHITE}{STRING}{}{YELLOW}.התחל מסע פירסום מקומי בינוני, כדי למשוך יותר נוסעים וסחורה לשירותי התחבורה שלך.{}עלות: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{WHITE}{STRING}{}{YELLOW}התחל מסע פרסום מקומי גדול, כדי למשוך יותר נוסעים וסחורות לשירותי התחבורה שלך..{}עלות: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{WHITE}{STRING}{}{YELLOW} ממן שיפוץ של מערכת הכבישים העירונית. הדבר גורם להפרעות תנועה ניכרות במשך כ-6 חודשים.{}עלות: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{WHITE}{STRING}{}{YELLOW}.ּבנה פסל של לכבודו של בעל החברה.{}עלות: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{WHITE}{STRING}{}{YELLOW}.ממן בניית מבנים מסחריים חדשים בעיר.{}עלות: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{WHITE}{STRING}{}{YELLOW}רכוש זכויות תחבורה בלעדיות למשך שנה אחת בעיר. רשות העירייה תאפשר לנוסעים ומטען להשתמש בתחנות החברה שלך בלבד.{}עלות: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{WHITE}{STRING}{}{YELLOW}שחד את הרשות המקומית כדי להגדיל את הדרוג שלך בעיר תוך כדי סיכון להתפס ולשלם קנס חמור.{}עלות: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}.התחל מסע פירסום מקומי קטן, כדי למשוך יותר נוסעים וסחורה לשירותי התחבורה שלך.{}עלות: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}.התחל מסע פירסום מקומי בינוני, כדי למשוך יותר נוסעים וסחורה לשירותי התחבורה שלך.{}עלות: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}התחל מסע פרסום מקומי גדול, כדי למשוך יותר נוסעים וסחורות לשירותי התחבורה שלך..{}עלות: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW} ממן שיפוץ של מערכת הכבישים העירונית. הדבר גורם להפרעות תנועה ניכרות במשך כ-6 חודשים.{}עלות: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}.ּבנה פסל של לכבודו של בעל החברה.{}עלות: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}.ממן בניית מבנים מסחריים חדשים בעיר.{}עלות: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}רכוש זכויות תחבורה בלעדיות למשך שנה אחת בעיר. רשות העירייה תאפשר לנוסעים ומטען להשתמש בתחנות החברה שלך בלבד.{}עלות: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}שחד את הרשות המקומית כדי להגדיל את הדרוג שלך בעיר תוך כדי סיכון להתפס ולשלם קנס חמור.{}עלות: {CURRENCY}
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}סובסידיות

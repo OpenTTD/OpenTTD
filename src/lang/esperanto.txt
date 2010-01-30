@@ -2176,14 +2176,14 @@ STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Fondu novajn ko
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Aĉetu ekskluzivan transportrajton
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Subaĉetu la lokajn estrojn
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{WHITE}{STRING}{}{YELLOW}Komencu malgrandan lokan reklamadon, por altiri pli da pasaĝeroj kaj ŝarĝoj al viaj transportservoj.{}Kosto: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{WHITE}{STRING}{}{YELLOW}Komencu mezgrandan lokan reklamadon, por altiri pli da pasaĝeroj kaj ŝarĝoj al viaj transportservoj.{}Kosto: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{WHITE}{STRING}{}{YELLOW}Komencu grandan lokan varbadkampanjon, por altiri pliajn pasaĝerojn kaj kargojn al viaj transportservoj.{} Kosto: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{WHITE}{STRING}{}{YELLOW}Pagu rekonstruadon de la urba stratreto. Kaŭzos konsiderindan ĝenon al la trafiko por ĝis 6 monatoj.{} Kosto: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{WHITE}{STRING}{}{YELLOW}Konstruu statuon honore al via kompanio.{}Kosto: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{WHITE}{STRING}{}{YELLOW}Pagu la konstruadon de novaj komercaj konstruaĵoj en la urbo.{} Kosto: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{WHITE}{STRING}{}{YELLOW}Aĉetu ekskluzivajn transportrajtojn en la urbo por 1 jaro. La urbo nur permesos pasaĝerojn kaj kargojn uzi la staciojn de via entrepreno.{}Cost: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{WHITE}{STRING}{}{YELLOW}Subaĉetu la lokajn estrojn por pliigi vian rendimenton, riskante grandan punon je kaptiĝo.{}Kosto: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Komencu malgrandan lokan reklamadon, por altiri pli da pasaĝeroj kaj ŝarĝoj al viaj transportservoj.{}Kosto: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Komencu mezgrandan lokan reklamadon, por altiri pli da pasaĝeroj kaj ŝarĝoj al viaj transportservoj.{}Kosto: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Komencu grandan lokan varbadkampanjon, por altiri pliajn pasaĝerojn kaj kargojn al viaj transportservoj.{} Kosto: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Pagu rekonstruadon de la urba stratreto. Kaŭzos konsiderindan ĝenon al la trafiko por ĝis 6 monatoj.{} Kosto: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Konstruu statuon honore al via kompanio.{}Kosto: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Pagu la konstruadon de novaj komercaj konstruaĵoj en la urbo.{} Kosto: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Aĉetu ekskluzivajn transportrajtojn en la urbo por 1 jaro. La urbo nur permesos pasaĝerojn kaj kargojn uzi la staciojn de via entrepreno.{}Cost: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Subaĉetu la lokajn estrojn por pliigi vian rendimenton, riskante grandan punon je kaptiĝo.{}Kosto: {CURRENCY}
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subvencioj

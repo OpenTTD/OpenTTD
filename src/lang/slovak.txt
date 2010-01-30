@@ -2466,14 +2466,14 @@ STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Financovat vyst
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Zakupit exkluzivne dopravne prava
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Podplatit miestnu spravu
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{WHITE}{STRING}{}{YELLOW}Spustit malu reklamnu kampan vasich dopravnych sluzieb.{} Cena: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{WHITE}{STRING}{}{YELLOW} Spustit strednu reklamnu kampan vasich dopravnych sluzieb.{} Cena: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{WHITE}{STRING}{}{YELLOW} Spustit velku reklamnu kampan vasich dopravnych sluzieb.{} Cena: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{WHITE}{STRING}{}{YELLOW} Financovat rekonstrukciu a vystavbu cesty. Sposobi dopravny chaos a zapchy trvajuce dalsich 6 mesiacov.{} Cena: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{WHITE}{STRING}{}{YELLOW} Postavit sochu na oslavu vasej spolocnosti.{} Cena: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{WHITE}{STRING}{}{YELLOW} Financovat vystavbu administrativnych a obchodnych budov.{}  Cena: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{WHITE}{STRING}{}{YELLOW} Zakupit exkluzivne dopravne prava na 1 rok pre vasu spolocnost. Miestna sprava vam zaruci vyuzivanie len dopravnych sluzieb vasej spolocnosti.{} Cena: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{WHITE}{STRING}{}{YELLOW} Podplatit miestnu spravu pre zvysenie hodnotenia vasej spolocnosti, s rizikom tazkeho postihu pri odhaleni!{}  Cena: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Spustit malu reklamnu kampan vasich dopravnych sluzieb.{} Cena: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW} Spustit strednu reklamnu kampan vasich dopravnych sluzieb.{} Cena: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW} Spustit velku reklamnu kampan vasich dopravnych sluzieb.{} Cena: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW} Financovat rekonstrukciu a vystavbu cesty. Sposobi dopravny chaos a zapchy trvajuce dalsich 6 mesiacov.{} Cena: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW} Postavit sochu na oslavu vasej spolocnosti.{} Cena: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW} Financovat vystavbu administrativnych a obchodnych budov.{}  Cena: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW} Zakupit exkluzivne dopravne prava na 1 rok pre vasu spolocnost. Miestna sprava vam zaruci vyuzivanie len dopravnych sluzieb vasej spolocnosti.{} Cena: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW} Podplatit miestnu spravu pre zvysenie hodnotenia vasej spolocnosti, s rizikom tazkeho postihu pri odhaleni!{}  Cena: {CURRENCY}
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Dotacie
