@@ -243,7 +243,7 @@ public:
 		return ES_NOT_HANDLED;
 	}
 
-	virtual void OnClick(Point pt, int widget)
+	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
 			default: break;

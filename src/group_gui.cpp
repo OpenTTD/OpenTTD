@@ -421,7 +421,7 @@ public:
 		}
 	}
 
-	virtual void OnClick(Point pt, int widget)
+	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
 			case GRP_WIDGET_SORT_BY_ORDER: // Flip sorting method ascending/descending

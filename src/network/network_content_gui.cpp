@@ -164,7 +164,7 @@ public:
 		DrawStringMultiLine(r.left + 2, r.right - 2, y, y + FONT_HEIGHT_NORMAL * 2, str, TC_FROMSTRING, SA_CENTER);
 	}
 
-	virtual void OnClick(Point pt, int widget)
+	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		if (widget == NCDSWW_CANCELOK) {
 			if (this->downloaded_bytes != this->total_bytes) _network_content_client.Close();
@@ -583,16 +583,7 @@ public:
 		}
 	}
 
-	virtual void OnDoubleClick(Point pt, int widget)
-	{
-		/* Double clicking on a line in the matrix toggles the state of the checkbox */
-		if (widget != NCLWW_MATRIX) return;
-
-		pt.x = this->GetWidget<NWidgetBase>(NCLWW_CHECKBOX)->pos_x;
-		this->OnClick(pt, widget);
-	}
-
-	virtual void OnClick(Point pt, int widget)
+	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
 			case NCLWW_MATRIX: {
@@ -607,7 +598,7 @@ public:
 				this->list_pos = id_v;
 
 				const NWidgetBase *checkbox = this->GetWidget<NWidgetBase>(NCLWW_CHECKBOX);
-				if (IsInsideBS(pt.x, checkbox->pos_x, checkbox->current_x)) {
+				if (click_count > 1 || IsInsideBS(pt.x, checkbox->pos_x, checkbox->current_x)) {
 					_network_content_client.ToggleSelectedState(this->selected);
 					this->content.ForceResort();
 				}

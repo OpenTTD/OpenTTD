@@ -59,7 +59,7 @@ struct EndGameHighScoreBaseWindow : Window {
 		return pt;
 	}
 
-	virtual void OnClick(Point pt, int widget)
+	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		delete this;
 	}

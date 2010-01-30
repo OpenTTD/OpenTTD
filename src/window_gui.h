@@ -638,15 +638,9 @@ public:
 	 * A click with the left mouse button has been made on the window.
 	 * @param pt     the point inside the window that has been clicked.
 	 * @param widget the clicked widget.
+	 * @param click_count Number of fast consecutive clicks at same position
 	 */
-	virtual void OnClick(Point pt, int widget) {}
-
-	/**
-	 * A double click with the left mouse button has been made on the window.
-	 * @param pt     the point inside the window that has been clicked.
-	 * @param widget the clicked widget.
-	 */
-	virtual void OnDoubleClick(Point pt, int widget) {}
+	virtual void OnClick(Point pt, int widget, int click_count) {}
 
 	/**
 	 * A click with the right mouse button has been made on the window.

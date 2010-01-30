@@ -391,13 +391,7 @@ public:
 		this->DrawWidgets();
 	}
 
-	virtual void OnDoubleClick(Point pt, int widget)
-	{
-		if (widget != DPIW_MATRIX_WIDGET) return;
-		this->OnClick(pt, DPIW_FUND_WIDGET);
-	}
-
-	virtual void OnClick(Point pt, int widget)
+	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
 			case DPIW_MATRIX_WIDGET: {
@@ -419,6 +413,7 @@ public:
 					}
 
 					this->SetWidgetDisabledState(DPIW_FUND_WIDGET, !this->enabled[this->selected_index]);
+					if (this->enabled[this->selected_index] && click_count > 1) this->OnClick(pt, DPIW_FUND_WIDGET, 1);
 				}
 			} break;
 
@@ -703,7 +698,7 @@ public:
 		if (widget == IVW_INFO) size->height = this->info_height;
 	}
 
-	virtual void OnClick(Point pt, int widget)
+	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		Industry *i;
 
@@ -1105,7 +1100,7 @@ public:
 	}
 
 
-	virtual void OnClick(Point pt, int widget)
+	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
 			case IDW_DROPDOWN_ORDER:

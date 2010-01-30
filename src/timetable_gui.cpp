@@ -497,7 +497,7 @@ struct TimetableWindow : Window {
 		return v->index | (order_number << 16) | (is_journey << 24);
 	}
 
-	virtual void OnClick(Point pt, int widget)
+	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		const Vehicle *v = this->vehicle;
 

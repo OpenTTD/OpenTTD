@@ -241,7 +241,7 @@ struct TerraformToolbarWindow : Window {
 		this->DrawWidgets();
 	}
 
-	virtual void OnClick(Point pt, int widget)
+	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		if (widget >= TTW_BUTTONS_START) _terraform_button_proc[widget - TTW_BUTTONS_START](this);
 	}
@@ -673,7 +673,7 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 		return ES_NOT_HANDLED;
 	}
 
-	virtual void OnClick(Point pt, int widget)
+	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		if (IsInsideMM(widget, ETTW_BUTTONS_START, ETTW_BUTTONS_END)) {
 			_editor_terraform_button_proc[widget - ETTW_BUTTONS_START](this);

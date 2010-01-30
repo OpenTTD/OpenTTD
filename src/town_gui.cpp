@@ -251,10 +251,7 @@ public:
 		}
 	}
 
-	virtual void OnDoubleClick(Point pt, int widget) { HandleClick(pt, widget, true); }
-	virtual void OnClick(Point pt, int widget) { HandleClick(pt, widget, false); }
-
-	void HandleClick(Point pt, int widget, bool double_click)
+	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
 			case TWA_COMMAND_LIST: {
@@ -268,7 +265,7 @@ public:
 					this->SetDirty();
 				}
 				/* Fall through to clicking in case we are double-clicked */
-				if (!double_click || y < 0) break;
+				if (click_count == 1 || y < 0) break;
 			}
 
 			case TWA_EXECUTE:
@@ -435,7 +432,7 @@ public:
 		}
 	}
 
-	virtual void OnClick(Point pt, int widget)
+	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
 			case TVW_CENTERVIEW: // scroll to location
@@ -797,7 +794,7 @@ public:
 		}
 	}
 
-	virtual void OnClick(Point pt, int widget)
+	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
 			case TDW_SORTNAME: // Sort by Name ascending/descending
@@ -1073,7 +1070,7 @@ public:
 		if (!this->IsShaded()) this->DrawEditBox(TSEW_TOWNNAME_EDITBOX);
 	}
 
-	virtual void OnClick(Point pt, int widget)
+	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
 			case TSEW_NEWTOWN:

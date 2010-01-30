@@ -433,7 +433,7 @@ struct CompanyFinancesWindow : Window {
 		this->DrawWidgets();
 	}
 
-	virtual void OnClick(Point pt, int widget)
+	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
 			case CFW_TOGGLE_SIZE: // toggle size
@@ -729,7 +729,7 @@ public:
 		}
 	}
 
-	virtual void OnClick(Point pt, int widget)
+	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
 			/* Livery Class buttons */
@@ -1393,7 +1393,7 @@ public:
 		}
 	}
 
-	virtual void OnClick(Point pt, int widget)
+	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
 			/* Toggle size, advanced/simple face selection */
@@ -1916,7 +1916,7 @@ struct CompanyWindow : Window
 		}
 	}
 
-	virtual void OnClick(Point pt, int widget)
+	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
 			case CW_WIDGET_NEW_FACE: DoSelectCompanyManagerFace(this); break;
@@ -2115,7 +2115,7 @@ struct BuyCompanyWindow : Window {
 		}
 	}
 
-	virtual void OnClick(Point pt, int widget)
+	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
 			case BCW_NO:

@@ -397,7 +397,7 @@ struct MusicTrackSelectionWindow : public Window {
 		this->DrawWidgets();
 	}
 
-	virtual void OnClick(Point pt, int widget)
+	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
 			case MTSW_LIST_LEFT: { // add to playlist
@@ -643,7 +643,7 @@ struct MusicWindow : public Window {
 		this->SetDirty();
 	}
 
-	virtual void OnClick(Point pt, int widget)
+	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
 			case MW_PREV: // skip to prev

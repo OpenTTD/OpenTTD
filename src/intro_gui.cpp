@@ -97,7 +97,7 @@ struct SelectGameWindow : public Window {
 		*size = maxdim(*size, textdim);
 	}
 
-	virtual void OnClick(Point pt, int widget)
+	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 #ifdef ENABLE_NETWORK
 		/* Do not create a network server when you (just) have closed one of the game

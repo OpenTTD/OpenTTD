@@ -142,7 +142,7 @@ struct OskWindow : public Window {
 		this->qs->DrawEditBox(this, OSK_WIDGET_TEXT);
 	}
 
-	virtual void OnClick(Point pt, int widget)
+	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		/* clicked a letter */
 		if (widget >= OSK_WIDGET_LETTERS) {
@@ -207,7 +207,7 @@ struct OskWindow : public Window {
 				if (this->qs->orig == NULL || strcmp(this->qs->text.buf, this->qs->orig) != 0) {
 					/* pass information by simulating a button press on parent window */
 					if (this->ok_btn != 0) {
-						this->parent->OnClick(pt, this->ok_btn);
+						this->parent->OnClick(pt, this->ok_btn, 1);
 						/* Window gets deleted when the parent window removes itself. */
 						return;
 					}
@@ -217,7 +217,7 @@ struct OskWindow : public Window {
 
 			case OSK_WIDGET_CANCEL:
 				if (this->cancel_btn != 0) { // pass a cancel event to the parent window
-					this->parent->OnClick(pt, this->cancel_btn);
+					this->parent->OnClick(pt, this->cancel_btn, 1);
 					/* Window gets deleted when the parent window removes itself. */
 					return;
 				} else { // or reset to original string

@@ -1002,7 +1002,7 @@ struct BuildVehicleWindow : Window {
 		this->eng_list.RebuildDone();
 	}
 
-	void OnClick(Point pt, int widget)
+	void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
 			case BUILD_VEHICLE_WIDGET_SORT_ASSENDING_DESCENDING:
@@ -1017,6 +1017,7 @@ struct BuildVehicleWindow : Window {
 				size_t num_items = this->eng_list.Length();
 				this->sel_engine = (i < num_items) ? this->eng_list[i] : INVALID_ENGINE;
 				this->SetDirty();
+				if (click_count > 1) this->OnClick(pt, BUILD_VEHICLE_WIDGET_BUILD, 1);
 				break;
 			}
 
@@ -1125,14 +1126,6 @@ struct BuildVehicleWindow : Window {
 				this->ReInit();
 				return;
 			}
-		}
-	}
-
-	virtual void OnDoubleClick(Point pt, int widget)
-	{
-		if (widget == BUILD_VEHICLE_WIDGET_LIST) {
-			/* When double clicking, we want to buy a vehicle */
-			this->OnClick(pt, BUILD_VEHICLE_WIDGET_BUILD);
 		}
 	}
 

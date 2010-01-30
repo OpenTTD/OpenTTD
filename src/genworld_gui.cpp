@@ -519,7 +519,7 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 		this->DrawEditBox(GLAND_RANDOM_EDITBOX);
 	}
 
-	virtual void OnClick(Point pt, int widget)
+	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
 			case GLAND_TEMPERATE:
@@ -921,7 +921,7 @@ struct CreateScenarioWindow : public Window
 		size->height += padding.height;
 	}
 
-	virtual void OnClick(Point pt, int widget)
+	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
 			case CSCEN_TEMPERATE:
@@ -1161,7 +1161,7 @@ struct GenerateProgressWindow : public Window {
 		this->InitNested(&_generate_progress_desc);
 	}
 
-	virtual void OnClick(Point pt, int widget)
+	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
 			case GPWW_ABORT:

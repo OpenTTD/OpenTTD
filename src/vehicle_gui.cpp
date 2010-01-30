@@ -438,12 +438,7 @@ struct RefitWindow : public Window {
 		}
 	}
 
-	virtual void OnDoubleClick(Point pt, int widget)
-	{
-		if (widget == VRW_MATRIX) this->OnClick(pt, VRW_REFITBUTTON);
-	}
-
-	virtual void OnClick(Point pt, int widget)
+	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
 			case VRW_MATRIX: { // listbox
@@ -452,9 +447,10 @@ struct RefitWindow : public Window {
 					this->sel = (y / (int)this->resize.step_height) + this->vscroll.GetPosition();
 					this->SetDirty();
 				}
-				break;
+				/* FIXME We need to call some InvalidateData to make this->cargo valid */
+				if (click_count == 1) break;
 			}
-
+			/* FALL THROUGH */
 			case VRW_REFITBUTTON: // refit button
 				if (this->cargo != NULL) {
 					const Vehicle *v = Vehicle::Get(this->window_number);
@@ -1116,7 +1112,7 @@ public:
 		this->DrawWidgets();
 	}
 
-	virtual void OnClick(Point pt, int widget)
+	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
 			case VLW_WIDGET_SORT_ORDER: // Flip sorting method ascending/descending
@@ -1611,7 +1607,7 @@ struct VehicleDetailsWindow : Window {
 		this->DrawWidgets();
 	}
 
-	virtual void OnClick(Point pt, int widget)
+	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
 			case VLD_WIDGET_RENAME_VEHICLE: { // rename
@@ -2041,7 +2037,7 @@ public:
 		DrawString(r.left + WD_FRAMERECT_LEFT + 6, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, str, TC_FROMSTRING, SA_CENTER);
 	}
 
-	virtual void OnClick(Point pt, int widget)
+	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		const Vehicle *v = Vehicle::Get(this->window_number);
 

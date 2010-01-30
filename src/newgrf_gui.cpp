@@ -344,12 +344,7 @@ public:
 		}
 	}
 
-	virtual void OnDoubleClick(Point pt, int widget)
-	{
-		if (widget == ANGRFW_GRF_LIST) this->OnClick(pt, ANGRFW_ADD);
-	}
-
-	virtual void OnClick(Point pt, int widget)
+	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
 			case ANGRFW_GRF_LIST: {
@@ -364,9 +359,9 @@ public:
 					this->sel_pos = -1;
 				}
 				this->InvalidateData(1);
-				break;
+				if (click_count == 1) break;
 			}
-
+			/* FALL THROUGH */
 			case ANGRFW_ADD: // Add selection to list
 				if (this->sel != NULL) {
 					const GRFConfig *src = this->sel;
@@ -705,12 +700,7 @@ struct NewGRFWindow : public Window {
 		}
 	}
 
-	virtual void OnDoubleClick(Point pt, int widget)
-	{
-		if (widget == SNGRFS_FILE_LIST) this->OnClick(pt, SNGRFS_SET_PARAMETERS);
-	}
-
-	virtual void OnClick(Point pt, int widget)
+	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
 			case SNGRFS_PRESET_LIST: {
@@ -821,6 +811,7 @@ struct NewGRFWindow : public Window {
 				this->sel = c;
 
 				this->InvalidateData();
+				if (click_count > 1) this->OnClick(pt, SNGRFS_SET_PARAMETERS, 1);
 				break;
 			}
 

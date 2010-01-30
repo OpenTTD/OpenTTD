@@ -483,7 +483,7 @@ struct BuildRoadToolbarWindow : Window {
 		this->DrawWidgets();
 	}
 
-	virtual void OnClick(Point pt, int widget)
+	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		if (widget >= RTW_ROAD_X) {
 			_remove_button_clicked = false;
@@ -787,7 +787,7 @@ struct BuildRoadDepotWindow : public PickerWindowBase {
 		DrawRoadDepotSprite(r.left - 1, r.top, (DiagDirection)(widget - BRDW_DEPOT_NE + DIAGDIR_NE), _cur_roadtype);
 	}
 
-	virtual void OnClick(Point pt, int widget)
+	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
 			case BRDW_DEPOT_NW:
@@ -929,7 +929,7 @@ struct BuildRoadStationWindow : public PickerWindowBase {
 		StationPickerDrawSprite(r.left + TILE_PIXELS, r.bottom - TILE_PIXELS, st, INVALID_RAILTYPE, widget < BRSW_STATION_X ? ROADTYPE_ROAD : _cur_roadtype, widget - BRSW_STATION_NE);
 	}
 
-	virtual void OnClick(Point pt, int widget)
+	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
 			case BRSW_STATION_NE:

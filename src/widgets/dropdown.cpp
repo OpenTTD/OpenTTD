@@ -247,7 +247,7 @@ struct DropdownWindow : Window {
 		}
 	}
 
-	virtual void OnClick(Point pt, int widget)
+	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		if (widget != DDM_ITEMS) return;
 		int item;

@@ -82,7 +82,7 @@ public:
 		}
 	}
 
-	virtual void OnClick(Point pt, int widget)
+	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		if (widget >= TTW_WIDGET_BEGIN && widget < TTW_WIDGET_END) {
 			if (_ctrl_pressed) {

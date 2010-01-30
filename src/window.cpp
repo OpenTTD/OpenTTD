@@ -253,9 +253,9 @@ static void StartWindowSizing(Window *w, bool to_left);
  * @param w Window to dispatch event in
  * @param x X coordinate of the click
  * @param y Y coordinate of the click
- * @param double_click Was it a double click?
+ * @param click_count Number of fast consecutive clicks at same position
  */
-static void DispatchLeftClickEvent(Window *w, int x, int y, bool double_click)
+static void DispatchLeftClickEvent(Window *w, int x, int y, int click_count)
 {
 	const NWidgetCore *nw = w->nested_root->GetWidgetFromPos(x, y);
 	WidgetType widget_type = (nw != NULL) ? nw->type : WWT_EMPTY;
@@ -283,96 +283,88 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, bool double_click)
 
 	int widget_index = nw->index; ///< Index of the widget
 
-	/* Process special buttons (only single clicks) */
-	if (!double_click) {
-		/* Clicked on a widget that is not disabled.
-		 * So unless the clicked widget is the caption bar, change focus to this widget */
-		if (widget_type != WWT_CAPTION) {
-			/* Close the OSK window if a edit box loses focus */
-			if (w->nested_focus != NULL &&  w->nested_focus->type == WWT_EDITBOX && w->nested_focus != nw && w->window_class != WC_OSK) {
-				DeleteWindowById(WC_OSK, 0);
-			}
-
-			/* focused_widget_changed is 'now' only true if the window this widget
-			 * is in gained focus. In that case it must remain true, also if the
-			 * local widget focus did not change. As such it's the logical-or of
-			 * both changed states.
-			 *
-			 * If this is not preserved, then the OSK window would be opened when
-			 * a user has the edit box focused and then click on another window and
-			 * then back again on the edit box (to type some text).
-			 */
-			focused_widget_changed |= w->SetFocusedWidget(widget_index);
+	/* Clicked on a widget that is not disabled.
+	 * So unless the clicked widget is the caption bar, change focus to this widget */
+	if (widget_type != WWT_CAPTION) {
+		/* Close the OSK window if a edit box loses focus */
+		if (w->nested_focus != NULL &&  w->nested_focus->type == WWT_EDITBOX && w->nested_focus != nw && w->window_class != WC_OSK) {
+			DeleteWindowById(WC_OSK, 0);
 		}
 
-		/* Close any child drop down menus. If the button pressed was the drop down
-		 * list's own button, then we should not process the click any further. */
-		if (HideDropDownMenu(w) == widget_index && widget_index >= 0) return;
+		/* focused_widget_changed is 'now' only true if the window this widget
+		 * is in gained focus. In that case it must remain true, also if the
+		 * local widget focus did not change. As such it's the logical-or of
+		 * both changed states.
+		 *
+		 * If this is not preserved, then the OSK window would be opened when
+		 * a user has the edit box focused and then click on another window and
+		 * then back again on the edit box (to type some text).
+		 */
+		focused_widget_changed |= w->SetFocusedWidget(widget_index);
+	}
 
-		switch (widget_type) {
-			/* special widget handling for buttons*/
-			case WWT_PANEL   | WWB_PUSHBUTTON: // WWT_PUSHBTN
-			case WWT_IMGBTN  | WWB_PUSHBUTTON: // WWT_PUSHIMGBTN
-			case WWT_TEXTBTN | WWB_PUSHBUTTON: // WWT_PUSHTXTBTN
-				w->HandleButtonClick(widget_index);
-				break;
+	/* Close any child drop down menus. If the button pressed was the drop down
+	 * list's own button, then we should not process the click any further. */
+	if (HideDropDownMenu(w) == widget_index && widget_index >= 0) return;
 
-			case WWT_SCROLLBAR:
-			case WWT_SCROLL2BAR:
-			case WWT_HSCROLLBAR:
-				ScrollbarClickHandler(w, nw, x, y);
-				break;
+	switch (widget_type) {
+		/* special widget handling for buttons*/
+		case WWT_PANEL   | WWB_PUSHBUTTON: // WWT_PUSHBTN
+		case WWT_IMGBTN  | WWB_PUSHBUTTON: // WWT_PUSHIMGBTN
+		case WWT_TEXTBTN | WWB_PUSHBUTTON: // WWT_PUSHTXTBTN
+			w->HandleButtonClick(widget_index);
+			break;
 
-			case WWT_EDITBOX:
-				if (!focused_widget_changed) { // Only open the OSK window if clicking on an already focused edit box
-					/* Open the OSK window if clicked on an edit box */
-					QueryStringBaseWindow *qs = dynamic_cast<QueryStringBaseWindow *>(w);
-					if (qs != NULL) {
-						qs->OnOpenOSKWindow(widget_index);
-					}
+		case WWT_SCROLLBAR:
+		case WWT_SCROLL2BAR:
+		case WWT_HSCROLLBAR:
+			ScrollbarClickHandler(w, nw, x, y);
+			break;
+
+		case WWT_EDITBOX:
+			if (!focused_widget_changed) { // Only open the OSK window if clicking on an already focused edit box
+				/* Open the OSK window if clicked on an edit box */
+				QueryStringBaseWindow *qs = dynamic_cast<QueryStringBaseWindow *>(w);
+				if (qs != NULL) {
+					qs->OnOpenOSKWindow(widget_index);
 				}
-				break;
+			}
+			break;
 
-			case WWT_CLOSEBOX: // 'X'
-				delete w;
-				return;
+		case WWT_CLOSEBOX: // 'X'
+			delete w;
+			return;
 
-			case WWT_CAPTION: // 'Title bar'
-				StartWindowDrag(w);
-				return;
+		case WWT_CAPTION: // 'Title bar'
+			StartWindowDrag(w);
+			return;
 
-			case WWT_RESIZEBOX:
-				/* When the resize widget is on the left size of the window
-				 * we assume that that button is used to resize to the left. */
-				StartWindowSizing(w, (int)nw->pos_x < (w->width / 2));
-				nw->SetDirty(w);
-				return;
+		case WWT_RESIZEBOX:
+			/* When the resize widget is on the left size of the window
+			 * we assume that that button is used to resize to the left. */
+			StartWindowSizing(w, (int)nw->pos_x < (w->width / 2));
+			nw->SetDirty(w);
+			return;
 
-			case WWT_SHADEBOX:
-				nw->SetDirty(w);
-				w->SetShaded(!w->IsShaded());
-				return;
+		case WWT_SHADEBOX:
+			nw->SetDirty(w);
+			w->SetShaded(!w->IsShaded());
+			return;
 
-			case WWT_STICKYBOX:
-				w->flags4 ^= WF_STICKY;
-				nw->SetDirty(w);
-				return;
+		case WWT_STICKYBOX:
+			w->flags4 ^= WF_STICKY;
+			nw->SetDirty(w);
+			return;
 
-			default:
-				break;
-		}
+		default:
+			break;
 	}
 
 	/* Widget has no index, so the window is not interested in it. */
 	if (widget_index < 0) return;
 
 	Point pt = { x, y };
-
-	if (double_click) {
-		w->OnDoubleClick(pt, widget_index);
-	} else {
-		w->OnClick(pt, widget_index);
-	}
+	w->OnClick(pt, widget_index, click_count);
 }
 
 /**
@@ -2127,11 +2119,7 @@ static void MouseLoop(MouseClick click, int mousewheel)
 		switch (click) {
 			case MC_LEFT:
 			case MC_DOUBLE_LEFT:
-				DispatchLeftClickEvent(w, x - w->left, y - w->top, false);
-				if (click == MC_DOUBLE_LEFT && _mouseover_last_w != NULL) {
-					/* Issue the doubleclick, if the window was not removed */
-					DispatchLeftClickEvent(w, x - w->left, y - w->top, true);
-				}
+				DispatchLeftClickEvent(w, x - w->left, y - w->top, click == MC_DOUBLE_LEFT ? 2 : 1);
 				break;
 
 			default:

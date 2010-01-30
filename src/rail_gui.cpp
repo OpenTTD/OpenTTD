@@ -694,7 +694,7 @@ struct BuildRailToolbarWindow : Window {
 		this->DrawWidgets();
 	}
 
-	virtual void OnClick(Point pt, int widget)
+	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		if (widget >= RTW_BUILD_NS) {
 			_remove_button_clicked = false;
@@ -1165,7 +1165,7 @@ public:
 		if (widget == BRSW_NEWST_DROPDOWN) SetDParam(0, GetStationClassName(_railstation.station_class));
 	}
 
-	virtual void OnClick(Point pt, int widget)
+	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
 			case BRSW_PLATFORM_DIR_X:
@@ -1587,7 +1587,7 @@ public:
 		}
 	}
 
-	virtual void OnClick(Point pt, int widget)
+	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
 			case BSW_SEMAPHORE_NORM:
@@ -1723,7 +1723,7 @@ struct BuildRailDepotWindow : public PickerWindowBase {
 		DrawTrainDepotSprite(r.left - 1, r.top, widget - BRDW_DEPOT_NE + DIAGDIR_NE, _cur_railtype);
 	}
 
-	virtual void OnClick(Point pt, int widget)
+	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
 			case BRDW_DEPOT_NE:
@@ -1826,7 +1826,7 @@ struct BuildRailWaypointWindow : PickerWindowBase {
 		}
 	}
 
-	virtual void OnClick(Point pt, int widget)
+	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
 			case BRWW_WAYPOINT_1:

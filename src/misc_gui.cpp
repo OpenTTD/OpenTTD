@@ -1285,7 +1285,7 @@ struct QueryStringWindow : public QueryStringBaseWindow
 		}
 	}
 
-	virtual void OnClick(Point pt, int widget)
+	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
 			case QUERY_STR_WIDGET_DEFAULT:
@@ -1450,7 +1450,7 @@ struct QueryWindow : public Window {
 		this->DrawWidgets();
 	}
 
-	virtual void OnClick(Point pt, int widget)
+	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
 			case QUERY_WIDGET_YES: {
@@ -1802,7 +1802,7 @@ public:
 		}
 	}
 
-	virtual void OnClick(Point pt, int widget)
+	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
 			case SLWW_SORT_BYNAME: // Sort save names by name

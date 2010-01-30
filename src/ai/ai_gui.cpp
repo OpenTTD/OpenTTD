@@ -149,7 +149,7 @@ struct AIListWindow : public Window {
 		SetWindowDirty(WC_GAME_OPTIONS, 0);
 	}
 
-	virtual void OnClick(Point pt, int widget)
+	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
 			case AIL_WIDGET_LIST: { // Select one of the AIs
@@ -157,6 +157,10 @@ struct AIListWindow : public Window {
 				if (sel < (int)this->ai_info_list->size()) {
 					this->selected = sel;
 					this->SetDirty();
+					if (click_count > 1) {
+						this->ChangeAI();
+						delete this;
+					}
 				}
 				break;
 			}
@@ -170,21 +174,6 @@ struct AIListWindow : public Window {
 			case AIL_WIDGET_CANCEL:
 				delete this;
 				break;
-		}
-	}
-
-	virtual void OnDoubleClick(Point pt, int widget)
-	{
-		switch (widget) {
-			case AIL_WIDGET_LIST: {
-				int sel = (pt.y - this->GetWidget<NWidgetBase>(AIL_WIDGET_LIST)->pos_y) / this->line_height + this->vscroll.GetPosition() - 1;
-				if (sel < (int)this->ai_info_list->size()) {
-					this->selected = sel;
-					this->ChangeAI();
-					delete this;
-				}
-				break;
-			}
 		}
 	}
 
@@ -332,7 +321,7 @@ struct AISettingsWindow : public Window {
 		}
 	}
 
-	virtual void OnClick(Point pt, int widget)
+	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
 			case AIS_WIDGET_BACKGROUND: {
@@ -588,7 +577,7 @@ struct AIConfigWindow : public Window {
 		}
 	}
 
-	virtual void OnClick(Point pt, int widget)
+	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
 			case AIC_WIDGET_DECREASE:
@@ -607,6 +596,7 @@ struct AIConfigWindow : public Window {
 			case AIC_WIDGET_LIST: { // Select a slot
 				this->selected_slot = (CompanyID)((pt.y - this->GetWidget<NWidgetBase>(widget)->pos_y) / this->line_height + this->vscroll.GetPosition());
 				this->InvalidateData();
+				if (click_count > 1 && this->selected_slot != INVALID_COMPANY) ShowAIListWindow((CompanyID)this->selected_slot);
 				break;
 			}
 
@@ -648,16 +638,6 @@ struct AIConfigWindow : public Window {
 					ShowNetworkContentListWindow(NULL, CONTENT_TYPE_AI);
 #endif
 				}
-				break;
-		}
-	}
-
-	virtual void OnDoubleClick(Point pt, int widget)
-	{
-		switch (widget) {
-			case AIC_WIDGET_LIST:
-				this->OnClick(pt, widget);
-				if (this->selected_slot != INVALID_COMPANY) ShowAIListWindow((CompanyID)this->selected_slot);
 				break;
 		}
 	}
@@ -911,7 +891,7 @@ struct AIDebugWindow : public Window {
 		DeleteWindowByClass(WC_AI_SETTINGS);
 	}
 
-	virtual void OnClick(Point pt, int widget)
+	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		/* Check which button is clicked */
 		if (IsInsideMM(widget, AID_WIDGET_COMPANY_BUTTON_START, AID_WIDGET_COMPANY_BUTTON_END + 1)) {

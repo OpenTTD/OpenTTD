@@ -399,7 +399,7 @@ public:
 		}
 	}
 
-	virtual void OnClick(Point pt, int widget)
+	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
 			case RVW_WIDGET_TRAIN_ENGINEWAGON_TOGGLE:

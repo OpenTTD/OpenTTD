@@ -277,7 +277,7 @@ struct GameOptionsWindow : Window {
 		}
 	}
 
-	virtual void OnClick(Point pt, int widget)
+	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
 			case GOW_CURRENCY_DROPDOWN: // Setup currencies dropdown
@@ -625,7 +625,7 @@ public:
 		this->DrawWidgets();
 	}
 
-	virtual void OnClick(Point pt, int widget)
+	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		if (widget >= GDW_OPTIONS_START) {
 			widget -= GDW_OPTIONS_START;
@@ -1539,7 +1539,7 @@ struct GameSettingsWindow : Window {
 		this->DrawWidgets();
 	}
 
-	virtual void OnClick(Point pt, int widget)
+	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		if (widget != SETTINGSEL_OPTIONSPANEL) return;
 
@@ -1826,7 +1826,7 @@ struct CustomCurrencyWindow : Window {
 		this->DrawWidgets();
 	}
 
-	virtual void OnClick(Point pt, int widget)
+	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		int line = 0;
 		int len = 0;

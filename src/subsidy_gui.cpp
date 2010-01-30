@@ -37,7 +37,7 @@ struct SubsidyListWindow : Window {
 		this->OnInvalidateData(0);
 	}
 
-	virtual void OnClick(Point pt, int widget)
+	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		if (widget != SLW_PANEL) return;
 
