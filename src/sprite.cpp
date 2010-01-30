@@ -30,6 +30,7 @@
  */
 void DrawCommonTileSeq(const TileInfo *ti, const DrawTileSprites *dts, TransparencyOption to, int32 orig_offset, uint32 newgrf_offset, PaletteID default_palette, bool child_offset_is_unsigned)
 {
+	bool parent_sprite_encountered = false;
 	const DrawTileSeqStruct *dtss;
 	foreach_draw_tile_seq(dtss, dts->seq) {
 		SpriteID image = dtss->image.sprite;
@@ -45,6 +46,7 @@ void DrawCommonTileSeq(const TileInfo *ti, const DrawTileSprites *dts, Transpare
 		PaletteID pal = SpriteLayoutPaletteTransform(image, dtss->image.pal, default_palette);
 
 		if ((byte)dtss->delta_z != 0x80) {
+			parent_sprite_encountered = true;
 			AddSortableSpriteToDraw(
 				image, pal,
 				ti->x + dtss->delta_x, ti->y + dtss->delta_y,
@@ -55,7 +57,16 @@ void DrawCommonTileSeq(const TileInfo *ti, const DrawTileSprites *dts, Transpare
 		} else {
 			int offs_x = child_offset_is_unsigned ? (uint8)dtss->delta_x : dtss->delta_x;
 			int offs_y = child_offset_is_unsigned ? (uint8)dtss->delta_y : dtss->delta_y;
-			AddChildSpriteScreen(image, pal, offs_x, offs_y, !HasBit(image, SPRITE_MODIFIER_OPAQUE) && IsTransparencySet(to));
+			bool transparent = !HasBit(image, SPRITE_MODIFIER_OPAQUE) && IsTransparencySet(to);
+			if (parent_sprite_encountered) {
+				AddChildSpriteScreen(image, pal, offs_x, offs_y, transparent);
+			} else {
+				if (transparent) {
+					SetBit(image, PALETTE_MODIFIER_TRANSPARENT);
+					pal = PALETTE_TO_TRANSPARENT;
+				}
+				DrawGroundSprite(image, pal, NULL, offs_x, offs_y);
+			}
 		}
 	}
 }
