@@ -1149,9 +1149,9 @@ STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Lehesse
 STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Különböző vágánytípusok engedélyezése egy állomáson: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Tömegszorzó tehervonatoknak (szimulációs célból): {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Repülőgép sebességszorzó: {ORANGE}1 / {STRING}
-STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Számú repülőgép lezuhan: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Lezuhanó repülőgépek száma: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :nincs
-STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :csökkentette
+STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :csökkentett
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normál
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Áthajtó állomások engedélyezése városi tulajdonú utakra: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Áthajtó állomások engedélyezése vetélytárs tulajdonában lévő utakon: {ORANGE}{STRING}
@@ -3247,6 +3247,8 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Válassz
 STR_AI_DEBUG                                                    :{WHITE}MI nyomkövetés
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}MI neve
+STR_AI_DEBUG_SETTINGS                                           :{BLACK}MI beállítások
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}MI beállításainak módosítása
 STR_AI_DEBUG_RELOAD                                             :{BLACK}MI újratöltése
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}MI kilövése, szkript újratöltése, MI újraindítása
 

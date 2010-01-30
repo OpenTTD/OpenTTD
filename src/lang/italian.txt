@@ -1117,6 +1117,10 @@ STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Consent
 STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Stazioni non uniformi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Moltiplicatore di peso per simulare treni merci pesanti: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Fattore di velocità degli aeromobili: {ORANGE}1 / {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Numero di incidenti aerei: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Nessuno
+STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Ridotto
+STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normale
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Consenti fermate passanti sulle strade delle città: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Consenti fermate passanti sulle strade di proprietà degli avversari: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Consenti la costruzione di stazioni adiacenti: {ORANGE}{STRING}

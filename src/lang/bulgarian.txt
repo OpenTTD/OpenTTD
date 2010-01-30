@@ -525,6 +525,7 @@ STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLAC
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Активирай/деактивирай графиката за видовете товар
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 
+STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Покажи подробен рейтинг на представянето
 
 # Graph key window
 STR_GRAPH_KEY_CAPTION                                           :{WHITE}Легенда на графиката за компаниите
@@ -1110,6 +1111,10 @@ STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Поз�
 STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Нестандартни станции: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Теглови множител за симулация на тежки влакове: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Скоростен множител за самолети: {ORANGE}1 / {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Разбивания на самолети: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :никакви
+STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :намалени
+STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :нормални
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Преминаване през спирки на градски пътища: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Позвалявай допрени гари: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Няколко NewGRF алгоритъма едновременно: {ORANGE}{STRING}

@@ -3213,6 +3213,8 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Valitse 
 STR_AI_DEBUG                                                    :{WHITE}Tekoälyn virheenjäljitys
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Tekoälyn nimi
+STR_AI_DEBUG_SETTINGS                                           :{BLACK}Tekoälyn asetukset
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Muuta tekoälyn asetuksia
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Lataa tekoäly uudelleen
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Lopeta tekoäly, lataa skripti uudelleen ja käynnistä tekoäly uudelleen
 

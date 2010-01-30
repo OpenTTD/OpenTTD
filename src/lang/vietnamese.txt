@@ -274,7 +274,7 @@ STR_SORT_BY_MODEL                                               :Kiểu
 STR_SORT_BY_VALUE                                               :Giá trị
 STR_SORT_BY_LENGTH                                              :Chiều dài
 STR_SORT_BY_LIFE_TIME                                           :Thời gian sử dụng còn lại
-STR_SORT_BY_TIMETABLE_DELAY                                     :Lịch hoãn
+STR_SORT_BY_TIMETABLE_DELAY                                     :Độ trễ lịch trình
 STR_SORT_BY_FACILITY                                            :Kiểu nhà ga
 STR_SORT_BY_WAITING                                             :Giá trị hàng hoá đang đợi
 STR_SORT_BY_RATING_MAX                                          :Đánh giá mức hàng hoá cao nhất
@@ -811,7 +811,7 @@ STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE
 STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} đã mất.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Lợi nhuận của {VEHICLE} năm trước là {CURRENCY}
 
-STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} đã dừng lại do lệnh tái lắp ráp thất bại
+STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} đã dừng lại do yêu cầu cải biến thất bại
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Thất bại trong tự làm mới {VEHICLE}{}{STRING}
 
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}{STRING} mới đã ra lò!
@@ -1102,11 +1102,11 @@ STR_CONFIG_SETTING_SAMEINDCLOSE                                 :{LTBLUE}Cụm c
 STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Luôn luôn hiện ngày tháng đầy đủ trên thanh trạng thái: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Hiển thị tín hiệu ở phía làn đường đi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Hiện bảng tài chính vào cuối năm: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Các lệnh mới thì 'không-dừng' như là mặc định: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Lệnh tàu hỏa sẽ ngừng lại ở {ORANGE}{STRING}{LTBLUE} sân ga một cách tự động
-STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :gần cuối
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Đặt các điểm lộ trình mới sẽ là 'chạy suốt" làm mặc định: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Lộ trình tàu hoả mặc định sẽ dừng lại vị trí {ORANGE}{STRING}{LTBLUE} tại sân ga
+STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :đầu gần
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :giữa
-STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :đầu
+STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :đầu xa
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Xe cộ nối đuôi (với tác động nối tiếp): {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Tự dịch chuyển cửa sổ khi con trỏ gần rìa: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Cho phép hối lộ chính quyền địa phương: {ORANGE}{STRING}
@@ -1200,10 +1200,10 @@ STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Sử d�
 STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Tắt
 STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Công ty đang giữ
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Tất cả công ty
-STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Bật bảng giờ giấc cho ph.tiện: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Hiện bảng giờ giấc ở dạng cụ thể thay vì ngày: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Hiển thị Đến và Khởi hành trên bảng: {ORANGE}{STRING}
-STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Tạo lệnh nhanh cho ph.tiện: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Bật lịch trình cho ph.tiện: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Hiện lịch trình ở dạng số nhịp thay vì ngày: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Hiển thị nơi đến và nơi đi trên lịch trình: {ORANGE}{STRING}
+STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Tạo điểm lộ trình nhanh cho ph.tiện: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Loại đường ray mặc định (sau game mới/nạp game): {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :Ray Bình Thường
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_ELRAIL                     :Ray Điện
@@ -2394,7 +2394,7 @@ STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Nó cắ
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Đoàn tàu '{VEHICLE}' của '{COMPANY}' có độ dài không hợp lệ. Có thể gây sự cố với NewGRFs. Ván chơi có thể mất đồng bộ hoặc bị treo
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' không hợp lệ.
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Danh mục hàng hoá/cải biến cho '{1:ENGINE}' khác với danh mục mua được sau khi đã có. Việc này khiến cho việc tự thay thế hay là tự cải biến không chính xác.
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Danh mục hàng hoá/cải biến được cho '{1:ENGINE}' khác với danh mục mua được sau khi đã có. Việc này khiến cho việc tự thay thế hay là tự cải biến không chính xác.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' gây ra một vòng lặp vô tận khi gọi hàm callback.
 
 # Sign list window
@@ -2893,10 +2893,10 @@ STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Cải bi
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Đổi hướng đoàn tàu
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Quay đầu ôtô
 
-STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Hiện lộ trình tàu. Ctrl+Click để hiện lộ trình thời gian
-STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Hiện lộ trình ôtô. Ctrl+Click để hiện lộ trình thời gian
-STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Hiện lộ trình tàu thuỷ. Ctrl+Click để hiện lộ trình thời gian
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Hiện lộ trình máy bay. Ctrl+Click để hiện lộ trình thời gian
+STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Hiện lộ trình tàu. Ctrl+Click để hiện lịch trình
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Hiện lộ trình ôtô. Ctrl+Click để hiện lịch trình
+STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Hiện lộ trình tàu thuỷ. Ctrl+Click để hiện lịch trình tàu
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Hiện lộ trình máy bay. Ctrl+Click để hiện lịch trình
 
 STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Hiện chi tiết tàu hoả
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Hiện chi tiết ôtô
@@ -3008,29 +3008,29 @@ STR_VEHICLE_DETAILS_TRAIN_TOTAL_CARGO_TOOLTIP                   :{BLACK}Xem tổ
 STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Sức chứa: {LTBLUE}
 
 # Vehicle refit
-STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Thay mới)
+STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Cải biến)
 STR_REFIT_TITLE                                                 :{GOLD}Chọn loại hàng hoá để chở:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Sức chứa mới: {GOLD}{CARGO}{}{BLACK}Chi phi thay mới: {GOLD}{CURRENCY}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Sức chứa mới: {GOLD}{CARGO}{}{BLACK}Chi phí cải biến: {GOLD}{CURRENCY}
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Chọn loại hàng mà tàu sẽ vận chuyển
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Chọn loại hàng mà xe sẽ vận chuyển
 STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}Chọn loại hàng mà tàu thuỷ sẽ vận chuyển
 STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Chọn loại hàng mà máy bay sẽ vận chuyển
 
-STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Thay mới tàu
-STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Thay mới xe
+STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Cải biến tàu
+STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Cải biến xe ôtô
 STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Cải biến tàu thuỷ
 STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Cải biến máy bay
 
-STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Thay mới tàu để vận chuyển loại hàng hoá đang được tô sáng
-STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Thay mới xe để chở loại hàng hoá đang được chọn
-STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Thay mới tàu thuỷ để chở loại hàng hoá đang được chọn
-STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Thay mới máy bay để chở loại hàng hoá đang được chọn
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Cải biến tàu để vận chuyển loại hàng hoá đang được tô sáng
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Cải biến xe để chở loại hàng hoá đang được chọn
+STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Cải biến tàu thuỷ để chở loại hàng hoá đang được chọn
+STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Cải biến máy bay để chở loại hàng hoá đang được chọn
 
 # Order view
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Lộ trình)
-STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Lịch chạy
-STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Lộ trình thời gian
+STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Lịch trình
+STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Lịch trình (lộ trình có sự khống chế thời gian)
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Lịch trình - click để tô sáng một thứ tự nào đó. Ctr+Click để nhảy đến nhà ga tương ứng
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
@@ -3061,8 +3061,8 @@ STR_ORDER_DROP_TRANSFER                                         :Chuyển
 STR_ORDER_DROP_NO_UNLOADING                                     :Không chất hàng xuống
 STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Thay đổi cách thức chất hàng xuống tại ga/bến đang được chọn
 
-STR_ORDER_REFIT                                                 :{BLACK}Thay mới
-STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Chọn xem loại hàng hoá nào sẽ được thay mới trong lịch trình chạy này. Ctrl+Click để loại bỏ hướng dẫn thay mới phương tiện
+STR_ORDER_REFIT                                                 :{BLACK}Cải biến
+STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Chọn xem loại hàng hoá nào sẽ được cải biến trong lộ trình chạy này. Ctrl+Click để loại bỏ yêu cầu cải biến
 
 STR_ORDER_SERVICE                                               :{BLACK}Bảo trì
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Chạy suốt
@@ -3154,31 +3154,31 @@ STR_ORDER_CONDITIONAL_TRUE_FALSE                                :Đi ngay tới 
 STR_INVALID_ORDER                                               :{RED} (Lộ trình không hợp lệ)
 
 # Time table window
-STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (bảng lộ trình thời gian)
+STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Lịch trình)
 STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}Lộ trình
 STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Chuyển xem bảng lộ trình
 
-STR_TIMETABLE_TOOLTIP                                           :{BLACK}Lộ trình thời gian - click vào 1 điểm để chọn.
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}Lịch trình - click vào 1 điểm để chọn.
 
 STR_TIMETABLE_NO_TRAVEL                                         :Không di chuyển
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Di chuyển (không bó buộc thời gian)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Di chuyển (không bó buộc theo lịch trình)
 STR_TIMETABLE_TRAVEL_FOR                                        :Di chuyển trong {STRING}
 STR_TIMETABLE_STAY_FOR                                          :và ở lại trong {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :và di chuyển trong {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} ngày
 STR_TIMETABLE_TICKS                                             :{COMMA} nhịp
 
-STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Lộ trình thời gian này sẽ mất {STRING} để hoàn thành
-STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Lộ trình thời gian này sẽ mất ít nhất {STRING} để hoàn thành (không phải tất cả đều bó buộc thời gian)
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Lịch trình này sẽ mất {STRING} để hoàn thành
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Lịch trình này sẽ mất ít nhất {STRING} để hoàn thành (không phải tất cả điểm được lập lịch trình)
 
 STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Phương tiện này đang chạy đúng giờ
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Phương tiện này đang chạy trễ dự kiến {STRING}
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Phương tiện này đang chạy sớm hơn dự kiến {STRING}
-STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Bảng lộ trình thời gian này chưa khởi tạo
-STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Bảng lộ trình thời gian sẽ bắt đầu lúc {STRING}
+STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Bảng lịch trình này chưa khởi tạo
+STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Bảng lịch trình sẽ bắt đầu lúc {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Ngày bắt đầu
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Chọn một ngày khởi đầu của bảng lộ trình thời gian
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Chọn một ngày khởi đầu của bảng lịch trình
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Đổi thời gian
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Thay đổi thời lượng của điểm lộ trình được phép sử dụng
@@ -3186,15 +3186,15 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Thay đ�
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Xoá thời gian
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Xóa thời lượng áp dụng cho điểm lộ trình
 
-STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Thiết lập lại bộ đếm trễ
-STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Thiết lập lại bộ đếm trễ giờ, để phương tiện có thể tính lại và di chuyển đúng giờ
+STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Lập lại bộ đếm trễ
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Thiết lập lại bộ đếm trễ giờ, để việc di chuyển phương tiện được tính lại đúng đắn
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Tự điền
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Tự điền bảng lộ trình thời gian qua hành trình kế tiếp (Ctrl+Click để cố giữ thời gian chờ không đổi)
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Tự điền bảng lịch trình qua việc đo thời gian hành trình kế tiếp (Ctrl+Click để cố giữ thời gian chờ không đổi)
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}Mong muốn
-STR_TIMETABLE_SCHEDULED                                         :{BLACK}Lịch dự kiến
-STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Chuyển giữa lịch mong muốn là lịch dự kiến
+STR_TIMETABLE_SCHEDULED                                         :{BLACK}Chốt lịch
+STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Chuyển giữa lịch mong muốn là lịch được chốt
 
 STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :Đến:
 STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :Đi:
@@ -3213,6 +3213,8 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}chọn n
 STR_AI_DEBUG                                                    :{WHITE}Dò lỗi AI
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Tên của AI
+STR_AI_DEBUG_SETTINGS                                           :{BLACK}Thiết lập AI
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Thay đổi thiết lập của AI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}nạp lại AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Xoá bỏ AI, nạp lại kịch bản, và khởi động lại AI
 
@@ -3609,9 +3611,9 @@ STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Không t
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... quá xa điểm lộ trình kế trước
 
 # Timetable related errors
-STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Không thể lập lịch lộ trình cho phương tiện...
+STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Không thể lập lịch trình cho phương tiện...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Phương tiện chỉ có thể chờ ở nhà ga, bến, cảng.
-STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Phương tiện này không dừng lại tại ga, bến theo lịch lộ trình.
+STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Phương tiện này không dừng lại tại ga, bến này theo lộ trình.
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... quá nhiều biển hiệu

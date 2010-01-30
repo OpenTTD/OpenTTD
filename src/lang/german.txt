@@ -3214,6 +3214,8 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Jahr aus
 STR_AI_DEBUG                                                    :{WHITE}KI Debug
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Name der KI
+STR_AI_DEBUG_SETTINGS                                           :{BLACK}KI Einstellungen
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Einstellungen der KI ändern
 STR_AI_DEBUG_RELOAD                                             :{BLACK}KI erneut laden
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Stoppe die KI, lade das Script neu und starte de KI erneut
 

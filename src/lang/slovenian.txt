@@ -2609,7 +2609,7 @@ STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Barvna sh
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Vozila:
 STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} vlak{P "" a i ov}
 STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} cestn{P o i a ih} vozil{P o i a ""}
-STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} letalo
+STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} letal{P o i a ""}
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} lad{P ja ji je ij}
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Brez
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Vrednost podjetja: {WHITE}{CURRENCY}
@@ -3255,6 +3255,8 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Izbeir l
 STR_AI_DEBUG                                                    :{WHITE}UI Čiščenje
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Ime UI
+STR_AI_DEBUG_SETTINGS                                           :{BLACK}Nastavitve UI
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Spremeni nastavitve UI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Ponovno naloži UI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Uniči UI, ponovno naloži skripto in ponovno zaženi UI
 

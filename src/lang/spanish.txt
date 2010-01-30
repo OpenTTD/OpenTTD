@@ -3214,6 +3214,8 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Seleccio
 STR_AI_DEBUG                                                    :{WHITE}Depuración de IA
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Nombre de la IA
+STR_AI_DEBUG_SETTINGS                                           :{BLACK}Configuración de la IA
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Cambiar la configuración de la IA
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Recarga la IA
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Elimina la IA, recarga el código y reinicia la IA
 

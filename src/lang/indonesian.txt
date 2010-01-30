@@ -1115,6 +1115,10 @@ STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Ijinkan
 STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Stasiun tidak seragam: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Faktor kali muatan untuk simulasi kereta yang berat: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Faktor kecepatan pesawat: {ORANGE}1 / {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Frekuensi kecelakaan pesawat: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :nihil
+STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :berkurang
+STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normal
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Ijinkan terminal drive-thru pada jalan milik kota: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Ijinkan terminal drive-thru pada jalan milik pesaing: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Ijinkan membangun stasiun berdampingan: {ORANGE}{STRING}
@@ -2370,6 +2374,7 @@ STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Aksi tidak dike
 STR_NEWGRF_ERROR_INVALID_ID                                     :Mencoba menggunakan ID yang tidak sah.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} terdapat sprite yang rusak. Semua sprite rusak akan ditandai dengan tanda tanya merah (?).
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Contains multiple Action 8 entries.
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Pembacaan pada akhir pseudo-sprite.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Peringatan!
@@ -3208,6 +3213,8 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Pilih ta
 STR_AI_DEBUG                                                    :{WHITE}AI Debug
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (versi {NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Nama AI
+STR_AI_DEBUG_SETTINGS                                           :{BLACK}Pengaturan AI
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Ubah pengaturan AI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Muat ulang AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Matikan fitur AI, muat ulang script, dan restart AI
 

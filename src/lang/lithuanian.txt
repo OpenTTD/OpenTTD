@@ -1149,6 +1149,10 @@ STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Leisti 
 STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Nestandartines stoteles: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Krovinių svorio daugiklis skirtas imituoti pakrautus traukinius: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Lėktuvų greičio daugiklis: {ORANGE}1 / {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Lėktuvų avarijų kiekis: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :jokių
+STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :retesni
+STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normalūs
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Leisti pravažiuojamas stoteles viduryje miesto kelio: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Leidžia pravažiuojamas stoteles ant priešininko kelių: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Leisti statyti susiliečiančias stoteles: {ORANGE}{STRING}
@@ -3243,6 +3247,8 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Pasirink
 STR_AI_DEBUG                                                    :{WHITE}DI Derinimas
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}AI vardas
+STR_AI_DEBUG_SETTINGS                                           :{BLACK}DI nustatymai
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Keisti DI nustatymus
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Perkrauti AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Išbraukti DI, perkrauti skritpą, ir perkrauti DI
 

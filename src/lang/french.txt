@@ -3214,6 +3214,8 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Sélecti
 STR_AI_DEBUG                                                    :{WHITE}Débogage d'IA
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Nom de l'IA
+STR_AI_DEBUG_SETTINGS                                           :{BLACK}Configuration IA
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Modifier la configuration de l'IA
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Recharger IA
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Tuer l'IA, recharger le script et relancer l'IA
 
