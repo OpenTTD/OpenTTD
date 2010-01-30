@@ -606,7 +606,8 @@ public:
 				this->selected = *this->content.Get(id_v);
 				this->list_pos = id_v;
 
-				if (pt.x <= (int)(this->GetWidget<NWidgetBase>(NCLWW_CHECKBOX)->pos_y + this->GetWidget<NWidgetBase>(NCLWW_CHECKBOX)->current_y)) {
+				const NWidgetBase *checkbox = this->GetWidget<NWidgetBase>(NCLWW_CHECKBOX);
+				if (IsInsideBS(pt.x, checkbox->pos_x, checkbox->current_x)) {
 					_network_content_client.ToggleSelectedState(this->selected);
 					this->content.ForceResort();
 				}
