@@ -351,25 +351,6 @@ static CommandCost RemoveRoad(TileIndex tile, DoCommandFlag flags, RoadBits piec
 }
 
 
-/** Delete a piece of road.
- * @param tile tile where to remove road from
- * @param flags operation to perform
- * @param p1 bit 0..3 road pieces to remove (RoadBits)
- *           bit 4..5 road type
- * @param p2 unused
- * @param text unused
- * @return the cost of this operation or an error
- */
-CommandCost CmdRemoveRoad(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
-{
-	RoadType rt = (RoadType)GB(p1, 4, 2);
-	if (!IsValidRoadType(rt)) return CMD_ERROR;
-
-	RoadBits pieces = Extract<RoadBits, 0>(p1);
-
-	return RemoveRoad(tile, flags, pieces, rt, true);
-}
-
 /**
  * Calculate the costs for roads on slopes
  *  Aside modify the RoadBits to fit on the slopes
