@@ -86,6 +86,7 @@ struct TrainCache : public AccelerationCache {
 
 	/* cached max. speed / acceleration data */
 	uint16 cached_max_speed;    ///< max speed of the consist. (minimum of the max speed of all vehicles in the consist)
+	uint16 cached_max_rail_speed; ///< max consist speed limited by rail type
 	int cached_max_curve_speed; ///< max consist speed limited by curves
 
 	/**

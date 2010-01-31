@@ -146,6 +146,11 @@ struct RailtypeInfo {
 	uint8 acceleration_type;
 
 	/**
+	 * Maximum speed for vehicles travelling on this rail type
+	 */
+	uint16 max_speed;
+
+	/**
 	 * Unique 32 bit rail type identifier
 	 */
 	RailTypeLabel label;

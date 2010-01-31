@@ -84,6 +84,9 @@ static const RailtypeInfo _original_railtypes[] = {
 		/* acceleration type */
 		0,
 
+		/* max speed */
+		0,
+
 		/* rail type label */
 		'RAIL',
 	},
@@ -159,6 +162,9 @@ static const RailtypeInfo _original_railtypes[] = {
 		/* acceleration type */
 		0,
 
+		/* max speed */
+		0,
+
 		/* rail type label */
 		'ELRL',
 	},
@@ -230,6 +236,9 @@ static const RailtypeInfo _original_railtypes[] = {
 		/* acceleration type */
 		1,
 
+		/* max speed */
+		0,
+
 		/* rail type label */
 		'MONO',
 	},
@@ -300,6 +309,9 @@ static const RailtypeInfo _original_railtypes[] = {
 
 		/* acceleration type */
 		2,
+
+		/* max speed */
+		0,
 
 		/* rail type label */
 		'MGLV',

@@ -2569,7 +2569,7 @@ static ChangeInfoResult RailTypeChangeInfo(uint id, int numinfo, int prop, ByteR
 				break;
 
 			case 0x14: // Speed limit
-				buf->ReadWord();
+				rti->max_speed = buf->ReadWord();
 				break;
 
 			case 0x15: // Acceleration model
