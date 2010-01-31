@@ -3442,6 +3442,7 @@ static void TrainController(Train *v, Vehicle *nomove)
 
 					if (GetTileRailType(gp.new_tile) != GetTileRailType(gp.old_tile)) {
 						v->First()->PowerChanged();
+						v->First()->UpdateAcceleration();
 					}
 
 					v->track = chosen_track;
