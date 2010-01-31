@@ -1066,6 +1066,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :מתירני
 STR_CITY_APPROVAL_TOLERANT                                      :סביר
 STR_CITY_APPROVAL_HOSTILE                                       :עויין
 
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}אין בינות מלאכותיות מתאימות...{}באפשרותך להוריד בינות מלאכותיות בעזרת מערכת ה'תוכן המקוון'
 STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}פעולה זו קבעה רמת קושי מותאמת אישית
 
 # Advanced settings window
@@ -1115,6 +1116,10 @@ STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}אפש�
 STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{ORANGE}{STRING}{LTBLUE} :תחנות הטרוגניות
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}הכפלת משקל מטען כדי לחקות רכבות כבדות: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{ORANGE}1 / {STRING}{LTBLUE} :מקדם המהירות עבור מטוסים
+STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}מספר התרסקויות מטוסים: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :ללא
+STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :מופחת
+STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :רגיל
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{ORANGE}{STRING}{LTBLUE} :אפשר מעבר דרך תחנות על כבישים בבעלות עירונית
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}אפשר נסיעה דרך תמרורי-עצירה על דרכים בבעלות מתחרים: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{ORANGE}{STRING}{LTBLUE} :אפשר בניית תחנות בשכנות
@@ -2370,6 +2375,7 @@ STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Unknown Action 
 STR_NEWGRF_ERROR_INVALID_ID                                     :Attempt to use invalid ID.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} contains a corrupt sprite. All corrupt sprites will be shown as a red question mark (?).
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Contains multiple Action 8 entries.
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :קרא מעבר לסוף הפיה המדומה.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}!אזהרה
@@ -3208,6 +3214,8 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}בחר �
 STR_AI_DEBUG                                                    :{WHITE}דה-באג לבינה מלאכותית
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}שם הבינה המלאכותית
+STR_AI_DEBUG_SETTINGS                                           :{BLACK}הגדרות בינה מלאכותית
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}שנה את הגדרות הבינה המלאכותית
 STR_AI_DEBUG_RELOAD                                             :{BLACK}טען מחדש בינה מלאכותית
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK} הטען מחדש את הסקריפט ואתחל בינה מלאכותית
 
