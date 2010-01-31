@@ -287,9 +287,11 @@ static CommandCost ClearTile_Unmovable(TileIndex tile, DoCommandFlag flags)
 	if (IsStatue(tile)) {
 		if (flags & DC_AUTO) return_cmd_error(STR_ERROR_OBJECT_IN_THE_WAY);
 
-		TownID town = GetStatueTownID(tile);
-		ClrBit(Town::Get(town)->statues, GetTileOwner(tile));
-		SetWindowDirty(WC_TOWN_AUTHORITY, town);
+		if (flags & DC_EXEC) {
+			TownID town = GetStatueTownID(tile);
+			ClrBit(Town::Get(town)->statues, GetTileOwner(tile));
+			SetWindowDirty(WC_TOWN_AUTHORITY, town);
+		}
 	}
 
 	if (flags & DC_EXEC) {
