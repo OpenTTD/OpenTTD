@@ -221,7 +221,7 @@ static const Command _command_proc_table[] = {
 	{CmdRemoveRoadStop,                             0}, // CMD_REMOVE_ROAD_STOP
 	{CmdBuildLongRoad,        CMD_NO_WATER | CMD_AUTO}, // CMD_BUILD_LONG_ROAD
 	{CmdRemoveLongRoad,        CMD_NO_TEST | CMD_AUTO}, // CMD_REMOVE_LONG_ROAD; towns may disallow removing road bits (as they are connected) in test, but in exec they're removed and thus removing is allowed.
-	{CmdBuildRoad,                                  0}, // CMD_BUILD_ROAD
+	{CmdBuildRoad,            CMD_NO_WATER | CMD_AUTO}, // CMD_BUILD_ROAD
 	{CmdRemoveRoad,                                 0}, // CMD_REMOVE_ROAD
 	{CmdBuildRoadDepot,       CMD_NO_WATER | CMD_AUTO}, // CMD_BUILD_ROAD_DEPOT
 

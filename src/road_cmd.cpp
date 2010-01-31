@@ -483,6 +483,7 @@ CommandCost CmdBuildRoad(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 
 	Slope tileh = GetTileSlope(tile, NULL);
 
+	bool tile_cleared = false; // Used to remember that the tile was cleared during test run
 	switch (GetTileType(tile)) {
 		case MP_ROAD:
 			switch (GetRoadTileType(tile)) {
@@ -601,6 +602,7 @@ do_clear:;
 			CommandCost ret = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 			if (ret.Failed()) return ret;
 			cost.AddCost(ret);
+			tile_cleared = true;
 		} break;
 	}
 
@@ -615,7 +617,7 @@ do_clear:;
 		cost.AddCost(ret);
 	}
 
-	if (IsTileType(tile, MP_ROAD)) {
+	if (!tile_cleared && IsTileType(tile, MP_ROAD)) {
 		/* Don't put the pieces that already exist */
 		pieces &= ComplementRoadBits(existing);
 
@@ -637,10 +639,10 @@ do_clear:;
 		}
 	}
 
-	if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
+	if (!tile_cleared && !EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
 
 	cost.AddCost(CountBits(pieces) * _price[PR_BUILD_ROAD]);
-	if (IsTileType(tile, MP_TUNNELBRIDGE)) {
+	if (!tile_cleared && IsTileType(tile, MP_TUNNELBRIDGE)) {
 		/* Pay for *every* tile of the bridge or tunnel */
 		cost.MultiplyCost(GetTunnelBridgeLength(GetOtherTunnelBridgeEnd(tile), tile) + 2);
 	}
