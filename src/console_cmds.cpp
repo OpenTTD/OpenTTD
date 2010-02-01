@@ -213,7 +213,7 @@ DEF_CONSOLE_CMD(ConSave)
 		if (SaveOrLoad(filename, SL_SAVE, SAVE_DIR) != SL_OK) {
 			IConsolePrint(CC_ERROR, "Saving map failed");
 		} else {
-			IConsolePrintF(CC_DEFAULT, "Map sucessfully saved to %s", filename);
+			IConsolePrintF(CC_DEFAULT, "Map successfully saved to %s", filename);
 		}
 		free(filename);
 		return true;
