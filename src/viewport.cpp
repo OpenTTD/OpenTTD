@@ -2526,6 +2526,8 @@ void VpSelectTilesWithMethod(int x, int y, ViewportPlaceMethod method)
 	sx = _thd.selstart.x;
 	sy = _thd.selstart.y;
 
+	int limit = 0;
+
 	switch (method) {
 		case VPM_X_OR_Y: // drag in X or Y direction
 			if (abs(sy - y) < abs(sx - x)) {
@@ -2536,15 +2538,29 @@ void VpSelectTilesWithMethod(int x, int y, ViewportPlaceMethod method)
 				style = HT_DIR_Y;
 			}
 			goto calc_heightdiff_single_direction;
+
+		case VPM_X_LIMITED: // Drag in X direction (limited size).
+			limit = (_thd.sizelimit - 1) * TILE_SIZE;
+			/* Fallthrough. */
+
 		case VPM_FIX_X: // drag in Y direction
 			x = sx;
 			style = HT_DIR_Y;
 			goto calc_heightdiff_single_direction;
+
+		case VPM_Y_LIMITED: // Drag in Y direction (limited size).
+			limit = (_thd.sizelimit - 1) * TILE_SIZE;
+			/* Fallthrough. */
+
 		case VPM_FIX_Y: // drag in X direction
 			y = sy;
 			style = HT_DIR_X;
 
 calc_heightdiff_single_direction:;
+			if (limit > 0) {
+				x = sx + Clamp(x - sx, -limit, limit);
+				y = sy + Clamp(y - sy, -limit, limit);
+			}
 			if (_settings_client.gui.measure_tooltip) {
 				TileIndex t0 = TileVirtXY(sx, sy);
 				TileIndex t1 = TileVirtXY(x, y);
@@ -2567,11 +2583,12 @@ calc_heightdiff_single_direction:;
 				ShowMeasurementTooltips(measure_strings_length[index], index, params);
 			} break;
 
-		case VPM_X_AND_Y_LIMITED: { // drag an X by Y constrained rect area
-			int limit = (_thd.sizelimit - 1) * TILE_SIZE;
+		case VPM_X_AND_Y_LIMITED: // Drag an X by Y constrained rect area.
+			limit = (_thd.sizelimit - 1) * TILE_SIZE;
 			x = sx + Clamp(x - sx, -limit, limit);
 			y = sy + Clamp(y - sy, -limit, limit);
-			} // Fallthrough
+			/* Fallthrough. */
+
 		case VPM_X_AND_Y: { // drag an X by Y area
 			if (_settings_client.gui.measure_tooltip) {
 				static const StringID measure_strings_area[] = {
