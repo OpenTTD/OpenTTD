@@ -564,8 +564,8 @@ STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}總計�
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}去年盈利的交通工具數量； 包含鐵公路車輛、船舶與飛機
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}最後提供服務的車站各部份數量。 每部份車站 (火車站、公車站、機場) 都算在内，就算連在一起亦然
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}最低收入交通工具的損益 (只計算出廠兩年以上的交通工具)
-STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}前三年的單月最低收入
-STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}前三年的單月最高收入
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}最近三年的單季最低收入
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}最近三年的單季最高收入
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}前四季運送的貨物量
 STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}上一季運送的貨物種類
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}這間公司的銀行存款
@@ -1065,6 +1065,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :寬容
 STR_CITY_APPROVAL_TOLERANT                                      :能忍受
 STR_CITY_APPROVAL_HOSTILE                                       :抱敵意
 
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}無適合的 AI 可使用...{}您可以從「線上內容」系統中下載各種 AI。
 STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}這個動作會將難度變成自訂
 
 # Advanced settings window
@@ -1114,6 +1115,10 @@ STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}允許�
 STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}不規則形狀車站：{ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}貨物重量倍率，以模擬較重列車：{ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}飛機速度比例：{ORANGE}{STRING} 分之一
+STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}飛機墜機機率：{ORANGE}{STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :無
+STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :減少
+STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :正常
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}可在市鎮所屬道路上建設路邊車站：{ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}可在競爭對手所有的道路上建設路邊車站：{ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}允許按 Ctrl 鍵興建相鄰車站： {ORANGE}{STRING}
@@ -1242,6 +1247,7 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}彩色�
 STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}開始年份：{ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}開啟平滑經濟模式 (更多、更小的變動)：{ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}允許購買其它公司的股票：{ORANGE}{STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}原料投入工廠生產的比例：{ORANGE}{STRING}%
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}拖拉時每隔：{ORANGE}{STRING} 格自動建造號誌
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}自動在指定年份前建造懸臂號誌：{ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}啟用號誌介面：{ORANGE}{STRING}
@@ -2368,6 +2374,7 @@ STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :未知的動作
 STR_NEWGRF_ERROR_INVALID_ID                                     :嘗試使用的 ID 無效
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} 包含了毀損的 sprite。所有毀損的 sprite 會以紅色問號 (？) 顯示。
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :包含多個 Action 8 指令。
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :讀取最後的偽 Sprite 結尾。
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}注意！
@@ -3206,6 +3213,8 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}選擇�
 STR_AI_DEBUG                                                    :{WHITE}AI 除錯
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}AI 名稱
+STR_AI_DEBUG_SETTINGS                                           :{BLACK}AI 設定
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}變更 AI 設定
 STR_AI_DEBUG_RELOAD                                             :{BLACK}重新載入 AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}結束 AI、重新載入腳本、重新啟動 AI
 

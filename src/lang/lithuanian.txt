@@ -644,7 +644,7 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Parinkti
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Programos „Atsitiktiniai takeliai“ įj./išj.
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Rodyti muzikos takelių pasirinkimo langą
 
-STR_ERROR_NO_SONGS                                              :{WHITE}Pasirinkta muzikos rinkinys be dainų. Dainos nebus grojamos
+STR_ERROR_NO_SONGS                                              :{WHITE}Pasirinktas muzikos rinkinys be dainų. Dainos nebus grojamos
 
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Muzikos programos pasirinkimas
@@ -1408,7 +1408,7 @@ STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Išeiti 
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Baigti
-STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Ar jūs tikrai norite sustabdyti žaidimą ir grižti į {STRING}?
+STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Ar jūs tikrai norite sustabdyti žaidimą ir grįžti į {STRING}?
 STR_QUIT_YES                                                    :{BLACK}Taip
 STR_QUIT_NO                                                     :{BLACK}Ne
 
@@ -2435,7 +2435,7 @@ STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}'{1:ENGI
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' sukėle begalinį cikla produkcijos kvietime atgal.
 
 # Sign list window
-STR_SIGN_LIST_CAPTION                                           :{WHITE}Zenklu sarasas - {COMMA} Zenklai
+STR_SIGN_LIST_CAPTION                                           :{WHITE}Ženklų sąrašas - {COMMA} ženkl{P as ai ų}
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Redaguoti ženklo tekstą

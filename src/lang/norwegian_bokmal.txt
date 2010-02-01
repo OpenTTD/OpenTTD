@@ -3213,6 +3213,8 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Velg år
 STR_AI_DEBUG                                                    :{WHITE}AI-feilsøking
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Navnet til AIen
+STR_AI_DEBUG_SETTINGS                                           :{BLACK}AI innstillinger
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Endre innstillingene for AI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Last inn AI på nytt
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Slå av AI, last skript på nytt, og start AI på nytt
 
