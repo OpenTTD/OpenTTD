@@ -498,7 +498,7 @@ public:
 			}
 
 			case GRP_WIDGET_RENAME_GROUP: // Rename the selected roup
-				this->ShowRenameGroupWindow(this->group_sel);
+				this->ShowRenameGroupWindow(this->group_sel, false);
 				break;
 
 			case GRP_WIDGET_AVAILABLE_VEHICLES:
@@ -658,12 +658,17 @@ public:
 		this->SetWidgetDirty(GRP_WIDGET_LIST_VEHICLE);
 	}
 
-	void ShowRenameGroupWindow(GroupID group)
+	void ShowRenameGroupWindow(GroupID group, bool empty)
 	{
 		assert(Group::IsValidID(group));
 		this->group_rename = group;
-		SetDParam(0, group);
-		ShowQueryString(STR_GROUP_NAME, STR_GROUP_RENAME_CAPTION, MAX_LENGTH_GROUP_NAME_BYTES, MAX_LENGTH_GROUP_NAME_PIXELS, this, CS_ALPHANUMERAL, QSF_ENABLE_DEFAULT);
+		/* Show empty query for new groups */
+		StringID str = STR_EMPTY;
+		if (!empty) {
+			SetDParam(0, group);
+			str = STR_GROUP_NAME;
+		}
+		ShowQueryString(str, STR_GROUP_RENAME_CAPTION, MAX_LENGTH_GROUP_NAME_BYTES, MAX_LENGTH_GROUP_NAME_PIXELS, this, CS_ALPHANUMERAL, QSF_ENABLE_DEFAULT);
 	}
 
 	/**
@@ -730,7 +735,7 @@ void CcCreateGroup(const CommandCost &result, TileIndex tile, uint32 p1, uint32 
 	assert(p1 <= VEH_AIRCRAFT);
 
 	VehicleGroupWindow *w = FindVehicleGroupWindow((VehicleType)p1, _current_company);
-	if (w != NULL) w->ShowRenameGroupWindow(_new_group_id);
+	if (w != NULL) w->ShowRenameGroupWindow(_new_group_id, true);
 }
 
 /**
