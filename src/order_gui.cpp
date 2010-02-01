@@ -776,9 +776,9 @@ public:
 				if (from == to) break; // no need to change anything
 
 				if (from != this->selected_order) {
-					/* Moving from preceeding order? */
+					/* Moving from preceding order? */
 					this->selected_order -= (int)(from <= this->selected_order);
-					/* Moving to   preceeding order? */
+					/* Moving to   preceding order? */
 					this->selected_order += (int)(to   <= this->selected_order);
 					break;
 				}

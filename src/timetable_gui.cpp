@@ -277,9 +277,9 @@ struct TimetableWindow : Window {
 				bool travel = HasBit(this->sel_index, 0);
 
 				if (from != selected_order) {
-					/* Moving from preceeding order? */
+					/* Moving from preceding order? */
 					selected_order -= (int)(from <= selected_order);
-					/* Moving to   preceeding order? */
+					/* Moving to   preceding order? */
 					selected_order += (int)(to   <= selected_order);
 				} else {
 					/* Now we are modifying the selected order */
