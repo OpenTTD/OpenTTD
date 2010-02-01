@@ -1209,10 +1209,10 @@ FreeUnitIDGenerator::FreeUnitIDGenerator(VehicleType type, CompanyID owner) : ca
 
 	if (this->maxid == 0) return;
 
-	this->maxid++; // so there is space for last item (with v->unitnumber == maxid)
-	this->maxid++; // this one will always be free (well, it will fail when there are 65535 units, so this overflows)
-
-	this->cache = CallocT<bool>(this->maxid);
+	/* Reserving 'maxid + 2' because we need:
+	 * - space for the last item (with v->unitnumber == maxid)
+	 * - one free slot working as loop terminator in FreeUnitIDGenerator::NextID() */
+	this->cache = CallocT<bool>(this->maxid + 2);
 
 	/* Fill the cache */
 	FOR_ALL_VEHICLES(v) {
