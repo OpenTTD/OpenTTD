@@ -753,10 +753,10 @@ STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIGFONT}{BLACK} אסון ספינת אוויר ב-{STATION}!
 STR_NEWS_DISASTER_SMALL_UFO                                     :{BIGFONT}{BLACK}!!! כלי רכב התרסק בהתנגשות עם עצם בלתי מזוהה
-STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIGFONT}{BLACK}! {TOWN} פיצוץ עז השמיד את בית הזיקוק הסמוך ל
-STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIGFONT}{BLACK}!הושמד בנסיבות מיסתוריות {TOWN}בית החרושת בסמוך ל
-STR_NEWS_DISASTER_BIG_UFO                                       :{BIGFONT}{BLACK}עב"מ נחת בסמוך ל-{TOWN}!
-STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIGFONT}{BLACK} רק שרידי פחם נותרו למזכרת !{TOWN} פיצוץ עז במכרה הפחם סמוך ל
+STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIGFONT}{BLACK}פיצוץ בבתי הזיקוק ליד {TOWN}!
+STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIGFONT}{BLACK}בית החרושת בסמוך ל{TOWN} הושמד בנסיבות מיסתוריות!
+STR_NEWS_DISASTER_BIG_UFO                                       :{BIGFONT}{BLACK}עב"מ נחת בסמוך ל{TOWN}!
+STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIGFONT}{BLACK} שרידי פיצוץ מכרה פחם משאירים עקבות הרס ליד {TOWN}!
 STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIGFONT}{BLACK}נעדרים,חשש גדול לחייהם {COMMA} מבול ! שיטפון ! לפחות
 
 STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIGFONT}{BLACK}!!!חברת תחבורה בקשיים
@@ -766,14 +766,14 @@ STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIGFONT}{BLACK
 STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIGFONT}{BLACK}!פשיטת רגל
 STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIGFONT}{BLACK}!נסגרה ע"י הנושים וכל נכסיה נמכרו {STRING}
 STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK}חברת תחבורה חדשה הוקמה
-STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}!{1:TOWN} החלה בבניה ליד {NBSP}{0:STRING}
+STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} החל בבנייה ליד {TOWN}!
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}!{STRING} רכשה את {STRING}
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(מנהל)
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}{STRING} מימן הקמה של עיר חדשה בשם {TOWN}!
 
-STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}! {1:TOWN} חדש/ה בבניה בסמוך ל {NBSP}{0:STRING}
-STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}! {1:TOWN} חדש/ה ננטע בסמוך ל {NBSP}{0:STRING}
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}{STRING} חדש/ה בבנייה בסמוך ל{TOWN}!
+STR_NEWS_INDUSTRY_PLANTED                                       :{G=m}{BIGFONT}{BLACK}{STRING} חדש ננטע בסמוך ל{TOWN}!
 
 STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}!הכריז/ה על סגירה בקרוב {STRING}
 STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}! להכריז על סגירה בקרוב {STRING} בעיות בהספקת חומרי גלם גרמו ל
@@ -832,7 +832,7 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}!{0:STRING} סובסידיה לשירות הניתן ע"י {}{}{NBSP}!תזכה לתוספת תשלום בת 200% לשנה הקרובה{NBSP} {3:STRING} ל {NBSP}{2:STRING} מ{NBSP}{1:STRING} הובלת
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}!{0:STRING} סובסידיה לשירות הניתן ע"י {}{}{NBSP}!תזכה לתוספת תשלום בת 300% לשנה הקרובה{NBSP} {3:STRING} ל {NBSP}{2:STRING} מ{NBSP}{1:STRING} הובלת
 
-STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}!{TOWN} פקקי תנועה ענקיים ב{NBSP} {}{} !מביאה לקטסטרופת תנועה לשישה חודשים {STRING} תכנית לשיפוץ מקיף של הכבישים במימון
+STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}פקקי תנועה ענקיים ב{TOWN}!{}{} תכנית לשיפוץ מקיף של הכבישים במימון {STRING} מביאה לקטסטרופת תנועה לשישה חודשים
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}השקפה {COMMA}
@@ -1719,7 +1719,7 @@ STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[פרטי] {STR
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[לכולם] :
 
 STR_NETWORK_CHAT_COMPANY                                        :[קבוצה] {STRING}: {WHITE}{STRING}
-STR_NETWORK_CHAT_TO_COMPANY                                     :[קובץ] To {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[קבוצה] אל {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_CLIENT                                         :[פרטי] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_CLIENT                                      :[פרטי] ל {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL                                            :[לכולם] {STRING}: {WHITE}{STRING}
@@ -2439,7 +2439,7 @@ STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}מחק �
 STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :שנה את שם העיר
 
 # Town local authority window
-STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}{TOWN} רשות מקומית
+STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE} רשות מקומית {TOWN}
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK} :מדד הביצועים של החברות
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}: פעולות זמינות
@@ -2745,9 +2745,9 @@ STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}החלף
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}החלף שם סוג כלי הטיס
 
 # Depot window
-STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}{TOWN} מוסך רכבת
-STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} מוסך כלי רכב
-STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} מבדוק כלי שייט
+STR_DEPOT_TRAIN_CAPTION                                         :{WHITE} מוסך רכבת {TOWN}
+STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE} מוסך כלי רכב {TOWN}
+STR_DEPOT_SHIP_CAPTION                                          :{WHITE} מבדוק כלי שייט {TOWN}
 STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} סככת מטוסים
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
@@ -2928,23 +2928,23 @@ STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}אין 
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}{WAYPOINT} :בדרך אל
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE} {1:VELOCITY},{0:WAYPOINT} :בדרך אל
 
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT                      :{ORANGE}{TOWN} בדרך אל המוסך ב
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_VEL                  :{ORANGE}{1:VELOCITY}במהירות {NBSP}{0:TOWN} בדרך אל המוסך ב
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT               :{ORANGE}{TOWN} בדרך אל מוסך הרכבים ב
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL           :{ORANGE}בדרך אל מוסך הרכבים בעיר {TOWN} ,{VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT                       :{ORANGE} {TOWN} בדרך אל המבדוק ב
+STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT                      :{ORANGE}בדרך אל מוסך הרכבות ב{TOWN}
+STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_VEL                  :{ORANGE}בדרך למוסך הרכבות {TOWN}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT               :{ORANGE}בדרך אל מוסך כלי הרכב {TOWN}
+STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL           :{ORANGE}בדרך אל מוסך כלי הרכב בעיר {TOWN} ,{VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT                       :{ORANGE}בדרך אל המבדוק ב{TOWN}
 STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_VEL                   :{ORANGE}בדרך אל המבדוק בעיר {TOWN} ,{VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR                           :{ORANGE} {STATION} בדרך אל סככת המטוסים ב
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_VEL                       :{ORANGE}בדרך אל סככת המטוסים בעיר {STATION}, {VELOCITY}
 
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_SERVICE              :{LTBLUE}{TOWN} בדרך לטיפול במוסך
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL          :{LTBLUE}{1:VELOCITY}במהירות {NBSP}{0:TOWN} בדרך לטיפול במוסך
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE       :{LTBLUE} {TOWN} טיפול במוסך ב
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL   :{LTBLUE}בשירות במוסך רכב של {TOWN}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_SERVICE              :{LTBLUE}טיפול במוסך הרכבות {TOWN}
+STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL          :{LTBLUE}בשירות במוסך הרכבות {TOWN}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE       :{LTBLUE}טיפול במוסך כלי הרכב ב{TOWN}
+STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL   :{LTBLUE}בשירות במוסך כלי רכב של {TOWN}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE               :{LTBLUE}{TOWN} טיפול במבדוק
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL           :{LTBLUE}{1:VELOCITY} מהירות , {NBSP}{0:TOWN} טיפול במבדוק
+STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL           :{LTBLUE}טיפול במבדוק {TOWN}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE                   :{LTBLUE}{STATION} טיפול בסככת המטוסים
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE_VEL               :{LTBLUE}{1:VELOCITY} מהירות , {NBSP}{0:STATION} טיפול בסככת ה�טוסים
+STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE_VEL               :{LTBLUE}טיפול בסככת המטוסים {STATION} , {VELOCITY}
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}(פרטים){VEHICLE}
@@ -3119,7 +3119,7 @@ STR_ORDER_NEAREST_HANGAR                                        :סככת המט
 STR_ORDER_TRAIN_DEPOT                                           :מוסך רכבות
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :מוסך רכבים
 STR_ORDER_SHIP_DEPOT                                            :מבדוק ספינות
-STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{2:STRING} {1:TOWN} {0:STRING}
+STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {TOWN} {STRING}
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{2:STRING} {1:STRING} {0:STRING}
 STR_ORDER_GO_TO_HANGAR_FORMAT                                   :{STRING} {STATION} סככת המטוסים ב
 
@@ -3330,9 +3330,9 @@ STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}השם �
 STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}חוסם את הדרך {STRING}
 
 # Local authority errors
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} הרשות המקומית מתנגדת לפעולה זו
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN} הרשות המקומית מתנגדת לבניית שדה תעופה נוסף בעיר זאת
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}מתנגדת להקמת שדה תעופה בשל חשש מהרעש {TOWN} הרשות המקומית ב
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE} הרשות המקומית של {TOWN} מתנגדת לפעולה זו
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE} הרשות המקומית של {TOWN} מתנגדת לבניית שדה תעופה נוסף בעיר
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}הרשות המקומית ב{TOWN} מתנגדת להקמת שדה תעופה בשל חשש מהרעש
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}ניסיונך לשחד את הרשות המקומית
 STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}נחשף ע"י מבקר המדינה
 
@@ -3879,7 +3879,7 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_TALBOTT_LIVESTOCK_VAN             :'משאית ב�
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_LIVESTOCK_VAN                 :'משאית בקר 'יו-איץ'-אל
 STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_LIVESTOCK_VAN              :'משאית בקר 'פוסטר
 STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_GOODS_TRUCK                :'משאית מוצרים 'באלוג
-STR_VEHICLE_NAME_ROAD_VEHICLE_CRAIGHEAD_GOODS_TRUCK             :'משאית מוצרים 'קרייגהד
+STR_VEHICLE_NAME_ROAD_VEHICLE_CRAIGHEAD_GOODS_TRUCK             :משאית מוצרים 'קרייגהד'
 STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GOODS_TRUCK                  :'משאית מוצרים 'גוס
 STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_GRAIN_TRUCK              :'משאית תבואה 'הירפורד
 STR_VEHICLE_NAME_ROAD_VEHICLE_THOMAS_GRAIN_TRUCK                :'משאית תבואה 'תומאס
@@ -4004,13 +4004,13 @@ STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
 STR_FORMAT_DATE_LONG                                            :{2:NUM} ב{1:STRING} {LRM}{0:STRING}
 STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
 
-STR_FORMAT_BUOY_NAME                                            :{TOWN} מצוף
-STR_FORMAT_BUOY_NAME_SERIAL                                     :{TOWN} מצוף #{COMMA}
+STR_FORMAT_BUOY_NAME                                            :מצוף {TOWN}
+STR_FORMAT_BUOY_NAME_SERIAL                                     :מצוף {TOWN} #{COMMA}
 STR_FORMAT_COMPANY_NUM                                          :({COMMA} חברה)
 STR_FORMAT_GROUP_NAME                                           :{COMMA} קבוצה
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
-STR_FORMAT_WAYPOINT_NAME                                        :{TOWN}נקודות ציון
-STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN} #{COMMA}נקות ציון
+STR_FORMAT_WAYPOINT_NAME                                        :נקודות ציון {TOWN}
+STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :נקודת ציון {TOWN} #{COMMA}
 
 STR_UNKNOWN_STATION                                             :תחנה לא ידועה
 STR_DEFAULT_SIGN_NAME                                           :סימניה

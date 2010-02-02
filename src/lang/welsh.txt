@@ -1084,6 +1084,8 @@ STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Caniat�
 STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Gorsafoedd anunffurf: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Lluosogydd pwysau ar gyfer llwythi i adlewyrchu trenau trwm{ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Ffactor cyflymder awyrenau: {ORANGE}1 / {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Dim
+STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Llai
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Caniatáu arosfannau gyrru-trwodd ar ffyrdd sy'n eiddo i drefi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Caniatáu i ffyrdd gyrru-drwodd stopio ar ffyrdd sy'n eiddo i gystadleuwyr: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Caniatáu adeiladu gorsafoedd cyfochrog: {ORANGE}{STRING}
@@ -1956,7 +1958,7 @@ STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Dewiswch
 STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Bach
 STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}Dinas
 STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Maes awyr metropolitan
-STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Maes awyr rhyngwladol
+STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Rhyngwladol
 STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Cymudol
 STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Rhyng-gyfandirol
 STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Porth Hofrennydd

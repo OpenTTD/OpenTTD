@@ -789,7 +789,7 @@ STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK}{STRING} sản xuất tại {INDUSTRY} tăng lên {COMMA}%!
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} sản lượng giảm 50%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}Bị sâu bọ tàn phá tại {INDUSTRY}!{}Năng suất giảm 50%
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK}{STRING} năng suất tại {INDUSTRY} giảm {COMMA}%!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK}Năng suất {STRING} tại {INDUSTRY} giảm {COMMA}%!
 
 STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} đang chờ tại xưởng
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} đang chờ tại xưởng
@@ -825,7 +825,7 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Lời đề nghị trợ cấp đã hết hạn:{}{}{STRING} từ {STRING} đến {STRING} bây giờ sẽ không có trợ cấp.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Đã rút khỏi trợ cấp:{}{}{STRING} kinh doanh từ {STRING} đến {STRING} sẽ không còn trợ cấp nữa.
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Khuyến mãi trợ cấp dịch vụ:{}{}Dịch vụ {STRING} đầu tiên từ {STRING} đến {STRING} sẽ thu hút tiền trợ cấp trong một năm của chính quyền địa phương!
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Khuyến mãi trợ cấp dịch vụ:{}{}Dịch vụ {STRING} đầu tiên từ {STRING} đến {STRING} sẽ thu hút tiền trợ cấp trong một năm của chính quyền địa phương!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Trợ cấp dịch vụ được trao cho {STRING}!{}{}Dịch vụ {STRING} từ {STRING} đến {STRING} sẽ thu lợi cao hơn 50% đến năm sau!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Trợ cấp dịch vụ được trao cho {STRING}!{}{}Dịch vụ {STRING} từ {STRING} đến {STRING} sẽ thu lợi gấp đôi đến năm sau!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Trợ cấp dịch vụ được trao cho {STRING}!{}{}Dịch vụ {STRING} từ {STRING} đến {STRING} sẽ thu lợi gấp ba đến năm sau!
@@ -1395,7 +1395,7 @@ STR_ABANDOM_SCENARIO_QUERY                                      :{YELLOW}Bạn c
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Cheats
 STR_CHEATS_TOOLTIP                                              :{BLACK}Ô đánh dấu cho biết nếu bạn đã từng dùng mã ăn gian đó
-STR_CHEATS_WARNING                                              :{BLACK}Cảnh báo! Bạn muốn lừa dối những đối thủ thành thực của bạn ư. Những hành động đó của bạn sẽ là vết nhơ suốt đời.
+STR_CHEATS_WARNING                                              :{BLACK}Cảnh báo! Bạn muốn lừa dối những đối thủ thành thực của bạn ư? Những hành động đó của bạn sẽ là vết nhơ suốt đời!
 STR_CHEAT_MONEY                                                 :{LTBLUE}Tăng số tiền lên {CURRENCY}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Điều khiển công ty: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Xe ủi thần kỳ (xúc văng nhà máy, vật không thể di chuyển): {ORANGE}{STRING}
@@ -3119,7 +3119,7 @@ STR_ORDER_TRAIN_DEPOT                                           :Xưởng tàu h
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Xưởng ôtô
 STR_ORDER_SHIP_DEPOT                                            :Xưởng tàu biển
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {TOWN} {STRING}
-STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
+STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{0:STRING} {2:STRING} {1:STRING}
 STR_ORDER_GO_TO_HANGAR_FORMAT                                   :{STRING} Xưởng {STATION}
 
 STR_ORDER_REFIT_ORDER                                           :(Cải biến thành {STRING})

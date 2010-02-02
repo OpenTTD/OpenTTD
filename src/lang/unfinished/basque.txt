@@ -600,6 +600,7 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}'Pertson
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}'Pertsonala 2' (erabiltzaileak aukeratutakoa) programa aukeratu
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Erakutsi kanten selekzio leihoa
 
+
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Musika Programen Selekzioa
 STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
@@ -763,6 +764,7 @@ STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK
 
 ############ start of townname region
 ############ end of townname region
+
 
 
 
@@ -1252,6 +1254,7 @@ STR_ORDER_GO_TO_STATION                                         :{STRING} {STATI
 
 
 # AI debug window
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}IA-ren hautaketak aldatu
 
 
 # AI configuration window

@@ -35,6 +35,7 @@ STR_CARGO_PLURAL_PASSENGERS.ka                                  :Keleivius
 STR_CARGO_PLURAL_COAL                                           :Anglį
 STR_CARGO_PLURAL_COAL.kas                                       :Anglis
 STR_CARGO_PLURAL_COAL.ko                                        :Anglies
+STR_CARGO_PLURAL_COAL.ka                                        :Anglį
 STR_CARGO_PLURAL_MAIL                                           :Paštas
 STR_CARGO_PLURAL_MAIL.ko                                        :Pašto
 STR_CARGO_PLURAL_MAIL.ka                                        :Paštą

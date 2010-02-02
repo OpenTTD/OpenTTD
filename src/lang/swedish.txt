@@ -942,7 +942,7 @@ STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Välj fi
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Grafikpaket som standard
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Välj vilket grafikpaket som ska användas som standard
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} saknad/trasig fil{P "" s}
-STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Ytterligare information om bas-grafik settet
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Ytterligare information om basgrafik-set
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Grundljudspaket
 STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Välj grundljudspaket att använda
@@ -1115,6 +1115,10 @@ STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Tillåt
 STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Icke-rektangulära stationer: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Godsfaktor för att simulera tunga tåg: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Hastighetsfaktor för flygplan: {ORANGE}1 / {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Antal flygplanskrascher: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :inga
+STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :reducerad
+STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normal
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Tillåt genomfarts-stop på stadsägda vägar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Tillåt dina fordon att köra genom motståndarens hållplatser: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Tillåt konstruktion av närliggande stationer: {ORANGE}{STRING}
@@ -2370,6 +2374,7 @@ STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Okänd egenskap
 STR_NEWGRF_ERROR_INVALID_ID                                     :Försök att använda ogiltig ID.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} innehåller en skadad sprite. Alla korrupta sprites kommer att visas som ett rött frågetecken (?).
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Innehåller mer än en Action 8 funktion.
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Läs förbi slutet av pseudo-sprite.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Varning!
@@ -3208,6 +3213,8 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Välj å
 STR_AI_DEBUG                                                    :{WHITE}Felsökning av datorspelare
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Namn på datorspelaren
+STR_AI_DEBUG_SETTINGS                                           :{BLACK}AI-inställningar
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Ändra inställningar för AI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Ladda om datorspelaren
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Stoppa datorspelaren, ladda om scriptet och starta sedan om datorspelaren
 
