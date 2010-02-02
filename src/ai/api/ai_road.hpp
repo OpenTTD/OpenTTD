@@ -263,6 +263,7 @@ public:
 	 * @exception AIRoad::ERR_ROAD_ONE_WAY_ROADS_CANNOT_HAVE_JUNCTIONS
 	 * @exception AIRoad::ERR_ROAD_WORKS_IN_PROGRESS
 	 * @exception AIError::ERR_VEHICLE_IN_THE_WAY
+	 * @note Construction will fail if an obstacle is found between the start and end tiles.
 	 * @return Whether the road has been/can be build or not.
 	 */
 	static bool BuildRoad(TileIndex start, TileIndex end);
@@ -289,6 +290,7 @@ public:
 	 * @exception AIRoad::ERR_ROAD_ONE_WAY_ROADS_CANNOT_HAVE_JUNCTIONS
 	 * @exception AIRoad::ERR_ROAD_WORKS_IN_PROGRESS
 	 * @exception AIError::ERR_VEHICLE_IN_THE_WAY
+	 * @note Construction will fail if an obstacle is found between the start and end tiles.
 	 * @return Whether the road has been/can be build or not.
 	 */
 	static bool BuildOneWayRoad(TileIndex start, TileIndex end);
@@ -311,6 +313,7 @@ public:
 	 * @exception AIRoad::ERR_ROAD_ONE_WAY_ROADS_CANNOT_HAVE_JUNCTIONS
 	 * @exception AIRoad::ERR_ROAD_WORKS_IN_PROGRESS
 	 * @exception AIError::ERR_VEHICLE_IN_THE_WAY
+	 * @note Construction will fail if an obstacle is found between the start and end tiles.
 	 * @return Whether the road has been/can be build or not.
 	 */
 	static bool BuildRoadFull(TileIndex start, TileIndex end);
@@ -338,6 +341,7 @@ public:
 	 * @exception AIRoad::ERR_ROAD_ONE_WAY_ROADS_CANNOT_HAVE_JUNCTIONS
 	 * @exception AIRoad::ERR_ROAD_WORKS_IN_PROGRESS
 	 * @exception AIError::ERR_VEHICLE_IN_THE_WAY
+	 * @note Construction will fail if an obstacle is found between the start and end tiles.
 	 * @return Whether the road has been/can be build or not.
 	 */
 	static bool BuildOneWayRoadFull(TileIndex start, TileIndex end);

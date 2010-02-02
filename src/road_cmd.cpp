@@ -690,6 +690,7 @@ do_clear:;
  * - p2 = (bit 2) - direction: 0 = along x-axis, 1 = along y-axis (p2 & 4)
  * - p2 = (bit 3 + 4) - road type
  * - p2 = (bit 5) - set road direction
+ * - p2 = (bit 6) - 0 = build up to an obstacle, 1 = fail if an obstacle is found (used for AIs).
  * @param text unused
  * @return the cost of this operation or an error
  */
@@ -742,7 +743,10 @@ CommandCost CmdBuildLongRoad(TileIndex start_tile, DoCommandFlag flags, uint32 p
 		_error_message = INVALID_STRING_ID;
 		CommandCost ret = DoCommand(tile, drd << 6 | rt << 4 | bits, 0, flags, CMD_BUILD_ROAD);
 		if (ret.Failed()) {
-			if (_error_message != STR_ERROR_ALREADY_BUILT) break;
+			if (_error_message != STR_ERROR_ALREADY_BUILT) {
+				if (HasBit(p2, 6)) return CMD_ERROR;
+				break;
+			}
 		} else {
 			had_success = true;
 			/* Only pay for the upgrade on one side of the bridges and tunnels */
