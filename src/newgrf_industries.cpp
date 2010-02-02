@@ -302,7 +302,7 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 		case 0x98: return industry->this_month_transported[0];
 		case 0x99: return GB(industry->this_month_transported[0], 8, 8);
 		case 0x9A: return industry->this_month_transported[1];
-		case 0x9B: return GB(industry->this_month_transported[0], 8, 8);
+		case 0x9B: return GB(industry->this_month_transported[1], 8, 8);
 		/* fraction of cargo transported LAST month. */
 		case 0x9C:
 		case 0x9D: return industry->last_month_pct_transported[variable - 0x9C];
@@ -315,7 +315,7 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 		case 0xA2: return industry->last_month_transported[0];
 		case 0xA3: return GB(industry->last_month_transported[0], 8, 8);
 		case 0xA4: return industry->last_month_transported[1];
-		case 0xA5: return GB(industry->last_month_transported[0], 8, 8);
+		case 0xA5: return GB(industry->last_month_transported[1], 8, 8);
 
 		case 0xA6: return industry->type;
 		case 0xA7: return industry->founder;
