@@ -698,6 +698,7 @@ static CommandCost ValidateAutoDrag(Trackdir *trackdir, TileIndex start, TileInd
  * - p2 = (bit 0-3) - railroad type normal/maglev (0 = normal, 1 = mono, 2 = maglev)
  * - p2 = (bit 4-6) - track-orientation, valid values: 0-5 (Track enum)
  * - p2 = (bit 7)   - 0 = build, 1 = remove tracks
+ * - p2 = (bit 8)   - 0 = build up to an obstacle, 1 = fail if an obstacle is found (used for AIs).
  * @param text unused
  * @return the cost of this operation or an error
  */
@@ -721,7 +722,10 @@ static CommandCost CmdRailTrackHelper(TileIndex tile, DoCommandFlag flags, uint3
 		ret = DoCommand(tile, railtype, TrackdirToTrack(trackdir), flags, remove ? CMD_REMOVE_SINGLE_RAIL : CMD_BUILD_SINGLE_RAIL);
 
 		if (ret.Failed()) {
-			if (_error_message != STR_ERROR_ALREADY_BUILT && !remove) break;
+			if (_error_message != STR_ERROR_ALREADY_BUILT && !remove) {
+				if (HasBit(p2, 8)) return CMD_ERROR;
+				break;
+			}
 			_error_message = INVALID_STRING_ID;
 		} else {
 			total_cost.AddCost(ret);

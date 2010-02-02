@@ -380,6 +380,7 @@ public:
 	 * @exception AIRail::ERR_CROSSING_ON_ONEWAY_ROAD
 	 * @exception AIRoad::ERR_ROAD_WORKS_IN_PROGRESS
 	 * @exception AIError::ERR_ALREADY_BUILT
+	 * @note Construction will fail if an obstacle is found between the start and end tiles.
 	 * @return Whether the rail has been/can be build or not.
 	 */
 	static bool BuildRail(TileIndex from, TileIndex tile, TileIndex to);

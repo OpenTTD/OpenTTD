@@ -332,7 +332,7 @@ static uint32 SimulateDrag(TileIndex from, TileIndex tile, TileIndex *to)
 			(::TileX(from) == ::TileX(tile) && ::TileX(tile) == ::TileX(to)) ||
 			(::TileY(from) == ::TileY(tile) && ::TileY(tile) == ::TileY(to)));
 
-	uint32 p2 = SimulateDrag(from, tile, &to);
+	uint32 p2 = SimulateDrag(from, tile, &to) | 1 << 8;
 	return AIObject::DoCommand(tile, to, p2, CMD_BUILD_RAILROAD_TRACK);
 }
 
