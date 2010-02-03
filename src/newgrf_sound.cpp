@@ -18,7 +18,7 @@
 #include "sound_func.h"
 #include "core/mem_func.hpp"
 
-static SmallVector<SoundEntry, ORIGINAL_SAMPLE_COUNT> _sounds;
+static SmallVector<SoundEntry, 8> _sounds;
 
 
 /* Allocate a new Sound */
