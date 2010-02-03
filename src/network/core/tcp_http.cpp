@@ -35,7 +35,7 @@ NetworkHTTPSocketHandler::NetworkHTTPSocketHandler(SOCKET s,
 	redirect_depth(depth),
 	sock(s)
 {
-	int bufferSize = strlen(url) + strlen(host) + strlen(_openttd_revision) + (data == NULL ? 0 : strlen(data)) + 128;
+	size_t bufferSize = strlen(url) + strlen(host) + strlen(_openttd_revision) + (data == NULL ? 0 : strlen(data)) + 128;
 	char *buffer = AllocaM(char, bufferSize);
 
 	DEBUG(net, 7, "[tcp/http] requesting %s%s", host, url);

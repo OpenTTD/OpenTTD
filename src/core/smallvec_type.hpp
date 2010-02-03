@@ -79,9 +79,9 @@ public:
 	 * @param to_add the number of items to append
 	 * @return pointer to newly allocated item
 	 */
-	FORCEINLINE T *Append(size_t to_add = 1)
+	FORCEINLINE T *Append(uint to_add = 1)
 	{
-		size_t begin = this->items;
+		uint begin = this->items;
 		this->items += to_add;
 
 		if (this->items > this->capacity) {

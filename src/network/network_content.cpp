@@ -511,7 +511,7 @@ void ClientNetworkContentSocketHandler::OnReceiveData(const char *data, size_t l
 	if (this->http_response_index == -1) {
 		if (data != NULL) {
 			/* Append the rest of the response. */
-			memcpy(this->http_response.Append(length), data, length);
+			memcpy(this->http_response.Append((uint)length), data, length);
 			return;
 		} else {
 			/* Make sure the response is properly terminated. */
@@ -563,7 +563,7 @@ void ClientNetworkContentSocketHandler::OnReceiveData(const char *data, size_t l
 		check_and_terminate(p);
 
 		/* Update the index for the next one */
-		this->http_response_index += strlen(str) + 1;
+		this->http_response_index += (int)strlen(str) + 1;
 
 		/* Read the ID */
 		p = strchr(str, ',');
