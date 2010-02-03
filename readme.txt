@@ -513,9 +513,7 @@ X.X) Credits:
 The OpenTTD team (in alphabetical order):
   Albert Hofkamp (Alberth)       - GUI expert
   Jean-Francois Claeys (Belugas) - GUI, newindustries and more
-  Bjarni Corfitzen (Bjarni)      - MacOSX port, coder and vehicles
   Matthijs Kooijman (blathijs)   - Pathfinder-guru, pool rework
-  Victor Fischer (Celestar)      - Programming everywhere you need him to
   Christoph Elsenhans (frosch)   - General coding
   Loïc Guilloux (glx)            - Windows Expert
   Michael Lutz (michi_cc)        - Path based signals
@@ -523,9 +521,12 @@ The OpenTTD team (in alphabetical order):
   Peter Nelson (peter1138)       - Spiritual descendant from newGRF gods
   Remko Bijker (Rubidium)        - Lead coder and way more
   Zdeněk Sojka (SmatZ)           - Bug finder and fixer
+  José Soler (Terkhen)           - General coding
   Thijs Marinussen (Yexo)        - AI Framework
 
 Inactive Developers:
+  Bjarni Corfitzen (Bjarni)      - MacOSX port, coder and vehicles
+  Victor Fischer (Celestar)      - Programming everywhere you need him to
   Tamás Faragó (Darkvater)       - Ex-Lead coder
   Jaroslav Mazanec (KUDr)        - YAPG (Yet Another Pathfinder God) ;)
   Jonathan Coome (Maedhros)      - High priest of the NewGRF Temple
