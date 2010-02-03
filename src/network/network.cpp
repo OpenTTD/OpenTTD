@@ -1050,6 +1050,7 @@ void NetworkUDPGameLoop()
 {
 	_network_content_client.SendReceive();
 	TCPConnecter::CheckCallbacks();
+	NetworkHTTPSocketHandler::HTTPReceive();
 
 	if (_network_udp_server) {
 		_udp_server_socket->ReceivePackets();

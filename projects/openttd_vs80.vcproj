@@ -3416,6 +3416,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\network\core\tcp_http.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\network\core\tcp_http.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\network\core\udp.cpp"
 				>
 			</File>

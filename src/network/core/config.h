@@ -18,12 +18,17 @@
 #define NETWORK_MASTER_SERVER_HOST "master.openttd.org"
 /** DNS hostname of the content server */
 #define NETWORK_CONTENT_SERVER_HOST "content.openttd.org"
+/** DNS hostname of the HTTP-content mirror server */
+#define NETWORK_CONTENT_MIRROR_HOST "binaries.openttd.org"
+/** URL of the HTTP mirror system */
+#define NETWORK_CONTENT_MIRROR_URL "/bananas"
 /** Message sent to the masterserver to 'identify' this client as OpenTTD */
 #define NETWORK_MASTER_SERVER_WELCOME_MESSAGE "OpenTTDRegister"
 
 enum {
 	NETWORK_MASTER_SERVER_PORT    = 3978, ///< The default port of the master server (UDP)
 	NETWORK_CONTENT_SERVER_PORT   = 3978, ///< The default port of the content server (TCP)
+	NETWORK_CONTENT_MIRROR_PORT   =   80, ///< The default port of the content mirror (TCP)
 	NETWORK_DEFAULT_PORT          = 3979, ///< The default port of the game server (TCP & UDP)
 	NETWORK_DEFAULT_DEBUGLOG_PORT = 3982, ///< The default port debug-log is sent too (TCP)
 

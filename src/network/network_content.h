@@ -13,6 +13,7 @@
 #define NETWORK_CONTENT_H
 
 #include "core/tcp_content.h"
+#include "core/tcp_http.h"
 
 #if defined(ENABLE_NETWORK)
 
@@ -63,12 +64,14 @@ struct ContentCallback {
 /**
  * Socket handler for the content server connection
  */
-class ClientNetworkContentSocketHandler : public NetworkContentSocketHandler, ContentCallback {
+class ClientNetworkContentSocketHandler : public NetworkContentSocketHandler, ContentCallback, HTTPCallback {
 protected:
 	typedef SmallVector<ContentID, 4> ContentIDList;
 	SmallVector<ContentCallback *, 2> callbacks; ///< Callbacks to notify "the world"
 	ContentIDList requested;                     ///< ContentIDs we already requested (so we don't do it again)
 	ContentVector infos;                         ///< All content info we received
+	SmallVector<char, 1024> http_response;       ///< The HTTP response to the requests we've been doing
+	int http_response_index;                     ///< Where we are, in the response, with handling it
 
 	FILE *curFile;        ///< Currently downloaded file
 	ContentInfo *curInfo; ///< Information about the currently downloaded file
@@ -89,8 +92,14 @@ protected:
 	void OnDownloadProgress(const ContentInfo *ci, uint bytes);
 	void OnDownloadComplete(ContentID cid);
 
+	void OnFailure();
+	void OnReceiveData(const char *data, size_t length);
+
 	bool BeforeDownload();
 	void AfterDownload();
+
+	void DownloadSelectedContentHTTP(const ContentIDList &content);
+	void DownloadSelectedContentFallback(const ContentIDList &content);
 public:
 	/** The idle timeout; when to close the connection because it's idle. */
 	static const int IDLE_TIMEOUT = 60 * 1000;
@@ -106,7 +115,7 @@ public:
 	void RequestContentList(uint count, const ContentID *content_ids);
 	void RequestContentList(ContentVector *cv, bool send_md5sum = true);
 
-	void DownloadSelectedContent(uint &files, uint &bytes);
+	void DownloadSelectedContent(uint &files, uint &bytes, bool fallback = false);
 
 	void Select(ContentID cid);
 	void Unselect(ContentID cid);

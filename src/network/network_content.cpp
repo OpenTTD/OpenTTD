@@ -18,6 +18,7 @@
 #include "../gui.h"
 #include "../variables.h"
 #include "../base_media_base.h"
+#include "../settings_type.h"
 #include "network_content.h"
 
 #include "table/strings.h"
@@ -251,7 +252,7 @@ void ClientNetworkContentSocketHandler::RequestContentList(ContentVector *cv, bo
 	}
 }
 
-void ClientNetworkContentSocketHandler::DownloadSelectedContent(uint &files, uint &bytes)
+void ClientNetworkContentSocketHandler::DownloadSelectedContent(uint &files, uint &bytes, bool fallback)
 {
 	bytes = 0;
 
@@ -269,8 +270,41 @@ void ClientNetworkContentSocketHandler::DownloadSelectedContent(uint &files, uin
 	/* If there's nothing to download, do nothing. */
 	if (files == 0) return;
 
-	uint count = files;
-	ContentID *content_ids = content.Begin();
+	if (_settings_client.network.no_http_content_downloads || fallback) {
+		this->DownloadSelectedContentFallback(content);
+	} else {
+		this->DownloadSelectedContentHTTP(content);
+	}
+}
+
+void ClientNetworkContentSocketHandler::DownloadSelectedContentHTTP(const ContentIDList &content)
+{
+	uint count = content.Length();
+
+	/* Allocate memory for the whole request.
+	 * Requests are "id\nid\n..." (as strings), so assume the maximum ID,
+	 * which is uint32 so 10 characters long. Then the newlines and
+	 * multiply that all with the count and then add the '\0'. */
+	uint bytes = (10 + 1) * count + 1;
+	char *content_request = MallocT<char>(bytes);
+	const char *lastof = content_request + bytes - 1;
+
+	char *p = content_request;
+	for (const ContentID *id = content.Begin(); id != content.End(); id++) {
+		p += seprintf(p, lastof, "%d\n", *id);
+	}
+
+	this->http_response_index = -1;
+
+	NetworkAddress address(NETWORK_CONTENT_MIRROR_HOST, NETWORK_CONTENT_MIRROR_PORT);
+	new NetworkHTTPContentConnecter(address, this, NETWORK_CONTENT_MIRROR_URL, content_request);
+	/* NetworkHTTPContentConnecter takes over freeing of content_request! */
+}
+
+void ClientNetworkContentSocketHandler::DownloadSelectedContentFallback(const ContentIDList &content)
+{
+	uint count = content.Length();
+	const ContentID *content_ids = content.Begin();
 	this->Connect();
 
 	while (count > 0) {
@@ -451,6 +485,146 @@ void ClientNetworkContentSocketHandler::AfterDownload()
 	}
 }
 
+/* Also called to just clean up the mess. */
+void ClientNetworkContentSocketHandler::OnFailure()
+{
+	/* If we fail, download the rest via the 'old' system. */
+	uint files, bytes;
+	this->DownloadSelectedContent(files, bytes, true);
+
+	this->http_response.Reset();
+	this->http_response_index = -2;
+
+	if (this->curFile != NULL) {
+		fclose(this->curFile);
+		this->curFile = NULL;
+	}
+}
+
+void ClientNetworkContentSocketHandler::OnReceiveData(const char *data, size_t length)
+{
+	assert(data == NULL || length != 0);
+
+	/* Ignore any latent data coming from a connection we closed. */
+	if (this->http_response_index == -2) return;
+
+	if (this->http_response_index == -1) {
+		if (data != NULL) {
+			/* Append the rest of the response. */
+			memcpy(this->http_response.Append(length), data, length);
+			return;
+		} else {
+			/* Make sure the response is properly terminated. */
+			*this->http_response.Append() = '\0';
+
+			/* And prepare for receiving the rest of the data. */
+			this->http_response_index = 0;
+		}
+	}
+
+	if (data != NULL) {
+		/* We have data, so write it to the file. */
+		if (fwrite(data, 1, length, this->curFile) != length) {
+			/* Writing failed somehow, let try via the old method. */
+			this->OnFailure();
+		} else {
+			/* Just received the data. */
+			this->OnDownloadProgress(this->curInfo, (uint)length);
+		}
+		/* Nothing more to do now. */
+		return;
+	}
+
+	if (this->curFile != NULL) {
+		/* We've finished downloading a file. */
+		this->AfterDownload();
+	}
+
+	if ((uint)this->http_response_index >= this->http_response.Length()) {
+		/* It's not a real failure, but if there's
+		 * nothing more to download it helps with
+		 * cleaning up the stuff we allocated. */
+		this->OnFailure();
+		return;
+	}
+
+	delete this->curInfo;
+	/* When we haven't opened a file this must be our first packet with metadata. */
+	this->curInfo = new ContentInfo;
+
+/** Check p for not being null and return calling OnFailure if that's not the case. */
+#define check(p) { if ((p) == NULL) { this->OnFailure(); return; } }
+/** Check p for not being null and then terminate, or return calling OnFailure. */
+#define check_and_terminate(p) { check(p); *(p) = '\0'; }
+
+	for (;;) {
+		char *str = this->http_response.Begin() + this->http_response_index;
+		char *p = strchr(str, '\n');
+		check_and_terminate(p);
+
+		/* Update the index for the next one */
+		this->http_response_index += strlen(str) + 1;
+
+		/* Read the ID */
+		p = strchr(str, ',');
+		check_and_terminate(p);
+		this->curInfo->id = (ContentID)atoi(str);
+
+		/* Read the type */
+		str = p + 1;
+		p = strchr(str, ',');
+		check_and_terminate(p);
+		this->curInfo->type = (ContentType)atoi(str);
+
+		/* Read the file size */
+		str = p + 1;
+		p = strchr(str, ',');
+		check_and_terminate(p);
+		this->curInfo->filesize = atoi(str);
+
+		/* Read the URL */
+		str = p + 1;
+		/* Is it a fallback URL? If so, just continue with the next one. */
+		if (strncmp(str, "ottd", 4) == 0) {
+			if ((uint)this->http_response_index >= this->http_response.Length()) {
+				/* Have we gone through all lines? */
+				this->OnFailure();
+				return;
+			}
+			continue;
+		}
+
+		p = strrchr(str, '/');
+		check(p);
+
+		char tmp[MAX_PATH];
+		if (strecpy(tmp, p, lastof(tmp)) == lastof(tmp)) {
+			this->OnFailure();
+			return;
+		}
+		/* Remove the extension from the string. */
+		for (uint i = 0; i < 2; i++) {
+			p = strrchr(tmp, '.');
+			check_and_terminate(p);
+		}
+
+		/* Copy the string, without extension, to the filename. */
+		strecpy(this->curInfo->filename, tmp, lastof(this->curInfo->filename));
+
+		/* Request the next file. */
+		if (!this->BeforeDownload()) {
+			this->OnFailure();
+			return;
+		}
+
+		NetworkHTTPSocketHandler::Connect(str, this);
+		return;
+	}
+
+#undef check
+#undef check_and_terminate
+}
+
 /**
  * Create a socket handler with the given socket and (server) address.
  * @param s the socket to communicate over
@@ -458,6 +632,7 @@ void ClientNetworkContentSocketHandler::AfterDownload()
  */
 ClientNetworkContentSocketHandler::ClientNetworkContentSocketHandler() :
 	NetworkContentSocketHandler(),
+	http_response_index(-2),
 	curFile(NULL),
 	curInfo(NULL),
 	isConnecting(false)

@@ -147,6 +147,7 @@ struct NetworkSettings {
 	bool   reload_cfg;                                    ///< reload the config file before restarting
 	char   last_host[NETWORK_HOSTNAME_LENGTH];            ///< IP address of the last joined server
 	uint16 last_port;                                     ///< port of the last joined server
+	bool   no_http_content_downloads;                     ///< do not do content downloads over HTTP
 #else /* ENABLE_NETWORK */
 #endif
 };

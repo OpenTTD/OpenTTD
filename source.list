@@ -803,6 +803,8 @@ network/core/tcp_content.cpp
 network/core/tcp_content.h
 network/core/tcp_game.cpp
 network/core/tcp_game.h
+network/core/tcp_http.cpp
+network/core/tcp_http.h
 network/core/udp.cpp
 network/core/udp.h
 
