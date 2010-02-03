@@ -2494,6 +2494,11 @@ static ChangeInfoResult RailTypeChangeInfo(uint id, int numinfo, int prop, ByteR
 
 	extern RailtypeInfo _railtypes[RAILTYPE_END];
 
+	if (id + numinfo > RAILTYPE_END) {
+		grfmsg(1, "RailTypeChangeInfo: Rail type %u is invalid, max %u, ignoring", id + numinfo, RAILTYPE_END);
+		return CIR_INVALID_ID;
+	}
+
 	for (int i = 0; i < numinfo; i++) {
 		RailType rt = _cur_grffile->railtype_map[id + i];
 		if (rt == INVALID_RAILTYPE) return CIR_INVALID_ID;
@@ -2588,6 +2593,11 @@ static ChangeInfoResult RailTypeChangeInfo(uint id, int numinfo, int prop, ByteR
 static ChangeInfoResult RailTypeReserveInfo(uint id, int numinfo, int prop, ByteReader *buf)
 {
 	ChangeInfoResult ret = CIR_SUCCESS;
+
+	if (id + numinfo > RAILTYPE_END) {
+		grfmsg(1, "RailTypeReserveInfo: Rail type %u is invalid, max %u, ignoring", id + numinfo, RAILTYPE_END);
+		return CIR_INVALID_ID;
+	}
 
 	for (int i = 0; i < numinfo; i++) {
 		switch (prop) {
