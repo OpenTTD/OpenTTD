@@ -253,21 +253,24 @@ void ClientNetworkContentSocketHandler::RequestContentList(ContentVector *cv, bo
 
 void ClientNetworkContentSocketHandler::DownloadSelectedContent(uint &files, uint &bytes)
 {
-	files = 0;
 	bytes = 0;
 
-	/** Make the list of items to download */
-	ContentID *ids = MallocT<ContentID>(infos.Length());
-	for (ContentIterator iter = infos.Begin(); iter != infos.End(); iter++) {
+	ContentIDList content;
+	for (ContentIterator iter = this->infos.Begin(); iter != this->infos.End(); iter++) {
 		const ContentInfo *ci = *iter;
 		if (!ci->IsSelected() || ci->state == ContentInfo::ALREADY_HERE) continue;
 
-		ids[files++] = ci->id;
+		*content.Append() = ci->id;
 		bytes += ci->filesize;
 	}
 
+	files = content.Length();
+
+	/* If there's nothing to download, do nothing. */
+	if (files == 0) return;
+
 	uint count = files;
-	ContentID *content_ids = ids;
+	ContentID *content_ids = content.Begin();
 	this->Connect();
 
 	while (count > 0) {
@@ -288,8 +291,6 @@ void ClientNetworkContentSocketHandler::DownloadSelectedContent(uint &files, uin
 		count -= p_count;
 		content_ids += p_count;
 	}
-
-	free(ids);
 }
 
 /**

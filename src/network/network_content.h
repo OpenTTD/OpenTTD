@@ -65,8 +65,9 @@ struct ContentCallback {
  */
 class ClientNetworkContentSocketHandler : public NetworkContentSocketHandler, ContentCallback {
 protected:
+	typedef SmallVector<ContentID, 4> ContentIDList;
 	SmallVector<ContentCallback *, 2> callbacks; ///< Callbacks to notify "the world"
-	SmallVector<ContentID, 4> requested;         ///< ContentIDs we already requested (so we don't do it again)
+	ContentIDList requested;                     ///< ContentIDs we already requested (so we don't do it again)
 	ContentVector infos;                         ///< All content info we received
 
 	FILE *curFile;        ///< Currently downloaded file
