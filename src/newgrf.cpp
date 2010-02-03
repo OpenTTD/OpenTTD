@@ -5802,6 +5802,13 @@ static void InitNewGRFFile(const GRFConfig *config, int sprite_offset)
 		newfile->price_base_multipliers[i] = INVALID_PRICE_MODIFIER;
 	}
 
+	/* Initialise rail type map with default rail types */
+	memset(newfile->railtype_map, INVALID_RAILTYPE, sizeof newfile->railtype_map);
+	newfile->railtype_map[0] = RAILTYPE_RAIL;
+	newfile->railtype_map[1] = RAILTYPE_ELECTRIC;
+	newfile->railtype_map[2] = RAILTYPE_MONO;
+	newfile->railtype_map[3] = RAILTYPE_MAGLEV;
+
 	/* Copy the initial parameter list
 	 * 'Uninitialised' parameters are zeroed as that is their default value when dynamically creating them. */
 	assert_compile(lengthof(newfile->param) == lengthof(config->param) && lengthof(config->param) == 0x80);
