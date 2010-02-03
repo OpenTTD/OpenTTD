@@ -1269,6 +1269,10 @@ STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Раз�
 STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Станции могут быть произвольной формы: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Множитель увеличения веса груза для товарных поездов: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Коэффициент скорости авиатранспорта: {ORANGE}1/{STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Вероятность падения самолёта: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :отсутствует
+STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :сниженная
+STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :обычная
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Позволять строить остановки на городских дорогах: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Разрешить проезд через остановки соперников по их дорогам: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Разрешить строительство смежных станций: {ORANGE}{STRING}
@@ -3379,6 +3383,8 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Выбо
 STR_AI_DEBUG                                                    :{WHITE}Отладка ИИ
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Имя ИИ
+STR_AI_DEBUG_SETTINGS                                           :{BLACK}Настройки ИИ
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Изменить настройки ИИ
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Перезагрузить ИИ
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Удалить ИИ, перезагрузить скрипт и перезапустить ИИ
 

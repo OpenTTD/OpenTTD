@@ -296,7 +296,7 @@ STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}צא, ע
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}הראה מפה,חלון תצוגה נוסף או רשימת סימניות
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}הצג מדריך ערים
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}הצג סובסידיות
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}הצג רשימת תחנות
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}הצג רשימת תחנות החברה
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}הצג מידע כספי על החברה
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}הצג מידע כללי על החברה
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}הצג גרפים
@@ -737,13 +737,13 @@ STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}שינ�
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}סובסידיות
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}מידע כללי
 
-STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIGFONT}{BLACK}!{STATION} התושבים חוגגים... {}רכבת ראשונה הגיעה ל
-STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIGFONT}{BLACK}תושבים חוגגים . . .{}אוטובוס ראשון הגיע לתחנת {STATION}!
-STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIGFONT}{BLACK}התושבים חוגגים . . .{}משאית ראשונה הגיעה לתחנת {STATION}!
-STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIGFONT}{BLACK}!{STATION} התושבים חוגגים... {}חשמלית נוסעים ראשונה הגיעה ל
-STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIGFONT}{BLACK}!{STATION} התושבים חוגגים... {}חשמלית משא ראשונה הגיעה ל
-STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIGFONT}{BLACK}!{STATION} התושבים חוגגים... {}ספינה ראשונה הגיעה ל
-STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIGFONT}{BLACK}!{STATION} התושבים חוגגים... {}מטוס ראשון הגיע ל
+STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIGFONT}{BLACK}התושבים חוגגים . . .{}רכבת ראשונה הגיעה ל{STATION}!
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIGFONT}{BLACK}תושבים חוגגים . . .{}אוטובוס ראשון הגיע ל{STATION}!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIGFONT}{BLACK}התושבים חוגגים . . .{}משאית ראשונה הגיעה ל{STATION}!
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIGFONT}{BLACK}התושבים חוגגים . . .{}חשמלית נוסעים ראשונה הגיעה ל{STATION}!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIGFONT}{BLACK}התושבים חוגגים . . .{}חשמלית משא ראשונה הגיעה ל{STATION}!
+STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIGFONT}{BLACK}התושבים חוגגים . . .{}ספינה ראשונה הגיעה ל{STATION}!
+STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIGFONT}{BLACK}התושבים חוגגים . . .{}מטוס ראשון הגיע ל{STATION}!
 
 STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK} !התנגשות רכבות {}{NBSP} נספו בפיצוץ כתוצאה מהתאונה {COMMA}
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}תאונת כלי רכב!{}נהג נהרג לאחר התנגשות ברכבת
@@ -819,10 +819,10 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIGFONT}{BLACK}{ENGINE}
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}! חדש זמין כעת {STRING}  -  {ENGINE}
 
-STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{1:STRING} לא מקבלת יותר {NBSP}{0:STATION}
-STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} אינה מקבלת עוד {STRING} או {STRING}
-STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{1:STRING} החלה לקבל {NBSP}{0:STATION}
-STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} מקבלת כעת {STRING} ו-{STRING}
+STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} אינה מקבלת יותר {STRING}
+STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} אינה מקבלת יותר {STRING} או {STRING}
+STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} מקבלת כעת {STRING}
+STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} מקבלת כעת {STRING} ו{STRING}
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}.פג תוקפה של הצעה למתן סובסידיה{}{}{NBSP}לא תזכה עוד לסבסוד{NBSP} {2:STRING} ל {NBSP}{1:STRING} מ {NBSP}{0:STRING} הובלת
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}פג תוקף הסובסידיה:{}{}שירות {STRING} מ-{STRING} אל {STRING} אינו מסובסד יותר.
@@ -1187,7 +1187,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :כבוי
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}גלילה בלחיצה שמאלית: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}השתמש {ORANGE}{STRING}{LTBLUE} במבנה התאריך בשביל שמות קבצי השמירה.
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}השתמש במבנה התאריך {ORANGE}{STRING}{LTBLUE} בשביל שמות קבצי השמירה.
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :ארוך (31 בדצמבר 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :קצר (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
@@ -2489,7 +2489,7 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}שום �
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATIONFEATURES}
 STR_STATION_VIEW_WAITING_TITLE                                  :{WHITE}{STRING}{BLACK} :ממתינים
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({SHORTCARGO} בדרך מ {STATION})
+STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({SHORTCARGO} בדרך מ{STATION})
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}מקבל
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}הצג רשימת סוגי המטען שהתחנה מקבלת
@@ -2934,7 +2934,7 @@ STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT               :{ORANGE}בדר�
 STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL           :{ORANGE}בדרך אל מוסך כלי הרכב בעיר {TOWN} ,{VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT                       :{ORANGE}בדרך אל המבדוק ב{TOWN}
 STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_VEL                   :{ORANGE}בדרך אל המבדוק בעיר {TOWN} ,{VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR                           :{ORANGE} {STATION} בדרך אל סככת המטוסים ב
+STR_VEHICLE_STATUS_HEADING_FOR_HANGAR                           :{ORANGE}פונה אל סככת המטוסים ב{STATION}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_VEL                       :{ORANGE}בדרך אל סככת המטוסים בעיר {STATION}, {VELOCITY}
 
 STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_SERVICE              :{LTBLUE}טיפול במוסך הרכבות {TOWN}
@@ -2943,7 +2943,7 @@ STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE       :{LTBLUE}טיפ�
 STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL   :{LTBLUE}בשירות במוסך כלי רכב של {TOWN}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE               :{LTBLUE}{TOWN} טיפול במבדוק
 STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL           :{LTBLUE}טיפול במבדוק {TOWN}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE                   :{LTBLUE}{STATION} טיפול בסככת המטוסים
+STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE                   :{LTBLUE}טיפול בסככת המטוסים {STATION}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE_VEL               :{LTBLUE}טיפול בסככת המטוסים {STATION} , {VELOCITY}
 
 # Vehicle details
@@ -3121,7 +3121,7 @@ STR_ORDER_ROAD_VEHICLE_DEPOT                                    :מוסך רכב
 STR_ORDER_SHIP_DEPOT                                            :מבדוק ספינות
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {TOWN} {STRING}
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{2:STRING} {1:STRING} {0:STRING}
-STR_ORDER_GO_TO_HANGAR_FORMAT                                   :{STRING} {STATION} סככת המטוסים ב
+STR_ORDER_GO_TO_HANGAR_FORMAT                                   :{STRING}סככת המטוסים ב{STATION}
 
 STR_ORDER_REFIT_ORDER                                           :({STRING} התאם לנשיאת)
 STR_ORDER_REFIT_STOP_ORDER                                      :(ועצור {STRING} התאם לנשיאת)
