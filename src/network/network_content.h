@@ -88,6 +88,9 @@ protected:
 	void OnReceiveContentInfo(const ContentInfo *ci);
 	void OnDownloadProgress(const ContentInfo *ci, uint bytes);
 	void OnDownloadComplete(ContentID cid);
+
+	bool BeforeDownload();
+	void AfterDownload();
 public:
 	/** The idle timeout; when to close the connection because it's idle. */
 	static const int IDLE_TIMEOUT = 60 * 1000;

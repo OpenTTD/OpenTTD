@@ -369,6 +369,7 @@ exit:
 DEF_CONTENT_RECEIVE_COMMAND(Client, PACKET_CONTENT_SERVER_CONTENT)
 {
 	if (this->curFile == NULL) {
+		delete this->curInfo;
 		/* When we haven't opened a file this must be our first packet with metadata. */
 		this->curInfo = new ContentInfo;
 		this->curInfo->type     = (ContentType)p->Recv_uint8();
@@ -376,25 +377,9 @@ DEF_CONTENT_RECEIVE_COMMAND(Client, PACKET_CONTENT_SERVER_CONTENT)
 		this->curInfo->filesize = p->Recv_uint32();
 		p->Recv_string(this->curInfo->filename, lengthof(this->curInfo->filename));
 
-		if (!this->curInfo->IsValid()) {
-			delete this->curInfo;
-			this->curInfo = NULL;
+		if (!this->BeforeDownload()) {
 			this->Close();
 			return false;
-		}
-
-		if (this->curInfo->filesize != 0) {
-			/* The filesize is > 0, so we are going to download it */
-			const char *filename = GetFullFilename(this->curInfo, true);
-			if (filename == NULL) {
-				/* Unless that fails ofcourse... */
-				DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
-				ShowErrorMessage(STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE, STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD, 0, 0);
-				this->Close();
-				return false;
-			}
-
-			this->curFile = fopen(filename, "wb");
 		}
 	} else {
 		/* We have a file opened, thus are downloading internal content */
@@ -411,31 +396,59 @@ DEF_CONTENT_RECEIVE_COMMAND(Client, PACKET_CONTENT_SERVER_CONTENT)
 
 		this->OnDownloadProgress(this->curInfo, (uint)toRead);
 
-		if (toRead == 0) {
-			/* We read nothing; that's our marker for end-of-stream.
-			 * Now gunzip the tar and make it known. */
-			fclose(this->curFile);
-			this->curFile = NULL;
-
-			if (GunzipFile(this->curInfo)) {
-				unlink(GetFullFilename(this->curInfo, true));
-
-				TarListAddFile(GetFullFilename(this->curInfo, false));
-
-				this->OnDownloadComplete(this->curInfo->id);
-			} else {
-				ShowErrorMessage(STR_CONTENT_ERROR_COULD_NOT_EXTRACT, INVALID_STRING_ID, 0, 0);
-			}
-		}
-	}
-
-	/* We ended this file, so clean up the mess */
-	if (this->curFile == NULL) {
-		delete this->curInfo;
-		this->curInfo = NULL;
+		if (toRead == 0) this->AfterDownload();
 	}
 
 	return true;
+}
+
+/**
+ * Handle the opening of the file before downloading.
+ * @return false on any error.
+ */
+bool ClientNetworkContentSocketHandler::BeforeDownload()
+{
+	if (!this->curInfo->IsValid()) {
+		delete this->curInfo;
+		this->curInfo = NULL;
+		return false;
+	}
+
+	if (this->curInfo->filesize != 0) {
+		/* The filesize is > 0, so we are going to download it */
+		const char *filename = GetFullFilename(this->curInfo, true);
+		if (filename == NULL) {
+			/* Unless that fails ofcourse... */
+			DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
+			ShowErrorMessage(STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE, STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD, 0, 0);
+			return false;
+		}
+
+		this->curFile = fopen(filename, "wb");
+	}
+	return true;
+}
+
+/**
+ * Handle the closing and extracting of a file after
+ * downloading it has been done.
+ */
+void ClientNetworkContentSocketHandler::AfterDownload()
+{
+	/* We read nothing; that's our marker for end-of-stream.
+	 * Now gunzip the tar and make it known. */
+	fclose(this->curFile);
+	this->curFile = NULL;
+
+	if (GunzipFile(this->curInfo)) {
+		unlink(GetFullFilename(this->curInfo, true));
+
+		TarListAddFile(GetFullFilename(this->curInfo, false));
+
+		this->OnDownloadComplete(this->curInfo->id);
+	} else {
+		ShowErrorMessage(STR_CONTENT_ERROR_COULD_NOT_EXTRACT, INVALID_STRING_ID, 0, 0);
+	}
 }
 
 /**
