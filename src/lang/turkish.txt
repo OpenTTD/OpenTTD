@@ -302,7 +302,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Grafikle
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Şirketler ligini göster
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Yeni fabrika kur veya tüm fabrikaları listele
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Şirkete ait trenleri listele. Ctrl+sol tuş ile grup/araç listesini aç/kapa
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Şirkete ait karayolu taşıtlarını listele
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Şirkete ait karayolu taşıtlarını listele. Ctrl-tık grup/araç listesini açıp kapatır
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Şirkete ait gemileri listele
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Şirkete ait uçakları listele
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Yakınlaş
@@ -368,7 +368,8 @@ STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Ekstra görün�
 STR_MAP_MENU_SIGN_LIST                                          :Tabela listesi
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Şehir listesi
-############ both ranges ends here
+############ end of the 'Display map' dropdown
+############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Sübvansiyonlar
@@ -562,7 +563,7 @@ STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Araç sa
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}İstasyon parçaları. Tek bir istasyon halinde olsa bile istasyonun her parçasi ayri olarak sayılir (ör: tren istasyonu, otobüs durağı, havalimanı)
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}En az gelirli aracın kârı (Sadece 2 yıldan yaşlı araçlar için)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Son 12 çeyrekte en az kârlı aydaki gelir
-STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Son 12 çeyrekte en çok kârlı aydaki gelir
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Son 12 çeyreğin en kârlı olanında kazanılan para
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Son 4 çeyrekte taşınan kargo miktar
 STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Son çeyrekte taşınan farkli kargo türleri
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Bu şirketin bankadaki para miktarı
@@ -600,6 +601,7 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}'Özel 1
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}'Özel 2' (kullanıcı-tanımlı) programı seç
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Rastgele programı aç/kapa
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Şarkı seçim penceresini göster
+
 
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Müzik Program Seçimi
@@ -756,6 +758,7 @@ STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING}, {TOWN} yakınlarında inşaata başladı!
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING}, {STRING} tarafından alındı!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Yönetici)
+
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Yeni bir {STRING}, {TOWN} şehri yakınlarında kuruldu!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Yeni bir {STRING}, {TOWN} şehri yakınlarında kuruldu!
@@ -934,6 +937,7 @@ STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Temel se
 STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Kullanılacak temel ses kümesini seçin
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Temel ses kümesiyle ilgili ilave bilgiler
 
+
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Tam ekran modu başarısız
 
 # Custom currency window
@@ -1001,6 +1005,7 @@ STR_NUM_NORMAL                                                  :Normal
 STR_NUM_HIGH                                                    :Yüksek
 STR_NUM_CUSTOM                                                  :Özel
 
+
 STR_AI_SPEED_VERY_SLOW                                          :Çok Yavas
 STR_AI_SPEED_SLOW                                               :Yavas
 STR_AI_SPEED_MEDIUM                                             :Orta
@@ -1039,6 +1044,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :İzin verici
 STR_CITY_APPROVAL_TOLERANT                                      :Töleransli
 STR_CITY_APPROVAL_HOSTILE                                       :Katı
 
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Uygun YZ'ler yok...{}'Çevrimiçi içerik' sistemiyle pek çok YZ indirebilirsiniz
 STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Bu işlem zorluk seviyesini özel'e getirdi
 
 # Advanced settings window
@@ -1087,6 +1093,10 @@ STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Diğer 
 STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Özel istasyonlar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Ağır yük trenleri için ağırlık çarpanı: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Uçak hızı çarpanı: {ORANGE}1 / {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Uçak kazası sayısı: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :hiç
+STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :azaltılmış
+STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normal
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Şehiriçi yollara durak yapmak izinli: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Rakiplerin yolu üzerinde durak yapmaya izin ver: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Bitişik istasyonlar izinli: {ORANGE}{STRING}
@@ -1230,6 +1240,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :rastgele
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Kasabalara yol yapma izni verilsin: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Kasabalar tarafından kontrol edilen havaalanı gürültü seviyesine izin ver: {ORANGE}{STRING}
+
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Ana araç çubuğu pozisyonu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Sol
@@ -1959,8 +1970,8 @@ STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Havalima
 
 STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Küçük
 STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}Şehirlerarası
-STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Büyükşehir havalimanı
-STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Uluslararası havalimanı
+STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Büyükşehir
+STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Uluslararası
 STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Abonman
 STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Kıtalararası
 STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Heliport
@@ -2314,6 +2325,7 @@ STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Bilinmeyen Acti
 STR_NEWGRF_ERROR_INVALID_ID                                     :Geçersiz ID kullanımı denemesi
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} bozuk bir sprayt içeriyor. Tüm bozuk spraytlar kırmızı bir soru işareti (?) olarak görünecektir.
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Birden fazla Action 8 girişi içeriyor.
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Pseudo-sprite bitiminden sonrasını okudu
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Uyarı!
@@ -2805,32 +2817,32 @@ STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE
 STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Treni göster
 STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Arabayı göster
 STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Gemiyi göster
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Uçağı göster
+STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Ana görüntüyü uçağın olduğu yere alır. Ctrl-tık ana görüntüde uçağı takip eder
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Treni garaja gönder
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Aracı garaja gönder
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Tersaneye gönder
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Uçağı hangara gönder
 
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Tüm vagonlarla birlikte treni kopyalar. Ctrl-tıklama talimatları paylaştırır
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Arabanın bir kopyasını yapar. Ctrl-tıklama talimatları paylaştırır
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Geminin bir kopyasını oluşturur. Ctrl-tıklama talimatları paylaştırır
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Uçağın bir kopyasını oluşturur. Ctrl-tıklama talimatları paylaştırır
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Tüm vagonlarla birlikte treni kopyalar. Ctrl-tıklama emirleri paylaştırır
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Arabanın bir kopyasını satın alır. Ctrl-tıklama emirleri paylaştırır
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Geminin bir kopyasını satın alır. Ctrl-tıklama emirleri paylaştırır
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Uçağın bir kopyasını satın alır. Ctrl-tıklama emirleri paylaştırır
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Treni sinyale uymadan ilerlemeye zorla
 
 STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Treni başka bir kargo taşıması için modifiye et
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Kamyonu başka türde kargo taşıyabilmesi için modifiye et
-STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Başka bir yük taşımasi için modifiye et
+STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Başka bir kargo tipi için gemiyi modifiye et
 STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Başka bir yük taşımak için modifiye et
 
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Treni ters çevir
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Aracı etrafta dolaşmaya zorla
 
-STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Trenin talimatlarıni göster
-STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Aracın talimatlarını görmek için tıklayın
-STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Geminin talimatlarıni göster
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Uçağın talimatlarıni göster
+STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Trenin emirlerini göster. Ctrl-tık trenin çizelgesini gösterir
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Aracın talimatlarını göster. Ctrl-tık aracın çizelgesini gösterir
+STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Geminin emirlerini göster. Ctrl-tık geminin çizelgesini gösterir.
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Uçağın emirlerini göster. Ctrl-tık uçağın çizelgesini gösterir
 
 STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Tren ayrıntılarını göster
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Araba ayrıntılarını göster
@@ -2909,8 +2921,8 @@ STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Aktarma 
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Bakım zamanı: {LTBLUE}{COMMA}günde bir{BLACK}   Son bakım: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Bakım zamanı: {LTBLUE}%{COMMA}{BLACK}   Son bakım: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Bakım zamanını ertele
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Bakım zamanını azalt
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Bakım periyodunu 10 artır. Ctrl-tık bakım periyodunu 5 artırır.
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Bakım periyodunu 10 azalt. Ctrl+tık bakım periyodunu 5 azaltır
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Treni adlandır
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Arabayı adlandır
@@ -3032,7 +3044,7 @@ STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Git
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :En yakın gara git
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :En yakın hangara git
 STR_ORDER_CONDITIONAL                                           :Duruma göre dallan
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Seçili talimatın önüne ya da listenin sonuna komut ekle
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Seçili emrin önüne ya da listenin sonuna yeni emir ekle. Ctrl; istasyon emirlerini 'bir kargo tipini tam yükle', yol imi emirlerini 'durmaksızın', garaj emirlerini 'bakıma gir' olarak değiştirir
 STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Gelişmiş talimat ekle
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Aynı talimatlara sahip bütün araçları göster
@@ -3106,6 +3118,7 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Bu araç
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Bu araç {STRING} geç çalışıyor
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Bu araç {STRING} erken çalışıyor
 
+
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Zamanı değiştir
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Seçili talimatın harcaması gereken süreyi değiştir
 
@@ -3118,9 +3131,18 @@ STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Geç kal
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Otomatik doldur
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Zaman tablosunu bir sonraki yolculuktaki değerlerle otomatik doldur (Bekleme sürelerini tutmak için Ctrl ile tıklanır)
 
+
+
+
+# Date window (for timetable)
+
+
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}YZ Hata Ayıklama
+STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}YZ adı
+STR_AI_DEBUG_SETTINGS                                           :{BLACK}YZ Ayarları
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}YZ ayarlarını değiştir
 STR_AI_DEBUG_RELOAD                                             :{BLACK}YZ'yı baştan yükle
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}YZ'yı öldür, kodu tekrar yükle ve YZ'yı tekrar başlat
 
@@ -3133,6 +3155,7 @@ STR_AI_CONFIG_CAPTION                                           :{WHITE}YZ Yapı
 STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}Sonraki oyunda yüklenecek tüm YZ'ler
 STR_AI_CONFIG_HUMAN_PLAYER                                      :İnsan oyuncu
 STR_AI_CONFIG_RANDOM_AI                                         :Rastgele YZ
+
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}YZ Seç
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Başka bir YZ yükle
@@ -3219,13 +3242,13 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Sınıra
 STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Para yetersiz - gerekli miktar: {CURRENCY}
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Zeminin düzleştirilmesi lazım
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Arazi yanlış yöne doğru meyilli
-STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Yapılamaz....
+STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Bu yapılamaz....
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Önce bina yıkılmalı
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Bu alan temizlenemez....
-STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}...yer uygun değil
-STR_ERROR_ALREADY_BUILT                                         :{WHITE}...zaten yapıldı
-STR_ERROR_OWNED_BY                                              :{WHITE}...sahibi {STRING}
-STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...alan başka bir şirkete ait
+STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... yer uygun değil
+STR_ERROR_ALREADY_BUILT                                         :{WHITE}... zaten yapıldı
+STR_ERROR_OWNED_BY                                              :{WHITE}... sahibi {STRING}
+STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... alan başka bir şirkete ait
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}İsim daha önce kullanılmamış olmalı
 STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}yolda {STRING} var
 
@@ -3249,10 +3272,10 @@ STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... zate
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Şirket ismi değiştirilemez...
 STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Yönetici ismi degitirilemez...
 
-STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}...maksimum kredi miktarı {CURRENCY}
+STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... izin verilen azami borç {CURRENCY}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Daha fazla kredi alınamaz...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}...ödenecek kredi yok
-STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}...{CURRENCY} gerekli
+STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... ödenecek borç yok
+STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CURRENCY} gerekli
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Kredi ödenemiyor...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Bankadan ödünç alınan para verilemez...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Şirket satın alınamaz...
@@ -3265,9 +3288,9 @@ STR_ERROR_PROTECTED                                             :{WHITE}Bu şirk
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Şehir kurulamaz
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}İsim değiştirilemiyor...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Buraya şehir yapılamıyor...
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}...haritanin kenarına çok yakın
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}...başka bir şehire çok yakın
-STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}...çok fazla şehir var
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... haritanin kenarına çok yakın
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... başka bir şehire çok yakın
+STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... çok fazla şehir var
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...haritada boş yer yok
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Şehir yol yapmayacak. Yol yapımını Gelişmiş Ayarlar->Ekonomi->Şehirler'den etkinleştirebilirsiniz.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Yol çalışmaları
@@ -3278,13 +3301,13 @@ STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Buraya {
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Buraya bu fabrikadan yapılamaz...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}...başka bir fabrikaya çok yakın
 STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}...önce şehir yapılmalı
-STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}...her şehirde yalnızca bir tane olabilir
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...yalnızca nüfusu en az 1200 olan şehirlere yapılabilir
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...yalnızca yağmur ormanlarında yapılabilir
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}...yalnızca çöllerde yapılabilir
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}...yalnızca şehirlerde yapılabilir
-STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}...sadece haritanin kenarlarına yapılabilir
-STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}...Orman sadece kar sınırı üzerinde olabilir
+STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... her şehirde yalnızca bir tane olabilir
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... yalnızca nüfusu en az 1200 olan şehirlere yapılabilir
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... yalnızca yağmur ormanlarında yapılabilir
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... yalnızca çöllerde yapılabilir
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... yalnızca şehirlerde yapılabilir
+STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... sadece haritanın kenarlarına yerleştirilebilir
+STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... orman sadece kar sınırı üzerinde olabilir
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Buraya tren istasyonu yapılamıyor...
@@ -3296,7 +3319,7 @@ STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Buraya i
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Buraya havalimanı yapılamaz...
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Birden fazla istasyona bitişik
-STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}...istasyon çok yayılmış
+STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... istasyon çok yayılmış
 STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}...özel istasyon ayarı kapalı
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Haritada çok fazla istasyon var
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Çok fazla demiryolu istasyon parçası var
@@ -3336,7 +3359,7 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Yerimi a
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Tren yerimi kaldırılamaz...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Önce demiryolu yerimi kaldırılmalı
-STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}...yolda şamandıra var
+STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... yolda şamandıra var
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}...samandıra kullanımda!
 
 # Depot related errors
@@ -3346,7 +3369,7 @@ STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Buraya t
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Buraya tersane yapılamaz...
 
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Tren garda durdurulmalı
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...bir araba garajında duruyor olmalı
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... bir araba garajında duruyor olmalı
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Gemi tersanede durdurulmalı
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Uçak hangarda durdurulmalı
 
@@ -3393,13 +3416,13 @@ STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Tramvay 
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Buraya kanal yapılamaz...
 STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Buraya kilit yapılamaz...
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Burada nehirler yapamazsınız...
-STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}...suya yapılmali
-STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}...Suya yapılamaz
+STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... suya yapılmali
+STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... suya yapılamaz
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Önce kanal kaldırılmalı
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Buraya su kemeri yapılamaz...
 
 # Tree related errors
-STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}...burada zaten ağaç var
+STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... burada zaten ağaç var
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Buraya ağaç dikilemez...
 
 # Bridge related errors
@@ -3409,7 +3432,7 @@ STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Aynı no
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Köprü uçları aynı seviyede değil
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Köprü bu arazi için çok alçakta
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Başlangıç ve bitiş aynı çizgi üzerinde olmalı
-STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}...köprünün her iki ucu da karada olmalı
+STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... köprünün her iki ucu da karada olmalı
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Buraya tünel yapılamaz...
@@ -3421,9 +3444,9 @@ STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Tünelin
 
 # Unmovable related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Yolda birsey var
-STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}...yolda şirket binasi var
+STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... yolda şirket binası var
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Burası satın alınamaz...
-STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}...zaten senin!
+STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... zaten senin!
 
 # Group related errors
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Grup oluşturulamıyor...
@@ -3459,10 +3482,10 @@ STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Araç ga
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Gemi tersaneye gönderilemez...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Hangara gönderilemiyor...
 
-STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Tren satın alınamaz...
-STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Araba alınamıyor...
-STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Yemi yapılamaz...
-STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Uçak alınamaz...
+STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Tren alınamıyor...
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Kara taşıtı alınamıyor...
+STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Gemi alınamıyor...
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Uçak alınamıyor...
 
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Tren yeniden adlandırılamaz...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Araç türü yeniden adlandırılamıyor...
@@ -3503,13 +3526,13 @@ STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}Bu talim
 STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Talimat taşınamıyor...
 STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Talimat atlanamıyor...
 STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Seçili talimata atlanamıyor...
-STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}araç tüm istasyonlara gidemiyor
-STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}araç bu istasyona gidemiyor
-STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}bu emri paylaşan bir araç bu istasyona gidemiyor
+STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... araç istasyonların tümüne gidemiyor
+STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... araç bu istasyona gidemiyor
+STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... bu emri paylaşan bir araç bu istasyona gidemiyor
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Talimat listesi paylasilamiyor...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Talimat listesi kopyalanamiyor...
-STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...önceki hedeften çok uzak
+STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... önceki hedeften çok uzak
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Aracın zaman çizelgesi oluşturulamıyor...
@@ -3517,7 +3540,7 @@ STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Araçlar
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Araç bu istasyonda durmuyor.
 
 # Sign related errors
-STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}...çok fazla tabela
+STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... çok fazla tabela var
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Buraya tabela konulamiyor...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Tabela adı değiştirilemiyor...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Tabelayı silemezsiniz...
@@ -3992,7 +4015,6 @@ STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
-
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
 STR_BLACK_1                                                     :{BLACK}1

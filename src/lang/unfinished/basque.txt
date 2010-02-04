@@ -809,6 +809,10 @@ STR_SUBSIDY_X4                                                  :x4
 
 # Advanced settings window
 
+STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Hegazkinen akzidente kopurua : {ORANGE}{STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :bat ere ez
+STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :txikitua
+STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normal
 
 
 
@@ -1254,6 +1258,7 @@ STR_ORDER_GO_TO_STATION                                         :{STRING} {STATI
 
 
 # AI debug window
+STR_AI_DEBUG_SETTINGS                                           :{BLACK}IA-ren Ezarpenak
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}IA-ren hautaketak aldatu
 
 
