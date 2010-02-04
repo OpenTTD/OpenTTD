@@ -102,6 +102,12 @@
  *     the search bounding box and the industry's bounding box intersect, are
  *     counted. Previously these industries (and their cargos), although they
  *     produced cargo for a station at the given location, were not returned.
+ * \li AIRail::BuildRail will now fail completely if there is an obstacle
+ *     between the begin and end, instead of building up to the obstacle and
+ *     returning that everything went okay.
+ * \li Orders for buoys are now waypoint orders, i.e. instead of using the
+ *     station orders for buoys one has to use waypoint orders.
+ * \li Autoreplaces can now also be set for the default group via AIGroup.
  *
  * \b 0.7.5
  *
