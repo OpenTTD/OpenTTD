@@ -28,6 +28,7 @@
 #include "../../core/sort_func.hpp"
 #include "cocoa_v.h"
 #include "../../gfx_func.h"
+#include "macos.h"
 
 /**
  * Important notice regarding all modifications!!!!!!!
@@ -134,6 +135,11 @@ uint QZ_ListModes(OTTD_Point *modes, uint max_modes, CGDirectDisplayID display_i
 /** Small function to test if the main display can display 8 bpp in fullscreen */
 bool QZ_CanDisplay8bpp()
 {
+	/* 8bpp modes are deprecated starting in 10.5. CoreGraphics will return them
+	 * as available in the display list, but many features (e.g. palette animation)
+	 * will be broken. */
+	if (MacOSVersionIsAtLeast(10, 5, 0)) return false;
+
 	OTTD_Point p;
 
 	/* We want to know if 8 bpp is possible in fullscreen and not anything about
