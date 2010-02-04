@@ -1,6 +1,6 @@
 OpenTTD README
-Last updated:    2010-01-21
-Release version: 1.0.0-beta3
+Last updated:    2010-02-04
+Release version: 1.0.0-beta4
 ------------------------------------------------------------------------
 
 
@@ -512,7 +512,7 @@ X.X) Credits:
 ---- --------
 The OpenTTD team (in alphabetical order):
   Albert Hofkamp (Alberth)       - GUI expert
-  Jean-Francois Claeys (Belugas) - GUI, newindustries and more
+  Jean-François Claeys (Belugas) - GUI, newindustries and more
   Matthijs Kooijman (blathijs)   - Pathfinder-guru, pool rework
   Christoph Elsenhans (frosch)   - General coding
   Loïc Guilloux (glx)            - Windows Expert

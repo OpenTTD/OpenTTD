@@ -351,7 +351,7 @@ static const char * const _credits[] = {
 	"",
 	"The OpenTTD team (in alphabetical order):",
 	"  Albert Hofkamp (Alberth) - GUI expert",
-	"  Jean-Francois Claeys (Belugas) - GUI, newindustries and more",
+	"  Jean-Fran\xC3\xA7ois Claeys (Belugas) - GUI, newindustries and more",
 	"  Matthijs Kooijman (blathijs) - Pathfinder-guru, pool rework",
 	"  Christoph Elsenhans (frosch) - General coding",
 	"  Lo\xC3\xAF""c Guilloux (glx) - Windows Expert",
