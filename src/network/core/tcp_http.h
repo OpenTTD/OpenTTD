@@ -33,6 +33,9 @@ struct HTTPCallback {
 	 * @note When NULL is sent the HTTP socket handler is closed/freed.
 	 */
 	virtual void OnReceiveData(const char *data, size_t length) = 0;
+
+	/** Silentium */
+	virtual ~HTTPCallback() {}
 };
 
 /** Base socket handler for HTTP traffic. */

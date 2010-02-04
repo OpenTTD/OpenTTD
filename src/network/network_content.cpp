@@ -553,9 +553,9 @@ void ClientNetworkContentSocketHandler::OnReceiveData(const char *data, size_t l
 	this->curInfo = new ContentInfo;
 
 /** Check p for not being null and return calling OnFailure if that's not the case. */
-#define check(p) { if ((p) == NULL) { this->OnFailure(); return; } }
+#define check_not_null(p) { if ((p) == NULL) { this->OnFailure(); return; } }
 /** Check p for not being null and then terminate, or return calling OnFailure. */
-#define check_and_terminate(p) { check(p); *(p) = '\0'; }
+#define check_and_terminate(p) { check_not_null(p); *(p) = '\0'; }
 
 	for (;;) {
 		char *str = this->http_response.Begin() + this->http_response_index;
@@ -595,7 +595,7 @@ void ClientNetworkContentSocketHandler::OnReceiveData(const char *data, size_t l
 		}
 
 		p = strrchr(str, '/');
-		check(p);
+		check_not_null(p);
 
 		char tmp[MAX_PATH];
 		if (strecpy(tmp, p, lastof(tmp)) == lastof(tmp)) {
