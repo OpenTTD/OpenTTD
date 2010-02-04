@@ -1396,13 +1396,14 @@ static const CursorID SPR_CURSOR_CLONE_SHIP     = SPR_OPENTTD_BASE + 112;
 static const CursorID SPR_CURSOR_CLONE_AIRPLANE = SPR_OPENTTD_BASE + 113;
 
 /** Animation macro in table/animcursors.h (_animcursors[]) */
-enum AnimCursors {
-	ANIMCURSOR_DEMOLISH     = -1, ///<  704 -  707 - demolish dynamite
-	ANIMCURSOR_LOWERLAND    = -2, ///<  699 -  701 - lower land tool
-	ANIMCURSOR_RAISELAND    = -3, ///<  696 -  698 - raise land tool
-	ANIMCURSOR_PICKSTATION  = -4, ///<  716 -  718 - goto-order icon
-	ANIMCURSOR_BUILDSIGNALS = -5, ///< 1292 - 1293 - build signal
-};
+
+/** Flag for saying a cursor sprite is an animated cursor. */
+static const CursorID ANIMCURSOR_FLAG         = 1U << 31;
+static const CursorID ANIMCURSOR_DEMOLISH     = ANIMCURSOR_FLAG | 0; ///<  704 -  707 - demolish dynamite
+static const CursorID ANIMCURSOR_LOWERLAND    = ANIMCURSOR_FLAG | 1; ///<  699 -  701 - lower land tool
+static const CursorID ANIMCURSOR_RAISELAND    = ANIMCURSOR_FLAG | 2; ///<  696 -  698 - raise land tool
+static const CursorID ANIMCURSOR_PICKSTATION  = ANIMCURSOR_FLAG | 3; ///<  716 -  718 - goto-order icon
+static const CursorID ANIMCURSOR_BUILDSIGNALS = ANIMCURSOR_FLAG | 4; ///< 1292 - 1293 - build signal
 
 /**
  * Bitmask setup. For the graphics system, 32 bits are used to define

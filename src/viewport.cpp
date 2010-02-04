@@ -2714,8 +2714,8 @@ void SetObjectToPlace(CursorID icon, PaletteID pal, HighLightStyle mode, WindowC
 	if (mode == HT_SPECIAL) // special tools, like tunnels or docks start with presizing mode
 		VpStartPreSizing();
 
-	if ((int)icon < 0) {
-		SetAnimatedMouseCursor(_animcursors[~icon]);
+	if ((icon & ANIMCURSOR_FLAG) != 0) {
+		SetAnimatedMouseCursor(_animcursors[icon & ~ANIMCURSOR_FLAG]);
 	} else {
 		SetMouseCursor(icon, pal);
 	}
