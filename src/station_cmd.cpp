@@ -1006,15 +1006,14 @@ CommandCost CmdBuildRailStation(TileIndex tile_org, DoCommandFlag flags, uint32 
 
 	/* Make sure the area below consists of clear tiles. (OR tiles belonging to a certain rail station) */
 	StationID est = INVALID_STATION;
-	/* If DC_EXEC is in flag, do not want to pass it to CheckFlatLandBelow, because of a nice bug
-	 * for detail info, see:
-	 * https://sourceforge.net/tracker/index.php?func=detail&aid=1029064&group_id=103924&atid=636365 */
-	CommandCost ret = CheckFlatLandBelow(tile_org, w_org, h_org, flags & ~DC_EXEC, 5 << axis, _settings_game.station.nonuniform_stations ? &est : NULL, true, rt);
-	if (ret.Failed()) return ret;
-	CommandCost cost(EXPENSES_CONSTRUCTION, ret.GetCost() + (numtracks * _price[PR_BUILD_STATION_RAIL] + _price[PR_BUILD_STATION_RAIL_LENGTH]) * plat_len);
+	/* Clear the land below the station. */
+	CommandCost cost = CheckFlatLandBelow(tile_org, w_org, h_org, flags, 5 << axis, _settings_game.station.nonuniform_stations ? &est : NULL, true, rt);
+	if (cost.Failed()) return cost;
+	/* Add construction expenses. */
+	cost.AddCost((numtracks * _price[PR_BUILD_STATION_RAIL] + _price[PR_BUILD_STATION_RAIL_LENGTH]) * plat_len);
 
 	Station *st = NULL;
-	ret = FindJoiningStation(est, station_to_join, adjacent, new_location, &st);
+	CommandCost ret = FindJoiningStation(est, station_to_join, adjacent, new_location, &st);
 	if (ret.Failed()) return ret;
 
 	/* See if there is a deleted station close to us. */
@@ -1075,12 +1074,6 @@ CommandCost CmdBuildRailStation(TileIndex tile_org, DoCommandFlag flags, uint32 
 		byte *layout_ptr;
 		byte numtracks_orig;
 		Track track;
-
-		/* Now really clear the land below the station
-		 * It should never return CMD_ERROR.. but you never know ;)
-		 * (a bit strange function name for it, but it really does clear the land, when DC_EXEC is in flags) */
-		ret = CheckFlatLandBelow(tile_org, w_org, h_org, flags, 5 << axis, _settings_game.station.nonuniform_stations ? &est : NULL, true, rt);
-		if (ret.Failed()) return ret;
 
 		st->train_station = new_location;
 		st->AddFacility(FACIL_TRAIN, new_location.tile);
