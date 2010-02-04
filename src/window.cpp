@@ -2109,6 +2109,10 @@ static void MouseLoop(MouseClick click, int mousewheel)
 				if (!(w->flags4 & WF_DISABLE_VP_SCROLL)) {
 					_scrolling_viewport = true;
 					_cursor.fix_at = true;
+
+					/* clear 2D scrolling caches before we start a 2D scroll */
+					_cursor.h_wheel = 0;
+					_cursor.v_wheel = 0;
 				}
 				break;
 
