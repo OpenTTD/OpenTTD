@@ -28,7 +28,7 @@
 #include "../../core/sort_func.hpp"
 #include "cocoa_v.h"
 #include "../../gfx_func.h"
-#include "macos.h"
+#include "../../os/macosx/macos.h"
 
 /**
  * Important notice regarding all modifications!!!!!!!
