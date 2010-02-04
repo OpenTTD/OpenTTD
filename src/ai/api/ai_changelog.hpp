@@ -26,6 +26,8 @@
  * \li AIInfo::AICONFIG_INGAME
  * \li AIMarine::GetBuildCost
  * \li AIOrder::AIOF_GOTO_NEAREST_DEPOT
+ * \li AIOrder::GetStopLocation
+ * \li AIOrder::SetStopLocation
  * \li AIRail::RemoveRailStationTileRectangle
  * \li AIRail::RemoveRailWaypointTileRectangle
  * \li AIRail::GetBuildCost

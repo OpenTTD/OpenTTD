@@ -7179,6 +7179,7 @@
       Depot distance from (0,0) ListDump:
         33411 => 261
     RemoveDepot():                 true
+    BuildRailDepot():              true
   Station
     BuildRailStation():            false
     BuildRailStation():            true
@@ -8565,6 +8566,14 @@
   ShareOrders():         true
   UnshareOrders():       true
   AppendOrder():         true
+  GetStopLocation():     -1
+  BuildVehicle():        20
+  BuildRailStation():    true
+  AppendOrder():         true
+  GetOrderCount():       1
+  GetStopLocation():     2
+  SetStopLocation():     true
+  GetStopLocation():     1
 
 --StationList_Vehicle--
   Count():             2
@@ -8591,9 +8600,11 @@
     4 => 0
 
 --VehicleList_Station--
-  Count():             0
+  Count():             1
   Location ListDump:
+    20 => 23596
   foreach():
+    20 => 23596
 
   First Subsidy Test
       --Subsidy (0) --

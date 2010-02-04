@@ -118,6 +118,14 @@ public:
 		ORDER_INVALID = -1,   //!< An invalid order.
 	};
 
+	/** Where to stop trains in a station that's longer then the train */
+	enum StopLocation {
+		STOPLOCATION_NEAR,         //!< Stop the train as soon as it's completely in the station
+		STOPLOCATION_MIDDLE,       //!< Stop the train in the middle of the station
+		STOPLOCATION_FAR,          //!< Stop the train at the far end of the station
+		STOPLOCATION_INVALID = -1, //!< An invalid stop location
+	};
+
 	/**
 	 * Checks whether the given order id is valid for the given vehicle.
 	 * @param vehicle_id The vehicle to check the order index for.
@@ -282,6 +290,17 @@ public:
 	static int32 GetOrderCompareValue(VehicleID vehicle_id, OrderPosition order_position);
 
 	/**
+	 * Gets the stoplocation of the given order for the given train.
+	 * @param vehicle_id The vehicle to get the value for.
+	 * @param order_position The order to get the value for.
+	 * @pre IsValidVehicleOrder(vehicle_id, order_position).
+	 * @pre AIVehicle::GetVehicleType(vehicle_id) == AIVehicle::VT_RAIL.
+	 * @pre IsGotoStationOrder(vehicle_id, order_position).
+	 * @return The relative position where the train will stop inside a station.
+	 */
+	static StopLocation GetStopLocation(VehicleID vehicle_id, OrderPosition order_position);
+
+	/**
 	 * Sets the OrderPosition to jump to if the check succeeds of the given order for the given vehicle.
 	 * @param vehicle_id The vehicle to set the OrderPosition for.
 	 * @param order_position The order to set the OrderPosition for.
@@ -328,6 +347,17 @@ public:
 	 * @return Whether the order has been/can be changed.
 	 */
 	static bool SetOrderCompareValue(VehicleID vehicle_id, OrderPosition order_position, int32 value);
+
+	/**
+	 * Sets the stoplocation of the given order for the given train.
+	 * @param vehicle_id The vehicle to get the value for.
+	 * @param order_position The order to get the value for.
+	 * @pre IsValidVehicleOrder(vehicle_id, order_position).
+	 * @pre AIVehicle::GetVehicleType(vehicle_id) == AIVehicle::VT_RAIL.
+	 * @pre IsGotoStationOrder(vehicle_id, order_position).
+	 * @return Whether the order has been/can be changed.
+	 */
+	static bool SetStopLocation(VehicleID vehicle_id, OrderPosition order_position, StopLocation stop_location);
 
 	/**
 	 * Appends an order to the end of the vehicle's order list.

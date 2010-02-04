@@ -285,6 +285,16 @@ static const Order *ResolveOrder(VehicleID vehicle_id, AIOrder::OrderPosition or
 	return value;
 }
 
+/* static */ AIOrder::StopLocation AIOrder::GetStopLocation(VehicleID vehicle_id, OrderPosition order_position)
+{
+	if (!IsValidVehicleOrder(vehicle_id, order_position)) return STOPLOCATION_INVALID;
+	if (AIVehicle::GetVehicleType(vehicle_id) != AIVehicle::VT_RAIL) return STOPLOCATION_INVALID;
+	if (!IsGotoStationOrder(vehicle_id, order_position)) return STOPLOCATION_INVALID;
+
+	const Order *order = Vehicle::Get(vehicle_id)->GetOrder(order_position);
+	return (AIOrder::StopLocation)order->GetStopLocation();
+}
+
 /* static */ bool AIOrder::SetOrderJumpTo(VehicleID vehicle_id, OrderPosition order_position, OrderPosition jump_to)
 {
 	EnforcePrecondition(false, IsValidVehicleOrder(vehicle_id, order_position));
@@ -320,6 +330,18 @@ static const Order *ResolveOrder(VehicleID vehicle_id, AIOrder::OrderPosition or
 	if (GetOrderCondition(vehicle_id, order_position) == OC_MAX_SPEED) value = value * 10 / 16;
 
 	return AIObject::DoCommand(0, vehicle_id | (order_position << 16), MOF_COND_VALUE | (value << 4), CMD_MODIFY_ORDER);
+}
+
+/* static */ bool AIOrder::SetStopLocation(VehicleID vehicle_id, OrderPosition order_position, StopLocation stop_location)
+{
+	EnforcePrecondition(false, IsValidVehicleOrder(vehicle_id, order_position));
+	EnforcePrecondition(false, AIVehicle::GetVehicleType(vehicle_id) == AIVehicle::VT_RAIL);
+	EnforcePrecondition(false, IsGotoStationOrder(vehicle_id, order_position));
+	EnforcePrecondition(false, stop_location >= STOPLOCATION_NEAR && stop_location <= STOPLOCATION_FAR);
+
+	uint32 p1 = vehicle_id | (order_position << 16);
+	uint32 p2 = MOF_STOP_LOCATION | (stop_location << 4);
+	return AIObject::DoCommand(0, p1, p2, CMD_MODIFY_ORDER);
 }
 
 /* static */ bool AIOrder::AppendOrder(VehicleID vehicle_id, TileIndex destination, AIOrderFlags order_flags)

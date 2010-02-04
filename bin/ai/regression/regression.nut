@@ -920,6 +920,15 @@ function Regression::Order()
 	print("  UnshareOrders():       " + AIOrder.UnshareOrders(13));
 	print("  AppendOrder():         " + AIOrder.AppendOrder(12, 33421, AIOrder.AIOF_NONE));
 
+	print("  GetStopLocation():     " + AIOrder.GetStopLocation(13, 0));
+	print("  BuildVehicle():        " + AIVehicle.BuildVehicle(23596, 8));
+	print("  BuildRailStation():    " + AIRail.BuildRailStation(7958, AIRail.RAILTRACK_NE_SW, 1, 1, AIStation.STATION_NEW));
+	print("  AppendOrder():         " + AIOrder.AppendOrder(20, 7958, AIOrder.AIOF_NONE));
+	print("  GetOrderCount():       " + AIOrder.GetOrderCount(20));
+	print("  GetStopLocation():     " + AIOrder.GetStopLocation(20, 0));
+	print("  SetStopLocation():     " + AIOrder.SetStopLocation(20, 0, AIOrder.STOPLOCATION_MIDDLE));
+	print("  GetStopLocation():     " + AIOrder.GetStopLocation(20, 0));
+
 	local list = AIStationList_Vehicle(12);
 
 	print("");
@@ -1024,6 +1033,7 @@ function Regression::Rail()
 		print("        " + i + " => " + list.GetValue(i));
 	}
 	print("    RemoveDepot():                 " + AITile.DemolishTile(33411));
+	print("    BuildRailDepot():              " + AIRail.BuildRailDepot(23596, 23597));
 
 	print("  Station");
 	print("    BuildRailStation():            " + AIRail.BuildRailStation(0, AIRail.RAILTRACK_NE_SW, 1, 1, AIStation.STATION_NEW));

@@ -23,6 +23,8 @@ namespace SQConvert {
 	template <> int Return<AIOrder::CompareFunction>(HSQUIRRELVM vm, AIOrder::CompareFunction res) { sq_pushinteger(vm, (int32)res); return 1; }
 	template <> AIOrder::OrderPosition GetParam(ForceType<AIOrder::OrderPosition>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIOrder::OrderPosition)tmp; }
 	template <> int Return<AIOrder::OrderPosition>(HSQUIRRELVM vm, AIOrder::OrderPosition res) { sq_pushinteger(vm, (int32)res); return 1; }
+	template <> AIOrder::StopLocation GetParam(ForceType<AIOrder::StopLocation>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIOrder::StopLocation)tmp; }
+	template <> int Return<AIOrder::StopLocation>(HSQUIRRELVM vm, AIOrder::StopLocation res) { sq_pushinteger(vm, (int32)res); return 1; }
 
 	/* Allow AIOrder to be used as Squirrel parameter */
 	template <> AIOrder *GetParam(ForceType<AIOrder *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIOrder *)instance; }
@@ -76,6 +78,10 @@ void SQAIOrder_Register(Squirrel *engine)
 	SQAIOrder.DefSQConst(engine, AIOrder::CF_INVALID,                                       "CF_INVALID");
 	SQAIOrder.DefSQConst(engine, AIOrder::ORDER_CURRENT,                                    "ORDER_CURRENT");
 	SQAIOrder.DefSQConst(engine, AIOrder::ORDER_INVALID,                                    "ORDER_INVALID");
+	SQAIOrder.DefSQConst(engine, AIOrder::STOPLOCATION_NEAR,                                "STOPLOCATION_NEAR");
+	SQAIOrder.DefSQConst(engine, AIOrder::STOPLOCATION_MIDDLE,                              "STOPLOCATION_MIDDLE");
+	SQAIOrder.DefSQConst(engine, AIOrder::STOPLOCATION_FAR,                                 "STOPLOCATION_FAR");
+	SQAIOrder.DefSQConst(engine, AIOrder::STOPLOCATION_INVALID,                             "STOPLOCATION_INVALID");
 
 	AIError::RegisterErrorMap(STR_ERROR_NO_MORE_SPACE_FOR_ORDERS,          AIOrder::ERR_ORDER_TOO_MANY);
 	AIError::RegisterErrorMap(STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION, AIOrder::ERR_ORDER_TOO_FAR_AWAY_FROM_PREVIOUS_DESTINATION);
@@ -99,10 +105,12 @@ void SQAIOrder_Register(Squirrel *engine)
 	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::GetOrderCondition,             "GetOrderCondition",             3, ".ii");
 	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::GetOrderCompareFunction,       "GetOrderCompareFunction",       3, ".ii");
 	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::GetOrderCompareValue,          "GetOrderCompareValue",          3, ".ii");
+	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::GetStopLocation,               "GetStopLocation",               3, ".ii");
 	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::SetOrderJumpTo,                "SetOrderJumpTo",                4, ".iii");
 	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::SetOrderCondition,             "SetOrderCondition",             4, ".iii");
 	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::SetOrderCompareFunction,       "SetOrderCompareFunction",       4, ".iii");
 	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::SetOrderCompareValue,          "SetOrderCompareValue",          4, ".iii");
+	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::SetStopLocation,               "SetStopLocation",               4, ".iii");
 	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::AppendOrder,                   "AppendOrder",                   4, ".iii");
 	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::AppendConditionalOrder,        "AppendConditionalOrder",        3, ".ii");
 	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::InsertOrder,                   "InsertOrder",                   5, ".iiii");
