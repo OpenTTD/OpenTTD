@@ -1201,10 +1201,6 @@ STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Arată 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Afişează plecările şi sosirile în orare: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Creare rapidă a ordinelor pentru vehicule: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Tipul implicit de şină (după joc nou/încarcare joc): {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :Şină normală
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_ELRAIL                     :Şină electrificată
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MONORAIL                   :Monoşină
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MAGLEV                     :Pernă magnetică
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Prima disponibilă
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Ultima disponibilă
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Cea mai folosită

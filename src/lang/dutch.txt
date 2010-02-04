@@ -1205,10 +1205,6 @@ STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Toon di
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Toon aankomst- en vertrektijden in dienstregeling: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Snel voertuigorders maken: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Standaard spoorsoort (bij nieuw of opgeslagen spel): {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :Normaal spoor
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_ELRAIL                     :Geëlektrificeerd spoor
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MONORAIL                   :Monorail
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MAGLEV                     :Zweefspoor
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Eerst beschikbare
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Laatst beschikbare
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Meest gebruikte

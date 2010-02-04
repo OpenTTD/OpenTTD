@@ -1912,40 +1912,38 @@ static void SetDefaultRailGui()
 	if (_local_company == COMPANY_SPECTATOR || !Company::IsValidID(_local_company)) return;
 
 	extern RailType _last_built_railtype;
-	RailType rt = (RailType)_settings_client.gui.default_rail_type;
-	if (rt >= RAILTYPE_END) {
-		if (rt == DEF_RAILTYPE_MOST_USED) {
-			/* Find the most used rail type */
-			RailType count[RAILTYPE_END];
-			memset(count, 0, sizeof(count));
-			for (TileIndex t = 0; t < MapSize(); t++) {
-				if (IsTileType(t, MP_RAILWAY) || IsLevelCrossingTile(t) || HasStationTileRail(t) ||
-						(IsTileType(t, MP_TUNNELBRIDGE) && GetTunnelBridgeTransportType(t) == TRANSPORT_RAIL)) {
-					count[GetRailType(t)]++;
-				}
+	RailType rt = (RailType)(_settings_client.gui.default_rail_type + RAILTYPE_END);
+	if (rt == DEF_RAILTYPE_MOST_USED) {
+		/* Find the most used rail type */
+		RailType count[RAILTYPE_END];
+		memset(count, 0, sizeof(count));
+		for (TileIndex t = 0; t < MapSize(); t++) {
+			if (IsTileType(t, MP_RAILWAY) || IsLevelCrossingTile(t) || HasStationTileRail(t) ||
+					(IsTileType(t, MP_TUNNELBRIDGE) && GetTunnelBridgeTransportType(t) == TRANSPORT_RAIL)) {
+				count[GetRailType(t)]++;
 			}
+		}
 
+		rt = RAILTYPE_RAIL;
+		for (RailType r = RAILTYPE_ELECTRIC; r < RAILTYPE_END; r++) {
+			if (count[r] >= count[rt]) rt = r;
+		}
+
+		/* No rail, just get the first available one */
+		if (count[rt] == 0) rt = DEF_RAILTYPE_FIRST;
+	}
+	switch (rt) {
+		case DEF_RAILTYPE_FIRST:
 			rt = RAILTYPE_RAIL;
-			for (RailType r = RAILTYPE_ELECTRIC; r < RAILTYPE_END; r++) {
-				if (count[r] >= count[rt]) rt = r;
-			}
+			while (rt < RAILTYPE_END && !HasRailtypeAvail(_local_company, rt)) rt++;
+			break;
 
-			/* No rail, just get the first available one */
-			if (count[rt] == 0) rt = DEF_RAILTYPE_FIRST;
-		}
-		switch (rt) {
-			case DEF_RAILTYPE_FIRST:
-				rt = RAILTYPE_RAIL;
-				while (rt < RAILTYPE_END && !HasRailtypeAvail(_local_company, rt)) rt++;
-				break;
+		case DEF_RAILTYPE_LAST:
+			rt = GetBestRailtype(_local_company);
+			break;
 
-			case DEF_RAILTYPE_LAST:
-				rt = GetBestRailtype(_local_company);
-				break;
-
-			default:
-				break;
-		}
+		default:
+			break;
 	}
 
 	_last_built_railtype = _cur_railtype = rt;

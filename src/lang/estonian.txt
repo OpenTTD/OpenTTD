@@ -1256,10 +1256,6 @@ STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Sõidup
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Saabumiste ja väljumiste näitamine sõiduplaanis: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Sõidukikäskude kiirloomine: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Algne rööbastee liik (mängu alustamisel/laadimisel): {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :Tavaline rööbastee
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_ELRAIL                     :Elektrifitseeritud rööbastee
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MONORAIL                   :Monorelss
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MAGLEV                     :Magnethõljukrong
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Esimene saadaval
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Viimane saadaval
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Enim kasutatud

@@ -1200,10 +1200,6 @@ STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}عرض 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}عرض الوصول و المغادرة في جدولة الاعمال: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE} انشاء اوامر بسرعة : {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}سكة الحديد القياسية -بعد بدأ لعبة جديدة او تحميل لعبة- : {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :السكة العادية
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_ELRAIL                     :السكة الكهربائية
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MONORAIL                   :السكة الأحادية السريعة
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MAGLEV                     :السكة الممغنطة
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :القديم
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :الجديد
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :الأكثر استخداما

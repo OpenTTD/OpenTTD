@@ -565,7 +565,7 @@ const SettingDesc _settings[] = {
 	 SDTC_BOOL(gui.timetable_arrival_departure,          S,  0,  true,                        STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE, InvalidateVehTimetableWindow),
 	 SDTC_BOOL(gui.quick_goto,                           S,  0, false,                        STR_CONFIG_SETTING_QUICKGOTO,                   NULL),
 	  SDTC_VAR(gui.loading_indicators,        SLE_UINT8, S, MS,     1,        0,        2, 0, STR_CONFIG_SETTING_LOADING_INDICATORS,          RedrawScreen),
-	  SDTC_VAR(gui.default_rail_type,         SLE_UINT8, S, MS,     4,        0,        6, 0, STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE,           NULL),
+	  SDTC_VAR(gui.default_rail_type,         SLE_UINT8, S, MS,     0,        0,        2, 0, STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE,           NULL),
 	 SDTC_BOOL(gui.enable_signal_gui,                    S,  0,  true,                        STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI,           CloseSignalGUI),
 	  SDTC_VAR(gui.drag_signals_density,      SLE_UINT8, S,  0,     4,        1,       20, 0, STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY,        DragSignalsDensityChanged),
 	  SDTC_VAR(gui.semaphore_build_before,    SLE_INT32, S, NC,  1950, MIN_YEAR, MAX_YEAR, 1, STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE, ResetSignalVariant),

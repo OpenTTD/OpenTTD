@@ -1172,10 +1172,6 @@ STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Iespēj
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Rādīt sarakstu tikšķos nevis dienās: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Ātrā transporta norīkojumu veidošana: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Sliežu tips pēc noklusējuma: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :Parastās sliedes
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_ELRAIL                     :Elektriskās sliedes
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MONORAIL                   :Viensliedes
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MAGLEV                     :Magleva
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Pirmās pieejamās
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Pēdējās pieejamās
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Visbiežāk lietotās

@@ -1239,10 +1239,6 @@ STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Menetre
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Indulás és érkezés megjelenítése a menetrendekben: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Gyors menetrend-készítés: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Alapértelmezett vasúti pályatipus: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :Normál vasúti pálya
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_ELRAIL                     :Villamosított vasúti pálya
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MONORAIL                   :Egysínű
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Első elérhető
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Utolsó elérhető
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Legutoljára használt

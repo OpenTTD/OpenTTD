@@ -1243,10 +1243,6 @@ STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Rodyti 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Rodyti arvykimą ir išvykimą tvarkaraščiuose: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Greitas tr. priemonių paskyrimų kūrimas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Numatytoji bėgių rūšis (po žaidimo paleidimo): {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :Paprasti bėgiai
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_ELRAIL                     :Elektrifikuoti bėgiai
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MONORAIL                   :Vienbėgis
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MAGLEV                     :Magnetinės levitacijos
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Pirmas galimas
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Paskutinis įmanomas
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Dažniausiai naudojamas

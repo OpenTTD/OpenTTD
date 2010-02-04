@@ -1177,10 +1177,6 @@ STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Ativar 
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Exibir plano de horário em tiques ao invés de dias: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Criar rapidamente ordens para um veículo: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Tipo padrão de ferrovia (ao criar ou carregar um jogo): {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :Trilho Normal
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_ELRAIL                     :Trilho Elétrico
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MONORAIL                   :Monotrilho
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Primeiro disponível
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Último disponível
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Mais utilizado

@@ -1205,10 +1205,6 @@ STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Näytä
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Näytä saapuminen ja lähtö aikatauluissa: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Nopea kulkuneuvon käskyjen luominen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Oletusraidetyyppi: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :Tavallinen raide
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_ELRAIL                     :Sähköistetty raide
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MONORAIL                   :Yksiraiteinen
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Ensimmäinen
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Viimeinen
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Yleisin

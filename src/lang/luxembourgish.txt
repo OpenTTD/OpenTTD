@@ -1161,10 +1161,6 @@ STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Erlaab 
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Weis de Fuerplang an Intervallen amplaz vun Deeg: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Schnellkreatiounvun Gefieropträg: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Standard Schinnentyp (no neiem Spill/geluedenem Spill): {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :Normal Schinnen
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_ELRAIL                     :Elektresch Schinnen
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MONORAIL                   :Monorail
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MAGLEV                     :Magnéitbunn
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Ëischt verfügbar
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Läscht verfügbar
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Meescht benotzten

@@ -1581,10 +1581,6 @@ STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Pokazuj
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Pokazuj przyjazdy i odjazdy w rozkładach: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Szybkie tworzenie poleceń pojazdu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Domyślny typ torowiska: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :Normalne
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_ELRAIL                     :Elektryfikowane
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MONORAIL                   :Jednoszynowe
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MAGLEV                     :MagLev
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Pierwszy dostępny
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Najnowszy
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Najczęściej używany

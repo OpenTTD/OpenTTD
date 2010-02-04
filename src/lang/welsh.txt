@@ -1171,10 +1171,6 @@ STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Galluog
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Dangos amserlen fesul ticiau yn hytrach na dyddiau: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Creu cyflym ar gyfer gorchmynion cerbydau: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Math rheilffordd ragosodedig (ar ôl gêm newydd/llwytho gêm ): {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :Rheilffordd Gyffredin
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_ELRAIL                     :Rheilffordd Drydan
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MONORAIL                   :Monoreilffordd
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglef
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Y Cyntaf sydd ar gael
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Yr olaf sydd ar gael
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Defnydd mwyaf

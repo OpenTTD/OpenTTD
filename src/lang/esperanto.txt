@@ -1156,10 +1156,6 @@ STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Ebligu 
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Montru horaron laŭ tikoj anstataŭ laŭ tagoj: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Rapidkreo de veturilordonoj: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Defaŭlta reltipo (post novludo/ŝargludo): {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :Kutima Relo
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_ELRAIL                     :Elektrizita Relo
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MONORAIL                   :Unurelo
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Unue havebla
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Laste havebla
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Pli uzata

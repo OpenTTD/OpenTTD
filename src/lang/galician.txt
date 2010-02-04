@@ -1152,10 +1152,6 @@ STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Tódalas compa�
 STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Habilita-los horarios para os vehículos: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Mostra-lo horario en ticks en lugar de días: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Raíl por defecto (nova partida/cargar partida): {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :Vía Normal
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_ELRAIL                     :Vía Electrificada
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MONORAIL                   :Monoraíl
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Primeiro dispoñible
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Último dispoñible
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Máis usado

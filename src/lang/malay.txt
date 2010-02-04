@@ -1201,10 +1201,6 @@ STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Paparka
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Paparkan ketibaan dan pelepasan dalam jadual: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Pewujudan pantas arahan kenderaan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Landasan keretapi lazim (apabila memulakan permainan baru/buka permainan: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :Landasan Lazim
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_ELRAIL                     :Landasan Elektrik
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MONORAIL                   :Monorel
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Yang tersedia terawal
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Yang tersedia sebelumnya
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Yang selalu digunakan

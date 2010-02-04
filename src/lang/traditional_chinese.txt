@@ -1205,10 +1205,6 @@ STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}顯示�
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}顯示時刻表排定的到離時間：{ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}快速建立交通工具調度命令：{ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}預設的路軌種類 (將在新遊戲／載入遊戲時生效)：{ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :傳統鐵路
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_ELRAIL                     :電氣化鐵路
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MONORAIL                   :單軌
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MAGLEV                     :磁浮
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :最先可用的路軌
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :最新可用的路軌
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :最常用的路軌

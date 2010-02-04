@@ -1205,10 +1205,6 @@ STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Hiện 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Hiển thị nơi đến và nơi đi trên lịch trình: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Tạo điểm lộ trình nhanh cho ph.tiện: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Loại đường ray mặc định (sau game mới/nạp game): {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :Ray Bình Thường
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_ELRAIL                     :Ray Điện
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MONORAIL                   :Ray Đơn
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MAGLEV                     :Ray Đệm
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Có trước tiên
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Có sau cùng
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Dùng nhiều

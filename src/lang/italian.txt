@@ -1207,10 +1207,6 @@ STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Mostra 
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Mostra gli arrivi e le partenze nelle tabelle orarie: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Creazione rapida degli ordini dei veicoli: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Ferrovia predefinita (a inizio/ripresa partita): {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :Ferrovia normale
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_ELRAIL                     :Ferrovia elettrificata
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MONORAIL                   :Monorotaia
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :La prima disponibile
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :L'ultima disponibile
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :La più usata

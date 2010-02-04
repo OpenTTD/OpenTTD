@@ -1300,10 +1300,6 @@ STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Εμφ�
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Εμφάνιση άφιξη και αναχώρηση στα δρομολόγια: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Γρήγορη δημιουργία εντολών για τα οχήματα: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Προεπιλογή τύπου σιδηροτροχιάς (μετά από νέο παιχνίδι/φόρτωση παιχνιδιού): {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :Κανονική Σιδηροτροχιά
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_ELRAIL                     :Ηλεκτρική Σιδηροτροχιά
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MONORAIL                   :Monorail
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Πρώτος διαθέσιμος
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Τελευταίος διαθέσιμος
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Πιο χρησιμοποιημένος

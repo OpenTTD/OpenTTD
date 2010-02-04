@@ -1273,10 +1273,6 @@ STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Zobrazi
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Ukazovat v jízdním řádu příjezdy a odjezdy: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Rychlejší zadávání příkazů pro vozidla: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Výchozí druh kolejí (v nové hře/po načtení hry): {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_RAIL                       :normální koleje
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_ELRAIL                     :elektrifikované koleje
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MONORAIL                   :monorail
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MAGLEV                     :maglev
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :první dostupný
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :poslední dostupný
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :nejpoužívanější
