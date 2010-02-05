@@ -1161,6 +1161,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Dopustiv
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerantan
 STR_CITY_APPROVAL_HOSTILE                                       :Agresivan
 
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Odgovarajuća UI nije dostupna...{}Možete preuzeti nekoliko UI pomoću sustava 'Online sadržaja'
 STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Ova je radnja promjenila razinu težine na proizvoljno
 
 # Advanced settings window
@@ -1210,6 +1211,10 @@ STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Dopusti
 STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Neujednačene postaje: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Težinski množitelj za teret za simulaciju teških vlakova: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Faktor brzine zrakoplova: {ORANGE}1 / {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Broj padova zrakoplova: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :ništa
+STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :smanjeno
+STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normalo
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Dopusti prolazne postaje na cestama u vlasništvu gradova: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Dopusti prolazne postaje na cestama koje su u vlasništvu konkurencije: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Dopusti izgradnju pridruženih postaja: {ORANGE}{STRING}
@@ -2461,6 +2466,7 @@ STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Nepoznato svojs
 STR_NEWGRF_ERROR_INVALID_ID                                     :Pokušaj uporabe neispravnog ID-a.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} sadrži neispravan grafički znak. Svi neispravni grafički znakovi bit će pokazani kao crveni upitnik (?).
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Sadrži mnoge Action 8 unose.
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Učitavanje izvan kraja pseudo-spritea.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Oprez!
@@ -3299,6 +3305,8 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Odaberi 
 STR_AI_DEBUG                                                    :{WHITE}Debugiranje UI
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Ime UI
+STR_AI_DEBUG_SETTINGS                                           :{BLACK}Postavke UI
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Promijeni postavke UI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Ponovno učitaj UI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Ubij UI, ponovno učitaj skriptu i ponovno pokreni UI
 

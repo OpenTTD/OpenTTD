@@ -293,13 +293,13 @@ STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Game tua
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Tuỳ chọn
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Lưu, bỏ ván chơi, thoát chương trình
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Hiển thị bản đồ
-STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Hiển thị thư mục thị trấn
+STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Hiển thị danh sách đô thị
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Hiện tiền trợ cấp
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Hiển thị danh sách công ty
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Hiện thông tin tài chính của công ty
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Hiện thông tin tổng quát của công ty
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Hiển thị biểu đồ
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Hiện bảng liên đoàn công ty
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Hiện bảng tầm cỡ các công ty
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Bỏ vốn cho những ngành mới hoặc hiện tất cả các ngành
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Hiện danh sách tàu hoả của công ty.Ctrl+Click vào chốt néo để mở danh sách nhóm/phương tiện
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Hiện danh sách xe cộ của công ty.Ctrl+Click vào chốt néo để mở danh sách nhóm/phương tiện
@@ -345,15 +345,15 @@ STR_SETTINGS_MENU_GAME_OPTIONS                                  :Tùy chọn tr�
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Thiết lập độ khó
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Thiết lập cao cấp
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Thông số NewGRF
-STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Thiết lập độ trong suốt
+STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Thiết lập hiệu ứng trong suốt
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Hiển thị tên thị trấn
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Hiển thị tên nhà ga
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Hiển thị tên điểm mốc
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Hiển thị ký hiệu
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Animation đầy đủ
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Chi tiết
-STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Không hiện nhà cửa
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Không hiện biển hiệu nhà ga
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Làm trong suốt nhà cửa
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Làm trong suốt biển hiệu nhà ga
 ############ range ends here
 
 ############ range for file menu starts
@@ -366,7 +366,7 @@ STR_FILE_MENU_EXIT                                              :Thoát
 ############ range for map menu starts
 STR_MAP_MENU_MAP_OF_WORLD                                       :Bản đồ thế giới
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Cổng nhìn bổ sung
-STR_MAP_MENU_SIGN_LIST                                          :Danh sách ký hiệu
+STR_MAP_MENU_SIGN_LIST                                          :Danh sách biển hiệu
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Thư mục thị trấn
 ############ end of the 'Display map' dropdown
@@ -387,13 +387,13 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Tỉ giá thanh
 ############ range ends here
 
 ############ range for company league menu starts
-STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Bảng liên đoàn công ty
+STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Bảng tầm cỡ công ty
 STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Chi tiết năng suất định mức
 ############ range ends here
 
 ############ range for industry menu starts
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Thư mục các ngành
-STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Góp vốn cho ngành mới
+STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Góp vốn xây nhà máy mới
 ############ range ends here
 
 ############ range for railway construction menu starts
@@ -443,37 +443,37 @@ STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Về 'OpenTTD'
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
-STR_ORDINAL_NUMBER_1ST                                          :1st
-STR_ORDINAL_NUMBER_2ND                                          :2nd
-STR_ORDINAL_NUMBER_3RD                                          :3rd
-STR_ORDINAL_NUMBER_4TH                                          :4th
-STR_ORDINAL_NUMBER_5TH                                          :5th
-STR_ORDINAL_NUMBER_6TH                                          :6th
-STR_ORDINAL_NUMBER_7TH                                          :7th
-STR_ORDINAL_NUMBER_8TH                                          :8th
-STR_ORDINAL_NUMBER_9TH                                          :9th
-STR_ORDINAL_NUMBER_10TH                                         :10th
-STR_ORDINAL_NUMBER_11TH                                         :11th
-STR_ORDINAL_NUMBER_12TH                                         :12th
-STR_ORDINAL_NUMBER_13TH                                         :13th
-STR_ORDINAL_NUMBER_14TH                                         :14th
-STR_ORDINAL_NUMBER_15TH                                         :15th
-STR_ORDINAL_NUMBER_16TH                                         :16th
-STR_ORDINAL_NUMBER_17TH                                         :17th
-STR_ORDINAL_NUMBER_18TH                                         :18th
-STR_ORDINAL_NUMBER_19TH                                         :19th
-STR_ORDINAL_NUMBER_20TH                                         :20th
-STR_ORDINAL_NUMBER_21ST                                         :21st
-STR_ORDINAL_NUMBER_22ND                                         :22nd
-STR_ORDINAL_NUMBER_23RD                                         :23rd
-STR_ORDINAL_NUMBER_24TH                                         :24th
-STR_ORDINAL_NUMBER_25TH                                         :25th
-STR_ORDINAL_NUMBER_26TH                                         :26th
-STR_ORDINAL_NUMBER_27TH                                         :27th
-STR_ORDINAL_NUMBER_28TH                                         :28th
-STR_ORDINAL_NUMBER_29TH                                         :29th
-STR_ORDINAL_NUMBER_30TH                                         :30th
-STR_ORDINAL_NUMBER_31ST                                         :31st
+STR_ORDINAL_NUMBER_1ST                                          :1
+STR_ORDINAL_NUMBER_2ND                                          :2
+STR_ORDINAL_NUMBER_3RD                                          :3
+STR_ORDINAL_NUMBER_4TH                                          :4
+STR_ORDINAL_NUMBER_5TH                                          :5
+STR_ORDINAL_NUMBER_6TH                                          :6
+STR_ORDINAL_NUMBER_7TH                                          :7
+STR_ORDINAL_NUMBER_8TH                                          :8
+STR_ORDINAL_NUMBER_9TH                                          :9
+STR_ORDINAL_NUMBER_10TH                                         :10
+STR_ORDINAL_NUMBER_11TH                                         :11
+STR_ORDINAL_NUMBER_12TH                                         :12
+STR_ORDINAL_NUMBER_13TH                                         :13
+STR_ORDINAL_NUMBER_14TH                                         :14
+STR_ORDINAL_NUMBER_15TH                                         :15
+STR_ORDINAL_NUMBER_16TH                                         :16
+STR_ORDINAL_NUMBER_17TH                                         :17
+STR_ORDINAL_NUMBER_18TH                                         :18
+STR_ORDINAL_NUMBER_19TH                                         :19
+STR_ORDINAL_NUMBER_20TH                                         :20
+STR_ORDINAL_NUMBER_21ST                                         :21
+STR_ORDINAL_NUMBER_22ND                                         :22
+STR_ORDINAL_NUMBER_23RD                                         :23
+STR_ORDINAL_NUMBER_24TH                                         :24
+STR_ORDINAL_NUMBER_25TH                                         :25
+STR_ORDINAL_NUMBER_26TH                                         :26
+STR_ORDINAL_NUMBER_27TH                                         :27
+STR_ORDINAL_NUMBER_28TH                                         :28
+STR_ORDINAL_NUMBER_29TH                                         :29
+STR_ORDINAL_NUMBER_30TH                                         :30
+STR_ORDINAL_NUMBER_31ST                                         :31
 ############ range for days ends
 
 ############ range for months starts
@@ -515,7 +515,7 @@ STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMM
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Biểu Đồ Lợi Nhuận Hoạt Động
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Biểu Đồ Thu Nhập
 STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Số lượng hàng hóa đã giao
-STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Đánh giá năng suất công ty (cao nhất=1000)
+STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Đánh giá uy tín công ty (cao nhất=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Giá trị công ty
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Tỉ giá thanh toán hàng hóa
@@ -531,16 +531,16 @@ STR_GRAPH_KEY_CAPTION                                           :{WHITE}Nút b�
 STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Click vào đây để bật/tắt thông tin công ty trên biểu đồ
 
 # Company league window
-STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Bảng liên đoàn công ty
+STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Bảng tầm cỡ công ty
 STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Kỹ sư
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Quản Lý Giao Thông
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Người Phối Hợp Vận Chuyển
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ROUTE_SUPERVISOR           :Giám Sát Tuyến Đường
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_DIRECTOR                   :Giám Đốc
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHIEF_EXECUTIVE            :Giám Đốc Điều Hành
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHAIRMAN                   :Chủ Tịch
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :Chủ Tịch
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Kỹ sư vận tải
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Tổ trưởng vận tải
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Trưởng phòng vận tải
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ROUTE_SUPERVISOR           :Trưởng ban vận tải
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_DIRECTOR                   :Giám đốc vận tải
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHIEF_EXECUTIVE            :Tổng giám đốc
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHAIRMAN                   :Chủ tịch công ty
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :Chủ tịch tập đoàn
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Ông Trùm
 
 # Performance detail window
@@ -623,7 +623,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Click v�
 
 # Highscore window
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Những công ty đứng đầu đã đạt được {NUM}{}({STRING} Level)
-STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Bảng Liên Đoàn Công Ty trong {NUM}
+STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Bảng tầm cỡ công ty trong {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIGFONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Doanh Nhân
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Nhà Thầu
@@ -701,7 +701,7 @@ STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Hiển t
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Hiện thông điệp hoặc tin tức cuối cùng
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_STATUSBAR_PAUSED                                            :{YELLOW}*  *  DỪNG  *  *
+STR_STATUSBAR_PAUSED                                            :{YELLOW}*  *  TẠM DỪNG  *  *
 STR_STATUSBAR_AUTOSAVE                                          :{RED}LƯU TỰ ĐỘNG
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  ĐANG LƯU GAME *  *
 
@@ -775,7 +775,7 @@ STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Cụm công nghiệp {STRING} đã được lên kế hoạch gần thị trấn {TOWN}!
 
 STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}{STRING} thông báo sắp đóng cửa!
-STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}Vấn đề nguồn cung do {STRING} thông báo sắp đóng cửa!
+STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}Vì thiếu hụt nguồn nguyên liệu nên {STRING} thông báo sắp đóng cửa!
 STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}Thiếu nguồn gỗ do {STRING} thông báo sắp đóng cửa!
 
 STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}Đồng Euro!{}{}Được giới thiệu là đồng tiền duy nhất cho việc giao dịch hằng ngày trong đất nước bạn!
@@ -786,7 +786,7 @@ STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}Phát hiện vỉa than mới ở mỏ {INDUSTRY}!{}Năng suất tăng gấp đôi!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}Phát hiện mỏ dầu mới ở {INDUSTRY}!{}Năng suất tăng gấp đôi!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}Cải tiến phương pháp canh tác tại {INDUSTRY} năng suất sẽ gấp đôi !
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK}{STRING} sản xuất tại {INDUSTRY} tăng lên {COMMA}%!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK}Sản lượng/số lượng {STRING} tại {INDUSTRY} tăng lên {COMMA}%!
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} sản lượng giảm 50%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}Bị sâu bọ tàn phá tại {INDUSTRY}!{}Năng suất giảm 50%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK}Năng suất {STRING} tại {INDUSTRY} giảm {COMMA}%!
@@ -825,7 +825,7 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Lời đề nghị trợ cấp đã hết hạn:{}{}{STRING} từ {STRING} đến {STRING} bây giờ sẽ không có trợ cấp.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Đã rút khỏi trợ cấp:{}{}{STRING} kinh doanh từ {STRING} đến {STRING} sẽ không còn trợ cấp nữa.
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Khuyến mãi trợ cấp dịch vụ:{}{}Dịch vụ {STRING} đầu tiên từ {STRING} đến {STRING} sẽ thu hút tiền trợ cấp trong một năm của chính quyền địa phương!
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Đề nghị trợ cấp:{}{}Dịch vụ vận tải {STRING} đầu tiên từ {STRING} đến {STRING} sẽ nhận được tiền trợ cấp trong một năm của chính quyền địa phương!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Trợ cấp dịch vụ được trao cho {STRING}!{}{}Dịch vụ {STRING} từ {STRING} đến {STRING} sẽ thu lợi cao hơn 50% đến năm sau!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Trợ cấp dịch vụ được trao cho {STRING}!{}{}Dịch vụ {STRING} từ {STRING} đến {STRING} sẽ thu lợi gấp đôi đến năm sau!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Trợ cấp dịch vụ được trao cho {STRING}!{}{}Dịch vụ {STRING} từ {STRING} đến {STRING} sẽ thu lợi gấp ba đến năm sau!
@@ -1014,11 +1014,11 @@ STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Quan đ
 ############ range for difficulty settings ends
 
 STR_NONE                                                        :Không Có
-STR_NUM_VERY_LOW                                                :Thấp Nhất
-STR_NUM_LOW                                                     :Thấp
-STR_NUM_NORMAL                                                  :Thường
-STR_NUM_HIGH                                                    :Cao
-STR_NUM_CUSTOM                                                  :Tự Chỉnh
+STR_NUM_VERY_LOW                                                :Ít nhất
+STR_NUM_LOW                                                     :Ít
+STR_NUM_NORMAL                                                  :Trung bình
+STR_NUM_HIGH                                                    :Nhiều
+STR_NUM_CUSTOM                                                  :Tuỳ chọn
 
 STR_VARIETY_NONE                                                :Không
 STR_VARIETY_VERY_LOW                                            :Rất Thấp
@@ -1062,8 +1062,8 @@ STR_DISASTERS_OFF                                               :Tắt
 STR_DISASTERS_ON                                                :Bật
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :Dễ dãi
-STR_CITY_APPROVAL_TOLERANT                                      :Khả Dung
-STR_CITY_APPROVAL_HOSTILE                                       :Thù Địch
+STR_CITY_APPROVAL_TOLERANT                                      :Vừa phải
+STR_CITY_APPROVAL_HOSTILE                                       :Khó khăn
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Không có AI nào phù hợp...{}Bạn có thể tải các AI từ mục 'Online Content'
 STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Hành động này thay đổi độ khó về tự tùy chỉnh
@@ -1187,7 +1187,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Tắt
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Cuộn chuột trái: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Sử dụng định dạng ngày {ORANGE}{STRING}{LTBLUE} cho tên file lưu ván chơi.
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :đầy đủ (31st Dec 2008)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :đầy đủ (31 T12 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :ngắn (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
@@ -1335,7 +1335,7 @@ STR_INTRO_LOAD_GAME                                             :{BLACK}Nạp v�
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Chơi Màn chơi kịch bản
 STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Chơi bản đồ địa hình
 STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Trình biên tập màn chơi kịch bản
-STR_INTRO_MULTIPLAYER                                           :{BLACK}Nhiều người chơi
+STR_INTRO_MULTIPLAYER                                           :{BLACK}Chơi trên mạng
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Tùy chọn trò chơi
 STR_INTRO_DIFFICULTY                                            :{BLACK}Độ khó ({STRING})
@@ -1350,7 +1350,7 @@ STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Tải tr
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Chơi ván mới, dùng bản đồ địa hình làm nền đất
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Chơi ván mới, dùng màn chơi kịch bản theo ý riêng
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Tạo màn chơi kịch bản/bản đồ theo ý riêng
-STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Bắt đầu game nhiều người chơi
+STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Bắt đầu chơi trên mạng nhiều người
 
 STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}Chọn kiểu quang cảnh 'ôn hòa'
 STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Chọn kiểu quang cảnh 'giá rét'
@@ -1396,7 +1396,7 @@ STR_CHEAT_MONEY                                                 :{LTBLUE}Tăng s
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Điều khiển công ty: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Xe ủi thần kỳ (xúc văng nhà máy, vật không thể di chuyển): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Đường ngầm có thể vượt lẫn nhau : {ORANGE}{STRING}
-STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Xây trong chế độ dừng game: {ORANGE}{STRING}
+STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Xây trong chế độ tạm dừng game: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Máy bay phản lực sẽ không tai nạn (thường xuyên) ở các sân bay nhỏ: {ORANGE}{STRING}
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Đổi thời tiết: {ORANGE}{STRING}
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Địa hình vừa phải
@@ -1453,8 +1453,8 @@ STR_FACE_FEMALE_BUTTON                                          :{BLACK}Nữ
 STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Chọn vẻ mặt nữ
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Vẻ Mặt Mới
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Chọn ngẫu nhiên vẻ mặt mới
-STR_FACE_ADVANCED                                               :{BLACK}Cấp Cao
-STR_FACE_ADVANCED_TOOLTIP                                       :{BLACK}Tùy chọn vẻ mặt cấp cao.
+STR_FACE_ADVANCED                                               :{BLACK}Nâng cao
+STR_FACE_ADVANCED_TOOLTIP                                       :{BLACK}Tùy chọn vẻ mặt nâng cao.
 STR_FACE_SIMPLE                                                 :{BLACK}Đơn giản
 STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Trình chọn vẻ mặt đơn giản.
 STR_FACE_LOAD                                                   :{BLACK}Nạp
@@ -1500,7 +1500,7 @@ STR_FACE_EARRING                                                :Bông tai:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Thay đổi cà vạt hoặc bông tai
 
 # Network server list
-STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Nhiều người chơi
+STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Ván chơi mạng
 STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK}Kết nối:
 STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}Lựa chọn chơi game nối mạng internet hặc nối mạng nội bộ (LAN)
 STR_NETWORK_SERVER_LIST_LAN                                     :Mạng nội bộ
@@ -1556,10 +1556,10 @@ STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Gõ tên
 STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Gõ địa chỉ của máy chủ
 
 # Start new multiplayer server
-STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Bắt đầu game mới nhiều người chơi
+STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Bắt đầu ván chơi mạng nhiều người
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Tên trò chơi:
-STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Tên của game sẽ được hiển thị trong bảng chọn game nhiều người chơi
+STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Tên của game sẽ được hiển thị trong bảng chọn ván chơi mạng
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Đặt mật khẩu
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Bảo vệ game của bạn bằng mật khẩu nếu bạn không muốn người khác vào tùy tiện
 STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Chọn bản đồ:
@@ -1571,6 +1571,7 @@ STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (lên 
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} máy con
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Máy con tối đa:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Chọn số máy con tối đa. Không cần thiết phải vào đầy
+STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} công ty
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Số công ty tối đa:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Giới hạn số công ty trong server
 STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} người khán giả
@@ -1644,7 +1645,7 @@ STR_NETWORK_GAME_LOBBY_VEHICLES                                 :{SILVER}Phươn
 STR_NETWORK_GAME_LOBBY_STATIONS                                 :{SILVER}Ga, bến, cảng: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
 STR_NETWORK_GAME_LOBBY_PLAYERS                                  :{SILVER}Người chơi: {WHITE}{STRING}
 
-STR_NETWORK_GAME_LOBBY_NEW_COMPANY                              :{BLACK}Tân công ty
+STR_NETWORK_GAME_LOBBY_NEW_COMPANY                              :{BLACK}Công ty mới
 STR_NETWORK_GAME_LOBBY_NEW_COMPANY_TOOLTIP                      :{BLACK}Khai sinh một công ty
 STR_NETWORK_GAME_LOBBY_SPECTATE_GAME                            :{BLACK}Xem ván chơi
 STR_NETWORK_GAME_LOBBY_SPECTATE_GAME_TOOLTIP                    :{BLACK}Vào ván chơi như là một người xem
@@ -1676,7 +1677,7 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Công ty
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Danh sách máy con
 STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Xem
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Tân công ty
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Công ty mới
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Đá
@@ -1759,18 +1760,18 @@ STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :server đầy
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
 ############ Leave those lines in this order!!
-STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Dừng game ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Ván chơi tạm dừng ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Game đang dừng ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Game đang dừng ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Game vẫn đang dừng ({STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Không dừng game ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :không đủ người chơi
-STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :kết nối đến clients
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :máy con kết nối đến
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :tự chọn
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :máy con rời
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} máy con gia nhập ván chơi
-STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} đã vào trò chơi (Client #{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} đã vào trò chơi (Máy con #{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} gia nhập công ty #{2:NUM}
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} vào xem ván chơi
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} khai trương công ty mới (#{2:NUM})
@@ -1993,7 +1994,7 @@ STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Xây c�
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Đặt một phao hàng hải như là điểm mốc trên đường đi
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Xây cống
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Đặt tên vùng biển.{}Tạo một kênh đào, nếu ấn Ctrl thì giữ xuống tới mực nước biển, không thì sẽ bị ngập nước
-STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Đặt tên sông.
+STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Đặt sông.
 
 # Ship depot construction window
 STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Hướng xưởng tàu
@@ -2016,19 +2017,19 @@ STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Trung t�
 STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Quốc tế
 STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Cỡ trung
 STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Liên lục địa
-STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}SB lên thẳng
-STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}SB lên thắng trung
-STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}SB lên thẳng lớn
+STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Sân bay trực thăng
+STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}Sân bay trực thăng vừa
+STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}Sân bay trực thăng lớn
 
 STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}Sân bay nhỏ/trung
 STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Sân bay lớn
 STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Cảng trung chuyển
-STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}SB máy bay lên thẳng
+STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Sân bay trực thăng
 
 STR_STATION_BUILD_NOISE                                         :{BLACK}Độ ồn tạo ra: {GOLD}{COMMA}
 
 # Landscaping toolbar
-STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Xoay ngang
+STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Tôn hạ nền đất
 STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Hạ thấp một góc đất
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Nâng cao một góc đất
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Làm bình địa
@@ -2246,14 +2247,14 @@ STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Di chuy�
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Di chuyển độ cao tuyết phủ xuống thấp
 STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Số ngẫu nhiên:
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Chọn để nhập con số ngẫu nhiên khi tạo bản đồ
-STR_MAPGEN_RANDOM                                               :{BLACK}Một cách ngẫu nhiên
+STR_MAPGEN_RANDOM                                               :{BLACK}Sinh ngẫu nhiên
 STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Thay đổi con số ngẫu nhiên để khởi tạo địa hình ngẫu nhiên
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Tạo nền đất:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Cơ chế trồng cây:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Kiểu nền đất:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Mực nước biển:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Độ phẳng phiu:
-STR_MAPGEN_VARIETY                                              :{BLACK}Nhiều phân phối:
+STR_MAPGEN_VARIETY                                              :{BLACK}Phân bổ sự đa dạng:
 STR_MAPGEN_GENERATE                                             :{WHITE}Khởi tạo
 
 # Strings for map borders at game generation
@@ -2381,7 +2382,7 @@ STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}File h�
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}GRF tương thích được nạp thay cho các file thiếu.
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Các GRF file thiếu bị bỏ qua
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Thiếu GRF file
-STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Tiếp tục cso thể làm treo OpenTTD. Không nên báo cáo lỗi sau khi bị treo.{}Bạn có chắc là tiếp tục chơi?
+STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Tiếp tục có thể làm treo OpenTTD. Không nên báo cáo lỗi sau khi bị treo.{}Bạn có chắc là tiếp tục chơi?
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Hoạt động của NewGRF '{0:STRING}' có thể gây mất đồng bộ hoặc bị treo.
@@ -2434,7 +2435,7 @@ STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Đổi tên đ�
 
 # Town local authority window
 STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}Chính quyền địa phương {TOWN}
-STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Năng suất công ty vận tải:
+STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Uy tín công ty vận tải:
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Các thao tác:
 STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}Các thao tác với đô thị, nhấn vào mục để xem chi tiết
@@ -2489,8 +2490,8 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Chấp n
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Liệt kê hàng hoá được chấp nhận
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Chấp nhận: {WHITE}
 
-STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Năng suất
-STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Hiện năng suất ga, bến, cảng
+STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Uy tín
+STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Hiện uy tín ga, bến, cảng
 STR_STATION_VIEW_CARGO_RATINGS_TITLE                            :{BLACK}Uy tín với địa phương của dịch vụ vận tải:
 STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 
@@ -2533,7 +2534,7 @@ STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Mua phư�
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Chi phí h.động của tàu hoả
 STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Chi phí hoạt động của ôtô
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Chi phí h.động của máy bay
-STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Chi phí h.động của tàu biển
+STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Chi phí h.động của tàu thuỷ
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Phí bảo trì tài sản
 STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}Thu từ tàu hoả
 STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}Thu từ ôtô
@@ -2617,8 +2618,8 @@ STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Yêu c�
 ############ range for produces starts
 STR_INDUSTRY_VIEW_WAITING_FOR_PROCESSING                        :{BLACK}Toa xe đợi để xử lý:
 STR_INDUSTRY_VIEW_WAITING_STOCKPILE_CARGO                       :{YELLOW}{CARGO}{STRING}{BLACK}
-STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Sản lượng: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Sản lượng: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
+STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Sản xuất: {YELLOW}{STRING}{STRING}
+STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Sản xuất: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
 ############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Thay đổi sản lượng (bội số của 8, max 2040)
@@ -2631,7 +2632,7 @@ STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING}
 
 STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Tàu hoả - nháy vào tàu hoả để xem chi tiết
 STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Xe ôtô - nháy vào ôtô để xem chi tiết
-STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Tàu biển - nháy vào tàu biển để xem chi tiết
+STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Tàu thuỷ - nháy vào tàu thuỷ để xem chi tiết
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Máy bay - nháy vào máy bay để xem chi tiết
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Lợi nhuận năm nay: {CURRENCY} (năm ngoái: {CURRENCY})
@@ -2645,7 +2646,7 @@ STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Xam danh
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Quản lý danh sách
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Gửi chỉ dẫn tới toàn bộ phương tiện trong danh sách
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Thay phương tiện
-STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Gửi tới dịch vụ sửa chữa
+STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Gửi về bảo trì
 
 STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Gửi về xưởng
 STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Gửi về xưởng
@@ -2756,7 +2757,7 @@ STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Máy bay
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Thả toa tàu vào đây để bán nó đi
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Thả ôtô vào đây để bán nó đi
-STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Thả tàu biển vào đây để bán nó đi
+STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Thả tàu thuỷ vào đây để bán nó đi
 STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Thả máy bay vào đây để bán nó đi
 
 STR_DEPOT_DRAG_WHOLE_TRAIN_TO_SELL_TOOLTIP                      :{BLACK}Thả đầu máy tàu vào đây để bán cả đoàn tàu
@@ -2773,7 +2774,7 @@ STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}Tự đ�
 
 STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Thêm tàu hoả
 STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Thêm ôtô
-STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Thêm tàu biển
+STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Thêm tàu thuỷ
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Thêm máy bay
 
 STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Mua tàu hoả mới
@@ -2803,7 +2804,7 @@ STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TOOLTIP                   :{BLACK}Danh sá
 
 STR_DEPOT_MASS_STOP_DEPOT_TRAIN_TOOLTIP                         :{BLACK}Dừng các đoàn tàu trong xưởng
 STR_DEPOT_MASS_STOP_DEPOT_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Dừng các ôtô trong xưởng
-STR_DEPOT_MASS_STOP_DEPOT_SHIP_TOOLTIP                          :{BLACK}Dừng các tàu biển trong xưởng
+STR_DEPOT_MASS_STOP_DEPOT_SHIP_TOOLTIP                          :{BLACK}Dừng các tàu thuỷ trong xưởng
 STR_DEPOT_MASS_STOP_HANGAR_TOOLTIP                              :{BLACK}Dừng các máy bay trong xưởng
 
 STR_DEPOT_MASS_START_DEPOT_TRAIN_TOOLTIP                        :{BLACK}Chạy các đoàn tàu trong xưởng
@@ -2815,7 +2816,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Bạn �
 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Thông cáo từ nhà sản xuất đầu máy xe lửa
-STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Chúng tôi vừa thiết kết một đầu tàu {STRING} mới - bạn có muốn mua nó trước khi chúng tôi hoàn thiện 1 năm, để chúng tôi đánh giá nó trước khi bán rộng rãi?
+STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Chúng tôi vừa thiết kế một {STRING} mới - bạn có muốn mua nó trước khi chúng tôi hoàn thiện 1 năm, để chúng tôi đánh giá nó trước khi bán rộng rãi?
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :đầu máy xe lửa
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :ôtô
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :máy bay
@@ -2952,7 +2953,7 @@ STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Đổi t
 STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Tuổi: {LTBLUE}{STRING}{BLACK} Chi phí hoạt động: {LTBLUE}{CURRENCY}/năm
 # The next two need to stay in this order
 STR_VEHICLE_INFO_AGE                                            :{COMMA} năm ({COMMA})
-STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} năm tuổi ({COMMA})
+STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} năm ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Tốc độ tối đa: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Tải trọng: {LTBLUE}{WEIGHT_S} {BLACK}Công suất: {LTBLUE}{POWER}{BLACK} Tốc độ tối đa: {LTBLUE}{VELOCITY}
@@ -3112,7 +3113,7 @@ STR_ORDER_NEAREST_DEPOT                                         :nơi gần nh�
 STR_ORDER_NEAREST_HANGAR                                        :xưởng tại sân bay gần nhất
 STR_ORDER_TRAIN_DEPOT                                           :Xưởng tàu hoả
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Xưởng ôtô
-STR_ORDER_SHIP_DEPOT                                            :Xưởng tàu biển
+STR_ORDER_SHIP_DEPOT                                            :Xưởng tàu thuỷ
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {TOWN} {STRING}
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{0:STRING} {2:STRING} {1:STRING}
 STR_ORDER_GO_TO_HANGAR_FORMAT                                   :{STRING} Xưởng {STATION}
@@ -3655,14 +3656,14 @@ STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Nhà con heo đ
 ##id 0x4800
 # industry names
 STR_INDUSTRY_NAME_COAL_MINE                                     :Mỏ than
-STR_INDUSTRY_NAME_POWER_STATION                                 :Nhà máy điện
-STR_INDUSTRY_NAME_SAWMILL                                       :Nhà máy cưa
+STR_INDUSTRY_NAME_POWER_STATION                                 :Nhà máy nhiệt điện
+STR_INDUSTRY_NAME_SAWMILL                                       :Nhà máy chế biến gỗ
 STR_INDUSTRY_NAME_FOREST                                        :Rừng
 STR_INDUSTRY_NAME_OIL_REFINERY                                  :Nhà máy lọc dầu
 STR_INDUSTRY_NAME_OIL_RIG                                       :Dàn khoan dầu
-STR_INDUSTRY_NAME_FACTORY                                       :Nhà máy
+STR_INDUSTRY_NAME_FACTORY                                       :Nhà máy thực phẩm
 STR_INDUSTRY_NAME_PRINTING_WORKS                                :Nhà in
-STR_INDUSTRY_NAME_STEEL_MILL                                    :Nhà máy thép
+STR_INDUSTRY_NAME_STEEL_MILL                                    :Nhà máy luyện thép
 STR_INDUSTRY_NAME_FARM                                          :Nông trại
 STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :Mỏ đồng
 STR_INDUSTRY_NAME_OIL_WELLS                                     :Giếng dầu
@@ -3675,9 +3676,9 @@ STR_INDUSTRY_NAME_DIAMOND_MINE                                  :Mỏ kim cươn
 STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :Mỏ sắt
 STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :Nhà máy chế biến hoa quả
 STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :Nhà máy cao su
-STR_INDUSTRY_NAME_WATER_SUPPLY                                  :Nhà máy nước
+STR_INDUSTRY_NAME_WATER_SUPPLY                                  :Giếng khoan nước
 STR_INDUSTRY_NAME_WATER_TOWER                                   :Tháp nước
-STR_INDUSTRY_NAME_FACTORY_2                                     :Nhà máy
+STR_INDUSTRY_NAME_FACTORY_2                                     :Nhà máy thực phẩm
 STR_INDUSTRY_NAME_FARM_2                                        :Nông trại
 STR_INDUSTRY_NAME_LUMBER_MILL                                   :Nhà máy chế biến gỗ
 STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :Nhà máy chế biến kẹo bông
@@ -3727,7 +3728,7 @@ STR_SV_STNAME_SIDINGS                                           :{STRING} kế
 STR_SV_STNAME_BRANCH                                            :Nhánh {STRING}
 STR_SV_STNAME_UPPER                                             :{STRING} thượng
 STR_SV_STNAME_LOWER                                             :{STRING} Hạ
-STR_SV_STNAME_HELIPORT                                          :SB lên thẳng {STRING}
+STR_SV_STNAME_HELIPORT                                          :Sân bay trực thăng {STRING}
 STR_SV_STNAME_FOREST                                            :Rừng {STRING}
 STR_SV_STNAME_FALLBACK                                          :Bến {STRING} số #{NUM}
 ############ end of savegame specific region!

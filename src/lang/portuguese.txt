@@ -2370,6 +2370,7 @@ STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Propriedade da 
 STR_NEWGRF_ERROR_INVALID_ID                                     :Tentativa de usar ID inválido.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} contém uma rotina corrompida. As rotinas corrompidas serão assinaladas com um ponto de interrogação (?) vermelho.
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Contém 8 entradas de acção múltipla
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Leitura ultrapassou o fim da pseudo-rotina.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Cuidado!
@@ -3209,7 +3210,7 @@ STR_AI_DEBUG                                                    :{WHITE}Depuraç
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Nome da IA
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}Definições de IA
-STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Alterar as definições das IA
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Alterar as definições da IA
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Recarregar IA
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Terminar a IA, recarrega o script e reinicia a IA
 

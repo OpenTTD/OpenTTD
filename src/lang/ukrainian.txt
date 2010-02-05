@@ -1240,6 +1240,10 @@ STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Доз�
 STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Неоднорідні станції: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Множник ваги для імітації важких потягів: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Фактор швидкості літаків: {ORANGE}1 / {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Кількість авіакатастроф: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :нема
+STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :знижена
+STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :нормальна
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Дозволити безпересадкові зупинки на муніципальних дорогах: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Дозволити проїзні зупинки на шляхах у власності конкурентів: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Дозволити будувати суміжні станції: {ORANGE}{STRING}
@@ -3330,6 +3334,8 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Обер
 STR_AI_DEBUG                                                    :{WHITE}Дебаг AI
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Назва AI
+STR_AI_DEBUG_SETTINGS                                           :{BLACK}Налаштування AI
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Змінити налаштування AI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Перезавантажити AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Знищити AI, перезавантажити скрипт, та рестартувати AI
 

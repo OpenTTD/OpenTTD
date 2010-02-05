@@ -682,6 +682,9 @@ STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRI
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Dena desgaitu
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Dena gaitu
+STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Altuera erakutsi
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL                                :{BLACK}Ez erakutsi industririk mapan
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL                                 :{BLACK}Mapan dauden industria guztiak erakutsi
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Erakutsi azken mezu edo albiste erreportaia
@@ -730,49 +733,156 @@ STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}Errepideko Garraio baten eztanda!{}Gidaria tren batekin kolisionatu eta gero hiltzen da
 STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIGFONT}{BLACK}Errepideko Garraio Baten Eztanda!{}{COMMA} hiltzen dira trenarekin kolisionatu eta gero
 STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK}Hegazkin Istripua!{}{COMMA} hiltzen dira {STATION}ean
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}Hegazkin Akzidentea!!{}Hegazkina erregai gabe geratu zen, {COMMA} hil dira eztandan
+
+STR_NEWS_DISASTER_ZEPPELIN                                      :{BIGFONT}{BLACK}Zeppelin akzidentea {STATION}-en!
+STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIGFONT}{BLACK}Petrolio findegi eztanda {TOWN}-(e)tik hurbil!
+STR_NEWS_DISASTER_BIG_UFO                                       :{BIGFONT}{BLACK}'OHE' bat lurreratu da {TOWN}-(e)tik hurbil!
+
+STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIGFONT}{BLACK}Garraio konpania arazoetan!
+STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIGFONT}{BLACK}Garraio konpania fusionatua!
+STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} saldua izan da {STRING}-(e)ri {CURRENCY}-(r)engatik!
+STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIGFONT}{BLACK}Kiebra!
+STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK}Garraio konpania berri bat agertua!
+STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} eraiketa hasten du {TOWN}-(e)tik hurbil!
+STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Managerra)
 
 
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK} {STRING} berri bat eraikitzen {TOWN}-(e)tik hurbil!
+STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}{STRING} berria landatzen {TOWN}-(e)tik hurbil!
+
+STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}{STRING} itxialdi inminenetea jakinarazten du!
 
 
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} produkzioa igo du!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} produkzioa behera egin du %50 bat
 
-
-
-
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} deposituan itxaroten dago
+STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} deposituan itxaroten dago
+STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} deposituan itxaroten dago
+STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} hegazkin deposituan itxaroten dago
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
+STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} agindu gutxiegi ditu zerrendan
+STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} agindu zerrenda hutsik du
+STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} agindu bikoitzak ditu
+STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} geltoki baliogabea du aginduetan
 # end of order system
 
+STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} zaharra bihurtzen ari da
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} oso zaharra bihurtzen ari da
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} oso zaharra bihurtzen ari da eta premiaz ordeztu behar da
+STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} ezin du biderik aurkitu jarraitzeko.
+STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} galduta dago.
 
+STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Autoberriketak huts egin du {VEHICLE}an{}{STRING}
 
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}{STRING} berri bat orain erabilgarri!
+STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIGFONT}{BLACK}{ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}{STRING} berri bat orain erabilgarri!  -  {ENGINE}
 
+STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} ez du gehiago onartzen {STRING}
+STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} ez du gehiago onartzen {STRING} edo {STRING}
+STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} orain {STRING} onartzen du
+STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION}{STRING} eta {STRING} orain onartzen ditu
 
 
 
 # Extra view window
 
 # Game options window
+STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Joko Aukerak
 
 ############ start of currency region
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Libra (£)
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Dolarrak ($)
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euroa (€)
+STR_GAME_OPTIONS_CURRENCY_YEN                                   :Yena (¥)
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :Txelin Austriarra (ATS)
+STR_GAME_OPTIONS_CURRENCY_BEF                                   :Franko Belgikarra (BEF)
+STR_GAME_OPTIONS_CURRENCY_CHF                                   :Suitzar Frankoa (CHF)
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :Koroa Txekoa (CZK)
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :Marko Alemaniarra (DEM)
+STR_GAME_OPTIONS_CURRENCY_DKK                                   :Danierar Koroa (DKK)
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Pezeta (ESP)
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :Marko Finlandiarra (FIM)
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Frankoa (FRF)
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :Drachma Grekoa (GRD)
+STR_GAME_OPTIONS_CURRENCY_HUF                                   :Florin Hungariarra (HUF)
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :Koro Islandiarra (ISK)
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :Lira Italiarra (ITL)
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :Herbeheretako Florina (NLG)
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :Norvegiar Koroa (NOK)
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Zloty Poloniarra (PLN)
+STR_GAME_OPTIONS_CURRENCY_RON                                   :Leu Errumaniarra (RON)
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :Errusiar Rubloa (RUR)
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :Tolar Esloveniarra (SIT)
+STR_GAME_OPTIONS_CURRENCY_SEK                                   :Suediar Koroa (SEK)
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :Lira Turkiarra (TRY)
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :Eslovakiar Koroa (SKK)
+STR_GAME_OPTIONS_CURRENCY_BRL                                   :Erreal Brasildarra (BRL)
+STR_GAME_OPTIONS_CURRENCY_EEK                                   :Estoniar Koroa (EEK)
+STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Pertsonalizatua...
 ############ end of currency region
 
+STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Neurtze unitateak
+STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Neurtze unitateen selekzioa
 
 ############ start of measuring units region
+STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :Imperiala
+STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :Metrikoa
+STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :SI
 ############ end of measuring units region
 
+STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Errepideko garraioak
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Ezkerrera gidatu
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Eskuinera gidatu
 
+STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Herrien izenak
+STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Herrien izenen estiloak aukeratu
 
 ############ start of townname region
+STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Ingelesak (Originala)
+STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Frantsesak
+STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Alemaniarrak
+STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Ingelesa (Adizionala)
+STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Latino-Amerikarra
+STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Inozoak
+STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Suediarrak
+STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Herbeheretakoak
+STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Finlandiarrak
+STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Poloniarrak
+STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Eslovakiarrak
+STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Norvegiarrak
+STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Hungariarrak
+STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Austriarrak
+STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Errumaniarrak
+STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Txekoak
+STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Suitzarrak
+STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Danierarrak
+STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Turkiarrak
+STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Italiarrak
+STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Katalanak
 ############ end of townname region
 
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Auto-gordea
+
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Ez
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Hilabetero
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :3 hilabetero
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :6 hilabetero
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :12 hilabetero
+
+STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Hizkuntza
 
 
 
 
 
 
-
-
+STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Base musika konfiguratu
+STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} fitxategi hondatua{P "" s}
 
 
 # Custom currency window
@@ -792,6 +902,12 @@ STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK
 ############ range for difficulty settings ends
 
 
+STR_VARIETY_NONE                                                :Ezer ez
+STR_VARIETY_VERY_LOW                                            :Oso Gutxi
+STR_VARIETY_LOW                                                 :Gutxi
+STR_VARIETY_MEDIUM                                              :Erdia
+STR_VARIETY_HIGH                                                :Altu
+STR_VARIETY_VERY_HIGH                                           :Oso Altu
 
 
 
@@ -828,6 +944,9 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normal
 
 
 
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Ezer ez {RED}(egur fabrika gelditzen du)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :bakarrik euri basoetan
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :leku guztietan
 
 
 
@@ -926,6 +1045,7 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x
 # Content downloading window
 
 # Order of these is important!
+STR_CONTENT_TYPE_BASE_MUSIC                                     :Base musika
 
 # Content downloading progress window
 
@@ -1013,6 +1133,7 @@ STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STR
 
 # World generation
 STR_MAPGEN_BY                                                   :{BLACK}*
+STR_MAPGEN_VARIETY                                              :{BLACK}Barietateen distribuzioa:
 
 # Strings for map borders at game generation
 
@@ -1035,6 +1156,7 @@ STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / 
 
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}NewGRF errore larri bat gertatu da: {}{STRING}
 
 # NewGRF related 'general' warnings
 
@@ -1258,12 +1380,15 @@ STR_ORDER_GO_TO_STATION                                         :{STRING} {STATI
 
 
 # AI debug window
+STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}IA-ren Ezarpenak
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}IA-ren hautaketak aldatu
 
 
 # AI configuration window
 
+STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Gora Mugitu
+STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Behera Mugitu
 
 
 # Available AIs window

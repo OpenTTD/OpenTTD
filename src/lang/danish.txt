@@ -1065,6 +1065,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Passiv
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
 STR_CITY_APPROVAL_HOSTILE                                       :Fjendtlig
 
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Der blev ikke fundet en egnet computer-spiller...{}Du kan downloade flere forskellige computer-spillere genem'Online Indhold'.
 STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Denne handling ændrer sværhedsgraden til speciel
 
 # Advanced settings window
@@ -1114,6 +1115,10 @@ STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Tillad 
 STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Ikke uniforme stationer: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Vægtfaktor for fragt for at simulere tunge tog: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Fly-hastighedsfaktor: {ORANGE}1 / {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Antal flystyrt: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :ingen
+STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :reduceret
+STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normal
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Tillad gennemkørsels-stop på veje ejet af en by: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Tillad gennemkørsels-stoppesteder på veje ejet af konkurrenter: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Tillad bygning af tilstødende stationer: {ORANGE}{STRING}
@@ -1335,7 +1340,7 @@ STR_INTRO_GAME_OPTIONS                                          :{BLACK}Spilvalg
 STR_INTRO_DIFFICULTY                                            :{BLACK}Sværhedsgrad ({STRING})
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Avancerede indstillinger
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF indstillinger
-STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Tjek onlineindhold
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Tjek Online Indhold
 STR_INTRO_AI_SETTINGS                                           :{BLACK}Computerspiller-indstillinger
 STR_INTRO_QUIT                                                  :{BLACK}Afslut
 
@@ -3201,6 +3206,8 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Vælg å
 STR_AI_DEBUG                                                    :{WHITE}Computerspiller-debug
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Navn på computerspilleren
+STR_AI_DEBUG_SETTINGS                                           :{BLACK}Computerspiller-indstillinger
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Skift indstillinger for computerspilleren
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Genindlæs computerspiller
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Stop computerspilleren, genindlæs scriptet og genstart computerspilleren
 

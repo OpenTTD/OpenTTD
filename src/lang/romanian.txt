@@ -1115,6 +1115,10 @@ STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Permite
 STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Staţii neuniforme: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Multiplicator greutate pt marfar pt simularea trenurilor grele: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Factor de viteză pentru avioane: {ORANGE}1 / {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Numărul avioanelor care se prăbușesc: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :nici unul
+STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :redus
+STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normal
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Permite construirea staţiilor pe drumurile din proprietatea oraşului: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Permite construirea staţiilor pe drumurile competitorilor: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Permite construirea de staţii adiacente: {ORANGE}{STRING}
@@ -3205,6 +3209,8 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Alege an
 STR_AI_DEBUG                                                    :{WHITE}Depanare IA
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Numele Inteligenţei Artificiale
+STR_AI_DEBUG_SETTINGS                                           :{BLACK}Setări IA
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Schimbă setările IA
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Reîncarcă IA
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Opreşte IA, raîncarcă scriptul, apoi reporneşte IA
 
