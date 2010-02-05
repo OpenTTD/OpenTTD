@@ -129,10 +129,22 @@ mrproper:
 	done
 	$(Q)rm -rf objs
 	$(Q)rm -f Makefile Makefile.am Makefile.bundle
-	$(Q)rm -f media/openttd.desktop
+	$(Q)rm -f media/openttd.desktop media/openttd.desktop.install
 	$(Q)rm -f $(CONFIG_CACHE_SOURCE_LIST) config.cache config.pwd config.log $(CONFIG_CACHE_PWD)
+# directories for bundle generation
 	$(Q)rm -rf $(BUNDLE_DIR)
 	$(Q)rm -rf $(BUNDLES_DIR)
+# output of profiling
+	$(Q)rm -f $(BIN_DIR)/gmon.out
+# output of generating 'API' documentation
+	$(Q)rm -f $(ROOT_DIR)/openttd.tag
+	$(Q)rm -rf $(ROOT_DIR)/docs/source
+# output of generating AI API documentation
+	$(Q)rm -f $(SRC_DIR)/ai/api/openttd.tag
+	$(Q)rm -rf $(ROOT_DIR)/docs/aidocs
+# directories created by OpenTTD on regression testing
+	$(Q)rm -rf $(BIN_DIR)/ai/regression/content_download $(BIN_DIR)/ai/regression/save $(BIN_DIR)/ai/regression/scenario
+distclean: mrproper
 
 depend:
 	@for dir in $(SRC_DIRS); do \
@@ -150,6 +162,7 @@ run-prof: all
 
 regression: all
 	$(Q)cd !!BIN_DIR!! && sh ai/regression/run.sh
+test: regression
 
 %.o:
 	@for dir in $(SRC_DIRS); do \
@@ -160,5 +173,7 @@ regression: all
 	@for dir in $(LANG_DIRS); do \
 		$(MAKE) -C $$dir $@; \
 	done
+
+.PHONY: test distclean mrproper clean
 
 include Makefile.bundle

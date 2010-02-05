@@ -274,6 +274,7 @@ detect_params() {
 			--enable-ipo=*)               enable_lto="$optarg";;
 			--enable-dedicated)           enable_dedicated="1";;
 			--enable-dedicated=*)         enable_dedicated="$optarg";;
+			--enable-network)             enable_network="2";;
 			--enable-network=*)           enable_network="$optarg";;
 			--disable-network)            enable_network="0";;
 			--disable-static)             enable_static="0";;
