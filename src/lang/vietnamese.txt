@@ -1,11 +1,11 @@
 ##name Vietnamese
-##ownname Vietnamese
+##ownname Tiếng Việt
 ##isocode vi_VN
-##plural 0
+##plural 1
 ##textdir ltr
-##digitsep ,
-##digitsepcur ,
-##decimalsep .
+##digitsep .
+##digitsepcur .
+##decimalsep ,
 ##winlangid 0x042a
 ##grflangid 0x54
 
@@ -1571,7 +1571,6 @@ STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (lên 
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} máy con
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Máy con tối đa:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Chọn số máy con tối đa. Không cần thiết phải vào đầy
-STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} công ty{P y ies}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Số công ty tối đa:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Giới hạn số công ty trong server
 STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} người khán giả
