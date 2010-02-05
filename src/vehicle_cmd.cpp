@@ -130,7 +130,6 @@ CommandCost CmdStartStopVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 CommandCost CmdMassStartStopVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	VehicleList list;
-	CommandCost return_value = CMD_ERROR;
 	VehicleType vehicle_type = (VehicleType)GB(p2, 0, 5);
 	bool start_stop = HasBit(p2, 5);
 	bool vehicle_list_window = HasBit(p2, 6);
@@ -158,17 +157,11 @@ CommandCost CmdMassStartStopVehicle(TileIndex tile, DoCommandFlag flags, uint32 
 			}
 		}
 
-		CommandCost ret = DoCommand(tile, v->index, 0, flags, CMD_START_STOP_VEHICLE);
-
-		if (ret.Succeeded()) {
-			return_value = CommandCost();
-			/* We know that the command is valid for at least one vehicle.
-			 * If we haven't set DC_EXEC, then there is no point in continueing because it will be valid */
-			if (!(flags & DC_EXEC)) break;
-		}
+		/* Just try and don't care if some vehicle's can't be stopped. */
+		DoCommand(tile, v->index, 0, flags, CMD_START_STOP_VEHICLE);
 	}
 
-	return return_value;
+	return CommandCost();
 }
 
 /** Sells all vehicles in a depot
@@ -199,14 +192,12 @@ CommandCost CmdDepotSellAllVehicles(TileIndex tile, DoCommandFlag flags, uint32 
 	return cost;
 }
 
-/** Autoreplace all vehicles in the depot
- * Note: this command can make incorrect cost estimations
- * Luckily the final price can only drop, not increase. This is due to the fact that
- * estimation can't predict wagon removal so it presumes worst case which is no income from selling wagons.
+/**
+ * Autoreplace all vehicles in the depot
  * @param tile Tile of the depot where the vehicles are
  * @param flags type of operation
  * @param p1 Type of vehicle
- * @param p2 If bit 0 is set, then either replace all or nothing (instead of replacing until money runs out)
+ * @param p2 unused
  * @param text unused
  * @return the cost of this operation or an error
  */
@@ -215,14 +206,11 @@ CommandCost CmdDepotMassAutoReplace(TileIndex tile, DoCommandFlag flags, uint32 
 	VehicleList list;
 	CommandCost cost = CommandCost(EXPENSES_NEW_VEHICLES);
 	VehicleType vehicle_type = (VehicleType)GB(p1, 0, 8);
-	bool all_or_nothing = HasBit(p2, 0);
 
 	if (!IsDepotTile(tile) || !IsTileOwner(tile, _current_company)) return CMD_ERROR;
 
 	/* Get the list of vehicles in the depot */
 	BuildDepotVehicleList(vehicle_type, tile, &list, &list, true);
-
-	bool did_something = false;
 
 	for (uint i = 0; i < list.Length(); i++) {
 		const Vehicle *v = list[i];
@@ -232,27 +220,8 @@ CommandCost CmdDepotMassAutoReplace(TileIndex tile, DoCommandFlag flags, uint32 
 
 		CommandCost ret = DoCommand(0, v->index, 0, flags, CMD_AUTOREPLACE_VEHICLE);
 
-		if (ret.Succeeded()) {
-			did_something = true;
-			cost.AddCost(ret);
-		} else {
-			if (ret.GetErrorMessage() != STR_ERROR_AUTOREPLACE_NOTHING_TO_DO && all_or_nothing) {
-				/* We failed to replace a vehicle even though we set all or nothing.
-				 * We should never reach this if DC_EXEC is set since then it should
-				 * have failed the estimation guess. */
-				assert(!(flags & DC_EXEC));
-				/* Now we will have to return an error. */
-				return CMD_ERROR;
-			}
-		}
+		if (ret.Succeeded()) cost.AddCost(ret);
 	}
-
-	if (!did_something) {
-		/* Either we didn't replace anything or something went wrong.
-		 * Either way we want to return an error and not execute this command. */
-		cost = CMD_ERROR;
-	}
-
 	return cost;
 }
 
