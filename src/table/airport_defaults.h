@@ -390,7 +390,7 @@ static AirportTileTable *_tile_table_helistation[] = {
 
 static const AirportSpec _origin_airport_specs[] = {
 	AS(country, 4, 3, 0, 1959, 4, 3),
-	AS(city, 6, 6, 1960, MAX_YEAR, 5, 5),
+	AS(city, 6, 6, 1955, MAX_YEAR, 5, 5),
 	AS_ND(heliport, 1, 1, 1963, MAX_YEAR, 4, 1),
 	AS(metropolitan, 6, 6, 1980, MAX_YEAR, 6, 8),
 	AS(international, 7, 7, 1990, MAX_YEAR, 8, 17),
