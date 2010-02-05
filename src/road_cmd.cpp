@@ -312,9 +312,11 @@ static CommandCost RemoveRoad(TileIndex tile, DoCommandFlag flags, RoadBits piec
 				}
 			}
 
-			/* If we change the foundation we have to pay for it. */
-			return CommandCost(EXPENSES_CONSTRUCTION, CountBits(pieces) * _price[PR_CLEAR_ROAD] +
-					((GetRoadFoundation(tileh, present) != f) ? _price[PR_BUILD_FOUNDATION] : (Money)0));
+			CommandCost cost(EXPENSES_CONSTRUCTION, CountBits(pieces) * _price[PR_CLEAR_ROAD]);
+			/* If we build a foundation we have to pay for it. */
+			if (f == FOUNDATION_NONE && GetRoadFoundation(tileh, present) != FOUNDATION_NONE) cost.AddCost(_price[PR_BUILD_FOUNDATION]);
+
+			return cost;
 		}
 
 		case ROAD_TILE_CROSSING: {
@@ -420,7 +422,7 @@ static CommandCost CheckRoadSlope(Slope tileh, RoadBits *pieces, RoadBits existi
 				return CommandCost();
 			}
 		} else {
-			if (CountBits(existing) == 1) return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);
+			if (CountBits(existing) == 1 && GetRoadFoundation(tileh, existing) == FOUNDATION_NONE) return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);
 			return CommandCost();
 		}
 	}
