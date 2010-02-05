@@ -1916,7 +1916,17 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb, boo
 					fseek(_sl.fh, pos, SEEK_SET);
 					_sl_version = 0;
 					_sl_minor_version = 0;
-					fmt = _saveload_formats + 1; // LZO
+
+					/* Try to find the LZO savegame format; it uses 'OTTD' as tag. */
+					fmt = _saveload_formats;
+					for (;;) {
+						if (fmt == endof(_saveload_formats)) {
+							/* Who removed LZO support? Bad bad boy! */
+							NOT_REACHED();
+						}
+						if (fmt->tag == TO_BE32X('OTTD')) break;
+						fmt++;
+					}
 					break;
 				}
 
