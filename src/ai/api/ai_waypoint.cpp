@@ -31,7 +31,7 @@
 /* static */ bool AIWaypoint::HasWaypointType(StationID waypoint_id, WaypointType waypoint_type)
 {
 	if (!IsValidWaypoint(waypoint_id)) return false;
-	if (CountBits(waypoint_type) != 1) return false;
+	if (!HasExactlyOneBit(waypoint_type)) return false;
 
 	return (::Waypoint::Get(waypoint_id)->facilities & waypoint_type) != 0;
 }

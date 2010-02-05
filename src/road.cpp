@@ -64,7 +64,7 @@ RoadBits CleanUpRoadBits(const TileIndex tile, RoadBits org_rb)
 
 					/* Accept only connective tiles */
 					connective = (neighbor_rb & mirrored_rb) || // Neighbor has got the fitting RoadBit
-							CountBits(neighbor_rb) == 1; // Neighbor has got only one Roadbit
+							HasExactlyOneBit(neighbor_rb); // Neighbor has got only one Roadbit
 
 				} break;
 

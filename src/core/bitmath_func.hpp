@@ -255,6 +255,30 @@ static inline uint CountBits(T value)
 }
 
 /**
+ * Test whether \a value has exactly 1 bit set
+ *
+ * @param value the value to test.
+ * @return does \a value have exactly 1 bit set?
+ */
+template <typename T>
+static FORCEINLINE bool HasExactlyOneBit(T value)
+{
+	return value != 0 && (value & (value - 1)) == 0;
+}
+
+/**
+ * Test whether \a value has at most 1 bit set
+ *
+ * @param value the value to test.
+ * @return does \a value have at most 1 bit set?
+ */
+template <typename T>
+static FORCEINLINE bool HasAtMostOneBit(T value)
+{
+	return (value & (value - 1)) == 0;
+}
+
+/**
  * ROtate x Left by n
  *
  * @note Assumes a byte has 8 bits

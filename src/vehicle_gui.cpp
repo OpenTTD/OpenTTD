@@ -520,7 +520,7 @@ uint ShowRefitOptionsList(int left, int right, int y, EngineID engine)
 	char *b = string;
 
 	/* Draw nothing if the engine is not refittable */
-	if (CountBits(cmask) <= 1) return y;
+	if (HasAtMostOneBit(cmask)) return y;
 
 	b = InlineString(b, STR_PURCHASE_INFO_REFITTABLE_TO);
 

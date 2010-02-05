@@ -53,7 +53,7 @@
 		DEBUG(ai, 0, "GetCoverageRadius(): coverage radius of airports needs to be requested via AIAirport::GetAirportCoverageRadius(), as it requires AirportType");
 		return -1;
 	}
-	if (CountBits(station_type) != 1) return -1;
+	if (!HasExactlyOneBit(station_type)) return -1;
 	if (!_settings_game.station.modified_catchment) return CA_UNMODIFIED;
 
 	switch (station_type) {
@@ -89,7 +89,7 @@
 /* static */ bool AIStation::HasStationType(StationID station_id, StationType station_type)
 {
 	if (!IsValidStation(station_id)) return false;
-	if (CountBits(station_type) != 1) return false;
+	if (!HasExactlyOneBit(station_type)) return false;
 
 	return (::Station::Get(station_id)->facilities & station_type) != 0;
 }
