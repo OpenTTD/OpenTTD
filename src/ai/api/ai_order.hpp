@@ -352,9 +352,11 @@ public:
 	 * Sets the stoplocation of the given order for the given train.
 	 * @param vehicle_id The vehicle to get the value for.
 	 * @param order_position The order to get the value for.
+	 * @param stop_location The relative position where a train will stop inside a station.
 	 * @pre IsValidVehicleOrder(vehicle_id, order_position).
 	 * @pre AIVehicle::GetVehicleType(vehicle_id) == AIVehicle::VT_RAIL.
 	 * @pre IsGotoStationOrder(vehicle_id, order_position).
+	 * @pre stop_location >= STOPLOCATION_NEAR && stop_location <= STOPLOCATION_FAR
 	 * @return Whether the order has been/can be changed.
 	 */
 	static bool SetStopLocation(VehicleID vehicle_id, OrderPosition order_position, StopLocation stop_location);
