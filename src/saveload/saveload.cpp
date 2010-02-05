@@ -199,7 +199,7 @@ static void NORETURN SlError(StringID string, const char *extra_msg = NULL)
 	 * the pointers are actually filled with indices, which means that
 	 * when we access them during cleaning the pool dereferences of
 	 * those indices will be made with segmentation faults as result. */
-	SlNullPointers();
+	if (_sl.action == SLA_LOAD || _sl.action == SLA_PTRS) SlNullPointers();
 	throw std::exception();
 }
 
