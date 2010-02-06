@@ -1802,21 +1802,16 @@ static void PlaceInitialIndustry(IndustryType type, uint amount)
  * It will scale the amount of industries by map size as well as difficulty level */
 void GenerateIndustries()
 {
-	uint i = 0;
-	uint8 chance;
-	IndustryType it;
-	const IndustrySpec *ind_spc;
-
+	uint total_amount = 0;
 	uint industry_counts[NUM_INDUSTRYTYPES];
 	memset(industry_counts, 0, sizeof(industry_counts));
 
 	/* Find the total amount of industries */
 	if (_settings_game.difficulty.number_industries > 0) {
-		for (it = 0; it < NUM_INDUSTRYTYPES; it++) {
+		for (IndustryType it = 0; it < NUM_INDUSTRYTYPES; it++) {
+			const IndustrySpec *ind_spc = GetIndustrySpec(it);
 
-			ind_spc = GetIndustrySpec(it);
-
-			chance = ind_spc->appear_creation[_settings_game.game_creation.landscape];
+			uint8 chance = ind_spc->appear_creation[_settings_game.game_creation.landscape];
 			if (ind_spc->enabled && chance > 0 && ind_spc->num_table > 0 && CheckIfCallBackAllowsAvailability(it, IACT_MAPGENERATION)) {
 				/* once the chance of appearance is determind, it have to be scaled by
 				 * the difficulty level. The "chance" in question is more an index into
@@ -1826,15 +1821,15 @@ void GenerateIndustries()
 				/* These are always placed next to the coastline, so we scale by the perimeter instead. */
 				num = (ind_spc->check_proc == CHECK_REFINERY || ind_spc->check_proc == CHECK_OIL_RIG) ? ScaleByMapSize1D(num) : ScaleByMapSize(num);
 				industry_counts[it] = num;
-				i += num;
+				total_amount += num;
 			}
 		}
 	}
 
-	SetGeneratingWorldProgress(GWP_INDUSTRY, i);
+	SetGeneratingWorldProgress(GWP_INDUSTRY, total_amount);
 
 	if (_settings_game.difficulty.number_industries > 0) {
-		for (it = 0; it < NUM_INDUSTRYTYPES; it++) {
+		for (IndustryType it = 0; it < NUM_INDUSTRYTYPES; it++) {
 			/* Once the number of industries has been determined, let's really create them. */
 			if (industry_counts[it] > 0) PlaceInitialIndustry(it, industry_counts[it]);
 		}
