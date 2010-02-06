@@ -2368,6 +2368,7 @@ STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Ukendt Action 0
 STR_NEWGRF_ERROR_INVALID_ID                                     :Forsøg på brug af ugyldig ID.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} indeholder en ødelagt sprite. Alle ødelagte sprites vil blive vist som et rødt spørgsmålstegm (?).
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Indeholder flere "Action 8" poster.
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Læs forbi enden af pseudo-sprite
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Advarsel!

@@ -432,7 +432,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Пока
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Показати список літаків компанії. Ctrl+клік переключає відкриття групи/списку літаків
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Збільшити
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Зменшити
-STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Будувати залізниці
+STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Будувати залізничну колію
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Будувати дороги
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Будувати порти
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Будувати аеропорти
