@@ -518,10 +518,10 @@ class SmallMapWindow : public Window {
 	void DrawSmallMapColumn(void *dst, uint xc, uint yc, int pitch, int reps, int start_pos, int end_pos, Blitter *blitter, GetSmallMapPixels *proc) const
 	{
 		void *dst_ptr_abs_end = blitter->MoveTo(_screen.dst_ptr, 0, _screen.height);
+		uint min_xy = _settings_game.construction.freeform_edges ? 1 : 0;
 
 		do {
 			/* Check if the tile (xc,yc) is within the map range */
-			uint min_xy = _settings_game.construction.freeform_edges ? 1 : 0;
 			if (IsInsideMM(xc, min_xy, MapMaxX()) && IsInsideMM(yc, min_xy, MapMaxY())) {
 				/* Check if the dst pointer points to a pixel inside the screen buffer */
 				if (dst < _screen.dst_ptr) continue;
