@@ -254,7 +254,12 @@ static const AndOr _smallmap_vehicles_andor[] = {
 	{MKCOLOUR(0x00D7D700), MKCOLOUR(0xFF0000FF)},
 };
 
-typedef uint32 GetSmallMapPixels(TileIndex tile); ///< Typedef callthrough function
+/**
+ * Function signature of the function to retrieve the colour data of a tile for display at the smallmap.
+ * @param tile Tile that gets displayed.
+ * @return Colour data to display.
+ */
+typedef uint32 GetSmallMapPixels(TileIndex tile);
 
 /** Mapping of tile type to importance of the tile (higher number means more interesting to show). */
 static const byte _tiletype_importance[] = {
