@@ -41,6 +41,14 @@ void GetSlopeZOnEdge(Slope tileh, DiagDirection edge, int *z1, int *z2);
 int GetSlopeZInCorner(Slope tileh, Corner corner);
 Slope GetFoundationSlope(TileIndex tile, uint *z);
 
+/**
+ * Map 3D world or tile coordinate to equivalent 2D coordinate as used in the viewports and smallmap.
+ * @param x X world or tile coordinate (runs in SW direction in the 2D view).
+ * @param y Y world or tile coordinate (runs in SE direction in the 2D view).
+ * @param z Z world or tile coordinate (runs in N direction in the 2D view).
+ * @return Equivalent coordinate in the 2D view.
+ * @see RemapCoords2
+ */
 static inline Point RemapCoords(int x, int y, int z)
 {
 	Point pt;
@@ -49,6 +57,14 @@ static inline Point RemapCoords(int x, int y, int z)
 	return pt;
 }
 
+/**
+ * Map 3D world or tile coordinate to equivalent 2D coordinate as used in the viewports and smallmap.
+ * Same as #RemapCoords, except the Z coordinate is read from the map.
+ * @param x X world or tile coordinate (runs in SW direction in the 2D view).
+ * @param y Y world or tile coordinate (runs in SE direction in the 2D view).
+ * @return Equivalent coordinate in the 2D view.
+ * @see RemapCoords
+ */
 static inline Point RemapCoords2(int x, int y)
 {
 	return RemapCoords(x, y, GetSlopeZ(x, y));
