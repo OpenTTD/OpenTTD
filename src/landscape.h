@@ -70,6 +70,20 @@ static inline Point RemapCoords2(int x, int y)
 	return RemapCoords(x, y, GetSlopeZ(x, y));
 }
 
+/**
+ * Map 2D viewport or smallmap coordinate to 3D world or tile coordinate.
+ * Function assumes <tt>z == 0</tt>. For other values of \p z, add \p z to \a y before the call.
+ * @param x X coordinate of the 2D coordinate.
+ * @param y Y coordinate of the 2D coordinate.
+ * @return X and Y components of equivalent world or tile coordinate.
+ * @note Inverse of #RemapCoords function. Smaller values may get rounded.
+ */
+static inline Point InverseRemapCoords(int x, int y)
+{
+	Point pt = {(y * 2 - x) >> 2, (y * 2 + x) >> 2};
+	return pt;
+}
+
 uint ApplyFoundationToSlope(Foundation f, Slope *s);
 void DrawFoundation(TileInfo *ti, Foundation f);
 bool HasFoundationNW(TileIndex tile, Slope slope_here, uint z_here);

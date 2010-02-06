@@ -699,15 +699,12 @@ class SmallMapWindow : public Window {
 		/* Find main viewport. */
 		const ViewPort *vp = FindWindowById(WC_MAIN_WINDOW, 0)->viewport;
 
-		int tx = ((vp->virtual_top << 1) - vp->virtual_left) >> 6;
-		int ty = ((vp->virtual_top << 1) + vp->virtual_left) >> 6;
-		Point tl = this->RemapTile(tx, ty);
-
-		tx = (((vp->virtual_top + vp->virtual_height) << 1) - (vp->virtual_left + vp->virtual_width)) >> 6;
-		ty = (((vp->virtual_top + vp->virtual_height) << 1) + (vp->virtual_left + vp->virtual_width)) >> 6;
-		Point br = this->RemapTile(tx, ty);
-
+		Point tile = InverseRemapCoords(vp->virtual_left, vp->virtual_top);
+		Point tl = this->RemapTile(tile.x >> 4, tile.y >> 4);
 		tl.x -= this->subscroll;
+
+		tile = InverseRemapCoords(vp->virtual_left + vp->virtual_width, vp->virtual_top + vp->virtual_height);
+		Point br = this->RemapTile(tile.x >> 4, tile.y >> 4);
 		br.x -= this->subscroll;
 
 		SmallMapWindow::DrawVertMapIndicator(tl.x, tl.y, br.y);
@@ -1110,24 +1107,24 @@ public:
 	void SetNewScroll(int sx, int sy, int sub)
 	{
 		const NWidgetBase *wi = this->GetWidget<NWidgetBase>(SM_WIDGET_MAP);
-		int hx = wi->current_x / 2;
-		int hy = wi->current_y / 2;
-		int hvx = (hx * -4 + hy * 8) * this->zoom;
-		int hvy = (hx *  4 + hy * 8) * this->zoom;
-		if (sx < -hvx) {
-			sx = -hvx;
+		Point hv = InverseRemapCoords(wi->current_x * TILE_SIZE / 2, wi->current_y * TILE_SIZE / 2);
+		hv.x *= this->zoom;
+		hv.y *= this->zoom;
+
+		if (sx < -hv.x) {
+			sx = -hv.x;
 			sub = 0;
 		}
-		if (sx > (int)MapMaxX() * TILE_SIZE - hvx) {
-			sx = MapMaxX() * TILE_SIZE - hvx;
+		if (sx > (int)MapMaxX() * TILE_SIZE - hv.x) {
+			sx = MapMaxX() * TILE_SIZE - hv.x;
 			sub = 0;
 		}
-		if (sy < -hvy) {
-			sy = -hvy;
+		if (sy < -hv.y) {
+			sy = -hv.y;
 			sub = 0;
 		}
-		if (sy > (int)MapMaxY() * TILE_SIZE - hvy) {
-			sy = MapMaxY() * TILE_SIZE - hvy;
+		if (sy > (int)MapMaxY() * TILE_SIZE - hv.y) {
+			sy = MapMaxY() * TILE_SIZE - hv.y;
 			sub = 0;
 		}
 
@@ -1151,18 +1148,13 @@ public:
 	void SmallMapCenterOnCurrentPos()
 	{
 		const ViewPort *vp = FindWindowById(WC_MAIN_WINDOW, 0)->viewport;
-
-		int x = vp->virtual_left + vp->virtual_width  / 2;
-		int y = vp->virtual_top  + vp->virtual_height / 2;
-
-		int tx = (y * 2 - x) >> 2;
-		int ty = (y * 2 + x) >> 2;
+		Point pt = InverseRemapCoords(vp->virtual_left + vp->virtual_width  / 2, vp->virtual_top  + vp->virtual_height / 2);
 
 		int sub;
 		const NWidgetBase *wid = this->GetWidget<NWidgetBase>(SM_WIDGET_MAP);
 		Point tile = this->PixelToTile(wid->current_x / 2, wid->current_y / 2, &sub);
 
-		this->SetNewScroll(tx - tile.x * TILE_SIZE, ty - tile.y * TILE_SIZE, sub);
+		this->SetNewScroll(pt.x - tile.x * TILE_SIZE, pt.y - tile.y * TILE_SIZE, sub);
 		this->SetDirty();
 	}
 };
