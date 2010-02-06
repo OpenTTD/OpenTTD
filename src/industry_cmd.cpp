@@ -84,12 +84,6 @@ void ResetIndustries()
 	_industry_mngr.ResetOverride();
 }
 
-void ResetIndustryCreationProbility(IndustryType type)
-{
-	assert(type < INVALID_INDUSTRYTYPE);
-	_industry_specs[type].appear_creation[_settings_game.game_creation.landscape] = 0;
-}
-
 /**
  * Retrieve the type for this industry.  Although it is accessed by a tile,
  * it will return the general type of industry, and not the sprite index
@@ -1822,12 +1816,8 @@ void GenerateIndustries()
 
 			ind_spc = GetIndustrySpec(it);
 
-			if (!CheckIfCallBackAllowsAvailability(it, IACT_MAPGENERATION)) {
-				ResetIndustryCreationProbility(it);
-			}
-
 			chance = ind_spc->appear_creation[_settings_game.game_creation.landscape];
-			if (ind_spc->enabled && chance > 0 && ind_spc->num_table > 0) {
+			if (ind_spc->enabled && chance > 0 && ind_spc->num_table > 0 && CheckIfCallBackAllowsAvailability(it, IACT_MAPGENERATION)) {
 				/* once the chance of appearance is determind, it have to be scaled by
 				 * the difficulty level. The "chance" in question is more an index into
 				 * the _numof_industry_table,in fact */
