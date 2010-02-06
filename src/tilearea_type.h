@@ -16,6 +16,10 @@
 
 /** Represents the covered area of e.g. a rail station */
 struct TileArea {
+	TileIndex tile; ///< The base tile of the area
+	uint8 w;        ///< The width of the area
+	uint8 h;        ///< The height of the area
+
 	/** Just construct this tile area */
 	TileArea() {}
 
@@ -27,21 +31,9 @@ struct TileArea {
 	 */
 	TileArea(TileIndex tile, uint8 w, uint8 h) : tile(tile), w(w), h(h) {}
 
-	/**
-	 * Construct this tile area based on two points.
-	 * @param start the start of the area
-	 * @param end   the end of the area
-	 */
 	TileArea(TileIndex start, TileIndex end);
 
-	TileIndex tile; ///< The base tile of the area
-	uint8 w;        ///< The width of the area
-	uint8 h;        ///< The height of the area
 
-	/**
-	 * Add a single tile to a tile area; enlarge if needed.
-	 * @param to_add The tile to add
-	 */
 	void Add(TileIndex to_add);
 
 	/**
@@ -54,11 +46,6 @@ struct TileArea {
 		this->h    = 0;
 	}
 
-	/**
-	 * Does this tile area intersect with another?
-	 * @param ta the other tile area to check against.
-	 * @return true if they intersect.
-	 */
 	bool Intersects(const TileArea &ta) const;
 };
 

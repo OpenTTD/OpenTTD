@@ -720,6 +720,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\tilearea.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\townname.cpp"
 				>
 			</File>
