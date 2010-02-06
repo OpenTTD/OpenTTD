@@ -535,9 +535,11 @@ class SmallMapWindow : public Window {
 	}
 
 	/** Initialize or change the zoom level.
-	 * @param change Way to change the zoom level.
+	 * @param change  Way to change the zoom level.
+	 * @param zoom_pt Position to keep fixed while zooming.
+	 * @pre \c *zoom_pt should contain a point in the smallmap display when zooming in or out.
 	 */
-	void SetZoomLevel(ZoomLevelChange change)
+	void SetZoomLevel(ZoomLevelChange change, const Point *zoom_pt)
 	{
 		static const int zoomlevels[] = {1, 2, 4, 6, 8}; // Available zoom levels. Bigger number means more zoom-out (further away).
 		static const int MIN_ZOOM_INDEX = 0;
@@ -545,7 +547,6 @@ class SmallMapWindow : public Window {
 
 		int new_index, cur_index, sub;
 		Point tile;
-		const NWidgetBase *wid = this->GetWidget<NWidgetBase>(SM_WIDGET_MAP);
 		switch (change) {
 			case ZLC_INITIALIZE:
 				cur_index = - 1; // Definitely different from new_index.
@@ -559,7 +560,7 @@ class SmallMapWindow : public Window {
 				}
 				assert(cur_index <= MAX_ZOOM_INDEX);
 
-				tile = this->PixelToTile(wid->current_x / 2, wid->current_y / 2, &sub);
+				tile = this->PixelToTile(zoom_pt->x, zoom_pt->y, &sub);
 				new_index = Clamp(cur_index + ((change == ZLC_ZOOM_IN) ? -1 : 1), MIN_ZOOM_INDEX, MAX_ZOOM_INDEX);
 				break;
 
@@ -569,7 +570,7 @@ class SmallMapWindow : public Window {
 		if (new_index != cur_index) {
 			this->zoom = zoomlevels[new_index];
 			if (cur_index >= 0) {
-				Point new_tile = this->PixelToTile(wid->current_x / 2, wid->current_y / 2, &sub);
+				Point new_tile = this->PixelToTile(zoom_pt->x, zoom_pt->y, &sub);
 				this->SetNewScroll(this->scroll_x + (tile.x - new_tile.x) * TILE_SIZE,
 						this->scroll_y + (tile.y - new_tile.y) * TILE_SIZE, sub);
 			}
@@ -858,7 +859,7 @@ public:
 		this->SetWidgetLoweredState(SM_WIDGET_TOGGLETOWNNAME, this->show_towns);
 		this->GetWidget<NWidgetStacked>(SM_WIDGET_SELECTINDUSTRIES)->SetDisplayedPlane(this->map_type != SMT_INDUSTRY);
 
-		this->SetZoomLevel(ZLC_INITIALIZE);
+		this->SetZoomLevel(ZLC_INITIALIZE, NULL);
 		this->SmallMapCenterOnCurrentPos();
 	}
 
@@ -1033,12 +1034,12 @@ public:
 			} break;
 
 			case SM_WIDGET_ZOOM_IN:
-				this->SetZoomLevel(ZLC_ZOOM_IN);
+			case SM_WIDGET_ZOOM_OUT: {
+				const NWidgetBase *wid = this->GetWidget<NWidgetBase>(SM_WIDGET_MAP);
+				Point pt = {wid->current_x / 2, wid->current_y / 2};
+				this->SetZoomLevel((widget == SM_WIDGET_ZOOM_IN) ? ZLC_ZOOM_IN : ZLC_ZOOM_OUT, &pt);
 				break;
-
-			case SM_WIDGET_ZOOM_OUT:
-				this->SetZoomLevel(ZLC_ZOOM_OUT);
-				break;
+			}
 
 			case SM_WIDGET_CONTOUR:    // Show land contours
 			case SM_WIDGET_VEHICLES:   // Show vehicles
@@ -1132,6 +1133,17 @@ public:
 		if (widget == SM_WIDGET_MAP) {
 			if (_scrolling_viewport) return;
 			_scrolling_viewport = true;
+		}
+	}
+
+	virtual void OnMouseWheel(int wheel)
+	{
+		const NWidgetBase *wid = this->GetWidget<NWidgetBase>(SM_WIDGET_MAP);
+		int cursor_x = _cursor.pos.x - this->left - wid->pos_x;
+		int cursor_y = _cursor.pos.y - this->top  - wid->pos_y;
+		if (IsInsideMM(cursor_x, 0, wid->current_x) && IsInsideMM(cursor_y, 0, wid->current_y)) {
+			Point pt = {cursor_x, cursor_y};
+			this->SetZoomLevel((wheel < 0) ? ZLC_ZOOM_IN : ZLC_ZOOM_OUT, &pt);
 		}
 	}
 
