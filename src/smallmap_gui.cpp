@@ -420,7 +420,7 @@ static inline uint32 GetSmallMapOwnerPixels(TileIndex tile)
 {
 	Owner o;
 
-	switch (GetTileType(tile)) {
+	switch (GetEffectiveTileType(tile)) {
 		case MP_INDUSTRY: o = OWNER_END;          break;
 		case MP_HOUSE:    o = OWNER_TOWN;         break;
 		default:          o = GetTileOwner(tile); break;
