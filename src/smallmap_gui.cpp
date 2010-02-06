@@ -257,9 +257,10 @@ static const AndOr _smallmap_vehicles_andor[] = {
 /**
  * Function signature of the function to retrieve the colour data of a tile for display at the smallmap.
  * @param tile Tile that gets displayed.
+ * @param t    Effective tile type of the tile (see #GetEffectiveTileType).
  * @return Colour data to display.
  */
-typedef uint32 GetSmallMapPixels(TileIndex tile);
+typedef uint32 GetSmallMapPixels(TileIndex tile, TileType t);
 
 /** Mapping of tile type to importance of the tile (higher number means more interesting to show). */
 static const byte _tiletype_importance[] = {
@@ -297,12 +298,11 @@ static inline TileType GetEffectiveTileType(TileIndex tile)
 /**
  * Return the colour a tile would be displayed with in the small map in mode "Contour".
  * @param tile The tile of which we would like to get the colour.
+ * @param t    Effective tile type of the tile (see #GetEffectiveTileType).
  * @return The colour of tile in the small map in mode "Contour"
  */
-static inline uint32 GetSmallMapContoursPixels(TileIndex tile)
+static inline uint32 GetSmallMapContoursPixels(TileIndex tile, TileType t)
 {
-	TileType t = GetEffectiveTileType(tile);
-
 	return ApplyMask(_map_height_bits[TileHeight(tile)], &_smallmap_contours_andor[t]);
 }
 
@@ -310,12 +310,11 @@ static inline uint32 GetSmallMapContoursPixels(TileIndex tile)
  * Return the colour a tile would be displayed with in the small map in mode "Vehicles".
  *
  * @param tile The tile of which we would like to get the colour.
+ * @param t    Effective tile type of the tile (see #GetEffectiveTileType).
  * @return The colour of tile in the small map in mode "Vehicles"
  */
-static inline uint32 GetSmallMapVehiclesPixels(TileIndex tile)
+static inline uint32 GetSmallMapVehiclesPixels(TileIndex tile, TileType t)
 {
-	TileType t = GetEffectiveTileType(tile);
-
 	return ApplyMask(MKCOLOUR(0x54545454), &_smallmap_vehicles_andor[t]);
 }
 
@@ -323,12 +322,11 @@ static inline uint32 GetSmallMapVehiclesPixels(TileIndex tile)
  * Return the colour a tile would be displayed with in the small map in mode "Industries".
  *
  * @param tile The tile of which we would like to get the colour.
+ * @param t    Effective tile type of the tile (see #GetEffectiveTileType).
  * @return The colour of tile in the small map in mode "Industries"
  */
-static inline uint32 GetSmallMapIndustriesPixels(TileIndex tile)
+static inline uint32 GetSmallMapIndustriesPixels(TileIndex tile, TileType t)
 {
-	TileType t = GetEffectiveTileType(tile);
-
 	if (t == MP_INDUSTRY) {
 		/* If industry is allowed to be seen, use its colour on the map */
 		if (_legend_from_industries[_industry_to_list_pos[Industry::GetByTile(tile)->type]].show_on_map) {
@@ -346,12 +344,11 @@ static inline uint32 GetSmallMapIndustriesPixels(TileIndex tile)
  * Return the colour a tile would be displayed with in the small map in mode "Routes".
  *
  * @param tile The tile of which we would like to get the colour.
+ * @param t    Effective tile type of the tile (see #GetEffectiveTileType).
  * @return The colour of tile  in the small map in mode "Routes"
  */
-static inline uint32 GetSmallMapRoutesPixels(TileIndex tile)
+static inline uint32 GetSmallMapRoutesPixels(TileIndex tile, TileType t)
 {
-	TileType t = GetEffectiveTileType(tile);
-
 	if (t == MP_STATION) {
 		switch (GetStationType(tile)) {
 			case STATION_RAIL:    return MKCOLOUR(0x56565656);
@@ -383,12 +380,11 @@ static const uint32 _vegetation_clear_bits[] = {
  * Return the colour a tile would be displayed with in the smallmap in mode "Vegetation".
  *
  * @param tile The tile of which we would like to get the colour.
+ * @param t    Effective tile type of the tile (see #GetEffectiveTileType).
  * @return The colour of tile  in the smallmap in mode "Vegetation"
  */
-static inline uint32 GetSmallMapVegetationPixels(TileIndex tile)
+static inline uint32 GetSmallMapVegetationPixels(TileIndex tile, TileType t)
 {
-	TileType t = GetEffectiveTileType(tile);
-
 	switch (t) {
 		case MP_CLEAR:
 			return (IsClearGround(tile, CLEAR_GRASS) && GetClearDensity(tile) < 3) ? MKCOLOUR(0x37373737) : _vegetation_clear_bits[GetClearGround(tile)];
@@ -414,13 +410,14 @@ static uint32 _owner_colours[OWNER_END + 1];
  * Return the colour a tile would be displayed with in the small map in mode "Owner".
  *
  * @param tile The tile of which we would like to get the colour.
+ * @param t    Effective tile type of the tile (see #GetEffectiveTileType).
  * @return The colour of tile in the small map in mode "Owner"
  */
-static inline uint32 GetSmallMapOwnerPixels(TileIndex tile)
+static inline uint32 GetSmallMapOwnerPixels(TileIndex tile, TileType t)
 {
 	Owner o;
 
-	switch (GetEffectiveTileType(tile)) {
+	switch (t) {
 		case MP_INDUSTRY: o = OWNER_END;          break;
 		case MP_HOUSE:    o = OWNER_TOWN;         break;
 		default:          o = GetTileOwner(tile); break;
@@ -595,15 +592,17 @@ class SmallMapWindow : public Window {
 	{
 		int importance = 0;
 		TileIndex tile = INVALID_TILE; // Position of the most important tile.
+		TileType et = MP_VOID;         // Effective tile type at that position.
 
 		TILE_AREA_LOOP(ti, ta) {
 			TileType ttype = GetEffectiveTileType(ti);
 			if (_tiletype_importance[ttype] > importance) {
 				importance = _tiletype_importance[ttype];
 				tile = ti;
+				et = ttype;
 			}
 		}
-		return proc(tile);
+		return proc(tile, et);
 	}
 
 	/**
