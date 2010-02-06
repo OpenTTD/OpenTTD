@@ -1844,6 +1844,12 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb, boo
 	if (mode == SL_OLD_LOAD) {
 		_engine_mngr.ResetToDefaultMapping();
 		InitializeGame(256, 256, true, true); // set a mapsize of 256x256 for TTDPatch games or it might get confused
+
+		/* TTD/TTO savegames have no NewGRFs, TTDP savegame have them
+		 * and if so a new NewGRF list will be made in LoadOldSaveGame.
+		 * Note: this is done here because AfterLoadGame is also called
+		 * for OTTD savegames which have their own NewGRF logic. */
+		ClearGRFConfigList(&_grfconfig);
 		GamelogReset();
 		if (!LoadOldSaveGame(filename)) return SL_REINIT;
 		_sl_version = 0;
@@ -1973,6 +1979,31 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb, boo
 			InitializeGame(256, 256, true, true);
 
 			GamelogReset();
+
+			if (CheckSavegameVersion(4)) {
+				/*
+				 * NewGRFs were introduced between 0.3,4 and 0.3.5, which both
+				 * shared savegame version 4. Anything before that 'obviously'
+				 * does not have any NewGRFs. Between the introduction and
+				 * savegame version 41 (just before 0.5) the NewGRF settings
+				 * were not stored in the savegame and they were loaded by
+				 * using the settings from the main menu.
+				 * So, to recap:
+				 * - savegame version  <  4:  do not load any NewGRFs.
+				 * - savegame version >= 41:  load NewGRFs from savegame, which is
+				 *                            already done at this stage by
+				 *                            overwriting the main menu settings.
+				 * - other savegame versions: use main menu settings.
+				 *
+				 * This means that users *can* crash savegame version 4..40
+				 * savegames if they set incompatible NewGRFs in the main menu,
+				 * but can't crash anymore for savegame version < 4 savegames.
+				 *
+				 * Note: this is done here because AfterLoadGame is also called
+				 * for TTO/TTD/TTDP savegames which have their own NewGRF logic.
+				 */
+				ClearGRFConfigList(&_grfconfig);
+			}
 
 			SlLoadChunks();
 			SlFixPointers();
