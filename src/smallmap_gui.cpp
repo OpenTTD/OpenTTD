@@ -586,14 +586,15 @@ class SmallMapWindow : public Window {
 	}
 
 	/**
-	 * Decide which tile to show to the user from a group of tiles.
-	 * @param ta Tile area to investigate.
-	 * @return Most interesting tile. May be #INVALID_TILE if off-map.
+	 * Decide which colours to show to the user for a group of tiles.
+	 * @param ta   Tile area to investigate.
+	 * @param proc Pointer to the colour function.
+	 * @return Colours to display.
 	 */
-	inline TileIndex GetMostImportantTileFromGroup(const TileArea &ta) const
+	inline uint32 GetTileColours(const TileArea &ta, GetSmallMapPixels *proc) const
 	{
 		int importance = 0;
-		TileIndex tile = INVALID_TILE;
+		TileIndex tile = INVALID_TILE; // Position of the most important tile.
 
 		TILE_AREA_LOOP(ti, ta) {
 			TileType ttype = GetEffectiveTileType(ti);
@@ -602,7 +603,7 @@ class SmallMapWindow : public Window {
 				tile = ti;
 			}
 		}
-		return tile;
+		return proc(tile);
 	}
 
 	/**
@@ -644,7 +645,7 @@ class SmallMapWindow : public Window {
 			}
 			ta.ClampToMap(); // Clamp to map boundaries (may contain MP_VOID tiles!).
 
-			uint32 val = proc(this->GetMostImportantTileFromGroup(ta));
+			uint32 val = this->GetTileColours(ta, proc);
 			uint8 *val8 = (uint8 *)&val;
 			int idx = max(0, -start_pos);
 			for (int pos = max(0, start_pos); pos < end_pos; pos++) {
