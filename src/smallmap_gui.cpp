@@ -501,8 +501,7 @@ class SmallMapWindow : public Window {
 	}
 
 	/**
-	 * Draws one column of the small map in a certain mode onto the screen buffer. This
-	 * function looks exactly the same for all types
+	 * Draws one column of tiles of the small map in a certain mode onto the screen buffer, skipping the shifted rows in between.
 	 *
 	 * @param dst Pointer to a part of the screen buffer to write to.
 	 * @param xc The X coordinate of the first tile in the column.
@@ -516,7 +515,7 @@ class SmallMapWindow : public Window {
 	 * @note If pixel position is below \c 0, skip drawing.
 	 * @see GetSmallMapPixels(TileIndex)
 	 */
-	void DrawSmallMapStuff(void *dst, uint xc, uint yc, int pitch, int reps, int start_pos, int end_pos, Blitter *blitter, GetSmallMapPixels *proc) const
+	void DrawSmallMapColumn(void *dst, uint xc, uint yc, int pitch, int reps, int start_pos, int end_pos, Blitter *blitter, GetSmallMapPixels *proc) const
 	{
 		void *dst_ptr_abs_end = blitter->MoveTo(_screen.dst_ptr, 0, _screen.height);
 
@@ -712,7 +711,7 @@ class SmallMapWindow : public Window {
 				int end_pos = min(dpi->width, x + 4);
 				int reps = (dpi->height - y + 1) / 2; // Number of lines.
 				if (reps > 0) {
-					this->DrawSmallMapStuff(ptr, tile_x, tile_y, dpi->pitch * 2, reps, x, end_pos, blitter, _smallmap_draw_procs[this->map_type]);
+					this->DrawSmallMapColumn(ptr, tile_x, tile_y, dpi->pitch * 2, reps, x, end_pos, blitter, _smallmap_draw_procs[this->map_type]);
 				}
 			}
 
