@@ -95,3 +95,13 @@ bool TileArea::Intersects(const TileArea &ta) const
 		);
 }
 
+/**
+ * Clamp the tile area to map borders.
+ */
+void TileArea::ClampToMap()
+{
+	assert(this->tile < MapSize());
+	this->w = min(this->w, MapSizeX() - TileX(this->tile));
+	this->h = min(this->h, MapSizeY() - TileY(this->tile));
+}
+

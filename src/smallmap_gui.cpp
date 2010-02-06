@@ -256,6 +256,22 @@ static const AndOr _smallmap_vehicles_andor[] = {
 
 typedef uint32 GetSmallMapPixels(TileIndex tile); ///< Typedef callthrough function
 
+/** Mapping of tile type to importance of the tile (higher number means more interesting to show). */
+static const byte _tiletype_importance[] = {
+	2, // MP_CLEAR
+	8, // MP_RAILWAY
+	7, // MP_ROAD
+	5, // MP_HOUSE
+	2, // MP_TREES
+	9, // MP_STATION
+	2, // MP_WATER
+	1, // MP_VOID
+	6, // MP_INDUSTRY
+	8, // MP_TUNNELBRIDGE
+	2, // MP_UNMOVABLE
+	0,
+};
+
 
 static inline TileType GetEffectiveTileType(TileIndex tile)
 {
@@ -564,6 +580,26 @@ class SmallMapWindow : public Window {
 	}
 
 	/**
+	 * Decide which tile to show to the user from a group of tiles.
+	 * @param ta Tile area to investigate.
+	 * @return Most interesting tile. May be #INVALID_TILE if off-map.
+	 */
+	inline TileIndex GetMostImportantTileFromGroup(const TileArea &ta) const
+	{
+		int importance = 0;
+		TileIndex tile = INVALID_TILE;
+
+		TILE_AREA_LOOP(ti, ta) {
+			TileType ttype = GetEffectiveTileType(ti);
+			if (_tiletype_importance[ttype] > importance) {
+				importance = _tiletype_importance[ttype];
+				tile = ti;
+			}
+		}
+		return tile;
+	}
+
+	/**
 	 * Draws one column of tiles of the small map in a certain mode onto the screen buffer, skipping the shifted rows in between.
 	 *
 	 * @param dst Pointer to a part of the screen buffer to write to.
@@ -585,18 +621,29 @@ class SmallMapWindow : public Window {
 
 		do {
 			/* Check if the tile (xc,yc) is within the map range */
-			if (IsInsideMM(xc, min_xy, MapMaxX()) && IsInsideMM(yc, min_xy, MapMaxY())) {
-				/* Check if the dst pointer points to a pixel inside the screen buffer */
-				if (dst < _screen.dst_ptr) continue;
-				if (dst >= dst_ptr_abs_end) continue;
+			if (xc >= MapMaxX() || yc >= MapMaxY()) continue;
 
-				uint32 val = proc(TileXY(xc, yc));
-				uint8 *val8 = (uint8 *)&val;
-				int idx = max(0, -start_pos);
-				for (int pos = max(0, start_pos); pos < end_pos; pos++) {
-					blitter->SetPixel(dst, idx, 0, val8[idx]);
-					idx++;
-				}
+			/* Check if the dst pointer points to a pixel inside the screen buffer */
+			if (dst < _screen.dst_ptr) continue;
+			if (dst >= dst_ptr_abs_end) continue;
+
+			/* Construct tilearea covered by (xc, yc, xc + this->zoom, yc + this->zoom) such that it is within min_xy limits. */
+			TileArea ta;
+			if (min_xy == 1 && (xc == 0 || yc == 0)) {
+				if (this->zoom == 1) continue; // The tile area is empty, don't draw anything.
+
+				ta = TileArea(TileXY(max(min_xy, xc), max(min_xy, yc)), this->zoom - (xc == 0), this->zoom - (yc == 0));
+			} else {
+				ta = TileArea(TileXY(xc, yc), this->zoom, this->zoom);
+			}
+			ta.ClampToMap(); // Clamp to map boundaries (may contain MP_VOID tiles!).
+
+			uint32 val = proc(this->GetMostImportantTileFromGroup(ta));
+			uint8 *val8 = (uint8 *)&val;
+			int idx = max(0, -start_pos);
+			for (int pos = max(0, start_pos); pos < end_pos; pos++) {
+				blitter->SetPixel(dst, idx, 0, val8[idx]);
+				idx++;
 			}
 		/* Switch to next tile in the column */
 		} while (xc += this->zoom, yc += this->zoom, dst = blitter->MoveTo(dst, pitch, 0), --reps != 0);

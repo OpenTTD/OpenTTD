@@ -47,6 +47,8 @@ struct TileArea {
 	}
 
 	bool Intersects(const TileArea &ta) const;
+
+	void ClampToMap();
 };
 
 #endif /* TILEAREA_TYPE_H */
