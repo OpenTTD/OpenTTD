@@ -36,6 +36,8 @@ enum SmallMapWindowWidgets {
 	SM_WIDGET_MAP_BORDER,        ///< Border around the smallmap.
 	SM_WIDGET_MAP,               ///< Panel containing the smallmap.
 	SM_WIDGET_LEGEND,            ///< Bottom panel to display smallmap legends.
+	SM_WIDGET_ZOOM_IN,           ///< Button to zoom in one step.
+	SM_WIDGET_ZOOM_OUT,          ///< Button to zoom out one step.
 	SM_WIDGET_CONTOUR,           ///< Button to select the contour view (height map).
 	SM_WIDGET_VEHICLES,          ///< Button to select the vehicles view.
 	SM_WIDGET_INDUSTRIES,        ///< Button to select the industries view.
@@ -440,6 +442,13 @@ class SmallMapWindow : public Window {
 		SMT_OWNER,
 	};
 
+	/** Available kinds of zoomlevel changes. */
+	enum ZoomLevelChange {
+		ZLC_INITIALIZE, ///< Initialize zoom level.
+		ZLC_ZOOM_OUT,   ///< Zoom out.
+		ZLC_ZOOM_IN,    ///< Zoom in.
+	};
+
 	static SmallMapType map_type; ///< Currently displayed legends.
 	static bool show_towns;       ///< Display town names in the smallmap.
 
@@ -452,6 +461,7 @@ class SmallMapWindow : public Window {
 	int32 scroll_x;  ///< Horizontal world coordinate of the base tile left of the top-left corner of the smallmap display.
 	int32 scroll_y;  ///< Vertical world coordinate of the base tile left of the top-left corner of the smallmap display.
 	int32 subscroll; ///< Number of pixels (0..3) between the right end of the base tile and the pixel at the top-left corner of the smallmap display.
+	int zoom;        ///< Zoom level. Bigger number means more zoom-out (further away).
 
 	static const uint8 FORCE_REFRESH_PERIOD = 0x1F; ///< map is redrawn after that many ticks
 	uint8 refresh; ///< refresh counter, zeroed every FORCE_REFRESH_PERIOD ticks
@@ -464,8 +474,16 @@ class SmallMapWindow : public Window {
 	 */
 	FORCEINLINE Point RemapTile(int tile_x, int tile_y) const
 	{
-		return RemapCoords(tile_x - this->scroll_x / TILE_SIZE,
-				tile_y - this->scroll_y / TILE_SIZE, 0);
+		int x_offset = tile_x - this->scroll_x / TILE_SIZE;
+		int y_offset = tile_y - this->scroll_y / TILE_SIZE;
+
+		if (this->zoom == 1) return RemapCoords(x_offset, y_offset, 0);
+
+		/* For negative offsets, round towards -inf. */
+		if (x_offset < 0) x_offset -= this->zoom - 1;
+		if (y_offset < 0) y_offset -= this->zoom - 1;
+
+		return RemapCoords(x_offset / this->zoom, y_offset / this->zoom, 0);
 	}
 
 	/**
@@ -483,21 +501,66 @@ class SmallMapWindow : public Window {
 
 		/* For each two rows down, add a x and a y tile, and
 		 * For each four pixels to the right, move a tile to the right. */
-		Point pt = {(dy >> 1) - (dx >> 2), (dy >> 1) + (dx >> 2)};
+		Point pt = {((dy >> 1) - (dx >> 2)) * this->zoom, ((dy >> 1) + (dx >> 2)) * this->zoom};
 		dx &= 3;
 
 		if (dy & 1) { // Odd number of rows, handle the 2 pixel shift.
 			if (dx < 2) {
-				pt.x++;
+				pt.x += this->zoom;
 				dx += 2;
 			} else {
-				pt.y++;
+				pt.y += this->zoom;
 				dx -= 2;
 			}
 		}
 
 		*sub = dx;
 		return pt;
+	}
+
+	/** Initialize or change the zoom level.
+	 * @param change Way to change the zoom level.
+	 */
+	void SetZoomLevel(ZoomLevelChange change)
+	{
+		static const int zoomlevels[] = {1, 2, 4, 6, 8}; // Available zoom levels. Bigger number means more zoom-out (further away).
+		static const int MIN_ZOOM_INDEX = 0;
+		static const int MAX_ZOOM_INDEX = lengthof(zoomlevels) - 1;
+
+		int new_index, cur_index, sub;
+		Point tile;
+		const NWidgetBase *wid = this->GetWidget<NWidgetBase>(SM_WIDGET_MAP);
+		switch (change) {
+			case ZLC_INITIALIZE:
+				cur_index = - 1; // Definitely different from new_index.
+				new_index = MIN_ZOOM_INDEX;
+				break;
+
+			case ZLC_ZOOM_IN:
+			case ZLC_ZOOM_OUT:
+				for (cur_index = MIN_ZOOM_INDEX; cur_index <= MAX_ZOOM_INDEX; cur_index++) {
+					if (this->zoom == zoomlevels[cur_index]) break;
+				}
+				assert(cur_index <= MAX_ZOOM_INDEX);
+
+				tile = this->PixelToTile(wid->current_x / 2, wid->current_y / 2, &sub);
+				new_index = Clamp(cur_index + ((change == ZLC_ZOOM_IN) ? -1 : 1), MIN_ZOOM_INDEX, MAX_ZOOM_INDEX);
+				break;
+
+			default: NOT_REACHED();
+		}
+
+		if (new_index != cur_index) {
+			this->zoom = zoomlevels[new_index];
+			if (cur_index >= 0) {
+				Point new_tile = this->PixelToTile(wid->current_x / 2, wid->current_y / 2, &sub);
+				this->SetNewScroll(this->scroll_x + (tile.x - new_tile.x) * TILE_SIZE,
+						this->scroll_y + (tile.y - new_tile.y) * TILE_SIZE, sub);
+			}
+			this->SetWidgetDisabledState(SM_WIDGET_ZOOM_IN,  this->zoom == zoomlevels[MIN_ZOOM_INDEX]);
+			this->SetWidgetDisabledState(SM_WIDGET_ZOOM_OUT, this->zoom == zoomlevels[MAX_ZOOM_INDEX]);
+			this->SetDirty();
+		}
 	}
 
 	/**
@@ -536,7 +599,7 @@ class SmallMapWindow : public Window {
 				}
 			}
 		/* Switch to next tile in the column */
-		} while (xc++, yc++, dst = blitter->MoveTo(dst, pitch, 0), --reps != 0);
+		} while (xc += this->zoom, yc += this->zoom, dst = blitter->MoveTo(dst, pitch, 0), --reps != 0);
 	}
 
 	/**
@@ -636,23 +699,22 @@ class SmallMapWindow : public Window {
 		/* Find main viewport. */
 		const ViewPort *vp = FindWindowById(WC_MAIN_WINDOW, 0)->viewport;
 
-		Point pt = RemapCoords(this->scroll_x, this->scroll_y, 0);
+		int tx = ((vp->virtual_top << 1) - vp->virtual_left) >> 6;
+		int ty = ((vp->virtual_top << 1) + vp->virtual_left) >> 6;
+		Point tl = this->RemapTile(tx, ty);
 
-		int x = vp->virtual_left - pt.x;
-		int y = vp->virtual_top - pt.y;
-		int x2 = (x + vp->virtual_width) / TILE_SIZE;
-		int y2 = (y + vp->virtual_height) / TILE_SIZE;
-		x /= TILE_SIZE;
-		y /= TILE_SIZE;
+		tx = (((vp->virtual_top + vp->virtual_height) << 1) - (vp->virtual_left + vp->virtual_width)) >> 6;
+		ty = (((vp->virtual_top + vp->virtual_height) << 1) + (vp->virtual_left + vp->virtual_width)) >> 6;
+		Point br = this->RemapTile(tx, ty);
 
-		x -= this->subscroll;
-		x2 -= this->subscroll;
+		tl.x -= this->subscroll;
+		br.x -= this->subscroll;
 
-		SmallMapWindow::DrawVertMapIndicator(x, y, y2);
-		SmallMapWindow::DrawVertMapIndicator(x2, y, y2);
+		SmallMapWindow::DrawVertMapIndicator(tl.x, tl.y, br.y);
+		SmallMapWindow::DrawVertMapIndicator(br.x, tl.y, br.y);
 
-		SmallMapWindow::DrawHorizMapIndicator(x, x2, y);
-		SmallMapWindow::DrawHorizMapIndicator(x, x2, y2);
+		SmallMapWindow::DrawHorizMapIndicator(tl.x, br.x, tl.y);
+		SmallMapWindow::DrawHorizMapIndicator(tl.x, br.x, br.y);
 	}
 
 	/**
@@ -716,11 +778,11 @@ class SmallMapWindow : public Window {
 			}
 
 			if (y == 0) {
-				tile_y++;
+				tile_y += this->zoom;
 				y++;
 				ptr = blitter->MoveTo(ptr, 0, 1);
 			} else {
-				tile_x--;
+				tile_x -= this->zoom;
 				y--;
 				ptr = blitter->MoveTo(ptr, 0, -1);
 			}
@@ -752,6 +814,7 @@ public:
 		this->SetWidgetLoweredState(SM_WIDGET_TOGGLETOWNNAME, this->show_towns);
 		this->GetWidget<NWidgetStacked>(SM_WIDGET_SELECTINDUSTRIES)->SetDisplayedPlane(this->map_type != SMT_INDUSTRY);
 
+		this->SetZoomLevel(ZLC_INITIALIZE);
 		this->SmallMapCenterOnCurrentPos();
 	}
 
@@ -912,14 +975,26 @@ public:
 				_left_button_clicked = false;
 
 				const NWidgetBase *wid = this->GetWidget<NWidgetBase>(SM_WIDGET_MAP);
-				Point pt = RemapCoords(this->scroll_x, this->scroll_y, 0);
 				Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
+				int sub;
+				pt = this->PixelToTile(pt.x - wid->pos_x, pt.y - wid->pos_y, &sub);
+				pt = RemapCoords(this->scroll_x + pt.x * TILE_SIZE + this->zoom * (TILE_SIZE - sub * TILE_SIZE / 4),
+						this->scroll_y + pt.y * TILE_SIZE + sub * this->zoom * TILE_SIZE / 4, 0);
+
 				w->viewport->follow_vehicle = INVALID_VEHICLE;
-				w->viewport->dest_scrollpos_x = pt.x + ((_cursor.pos.x - this->left + wid->pos_x) << 4) - (w->viewport->virtual_width  >> 1);
-				w->viewport->dest_scrollpos_y = pt.y + ((_cursor.pos.y - this->top  - wid->pos_y) << 4) - (w->viewport->virtual_height >> 1);
+				w->viewport->dest_scrollpos_x = pt.x - (w->viewport->virtual_width  >> 1);
+				w->viewport->dest_scrollpos_y = pt.y - (w->viewport->virtual_height >> 1);
 
 				this->SetDirty();
 			} break;
+
+			case SM_WIDGET_ZOOM_IN:
+				this->SetZoomLevel(ZLC_ZOOM_IN);
+				break;
+
+			case SM_WIDGET_ZOOM_OUT:
+				this->SetZoomLevel(ZLC_ZOOM_OUT);
+				break;
 
 			case SM_WIDGET_CONTOUR:    // Show land contours
 			case SM_WIDGET_VEHICLES:   // Show vehicles
@@ -1025,6 +1100,42 @@ public:
 		this->SetDirty();
 	}
 
+	/**
+	 * Set new #scroll_x, #scroll_y, and #subscroll values after limiting them such that the center
+	 * of the smallmap always contains a part of the map.
+	 * @param sx  Proposed new #scroll_x
+	 * @param sy  Proposed new #scroll_y
+	 * @param sub Proposed new #subscroll
+	 */
+	void SetNewScroll(int sx, int sy, int sub)
+	{
+		const NWidgetBase *wi = this->GetWidget<NWidgetBase>(SM_WIDGET_MAP);
+		int hx = wi->current_x / 2;
+		int hy = wi->current_y / 2;
+		int hvx = (hx * -4 + hy * 8) * this->zoom;
+		int hvy = (hx *  4 + hy * 8) * this->zoom;
+		if (sx < -hvx) {
+			sx = -hvx;
+			sub = 0;
+		}
+		if (sx > (int)MapMaxX() * TILE_SIZE - hvx) {
+			sx = MapMaxX() * TILE_SIZE - hvx;
+			sub = 0;
+		}
+		if (sy < -hvy) {
+			sy = -hvy;
+			sub = 0;
+		}
+		if (sy > (int)MapMaxY() * TILE_SIZE - hvy) {
+			sy = MapMaxY() * TILE_SIZE - hvy;
+			sub = 0;
+		}
+
+		this->scroll_x = sx;
+		this->scroll_y = sy;
+		this->subscroll = sub;
+	}
+
 	virtual void OnScroll(Point delta)
 	{
 		_cursor.fix_at = true;
@@ -1032,34 +1143,7 @@ public:
 		/* While tile is at (delta.x, delta.y)? */
 		int sub;
 		Point pt = this->PixelToTile(delta.x, delta.y, &sub);
-		int x = this->scroll_x + pt.x * TILE_SIZE;
-		int y = this->scroll_y + pt.y * TILE_SIZE;
-
-		const NWidgetBase *wi = this->GetWidget<NWidgetBase>(SM_WIDGET_MAP);
-		int hx = wi->current_x / 2;
-		int hy = wi->current_y / 2;
-		int hvx = hx * -4 + hy * 8;
-		int hvy = hx *  4 + hy * 8;
-		if (x < -hvx) {
-			x = -hvx;
-			sub = 0;
-		}
-		if (x > (int)MapMaxX() * TILE_SIZE - hvx) {
-			x = MapMaxX() * TILE_SIZE - hvx;
-			sub = 0;
-		}
-		if (y < -hvy) {
-			y = -hvy;
-			sub = 0;
-		}
-		if (y > (int)MapMaxY() * TILE_SIZE - hvy) {
-			y = MapMaxY() * TILE_SIZE - hvy;
-			sub = 0;
-		}
-
-		this->scroll_x = x;
-		this->scroll_y = y;
-		this->subscroll = sub;
+		this->SetNewScroll(this->scroll_x + pt.x * TILE_SIZE, this->scroll_y + pt.y * TILE_SIZE, sub);
 
 		this->SetDirty();
 	}
@@ -1067,12 +1151,18 @@ public:
 	void SmallMapCenterOnCurrentPos()
 	{
 		const ViewPort *vp = FindWindowById(WC_MAIN_WINDOW, 0)->viewport;
-		const NWidgetBase *wi = this->GetWidget<NWidgetBase>(SM_WIDGET_MAP);
 
-		int x = ((vp->virtual_width  - (int)wi->current_x * TILE_SIZE) / 2 + vp->virtual_left) / 4;
-		int y = ((vp->virtual_height - (int)wi->current_y * TILE_SIZE) / 2 + vp->virtual_top ) / 2 - TILE_SIZE * 2;
-		this->scroll_x = (y - x) & ~0xF;
-		this->scroll_y = (x + y) & ~0xF;
+		int x = vp->virtual_left + vp->virtual_width  / 2;
+		int y = vp->virtual_top  + vp->virtual_height / 2;
+
+		int tx = (y * 2 - x) >> 2;
+		int ty = (y * 2 + x) >> 2;
+
+		int sub;
+		const NWidgetBase *wid = this->GetWidget<NWidgetBase>(SM_WIDGET_MAP);
+		Point tile = this->PixelToTile(wid->current_x / 2, wid->current_y / 2, &sub);
+
+		this->SetNewScroll(tx - tile.x * TILE_SIZE, ty - tile.y * TILE_SIZE, sub);
 		this->SetDirty();
 	}
 };
@@ -1168,6 +1258,7 @@ static const NWidgetPart _nested_smallmap_bar[] = {
 			NWidget(NWID_VERTICAL),
 				/* Top button row. */
 				NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+					NWidget(WWT_PUSHIMGBTN, COLOUR_BROWN, SM_WIDGET_ZOOM_IN), SetDataTip(SPR_IMG_ZOOMIN, STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN),
 					NWidget(WWT_PUSHIMGBTN, COLOUR_BROWN, SM_WIDGET_CENTERMAP), SetDataTip(SPR_IMG_SMALLMAP, STR_SMALLMAP_CENTER),
 					NWidget(WWT_IMGBTN, COLOUR_BROWN, SM_WIDGET_CONTOUR), SetDataTip(SPR_IMG_SHOW_COUNTOURS, STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP),
 					NWidget(WWT_IMGBTN, COLOUR_BROWN, SM_WIDGET_VEHICLES), SetDataTip(SPR_IMG_SHOW_VEHICLES, STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP),
@@ -1175,6 +1266,7 @@ static const NWidgetPart _nested_smallmap_bar[] = {
 				EndContainer(),
 				/* Bottom button row. */
 				NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+					NWidget(WWT_PUSHIMGBTN, COLOUR_BROWN, SM_WIDGET_ZOOM_OUT), SetDataTip(SPR_IMG_ZOOMOUT, STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT),
 					NWidget(WWT_IMGBTN, COLOUR_BROWN, SM_WIDGET_TOGGLETOWNNAME), SetDataTip(SPR_IMG_TOWN, STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF),
 					NWidget(WWT_IMGBTN, COLOUR_BROWN, SM_WIDGET_ROUTES), SetDataTip(SPR_IMG_SHOW_ROUTES, STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON),
 					NWidget(WWT_IMGBTN, COLOUR_BROWN, SM_WIDGET_VEGETATION), SetDataTip(SPR_IMG_PLANTTREES, STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP),
