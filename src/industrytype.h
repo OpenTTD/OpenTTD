@@ -55,6 +55,7 @@ enum IndustryConstructionType {
 	ICT_SCENARIO_EDITOR   ///< while scenarion edition
 };
 
+/** Various industry behaviours mostly to represent original TTD specialities */
 enum IndustryBehaviour {
 	INDUSTRYBEH_NONE                  =      0,
 	INDUSTRYBEH_PLANT_FIELDS          = 1 << 0,  ///< periodically plants fileds around itself (temp and artic farms)
@@ -78,6 +79,13 @@ enum IndustryBehaviour {
 	INDUSTRYBEH_CANCLOSE_LASTINSTANCE = 1 << 17, ///< Allow closing down the last instance of this type
 };
 DECLARE_ENUM_AS_BIT_SET(IndustryBehaviour);
+
+/** Flags for miscellaneous industry tile specialities */
+enum IndustryTileSpecialFlags {
+	INDTILE_SPECIAL_NONE                  = 0,
+	INDTILE_SPECIAL_NEXTFRAME_RANDOMBITS  = 1 << 0, ///< Callback 0x26 needs random bits
+};
+DECLARE_ENUM_AS_BIT_SET(IndustryTileSpecialFlags);
 
 struct IndustryTileTable {
 	TileIndexDiffC ti;
@@ -167,7 +175,7 @@ struct IndustryTileSpec {
 	uint16 animation_info;                ///< Information about the animation (is it looping, how many loops etc)
 	uint8 animation_speed;                ///< The speed of the animation
 	uint8 animation_triggers;             ///< When to start the animation
-	uint8 animation_special_flags;        ///< Extra flags to influence the animation
+	IndustryTileSpecialFlags special_flags; ///< Bitmask of extra flags used by the tile
 	bool enabled;                         ///< entity still avaible (by default true).newgrf can disable it, though
 	struct GRFFileProps grf_prop;
 };

@@ -2160,7 +2160,7 @@ static ChangeInfoResult IndustrytilesChangeInfo(uint indtid, int numinfo, int pr
 				break;
 
 			case 0x12: // Special flags
-				tsp->animation_special_flags = buf->ReadByte();
+				tsp->special_flags = (IndustryTileSpecialFlags)buf->ReadByte();
 				break;
 
 			default:
