@@ -30,6 +30,54 @@ enum RailTypeFlags {
 };
 DECLARE_ENUM_AS_BIT_SET(RailTypeFlags);
 
+struct SpriteGroup;
+
+enum RailTypeSpriteGroup {
+	RTSG_CURSORS,     ///< Cursor and toolbar icon images
+	RTSG_OVERLAY,     ///< Images for overlaying track
+	RTSG_GROUND,      ///< Main group of ground images
+	RTSG_TUNNEL,      ///< Main group of ground images for snow or desert
+	RTSG_WIRES,       ///< Catenary wires
+	RTSG_PYLONS,      ///< Catenary pylons
+	RTSG_BRIDGE,      ///< Bridge surface images
+	RTSG_CROSSING,    ///< Level crossing overlay images
+	RTSG_DEPOT,       ///< Depot images
+	RTSG_FENCES,      ///< Fence images
+	RTSG_END,
+};
+
+/**
+ * Offsets for sprites within an overlay/underlay set.
+ * These are the same for overlay and underlay sprites.
+ */
+enum RailTrackOffset {
+	RTO_X,            ///< Piece of rail in X direction
+	RTO_Y,            ///< Piece of rail in Y direction
+	RTO_N,            ///< Piece of rail in northern corner
+	RTO_S,            ///< Piece of rail in southern corner
+	RTO_E,            ///< Piece of rail in eastern corner
+	RTO_W,            ///< Piece of rail in western corner
+	RTO_SLOPE_NE,     ///< Piece of rail on slope with north-east raised
+	RTO_SLOPE_SE,     ///< Piece of rail on slope with south-east raised
+	RTO_SLOPE_SW,     ///< Piece of rail on slope with south-west raised
+	RTO_SLOPE_NW,     ///< Piece of rail on slope with north-west raised
+	RTO_CROSSING_XY,  ///< Crossing of X and Y rail, with ballast
+	RTO_JUNCTION_SW,  ///< Ballast for junction 'pointing' SW
+	RTO_JUNCTION_NE,  ///< Ballast for junction 'pointing' NE
+	RTO_JUNCTION_SE,  ///< Ballast for junction 'pointing' SE
+	RTO_JUNCTION_NW,  ///< Ballast for junction 'pointing' NW
+	RTO_JUNCTION_NSEW,///< Ballast for full junction
+};
+
+/**
+ * Offsets for spries within a bridge surface overlay set.
+ */
+enum RailTrackBridgeOffset {
+	RTBO_X,     ///< Piece of rail in X direction
+	RTBO_Y,     ///< Piece of rail in Y direction
+	RTBO_SLOPE, ///< Sloped rail pieces, in order NE, SE, SW, NW
+};
+
 /** Offsets from base sprite for fence sprites. These are in the order of
  *  the sprites in the original data files.
  */
@@ -154,6 +202,16 @@ struct RailtypeInfo {
 	 * Unique 32 bit rail type identifier
 	 */
 	RailTypeLabel label;
+
+	/**
+	 * Sprite groups for resolving sprites
+	 */
+	const SpriteGroup *group[RTSG_END];
+
+	inline bool UsesOverlay() const
+	{
+		return this->group[RTSG_GROUND] != NULL;
+	}
 };
 
 
@@ -285,6 +343,11 @@ RailType GetRailTypeByLabel(RailTypeLabel label);
  * Reset all rail type information to its default values.
  */
 void ResetRailTypes();
+
+/**
+ * Resolve sprites of custom rail types
+ */
+void InitRailTypes();
 
 /**
  * Allocate a new rail type label

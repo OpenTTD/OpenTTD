@@ -89,6 +89,8 @@ static const RailtypeInfo _original_railtypes[] = {
 
 		/* rail type label */
 		'RAIL',
+
+		{ NULL },
 	},
 
 	/** Electrified railway */
@@ -167,6 +169,8 @@ static const RailtypeInfo _original_railtypes[] = {
 
 		/* rail type label */
 		'ELRL',
+
+		{ NULL },
 	},
 
 	/** Monorail */
@@ -241,6 +245,8 @@ static const RailtypeInfo _original_railtypes[] = {
 
 		/* rail type label */
 		'MONO',
+
+		{ NULL },
 	},
 
 	/** Maglev */
@@ -315,6 +321,8 @@ static const RailtypeInfo _original_railtypes[] = {
 
 		/* rail type label */
 		'MGLV',
+
+		{ NULL },
 	},
 };
 

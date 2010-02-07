@@ -64,6 +64,8 @@
 #include "elrail_func.h"
 #include "engine_base.h"
 #include "company_base.h"
+#include "rail.h"
+#include "newgrf_railtype.h"
 
 #include "table/sprites.h"
 #include "table/elrail_data.h"
@@ -165,7 +167,9 @@ static TrackBits MaskWireBits(TileIndex t, TrackBits tracks)
  */
 static inline SpriteID GetWireBase(TileIndex tile)
 {
-	return SPR_WIRE_BASE;
+	const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(tile));
+	SpriteID wires = GetCustomRailSprite(rti, tile, RTSG_WIRES);
+	return wires == 0 ? SPR_WIRE_BASE : wires;
 }
 
 /**
@@ -173,7 +177,9 @@ static inline SpriteID GetWireBase(TileIndex tile)
  */
 static inline SpriteID GetPylonBase(TileIndex tile)
 {
-	return SPR_PYLON_BASE;
+	const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(tile));
+	SpriteID pylons = GetCustomRailSprite(rti, tile, RTSG_PYLONS);
+	return pylons == 0 ? SPR_PYLON_BASE : pylons;
 }
 
 /** Corrects the tileh for certain tile types. Returns an effective tileh for the track on the tile.

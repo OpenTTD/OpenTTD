@@ -20,6 +20,7 @@
 #include "newgrf_station.h"
 #include "newgrf_spritegroup.h"
 #include "newgrf_sound.h"
+#include "newgrf_railtype.h"
 #include "town.h"
 #include "newgrf_town.h"
 #include "date_func.h"
@@ -442,7 +443,7 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, by
 			if (!HasBit(_svc.valid, 1)) { _svc.v41 = GetPlatformInfoHelper(tile, true,  false, false); SetBit(_svc.valid, 1); }
 			return _svc.v41;
 
-		case 0x42: return GetTerrainType(tile) | (GetRailType(tile) << 8);
+		case 0x42: return GetTerrainType(tile) | (GetReverseRailTypeTranslation(GetRailType(tile), object->u.station.statspec->grffile) << 8);
 		case 0x43: return st->owner; // Station owner
 		case 0x44: return HasStationReservation(tile) ? 7 : 4; // PBS status
 		case 0x45:

@@ -339,6 +339,9 @@ struct ResolverObject {
 			uint8 count;
 			uint8 station_size;
 		} generic;
+		struct {
+			TileIndex tile;
+		} routes;
 	} u;
 
 	uint32 (*GetRandomBits)(const struct ResolverObject*);

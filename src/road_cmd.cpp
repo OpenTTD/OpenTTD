@@ -35,6 +35,7 @@
 #include "town.h"
 #include "company_base.h"
 #include "core/random_func.hpp"
+#include "newgrf_railtype.h"
 
 #include "table/strings.h"
 
@@ -1164,7 +1165,36 @@ static void DrawTile_Road(TileInfo *ti)
 		case ROAD_TILE_CROSSING: {
 			if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, FOUNDATION_LEVELED);
 
-			SpriteID image = GetRailTypeInfo(GetRailType(ti->tile))->base_sprites.crossing;
+			const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(ti->tile));
+
+			if (rti->UsesOverlay()) {
+				Axis axis = GetCrossingRailAxis(ti->tile);
+				SpriteID road = SPR_ROAD_Y + axis;
+				PaletteID pal = PAL_NONE;
+
+				Roadside roadside = GetRoadside(ti->tile);
+
+				if (AlwaysDrawUnpavedRoads(ti->tile, roadside)) {
+					road += 19;
+				} else {
+					switch (roadside) {
+						case ROADSIDE_BARREN: pal = PALETTE_TO_BARE_LAND; break;
+						case ROADSIDE_GRASS:  break;
+						default:              road -= 19; break; // Paved
+					}
+				}
+
+				DrawGroundSprite(road, pal);
+
+				SpriteID rail = GetCustomRailSprite(rti, ti->tile, RTSG_CROSSING) + axis;
+				DrawGroundSprite(rail, PAL_NONE);
+				DrawRailTileSeq(ti, &_crossing_layout, TO_CATENARY, rail, 0, PAL_NONE);
+
+				if (HasCatenaryDrawn(GetRailType(ti->tile))) DrawCatenary(ti);
+				break;
+			}
+
+			SpriteID image = rti->base_sprites.crossing;
 			PaletteID pal = PAL_NONE;
 
 			if (GetCrossingRoadAxis(ti->tile) == AXIS_X) image++;

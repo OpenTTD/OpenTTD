@@ -3037,6 +3037,7 @@ static void NewSpriteGroup(ByteReader *buf)
 				case GSF_STATION:
 				case GSF_CANAL:
 				case GSF_CARGOS:
+				case GSF_RAILTYPES:
 				{
 					byte sprites     = _cur_grffile->spriteset_numents;
 					byte num_loaded  = type;
@@ -3519,6 +3520,35 @@ static void CargoMapSpriteGroup(ByteReader *buf, uint8 idcount)
 	}
 }
 
+static void RailTypeMapSpriteGroup(ByteReader *buf, uint8 idcount)
+{
+	uint8 *railtypes = AllocaM(uint8, idcount);
+	for (uint i = 0; i < idcount; i++) {
+		railtypes[i] = _cur_grffile->railtype_map[buf->ReadByte()];
+	}
+
+	uint8 cidcount = buf->ReadByte();
+	for (uint c = 0; c < cidcount; c++) {
+		uint8 ctype = buf->ReadByte();
+		uint16 groupid = buf->ReadWord();
+		if (!IsValidGroupID(groupid, "RailTypeMapSpriteGroup")) continue;
+
+		if (ctype >= RTSG_END) continue;
+
+		extern RailtypeInfo _railtypes[RAILTYPE_END];
+		for (uint i = 0; i < idcount; i++) {
+			if (railtypes[i] != INVALID_RAILTYPE) {
+				RailtypeInfo *rti = &_railtypes[railtypes[i]];
+
+				rti->group[ctype] = _cur_grffile->spritegroups[groupid];
+			}
+		}
+	}
+
+	/* Railtypes do not use the default group. */
+	buf->ReadWord();
+}
+
 
 /* Action 0x03 */
 static void FeatureMapSpriteGroup(ByteReader *buf)
@@ -3593,6 +3623,10 @@ static void FeatureMapSpriteGroup(ByteReader *buf)
 		case GSF_CARGOS:
 			CargoMapSpriteGroup(buf, idcount);
 			return;
+
+		case GSF_RAILTYPES:
+			RailTypeMapSpriteGroup(buf, idcount);
+			break;
 
 		default:
 			grfmsg(1, "FeatureMapSpriteGroup: Unsupported feature %d, skipping", feature);
@@ -6445,6 +6479,9 @@ static void AfterLoadGRFs()
 
 	/* Load old shore sprites in new position, if they were replaced by ActionA */
 	ActivateOldShore();
+
+	/* Set up custom rail types */
+	InitRailTypes();
 
 	Engine *e;
 	FOR_ALL_ENGINES_OF_TYPE(e, VEH_ROAD) {

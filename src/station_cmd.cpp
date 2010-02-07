@@ -39,6 +39,7 @@
 #include "elrail_func.h"
 #include "station_base.h"
 #include "roadstop_base.h"
+#include "newgrf_railtype.h"
 #include "waypoint_base.h"
 #include "waypoint_func.h"
 #include "pbs.h"
@@ -2303,12 +2304,13 @@ static void DrawTile_Station(TileInfo *ti)
 	RoadTypes roadtypes;
 	int32 total_offset;
 	int32 custom_ground_offset;
+	const RailtypeInfo *rti = NULL;
 	uint32 relocation = 0;
 	const BaseStation *st = NULL;
 	const StationSpec *statspec = NULL;
 
 	if (HasStationRail(ti->tile)) {
-		const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(ti->tile));
+		rti = GetRailTypeInfo(GetRailType(ti->tile));
 		roadtypes = ROADTYPES_NONE;
 		total_offset = rti->total_offset;
 		custom_ground_offset = rti->custom_ground_offset;
@@ -2446,18 +2448,29 @@ static void DrawTile_Station(TileInfo *ti)
 	} else {
 		SpriteID image = t->ground.sprite;
 		PaletteID pal  = t->ground.pal;
-		if (HasBit(image, SPRITE_MODIFIER_CUSTOM_SPRITE)) {
-			image += GetCustomStationGroundRelocation(statspec, st, ti->tile);
-			image += custom_ground_offset;
-		} else {
-			image += total_offset;
-		}
-		DrawGroundSprite(image, GroundSpritePaletteTransform(image, pal, palette));
+		if (rti != NULL && rti->UsesOverlay() && (image == SPR_RAIL_TRACK_X || image == SPR_RAIL_TRACK_Y)) {
+			SpriteID ground = GetCustomRailSprite(rti, ti->tile, RTSG_GROUND);
+			DrawGroundSprite(SPR_FLAT_GRASS_TILE, PAL_NONE);
+			DrawGroundSprite(ground + (image == SPR_RAIL_TRACK_X ? RTO_X : RTO_Y), PAL_NONE);
 
-		/* PBS debugging, draw reserved tracks darker */
-		if (_game_mode != GM_MENU && _settings_client.gui.show_track_reservation && HasStationRail(ti->tile) && HasStationReservation(ti->tile)) {
-			const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(ti->tile));
-			DrawGroundSprite(GetRailStationAxis(ti->tile) == AXIS_X ? rti->base_sprites.single_x : rti->base_sprites.single_y, PALETTE_CRASH);
+			if (_game_mode != GM_MENU && _settings_client.gui.show_track_reservation && HasStationReservation(ti->tile)) {
+				SpriteID overlay = GetCustomRailSprite(rti, ti->tile, RTSG_OVERLAY);
+				DrawGroundSprite(overlay + (image == SPR_RAIL_TRACK_X ? RTO_X : RTO_Y), PALETTE_CRASH);
+			}
+		} else {
+			if (HasBit(image, SPRITE_MODIFIER_CUSTOM_SPRITE)) {
+				image += GetCustomStationGroundRelocation(statspec, st, ti->tile);
+				image += custom_ground_offset;
+			} else {
+				image += total_offset;
+			}
+			DrawGroundSprite(image, GroundSpritePaletteTransform(image, pal, palette));
+
+			/* PBS debugging, draw reserved tracks darker */
+			if (_game_mode != GM_MENU && _settings_client.gui.show_track_reservation && HasStationRail(ti->tile) && HasStationReservation(ti->tile)) {
+				const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(ti->tile));
+				DrawGroundSprite(GetRailStationAxis(ti->tile) == AXIS_X ? rti->base_sprites.single_x : rti->base_sprites.single_y, PALETTE_CRASH);
+			}
 		}
 	}
 
@@ -2482,14 +2495,21 @@ void StationPickerDrawSprite(int x, int y, StationType st, RailType railtype, Ro
 	int32 total_offset = 0;
 	PaletteID pal = COMPANY_SPRITE_COLOUR(_local_company);
 	const DrawTileSprites *t = &_station_display_datas[st][image];
+	const RailtypeInfo *rti = NULL;
 
 	if (railtype != INVALID_RAILTYPE) {
-		const RailtypeInfo *rti = GetRailTypeInfo(railtype);
+		rti = GetRailTypeInfo(railtype);
 		total_offset = rti->total_offset;
 	}
 
 	SpriteID img = t->ground.sprite;
-	DrawSprite(img + total_offset, HasBit(img, PALETTE_MODIFIER_COLOUR) ? pal : PAL_NONE, x, y);
+	if ((img == SPR_RAIL_TRACK_X || img == SPR_RAIL_TRACK_Y) && rti->UsesOverlay()) {
+		SpriteID ground = GetCustomRailSprite(rti, INVALID_TILE, RTSG_GROUND);
+		DrawSprite(SPR_FLAT_GRASS_TILE, PAL_NONE, x, y);
+		DrawSprite(ground + (img == SPR_RAIL_TRACK_X ? RTO_X : RTO_Y), PAL_NONE, x, y);
+	} else {
+		DrawSprite(img + total_offset, HasBit(img, PALETTE_MODIFIER_COLOUR) ? pal : PAL_NONE, x, y);
+	}
 
 	if (roadtype == ROADTYPE_TRAM) {
 		DrawSprite(SPR_TRAMWAY_TRAM + (t->ground.sprite == SPR_ROAD_PAVED_STRAIGHT_X ? 1 : 0), PAL_NONE, x, y);

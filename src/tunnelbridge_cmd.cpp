@@ -40,6 +40,7 @@
 #include "pbs.h"
 #include "company_base.h"
 #include "engine_base.h"
+#include "newgrf_railtype.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -930,14 +931,22 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 					AddSortableSpriteToDraw(SPR_TRAMWAY_TUNNEL_WIRES + tunnelbridge_direction, PAL_NONE, ti->x, ti->y, BB_data[10], BB_data[11], TILE_HEIGHT, ti->z, IsTransparencySet(TO_CATENARY), BB_data[8], BB_data[9], BB_Z_SEPARATOR);
 				}
 			}
-		} else if (HasCatenaryDrawn(GetRailType(ti->tile))) {
-			/* Maybe draw pylons on the entry side */
-			DrawCatenary(ti);
+		} else {
+			const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(ti->tile));
+			if (rti->UsesOverlay()) {
+				SpriteID surface = GetCustomRailSprite(rti, ti->tile, RTSG_TUNNEL);
+				if (surface != 0) DrawGroundSprite(surface + tunnelbridge_direction, PAL_NONE);
+			}
 
-			catenary = true;
-			StartSpriteCombine();
-			/* Draw wire above the ramp */
-			DrawCatenaryOnTunnel(ti);
+			if (HasCatenaryDrawn(GetRailType(ti->tile))) {
+				/* Maybe draw pylons on the entry side */
+				DrawCatenary(ti);
+
+				catenary = true;
+				StartSpriteCombine();
+				/* Draw wire above the ramp */
+				DrawCatenaryOnTunnel(ti);
+			}
 		}
 
 		AddSortableSpriteToDraw(image + 1, PAL_NONE, ti->x + TILE_SIZE - 1, ti->y + TILE_SIZE - 1, BB_data[0], BB_data[1], TILE_HEIGHT, ti->z, false, BB_data[2], BB_data[3], BB_Z_SEPARATOR);
@@ -995,15 +1004,6 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 		/* Bridge heads are drawn solid no matter how invisibility/transparency is set */
 		AddSortableSpriteToDraw(psid->sprite, psid->pal, ti->x, ti->y, 16, 16, ti->tileh == SLOPE_FLAT ? 0 : 8, ti->z);
 
-		if (_game_mode != GM_MENU && _settings_client.gui.show_track_reservation && transport_type == TRANSPORT_RAIL && HasTunnelBridgeReservation(ti->tile)) {
-			const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(ti->tile));
-			if (HasBridgeFlatRamp(ti->tileh, DiagDirToAxis(tunnelbridge_direction))) {
-				AddSortableSpriteToDraw(DiagDirToAxis(tunnelbridge_direction) == AXIS_X ? rti->base_sprites.single_x : rti->base_sprites.single_y, PALETTE_CRASH, ti->x, ti->y, 16, 16, 0, ti->z + 8);
-			} else {
-				AddSortableSpriteToDraw(rti->base_sprites.single_sloped + tunnelbridge_direction, PALETTE_CRASH, ti->x, ti->y, 16, 16, 8, ti->z);
-			}
-		}
-
 		if (transport_type == TRANSPORT_ROAD) {
 			RoadTypes rts = GetRoadTypes(ti->tile);
 
@@ -1021,6 +1021,26 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 			}
 			EndSpriteCombine();
 		} else if (transport_type == TRANSPORT_RAIL) {
+			const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(ti->tile));
+			if (rti->UsesOverlay()) {
+				SpriteID surface = GetCustomRailSprite(rti, ti->tile, RTSG_BRIDGE);
+				if (surface != 0) {
+					if (HasBridgeFlatRamp(ti->tileh, DiagDirToAxis(tunnelbridge_direction))) {
+						AddSortableSpriteToDraw(surface + ((DiagDirToAxis(tunnelbridge_direction) == AXIS_X) ? RTBO_X : RTBO_Y), PAL_NONE, ti->x, ti->y, 16, 16, 0, ti->z + 8);
+					} else {
+						AddSortableSpriteToDraw(surface + RTBO_SLOPE + tunnelbridge_direction, PAL_NONE, ti->x, ti->y, 16, 16, 8, ti->z);
+					}
+				}
+				/* Don't fallback to non-overlay sprite -- the spec states that
+				 * if an overlay is present then the bridge surface must be
+				 * present. */
+			} else if (_game_mode != GM_MENU &&_settings_client.gui.show_track_reservation && HasTunnelBridgeReservation(ti->tile)) {
+				if (HasBridgeFlatRamp(ti->tileh, DiagDirToAxis(tunnelbridge_direction))) {
+					AddSortableSpriteToDraw(DiagDirToAxis(tunnelbridge_direction) == AXIS_X ? rti->base_sprites.single_x : rti->base_sprites.single_y, PALETTE_CRASH, ti->x, ti->y, 16, 16, 0, ti->z + 8);
+				} else {
+					AddSortableSpriteToDraw(rti->base_sprites.single_sloped + tunnelbridge_direction, PALETTE_CRASH, ti->x, ti->y, 16, 16, 8, ti->z);
+				}
+			}
 			EndSpriteCombine();
 			if (HasCatenaryDrawn(GetRailType(ti->tile))) {
 				DrawCatenary(ti);
@@ -1128,7 +1148,7 @@ void DrawBridgeMiddle(const TileInfo *ti)
 	AddSortableSpriteToDraw(SPR_EMPTY_BOUNDING_BOX, PAL_NONE, x, y, 16, 16, 1, bridge_z - TILE_HEIGHT + BB_Z_SEPARATOR);
 
 	/* Draw Trambits as SpriteCombine */
-	if (transport_type == TRANSPORT_ROAD) StartSpriteCombine();
+	if (transport_type == TRANSPORT_ROAD || transport_type == TRANSPORT_RAIL) StartSpriteCombine();
 
 	/* Draw floor and far part of bridge*/
 	if (!IsInvisibilitySet(TO_BRIDGES)) {
@@ -1152,6 +1172,15 @@ void DrawBridgeMiddle(const TileInfo *ti)
 			StartSpriteCombine();
 		}
 	} else if (transport_type == TRANSPORT_RAIL) {
+		const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(rampsouth));
+		if (rti->UsesOverlay()) {
+			SpriteID surface = GetCustomRailSprite(rti, ti->tile, RTSG_BRIDGE);
+			if (surface != 0) {
+				AddSortableSpriteToDraw(surface + axis, PAL_NONE, x, y, 16, 16, 0, bridge_z, IsTransparencySet(TO_BRIDGES));
+			}
+		}
+		EndSpriteCombine();
+
 		if (HasCatenaryDrawn(GetRailType(rampsouth))) {
 			DrawCatenaryOnBridge(ti);
 		}
