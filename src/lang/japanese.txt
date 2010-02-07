@@ -273,6 +273,7 @@ STR_SORT_BY_LENGTH                                              :長さ
 STR_SORT_BY_LIFE_TIME                                           :残りライフタイム
 STR_SORT_BY_FACILITY                                            :駅の種類
 STR_SORT_BY_WAITING                                             :到着待ち貨物の価値
+STR_SORT_BY_RATING_MIN                                          :最低い貨物評価
 STR_SORT_BY_ENGINE_ID                                           :EngineID（旧式）
 STR_SORT_BY_COST                                                :値段
 STR_SORT_BY_POWER                                               :出力
@@ -363,6 +364,7 @@ STR_MAP_MENU_SIGN_LIST                                          :標示のリス
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :市町村のリスト
 ############ end of the 'Display map' dropdown
+STR_TOWN_MENU_FOUND_TOWN                                        :町を建設
 ############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
@@ -516,6 +518,7 @@ STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLAC
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}貨物種類のグラフを切り替えます
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 
+STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}詳しい成績表を示す
 
 # Graph key window
 STR_GRAPH_KEY_CAPTION                                           :{WHITE}会社グラフの説明
@@ -757,6 +760,7 @@ STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING}が{STRING}に買収！
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}（社長）
 
+STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}{STRING}が{TOWN}という町の建設をスポンサーした!
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}新しい{STRING}が{TOWN}町に工事中！
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}新しい{STRING}が{TOWN}町に植林中！
@@ -785,6 +789,7 @@ STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
+STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE}の指令が少なさ過ぎます
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} は無効な指令があります。
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} は重複している指令があります。
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} の指令の中で、無効な駅があります。
@@ -797,6 +802,7 @@ STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE
 STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} が迷っています。
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}昨年 {VEHICLE} の利益は {CURRENCY}。
 
+STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE}が命令された改装の失敗のため、止めました
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}{VEHICLE} の自動交換が失敗しました。{}{STRING}
 
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}{STRING}が新登場！
@@ -928,6 +934,9 @@ STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}ベー�
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}使用するGRFの選択
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}ベースGRFセットについての追加情報
 
+STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}ベース音セット
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}使用する音セットを選択
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}ベース音セットの追加情報
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}ベース音楽セット
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}使用する音楽の選択
@@ -950,6 +959,9 @@ STR_CURRENCY_SUFFIX                                             :{LTBLUE}接尾�
 
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}ユーロに切替え：{ORANGE}{NUM}年
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}ユーロに切替え：{ORANGE}しない
+STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}ユーロになる年を選択
+STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}もっと早くにユーロに切り替え
+STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}もっと遅くにユーロに切り替え
 
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}プレビュー：{ORANGE}{CURRENCY}
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}お使いの通貨で£10,000（英ポンド）
@@ -1091,7 +1103,9 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}町有�
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}他社の所有する道路上にドライブスルー型バス停/荷役所の設置を許可する：{ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}隣接した駅の建設を許容：{ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}複数の NewGRF エンジンセットを有効にする: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}車両があったら、この設定が使用できません
 
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}空港の購入可能期限がない： {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}列車が行方不明となった場合は通告：{ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}列車の指令をレビュー：{ORANGE}{STRING}
@@ -1221,6 +1235,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :改善の道路
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :格子状（2x2）
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :格子状（3x3）
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :ランダム
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}町は道路建設を許容： {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :なし {RED}(製剤所は使えなくなります)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :雨林の中だけ

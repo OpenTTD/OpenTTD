@@ -32,7 +32,7 @@ STR_CARGO_PLURAL_COAL                                           :Kul
 STR_CARGO_PLURAL_MAIL                                           :Post
 STR_CARGO_PLURAL_OIL                                            :Olie
 STR_CARGO_PLURAL_LIVESTOCK                                      :Kvæg
-STR_CARGO_PLURAL_GOODS                                          :Stykgods
+STR_CARGO_PLURAL_GOODS                                          :Gods
 STR_CARGO_PLURAL_GRAIN                                          :Korn
 STR_CARGO_PLURAL_WOOD                                           :Træ
 STR_CARGO_PLURAL_IRON_ORE                                       :Jernmalm
@@ -66,7 +66,7 @@ STR_CARGO_SINGULAR_COAL                                         :Kul
 STR_CARGO_SINGULAR_MAIL                                         :Post
 STR_CARGO_SINGULAR_OIL                                          :Olie
 STR_CARGO_SINGULAR_LIVESTOCK                                    :Kvæg
-STR_CARGO_SINGULAR_GOODS                                        :Stykgods
+STR_CARGO_SINGULAR_GOODS                                        :Gods
 STR_CARGO_SINGULAR_GRAIN                                        :Korn
 STR_CARGO_SINGULAR_WOOD                                         :Træ
 STR_CARGO_SINGULAR_IRON_ORE                                     :Jernmalm
@@ -732,7 +732,7 @@ STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Produkt
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Andre produktionsændringer for industri
 STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Råd / information om firmaets køretøjer
 STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Nye køretøjer
-STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Ændring i accepteret gods
+STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Ændring i accepteret fragt
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Tilskudsordninger
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Generel information
 
@@ -1301,7 +1301,7 @@ STR_CONFIG_SETTING_AI                                           :{ORANGE}Modstan
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Visningsindstillinger
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Brugerflade
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signaler
-STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Godshåndtering
+STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Fragthåndtering
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Computerstyrede spillere
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Auto-forny
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Servicering
@@ -2388,7 +2388,7 @@ STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Den ænd
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Toget '{VEHICLE}' fra firmaet '{COMPANY}' har ugyldig længde. Det skyldes sandsynligvis at problem med en NewGRF. Spillet går muligvis ned.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' indeholder forkert information.
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Gods-/ombygningsinformation for '{1:ENGINE}' afviger fra indkøbslisten efter konstruktion. Dette kan medføre, at autofornyelse ikke fungerer korrekt.
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Fragt-/ombygningsinformation for '{1:ENGINE}' afviger fra indkøbslisten efter konstruktion. Dette kan medføre, at autofornyelse ikke fungerer korrekt.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' forårsagede en uendelig løkke i produktions-callback'en.
 
 # Sign list window
@@ -2966,7 +2966,7 @@ STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Kapacite
 STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Kapacitet: {LTBLUE}{CARGO}{3:STRING} (x{4:NUM})
 STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Kapacitet: {LTBLUE}{CARGO}, {CARGO}{STRING}
 
-STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Værdi af overført gods: {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Værdi af overført fragt: {LTBLUE}{CURRENCY}
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Serviceinterval: {LTBLUE}{COMMA}dage{BLACK}   Sidste service: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Serviceinterval: {LTBLUE}{COMMA}%{BLACK}   Sidste service: {LTBLUE}{DATE_LONG}
@@ -3043,13 +3043,13 @@ STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Ændr st
 
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Vilkårlig fuld last
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Last hvis muligt
-STR_ORDER_DROP_FULL_LOAD_ALL                                    :Fuld last af alt gods
-STR_ORDER_DROP_FULL_LOAD_ANY                                    :Fuld last vilkårligt gods
+STR_ORDER_DROP_FULL_LOAD_ALL                                    :Fuld last af al fragt
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :Fuld last vilkårlig type fragt
 STR_ORDER_DROP_NO_LOADING                                       :Ingen last
 STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Ændr lasteregel for den valgte ordre
 
 STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Los alt
-STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Los hvis gods accepteres
+STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Los hvis fragt accepteres
 STR_ORDER_DROP_UNLOAD                                           :Aflæs alt
 STR_ORDER_DROP_TRANSFER                                         :Overfør
 STR_ORDER_DROP_NO_UNLOADING                                     :Ingen losning
@@ -3123,19 +3123,19 @@ STR_ORDER_STOP_ORDER                                            :(Stop)
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
 STR_ORDER_FULL_LOAD                                             :(Fuld last)
-STR_ORDER_FULL_LOAD_ANY                                         :(Fuld last vilkårligt gods)
+STR_ORDER_FULL_LOAD_ANY                                         :(Fuld last vilkårlig type fragt)
 STR_ORDER_NO_LOAD                                               :(Ingen last)
-STR_ORDER_UNLOAD                                                :(Los og medtag gods)
+STR_ORDER_UNLOAD                                                :(Los og medtag fragt)
 STR_ORDER_UNLOAD_FULL_LOAD                                      :(Los og vent på fuld last)
-STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Los og vent på fuld last af hvilket som helst gods)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Los og vent på fuld last af hvilken som helst type fragt)
 STR_ORDER_UNLOAD_NO_LOAD                                        :(Los og efterlad tom)
-STR_ORDER_TRANSFER                                              :(Overfør og last gods)
+STR_ORDER_TRANSFER                                              :(Overfør og last fragt)
 STR_ORDER_TRANSFER_FULL_LOAD                                    :(Overfør og vent på fuld last)
-STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Overfør og vent på fuld last af hvilket som helst gods)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Overfør og vent på fuld last af hvilken som helst type fragt)
 STR_ORDER_TRANSFER_NO_LOAD                                      :(Overfør og efterlad tom)
-STR_ORDER_NO_UNLOAD                                             :(Los ikke og last gods)
+STR_ORDER_NO_UNLOAD                                             :(Los ikke og last fragt)
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Los ikke og vent på fuld last)
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Los ikke og vent på fuld last af hvilket som helst gods)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Los ikke og vent på fuld last af hvilken som helst type fragt)
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[nærmeste ende]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[midten]
@@ -3765,7 +3765,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_MAIL_VAN                      :Postvogn
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COAL_CAR                      :Kulvogn
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_OIL_TANKER                    :Olievogn
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_LIVESTOCK_VAN                 :Kreaturvogn
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GOODS_VAN                     :Stykgodsvogn
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GOODS_VAN                     :Godsvogn
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GRAIN_HOPPER                  :Kornvogn
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WOOD_TRUCK                    :Trævogn
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_IRON_ORE_HOPPER               :Jernmalmsvogn
@@ -3795,7 +3795,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_MAIL_VAN                  :Postvogn
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COAL_CAR                  :Kulvogn
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_OIL_TANKER                :Olietank
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_LIVESTOCK_VAN             :Kreaturvogn
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GOODS_VAN                 :Stykgodsvogn
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GOODS_VAN                 :Godsvogn
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GRAIN_HOPPER              :Kornvogn
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WOOD_TRUCK                :Trævogn
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_IRON_ORE_HOPPER           :Jernmalmsvogn
@@ -3827,7 +3827,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_MAIL_VAN                    :Postvogn
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COAL_CAR                    :Kulvogn
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_OIL_TANKER                  :Olietank
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_LIVESTOCK_VAN               :Kreaturvogn
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GOODS_VAN                   :Stykgodsvogn
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GOODS_VAN                   :Godsvogn
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GRAIN_HOPPER                :Kornvogn
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WOOD_TRUCK                  :Trævogn
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_IRON_ORE_HOPPER             :Jernmalmsvogn
@@ -3871,9 +3871,9 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_OIL_TANKER                  :Perry Olietankb
 STR_VEHICLE_NAME_ROAD_VEHICLE_TALBOTT_LIVESTOCK_VAN             :Talbott Kreaturlastbil
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_LIVESTOCK_VAN                 :Uhl Kreaturlastbil
 STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_LIVESTOCK_VAN              :Foster Kreaturlastbil
-STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_GOODS_TRUCK                :Balogh Stykgodslastbil
-STR_VEHICLE_NAME_ROAD_VEHICLE_CRAIGHEAD_GOODS_TRUCK             :Craighead Stykgodslastbil
-STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GOODS_TRUCK                  :Goss Stykgodslastbil
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_GOODS_TRUCK                :Balogh Godslastbil
+STR_VEHICLE_NAME_ROAD_VEHICLE_CRAIGHEAD_GOODS_TRUCK             :Craighead Godslastbil
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GOODS_TRUCK                  :Goss Godslastbil
 STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_GRAIN_TRUCK              :Hereford Kornlastbil
 STR_VEHICLE_NAME_ROAD_VEHICLE_THOMAS_GRAIN_TRUCK                :Thomas Kornlastbil
 STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GRAIN_TRUCK                  :Goss Kornlastbil

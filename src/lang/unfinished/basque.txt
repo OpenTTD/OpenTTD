@@ -876,9 +876,17 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :12 hilabetero
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Hizkuntza
 
+STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Pantaila osoa
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Markatu kaxa hau OpenTTD pantaila osoko moduan jolasteko
 
+STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Pantailaren resoluzioa
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Pantailaren resulozioa aukeratu
 
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Screenshot formatua
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Screenshot-aren formatua aukeratu
 
+STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Grafiko basea markatu
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Markatutako grafiko basearen informazio gehiago
 
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Base musika konfiguratu

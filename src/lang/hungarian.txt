@@ -975,7 +975,7 @@ STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Válaszd
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Grafikus alapcsomag
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Válaszd ki melyik alap grafikai beállítást szeretnéd használni
-STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} hiányzó/hibás fájl{P "" ok}
+STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} hiányzó/hibás fájl
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}További információk az alap grafikai beállításokról
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Hang alapcsomag

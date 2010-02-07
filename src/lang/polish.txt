@@ -1495,6 +1495,10 @@ STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Pozwól
 STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Niejednolite stacje: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Mnożnik wagi dla symulacji ciężkich pociągów towarowych: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Współczynnik prędkości samolotu: {ORANGE}1 / {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Liczba katastrof lotniczych: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :żaden
+STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :zredukowany
+STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normalny
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Pozwól na budowę przystanków typu ro-ro na drogach miejskich: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Pozwól na przejazd przez przystanki należące do przeciwników: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Pozwól na budowę stacji przyległych do stacji przeciwnika (z Ctrl){ORANGE}{STRING}
@@ -3590,6 +3594,8 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Wybierz 
 STR_AI_DEBUG                                                    :{WHITE}Odpluskwianie SI
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Nazwa SI
+STR_AI_DEBUG_SETTINGS                                           :{BLACK}Ustawienia SI
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Zmień ustawienia SI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Przeładuj SI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Zabij SI, przeładuj skrypt i zrestartuj SI
 
