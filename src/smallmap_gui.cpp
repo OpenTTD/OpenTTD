@@ -254,14 +254,6 @@ static const AndOr _smallmap_vehicles_andor[] = {
 	{MKCOLOUR(0x00D7D700), MKCOLOUR(0xFF0000FF)},
 };
 
-/**
- * Function signature of the function to retrieve the colour data of a tile for display at the smallmap.
- * @param tile Tile that gets displayed.
- * @param t    Effective tile type of the tile (see #GetEffectiveTileType).
- * @return Colour data to display.
- */
-typedef uint32 GetSmallMapPixels(TileIndex tile, TileType t);
-
 /** Mapping of tile type to importance of the tile (higher number means more interesting to show). */
 static const byte _tiletype_importance[] = {
 	2, // MP_CLEAR
@@ -430,18 +422,6 @@ static inline uint32 GetSmallMapOwnerPixels(TileIndex tile, TileType t)
 	return _owner_colours[o];
 }
 
-/* Each tile has 4 x pixels and 1 y pixel */
-
-/** Holds function pointers to determine tile colour in the smallmap for each smallmap mode. */
-static GetSmallMapPixels * const _smallmap_draw_procs[] = {
-	GetSmallMapContoursPixels,
-	GetSmallMapVehiclesPixels,
-	GetSmallMapIndustriesPixels,
-	GetSmallMapRoutesPixels,
-	GetSmallMapVegetationPixels,
-	GetSmallMapOwnerPixels,
-};
-
 /** Vehicle colours in #SMT_VEHICLES mode. Indexed by #VehicleTypeByte. */
 static const byte _vehicle_type_colours[6] = {
 	184, 191, 152, 15, 215, 184
@@ -584,11 +564,10 @@ class SmallMapWindow : public Window {
 
 	/**
 	 * Decide which colours to show to the user for a group of tiles.
-	 * @param ta   Tile area to investigate.
-	 * @param proc Pointer to the colour function.
+	 * @param ta Tile area to investigate.
 	 * @return Colours to display.
 	 */
-	inline uint32 GetTileColours(const TileArea &ta, GetSmallMapPixels *proc) const
+	inline uint32 GetTileColours(const TileArea &ta) const
 	{
 		int importance = 0;
 		TileIndex tile = INVALID_TILE; // Position of the most important tile.
@@ -602,7 +581,28 @@ class SmallMapWindow : public Window {
 				et = ttype;
 			}
 		}
-		return proc(tile, et);
+
+		switch (this->map_type) {
+			case SMT_CONTOUR:
+				return GetSmallMapContoursPixels(tile, et);
+
+			case SMT_VEHICLES:
+				return GetSmallMapVehiclesPixels(tile, et);
+
+			case SMT_INDUSTRY:
+				return GetSmallMapIndustriesPixels(tile, et);
+
+			case SMT_ROUTES:
+				return GetSmallMapRoutesPixels(tile, et);
+
+			case SMT_VEGETATION:
+				return GetSmallMapVegetationPixels(tile, et);
+
+			case SMT_OWNER:
+				return GetSmallMapOwnerPixels(tile, et);
+
+			default: NOT_REACHED();
+		}
 	}
 
 	/**
@@ -616,11 +616,10 @@ class SmallMapWindow : public Window {
 	 * @param start_pos Position of first pixel to draw.
 	 * @param end_pos Position of last pixel to draw (exclusive).
 	 * @param blitter current blitter
-	 * @param proc Pointer to the colour function
 	 * @note If pixel position is below \c 0, skip drawing.
 	 * @see GetSmallMapPixels(TileIndex)
 	 */
-	void DrawSmallMapColumn(void *dst, uint xc, uint yc, int pitch, int reps, int start_pos, int end_pos, Blitter *blitter, GetSmallMapPixels *proc) const
+	void DrawSmallMapColumn(void *dst, uint xc, uint yc, int pitch, int reps, int start_pos, int end_pos, Blitter *blitter) const
 	{
 		void *dst_ptr_abs_end = blitter->MoveTo(_screen.dst_ptr, 0, _screen.height);
 		uint min_xy = _settings_game.construction.freeform_edges ? 1 : 0;
@@ -644,7 +643,7 @@ class SmallMapWindow : public Window {
 			}
 			ta.ClampToMap(); // Clamp to map boundaries (may contain MP_VOID tiles!).
 
-			uint32 val = this->GetTileColours(ta, proc);
+			uint32 val = this->GetTileColours(ta);
 			uint8 *val8 = (uint8 *)&val;
 			int idx = max(0, -start_pos);
 			for (int pos = max(0, start_pos); pos < end_pos; pos++) {
@@ -823,7 +822,7 @@ class SmallMapWindow : public Window {
 				int end_pos = min(dpi->width, x + 4);
 				int reps = (dpi->height - y + 1) / 2; // Number of lines.
 				if (reps > 0) {
-					this->DrawSmallMapColumn(ptr, tile_x, tile_y, dpi->pitch * 2, reps, x, end_pos, blitter, _smallmap_draw_procs[this->map_type]);
+					this->DrawSmallMapColumn(ptr, tile_x, tile_y, dpi->pitch * 2, reps, x, end_pos, blitter);
 				}
 			}
 
