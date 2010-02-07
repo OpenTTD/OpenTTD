@@ -42,6 +42,7 @@ NetworkClientSocket::~NetworkClientSocket()
 		this->command_queue = p;
 	}
 
+	if (_redirect_console_to_client == this->client_id) _redirect_console_to_client = INVALID_CLIENT_ID;
 	this->client_id = INVALID_CLIENT_ID;
 	this->status = STATUS_INACTIVE;
 }
