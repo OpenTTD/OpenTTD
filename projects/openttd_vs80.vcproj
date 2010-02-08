@@ -1188,6 +1188,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\newgrf_railtype.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\newgrf_sound.h"
 				>
 			</File>
@@ -3193,6 +3197,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\newgrf_industrytiles.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\newgrf_railtype.cpp"
 				>
 			</File>
 			<File
