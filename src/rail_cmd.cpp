@@ -2230,8 +2230,9 @@ static void DrawTile_Track(TileInfo *ti)
 void DrawTrainDepotSprite(int x, int y, int dir, RailType railtype)
 {
 	const DrawTileSprites *dts = &_depot_gfx_table[dir];
-	SpriteID image = dts->ground.sprite;
-	uint32 offset = GetRailTypeInfo(railtype)->total_offset;
+	const RailtypeInfo *rti = GetRailTypeInfo(railtype);
+	SpriteID image = rti->UsesOverlay() ? SPR_FLAT_GRASS_TILE : dts->ground.sprite;
+	uint32 offset = rti->total_offset;
 
 	x += 33;
 	y += 17;
@@ -2240,6 +2241,20 @@ void DrawTrainDepotSprite(int x, int y, int dir, RailType railtype)
 	PaletteID palette = COMPANY_SPRITE_COLOUR(_local_company);
 
 	DrawSprite(image, PAL_NONE, x, y);
+
+	if (rti->UsesOverlay()) {
+		SpriteID ground = GetCustomRailSprite(rti, INVALID_TILE, RTSG_GROUND);
+
+		switch (dir) {
+			case DIAGDIR_SW: DrawSprite(ground + RTO_X, PAL_NONE, x, y); break;
+			case DIAGDIR_SE: DrawSprite(ground + RTO_Y, PAL_NONE, x, y); break;
+			default: break;
+		}
+
+		offset  = GetCustomRailSprite(rti, INVALID_TILE, RTSG_DEPOT);
+		offset -= SPR_RAIL_DEPOT_SE_1;
+	}
+
 	DrawRailTileSeqInGUI(x, y, dts, offset, 0, palette);
 }
 
