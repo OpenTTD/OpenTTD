@@ -1295,7 +1295,7 @@ STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Ŝarĝu 
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Startu novan ludon, uzante altecmapon por landaspekto
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Komencu novan ludon per propra scenaro
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Kreu mem ludmondon/scenaron
-STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Komencu ludon pluropan ludantoj
+STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Komencu plurludantan ludon
 
 STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}Elektu 'moderan' landstilon
 STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Elektu 'sub-arktikan' landstilon
@@ -1340,12 +1340,12 @@ STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magia f
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tuneloj rajtas kruciĝi unu kun la alia: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Konstruado eblas dum paŭzo: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Jet-aviadiloj ne kraŝos (frekvente) sur etaj flughavenoj: {ORANGE} {STRING}
-STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Ŝanĝu klimaton: {ORANGE} {STRING}
+STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Ŝanĝu klimaton: {ORANGE}{STRING}
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Modera landaspekto
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Arktikeca landaspekto
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Tropikeca landaspekto
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Ludolandaspekto
-STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Ŝanĝu daton: {ORANGE} {DATE_SHORT}
+STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Ŝanĝu daton: {ORANGE}{DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Ebligu ŝanĝi produktvalorojn: {ORANGE}{STRING}
 
 # Livery window
@@ -1589,7 +1589,7 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Kompanio
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Klientlisto
 STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Spekti
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nova Kompanio
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nova kompanio
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Forbatu
@@ -1813,8 +1813,8 @@ STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Elektu g
 
 STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Malgranda flughaveno
 STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}Urba flughaveno
-STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Ĉefurba flughaveno
-STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Internacia flughaveno
+STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Ĉefurba
+STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Internacia
 STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Urbeta flughaveno
 STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Interkontinenta
 STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Helikopterejo

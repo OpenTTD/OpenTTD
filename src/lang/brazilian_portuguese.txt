@@ -230,6 +230,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Renomear
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Fecha janela
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Título da janela - arraste para mover a janela
+STR_TOOLTIP_SHADE                                               :{BLACK}Esmaecer janela - Mostra apenas a barra de título
 STR_TOOLTIP_STICKY                                              :{BLACK}Marcar esta janela para não fechar pela tecla 'Fechar Todas as Janelas'
 STR_TOOLTIP_RESIZE                                              :{BLACK}Clique e arraste para redimensionar a janela
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Alternar entre janela grande/pequena
@@ -315,6 +316,7 @@ STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Abra a b
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Exibe janela som/música
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Exibe a última mensagem/notícia, exibir opções de mensagens
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informações sobre o terreno, console, Debug da IA, screenshots, sobre OpenTTD
+STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Trocar a barra de ferramentas
 
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Salvar cenário, abrir cenário, abandonar editor de cenário, sair
@@ -369,6 +371,7 @@ STR_MAP_MENU_SIGN_LIST                                          :Lista de placas
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Lista de cidades
 ############ end of the 'Display map' dropdown
+STR_TOWN_MENU_FOUND_TOWN                                        :Cidade encontrada
 ############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
@@ -562,8 +565,8 @@ STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total:
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Número de veículos que deram lucro ano passado : Incluindo automóveis, trens, embarcações e aeronaves.
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Número de segmentos de estação. Cada parte de uma estação (ex. estação ferroviária, estação de ônibus, aeroporto) é contado, mesmo se eles unidos como uma estação só.
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}O lucro do veículo com o menor rendimento (de todos os veículos com mais de 2 anos)
-STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Dinheiro conseguido no mês com os lucros mais baixos dos últimos 12 trimestres
-STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Dinheiro conseguido no mês com os lucros mais altos dos últimos 12 trimestres
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Dinheiro conseguido no trimestre com os lucros mais baixos dos últimos 12 trimestres
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Dinheiro conseguido no trimestre com os lucros mais altos dos últimos 12 trimestres
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Unidades de carga entregues nos últimos 4 trimestres.
 STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Tipos de carga entregues no último trimestre.
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Dinheiro 'em mãos'
@@ -580,6 +583,9 @@ STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}{BLAC
 STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}{BLACK}Personaliz. 2
 STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}Volume da Música
 STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Volume dos efeitos
+STR_MUSIC_RULER_MIN                                             :{TINYFONT}{BLACK}MIN
+STR_MUSIC_RULER_MAX                                             :{TINYFONT}{BLACK}MAX
+STR_MUSIC_RULER_MARKER                                          :{TINYFONT}{BLACK}'
 STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINYFONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
@@ -602,6 +608,7 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Selecion
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Alternar exibir/ocultar programação aleatória
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Exibe a janela de seleção de faixas de música
 
+STR_ERROR_NO_SONGS                                              :{WHITE}Um set de músicas sem músicas foi selecionado. Nenhuma música será tocada
 
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Programação Musical
@@ -687,6 +694,10 @@ STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRI
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Desativar tudo
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Ativar tudo
+STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Mostra altitudes
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL                                :{BLACK}Não mostrar nenhuma indústria no mapa
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL                                 :{BLACK}Mostrar todas as indústrias no mapa
+STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Alterna a exibição do mapa de altitudes
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Exibe a última mensagem ou notícia
@@ -759,6 +770,7 @@ STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} foi comprada por {STRING}!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Presidente)
 
+STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}{STRING} patrocinou a construção da cidade {TOWN}!
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Nov{G o a} {STRING} em construção em {TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Nov{G o a} {STRING} sendo plantada em {TOWN}!
@@ -937,6 +949,10 @@ STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Set de s
 STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Selecione o set de gráficos a ser utilizado
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Informações sobr o set de sons base
 
+STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Set de músicas base
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Selecione o set de músicas a ser usado
+STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} arquivo corrompido{P "" s}
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Info. adicional sobre o set de músicas base
 
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Falha no modo de tela cheia
 
@@ -1005,6 +1021,12 @@ STR_NUM_NORMAL                                                  :Normal
 STR_NUM_HIGH                                                    :Alto
 STR_NUM_CUSTOM                                                  :Personalizado
 
+STR_VARIETY_NONE                                                :Nenhum
+STR_VARIETY_VERY_LOW                                            :Muito Baixo
+STR_VARIETY_LOW                                                 :Baixo
+STR_VARIETY_MEDIUM                                              :Médio
+STR_VARIETY_HIGH                                                :Alto
+STR_VARIETY_VERY_HIGH                                           :Muito Alto
 
 STR_AI_SPEED_VERY_SLOW                                          :Muito Lento
 STR_AI_SPEED_SLOW                                               :Lento
@@ -1044,6 +1066,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Permissivo
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerante
 STR_CITY_APPROVAL_HOSTILE                                       :Hostil
 
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Não há IA compatíveis disponíveis...{}Você pode baixar várias IA's pelo sistema de 'Conteúdo Online'
 STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Essa ação mudou o nível de dificuldade para personalizado
 
 # Advanced settings window
@@ -1061,7 +1084,8 @@ STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Permiti
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Sistema de aceleração de trens: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Original
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realista
-STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Proibir trens e embarcações girar em angulos de 90 graus: {ORANGE}{STRING} {LTBLUE} (requer NPF)
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Inclinação do terreno para trens{ORANGE}{STRING}%
+STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Proibir trens e embarcações girar em angulos de 90 graus: {ORANGE}{STRING} {LTBLUE} (indisp. com OPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Unir estações ferroviárias construídas juntas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Permitie unir estações não adjacentes: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Usar algoritmo de carregamento melhorado: {ORANGE}{STRING}
@@ -1092,6 +1116,10 @@ STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Permiti
 STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Estações não uniformes: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Multiplicador de peso para trens simulando trens pesados: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Fator de velocidade para aeronaves: {ORANGE}1 / {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Número de acidentes de avião: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :nenhum
+STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :reduzido
+STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normal
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Permitir estações drive-through em ruas locais: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Permitir estações drive-through nas ruas de outros competidores: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Permitir construção de estações adjacentes: {ORANGE}{STRING}
@@ -1215,6 +1243,7 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Noticia
 STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Data de início: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Ativar economia regular (alterações menores): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Permite comprar ações de outras empresas: {ORANGE}{STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Porcentagem do lucro da viagem a ser pago em sist. de baldeação: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Ao arrastar colocar sinais a cada: {ORANGE}{STRING} quadrado(s)
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Construir sinaleiros até: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Ativar interface de sinais: {ORANGE}{STRING}
@@ -1236,6 +1265,10 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :random
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Permitir cidades construir novas ruas?: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Permitir controle de ruído de aeronaves pelas cidades: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}Posicionamento de árvores: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :nenhum {RED}(extingue a serraria)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :apenas nas florestas tropicais
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :em todo o lugar
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Posição da barra de ferramentas principal: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Esquerda
@@ -1427,7 +1460,7 @@ STR_FACE_FACECODE                                               :{BLACK}Número 
 STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Ver e/ou alterar número da face do jogador
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}Ver e/ou alterar número da face do jogador
 STR_FACE_FACECODE_SET                                           :{WHITE}Novo código de número da face face foi alterado
-STR_FACE_FACECODE_ERR                                           :{WHITE}Não pode alterar o número de face do jogador  precisa ser um número entre 0 e 4,294,967,295!
+STR_FACE_FACECODE_ERR                                           :{WHITE}Não pôde alterar o número de face do jogador - precisa ser um número entre 0 e 4,294,967,295!
 STR_FACE_SAVE                                                   :{BLACK}Salvar
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Salvar face favorita
 STR_FACE_SAVE_DONE                                              :{WHITE}Este rosto irá ser salvo como seu rosto favorito no arquivo de configuração do OpenTTD.
@@ -1759,7 +1792,7 @@ STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Você s
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Esse dependente será baixado
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Você já baixou isso
 STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Esse conteúdo é desconhecido e não pode ser baixado pelo OpenTTD
-STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Isso substitui  {STRING}
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Isso substitui {STRING}
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}Nome: {WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Versão: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Descrição: {WHITE}{STRING}
@@ -1780,6 +1813,7 @@ STR_CONTENT_TYPE_AI_LIBRARY                                     :IA's disponíve
 STR_CONTENT_TYPE_SCENARIO                                       :Cenário
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Mapa de altitudes
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Sons padrão
+STR_CONTENT_TYPE_BASE_MUSIC                                     :Músicsas padrão
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Baixando conteúdo...
@@ -1966,8 +2000,8 @@ STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Selecion
 
 STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Pequeno
 STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}Cidade
-STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Aeroportos Metropolitanos
-STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Aeroporto Internacional
+STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Metropolitano
+STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Internacional
 STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Viajante
 STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Intercontinental
 STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Heliporto
@@ -2207,6 +2241,7 @@ STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algorít
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tipo de terreno
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Nível do mar:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Regularidade
+STR_MAPGEN_VARIETY                                              :{BLACK}Distribuição da variedade
 STR_MAPGEN_GENERATE                                             :{WHITE}Gerar
 
 # Strings for map borders at game generation
@@ -2306,6 +2341,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Atenção: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Erro: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Erro Fatal: {SILVER}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Um erro de NewGRF fatal ocorreu: {}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} não irá funcionar com a versão do TTDPatch encontrada pelo OpenTTD.
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} funciona na versão {STRING} de TTD.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} é projetado para ser usado com {STRING}
@@ -2321,6 +2357,7 @@ STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Propriedade Aç
 STR_NEWGRF_ERROR_INVALID_ID                                     :Tentativa de usar ID inválido.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} contém um sprite corrupto. Todos os sprites corruptos serão exibidos como um "?" vermelho.
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Contém 8 entradas de Ação múltipla.
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Continuar lendo após o fim do pseudo-sprite
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Cuidado!
@@ -2329,7 +2366,7 @@ STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Você e
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Impossível adicionar: registro de GRF já existe
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Arquivo procurado não encontrado (carregado compatível com GRF)
 
-STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Carregado compativel com GRF(s)  por falta de arquivo
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}GRG(s) compatível(eis) carregados para os arquivos que faltam
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}arquivo(s) GRF em falta foram desativados
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Arquivo(s) GRF faltantes
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Despausar pode travar OpenTTD. Não envie relatórios de erros sobre travas subsequentes.{}Você realmente quer despausar?
@@ -2368,6 +2405,7 @@ STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Passagei
 STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Cartas no mês passado: {ORANGE}{COMMA}{BLACK}  máx: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Carga necessária para prover o crescimento:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{STRING}{BLACK} necessário(a)
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} necessário no inverno
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{ORANGE}{CARGO}{BLACK} entregue no mes passado
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Limite de ruído na cidade: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centralizar visualização na cidade. Ctrl+Clique abre uma nova janela de visualização
@@ -3134,7 +3172,10 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Preenche
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}Debug da IA
+STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Nome da IA
+STR_AI_DEBUG_SETTINGS                                           :{BLACK}Config. da IA
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Mudar as config. da IA
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Recarregar IA
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Desativar a IA, recarregar o script e religar a IA
 
@@ -3148,6 +3189,10 @@ STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}Todas as
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Jogador Humano
 STR_AI_CONFIG_RANDOM_AI                                         :IA Randômica
 
+STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Subir
+STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Move a IA selecionada para cima na lista
+STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Descer
+STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Move a IA selecionada para baixo na lista
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}Selecionar IA
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Carregar outra IA

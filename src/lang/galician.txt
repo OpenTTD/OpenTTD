@@ -252,10 +252,11 @@ STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Lonxitud
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Área: {NUM} x {NUM}{}Diferencia de altura: {NUM} m
 
 
-# The first three are also used as 'Sort by' buttons, the rest only in dropdowns
+# These are used in buttons
 STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Poboación
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Nome
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Data
+# These are used in dropdowns
 STR_SORT_BY_PRODUCTION                                          :Producción
 STR_SORT_BY_TYPE                                                :Tipo
 STR_SORT_BY_TRANSPORTED                                         :Transportado
@@ -361,7 +362,8 @@ STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Fiestra Extra
 STR_MAP_MENU_SIGN_LIST                                          :Lista de sinais
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Directorio de cidades
-############ both ranges ends here
+############ end of the 'Display map' dropdown
+############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsidios
@@ -593,6 +595,7 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Seleccio
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Activar/desactivar programa aleatorio
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Mostra-la pista musical na fiestra de selección
 
+
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Selección do Programa de Música
 STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
@@ -677,6 +680,7 @@ STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRI
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Desactivar todo
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Activar todo
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL                                 :{BLACK}Mostrar tódalas industrias no mapa
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Amosa-la última mesaxe ou noticia
@@ -748,6 +752,7 @@ STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}¡{STRING} comeza a construción cerca de {TOWN}!
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}¡{STRING} comprada por {STRING}!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Presidente)
+
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}¡Nova {STRING} en construción cerca de {TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}¡Nova {STRING} cerca de {TOWN}!
@@ -922,6 +927,7 @@ STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} arqu
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Información adicional sobre o conxunto de gráficos básico
 
 
+
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}O modo de pantalla completa fallou
 
 # Custom currency window
@@ -988,6 +994,7 @@ STR_NUM_LOW                                                     :Baixo
 STR_NUM_NORMAL                                                  :Normal
 STR_NUM_HIGH                                                    :Alto
 STR_NUM_CUSTOM                                                  :Persoalizado
+
 
 STR_AI_SPEED_VERY_SLOW                                          :Moi Lento
 STR_AI_SPEED_SLOW                                               :Lento
@@ -1072,6 +1079,10 @@ STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Permiti
 STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Estacións non uniformes: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Multiplicador de peso para carga para simular trens pesados: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Factor de velocidad dos avións: {ORANGE}1 / {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Nº de accidentes de avión: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :ningún
+STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :reducido
+STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normal
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Permiti-la construción de estacións pasantes nas rúas das cidades: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Permiti-la construción de estacións contiguas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Activar motor para múltiples NewGRF: {ORANGE}{STRING}
@@ -1207,6 +1218,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :Reixa 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :aleatorio
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Permitir ás poboacións construír estradas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Permitir á cidade controla-lo nivel de ruído dos aeroportos: {ORANGE}{STRING}
+
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Posición da barra de ferramentas principal: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Esquerda
@@ -1980,6 +1992,8 @@ STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Constru�
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Moitas cidades aleatorias
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Cubri-lo mapa con cidades colocadas aleatoriamente
 
+STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Nome aleatorio
+
 STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}Tamaño da cidade:
 STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}Pequeno
 STR_FOUND_TOWN_INITIAL_SIZE_MEDIUM_BUTTON                       :{BLACK}Mediano
@@ -2304,6 +2318,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Escribe 
 
 # Town directory window
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Cidades
+STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Ningunha -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Nomes de cidades - pincha no nome para centra-la vista principal na cidade
 STR_TOWN_POPULATION                                             :{BLACK}Poboación mundial: {COMMA}
@@ -2412,6 +2427,7 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Mostrar 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Renomear estación/área de carga
 
 # Waypoint/buoy view window
+STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Cambia lo nome do punto de ruta
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Cambiar o nome da boia
 
@@ -2487,6 +2503,7 @@ STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Buscamos
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industrias
+STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Ningunha -
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% transportado)
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% transportado)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
@@ -2714,6 +2731,7 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :locomotora de m
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :locomotora de maglev
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Custo: {CURRENCY} Peso: {WEIGHT_S}{}Velocidade: {VELOCITY}  Potencia: {POWER}{}Custo de Mantemento: {CURRENCY}/ano{}Capacidade: {CARGO}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Coste: {CURRENCY} Peso: {WEIGHT_S}{}Velocidade: {VELOCITY}  Potencia: {POWER}  Máx. T.E.: {6:FORCE}{}Mantemento: {4:CURRENCY}/a{}Capacidade: {5:CARGO}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Custo: {CURRENCY} Velocidade Máx.: {VELOCITY}{}Capacidade: {CARGO}, {CARGO}{}Custo Mantemento: {CURRENCY}/ano
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Custo: {CURRENCY} Velocidade Máx.: {VELOCITY}{}Capacidade: {CARGO}{}Custo Mantemento: {CURRENCY}/ano
 
@@ -2851,6 +2869,7 @@ STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Benefici
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Fiabilidade: {LTBLUE}{COMMA}%  {BLACK}Roturas desde o último servizo: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Construído: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Capacidade: {LTBLUE}Ningunha
 STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Capacidade: {LTBLUE}{CARGO}{3:STRING}
 STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Capacidade: {LTBLUE}{CARGO}{3:STRING} (x{4:NUM})
 STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Capacidade: {LTBLUE}{CARGO}, {CARGO}{STRING}
@@ -2916,6 +2935,8 @@ STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Horario
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Cambiar á vista de horarios
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Lista de Ordes - Pincha nunha orde para seleccionala
+STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
+STR_ORDER_TEXT                                                  :{STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Fin das Ordes - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Fin das ordes compartidas - -
@@ -3053,6 +3074,9 @@ STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Este hor
 STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Este vehículo está actualmente en tempo
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Este vehículo está retrasado {STRING}
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Este vehículo vai adiantado {STRING}
+STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Este horario comezará o {STRING}
+
+STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Data comezo
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Cambiar Tempo
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Cambia-la cantidade de tempo que debería levar a orde seleccionada
@@ -3066,9 +3090,26 @@ STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reinicia
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autoencher
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Enche-lo horario automáticamente cos valores da seguinte viaxe (CTRL+Click para intentar mante-los tempos de espera)
 
+STR_TIMETABLE_EXPECTED                                          :{BLACK}Esperado
+
+STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :C:
+STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :S:
+
+
+# Date window (for timetable)
+STR_DATE_CAPTION                                                :{WHITE}Establecer data
+STR_DATE_SET_DATE                                               :{BLACK}Establecer data
+STR_DATE_DAY_TOOLTIP                                            :{BLACK}Selecciona día
+STR_DATE_MONTH_TOOLTIP                                          :{BLACK}Selecciona mes
+STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Selecciona ano
+
+
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}Depuración IA
+STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Nome da IA
+STR_AI_DEBUG_SETTINGS                                           :{BLACK}Configuración IA
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Cambia-la configuración da IA
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Recargar IA
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Mata-la IA, recargar o script, e reinicia-la IA
 
@@ -3080,6 +3121,7 @@ STR_AI_CONFIG_CAPTION                                           :{WHITE}Configur
 STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}Tódalas IA que se cargarán na próxima partida
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Xogador humano
 STR_AI_CONFIG_RANDOM_AI                                         :IA Aleatoria
+
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}IA seleccionada
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Cargar outra IA
@@ -3401,8 +3443,8 @@ STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Non se p
 
 STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}No se pode construí-lo vehículo de ferrocarril...
 STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}No se pode construí-lo vehículo de estrada...
-STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Non se construí-lo barco...
-STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Non se pode construí-lo avíon...
+STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Non se pode comprar o barco...
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Non se pode comprar o avión...
 
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Non se pode renomea-lo tipo de vehículo de ferrocarril...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Non se pode renomea-lo tipo de vehículo de estrada...
@@ -3444,12 +3486,12 @@ STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Non se p
 STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Non se pode salta-la orde actual...
 STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Non se pode salta-la orde seleccionada...
 STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}o vehículo non pode ir a tódalas estacións
-STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}o vehículo non pode ir a esa estación
-STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}un vehículo que comparte esta orde non pode ir a esa estación
+STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... o vehículo non pode ir a esa estación
+STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... un vehículo que comparte esta orde non pode ir a esa estación
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Non se pode comparti-la lista de ordes...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Non se pode copia-la lista de ordes...
-STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...demasiado lonxe do destino anterior
+STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... demasiado lonxe do destino anterior
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Non se pode axusta-lo horario do vehículo...
@@ -3457,7 +3499,7 @@ STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Os vehí
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Este vehículo non para nesta estación.
 
 # Sign related errors
-STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}...demasiados sinais
+STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... demasiados sinais
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Non se pode situa-lo sinal aí...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Non se pode cambia-lo nome do sinal...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Non se pode borra-lo sinal...
@@ -3898,6 +3940,7 @@ STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
 STR_JUST_DATE_LONG                                              :{DATE_LONG}
 STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_STRING_SPACE_STRING                                    :{STRING} {STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
@@ -3915,13 +3958,16 @@ STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LO
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}
 STR_TINY_GROUP                                                  :{TINYFONT}{GROUP}
+STR_BLACK_INT                                                   :{BLACK}{NUM}
+STR_ORANGE_INT                                                  :{ORANGE}{NUM}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
 STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
+STR_GREEN_STRING                                                :{GREEN}{STRING}
+STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
-
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
 STR_BLACK_1                                                     :{BLACK}1
@@ -3937,4 +3983,3 @@ STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
-
