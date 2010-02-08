@@ -22,7 +22,7 @@
 
 enum {
 	CLEAN_RANDOMSOUNDS,    ///< Free the dynamically allocated sounds table
-	CLEAN_TILELSAYOUT,     ///< Free the dynamically allocated tile layout structure
+	CLEAN_TILELAYOUT,      ///< Free the dynamically allocated tile layout structure
 };
 
 enum IndustryLifeType {

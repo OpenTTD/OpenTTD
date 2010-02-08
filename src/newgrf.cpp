@@ -5668,7 +5668,7 @@ static void ResetCustomIndustries()
 				}
 
 				/* We need to remove the tiles layouts */
-				if (HasBit(ind->cleanup_flag, CLEAN_TILELSAYOUT) && ind->table != NULL) {
+				if (HasBit(ind->cleanup_flag, CLEAN_TILELAYOUT) && ind->table != NULL) {
 					for (int j = 0; j < ind->num_table; j++) {
 						/* remove the individual layouts */
 						free((void*)ind->table[j]);
