@@ -63,6 +63,7 @@
 #include "ship.h"
 #include "company_base.h"
 #include "engine_base.h"
+#include "smallmap_gui.h"
 
 #include "void_map.h"
 #include "station_base.h"
@@ -655,6 +656,18 @@ static bool PopulationInLabelActive(int32 p1)
 static bool RedrawScreen(int32 p1)
 {
 	MarkWholeScreenDirty();
+	return true;
+}
+
+/**
+ * Redraw the smallmap after a colour scheme change.
+ * @param p1 Callback parameter.
+ * @return Always true.
+ */
+static bool RedrawSmallmap(int32 p1)
+{
+	BuildLandLegend();
+	SetWindowClassesDirty(WC_SMALLMAP);
 	return true;
 }
 

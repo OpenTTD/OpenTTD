@@ -1256,6 +1256,7 @@ static SettingEntry _settings_ui_display[] = {
 	SettingEntry("gui.liveries"),
 	SettingEntry("gui.show_track_reservation"),
 	SettingEntry("gui.expenses_layout"),
+	SettingEntry("gui.smallmap_land_colour"),
 };
 /** Display options sub-page */
 static SettingsPage _settings_ui_display_page = {_settings_ui_display, lengthof(_settings_ui_display)};

@@ -7,12 +7,13 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file smallmap_gui.h Smallmap GUI functions, used at newgrf.cpp and toolbar_gui.cpp. */
+/** @file smallmap_gui.h Smallmap GUI functions. */
 
 #ifndef SMALLMAP_GUI_H
 #define SMALLMAP_GUI_H
 
 void BuildIndustriesLegend();
 void ShowSmallMap();
+void BuildLandLegend();
 
 #endif /* SMALLMAP_GUI_H */

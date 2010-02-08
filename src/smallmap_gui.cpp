@@ -56,6 +56,8 @@ static int _smallmap_industry_count; ///< Number of used industries
 
 /** Macro for ordinary entry of LegendAndColour */
 #define MK(a, b) {a, b, INVALID_INDUSTRYTYPE, true, false, false}
+/** Macro for an entry with configurable colour. */
+#define MC(b) MK(0, b)
 /** Macro for end of list marker in arrays of LegendAndColour */
 #define MKEND() {0, STR_NULL, INVALID_INDUSTRYTYPE, true, true, false}
 /** Macro for break marker in arrays of LegendAndColour.
@@ -73,12 +75,13 @@ struct LegendAndColour {
 };
 
 /** Legend text giving the colours to look for on the minimap */
-static const LegendAndColour _legend_land_contours[] = {
-	MK(0x5A, STR_SMALLMAP_LEGENDA_100M),
-	MK(0x5C, STR_SMALLMAP_LEGENDA_200M),
-	MK(0x5E, STR_SMALLMAP_LEGENDA_300M),
-	MK(0x1F, STR_SMALLMAP_LEGENDA_400M),
-	MK(0x27, STR_SMALLMAP_LEGENDA_500M),
+static LegendAndColour _legend_land_contours[] = {
+	/* The colours for the following values are set at BuildLandLegend() based on each colour scheme. */
+	MC(STR_SMALLMAP_LEGENDA_100M),
+	MC(STR_SMALLMAP_LEGENDA_200M),
+	MC(STR_SMALLMAP_LEGENDA_300M),
+	MC(STR_SMALLMAP_LEGENDA_400M),
+	MC(STR_SMALLMAP_LEGENDA_500M),
 
 	MS(0xD7, STR_SMALLMAP_LEGENDA_ROADS),
 	MK(0x0A, STR_SMALLMAP_LEGENDA_RAILROADS),
@@ -136,6 +139,7 @@ static const LegendAndColour _legend_land_owners[] = {
 	MKEND()
 };
 #undef MK
+#undef MC
 #undef MS
 #undef MKEND
 
@@ -188,10 +192,8 @@ static const LegendAndColour * const _legend_table[] = {
 
 #define MKCOLOUR(x) TO_LE32X(x)
 
-/**
- * Height encodings; MAX_TILE_HEIGHT + 1 levels, from 0 to MAX_TILE_HEIGHT
- */
-static const uint32 _map_height_bits[] = {
+/** Height map colours for the green colour scheme, ordered by height. */
+static const uint32 _green_map_heights[] = {
 	MKCOLOUR(0x5A5A5A5A),
 	MKCOLOUR(0x5A5B5A5B),
 	MKCOLOUR(0x5B5B5B5B),
@@ -209,7 +211,71 @@ static const uint32 _map_height_bits[] = {
 	MKCOLOUR(0x27272727),
 	MKCOLOUR(0x27272727),
 };
-assert_compile(lengthof(_map_height_bits) == MAX_TILE_HEIGHT + 1);
+assert_compile(lengthof(_green_map_heights) == MAX_TILE_HEIGHT + 1);
+
+/** Height map colours for the dark green colour scheme, ordered by height. */
+static const uint32 _dark_green_map_heights[] = {
+	MKCOLOUR(0x60606060),
+	MKCOLOUR(0x60616061),
+	MKCOLOUR(0x61616161),
+	MKCOLOUR(0x61626162),
+	MKCOLOUR(0x62626262),
+	MKCOLOUR(0x62636263),
+	MKCOLOUR(0x63636363),
+	MKCOLOUR(0x63646364),
+	MKCOLOUR(0x64646464),
+	MKCOLOUR(0x64656465),
+	MKCOLOUR(0x65656565),
+	MKCOLOUR(0x65666566),
+	MKCOLOUR(0x66666666),
+	MKCOLOUR(0x66676667),
+	MKCOLOUR(0x67676767),
+	MKCOLOUR(0x67676767),
+};
+assert_compile(lengthof(_dark_green_map_heights) == MAX_TILE_HEIGHT + 1);
+
+/** Height map colours for the violet colour scheme, ordered by height. */
+static const uint32 _violet_map_heights[] = {
+	MKCOLOUR(0x80808080),
+	MKCOLOUR(0x80818081),
+	MKCOLOUR(0x81818181),
+	MKCOLOUR(0x81828182),
+	MKCOLOUR(0x82828282),
+	MKCOLOUR(0x82838283),
+	MKCOLOUR(0x83838383),
+	MKCOLOUR(0x83848384),
+	MKCOLOUR(0x84848484),
+	MKCOLOUR(0x84858485),
+	MKCOLOUR(0x85858585),
+	MKCOLOUR(0x85868586),
+	MKCOLOUR(0x86868686),
+	MKCOLOUR(0x86878687),
+	MKCOLOUR(0x87878787),
+	MKCOLOUR(0x87878787),
+};
+assert_compile(lengthof(_violet_map_heights) == MAX_TILE_HEIGHT + 1);
+
+/** Colour scheme of the smallmap. */
+struct SmallMapColourScheme {
+	const uint32 *height_colours; ///< Colour of each level in a heightmap.
+	uint32 default_colour;   ///< Default colour of the land.
+};
+
+/** Available colour schemes for height maps. */
+static const SmallMapColourScheme _heightmap_schemes[] = {
+	{_green_map_heights,      MKCOLOUR(0x54545454)}, ///< Green colour scheme.
+	{_dark_green_map_heights, MKCOLOUR(0x62626262)}, ///< Dark green colour scheme.
+	{_violet_map_heights,     MKCOLOUR(0x82828282)}, ///< Violet colour scheme.
+};
+
+void BuildLandLegend()
+{
+	_legend_land_contours[0].colour = _heightmap_schemes[_settings_client.gui.smallmap_land_colour].height_colours[0];
+	_legend_land_contours[1].colour = _heightmap_schemes[_settings_client.gui.smallmap_land_colour].height_colours[4];
+	_legend_land_contours[2].colour = _heightmap_schemes[_settings_client.gui.smallmap_land_colour].height_colours[8];
+	_legend_land_contours[3].colour = _heightmap_schemes[_settings_client.gui.smallmap_land_colour].height_colours[12];
+	_legend_land_contours[4].colour = _heightmap_schemes[_settings_client.gui.smallmap_land_colour].height_colours[14];
+}
 
 struct AndOr {
 	uint32 mor;
@@ -295,7 +361,8 @@ static inline TileType GetEffectiveTileType(TileIndex tile)
  */
 static inline uint32 GetSmallMapContoursPixels(TileIndex tile, TileType t)
 {
-	return ApplyMask(_map_height_bits[TileHeight(tile)], &_smallmap_contours_andor[t]);
+	const SmallMapColourScheme *cs = &_heightmap_schemes[_settings_client.gui.smallmap_land_colour];
+	return ApplyMask(cs->height_colours[TileHeight(tile)], &_smallmap_contours_andor[t]);
 }
 
 /**
@@ -307,7 +374,8 @@ static inline uint32 GetSmallMapContoursPixels(TileIndex tile, TileType t)
  */
 static inline uint32 GetSmallMapVehiclesPixels(TileIndex tile, TileType t)
 {
-	return ApplyMask(MKCOLOUR(0x54545454), &_smallmap_vehicles_andor[t]);
+	const SmallMapColourScheme *cs = &_heightmap_schemes[_settings_client.gui.smallmap_land_colour];
+	return ApplyMask(cs->default_colour, &_smallmap_vehicles_andor[t]);
 }
 
 /**
@@ -329,7 +397,8 @@ static inline uint32 GetSmallMapIndustriesPixels(TileIndex tile, TileType t)
 		}
 	}
 
-	return ApplyMask(_smallmap_industry_show_heightmap ? _map_height_bits[TileHeight(tile)] : MKCOLOUR(0x54545454), &_smallmap_vehicles_andor[t]);
+	const SmallMapColourScheme *cs = &_heightmap_schemes[_settings_client.gui.smallmap_land_colour];
+	return ApplyMask(_smallmap_industry_show_heightmap ? cs->height_colours[TileHeight(tile)] : cs->default_colour, &_smallmap_vehicles_andor[t]);
 }
 
 /**
@@ -353,7 +422,8 @@ static inline uint32 GetSmallMapRoutesPixels(TileIndex tile, TileType t)
 	}
 
 	/* Ground colour */
-	return ApplyMask(MKCOLOUR(0x54545454), &_smallmap_contours_andor[t]);
+	const SmallMapColourScheme *cs = &_heightmap_schemes[_settings_client.gui.smallmap_land_colour];
+	return ApplyMask(cs->default_colour, &_smallmap_contours_andor[t]);
 }
 
 
@@ -794,7 +864,7 @@ class SmallMapWindow : public Window {
 
 			/* Fill with some special colours */
 			_owner_colours[OWNER_TOWN]  = MKCOLOUR(0xB4B4B4B4);
-			_owner_colours[OWNER_NONE]  = MKCOLOUR(0x54545454);
+			_owner_colours[OWNER_NONE]  = _heightmap_schemes[_settings_client.gui.smallmap_land_colour].default_colour;
 			_owner_colours[OWNER_WATER] = MKCOLOUR(0xCACACACA);
 			_owner_colours[OWNER_END]   = MKCOLOUR(0x20202020); // Industry
 
@@ -858,6 +928,7 @@ public:
 		this->LowerWidget(this->map_type + SM_WIDGET_CONTOUR);
 
 		_smallmap_industry_show_heightmap = false;
+		BuildLandLegend();
 		this->SetWidgetLoweredState(SM_WIDGET_SHOW_HEIGHT, _smallmap_industry_show_heightmap);
 
 		this->SetWidgetLoweredState(SM_WIDGET_TOGGLETOWNNAME, this->show_towns);

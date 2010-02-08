@@ -13,6 +13,7 @@
 static bool v_PositionMainToolbar(int32 p1);
 static bool PopulationInLabelActive(int32 p1);
 static bool RedrawScreen(int32 p1);
+static bool RedrawSmallmap(int32 p1);
 static bool InvalidateDetailsWindow(int32 p1);
 static bool InvalidateStationBuildWindow(int32 p1);
 static bool InvalidateBuildIndustryWindow(int32 p1);
@@ -555,6 +556,7 @@ const SettingDesc _settings[] = {
 	  SDTC_VAR(gui.window_soft_limit,         SLE_UINT8, S, D0,    20,        5,      255, 1, STR_CONFIG_SETTING_SOFT_LIMIT,                  NULL),
 	 SDTC_BOOL(gui.population_in_label,                  S,  0,  true,                        STR_CONFIG_SETTING_POPULATION_IN_LABEL,         PopulationInLabelActive),
 	 SDTC_BOOL(gui.link_terraform_toolbar,               S,  0, false,                        STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR,      NULL),
+	  SDTC_VAR(gui.smallmap_land_colour,      SLE_UINT8, S, MS,     0,        0,        2, 0, STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR,        RedrawSmallmap),
 	  SDTC_VAR(gui.liveries,                  SLE_UINT8, S, MS,     2,        0,        2, 0, STR_CONFIG_SETTING_LIVERIES,                    RedrawScreen),
 	 SDTC_BOOL(gui.prefer_teamchat,                      S,  0, false,                        STR_CONFIG_SETTING_PREFER_TEAMCHAT,             NULL),
 	  SDTC_VAR(gui.scrollwheel_scrolling,     SLE_UINT8, S, MS,     0,        0,        2, 0, STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING,       NULL),
