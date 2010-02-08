@@ -1317,6 +1317,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\smallmap_gui.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\sound\sdl_s.h"
 				>
 			</File>

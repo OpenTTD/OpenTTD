@@ -41,6 +41,7 @@
 #include "rail.h"
 #include "widgets/dropdown_type.h"
 #include "company_base.h"
+#include "smallmap_gui.h"
 
 #include "network/network.h"
 #include "network/network_gui.h"

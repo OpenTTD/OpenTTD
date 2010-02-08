@@ -239,6 +239,7 @@ roadstop_base.h
 roadveh.h
 screenshot.h
 sdl.h
+smallmap_gui.h
 sound/sdl_s.h
 video/sdl_v.h
 settings_func.h

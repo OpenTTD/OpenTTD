@@ -64,7 +64,6 @@ void ShowSubsidiesList();
 void ShowEstimatedCostOrIncome(Money cost, int x, int y);
 void ShowErrorMessage(StringID summary_msg, StringID detailed_msg, int x, int y, bool no_timeout = false);
 
-void ShowSmallMap();
 void ShowExtraViewPortWindow(TileIndex tile = INVALID_TILE);
 
 void BuildFileList();
