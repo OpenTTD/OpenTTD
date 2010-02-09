@@ -43,7 +43,7 @@ int DrawCargoListText(uint32 cargo_mask, const Rect &r, StringID prefix)
 {
 	bool first = true;
 	char string[512];
-	char *b = InlineString(string, prefix);
+	char *b = string;
 
 	for (CargoID i = 0; i < NUM_CARGO; i++) {
 		if (b >= lastof(string) - (1 + 2 * 4)) break; // ',' or ' ' and two calls to Utf8Encode()
@@ -68,7 +68,7 @@ int DrawCargoListText(uint32 cargo_mask, const Rect &r, StringID prefix)
 	assert(b < endof(string));
 
 	SetDParamStr(0, string);
-	return DrawStringMultiLine(r.left, r.right, r.top, r.bottom, STR_JUST_RAW_STRING);
+	return DrawStringMultiLine(r.left, r.right, r.top, r.bottom, prefix);
 }
 
 /**
