@@ -142,7 +142,7 @@ Extreme CPU usage/hangs when using SDL and PulseAudio [FS#3294]
 	use of interrupt-based scheduling may resolve sound problems for
 	some users. Under recent versions of Ubuntu Linux (9.04 and higher)
 	this can be accomplished by changing the following line in the
-	/etc/pulsa/default.pa file:
+	/etc/pulse/default.pa file:
 		load-module module-udev-detect
 	to
 		load-module module-udev-detect tsched=0
