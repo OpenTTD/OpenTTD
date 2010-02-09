@@ -1166,6 +1166,10 @@ STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Une ou p
 STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Etendue max. des stations{NBSP}: {ORANGE}{STRING} {RED}Attention{NBSP}: Valeur élevée = jeu lent
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Entretenir automatiquement les hélicoptères à l'héliport{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Relier la barre d'outils paysage avec celle des rails/routes/eau et aéroport{NBSP}: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Couleur utilisée pour le terrain sur la carte{NBSP}: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Vert
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Vert foncé
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violet
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}Inverser la direction lors du défilement avec la souris{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}Défilement régulier de la vue{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}Montrer une infobulle de mesure lors de l'utilisation de divers outils de construction{NBSP}: {ORANGE}{STRING}

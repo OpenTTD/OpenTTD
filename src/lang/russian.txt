@@ -1269,7 +1269,7 @@ STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Раз�
 STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Станции могут быть произвольной формы: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Множитель увеличения веса груза для товарных поездов: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Коэффициент скорости авиатранспорта: {ORANGE}1/{STRING}
-STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Вероятность падения самолёта: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Вероятность падения самолётов: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :отсутствует
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :сниженная
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :обычная
@@ -1319,6 +1319,10 @@ STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Одна
 STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Макс. протяжённость: {ORANGE}{STRING} {RED}(большие значения замедляют игру)
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Включить обслуживание на вертолётных площадках: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Связать ландшафтную панель с транспортной: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Цвет земли на миникарте: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :зелёный
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :тёмно-зелёный
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :фиолетовый
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}Обратить направление перемещения обзора мышью: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}Плавный скроллинг окна просмотра: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}Показывать замеры при строительстве: {ORANGE}{STRING}

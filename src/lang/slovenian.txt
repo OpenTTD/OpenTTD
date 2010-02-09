@@ -1207,6 +1207,10 @@ STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Eno ali 
 STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Največja razširitev postaje: {ORANGE}{STRING} {RED}Pozor: Visoka vrednost upočasnjuje igro
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Avtomatski servis helikopterjev na pristajališču: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Pripni orodje za teren k orodju za gradnjo cest/železnic itd.: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Barva zemlje uporabljena na zemljevidu: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Zelena
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Temno zelena
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Vijolična
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}Obrni smer premika okna: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}Gladek premik pogleda: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}Prikaz merilnega nasveta med uporabo gradbenih orodij: {ORANGE}{STRING}

@@ -1166,6 +1166,10 @@ STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Eines od
 STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Maximale Stationsgröße: {ORANGE}{STRING} {RED}(Hoher Wert verlangsamt das Spiel)
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Hubschrauber auf Landeplatz automatisch warten: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Werkzeugleiste für Landschaftsbau an die Bauwerkzeuge binden: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Farbe für Land auf der Weltkarte: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Grün
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Dunkelgrün
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Lila
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}Scrollrichtung invertieren: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}Weicher Bildlauf beim Springen zu einer Position: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}Beim Bauen Tooltip mit Abmessungen anzeigen: {ORANGE}{STRING}

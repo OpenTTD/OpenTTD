@@ -1199,6 +1199,10 @@ STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Az egyik
 STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Állomások legnagyobb kiterjedése: {ORANGE}{STRING} {RED}Figyelem: magas érték lelassítja a játékot
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Helikopterek automatikus javítása a helikopter-leszállókon: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Tájrendező eszköztár megnyitása az építési eszköztárakkal: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Föld színe a térképen: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Zöld
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Sötétzöld
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Lila
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}Egeres mozgáskor a táj a másik irányba mozdul el: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}Finomított nézőpont-görgetés: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}Területinformációk mutatása építési eszközök használatakor: {ORANGE}{STRING}

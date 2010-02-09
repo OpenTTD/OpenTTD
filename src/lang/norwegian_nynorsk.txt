@@ -186,7 +186,7 @@ STR_COLOUR_GREEN                                                :Grøn
 STR_COLOUR_DARK_GREEN                                           :Mørkegrøn
 STR_COLOUR_BLUE                                                 :Blå
 STR_COLOUR_CREAM                                                :Kremgul
-STR_COLOUR_MAUVE                                                :Fiolett
+STR_COLOUR_MAUVE                                                :Rødlilla
 STR_COLOUR_PURPLE                                               :Lilla
 STR_COLOUR_ORANGE                                               :Oransje
 STR_COLOUR_BROWN                                                :Brun
@@ -1166,6 +1166,10 @@ STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Ei eller
 STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Maks stasjonspreiing: {ORANGE}{STRING} {RED}Advarsel: Høg innstilling gjev treigare spel
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Gjer vedlikehald på helikopter automatisk på helikopterlandingsplassar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Koble landskapsverktøylinja til tog-/vei-/vass- og flyplassverktøylinjene: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Landfarge nytta på oversiktskartet: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Grøn
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Mørkegrøn
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Fiolett
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}Ved rulling med musa, flytt synsvinkelen i den motsette retninga: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}Glatt scrolling: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}Syne eit målingverktøytips når ymse byggjeverktøy brukast: {ORANGE}{STRING}

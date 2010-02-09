@@ -2370,7 +2370,7 @@ STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Propriedade da 
 STR_NEWGRF_ERROR_INVALID_ID                                     :Tentativa de usar ID inválido.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} contém uma rotina corrompida. As rotinas corrompidas serão assinaladas com um ponto de interrogação (?) vermelho.
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Contém 8 entradas de acção múltipla
-STR_NEWGRF_ERROR_READ_BOUNDS                                    :Leitura ultrapassou o fim da pseudo-rotina.
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Leitura ultrapassou o fim do pseudo-sprite.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Cuidado!

@@ -1166,6 +1166,10 @@ STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}가장�
 STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}역의 최대 크기: {ORANGE}{STRING} {RED}경고! 높은 값은 게임을 느리게함!
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}헬리콥터를 발착장에서 자동으로 점검 : {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}철도/도로/항만/공항 툴바에 지형 툴바 연결 : {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}스몰맵에서 사용되는 땅의 색상: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :녹색
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :어두운 녹색
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :보라색
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}스크롤 방향 뒤집기 : {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}부드러운 화면 스크롤: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}건설도구 사용시 거리 툴팁 표시 : {ORANGE}{STRING}

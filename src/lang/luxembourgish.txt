@@ -1925,7 +1925,7 @@ STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Waassers
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Kanal bauen.
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Schlass setzen
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Schëffdepot bauen (fir Schëffer ze bauen an ze warten)
-STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Schëffdock bauen
+STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Schëffdock bauen. Ctrl aktivéiert ubauen vun Statiounen
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Plazéiert eng Boje, déi als Weepunkt kann benotzt ginn
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Aquadukt bauen
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Waasser definéieren.{}Mécht en Kanal. Mat CTRL gedréckt halen um Mieresspigel klicken, iwerflut d'Géigent
@@ -1940,7 +1940,7 @@ STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Hafen
 
 # Airport toolbar
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Fluchhäfen
-STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Fluchhafen bauen
+STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Fluchhafen bauen. Ctrl aktivéiert ubauen vun Statiounen
 
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Fluchhafen Selectioun
@@ -1997,9 +1997,9 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Sidd der
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Staderstellung
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Nei Stad
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Erstell nei Stad
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Grënn eng nei Stad
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Zoufallsstad
-STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Bau d'Stad op enger zoufälleger Plaz
+STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Grënn d'Stad op enger zoufälleger Plaz
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Vill zoufälleg Dierfer
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}D'Kaart zoufälleg mat Dierfer fëllen
 
@@ -2219,7 +2219,7 @@ STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Héicht 
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Héicht vum flaachen Land änneren
 
 # Map generation progress
-STR_GENERATION_WORLD                                            :{WHITE}Weltgeneratioun...
+STR_GENERATION_WORLD                                            :{WHITE}Generéiren d'Welt...
 STR_GENERATION_ABORT                                            :{BLACK}Ofbriechen
 STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Welt Generatioun ofbriechen
 STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Wëllt dir wierklech d'Generatioun ofbriechen?
@@ -2284,7 +2284,7 @@ STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Warnung: {
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Error: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatal: {SILVER}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} wärt net mat der TTDPatch vun OpenTTD versioun funktiounéiren.
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} as fir  {STRING} Versioun vun TTD.
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} as fir {STRING} Versioun vun TTD.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} as designed fir mat {STRING} benotzt ze gin
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Invaliden Parameter fir {1:STRING}: Parameter {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} muss firun {STRING} gelueden gin.
@@ -2333,7 +2333,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Gidd en 
 # Town directory window
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Stied
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Stiednimm - klickt op den Numm fir d'Usiicht drop ze zentréieren
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Stiednimm - klickt op den Numm fir d'Usiicht drop ze zentréieren. Ctrl+Klick erstellt eng nei Usiicht vun Stad
 STR_TOWN_POPULATION                                             :{BLACK}Weltbevölkerung: {COMMA}
 
 # Town view window
@@ -2346,7 +2346,7 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Luedunge
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{STRING}{BLACK} gebraucht
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{ORANGE}{CARGO}{BLACK} leschten Mount geliwwert
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Kaméidislimit an der Stad: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Zentréiert d'Usiicht op d'Stad
+STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Zentréiert d'Usiicht op d'Stad. Ctrl+Klick erstellt eng nei Usiicht op d'Stad
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Gemeng
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Weist d'Informatiounen zu der Gemeng
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Wiesselt den Stadnumm
@@ -2376,26 +2376,26 @@ STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Nei Gebaier fin
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Exklusiv Transportrechter kafen
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :D'Gemeng bestiechen
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW} Eng kleng Marketingaktioun starten, fir méi Passagéier an Wueren ze gewannen.{}  Käschten: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW} Eng mëttel Marketingaktioun starten, fir méi Passagéier an Wueren ze gewannen.{}  Käschten: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW} Eng grouss Marketingaktioun starten, fir méi Passagéier an Wueren ze gewannen.{}  Käschten: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW} Stroossenneibau an der Stad finanzéieren. Stéiert den Traffic op den Stroossen fir dei nächst 6 Méint.{}  Käschten: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Eng kleng Marketingaktioun starten, fir méi Passagéier an Wueren ze gewannen.{} Käschten: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Eng mëttel Marketingaktioun starten, fir méi Passagéier an Wueren ze gewannen.{} Käschten: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Eng grouss Marketingaktioun starten, fir méi Passagéier an Wueren ze gewannen.{} Käschten: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Stroossenneibau an der Stad finanzéieren. Stéiert den Traffic op den Stroossen fir dei nächst 6 Méint.{} Käschten: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW} Eng Statu zur Éier vun der Firma bauen.{} Käschten: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW} Den Bau vun neien Kommerzgebaier finanzéieren.{}  Käschten: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Den Bau vun neien Kommerzgebaier finanzéieren.{} Käschten: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW} Kaft fir 1 Joer exklusiv Transportrechter an dëser Stad. D'Gemeng erlabt den Transport vun Passagéier an Wueren nëmmen ärer Firma.{} Käschten: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW} D'Gemeng bestiechen fir d'Bewertung ze erhéigen, mam Risque fir eng grouss Bestrofung, falls der erwëscht gidd.{}  Käschten: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}D'Gemeng bestiechen fir d'Bewertung ze erhéigen, mam Risque fir eng grouss Bestrofung, falls der erwëscht gidd.{} Käschten: {CURRENCY}
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subventiounen
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Subventiounen fir den Service:
 STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} vun {STRING} op {STRING}{YELLOW} (by {DATE_SHORT})
-STR_SUBSIDIES_NONE                                              :{ORANGE}Keng
+STR_SUBSIDIES_NONE                                              :{ORANGE}- Keng -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Servicer mat Subventiounen:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} vun {STRING} op {STRING}{YELLOW} ({COMPANY}{YELLOW}, bis {DATE_SHORT})
-STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klick op den Service fir d'Usiicht op d'Industrie/Stad ze zentréieren
+STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klick op den Service fir d'Usiicht op d'Industrie/Stad ze zentréieren. Ctrl+Klick erstellt eng nei Usiicht op d'Industrielocation
 
 # Station list window
-STR_STATION_LIST_TOOLTIP                                        :{BLACK}Statiounennimm - klick op den Numm fir d'Siicht drop ze zentréieren
+STR_STATION_LIST_TOOLTIP                                        :{BLACK}Statiounennimm - klick op den Numm fir d'Siicht drop ze zentréieren. Ctrl+Klick erstellt eng nei Usiicht op d'Statioun
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Haalt CTRL un fir méi wéi 1 Objet auszewielen
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Statioun{P "" en}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
@@ -2430,7 +2430,7 @@ STR_CARGO_RATING_EXCELLENT                                      :Exzellent
 STR_CARGO_RATING_OUTSTANDING                                    :Perfekt
 ############ range for rating ends
 
-STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Zentréiert d'Siicht op d'Statioun
+STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Zentréiert d'Siicht op d'Statioun. Ctrl+Klick erstellt eng nei Usiicht op d'Statioun
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Den Numm vun der Statioun änneren
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Weis all Zich déi des Statioun an hierem Zaitplang hun
@@ -2467,12 +2467,12 @@ STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURREN
 STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Total:
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Kontostand
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Kredit
-STR_FINANCES_MAX_LOAN                                           :{WHITE}Max Kredit:  {BLACK}{CURRENCY}
+STR_FINANCES_MAX_LOAN                                           :{WHITE}Max Kredit: {BLACK}{CURRENCY}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Léinen {CURRENCY}
-STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Erhéicht den Kredit
+STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Erhéicht den Kredit. Ctrl+Klick léint den Maximum
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Zeréckbezuelen {CURRENCY}
-STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Bezuelt en Deel vum Kredit zeréck
+STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Bezuelt en Deel vum Kredit zeréck. Ctrl+Klick bezillt sou vill wéi méglech zréck
 
 # Company view
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
@@ -2518,13 +2518,13 @@ STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industri
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% transportéiert)
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% transportéiert)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Fabrikennimm - klickt op en Numm fir d'Usiicht do drop ze zentréieren
+STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Fabrikennimm - klickt op en Numm fir d'Usiicht do drop ze zentréieren. Ctrl+Klick erstellt eng nei Usiicht op d'Industrie
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Produktioun läschten Mount:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% transportéiert)
-STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Zentréiert d'Siicht op d'Industrie
+STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Zentréiert d'Siicht op d'Industrie. Ctrl+Klick erstellt eng nei Usiicht op d'Industrie
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Brauch: {YELLOW}{STRING}{STRING}
@@ -2539,7 +2539,7 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Produzé
 STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Produzéiert: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
 ############ range for produces ends
 
-STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}D'Produktioun änneren
+STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}D'Produktioun änneren (Multipel vun 8, bis op 2040)
 
 # Vehicle lists
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Z{P uch ich}
@@ -2631,15 +2631,15 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Stroosse
 STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Schëffslëscht - Klickt op d'Schëff fir Informatiounen
 STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Fligerlëscht - Klickt op den Fliger fir Informatiounen
 
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Gefiert bauen
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Gefiert bauen
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Schëff bauen
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Fliger bauen
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Gefiert kafen
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Gefiert kafen
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Schëff kafen
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Fliger kafen
 
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Baut den ungewielten Zuch
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Baut dat ungewieltent Stroossengefiert
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Baut dat ungewielten Schëff
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Baut den ungewielten Fliger
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Keeft den ungewielten Zuch
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Keeft dat ungewieltent Stroossengefiert
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Keeftdat ungewielten Schëff
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Keeft den ungewielten Fliger
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Ëmbenennen
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Ëmbenennen
@@ -2667,7 +2667,7 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} Gefier{P t er}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Zich - klickt op den Zuch fir info., zitt d'Gefiert fir en unzehänken/wechzehuelen
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Zich - klickt op den Zuch fir Info., zidd d'Gefiert fir en unzehänken/wechzehuelen
 STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Gefierer - klickt op en Gefier fir Informatiounen
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Schëffer - klickt op d'Schëff fir Informatiounen
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Fliger - Klickt op den Fliger fir Informatiounen
@@ -2694,25 +2694,25 @@ STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Nei Gefi
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Nei Schëffer
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Neien Fliger
 
-STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Baut neen Zuch
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Neit Stroossengefier bauen
-STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Neit Schëff bauen
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Neien Fliger bauen
+STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Keeft neien Zuch
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Neit Stroossengefiert kafen
+STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Neit Schëff kafen
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Neien Fliger kafen
 
 STR_DEPOT_CLONE_TRAIN                                           :{BLACK}Zuch klonen
 STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Gefiert klonen
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Schëff klonen
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Fliger klonen
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Dëst baut eng Kopie vun engem Zuch mat all den Wagonen.  Klickt op dësen Knäppchen an dann op en Zuch am Depot oder baussen.
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Baut eng Kopie vum Stroossengefiert. CTRL+Klick kopéiert och d'Opträg
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Dsst baut eng Kopie vum Schëff. Klickt op dësen Knäppchen an dann op en Schëff am Depot oder baussen.
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Dëst baut eng Kopie vun engem Fliger. Klickt op dësen Knäppchen, an dann op en Fliger am Hangar oder baussen.
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Dëst baut eng Kopie vun engem Zuch mat all den Wagonen. Klickt op dësen Knäppchen an dann op en Zuch am Depot oder baussen. Ctrl+Klick fir Uerder ze deelen
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Keeft eng Kopie vum Stroossengefiert. Klickt dësen Kneppchen an dann op en Stroossengefiert am oder baussent dem Depot. Ctrl+Klick kopéiert och d'Opträg
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Dëst baut eng Kopie vum Schëff. Klickt op dësen Knäppchen an dann op en Schëff am Depot oder baussen.Ctrl+Klick kopéiert och d'Ueder
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Dëst baut eng Kopie vun engem Fliger. Klickt op dësen Knäppchen, an dann op en Fliger am Hangar oder baussen. Ctrl+Klick fir Uerder ze deelen
 
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Zentréiert d'Usiicht op den Depot
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Zentréiert d'Usiicht op den Depot
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Zentréiert d'Usiicht op den Depot
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Zentréiert d'Usiicht op den Hangar
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Zentréiert d'Usiicht op den Depot. Ctrl+Klick erstellt eng nei Usiicht op den Depot
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Zentréiert d'Usiicht op den Depot. Ctrl+Klick erstellt eng nei Usiicht op den Depot
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Zentréiert d'Usiicht op den Depot. Ctrl+Klick erstellt eng nei Usiicht op den Depot
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Zentréiert d'Usiicht op den Hangar. Ctrl+Klick erstellt eng nei Usiicht op den Hangar
 
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Lëscht mat all Zich an dësem Depot
 STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Lëscht mat all Gefierer an dësem Depot
@@ -2780,20 +2780,20 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Mecht da
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Zentréiert d'Usiicht op den Zuch
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Zentréiert d'Unsiicht op d'Gefiehrt
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Zentréiert d'Usiicht op d'Schëff
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Zentréiert d'Usiicht op den Fliger
+STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Zentréiert d'Usiicht op den Zuch. Ctrl+Klick follegt dem Zuch an der Haaptusiicht
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Zentréiert d'Unsiicht op d'Gefiehrt. Ctrl+Klick follegt dem Gefuert an der Haaptusiicht
+STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Zentréiert d'Usiicht op d'Schëff. Ctrl+Klick follegt dem Schëff an der Haaptusiicht
+STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Zentréiert d'Usiicht op den Fliger. Ctrl+Klick follegt dem Fliger an der Haaptusiicht
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Schéckt den Zuch an den Depot. CTRL+Klick fir nëmmen Revisoun
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Schéckt d'Gefiert an den Depot. CTRL+Klick fir nëmmen Revisoun
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Schéck d'Schëff an den Depot. CTRL+Klick fir nëmmen Revisoun
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Schéckt den Fliger an den Hangar. CTRL+Click fir nëmmen Wartung
 
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Dëst baut eng Kopie vun engem Zuch mat all den Wagonen. CTRL+Klick kopéiert och d'Opträg
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Baut eng Kopie vum Stroossengefiert. CTRL+Klick kopéiert och d'Opträg
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Dëst baut eng Kopie vum Schëff. CTRL+Klick kopéiert och d'Opträg
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Dëst baut eng Kopie vum Fliger. CTRL+Klick kopéiert och d'Opträg
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Dëst baut eng Kopie vun engem Zuch mat all den Wagonen. Ctrl+Klick kopéiert och d'Opträg
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Baut eng Kopie vum Stroossengefiert. Ctrl+Klick kopéiert och d'Opträg
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Dëst baut eng Kopie vum Schëff. Ctrl+Klick kopéiert och d'Opträg
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Dëst baut eng Kopie vum Fliger. Ctrl+Klick kopéiert och d'Opträg
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Forcéiert den Zuch durch d'Signal ze fueren
 
@@ -2805,10 +2805,10 @@ STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Fliger �
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Richtung vum Zuch wiesselen
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Forcéiert d'Gefiert fir ze dréien
 
-STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Weist d'Opträg vum Zuch
-STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Weist d'Opträg vum Gefiehrt
-STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Weist d'Opträg vum Schëff
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Weist d'Opträg vum Fliger
+STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Weist d'Opträg vum Zuch. Ctrl+Klick weist den Fuerplang
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Weist d'Opträg vum Gefiehrt. Ctrl+Klick weist den Fuerplang
+STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Weist d'Opträg vum Schëff. Ctrl+Klick weist den Fuerplang
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Weist d'Opträg vum Fliger. Ctrl+Klick weist den Fuerplang
 
 STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Weist d'Detailer vum Zuch
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Weist Stroosengefiert Detailer
@@ -2887,8 +2887,8 @@ STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Transfer
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Revisiounsintervall: {LTBLUE}{COMMA}Deeg{BLACK}   Lescht Revisioun: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Revisiounsintervall: {LTBLUE}{COMMA}%{BLACK}  Lescht Revisioun: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Revisiounsintervall erhéichen
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Revisiounsintervall erofsetzen
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Revisiounsintervall em 10 erhéigen. Ctrl+Klick erhéigt Intervall em 5
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Revisiounsintervall em 10 erofsetzen. Ctrl+Klick setzt den Intervall em 5 rof
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Zuch benennen
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Stroossengefiert benennen

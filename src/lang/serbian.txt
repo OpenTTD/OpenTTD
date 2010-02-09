@@ -1350,6 +1350,10 @@ STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Jedn ili
 STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Nejveća površina stanica: {ORANGE}{STRING} {RED}Upozorenje: Visoka vrednost usporava igru
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Automatsko servisiranje helikoptera na heliodromima: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Poveži traku alatki za reljef sa železničkim/drumskim/brodskim/avionskim trakama: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Boja tla na karti: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Zelena
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Tamno zelena
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Ljubičasta
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}Suprotan smer pomeranja prozora: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}Ravnomeran prelaz prozora: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}Prikazivati mere dok se koriste alati za gradnju: {ORANGE}{STRING}

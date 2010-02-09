@@ -222,8 +222,8 @@ STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Entre um
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtro:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Selecionar forma de ordenação (descendente/ascendente)
-STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Selecionar um critério de classificação
-STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Selecionar critério para filtração
+STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Seleciona um critério de classificação
+STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Seleciona critério para filtração
 STR_BUTTON_SORT_BY                                              :{BLACK}Ordenar por
 STR_BUTTON_LOCATION                                             :{BLACK}Localização
 STR_BUTTON_RENAME                                               :{BLACK}Renomear
@@ -233,7 +233,7 @@ STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Título 
 STR_TOOLTIP_SHADE                                               :{BLACK}Esmaecer janela - Mostra apenas a barra de título
 STR_TOOLTIP_STICKY                                              :{BLACK}Marcar esta janela para não fechar pela tecla 'Fechar Todas as Janelas'
 STR_TOOLTIP_RESIZE                                              :{BLACK}Clique e arraste para redimensionar a janela
-STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Alternar entre janela grande/pequena
+STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Alterna entre janela grande/pequena
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barra de rolagem - rola a lista acima/abaixo
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barra de rolagem - Move a lista para esquerda/direita
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Demole edifícios, etc. num quadrado de terreno
@@ -525,7 +525,7 @@ STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLAC
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Alternar exibir/ocultar gráfico para o tipo de carga
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 
-STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Exibir avaliações de performance detalhadas
+STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Exibe avaliações de performance detalhadas
 
 # Graph key window
 STR_GRAPH_KEY_CAPTION                                           :{WHITE}Legendas dos gráficos da empresa
@@ -605,7 +605,7 @@ STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}Selecion
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Selecionar programa 'Ezy Street'
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Seleciona programa 'Personalizado 1'
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Seleciona programa 'Personalizado 2'
-STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Alternar exibir/ocultar programação aleatória
+STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Alterna exibir/ocultar programação aleatória
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Exibe a janela de seleção de faixas de música
 
 STR_ERROR_NO_SONGS                                              :{WHITE}Um set de músicas sem músicas foi selecionado. Nenhuma música será tocada
@@ -974,8 +974,8 @@ STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}Define o
 
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Mudar para Euro: {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Mudar para Euro: {ORANGE}nunca
-STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Selecionar o ano para trocar para Euro
-STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Trocar para Euro antes
+STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Seleciona o ano para trocar para Euro
+STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Troca para Euro antes
 STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Trocar para Euro depois
 
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Prevêr: {ORANGE}{CURRENCY}
@@ -1203,6 +1203,7 @@ STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Própria empres
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Todas as empresas
 STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Ativar plano de horário para veículos: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Exibir plano de horário em tiques ao invés de dias: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Mostrar chegada e saída nos planos de horário: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Criar rapidamente ordens para um veículo: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Tipo padrão de ferrovia (ao criar ou carregar um jogo): {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Primeiro disponível
@@ -1264,6 +1265,10 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :grade 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :random
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Permitir cidades construir novas ruas?: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Permitir controle de ruído de aeronaves pelas cidades: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Fundando cidades no jogo: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :proibido
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :permitido
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :permitido, layout de cidades customizável
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}Posicionamento de árvores: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :nenhum {RED}(extingue a serraria)
@@ -1406,7 +1411,7 @@ STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Ativar 
 STR_LIVERY_CAPTION                                              :{WHITE}Novo Esquema de Cores
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Exibir esquemas de cor gerais
-STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Exibir esquemas de cor de trens
+STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Exibe esquemas de cor de trens
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Exibir os esquemas de cor de automóveis
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Exibir esquemas de cor de embarcação
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Exibir esquemas de cor de aviões
@@ -1677,6 +1682,7 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nova Com
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Banir
+STR_NETWORK_CLIENTLIST_BAN                                      :Banir
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Dar dinheiro
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Falar com todos
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Falar com a empresa
@@ -1753,7 +1759,15 @@ STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :servidor cheio
 ############ End of leave-in-this-order
 
 # Network related errors
+STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
 ############ Leave those lines in this order!!
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Jogo pausado ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Jogo ainda pausado ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Jogo ainda pausado ({STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Jogo ainda pausado ({STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Jogo despausado ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :jogadores insuficientes
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :clientes conectando-se
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :manual
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :saindo
@@ -2504,6 +2518,7 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Exibir t
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Renomear estação/área de carga
 
 # Waypoint/buoy view window
+STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centralizar visualização no local do ponto de controle. Ctrl+Clique abre uma nova janela de visualização.
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Renomear ponto de controle
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centralizar visualização na localização da bóia. Ctrl+Clique abre uma nova janela de visualização
@@ -2556,7 +2571,9 @@ STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Valor da 
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% propriedade de {COMPANY})
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Construir sede
+STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Construir sede da companhia
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Ver sede
+STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Ver sede da companhia
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Mover sede
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Reconstruir sede da empresa em outro local por 1% do valor da empresa
 
@@ -2809,6 +2826,7 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :locomotiva mono
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :locomotiva trem-bala
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Custo: {CURRENCY} Peso: {WEIGHT_S}{}Velocidade: {VELOCITY}  Potência: {POWER}{}Custo de circulação: {CURRENCY}/ano{}Capacidade: {CARGO}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Custo: {CURRENCY} Peso: {WEIGHT_S}{}Vel: {VELOCITY}  Potência: {POWER}  Máx P. Tração: {6:FORCE}{}Manutenção Anual: {4:CURRENCY}/yr{}Capacidade: {5:CARGO}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Preço: {CURRENCY} Velocidade Max: {VELOCITY}{}Capacidade: {CARGO}, {CARGO}{}Custo de manutenção: {CURRENCY}/ano
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Custo: {CURRENCY} Velocidade Max; {VELOCITY}{}Capacidade: {CARGO}{}Custo de manuteção: {CURRENCY}/ano
 
@@ -2946,6 +2964,7 @@ STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Lucros d
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Confiabilidade: {LTBLUE}{COMMA}%  {BLACK}Quebras desde a última manutenção: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Construído: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Capacidade: {LTBLUE}Nenhuma
 STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Capacidade: {LTBLUE}{CARGO}{3:STRING}
 STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Capacidade: {LTBLUE}{CARGO}{3:STRING} (x{4:NUM})
 STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Capacidade: {LTBLUE}{CARGO}, {CARGO}{STRING}
@@ -3000,7 +3019,7 @@ STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Adaptar 
 STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Adaptar embarcação
 STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Adaptar aeronave
 
-STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Adaptar trem para transportar a carga selecionada
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Adapta trem para transportar a carga selecionada
 STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Adaptar automóvel para carregar o tipo de carga selecionado
 STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Adaptar embarcação para transportar a carga selecionada
 STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Adaptar aeronave para transportar a carga selecionada
@@ -3011,6 +3030,8 @@ STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Plano de
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Exibe o plano de horário
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Lista de ordens - clique numa ordem para a selecionar
+STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
+STR_ORDER_TEXT                                                  :{STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Fim de Ordens - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Fim de Ordens Compartilhadas - -
@@ -3150,7 +3171,11 @@ STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Esse hor
 STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Esse veículo está no horário
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Esse veículo está {STRING} atrasado
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Esse veículo está {STRING} adiantado
+STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Este plano de horário ainda não começou
+STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Este plano de horário começará em{STRING}
 
+STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Data de início
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Selecione uma data como ponto de início para este plano de horário
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Mudar horário
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Muda a quantidade de tempo que a ordem deverá levar
@@ -3164,10 +3189,21 @@ STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reseta o
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autopreencher
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Preenche automaticamente com os valores da próxima viagem. (CTRL-clique para tentar manter os intervalos de espera)
 
+STR_TIMETABLE_EXPECTED                                          :{BLACK}Esperado
+STR_TIMETABLE_SCHEDULED                                         :{BLACK}Reservado
+STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Mudar entre esperado e reservado
 
+STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :C:
+STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :I:
 
 
 # Date window (for timetable)
+STR_DATE_CAPTION                                                :{WHITE}Marcar data
+STR_DATE_SET_DATE                                               :{BLACK}Marcar data
+STR_DATE_SET_DATE_TOOLTIP                                       :{BLACK}Usar a data selecionada como início do plano de horário
+STR_DATE_DAY_TOOLTIP                                            :{BLACK}Selecionar dia
+STR_DATE_MONTH_TOOLTIP                                          :{BLACK}Selecionar mês
+STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Selecionar ano
 
 
 # AI debug window
@@ -4018,6 +4054,7 @@ STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
 STR_JUST_DATE_LONG                                              :{DATE_LONG}
 STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_STRING_SPACE_STRING                                    :{STRING} {STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
@@ -4035,11 +4072,14 @@ STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LO
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}
 STR_TINY_GROUP                                                  :{TINYFONT}{GROUP}
+STR_BLACK_INT                                                   :{BLACK}{NUM}
 STR_ORANGE_INT                                                  :{ORANGE}{NUM}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
 STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
+STR_GREEN_STRING                                                :{GREEN}{STRING}
+STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}

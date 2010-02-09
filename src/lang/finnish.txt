@@ -1165,6 +1165,10 @@ STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Yksi tai
 STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Suurin aseman koko: {ORANGE}{STRING} {RED}Huom: korkea asetus hidastaa peliä
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Huolla helikopterit helikopterialustoilla automaattisesti: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Kiinnitä maastonmuokkauspalkki rakentamistyökalupalkkeihin: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Kartassa käytettävä maan väri: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Vihreä
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Tummanvihreä
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violetti
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}Käänteinen vierityssuunta: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}Näkymän tasainen vieritys: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}Näytä mittauksen työkaluvihje, kun käytetään rakennustyökaluja: {ORANGE}{STRING}

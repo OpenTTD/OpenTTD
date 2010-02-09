@@ -1236,6 +1236,9 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :格子状（2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :格子状（3x3）
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :ランダム
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}町は道路建設を許容： {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :不可能
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :可能
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :可能、町を設定もできます
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :なし {RED}(製剤所は使えなくなります)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :雨林の中だけ
@@ -1720,6 +1723,14 @@ STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :サーバ満員
 
 # Network related errors
 ############ Leave those lines in this order!!
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :ゲームはポーズされました。 ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :ゲームはまだポーズされています。 ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :ゲームはまだポーズされています。({STRING}、{STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :ゲームはまだポーズされています。 ({STRING}、{STRING}、{STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :ポーズは解除されました。({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :プレヤーは十分いません
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :クライアントを接続中
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :手動
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :退出
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} は参加してきました
@@ -1751,6 +1762,9 @@ STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}ダウ�
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}選択した項目のダウンロードを開始します。
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}合計ダウンロードサイズ：{WHITE}{BYTES}
 STR_CONTENT_DETAIL_TITLE                                        :{SILVER}項目の情報
+STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}これはダウンロードをするために選択しませんでした
+STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}これをダウンロードをするために選択しました
+STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}これはもうダウンロードされました
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}項目名：{WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}バージョン：{WHITE}{STRING}
 STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}説明：{WHITE}{STRING}
@@ -1769,6 +1783,7 @@ STR_CONTENT_TYPE_AI                                             :AI
 STR_CONTENT_TYPE_AI_LIBRARY                                     :AI ライブラリ
 STR_CONTENT_TYPE_SCENARIO                                       :シナリオ
 STR_CONTENT_TYPE_HEIGHTMAP                                      :ハイトマップ
+STR_CONTENT_TYPE_BASE_SOUNDS                                    :ベース音
 STR_CONTENT_TYPE_BASE_MUSIC                                     :ベース音楽
 
 # Content downloading progress window
@@ -1776,6 +1791,7 @@ STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}項目�
 STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}ダウンロードを初期化中...
 STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}{STRING} をダウンロード中（{2:NUM} の {1:NUM}）
 STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}ダウンロード完了
+STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} ／ {BYTES} ダウンロードされました ({NUM} %)
 
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}サーバに接続することができませんでした...

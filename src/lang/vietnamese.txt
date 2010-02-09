@@ -1165,6 +1165,10 @@ STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Một ho
 STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Vùng nhận hàng tối đa của ga, bến, cảng: {ORANGE}{STRING} {RED}Cảnh báo: giá trị cao làm chậm game
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Bảo trì trực thăng ở sân bay trực thăng một cách tự động: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Neo c.cụ tôn tạo nền đất vào c.cụ tàu hoả/xe/tàu thủy/máy bay: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Màu đất hiển thị tại bản đồ nhỏ: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Lục
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Lục tối
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Tím
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}Đảo ngược hướng cuộn: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}Cuộn uyển chuyển cửa sổ: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}Hiện bảng chú giải đo lường khi dùng các công cụ xây dựng: {ORANGE}{STRING}
