@@ -1854,8 +1854,8 @@ STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Изкл
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}Включен
 STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Не отбелязвай зоната от предложеното място
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Отбележи зоната от предложеното място
-STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Приема: {GOLD}
-STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Запаси: {GOLD}
+STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Приема: {GOLD}{STRING}
+STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Запаси: {GOLD}{STRING}
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Присъедини станцията

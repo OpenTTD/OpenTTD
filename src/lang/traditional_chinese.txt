@@ -1861,8 +1861,8 @@ STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}關
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}開
 STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}不顯示設置地點的運輸涵蓋範圍
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}顯示設置地點的運輸涵蓋範圍
-STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}接受：{GOLD}
-STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}供應：{GOLD}
+STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}接受：{GOLD}{STRING}
+STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}供應：{GOLD}{STRING}
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}合併車站

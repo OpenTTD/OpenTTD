@@ -472,7 +472,7 @@ STR_QUIT_NO                                                     :{BLACK}Ne
 # Transparency settings window
 
 # Base for station construction window(s)
-STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Aceptas: {GOLD}
+STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Aceptas: {GOLD}{STRING}
 
 # Join station window
 

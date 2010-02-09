@@ -1899,8 +1899,8 @@ STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Ki
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}Be
 STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Az állomással lefedett terület elrejtése
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Az állomással lefedett terület mutatása (vonzáskörzet)
-STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Elfogad:{GOLD}
-STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Termel: {GOLD}
+STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Elfogad:{GOLD}{STRING}
+STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Termel: {GOLD}{STRING}
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Állomás egyesítése

@@ -762,8 +762,8 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}Дал�
 # Transparency settings window
 
 # Base for station construction window(s)
-STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Прифаќа: {GOLD}
-STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Залихи: {GOLD}
+STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Прифаќа: {GOLD}{STRING}
+STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Залихи: {GOLD}{STRING}
 
 # Join station window
 

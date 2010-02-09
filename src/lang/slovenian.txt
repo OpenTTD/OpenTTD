@@ -1907,8 +1907,8 @@ STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Izključ
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}Vključeno
 STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Ne osvetli zajemnega območja predvidene lokacije
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Osvetli zajemno območje predvidene lokacije
-STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Sprejema: {GOLD}
-STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Dobavlja: {GOLD}
+STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Sprejema: {GOLD}{STRING}
+STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Dobavlja: {GOLD}{STRING}
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Združi postaje

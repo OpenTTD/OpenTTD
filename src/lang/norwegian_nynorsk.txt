@@ -1866,8 +1866,8 @@ STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Av
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}På
 STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Gøym dekningsområdet til den foreslåtte plasseringa
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Syne dekningsområdet til den foreslåtte plasseringa
-STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Godtek: {GOLD}
-STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Forsyningar: {GOLD}
+STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Godtek: {GOLD}{STRING}
+STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Forsyningar: {GOLD}{STRING}
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Spleisa stasjonen

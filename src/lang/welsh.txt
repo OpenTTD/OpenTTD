@@ -1803,8 +1803,8 @@ STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}I Ffwrdd
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}Ymlaen
 STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Peidio amlygu'r ardal fydd yn cael ei ddylanwadu
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Amlygu'r ardal fydd yn cael ei ddylanwadu
-STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Derbyn: {GOLD}
-STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Deunydd crai yn weddill: {GOLD}
+STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Derbyn: {GOLD}{STRING}
+STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Deunydd crai yn weddill: {GOLD}{STRING}
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Uno gorsaf

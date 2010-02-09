@@ -1865,8 +1865,8 @@ STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}pois
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}päällä
 STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Älä korosta ehdotetun tontin vaikutusaluetta.
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Korosta ehdotetun tontin vaikutusalue.
-STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Vastaanottaa: {GOLD}
-STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Tuottaa: {GOLD}
+STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Vastaanottaa: {GOLD}{STRING}
+STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Tuottaa: {GOLD}{STRING}
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Liitä asema

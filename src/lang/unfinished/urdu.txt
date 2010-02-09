@@ -493,8 +493,8 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}کیا 
 # Transparency settings window
 
 # Base for station construction window(s)
-STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}منظور کرتا ہے: {GOLD}
-STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}فراہم کرتا ہے: {GOLD}
+STR_STATION_BUILD_ACCEPTS_CARGO                                 :{GOLD}{STRING}{BLACK}منظور کرتا ہے:
+STR_STATION_BUILD_SUPPLIES_CARGO                                :{GOLD}{STRING}{BLACK}فراہم کرتا ہے:
 
 # Join station window
 

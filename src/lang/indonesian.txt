@@ -1861,8 +1861,8 @@ STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Non-akti
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}Aktif
 STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Jangan soroti area yang dapat dilayani dari lokasi yang hendak dibangun
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Soroti area yang dapat dilayani dari lokasi yang hendak dibangun
-STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Menerima: {GOLD}
-STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Suplai: {GOLD}
+STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Menerima: {GOLD}{STRING}
+STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Suplai: {GOLD}{STRING}
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Gabung stasiun

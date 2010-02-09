@@ -1853,8 +1853,8 @@ STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}关闭
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}开启
 STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}不显示覆盖的区域
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}显示可以覆盖的区域
-STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}接受：{GOLD}
-STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}供给: {GOLD}
+STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}接受：{GOLD}{STRING}
+STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}供给: {GOLD}{STRING}
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}合并车站

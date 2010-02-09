@@ -1856,8 +1856,8 @@ STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}غلق
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}فتح
 STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}لا توضح منطقة التغطية للموقح المقترح
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}وضح منطقة التغطيةللموقع المقترح
-STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}يقبل: {GOLD}
-STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}الموارد: {GOLD}
+STR_STATION_BUILD_ACCEPTS_CARGO                                 :{GOLD}{STRING}{BLACK}يقبل:
+STR_STATION_BUILD_SUPPLIES_CARGO                                :{GOLD}{STRING}{BLACK}الموارد:
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE} اربط المحطات

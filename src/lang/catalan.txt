@@ -1862,8 +1862,8 @@ STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Inactiu
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}Actiu
 STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}No marcar l'àrea de cobertura del lloc proposat
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Marcar l'àrea de cobertura del lloc proposat
-STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Accepta: {GOLD}
-STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Provisions: {GOLD}
+STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Accepta: {GOLD}{STRING}
+STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Provisions: {GOLD}{STRING}
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Ajuntar estació

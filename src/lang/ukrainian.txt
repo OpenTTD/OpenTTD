@@ -1986,8 +1986,8 @@ STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Ні
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}Вкл
 STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Не підсвічувати зону дії станції
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Підсвічувати зону дії станції
-STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Приймає: {GOLD}
-STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Постачає: {GOLD}
+STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Приймає: {GOLD}{STRING}
+STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Постачає: {GOLD}{STRING}
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Об'єднати станцію

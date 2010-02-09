@@ -899,8 +899,8 @@ STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}بازگ
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}نور ناحیه ی اطراف ایستگاه
 STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}خاموش
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}روشن
-STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}قبول می کند: {GOLD}
-STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}تدارکات: {GOLD}
+STR_STATION_BUILD_ACCEPTS_CARGO                                 :{GOLD}{STRING}{BLACK}قبول می کند:
+STR_STATION_BUILD_SUPPLIES_CARGO                                :{GOLD}{STRING}{BLACK}تدارکات:
 
 # Join station window
 
