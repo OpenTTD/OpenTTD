@@ -161,7 +161,6 @@ static void ShowHelp()
 		"  -s drv              = Set sound driver (see below) (param bufsize,hz)\n"
 		"  -m drv              = Set music driver (see below)\n"
 		"  -b drv              = Set the blitter to use (see below)\n"
-		"  -a ai               = Force use of specific AI (see below)\n"
 		"  -r res              = Set resolution (for instance 800x600)\n"
 		"  -h                  = Display this help text\n"
 		"  -t year             = Set starting year\n"
