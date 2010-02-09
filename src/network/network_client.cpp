@@ -126,6 +126,7 @@ DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_COMPANY_INFO)
 
 	p = new Packet(PACKET_CLIENT_COMPANY_INFO);
 	MY_CLIENT->Send_Packet(p);
+	return NETWORK_RECV_STATUS_OKAY;
 }
 
 DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_JOIN)
@@ -150,6 +151,7 @@ DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_JOIN)
 	p->Send_uint8 (_network_join_as);     // PlayAs
 	p->Send_uint8 (NETLANG_ANY);          // Language
 	MY_CLIENT->Send_Packet(p);
+	return NETWORK_RECV_STATUS_OKAY;
 }
 
 DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_NEWGRFS_CHECKED)
@@ -162,6 +164,7 @@ DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_NEWGRFS_CHECKED)
 
 	Packet *p = new Packet(PACKET_CLIENT_NEWGRFS_CHECKED);
 	MY_CLIENT->Send_Packet(p);
+	return NETWORK_RECV_STATUS_OKAY;
 }
 
 DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_PASSWORD)(NetworkPasswordType type, const char *password)
@@ -177,6 +180,7 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_PASSWORD)(NetworkPasswordType type, 
 	p->Send_uint8 (type);
 	p->Send_string(type == NETWORK_GAME_PASSWORD ? password : GenerateCompanyPasswordHash(password));
 	MY_CLIENT->Send_Packet(p);
+	return NETWORK_RECV_STATUS_OKAY;
 }
 
 DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_GETMAP)
@@ -197,6 +201,7 @@ DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_GETMAP)
 	 * incompatible, which we would like to prevent by this. */
 	if (HasBit(_openttd_newgrf_version, 19)) p->Send_uint32(_openttd_newgrf_version);
 	MY_CLIENT->Send_Packet(p);
+	return NETWORK_RECV_STATUS_OKAY;
 }
 
 DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_MAP_OK)
@@ -210,6 +215,7 @@ DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_MAP_OK)
 
 	Packet *p = new Packet(PACKET_CLIENT_MAP_OK);
 	MY_CLIENT->Send_Packet(p);
+	return NETWORK_RECV_STATUS_OKAY;
 }
 
 DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_ACK)
@@ -225,6 +231,7 @@ DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_ACK)
 
 	p->Send_uint32(_frame_counter);
 	MY_CLIENT->Send_Packet(p);
+	return NETWORK_RECV_STATUS_OKAY;
 }
 
 /* Send a command packet to the server */
@@ -247,6 +254,7 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_COMMAND)(const CommandPacket *cp)
 	MY_CLIENT->Send_Command(p, cp);
 
 	MY_CLIENT->Send_Packet(p);
+	return NETWORK_RECV_STATUS_OKAY;
 }
 
 /* Send a chat-packet over the network */
@@ -272,6 +280,7 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_CHAT)(NetworkAction action, DestType
 	p->Send_uint64(data);
 
 	MY_CLIENT->Send_Packet(p);
+	return NETWORK_RECV_STATUS_OKAY;
 }
 
 /* Send an error-packet over the network */
@@ -287,6 +296,7 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_ERROR)(NetworkErrorCode errorno)
 
 	p->Send_uint8(errorno);
 	MY_CLIENT->Send_Packet(p);
+	return NETWORK_RECV_STATUS_OKAY;
 }
 
 DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_SET_PASSWORD)(const char *password)
@@ -301,6 +311,7 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_SET_PASSWORD)(const char *password)
 
 	p->Send_string(GenerateCompanyPasswordHash(password));
 	MY_CLIENT->Send_Packet(p);
+	return NETWORK_RECV_STATUS_OKAY;
 }
 
 DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_SET_NAME)(const char *name)
@@ -315,6 +326,7 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_SET_NAME)(const char *name)
 
 	p->Send_string(name);
 	MY_CLIENT->Send_Packet(p);
+	return NETWORK_RECV_STATUS_OKAY;
 }
 
 /* Send an quit-packet over the network */
@@ -328,6 +340,7 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_QUIT)()
 	Packet *p = new Packet(PACKET_CLIENT_QUIT);
 
 	MY_CLIENT->Send_Packet(p);
+	return NETWORK_RECV_STATUS_OKAY;
 }
 
 DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_RCON)(const char *pass, const char *command)
@@ -336,6 +349,7 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_RCON)(const char *pass, const char *
 	p->Send_string(pass);
 	p->Send_string(command);
 	MY_CLIENT->Send_Packet(p);
+	return NETWORK_RECV_STATUS_OKAY;
 }
 
 DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_MOVE)(CompanyID company, const char *pass)
@@ -344,6 +358,7 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_MOVE)(CompanyID company, const char 
 	p->Send_uint8(company);
 	p->Send_string(GenerateCompanyPasswordHash(pass));
 	MY_CLIENT->Send_Packet(p);
+	return NETWORK_RECV_STATUS_OKAY;
 }
 
 
@@ -512,11 +527,11 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CHECK_NEWGRFS)
 
 	if (ret == NETWORK_RECV_STATUS_OKAY) {
 		/* Start receiving the map */
-		SEND_COMMAND(PACKET_CLIENT_NEWGRFS_CHECKED)();
-	} else {
-		/* NewGRF mismatch, bail out */
-		_switch_mode_errorstr = STR_NETWORK_ERROR_NEWGRF_MISMATCH;
+		return SEND_COMMAND(PACKET_CLIENT_NEWGRFS_CHECKED)();
 	}
+
+	/* NewGRF mismatch, bail out */
+	_switch_mode_errorstr = STR_NETWORK_ERROR_NEWGRF_MISMATCH;
 	return ret;
 }
 
@@ -538,7 +553,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_NEED_PASSWORD)
 			if (StrEmpty(password)) {
 				ShowNetworkNeedPassword(type);
 			} else {
-				SEND_COMMAND(PACKET_CLIENT_PASSWORD)(type, password);
+				return SEND_COMMAND(PACKET_CLIENT_PASSWORD)(type, password);
 			}
 			return NETWORK_RECV_STATUS_OKAY;
 
@@ -555,8 +570,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_WELCOME)
 	p->Recv_string(_password_server_id, sizeof(_password_server_id));
 
 	/* Start receiving the map */
-	SEND_COMMAND(PACKET_CLIENT_GETMAP)();
-	return NETWORK_RECV_STATUS_OKAY;
+	return SEND_COMMAND(PACKET_CLIENT_GETMAP)();
 }
 
 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_WAIT)
@@ -763,8 +777,9 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CHAT)
 		ci = ci_to;
 	}
 
-	if (ci != NULL)
+	if (ci != NULL) {
 		NetworkTextMessage(action, (ConsoleColour)GetDrawStringCompanyColour(ci->client_playas), self_send, name, msg, data);
+	}
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
@@ -808,8 +823,9 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_JOIN)
 	ClientID client_id = (ClientID)p->Recv_uint32();
 
 	NetworkClientInfo *ci = NetworkFindClientInfoFromClientID(client_id);
-	if (ci != NULL)
+	if (ci != NULL) {
 		NetworkTextMessage(NETWORK_ACTION_JOIN, CC_DEFAULT, false, ci->client_name);
+	}
 
 	SetWindowDirty(WC_CLIENT_LIST, 0);
 

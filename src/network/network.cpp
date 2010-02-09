@@ -292,7 +292,7 @@ static void NetworkClientError(NetworkRecvStatus res, NetworkClientSocket *cs)
 	/* We just want to close the connection.. */
 	if (res == NETWORK_RECV_STATUS_CLOSE_QUERY) {
 		cs->NetworkSocketHandler::CloseConnection();
-		NetworkCloseClient(cs, true);
+		NetworkCloseClient(cs, res);
 		_networking = false;
 
 		DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
@@ -313,7 +313,7 @@ static void NetworkClientError(NetworkRecvStatus res, NetworkClientSocket *cs)
 	}
 
 	_switch_mode = SM_MENU;
-	NetworkCloseClient(cs, true);
+	NetworkCloseClient(cs, res);
 	_networking = false;
 }
 
@@ -533,8 +533,9 @@ static NetworkClientSocket *NetworkAllocClient(SOCKET s)
 }
 
 /* Close a connection */
-void NetworkCloseClient(NetworkClientSocket *cs, bool error)
+NetworkRecvStatus NetworkCloseClient(NetworkClientSocket *cs, NetworkRecvStatus status)
 {
+	assert(status != NETWORK_RECV_STATUS_OKAY);
 	/*
 	 * Sending a message just before leaving the game calls cs->Send_Packets.
 	 * This might invoke this function, which means that when we close the
@@ -542,9 +543,9 @@ void NetworkCloseClient(NetworkClientSocket *cs, bool error)
 	 * connection. This handles that case gracefully without having to make
 	 * that code any more complex or more aware of the validity of the socket.
 	 */
-	if (cs->sock == INVALID_SOCKET) return;
+	if (cs->sock == INVALID_SOCKET) return status;
 
-	if (error && !cs->HasClientQuit() && _network_server && cs->status > STATUS_INACTIVE) {
+	if (status != NETWORK_RECV_STATUS_CONN_LOST && !cs->HasClientQuit() && _network_server && cs->status > STATUS_INACTIVE) {
 		/* We did not receive a leave message from this client... */
 		char client_name[NETWORK_CLIENT_NAME_LENGTH];
 		NetworkClientSocket *new_cs;
@@ -575,6 +576,8 @@ void NetworkCloseClient(NetworkClientSocket *cs, bool error)
 
 	delete cs->GetInfo();
 	delete cs;
+
+	return status;
 }
 
 /* For the server, to accept new clients */
@@ -671,7 +674,7 @@ static void NetworkClose()
 			SEND_COMMAND(PACKET_CLIENT_QUIT)();
 			cs->Send_Packets();
 		}
-		NetworkCloseClient(cs, false);
+		NetworkCloseClient(cs, NETWORK_RECV_STATUS_CONN_LOST);
 	}
 
 	if (_network_server) {

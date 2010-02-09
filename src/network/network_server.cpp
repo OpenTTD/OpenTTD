@@ -62,6 +62,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_CLIENT_INFO)(NetworkClientSocket *cs
 
 		cs->Send_Packet(p);
 	}
+	return NETWORK_RECV_STATUS_OKAY;
 }
 
 DEF_SERVER_SEND_COMMAND(PACKET_SERVER_COMPANY_INFO)
@@ -129,6 +130,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_COMPANY_INFO)
 	p->Send_bool  (false);
 
 	cs->Send_Packet(p);
+	return NETWORK_RECV_STATUS_OKAY;
 }
 
 DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR)(NetworkClientSocket *cs, NetworkErrorCode error)
@@ -174,13 +176,8 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR)(NetworkClientSocket *cs, Netw
 		DEBUG(net, 1, "Client %d made an error and has been disconnected. Reason: '%s'", cs->client_id, str);
 	}
 
-	cs->CloseConnection(false);
-
-	/* Make sure the data get's there before we close the connection */
-	cs->Send_Packets();
-
 	/* The client made a mistake, so drop his connection now! */
-	NetworkCloseClient(cs, false);
+	return NetworkCloseClient(cs, NETWORK_RECV_STATUS_SERVER_ERROR);
 }
 
 DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_CHECK_NEWGRFS)(NetworkClientSocket *cs)
@@ -209,6 +206,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_CHECK_NEWGRFS)(NetworkClientSocket *
 	}
 
 	cs->Send_Packet(p);
+	return NETWORK_RECV_STATUS_OKAY;
 }
 
 DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_NEED_PASSWORD)(NetworkClientSocket *cs, NetworkPasswordType type)
@@ -221,7 +219,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_NEED_PASSWORD)(NetworkClientSocket *
 	 */
 
 	/* Invalid packet when status is AUTH or higher */
-	if (cs->status >= STATUS_AUTH) return;
+	if (cs->status >= STATUS_AUTH) return NetworkCloseClient(cs, NETWORK_RECV_STATUS_MALFORMED_PACKET);
 
 	cs->status = STATUS_AUTHORIZING;
 
@@ -230,6 +228,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_NEED_PASSWORD)(NetworkClientSocket *
 	p->Send_uint32(_settings_game.game_creation.generation_seed);
 	p->Send_string(_settings_client.network.network_id);
 	cs->Send_Packet(p);
+	return NETWORK_RECV_STATUS_OKAY;
 }
 
 DEF_SERVER_SEND_COMMAND(PACKET_SERVER_WELCOME)
@@ -245,7 +244,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_WELCOME)
 	NetworkClientSocket *new_cs;
 
 	/* Invalid packet when status is AUTH or higher */
-	if (cs->status >= STATUS_AUTH) return;
+	if (cs->status >= STATUS_AUTH) return NetworkCloseClient(cs, NETWORK_RECV_STATUS_MALFORMED_PACKET);
 
 	cs->status = STATUS_AUTH;
 	_network_game_info.clients_on++;
@@ -262,7 +261,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_WELCOME)
 			SEND_COMMAND(PACKET_SERVER_CLIENT_INFO)(cs, new_cs->GetInfo());
 	}
 	/* Also send the info of the server */
-	SEND_COMMAND(PACKET_SERVER_CLIENT_INFO)(cs, NetworkFindClientInfoFromClientID(CLIENT_ID_SERVER));
+	return SEND_COMMAND(PACKET_SERVER_CLIENT_INFO)(cs, NetworkFindClientInfoFromClientID(CLIENT_ID_SERVER));
 }
 
 DEF_SERVER_SEND_COMMAND(PACKET_SERVER_WAIT)
@@ -286,6 +285,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_WAIT)
 	p = new Packet(PACKET_SERVER_WAIT);
 	p->Send_uint8(waiting);
 	cs->Send_Packet(p);
+	return NETWORK_RECV_STATUS_OKAY;
 }
 
 /* This sends the map to the client */
@@ -310,8 +310,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_MAP)
 
 	if (cs->status < STATUS_AUTH) {
 		/* Illegal call, return error and ignore the packet */
-		SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_AUTHORIZED);
-		return;
+		return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_AUTHORIZED);
 	}
 
 	if (cs->status == STATUS_AUTH) {
@@ -366,23 +365,21 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_MAP)
 				cs->status = STATUS_DONE_MAP;
 				fclose(file_pointer);
 
-				{
-					NetworkClientSocket *new_cs;
-					bool new_map_client = false;
-					/* Check if there is a client waiting for receiving the map
-					 *  and start sending him the map */
-					FOR_ALL_CLIENT_SOCKETS(new_cs) {
-						if (new_cs->status == STATUS_MAP_WAIT) {
-							/* Check if we already have a new client to send the map to */
-							if (!new_map_client) {
-								/* If not, this client will get the map */
-								new_cs->status = STATUS_AUTH;
-								new_map_client = true;
-								SEND_COMMAND(PACKET_SERVER_MAP)(new_cs);
-							} else {
-								/* Else, send the other clients how many clients are in front of them */
-								SEND_COMMAND(PACKET_SERVER_WAIT)(new_cs);
-							}
+				NetworkClientSocket *new_cs;
+				bool new_map_client = false;
+				/* Check if there is a client waiting for receiving the map
+				 *  and start sending him the map */
+				FOR_ALL_CLIENT_SOCKETS(new_cs) {
+					if (new_cs->status == STATUS_MAP_WAIT) {
+						/* Check if we already have a new client to send the map to */
+						if (!new_map_client) {
+							/* If not, this client will get the map */
+							new_cs->status = STATUS_AUTH;
+							new_map_client = true;
+							SEND_COMMAND(PACKET_SERVER_MAP)(new_cs);
+						} else {
+							/* Else, send the other clients how many clients are in front of them */
+							SEND_COMMAND(PACKET_SERVER_WAIT)(new_cs);
 						}
 					}
 				}
@@ -402,6 +399,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_MAP)
 			if (sent_packets > 1) sent_packets /= 2;
 		}
 	}
+	return NETWORK_RECV_STATUS_OKAY;
 }
 
 DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_JOIN)(NetworkClientSocket *cs, ClientID client_id)
@@ -420,6 +418,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_JOIN)(NetworkClientSocket *cs, Clien
 	p->Send_uint32(client_id);
 
 	cs->Send_Packet(p);
+	return NETWORK_RECV_STATUS_OKAY;
 }
 
 
@@ -446,6 +445,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_FRAME)
 #endif
 #endif
 	cs->Send_Packet(p);
+	return NETWORK_RECV_STATUS_OKAY;
 }
 
 DEF_SERVER_SEND_COMMAND(PACKET_SERVER_SYNC)
@@ -468,6 +468,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_SYNC)
 	p->Send_uint32(_sync_seed_2);
 #endif
 	cs->Send_Packet(p);
+	return NETWORK_RECV_STATUS_OKAY;
 }
 
 DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_COMMAND)(NetworkClientSocket *cs, const CommandPacket *cp)
@@ -493,6 +494,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_COMMAND)(NetworkClientSocket *cs, co
 	p->Send_bool  (cp->my_cmd);
 
 	cs->Send_Packet(p);
+	return NETWORK_RECV_STATUS_OKAY;
 }
 
 DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_CHAT)(NetworkClientSocket *cs, NetworkAction action, ClientID client_id, bool self_send, const char *msg, int64 data)
@@ -516,6 +518,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_CHAT)(NetworkClientSocket *cs, Netwo
 	p->Send_uint64(data);
 
 	cs->Send_Packet(p);
+	return NETWORK_RECV_STATUS_OKAY;
 }
 
 DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR_QUIT)(NetworkClientSocket *cs, ClientID client_id, NetworkErrorCode errorno)
@@ -535,6 +538,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR_QUIT)(NetworkClientSocket *cs,
 	p->Send_uint8 (errorno);
 
 	cs->Send_Packet(p);
+	return NETWORK_RECV_STATUS_OKAY;
 }
 
 DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_QUIT)(NetworkClientSocket *cs, ClientID client_id)
@@ -552,6 +556,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_QUIT)(NetworkClientSocket *cs, Clien
 	p->Send_uint32(client_id);
 
 	cs->Send_Packet(p);
+	return NETWORK_RECV_STATUS_OKAY;
 }
 
 DEF_SERVER_SEND_COMMAND(PACKET_SERVER_SHUTDOWN)
@@ -565,6 +570,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_SHUTDOWN)
 
 	Packet *p = new Packet(PACKET_SERVER_SHUTDOWN);
 	cs->Send_Packet(p);
+	return NETWORK_RECV_STATUS_OKAY;
 }
 
 DEF_SERVER_SEND_COMMAND(PACKET_SERVER_NEWGAME)
@@ -578,6 +584,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_NEWGAME)
 
 	Packet *p = new Packet(PACKET_SERVER_NEWGAME);
 	cs->Send_Packet(p);
+	return NETWORK_RECV_STATUS_OKAY;
 }
 
 DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_RCON)(NetworkClientSocket *cs, uint16 colour, const char *command)
@@ -587,6 +594,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_RCON)(NetworkClientSocket *cs, uint1
 	p->Send_uint16(colour);
 	p->Send_string(command);
 	cs->Send_Packet(p);
+	return NETWORK_RECV_STATUS_OKAY;
 }
 
 DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_MOVE)(NetworkClientSocket *cs, ClientID client_id, CompanyID company_id)
@@ -596,6 +604,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_MOVE)(NetworkClientSocket *cs, Clien
 	p->Send_uint32(client_id);
 	p->Send_uint8(company_id);
 	cs->Send_Packet(p);
+	return NETWORK_RECV_STATUS_OKAY;
 }
 
 DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_COMPANY_UPDATE)(NetworkClientSocket *cs)
@@ -604,6 +613,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_COMPANY_UPDATE)(NetworkClientSocket 
 
 	p->Send_uint16(_network_company_passworded);
 	cs->Send_Packet(p);
+	return NETWORK_RECV_STATUS_OKAY;
 }
 
 DEF_SERVER_SEND_COMMAND(PACKET_SERVER_CONFIG_UPDATE)
@@ -613,6 +623,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_CONFIG_UPDATE)
 	p->Send_uint8(_settings_client.network.max_companies);
 	p->Send_uint8(_settings_client.network.max_spectators);
 	cs->Send_Packet(p);
+	return NETWORK_RECV_STATUS_OKAY;
 }
 
 /***********
@@ -622,39 +633,35 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_CONFIG_UPDATE)
 
 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMPANY_INFO)
 {
-	SEND_COMMAND(PACKET_SERVER_COMPANY_INFO)(cs);
-	return NETWORK_RECV_STATUS_OKAY;
+	return SEND_COMMAND(PACKET_SERVER_COMPANY_INFO)(cs);
 }
 
 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_NEWGRFS_CHECKED)
 {
 	if (cs->status != STATUS_INACTIVE) {
 		/* Illegal call, return error and ignore the packet */
-		SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
-		return NETWORK_RECV_STATUS_OKAY;
+		return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
 	}
 
 	NetworkClientInfo *ci = cs->GetInfo();
 
 	/* We now want a password from the client else we do not allow him in! */
 	if (!StrEmpty(_settings_client.network.server_password)) {
-		SEND_COMMAND(PACKET_SERVER_NEED_PASSWORD)(cs, NETWORK_GAME_PASSWORD);
-	} else {
-		if (Company::IsValidID(ci->client_playas) && !StrEmpty(_network_company_states[ci->client_playas].password)) {
-			SEND_COMMAND(PACKET_SERVER_NEED_PASSWORD)(cs, NETWORK_COMPANY_PASSWORD);
-		} else {
-			SEND_COMMAND(PACKET_SERVER_WELCOME)(cs);
-		}
+		return SEND_COMMAND(PACKET_SERVER_NEED_PASSWORD)(cs, NETWORK_GAME_PASSWORD);
 	}
-	return NETWORK_RECV_STATUS_OKAY;
+
+	if (Company::IsValidID(ci->client_playas) && !StrEmpty(_network_company_states[ci->client_playas].password)) {
+		return SEND_COMMAND(PACKET_SERVER_NEED_PASSWORD)(cs, NETWORK_COMPANY_PASSWORD);
+	}
+
+	return SEND_COMMAND(PACKET_SERVER_WELCOME)(cs);
 }
 
 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 {
 	if (cs->status != STATUS_INACTIVE) {
 		/* Illegal call, return error and ignore the packet */
-		SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
-		return NETWORK_RECV_STATUS_OKAY;
+		return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
 	}
 
 	char name[NETWORK_CLIENT_NAME_LENGTH];
@@ -668,8 +675,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 	/* Check if the client has revision control enabled */
 	if (!IsNetworkCompatibleVersion(client_revision)) {
 		/* Different revisions!! */
-		SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_WRONG_REVISION);
-		return NETWORK_RECV_STATUS_OKAY;
+		return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_WRONG_REVISION);
 	}
 
 	p->Recv_string(name, sizeof(name));
@@ -682,20 +688,17 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 	switch (playas) {
 		case COMPANY_NEW_COMPANY: // New company
 			if (Company::GetNumItems() >= _settings_client.network.max_companies) {
-				SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_FULL);
-				return NETWORK_RECV_STATUS_OKAY;
+				return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_FULL);
 			}
 			break;
 		case COMPANY_SPECTATOR: // Spectator
 			if (NetworkSpectatorCount() >= _settings_client.network.max_spectators) {
-				SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_FULL);
-				return NETWORK_RECV_STATUS_OKAY;
+				return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_FULL);
 			}
 			break;
 		default: // Join another company (companies 1-8 (index 0-7))
 			if (!Company::IsValidHumanID(playas)) {
-				SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_COMPANY_MISMATCH);
-				return NETWORK_RECV_STATUS_OKAY;
+				return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_COMPANY_MISMATCH);
 			}
 			break;
 	}
@@ -705,8 +708,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 
 	if (!NetworkFindName(name)) { // Change name if duplicate
 		/* We could not create a name for this client */
-		SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NAME_IN_USE);
-		return NETWORK_RECV_STATUS_OKAY;
+		return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NAME_IN_USE);
 	}
 
 	ci = cs->GetInfo();
@@ -719,11 +721,10 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 	if (Company::IsValidID(playas)) _network_company_states[playas].months_empty = 0;
 
 	if (_grfconfig == NULL) {
-		RECEIVE_COMMAND(PACKET_CLIENT_NEWGRFS_CHECKED)(cs, NULL);
-	} else {
-		SEND_COMMAND(PACKET_SERVER_CHECK_NEWGRFS)(cs);
+		return RECEIVE_COMMAND(PACKET_CLIENT_NEWGRFS_CHECKED)(cs, NULL);
 	}
-	return NETWORK_RECV_STATUS_OKAY;
+
+	return SEND_COMMAND(PACKET_SERVER_CHECK_NEWGRFS)(cs);
 }
 
 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_PASSWORD)
@@ -739,36 +740,29 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_PASSWORD)
 		/* Check game-password */
 		if (strcmp(password, _settings_client.network.server_password) != 0) {
 			/* Password is invalid */
-			SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_WRONG_PASSWORD);
-			return NETWORK_RECV_STATUS_OKAY;
+			return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_WRONG_PASSWORD);
 		}
 
 		ci = cs->GetInfo();
 
 		if (Company::IsValidID(ci->client_playas) && !StrEmpty(_network_company_states[ci->client_playas].password)) {
-			SEND_COMMAND(PACKET_SERVER_NEED_PASSWORD)(cs, NETWORK_COMPANY_PASSWORD);
-			return NETWORK_RECV_STATUS_OKAY;
+			return SEND_COMMAND(PACKET_SERVER_NEED_PASSWORD)(cs, NETWORK_COMPANY_PASSWORD);
 		}
 
 		/* Valid password, allow user */
-		SEND_COMMAND(PACKET_SERVER_WELCOME)(cs);
-		return NETWORK_RECV_STATUS_OKAY;
+		return SEND_COMMAND(PACKET_SERVER_WELCOME)(cs);
 	} else if (cs->status == STATUS_AUTHORIZING && type == NETWORK_COMPANY_PASSWORD) {
 		ci = cs->GetInfo();
 
 		if (strcmp(password, _network_company_states[ci->client_playas].password) != 0) {
 			/* Password is invalid */
-			SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_WRONG_PASSWORD);
-			return NETWORK_RECV_STATUS_OKAY;
+			return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_WRONG_PASSWORD);
 		}
 
-		SEND_COMMAND(PACKET_SERVER_WELCOME)(cs);
-		return NETWORK_RECV_STATUS_OKAY;
+		return SEND_COMMAND(PACKET_SERVER_WELCOME)(cs);
 	}
 
-
-	SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
-	return NETWORK_RECV_STATUS_OKAY;
+	return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
 }
 
 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_GETMAP)
@@ -786,21 +780,18 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_GETMAP)
 		if (_openttd_newgrf_version != p->Recv_uint32()) {
 			/* The version we get from the client differs, it must have the
 			 * wrong version. The client must be wrong. */
-			SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
-			return NETWORK_RECV_STATUS_OKAY;
+			return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
 		}
 	} else if (p->size != 3) {
 		/* We received a packet from a version that claims to be stable.
 		 * That shouldn't happen. The client must be wrong. */
-		SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
-		return NETWORK_RECV_STATUS_OKAY;
+		return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
 	}
 
 	/* The client was never joined.. so this is impossible, right?
 	 *  Ignore the packet, give the client a warning, and close his connection */
 	if (cs->status < STATUS_AUTH || cs->HasClientQuit()) {
-		SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_AUTHORIZED);
-		return NETWORK_RECV_STATUS_OKAY;
+		return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_AUTHORIZED);
 	}
 
 	/* Check if someone else is receiving the map */
@@ -808,14 +799,12 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_GETMAP)
 		if (new_cs->status == STATUS_MAP) {
 			/* Tell the new client to wait */
 			cs->status = STATUS_MAP_WAIT;
-			SEND_COMMAND(PACKET_SERVER_WAIT)(cs);
-			return NETWORK_RECV_STATUS_OKAY;
+			return SEND_COMMAND(PACKET_SERVER_WAIT)(cs);
 		}
 	}
 
 	/* We receive a request to upload the map.. give it to the client! */
-	SEND_COMMAND(PACKET_SERVER_MAP)(cs);
-	return NETWORK_RECV_STATUS_OKAY;
+	return SEND_COMMAND(PACKET_SERVER_MAP)(cs);
 }
 
 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_MAP_OK)
@@ -852,12 +841,11 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_MAP_OK)
 		SEND_COMMAND(PACKET_SERVER_CONFIG_UPDATE)(cs);
 
 		/* quickly update the syncing client with company details */
-		SEND_COMMAND(PACKET_SERVER_COMPANY_UPDATE)(cs);
-	} else {
-		/* Wrong status for this packet, give a warning to client, and close connection */
-		SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
+		return SEND_COMMAND(PACKET_SERVER_COMPANY_UPDATE)(cs);
 	}
-	return NETWORK_RECV_STATUS_OKAY;
+
+	/* Wrong status for this packet, give a warning to client, and close connection */
+	return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
 }
 
 /** The client has done a command and wants us to handle it
@@ -871,8 +859,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 	/* The client was never joined.. so this is impossible, right?
 	 *  Ignore the packet, give the client a warning, and close his connection */
 	if (cs->status < STATUS_DONE_MAP || cs->HasClientQuit()) {
-		SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
-		return NETWORK_RECV_STATUS_OKAY;
+		return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
 	}
 
 	CommandPacket cp;
@@ -884,21 +871,18 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 
 	if (err != NULL) {
 		IConsolePrintF(CC_ERROR, "WARNING: %s from client %d (IP: %s).", err, ci->client_id, GetClientIP(ci));
-		SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
-		return NETWORK_RECV_STATUS_OKAY;
+		return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
 	}
 
 
 	if ((GetCommandFlags(cp.cmd) & CMD_SERVER) && ci->client_id != CLIENT_ID_SERVER) {
 		IConsolePrintF(CC_ERROR, "WARNING: server only command from: client %d (IP: %s), kicking...", ci->client_id, GetClientIP(ci));
-		SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_KICKED);
-		return NETWORK_RECV_STATUS_OKAY;
+		return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_KICKED);
 	}
 
 	if ((GetCommandFlags(cp.cmd) & CMD_SPECTATOR) == 0 && !Company::IsValidID(cp.company) && ci->client_id != CLIENT_ID_SERVER) {
 		IConsolePrintF(CC_ERROR, "WARNING: spectator issueing command from client %d (IP: %s), kicking...", ci->client_id, GetClientIP(ci));
-		SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_KICKED);
-		return NETWORK_RECV_STATUS_OKAY;
+		return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_KICKED);
 	}
 
 	/** Only CMD_COMPANY_CTRL is always allowed, for the rest, playas needs
@@ -908,8 +892,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 	if (!(cp.cmd == CMD_COMPANY_CTRL && cp.p1 == 0 && ci->client_playas == COMPANY_NEW_COMPANY) && ci->client_playas != cp.company) {
 		IConsolePrintF(CC_ERROR, "WARNING: client %d (IP: %s) tried to execute a command as company %d, kicking...",
 		               ci->client_playas + 1, GetClientIP(ci), cp.company + 1);
-		SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_COMPANY_MISMATCH);
-		return NETWORK_RECV_STATUS_OKAY;
+		return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_COMPANY_MISMATCH);
 	}
 
 	/** @todo CMD_COMPANY_CTRL with p1 = 0 announces a new company to the server. To give the
@@ -919,8 +902,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 	 */
 	if (cp.cmd == CMD_COMPANY_CTRL) {
 		if (cp.p1 != 0 || cp.company != COMPANY_SPECTATOR) {
-			SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_CHEATER);
-			return NETWORK_RECV_STATUS_OKAY;
+			return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_CHEATER);
 		}
 
 		/* Check if we are full - else it's possible for spectators to send a CMD_COMPANY_CTRL and the company is created regardless of max_companies! */
@@ -1022,8 +1004,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_ACK)
 {
 	if (cs->status < STATUS_AUTH) {
 		/* Illegal call, return error and ignore the packet */
-		SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_AUTHORIZED);
-		return NETWORK_RECV_STATUS_OKAY;
+		return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_AUTHORIZED);
 	}
 
 	uint32 frame = p->Recv_uint32();
@@ -1150,8 +1131,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_CHAT)
 {
 	if (cs->status < STATUS_AUTH) {
 		/* Illegal call, return error and ignore the packet */
-		SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_AUTHORIZED);
-		return NETWORK_RECV_STATUS_OKAY;
+		return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_AUTHORIZED);
 	}
 
 	NetworkAction action = (NetworkAction)p->Recv_uint8();
@@ -1174,7 +1154,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_CHAT)
 			break;
 		default:
 			IConsolePrintF(CC_ERROR, "WARNING: invalid chat action from client %d (IP: %s).", ci->client_id, GetClientIP(ci));
-			SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
+			return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
 			break;
 	}
 	return NETWORK_RECV_STATUS_OKAY;
@@ -1184,8 +1164,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_SET_PASSWORD)
 {
 	if (cs->status != STATUS_ACTIVE) {
 		/* Illegal call, return error and ignore the packet */
-		SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
-		return NETWORK_RECV_STATUS_OKAY;
+		return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
 	}
 
 	char password[NETWORK_PASSWORD_LENGTH];
@@ -1205,8 +1184,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_SET_NAME)
 {
 	if (cs->status != STATUS_ACTIVE) {
 		/* Illegal call, return error and ignore the packet */
-		SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
-		return NETWORK_RECV_STATUS_OKAY;
+		return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
 	}
 
 	char client_name[NETWORK_CLIENT_NAME_LENGTH];
@@ -1630,7 +1608,7 @@ void NetworkServer_Tick(bool send_frame)
 					/* Client did still not report in after 4 game-day, drop him
 					 *  (that is, the 3 of above, + 1 before any lag is counted) */
 					IConsolePrintF(CC_ERROR,"Client #%d is dropped because the client did not respond for more than 4 game-days", cs->client_id);
-					NetworkCloseClient(cs, true);
+					NetworkCloseClient(cs, NETWORK_RECV_STATUS_SERVER_ERROR);
 					continue;
 				}
 
@@ -1646,13 +1624,13 @@ void NetworkServer_Tick(bool send_frame)
 			int lag = NetworkCalculateLag(cs);
 			if (lag > _settings_client.network.max_join_time) {
 				IConsolePrintF(CC_ERROR,"Client #%d is dropped because it took longer than %d ticks for him to join", cs->client_id, _settings_client.network.max_join_time);
-				NetworkCloseClient(cs, true);
+				NetworkCloseClient(cs, NETWORK_RECV_STATUS_SERVER_ERROR);
 			}
 		} else if (cs->status == STATUS_INACTIVE) {
 			int lag = NetworkCalculateLag(cs);
 			if (lag > 4 * DAY_TICKS) {
 				IConsolePrintF(CC_ERROR,"Client #%d is dropped because it took longer than %d ticks to start the joining process", cs->client_id, 4 * DAY_TICKS);
-				NetworkCloseClient(cs, true);
+				NetworkCloseClient(cs, NETWORK_RECV_STATUS_SERVER_ERROR);
 			}
 		}
 

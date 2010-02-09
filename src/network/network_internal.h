@@ -153,7 +153,7 @@ void NetworkExecuteLocalCommandQueue();
 void NetworkFreeLocalCommandQueue();
 
 /* from network.c */
-void NetworkCloseClient(NetworkClientSocket *cs, bool error);
+NetworkRecvStatus NetworkCloseClient(NetworkClientSocket *cs, NetworkRecvStatus status);
 void NetworkTextMessage(NetworkAction action, ConsoleColour colour, bool self_send, const char *name, const char *str = "", int64 data = 0);
 void NetworkGetClientName(char *clientname, size_t size, const NetworkClientSocket *cs);
 uint NetworkCalculateLag(const NetworkClientSocket *cs);
@@ -164,11 +164,11 @@ bool NetworkFindName(char new_name[NETWORK_CLIENT_NAME_LENGTH]);
 
 /* Macros to make life a bit more easier */
 #define DEF_CLIENT_RECEIVE_COMMAND(type) NetworkRecvStatus NetworkPacketReceive_ ## type ## _command(Packet *p)
-#define DEF_CLIENT_SEND_COMMAND(type) void NetworkPacketSend_ ## type ## _command()
-#define DEF_CLIENT_SEND_COMMAND_PARAM(type) void NetworkPacketSend_ ## type ## _command
+#define DEF_CLIENT_SEND_COMMAND(type) NetworkRecvStatus NetworkPacketSend_ ## type ## _command()
+#define DEF_CLIENT_SEND_COMMAND_PARAM(type) NetworkRecvStatus NetworkPacketSend_ ## type ## _command
 #define DEF_SERVER_RECEIVE_COMMAND(type) NetworkRecvStatus NetworkPacketReceive_ ## type ## _command(NetworkClientSocket *cs, Packet *p)
-#define DEF_SERVER_SEND_COMMAND(type) void NetworkPacketSend_ ## type ## _command(NetworkClientSocket *cs)
-#define DEF_SERVER_SEND_COMMAND_PARAM(type) void NetworkPacketSend_ ## type ## _command
+#define DEF_SERVER_SEND_COMMAND(type) NetworkRecvStatus NetworkPacketSend_ ## type ## _command(NetworkClientSocket *cs)
+#define DEF_SERVER_SEND_COMMAND_PARAM(type) NetworkRecvStatus NetworkPacketSend_ ## type ## _command
 
 #define SEND_COMMAND(type) NetworkPacketSend_ ## type ## _command
 #define RECEIVE_COMMAND(type) NetworkPacketReceive_ ## type ## _command
