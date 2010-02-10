@@ -165,6 +165,7 @@ genworld.h
 gfx_func.h
 gfx_type.h
 gfxinit.h
+graph_gui.h
 group.h
 group_gui.h
 group_type.h

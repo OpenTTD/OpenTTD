@@ -29,16 +29,6 @@ void ShowGameDifficulty();
 void ShowGameSettings();
 void DrawArrowButtons(int x, int y, Colours button_colour, byte state, bool clickable_left, bool clickable_right);
 
-/* graph_gui.cpp */
-void ShowOperatingProfitGraph();
-void ShowIncomeGraph();
-void ShowDeliveredCargoGraph();
-void ShowPerformanceHistoryGraph();
-void ShowCompanyValueGraph();
-void ShowCargoPaymentRates();
-void ShowCompanyLeagueTable();
-void ShowPerformanceRatingDetail();
-
 /* train_gui.cpp */
 void ShowOrdersWindow(const Vehicle *v);
 

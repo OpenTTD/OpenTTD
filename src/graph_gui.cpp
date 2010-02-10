@@ -11,7 +11,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "gui.h"
+#include "graph_gui.h"
 #include "window_gui.h"
 #include "company_base.h"
 #include "company_gui.h"

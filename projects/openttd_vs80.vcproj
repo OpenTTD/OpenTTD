@@ -1024,6 +1024,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\graph_gui.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\group.h"
 				>
 			</File>
