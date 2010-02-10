@@ -37,7 +37,7 @@ struct BinaryHeapNode {
 };
 
 
-struct Queue{
+struct Queue {
 	/*
 	 * Pushes an element into the queue, at the appropriate place for the queue.
 	 * Requires the queue pointer to be of an appropriate type, of course.

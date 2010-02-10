@@ -224,7 +224,7 @@ static void DrawTile_Unmovable(TileInfo *ti)
 			DrawBridgeMiddle(ti);
 			break;
 
-		case UNMOVABLE_HQ:{
+		case UNMOVABLE_HQ: {
 			assert(IsCompanyHQ(ti->tile));
 
 			PaletteID palette = COMPANY_SPRITE_COLOUR(GetTileOwner(ti->tile));

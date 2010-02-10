@@ -63,7 +63,7 @@ class WindowQuartzSubdriver;
 @end
 
 /* Delegate for our NSWindow to send ask for quit on close */
-@interface OTTD_QuartzWindowDelegate : NSObject{
+@interface OTTD_QuartzWindowDelegate : NSObject {
 	WindowQuartzSubdriver *driver;
 }
 

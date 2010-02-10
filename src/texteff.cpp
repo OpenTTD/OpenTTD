@@ -18,7 +18,7 @@
 #include "settings_type.h"
 
 /** Container for all information about a text effect */
-struct TextEffect : public ViewportSign{
+struct TextEffect : public ViewportSign {
 	uint64 params_1;     ///< DParam parameter
 	StringID string_id;  ///< String to draw for the text effect, if INVALID_STRING_ID then it's not valid
 	uint8 duration;      ///< How long the text effect should stay, in ticks (applies only when mode == TE_RISING)

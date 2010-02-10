@@ -33,7 +33,7 @@ enum {
 	MAX_FILE_SLOTS = 64
 };
 
-enum SaveLoadDialogMode{
+enum SaveLoadDialogMode {
 	SLD_LOAD_GAME,
 	SLD_LOAD_SCENARIO,
 	SLD_SAVE_GAME,

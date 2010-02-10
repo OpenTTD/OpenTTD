@@ -63,7 +63,7 @@ class WindowQuickdrawSubdriver;
 @end
 
 /* Delegate for our NSWindow to send ask for quit on close */
-@interface OTTD_QuickdrawWindowDelegate : NSObject{
+@interface OTTD_QuickdrawWindowDelegate : NSObject {
 	WindowQuickdrawSubdriver *driver;
 }
 

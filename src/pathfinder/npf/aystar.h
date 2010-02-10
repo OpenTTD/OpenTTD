@@ -32,7 +32,7 @@ enum {
 	AYSTAR_DONE
 };
 
-enum{
+enum {
 	AYSTAR_INVALID_NODE = -1,
 };
 

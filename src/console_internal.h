@@ -31,7 +31,7 @@ enum IConsoleHookTypes {
  * for general flow of permissions or special action needed in some cases
  */
 typedef bool IConsoleHook();
-struct IConsoleHooks{
+struct IConsoleHooks {
 	IConsoleHook *access; ///< trigger when accessing the command
 	IConsoleHook *pre;    ///< trigger before the command is executed
 	IConsoleHook *post;   ///< trigger after the command is executed
