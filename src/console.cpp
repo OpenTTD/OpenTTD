@@ -28,9 +28,8 @@
 #define ICON_TOKEN_COUNT 20
 
 /* console parser */
-IConsoleCmd   *_iconsole_cmds;    ///< list of registred commands
-IConsoleVar   *_iconsole_vars;    ///< list of registred vars
-IConsoleAlias *_iconsole_aliases; ///< list of registred aliases
+IConsoleCmd   *_iconsole_cmds;    ///< list of registered commands
+IConsoleAlias *_iconsole_aliases; ///< list of registered aliases
 
 FILE *_iconsole_output_file;
 
@@ -197,7 +196,7 @@ bool GetArgumentInteger(uint32 *value, const char *arg)
     * *************************/
 
 /**
- * General internal hooking code that is the same for both commands and variables
+ * General internal hooking code
  * @param hooks IConsoleHooks structure that will be set according to
  * @param type type access trigger
  * @param proc function called when the hook criteria is met
@@ -263,21 +262,8 @@ void IConsoleCmdHookAdd(const char *name, IConsoleHookTypes type, IConsoleHook *
 }
 
 /**
- * Add a hook to a variable that will be triggered at certain points
- * @param name name of the variable that the hook is added to
- * @param type type of hook that is added (ACCESS, BEFORE and AFTER change)
- * @param proc function called when the hook criteria is met
- */
-void IConsoleVarHookAdd(const char *name, IConsoleHookTypes type, IConsoleHook *proc)
-{
-	IConsoleVar *var = IConsoleVarGet(name);
-	if (var == NULL) return;
-	IConsoleHookAdd(&var->hook, type, proc);
-}
-
-/**
  * Perhaps ugly macro, but this saves us the trouble of writing the same function
- * three types, just with different variables. Yes, templates would be handy. It was
+ * twice, just with different variables. Yes, templates would be handy. It was
  * either this define or an even more ugly void* magic function
  */
 #define IConsoleAddSorted(_base, item_new, IConsoleType, type)                 \
@@ -474,280 +460,6 @@ static void IConsoleAliasExec(const IConsoleAlias *alias, byte tokencount, char 
 }
 
 /**
- * Special function for adding string-type variables. They in addition
- * also need a 'size' value saying how long their string buffer is.
- * @param name name of the variable that will be used
- * @param addr memory location the variable will point to
- * @param size the length of the string buffer
- * @param help the help string shown for the variable
- * For more information see IConsoleVarRegister()
- */
-void IConsoleVarStringRegister(const char *name, void *addr, uint32 size, const char *help)
-{
-	IConsoleVar *var;
-	IConsoleVarRegister(name, addr, ICONSOLE_VAR_STRING, help);
-	var = IConsoleVarGet(name);
-	var->size = size;
-}
-
-/**
- * Register a new variable to be used in the console
- * @param name name of the variable that will be used
- * @param addr memory location the variable will point to
- * @param help the help string shown for the variable
- * @param type the type of the variable (simple atomic) so we know which values it can get
- */
-void IConsoleVarRegister(const char *name, void *addr, IConsoleVarTypes type, const char *help)
-{
-	char *new_cmd = strdup(name);
-	IConsoleVar *item_new = MallocT<IConsoleVar>(1);
-
-	item_new->help = (help != NULL) ? strdup(help) : NULL;
-
-	item_new->next = NULL;
-	item_new->name = new_cmd;
-	item_new->addr = addr;
-	item_new->proc = NULL;
-	item_new->type = type;
-
-	item_new->hook.access = NULL;
-	item_new->hook.pre = NULL;
-	item_new->hook.post = NULL;
-
-	IConsoleAddSorted(_iconsole_vars, item_new, IConsoleVar, "a variable");
-}
-
-/**
- * Find the variable pointed to by its string
- * @param name variable to be found
- * @return return Varstruct of the found variable, or NULL on failure
- */
-IConsoleVar *IConsoleVarGet(const char *name)
-{
-	IConsoleVar *item;
-	for (item = _iconsole_vars; item != NULL; item = item->next) {
-		if (strcmp(item->name, name) == 0) return item;
-	}
-
-	return NULL;
-}
-
-/**
- * Get the value of the variable and put it into a printable
- * string form so we can use it for printing
- */
-static char *IConsoleVarGetStringValue(const IConsoleVar *var)
-{
-	static char tempres[50];
-	char *value = tempres;
-
-	switch (var->type) {
-		case ICONSOLE_VAR_BOOLEAN:
-			snprintf(tempres, sizeof(tempres), "%s", (*(bool*)var->addr) ? "on" : "off");
-			break;
-		case ICONSOLE_VAR_BYTE:
-			snprintf(tempres, sizeof(tempres), "%u", *(byte*)var->addr);
-			break;
-		case ICONSOLE_VAR_UINT16:
-			snprintf(tempres, sizeof(tempres), "%u", *(uint16*)var->addr);
-			break;
-		case ICONSOLE_VAR_UINT32:
-			snprintf(tempres, sizeof(tempres), "%u",  *(uint32*)var->addr);
-			break;
-		case ICONSOLE_VAR_INT16:
-			snprintf(tempres, sizeof(tempres), "%i", *(int16*)var->addr);
-			break;
-		case ICONSOLE_VAR_INT32:
-			snprintf(tempres, sizeof(tempres), "%i",  *(int32*)var->addr);
-			break;
-		case ICONSOLE_VAR_STRING:
-			value = (char*)var->addr;
-			break;
-		default: NOT_REACHED();
-	}
-
-	return value;
-}
-
-/**
- * Print out the value of the variable after it has been assigned
- * a new value, thus giving us feedback on the action
- */
-static void IConsoleVarPrintSetValue(const IConsoleVar *var)
-{
-	char *value = IConsoleVarGetStringValue(var);
-	IConsolePrintF(CC_WARNING, "'%s' changed to:  %s", var->name, value);
-}
-
-/**
- * Set a new value to a console variable
- * @param *var the variable being set/changed
- * @param value the new value given to the variable, cast properly
- */
-static void IConsoleVarSetValue(const IConsoleVar *var, uint32 value)
-{
-	IConsoleHookHandle(&var->hook, ICONSOLE_HOOK_PRE_ACTION);
-	switch (var->type) {
-		case ICONSOLE_VAR_BOOLEAN:
-			*(bool*)var->addr = (value != 0);
-			break;
-		case ICONSOLE_VAR_BYTE:
-			*(byte*)var->addr = (byte)value;
-			break;
-		case ICONSOLE_VAR_UINT16:
-			*(uint16*)var->addr = (uint16)value;
-			break;
-		case ICONSOLE_VAR_INT16:
-			*(int16*)var->addr = (int16)value;
-			break;
-		case ICONSOLE_VAR_UINT32:
-			*(uint32*)var->addr = (uint32)value;
-			break;
-		case ICONSOLE_VAR_INT32:
-			*(int32*)var->addr = (int32)value;
-			break;
-		default: NOT_REACHED();
-	}
-
-	IConsoleHookHandle(&var->hook, ICONSOLE_HOOK_POST_ACTION);
-	IConsoleVarPrintSetValue(var);
-}
-
-/**
- * Set a new value to a string-type variable. Basically this
- * means to copy the new value over to the container.
- * @param *var the variable in question
- * @param *value the new value
- */
-static void IConsoleVarSetStringvalue(const IConsoleVar *var, const char *value)
-{
-	if (var->type != ICONSOLE_VAR_STRING || var->addr == NULL) return;
-
-	IConsoleHookHandle(&var->hook, ICONSOLE_HOOK_PRE_ACTION);
-	ttd_strlcpy((char*)var->addr, value, var->size);
-	IConsoleHookHandle(&var->hook, ICONSOLE_HOOK_POST_ACTION);
-	IConsoleVarPrintSetValue(var); // print out the new value, giving feedback
-	return;
-}
-
-/**
- * Query the current value of a variable and return it
- * @param *var the variable queried
- * @return current value of the variable
- */
-static uint32 IConsoleVarGetValue(const IConsoleVar *var)
-{
-	uint32 result = 0;
-
-	switch (var->type) {
-		case ICONSOLE_VAR_BOOLEAN:
-			result = *(bool*)var->addr;
-			break;
-		case ICONSOLE_VAR_BYTE:
-			result = *(byte*)var->addr;
-			break;
-		case ICONSOLE_VAR_UINT16:
-			result = *(uint16*)var->addr;
-			break;
-		case ICONSOLE_VAR_INT16:
-			result = *(int16*)var->addr;
-			break;
-		case ICONSOLE_VAR_UINT32:
-			result = *(uint32*)var->addr;
-			break;
-		case ICONSOLE_VAR_INT32:
-			result = *(int32*)var->addr;
-			break;
-		default: NOT_REACHED();
-	}
-	return result;
-}
-
-/**
- * Print out the value of the variable when asked
- */
-void IConsoleVarPrintGetValue(const IConsoleVar *var)
-{
-	char *value;
-	/* Some variables need really specific handling, handle this in its
-	 * callback function */
-	if (var->proc != NULL) {
-		var->proc(0, NULL);
-		return;
-	}
-
-	value = IConsoleVarGetStringValue(var);
-	IConsolePrintF(CC_WARNING, "Current value for '%s' is:  %s", var->name, value);
-}
-
-/**
- * Execute a variable command. Without any parameters, print out its value
- * with parameters it assigns a new value to the variable
- * @param *var the variable that we will be querying/changing
- * @param tokencount how many additional parameters have been given to the commandline
- * @param *token the actual parameters the variable was called with
- */
-static void IConsoleVarExec(const IConsoleVar *var, byte tokencount, char *token[ICON_TOKEN_COUNT])
-{
-	const char *tokenptr = token[0];
-	byte t_index = tokencount;
-	uint32 value;
-
-	DEBUG(console, 6, "Requested command is a variable");
-
-	if (tokencount == 0) { // Just print out value
-		IConsoleVarPrintGetValue(var);
-		return;
-	}
-
-	/* Use of assignment sign is not mandatory but supported, so just 'ignore it appropiately' */
-	if (strcmp(tokenptr, "=") == 0) tokencount--;
-
-	if (tokencount == 1) {
-		/* Some variables need really special handling, handle it in their callback procedure */
-		if (var->proc != NULL) {
-			var->proc(tokencount, &token[t_index - tokencount]); // set the new value
-			return;
-		}
-		/* Strings need special processing. No need to convert the argument to
-		 * an integer value, just copy over the argument on a one-by-one basis */
-		if (var->type == ICONSOLE_VAR_STRING) {
-			IConsoleVarSetStringvalue(var, token[t_index - tokencount]);
-			return;
-		} else if (GetArgumentInteger(&value, token[t_index - tokencount])) {
-			IConsoleVarSetValue(var, value);
-			return;
-		}
-
-		/* Increase or decrease the value by one. This of course can only happen to 'number' types */
-		if (strcmp(tokenptr, "++") == 0 && var->type != ICONSOLE_VAR_STRING) {
-			IConsoleVarSetValue(var, IConsoleVarGetValue(var) + 1);
-			return;
-		}
-
-		if (strcmp(tokenptr, "--") == 0 && var->type != ICONSOLE_VAR_STRING) {
-			IConsoleVarSetValue(var, IConsoleVarGetValue(var) - 1);
-			return;
-		}
-	}
-
-	IConsoleError("invalid variable assignment");
-}
-
-/**
- * Add a callback function to the variable. Some variables need
- * very special processing, which can only be done with custom code
- * @param name name of the variable the callback function is added to
- * @param proc the function called
- */
-void IConsoleVarProcAdd(const char *name, IConsoleCmdProc *proc)
-{
-	IConsoleVar *var = IConsoleVarGet(name);
-	if (var == NULL) return;
-	var->proc = proc;
-}
-
-/**
  * Execute a given command passed to us. First chop it up into
  * individual tokens (seperated by spaces), then execute it if possible
  * @param cmdstr string to be parsed and executed
@@ -756,7 +468,6 @@ void IConsoleCmdExec(const char *cmdstr)
 {
 	IConsoleCmd   *cmd    = NULL;
 	IConsoleAlias *alias  = NULL;
-	IConsoleVar   *var    = NULL;
 
 	const char *cmdptr;
 	char *tokens[ICON_TOKEN_COUNT], tokenstream[ICON_MAX_STREAMSIZE];
@@ -824,8 +535,8 @@ void IConsoleCmdExec(const char *cmdstr)
 	}
 
 	if (tokens[0] == '\0') return; // don't execute empty commands
-	/* 2. Determine type of command (cmd, alias or variable) and execute
-	 * First try commands, then aliases, and finally variables. Execute
+	/* 2. Determine type of command (cmd or alias) and execute
+	 * First try commands, then aliases. Execute
 	 * the found action taking into account its hooking code
 	 */
 	cmd = IConsoleCmdGet(tokens[0]);
@@ -841,20 +552,12 @@ void IConsoleCmdExec(const char *cmdstr)
 		return;
 	}
 
-	t_index--; // ignore the variable-name for comfort for both aliases and variaables
+	t_index--;
 	alias = IConsoleAliasGet(tokens[0]);
 	if (alias != NULL) {
 		IConsoleAliasExec(alias, t_index, &tokens[1]);
 		return;
 	}
 
-	var = IConsoleVarGet(tokens[0]);
-	if (var != NULL) {
-		if (IConsoleHookHandle(&var->hook, ICONSOLE_HOOK_ACCESS)) {
-			IConsoleVarExec(var, t_index, &tokens[1]);
-		}
-		return;
-	}
-
-	IConsoleError("command or variable not found");
+	IConsoleError("command not found");
 }
