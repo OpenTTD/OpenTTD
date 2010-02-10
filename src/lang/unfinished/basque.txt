@@ -221,7 +221,7 @@ STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Sartu hi
 STR_LIST_FILTER_TITLE                                           :{BLACK}Iragazle lokarria:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Hautatu agertze ordena (deszendientea/aszendientea)
-STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Hautatu agertze kriterioa
+STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Hautatu agertze kriterioa
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Hautatu iragazle kriterioa
 STR_BUTTON_SORT_BY                                              :{BLACK}Agertu
 STR_BUTTON_LOCATION                                             :{BLACK}Kokapena

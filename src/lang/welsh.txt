@@ -220,7 +220,7 @@ STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Rhowch l
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Rhowch allweddair er mwyn ei ddefnyddio i hidlo'r rhestr
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Dewiswch drefn trefnu (disgynnol/esgynnol)
-STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Dewiswch drefn trefnu
+STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Dewiswch drefn trefnu
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}dewis criteria hidlyr
 STR_BUTTON_SORT_BY                                              :{BLACK}Trefnu yn ôl
 STR_BUTTON_LOCATION                                             :{BLACK}Lleoliad
@@ -1342,7 +1342,7 @@ STR_OSNAME_SUNOS                                                :SunOS
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Rhoi'r gorau i Gêm
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Ydych chi'n siwr eich bod chi eisiau rhoi'r gorau i'r gêm?
-STR_ABANDOM_SCENARIO_QUERY                                      :{YELLOW}Ydych chi'n siwr eich bod chi eisiau gadael y senario hwn?
+STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Ydych chi'n siwr eich bod chi eisiau gadael y senario hwn?
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Twyllo
@@ -1485,7 +1485,7 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Cliciwch
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}GWYBODAETH AM Y GÊM
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Cleientiaid:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Iaith:  {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_TILESET                                 :{SILVER}Set Teils:  {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Set Teils:  {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Maint Map:  {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Fersiwn Gweinydd:  {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Cyfeiriad Gweinydd:  {WHITE}{STRING}

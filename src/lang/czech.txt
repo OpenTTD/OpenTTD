@@ -289,7 +289,7 @@ STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Vložte 
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtrovat podle:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Vyber způsob řazeni (sestupně/vzestupně)
-STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Vyber, podle čeho se má třídit
+STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Vyber, podle čeho se má třídit
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Vyber třídící podmínku
 STR_BUTTON_SORT_BY                                              :{BLACK}Řadit podle
 STR_BUTTON_LOCATION                                             :{BLACK}Umístění
@@ -1454,7 +1454,7 @@ STR_OSNAME_SUNOS                                                :SunOS
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Konec hry
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Opravdu chceš ukončit tuto hru?
-STR_ABANDOM_SCENARIO_QUERY                                      :{YELLOW}Určite chceš opustit toto mapu?
+STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Určite chceš opustit toto mapu?
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Cheaty
@@ -1597,7 +1597,7 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Kliknut�
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}INFO O HŘE
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Klientů: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Jazyk: {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_TILESET                                 :{SILVER}Prostředí: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Prostředí: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Velikost mapy: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Verze hry na serveru: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Adresa serveru: {WHITE}{STRING}

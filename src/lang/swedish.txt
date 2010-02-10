@@ -221,7 +221,7 @@ STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Skriv in
 STR_LIST_FILTER_TITLE                                           :{BLACK}Sökfilter:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Välj sorteringsordning (fallande/stigande)
-STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Välj sortering
+STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Välj sortering
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Angre kriterier för filtrering
 STR_BUTTON_SORT_BY                                              :{BLACK}Sortera efter
 STR_BUTTON_LOCATION                                             :{BLACK}Plats
@@ -1386,7 +1386,7 @@ STR_OSNAME_SUNOS                                                :SunOS
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Avsluta spelet
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Vill du verkligen avsluta spelet?
-STR_ABANDOM_SCENARIO_QUERY                                      :{YELLOW}Vill du verkligen avsluta detta scenario?
+STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Vill du verkligen avsluta detta scenario?
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Fusk
@@ -1529,7 +1529,7 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Välj se
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}SPELINFO
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Klienter: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Språk: {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_TILESET                                 :{SILVER}Klimat: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Klimat: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Kartstorlek: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Serverversion: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Serveradress: {WHITE}{STRING}

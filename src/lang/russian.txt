@@ -347,7 +347,7 @@ STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Введ
 STR_LIST_FILTER_TITLE                                           :{BLACK}Фильтр:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Смена направления сортировки (убывание/возрастание)
-STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Смена критерия сортировки
+STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Смена критерия сортировки
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Выберите фильтр
 STR_BUTTON_SORT_BY                                              :{BLACK}Сортировка
 STR_BUTTON_LOCATION                                             :{BLACK}Обзор
@@ -1544,7 +1544,7 @@ STR_OSNAME_SUNOS                                                :SunOS
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}В главное меню
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Вы действительно хотите выйти из игры?
-STR_ABANDOM_SCENARIO_QUERY                                      :{YELLOW}Вы уверены, что хотите выйти из этого сценария?
+STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Вы уверены, что хотите выйти из этого сценария?
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}ЧИТЫ
@@ -1687,7 +1687,7 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Нажм
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}ИНФОРМАЦИЯ ОБ ИГРЕ
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Клиенты: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Язык: {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_TILESET                                 :{SILVER}Климат: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Климат: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Размер карты: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Версия сервера: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Адрес сервера: {WHITE}{STRING}

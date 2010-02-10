@@ -220,7 +220,7 @@ STR_LIST_FILTER_OSKTITLE                                        :{BLACK}フィ�
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}フィルタのキーワードを入力します。
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}並べ替えの順序を選択（昇順／降順）
-STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}並べ替えの基準を選択
+STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}並べ替えの基準を選択
 STR_BUTTON_SORT_BY                                              :{BLACK}並べ替え
 STR_BUTTON_LOCATION                                             :{BLACK}見つける
 STR_BUTTON_RENAME                                               :{BLACK}名称を変更
@@ -1352,7 +1352,7 @@ STR_OSNAME_SUNOS                                                :SunOS
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}ゲームを断念
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}このゲームを終了してもよろしいですか？
-STR_ABANDOM_SCENARIO_QUERY                                      :{YELLOW}このシナリオを終了してもよろしいですか？
+STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}このシナリオを終了してもよろしいですか？
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}チート
@@ -1495,7 +1495,7 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}クリ�
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}ゲーム情報
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}クライアント：{WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}国語：　 {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_TILESET                                 :{SILVER}タイルセット：{WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}タイルセット：{WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}地図のサイズ：{WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}サーババージョン：{WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}サーバアドレス：{WHITE}{STRING}

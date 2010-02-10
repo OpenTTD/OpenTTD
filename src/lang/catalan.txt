@@ -222,7 +222,7 @@ STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Introdue
 STR_LIST_FILTER_TITLE                                           :{BLACK}Cadena filtrant:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Selecciona ordre de classificació (descendent/ascendent)
-STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Selecciona criteri de classificació
+STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Selecciona criteri de classificació
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Selecciona el criteri de filtratge
 STR_BUTTON_SORT_BY                                              :{BLACK}Ordenar per
 STR_BUTTON_LOCATION                                             :{BLACK}Situació
@@ -1387,7 +1387,7 @@ STR_OSNAME_SUNOS                                                :SunOS
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Abandona el Joc
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Estàs segur que vols abandonar aquest joc?
-STR_ABANDOM_SCENARIO_QUERY                                      :{YELLOW}Estàs segur que vols sortir d'aquest escenari ?
+STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Estàs segur que vols sortir d'aquest escenari ?
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Trampes
@@ -1530,7 +1530,7 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Clica pe
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}INFORMACIÓ DEL JOC
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Clients: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Idioma: {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_TILESET                                 :{SILVER}Grup de cel·les: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Grup de cel·les: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Mida del mapa: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Versió del servidor: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Adreça del servidor: {WHITE}{STRING}

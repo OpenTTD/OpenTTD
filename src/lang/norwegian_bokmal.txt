@@ -221,7 +221,7 @@ STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Skriv in
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filterstreng:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Velg sorteringsrekkefølge (synkende/stigende)
-STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Velg sorteringskriterier
+STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Velg sorteringskriterier
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Velg filtreringskriterier
 STR_BUTTON_SORT_BY                                              :{BLACK}Sorter etter
 STR_BUTTON_LOCATION                                             :{BLACK}Gå til
@@ -1390,7 +1390,7 @@ STR_OSNAME_SUNOS                                                :SunOS
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Avslutt spill
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Er du sikker på at du vil avslutte dette spillet?
-STR_ABANDOM_SCENARIO_QUERY                                      :{YELLOW}Er du sikker på at du vil forlate dette scenariet?
+STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Er du sikker på at du vil forlate dette scenariet?
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Juksekoder
@@ -1533,7 +1533,7 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Klikk fo
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}SPILLOVERSIKT
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Klienter: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Språk: {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_TILESET                                 :{SILVER}Brikkesett: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Brikkesett: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Kartstørrelse: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Tjenerversjon: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Tjeneradresse: {WHITE}{STRING}

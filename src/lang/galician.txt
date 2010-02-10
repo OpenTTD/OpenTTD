@@ -221,7 +221,7 @@ STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Introduc
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Introduce unha palabra pola que filtra la lista
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Selecciona o modo de ordeamento(descendente/ascendente)
-STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Selecciona o criterio de orde
+STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Selecciona o criterio de orde
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Selecciona o criterio de filtrado
 STR_BUTTON_SORT_BY                                              :{BLACK}Ordear por
 STR_BUTTON_LOCATION                                             :{BLACK}Situación
@@ -1326,7 +1326,7 @@ STR_OSNAME_SUNOS                                                :SunOS
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Saír ó menú principal
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}¿Está seguro de que desexa saír da partida?
-STR_ABANDOM_SCENARIO_QUERY                                      :{YELLOW}¿Estás seguro de que desexas saír deste escenario?
+STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}¿Estás seguro de que desexas saír deste escenario?
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Trampas
@@ -1469,7 +1469,7 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Pincha p
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}INFORMACIÓN DA PARTIDA
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Clientes: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Idioma: {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_TILESET                                 :{SILVER}Set de Terreo: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Set de Terreo: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Tamaño: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Versión do servidor: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Dirección do servidor: {WHITE}{STRING}

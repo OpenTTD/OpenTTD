@@ -211,7 +211,7 @@ STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Typ in w
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filter namme:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Selektear skiftrjochting (oprinnend/ôfrinnend)
-STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Selektear skiftnoarm
+STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Selektear skiftnoarm
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Selekear filternoarm
 STR_BUTTON_SORT_BY                                              :{BLACK}Skifte op
 STR_BUTTON_LOCATION                                             :{BLACK}Lokaasje
@@ -883,7 +883,7 @@ STR_OSNAME_SUNOS                                                :SunOS
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Ferlit Spul
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Wolsto echt dit lânskip slúte?
-STR_ABANDOM_SCENARIO_QUERY                                      :{YELLOW}Wolsto echt dit lânskip slúte?
+STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Wolsto echt dit lânskip slúte?
 
 # Cheat window
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Boartersguodlânskip

@@ -221,7 +221,7 @@ STR_LIST_FILTER_TOOLTIP                                         :{BLACK}輸入�
 STR_LIST_FILTER_TITLE                                           :{BLACK}篩選字串：
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}選擇排序 (逆序／順序)
-STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}選擇排序項目
+STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}選擇排序項目
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}選擇過濾條件
 STR_BUTTON_SORT_BY                                              :{BLACK}排序依照
 STR_BUTTON_LOCATION                                             :{BLACK}位置
@@ -1390,7 +1390,7 @@ STR_OSNAME_SUNOS                                                :SunOS
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}放棄遊戲
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}你要放棄這個遊戲嗎？
-STR_ABANDOM_SCENARIO_QUERY                                      :{YELLOW}你確定要離開這個場景嗎？
+STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}你確定要離開這個場景嗎？
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}作弊
@@ -1533,7 +1533,7 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}點選�
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}遊戲資訊
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}用戶端：{WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}語言：{WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_TILESET                                 :{SILVER}圖格組：{WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}圖格組：{WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}地圖大小：{WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}伺服器版本：{WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}伺服器位址：{WHITE}{STRING}

@@ -263,7 +263,7 @@ STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Vnesi be
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtriraj:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Izberi nacin sortiranja (padajoče/naraščajoce)
-STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Izberi kriterij za sortiranje
+STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Izberi kriterij za sortiranje
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Izberi način filtriranja
 STR_BUTTON_SORT_BY                                              :{BLACK}Sortiraj po
 STR_BUTTON_LOCATION                                             :{BLACK}Lokacija
@@ -1432,7 +1432,7 @@ STR_OSNAME_SUNOS                                                :SunOS
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Zapusti igro
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Zagotovo želiš zapustiti igro?
-STR_ABANDOM_SCENARIO_QUERY                                      :{YELLOW}Zagotovo želiš zapustiti ta scenarij?
+STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Zagotovo želiš zapustiti ta scenarij?
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Goljufije
@@ -1575,7 +1575,7 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Klikni z
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}IGRA - INFO
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Gosti: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Jezik: {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_TILESET                                 :{SILVER}Nabor ploščic: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Nabor ploščic: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Velikost ozemlja: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Različica strežnika: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Naslov strežnika: {WHITE}{STRING}

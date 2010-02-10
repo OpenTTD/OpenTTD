@@ -285,7 +285,7 @@ STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Vložiť
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtrovať podľa:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Vyber sposob triedenia (zostupny/vzostupny)
-STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Vyber kriterium triedenia
+STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Vyber kriterium triedenia
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Vybrať kritériá filtrovania
 STR_BUTTON_SORT_BY                                              :{BLACK}Usporiadat
 STR_BUTTON_LOCATION                                             :{BLACK}Poloha
@@ -1411,7 +1411,7 @@ STR_OSNAME_SUNOS                                                :SunOS
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Ukoncit hru
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Si si isty ze chces ukoncit tuto hru ?
-STR_ABANDOM_SCENARIO_QUERY                                      :{YELLOW}Si si isty ze chces ukoncit tento scenar ?
+STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Si si isty ze chces ukoncit tento scenar ?
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Cheaty
@@ -1554,7 +1554,7 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Kliknite
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}INFO O HRE
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Klientov: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Jazyk: {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_TILESET                                 :{SILVER}Prostredie: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Prostredie: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Velkost mapy: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Verzia servera: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Adresa servera: {WHITE}{STRING}

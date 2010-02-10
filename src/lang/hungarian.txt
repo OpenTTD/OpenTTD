@@ -254,7 +254,7 @@ STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Írd ide
 STR_LIST_FILTER_TITLE                                           :{BLACK}Szűrendő kifejezés:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Csökkenő/növekvő sorbarendezés
-STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Sorbarendezési feltétel
+STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Sorbarendezési feltétel
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Szűrési feltétel kiválasztása
 STR_BUTTON_SORT_BY                                              :{BLACK}Rendezés
 STR_BUTTON_LOCATION                                             :{BLACK}Megnéz
@@ -1424,7 +1424,7 @@ STR_OSNAME_SUNOS                                                :SunOS
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Kilépés a játékból
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Biztosan kilépsz ebből a játékból ?
-STR_ABANDOM_SCENARIO_QUERY                                      :{YELLOW}Biztosan abba akarod hagyni a pálya szerkesztését ?
+STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Biztosan abba akarod hagyni a pálya szerkesztését ?
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Csalások
@@ -1567,7 +1567,7 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Kattints
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}JÁTÉK INFÓ
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Kliensek: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Nyelv: {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_TILESET                                 :{SILVER}Tájtípus: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Tájtípus: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}A pálya nagysága: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Szerver verzió: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}A szerver címe: {WHITE}{STRING}

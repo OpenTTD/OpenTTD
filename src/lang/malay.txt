@@ -221,7 +221,7 @@ STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Masukkan
 STR_LIST_FILTER_TITLE                                           :{BLACK}String saringan:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Pilih bentuk susunan (menurun/menaik)
-STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Pilih kriteria aturan
+STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Pilih kriteria aturan
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Pilih kriteria penyaringan
 STR_BUTTON_SORT_BY                                              :{BLACK}Menyusun mengikuti
 STR_BUTTON_LOCATION                                             :{BLACK}Lokasi
@@ -1382,7 +1382,7 @@ STR_OSNAME_SUNOS                                                :SunOS
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Tinggalkan Permainan
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Pastikah anda mahu keluar permainan ini?
-STR_ABANDOM_SCENARIO_QUERY                                      :{YELLOW}Pastikah anda untuk keluar senario ini?
+STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Pastikah anda untuk keluar senario ini?
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Penipuan (Cheats)
@@ -1525,7 +1525,7 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Klik unt
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}MAKLUMAT PERMAINAN
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Klien: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Bahasa: {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_TILESET                                 :{SILVER}Setpetak (Tileset): {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Setpetak (Tileset): {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Saiz peta: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Versi pelayan: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Alamat pelayan: {WHITE}{STRING}

@@ -221,7 +221,7 @@ STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Introduc
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtru:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Alegeţi ordinea de sortare ascendentă/descendentă
-STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Alege criteriul de sortare
+STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Alege criteriul de sortare
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Selectează criteriul de filtrare
 STR_BUTTON_SORT_BY                                              :{BLACK}Ordonează
 STR_BUTTON_LOCATION                                             :{BLACK}Locaţie
@@ -1390,7 +1390,7 @@ STR_OSNAME_SUNOS                                                :SunOS
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Ieşire din joc
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Eşti sigur că vrei să renunţi la acest joc?
-STR_ABANDOM_SCENARIO_QUERY                                      :{YELLOW}Eşti sigur că vrei să renunţi la acest scenariu?
+STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Eşti sigur că vrei să renunţi la acest scenariu?
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Cheat-uri
@@ -1533,7 +1533,7 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Clic pen
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}INFO JOC
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Clienţi: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Limba: {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_TILESET                                 :{SILVER}Tileset: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Tileset: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Mărimea hărţii: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Versiune server: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Adresa serverului: {WHITE}{STRING}

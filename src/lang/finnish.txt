@@ -221,7 +221,7 @@ STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Syötä 
 STR_LIST_FILTER_TITLE                                           :{BLACK}Suodatinteksti:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Valitse järjestys (laskeva/nouseva)
-STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Valitse järjestyskriteeri
+STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Valitse järjestyskriteeri
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Valitse suodatuskriteerit
 STR_BUTTON_SORT_BY                                              :{BLACK}Lajittele
 STR_BUTTON_LOCATION                                             :{BLACK}Sijainti
@@ -1390,7 +1390,7 @@ STR_OSNAME_SUNOS                                                :SunOS
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Lopeta peli
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Lopetetaanko peli?
-STR_ABANDOM_SCENARIO_QUERY                                      :{YELLOW}Lopetetaanko skenaario?
+STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Lopetetaanko skenaario?
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Huijaukset
@@ -1533,7 +1533,7 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Valitse 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}PELITIEDOT
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Pelaajat: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Kieli: {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_TILESET                                 :{SILVER}Ruudusto: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Ruudusto: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Kartan koko: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Palvelimen versio: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Palvelimen osoite: {WHITE}{STRING}

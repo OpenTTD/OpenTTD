@@ -130,7 +130,7 @@ STR_COLOUR_WHITE                                                :سفید
 # Common window strings
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK} (ترتیب کا طریقہ منتخب کریں (کم ہوتا/بڑھتا
-STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}ترتیب کا طریقہ منتخب کریں
+STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}ترتیب کا طریقہ منتخب کریں
 STR_BUTTON_SORT_BY                                              :{BLACK}سے ترتیب دو
 STR_BUTTON_LOCATION                                             :{BLACK}جگہ
 

@@ -287,7 +287,7 @@ STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Įveskit
 STR_LIST_FILTER_TITLE                                           :{BLACK}Įrašo filtravimas:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Pasirink rikiavimo tvarką (mažėjimo/didėjimo)
-STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Pasirink rikiavimo kriteriju
+STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Pasirink rikiavimo kriteriju
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Pasirinkite filtravimo kriterijus
 STR_BUTTON_SORT_BY                                              :{BLACK}Rikiuoti pag.
 STR_BUTTON_LOCATION                                             :{BLACK}Vieta
@@ -1456,7 +1456,7 @@ STR_OSNAME_SUNOS                                                :SunOS
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Nutraukti žaidimą
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Ar tikrai norite išeiti iš žaidimo?
-STR_ABANDOM_SCENARIO_QUERY                                      :{YELLOW}Ar tikrai norite išeiti iš šio scenarijaus?
+STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Ar tikrai norite išeiti iš šio scenarijaus?
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Sukčiavimai
@@ -1599,7 +1599,7 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Spragtel
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}Žaidimo informacija
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Žaidėjai: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Kalba: {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_TILESET                                 :{SILVER}Pavadinimas: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Pavadinimas: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Žemėlapio dydis: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Serverio versija: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Serverio adresas: {WHITE}{STRING}

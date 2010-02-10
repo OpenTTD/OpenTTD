@@ -306,7 +306,7 @@ void AskExitToGameMenu()
 {
 	ShowQuery(
 		STR_ABANDON_GAME_CAPTION,
-		(_game_mode != GM_EDITOR) ? STR_ABANDON_GAME_QUERY : STR_ABANDOM_SCENARIO_QUERY,
+		(_game_mode != GM_EDITOR) ? STR_ABANDON_GAME_QUERY : STR_ABANDON_SCENARIO_QUERY,
 		NULL,
 		AskExitToGameMenuCallback
 	);

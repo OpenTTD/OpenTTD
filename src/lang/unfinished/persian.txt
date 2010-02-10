@@ -211,7 +211,7 @@ STR_LIST_FILTER_OSKTITLE                                        :{BLACK}وارد
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}وارد کردن واژه کلیدی برای پایش لیست
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}انتخاب طرز مرتب کردن (نزولی/صعودی)
-STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}انتخاب معیار مرتب کردن
+STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}انتخاب معیار مرتب کردن
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}انتخاب معیار پایش
 STR_BUTTON_SORT_BY                                              :{BLACK}مرتب کردن بر اساس
 STR_BUTTON_LOCATION                                             :{BLACK}مختصات

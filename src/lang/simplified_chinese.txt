@@ -221,7 +221,7 @@ STR_LIST_FILTER_TOOLTIP                                         :{BLACK}输入�
 STR_LIST_FILTER_TITLE                                           :{BLACK}过滤器字符串：
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}选择排序方法 （降序/升序）
-STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}选择排序标准
+STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}选择排序标准
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}选择过滤标准
 STR_BUTTON_SORT_BY                                              :{BLACK}排序
 STR_BUTTON_LOCATION                                             :{BLACK}定位
@@ -1378,7 +1378,7 @@ STR_OSNAME_SUNOS                                                :SunOS
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}放弃游戏
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}你确定要放弃当前的游戏吗？
-STR_ABANDOM_SCENARIO_QUERY                                      :{YELLOW}你确定要退出当前场景吗？
+STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}你确定要退出当前场景吗？
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}作弊
@@ -1521,7 +1521,7 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}点击�
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}游戏信息
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}客 户 端: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}语　　言： {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_TILESET                                 :{SILVER}场景类型: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}场景类型: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}地图尺寸: {WHITE}{COMMA}×{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}服务器版本: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}服务器地址: {WHITE}{STRING}

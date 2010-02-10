@@ -221,7 +221,7 @@ STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Sláðu 
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Sláðu inn leitarstreng til að sía listann
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Velja uppröðun (minnkandi/stækkandi)
-STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Velja uppröðun
+STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Velja uppröðun
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Veldu hvers kyns farartæki þú vilt kaupa
 STR_BUTTON_SORT_BY                                              :{BLACK}Flokka eftir
 STR_BUTTON_LOCATION                                             :{BLACK}Staður
@@ -1334,7 +1334,7 @@ STR_OSNAME_SUNOS                                                :SunOS
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Hætta leik
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Ertu viss um að þú viljir hætta í þessum leik ?
-STR_ABANDOM_SCENARIO_QUERY                                      :{YELLOW}Ertu viss um að þú viljir hætta í þessu korti ?
+STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Ertu viss um að þú viljir hætta í þessu korti ?
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Svindl
@@ -1477,7 +1477,7 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Smelltu 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}UPPLÝSINGAR UM LEIK
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Notendur:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Tungumál:  {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_TILESET                                 :{SILVER}Landslag:  {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Landslag:  {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Stærð:  {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Útgáfa þjóns:  {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Veffang þjóns:  {WHITE}{STRING}

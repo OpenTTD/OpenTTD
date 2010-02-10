@@ -235,7 +235,7 @@ STR_LIST_FILTER_TOOLTIP                                         :{BLACK}הכנס
 STR_LIST_FILTER_TITLE                                           :{BLACK}מחרוזת סינון:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}(בחר(י) סדר מיון (עולה\יורד
-STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}בחר\י קרטריון מיון
+STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}בחר\י קרטריון מיון
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}בחר קריטריון סינון
 STR_BUTTON_SORT_BY                                              :{BLACK}מיון לפי
 STR_BUTTON_LOCATION                                             :{BLACK}מיקום
@@ -1404,7 +1404,7 @@ STR_OSNAME_SUNOS                                                :סולריס
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}עזוב משחק
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}?האם אתה בטוח שברצונך לעזוב את המשחק
-STR_ABANDOM_SCENARIO_QUERY                                      :{YELLOW}האם אתה בטוח שברצונך לצאת משלב זה?
+STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}האם אתה בטוח שברצונך לצאת משלב זה?
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}(cheats) טריקים
@@ -1547,7 +1547,7 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}לחץ �
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}מידע על המשחק
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}לקוחות: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}שפה: {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_TILESET                                 :{WHITE}{STRING}{SILVER} :סוג הקרקע
+STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{WHITE}{STRING}{SILVER} :סוג הקרקע
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}גודל המפה: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}גרסת השרת: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}כתובת השרת: {WHITE}{STRING}

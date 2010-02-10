@@ -317,7 +317,7 @@ STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Unesite 
 STR_LIST_FILTER_TITLE                                           :{BLACK}Znak za filter:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Izaberi način sortiranja (silazno/uzlazno)
-STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Izaberi kriterij za sortiranje
+STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Izaberi kriterij za sortiranje
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Odaberi kriterij filtriranja
 STR_BUTTON_SORT_BY                                              :{BLACK}Sortiraj prema
 STR_BUTTON_LOCATION                                             :{BLACK}Lokacija
@@ -1482,7 +1482,7 @@ STR_OSNAME_SUNOS                                                :SunOS
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Napusti igru
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Jesi li siguran da želiš napustiti ovu igru?
-STR_ABANDOM_SCENARIO_QUERY                                      :{YELLOW}Jeste li sigurni da želite završiti ovaj scenarij?
+STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Jeste li sigurni da želite završiti ovaj scenarij?
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Varanje
@@ -1625,7 +1625,7 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Klikni k
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}INFO O IGRI
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Klijenti: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Jezik: {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_TILESET                                 :{SILVER}Set pločica: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Set pločica: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Veličina karte: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Verzija poslužitelja: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Adresa poslužitelja: {WHITE}{STRING}

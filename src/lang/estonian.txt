@@ -278,7 +278,7 @@ STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Sisesta 
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtreeri sõna:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Sorteerimise järjekorra valimine (kahanev/kasvav)
-STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK}Sorteerimistingimuse valimine
+STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Sorteerimistingimuse valimine
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Vali sõelumisalused
 STR_BUTTON_SORT_BY                                              :{BLACK}Sorteeri:
 STR_BUTTON_LOCATION                                             :{BLACK}Asukoht
@@ -1436,7 +1436,7 @@ STR_OSNAME_SUNOS                                                :SunOS
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Mängu lõpetamine
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Kas te soovite selle mängu lõpetada?
-STR_ABANDOM_SCENARIO_QUERY                                      :{YELLOW}Kas sa oled kindel, et sa tahad kaardi tegemise lõpetada?
+STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Kas sa oled kindel, et sa tahad kaardi tegemise lõpetada?
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Petmine
@@ -1579,7 +1579,7 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Klõpsa,
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}MÄNGU ANDMED
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Kliendid: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Keel: {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_TILESET                                 :{SILVER}Ruudustik: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Ruudustik: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Kaardi suurus: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Osa serveris:  {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Serveri aadress: {WHITE}{STRING}

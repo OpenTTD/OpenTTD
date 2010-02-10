@@ -221,7 +221,7 @@ STR_LIST_FILTER_TOOLTIP                                         :{BLACK} اخت�
 STR_LIST_FILTER_TITLE                                           :{BLACK}نص المرشح
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK} اختر طريقة الترتيب - تنازلي / تصاعدي
-STR_TOOLTIP_SORT_CRITERIAP                                      :{BLACK} اختر نوع الترتيب
+STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK} اختر نوع الترتيب
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK} اختر معايير الفلترة
 STR_BUTTON_SORT_BY                                              :{BLACK} رتب بـ
 STR_BUTTON_LOCATION                                             :{BLACK}الموقع
@@ -1381,7 +1381,7 @@ STR_OSNAME_SUNOS                                                :صن
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}ترك اللعبة
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}هل انت متأكد انك تود ترك هذة اللعبة و اغلاقها؟
-STR_ABANDOM_SCENARIO_QUERY                                      :{YELLOW}هل تريد الخروج من انشاء الخريطة
+STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}هل تريد الخروج من انشاء الخريطة
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}اسرار
@@ -1524,7 +1524,7 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}اضغط
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}معلومات اللعبة
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}عملاء:{WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}اللغة:{WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_TILESET                                 :{SILVER}مجموعة المربعات:{WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}مجموعة المربعات:{WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}حجم الخريطة: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}نسخة الخادم:{WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}عنوان الخادم:{WHITE}{STRING}
