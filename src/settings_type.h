@@ -106,6 +106,7 @@ struct GUISettings {
 	uint8  network_chat_box_height;          ///< height of the chat box in lines
 #endif
 
+	uint8  developer;                        ///< print non-fatal warnings in console (>= 1), copy debug output to console (== 2)
 	bool   show_date_in_logs;                ///< whether to show dates in console logs
 };
 

@@ -1781,9 +1781,6 @@ static void IConsoleDebugLibRegister()
 
 void IConsoleStdLibRegister()
 {
-	/* stdlib */
-	extern byte _stdlib_developer; // XXX extern in .cpp
-
 	/* default variables and functions */
 	IConsoleCmdRegister("debug_level",  ConDebugLevel);
 	IConsoleCmdRegister("dump_vars",    ConListDumpVariables);
@@ -1831,6 +1828,7 @@ void IConsoleStdLibRegister()
 	IConsoleAliasRegister("set",          "setting %+");
 	IConsoleAliasRegister("set_newgame",  "setting_newgame %+");
 	IConsoleAliasRegister("list_patches", "list_settings %+");
+	IConsoleAliasRegister("developer",    "setting developer %+");
 
 #ifdef ENABLE_AI
 	IConsoleCmdRegister("list_ai",      ConListAI);
@@ -1839,8 +1837,6 @@ void IConsoleStdLibRegister()
 	IConsoleCmdRegister("start_ai",     ConStartAI);
 	IConsoleCmdRegister("stop_ai",      ConStopAI);
 #endif /* ENABLE_AI */
-
-	IConsoleVarRegister("developer", &_stdlib_developer, ICONSOLE_VAR_BYTE, "Redirect debugging output from the console/command line to the ingame console (value 2). Default value: 1");
 
 	/* networking variables and functions */
 #ifdef ENABLE_NETWORK

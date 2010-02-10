@@ -15,6 +15,7 @@
 #include "network/network_func.h"
 #include "debug.h"
 #include "console_func.h"
+#include "settings_type.h"
 
 #include <stdarg.h>
 
@@ -31,8 +32,6 @@ IConsoleCmd   *_iconsole_cmds;    ///< list of registred commands
 IConsoleVar   *_iconsole_vars;    ///< list of registred vars
 IConsoleAlias *_iconsole_aliases; ///< list of registred aliases
 
-/* ** stdlib ** */
-byte _stdlib_developer = 1;
 FILE *_iconsole_output_file;
 
 void IConsoleInit()
@@ -145,8 +144,8 @@ void CDECL IConsolePrintF(ConsoleColour colour_code, const char *format, ...)
  */
 void IConsoleDebug(const char *dbg, const char *string)
 {
-	if (_stdlib_developer > 1)
-		IConsolePrintF(CC_DEBUG, "dbg: [%s] %s", dbg, string);
+	if (_settings_client.gui.developer <= 1) return;
+	IConsolePrintF(CC_DEBUG, "dbg: [%s] %s", dbg, string);
 }
 
 /**
@@ -156,8 +155,8 @@ void IConsoleDebug(const char *dbg, const char *string)
  */
 void IConsoleWarning(const char *string)
 {
-	if (_stdlib_developer > 0)
-		IConsolePrintF(CC_WARNING, "WARNING: %s", string);
+	if (_settings_client.gui.developer == 0) return;
+	IConsolePrintF(CC_WARNING, "WARNING: %s", string);
 }
 
 /**
