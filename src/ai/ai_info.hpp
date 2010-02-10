@@ -12,6 +12,8 @@
 #ifndef AI_INFO
 #define AI_INFO
 
+#ifdef ENABLE_AI
+
 #include <list>
 #include "../core/smallmap_type.hpp"
 #include "../script/script_info.hpp"
@@ -141,4 +143,5 @@ private:
 	const char *category;
 };
 
+#endif /* ENABLE_AI */
 #endif /* AI_INFO */

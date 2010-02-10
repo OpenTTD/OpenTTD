@@ -11,6 +11,7 @@
 
 #ifndef AI_CONFIG_HPP
 #define AI_CONFIG_HPP
+#ifdef ENABLE_AI
 
 #include <map>
 #include "ai_info.hpp"
@@ -130,4 +131,5 @@ private:
 	bool is_random_ai;
 };
 
+#endif /* ENABLE_AI */
 #endif /* AI_CONFIG_HPP */

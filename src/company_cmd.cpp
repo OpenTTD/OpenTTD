@@ -507,6 +507,7 @@ void StartupCompanies()
 	_next_competitor_start = 0;
 }
 
+#ifdef ENABLE_AI
 static void MaybeStartNewCompany()
 {
 #ifdef ENABLE_NETWORK
@@ -527,6 +528,7 @@ static void MaybeStartNewCompany()
 		DoCommandP(0, 1, INVALID_COMPANY, CMD_COMPANY_CTRL);
 	}
 }
+#endif /* ENABLE_AI */
 
 void InitializeCompanies()
 {
@@ -608,6 +610,7 @@ void OnTick_Companies()
 		if (c->bankrupt_asked != 0) HandleBankruptcyTakeover(c);
 	}
 
+#ifdef ENABLE_AI
 	if (_next_competitor_start == 0) {
 		_next_competitor_start = AI::GetStartNextTime() * DAY_TICKS;
 	}
@@ -615,6 +618,7 @@ void OnTick_Companies()
 	if (AI::CanStartNew() && _game_mode != GM_MENU && --_next_competitor_start == 0) {
 		MaybeStartNewCompany();
 	}
+#endif /* ENABLE_AI */
 
 	_cur_company_tick_index = (_cur_company_tick_index + 1) % MAX_COMPANIES;
 }

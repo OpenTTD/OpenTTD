@@ -385,20 +385,24 @@ static void LoadIntroGame()
 
 void MakeNewgameSettingsLive()
 {
+#ifdef ENABLE_AI
 	for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {
 		if (_settings_game.ai_config[c] != NULL) {
 			delete _settings_game.ai_config[c];
 		}
 	}
+#endif /* ENABLE_AI */
 
 	_settings_game = _settings_newgame;
 
+#ifdef ENABLE_AI
 	for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {
 		_settings_game.ai_config[c] = NULL;
 		if (_settings_newgame.ai_config[c] != NULL) {
 			_settings_game.ai_config[c] = new AIConfig(_settings_newgame.ai_config[c]);
 		}
 	}
+#endif /* ENABLE_AI */
 }
 
 byte _savegame_sort_order;

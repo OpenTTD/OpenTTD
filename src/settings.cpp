@@ -866,7 +866,10 @@ static bool DifficultyChange(int32)
 	}
 
 	if (((_game_mode == GM_MENU) ? _settings_newgame.difficulty : _settings_game.difficulty).max_no_competitors != 0 &&
-			AI::GetInfoList()->size() == 0 && (!_networking || _network_server)) {
+#ifdef ENABLE_AI
+			AI::GetInfoList()->size() == 0 &&
+#endif /* ENABLE_AI */
+			(!_networking || _network_server)) {
 		ShowErrorMessage(STR_WARNING_NO_SUITABLE_AI, INVALID_STRING_ID, 0, 0, true);
 	}
 
@@ -1145,6 +1148,7 @@ static void NewsDisplayLoadConfig(IniFile *ini, const char *grpname)
 
 static void AILoadConfig(IniFile *ini, const char *grpname)
 {
+#ifdef ENABLE_AI
 	IniGroup *group = ini->GetGroup(grpname);
 	IniItem *item;
 
@@ -1169,6 +1173,7 @@ static void AILoadConfig(IniFile *ini, const char *grpname)
 		}
 		if (item->value != NULL) config->StringToSettings(item->value);
 	}
+#endif /* ENABLE_AI */
 }
 
 /* Load a GRF configuration from the given group name */
@@ -1254,6 +1259,7 @@ static void NewsDisplaySaveConfig(IniFile *ini, const char *grpname)
 
 static void AISaveConfig(IniFile *ini, const char *grpname)
 {
+#ifdef ENABLE_AI
 	IniGroup *group = ini->GetGroup(grpname);
 
 	if (group == NULL) return;
@@ -1274,6 +1280,7 @@ static void AISaveConfig(IniFile *ini, const char *grpname)
 		IniItem *item = new IniItem(group, name, strlen(name));
 		item->SetValue(value);
 	}
+#endif /* ENABLE_AI */
 }
 
 /**

@@ -14,7 +14,17 @@
 
 #include "../company_type.h"
 
+#ifdef ENABLE_AI
 void ShowAIDebugWindow(CompanyID show_company = INVALID_COMPANY);
 void ShowAIConfigWindow();
+#else
+#include "table/strings.h"
+
+static inline void ShowAIConfigWindow()
+{
+	ShowErrorMessage(STR_ERROR_NO_AI, STR_ERROR_NO_AI_SUB, 0, 0);
+}
+static inline void ShowAIDebugWindow(CompanyID show_company = INVALID_COMPANY) {ShowAIConfigWindow();}
+#endif /* ENABLE_AI */
 
 #endif /* AI_GUI_HPP */

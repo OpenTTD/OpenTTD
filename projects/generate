@@ -40,6 +40,7 @@ sdl_config="1"
 png_config="1"
 os="MSVC"
 enable_dedicated="0"
+enable_ai="1"
 with_cocoa="0"
 enable_directmusic="1"
 with_threads="1"
@@ -94,6 +95,7 @@ load_main_data() {
 			if ($0 == "PSP"         && "'$os'" != "PSP")               { next; }
 			if ($0 == "DOS"         && "'$os'" != "DOS")               { next; }
 			if ($0 == "DEDICATED"   && "'$enable_dedicated'" != "1")   { next; }
+			if ($0 == "AI"          && "'$enable_ai'" == "0")          { next; }
 			if ($0 == "COCOA"       && "'$with_cocoa'" == "0")         { next; }
 			if ($0 == "BEOS"        && "'$os'" != "BEOS")              { next; }
 			if ($0 == "WIN32"       && "'$os'" != "MINGW" &&

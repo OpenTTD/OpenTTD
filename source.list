@@ -517,6 +517,7 @@ table/water_land.h
 3rdparty/md5/md5.cpp
 3rdparty/md5/md5.h
 
+#if AI
 # Script
 script/script_info.cpp
 script/script_info.hpp
@@ -697,6 +698,7 @@ ai/api/ai_vehicle.cpp
 ai/api/ai_vehiclelist.cpp
 ai/api/ai_waypoint.cpp
 ai/api/ai_waypointlist.cpp
+#end
 
 # Blitters
 #if DEDICATED

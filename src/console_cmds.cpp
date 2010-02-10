@@ -991,6 +991,7 @@ DEF_CONSOLE_CMD(ConRestart)
 	return true;
 }
 
+#ifdef ENABLE_AI
 DEF_CONSOLE_CMD(ConListAI)
 {
 	char buf[4096];
@@ -1157,6 +1158,7 @@ DEF_CONSOLE_CMD(ConRescanAI)
 
 	return true;
 }
+#endif /* ENABLE_AI */
 
 DEF_CONSOLE_CMD(ConGetSeed)
 {
@@ -1793,7 +1795,6 @@ void IConsoleStdLibRegister()
 	IConsoleCmdRegister("help",         ConHelp);
 	IConsoleCmdRegister("info_cmd",     ConInfoCmd);
 	IConsoleCmdRegister("info_var",     ConInfoVar);
-	IConsoleCmdRegister("list_ai",      ConListAI);
 	IConsoleCmdRegister("list_cmds",    ConListCommands);
 	IConsoleCmdRegister("list_vars",    ConListVariables);
 	IConsoleCmdRegister("list_aliases", ConListAliases);
@@ -1802,8 +1803,6 @@ void IConsoleStdLibRegister()
 	IConsoleCmdRegister("getseed",      ConGetSeed);
 	IConsoleCmdRegister("getdate",      ConGetDate);
 	IConsoleCmdRegister("quit",         ConExit);
-	IConsoleCmdRegister("reload_ai",    ConReloadAI);
-	IConsoleCmdRegister("rescan_ai",    ConRescanAI);
 	IConsoleCmdRegister("resetengines", ConResetEngines);
 	IConsoleCmdRegister("return",       ConReturn);
 	IConsoleCmdRegister("screenshot",   ConScreenShot);
@@ -1814,8 +1813,6 @@ void IConsoleStdLibRegister()
 	IConsoleCmdRegister("rm",           ConRemove);
 	IConsoleCmdRegister("save",         ConSave);
 	IConsoleCmdRegister("saveconfig",   ConSaveConfig);
-	IConsoleCmdRegister("start_ai",     ConStartAI);
-	IConsoleCmdRegister("stop_ai",      ConStopAI);
 	IConsoleCmdRegister("ls",           ConListFiles);
 	IConsoleCmdRegister("cd",           ConChangeDirectory);
 	IConsoleCmdRegister("pwd",          ConPrintWorkingDirectory);
@@ -1835,7 +1832,13 @@ void IConsoleStdLibRegister()
 	IConsoleAliasRegister("set_newgame",  "setting_newgame %+");
 	IConsoleAliasRegister("list_patches", "list_settings %+");
 
-
+#ifdef ENABLE_AI
+	IConsoleCmdRegister("list_ai",      ConListAI);
+	IConsoleCmdRegister("reload_ai",    ConReloadAI);
+	IConsoleCmdRegister("rescan_ai",    ConRescanAI);
+	IConsoleCmdRegister("start_ai",     ConStartAI);
+	IConsoleCmdRegister("stop_ai",      ConStopAI);
+#endif /* ENABLE_AI */
 
 	IConsoleVarRegister("developer", &_stdlib_developer, ICONSOLE_VAR_BYTE, "Redirect debugging output from the console/command line to the ingame console (value 2). Default value: 1");
 

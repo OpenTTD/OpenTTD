@@ -1269,17 +1269,14 @@ static void CrashAirplane(Aircraft *v)
 	v->Next()->cargo.Truncate(0);
 	const Station *st = GetTargetAirportIfValid(v);
 	StringID newsitem;
-	AIEventVehicleCrashed::CrashReason crash_reason;
 	if (st == NULL) {
 		newsitem = STR_NEWS_PLANE_CRASH_OUT_OF_FUEL;
-		crash_reason = AIEventVehicleCrashed::CRASH_AIRCRAFT_NO_AIRPORT;
 	} else {
 		SetDParam(1, st->index);
 		newsitem = STR_NEWS_AIRCRAFT_CRASH;
-		crash_reason = AIEventVehicleCrashed::CRASH_PLANE_LANDING;
 	}
 
-	AI::NewEvent(v->owner, new AIEventVehicleCrashed(v->index, v->tile, crash_reason));
+	AI::NewEvent(v->owner, new AIEventVehicleCrashed(v->index, v->tile, st == NULL ? AIEventVehicleCrashed::CRASH_AIRCRAFT_NO_AIRPORT : AIEventVehicleCrashed::CRASH_PLANE_LANDING));
 
 	AddVehicleNewsItem(newsitem,
 		NS_ACCIDENT,
