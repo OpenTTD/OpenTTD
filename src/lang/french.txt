@@ -1066,7 +1066,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Laxiste
 STR_CITY_APPROVAL_TOLERANT                                      :Tolérant
 STR_CITY_APPROVAL_HOSTILE                                       :Hostile
 
-STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Aucune IA utilisables...{}Vous pouvez télécharger diverses IA via le système de 'Contenu en ligne'
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Aucune IA utilisable...{}Vous pouvez télécharger diverses IA via le système de 'Contenu en ligne'
 STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Cette action a modifié le niveau de difficulté en personnalisé
 
 # Advanced settings window
@@ -3218,6 +3218,9 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}Configur
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Modifier la configuration de l'IA
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Recharger IA
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Tuer l'IA, recharger le script et relancer l'IA
+
+STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD est compilé sans support pour les IA...
+STR_ERROR_NO_AI_SUB                                             :{WHITE}... aucune IA disponible{NBSP}!
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Aucune IA n'a été trouvée.{}Cette IA est factice et ne fera rien.{}Vous pouvez télécharger diverses IA via le système de 'Contenu en ligne'.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}L'une des IA a rencontré un problème. Merci de rapporter ceci à l'auteur de l'IA avec une capture d'écran de la fenêtre de débogage d'IA.

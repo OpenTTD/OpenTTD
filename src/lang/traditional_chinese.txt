@@ -1165,6 +1165,10 @@ STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}邊緣�
 STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}車站最長延伸範圍：{ORANGE}{STRING} {RED}注意：過高會使效能下降
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}直升機於直升機坪自動維修：{ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}地形工具列與鐵軌／道路／水道／機場建設合併：{ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}小地圖要顯示的地形顏色：{ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :綠
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :暗綠
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :紫
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}反轉捲軸方向：{ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}視野平滑移動：{ORANGE}{STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}使用某些建設工具時顯示度量提示：{ORANGE}{STRING}
@@ -3213,6 +3217,7 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}AI 設�
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}變更 AI 設定
 STR_AI_DEBUG_RELOAD                                             :{BLACK}重新載入 AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}結束 AI、重新載入腳本、重新啟動 AI
+
 
 STR_ERROR_AI_NO_AI_FOUND                                        :找不到適合的 AI 可以載入。{}此 AI 是虛擬 AI，沒有任何效果。{}您可以透過「線上內容」系統下載更多 AI。
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}正在運行中的其中一個 AI 發生錯誤。請打開「AI 除錯」視窗後擷取螢幕圖片，將此問題回報給 AI 作者。

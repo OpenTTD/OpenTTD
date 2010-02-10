@@ -1826,6 +1826,8 @@ STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}供給: 
 STR_JOIN_STATION_CAPTION                                        :{WHITE}駅を統合
 STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}結合しない
 
+STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}通過点を統合
+STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}結合しない
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}鉄道の建設
@@ -2024,6 +2026,11 @@ STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}ラン�
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}多くのランダムな市町村
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}地図にたくさんの市町村を建設します
 
+STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}町名：
+STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}町名入力
+STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}クリックしたら、町名入力ができます
+STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}ランダム町名
+STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}ランダム町名を作らせます
 
 STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}町のサイズ：
 STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}村
@@ -2208,6 +2215,7 @@ STR_MAPGEN_VARIETY                                              :{BLACK}地方�
 STR_MAPGEN_GENERATE                                             :{WHITE}作成
 
 # Strings for map borders at game generation
+STR_MAPGEN_BORDER_TYPE                                          :{BLACK}地図の端：
 STR_MAPGEN_NORTHWEST                                            :{BLACK}西北
 STR_MAPGEN_NORTHEAST                                            :{BLACK}東北
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}東南
@@ -2348,6 +2356,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}サイ�
 
 # Town directory window
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}市町村
+STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- なし-
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK}（{COMMA}）
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}町名 - 画面をその町に集中するには、クリックします
 STR_TOWN_POPULATION                                             :{BLACK}世界人口：{COMMA}人
@@ -2416,6 +2425,7 @@ STR_STATION_LIST_TOOLTIP                                        :{BLACK}駅名 
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}複数の項目を選択するにはcontrolを押します
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA}軒の駅
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
+STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- なし -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}すべての駅を選択
 STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}すべての貨物種類を選択（到着待たぬ貨物も含む）
@@ -2458,6 +2468,7 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}この�
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :駅／荷役所の名称の変更
 
 # Waypoint/buoy view window
+STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}通過点の名前を変更する
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}通過点名を変更
@@ -2532,6 +2543,7 @@ STR_BUY_COMPANY_MESSAGE                                         :{WHITE}経済�
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}産業
+STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- なし-
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK}（{CARGO}{STRING}）{YELLOW}（{COMMA}％が運送済み）
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK}（{CARGO}{STRING}／{CARGO}{STRING}）{YELLOW}（{COMMA}％／{COMMA}％が運送済み）
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
@@ -2895,6 +2907,7 @@ STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}今年�
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}信頼度：{LTBLUE}{COMMA}%　{BLACK}修理後の故障：{LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE}　{BLACK}購入年：{LTBLUE}{NUM}{BLACK}　現在価値：{LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}容量： {LTBLUE}なし
 STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}収容能力：{LTBLUE}{CARGO}{3:STRING}
 STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}収容能力：{LTBLUE}{CARGO}{3:STRING} (x{4:NUM})
 STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}収容能力：{LTBLUE}{CARGO}, {CARGO}{STRING}
@@ -2960,6 +2973,8 @@ STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}時刻�
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}時刻表を表示します
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}指令リスト - 指令を選択するにはクリックします
+STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
+STR_ORDER_TEXT                                                  :{STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - 指令終了 - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - 共有指令の終了- -
@@ -3045,6 +3060,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRIN
 STR_ORDER_GO_TO_HANGAR_FORMAT                                   :{STRING} {STATION} 格納庫
 
 STR_ORDER_REFIT_ORDER                                           :（{STRING}に改装）
+STR_ORDER_REFIT_STOP_ORDER                                      :({STRING}に改装して、止める)
 STR_ORDER_STOP_ORDER                                            :（停止）
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
@@ -3103,6 +3119,8 @@ STR_TIMETABLE_AUTOFILL                                          :{BLACK}自動�
 
 
 # Date window (for timetable)
+STR_DATE_CAPTION                                                :{WHITE}日付設定
+STR_DATE_SET_DATE                                               :{BLACK}日付設定
 
 
 # AI debug window
@@ -3113,6 +3131,7 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}コン�
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}コンピュータのプレーヤの設定を切り替える
 STR_AI_DEBUG_RELOAD                                             :{BLACK}AI を再起動
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}AI を停止して、スクリプトを読み込んで、AI を再起動します。
+
 
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}実行中の AI の一つは予期せずに終了しました。AI の作者に AI デバッグのウインドウのスクリーンショットが含む電子メールをご送信ください。
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI デバッグウインドウはサーバのみで使用することができます。
@@ -3318,6 +3337,7 @@ STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}先に�
 STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}先に空港を破壊しなければなりません
 
 # Waypoint related errors
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}他の通過点に近すぎます
 
 STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}ここに線路通過点を建設できません...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}ここにブイを設置できません
@@ -3888,6 +3908,7 @@ STR_FORMAT_DATE_SHORT                                           :{1:NUM}年{0:ST
 STR_FORMAT_DATE_LONG                                            :{2:NUM}年{1:STRING}{0:STRING}
 STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
 
+STR_FORMAT_BUOY_NAME                                            :{TOWN} ブイ
 STR_FORMAT_COMPANY_NUM                                          :（会社 {COMMA}）
 STR_FORMAT_GROUP_NAME                                           :グループ {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN}{STRING}
@@ -3940,6 +3961,7 @@ STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
 STR_JUST_DATE_LONG                                              :{DATE_LONG}
 STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_STRING_SPACE_STRING                                    :{STRING} {STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
@@ -3957,10 +3979,14 @@ STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LO
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}
 STR_TINY_GROUP                                                  :{TINYFONT}{GROUP}
+STR_BLACK_INT                                                   :{BLACK}{NUM}
+STR_ORANGE_INT                                                  :{ORANGE}{NUM}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
 STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
+STR_GREEN_STRING                                                :{GREEN}{STRING}
+STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}

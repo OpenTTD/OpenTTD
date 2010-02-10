@@ -3252,6 +3252,9 @@ STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}MI beál
 STR_AI_DEBUG_RELOAD                                             :{BLACK}MI újratöltése
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}MI kilövése, szkript újratöltése, MI újraindítása
 
+STR_ERROR_NO_AI                                                 :{WHITE}Ezt az OpenTTD verziót MI támogatás nélkül fordították...
+STR_ERROR_NO_AI_SUB                                             :{WHITE}... nincs elérhető MI!
+
 STR_ERROR_AI_NO_AI_FOUND                                        :Nincs MI, amit be lehetne tölteni.{}A jelenlegi MI nem fog semmit csinálni.{}MI-k letöltéséhez használd a főmenüből elérhető tartalomletöltő rendszert.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Az egyik futó MI futása közben hiba történt. Kérjük jelezd ezt az MI készítőjének az MI nyomkövetés ablakról készített képpel.
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Az MI nyomkövetés ablak csak a szerver számára elérhető

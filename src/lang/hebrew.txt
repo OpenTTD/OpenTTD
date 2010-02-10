@@ -636,7 +636,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}(לחץ 
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}(לחץ על רצועה כדי להסיר אותה מהתוכנית הנוחכית(מותאם אישית 1 או מותאם אישית 2 בלבד
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}חמשת החברות שהגיעו לרמת {NUM}{}){STRING})
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}חמש החברות שהגיעו לשנת {NUM}{}({STRING})
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}טבלת ליגה של חברות ב {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIGFONT}{BLACK}.{COMMA}
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :איש עסקים
@@ -744,7 +744,7 @@ STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}שינ�
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}שינויים ביצור של תעשיות בשירות החברה
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}שינויים ביצור של תעשיות בשירות המתחרה/ים
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}שינויים ביצור תעשיה אחרת
-STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}עיצות/מידע על כלים של החברה
+STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}עיצות/מידע על כלי רכב של החברה
 STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}דגמים חדשים
 STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}שינויים במטענים המתקבלים
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}סובסידיות
@@ -773,7 +773,7 @@ STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIGFONT}{BLACK
 STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIGFONT}{BLACK}נעדרים,חשש גדול לחייהם {COMMA} מבול ! שיטפון ! לפחות
 
 STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIGFONT}{BLACK}!!!חברת תחבורה בקשיים
-STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIGFONT}{BLACK}! תימכר או תוכרז כפושטת רגל אם לא תשפר את ביצועיה בקרוב {STRING}
+STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIGFONT}{BLACK}{STRING} תימכר או תוכרז כפושטת רגל אם לא תשפר את ביצועיה בקרוב!
 STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIGFONT}{BLACK}!איחוד חברות
 STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} נמכרה ל-{STRING} עבור {CURRENCY}!
 STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIGFONT}{BLACK}!פשיטת רגל
@@ -1179,6 +1179,10 @@ STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}לפחו
 STR_CONFIG_SETTING_STATION_SPREAD                               :{RED}אזהרה : ערכים גבוהים מאיטים את המשחק {ORANGE}{STRING}{LTBLUE} :פריסה מירבית עבור תחנה
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{ORANGE}{STRING}{LTBLUE}טיפול אוטומטי במסוקים במנחת
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{ORANGE}{STRING}ֿ{LTBLUE} :חבר את סרגל פני השטח לסרגלי בניית כבישים/מסילות/שדות תעופה/מזחים
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}צבע קרקע שבשימוש מפה קטנה: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :ירוק
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :ירוק כהה
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :סגול
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{ORANGE}{STRING}{LTBLUE} :היפוך כיוון הגלילה של התצוגה
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{ORANGE}{STRING}{LTBLUE} :גלילה חלקה של התצוגה המשנית
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{ORANGE}{STRING}{LTBLUE} :'הצג מידות בעת בניית כבישים/מסילות וכיוב
@@ -1875,6 +1879,8 @@ STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}מופס
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}מופעל
 STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}בטל הדגשת השטח המכוסה ע"י התחנה
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}הדגש את השטח המכוסה ע"י התחנה
+STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}מקבלת: {GOLD}{STRING}
+STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}מספקת: {GOLD}{STRING}
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}חבר לתחנה קיימת
@@ -3055,10 +3061,10 @@ STR_ORDER_GO_VIA                                                :עבור דרך
 STR_ORDER_GO_NON_STOP_VIA                                       :עבור דרך ללא עצירה
 STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}שנה את דפוס העצירה ביעד שנבחר
 
-STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}העמס עד שנגמר המקום למטען מסויים
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}העמס מטען מסויים במלואו
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :העמס מטען זמין
-STR_ORDER_DROP_FULL_LOAD_ALL                                    :העמס הכל
-STR_ORDER_DROP_FULL_LOAD_ANY                                    :העמס עד שנגמר המקום למטען מסויים
+STR_ORDER_DROP_FULL_LOAD_ALL                                    :העמס כל מטען במלואו
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :העמס כל סוג מטען במלואו
 STR_ORDER_DROP_NO_LOADING                                       :אל תעמיס
 STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}שנה את דפוס ההעמסה ביעד שנבחר
 
@@ -3128,7 +3134,7 @@ STR_ORDER_ROAD_VEHICLE_DEPOT                                    :מוסך רכב
 STR_ORDER_SHIP_DEPOT                                            :מבדוק ספינות
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {TOWN} {STRING}
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{2:STRING} {1:STRING} {0:STRING}
-STR_ORDER_GO_TO_HANGAR_FORMAT                                   :{STRING}סככת המטוסים ב{STATION}
+STR_ORDER_GO_TO_HANGAR_FORMAT                                   :{STRING} סככת המטוסים ב{STATION}
 
 STR_ORDER_REFIT_ORDER                                           :({STRING} התאם לנשיאת)
 STR_ORDER_REFIT_STOP_ORDER                                      :(ועצור {STRING} התאם לנשיאת)
@@ -3137,19 +3143,19 @@ STR_ORDER_STOP_ORDER                                            :(עצור)
 STR_ORDER_GO_TO_STATION                                         :{2:STRING} {1:STATION} {0:STRING}
 
 STR_ORDER_FULL_LOAD                                             :(העמס הכל)
-STR_ORDER_FULL_LOAD_ANY                                         :(העמס עד שמתמלא מטען מסויים)
+STR_ORDER_FULL_LOAD_ANY                                         :(העמס כל סוג מטען במלואו)
 STR_ORDER_NO_LOAD                                               :(אל תעמיס)
 STR_ORDER_UNLOAD                                                :(פרוק והטען מחדש)
-STR_ORDER_UNLOAD_FULL_LOAD                                      :(פרוק והמתן למילוי מחדש)
-STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(פרוק והמתן למילוי מטען מסויים)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :(פרוק והמתן להעמסה מלאה)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(פרוק והמתן להעמסה מלאה של כל מטען)
 STR_ORDER_UNLOAD_NO_LOAD                                        :(פרוק ועזוב ריק)
 STR_ORDER_TRANSFER                                              :(העבר מטען קיים, הטען מחדש)
-STR_ORDER_TRANSFER_FULL_LOAD                                    :(העבר מטען קיים, המתן עד למילוי מחדש)
-STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(העבר מטען קיים, המתן עד להתמלאות מטען מסויים חדש)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :(העבר מטען קיים והמתן להעמסה מלאה)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(העבר מטען קיים והמתן עד להעמסה מלאה של כל סוג מטען)
 STR_ORDER_TRANSFER_NO_LOAD                                      :(העבר מטען קיים ועזוב ריק)
 STR_ORDER_NO_UNLOAD                                             :(אל תפרוק, העמס מטען זמין)
-STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(אל תפרוק,המתן למילוי)
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(אל תפרוק, המתן עד שיתמלא מטען מסויים)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(אל תפרוק והמתן להעמסה מלאה)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(אל תפרוק והמתן עד להעמסה מלאה של כל סוג מטען)
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[קצה קרוב]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[אמצע]
@@ -3225,6 +3231,7 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}הגדר
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}שנה את הגדרות הבינה המלאכותית
 STR_AI_DEBUG_RELOAD                                             :{BLACK}טען מחדש בינה מלאכותית
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK} הטען מחדש את הסקריפט ואתחל בינה מלאכותית
+
 
 STR_ERROR_AI_NO_AI_FOUND                                        :לא נמצאה בינה מלאכותית מתאימה לטעינה.{}בינה מלאכותית זו הינה מדומה ולא תעשה כלום.{}באפשרותך להוריד מספר אלגורתמים של בינה מלאכותית בעזרת מערכת 'תוכן מקוון'.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}אחד מאלגורתמי הבינה המלאכותית קרס. אנא דווח זאת ליוצר האלגוריתם וצרף צילום מסך של מסך ה-Debug.
@@ -3712,10 +3719,10 @@ STR_INDUSTRY_NAME_SUGAR_MINE                                    :מכרה סוכ
 ##id 0x6000
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :ללא שם
-STR_SV_TRAIN_NAME                                               :{COMMA} רכבת
-STR_SV_ROAD_VEHICLE_NAME                                        :{COMMA} רכב
-STR_SV_SHIP_NAME                                                :{COMMA} כלי שייט
-STR_SV_AIRCRAFT_NAME                                            :{COMMA} כלי טייס
+STR_SV_TRAIN_NAME                                               :רכבת {COMMA}
+STR_SV_ROAD_VEHICLE_NAME                                        :רכב {COMMA}
+STR_SV_SHIP_NAME                                                :כלי שייט {COMMA}
+STR_SV_AIRCRAFT_NAME                                            :כלי טייס {COMMA}
 
 STR_SV_STNAME                                                   :{STRING}
 STR_SV_STNAME_NORTH                                             :תחנת {STRING} צפון
@@ -3731,9 +3738,9 @@ STR_SV_STNAME_WOODS                                             :תחנת יער
 STR_SV_STNAME_LAKESIDE                                          :תחנת {STRING} לצד אגם
 STR_SV_STNAME_EXCHANGE                                          :תחנת החלפה {STRING}
 STR_SV_STNAME_AIRPORT                                           :נמל תעופה {STRING}
-STR_SV_STNAME_OILFIELD                                          :{STRING} שדה הנפט
-STR_SV_STNAME_MINES                                             :{STRING} מכרות
-STR_SV_STNAME_DOCKS                                             :{STRING} רציפי
+STR_SV_STNAME_OILFIELD                                          :שדה הנפט {STRING}
+STR_SV_STNAME_MINES                                             :מכרות {STRING}
+STR_SV_STNAME_DOCKS                                             :רציפי {STRING}
 STR_SV_STNAME_BUOY                                              :{STRING}
 STR_SV_STNAME_WAYPOINT                                          :{STRING}
 ##id 0x6020
@@ -3742,7 +3749,7 @@ STR_SV_STNAME_SIDINGS                                           :תחנת מסי
 STR_SV_STNAME_BRANCH                                            :תחנת הסתעפות {STRING}
 STR_SV_STNAME_UPPER                                             :עילית {STRING}
 STR_SV_STNAME_LOWER                                             :תחתית {STRING}
-STR_SV_STNAME_HELIPORT                                          :{STRING} מנחת מסוקי
+STR_SV_STNAME_HELIPORT                                          :מנחת מסוקי {STRING}
 STR_SV_STNAME_FOREST                                            :יער {STRING}
 STR_SV_STNAME_FALLBACK                                          :{STRING} תחנה מספר {NUM}
 ############ end of savegame specific region!
@@ -4018,7 +4025,7 @@ STR_FORMAT_BUOY_NAME_SERIAL                                     :מצוף {TOWN}
 STR_FORMAT_COMPANY_NUM                                          :({COMMA} חברה)
 STR_FORMAT_GROUP_NAME                                           :{COMMA} קבוצה
 STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING.gen} {0:TOWN}
-STR_FORMAT_WAYPOINT_NAME                                        :נקודות ציון {TOWN}
+STR_FORMAT_WAYPOINT_NAME                                        :נקודת ציון {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :נקודת ציון {TOWN} #{COMMA}
 
 STR_UNKNOWN_STATION                                             :תחנה לא ידועה

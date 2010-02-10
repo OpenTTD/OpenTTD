@@ -3260,6 +3260,9 @@ STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Spremeni
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Ponovno naloži UI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Uniči UI, ponovno naloži skripto in ponovno zaženi UI
 
+STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD je zgrajen brez UI podpore...
+STR_ERROR_NO_AI_SUB                                             :{WHITE}... ni nobene UI na voljo!
+
 STR_ERROR_AI_NO_AI_FOUND                                        :Ni na voljo nobene uporabne UI.{}Ta UI je navidezen in ne bo storil ničesar. UI so na voljo preko 'Prenosa vsebin'.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Ena izmed zagnanih UI se je sesula. Prosim, javi to avtorju UI s priloženo sliko zaslona v orodju za čiščenje UI.
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}okno UI čiščenja je na voljo samo za strežnik

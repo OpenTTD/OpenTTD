@@ -3219,6 +3219,9 @@ STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Cambiar 
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Recarga la IA
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Elimina la IA, recarga el código y reinicia la IA
 
+STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD está compilado sin soporte para IA...
+STR_ERROR_NO_AI_SUB                                             :{WHITE}... no hay IAs disponibles!
+
 STR_ERROR_AI_NO_AI_FOUND                                        :No se encontró IA para cargar.{}Esta IA por defecto no hará nada.{}Puedes descargar nuevas IAs mediante el sistema de Contenido Online.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Una de las AI ejecutadas ha fallado. Por favor, reporte el fallo al autor de la misma desde la ventana Depuración de IA.
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}La ventana de depuración de la IA solo está disponible para el servidor

@@ -1165,6 +1165,10 @@ STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Een of m
 STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Maximale stationsomvang: {ORANGE}{STRING} {RED}Pas op: Hoge waarde vertraagt spel
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Helikopters automatisch repareren op helipads: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Verbind de knoppenbalk voor terreinvorming met die voor spoor/weg/water/vliegveld: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Gebruiker land kleur op de kleine kaart: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Groen
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Donker groen
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violet
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}Omgekeerde scrollrichting: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}Vloeiend scrollen kijkvenster: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}Toon dimensie-informatie bij het gebruik van diverse bouwgereedschappen: {ORANGE}{STRING}
@@ -3213,6 +3217,7 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}AI Inste
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Wijzig de instelling van de AI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Herlaad computerspeler
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Verwijder computerspeler, herlaad het script en herstart computerspeler
+
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Geen geschikte AI gevonden. {} Deze AI is een 'dummy' en voert niets uit.{}Verschillende AI's kunnen worden gedownload via het 'Online Content' systeem.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Een van de draaiende AI's is gecrashed. Meldt dit bij de schrijver van deze AI met een schermprint van het AI Debugscherm.

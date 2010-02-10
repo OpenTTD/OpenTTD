@@ -1260,6 +1260,10 @@ STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Ένα �
 STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Μέγιστη διασπορά σταθμών: {ORANGE}{STRING} {RED}Προσοχή: Η υψηλή ρύθμιση καθυστερεί το παιχνίδι
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Αυτόματη επισκευή ελικοπτέρων στα ελικοδρόμια: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Σύνδεση γραμμής εργαλείων τοπίου με γραμμή εργαλείων σιδηροτροχιάς/δρόμου/νερού/αεροδρομίου: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Χρώμα εδάφους που χρησιμοποιείται στον μικροχάρτη: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Πράσινο
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Σκούρο πράσινο
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Βιολετί
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}Ανάποδη μετακίνηση οθόνης: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}Ομαλή μετάβαση οθόνης: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}Εμφάνιση εργαλείου μετρήσεως όταν χρησιμοποιούνται διάφορα εργαλεία: {ORANGE}{STRING}
@@ -3314,6 +3318,7 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}Ρυθμ
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Αλλαγή των ρυθμίσεων του AI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Ξαναφορτώση AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Τερματίστε το AI, ξαναφορτώστε το σενάριο και ξαναεκκινήστε το AI
+
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Δεν βρέθηκε κατάλληλο AI για φόρτωση.{}Αυτό το AI είναι ένα ψεύτικο AI και δεν θα κάνει τίποτα.{}Μπορείτε να κατεβάσετε διάφορα AΙ από το σύστημα 'Online περιεχομένου"
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Ένα από τα AI που εκτελούνται κράσαρε. Παρακαλώ ενημερώστε τον συγγραφέα του AI με μια φωτογραφία οθόνης από το παράθυρο αποσφαλμάτωσης AI.

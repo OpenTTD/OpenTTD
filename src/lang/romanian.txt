@@ -1165,6 +1165,10 @@ STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Una sau 
 STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Dimensiunea maximă a staţiilor: {ORANGE}{STRING} {RED}Atenţie: Valorile mari încetinesc jocul!
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Service automat pentru elicoptere la helipaduri: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Conectează bara de instrumente pentru peisaj cu cea de construcţii feroviare/auto/aeriane: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Culoarea folosita pentru teren pe hartă: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Verde
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Verde închis
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Mov
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}Inversează direcţia de scroll: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}Derulare uşoară ecran: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}Arată o indicaţie de distanţă la folosirea uneltelor de construcţie: {ORANGE}{STRING}
@@ -3213,6 +3217,7 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}Setări 
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Schimbă setările IA
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Reîncarcă IA
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Opreşte IA, raîncarcă scriptul, apoi reporneşte IA
+
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Nici o IA potrivită a fost găsită{}Această IA este nefuncţională.{}Poţi descărca IA-uri folsind opţiunea "Resurse online" din meniul principal.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}O Inteligentă Artificială s-a oprit în mod eronat. Raportează această problemă autorului împreună cu o captură de ecran a ferestrei Depanare IA
