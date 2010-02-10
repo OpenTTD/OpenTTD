@@ -2285,10 +2285,7 @@ struct NetworkCompanyPasswordWindow : public QueryStringBaseWindow {
 			snprintf(_settings_client.network.default_company_pass, lengthof(_settings_client.network.default_company_pass), "%s", this->edit_str_buf);
 		}
 
-		/* empty password is a '*' because of console argument */
-		if (StrEmpty(this->edit_str_buf)) snprintf(this->edit_str_buf, this->edit_str_size, "*");
-		char *password = this->edit_str_buf;
-		NetworkChangeCompanyPassword(1, &password);
+		NetworkChangeCompanyPassword(this->edit_str_buf);
 	}
 
 	virtual void OnPaint()

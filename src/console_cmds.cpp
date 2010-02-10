@@ -1544,8 +1544,7 @@ DEF_CONSOLE_CMD(ConSayClient)
 
 extern void HashCurrentCompanyPassword(const char *password);
 
-/* Also use from within company_gui to change the password graphically */
-bool NetworkChangeCompanyPassword(byte argc, char *argv[])
+DEF_CONSOLE_CMD(ConCompanyPassword)
 {
 	if (argc == 0) {
 		IConsoleHelp("Change the password of your company. Usage: 'company_pw \"<password>\"'");
@@ -1553,22 +1552,20 @@ bool NetworkChangeCompanyPassword(byte argc, char *argv[])
 		return true;
 	}
 
+	if (argc != 1) return false;
+
 	if (!Company::IsValidID(_local_company)) {
 		IConsoleError("You have to own a company to make use of this command.");
 		return false;
 	}
 
-	if (argc != 1) return false;
+	const char *password = NetworkChangeCompanyPassword(argv[0]);
 
-	if (strcmp(argv[0], "*") == 0) argv[0][0] = '\0';
-
-	if (!_network_server) {
-		NetworkClientSetPassword(argv[0]);
+	if (StrEmpty(password)) {
+		IConsolePrintF(CC_WARNING, "Company password cleared");
 	} else {
-		HashCurrentCompanyPassword(argv[0]);
+		IConsolePrintF(CC_WARNING, "Company password changed to: %s", password);
 	}
-
-	IConsolePrintF(CC_WARNING, "'company_pw' changed to:  %s", argv[0]);
 
 	return true;
 }
@@ -1909,7 +1906,7 @@ void IConsoleStdLibRegister()
 	/*** Networking variables ***/
 	IConsoleVarStringRegister("company_pw",      NULL, 0, "Set a password for your company, so no one without the correct password can join. Use '*' to clear the password");
 	IConsoleVarHookAdd("company_pw",             ICONSOLE_HOOK_ACCESS, ConHookNeedNetwork);
-	IConsoleVarProcAdd("company_pw",             NetworkChangeCompanyPassword);
+	IConsoleVarProcAdd("company_pw",             ConCompanyPassword);
 	IConsoleAliasRegister("company_password",    "company_pw %+");
 
 	IConsoleAliasRegister("net_frame_freq",        "setting frame_freq %+");

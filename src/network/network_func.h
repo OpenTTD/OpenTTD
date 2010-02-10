@@ -36,7 +36,7 @@ extern StringList _network_ban_list;
 byte NetworkSpectatorCount();
 void NetworkUpdateClientName();
 bool NetworkCompanyHasClients(CompanyID company);
-bool NetworkChangeCompanyPassword(byte argc, char *argv[]);
+const char *NetworkChangeCompanyPassword(const char *);
 void NetworkReboot();
 void NetworkDisconnect(bool blocking = false);
 void NetworkGameLoop();
@@ -51,7 +51,6 @@ void NetworkClientConnectGame(NetworkAddress address, CompanyID join_as, const c
 void NetworkClientRequestMove(CompanyID company, const char *pass = "");
 void NetworkClientSendRcon(const char *password, const char *command);
 void NetworkClientSendChat(NetworkAction action, DestType type, int dest, const char *msg, int64 data = 0);
-void NetworkClientSetPassword(const char *password);
 bool NetworkClientPreferTeamChat(const NetworkClientInfo *cio);
 bool NetworkCompanyIsPassworded(CompanyID company_id);
 bool NetworkMaxCompaniesReached();

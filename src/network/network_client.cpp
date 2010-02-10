@@ -1030,7 +1030,7 @@ void NetworkClientSendChat(NetworkAction action, DestType type, int dest, const 
 	SEND_COMMAND(PACKET_CLIENT_CHAT)(action, type, dest, msg, data);
 }
 
-void NetworkClientSetPassword(const char *password)
+static void NetworkClientSetPassword(const char *password)
 {
 	SEND_COMMAND(PACKET_CLIENT_SET_PASSWORD)(password);
 }
@@ -1051,6 +1051,24 @@ bool NetworkClientPreferTeamChat(const NetworkClientInfo *cio)
 	}
 
 	return false;
+}
+
+/**
+ * Sets/resets company password
+ * @param password new password, "" or "*" resets password
+ * @return new password
+ */
+const char *NetworkChangeCompanyPassword(const char *password)
+{
+	if (strcmp(password, "*") == 0) password = "";
+
+	if (!_network_server) {
+		NetworkClientSetPassword(password);
+	} else {
+		HashCurrentCompanyPassword(password);
+	}
+
+	return password;
 }
 
 /**
