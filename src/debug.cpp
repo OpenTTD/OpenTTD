@@ -40,6 +40,7 @@ int _debug_freetype_level;
 int _debug_sl_level;
 int _debug_gamelog_level;
 int _debug_desync_level;
+int _debug_console_level;
 
 
 struct DebugLevel {

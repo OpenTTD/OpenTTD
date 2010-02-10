@@ -1766,10 +1766,6 @@ DEF_CONSOLE_CMD(ConGamelogPrint)
 
 static void IConsoleDebugLibRegister()
 {
-	/* debugging variables and functions */
-	extern bool _stdlib_con_developer; // XXX extern in .cpp
-
-	IConsoleVarRegister("con_developer",    &_stdlib_con_developer, ICONSOLE_VAR_BOOLEAN, "Enable/disable console debugging information (internal)");
 	IConsoleCmdRegister("resettile",        ConResetTile);
 	IConsoleCmdRegister("stopall",          ConStopAllVehicles);
 	IConsoleAliasRegister("dbg_echo",       "echo %A; echo %B");
