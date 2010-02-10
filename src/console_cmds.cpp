@@ -1552,14 +1552,14 @@ DEF_CONSOLE_CMD(ConCompanyPassword)
 		return true;
 	}
 
-	if (argc != 1) return false;
+	if (argc != 2) return false;
 
 	if (!Company::IsValidID(_local_company)) {
 		IConsoleError("You have to own a company to make use of this command.");
 		return false;
 	}
 
-	const char *password = NetworkChangeCompanyPassword(argv[0]);
+	const char *password = NetworkChangeCompanyPassword(argv[1]);
 
 	if (StrEmpty(password)) {
 		IConsolePrintF(CC_WARNING, "Company password cleared");
@@ -1904,10 +1904,9 @@ void IConsoleStdLibRegister()
 	IConsoleCmdHookAdd("unpause",          ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
 
 	/*** Networking variables ***/
-	IConsoleVarStringRegister("company_pw",      NULL, 0, "Set a password for your company, so no one without the correct password can join. Use '*' to clear the password");
-	IConsoleVarHookAdd("company_pw",             ICONSOLE_HOOK_ACCESS, ConHookNeedNetwork);
-	IConsoleVarProcAdd("company_pw",             ConCompanyPassword);
-	IConsoleAliasRegister("company_password",    "company_pw %+");
+	IConsoleCmdRegister("company_pw",      ConCompanyPassword);
+	IConsoleCmdHookAdd("company_pw",       ICONSOLE_HOOK_ACCESS, ConHookNeedNetwork);
+	IConsoleAliasRegister("company_password",      "company_pw %+");
 
 	IConsoleAliasRegister("net_frame_freq",        "setting frame_freq %+");
 	IConsoleAliasRegister("net_sync_freq",         "setting sync_freq %+");
