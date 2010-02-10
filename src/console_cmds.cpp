@@ -106,6 +106,8 @@ DEF_CONSOLE_HOOK(ConHookNoNetwork)
 	return true;
 }
 
+#else
+#	define ConHookNoNetwork NULL
 #endif /* ENABLE_NETWORK */
 
 static void IConsoleHelp(const char *str)
@@ -1263,9 +1265,7 @@ DEF_CONSOLE_CMD(ConInfoCmd)
 	IConsolePrintF(CC_DEFAULT, "command name: %s", cmd->name);
 	IConsolePrintF(CC_DEFAULT, "command proc: %p", cmd->proc);
 
-	if (cmd->hook.access) IConsoleWarning("command is access hooked");
-	if (cmd->hook.pre) IConsoleWarning("command is pre hooked");
-	if (cmd->hook.post) IConsoleWarning("command is post hooked");
+	if (cmd->hook != NULL) IConsoleWarning("command is hooked");
 
 	return true;
 }
@@ -1721,7 +1721,7 @@ void IConsoleStdLibRegister()
 	IConsoleCmdRegister("getseed",      ConGetSeed);
 	IConsoleCmdRegister("getdate",      ConGetDate);
 	IConsoleCmdRegister("quit",         ConExit);
-	IConsoleCmdRegister("resetengines", ConResetEngines);
+	IConsoleCmdRegister("resetengines", ConResetEngines, ConHookNoNetwork);
 	IConsoleCmdRegister("return",       ConReturn);
 	IConsoleCmdRegister("screenshot",   ConScreenShot);
 	IConsoleCmdRegister("script",       ConScript);
@@ -1761,66 +1761,42 @@ void IConsoleStdLibRegister()
 
 	/* networking functions */
 #ifdef ENABLE_NETWORK
-	/* Network hooks; only active in network */
-	IConsoleCmdHookAdd ("resetengines", ICONSOLE_HOOK_ACCESS, ConHookNoNetwork);
-
 /* Content downloading is only available with ZLIB */
 #if defined(WITH_ZLIB)
 	IConsoleCmdRegister("content",         ConContent);
 #endif /* defined(WITH_ZLIB) */
 
 	/*** Networking commands ***/
-	IConsoleCmdRegister("say",             ConSay);
-	IConsoleCmdHookAdd("say",              ICONSOLE_HOOK_ACCESS, ConHookNeedNetwork);
-	IConsoleCmdRegister("companies",       ConCompanies);
-	IConsoleCmdHookAdd("companies",        ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
+	IConsoleCmdRegister("say",             ConSay, ConHookNeedNetwork);
+	IConsoleCmdRegister("companies",       ConCompanies, ConHookServerOnly);
 	IConsoleAliasRegister("players",       "companies");
-	IConsoleCmdRegister("say_company",     ConSayCompany);
-	IConsoleCmdHookAdd("say_company",      ICONSOLE_HOOK_ACCESS, ConHookNeedNetwork);
+	IConsoleCmdRegister("say_company",     ConSayCompany, ConHookNeedNetwork);
 	IConsoleAliasRegister("say_player",    "say_company %+");
-	IConsoleCmdRegister("say_client",      ConSayClient);
-	IConsoleCmdHookAdd("say_client",       ICONSOLE_HOOK_ACCESS, ConHookNeedNetwork);
+	IConsoleCmdRegister("say_client",      ConSayClient, ConHookNeedNetwork);
 
-	IConsoleCmdRegister("connect",         ConNetworkConnect);
-	IConsoleCmdHookAdd("connect",          ICONSOLE_HOOK_ACCESS, ConHookClientOnly);
-	IConsoleCmdRegister("clients",         ConNetworkClients);
-	IConsoleCmdHookAdd("clients",          ICONSOLE_HOOK_ACCESS, ConHookNeedNetwork);
-	IConsoleCmdRegister("status",          ConStatus);
-	IConsoleCmdHookAdd("status",           ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
-	IConsoleCmdRegister("server_info",     ConServerInfo);
-	IConsoleCmdHookAdd("server_info",      ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
+	IConsoleCmdRegister("connect",         ConNetworkConnect, ConHookClientOnly);
+	IConsoleCmdRegister("clients",         ConNetworkClients, ConHookNeedNetwork);
+	IConsoleCmdRegister("status",          ConStatus, ConHookServerOnly);
+	IConsoleCmdRegister("server_info",     ConServerInfo, ConHookServerOnly);
 	IConsoleAliasRegister("info",          "server_info");
-	IConsoleCmdRegister("reconnect",       ConNetworkReconnect);
-	IConsoleCmdHookAdd("reconnect",        ICONSOLE_HOOK_ACCESS, ConHookClientOnly);
-	IConsoleCmdRegister("rcon",            ConRcon);
-	IConsoleCmdHookAdd("rcon",             ICONSOLE_HOOK_ACCESS, ConHookNeedNetwork);
+	IConsoleCmdRegister("reconnect",       ConNetworkReconnect, ConHookClientOnly);
+	IConsoleCmdRegister("rcon",            ConRcon, ConHookNeedNetwork);
 
-	IConsoleCmdRegister("join",            ConJoinCompany);
-	IConsoleCmdHookAdd("join",             ICONSOLE_HOOK_ACCESS, ConHookNeedNetwork);
+	IConsoleCmdRegister("join",            ConJoinCompany, ConHookNeedNetwork);
 	IConsoleAliasRegister("spectate",      "join 255");
-	IConsoleCmdRegister("move",            ConMoveClient);
-	IConsoleCmdHookAdd("move",             ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
-	IConsoleCmdRegister("reset_company",   ConResetCompany);
-	IConsoleCmdHookAdd("reset_company",    ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
+	IConsoleCmdRegister("move",            ConMoveClient, ConHookServerOnly);
+	IConsoleCmdRegister("reset_company",   ConResetCompany, ConHookServerOnly);
 	IConsoleAliasRegister("clean_company", "reset_company %A");
-	IConsoleCmdRegister("client_name",     ConClientNickChange);
-	IConsoleCmdHookAdd("client_name",      ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
-	IConsoleCmdRegister("kick",            ConKick);
-	IConsoleCmdHookAdd("kick",             ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
-	IConsoleCmdRegister("ban",             ConBan);
-	IConsoleCmdHookAdd("ban",              ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
-	IConsoleCmdRegister("unban",           ConUnBan);
-	IConsoleCmdHookAdd("unban",            ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
-	IConsoleCmdRegister("banlist",         ConBanList);
-	IConsoleCmdHookAdd("banlist",          ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
+	IConsoleCmdRegister("client_name",     ConClientNickChange, ConHookServerOnly);
+	IConsoleCmdRegister("kick",            ConKick, ConHookServerOnly);
+	IConsoleCmdRegister("ban",             ConBan, ConHookServerOnly);
+	IConsoleCmdRegister("unban",           ConUnBan, ConHookServerOnly);
+	IConsoleCmdRegister("banlist",         ConBanList, ConHookServerOnly);
 
-	IConsoleCmdRegister("pause",           ConPauseGame);
-	IConsoleCmdHookAdd("pause",            ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
-	IConsoleCmdRegister("unpause",         ConUnPauseGame);
-	IConsoleCmdHookAdd("unpause",          ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
+	IConsoleCmdRegister("pause",           ConPauseGame, ConHookServerOnly);
+	IConsoleCmdRegister("unpause",         ConUnPauseGame, ConHookServerOnly);
 
-	IConsoleCmdRegister("company_pw",      ConCompanyPassword);
-	IConsoleCmdHookAdd("company_pw",       ICONSOLE_HOOK_ACCESS, ConHookNeedNetwork);
+	IConsoleCmdRegister("company_pw",      ConCompanyPassword, ConHookNeedNetwork);
 	IConsoleAliasRegister("company_password",      "company_pw %+");
 
 	IConsoleAliasRegister("net_frame_freq",        "setting frame_freq %+");

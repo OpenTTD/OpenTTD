@@ -191,76 +191,6 @@ bool GetArgumentInteger(uint32 *value, const char *arg)
 	return arg != endptr;
 }
 
-/*  * *************************
-    * hooking code            *
-    * *************************/
-
-/**
- * General internal hooking code
- * @param hooks IConsoleHooks structure that will be set according to
- * @param type type access trigger
- * @param proc function called when the hook criteria is met
- */
-static void IConsoleHookAdd(IConsoleHooks *hooks, IConsoleHookTypes type, IConsoleHook *proc)
-{
-	if (hooks == NULL || proc == NULL) return;
-
-	switch (type) {
-		case ICONSOLE_HOOK_ACCESS:
-			hooks->access = proc;
-			break;
-		case ICONSOLE_HOOK_PRE_ACTION:
-			hooks->pre = proc;
-			break;
-		case ICONSOLE_HOOK_POST_ACTION:
-			hooks->post = proc;
-			break;
-		default: NOT_REACHED();
-	}
-}
-
-/**
- * Handle any special hook triggers. If the hook type is met check if
- * there is a function associated with that and if so, execute it
- * @param hooks IConsoleHooks structure that will be checked
- * @param type type of hook, trigger that needs to be activated
- * @return true on a successful execution of the hook command or if there
- * is no hook/trigger present at all. False otherwise
- */
-static bool IConsoleHookHandle(const IConsoleHooks *hooks, IConsoleHookTypes type)
-{
-	IConsoleHook *proc = NULL;
-	if (hooks == NULL) return false;
-
-	switch (type) {
-		case ICONSOLE_HOOK_ACCESS:
-			proc = hooks->access;
-			break;
-		case ICONSOLE_HOOK_PRE_ACTION:
-			proc = hooks->pre;
-			break;
-		case ICONSOLE_HOOK_POST_ACTION:
-			proc = hooks->post;
-			break;
-		default: NOT_REACHED();
-	}
-
-	return (proc == NULL) ? true : proc();
-}
-
-/**
- * Add a hook to a command that will be triggered at certain points
- * @param name name of the command that the hook is added to
- * @param type type of hook that is added (ACCESS, BEFORE and AFTER change)
- * @param proc function called when the hook criteria is met
- */
-void IConsoleCmdHookAdd(const char *name, IConsoleHookTypes type, IConsoleHook *proc)
-{
-	IConsoleCmd *cmd = IConsoleCmdGet(name);
-	if (cmd == NULL) return;
-	IConsoleHookAdd(&cmd->hook, type, proc);
-}
-
 /**
  * Perhaps ugly macro, but this saves us the trouble of writing the same function
  * twice, just with different variables. Yes, templates would be handy. It was
@@ -308,18 +238,13 @@ void IConsoleCmdHookAdd(const char *name, IConsoleHookTypes type, IConsoleHook *
  * @param name name of the command that will be used
  * @param proc function that will be called upon execution of command
  */
-void IConsoleCmdRegister(const char *name, IConsoleCmdProc *proc)
+void IConsoleCmdRegister(const char *name, IConsoleCmdProc *proc, IConsoleHook *hook)
 {
-	char *new_cmd = strdup(name);
 	IConsoleCmd *item_new = MallocT<IConsoleCmd>(1);
-
+	item_new->name = strdup(name);
 	item_new->next = NULL;
 	item_new->proc = proc;
-	item_new->name = new_cmd;
-
-	item_new->hook.access = NULL;
-	item_new->hook.pre = NULL;
-	item_new->hook.post = NULL;
+	item_new->hook = hook;
 
 	IConsoleAddSorted(_iconsole_cmds, item_new, IConsoleCmd, "a command");
 }
@@ -541,11 +466,8 @@ void IConsoleCmdExec(const char *cmdstr)
 	 */
 	cmd = IConsoleCmdGet(tokens[0]);
 	if (cmd != NULL) {
-		if (IConsoleHookHandle(&cmd->hook, ICONSOLE_HOOK_ACCESS)) {
-			IConsoleHookHandle(&cmd->hook, ICONSOLE_HOOK_PRE_ACTION);
-			if (cmd->proc(t_index, tokens)) { // index started with 0
-				IConsoleHookHandle(&cmd->hook, ICONSOLE_HOOK_POST_ACTION);
-			} else {
+		if (cmd->hook == NULL || cmd->hook()) {
+			if (!cmd->proc(t_index, tokens)) { // index started with 0
 				cmd->proc(0, NULL); // if command failed, give help
 			}
 		}

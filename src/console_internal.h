@@ -19,24 +19,6 @@ enum {
 	ICON_MAX_STREAMSIZE = 2048, ///< maximum length of a totally expanded command
 };
 
-enum IConsoleHookTypes {
-	ICONSOLE_HOOK_ACCESS,
-	ICONSOLE_HOOK_PRE_ACTION,
-	ICONSOLE_HOOK_POST_ACTION
-};
-
-/** --Hooks--
- * Hooks are certain triggers that are executed on either
- * access, before execution or after execution. This allows
- * for general flow of permissions or special action needed in some cases
- */
-typedef bool IConsoleHook();
-struct IConsoleHooks {
-	IConsoleHook *access; ///< trigger when accessing the command
-	IConsoleHook *pre;    ///< trigger before the command is executed
-	IConsoleHook *post;   ///< trigger after the command is executed
-};
-
 /** --Commands--
  * Commands are commands, or functions. They get executed once and any
  * effect they produce are carried out. The arguments to the commands
@@ -44,14 +26,14 @@ struct IConsoleHooks {
  * If you want to handle multiple words as one, enclose them in double-quotes
  * eg. 'say "hello sexy boy"'
  */
-typedef bool (IConsoleCmdProc)(byte argc, char *argv[]);
-
+typedef bool IConsoleCmdProc(byte argc, char *argv[]);
+typedef bool IConsoleHook();
 struct IConsoleCmd {
 	char *name;               ///< name of command
 	IConsoleCmd *next;        ///< next command in list
 
 	IConsoleCmdProc *proc;    ///< process executed when command is typed
-	IConsoleHooks hook;       ///< any special trigger action that needs executing
+	IConsoleHook *hook;       ///< any special trigger action that needs executing
 };
 
 /** --Aliases--
@@ -80,16 +62,13 @@ extern IConsoleAlias *_iconsole_aliases; ///< list of registred aliases
 void IConsoleClearBuffer();
 
 /* Commands */
-void IConsoleCmdRegister(const char *name, IConsoleCmdProc *proc);
+void IConsoleCmdRegister(const char *name, IConsoleCmdProc *proc, IConsoleHook *hook = NULL);
 void IConsoleAliasRegister(const char *name, const char *cmd);
 IConsoleCmd *IConsoleCmdGet(const char *name);
 IConsoleAlias *IConsoleAliasGet(const char *name);
 
 /* console std lib (register ingame commands/aliases) */
 void IConsoleStdLibRegister();
-
-/* Hooking code */
-void IConsoleCmdHookAdd(const char *name, IConsoleHookTypes type, IConsoleHook *proc);
 
 /* Supporting functions */
 bool GetArgumentInteger(uint32 *value, const char *arg);
