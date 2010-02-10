@@ -650,14 +650,11 @@ CommandCost CmdBuildShip(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 		v->y_pos = y;
 		v->z_pos = GetSlopeZ(x, y);
 
-		v->running_ticks = 0;
-
 		v->UpdateDeltaXY(v->direction);
 		v->vehstatus = VS_HIDDEN | VS_STOPPED | VS_DEFPAL;
 
 		v->spritenum = svi->image_index;
 		v->cargo_type = e->GetDefaultCargoType();
-		v->cargo_subtype = 0;
 		v->cargo_cap = svi->capacity;
 		v->value = value.GetCost();
 
@@ -670,7 +667,6 @@ CommandCost CmdBuildShip(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 		v->max_age = e->GetLifeLengthInDays();
 		_new_vehicle_id = v->index;
 
-		v->name = NULL;
 		v->state = TRACK_BIT_DEPOT;
 
 		v->service_interval = Company::Get(_current_company)->settings.vehicle.servint_ships;
@@ -679,7 +675,6 @@ CommandCost CmdBuildShip(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 		v->cur_image = SPR_IMG_QUERY;
 		v->random_bits = VehicleRandomBits();
 
-		v->vehicle_flags = 0;
 		if (e->flags & ENGINE_EXCLUSIVE_PREVIEW) SetBit(v->vehicle_flags, VF_BUILT_AS_PROTOTYPE);
 
 		v->InvalidateNewGRFCacheOfChain();
@@ -693,8 +688,9 @@ CommandCost CmdBuildShip(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 		InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
 		InvalidateWindowClassesData(WC_SHIPS_LIST, 0);
 		SetWindowDirty(WC_COMPANY, v->owner);
-		if (IsLocalCompany())
+		if (IsLocalCompany()) {
 			InvalidateAutoreplaceWindow(v->engine_type, v->group_id); // updates the replace Ship window
+		}
 
 		Company::Get(_current_company)->num_engines[p1]++;
 	}

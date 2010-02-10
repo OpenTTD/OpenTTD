@@ -710,17 +710,14 @@ static CommandCost CmdBuildRailWagon(EngineID engine, TileIndex tile, DoCommandF
 		v->track = TRACK_BIT_DEPOT;
 		v->vehstatus = VS_HIDDEN | VS_DEFPAL;
 
-//		v->subtype = 0;
 		v->SetWagon();
 
 		v->SetFreeWagon();
 		InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
 
 		v->cargo_type = e->GetDefaultCargoType();
-//		v->cargo_subtype = 0;
 		v->cargo_cap = rvi->capacity;
 		v->value = value.GetCost();
-//		v->day_counter = 0;
 
 		v->railtype = rvi->railtype;
 
@@ -790,7 +787,6 @@ static void AddRearEngineToMultiheadedTrain(Train *v)
 	u->z_pos = v->z_pos;
 	u->track = TRACK_BIT_DEPOT;
 	u->vehstatus = v->vehstatus & ~VS_STOPPED;
-//	u->subtype = 0;
 	u->spritenum = v->spritenum + 1;
 	u->cargo_type = v->cargo_type;
 	u->cargo_subtype = v->cargo_subtype;
@@ -870,17 +866,14 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 		v->x_pos = x;
 		v->y_pos = y;
 		v->z_pos = GetSlopeZ(x, y);
-//		v->running_ticks = 0;
 		v->track = TRACK_BIT_DEPOT;
 		v->vehstatus = VS_HIDDEN | VS_STOPPED | VS_DEFPAL;
 		v->spritenum = rvi->image_index;
 		v->cargo_type = e->GetDefaultCargoType();
-//		v->cargo_subtype = 0;
 		v->cargo_cap = rvi->capacity;
 		v->max_speed = rvi->max_speed;
 		v->value = value.GetCost();
 		v->last_station_visited = INVALID_STATION;
-//		v->dest_tile = 0;
 
 		v->engine_type = p1;
 		v->tcache.first_engine = INVALID_ENGINE; // needs to be set before first callback
@@ -889,7 +882,6 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 		v->reliability_spd_dec = e->reliability_spd_dec;
 		v->max_age = e->GetLifeLengthInDays();
 
-		v->name = NULL;
 		v->railtype = rvi->railtype;
 		_new_vehicle_id = v->index;
 
@@ -899,12 +891,10 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 		v->cur_image = SPR_IMG_QUERY;
 		v->random_bits = VehicleRandomBits();
 
-//		v->vehicle_flags = 0;
 		if (e->flags & ENGINE_EXCLUSIVE_PREVIEW) SetBit(v->vehicle_flags, VF_BUILT_AS_PROTOTYPE);
 
 		v->group_id = DEFAULT_GROUP;
 
-//		v->subtype = 0;
 		v->SetFrontEngine();
 		v->SetEngine();
 

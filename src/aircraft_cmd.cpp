@@ -273,7 +273,6 @@ CommandCost CmdBuildAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 		v->owner = u->owner = _current_company;
 
 		v->tile = tile;
-//		u->tile = 0;
 
 		uint x = TileX(tile) * TILE_SIZE + 5;
 		uint y = TileY(tile) * TILE_SIZE + 3;
@@ -284,15 +283,10 @@ CommandCost CmdBuildAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 		u->z_pos = GetSlopeZ(x, y);
 		v->z_pos = u->z_pos + 1;
 
-		v->running_ticks = 0;
-
-//		u->delta_x = u->delta_y = 0;
-
 		v->vehstatus = VS_HIDDEN | VS_STOPPED | VS_DEFPAL;
 		u->vehstatus = VS_HIDDEN | VS_UNCLICKABLE | VS_SHADOW;
 
 		v->spritenum = avi->image_index;
-//		v->cargo_count = u->number_of_pieces = 0;
 
 		v->cargo_cap = avi->passenger_capacity;
 		u->cargo_cap = avi->mail_capacity;
@@ -300,15 +294,8 @@ CommandCost CmdBuildAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 		v->cargo_type = e->GetDefaultCargoType();
 		u->cargo_type = CT_MAIL;
 
-		v->cargo_subtype = 0;
-
 		v->name = NULL;
-//		v->next_order_param = v->next_order = 0;
-
-//		v->time_counter = 0;
-//		v->progress = 0;
 		v->last_station_visited = INVALID_STATION;
-//		v->destination_coords = 0;
 
 		v->max_speed = avi->max_speed;
 		v->acceleration = avi->acceleration;

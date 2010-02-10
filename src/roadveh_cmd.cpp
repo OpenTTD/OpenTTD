@@ -244,23 +244,13 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		v->y_pos = y;
 		v->z_pos = GetSlopeZ(x, y);
 
-//		v->running_ticks = 0;
-
 		v->state = RVSB_IN_DEPOT;
 		v->vehstatus = VS_HIDDEN | VS_STOPPED | VS_DEFPAL;
 
 		v->spritenum = rvi->image_index;
 		v->cargo_type = e->GetDefaultCargoType();
-//		v->cargo_subtype = 0;
 		v->cargo_cap = rvi->capacity;
-//		v->cargo_count = 0;
 		v->value = cost.GetCost();
-//		v->day_counter = 0;
-//		v->next_order_param = v->next_order = 0;
-//		v->time_counter = 0;
-//		v->progress = 0;
-
-//		v->overtaking = 0;
 
 		v->last_station_visited = INVALID_STATION;
 		v->max_speed = rvi->max_speed;
@@ -271,8 +261,6 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		v->reliability_spd_dec = e->reliability_spd_dec;
 		v->max_age = e->GetLifeLengthInDays();
 		_new_vehicle_id = v->index;
-
-		v->name = NULL;
 
 		v->service_interval = Company::Get(v->owner)->settings.vehicle.servint_roadveh;
 
@@ -287,7 +275,6 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		v->compatible_roadtypes = RoadTypeToRoadTypes(v->roadtype);
 		v->rcache.cached_veh_length = 8;
 
-		v->vehicle_flags = 0;
 		if (e->flags & ENGINE_EXCLUSIVE_PREVIEW) SetBit(v->vehicle_flags, VF_BUILT_AS_PROTOTYPE);
 
 		AddArticulatedParts(v);
