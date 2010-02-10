@@ -9,6 +9,7 @@
 ##winlangid 0x040d
 ##grflangid 0x61
 ##gender m f
+##case singular plural gen
 
 
 # $Id$
@@ -63,20 +64,27 @@ STR_CARGO_PLURAL_FIZZY_DRINKS                                   :משקאות מ
 # Singular cargo name
 STR_CARGO_SINGULAR_NOTHING                                      :
 STR_CARGO_SINGULAR_PASSENGER                                    :נוסע
+STR_CARGO_SINGULAR_PASSENGER.plural                             :נוסעים
 STR_CARGO_SINGULAR_COAL                                         :פחם
 STR_CARGO_SINGULAR_MAIL                                         :דואר
 STR_CARGO_SINGULAR_OIL                                          :נפט
 STR_CARGO_SINGULAR_LIVESTOCK                                    :בקר
-STR_CARGO_SINGULAR_GOODS                                        :מוצרים
+STR_CARGO_SINGULAR_GOODS                                        :מוצר
+STR_CARGO_SINGULAR_GOODS.plural                                 :מוצרים
 STR_CARGO_SINGULAR_GRAIN                                        :תבואה
 STR_CARGO_SINGULAR_WOOD                                         :עץ
 STR_CARGO_SINGULAR_IRON_ORE                                     :עפרת ברזל
+STR_CARGO_SINGULAR_IRON_ORE.plural                              :עופרות ברזל
 STR_CARGO_SINGULAR_STEEL                                        :פלדה
-STR_CARGO_SINGULAR_VALUABLES                                    :מוצרי ערך
+STR_CARGO_SINGULAR_VALUABLES                                    :מוצר ערך
+STR_CARGO_SINGULAR_VALUABLES.plural                             :מוצרי ערך
 STR_CARGO_SINGULAR_COPPER_ORE                                   :עפרת נחושת
+STR_CARGO_SINGULAR_COPPER_ORE.plural                            :עופרות נחושת
 STR_CARGO_SINGULAR_MAIZE                                        :תירס
 STR_CARGO_SINGULAR_FRUIT                                        :פרי
+STR_CARGO_SINGULAR_FRUIT.plural                                 :פירות
 STR_CARGO_SINGULAR_DIAMOND                                      :יהלום
+STR_CARGO_SINGULAR_DIAMOND.plural                               :יהלומים
 STR_CARGO_SINGULAR_FOOD                                         :מזון
 STR_CARGO_SINGULAR_PAPER                                        :נייר
 STR_CARGO_SINGULAR_GOLD                                         :זהב
@@ -85,14 +93,19 @@ STR_CARGO_SINGULAR_WHEAT                                        :חיטה
 STR_CARGO_SINGULAR_RUBBER                                       :גומי
 STR_CARGO_SINGULAR_SUGAR                                        :סוכר
 STR_CARGO_SINGULAR_TOY                                          :צעצוע
+STR_CARGO_SINGULAR_TOY.plural                                   :צעצועים
 STR_CARGO_SINGULAR_CANDY                                        :ממתק
+STR_CARGO_SINGULAR_CANDY.plural                                 :ממתקים
 STR_CARGO_SINGULAR_COLA                                         :קולה
 STR_CARGO_SINGULAR_COTTON_CANDY                                 :צמר גפן מתוק
 STR_CARGO_SINGULAR_BUBBLE                                       :בועה
+STR_CARGO_SINGULAR_BUBBLE.plural                                :בועות
 STR_CARGO_SINGULAR_TOFFEE                                       :טופי
 STR_CARGO_SINGULAR_BATTERY                                      :סוללה
+STR_CARGO_SINGULAR_BATTERY.plural                               :סוללות
 STR_CARGO_SINGULAR_PLASTIC                                      :פלסטיק
 STR_CARGO_SINGULAR_FIZZY_DRINK                                  :משקה מוגז
+STR_CARGO_SINGULAR_FIZZY_DRINK.plural                           :משקאות מוגזים
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
@@ -815,7 +828,7 @@ STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :ריווחי {W
 STR_NEWS_ORDER_REFIT_FAILED                                     :כשלון בהתאמה מחדש הביא לעצירה של {WHITE}{VEHICLE}
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}{1:STRING}{}נכשל {NBSP}{0:VEHICLE} חידוש אוטומטי עבור
 
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}{STRING}חדש זמין!
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}{STRING} חדש זמין!
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIGFONT}{BLACK}{ENGINE}
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}{STRING} חדש זמין כעת  -  {ENGINE}!
 
@@ -824,13 +837,13 @@ STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} מקבלת כעת {STRING}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} מקבלת כעת {STRING} ו{STRING}
 
-STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}פג תוקף הצעת סובסידיה:{}{}סובסידיה של {STRING} מ{STRING} אל {STRING} לא תזכה עוד בסיבסוד.
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}סובסידיה הוסרה:{}{}שירות {STRING} מ{STRING} אל {STRING} אינו מסובסד יותר.
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}הצעה למתן סובסידיה:{}{}שירות {STRING} ראשון מ{STRING} אל {STRING} יזכה לסובסידיה בת שנה מהרשות המקומית!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}סובסידיה לשירות הניתן ע"י {STRING}!{}{}שירות {STRING} מ{STRING} אל {STRING} יזכה לשיעור תשלום גדול ב-50% לשנה הקרובה!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}סובסידיה לשירות הניתן ע"י {STRING}!{}{}שירות {STRING} מ{STRING} אל {STRING} יזכה לשיעור תשלום כפול לשנה הקרובה!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}סובסידיה לשירות הניתן ע"י {STRING}!{}{}שירות {STRING} מ{STRING} אל {STRING} יזכה לשיעור תשלום משולש לשנה הקרובה!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}סובסידיה לשירות הניתן ע"י {STRING}!{}{}שירות {STRING} מ{STRING} אל {STRING} יזכה לשיעור תשלום מוכפל פי 4 לשנה הקרובה!
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}פג תוקף הצעת סובסידיה:{}{}סובסידיה של הובלת {STRING.plural} מ{STRING} אל {STRING} לא תזכה עוד בסיבסוד.
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}סובסידיה הוסרה:{}{}שירות הובלת {STRING.plural} מ{STRING} אל {STRING} אינו מסובסד יותר.
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}הצעה למתן  סובסידיה:{}{}שירות הובלת {STRING.plural} ראשון מ{STRING} אל {STRING} יזכה לסובסידיה בת שנה מהרשות המקומית!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}סובסידיה לשירות הניתן ע"י {STRING}!{}{}שירות הובלת {STRING.plural} מ{STRING} אל {STRING} יזכה לשיעור תשלום גדול ב-50% לשנה הקרובה
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}סובסידיה לשירות הניתן ע"י {STRING}!{}{}שירות הובלת {STRING.plural} מ{STRING} אל {STRING} יזכה לשיעור תשלום כפול לשנה הקרובה!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}סובסידיה לשירות הניתן ע"י {STRING}!{}{}שירות הובלת {STRING.plural} מ{STRING} אל {STRING} יזכה לשיעור תשלום משולש לשנה הקרובה!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}סובסידיה לשירות הניתן ע"י {STRING}!{}{}שירות הובלת {STRING.plural} מ{STRING} אל {STRING} יזכה לשיעור תשלום מוכפל פי 4 לשנה הקרובה!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}פקקי תנועה ענקיים ב{TOWN}!{}{} תכנית לשיפוץ מקיף של הכבישים במימון {STRING} מביאה לקטסטרופת תנועה לשישה חודשים
 
@@ -3655,7 +3668,7 @@ STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :בנק דן-ח�
 ##id 0x4800
 # industry names
 STR_INDUSTRY_NAME_COAL_MINE                                     :מכרה פחם
-STR_INDUSTRY_NAME_POWER_STATION                                 :תחנת חשמל
+STR_INDUSTRY_NAME_POWER_STATION                                 :תחנת כוח
 STR_INDUSTRY_NAME_SAWMILL                                       :מנסרת עץ
 STR_INDUSTRY_NAME_FOREST                                        :יער
 STR_INDUSTRY_NAME_OIL_REFINERY                                  :בית זיקוק
@@ -3664,6 +3677,7 @@ STR_INDUSTRY_NAME_FACTORY                                       :מפעל
 STR_INDUSTRY_NAME_PRINTING_WORKS                                :בית דפוס
 STR_INDUSTRY_NAME_STEEL_MILL                                    :מכרה ברזל
 STR_INDUSTRY_NAME_FARM                                          :חווה
+STR_INDUSTRY_NAME_FARM.gen                                      :חוות
 STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :מכרה נחושת
 STR_INDUSTRY_NAME_OIL_WELLS                                     :בארות נפט
 STR_INDUSTRY_NAME_BANK                                          :בנק
@@ -3679,6 +3693,7 @@ STR_INDUSTRY_NAME_WATER_SUPPLY                                  :משאבת מי
 STR_INDUSTRY_NAME_WATER_TOWER                                   :מגדל מים
 STR_INDUSTRY_NAME_FACTORY_2                                     :מפעל
 STR_INDUSTRY_NAME_FARM_2                                        :חווה
+STR_INDUSTRY_NAME_FARM_2.gen                                    :חוות
 STR_INDUSTRY_NAME_LUMBER_MILL                                   :מנסרת עץ
 STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :יער צמר גפן מתוק
 STR_INDUSTRY_NAME_CANDY_FACTORY                                 :מפעל ממתקים
@@ -4002,7 +4017,7 @@ STR_FORMAT_BUOY_NAME                                            :מצוף {TOWN}
 STR_FORMAT_BUOY_NAME_SERIAL                                     :מצוף {TOWN} #{COMMA}
 STR_FORMAT_COMPANY_NUM                                          :({COMMA} חברה)
 STR_FORMAT_GROUP_NAME                                           :{COMMA} קבוצה
-STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
+STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING.gen} {0:TOWN}
 STR_FORMAT_WAYPOINT_NAME                                        :נקודות ציון {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :נקודת ציון {TOWN} #{COMMA}
 
