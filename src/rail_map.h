@@ -213,7 +213,7 @@ static inline void SetTrackReservation(TileIndex t, TrackBits b)
 	assert(b != INVALID_TRACK_BIT);
 	assert(!TracksOverlap(b));
 	Track track = RemoveFirstTrack(&b);
-	SB(_m[t].m2, 8, 3, track == INVALID_TRACK ? 0 : track+1);
+	SB(_m[t].m2, 8, 3, track == INVALID_TRACK ? 0 : track + 1);
 	SB(_m[t].m2, 11, 1, (byte)(b != TRACK_BIT_NONE));
 }
 

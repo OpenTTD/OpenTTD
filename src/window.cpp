@@ -1038,9 +1038,9 @@ static bool IsGoodAutoPlace2(int left, int top, int width, int height, Point &po
 	/* Left part of the rectangle may be at most 1/4 off-screen,
 	 * right part of the rectangle may be at most 1/2 off-screen
 	 */
-	if (left < -(width>>2) || left > _screen.width - (width>>1)) return false;
+	if (left < -(width >> 2) || left > _screen.width - (width >> 1)) return false;
 	/* Bottom part of the rectangle may be at most 1/4 off-screen */
-	if (top < 22 || top > _screen.height - (height>>2)) return false;
+	if (top < 22 || top > _screen.height - (height >> 2)) return false;
 
 	/* Make sure it is not obscured by any window. */
 	const Window *w;
