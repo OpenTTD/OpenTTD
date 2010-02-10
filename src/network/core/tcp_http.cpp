@@ -175,7 +175,7 @@ int NetworkHTTPSocketHandler::HandleHeader()
 	return 0;
 }
 
-/*static */ int NetworkHTTPSocketHandler::Connect(char *uri, HTTPCallback *callback, const char *data, int depth)
+/* static */ int NetworkHTTPSocketHandler::Connect(char *uri, HTTPCallback *callback, const char *data, int depth)
 {
 	char *hname = strstr(uri, "://");
 	if (hname == NULL) return_error("[tcp/http] invalid location");

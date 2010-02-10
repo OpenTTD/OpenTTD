@@ -387,7 +387,7 @@ struct Train : public SpecializedVehicle<Train, VEH_TRAIN> {
 	}
 
 
-protected: /* These functions should not be called outside acceleration code. */
+protected: // These functions should not be called outside acceleration code.
 
 	/**
 	 * Allows to know the power value that this vehicle will use.

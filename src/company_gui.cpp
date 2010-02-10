@@ -1328,25 +1328,25 @@ public:
 
 
 			case SCMFW_WIDGET_HAS_MOUSTACHE_EARRING:
-				if (this->is_female) { /* Only for female faces */
+				if (this->is_female) { // Only for female faces
 					this->DrawFaceStringLabel(SCMFW_WIDGET_HAS_MOUSTACHE_EARRING, GetCompanyManagerFaceBits(this->face, CMFV_HAS_TIE_EARRING, this->ge), true);
-				} else { /* Only for male faces */
+				} else { // Only for male faces
 					this->DrawFaceStringLabel(SCMFW_WIDGET_HAS_MOUSTACHE_EARRING, GetCompanyManagerFaceBits(this->face, CMFV_HAS_MOUSTACHE,   this->ge), true);
 				}
 				break;
 
 			case SCMFW_WIDGET_TIE_EARRING:
-				if (this->is_female) { /* Only for female faces */
+				if (this->is_female) { // Only for female faces
 					this->DrawFaceStringLabel(SCMFW_WIDGET_TIE_EARRING, GetCompanyManagerFaceBits(this->face, CMFV_TIE_EARRING, this->ge), false);
-				} else { /* Only for male faces */
+				} else { // Only for male faces
 					this->DrawFaceStringLabel(SCMFW_WIDGET_TIE_EARRING, GetCompanyManagerFaceBits(this->face, CMFV_TIE_EARRING, this->ge), false);
 				}
 				break;
 
 			case SCMFW_WIDGET_LIPS_MOUSTACHE:
-				if (this->is_moust_male) { /* Only for male faces with moustache */
+				if (this->is_moust_male) { // Only for male faces with moustache
 					this->DrawFaceStringLabel(SCMFW_WIDGET_LIPS_MOUSTACHE, GetCompanyManagerFaceBits(this->face, CMFV_MOUSTACHE, this->ge), false);
-				} else { /* Only for female faces or male faces without moustache */
+				} else { // Only for female faces or male faces without moustache
 					this->DrawFaceStringLabel(SCMFW_WIDGET_LIPS_MOUSTACHE, GetCompanyManagerFaceBits(this->face, CMFV_LIPS,      this->ge), false);
 				}
 				break;

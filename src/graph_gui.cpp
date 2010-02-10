@@ -842,7 +842,7 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 		const CargoSpec *cs = CargoSpec::Get(widget - CPW_CARGO_FIRST);
 		SetDParam(0, cs->name);
 		Dimension d = GetStringBoundingBox(STR_GRAPH_CARGO_PAYMENT_CARGO);
-		d.width += 14; /* colour field */
+		d.width += 14; // colour field
 		d.width += WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
 		d.height += WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
 		*size = maxdim(d, *size);

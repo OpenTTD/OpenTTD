@@ -40,7 +40,7 @@ typedef unsigned long in_addr_t;
 #include "../../os/windows/win32.h"
 #include "../../core/alloc_func.hpp"
 
-#define AI_ADDRCONFIG   0x00000400  // Resolution only if global address configured
+#define AI_ADDRCONFIG   0x00000400  /* Resolution only if global address configured */
 #define IPV6_V6ONLY 27
 
 static inline int OTTDgetnameinfo(const struct sockaddr *sa, socklen_t salen, char *host, DWORD hostlen, char *serv, DWORD servlen, int flags)
