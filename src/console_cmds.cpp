@@ -1394,17 +1394,14 @@ DEF_CONSOLE_CMD(ConHelp)
 DEF_CONSOLE_CMD(ConListCommands)
 {
 	const IConsoleCmd *cmd;
-	size_t l = 0;
 
 	if (argc == 0) {
 		IConsoleHelp("List all registered commands. Usage: 'list_cmds [<pre-filter>]'");
 		return true;
 	}
 
-	if (argv[1] != NULL) l = strlen(argv[1]);
-
 	for (cmd = _iconsole_cmds; cmd != NULL; cmd = cmd->next) {
-		if (argv[1] == NULL || strncmp(cmd->name, argv[1], l) == 0) {
+		if (argv[1] == NULL || strstr(cmd->name, argv[1]) != NULL) {
 				IConsolePrintF(CC_DEFAULT, "%s", cmd->name);
 		}
 	}
@@ -1415,18 +1412,16 @@ DEF_CONSOLE_CMD(ConListCommands)
 DEF_CONSOLE_CMD(ConListVariables)
 {
 	const IConsoleVar *var;
-	size_t l = 0;
 
 	if (argc == 0) {
 		IConsoleHelp("List all registered variables. Usage: 'list_vars [<pre-filter>]'");
 		return true;
 	}
 
-	if (argv[1] != NULL) l = strlen(argv[1]);
-
 	for (var = _iconsole_vars; var != NULL; var = var->next) {
-		if (argv[1] == NULL || strncmp(var->name, argv[1], l) == 0)
+		if (argv[1] == NULL || strstr(var->name, argv[1]) != NULL) {
 			IConsolePrintF(CC_DEFAULT, "%s", var->name);
+		}
 	}
 
 	return true;
@@ -1435,18 +1430,16 @@ DEF_CONSOLE_CMD(ConListVariables)
 DEF_CONSOLE_CMD(ConListAliases)
 {
 	const IConsoleAlias *alias;
-	size_t l = 0;
 
 	if (argc == 0) {
 		IConsoleHelp("List all registered aliases. Usage: 'list_aliases [<pre-filter>]'");
 		return true;
 	}
 
-	if (argv[1] != NULL) l = strlen(argv[1]);
-
 	for (alias = _iconsole_aliases; alias != NULL; alias = alias->next) {
-		if (argv[1] == NULL || strncmp(alias->name, argv[1], l) == 0)
+		if (argv[1] == NULL || strstr(alias->name, argv[1]) != NULL) {
 			IConsolePrintF(CC_DEFAULT, "%s => %s", alias->name, alias->cmdline);
+		}
 	}
 
 	return true;
@@ -1748,18 +1741,16 @@ DEF_CONSOLE_CMD(ConListSettings)
 DEF_CONSOLE_CMD(ConListDumpVariables)
 {
 	const IConsoleVar *var;
-	size_t l = 0;
 
 	if (argc == 0) {
 		IConsoleHelp("List all variables with their value. Usage: 'dump_vars [<pre-filter>]'");
 		return true;
 	}
 
-	if (argv[1] != NULL) l = strlen(argv[1]);
-
 	for (var = _iconsole_vars; var != NULL; var = var->next) {
-		if (argv[1] == NULL || strncmp(var->name, argv[1], l) == 0)
+		if (argv[1] == NULL || strstr(var->name, argv[1]) != NULL) {
 			IConsoleVarPrintGetValue(var);
+		}
 	}
 
 	return true;
