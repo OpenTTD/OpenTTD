@@ -325,7 +325,7 @@ static void IConsoleAliasExec(const IConsoleAlias *alias, byte tokencount, char 
 	memset(&aliases, 0, sizeof(aliases));
 	memset(&aliasstream, 0, sizeof(aliasstream));
 
-	DEBUG(console, 6, "condbg: requested command is an alias; parsing...");
+	DEBUG(console, 6, "Requested command is an alias; parsing...");
 
 	aliases[0] = aliasstream;
 	for (cmdptr = alias->cmdline, a_index = 0, astream_i = 0; *cmdptr != '\0'; cmdptr++) {
@@ -456,7 +456,7 @@ void IConsoleCmdExec(const char *cmdstr)
 	}
 
 	for (uint i = 0; tokens[i] != NULL; i++) {
-		DEBUG(console, 8, "condbg: token %d is: '%s'", i, tokens[i]);
+		DEBUG(console, 8, "Token %d is: '%s'", i, tokens[i]);
 	}
 
 	if (tokens[0] == '\0') return; // don't execute empty commands
