@@ -1133,14 +1133,17 @@ static void NewsDisplayLoadConfig(IniFile *ini, const char *grpname)
 			continue;
 		}
 
-		if (strcasecmp(item->value, "full") == 0) {
+		if (StrEmpty(item->value)) {
+			DEBUG(misc, 0, "Empty display value for newstype %s", item->name);
+			continue;
+		} else if (strcasecmp(item->value, "full") == 0) {
 			_news_type_data[news_item].display = ND_FULL;
 		} else if (strcasecmp(item->value, "off") == 0) {
 			_news_type_data[news_item].display = ND_OFF;
 		} else if (strcasecmp(item->value, "summarized") == 0) {
 			_news_type_data[news_item].display = ND_SUMMARY;
 		} else {
-			DEBUG(misc, 0, "Invalid display value: %s", item->value);
+			DEBUG(misc, 0, "Invalid display value for newstype %s: %s", item->name, item->value);
 			continue;
 		}
 	}
