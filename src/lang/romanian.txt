@@ -3218,6 +3218,8 @@ STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Schimbă
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Reîncarcă IA
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Opreşte IA, raîncarcă scriptul, apoi reporneşte IA
 
+STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD este compilat fără suport de Inteligenţă Artificială...
+STR_ERROR_NO_AI_SUB                                             :{WHITE}... nu este disponibil nici un modul de Inteligenţă artificială!
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Nici o IA potrivită a fost găsită{}Această IA este nefuncţională.{}Poţi descărca IA-uri folsind opţiunea "Resurse online" din meniul principal.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}O Inteligentă Artificială s-a oprit în mod eronat. Raportează această problemă autorului împreună cu o captură de ecran a ferestrei Depanare IA
@@ -3336,7 +3338,7 @@ STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}Autorita
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}Încercarea ta de mituire
 STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}a fost descoperită de un procuror local
 
-# Leveling errors
+# Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Nu se poate înălţa terenul...
 STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Nu se poate coborî terenul...
 STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Terenul nu poate fi uniformizat aici...

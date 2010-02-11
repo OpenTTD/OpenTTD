@@ -378,6 +378,7 @@ STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Otvorit 
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Zobraz okno zvuku a hudby
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Zobrazit poslednu spravu/novinku, nastavenia sprav
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informácie o pozemku
+STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Prepnúť panely nástrojov
 
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Ulozit scenar, nahrat scenar, ukoncit editor scenara, ukoncit program
@@ -399,7 +400,7 @@ STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Nahrat scenár
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Nahrat výškovú mapu
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Ukoncit editor
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
-STR_SCENEDIT_FILE_MENU_QUIT                                     :Ukoncit OpenTTD
+STR_SCENEDIT_FILE_MENU_QUIT                                     :Ukončiť OpenTTD
 ############ range for SE file menu starts
 
 ############ range for settings menu starts
@@ -421,8 +422,8 @@ STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Transparentne n
 ############ range for file menu starts
 STR_FILE_MENU_SAVE_GAME                                         :Uložit hru
 STR_FILE_MENU_LOAD_GAME                                         :Nahrat hru
-STR_FILE_MENU_QUIT_GAME                                         :Ukoncit hru
-STR_FILE_MENU_EXIT                                              :Ukoncit OpenTTD
+STR_FILE_MENU_QUIT_GAME                                         :Opustiť hru
+STR_FILE_MENU_EXIT                                              :Ukončiť OpenTTD
 ############ range ends here
 
 ############ range for map menu starts
@@ -432,6 +433,7 @@ STR_MAP_MENU_SIGN_LIST                                          :Zoznam popisov
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Zoznam miest
 ############ end of the 'Display map' dropdown
+STR_TOWN_MENU_FOUND_TOWN                                        :Založiť mesto
 ############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
@@ -643,6 +645,9 @@ STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}{BLAC
 STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}{BLACK}Vlastné 2
 STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}Hlasitost hudby
 STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Hlasitost zvuk. efektov
+STR_MUSIC_RULER_MIN                                             :{TINYFONT}{BLACK}MIN
+STR_MUSIC_RULER_MAX                                             :{TINYFONT}{BLACK}MAX
+STR_MUSIC_RULER_MARKER                                          :{TINYFONT}{BLACK}'
 STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINYFONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
@@ -664,6 +669,8 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Vybrat '
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Vybrat 'Vlastny 2' (uzivatelom definovany) program
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Zapnut / Vypnut nahodny vyber
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Zobrazit okno pre vyber hudobnych stop
+
+STR_ERROR_NO_SONGS                                              :{WHITE}Bola zvolená sada hudby bez skladieb. Žiadne skladby nebudú hrať
 
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Výber hudobného programu
@@ -752,13 +759,17 @@ STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRI
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Zakazat vsetky
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Povolit vsetky
+STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Ukázať výšku
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL                                :{BLACK}Nezobraziť žiadny priemysel na mape
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL                                 :{BLACK}Zobraziť všetok priemysel na mape
+STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Prepnúť zobrazenie výškovej mapy
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Zobrazit poslednu spravu alebo novinku
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  ZASTAVENE  *  *
 STR_STATUSBAR_AUTOSAVE                                          :{RED}AUTOULOZENIE
-STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  HRA SA UKLADA  *  *
+STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  HRA SA UKLADÁ  *  *
 
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Archiv sprav
@@ -824,6 +835,7 @@ STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} bola kupena spolocnostou {STRING}!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Prezident)
 
+STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}{STRING} sponzoroval výstavbu nového mesta {TOWN}!
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}{STRING} sa zacina stavat nedaleko mesta {TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}{STRING} sa vysadza nedaleko mesta {TOWN}!
@@ -1002,6 +1014,10 @@ STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Základn
 STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Vyberte základné zvuky
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Dodatočné informácie o základnej sade zvukov
 
+STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Základná sada hudby
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Zvoľte sadu základnej hudby
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Dodatočné informácie o základnej sade hudby
+
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Zobrazovanie na celú obrazovku zlyhalo
 
 # Custom currency window
@@ -1069,6 +1085,13 @@ STR_NUM_NORMAL                                                  :Normálny
 STR_NUM_HIGH                                                    :Vysoký
 STR_NUM_CUSTOM                                                  :Vlastne
 
+STR_VARIETY_NONE                                                :Žiadna
+STR_VARIETY_VERY_LOW                                            :Veľmi nízka
+STR_VARIETY_LOW                                                 :Nízka
+STR_VARIETY_MEDIUM                                              :Stredná
+STR_VARIETY_HIGH                                                :Vysoká
+STR_VARIETY_VERY_HIGH                                           :Veľmi vysoká
+
 STR_AI_SPEED_VERY_SLOW                                          :Velmi Pomale
 STR_AI_SPEED_SLOW                                               :Pomale
 STR_AI_SPEED_MEDIUM                                             :Stredne
@@ -1107,6 +1130,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Pozitivny
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerantny
 STR_CITY_APPROVAL_HOSTILE                                       :Odmietavy
 
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Nieje dostupné žiadne použiteľné AI...{}Niekoľko AI je možné stiahnuť cez 'Online obsah'
 STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Obtiažnost sa zmenila na vlastnú
 
 # Advanced settings window
@@ -1124,6 +1148,7 @@ STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Umožni
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Model akcelerácie vlaku: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Originál
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistický
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Strmosť svahu pre vlaky {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Zakázat vlakom a lodiam otácanie o 90 st.: {ORANGE}{STRING} {LTBLUE} (vyžaduje NPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Umoznit spajanie stanic: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Povoliť spájať stanice nepriamo hraničiace: {ORANGE}{STRING}
@@ -1155,6 +1180,9 @@ STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Umožni
 STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Roznorode stanice: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Váhový násobok pre nákladné vlaky: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Faktor rýchlosti lietadiel: {ORANGE}1 / {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Počet havárií lietadiel: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :žiadne
+STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normálny
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Povolit prejazdné zastávky na mestských cestách: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Povoliť prechádzanie cez stop značky na cestách vlastnené konkurenciou: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Povolit stavbu oddelených staníc: {ORANGE}{STRING}
@@ -1201,6 +1229,9 @@ STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Jedna al
 STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Max. rozsah stanice: {ORANGE}{STRING} {RED}Pozor: Vysoke hodnoty spomaluju hru
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Automatické opravy vrtulníkov v heliporte: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Otvárat panel úprav terénu s panelmi výstavby: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Zelená
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Tmavozelená
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Fialová
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}Pri posúvaní pohladu myšou posúvat mapu opacným smerom: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}Plynulé posúvanie pohladu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}Zobrazit údaje o rozmeroch pri výstavbe: {ORANGE}{STRING}
@@ -1238,6 +1269,7 @@ STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :vlastná spoloc
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :všetky spolocnosti
 STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Používat cestovné poriadky pre vozidlá: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Zobrazovat cestovné poriadky v tikoch namiesto dní: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Zobraziť príchody a odchody v cestovných poriadkoch: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Rýchla tvorba cestovného poriadku vozidla: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Predvolený typ kolají (v novej/nahranej hre): {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :prvé dostupné
@@ -1298,6 +1330,14 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :bloky 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :náhodne
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Mestá môžu staviať cesty: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Povolit mestom urcené hlukové limity pre letiská: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Zakladanie nových miest počas hry: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :zakázané
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :povolené, vlastné rozloženie mesta
+
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}Umiestnenie stromov počas hry: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :nikde {RED}(znefunkční pílu)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :len v dažďových pralesoch
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :všade
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Pozícia hlavného menu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :vlavo
@@ -1368,7 +1408,7 @@ STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Rozšír
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Nastavenia NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Skontrolovať online obsah
 STR_INTRO_AI_SETTINGS                                           :{BLACK}AI nastavenia
-STR_INTRO_QUIT                                                  :{BLACK}Ukoncit OpenTTD
+STR_INTRO_QUIT                                                  :{BLACK}Ukončiť OpenTTD
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Spustit novu hru
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Nahrat ulozenú hru
@@ -1388,11 +1428,11 @@ STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Zobrazit
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Zobraziť NewGRF nastavenia
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Skontrolovať nový a aktualizovaný obsah pre stiahnutie
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Zobraziť AI nastavenia
-STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Ukoncit 'OpenTTD'
+STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Ukončiť 'OpenTTD'
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Koniec
-STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Si si istý že chces ukoncit hru a vrátit sa do {STRING}?
+STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Si si istý, že chceš ukončiť hru a vrátiť sa do {STRING}?
 STR_QUIT_YES                                                    :{BLACK}Áno
 STR_QUIT_NO                                                     :{BLACK}Nie
 
@@ -1409,8 +1449,8 @@ STR_OSNAME_OS2                                                  :OS/2
 STR_OSNAME_SUNOS                                                :SunOS
 
 # Abandon game
-STR_ABANDON_GAME_CAPTION                                        :{WHITE}Ukoncit hru
-STR_ABANDON_GAME_QUERY                                          :{YELLOW}Si si isty ze chces ukoncit tuto hru ?
+STR_ABANDON_GAME_CAPTION                                        :{WHITE}Opustiť hru
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}Si si istý, že chceš opustiť túto hru?
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Si si isty ze chces ukoncit tento scenar ?
 
 # Cheat window
@@ -1475,16 +1515,16 @@ STR_FACE_OK_TOOLTIP                                             :{BLACK}Potvrdit
 STR_FACE_MALE_BUTTON                                            :{BLACK}Muz
 STR_FACE_MALE_TOOLTIP                                           :{BLACK}Vyber muzskych tvari
 STR_FACE_FEMALE_BUTTON                                          :{BLACK}Zena
-STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Vyber zenskych tvari
+STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Vyber ženské tváre
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Nová tvár
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Nahodna nova tvar
 STR_FACE_ADVANCED                                               :{BLACK}Rozšírený
 STR_FACE_ADVANCED_TOOLTIP                                       :{BLACK}Rozšírený výber tváre.
 STR_FACE_SIMPLE                                                 :{BLACK}Jednoduchý
 STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Jednoduchý výber tváre.
-STR_FACE_LOAD                                                   :{BLACK}Nahrat
-STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Nahrat oblúbenú tvár
-STR_FACE_LOAD_DONE                                              :{WHITE}Vaša oblúbená tvár bola nahratá z kofiguracného súboru.
+STR_FACE_LOAD                                                   :{BLACK}Nahrať
+STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Nahrať obľúbenú tvár
+STR_FACE_LOAD_DONE                                              :{WHITE}Tvoja obľúbená tvár bola nahratá z kofiguračného súboru OpenTTD.
 STR_FACE_FACECODE                                               :{BLACK}Kód tváre
 STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Zobrazit/nastavit kód tváre
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}Zobrazit/nastavit kód tváre
@@ -1607,7 +1647,7 @@ STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Aby osta
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Spustit hru
 STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Zacat sietovu hru z nahodnej mapy alebo scenara
-STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Nahrat hru
+STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Nahrať hru
 STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Pokracovat v ulozenej hre (uistite sa, ze sa pripojite ako spravny hrac)
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Zadajte názov sietovej hry
@@ -1752,7 +1792,7 @@ STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Server n
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Pripojenie zlyhalo kvoli nespravnemu NewGRF
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Siet - Chyba synchronizacie hry
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Siet - Stratene spojenie
-STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Nedokazem nahrat hru zo servera
+STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Nedokážem nahrať hru zo servera
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Nemozem spustit server.
 STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Nemozem sa pripojit.
 STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Vyprsal casovy limit pre spojenie #{NUM}.
@@ -1767,7 +1807,7 @@ STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Cheatova
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :generalna chyba
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :chyba synchronizacie
-STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :neviem nahrat mapu
+STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :nemôžem načítať mapu
 STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :spojenie prerusene
 STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :chyba protokolu
 STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :Nespravne NewGRF
@@ -1783,7 +1823,15 @@ STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :server je plny
 ############ End of leave-in-this-order
 
 # Network related errors
+STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
 ############ Leave those lines in this order!!
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Hra pozastavená ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Hra stále pozastavená ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Hra stále pozastavená ({STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Hra stále pozastavená ({STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Hra pokračuje ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :nieje dostatok hráčov
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :pripájanie klientov
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :odchádza
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} vstúpil do hry
@@ -1842,6 +1890,7 @@ STR_CONTENT_TYPE_AI_LIBRARY                                     :AI knižnica
 STR_CONTENT_TYPE_SCENARIO                                       :Mapa
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Výšková mapa
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Základné zvuky
+STR_CONTENT_TYPE_BASE_MUSIC                                     :Základná hudba
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Sťahujem obsah...
@@ -2235,10 +2284,10 @@ STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD 
 
 # Save/load game/scenario
 STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}Ulozit hru
-STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Nahrat hru
+STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Nahrať hru
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Ulozit scenar
-STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Nahrat scenár
-STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Nahrat výškovú mapu
+STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Nahrať scenár
+STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Nahrať výškovú mapu
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Kliknutim sem sa presuniete do sucasneho vychodzieho adresara pre ukladanie
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} volnych
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Zoznam diskov, adresarov a subory ulozenych hier
@@ -2269,6 +2318,7 @@ STR_MAPGEN_TREE_PLACER                                          :{BLACK}Generát
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Typ terénu:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Rozloha mora:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Clenitost:
+STR_MAPGEN_VARIETY                                              :{BLACK}Rozmanitosť distribúcie:
 STR_MAPGEN_GENERATE                                             :{WHITE}Vytvorit
 
 # Strings for map borders at game generation
@@ -2305,9 +2355,9 @@ STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Zmenit v
 
 # Map generation progress
 STR_GENERATION_WORLD                                            :{WHITE}Generujem  krajinu ...
-STR_GENERATION_ABORT                                            :{BLACK}Ukoncit
-STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Ukoncit generovanie krajiny
-STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Skutocne chcete ukoncit generovanie?
+STR_GENERATION_ABORT                                            :{BLACK}Zrušiť
+STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Zrušiť generovanie krajiny
+STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Skutočne chceš ukončiť generovanie?
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% hotovych
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Vytvorenie krajiny
@@ -2320,7 +2370,7 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Priprava
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Nastavenie novych grafickych suborov
-STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Nahrat vybraný zoznam
+STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Nahrať vybraný zoznam
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Uložit zoznam
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Uložit aktuálne nastavenie ako zoznam
 STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Zadajte názov zoznamu
@@ -2368,7 +2418,8 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Upozornenie: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Chyba: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Kritická chyba: {SILVER}{STRING}
-STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} nebude fungovat s TTDPatch verziou hlásenou OpenTTD.
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Nastala závažná chyba pri použití NewGRF: {}{STRING}
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} nebude fungovať s TTDPatch verziou nahlásenou OpenTTD.
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} je pre {STRING} verziu TTD.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} je navrhnutý pre použitie s {STRING}
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Neplatný parameter {1:STRING}: parameter {STRING} ({NUM})
@@ -2377,7 +2428,7 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} mus�
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} vyžaduje verziu OpenTTD {STRING} alebo vyššiu.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF súbor bol navrhnutý na preklad
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Nahraných príliš vela NewGRF súborov.
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Nahratie {STRING} ako statického NewGRF s {STRING} by mohlo sposobit desynchronizáciu.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Načítanie {STRING} ako statického NewGRF s {STRING} by mohlo spôsobiť desynchronizáciu.
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Neočakávaný sprite.
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Neznáma Akcia 0 nehnuteľnosti.
 STR_NEWGRF_ERROR_INVALID_ID                                     :Požiadavka na neplatného ID.
@@ -2430,6 +2481,7 @@ STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Cestujuc
 STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Posta posledny mesiac: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Tovar potrebný k rozrastu mesta:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{STRING}{BLACK} potrebný
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} potrebné v zime
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{ORANGE}{CARGO}{BLACK} doručené posledný mesiac
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Hlukový limit v meste: {ORANGE}{COMMA}{BLACK}  max.: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Pohlad na stred mesta
@@ -2528,6 +2580,7 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Zobrazit
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Premenovat stanicu/vykladku
 
 # Waypoint/buoy view window
+STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Vycentrovať pohľad na umiestnenie navádzača
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Zmeniť meno smerového bodu
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Vycentrovať pohľad na umiestnenie bójky
@@ -2580,7 +2633,9 @@ STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Hodnota s
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% vlastnene {COMPANY})
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Postavit sidlo
+STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Postaviť sídlo firmy
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Pozriet sidlo
+STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Pozrieť sídlo firmy
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Premiestnit sidlo
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Sidlo spolocnosti je mozne premiestnit za 1% hodnoty spolocnosti
 
@@ -2971,6 +3026,7 @@ STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Profit t
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Spoľahlivosť: {LTBLUE}{COMMA}%  {BLACK}Poruchy od posledného servisu: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Vyrobený: {LTBLUE}{NUM}{BLACK} Cena: {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Kapacita: {LTBLUE}Žiadna
 STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Kapacita: {LTBLUE}{CARGO}{3:STRING}
 STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Kapacita: {LTBLUE}{CARGO}{3:STRING} (x{4:NUM})
 STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Kapacita: {LTBLUE}{CARGO}, {CARGO}{STRING}
@@ -3036,6 +3092,8 @@ STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}CP
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Prepnút na zobrazenie cestovného poriadku
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Zoznam prikazov - kliknut na prikaz pre oznacenie
+STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
+STR_ORDER_TEXT                                                  :{STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Koniec prikazov - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Koniec zdielanych prikazov - -
@@ -3051,7 +3109,7 @@ STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Zmenit s
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Plne nalož cokolvek
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Nalož pri dostupnosti
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Plne nalož všetko
-STR_ORDER_DROP_FULL_LOAD_ANY                                    :Plne nalož cokolvek
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :Plne nalož čokoľvek
 STR_ORDER_DROP_NO_LOADING                                       :Nenakladaj
 STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Zmenit sposob nakladania pre tento príkaz
 
@@ -3130,19 +3188,19 @@ STR_ORDER_STOP_ORDER                                            :(Zastaviť)
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
 STR_ORDER_FULL_LOAD                                             :(Plne nalož)
-STR_ORDER_FULL_LOAD_ANY                                         :(Plne nalož akýkolvek náklad)
+STR_ORDER_FULL_LOAD_ANY                                         :(Plne nalož akýkoľvek náklad)
 STR_ORDER_NO_LOAD                                               :(Nenakladaj)
 STR_ORDER_UNLOAD                                                :(Vylož a nalož náklad)
-STR_ORDER_UNLOAD_FULL_LOAD                                      :(Vylož a pockaj na plné naloženie)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :(Vylož a čakaj na plné naloženie)
 STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Vylož a pockaj na plné naloženie akéhokoľvek nákladu)
 STR_ORDER_UNLOAD_NO_LOAD                                        :(Vylož a nechaj prázdne)
 STR_ORDER_TRANSFER                                              :(Prelož a nalož)
-STR_ORDER_TRANSFER_FULL_LOAD                                    :(Prelož a pockaj na plné naloženie)
-STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Prelož a pockaj na plné naloženie akéhokolvek nákladu)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :(Prelož a čakaj na plné naloženie)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Prelož a čakaj na plné naloženie akéhokoľvek nákladu)
 STR_ORDER_TRANSFER_NO_LOAD                                      :(Prelož a nechaj prázdne)
 STR_ORDER_NO_UNLOAD                                             :(Nevykladaj a nalož)
-STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Nevykladaj a pockaj na plné naloženie)
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Nevykladaj a pockaj na plné naloženie akéhokolvek nákladu)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Nevykladaj a čakaj na plné naloženie)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Nevykladaj a čakaj na plné naloženie akéhokoľvek nákladu)
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[blízky koniec]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[stred]
@@ -3197,6 +3255,7 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Čakať
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Naplánovaný
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Prepnúť medzi čakaním a cestovným poriadkom
 
+STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :P:
 STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :D:
 
 
@@ -3211,9 +3270,14 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Vyberte 
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}AI debugovanie
+STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Meno AI
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Zmeniť nastavenia pre AI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Znovu načítať AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Zrušiť AI, znovu načítať skript, a reštartovať AI
+
+STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD je vytvorené bez podpory AI...
+STR_ERROR_NO_AI_SUB                                             :{WHITE}... žiadne AI nieje dostupné!
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Nebolo nájdená žiadne použitelné AI.{}Toto AI je hlúpe a nebude nič robiť.{}Môžete si stiahnúť niekoľko AI cez 'Online Obsah' systém.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Jedna z AI padla. Prosím nahláste to autorovi AI a priložte screenshot Debugovacej obrazovky AI.
@@ -3224,6 +3288,11 @@ STR_AI_CONFIG_CAPTION                                           :{WHITE}AI konfi
 STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}Všetky AI budú načítané v nasledujúcej hre
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Človek
 STR_AI_CONFIG_RANDOM_AI                                         :Náhodná AI
+
+STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Posunúť vyššie
+STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Posunúť vyššie vybrané AI v zozname
+STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Posunúť nižšie
+STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Posunúť nižšie vybrané AI v zozname
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}Označiť AI
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Načítať ďaľšiu AI
@@ -3270,7 +3339,7 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Priblizn
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Ukladanie hry este bezi,{}pockajte prosim na dokoncenie!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Autoulozenie zlyhalo
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Zariadenie je necitatelne
-STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Ulozenie hry zlyhalo{}{STRING}
+STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Uloženie hry zlyhalo{}{STRING}
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Subor sa neda vymazat
 STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Nahratie hry zlyhalo{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Interná chyba: {STRING}
@@ -3285,12 +3354,12 @@ STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Hra bola
 STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Generovanie mapy zrušené...{}...žiadne vyhovujúce lokácie miest
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... v tomto scenari nie je ziadne mesto
 
-STR_ERROR_PNGMAP                                                :{WHITE}Nie je mozne nahrat povrch z PNG suboru ...
+STR_ERROR_PNGMAP                                                :{WHITE}Nie je možné načítať krajinu z PNG súboru...
 STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... subor nenajdeny.
 STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}...nie je mozne zkonvertovat format obrazku. Potrebne 8 alebo 24 bitove PNG.
 STR_ERROR_PNGMAP_MISC                                           :{WHITE}... neocakavana chyba (pravdepodobne poskodeny subor)
 
-STR_ERROR_BMPMAP                                                :{WHITE}Nie je možné nahrat povrch z BMP suboru ...
+STR_ERROR_BMPMAP                                                :{WHITE}Nie je možné načítať krajinu z BMP súboru...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}...nie je mozne zkonvertovat format obrazku.
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Upozornenie na stupnicu
@@ -3327,7 +3396,7 @@ STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} m
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}Vas pokus o uplatok bol odhaleny
 STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}miestnym vysetrovatelom.
 
-# Leveling errors
+# Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Tu nemozno zdvihnut teren ...
 STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Tu nemozno znizit teren ...
 STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Nemôžem tu upraviť terén...
@@ -3570,7 +3639,7 @@ STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :{WHITE}Vozidlo 
 STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}Lod nie je dostupná
 STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Lietadlo nie je dostupné
 
-STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}V hre je prílis vela dopravných prostriedkov
+STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}V hre je príliš veľa dopravných prostriedkov
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Nie je možné zmenit servisný interval ...
 
 STR_ERROR_CAN_T_SELL_DESTROYED_VEHICLE                          :{WHITE}Nie je možné predat znicené vozidlo ...

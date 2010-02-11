@@ -3218,6 +3218,9 @@ STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Thay đ�
 STR_AI_DEBUG_RELOAD                                             :{BLACK}nạp lại AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Xoá bỏ AI, nạp lại kịch bản, và khởi động lại AI
 
+STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD biên dịch không hỗ trợ AI...
+STR_ERROR_NO_AI_SUB                                             :{WHITE}... Khôgn có AI thích hợp!
+
 STR_ERROR_AI_NO_AI_FOUND                                        :Không có AI phù hợp để nạp.{}AI này là AI giả và sẽ không làm gì cả.{}Bạn có thể tải các AI tại mục 'Nội dung trực tuyến'.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Có một AI bị treo. Hãy báo cho tác giả AI kèm với màn hình chụp cửa sổ gỡ lỗi AI.
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Cửa sổ gỡ lỗi AI chỉ có trên server
@@ -3335,7 +3338,7 @@ STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}Chính q
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}Việc hối lộ của bạn đã
 STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}bị phát giác bởi cơ quan chức năng
 
-# Leveling errors
+# Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Không thể nâng đất ở đây...
 STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Không thể hạ đất ở đây...
 STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Không thể tạo bình địa ở đây
@@ -3678,8 +3681,8 @@ STR_INDUSTRY_NAME_GOLD_MINE                                     :Mỏ vàng
 STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :Ngân hàng
 STR_INDUSTRY_NAME_DIAMOND_MINE                                  :Mỏ kim cương
 STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :Mỏ sắt
-STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :Nhà máy chế biến hoa quả
-STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :Nhà máy cao su
+STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :Đồn điền hoa quả
+STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :Đồn điền cao su
 STR_INDUSTRY_NAME_WATER_SUPPLY                                  :Giếng khoan nước
 STR_INDUSTRY_NAME_WATER_TOWER                                   :Tháp nước
 STR_INDUSTRY_NAME_FACTORY_2                                     :Nhà máy thực phẩm

@@ -230,7 +230,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Renommer
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Fermer la fenêtre
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Titre de fenêtre - Faire Glisser pour déplacer la fenêtre
-STR_TOOLTIP_SHADE                                               :{BLACK}Enrouler la fenêtre - N'afficher que la barre de titre
+STR_TOOLTIP_SHADE                                               :{BLACK}Enrouler la fenêtre - n'afficher que la barre de titre
 STR_TOOLTIP_STICKY                                              :{BLACK}Marquer cette fenêtre comme ineffaçable pour la touche 'Fermer toutes les fenêtres'
 STR_TOOLTIP_RESIZE                                              :{BLACK}Cliquer et faire glisse pour redimensionner la fenêtre
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Bascule entre une grande/petite fenêtre
@@ -1810,7 +1810,7 @@ STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Vous av
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Cette dépendance a été sélectionnée pour être téléchargée
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Vous avez déjà ceci
 STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Ce contenu est inconnu et ne peut pas être téléchargé dans OpenTTD
-STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Ceci est un remplacement pour un {STRING} existant
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Ceci est un remplacement pour {G "un" "des" "une"} {STRING} existant{G "" "s" "e"}
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}Nom{NBSP}: {WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Version{NBSP}: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Description{NBSP}: {WHITE}{STRING}
@@ -1824,14 +1824,14 @@ STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD 
 STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... télécharger du contenu est impossible!
 
 # Order of these is important!
-STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Graphiques de base
-STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
-STR_CONTENT_TYPE_AI                                             :IA
-STR_CONTENT_TYPE_AI_LIBRARY                                     :Bibliothèque IA
-STR_CONTENT_TYPE_SCENARIO                                       :Scénario
-STR_CONTENT_TYPE_HEIGHTMAP                                      :Carte d'altitude
-STR_CONTENT_TYPE_BASE_SOUNDS                                    :Sons de base
-STR_CONTENT_TYPE_BASE_MUSIC                                     :Musique de base
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :{G=m2}Graphiques de base
+STR_CONTENT_TYPE_NEWGRF                                         :{G=m}NewGRF
+STR_CONTENT_TYPE_AI                                             :{G=f}IA
+STR_CONTENT_TYPE_AI_LIBRARY                                     :{G=f}Bibliothèque IA
+STR_CONTENT_TYPE_SCENARIO                                       :{G=m}Scénario
+STR_CONTENT_TYPE_HEIGHTMAP                                      :{G=f}Carte d'altitude
+STR_CONTENT_TYPE_BASE_SOUNDS                                    :{G=m2}Sons de base
+STR_CONTENT_TYPE_BASE_MUSIC                                     :{G=m2}Musiques de base
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Téléchargement du contenu...
@@ -1940,7 +1940,7 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Augmente
 # Bridge selection window
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Choisir Pont Ferroviaire
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Choisir Pont Routier
-STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Sélection de Pont - cliquer sur le type de pont désiré pour le construire
+STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Sélection de pont - cliquer sur le type de pont désiré pour le construire
 STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Suspendu en acier
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :À poutres en Acier
@@ -3219,7 +3219,7 @@ STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Modifier
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Recharger IA
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Tuer l'IA, recharger le script et relancer l'IA
 
-STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD est compilé sans support pour les IA...
+STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD est compilé sans support pour les IAs...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... aucune IA disponible{NBSP}!
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Aucune IA n'a été trouvée.{}Cette IA est factice et ne fera rien.{}Vous pouvez télécharger diverses IA via le système de 'Contenu en ligne'.
@@ -3339,7 +3339,7 @@ STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}La munic
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}Votre tentative de corruption à été
 STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}révélée à la presse par un journaliste régional.
 
-# Leveling errors
+# Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Impossible d'élever le terrain ici...
 STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Impossible d'abaisser le terrain ici...
 STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Impossible de niveler le terrain ici...

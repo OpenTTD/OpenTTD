@@ -229,7 +229,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Ubah nam
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Tutup window
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Judul Jendela - klik dan tahan disini untuk memindahkan jendela
-STR_TOOLTIP_SHADE                                               :{BLACK}Tipiskan jendela - Hanya tampilkan judulnya
+STR_TOOLTIP_SHADE                                               :{BLACK}Gulung jendela - Hanya tampilkan judulnya
 STR_TOOLTIP_STICKY                                              :{BLACK}Catat jendela ini agar tidak tertutup saat di beri perintah "Tutup Semua Jendela"
 STR_TOOLTIP_RESIZE                                              :{BLACK}Klik dan Geser untuk mengubah ukuran jendela ini.
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Tandai besar/kecil ukuran jendela
@@ -2532,7 +2532,7 @@ STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Konstruksi
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Beli Kendaraan Baru
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Biaya Ops. Kereta
-STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Biaya Ops. Bus/truk
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Biaya Operasional Bus/truk
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Biaya Ops. Pesawat
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Biaya Ops. Kapal Laut
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Perawatan Properti
@@ -3214,6 +3214,7 @@ STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Ubah pen
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Muat ulang AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Matikan fitur AI, muat ulang script, dan restart AI
 
+
 STR_ERROR_AI_NO_AI_FOUND                                        :Tidak ada AI yang cocok untuk digunakan.{}Ini adalah dummy AI yang tidak akan melakukan apapun.{}Anda dapat download beberapa AI melalui sistem 'Konten Online'.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Salah satu AI gagal. Laporkan ini kepada AI Author dengan potongan layar dari Jendela Debug AI.
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI Jendela "Debug" hanya tersedia untuk server
@@ -3331,7 +3332,7 @@ STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} P
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}Usaha anda untuk menyuap telah
 STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}ditemukan oleh seorang investigator wilayah
 
-# Leveling errors
+# Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Tidak dapat menaikkan tanah disini
 STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Tidak dapat menurunkan tanah disini
 STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Nggak bisa rata...

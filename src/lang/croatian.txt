@@ -1261,6 +1261,10 @@ STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Jedna il
 STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Maksimalna raširenost postaje: {ORANGE}{STRING} {RED}Pozor: visoka vrijednost usporava igru
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Automatski servisiraj helikoptere na heliodromima: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Poveži alatnu traku za krajolik s alatnim trakama za željeznicu/ceste/vodu/zračne luke: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Boja polja korištena na maloj karti: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :{G=female}Zelena
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :{G=female}Tamno zelena
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :{G=female}Ljubičasta
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}Promijeni smjer klizanja: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}Glatko klizanje kroz mini pogled: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}Pokaži mjerni naputak prilikom korištenja raznih alata za izgradnju: {ORANGE}{STRING}
@@ -2251,7 +2255,7 @@ STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Željeznička p
 STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Željezničko spremište vlakova
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Cesta
-STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Cesta sa semaforima
+STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Cesta sa javnom rasvjetom
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Cesta s tri trake
 STR_LAI_ROAD_DESCRIPTION_ROAD_VEHICLE_DEPOT                     :Spremište cestovnih vozila
 STR_LAI_ROAD_DESCRIPTION_ROAD_RAIL_LEVEL_CROSSING               :Prijelaz ceste preko željezničke pruge
@@ -3310,6 +3314,9 @@ STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Promijen
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Ponovno učitaj UI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Ubij UI, ponovno učitaj skriptu i ponovno pokreni UI
 
+STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD je izrađen bez podrške za UI-u...
+STR_ERROR_NO_AI_SUB                                             :{WHITE}... nema dostupnih UI-a!
+
 STR_ERROR_AI_NO_AI_FOUND                                        :Nema prikladne UI za učitavanje.{}Ova UI je samo model i ne će ništa učiniti.{}Možete preuzeti nekoliko umjetnih inteligencija pomoću sustava 'Online sadržaji'.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Jedan od UI igrača se srušio. Molimo vas da prijavite ovo autoru UI sa kopijom slike prozora za debugiranje UI.
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Prozor za debugiranje UI je dopušten samo za poslužitelj
@@ -3427,7 +3434,7 @@ STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} n
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}Tvoj pokušaj podmićivanja je
 STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}otkriven od strane regionalnog istražitelja
 
-# Leveling errors
+# Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Ovdje nije moguće povisiti zemlju...
 STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Ovdje nije moguće sniziti zemlju...
 STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Ovdje nije moguće sravniti zemlju...

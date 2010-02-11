@@ -3413,6 +3413,9 @@ STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Promena 
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Ponovno učitavanje
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Zaustavlja Veštačku Inteligenciju, ponovo učitava skriptu, i restartuje je
 
+STR_ERROR_NO_AI                                                 :{WHITE}Ova OpenTTD verzija nema podršku za VI...
+STR_ERROR_NO_AI_SUB                                             :{WHITE}... nijedna VI nije dostupna!
+
 STR_ERROR_AI_NO_AI_FOUND                                        :Nije pronađena nijadna prikladna VI.{}Učitana zamena neće raditi ništa.{}Možete skinuti nekoliko VI preko sistema za preuzimanje dodataka.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Jedna od VI je krahirala. Molimo vas da prijavite grešku autoru VI-e sa slikom prozora VI Korekcije .
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Prozor VI Korekcije je dostupna samo na serveru
@@ -3530,7 +3533,7 @@ STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} l
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}Vaš pokušaj podmićivanja je
 STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}otkriven zahvaljujući regionalnim istražiteljima
 
-# Leveling errors
+# Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Nije izvodljivo ovde podići zemljište...
 STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Nije izvodljivo ovde spustiti zemljište...
 STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Nije izvodljivo ovde poravnati zemljište...

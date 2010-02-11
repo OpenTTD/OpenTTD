@@ -25,6 +25,8 @@ STR_NULL                                                        :
 STR_EMPTY                                                       :
 STR_UNDEFINED                                                   :(neapibrėžta eilutė)
 STR_JUST_NOTHING                                                :Nieko
+STR_JUST_NOTHING.ko                                             :Nieko
+STR_JUST_NOTHING.ka                                             :Nieką
 
 # Cargo related strings
 # Plural cargo name
@@ -295,7 +297,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Pervadin
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Uždaryti langą
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Lango pavadinimas - už jo tempiant galima judinti langą
-STR_TOOLTIP_SHADE                                               :{BLACK}Lango šešėlis - Rodyti tik lango antraštėje
+STR_TOOLTIP_SHADE                                               :{BLACK}Sumažinti langą - rodyti tik lango antraštę
 STR_TOOLTIP_STICKY                                              :{BLACK}Pažymėti šį langą kaip neuždaromą komandos 'Uždaryti visus langus' pagalba (arba 'Delete' klavišas)
 STR_TOOLTIP_RESIZE                                              :{BLACK}Spragtelk ir trauk, jei nori pakeisti lango dydį
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Pakeisti lango dydį
@@ -754,7 +756,7 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLAC
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}Sniegas
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Rodyti/slėpti miestų pavadinimus žemėlapyje
-STR_SMALLMAP_CENTER                                             :{BLACK}Centruoti maza zemelapi i sita vieta
+STR_SMALLMAP_CENTER                                             :{BLACK}Centruoti mažą žemėlapį į šitą vietą
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Išjungti visas
@@ -1529,7 +1531,7 @@ STR_FACE_SIMPLE                                                 :{BLACK}Paprasta
 STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Paprastas veido pasirinkimas.
 STR_FACE_LOAD                                                   :{BLACK}Atverti
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Atverti mėgstamą veidą
-STR_FACE_LOAD_DONE                                              :{WHITE}Tavo mėgstamas veidas sėkmingai įkeltas iš OpenTTD config failo.
+STR_FACE_LOAD_DONE                                              :{WHITE}Tavo mėgstamas veidas sėkmingai įkeltas iš OpenTTD nustatymų failo.
 STR_FACE_FACECODE                                               :{BLACK}Žaidėjo veido nr.
 STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Tikrinti ir/arba nustatyti žaidėjo veido numerį
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}Tikrinti ir/arba nustatyti žaidėjo veido numerį
@@ -1537,7 +1539,7 @@ STR_FACE_FACECODE_SET                                           :{WHITE}Naujas v
 STR_FACE_FACECODE_ERR                                           :{WHITE}Negalėjau nustatyti veido numerio - turi būti skaičius tarp 0 ir 4,294,967,295!
 STR_FACE_SAVE                                                   :{BLACK}Išsaugoti
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Išsaugoti mėgstamą veidą
-STR_FACE_SAVE_DONE                                              :{WHITE}Šis veidas bus išsaugotas kaip tavo mėgstamas OpenTTD config faile.
+STR_FACE_SAVE_DONE                                              :{WHITE}Šis veidas bus išsaugotas kaip tavo mėgstamas OpenTTD nustatymų faile.
 STR_FACE_EUROPEAN                                               :{BLACK}Europietiškas
 STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Pasirinkti europietiškus veidus
 STR_FACE_AFRICAN                                                :{BLACK}Afrikietiškas
@@ -1599,7 +1601,7 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Spragtel
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}Žaidimo informacija
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Žaidėjai: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Kalba: {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Pavadinimas: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Gamtos tipas: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Žemėlapio dydis: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Serverio versija: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Serverio adresas: {WHITE}{STRING}
@@ -2602,7 +2604,7 @@ STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Konstrukcijos
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Nauja technika
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Traukinių sąnaudos
-STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Automobilių sanaudos
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Automobilių išlaikymo kaštai
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Lėktuvų sąnaudos
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Laivų sąnaudos
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Nekilnojamo turto sąnaudos
@@ -3284,6 +3286,8 @@ STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Keisti D
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Perkrauti AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Išbraukti DI, perkrauti skritpą, ir perkrauti DI
 
+STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD yra paruoštas be DI palaikymo...
+STR_ERROR_NO_AI_SUB                                             :{WHITE}... nerasta jokių prieinamų DI!
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Nerasta jokio tinkamo DI..{}Šis DI yra netikras ir nieko nedarys.{}Gali parsisiųsti keletą DI naudojant 'Turinio internete' sistemą.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Vienas iš paleistų DI išsijungė. Praneškite apie tai šio DI autoriui su DI Debug lango vaizdu.
@@ -3402,7 +3406,7 @@ STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} v
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}Tavo meginimas papirkti buvo
 STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}issaiskinta vietiniu pareigunu
 
-# Leveling errors
+# Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Žemės lygio čia paaukštinti negalima...
 STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Žemės lygio čia pažeminti negalima...
 STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Negalima nukasti čia žemės...

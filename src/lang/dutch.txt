@@ -3218,6 +3218,8 @@ STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Wijzig d
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Herlaad computerspeler
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Verwijder computerspeler, herlaad het script en herstart computerspeler
 
+STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD is gecompileerd zonder AI ondersteuning...
+STR_ERROR_NO_AI_SUB                                             :{WHITE}... geen AIs zijn beschikbaar!
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Geen geschikte AI gevonden. {} Deze AI is een 'dummy' en voert niets uit.{}Verschillende AI's kunnen worden gedownload via het 'Online Content' systeem.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Een van de draaiende AI's is gecrashed. Meldt dit bij de schrijver van deze AI met een schermprint van het AI Debugscherm.
@@ -3336,7 +3338,7 @@ STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} l
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}Je poging tot omkopen is
 STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}ontdekt door een regionale onderzoeker
 
-# Leveling errors
+# Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Kan het land hier niet verhogen...
 STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Kan het land hier niet verlagen...
 STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Kan land hier niet egaliseren...

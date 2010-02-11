@@ -702,7 +702,7 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLAC
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}שלג
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}הצג/הסתר שמות ערים
-STR_SMALLMAP_CENTER                                             :{BLACK}מרכז את המפה על המיקום הנוכחי
+STR_SMALLMAP_CENTER                                             :{BLACK}מרכז את המפה הקטנה על המיקום הנוכחי
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}({1:NUM}){0:STRING}
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}השתק את כולן
@@ -839,7 +839,7 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}פג תוקף הצעת סובסידיה:{}{}סובסידיה של הובלת {STRING.plural} מ{STRING} אל {STRING} לא תזכה עוד בסיבסוד.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}סובסידיה הוסרה:{}{}שירות הובלת {STRING.plural} מ{STRING} אל {STRING} אינו מסובסד יותר.
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}הצעה למתן  סובסידיה:{}{}שירות הובלת {STRING.plural} ראשון מ{STRING} אל {STRING} יזכה לסובסידיה בת שנה מהרשות המקומית!
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}הצעה למתן סובסידיה:{}{}שירות הובלת {STRING.plural} ראשון מ{STRING} אל {STRING} יזכה לסובסידיה בת שנה מהרשות המקומית!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}סובסידיה לשירות הניתן ע"י {STRING}!{}{}שירות הובלת {STRING.plural} מ{STRING} אל {STRING} יזכה לשיעור תשלום גדול ב-50% לשנה הקרובה
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}סובסידיה לשירות הניתן ע"י {STRING}!{}{}שירות הובלת {STRING.plural} מ{STRING} אל {STRING} יזכה לשיעור תשלום כפול לשנה הקרובה!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}סובסידיה לשירות הניתן ע"י {STRING}!{}{}שירות הובלת {STRING.plural} מ{STRING} אל {STRING} יזכה לשיעור תשלום משולש לשנה הקרובה!
@@ -1487,9 +1487,9 @@ STR_FACE_SAVE                                                   :{BLACK}שמור
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}שמור את הפנים לקובץ
 STR_FACE_SAVE_DONE                                              :{WHITE}פנים אלה ישמרו כהעדפה אישית שלך בקובץ ההגדרות של המשחק
 STR_FACE_EUROPEAN                                               :{BLACK}אירופאי
-STR_FACE_SELECT_EUROPEAN                                        :{BLACK}בחר תוי פנים אירופאיים
+STR_FACE_SELECT_EUROPEAN                                        :{BLACK}בחר תווי פנים אירופאיים
 STR_FACE_AFRICAN                                                :{BLACK}אפריקני
-STR_FACE_SELECT_AFRICAN                                         :{BLACK}בחר תוי פנים אפריקניים
+STR_FACE_SELECT_AFRICAN                                         :{BLACK}בחר תווי פנים אפריקניים
 STR_FACE_YES                                                    :כן
 STR_FACE_NO                                                     :לא
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}אפשר זקן/עגילים
@@ -1547,7 +1547,7 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}לחץ �
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}מידע על המשחק
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}לקוחות: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}שפה: {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{WHITE}{STRING}{SILVER} :סוג הקרקע
+STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}סוג הקרקע: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}גודל המפה: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}גרסת השרת: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}כתובת השרת: {WHITE}{STRING}
@@ -1823,7 +1823,7 @@ STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}בחר�
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER} פריט תלוי זה נבחר להורדה
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER} כבר יש לך את זה
 STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER} תוכן זה לא מוכר ואינו ניתן להורדה ב-OpenTTD
-STR_CONTENT_DETAIL_UPDATE                                       :{SILVER} קיים {STRING} זוהי חלופה ל
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}זוהי חלופה ל{STRING} קיים
 STR_CONTENT_DETAIL_NAME                                         :{WHITE}{STRING}{SILVER} :שם
 STR_CONTENT_DETAIL_VERSION                                      :{WHITE}{STRING}{SILVER} :גירסה
 STR_CONTENT_DETAIL_DESCRIPTION                                  :{WHITE}{STRING}{SILVER} :תיאור
@@ -1936,13 +1936,13 @@ STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}בחיר
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}(רמזורי בלוק (מכאניים{NBSP}{}אלו הרמזורים הפשוטים ביותר, מאפשרים לרכבת אחת בלבד להמצא בבלוק מסויים בזמן נתון
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}(רמזורי כניסה (מכאניים {}{NBSP}ירוקים כל עוד יש לפחות רמזור יציאה ירוק הקטע המסילה העוקב. אחרת-אדומים
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}(רמזורי יציאה (מכאניים {}{NBSP} מתנהגים בדומה לרמזורי הבלוק, אבל מחייבים שינוי האור ברמזור בעת כניסה
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}(רמזורים משולבים (מכאניים){}{NBSP}מתפקדים כרמזורי כניסה ויציאה במשולב, מאפשרים יצירת "עצים" מורכבים של רמזורים
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}רמזורים משולבים (מכאניים){}מתפקדים כרמזורי כניסה ויציאה במשולב. דבר זה מאפשר יצירת "עצים" מורכבים של רמזורים
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}(רמזורי נתיב (מכאניים{}{NBSP} מאפשרים ליותר מרכבת אחת להכנס לאותו הבלוק בו זמנית, כל עוד קיים נתיב פנוי למקום עצירה בטוח
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}(רמזורי נתיב חד-סיטרי (מכאניים{}{NBSP} מאפשרים ליותר מרכבת אחת להכנס לאותו הבלוק בו זמנית, כל עוד קיים נתיב פנוי למקום עצירה
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}(רמזורי בלוק (חשמליים{NBSP}{}אלו הרמזורים הפשוטים ביותר, מאפשרים לרכבת אחת בלבד להמצא בבלוק מסויים בזמן נתון
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}(רמזורי כניסה (חשמליים {}{NBSP}ירוקים כל עוד יש לפחות רמזור יציאה ירוק הקטע המסילה העוקב. אחרת-אדומים
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}(רמזורי יציאה (חשמליים {}{NBSP} מתנהגים בדומה לרמזורי הבלוק, אבל מחייבים שינוי האור ברמזור בעת כניסה
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}(רמזורים משולבים (חשמליים){}{NBSP}מתפקדים כרמזורי כניסה ויציאה במשולב, מאפשרים יצירת "עצים" מורכבים של רמזורים
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}רמזורים משולבים (חשמליים){}מתפקדים כרמזורי כניסה ויציאה במשולב, מאפשרים יצירת "עצים" מורכבים של רמזורים
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}(רמזורי נתיב (חשמליים{}{NBSP} מאפשרים ליותר מרכבת אחת להכנס לאותו הבלוק בו זמנית, כל עוד קיים נתיב פנוי למקום עצירה בטוח
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}(רמזורי נתיב חד-סיטרי (חשמליים{}{NBSP}מאפשרים ליותר מרכבת אחת להכנס לאותו הבלוק בו זמנית, כל עוד קיים נתיב פנוי למקום עצירה
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}החלפת סוג הרמזור – בחר סוג חדש ולחץ על רמזור קיים להחלפה
@@ -2128,7 +2128,7 @@ STR_LAND_AREA_INFORMATION_OWNER_N_A                             :לא זמין
 STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}{LTBLUE}{STRING} :בעלים
 STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}בעלי הכביש: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}:בעלי מסילת החשמלית{LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}בעלי מסילת הרכבת {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}בעלי מסילת הרכבת: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{LTBLUE}{STRING}{BLACK} :רשות מקומית
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :אין
 STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{LTBLUE}{NUM}x{NUM}x{NUM} ({STRING}) {BLACK} :קואורדינטות
@@ -2550,7 +2550,7 @@ STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}בנייה
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}כלי תחבורה חדשים
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}עלות הפעלת רכבות
-STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD} עלות הפעלת רכבים
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}עלות תפעול רכבים
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD} עלות הפעלת כלי טייס
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD} עלות הפעלת כלי שייט
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}הוצאות אחזקה
@@ -3232,6 +3232,8 @@ STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}שנה �
 STR_AI_DEBUG_RELOAD                                             :{BLACK}טען מחדש בינה מלאכותית
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK} הטען מחדש את הסקריפט ואתחל בינה מלאכותית
 
+STR_ERROR_NO_AI                                                 :{WHITE}המשחק נבנה ללא תמיכה בבינה מלאכותית...
+STR_ERROR_NO_AI_SUB                                             :{WHITE}... אין בינות מלאכותיות זמינות!
 
 STR_ERROR_AI_NO_AI_FOUND                                        :לא נמצאה בינה מלאכותית מתאימה לטעינה.{}בינה מלאכותית זו הינה מדומה ולא תעשה כלום.{}באפשרותך להוריד מספר אלגורתמים של בינה מלאכותית בעזרת מערכת 'תוכן מקוון'.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}אחד מאלגורתמי הבינה המלאכותית קרס. אנא דווח זאת ליוצר האלגוריתם וצרף צילום מסך של מסך ה-Debug.
@@ -3350,7 +3352,7 @@ STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}הרשו
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}ניסיונך לשחד את הרשות המקומית
 STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}נחשף ע"י מבקר המדינה
 
-# Leveling errors
+# Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}לא ניתן להגביה את הקרקע...
 STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}לא ניתן להנמיך את הקרקע...
 STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}לא ניתן לשטח את פני הקרקע כאן...

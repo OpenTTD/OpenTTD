@@ -262,7 +262,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Átnevez
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Az ablak bezárása
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Az ablak címsora - húzd ezt a mozgatáshoz
-STR_TOOLTIP_SHADE                                               :{BLACK}Ablak összecsukása - csak a címsor látszódjon
+STR_TOOLTIP_SHADE                                               :{BLACK}Ablak összecsukása - csak a címsor látszódik
 STR_TOOLTIP_STICKY                                              :{BLACK}Ez az ablak akkor se záródjon be, ha a DEL billentyűvel az összes ablakot bezatjuk
 STR_TOOLTIP_RESIZE                                              :{BLACK}Fogd és húzd hogy átméretezd az ablakot
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Kicsi/nagy ablakméret közötti váltás
@@ -722,7 +722,7 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLAC
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}HÓ
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Városnevek ki/be
-STR_SMALLMAP_CENTER                                             :{BLACK}A kistérkép közepét a jelenlegi helyre állítja
+STR_SMALLMAP_CENTER                                             :{BLACK}A térkép közepét a jelenlegi helyre állítja
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Kikapcsol mind
@@ -770,13 +770,13 @@ STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Áruk e
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Támogatások
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Általános információk
 
-STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIGFONT}{BLACK}Az emberek ünnepelnek . . .{}Megérkezett az első vonat {STATION} állomásra!
-STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIGFONT}{BLACK}Az emberek ünnepelnek . . .{}Megérkezett az első busz {STATION} állomásra!
-STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIGFONT}{BLACK}Az emberek ünnepelnek . . .{}Megérkezett az első teherautó {STATION} állomásra!
+STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIGFONT}{BLACK}A lakosság ünnepel . . .{}Megérkezett az első vonat {STATION} állomásra!
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIGFONT}{BLACK}A lakosság ünnepel . . .{}Megérkezett az első busz {STATION} állomásra!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIGFONT}{BLACK}A lakosság ünnepel . . .{}Megérkezett az első teherautó {STATION} állomásra!
 STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIGFONT}{BLACK}A lakosság ünnepel . . .{}Első utasszállító villamos megérkezett {STATION} állomásra!
 STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIGFONT}{BLACK}A lakosság ünnepel . . .{}Első teherszállító-villamos megérkezett {STATION} állomásra!
-STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIGFONT}{BLACK}Az emberek ünnepelnek . . .{}Megérkezett az első hajó {STATION} állomásra!
-STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIGFONT}{BLACK}Az emberek ünnepelnek . . .{}Megérkezett az első repülőgép {STATION} állomásra!
+STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIGFONT}{BLACK}A lakosság ünnepel . . .{}Megérkezett az első hajó {STATION} állomásra!
+STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIGFONT}{BLACK}A lakosság ünnepel . . .{}Megérkezett az első repülőgép {STATION} állomásra!
 
 STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK}Vonatbaleset!{}{COMMA} ember halt meg az ütközésnél
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}Közúti baleset!{}A vezető meghalt a vonattal való ütközéskor
@@ -1405,7 +1405,7 @@ STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Kilépé
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Kilépés
-STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Biztosan bezárod ezt a programot és kilépsz a {STRING}ba ?
+STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Biztosan bezárod ezt a programot és kilépsz a {STRING}ba?
 STR_QUIT_YES                                                    :{BLACK}Igen
 STR_QUIT_NO                                                     :{BLACK}Nem
 
@@ -1423,8 +1423,8 @@ STR_OSNAME_SUNOS                                                :SunOS
 
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Kilépés a játékból
-STR_ABANDON_GAME_QUERY                                          :{YELLOW}Biztosan kilépsz ebből a játékból ?
-STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Biztosan abba akarod hagyni a pálya szerkesztését ?
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}Biztosan kilépsz ebből a játékból?
+STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Biztosan abba akarod hagyni a pálya szerkesztését?
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Csalások
@@ -2193,7 +2193,7 @@ STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Vasúti pálya 
 STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Járműtelep
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Út
-STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Út lámpákkal
+STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Út közvilágítással
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Fával szegélyezett út
 STR_LAI_ROAD_DESCRIPTION_ROAD_VEHICLE_DEPOT                     :Garázs
 STR_LAI_ROAD_DESCRIPTION_ROAD_RAIL_LEVEL_CROSSING               :Út/vasút kereszteződés
@@ -2854,7 +2854,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Biztosa
 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Üzenet egy járműgyártótól
-STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Most készültek el egy új {STRING} tervei - érdekelne a jármű egy éves kizárólagos használata, hogy megnézhessük a képességeit, mielőtt mindenki számára elérhetővé tesszük ?
+STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Most készültek el egy új {STRING} tervei - érdekelne a jármű egy éves kizárólagos használata, hogy megnézhessük a képességeit, mielőtt mindenki számára elérhetővé tesszük?
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :vasúti mozdony
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :közúti jármű
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :repülőgép
@@ -3126,7 +3126,7 @@ STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Az ért�
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Írd be az értéket amihez viszonyítani szeretnél
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Kihagy
-STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Jelenlegi úticél átugrása, és a következő aktiválása. CTRL + kattintásra a kiválasztott úticélra ugrik
+STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Jelenlegi úticél átugrása, és a következő aktiválása. CTRL+kattintásra a kiválasztott úticélra ugrik
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Töröl
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}A kijelölt célpont törlése
@@ -3252,7 +3252,7 @@ STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}MI beál
 STR_AI_DEBUG_RELOAD                                             :{BLACK}MI újratöltése
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}MI kilövése, szkript újratöltése, MI újraindítása
 
-STR_ERROR_NO_AI                                                 :{WHITE}Ezt az OpenTTD verziót MI támogatás nélkül fordították...
+STR_ERROR_NO_AI                                                 :{WHITE}Az OpenTTD MI támogatás nélül lett fordítva...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... nincs elérhető MI!
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Nincs MI, amit be lehetne tölteni.{}A jelenlegi MI nem fog semmit csinálni.{}MI-k letöltéséhez használd a főmenüből elérhető tartalomletöltő rendszert.
@@ -3324,7 +3324,7 @@ STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :A játékállá
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :A fájl nem olvasható
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :A fájl nem írható
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Adat integritás hiba
-STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}A játék olyan verzióban lett elmentve, ami nem támogatja a villamosokat . Az összes villamos törölve lett.
+STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}A játék olyan verzióban lett elmentve, ami nem támogatja a villamosokat. Az összes villamos törölve lett.
 
 # Map generation messages
 STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}A térkép generálása meghiúsult...{}...nincs városépítésre alkalmas hely
@@ -3372,7 +3372,7 @@ STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} �
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}A megvesztegetési kísérleted
 STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}lefülelte egy helyi nyomozó!
 
-# Leveling errors
+# Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Nem emelheted fel itt a földet...
 STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Nem süllyesztheted le itt a földet...
 STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Itt nem tudsz terepmagasságot változtatni...

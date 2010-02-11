@@ -1463,7 +1463,7 @@ STR_FACE_SIMPLE                                                 :{BLACK}Enkelt
 STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Enkelt ansiktsvalg.
 STR_FACE_LOAD                                                   :{BLACK}Last inn
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Last inn favorittansikt
-STR_FACE_LOAD_DONE                                              :{WHITE}Ditt favorittansikt har blitt lastet inn fra OpenTTDs konfigurasjonsfil.
+STR_FACE_LOAD_DONE                                              :{WHITE}Ditt favorittansikt har blitt lastet inn fra OpenTTDs konfigurasjonsfil
 STR_FACE_FACECODE                                               :{BLACK}Ansiktsnummer
 STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Vis og/eller endre spillerens ansiktsnummer
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}Vis og/eller endre ansiktsnummer
@@ -1471,7 +1471,7 @@ STR_FACE_FACECODE_SET                                           :{WHITE}Ny ansik
 STR_FACE_FACECODE_ERR                                           :{WHITE}Kunne ikke endre ansiktsnummer - må være numerisk mellom 0 og 4 294 967 295!
 STR_FACE_SAVE                                                   :{BLACK}Lagre
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Lagre favorittansikt
-STR_FACE_SAVE_DONE                                              :{WHITE}Dette ansiktet vil bli lagret som din favoritt i OpenTTDs konfigurasjonsfil.
+STR_FACE_SAVE_DONE                                              :{WHITE}Dette ansiktet vil bli lagret som din favoritt i OpenTTDs konfigurasjonsfil
 STR_FACE_EUROPEAN                                               :{BLACK}Europeisk
 STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Velg europeiske ansikter
 STR_FACE_AFRICAN                                                :{BLACK}Afrikansk
@@ -1533,7 +1533,7 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Klikk fo
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}SPILLOVERSIKT
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Klienter: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Språk: {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Brikkesett: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Landskap: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Kartstørrelse: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Tjenerversjon: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Tjeneradresse: {WHITE}{STRING}
@@ -3218,6 +3218,9 @@ STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Endre in
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Last inn AI på nytt
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Slå av AI, last skript på nytt, og start AI på nytt
 
+STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD er bygget uten støtte for AI...
+STR_ERROR_NO_AI_SUB                                             :{WHITE}... Ingen AIer tilgjengelige!
+
 STR_ERROR_AI_NO_AI_FOUND                                        :Ingen passende AI ble funnet.{}Denne AIen er en plassholder og vil ikke gjøre noe.{}Du kan laste ned flere AIer gjennom 'Online Content' systemet.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}En av AIene krasjet. Vennligst rapporter dette til forfatteren av AIen med en skjermdump av AI-feilsøkingsvinduet.
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI-feilsøkingsvindu er kun tilgjengelig for tjeneren
@@ -3335,7 +3338,7 @@ STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN}s 
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}Ditt forsøk på bestikkelse har blitt
 STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}oppdaget av en regional inspektør
 
-# Leveling errors
+# Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Kan ikke heve land her...
 STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Kan ikke senke land her...
 STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Kan ikke jevne ut land her...
