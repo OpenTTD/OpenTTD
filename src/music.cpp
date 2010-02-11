@@ -56,17 +56,6 @@ template <class Tbase_set>
 	return BaseMedia<Tbase_set>::used_set != NULL;
 }
 
-/**
- * Try to read a single piece of metadata and return false if it doesn't exist.
- * @param name the name of the item to fetch.
- */
-#define fetch_name(name) \
-	item = metadata->GetItem(name, false); \
-	if (item == NULL || strlen(item->value) == 0) { \
-		DEBUG(grf, 0, "Base " SET_TYPE "set detail loading: %s field missing", name); \
-		return false; \
-	}
-
 bool MusicSet::FillSetDetails(IniFile *ini, const char *path)
 {
 	bool ret = this->BaseSet<MusicSet, NUM_SONGS_AVAILABLE, GM_DIR>::FillSetDetails(ini, path);
@@ -81,7 +70,7 @@ bool MusicSet::FillSetDetails(IniFile *ini, const char *path)
 			}
 
 			IniItem *item = names->GetItem(filename, false);
-			if (item == NULL || strlen(item->value) == 0) {
+			if (item == NULL || StrEmpty(item->value)) {
 				DEBUG(grf, 0, "Base music set song name missing: %s", filename);
 				return false;
 			}

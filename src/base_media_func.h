@@ -24,7 +24,7 @@ template <class Tbase_set> /* static */ Tbase_set *BaseMedia<Tbase_set>::availab
  */
 #define fetch_metadata(name) \
 	item = metadata->GetItem(name, false); \
-	if (item == NULL || strlen(item->value) == 0) { \
+	if (item == NULL || StrEmpty(item->value)) { \
 		DEBUG(grf, 0, "Base " SET_TYPE "set detail loading: %s field missing", name); \
 		return false; \
 	}
