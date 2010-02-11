@@ -32,7 +32,7 @@ void MusicDriver_BeMidi::Stop()
 
 void MusicDriver_BeMidi::PlaySong(const char *filename)
 {
-	bemidi_stop();
+	this->Stop();
 	entry_ref midiRef;
 	get_ref_for_path(filename, &midiRef);
 	midiSynthFile.LoadFile(&midiRef);
