@@ -131,7 +131,7 @@ static void ShowNewGRFInfo(const GRFConfig *c, uint x, uint y, uint right, uint 
 	if (HasBit(c->flags, GCF_COMPATIBLE)) y = DrawStringMultiLine(x, right, y, bottom, STR_NEWGRF_COMPATIBLE_LOADED);
 
 	/* Draw GRF info if it exists */
-	if (c->info != NULL && !StrEmpty(c->info)) {
+	if (!StrEmpty(c->info)) {
 		SetDParam(0, STR_JUST_RAW_STRING);
 		SetDParamStr(1, c->info);
 		y = DrawStringMultiLine(x, right, y, bottom, STR_BLACK_STRING);
@@ -326,7 +326,7 @@ public:
 				{
 					const GRFConfig *c = this->grfs[i];
 					bool h = c == this->sel;
-					const char *text = (c->name != NULL && !StrEmpty(c->name)) ? c->name : c->filename;
+					const char *text = (!StrEmpty(c->name)) ? c->name : c->filename;
 
 					/* Draw selection background */
 					if (h) GfxFillRect(r.left + 1, y, r.right - 1, y + this->resize.step_height - 1, 156);
@@ -657,7 +657,7 @@ struct NewGRFWindow : public Window {
 				int i = 0;
 				for (const GRFConfig *c = this->list; c != NULL; c = c->next, i++) {
 					if (this->vscroll.IsVisible(i)) {
-						const char *text = (c->name != NULL && !StrEmpty(c->name)) ? c->name : c->filename;
+						const char *text = (!StrEmpty(c->name)) ? c->name : c->filename;
 						PaletteID pal;
 
 						/* Pick a colour */

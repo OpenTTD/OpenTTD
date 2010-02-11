@@ -190,7 +190,7 @@ DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_GET_NEWGRFS)
 		 * the current list and do not send the other data.
 		 * The name could be an empty string, if so take the filename. */
 		packet_len += sizeof(c.grfid) + sizeof(c.md5sum) +
-				min(strlen((f->name != NULL && !StrEmpty(f->name)) ? f->name : f->filename) + 1, (size_t)NETWORK_GRF_NAME_LENGTH);
+				min(strlen((!StrEmpty(f->name)) ? f->name : f->filename) + 1, (size_t)NETWORK_GRF_NAME_LENGTH);
 		if (packet_len > SEND_MTU - 4) { // 4 is 3 byte header + grf count in reply
 			break;
 		}
@@ -206,8 +206,7 @@ DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_GET_NEWGRFS)
 		char name[NETWORK_GRF_NAME_LENGTH];
 
 		/* The name could be an empty string, if so take the filename */
-		strecpy(name, (in_reply[i]->name != NULL && !StrEmpty(in_reply[i]->name)) ?
-				in_reply[i]->name : in_reply[i]->filename, lastof(name));
+		strecpy(name, (!StrEmpty(in_reply[i]->name)) ? in_reply[i]->name : in_reply[i]->filename, lastof(name));
 		this->Send_GRFIdentifier(&packet, in_reply[i]);
 		packet.Send_string(name);
 	}

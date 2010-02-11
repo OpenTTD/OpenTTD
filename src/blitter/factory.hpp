@@ -106,7 +106,7 @@ public:
 				delete *GetActiveBlitter();
 				*GetActiveBlitter() = newb;
 
-				DEBUG(driver, 1, "Successfully %s blitter '%s'",StrEmpty(name) ? "probed" : "loaded", bname);
+				DEBUG(driver, 1, "Successfully %s blitter '%s'", StrEmpty(name) ? "probed" : "loaded", bname);
 				return newb;
 			}
 		}
