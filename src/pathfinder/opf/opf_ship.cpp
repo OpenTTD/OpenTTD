@@ -7,7 +7,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file pathfind.cpp Implementation of the oldest supported pathfinder. */
+/** @file opf_ship.cpp Implementation of the oldest supported ship pathfinder. */
 
 #include "../../stdafx.h"
 #include "../../tunnelbridge_map.h"

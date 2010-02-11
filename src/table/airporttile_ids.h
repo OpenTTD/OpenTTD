@@ -7,7 +7,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file airporttile_id.h Enum of the default airport tiles. */
+/** @file airporttile_ids.h Enum of the default airport tiles. */
 
 #ifndef AIRPORTTILE_IDS_H
 #define AIRPORTTILE_IDS_H
