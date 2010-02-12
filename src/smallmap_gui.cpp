@@ -557,15 +557,16 @@ class SmallMapWindow : public Window {
 	/**
 	 * Determine the tile relative to the base tile of the smallmap, and the pixel position at
 	 * that tile for a point in the smallmap.
-	 * @param px Horizontal coordinate of the pixel.
-	 * @param py Vertical coordinate of the pixel.
+	 * @param px       Horizontal coordinate of the pixel.
+	 * @param py       Vertical coordinate of the pixel.
 	 * @param sub[out] Pixel position at the tile (0..3).
+	 * @param add_sub  Add current #subscroll to the position.
 	 * @return Tile being displayed at the given position relative to #scroll_x and #scroll_y.
 	 * @note The #subscroll offset is already accounted for.
 	 */
-	FORCEINLINE Point PixelToTile(int px, int py, int *sub) const
+	FORCEINLINE Point PixelToTile(int px, int py, int *sub, bool add_sub = true) const
 	{
-		px += this->subscroll;  // Total horizontal offset.
+		if (add_sub) px += this->subscroll;  // Total horizontal offset.
 
 		/* For each two rows down, add a x and a y tile, and
 		 * For each four pixels to the right, move a tile to the right. */
@@ -584,6 +585,37 @@ class SmallMapWindow : public Window {
 
 		*sub = px;
 		return pt;
+	}
+
+	/**
+	 * Compute base parameters of the smallmap such that tile (\a tx, \a ty) starts at pixel (\a x, \a y).
+	 * @param tx        Tile x coordinate.
+	 * @param ty        Tile y coordinate.
+	 * @param x         Non-negative horizontal position in the display where the tile starts.
+	 * @param y         Non-negative vertical position in the display where the tile starts.
+	 * @param sub [out] Value of #subscroll needed.
+	 * @return #scroll_x, #scroll_y values.
+	 */
+	Point ComputeScroll(int tx, int ty, int x, int y, int *sub)
+	{
+		assert(x >= 0 && y >= 0);
+
+		int new_sub;
+		Point tile_xy = PixelToTile(x, y, &new_sub, false);
+		tx -= tile_xy.x;
+		ty -= tile_xy.y;
+
+		Point scroll;
+		if (new_sub == 0) {
+			*sub = 0;
+			scroll.x = (tx + this->zoom) * TILE_SIZE;
+			scroll.y = (ty - this->zoom) * TILE_SIZE;
+		} else {
+			*sub = 4 - new_sub;
+			scroll.x = (tx + 2 * this->zoom) * TILE_SIZE;
+			scroll.y = (ty - 2 * this->zoom) * TILE_SIZE;
+		}
+		return scroll;
 	}
 
 	/** Initialize or change the zoom level.
@@ -1287,9 +1319,8 @@ public:
 
 		int sub;
 		const NWidgetBase *wid = this->GetWidget<NWidgetBase>(SM_WIDGET_MAP);
-		Point tile = this->PixelToTile(wid->current_x / 2, wid->current_y / 2, &sub);
-
-		this->SetNewScroll(pt.x - tile.x * TILE_SIZE, pt.y - tile.y * TILE_SIZE, sub);
+		Point sxy = this->ComputeScroll(pt.x / TILE_SIZE, pt.y / TILE_SIZE, max(0, (int)wid->current_x / 2 - 2), wid->current_y / 2, &sub);
+		this->SetNewScroll(sxy.x, sxy.y, sub);
 		this->SetDirty();
 	}
 };
