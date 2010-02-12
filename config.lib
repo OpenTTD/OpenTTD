@@ -1150,8 +1150,8 @@ make_compiler_cflags() {
 		# Enable some things only for certain GCC versions
 		cc_version=`$1 -dumpversion | cut -c 1,3`
 
-		if [ $cc_version -lt 32 ]; then
-			log 1 "configure: error: gcc older than 3.2 can't compile OpenTTD because of its poor template support"
+		if [ $cc_version -lt 33 ]; then
+			log 1 "configure: error: gcc older than 3.3 can't compile OpenTTD because of its poor template support"
 			exit 1
 		fi
 
