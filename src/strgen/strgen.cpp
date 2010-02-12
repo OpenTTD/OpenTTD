@@ -138,9 +138,9 @@ static LangString *HashFind(const char *s)
 }
 
 #ifdef _MSC_VER
-# define LINE_NUM_FMT "(%d)"
+# define LINE_NUM_FMT(s) "%s (%d): warning: %s (" s ")\n"
 #else
-# define LINE_NUM_FMT ":%d"
+# define LINE_NUM_FMT(s) "%s: :%d: " s ": %s\n"
 #endif
 
 static void CDECL strgen_warning(const char *s, ...) WARN_FORMAT(1, 2);
@@ -152,7 +152,7 @@ static void CDECL strgen_warning(const char *s, ...)
 	va_start(va, s);
 	vsnprintf(buf, lengthof(buf), s, va);
 	va_end(va);
-	fprintf(stderr, "%s" LINE_NUM_FMT ": warning: %s\n", _file, _cur_line, buf);
+	fprintf(stderr, LINE_NUM_FMT("warning"), _file, _cur_line, buf);
 	_warnings++;
 }
 
@@ -165,7 +165,7 @@ static void CDECL strgen_error(const char *s, ...)
 	va_start(va, s);
 	vsnprintf(buf, lengthof(buf), s, va);
 	va_end(va);
-	fprintf(stderr, "%s" LINE_NUM_FMT ": error: %s\n", _file, _cur_line, buf);
+	fprintf(stderr, LINE_NUM_FMT("error"), _file, _cur_line, buf);
 	_errors++;
 }
 
@@ -176,7 +176,10 @@ void NORETURN CDECL error(const char *s, ...)
 	va_start(va, s);
 	vsnprintf(buf, lengthof(buf), s, va);
 	va_end(va);
-	fprintf(stderr, "%s" LINE_NUM_FMT ": FATAL: %s\n", _file, _cur_line, buf);
+	fprintf(stderr, LINE_NUM_FMT("FATAL"), _file, _cur_line, buf);
+#ifdef _MSC_VER
+	fprintf(stderr, LINE_NUM_FMT("warning"), _file, _cur_line, "language is not compiled");
+#endif
 	/* We were writing output to a file, remove it. */
 	if (_output_file != NULL) {
 		fclose(_output_file);
