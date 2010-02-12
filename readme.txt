@@ -18,6 +18,7 @@ Table of Contents:
 6.0) Configuration File
 7.0) Compiling
  * 7.1) Required/optional libraries
+ * 7.2) Supported compilers
 8.0) Translating
  * 8.1 Translation
  * 8.2 Previewing
@@ -423,6 +424,23 @@ OpenTTD does not require any of the libraries to be present, but without
 zlib you cannot open most savegames or use the content downloading system.
 Without libSDL/liballegro on non-Windows and non-MacOS X machines you have
 no graphical user interface; you would be building a dedicated server.
+
+7.2) Supported compilers:
+---- -------------------
+The following compilers are known to compile OpenTTD:
+  - Microsoft Visual C++ (MSVC) 2005 and 2008.
+    Version 2005 gives bogus warnings about scoping issues.
+  - GNU Compiler Collection (GCC) 3.3 - 4.5.
+    Versions 4.1 and earlier give bogus warnings about uninitialised variables.
+    Versions 4.4 and later give bogus warnings about freeing heap objects.
+  - Intel C++ Compiler (ICC) 11.0 and 11.1.
+
+The following compilers are known not to compile OpenTTD:
+  - Microsoft Visual C++ (MSVC) 2003 and earlier.
+  - GNU Compiler Collection (GCC) 3.2 and earlier.
+  - (Open) Watcom.
+
+If any of these compilers can compile OpenTTD again, please let us know.
 
 8.0) Translating:
 ---- -------------------
