@@ -89,8 +89,7 @@ FILE_PATTERNS          = *.c \
                          *.cpp \
                          *.c++ \
                          *.h \
-                         *.hpp \
-                         table/*.h
+                         *.hpp
 RECURSIVE              = YES
 EXCLUDE                =
 EXCLUDE_SYMLINKS       = NO
@@ -196,8 +195,8 @@ EXPAND_ONLY_PREDEF     = YES
 SEARCH_INCLUDES        = YES
 INCLUDE_PATH           =
 INCLUDE_FILE_PATTERNS  =
-PREDEFINED             = ENABLE_NETWORK ENABLE_AI
-EXPAND_AS_DEFINED      = DEF_COMMAND
+PREDEFINED             = ENABLE_NETWORK ENABLE_AI WITH_ZLIB WITH_LZO WITH_PNG WITH_FONTCONFIG WITH_FREETYPE WITH_ICU UNICODE _UNICODE
+EXPAND_AS_DEFINED      =
 SKIP_FUNCTION_MACROS   = YES
 #---------------------------------------------------------------------------
 # Configuration::additions related to external references
