@@ -1113,6 +1113,7 @@ public:
 				const NWidgetBase *wid = this->GetWidget<NWidgetBase>(SM_WIDGET_MAP);
 				Point pt = {wid->current_x / 2, wid->current_y / 2};
 				this->SetZoomLevel((widget == SM_WIDGET_ZOOM_IN) ? ZLC_ZOOM_IN : ZLC_ZOOM_OUT, &pt);
+				SndPlayFx(SND_15_BEEP);
 				break;
 			}
 
