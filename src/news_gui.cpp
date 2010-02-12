@@ -723,8 +723,6 @@ static void DeleteNewsItem(NewsItem *ni)
 		_latest_news = ni->prev;
 	}
 
-	free(ni->free_data);
-
 	if (_current_news == ni) _current_news = ni->prev;
 	_total_news--;
 	delete ni;

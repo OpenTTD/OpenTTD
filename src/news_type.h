@@ -144,6 +144,11 @@ struct NewsItem {
 
 	void *free_data;             ///< Data to be freed when the news item has reached its end.
 
+	~NewsItem()
+	{
+		free(this->free_data);
+	}
+
 	uint64 params[10];
 };
 
