@@ -271,7 +271,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Preimenu
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Zapri okno
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Naslov okna - primi in vleci za premik okna
-STR_TOOLTIP_SHADE                                               :{BLACK}Senči okno - Samo naslov
+STR_TOOLTIP_SHADE                                               :{BLACK}Senči okno - pokaži samo naslov
 STR_TOOLTIP_STICKY                                              :{BLACK}Označi to okno za nezapirljivo z 'Zapri vsa okna' tipko
 STR_TOOLTIP_RESIZE                                              :{BLACK}Klikni in vleci to, da zmanjšaš okno
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Preklopi veliko/majhno velikost okna
@@ -730,7 +730,7 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLAC
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}Sneg
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Vključi/izključi imena mest na zemljevidu
-STR_SMALLMAP_CENTER                                             :{BLACK}Centrira majhen zemljevid na trenutno točko
+STR_SMALLMAP_CENTER                                             :{BLACK}Centrira majhen zemljevid na trenutno lokacijo
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Onemogoči vse
@@ -1505,7 +1505,7 @@ STR_FACE_SIMPLE                                                 :{BLACK}Enostavn
 STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Enostavna izbira obraza.
 STR_FACE_LOAD                                                   :{BLACK}Naloži
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Naloži piljubljen obraz
-STR_FACE_LOAD_DONE                                              :{WHITE}Tvoj priljubljen obraz je bil naložen iz OpenTTD konfiguracije.
+STR_FACE_LOAD_DONE                                              :{WHITE}Tvoj priljubljen obraz je bil naložen iz OpenTTD konfiguracije
 STR_FACE_FACECODE                                               :{BLACK}Obraz igralca št.
 STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Prikaži in/ali nastavi številko obraza igralca
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}Prikaži in/ali nastavi številko obraza igralca
@@ -1513,7 +1513,7 @@ STR_FACE_FACECODE_SET                                           :{WHITE}Nova kod
 STR_FACE_FACECODE_ERR                                           :{WHITE}Nemogoča nastavitev številke obraza igralca - izbor mogoč med 0 in 4,294,967,295!
 STR_FACE_SAVE                                                   :{BLACK}Shrani
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Shrani priljubljen obraz
-STR_FACE_SAVE_DONE                                              :{WHITE}Ta obraz bo shranjen kot tvoj priljubljen v konfiguracijo OpenTTD.
+STR_FACE_SAVE_DONE                                              :{WHITE}Ta obraz bo shranjen kot tvoj priljubljen v konfiguracijo OpenTTD
 STR_FACE_EUROPEAN                                               :{BLACK}Evropski
 STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Izbor evropskih obrazov
 STR_FACE_AFRICAN                                                :{BLACK}Afriški
@@ -1575,7 +1575,7 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Klikni z
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}IGRA - INFO
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Gosti: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Jezik: {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Nabor ploščic: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Pokrajina: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Velikost ozemlja: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Različica strežnika: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Naslov strežnika: {WHITE}{STRING}
@@ -3260,7 +3260,7 @@ STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Spremeni
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Ponovno naloži UI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Uniči UI, ponovno naloži skripto in ponovno zaženi UI
 
-STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD je zgrajen brez UI podpore...
+STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD je zgrajen brez podpore za UI...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... ni nobene UI na voljo!
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Ni na voljo nobene uporabne UI.{}Ta UI je navidezen in ne bo storil ničesar. UI so na voljo preko 'Prenosa vsebin'.
@@ -3380,7 +3380,7 @@ STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :Lokalne oblasti
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}Tvoj poskus podkupovanja je bil
 STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}odkrit s strani regionalnih preiskovalcev
 
-# Leveling errors
+# Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Tukaj ni možen dvig terena...
 STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Tukaj ni možno nižanje terena...
 STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Tukaj ni mogoče izravnati zemlje...

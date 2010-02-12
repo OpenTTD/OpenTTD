@@ -1627,9 +1627,9 @@ STR_FACE_SAVE                                                   :{BLACK}Сохр
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Сохранить внешность
 STR_FACE_SAVE_DONE                                              :{WHITE}Внешность сохранена в файле конфигурации.
 STR_FACE_EUROPEAN                                               :{BLACK}Европ.
-STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Выбор европеоидного типа лица
+STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Выбрать европеоидный тип лица
 STR_FACE_AFRICAN                                                :{BLACK}Африк.
-STR_FACE_SELECT_AFRICAN                                         :{BLACK}Выбор африканского типа лица
+STR_FACE_SELECT_AFRICAN                                         :{BLACK}Выбрать африканский тип лица
 STR_FACE_YES                                                    :Да
 STR_FACE_NO                                                     :Нет
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Включить усы или серьги
@@ -1687,7 +1687,7 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Нажм
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}ИНФОРМАЦИЯ ОБ ИГРЕ
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Клиенты: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Язык: {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Климат: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Ландшафт: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Размер карты: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Версия сервера: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Адрес сервера: {WHITE}{STRING}
@@ -1963,7 +1963,7 @@ STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Буд�
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Этот модуль зависит от другого и будет загружен
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Уже установлен
 STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Этот модуль неизвестен и не может быть загружен в OpenTTD
-STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Он заменит уже имеющ{G ий ую ее ие}ся {STRING.acc}
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Это замена имеющ{G его ей его их}ся {STRING.gen}
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}Наименование: {WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Версия: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Описание: {WHITE}{STRING}
@@ -1978,19 +1978,29 @@ STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}...за�
 
 # Order of these is important!
 STR_CONTENT_TYPE_BASE_GRAPHICS                                  :{G=f}Базовая графика
+STR_CONTENT_TYPE_BASE_GRAPHICS.gen                              :{G=m}набора базовой графики
 STR_CONTENT_TYPE_BASE_GRAPHICS.acc                              :{G=m}набор базовой графики
 STR_CONTENT_TYPE_NEWGRF                                         :{G=m}NewGRF
+STR_CONTENT_TYPE_NEWGRF.gen                                     :{G=m}NewGRF
 STR_CONTENT_TYPE_NEWGRF.acc                                     :{G=m}NewGRF
 STR_CONTENT_TYPE_AI                                             :{G=m}ИИ
+STR_CONTENT_TYPE_AI.gen                                         :{G=m}ИИ
 STR_CONTENT_TYPE_AI.acc                                         :{G=m}ИИ
 STR_CONTENT_TYPE_AI_LIBRARY                                     :{G=f}Библиотека ИИ
+STR_CONTENT_TYPE_AI_LIBRARY.gen                                 :{G=f}библиотеки ИИ
 STR_CONTENT_TYPE_AI_LIBRARY.acc                                 :{G=f}библиотеку ИИ
 STR_CONTENT_TYPE_SCENARIO                                       :{G=m}Сценарий
+STR_CONTENT_TYPE_SCENARIO.gen                                   :{G=m}сценария
 STR_CONTENT_TYPE_SCENARIO.acc                                   :{G=m}сценарий
 STR_CONTENT_TYPE_HEIGHTMAP                                      :{G=f}Карта высот
+STR_CONTENT_TYPE_HEIGHTMAP.gen                                  :{G=f}карты высот
 STR_CONTENT_TYPE_HEIGHTMAP.acc                                  :{G=f}карту высот
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Основные звуки
-STR_CONTENT_TYPE_BASE_MUSIC                                     :Музыка
+STR_CONTENT_TYPE_BASE_SOUNDS.gen                                :{G=m}набора базовых звуков
+STR_CONTENT_TYPE_BASE_SOUNDS.acc                                :{G=m}набор базовых звуков
+STR_CONTENT_TYPE_BASE_MUSIC                                     :{G=f}Музыка
+STR_CONTENT_TYPE_BASE_MUSIC.gen                                 :{G=f}музыки
+STR_CONTENT_TYPE_BASE_MUSIC.acc                                 :{G=f}музыку
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Загрузка контента...
@@ -2696,7 +2706,7 @@ STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Строительство
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Новая техника
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Обслуживание ж/д
-STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Обслуживание авто
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Обслуживание автомобилей
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Обслуж. авиатранспорта
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Обслуж. кораблей
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Обслуж. собственности
@@ -3388,6 +3398,9 @@ STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Изме
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Перезагрузить ИИ
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Удалить ИИ, перезагрузить скрипт и перезапустить ИИ
 
+STR_ERROR_NO_AI                                                 :{WHITE}Поддержка ИИ отключена в этой сборке OpenTTD...
+STR_ERROR_NO_AI_SUB                                             :{WHITE}... отсутствуют модули ИИ!
+
 STR_ERROR_AI_NO_AI_FOUND                                        :Не найдено подходящих модулей ИИ,{}поэтому конкуренты ничего делать не будут.{}Модули ИИ можно скачать через систему онлайн-контента.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Один из запущенных ИИ выполнил недопустимую операцию и был закрыт. Пожалуйста, сообщите об этом автору ИИ, приложив скриншот окна отладки.
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Окно отладки ИИ доступно только для сервера
@@ -3505,7 +3518,7 @@ STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}Адми
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}Ваша попытка дать взятку была
 STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}обнаружена региональным следователем
 
-# Leveling errors
+# Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Здесь невозможно повысить уровень земли...
 STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Здесь невозможно понизить уровень земли...
 STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Здесь нельзя выровнять землю...

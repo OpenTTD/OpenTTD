@@ -230,7 +230,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Reanomen
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Tanca la finestra
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Títol de la finestra - arrossega això per moure la finestra
-STR_TOOLTIP_SHADE                                               :{BLACK}Ombra de la finestra - Mostra només la barra de títol
+STR_TOOLTIP_SHADE                                               :{BLACK}Ombra de la finestra - mostra només la barra de títol
 STR_TOOLTIP_STICKY                                              :{BLACK}Marca aquesta finestra com a no eliminable pel 'Tanca totes les Finestres'
 STR_TOOLTIP_RESIZE                                              :{BLACK}Prem i arrossega per canviar la mida de la finestra
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Intercanvia mida gran/petita de finestra
@@ -689,7 +689,7 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLAC
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}Neu
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Activa/desactiva noms de poblacions al mapa
-STR_SMALLMAP_CENTER                                             :{BLACK}Centrar el mapa petit a la posició actual
+STR_SMALLMAP_CENTER                                             :{BLACK}Centra el mapa petit a la posició actual
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Desactiva tots
@@ -1166,6 +1166,10 @@ STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Una o m�
 STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Màx extensió de les estacions: {ORANGE}{STRING}{RED}Avís: Un valor alt alenteix el joc
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Revisions automàtiques dels helicòpters als heliports: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Enllaça la barra d'eines del paisatge a les barres d'eines de vies/carreteres/aigua/aeroports {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Color del terra utilitzat al mapa petit: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Verd
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Verd fosc
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violat
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}En desplaçar la pantalla amb el ratolí mou la vista en la direcció contrària: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}Desplaçament suau de la vista: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}Mostra un cartell de mesura quan estiguis utilitzant vàries eines de construcció: {ORANGE}{STRING}
@@ -1460,7 +1464,7 @@ STR_FACE_SIMPLE                                                 :{BLACK}Simple
 STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Selecció de cara simple.
 STR_FACE_LOAD                                                   :{BLACK}Carrega
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Carrega la cara preferida
-STR_FACE_LOAD_DONE                                              :{WHITE}La teva cara preferida ha estat carregada des de l'arxiu de configuració d'OpenTTD.
+STR_FACE_LOAD_DONE                                              :{WHITE}La teva cara preferida ha estat carregada des de l'arxiu de configuració d'OpenTTD
 STR_FACE_FACECODE                                               :{BLACK}Cara jugador nu.
 STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Veure i/o assigna la cara del jugador número
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}Veure i/o assigna la cara del jugador número
@@ -1468,7 +1472,7 @@ STR_FACE_FACECODE_SET                                           :{WHITE}El núme
 STR_FACE_FACECODE_ERR                                           :{WHITE}No s'ha pogut assignar el número de cara del jugador - ha de ser un nombre entre 0 i 4,294,967,295!
 STR_FACE_SAVE                                                   :{BLACK}Desa
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Desa la cara preferida
-STR_FACE_SAVE_DONE                                              :{WHITE}Aquesta cara serà desada com a preferida a l'arxiu de configuració d'OpenTTD.
+STR_FACE_SAVE_DONE                                              :{WHITE}Aquesta cara serà desada com la preferida a l'arxiu de configuració d'OpenTTD.
 STR_FACE_EUROPEAN                                               :{BLACK}Europea
 STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Selecciona cares europees
 STR_FACE_AFRICAN                                                :{BLACK}Africana
@@ -1481,7 +1485,7 @@ STR_FACE_HAIR_TOOLTIP                                           :{BLACK}Canvia e
 STR_FACE_EYEBROWS                                               :Celles
 STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}Canvia les celles
 STR_FACE_EYECOLOUR                                              :Color dels ulls:
-STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Canvia el color del ulls:
+STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Canvia el color dels ulls
 STR_FACE_GLASSES                                                :Ulleres:
 STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}Activa les ulleres
 STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}Canvia les ulleres
@@ -1530,7 +1534,7 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Clica pe
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}INFORMACIÓ DEL JOC
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Clients: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Idioma: {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Grup de cel·les: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Escenari: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Mida del mapa: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Versió del servidor: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Adreça del servidor: {WHITE}{STRING}
@@ -1936,7 +1940,7 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Incremen
 # Bridge selection window
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Selecciona pont per la via
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Selecciona un Pont per Carretera
-STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Selecció de pont - clica al pont triat per construir-lo
+STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Selecció de pont - clica sobre el pont triat per construir-lo
 STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Suspensió, Acer
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Biga, Acer
@@ -3215,6 +3219,9 @@ STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Canvia e
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Recarrega IA
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Mata la IA, recarrega l'script, i reinicia la IA
 
+STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD està compilat sense suport IA...
+STR_ERROR_NO_AI_SUB                                             :{WHITE}... no hi ha IAs disponibles!
+
 STR_ERROR_AI_NO_AI_FOUND                                        :No s'ha trobat una IA adequada per carregar.{}Aquesta IA és una IA falsa i no farà res.{}Pots descarregar diverses IAs via el sistema de "Contingut en línia".
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Una de les IAs s'ha penjat. Si us plau reporta això a l'autor de la IA amb una captura de pantalla de la finestra de depuració IA.
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}La finestra de depuració IA només està disponible pel servidor
@@ -3332,7 +3339,7 @@ STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}L'autori
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}El teu intent de suborn ha estat
 STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}descobert per un investigador regional
 
-# Leveling errors
+# Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Aquí no es pot elevar el terreny...
 STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Aquí no es pot rebaixar el terreny...
 STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Aquí no es pot anivellar...

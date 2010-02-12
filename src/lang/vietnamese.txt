@@ -40,7 +40,7 @@ STR_CARGO_PLURAL_STEEL                                          :Thép
 STR_CARGO_PLURAL_VALUABLES                                      :Đồ quý giá
 STR_CARGO_PLURAL_COPPER_ORE                                     :Quặng đồng
 STR_CARGO_PLURAL_MAIZE                                          :Ngô
-STR_CARGO_PLURAL_FRUIT                                          :Trái cây
+STR_CARGO_PLURAL_FRUIT                                          :Hoa quả
 STR_CARGO_PLURAL_DIAMONDS                                       :Kim cương
 STR_CARGO_PLURAL_FOOD                                           :Thực phẩm
 STR_CARGO_PLURAL_PAPER                                          :Giấy
@@ -74,7 +74,7 @@ STR_CARGO_SINGULAR_STEEL                                        :Thép
 STR_CARGO_SINGULAR_VALUABLES                                    :Đồ quý giá
 STR_CARGO_SINGULAR_COPPER_ORE                                   :Quặng đồng
 STR_CARGO_SINGULAR_MAIZE                                        :Ngô
-STR_CARGO_SINGULAR_FRUIT                                        :Trái cây
+STR_CARGO_SINGULAR_FRUIT                                        :Hoa quả
 STR_CARGO_SINGULAR_DIAMOND                                      :Kim cương
 STR_CARGO_SINGULAR_FOOD                                         :Thực phẩm
 STR_CARGO_SINGULAR_PAPER                                        :Giấy
@@ -229,7 +229,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Đổi t
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Đóng cửa sổ
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Tiêu đề cửa sổ - kéo nó để di chuyển cửa số
-STR_TOOLTIP_SHADE                                               :{BLACK}Che cửa sổ - Chỉ hiển thị thanh tiêu đề
+STR_TOOLTIP_SHADE                                               :{BLACK}Thu gọn cửa sổ - Chỉ hiển thị thanh tiêu đề
 STR_TOOLTIP_STICKY                                              :{BLACK}Đánh dấu không-thể-đóng khi bấm nút "Đóng Tất Cả Cửa Sổ"
 STR_TOOLTIP_RESIZE                                              :{BLACK}Click và kéo để thay đổi kích thước cửa sổ
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Bật kích cỡ cửa sổ lớn/nhỏ
@@ -404,12 +404,12 @@ STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Công trình t�
 ############ range ends here
 
 ############ range for road construction menu starts
-STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Công trình đường sá
+STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Công trình đường ôtô
 STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Công trình ô tô điện
 ############ range ends here
 
 ############ range for waterways construction menu starts
-STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Công trình đường sông
+STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Công trình đường thuỷ
 ############ range ends here
 
 ############ range for airport construction menu starts
@@ -688,7 +688,7 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLAC
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}Tuyết
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Bật/tắt tên thị trấn trên bản đồ
-STR_SMALLMAP_CENTER                                             :{BLACK}Căn giữa bản đồ nhỏ ở vị trí hiện tại
+STR_SMALLMAP_CENTER                                             :{BLACK}Xem bản đồ nhỏ này ở cửa sổ lớn
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Tắt tất cả
@@ -736,13 +736,13 @@ STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Thay đ
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Tiền trợ cấp
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Thông tin chung
 
-STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIGFONT}{BLACK}Người dân chào đón . . .{}Tàu hoả đầu tiên đến ga {STATION}!
-STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIGFONT}{BLACK}Người dân chào đón . . .{}Xe bus đầu tiên đến trạm {STATION}!
-STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIGFONT}{BLACK}Người dân chào đón . . .{}Xe tải đầu tiên đến trạm {STATION}!
-STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIGFONT}{BLACK}Người dân chào đón . . .{}Xe điện chở khách đầu tiên đến trạm {STATION}!
-STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIGFONT}{BLACK}Người dân chào đón . . .{}Xe tải điện đầu tiên đến trạm {STATION}!
-STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIGFONT}{BLACK}Người dân chào đón . . .{}Tàu thủy đầu tiên đến trạm {STATION}!
-STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIGFONT}{BLACK}Người dân chào đón . . .{}Máy bay đầu tiên đến trạm {STATION}!
+STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIGFONT}{BLACK}Người dân chào đón . . .{}Tàu hoả đầu tiên đến {STATION}!
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIGFONT}{BLACK}Người dân chào đón . . .{}Xe bus đầu tiên đến {STATION}!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIGFONT}{BLACK}Người dân chào đón . . .{}Xe tải đầu tiên đến {STATION}!
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIGFONT}{BLACK}Người dân chào đón . . .{}Xe điện chở khách đầu tiên đến {STATION}!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIGFONT}{BLACK}Người dân chào đón . . .{}Xe tải điện đầu tiên đến {STATION}!
+STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIGFONT}{BLACK}Người dân chào đón . . .{}Tàu thủy đầu tiên đến {STATION}!
+STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIGFONT}{BLACK}Người dân chào đón . . .{}Máy bay đầu tiên đến {STATION}!
 
 STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK}Tàu hoả bị đụng nhau!{}{COMMA} người chết sau tai nạn đáng tiếc này
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}Ôtô bị tàu hoả đụng!{}Người lái xe đã tử nạn sau tai nạn này.
@@ -824,7 +824,7 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} đã chấp nhận {STRING} và {STRING}
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Lời đề nghị trợ cấp đã hết hạn:{}{}{STRING} từ {STRING} đến {STRING} bây giờ sẽ không có trợ cấp.
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Đã rút khỏi trợ cấp:{}{}{STRING} kinh doanh từ {STRING} đến {STRING} sẽ không còn trợ cấp nữa.
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Trợ cấp đã hết:{}{}Dịch vụ vận chuyển {STRING} từ {STRING} đến {STRING} sẽ không được trợ cấp nữa.
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Đề nghị trợ cấp:{}{}Dịch vụ vận tải {STRING} đầu tiên từ {STRING} đến {STRING} sẽ nhận được tiền trợ cấp trong một năm của chính quyền địa phương!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Trợ cấp dịch vụ được trao cho {STRING}!{}{}Dịch vụ {STRING} từ {STRING} đến {STRING} sẽ thu lợi cao hơn 50% đến năm sau!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Trợ cấp dịch vụ được trao cho {STRING}!{}{}Dịch vụ {STRING} từ {STRING} đến {STRING} sẽ thu lợi gấp đôi đến năm sau!
@@ -1809,7 +1809,7 @@ STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Bạn �
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Cái này phụ thuộc, cần phải chọn để tải về
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Bạn đã có cái này rồi
 STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Nội dung này không có và không thể tải về trong OpenTTD
-STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Cái này they thế cái đã có {STRING}
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Cái này thay thế cái đã có {STRING}
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}Tên: {WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Phiên bản: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Mô tả: {WHITE}{STRING}
@@ -2159,7 +2159,7 @@ STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Đường ray c
 STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Xưởng tàu hoả
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Đường bộ
-STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Đường bộ có đèn
+STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Đường phố có đèn
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Đường bộ có trồng cây
 STR_LAI_ROAD_DESCRIPTION_ROAD_VEHICLE_DEPOT                     :Xưởng ôtô
 STR_LAI_ROAD_DESCRIPTION_ROAD_RAIL_LEVEL_CROSSING               :Đường bộ/đường tàu giao nhau
@@ -2488,7 +2488,7 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Không c
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATIONFEATURES}
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Đang chờ: {WHITE}{STRING}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({SHORTCARGO} đang trên đường từ {STATION})
+STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({SHORTCARGO} trung chuyển từ {STATION})
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Chấp nhận
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Liệt kê hàng hoá được chấp nhận
@@ -2745,7 +2745,7 @@ STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Đổi t
 
 # Depot window
 STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}Xưởng tàu hoả {TOWN}
-STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}Xưởng ôtô{TOWN}
+STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}Xưởng ôtô {TOWN}
 STR_DEPOT_SHIP_CAPTION                                          :{WHITE}Xưởng tàu thuỷ {TOWN}
 STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}Xưởng máy bay {STATION}
 
@@ -2919,29 +2919,29 @@ STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Đang dừ
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Không có năng lượng
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Chờ đường thông
 
-STR_VEHICLE_STATUS_HEADING_FOR_STATION                          :{LTBLUE}Nhắm tới ga {STATION}
-STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Nhắm tới ga {STATION}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_STATION                          :{LTBLUE}Nhắm tới {STATION}
+STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Nhắm tới {STATION}, {VELOCITY}
 STR_VEHICLE_STATUS_NO_ORDERS                                    :{LTBLUE}Không lộ trình
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Không lộ trình, {VELOCITY}
 
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Nhắm tới {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Nhắm tới {WAYPOINT}, {VELOCITY}
 
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT                      :{ORANGE}Nhắm tới xưởng tàu hoả {TOWN}
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_VEL                  :{ORANGE}Nhắm tới xưởng tàu hoả {TOWN}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT               :{ORANGE}Nhắm tới xưởng ôtô {TOWN}
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL           :{ORANGE}Nhắm tới xưởng ôtô {TOWN}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT                       :{ORANGE}Nhắm tới xưởng tàu thuỷ {TOWN}
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_VEL                   :{ORANGE}Nhắm tới xưởng tàu thuỷ {TOWN}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT                      :{ORANGE}Nhắm tới xưởng {TOWN}
+STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_VEL                  :{ORANGE}Nhắm tới xưởng {TOWN}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT               :{ORANGE}Nhắm tới xưởng {TOWN}
+STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL           :{ORANGE}Nhắm tới xưởng {TOWN}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT                       :{ORANGE}Nhắm tới xưởng {TOWN}
+STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_VEL                   :{ORANGE}Nhắm tới xưởng {TOWN}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR                           :{ORANGE}Nhắm tới xưởng {STATION}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_VEL                       :{ORANGE}Nhắm tới xưởng {STATION}, {VELOCITY}
 
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_SERVICE              :{LTBLUE}Bảo trì tại xưởng tàu hoả {TOWN}
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL          :{LTBLUE}Bảo trì tại xưởng tàu hoả {TOWN}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE       :{LTBLUE}Bảo trì tại xưởng ôtô {TOWN}
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL   :{LTBLUE}Bảo trì tại xưởng ôtô {TOWN}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE               :{LTBLUE}Bảo trì tại xưởng tàu thuỷ {TOWN}
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL           :{LTBLUE}Bảo trì tại xưởng tàu thuỷ {TOWN}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_SERVICE              :{LTBLUE}Bảo trì tại xưởng {TOWN}
+STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL          :{LTBLUE}Bảo trì tại xưởng {TOWN}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE       :{LTBLUE}Bảo trì tại xưởng {TOWN}
+STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL   :{LTBLUE}Bảo trì tại xưởng {TOWN}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE               :{LTBLUE}Bảo trì tại xưởng {TOWN}
+STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL           :{LTBLUE}Bảo trì tại xưởng {TOWN}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE                   :{LTBLUE}Bảo trì tại xưởng {STATION}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE_VEL               :{LTBLUE}Bảo trì tại xưởng {STATION}, {VELOCITY}
 
@@ -2988,13 +2988,13 @@ STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Đổi t
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK} Mua lúc: {LTBLUE}{NUM}{BLACK} Giá trị: {LTBLUE}{CURRENCY}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Giá trị: {LTBLUE}{CURRENCY}
 
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Tổng số toa xe (sức chứa) của đoàn tàu:
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Tổng sức chứa hàng của đoàn tàu:
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Trống rỗng
-STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO} từ ga, bến, cảng {STATION}
-STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO} từ ga, bến, cảng {STATION} (x{NUM})
+STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO} từ {STATION}
+STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO} từ {STATION} (x{NUM})
 
 STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}Hàng hoá
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}Hiện chi tiết hàng hoá đang chở
@@ -3002,7 +3002,7 @@ STR_VEHICLE_DETAIL_TAB_INFORMATION                              :{BLACK}Thông t
 STR_VEHICLE_DETAILS_TRAIN_INFORMATION_TOOLTIP                   :{BLACK}Hiện thông tin chi tiết về tàu
 STR_VEHICLE_DETAIL_TAB_CAPACITIES                               :{BLACK}Sức chứa
 STR_VEHICLE_DETAILS_TRAIN_CAPACITIES_TOOLTIP                    :{BLACK}Hiện sức chứa của từng phương tiện
-STR_VEHICLE_DETAIL_TAB_TOTAL_CARGO                              :{BLACK}Tổng số toa xe
+STR_VEHICLE_DETAIL_TAB_TOTAL_CARGO                              :{BLACK}Tổng sức chứa
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CARGO_TOOLTIP                   :{BLACK}Xem tổng sức chứa của tàu, phân chia bởi loại hàng hoá
 
 STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Sức chứa: {LTBLUE}
@@ -3219,7 +3219,7 @@ STR_AI_DEBUG_RELOAD                                             :{BLACK}nạp l�
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Xoá bỏ AI, nạp lại kịch bản, và khởi động lại AI
 
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD biên dịch không hỗ trợ AI...
-STR_ERROR_NO_AI_SUB                                             :{WHITE}... Khôgn có AI thích hợp!
+STR_ERROR_NO_AI_SUB                                             :{WHITE}... Không có AI thích hợp!
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Không có AI phù hợp để nạp.{}AI này là AI giả và sẽ không làm gì cả.{}Bạn có thể tải các AI tại mục 'Nội dung trực tuyến'.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Có một AI bị treo. Hãy báo cho tác giả AI kèm với màn hình chụp cửa sổ gỡ lỗi AI.
@@ -3717,12 +3717,12 @@ STR_SV_STNAME_EAST                                              :Đông {STRING}
 STR_SV_STNAME_WEST                                              :Tây {STRING}
 STR_SV_STNAME_CENTRAL                                           :Trung tâm {STRING}
 STR_SV_STNAME_TRANSFER                                          :Trung chuyển {STRING}
-STR_SV_STNAME_HALT                                              :Trạm nghỉ {STRING}
+STR_SV_STNAME_HALT                                              :{STRING} phụ
 STR_SV_STNAME_VALLEY                                            :Thung lũng {STRING}
 STR_SV_STNAME_HEIGHTS                                           :Cao nguyên {STRING}
 STR_SV_STNAME_WOODS                                             :Hàng hoá {STRING}
 STR_SV_STNAME_LAKESIDE                                          :Bờ hồ {STRING}
-STR_SV_STNAME_EXCHANGE                                          :Hoán đổi {STRING}
+STR_SV_STNAME_EXCHANGE                                          :Trung chuyển {STRING}
 STR_SV_STNAME_AIRPORT                                           :Sân bay {STRING}
 STR_SV_STNAME_OILFIELD                                          :Giàn khoan dầu {STRING}
 STR_SV_STNAME_MINES                                             :Mỏ {STRING}

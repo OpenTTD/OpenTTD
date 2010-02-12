@@ -627,8 +627,8 @@ STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Spolu:
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Pocet vozidiel (automobilov, vlakov, lodi a lietadiel).
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Pocet casti stanic. Kazda cast stanice (napr. zeleznicna stanica, autobusova zastavka, letisko) je zapocitana, aj ked su spojene do jednej stanice.
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Zisk vozidla s najnizsim prijmom (zo vsetkych vozidiel starsich ako 2 roky)
-STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Mnozstvo penazi zarobenych v mesiaci s najmensim ziskom v poslednych 12 kvartaloch
-STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Mnozstvo penazi zarobenych v mesiaci s najvacsim ziskom v poslednych 12 kvartaloch
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Množstvo peňazí zarobených v kvartáli s najmenším ziskom v posledných 12 kvartáloch
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Množstvo peňazí zarobených v kvartáli s najväčším ziskom v posledných 12 kvartáloch
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Pocet jednotiek nakladu prepravenych v poslednych styroch kvartaloch.
 STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Pocet druhov nakladu prepraveneho v poslednom kvartali.
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Mnozstvo penazi k dispozicii
@@ -754,7 +754,7 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLAC
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}Sneh
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Zapnút / Vypnút názvy miest na mape
-STR_SMALLMAP_CENTER                                             :{BLACK}Vycentrovat malu mapu na aktualnu poziciu
+STR_SMALLMAP_CENTER                                             :{BLACK}Vycentrovať malú mapu na aktuálnu pozíciu
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Zakazat vsetky
@@ -1149,7 +1149,7 @@ STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Model a
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Originál
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistický
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Strmosť svahu pre vlaky {ORANGE}{STRING}%
-STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Zakázat vlakom a lodiam otácanie o 90 st.: {ORANGE}{STRING} {LTBLUE} (vyžaduje NPF)
+STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Zakázať vlakom a lodiam otáčanie o 90 stupňov: {ORANGE}{STRING} {LTBLUE} (vyžaduje NPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Umoznit spajanie stanic: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Povoliť spájať stanice nepriamo hraničiace: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Pouzit vylepseny algoritmus nakladania: {ORANGE}{STRING}
@@ -1532,11 +1532,11 @@ STR_FACE_FACECODE_SET                                           :{WHITE}Nový k�
 STR_FACE_FACECODE_ERR                                           :{WHITE}Nie je možné nastavit kód tváre - povolené je číslo od 0 do 4 294 967 295!
 STR_FACE_SAVE                                                   :{BLACK}Uložit
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Uložit oblúbenú tvár
-STR_FACE_SAVE_DONE                                              :{WHITE}Táto tvár bude uložená ako oblúbená do konfiguracného súboru.
+STR_FACE_SAVE_DONE                                              :{WHITE}Táto tvár bude uložená ako obľúbená do konfiguračného súboru OpenTTD
 STR_FACE_EUROPEAN                                               :{BLACK}Európan
-STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Vybrat európske tváre
+STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Vybrať európske tváre
 STR_FACE_AFRICAN                                                :{BLACK}African
-STR_FACE_SELECT_AFRICAN                                         :{BLACK}Vybrat africké tváre
+STR_FACE_SELECT_AFRICAN                                         :{BLACK}Vybrať africké tváre
 STR_FACE_YES                                                    :áno
 STR_FACE_NO                                                     :nie
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Povolit fúzy alebo náušnicu
@@ -1545,7 +1545,7 @@ STR_FACE_HAIR_TOOLTIP                                           :{BLACK}Zmenit v
 STR_FACE_EYEBROWS                                               :Obocie:
 STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}Zmenit obocie
 STR_FACE_EYECOLOUR                                              :Farba ocí:
-STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Zmenit farbu ocí
+STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Zmeniť farbu očí
 STR_FACE_GLASSES                                                :Okuliare:
 STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}Povolit okuliare
 STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}Zmenit okuliare
@@ -1594,12 +1594,12 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Kliknite
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}INFO O HRE
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Klientov: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Jazyk: {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Prostredie: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Krajina: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Velkost mapy: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Verzia servera: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Adresa servera: {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Datum zaciatku:  {WHITE}{DATE_SHORT}
-STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Aktualny datum:  {WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Počiatočný dátum: {WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Aktuálny dátum: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Heslo:
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}SERVER JE OFFLINE
 STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}SERVER JE PLNY
@@ -1982,13 +1982,13 @@ STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Výber s
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Standardný signál (semafór){}Signály sú nevyhnutné pre zabránenie zrážke v železnicnej sieti s viac ako 1 vlakom.
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Vstupný signál (semafór){}Zelený ak je na danom úseku trate 1 alebo viac zelených výstupných signálov, inak je cervený.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Výstupný signál (semafór){}Funguje rovnako ako štandardný signál, avšak je nevyhnutný pre urcenie správnej farby na na vstupných a kombinovaných signáloch.
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Kombinovaný signál (semafór){}Funguje jednoducho ako vstupný a výstupný signál zároven, co umožnuje budovat "stromové" štruktúry.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Kombinovaný signál (semafór){}Funguje jednoducho ako vstupný a výstupný signál zároveň, čo umožnuje budovať "stromové" štruktúry.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Obojstranné signály (semaphore){}Obojstranné signály umožnujú vstúpiť viacerým vlakom na trať súčasne, iba ak vlak dokáže zastaviť pred brzdiacim bodom. Obojstranné signály umožňujú vlakom prechádzať trať z oboch strán.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Jednosmerné signály (semaphore){}Jednosmerné signály umožnujú vstúpiť viacerým vlakom na trať súčasne, iba ak vlak dokáže zastaviť pred brzdiacim bodom. Jednosmerné signály umožňujú vlakom prechádzať trať iba z jednej strany.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Standardný signál (elektrický){}Signály sú nevyhnutné pre zabránenie zrážke v železnicnej sieti s viac ako 1 vlakom.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Vstupný signál (elektrický){}Zelený ak je na danom úseku trate 1 alebo viac zelených výstupných signálov, inak je cervený.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Výstupný signál (elektrický){}Funguje rovnako ako štandardný signál, avšak je nevyhnutný pre urcenie správnej farby na na vstupných a kombinovaných signáloch.
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Kombinovaný signál (elektrický){}Funguje jednoducho ako vstupný a výstupný signál zároven, co umožnuje budovat "stromové" štruktúry.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Kombinovaný signál (elektrický){}Funguje jednoducho ako vstupný a výstupný signál zároveň, čo umožňuje budovať "stromové" štruktúry.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Obojstranné signály (electric){}Obojstranné signály umožnujú vstúpiť viacerým vlakom na trať súčasne, iba ak vlak dokáže zastaviť pred brzdiacim bodom. Obojstranné signály umožňujú vlakom prechádzať trať z oboch strán.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Jednosmerné signály (electric){}Jednosmerné signály umožnujú vstúpiť viacerým vlakom na trať súčasne, iba ak vlak dokáže zastaviť pred brzdiacim bodom. Jednosmerné signály umožňujú vlakom prechádzať trať iba z jednej strany.
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Konverzia signálu{}Pri vybraní, kliknutie na existujúci signál ho zmení na vybraný typ a variant, CTRL+klik prepne existujúci variant.
@@ -1999,7 +1999,7 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Zvýšit
 # Bridge selection window
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Vyber zeleznicny most
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Vyber cestny most
-STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Vyber mostu - kliknut na vybrany most
+STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Výber mostu - pre postavanie zvoľ typ mostu
 STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Zavesny ocelovy
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Pilierovy ocelovy
@@ -2077,8 +2077,8 @@ STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Vybrat v
 
 STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Male
 STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}Mestske
-STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Metropolitne
-STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Medzinarodne
+STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Metropolitné
+STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Medzinárodné
 STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Vnutrostatne
 STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Medzikontinentalne
 STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Heliport
@@ -2200,7 +2200,7 @@ STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Zeleznicne kola
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Zeleznicne kolaje s exit-signalmi
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Zeleznicné kolaje s combo signálmi
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Kolajnice so semaformi pbs
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Železničná  trasa s jednosmernými signálmi
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Železničná trať s jednosmernými signálmi
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Železnicné kolaje s normálnymi a pre-signálmi
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Železnicné kolaje s normálnymi a exit-signálmi
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Zeleznicné kolaje s normálnymi a combo signálmi
@@ -2208,7 +2208,7 @@ STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Železničná t
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Železničná trasa s blokovacími a jednosmernými signálmi
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Železnicné kolaje s pre- a exit-signálmi
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Zeleznicné kolaje s pre- a combo signálmi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Železničná trasa s pre-  a obojstranými signálmi
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Železničná trať s pre- a trasovými signálmi
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Železničná trasa s pre- a jednosmernými signálmi
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Zeleznicné kolaje s exit- a combo signálmi
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Železničná trasa s konečnými a obojstranými signálmi
@@ -2354,7 +2354,7 @@ STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Zvysit v
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Zmenit vysku rovnej krajiny
 
 # Map generation progress
-STR_GENERATION_WORLD                                            :{WHITE}Generujem  krajinu ...
+STR_GENERATION_WORLD                                            :{WHITE}Generujem krajinu...
 STR_GENERATION_ABORT                                            :{BLACK}Zrušiť
 STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Zrušiť generovanie krajiny
 STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Skutočne chceš ukončiť generovanie?
@@ -2519,9 +2519,9 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW} Spusti
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW} Spustit velku reklamnu kampan vasich dopravnych sluzieb.{} Cena: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW} Financovat rekonstrukciu a vystavbu cesty. Sposobi dopravny chaos a zapchy trvajuce dalsich 6 mesiacov.{} Cena: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW} Postavit sochu na oslavu vasej spolocnosti.{} Cena: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW} Financovat vystavbu administrativnych a obchodnych budov.{}  Cena: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Financovať výstavbu administratívnych a obchodných budov.{}Cena: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW} Zakupit exkluzivne dopravne prava na 1 rok pre vasu spolocnost. Miestna sprava vam zaruci vyuzivanie len dopravnych sluzieb vasej spolocnosti.{} Cena: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW} Podplatit miestnu spravu pre zvysenie hodnotenia vasej spolocnosti, s rizikom tazkeho postihu pri odhaleni!{}  Cena: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Podplatiť miestnu správu pre zvýšenie hodnotenia tvojej spoločnosti, s rizikom ťažkého postihu pri odhalení!{}Cena: {CURRENCY}
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Dotacie
@@ -2595,7 +2595,7 @@ STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Výstavba
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Nove vozidla
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Prevadzka vlakov
-STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Prevadzka automobilov
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Prevádzka automobilov
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Prevadzka lietadiel
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Prevadzka lodi
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Udrzba majetku
@@ -2610,7 +2610,7 @@ STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURREN
 STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Spolu:
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Zostatok v banke
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Uver
-STR_FINANCES_MAX_LOAN                                           :{WHITE}Uverovy limit:  {BLACK}{CURRENCY}
+STR_FINANCES_MAX_LOAN                                           :{WHITE}Úverový limit: {BLACK}{CURRENCY}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Pozicat {CURRENCY}
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Zvysit velkost uveru
@@ -2719,7 +2719,7 @@ STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Poslat do hang�
 STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP                         :{BLACK}Kliknite pre zastavenie všetkých vozidiel v zozname
 STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}Kliknite pre spustenie všetkých vozidiel v zozname
 
-STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}Zdielane prikazy  {COMMA} vozid{P la iel iel}
+STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}Zdielané príkazy {COMMA} vozid{P la iel iel}
 
 # Group window
 STR_GROUP_ALL_TRAINS                                            :Všetky vlaky
@@ -2732,7 +2732,7 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Nezaradené voz
 STR_GROUP_DEFAULT_SHIPS                                         :Nezaradené lode
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Nezaradené lietadlá
 
-STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Skupiny  - kliknite na skupinu pre zobrazenie všetkých vozidiel skupiny
+STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Skupiny - klikni na skupinu pre zobrazenie všetkých vozidiel skupiny
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Kliknite pre vytvorenie skupiny
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Zrušit vybranú skupinu
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Premenovat vybranú skupinu
@@ -2755,7 +2755,7 @@ STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Nove lod
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Nove Lietadlo
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Hmotnost: {GOLD}{WEIGHT_S}
-STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Rychlost: {GOLD}{VELOCITY}{BLACK}   Vykon: {GOLD}{POWER}
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Rýchlosť: {GOLD}{VELOCITY}{BLACK} Výkon: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Rychlost: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Náklady na prevádzku: {GOLD}{CURRENCY}/rok
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapacita: {GOLD}{CARGO} {STRING}
@@ -2763,7 +2763,7 @@ STR_PURCHASE_INFO_REFITTABLE                                    :(mozna prestavb
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Vyrobene: {GOLD}{NUM}{BLACK} Zivotnost: {GOLD}{COMMA} rokov
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Max. spolahlivost: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Cena: {GOLD}{CURRENCY}
-STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Hmotnost: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Hmotnosť: {GOLD}{WEIGHT_S} ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Rychlost: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapacita: {GOLD}{CARGO}, {CARGO}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Pohanane vagony: {GOLD}+{POWER}{BLACK} Hmotnost: {GOLD}+{WEIGHT_S}
