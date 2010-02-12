@@ -1239,15 +1239,16 @@ static inline void SortNetworkLanguages() {}
 
 bool ReadLanguagePack(int lang_index)
 {
-	int tot_count, i;
+	/* Current language pack */
 	size_t len;
-	char **langpack_offs;
-	char *s;
-
-	LanguagePack *lang_pack = (LanguagePack*)ReadFileToMem(_dynlang.ent[lang_index].file, &len, 200000);
-
+	LanguagePack *lang_pack = (LanguagePack *)ReadFileToMem(_dynlang.ent[lang_index].file, &len, 200000);
 	if (lang_pack == NULL) return false;
-	if (len < sizeof(LanguagePack) ||
+
+	/* End of read data (+ terminating zero added in ReadFileToMem()) */
+	const char *end = (char *)lang_pack + len + 1;
+
+	/* We need at least one byte of lang_pack->data */
+	if (end <= lang_pack->data ||
 			lang_pack->ident != TO_LE32(LANGUAGE_PACK_IDENT) ||
 			lang_pack->version != TO_LE32(LANGUAGE_PACK_VERSION)) {
 		free(lang_pack);
@@ -1255,30 +1256,43 @@ bool ReadLanguagePack(int lang_index)
 	}
 
 #if TTD_ENDIAN == TTD_BIG_ENDIAN
-	for (i = 0; i != 32; i++) {
+	for (uint i = 0; i < 32; i++) {
 		lang_pack->offsets[i] = ReadLE16Aligned(&lang_pack->offsets[i]);
 	}
 #endif /* TTD_ENDIAN == TTD_BIG_ENDIAN */
 
-	tot_count = 0;
-	for (i = 0; i != 32; i++) {
+	uint count = 0;
+	for (uint i = 0; i < 32; i++) {
 		uint num = lang_pack->offsets[i];
-		_langtab_start[i] = tot_count;
+		_langtab_start[i] = count;
 		_langtab_num[i] = num;
-		tot_count += num;
+		count += num;
 	}
 
 	/* Allocate offsets */
-	langpack_offs = MallocT<char*>(tot_count);
+	char **langpack_offs = MallocT<char *>(count);
 
 	/* Fill offsets */
-	s = lang_pack->data;
-	for (i = 0; i != tot_count; i++) {
-		len = (byte)*s;
-		*s++ = '\0'; // zero terminate the string before.
-		if (len >= 0xC0) len = ((len & 0x3F) << 8) + (byte)*s++;
+	char *s = lang_pack->data;
+	len = (byte)*s++;
+	for (uint i = 0; i < count; i++) {
+		if (s + len >= end) {
+			free(lang_pack);
+			free(langpack_offs);
+			return false;
+		}
+		if (len >= 0xC0) {
+			len = ((len & 0x3F) << 8) + (byte)*s++;
+			if (s + len >= end) {
+				free(lang_pack);
+				free(langpack_offs);
+				return false;
+			}
+		}
 		langpack_offs[i] = s;
 		s += len;
+		len = (byte)*s;
+		*s++ = '\0'; // zero terminate the string
 	}
 
 	free(_langpack);
