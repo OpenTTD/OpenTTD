@@ -39,7 +39,7 @@
  * @param prefix     String to use as prefix for the list of cargos.
  * @return Bottom position of the last line used for drawing the cargos.
  */
-int DrawCargoListText(uint32 cargo_mask, const Rect &r, StringID prefix)
+static int DrawCargoListText(uint32 cargo_mask, const Rect &r, StringID prefix)
 {
 	bool first = true;
 	char string[512];

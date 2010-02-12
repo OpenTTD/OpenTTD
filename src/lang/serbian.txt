@@ -2677,7 +2677,7 @@ STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({SHORT
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Prihvata
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Prikaži spisak tovara koji stanica prihvata
-STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Prihvata: {WHITE}
+STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Prihvata: {WHITE}{STRING}
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Ocene
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Prikaži ocene stanice

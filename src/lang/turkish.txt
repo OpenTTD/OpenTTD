@@ -2489,7 +2489,7 @@ STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({SHORT
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}İstenen
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}İstenen kargoların listesini göster
-STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}İstenen: {WHITE}
+STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}İstenen: {WHITE}{STRING}
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Reyting
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}İstasyonun reytinglerini göster

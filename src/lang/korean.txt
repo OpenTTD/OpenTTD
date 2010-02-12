@@ -2493,7 +2493,7 @@ STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({1:STA
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}받음
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}받는 화물의 목록 표시
-STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}받음: {WHITE}
+STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}받음: {WHITE}{STRING}
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}등급
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}역의 등급 표시

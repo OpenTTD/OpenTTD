@@ -2526,7 +2526,7 @@ STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({SHORT
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Elfogadás
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Az elfogadott áruk listájának mutatása
-STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Elfogad:{WHITE}
+STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Elfogad:{WHITE}{STRING}
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Vélemény
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Vélemény megmutatása az állomásról

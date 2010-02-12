@@ -2476,7 +2476,7 @@ STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({SHORT
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Приема
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Покажи списък с приетите товари
-STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Приема: {WHITE}
+STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Приема: {WHITE}{STRING}
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Рейтинги
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Покажи нивото на обслужване

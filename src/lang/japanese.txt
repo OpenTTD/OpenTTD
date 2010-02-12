@@ -2439,7 +2439,7 @@ STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}（{1:S
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}受入れ貨物
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}受入れる貨物のリストを表示します
-STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}受入れ貨物：{WHITE}
+STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}受入れ貨物：{WHITE}{STRING}
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}評価
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}駅の評価を表示します

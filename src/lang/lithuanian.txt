@@ -2560,7 +2560,7 @@ STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({SHORT
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Priima
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Rodyti priimamų krovinių sąrašą
-STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Priima: {WHITE}
+STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Priima: {WHITE}{STRING}
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Reitingai
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Parodyti stotelės reitingus

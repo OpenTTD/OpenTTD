@@ -2493,7 +2493,7 @@ STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({SHORT
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Accepta
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Mostra la llista de càrregues admeses
-STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Accepta: {WHITE}
+STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Accepta: {WHITE}{STRING}
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Ratis
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Mostra els ratis de l'estació

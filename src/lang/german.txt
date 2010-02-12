@@ -2493,7 +2493,7 @@ STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({SHORT
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Akzeptiert
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Zeige Liste der akzeptierten Frachten
-STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Akzeptiert: {WHITE}
+STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Akzeptiert: {WHITE}{STRING}
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Bewertung
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Stationsbewertung anzeigen

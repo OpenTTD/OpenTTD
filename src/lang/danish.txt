@@ -2486,7 +2486,7 @@ STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({SHORT
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Accepterer
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Vis liste over accepteret last
-STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Accepterer: {WHITE}
+STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Accepterer: {WHITE}{STRING}
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Bedømmelse
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Vis stationens bedømmelse

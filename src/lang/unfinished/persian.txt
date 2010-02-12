@@ -1171,7 +1171,7 @@ STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({SHORT
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}قبول می کند
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}نشان دادن لیست کالاهای قابل دریافت
-STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}قبول می کند: {WHITE}
+STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}قبول می کند: {WHITE}{STRING}
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}رده بندی
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}نشان دادن امتیازات ایستگاه

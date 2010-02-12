@@ -2613,7 +2613,7 @@ STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({SHORT
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Приймає
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Показати список приймання вантажів
-STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Приймає: {WHITE}
+STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Приймає: {WHITE}{STRING}
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Рейтинг
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Показати рейтинг станції

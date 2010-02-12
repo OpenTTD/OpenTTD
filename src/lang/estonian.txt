@@ -2535,7 +2535,7 @@ STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({SHORT
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Võtab vastu
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Näita vastuvõetavate veoste nimistut
-STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Võtab vastu: {WHITE}
+STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Võtab vastu: {WHITE}{STRING}
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Hinnangud
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Näita jaamahinnangut

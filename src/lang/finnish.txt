@@ -2492,7 +2492,7 @@ STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({SHORT
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Ottaa vastaan
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Näytä luettelo vastaanotettavasta rahdista.
-STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Vastaanottaa: {WHITE}
+STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Vastaanottaa: {WHITE}{STRING}
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Arviot
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Näytä aseman arviot.

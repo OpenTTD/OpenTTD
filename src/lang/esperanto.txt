@@ -2214,7 +2214,7 @@ STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({SHORT
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Akceptas
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Montru liston de akceptataj ŝarĝoj
-STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Akceptiĝas: {WHITE}
+STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Akceptiĝas: {WHITE}{STRING}
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Takso
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Montru stacian takson

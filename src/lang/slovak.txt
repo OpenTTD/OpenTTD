@@ -2551,7 +2551,7 @@ STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({SHORT
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Prijima
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Zobrazit zoznam prijimaneho nakladu
-STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Prijíma: {WHITE}
+STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Prijíma: {WHITE}{STRING}
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Hodnotenie
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Zobrazit hodnotenie stanice

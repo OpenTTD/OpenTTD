@@ -2492,7 +2492,7 @@ STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({SHORT
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Godtar
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Vis liste over godtatte varer
-STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Godtar: {WHITE}
+STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Godtar: {WHITE}{STRING}
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Vurderinger
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Vis stasjonsvurdering

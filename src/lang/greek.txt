@@ -2526,7 +2526,7 @@ STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Εμφά
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Αλλαγή ονόματος πόλης
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Επέκταση
-STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Αύξηση μεγέθους πόλης
+STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Αύξηση με�έθους πόλης
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}Διαγραφή
 STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Διαγράφη της πόλης ολοκληρωτικά
 
@@ -2587,7 +2587,7 @@ STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({SHORT
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Δέχεται
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Εμφάνιση λίστας αποδεκτών φορτίων
-STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Δέχεται: {WHITE}
+STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Δέχεται: {WHITE}{STRING}
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Βαθμολογίες
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Εμφάνιση στατιστικών σταθμού
