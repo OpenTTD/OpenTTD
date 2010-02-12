@@ -563,26 +563,26 @@ class SmallMapWindow : public Window {
 	 * @return Tile being displayed at the given position relative to #scroll_x and #scroll_y.
 	 * @note The #subscroll offset is already accounted for.
 	 */
-	FORCEINLINE Point PixelToTile(int dx, int dy, int *sub) const
+	FORCEINLINE Point PixelToTile(int px, int py, int *sub) const
 	{
-		dx += this->subscroll;  // Total horizontal offset.
+		px += this->subscroll;  // Total horizontal offset.
 
 		/* For each two rows down, add a x and a y tile, and
 		 * For each four pixels to the right, move a tile to the right. */
-		Point pt = {((dy >> 1) - (dx >> 2)) * this->zoom, ((dy >> 1) + (dx >> 2)) * this->zoom};
-		dx &= 3;
+		Point pt = {((py >> 1) - (px >> 2)) * this->zoom, ((py >> 1) + (px >> 2)) * this->zoom};
+		px &= 3;
 
-		if (dy & 1) { // Odd number of rows, handle the 2 pixel shift.
-			if (dx < 2) {
+		if (py & 1) { // Odd number of rows, handle the 2 pixel shift.
+			if (px < 2) {
 				pt.x += this->zoom;
-				dx += 2;
+				px += 2;
 			} else {
 				pt.y += this->zoom;
-				dx -= 2;
+				px -= 2;
 			}
 		}
 
-		*sub = dx;
+		*sub = px;
 		return pt;
 	}
 
