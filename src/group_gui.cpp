@@ -690,7 +690,7 @@ static WindowDesc _other_group_desc(
 	_nested_group_widgets, lengthof(_nested_group_widgets)
 );
 
-const static WindowDesc _train_group_desc(
+static const WindowDesc _train_group_desc(
 	WDP_AUTO, 525, 246,
 	WC_TRAINS_LIST, WC_NONE,
 	WDF_UNCLICK_BUTTONS,
