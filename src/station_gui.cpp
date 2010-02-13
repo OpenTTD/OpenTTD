@@ -954,9 +954,19 @@ struct StationViewWindow : public Window {
 		const NWidgetBase *wid = this->GetWidget<NWidgetBase>(SVW_ACCEPTLIST);
 		const Rect r = {wid->pos_x, wid->pos_y, wid->pos_x + wid->current_x - 1, wid->pos_y + wid->current_y - 1};
 		if (this->GetWidget<NWidgetCore>(SVW_ACCEPTS)->widget_data == STR_STATION_VIEW_RATINGS_BUTTON) {
-			this->DrawAcceptedCargo(r);
+			int lines = this->DrawAcceptedCargo(r);
+			if (lines > this->accepts_lines) { // Resize the widget, and perform re-initialization of the window.
+				this->accepts_lines = lines;
+				this->ReInit();
+				return;
+			}
 		} else {
-			this->DrawCargoRatings(r);
+			int lines = this->DrawCargoRatings(r);
+			if (lines > this->rating_lines) { // Resize the widget, and perform re-initialization of the window.
+				this->rating_lines = lines;
+				this->ReInit();
+				return;
+			}
 		}
 
 		if (!this->IsShaded()) {
@@ -1088,8 +1098,9 @@ struct StationViewWindow : public Window {
 
 	/** Draw accepted cargo in the #SVW_ACCEPTLIST widget.
 	 * @param r Rectangle of the widget.
+	 * @return Number of lines needed for drawing the accepted cargo.
 	 */
-	void DrawAcceptedCargo(const Rect &r) const
+	int DrawAcceptedCargo(const Rect &r) const
 	{
 		const Station *st = Station::Get(this->window_number);
 
@@ -1097,14 +1108,16 @@ struct StationViewWindow : public Window {
 		for (CargoID i = 0; i < NUM_CARGO; i++) {
 			if (HasBit(st->goods[i].acceptance_pickup, GoodsEntry::ACCEPTANCE)) SetBit(cargo_mask, i);
 		}
-		Rect s = {r.left + WD_FRAMERECT_LEFT, r.top + WD_FRAMERECT_TOP, r.right - WD_FRAMERECT_RIGHT, r.bottom - WD_FRAMERECT_BOTTOM};
-		DrawCargoListText(cargo_mask, s, STR_STATION_VIEW_ACCEPTS_CARGO);
+		Rect s = {r.left + WD_FRAMERECT_LEFT, r.top + WD_FRAMERECT_TOP, r.right - WD_FRAMERECT_RIGHT, INT32_MAX};
+		int bottom = DrawCargoListText(cargo_mask, s, STR_STATION_VIEW_ACCEPTS_CARGO);
+		return (bottom - r.top - WD_FRAMERECT_TOP + FONT_HEIGHT_NORMAL - 1) / FONT_HEIGHT_NORMAL;
 	}
 
 	/** Draw cargo ratings in the #SVW_ACCEPTLIST widget.
 	 * @param r Rectangle of the widget.
+	 * @return Number of lines needed for drawing the cargo ratings.
 	 */
-	void DrawCargoRatings(const Rect &r) const
+	int DrawCargoRatings(const Rect &r) const
 	{
 		const Station *st = Station::Get(this->window_number);
 		int y = r.top + WD_FRAMERECT_TOP;
@@ -1123,6 +1136,7 @@ struct StationViewWindow : public Window {
 			DrawString(r.left + WD_FRAMERECT_LEFT + 6, r.right - WD_FRAMERECT_RIGHT - 6, y, STR_STATION_VIEW_CARGO_RATING);
 			y += FONT_HEIGHT_NORMAL;
 		}
+		return (y - r.top - WD_FRAMERECT_TOP + FONT_HEIGHT_NORMAL - 1) / FONT_HEIGHT_NORMAL;
 	}
 
 	void HandleCargoWaitingClick(int row)
