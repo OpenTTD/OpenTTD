@@ -3373,6 +3373,7 @@ STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... too 
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... there is no more space on the map
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}The town will not build roads. You can enable building of roads via Advanced Settings->Economy->Towns.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Road works in progress
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Can't delete this town...{}A station or depot is referring to the town or a town owned tile can't be removed
 
 # Industry related errors
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Can't generate industries...
