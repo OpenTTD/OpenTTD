@@ -3033,7 +3033,7 @@ STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE
 STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Rutetabell
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Bytt til rutetabellvinauge
 
-STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Ordreliste - klikk på ein ordre for å velje han
+STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Ordreliste - klikk på ein ordre for å velje han. CTRL+klikk ruller til stasjonen
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 STR_ORDER_TEXT                                                  :{STRING} {STRING}
 
@@ -3374,6 +3374,7 @@ STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}...for m
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...det er ikkje meir plass på kartet
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Byen byggjer ikkje vegar. Du kan tillete veg-bygging i Avanserte innstillingar -> Økonomi -> Byar.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Vegarbeid pågår
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kan ikkje fjerne denne byen...{}Ein stasjon eller garasje/stall/hangar/dokk refererar til byen eller eit by-egd felt som ikkje kan fjernast
 
 # Industry related errors
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Kan ikkje lage industriar...

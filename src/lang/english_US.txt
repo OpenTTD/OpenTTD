@@ -229,7 +229,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Rename
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Close window
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Window title - drag this to move window
-STR_TOOLTIP_SHADE                                               :{BLACK}Shade window - Only show the titlebar
+STR_TOOLTIP_SHADE                                               :{BLACK}Shade window - only show the title bar
 STR_TOOLTIP_STICKY                                              :{BLACK}Mark this window as uncloseable for the 'Close All Windows' key
 STR_TOOLTIP_RESIZE                                              :{BLACK}Click and drag to resize this window
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Toggle large/small window size
@@ -688,11 +688,15 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLAC
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}Snow
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Toggle town names on/off on map
-STR_SMALLMAP_CENTER                                             :{BLACK}Center the smallmap on the current position
+STR_SMALLMAP_CENTER                                             :{BLACK}Center the minimap on the current position
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Disable all
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Enable all
+STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Show height
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL                                :{BLACK}Display no industries on the map
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL                                 :{BLACK}Display all industries on the map
+STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Toggle display of heightmap
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Show last message or news report
@@ -1061,6 +1065,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Permissive
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
 STR_CITY_APPROVAL_HOSTILE                                       :Hostile
 
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}No suitable AIs available...{}You can download several AIs via the 'Online Content' system
 STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}This action changed the difficulty level to custom
 
 # Advanced settings window
@@ -1078,6 +1083,7 @@ STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Enable 
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Train acceleration model: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Original
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistic
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Slope steepness for trains {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Forbid trains and ships to make 90 deg turns: {ORANGE}{STRING} {LTBLUE} (not with OPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Join train stations built next to each other: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Allow joining stations not directly adjacent: {ORANGE}{STRING}
@@ -1109,6 +1115,10 @@ STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Allow s
 STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Nonuniform stations: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Weight multiplier for freight to simulate heavy trains: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Plane speed factor: {ORANGE}1 / {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Number of plane crashes: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :none
+STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :reduced
+STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normal
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Allow drive-through road stops on town owned roads: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Allow drive-through road stops on roads owned by competitors: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Allow building adjacent stations: {ORANGE}{STRING}
@@ -1155,6 +1165,10 @@ STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}One or m
 STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Max station spread: {ORANGE}{STRING} {RED}Warning: High setting slows game
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Perform maintenance on helicopters at helipads automatically: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Link landscape toolbar to rail/road/water/airport toolbars: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Land color used in the minimap: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Green
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Dark green
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Purple
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}Reverse scroll direction: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}Smooth viewport scrolling: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}Show a measurement tooltip when using various build-tools: {ORANGE}{STRING}
@@ -1233,6 +1247,7 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Colored
 STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Starting date: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Enable smooth economy (more, smaller changes): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Allow buying shares from other companies: {ORANGE}{STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Percentage of leg profit to pay in feeder systems: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}When dragging place signals every: {ORANGE}{STRING} tile(s)
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automatically build semaphores before: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Enable the signal GUI: {ORANGE}{STRING}
@@ -1448,7 +1463,7 @@ STR_FACE_SIMPLE                                                 :{BLACK}Simple
 STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Simple face selection.
 STR_FACE_LOAD                                                   :{BLACK}Load
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Load favorite face
-STR_FACE_LOAD_DONE                                              :{WHITE}Your favorite face has been loaded from the OpenTTD config file.
+STR_FACE_LOAD_DONE                                              :{WHITE}Your favorite face has been loaded from the OpenTTD configuration file
 STR_FACE_FACECODE                                               :{BLACK}Player face no.
 STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}View and/or set player face number
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}View and/or set player face number
@@ -1456,7 +1471,7 @@ STR_FACE_FACECODE_SET                                           :{WHITE}New face
 STR_FACE_FACECODE_ERR                                           :{WHITE}Couldn't set player face number - must be numeric between 0 and 4,294,967,295!
 STR_FACE_SAVE                                                   :{BLACK}Save
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Save favorite face
-STR_FACE_SAVE_DONE                                              :{WHITE}This face will be saved as your favorite in the OpenTTD config file.
+STR_FACE_SAVE_DONE                                              :{WHITE}This face will be saved as your favorite in the OpenTTD configuration file
 STR_FACE_EUROPEAN                                               :{BLACK}European
 STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Select European faces
 STR_FACE_AFRICAN                                                :{BLACK}African
@@ -1469,7 +1484,7 @@ STR_FACE_HAIR_TOOLTIP                                           :{BLACK}Change h
 STR_FACE_EYEBROWS                                               :Eyebrows:
 STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}Change eyebrows
 STR_FACE_EYECOLOUR                                              :Eye color:
-STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Change eyecolor
+STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Change eye color
 STR_FACE_GLASSES                                                :Glasses:
 STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}Enable glasses
 STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}Change glasses
@@ -1518,7 +1533,7 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Click to
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}GAME INFO
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Clients: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Language: {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Tileset: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Landscape: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Map size: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Server version: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Server address: {WHITE}{STRING}
@@ -1794,7 +1809,7 @@ STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}You hav
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}This dependency has been selected to be downloaded
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}You already have this
 STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}This content is unknown and can't be downloaded in OpenTTD
-STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}This is a replacement for an exising {STRING}
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}This is a replacement for an existing {STRING}
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}Name: {WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Version: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Description: {WHITE}{STRING}
@@ -1907,13 +1922,13 @@ STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Signal S
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Block Signal (semaphore){}This is the most basic type of signal, allowing only one train to be in the same block at the same time.
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Entry-Signal (semaphore){}Green as long as there is one or more green exit-signal from the following section of track. Otherwise it shows red.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Exit-Signal (semaphore){}Behaves in the same way as a block signal but is necessary to trigger the correct color on entry & combo pre-signals.
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Combo-Signal (semaphore){}The combo signal simply acts as both an entry and exit signal. This allows you to build large "trees" of presignals.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Combo-Signal (semaphore){}The combo signal simply acts as both an entry and exit signal. This allows you to build large "trees" of pre-signals.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Path Signal (semaphore){}A path signal allows more than one train to enter a signal block at the same time, if the train can reserve a path to a safe stopping point. Standard path signals can be passed from the back side.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}One-way Path Signal (semaphore){}A path signal allows more than one train to enter a signal block at the same time, if the train can reserve a path to a safe stopping point. One-way path signals can't be passed from the back side.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Block Signal (electric){}This is the most basic type of signal, allowing only one train to be in the same block at the same time.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Entry-Signal (electric){}Green as long as there is one or more green exit-signal from the following section of track. Otherwise it shows red.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Exit-Signal (electric){}Behaves in the same way as a block signal but is necessary to trigger the correct color on entry & combo pre-signals.
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Combo-Signal (electric){}The combo signal simply acts as both an entry and exit signal. This allows you to build large "trees" of presignals.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Combo-Signal (electric){}The combo signal simply acts as both an entry and exit signal. This allows you to build large "trees" of pre-signals.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Path Signal (electric){}A path signal allows more than one train to enter a signal block at the same time, if the train can reserve a path to a safe stopping point. Standard path signals can be passed from the back side.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}One-way Path Signal (electric){}A path signal allows more than one train to enter a signal block at the same time, if the train can reserve a path to a safe stopping point. One-way path signals can't be passed from the back side.
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Signal Convert{}When selected, clicking an existing signal will convert it to the selected signal type and variant, Ctrl+Click will toggle the existing variant.
@@ -1924,7 +1939,7 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Increase
 # Bridge selection window
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Select Rail Bridge
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Select Road Bridge
-STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Bridge selection - click on your prefered bridge to build it
+STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Bridge selection - click on your preferred bridge to build it
 STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Suspension, Steel
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Girder, Steel
@@ -2002,8 +2017,8 @@ STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Select s
 
 STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Small
 STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}City
-STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Metropolitan airport
-STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}International airport
+STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Metropolitan
+STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}International
 STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Commuter
 STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Intercontinental
 STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Heliport
@@ -2144,7 +2159,7 @@ STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Railroad track 
 STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Railroad train depot
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Road
-STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Road with streetlights
+STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Road with street lights
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Tree-lined road
 STR_LAI_ROAD_DESCRIPTION_ROAD_VEHICLE_DEPOT                     :Road vehicle depot
 STR_LAI_ROAD_DESCRIPTION_ROAD_RAIL_LEVEL_CROSSING               :Road/rail grade crossing
@@ -2359,6 +2374,7 @@ STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Unknown Action 
 STR_NEWGRF_ERROR_INVALID_ID                                     :Attempt to use invalid ID.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} contains a corrupt sprite. All corrupt sprites will be shown as a red question mark (?).
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Contains multiple Action 8 entries.
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Read past end of pseudo-sprite.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Caution!
@@ -2520,7 +2536,7 @@ STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Construction
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}New Vehicles
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Train Running Costs
-STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Road Veh. Running Costs
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Road Vehicle Running Costs
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Aircraft Running Costs
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Ship Running Costs
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Property Maintenance
@@ -3195,9 +3211,15 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Select y
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}AI Debug
+STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Name of the AI
+STR_AI_DEBUG_SETTINGS                                           :{BLACK}AI Settings
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Change the settings of the AI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Reload AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Kill the AI, reload the script, and restart the AI
+
+STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD is built without AI support...
+STR_ERROR_NO_AI_SUB                                             :{WHITE}... no AIs are available!
 
 STR_ERROR_AI_NO_AI_FOUND                                        :No suitable AI found to load.{}This AI is a dummy AI and won't do anything.{}You can download several AIs via the 'Online Content' system.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}One of the running AIs crashed. Please report this to the AI author with a screenshot of the AI Debug Window.
@@ -3316,7 +3338,7 @@ STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} l
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}Your attempted bribery has been
 STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}discovered by a regional investigator
 
-# Leveling errors
+# Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Can't raise land here...
 STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Can't lower land here...
 STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Can't level land here...

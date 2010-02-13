@@ -3339,7 +3339,7 @@ STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}Die Stad
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}Der Bestechungsversuch wurde
 STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}von einem regionalen Untersuchungsbeamten aufgedeckt.
 
-# Leveling errors
+# Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Land kann nicht angehoben werden...
 STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Land kann nicht abgesenkt werden...
 STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Kann dieses Land nicht einebnen...
@@ -3374,6 +3374,7 @@ STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... zu v
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... es ist kein Platz mehr auf dem Spielfeld.
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Städte bauen im Moment keine Straßen. Städtischer Straßenbau kann mittels Erweiterte Einstellungen->Wirtschaft->Städte eingestellt werden.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Straßenarbeiten sind im Gange
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Stadt kann nicht gelöscht werden...{}Ein Bahnhof oder Depot bezieht sich auf diese Stadt oder ein Feld im städtischen Besitz kann nicht entfernt werden.
 
 # Industry related errors
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Industrie kann nicht erzeugt werden...

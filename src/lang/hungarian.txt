@@ -326,7 +326,7 @@ STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Játék 
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Beállítások
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Játék mentése, kilépés a játékból, kilépés
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Térkép
-STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Városlista
+STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Településlista mutatása
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Támogatások megjelenítése
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Állomások listája
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Pénzügyi adatok
@@ -358,7 +358,7 @@ STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}A kezdő
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}A kezdődátum előrébb állítása egy évvel
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Térkép, városlista
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Táj szerkesztése
-STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Városkészítés
+STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Település-generálás
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Gazdasági épület készítése
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Út építése
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Faültetés
@@ -686,40 +686,40 @@ STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Szállí
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Növényzet mutatása a térképen
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Tulajdonosok mutatása a térképen
 
-STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}ÚT
-STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLACK}VASÚT
-STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINYFONT}{BLACK}ÁLLOMÁS - REPTÉR - KIKÖTÖ
-STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINYFONT}{BLACK}ÉPÜLET - GAZDASÁGI ÉPÜLET
-STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINYFONT}{BLACK}JÁRMÜ
-STR_SMALLMAP_LEGENDA_100M                                       :{TINYFONT}{BLACK}100 M
-STR_SMALLMAP_LEGENDA_200M                                       :{TINYFONT}{BLACK}200 M
-STR_SMALLMAP_LEGENDA_300M                                       :{TINYFONT}{BLACK}300 M
-STR_SMALLMAP_LEGENDA_400M                                       :{TINYFONT}{BLACK}400 M
-STR_SMALLMAP_LEGENDA_500M                                       :{TINYFONT}{BLACK}500 M
-STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINYFONT}{BLACK}VONAT
-STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINYFONT}{BLACK}KÖZÚTI JÁRMÜ
-STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINYFONT}{BLACK}HAJÓ
-STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINYFONT}{BLACK}REPÜLÖGÉP
-STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINYFONT}{BLACK}SZÁLLITÁSI ÚTVONAL
-STR_SMALLMAP_LEGENDA_FOREST                                     :{TINYFONT}{BLACK}ERDÖ
+STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}Út
+STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLACK}Vasút
+STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINYFONT}{BLACK}Állomás/Reptér/Kikötő
+STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINYFONT}{BLACK}Épület/Gazdaság
+STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINYFONT}{BLACK}Jármű
+STR_SMALLMAP_LEGENDA_100M                                       :{TINYFONT}{BLACK}100m
+STR_SMALLMAP_LEGENDA_200M                                       :{TINYFONT}{BLACK}200m
+STR_SMALLMAP_LEGENDA_300M                                       :{TINYFONT}{BLACK}300m
+STR_SMALLMAP_LEGENDA_400M                                       :{TINYFONT}{BLACK}400m
+STR_SMALLMAP_LEGENDA_500M                                       :{TINYFONT}{BLACK}500m
+STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINYFONT}{BLACK}Vonat
+STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINYFONT}{BLACK}Közúti Jármű
+STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINYFONT}{BLACK}Hajó
+STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINYFONT}{BLACK}Repülőgép
+STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINYFONT}{BLACK}Szállítási Útvonal
+STR_SMALLMAP_LEGENDA_FOREST                                     :{TINYFONT}{BLACK}Erdő
 STR_SMALLMAP_LEGENDA_FOREST.t                                   :{TINYFONT}{BLACK}erdőt
-STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINYFONT}{BLACK}VASÚTÁLLOMÁS
-STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINYFONT}{BLACK}TEHERAUTÓ-RAKODÓHELY
-STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINYFONT}{BLACK}BUSZMEGÁLLÓ
-STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINYFONT}{BLACK}REPÜLÖTÉR - HELIKOPTER-LESZÁLLÓ
-STR_SMALLMAP_LEGENDA_DOCK                                       :{TINYFONT}{BLACK}KIKÖTÖ
-STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINYFONT}{BLACK}GÖRÖNGYÖS TALAJ
-STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINYFONT}{BLACK}FÜVES TALAJ
-STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINYFONT}{BLACK}CSUPASZ FÖLD
-STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINYFONT}{BLACK}SZÁNTÓFÖLD
-STR_SMALLMAP_LEGENDA_TREES                                      :{TINYFONT}{BLACK}FA
-STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINYFONT}{BLACK}KÖ
-STR_SMALLMAP_LEGENDA_WATER                                      :{TINYFONT}{BLACK}VIZ
-STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINYFONT}{BLACK}NINCS TULAJDONOS
-STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINYFONT}{BLACK}VÁROS
-STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINYFONT}{BLACK}GAZDASÁGI ÉPÜLET
-STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLACK}SIVATAG
-STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}HÓ
+STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINYFONT}{BLACK}Vasútállomás
+STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINYFONT}{BLACK}Teherautó-rakodóhely
+STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINYFONT}{BLACK}Buszmegálló
+STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINYFONT}{BLACK}Reptér/Helikopter-leszálló
+STR_SMALLMAP_LEGENDA_DOCK                                       :{TINYFONT}{BLACK}Kikötő
+STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINYFONT}{BLACK}Göröngyös Talaj
+STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINYFONT}{BLACK}Füves Talaj
+STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINYFONT}{BLACK}Csupasz Föld
+STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINYFONT}{BLACK}Szántóföld
+STR_SMALLMAP_LEGENDA_TREES                                      :{TINYFONT}{BLACK}Fa
+STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINYFONT}{BLACK}Kő
+STR_SMALLMAP_LEGENDA_WATER                                      :{TINYFONT}{BLACK}Víz
+STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINYFONT}{BLACK}Nincs Tulajdonos
+STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINYFONT}{BLACK}Település
+STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINYFONT}{BLACK}Gazdasági épület
+STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLACK}Sivatag
+STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}Hó
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Városnevek ki/be
 STR_SMALLMAP_CENTER                                             :{BLACK}A térkép közepét a jelenlegi helyre állítja
@@ -728,8 +728,8 @@ STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHIT
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Kikapcsol mind
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Bekapcsol mind
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Mutasd a magasságot
-STR_SMALLMAP_TOOLTIP_DISABLE_ALL                                :{BLACK}Ne mutasd az ipari létesítményeket a térképen
-STR_SMALLMAP_TOOLTIP_ENABLE_ALL                                 :{BLACK}Mutasd az összes ipari létesítményt a térképen
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL                                :{BLACK}Ne mutasd a gazdasági létesítményeket a térképen
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL                                 :{BLACK}Mutasd az összes gazdasági létesítményt a térképen
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Magasságtérkép ki/bekapcsolása
 
 # Status bar messages
@@ -763,7 +763,7 @@ STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}Gazdas�
 STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}Gazdasági változások
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Termelésváltozások a vállalatod által kiszolgált gazdasági létesítményeknél
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Termelésváltozások a konkurenseid által kiszolgált gazdasági létesítményeknél
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Más ipari termelési változások
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Más gazdasági termelési változások
 STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}A vállalat járműveire vonatkozó ötletek / információk
 STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Új járművek
 STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Áruk elfogadásának változásai
@@ -1112,7 +1112,7 @@ STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Jármű
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Lejtőre és partokra építés: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Építmények alatti tereprendezés engedélyezése (autoslope): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Élethűbben méretezett befogadókörzetek bekapcsolása: {ORANGE}{STRING}
-STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Városi tulajdonú utak/hidak/alagutak rombolásának engedélyezése: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Települési tulajdonú utak/hidak/alagutak rombolásának engedélyezése: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Óriásvonatok engedélyezése: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Vonatok gyorsulási módja: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Eredeti
@@ -1131,8 +1131,8 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Kézi n
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :nincs
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :mint általában
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :kutatás támogatása
-STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Több hasonló ipari épület egy városon belül: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SAMEINDCLOSE                                 :{LTBLUE}Több ugyanolyan gyár építhető közel egymáshoz: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Több hasonló gazdasági épület egy településenként: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SAMEINDCLOSE                                 :{LTBLUE}Több ugyanolyan gazdasági épület építhető közel egymáshoz: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Mindig teljes dátum a képernyőn: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Jelzők a menetirány szerinti oldalon legyenek: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Pénzügyi összesítés minden év végén: {ORANGE}{STRING}
@@ -1153,7 +1153,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Lezuhan
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :nincs
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :csökkentett
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normál
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Áthajtó állomások engedélyezése városi tulajdonú utakra: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Áthajtó állomások engedélyezése települési tulajdonú utakon: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Áthajtó állomások engedélyezése vetélytárs tulajdonában lévő utakon: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Érintkező állomások építésének engedélyezése: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Több NewGRF járműgarnitúra engedélyezése: {ORANGE}{STRING}
@@ -1301,14 +1301,14 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2-es háló
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3-as háló
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :véletlenszerű
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Települések építhetnek utakat: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Várostól függő zajszint engedélyezése a repterek számára: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Településtől függő zajszint engedélyezése a repterek számára: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Város alapítása játék közben: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :tiltott
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :megengedett
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :megengedett, egyéni városelrendezés
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}Játékbeli faelhelyezkedés: {ORANGE}{STRING}
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :sehol {RED}(favágók elrontása)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :sehol {RED}(favágók ellehetetlenítése)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :csak esőerdőkben
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :mindenhol
 
@@ -1329,7 +1329,7 @@ STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Nagyon gyors
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}Dupla gyorsan növekvő települések aránya: {ORANGE}{STRING} településből 1
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}Dupla gyorsan növekvő települések aránya: {ORANGE}Nincsennek
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Kezdeti városméret-szorzó: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Abszurd útrészletek automatikus eltávolítása (városi tul. utakon): {ORANGE}{STRING}
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Abszurd útrészletek automatikus eltávolítása (települési tul. utakon): {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Megjelenítés
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Építkezés
@@ -1346,8 +1346,8 @@ STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Automat
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Szervíz
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Útvonalkeresés
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Vonatok
-STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Városok
-STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Ipar
+STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Települések
+STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Gazdaság
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Útvonalkereső vonatokhoz: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
@@ -2119,7 +2119,7 @@ STR_FOUND_TOWN_INITIAL_SIZE_LARGE_BUTTON                        :{BLACK}Nagy
 STR_FOUND_TOWN_SIZE_RANDOM                                      :{BLACK}Véletlenszerű
 STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}A település méretének kiválasztása
 STR_FOUND_TOWN_CITY                                             :{BLACK}Város
-STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Átlagosnál gyorsabban növekedő városok{}Függ a beállításoktól, nagyobbak, mint alapításkor
+STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Átlagosnál gyorsabban növekedő városok{}Beállítástól függően nagyobbak alapításkor
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Település úthálózat építési módja:
 STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Válassz úthálózati sémát ehhez a városhoz
@@ -2131,7 +2131,7 @@ STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Véletle
 
 # Fund new industry window
 STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Új gazdasági épület
-STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Válaszd ki a megfelelő ipartípust a listából
+STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Válaszd ki a megfelelő gazdasági épület-típust a listából
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :Sok véletlen gazdasági épület
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Elhelyez a térképen véletlenszerüen sok gazdasági épületet
 STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Ár: {YELLOW}{CURRENCY}
@@ -2279,7 +2279,7 @@ STR_MAPGEN_MAPSIZE                                              :{BLACK}Méret:
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Várossűrűség:
 STR_MAPGEN_DATE                                                 :{BLACK}Dátum:
-STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Iparsűrűség:
+STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Gazd. épületek száma:
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Hóhatár:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}A hóhatár megnövelése eggyel
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}A hóhatár csökkentése eggyel
@@ -3407,6 +3407,7 @@ STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}...túl 
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...nincs több hely a térképen
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}A település nem fog utakat építeni. Az útépítést a Haladó beállítások->Gazdaság->Városok menüben engedélyezheted.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Útkarbantartás folyamatban
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Nem törölheted ezt a várost...{}Egy állomás vagy járműtelep hivatkozik a városra, vagy egy városi tulajdonú mező nem eltávolítható
 
 # Industry related errors
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Nem tudok gazdasági épületet generálni...

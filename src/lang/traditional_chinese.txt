@@ -1533,7 +1533,7 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}點選�
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}遊戲資訊
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}用戶端：{WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}語言：{WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}圖格組：{WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}場景：{WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}地圖大小：{WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}伺服器版本：{WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}伺服器位址：{WHITE}{STRING}
@@ -3218,6 +3218,8 @@ STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}變更 A
 STR_AI_DEBUG_RELOAD                                             :{BLACK}重新載入 AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}結束 AI、重新載入腳本、重新啟動 AI
 
+STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD 編譯時未加入 AI 支援...
+STR_ERROR_NO_AI_SUB                                             :{WHITE}... 無 AI 可使用！
 
 STR_ERROR_AI_NO_AI_FOUND                                        :找不到適合的 AI 可以載入。{}此 AI 是虛擬 AI，沒有任何效果。{}您可以透過「線上內容」系統下載更多 AI。
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}正在運行中的其中一個 AI 發生錯誤。請打開「AI 除錯」視窗後擷取螢幕圖片，將此問題回報給 AI 作者。
@@ -3336,7 +3338,7 @@ STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} �
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}您嘗試行賄的舉動
 STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}已被地方調查員發現
 
-# Leveling errors
+# Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}無法提昇土地...
 STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}無法降低土地...
 STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}無法變更此處地形...

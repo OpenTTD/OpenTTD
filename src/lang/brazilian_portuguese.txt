@@ -230,7 +230,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Renomear
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Fecha janela
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Título da janela - arraste para mover a janela
-STR_TOOLTIP_SHADE                                               :{BLACK}Esmaecer janela - Mostra apenas a barra de título
+STR_TOOLTIP_SHADE                                               :{BLACK}Esmaecer janela - mostra apenas a barra de título
 STR_TOOLTIP_STICKY                                              :{BLACK}Marcar esta janela para não fechar pela tecla 'Fechar Todas as Janelas'
 STR_TOOLTIP_RESIZE                                              :{BLACK}Clique e arraste para redimensionar a janela
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Alterna entre janela grande/pequena
@@ -1166,6 +1166,10 @@ STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Há bord
 STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Tamanho máx. de estações: {ORANGE}{STRING} {RED}Valores altos tornam o jogo lento!
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Manutenção automática de helicópteros em heliportos: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Ligar ferramentas de terreno às ferramentas de transportes: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Cor da terra usado no minimapa: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Verde
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Verde escuro
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violeta
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}Rolar a tela no sentido oposto ao movimento do mouse: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}Melhorar deslocamento do vizualizador extra: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}Exibe distâncias quando usar ferramentas de construção: {ORANGE}{STRING}
@@ -1460,7 +1464,7 @@ STR_FACE_SIMPLE                                                 :{BLACK}Simples
 STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Seleção de face simples.
 STR_FACE_LOAD                                                   :{BLACK}Carregar
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Carregar face favorita
-STR_FACE_LOAD_DONE                                              :{WHITE}Seu rosto favorito foi carregado do arquivo de configuração do OpenTTD.
+STR_FACE_LOAD_DONE                                              :{WHITE}Seu rosto favorito foi carregado do arquivo de configuração do OpenTTD
 STR_FACE_FACECODE                                               :{BLACK}Número da face do jogador.
 STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Ver e/ou alterar número da face do jogador
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}Ver e/ou alterar número da face do jogador
@@ -1468,11 +1472,11 @@ STR_FACE_FACECODE_SET                                           :{WHITE}Novo có
 STR_FACE_FACECODE_ERR                                           :{WHITE}Não pôde alterar o número de face do jogador - precisa ser um número entre 0 e 4,294,967,295!
 STR_FACE_SAVE                                                   :{BLACK}Salvar
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Salvar face favorita
-STR_FACE_SAVE_DONE                                              :{WHITE}Este rosto irá ser salvo como seu rosto favorito no arquivo de configuração do OpenTTD.
+STR_FACE_SAVE_DONE                                              :{WHITE}Este rosto irá ser salvo como seu rosto favorito no arquivo de configuração do OpenTTD
 STR_FACE_EUROPEAN                                               :{BLACK}Europeu
-STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Selecione faces européias
+STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Selecione faces Européias
 STR_FACE_AFRICAN                                                :{BLACK}Africano
-STR_FACE_SELECT_AFRICAN                                         :{BLACK}Selecione faces africanas
+STR_FACE_SELECT_AFRICAN                                         :{BLACK}Selecione faces Africanas
 STR_FACE_YES                                                    :Sim
 STR_FACE_NO                                                     :Não
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Ativar bigode ou brinco
@@ -1530,7 +1534,7 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Clique p
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}INFORMAÇÃO DO JOGO
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Clientes: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Idioma: {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Tileset: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Terreno: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Tamanho do mapa: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Versão do servidor: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}IP do servidor: {WHITE}{STRING}
@@ -1806,7 +1810,7 @@ STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Você s
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Esse dependente será baixado
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Você já baixou isso
 STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Esse conteúdo é desconhecido e não pode ser baixado pelo OpenTTD
-STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Isso substitui {STRING}
+STR_CONTENT_DETAIL_UPDATE                                       :{G=f}{SILVER}Isso substitui uma {STRING} existente
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}Nome: {WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Versão: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Descrição: {WHITE}{STRING}
@@ -3215,6 +3219,9 @@ STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Mudar as
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Recarregar IA
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Desativar a IA, recarregar o script e religar a IA
 
+STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD é feito sem suporte para IA...
+STR_ERROR_NO_AI_SUB                                             :{WHITE}... não há IAs disponíveis!
+
 STR_ERROR_AI_NO_AI_FOUND                                        :Nenhuma IA encontrada. {} Essa é uma IA inativa e não faz nada. {} Você pode pode baixar várias IA através do sistema de 'Conteúdo Online'.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Uma das IA's travou. Favor relatar ao autor da IA com uma screenshot da Janela de Debug da IA.
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Debug de IA só é acessível pelo servidor
@@ -3332,7 +3339,7 @@ STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}A prefei
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}A sua tentativa de suborno foi
 STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}descoberta por um investigador regional
 
-# Leveling errors
+# Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Impossível elevar terreno aqui...
 STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Impossível baixar terreno aqui...
 STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Impossível terraplanar aqui...
@@ -3367,6 +3374,7 @@ STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... cida
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...não há mais espaço no mapa
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}A cidade não irá construir estradas. Você pode ativar essa opção através de Config. Avançadas>Economia>Cidades.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Recapeamento rodoviário em progresso
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Impossível remover cidade... {}Uma estação ou depósito referente à essa cidade não pode ser removido
 
 # Industry related errors
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Impossível gerar indústrias...

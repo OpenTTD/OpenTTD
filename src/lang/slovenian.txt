@@ -3415,6 +3415,7 @@ STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... prev
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... ni več prostora na zemljevidu
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Mesta ne bodo gradila cest. Lahko omogočiš gradnjo cest v Napredne nastavitve->Ekonomija->Mesta.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Cestna dela napredujejo
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Ni mogoče zbrisati mesta...{}Postaja ali garaža se nanaša na to mesto ali pa področje v lastnini mesta ne more biti odstranjeno
 
 # Industry related errors
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Ni mogoče zgraditi industrij...

@@ -1165,6 +1165,10 @@ STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Kotak pa
 STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Sebaran stasiun maks.: {ORANGE}{STRING} {RED}Peringatan: Makin tinggi, Makin lambat
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Perbaikan helikopter di helipad secara otomatis: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Tempel toolbar Landsekap ke toolbar rel/jalan/air/bandara: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Warna daratan pada peta kecil: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Hijau
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Hijau Gelap
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violet
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}Berbalik Arah: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}Pergeseran pandangan viewport secara halus: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}Tampilkan ukuran ketika menggunakan alat pembangun: {ORANGE}{STRING}
@@ -1459,7 +1463,7 @@ STR_FACE_SIMPLE                                                 :{BLACK}Sederhan
 STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Memilih wajah secara sederhana.
 STR_FACE_LOAD                                                   :{BLACK}Ambil simpanan
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Baca simpanan wajah terpilih
-STR_FACE_LOAD_DONE                                              :{WHITE}Wajah kesukaanmu telah dimuat kembali dari berkas config OpenTTD.
+STR_FACE_LOAD_DONE                                              :{WHITE}Wajah favorit anda telah dimuat kembali dari berkas config OpenTTD.
 STR_FACE_FACECODE                                               :{BLACK}Wajah pemain no.
 STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Lihat/ubah nomer wajah pemain
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}Lihat/ubah nomer wajah pemain
@@ -1467,7 +1471,7 @@ STR_FACE_FACECODE_SET                                           :{WHITE}Kode jum
 STR_FACE_FACECODE_ERR                                           :{WHITE}Tidak dapat mengubah nomer wajah pemain - haruslah angka antara 0 dan 4,294,967,295!
 STR_FACE_SAVE                                                   :{BLACK}Simpan
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Simpan wajah kesukaanmu
-STR_FACE_SAVE_DONE                                              :{WHITE}Wajah ini akan disimpan sebagai kesukaanmu ke dalam berkas config OpenTTD.
+STR_FACE_SAVE_DONE                                              :{WHITE}Wajah ini akan disimpan sebagai favorit dalam berkas config OpenTTD.
 STR_FACE_EUROPEAN                                               :{BLACK}Eropa
 STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Pilih wajah Eropa
 STR_FACE_AFRICAN                                                :{BLACK}Afrika
@@ -1805,7 +1809,7 @@ STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Anda me
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Keterkaitan ini terpilih untuk diunduh
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Sudah dimiliki
 STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Konten ini tidak diketahui dan tidak dapat diunduh di OpenTTD
-STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Ini adalah penggantian dari {STRING}
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Ini adalah pengganti {STRING}
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}Nama: {WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Versi: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Deskripsi: {WHITE}{STRING}
@@ -3214,6 +3218,8 @@ STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Ubah pen
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Muat ulang AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Matikan fitur AI, muat ulang script, dan restart AI
 
+STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD tidak menyertakan AI ...
+STR_ERROR_NO_AI_SUB                                             :{WHITE}... tidak ditemukan AI !
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Tidak ada AI yang cocok untuk digunakan.{}Ini adalah dummy AI yang tidak akan melakukan apapun.{}Anda dapat download beberapa AI melalui sistem 'Konten Online'.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Salah satu AI gagal. Laporkan ini kepada AI Author dengan potongan layar dari Jendela Debug AI.
