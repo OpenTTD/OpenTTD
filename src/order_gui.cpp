@@ -1297,13 +1297,15 @@ public:
 
 	virtual void OnTimeout()
 	{
-		/* unclick all buttons except for the 'goto' button (ORDER_WIDGET_GOTO), which is 'persistent' */
-		for (uint i = 0; i < this->nested_array_size; i++) {
-			if (this->nested_array[i] != NULL && i != ORDER_WIDGET_GOTO &&
-					i != ORDER_WIDGET_SEL_TOP_LEFT && i != ORDER_WIDGET_SEL_TOP_MIDDLE && i != ORDER_WIDGET_SEL_TOP_RIGHT &&
-					i != ORDER_WIDGET_SEL_TOP_ROW && this->IsWidgetLowered(i)) {
-				this->RaiseWidget(i);
-				this->SetWidgetDirty(i);
+		static const int raise_widgets[] = {
+			ORDER_WIDGET_SKIP, ORDER_WIDGET_DELETE, ORDER_WIDGET_REFIT, ORDER_WIDGET_SHARED_ORDER_LIST, WIDGET_LIST_END,
+		};
+
+		/* Unclick all buttons in raise_widgets[]. */
+		for (const int *widnum = raise_widgets; *widnum != WIDGET_LIST_END; widnum++) {
+			if (this->IsWidgetLowered(*widnum)) {
+				this->RaiseWidget(*widnum);
+				this->SetWidgetDirty(*widnum);
 			}
 		}
 	}
