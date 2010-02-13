@@ -870,6 +870,7 @@ public:
 						left_sel->SetDisplayedPlane(DP_LEFT_NONSTOP);
 						middle_sel->SetDisplayedPlane(DP_MIDDLE_LOAD);
 						right_sel->SetDisplayedPlane(DP_RIGHT_UNLOAD);
+						this->EnableWidget(ORDER_WIDGET_NON_STOP);
 						this->SetWidgetLoweredState(ORDER_WIDGET_NON_STOP, order->GetNonStopType() & ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS);
 					}
 					this->DisableWidget(ORDER_WIDGET_FULL_LOAD);
@@ -883,6 +884,7 @@ public:
 						left_sel->SetDisplayedPlane(DP_LEFT_NONSTOP);
 						middle_sel->SetDisplayedPlane(DP_MIDDLE_REFIT);
 						right_sel->SetDisplayedPlane(DP_RIGHT_SERVICE);
+						this->EnableWidget(ORDER_WIDGET_NON_STOP);
 						this->SetWidgetLoweredState(ORDER_WIDGET_NON_STOP, order->GetNonStopType() & ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS);
 					}
 					this->SetWidgetLoweredState(ORDER_WIDGET_SERVICE, order->GetDepotOrderType() & ODTFB_SERVICE);
