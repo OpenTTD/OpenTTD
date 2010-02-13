@@ -951,21 +951,18 @@ struct StationViewWindow : public Window {
 
 		this->DrawWidgets();
 
-		if (!this->IsShaded()) {
-			NWidgetBase *nwi = this->GetWidget<NWidgetBase>(SVW_WAITING);
-			Rect waiting_rect = {nwi->pos_x, nwi->pos_y, nwi->pos_x + nwi->current_x - 1, nwi->pos_y + nwi->current_y - 1};
-			this->DrawWaitingCargo(waiting_rect, cargolist, transfers);
-		}
-	}
-
-	virtual void DrawWidget(const Rect &r, int widget) const
-	{
-		if (widget != SVW_ACCEPTLIST) return;
-
+		const NWidgetBase *wid = this->GetWidget<NWidgetBase>(SVW_ACCEPTLIST);
+		const Rect r = {wid->pos_x, wid->pos_y, wid->pos_x + wid->current_x - 1, wid->pos_y + wid->current_y - 1};
 		if (this->GetWidget<NWidgetCore>(SVW_ACCEPTS)->widget_data == STR_STATION_VIEW_RATINGS_BUTTON) {
 			this->DrawAcceptedCargo(r);
 		} else {
 			this->DrawCargoRatings(r);
+		}
+
+		if (!this->IsShaded()) {
+			NWidgetBase *nwi = this->GetWidget<NWidgetBase>(SVW_WAITING);
+			Rect waiting_rect = {nwi->pos_x, nwi->pos_y, nwi->pos_x + nwi->current_x - 1, nwi->pos_y + nwi->current_y - 1};
+			this->DrawWaitingCargo(waiting_rect, cargolist, transfers);
 		}
 	}
 
