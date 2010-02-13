@@ -886,6 +886,8 @@ struct StationViewWindow : public Window {
 	uint32 cargo;                 ///< Bitmask of cargo types to expand
 	uint16 cargo_rows[NUM_CARGO]; ///< Header row for each cargo type
 	uint expand_shrink_width;     ///< The width allocated to the expand/shrink 'button'
+	int rating_lines;             ///< Number of lines in the cargo ratings view.
+	int accepts_lines;            ///< Number of lines in the accepted cargo view.
 
 	/** Height of the #SVW_ACCEPTLIST widget for different views. */
 	enum AcceptListHeight {
@@ -895,6 +897,9 @@ struct StationViewWindow : public Window {
 
 	StationViewWindow(const WindowDesc *desc, WindowNumber window_number) : Window()
 	{
+		this->rating_lines  = ALH_RATING;
+		this->accepts_lines = ALH_ACCEPTS;
+
 		this->CreateNestedTree(desc);
 		/* Nested widget tree creation is done in two steps to ensure that this->GetWidget<NWidgetCore>(SVW_ACCEPTS) exists in UpdateWidgetSize(). */
 		this->FinishInitNested(desc, window_number);
@@ -923,7 +928,7 @@ struct StationViewWindow : public Window {
 				break;
 
 			case SVW_ACCEPTLIST:
-				size->height = WD_FRAMERECT_TOP + ((this->GetWidget<NWidgetCore>(SVW_ACCEPTS)->widget_data == STR_STATION_VIEW_RATINGS_BUTTON) ? ALH_ACCEPTS : ALH_RATING) * FONT_HEIGHT_NORMAL + WD_FRAMERECT_BOTTOM;
+				size->height = WD_FRAMERECT_TOP + ((this->GetWidget<NWidgetCore>(SVW_ACCEPTS)->widget_data == STR_STATION_VIEW_RATINGS_BUTTON) ? this->accepts_lines : this->rating_lines) * FONT_HEIGHT_NORMAL + WD_FRAMERECT_BOTTOM;
 				break;
 		}
 	}
@@ -1157,10 +1162,10 @@ struct StationViewWindow : public Window {
 				NWidgetCore *nwi = this->GetWidget<NWidgetCore>(SVW_RATINGS);
 				if (this->GetWidget<NWidgetCore>(SVW_RATINGS)->widget_data == STR_STATION_VIEW_RATINGS_BUTTON) {
 					nwi->SetDataTip(STR_STATION_VIEW_ACCEPTS_BUTTON, STR_STATION_VIEW_ACCEPTS_TOOLTIP); // Switch to accepts view.
-					height_change = ALH_RATING - ALH_ACCEPTS;
+					height_change = this->rating_lines - this->accepts_lines;
 				} else {
 					nwi->SetDataTip(STR_STATION_VIEW_RATINGS_BUTTON, STR_STATION_VIEW_RATINGS_TOOLTIP); // Switch to ratings view.
-					height_change = ALH_ACCEPTS - ALH_RATING;
+					height_change = this->accepts_lines - this->rating_lines;
 				}
 				this->ReInit(0, height_change * FONT_HEIGHT_NORMAL);
 				break;
