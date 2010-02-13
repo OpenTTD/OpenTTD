@@ -1649,7 +1649,7 @@ check_compiler() {
 		fi
 		machine=`eval $compiler $9 2>/dev/null`
 		ret=$?
-		eval "$2=$compiler"
+		eval "$2=\"$compiler\""
 
 		log 2 "executing $compiler $9"
 		log 2 "  returned $machine"
@@ -1670,7 +1670,7 @@ check_compiler() {
 		# Check for manual compiler
 		machine=`$4 $9 2>/dev/null`
 		ret=$?
-		eval "$2=$4"
+		eval "$2=\"$4\""
 
 		log 2 "executing $4 $9"
 		log 2 "  returned $machine"
@@ -1687,7 +1687,7 @@ check_compiler() {
 		if [ -n "$5" ]; then
 			machine=`$5 $9 2>/dev/null`
 			ret=$?
-			eval "$2=$5"
+			eval "$2=\"$5\""
 
 			log 2 "executing $5 $9"
 			log 2 "  returned $machine"
@@ -1706,7 +1706,7 @@ check_compiler() {
 			# No $5, so try '$6'
 			machine=`$6 $9 2>/dev/null`
 			ret=$?
-			eval "$2=$6"
+			eval "$2=\"$6\""
 
 			log 2 "executing $6 $9"
 			log 2 "  returned $machine"
@@ -1716,7 +1716,7 @@ check_compiler() {
 				# Maybe '$7'?
 				machine=`$7 $9 2>/dev/null`
 				ret=$?
-				eval "$2=$7"
+				eval "$2=\"$7\""
 
 				log 2 "executing $7 $9"
 				log 2 "  returned $machine"
