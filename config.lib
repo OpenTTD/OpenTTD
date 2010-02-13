@@ -3172,6 +3172,8 @@ showhelp() {
 	echo "  --with-psp-config[=psp-config] enables psp-config support (PSP ONLY)"
 	echo "  --disable-builtin-depend       disable use of builtin deps finder"
 	echo "  --with-makedepend[=makedepend] enables makedepend support"
+	echo "  --with-ccache                  enables ccache support"
+	echo "  --with-distcc                  enables distcc support"
 	echo ""
 	echo "Some influential environment variables:"
 	echo "  CC                             C compiler command"
