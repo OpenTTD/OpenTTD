@@ -85,7 +85,11 @@ static inline void RestoreRandomSeeds(const SavedRandomSeeds &storage)
 
 void SetRandomSeed(uint32 seed);
 #ifdef RANDOM_DEBUG
-	#define Random() DoRandom(__LINE__, __FILE__)
+	#ifdef __APPLE__
+		#define OTTD_Random() DoRandom(__LINE__, __FILE__)
+	#else
+		#define Random() DoRandom(__LINE__, __FILE__)
+	#endif
 	uint32 DoRandom(int line, const char *file);
 	#define RandomRange(max) DoRandomRange(max, __LINE__, __FILE__)
 	uint DoRandomRange(uint max, int line, const char *file);
