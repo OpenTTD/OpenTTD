@@ -3374,6 +3374,7 @@ STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... dema
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... no hay más espacio en el mapa
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}El pueblo no construirá carreteras. Puedes activar la función de construcción de carreteras en Opciones Avanzadas->Economía->Pueblos.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Trabajos de carretera en progreso
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}No se puede borrar este pueblo...{}Quedan estaciones o depósitos relacionados con la ciudad, o una propiedad del pueblo no puede ser retirada
 
 # Industry related errors
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}No se pueden crear industrias...

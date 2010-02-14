@@ -3553,6 +3553,7 @@ STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... сл
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... нет места на карте
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Города не строят дорог. Вы можете включить стоительство дорог в Расш. настройки->Экономика->Города.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Идут дорожные работы...
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Невозможно уничтожить город:{}к нему относится станция или депо, либо невозможно очистить одну из занимаемых им клеток.
 
 # Industry related errors
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Невозможно создать промышленность...
