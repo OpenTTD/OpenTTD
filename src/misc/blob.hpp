@@ -64,8 +64,12 @@ protected:
 	} ptr_u;
 
 private:
-	/** Just to silence an unsilencable GCC 4.4+ warning */
-	static const CHdr hdrEmpty[];
+	/**
+	 * Just to silence an unsilencable GCC 4.4+ warning
+	 * Note: This cannot be 'const' as we do a lot of 'hdrEmpty[0]->m_size += 0;' and 'hdrEmpty[0]->m_max_size += 0;'
+	 *       after const_casting.
+	 */
+	static CHdr hdrEmpty[];
 
 public:
 	static const bsize_t Ttail_reserve = 4; ///< four extra bytes will be always allocated and zeroed at the end
@@ -117,13 +121,13 @@ protected:
 	/** blob header accessor - use it rather than using the pointer arithmetics directly - non-const version */
 	FORCEINLINE CHdr& Hdr()
 	{
-		return ptr_u.m_pHdr_1[-1];
+		return *(ptr_u.m_pHdr_1 - 1);
 	}
 
 	/** blob header accessor - use it rather than using the pointer arithmetics directly - const version */
 	FORCEINLINE const CHdr& Hdr() const
 	{
-		return ptr_u.m_pHdr_1[-1];
+		return *(ptr_u.m_pHdr_1 - 1);
 	}
 
 	/** return reference to the actual blob size - used when the size needs to be modified */

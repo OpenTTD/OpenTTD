@@ -27,6 +27,12 @@ struct CStrA : public CBlobT<char>
 	{
 	}
 
+	/** Copy constructor */
+	FORCEINLINE CStrA(const CStrA &src) : base(src)
+	{
+		base::FixTail();
+	}
+
 	/** Take over ownership constructor */
 	FORCEINLINE CStrA(const OnTransfer& ot)
 		: base(ot)
@@ -50,11 +56,31 @@ struct CStrA : public CBlobT<char>
 		}
 	}
 
+	/** Append another CStrA. */
+	FORCEINLINE void Append(const CStrA &src)
+	{
+		if (src.RawSize() > 0) {
+			base::AppendRaw(src);
+			base::FixTail();
+		}
+	}
+
 	/** Assignment from C string. */
-	FORCEINLINE CStrA& operator = (const char *src)
+	FORCEINLINE CStrA &operator = (const char *src)
 	{
 		base::Clear();
 		AppendStr(src);
+		return *this;
+	}
+
+	/** Assignment from another CStrA. */
+	FORCEINLINE CStrA &operator = (const CStrA &src)
+	{
+		if (&src != this) {
+			base::Clear();
+			base::AppendRaw(src);
+			base::FixTail();
+		}
 		return *this;
 	}
 

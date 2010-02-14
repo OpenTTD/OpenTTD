@@ -109,7 +109,9 @@ bool DumpTarget::FindKnownName(size_t type_id, const void *ptr, CStrA &name)
 void DumpTarget::WriteIndent()
 {
 	int num_spaces = 2 * m_indent;
-	memset(m_out.GrowSizeNC(num_spaces), ' ', num_spaces);
+	if (num_spaces > 0) {
+		memset(m_out.GrowSizeNC(num_spaces), ' ', num_spaces);
+	}
 }
 
 /** Write a line with indent at the beginning and <LF> at the end. */
@@ -175,4 +177,4 @@ void DumpTarget::EndStruct()
 }
 
 /** Just to silence an unsilencable GCC 4.4+ warning */
-/* static */ const CBlobBaseSimple::CHdr CBlobBaseSimple::hdrEmpty[] = {{0, 0}, {0, 0}};
+/* static */ CBlobBaseSimple::CHdr CBlobBaseSimple::hdrEmpty[] = {{0, 0}, {0, 0}};
