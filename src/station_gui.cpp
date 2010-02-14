@@ -951,25 +951,27 @@ struct StationViewWindow : public Window {
 
 		this->DrawWidgets();
 
-		const NWidgetBase *wid = this->GetWidget<NWidgetBase>(SVW_ACCEPTLIST);
-		const Rect r = {wid->pos_x, wid->pos_y, wid->pos_x + wid->current_x - 1, wid->pos_y + wid->current_y - 1};
-		if (this->GetWidget<NWidgetCore>(SVW_ACCEPTS)->widget_data == STR_STATION_VIEW_RATINGS_BUTTON) {
-			int lines = this->DrawAcceptedCargo(r);
-			if (lines > this->accepts_lines) { // Resize the widget, and perform re-initialization of the window.
-				this->accepts_lines = lines;
-				this->ReInit();
-				return;
-			}
-		} else {
-			int lines = this->DrawCargoRatings(r);
-			if (lines > this->rating_lines) { // Resize the widget, and perform re-initialization of the window.
-				this->rating_lines = lines;
-				this->ReInit();
-				return;
-			}
-		}
-
 		if (!this->IsShaded()) {
+			/* Draw 'accepted cargo' or 'cargo ratings'. */
+			const NWidgetBase *wid = this->GetWidget<NWidgetBase>(SVW_ACCEPTLIST);
+			const Rect r = {wid->pos_x, wid->pos_y, wid->pos_x + wid->current_x - 1, wid->pos_y + wid->current_y - 1};
+			if (this->GetWidget<NWidgetCore>(SVW_ACCEPTS)->widget_data == STR_STATION_VIEW_RATINGS_BUTTON) {
+				int lines = this->DrawAcceptedCargo(r);
+				if (lines > this->accepts_lines) { // Resize the widget, and perform re-initialization of the window.
+					this->accepts_lines = lines;
+					this->ReInit();
+					return;
+				}
+			} else {
+				int lines = this->DrawCargoRatings(r);
+				if (lines > this->rating_lines) { // Resize the widget, and perform re-initialization of the window.
+					this->rating_lines = lines;
+					this->ReInit();
+					return;
+				}
+			}
+
+			/* Draw waiting cargo. */
 			NWidgetBase *nwi = this->GetWidget<NWidgetBase>(SVW_WAITING);
 			Rect waiting_rect = {nwi->pos_x, nwi->pos_y, nwi->pos_x + nwi->current_x - 1, nwi->pos_y + nwi->current_y - 1};
 			this->DrawWaitingCargo(waiting_rect, cargolist, transfers);
