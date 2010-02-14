@@ -17,6 +17,7 @@
 
 typedef OverflowSafeInt64 Money;
 
+/** Data of the economy. */
 struct Economy {
 	Money max_loan;                       ///< NOSAVE: Maximum possible loan
 	int16 fluct;                          ///< Economy fluctuation status
@@ -130,25 +131,26 @@ enum Price {
 };
 DECLARE_POSTFIX_INCREMENT(Price)
 
-typedef Money Prices[PR_END];
+typedef Money Prices[PR_END]; ///< Prices of everything. @see Price
 typedef int8 PriceMultipliers[PR_END];
 
+/** Types of expenses. */
 enum ExpensesType {
-	EXPENSES_CONSTRUCTION =  0,
-	EXPENSES_NEW_VEHICLES,
-	EXPENSES_TRAIN_RUN,
-	EXPENSES_ROADVEH_RUN,
-	EXPENSES_AIRCRAFT_RUN,
-	EXPENSES_SHIP_RUN,
-	EXPENSES_PROPERTY,
-	EXPENSES_TRAIN_INC,
-	EXPENSES_ROADVEH_INC,
-	EXPENSES_AIRCRAFT_INC,
-	EXPENSES_SHIP_INC,
-	EXPENSES_LOAN_INT,
-	EXPENSES_OTHER,
-	EXPENSES_END,
-	INVALID_EXPENSES      = 0xFF,
+	EXPENSES_CONSTRUCTION =  0,   ///< Construction costs.
+	EXPENSES_NEW_VEHICLES,        ///< New vehicles.
+	EXPENSES_TRAIN_RUN,           ///< Running costs trains.
+	EXPENSES_ROADVEH_RUN,         ///< Running costs road vehicles.
+	EXPENSES_AIRCRAFT_RUN,        ///< Running costs aircrafts.
+	EXPENSES_SHIP_RUN,            ///< Running costs ships.
+	EXPENSES_PROPERTY,            ///< Property costs.
+	EXPENSES_TRAIN_INC,           ///< Income from trains.
+	EXPENSES_ROADVEH_INC,         ///< Income from road vehicles.
+	EXPENSES_AIRCRAFT_INC,        ///< Income from aircrafts.
+	EXPENSES_SHIP_INC,            ///< Income from ships.
+	EXPENSES_LOAN_INT,            ///< Interest payments over the loan.
+	EXPENSES_OTHER,               ///< Other expenses.
+	EXPENSES_END,                 ///< Number of expense types.
+	INVALID_EXPENSES      = 0xFF, ///< Invalid expense type.
 };
 
 /**
