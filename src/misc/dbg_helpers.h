@@ -137,7 +137,7 @@ struct DumpTarget {
 
 	void WriteIndent();
 
-	void WriteLine(const char *format, ...);
+	void CDECL WriteLine(const char *format, ...) WARN_FORMAT(2, 3);
 	void WriteValue(const char *name, const char *value_str);
 	void WriteTile(const char *name, TileIndex t);
 
