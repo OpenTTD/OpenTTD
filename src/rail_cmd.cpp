@@ -493,7 +493,8 @@ CommandCost CmdBuildSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 		YapfNotifyTrackLayoutChange(tile, track);
 	}
 
-	return cost.AddCost(RailBuildCost(railtype));
+	cost.AddCost(RailBuildCost(railtype));
+	return cost;
 }
 
 /** Remove a single piece of track
@@ -866,7 +867,8 @@ CommandCost CmdBuildTrainDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 		YapfNotifyTrackLayoutChange(tile, DiagDirToDiagTrack(dir));
 	}
 
-	return cost.AddCost(_price[PR_BUILD_DEPOT_TRAIN]);
+	cost.AddCost(_price[PR_BUILD_DEPOT_TRAIN]);
+	return cost;
 }
 
 /** Build signals, alternate between double/single, signal/semaphore,

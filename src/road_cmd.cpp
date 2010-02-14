@@ -888,7 +888,8 @@ CommandCost CmdBuildRoadDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 		MakeRoadDepot(tile, _current_company, dep->index, dir, rt);
 		MarkTileDirtyByTile(tile);
 	}
-	return cost.AddCost(_price[PR_BUILD_DEPOT_ROAD]);
+	cost.AddCost(_price[PR_BUILD_DEPOT_ROAD]);
+	return cost;
 }
 
 static CommandCost RemoveRoadDepot(TileIndex tile, DoCommandFlag flags)

@@ -50,34 +50,25 @@ public:
 	 */
 	CommandCost(ExpensesType ex_t, Money cst) : expense_type(ex_t), cost(cst), message(INVALID_STRING_ID), success(true) {}
 
-	/**
-	 * Adds the cost of the given command return value to this cost.
-	 * Also takes a possible error message when it is set.
-	 * @param ret the command to add the cost of.
-	 * @return this class.
-	 */
-	CommandCost AddCost(CommandCost ret);
 
 	/**
 	 * Adds the given cost to the cost of the command.
 	 * @param cost the cost to add
-	 * @return this class.
 	 */
-	CommandCost AddCost(Money cost)
+	void AddCost(Money cost)
 	{
 		this->cost += cost;
-		return *this;
 	}
+
+	void AddCost(CommandCost ret);
 
 	/**
 	 * Multiplies the cost of the command by the given factor.
 	 * @param factor factor to multiply the costs with
-	 * @return this class
 	 */
-	CommandCost MultiplyCost(int factor)
+	void MultiplyCost(int factor)
 	{
 		this->cost *= factor;
-		return *this;
 	}
 
 	/**

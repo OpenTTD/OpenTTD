@@ -159,7 +159,8 @@ CommandCost CmdPurchaseLandArea(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 		MarkTileDirtyByTile(tile);
 	}
 
-	return cost.AddCost(GetUnmovableSpec(UNMOVABLE_OWNED_LAND)->GetBuildingCost());
+	cost.AddCost(GetUnmovableSpec(UNMOVABLE_OWNED_LAND)->GetBuildingCost());
+	return cost;
 }
 
 /** Sell a land area. Actually you only sell one tile, so

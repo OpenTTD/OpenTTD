@@ -682,12 +682,16 @@ CommandCost DoCommandPInternal(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd,
 #undef return_dcpi
 
 
-CommandCost CommandCost::AddCost(CommandCost ret)
+/**
+ * Adds the cost of the given command return value to this cost.
+ * Also takes a possible error message when it is set.
+ * @param ret The command to add the cost of.
+ */
+void CommandCost::AddCost(CommandCost ret)
 {
 	this->AddCost(ret.cost);
 	if (this->success && !ret.success) {
 		this->message = ret.message;
 		this->success = false;
 	}
-	return *this;
 }
