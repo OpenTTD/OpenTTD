@@ -687,7 +687,7 @@ CommandCost DoCommandPInternal(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd,
  * Also takes a possible error message when it is set.
  * @param ret The command to add the cost of.
  */
-void CommandCost::AddCost(CommandCost ret)
+void CommandCost::AddCost(const CommandCost &ret)
 {
 	this->AddCost(ret.cost);
 	if (this->success && !ret.success) {
