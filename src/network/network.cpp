@@ -1194,7 +1194,7 @@ void NetworkStartUp()
 	DEBUG(net, 3, "[core] starting network...");
 
 	/* Network is available */
-	_network_available = NetworkCoreInitialize();;
+	_network_available = NetworkCoreInitialize();
 	_network_dedicated = false;
 	_network_last_advertise_frame = 0;
 	_network_need_advertise = true;

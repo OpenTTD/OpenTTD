@@ -138,5 +138,5 @@ uint8 GetReverseCargoTranslation(CargoID cargo, const GRFFile *grffile)
 	}
 
 	/* No matching label was found, so we return the 'climate independent' 'bitnum' */
-	return cs->bitnum;;
+	return cs->bitnum;
 }

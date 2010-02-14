@@ -140,7 +140,7 @@ bool BaseMedia<Tbase_set>::AddFile(const char *filename, size_t basepath_length)
 	bool ret = false;
 	DEBUG(grf, 1, "Checking %s for base " SET_TYPE " set", filename);
 
-	Tbase_set *set = new Tbase_set();;
+	Tbase_set *set = new Tbase_set();
 	IniFile *ini = new IniFile();
 	ini->LoadFromDisk(filename);
 

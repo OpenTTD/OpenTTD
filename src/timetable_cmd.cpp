@@ -81,7 +81,7 @@ CommandCost CmdChangeTimetable(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 	int travel_time = order->travel_time;
 	if (packed_time) {
 		travel_time = GB(p2, 0, 16);
-		wait_time   = GB(p2, 16, 16);;
+		wait_time   = GB(p2, 16, 16);
 	} else if (is_journey) {
 		travel_time = GB(p2, 0, 16);
 	} else {

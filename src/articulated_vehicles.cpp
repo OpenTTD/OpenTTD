@@ -170,7 +170,7 @@ void GetArticulatedRefitMasks(EngineID engine, bool include_initial_cargo_type, 
 		EngineID artic_engine = GetNextArticPart(i, engine);
 		if (artic_engine == INVALID_ENGINE) break;
 
-		veh_cargos = GetAvailableVehicleCargoTypes(artic_engine, include_initial_cargo_type);;
+		veh_cargos = GetAvailableVehicleCargoTypes(artic_engine, include_initial_cargo_type);
 		*union_mask |= veh_cargos;
 		if (veh_cargos != 0) *intersection_mask &= veh_cargos;
 	}

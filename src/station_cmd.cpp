@@ -915,7 +915,7 @@ CommandCost FindJoiningBaseStation(StationID existing_station, StationID station
 	/* Distant join */
 	if (*st == NULL && station_to_join != INVALID_STATION) *st = T::GetIfValid(station_to_join);
 
-	return CommandCost();;
+	return CommandCost();
 }
 
 /**

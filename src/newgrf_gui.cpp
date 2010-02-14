@@ -951,8 +951,8 @@ struct NewGRFWindow : public Window {
 					free(c->info);
 
 					c->filename  = f->filename == NULL ? NULL : strdup(f->filename);
-					c->name      = f->name == NULL ? NULL : strdup(f->name);;
-					c->info      = f->info == NULL ? NULL : strdup(f->info);;
+					c->name      = f->name == NULL ? NULL : strdup(f->name);
+					c->info      = f->info == NULL ? NULL : strdup(f->info);
 					c->status    = GCS_UNKNOWN;
 				}
 				break;

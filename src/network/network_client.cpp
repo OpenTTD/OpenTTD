@@ -598,7 +598,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 
 	/* First packet, init some stuff */
 	if (maptype == MAP_PACKET_START) {
-		file_pointer = FioFOpenFile("network_client.tmp", "wb", AUTOSAVE_DIR);;
+		file_pointer = FioFOpenFile("network_client.tmp", "wb", AUTOSAVE_DIR);
 		if (file_pointer == NULL) {
 			_switch_mode_errorstr = STR_NETWORK_ERROR_SAVEGAMEERROR;
 			return NETWORK_RECV_STATUS_SAVEGAME;

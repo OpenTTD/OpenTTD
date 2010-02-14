@@ -458,7 +458,7 @@ public:
 
 				if (id_g >= this->groups.Length()) return;
 
-				this->group_sel = this->groups[id_g]->index;;
+				this->group_sel = this->groups[id_g]->index;
 
 				this->vehicles.ForceRebuild();
 				this->SetDirty();

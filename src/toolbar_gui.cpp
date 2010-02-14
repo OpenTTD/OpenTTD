@@ -1615,7 +1615,7 @@ void AllocateToolbar()
 	_last_built_roadtype = ROADTYPE_ROAD;
 
 	if (_game_mode == GM_EDITOR) {
-		new ScenarioEditorToolbarWindow(&_toolb_scen_desc);;
+		new ScenarioEditorToolbarWindow(&_toolb_scen_desc);
 	} else {
 		new MainToolbarWindow(&_toolb_normal_desc);
 	}

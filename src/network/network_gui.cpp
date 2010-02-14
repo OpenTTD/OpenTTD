@@ -1473,7 +1473,7 @@ struct NetworkLobbyWindow : public Window {
 	{
 		switch (widget) {
 			case NLWW_HEADER:
-				size->height = WD_MATRIX_TOP + FONT_HEIGHT_NORMAL + WD_MATRIX_BOTTOM;;
+				size->height = WD_MATRIX_TOP + FONT_HEIGHT_NORMAL + WD_MATRIX_BOTTOM;
 				break;
 
 			case NLWW_MATRIX:
