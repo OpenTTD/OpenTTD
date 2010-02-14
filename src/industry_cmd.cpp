@@ -1809,7 +1809,7 @@ static void PlaceInitialIndustry(IndustryType type, bool try_hard)
 
 	IncreaseGeneratingWorldProgress(GWP_INDUSTRY);
 
-	for (uint i = 0; i < (try_hard ? 10000 : 2000); i++) {
+	for (uint i = 0; i < (try_hard ? 10000u : 2000u); i++) {
 		if (CreateNewIndustry(RandomTile(), type) != NULL) break;
 	}
 
