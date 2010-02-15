@@ -3428,6 +3428,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... grad
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... gradnja mogoča samo v območju deževnega gozda
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... gradnja mogoča samo v puščavi
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... gradnja možna samo v mestih
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... gradnja možna samo v nižjih predelih
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... mogoče zgraditi samo ob robu zemljevida
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... gozd je mogoče posaditi samo nad nivojem snežne odeje
 

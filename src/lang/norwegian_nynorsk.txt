@@ -347,7 +347,7 @@ STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Vanskegrad
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Avanserte alternativ
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF-Innstillingar
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Gjennomsiktigheitsinnstillingar
-STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Syne namn på by
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Syne bynamn
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Syne namn på stasjonar
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Syne kontrollpunktnamn
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Syne skilt
@@ -436,7 +436,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Tidlegare meldi
 ############ range for about menu starts
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informasjon om felt
 STR_ABOUT_MENU_SEPARATOR                                        :
-STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Syne/gjøym konsoll
+STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Syne/gjem konsoll
 STR_ABOUT_MENU_AI_DEBUG                                         :AI-feilsøking
 STR_ABOUT_MENU_SCREENSHOT                                       :Skjermfoto (CTRL+S)
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Stort skjermfoto (CTRL+G)
@@ -522,7 +522,7 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Firmaver
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Betalingstakst for varer
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Dager i transport
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Betaling for levering av ti einingar (eller 10 000 liter) over ein distanse på 20 ruter
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Skru av/på graf for visse typar varer
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Skru av/på graf for varetypar
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Syne detaljerte ytelsesrangeringar
@@ -563,7 +563,7 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Lån:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Totalt:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Antal køyretøy med positiv forteneste i fjor. Dette inkluderer vegkøyretøy, tog, skip og flymaskiner
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Antal nyleg betjente stasjonsdelar. Kvar del av ein stasjon (f.eks. togstasjon, busstopp, flyplass) vert telt, sjølv om dei er kobla saman til éin stasjon
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Antal nyleg betjente stasjonsdelar. Kvar del av ein stasjon (t.d. togstasjon, busstopp, flyplass) vert telt, sjølv om dei er kobla saman til éin stasjon
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Vinst frå køyretøya med lågast inntekt (kun køyretøy eldre enn 2 år er tatt med)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Pengar tente i månaden med lægst gevinst dei 12 siste kvartala
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Pengar tente i månaden med høgast gevinst dei siste 12 kvartala
@@ -802,7 +802,7 @@ STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} har for få ordrar i køyreplanen
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} har ein ugyldig ordre
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} har to like ordrar
-STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} har ein ugyldig stasjon i påboda
+STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} har ein ugyldig stasjon i sine ordre
 # end of order system
 
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} er gammal
@@ -812,7 +812,7 @@ STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE
 STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} har køyrt seg vill.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}'s forteneste i fjor var {CURRENCY}
 
-STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} stoppa pga repareringsfeil på ordre
+STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} stoppa pga. ombygningsordre feila
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Automatisk fornying feila på {VEHICLE}{}{STRING}
 
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}Ny {STRING}type er tilgjengeleg!
@@ -942,7 +942,7 @@ STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Vel kva 
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Basisgrafikk-sett
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Vel basisgrafikk-sett som skal nyttast
-STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} manglande/øydelagd fil{P "" s}
+STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} manglande/øydelagd{P "" e} fil{P "" er}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Tilleggsinformasjon om basis-grafikksettet
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Basislyd-sett
@@ -951,7 +951,7 @@ STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Tilleggs
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Basismusikk-sett
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Vel basismusikk som skal nyttast
-STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} øydelagd fil{P "" s}
+STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} øydelagd{P "" e} fil{P "" er}
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Tilleggsinformasjon om basis-musikksettet
 
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Fullskjermvising feila
@@ -1066,7 +1066,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Tillatande
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
 STR_CITY_APPROVAL_HOSTILE                                       :Fiendsleg
 
-STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Inga passande AI tilgjengeleg...{}Du kan laste ned fleire AIer via 'Online Content'-systemet
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Inga passande AIer tilgjengeleg...{}Du kan laste ned fleire AIer via 'Online Content'-systemet
 STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Denne handlinga endra vanskegraden til eigendefinert
 
 # Advanced settings window
@@ -1206,10 +1206,10 @@ STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Av
 STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Eige firma
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Alle firma
 STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Bruk rutetabellar for køyretøy: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Syne rutetabell i klikk i staden for dagar: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Syne rutetabell i tikk i staden for dagar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Syne ankomst og avferd i rutetabellane: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Hurtig-laging av køyrety-ordrar: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Standard jernbanetype (etter nytt spel/lasta spel): {ORANGE}{STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Standard jernbanetype (etter nytt/lasta spel): {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Første tilgjengelege
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Siste tilgjengelege
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Mest brukte
@@ -1249,16 +1249,16 @@ STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Start s
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Jamn økonomi (fleire, mindre endringar): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Tillet kjøp av aksjar i andre selskap: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Prosent av etappeforteneste å betale i tilbringarsystemer: {ORANGE}{STRING}%
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Ved opptrekking, plasser signal hver: {ORANGE}{STRING} rute{P "" r}
-STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Bygg semaforer automatisk før: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Bruk signal GUI: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Signaltype bygd som standard: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Blokksignal
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Vegsignal
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Einvegs vegsignal
-STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Sjå gjennom signaltypar: {ORANGE}{STRING}
-STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Kun blokksignal
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Kun vegsignal
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Ved opptrekking, plasser signal for hver: {ORANGE}{STRING} rute
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Bygg vingesignal automatisk før: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Slå på signalgrensesnittet: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Standard signaltype: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Blokksignaler
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Avanserte signaler
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Einvegs avanserte signaler
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Bla gjennom signaltypar: {ORANGE}{STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Kun blokksignaler
+STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Kun avanserte signaler
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Alle
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Vegplan for nye byar: {ORANGE}{STRING}
@@ -1330,7 +1330,7 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Ikkj
 STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}X-storleik på kart: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Y-storleik på kart: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Endre innstillingsverdi
+STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Byt innstillingsverdi
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -1366,7 +1366,7 @@ STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Syne spe
 STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Syne vanskegrad-instillingar
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Syne avanserte alternativ
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Syne NewGRF-instillingar
-STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Sjå etter nytt eller oppdatert innhald som kan lastas ned
+STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Sjå etter nytt og oppdatert innhald som kan lastas ned
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Syne AI-instillingar
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Avslutt 'OpenTTD'
 
@@ -1396,7 +1396,7 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Er du s
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Juks
 STR_CHEATS_TOOLTIP                                              :{BLACK}Avkrysningsbokser fortel at du har nytta denne juksekoden tidlegare
-STR_CHEATS_WARNING                                              :{BLACK}Åtvaring! Du er i ferd med å forråda motspelarane. Gud tilgjev, men det er ikkje sikkert at venene dine gjer det.
+STR_CHEATS_WARNING                                              :{BLACK}Åtvaring! Du er i ferd med å forråda motspelarane. Vær klar over at denne skammelige handlinga vil bli huska i all evighet.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Auk lommeboka di med {CURRENCY}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Speler som firma: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magisk bulldoser (fjern industriar, ufjernbare ting): {ORANGE}{STRING}
@@ -1408,7 +1408,7 @@ STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Temperert lands
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :subarktisk landskap
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :subtropisk landskap
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :"Leikeland"-landskap
-STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Bytt dato: {ORANGE} {DATE_SHORT}
+STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Byt dato: {ORANGE} {DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Tillet endring av produksjonsmengder: {ORANGE}{STRING}
 
 # Livery window
@@ -1462,14 +1462,14 @@ STR_FACE_ADVANCED                                               :{BLACK}Avansert
 STR_FACE_ADVANCED_TOOLTIP                                       :{BLACK}Avansert val av andlet
 STR_FACE_SIMPLE                                                 :{BLACK}Enkel
 STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Enkelt val av andlet
-STR_FACE_LOAD                                                   :{BLACK}Last
-STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Last favoritandlet
-STR_FACE_LOAD_DONE                                              :{WHITE}Favorittandletet ditt har blitt lasta frå OpenTTDs konfigurasjonsfil
+STR_FACE_LOAD                                                   :{BLACK}Last inn
+STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Last inn favoritandlet
+STR_FACE_LOAD_DONE                                              :{WHITE}Favorittandletet ditt har blitt lasta inn frå OpenTTDs konfigurasjonsfil
 STR_FACE_FACECODE                                               :{BLACK}Spelarandlet nummer.
-STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Sjå og/eller set spelar andletsnummer
-STR_FACE_FACECODE_CAPTION                                       :{WHITE}Sjå og/eller set spelars andletsnummer
+STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Syne og/eller angje spelar andletsnummer
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Syne og/eller angje spelars andletsnummer
 STR_FACE_FACECODE_SET                                           :{WHITE}Ny kode for andletsnummer er satt
-STR_FACE_FACECODE_ERR                                           :{WHITE}Kunne ikkje setja spelars andletenummer - må vera mellom 0 og 4,294,967,295!
+STR_FACE_FACECODE_ERR                                           :{WHITE}Kunne ikkje angje spelars andletenummer - må vera mellom 0 og 4,294,967,295!
 STR_FACE_SAVE                                                   :{BLACK}Lagre
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Lagre favoritandlete
 STR_FACE_SAVE_DONE                                              :{WHITE} Dette andletet vil verte lagra som favoriten din i OpenTTDs konfigurasjonfil
@@ -1479,30 +1479,30 @@ STR_FACE_AFRICAN                                                :{BLACK}Afrikans
 STR_FACE_SELECT_AFRICAN                                         :{BLACK}Velg afrikanske andlet
 STR_FACE_YES                                                    :Ja
 STR_FACE_NO                                                     :Nei
-STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Bart eller øyrering
+STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Slå på bart eller øyrering
 STR_FACE_HAIR                                                   :Hår:
-STR_FACE_HAIR_TOOLTIP                                           :{BLACK} Bytt hår
+STR_FACE_HAIR_TOOLTIP                                           :{BLACK}Byt hår
 STR_FACE_EYEBROWS                                               :Augebryn:
-STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}Bytt augebryn
+STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}Byt augebryn
 STR_FACE_EYECOLOUR                                              :Augefarge:
-STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Bytt augefarge:
+STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Byt augefarge:
 STR_FACE_GLASSES                                                :Briller:
-STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}Bruk briller
-STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}Bytt briller
+STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}Slå på briller
+STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}Byt briller
 STR_FACE_NOSE                                                   :Nase:
-STR_FACE_NOSE_TOOLTIP                                           :{BLACK}Bytt nase
+STR_FACE_NOSE_TOOLTIP                                           :{BLACK}Byt nase
 STR_FACE_LIPS                                                   :Lepper:
 STR_FACE_MOUSTACHE                                              :Bart:
-STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}Bytt lepper eller bart
+STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}Byt lepper eller bart
 STR_FACE_CHIN                                                   :Hake:
-STR_FACE_CHIN_TOOLTIP                                           :{BLACK}Bytt hake
+STR_FACE_CHIN_TOOLTIP                                           :{BLACK}Byt hake
 STR_FACE_JACKET                                                 :Jakke:
-STR_FACE_JACKET_TOOLTIP                                         :{BLACK}Bytt jakke
+STR_FACE_JACKET_TOOLTIP                                         :{BLACK}Byt jakke
 STR_FACE_COLLAR                                                 :Krage:
-STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}Bytt krage
+STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}Byt krage
 STR_FACE_TIE                                                    :Slips:
 STR_FACE_EARRING                                                :Øyrering:
-STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Bytt slips eller øyrering
+STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Byt slips eller øyrering
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Fleirspelar
@@ -1573,7 +1573,7 @@ STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Lag eit tilfeld
 
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internett
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internett (annonser)
-STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} klient{P "" s}
+STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} klient{P "" er}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Maks. antal tilletne klientar:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Vel maks. antal klientar. Alle plassane treng ikkje å verte tekne
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} firma
@@ -1587,7 +1587,7 @@ STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Andre sp
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Start spel
 STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Start eit nytt nettverksspel frå ein tilfeldig bane, eller eit scenario
-STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Last spel
+STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Last inn spel
 STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Gjenoppta eit tidlegare lagra fleirspelarspel (ver sikker på at du koblar deg til som den rette spelaren)
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Gje eit namn til nettverksspelet
@@ -1652,7 +1652,7 @@ STR_NETWORK_GAME_LOBBY_PLAYERS                                  :{SILVER}Spelara
 
 STR_NETWORK_GAME_LOBBY_NEW_COMPANY                              :{BLACK}Nytt firma
 STR_NETWORK_GAME_LOBBY_NEW_COMPANY_TOOLTIP                      :{BLACK}Skip eit nytt firma
-STR_NETWORK_GAME_LOBBY_SPECTATE_GAME                            :{BLACK}Sjå på spel
+STR_NETWORK_GAME_LOBBY_SPECTATE_GAME                            :{BLACK}Vær tilskodar
 STR_NETWORK_GAME_LOBBY_SPECTATE_GAME_TOOLTIP                    :{BLACK}Ver tilskodar til spelet
 STR_NETWORK_GAME_LOBBY_JOIN_COMPANY                             :{BLACK}Ver med i firmaet
 STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP                     :{BLACK}Hjelp å styre dette firmaet
@@ -1671,7 +1671,7 @@ STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Re
 STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Hentar speloversikt..
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Hentar firmaoversikt..
 ############ End of leave-in-this-order
-STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} klient{P "" ar} føre oss
+STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} klient{P "" ar} føre deg
 STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} lasta ned så langt
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Koble frå
@@ -1726,17 +1726,17 @@ STR_NETWORK_CHAT_ALL                                            :[Alle] {STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Skriv tekst for nettverkssamtale
 
 # Network messages
-STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE} Finn inkje nettverksadapter eller kompilert utan ENABLE_NETWORK
-STR_NETWORK_ERROR_NOSERVER                                      :{WHITE} Kunne ikkje finne noko nettverksspel
+STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Finn ikkje nettverksadapter eller kompilert utan ENABLE_NETWORK
+STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Kunne ikkje finne nokon nettverksspel
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE} Tenaren svarte ikkje på spørringa
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Kunne ikkje koble til grunna NewGRF-filer som ikkje passar saman
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Synkronisering i nettverksspelet feila
-STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE} Mista tilkoblinga til nettverksspelet
-STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE} Kunne ikkje laste spel som var lagra på tenaren
+STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Mista tilkoblinga til nettverksspelet
+STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Kunne ikkje laste inn spel
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE} Klarte ikkje å starte tenaren
-STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE} Klarte ikkje å opprette samband.
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE} Tilkobling nr. {NUM} vart tidsavbrote
-STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE} Det skjedde ein protokoll-feil, så sambandet er brote
+STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Klarte ikkje å opprette tilkobling
+STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Tilkobling #{NUM} vart tidsavbrote
+STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Det skjedde ein protokoll-feil, så tilkoblinga ble brote
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE} Klientversjonen er ikkje den same som tenarversjonen
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE} Feil passord
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE} Tenaren er full
@@ -1747,7 +1747,7 @@ STR_NETWORK_ERROR_CHEATER                                       :{WHITE} Juksing
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :generell feil
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :synkroniseringsfeil
-STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :klarte ikkje å opne kartet
+STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :klarte ikkje å laste inn kartet
 STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :sambandet vart brote
 STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :protokollfeil
 STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :NewGRF-filer passar ikkje saman
@@ -1778,7 +1778,7 @@ STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :forlet
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} har blitt med i spelet
 STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} har blitt med i spelet (Client #{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} har slutta seg til firma #{2:NUM}
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} har slutta seg til sjåarane
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} har slutta seg til tilskodarane
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} har starta eit nytt firma (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} har forlatt spelet ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} har endra namnet sitt til {STRING}
@@ -1793,7 +1793,7 @@ STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Type
 STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}Type innhald
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}Namn
 STR_CONTENT_NAME_CAPTION_TOOLTIP                                :{BLACK}Namnet til innhaldet
-STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}Klikk på ei line for å sjå detaljane{}Klikk på avkryssingsboksen for å merka den for nedlasting
+STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}Klikk på ei line for å syne detaljane{}Klikk på avkryssingsboksen for å merka den for nedlasting
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Vel alle
 STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK}Merk alt innhald som skal lastast ned
 STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Vel oppdateringar
@@ -1817,7 +1817,7 @@ STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Omtale:
 STR_CONTENT_DETAIL_URL                                          :{SILVER}URL: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TYPE                                         :{SILVER}Type: {WHITE}{STRING}
 STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Nedlastingsstorleik: {WHITE}{BYTES}
-STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Vald på grunn av: {WHITE}{STRING}
+STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Vald pga.: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Avheng av: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Merker: {WHITE}{STRING}
 STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD er bygd utan støtte for "zlib"...
@@ -1853,12 +1853,12 @@ STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Byt gjen
 STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Byt gjennomsyn for tre. CTRL+klikk for å låsa.
 STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Byt gjennomsyn for hus. CTRL+klikk for å låsa.
 STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Byt gjennomsyn for industriar. CTRL+klikk for å låsa.
-STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Byt gjennomsyn for bygningar som kan byggast, til dømes garasjer, staller og vegmerker. CTRL+klikk for å låsa.
+STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Byt gjennomsyn for bygningar som kan byggast, til dømes garasjer, staller og kontrollpunkter. CTRL+klikk for å låsa.
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Byt gjennomsyn for bruer. CTRL+klikk for å låsa.
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Byt gjennomsyn for bygningar som fyrtårn og antenner. CTRL+klikk for å låsa.
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Byt gjennomsyn for kjeder. CTRL+klikk for å låsa.
 STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Byt gjennomsyn for lasteindikatorar. CTRL+klikk for å låsa.
-STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Gjer usynlege istanden for gjennomsiktige
+STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Gjer objekter usynlege istanden for gjennomsiktige
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Syne dekningsområde
@@ -1873,8 +1873,8 @@ STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Forsynin
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Spleisa stasjonen
 STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Bygg ein seperat stasjon
 
-STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Spleis veipunkt
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Bygg eit seperat vegpunkt
+STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Spleis kontrollpunkt
+STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Bygg eit seperat kontrollpunkt
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}Bygg jernbane
@@ -1887,10 +1887,10 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Bygg jer
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Bygg togstall (trengst for bygging og vedlikehald av tog)
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Gjer om jernbane til kontrollpunkt. CTRL mogleggjer samanhengande kontrollpunkt
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Bygg jernbanestasjon. CTRL mogleggjer samanhengande stasjonar
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Bygg signallykter. CTRL endrar mellom semaforer-/lyssignal{}Dra for å bygge signal langs ei strekke med skinner. Ctrl byggjer signal til neste knutepunkt{}CTRL+klikk opnar/lukker signalval-vindauget
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Bygg jernbanesignaler. CTRL byter mellom vingesignal/lyssignal{}Dra for å bygge signaler langs ei strekke med skinner. CTRL byggjer signaler til neste knutepunkt{}CTRL+klikk opnar/lukker signalval-vindauget
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Bygg jernbanebru
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Bygg jernbanetunnel
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Byt mellom bygging/fjerning for jernbanespor, signal, kontrollpunkt og stasjonar. Halde CTRL inne fjernar også spor frå vegpunkt og stasjonar
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Byt mellom bygging/fjerning for jernbanespor, signal, kontrollpunkt og stasjonar. Halde CTRL inne fjernar også spor frå kontrollpunkt og stasjonar
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Gjer om/oppgrader jernbanetypen
 
 # Rail depot construction window
@@ -1916,23 +1916,23 @@ STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Vel den 
 STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Vel stasjonen du vil byggje
 
 STR_STATION_CLASS_DFLT                                          :Standard stasjon
-STR_STATION_CLASS_WAYP                                          :Lokalstasjonar
+STR_STATION_CLASS_WAYP                                          :Kontrollpunkt
 
 # Signal window
-STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Signal Selection
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Blokksignal (semafor){}Dette er den enklaste typen av signal som tillet kun eit tog å køyre om gangen.
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Inn-signal (semaforer){}Grønt så lenge det er eit eller fleir grøne ut-signal i den følgande seksjonen. Ellers syner det raudt.
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Utgangssignal (semaforer){}Verker på samme måte som blokksignal, men er naudsynte for å få rett farge på inngangs- og kombinasjonsinngangssignal.
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Kombinasjonssignal (semaforer){}Verker som både inn- og utgangssignal og gjer det mogleg å lage store "greiner" av inngangssignal
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Vegsignal (semaforer){}Eit vegsignal tillet meir enn eitt tog å entre signalblokka på same tid, om toget kan reservere ei rute til ein trygg plass å stoppe på. Standard vegsignal kan passeraste frå baksida.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Einvegs vegsignal (semaforer){}Eit vegsignal tillet meir enn eitt tog å kjøra innanfor signalblokka på same tid, om toget kan reservere ei rute til ein trygg plass å stoppe på. Einvegs vegsignal kan ikkje passerast frå baksida.
-STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Blokksignal (elektrisk){}Dette er den enklaste typen av signal som tillet kun eit tog å køyre om gangen.
-STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Inn-signal (elektrisk){}Grøn så lenge det er eit eller fleir grønne ut signal fra den følgande seksjonen. Ellers synar det raudt.
-STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Utgangssignal (elektrisk){}Verker på samme måte som blokksignal, men er naudsynte for å få rett farge på inngangs- og kombinasjonsinngangssignal.
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Kombinasjonssignal (elektrisk){}Verker som både inn- og utgangssignal og gjer det mogleg å lage store "greiner" av inngangssignal
-STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Vegsignal (elektrisk){}Eit vegsignal tillet meir enn eitt tog å entre signalblokka på same tid, om toget kan reservere ei rute til ein trygg plass å stoppe på. Standard vegsignal kan passeraste frå baksida.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Einvegs vegsignal (elektrisk){}Eit vegsignal tillet meir enn eitt tog å kjøra innanfor signalblokka på same tid, om toget kan reservere ei rute til ein trygg plass å stoppe på. Einvegs vegsignal kan ikkje passerast frå baksida.
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Signalkonvertering{}Klikk på eit signal for å endra det til valde type, CTRL+klikk skifter mellom forskjellige variantar.
+STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Signalval
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Blokksignal (vingesignal){}Dette er den enklaste typen av signaler som tillet kun eit tog å køyre om gangen.
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Inngangssignal (vingesignal){}Grønt så lenge det er eit eller fleir grøne utgangssignal i den følgande seksjonen. Ellers syner det raudt.
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Utgangssignal (vingesignal){}Verker på samme måte som blokksignal, men er naudsynte for å utløyse rett farge på inngangs- og kombinasjons-forsignaler.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Kombinasjonssignal (vingesignal){}Verker som både inn- og utgangssignal. Dette gjer det mogleg å lage store "greinar" av forsignal.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Avansert signal (vingesignal){}Eit avansert signal tillet meir enn eitt tog å køyre samstundes, om toget kan reservere ei rute til ein trygg stoppestad. Vanlege avanserte signaler kan passerast bakfrå.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Einvegs avansert signal (vingesignal){}Eit einvegs avansert signal tillet meir enn eitt tog å køyre samstundes, om toget kan reservere ei rute til ein trygg stoppestad. Einvegs avanserte signaler kan ikkje passerast bakfrå.
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Blokksignal (lyssignal){}Dette er den enklaste typen av signaler som tillet kun eit tog å køyre om gangen.
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Inngangssignal (lyssignal){}Grønt så lenge det er eit eller fleir grøne utgangssignal i den følgande seksjonen. Ellers syner det raudt.
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Utgangssignal (lyssignal){}Verker på samme måte som blokksignal, men er naudsynte for å utløyse rett farge på inngangs- og kombinasjons-forsignaler.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Kombinasjonssignal (lyssignal){}Verker som både inn- og utgangssignal. Dette gjer det mogleg å lage store "greinar" av forsignal.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Avansert signal (lyssignal){}Eit avansert signal tillet meir enn eitt tog å køyre samstundes, om toget kan reservere ei rute til ein trygg stoppestad. Vanlege avanserte signaler kan passerast bakfrå.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Einvegs avansert signal (lyssignal){}Eit einvegs avansert signal tillet meir enn eitt tog å køyre samstundes, om toget kan reservere ei rute til ein trygg stoppestad. Einvegs avanserte signaler kan passerast bakfrå.
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Signalkonvertering{}Klikk på eit signal for å endra det til valde type, CTRL+klikk byter mellom forskjellige variantar.
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Tettleik for dra og slepp signalbygging
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Minsk tettleik for dra og slepp signalbygging
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Auk tettleik for dra og slepp signalbygging
@@ -2073,11 +2073,11 @@ STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Bygg by 
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Mange tilfeldige byar
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Dekk kartet med tilfeldig plasserte byar
 
-STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}By navn:
-STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Skriv inn by navn
-STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Klikk for å endre by navn
+STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Bynamn:
+STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Skriv inn bynamn
+STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Klikk for å skriva inn namn på byen
 STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Tilfeldig namn
-STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Generer nytt tilfeldig navn
+STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Generer eit nytt tilfeldig namn
 
 STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}Bystorleik:
 STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}Liten
@@ -2136,27 +2136,27 @@ STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Snødekt land
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Ørken
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Jernbanespor
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Jernbanespor med blokksignal
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Jernbanespor med inngangssignal
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Jernbanespor med utgangssignal
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Jernbanespor med kombinasjonssignal
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Jernbanespor med vegsignal
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Jernbanespor med einvegs vegsignal
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Jernbanespor med blokk- og inngangssignal
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Jernbanespor med blokk- og utgangssignal
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Jernbanespor med blokk- og kombinasjonssignal
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Jernbanespor med blokk- og vegsignal
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Jernbanespor med blokk- og einvegs vegsignal
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Jernbanespor med inngangs- og utgangssignal
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Jernbanespor med inngangs- og kombinasjonssignal
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Jernbanespor med inngangs- og vegsignal
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Jernbanespor med inngangs- og einvegs vegsignal
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Jernbanespor med utgangs- og kombinasjonssignal
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Jernbanespor med utgangs- og vegsignal
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Jernbanespor med utgangs- og einvegs vegsignal
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Jernbanespor med kobinasjons- og vegsignal
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Jernbanespor med kombinasjons- og einvegs vegsignal
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Jernbanespor med vegsignal og einvegs vegsignal
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Jernbanespor med blokksignaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Jernbanespor med forsignaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Jernbanespor med utgangssignaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Jernbanespor med kombinasjonssignaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Jernbanespor med avanserte signaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Jernbanespor med einvegs avanserte signaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Jernbanespor med blokk- og forsignaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Jernbanespor med blokk- og utgangssignaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Jernbanespor med blokk- og kombinasjonssignaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Jernbanespor med blokk- og avanserte signaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Jernbanespor med blokk- og einvegs avanserte signaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Jernbanespor med for- og utgangssignaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Jernbanespor med for- og kombinasjonssignaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Jernbanespor med forsignaler og avanserte signaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Jernbanespor med forsignaler og einvegs avanserte signaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Jernbanespor med utgangs- og kombinasjonssignaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Jernbanespor med utgangssignaler og avanserte signaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Jernbanespor med utgangssignaler og einvegs avanserte signaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Jernbanespor med kombinasjonssignaler og avanserte signaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Jernbanespor med kombinasjonssignaler og einvegs avanserte signaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Jernbanespor med vanlege og einvegs avanserte signaler
 STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Togstall
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Veg
@@ -2228,7 +2228,7 @@ STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}Lagre sp
 STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Last inn spel
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Lagre scenario
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Last inn scenario
-STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Last høgdekart
+STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Last inn høgdekart
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Klikk her for å kome til standardmappa for lagring og lasting
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} ledig
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Liste over diskar, mapper og lagra spel
@@ -2280,8 +2280,8 @@ STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Storleik
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
 
 STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Skriv inn tilfeldig seed
-STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Skift høgda på snøgrensa
-STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Endre startår
+STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Byt høgda på snøgrensa
+STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Byt startår
 
 # SE Map generation
 STR_SE_MAPGEN_CAPTION                                           :{WHITE}Scenariotype
@@ -2292,7 +2292,7 @@ STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Høgde p
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Flytt landhøgda eitt nivå ned
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Flytt landhøgda eitt nivå opp
 
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Endre høgda på flatt land
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Byt høgda på flatt land
 
 # Map generation progress
 STR_GENERATION_WORLD                                            :{WHITE}Genererer verd...
@@ -2311,7 +2311,7 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Gjer kla
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF-Innstillingar
-STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Last det valde oppsettet
+STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Last inn det valde oppsettet
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Lagre oppsettet
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Lagre den noverande lista som oppsett
 STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Skriv inn namnet på oppsettet
@@ -2364,16 +2364,16 @@ STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} vil 
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} er for {STRING} utgåva av TTD.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} er laga for å brukast saman med {STRING}
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Ugyldig parameter for {1:STRING}: parameter {STRING} ({NUM})
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} må være lasta før{STRING}.
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} må være lasta før {STRING}.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} må være lasta etter {STRING}.
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} Behøver OpenTTD versjon {STRING} eller betre.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF fila den var laga for å omsetje
-STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :For mange NewGRF lasta
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Å laste {STRING} som statisk NewGRF med {STRING} kan forårsake synkroniseringsfeil.
+STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :For mange NewGRF-er lasta inn.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Å laste inn {STRING} som statisk NewGRF med {STRING} kan forårsaka synkroniseringsfeil.
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Uforventa grafikk.
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Ukjent Handling 0 eigedom.
 STR_NEWGRF_ERROR_INVALID_ID                                     :Forsøk på å bruka ugyldig ID.
-STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} inneheld ein øydelagt grafikk. All øydelagt grafikk vil bli vist som raude spørsmålsteikn (?).
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} inneheld øydelagd grafikk. All øydelagd grafikk vil bli vist som raude spørsmålsteikn (?).
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Inneheld fleire "Action 8" oppføringar.
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Las forbi slutten på pseudo-sprite.
 
@@ -2394,7 +2394,7 @@ STR_NEWGRF_BROKEN                                               :{WHITE}Oppførs
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Byter køyretylengde for '{1:ENGINE}' når ikkje i garasje/stall.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tog '{VEHICLE}' eigd av '{COMPANY}' har ulovleg lengde. Dette er sansynlegvis forårsaka av eit problem med NewGRFer. Spelet kan bli usynkronisert eller krasja.
 
-STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' gir gal informasjon.
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' gjer gal informasjon.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Vare/ombyggings-informasjon for '{1:ENGINE}' er forskjellig frå kjøpslista etter konstruksjon. Dette kan føra til at autofornying/erstatning ikkje tilpasser riktig.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' forårsaka ei uendelig lykkje i produksjonskall.
 
@@ -2429,7 +2429,7 @@ STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Grense f
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Midtstill hovedvisninga på byen. CTRL+klikk syner byen i eit nytt tilleggsvindauge
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Bystyre
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Syne informasjon om bystyret
-STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Bytt namn på byen
+STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Byt namn på byen
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Utvid
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Auk bystorleik
@@ -2512,7 +2512,7 @@ STR_CARGO_RATING_OUTSTANDING                                    :Framifrå
 ############ range for rating ends
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Midtstill hovedvisninga på stasjonen. CTRL+klikk syner stasjonen i eit nytt tilleggsvindauge
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Endre namnet på stasjonen
+STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Byt namn på stasjonen
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Syne alle tog som har denne stasjonen på timeplanen sin
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Syne alle køyretøy som har denne stasjonen på timeplanen sin
@@ -2523,8 +2523,8 @@ STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Endre namnet p�
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Midtstill hovedvisninga på vegpunktet. CTRL+klikk syner vegpunktet i eit nytt tilleggsvindauge
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Endre namnet på waypoint
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Midtstill hovedvisninga på kontrollpunktet. CTRL+klikk syner kontrollpunktet i eit nytt tilleggsvindauge
+STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Byt namn på kontrollpunkt
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Midtstill hovedvisninga på bøyen. CTRL+klikk syner bøyen i eit nytt tilleggsvindauge
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Byt namn på bøyen
 
@@ -2576,7 +2576,7 @@ STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Bygg hovudkontor
 STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Bygg firmaet's hovedkvarter
-STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Sjå hovudkontor
+STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Syne hovudkontor
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Syne firmaets hovudkontor
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Omplasser hovudkvarter
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Gjenoppbygg selskapets hovudkvarter ein annan stad for 1 % av verdien til firmaet
@@ -2584,16 +2584,16 @@ STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Gjenoppb
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nytt andlet
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Gje sjefen ei andletslyfting
 STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Firmafarge
-STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Endre firmafarge
+STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Byt firmafarge
 STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Firmanamn
-STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Endre firmanamnet
+STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Byt firmanamn
 STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Namnet til sjefen
-STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Endre namnet til sjefen
+STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Byt namnet på sjefen
 
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Kjøp 25 % av aksjane i firmaet
-STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Sel 25 % av aksjane du eig
+STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Sel 25 % av aksjane i firmaet
 STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Kjøp 25 % av aksjane i firmaet
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Sel 25 % av aksjane du eig
+STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Sel 25 % av aksjane i firmaet
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Firmanamn
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Namnet til sjefen
@@ -2606,7 +2606,7 @@ STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Ingen
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA} % transportert)
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA} %/{COMMA} % transportert)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Industrinamn - Klikk på industrinamnet for å sjå industrien i hovedvisninga. CTRL+klikk syner industrien i eit nytt tilleggsvindauge
+STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Industrinamn - Klikk på industrinamnet for å syne industrien i hovedvisninga. CTRL+klikk syner industrien i eit nytt tilleggsvindauge
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
@@ -2627,7 +2627,7 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Lagar: {
 STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Lagar: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
 ############ range for produces ends
 
-STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Endre produksjon (8-gongen, opptil 2040)
+STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Byt produksjon (8-gongen, opptil 2040)
 
 # Vehicle lists
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Tog
@@ -2734,7 +2734,7 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Endre na
 STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}Endre namn
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Endre namn
 
-STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Endre namnet til den valde farkosten
+STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Gje nytt namn til tog-/vogntypen
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Endre namnet til køyretøytypen
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Endre namnet til skipstypen
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Endre namn til flymaskintype
@@ -2752,7 +2752,7 @@ STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
-STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} køyretøy{P "" s}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} køyretøy{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
 STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Tog - klikk på tog for meir informasjon, dra vogn for å leggje til/fjerne frå tog
@@ -2884,12 +2884,12 @@ STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Dette vi
 STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Dette vil laga ein kopi av eit skip. CTRL+klikk deler ordrane
 STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Dette vil lage ein kopi av ein flymaskin. CTRL+klikk deler ordrane
 
-STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Tving toget til å køyre på raudt lys
+STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Tving toget til å køyre utan å ha fått klareringssignal
 
 STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Bygg om toget til å frakte ein annan varetype
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Bygg om køyretøyet til å frakte ein annan varetype
-STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Bygg om eit konteinarskip til å frakte ein annan varetype
-STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Bygg om ein flymaskin til å frakte ein annan varetype
+STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Bygg om skipet til å frakte ein annan varetype
+STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Bygg flymaskinen til å frakte ein annan varetype
 
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Byt køyreretning
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Bytt køyreretning
@@ -2910,7 +2910,7 @@ STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Gjeldend
 STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Gjeldande flymaskinstatus - klikk her for å stoppe/starte flymaskin
 
 # Messages in the start stop button in the vehicle view
-STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Lastar på/av
+STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Lastar / Lossar
 STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Reiser
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Krasja!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Havarert
@@ -3014,7 +3014,7 @@ STR_REFIT_TITLE                                                 :{GOLD}Vel varet
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Ny kapasitet: {GOLD}{CARGO}{}{BLACK}Ombyggingskostnader: {GOLD}{CURRENCY}
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vel kva type varer lokomotivet skal frakte
-STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Vel ein type varer som køyretøyet skal lastast med
+STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Vel kva type varer køyretøyet skal frakte
 STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}Vel kva type varer skipet skal frakte
 STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Vel kva type varer flymaskinen skal frakte
 
@@ -3046,24 +3046,24 @@ STR_ORDER_GO_TO                                                 :Køyr til
 STR_ORDER_GO_NON_STOP_TO                                        :Køyr utan stopp til
 STR_ORDER_GO_VIA                                                :Køyr om
 STR_ORDER_GO_NON_STOP_VIA                                       :Køyr utan stopp om
-STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Endre stopp-oppførselen til den merkte rekkefølgja
+STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Byt stopp-oppførselen til den merkte rekkefølgja
 
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Last fullt, vilkårleg last
-STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Last om tilgjengeleg
-STR_ORDER_DROP_FULL_LOAD_ALL                                    :Last fullt av alle varetyper
+STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Last på om tilgjengeleg
+STR_ORDER_DROP_FULL_LOAD_ALL                                    :Last fullt av alle varetypar
 STR_ORDER_DROP_FULL_LOAD_ANY                                    :Last fullt, vilkårleg last
-STR_ORDER_DROP_NO_LOADING                                       :Ikkje last
-STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Endre opplastings-oppførselen til den merkte rekkjefølgja
+STR_ORDER_DROP_NO_LOADING                                       :Ingen lasting
+STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Byt lastingsrutinane for den merkte ordren
 
-STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Last av alt
-STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Last av dersom godtatt
-STR_ORDER_DROP_UNLOAD                                           :Last av alt
+STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Loss av alt
+STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Loss av dersom godtatt
+STR_ORDER_DROP_UNLOAD                                           :Loss av alt
 STR_ORDER_DROP_TRANSFER                                         :Overfør
-STR_ORDER_DROP_NO_UNLOADING                                     :Ikkje last av
-STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Endre avlastings-oppførselen til den merkte rekkjefølgja
+STR_ORDER_DROP_NO_UNLOADING                                     :Ingen lossing
+STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Byt lossingsrutinane for den merkte ordren
 
 STR_ORDER_REFIT                                                 :{BLACK}Bygg om
-STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Vel varetypen det skal skiftast til. CTRL+klikk for å fjerne ombyggingsinstruksjonar
+STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Vel hvilken varetype det skal byggas om til i denne ordren. CTRL+klikk for å fjerne ombyggingsordra
 
 STR_ORDER_SERVICE                                               :{BLACK}Vedlikehald
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Reis alltid
@@ -3071,7 +3071,7 @@ STR_ORDER_DROP_SERVICE_DEPOT                                    :Service om naud
 STR_ORDER_DROP_HALT_DEPOT                                       :Stopp
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Hopp over ordren dersom ikkje vedlikehald trengst
 
-STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Køyrety-data å basera ordre-hopping på
+STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Køyretøy-data å basere hopp på
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Lasteprosent
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Pålitelegdom
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Maks. fart
@@ -3102,8 +3102,8 @@ STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Køyr ti
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Køyr til næraste garasje/stall/hangar/dokk
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Fly til næraste hangar
 STR_ORDER_CONDITIONAL                                           :Betinga ordrehopp
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Sett inn ein ordre før den valde ordren, eller i slutten av lista
-STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Set inn ei avansert rekkjefølgje
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Sett inn ein ny ordre før den valde ordren, eller legg til i slutten av lista. CTRL gjer ordren 'full last, enhver varetype', kontrollpunktordre 'direkte' og verkstadsordre 'vedlikehald'
+STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Set inn ein avansert odre
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Syne alle køyretøy som delerv denne ruteplanen
 
@@ -3124,25 +3124,25 @@ STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRIN
 STR_ORDER_GO_TO_HANGAR_FORMAT                                   :{STRING} {STATION} Hangar
 
 STR_ORDER_REFIT_ORDER                                           :(Bygg om til {STRING})
-STR_ORDER_REFIT_STOP_ORDER                                      :(Tilpass {STRING} og stopp)
+STR_ORDER_REFIT_STOP_ORDER                                      :(Bygg om til {STRING} og stopp)
 STR_ORDER_STOP_ORDER                                            :(Stopp)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
 STR_ORDER_FULL_LOAD                                             :(Last fullt)
 STR_ORDER_FULL_LOAD_ANY                                         :(Last fullt, vilkårleg last)
-STR_ORDER_NO_LOAD                                               :(Ikkje last)
+STR_ORDER_NO_LOAD                                               :(Ingen lasting)
 STR_ORDER_UNLOAD                                                :(Last av og plukk opp ny last)
-STR_ORDER_UNLOAD_FULL_LOAD                                      :(Last av og vent til lasten er full)
-STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Last av og vent til lasten er full, uavhengig av type last)
-STR_ORDER_UNLOAD_NO_LOAD                                        :(Last av utan å laste opp meir)
-STR_ORDER_TRANSFER                                              :(Overfør og plukk opp ny last)
-STR_ORDER_TRANSFER_FULL_LOAD                                    :(Overfør og vent til lasten er full)
-STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Overfør og vent til lasten er full, uavhengig av type last)
-STR_ORDER_TRANSFER_NO_LOAD                                      :(Overfør utan å laste opp meir)
-STR_ORDER_NO_UNLOAD                                             :(Ikkje last av, men plukk opp ny last)
-STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Ikkje last av, og vent til lasten er full)
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Ikkje last av, og vent til lasten er full, uavhengig av type last)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :(Loss av og vent til lasten er full)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Loss av og vent på første fulle last)
+STR_ORDER_UNLOAD_NO_LOAD                                        :(Loss av og forlat tom)
+STR_ORDER_TRANSFER                                              :(Overfør og last på varer)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :(Overfør og vent på full last)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Overfør og vent på første fulle last)
+STR_ORDER_TRANSFER_NO_LOAD                                      :(Overfør og forlat tom)
+STR_ORDER_NO_UNLOAD                                             :(Ingen lossing og last på varer)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Ingen lossing og vent på full last)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Ingen lossing og vent på første fulle last)
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[nær enden]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[midten]
@@ -3167,7 +3167,7 @@ STR_TIMETABLE_TRAVEL_FOR                                        :Reis i {STRING}
 STR_TIMETABLE_STAY_FOR                                          :stå i {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :og reis for {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} dag{P "" ar}
-STR_TIMETABLE_TICKS                                             :{COMMA} Tjukk{P "" s}
+STR_TIMETABLE_TICKS                                             :{COMMA} tikk
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Det vil ta {STRING} å gjere ferdig denne rutetabellen
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Det vil ta minst {STRING} å gjere ferdig denne rutetabellen ( ikkje alle på rutetabellen
@@ -3181,8 +3181,8 @@ STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Startdat
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Startdato
 STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Vel ein startdato for denne rutetabellen
 
-STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Bytt Tid
-STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Bytt tida den merka ordra skal bruke
+STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Byt Tid
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Byt tida den merka ordra skal bruke
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Fjern Tid
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Fjern tida den merka ordra skal bruke
@@ -3215,20 +3215,20 @@ STR_AI_DEBUG                                                    :{WHITE}AI feils
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Namnet til datamaskinspelaren
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}AI-instillingar
-STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Endre AI-innstillingar
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Byt AI-innstillingar
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Last datamaskinspelaren på ny
-STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Drep datamaskinspelaren, last skriptet på ny og starte om datamaskinspelaren
+STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Drep AIen, last inn skriptet på nytt og start AIen på nytt
 
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD er bygd utan støtte for AI...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... Ingen AI tilgjengeleg!
 
-STR_ERROR_AI_NO_AI_FOUND                                        :Ingen passande AI kunne lastast.{}Denne AI er ein dummy-AI og kjem ikkje til å gjera noko.{}Du kan lasta ned fleire AI'ar via 'Online innhold'-systemet.
+STR_ERROR_AI_NO_AI_FOUND                                        :Ingen passande AI kunne lastast inn.{}Denne AI er ein dummy-AI og kjem ikkje til å gjera noko.{}Du kan lasta ned fleire AI'ar via 'Online innhold'-systemet.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Ein AI har krasja. Venleg rapporter dette til produsenten av AIen med eit skjermbilete av "AI Debug"-vindauget.
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI-feilsøkingvindauget er kun tilgjengeleg for serveren
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}AI-konfigurasjonar
-STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}Alle AI som vil bli lasta i neste spel
+STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}Alle AI som vil bli lasta inn i neste spel
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Menneskeleg spelar
 STR_AI_CONFIG_RANDOM_AI                                         :Vilkårleg AI
 
@@ -3238,7 +3238,7 @@ STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Flytt ne
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Flytt valt AI nedover i lista
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}Vel AI
-STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Last endå ein AI
+STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Last inn endå ein AI
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Konfigurere
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Konfigurer AI-parametrane
 
@@ -3297,12 +3297,12 @@ STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Spelet h
 STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Kart-generering avbrutt...{}...ingen passande by-plasseringar
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}...det er ingen byar i dette scenarioet
 
-STR_ERROR_PNGMAP                                                :{WHITE}Kan ikkje laste landskapet frå PNG...
+STR_ERROR_PNGMAP                                                :{WHITE}Kan ikkje laste inn landskap frå PNG...
 STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}...fann inga fil.
 STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}...kunne ikkje konvertere biletetypen. Eit 8- eller 24-bits bilete trengst.
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}...noko gjekk akkurat gale. Orsak. (Truleg ei øydelagt fil.)
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}...noko gjekk akkurat gale. Orsak. (truleg ei øydelagd fil)
 
-STR_ERROR_BMPMAP                                                :{WHITE}Kan ikkje laste landskap frå BMP...
+STR_ERROR_BMPMAP                                                :{WHITE}Kan ikkje laste inn landskap frå BMP...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}...kan ikkje konvertere biletetype.
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Skalaåtvaring
@@ -3335,7 +3335,7 @@ STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{STRING}
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}Bystyret i {TOWN} nektar deg å gjere dette
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}Bystyret i {TOWN} tillet ikkje fleire flyplassar i denne byen
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} lokal myndigheit nektar tillatelse til flyplass pga støybekymringar
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} lokal myndigheit nektar tillatelse til flyplass pga. støybekymringar
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}Freistinga di på bestikking
 STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}er oppdaga av ein regional inspektør.
 
@@ -3349,7 +3349,7 @@ STR_ERROR_TOO_HIGH                                              :{WHITE}For høg
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... allereie flatt
 
 # Company related errors
-STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Kan ikkje endre firmanamn...
+STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Kan ikkje byta firmanamn...
 STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Kan ikkje byte namn på sjefen...
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}...maks. lån er {CURRENCY}
@@ -3365,7 +3365,7 @@ STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Kan ikkj
 STR_ERROR_PROTECTED                                             :{WHITE}Dette selskapet sel ikkje aksjer enno...
 
 # Town related errors
-STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Kan ikkje byggje byar
+STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Kan ikkje byggje nokon byar
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Kan ikkje byte namn på byen...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Kan ikkje grunnleggja by her...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}...for nært kanten på kartet
@@ -3377,7 +3377,7 @@ STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Vegarbei
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kan ikkje fjerne denne byen...{}Ein stasjon eller garasje/stall/hangar/dokk refererar til byen eller eit by-egd felt som ikkje kan fjernast
 
 # Industry related errors
-STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Kan ikkje lage industriar...
+STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Kan ikkje generere industriar...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Kan ikkje byggja {STRING} her...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Kan ikkje byggja denne typen industri her...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}...for nær ein annan industri
@@ -3402,7 +3402,7 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Kan ikkj
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Grensar til meir enn éin eksisterande stasjon/lasteterminal
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}...stasjonen er spreidd for mykje
 STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}...ikkje-einsarta stasjonar er deaktiverte
-STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}For mange stasjonar/lasteterminalar
+STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}For mange stasjonar/lasteteområder
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}For mange togstasjon-delar
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}For mange busshaldeplassar
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}For mange lasteterminalar
@@ -3417,8 +3417,8 @@ STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}...vegen
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Kan ikkje fjerne del av stasjonen...
 STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}Må fjerne togstasjon først
-STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Kan ikkje fjerne busstasjon
-STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Kan ikkje fjerne lastebilstasjon
+STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Kan ikkje fjerne busstasjon...
+STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Kan ikkje fjerne lastebilstasjon...
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Kan ikkje fjerne trikkestasjon for passasjerer...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Kan ikkje fjerne trikkestasjon for frakt...
 
@@ -3436,7 +3436,7 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}For nær
 
 STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Kan ikkje byggje kontrollpunkt for tog her...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Kan ikkje plassere bøye her...
-STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Kan ikkje endre namnet til kontrollpunktet...
+STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Kan ikkje byta kontrollpunktnamnet...
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Kan ikkje fjerne kontrollpunktet...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Må fjerna kontrollpunkt først
@@ -3457,7 +3457,7 @@ STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Må stå
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Tog kan berre endrast når dei står stille i togstallen
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Toget er for langt
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Kan ikkje snu køyretøyet...
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Kan ikkje snu køyretøy som er samansette av fleire delar
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Kan ikkje snu køyretøy som er samansette av fleire enhetar...
 STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Jernbanetypane passar ikkje saman
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Kan ikkje flytte køyretøy...
@@ -3477,11 +3477,11 @@ STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Umogeleg
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Upassande jernbanespor
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Må fjerne jernbanespor først
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Vegen er einvegskøyrd eller blokkert
-STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Kan ikkje byggje signallykter her...
+STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Kan ikkje byggje signaler her...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Kan ikkje byggje jernbanespor her...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Kan ikkje fjerne jernbanespor herfrå...
-STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Kan ikkje fjerne signallykter herfrå...
-STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Kan ikkje endre signal her
+STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Kan ikkje fjerne signaler herfrå...
+STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Kan ikkje konvertere signaler her...
 
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Kan ikkje konvertere jernbanetype her...
 
@@ -3498,7 +3498,7 @@ STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Kan ikkj
 STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Kan ikkje byggje sluser her...
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Kan ikkje plassere elver her...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}...må byggjast på sjøen
-STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}...Kan ikkje byggje på vatn
+STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... kan ikkje byggje på vatn
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Må fjerna kanal først
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Kan ikkje bygge kanal her...
 
@@ -3554,8 +3554,8 @@ STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}Kan ikkj
 STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}Kan ikkje namngje flymaskin...
 
 STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Kan ikkje stoppe/starte tog...
-STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Kan ikkje starte/stoppe køyretøy...
-STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Kan ikkje starte/stoppe skip...
+STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Kan ikkje stoppe/starte køyretøy...
+STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Kan ikkje stoppe/starte skip...
 STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Kan ikkje stoppe/starte flymaskinen...
 
 STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Kan ikkje sende tog til togstall...
@@ -3586,11 +3586,11 @@ STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Flymaski
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}For mange køyretøy i spelet
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Kan ikkje endre serviceintervall...
 
-STR_ERROR_CAN_T_SELL_DESTROYED_VEHICLE                          :{WHITE}Kan ikkje selge øydelagd køyretøy
-STR_ERROR_CAN_T_REFIT_DESTROYED_VEHICLE                         :{WHITE}Kan ikkje tilpasse øydelagt køyretøy...
+STR_ERROR_CAN_T_SELL_DESTROYED_VEHICLE                          :{WHITE}Kan ikkje selje øydelagd køyretøy...
+STR_ERROR_CAN_T_REFIT_DESTROYED_VEHICLE                         :{WHITE}Kan ikkje byggje om øydelagd køyretøy...
 
 # Specific vehicle errors
-STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Kan ikkje tvinge tog til å køyre på raudt lys ved fare...
+STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Kan ikkje tvinge tog til å passere signal ved fare...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Kan ikkje snu toget...
 STR_ERROR_TRAIN_START_NO_CATENARY                               :Dette sporet manglar eit kjede, så toget kan ikkje starte
 
@@ -3604,26 +3604,26 @@ STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}For mang
 STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}Kan ikkje setje inn ny ordre...
 STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :{WHITE}Kan ikkje slette denne ordren...
 STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}Kan ikkje endre denne ordren...
-STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Kan ikkje flytte denne ordra
-STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Kan ikkje hoppa over gjeldande ordre
-STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Kan ikkje hoppa til valde ordre
+STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Kan ikkje flytte denne ordra...
+STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Kan ikkje hoppa over gjeldande ordre...
+STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Kan ikkje hoppa til valde ordre...
 STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... køyretøyet kan ikkje fara til alle stasjonane
 STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... køyretøyet kan ikkje gå til den stasjonen
-STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... eit køyretøy som delar dette påbodet kan ikkje gå til den stasjonen
+STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... eit køyretøy som delar denne ordra kan ikkje gå til den stasjonen
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Kan ikkje dele ordreliste...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Kan ikkje kopiere ordreliste...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...for langt borte frå førre destinasjon
 
 # Timetable related errors
-STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Kan ikkje lage rutetabell for køyretøyet
+STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Kan ikkje lage rutetabell for køyretøyet...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Køyretøy kan kun venta på stasjonar
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Dette køyretøyet stoppar ikkje på denne stasjonen
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}...for mange skilt
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Kan ikkje plassere skilt her...
-STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Kan ikkje endre teksta på skiltet...
+STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Kan ikkje byta teksta på skiltet...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Kan ikkje sletta skilt...
 
 ##id 0x2000
@@ -4014,7 +4014,7 @@ STR_FORMAT_COMPANY_NUM                                          :(Firma {COMMA})
 STR_FORMAT_GROUP_NAME                                           :Gruppe {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 STR_FORMAT_WAYPOINT_NAME                                        :{TOWN} kontrollpunkt
-STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN} kontrollpunkt nr. {COMMA}
+STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN} Kontrollpunkt #{COMMA}
 
 STR_UNKNOWN_STATION                                             :ukjend stasjon
 STR_DEFAULT_SIGN_NAME                                           :Skilt

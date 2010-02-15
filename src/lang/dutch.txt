@@ -3373,6 +3373,7 @@ STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... te v
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... er is geen ruimte meer op de kaart
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Het dorp bouwt geen wegen. Het bouwen van wegen kan aangezet worden via Geavanceerde Instellingen->Economie->Dorpen.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Er wordt aan de weg gewerkt
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kan dit dorp niet verwijderen...{}Een station of depot verwijst naar dit dorp of een dorpbeheerde tegel kan niet worden verwijderd
 
 # Industry related errors
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Kan geen industrieën genereren
@@ -3385,6 +3386,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... kan 
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... kan alleen in het regenwoud gebouwd worden
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... kan alleen in woestijngebieden gebouwd worden
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... kan alleen in steden gebouwd worden
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... kan alleen gebouwd worden in laaggelegen gebieden
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... kan alleen aan de rand van de kaart geplaatst worden
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... bossen kunnen alleen worden geplant boven de sneeuwgrens
 

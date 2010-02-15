@@ -3420,6 +3420,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...csak 
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...csak esőerdőben építhető
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}...csak sivatagban építhető
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}...csak településben építhető
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... csak alacsony terepen építhető
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}...csak a térkép széléhez közel építhető
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}...erdő csak a hóhatár fölé ültethető
 

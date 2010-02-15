@@ -2506,6 +2506,7 @@ STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({SHORT
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}מקבל
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}הצג רשימת סוגי המטען שהתחנה מקבלת
+STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}מקבלת: {WHITE}{STRING}
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}דירוג
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}הצג את דירוג השירות
@@ -3386,6 +3387,7 @@ STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... יו
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... אין יותר מקום על המפה
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}עיר זאת לא תבנה כבישים. באפשרותך לאפשר בניית כבישים בעזרת תפריט הגדרות מתקמדות->כלכלה->ערים.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}עבודות כביש בפעולה
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}לא ניתן למחוק עיר זו...{}תחנה או מוסך מקושר לעיר או שמשבצת בבעלות העיר לא ניתנת להסרה
 
 # Industry related errors
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}לא ניתן ליצור תעשיות...

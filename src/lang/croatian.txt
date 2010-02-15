@@ -3469,6 +3469,7 @@ STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}...previ
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...nema više mjesta na karti
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Grad neće graditi ceste. Možete uključiti gradnju cesta putem Naprednih postavki -> Ekonomija -> Gradovi
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Cestovni radovi u tijeku
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Nemoguće izbrisati ovaj grad...{}Stanica ili depo se pozivaju na grad ili jedno od gradskih polja nije moguće izbrisati
 
 # Industry related errors
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Nije moguće generirati industrije...

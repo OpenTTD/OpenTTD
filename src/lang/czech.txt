@@ -297,7 +297,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Přejmen
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Zavřít okno
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Titulek okna - tahej pro posun okna
-STR_TOOLTIP_SHADE                                               :{BLACK}Minimalizovat okno - Zobrazit pouze záhlaví okna
+STR_TOOLTIP_SHADE                                               :{BLACK}Srolovat okno - zobrazit pouze jeho záhlaví
 STR_TOOLTIP_STICKY                                              :{BLACK}Označit toto okno, aby se nedalo zavřít klávesou pro zavření všech oken
 STR_TOOLTIP_RESIZE                                              :{BLACK}Velikost okna změníš uchopením a táhnutím zde
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Přepnout velké/malé okno
@@ -756,7 +756,7 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLAC
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}Sníh
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Zobrazovat na mapě jména měst
-STR_SMALLMAP_CENTER                                             :{BLACK}Vycentrovat malou mapu na tomto místě
+STR_SMALLMAP_CENTER                                             :{BLACK}Vystředit malou mapu na tomto místě
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Vypnout všechny
@@ -1539,7 +1539,7 @@ STR_FACE_FACECODE_SET                                           :{WHITE}Nové č
 STR_FACE_FACECODE_ERR                                           :{WHITE}Nešlo nastavit číslo tváře - musí jít o číslo mezi 0 a 4 294 967 295!
 STR_FACE_SAVE                                                   :{BLACK}Uložit
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Uložit oblíbený obličej
-STR_FACE_SAVE_DONE                                              :{WHITE}Tato tvář bude uložena jako tvá oblíbená do konfiguračního souboru.
+STR_FACE_SAVE_DONE                                              :{WHITE}Tato tvář bude uložena do konfiguračního souboru jako tvá oblíbená.
 STR_FACE_EUROPEAN                                               :{BLACK}Europoidní
 STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Vybrat europoidní tváře
 STR_FACE_AFRICAN                                                :{BLACK}Africká
@@ -1990,13 +1990,13 @@ STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Výběr 
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Obyčejné návěstidlo (semafor){}Návěstidla jsou nutná, aby nedocházelo ke srážkám vlaků na tratích, kde jezdí více než jeden vlak.
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Vjezdové návěstidlo (semafor){}Svítí zeleně do té doby, kdy v následujícím úseku trati je alespoň jedno další svítící zeleně. Jinak svítí červeně.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Výjezdové návěstidlo (semafor){}Chová se stejně jako obyčejné, ale musí se aktivovat vjezdové a cestové návěstidlo.
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Cestové návěstidlo (semafor){}Cestové (kombinované) slouží zároveň jako vjezdové a odjezdové. Tím je možné postavit velké "řetězce" presignálů.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Cestové návěstidlo (semafor){}Cestové (kombinované) slouží zároveň jako vjezdové a výjezdové. Tím je možné postavit velké "řetězce" presignálů.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Dokonalejší (PBS) návěstidlo (semafor){}Dokonalejší návěstidlo umožňuje vjet několika vlakům najednou do stejného úseku trati, pokud jsou schopny rezervovat si cestu až do bezpečného místa na zastavení. Dokonalejší návěstidla se dají projet zezadu.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Dokonalejší (PBS) jednosměrné návěstidlo (semafor){}Dokonalejší návěstidlo umožňuje vjet několika vlakům najednou do stejného úseku trati, pokud jsou schopny rezervovat si cestu až do bezpečného místa na zastavení. Jednosměrná návěstidla se nedají projet zezadu.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Obyčejné návěstidlo (elektrické){}Návěstidla jsou nutná, aby nedocházelo ke srážkám vlaků na tratích, kde jezdí více než jeden vlak.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Vjezdové návěstidlo (elektrické){}Svítí zeleně do té doby, kdy v následujícím úseku trati je alespoň jedno další svítící zeleně. Jinak svítí červeně.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Výjezdové návěstidlo (elektrické){}Chová se stejně jako obyčejné, ale musí se aktivovat vjezdové a cestové návěstidlo.
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Cestové návěstidlo (elektrické){}Cestové (kombinované) návěstidlo slouží zároveň jako vjezdové a odjezdové. Tím je možné postavit velké "řetězce" návěstidel.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Cestové návěstidlo (elektrické){}Cestové (kombinované) návěstidlo slouží zároveň jako vjezdové a výjezdové. Tím je možné postavit velké "řetězce" návěstidel.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Dokonalejší (PBS) návěstidlo (elektrické){}Dokonalejší návěstidlo umožňuje vjet několika vlakům najednou do stejného úseku trati, pokud jsou schopny rezervovat si cestu až do bezpečného místa na zastavení. Dokonalejší návěstidla se dají projet zezadu.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Dokonalejší (PBS) jednosměrné návěstidlo (elektrické){}Dokonalejší návěstidlo umožňuje vjet několika vlakům najednou do stejného úseku trati, pokud jsou schopny rezervovat si cestu až do bezpečného místa na zastavení. Jednosměrná návěstidla se nedají projet zezadu.
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Přeměna návěstidel{}Když je přeměna zapnuta, návěstidlo se změní kliknutím. Kliknutím s Ctrl se přepne mezi variantami návěstidla.
@@ -2205,22 +2205,22 @@ STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Poušť
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Koleje
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Koleje s obyčejným návěstidlem
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Koleje s vjezdovým návěstidlem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Koleje s odjezdovým návěstidlem
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Koleje s výjezdovým návěstidlem
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Koleje s cestovým (kombinovaným) návěstidlem
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Koleje s dokonalejším (PBS) návěstidlem
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Koleje s jednosměrným dokonalejším (PBS) návěstidlem
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Koleje s normálním a vjezdovým návěstidlem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Koleje s obyčejným a odjezdovým návěstidlem
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Koleje s obyčejným a výjezdovým návěstidlem
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Koleje s obyčejným a cestovým (kombinovaným) návěstidlem
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Koleje s obyčejným a dokonalejším (PBS) návěstidlem
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Koleje s obyčejným a jednosměrným dokonalejším (PBS) návěstidlem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Koleje s vjezdovým a odjezdovým návěstidlem
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Koleje s vjezdovým a výjezdovým návěstidlem
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Koleje s vjezdovým a cestovým návěstidlem
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Koleje s vjezdovým a dokonalejším (PBS) návěstidlem
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Koleje s vjezdovým a jednosměrným dokonalejším (PBS) návěstidlem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Koleje s odjezdovým a cestovým návěstidlem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Koleje s odjezdovým a dokonalejším (PBS) návěstidlem
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Koleje s odjezdovým a jednosměrným dokonalejším (PBS) návěstidlem
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Koleje s výjezdovým a cestovým návěstidlem
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Koleje s výjezdovým a dokonalejším (PBS) návěstidlem
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Koleje s výjezdovým a jednosměrným dokonalejším (PBS) návěstidlem
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Koleje s cestovým (kombinovaným) a dokonalejším (PBS) návěstidlem
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Koleje s cestovým (kombinovaným) a jednosměrným dokonalejším (PBS) návěstidlem
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Koleje s dokonalejším (PBS) a jednosměrným dokonalejším návěstidlem
@@ -3447,6 +3447,7 @@ STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... př�
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... na mapě už není místo.
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Město nebude stavět silnice. Můžete to změnit přes Pokročilé nastavení->Ekonomika->Města.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Silnice je v rekonstrukci
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Nelze vybourat město...{}Buď k němu patří stanice nebo depo, anebo se nedá odklidit políčko městem vlastněné.
 
 # Industry related errors
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Nelze vygenerovat žádný průmysl...

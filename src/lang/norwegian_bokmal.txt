@@ -941,7 +941,7 @@ STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Velg hvi
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Grafikksett
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Velg grafikksett som skal brukes
-STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} manglende/korrupt fil{P "" s}
+STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} manglende/ødelagt{P "" e} fil{P "" er}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Tilleggsinformasjon om grafikksettet
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Lydsett
@@ -950,7 +950,7 @@ STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Ytterlig
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Musikksett
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Velg musikksett som skal brukes
-STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} ødelagt fil{P "" er}
+STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} ødelagt{P "" e} fil{P "" er}
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Ytterligere informasjon om det originale musikksettet
 
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Fullskjermmodus mislyktes
@@ -1915,7 +1915,7 @@ STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Velg en 
 STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Velg stasjonstypen du vil bygge
 
 STR_STATION_CLASS_DFLT                                          :Standard stasjon
-STR_STATION_CLASS_WAYP                                          :Kontrollpunkt
+STR_STATION_CLASS_WAYP                                          :Kontrollpunkter
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Signalvalg
@@ -2213,7 +2213,7 @@ STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT                             :Akvedukt
 
 STR_LAI_UNMOVABLE_DESCRIPTION_TRANSMITTER                       :Radiosender
 STR_LAI_UNMOVABLE_DESCRIPTION_LIGHTHOUSE                        :Fyrtårn
-STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_HEADQUARTERS              :Hovedkontor til firma
+STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_HEADQUARTERS              :Firmahovedkontor
 STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_OWNED_LAND                :Feltet eies av et firma
 
 # About OpenTTD window
@@ -2368,11 +2368,11 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} må 
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} krever OpenTTD versjon {STRING} eller nyere.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF-filen den var laget for å oversette
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :For mange NewGRFer innlastet.
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Å laste {STRING} som statisk NewGRF med {STRING} kan forårsake desynkroniseringer.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Å laste inn {STRING} som statisk NewGRF med {STRING} kan forårsake synkroniseringsfeil.
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Uventet grafikk.
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Ukjent hendelse 0 egenskap.
 STR_NEWGRF_ERROR_INVALID_ID                                     :Forsøk på å bruke ugyldig ID.
-STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} inneholder korrupt grafikk. All korrupt grafikk vil bli vist som røde spørsmålstegn (?).
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} inneholder ødelagt grafikk. All ødelagt grafikk vil bli vist som røde spørsmålstegn (?).
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Inneholder flere "Action 8" oppføringer
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Leste forbi slutten på pseudo-sprite.
 
@@ -2389,9 +2389,9 @@ STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Mangler
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Å slå av pause kan medføre at OpenTTD krasjer. Ikke rapporter feil for etterfølgende krasjer.{}Vil du virkelig å slå av pause?
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}Atferden til NewGRF '{STRING}' vil trolig forårsake desynkroniseringer og/eller krasj.
+STR_NEWGRF_BROKEN                                               :{WHITE}Atferden til NewGRF '{STRING}' vil trolig forårsake synkroniseringsfeil og/eller krasj.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Det endrer kjøretøyets lengde for '{1:ENGINE}' når ikke i garasje/stall/hangar/dokk
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tog '{VEHICLE}' tilhørende '{COMPANY}' har ugyldig lengde. Dette skyldes trolig problemer med NewGRFer. Spillet kan desynkronisere eller krasje.
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tog '{VEHICLE}' tilhørende '{COMPANY}' har ugyldig lengde. Dette skyldes trolig problemer med NewGRFer. Spillet kan bli usynkronisert eller krasje.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' gir feilaktig informasjon.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Vare-/ombygningsinformasjon for '{1:ENGINE}' er forskjellig fra kjøpelisten etter konstruksjonen. Dette kan resultere i at autofornying ikke fungerer på riktig måte.
@@ -2574,11 +2574,11 @@ STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Firmaverd
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}{NBSP}% eies av {COMPANY})
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Bygg hovedkontor
-STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Bygg firmaets hovedkontor
+STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Bygg firmahovedkontor
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Se hovedkontor
-STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Vis firmaets hovedkontor
+STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Vis firmahovedkontor
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Flytt hovedkontor
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Gjenoppbygg selskapets hovedkontor et annet sted for 1{NBSP}% av selskapsverdien
+STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Gjenoppbygg firmaets hovedkontor et annet sted for 1{NBSP}% av firmaverdien
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nytt ansikt
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Velg nytt ansikt på sjefen
@@ -3070,7 +3070,7 @@ STR_ORDER_DROP_SERVICE_DEPOT                                    :Vedlikehold ved
 STR_ORDER_DROP_HALT_DEPOT                                       :Stopp
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Hopp over ordren med mindre vedlikehold er nødvendig
 
-STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Kjøretøyets data til basehopp på
+STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Kjøretøydata å basere hopp på
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Lastprosent
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Pålitelighet
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Maks. hastighet
@@ -3101,7 +3101,7 @@ STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Kjør ti
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Gå til nærmeste garasje/stall/hangar/dokk
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Gå til nærmeste hangar
 STR_ORDER_CONDITIONAL                                           :Betinget ordrehopp
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Sett inn en ny ordre før den markerte ordren, eller legg til i slutten av listen. CTRL gir ordren 'full last, alle varetyper', kontrollpunktordre 'direkte' og verkstedsordre 'vedlikehold'
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Sett inn en ny ordre før den markerte ordren, eller legg til i slutten av listen. CTRL gir ordren 'full last, enhver varetype', kontrollpunktordre 'direkte' og verkstedsordre 'vedlikehold'
 STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Sett inn en avansert ordre
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Vis alle kjøretøy med samme ruteplan som denne
@@ -3133,15 +3133,15 @@ STR_ORDER_FULL_LOAD_ANY                                         :(Full last av a
 STR_ORDER_NO_LOAD                                               :(Ingen lasting)
 STR_ORDER_UNLOAD                                                :(Loss av og last på varer)
 STR_ORDER_UNLOAD_FULL_LOAD                                      :(Loss av og vent på full last)
-STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Loss av og vent på full last av enhver varetype)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Loss av og vent på første fulle last)
 STR_ORDER_UNLOAD_NO_LOAD                                        :(Loss av og forlat tom)
 STR_ORDER_TRANSFER                                              :(Overfør og last på varer)
 STR_ORDER_TRANSFER_FULL_LOAD                                    :(Overfør og vent på full last)
-STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Overfør og vent på full last av enhver varetype)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Overfør og vent på første fulle last)
 STR_ORDER_TRANSFER_NO_LOAD                                      :(Overfør og forlat tom)
 STR_ORDER_NO_UNLOAD                                             :(Ingen lossing og last på varer)
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Ingen lossing og vent på full last)
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Ingen lossing og vent på full last av enhver varetype)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Ingen lossing og vent på første fulle last)
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[begynnelsen]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[midten]
@@ -3299,7 +3299,7 @@ STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}...det e
 STR_ERROR_PNGMAP                                                :{WHITE}Kunne ikke laste landskap fra PNG...
 STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}...fant ingen fil.
 STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}...kunne ikke konvertere bildetypen. Et 8- eller 24-bits PNG-bilde trengs.
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}...noe gikk akkurat galt. Beklager. (sannsynligvis en korrupt fil.)
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}...noe gikk akkurat galt. Beklager. (sannsynligvis en ødelagt fil.)
 
 STR_ERROR_BMPMAP                                                :{WHITE}Kunne ikke laste landskap fra BMP...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}...kunne ikke konvertere bildetype.
@@ -3358,10 +3358,10 @@ STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... du t
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Kan ikke betale tilbake lån...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Kan ikke gi bort penger som er lånt fra banken...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Kan ikke kjøpe firma...
-STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Kan ikke bygge hovedkontor...
+STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Kan ikke bygge firmahovedkontor...
 STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Kan ikke kjøpe 25{NBSP}% av aksjene...
 STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Kan ikke selge 25{NBSP}% av aksjene...
-STR_ERROR_PROTECTED                                             :{WHITE}Dette selskapet selger ikke aksjer enda...
+STR_ERROR_PROTECTED                                             :{WHITE}Dette firmaet selger ikke aksjer enda...
 
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Kan ikke etablere byer
@@ -3524,7 +3524,7 @@ STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Kan ikke
 
 # Unmovable related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Objekt er i veien
-STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... hovedkontor til firma er i veien
+STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... firmahovedkontor er i veien
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Kan ikke kjøpe dette feltet...
 STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... du eier det allerede!
 

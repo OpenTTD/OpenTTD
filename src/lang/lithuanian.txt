@@ -3441,6 +3441,7 @@ STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... per 
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...daugiau nera vietos zemelapyje
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Miestas nestatys kelių. Jūs galite įjungti kelių statyba per Sudėtingesni nustatymai>Ekonomika>Miestai.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Vyksta kelio darbai
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Negalima panaikinti šio miesto...{}Mieste yra stotis arba depas, arba miestui priklausantis vienas iš laukelių negali būti ištrintas.
 
 # Industry related errors
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Neįmanoma sukurti pramonės įmonių...
@@ -3453,6 +3454,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... gali
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... gali būti statomas tik džiunglėse
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... gali būti statomas tik dykumose
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... gali būti statomas tik miestuose
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... galima statyti tik žemose vietose
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... gali būti tik prie žemėlapio kraštų
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... miškas gali būti pasodintas tik virš sniego ribos
 

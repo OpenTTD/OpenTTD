@@ -355,7 +355,7 @@ STR_SORT_BY_CARGO_CAPACITY                                      :Kapacita nákla
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pauza
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Rychle posunutie hry do predu
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Nastavenia
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Uložit hru, opustit hru, ukoncit OpenTTD
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Uložiť hru, opustiť hru, ukončiť OpenTTD
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Zobrazit mapu
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Zobraziť zoznam miest
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Zobrazit dotacie
@@ -398,17 +398,17 @@ STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Umiestni
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Uložiť scenár
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Nahrať scenár
-STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Nahrat výškovú mapu
-STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Ukoncit editor
+STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Nahrať výškovú mapu
+STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Ukončiť editor
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
-STR_SCENEDIT_FILE_MENU_QUIT                                     :Ukončiť OpenTTD
+STR_SCENEDIT_FILE_MENU_QUIT                                     :Koniec
 ############ range for SE file menu starts
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Nastavenia hry
-STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Nastavenia obtiaznosti
+STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Nastavenia obtiažnosti
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Rozšírené nastavenia
-STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Nastavenie newgrf
+STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Nastavenie NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Nastavenia priehladnosti
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Zobraziť názvy miest
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Zobraziť názvy staníc
@@ -424,7 +424,7 @@ STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Transparentne n
 STR_FILE_MENU_SAVE_GAME                                         :Uložiť hru
 STR_FILE_MENU_LOAD_GAME                                         :Nahrať hru
 STR_FILE_MENU_QUIT_GAME                                         :Opustiť hru
-STR_FILE_MENU_EXIT                                              :Ukončiť OpenTTD
+STR_FILE_MENU_EXIT                                              :Koniec
 ############ range ends here
 
 ############ range for map menu starts
@@ -492,7 +492,7 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Zvuk/Hudba
 
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Zobrazit poslednu spravu
-STR_NEWS_MENU_MESSAGE_SETTINGS                                  :Nastavenia sprav
+STR_NEWS_MENU_MESSAGE_SETTINGS                                  :Nastavenia správ
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Archiv sprav
 ############ range ends here
 
@@ -632,8 +632,8 @@ STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Množstv
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Množstvo peňazí zarobených v kvartáli s najväčším ziskom v posledných 12 kvartáloch
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Pocet jednotiek nakladu prepravenych v poslednych styroch kvartaloch.
 STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Pocet druhov nakladu prepraveneho v poslednom kvartali.
-STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Mnozstvo penazi k dispozicii
-STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}Vyska uveru spolocnosti
+STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Množstvo peňazí k dispozícii
+STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}Výška úveru spoločnosti
 STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Celkove body z vsetkych moznych
 
 # Music window
@@ -1049,7 +1049,7 @@ STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 li
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Zmeniť parametre vlastnej meny
 
 # Difficulty level window
-STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Uroven obtiaznosti
+STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Úroveň obtiažnosti
 
 ############ range for difficulty levels starts
 STR_DIFFICULTY_LEVEL_EASY                                       :{BLACK}Lahká
@@ -1133,7 +1133,7 @@ STR_CITY_APPROVAL_TOLERANT                                      :Tolerantny
 STR_CITY_APPROVAL_HOSTILE                                       :Odmietavy
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Nieje dostupné žiadne použiteľné AI...{}Niekoľko AI je možné stiahnuť cez 'Online obsah'
-STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Obtiažnost sa zmenila na vlastnú
+STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Obtiažnosť sa zmenila na vlastnú
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Rozšírené nastavenia
@@ -1404,12 +1404,12 @@ STR_INTRO_CAPTION                                               :{WHITE}OpenTTD 
 STR_INTRO_NEW_GAME                                              :{BLACK}Nová hra
 STR_INTRO_LOAD_GAME                                             :{BLACK}Nahrať hru
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Hrať scenár
-STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Hrat výškovú mapu
+STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Hrať výškovú mapu
 STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Editor scenárov
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Viacero hráčov
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Nastavenia hry
-STR_INTRO_DIFFICULTY                                            :{BLACK}Obtiažnost ({STRING})
+STR_INTRO_DIFFICULTY                                            :{BLACK}Obtiažnosť ({STRING})
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Rozšírené nastavenia
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Nastavenia NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Skontrolovať online obsah
@@ -1434,7 +1434,7 @@ STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Zobrazit
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Zobraziť NewGRF nastavenia
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Skontrolovať nový a aktualizovaný obsah pre stiahnutie
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Zobraziť AI nastavenia
-STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Ukončiť 'OpenTTD'
+STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Ukončiť OpenTTD
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Koniec
@@ -1457,7 +1457,7 @@ STR_OSNAME_SUNOS                                                :SunOS
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Opustiť hru
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Si si istý, že chceš opustiť túto hru?
-STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Si si isty ze chces ukoncit tento scenar ?
+STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Si si istý že chceš ukončiť tento scenár?
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Cheaty
@@ -1765,8 +1765,8 @@ STR_NETWORK_SPECTATORS                                          :Pozorovatelia
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Vložte čiastku ktorú chcete dať
 
 # Network set password
-STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Neukladat zadané heslo
-STR_COMPANY_PASSWORD_OK                                         :{BLACK}Nastavit spolocnosti nové heslo
+STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Neukladať zadané heslo
+STR_COMPANY_PASSWORD_OK                                         :{BLACK}Nastaviť spoločnosti nové heslo
 STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Heslo spolocnosti
 STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Standardné heslo spolocnosti
 STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Použit toto heslo ako štandardné heslo spolocnosti
@@ -1871,7 +1871,7 @@ STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Sťahova
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Začať sťahovanie ozačeného obsahu
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Celková veľkosť stiahnutých súborov: {WHITE}{BYTES}
 STR_CONTENT_DETAIL_TITLE                                        :{SILVER}INFO O OBSAHU
-STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Neoznačili ste toto pre stiahnutie
+STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Toto nie je zvolené na stiahnutie
 STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Označili ste toto pre stiahnutie
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Táto závislosť bola označená na stiahnutie
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Už to máte
@@ -3240,7 +3240,7 @@ STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Na dokon
 
 STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Toto vozidlo ide presne
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Toto vozidlo mešká {STRING}
-STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Toto vozidlo ide {STRING} skor
+STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Toto vozidlo ide {STRING} skôr
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Tento cestovný poriadok ešte nezačal
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Tento cestovný poriadok začne {STRING}
 
@@ -3399,7 +3399,7 @@ STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Meno mus
 STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{STRING} v ceste
 
 # Local authority errors
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} miestna sprava to nedovoli
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}Miestna správa {TOWN} to nedovolí
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}Miestna sprava {TOWN} odmietla stavbu letiska v tomto meste
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} miesná správa odmietla udelit povolenie pre letisko kôli hlučnosti
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}Vas pokus o uplatok bol odhaleny
