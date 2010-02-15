@@ -25,6 +25,7 @@ enum {
 	CLEAN_TILELAYOUT,      ///< Free the dynamically allocated tile layout structure
 };
 
+/** Available types of industry lifetimes. */
 enum IndustryLifeType {
 	INDUSTRYLIFE_BLACK_HOLE =      0, ///< Like power plants and banks
 	INDUSTRYLIFE_EXTRACTIVE = 1 << 0, ///< Like mines
@@ -32,19 +33,20 @@ enum IndustryLifeType {
 	INDUSTRYLIFE_PROCESSING = 1 << 2, ///< Like factories
 };
 
-/* Procedures that can be run to check whether an industry may
- * build at location the given to the procedure */
+/** Available procedures to check whether an industry may build at a given location.
+ * @see CheckNewIndustryProc, _check_new_industry_procs[]
+ */
 enum CheckProc {
-	CHECK_NOTHING,
-	CHECK_FOREST,
-	CHECK_REFINERY,
-	CHECK_FARM,
-	CHECK_PLANTATION,
-	CHECK_WATER,
-	CHECK_LUMBERMILL,
-	CHECK_BUBBLEGEN,
-	CHECK_OIL_RIG,
-	CHECK_END,
+	CHECK_NOTHING,    ///< Always succeeds.
+	CHECK_FOREST,     ///< %Industry should be build above snow-line in arctic climate.
+	CHECK_REFINERY,   ///< %Industry should be positioned near edge of the map.
+	CHECK_FARM,       ///< %Industry should be below snow-line in arctic.
+	CHECK_PLANTATION, ///< %Industry should NOT be in the desert.
+	CHECK_WATER,      ///< %Industry should be in the desert.
+	CHECK_LUMBERMILL, ///< %Industry should be in the rain forest.
+	CHECK_BUBBLEGEN,  ///< %Industry should be in low land.
+	CHECK_OIL_RIG,    ///< Industries at sea should be positioned near edge of the map.
+	CHECK_END,        ///< End marker of the industry check procedures.
 };
 
 /** How was the industry created */

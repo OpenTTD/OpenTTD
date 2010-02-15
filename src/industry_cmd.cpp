@@ -1136,11 +1136,19 @@ void OnTick_Industry()
 	}
 }
 
+/** Check the conditions of #CHECK_NOTHING.
+ * @param tile %Tile to perform the checking.
+ * @return \c true if industry may be build, \c false otherwise.
+ */
 static bool CheckNewIndustry_NULL(TileIndex tile)
 {
 	return true;
 }
 
+/** Check the conditions of #CHECK_FOREST (Industry should be build above snow-line in arctic climate).
+ * @param tile %Tile to perform the checking.
+ * @return \c true if industry may be build, \c false otherwise.
+ */
 static bool CheckNewIndustry_Forest(TileIndex tile)
 {
 	if (_settings_game.game_creation.landscape == LT_ARCTIC) {
@@ -1152,6 +1160,10 @@ static bool CheckNewIndustry_Forest(TileIndex tile)
 	return true;
 }
 
+/** Check the conditions of #CHECK_REFINERY (Industry should be positioned near edge of the map).
+ * @param tile %Tile to perform the checking.
+ * @return \c true if industry may be build, \c false otherwise.
+ */
 static bool CheckNewIndustry_OilRefinery(TileIndex tile)
 {
 	if (_game_mode == GM_EDITOR) return true;
@@ -1163,6 +1175,10 @@ static bool CheckNewIndustry_OilRefinery(TileIndex tile)
 
 extern bool _ignore_restrictions;
 
+/** Check the conditions of #CHECK_OIL_RIG (Industries at sea should be positioned near edge of the map).
+ * @param tile %Tile to perform the checking.
+ * @return \c true if industry may be build, \c false otherwise.
+ */
 static bool CheckNewIndustry_OilRig(TileIndex tile)
 {
 	if (_game_mode == GM_EDITOR && _ignore_restrictions) return true;
@@ -1173,6 +1189,10 @@ static bool CheckNewIndustry_OilRig(TileIndex tile)
 	return false;
 }
 
+/** Check the conditions of #CHECK_FARM (Industry should be below snow-line in arctic).
+ * @param tile %Tile to perform the checking.
+ * @return \c true if industry may be build, \c false otherwise.
+ */
 static bool CheckNewIndustry_Farm(TileIndex tile)
 {
 	if (_settings_game.game_creation.landscape == LT_ARCTIC) {
@@ -1184,6 +1204,10 @@ static bool CheckNewIndustry_Farm(TileIndex tile)
 	return true;
 }
 
+/** Check the conditions of #CHECK_PLANTATION (Industry should NOT be in the desert).
+ * @param tile %Tile to perform the checking.
+ * @return \c true if industry may be build, \c false otherwise.
+ */
 static bool CheckNewIndustry_Plantation(TileIndex tile)
 {
 	if (GetTropicZone(tile) == TROPICZONE_DESERT) {
@@ -1194,6 +1218,10 @@ static bool CheckNewIndustry_Plantation(TileIndex tile)
 	return true;
 }
 
+/** Check the conditions of #CHECK_WATER (Industry should be in the desert).
+ * @param tile %Tile to perform the checking.
+ * @return \c true if industry may be build, \c false otherwise.
+ */
 static bool CheckNewIndustry_Water(TileIndex tile)
 {
 	if (GetTropicZone(tile) != TROPICZONE_DESERT) {
@@ -1204,6 +1232,10 @@ static bool CheckNewIndustry_Water(TileIndex tile)
 	return true;
 }
 
+/** Check the conditions of #CHECK_LUMBERMILL (Industry should be in the rain forest).
+ * @param tile %Tile to perform the checking.
+ * @return \c true if industry may be build, \c false otherwise.
+ */
 static bool CheckNewIndustry_Lumbermill(TileIndex tile)
 {
 	if (GetTropicZone(tile) != TROPICZONE_RAINFOREST) {
@@ -1213,22 +1245,32 @@ static bool CheckNewIndustry_Lumbermill(TileIndex tile)
 	return true;
 }
 
+/** Check the conditions of #CHECK_BUBBLEGEN (Industry should be in low land).
+ * @param tile %Tile to perform the checking.
+ * @return \c true if industry may be build, \c false otherwise.
+ */
 static bool CheckNewIndustry_BubbleGen(TileIndex tile)
 {
 	return GetTileZ(tile) <= TILE_HEIGHT * 4;
 }
 
+/** Industrytype check function signature.
+ * @param tile %Tile to check.
+ * @return \c true if industry may be build, \c false otherwise.
+ */
 typedef bool CheckNewIndustryProc(TileIndex tile);
+
+/** Check functions for different types of industry. */
 static CheckNewIndustryProc * const _check_new_industry_procs[CHECK_END] = {
-	CheckNewIndustry_NULL,
-	CheckNewIndustry_Forest,
-	CheckNewIndustry_OilRefinery,
-	CheckNewIndustry_Farm,
-	CheckNewIndustry_Plantation,
-	CheckNewIndustry_Water,
-	CheckNewIndustry_Lumbermill,
-	CheckNewIndustry_BubbleGen,
-	CheckNewIndustry_OilRig
+	CheckNewIndustry_NULL,        ///< CHECK_NOTHING
+	CheckNewIndustry_Forest,      ///< CHECK_FOREST
+	CheckNewIndustry_OilRefinery, ///< CHECK_REFINERY
+	CheckNewIndustry_Farm,        ///< CHECK_FARM
+	CheckNewIndustry_Plantation,  ///< CHECK_PLANTATION
+	CheckNewIndustry_Water,       ///< CHECK_WATER
+	CheckNewIndustry_Lumbermill,  ///< CHECK_LUMBERMILL
+	CheckNewIndustry_BubbleGen,   ///< CHECK_BUBBLEGEN
+	CheckNewIndustry_OilRig,      ///< CHECK_OIL_RIG
 };
 
 static const Town *CheckMultipleIndustryInTown(TileIndex tile, int type)
