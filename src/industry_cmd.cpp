@@ -1277,7 +1277,13 @@ static CheckNewIndustryProc * const _check_new_industry_procs[CHECK_END] = {
 	CheckNewIndustry_OilRig,      ///< CHECK_OIL_RIG
 };
 
-static const Town *CheckMultipleIndustryInTown(TileIndex tile, int type)
+/** Find a town for the industry, while checking for multiple industries in the same town.
+ * @param tile Position of the industry to build.
+ * @param type Industry type.
+ * @param [out] err_mesg Error message, if any.
+ * @return Town for the new industry, \c NULL if no good town can be found.
+ */
+static const Town *FindTownForIndustry(TileIndex tile, int type)
 {
 	const Town *t;
 	const Industry *i;
@@ -1701,7 +1707,7 @@ static Industry *CreateNewIndustryHelper(TileIndex tile, IndustryType type, DoCo
 	if (!custom_shape_check && _settings_game.game_creation.land_generator == LG_TERRAGENESIS && _generating_world && !_ignore_restrictions && !CheckIfCanLevelIndustryPlatform(tile, DC_NO_WATER, it, type)) return NULL;
 	if (!CheckIfFarEnoughFromIndustry(tile, type)) return NULL;
 
-	const Town *t = CheckMultipleIndustryInTown(tile, type);
+	const Town *t = FindTownForIndustry(tile, type);
 	if (t == NULL) return NULL;
 
 	if (!CheckIfIndustryIsAllowed(tile, type, t)) return NULL;
