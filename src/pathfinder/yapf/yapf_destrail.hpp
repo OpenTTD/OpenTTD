@@ -135,8 +135,17 @@ public:
 	void SetDestination(const Train *v)
 	{
 		switch (v->current_order.GetType()) {
-			case OT_GOTO_STATION:
 			case OT_GOTO_WAYPOINT:
+				if (!Waypoint::Get(v->current_order.GetDestination())->IsSingleTile()) {
+					/* In case of 'complex' waypoints we need to do a look
+					 * ahead. This look ahead messes a bit about, which
+					 * means that it 'corrupts' the cache. To prevent this
+					 * we disable caching when we're looking for a complex
+					 * waypoint. */
+					Yapf().DisableCache(true);
+				}
+				/* FALL THROUGH */
+			case OT_GOTO_STATION:
 				m_destTile = CalcClosestStationTile(v->current_order.GetDestination(), v->tile, v->current_order.IsType(OT_GOTO_STATION) ? STATION_RAIL : STATION_WAYPOINT);
 				m_dest_station_id = v->current_order.GetDestination();
 				m_destTrackdirs = INVALID_TRACKDIR_BIT;

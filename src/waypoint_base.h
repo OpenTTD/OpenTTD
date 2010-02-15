@@ -40,6 +40,15 @@ struct Waypoint : SpecializedStation<Waypoint, true> {
 	{
 		return 1;
 	}
+
+	/**
+	 * Is this a single tile waypoint?
+	 * @return true if it is.
+	 */
+	FORCEINLINE bool IsSingleTile() const
+	{
+		return (this->facilities & FACIL_TRAIN) != 0 && this->train_station.w == 1 && this->train_station.h == 1;
+	}
 };
 
 #define FOR_ALL_WAYPOINTS(var) FOR_ALL_BASE_STATIONS_OF_TYPE(Waypoint, var)
