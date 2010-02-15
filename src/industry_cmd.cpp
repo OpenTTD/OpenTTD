@@ -1251,7 +1251,11 @@ static bool CheckNewIndustry_Lumbermill(TileIndex tile)
  */
 static bool CheckNewIndustry_BubbleGen(TileIndex tile)
 {
-	return GetTileZ(tile) <= TILE_HEIGHT * 4;
+	if (GetTileZ(tile) > TILE_HEIGHT * 4) {
+		_error_message = STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS;
+		return false;
+	}
+	return true;
 }
 
 /** Industrytype check function signature.
