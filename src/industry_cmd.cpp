@@ -1136,133 +1136,123 @@ void OnTick_Industry()
 	}
 }
 
-/** Check the conditions of #CHECK_NOTHING.
+/** Check the conditions of #CHECK_NOTHING (Always succeeds).
  * @param tile %Tile to perform the checking.
- * @return \c true if industry may be build, \c false otherwise.
+ * @return Succeeded or failed command.
  */
-static bool CheckNewIndustry_NULL(TileIndex tile)
+static CommandCost CheckNewIndustry_NULL(TileIndex tile)
 {
-	return true;
+	return CommandCost();
 }
 
 /** Check the conditions of #CHECK_FOREST (Industry should be build above snow-line in arctic climate).
  * @param tile %Tile to perform the checking.
- * @return \c true if industry may be build, \c false otherwise.
+ * @return Succeeded or failed command.
  */
-static bool CheckNewIndustry_Forest(TileIndex tile)
+static CommandCost CheckNewIndustry_Forest(TileIndex tile)
 {
 	if (_settings_game.game_creation.landscape == LT_ARCTIC) {
 		if (GetTileZ(tile) < HighestSnowLine() + TILE_HEIGHT * 2U) {
-			_error_message = STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED;
-			return false;
+			return_cmd_error(STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED);
 		}
 	}
-	return true;
+	return CommandCost();
 }
 
 /** Check the conditions of #CHECK_REFINERY (Industry should be positioned near edge of the map).
  * @param tile %Tile to perform the checking.
- * @return \c true if industry may be build, \c false otherwise.
+ * @return Succeeded or failed command.
  */
-static bool CheckNewIndustry_OilRefinery(TileIndex tile)
+static CommandCost CheckNewIndustry_OilRefinery(TileIndex tile)
 {
-	if (_game_mode == GM_EDITOR) return true;
-	if (DistanceFromEdge(TILE_ADDXY(tile, 1, 1)) < _settings_game.game_creation.oil_refinery_limit) return true;
+	if (_game_mode == GM_EDITOR) return CommandCost();
+	if (DistanceFromEdge(TILE_ADDXY(tile, 1, 1)) < _settings_game.game_creation.oil_refinery_limit) return CommandCost();
 
-	_error_message = STR_ERROR_CAN_ONLY_BE_POSITIONED;
-	return false;
+	return_cmd_error(STR_ERROR_CAN_ONLY_BE_POSITIONED);
 }
 
 extern bool _ignore_restrictions;
 
 /** Check the conditions of #CHECK_OIL_RIG (Industries at sea should be positioned near edge of the map).
  * @param tile %Tile to perform the checking.
- * @return \c true if industry may be build, \c false otherwise.
+ * @return Succeeded or failed command.
  */
-static bool CheckNewIndustry_OilRig(TileIndex tile)
+static CommandCost CheckNewIndustry_OilRig(TileIndex tile)
 {
-	if (_game_mode == GM_EDITOR && _ignore_restrictions) return true;
+	if (_game_mode == GM_EDITOR && _ignore_restrictions) return CommandCost();
 	if (TileHeight(tile) == 0 &&
-			DistanceFromEdge(TILE_ADDXY(tile, 1, 1)) < _settings_game.game_creation.oil_refinery_limit) return true;
+			DistanceFromEdge(TILE_ADDXY(tile, 1, 1)) < _settings_game.game_creation.oil_refinery_limit) return CommandCost();
 
-	_error_message = STR_ERROR_CAN_ONLY_BE_POSITIONED;
-	return false;
+	return_cmd_error(STR_ERROR_CAN_ONLY_BE_POSITIONED);
 }
 
 /** Check the conditions of #CHECK_FARM (Industry should be below snow-line in arctic).
  * @param tile %Tile to perform the checking.
- * @return \c true if industry may be build, \c false otherwise.
+ * @return Succeeded or failed command.
  */
-static bool CheckNewIndustry_Farm(TileIndex tile)
+static CommandCost CheckNewIndustry_Farm(TileIndex tile)
 {
 	if (_settings_game.game_creation.landscape == LT_ARCTIC) {
 		if (GetTileZ(tile) + TILE_HEIGHT * 2 >= HighestSnowLine()) {
-			_error_message = STR_ERROR_SITE_UNSUITABLE;
-			return false;
+			return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
 		}
 	}
-	return true;
+	return CommandCost();
 }
 
 /** Check the conditions of #CHECK_PLANTATION (Industry should NOT be in the desert).
  * @param tile %Tile to perform the checking.
- * @return \c true if industry may be build, \c false otherwise.
+ * @return Succeeded or failed command.
  */
-static bool CheckNewIndustry_Plantation(TileIndex tile)
+static CommandCost CheckNewIndustry_Plantation(TileIndex tile)
 {
 	if (GetTropicZone(tile) == TROPICZONE_DESERT) {
-		_error_message = STR_ERROR_SITE_UNSUITABLE;
-		return false;
+		return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
 	}
-
-	return true;
+	return CommandCost();
 }
 
 /** Check the conditions of #CHECK_WATER (Industry should be in the desert).
  * @param tile %Tile to perform the checking.
- * @return \c true if industry may be build, \c false otherwise.
+ * @return Succeeded or failed command.
  */
-static bool CheckNewIndustry_Water(TileIndex tile)
+static CommandCost CheckNewIndustry_Water(TileIndex tile)
 {
 	if (GetTropicZone(tile) != TROPICZONE_DESERT) {
-		_error_message = STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT;
-		return false;
+		return_cmd_error(STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT);
 	}
-
-	return true;
+	return CommandCost();
 }
 
 /** Check the conditions of #CHECK_LUMBERMILL (Industry should be in the rain forest).
  * @param tile %Tile to perform the checking.
- * @return \c true if industry may be build, \c false otherwise.
+ * @return Succeeded or failed command.
  */
-static bool CheckNewIndustry_Lumbermill(TileIndex tile)
+static CommandCost CheckNewIndustry_Lumbermill(TileIndex tile)
 {
 	if (GetTropicZone(tile) != TROPICZONE_RAINFOREST) {
-		_error_message = STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST;
-		return false;
+		return_cmd_error(STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST);
 	}
-	return true;
+	return CommandCost();
 }
 
 /** Check the conditions of #CHECK_BUBBLEGEN (Industry should be in low land).
  * @param tile %Tile to perform the checking.
- * @return \c true if industry may be build, \c false otherwise.
+ * @return Succeeded or failed command.
  */
-static bool CheckNewIndustry_BubbleGen(TileIndex tile)
+static CommandCost CheckNewIndustry_BubbleGen(TileIndex tile)
 {
 	if (GetTileZ(tile) > TILE_HEIGHT * 4) {
-		_error_message = STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS;
-		return false;
+		return_cmd_error(STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS);
 	}
-	return true;
+	return CommandCost();
 }
 
 /** Industrytype check function signature.
  * @param tile %Tile to check.
- * @return \c true if industry may be build, \c false otherwise.
+ * @return Succeeded or failed command.
  */
-typedef bool CheckNewIndustryProc(TileIndex tile);
+typedef CommandCost CheckNewIndustryProc(TileIndex tile);
 
 /** Check functions for different types of industry. */
 static CheckNewIndustryProc * const _check_new_industry_procs[CHECK_END] = {
@@ -1701,7 +1691,9 @@ static Industry *CreateNewIndustryHelper(TileIndex tile, IndustryType type, DoCo
 	if (HasBit(GetIndustrySpec(type)->callback_mask, CBM_IND_LOCATION)) {
 		if (!CheckIfCallBackAllowsCreation(tile, type, itspec_index, seed)) return NULL;
 	} else {
-		if (!_check_new_industry_procs[indspec->check_proc](tile)) return NULL;
+		CommandCost ret = _check_new_industry_procs[indspec->check_proc](tile);
+		ret.SetGlobalErrorMessage();
+		if (ret.Failed()) return NULL;
 	}
 
 	if (!custom_shape_check && _settings_game.game_creation.land_generator == LG_TERRAGENESIS && _generating_world && !_ignore_restrictions && !CheckIfCanLevelIndustryPlatform(tile, DC_NO_WATER, it, type)) return NULL;
