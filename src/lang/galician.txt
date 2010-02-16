@@ -295,7 +295,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Amosa-la
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Amosa-las gráficas
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Amosa-la táboa da liga de compañías
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Fundar unha nova industria ou listar tódalas industrias
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Amosa-la lista dos trens da compañía
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Amosa a lista dos trens da compañía. Ctrl+Click amosa a lista de vehículos
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Amosa-la lista dos vehículos de estrada da compañía
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Amosa-la lista dos barcos da compañía
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Amosa-la lista dos avións da compañía
@@ -555,8 +555,8 @@ STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total:
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Número de vehículos; inclúe camións/buses, trens, barcos e avións
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Número de partes de estacións. Cóntase cada parte dunha estación (p.e. tren, autobús, aeroporto), incluso aínda que estén conectadas coma unha estación
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Beneficios do vehículo con menos ingresos (de tódolos vehículos de máis de 2 anos)
-STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Cantidade de diñeiro ganado no mes co beneficio máis baixo nos últimos 12 cuartos
-STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Cantidade de diñeiro ganado no mes co beneficio máis alto nos últimos 12 cuartos
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Cantidade de diñeiro ganado no trimestre co beneficio máis baixo dos últimos 12 trimestres
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Cantidade de diñeiro gañado no trimestre co beneficio máis alto dos últimos 12 trimestres
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Unidades de carga levadas nos últimos catro quartos
 STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Número de tipos de carga levados no último cuarto
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Cantidade de diñeiro que esta compañía ten no banco
@@ -675,7 +675,7 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLAC
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}Neve
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Amosar/ocultar nomes das cidades no mapa
-STR_SMALLMAP_CENTER                                             :{BLACK}Centra-lo mapa pequeno na posición actual
+STR_SMALLMAP_CENTER                                             :{BLACK}Centra o mapa pequeno na posición actual
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Desactivar todo
@@ -1420,7 +1420,7 @@ STR_FACE_HAIR_TOOLTIP                                           :{BLACK}Cambiar 
 STR_FACE_EYEBROWS                                               :Cellas:
 STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}Cambia-las cellas
 STR_FACE_EYECOLOUR                                              :Cor de ollos:
-STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Cambia-la cor de ollos
+STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Cambia a cor de ollos
 STR_FACE_GLASSES                                                :Lentes:
 STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}Poñer lentes
 STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}Cambia-las lentes
@@ -2440,7 +2440,7 @@ STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Construción
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Novos Vehículos
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Mantemento dos Trens
-STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Mantemento dos Vehículos
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Coste de mantemento dos Vehículos
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Mantemendo das Aeronaves
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Mantemento dos Barcos
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Mantemento das Propiedades
@@ -2478,7 +2478,9 @@ STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Valor da 
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% propiedade de {COMPANY})
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Construír CX
+STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Construir o cuartel xeral da compañía
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Ve-lo CX
+STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Ver o cuartel xeral da compañía
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Reposicionar CX
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Recontruí-lo cuartel xeral da compañía en calquer lugar cun custo do 1% do valor da compañía
 
@@ -3045,7 +3047,9 @@ STR_ORDER_NO_UNLOAD                                             :(Non descargar 
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Non descargar e esperar a carga completa)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Non descargar e esperar a calquera carga completa)
 
+STR_ORDER_STOP_LOCATION_NEAR_END                                :[preto do final]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[medio]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :[lonxe do final]
 
 STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Saltar á orde {COMMA}
 STR_ORDER_CONDITIONAL_NUM                                       :Saltar á orde {COMMA} cando {STRING} {STRING} {COMMA}
@@ -3074,9 +3078,11 @@ STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Este hor
 STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Este vehículo está actualmente en tempo
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Este vehículo está retrasado {STRING}
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Este vehículo vai adiantado {STRING}
+STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Este horario aínda non comezóu
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Este horario comezará o {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Data comezo
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Selecciona unha data como data de inicio de este horario
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Cambiar Tempo
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Cambia-la cantidade de tempo que debería levar a orde seleccionada
@@ -3091,6 +3097,8 @@ STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autoench
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Enche-lo horario automáticamente cos valores da seguinte viaxe (CTRL+Click para intentar mante-los tempos de espera)
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}Esperado
+STR_TIMETABLE_SCHEDULED                                         :{BLACK}Programado
+STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Alternar entre o esperado e o programado
 
 STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :C:
 STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :S:
@@ -3099,6 +3107,7 @@ STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :S:
 # Date window (for timetable)
 STR_DATE_CAPTION                                                :{WHITE}Establecer data
 STR_DATE_SET_DATE                                               :{BLACK}Establecer data
+STR_DATE_SET_DATE_TOOLTIP                                       :{BLACK}Utiliza a data seleccionada como punto de inicio do horario
 STR_DATE_DAY_TOOLTIP                                            :{BLACK}Selecciona día
 STR_DATE_MONTH_TOOLTIP                                          :{BLACK}Selecciona mes
 STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Selecciona ano
@@ -3113,6 +3122,8 @@ STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Cambia-l
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Recargar IA
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Mata-la IA, recargar o script, e reinicia-la IA
 
+
+STR_ERROR_AI_NO_AI_FOUND                                        :Non se atopou ningunha AI adecuada para cargar.{} Esta AI é un bot e non vai facer nada.{}Podes descargar varias AIs no sistema de contido online.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Fallou unha das IA en execución. Por favor, informa ó autor desta IA cunha captura da Fiestra de Depuración de IA.
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}A fiestra de Depuración de IA só está dispoñible para o servidor
 
@@ -3180,6 +3191,7 @@ STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Fallou a compro
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}A partida grabouse nunha versión sen soporte para tranvías. Quitáronse tódolos tranvías.
 
 # Map generation messages
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Xeración de mapas detida...{}... non hai emplazamentos para pobos
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}...non hai cidades neste escenario
 
 STR_ERROR_PNGMAP                                                :{WHITE}Non se pode cargar o mapa desde o PNG...
@@ -3220,10 +3232,11 @@ STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{STRING}
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN}: a autoridade local négase a permitilo
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}A autoridade local de {TOWN} négase a permiti-la construción doutro aeroporto
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}As autoridades locais de {TOWN} rechazan o permiso para aeroporto debido a problemas co ruído
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}O tento de suborno foi
 STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}descuberto por un investigador rexional
 
-# Leveling errors
+# Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Non se pode subi-lo terreo aí...
 STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Non se pode baixa-lo terreo aí...
 STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Non se pode aplana-lo terreo...
@@ -3256,6 +3269,7 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}...demas
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}...demasiado cerca doutra cidade
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}...hai demasiadas cidades
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...non queda máis espacio no mapa
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}O pobo non construirá estradas. Podes activar a función de construcción de estradas en Opcións Avanzadas->Economía->Pobos.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Traballos na estrada en progreso
 
 # Industry related errors
@@ -3285,6 +3299,7 @@ STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Xunta m�
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}...a estación ocupa demasiado
 STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}...estacións non uniformes deshabilitadas
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Hay demasiadas estacións/áreas de carga
+STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Demasiadas partes de estación de tren
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Demasiadas paradas de bus
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Demasiadas estacións de camións
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Demasiado cerca doutra estación de ferrocarril
@@ -3312,12 +3327,15 @@ STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Debes de
 STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Debes demole-lo aeroporto primeiro
 
 # Waypoint related errors
+STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Une máis dun punto de ruta existente
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Demasiado preto doutro punto de ruta
 
 STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Non se pode construír un punto de control de tren aí...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Non se pode coloca-la boia aquí...
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Non se pode cambia-lo nome do punto de control...
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Non se pode eliminar-lo punto de control...
+STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Débese retirar primeiro o punto de ruta para trenes
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}...boia no camiño
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}...a boia está en uso!
 
@@ -3441,8 +3459,8 @@ STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Non se p
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Non se pode envia-lo barco o depósito...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Non se pode envia-lo avión ó hangar...
 
-STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}No se pode construí-lo vehículo de ferrocarril...
-STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}No se pode construí-lo vehículo de estrada...
+STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}No se pode construí-la locomotora...
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}No se pode construí-lo vehículo...
 STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Non se pode comprar o barco...
 STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Non se pode comprar o avión...
 

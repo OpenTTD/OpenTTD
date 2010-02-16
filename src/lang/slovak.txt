@@ -23,8 +23,8 @@
 ##id 0x0000
 STR_NULL                                                        :
 STR_EMPTY                                                       :
-STR_UNDEFINED                                                   :(nedefinovaný retezec)
-STR_JUST_NOTHING                                                :Nic
+STR_UNDEFINED                                                   :(nedefinovaný reťazec)
+STR_JUST_NOTHING                                                :Nič
 
 # Cargo related strings
 # Plural cargo name
@@ -1414,7 +1414,7 @@ STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Rozšír
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Nastavenia NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Skontrolovať online obsah
 STR_INTRO_AI_SETTINGS                                           :{BLACK}AI nastavenia
-STR_INTRO_QUIT                                                  :{BLACK}Ukončiť OpenTTD
+STR_INTRO_QUIT                                                  :{BLACK}Ukončiť
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Spustiť novú hru. Ctrl+klik preskočí nastavenie mapy
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Nahrať uloženú hru
@@ -3453,6 +3453,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...moze 
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... môže byť postavené len v dažďovom pralese
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... môže byť postavené len v púšti
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... môže byť postavené len v meste
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... môže byť postavené len v nízkych oblastiach
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... moze byt umiestnene len pri okraji mapy
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... les sa moze sadit len pod ciarou snehu
 
