@@ -20,6 +20,10 @@
 #include <stdarg.h>
 #include <ctype.h> /* required for tolower() */
 
+#ifdef _MSC_VER
+#include <errno.h> // required by vsnprintf implementation for MSVC
+#endif
+
 /**
  * Safer implementation of vsnprintf; same as vsnprintf except:
  * - last instead of size, i.e. replace sizeof with lastof.
@@ -32,9 +36,9 @@
  */
 static int CDECL vseprintf(char *str, const char *last, const char *format, va_list ap)
 {
-	if (str >= last) return 0;
-	size_t size = last - str + 1;
-	return min((int)size, vsnprintf(str, size, format, ap));
+	ptrdiff_t diff = last - str;
+	if (diff < 0) return 0;
+	return min((int)diff, vsnprintf(str, diff + 1, format, ap));
 }
 
 void ttd_strlcat(char *dst, const char *src, size_t size)
@@ -219,17 +223,37 @@ int CDECL snprintf(char *str, size_t size, const char *format, ...)
 #endif /* MinGW Runtime < 3.14 */
 
 #ifdef _MSC_VER
-/* *nprintf broken, not POSIX compliant, MSDN description
- * - If len < count, then len characters are stored in buffer, a null-terminator is appended, and len is returned.
- * - If len = count, then len characters are stored in buffer, no null-terminator is appended, and len is returned.
- * - If len > count, then count characters are stored in buffer, no null-terminator is appended, and a negative value is returned
+/**
+ * Almost POSIX compliant implementation of \c vsnprintf for VC compiler.
+ * The difference is in the value returned on output truncation. This
+ * implementation returns size whereas a POSIX implementation returns
+ * size or more (the number of bytes that would be written to str
+ * had size been sufficiently large excluding the terminating null byte).
  */
 int CDECL vsnprintf(char *str, size_t size, const char *format, va_list ap)
 {
-	int ret;
-	ret = _vsnprintf(str, size, format, ap);
-	if (ret < 0 || ret == size) str[size - 1] = '\0';
-	return ret;
+	if (size == 0) return 0;
+
+	errno = 0;
+	int ret = _vsnprintf(str, size, format, ap);
+
+	if (ret < 0) {
+		if (errno != ERANGE) {
+			/* There's a formatting error, better get that looked
+			 * at properly instead of ignoring it. */
+			NOT_REACHED();
+		}
+	} else if ((size_t)ret < size) {
+		/* The buffer is big enough for the number of
+		 * characers stored (excluding null), i.e.
+		 * the string has been null-terminated. */
+		return ret;
+	}
+
+	/* The buffer is too small for _vsnprintf to write the
+	 * null-terminator at its end and return size. */
+	str[size - 1] = '\0';
+	return size;
 }
 #endif /* _MSC_VER */
 

@@ -3189,6 +3189,7 @@ STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Име �
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Презареждане AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Прекрати AI, презареди скрипта и рестартирай AI
 
+
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Един от работещите AI се е счупил . Моля съобщете това на автора на AI със скрииншот на AI Debug Прозореца.
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI Debug прозореца е на разположение само на сървъра
 
@@ -3305,7 +3306,7 @@ STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} �
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}Твоят опит за подкуп беше
 STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}разкрит от местен дознател
 
-# Leveling errors
+# Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Не може да повдигаш земята тук...
 STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Не може да понижиш земята тук...
 STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Не може да се изравнява земята на това място...

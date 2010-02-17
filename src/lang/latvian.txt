@@ -368,7 +368,8 @@ STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Papildus skats
 STR_MAP_MENU_SIGN_LIST                                          :Zīmju saraksts
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Pilsētu saraksts
-############ both ranges ends here
+############ end of the 'Display map' dropdown
+############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsīdijas
@@ -601,6 +602,7 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Atzīmē
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Ieslēgt/izslēgt mūzikas saraksta jaukšanu
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Parādīt mūzikas saraksta izvēlēšanās logu
 
+
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Mūzikas programmas izvēle
 STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
@@ -756,6 +758,7 @@ STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} sāk būvdarbus netālu no {TOWN}!
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} tiek pārņemts {STRING} izpildījumā!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Vadītājs)
+
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Tiek būvēta jauna {STRING} netālu no {TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Jauns {STRING} tiek stādīts netālu no {TOWN}!
@@ -934,6 +937,7 @@ STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Pamata s
 STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Izvēlieties, kuru pamata skaņas efektu salikumu lietot
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Papildus informācija par pamata skaņas efektu salikumu
 
+
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Nevar uzstādīt pilnekrāna rezīmu
 
 # Custom currency window
@@ -1000,6 +1004,7 @@ STR_NUM_LOW                                                     :Zems
 STR_NUM_NORMAL                                                  :Normāls
 STR_NUM_HIGH                                                    :Augsts
 STR_NUM_CUSTOM                                                  :Speciālie
+
 
 STR_AI_SPEED_VERY_SLOW                                          :Ļoti lēns
 STR_AI_SPEED_SLOW                                               :Lēns
@@ -1230,6 +1235,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 režģis
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :pēc nejaušības
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Pilsētām ir atļauts būvēt ceļu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Atļaut pilsētām kontrolēt trokšņu līmeni lidostās: {ORANGE}{STRING}
+
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Galvenās rīkjoslas izvietojums: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Pa kreisi
@@ -2011,6 +2017,7 @@ STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Nejauša
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Celt pilsētu nejaušā vietā
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Daudz nejauši izveidotu pilsētu
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Pāklāt karti ar nejauši izvietotām pilsētām
+
 
 STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}Pilsētas izmēri:
 STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}Mazs
@@ -3100,6 +3107,7 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Patreiz 
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Transports pašlaik {STRING} kavē
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Transports pašlaik {STRING} par agru
 
+
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Mainīt laiku
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Mainīt laiku,kas izceltajam maršrutam nepieciešams
 
@@ -3112,11 +3120,18 @@ STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Atslēgt
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Auto-aizpildīšana
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Aizpildīt sarakstu automātiski ar vērtībām no nākošā ceļojuma (CTRL-kikšķis lai mēģinātu paturēt gaidīšanas laikus)
 
+
+
+
+# Date window (for timetable)
+
+
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}AI Debug
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Al vārds
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Ielādēt Al
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Kill the AI, reload the script, and restart the AI
+
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Nav atrasts piemērots MI.{}Šis ir MI makets un spēlē tas neko nedarīs.{}Jūs varat lejupielādēt vairākus MI no globālās atbalsta sistēmas.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Viens no mākslīgā intelekta spēlētājiem nobruka. Lūdzu paziņojiet par šo gadījumu mākslīgā intelekta autoram, pievienojot ekrānšāviņu ar mākslīgā intelekta atkļūdošanas logu.
@@ -3127,6 +3142,7 @@ STR_AI_CONFIG_CAPTION                                           :{WHITE}AL Konfi
 STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}Visi Ali tiks ielādēti nākamajā spēlē
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Spēlētājs-cilvēks
 STR_AI_CONFIG_RANDOM_AI                                         :Nejaušš Al
+
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK} Ieslēgt AL
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Ielādēt citu Alu
@@ -3230,7 +3246,7 @@ STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} v
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}Jūsu mēģinājumu piekukuļot
 STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}atklājis reģionālais izmeklētājs
 
-# Leveling errors
+# Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Šeit nevar uzbērt augstāk...
 STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Šeit nevar norakt zemāk...
 STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Šajā vietā nevar izlīdzīnāt zemi...
@@ -3975,7 +3991,6 @@ STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
-
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
 STR_BLACK_1                                                     :{BLACK}1
@@ -3991,4 +4006,3 @@ STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
-

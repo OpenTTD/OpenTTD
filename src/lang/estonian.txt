@@ -3258,6 +3258,7 @@ STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Tehismõ
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Laadi tehismõistus uuesti
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Sulge tehismõistus, laadi skript uuesti ning taaskäivita tehismõistus
 
+
 STR_ERROR_AI_NO_AI_FOUND                                        :Laadimiseks sobivat tehismõistust ei leitud.{}See on asendustehismõistus, ning ei tee midagi.{}Tehismõistuseid saab laadida kasutades 'Internetisisu' süsteemi.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Tõrge ühe töötava tehismõistusega. Palun teavitage sellest tehismõistuse autorit koos ekraanitõmmisega tehismõistuse tõrkeotsingu aknast.
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Tehismõistuse debugi akent saab vaadata ainult server
@@ -3375,7 +3376,7 @@ STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} k
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}Sinu altkäemaksu proov on
 STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}kohalike uurijate poolt avastatud
 
-# Leveling errors
+# Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Siin ei saa maad kõrgendada...
 STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Siin ei saa maad madaldada...
 STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Ei saa maad siin tasandada...

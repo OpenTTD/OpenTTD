@@ -3116,6 +3116,7 @@ STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Enw'r AI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Ail-lwytho AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}lladd yr AI, ail-lwytho'r sgript ac ailgychwyn yr AI
 
+
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Mae un o'r AIau a oedd yn rhedeg wedi crashio. Gyrrwch adroddiad am hyn i awdur yr AI ynghyd á llun sgrin o'r Ffenestr Ddadfygio.
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Mae'r Ffenestr Ddadfygio AI ar gael yn unig ar gyfer y gweinydd
 
@@ -3228,7 +3229,7 @@ STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}Mae awdu
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}Cafodd eich ymgais i lwgrwobrwyo ei
 STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}ddarganfod gan ymchwilydd ardal
 
-# Leveling errors
+# Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Does dim modd codi tir yma...
 STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Does dim modd gostwng tir yma...
 STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Does dim modd lefelu tir yma...

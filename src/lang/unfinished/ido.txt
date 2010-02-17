@@ -120,6 +120,7 @@ STR_COLOUR_WHITE                                                :Blanka
 
 
 # Common window strings
+
 STR_BUTTON_LOCATION                                             :{BLACK}Loko
 STR_BUTTON_RENAME                                               :{BLACK}Rinomizar
 
@@ -133,7 +134,8 @@ STR_BUTTON_OK                                                   :{BLACK}OK
 # Measurement tooltip
 
 
-# The first three are also used as 'Sort by' buttons, the rest only in dropdowns
+# These are used in buttons
+# These are used in dropdowns
 
 # Tooltips for the main toolbar
 
@@ -150,7 +152,8 @@ STR_BUTTON_OK                                                   :{BLACK}OK
 
 ############ range for map menu starts
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
-############ both ranges ends here
+############ end of the 'Display map' dropdown
+############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
 ############ range ends here
@@ -211,6 +214,7 @@ STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Livrita kargajo
 ############ End of order list
 
 # Music window
+
 
 # Playlist window
 
@@ -282,6 +286,7 @@ STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Sendajo
 
 
 
+
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
 # end of order system
@@ -318,6 +323,7 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Ludo Sel
 
 
 
+
 # Custom currency window
 
 
@@ -340,6 +346,7 @@ STR_NUM_LOW                                                     :Basa
 STR_NUM_NORMAL                                                  :Normala
 STR_NUM_HIGH                                                    :Alta
 
+
 STR_AI_SPEED_SLOW                                               :Lenta
 STR_AI_SPEED_MEDIUM                                             :Meza
 STR_AI_SPEED_FAST                                               :Rapida
@@ -357,6 +364,7 @@ STR_SEA_LEVEL_HIGH                                              :Alta
 
 
 # Advanced settings window
+
 
 
 
@@ -520,6 +528,7 @@ STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Aceptas:
 
 
 # Town generation window (SE)
+
 
 
 
@@ -774,10 +783,19 @@ STR_VEHICLE_DETAIL_TAB_CAPACITIES                               :{BLACK}Kapacesi
 
 
 
+
+
+
+
+# Date window (for timetable)
+
+
 # AI debug window
 
 
+
 # AI configuration window
+
 
 
 # Available AIs window
@@ -813,7 +831,7 @@ STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Ne povas
 
 # Local authority errors
 
-# Leveling errors
+# Levelling errors
 
 # Company related errors
 
@@ -970,7 +988,6 @@ STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
-
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
 STR_BLACK_1                                                     :{BLACK}1
@@ -986,4 +1003,3 @@ STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
-

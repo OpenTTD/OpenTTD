@@ -3212,6 +3212,7 @@ STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Skift in
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Genindlæs computerspiller
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Stop computerspilleren, genindlæs scriptet og genstart computerspilleren
 
+
 STR_ERROR_AI_NO_AI_FOUND                                        :Ingen passende AI kan findes.{}Denne AI er en pladsholder, og vil ikke gøre noget.{} Du kan downloade indtil flere AI'er fra 'Online Contet' systemet.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}En computerstyret spiller gik ned. Rapporter det venligst til udvikleren af computerspilleren med et skærmbilledet af computerspiller-debugvinduet.
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Computerspiller-debugvindue er kun tilgængeligt på serveren
@@ -3329,7 +3330,7 @@ STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN}s 
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}Dit forsøg på bestikkelse er blevet
 STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}opdaget af en inspektør.
 
-# Leveling errors
+# Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Kan ikke hæve landet her...
 STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Kan ikke sænke landet her...
 STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Kan ikke hæve landet her...

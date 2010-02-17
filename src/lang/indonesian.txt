@@ -3385,6 +3385,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...hanya
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...hanya dapat dibangun di area hutan hujan
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}...hanya dapat dibangun di area gurun
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}...hanya dapat dibangun di kota
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... hanya dapat dibangun di daerah rendah
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}...hanya dapat diletakkan didekat batas peta
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}...hutan hanya dapat ditanam diatas batas salju
 
