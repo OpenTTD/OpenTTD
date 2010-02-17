@@ -1525,6 +1525,7 @@ STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}نام �
 STR_AI_DEBUG_RELOAD                                             :{BLACK}بازگشایی مجدد هوش مصنوعی
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}از بین بردن هوش مصنوعی. بازگشایی اسکریپت. و شروع مجدد هوش مصنوعی
 
+
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}صفحه رفع اشکال هوش مصنوعی فقط برای سرور قابل دسترس است
 
 # AI configuration window
@@ -1601,7 +1602,7 @@ STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE} این 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE} انجمن شهر {TOWN} اجازه این کار را نمیدهد
 
-# Leveling errors
+# Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}نمی شود افزایش ارتفاع اد
 STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}نمی توان ارتفاع زمین را کم کرد
 STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE} قبلا یه سطح دریا رسیده است

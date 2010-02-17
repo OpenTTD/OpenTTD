@@ -3214,6 +3214,7 @@ STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Ändra i
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Ladda om datorspelaren
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Stoppa datorspelaren, ladda om scriptet och starta sedan om datorspelaren
 
+
 STR_ERROR_AI_NO_AI_FOUND                                        :Ingen passande AI hittades. {}Denna AI är en test-AI och kommer inte göra någonting.{}Du kan ladda ner nya AI genom spelets system 'Online-innehåll"
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}En av AI'erna som körs har krachat. Vänligen raportera detta till AIs skapare med en screenshot på "AI Debug Fönsteret".
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Felsökning av datorspelaren är bara tillgänglig för servern
@@ -3331,7 +3332,7 @@ STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN}'s
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}Ditt mutningsförsök har blivit
 STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}upptäckt av en regional utredare.
 
-# Leveling errors
+# Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Kan inte höja marken här...
 STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Kan inte sänka marken här...
 STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Kan inte jämna ut land här...

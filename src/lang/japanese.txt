@@ -3246,7 +3246,7 @@ STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} �
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}買収未遂が
 STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}地方の腐敗防止監視機関に露見しました
 
-# Leveling errors
+# Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}ここの土地を上げられません
 STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}ここの土地を下げられません
 STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}ここの土地を平坦にできません...

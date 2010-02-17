@@ -330,7 +330,8 @@ STR_FILE_MENU_EXIT                                              :Ôfslúte
 STR_MAP_MENU_MAP_OF_WORLD                                       :Kaart fan 'e wrâld
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Stêden list
-############ both ranges ends here
+############ end of the 'Display map' dropdown
+############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsydzjes
@@ -518,6 +519,7 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Selektea
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Set musyk wikseljen oan/út
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Lit musyk seleksje skerm sjen.
 
+
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Musyk Programma Seleksje
 STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
@@ -647,6 +649,7 @@ STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} is oernaam troch {STRING}!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Direkteur)
 
+
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Nij {STRING} yn oanbou by {TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Nij {STRING} oanplante {TOWN}!
 
@@ -732,6 +735,7 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Eltse 12 moanne
 
 
 
+
 # Custom currency window
 
 
@@ -775,6 +779,7 @@ STR_NUM_NORMAL                                                  :Gewoan
 STR_NUM_HIGH                                                    :Heech
 STR_NUM_CUSTOM                                                  :Oars
 
+
 STR_AI_SPEED_VERY_SLOW                                          :Traach
 STR_AI_SPEED_SLOW                                               :Stadich
 STR_AI_SPEED_MEDIUM                                             :Gewoan
@@ -816,6 +821,7 @@ STR_DISASTERS_ON                                                :Oan
 
 
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Maksimale ôfstân fan râne oant Oaljefjild {ORANGE}{STRING}
+
 
 
 
@@ -1697,11 +1703,20 @@ STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Oanienwei lâns
 
 
 
+
+
+
+
+# Date window (for timetable)
+
+
 # AI debug window
+
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Gjin geskikte compjûterspiler fûn.{}Disse compjûterspiler is in dummy en docht neat.{}Jo kinne compjûterspilers delhelje fan 'Online Inhâld' ôf.
 
 # AI configuration window
+
 
 
 # Available AIs window
@@ -1763,7 +1778,7 @@ STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{STRING}
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} gemiente stiet dit net ta
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN} gemeente lit it net ta dat der noch in fleanfjild bout wurd yn dizze stêd
 
-# Leveling errors
+# Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Kin it lân hjir net ferheegje...
 STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Kin it lân hjir net ferleegje...
 STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}Utgrave soe tunnel beskeadigje
@@ -2328,7 +2343,6 @@ STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
-
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
 STR_BLACK_1                                                     :{BLACK}1
@@ -2344,4 +2358,3 @@ STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
-

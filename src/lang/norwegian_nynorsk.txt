@@ -657,7 +657,7 @@ STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Syne lan
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}Vegar
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLACK}Jarnbaner
 STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINYFONT}{BLACK}Stasjonar/Lufthamner/Hamner
-STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINYFONT}{BLACK}Bygningar/Industribygg
+STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINYFONT}{BLACK}Bygningar/Industriar
 STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINYFONT}{BLACK}Køyretøy
 STR_SMALLMAP_LEGENDA_100M                                       :{TINYFONT}{BLACK}100m
 STR_SMALLMAP_LEGENDA_200M                                       :{TINYFONT}{BLACK}200m
@@ -1066,7 +1066,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Tillatande
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
 STR_CITY_APPROVAL_HOSTILE                                       :Fiendsleg
 
-STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Inga passande AIer tilgjengeleg...{}Du kan laste ned fleire AIer via 'Online Content'-systemet
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Inga passande AIer tilgjengeleg...{}Du kan lasta ned fleire AI'ar frå nettet med spelets nedlastingssystem.
 STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Denne handlinga endra vanskegraden til eigendefinert
 
 # Advanced settings window
@@ -1261,18 +1261,18 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Kun blokksignal
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Kun avanserte signaler
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Alle
 
-STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Vegplan for nye byar: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Vegløysing for nye byar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :standard
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :betre vegar
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 rutenett
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 rutenett
-STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :vilkårleg
+STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :tilfeldig
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Byar har lov til å byggja vegar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Tillet at byen kontrollerar lydnivået for flyplassane: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Grunnlegga byar i spelet: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :ikkje tillete
-STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :tillate
-STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :tillete, eigendefinert by-layout
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :tillete
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :tillete, eigendefinert oppsett av by
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}Plassering av tre i spelet: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :ingen {RED}(øydelegg sagbruk)
@@ -1924,14 +1924,14 @@ STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Blokksig
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Inngangssignal (vingesignal){}Grønt så lenge det er eit eller fleir grøne utgangssignal i den følgande seksjonen. Ellers syner det raudt.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Utgangssignal (vingesignal){}Verker på samme måte som blokksignal, men er naudsynte for å utløyse rett farge på inngangs- og kombinasjons-forsignaler.
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Kombinasjonssignal (vingesignal){}Verker som både inn- og utgangssignal. Dette gjer det mogleg å lage store "greinar" av forsignal.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Avansert signal (vingesignal){}Eit avansert signal tillet meir enn eitt tog å køyre samstundes, om toget kan reservere ei rute til ein trygg stoppestad. Vanlege avanserte signaler kan passerast bakfrå.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Einvegs avansert signal (vingesignal){}Eit einvegs avansert signal tillet meir enn eitt tog å køyre samstundes, om toget kan reservere ei rute til ein trygg stoppestad. Einvegs avanserte signaler kan ikkje passerast bakfrå.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Avansert signal (vingesignal){}Eit avansert signal tillet fleire tog å køyre samstundes på same signalblokk, dersom toga kan reservere ei rute til ein trygg stoppestad. Vanlege avanserte signaler kan passerast bakfrå.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Einvegs avansert signal (vingesignal){}Eit avansert signal tillet fleire tog å køyre samstundes på same signalblokk, dersom toga kan reservere ei rute til ein trygg stoppestad. Einvegs avanserte signaler kan ikkje passerast bakfrå.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Blokksignal (lyssignal){}Dette er den enklaste typen av signaler som tillet kun eit tog å køyre om gangen.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Inngangssignal (lyssignal){}Grønt så lenge det er eit eller fleir grøne utgangssignal i den følgande seksjonen. Ellers syner det raudt.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Utgangssignal (lyssignal){}Verker på samme måte som blokksignal, men er naudsynte for å utløyse rett farge på inngangs- og kombinasjons-forsignaler.
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Kombinasjonssignal (lyssignal){}Verker som både inn- og utgangssignal. Dette gjer det mogleg å lage store "greinar" av forsignal.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Avansert signal (lyssignal){}Eit avansert signal tillet meir enn eitt tog å køyre samstundes, om toget kan reservere ei rute til ein trygg stoppestad. Vanlege avanserte signaler kan passerast bakfrå.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Einvegs avansert signal (lyssignal){}Eit einvegs avansert signal tillet meir enn eitt tog å køyre samstundes, om toget kan reservere ei rute til ein trygg stoppestad. Einvegs avanserte signaler kan passerast bakfrå.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Avansert signal (lyssignal){}Eit avansert signal tillet fleire tog å køyre samstundes på same signalblokk, dersom toga kan reservere ei rute til ein trygg stoppestad. Vanlege avanserte signaler kan passerast bakfrå.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Einvegs avansert signal (lyssignal){}Eit avansert signal tillet fleire tog å køyre samstundes på same signalblokk, dersom toga kan reservere ei rute til ein trygg stoppestad. Einvegs avanserte signaler kan passerast bakfrå.
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Signalkonvertering{}Klikk på eit signal for å endra det til valde type, CTRL+klikk byter mellom forskjellige variantar.
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Tettleik for dra og slepp signalbygging
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Minsk tettleik for dra og slepp signalbygging
@@ -2045,7 +2045,7 @@ STR_PLANT_TREE_CAPTION                                          :{WHITE}Tre
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Vel typen tre som skal plantast
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Tre av tilfeldig type
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Plasser tre av tilfeldig type
-STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Plant tilfeldige tre
+STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Tilfeldige tre
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Plasser tre tilfeldig i landskapet
 
 # Land generation window (SE)
@@ -2068,8 +2068,8 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Er du si
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Bygenerering
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Ny by
 STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Grunnlegg ein ny by
-STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Lag tilfeldig by
-STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Bygg by ein tilfeldig stad
+STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Tilfeldig by
+STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Grunnlegg by ein tilfeldig stad
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Mange tilfeldige byar
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Dekk kartet med tilfeldig plasserte byar
 
@@ -2083,18 +2083,18 @@ STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}Bystorl
 STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}Liten
 STR_FOUND_TOWN_INITIAL_SIZE_MEDIUM_BUTTON                       :{BLACK}Middels
 STR_FOUND_TOWN_INITIAL_SIZE_LARGE_BUTTON                        :{BLACK}Stor
-STR_FOUND_TOWN_SIZE_RANDOM                                      :{BLACK}Vilkårleg
+STR_FOUND_TOWN_SIZE_RANDOM                                      :{BLACK}Tilfeldig
 STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Vel storleik på by
 STR_FOUND_TOWN_CITY                                             :{BLACK}By
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Store byar veks raskare enn små byar{}Instillingane avgjer om dei er større når dei vert grunnlagt
 
-STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}By-veglayout:
-STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Vel veg-layout nytta for denne byen
+STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Byars vegløysing:
+STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Vel vegløysing nytta for denne byen
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Orginal
 STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}Betre vegar
 STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}2x2 rutenett
 STR_FOUND_TOWN_SELECT_LAYOUT_3X3_GRID                           :{BLACK}3x3 rutenett
-STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Vilkårleg
+STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Tilfeldig
 
 # Fund new industry window
 STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Finansier ny industri
@@ -2229,7 +2229,7 @@ STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Last inn
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Lagre scenario
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Last inn scenario
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Last inn høgdekart
-STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Klikk her for å kome til standardmappa for lagring og lasting
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Klikk her for å kome til standardmappa for lagring og innlasting
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} ledig
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Liste over diskar, mapper og lagra spel
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Gjeldande namn for vald lagra spel
@@ -2238,7 +2238,7 @@ STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}Slett va
 STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Lagre
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Lagre gjeldande spel ved å bruke det valde namnet
 
-STR_SAVELOAD_OSKTITLE                                           :{BLACK}Gje eit namn til til lagringa av spelet
+STR_SAVELOAD_OSKTITLE                                           :{BLACK}Skriv inn eit namn på spelet som skal lagrast
 
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Generer ei verd
@@ -2250,10 +2250,10 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Antal in
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Høgd på snøgrensa:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Flytt høgda på snøgrensa eitt hakk opp
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Flytt høgda på snøgrensa eitt hakk ned
-STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Tilfeldig nummer:
-STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Klikk her for å taste inn eit tilfeldig nummer
-STR_MAPGEN_RANDOM                                               :{BLACK}Gjer tilfeldig
-STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Endre tilfeldig nummer som nyttast for terreng-generering
+STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Såtal:
+STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Klikk her for å taste inn eit såtal
+STR_MAPGEN_RANDOM                                               :{BLACK}Tilferdiggjer
+STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Endre såtal som nyttast for terreng-generering
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landskapsgenerator:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Trealgoritme:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terrengtype
@@ -2268,10 +2268,10 @@ STR_MAPGEN_NORTHWEST                                            :{BLACK}Nordvest
 STR_MAPGEN_NORTHEAST                                            :{BLACK}Nordaust
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}Søraust
 STR_MAPGEN_SOUTHWEST                                            :{BLACK}Sørvest
-STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Fri-form
+STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Frihands
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Vatn
-STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Vilkårleg
-STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Vilkårleg
+STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Tilfeldig
+STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Tilfeldig
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manuell
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Rotering av høgdekart:
@@ -2279,14 +2279,14 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Høgdeka
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Storleik:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
 
-STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Skriv inn tilfeldig seed
+STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Skriv inn eit såtal
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Byt høgda på snøgrensa
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Byt startår
 
 # SE Map generation
 STR_SE_MAPGEN_CAPTION                                           :{WHITE}Scenariotype
 STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Flatt land
-STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Lag eit flatt landskap
+STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Generer eit flatt landskap
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Tilfeldig landskap
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Høgde på flatt land:
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Flytt landhøgda eitt nivå ned
@@ -2311,12 +2311,12 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Gjer kla
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF-Innstillingar
-STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Last inn det valde oppsettet
-STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Lagre oppsettet
-STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Lagre den noverande lista som oppsett
-STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Skriv inn namnet på oppsettet
-STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Slett oppsett
-STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Slett det valde oppsettet
+STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Last inn det valde førehandsoppsettet
+STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Lagre førehandsoppsettet
+STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Lagre den noverande lista som eit førehandsoppsett
+STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Skriv inn eit namn på førehandsoppsettet
+STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Slett førehandsoppsettet
+STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Slett det valde førehandsoppsett
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Legg til
 STR_NEWGRF_SETTINGS_ADD_TOOLTIP                                 :{BLACK}Legg ei ny NewGRF-fil til lista
 STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Fjern
@@ -2342,7 +2342,7 @@ STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Palett: 
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parametrar: {SILVER}{STRING}
 
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Ingen informasjon tilgjengeleg
-STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Ingen passande filer funne
+STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Matchande fil blei ikkje funne
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Deaktivert
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Skriv inn NewGRF-parametrar
@@ -2382,7 +2382,7 @@ STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Åtvarin
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Du er i ferd med å gjere forandringar i eit spel som er i gang. Det kan få OpenTTD til å krasje.{}Er du heilt sikker på at du vil gjere dette?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Kan ikkje leggje til fil: to eller fleire GRF ID-er
-STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Kunne ikkje finne ein passande fil (lasta inn ein kompatibel GRF-fil)
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Matchande fil blei ikkje funne (kompatibel GRF-fil lasta inn)
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Ein eller fleire kompatible GRF-filar har vorte lasta inn i plassen for manglande filar
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Ein eller fleire manglande GRF-filar har vorte deaktiverte
@@ -3222,7 +3222,7 @@ STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Drep AIe
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD er bygd utan støtte for AI...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... Ingen AI tilgjengeleg!
 
-STR_ERROR_AI_NO_AI_FOUND                                        :Ingen passande AI kunne lastast inn.{}Denne AI er ein dummy-AI og kjem ikkje til å gjera noko.{}Du kan lasta ned fleire AI'ar via 'Online innhold'-systemet.
+STR_ERROR_AI_NO_AI_FOUND                                        :Ingen passande AI kunne lastast inn.{}Denne AI er ein dummy-AI og kjem ikkje til å gjera noko.{}Du kan lasta ned fleire AI'ar frå nettet med spelets nedlastingssystem.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Ein AI har krasja. Venleg rapporter dette til produsenten av AIen med eit skjermbilete av "AI Debug"-vindauget.
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI-feilsøkingvindauget er kun tilgjengeleg for serveren
 
@@ -3230,7 +3230,7 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI-feil
 STR_AI_CONFIG_CAPTION                                           :{WHITE}AI-konfigurasjonar
 STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}Alle AI som vil bli lasta inn i neste spel
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Menneskeleg spelar
-STR_AI_CONFIG_RANDOM_AI                                         :Vilkårleg AI
+STR_AI_CONFIG_RANDOM_AI                                         :Tilfeldig AI
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Flytt oppover
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Flytt valt AI oppover lista
@@ -3295,15 +3295,15 @@ STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Spelet h
 
 # Map generation messages
 STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Kart-generering avbrutt...{}...ingen passande by-plasseringar
-STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}...det er ingen byar i dette scenarioet
+STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... det er ingen byar i dette scenarioet
 
 STR_ERROR_PNGMAP                                                :{WHITE}Kan ikkje laste inn landskap frå PNG...
-STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}...fann inga fil.
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}...kunne ikkje konvertere biletetypen. Eit 8- eller 24-bits bilete trengst.
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}...noko gjekk akkurat gale. Orsak. (truleg ei øydelagd fil)
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... fann ikkje fila.
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... kunne ikkje konvertere biletetypen. Eit 8- eller 24-bits PNG-bilete trengst.
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}... noko gjekk akkurat gale. Orsak. (truleg ei øydelagd fil)
 
 STR_ERROR_BMPMAP                                                :{WHITE}Kan ikkje laste inn landskap frå BMP...
-STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}...kan ikkje konvertere biletetype.
+STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... kan ikkje konvertere biletetype.
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Skalaåtvaring
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Å endre storleiken på kjeldekartet for mykje er ikkje anbefalt. Vil du halde fram med genereringa?
@@ -3325,8 +3325,8 @@ STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Landet h
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Kan ikkje gjere dette...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Bygningen må rivst først
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Kan ikkje rydde dette området...
-STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}...feltet er ikkje høveleg
-STR_ERROR_ALREADY_BUILT                                         :{WHITE}...allereie bygd
+STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... feltet er ikkje høveleg
+STR_ERROR_ALREADY_BUILT                                         :{WHITE}... allereie bygd
 STR_ERROR_OWNED_BY                                              :{WHITE}... eigd av {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... feltet er eigd av eit anna firma
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Namnet må vera unikt
@@ -3352,10 +3352,10 @@ STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... alle
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Kan ikkje byta firmanamn...
 STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Kan ikkje byte namn på sjefen...
 
-STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}...maks. lån er {CURRENCY}
+STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... maks. lån er {CURRENCY}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Kan ikkje låne meir pengar...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}...lånet er allereie betalt attende
-STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}...du treng {CURRENCY}
+STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... lånet er allereie betalt attende
+STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... du treng {CURRENCY}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Kan ikkje betale lånet attende...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Kan ikkje gje vekk pengar som er lånt frå banken...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Kan ikkje kjøpe firma...
@@ -3368,10 +3368,10 @@ STR_ERROR_PROTECTED                                             :{WHITE}Dette se
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Kan ikkje byggje nokon byar
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Kan ikkje byte namn på byen...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Kan ikkje grunnleggja by her...
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}...for nært kanten på kartet
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}...for nær ein annan by
-STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}...for mange byar
-STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...det er ikkje meir plass på kartet
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... for nært kanten på kartet
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... for nær ein annan by
+STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... for mange byar
+STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... det er ikkje meir plass på kartet
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Byen byggjer ikkje vegar. Du kan tillete veg-bygging i Avanserte innstillingar -> Økonomi -> Byar.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Vegarbeid pågår
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kan ikkje fjerne denne byen...{}Ein stasjon eller garasje/stall/hangar/dokk refererar til byen eller eit by-egd felt som ikkje kan fjernast
@@ -3380,15 +3380,16 @@ STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kan ikkj
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Kan ikkje generere industriar...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Kan ikkje byggja {STRING} her...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Kan ikkje byggja denne typen industri her...
-STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}...for nær ein annan industri
-STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}...må byggja ein by først
-STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}...berre ein er tillett per by
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...kan berre byggjast i byar med meir enn 1200 innbyggjarar
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...kan berre byggjast i regnskogområde
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}...kan berre byggjast i ørkenområde
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}...kan berre byggjast i byar
-STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}...kan berre plasserast nær kanten på kartet
-STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}...skog kan berre plantast over snøgrensa
+STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... for nær ein annan industri
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... må grunnleggja ein by først
+STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... berre ein er tillett per by
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... kan berre byggjast i byar med meir enn 1200 innbyggjarar
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... kan berre byggjast i regnskogområde
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... kan berre byggjast i ørkenområde
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... kan berre byggjast i byar
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... kan berre byggjast i lavtliggande område
+STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... kan berre plasserast nær kanten på kartet
+STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... skog kan berre plantast over snøgrensa
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Kan ikkje byggje jernbanestasjon her...
@@ -3400,8 +3401,8 @@ STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Kan ikkj
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Kan ikkje bygge flyplass her...
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Grensar til meir enn éin eksisterande stasjon/lasteterminal
-STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}...stasjonen er spreidd for mykje
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}...ikkje-einsarta stasjonar er deaktiverte
+STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... stasjonen er spreidd for mykje
+STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... ikkje-einsarta stasjonar er deaktiverte
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}For mange stasjonar/lasteteområder
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}For mange togstasjon-delar
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}For mange busshaldeplassar
@@ -3411,8 +3412,8 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}For nær
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}For nær ei anna hamn
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}For nær ein annan flyplass
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Kan ikkje endre namnet på stasjonen...
-STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}...denne vegen eigast av ein by
-STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}...vegen peiker feil veg
+STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... denne vegen eigast av ein by
+STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... vegen peiker feil veg
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Kan ikkje fjerne del av stasjonen...
@@ -3440,8 +3441,8 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Kan ikkj
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Kan ikkje fjerne kontrollpunktet...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Må fjerna kontrollpunkt først
-STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}...bøya er i vegen
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}...bøye er i bruk!
+STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... bøya er i vegen
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... bøye er i bruk!
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Kan ikkje byggje togstall her...
@@ -3450,7 +3451,7 @@ STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Kan ikkj
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Kan ikkje byggje skipsdokk her...
 
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Toget må vere stoppa i togstallen
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...må verte stoppa i ein garasje
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... må verte stoppa i ein garasje
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Må vere stoppa i skipsdokken
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Må stå i ein hangar
 
@@ -3497,13 +3498,13 @@ STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Kan ikkj
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Kan ikkje byggje kanalar her...
 STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Kan ikkje byggje sluser her...
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Kan ikkje plassere elver her...
-STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}...må byggjast på sjøen
+STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... må byggjast på sjøen
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... kan ikkje byggje på vatn
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Må fjerna kanal først
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Kan ikkje bygge kanal her...
 
 # Tree related errors
-STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}...det er allereie eit tre her
+STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... det er allereie eit tre her
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Kan ikkje plante tre her...
 
 # Bridge related errors
@@ -3513,7 +3514,7 @@ STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Kan ikkj
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Bruhovud er ikkje på same nivå
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Brua er for låg for terrenget
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Start og slutt må vere på linje
-STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}...endane på brua må vere på land
+STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... endane på brua må vere på land
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Kan ikkje byggje tunnel her...
@@ -3525,9 +3526,9 @@ STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Kan ikkj
 
 # Unmovable related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Objekt er i vegen
-STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}...hovudkontor til firma er i vegen
+STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... hovudkontor til firma er i vegen
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Kan ikkje kjøpe dette feltet...
-STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}...du eig det alt!
+STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... du eig det alt!
 
 # Group related errors
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Kan ikkje lage gruppe...
@@ -3613,7 +3614,7 @@ STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... eit 
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Kan ikkje dele ordreliste...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Kan ikkje kopiere ordreliste...
-STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...for langt borte frå førre destinasjon
+STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... for langt borte frå førre destinasjon
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Kan ikkje lage rutetabell for køyretøyet...
@@ -3621,7 +3622,7 @@ STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Køyret�
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Dette køyretøyet stoppar ikkje på denne stasjonen
 
 # Sign related errors
-STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}...for mange skilt
+STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... for mange skilt
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Kan ikkje plassere skilt her...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Kan ikkje byta teksta på skiltet...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Kan ikkje sletta skilt...

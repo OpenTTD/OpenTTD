@@ -3200,6 +3200,7 @@ STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Naam van
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Herlaai AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Maak die AI dood, herlaai die skrif en herlaai die AI
 
+
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Daar was n fout met een van die AIs. Rapporteer assblief aan die skrywer met n skermkiekie van die AI Ontfout Venster.
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Die AI ontfout venster is net beskikbaar vir die dienaar
 
@@ -3316,7 +3317,7 @@ STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} p
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}Jou omkooping onderneeming is deur
 STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}'n streek navorser uitgevind
 
-# Leveling errors
+# Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}kan nie land hier verhoog nie...
 STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Kan nie land hier verlaag nie...
 STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Kan nie grond hier gelyk maak nie...

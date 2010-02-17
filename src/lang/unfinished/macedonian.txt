@@ -207,6 +207,7 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 # Common window strings
+
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Изберете начин на сортирање (намалувачки/зголемувачки)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Изберете критериум за сортирање
 STR_BUTTON_SORT_BY                                              :{BLACK}Сортирање според
@@ -228,10 +229,11 @@ STR_BUTTON_OK                                                   :{BLACK}Во р�
 # Measurement tooltip
 
 
-# The first three are also used as 'Sort by' buttons, the rest only in dropdowns
+# These are used in buttons
 STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Населеност
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Име
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Датум
+# These are used in dropdowns
 STR_SORT_BY_PRODUCTION                                          :Производство
 STR_SORT_BY_TYPE                                                :Тип
 STR_SORT_BY_TRANSPORTED                                         :Транспортирано
@@ -305,7 +307,8 @@ STR_FILE_MENU_EXIT                                              :Излез
 
 ############ range for map menu starts
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
-############ both ranges ends here
+############ end of the 'Display map' dropdown
+############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
 ############ range ends here
@@ -452,6 +455,7 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Избе
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Вклучи/исклучи мешање за програм
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Прикажи диалог за избор на песна
 
+
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Избор на музички програм
 STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
@@ -566,6 +570,7 @@ STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIGFONT}{BLACK
 
 
 
+
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
 # end of order system
@@ -606,6 +611,7 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Секој ме
 
 
 
+
 # Custom currency window
 
 
@@ -633,7 +639,9 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Секој ме
 
 
 
+
 # Advanced settings window
+
 
 
 
@@ -840,6 +848,7 @@ STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Нов �
 STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Конструирај нов град
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Случаен Град
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Игради град на случајна локација
+
 
 
 
@@ -1168,10 +1177,19 @@ STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Прен
 
 
 
+
+
+
+
+# Date window (for timetable)
+
+
 # AI debug window
 
 
+
 # AI configuration window
+
 
 
 # Available AIs window
@@ -1214,7 +1232,7 @@ STR_ERROR_OWNED_BY                                              :{WHITE}...во 
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}Твојот обид за поткуп беше
 STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}разоткриен од локалната инспекција
 
-# Leveling errors
+# Levelling errors
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... веќе рамно
 
 # Company related errors
@@ -1397,7 +1415,6 @@ STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
-
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
 STR_BLACK_1                                                     :{BLACK}1
@@ -1413,4 +1430,3 @@ STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
-

@@ -2955,6 +2955,7 @@ STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Kenderaa
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 
 
+
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Konfigurasi AI
 
@@ -3060,7 +3061,7 @@ STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}Pihak be
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}Cubaan anda telah
 STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}ditangkap oleh penyiasat Badan Pencegah Rasuah
 
-# Leveling errors
+# Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Tanah ini tidak dapat ditinggikan...
 STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Tanah ini tidak dapat direndahkan...
 STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Tanah ini tidak dapat diratakan...

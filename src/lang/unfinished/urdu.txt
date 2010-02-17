@@ -822,6 +822,7 @@ STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}فہرس
 # AI debug window
 
 
+
 # AI configuration window
 
 
@@ -857,7 +858,7 @@ STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}یہ ج�
 
 # Local authority errors
 
-# Leveling errors
+# Levelling errors
 
 # Company related errors
 

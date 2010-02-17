@@ -3215,6 +3215,7 @@ STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}YZ ayarl
 STR_AI_DEBUG_RELOAD                                             :{BLACK}YZ'yı baştan yükle
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}YZ'yı öldür, kodu tekrar yükle ve YZ'yı tekrar başlat
 
+
 STR_ERROR_AI_NO_AI_FOUND                                        :Yüklenecek uygun bir YZ bulunamadı.{}Bu YZ boş bir YZ'dir ve hiçbir şey yapmaz.{}'Çevrimiçi İçerik" sistemiyle pekçok YZ'yi indirebilirsiniz.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Çalışan YZ'lerden biri çakıldı. Lütfen bu durumu AI Hata Ayıklama Penceresi görüntüsüyle birlikte YZ'nin yazarına bildirin.
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}YZ Hata Ayıklama penceresi sadece sunucu içindir
@@ -3332,7 +3333,7 @@ STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} b
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}Rüsvet teşebbüsünüzü
 STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}Reha Muhtar açığa çıkardı
 
-# Leveling errors
+# Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Burada arazi yükseltilemez...
 STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Burada arazi alçaltılamaz...
 STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Burada toprağı düzleyemezsiniz...

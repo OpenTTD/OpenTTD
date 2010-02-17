@@ -2500,7 +2500,7 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}שום �
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATIONFEATURES}
-STR_STATION_VIEW_WAITING_TITLE                                  :{WHITE}{STRING}{BLACK} :ממתינים
+STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}ממתינים: {WHITE}{STRING}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO}
 STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({SHORTCARGO} בדרך מ{STATION})
 
@@ -3400,6 +3400,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... ני
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... יכול להבנות רק ליד אזורי יערות הגשם
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... יכול להבנות רק ליד אזורי מדבר
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... יכול להבנות רק בערים
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... ניתן לבנות רק באיזורים נמוכים
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... יכול להיות ממוקם בסמוך לשולי המפה בלבד
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... יער יכול להנטע רק מעל קו השלג
 

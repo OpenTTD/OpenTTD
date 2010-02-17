@@ -3339,6 +3339,7 @@ STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Змін
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Перезавантажити AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Знищити AI, перезавантажити скрипт, та рестартувати AI
 
+
 STR_ERROR_AI_NO_AI_FOUND                                        :Не знайдено відповідних AI для завантаження.{}Цей AI тимчасовий і нічого не робить.{}Ви можете завантажити кілька AI через систему 'Вмісту в Інтернет'.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Один з поточних AI зазнав краху. Будь ласка, повідомте про це автора AI зі знімком налагоджувального вікна AI.
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Вікно Дебаг AI доступно тільки серверу
@@ -3456,7 +3457,7 @@ STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN}: 
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}Ваша спроба дати хабара була
 STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}викрита місцевим слідчим
 
-# Leveling errors
+# Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Неможливо підняти ділянку...
 STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Неможливо опустити ділянку...
 STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Тут не можна вирівняти землю...
