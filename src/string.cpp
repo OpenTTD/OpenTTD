@@ -32,9 +32,9 @@
  */
 static int CDECL vseprintf(char *str, const char *last, const char *format, va_list ap)
 {
-	if (str >= last) return 0;
-	size_t size = last - str + 1;
-	return min((int)size, vsnprintf(str, size, format, ap));
+	ptrdiff_t diff = last - str;
+	if (diff < 0) return 0;
+	return min((int)diff, vsnprintf(str, diff + 1, format, ap));
 }
 
 void ttd_strlcat(char *dst, const char *src, size_t size)
