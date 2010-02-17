@@ -3373,6 +3373,7 @@ STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}...prea 
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...nu mai este loc pe hartă
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Oraşul nu va construi drumuri. Poţi activa construirea drumurilor via Setari avansate -> Economie -> Oraşe
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Lucrari la drum in curs de desfasurare
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Acest oraş nu poate fi şters...{}O staţie sau un depou face referire la acest oraş, sau o parcelă deţinută de oraş nu poate fi eliminată
 
 # Industry related errors
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Nu pot genera industrii...
@@ -3385,6 +3386,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...se po
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...se poate construi doar in padurile tropicale
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}...se poate construi doar în zonele de deşert
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}...se poate construi doar în oraşe
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... poate fi construit(ă) doar în zone joase
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}...se poate construi doar la marginea hărţii
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}...pădurile pot fi plantate doar în zonele înzăpezite
 
