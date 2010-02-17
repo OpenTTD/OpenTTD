@@ -16,7 +16,7 @@
  *
  * \b 1.1.0
  *
- * 1.0.0 is not yet released. The following changes are not set in stone yet.
+ * 1.1.0 is not yet released. The following changes are not set in stone yet.
  *
  * \b 1.0.0
  *

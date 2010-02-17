@@ -18,6 +18,9 @@
 #include "tar_type.h"
 #ifdef WIN32
 #include <windows.h>
+#elif defined(__HAIKU__)
+#include <Path.h>
+#include <storage/FindDirectory.h>
 #else
 #ifdef OPENBSD
 #include <unistd.h>
@@ -849,12 +852,18 @@ void DetermineBasePaths(const char *exe)
 #if defined(__MORPHOS__) || defined(__AMIGA__) || defined(DOS) || defined(OS2) || !defined(WITH_PERSONAL_DIR)
 	_searchpaths[SP_PERSONAL_DIR] = NULL;
 #else
+#ifdef __HAIKU__
+	BPath path;
+	find_directory(B_USER_SETTINGS_DIRECTORY, &path);
+	const char *homedir = path.Path();
+#else
 	const char *homedir = getenv("HOME");
 
 	if (homedir == NULL) {
 		const struct passwd *pw = getpwuid(getuid());
 		homedir = (pw == NULL) ? "" : pw->pw_dir;
 	}
+#endif
 
 	snprintf(tmp, MAX_PATH, "%s" PATHSEP "%s", homedir, PERSONAL_DIR);
 	AppendPathSeparator(tmp, MAX_PATH);
