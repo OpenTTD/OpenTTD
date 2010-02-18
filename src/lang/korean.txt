@@ -3374,6 +3374,7 @@ STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}...도�
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...맵에 더이상 공간이 없습니다!
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}도시가 도로를 짓지 않을 것입니다. [고급설정->경제->도시]에서 도로를 지을 수 있도록 설정을 변경하실 수 있습니다.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}도로 작업이 진행중입니다
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}이 도시를 삭제할 수 없습니다...{}도시 또는 도시가 소유하고 있는 타일에 있는 역이나 차고때문에 제거할 수 없습니다.
 
 # Industry related errors
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}산업시설을 만들 수 없습니다...
@@ -3386,6 +3387,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...인�
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...열대우림 지역에만 건설할 수 있습니다!
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}...사막 지역에만 건설할 수 있습니다!
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}...도시에만 건설할 수 있습니다!
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... 낮은 지역에만 건설할 수 있습니다!
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}...맵 가장자리에만 위치할 수 있습니다.
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}...숲은 만년설 높이 이상의 고도에만 심을 수 있습니다.
 

@@ -354,7 +354,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Назв
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Закрити вікно
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Заголовок вікна - потягніть для переміщення вікна
-STR_TOOLTIP_SHADE                                               :{BLACK}Згорнути вікно - Показувати тільки заголовок
+STR_TOOLTIP_SHADE                                               :{BLACK}Згорнути вікно - показувати тільки заголовок
 STR_TOOLTIP_STICKY                                              :{BLACK}Закріпити вікно - воно не буде закриватися командою "Закрити всі вікна"
 STR_TOOLTIP_RESIZE                                              :{BLACK}Натисніть і тягніть для зміни розміру вікна
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Розмір вікна великий/малий
@@ -813,7 +813,7 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLAC
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}Сніг
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Показати назви міст на карті
-STR_SMALLMAP_CENTER                                             :{BLACK}Центрувати мінікарту сюди
+STR_SMALLMAP_CENTER                                             :{BLACK}Центрувати мінікарту на цій позиції
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Вимкнути всі
@@ -1290,6 +1290,10 @@ STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Один
 STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Макс. довжина станції: {ORANGE}{STRING} {RED}Велике значення гальмує гру
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Автоматичний техогляд гелікоптерів на площадках: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Приєднати меню рельєфу до меню будування: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Колір поверхні на малій карті: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :зелений
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :темнозелений
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :фіолетовий
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}Протилежний напрямок прокрутки: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}Плавна прокрутка у вікні: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}Показувати розміри будівництва в підказці: {ORANGE}{STRING}
@@ -1584,7 +1588,7 @@ STR_FACE_SIMPLE                                                 :{BLACK}Прос
 STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Простий вибір обличчя
 STR_FACE_LOAD                                                   :{BLACK}Завантажити
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Завантажити обране обличчя
-STR_FACE_LOAD_DONE                                              :{WHITE}Обране обличчя було завантажене з файлу конфігурації OpenTTD.
+STR_FACE_LOAD_DONE                                              :{WHITE}Обране обличчя було завантажене з файлу конфігурації OpenTTD
 STR_FACE_FACECODE                                               :{BLACK}Обличчя №
 STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Подивитись та/чи змінити номер обличчя гравця
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}Подивитись та/чи змінити номер обличчя гравця
@@ -1592,7 +1596,7 @@ STR_FACE_FACECODE_SET                                           :{WHITE}Було
 STR_FACE_FACECODE_ERR                                           :{WHITE}Не можна встановити номер обличчя гравця - це має бути число від 0 до 4,294,967,295!
 STR_FACE_SAVE                                                   :{BLACK}Зберегти
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Зберегти обране обличчя
-STR_FACE_SAVE_DONE                                              :{WHITE}Це обличчя буде збережене як обране у файлі конфігурації OpenTTD.
+STR_FACE_SAVE_DONE                                              :{WHITE}Це обличчя буде збережене як обране у файлі конфігурації OpenTTD
 STR_FACE_EUROPEAN                                               :{BLACK}Європейські
 STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Вибрати європейські обличчя
 STR_FACE_AFRICAN                                                :{BLACK}Африканські
@@ -1605,7 +1609,7 @@ STR_FACE_HAIR_TOOLTIP                                           :{BLACK}Змін
 STR_FACE_EYEBROWS                                               :Брова:
 STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}Змінити брова
 STR_FACE_EYECOLOUR                                              :Колір очей:
-STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Змінити колір очей:
+STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Змінити колір очей
 STR_FACE_GLASSES                                                :Окуляри:
 STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}Дозволити окуляри
 STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}Змінити окуляри
@@ -1654,7 +1658,7 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Нати
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}Інформація про гру
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Клієнти: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Мова: {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Шаблон: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Ландшафт: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Розмір карти: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Версія серверу: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Адреса серверу: {WHITE}{STRING}
@@ -3339,6 +3343,8 @@ STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Змін
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Перезавантажити AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Знищити AI, перезавантажити скрипт, та рестартувати AI
 
+STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD скомпонований без підтримки AI...
+STR_ERROR_NO_AI_SUB                                             :{WHITE}... немає доступних AI!
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Не знайдено відповідних AI для завантаження.{}Цей AI тимчасовий і нічого не робить.{}Ви можете завантажити кілька AI через систему 'Вмісту в Інтернет'.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Один з поточних AI зазнав краху. Будь ласка, повідомте про це автора AI зі знімком налагоджувального вікна AI.
@@ -3492,6 +3498,7 @@ STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... за
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...на карті немає вільного місця
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Місто не буде будувати дороги. ВИ можете дозволити будівництво доріг у вікні Розширені налаштування->Економіка->Міста.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Дорога ремонтується
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Не можна видалити це місто...{}Станція або депо, що відносяться до міста або знаходяться на землі у власності міста, не можуть бути видалені
 
 # Industry related errors
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Неможливо створити промисловість...
@@ -3504,6 +3511,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... мо
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... можна будувати лише у джунглях
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... можна будувати лише у пустелі
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... можна будувати лише у містах
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... можна будувати лише у низинах
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... можна розмістити лише біля країв карти
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... садити ліс можна тільки вище рівня снігу
 

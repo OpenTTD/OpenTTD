@@ -290,15 +290,15 @@ STR_SORT_BY_CARGO_CAPACITY                                      :Varekapasitet
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pause
-STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Snøgg tid
+STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Dobbel hastighet på spelet
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Instillingar
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Lagre, avbryt, eller avslutt spelet
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Syne kart, ekstra tilleggsvindauge eller skiltliste
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Syne byoversikt
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Syne subsidiar
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Syne liste over stasjonane til firmaet
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Syne dei økonomiske data til firmaet
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Syne firmaets generelle data
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Syne firmaenes økonomiske data
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Syne firmaenes generelle data
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Syne grafar
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Syne firmarangeringstabell
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Finansier bygging av ny industri
@@ -410,7 +410,7 @@ STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Bygg trikkespor
 ############ range ends here
 
 ############ range for waterways construction menu starts
-STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Konstruksjon av kanalar
+STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Bygg vannvegar
 ############ range ends here
 
 ############ range for airport construction menu starts
@@ -741,7 +741,7 @@ STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIGFONT}{BLACK
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIGFONT}{BLACK}Innbyggjarane jublar . . .{}Første buss kjem til {STATION}!
 STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIGFONT}{BLACK}Innbyggjarane jublar . . .{}Første lastebil kjem til {STATION}!
 STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIGFONT}{BLACK}Innbygjarane feirer . . .{}Første passasjertrikk kjem til{STATION}!
-STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIGFONT}{BLACK}Innbygjarane feirer . . .{}Første fraktetrikk kjem til {STATION}!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIGFONT}{BLACK}Innbygjarane feirer . . .{}Første varektetrikk kjem til {STATION}!
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIGFONT}{BLACK}Innbyggjarane jublar . . .{}Første skip kjem til {STATION}!
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIGFONT}{BLACK}Innbyggjarane jublar . . .{}Første flymaskin kjem til {STATION}!
 
@@ -1120,8 +1120,8 @@ STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Antal f
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :ingen
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :redusert
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normalt
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Tillet å køyre gjennom stoppestadar på vegar som byane eig: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Tillet stoppestadar med gjennomkøyring på vegar eigd av konkurentar: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Tillet stoppestadar med gjennomkøyring på by-eigde vegar: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Tillet stoppestadar med gjennomkøyring på konkurent-eigde vegar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Tillet å byggje stasjonar inntil andre: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Slå på fleire sett NewGRF grafikkmotorar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Endring av denne instillinga er ikkje mogleg når det finst bilar.
@@ -1135,9 +1135,9 @@ STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :ja, men utelat 
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :av alle køyretøy
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Åtvar dersom eit køyretøy har negativ inntekt: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Køyretøy utgår aldri: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Forny køyretøy automatisk når det vert gamalt: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Forny køyretøy automatisk når det er {ORANGE}{STRING}{LTBLUE} månader før/etter maks. alder
-STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Minimum pengar som trengst for automatisk fornying: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Autoforny køyretøy når det vert gamalt: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Autoforny køyretøy når det er {ORANGE}{STRING}{LTBLUE} mnd. før/etter maks. alder
+STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Minimum formue for autofornying av køyretøy: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Varigskap for feilmelding: {ORANGE}{STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Syne innbyggjartalet til byane i tittel: {ORANGE}{STRING}
 
@@ -1165,7 +1165,7 @@ STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Ei eller
 
 STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Maks. stasjonspreiing: {ORANGE}{STRING} {RED}Advarsel: Høg innstilling gjev treigare spel
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Gjer vedlikehald på helikopter automatisk på helikopterlandingsplassar: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Koble landskapsverktøylinja til tog-/vei-/vass- og flyplassverktøylinjene: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Koble landskapsverktøylinja til bygningsverktøylinjane: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Landfarge nytta på oversiktskartet: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Grøn
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Mørkegrøn
@@ -1445,7 +1445,7 @@ STR_LIVERY_HELICOPTER                                           :Helikopter
 STR_LIVERY_SMALL_PLANE                                          :Lite fly
 STR_LIVERY_LARGE_PLANE                                          :Stort fly
 STR_LIVERY_PASSENGER_TRAM                                       :Passasjertrikk
-STR_LIVERY_FREIGHT_TRAM                                         :Frakttrikk
+STR_LIVERY_FREIGHT_TRAM                                         :Varetrikk
 
 # Face selection window
 STR_FACE_CAPTION                                                :{WHITE}Vel utsjånad
@@ -1895,7 +1895,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Gjer om/
 
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Togstallens retning
-STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Vel togstallens retning
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Vel retning på togstall
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Kontrollpunkt
@@ -1962,9 +1962,9 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Bygg tri
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Bygg garasje (trengst for bygging og vedlikehald av køyretøy)
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Bygg trikkestall (trengst for bygging og vedlikehald av trikker)
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Bygg busstasjon. CTRL tillet samanhengande stasjonar
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Bygg trikkestasjon for passasjerer. CTRL mogleggjer sammenhengande stasjonar
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Bygg passasjertrikkestasjon. CTRL mogleggjer sammenhengande stasjonar
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Bygg lasteterminal. CTRL mogleggjer sammenhengande stasjonar
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Bygg trikkestasjon for frakt. CTRL mogleggjer sammenhengande stasjonar
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Bygg varetrikkestasjon. CTRL mogleggjer sammenhengande stasjonar
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Aktiver/Deaktiver einvegskøyrde vegar
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Bygg bru
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Bygg trikkesporbru
@@ -1974,35 +1974,35 @@ STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Byt mell
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Byt mellom bygge/fjerne for trikkesporbygging
 
 # Road depot construction window
-STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Retning for garasje
+STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Garasjens retning
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Vel retning på garasje
-STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Retning for trikkestall
+STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Trikkestallens retning
 STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Vel retning på trikkestall
 
 # Road vehicle station construction window
-STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Retning på bussterminal
+STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Bussterminalens retning
 STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Vel retning på bussterminal
-STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Retning på lasteterminal
+STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Lasteterminalens retning
 STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Vel retning på lasteterminal
-STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Retning på trikkestasjon for passasjerer
-STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Velg retning på trikkestasjon for passasjerer
-STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Retning på trikkestasjon for frakt
-STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Velg retning på trikkestasjon for frakt
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Passasjertrikkestasjonens retning
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Vel retning på passasjertrikkestasjon
+STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Varetrikkestasjonens retning
+STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Vel retning på varetrikkestasjon
 
 # Waterways toolbar (last two for SE only)
-STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Konstruksjon av kanalar
-STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Kanalar
-STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Lag kanalar
+STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Bygg vannvegar
+STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Vannvegar
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Bygg kanalar
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Bygg sluser
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Bygg skipsdokk (trengst for bygging og vedlikehald av skip)
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Bygg hamn. CTRL mogleggjer sammenhengande stasjonar
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Plasser bøye, kan brukast til å lage kontrollpunkt
-STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Bygg kanal
+STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Bygg akvedukt
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Definer vassområde.{}Lag ein kanal. Viss CTRL er halde nede ved havnivå, vil vatnet i staden fløyme over omgivnadene
-STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Plasser elver.
+STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Plasser elver
 
 # Ship depot construction window
-STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Retning på skipsdokken
+STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Skipsdokkens retning
 STR_DEPOT_BUILD_SHIP_ORIENTATION_TOOLTIP                        :{BLACK}Vel retning på skipsdokk
 
 # Dock construction window
@@ -2220,7 +2220,7 @@ STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_OWNED_LAND                :Feltet eigast a
 # About OpenTTD window
 STR_ABOUT_OPENTTD                                               :{WHITE}Om OpenTTD
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Opphaveleg opphavsbeskytta av {COPYRIGHT} 1995 Chris Sawyer, Alle rettigheiter reservert
-STR_ABOUT_VERSION                                               :{BLACK}OpenTTD versjon {REV}
+STR_ABOUT_VERSION                                               :{BLACK}OpenTTD versjon {REV}. Oversett til norsk av Thor Morten Skogrand med fleire.
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2010 OpenTTD-teamet
 
 # Save/load game/scenario
@@ -3395,8 +3395,8 @@ STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... skog
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Kan ikkje byggje jernbanestasjon her...
 STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Kan ikkje byggje busstasjon...
 STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}Kan ikkje byggje lasteterminal...
-STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}Kan ikkje byggje trikkestasjon for passasjerer...
-STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}Kan ikkje byggje trikkestasjon for frakt...
+STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}Kan ikkje byggje passasjertrikkestasjon...
+STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}Kan ikkje byggje varetrikkestasjon...
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Kan ikkje byggje hamn her...
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Kan ikkje bygge flyplass her...
 
@@ -3420,14 +3420,14 @@ STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Kan ikkj
 STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}Må fjerne togstasjon først
 STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Kan ikkje fjerne busstasjon...
 STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Kan ikkje fjerne lastebilstasjon...
-STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Kan ikkje fjerne trikkestasjon for passasjerer...
-STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Kan ikkje fjerne trikkestasjon for frakt...
+STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Kan ikkje fjerne passasjertrikkestasjon...
+STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Kan ikkje fjerne varetrikkestasjon...
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Må rive jernbanestasjon først
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Må rive bussterminal først
 STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}Må rive lasteterminal først
-STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Må fjerne trikkestasjon for passasjerer først
-STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Må fjerne trikkestasjon for frakt først
+STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Må fjerne passasjertrikkestasjon først
+STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Må fjerne varetrikkestasjon først
 STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Må rive hamn først
 STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Må rive flyplass først
 
@@ -3501,7 +3501,7 @@ STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Kan ikkj
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... må byggjast på sjøen
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... kan ikkje byggje på vatn
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Må fjerna kanal først
-STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Kan ikkje bygge kanal her...
+STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Kan ikkje bygge akvedukt her...
 
 # Tree related errors
 STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... det er allereie eit tre her

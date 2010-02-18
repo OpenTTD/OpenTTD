@@ -2494,7 +2494,7 @@ STR_LAND_AREA_INFORMATION_OWNER_N_A                             :Brak
 STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}Właściciel: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}Wlasciciel drogi: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Wlasciciel linii tramwajowej: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Wlasciciel linii kolejowej: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Wlaściciel linii kolejowej: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Lokalne władze: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Brak
 STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Współrzędne: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
@@ -2915,7 +2915,7 @@ STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Konstrukcje
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Nowe pojazdy
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Utrzymanie pociągów
-STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Utrzymanie samochodów
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Utrzymanie Samochodów
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Utrzymanie samolotów
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Utrzymanie statków
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Utrzymywanie własności
@@ -3769,6 +3769,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...możn
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...może być wybudowane tylko w lasach deszczowych
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}...może być wybudowane tylko na pustyni
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}...może być wybudowane tylko w mieście
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... może być budowane tylko na niskich terenach
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}...może być usytuowane tylko blisko krawędzi mapy
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}...las może być posadzony tylko powyżej linii śniegu
 

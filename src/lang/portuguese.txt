@@ -3373,6 +3373,7 @@ STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... dema
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...não existe mais espaço no mapa
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}A cidade não construirá estradas. Pode-se permitir a construção de estradas por Opções Avançadas->Economia->Cidades.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Trabalhos na estrada em curso
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Não é possível eliminar esta cidade...{}Uma estação ou depósito refere-se à cidade ou não é possível remover terreno pertencente à cidade
 
 # Industry related errors
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Não é possível gerar indústrias...
@@ -3385,6 +3386,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... só 
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... só se pode construir em zonas florestais
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... só se pode construir em zonas desérticas
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... só se pode construir em cidades
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... só se pode construir em planícies
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... só pode ser colocado perto das bordas do mapa
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... a floresta só pode ser plantada acima do nível de neve
 
