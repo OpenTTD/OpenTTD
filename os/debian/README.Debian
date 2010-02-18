@@ -1,15 +1,13 @@
-openttd for Debian
+OpenTTD for Debian
 ------------------
 
-To properly play this game, original data files are needed.
-You should copy the data files from the original TTD into the data directory
-(/usr/share/games/openttd/data). You should copy these files:
-* trg1r.grf
-* trgcr.grf
-* trghr.grf
-* trgir.grf
-* trgtr.grf
-* sample.cat
+To properly play this game, you need a base graphics and sound set.
+Currently, the graphics files from the original Transport Tycoon Deluxe
+game (Windows and DOS versions) are supported, as well as the free
+graphics replacement set "OpenGFX".
+
+See readme.txt, section 4.1 for instructions on how to install these
+files.
 
 -Music
 	For in game music (optional), you should copy all files in the gm/
@@ -19,13 +17,15 @@ You should copy the data files from the original TTD into the data directory
 
 	Don't forget to use -m extmidi if you want music, and if you have
 	problems, remember that not all audio devices support multiple
-	audiostreams (music and sound), so you might have to use software
-	mixing. My VIA AC97 device cannot do hardware mixing, for example.
+	audiostreams (music and sound), so you might have to use alsa
+	software mixing or pulseaudio.
 
 -Scenarios
 	There are no scenarios included in this release. Scenarios can be
-	downloaded separately from the OpenTTD website and all over the
-	internet. Place scenarios in your ~/.openttd/scenario directory to
-	use them.
+	downloaded using openttd's content service, which is available from
+	openttd's main menu. If you have obtained a scenario through other
+	means, you can place it either in your ~/.openttd/scenario directory
+	or in the system-wide /usr/share/games/openttd/scenario directory.
 
- -- Matthijs Kooijman <matthijs@stdin.nl>, Tue, 25 Jan 2004 14:11:01 +0200
+ -- Matthijs Kooijman <matthijs@stdin.nl>  Mon, 01 Feb 2010 10:42:11 +0100
+
