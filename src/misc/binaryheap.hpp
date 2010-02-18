@@ -40,7 +40,7 @@ private:
 	ItemPtr                *m_items;    ///< The heap item pointers
 
 public:
-	explicit CBinaryHeapT(int max_items = 102400)
+	explicit CBinaryHeapT(int max_items)
 		: m_size(0)
 		, m_max_size(max_items)
 	{

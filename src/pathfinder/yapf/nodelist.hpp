@@ -49,7 +49,7 @@ protected:
 public:
 	/** default constructor */
 	CNodeList_HashTableT()
-		: m_open_queue(204800)
+		: m_open_queue(2048)
 	{
 		m_new_node = NULL;
 	}
