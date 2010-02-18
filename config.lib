@@ -1018,7 +1018,7 @@ check_params() {
 	fi
 
 	if [ "$personal_dir" = "1" ]; then
-		if [ "$os" = "MINGW" ] || [ "$os" = "CYGWIN" ] || [ "$os" = "WINCE" ] || [ "$os" = "DOS" ] || [ "$os" == "HAIKU" ]; then
+		if [ "$os" = "MINGW" ] || [ "$os" = "CYGWIN" ] || [ "$os" = "WINCE" ] || [ "$os" = "DOS" ] || [ "$os" = "HAIKU" ]; then
 			personal_dir="OpenTTD"
 		elif [ "$os" = "OSX" ]; then
 			personal_dir="Documents/OpenTTD"
