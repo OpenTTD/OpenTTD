@@ -93,8 +93,6 @@ public:
 	{
 		assert(m_closed.Find(item.GetKey()) == NULL);
 		m_open.Push(item);
-		/* TODO: check if m_open_queue is not full */
-		assert(!m_open_queue.IsFull());
 		m_open_queue.Push(item);
 		if (&item == m_new_node) {
 			m_new_node = NULL;

@@ -44,13 +44,13 @@ public:
 		: m_size(0)
 		, m_max_size(max_items)
 	{
-		m_items = new ItemPtr[max_items + 1];
+		m_items = MallocT<ItemPtr>(max_items + 1);
 	}
 
 	~CBinaryHeapT()
 	{
 		Clear();
-		delete [] m_items;
+		free(m_items);
 		m_items = NULL;
 	}
 
@@ -71,9 +71,8 @@ public:
 	 *  Return the smallest item, or throw assert if empty. */
 	FORCEINLINE Titem_& GetHead() {assert(!IsEmpty()); return *m_items[1];}
 
-	/** Insert new item into the priority queue, maintaining heap order.
-	 *  @return false if the queue is full. */
-	bool Push(Titem_& new_item);
+	/** Insert new item into the priority queue, maintaining heap order. */
+	void Push(Titem_& new_item);
 
 	/** Remove and return the smallest item from the priority queue. */
 	FORCEINLINE Titem_& PopHead() {Titem_& ret = GetHead(); RemoveHead(); return ret;};
@@ -97,9 +96,12 @@ public:
 
 
 template <class Titem_>
-FORCEINLINE bool CBinaryHeapT<Titem_>::Push(Titem_& new_item)
+FORCEINLINE void CBinaryHeapT<Titem_>::Push(Titem_& new_item)
 {
-	if (IsFull()) return false;
+	if (IsFull()) {
+		m_max_size *= 2;
+		m_items = ReallocT<ItemPtr>(m_items, m_max_size + 1);
+	}
 
 	/* make place for new item */
 	int gap = ++m_size;
@@ -108,7 +110,6 @@ FORCEINLINE bool CBinaryHeapT<Titem_>::Push(Titem_& new_item)
 		m_items[gap] = m_items[parent];
 	m_items[gap] = &new_item;
 	CheckConsistency();
-	return true;
 }
 
 template <class Titem_>
@@ -218,7 +219,7 @@ FORCEINLINE void CBinaryHeapT<Titem_>::CheckConsistency()
 #if 0
 	for (int child = 2; child <= m_size; child++) {
 		int parent = child / 2;
-		assert(!(m_items[child] < m_items[parent]));
+		assert(!(*m_items[child] < *m_items[parent]));
 	}
 #endif
 }
