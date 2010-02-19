@@ -633,7 +633,7 @@ STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}Zene eli
 STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}A csúszkákkal beállíthatod a zene és a hanghatások hangerejét
 STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM                     :{BLACK}A 'minden szám' műsor kiválasztása
 STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}A 'régi stílus' zenei műsor kiválasztása
-STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}Az 'új stílus' zenei program kiválasztása
+STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}Az 'új stílus' zenei műsor kiválasztása
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}A 'szép az élet' zenei műsor kiválasztása
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}A 'Saját 1' (felhasználói) zenei műsor kiválasztása
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}A 'Saját 2' (felhasználói) zenei műsor kiválasztása
@@ -974,18 +974,18 @@ STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Képment
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Válaszd ki milyen formátumú képmentést szeretnél
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Grafikus alapcsomag
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Válaszd ki melyik alap grafikai beállítást szeretnéd használni
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Válaszd ki melyik grafikus alapcsomagot szeretnéd használni
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} hiányzó/hibás fájl
-STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}További információk az alap grafikai beállításokról
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}További információk a grafikus alapcsomagról
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Hang alapcsomag
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Válaszd ki melyik alap hangbeállítást szeretnéd használni
-STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}További információk az alap hang szettről
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Válaszd ki melyik hang alapcsomagot szeretnéd használni
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}További információk a hang alapcsomagról
 
-STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Alap zenei beállítás
-STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Válaszd ki melyik alap zenei beállítást szeretnéd használni
+STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Zenei alapcsomag
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Válaszd ki melyik zenei alapcsomagot szeretnéd használni
 STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} hibás fájl
-STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}További információk az alap zenei beállításokról
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}További információk a zenei alapcsomagról
 
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Teljesképernyős módra váltás sikertelen
 

@@ -1223,7 +1223,7 @@ STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Số m�
 STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Số tàu thủy tối đa mỗi người chơi: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Nhân vật máy không được mua tàu hoả: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}Máy không thể mua xe: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}Nhân vật máy không được mua xe ôtô: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Nhân vật máy không được mua máy bay: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Nhân vật máy không được mua tàu thủy: {ORANGE}{STRING}
 
@@ -2467,7 +2467,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Đút l
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Trợ cấp
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Trợ cấp sẽ có cho dịch vụ sau:
-STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} từ {STRING} đến {STRING}{YELLOW} (ngày {DATE_SHORT})
+STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} từ {STRING} đến {STRING}{YELLOW} (đến {DATE_SHORT})
 STR_SUBSIDIES_NONE                                              :{ORANGE}- không -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Chính quyền đã dành trợ cấp cho dịch vụ của:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} từ {STRING} đến {STRING}{YELLOW} ({COMPANY}{YELLOW}, hết hạn {DATE_SHORT})
@@ -3118,7 +3118,7 @@ STR_ORDER_NEAREST_HANGAR                                        :xưởng tại 
 STR_ORDER_TRAIN_DEPOT                                           :Xưởng tàu hoả
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Xưởng ôtô
 STR_ORDER_SHIP_DEPOT                                            :Xưởng tàu thuỷ
-STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {TOWN} {STRING}
+STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {TOWN} ({STRING})
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{0:STRING} {2:STRING} {1:STRING}
 STR_ORDER_GO_TO_HANGAR_FORMAT                                   :{STRING} Xưởng {STATION}
 
@@ -3373,6 +3373,7 @@ STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... quá
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... không còn khoảng trống nào trên bản đồ
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Độ thị sẽ không xây dựng đường phố. Bạn có thể bật tính năng này ở menu Advanced Settings->Economy->Towns.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Xây dựng cầu đường đang tiến hành
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Không thể xoá đo thị này...{}Có một ga, bến hoặc xưởng thuộc đô thị hoặc là 1 ô đất của đô thị không thể xoá được.
 
 # Industry related errors
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Không thể tạo nhà máy...
@@ -3385,6 +3386,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... ch�
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... chỉ có thể xây dựng ở vùng rừng nhiệt đới
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... chỉ có thể xây ở hoang mạc
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... chỉ xây được ở trong thị trấn
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... chỉ có thể xây ở vùng đất thấp
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... chỉ có thể đặt ở gần mép bản đồ
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... rừng này chỉ đặt ở trên vùng núi cao có tuyết
 

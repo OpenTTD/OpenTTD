@@ -554,7 +554,7 @@ STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Número de vehículos; inclúe camións/buses, trens, barcos e avións
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Número de partes de estacións. Cóntase cada parte dunha estación (p.e. tren, autobús, aeroporto), incluso aínda que estén conectadas coma unha estación
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Beneficios do vehículo con menos ingresos (de tódolos vehículos de máis de 2 anos)
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Beneficios do vehículo con menos ingresos (só se consideran os de máis de dous anos)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Cantidade de diñeiro ganado no trimestre co beneficio máis baixo dos últimos 12 trimestres
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Cantidade de diñeiro gañado no trimestre co beneficio máis alto dos últimos 12 trimestres
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Unidades de carga levadas nos últimos catro quartos
@@ -680,6 +680,7 @@ STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRI
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Desactivar todo
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Activar todo
+STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Mostrar altitude
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL                                 :{BLACK}Mostrar tódalas industrias no mapa
 
 # Status bar messages
@@ -1126,6 +1127,8 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Activa-
 STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Extensión Max. Estación: {ORANGE}{STRING} {RED}Aviso: Valores altos reducen rendemento
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Face-lo servizo ós helicópteros no heliporto automáticam.: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Unir barra de paisaxe as barras de raíl/estrada/auga/aeroporto: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Verde
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Verde escuro
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}Inverti-la dirección de desprazamento: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}Desprazamento de vista suave: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}Mostra-la medida cando se usen as ferramentas de construír: {ORANGE}{STRING}
@@ -1338,12 +1341,12 @@ STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Escavad
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Os tuneis poden cruzarse entre eles: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Permiti-la construción en modo pausa: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Os avións jet non se estrelarán (frecuentemente) nos aeroportos pequenos: {ORANGE} {STRING}
-STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Cambiar clima: {ORANGE} {STRING}
+STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Cambiar clima: {ORANGE}{STRING}
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Escenario temperado
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Escenario sub-ártico
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Escenario sub-tropical
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Escenario xoguetelandia
-STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Cambiar data: {ORANGE} {DATE_SHORT}
+STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Cambiar data: {ORANGE}{DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Permiti-la modificación dos valores de producción: {ORANGE}{STRING}
 
 # Livery window
@@ -1617,7 +1620,7 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}A compa�
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Lista de Clientes
 STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Observar
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nova Compañía
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nova compañía
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Patear
@@ -1909,7 +1912,7 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Orientac
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Selecciona a orientación da estación de tranvías de carga
 
 # Waterways toolbar (last two for SE only)
-STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Construción de canais
+STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Construción de Canais
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Canais
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Construir canais.
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Construír peches
@@ -3122,6 +3125,7 @@ STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Cambia-l
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Recargar IA
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Mata-la IA, recargar o script, e reinicia-la IA
 
+STR_ERROR_NO_AI_SUB                                             :{WHITE}... non hai IA dispoñibles!
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Non se atopou ningunha AI adecuada para cargar.{} Esta AI é un bot e non vai facer nada.{}Podes descargar varias AIs no sistema de contido online.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Fallou unha das IA en execución. Por favor, informa ó autor desta IA cunha captura da Fiestra de Depuración de IA.

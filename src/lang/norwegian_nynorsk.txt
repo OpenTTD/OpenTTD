@@ -217,9 +217,9 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 # Common window strings
-STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Skriv inn filter-streng
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Skriv inn søkefilter
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Skriv eit nøkkelord for filtrering av lista
-STR_LIST_FILTER_TITLE                                           :{BLACK}Filter-streng:
+STR_LIST_FILTER_TITLE                                           :{BLACK}Søkefilter:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Vel sorteringsrekkefølgje (søkkande/stigande)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Vel sorteringskriterium
@@ -292,7 +292,7 @@ STR_SORT_BY_CARGO_CAPACITY                                      :Varekapasitet
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pause
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Dobbel hastighet på spelet
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Instillingar
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Lagre, avbryt, eller avslutt spelet
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Lagre, avbryt eller avslutt spelet
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Syne kart, ekstra tilleggsvindauge eller skiltliste
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Syne byoversikt
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Syne subsidiar
@@ -783,12 +783,12 @@ STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK
 STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}Verdskrise!{}{}Økonomar fryktar det verste. Nedgangstider i kjømda.
 STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}Verdskrise over!{}{}Opptur i marknaden gjer industrien sjølvkjensla attende.
 
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY}aukar produksjonen!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} aukar produksjonen!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}Ny kolåre funnen i {INDUSTRY}!{}Ei dobling i produksjon er venta!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}Nye oljereservar funne i {INDUSTRY}!{}Ei dobling i produksjon er venta!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}Forbetra landbruksmetodar gjer at {INDUSTRY} er venta å doble produksjonen!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}Forbetra landbruksmetodar på {INDUSTRY} er venta å doble produksjonen!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK}Produksjonen av {STRING} ved {INDUSTRY} aukar med {COMMA} %!
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}Produksjonen til {INDUSTRY} har sokke med 50 %
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} sin produksjon har sokke med 50{NBSP}%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}Insektinvasjon på {INDUSTRY}!{}Produksjonen søkk med 50 %
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK}Produksjonen av {STRING} ved {INDUSTRY} søkk med {COMMA} %!
 
@@ -893,7 +893,7 @@ STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Venstrekøyring
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Høgrekøyring
 
 STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Namn på byar
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Vel stil på bynamn
+STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Vel nasjonalitet på bynamn
 
 ############ start of townname region
 STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Engelsk
@@ -1093,8 +1093,8 @@ STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Last k�
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflasjon: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Lever varer til ein stasjon berre når varen trengst: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Tillet bygging av veldig lange bruer: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}Tillet 'køyr til garasje/stall/hangar/dokk'-ordre: {ORANGE}{STRING}
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Metode for bygging av primærindustri: {ORANGE}{STRING}
+STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}Tillet 'køyr til verkstad'-ordre: {ORANGE}{STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Konstruksjonsmetode for primærindustri: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :inga
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :som andre industriar
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :prospekt
@@ -1191,7 +1191,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Av
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Venstreknapps-rulling: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Bruk {ORANGE}{STRING}{LTBLUE} datoformat for lagra spel.
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Bruk {ORANGE}{STRING}{LTBLUE} datoformat for lagra spel
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :langt (31. des 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :kort (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
@@ -1305,7 +1305,7 @@ STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stasjon
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Økonomi
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Motstandarar
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Syne innstillingar
-STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interaksjon
+STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Samhandling
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signaler
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Varehantering
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Datamaskinspelarar
@@ -1350,7 +1350,7 @@ STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Sjå ett
 STR_INTRO_AI_SETTINGS                                           :{BLACK}AI-innstillingar
 STR_INTRO_QUIT                                                  :{BLACK}Avslutt
 
-STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Start nytt spel. CTRL+klikk hoppar over kartkonfigurasjon
+STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Start eit nytt spel. CTRL+klikk hoppar over kartkonfigurasjon
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Last inn eit lagra spel
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Start eit nytt spel, bruk eit høgdekart som landskap
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Start eit nytt spel som tar i bruk eit scenario
@@ -1557,7 +1557,7 @@ STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Legg til
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Start tenar
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Start ein eigen tenar
 
-STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Sett inn namnet ditt
+STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Set inn namnet ditt
 STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Skriv inn IP-adressa til tenaren
 
 # Start new multiplayer server
@@ -1800,7 +1800,7 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Vel oppd
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Merk alt innhald som er ei oppgradering av eksisterande, og skal lastast ned
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Vel ingenting
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Merk alt innhald som ikkje skal lastast ned
-STR_CONTENT_FILTER_TITLE                                        :{BLACK}Merke-/namn-filter
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}Merke/Namnefilter:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Last ned
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Last ned valt innhald
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Total nedlastingsstorleik: {WHITE}{BYTES}
@@ -2402,7 +2402,7 @@ STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRI
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Skiltliste - {COMMA} skilt
 
 # Sign window
-STR_EDIT_SIGN_CAPTION                                           :{WHITE}Endre teksta på skiltet
+STR_EDIT_SIGN_CAPTION                                           :{WHITE}Skriv inn skilttekst
 STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Gå til neste skilt
 STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Gå til førre skilt
 
@@ -2458,7 +2458,7 @@ STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Smør bystyret
 
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW} Start ein liten lokal reklamekampanje for å trekkje til deg fleire passasjerar og varer til tenestene dine.{} Kostnad: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW} Start ein middels stor lokal reklamekampanje for å trekkje til deg fleire passajerar og varer til tenestene dine.{} Kostnad: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW} Start ein stor lokal reklamekampanje for å trekkje til deg fleire passasjerar og varer til tenestene dine.{} Kostnad: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Start ein stor lokal reklamekampanje for å trekkje til deg fleire passasjerar og varer til tenestene dine.{}Kostnad: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW} Finansier ombygging av det lokale vegnettet. Vil gje vegproblem dei neste 6 månadene.{} Kostnad: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Bygg ein statue for å heidre grunnleggjaren av firmaet.{} Kostnad: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW} Finansier bygging av nye forretningsbygg i byen.{} Kostnad: {CURRENCY}
@@ -2884,7 +2884,7 @@ STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Dette vi
 STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Dette vil laga ein kopi av eit skip. CTRL+klikk deler ordrane
 STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Dette vil lage ein kopi av ein flymaskin. CTRL+klikk deler ordrane
 
-STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Tving toget til å køyre utan å ha fått klareringssignal
+STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Tving toget til å køyre utan å ha fått klarsignal
 
 STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Bygg om toget til å frakte ein annan varetype
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Bygg om køyretøyet til å frakte ein annan varetype
@@ -3102,7 +3102,7 @@ STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Køyr ti
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Køyr til næraste garasje/stall/hangar/dokk
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Fly til næraste hangar
 STR_ORDER_CONDITIONAL                                           :Betinga ordrehopp
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Sett inn ein ny ordre før den valde ordren, eller legg til i slutten av lista. CTRL gjer ordren 'full last, enhver varetype', kontrollpunktordre 'direkte' og verkstadsordre 'vedlikehald'
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Set inn ein ny ordre før den valde ordren, eller legg til i slutten av lista. CTRL gjer ordren 'full last, enhver varetype', kontrollpunktordre 'direkte' og verkstadsordre 'vedlikehald'
 STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Set inn ein avansert odre
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Syne alle køyretøy som delerv denne ruteplanen

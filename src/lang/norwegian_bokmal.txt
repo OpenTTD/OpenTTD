@@ -216,9 +216,9 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 # Common window strings
-STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Skriv inn filterstreng
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Skriv inn søkefilter
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Skriv inn et søkeord for å filtrere listen med
-STR_LIST_FILTER_TITLE                                           :{BLACK}Filterstreng:
+STR_LIST_FILTER_TITLE                                           :{BLACK}Søkefilter:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Velg sorteringsrekkefølge (synkende/stigende)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Velg sorteringskriterier
@@ -291,7 +291,7 @@ STR_SORT_BY_CARGO_CAPACITY                                      :Varekapasitet
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pause spillet
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Dobbel hastighet på spillet
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Innstillinger
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Lagre spillet, avbryt spillet, avslutte
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Lagre, avbryt eller avslutt spillet
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Vis kart, ekstra tilleggsvindu eller skiltliste
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Vis byoversikt
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Vis subsidier
@@ -786,10 +786,10 @@ STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}Ny kullåre funnet i {INDUSTRY}!{}En dobling i produksjonen er ventet!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}Nye oljereserver funnet i {INDUSTRY}!{}En dobling i produksjonen er ventet!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}Forbedring i gårdbruksmetoder på {INDUSTRY} er forventet å doble produksjonen!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK}{STRING}produksjonen ved {INDUSTRY} øker med {COMMA}{NBSP}%!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK}Produksjonen av {STRING} ved {INDUSTRY} øker med {COMMA}{NBSP}%!
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} sin produksjon har sunket med 50{NBSP}%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}Insektinvasjon gjør stor skade på {INDUSTRY}!{}Produksjonen synker med 50{NBSP}%
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK}{STRING} produksjonen ved {INDUSTRY} synker med {COMMA}{NBSP}%!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK}Produksjonen av {STRING} ved {INDUSTRY} synker med {COMMA}{NBSP}%!
 
 STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} venter i togstallen
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} venter i garasjen
@@ -843,7 +843,7 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Lim inn 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Spillinnstillinger
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Valutaenhet
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Velg valutaenhet
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Velg valutaenhet som skal brukes
 
 ############ start of currency region
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Pund (£)
@@ -878,7 +878,7 @@ STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Egendefinert...
 ############ end of currency region
 
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Måleenhet
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Velg måleenhet
+STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Velg måleenhet som skal brukes
 
 ############ start of measuring units region
 STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :Imperisk
@@ -892,7 +892,7 @@ STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Venstrekjøring
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Høyrekjøring
 
 STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Bynavn
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Velg bynavntype
+STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Velg nasjonalitet på bynavn
 
 ############ start of townname region
 STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Engelsk (Original)
@@ -1092,8 +1092,8 @@ STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Last kj
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflasjon: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Lever varer til en stasjon kun hvis det er etterspørsel: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Tillat bygging av veldig lange broer: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}Tillat 'gå til garasje/stall/hangar/dokk'-ordre: {ORANGE}{STRING}
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Konstruksjonsmetode for manuell primærindustri: {ORANGE}{STRING}
+STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}Tillat 'gå til verksted'-ordre: {ORANGE}{STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Konstruksjonsmetode for primærindustri: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :ingen
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :som andre næringer
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :prospekterer
@@ -1190,7 +1190,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Av
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Venstre-klikk rulling: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Bruk {ORANGE}{STRING}{LTBLUE} datoformat i lagringsfilnavn
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Bruk {ORANGE}{STRING}{LTBLUE} datoformat på lagrede spill
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :langt (31. Des 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :kort (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
@@ -1349,7 +1349,7 @@ STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Se etter
 STR_INTRO_AI_SETTINGS                                           :{BLACK}AI-innstillinger
 STR_INTRO_QUIT                                                  :{BLACK}Avslutt
 
-STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Start nytt spill. CTRL+klikk hopper over kartkonfigurering
+STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Start et nytt spill. CTRL+klikk hopper over kartkonfigurering
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Last inn et lagret spill
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Start et nytt spill og bruk et høydekart som landskap
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Start et nytt spill som bruker et egendefinert scenario
@@ -1799,7 +1799,7 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Velg opp
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Merk alt innhold som er en oppgradering av eksisterende innhold
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Velg bort alle
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Merk alt innhold som ikke skal lastes ned
-STR_CONTENT_FILTER_TITLE                                        :{BLACK}Merke-/navnefilter:
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}Merke/Navnefilter:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Last ned
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Start nedlastningen av det merkede innholdet
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Total nedlastingsstørrelse: {WHITE}{BYTES}
@@ -2401,7 +2401,7 @@ STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRI
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Skiltliste - {COMMA} skilt
 
 # Sign window
-STR_EDIT_SIGN_CAPTION                                           :{WHITE}Endre teksten på skiltet
+STR_EDIT_SIGN_CAPTION                                           :{WHITE}Skriv inn skilttekst
 STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Gå til neste skilt
 STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Gå til forrige skilt
 
@@ -2883,7 +2883,7 @@ STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Dette vi
 STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Dette vil skape en kopi av skipet. CTRL+klikk vil sørge for delte ordre
 STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Dette vil skape en kopi av flymaskinen. CTRL+klikk vil sørge for delte ordre
 
-STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Tving toget til å fortsette uten å vente på klareringssignal
+STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Tving toget til å fortsette uten å vente på klarsignal
 
 STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Bygg om toget til å frakte en annen varetype
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Bygg om kjøretøyet til å frakte en annen varetype
