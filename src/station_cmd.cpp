@@ -713,22 +713,20 @@ CommandCost CheckBuildableTile(TileIndex tile, uint invalid_dirs, int &allowed_z
 }
 
 /** Tries to clear the given area.
- * @param tile TileIndex to start check
- * @param w width of search area
- * @param h height of search area
- * @param flags operation to perform
- * @param invalid_dirs prohibited directions (set of DiagDirections)
- * @param station StationID to be queried and returned if available
- * @param check_clear if clearing tile should be performed (in wich case, cost will be added)
- * @param rt The rail type to check for (overbuilding rail stations over rail)
- * @return the cost in case of success, or an error code if it failed.
+ * @param tile_area Area to check.
+ * @param flags Operation to perform.
+ * @param invalid_dirs Prohibited directions (set of #DiagDirection).
+ * @param station StationID to be queried and returned if available.
+ * @param check_clear If clearing tile should be performed (in wich case, cost will be added).
+ * @param rt The rail type to check for (overbuilding rail stations over rail).
+ * @return The cost in case of success, or an error code if it failed.
  */
-CommandCost CheckFlatLandBelow(TileIndex tile, uint w, uint h, DoCommandFlag flags, uint invalid_dirs, StationID *station, bool check_clear = true, RailType rt = INVALID_RAILTYPE)
+CommandCost CheckFlatLandBelow(TileArea tile_area, DoCommandFlag flags, uint invalid_dirs, StationID *station, bool check_clear = true, RailType rt = INVALID_RAILTYPE)
 {
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 	int allowed_z = -1;
 
-	TILE_LOOP(tile_cur, w, h, tile) {
+	TILE_AREA_LOOP(tile_cur, tile_area) {
 		CommandCost ret = CheckBuildableTile(tile_cur, invalid_dirs, allowed_z);
 		if (ret.Failed()) return ret;
 		cost.AddCost(ret);
@@ -1023,7 +1021,7 @@ CommandCost CmdBuildRailStation(TileIndex tile_org, DoCommandFlag flags, uint32 
 	/* Make sure the area below consists of clear tiles. (OR tiles belonging to a certain rail station) */
 	StationID est = INVALID_STATION;
 	/* Clear the land below the station. */
-	CommandCost cost = CheckFlatLandBelow(tile_org, w_org, h_org, flags, 5 << axis, _settings_game.station.nonuniform_stations ? &est : NULL, true, rt);
+	CommandCost cost = CheckFlatLandBelow(new_location, flags, 5 << axis, _settings_game.station.nonuniform_stations ? &est : NULL, true, rt);
 	if (cost.Failed()) return cost;
 	/* Add construction expenses. */
 	cost.AddCost((numtracks * _price[PR_BUILD_STATION_RAIL] + _price[PR_BUILD_STATION_RAIL_LENGTH]) * plat_len);
@@ -1587,7 +1585,7 @@ CommandCost CmdBuildRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 		rts |= cur_rts;
 	}
 
-	CommandCost cost = CheckFlatLandBelow(tile, 1, 1, flags, is_drive_through ? 5 << p1 : 1 << p1, NULL, !build_over_road);
+	CommandCost cost = CheckFlatLandBelow(TileArea(tile, 1, 1), flags, is_drive_through ? 5 << p1 : 1 << p1, NULL, !build_over_road);
 	if (cost.Failed()) return cost;
 	uint roadbits_to_build = CountBits(rts) * 2 - num_roadbits;
 	cost.AddCost(_price[PR_BUILD_ROAD] * roadbits_to_build);
@@ -1944,7 +1942,7 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		return CMD_ERROR;
 	}
 
-	CommandCost cost = CheckFlatLandBelow(tile, w, h, flags, 0, NULL);
+	CommandCost cost = CheckFlatLandBelow(TileArea(tile, w, h), flags, 0, NULL);
 	if (cost.Failed()) return cost;
 
 	/* Go get the final noise level, that is base noise minus factor from distance to town center */

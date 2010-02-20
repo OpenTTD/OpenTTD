@@ -98,7 +98,7 @@ void UpdateCompanyHQ(Company *c, uint score)
 	MarkTileDirtyByTile(tile + TileDiffXY(1, 1));
 }
 
-extern CommandCost CheckFlatLandBelow(TileIndex tile, uint w, uint h, DoCommandFlag flags, uint invalid_dirs, StationID *station, bool check_clear = true, RailType rt = INVALID_RAILTYPE);
+extern CommandCost CheckFlatLandBelow(TileArea tile_area, DoCommandFlag flags, uint invalid_dirs, StationID *station, bool check_clear = true, RailType rt = INVALID_RAILTYPE);
 
 /** Build or relocate the HQ. This depends if the HQ is already built or not
  * @param tile tile where the HQ will be built or relocated to
@@ -113,7 +113,7 @@ CommandCost CmdBuildCompanyHQ(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 	Company *c = Company::Get(_current_company);
 	CommandCost cost(EXPENSES_PROPERTY);
 
-	cost = CheckFlatLandBelow(tile, 2, 2, flags, 0, NULL);
+	cost = CheckFlatLandBelow(TileArea(tile, 2, 2), flags, 0, NULL);
 	if (cost.Failed()) return cost;
 
 	if (c->location_of_HQ != INVALID_TILE) { // Moving HQ
