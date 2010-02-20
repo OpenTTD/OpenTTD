@@ -3385,6 +3385,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... 只�
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... 只能建在雨林區
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... 只能建在沙漠區
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... 只能建在市鎮內
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... 只能建在低地
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... 只能位於地圖邊緣
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... 森林只能種在雪線以上
 
