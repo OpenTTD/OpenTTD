@@ -210,8 +210,8 @@ Function load_lang_data(dir)
 			& vbCrLf & "				<Tool" _
 			& vbCrLf & "					Name=" & Chr(34) & "VCCustomBuildTool" & Chr(34) _
 			& vbCrLf & "					Description=" & Chr(34) & "Generating " & file & " language file" & Chr(34) _
-			& vbCrLf & "					CommandLine=" & Chr(34) & "..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0" & Chr(34) _
-			& vbCrLf & "					AdditionalDependencies=" & Chr(34) & "..\src\lang\english.txt" & Chr(34) _
+			& vbCrLf & "					CommandLine=" & Chr(34) & "..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0&#x0D;&#x0A;" & Chr(34) _
+			& vbCrLf & "					AdditionalDependencies=" & Chr(34) & "..\src\lang\english.txt;..\objs\strgen\strgen.exe" & Chr(34) _
 			& vbCrLf & "					Outputs=" & Chr(34) & "..\bin\lang\" & file & ".lng" & Chr(34) _
 			& vbCrLf & "				/>" _
 			& vbCrLf & "			</FileConfiguration>" _
