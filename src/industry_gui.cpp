@@ -155,6 +155,7 @@ class BuildIndustryWindow : public Window {
 
 		if (_game_mode == GM_EDITOR) { // give room for the Many Random "button"
 			this->index[this->count] = INVALID_INDUSTRYTYPE;
+			this->enabled[this->count] = true;
 			this->count++;
 			this->timer_enabled = false;
 		}
