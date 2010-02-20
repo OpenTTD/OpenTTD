@@ -12,6 +12,7 @@
 #include "../stdafx.h"
 #include "../core/alloc_func.hpp"
 #include "../core/endian_func.hpp"
+#include "../core/math_func.hpp"
 #include "../string_func.h"
 #include "../strings_type.h"
 #include "strgen.h"
@@ -407,7 +408,10 @@ static void EmitGender(char *buf, int value)
 			if (words[nw] == NULL) break;
 		}
 		if (nw != _numgenders) error("Bad # of arguments for gender command");
+
+		assert(IsInsideBS(cmd->value, SCC_CONTROL_START, UINT8_MAX));
 		PutUtf8(SCC_GENDER_LIST);
+		PutByte(cmd->value - SCC_CONTROL_START);
 		PutByte(TranslateArgumentIdx(argidx, offset));
 		EmitWordList(words, nw);
 	}
