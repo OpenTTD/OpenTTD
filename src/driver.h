@@ -28,12 +28,13 @@ public:
 
 	virtual ~Driver() { }
 
+	/** The type of driver */
 	enum Type {
-		DT_BEGIN = 0,
-		DT_SOUND = 0,
-		DT_MUSIC,
-		DT_VIDEO,
-		DT_END,
+		DT_BEGIN = 0, ///< Helper for iteration
+		DT_MUSIC = 0, ///< A music driver, needs to be before sound to properly shut down extmidi forked music players
+		DT_SOUND,     ///< A sound driver
+		DT_VIDEO,     ///< A video driver
+		DT_END,       ///< Helper for iteration
 	};
 
 	virtual const char *GetName() const = 0;
@@ -64,7 +65,7 @@ private:
 
 	static const char *GetDriverTypeName(Driver::Type type)
 	{
-		static const char * const driver_type_name[] = { "sound", "music", "video" };
+		static const char * const driver_type_name[] = { "music", "sound", "video" };
 		return driver_type_name[type];
 	}
 
