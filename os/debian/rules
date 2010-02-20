@@ -1,88 +1,43 @@
 #!/usr/bin/make -f
 # -*- makefile -*-
-# Sample debian/rules that uses debhelper.
-# GNU copyright 1997 to 1999 by Joey Hess.
+# Makefile to build the openttd debian package.
 
-# Uncomment this to turn on verbose mode.
-#export DH_VERBOSE=1
+# Use debhelper default for all targets (but some are overridden below).
+%:
+	dh $@
 
-configure: configure-stamp
-configure-stamp:
-	dh_testdir
-	# Add here commands to configure the package.
+DEB_HOST_GNU_TYPE=$(shell dpkg-architecture -qDEB_HOST_GNU_TYPE)
+DEB_BUILD_GNU_TYPE=$(shell dpkg-architecture -qDEB_BUILD_GNU_TYPE)
+ifneq ($(DEB_HOST_GNU_TYPE),$(DEB_BUILD_GNU_TYPE))
+CROSS= --build $(DEB_BUILD_GNU_TYPE) --host $(DEB_HOST_GNU_TYPE)
+endif
 
-	touch configure-stamp
+# Pass custom options to configure. Since it's not autoconf but a custom
+# script, some of the option names are slightly different. We also need
+# to be explicit about the dependencies, in case we're not running in a
+# clean build root.
+override_dh_auto_configure:
+	./configure $(CROSS) --prefix-dir=/usr --install-dir=debian/openttd --without-allegro --with-zlib --with-lzo2 --with-sdl --with-png --with-freetype --with-fontconfig --with-icu
 
-
-build: configure build-stamp
-build-stamp:
-	dh_testdir
-
-	# Add here commands to compile the package.
-	
-	./configure --prefix-dir=/usr --binary-dir=games --data-dir=share/games/openttd --icon-dir=share/pixmaps --personal-dir=.openttd --install-dir=debian/openttd
-	$(MAKE)
-
-	#/usr/bin/docbook-to-man debian/openttd.sgml > openttd.1
-
-	touch build-stamp
-
-clean:
-	dh_testdir
-	dh_testroot
-	rm -f build-stamp configure-stamp
-
-	# Add here commands to clean up after the build process.
-	# We check for Makefile presence, because clean is called at the
-	# start of the build process (before configure) where we don't
-	# have a Makefile yet.
-	[ ! -f Makefile ] || $(MAKE) mrproper
-
-	dh_clean
-
-install: build
-	dh_testdir
-	dh_testroot
-	dh_clean -k
-	dh_installdirs
-
-	# Add here commands to install the package into debian/openttd.
+# Do some extra installation
+override_dh_auto_install:
 	$(MAKE) install
 
-# Build architecture-independent files here.
-binary-indep: build install
-# We have nothing to do by default.
+	# Install the wrapper and make it executable
+	install -d debian/openttd/usr/share/games/openttd/
+	install -m755 debian/openttd-wrapper debian/openttd/usr/share/games/openttd/
 
-# Build architecture-dependent files here.
-binary-arch: build install
-	dh_testdir
-	dh_testroot
-	dh_installchangelogs changelog.txt
-	dh_installdocs
-	dh_installexamples
-#	dh_install
-	dh_installmenu
-	dh_installdebconf
-#	dh_installlogrotate
-#	dh_installemacsen
-#	dh_installpam
-#	dh_installmime
-#	dh_installinit
-#	dh_installcron
-#	dh_installinfo
-	dh_installman docs/openttd.6
-	dh_link
-	dh_strip
-	dh_compress
-	dh_fixperms
-#	dh_perl
-#	dh_python
-#	dh_makeshlibs
-	dh_installdeb
-	dh_shlibdeps
-	dh_gencontrol
-	dh_md5sums
-	dh_builddeb
+	# Since 0.7.0, upstream Makefile installs some unwanted stuff.
+	-rm $(CURDIR)/debian/openttd/usr/share/doc/openttd/COPYING
+	-rm $(CURDIR)/debian/openttd/usr/share/doc/openttd/changelog.txt
+	-rm $(CURDIR)/debian/openttd/usr/share/doc/openttd/ob*_format.txt
 
-binary: binary-indep binary-arch
-.PHONY: build clean binary-indep binary-arch binary install configure
+# Don't do testing. Because the OpenTTD Makefile always does dependency
+# generation (even on invalid targets), dh_auto_test thinks there is a
+# "test" target, while there isn't.
+override_dh_auto_test:
+
+# Call mrproper. Again, dh_auto_clean thinks there is a distclean
+# target, while there isn't.
+override_dh_auto_clean:
+	[ ! -f Makefile ] || $(MAKE) mrproper

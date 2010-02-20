@@ -1911,7 +1911,7 @@ void GenerateIndustries()
 	for (uint i = 0; i < total_amount; i++) {
 		uint32 r = RandomRange(total_prob);
 		IndustryType it = 0;
-		while (it < NUM_INDUSTRYTYPES && r > industry_probs[it]) {
+		while (it < NUM_INDUSTRYTYPES && r >= industry_probs[it]) {
 			r -= industry_probs[it];
 			it++;
 		}

@@ -253,7 +253,7 @@ int CDECL vsnprintf(char *str, size_t size, const char *format, va_list ap)
 	/* The buffer is too small for _vsnprintf to write the
 	 * null-terminator at its end and return size. */
 	str[size - 1] = '\0';
-	return size;
+	return (int)size;
 }
 #endif /* _MSC_VER */
 

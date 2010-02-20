@@ -15,6 +15,7 @@
 #include "../string_func.h"
 #include "../sound/sound_driver.hpp"
 #include "../video/video_driver.hpp"
+#include "../gfx_func.h"
 #include "extmidi.h"
 #include <fcntl.h>
 #include <sys/types.h>
@@ -108,7 +109,27 @@ void MusicDriver_ExtMidi::DoPlay()
 
 void MusicDriver_ExtMidi::DoStop()
 {
-	if (this->pid != -1) kill(this->pid, SIGTERM);
+	if (this->pid <= 0) return;
+
+	/* First try to gracefully stop for about five seconds;
+	 * 5 seconds = 5000 milliseconds, 10 ms per cycle => 500 cycles. */
+	for (int i = 0; i < 500; i++) {
+		kill(this->pid, SIGTERM);
+		if (waitpid(this->pid, NULL, WNOHANG) == this->pid) {
+			/* It has shut down, so we are done */
+			this->pid = -1;
+			return;
+		}
+		/* Wait 10 milliseconds. */
+		CSleep(10);
+	}
+
+	DEBUG(driver, 0, "extmidi: gracefully stopping failed, trying the hard way");
+	/* Gracefully stopping failed. Do it the hard way
+	 * and wait till the process finally died. */
+	kill(this->pid, SIGKILL);
+	waitpid(this->pid, NULL, 0);
+	this->pid = -1;
 }
 
 #endif /* __MORPHOS__ */
