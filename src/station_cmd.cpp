@@ -661,6 +661,57 @@ static void DeleteStationIfEmpty(BaseStation *st)
 
 CommandCost ClearTile_Station(TileIndex tile, DoCommandFlag flags);
 
+/** Checks if the given tile is buildable, flat and has a certain height.
+ * @param tile TileIndex to check.
+ * @param invalid_dirs Prohibited directions for slopes (set of #DiagDirection).
+ * @param allowed_z Height allowed for the tile. If allowed_z is negative, it will be set to the height of this tile.
+ * @return The cost in case of success, or an error code if it failed.
+ */
+CommandCost CheckBuildableTile(TileIndex tile, uint invalid_dirs, int &allowed_z)
+{
+	if (MayHaveBridgeAbove(tile) && IsBridgeAbove(tile)) {
+		return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
+	}
+
+	if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
+
+	uint z;
+	Slope tileh = GetTileSlope(tile, &z);
+
+	/* Prohibit building if
+	 *   1) The tile is "steep" (i.e. stretches two height levels).
+	 *   2) The tile is non-flat and the build_on_slopes switch is disabled.
+	 */
+	if (IsSteepSlope(tileh) ||
+			((!_settings_game.construction.build_on_slopes) && tileh != SLOPE_FLAT)) {
+		return_cmd_error(STR_ERROR_FLAT_LAND_REQUIRED);
+	}
+
+	CommandCost cost(EXPENSES_CONSTRUCTION);
+	int flat_z = z;
+	if (tileh != SLOPE_FLAT) {
+		/* Forbid building if the tile faces a slope in a invalid direction. */
+		if ((HasBit(invalid_dirs, DIAGDIR_NE) && !(tileh & SLOPE_NE)) ||
+		    (HasBit(invalid_dirs, DIAGDIR_SE) && !(tileh & SLOPE_SE)) ||
+		    (HasBit(invalid_dirs, DIAGDIR_SW) && !(tileh & SLOPE_SW)) ||
+		    (HasBit(invalid_dirs, DIAGDIR_NW) && !(tileh & SLOPE_NW))) {
+			return_cmd_error(STR_ERROR_FLAT_LAND_REQUIRED);
+		}
+		cost.AddCost(_price[PR_BUILD_FOUNDATION]);
+		flat_z += TILE_HEIGHT;
+	}
+
+	/* The level of this tile must be equal to allowed_z. */
+	if (allowed_z < 0) {
+		/* First tile. */
+		allowed_z = flat_z;
+	} else if (allowed_z != flat_z) {
+		return_cmd_error(STR_ERROR_FLAT_LAND_REQUIRED);
+	}
+
+	return cost;
+}
+
 /** Tries to clear the given area.
  * @param tile TileIndex to start check
  * @param w width of search area
@@ -678,45 +729,9 @@ CommandCost CheckFlatLandBelow(TileIndex tile, uint w, uint h, DoCommandFlag fla
 	int allowed_z = -1;
 
 	TILE_LOOP(tile_cur, w, h, tile) {
-		if (MayHaveBridgeAbove(tile_cur) && IsBridgeAbove(tile_cur)) {
-			return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
-		}
-
-		if (!EnsureNoVehicleOnGround(tile_cur)) return CMD_ERROR;
-
-		uint z;
-		Slope tileh = GetTileSlope(tile_cur, &z);
-
-		/* Prohibit building if
-		 *   1) The tile is "steep" (i.e. stretches two height levels)
-		 *   2) The tile is non-flat and the build_on_slopes switch is disabled
-		 */
-		if (IsSteepSlope(tileh) ||
-				((!_settings_game.construction.build_on_slopes) && tileh != SLOPE_FLAT)) {
-			return_cmd_error(STR_ERROR_FLAT_LAND_REQUIRED);
-		}
-
-		int flat_z = z;
-		if (tileh != SLOPE_FLAT) {
-			/* need to check so the entrance to the station is not pointing at a slope.
-			 * This must be valid for all station tiles, as the user can remove single station tiles. */
-			if ((HasBit(invalid_dirs, DIAGDIR_NE) && !(tileh & SLOPE_NE)) ||
-			    (HasBit(invalid_dirs, DIAGDIR_SE) && !(tileh & SLOPE_SE)) ||
-			    (HasBit(invalid_dirs, DIAGDIR_SW) && !(tileh & SLOPE_SW)) ||
-			    (HasBit(invalid_dirs, DIAGDIR_NW) && !(tileh & SLOPE_NW))) {
-				return_cmd_error(STR_ERROR_FLAT_LAND_REQUIRED);
-			}
-			cost.AddCost(_price[PR_BUILD_FOUNDATION]);
-			flat_z += TILE_HEIGHT;
-		}
-
-		/* get corresponding flat level and make sure that all parts of the station have the same level. */
-		if (allowed_z == -1) {
-			/* first tile */
-			allowed_z = flat_z;
-		} else if (allowed_z != flat_z) {
-			return_cmd_error(STR_ERROR_FLAT_LAND_REQUIRED);
-		}
+		CommandCost ret = CheckBuildableTile(tile_cur, invalid_dirs, allowed_z);
+		if (ret.Failed()) return ret;
+		cost.AddCost(ret);
 
 		/* if station is set, then we have special handling to allow building on top of already existing stations.
 		 * so station points to INVALID_STATION if we can build on any station.
@@ -756,7 +771,7 @@ CommandCost CheckFlatLandBelow(TileIndex tile, uint w, uint h, DoCommandFlag fla
 					continue;
 				}
 			}
-			CommandCost ret = DoCommand(tile_cur, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+			ret = DoCommand(tile_cur, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 			if (ret.Failed()) return ret;
 			cost.AddCost(ret);
 		}
