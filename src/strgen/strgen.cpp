@@ -140,7 +140,7 @@ static LangString *HashFind(const char *s)
 #ifdef _MSC_VER
 # define LINE_NUM_FMT(s) "%s (%d): warning: %s (" s ")\n"
 #else
-# define LINE_NUM_FMT(s) "%s: :%d: " s ": %s\n"
+# define LINE_NUM_FMT(s) "%s:%d: " s ": %s\n"
 #endif
 
 static void CDECL strgen_warning(const char *s, ...) WARN_FORMAT(1, 2);
@@ -396,6 +396,11 @@ static void EmitGender(char *buf, int value)
 		/* This is a {G 0 foo bar two} command.
 		 * If no relative number exists, default to +0 */
 		if (!ParseRelNum(&buf, &argidx, &offset)) {}
+
+		const CmdStruct *cmd = _cur_pcs.cmd[argidx];
+		if ((cmd->flags & C_GENDER) == 0) {
+			error("Command '%s' can't have a gender", cmd->cmd);
+		}
 
 		for (nw = 0; nw < MAX_NUM_GENDER; nw++) {
 			words[nw] = ParseWord(&buf);

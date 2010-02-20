@@ -12,9 +12,10 @@
 #include "../core/enum_type.hpp"
 
 enum CmdFlags {
-	C_NONE      = 0x0,
-	C_DONTCOUNT = 0x1,
-	C_CASE      = 0x2,
+	C_NONE      = 0x0, ///< Nothing special about this command
+	C_DONTCOUNT = 0x1, ///< These commands aren't counted for comparison
+	C_CASE      = 0x2, ///< These commands support cases
+	C_GENDER    = 0x4, ///< These commands support genders
 };
 DECLARE_ENUM_AS_BIT_SET(CmdFlags);
 
@@ -60,15 +61,15 @@ static const CmdStruct _cmd_structs[] = {
 	{"REV",             EmitSingleChar, SCC_REVISION,           0, C_NONE}, // openttd revision string
 	{"SHORTCARGO",      EmitSingleChar, SCC_CARGO_SHORT,        2, C_NONE}, // short cargo description, only ### tons, or ### litres
 
-	{"STRING1",         EmitSingleChar, SCC_STRING1,            2, C_CASE}, // included string that consumes the string id and ONE argument
-	{"STRING2",         EmitSingleChar, SCC_STRING2,            3, C_CASE}, // included string that consumes the string id and TWO arguments
-	{"STRING3",         EmitSingleChar, SCC_STRING3,            4, C_CASE}, // included string that consumes the string id and THREE arguments
-	{"STRING4",         EmitSingleChar, SCC_STRING4,            5, C_CASE}, // included string that consumes the string id and FOUR arguments
-	{"STRING5",         EmitSingleChar, SCC_STRING5,            6, C_CASE}, // included string that consumes the string id and FIVE arguments
+	{"STRING1",         EmitSingleChar, SCC_STRING1,            2, C_CASE | C_GENDER}, // included string that consumes the string id and ONE argument
+	{"STRING2",         EmitSingleChar, SCC_STRING2,            3, C_CASE | C_GENDER}, // included string that consumes the string id and TWO arguments
+	{"STRING3",         EmitSingleChar, SCC_STRING3,            4, C_CASE | C_GENDER}, // included string that consumes the string id and THREE arguments
+	{"STRING4",         EmitSingleChar, SCC_STRING4,            5, C_CASE | C_GENDER}, // included string that consumes the string id and FOUR arguments
+	{"STRING5",         EmitSingleChar, SCC_STRING5,            6, C_CASE | C_GENDER}, // included string that consumes the string id and FIVE arguments
 
 	{"STATIONFEATURES", EmitSingleChar, SCC_STATION_FEATURES,   1, C_NONE}, // station features string, icons of the features
-	{"INDUSTRY",        EmitSingleChar, SCC_INDUSTRY_NAME,      1, C_NONE}, // industry, takes an industry #
-	{"CARGO",           EmitSingleChar, SCC_CARGO,              2, C_NONE},
+	{"INDUSTRY",        EmitSingleChar, SCC_INDUSTRY_NAME,      1, C_NONE | C_GENDER}, // industry, takes an industry #
+	{"CARGO",           EmitSingleChar, SCC_CARGO,              2, C_NONE | C_GENDER},
 	{"POWER",           EmitSingleChar, SCC_POWER,              1, C_NONE},
 	{"VOLUME",          EmitSingleChar, SCC_VOLUME,             1, C_NONE},
 	{"VOLUME_S",        EmitSingleChar, SCC_VOLUME_SHORT,       1, C_NONE},
@@ -85,8 +86,8 @@ static const CmdStruct _cmd_structs[] = {
 	{"DATE_LONG",       EmitSingleChar, SCC_DATE_LONG,          1, C_NONE},
 	{"DATE_ISO",        EmitSingleChar, SCC_DATE_ISO,           1, C_NONE},
 
-	{"STRING",          EmitSingleChar, SCC_STRING,             1, C_CASE},
-	{"RAW_STRING",      EmitSingleChar, SCC_RAW_STRING_POINTER, 1, C_NONE},
+	{"STRING",          EmitSingleChar, SCC_STRING,             1, C_CASE | C_GENDER},
+	{"RAW_STRING",      EmitSingleChar, SCC_RAW_STRING_POINTER, 1, C_NONE | C_GENDER},
 
 	/* Numbers */
 	{"COMMA",           EmitSingleChar, SCC_COMMA,              1, C_NONE}, // Number with comma
@@ -96,16 +97,16 @@ static const CmdStruct _cmd_structs[] = {
 
 	{"CURRENCY",        EmitSingleChar, SCC_CURRENCY,           1, C_NONE},
 
-	{"WAYPOINT",        EmitSingleChar, SCC_WAYPOINT_NAME,      1, C_NONE}, // waypoint name
-	{"STATION",         EmitSingleChar, SCC_STATION_NAME,       1, C_NONE},
-	{"TOWN",            EmitSingleChar, SCC_TOWN_NAME,          1, C_NONE},
-	{"GROUP",           EmitSingleChar, SCC_GROUP_NAME,         1, C_NONE},
-	{"SIGN",            EmitSingleChar, SCC_SIGN_NAME,          1, C_NONE},
-	{"ENGINE",          EmitSingleChar, SCC_ENGINE_NAME,        1, C_NONE},
-	{"VEHICLE",         EmitSingleChar, SCC_VEHICLE_NAME,       1, C_NONE},
-	{"COMPANY",         EmitSingleChar, SCC_COMPANY_NAME,       1, C_NONE},
+	{"WAYPOINT",        EmitSingleChar, SCC_WAYPOINT_NAME,      1, C_NONE | C_GENDER}, // waypoint name
+	{"STATION",         EmitSingleChar, SCC_STATION_NAME,       1, C_NONE | C_GENDER},
+	{"TOWN",            EmitSingleChar, SCC_TOWN_NAME,          1, C_NONE | C_GENDER},
+	{"GROUP",           EmitSingleChar, SCC_GROUP_NAME,         1, C_NONE | C_GENDER},
+	{"SIGN",            EmitSingleChar, SCC_SIGN_NAME,          1, C_NONE | C_GENDER},
+	{"ENGINE",          EmitSingleChar, SCC_ENGINE_NAME,        1, C_NONE | C_GENDER},
+	{"VEHICLE",         EmitSingleChar, SCC_VEHICLE_NAME,       1, C_NONE | C_GENDER},
+	{"COMPANY",         EmitSingleChar, SCC_COMPANY_NAME,       1, C_NONE | C_GENDER},
 	{"COMPANYNUM",      EmitSingleChar, SCC_COMPANY_NUM,        1, C_NONE},
-	{"PRESIDENTNAME",   EmitSingleChar, SCC_PRESIDENT_NAME,     1, C_NONE},
+	{"PRESIDENTNAME",   EmitSingleChar, SCC_PRESIDENT_NAME,     1, C_NONE | C_GENDER},
 
 	{"",                EmitSingleChar, '\n',                   0, C_DONTCOUNT},
 	{"{",               EmitSingleChar, '{',                    0, C_DONTCOUNT},
