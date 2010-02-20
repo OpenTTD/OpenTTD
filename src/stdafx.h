@@ -51,6 +51,9 @@
 	#define UINT16_MAX (65535U)
 	#define INT16_MAX  (32767)
 	#define INT16_MIN  (-INT16_MAX - 1)
+	#define UINT8_MAX  (255)
+	#define INT8_MAX   (127)
+	#define INT8_MIN   (-INT8_MAX - 1)
 #endif
 
 #include <cstdio>
