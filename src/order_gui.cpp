@@ -1001,13 +1001,8 @@ public:
 
 					switch (ord->GetType()) {
 						case OT_GOTO_WAYPOINT:
-							if (this->vehicle->type == VEH_TRAIN) {
-								xy = Waypoint::Get(ord->GetDestination())->xy;
-								break;
-							}
-							/* FALL THROUGH */
 						case OT_GOTO_STATION:
-							xy = Station::Get(ord->GetDestination())->xy;
+							xy = BaseStation::Get(ord->GetDestination())->xy;
 							break;
 
 						case OT_GOTO_DEPOT:
