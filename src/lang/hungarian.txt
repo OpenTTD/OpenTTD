@@ -594,15 +594,15 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Pénz:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Kölcsön:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Összesen:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Az előző évben profitált járművek száma; ebbe beleértendőek a közúti, kötöttpályás, vizi és légi járművek.
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Közelmúltban javított állomásrészek száma. Minden rész számít (pl. vasútállomás, buszmegálló, repülőtér), még akkor is, ha egy állomáshoz tartoznak.
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}A legalacsonyabb profitot hozó jármű profitja (csak 2 évnél idősebb járművek)
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Az előző évben profitált járművek száma; ebbe beleértendőek a közúti, vasúti, vízi és légi járművek
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Közelmúltban kiszolgált állomásrészek száma. Minden rész számít (pl. vasútállomás, buszmegálló, repülőtér), még akkor is, ha egy állomáshoz tartoznak.
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}A legalacsonyabb bevételt hozó jármű profitja (csak 2 évnél idősebb járművek)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Megkeresett pénz a negyedévben a legkisebb profitnál az utolsó 12 negyedévben.
-STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Megkeresett pénz a negyedévben a legkisebb profitnál az utolsó 12 negyedévben.
-STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Utolsó négy negyedévben elszállított rakomány.
-STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Az utolsó negyedévben elszállított áruk típusa.
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Megkeresett pénz a negyedévben a legnagyobb profitnál az utolsó 12 negyedévben
+STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Utolsó négy negyedévben elszállított rakomány
+STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Az utolsó negyedévben elszállított áruk típusa
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Elérhető készpénz
-STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}Magas kölcsönöd van?
+STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}A cég által felvett hitelösszeg
 STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Megszerzett pontok az elérhető pontokból
 
 # Music window
@@ -640,7 +640,7 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}A 'Sajá
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}A műsor megkeverése be/ki
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}A zenekiválasztó ablak megjelenítése
 
-STR_ERROR_NO_SONGS                                              :{WHITE}Egy zeneszámokat nem tartalmazó zenei beállítás lett kiválasztva. A játékban nem lesz zene.
+STR_ERROR_NO_SONGS                                              :{WHITE}Egy zeneszámokat nem tartalmazó zenei alapcsomag lett kiválasztva. A játékban nem lesz zene.
 
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Zenei műsor kiválasztása

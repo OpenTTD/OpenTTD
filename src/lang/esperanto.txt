@@ -217,6 +217,7 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 # Common window strings
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Entajpu filtrotekston.
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Elektu vicordo (deira/alira)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Elektu ordigaj kondiĉoj
@@ -291,16 +292,16 @@ STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Konservu
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Montru mapon
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Montru urbaron
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Montru subvenciojn
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Montru liston da stacidomoj de kompanioj
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Montri stacidomoliston de la kompanio.
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Montru kompaniajn financajn informojn
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Montru ĝeneralajn kompaniajn informojn
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Montru grafikojn
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Montru kompanian tabelon
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Pagu konstruadon de nova industrio aŭ listigu ĉiujn industriojn
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Montru liston da kompaniaj trajnoj
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Montru liston da kompaniaj vojveturiloj
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Montru liston da kompaniaj ŝipoj
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Montru liston da kompaniaj aviadiloj
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Montri trajnliston de la kompanio. Stir+Klak baskulas la grupo/veturilo-liston.
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Montri vojveturiloliston de la kompanio. Stir+Klak baskulas la grupo/veturilo-liston.
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Montri ŝipoliston de la kompanio. Stir+Klak baskulas la grupo/veturilo-liston.
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Montri aviadiloliston de la kompanio. Stir+Klak baskulas la grupo/veturilo-liston.
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Zomu vidon
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Malzomu vidon
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Konstruu relojn
@@ -310,7 +311,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Konstruu
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Malfermu la landaspektan ilbreton por (mal)altigi landon, planti arbojn ktp.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Montru fenestron de sono/muziko
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Montru lastan mesaĝon/novaĵon, montru mesaĝajn opciojn
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Landregionaj informoj
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informoj pri regionoj, konzolo, AI-sencimigo, ekranfotoj, OpenTTD.
 
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Konservu scenaron, ŝarĝu scenaron, foriru el la kreilo, fermu
@@ -342,7 +343,7 @@ STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Avancitaj agord
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Agordoj de NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Ebloj por travidebleco
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Urbonomoj montriĝas
-STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Staciaj nomoj montriĝas
+STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Stacionomoj montriĝas
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Montru nomojn de vojpunktoj
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Afiŝoj montriĝas
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Plena animado
@@ -365,6 +366,7 @@ STR_MAP_MENU_SIGN_LIST                                          :Afiŝa listo
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Urba katalogo
 ############ end of the 'Display map' dropdown
+STR_TOWN_MENU_FOUND_TOWN                                        :Urbo troviĝas.
 ############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
@@ -554,7 +556,7 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Mono:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Prunto:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Entute:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Nombro da veturiloj; tio enkalkulas vojveturilojn, trajnojn, ŝipojn kaj aviadilojn
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Nombro da veturiloj, kiuj lastjare profitis, inkluzive de vojveturiloj, trajnoj, ŝipoj kaj aviadiloj.
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Nombro da staciaj eroj. Ĉiu parto de stacio (ekz. stacidomo, bushaltejo, flughaveno) kalkuliĝas, eĉ se konektite kiel unu stacio
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}La gajno de la malplejenspeza veturilo (de ĉiuj veturiloj pli aĝaj ol 2 jaroj)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Enspezite en la plej malaltenspeza monato de la lasta 12 kvaronoj
@@ -575,6 +577,9 @@ STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}{BLAC
 STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}{BLACK}Propra 2
 STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}Muzika Volumeno
 STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Efekta Volumeno
+STR_MUSIC_RULER_MIN                                             :{TINYFONT}{BLACK}MIN
+STR_MUSIC_RULER_MAX                                             :{TINYFONT}{BLACK}MAKS
+STR_MUSIC_RULER_MARKER                                          :{TINYFONT}{BLACK}'
 STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINYFONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
@@ -597,6 +602,7 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Elektu l
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Miksu/ne miksu
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Montru muziker-elektan fenestron
 
+STR_ERROR_NO_SONGS                                              :{WHITE}Senkanta muzikaro estas elektita. Neniu kanto ludos.
 
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Elekto de Muzikprogramo
@@ -682,6 +688,8 @@ STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRI
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Malaktivigu ĉiujn
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Aktivigu ĉiujn
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL                                :{BLACK}Ne montri industriojn sur la mapo.
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL                                 :{BLACK}Montri ĉiujn industriojn sur la mapo.
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Montru lastan mesaĝon aŭ novaĵon
@@ -754,6 +762,7 @@ STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} estas transprenita de {STRING}!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Manaĝanto)
 
+STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}{STRING} financis konstruon de nova urbo {TOWN}!
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Nova {STRING} konstruiĝas ĉe {TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Nova {STRING} plantiĝas ĉe {TOWN}!
@@ -925,13 +934,17 @@ STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Elektu u
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Baza grafikaro
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Selektu la uzendan bazgrafikaron
-STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} mankanta/koruptita dosiero{P "" s}
+STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} mankanta{P "" j}/koruptita{P "" j} dosiero{P "" j}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Aldonaj informoj pri la baza grafikaro
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Baza sonaro
 STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Elektu la uzendan sonaron
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Aldonaj informoj pri la baza sonaro
 
+STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Baza muzikaro.
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Elekti baza muzikaron por uzi.
+STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} difektita{P "" j} dosiero{P "" j}
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Pluaj informoj pri la baza muzikaro.
 
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Plenekrana moduso fiaskis
 
@@ -990,6 +1003,12 @@ STR_NUM_NORMAL                                                  :Normale
 STR_NUM_HIGH                                                    :Alte
 STR_NUM_CUSTOM                                                  :Ŝanĝitaj
 
+STR_VARIETY_NONE                                                :Neniu
+STR_VARIETY_VERY_LOW                                            :Tre Malalta
+STR_VARIETY_LOW                                                 :Malalta
+STR_VARIETY_MEDIUM                                              :Meza
+STR_VARIETY_HIGH                                                :Alta
+STR_VARIETY_VERY_HIGH                                           :Tre Alta
 
 STR_AI_SPEED_VERY_SLOW                                          :Tre Malrapide
 STR_AI_SPEED_SLOW                                               :Malrapide
@@ -1077,7 +1096,10 @@ STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Permesu
 STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Nekonformaj stacioj: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Pezpliigo pro ŝarĝo por imiti pezajn trajnojn: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Aviadil-rapidec-faktoro: {ORANGE}1 / {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Nombro da aviadilokraŝoj: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :neniom
+STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :reduktita
+STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normala
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Permesu trairajn bushaltejojn sur vojoj urboposedataj: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Permesu trairajn strathaltejojn sur stratoj posedataj de konkurantoj: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Permesu konstrui staciojn apude: {ORANGE}{STRING}
@@ -1224,7 +1246,10 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :kvadrataro de 3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :hazarda
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Permesu ke urboj konstruu stratojn: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Permesu urbe kontrolatan laŭtecon por flughavenoj: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :prohibita
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :permesita
 
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :ĉie
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Loko de ĉefa ilbreto: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Maldekstre
@@ -1293,6 +1318,7 @@ STR_INTRO_GAME_OPTIONS                                          :{BLACK}Ludaj Op
 STR_INTRO_DIFFICULTY                                            :{BLACK}Malfacileco ({STRING})
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Avancitaj agordoj
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Agordoj de NewGRF
+STR_INTRO_AI_SETTINGS                                           :{BLACK}AI-Agordoj
 STR_INTRO_QUIT                                                  :{BLACK}Fermu
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Starti novan ludon. Stir-Klak por preterpasi mapan agordon.
@@ -1310,6 +1336,8 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Elektu '
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Montru ludajn opciojn
 STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Montru malfacilec-opciojn
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Montru avancitajn agordojn
+STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Montri NewGRF-agordojn
+STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Montri AI-agordojn.
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Fermu 'OpenTTD'
 
 # Quit window
@@ -1376,6 +1404,8 @@ STR_LIVERY_EMU                                                  :EMU
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Pasaĝera Vagono (Vaporo)
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Pasaĝera Vagono (Dizelo)
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Pasaĝera Vagono (Elektro)
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Pasaĝera Vagono (Monorelo)
+STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Pasaĝera Vagono (Maglev)
 STR_LIVERY_FREIGHT_WAGON                                        :Ŝarĝvagono
 STR_LIVERY_BUS                                                  :Buso
 STR_LIVERY_TRUCK                                                :Ŝarĝaŭto
@@ -1396,7 +1426,10 @@ STR_FACE_FEMALE_BUTTON                                          :{BLACK}Virina
 STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Elektu virinajn vizaĝojn
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Nova Vizaĝo
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Kreu hazardan novan vizaĝon
+STR_FACE_ADVANCED                                               :{BLACK}Altnivela
+STR_FACE_ADVANCED_TOOLTIP                                       :{BLACK}Altnivela elekto de vizaĝo.
 STR_FACE_SIMPLE                                                 :{BLACK}Simpla
+STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Simpla elekto de vizaĝo.
 STR_FACE_SAVE                                                   :{BLACK}Konservi
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Konservi faman vizaĝon
 STR_FACE_SAVE_DONE                                              :{WHITE}Tiu ĉi vizaĝo estos konservita kiel via favorata en agord-dosiero de OpenTTD.
@@ -1494,13 +1527,13 @@ STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Generu hazardan
 
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :Loka reto / Interreto
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Interreto (reklamu)
-STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} client{P "" s}
+STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} kliento{P "" j}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Klienta maksimumo:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Elektu klientan maksimumon. Ne ĉiuj lokoj estas plenigendaj
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} kompanio{P "" j}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Kompania maksimumo:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Limu la servilon al certa kvanto da kompanioj
-STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} spektanto{P "" s}
+STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} spektanto{P "" j}
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Spektanta maksimumo:
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Limigu la servilon al certa kvanto da spektantoj
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Parolata lingvo:
@@ -1693,11 +1726,15 @@ STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE} La serv
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE} La servilo restartiĝas...{}Bonvolu atendi...
 
 # Content downloading window
+STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Vi ne elektis ĉi tiun por elŝuti.
+STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Vi elektis ĉi tiun por elŝuti.
 
 # Order of these is important!
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Bazaj sonoj
 
 # Content downloading progress window
+STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Nuntempe elŝutante {STRING} ({NUM} el {NUM})
+STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} el {BYTES} elŝutiĝis ({NUM} %)
 
 # Content downloading error messages
 
@@ -1759,8 +1796,8 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Elektu l
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Tiru k metu
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Tiru por konstrui stacidomon
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Elektu stacidomklason por montri
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Elektu stacidomtipon por konstrui
+STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Elekti stacidomklason por montri.
+STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Elekti stacidomotipon por konstrui.
 
 STR_STATION_CLASS_DFLT                                          :Defaŭlta stacio
 STR_STATION_CLASS_WAYP                                          :Transirejoj
@@ -1876,9 +1913,9 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Ĉu vi c
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Urba Generado
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Nova Urbo
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Konstruu novan urbon
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Fondi novan urbon
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Hazarda Urbo
-STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Konstruu urbon en hazarda loko
+STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Fondi urbon en hazarda loko
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Multaj hazardaj urboj
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Kovru la mapon per hazarde metitajn urbojn
 
@@ -2074,7 +2111,7 @@ STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Altigu l
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Ŝanĝu altecon de ebena lando
 
 # Map generation progress
-STR_GENERATION_WORLD                                            :{WHITE}Generante mondon...
+STR_GENERATION_WORLD                                            :{WHITE}Generante Mondon...
 STR_GENERATION_ABORT                                            :{BLACK}Ĉesu
 STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Ĉesu generi mondon
 STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Ĉu vi vere volas ĉesi generi mondon?
@@ -2089,7 +2126,7 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Trakuran
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Preparante ludon
 
 # NewGRF settings
-STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Agordoj de NewGRF
+STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF-Agordoj
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Aldonu
 STR_NEWGRF_SETTINGS_ADD_TOOLTIP                                 :{BLACK}Aldonu NewGRF-dosieron al la listo
 STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Forviŝu
@@ -2160,7 +2197,7 @@ STR_EDIT_SIGN_CAPTION                                           :{WHITE}Ŝanĝu 
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Urboj
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}-Neniu -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Urbonomoj - alklaku nomon por centre vidi la urbon
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Urbonomoj - klaku nomon por centri fenestron sur la urbo. Stir+Klak malfermas novan fenestron ĉe la loko.
 STR_TOWN_POPULATION                                             :{BLACK}Monda enloĝantaro: {COMMA}
 
 # Town view window
@@ -2215,10 +2252,10 @@ STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING
 STR_SUBSIDIES_NONE                                              :{ORANGE}Neniu
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Servoj subvenciataj:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} de {STRING} al {STRING}{YELLOW} ({COMPANY}{YELLOW}, ĝis {DATE_SHORT})
-STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Alklaku servon por centrigi la vidon al industrio/urbo
+STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klaku servon por centri fenestron sur la industrio/urbo. Stir+Klak malfermas novan fenestron ĉe la loko.
 
 # Station list window
-STR_STATION_LIST_TOOLTIP                                        :{BLACK}Staciaj nomoj - alklaku nomon por centre de la ĉefvido vidi ĝin
+STR_STATION_LIST_TOOLTIP                                        :{BLACK}Stacionomoj - klaku nomon por centri fenestron sur la stacio. Stir+Klak malfermas novan fenestron ĉe la loko.
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Tenu la CTRL-klavon por elekti plurajn erojn
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Stacio{P "" j}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
@@ -2234,7 +2271,7 @@ STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO}
 STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({SHORTCARGO} survoje de {STATION})
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Akceptas
-STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Montru liston de akceptataj ŝarĝoj
+STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Montri liston de akceptataj ŝarĝoj.
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Akceptiĝas: {WHITE}{STRING}
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Takso
@@ -2343,7 +2380,7 @@ STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Neniu
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% transportite)
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% transportite)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Industrinomoj - klaku la nomon por centrigi la vidujon al la industrio
+STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Industrionomoj - klaku nomon por centri fenestron sur la industrio. Stir+Klak malfermas novan fenestron ĉe la loko.
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}

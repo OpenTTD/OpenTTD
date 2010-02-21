@@ -383,12 +383,12 @@ STR_GRAPH_MENU_INCOME_GRAPH                                     :Biểu đồ th
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Biểu đồ hàng hoá phân phối
 STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :Biểu đồ lịch sử năng suất
 STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Biểu đồ giá trị công ty
-STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Tỉ giá thanh toán hàng hoá
+STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Bảng giá cước vận chuyển
 ############ range ends here
 
 ############ range for company league menu starts
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Bảng tầm cỡ công ty
-STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Chi tiết năng suất định mức
+STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Chi tiết hệ số hiệu quả
 ############ range ends here
 
 ############ range for industry menu starts
@@ -518,7 +518,7 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Số lư
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Đánh giá uy tín công ty (cao nhất=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Giá trị công ty
 
-STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Tỉ giá thanh toán hàng hóa
+STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Bảng giá cước vận chuyển hàng hoá
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Số ngày vận chuyển
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Tiền trả khi vận chuyển 10 đơn vị (hay 10,000 lít) hàng hóa trên mỗi 20 ô
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Bật/tắt đồ thị hàng hóa
@@ -1768,7 +1768,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Ván chơi tạ
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Game đang dừng ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Game đang dừng ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Game vẫn đang dừng ({STRING}, {STRING}, {STRING})
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Không dừng game ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Bỏ tạm dừng game ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :không đủ người chơi
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :máy con kết nối đến
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :tự chọn
@@ -2015,19 +2015,19 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Xây sâ
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Chọn loại sân bay
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Chọn kích cỡ và kiểu sân bay
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Nhỏ
+STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Cực nhỏ
 STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}Đô thị
-STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Trung tâm
+STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Đô thị trung tâm
 STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Quốc tế
-STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Cỡ trung
+STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Nhỏ
 STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Liên lục địa
 STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Sân bay trực thăng
 STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}Sân bay trực thăng vừa
 STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}Sân bay trực thăng lớn
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}Sân bay nhỏ/trung
-STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Sân bay lớn
-STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Cảng trung chuyển
+STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}Sân bay nhỏ
+STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Sân bay trung bình
+STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Sân bay lớn
 STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Sân bay trực thăng
 
 STR_STATION_BUILD_NOISE                                         :{BLACK}Độ ồn tạo ra: {GOLD}{COMMA}

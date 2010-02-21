@@ -3387,6 +3387,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...só p
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...só pode ser construído em zonas florestais
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}...só pode ser construído em áreas desérticas
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}...só se pode ser construído em cidades
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... só pode ser construído em áreas baixas
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}...só pode ser colocado perto das bordas do mapa
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}...a floresta só pode ser plantada acima do nível de neve
 

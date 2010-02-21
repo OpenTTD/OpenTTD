@@ -3374,7 +3374,7 @@ STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... mass
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...no queda espai al mapa
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}El poble no construirà carrers. Pots activar la construcció de carrers via Paràmetres avançats->Economia->Pobles.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Obres en progrés
-STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}No es pot eliminar aquest poble...{}Hi ha una estació o cotxera al poble o una cel·la pertanyent al poble no pot ser eliminada
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}No es pot eliminar aquest poble...{}Hi ha una estació o una cotxera al poble o una cel·la pertanyent al poble no pot ser eliminada
 
 # Industry related errors
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}No es poden generar indústries...
