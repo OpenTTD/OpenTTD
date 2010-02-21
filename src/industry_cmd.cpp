@@ -1708,12 +1708,12 @@ static Industry *CreateNewIndustryHelper(TileIndex tile, IndustryType type, DoCo
 	if (ret.Failed()) return NULL;
 
 	if (HasBit(GetIndustrySpec(type)->callback_mask, CBM_IND_LOCATION)) {
-		if (!CheckIfCallBackAllowsCreation(tile, type, itspec_index, seed)) return NULL;
+		ret = CheckIfCallBackAllowsCreation(tile, type, itspec_index, seed);
 	} else {
 		ret = _check_new_industry_procs[indspec->check_proc](tile);
-		ret.SetGlobalErrorMessage();
-		if (ret.Failed()) return NULL;
 	}
+	ret.SetGlobalErrorMessage();
+	if (ret.Failed()) return NULL;
 
 	if (!custom_shape_check && _settings_game.game_creation.land_generator == LG_TERRAGENESIS && _generating_world && !_ignore_restrictions && !CheckIfCanLevelIndustryPlatform(tile, DC_NO_WATER, it, type)) return NULL;
 	ret = CheckIfFarEnoughFromIndustry(tile, type);

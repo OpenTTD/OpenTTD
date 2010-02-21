@@ -448,7 +448,14 @@ uint32 IndustryLocationGetVariable(const ResolverObject *object, byte variable, 
 	return IndustryGetVariable(object, variable, parameter, available);
 }
 
-bool CheckIfCallBackAllowsCreation(TileIndex tile, IndustryType type, uint itspec_index, uint32 seed)
+/** Check that the industry callback allows creation of the industry.
+ * @param tile %Tile to build the industry.
+ * @param type Type of industry to build.
+ * @param layout Layout number.
+ * @param seed Seed for the random generator.
+ * @return Succeeded or failed command.
+ */
+CommandCost CheckIfCallBackAllowsCreation(TileIndex tile, IndustryType type, uint layout, uint32 seed)
 {
 	const IndustrySpec *indspec = GetIndustrySpec(type);
 
@@ -460,7 +467,7 @@ bool CheckIfCallBackAllowsCreation(TileIndex tile, IndustryType type, uint itspe
 	ind.location.tile = tile;
 	ind.location.w = 0;
 	ind.type = type;
-	ind.selected_layout = itspec_index;
+	ind.selected_layout = layout;
 	ind.town = ClosestTownFromTile(tile, UINT_MAX);
 
 	NewIndustryResolver(&object, tile, &ind, type);
@@ -472,9 +479,9 @@ bool CheckIfCallBackAllowsCreation(TileIndex tile, IndustryType type, uint itspe
 
 	/* Unlike the "normal" cases, not having a valid result means we allow
 	 * the building of the industry, as that's how it's done in TTDP. */
-	if (group == NULL) return true;
+	if (group == NULL) return CommandCost();
 	uint16 result = group->GetCallbackResult();
-	if (result == 0x400 || result == CALLBACK_FAILED) return true;
+	if (result == 0x400 || result == CALLBACK_FAILED) return CommandCost();
 
 	/* Copy some parameters from the registers to the error message text ref. stack */
 	SwitchToErrorRefStack();
@@ -482,13 +489,12 @@ bool CheckIfCallBackAllowsCreation(TileIndex tile, IndustryType type, uint itspe
 	SwitchToNormalRefStack();
 
 	switch (result) {
-		case 0x401: _error_message = STR_ERROR_SITE_UNSUITABLE; break;
-		case 0x402: _error_message = STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST; break;
-		case 0x403: _error_message = STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT; break;
-		default: _error_message = GetGRFStringID(indspec->grf_prop.grffile->grfid, 0xD000 + result); break;
+		case 0x401: return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
+		case 0x402: return_cmd_error(STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST);
+		case 0x403: return_cmd_error(STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT);
+		default:    return_cmd_error(GetGRFStringID(indspec->grf_prop.grffile->grfid, 0xD000 + result));
 	}
-
-	return false;
+	NOT_REACHED();
 }
 
 bool CheckIfCallBackAllowsAvailability(IndustryType type, IndustryAvailabilityCallType creation_type)

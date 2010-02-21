@@ -12,6 +12,7 @@
 #ifndef NEWGRF_INDUSTRIES_H
 #define NEWGRF_INDUSTRIES_H
 
+#include "command_type.h"
 #include "newgrf_spritegroup.h"
 
 /** When should the industry(tile) be triggered for random bits? */
@@ -36,7 +37,7 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 uint16 GetIndustryCallback(CallbackID callback, uint32 param1, uint32 param2, Industry *industry, IndustryType type, TileIndex tile);
 uint32 GetIndustryIDAtOffset(TileIndex new_tile, const Industry *i, uint32 cur_grfid);
 void IndustryProductionCallback(Industry *ind, int reason);
-bool CheckIfCallBackAllowsCreation(TileIndex tile, IndustryType type, uint itspec_index, uint32 seed);
+CommandCost CheckIfCallBackAllowsCreation(TileIndex tile, IndustryType type, uint layout, uint32 seed);
 bool CheckIfCallBackAllowsAvailability(IndustryType type, IndustryAvailabilityCallType creation_type);
 
 IndustryType MapNewGRFIndustryType(IndustryType grf_type, uint32 grf_id);
