@@ -1270,27 +1270,27 @@ static CheckNewIndustryProc * const _check_new_industry_procs[CHECK_END] = {
 /** Find a town for the industry, while checking for multiple industries in the same town.
  * @param tile Position of the industry to build.
  * @param type Industry type.
- * @param [out] err_mesg Error message, if any.
- * @return Town for the new industry, \c NULL if no good town can be found.
+ * @param [out] town Pointer to return town for the new industry, \c NULL is written if no good town can be found.
+ * @return Succeeded or failed command.
+ *
+ * @precond \c *t != NULL
+ * @postcon \c *t points to a town on success, and \c NULL on failure.
  */
-static const Town *FindTownForIndustry(TileIndex tile, int type)
+static CommandCost FindTownForIndustry(TileIndex tile, int type, const Town **t)
 {
-	const Town *t;
+	*t = ClosestTownFromTile(tile, UINT_MAX);
+
+	if (_settings_game.economy.multiple_industry_per_town) return CommandCost();
+
 	const Industry *i;
-
-	t = ClosestTownFromTile(tile, UINT_MAX);
-
-	if (_settings_game.economy.multiple_industry_per_town) return t;
-
 	FOR_ALL_INDUSTRIES(i) {
-		if (i->type == (byte)type &&
-				i->town == t) {
-			_error_message = STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN;
-			return NULL;
+		if (i->type == (byte)type && i->town == *t) {
+			*t = NULL;
+			return_cmd_error(STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN);
 		}
 	}
 
-	return t;
+	return CommandCost();
 }
 
 bool IsSlopeRefused(Slope current, Slope refused)
@@ -1708,8 +1708,11 @@ static Industry *CreateNewIndustryHelper(TileIndex tile, IndustryType type, DoCo
 	ret.SetGlobalErrorMessage();
 	if (ret.Failed()) return NULL;
 
-	const Town *t = FindTownForIndustry(tile, type);
-	if (t == NULL) return NULL;
+	const Town *t = NULL;
+	ret = FindTownForIndustry(tile, type, &t);
+	ret.SetGlobalErrorMessage();
+	if (ret.Failed()) return NULL;
+	assert(t != NULL);
 
 	ret = CheckIfIndustryIsAllowed(tile, type, t);
 	ret.SetGlobalErrorMessage();
