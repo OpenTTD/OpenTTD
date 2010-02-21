@@ -3474,6 +3474,7 @@ STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(money limit)
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Impossible track combination
+STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Must remove signals first
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}No suitable railway track
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Must remove railway track first
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Road is one way or blocked
