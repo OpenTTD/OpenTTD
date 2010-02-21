@@ -1310,9 +1310,17 @@ bool IsSlopeRefused(Slope current, Slope refused)
 	return false;
 }
 
-static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable *it, uint itspec_index, int type, bool *custom_shape_check = NULL)
+/** Are the tiles of the industry free?
+ * @param tile                     Position to check.
+ * @param it                       Industry tiles table.
+ * @param itspec_index             The index of the itsepc to build/fund
+ * @param type                     Type of the industry.
+ * @param [out] custom_shape_check Perform custom check for the site.
+ * @return Failed or succeeded command.
+ */
+static CommandCost CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable *it, uint itspec_index, int type, bool *custom_shape_check = NULL)
 {
-	_error_message = STR_ERROR_SITE_UNSUITABLE;
+	CommandCost ret = CommandCost(STR_ERROR_SITE_UNSUITABLE);
 	bool refused_slope = false;
 	bool custom_shape = false;
 
@@ -1321,28 +1329,28 @@ static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable 
 		TileIndex cur_tile = TileAddWrap(tile, it->ti.x, it->ti.y);
 
 		if (!IsValidTile(cur_tile)) {
-			return false;
+			return ret;
 		}
 
 		if (gfx == GFX_WATERTILE_SPECIALCHECK) {
 			if (!IsTileType(cur_tile, MP_WATER) ||
 					GetTileSlope(cur_tile, NULL) != SLOPE_FLAT) {
-				return false;
+				return ret;
 			}
 		} else {
-			if (!EnsureNoVehicleOnGround(cur_tile)) return false;
-			if (MayHaveBridgeAbove(cur_tile) && IsBridgeAbove(cur_tile)) return false;
+			if (!EnsureNoVehicleOnGround(cur_tile)) return ret;
+			if (MayHaveBridgeAbove(cur_tile) && IsBridgeAbove(cur_tile)) return ret;
 
 			const IndustryTileSpec *its = GetIndustryTileSpec(gfx);
 
 			IndustryBehaviour ind_behav = GetIndustrySpec(type)->behaviour;
 
 			/* Perform land/water check if not disabled */
-			if (!HasBit(its->slopes_refused, 5) && (IsWaterTile(cur_tile) == !(ind_behav & INDUSTRYBEH_BUILT_ONWATER))) return false;
+			if (!HasBit(its->slopes_refused, 5) && (IsWaterTile(cur_tile) == !(ind_behav & INDUSTRYBEH_BUILT_ONWATER))) return ret;
 
 			if (HasBit(its->callback_mask, CBM_INDT_SHAPE_CHECK)) {
 				custom_shape = true;
-				if (!PerformIndustryTileSlopeCheck(tile, cur_tile, its, type, gfx, itspec_index)) return false;
+				if (!PerformIndustryTileSlopeCheck(tile, cur_tile, its, type, gfx, itspec_index)) return ret;
 			} else {
 				Slope tileh = GetTileSlope(cur_tile, NULL);
 				refused_slope |= IsSlopeRefused(tileh, its->slopes_refused);
@@ -1351,8 +1359,7 @@ static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable 
 			if ((ind_behav & (INDUSTRYBEH_ONLY_INTOWN | INDUSTRYBEH_TOWN1200_MORE)) || // Tile must be a house
 					((ind_behav & INDUSTRYBEH_ONLY_NEARTOWN) && IsTileType(cur_tile, MP_HOUSE))) { // Tile is allowed to be a house (and it is a house)
 				if (!IsTileType(cur_tile, MP_HOUSE)) {
-					_error_message = STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS;
-					return false;
+					return_cmd_error(STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS);
 				}
 
 				/* Clear the tiles as OWNER_TOWN to not affect town rating, and to not clear protected buildings */
@@ -1361,12 +1368,12 @@ static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable 
 				bool not_clearable = DoCommand(cur_tile, 0, 0, DC_NONE, CMD_LANDSCAPE_CLEAR).Failed();
 				_current_company = old_company;
 
-				if (not_clearable) return false;
+				if (not_clearable) return ret;
 			} else {
 				/* Clear the tiles, but do not affect town ratings */
 				bool not_clearable = DoCommand(cur_tile, 0, 0, DC_AUTO | DC_NO_TEST_TOWN_RATING | DC_NO_MODIFY_TOWN_RATING, CMD_LANDSCAPE_CLEAR).Failed();
 
-				if (not_clearable) return false;
+				if (not_clearable) return ret;
 			}
 		}
 	} while ((++it)->ti.x != -0x80);
@@ -1376,7 +1383,10 @@ static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable 
 	/* It is almost impossible to have a fully flat land in TG, so what we
 	 *  do is that we check if we can make the land flat later on. See
 	 *  CheckIfCanLevelIndustryPlatform(). */
-	return !refused_slope || (_settings_game.game_creation.land_generator == LG_TERRAGENESIS && _generating_world && !custom_shape && !_ignore_restrictions);
+	if (!refused_slope || (_settings_game.game_creation.land_generator == LG_TERRAGENESIS && _generating_world && !custom_shape && !_ignore_restrictions)) {
+		return CommandCost();
+	}
+	return ret;
 }
 
 /** Is the industry allowed to be built at this place for the town?
@@ -1693,18 +1703,20 @@ static Industry *CreateNewIndustryHelper(TileIndex tile, IndustryType type, DoCo
 	const IndustryTileTable *it = indspec->table[itspec_index];
 	bool custom_shape_check = false;
 
-	if (!CheckIfIndustryTilesAreFree(tile, it, itspec_index, type, &custom_shape_check)) return NULL;
+	CommandCost ret = CheckIfIndustryTilesAreFree(tile, it, itspec_index, type, &custom_shape_check);
+	ret.SetGlobalErrorMessage();
+	if (ret.Failed()) return NULL;
 
 	if (HasBit(GetIndustrySpec(type)->callback_mask, CBM_IND_LOCATION)) {
 		if (!CheckIfCallBackAllowsCreation(tile, type, itspec_index, seed)) return NULL;
 	} else {
-		CommandCost ret = _check_new_industry_procs[indspec->check_proc](tile);
+		ret = _check_new_industry_procs[indspec->check_proc](tile);
 		ret.SetGlobalErrorMessage();
 		if (ret.Failed()) return NULL;
 	}
 
 	if (!custom_shape_check && _settings_game.game_creation.land_generator == LG_TERRAGENESIS && _generating_world && !_ignore_restrictions && !CheckIfCanLevelIndustryPlatform(tile, DC_NO_WATER, it, type)) return NULL;
-	CommandCost ret = CheckIfFarEnoughFromIndustry(tile, type);
+	ret = CheckIfFarEnoughFromIndustry(tile, type);
 	ret.SetGlobalErrorMessage();
 	if (ret.Failed()) return NULL;
 
@@ -1788,11 +1800,14 @@ CommandCost CmdBuildIndustry(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 		int num = GB(p1, 8, 8);
 		if (num >= count) return CMD_ERROR;
 
-		_error_message = STR_ERROR_SITE_UNSUITABLE;
+		CommandCost ret = CommandCost(STR_ERROR_SITE_UNSUITABLE);
+		ret.SetGlobalErrorMessage();
 		do {
-			if (--count < 0) return CMD_ERROR;
+			if (--count < 0) return ret;
 			if (--num < 0) num = indspec->num_table - 1;
-		} while (!CheckIfIndustryTilesAreFree(tile, itt[num], num, it));
+			ret = CheckIfIndustryTilesAreFree(tile, itt[num], num, it);
+			ret.SetGlobalErrorMessage();
+		} while (ret.Failed());
 
 		ind = CreateNewIndustryHelper(tile, it, flags, indspec, num, p2, _current_company);
 		if (ind == NULL) return CMD_ERROR;
