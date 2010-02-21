@@ -376,7 +376,6 @@ CommandCost CmdLevelLand(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 
 	/* Check range of destination height */
 	if (h > MAX_TILE_HEIGHT) return_cmd_error((oldh == 0) ? STR_ERROR_ALREADY_AT_SEA_LEVEL : STR_ERROR_TOO_HIGH);
-	if (p2 == 0) _error_message = STR_ERROR_ALREADY_LEVELLED;
 
 	Money money = GetAvailableMoneyForCommand();
 	CommandCost cost(EXPENSES_CONSTRUCTION);
@@ -402,5 +401,10 @@ CommandCost CmdLevelLand(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 		}
 	}
 
-	return (cost.GetCost() == 0) ? CMD_ERROR : cost;
+	if (cost.GetCost() == 0) {
+		if (p2 != 0) return CMD_ERROR;
+		cost.MakeError(STR_ERROR_ALREADY_LEVELLED);
+		cost.SetGlobalErrorMessage();
+	}
+	return cost;
 }
