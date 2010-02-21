@@ -4,10 +4,16 @@
 ; Tycoon Deluxe for Windows CD.
 ;
 [metadata]
-name         = original_windows
-shortname    = TTDO
-version      = 0
-description  = Original Transport Tycoon Deluxe Windows edition sounds
+name              = original_windows
+shortname         = TTDO
+version           = 0
+description       = Original Transport Tycoon Deluxe Windows edition sounds.
+description.cs_CZ = Původní sada grafik Transport Tycoon Deluxe (verze pro Windows).
+description.de_DE = Original Transport Tycoon Deluxe Windows Basissounds.
+description.en_GB = Original Transport Tycoon Deluxe Windows edition sounds.
+description.en_US = Original Transport Tycoon Deluxe Windows edition sounds.
+description.es_ES = Sonidos originales de Transport Tycoon Deluxe versión Windows.
+description.fi_FI = Alkuperäiset Transport Tycoon Deluxe Windows äänet.
 
 [files]
 samples      = SAMPLE.CAT
