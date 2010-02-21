@@ -1379,19 +1379,23 @@ static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable 
 	return !refused_slope || (_settings_game.game_creation.land_generator == LG_TERRAGENESIS && _generating_world && !custom_shape && !_ignore_restrictions);
 }
 
-static bool CheckIfIndustryIsAllowed(TileIndex tile, int type, const Town *t)
+/** Is the industry allowed to be built at this place for the town?
+ * @param tile Tile to construct the industry.
+ * @param type Type of the industry.
+ * @param t    Town authority that the industry belongs to.
+ * @return Succeeded or failed command.
+ */
+static CommandCost CheckIfIndustryIsAllowed(TileIndex tile, int type, const Town *t)
 {
 	if ((GetIndustrySpec(type)->behaviour & INDUSTRYBEH_TOWN1200_MORE) && t->population < 1200) {
-		_error_message = STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200;
-		return false;
+		return_cmd_error(STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200);
 	}
 
 	if ((GetIndustrySpec(type)->behaviour & INDUSTRYBEH_ONLY_NEARTOWN) && DistanceMax(t->xy, tile) > 9) {
-		_error_message = STR_ERROR_SITE_UNSUITABLE;
-		return false;
+		return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
 	}
 
-	return true;
+	return CommandCost();
 }
 
 static bool CheckCanTerraformSurroundingTiles(TileIndex tile, uint height, int internal)
@@ -1502,14 +1506,19 @@ static bool CheckIfCanLevelIndustryPlatform(TileIndex tile, DoCommandFlag flags,
 }
 
 
-static bool CheckIfFarEnoughFromIndustry(TileIndex tile, int type)
+/** Check that the new industry is far enough from other industries.
+ * @param tile Tile to construct the industry.
+ * @param type Type of the new industry.
+ * @return Succeeded or failed command.
+ */
+static CommandCost CheckIfFarEnoughFromIndustry(TileIndex tile, int type)
 {
 	const IndustrySpec *indspec = GetIndustrySpec(type);
 	const Industry *i;
 
 	if (_settings_game.economy.same_industry_close && indspec->IsRawIndustry())
 		/* Allow primary industries to be placed close to any other industry */
-		return true;
+		return CommandCost();
 
 	FOR_ALL_INDUSTRIES(i) {
 		/* Within 14 tiles from another industry is considered close */
@@ -1523,8 +1532,7 @@ static bool CheckIfFarEnoughFromIndustry(TileIndex tile, int type)
 				_game_mode != GM_EDITOR || // editor must not be stopped
 				!_settings_game.economy.same_industry_close ||
 				!_settings_game.economy.multiple_industry_per_town)) {
-			_error_message = STR_ERROR_INDUSTRY_TOO_CLOSE;
-			return false;
+			return_cmd_error(STR_ERROR_INDUSTRY_TOO_CLOSE);
 		}
 
 		/* check if there are any conflicting industry types around */
@@ -1532,11 +1540,10 @@ static bool CheckIfFarEnoughFromIndustry(TileIndex tile, int type)
 				i->type == indspec->conflicting[1] ||
 				i->type == indspec->conflicting[2]) &&
 				in_low_distance) {
-			_error_message = STR_ERROR_INDUSTRY_TOO_CLOSE;
-			return false;
+			return_cmd_error(STR_ERROR_INDUSTRY_TOO_CLOSE);
 		}
 	}
-	return true;
+	return CommandCost();
 }
 
 /** Production level maximum, minimum and default values.
@@ -1697,12 +1704,16 @@ static Industry *CreateNewIndustryHelper(TileIndex tile, IndustryType type, DoCo
 	}
 
 	if (!custom_shape_check && _settings_game.game_creation.land_generator == LG_TERRAGENESIS && _generating_world && !_ignore_restrictions && !CheckIfCanLevelIndustryPlatform(tile, DC_NO_WATER, it, type)) return NULL;
-	if (!CheckIfFarEnoughFromIndustry(tile, type)) return NULL;
+	CommandCost ret = CheckIfFarEnoughFromIndustry(tile, type);
+	ret.SetGlobalErrorMessage();
+	if (ret.Failed()) return NULL;
 
 	const Town *t = FindTownForIndustry(tile, type);
 	if (t == NULL) return NULL;
 
-	if (!CheckIfIndustryIsAllowed(tile, type, t)) return NULL;
+	ret = CheckIfIndustryIsAllowed(tile, type, t);
+	ret.SetGlobalErrorMessage();
+	if (ret.Failed()) return NULL;
 
 	if (!Industry::CanAllocateItem()) return NULL;
 
