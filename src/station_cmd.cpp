@@ -2398,7 +2398,18 @@ static void DrawTile_Station(TileInfo *ti)
 	}
 
 	if (IsAirport(ti->tile)) {
-		switch (GetStationGfx(ti->tile)) {
+		StationGfx gfx = GetAirportGfx(ti->tile);
+		if (gfx >= NEW_AIRPORTTILE_OFFSET) {
+			const AirportTileSpec *ats = AirportTileSpec::Get(gfx);
+			if (ats->grf_prop.spritegroup != NULL && DrawNewAirportTile(ti, Station::GetByTile(ti->tile), gfx, ats)) {
+				return;
+			}
+			/* No sprite group (or no valid one) found, meaning no graphics associated.
+			 * Use the substitute one instead */
+			assert(ats->grf_prop.subst_id != INVALID_AIRPORTTILE);
+			gfx = ats->grf_prop.subst_id;
+		}
+		switch (gfx) {
 			case APT_RADAR_GRASS_FENCE_SW:
 				t = &_station_display_datas_airport_radar_grass_fence_sw[GetStationAnimationFrame(ti->tile)];
 				break;

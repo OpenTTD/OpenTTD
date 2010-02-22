@@ -40,4 +40,6 @@ private:
 	friend void AirportTileOverrideManager::SetEntitySpec(const AirportTileSpec *airpts);
 };
 
+bool DrawNewAirportTile(TileInfo *ti, Station *st, StationGfx gfx, const AirportTileSpec *airts);
+
 #endif /* NEWGRF_AIRPORTTILES_H */

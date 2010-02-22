@@ -263,6 +263,19 @@ static inline bool IsDriveThroughStopTile(TileIndex t)
 }
 
 /**
+ * Get the station graphics of this airport tile
+ * @param t the tile to query
+ * @pre IsAirport(t)
+ * @return the station graphics
+ */
+static inline StationGfx GetAirportGfx(TileIndex t)
+{
+	assert(IsAirport(t));
+	extern StationGfx GetTranslatedAirportTileID(StationGfx gfx);
+	return GetTranslatedAirportTileID(GetStationGfx(t));
+}
+
+/**
  * Gets the direction the road stop entrance points towards.
  * @param t the tile of the road stop
  * @pre IsRoadStopTile(t)

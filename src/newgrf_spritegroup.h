@@ -342,6 +342,11 @@ struct ResolverObject {
 		struct {
 			TileIndex tile;
 		} routes;
+		struct {
+			const struct Station *st;
+			byte airport_id;
+			TileIndex tile;
+		} airport;
 	} u;
 
 	uint32 (*GetRandomBits)(const struct ResolverObject*);

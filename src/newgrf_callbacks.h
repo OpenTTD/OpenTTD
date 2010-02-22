@@ -220,6 +220,9 @@ enum CallbackID {
 
 	/** Called to determine if one can alter the ground below a house tile */
 	CBID_HOUSE_AUTOSLOPE                 = 0x14F, // 15 bit callback
+
+	/** Called to determine the type (if any) of foundation to draw for an airport tile. */
+	CBID_AIRPTILE_DRAW_FOUNDATIONS       = 0x150, // 15 bit callback
 };
 
 /**
@@ -313,6 +316,17 @@ enum IndustryTileCallbackMask {
 	CBM_INDT_SHAPE_CHECK              = 4,  ///< decides slope suitability
 	CBM_INDT_DRAW_FOUNDATIONS         = 5,  ///< decides if default foundations need to be drawn
 	CBM_INDT_AUTOSLOPE                = 6,  ///< decides allowance of autosloping
+};
+
+/**
+ * Callback masks for airport tiles
+ */
+enum AirportTileCallbackMask {
+	CBM_AIRT_ANIM_NEXT_FRAME          = 0,  ///< decides next animation frame
+	CBM_AIRT_ANIM_SPEED               = 1,  ///< decides animation speed
+	CBM_AIRT_SHAPE_CHECK              = 4,  ///< decides slope suitability
+	CBM_AIRT_DRAW_FOUNDATIONS         = 5,  ///< decides if default foundations need to be drawn
+	CBM_AIRT_AUTOSLOPE                = 6,  ///< decides allowance of autosloping
 };
 
 /**

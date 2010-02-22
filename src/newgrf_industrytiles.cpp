@@ -55,7 +55,7 @@ uint32 GetNearbyIndustryTileInformation(byte parameter, TileIndex tile, Industry
  * @param tile TileIndex of the tile to evaluate
  * @param ind_tile northernmost tile of the industry
  */
-static uint32 GetRelativePosition(TileIndex tile, TileIndex ind_tile)
+uint32 GetRelativePosition(TileIndex tile, TileIndex ind_tile)
 {
 	byte x = TileX(tile) - TileX(ind_tile);
 	byte y = TileY(tile) - TileY(ind_tile);
