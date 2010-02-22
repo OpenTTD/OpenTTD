@@ -2079,6 +2079,15 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		do {
 			TileIndex cur_tile = tile + ToTileIndexDiff(it->ti);
 			MakeAirport(cur_tile, st->owner, st->index, it->gfx);
+
+			if (AirportTileSpec::Get(GetTranslatedAirportTileID(it->gfx))->animation_info != 0xFFFF) AddAnimatedTile(cur_tile);
+		} while ((++it)->ti.x != -0x80);
+
+		/* Only call the animation trigger after all tiles have been built */
+		it = as->table[0];
+		do {
+			TileIndex cur_tile = tile + ToTileIndexDiff(it->ti);
+			AirportTileAnimationTrigger(st, cur_tile, AAT_BUILT);
 		} while ((++it)->ti.x != -0x80);
 
 		st->UpdateVirtCoord();
@@ -2703,9 +2712,7 @@ static void TileLoop_Station(TileIndex tile)
 	 * hardcoded.....not good */
 	switch (GetStationType(tile)) {
 		case STATION_AIRPORT:
-			if (AirportTileSpec::Get(GetStationGfx(tile))->animation_info != 0xFFFF) {
-				AddAnimatedTile(tile);
-			}
+			AirportTileAnimationTrigger(Station::GetByTile(tile), tile, AAT_TILELOOP);
 			break;
 
 		case STATION_DOCK:
@@ -2982,6 +2989,7 @@ void OnTick_Station()
 			/* Stop processing this station if it was deleted */
 			if (!StationHandleBigTick(st)) continue;
 			StationAnimationTrigger(st, st->xy, STAT_ANIM_250_TICKS);
+			if (Station::IsExpected(st)) AirportAnimationTrigger(Station::From(st), AAT_STATION_250_ticks);
 		}
 	}
 }
@@ -3016,6 +3024,7 @@ static void UpdateStationWaiting(Station *st, CargoID type, uint amount, SourceT
 	SetBit(st->goods[type].acceptance_pickup, GoodsEntry::PICKUP);
 
 	StationAnimationTrigger(st, st->xy, STAT_ANIM_NEW_CARGO, type);
+	AirportAnimationTrigger(st, AAT_STATION_NEW_CARGO, type);
 
 	SetWindowDirty(WC_STATION_VIEW, st->index);
 	st->MarkTilesDirty(true);

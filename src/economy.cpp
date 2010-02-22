@@ -27,6 +27,7 @@
 #include "newgrf_industries.h"
 #include "newgrf_industrytiles.h"
 #include "newgrf_station.h"
+#include "newgrf_airporttiles.h"
 #include "unmovable.h"
 #include "group.h"
 #include "strings_func.h"
@@ -1288,6 +1289,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 			st->last_vehicle_type = v->type;
 
 			StationAnimationTrigger(st, st->xy, STAT_ANIM_CARGO_TAKEN, v->cargo_type);
+			AirportAnimationTrigger(st, AAT_STATION_CARGO_TAKEN, v->cargo_type);
 
 			unloading_time += cap;
 

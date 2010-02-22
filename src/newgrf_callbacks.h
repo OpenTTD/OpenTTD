@@ -223,6 +223,15 @@ enum CallbackID {
 
 	/** Called to determine the type (if any) of foundation to draw for an airport tile. */
 	CBID_AIRPTILE_DRAW_FOUNDATIONS       = 0x150, // 15 bit callback
+
+	/** Called for periodically starting or stopping the animation. */
+	CBID_AIRPTILE_ANIM_START_STOP        = 0x152, // 15 bit callback
+
+	/** Called to determine airport tile next animation frame. */
+	CBID_AIRPTILE_ANIM_NEXT_FRAME        = 0x153, // 15 bit callback
+
+	/** Called to indicate how long the current animation frame should last. */
+	CBID_AIRPTILE_ANIMATION_SPEED        = 0x154, // 8 bit callback
 };
 
 /**

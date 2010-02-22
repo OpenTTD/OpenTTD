@@ -17,6 +17,15 @@
 #include "newgrf_commons.h"
 #include "airport.h"
 
+/** Animation triggers for airport tiles */
+enum AirpAnimationTrigger {
+	AAT_BUILT,               ///< Triggered when the airport it build (for all tiles at the same time)
+	AAT_TILELOOP,            ///< Triggered in the periodic tile loop
+	AAT_STATION_NEW_CARGO,   ///< Triggered when new cargo arrives at the station (for all tiles at the same time)
+	AAT_STATION_CARGO_TAKEN, ///< Triggered when a cargo type is completely removed from the station (for all tiles at the same time)
+	AAT_STATION_250_ticks,   ///< Triggered every 250 ticks (for all tiles at the same time)
+};
+
 /**
  * Defines the data structure of each indivudual tile of an airport.
  */
@@ -40,6 +49,10 @@ private:
 	friend void AirportTileOverrideManager::SetEntitySpec(const AirportTileSpec *airpts);
 };
 
+StationGfx GetTranslatedAirportTileID(StationGfx gfx);
+void AnimateAirportTile(TileIndex tile);
+void AirportTileAnimationTrigger(Station *st, TileIndex tile, AirpAnimationTrigger trigger, CargoID cargo_type = CT_INVALID);
+void AirportAnimationTrigger(Station *st, AirpAnimationTrigger trigger, CargoID cargo_type = CT_INVALID);
 bool DrawNewAirportTile(TileInfo *ti, Station *st, StationGfx gfx, const AirportTileSpec *airts);
 
 #endif /* NEWGRF_AIRPORTTILES_H */
