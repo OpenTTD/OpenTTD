@@ -1049,11 +1049,11 @@ static ChangeInfoResult AircraftVehicleChangeInfo(uint engine, int numinfo, int 
 				avi->running_cost = buf->ReadByte();
 				break;
 
-			case 0x0F: // Passenger capacity
+			case PROP_AIRCRAFT_PASSENGER_CAPACITY: // 0x0F Passenger capacity
 				avi->passenger_capacity = buf->ReadWord();
 				break;
 
-			case 0x11: // Mail capacity
+			case PROP_AIRCRAFT_MAIL_CAPACITY: // 0x11 Mail capacity
 				avi->mail_capacity = buf->ReadByte();
 				break;
 

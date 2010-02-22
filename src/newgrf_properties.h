@@ -39,6 +39,8 @@ enum PropertyID {
 	PROP_AIRCRAFT_COST_FACTOR                   = 0x0B, ///< Purchase cost
 	PROP_AIRCRAFT_SPEED                         = 0x0C, ///< Max. speed: 1 unit = 8 mph = 12.8 km-ish/h
 	PROP_AIRCRAFT_RUNNING_COST_FACTOR           = 0x0E, ///< Yearly runningcost
+	PROP_AIRCRAFT_PASSENGER_CAPACITY            = 0x0F, ///< Passenger Capacity
+	PROP_AIRCRAFT_MAIL_CAPACITY                 = 0x11, ///< Mail Capacity
 };
 
 #endif /* NEWGRF_PROPERTIES_H */
