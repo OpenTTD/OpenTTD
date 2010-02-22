@@ -15,7 +15,7 @@
 /** Writes all airport tile properties in the AirportTile struct */
 #define AT(num_frames, anim_speed) {(1 << 8) | num_frames, anim_speed, STR_NULL, 0, 0, 0, true, {INVALID_AIRPORTTILE, 0, NULL, NULL, INVALID_AIRPORTTILE}}
 /** Writes an airport tile without animation in the AirportTile struct */
-#define AT_NOANIM {0xFFFF, 2}
+#define AT_NOANIM {0xFFFF, 2, STR_NULL, 0, 0, 0, true, {INVALID_AIRPORTTILE, 0, NULL, NULL, INVALID_AIRPORTTILE}}
 
 /** All default airport tiles.
  * @see AirportTiles for a list of names. */
