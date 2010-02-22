@@ -207,9 +207,16 @@ static uint32 AirportTileGetVariable(const ResolverObject *object, byte variable
 	return UINT_MAX;
 }
 
+static uint32 AirportTileGetRandomBits(const ResolverObject *object)
+{
+	const Station *st = object->u.airport.st;
+	const TileIndex tile = object->u.airport.tile;
+	return (st == NULL ? 0 : st->random_bits) | (tile == INVALID_TILE ? 0 : GetStationTileRandomBits(tile) << 16);
+}
+
 static void AirportTileResolver(ResolverObject *res, StationGfx gfx, TileIndex tile, Station *st)
 {
-	res->GetRandomBits = NULL;
+	res->GetRandomBits = AirportTileGetRandomBits;
 	res->GetTriggers   = NULL;
 	res->SetTriggers   = NULL;
 	res->GetVariable   = AirportTileGetVariable;

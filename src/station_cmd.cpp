@@ -2076,6 +2076,7 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		do {
 			TileIndex cur_tile = tile + ToTileIndexDiff(it->ti);
 			MakeAirport(cur_tile, st->owner, st->index, it->gfx);
+			SetStationTileRandomBits(cur_tile, GB(Random(), 0, 4));
 			st->airport.Add(cur_tile);
 
 			if (AirportTileSpec::Get(GetTranslatedAirportTileID(it->gfx))->animation_info != 0xFFFF) AddAnimatedTile(cur_tile);
