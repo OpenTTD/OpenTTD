@@ -16,12 +16,14 @@
 #include "map_type.h"
 #include "date_type.h"
 
-/** Current limits for airports */
+/** Some airport-related constants */
 enum {
-	MAX_TERMINALS =  10, ///< maximum number of terminals per airport
-	MAX_HELIPADS  =   4, ///< maximum number of helipads per airport
-	MAX_ELEMENTS  = 255, ///< maximum number of aircraft positions at airport
-	NUM_AIRPORTTILES = 74, ///< total number of airport tiles
+	MAX_TERMINALS =  10,                    ///< maximum number of terminals per airport
+	MAX_HELIPADS  =   4,                    ///< maximum number of helipads per airport
+	MAX_ELEMENTS  = 255,                    ///< maximum number of aircraft positions at airport
+	NUM_AIRPORTTILES = 256,                 ///< total number of airport tiles
+	NEW_AIRPORTTILE_OFFSET = 74,            ///< offset of first newgrf airport tile
+	INVALID_AIRPORTTILE = NUM_AIRPORTTILES, ///< id for an invalid airport tile
 };
 
 /** Airport types */

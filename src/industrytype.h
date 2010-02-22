@@ -19,6 +19,7 @@
 #include "landscape_type.h"
 #include "strings_type.h"
 #include "cargo_type.h"
+#include "newgrf_commons.h"
 
 enum {
 	CLEAN_RANDOMSOUNDS,    ///< Free the dynamically allocated sounds table
@@ -92,15 +93,6 @@ DECLARE_ENUM_AS_BIT_SET(IndustryTileSpecialFlags);
 struct IndustryTileTable {
 	TileIndexDiffC ti;
 	IndustryGfx gfx;
-};
-
-/** Data related to the handling of grf files.  Common to both industry and industry tile */
-struct GRFFileProps {
-	uint16 subst_id;
-	uint16 local_id;                      ///< id defined by the grf file for this industry
-	struct SpriteGroup *spritegroup;      ///< pointer to the different sprites of the industry
-	const struct GRFFile *grffile;        ///< grf file that introduced this industry
-	uint16 override;                      ///< id of the entity been replaced by
 };
 
 /**

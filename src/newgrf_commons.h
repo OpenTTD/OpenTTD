@@ -97,12 +97,33 @@ public:
 	void SetEntitySpec(const IndustryTileSpec *indts);
 };
 
+struct AirportTileSpec;
+class AirportTileOverrideManager : public OverrideManagerBase {
+protected:
+	virtual bool CheckValidNewID(uint16 testid) { return testid != 0xFF; }
+public:
+	AirportTileOverrideManager(uint16 offset, uint16 maximum, uint16 invalid) :
+			OverrideManagerBase(offset, maximum, invalid) {}
+
+	void SetEntitySpec(const AirportTileSpec *ats);
+};
+
 extern HouseOverrideManager _house_mngr;
 extern IndustryOverrideManager _industry_mngr;
 extern IndustryTileOverrideManager _industile_mngr;
+extern AirportTileOverrideManager _airporttile_mngr;
 
 uint32 GetTerrainType(TileIndex tile);
 TileIndex GetNearbyTile(byte parameter, TileIndex tile);
 uint32 GetNearbyTileInformation(TileIndex tile);
+
+/** Data related to the handling of grf files. */
+struct GRFFileProps {
+	uint16 subst_id;
+	uint16 local_id;                      ///< id defined by the grf file for this entity
+	struct SpriteGroup *spritegroup;      ///< pointer to the different sprites of the entity
+	const struct GRFFile *grffile;        ///< grf file that introduced this entity
+	uint16 override;                      ///< id of the entity been replaced by
+};
 
 #endif /* NEWGRF_COMMONS_H */

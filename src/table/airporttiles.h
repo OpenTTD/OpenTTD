@@ -13,7 +13,7 @@
 #define AIRPORTTILES_H
 
 /** Writes all airport tile properties in the AirportTile struct */
-#define AT(num_frames, anim_speed) {(1 << 8) | num_frames, anim_speed}
+#define AT(num_frames, anim_speed) {(1 << 8) | num_frames, anim_speed, true, {INVALID_AIRPORTTILE, 0, NULL, NULL, INVALID_AIRPORTTILE}}
 /** Writes an airport tile without animation in the AirportTile struct */
 #define AT_NOANIM {0xFFFF, 2}
 
@@ -104,7 +104,7 @@ static const AirportTileSpec _origin_airporttile_specs[] = {
 	AT(4, 1), // APT_GRASS_FENCE_NE_FLAG_2
 };
 
-assert_compile(NUM_AIRPORTTILES == lengthof(_origin_airporttile_specs));
+assert_compile(NEW_AIRPORTTILE_OFFSET == lengthof(_origin_airporttile_specs));
 
 #undef AT_NOANIM
 #undef AT

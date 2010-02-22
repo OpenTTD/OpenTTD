@@ -13,6 +13,8 @@
 #define NEWGRF_AIRPORTTILES_H
 
 #include "station_map.h"
+#include "newgrf_commons.h"
+#include "airport.h"
 
 /**
  * Defines the data structure of each indivudual tile of an airport.
@@ -21,7 +23,17 @@ struct AirportTileSpec {
 	uint16 animation_info;                ///< Information about the animation (is it looping, how many loops etc)
 	uint8 animation_speed;                ///< The speed of the animation
 
+	bool enabled;                         ///< entity still available (by default true). newgrf can disable it, though
+	GRFFileProps grf_prop;                ///< properties related the the grf file
+
 	static const AirportTileSpec *Get(StationGfx gfx);
+
+	static void ResetAirportTiles();
+
+private:
+	static AirportTileSpec tiles[NUM_AIRPORTTILES];
+
+	friend void AirportTileOverrideManager::SetEntitySpec(const AirportTileSpec *airpts);
 };
 
 #endif /* NEWGRF_AIRPORTTILES_H */

@@ -35,6 +35,7 @@
 #include "newgrf_commons.h"
 #include "newgrf_townname.h"
 #include "newgrf_industries.h"
+#include "newgrf_airporttiles.h"
 #include "rev.h"
 #include "fios.h"
 #include "rail.h"
@@ -5767,6 +5768,9 @@ static void ResetNewGRFData()
 	/* Reset station classes */
 	ResetStationClasses();
 	ResetCustomStations();
+
+	/* Reset airport-related structures */
+	AirportTileSpec::ResetAirportTiles();
 
 	/* Reset canal sprite groups and flags */
 	memset(_water_feature, 0, sizeof(_water_feature));
