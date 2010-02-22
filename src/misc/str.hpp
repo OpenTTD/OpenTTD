@@ -126,7 +126,7 @@ struct CStrA : public CBlobT<char>
 	}
 
 	/** Add formated string (like sprintf) at the end of existing contents. */
-	int CDECL AddFormat(const char *format, ...) WARN_FORMAT(2, 3)
+	int CDECL WARN_FORMAT(2, 3) AddFormat(const char *format, ...)
 	{
 		va_list args;
 		va_start(args, format);
@@ -136,7 +136,7 @@ struct CStrA : public CBlobT<char>
 	}
 
 	/** Assign formated string (like sprintf). */
-	int CDECL Format(const char *format, ...) WARN_FORMAT(2, 3)
+	int CDECL WARN_FORMAT(2, 3) Format(const char *format, ...)
 	{
 		base::Free();
 		va_list args;
