@@ -12,29 +12,14 @@
 #include "stdafx.h"
 #include "debug.h"
 #include "airport.h"
+#include "map_type.h"
 #include "table/airport_movement.h"
 #include "core/alloc_func.hpp"
 #include "date_func.h"
 #include "settings_type.h"
+#include "newgrf_airport.h"
 #include "table/airporttile_ids.h"
 #include "table/airport_defaults.h"
-
-AirportSpec AirportSpec::dummy = {NULL, NULL, 0, 0, 0, 0, 0, MIN_YEAR, MIN_YEAR};
-AirportSpec AirportSpec::oilrig = {NULL, NULL, 0, 1, 1, 0, 4, MIN_YEAR, MIN_YEAR};
-
-
-/**
- * Retrieve airport spec for the given airport
- * @param type index of airport
- * @return A pointer to the corresponding AirportSpec
- */
-/* static */ const AirportSpec *AirportSpec::Get(byte type)
-{
-	if (type == AT_OILRIG) return &oilrig;
-	assert(type < NUM_AIRPORTS);
-	extern const AirportSpec _origin_airport_specs[];
-	return &_origin_airport_specs[type];
-}
 
 /* Uncomment this to print out a full report of the airport-structure
  * You should either use
@@ -267,13 +252,6 @@ AirportFTAClass::~AirportFTAClass()
 		};
 	}
 	free(layout);
-}
-
-bool AirportSpec::IsAvailable() const
-{
-	if (_cur_year < this->min_year) return false;
-	if (_settings_game.station.never_expire_airports) return true;
-	return _cur_year <= this->max_year;
 }
 
 /** Get the number of elements of a source Airport state automata

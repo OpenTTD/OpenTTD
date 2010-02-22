@@ -388,7 +388,7 @@ static AirportTileTable *_tile_table_helistation[] = {
 #define AS(ap_name, size_x, size_y, min_year, max_year, catchment, noise) \
 	AS_GENERIC(_tile_table_##ap_name, _airport_depots_##ap_name, lengthof(_airport_depots_##ap_name), size_x, size_y, noise, catchment, min_year, max_year)
 
-static const AirportSpec _origin_airport_specs[] = {
+extern const AirportSpec _origin_airport_specs[] = {
 	AS(country, 4, 3, 0, 1959, 4, 3),
 	AS(city, 6, 6, 1955, MAX_YEAR, 5, 5),
 	AS_ND(heliport, 1, 1, 1963, MAX_YEAR, 4, 1),
