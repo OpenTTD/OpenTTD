@@ -6,6 +6,7 @@
 name              = NoMusic
 shortname         = NOMU
 version           = 0
+fallback          = true
 description       = A music pack without actual music.
 description.cs_CZ = Prázná hudební sada.
 description.de_DE = Ein Musikset ohne Musik.

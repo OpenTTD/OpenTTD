@@ -58,6 +58,9 @@ bool BaseSet<T, Tnum_files, Tsubdir>::FillSetDetails(IniFile *ini, const char *p
 	fetch_metadata("version");
 	this->version = atoi(item->value);
 
+	item = metadata->GetItem("fallback", false);
+	this->fallback = (item != NULL && strcmp(item->value, "0") != 0 && strcmp(item->value, "false") != 0);
+
 	/* For each of the file types we want to find the file, MD5 checksums and warning messages. */
 	IniGroup *files  = ini->GetGroup("files");
 	IniGroup *md5s   = ini->GetGroup("md5s");

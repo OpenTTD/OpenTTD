@@ -301,6 +301,7 @@ template <class Tbase_set>
 		if (c->GetNumMissing() != 0) continue;
 
 		if (best == NULL ||
+				(best->fallback && !c->fallback) ||
 				best->valid_files < c->valid_files ||
 				(best->valid_files == c->valid_files &&
 					(best->shortname == c->shortname && best->version < c->version))) {
