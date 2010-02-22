@@ -680,8 +680,8 @@ static void Disaster_Zeppeliner_Init()
 
 	Station *st;
 	FOR_ALL_STATIONS(st) {
-		if (st->airport_tile != INVALID_TILE && (st->airport_type == AT_SMALL || st->airport_type == AT_LARGE)) {
-			x = (TileX(st->airport_tile) + 2) * TILE_SIZE;
+		if (st->airport.tile != INVALID_TILE && (st->airport_type == AT_SMALL || st->airport_type == AT_LARGE)) {
+			x = (TileX(st->airport.tile) + 2) * TILE_SIZE;
 			break;
 		}
 	}

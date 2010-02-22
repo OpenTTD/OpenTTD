@@ -525,7 +525,7 @@ bool AfterLoadGame()
 		/* no station is determined by 'tile == INVALID_TILE' now (instead of '0') */
 		Station *st;
 		FOR_ALL_STATIONS(st) {
-			if (st->airport_tile       == 0) st->airport_tile = INVALID_TILE;
+			if (st->airport.tile       == 0) st->airport.tile = INVALID_TILE;
 			if (st->dock_tile          == 0) st->dock_tile    = INVALID_TILE;
 			if (st->train_station.tile == 0) st->train_station.tile   = INVALID_TILE;
 		}
@@ -2059,6 +2059,16 @@ bool AfterLoadGame()
 					}
 					offset += atc[i].num_frames - 1;
 				}
+			}
+		}
+	}
+
+	if (CheckSavegameVersion(139)) {
+		Station *st;
+		FOR_ALL_STATIONS(st) {
+			if (st->airport.tile != INVALID_TILE) {
+				st->airport.w = st->GetAirportSpec()->size_x;
+				st->airport.h = st->GetAirportSpec()->size_y;
 			}
 		}
 	}

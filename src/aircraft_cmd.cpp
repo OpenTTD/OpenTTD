@@ -127,7 +127,7 @@ static StationID FindNearestHangar(const Aircraft *v)
 		}
 
 		/* v->tile can't be used here, when aircraft is flying v->tile is set to 0 */
-		uint distance = DistanceSquare(vtile, st->airport_tile);
+		uint distance = DistanceSquare(vtile, st->airport.tile);
 		if (distance < best || index == INVALID_STATION) {
 			best = distance;
 			index = st->index;
@@ -806,7 +806,7 @@ static byte AircraftGetEntryPoint(const Aircraft *v, const AirportFTAClass *apc)
 	const Station *st = Station::GetIfValid(v->targetairport);
 	if (st != NULL) {
 		/* Make sure we don't go to INVALID_TILE if the airport has been removed. */
-		tile = (st->airport_tile != INVALID_TILE) ? st->airport_tile : st->xy;
+		tile = (st->airport.tile != INVALID_TILE) ? st->airport.tile : st->xy;
 	}
 
 	int delta_x = v->x_pos - TileX(tile) * TILE_SIZE;
@@ -842,13 +842,13 @@ static bool AircraftController(Aircraft *v)
 	/* INVALID_TILE if there is no station */
 	TileIndex tile = INVALID_TILE;
 	if (st != NULL) {
-		tile = (st->airport_tile != INVALID_TILE) ? st->airport_tile : st->xy;
+		tile = (st->airport.tile != INVALID_TILE) ? st->airport.tile : st->xy;
 	}
 	/* DUMMY if there is no station or no airport */
 	const AirportFTAClass *afc = tile == INVALID_TILE ? GetAirport(AT_DUMMY) : st->Airport();
 
 	/* prevent going to INVALID_TILE if airport is deleted. */
-	if (st == NULL || st->airport_tile == INVALID_TILE) {
+	if (st == NULL || st->airport.tile == INVALID_TILE) {
 		/* Jump into our "holding pattern" state machine if possible */
 		if (v->pos >= afc->nofelements) {
 			v->pos = v->previous_pos = AircraftGetEntryPoint(v, afc);
@@ -988,8 +988,8 @@ static bool AircraftController(Aircraft *v)
 					v->y_pos + ((y + amd->y > v->y_pos) ? 1 : -1) :
 					v->y_pos;
 
-			/* Oilrigs must keep v->tile as st->airport_tile, since the landing pad is in a non-airport tile */
-			gp.new_tile = (st->airport_type == AT_OILRIG) ? st->airport_tile : TileVirtXY(gp.x, gp.y);
+			/* Oilrigs must keep v->tile as st->airport.tile, since the landing pad is in a non-airport tile */
+			gp.new_tile = (st->airport_type == AT_OILRIG) ? st->airport.tile : TileVirtXY(gp.x, gp.y);
 
 		} else {
 
@@ -1044,7 +1044,7 @@ static bool AircraftController(Aircraft *v)
 		if ((amd->flag & AMED_HOLD) && (z > 150)) z--;
 
 		if (amd->flag & AMED_LAND) {
-			if (st->airport_tile == INVALID_TILE) {
+			if (st->airport.tile == INVALID_TILE) {
 				/* Airport has been removed, abort the landing procedure */
 				v->state = FLYING;
 				UpdateAircraftCache(v);
@@ -1526,7 +1526,7 @@ static void AircraftEventHandler_Flying(Aircraft *v, const AirportFTAClass *apc)
 
 	/* runway busy or not allowed to use this airstation, circle */
 	if ((apc->flags & (v->subtype == AIR_HELICOPTER ? AirportFTAClass::HELICOPTERS : AirportFTAClass::AIRPLANES)) &&
-			st->airport_tile != INVALID_TILE &&
+			st->airport.tile != INVALID_TILE &&
 			(st->owner == OWNER_NONE || st->owner == v->owner)) {
 		/* {32,FLYING,NOTHING_block,37}, {32,LANDING,N,33}, {32,HELILANDING,N,41},
 		 * if it is an airplane, look for LANDING, for helicopter HELILANDING
@@ -1964,7 +1964,7 @@ Station *GetTargetAirportIfValid(const Aircraft *v)
 	Station *st = Station::GetIfValid(v->targetairport);
 	if (st == NULL) return NULL;
 
-	return st->airport_tile == INVALID_TILE ? NULL : st;
+	return st->airport.tile == INVALID_TILE ? NULL : st;
 }
 
 /**

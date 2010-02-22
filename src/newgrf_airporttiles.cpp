@@ -180,7 +180,7 @@ static uint32 AirportTileGetVariable(const ResolverObject *object, byte variable
 		case 0x42: return GetTownRadiusGroup(ClosestTownFromTile(tile, UINT_MAX), tile);
 
 		/* Position relative to most northern airport tile. */
-		case 0x43: return GetRelativePosition(tile, st->airport_tile);
+		case 0x43: return GetRelativePosition(tile, st->airport.tile);
 
 		/* Animation frame of tile */
 		case 0x44: return GetStationAnimationFrame(tile);
@@ -390,13 +390,11 @@ void AirportTileAnimationTrigger(Station *st, TileIndex tile, AirpAnimationTrigg
 
 void AirportAnimationTrigger(Station *st, AirpAnimationTrigger trigger, CargoID cargo_type)
 {
-	if (st->airport_tile == INVALID_TILE) return;
+	if (st->airport.tile == INVALID_TILE) return;
 
 	const AirportSpec *as = st->GetAirportSpec();
-	int w = as->size_x;
-	int h = as->size_y;
 
-	TILE_LOOP(tile, w, h, st->airport_tile) {
+	TILE_AREA_LOOP(tile, st->airport) {
 		if (st->TileBelongsToAirport(tile)) AirportTileAnimationTrigger(st, tile, trigger, cargo_type);
 	}
 }

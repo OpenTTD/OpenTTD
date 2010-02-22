@@ -712,7 +712,7 @@ static const OldChunks station_chunk[] = {
 
 	OCL_NULL( 4 ), ///< bus/lorry tile
 	OCL_SVAR(   OC_TILE, Station, train_station.tile ),
-	OCL_SVAR(   OC_TILE, Station, airport_tile ),
+	OCL_SVAR(   OC_TILE, Station, airport.tile ),
 	OCL_SVAR(   OC_TILE, Station, dock_tile ),
 	OCL_SVAR(  OC_UINT8, Station, train_station.w ),
 

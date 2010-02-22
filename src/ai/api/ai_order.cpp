@@ -197,10 +197,9 @@ static const Order *ResolveOrder(VehicleID vehicle_id, AIOrder::OrderPosition or
 				return st->bus_stops->xy;
 			} else if (st->truck_stops != NULL) {
 				return st->truck_stops->xy;
-			} else if (st->airport_tile != INVALID_TILE) {
-				const AirportSpec *as = st->GetAirportSpec();
-				TILE_LOOP(tile, as->size_x, as->size_y, st->airport_tile) {
-					if (!::IsHangar(tile)) return tile;
+			} else if (st->airport.tile != INVALID_TILE) {
+				TILE_AREA_LOOP(tile, st->airport) {
+					if (st->TileBelongsToAirport(tile) && !::IsHangar(tile)) return tile;
 				}
 			}
 			return INVALID_TILE;

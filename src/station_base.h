@@ -59,13 +59,13 @@ public:
 
 	const AirportFTAClass *Airport() const
 	{
-		if (airport_tile == INVALID_TILE) return GetAirport(AT_DUMMY);
+		if (airport.tile == INVALID_TILE) return GetAirport(AT_DUMMY);
 		return GetAirport(airport_type);
 	}
 
 	const AirportSpec *GetAirportSpec() const
 	{
-		if (airport_tile == INVALID_TILE) return &AirportSpec::dummy;
+		if (airport.tile == INVALID_TILE) return &AirportSpec::dummy;
 		return AirportSpec::Get(this->airport_type);
 	}
 
@@ -74,7 +74,7 @@ public:
 	RoadStop *truck_stops;  ///< All the truck stops
 	TileArea truck_station; ///< Tile area the truck 'station' part covers
 
-	TileIndex airport_tile; ///< The location of the airport
+	TileArea airport;       ///< Tile area the airport covers
 	TileIndex dock_tile;    ///< The location of the dock
 
 	IndustryType indtype;   ///< Industry type to get the name from
@@ -128,9 +128,9 @@ public:
 
 	FORCEINLINE TileIndex GetHangarTile(uint hangar_num) const
 	{
-		assert(this->airport_tile != INVALID_TILE);
+		assert(this->airport.tile != INVALID_TILE);
 		assert(hangar_num < this->GetAirportSpec()->nof_depots);
-		return this->airport_tile + ToTileIndexDiff(this->GetAirportSpec()->depot_table[hangar_num]);
+		return this->airport.tile + ToTileIndexDiff(this->GetAirportSpec()->depot_table[hangar_num]);
 	}
 
 	/* virtual */ uint32 GetNewGRFVariable(const ResolverObject *object, byte variable, byte parameter, bool *available) const;
