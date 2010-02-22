@@ -2043,8 +2043,15 @@ public:
 
 		switch (widget) {
 			case VVW_WIDGET_START_STOP_VEH: // start stop
-				DoCommandP(v->tile, v->index, 0,
-										_vehicle_command_translation_table[VCT_CMD_START_STOP][v->type]);
+				if (_ctrl_pressed) {
+					/* Scroll to current order destination */
+					TileIndex tile = v->current_order.GetLocation(v);
+					if (tile != INVALID_TILE) ScrollMainWindowToTile(tile);
+				} else {
+					/* Start/Stop */
+					DoCommandP(v->tile, v->index, 0,
+						_vehicle_command_translation_table[VCT_CMD_START_STOP][v->type]);
+				}
 				break;
 			case VVW_WIDGET_CENTER_MAIN_VIEH: {// center main view
 				const Window *mainwindow = FindWindowById(WC_MAIN_WINDOW, 0);
