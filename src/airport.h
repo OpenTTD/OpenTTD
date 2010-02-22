@@ -70,17 +70,6 @@ struct AirportSpec {
 	static AirportSpec oilrig;
 };
 
-
-/**
- * Defines the data structure of each indivudual tile of an airport.
- */
-struct AirportTileSpec {
-	uint16 animation_info;                ///< Information about the animation (is it looping, how many loops etc)
-	uint8 animation_speed;                ///< The speed of the animation
-
-	static const AirportTileSpec *Get(StationGfx gfx);
-};
-
 enum {
 	AMED_NOSPDCLAMP = 1 << 0,
 	AMED_TAKEOFF    = 1 << 1,

@@ -48,6 +48,7 @@
 #include "company_base.h"
 #include "newgrf.h"
 #include "table/airporttile_ids.h"
+#include "newgrf_airporttiles.h"
 
 #include "table/strings.h"
 

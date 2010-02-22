@@ -18,7 +18,6 @@
 #include "settings_type.h"
 #include "table/airporttile_ids.h"
 #include "table/airport_defaults.h"
-#include "table/airporttiles.h"
 
 AirportSpec AirportSpec::dummy = {NULL, NULL, 0, 0, 0, 0, 0, MIN_YEAR, MIN_YEAR};
 AirportSpec AirportSpec::oilrig = {NULL, NULL, 0, 1, 1, 0, 4, MIN_YEAR, MIN_YEAR};
@@ -35,18 +34,6 @@ AirportSpec AirportSpec::oilrig = {NULL, NULL, 0, 1, 1, 0, 4, MIN_YEAR, MIN_YEAR
 	assert(type < NUM_AIRPORTS);
 	extern const AirportSpec _origin_airport_specs[];
 	return &_origin_airport_specs[type];
-}
-
-/**
- * Retrieve airport tile spec for the given airport tile
- * @param gfx index of airport tile
- * @return A pointer to the corresponding AirportTileSpec
- */
-/* static */ const AirportTileSpec *AirportTileSpec::Get(StationGfx gfx)
-{
-	assert(gfx < NUM_AIRPORTTILES);
-	extern const AirportTileSpec _origin_airporttile_specs[];
-	return &_origin_airporttile_specs[gfx];
 }
 
 /* Uncomment this to print out a full report of the airport-structure
