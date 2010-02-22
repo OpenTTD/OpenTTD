@@ -12,6 +12,7 @@
 #ifndef NEWGRF_AIRPORTTILES_H
 #define NEWGRF_AIRPORTTILES_H
 
+#include "airport.h"
 #include "station_map.h"
 #include "newgrf_commons.h"
 #include "airport.h"
@@ -23,6 +24,9 @@ struct AirportTileSpec {
 	uint16 animation_info;                ///< Information about the animation (is it looping, how many loops etc)
 	uint8 animation_speed;                ///< The speed of the animation
 
+	uint8 callback_flags;                 ///< Flags telling which grf callback is set
+	uint8 animation_triggers;             ///< When to start the animation
+	uint8 animation_special_flags;        ///< Extra flags to influence the animation
 	bool enabled;                         ///< entity still available (by default true). newgrf can disable it, though
 	GRFFileProps grf_prop;                ///< properties related the the grf file
 

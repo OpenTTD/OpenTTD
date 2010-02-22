@@ -2649,6 +2649,93 @@ static ChangeInfoResult RailTypeReserveInfo(uint id, int numinfo, int prop, Byte
 	return ret;
 }
 
+static ChangeInfoResult AirportTilesChangeInfo(uint airtid, int numinfo, int prop, ByteReader *buf)
+{
+	ChangeInfoResult ret = CIR_SUCCESS;
+
+	if (airtid + numinfo > NUM_AIRPORTTILES) {
+		grfmsg(1, "AirportTileChangeInfo: Too many airport tiles loaded (%u), max (%u). Ignoring.", airtid + numinfo, NUM_AIRPORTTILES);
+		return CIR_INVALID_ID;
+	}
+
+	/* Allocate airport tile specs if they haven't been allocated already. */
+	if (_cur_grffile->airtspec == NULL) {
+		_cur_grffile->airtspec = CallocT<AirportTileSpec*>(NUM_AIRPORTTILES);
+	}
+
+	for (int i = 0; i < numinfo; i++) {
+		AirportTileSpec *tsp = _cur_grffile->airtspec[airtid + i];
+
+		if (prop != 0x08 && tsp == NULL) {
+			grfmsg(2, "AirportTileChangeInfo: Attempt to modify undefined airport tile %u. Ignoring.", airtid + i);
+			return CIR_INVALID_ID;
+		}
+
+		switch (prop) {
+			case 0x08: { // Substitute airport tile type
+				AirportTileSpec **tilespec = &_cur_grffile->airtspec[airtid + i];
+				byte subs_id = buf->ReadByte();
+
+				if (subs_id >= NEW_AIRPORTTILE_OFFSET) {
+					/* The substitute id must be one of the original airport tiles. */
+					grfmsg(2, "AirportTileChangeInfo: Attempt to use new airport tile %u as substitute airport tile for %u. Ignoring.", subs_id, airtid + i);
+					continue;
+				}
+
+				/* Allocate space for this airport tile. */
+				if (*tilespec == NULL) {
+					*tilespec = CallocT<AirportTileSpec>(1);
+					tsp = *tilespec;
+
+					memcpy(tsp, AirportTileSpec::Get(subs_id), sizeof(AirportTileSpec));
+					tsp->enabled = true;
+
+					tsp->animation_info = 0xFFFF;
+
+					tsp->grf_prop.local_id = airtid + i;
+					tsp->grf_prop.subst_id = subs_id;
+					tsp->grf_prop.grffile = _cur_grffile;
+					_airporttile_mngr.AddEntityID(airtid + i, _cur_grffile->grfid, subs_id); // pre-reserve the tile slot
+				}
+			} break;
+
+			case 0x09: { // Airport tile override
+				byte override = buf->ReadByte();
+
+				/* The airport tile being overridden must be an original airport tile. */
+				if (override >= NEW_AIRPORTTILE_OFFSET) {
+					grfmsg(2, "AirportTileChangeInfo: Attempt to override new airport tile %u with airport tile id %u. Ignoring.", override, airtid + i);
+					continue;
+				}
+
+				_airporttile_mngr.Add(airtid + i, _cur_grffile->grfid, override);
+			} break;
+
+			case 0x0E: // Callback flags
+				tsp->callback_flags = buf->ReadByte();
+				break;
+
+			case 0x0F: // Animation information
+				tsp->animation_info = buf->ReadWord();
+				break;
+
+			case 0x10: // Animation speed
+				tsp->animation_speed = buf->ReadByte();
+				break;
+
+			case 0x11: // Animation triggers
+				tsp->animation_triggers = buf->ReadByte();
+				break;
+
+			default:
+				ret = CIR_UNKNOWN;
+				break;
+		}
+	}
+
+	return ret;
+}
+
 static bool HandleChangeInfoResult(const char *caller, ChangeInfoResult cir, uint8 feature, uint8 property)
 {
 	switch (cir) {
@@ -2708,6 +2795,7 @@ static void FeatureChangeInfo(ByteReader *buf)
 		/* GSF_SIGNALS */      NULL,
 		/* GSF_OBJECTS */      NULL,
 		/* GSF_RAILTYPES */    RailTypeChangeInfo,
+		/* GSF_AIRPORTTILES */ AirportTilesChangeInfo,
 	};
 
 	uint8 feature  = buf->ReadByte();
@@ -3077,6 +3165,7 @@ static void NewSpriteGroup(ByteReader *buf)
 				}
 
 				case GSF_TOWNHOUSE:
+				case GSF_AIRPORTTILES:
 				case GSF_INDUSTRYTILES: {
 					byte num_spriteset_ents   = _cur_grffile->spriteset_numents;
 					byte num_spritesets       = _cur_grffile->spriteset_numsets;
@@ -3551,6 +3640,37 @@ static void RailTypeMapSpriteGroup(ByteReader *buf, uint8 idcount)
 	buf->ReadWord();
 }
 
+static void AirportTileMapSpriteGroup(ByteReader *buf, uint8 idcount)
+{
+	uint8 *airptiles = AllocaM(uint8, idcount);
+	for (uint i = 0; i < idcount; i++) {
+		airptiles[i] = buf->ReadByte();
+	}
+
+	/* Skip the cargo type section, we only care about the default group */
+	uint8 cidcount = buf->ReadByte();
+	buf->Skip(cidcount * 3);
+
+	uint16 groupid = buf->ReadWord();
+	if (!IsValidGroupID(groupid, "AirportTileMapSpriteGroup")) return;
+
+	if (_cur_grffile->airtspec == NULL) {
+		grfmsg(1, "AirportTileMapSpriteGroup: No airport tiles defined, skipping");
+		return;
+	}
+
+	for (uint i = 0; i < idcount; i++) {
+		AirportTileSpec *airtsp = _cur_grffile->airtspec[airptiles[i]];
+
+		if (airtsp == NULL) {
+			grfmsg(1, "AirportTileMapSpriteGroup: Airport tile %d undefined, skipping", airptiles[i]);
+			continue;
+		}
+
+		airtsp->grf_prop.spritegroup = _cur_grffile->spritegroups[groupid];
+	}
+}
+
 
 /* Action 0x03 */
 static void FeatureMapSpriteGroup(ByteReader *buf)
@@ -3629,6 +3749,10 @@ static void FeatureMapSpriteGroup(ByteReader *buf)
 		case GSF_RAILTYPES:
 			RailTypeMapSpriteGroup(buf, idcount);
 			break;
+
+		case GSF_AIRPORTTILES:
+			AirportTileMapSpriteGroup(buf, idcount);
+			return;
 
 		default:
 			grfmsg(1, "FeatureMapSpriteGroup: Unsupported feature %d, skipping", feature);
@@ -5649,6 +5773,21 @@ static void ResetCustomHouses()
 	}
 }
 
+static void ResetCustomAirports()
+{
+	const GRFFile * const *end = _grf_files.End();
+	for (GRFFile **file = _grf_files.Begin(); file != end; file++) {
+		AirportTileSpec **&airporttilespec = (*file)->airtspec;
+		if (airporttilespec != NULL) {
+			for (uint i = 0; i < NUM_AIRPORTTILES; i++) {
+				free(airporttilespec[i]);
+			}
+			free(airporttilespec);
+			airporttilespec = NULL;
+		}
+	}
+}
+
 static void ResetCustomIndustries()
 {
 	const GRFFile * const *end = _grf_files.End();
@@ -5770,6 +5909,7 @@ static void ResetNewGRFData()
 	ResetCustomStations();
 
 	/* Reset airport-related structures */
+	ResetCustomAirports();
 	AirportTileSpec::ResetAirportTiles();
 
 	/* Reset canal sprite groups and flags */
@@ -6104,6 +6244,26 @@ static void FinaliseIndustriesArray()
 		if (indsp->enabled && indsp->grf_prop.grffile != NULL) {
 			for (uint i = 0; i < 3; i++) {
 				indsp->conflicting[i] = MapNewGRFIndustryType(indsp->conflicting[i], indsp->grf_prop.grffile->grfid);
+			}
+		}
+	}
+}
+
+/**
+ * Add all new airports to the airport array. Airport properties can be set at any
+ * time in the GRF file, so we can only add a airport spec to the airport array
+ * after the file has finished loading.
+ */
+static void FinaliseAirportsArray()
+{
+	const GRFFile * const *end = _grf_files.End();
+	for (GRFFile **file = _grf_files.Begin(); file != end; file++) {
+		AirportTileSpec **&airporttilespec = (*file)->airtspec;
+		if (airporttilespec != NULL) {
+			for (int i = 0; i < NUM_AIRPORTTILES; i++) {
+				if (airporttilespec[i] != NULL && airporttilespec[i]->enabled) {
+					_airporttile_mngr.SetEntitySpec(airporttilespec[i]);
+				}
 			}
 		}
 	}
@@ -6475,6 +6635,9 @@ static void AfterLoadGRFs()
 
 	/* Create dynamic list of industry legends for smallmap_gui.cpp */
 	BuildIndustriesLegend();
+
+	/* Add all new airports to the airports array. */
+	FinaliseAirportsArray();
 
 	/* Update the townname generators list */
 	InitGRFTownGeneratorNames();

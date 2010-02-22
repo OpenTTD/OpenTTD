@@ -58,6 +58,7 @@ enum GrfSpecFeature {
 	GSF_SIGNALS,
 	GSF_OBJECTS,
 	GSF_RAILTYPES,
+	GSF_AIRPORTTILES,
 	GSF_END,
 };
 
@@ -103,6 +104,7 @@ struct GRFFile {
 	HouseSpec **housespec;
 	IndustrySpec **industryspec;
 	IndustryTileSpec **indtspec;
+	struct AirportTileSpec **airtspec;
 
 	uint32 param[0x80];
 	uint param_end;  ///< one more than the highest set parameter
