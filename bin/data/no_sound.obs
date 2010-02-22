@@ -1,0 +1,26 @@
+; $Id$
+;
+; This represents more or less nothingness
+;
+[metadata]
+name              = NoSound
+shortname         = NULL
+version           = 2
+fallback          = true
+description       = A sound pack without any sounds.
+description.cs_CZ = Prázdná sada zvuků.
+description.de_DE = Basissounds ohne Sound.
+description.en_GB = A sound pack without any sounds.
+description.en_US = A sound pack without any sounds.
+description.es_ES = Un conjunto de sonidos vacío.
+description.fi_FI = Äänipaketti ilman ääniä.
+description.hu_HU = Üres hang alapcsomag.
+description.nl_NL = Een geluidset zonder geluid.
+
+[files]
+samples      =
+
+[md5s]
+
+[origin]
+default      = This file was part of your OpenTTD installation.
