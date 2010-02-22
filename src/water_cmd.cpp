@@ -726,7 +726,6 @@ static void FloodVehicles(TileIndex tile)
 
 	if (IsAirportTile(tile)) {
 		const Station *st = Station::GetByTile(tile);
-		const AirportSpec *as = st->GetAirportSpec();
 		z = 1 + st->Airport()->delta_z;
 		TILE_AREA_LOOP(tile, st->airport) {
 			if (st->TileBelongsToAirport(tile)) FindVehicleOnPos(tile, &z, &FloodVehicleProc);

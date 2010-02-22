@@ -41,7 +41,7 @@ AirportTileOverrideManager _airporttile_mngr(NEW_AIRPORTTILE_OFFSET, NUM_AIRPORT
  */
 /* static */ const AirportTileSpec *AirportTileSpec::Get(StationGfx gfx)
 {
-	assert(gfx < lengthof(AirportTileSpec::tiles));
+	assert((size_t)gfx < lengthof(AirportTileSpec::tiles));
 	return &AirportTileSpec::tiles[gfx];
 }
 
@@ -88,7 +88,7 @@ void AirportTileOverrideManager::SetEntitySpec(const AirportTileSpec *airpts)
  */
 StationGfx GetTranslatedAirportTileID(StationGfx gfx)
 {
-	assert(gfx < NUM_AIRPORTTILES);
+	assert((size_t)gfx < NUM_AIRPORTTILES);
 	const AirportTileSpec *it = AirportTileSpec::Get(gfx);
 	return it->grf_prop.override == INVALID_AIRPORTTILE ? gfx : it->grf_prop.override;
 }
@@ -399,8 +399,6 @@ void AirportTileAnimationTrigger(Station *st, TileIndex tile, AirpAnimationTrigg
 void AirportAnimationTrigger(Station *st, AirpAnimationTrigger trigger, CargoID cargo_type)
 {
 	if (st->airport.tile == INVALID_TILE) return;
-
-	const AirportSpec *as = st->GetAirportSpec();
 
 	TILE_AREA_LOOP(tile, st->airport) {
 		if (st->TileBelongsToAirport(tile)) AirportTileAnimationTrigger(st, tile, trigger, cargo_type);
