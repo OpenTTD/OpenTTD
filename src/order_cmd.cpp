@@ -415,7 +415,9 @@ static TileIndex GetOrderLocation(const Order& o)
 		default: NOT_REACHED();
 		case OT_GOTO_WAYPOINT: return Waypoint::Get(o.GetDestination())->xy;
 		case OT_GOTO_STATION:  return Station::Get(o.GetDestination())->xy;
-		case OT_GOTO_DEPOT:    return Depot::Get(o.GetDestination())->xy;
+		case OT_GOTO_DEPOT:
+			if ((o.GetDepotActionType() & ODATFB_NEAREST_DEPOT) != 0) return INVALID_TILE;
+			return Depot::Get(o.GetDestination())->xy;
 	}
 }
 
@@ -433,7 +435,10 @@ static uint GetOrderDistance(const Order *prev, const Order *cur, const Vehicle 
 		return max(dist1, dist2);
 	}
 
-	return DistanceManhattan(GetOrderLocation(*prev), GetOrderLocation(*cur));
+	TileIndex prev_tile = GetOrderLocation(*prev);
+	TileIndex cur_tile = GetOrderLocation(*cur);
+	if (prev_tile == INVALID_TILE || cur_tile == INVALID_TILE) return 0;
+	return DistanceManhattan(prev_tile, cur_tile);
 }
 
 /** Add an order to the orderlist of a vehicle.
