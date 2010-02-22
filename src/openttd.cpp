@@ -1054,6 +1054,10 @@ void SwitchToMode(SwitchMode new_mode)
 
 		case SM_MENU: // Switch to game intro menu
 			LoadIntroGame();
+			if (BaseSounds::ini_set == NULL && BaseSounds::GetUsedSet()->fallback) {
+				ShowErrorMessage(STR_WARNING_FALLBACK_SOUNDSET, INVALID_STRING_ID, 0, 0, true);
+				BaseSounds::ini_set = strdup(BaseSounds::GetUsedSet()->name);
+			}
 			break;
 
 		case SM_SAVE: // Save game
