@@ -157,6 +157,7 @@ public:
 
 		td.station_class = STR_NULL;
 		td.station_name = STR_NULL;
+		td.airport_tile_name = STR_NULL;
 
 		td.grf = NULL;
 
@@ -240,6 +241,13 @@ public:
 		if (td.station_name != STR_NULL) {
 			SetDParam(0, td.station_name);
 			GetString(this->landinfo_data[line_nr], STR_LAND_AREA_INFORMATION_STATION_TYPE, lastof(this->landinfo_data[line_nr]));
+			line_nr++;
+		}
+
+		/* Station type name */
+		if (td.airport_tile_name != STR_NULL) {
+			SetDParam(0, td.airport_tile_name);
+			GetString(this->landinfo_data[line_nr], STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME, lastof(this->landinfo_data[line_nr]));
 			line_nr++;
 		}
 

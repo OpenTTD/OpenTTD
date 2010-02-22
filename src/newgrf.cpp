@@ -3845,6 +3845,14 @@ static void FeatureNewName(ByteReader *buf)
 						}
 						break;
 
+					case 0xC7: // Airporttile name
+						if (_cur_grffile->airtspec == NULL || _cur_grffile->airtspec[GB(id, 0, 8)] == NULL) {
+							grfmsg(1, "FeatureNewName: Attempt to name undefined airport tile 0x%X, ignoring", GB(id, 0, 8));
+						} else {
+							_cur_grffile->airtspec[GB(id, 0, 8)]->name = AddGRFString(_cur_grffile->grfid, id, lang, new_scheme, name, STR_UNDEFINED);
+						}
+						break;
+
 					case 0xC9: // House name
 						if (_cur_grffile->housespec == NULL || _cur_grffile->housespec[GB(id, 0, 8)] == NULL) {
 							grfmsg(1, "FeatureNewName: Attempt to name undefined house 0x%X, ignoring.", GB(id, 0, 8));

@@ -33,6 +33,7 @@ struct AirportTileSpec {
 	uint16 animation_info;                ///< Information about the animation (is it looping, how many loops etc)
 	uint8 animation_speed;                ///< The speed of the animation
 
+	StringID name;                        ///< Tile Subname string, land information on this tile will give you "AirportName (TileSubname)"
 	uint8 callback_flags;                 ///< Flags telling which grf callback is set
 	uint8 animation_triggers;             ///< When to start the animation
 	uint8 animation_special_flags;        ///< Extra flags to influence the animation

@@ -2643,6 +2643,16 @@ static void GetTileDesc_Station(TileIndex tile, TileDesc *td)
 		}
 	}
 
+	if (IsAirport(tile)) {
+		const AirportTileSpec *ats = AirportTileSpec::Get(GetAirportGfx(tile));
+		td->airport_tile_name = ats->name;
+
+		if (ats->grf_prop.grffile != NULL) {
+			const GRFConfig *gc = GetGRFConfig(ats->grf_prop.grffile->grfid);
+			td->grf = gc->name;
+		}
+	}
+
 	StringID str;
 	switch (GetStationType(tile)) {
 		default: NOT_REACHED();

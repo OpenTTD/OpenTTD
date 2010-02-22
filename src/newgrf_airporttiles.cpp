@@ -26,6 +26,7 @@
 #include "variables.h"
 #include "functions.h"
 #include "core/random_func.hpp"
+#include "table/strings.h"
 #include "table/airporttiles.h"
 
 
