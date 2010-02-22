@@ -108,9 +108,10 @@ struct BaseSet {
 	 * Read the set information from a loaded ini.
 	 * @param ini      the ini to read from
 	 * @param path     the path to this ini file (for filenames)
+	 * @param allow_empty_filename empty filenames are valid
 	 * @return true if loading was successful.
 	 */
-	bool FillSetDetails(IniFile *ini, const char *path);
+	bool FillSetDetails(IniFile *ini, const char *path, bool allow_empty_filename = true);
 
 	/**
 	 * Get the description for the given ISO code.
