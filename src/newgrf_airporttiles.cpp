@@ -41,7 +41,9 @@ AirportTileOverrideManager _airporttile_mngr(NEW_AIRPORTTILE_OFFSET, NUM_AIRPORT
  */
 /* static */ const AirportTileSpec *AirportTileSpec::Get(StationGfx gfx)
 {
-	assert((size_t)gfx < lengthof(AirportTileSpec::tiles));
+	/* should be assert(gfx < lengthof(tiles)), but that gives compiler warnings
+	 * since it's always true if the following holds: */
+	assert_compile(MAX_UVALUE(StationGfx) + 1 == lengthof(tiles));
 	return &AirportTileSpec::tiles[gfx];
 }
 
@@ -88,7 +90,6 @@ void AirportTileOverrideManager::SetEntitySpec(const AirportTileSpec *airpts)
  */
 StationGfx GetTranslatedAirportTileID(StationGfx gfx)
 {
-	assert((size_t)gfx < NUM_AIRPORTTILES);
 	const AirportTileSpec *it = AirportTileSpec::Get(gfx);
 	return it->grf_prop.override == INVALID_AIRPORTTILE ? gfx : it->grf_prop.override;
 }
