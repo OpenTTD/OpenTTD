@@ -996,23 +996,7 @@ public:
 				int sel = this->GetOrderFromPt(pt.y);
 
 				if (_ctrl_pressed && sel < this->vehicle->GetNumOrders()) {
-					const Order *ord = this->vehicle->GetOrder(sel);
-					TileIndex xy = INVALID_TILE;
-
-					switch (ord->GetType()) {
-						case OT_GOTO_WAYPOINT:
-						case OT_GOTO_STATION:
-							xy = BaseStation::Get(ord->GetDestination())->xy;
-							break;
-
-						case OT_GOTO_DEPOT:
-							if ((ord->GetDepotActionType() & ODATFB_NEAREST_DEPOT) != 0) break;
-							xy = (this->vehicle->type == VEH_AIRCRAFT) ?  Station::Get(ord->GetDestination())->xy : Depot::Get(ord->GetDestination())->xy;
-							break;
-						default:
-							break;
-					}
-
+					TileIndex xy = this->vehicle->GetOrder(sel)->GetLocation(this->vehicle);
 					if (xy != INVALID_TILE) ScrollMainWindowToTile(xy);
 					return;
 				}
