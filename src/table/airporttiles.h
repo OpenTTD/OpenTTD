@@ -55,7 +55,7 @@ static const AirportTileSpec _origin_airporttile_specs[] = {
 	AT_NOANIM,
 
 	AT_NOANIM,
-	AT(12, 2), // APT_RADAR_GRASS_FENCE_SW
+	AT(11, 2), // APT_RADAR_GRASS_FENCE_SW
 	AT_NOANIM,
 	AT_NOANIM,
 	AT_NOANIM,
@@ -63,7 +63,7 @@ static const AirportTileSpec _origin_airporttile_specs[] = {
 	AT_NOANIM,
 	AT_NOANIM,
 	AT_NOANIM,
-	AT(4, 1), // APT_GRASS_FENCE_NE_FLAG
+	AT(3, 1), // APT_GRASS_FENCE_NE_FLAG
 
 	AT_NOANIM,
 	AT_NOANIM,
@@ -77,8 +77,8 @@ static const AirportTileSpec _origin_airporttile_specs[] = {
 	AT_NOANIM,
 
 	AT_NOANIM,
-	AT(12, 2), // APT_RADAR_FENCE_SW
-	AT(12, 2), // APT_RADAR_FENCE_NE
+	AT(11, 2), // APT_RADAR_FENCE_SW
+	AT(11, 2), // APT_RADAR_FENCE_NE
 	AT_NOANIM,
 	AT_NOANIM,
 	AT_NOANIM,
@@ -101,7 +101,7 @@ static const AirportTileSpec _origin_airporttile_specs[] = {
 	AT_NOANIM,
 	AT_NOANIM,
 	AT_NOANIM,
-	AT(4, 1), // APT_GRASS_FENCE_NE_FLAG_2
+	AT(3, 1), // APT_GRASS_FENCE_NE_FLAG_2
 };
 
 assert_compile(NEW_AIRPORTTILE_OFFSET == lengthof(_origin_airporttile_specs));
