@@ -3474,6 +3474,7 @@ STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(tự thay vư�
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Không thể hoà trộn các đường ray
+STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Phải bỏ đèn báo trước
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Không có đường ray thích hợp
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Phải phá bỏ đường ray trước
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Đường một chiều hoặc bị chặn

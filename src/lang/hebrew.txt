@@ -3441,8 +3441,8 @@ STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}יש ל�
 STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}יש להסיר את תחנת המשאיות תחילה
 STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}יש להסיר את תחנת החשמלית תחילה
 STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}יש להסיר את תחנת החשמלית תחילה
-STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}חובה להסיר קודם את המזח הקיים
-STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}חייב לפנות שדה תעופה קודם
+STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}יש להסיר את המזח תחילה
+STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}יש להרוס את שדה התעופה תחילה
 
 # Waypoint related errors
 STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}נוגע ביותר מנקודת ציון אחת
@@ -3488,6 +3488,7 @@ STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(הגבלת כ�
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}שילוב מסילות בלתי אפשרי
+STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}יש להסיר רמזורים תחילה
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE} אין מסילת רכבת מתאימה
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}יש להסיר את המסילה הקיימת תחילה
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}כביש חד סיטרי או חסום
@@ -3522,7 +3523,7 @@ STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}לא י�
 
 # Bridge related errors
 STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}לא ניתן לבנות גשר כאן...
-STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}חוברה קודם לפרק את הגשר
+STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}יש לפרק את הגשר תחילה
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}לא ניתן להתחיל ולסיים באותה הנקודה
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE} צדדי הגשר לא באותו הגובה
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}גשר נמוך מידי עבור השטח
@@ -3532,7 +3533,7 @@ STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... קצ
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}לא ניתן להקים מנהרה כאן...
 STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}אזור לא מתאים לכניסה למנהרה
-STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}חובה קודם לבטל את המנהרה
+STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}יש להרוס את המנהרה תחילה
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}מנהרה אחרת מפריעה
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE} התעלה תסתיים מחוץ למפה
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}לא ניתן היה לפנות את השטח בקצה השני של המנהרה

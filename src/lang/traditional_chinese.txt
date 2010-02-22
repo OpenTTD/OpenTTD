@@ -3373,6 +3373,7 @@ STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... 已�
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... 地圖沒有足夠空間
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}此市鎮不會自動興建道路。你可以到 [進階設定] -> [經濟] -> [市鎮] 中啟用 [市鎮可以興建道路] 選項。
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}道路施工中
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}無法刪除此市鎮...{}市鎮範圍內還有車站或機廠或無法移除的區塊
 
 # Industry related errors
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}無法產生工業...
@@ -3473,6 +3474,7 @@ STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(金錢限制)
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}不合理的軌道組合
+STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}必須先移除號誌
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}沒有適合的鐵路軌道
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}必須先移除鐵路
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}道路是單行道或已封閉

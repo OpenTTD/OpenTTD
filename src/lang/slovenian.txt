@@ -2163,6 +2163,7 @@ STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Koordina
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Zgrajeno: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Razred postaje: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Vrsta postaje: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Ime področja letališča: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Sprejet tovor: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
@@ -3464,13 +3465,13 @@ STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Ni mogo�
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Nemogoča odstranitev potniške tramvaj postaje...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Nemogoča odstranitev tovorne tramvaj postaje...
 
-STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Najprej je potrebno porušiti postajo
+STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Najprej moraš porušiti postajo
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Najprej moraš porušiti avtobusno postajo
 STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}Najprej moraš porušiti tovorno postajo
-STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Najprej poruši potniško tramvaj postajo
-STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Najprej poruši tovorno tramvaj postajo
+STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Najprej moraš porušiti potniško tramvaj postajo
+STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Najprej moraš porušiti tovorno tramvaj postajo
 STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Najprej moraš porušiti pristanišče
-STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Najprej je potrebno porušiti letališče
+STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Najprej moraš porušiti letališče
 
 # Waypoint related errors
 STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Združi z več kot eno obstoječo točko poti
@@ -3481,7 +3482,7 @@ STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Tukaj ni
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Ni mogoče preimenovati točke poti...
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Tukaj ni mogoče odstraniti točke poti...
-STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Najprej je potrebno odstraniti točko poti
+STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Najprej moraš odstraniti točko poti
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... boja na poti
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... boja je v uporabi!
 
@@ -3516,8 +3517,9 @@ STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(denarna meja)
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Nemogoča kombinacija tirnic
+STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Najprej moraš odstraniti signale
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Ni primernih tračnic
-STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Najprej odstrani tračnice
+STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Najprej moraš odstraniti tračnice
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Cesta je enosmerna ali blokirana
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Nemogoča gradnja signalov...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Nemogoča gradnja tirov...
@@ -3528,7 +3530,7 @@ STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Tukaj ni
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Tukaj ni mogoče spremeniti tipa železnice...
 
 # Road construction errors
-STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}Najprej odstrani cesto
+STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}Najprej moraš odstraniti cesto
 STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}... enosmerne poti ne morejo imeti odcepov
 STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Nemogoča gradnja ceste...
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Tukaj ni mogoče zgraditi tramvaja...

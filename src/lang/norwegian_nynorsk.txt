@@ -51,7 +51,7 @@ STR_CARGO_PLURAL_WHEAT                                          :Kveite
 STR_CARGO_PLURAL_RUBBER                                         :Gummi
 STR_CARGO_PLURAL_SUGAR                                          :Sukker
 STR_CARGO_PLURAL_TOYS                                           :Leiketøy
-STR_CARGO_PLURAL_CANDY                                          :Søtsaker
+STR_CARGO_PLURAL_CANDY                                          :Godteri
 STR_CARGO_PLURAL_COLA                                           :Cola
 STR_CARGO_PLURAL_COTTON_CANDY                                   :Sukkerspinn
 STR_CARGO_PLURAL_BUBBLES                                        :Bobler
@@ -85,7 +85,7 @@ STR_CARGO_SINGULAR_WHEAT                                        :Kveite
 STR_CARGO_SINGULAR_RUBBER                                       :Gummi
 STR_CARGO_SINGULAR_SUGAR                                        :Sukker
 STR_CARGO_SINGULAR_TOY                                          :Leiketøy
-STR_CARGO_SINGULAR_CANDY                                        :Søtsak
+STR_CARGO_SINGULAR_CANDY                                        :Godteri
 STR_CARGO_SINGULAR_COLA                                         :Cola
 STR_CARGO_SINGULAR_COTTON_CANDY                                 :Sukkerspinn
 STR_CARGO_SINGULAR_BUBBLE                                       :Boble
@@ -119,7 +119,7 @@ STR_QUANTITY_WHEAT                                              :{WEIGHT} kveite
 STR_QUANTITY_RUBBER                                             :{VOLUME} gummi
 STR_QUANTITY_SUGAR                                              :{WEIGHT} sukker
 STR_QUANTITY_TOYS                                               :{COMMA} leike{P "" r}
-STR_QUANTITY_SWEETS                                             :{COMMA} sekk{P "" er} med søtsaker
+STR_QUANTITY_SWEETS                                             :{COMMA} sekk{P "" er} med godteri
 STR_QUANTITY_COLA                                               :{VOLUME} cola
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} sukkerspinn
 STR_QUANTITY_BUBBLES                                            :{COMMA} boble{P "" r}
@@ -154,7 +154,7 @@ STR_ABBREV_WHEAT                                                :{TINYFONT}KV
 STR_ABBREV_RUBBER                                               :{TINYFONT}GM
 STR_ABBREV_SUGAR                                                :{TINYFONT}SK
 STR_ABBREV_TOYS                                                 :{TINYFONT}LT
-STR_ABBREV_SWEETS                                               :{TINYFONT}SS
+STR_ABBREV_SWEETS                                               :{TINYFONT}GT
 STR_ABBREV_COLA                                                 :{TINYFONT}CL
 STR_ABBREV_CANDYFLOSS                                           :{TINYFONT}SP
 STR_ABBREV_BUBBLES                                              :{TINYFONT}BO
@@ -194,7 +194,7 @@ STR_COLOUR_GREY                                                 :Grå
 STR_COLOUR_WHITE                                                :Kvit
 
 # Units used in OpenTTD
-STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mpt
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mi/t
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/t
 STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
 
@@ -275,7 +275,7 @@ STR_SORT_BY_MODEL                                               :Modell
 STR_SORT_BY_VALUE                                               :Verdi
 STR_SORT_BY_LENGTH                                              :Lengde
 STR_SORT_BY_LIFE_TIME                                           :Gjenståande levetid
-STR_SORT_BY_TIMETABLE_DELAY                                     :Rutetabell-forseinking
+STR_SORT_BY_TIMETABLE_DELAY                                     :Rutetabellforseining
 STR_SORT_BY_FACILITY                                            :Stasjonstype
 STR_SORT_BY_WAITING                                             :Verdien av ventande varer
 STR_SORT_BY_RATING_MAX                                          :Høgast varevurdering
@@ -315,7 +315,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Bygg fly
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Åpne verktøylinja for å heve/senke land, plante tre, osb.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Syne lyd-/musikkinnstillingar
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Syne siste melding/nyhende, syne meldingsinstillingar
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Feltinformasjon, konsoll, AI-debugging, skjermbilete, om OpenTTD
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informasjon om landområde, konsoll, AI-feilsøking, skjermbilete, om OpenTTD
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Byt verkty
 
 # Extra tooltips for the scenario editor toolbar
@@ -434,7 +434,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Tidlegare meldi
 ############ range ends here
 
 ############ range for about menu starts
-STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informasjon om felt
+STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informasjon om landområde
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Syne/gjem konsoll
 STR_ABOUT_MENU_AI_DEBUG                                         :AI-feilsøking
@@ -546,7 +546,7 @@ STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Finansfyrste
 
 # Performance detail window
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Detaljert prestasjonsnivå
-STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detalj
+STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detaljer
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM} %
@@ -656,7 +656,7 @@ STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Syne lan
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}Vegar
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLACK}Jarnbaner
-STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINYFONT}{BLACK}Stasjonar/Lufthamner/Hamner
+STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINYFONT}{BLACK}Stasjonar/Flyplassar/Hamner
 STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINYFONT}{BLACK}Bygningar/Industriar
 STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINYFONT}{BLACK}Køyretøy
 STR_SMALLMAP_LEGENDA_100M                                       :{TINYFONT}{BLACK}100m
@@ -975,8 +975,8 @@ STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}Sett ett
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Byt til euro: {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Byt til euro: {ORANGE}aldri
 STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Angi årstal for byte til Euro
-STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Bytt til Euro tidlegare
-STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Bytt til Euro senere
+STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Byt til Euro tidlegare
+STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Byt til Euro senere
 
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Eksempel: {ORANGE}{CURRENCY}
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 pund (£) i din valuta
@@ -1159,7 +1159,7 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}Høgdek
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Mot klokka
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Med klokka
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Høgden som eit flatt scenariokart får: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Tillet endring av landskap på kanten av kartet: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Tillet endring av landskapsruter på kanten av kartet: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Ei eller fleire ruter på nordkanten er ikkje tomme
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Ei eller fleire ruter på ein av kantane inneheld ikkje vatn
 
@@ -1249,7 +1249,7 @@ STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Start s
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Jamn økonomi (fleire, mindre endringar): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Tillet kjøp av aksjar i andre selskap: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Prosent av etappeforteneste å betale i tilbringarsystemer: {ORANGE}{STRING}%
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Ved opptrekking, plasser signal for hver: {ORANGE}{STRING} rute
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Ved opptrekking, plasser signal for hver: {ORANGE}{STRING}. rute
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Bygg vingesignal automatisk før: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Slå på signalgrensesnittet: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Standard signaltype: {ORANGE}{STRING}
@@ -1423,14 +1423,14 @@ STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Vel ein 
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Vel sekundærfarge for valde tema
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Vel eit fargetema å endre, eller fleire fargetema med CTRL+klikk. Klikk på boksen for å vise bruken av fargetema
 
-STR_LIVERY_DEFAULT                                              :Standardovertaking
+STR_LIVERY_DEFAULT                                              :Standardfarger
 STR_LIVERY_STEAM                                                :Damplokomotiv
-STR_LIVERY_DIESEL                                               :Dieselmotor
-STR_LIVERY_ELECTRIC                                             :Elektrisk motor
-STR_LIVERY_MONORAIL                                             :Monorailmotor
-STR_LIVERY_MAGLEV                                               :Maglevmotor
-STR_LIVERY_DMU                                                  :DMU
-STR_LIVERY_EMU                                                  :EMU
+STR_LIVERY_DIESEL                                               :Diesellokomotiv
+STR_LIVERY_ELECTRIC                                             :Elektrisk lokomotiv
+STR_LIVERY_MONORAIL                                             :Monorail lokomotiv
+STR_LIVERY_MAGLEV                                               :Maglev lokomotiv
+STR_LIVERY_DMU                                                  :Dieseltogsett (DMU)
+STR_LIVERY_EMU                                                  :Elektrisk togsett (EMU)
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Passasjervogn (damp)
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Passasjervogn (diesel)
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Passasjervogn (elektrisk)
@@ -2029,7 +2029,7 @@ STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}Helikopt
 STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}Små flyplassar
 STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Store flyplassar
 STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Sentrumsflyplassar
-STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Helikopterlufthamner
+STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Helikopterflyplassar
 
 STR_STATION_BUILD_NOISE                                         :{BLACK}Lyd generert: {GOLD}{COMMA}
 
@@ -2062,7 +2062,7 @@ STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Nullstil
 STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Fjern all eigedom som er ått av spelar frå kartet
 
 STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Nullstill landskap
-STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Er du sikker på at du vil fjerne all eigedom som er ått av spelar?
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Er du sikker på at du vil fjerne all spelar-egd eigedom?
 
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Bygenerering
@@ -2107,7 +2107,7 @@ STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Bygg
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Finansier
 
 # Land area window
-STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Informasjon om felt
+STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Informasjon om landområde
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Pris for å fjerne: {LTBLUE}N/A
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Pris for å fjerne: {RED}{CURRENCY}
 STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Salsinntekt når den er nullstilt: {LTBLUE}{CURRENCY}
@@ -2122,6 +2122,7 @@ STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Koordina
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Byggd: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Stasjonsklasse: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Stasjontype: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Flyplassrutas namn: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Godtekne varer: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
@@ -2220,7 +2221,7 @@ STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_OWNED_LAND                :Feltet eigast a
 # About OpenTTD window
 STR_ABOUT_OPENTTD                                               :{WHITE}Om OpenTTD
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Opphaveleg opphavsbeskytta av {COPYRIGHT} 1995 Chris Sawyer, Alle rettigheiter reservert
-STR_ABOUT_VERSION                                               :{BLACK}OpenTTD versjon {REV}. Oversett til norsk av Thor Morten Skogrand med fleire.
+STR_ABOUT_VERSION                                               :{BLACK}OpenTTD versjon {REV}. Oversett til nynorsk av Thor Morten Skogrand med fleire.
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2010 OpenTTD-teamet
 
 # Save/load game/scenario
@@ -2306,7 +2307,7 @@ STR_GENERATION_TREE_GENERATION                                  :{BLACK}Tregener
 STR_GENERATION_UNMOVABLE_GENERATION                             :{BLACK}Ikkje-flyttbar generering
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Generering av ulendt og steinete område
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Klargjer spelet
-STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Køyrer tile-loop
+STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Køyrer rute-løkkje
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Gjer klart spelet
 
 # NewGRF settings
@@ -2379,7 +2380,7 @@ STR_NEWGRF_ERROR_READ_BOUNDS                                    :Las forbi slutt
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Åtvaring!
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Du er i ferd med å gjere forandringar i eit spel som er i gang. Det kan få OpenTTD til å krasje.{}Er du heilt sikker på at du vil gjere dette?
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Du er i ferd med å gjere forandringar i eit køyrande spel; det kan få OpenTTD til å krasje.{}Er du heilt sikker på at du vil gjere dette?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Kan ikkje leggje til fil: to eller fleire GRF ID-er
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Matchande fil blei ikkje funne (kompatibel GRF-fil lasta inn)
@@ -2396,10 +2397,10 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tog '{VE
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' gjer gal informasjon.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Vare/ombyggings-informasjon for '{1:ENGINE}' er forskjellig frå kjøpslista etter konstruksjon. Dette kan føra til at autofornying/erstatning ikkje tilpasser riktig.
-STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' forårsaka ei uendelig lykkje i produksjonskall.
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' forårsaka ei uendelig løkkje i produksjonskallet.
 
 # Sign list window
-STR_SIGN_LIST_CAPTION                                           :{WHITE}Skiltliste - {COMMA} skilt
+STR_SIGN_LIST_CAPTION                                           :{WHITE}Skiltliste - {COMMA} Skilt{P "" er}
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Skriv inn skilttekst
@@ -2436,7 +2437,7 @@ STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Auk byst
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}Slett
 STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Slett byen heilt
 
-STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Bytt namn
+STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Byt namn
 
 # Town local authority window
 STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}Bystyret i {TOWN}
@@ -2650,7 +2651,7 @@ STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Sjå ei 
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Behandle liste
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Send instruksjonar til alle køyretøy i denne lista
-STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Bytt ut køyretøy
+STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Byt ut køyretøy
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Send til vedlikehald
 
 STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Send til togstall
@@ -2858,8 +2859,8 @@ STR_REPLACE_WAGONS                                              :Vogner
 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Vel jernbanetypen du vil velje lokomotiv frå
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Syner kva lokomotiv som tek over for det valde lokomotivet på venstresida
-STR_REPLACE_RAIL_VEHICLES                                       :Jernbanelokomotiv
-STR_REPLACE_ELRAIL_VEHICLES                                     :Elektriske tog
+STR_REPLACE_RAIL_VEHICLES                                       :Jernbanekøyretøy
+STR_REPLACE_ELRAIL_VEHICLES                                     :Elektriske jernbanekøyretøy
 STR_REPLACE_MONORAIL_VEHICLES                                   :Monoraillokomotiv
 STR_REPLACE_MAGLEV_VEHICLES                                     :Maglev-lokomotiv
 
@@ -2892,7 +2893,7 @@ STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Bygg om 
 STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Bygg flymaskinen til å frakte ein annan varetype
 
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Byt køyreretning
-STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Bytt køyreretning
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Byt køyreretning
 
 STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Syne ordrane til toget. CTRL+klikk syner togets rutetabell
 STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Syne ordrelista til køyretøyet. CTRL+klikk syner rutetabell
@@ -3013,12 +3014,12 @@ STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE
 STR_REFIT_TITLE                                                 :{GOLD}Vel varetype:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Ny kapasitet: {GOLD}{CARGO}{}{BLACK}Ombyggingskostnader: {GOLD}{CURRENCY}
 
-STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vel kva type varer lokomotivet skal frakte
+STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vel kva type varer toget skal frakte
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Vel kva type varer køyretøyet skal frakte
 STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}Vel kva type varer skipet skal frakte
 STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Vel kva type varer flymaskinen skal frakte
 
-STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Bygg om lokomotivet
+STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Bygg om toget
 STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Bygg om bil
 STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Bygg om skip
 STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Bygg om flymaskin
@@ -3031,7 +3032,7 @@ STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Bygg om 
 # Order view
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Ordre)
 STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Rutetabell
-STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Bytt til rutetabellvinauge
+STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Byt til rutetabellvising
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Ordreliste - klikk på ein ordre for å velje han. CTRL+klikk ruller til stasjonen
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
@@ -3157,7 +3158,7 @@ STR_INVALID_ORDER                                               :{RED} (Ugyldig 
 # Time table window
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Rutetabell)
 STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}Ordrer
-STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Bytt til ordrevising
+STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Byt til ordrevising
 
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Rutetabell - klikk på ei ordre for å merka den
 
@@ -3211,7 +3212,7 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Vel år
 
 
 # AI debug window
-STR_AI_DEBUG                                                    :{WHITE}AI feilsøking
+STR_AI_DEBUG                                                    :{WHITE}AI-feilsøking
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Namnet til datamaskinspelaren
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}AI-instillingar
@@ -3223,8 +3224,8 @@ STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD 
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... Ingen AI tilgjengeleg!
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Ingen passande AI kunne lastast inn.{}Denne AI er ein dummy-AI og kjem ikkje til å gjera noko.{}Du kan lasta ned fleire AI'ar frå nettet med spelets nedlastingssystem.
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Ein AI har krasja. Venleg rapporter dette til produsenten av AIen med eit skjermbilete av "AI Debug"-vindauget.
-STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI-feilsøkingvindauget er kun tilgjengeleg for serveren
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Ein AI har krasja. Venleg rapporter dette til forfattaren av AIen med eit skjermbilete av AI-feilsøkingsvindauget.
+STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI-feilsøkingvindauget er kun tilgjengeleg for tenaren
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}AI-konfigurasjonar
@@ -3374,7 +3375,7 @@ STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... for 
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... det er ikkje meir plass på kartet
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Byen byggjer ikkje vegar. Du kan tillete veg-bygging i Avanserte innstillingar -> Økonomi -> Byar.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Vegarbeid pågår
-STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kan ikkje fjerne denne byen...{}Ein stasjon eller garasje/stall/hangar/dokk refererar til byen eller eit by-egd felt som ikkje kan fjernast
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kan ikkje fjerne denne byen...{}Ein stasjon eller garasje/stall/hangar/dokk refererar til byen eller ei by-egd rute som ikkje kan fjernast
 
 # Industry related errors
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Kan ikkje generere industriar...
@@ -3475,6 +3476,7 @@ STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(pengegrense)
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Umogeleg kombinasjon av spor
+STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Må fjerne signaler først
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Upassande jernbanespor
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Må fjerne jernbanespor først
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Vegen er einvegskøyrd eller blokkert
@@ -3527,7 +3529,7 @@ STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Kan ikkj
 # Unmovable related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Objekt er i vegen
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... hovudkontor til firma er i vegen
-STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Kan ikkje kjøpe dette feltet...
+STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Kan ikkje kjøpe dette landområdet...
 STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... du eig det alt!
 
 # Group related errors
@@ -3544,7 +3546,7 @@ STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Køyret�
 STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Det er eit skip i vegen
 STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Det er ein flymaskin i vegen
 
-STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Kan ikkje byggje om lokomotiv...
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Kan ikkje byggje om toget...
 STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Kan ikkje byggje om bil...
 STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Kan ikkje bygge om skip...
 STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Kan ikkje byggje om flymaskin...
@@ -3564,12 +3566,12 @@ STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Kan ikkj
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Kan ikkje sende skip til skipsdokk...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Kan ikkje sende flymaskin til hangar...
 
-STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Kan ikkje byggje jernbanekøyretøy...
+STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Kan ikkje kjøpe jernbanekøyretøy...
 STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Kan ikkje kjøpe køyretøy...
 STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Kan ikkje byggje skip...
 STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Kan ikkje byggje flymaskin...
 
-STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Kan ikkje gje tog/vogn nytt namn...
+STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Kan ikkje gje lokomotiv-/vogntypen nytt namn...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Kan ikkje endre namnet til køyretøytypen...
 STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Kan ikkje endre namnet til skipstypen...
 STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Kan ikkje endre namn...
@@ -3579,7 +3581,7 @@ STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Kan ikkj
 STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Kan ikkje selje skip...
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Kan ikkje selje flymaskin...
 
-STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :{WHITE}Køyretøyet er ikkje tilgjengeleg
+STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :{WHITE}Jernbanekøyretøyet er ikkje tilgjengeleg
 STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :{WHITE}Køyretøyet er ikkje tilgjengeleg
 STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}Skipet er ikkje tilgjengeleg
 STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Flymaskinen er ikkje tilgjengeleg
@@ -3692,7 +3694,7 @@ STR_INDUSTRY_NAME_FACTORY_2                                     :Fabrikk
 STR_INDUSTRY_NAME_FARM_2                                        :Gard
 STR_INDUSTRY_NAME_LUMBER_MILL                                   :Sagbruk
 STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :Sukkerspinnskog
-STR_INDUSTRY_NAME_CANDY_FACTORY                                 :Søtsakfabrikk
+STR_INDUSTRY_NAME_CANDY_FACTORY                                 :Godterifabrikk
 STR_INDUSTRY_NAME_BATTERY_FARM                                  :Batterigard
 STR_INDUSTRY_NAME_COLA_WELLS                                    :Colabrønnar
 STR_INDUSTRY_NAME_TOY_SHOP                                      :Leiketøysbutikk
@@ -3794,7 +3796,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COTTON_CANDY_HOPPER           :Sukkerspinnvogn
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOFFEE_HOPPER                 :Karamellvogn
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BUBBLE_VAN                    :Boblevogn
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COLA_TANKER                   :Colavogn
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_CANDY_VAN                     :Søtsakvogn
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_CANDY_VAN                     :Godterivogn
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOY_VAN                       :Leiketøyvogn
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BATTERY_TRUCK                 :Batterivogn
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FIZZY_DRINK_TRUCK             :Mineralvatnvogn
@@ -3824,7 +3826,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COTTON_CANDY_HOPPER       :Sukkerspinnvogn
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOFFEE_HOPPER             :Karamellvogn
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BUBBLE_VAN                :Boblevogn
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COLA_TANKER               :Colavogn
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_CANDY_VAN                 :Søtsakvogn
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_CANDY_VAN                 :Godterivogn
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOY_VAN                   :Leiketøyvogn
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BATTERY_TRUCK             :Batterivogn
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FIZZY_DRINK_TRUCK         :Mineralvatnvogn
@@ -3856,7 +3858,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COTTON_CANDY_HOPPER         :Sukkerspinnvogn
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOFFEE_HOPPER               :Karamellvogn
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BUBBLE_VAN                  :Boblevogn
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COLA_TANKER                 :Colavogn
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_CANDY_VAN                   :Søtsakvogn
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_CANDY_VAN                   :Godterivogn
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOY_VAN                     :Leiketøyvogn
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BATTERY_TRUCK               :Batterivogn
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FIZZY_DRINK_TRUCK           :Mineralvatnvogn
@@ -3934,9 +3936,9 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOFFEE_TRUCK             :Wizzowow-lasteb
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOY_VAN               :MightyMover-lastebil for leiketøy
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOY_VAN               :Powernaught-lastebil for leiketøy
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOY_VAN                  :Wizzowow-lastebil for leiketøy
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_CANDY_TRUCK           :MightyMover-lastebil for søtsaker
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_CANDY_TRUCK           :Powernaught-lastebil for søtsaker
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_CANDY_TRUCK              :Wizzowow-lastebil for søtsaker
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_CANDY_TRUCK           :MightyMover-lastebil for godteri
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_CANDY_TRUCK           :Powernaught-lastebil for godteri
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_CANDY_TRUCK              :Wizzowow-lastebil for godteri
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BATTERY_TRUCK         :MightyMover-lastebil for batteri
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BATTERY_TRUCK         :Powernaught-lastebil for batteri
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BATTERY_TRUCK            :Wizzowow-lastebil for batteri

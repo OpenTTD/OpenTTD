@@ -3475,6 +3475,7 @@ STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(límite de din
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Combinación de tramos imposible
+STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Primero debe retirar señales
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Tramo de ferrocarril no apropiado
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Se debe retirar primero tramo de vía
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Carretera de un solo sentido o bloqueada

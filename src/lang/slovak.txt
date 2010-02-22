@@ -2195,20 +2195,20 @@ STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STR
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Skaly
 STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :Nerovný terén
-STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Holy teren
-STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Travnaty teren
+STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Holý terén
+STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Trávnatý terén
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Polia
-STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Zasnezeny teren
-STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Pust
+STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Zasnežený terén
+STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Púšť
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Zeleznicne kolaje
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Zeleznicne kolaje so standartnym semaforom
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Zeleznicne kolaje s pre-signalmi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Zeleznicne kolaje s exit-signalmi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Zeleznicné kolaje s combo signálmi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Kolajnice so semaformi pbs
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Železničná trať s jednosmernými signálmi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Železnicné kolaje s normálnymi a pre-signálmi
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Železničná trať
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Železničná trať so štandardným semaforom
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Železničná trať s pre-semaformi
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Železničné koľaje s exit-semaformi
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Železničné koľaje s kombinovanými semaformi
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Železničná trať so semaformi
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Železničná trať s jednosmernými semaformi
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Železničné koľaje s normálnymi a pre-semaformi
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Železnicné kolaje s normálnymi a exit-signálmi
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Zeleznicné kolaje s normálnymi a combo signálmi
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Železničná trasa s blokovacími a obojstranými signálmi
@@ -2222,7 +2222,7 @@ STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Železničná t
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Železničná trasa s konečnými a jednosmernými signálmi
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Železničná trasa s kombo a obojstranými signálmi
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Železničná trasa s kombo a jednosmernými signálmi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Železničná trať s obojstrannými a jednosmernými signálmi
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Železničná trať s obojstrannými a jednosmernými semaformi
 STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Zeleznicne depo
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Cesta
@@ -3514,7 +3514,7 @@ STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... bój
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Tu nemôže byť postavené depo...
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Tu sa nedá postaviť garáž...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Nie je možné postaviť električkové depo...
-STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Lodenica sa tu nedá postaviť
+STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Tu sa nedá postaviť lodné depo...
 
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Vlak musí byť zastavený v depe
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... musí byť zastavený v garáži
@@ -3541,6 +3541,7 @@ STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(finančný lim
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Nemožná kombinácia trate
+STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Najprv je treba odstrániť semafory
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Žiadne použiteľné železničné koľaje
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Najskôr treba odstrániť železničné koľaje
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Cesta je jednosmerná alebo blokovaná.
@@ -3548,7 +3549,7 @@ STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Tu sa ne
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Tu sa nedajú stavať železničné koľaje...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Tu nemožno odstrániť železničné koľaje...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Tu nemožno odstrániť semafory...
-STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Nie je možné zmeniť typ signálov...
+STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Nie je možné zmeniť typ semaforov...
 
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Tu nemožno z konvertovať typ železnice...
 

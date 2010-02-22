@@ -2122,6 +2122,7 @@ STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Coordonn
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Construit le{NBSP}: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Classe de station{NBSP}: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Type de station{NBSP}: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Nom de la case d'aéroport{NBSP}: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF{NBSP}: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Cargaison acceptée{NBSP}: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
@@ -3475,6 +3476,7 @@ STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(limite d'argen
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Combinaison de rail impossible
+STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Vous devez d'abord retirer les signaux
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Aucuns rails convenables
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Vous devez d'abord enlever les rails
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}La route est à sens unique ou bloquée

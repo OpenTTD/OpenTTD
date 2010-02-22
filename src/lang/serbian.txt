@@ -2306,6 +2306,7 @@ STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Kordinat
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Sagrađeno: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Klasa stanice: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Vrsta stanice: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Naziv dela aerodroma: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Tovar prihvaćen: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
@@ -3669,6 +3670,7 @@ STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(novčano ogran
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Nemoguća kombinacija šina
+STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Neophodno je prvo ukloniti signalizaciju
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Nedostaje odgovarajuća železnička pruga
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Potrebno je prvo ukloniti železničku prugu
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Put je jednosmeran ili je blokiran
@@ -3694,7 +3696,7 @@ STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Ovde nij
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Ovde je nemoguće postavljanje reke...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}...mora biti izgrađen na vodi
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}...Ne može se graditi na vodi
-STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Prvo se mora ukloniti kanal
+STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Potrebno je prvo ukloniti kanal
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Akvadukt se ovde ne može izgraditi...
 
 # Tree related errors
@@ -3713,7 +3715,7 @@ STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}...oba k
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Nije moguće ovde izgraditi tunel...
 STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}Lokacija neadekvatna za ulaz tunela
-STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Potrebno je prvo uništiti tunel
+STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Potrebno je prvo ukloniti tunel
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Drugi tunel je na putu
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Tunel bi završio van okvira terena
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Nije moguće iskopati drugi kraj tunela
