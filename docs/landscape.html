@@ -824,10 +824,10 @@
     <ul>
      <li>m1: <a href="#OwnershipInfo">owner</a> of the station</li>
      <li>m2: index into the array of stations</li>
-     <li>m3 bits 7..4: persistent random data for newstations (railway stations/waypoints)</li>
+     <li>m3 bits 7..4: persistent random data for railway stations/waypoints and airports)</li>
      <li>m3 bits 7..4: <a href="#OwnershipInfo">owner</a> of tram tracks (road stop)</li>
      <li>m3 bits 3..0: <a href="#TrackType">track type</a> for railway stations/waypoints</li>
-     <li>m3 bits 1..0: water class for buoys and water part of docks</li>
+     <li>m3 bits 1..0: water class for buoys, water part of docks and for airport tiles</li>
      <li>m4: custom station id; 0 means standard graphics</li>
      <li>m5: graphics index (range from 0..255 for each station type):
       <table>
@@ -871,7 +871,7 @@
        </tr>
 
        <tr>
-        <td nowrap valign=top><tt>00</tt>..<tt>8F</tt></td>
+        <td nowrap valign=top><tt>00</tt>..<tt>FF</tt></td>
         <td align=left>all airports</td>
        </tr>
 
@@ -946,7 +946,7 @@
      <li>m6 bits 1..0 : <a href="#tropic_zone">Tropic zone definition</a></li>
      <li>m7 bits 4..0: <a href="#OwnershipInfo">owner</a> of road (road stops)</li>
      <li>m7 bits 7..6: present road types (road stops)</li>
-     <li>m7: animation frame (railway stations/waypoints)</li>
+     <li>m7: animation frame (railway stations/waypoints, airports)</li>
     </ul>
    </td>
   </tr>
