@@ -2121,6 +2121,7 @@ STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Coordona
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Data constructiei: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Clasa statie: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Tip statie: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Numele dalei aeroportului: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NouGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Încărcături acceptate: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
@@ -3307,6 +3308,9 @@ STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}...nu am
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Avertisment de scala
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Redimensionarea excesiva a hartii nu este recomandata. Continui cu generarea?
 
+# Soundset messages
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Doar un set nul de efecte sonore a fost găsit. Dacă doreşti sunet, instalează un set de sunete folosind sistemul de Resurse Online
+
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Imagine salvată cu succes pe disc în fişierul '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Imaginea nu a putut fi capturată!
@@ -3474,6 +3478,7 @@ STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(fonduri limita
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Combinaţie de linii imposibilă
+STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Trebuie îndepărtate semafoarele mai întâi
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Cale ferată nepotrivită
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Mai întâi trebuie înlăturată calea ferată
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Drum cu sens unic sau blocat

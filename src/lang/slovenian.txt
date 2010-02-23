@@ -603,7 +603,7 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Denar:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Posojilo:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Skupaj:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Število vozil, ki so imela zadnje leto dobiček; všteta so cestna vozila, vlaki, ladje in letala
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Število vozil, ki so imela zadnje leto dobiček. Všteta so cestna vozila, vlaki, ladje in letala
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Število delov postaj. Vsak del postaje (npr. avtobusna, železniška, letališče) je štet, tudi če so povezani v eno
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Dobiček vozila z najnižjim prihodkom (samo vozila, starejša od 2 let)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Znesek denarja v četrtini z najnižjim dobičkom od zadnjih 12 četrtin
@@ -2421,7 +2421,7 @@ STR_NEWGRF_ERROR_READ_BOUNDS                                    :Preberi po konc
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Pozor!
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Pripravljaš se narediti spremembe na zagnani igri; to lahko sesuje OpenTTD.{}Si zagotovo želiš tega?
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Pripravljaš se narediti spremembe na zagnani igri. To lahko sesuje OpenTTD.{}Si zagotovo želiš tega?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Ne morem dodati datoteke: podvojen GRF ID
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Ustrezna datoteka ni najdena (naložen je kompatibilni GRF)
@@ -2678,9 +2678,9 @@ STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING}
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Letal{P o i a ""}
 
 STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Vlaki - klikni na vlak za informacije
-STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Cestna vozila - kliknite na vozilo za informacije
-STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Ladje - kliknite na ladjo za informacije
-STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Letalo - kliknite na letalo za informacije
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Cestna vozila - klikni na vozilo za informacije
+STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Ladje - klikni na ladjo za informacije
+STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Letalo - klikni na letalo za informacije
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Dobiček letos: {CURRENCY} (lani: {CURRENCY})
 
@@ -2758,8 +2758,8 @@ STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Največj
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Seznam železniških vozil - klikni na vozilo za informacije
 STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Seznam cestnih vozil - klikni na vozilo za informacije
-STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Seznam ladij - kliknite na ladjo za informacije
-STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Seznam letal - kliknite na letalo za informacije
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Seznam ladij - klikni na ladjo za informacije
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Seznam letal - klikni na letalo za informacije
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Kupi vozilo
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Kupi vozilo
@@ -2798,9 +2798,9 @@ STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} vo
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
 STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vlaki - klikni na vlak za informacije, povleci vozilo za dodajanje/odstranjevanje iz vlaka
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Vozila - kliknite na vozilo za informacije
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Vozila - klikni na vozilo za informacije
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Ladje - klikni na ladjo za informacije
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Letalo - kliknite na letalo za informacije
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Letalo - klikni na letalo za informacije
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Povleci železniško vozilo sem, če ga želiš prodati
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Povleci cestno vozilo sem, če ga želiš prodati
@@ -2946,10 +2946,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Prikaži
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Prikaži podrobnosti ladje
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Prikaži podrobnosti letala
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Trenutno železniško vozilo - klikni sem za izklop/zagon vozila
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Dejanja trenutnega vozila - kliknite za ustavitev/zagon vozila
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Trenutna ladja - klikni sem za ustavitev/zagon ladje
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Trenutno letalo - klikni sem za ustavitev/zagon letala
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Dejanje trenutnega vlaka - klikni za izklop/zagon vlaka. Ctrl+Klik za premik na destinacijo
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Dejanja trenutnega vozila - klikni za ustavitev/zagon vozila. Ctrl+Klik za premik na destinacijo
+STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Dejanje trenutne ladje - klikni za ustavitev/zagon ladje. Ctrl+Klik za premik na destinacijo
+STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Dejanje trenutnega letala - klikni za ustavitev/zagon letala. Ctrl+Klik za premik na destinacijo
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Natovarjanje / Raztovarjanje
@@ -3349,6 +3349,9 @@ STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... ni m
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Opozorilo za merilo
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Prevelika sprememba velikosti ozemlja ni priporočena. Nadaljujem?
+
+# Soundset messages
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Samo rezerven zvočni komplet je bil najden. Če želiš zvok, namesti zvočni komplet preko sistema prenosov.
 
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Slika je uspešno zajeta kot {} '{STRING}'

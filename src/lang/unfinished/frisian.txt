@@ -600,6 +600,7 @@ STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLAC
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Set doarpsnammen oan/út op 'e map
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
+STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Lit hichte sjen
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Lit lêste (neis)berjocht sjen
@@ -779,6 +780,12 @@ STR_NUM_NORMAL                                                  :Gewoan
 STR_NUM_HIGH                                                    :Heech
 STR_NUM_CUSTOM                                                  :Oars
 
+STR_VARIETY_NONE                                                :Gjin
+STR_VARIETY_VERY_LOW                                            :Hiel Leech
+STR_VARIETY_LOW                                                 :Leech
+STR_VARIETY_MEDIUM                                              :Middel
+STR_VARIETY_HIGH                                                :Heech
+STR_VARIETY_VERY_HIGH                                           :Hiel Heech
 
 STR_AI_SPEED_VERY_SLOW                                          :Traach
 STR_AI_SPEED_SLOW                                               :Stadich
@@ -817,11 +824,16 @@ STR_DISASTERS_ON                                                :Oan
 
 # Advanced settings window
 
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :gjin
+STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :minder
+STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :gewoan
 
 
 
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Maksimale ôfstân fan râne oant Oaljefjild {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Grien
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Tsjuster grien
 
 
 
@@ -833,6 +845,7 @@ STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Maksima
 
 
 
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :gjin {RED}(brekt houtseachmûne)
 
 
 
@@ -926,6 +939,7 @@ STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Datum
 STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}Jieren
 
 
+STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Lânskip: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Lângrutte: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Tsjinnerferzje: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Start datum: {WHITE}{DATE_SHORT}
@@ -1245,6 +1259,7 @@ STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Tramdyke
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Treinsporteigener: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Gemiente: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Neat
+STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Fleanfjild tile namme: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Akseptearre fracht: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 
@@ -1711,6 +1726,8 @@ STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Oanienwei lâns
 
 
 # AI debug window
+STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
+STR_AI_DEBUG_SETTINGS                                           :{BLACK}AI ynstellings
 
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Gjin geskikte compjûterspiler fûn.{}Disse compjûterspiler is in dummy en docht neat.{}Jo kinne compjûterspilers delhelje fan 'Online Inhâld' ôf.
@@ -1750,6 +1767,8 @@ STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Laden Mi
 
 
 
+
+# Soundset messages
 
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Skermfoto opslein as '{STRING}'
@@ -1817,6 +1836,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...kin a
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...kin allinnich yn in reinwâld bout wurde
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}...kin allinnich yn in woastine bout wurde
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}...kin allinnich yn in stêd bout wurde
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... kin allinnich yn lege plakken bout wurde
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}...kin allinich pleatse wurde by de rân fan'e kaart
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}...bosk kin allinich boppe snieline boud wurde
 
@@ -1867,6 +1887,7 @@ STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Kin hjir
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Spoar kombinaasje net mooglik
+STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Stopljocht moat earst fuorthelle wurde
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Spoar is net geskikt
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Spoar moat der earst wei
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Kin hjir gjin stopljochten boue...
@@ -2183,9 +2204,21 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_FOOD_VAN                   :Chippy Itentruc
 STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_COPPER_ORE_TRUCK              :MPS Koperertstruck
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COPPER_ORE_TRUCK              :Uhl Koperertstruck
 STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_COPPER_ORE_TRUCK             :Goss Koperertstruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_WATER_TANKER                  :Uhl Wettertenker
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_WATER_TANKER               :Balogh Wettertenker
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_WATER_TANKER                  :MPS Wettertenker
 STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_FRUIT_TRUCK                :Balogh Fruittruck
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_FRUIT_TRUCK                   :Uhl Fruittruck
 STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_FRUIT_TRUCK               :Kelling Fruittruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_RUBBER_TRUCK               :Balogh Rubberwein
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_RUBBER_TRUCK                  :Uhl Rubberwein
+STR_VEHICLE_NAME_ROAD_VEHICLE_RMT_RUBBER_TRUCK                  :RMT Rubberwein
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_SUGAR_TRUCK           :MightyMover Sûkertruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_SUGAR_TRUCK           :Powernaught Sûkertruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_SUGAR_TRUCK              :Wizzowow Sûkertruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COLA_TRUCK            :MightyMover Colatruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COLA_TRUCK            :Powernaught Colatruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COLA_TRUCK               :Wizzowow Colatruck
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COTTON_CANDY          :MightyMover Sûkerspintruck
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COTTON_CANDY          :Powernaught Sûkerspintruck
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COTTON_CANDY_TRUCK       :Wizzowow Sûkerspintruck
@@ -2212,6 +2245,8 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BUBBLE_TRUCK          :Powernaught Buo
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BUBBLE_TRUCK             :Wizzowow Buorltruck
 STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER                            :MPS Oaljetenker
 STR_VEHICLE_NAME_SHIP_CS_INC_OIL_TANKER                         :CS-Inc. Oaljetenker
+STR_VEHICLE_NAME_SHIP_MPS_PASSENGER_FERRY                       :MPS Passazjiersboat
+STR_VEHICLE_NAME_SHIP_FFP_PASSENGER_FERRY                       :FFP Passazjiersboat
 STR_VEHICLE_NAME_SHIP_BAKEWELL_300_HOVERCRAFT                   :Bakewell 300 Sweefmobiel
 STR_VEHICLE_NAME_SHIP_CHUGGER_CHUG_PASSENGER                    :Chugger-Chug Passazjier Fearboat
 STR_VEHICLE_NAME_SHIP_SHIVERSHAKE_PASSENGER_FERRY               :Shivershake Passazjier Fearboat
@@ -2276,9 +2311,11 @@ STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 STR_FORMAT_WAYPOINT_NAME                                        :{TOWN} Kontrôlepost
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN} Kontrôlepost #{COMMA}
 
+STR_UNKNOWN_STATION                                             :ûnbekind stasjon
 STR_DEFAULT_SIGN_NAME                                           :Buordsje
 STR_COMPANY_SOMEONE                                             :immen
 
+STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}
 
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})

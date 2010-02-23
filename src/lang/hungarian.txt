@@ -594,7 +594,7 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Pénz:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Kölcsön:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Összesen:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Az előző évben profitált járművek száma; ebbe beleértendőek a közúti, vasúti, vízi és légi járművek
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Az előző évben profitot hozó járművek száma, beleértve a közúti, vasúti, vízi és légi járművek
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Közelmúltban kiszolgált állomásrészek száma. Minden rész számít (pl. vasútállomás, buszmegálló, repülőtér), még akkor is, ha egy állomáshoz tartoznak.
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}A legalacsonyabb bevételt hozó jármű profitja (csak 2 évnél idősebb járművek)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Megkeresett pénz a negyedévben a legkisebb profitnál az utolsó 12 negyedévben.
@@ -2155,6 +2155,7 @@ STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Koordin�
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Építve: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Állomás osztálya: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Állomás típusa: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Reptér mező név: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Elfogad: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
@@ -2412,7 +2413,7 @@ STR_NEWGRF_ERROR_READ_BOUNDS                                    :Ál-sprite táv
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Figyelem!
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Te éppen a jelenleg futó játékot akarod megváltoztatni; ettől elszállhat az OpenTTD.{}Teljesen biztos vagy benne, hogy ezt akarod?
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Te éppen egy jelenleg futó játékon akarsz változtatni; ettől elszállhat az OpenTTD.{}Teljesen biztos vagy ebben?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Nem lehetséges a fájl hozzáadása: duplikált GRF azonosító
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Pontosan megegyező fájlt nem találtam (kompatibilis GRF-fel helyettesítve)
@@ -2937,10 +2938,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}A közú
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}A hajó adatai
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}A repülőgép adatai
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Aktuális vonatesemény - kattints ide a vonat elindításához/megállításához
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Aktuális járműesemény - kattints ide a jármű elindításához/ megállításához
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Aktuális hajóesemény - kattints ide a hajó elindításhoz/megállításhoz
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Aktuális repülőgépesemény - kattints ide a repülőgép elindításához/megállításához
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Aktuális vonatmozgás - kattints ide a vonat elindításához vagy megállításához. Ctrl+Klikkel az úticélok váltása
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Aktuális járműmozgás - kattints ide a jármű elindításához vagy megállításához. Ctrl+Klikkel az úticélok váltása
+STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Aktuális hajómozgás - kattints ide a hajó elindításhoz vagy megállításhoz. Ctrl+Klikkel az úticélok váltása
+STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Aktuális repülőgépmozgás - kattints ide a repülőgép elindításához vagy megállításához. Ctrl+Klikkel az úticélok váltása
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Berakodás / Kirakodás
@@ -3340,6 +3341,9 @@ STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}...nem s
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Átméretezési figyelmeztetés
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}A forrás térkép túlságosan nagy mértékű átméretezése nem javasolt. Folytatod mégis?
+
+# Soundset messages
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Csak egy elavult hang alapcsomagot találtam. Ha szeretnél hangokat, telepíts egy hang alapcsomagot a tartalomletöltő rendszeren keresztül!
 
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}A képernyő elmentve '{STRING}' néven

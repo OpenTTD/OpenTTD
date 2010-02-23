@@ -608,7 +608,7 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Vel 'Eig
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Skru tilfeldig program av/på
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Syne musikkspormeny
 
-STR_ERROR_NO_SONGS                                              :{WHITE}Eit basismusikk-sett utan songar har blitt valt. Ingen songar vil bli spelt
+STR_ERROR_NO_SONGS                                              :{WHITE}Eit musikksett utan songar har blitt valt. Ingen songar vil bli spelt
 
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Musikkprogram
@@ -715,7 +715,7 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Melding
 STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}Meldingsinstillingar
 STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Innstilling for alle meldingstypar (på/av/samandrag)
-STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Spel av lyd for samandrag av nyhende
+STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Spel av lyd for nyhetssamandrag
 STR_NEWS_MESSAGES_OFF                                           :Av
 STR_NEWS_MESSAGES_SUMMARY                                       :Samandrag
 STR_NEWS_MESSAGES_FULL                                          :Fullt
@@ -784,7 +784,7 @@ STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK
 STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}Verdskrise over!{}{}Opptur i marknaden gjer industrien sjølvkjensla attende.
 
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} aukar produksjonen!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}Ny kolåre funnen i {INDUSTRY}!{}Ei dobling i produksjon er venta!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}Ny kolåre funne i {INDUSTRY}!{}Ei dobling i produksjon er venta!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}Nye oljereservar funne i {INDUSTRY}!{}Ei dobling i produksjon er venta!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}Forbetra landbruksmetodar på {INDUSTRY} er venta å doble produksjonen!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK}Produksjonen av {STRING} ved {INDUSTRY} aukar med {COMMA} %!
@@ -940,19 +940,19 @@ STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Vel skje
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Filformat for skjermdump
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Vel kva format skjermdumpen skal lagrast i
 
-STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Basisgrafikk-sett
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Vel basisgrafikk-sett som skal nyttast
+STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Grafikksett
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Vel grafikksett som skal nyttast
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} manglande/øydelagd{P "" e} fil{P "" er}
-STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Tilleggsinformasjon om basis-grafikksettet
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Tilleggsinformasjon om grafikksettet
 
-STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Basislyd-sett
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Vel basislyd-sett som skal nyttast
-STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Tilleggsinformasjon om basislyd-settet
+STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Lydsett
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Vel lydsett som skal nyttast
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Tilleggsinformasjon om lydsettet
 
-STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Basismusikk-sett
-STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Vel basismusikk som skal nyttast
+STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Musikksett
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Vel musikksett som skal nyttast
 STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} øydelagd{P "" e} fil{P "" er}
-STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Tilleggsinformasjon om basis-musikksettet
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Tilleggsinformasjon om musikksettet
 
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Fullskjermvising feila
 
@@ -1110,7 +1110,7 @@ STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :midten
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :i andre enden
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Køyretøykøar (med kvantumseffektar): {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Flytt på vindauget dersom pila er nær ytterkantane på skjermen: {ORANGE}{STRING}
-STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Tillet smørjing av bystyret: {ORANGE}{STRING}
+STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Tillet bestikkelse av bystyret: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Gje høve til å kjøpe eksklusive transportretter: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Gje høve til å sende pengar til andre firma: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Ikkje-einsarta stasjonar: {ORANGE}{STRING}
@@ -1268,7 +1268,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 rutenett
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 rutenett
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :tilfeldig
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Byar har lov til å byggja vegar: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Tillet at byen kontrollerar lydnivået for flyplassane: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Tillet at byen kontrollerar støynivået for flyplassane: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Grunnlegga byar i spelet: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :ikkje tillete
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :tillete
@@ -1824,14 +1824,14 @@ STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD 
 STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... det er ikkje mogeleg å laste ned innhald!
 
 # Order of these is important!
-STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Basisgrafikk
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Grafikk
 STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
 STR_CONTENT_TYPE_AI                                             :AI
 STR_CONTENT_TYPE_AI_LIBRARY                                     :AI bibliotek
 STR_CONTENT_TYPE_SCENARIO                                       :Scenario
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Høgdekart
-STR_CONTENT_TYPE_BASE_SOUNDS                                    :Basislydar
-STR_CONTENT_TYPE_BASE_MUSIC                                     :Basismusikk
+STR_CONTENT_TYPE_BASE_SOUNDS                                    :Lydar
+STR_CONTENT_TYPE_BASE_MUSIC                                     :Musikk
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Lastar ned innhald...
@@ -2031,7 +2031,7 @@ STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Store fl
 STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Sentrumsflyplassar
 STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Helikopterflyplassar
 
-STR_STATION_BUILD_NOISE                                         :{BLACK}Lyd generert: {GOLD}{COMMA}
+STR_STATION_BUILD_NOISE                                         :{BLACK}Støy generert: {GOLD}{COMMA}
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Landskaping
@@ -2116,7 +2116,7 @@ STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}Eigar: {
 STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}Veg eigar: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Trikkespor-eigar: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Jernbaneskjene-eigar: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Lokale styresmaktar: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Bystyret: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Ingen
 STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Koordinatar: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Byggd: {LTBLUE}{DATE_LONG}
@@ -2380,7 +2380,7 @@ STR_NEWGRF_ERROR_READ_BOUNDS                                    :Las forbi slutt
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Åtvaring!
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Du er i ferd med å gjere forandringar i eit køyrande spel; det kan få OpenTTD til å krasje.{}Er du heilt sikker på at du vil gjere dette?
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Du er i ferd med å gjere forandringar i eit køyrande spel. Det kan få OpenTTD til å krasje.{}Er du heilt sikker på at du vil gjere dette?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Kan ikkje leggje til fil: to eller fleire GRF ID-er
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Matchande fil blei ikkje funne (kompatibel GRF-fil lasta inn)
@@ -2426,7 +2426,7 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Varer na
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{STRING}{BLACK} naudsynt
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} naudsynt om vinteren
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{ORANGE}{CARGO}{BLACK} levert forrige månad
-STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Grense for lydnivå i byen: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
+STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Byens støygrense: {ORANGE}{COMMA}{BLACK}  maks.: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Midtstill hovedvisninga på byen. CTRL+klikk syner byen i eit nytt tilleggsvindauge
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Bystyre
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Syne informasjon om bystyret
@@ -2455,7 +2455,7 @@ STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Finansier lokal
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Bygg statue av grunnleggjaren til firmaet
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Finansier nye bygningar
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Kjøp eksklusive transportrettar
-STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Smør bystyret
+STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Bestikk bystyret
 
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW} Start ein liten lokal reklamekampanje for å trekkje til deg fleire passasjerar og varer til tenestene dine.{} Kostnad: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW} Start ein middels stor lokal reklamekampanje for å trekkje til deg fleire passajerar og varer til tenestene dine.{} Kostnad: {CURRENCY}
@@ -2464,7 +2464,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW} Finans
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Bygg ein statue for å heidre grunnleggjaren av firmaet.{} Kostnad: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW} Finansier bygging av nye forretningsbygg i byen.{} Kostnad: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Kjøp ekslusive transportrettar for eit år i byen. Bystyret tillet då berre bruk av tenestene dine.{} Kostnad: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW} Smør bystyret til å forbetre vurderinga av firmaet, du risikerer bøter dersom du vert oppdaga.{} Kostnad: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Bestikk bystyret til å forbetre vurderinga av firmaet, du risikerer bøter dersom du vert oppdaga.{}Kostnad: {CURRENCY}
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsidiar
@@ -2905,10 +2905,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Syne kø
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Syne skipsdetaljar
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Syne detaljar om flymaskin
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Gjeldande togstatus - klikk her for å stoppe/starte tog
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Gjeldande køyretøystatus - klikk her for å stoppa/starta køyretøy
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Gjeldende skipsstatus - klikk her for å stoppe/starte skip
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Gjeldande flymaskinstatus - klikk her for å stoppe/starte flymaskin
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Gjeldande togstatus - klikk her for å stoppe/starte tog. CTRL+klikk ruller til destinasjonen
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Gjeldande køyretøystatus - klikk her for å stoppa/starta køyretøy. CTRL+klikk ruller til destinasjonen
+STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Gjeldende skipsstatus - klikk her for å stoppe/starte skip. CTRL+klikk ruller til destinasjonen
+STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Gjeldande flymaskinstatus - klikk her for å stoppe/starte flymaskin. CTRL+klikk ruller til destinasjonen
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Lastar / Lossar
@@ -3309,6 +3309,9 @@ STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... kan 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Skalaåtvaring
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Å endre storleiken på kjeldekartet for mykje er ikkje anbefalt. Vil du halde fram med genereringa?
 
+# Soundset messages
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Kun eit reservelydsett ble funne. Hvis du vil ha lyder, installer eit lydsett via spelets nedlastingssystem.
+
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Skjermdumpen vart lagra som '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Skjermdump gjekk gale!
@@ -3336,7 +3339,7 @@ STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{STRING}
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}Bystyret i {TOWN} nektar deg å gjere dette
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}Bystyret i {TOWN} tillet ikkje fleire flyplassar i denne byen
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} lokal myndigheit nektar tillatelse til flyplass pga. støybekymringar
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN}s bystyre nektar deg byggjetillatelse til flyplass pga. støybekymringar
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}Freistinga di på bestikking
 STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}er oppdaga av ein regional inspektør.
 

@@ -2217,6 +2217,7 @@ STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Koordina
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Izgrađeno: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Klasa postaje: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Vrsta postaje: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Ime aurodromskog polja: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Prihvaćeni teret: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
@@ -3403,6 +3404,9 @@ STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}...ne mo
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Upozorenje o veličini
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Prekomjerna promjena veličine karte nije preporučena. Nastaviti sa kreiranjem?
 
+# Soundset messages
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Pronađen je samo sigurnosni zvučni sustav. Ako želite zvukove, instalirajte zvučni sustav kroz sustav za preuzimanje sadržaja.
+
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Slika zaslona uspješno spremljena kao '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Slika zaslona nije uspjela!
@@ -3482,6 +3486,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...može
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...može biti izgrađen samo u predjelima kišnih šuma
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}...može biti izgrađen samo u pustinjskim područjima
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}...može biti izgrađen samo u gradovima
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... može se izgraditi samo u nizinskim područjima
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}...može se postaviti samo blizu rubova karte
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}...šume mogu jedino biti posađene iznad linije snijega
 
@@ -3569,6 +3574,7 @@ STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(novčano ogran
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Nemoguća kombinacija tračnica
+STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Potrebno prvo izbrisati signale
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Nije prikladno za želježnicku prugu
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Najprije je potrebno ukloniti željezničku prugu
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Cesta je jednosmjerna ili je blokirana

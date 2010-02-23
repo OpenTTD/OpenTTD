@@ -575,7 +575,7 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}: מאז
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK} : הלוואה
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}: סה"כ
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}מספר כלי תחבורה שהציגו רווחים; נכללים רכבים, רכבות, כלי טייס וכלי שייט
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}מספר כלי תחבורה שהציגו רווחים בשנה החולפת. נכללים רכבים, רכבות, כלי שייט וכלי טייס
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}מספר חלקי התחנות שנתנו שירות. כל חלק של תחנה (למשל, תחנות רכבת, תחנות אוטובוס, נמלי תעופה) נחשבים, אפילו אם הם מחוברים כתחנה אחת
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}(הרווח של כלי התחבורה בעלי ההכנסה הנמוכה ביותר (רק כלים בני שנתיים ויותר נלקחים בחשבון
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}כמות הכסף שהרוויחה החברה בחודש הגרוע ביותר ב-12 הריבעונים האחרונים
@@ -840,10 +840,10 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}פג תוקף הצעת סובסידיה:{}{}סובסידיה של הובלת {STRING.plural} מ{STRING} אל {STRING} לא תזכה עוד בסיבסוד.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}סובסידיה הוסרה:{}{}שירות הובלת {STRING.plural} מ{STRING} אל {STRING} אינו מסובסד יותר.
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}הצעה למתן סובסידיה:{}{}שירות הובלת {STRING.plural} ראשון מ{STRING} אל {STRING} יזכה לסובסידיה בת שנה מהרשות המקומית!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}סובסידיה לשירות הניתן ע"י {STRING}!{}{}שירות הובלת {STRING.plural} מ{STRING} אל {STRING} יזכה לשיעור תשלום גדול ב-50% לשנה הקרובה
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}סובסידיה לשירות הניתן ע"י {STRING}!{}{}שירות הובלת {STRING.plural} מ{STRING} אל {STRING} יזכה לשיעור תשלום כפול לשנה הקרובה!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}סובסידיה לשירות הניתן ע"י {STRING}!{}{}שירות הובלת {STRING.plural} מ{STRING} אל {STRING} יזכה לשיעור תשלום משולש לשנה הקרובה!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}סובסידיה לשירות הניתן ע"י {STRING}!{}{}שירות הובלת {STRING.plural} מ{STRING} אל {STRING} יזכה לשיעור תשלום מוכפל פי 4 לשנה הקרובה!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}סובסידיה לשירות ניתנה לחברת {STRING}!{}{}שירות הובלת {STRING.plural} מ{STRING} אל {STRING} יזכה לשיעור תשלום גדול ב-50% לשנה הקרובה
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}סובסידיה לשירות ניתנה לחברת {STRING}!{}{}שירות הובלת {STRING.plural} מ{STRING} אל {STRING} יזכה לשיעור תשלום כפול לשנה הקרובה!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}סובסידיה לשירות ניתנה לחברת {STRING}!{}{}שירות הובלת {STRING.plural} מ{STRING} אל {STRING} יזכה לשיעור תשלום משולש לשנה הקרובה!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}סובסידיה לשירות ניתנה לחברת {STRING}!{}{}שירות הובלת {STRING.plural} מ{STRING} אל {STRING} יזכה לשיעור תשלום מוכפל פי 4 לשנה הקרובה!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}פקקי תנועה ענקיים ב{TOWN}!{}{} תכנית לשיפוץ מקיף של הכבישים במימון {STRING} מביאה לקטסטרופת תנועה לשישה חודשים
 
@@ -2135,6 +2135,7 @@ STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{LTBLUE}{NUM}x{
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{LTBLUE}{DATE_LONG}{BLACK} : תאריך בניה
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}{LTBLUE}{STRING}: אופי התחנה
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK} {LTBLUE}{STRING}: סוג התחנה
+STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}שם משבצת נמל תעופה: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}{LTBLUE}{STRING}: שדרוג גראפי
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK} :מקבל {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({1:STRING} {0:COMMA}/8 )
@@ -2392,7 +2393,7 @@ STR_NEWGRF_ERROR_READ_BOUNDS                                    :קרא מעבר
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}!אזהרה
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}?הנך עומד לשנות את הגראפיקה תוך כדי משחק. פעולה זו עשויה לגרום לקריסה של התוכנה. האם ברצונך להמשיך
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}הנך עומד לבצע שינוייך במהלך ריצת המשחק. פעולה זו עלולה לגרום לקריסה. האם אתה בטוח לחלוטין שברצונך להמשיך?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Can't add file: duplicate GRF ID
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}הקובץ לא נמצא, הוטען קובץ תואם
@@ -2917,10 +2918,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}הצג �
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}הצג פרטי כלי שייט
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}הצג פרטי כלי טייס
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}פעולה נוכחית - לחץ כאן כדי לעצור/להמשיך בנסיעה
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}מצב כלי הרכב- לחץ כאן לעצירה/המשך נסיעה
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}עצור/הפעל כלי שייט
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}עצור/הפעל כלי טייס
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}פעולה רכבת נוכחית - לחץ כדי לעצור/להפעיל את הרכבת. Ctrl+לחיצה על מנת לגרור ליעד
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}פעולת כלי רכב נוכחי - לחץ כדי לעצור/להפעיל את כלי הרכב. Ctrl+לחיצה כדי לגלול ליעד
+STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}פעולת כלי שייט נוכחי - לחץ כדי לעצור/להפעיל את כלי השייט. Ctrl+לחיצה כדי לגלול ליעד
+STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}פעולת כלי טייס נוכחי - לחץ כדי לעצור/להפעיל את כלי השייט. Ctrl+לחיצה כדי לגלול ליעד
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}טעינה / פריקה
@@ -3320,6 +3321,9 @@ STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... לא
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}אזהרת קנה מידה
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}?שינוי גדול של גודל המפה המקורית אינו מומלץ. להמשיך
+
+# Soundset messages
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}נמצאה ערכת צלילים לגיבוי בלבד. אם ברצונך לשמוע צלילים במשחק, יש להתקין ערכת צלילים בעזרת מערכת הורדת תוכן.
 
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}תמונת המסך נשמרה בהצלחה כ-'{STRING}'

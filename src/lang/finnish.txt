@@ -561,7 +561,7 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Raha:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Laina:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Yhteensä:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Liikennevälineiden määrä; tähän kuuluvat ajoneuvot, junat, laivat ja lentokoneet
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Liikennevälineiden määrä. Tähän kuuluvat ajoneuvot, junat, laivat ja lentokoneet
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Asemien osien määrä. Kaikki osat asemista (esim. rautatieasema, bussipysäkki, lentokenttä) lasketaan, vaikka ne olisivat yhdistettynä yhdeksi asemaksi.
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Vähätuottoisimman ajoneuvon tulo (kaikkien yli 2 vuotta vanhojen ajoneuvojen)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Viimeisen 12 neljänneksen vähätuottoisimman kuun käteistuoton määrä
@@ -2121,6 +2121,7 @@ STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Koordina
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Rakennettu: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Aseman luokka: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Aseman tyyppi: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Lentokentän ruudun nimi: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Vastaanottaa rahtia: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
@@ -2903,10 +2904,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Näytä 
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Näytä laivan tiedot.
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Näytä lentokoneen tiedot.
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Valitun junan toiminnot - napsauta tässä pysäyttääksesi/lähettääksesi.
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Nykyisen ajoneuvon toiminnot - napsauta tässä pysäyttääksesi/laittaaksesi liikkeelle.
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Nykyisen laivat toiminnot - napsauta tässä pysäyttääksesi/laittaaksesi liikkeelle.
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Nykyisen lentokoneen toiminnot - napsauta tässä pysäyttääksesi/laittaaksesi liikkeelle.
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Valitun junan toiminnot - napsauta pysäyttääksesi/käynnistääksesi junan. Ctrl+Click vierittääksesi kohteeseen
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Nykyisen ajoneuvon toiminnot - napsauta pysäyttääksesi/käynnistääksesi ajoneuvon. Ctrl+Click vierittääksesi kohteeseen
+STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Nykyisen laivat toiminnot - napsauta pysäyttääksesi/käynnistääksesi laivan. Ctrl+Click vierittääksesi kohteeseen
+STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Nykyisen lentokoneen toiminnot - napsauta pysäyttääksesi/käynnistääksesi lentokoneen. Ctrl+Click vierittääksesi kohteeseen
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Lastataan/puretaan
@@ -3306,6 +3307,9 @@ STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}...kuvan
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Mittakaava-varoitus
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Lähdekartan koon liiallinen muuttaminen ei ole suositeltavaa. Haluatko jatkaa?
+
+# Soundset messages
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Vain tilapäinen äänipaketti löydetty. Jos haluat ääniä, asenna äänipaketti Online-sisältö -palvelulla.
 
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Kuvakaappaus tallennettu nimellä '{STRING}'.

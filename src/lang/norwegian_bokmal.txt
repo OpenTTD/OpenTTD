@@ -561,7 +561,7 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Penger:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Lån:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Totalt:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Antall kjøretøy med positiv fortjeneste i fjor. Dette inkluderer lastebiler/busser, trikker, tog, skip og flymaskiner.
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Antall kjøretøy med positiv fortjeneste i fjor. Dette inkluderer veikjøretøy, tog, skip og flymaskiner
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Antall nylig betjente stasjonsdeler. Hver del av en stasjon (f.eks. togstasjon, bussholdeplass, flyplass) er medregnet, selv om de er tilkoblet en stasjon.
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Fortjenesten til kjøretøyet med lavest inntekt (kun kjøretøy eldre enn 2 år er medregnet)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Inntekt i det kvartalet med minst fortjeneste de siste 12 kvartalene
@@ -946,7 +946,7 @@ STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Tilleggs
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Lydsett
 STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Velg lydsett som skal brukes
-STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Ytterligere informasjon om originalt lydsett
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Tilleggsinformasjon om lydsettet
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Musikksett
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Velg musikksett som skal brukes
@@ -1823,14 +1823,14 @@ STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD 
 STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... det er ikke mulig å laste ned innhold!
 
 # Order of these is important!
-STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Original grafikk
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Grafikk
 STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
 STR_CONTENT_TYPE_AI                                             :AI
 STR_CONTENT_TYPE_AI_LIBRARY                                     :AI-bibliotek
 STR_CONTENT_TYPE_SCENARIO                                       :Scenario
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Høydekart
-STR_CONTENT_TYPE_BASE_SOUNDS                                    :Originalt lydsett
-STR_CONTENT_TYPE_BASE_MUSIC                                     :Original musikk
+STR_CONTENT_TYPE_BASE_SOUNDS                                    :Lyder
+STR_CONTENT_TYPE_BASE_MUSIC                                     :Musikk
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Laster ned innhold...
@@ -2030,7 +2030,7 @@ STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Store fl
 STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Sentrumsflyplasser
 STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Helikopterflyplasser
 
-STR_STATION_BUILD_NOISE                                         :{BLACK}Lyd generert: {GOLD}{COMMA}
+STR_STATION_BUILD_NOISE                                         :{BLACK}Støy generert: {GOLD}{COMMA}
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Landskapsverktøy
@@ -2379,7 +2379,7 @@ STR_NEWGRF_ERROR_READ_BOUNDS                                    :Leste forbi slu
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Advarsel!
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Du er i ferd med å gjøre forandringer i et kjørende spill; dette kan krasje OpenTTD.{}Er du helt sikker på at du vil gjøre dette?
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Du er i ferd med å gjøre forandringer i et kjørende spill. Dette kan krasje OpenTTD.{}Er du helt sikker på at du vil gjøre dette?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Kan ikke legge til fil: GRF ID finnes allerede
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Matchende fil ble ikke funnet (kompatibel GRF-fil lastet inn)
@@ -2425,7 +2425,7 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Varebeho
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{STRING}{BLACK} påkrevd
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} nødvendig om vinteren
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{ORANGE}{CARGO}{BLACK} levert sist måned
-STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Lydgrense i byen: {ORANGE}{COMMA}{BLACK}  maks.: {ORANGE}{COMMA}
+STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Byens støygrense: {ORANGE}{COMMA}{BLACK}  maks.: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Gå til by. CTRL+klikk åpner et nytt tilleggsvindu over byen
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Bystyre
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Vis informasjon om bystyret
@@ -2904,10 +2904,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Vis deta
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Vis detaljer om skipet
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Vis detaljer om flymaskinen
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Gjeldende togstatus - klikk her for å stoppe/starte toget
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Gjeldende kjøretøystatus - klikk her for å stoppe/starte kjøretøyet
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Gjeldende skipsstatus - klikk her for å stoppe/starte skipet
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Gjeldende flymaskinstatus - klikk her for å stoppe/starte flymaskinen
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Gjeldende togstatus - klikk her for å stoppe/starte toget. CTRL+klikk ruller til destinasjonen
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Gjeldende kjøretøystatus - klikk her for å stoppe/starte kjøretøyet. CTRL+klikk ruller til destinasjonen
+STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Gjeldende skipsstatus - klikk her for å stoppe/starte skipet. CTRL+klikk ruller til destinasjonen
+STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Gjeldende flymaskinstatus - klikk her for å stoppe/starte flymaskinen. CTRL+klikk ruller til destinasjonen
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Laster / Losser
@@ -3307,6 +3307,9 @@ STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... kunn
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Skalaadvarsel
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Å endre kildekartstørrelsen for mye er ikke anbefalt. Fortsette generering?
+
+# Soundset messages
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Kun et reservelydsett ble funnet. Hvis du vil ha lyder, installer et lydsett via spillets nedlastingssystem.
 
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Skjermdumpen ble lagret som '{STRING}'

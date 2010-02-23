@@ -2123,6 +2123,7 @@ STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Coordina
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Costruito il: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Categoria stazione: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Tipo stazione: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Nome blocco aeroporto: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Merce accettata: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
@@ -3309,6 +3310,9 @@ STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}...impos
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Avviso scala
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Ridimensionare di molto l'heightmap sorgente non è consigliabile. Continuare con la generazione?
 
+# Soundset messages
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}È stato trovato soltanto il pacchetto sonoro predefinito. Per i suoni, installare un pacchetto sonoro tramite il sistema di download contenuti.
+
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Screenshot salvato con successo come '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Screenshot non riuscito!
@@ -3388,6 +3392,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... può
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... può essere costruita solo nella foresta pluviale
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... può essere costruita solo in aree desertiche
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... può essere costruito solo in città
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... può essere costruito solo a basse quote
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... può essere posizionata solo vicino ai bordi della mappa
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... una foresta può essere piantata solo in una zona innevata
 
@@ -3475,8 +3480,9 @@ STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(limite denaro)
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Combinazione di binari impossibile
+STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Bisogna rimuovere i segnali prima
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Tipo di binari non adatti
-STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Bisogna demolire i binari prima
+STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Bisogna rimuovere i binari prima
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}La strada è bloccata o a senso unico
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Impossibile costruire i segnali qui...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Impossibile costruire i binari qui...

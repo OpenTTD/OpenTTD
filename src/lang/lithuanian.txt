@@ -629,7 +629,7 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Pinigai:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Skola:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Viso:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Transporto priemonių skačius; šis skačius susideda iš automobilių, traukinių, laivų ir lėktuvų
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Transporto priemonių, kurios buvusiais metais uždirbo pinigų, skačius. Šis skačius susideda iš automobilių, traukinių, laivų ir lėktuvų
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Stotelių kiekis. Kiekviena stotelė (pvz. traukinių, autobusų ar lėktuvų yra skaičiuojama, net jei jos ir yra apjungtos į vieną bendrą stotį
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Mažiausiai pajamų atnešusios tr. priemonės pelnas (iš visų tr. priermonių, senesnių nei 2 metai)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Kiekis uždirbtų pinigų per ketvirtį su žemiausiu pelno rodikliu per paskutinius 12 ketvirčių
@@ -2189,6 +2189,7 @@ STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Koordina
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Pastatytas: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Stotelės rūšis: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Stotelės tipas: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Oro uosto žemės plotelio pavadinimas: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Krovinys priimtas: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
@@ -2971,10 +2972,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Rodyti d
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Rodyti laivo informacija
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Rodyti lektuvo informacija
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Dabartine traukinio uzduotis - paspausk cia, jei nori sustabdyti.paleisti traukini
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Automobilio uzduotis - spustelk cia, jei nori sustabdyti/paleisti automobili
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Dabartine laivo uzduotis - paspausk cia, jei nori sustabdyti/paleisti laiva
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Dabartine lektuvo uzduotis - spausk cia, jei nori sustabryti.paleisti lektuva
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Dabartinė traukinio užduotis - paspausk ęia, jei nori sustabdyti/paleisti traukinį. Ctrl+Paspaudimas nukels į užduoties vietą
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Automobilio užduotis - spustelk čia, jei nori sustabdyti/paleisti automobilį. Ctrl+Paspaudimas nukels į užduoties vietą
+STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Dabartinė laivo užduotis - paspausk čia, jei nori sustabdyti/paleisti laivą. Ctrl+Paspaudimas nukels į užduoties vietą
+STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Dabartinė lėktuvo užduotis - spausk čia, jei nori sustabryti/paleisti lėktuvą. Ctrl+Paspaudimas nukels į užduoties vietą
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Pasikrauna / Issikrauna
@@ -3375,6 +3376,9 @@ STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}...nepav
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Skales ispejimas
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Perdaryti pagrindini zemelapi per daug nerekomenduojama. Testi generavima?
 
+# Soundset messages
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Rasta tik fiktyvi garsų biblioteka. Jeigu nori garsų žaidime, gauk garsų rinkinį naudojant parsisiuntimų sistemą.
+
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Ekrano vaizdas išsaugotas kaip „{STRING}“
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Ekrano vaizdas neišsaugotas!
@@ -3542,6 +3546,7 @@ STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(pinigu limitas
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Neįmanoma kelių kombinacija
+STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Pirma reikia panaikinti signalus
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Netinkamas bėgis
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Pirmiau pašalinkite geležinkelio bėgius
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Kelias vienpusis ar užblokuotas

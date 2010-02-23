@@ -3308,6 +3308,8 @@ STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}...não 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Aviso de Escala
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Alterar muito o tamanho do mapa original não é recomendado. Continuar com a geração?
 
+# Soundset messages
+
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Foto salvado com sucesso como '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Falha ao tirar foto!
@@ -3475,8 +3477,9 @@ STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(limite de dinh
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Impossível combinação de linhas
+STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Remova os semáforos antes
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Tipo de linha não apropriado
-STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Deve remover a ferrovia primeiro
+STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Remova a ferrovia primeiro
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Rua é mão única ou está bloqueado
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Impossível construir sinais aqui...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Impossível construir ferrovia aqui...

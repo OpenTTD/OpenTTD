@@ -2121,6 +2121,7 @@ STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Toạ đ
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Xây lúc: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Loại ga,bến: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Kiểu ga,bến: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Tên sân bay vị trí này: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Hàng hoá chấp nhận: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
@@ -3306,6 +3307,9 @@ STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... khô
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Sai tỉ lệ bản đồ
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Co dãn bản đồ gốc quá nhiều là không nên làm. Bạn vẫn cứ thực hiện chứ?
+
+# Soundset messages
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Chỉ có 1 bộ âm thanh phụ. Nếu bạn muốn thêm các âm thanh, cài thêm các bộ âm thanh tải về qua nội dung trực tuyến.
 
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Chụp màn hình lưu thành file là '{STRING}'
