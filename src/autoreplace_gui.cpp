@@ -382,20 +382,22 @@ public:
 
 		this->DrawWidgets();
 
-		int needed_height = this->details_height;
-		/* Draw details panels. */
-		for (int side = 0; side < 2; side++) {
-			if (this->sel_engine[side] != INVALID_ENGINE) {
-				NWidgetBase *nwi = this->GetWidget<NWidgetBase>(side == 0 ? RVW_WIDGET_LEFT_DETAILS : RVW_WIDGET_RIGHT_DETAILS);
-				int text_end = DrawVehiclePurchaseInfo(nwi->pos_x + WD_FRAMETEXT_LEFT, nwi->pos_x + nwi->current_x - WD_FRAMETEXT_RIGHT,
-						nwi->pos_y + WD_FRAMERECT_TOP, this->sel_engine[side]);
-				needed_height = max(needed_height, text_end - (int)nwi->pos_y + WD_FRAMERECT_BOTTOM);
+		if (!this->IsShaded()) {
+			int needed_height = this->details_height;
+			/* Draw details panels. */
+			for (int side = 0; side < 2; side++) {
+				if (this->sel_engine[side] != INVALID_ENGINE) {
+					NWidgetBase *nwi = this->GetWidget<NWidgetBase>(side == 0 ? RVW_WIDGET_LEFT_DETAILS : RVW_WIDGET_RIGHT_DETAILS);
+					int text_end = DrawVehiclePurchaseInfo(nwi->pos_x + WD_FRAMETEXT_LEFT, nwi->pos_x + nwi->current_x - WD_FRAMETEXT_RIGHT,
+							nwi->pos_y + WD_FRAMERECT_TOP, this->sel_engine[side]);
+					needed_height = max(needed_height, text_end - (int)nwi->pos_y + WD_FRAMERECT_BOTTOM);
+				}
 			}
-		}
-		if (!this->IsShaded() && needed_height != this->details_height) { // Details window are not high enough, enlarge them.
-			this->details_height = needed_height;
-			this->ReInit();
-			return;
+			if (needed_height != this->details_height) { // Details window are not high enough, enlarge them.
+				this->details_height = needed_height;
+				this->ReInit();
+				return;
+			}
 		}
 	}
 
