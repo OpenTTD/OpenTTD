@@ -16,7 +16,7 @@
 
 !define OPENGFX_BASE_VERSION "0.7.0"
 !define OPENSFX_BASE_VERSION "0.8.0"
-!define NOSOUND_BASE_VERSION "0.8.0"
+!define OPENMSX_BASE_VERSION "1.0.0"
 
 !define MUI_ICON "..\..\..\media\openttd.ico"
 !define MUI_UNICON "..\..\..\media\openttd.ico"
@@ -238,21 +238,21 @@ Done:
 SectionEnd
 
 ;----------------------------------------------------------------------------------
-; NoSound files install section. Downloads NoSound and installs it
-Section "Download NoSound (free sound set)" Section5
+; OpenMSX files install section. Downloads OpenMSX and installs it
+Section "Download OpenMSX (free music set)" Section5
 	SetOverwrite try
 
-	NSISdl::download "http://binaries.openttd.org/installer/nosound-${NOSOUND_BASE_VERSION}.7z" "$INSTDIR\data\nosound.7z"
+	NSISdl::download "http://binaries.openttd.org/installer/openmsx-${OPENMSX_BASE_VERSION}.7z" "$INSTDIR\gm\openmsx.7z"
 	Pop $R0 ;Get the return value
 	StrCmp $R0 "success" +3
-		MessageBox MB_OK "Downloading of NoSound failed"
+		MessageBox MB_OK "Downloading of OpenMSX failed"
 		Goto Done
 
 	; Let's extract the files
-	SetOutPath "$INSTDIR\data\"
-	NSIS7z::Extract "$INSTDIR\data\nosound.7z"
+	SetOutPath "$INSTDIR\gm\"
+	NSIS7z::Extract "$INSTDIR\gm\openmsx.7z"
 
-	Delete "$INSTDIR\data\nosound.7z"
+	Delete "$INSTDIR\gm\openmsx.7z"
 	SetOutPath "$INSTDIR\"
 Done:
 
@@ -294,8 +294,8 @@ SectionEnd
 	!insertmacro MUI_DESCRIPTION_TEXT ${Section6} "Translations of OpenTTD."
 	!insertmacro MUI_DESCRIPTION_TEXT ${Section3} "Download the free OpenGFX game graphics set. This download is about 3 MiB."
 	!insertmacro MUI_DESCRIPTION_TEXT ${Section4} "Download the free OpenSFX game sound set. This download is about 10 MiB."
-	!insertmacro MUI_DESCRIPTION_TEXT ${Section5} "Download the free NoSound game sound set. You will not hear anything with this. This download is about 7 KiB."
-	!insertmacro MUI_DESCRIPTION_TEXT ${Section2} "Copies the game graphics and sounds from the Transport Tycoon Deluxe CD."
+	!insertmacro MUI_DESCRIPTION_TEXT ${Section5} "Download the free OpenMSX game music set. This download is about 200 KiB."
+	!insertmacro MUI_DESCRIPTION_TEXT ${Section2} "Copies the game graphics, sounds and music from the Transport Tycoon Deluxe CD."
 !insertmacro MUI_FUNCTION_DESCRIPTION_END
 
 ;-----------------------------------------------
@@ -377,6 +377,7 @@ Section "Uninstall"
 	Delete "$INSTDIR\data\orig_dos_de.obg"
 	Delete "$INSTDIR\data\orig_win.obs"
 	Delete "$INSTDIR\data\orig_dos.obs"
+	Delete "$INSTDIR\data\no_sound.obs"
 
 	Delete "$INSTDIR\data\sample.cat"
 	; Windows Data files
@@ -395,13 +396,13 @@ Section "Uninstall"
 	; Music
 	Delete "$INSTDIR\gm\*.gm"
 
-	; Downloaded OpenGFX/OpenSFX/NoSound
+	; Downloaded OpenGFX/OpenSFX/OpenMSX
 	Delete "$INSTDIR\data\opengfx\*"
 	RMDir  "$INSTDIR\data\opengfx"
 	Delete "$INSTDIR\data\opensfx\*"
 	RMDir  "$INSTDIR\data\opensfx"
-	Delete "$INSTDIR\data\nosound\*"
-	RMDir  "$INSTDIR\data\nosound"
+	Delete "$INSTDIR\gm\openmsx\*"
+	RMDir  "$INSTDIR\gm\openmsx"
 
 	; Language files
 	Delete "$INSTDIR\lang\*.lng"
@@ -549,7 +550,7 @@ Function .onInit
 
 	SectionSetSize ${Section3} 6144
 	SectionSetSize ${Section4} 13312
-	SectionSetSize ${Section5} 30
+	SectionSetSize ${Section5} 1024
 
 	SectionSetFlags 0 17
 
