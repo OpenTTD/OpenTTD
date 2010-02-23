@@ -56,8 +56,8 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating afrikaans language file"
-					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0"
-					AdditionalDependencies="..\src\lang\english.txt"
+					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0&#x0D;&#x0A;"
+					AdditionalDependencies="..\src\lang\english.txt;..\objs\strgen\strgen.exe"
 					Outputs="..\bin\lang\afrikaans.lng"
 				/>
 			</FileConfiguration>
@@ -71,8 +71,8 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating arabic_egypt language file"
-					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0"
-					AdditionalDependencies="..\src\lang\english.txt"
+					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0&#x0D;&#x0A;"
+					AdditionalDependencies="..\src\lang\english.txt;..\objs\strgen\strgen.exe"
 					Outputs="..\bin\lang\arabic_egypt.lng"
 				/>
 			</FileConfiguration>
@@ -86,8 +86,8 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating brazilian_portuguese language file"
-					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0"
-					AdditionalDependencies="..\src\lang\english.txt"
+					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0&#x0D;&#x0A;"
+					AdditionalDependencies="..\src\lang\english.txt;..\objs\strgen\strgen.exe"
 					Outputs="..\bin\lang\brazilian_portuguese.lng"
 				/>
 			</FileConfiguration>
@@ -101,8 +101,8 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating bulgarian language file"
-					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0"
-					AdditionalDependencies="..\src\lang\english.txt"
+					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0&#x0D;&#x0A;"
+					AdditionalDependencies="..\src\lang\english.txt;..\objs\strgen\strgen.exe"
 					Outputs="..\bin\lang\bulgarian.lng"
 				/>
 			</FileConfiguration>
@@ -116,8 +116,8 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating catalan language file"
-					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0"
-					AdditionalDependencies="..\src\lang\english.txt"
+					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0&#x0D;&#x0A;"
+					AdditionalDependencies="..\src\lang\english.txt;..\objs\strgen\strgen.exe"
 					Outputs="..\bin\lang\catalan.lng"
 				/>
 			</FileConfiguration>
@@ -131,8 +131,8 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating croatian language file"
-					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0"
-					AdditionalDependencies="..\src\lang\english.txt"
+					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0&#x0D;&#x0A;"
+					AdditionalDependencies="..\src\lang\english.txt;..\objs\strgen\strgen.exe"
 					Outputs="..\bin\lang\croatian.lng"
 				/>
 			</FileConfiguration>
@@ -146,8 +146,8 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating czech language file"
-					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0"
-					AdditionalDependencies="..\src\lang\english.txt"
+					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0&#x0D;&#x0A;"
+					AdditionalDependencies="..\src\lang\english.txt;..\objs\strgen\strgen.exe"
 					Outputs="..\bin\lang\czech.lng"
 				/>
 			</FileConfiguration>
@@ -161,8 +161,8 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating danish language file"
-					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0"
-					AdditionalDependencies="..\src\lang\english.txt"
+					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0&#x0D;&#x0A;"
+					AdditionalDependencies="..\src\lang\english.txt;..\objs\strgen\strgen.exe"
 					Outputs="..\bin\lang\danish.lng"
 				/>
 			</FileConfiguration>
@@ -176,8 +176,8 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating dutch language file"
-					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0"
-					AdditionalDependencies="..\src\lang\english.txt"
+					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0&#x0D;&#x0A;"
+					AdditionalDependencies="..\src\lang\english.txt;..\objs\strgen\strgen.exe"
 					Outputs="..\bin\lang\dutch.lng"
 				/>
 			</FileConfiguration>
@@ -191,8 +191,8 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating english language file"
-					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0"
-					AdditionalDependencies="..\src\lang\english.txt"
+					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0&#x0D;&#x0A;"
+					AdditionalDependencies="..\src\lang\english.txt;..\objs\strgen\strgen.exe"
 					Outputs="..\bin\lang\english.lng"
 				/>
 			</FileConfiguration>
@@ -206,8 +206,8 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating english_US language file"
-					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0"
-					AdditionalDependencies="..\src\lang\english.txt"
+					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0&#x0D;&#x0A;"
+					AdditionalDependencies="..\src\lang\english.txt;..\objs\strgen\strgen.exe"
 					Outputs="..\bin\lang\english_US.lng"
 				/>
 			</FileConfiguration>
@@ -221,8 +221,8 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating esperanto language file"
-					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0"
-					AdditionalDependencies="..\src\lang\english.txt"
+					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0&#x0D;&#x0A;"
+					AdditionalDependencies="..\src\lang\english.txt;..\objs\strgen\strgen.exe"
 					Outputs="..\bin\lang\esperanto.lng"
 				/>
 			</FileConfiguration>
@@ -236,8 +236,8 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating estonian language file"
-					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0"
-					AdditionalDependencies="..\src\lang\english.txt"
+					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0&#x0D;&#x0A;"
+					AdditionalDependencies="..\src\lang\english.txt;..\objs\strgen\strgen.exe"
 					Outputs="..\bin\lang\estonian.lng"
 				/>
 			</FileConfiguration>
@@ -251,8 +251,8 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating finnish language file"
-					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0"
-					AdditionalDependencies="..\src\lang\english.txt"
+					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0&#x0D;&#x0A;"
+					AdditionalDependencies="..\src\lang\english.txt;..\objs\strgen\strgen.exe"
 					Outputs="..\bin\lang\finnish.lng"
 				/>
 			</FileConfiguration>
@@ -266,8 +266,8 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating french language file"
-					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0"
-					AdditionalDependencies="..\src\lang\english.txt"
+					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0&#x0D;&#x0A;"
+					AdditionalDependencies="..\src\lang\english.txt;..\objs\strgen\strgen.exe"
 					Outputs="..\bin\lang\french.lng"
 				/>
 			</FileConfiguration>
@@ -281,8 +281,8 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating galician language file"
-					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0"
-					AdditionalDependencies="..\src\lang\english.txt"
+					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0&#x0D;&#x0A;"
+					AdditionalDependencies="..\src\lang\english.txt;..\objs\strgen\strgen.exe"
 					Outputs="..\bin\lang\galician.lng"
 				/>
 			</FileConfiguration>
@@ -296,8 +296,8 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating german language file"
-					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0"
-					AdditionalDependencies="..\src\lang\english.txt"
+					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0&#x0D;&#x0A;"
+					AdditionalDependencies="..\src\lang\english.txt;..\objs\strgen\strgen.exe"
 					Outputs="..\bin\lang\german.lng"
 				/>
 			</FileConfiguration>
@@ -311,8 +311,8 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating greek language file"
-					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0"
-					AdditionalDependencies="..\src\lang\english.txt"
+					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0&#x0D;&#x0A;"
+					AdditionalDependencies="..\src\lang\english.txt;..\objs\strgen\strgen.exe"
 					Outputs="..\bin\lang\greek.lng"
 				/>
 			</FileConfiguration>
@@ -326,8 +326,8 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating hebrew language file"
-					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0"
-					AdditionalDependencies="..\src\lang\english.txt"
+					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0&#x0D;&#x0A;"
+					AdditionalDependencies="..\src\lang\english.txt;..\objs\strgen\strgen.exe"
 					Outputs="..\bin\lang\hebrew.lng"
 				/>
 			</FileConfiguration>
@@ -341,8 +341,8 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating hungarian language file"
-					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0"
-					AdditionalDependencies="..\src\lang\english.txt"
+					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0&#x0D;&#x0A;"
+					AdditionalDependencies="..\src\lang\english.txt;..\objs\strgen\strgen.exe"
 					Outputs="..\bin\lang\hungarian.lng"
 				/>
 			</FileConfiguration>
@@ -356,8 +356,8 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating icelandic language file"
-					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0"
-					AdditionalDependencies="..\src\lang\english.txt"
+					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0&#x0D;&#x0A;"
+					AdditionalDependencies="..\src\lang\english.txt;..\objs\strgen\strgen.exe"
 					Outputs="..\bin\lang\icelandic.lng"
 				/>
 			</FileConfiguration>
@@ -371,8 +371,8 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating indonesian language file"
-					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0"
-					AdditionalDependencies="..\src\lang\english.txt"
+					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0&#x0D;&#x0A;"
+					AdditionalDependencies="..\src\lang\english.txt;..\objs\strgen\strgen.exe"
 					Outputs="..\bin\lang\indonesian.lng"
 				/>
 			</FileConfiguration>
@@ -386,8 +386,8 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating italian language file"
-					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0"
-					AdditionalDependencies="..\src\lang\english.txt"
+					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0&#x0D;&#x0A;"
+					AdditionalDependencies="..\src\lang\english.txt;..\objs\strgen\strgen.exe"
 					Outputs="..\bin\lang\italian.lng"
 				/>
 			</FileConfiguration>
@@ -401,8 +401,8 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating japanese language file"
-					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0"
-					AdditionalDependencies="..\src\lang\english.txt"
+					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0&#x0D;&#x0A;"
+					AdditionalDependencies="..\src\lang\english.txt;..\objs\strgen\strgen.exe"
 					Outputs="..\bin\lang\japanese.lng"
 				/>
 			</FileConfiguration>
@@ -416,8 +416,8 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating korean language file"
-					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0"
-					AdditionalDependencies="..\src\lang\english.txt"
+					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0&#x0D;&#x0A;"
+					AdditionalDependencies="..\src\lang\english.txt;..\objs\strgen\strgen.exe"
 					Outputs="..\bin\lang\korean.lng"
 				/>
 			</FileConfiguration>
@@ -431,8 +431,8 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating latvian language file"
-					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0"
-					AdditionalDependencies="..\src\lang\english.txt"
+					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0&#x0D;&#x0A;"
+					AdditionalDependencies="..\src\lang\english.txt;..\objs\strgen\strgen.exe"
 					Outputs="..\bin\lang\latvian.lng"
 				/>
 			</FileConfiguration>
@@ -446,8 +446,8 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating lithuanian language file"
-					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0"
-					AdditionalDependencies="..\src\lang\english.txt"
+					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0&#x0D;&#x0A;"
+					AdditionalDependencies="..\src\lang\english.txt;..\objs\strgen\strgen.exe"
 					Outputs="..\bin\lang\lithuanian.lng"
 				/>
 			</FileConfiguration>
@@ -461,8 +461,8 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating luxembourgish language file"
-					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0"
-					AdditionalDependencies="..\src\lang\english.txt"
+					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0&#x0D;&#x0A;"
+					AdditionalDependencies="..\src\lang\english.txt;..\objs\strgen\strgen.exe"
 					Outputs="..\bin\lang\luxembourgish.lng"
 				/>
 			</FileConfiguration>
@@ -476,8 +476,8 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating malay language file"
-					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0"
-					AdditionalDependencies="..\src\lang\english.txt"
+					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0&#x0D;&#x0A;"
+					AdditionalDependencies="..\src\lang\english.txt;..\objs\strgen\strgen.exe"
 					Outputs="..\bin\lang\malay.lng"
 				/>
 			</FileConfiguration>
@@ -491,8 +491,8 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating norwegian_bokmal language file"
-					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0"
-					AdditionalDependencies="..\src\lang\english.txt"
+					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0&#x0D;&#x0A;"
+					AdditionalDependencies="..\src\lang\english.txt;..\objs\strgen\strgen.exe"
 					Outputs="..\bin\lang\norwegian_bokmal.lng"
 				/>
 			</FileConfiguration>
@@ -506,8 +506,8 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating norwegian_nynorsk language file"
-					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0"
-					AdditionalDependencies="..\src\lang\english.txt"
+					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0&#x0D;&#x0A;"
+					AdditionalDependencies="..\src\lang\english.txt;..\objs\strgen\strgen.exe"
 					Outputs="..\bin\lang\norwegian_nynorsk.lng"
 				/>
 			</FileConfiguration>
@@ -521,8 +521,8 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating polish language file"
-					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0"
-					AdditionalDependencies="..\src\lang\english.txt"
+					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0&#x0D;&#x0A;"
+					AdditionalDependencies="..\src\lang\english.txt;..\objs\strgen\strgen.exe"
 					Outputs="..\bin\lang\polish.lng"
 				/>
 			</FileConfiguration>
@@ -536,8 +536,8 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating portuguese language file"
-					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0"
-					AdditionalDependencies="..\src\lang\english.txt"
+					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0&#x0D;&#x0A;"
+					AdditionalDependencies="..\src\lang\english.txt;..\objs\strgen\strgen.exe"
 					Outputs="..\bin\lang\portuguese.lng"
 				/>
 			</FileConfiguration>
@@ -551,8 +551,8 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating romanian language file"
-					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0"
-					AdditionalDependencies="..\src\lang\english.txt"
+					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0&#x0D;&#x0A;"
+					AdditionalDependencies="..\src\lang\english.txt;..\objs\strgen\strgen.exe"
 					Outputs="..\bin\lang\romanian.lng"
 				/>
 			</FileConfiguration>
@@ -566,8 +566,8 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating russian language file"
-					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0"
-					AdditionalDependencies="..\src\lang\english.txt"
+					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0&#x0D;&#x0A;"
+					AdditionalDependencies="..\src\lang\english.txt;..\objs\strgen\strgen.exe"
 					Outputs="..\bin\lang\russian.lng"
 				/>
 			</FileConfiguration>
@@ -581,8 +581,8 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating serbian language file"
-					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0"
-					AdditionalDependencies="..\src\lang\english.txt"
+					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0&#x0D;&#x0A;"
+					AdditionalDependencies="..\src\lang\english.txt;..\objs\strgen\strgen.exe"
 					Outputs="..\bin\lang\serbian.lng"
 				/>
 			</FileConfiguration>
@@ -596,8 +596,8 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating simplified_chinese language file"
-					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0"
-					AdditionalDependencies="..\src\lang\english.txt"
+					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0&#x0D;&#x0A;"
+					AdditionalDependencies="..\src\lang\english.txt;..\objs\strgen\strgen.exe"
 					Outputs="..\bin\lang\simplified_chinese.lng"
 				/>
 			</FileConfiguration>
@@ -611,8 +611,8 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating slovak language file"
-					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0"
-					AdditionalDependencies="..\src\lang\english.txt"
+					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0&#x0D;&#x0A;"
+					AdditionalDependencies="..\src\lang\english.txt;..\objs\strgen\strgen.exe"
 					Outputs="..\bin\lang\slovak.lng"
 				/>
 			</FileConfiguration>
@@ -626,8 +626,8 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating slovenian language file"
-					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0"
-					AdditionalDependencies="..\src\lang\english.txt"
+					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0&#x0D;&#x0A;"
+					AdditionalDependencies="..\src\lang\english.txt;..\objs\strgen\strgen.exe"
 					Outputs="..\bin\lang\slovenian.lng"
 				/>
 			</FileConfiguration>
@@ -641,8 +641,8 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating spanish language file"
-					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0"
-					AdditionalDependencies="..\src\lang\english.txt"
+					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0&#x0D;&#x0A;"
+					AdditionalDependencies="..\src\lang\english.txt;..\objs\strgen\strgen.exe"
 					Outputs="..\bin\lang\spanish.lng"
 				/>
 			</FileConfiguration>
@@ -656,8 +656,8 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating swedish language file"
-					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0"
-					AdditionalDependencies="..\src\lang\english.txt"
+					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0&#x0D;&#x0A;"
+					AdditionalDependencies="..\src\lang\english.txt;..\objs\strgen\strgen.exe"
 					Outputs="..\bin\lang\swedish.lng"
 				/>
 			</FileConfiguration>
@@ -671,8 +671,8 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating traditional_chinese language file"
-					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0"
-					AdditionalDependencies="..\src\lang\english.txt"
+					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0&#x0D;&#x0A;"
+					AdditionalDependencies="..\src\lang\english.txt;..\objs\strgen\strgen.exe"
 					Outputs="..\bin\lang\traditional_chinese.lng"
 				/>
 			</FileConfiguration>
@@ -686,8 +686,8 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating turkish language file"
-					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0"
-					AdditionalDependencies="..\src\lang\english.txt"
+					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0&#x0D;&#x0A;"
+					AdditionalDependencies="..\src\lang\english.txt;..\objs\strgen\strgen.exe"
 					Outputs="..\bin\lang\turkish.lng"
 				/>
 			</FileConfiguration>
@@ -701,8 +701,8 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating ukrainian language file"
-					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0"
-					AdditionalDependencies="..\src\lang\english.txt"
+					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0&#x0D;&#x0A;"
+					AdditionalDependencies="..\src\lang\english.txt;..\objs\strgen\strgen.exe"
 					Outputs="..\bin\lang\ukrainian.lng"
 				/>
 			</FileConfiguration>
@@ -716,8 +716,8 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating vietnamese language file"
-					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0"
-					AdditionalDependencies="..\src\lang\english.txt"
+					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0&#x0D;&#x0A;"
+					AdditionalDependencies="..\src\lang\english.txt;..\objs\strgen\strgen.exe"
 					Outputs="..\bin\lang\vietnamese.lng"
 				/>
 			</FileConfiguration>
@@ -731,8 +731,8 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating welsh language file"
-					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0"
-					AdditionalDependencies="..\src\lang\english.txt"
+					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0&#x0D;&#x0A;"
+					AdditionalDependencies="..\src\lang\english.txt;..\objs\strgen\strgen.exe"
 					Outputs="..\bin\lang\welsh.lng"
 				/>
 			</FileConfiguration>

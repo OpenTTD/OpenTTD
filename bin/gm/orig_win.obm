@@ -4,10 +4,18 @@
 ; Tycoon Deluxe for Windows CD.
 ;
 [metadata]
-name         = original_windows
-shortname    = TTDW
-version      = 1
-description  = Original Transport Tycoon Deluxe Windows edition music
+name              = original_windows
+shortname         = TTDW
+version           = 1
+description       = Original Transport Tycoon Deluxe Windows edition music.
+description.cs_CZ = Původní hudba Transport Tycoon Deluxe (verze pro Windows).
+description.de_DE = Original Transport Tycoon Deluxe Windows Musikset.
+description.en_GB = Original Transport Tycoon Deluxe Windows edition sounds.
+description.en_US = Original Transport Tycoon Deluxe Windows edition sounds.
+description.es_ES = Música original de Transport Tycoon Deluxe versión Windows.
+description.fi_FI = Alkuperäinen Transport Tycoon Deluxe Windows musiikki.
+description.hu_HU = Az eredeti Transport Tycoon Deluxe Windows-os verziójának zenéje.
+description.nl_NL = Originele muziek van de Transport Tycoon Deluxe Windows-versie.
 
 [files]
 theme = GM_TT00.GM
@@ -91,4 +99,4 @@ GM_TT20.GM = Jammit
 GM_TT21.GM = Movin' On
 
 [origin]
-default = You can find it on your Transport Tycoon Deluxe CD-ROM.
+default      = You can find it on your Transport Tycoon Deluxe CD-ROM.

@@ -3,10 +3,19 @@
 ; This represents more or less nothingness
 ;
 [metadata]
-name         = NoMusic
-shortname    = NOMU
-version      = 0
-description  = A music pack without actual music
+name              = NoMusic
+shortname         = NULL
+version           = 0
+fallback          = true
+description       = A music pack without actual music.
+description.cs_CZ = Prázná hudební sada.
+description.de_DE = Ein Musikset ohne Musik.
+description.en_GB = A music pack without actual music.
+description.en_US = A music pack without actual music.
+description.es_ES = Un conjunto de música vacío.
+description.fi_FI = Musiikkipaketti, jossa ei ole musiikkia.
+description.hu_HU = Üres zenei alapcsomag.
+description.nl_NL = Een muziekset zonder muziek.
 
 [files]
 theme =
@@ -46,3 +55,4 @@ ezy_9 =
 [names]
 
 [origin]
+default      = This file was part of your OpenTTD installation.

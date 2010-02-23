@@ -45,6 +45,7 @@ template <class Tbase_set>
 		if (c->GetNumMissing() != 0) continue;
 
 		if (best == NULL ||
+				(best->fallback && !c->fallback) ||
 				best->valid_files < c->valid_files ||
 				(best->valid_files == c->valid_files &&
 					(best->shortname == c->shortname && best->version < c->version))) {
@@ -69,7 +70,19 @@ bool MusicSet::FillSetDetails(IniFile *ini, const char *path)
 				continue;
 			}
 
-			IniItem *item = names->GetItem(filename, false);
+			IniItem *item = NULL;
+			/* As we possibly add a path to the filename and we compare
+			 * on the filename with the path as in the .obm, we need to
+			 * keep stripping path elements until we find a match. */
+			for (const char *p = filename; p != NULL; p = strchr(p, PATHSEPCHAR)) {
+				/* Remove possible double path separator characters from
+				 * the beginning, so we don't start reading e.g. root. */
+				while (*p == PATHSEPCHAR) p++;
+
+				item = names->GetItem(p, false);
+				if (item != NULL && !StrEmpty(item->value)) break;
+			}
+
 			if (item == NULL || StrEmpty(item->value)) {
 				DEBUG(grf, 0, "Base music set song name missing: %s", filename);
 				return false;

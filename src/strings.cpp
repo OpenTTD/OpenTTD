@@ -54,6 +54,7 @@ static char **_langpack_offs;
 static LanguagePack *_langpack;
 static uint _langtab_num[32];   // Offset into langpack offs
 static uint _langtab_start[32]; // Offset into langpack offs
+static bool _keep_gender_data = false;  ///< Should we retain the gender data in the current string?
 
 
 /** Read an int64 from the argv array. */
@@ -718,20 +719,31 @@ static char *FormatString(char *buff, const char *str, int64 *argv, uint casei, 
 			}
 
 			case SCC_GENDER_LIST: { // {G 0 Der Die Das}
-				const char *s = GetStringPtr(argv_orig[(byte)*str++]); // contains the string that determines gender.
-				int gender = 0;
-				if (s != NULL) {
-					WChar c = Utf8Consume(&s);
-					/* Switch case is always put before genders, so remove those bits */
-					if (c == SCC_SWITCH_CASE) {
-						/* Skip to the last (i.e. default) case */
-						for (uint num = (byte)*s++; num != 0; num--) s += 3 + (s[1] << 8) + s[2];
+				/* First read the meta data from the language file. */
+				WChar fmt = SCC_CONTROL_START + (byte)*str++;
+				byte offset = (byte)*str++;
 
-						c = Utf8Consume(&s);
-					}
-					/* Does this string have a gender, if so, set it */
-					if (c == SCC_GENDER_INDEX) gender = (byte)s[0];
-				}
+				/* Now we need to figure out what text to resolve, i.e.
+				 * what do we need to draw? So get the actual raw string
+				 * first using the control code to get said string. */
+				char input[4 + 1];
+				char *p = input + Utf8Encode(input, fmt);
+				*p = '\0';
+
+				/* Now do the string formatting. */
+				char buf[256];
+				bool old_kgd = _keep_gender_data;
+				_keep_gender_data = true;
+				p = FormatString(buf, input, argv_orig + offset, 0, lastof(buf));
+				_keep_gender_data = old_kgd;
+				*p = '\0';
+
+				/* And determine the string. */
+				int gender = 0;
+				const char *s = buf;
+				WChar c = Utf8Consume(&s);
+				/* Does this string have a gender, if so, set it */
+				if (c == SCC_GENDER_INDEX) gender = (byte)s[0];
 				str = ParseStringChoice(str, gender, &buff, last);
 				break;
 			}
@@ -802,7 +814,12 @@ static char *FormatString(char *buff, const char *str, int64 *argv, uint casei, 
 			/* This sets up the gender for the string.
 			 * We just ignore this one. It's used in {G 0 Der Die Das} to determine the case. */
 			case SCC_GENDER_INDEX: // {GENDER 0}
-				str++;
+				if (_keep_gender_data) {
+					buff += Utf8Encode(buff, SCC_GENDER_INDEX);
+					*buff++ = *str++;
+				} else {
+					str++;
+				}
 				break;
 
 			case SCC_STRING: {// {STRING}

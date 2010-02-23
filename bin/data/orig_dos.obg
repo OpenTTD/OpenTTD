@@ -4,11 +4,19 @@
 ; Tycoon Deluxe DOS CD.
 ;
 [metadata]
-name         = original_dos
-shortname    = TTDD
-version      = 1
-description  = Original Transport Tycoon Deluxe DOS edition graphics
-palette      = DOS
+name              = original_dos
+shortname         = TTDD
+version           = 1
+palette           = DOS
+description       = Original Transport Tycoon Deluxe DOS edition graphics.
+description.cs_CZ = Původní sada grafik Transport Tycoon Deluxe (verze pro DOS).
+description.de_DE = Original Transport Tycoon Deluxe DOS Basisgrafiken.
+description.en_GB = Original Transport Tycoon Deluxe DOS edition graphics.
+description.en_US = Original Transport Tycoon Deluxe DOS edition graphics.
+description.es_ES = Gráficos originales de Transport Tycoon Deluxe versión DOS.
+description.fi_FI = Alkuperäiset Transport Tycoon Deluxe DOS grafiikat.
+description.hu_HU = Az eredeti Transport Tycoon Deluxe DOS-os verziójának grafikája.
+description.nl_NL = Originele graphics van de Transport Tycoon Deluxe DOS-versie.
 
 [files]
 base         = TRG1.GRF
@@ -27,5 +35,4 @@ TRGT.GRF     = e30e8a398ae86c03dc534a8ac7dfb3b6
 OPENTTDD.GRF = 356cf9663aacb212fdbff609d99090d6
 
 [origin]
-default      = You can find it on your Transport Tycoon Deluxe CD-ROM.
-OPENTTDD.GRF = This file was part of your installation.
+OPENTTDD.GRF = This file was part of your OpenTTD installation.

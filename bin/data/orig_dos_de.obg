@@ -4,11 +4,19 @@
 ; Tycoon Deluxe DOS CD. It contains one broken sprite.
 ;
 [metadata]
-name         = original_dos_de
-shortname    = TTDD
-version      = 0
-description  = Original Transport Tycoon Deluxe DOS (German) edition graphics
-palette      = DOS
+name              = original_dos_de
+shortname         = TTDD
+version           = 0
+palette           = DOS
+description       = Original Transport Tycoon Deluxe DOS (German) edition graphics.
+description.cs_CZ = Původní sada grafik Transport Tycoon Deluxe (německá verze pro DOS).
+description.de_DE = Original Transport Tycoon Deluxe DOS (Deutsch) Basisgrafiken.
+description.en_GB = Original Transport Tycoon Deluxe DOS (German) edition graphics.
+description.en_US = Original Transport Tycoon Deluxe DOS (German) edition graphics.
+description.es_ES = Gráficos originales de Transport Tycoon Deluxe versión DOS (Alemán).
+description.fi_FI = Alkuperäiset Transport Tycoon Deluxe DOS (Saksalainen) grafiikat.
+description.hu_HU = Az eredeti Transport Tycoon Deluxe DOS-os verziójának grafikája (német változat).
+description.nl_NL = Originele graphics van de Duitse Transport Tycoon Deluxe DOS-versie.
 
 [files]
 base         = TRG1.GRF
@@ -28,4 +36,4 @@ OPENTTDD.GRF = 356cf9663aacb212fdbff609d99090d6
 
 [origin]
 default      = You can find it on your Transport Tycoon Deluxe CD-ROM.
-OPENTTDD.GRF = This file was part of your installation.
+OPENTTDD.GRF = This file was part of your OpenTTD installation.

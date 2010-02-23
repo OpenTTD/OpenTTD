@@ -31,6 +31,9 @@ static void OpenBankFile(const char *filename)
 {
 	memset(_original_sounds, 0, sizeof(_original_sounds));
 
+	/* If there is no sound file (nosound set), don't load anything */
+	if (filename == NULL) return;
+
 	FioOpenFile(SOUND_SLOT, filename);
 	size_t pos = FioGetPos();
 	uint count = FioReadDword();
@@ -161,6 +164,9 @@ static void StartSound(SoundID sound_id, int panning, uint volume)
 
 	const SoundEntry *sound = GetSound(sound_id);
 	if (sound == NULL) return;
+
+	/* Empty sound? */
+	if (sound->rate == 0) return;
 
 	MixerChannel *mc = MxAllocateChannel();
 	if (mc == NULL) return;
@@ -301,6 +307,7 @@ template <class Tbase_set>
 		if (c->GetNumMissing() != 0) continue;
 
 		if (best == NULL ||
+				(best->fallback && !c->fallback) ||
 				best->valid_files < c->valid_files ||
 				(best->valid_files == c->valid_files &&
 					(best->shortname == c->shortname && best->version < c->version))) {

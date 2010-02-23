@@ -205,7 +205,7 @@ void GfxLoadSprites()
 
 bool GraphicsSet::FillSetDetails(IniFile *ini, const char *path)
 {
-	bool ret = this->BaseSet<GraphicsSet, MAX_GFT, DATA_DIR>::FillSetDetails(ini, path);
+	bool ret = this->BaseSet<GraphicsSet, MAX_GFT, DATA_DIR>::FillSetDetails(ini, path, false);
 	if (ret) {
 		IniGroup *metadata = ini->GetGroup("metadata");
 		IniItem *item;
@@ -296,6 +296,7 @@ template <class Tbase_set>
 		if (c->GetNumMissing() != 0) continue;
 
 		if (best == NULL ||
+				(best->fallback && !c->fallback) ||
 				best->valid_files < c->valid_files ||
 				(best->valid_files == c->valid_files && (
 					(best->shortname == c->shortname && best->version < c->version) ||

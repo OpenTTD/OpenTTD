@@ -12,6 +12,7 @@
 #include "../stdafx.h"
 #include "../core/alloc_func.hpp"
 #include "../core/endian_func.hpp"
+#include "../core/math_func.hpp"
 #include "../string_func.h"
 #include "../strings_type.h"
 #include "strgen.h"
@@ -140,7 +141,7 @@ static LangString *HashFind(const char *s)
 #ifdef _MSC_VER
 # define LINE_NUM_FMT(s) "%s (%d): warning: %s (" s ")\n"
 #else
-# define LINE_NUM_FMT(s) "%s: :%d: " s ": %s\n"
+# define LINE_NUM_FMT(s) "%s:%d: " s ": %s\n"
 #endif
 
 static void CDECL strgen_warning(const char *s, ...) WARN_FORMAT(1, 2);
@@ -397,12 +398,20 @@ static void EmitGender(char *buf, int value)
 		 * If no relative number exists, default to +0 */
 		if (!ParseRelNum(&buf, &argidx, &offset)) {}
 
+		const CmdStruct *cmd = _cur_pcs.cmd[argidx];
+		if ((cmd->flags & C_GENDER) == 0) {
+			error("Command '%s' can't have a gender", cmd->cmd);
+		}
+
 		for (nw = 0; nw < MAX_NUM_GENDER; nw++) {
 			words[nw] = ParseWord(&buf);
 			if (words[nw] == NULL) break;
 		}
 		if (nw != _numgenders) error("Bad # of arguments for gender command");
+
+		assert(IsInsideBS(cmd->value, SCC_CONTROL_START, UINT8_MAX));
 		PutUtf8(SCC_GENDER_LIST);
+		PutByte(cmd->value - SCC_CONTROL_START);
 		PutByte(TranslateArgumentIdx(argidx, offset));
 		EmitWordList(words, nw);
 	}

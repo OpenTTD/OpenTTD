@@ -59,6 +59,7 @@ struct BaseSet {
 	TranslatedStrings description; ///< Description of the base set
 	uint32 shortname;              ///< Four letter short variant of the name
 	uint32 version;                ///< The version of this base set
+	bool fallback;                 ///< This set is a fallback set, i.e. it should be used only as last resort
 
 	MD5File files[NUM_FILES];      ///< All files part of this set
 	uint found_files;              ///< Number of the files that could be found
@@ -107,9 +108,10 @@ struct BaseSet {
 	 * Read the set information from a loaded ini.
 	 * @param ini      the ini to read from
 	 * @param path     the path to this ini file (for filenames)
+	 * @param allow_empty_filename empty filenames are valid
 	 * @return true if loading was successful.
 	 */
-	bool FillSetDetails(IniFile *ini, const char *path);
+	bool FillSetDetails(IniFile *ini, const char *path, bool allow_empty_filename = true);
 
 	/**
 	 * Get the description for the given ISO code.

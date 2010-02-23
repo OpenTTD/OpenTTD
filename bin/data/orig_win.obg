@@ -4,11 +4,19 @@
 ; Tycoon Deluxe for Windows CD.
 ;
 [metadata]
-name         = original_windows
-shortname    = TTDW
-version      = 0
-description  = Original Transport Tycoon Deluxe Windows edition graphics
-palette      = Windows
+name              = original_windows
+shortname         = TTDW
+version           = 0
+palette           = Windows
+description       = Original Transport Tycoon Deluxe Windows edition graphics.
+description.cs_CZ = Původní sada grafik Transport Tycoon Deluxe (verze pro Windows).
+description.de_DE = Original Transport Tycoon Deluxe Windows Basisgrafiken.
+description.en_GB = Original Transport Tycoon Deluxe Windows edition graphics.
+description.en_US = Original Transport Tycoon Deluxe Windows edition graphics.
+description.es_ES = Gráficos originales de Transport Tycoon Deluxe versión Windows.
+description.fi_FI = Alkuperäiset Transport Tycoon Deluxe Windows grafiikat.
+description.hu_HU = Az eredeti Transport Tycoon Deluxe Windows-os verziójának grafikája.
+description.nl_NL = Originele graphics van de Transport Tycoon Deluxe Windows-versie.
 
 [files]
 base         = TRG1R.GRF
@@ -28,4 +36,4 @@ OPENTTDW.GRF = 80346ea80de167068cfb975f93963941
 
 [origin]
 default      = You can find it on your Transport Tycoon Deluxe CD-ROM.
-OPENTTDW.GRF = This file was part of your installation.
+OPENTTDW.GRF = This file was part of your OpenTTD installation.

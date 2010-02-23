@@ -161,8 +161,8 @@ load_lang_data() {
 				<Tool
 					Name=\"VCCustomBuildTool\"
 					Description=\"Generating "$i" language file\"
-					CommandLine=\"..\\objs\\strgen\\strgen.exe -s ..\\src\\lang -d ..\\bin\\lang &quot;\$(InputPath)&quot;&#x0D;&#x0A;exit 0\"
-					AdditionalDependencies=\"..\\src\\lang\\english.txt\"
+					CommandLine=\"..\\objs\\strgen\\strgen.exe -s ..\\src\\lang -d ..\\bin\\lang &quot;\$(InputPath)&quot;&#x0D;&#x0A;exit 0&#x0D;&#x0A;\"
+					AdditionalDependencies=\"..\\src\\lang\\english.txt;..\\objs\\strgen\\strgen.exe\"
 					Outputs=\"..\\bin\\lang\\"$i".lng\"
 				/>
 			</FileConfiguration>

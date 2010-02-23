@@ -2903,10 +2903,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Show roa
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Show ship details
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Show aircraft details
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Current train action - click here to stop/start train
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Current vehicle action - click here to stop/start vehicle
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Current ship action - click here to stop/start ship
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Current aircraft action - click here to stop/start aircraft
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Current train action - click to stop/start train. Ctrl+Click to scroll to destination
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Current vehicle action - click to stop/start vehicle. Ctrl+Click to scroll to destination
+STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Current ship action - click to stop/start ship. Ctrl+Click to scroll to destination
+STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Current aircraft action - click to stop/start aircraft. Ctrl+Click to scroll to destination
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Loading / Unloading
@@ -3306,6 +3306,9 @@ STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... coul
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Scale warning
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Resizing source map too much is not recommended. Continue with the generation?
+
+# Soundset messages
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Only a fallback sound set was found. If you want sounds, install a sound set via the content download system.
 
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Screenshot successfully saved as '{RAW_STRING}'

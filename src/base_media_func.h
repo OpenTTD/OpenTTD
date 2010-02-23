@@ -30,7 +30,7 @@ template <class Tbase_set> /* static */ Tbase_set *BaseMedia<Tbase_set>::availab
 	}
 
 template <class T, size_t Tnum_files, Subdirectory Tsubdir>
-bool BaseSet<T, Tnum_files, Tsubdir>::FillSetDetails(IniFile *ini, const char *path)
+bool BaseSet<T, Tnum_files, Tsubdir>::FillSetDetails(IniFile *ini, const char *path, bool allow_empty_filename)
 {
 	memset(this, 0, sizeof(*this));
 
@@ -58,6 +58,9 @@ bool BaseSet<T, Tnum_files, Tsubdir>::FillSetDetails(IniFile *ini, const char *p
 	fetch_metadata("version");
 	this->version = atoi(item->value);
 
+	item = metadata->GetItem("fallback", false);
+	this->fallback = (item != NULL && strcmp(item->value, "0") != 0 && strcmp(item->value, "false") != 0);
+
 	/* For each of the file types we want to find the file, MD5 checksums and warning messages. */
 	IniGroup *files  = ini->GetGroup("files");
 	IniGroup *md5s   = ini->GetGroup("md5s");
@@ -66,7 +69,7 @@ bool BaseSet<T, Tnum_files, Tsubdir>::FillSetDetails(IniFile *ini, const char *p
 		MD5File *file = &this->files[i];
 		/* Find the filename first. */
 		item = files->GetItem(BaseSet<T, Tnum_files, Tsubdir>::file_names[i], false);
-		if (item == NULL) {
+		if (item == NULL || (item->value == NULL && !allow_empty_filename)) {
 			DEBUG(grf, 0, "No " SET_TYPE " file for: %s", BaseSet<T, Tnum_files, Tsubdir>::file_names[i]);
 			return false;
 		}
