@@ -804,15 +804,19 @@ static CommandCost CheckFlatLandRailStation(TileArea tile_area, DoCommandFlag fl
  * @param flags Operation to perform.
  * @param invalid_dirs Prohibited directions (set of DiagDirections).
  * @param build_over_road True if trying to build a drive through station over a normal road tile.
+ * @param axis Axis of a drive-through road stop.
  * @param rts Road types to build. Bits already built at the tile will be removed.
  * @return The cost in case of success, or an error code if it failed.
  */
-static CommandCost CheckFlatLandRoadStop(TileIndex tile, DoCommandFlag flags, uint invalid_dirs, bool build_over_road, RoadTypes &rts)
+static CommandCost CheckFlatLandRoadStop(TileIndex tile, DoCommandFlag flags, uint invalid_dirs, bool build_over_road, Axis axis, RoadTypes &rts)
 {
 	int allowed_z = -1;
 
 	CommandCost cost = CheckBuildableTile(tile, invalid_dirs, allowed_z);
 	if (cost.Failed()) return cost;
+
+	/* Road bits in the wrong direction. */
+	if (build_over_road && (GetAllRoadBits(tile) & (axis == AXIS_X ? ROAD_Y : ROAD_X)) != 0) return_cmd_error(STR_ERROR_DRIVE_THROUGH_DIRECTION);
 
 	RoadTypes cur_rts = IsNormalRoadTile(tile) ? GetRoadTypes(tile) : ROADTYPES_NONE;
 	uint num_roadbits = 0;
@@ -1625,12 +1629,10 @@ CommandCost CmdBuildRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	if (!IsValidDiagDirection(ddir)) return CMD_ERROR;
 	/* If it is a drive-through stop, check for valid axis. */
 	if (is_drive_through && !IsValidAxis((Axis)ddir)) return CMD_ERROR;
-	/* Road bits in the wrong direction */
-	if (build_over_road && (GetAllRoadBits(tile) & (DiagDirToAxis(ddir) == AXIS_X ? ROAD_Y : ROAD_X)) != 0) return_cmd_error(STR_ERROR_DRIVE_THROUGH_DIRECTION);
 
 	if (!CheckIfAuthorityAllowsNewStation(tile, flags)) return CMD_ERROR;
 
-	CommandCost cost = CheckFlatLandRoadStop(tile, flags, is_drive_through ? 5 << ddir : 1 << ddir, build_over_road, rts);
+	CommandCost cost = CheckFlatLandRoadStop(tile, flags, is_drive_through ? 5 << ddir : 1 << ddir, build_over_road, DiagDirToAxis(ddir), rts);
 	if (cost.Failed()) return cost;
 
 	Station *st = NULL;
