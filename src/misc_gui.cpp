@@ -697,13 +697,27 @@ public:
  */
 void ShowErrorMessage(StringID summary_msg, StringID detailed_msg, WarningLevel wl, int x, int y)
 {
-	DeleteWindowById(WC_ERRMSG, 0);
+	if (summary_msg == STR_NULL) summary_msg = STR_EMPTY;
+
+	if (wl != WL_INFO) {
+		/* Print message to console */
+		char buf[DRAW_STRING_BUFFER];
+		char *b = GetString(buf, summary_msg, lastof(buf));
+		if (detailed_msg != INVALID_STRING_ID) {
+			b += seprintf(b, lastof(buf), " ");
+			GetString(b, detailed_msg, lastof(buf));
+		}
+		switch (wl) {
+			case WL_WARNING: IConsolePrint(CC_WARNING, buf); break;
+			default:         IConsoleError(buf); break;
+		};
+	}
 
 	bool no_timeout = wl == WL_CRITICAL;
 
 	if (_settings_client.gui.errmsg_duration == 0 && !no_timeout) return;
 
-	if (summary_msg == STR_NULL) summary_msg = STR_EMPTY;
+	DeleteWindowById(WC_ERRMSG, 0);
 
 	Point pt = {x, y};
 	const WindowDesc *desc = (detailed_msg != STR_ERROR_OWNED_BY || GetDParam(2) >= MAX_COMPANIES) ? &_errmsg_desc : &_errmsg_face_desc;
