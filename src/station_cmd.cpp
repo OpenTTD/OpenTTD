@@ -832,6 +832,10 @@ static CommandCost CheckFlatLandRoadStop(TileArea tile_area, DoCommandFlag flags
 						HasBit(rts, ROADTYPE_TRAM) != HasBit(GetRoadTypes(cur_tile), ROADTYPE_TRAM)) {
 					return ClearTile_Station(cur_tile, DC_AUTO); // Get error message.
 				}
+				/* Drive-through station in the wrong direction. */
+				if (is_drive_through && IsDriveThroughStopTile(cur_tile) && DiagDirToAxis(GetRoadStopDir(cur_tile)) != axis){
+					return_cmd_error(STR_ERROR_DRIVE_THROUGH_DIRECTION);
+				}
 				StationID st = GetStationIndex(cur_tile);
 				if (*station == INVALID_STATION) {
 					*station = st;
