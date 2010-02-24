@@ -1834,40 +1834,57 @@ static CommandCost RemoveRoadStop(TileIndex tile, DoCommandFlag flags)
 	return CommandCost(EXPENSES_CONSTRUCTION, _price[is_truck ? PR_CLEAR_STATION_TRUCK : PR_CLEAR_STATION_BUS]);
 }
 
-/** Remove a bus or truck stop
- * @param tile tile to remove the stop from
- * @param flags operation to perform
- * @param p1 not used
- * @param p2 bit 0: 0 for Bus stops, 1 for truck stops
- * @param text unused
- * @return the cost of this operation or an error
+/** Remove bus or truck stops.
+ * @param tile Northernmost tile of the removal area.
+ * @param flags Operation to perform.
+ * @param p1 bit 0..7: Width of the removal area.
+ *           bit 8..15: Height of the removal area.
+ * @param p2 bit 0: 0 For bus stops, 1 for truck stops.
+ * @param text Unused.
+ * @return The cost of this operation or an error.
  */
 CommandCost CmdRemoveRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	/* Make sure the specified tile is a road stop of the correct type */
-	if (!IsTileType(tile, MP_STATION) || !IsRoadStop(tile) || (uint32)GetRoadStopType(tile) != GB(p2, 0, 1)) return CMD_ERROR;
+	uint8 width = (uint8)GB(p1, 0, 8);
+	uint8 height = (uint8)GB(p1, 8, 8);
 
-	/* Save the stop info before it is removed */
-	bool is_drive_through = IsDriveThroughStopTile(tile);
-	RoadTypes rts = GetRoadTypes(tile);
-	RoadBits road_bits = IsDriveThroughStopTile(tile) ?
-			((GetRoadStopDir(tile) == DIAGDIR_NE) ? ROAD_X : ROAD_Y) :
-			DiagDirToRoadBits(GetRoadStopDir(tile));
+	/* Check for incorrect width / height. */
+	if (width == 0 || height == 0) return CMD_ERROR;
+	/* Check if the first tile and the last tile are valid */
+	if (!IsValidTile(tile) || TileAddWrap(tile, width - 1, height - 1) == INVALID_TILE) return CMD_ERROR;
 
-	Owner road_owner = GetRoadOwner(tile, ROADTYPE_ROAD);
-	Owner tram_owner = GetRoadOwner(tile, ROADTYPE_TRAM);
-	CommandCost ret = RemoveRoadStop(tile, flags);
+	TileArea roadstop_area(tile, width, height);
 
-	/* If the stop was a drive-through stop replace the road */
-	if ((flags & DC_EXEC) && ret.Succeeded() && is_drive_through) {
-		/* Rebuild the drive throuhg road stop. As a road stop can only be
-		 * removed by the owner of the roadstop, _current_company is the
-		 * owner of the road stop. */
-		MakeRoadNormal(tile, road_bits, rts, ClosestTownFromTile(tile, UINT_MAX)->index,
-				road_owner, tram_owner);
+	int quantity = 0;
+	CommandCost cost(EXPENSES_CONSTRUCTION);
+	TILE_AREA_LOOP(cur_tile, roadstop_area) {
+		/* Make sure the specified tile is a road stop of the correct type */
+		if (!IsTileType(cur_tile, MP_STATION) || !IsRoadStop(cur_tile) || (uint32)GetRoadStopType(cur_tile) != GB(p2, 0, 1)) continue;
+
+		/* Save the stop info before it is removed */
+		bool is_drive_through = IsDriveThroughStopTile(cur_tile);
+		RoadTypes rts = GetRoadTypes(cur_tile);
+		RoadBits road_bits = IsDriveThroughStopTile(cur_tile) ?
+				((GetRoadStopDir(cur_tile) == DIAGDIR_NE) ? ROAD_X : ROAD_Y) :
+				DiagDirToRoadBits(GetRoadStopDir(cur_tile));
+
+		Owner road_owner = GetRoadOwner(cur_tile, ROADTYPE_ROAD);
+		Owner tram_owner = GetRoadOwner(cur_tile, ROADTYPE_TRAM);
+		CommandCost ret = RemoveRoadStop(cur_tile, flags);
+		if (ret.Failed()) return ret;
+		cost.AddCost(ret);
+
+		quantity++;
+		/* If the stop was a drive-through stop replace the road */
+		if ((flags & DC_EXEC) && is_drive_through) {
+			MakeRoadNormal(cur_tile, road_bits, rts, ClosestTownFromTile(cur_tile, UINT_MAX)->index,
+					road_owner, tram_owner);
+		}
 	}
 
-	return ret;
+	if (quantity == 0) return CMD_ERROR;
+
+	return cost;
 }
 
 /**

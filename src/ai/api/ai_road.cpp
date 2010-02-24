@@ -578,7 +578,7 @@ static bool NeighbourHasReachableRoad(::RoadTypes rts, TileIndex start_tile, Dia
 	EnforcePrecondition(false, IsTileType(tile, MP_STATION));
 	EnforcePrecondition(false, IsRoadStop(tile));
 
-	return AIObject::DoCommand(tile, 0, GetRoadStopType(tile), CMD_REMOVE_ROAD_STOP);
+	return AIObject::DoCommand(tile, 1 | 1 << 8, GetRoadStopType(tile), CMD_REMOVE_ROAD_STOP);
 }
 
 /* static */ Money AIRoad::GetBuildCost(RoadType roadtype, BuildType build_type)

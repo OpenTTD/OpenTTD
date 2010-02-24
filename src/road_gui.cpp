@@ -260,7 +260,7 @@ static void PlaceRoadStop(TileIndex start_tile, TileIndex end_tile, uint32 p2, u
 static void PlaceRoad_BusStation(TileIndex tile)
 {
 	if (_remove_button_clicked) {
-		DoCommandP(tile, 0, ROADSTOP_BUS, CMD_REMOVE_ROAD_STOP | CMD_MSG(_road_type_infos[_cur_roadtype].err_remove_station[ROADSTOP_BUS]), CcPlaySound1D);
+		VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_REMOVE_BUSSTOP);
 	} else {
 		if (_road_station_picker_orientation < DIAGDIR_END) { // Not a drive-through stop.
 			VpStartPlaceSizing(tile, (DiagDirToAxis(_road_station_picker_orientation) == AXIS_X) ? VPM_X_LIMITED : VPM_Y_LIMITED, DDSP_BUILD_BUSSTOP);
@@ -274,7 +274,7 @@ static void PlaceRoad_BusStation(TileIndex tile)
 static void PlaceRoad_TruckStation(TileIndex tile)
 {
 	if (_remove_button_clicked) {
-		DoCommandP(tile, 0, ROADSTOP_TRUCK, CMD_REMOVE_ROAD_STOP | CMD_MSG(_road_type_infos[_cur_roadtype].err_remove_station[ROADSTOP_TRUCK]), CcPlaySound1D);
+		VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_REMOVE_TRUCKSTOP);
 	} else {
 		if (_road_station_picker_orientation < DIAGDIR_END) { // Not a drive-through stop.
 			VpStartPlaceSizing(tile, (DiagDirToAxis(_road_station_picker_orientation) == AXIS_X) ? VPM_X_LIMITED : VPM_Y_LIMITED, DDSP_BUILD_TRUCKSTOP);
@@ -664,6 +664,16 @@ struct BuildRoadToolbarWindow : Window {
 				case DDSP_BUILD_TRUCKSTOP:
 					PlaceRoadStop(start_tile, end_tile, (_ctrl_pressed << 5) | RoadTypeToRoadTypes(_cur_roadtype) << 2 | ROADSTOP_TRUCK, CMD_BUILD_ROAD_STOP | CMD_MSG(_road_type_infos[_cur_roadtype].err_build_station[ROADSTOP_TRUCK]));
 					break;
+
+				case DDSP_REMOVE_BUSSTOP: {
+					TileArea ta(start_tile, end_tile);
+					DoCommandP(ta.tile, ta.w | ta.h << 8, ROADSTOP_BUS, CMD_REMOVE_ROAD_STOP | CMD_MSG(_road_type_infos[_cur_roadtype].err_remove_station[ROADSTOP_BUS]), CcPlaySound1D);
+				} break;
+
+				case DDSP_REMOVE_TRUCKSTOP: {
+					TileArea ta(start_tile, end_tile);
+					DoCommandP(ta.tile, ta.w | ta.h << 8, ROADSTOP_TRUCK, CMD_REMOVE_ROAD_STOP | CMD_MSG(_road_type_infos[_cur_roadtype].err_remove_station[ROADSTOP_TRUCK]), CcPlaySound1D);
+				} break;
 			}
 		}
 	}

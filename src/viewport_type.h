@@ -111,6 +111,8 @@ enum ViewportDragDropSelectionProcess {
 	DDSP_PLACE_AUTOROAD,       ///< Road placement (auto)
 	DDSP_BUILD_BUSSTOP,        ///< Road stop placement (buses)
 	DDSP_BUILD_TRUCKSTOP,      ///< Road stop placement (trucks)
+	DDSP_REMOVE_BUSSTOP,       ///< Road stop removal (buses)
+	DDSP_REMOVE_TRUCKSTOP,     ///< Road stop removal (trucks)
 };
 
 #endif /* VIEWPORT_TYPE_H */
