@@ -52,7 +52,16 @@ void ShowIndustryDirectory();
 void ShowSubsidiesList();
 
 void ShowEstimatedCostOrIncome(Money cost, int x, int y);
-void ShowErrorMessage(StringID summary_msg, StringID detailed_msg, int x, int y, bool no_timeout = false);
+
+/** Message severity/type */
+enum WarningLevel {
+	WL_INFO,     ///< Used for DoCommand-like (and some nonfatal AI GUI) errors/information
+	WL_WARNING,  ///< Other information
+	WL_ERROR,    ///< Errors (eg. saving/loading failed)
+	WL_CRITICAL, ///< Critical errors, the MessageBox is shown in all cases
+};
+
+void ShowErrorMessage(StringID summary_msg, StringID detailed_msg, WarningLevel wl, int x = 0, int y = 0);
 
 void ShowExtraViewPortWindow(TileIndex tile = INVALID_TILE);
 

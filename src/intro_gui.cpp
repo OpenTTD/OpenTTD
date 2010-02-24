@@ -121,7 +121,7 @@ struct SelectGameWindow : public Window {
 
 			case SGI_PLAY_NETWORK:
 				if (!_network_available) {
-					ShowErrorMessage(STR_NETWORK_ERROR_NOTAVAILABLE, INVALID_STRING_ID, 0, 0);
+					ShowErrorMessage(STR_NETWORK_ERROR_NOTAVAILABLE, INVALID_STRING_ID, WL_ERROR);
 				} else {
 					ShowNetworkGameWindow();
 				}
@@ -140,7 +140,7 @@ struct SelectGameWindow : public Window {
 			case SGI_GRF_SETTINGS:    ShowNewGRFSettings(true, true, false, &_grfconfig_newgame); break;
 			case SGI_CONTENT_DOWNLOAD:
 				if (!_network_available) {
-					ShowErrorMessage(STR_NETWORK_ERROR_NOTAVAILABLE, INVALID_STRING_ID, 0, 0);
+					ShowErrorMessage(STR_NETWORK_ERROR_NOTAVAILABLE, INVALID_STRING_ID, WL_ERROR);
 				} else {
 					ShowNetworkContentListWindow();
 				}

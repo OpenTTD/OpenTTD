@@ -659,9 +659,9 @@ bool MakeScreenshot(ScreenshotType t, const char *name)
 
 	if (ret) {
 		SetDParamStr(0, _screenshot_name);
-		ShowErrorMessage(STR_MESSAGE_SCREENSHOT_SUCCESSFULLY, INVALID_STRING_ID, 0, 0);
+		ShowErrorMessage(STR_MESSAGE_SCREENSHOT_SUCCESSFULLY, INVALID_STRING_ID, WL_WARNING);
 	} else {
-		ShowErrorMessage(STR_ERROR_SCREENSHOT_FAILED, INVALID_STRING_ID, 0, 0);
+		ShowErrorMessage(STR_ERROR_SCREENSHOT_FAILED, INVALID_STRING_ID, WL_ERROR);
 	}
 
 	return ret;

@@ -202,7 +202,7 @@ void ShowNewGrfVehicleError(EngineID engine, StringID part1, StringID part2, GRF
 		SetBit(grfconfig->grf_bugs, bug_type);
 		SetDParamStr(0, grfconfig->name);
 		SetDParam(1, engine);
-		ShowErrorMessage(part1, part2, 0, 0, true);
+		ShowErrorMessage(part1, part2, WL_CRITICAL);
 		if (!_networking) DoCommand(0, critical ? PM_PAUSED_ERROR : PM_PAUSED_NORMAL, 1, DC_EXEC, CMD_PAUSE);
 	}
 

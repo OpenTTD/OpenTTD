@@ -462,7 +462,7 @@ public:
 				if (this->CanDeleteTown()) {
 					delete this->town;
 				} else {
-					ShowErrorMessage(STR_ERROR_TOWN_CAN_T_DELETE, INVALID_STRING_ID, 0, 0);
+					ShowErrorMessage(STR_ERROR_TOWN_CAN_T_DELETE, INVALID_STRING_ID, WL_INFO);
 				}
 				break;
 		}
@@ -1149,7 +1149,7 @@ public:
 				_generating_world = true;
 				UpdateNearestTownForRoadTiles(true);
 				if (!GenerateTowns(this->town_layout)) {
-					ShowErrorMessage(STR_ERROR_CAN_T_GENERATE_TOWN, STR_ERROR_NO_SPACE_FOR_TOWN, 0, 0);
+					ShowErrorMessage(STR_ERROR_CAN_T_GENERATE_TOWN, STR_ERROR_NO_SPACE_FOR_TOWN, WL_INFO);
 				}
 				UpdateNearestTownForRoadTiles(false);
 				_generating_world = false;

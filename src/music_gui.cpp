@@ -803,6 +803,6 @@ static const WindowDesc _music_window_desc(
 
 void ShowMusicWindow()
 {
-	if (BaseMusic::GetUsedSet()->num_available == 0) ShowErrorMessage(STR_ERROR_NO_SONGS, INVALID_STRING_ID, 0, 0);
+	if (BaseMusic::GetUsedSet()->num_available == 0) ShowErrorMessage(STR_ERROR_NO_SONGS, INVALID_STRING_ID, WL_WARNING);
 	AllocateWindowDescFront<MusicWindow>(&_music_window_desc, 0);
 }

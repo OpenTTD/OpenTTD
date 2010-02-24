@@ -1743,7 +1743,7 @@ const char *GetSaveLoadErrorString()
 static void SaveFileError()
 {
 	SetDParamStr(0, GetSaveLoadErrorString());
-	ShowErrorMessage(STR_JUST_RAW_STRING, INVALID_STRING_ID, 0, 0);
+	ShowErrorMessage(STR_JUST_RAW_STRING, INVALID_STRING_ID, WL_ERROR);
 	SaveFileDone();
 }
 
@@ -1833,7 +1833,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb, boo
 	/* An instance of saving is already active, so don't go saving again */
 	if (_ts.saveinprogress && mode == SL_SAVE) {
 		/* if not an autosave, but a user action, show error message */
-		if (!_do_autosave) ShowErrorMessage(STR_ERROR_SAVE_STILL_IN_PROGRESS, INVALID_STRING_ID, 0, 0);
+		if (!_do_autosave) ShowErrorMessage(STR_ERROR_SAVE_STILL_IN_PROGRESS, INVALID_STRING_ID, WL_ERROR);
 		return SL_OK;
 	}
 	WaitTillSaved();

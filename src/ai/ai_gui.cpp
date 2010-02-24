@@ -314,7 +314,7 @@ struct AISettingsWindow : public Window {
 		if (_game_mode == GM_MENU) {
 			if (_settings_newgame.difficulty.diff_level != 3) {
 				_settings_newgame.difficulty.diff_level = 3;
-				ShowErrorMessage(STR_WARNING_DIFFICULTY_TO_CUSTOM, INVALID_STRING_ID, 0, 0);
+				ShowErrorMessage(STR_WARNING_DIFFICULTY_TO_CUSTOM, INVALID_STRING_ID, WL_WARNING);
 			}
 		} else if (_settings_game.difficulty.diff_level != 3) {
 			IConsoleSetSetting("difficulty.diff_level", 3);
@@ -632,7 +632,7 @@ struct AIConfigWindow : public Window {
 
 			case AIC_WIDGET_CONTENT_DOWNLOAD:
 				if (!_network_available) {
-					ShowErrorMessage(STR_NETWORK_ERROR_NOTAVAILABLE, INVALID_STRING_ID, 0, 0);
+					ShowErrorMessage(STR_NETWORK_ERROR_NOTAVAILABLE, INVALID_STRING_ID, WL_ERROR);
 				} else {
 #if defined(ENABLE_NETWORK)
 					ShowNetworkContentListWindow(NULL, CONTENT_TYPE_AI);
@@ -1013,6 +1013,6 @@ void ShowAIDebugWindow(CompanyID show_company)
 		if (w == NULL) w = new AIDebugWindow(&_ai_debug_desc, 0);
 		if (show_company != INVALID_COMPANY) w->ChangeToAI(show_company);
 	} else {
-		ShowErrorMessage(STR_ERROR_AI_DEBUG_SERVER_ONLY, INVALID_STRING_ID, 0, 0);
+		ShowErrorMessage(STR_ERROR_AI_DEBUG_SERVER_ONLY, INVALID_STRING_ID, WL_INFO);
 	}
 }

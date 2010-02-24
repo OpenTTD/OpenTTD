@@ -331,7 +331,7 @@ struct GameOptionsWindow : Window {
 			case GOW_FULLSCREEN_BUTTON: // Click fullscreen on/off
 				/* try to toggle full-screen on/off */
 				if (!ToggleFullScreen(!_fullscreen)) {
-					ShowErrorMessage(STR_ERROR_FULLSCREEN_FAILED, INVALID_STRING_ID, 0, 0);
+					ShowErrorMessage(STR_ERROR_FULLSCREEN_FAILED, INVALID_STRING_ID, WL_ERROR);
 				}
 				this->SetWidgetLoweredState(GOW_FULLSCREEN_BUTTON, _fullscreen);
 				this->SetDirty();
@@ -660,7 +660,7 @@ public:
 					AI::GetInfoList()->size() == 0 &&
 #endif /* ENABLE_AI */
 					this->opt_mod_temp.difficulty.max_no_competitors != 0) {
-				ShowErrorMessage(STR_WARNING_NO_SUITABLE_AI, INVALID_STRING_ID, 0, 0, true);
+				ShowErrorMessage(STR_WARNING_NO_SUITABLE_AI, INVALID_STRING_ID, WL_CRITICAL);
 			}
 			return;
 		}

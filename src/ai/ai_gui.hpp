@@ -22,7 +22,7 @@ void ShowAIConfigWindow();
 
 static inline void ShowAIConfigWindow()
 {
-	ShowErrorMessage(STR_ERROR_NO_AI, STR_ERROR_NO_AI_SUB, 0, 0);
+	ShowErrorMessage(STR_ERROR_NO_AI, STR_ERROR_NO_AI_SUB, WL_INFO);
 }
 static inline void ShowAIDebugWindow(CompanyID show_company = INVALID_COMPANY) {ShowAIConfigWindow();}
 #endif /* ENABLE_AI */

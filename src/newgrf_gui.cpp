@@ -44,7 +44,7 @@ void ShowNewGRFError()
 		for (uint i = 0; i < c->error->num_params; i++) {
 			SetDParam(6 + i, c->error->param_value[i]);
 		}
-		ShowErrorMessage(STR_NEWGRF_ERROR_FATAL_POPUP, INVALID_STRING_ID, 0, 0, true);
+		ShowErrorMessage(STR_NEWGRF_ERROR_FATAL_POPUP, INVALID_STRING_ID, WL_CRITICAL);
 		break;
 	}
 }
@@ -370,7 +370,7 @@ public:
 					/* Find last entry in the list, checking for duplicate grfid on the way */
 					for (list = this->list; *list != NULL; list = &(*list)->next) {
 						if ((*list)->grfid == src->grfid) {
-							ShowErrorMessage(STR_NEWGRF_DUPLICATE_GRFID, INVALID_STRING_ID, 0, 0);
+							ShowErrorMessage(STR_NEWGRF_DUPLICATE_GRFID, INVALID_STRING_ID, WL_INFO);
 							return;
 						}
 					}
@@ -850,7 +850,7 @@ struct NewGRFWindow : public Window {
 
 			case SNGRFS_CONTENT_DOWNLOAD:
 				if (!_network_available) {
-					ShowErrorMessage(STR_NETWORK_ERROR_NOTAVAILABLE, INVALID_STRING_ID, 0, 0);
+					ShowErrorMessage(STR_NETWORK_ERROR_NOTAVAILABLE, INVALID_STRING_ID, WL_ERROR);
 				} else {
 #if defined(ENABLE_NETWORK)
 				/* Only show the things in the current list, or everything when nothing's selected */

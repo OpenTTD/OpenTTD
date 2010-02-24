@@ -857,7 +857,7 @@ static bool DifficultyChange(int32)
 {
 	if (_game_mode == GM_MENU) {
 		if (_settings_newgame.difficulty.diff_level != 3) {
-			ShowErrorMessage(STR_WARNING_DIFFICULTY_TO_CUSTOM, INVALID_STRING_ID, 0, 0);
+			ShowErrorMessage(STR_WARNING_DIFFICULTY_TO_CUSTOM, INVALID_STRING_ID, WL_WARNING);
 			_settings_newgame.difficulty.diff_level = 3;
 		}
 		SetWindowClassesDirty(WC_SELECT_GAME);
@@ -870,7 +870,7 @@ static bool DifficultyChange(int32)
 			AI::GetInfoList()->size() == 0 &&
 #endif /* ENABLE_AI */
 			(!_networking || _network_server)) {
-		ShowErrorMessage(STR_WARNING_NO_SUITABLE_AI, INVALID_STRING_ID, 0, 0, true);
+		ShowErrorMessage(STR_WARNING_NO_SUITABLE_AI, INVALID_STRING_ID, WL_CRITICAL);
 	}
 
 	/* If we are a network-client, update the difficult setting (if it is open).
@@ -925,14 +925,14 @@ static bool CheckFreeformEdges(int32 p1)
 		Ship *s;
 		FOR_ALL_SHIPS(s) {
 			if (TileX(s->tile) == 0 || TileY(s->tile) == 0) {
-				ShowErrorMessage(STR_CONFIG_SETTING_EDGES_NOT_EMPTY, INVALID_STRING_ID, 0, 0);
+				ShowErrorMessage(STR_CONFIG_SETTING_EDGES_NOT_EMPTY, INVALID_STRING_ID, WL_ERROR);
 				return false;
 			}
 		}
 		Station *st;
 		FOR_ALL_STATIONS(st) {
 			if (TileX(st->xy) == 0 || TileY(st->xy) == 0) {
-				ShowErrorMessage(STR_CONFIG_SETTING_EDGES_NOT_EMPTY, INVALID_STRING_ID, 0, 0);
+				ShowErrorMessage(STR_CONFIG_SETTING_EDGES_NOT_EMPTY, INVALID_STRING_ID, WL_ERROR);
 				return false;
 			}
 		}
@@ -941,25 +941,25 @@ static bool CheckFreeformEdges(int32 p1)
 	} else {
 		for (uint i = 0; i < MapMaxX(); i++) {
 			if (TileHeight(TileXY(i, 1)) != 0) {
-				ShowErrorMessage(STR_CONFIG_SETTING_EDGES_NOT_WATER, INVALID_STRING_ID, 0, 0);
+				ShowErrorMessage(STR_CONFIG_SETTING_EDGES_NOT_WATER, INVALID_STRING_ID, WL_ERROR);
 				return false;
 			}
 		}
 		for (uint i = 1; i < MapMaxX(); i++) {
 			if (!IsTileType(TileXY(i, MapMaxY() - 1), MP_WATER) || TileHeight(TileXY(1, MapMaxY())) != 0) {
-				ShowErrorMessage(STR_CONFIG_SETTING_EDGES_NOT_WATER, INVALID_STRING_ID, 0, 0);
+				ShowErrorMessage(STR_CONFIG_SETTING_EDGES_NOT_WATER, INVALID_STRING_ID, WL_ERROR);
 				return false;
 			}
 		}
 		for (uint i = 0; i < MapMaxY(); i++) {
 			if (TileHeight(TileXY(1, i)) != 0) {
-				ShowErrorMessage(STR_CONFIG_SETTING_EDGES_NOT_WATER, INVALID_STRING_ID, 0, 0);
+				ShowErrorMessage(STR_CONFIG_SETTING_EDGES_NOT_WATER, INVALID_STRING_ID, WL_ERROR);
 				return false;
 			}
 		}
 		for (uint i = 1; i < MapMaxY(); i++) {
 			if (!IsTileType(TileXY(MapMaxX() - 1, i), MP_WATER) || TileHeight(TileXY(MapMaxX(), i)) != 0) {
-				ShowErrorMessage(STR_CONFIG_SETTING_EDGES_NOT_WATER, INVALID_STRING_ID, 0, 0);
+				ShowErrorMessage(STR_CONFIG_SETTING_EDGES_NOT_WATER, INVALID_STRING_ID, WL_ERROR);
 				return false;
 			}
 		}
@@ -988,7 +988,7 @@ static bool ChangeDynamicEngines(int32 p1)
 	const Vehicle *v;
 	FOR_ALL_VEHICLES(v) {
 		if (IsCompanyBuildableVehicleType(v)) {
-			ShowErrorMessage(STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES, INVALID_STRING_ID, 0, 0);
+			ShowErrorMessage(STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES, INVALID_STRING_ID, WL_ERROR);
 			return false;
 		}
 	}
