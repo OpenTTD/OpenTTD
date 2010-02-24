@@ -18,6 +18,10 @@
  *
  * 1.1.0 is not yet released. The following changes are not set in stone yet.
  *
+ * Other changes:
+ * \li AIRoad::BuildRoadStation now allows overbuilding
+ * \li AIRoad::BuildDriveThroughRoadStation now allows overbuilding
+ *
  * \b 1.0.0
  *
  * 1.0.0 is not yet released. The following changes are not set in stone yet.
