@@ -562,7 +562,7 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Diner:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Préstec:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Quantitat de vehicles que han donat beneficis durant el darrer any; Inclou els automòbils, trens, vaixells i avions
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Quantitat de vehicles que han donat beneficis el darrer any. Inclou els automòbils, trens, vaixells i avions
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Quantitat de parts d'una es estació revisades. Cada part d'una estació (ex. estació de tren, parada d'autobús, aeroport) es compta, encara que estigui connectada com una sola estació.
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}El benefici del vehicle amb els menors ingressos (només s'han considerat els vehicles més antics de 2 anys)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Quantitat de diners fets durant el quatrimestre amb el mínim benefici dels darrers 12 quatrimestres
@@ -2122,6 +2122,7 @@ STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Coordena
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Construït: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Classe d'estació: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Tipus d'estació: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Nom de la cel·la d'Aeroport: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Càrrega acceptada: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
@@ -2379,7 +2380,7 @@ STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lectura despré
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Alerta!
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Estàs a punt de fer canvis en un joc actiu; això pot fer que OpenTTD es pengi.{}Estàs completament segur que vols fer-los?
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Estàs a punt de fer canvis en un joc actiu. Això pot fer que OpenTTD es pengi.{}Estàs completament segur que vols fer-los?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}No es pot afegir l'arxiu: ID GRF duplicada
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}No s'ha trobat un arxiu coincident (els GRF compatibles s'han carregat)
@@ -2904,10 +2905,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Mostra e
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Mostra els detalls del vaixell
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Mostra els detalls de l'avió
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Acció sobre el tren actual - clica aquí per parar/engegar el tren
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Acció sobre el vehicle actual - clica aquí per parar/engegar el vehicle
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Accions sobre el vaixell actual - clica aquí per parar/engegar el vaixell
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Accions sobre l'avió actual - clica aquí per parar/engegar l'avió
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Acció sobre el tren actual - clica aquí per parar/engegar el tren. Ctrl+Clic per saltar a la destinació
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Acció sobre el vehicle actual - clica aquí per parar/engegar el vehicle. Ctrl+Clic per saltar a la destinació
+STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Accions sobre el vaixell actual - clica aquí per parar/engegar el vaixell. Ctrl+Clic per saltar a la destinació
+STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Accions sobre l'avió actual - clica aquí per parar/engegar l'avió. Ctrl+Clic per saltar a la destinació
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Carregant / Descarregant
@@ -3308,6 +3309,9 @@ STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}...no s'
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Alerta d'escala
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}No es recomana redimensionar massa el mapa d'origen. Vols continuar amb la generació?
 
+# Soundset messages
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Només s'ha trobat el conjunt de sons buit. Si vols sons al joc, instal·la un conjunt de sons amb el sistema de descàrregues de continguts en línia.
+
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Còpia de pantalla desada correctament a disc com a '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Error a la còpia de pantalla!
@@ -3475,6 +3479,7 @@ STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(límit de dine
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Combinació de vies impossible
+STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Abans s'han de treure les senyals
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Via de tren no apropiada
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}S'ha de treure la via primer
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}La carretera és un d'un sol sentit o està bloquejada

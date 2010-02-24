@@ -409,15 +409,15 @@ STR_SETTINGS_MENU_GAME_OPTIONS                                  :Nastavenia hry
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Nastavenia obtiažnosti
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Rozšírené nastavenia
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Nastavenie NewGRF
-STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Nastavenia priehladnosti
+STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Nastavenia priehľadnosti
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Zobraziť názvy miest
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Zobraziť názvy staníc
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Zobraziť navigačné body
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Zobrazit popisy
-STR_SETTINGS_MENU_FULL_ANIMATION                                :Plna animacia
-STR_SETTINGS_MENU_FULL_DETAIL                                   :Plne detaily
-STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Priesvitne budovy
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Transparentne nazvy stanic
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Zobraziť popisy
+STR_SETTINGS_MENU_FULL_ANIMATION                                :Plná animácia
+STR_SETTINGS_MENU_FULL_DETAIL                                   :Plné detaily
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Priesvitné budovy
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Priesvitné názvy staníc
 ############ range ends here
 
 ############ range for file menu starts
@@ -768,7 +768,7 @@ STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Prepnú�
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Zobrazit poslednu spravu alebo novinku
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  ZASTAVENE  *  *
+STR_STATUSBAR_PAUSED                                            :{YELLOW}*  *  PAUZA  *  *
 STR_STATUSBAR_AUTOSAVE                                          :{RED}AUTOULOŽENIE
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  HRA SA UKLADÁ  *  *
 
@@ -1011,7 +1011,7 @@ STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Zvoľte 
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} chýbajúci/poškodený súbor{P "" "y" "ov"}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Dodatočné informácie o základnom grafickom sete
 
-STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Základný set zvukov
+STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Základná sada zvukov
 STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Vyberte základné zvuky
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Dodatočné informácie o základnej sade zvukov
 
@@ -1375,28 +1375,28 @@ STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interak
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signály
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Manipulácia s tovarom
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Počítačový hráči
-STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Autoobnova
+STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Automatická obnova
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Servis
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Smerovanie
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Vlaky
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Mestá
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Priemysel
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Algoritmus hladania cesty pre vlaky: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Algoritmus hľadania cesty pre vlaky: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(odporúca sa)
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Algoritmus hladania cesty pre automobily: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(odporučený)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Algoritmus hľadania cesty pre automobily: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_NPF             :NPF
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_YAPF            :YAPF {BLUE}(odporúca sa)
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Algoritmus hladania cesty pre lode: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :pôvodný {BLUE}(odporúca sa)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_YAPF            :YAPF {BLUE}(odporučený)
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Algoritmus hľadania cesty pre lode: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :pôvodný {BLUE}(odporučený)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(neodporúca sa)
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(neodporúča sa)
 
 STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}X-rozmer mapy: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Y-rozmer mapy: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Zmenit hodnotu nastavenia
+STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Zmeniť hodnotu nastavenia
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -1420,7 +1420,7 @@ STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Spustiť
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Nahrať uloženú hru
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Začať novú hru s použitím výškovej mapy ako krajiny
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Spustiť novú hru s použitím vlastného scenára
-STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Vytvoriť vlastný scenár
+STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Vytvoriť vlastnú krajinu/scenár
 STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Spustiť hru viacerých hráčov
 
 STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}Vybrať krajinu mierneho pásma
@@ -1430,7 +1430,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Vybrať 
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Zobraziť nastavenia hry
 STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Zobraziť nastavenia obtiažnosti
-STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Zobrazit rozšírené nastavenia
+STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Zobraziť rozšírené nastavenia
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Zobraziť NewGRF nastavenia
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Skontrolovať nový a aktualizovaný obsah pre stiahnutie
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Zobraziť AI nastavenia
@@ -1457,71 +1457,71 @@ STR_OSNAME_SUNOS                                                :SunOS
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Opustiť hru
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Si si istý, že chceš opustiť túto hru?
-STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Si si istý že chceš ukončiť tento scenár?
+STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Si si istý že chceš opustiť tento scenár?
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Cheaty
-STR_CHEATS_TOOLTIP                                              :{BLACK}Checkbox indikuje opakovane pouzite cheatu
-STR_CHEATS_WARNING                                              :{BLACK}Varovanie! Chcete podviest vasich protihracov. Tento podvod sa navzdy zapameta.
+STR_CHEATS_TOOLTIP                                              :{BLACK}Zaškrtávacie pole indikuje opakované použite cheatu
+STR_CHEATS_WARNING                                              :{BLACK}Varovanie! Chceš podviesť svojich protihráčov. Tento podvod bude navždy zaznamenaný.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Zvýšiť hotovosť o {CURRENCY}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Hrať za spoločnosť: {ORANGE}{COMMA}
-STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magicky buldozer (odstrani priemysel, budovy): {ORANGE}{STRING}
-STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunely sa mozu navzajom krizit: {ORANGE}{STRING}
-STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Umožniť výstavbu v pauze: {ORANGE}{STRING}
-STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Prudove lietadla nehavaruju (tak casto) na malych letiskach: {ORANGE} {STRING}
-STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Zmenit klimu: {ORANGE} {STRING}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magický buldozér (odstráni priemysel a nehnuteľnosti): {ORANGE}{STRING}
+STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunely sa môžu navzájom krížiť: {ORANGE}{STRING}
+STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Umožniť výstavbu cez pauzu: {ORANGE}{STRING}
+STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Prúdové lietadlá nehavarujú (tak často) na malých letiskách: {ORANGE} {STRING}
+STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Zmeniť klímu: {ORANGE} {STRING}
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Krajina mierneho pásma
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Subarktická krajina
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Subtropická krajina
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Krajina hračiek
-STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Zmenit datum: {ORANGE} {DATE_SHORT}
+STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Zmeniť dátum: {ORANGE} {DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Povoliť zmenu objemu výroby: {ORANGE}{STRING}
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}Nová farebná schéma
 
-STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Zobrazit všeobecné farebné schémy
-STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Zobrazit farebné schémy pre vlaky
-STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Zobrazit farebné schémy pre cestné vozidlá
-STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Zobrazit farebné schémy pre lode
-STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Zobrazit farebné schémy pre lietadlá
-STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Vyberte primárnu farbu pre vybranú farebnú schému
-STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Vybrat sekundárnu farbu pre vybranú farebnú schému
-STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Vybrat farebnú schému na zmenenie (pre viacero schém použite CTRL+klik). Kliknite na štvorec pre prepnutie používania schémy
+STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Zobraziť všeobecné farebné schémy
+STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Zobraziť farebné schémy pre vlaky
+STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Zobraziť farebné schémy pre cestné vozidlá
+STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Zobraziť farebné schémy pre lode
+STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Zobraziť farebné schémy pre lietadlá
+STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Vyber primárnu farbu pre vybranú schému
+STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Vyber sekundárnu farbu pre vybranú schému
+STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Vyber farebnú schému, ktorá sa má meniť (CTRL+klik pre viacero schém). Zaškrtávacie pole prepína používanie schémy
 
-STR_LIVERY_DEFAULT                                              :Standardna schema
-STR_LIVERY_STEAM                                                :Parny rusen
-STR_LIVERY_DIESEL                                               :Dieslovy rusen
-STR_LIVERY_ELECTRIC                                             :Elektricky rusen
-STR_LIVERY_MONORAIL                                             :Rusen pre Monorail
-STR_LIVERY_MAGLEV                                               :Rusen pre MagLev
+STR_LIVERY_DEFAULT                                              :Štandardná schéma
+STR_LIVERY_STEAM                                                :Parný rušeň
+STR_LIVERY_DIESEL                                               :Dieselový rušeň
+STR_LIVERY_ELECTRIC                                             :Elektrický rušeň
+STR_LIVERY_MONORAIL                                             :Rušeň pre Jednokoľajku
+STR_LIVERY_MAGLEV                                               :MagLev rušeň
 STR_LIVERY_DMU                                                  :DMU
 STR_LIVERY_EMU                                                  :EMU
-STR_LIVERY_PASSENGER_WAGON_STEAM                                :Osobny vozen (Parny)
-STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Osobny vozen (Diesel)
-STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Osobny vozen (Elektricky)
-STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Vagón pre cestujúcich (Monorail)
-STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Vagón pre cestujúcich (Maglev)
-STR_LIVERY_FREIGHT_WAGON                                        :Nakladny vagon
+STR_LIVERY_PASSENGER_WAGON_STEAM                                :Vagón pre cestujúcich (parný)
+STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Vagón pre cestujúcich (diesel)
+STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Vagón pre cestujúcich (elektrický)
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Vagón pre cestujúcich (jednokoľajka)
+STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Vagón pre cestujúcich (MagLev)
+STR_LIVERY_FREIGHT_WAGON                                        :Nákladný vagón
 STR_LIVERY_BUS                                                  :Autobus
-STR_LIVERY_TRUCK                                                :Nakladny automobil
-STR_LIVERY_PASSENGER_SHIP                                       :Trajekt pre cestujucich
-STR_LIVERY_FREIGHT_SHIP                                         :Nakladna lod
-STR_LIVERY_HELICOPTER                                           :Helikoptera
-STR_LIVERY_SMALL_PLANE                                          :Male lietadlo
-STR_LIVERY_LARGE_PLANE                                          :Velke lietadlo
-STR_LIVERY_PASSENGER_TRAM                                       :Osobná elektricka
-STR_LIVERY_FREIGHT_TRAM                                         :Nákladná elektricka
+STR_LIVERY_TRUCK                                                :Nákladné auto
+STR_LIVERY_PASSENGER_SHIP                                       :Trajekt pre cestujúcich
+STR_LIVERY_FREIGHT_SHIP                                         :Nákladná loď
+STR_LIVERY_HELICOPTER                                           :Vrtuľník
+STR_LIVERY_SMALL_PLANE                                          :Malé lietadlo
+STR_LIVERY_LARGE_PLANE                                          :Veľké lietadlo
+STR_LIVERY_PASSENGER_TRAM                                       :Električka pre cestujúcich
+STR_LIVERY_FREIGHT_TRAM                                         :Nákladná električka
 
 # Face selection window
-STR_FACE_CAPTION                                                :{WHITE}Vyber tvare
+STR_FACE_CAPTION                                                :{WHITE}Výber tváre
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Zrušiť výber novej tváre
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Potvrdiť výber tváre
 
-STR_FACE_MALE_BUTTON                                            :{BLACK}Muz
-STR_FACE_MALE_TOOLTIP                                           :{BLACK}Vyber muzskych tvari
-STR_FACE_FEMALE_BUTTON                                          :{BLACK}Zena
-STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Vyber ženské tváre
+STR_FACE_MALE_BUTTON                                            :{BLACK}Muž
+STR_FACE_MALE_TOOLTIP                                           :{BLACK}Výber mužských tvárí
+STR_FACE_FEMALE_BUTTON                                          :{BLACK}Žena
+STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Výber ženských tvárí
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Nová tvár
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Náhodná nová tvár
 STR_FACE_ADVANCED                                               :{BLACK}Rozšírený
@@ -2188,6 +2188,7 @@ STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Súradni
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Postavene: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Trieda stanice: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Typ stanice: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Názov letiska: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Prijíma náklad: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
@@ -2764,7 +2765,7 @@ STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Nove Lie
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Hmotnost: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Rýchlosť: {GOLD}{VELOCITY}{BLACK} Výkon: {GOLD}{POWER}
-STR_PURCHASE_INFO_SPEED                                         :{BLACK}Rychlost: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED                                         :{BLACK}Rýchlosť: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Náklady na prevádzku: {GOLD}{CURRENCY}/rok
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapacita: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(mozna prestavba)
@@ -2980,7 +2981,7 @@ STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Naklada
 STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Opúšta
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Znicene!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Pokazený
-STR_VEHICLE_STATUS_STOPPED                                      :{RED}Zastavene
+STR_VEHICLE_STATUS_STOPPED                                      :{RED}Zastavené
 STR_VEHICLE_STATUS_TRAIN_STOPPING                               :{RED}Zastavuje
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Zastavuje, {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Nie je prud
@@ -3114,7 +3115,7 @@ STR_ORDER_GO_VIA                                                :Choď cez
 STR_ORDER_GO_NON_STOP_VIA                                       :Choď non-stop cez
 STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Zmenit sposob zastavovania pre tento príkaz
 
-STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Plne nalož cokolvek
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Plne nalož čokoľvek
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Nalož pri dostupnosti
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Plne nalož všetko
 STR_ORDER_DROP_FULL_LOAD_ANY                                    :Plne nalož čokoľvek
@@ -3140,7 +3141,7 @@ STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Vynechat
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Údaje vozidla na základe ktorých sa vykoná skok
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Percento naplnenia
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Spolahlivost
-STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Maximálna rýchlost
+STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Maximálna rýchlosť
 STR_ORDER_CONDITIONAL_AGE                                       :Vek vozidla (v rokoch)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Vyžaduje servis
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Vždy
@@ -3373,6 +3374,9 @@ STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}...nie j
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Upozornenie na stupnicu
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Prilis velka zmena velkosti zdrojovej mapy sa neodporuca. Pokracovat s generovanim?
+
+# Soundset messages
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Bola nájdená len núdzová sada zvukov. Pre plnú podporu zvukových efektov je potrebné nainštalovať zvukovú sadu cez online obsah.
 
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Screenshot bol ulozeny na disk ako '{STRING}'

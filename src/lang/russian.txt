@@ -3051,7 +3051,7 @@ STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE
 STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Показать поезд в основном окне. Ctrl+клик будет следить за поездом в главном окне
 STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Показать автомобиль в главном окне. Ctrl+клик будет следить за автомобилем в главном окне
 STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Показать корабль в главном окне. Ctrl+Click будет следить за кораблем в главном окне
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Показать самолет в главном окне. Ctrl+клик будет следить за самолетом в главном окне
+STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Показать самолёт в главном окне. Ctrl+клик будет следить за самолётом в главном окне
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Отправить поезд в депо. Ctrl+клик - только для обслуживания.
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Отправить автомобиль в гараж. Ctrl+клик - только для обслуживания.

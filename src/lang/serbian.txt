@@ -2517,8 +2517,8 @@ STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Promeni 
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Menja paletu označenog NewGRF-a.{}Promenite paletu ako grafici iz NewGRF-a su ružičasti tokom igre
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Primeni promene
 
-STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Traži nedostajući fajl na Mreži
-STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Pretražuje za nedostajuću dodataku na Internetu
+STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Traži nedostajući dodatak
+STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Proverite da li se nedostajući dodaci mogu naći na mreži
 
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Datoteka: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID: {SILVER}{STRING}
@@ -3502,6 +3502,9 @@ STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}...ne mo
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Upozorenje o veličini
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Preterana promena veličine karte nije preporučljiva. Da li da se nastavi generisanje?
+
+# Soundset messages
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Pronađen je samo rezervni skup zvukova. Ukoliko želite zvukove, preuzmite skup zvukova preko sistema za dodatke.
 
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Slika je snimljena pod imenom '{STRING}'

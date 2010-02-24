@@ -2121,6 +2121,7 @@ STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Coördin
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Bouwjaar: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Stationsklasse: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Stationstype: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Vliegveld tegel naam: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Geaccepteerde vracht: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
@@ -2378,7 +2379,7 @@ STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lees voorbij ei
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Waarschuwing!
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Je staat op het punt om wijzigingen te maken aan een lopend spel; dit dan OpenTTD laten vastlopen.{}Weet je het heel zeker?
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Je staat op het punt om wijzigingen te maken aan een lopend spel; dit kan OpenTTD laten vastlopen.{}Weet je het heel zeker?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Kan bestand niet toevoegen: identieke GRF-ID
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Bijbehorend bestand niet gevonden (compatibele GRF geladen)
@@ -2903,10 +2904,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Toon det
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Toon details van schip
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Toon details van vliegtuig
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Huidige actie van trein - klik hier om de trein te starten/stoppen
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Huidige actie van wegvoertuig - klik hier om voertuig te starten of te stoppen
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Huidige actie van schip - klik hier om het te starten of te stoppen
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Huidige actie van vliegtuig - klik hier om het vliegtuig te stoppen of te starten
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Huidige actie van trein - klik hier om de trein te starten/stoppen. Ctrl+klik om naar bestemming te scrollen
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Huidige actie van wegvoertuig - klik hier om voertuig te starten/stoppen. Ctrl+klik om naar bestemming te scrollen
+STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Huidige actie van schip - klik hier om het te starten/stoppen. Ctrl+klik om naar bestemming te scrollen
+STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Huidige actie van vliegtuig - klik hier om het vliegtuig te stoppen/starten. Ctrl+klik om naar bestemming te scrollen
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}In- en uitladen
@@ -3306,6 +3307,9 @@ STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... kan 
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Schaalwaarschuwing
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Het aanpassen van de grootte van een bronkaart is niet aan te bevelen. Toch doorgaan?
+
+# Soundset messages
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Alleen backup geluid is gevonden. Als je geluid wilt, installeer dan een geluiddsset via het downloadsysteem.
 
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Screenshot succesvol opgeslagen als '{STRING}'
