@@ -1586,17 +1586,18 @@ static RoadStop **FindRoadStopSpot(bool truck_station, Station *st)
 	}
 }
 
-/** Build a bus or truck stop
- * @param tile tile to build the stop at
- * @param flags operation to perform
- * @param p1 entrance direction (DiagDirection)
- * @param p2 bit 0: 0 for Bus stops, 1 for truck stops
- *           bit 1: 0 for normal, 1 for drive-through
- *           bit 2..3: the roadtypes
- *           bit 5: allow stations directly adjacent to other stations.
- *           bit 16..31: station ID to join (NEW_STATION if build new one)
- * @param text unused
- * @return the cost of this operation or an error
+/** Build a bus or truck stop.
+ * @param tile Tile to build the stop at.
+ * @param flags Operation to perform.
+ * @param p1 Unused.
+ * @param p2 bit 0: 0 For bus stops, 1 for truck stops.
+ *           bit 1: 0 For normal stops, 1 for drive-through.
+ *           bit 2..3: The roadtypes.
+ *           bit 5: Allow stations directly adjacent to other stations.
+ *           bit 6..7: Entrance direction (DiagDirection).
+ *           bit 16..31: Station ID to join (NEW_STATION if build new one).
+ * @param text Unused.
+ * @return The cost of this operation or an error.
  */
 CommandCost CmdBuildRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -1618,16 +1619,18 @@ CommandCost CmdBuildRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	/* Trams only have drive through stops */
 	if (!is_drive_through && HasBit(rts, ROADTYPE_TRAM)) return CMD_ERROR;
 
-	/* Saveguard the parameters */
-	if (!IsValidDiagDirection((DiagDirection)p1)) return CMD_ERROR;
-	/* If it is a drive-through stop check for valid axis */
-	if (is_drive_through && !IsValidAxis((Axis)p1)) return CMD_ERROR;
+	DiagDirection ddir = (DiagDirection)GB(p2, 6, 2);
+
+	/* Safeguard the parameters. */
+	if (!IsValidDiagDirection(ddir)) return CMD_ERROR;
+	/* If it is a drive-through stop, check for valid axis. */
+	if (is_drive_through && !IsValidAxis((Axis)ddir)) return CMD_ERROR;
 	/* Road bits in the wrong direction */
-	if (build_over_road && (GetAllRoadBits(tile) & ((Axis)p1 == AXIS_X ? ROAD_Y : ROAD_X)) != 0) return_cmd_error(STR_ERROR_DRIVE_THROUGH_DIRECTION);
+	if (build_over_road && (GetAllRoadBits(tile) & (DiagDirToAxis(ddir) == AXIS_X ? ROAD_Y : ROAD_X)) != 0) return_cmd_error(STR_ERROR_DRIVE_THROUGH_DIRECTION);
 
 	if (!CheckIfAuthorityAllowsNewStation(tile, flags)) return CMD_ERROR;
 
-	CommandCost cost = CheckFlatLandRoadStop(tile, flags, is_drive_through ? 5 << p1 : 1 << p1, build_over_road, rts);
+	CommandCost cost = CheckFlatLandRoadStop(tile, flags, is_drive_through ? 5 << ddir : 1 << ddir, build_over_road, rts);
 	if (cost.Failed()) return cost;
 
 	Station *st = NULL;
@@ -1683,10 +1686,10 @@ CommandCost CmdBuildRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 
 		RoadStopType rs_type = type ? ROADSTOP_TRUCK : ROADSTOP_BUS;
 		if (is_drive_through) {
-			MakeDriveThroughRoadStop(tile, st->owner, road_owner, tram_owner, st->index, rs_type, rts, (Axis)p1);
+			MakeDriveThroughRoadStop(tile, st->owner, road_owner, tram_owner, st->index, rs_type, rts, DiagDirToAxis(ddir));
 			road_stop->MakeDriveThrough();
 		} else {
-			MakeRoadStop(tile, st->owner, st->index, rs_type, rts, (DiagDirection)p1);
+			MakeRoadStop(tile, st->owner, st->index, rs_type, rts, ddir);
 		}
 
 		st->UpdateVirtCoord();

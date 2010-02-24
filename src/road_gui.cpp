@@ -196,8 +196,6 @@ void CcRoadDepot(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2
 	SndPlayTileFx(SND_1F_SPLAT, tile);
 	if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
 	BuildRoadOutsideStation(tile, dir);
-	/* For a drive-through road stop build connecting road for other entrance */
-	if (HasBit(p2, 1)) BuildRoadOutsideStation(tile, ReverseDiagDir(dir));
 }
 
 static void PlaceRoad_Depot(TileIndex tile)
@@ -205,16 +203,42 @@ static void PlaceRoad_Depot(TileIndex tile)
 	DoCommandP(tile, _cur_roadtype << 2 | _road_depot_orientation, 0, CMD_BUILD_ROAD_DEPOT | CMD_MSG(_road_type_infos[_cur_roadtype].err_depot), CcRoadDepot);
 }
 
+/** Command callback for building road stops.
+ * @param result Result of the build road stop command.
+ * @param tile Tile to build the stop at.
+ * @param p1 Unused.
+ * @param p2 bit 0: 0 For bus stops, 1 for truck stops.
+ *           bit 1: 0 For normal stops, 1 for drive-through.
+ *           bit 2..3: The roadtypes.
+ *           bit 5: Allow stations directly adjacent to other stations.
+ *           bit 6..7: Entrance direction (#DiagDirection).
+ *           bit 16..31: Station ID to join (NEW_STATION if build new one).
+ * @see CmdBuildRoadStop
+ */
+void CcRoadStop(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
+{
+	if (result.Failed()) return;
+
+	DiagDirection dir = (DiagDirection)GB(p2, 6, 2);
+	SndPlayTileFx(SND_1F_SPLAT, tile);
+	if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
+	BuildRoadOutsideStation(tile, dir);
+	/* For a drive-through road stop build connecting road for other entrance. */
+	if (HasBit(p2, 1)) BuildRoadOutsideStation(tile, ReverseDiagDir(dir));
+}
+
 static void PlaceRoadStop(TileIndex tile, uint32 p2, uint32 cmd)
 {
-	uint32 p1 = _road_station_picker_orientation;
+	uint8 ddir = _road_station_picker_orientation;
 	SB(p2, 16, 16, INVALID_STATION); // no station to join
 
-	if (p1 >= DIAGDIR_END) {
-		SetBit(p2, 1); // It's a drive-through stop
-		p1 -= DIAGDIR_END; // Adjust picker result to actual direction
+	if (ddir >= DIAGDIR_END) {
+		SetBit(p2, 1); // It's a drive-through stop.
+		ddir -= DIAGDIR_END; // Adjust picker result to actual direction.
 	}
-	CommandContainer cmdcont = { tile, p1, p2, cmd, CcRoadDepot, "" };
+	p2 |= ddir << 6; // Set the DiagDirecion into p2 bits 6 and 7.
+
+	CommandContainer cmdcont = { tile, 0, p2, cmd, CcRoadStop, "" };
 	ShowSelectStationIfNeeded(cmdcont, TileArea(tile, 1, 1));
 }
 

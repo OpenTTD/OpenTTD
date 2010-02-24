@@ -123,6 +123,7 @@ CommandCallback CcBuildRailTunnel;
 CommandCallback CcPlaySound1D;
 CommandCallback CcBuildRoadTunnel;
 CommandCallback CcRoadDepot;
+CommandCallback CcRoadStop;
 
 /* train_gui.cpp */
 CommandCallback CcBuildWagon;

@@ -528,8 +528,9 @@ static bool NeighbourHasReachableRoad(::RoadTypes rts, TileIndex start_tile, Dia
 	p2 |= drive_through ? 2 : 0;
 	p2 |= road_veh_type == ROADVEHTYPE_TRUCK ? 1 : 0;
 	p2 |= ::RoadTypeToRoadTypes(AIObject::GetRoadType()) << 2;
+	p2 |= entrance_dir << 6;
 	p2 |= (AIStation::IsValidStation(station_id) ? station_id : INVALID_STATION) << 16;
-	return AIObject::DoCommand(tile, entrance_dir, p2, CMD_BUILD_ROAD_STOP);
+	return AIObject::DoCommand(tile, 0, p2, CMD_BUILD_ROAD_STOP);
 }
 
 /* static */ bool AIRoad::BuildRoadStation(TileIndex tile, TileIndex front, RoadVehicleType road_veh_type, StationID station_id)
