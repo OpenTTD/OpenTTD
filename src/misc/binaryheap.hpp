@@ -22,7 +22,7 @@
  *
  * 1) It allocates space for item pointers (array). Items are allocated elsewhere.
  *
- * 2) ItemPtr [0] is never used. Total array size is max_items + 1, because we
+ * 2) T*[0] is never used. Total array size is max_items + 1, because we
  *    use indices 1..max_items instead of zero based C indexing.
  *
  * 3) Item of the binary heap should support these public members:
@@ -30,21 +30,19 @@
  *
  */
 
-template <class Titem_>
+template <class T>
 class CBinaryHeapT {
-public:
-	typedef Titem_ *ItemPtr;
 private:
-	int                     m_size;     ///< Number of items in the heap
-	int                     m_max_size; ///< Maximum number of items the heap can hold
-	ItemPtr                *m_items;    ///< The heap item pointers
+	uint m_size;     ///< Number of items in the heap
+	uint m_max_size; ///< Maximum number of items the heap can hold
+	T **m_items;       ///< The heap item pointers
 
 public:
-	explicit CBinaryHeapT(int max_items)
+	explicit CBinaryHeapT(uint max_items)
 		: m_size(0)
 		, m_max_size(max_items)
 	{
-		m_items = MallocT<ItemPtr>(max_items + 1);
+		m_items = MallocT<T*>(max_items + 1);
 	}
 
 	~CBinaryHeapT()
@@ -57,7 +55,7 @@ public:
 public:
 	/** Return the number of items stored in the priority queue.
 	 *  @return number of items in the queue */
-	FORCEINLINE int Size() const {return m_size;};
+	FORCEINLINE uint Size() const {return m_size;};
 
 	/** Test if the priority queue is empty.
 	 *  @return true if empty */
@@ -69,7 +67,7 @@ public:
 
 	/** Find the smallest item in the priority queue.
 	 *  Return the smallest item, or throw assert if empty. */
-	FORCEINLINE Titem_& GetHead()
+	FORCEINLINE T& GetHead()
 	{
 		assert(!IsEmpty());
 		return *m_items[1];
@@ -77,26 +75,26 @@ public:
 
 	/** Insert new item into the priority queue, maintaining heap order.
 	 *  @return false if the queue is full. */
-	FORCEINLINE void Push(Titem_& new_item)
+	FORCEINLINE void Push(T& new_item)
 	{
 		if (IsFull()) {
 			m_max_size *= 2;
-			m_items = ReallocT<ItemPtr>(m_items, m_max_size + 1);
+			m_items = ReallocT<T*>(m_items, m_max_size + 1);
 		}
 
 		/* make place for new item */
-		int gap = ++m_size;
+		uint gap = ++m_size;
 		/* Heapify up */
-		for (int parent = gap / 2; (parent > 0) && (new_item < *m_items[parent]); gap = parent, parent /= 2)
+		for (uint parent = gap / 2; (parent > 0) && (new_item < *m_items[parent]); gap = parent, parent /= 2)
 			m_items[gap] = m_items[parent];
 		m_items[gap] = &new_item;
 		CheckConsistency();
 	}
 
 	/** Remove and return the smallest item from the priority queue. */
-	FORCEINLINE Titem_& PopHead()
+	FORCEINLINE T& PopHead()
 	{
-		Titem_& ret = GetHead();
+		T& ret = GetHead();
 		RemoveHead();
 		return ret;
 	}
@@ -107,16 +105,16 @@ public:
 		assert(!IsEmpty());
 
 		/* at index 1 we have a gap now */
-		int gap = 1;
+		uint gap = 1;
 
 		/* Heapify down:
 		 *   last item becomes a candidate for the head. Call it new_item. */
-		Titem_& new_item = *m_items[m_size--];
+		T& new_item = *m_items[m_size--];
 
 		/* now we must maintain relation between parent and its children:
 		 *   parent <= any child
 		 * from head down to the tail */
-		int child  = 2; // first child is at [parent * 2]
+		uint child  = 2; // first child is at [parent * 2]
 
 		/* while children are valid */
 		while (child <= m_size) {
@@ -140,11 +138,11 @@ public:
 	}
 
 	/** Remove item specified by index */
-	FORCEINLINE void RemoveByIdx(int idx)
+	FORCEINLINE void RemoveByIdx(uint idx)
 	{
 		/* at position idx we have a gap now */
-		int gap = idx;
-		Titem_& last = *m_items[m_size];
+		uint gap = idx;
+		T& last = *m_items[m_size];
 		if (idx < m_size) {
 			assert(idx >= 1);
 			m_size--;
@@ -153,7 +151,7 @@ public:
 			while (gap > 1)
 			{
 				/* compare [gap] with its parent */
-				int parent = gap / 2;
+				uint parent = gap / 2;
 				if (last < *m_items[parent]) {
 					m_items[gap] = m_items[parent];
 					gap = parent;
@@ -166,7 +164,7 @@ public:
 			/* Heapify (move gap) down: */
 			while (true) {
 				/* where we do have our children? */
-				int child  = gap * 2; // first child is at [parent * 2]
+				uint child  = gap * 2; // first child is at [parent * 2]
 				if (child > m_size) break;
 				/* choose the smaller child */
 				if (child < m_size && *m_items[child + 1] < *m_items[child])
@@ -190,10 +188,10 @@ public:
 	}
 
 	/** return index of the item that matches (using &item1 == &item2) the given item. */
-	FORCEINLINE int FindLinear(const Titem_& item) const
+	FORCEINLINE uint FindLinear(const T& item) const
 	{
 		if (IsEmpty()) return 0;
-		for (ItemPtr *ppI = m_items + 1, *ppLast = ppI + m_size; ppI <= ppLast; ppI++) {
+		for (T **ppI = m_items + 1, **ppLast = ppI + m_size; ppI <= ppLast; ppI++) {
 			if (*ppI == &item) {
 				return ppI - m_items;
 			}
@@ -210,8 +208,8 @@ public:
 	{
 		/* enable it if you suspect binary heap doesn't work well */
 #if 0
-		for (int child = 2; child <= m_size; child++) {
-			int parent = child / 2;
+		for (uint child = 2; child <= m_size; child++) {
+			uint parent = child / 2;
 			assert(!(*m_items[child] < *m_items[parent]));
 		}
 #endif
