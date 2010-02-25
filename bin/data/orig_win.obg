@@ -15,8 +15,11 @@ description.en_GB = Original Transport Tycoon Deluxe Windows edition graphics.
 description.en_US = Original Transport Tycoon Deluxe Windows edition graphics.
 description.es_ES = Gráficos originales de Transport Tycoon Deluxe versión Windows.
 description.fi_FI = Alkuperäiset Transport Tycoon Deluxe Windows grafiikat.
-description.hu_HU = Az eredeti Transport Tycoon Deluxe Windows-os verziójának grafikája.
+description.fr_FR = Graphiques originaux de Transport Tycoon Deluxe (version Windows).
+description.hu_HU = Az eredeti Transport Tycoon Deluxe Windows verziójának grafikája.
+description.it_IT = Grafica originale di Transport Tycoon Deluxe, edizione Windows.
 description.nl_NL = Originele graphics van de Transport Tycoon Deluxe Windows-versie.
+description.sv_SE = Originalgrafiken från Transport Tycoon Deluxe, Windows-utgåvan.
 
 [files]
 base         = TRG1R.GRF

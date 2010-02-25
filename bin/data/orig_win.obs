@@ -14,8 +14,11 @@ description.en_GB = Original Transport Tycoon Deluxe Windows edition sounds.
 description.en_US = Original Transport Tycoon Deluxe Windows edition sounds.
 description.es_ES = Sonidos originales de Transport Tycoon Deluxe versión Windows.
 description.fi_FI = Alkuperäiset Transport Tycoon Deluxe Windows äänet.
-description.hu_HU = Az eredeti Transport Tycoon Deluxe Windows-os verziójának hangjai.
+description.hu_HU = Az eredeti Transport Tycoon Deluxe Windows verziójának hangjai.
+description.fr_FR = Sons originaux de Transport Tycoon Deluxe (version Windows).
+description.it_IT = Suoni originali di Transport Tycoon Deluxe, edizione Windows.
 description.nl_NL = Originele geluiden van de Transport Tycoon Deluxe Windows-versie.
+description.sv_SE = Originalljuden från Transport Tycoon Deluxe, Windows-utgåvan.
 
 [files]
 samples      = SAMPLE.CAT

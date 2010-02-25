@@ -14,8 +14,11 @@ description.en_GB = A sound pack without any sounds.
 description.en_US = A sound pack without any sounds.
 description.es_ES = Un conjunto de sonidos vacío.
 description.fi_FI = Äänipaketti ilman ääniä.
-description.hu_HU = Üres hang alapcsomag.
+description.fr_FR = Un pack de sons sans sons.
+description.hu_HU = Hang alapcsomag hangok nélkül.
+description.it_IT = Un pacchetto sonoro non contenente alcun suono.
 description.nl_NL = Een geluidset zonder geluid.
+description.sv_SE = Ett ljudpaket utan några ljud.
 
 [files]
 samples      =

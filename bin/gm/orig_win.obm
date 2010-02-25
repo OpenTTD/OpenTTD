@@ -14,8 +14,11 @@ description.en_GB = Original Transport Tycoon Deluxe Windows edition sounds.
 description.en_US = Original Transport Tycoon Deluxe Windows edition sounds.
 description.es_ES = Música original de Transport Tycoon Deluxe versión Windows.
 description.fi_FI = Alkuperäinen Transport Tycoon Deluxe Windows musiikki.
-description.hu_HU = Az eredeti Transport Tycoon Deluxe Windows-os verziójának zenéje.
+description.fr_FR = Musiques originales de Transport Tycoon Deluxe (version Windows).
+description.hu_HU = Az eredeti Transport Tycoon Deluxe Windows verziójának zenéje.
+description.it_IT = Musica originale di Transport Tycoon Deluxe, edizione Windows.
 description.nl_NL = Originele muziek van de Transport Tycoon Deluxe Windows-versie.
+description.sv_SE = Originalmusiken från Transport Tycoon Deluxe, Windows-utgåvan.
 
 [files]
 theme = GM_TT00.GM

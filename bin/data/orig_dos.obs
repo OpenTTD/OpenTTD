@@ -14,8 +14,11 @@ description.en_GB = Original Transport Tycoon Deluxe DOS edition sounds.
 description.en_US = Original Transport Tycoon Deluxe DOS edition sounds.
 description.es_ES = Sonidos originales de Transport Tycoon Deluxe versión DOS.
 description.fi_FI = Alkuperäiset Transport Tycoon Deluxe DOS äänet.
-description.hu_HU = Az eredeti Transport Tycoon Deluxe DOS-os verziójának hangjai.
+description.hu_HU = Az eredeti Transport Tycoon Deluxe DOS verziójának hangjai.
+description.fr_FR = Sons originaux de Transport Tycoon Deluxe (version DOS).
+description.it_IT = Suoni originali di Transport Tycoon Deluxe, edizione DOS.
 description.nl_NL = Originele geluiden van de Transport Tycoon Deluxe DOS-versie.
+description.sv_SE = Originalljuden från Transport Tycoon Deluxe, DOS-utgåvan.
 
 [files]
 samples      = SAMPLE.CAT

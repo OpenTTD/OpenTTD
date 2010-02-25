@@ -15,8 +15,11 @@ description.en_GB = Original Transport Tycoon Deluxe DOS (German) edition graphi
 description.en_US = Original Transport Tycoon Deluxe DOS (German) edition graphics.
 description.es_ES = Gráficos originales de Transport Tycoon Deluxe versión DOS (Alemán).
 description.fi_FI = Alkuperäiset Transport Tycoon Deluxe DOS (Saksalainen) grafiikat.
-description.hu_HU = Az eredeti Transport Tycoon Deluxe DOS-os verziójának grafikája (német változat).
+description.fr_FR = Graphiques originaux de Transport Tycoon Deluxe (version DOS allemande).
+description.hu_HU = Az eredeti Transport Tycoon Deluxe DOS (német) verziójának grafikája.
+description.it_IT = Grafica originale di Transport Tycoon Deluxe (tedesco), edizione DOS.
 description.nl_NL = Originele graphics van de Duitse Transport Tycoon Deluxe DOS-versie.
+description.sv_SE = Originalgrafiken från Transport Tycoon Deluxe, DOS-utgåvan (tyska).
 
 [files]
 base         = TRG1.GRF
