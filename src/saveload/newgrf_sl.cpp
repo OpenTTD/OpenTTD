@@ -44,7 +44,7 @@ static void Load_NGRF()
 {
 	ClearGRFConfigList(&_grfconfig);
 	while (SlIterateArray() != -1) {
-		GRFConfig *c = CallocT<GRFConfig>(1);
+		GRFConfig *c = new GRFConfig();
 		SlObject(c, _grfconfig_desc);
 		if (CheckSavegameVersion(101)) c->windows_paletted = (_use_palette == PAL_WINDOWS);
 		AppendToGRFConfigList(&_grfconfig, c);

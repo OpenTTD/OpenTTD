@@ -20,6 +20,21 @@
 #include "fileio_func.h"
 #include "fios.h"
 
+GRFConfig::GRFConfig(const char *filename)
+{
+	if (filename != NULL) this->filename = strdup(filename);
+}
+
+GRFConfig::~GRFConfig()
+{
+	/* GCF_COPY as in NOT strdupped/alloced the filename, name and info */
+	if (!HasBit(this->flags, GCF_COPY)) {
+		free(this->filename);
+		free(this->name);
+		free(this->info);
+		delete this->error;
+	}
+}
 
 GRFConfig *_all_grfs;
 GRFConfig *_grfconfig;
@@ -105,27 +120,13 @@ bool FillGRFDetails(GRFConfig *config, bool is_static)
 }
 
 
-void ClearGRFConfig(GRFConfig **config)
-{
-	/* GCF_COPY as in NOT strdupped/alloced the filename, name and info */
-	if (!HasBit((*config)->flags, GCF_COPY)) {
-		free((*config)->filename);
-		free((*config)->name);
-		free((*config)->info);
-		delete (*config)->error;
-	}
-	free(*config);
-	*config = NULL;
-}
-
-
 /* Clear a GRF Config list */
 void ClearGRFConfigList(GRFConfig **config)
 {
 	GRFConfig *c, *next;
 	for (c = *config; c != NULL; c = next) {
 		next = c->next;
-		ClearGRFConfig(&c);
+		delete c;
 	}
 	*config = NULL;
 }
@@ -138,7 +139,7 @@ void ClearGRFConfigList(GRFConfig **config)
  */
 GRFConfig *DuplicateGRFConfig(const GRFConfig *c)
 {
-	GRFConfig *config = MallocT<GRFConfig>(1);
+	GRFConfig *config = new GRFConfig();
 	*config = *c;
 
 	if (c->filename != NULL) config->filename = strdup(c->filename);
@@ -203,7 +204,7 @@ static void RemoveDuplicatesFromGRFConfigList(GRFConfig *list)
 		if (cur->ident.grfid != list->ident.grfid) continue;
 
 		prev->next = cur->next;
-		ClearGRFConfig(&cur);
+		delete cur;
 		cur = prev; // Just go back one so it continues as normal later on
 	}
 
@@ -320,8 +321,7 @@ public:
 
 bool GRFFileScanner::AddFile(const char *filename, size_t basepath_length)
 {
-	GRFConfig *c = CallocT<GRFConfig>(1);
-	c->filename = strdup(filename + basepath_length);
+	GRFConfig *c = new GRFConfig(filename + basepath_length);
 
 	bool added = true;
 	if (FillGRFDetails(c, false)) {
@@ -355,7 +355,7 @@ bool GRFFileScanner::AddFile(const char *filename, size_t basepath_length)
 	if (!added) {
 		/* File couldn't be opened, or is either not a NewGRF or is a
 		 * 'system' NewGRF or it's already known, so forget about it. */
-		ClearGRFConfig(&c);
+		delete c;
 	}
 
 	return added;

@@ -1190,8 +1190,7 @@ static GRFConfig *GRFLoadConfig(IniFile *ini, const char *grpname, bool is_stati
 	if (group == NULL) return NULL;
 
 	for (item = group->item; item != NULL; item = item->next) {
-		GRFConfig *c = CallocT<GRFConfig>(1);
-		c->filename = strdup(item->name);
+		GRFConfig *c = new GRFConfig(item->name);
 
 		/* Parse parameters */
 		if (!StrEmpty(item->value)) {
@@ -1217,7 +1216,7 @@ static GRFConfig *GRFLoadConfig(IniFile *ini, const char *grpname, bool is_stati
 			}
 
 			ShowInfoF("ini: ignoring invalid NewGRF '%s': %s", item->name, msg);
-			ClearGRFConfig(&c);
+			delete c;
 			continue;
 		}
 
@@ -1231,7 +1230,7 @@ static GRFConfig *GRFLoadConfig(IniFile *ini, const char *grpname, bool is_stati
 			}
 		}
 		if (duplicate) {
-			ClearGRFConfig(&c);
+			delete c;
 			continue;
 		}
 

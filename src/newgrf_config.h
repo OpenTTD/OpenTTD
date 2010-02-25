@@ -69,7 +69,10 @@ struct GRFError : ZeroedMemoryAllocator {
 };
 
 /** Information about GRF, used in the game and (part of it) in savegames */
-struct GRFConfig {
+struct GRFConfig : ZeroedMemoryAllocator {
+	GRFConfig(const char *filename = NULL);
+	~GRFConfig();
+
 	GRFIdentifier ident; ///< grfid and md5sum to uniquely identify newgrfs
 	char *filename;     ///< Filename - either with or without full path
 	char *name;         ///< NOSAVE: GRF name (Action 0x08)
@@ -99,7 +102,6 @@ GRFConfig *GetGRFConfig(uint32 grfid, uint32 mask = 0xFFFFFFFF);
 GRFConfig **CopyGRFConfigList(GRFConfig **dst, const GRFConfig *src, bool init_only);
 void AppendStaticGRFConfigs(GRFConfig **dst);
 void AppendToGRFConfigList(GRFConfig **dst, GRFConfig *el);
-void ClearGRFConfig(GRFConfig **config);
 void ClearGRFConfigList(GRFConfig **config);
 void ResetGRFConfig(bool defaults);
 GRFListCompatibility IsGoodGRFConfigList();

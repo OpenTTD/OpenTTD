@@ -238,7 +238,7 @@ void NetworkUDPSocketHandler::Recv_NetworkGameInfo(Packet *p, NetworkGameInfo *i
 			if (num_grfs > NETWORK_MAX_GRF_COUNT) return;
 
 			for (i = 0; i < num_grfs; i++) {
-				GRFConfig *c = CallocT<GRFConfig>(1);
+				GRFConfig *c = new GRFConfig();
 				this->Recv_GRFIdentifier(p, &c->ident);
 				this->HandleIncomingNetworkGameInfoGRFConfig(c);
 

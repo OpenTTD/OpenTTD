@@ -178,8 +178,7 @@ static void LoadSpriteTables()
 	 * so we have to manually add it, and then remove it later.
 	 */
 	GRFConfig *top = _grfconfig;
-	GRFConfig *master = CallocT<GRFConfig>(1);
-	master->filename = strdup(used_set->files[GFT_EXTRA].filename);
+	GRFConfig *master = new GRFConfig(used_set->files[GFT_EXTRA].filename);
 	FillGRFDetails(master, false);
 	master->windows_paletted = (used_set->palette == PAL_WINDOWS);
 	ClrBit(master->flags, GCF_INIT_ONLY);
@@ -189,7 +188,7 @@ static void LoadSpriteTables()
 	LoadNewGRF(SPR_NEWGRFS_BASE, i);
 
 	/* Free and remove the top element. */
-	ClearGRFConfig(&master);
+	delete master;
 	_grfconfig = top;
 }
 
