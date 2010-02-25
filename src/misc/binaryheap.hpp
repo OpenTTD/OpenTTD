@@ -79,6 +79,28 @@ protected:
 		return gap;
 	}
 
+	/** Heapify (move gap) up */
+	FORCEINLINE uint HeapifyUp(uint gap, T *item)
+	{
+		assert(gap != 0);
+
+		uint parent;
+
+		while (gap > 1) {
+			/* compare [gap] with its parent */
+			parent = gap / 2;
+
+			if (!(*item <*m_items[parent])) {
+				/* we don't need to continue upstairs */
+				break;
+			}
+
+			m_items[gap] = m_items[parent];
+			gap = parent;
+		}
+		return gap;
+	}
+
 public:
 	/** Return the number of items stored in the priority queue.
 	 *  @return number of items in the queue */
@@ -115,19 +137,7 @@ public:
 		}
 
 		/* make place for new item */
-		uint gap = ++m_size;
-		/* Heapify up */
-		while (gap > 1) {
-			/* compare [gap] with its parent */
-			uint parent = gap / 2;
-			if (new_item < *m_items[parent]) {
-				m_items[gap] = m_items[parent];
-				gap = parent;
-			} else {
-				/* we don't need to continue upstairs */
-				break;
-			}
-		}
+		uint gap = HeapifyUp(++m_size, &new_item);
 		m_items[gap] = &new_item;
 		CheckConsistency();
 	}
@@ -157,27 +167,14 @@ public:
 	/** Remove item specified by index */
 	FORCEINLINE void RemoveByIdx(uint idx)
 	{
-		/* at position idx we have a gap now */
-		uint gap = idx;
 		if (idx < m_size) {
-			assert(idx >= 1);
+			assert(idx != 0);
 			m_size--;
-			T *last = End();
-			/* and the candidate item for fixing this gap is our last item 'last'
-			 * Move gap / last item up: */
-			while (gap > 1)
-			{
-				/* compare [gap] with its parent */
-				uint parent = gap / 2;
-				if (*last < *m_items[parent]) {
-					m_items[gap] = m_items[parent];
-					gap = parent;
-				} else {
-					/* we don't need to continue upstairs */
-					break;
-				}
-			}
+			/* at position idx we have a gap now */
 
+			T *last = End();
+			/* Fix binary tree up and downwards */
+			uint gap = HeapifyUp(idx, last);
 			gap = HeapifyDown(gap, last);
 			/* move last item to the proper place */
 			if (!IsEmpty()) m_items[gap] = last;
