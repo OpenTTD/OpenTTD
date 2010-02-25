@@ -12,6 +12,15 @@
 #ifndef  BINARYHEAP_HPP
 #define  BINARYHEAP_HPP
 
+/* Enable it if you suspect binary heap doesn't work well */
+#define BINARYHEAP_CHECK 0
+
+#if BINARYHEAP_CHECK
+	#define CHECK_CONSISTY() CheckConsistency()
+#else
+	#define CHECK_CONSISTY() ;
+#endif
+
 /**
  * Binary Heap as C++ template.
  *
@@ -99,6 +108,17 @@ protected:
 		return gap;
 	}
 
+#if BINARYHEAP_CHECK
+	/** verifies the heap consistency (added during first YAPF debug phase) */
+	FORCEINLINE void CheckConsistency()
+	{
+		for (uint child = 2; child <= items; child++) {
+			uint parent = child / 2;
+			assert(!(*data[child] < *data[parent]));
+		}
+	}
+#endif
+
 public:
 	/** Return the number of items stored in the priority queue.
 	 *  @return number of items in the queue */
@@ -137,7 +157,7 @@ public:
 		/* make place for new item */
 		uint gap = HeapifyUp(++items, new_item);
 		data[gap] = new_item;
-		CheckConsistency();
+		CHECK_CONSISTY();
 	}
 
 	/** Remove and return the smallest item from the priority queue. */
@@ -154,7 +174,7 @@ public:
 		/* move last item to the proper place */
 		if (!IsEmpty()) data[gap] = last;
 
-		CheckConsistency();
+		CHECK_CONSISTY();
 		return first;
 	}
 
@@ -176,7 +196,7 @@ public:
 			assert(index == items);
 			items--;
 		}
-		CheckConsistency();
+		CHECK_CONSISTY();
 	}
 
 	/** return index of the item that matches (using &item1 == &item2) the given item. */
@@ -194,18 +214,6 @@ public:
 	/** Make the priority queue empty.
 	 * All remaining items will remain untouched. */
 	FORCEINLINE void Clear() { items = 0; }
-
-	/** verifies the heap consistency (added during first YAPF debug phase) */
-	FORCEINLINE void CheckConsistency()
-	{
-		/* enable it if you suspect binary heap doesn't work well */
-#if 0
-		for (uint child = 2; child <= items; child++) {
-			uint parent = child / 2;
-			assert(!(*data[child] < *data[parent]));
-		}
-#endif
-	}
 };
 
 #endif /* BINARYHEAP_HPP */
