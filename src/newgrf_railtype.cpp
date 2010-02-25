@@ -14,10 +14,13 @@
 #include "newgrf_commons.h"
 #include "newgrf_railtype.h"
 #include "newgrf_spritegroup.h"
+#include "core/bitmath_func.hpp"
 
 static uint32 RailTypeGetRandomBits(const ResolverObject *object)
 {
-	return 0;
+	TileIndex tile = object->u.routes.tile;
+	uint tmp = CountBits(tile + (TileX(tile) + TileY(tile)) * TILE_SIZE);
+	return GB(tmp, 0, 2);
 }
 
 static uint32 RailTypeGetTriggers(const ResolverObject *object)
