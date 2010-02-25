@@ -148,7 +148,7 @@ public:
 	 *
 	 *  @return The number of items in the queue
 	 */
-	FORCEINLINE uint Size() const { return this->items; }
+	FORCEINLINE uint Length() const { return this->items; }
 
 	/**
 	 * Test if the priority queue is empty.
@@ -192,7 +192,7 @@ public:
 	 *
 	 * @param new_item The pointer to the new item
 	 */
-	FORCEINLINE void Push(T *new_item)
+	FORCEINLINE void Include(T *new_item)
 	{
 		if (this->IsFull()) {
 			this->capacity *= 2;
@@ -233,7 +233,7 @@ public:
 	 *
 	 * @param index The position of the item in the heap
 	 */
-	FORCEINLINE void RemoveByIdx(uint index)
+	FORCEINLINE void Remove(uint index)
 	{
 		if (index < this->items) {
 			assert(index != 0);
@@ -261,7 +261,7 @@ public:
 	 * @param item The reference to the item
 	 * @return The index of the item or zero if not found
 	 */
-	FORCEINLINE uint FindLinear(const T &item) const
+	FORCEINLINE uint FindIndex(const T &item) const
 	{
 		if (this->IsEmpty()) return 0;
 		for (T **ppI = this->data + 1, **ppLast = ppI + this->items; ppI <= ppLast; ppI++) {

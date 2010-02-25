@@ -93,7 +93,7 @@ public:
 	{
 		assert(m_closed.Find(item.GetKey()) == NULL);
 		m_open.Push(item);
-		m_open_queue.Push(&item);
+		m_open_queue.Include(&item);
 		if (&item == m_new_node) {
 			m_new_node = NULL;
 		}
@@ -130,8 +130,8 @@ public:
 	FORCEINLINE Titem_& PopOpenNode(const Key& key)
 	{
 		Titem_& item = m_open.Pop(key);
-		int idxPop = m_open_queue.FindLinear(item);
-		m_open_queue.RemoveByIdx(idxPop);
+		uint idxPop = m_open_queue.FindIndex(item);
+		m_open_queue.Remove(idxPop);
 		return item;
 	}
 
