@@ -50,7 +50,7 @@ static void IConsoleWriteToLogFile(const char *string)
 	if (_iconsole_output_file != NULL) {
 		/* if there is an console output file ... also print it there */
 		const char *header = GetLogPrefix();
-		if (fwrite(header, strlen(header), 1, _iconsole_output_file) != 1 ||
+		if ((strlen(header) != 0 && fwrite(header, strlen(header), 1, _iconsole_output_file) != 1) ||
 				fwrite(string, strlen(string), 1, _iconsole_output_file) != 1 ||
 				fwrite("\n", 1, 1, _iconsole_output_file) != 1) {
 			fclose(_iconsole_output_file);

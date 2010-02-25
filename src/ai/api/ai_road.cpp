@@ -549,7 +549,7 @@ static bool NeighbourHasReachableRoad(::RoadTypes rts, TileIndex start_tile, Dia
 	EnforcePrecondition(false, ::TileX(start) == ::TileX(end) || ::TileY(start) == ::TileY(end));
 	EnforcePrecondition(false, IsRoadTypeAvailable(GetCurrentRoadType()));
 
-	return AIObject::DoCommand(end, start, (::TileY(start) != ::TileY(end) ? 4 : 0) | (start < end ? 1 : 2) | (AIObject::GetRoadType() << 3), CMD_REMOVE_LONG_ROAD);
+	return AIObject::DoCommand(start, end, (::TileY(start) != ::TileY(end) ? 4 : 0) | (start < end ? 1 : 2) | (AIObject::GetRoadType() << 3), CMD_REMOVE_LONG_ROAD);
 }
 
 /* static */ bool AIRoad::RemoveRoadFull(TileIndex start, TileIndex end)
@@ -559,7 +559,7 @@ static bool NeighbourHasReachableRoad(::RoadTypes rts, TileIndex start_tile, Dia
 	EnforcePrecondition(false, ::TileX(start) == ::TileX(end) || ::TileY(start) == ::TileY(end));
 	EnforcePrecondition(false, IsRoadTypeAvailable(GetCurrentRoadType()));
 
-	return AIObject::DoCommand(end, start, (::TileY(start) != ::TileY(end) ? 4 : 0) | (start < end ? 2 : 1) | (AIObject::GetRoadType() << 3), CMD_REMOVE_LONG_ROAD);
+	return AIObject::DoCommand(start, end, (::TileY(start) != ::TileY(end) ? 4 : 0) | (start < end ? 2 : 1) | (AIObject::GetRoadType() << 3), CMD_REMOVE_LONG_ROAD);
 }
 
 /* static */ bool AIRoad::RemoveRoadDepot(TileIndex tile)

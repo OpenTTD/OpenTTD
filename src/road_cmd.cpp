@@ -779,9 +779,9 @@ CommandCost CmdBuildLongRoad(TileIndex start_tile, DoCommandFlag flags, uint32 p
 }
 
 /** Remove a long piece of road.
- * @param end_tile end tile of drag
+ * @param start_tile start tile of drag
  * @param flags operation to perform
- * @param p1 start tile of drag
+ * @param p1 end tile of drag
  * @param p2 various bitstuffed elements
  * - p2 = (bit 0) - start tile starts in the 2nd half of tile (p2 & 1)
  * - p2 = (bit 1) - end tile starts in the 2nd half of tile (p2 & 2)
@@ -790,13 +790,13 @@ CommandCost CmdBuildLongRoad(TileIndex start_tile, DoCommandFlag flags, uint32 p
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdRemoveLongRoad(TileIndex end_tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdRemoveLongRoad(TileIndex start_tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 
 	if (p1 >= MapSize()) return CMD_ERROR;
 
-	TileIndex start_tile = p1;
+	TileIndex end_tile = p1;
 	RoadType rt = (RoadType)GB(p2, 3, 2);
 	if (!IsValidRoadType(rt)) return CMD_ERROR;
 
@@ -829,7 +829,7 @@ CommandCost CmdRemoveLongRoad(TileIndex end_tile, DoCommandFlag flags, uint32 p1
 				if (flags & DC_EXEC) {
 					money -= ret.GetCost();
 					if (money < 0) {
-						_additional_cash_required = DoCommand(end_tile, start_tile, p2, flags & ~DC_EXEC, CMD_REMOVE_LONG_ROAD).GetCost();
+						_additional_cash_required = DoCommand(start_tile, end_tile, p2, flags & ~DC_EXEC, CMD_REMOVE_LONG_ROAD).GetCost();
 						return cost;
 					}
 					RemoveRoad(tile, flags, bits, rt, true, false);

@@ -446,7 +446,7 @@ int ttd_main(int argc, char *argv[])
 	 *   a letter means: it accepts that param (e.g.: -h)
 	 *   a ':' behind it means: it need a param (e.g.: -m<driver>)
 	 *   a '::' behind it means: it can optional have a param (e.g.: -d<debug>) */
-	optformat = "m:s:v:b:hD::n::ei::I:S:t:d::r:g::G:c:xl:p:P:"
+	optformat = "m:s:v:b:hD::n::ei::I:S:M:t:d::r:g::G:c:xl:p:P:"
 #if !defined(__MORPHOS__) && !defined(__AMIGA__) && !defined(WIN32)
 		"f"
 #endif

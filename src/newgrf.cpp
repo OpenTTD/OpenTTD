@@ -2668,8 +2668,8 @@ static bool HandleChangeInfoResult(const char *caller, ChangeInfoResult cir, uin
 			/* No debug message for an invalid ID, as it has already been output */
 			_skip_sprites = -1;
 			_cur_grfconfig->status = GCS_DISABLED;
-			_cur_grfconfig->error  = CallocT<GRFError>(1);
-			_cur_grfconfig->error->severity = STR_NEWGRF_ERROR_MSG_FATAL;
+			delete _cur_grfconfig->error;
+			_cur_grfconfig->error  = new GRFError(STR_NEWGRF_ERROR_MSG_FATAL);
 			_cur_grfconfig->error->message  = (cir == CIR_INVALID_ID) ? STR_NEWGRF_ERROR_INVALID_ID : STR_NEWGRF_ERROR_UNKNOWN_PROPERTY;
 			return true;
 	}
@@ -4198,16 +4198,10 @@ static void CfgApply(ByteReader *buf)
  */
 static void DisableStaticNewGRFInfluencingNonStaticNewGRFs(GRFConfig *c)
 {
-	if (c->error != NULL) {
-		free(c->error->custom_message);
-		free(c->error->data);
-		free(c->error);
-	}
+	delete c->error;
 	c->status = GCS_DISABLED;
-	c->error  = CallocT<GRFError>(1);
+	c->error  = new GRFError(STR_NEWGRF_ERROR_MSG_FATAL, STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC);
 	c->error->data = strdup(_cur_grfconfig->name);
-	c->error->severity = STR_NEWGRF_ERROR_MSG_FATAL;
-	c->error->message  = STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC;
 
 	ClearTemporaryNewGRFData(GetFileByGRFID(c->grfid));
 }
@@ -4416,9 +4410,8 @@ static void GRFInfo(ByteReader *buf)
 
 	if (_cur_stage < GLS_RESERVE && _cur_grfconfig->status != GCS_UNKNOWN) {
 		_cur_grfconfig->status = GCS_DISABLED;
-		_cur_grfconfig->error  = CallocT<GRFError>(1);
-		_cur_grfconfig->error->severity = STR_NEWGRF_ERROR_MSG_FATAL;
-		_cur_grfconfig->error->message  = STR_NEWGRF_ERROR_MULTIPLE_ACTION_8;
+		delete _cur_grfconfig->error;
+		_cur_grfconfig->error  = new GRFError(STR_NEWGRF_ERROR_MSG_FATAL, STR_NEWGRF_ERROR_MULTIPLE_ACTION_8);
 
 		_skip_sprites = -1;
 		return;
@@ -4556,9 +4549,7 @@ static void GRFLoadError(ByteReader *buf)
 		return;
 	}
 
-	GRFError *error = CallocT<GRFError>(1);
-
-	error->severity = sevstr[severity];
+	GRFError *error = new GRFError(sevstr[severity]);
 
 	if (message_id == 0xFF) {
 		/* This is a custom error message. */
@@ -5426,17 +5417,12 @@ static void TranslateGRFStrings(ByteReader *buf)
 	if (c->status == GCS_INITIALISED) {
 		/* If the file is not active but will be activated later, give an error
 		 * and disable this file. */
-		GRFError *error = CallocT<GRFError>(1);
+		delete _cur_grfconfig->error;
+		_cur_grfconfig->error = new GRFError(STR_NEWGRF_ERROR_MSG_FATAL, STR_NEWGRF_ERROR_LOAD_AFTER);
 
 		char tmp[256];
 		GetString(tmp, STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE, lastof(tmp));
-		error->data = strdup(tmp);
-
-		error->message  = STR_NEWGRF_ERROR_LOAD_AFTER;
-		error->severity = STR_NEWGRF_ERROR_MSG_FATAL;
-
-		if (_cur_grfconfig->error != NULL) free(_cur_grfconfig->error);
-		_cur_grfconfig->error = error;
+		_cur_grfconfig->error->data = strdup(tmp);
 
 		_cur_grfconfig->status = GCS_DISABLED;
 		ClearTemporaryNewGRFData(_cur_grffile);
@@ -5714,9 +5700,7 @@ static void ResetNewGRFErrors()
 {
 	for (GRFConfig *c = _grfconfig; c != NULL; c = c->next) {
 		if (!HasBit(c->flags, GCF_COPY) && c->error != NULL) {
-			free(c->error->custom_message);
-			free(c->error->data);
-			free(c->error);
+			delete c->error;
 			c->error = NULL;
 		}
 	}
@@ -6189,9 +6173,8 @@ static void DecodeSpecialSprite(byte *buf, uint num, GrfLoadingStage stage)
 
 		_skip_sprites = -1;
 		_cur_grfconfig->status = GCS_DISABLED;
-		_cur_grfconfig->error  = CallocT<GRFError>(1);
-		_cur_grfconfig->error->severity = STR_NEWGRF_ERROR_MSG_FATAL;
-		_cur_grfconfig->error->message  = STR_NEWGRF_ERROR_READ_BOUNDS;
+		delete _cur_grfconfig->error;
+		_cur_grfconfig->error  = new GRFError(STR_NEWGRF_ERROR_MSG_FATAL, STR_NEWGRF_ERROR_READ_BOUNDS);
 	}
 }
 
@@ -6221,9 +6204,7 @@ void LoadNewGRFFile(GRFConfig *config, uint file_index, GrfLoadingStage stage)
 	if (file_index > LAST_GRF_SLOT) {
 		DEBUG(grf, 0, "'%s' is not loaded as the maximum number of GRFs has been reached", filename);
 		config->status = GCS_DISABLED;
-		config->error  = CallocT<GRFError>(1);
-		config->error->severity = STR_NEWGRF_ERROR_MSG_FATAL;
-		config->error->message  = STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED;
+		config->error  = new GRFError(STR_NEWGRF_ERROR_MSG_FATAL, STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED);
 		return;
 	}
 
@@ -6269,9 +6250,8 @@ void LoadNewGRFFile(GRFConfig *config, uint file_index, GrfLoadingStage stage)
 			if (_skip_sprites == 0) {
 				grfmsg(0, "LoadNewGRFFile: Unexpected sprite, disabling");
 				config->status = GCS_DISABLED;
-				config->error  = CallocT<GRFError>(1);
-				config->error->severity = STR_NEWGRF_ERROR_MSG_FATAL;
-				config->error->message  = STR_NEWGRF_ERROR_UNEXPECTED_SPRITE;
+				delete config->error;
+				config->error  = new GRFError(STR_NEWGRF_ERROR_MSG_FATAL, STR_NEWGRF_ERROR_UNEXPECTED_SPRITE);
 				break;
 			}
 
