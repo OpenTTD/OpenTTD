@@ -117,8 +117,17 @@ public:
 		/* make place for new item */
 		uint gap = ++m_size;
 		/* Heapify up */
-		for (uint parent = gap / 2; (parent > 0) && (new_item < *m_items[parent]); gap = parent, parent /= 2)
-			m_items[gap] = m_items[parent];
+		while (gap > 1) {
+			/* compare [gap] with its parent */
+			uint parent = gap / 2;
+			if (new_item < *m_items[parent]) {
+				m_items[gap] = m_items[parent];
+				gap = parent;
+			} else {
+				/* we don't need to continue upstairs */
+				break;
+			}
+		}
 		m_items[gap] = &new_item;
 		CheckConsistency();
 	}
