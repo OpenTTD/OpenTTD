@@ -36,7 +36,7 @@ GRFError::~GRFError()
 {
 	free(this->custom_message);
 	free(this->data);
- }
+}
 
 /**
  * Update the palettes of the graphics from the config file.

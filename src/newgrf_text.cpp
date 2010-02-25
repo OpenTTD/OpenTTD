@@ -326,6 +326,28 @@ char *TranslateTTDPatchCodes(uint32 grfid, const char *str)
 	return tmp;
 }
 
+/**
+ * Add a GRFText to a GRFText list.
+ * @param list The list where the text should be added to.
+ * @param text_to_add The GRFText to add to the list.
+ */
+void AddGRFTextToList(GRFText **list, GRFText *text_to_add)
+{
+	GRFText **ptext, *text;
+
+	/* Loop through all languages and see if we can replace a string */
+	for (ptext = list; (text = *ptext) != NULL; ptext = &text->next) {
+		if (text->langid == text_to_add->langid) {
+			text_to_add->next = text->next;
+			*ptext = text_to_add;
+			delete text;
+			return;
+		}
+	}
+
+	/* If a string wasn't replaced, then we must append the new string */
+	*ptext = text_to_add;
+}
 
 /**
  * Add the new read string into our structure.
@@ -375,24 +397,8 @@ StringID AddGRFString(uint32 grfid, uint16 stringid, byte langid_to_add, bool ne
 		_grf_text[id].grfid      = grfid;
 		_grf_text[id].stringid   = stringid;
 		_grf_text[id].def_string = def_string;
-		_grf_text[id].textholder = newtext;
-	} else {
-		GRFText **ptext, *text;
-		bool replaced = false;
-
-		/* Loop through all languages and see if we can replace a string */
-		for (ptext = &_grf_text[id].textholder; (text = *ptext) != NULL; ptext = &text->next) {
-			if (text->langid != langid_to_add) continue;
-			newtext->next = text->next;
-			*ptext = newtext;
-			delete text;
-			replaced = true;
-			break;
-		}
-
-		/* If a string wasn't replaced, then we must append the new string */
-		if (!replaced) *ptext = newtext;
 	}
+	AddGRFTextToList(&_grf_text[id].textholder, newtext);
 
 	grfmsg(3, "Added 0x%X: grfid %08X string 0x%X lang 0x%X string '%s'", id, grfid, stringid, newtext->langid, newtext->text);
 
@@ -422,31 +428,43 @@ StringID GetGRFStringID(uint32 grfid, uint16 stringid)
 }
 
 
+/**
+ * Get a C-string from a GRFText-list. If there is a translation for the
+ * current language it is returned, otherwise the default translation
+ * is returned. If there is neither a default nor a translation for the
+ * current language NULL is returned.
+ * @param text The GRFText to get the string from.
+ */
+const char *GetGRFStringFromGRFText(const GRFText *text)
+{
+	const char *default_text = NULL;
+
+	/* Search the list of lang-strings of this stringid for current lang */
+	for (; text != NULL; text = text->next) {
+		if (text->langid == _currentLangID) return text->text;
+
+		/* If the current string is English or American, set it as the
+		 * fallback language if the specific language isn't available. */
+		if (text->langid == GRFLX_UNSPECIFIED || (default_text == NULL && (text->langid == GRFLX_ENGLISH || text->langid == GRFLX_AMERICAN))) {
+			default_text = text->text;
+		}
+	}
+
+	return default_text;
+}
+
+/**
+ * Get a C-string from a stringid set by a newgrf.
+ */
 const char *GetGRFStringPtr(uint16 stringid)
 {
-	const GRFText *default_text = NULL;
-	const GRFText *search_text;
-
 	assert(_grf_text[stringid].grfid != 0);
 
 	/* Remember this grfid in case the string has included text */
 	_last_grfid = _grf_text[stringid].grfid;
 
-	/* Search the list of lang-strings of this stringid for current lang */
-	for (search_text = _grf_text[stringid].textholder; search_text != NULL; search_text = search_text->next) {
-		if (search_text->langid == _currentLangID) {
-			return search_text->text;
-		}
-
-		/* If the current string is English or American, set it as the
-		 * fallback language if the specific language isn't available. */
-		if (search_text->langid == GRFLX_UNSPECIFIED || (default_text == NULL && (search_text->langid == GRFLX_ENGLISH || search_text->langid == GRFLX_AMERICAN))) {
-			default_text = search_text;
-		}
-	}
-
-	/* If there is a fallback string, return that */
-	if (default_text != NULL) return default_text->text;
+	const char *str = GetGRFStringFromGRFText(_grf_text[stringid].textholder);
+	if (str != NULL) return str;
 
 	/* Use the default string ID if the fallback string isn't available */
 	return GetStringPtr(_grf_text[stringid].def_string);
@@ -480,6 +498,19 @@ bool CheckGrfLangID(byte lang_id, byte grf_version)
 }
 
 /**
+ * Delete all items of a linked GRFText list.
+ * @param grftext the head of the list to delete
+ */
+void CleanUpGRFText(GRFText *grftext)
+{
+	while (grftext != NULL) {
+		GRFText *grftext2 = grftext->next;
+		delete grftext;
+		grftext = grftext2;
+	}
+}
+
+/**
  * House cleaning.
  * Remove all strings and reset the text counter.
  */
@@ -488,12 +519,7 @@ void CleanUpStrings()
 	uint id;
 
 	for (id = 0; id < _num_grf_texts; id++) {
-		GRFText *grftext = _grf_text[id].textholder;
-		while (grftext != NULL) {
-			GRFText *grftext2 = grftext->next;
-			delete grftext;
-			grftext = grftext2;
-		}
+		CleanUpGRFText(_grf_text[id].textholder);
 		_grf_text[id].grfid      = 0;
 		_grf_text[id].stringid   = 0;
 		_grf_text[id].textholder = NULL;
