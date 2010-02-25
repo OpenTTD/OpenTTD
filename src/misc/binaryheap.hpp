@@ -108,8 +108,8 @@ public:
 		uint gap = 1;
 
 		/* Heapify down:
-		 *   last item becomes a candidate for the head. Call it new_item. */
-		T& new_item = *m_items[m_size--];
+		 *   last item becomes a candidate for the head. Call it last. */
+		T& last = *m_items[m_size--];
 
 		/* now we must maintain relation between parent and its children:
 		 *   parent <= any child
@@ -122,7 +122,7 @@ public:
 			if (child < m_size && *m_items[child + 1] < *m_items[child])
 				child++;
 			/* is it smaller than our parent? */
-			if (!(*m_items[child] < new_item)) {
+			if (!(*m_items[child] < last)) {
 				/* the smaller child is still bigger or same as parent => we are done */
 				break;
 			}
@@ -133,7 +133,7 @@ public:
 			child = gap * 2;
 		}
 		/* move last item to the proper place */
-		if (m_size > 0) m_items[gap] = &new_item;
+		if (m_size > 0) m_items[gap] = &last;
 		CheckConsistency();
 	}
 
@@ -161,11 +161,9 @@ public:
 				}
 			}
 
+			uint child  = gap * 2;
 			/* Heapify (move gap) down: */
-			while (true) {
-				/* where we do have our children? */
-				uint child  = gap * 2; // first child is at [parent * 2]
-				if (child > m_size) break;
+			while (child <= m_size) {
 				/* choose the smaller child */
 				if (child < m_size && *m_items[child + 1] < *m_items[child])
 					child++;
@@ -177,6 +175,8 @@ public:
 				/* if smaller child is smaller than parent, it will become new parent */
 				m_items[gap] = m_items[child];
 				gap = child;
+				/* where do we have our new children? */
+				child = gap * 2;
 			}
 			/* move parent to the proper place */
 			if (m_size > 0) m_items[gap] = &last;
