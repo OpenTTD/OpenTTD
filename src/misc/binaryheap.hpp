@@ -23,28 +23,34 @@
 
 /**
  * Binary Heap as C++ template.
+ *  A carrier which keeps it's items automaticaly holds the smallest item at
+ *  the first position. The order of items is maintained by using a binary tree.
+ *  The implementation is used for priority queue's.
  *
- * For information about Binary Heap algotithm,
- *   see: http://www.policyalmanac.org/games/binaryHeaps.htm
+ * @par Usage information:
+ * Item of the binary heap should support the 'lower-than' operator '<'.
+ * It is used for comparing items before moving them to their position.
  *
- * Implementation specific notes:
+ * @par
+ * This binary heap allocates just the space for item pointers. The items
+ * are allocated elsewhere.
  *
- * 1) It allocates space for item pointers (array). Items are allocated elsewhere.
+ * @par Implementation notes:
+ * Internaly the first item is never used, because that simplifies the
+ * implementation.
  *
- * 2) T*[0] is never used. Total array size is max_items + 1, because we
- *    use indices 1..max_items instead of zero based C indexing.
+ * @par
+ * For further information about the Binary Heap algotithm, see
+ * http://www.policyalmanac.org/games/binaryHeaps.htm
  *
- * 3) Item of the binary heap should support these public members:
- *    - 'lower-than' operator '<' - used for comparing items before moving
- *
+ * @tparam T Type of the items stored in the binary heap
  */
-
 template <class T>
 class CBinaryHeapT {
 private:
 	uint items;    ///< Number of items in the heap
 	uint capacity; ///< Maximum number of items the heap can hold
-	T **data;      ///< The heap item pointers
+	T **data;      ///< The pointer to the heap item pointers
 
 public:
 	explicit CBinaryHeapT(uint max_items)
@@ -62,12 +68,21 @@ public:
 	}
 
 protected:
-	/** Heapify (move gap) down */
+	/**
+	 * Get position for fixing a gap (downwards).
+	 *  The gap is moved downwards in the binary tree until it
+	 *  is in order again.
+	 *
+	 * @param gap The position of the gap
+	 * @param item The proposed item for filling the gap
+	 * @return The (gap)position where the item fits
+	 */
 	FORCEINLINE uint HeapifyDown(uint gap, T *item)
 	{
 		assert(gap != 0);
 
-		uint child = gap * 2; // first child is at [parent * 2]
+		/* The first child of the gap is at [parent * 2] */
+		uint child = gap * 2;
 
 		/* while children are valid */
 		while (child <= this->items) {
@@ -88,7 +103,15 @@ protected:
 		return gap;
 	}
 
-	/** Heapify (move gap) up */
+	/**
+	 * Get position for fixing a gap (upwards).
+	 *  The gap is moved upwards in the binary tree until the
+	 *  is in order again.
+	 *
+	 * @param gap The position of the gap
+	 * @param item The proposed item for filling the gap
+	 * @return The (gap)position where the item fits
+	 */
 	FORCEINLINE uint HeapifyUp(uint gap, T *item)
 	{
 		assert(gap != 0);
@@ -109,7 +132,7 @@ protected:
 	}
 
 #if BINARYHEAP_CHECK
-	/** verifies the heap consistency (added during first YAPF debug phase) */
+	/** Verify the heap consistency */
 	FORCEINLINE void CheckConsistency()
 	{
 		for (uint child = 2; child <= this->items; child++) {
@@ -120,33 +143,55 @@ protected:
 #endif
 
 public:
-	/** Return the number of items stored in the priority queue.
-	 *  @return number of items in the queue */
+	/**
+	 * Get the number of items stored in the priority queue.
+	 *
+	 *  @return The number of items in the queue
+	 */
 	FORCEINLINE uint Size() const { return this->items; }
 
-	/** Test if the priority queue is empty.
-	 *  @return true if empty */
+	/**
+	 * Test if the priority queue is empty.
+	 *
+	 * @return True if empty
+	 */
 	FORCEINLINE bool IsEmpty() const { return this->items == 0; }
 
-	/** Test if the priority queue is full.
-	 *  @return true if full. */
+	/**
+	 * Test if the priority queue is full.
+	 *
+	 * @return True if full.
+	 */
 	FORCEINLINE bool IsFull() const { return this->items >= this->capacity; }
 
-	/** Find the smallest item in the priority queue.
-	 *  Return the smallest item, or throw assert if empty. */
+	/**
+	 * Get the smallest item in the binary tree.
+	 *
+	 * @return The smallest item, or throw assert if empty.
+	 */
 	FORCEINLINE T *Begin()
 	{
 		assert(!this->IsEmpty());
 		return this->data[1];
 	}
 
+	/**
+	 * Get the LAST item in the binary tree.
+	 *
+	 * @note The last item is not neccesary the biggest!
+	 *
+	 * @return The last item
+	 */
 	FORCEINLINE T *End()
 	{
 		return this->data[1 + this->items];
 	}
 
-	/** Insert new item into the priority queue, maintaining heap order.
-	 *  @return false if the queue is full. */
+	/**
+	 * Insert new item into the priority queue, maintaining heap order.
+	 *
+	 * @param new_item The pointer to the new item
+	 */
 	FORCEINLINE void Push(T *new_item)
 	{
 		if (this->IsFull()) {
@@ -154,13 +199,18 @@ public:
 			this->data = ReallocT<T*>(this->data, this->capacity + 1);
 		}
 
-		/* make place for new item */
+		/* Make place for new item. A gap is now at the end of the tree. */
 		uint gap = this->HeapifyUp(++items, new_item);
 		this->data[gap] = new_item;
 		CHECK_CONSISTY();
 	}
 
-	/** Remove and return the smallest item from the priority queue. */
+	/**
+	 * Remove and return the smallest (and also first) item
+	 *  from the priority queue.
+	 *
+	 * @return The pointer to the removed item
+	 */
 	FORCEINLINE T *Shift()
 	{
 		assert(!this->IsEmpty());
@@ -178,7 +228,11 @@ public:
 		return first;
 	}
 
-	/** Remove item specified by index */
+	/**
+	 * Remove item at given index from the priority queue.
+	 *
+	 * @param index The position of the item in the heap
+	 */
 	FORCEINLINE void RemoveByIdx(uint index)
 	{
 		if (index < this->items) {
@@ -199,7 +253,14 @@ public:
 		CHECK_CONSISTY();
 	}
 
-	/** return index of the item that matches (using &item1 == &item2) the given item. */
+	/**
+	 * Search for an item in the priority queue.
+	 *  Matching is done by comparing adress of the
+	 *  item.
+	 *
+	 * @param item The reference to the item
+	 * @return The index of the item or zero if not found
+	 */
 	FORCEINLINE uint FindLinear(const T &item) const
 	{
 		if (this->IsEmpty()) return 0;
@@ -211,8 +272,10 @@ public:
 		return 0;
 	}
 
-	/** Make the priority queue empty.
-	 * All remaining items will remain untouched. */
+	/**
+	 * Make the priority queue empty.
+	 * All remaining items will remain untouched.
+	 */
 	FORCEINLINE void Clear() { this->items = 0; }
 };
 
