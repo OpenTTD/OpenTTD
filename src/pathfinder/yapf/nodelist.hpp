@@ -93,7 +93,7 @@ public:
 	{
 		assert(m_closed.Find(item.GetKey()) == NULL);
 		m_open.Push(item);
-		m_open_queue.Push(item);
+		m_open_queue.Push(&item);
 		if (&item == m_new_node) {
 			m_new_node = NULL;
 		}
@@ -103,8 +103,7 @@ public:
 	FORCEINLINE Titem_ *GetBestOpenNode()
 	{
 		if (!m_open_queue.IsEmpty()) {
-			Titem_& item = m_open_queue.GetHead();
-			return &item;
+			return m_open_queue.Begin();
 		}
 		return NULL;
 	}
@@ -113,9 +112,9 @@ public:
 	FORCEINLINE Titem_ *PopBestOpenNode()
 	{
 		if (!m_open_queue.IsEmpty()) {
-			Titem_& item = m_open_queue.PopHead();
-			m_open.Pop(item);
-			return &item;
+			Titem_ *item = m_open_queue.Shift();
+			m_open.Pop(*item);
+			return item;
 		}
 		return NULL;
 	}

@@ -116,10 +116,10 @@ public:
 
 	/** Find the smallest item in the priority queue.
 	 *  Return the smallest item, or throw assert if empty. */
-	FORCEINLINE T& GetHead()
+	FORCEINLINE T *Begin()
 	{
 		assert(!IsEmpty());
-		return *m_items[1];
+		return m_items[1];
 	}
 
 	FORCEINLINE T *End()
@@ -129,7 +129,7 @@ public:
 
 	/** Insert new item into the priority queue, maintaining heap order.
 	 *  @return false if the queue is full. */
-	FORCEINLINE void Push(T& new_item)
+	FORCEINLINE void Push(T *new_item)
 	{
 		if (IsFull()) {
 			m_max_size *= 2;
@@ -137,23 +137,17 @@ public:
 		}
 
 		/* make place for new item */
-		uint gap = HeapifyUp(++m_size, &new_item);
-		m_items[gap] = &new_item;
+		uint gap = HeapifyUp(++m_size, new_item);
+		m_items[gap] = new_item;
 		CheckConsistency();
 	}
 
 	/** Remove and return the smallest item from the priority queue. */
-	FORCEINLINE T& PopHead()
-	{
-		T& ret = GetHead();
-		RemoveHead();
-		return ret;
-	}
-
-	/** Remove the smallest item from the priority queue. */
-	FORCEINLINE void RemoveHead()
+	FORCEINLINE T *Shift()
 	{
 		assert(!IsEmpty());
+
+		T *first = Begin();
 
 		m_size--;
 		/* at index 1 we have a gap now */
@@ -161,7 +155,9 @@ public:
 		uint gap = HeapifyDown(1, last);
 		/* move last item to the proper place */
 		if (!IsEmpty()) m_items[gap] = last;
+
 		CheckConsistency();
+		return first;
 	}
 
 	/** Remove item specified by index */
