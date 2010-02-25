@@ -13,6 +13,7 @@
 #define NEWGRF_CONFIG_H
 
 #include "strings_type.h"
+#include "core/alloc_type.hpp"
 
 /** GRF config bit flags */
 enum GCF_Flags {
@@ -55,7 +56,10 @@ struct GRFIdentifier {
 };
 
 /** Information about why GRF had problems during initialisation */
-struct GRFError {
+struct GRFError : ZeroedMemoryAllocator {
+	GRFError(StringID severity, StringID message = 0);
+	~GRFError();
+
 	char *custom_message;  ///< Custom message (if present)
 	char *data;            ///< Additional data for message and custom_message
 	StringID message;      ///< Default message

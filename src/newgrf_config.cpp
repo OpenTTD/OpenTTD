@@ -26,6 +26,17 @@ GRFConfig *_grfconfig;
 GRFConfig *_grfconfig_newgame;
 GRFConfig *_grfconfig_static;
 
+GRFError::GRFError(StringID severity, StringID message) :
+	message(message),
+	severity(severity)
+{
+}
+
+GRFError::~GRFError()
+{
+	free(this->custom_message);
+	free(this->data);
+ }
 
 /**
  * Update the palettes of the graphics from the config file.
@@ -101,12 +112,7 @@ void ClearGRFConfig(GRFConfig **config)
 		free((*config)->filename);
 		free((*config)->name);
 		free((*config)->info);
-
-		if ((*config)->error != NULL) {
-			free((*config)->error->custom_message);
-			free((*config)->error->data);
-			free((*config)->error);
-		}
+		delete (*config)->error;
 	}
 	free(*config);
 	*config = NULL;
@@ -139,8 +145,9 @@ GRFConfig *DuplicateGRFConfig(const GRFConfig *c)
 	if (c->name     != NULL) config->name = strdup(c->name);
 	if (c->info     != NULL) config->info = strdup(c->info);
 	if (c->error    != NULL) {
-		config->error = MallocT<GRFError>(1);
-		memcpy(config->error, c->error, sizeof(GRFError));
+		config->error = new GRFError(c->error->severity, c->error->message);
+		config->error->num_params = c->error->num_params;
+		memcpy(config->error->param_value, c->error->param_value, sizeof(config->error->param_value));
 		if (c->error->data           != NULL) config->error->data = strdup(c->error->data);
 		if (c->error->custom_message != NULL) config->error->custom_message = strdup(c->error->custom_message);
 	}
