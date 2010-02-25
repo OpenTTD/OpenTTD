@@ -16,7 +16,7 @@
 #define BINARYHEAP_CHECK 0
 
 #if BINARYHEAP_CHECK
-	#define CHECK_CONSISTY() CheckConsistency()
+	#define CHECK_CONSISTY() this->CheckConsistency()
 #else
 	#define CHECK_CONSISTY() ;
 #endif
@@ -51,14 +51,14 @@ public:
 		: items(0)
 		, capacity(max_items)
 	{
-		data = MallocT<T*>(max_items + 1);
+		this->data = MallocT<T *>(max_items + 1);
 	}
 
 	~CBinaryHeapT()
 	{
-		Clear();
-		free(data);
-		data = NULL;
+		this->Clear();
+		free(this->data);
+		this->data = NULL;
 	}
 
 protected:
@@ -70,17 +70,17 @@ protected:
 		uint child = gap * 2; // first child is at [parent * 2]
 
 		/* while children are valid */
-		while (child <= items) {
+		while (child <= this->items) {
 			/* choose the smaller child */
-			if (child < items && *data[child + 1] < *data[child])
+			if (child < this->items && *this->data[child + 1] < *this->data[child])
 				child++;
 			/* is it smaller than our parent? */
-			if (!(*data[child] < *item)) {
+			if (!(*this->data[child] < *item)) {
 				/* the smaller child is still bigger or same as parent => we are done */
 				break;
 			}
 			/* if smaller child is smaller than parent, it will become new parent */
-			data[gap] = data[child];
+			this->data[gap] = this->data[child];
 			gap = child;
 			/* where do we have our new children? */
 			child = gap * 2;
@@ -98,11 +98,11 @@ protected:
 		while (gap > 1) {
 			/* compare [gap] with its parent */
 			parent = gap / 2;
-			if (!(*item <*data[parent])) {
+			if (!(*item < *this->data[parent])) {
 				/* we don't need to continue upstairs */
 				break;
 			}
-			data[gap] = data[parent];
+			this->data[gap] = this->data[parent];
 			gap = parent;
 		}
 		return gap;
@@ -112,9 +112,9 @@ protected:
 	/** verifies the heap consistency (added during first YAPF debug phase) */
 	FORCEINLINE void CheckConsistency()
 	{
-		for (uint child = 2; child <= items; child++) {
+		for (uint child = 2; child <= this->items; child++) {
 			uint parent = child / 2;
-			assert(!(*data[child] < *data[parent]));
+			assert(!(*this->data[child] < *this->data[parent]));
 		}
 	}
 #endif
@@ -122,57 +122,57 @@ protected:
 public:
 	/** Return the number of items stored in the priority queue.
 	 *  @return number of items in the queue */
-	FORCEINLINE uint Size() const { return items; }
+	FORCEINLINE uint Size() const { return this->items; }
 
 	/** Test if the priority queue is empty.
 	 *  @return true if empty */
-	FORCEINLINE bool IsEmpty() const { return items == 0; }
+	FORCEINLINE bool IsEmpty() const { return this->items == 0; }
 
 	/** Test if the priority queue is full.
 	 *  @return true if full. */
-	FORCEINLINE bool IsFull() const { return items >= capacity; }
+	FORCEINLINE bool IsFull() const { return this->items >= this->capacity; }
 
 	/** Find the smallest item in the priority queue.
 	 *  Return the smallest item, or throw assert if empty. */
 	FORCEINLINE T *Begin()
 	{
-		assert(!IsEmpty());
-		return data[1];
+		assert(!this->IsEmpty());
+		return this->data[1];
 	}
 
 	FORCEINLINE T *End()
 	{
-		return data[1 + items];
+		return this->data[1 + this->items];
 	}
 
 	/** Insert new item into the priority queue, maintaining heap order.
 	 *  @return false if the queue is full. */
 	FORCEINLINE void Push(T *new_item)
 	{
-		if (IsFull()) {
-			capacity *= 2;
-			data = ReallocT<T*>(data, capacity + 1);
+		if (this->IsFull()) {
+			this->capacity *= 2;
+			this->data = ReallocT<T*>(this->data, this->capacity + 1);
 		}
 
 		/* make place for new item */
-		uint gap = HeapifyUp(++items, new_item);
-		data[gap] = new_item;
+		uint gap = this->HeapifyUp(++items, new_item);
+		this->data[gap] = new_item;
 		CHECK_CONSISTY();
 	}
 
 	/** Remove and return the smallest item from the priority queue. */
 	FORCEINLINE T *Shift()
 	{
-		assert(!IsEmpty());
+		assert(!this->IsEmpty());
 
-		T *first = Begin();
+		T *first = this->Begin();
 
-		items--;
+		this->items--;
 		/* at index 1 we have a gap now */
-		T *last = End();
-		uint gap = HeapifyDown(1, last);
+		T *last = this->End();
+		uint gap = this->HeapifyDown(1, last);
 		/* move last item to the proper place */
-		if (!IsEmpty()) data[gap] = last;
+		if (!this->IsEmpty()) this->data[gap] = last;
 
 		CHECK_CONSISTY();
 		return first;
@@ -181,31 +181,31 @@ public:
 	/** Remove item specified by index */
 	FORCEINLINE void RemoveByIdx(uint index)
 	{
-		if (index < items) {
+		if (index < this->items) {
 			assert(index != 0);
-			items--;
+			this->items--;
 			/* at position index we have a gap now */
 
-			T *last = End();
+			T *last = this->End();
 			/* Fix binary tree up and downwards */
-			uint gap = HeapifyUp(index, last);
-			gap = HeapifyDown(gap, last);
+			uint gap = this->HeapifyUp(index, last);
+			gap = this->HeapifyDown(gap, last);
 			/* move last item to the proper place */
-			if (!IsEmpty()) data[gap] = last;
+			if (!this->IsEmpty()) this->data[gap] = last;
 		} else {
-			assert(index == items);
-			items--;
+			assert(index == this->items);
+			this->items--;
 		}
 		CHECK_CONSISTY();
 	}
 
 	/** return index of the item that matches (using &item1 == &item2) the given item. */
-	FORCEINLINE uint FindLinear(const T& item) const
+	FORCEINLINE uint FindLinear(const T &item) const
 	{
-		if (IsEmpty()) return 0;
-		for (T **ppI = data + 1, **ppLast = ppI + items; ppI <= ppLast; ppI++) {
+		if (this->IsEmpty()) return 0;
+		for (T **ppI = this->data + 1, **ppLast = ppI + this->items; ppI <= ppLast; ppI++) {
 			if (*ppI == &item) {
-				return ppI - data;
+				return ppI - this->data;
 			}
 		}
 		return 0;
@@ -213,7 +213,7 @@ public:
 
 	/** Make the priority queue empty.
 	 * All remaining items will remain untouched. */
-	FORCEINLINE void Clear() { items = 0; }
+	FORCEINLINE void Clear() { this->items = 0; }
 };
 
 #endif /* BINARYHEAP_HPP */
