@@ -2904,10 +2904,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Hiện c
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Hiện chi tiết tàu thuỷ
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Hiện chi tiết máy bay
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Thao tác với đoàn tàu - bấm để dừng/chạy tàu
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Thao tác với ôtô - bấm để dừng/chạy ôtô
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Thao tác với tàu thuỷ - bấm để dừng/chạy tàu
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Thao tác với máy bay - bấm để dừng/chạy máy bay
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Thao tác với đoàn tàu - bấm để dừng/chạy tàu. Ctrl+Click để chuyển điểm đến
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Thao tác với ôtô - bấm để dừng/chạy ôtô. Ctrl+Click để chuyển điểm đến
+STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Thao tác với tàu thuỷ - bấm để dừng/chạy tàu. Ctrl+Click để chuyển điểm đến
+STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Thao tác với máy bay - bấm để dừng/chạy máy bay. Ctrl+Click để chuyển điểm đến
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Bốc/dỡ hàng
@@ -3425,6 +3425,7 @@ STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Không t
 STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Không thể xoá trạm bốc dỡ...
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Không thể xoá bến xe điện...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Không thể xoá trạm bốc dỡ xe điện...
+STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Phải dỡ bỏ bến xe buýt trước
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Phải bỏ nhà ga tàu hoả trước
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Phải bỏ bến xe buýt trước

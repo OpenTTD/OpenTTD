@@ -2122,6 +2122,7 @@ STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Koordina
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Yapım: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}İstasyon sınıfı: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}İstasyon türü: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Havalimanı karesi adı: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}İstenen: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
@@ -3308,6 +3309,9 @@ STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}...resim
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Ölcek uyarısı
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Kaynak haritanin boyutunu değiştirmek önerilmez. Harita oluşturmaya devam edilsin mi?
 
+# Soundset messages
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Yalnız yedek ses kümesi bulundu. Ses istiyorsanız, içerik indirme sisteminden ses kümesi indirin.
+
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Ekran görüntüsü '{STRING}' olarak kaydedildi
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Ekran görüntüsü alınamadı!
@@ -3422,6 +3426,7 @@ STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Otobüs 
 STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Kamyon durağı kaldırılamaz...
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Yolcu tramvayı istasyonu kaldırılamıyor...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Yük tramvayı istasyonu kaldırılamıyor...
+STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Önce durağı kaldırmalısınız
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Önce tren istasyonu yıkılmalı
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Önce otobüs durağı yıkılmalı
@@ -3475,6 +3480,7 @@ STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(para yetmedi)
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}İmkansiz ray birleşimi
+STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Önce işaretleri kaldırmalısınız
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Uygun ray yok
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Önce ray kaldırılmalı
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Yol tek yönlü veya kapalı

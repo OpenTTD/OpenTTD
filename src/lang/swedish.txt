@@ -1165,6 +1165,10 @@ STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}En eller
 STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Max spridning av station: {ORANGE}{STRING} {RED}Varning: Hög inställning slöar ner spelet
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Serva helikoptrar vid landningplattor automatiskt: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Koppla landskapsverktyget till övriga verktygsfält: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Markfärg använd i minikartan: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Grön
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Mörkgrön
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violett
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}Omvänd scrollriktning: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}Mjuk skrollning av vy: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}Visa måtthjälptext vid användning av byggverktyg: {ORANGE}{STRING}
@@ -1918,13 +1922,13 @@ STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Signalva
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Standardsignal (semafor){}Detta är den enklaste typen av signal, som tillåter endast ett tåg per block vid samma tidpunkt.
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}För-signal (semafor){}Grön så länge det finns en eller flera gröna utfarts-signaler på efterföljande bit av spår, annars visas rött.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Utfarts-signal (semafor){}Fungerar på samma sätt som en vanlig signal men behövs för att utlösa korrekt färg på In- eller kombinations-signaler.
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Kombinationssignal (semafor){}Kombinationssignalen fungerar helt enkelt som både en För- och Utfarts-signal. Denna tillåter dig att bygga stora "träd" av För-signaler.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Kombinationssignal (semafor){}Kombinationssignalen fungerar som både en För- och Utfarts-signal. Denna tillåter dig att bygga stora "träd" av För-signaler.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Avancerad signal (semafor){}En avancerad signal tillåter flera fordon att befinna sig i ett signalblock samtidigt, om fordonet kan reservera en väg till en säker stopp-plats. Avancerade signaler kan passeras bakifrån.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Avancerad envägs-signal (semafor){}En avancerad signal tillåter flera fordon att befinna sig i ett signalblock samtidigt, om fordonet kan reservera en väg till en säker stopp-plats. Avancerade signaler kan passeras bakifrån.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Normal signal (elektrisk){}Detta är den enklaste typen av signal, som tillåter endast ett tåg per block vid samma tidpunkt.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}För-signal (elektrisk){}Grön så länge det finns en eller flera gröna utfarts-signaler på efterföljande bit av spår, annars visas rött.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Utfarts-signal (elektrisk){}Fungerar på samma sätt som en vanlig signal men behövs för att utlösa korrekt färg på In- eller kombinations-signaler.
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Kombinationssignal (elektrisk){}Kombinationssignalen fungerar helt enkelt som både en För- och Utfarts-signal. Denna tillåter dig att bygga stora "träd" av För-signaler.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Kombinationssignal (elektrisk){}Kombinationssignalen fungerar som både en För- och Utfarts-signal. Denna tillåter dig att bygga stora "träd" av För-signaler.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Avancerad signal (elektrisk){}En avancerad signal tillåter flera fordon att befinna sig i ett signalblock samtidigt, om fordonet kan reservera en väg till en säker stopp-plats. Avancerade signaler kan passeras bakifrån.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Avancerad envägs-signal (elektrisk){}En avancerad signal tillåter flera fordon att befinna sig i ett signalblock samtidigt, om fordonet kan reservera en väg till en säker stopp-plats. Avancerade envägs-signaler kan inte passeras bakifrån.
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Konvertera Signal{}När markerad, klicka på en existerande signal för att konvertera den till vald signal-typ och variant. CTRL-klick ändrar den existerande varianten
@@ -2117,6 +2121,7 @@ STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Koordina
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Byggt: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Stationsklass: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Stationstyp: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Flygplatsnamn: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Accepterat gods: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
@@ -2374,7 +2379,7 @@ STR_NEWGRF_ERROR_READ_BOUNDS                                    :Läs förbi slu
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Varning!
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Du håller på att göra ändringar i ett spel som används; detta kan krascha OpenTTD.{}Är du helt säker på detta?
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Du håller på att göra ändringar i ett pågående spel; detta kan krascha OpenTTD.{}Är du helt säker på detta?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Kan inte lägga till filen: redan existerande GRF ID
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Matchande fil saknas (kompatibel GRF laddad)
@@ -2899,10 +2904,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Visa vä
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Visa skeppdetaljer
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Visa flygplan detaljer
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Aktuell tågorder - klicka här för att stoppa/starta tåg
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Nuvarande fordonsaktivitet - Klicka här till stoppa/starta fordon
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Nuvarande skeppsaktion - Klicka här till stoppa/starta skepp
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Nuvarande flygplansaktion - Klicka här till stoppa/starta flygplan
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Aktuell tåghandling - klicka här för att stoppa/starta tåg. Ctrl+Klick för att scrolla till destination.
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Nuvarande fordonsaktivitet - Klicka här för att stoppa/starta fordon. Ctrl+Klick för att scrolla till destination.
+STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Nuvarande skeppshandling - Klicka här för att stoppa/starta skepp. Ctrl+Klick för att scrolla till destination
+STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Nuvarande flygplanshandling - Klicka här för att stoppa/starta flygplan. Ctr+klick för att scrolla till destinationen
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Lastar / lastar av
@@ -3214,6 +3219,8 @@ STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Ändra i
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Ladda om datorspelaren
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Stoppa datorspelaren, ladda om scriptet och starta sedan om datorspelaren
 
+STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD är byggt utan AI-support...
+STR_ERROR_NO_AI_SUB                                             :{WHITE}... inga AIs tillgängliga!
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Ingen passande AI hittades. {}Denna AI är en test-AI och kommer inte göra någonting.{}Du kan ladda ner nya AI genom spelets system 'Online-innehåll"
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}En av AI'erna som körs har krachat. Vänligen raportera detta till AIs skapare med en screenshot på "AI Debug Fönsteret".
@@ -3301,6 +3308,9 @@ STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... kund
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Skala-varning
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}För stora storleksändringar av källkarta är inte rekomenderat. Fortsätt med generering?
 
+# Soundset messages
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Endast ett reservdata-ljudsett hittades. Om du vill ha ljud, installera ett ljudsett via nerladdnings-systemet.
+
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Screenshot sparades som '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Screenshot misslyckades!
@@ -3367,6 +3377,7 @@ STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... för
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... det finns ingen plats kvar på kartan
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Staden kommer inte bygga vägar. Du kan tillåta att staden bygger vägar via Avancerade Inställningar -> Ekonomi -> Städer.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Vägarbete pågår
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kan inte ta bort den här staden...{}En station eller depå refererar till staden eller så kan inte en stadsägd ruta tas bort.
 
 # Industry related errors
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Kan inte generera industrier...
@@ -3379,6 +3390,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... kan 
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... kan bara byggas i regnskogsområden
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... kan bara byggas i ökenområden
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... kan bara byggas i städer
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... kan bara byggas i låglandsområden
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... kan bara placeras nära kartans kant
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... skog kan bara planteras ovanför snölinjen
 
@@ -3413,6 +3425,7 @@ STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Kan inte
 STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Kan inte ta bort lastbrygga...
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Kan inte ta bort passagerarspårvagnsstation...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Kan inte ta bort fraktspårvagnsstation...
+STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Måste ta bort vägstop först
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Måste riva järnvägsstation först
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Måste riva busshållplats först
@@ -3466,6 +3479,7 @@ STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(pengagräns)
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Omöjlig kombination av spår
+STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Måste ta bort signaler först
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Inget passande järnvägsspår
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Måste ta bort järnväg först
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Vägen är enkelriktad eller blockerad

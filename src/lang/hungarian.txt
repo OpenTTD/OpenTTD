@@ -3459,6 +3459,7 @@ STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Nem táv
 STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Nem távolíthatod el ezt a teherautó megállót...
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Nem lehet a villamos utasvárót eltávolítani...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Nem lehet a tehervillamos-állomást eltávolítani
+STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Előbb el kell távolítanod a megállóhelyet
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Előbb le kell rombolnod a vasútállomást
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Előbb le kell rombolnod a buszmegállót

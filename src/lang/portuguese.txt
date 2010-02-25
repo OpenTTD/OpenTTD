@@ -2121,6 +2121,7 @@ STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Coordena
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Construído: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Tipo de Estação: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Tipo de Estação: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Nome do quadrado do aeroporto: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Carga aceite: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
@@ -2903,10 +2904,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Mostrar 
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Mostrar detalhes do barco
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Mostrar detalhes da aeronave
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Tarefa actual do comboio - clique aqui para iniciar/parar comboio
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Tarefa actual do veículo - clique aqui para iniciar/parar veículo
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Tarefa actual do barco - clique aqui para iniciar/parar barco
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Tarefa actual da aeronave - clique aqui para iniciar/parar a aeronave
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Tarefa actual do comboio - clique aqui para iniciar/parar comboio. Ctrl+Clique para deslocar-se ao destino
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Tarefa actual do veículo - clique aqui para iniciar/parar veículo. Ctrl+Clique para deslocar-se ao destino
+STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Tarefa actual do barco - clique aqui para iniciar/parar barco. Ctrl+Clique para deslocar-se ao destino
+STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Tarefa actual da aeronave - clique aqui para iniciar/parar a aeronave. Ctrl+Clique para deslocar-se ao destino
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}A carregar / descarregar
@@ -3308,6 +3309,7 @@ STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Aviso de
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Redimensionar muito o mapa não é recomendado. Continuar com a criação?
 
 # Soundset messages
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Só foi encontrado um conjunto de sons de reserva. Se deseja sons, instale um conjunto de sons através do sistema de descarregamento de conteúdo.
 
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Captura de ecrã gravada para o disco como '{STRING}' com sucesso
@@ -3423,6 +3425,7 @@ STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Impossí
 STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Impossível remover estação...
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Impossível remover paragem de eléctricos de passageiros
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Impossível remover estação de eléctricos de mercadorias...
+STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Deverá remover a paragem rodoviária primeiro
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Precisa de demolir a estação primeiro
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Precisa de demolir a estação de autocarros primeiro
@@ -3476,6 +3479,7 @@ STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(limite de dinh
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Combinação de linhas impossível
+STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Deverá remover os sinais primeiro
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Tipo de linha não apropriado
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Deverá remover a linha férrea primeiro
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Estrada de sentido único ou bloqueada

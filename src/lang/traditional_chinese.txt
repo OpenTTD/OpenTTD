@@ -561,7 +561,7 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}資金�
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}貸款：
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}總計：
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}去年盈利的交通工具數量； 包含鐵公路車輛、船舶與飛機
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}去年盈利的交通工具數量； 包含公路車輛、火車、船舶與飛機
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}最後提供服務的車站各部份數量。 每部份車站 (火車站、公車站、機場) 都算在内，就算連在一起亦然
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}最低收入交通工具的損益 (只計算出廠兩年以上的交通工具)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}最近三年的單季最低收入
@@ -2121,6 +2121,7 @@ STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}座標�
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}建於：{LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}車站風格：{LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}車站種類：{LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}機場區域名稱: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF：{LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}接收貨物：{LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
@@ -2378,7 +2379,7 @@ STR_NEWGRF_ERROR_READ_BOUNDS                                    :讀取最後的
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}注意！
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}您正準備修改進行中的遊戲；這可能使 OpenTTD 當掉。{}您確定一定要這麼做嗎？
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}您將會修改進行中的遊戲；這可能會導致 OpenTTD 當掉。{}您確定要這麼做嗎？
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}無法新增檔案：GRF ID 重複
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}找不到符合的檔案 (已載入相容的 GRF)
@@ -3307,6 +3308,9 @@ STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... 無�
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}縮放警告
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}不建議過度縮放地圖。要繼續產生嗎？
 
+# Soundset messages
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}只找到一個後備音效集；如果您需要音效，請透過內容下載系統安裝音效集。
+
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}畫面擷取成功並存為「{STRING}」
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}畫面擷取失敗！
@@ -3421,6 +3425,7 @@ STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}無法�
 STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}無法移除貨運站...
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}無法移除載客電車站...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}無法移除載貨電車站...
+STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}必須先移除路通站
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}必須先摧毀火車站
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}必須先摧毀公車站

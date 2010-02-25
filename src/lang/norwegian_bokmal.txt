@@ -161,7 +161,7 @@ STR_ABBREV_TOFFEE                                               :{TINYFONT}KM
 STR_ABBREV_BATTERIES                                            :{TINYFONT}BA
 STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}MV
-STR_ABBREV_NONE                                                 :{TINYFONT}NEI
+STR_ABBREV_NONE                                                 :{TINYFONT}IN
 STR_ABBREV_ALL                                                  :{TINYFONT}ALLE
 
 # 'Mode' of transport for cargoes
@@ -334,7 +334,7 @@ STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Plasser 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Lagre scenario
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Last inn scenario
-STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Last høydekart
+STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Last inn høydekart
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Avslutt redigeringsprogram
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Avslutt
@@ -344,7 +344,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Avslutt
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spillinnstillinger
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Vanskelighetsgrad
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Avanserte innstillinger
-STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Innstillinger for NewGRF
+STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF-innstillinger
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Instillinger for gjennomsiktighet
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Vis bynavn
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Vis stasjonsnavn
@@ -967,9 +967,9 @@ STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Skillet
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Velg desimalskilletegn for din valuta
 
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefiks: {ORANGE}{STRING}
-STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Velg prefiks for valuta
+STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Velg prefiks for din valuta
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Suffiks: {ORANGE}{STRING}
-STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}Velg suffiks for valuta
+STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}Velg suffiks for din valuta
 
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Gå over til euro: {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Gå over til euro: {ORANGE}aldri
@@ -1163,7 +1163,7 @@ STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}En eller
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}En eller flere ruter ved en av kantene på kartet er ikke vann
 
 STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Maks. stasjonsspredning: {ORANGE}{STRING} {RED}Advarsel: Høy instilling gir tregere spill
-STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Automatisk vedlikehold ved helikopterplattform: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Automatisk vedlikehold ved helikopterplass: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Koble landskapsverktøylinjen til bygningsverktøylinjene: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Landfarge brukt på oversiktskartet: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Grønn
@@ -1274,7 +1274,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :tillatt
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :tillatt, egendefinert oppsett av by
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}Plassering av trær i spillet: {ORANGE}{STRING}
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :ingen {RED}(avbryter sagbruk)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :ingen {RED}(ødelegger sagbruk)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :kun i regnskog
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :overalt
 
@@ -1292,8 +1292,8 @@ STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Sakte
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normal
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Rask
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Veldig rask
-STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}Andel tettsteder som kommer til å bli byer: {ORANGE}1 av {STRING}
-STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}Andel tettsteder som kommer til å bli byer: {ORANGE}Ingen
+STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}Andel byer som vil bli storbyer: {ORANGE}1 av {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}Andel byer som vil bli storbyer: {ORANGE}Ingen
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Innledende bystørrelsesmultiplikator: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Fjern absurde veielementer under veikonstruksjon: {ORANGE}{STRING}
 
@@ -2028,7 +2028,7 @@ STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}Helikopt
 STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}Små flyplasser
 STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Store flyplasser
 STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Sentrumsflyplasser
-STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Helikopterflyplasser
+STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Helikopterplasser
 
 STR_STATION_BUILD_NOISE                                         :{BLACK}Støy generert: {GOLD}{COMMA}
 
@@ -2085,7 +2085,7 @@ STR_FOUND_TOWN_INITIAL_SIZE_LARGE_BUTTON                        :{BLACK}Stor
 STR_FOUND_TOWN_SIZE_RANDOM                                      :{BLACK}Tilfeldig
 STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Velg bystørrelse
 STR_FOUND_TOWN_CITY                                             :{BLACK}By
-STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Store byer vokser raskere enn vanlige byer{}Avhengig av innstillinger er de større når de blir grunnlagt
+STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Storbyer vokser raskere enn vanlige byer{}Avhengig av innstillinger er de større når de blir grunnlagt
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Byers veiløsning:
 STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Velg veiløsning for denne byen
@@ -2387,7 +2387,7 @@ STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Matchen
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatibel GRF(er) lastet for manglende filer
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Manglende GRF-fil(er) har blitt deaktivert
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Mangler GRF-fil(er)
-STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Å slå av pause kan medføre at OpenTTD krasjer. Ikke rapporter feil for etterfølgende krasjer.{}Vil du virkelig å slå av pause?
+STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Å slå av pause kan medføre at OpenTTD krasjer. Ikke rapporter feil for etterfølgende krasjer.{}Vil du virkelig slå av pause?
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Atferden til NewGRF '{STRING}' vil trolig forårsake synkroniseringsfeil og/eller krasj.
@@ -2853,7 +2853,7 @@ STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Klikk de
 
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Erstatter: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Veksle mellom tog- og vognerstatningsvinduet
-STR_REPLACE_ENGINES                                             :Motorer
+STR_REPLACE_ENGINES                                             :Lokomotiv
 STR_REPLACE_WAGONS                                              :Vogner
 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Velg jernbanetypen du vil bytte ut lokomotiv på
@@ -3214,8 +3214,8 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Velg år
 STR_AI_DEBUG                                                    :{WHITE}AI-feilsøking
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Navnet til AIen
-STR_AI_DEBUG_SETTINGS                                           :{BLACK}AI innstillinger
-STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Endre innstillingene for AI
+STR_AI_DEBUG_SETTINGS                                           :{BLACK}AI-innstillinger
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Endre AI-innstillinger
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Last inn AI på nytt
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Slå av AI, last skript på nytt, og start AI på nytt
 
@@ -3425,6 +3425,7 @@ STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Kan ikke
 STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Kan ikke fjerne lasteterminalen...
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Kan ikke fjerne trikkestasjon for passasjerer...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Kan ikke fjerne trikkestasjon for varer...
+STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Må fjerne stoppested først
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Må rive jernbanestasjon først
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Må rive bussterminal først
@@ -3739,7 +3740,7 @@ STR_SV_STNAME_WAYPOINT                                          :{STRING}
 ##id 0x6020
 STR_SV_STNAME_ANNEXE                                            :{STRING} anneks
 STR_SV_STNAME_SIDINGS                                           :{STRING}veien
-STR_SV_STNAME_BRANCH                                            :{STRING} gren
+STR_SV_STNAME_BRANCH                                            :{STRING} torg
 STR_SV_STNAME_UPPER                                             :Øvre {STRING}
 STR_SV_STNAME_LOWER                                             :Nedre {STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING} helikopterplass

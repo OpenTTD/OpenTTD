@@ -218,6 +218,7 @@ STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Entajpu filtrotekston.
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Enigu ŝlosilvorton laŭ kiu filtri la liston
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtroteksto:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Elektu vicordo (deira/alira)
@@ -314,6 +315,7 @@ STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Malfermu
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Montru fenestron de sono/muziko
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Montru lastan mesaĝon/novaĵon, montru mesaĝajn opciojn
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informoj pri regionoj, konzolo, AI-sencimigo, ekranfotoj, OpenTTD.
+STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Ŝalti ilobretojn
 
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Konservu scenaron, ŝarĝu scenaron, foriru el la kreilo, fermu
@@ -957,15 +959,21 @@ STR_CURRENCY_WINDOW                                             :{WHITE}Alia mon
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Interŝanĝa valoro: {ORANGE}{CURRENCY} = £ {COMMA}
 
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Dividilo: {ORANGE}{STRING}
+STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Difini apartigilon por via valuto
 
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefikso: {ORANGE}{STRING}
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sufikso: {ORANGE}{STRING}
+STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}Difini sufiksĉenon por via valuto
 
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Ŝanĝu al Eŭroj: {ORANGE}{NUM}
-STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Ŝanĝu al Eŭroj: {ORANGE}neniam
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Ŝanĝi al Eŭroj: {ORANGE}{NUM}
+STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Ŝanĝi al Eŭroj: {ORANGE}neniam
+STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Difini la jaron por ŝanĝi al Eŭro
+STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Ŝanĝi al Eŭro pli frue
+STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Ŝanĝi al Eŭro pli malfrue
 
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Antaŭvido: {ORANGE}{CURRENCY}
-STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Ŝanĝu parametron por alia monunuo
+STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 pundo (£) en via valuto
+STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Ŝanĝi parametron por alia monunuo
 
 # Difficulty level window
 STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Malfacilec-nivelo
@@ -1377,7 +1385,7 @@ STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magia f
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tuneloj rajtas kruciĝi unu kun la alia: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Konstruado eblas dum paŭzo: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Jetoj ne kraŝos (ofte) sur malgrandaj flughavenoj: {ORANGE} {STRING}
-STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Ŝanĝu klimaton: {ORANGE}{STRING}
+STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Ŝanĝi klimaton: {ORANGE}{STRING}
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Modera landaspekto
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Arktikeca landaspekto
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Tropikeca landaspekto
@@ -3082,6 +3090,7 @@ STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}...vojo 
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Ne povas forigi stacidomeron...
 STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Ne povas forigi bushaltejon...
 STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Ne povas forigi ŝarĝstacion...
+STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Antaŭe forigu haltejon
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Antaŭe devas la fervojostacio esti detruita
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Antaŭe devas la bushaltejo esti detruita

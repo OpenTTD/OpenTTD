@@ -3488,6 +3488,7 @@ STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Выхо
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Изменение размеров исходной карты до таких значений не рекомендуется. Продолжить?
 
 # Soundset messages
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Текущая звуковая схема выбрана системой автоматически. Дополнительные наборы звуков можно загрузить через систему онлайн контента.
 
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Скриншот сохранён под именем «{STRING}»
@@ -3603,6 +3604,7 @@ STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Нево
 STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Невозможно удалить грузовой терминал...
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Не могу удалить пассажирскую трамвайную остановку...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Не могу удалить грузовую трамвайную станцию...
+STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Нужно убрать остановку
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Сначала нужно удалить ж/д станцию
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Сначала удалите автобусную остановку
