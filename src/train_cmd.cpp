@@ -1640,7 +1640,7 @@ static void ReverseTrainSwapVeh(Train *v, int l, int r)
 		}
 
 		Swap(a->track, b->track);
-		Swap(a->direction,    b->direction);
+		Swap(a->direction, b->direction);
 
 		/* toggle direction */
 		if (a->track != TRACK_BIT_DEPOT) a->direction = ReverseDir(a->direction);
