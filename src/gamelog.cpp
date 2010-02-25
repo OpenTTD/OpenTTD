@@ -643,10 +643,10 @@ void GamelogGRFUpdate(const GRFConfig *oldc, const GRFConfig *newc)
 		const GRFConfig *og = ol->grf[o];
 		const GRFConfig *ng = nl->grf[n];
 
-		if (og->grfid != ng->grfid) {
+		if (og->ident.grfid != ng->ident.grfid) {
 			uint oi, ni;
 			for (oi = 0; oi < ol->n; oi++) {
-				if (ol->grf[oi]->grfid == nl->grf[n]->grfid) break;
+				if (ol->grf[oi]->ident.grfid == nl->grf[n]->ident.grfid) break;
 			}
 			if (oi < o) {
 				/* GRF was moved, this change has been logged already */
@@ -659,7 +659,7 @@ void GamelogGRFUpdate(const GRFConfig *oldc, const GRFConfig *newc)
 				continue;
 			}
 			for (ni = 0; ni < nl->n; ni++) {
-				if (nl->grf[ni]->grfid == ol->grf[o]->grfid) break;
+				if (nl->grf[ni]->ident.grfid == ol->grf[o]->ident.grfid) break;
 			}
 			if (ni < n) {
 				/* GRF was moved, this change has been logged already */
@@ -668,7 +668,7 @@ void GamelogGRFUpdate(const GRFConfig *oldc, const GRFConfig *newc)
 			}
 			if (ni == nl->n) {
 				/* GRF couldn't be found in the NEW list, GRF was REMOVED */
-				GamelogGRFRemove(ol->grf[o++]->grfid);
+				GamelogGRFRemove(ol->grf[o++]->ident.grfid);
 				continue;
 			}
 
@@ -682,18 +682,18 @@ void GamelogGRFUpdate(const GRFConfig *oldc, const GRFConfig *newc)
 
 			if (ni >= oi) { // prefer the one that is moved further
 				/* GRF was moved down */
-				GamelogGRFMove(ol->grf[o++]->grfid, ni);
+				GamelogGRFMove(ol->grf[o++]->ident.grfid, ni);
 			} else {
-				GamelogGRFMove(nl->grf[n++]->grfid, -(int)oi);
+				GamelogGRFMove(nl->grf[n++]->ident.grfid, -(int)oi);
 			}
 		} else {
-			if (memcmp(og->md5sum, ng->md5sum, sizeof(og->md5sum)) != 0) {
+			if (memcmp(og->ident.md5sum, ng->ident.md5sum, sizeof(og->ident.md5sum)) != 0) {
 				/* md5sum changed, probably loading 'compatible' GRF */
-				GamelogGRFCompatible(nl->grf[n]);
+				GamelogGRFCompatible(&nl->grf[n]->ident);
 			}
 
 			if (og->num_params != ng->num_params || memcmp(og->param, ng->param, og->num_params * sizeof(og->param[0])) != 0) {
-				GamelogGRFParameters(ol->grf[o]->grfid);
+				GamelogGRFParameters(ol->grf[o]->ident.grfid);
 			}
 
 			o++;
@@ -701,8 +701,8 @@ void GamelogGRFUpdate(const GRFConfig *oldc, const GRFConfig *newc)
 		}
 	}
 
-	while (o < ol->n) GamelogGRFRemove(ol->grf[o++]->grfid); // remaining GRFs were removed ...
-	while (n < nl->n) GamelogGRFAdd   (nl->grf[n++]);    // ... or added
+	while (o < ol->n) GamelogGRFRemove(ol->grf[o++]->ident.grfid); // remaining GRFs were removed ...
+	while (n < nl->n) GamelogGRFAdd   (nl->grf[n++]);              // ... or added
 
 	free(ol);
 	free(nl);

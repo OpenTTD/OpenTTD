@@ -181,7 +181,7 @@ void NetworkUDPSocketHandler::Send_NetworkGameInfo(Packet *p, const NetworkGameI
 
 		/* Send actual GRF Identifications */
 		for (c = info->grfconfig; c != NULL; c = c->next) {
-			if (!HasBit(c->flags, GCF_STATIC)) this->Send_GRFIdentifier(p, c);
+			if (!HasBit(c->flags, GCF_STATIC)) this->Send_GRFIdentifier(p, &c->ident);
 		}
 	}
 
@@ -239,7 +239,7 @@ void NetworkUDPSocketHandler::Recv_NetworkGameInfo(Packet *p, NetworkGameInfo *i
 
 			for (i = 0; i < num_grfs; i++) {
 				GRFConfig *c = CallocT<GRFConfig>(1);
-				this->Recv_GRFIdentifier(p, c);
+				this->Recv_GRFIdentifier(p, &c->ident);
 				this->HandleIncomingNetworkGameInfoGRFConfig(c);
 
 				/* Append GRFConfig to the list */

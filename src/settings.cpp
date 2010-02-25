@@ -1224,7 +1224,7 @@ static GRFConfig *GRFLoadConfig(IniFile *ini, const char *grpname, bool is_stati
 		/* Check for duplicate GRFID (will also check for duplicate filenames) */
 		bool duplicate = false;
 		for (const GRFConfig *gc = first; gc != NULL; gc = gc->next) {
-			if (gc->grfid == c->grfid) {
+			if (gc->ident.grfid == c->ident.grfid) {
 				ShowInfoF("ini: ignoring  NewGRF '%s': duplicate GRF ID with '%s'", item->name, gc->filename);
 				duplicate = true;
 				break;

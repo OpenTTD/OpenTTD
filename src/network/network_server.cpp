@@ -202,7 +202,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_CHECK_NEWGRFS)(NetworkClientSocket *
 
 	p->Send_uint8 (grf_count);
 	for (c = _grfconfig; c != NULL; c = c->next) {
-		if (!HasBit(c->flags, GCF_STATIC)) cs->Send_GRFIdentifier(p, c);
+		if (!HasBit(c->flags, GCF_STATIC)) cs->Send_GRFIdentifier(p, &c->ident);
 	}
 
 	cs->Send_Packet(p);

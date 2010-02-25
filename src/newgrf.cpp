@@ -4258,7 +4258,7 @@ static void CfgApply(ByteReader *buf)
 		return;
 	}
 
-	GRFLocation location(_cur_grfconfig->grfid, _nfo_line + 1);
+	GRFLocation location(_cur_grfconfig->ident.grfid, _nfo_line + 1);
 	GRFLineToSpriteOverride::iterator it = _grf_line_to_action6_sprite_override.find(location);
 	if (it != _grf_line_to_action6_sprite_override.end()) {
 		free(preload_sprite);
@@ -4336,7 +4336,7 @@ static void DisableStaticNewGRFInfluencingNonStaticNewGRFs(GRFConfig *c)
 	c->error  = new GRFError(STR_NEWGRF_ERROR_MSG_FATAL, STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC);
 	c->error->data = strdup(_cur_grfconfig->name);
 
-	ClearTemporaryNewGRFData(GetFileByGRFID(c->grfid));
+	ClearTemporaryNewGRFData(GetFileByGRFID(c->ident.grfid));
 }
 
 /* Action 0x07
@@ -4510,7 +4510,7 @@ static void ScanInfo(ByteReader *buf)
 	buf->ReadByte();
 	uint32 grfid  = buf->ReadDWord();
 
-	_cur_grfconfig->grfid = grfid;
+	_cur_grfconfig->ident.grfid = grfid;
 
 	/* GRF IDs starting with 0xFF are reserved for internal TTDPatch use */
 	if (GB(grfid, 24, 8) == 0xFF) SetBit(_cur_grfconfig->flags, GCF_SYSTEM);
@@ -5177,7 +5177,7 @@ static void SafeGRFInhibit(ByteReader *buf)
 		uint32 grfid = buf->ReadDWord();
 
 		/* GRF is unsafe it if tries to deactivate other GRFs */
-		if (grfid != _cur_grfconfig->grfid) {
+		if (grfid != _cur_grfconfig->ident.grfid) {
 			SetBit(_cur_grfconfig->flags, GCF_UNSAFE);
 
 			/* Skip remainder of GRF */
@@ -6304,7 +6304,7 @@ static void DecodeSpecialSprite(byte *buf, uint num, GrfLoadingStage stage)
 		/* 0x13 */ { NULL,     NULL,      NULL,            NULL,           NULL,              TranslateGRFStrings, },
 	};
 
-	GRFLocation location(_cur_grfconfig->grfid, _nfo_line);
+	GRFLocation location(_cur_grfconfig->ident.grfid, _nfo_line);
 
 	GRFLineToSpriteOverride::iterator it = _grf_line_to_action6_sprite_override.find(location);
 	if (it == _grf_line_to_action6_sprite_override.end()) {
@@ -6722,7 +6722,7 @@ void LoadNewGRF(uint load_index, uint file_index)
 				SetBit(c->flags, GCF_RESERVED);
 			} else if (stage == GLS_ACTIVATION) {
 				ClrBit(c->flags, GCF_RESERVED);
-				assert(GetFileByGRFID(c->grfid) == _cur_grffile);
+				assert(GetFileByGRFID(c->ident.grfid) == _cur_grffile);
 				ClearTemporaryNewGRFData(_cur_grffile);
 				BuildCargoTranslationMap();
 				DEBUG(sprite, 2, "LoadNewGRF: Currently %i sprites are loaded", _cur_spriteid);

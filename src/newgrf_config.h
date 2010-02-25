@@ -69,7 +69,8 @@ struct GRFError : ZeroedMemoryAllocator {
 };
 
 /** Information about GRF, used in the game and (part of it) in savegames */
-struct GRFConfig : public GRFIdentifier {
+struct GRFConfig {
+	GRFIdentifier ident; ///< grfid and md5sum to uniquely identify newgrfs
 	char *filename;     ///< Filename - either with or without full path
 	char *name;         ///< NOSAVE: GRF name (Action 0x08)
 	char *info;         ///< NOSAVE: GRF info (author, copyright, ...) (Action 0x08)

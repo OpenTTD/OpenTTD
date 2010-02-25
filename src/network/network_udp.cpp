@@ -180,16 +180,16 @@ DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_GET_NEWGRFS)
 		GRFConfig c;
 		const GRFConfig *f;
 
-		this->Recv_GRFIdentifier(p, &c);
+		this->Recv_GRFIdentifier(p, &c.ident);
 
 		/* Find the matching GRF file */
-		f = FindGRFConfig(c.grfid, c.md5sum);
+		f = FindGRFConfig(c.ident.grfid, c.ident.md5sum);
 		if (f == NULL) continue; // The GRF is unknown to this server
 
 		/* If the reply might exceed the size of the packet, only reply
 		 * the current list and do not send the other data.
 		 * The name could be an empty string, if so take the filename. */
-		packet_len += sizeof(c.grfid) + sizeof(c.md5sum) +
+		packet_len += sizeof(c.ident.grfid) + sizeof(c.ident.md5sum) +
 				min(strlen((!StrEmpty(f->name)) ? f->name : f->filename) + 1, (size_t)NETWORK_GRF_NAME_LENGTH);
 		if (packet_len > SEND_MTU - 4) { // 4 is 3 byte header + grf count in reply
 			break;
@@ -207,7 +207,7 @@ DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_GET_NEWGRFS)
 
 		/* The name could be an empty string, if so take the filename */
 		strecpy(name, (!StrEmpty(in_reply[i]->name)) ? in_reply[i]->name : in_reply[i]->filename, lastof(name));
-		this->Send_GRFIdentifier(&packet, in_reply[i]);
+		this->Send_GRFIdentifier(&packet, &in_reply[i]->ident);
 		packet.Send_string(name);
 	}
 
@@ -268,7 +268,7 @@ DEF_UDP_RECEIVE_COMMAND(Client, PACKET_UDP_SERVER_RESPONSE)
 
 			packet.Send_uint8(in_request_count);
 			for (i = 0; i < in_request_count; i++) {
-				this->Send_GRFIdentifier(&packet, in_request[i]);
+				this->Send_GRFIdentifier(&packet, &in_request[i]->ident);
 			}
 
 			this->SendPacket(&packet, &item->address);
@@ -343,7 +343,7 @@ DEF_UDP_RECEIVE_COMMAND(Client, PACKET_UDP_SERVER_NEWGRFS)
 		char name[NETWORK_GRF_NAME_LENGTH];
 		GRFConfig c;
 
-		this->Recv_GRFIdentifier(p, &c);
+		this->Recv_GRFIdentifier(p, &c.ident);
 		p->Recv_string(name, sizeof(name));
 
 		/* An empty name is not possible under normal circumstances
@@ -353,7 +353,7 @@ DEF_UDP_RECEIVE_COMMAND(Client, PACKET_UDP_SERVER_NEWGRFS)
 		/* Finds the fake GRFConfig for the just read GRF ID and MD5sum tuple.
 		 * If it exists and not resolved yet, then name of the fake GRF is
 		 * overwritten with the name from the reply. */
-		unknown_name = FindUnknownGRFName(c.grfid, c.md5sum, false);
+		unknown_name = FindUnknownGRFName(c.ident.grfid, c.ident.md5sum, false);
 		if (unknown_name != NULL && strcmp(unknown_name, UNKNOWN_GRF_NAME_PLACEHOLDER) == 0) {
 			ttd_strlcpy(unknown_name, name, NETWORK_GRF_NAME_LENGTH);
 		}
@@ -363,12 +363,12 @@ DEF_UDP_RECEIVE_COMMAND(Client, PACKET_UDP_SERVER_NEWGRFS)
 void ClientNetworkUDPSocketHandler::HandleIncomingNetworkGameInfoGRFConfig(GRFConfig *config)
 {
 	/* Find the matching GRF file */
-	const GRFConfig *f = FindGRFConfig(config->grfid, config->md5sum);
+	const GRFConfig *f = FindGRFConfig(config->ident.grfid, config->ident.md5sum);
 	if (f == NULL) {
 		/* Don't know the GRF, so mark game incompatible and the (possibly)
 		 * already resolved name for this GRF (another server has sent the
 		 * name of the GRF already */
-		config->name   = FindUnknownGRFName(config->grfid, config->md5sum, true);
+		config->name   = FindUnknownGRFName(config->ident.grfid, config->ident.md5sum, true);
 		config->status = GCS_NOT_FOUND;
 	} else {
 		config->filename  = f->filename;
