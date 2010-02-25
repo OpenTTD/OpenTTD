@@ -52,6 +52,33 @@ public:
 		m_items = NULL;
 	}
 
+protected:
+	/** Heapify (move gap) down */
+	FORCEINLINE uint HeapifyDown(uint gap, T *item)
+	{
+		assert(gap != 0);
+
+		uint child = gap * 2; // first child is at [parent * 2]
+
+		/* while children are valid */
+		while (child <= m_size) {
+			/* choose the smaller child */
+			if (child < m_size && *m_items[child + 1] < *m_items[child])
+				child++;
+			/* is it smaller than our parent? */
+			if (!(*m_items[child] < *item)) {
+				/* the smaller child is still bigger or same as parent => we are done */
+				break;
+			}
+			/* if smaller child is smaller than parent, it will become new parent */
+			m_items[gap] = m_items[child];
+			gap = child;
+			/* where do we have our new children? */
+			child = gap * 2;
+		}
+		return gap;
+	}
+
 public:
 	/** Return the number of items stored in the priority queue.
 	 *  @return number of items in the queue */
@@ -71,6 +98,11 @@ public:
 	{
 		assert(!IsEmpty());
 		return *m_items[1];
+	}
+
+	FORCEINLINE T *End()
+	{
+		return m_items[1 + m_size];
 	}
 
 	/** Insert new item into the priority queue, maintaining heap order.
@@ -104,36 +136,12 @@ public:
 	{
 		assert(!IsEmpty());
 
+		m_size--;
 		/* at index 1 we have a gap now */
-		uint gap = 1;
-
-		/* Heapify down:
-		 *   last item becomes a candidate for the head. Call it last. */
-		T& last = *m_items[m_size--];
-
-		/* now we must maintain relation between parent and its children:
-		 *   parent <= any child
-		 * from head down to the tail */
-		uint child  = 2; // first child is at [parent * 2]
-
-		/* while children are valid */
-		while (child <= m_size) {
-			/* choose the smaller child */
-			if (child < m_size && *m_items[child + 1] < *m_items[child])
-				child++;
-			/* is it smaller than our parent? */
-			if (!(*m_items[child] < last)) {
-				/* the smaller child is still bigger or same as parent => we are done */
-				break;
-			}
-			/* if smaller child is smaller than parent, it will become new parent */
-			m_items[gap] = m_items[child];
-			gap = child;
-			/* where do we have our new children? */
-			child = gap * 2;
-		}
+		T *last = End();
+		uint gap = HeapifyDown(1, last);
 		/* move last item to the proper place */
-		if (m_size > 0) m_items[gap] = &last;
+		if (!IsEmpty()) m_items[gap] = last;
 		CheckConsistency();
 	}
 
@@ -142,17 +150,17 @@ public:
 	{
 		/* at position idx we have a gap now */
 		uint gap = idx;
-		T& last = *m_items[m_size];
 		if (idx < m_size) {
 			assert(idx >= 1);
 			m_size--;
+			T *last = End();
 			/* and the candidate item for fixing this gap is our last item 'last'
 			 * Move gap / last item up: */
 			while (gap > 1)
 			{
 				/* compare [gap] with its parent */
 				uint parent = gap / 2;
-				if (last < *m_items[parent]) {
+				if (*last < *m_items[parent]) {
 					m_items[gap] = m_items[parent];
 					gap = parent;
 				} else {
@@ -161,25 +169,9 @@ public:
 				}
 			}
 
-			uint child  = gap * 2;
-			/* Heapify (move gap) down: */
-			while (child <= m_size) {
-				/* choose the smaller child */
-				if (child < m_size && *m_items[child + 1] < *m_items[child])
-					child++;
-				/* is it smaller than our parent? */
-				if (!(*m_items[child] < last)) {
-					/* the smaller child is still bigger or same as parent => we are done */
-					break;
-				}
-				/* if smaller child is smaller than parent, it will become new parent */
-				m_items[gap] = m_items[child];
-				gap = child;
-				/* where do we have our new children? */
-				child = gap * 2;
-			}
-			/* move parent to the proper place */
-			if (m_size > 0) m_items[gap] = &last;
+			gap = HeapifyDown(gap, last);
+			/* move last item to the proper place */
+			if (!IsEmpty()) m_items[gap] = last;
 		} else {
 			assert(idx == m_size);
 			m_size--;
