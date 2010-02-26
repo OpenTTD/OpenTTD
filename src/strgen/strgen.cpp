@@ -399,8 +399,8 @@ static void EmitGender(char *buf, int value)
 		if (!ParseRelNum(&buf, &argidx, &offset)) {}
 
 		const CmdStruct *cmd = _cur_pcs.cmd[argidx];
-		if ((cmd->flags & C_GENDER) == 0) {
-			error("Command '%s' can't have a gender", cmd->cmd);
+		if (cmd == NULL || (cmd->flags & C_GENDER) == 0) {
+			error("Command '%s' can't have a gender", cmd == NULL ? "<empty>" : cmd->cmd);
 		}
 
 		for (nw = 0; nw < MAX_NUM_GENDER; nw++) {
