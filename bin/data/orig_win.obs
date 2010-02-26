@@ -8,17 +8,25 @@ name              = original_windows
 shortname         = TTDO
 version           = 0
 description       = Original Transport Tycoon Deluxe Windows edition sounds.
+description.bg_BG = Оригинални звуци на Transport Tycoon Deluxe за Windows.
 description.cs_CZ = Původní sada zvuků Transport Tycoon Deluxe (verze pro Windows).
 description.de_DE = Original Transport Tycoon Deluxe Windows Basissounds.
 description.en_GB = Original Transport Tycoon Deluxe Windows edition sounds.
 description.en_US = Original Transport Tycoon Deluxe Windows edition sounds.
 description.es_ES = Sonidos originales de Transport Tycoon Deluxe versión Windows.
 description.fi_FI = Alkuperäiset Transport Tycoon Deluxe Windows äänet.
+description.hr_HR = Originalni zvukovi za Transport Tycoon Deluxe Windows izdanje.
 description.hu_HU = Az eredeti Transport Tycoon Deluxe Windows verziójának hangjai.
 description.fr_FR = Sons originaux de Transport Tycoon Deluxe (version Windows).
+description.id_ID = Efek suara orisinil Transport Tycoon Deluxe versi Windows.
 description.it_IT = Suoni originali di Transport Tycoon Deluxe, edizione Windows.
+description.nb_NO = Originale lyder fra Transport Tycoon Deluxe for Windows.
 description.nl_NL = Originele geluiden van de Transport Tycoon Deluxe Windows-versie.
+description.pt_PT = Sons originais da edição Windows de Transport Tycoon Deluxe.
+description.ru_RU = Оригинальный набор звукового оформления из игры Transport Tycoon Deluxe для Windows.
+description.sl_SL = Originalni zvoki Transport Tycoon Deluxe različice oken(windows).
 description.sv_SE = Originalljuden från Transport Tycoon Deluxe, Windows-utgåvan.
+description.zh_TW = 原版 Transport Tycoon Deluxe Windows 版的音效。
 
 [files]
 samples      = SAMPLE.CAT

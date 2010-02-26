@@ -9,6 +9,7 @@ shortname         = TTDD
 version           = 0
 palette           = DOS
 description       = Original Transport Tycoon Deluxe DOS (German) edition graphics.
+description.bg_BG = Оригинални графики на Transport Tycoon Deluxe за DOS (немски) .
 description.cs_CZ = Původní sada grafik Transport Tycoon Deluxe (německá verze pro DOS).
 description.de_DE = Original Transport Tycoon Deluxe DOS (Deutsch) Basisgrafiken.
 description.en_GB = Original Transport Tycoon Deluxe DOS (German) edition graphics.
@@ -16,10 +17,17 @@ description.en_US = Original Transport Tycoon Deluxe DOS (German) edition graphi
 description.es_ES = Gráficos originales de Transport Tycoon Deluxe versión DOS (Alemán).
 description.fi_FI = Alkuperäiset Transport Tycoon Deluxe DOS (Saksalainen) grafiikat.
 description.fr_FR = Graphiques originaux de Transport Tycoon Deluxe (version DOS allemande).
+description.hr_HR = Originalna grafika za Transport Tycoon Deluxe DOS (Njemački) izdanje.
 description.hu_HU = Az eredeti Transport Tycoon Deluxe DOS (német) verziójának grafikája.
+description.id_ID = Grafik orisinil Transport Tycoon Deluxe versi DOS (Jerman).
 description.it_IT = Grafica originale di Transport Tycoon Deluxe (tedesco), edizione DOS.
+description.nb_NO = Original grafikk fra Transport Tycoon Deluxe for DOS (tysk).
 description.nl_NL = Originele graphics van de Duitse Transport Tycoon Deluxe DOS-versie.
+description.pt_PT = Gráficos originais da edição DOS (Alemã) de Transport Tycoon Deluxe.
+description.ru_RU = Оригинальная графика из немецкой версии Transport Tycoon Deluxe для DOS.
+description.sl_SL = Originalna grafika Transport Tycoon Deluxe za nemško različico DOS.
 description.sv_SE = Originalgrafiken från Transport Tycoon Deluxe, DOS-utgåvan (tyska).
+description.zh_TW = 原版 Transport Tycoon Deluxe DOS 版 (德國版) 的圖形。
 
 [files]
 base         = TRG1.GRF
