@@ -1320,7 +1320,6 @@ bool IsSlopeRefused(Slope current, Slope refused)
  */
 static CommandCost CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable *it, uint itspec_index, int type, bool *custom_shape_check = NULL)
 {
-	CommandCost ret = CommandCost(STR_ERROR_SITE_UNSUITABLE);
 	bool refused_slope = false;
 	bool custom_shape = false;
 
@@ -1329,28 +1328,28 @@ static CommandCost CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTil
 		TileIndex cur_tile = TileAddWrap(tile, it->ti.x, it->ti.y);
 
 		if (!IsValidTile(cur_tile)) {
-			return ret;
+			return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
 		}
 
 		if (gfx == GFX_WATERTILE_SPECIALCHECK) {
 			if (!IsTileType(cur_tile, MP_WATER) ||
 					GetTileSlope(cur_tile, NULL) != SLOPE_FLAT) {
-				return ret;
+				return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
 			}
 		} else {
-			if (!EnsureNoVehicleOnGround(cur_tile)) return ret;
-			if (MayHaveBridgeAbove(cur_tile) && IsBridgeAbove(cur_tile)) return ret;
+			if (!EnsureNoVehicleOnGround(cur_tile)) return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
+			if (MayHaveBridgeAbove(cur_tile) && IsBridgeAbove(cur_tile)) return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
 
 			const IndustryTileSpec *its = GetIndustryTileSpec(gfx);
 
 			IndustryBehaviour ind_behav = GetIndustrySpec(type)->behaviour;
 
 			/* Perform land/water check if not disabled */
-			if (!HasBit(its->slopes_refused, 5) && (IsWaterTile(cur_tile) == !(ind_behav & INDUSTRYBEH_BUILT_ONWATER))) return ret;
+			if (!HasBit(its->slopes_refused, 5) && (IsWaterTile(cur_tile) == !(ind_behav & INDUSTRYBEH_BUILT_ONWATER))) return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
 
 			if (HasBit(its->callback_mask, CBM_INDT_SHAPE_CHECK)) {
 				custom_shape = true;
-				if (!PerformIndustryTileSlopeCheck(tile, cur_tile, its, type, gfx, itspec_index)) return ret;
+				if (!PerformIndustryTileSlopeCheck(tile, cur_tile, its, type, gfx, itspec_index)) return_cmd_error(_error_message);
 			} else {
 				Slope tileh = GetTileSlope(cur_tile, NULL);
 				refused_slope |= IsSlopeRefused(tileh, its->slopes_refused);
@@ -1365,15 +1364,15 @@ static CommandCost CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTil
 				/* Clear the tiles as OWNER_TOWN to not affect town rating, and to not clear protected buildings */
 				CompanyID old_company = _current_company;
 				_current_company = OWNER_TOWN;
-				bool not_clearable = DoCommand(cur_tile, 0, 0, DC_NONE, CMD_LANDSCAPE_CLEAR).Failed();
+				CommandCost ret = DoCommand(cur_tile, 0, 0, DC_NONE, CMD_LANDSCAPE_CLEAR).Failed();
 				_current_company = old_company;
 
-				if (not_clearable) return ret;
+				if (ret.Failed()) return ret;
 			} else {
 				/* Clear the tiles, but do not affect town ratings */
-				bool not_clearable = DoCommand(cur_tile, 0, 0, DC_AUTO | DC_NO_TEST_TOWN_RATING | DC_NO_MODIFY_TOWN_RATING, CMD_LANDSCAPE_CLEAR).Failed();
+				CommandCost ret = DoCommand(cur_tile, 0, 0, DC_AUTO | DC_NO_TEST_TOWN_RATING | DC_NO_MODIFY_TOWN_RATING, CMD_LANDSCAPE_CLEAR);
 
-				if (not_clearable) return ret;
+				if (ret.Failed()) return ret;
 			}
 		}
 	} while ((++it)->ti.x != -0x80);
@@ -1386,7 +1385,7 @@ static CommandCost CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTil
 	if (!refused_slope || (_settings_game.game_creation.land_generator == LG_TERRAGENESIS && _generating_world && !custom_shape && !_ignore_restrictions)) {
 		return CommandCost();
 	}
-	return ret;
+	return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
 }
 
 /** Is the industry allowed to be built at this place for the town?
