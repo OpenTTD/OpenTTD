@@ -269,7 +269,7 @@ STR_SORT_BY_PROFIT_THIS_YEAR                                    :Gajno ĉi-jara
 STR_SORT_BY_AGE                                                 :Aĝo
 STR_SORT_BY_RELIABILITY                                         :Fidebleco
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Tuta kapablo por ĉiu ŝarĝtipo
-STR_SORT_BY_MAX_SPEED                                           :Maksimuma rapideco
+STR_SORT_BY_MAX_SPEED                                           :Maksimuma rapido
 STR_SORT_BY_MODEL                                               :Tipo
 STR_SORT_BY_VALUE                                               :Valoro
 STR_SORT_BY_LENGTH                                              :Longo
@@ -302,13 +302,13 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Montru g
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Montru kompanian tabelon
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Pagu konstruadon de nova industrio aŭ listigu ĉiujn industriojn
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Montri trajnliston de la kompanio. Stir+Klak baskulas la grupo/veturilo-liston.
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Montri vojveturiloliston de la kompanio. Stir+Klak baskulas la grupo/veturilo-liston.
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Montristratveturiloliston de la kompanio. Stir+Klak baskulas la grupo/veturilo-liston.
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Montri ŝipoliston de la kompanio. Stir+Klak baskulas la grupo/veturilo-liston.
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Montri aviadiloliston de la kompanio. Stir+Klak baskulas la grupo/veturilo-liston.
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Zomu vidon
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Malzomu vidon
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Konstruu relojn
-STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Konstruu vojojn
+STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Konstruu stratojn
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Konstruu havenojn
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Konstruu flughavenojn
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Malfermu la landaspektan ilbreton por (mal)altigi landon, planti arbojn ktp.
@@ -405,11 +405,11 @@ STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Maglevfervoja k
 
 ############ range for road construction menu starts
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Vojkonstruado
-STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Trama konstruado
+STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Konstruado de tramvojo
 ############ range ends here
 
 ############ range for waterways construction menu starts
-STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Akvoja Konstruado
+STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Konstruado de akvovojoj
 ############ range ends here
 
 ############ range for airport construction menu starts
@@ -576,7 +576,7 @@ STR_MUSIC_JAZZ_JUKEBOX_CAPTION                                  :{WHITE}Ĵaza Di
 STR_MUSIC_PLAYLIST_ALL                                          :{TINYFONT}{BLACK}Ĉiu
 STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINYFONT}{BLACK}Malnovstile
 STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}{BLACK}Novstile
-STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINYFONT}{BLACK}Facila Vojo
+STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINYFONT}{BLACK}Facila strato
 STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}{BLACK}Propra 1
 STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}{BLACK}Propra 2
 STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}Muzika Volumeno
@@ -648,11 +648,11 @@ STR_SMALLMAP_TYPE_OWNERS                                        :Posedantoj
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP                  :{BLACK}Montru landkonturojn sur la mapo
 STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}Montru veturilojn sur la mapo
 STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Montru industriojn sur la mapo
-STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Montru transportvojojn sur la mapo
+STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Montru transportstratojn sur la mapo
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Montru verdaĵojn sur la mapo
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Montru landposedantojn sur la mapo
 
-STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}Vojoj
+STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}Stratoj
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLACK}Fervojoj
 STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINYFONT}{BLACK}Stacidomoj/Flughavenoj/Havenoj
 STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINYFONT}{BLACK}Konstruaĵoj/Industrioj
@@ -663,10 +663,10 @@ STR_SMALLMAP_LEGENDA_300M                                       :{TINYFONT}{BLAC
 STR_SMALLMAP_LEGENDA_400M                                       :{TINYFONT}{BLACK}400m
 STR_SMALLMAP_LEGENDA_500M                                       :{TINYFONT}{BLACK}500m
 STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINYFONT}{BLACK}Trajnoj
-STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINYFONT}{BLACK}Vojaj Veturiloj
+STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINYFONT}{BLACK}Stratveturiloj
 STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINYFONT}{BLACK}Ŝipoj
 STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINYFONT}{BLACK}Aviadiloj
-STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINYFONT}{BLACK}Transportvojoj
+STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINYFONT}{BLACK}Transportstratoj
 STR_SMALLMAP_LEGENDA_FOREST                                     :{TINYFONT}{BLACK}Arbaro
 STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINYFONT}{BLACK}Fervoja Stacidomo
 STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINYFONT}{BLACK}Ŝarĝaŭta Ŝarĝejo
@@ -749,7 +749,7 @@ STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK
 STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}Aviadila Kraŝo!{}Aviadilo ne havis sufiĉan brulaĵon, {COMMA} mortis pro fajro!
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIGFONT}{BLACK}Zepelina katastrofo en {STATION}!
-STR_NEWS_DISASTER_SMALL_UFO                                     :{BIGFONT}{BLACK}Vojveturilo detruita en 'UFO'-kolizio!
+STR_NEWS_DISASTER_SMALL_UFO                                     :{BIGFONT}{BLACK}Stratveturilo detruiĝis dum 'UFO'-kolizio!
 STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIGFONT}{BLACK}Oleprodukteja eksplodo ĉe {TOWN}!
 STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIGFONT}{BLACK}Farejo detruita en suspektataj cirkonstancooj ĉe {TOWN}!
 STR_NEWS_DISASTER_BIG_UFO                                       :{BIGFONT}{BLACK}'UFO' landiĝas ĉe {TOWN}!
@@ -884,8 +884,8 @@ STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :Metra sistemo
 STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :Sistemo Internacia
 ############ end of measuring units region
 
-STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Vojveturiloj
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Elektu vojflankon kie veturu vojveturiloj
+STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Stratveturiloj
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Elektu stratflankon kie veturu veturiloj
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Veturu maldekstre
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Veturu dekstre
 
@@ -995,7 +995,7 @@ STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}Kiom da
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Maksimuma komenca prunto: {ORANGE}{CURRENCY}
 STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}Komenca rentumo: {ORANGE}{COMMA}%
 STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}Veturilaj irkostoj: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}Konkuranta konstrurapideco: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}Konkuranta konstrurapido: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_BREAKDOWNS                 :{LTBLUE}Veturilaj rompiĝoj: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_SUBSIDY_MULTIPLIER                 :{LTBLUE}Subvencia kiomobligo: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_COST_OF_CONSTRUCTION               :{LTBLUE}Konstrukostoj: {ORANGE}{STRING}
@@ -1059,6 +1059,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Permeseme
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerante
 STR_CITY_APPROVAL_HOSTILE                                       :Gastige
 
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Neniu taŭga AI estas disponebla...{}Kelkaj AI-oj estas elŝuteblaj per la sistemo 'Enreta Enhavo'.
 STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Ĉi tiu ago ŝanĝis la malfacilec-nivelon al 'ŝanĝite'
 
 # Advanced settings window
@@ -1067,11 +1068,11 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Avancita
 STR_CONFIG_SETTING_OFF                                          :Malaktiva
 STR_CONFIG_SETTING_ON                                           :Aktiva
 STR_CONFIG_SETTING_DISABLED                                     :malaktiva
-STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Montru veturilrapidecon en statbreto: {ORANGE}{STRING}
+STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Montru veturilrapidon en statbreto: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Permesu konstrui sur kliniĝoj kaj bordoj: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Permesu terecigon sub konstruaĵoj, trakoj, ktp. (aŭtodeklivo): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Permesu pli realgrandaj kaptoregionoj: {ORANGE}{STRING}
-STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Permesu forigon de pli da urbaj vojoj, pontoj ktp: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Permesu forigon de pli da urbaj stratoj, pontoj ktp: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Permesu konstrui tre longajn trajnojn: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Modelo de trajnakcelado: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Originala
@@ -1111,7 +1112,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Nombro 
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :neniom
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :reduktita
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normala
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Permesu trairajn bushaltejojn sur vojoj urboposedataj: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Permesu trairajn bushaltejojn sur urboposedataj stratoj: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Permesu trairajn strathaltejojn sur stratoj posedataj de konkurantoj: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Permesu konstrui staciojn apude: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Ebligu multoblajn NewGRF-motorarojn: {ORANGE}{STRING}
@@ -1252,7 +1253,7 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :ĉiom
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Strataranĝo por novaj urboj: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :defaŭlte
-STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :pli bonaj vojoj
+STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :pli bonaj stratoj
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :kvadrataro de 2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :kvadrataro de 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :hazarda
@@ -1261,6 +1262,7 @@ STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Permesu
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :prohibita
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :permesita
 
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :nur en pluvarbaroj
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :ĉie
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Loko de ĉefa ilbreto: {ORANGE}{STRING}
@@ -1271,7 +1273,7 @@ STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Fenestr
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Fenestroliga distanco: {ORANGE}malaktiva
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Fenestra mollimo (ne-glueca): {ORANGE}{STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Fenestra mollimo (ne-glueca): {ORANGE}malebligita
-STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Urba kreskorapideco: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Urba kreskorapido: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Neniom
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Malrapide
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normale
@@ -1330,6 +1332,7 @@ STR_INTRO_GAME_OPTIONS                                          :{BLACK}Ludaj Op
 STR_INTRO_DIFFICULTY                                            :{BLACK}Malfacileco ({STRING})
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Avancitaj agordoj
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Agordoj de NewGRF
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Provu Enretan Enhavon
 STR_INTRO_AI_SETTINGS                                           :{BLACK}AI-Agordoj
 STR_INTRO_QUIT                                                  :{BLACK}Fermu
 
@@ -1349,6 +1352,7 @@ STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Montru l
 STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Montru malfacilec-opciojn
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Montru avancitajn agordojn
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Montri NewGRF-agordojn
+STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Serĉi pri nova kaj ĝisdatigita enhavo por elŝuti
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Montri AI-agordojn.
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Fermu 'OpenTTD'
 
@@ -1430,7 +1434,7 @@ STR_LIVERY_PASSENGER_TRAM                                       :Pasaĝera Tramo
 STR_LIVERY_FREIGHT_TRAM                                         :Frajttramo
 
 # Face selection window
-STR_FACE_CAPTION                                                :{WHITE}Vizaĝelekto
+STR_FACE_CAPTION                                                :{WHITE}Elekto de Vizaĝo
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Nuligu elekton de nova vizaĝo
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Akceptu elekton de nova vizaĝo
 
@@ -1447,6 +1451,11 @@ STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Simpla e
 STR_FACE_LOAD                                                   :{BLACK}Ŝargi
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Ŝargi favoratan vizaĝon.
 STR_FACE_LOAD_DONE                                              :{WHITE}Via favorata vizaĝo estis ŝargita de la agord-dosiero de OpenTTD..
+STR_FACE_FACECODE                                               :{BLACK}Ludanta vizaĝnumero
+STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Rigardi kaŭ elekti ludantan vizaĝnumeron.
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Rigardi kaŭ elekti ludantan vizaĝnumeron.
+STR_FACE_FACECODE_SET                                           :{WHITE}Nova vizaĝnumera kodo estas konservita.
+STR_FACE_FACECODE_ERR                                           :{WHITE}Ne povas konservi ludantan vizaĝnumeron - devas esti nombro inter 0 kaj 4,294,967,295!
 STR_FACE_SAVE                                                   :{BLACK}Konservi
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Konservi favoratan vizaĝon
 STR_FACE_SAVE_DONE                                              :{WHITE}Tiu ĉi vizaĝo estos konservita kiel via favorata en la agord-dosiero de OpenTTD.
@@ -1747,6 +1756,9 @@ STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Ludo ankoraŭ p
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Ludo ankoraŭ paŭzas ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Ludo ankoraŭ paŭzas ({STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Ludo malpaŭzas ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :ne sufiĉe da ludantoj
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :kontektante al klientoj
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :manlibro
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :forlasanta
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} ensalutis la ludon
@@ -1762,29 +1774,60 @@ STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE} La serv
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE} La servilo restartiĝas...{}Bonvolu atendi...
 
 # Content downloading window
+STR_CONTENT_TITLE                                               :{WHITE}Enhavo elŝutiĝas
 STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Tipo
+STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}Tipo de la enhavo
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}Nomo
+STR_CONTENT_NAME_CAPTION_TOOLTIP                                :{BLACK}Nomo de la enhavo
+STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}Klaku linion por rigardi detalojn{}Klaku markobutonon por elekti elŝuton.
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Elekti ĉiujn
+STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Elektu ĝisdatigojn.
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Malelekti ĉiujn
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}Etikeda/noma filtro:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Elŝuti
+STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Komencu elŝuti la elektitan enhavon.
+STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Suma elŝuta grando: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_TITLE                                        :{SILVER}ENHAVINFORMO
 STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Vi ne elektis ĉi tiun por elŝuti.
 STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Vi elektis ĉi tiun por elŝuti.
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Vi jam havas tion
+STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Tiu enhavo estas nekonata kaj ne povas esti elŝutita en OpenTTD.
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Tiu estas anstataŭo por ekzistanta {STRING}
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}Nomo: {WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Versio: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Priskribo: {WHITE}{STRING}
+STR_CONTENT_DETAIL_URL                                          :{SILVER}URL: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TYPE                                         :{SILVER}Tipo: {WHITE}{STRING}
+STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Elŝuta grando: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Elektita ĉar: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Dependaĵoj: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Etikedoj: {WHITE}{STRING}
+STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD estas farita sen subteno de "zlib"...
+STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... enhavelŝutado neeblas!
 
 # Order of these is important!
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Baza grafiko
+STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
 STR_CONTENT_TYPE_AI                                             :AI
+STR_CONTENT_TYPE_AI_LIBRARY                                     :AI-biblioteko
+STR_CONTENT_TYPE_SCENARIO                                       :Scenaro
+STR_CONTENT_TYPE_HEIGHTMAP                                      :Altecmapo
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Bazaj sonoj
+STR_CONTENT_TYPE_BASE_MUSIC                                     :Baza musiko
 
 # Content downloading progress window
+STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Enhavo elŝutiĝas...
+STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Petante dosierojn...
 STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Nuntempe elŝutante {STRING} ({NUM} el {NUM})
+STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Elŝuto kompleta
 STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} el {BYTES} elŝutiĝis ({NUM} %)
 
 # Content downloading error messages
+STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Ne povis konekti al la enhavservilo...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Elŝuto fiaskis...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... nekonektis
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... dosiero ne skribebla
+STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Ne povis malkompaktigi la elŝutitan dosieron
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Ebloj por travidebleco
@@ -1792,7 +1835,7 @@ STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}(Ne)trav
 STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}(Ne)travideblu la arboj
 STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}(Ne)travideblu la domoj
 STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}(Ne)travideblu la industrioj
-STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}(Ne)travidebli konstrueblaĵojn kiel stacidomoj, garaĝoj kaj trairejoj. Stir+Klak por ŝlosi.
+STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}(Ne)travidebli konstrueblaĵojn kiel stacidomoj, garaĝoj kaj vojpunktoj. Stir+Klak por ŝlosi.
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}(Ne)travideblu la pontoj
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}(Ne)travideblu aĵoj kiel lumturoj kaj antenoj, kaj eble estonte vidĝuaĵoj
 
@@ -1806,7 +1849,11 @@ STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Akcepti�
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Provizoj: {GOLD}{STRING}
 
 # Join station window
+STR_JOIN_STATION_CAPTION                                        :{WHITE}Ligi stacion
+STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Konstrui apartan stacion
 
+STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Ligi vojpunkton
+STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Krei apartan vojpunkton
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}Konstruado de Reloj
@@ -1817,12 +1864,12 @@ STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Konstrua
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Konstrui relojn. Ctrl baskuligas konstrui/forviŝi por fervoja konstruo.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Konstrui relojn per Aŭtomata Relreĝimo. Stir baskuligas konstrui/forviŝi por fervoja konstruo.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Konstrui trajngaraĝon (por konstrui kaj prizorgi trajnojn)
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Ŝanĝu relon al trairejo
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Ŝanĝi relon al vojpunkto. Stir-butono permesas ligi vojpunktojn.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Konstruu stacidomon
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Konstruu signalojn
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Konstruu fervojan ponton
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Konstruu fervojtunelon
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Elektu inter konstruado kaj forigado de reloj kaj signaloj
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Elekti inter konstruado/forigado de reloj, signaloj, vojpunktoj kaj stacioj. Premu Stir-klavon por forigi relojn de vojpunktoj kaj stacioj.
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Transigu reltipon
 
 # Rail depot construction window
@@ -1830,8 +1877,8 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Direkto 
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Elekti direkton de la trajngaraĝo
 
 # Rail waypoint construction window
-STR_WAYPOINT_CAPTION                                            :{WHITE}Trairejo
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Elektu trairejan tipon
+STR_WAYPOINT_CAPTION                                            :{WHITE}Vojpunkto
+STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Elekti tipon de vojpunkto
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Elekto de Stacidomo
@@ -1848,9 +1895,10 @@ STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Elekti s
 STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Elekti stacidomotipon por konstrui.
 
 STR_STATION_CLASS_DFLT                                          :Defaŭlta stacio
-STR_STATION_CLASS_WAYP                                          :Transirejoj
+STR_STATION_CLASS_WAYP                                          :Vojpunktoj
 
 # Signal window
+STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Elekto de Signalo
 
 # Bridge selection window
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Elektu Relan Ponton
@@ -1869,8 +1917,9 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Tuba, Silicia
 
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Vojkonstruado
+STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Konstruado de tramvojoj
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Konstruu vojeron
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Konstrui vojveturilan garaĝon (por konstrui kaj prizorgi veturilojn)
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Konstrui stratveturilan garaĝon (por konstrui kaj prizorgi veturilojn)
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Konstrui tramveturilan garaĝon (por konstrui kaj prizorgi veturilojn)
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Konstrui bushaltejon. Stir permesas ligi staciojn.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Konstruu ŝarĝaŭtan ŝarĝejon
@@ -1881,19 +1930,28 @@ STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Ĉu kons
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Direkto de la vojveturila garaĝo
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Elekti direkton de la vojveturila garaĝo
+STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Direkto de Tramgaraĝo
+STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Elekti direkton de tramgaraĝo
 
 # Road vehicle station construction window
 STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Bushalteja Direkto
 STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Elektu bushaltejan direkton
 STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Ŝarĝstacia Direkto
 STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Elektu ŝarĝstacian direkton
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Direkto de Pasaĝera Tramo
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Elekti direkton de pasaĝerotramstacio
+STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Direkto de Frajttramo
+STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Elekti direkton de frajttramstacio
 
 # Waterways toolbar (last two for SE only)
+STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Konstruado de akvovojoj
+STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Akvovojoj
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Konstruu kanalojn.
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Konstruu kluzojn
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Konstrui ŝipgaraĝon (por aĉeti kaj prizorgi ŝipojn)
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Konstruu havenon
-STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Metu buon kiu povas esti uzata kiel trairejo
+STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Meti buon kiu povas esti uzata kiel vojpunkto.
+STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Kunstrui akvedukton
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Difinu akvoregionon.{}Faru kanalon, krom se CTRL estas tenata ĉe marnivelo, kiukaze ĝi anstataŭe transfluas al la ĉirkaŭaĵo
 STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Loku riverojn.
 
@@ -1997,6 +2055,7 @@ STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :Multaj hazardaj
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Kovru la mapon per hazarde metitajn industriojn
 STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Kosto: {YELLOW}{CURRENCY}
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Konstruu
+STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Fondi
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Landregionaj informoj
@@ -2013,6 +2072,7 @@ STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Neniu
 STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Troviĝo: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Kreite: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Nomo de flughavena tegolo: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Ŝarĝo akceptata: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 
@@ -2035,11 +2095,12 @@ STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Reloj kun unudi
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Reloj kun blok- kaj antaŭ-signaloj
 STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Trajngaraĝo
 
-STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Vojo
-STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Vojo kun lampoj
-STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Vojo kun arboj apude
+STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Strato
+STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Strato kun lampoj
+STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Strato kun arboj apude
 STR_LAI_ROAD_DESCRIPTION_ROAD_VEHICLE_DEPOT                     :Vojveturila garaĝo
-STR_LAI_ROAD_DESCRIPTION_ROAD_RAIL_LEVEL_CROSSING               :Kruciĝo inter vojo kaj relo
+STR_LAI_ROAD_DESCRIPTION_ROAD_RAIL_LEVEL_CROSSING               :Kruciĝo inter strato kaj relo
+STR_LAI_ROAD_DESCRIPTION_TRAMWAY                                :Tramvojo
 
 # Houses come directly from their building names
 STR_LAI_TOWN_INDUSTRY_DESCRIPTION_UNDER_CONSTRUCTION            :{STRING} (konstruata)
@@ -2055,7 +2116,7 @@ STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Ŝarĝejo
 STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :Bushaltejo
 STR_LAI_STATION_DESCRIPTION_SHIP_DOCK                           :Haveno
 STR_LAI_STATION_DESCRIPTION_BUOY                                :Buo
-STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :Trairejo
+STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :Vojpunkto
 
 STR_LAI_WATER_DESCRIPTION_WATER                                 :Akvo
 STR_LAI_WATER_DESCRIPTION_CANAL                                 :Kanalo
@@ -2085,6 +2146,7 @@ STR_LAI_BRIDGE_DESCRIPTION_ROAD_WOODEN                          :Ligna vojponto
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_CONCRETE                        :Betona vojponto
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                   :Tuba vojponto
 
+STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT                             :Akvedukto
 
 STR_LAI_UNMOVABLE_DESCRIPTION_TRANSMITTER                       :Transmitilo
 STR_LAI_UNMOVABLE_DESCRIPTION_LIGHTHOUSE                        :Lumturo
@@ -2135,11 +2197,16 @@ STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Reguleco
 STR_MAPGEN_GENERATE                                             :{WHITE}Generu
 
 # Strings for map borders at game generation
+STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Maprandoj:
 STR_MAPGEN_NORTHWEST                                            :{BLACK}Nordokcidenta
 STR_MAPGEN_NORTHEAST                                            :{BLACK}Nordorienta
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}Sudorienta
 STR_MAPGEN_SOUTHWEST                                            :{BLACK}Sudokcidenta
+STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Libermana
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Akvo
+STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Hazarde
+STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Hazarde
+STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manlibro
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Mapa turniĝo:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Mapa nomo:
@@ -2188,12 +2255,16 @@ STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Movu la 
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Listo da instalitaj NewGRF-dosieroj. Alklaku dosieron por ŝanĝi la parametrojn
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Agordu parametrojn
+STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Baskuligi paletron
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Apliku ŝanĝojn
 
+STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Trovi mankan enhavon enrete
+STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Kontroli ĉu eblas trovi la mankan enhavon enrete.
 
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Dosiernomo: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Paletro: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parametroj: {SILVER}{STRING}
 
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Ne haveblas informoj
@@ -2214,6 +2285,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Averto: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Eraro: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatalo: {SILVER}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Neriparebla NewGRF-eraro okazis: {}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} ne funkcios kun la versio de TTDPatch menciata de OpenTTD.
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} estas por versio {STRING} de TTD.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} estas intencita por uzo kun {STRING}
@@ -2232,16 +2304,21 @@ STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Ne trov
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Taŭga(j) GRF(oj) ŝarĝiĝis por mankaj dosieroj
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Manka(j) GRF-dosiero(j) malŝaltiĝis
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Manka(j) GRF-dosiero(j)
 
 # NewGRF 'it's broken' warnings
 
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' donas malĝustan informon.
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Afiŝa listo - {COMMA} Afiŝo{P "" j}
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Ŝanĝu afiŝan tekston
+STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Iri al la sekva signo
+STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Iri al la antaŭa signo
 
+STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Enigu nomon por la signo
 
 # Town directory window
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Urboj
@@ -2256,6 +2333,11 @@ STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Enloĝantoj: {ORANGE}{COMMA}{BLACK}  Domoj: {ORANGE}{COMMA}
 STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Pasaĝeroj lastmonate: {ORANGE}{COMMA}{BLACK}  maksimume: {ORANGE}{COMMA}
 STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Poŝto lastmonate: {ORANGE}{COMMA}{BLACK}  maksimume: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Kargo bezonata por kreskigi urbon:
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{STRING}{BLACK} bezonatas
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} bezonatas en vintro
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{ORANGE}{CARGO}{BLACK} liveriĝis lastan monaton
+STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Urba brulimo: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centri ĉefvidon ĉe la urbo. Stir+Klak por malfermi novan vidujon ĉe la urba loko.
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Lokaj estroj
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Montru informojn pri lokaj estroj
@@ -2309,6 +2391,7 @@ STR_STATION_LIST_TOOLTIP                                        :{BLACK}Staciono
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Tenu la CTRL-klavon por elekti plurajn erojn
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Stacio{P "" j}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
+STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Neniu -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Elektu ĉiujn konstruaĵojn
 STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Elektu ĉiujn ŝarĝotipojn (inkluzive de ne atendanta ŝarĝo)
@@ -2352,10 +2435,12 @@ STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Renomu stacion/
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centri ĉefvidon ĉe la vojpunkto. Stir+Klak por malfermi novan vidujon ĉe la loko.
+STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Ŝanĝi nomon de vojpunkto.
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centri ĉefvidon ĉe la buo. Stir+Klak por malfermi novan vidujon ĉe la bua loko.
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Ŝanĝi nomon de la buo.
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Ŝanĝu trairejan nomon
+STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Ŝanĝu vojpunktonomon
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Financoj de {COMPANY} {BLACK}{COMPANYNUM}
@@ -2446,6 +2531,9 @@ STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Bezonas:
 ############ range for requires ends
 
 ############ range for produces starts
+STR_INDUSTRY_VIEW_WAITING_STOCKPILE_CARGO                       :{YELLOW}{CARGO}{STRING}{BLACK}
+STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Produktas: {YELLOW}{STRING}{STRING}
+STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Produktas: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
 ############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Ŝanĝu produktadon
@@ -2486,14 +2574,22 @@ STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}Kunhavaj
 
 # Group window
 STR_GROUP_ALL_TRAINS                                            :Ĉiuj trajnoj
+STR_GROUP_ALL_ROAD_VEHICLES                                     :Ĉiuj stratveturiloj
 STR_GROUP_ALL_SHIPS                                             :Ĉiuj ŝipoj
 STR_GROUP_ALL_AIRCRAFTS                                         :Ĉiuj aviadiloj
 
+STR_GROUP_DEFAULT_TRAINS                                        :Sengrupaj trajnoj
+STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Sengrupaj vojveturiloj
+STR_GROUP_DEFAULT_SHIPS                                         :Sengrupaj ŝipoj
+STR_GROUP_DEFAULT_AIRCRAFTS                                     :Sengrupaj aviadiloj
 
+STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Grupoj - klaku grupon por listigi ĉiujn veturilojn de tiu ĉi grupo
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Klaku por krei grupon
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Viŝu la selektitan grupon
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Renomu la sektitan grupon
 
+STR_GROUP_ADD_SHARED_VEHICLE                                    :Aldonu kunhavajn veturilojn
+STR_GROUP_REMOVE_ALL_VEHICLES                                   :Forigi ĉiujn veturilojn
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Renomu grupon
 
@@ -2519,6 +2615,7 @@ STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Pleja Fi
 STR_PURCHASE_INFO_COST                                          :{BLACK}Kosto: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Pezo: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Kosto: {GOLD}{CURRENCY}{BLACK} Rapido: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Enhaveco: {GOLD}{CARGO}, {CARGO}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagonfortoj: {GOLD}+{POWER}{BLACK} Weight: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Transformebla al: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Ĉiaj ŝarĝoj
@@ -2551,7 +2648,7 @@ STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Renomu �
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Renomu aviadiltipon
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Renomu trajnan veturiltipon
-STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Renomu vojveturilan tipon
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Alinomi stratveturilan tipon
 STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Renomu ŝiptipon
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Renomu aviadiltipon
 
@@ -2593,10 +2690,10 @@ STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Novaj Ve
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Novaj Ŝipoj
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Novaj Aviadiloj
 
-STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Kreu novan trajnan veturilon
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Kreu novan vojveturilon
-STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Kreu novan ŝipon
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Kreu novan aviadilon
+STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Aĉeti novan trajnan veturilon
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Aĉeti novan stratveturilon
+STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Aĉeti novan ŝipon
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Aĉeti novan aviadilon
 
 STR_DEPOT_CLONE_TRAIN                                           :{BLACK}Klonu Trajnon
 STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Klonu Veturilon
@@ -2634,13 +2731,16 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Vi vend
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Mesaĝo de veturil-produktanto
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Nova {STRING} estas inventita - ĉu vi ŝatus jaron ekskluzive uzi la veturilon, por ke ni povu vidi ĝian funkciadon antaŭ ol ĝi estos plene havebla?
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :fervoja lokomotivo
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :vojveturilo
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :stratveturilo
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :aviadilo
 STR_ENGINE_PREVIEW_SHIP                                         :ŝipo
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :unurellokomotivo
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :magleva lokomotivo
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Kosto: {CURRENCY} Pezo: {WEIGHT_S}{}Rapideco: {VELOCITY}  Forto: {POWER}{}Irkosto: po {CURRENCY} jare{}Kapablo: {CARGO}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Kosto: {CURRENCY} Pezo: {WEIGHT_S}{}Rapido: {VELOCITY}  Forto: {POWER}{}Irkosto: po {CURRENCY} jare{}Kapablo: {CARGO}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Kosto: {CURRENCY} Pezo: {WEIGHT_S}{}Rapido: {VELOCITY}  Povo: {POWER}  Maks. T.E.: {6:FORCE}{}Irkosto: {4:CURRENCY}/jaro{}Kapacito: {5:CARGO}
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Kosto: {CURRENCY} Maks. Rapido: {VELOCITY}{}Kapacito: {CARGO}, {CARGO}{}Irkosto: {CURRENCY}/jaro
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Kosto: {CURRENCY} Maks. Rapido: {VELOCITY}{}Kapacito: {CARGO}{}Irkosto: {CURRENCY}/jaro
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Anstataŭu {STRING.n}
@@ -2695,7 +2795,7 @@ STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Aĉeti k
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Igu trajnon iri malgraŭ signalo
 
 STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Transformu trajnon por ke ĝi portu alian ŝarĝon
-STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Transformu vojveturilon por porti alian ŝarĝon
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Transformi stratveturilon por porti alian ŝarĝon
 STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Transformu ŝarĝŝipon por porti alian ŝarĝon
 STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Transformu aviadilon por porti alian ŝarĝotipon
 
@@ -2721,10 +2821,12 @@ STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Nuna avi
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Ŝarĝante / Deŝarĝante
 STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Forirante
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Kraŝis!
+STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Panea
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Haltis
 STR_VEHICLE_STATUS_TRAIN_STOPPING                               :{RED}Haltiĝas
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Haltiĝas, {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Senforte
+STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Atendas haveblan padon
 
 STR_VEHICLE_STATUS_HEADING_FOR_STATION                          :{LTBLUE}Irante al {STATION}
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Irante al {STATION}, {VELOCITY}
@@ -2757,16 +2859,24 @@ STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Nomo
 
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Nomu trajnon
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Nomu vojveturilon
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Nomi stratveturilon
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Nomu ŝipon
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Nomu aviadilon
 
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Aĝo: {LTBLUE}{STRING}{BLACK}   Irkosto: {LTBLUE}{CURRENCY}/jaro
 # The next two need to stay in this order
 STR_VEHICLE_INFO_AGE                                            :{COMMA} jaro{P "" j} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} jaro{P "" j} ({COMMA})
 
+STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Maks. rapido: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Pezo: {LTBLUE}{WEIGHT_S} {BLACK}Povo: {LTBLUE}{POWER}{BLACK} Maks. rapido: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Pezo: {LTBLUE}{WEIGHT_S} {BLACK}Povo: {LTBLUE}{POWER}{BLACK} Maks. rapido: {LTBLUE}{VELOCITY} {BLACK}Maks. T.E.: {LTBLUE}{FORCE}
 
 
+STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Enhaveco: {LTBLUE}Nenion
+STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Enhaveco: {LTBLUE}{CARGO}{3:STRING}
+STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Enhaveco: {LTBLUE}{CARGO}{3:STRING} (x{4:NUM})
+STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Enhaveco: {LTBLUE}{CARGO}, {CARGO}{STRING}
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Transigaj Kreditoj: {LTBLUE}{CURRENCY}
 
@@ -2776,7 +2886,7 @@ STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Pliigu p
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Malpliigu prizorgintervalon
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Nomu trajnon
-STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Nomu vojveturilon
+STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Nomi stratveturilon
 STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Nomu ŝipon
 STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Nomu aviadilon
 
@@ -2814,12 +2924,12 @@ STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}Elektu p
 STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Elektu portotan ŝarĝon de aviadilo
 
 STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Transformu trajnon
-STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Transformu vojveturilon
+STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Transformi stratveturilon
 STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Transformu ŝipon
 STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Transformu aviadilon
 
 STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Transformu trajnon por porti la elektitan ŝarĝotipon
-STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Transformu vojveturilon por porti elektitan ŝarĝon
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Transformi stratveturilon por porti elektitan ŝarĝon
 STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Transformu ŝipon por porti elektitan ŝarĝotipon
 STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Transformu aviadilon por porti elektitan ŝarĝotipon
 
@@ -2827,16 +2937,33 @@ STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Transfor
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Ordonoj)
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Ordonlisto - klaku ordonon por elekti. Stir+Klak rulumas al la stacio.
+STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 STR_ORDER_TEXT                                                  :{STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Fino de Ordonoj - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Fino de Kunhavitaj Ordonoj - -
 
 # Order bottom buttons
+STR_ORDER_NON_STOP                                              :{BLACK}Senhalte
 STR_ORDER_GO_TO                                                 :Iru al
+STR_ORDER_GO_NON_STOP_TO                                        :Iru senhalte al
 STR_ORDER_GO_VIA                                                :Iru laŭ
+STR_ORDER_GO_NON_STOP_VIA                                       :Iru senhalte laŭ
+STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Ŝanĝi la haltagon de la emfazita ordono
 
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Ŝarĝu ĝis plena ajnan kargon
+STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Ŝarĝu se havebla
+STR_ORDER_DROP_FULL_LOAD_ALL                                    :Ŝarĝu ĝis plena ĉiujn kargojn
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :Ŝarĝu ĝis plena ajnan kargon
+STR_ORDER_DROP_NO_LOADING                                       :Ne ŝarĝu
+STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Ŝanĝi la ŝarĝagon de la emfazita ordono
 
+STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Malŝarĝu ĉion
+STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Malŝarĝu se akceptita
+STR_ORDER_DROP_UNLOAD                                           :Malŝarĝu ĉion
+STR_ORDER_DROP_TRANSFER                                         :Transigo
+STR_ORDER_DROP_NO_UNLOADING                                     :Ne malŝarĝu
+STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Ŝanĝi la malŝarĝagon de la emfazita ordono
 
 STR_ORDER_REFIT                                                 :{BLACK}Transformu
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Elektu kargospecon por transformo en ĉi tiu ordono. CTRL+klako por forigi transforminstrukcion
@@ -2847,6 +2974,8 @@ STR_ORDER_DROP_SERVICE_DEPOT                                    :Prizorgu se nec
 STR_ORDER_DROP_HALT_DEPOT                                       :Haltu.
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Transsalti ordonon escepte de prizorgo necesas
 
+STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Ŝarĝu procenton
+STR_ORDER_CONDITIONAL_RELIABILITY                               :Fidindo
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Maksimuma rapido.
 STR_ORDER_CONDITIONAL_AGE                                       :Aĝo de la veturilo (jaroj)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Prizorgo necesas.
@@ -2854,11 +2983,17 @@ STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Ĉiam
 
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :egalas al
 STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :ne egalas al
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :estas malpli ol
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :estas malpli aŭ egalas al
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :estas pli ol
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :estas pli aŭ egalas al
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :estas vera
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :estas falsa
 
+STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Enigi valoron por kompari
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Plusaltu
+STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Transsalti la nunan ordonon kaj fari la sekvan. Stir+Klak por transsalti al la elektita ordono.
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Forviŝu
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Forviŝi la elektitan ordonon.
@@ -2875,6 +3010,7 @@ STR_ORDER_GO_TO_WAYPOINT                                        :Iru laŭ {WAYPO
 STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Iru senhalte laŭ {WAYPOINT}
 
 STR_ORDER_SERVICE_AT                                            :Prizorgu ĉe
+STR_ORDER_SERVICE_NON_STOP_AT                                   :Prizorgu senhalte ĉe
 
 STR_ORDER_NEAREST_DEPOT                                         :la plej proksima
 STR_ORDER_NEAREST_HANGAR                                        :la plej proksima Hangaro
@@ -2890,8 +3026,28 @@ STR_ORDER_STOP_ORDER                                            :(Haltu)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
+STR_ORDER_FULL_LOAD                                             :(Plena Ŝarĝo)
+STR_ORDER_FULL_LOAD_ANY                                         :(Ŝarĝu ĝis plena ajnan kargon)
+STR_ORDER_NO_LOAD                                               :(Ne ŝarĝu)
+STR_ORDER_UNLOAD                                                :(Malŝarĝu kaj prenu kargon)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :(Malŝarĝu kaj atendu plenan ŝarĝon)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Malŝarĝu kaj atendu ajnan plenan ŝarĝon)
+STR_ORDER_UNLOAD_NO_LOAD                                        :(Malŝarĝu kaj foriru malplena)
+STR_ORDER_TRANSFER                                              :(Transigu kaj prenu kargon)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :(Transigu kaj atendu plenan ŝarĝon)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Transigu kaj atendu ajnan plenan ŝarĝon)
+STR_ORDER_TRANSFER_NO_LOAD                                      :(Transigu kaj foriru malplena)
+STR_ORDER_NO_UNLOAD                                             :(Ne malŝarĝu kaj prenu kargon)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Ne malŝarĝu kaj atendu plenan ŝarĝon)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Ne malŝarĝu kaj atendu ajnan plenan ŝarĝon)
 
+STR_ORDER_STOP_LOCATION_NEAR_END                                :[near end]
+STR_ORDER_STOP_LOCATION_MIDDLE                                  :[middle]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :[far end]
 
+STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Saltu al ordono {COMMA}
+STR_ORDER_CONDITIONAL_NUM                                       :Saltu al ordono {COMMA} kiam {STRING} {STRING} {COMMA}
+STR_ORDER_CONDITIONAL_TRUE_FALSE                                :Saltu al ordonu {COMMA} kiam {STRING} {STRING}
 
 STR_INVALID_ORDER                                               :{RED} (Nevalida Ordono)
 
@@ -2900,21 +3056,32 @@ STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE
 STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}Ordonoj
 STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Montri ordonvidujon.
 
-STR_TIMETABLE_TOOLTIP                                           :{BLACK}Horaro - Klaku ordonon por elstarigi.
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}Horaro - Klaku ordonon por emfazi.
+
+STR_TIMETABLE_DAYS                                              :{COMMA} tago{P "" s}
 
 
+STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Ĉi tiu veturilo nun iras akurate
+STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Ĉi tiu veturilo nun malfruas je {STRING}
+STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Ĉi tiu veturilo nun fruas je {STRING}
 
-
+STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Komencodato
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Ŝanĝu tempon
 
+STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Vakigi tempon
 
 
 
+STR_TIMETABLE_EXPECTED                                          :{BLACK}Atendite
+STR_TIMETABLE_SCHEDULED                                         :{BLACK}Planite
+STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Ŝalti inter atendite kaj planite
 
 
 
 # Date window (for timetable)
+STR_DATE_CAPTION                                                :{WHITE}Agordi daton
+STR_DATE_SET_DATE                                               :{BLACK}Agordi daton
 STR_DATE_DAY_TOOLTIP                                            :{BLACK}Elekti tagon
 STR_DATE_MONTH_TOOLTIP                                          :{BLACK}Elekti monaton
 STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Elekti jaron
@@ -2922,22 +3089,50 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Elekti j
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}Sencimigo de la AI
+STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Nomo de la AI
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}Agordoj de la AI
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Ŝanĝi agordojn de la AI
+STR_AI_DEBUG_RELOAD                                             :{BLACK}Reŝarĝi AI-on
+STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Mortigi la AI-on, reŝarĝi la skripton, kaj restarti la AI-on
 
+STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD estas kreita sen AI-supteno...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... neniu AI estas disponebla!
 
 
 # AI configuration window
+STR_AI_CONFIG_CAPTION                                           :{WHITE}AI-agordo
+STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}Ĉiuj AI-oj kiuj ŝarĝitos en la sekva ludo
+STR_AI_CONFIG_HUMAN_PLAYER                                      :Homa ludanto
+STR_AI_CONFIG_RANDOM_AI                                         :Hazarda AI
 
+STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Movi supren
+STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Movi elektitan AI-on supren en la listo
+STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Movi suben
+STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Movi elektitan AI-on suben en la listo
 
+STR_AI_CONFIG_CHANGE                                            :{BLACK}Elekti AI-on
+STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Ŝarĝi alian AI-on
+STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Agordi
+STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Agordi parametroj de la AI
 
 # Available AIs window
+STR_AI_LIST_CAPTION                                             :{WHITE}Disponeblaj AI-oj
+STR_AI_LIST_TOOLTIP                                             :{BLACK}Klaki por elekti AI
 
+STR_AI_LIST_AUTHOR                                              :{BLACK}Aŭtoro: {STRING}
+STR_AI_LIST_VERSION                                             :{BLACK}Versio: {NUM}
+STR_AI_LIST_URL                                                 :{BLACK}URL: {STRING}
 
+STR_AI_LIST_ACCEPT                                              :{BLACK}Akcepti
+STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Elekti emfazitan AI
+STR_AI_LIST_CANCEL                                              :{BLACK}Nuligi
+STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ne ŝanĝu AI-on
 
 # AI Parameters
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parametroj de la AI
+STR_AI_SETTINGS_CLOSE                                           :{BLACK}Fermi
+STR_AI_SETTINGS_RESET                                           :{BLACK}Reŝargo
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
@@ -3069,6 +3264,8 @@ STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... arba
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Ne povas konstrui stacidomon ĉi tie...
 STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Ne povas konstrui bushaltejon...
 STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}Ne povas konstrui ŝarĝstacion...
+STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}Ne povas konstrui pasaĝerotramstacion...
+STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}Ne povas konstrui frajttramstacion...
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Ne povas konstrui havenon ĉi tie...
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Ne povas konstrui flughavenon ĉi tie...
 
@@ -3083,13 +3280,16 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Tro prok
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Tro proksime al alia haveno
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Tro proksime al alia flughaveno
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Ne povas renomi stacion...
-STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}...ĉi tiun vojon posedas la urbo
-STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}...vojo direktiĝas malĝuste
+STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... ĉi tiun straton posedas la urbo
+STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... strato direktiĝas malĝuste
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Ne povas forigi stacidomeron...
+STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}Antaŭe devas la fervojostacio esti forigita
 STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Ne povas forigi bushaltejon...
 STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Ne povas forigi ŝarĝstacion...
+STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Ne povas forigi pasaĝerotramstacion...
+STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Ne povas forigi frajttramstacion...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Antaŭe forigu haltejon
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Antaŭe devas la fervojostacio esti detruita
@@ -3101,18 +3301,22 @@ STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Antaŭe 
 STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Antaŭe devas la flughaveno esti detruita
 
 # Waypoint related errors
+STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Apudas pli ol unu ekzistanta vojpunkto.
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Tro proksime al alia vojpunkto.
 
-STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Ne povas konstrui trajnan trairejon ĉi tie...
+STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Ne povas konstrui trajnan vojpunkton ĉi tie...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Ne povas meti buon ĉi tie...
-STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Ne povas ŝanĝi trairejan nomon...
+STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Ne povas ŝanĝi vojpunktan nomon...
 
-STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Ne povas forigi trajnan trairejon ĉi tie...
+STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Ne povas forigi trajnan vojpunkton ĉi tie...
+STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Antaŭe devas forigi fervojan vojpunkton
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... buo okupas la lokon
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}...buo estas uzata
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Ne povas konstrui trajngaraĝon ĉi tie...
-STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Ne povas konstrui vojveturilan garaĝon ĉi tie...
+STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Ne povas konstrui stratveturilan garaĝon ĉi tie...
+STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Ne povas konstrui tramgaraĝon ĉi tie...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Ne povas konstrui ŝipgaraĝon ĉi tie...
 
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Trajno estu haltita en garaĝo
@@ -3128,9 +3332,10 @@ STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Neinterŝanĝeb
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Ne povas movi veturilon
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}La malantaŭa maŝino ĉiam sekvos la antaŭan
-STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Ne povas trovi vojo al loka garaĝo
+STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Ne povas trovi straton al loka garaĝo
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Ne povas trovi lokan garaĝon
 
+STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Malĝusta garaĝtipo
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} tro longas post anstataŭado
@@ -3147,14 +3352,15 @@ STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Ne povas
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Ne povas konstrui relojn ĉi tie...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Ne povas forigi relojn de ĉi tie...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Ne povas forigi signalojn de ĉi tie...
+STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Ne povas konverti signalojn de ĉi tie...
 
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Ne povas transigi reltipon ĉi tie...
 
 # Road construction errors
-STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}Antaŭe forigu vojon
-STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Ne povas konstrui vojon ĉi tie...
+STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}Antaŭe forigu straton
+STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Ne povas konstrui stratojn ĉi tie...
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Ne povas konstrui tramvojon ĉi tie...
-STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Ne povas forigi vojon de ĉi tie...
+STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Ne povas forigi straton de ĉi tie...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Ne povas forigi tramvojon de ĉi tie...
 
 # Waterway construction errors
@@ -3202,7 +3408,7 @@ STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Ne povas
 
 # Generic vehicle errors
 STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Trajno okupas la lokon
-STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Vojveturilo okupas la lokon
+STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Stratveturilo okupas la lokon
 STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Ŝipo okupas la lokon
 STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Aviadilo okupas la lokon
 
@@ -3212,12 +3418,12 @@ STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Ne povas
 STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Ne povas reformi aviadilon...
 
 STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Ne povas nomi trajnon...
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Ne povas nomi vojveturilon...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Ne povas nomi stratveturilon...
 STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}Ne povas nomi ŝipon...
 STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}Ne povas nomi aviadilon...
 
 STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Ne povas haltigi/starti trajnon...
-STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Ne povas haltigi/starti vojveturilon...
+STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Ne povas haltigi/starti stratveturilon...
 STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Ne povas haltigi/starti ŝipon...
 STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Ne povas haltigi/starti aviadilon...
 
@@ -3232,12 +3438,12 @@ STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Ne povas
 STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Ne povas aĉeti aviadilon...
 
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Ne povas renomi trajnan veturiltipon...
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Ne povas renomi vojveturilan tipon...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Ne povas alinomi stratveturilan tipon...
 STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Ne povas renomi ŝiptipon...
 STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Ne povas renomi aviadiltipon...
 
 STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Ne povas vendi relan veturilon...
-STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Ne povas vendi vojveturilon...
+STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Ne povas vendi stratveturilon...
 STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Ne povas vendi ŝipon...
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Ne povas vendi aviadilon...
 
@@ -3257,7 +3463,7 @@ STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Ne povas
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Ne povas inversigi direkton de trajno...
 STR_ERROR_TRAIN_START_NO_CATENARY                               :Mankas ĉi-trake supera elektro, do la trajno ne povas starti
 
-STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Ne povas turnigi vojveturilon...
+STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Ne povas turnigi stratveturilon...
 
 STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}Aviadilo flugas
 
@@ -3268,6 +3474,8 @@ STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}Ne povas
 STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :{WHITE}Ne povas forviŝi ĉi tiun ordonon...
 STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}Ne povas ŝanĝi ĉi tiun ordonon...
 STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Ne povas movi ĉi tiun ordonon...
+STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Ne povas salti al la aktuala ordon...
+STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Ne povas salti al la elektita ordon...
 STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... veturilo ne povas iri al ĉiuj stacioj
 STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... veturilo ne povas iri al tiu stacio
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... veturilo kunhavanta ĉi tiun ordonon ne povas iri al tiu stacio
@@ -3284,6 +3492,7 @@ STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Ĉi tiu 
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}...tro da afiŝoj
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Ne povas meti afiŝon ĉi tie...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Ne povas ŝanĝi afiŝan nomon...
+STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Ne eblas forigi signon...
 
 ##id 0x2000
 # Town building names

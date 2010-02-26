@@ -3425,6 +3425,7 @@ STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Linja-au
 STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Kuorma-auto asemaa ei voida poistaa...
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Ei voi poistaa asemaa.
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Ei voi poistaa rahtiasemaa.
+STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Pysäkki täytyy poistaa ensin
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Rautatieasema pitää tuhota ensin.
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Linja-autoasema pitää purkaa ensin.

@@ -608,7 +608,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Zmień n
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Zamknij okno
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Tytuł okna - przeciągnij aby przesunąć okno
-STR_TOOLTIP_SHADE                                               :{BLACK}Zwęź okno - pokaż tylko nagłówek
+STR_TOOLTIP_SHADE                                               :{BLACK}Zwiń okno - pokaż tylko nagłówek
 STR_TOOLTIP_STICKY                                              :{BLACK}Zaznacza to okno jako niezamykane dla funkcji 'Zamknij wszystkie okna'
 STR_TOOLTIP_RESIZE                                              :{BLACK}Kliknij i przeciągnij by zmienić rozmiar okna
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Przełącz duży/mały rozmiar okna
@@ -940,7 +940,7 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Pieniąd
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Pożyczka:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Łącznie:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Liczba pojazdów, które przyniosły zysk w zeszłym roku: zawiera - pojazdy drogowe, pociągi, statki i samoloty
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Liczba pojazdów, które przyniosły zysk w zeszłym roku: dotyczy pojazdów drogowych, pociągów, statków i samolotów
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Liczba ostatnio obsłużonych elementów stacji. Wliczany jest każdy element stacji (np. dworzec, przystanek, lotnisko), nawet jeśli są połączone w jedną stację
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Zysk pojazdu o najniższym dochodzie (dotyczy pojazdów, które mają co najmniej 2 lata)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Ilość zarobionych pieniędzy w kwartale z najmniejszym zyskiem z ostatnich 12 kwartałów
@@ -1843,7 +1843,7 @@ STR_FACE_SIMPLE                                                 :{BLACK}Prosty w
 STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Prosty widok wyboru twarzy.
 STR_FACE_LOAD                                                   :{BLACK}Wczytaj
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Wczytaj ulubioną twarz
-STR_FACE_LOAD_DONE                                              :{WHITE}Twoja ulubiona twarz została wczytana z pliku konfiguracyjnego OpenTTD.
+STR_FACE_LOAD_DONE                                              :{WHITE}Twoja ulubiona twarz została wczytana z pliku konfiguracyjnego OpenTTD
 STR_FACE_FACECODE                                               :{BLACK}Numer twarzy gracza
 STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Obejrzyj i/lub ustaw numer twarzy gracza
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}Obejrzyj i/lub ustaw numer twarzy gracza
@@ -2189,7 +2189,7 @@ STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}To zost
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Ta zależność została wybrana do ściągnięcia
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Już to posiadasz
 STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Te dane są nieznane i nie mogą być ściągnięte przez OpenTTD
-STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}To jest zamiennik dla {STRING}
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}To jest zamiennik dla istniejącego {STRING}
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}Nazwa: {WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Wersja: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Opis: {WHITE}{STRING}
@@ -3288,10 +3288,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Pokaż d
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Pokaż szczegóły statku
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Pokaż szczegóły samolotu
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Obecny stan pociągu - klik tutaj aby zatrzymać/ruszyć pociąg
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Obecny stan pojazdu - klik tutaj aby zatrzymać/ruszyć pojazd
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Obecny stan statku - klik aby zatrzymać/ruszyć statek
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Obecny stan samolotu - klik aby zatrzymać/ruszyć samolot
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Obecny stan pociągu - kliknij aby zatrzymać/ruszyć pociąg. Ctrl+Klik by przejść do punktu docelowego.
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Obecny stan pojazdu - kliknij aby zatrzymać/ruszyć pojazd. Ctrl+Klik by przejść do punktu docelowego.
+STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Obecny stan statku - kliknij aby zatrzymać/ruszyć statek. Ctrl+Klik by przejść do punktu docelowego.
+STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Obecny stan samolotu - kliknij aby zatrzymać/ruszyć samolot. Ctrl+Klik by przejść do punktu docelowego.
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Załadunek / Wyładunek
@@ -3603,6 +3603,7 @@ STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Zmień u
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Przeładuj SI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Zabij SI, przeładuj skrypt i zrestartuj SI
 
+STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD został zbudowany bez wsparcia dla sztucznej inteligencji...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... żadna SI nie jest dostępna!
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Nie znaleziono SI do wczytania.{}SI jest nieaktywne i nic nie robi.{}Możesz ściągnąć SI z 'Dodatki Online' w głównym menu gry.
@@ -3690,6 +3691,8 @@ STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}...nie m
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Ostrzeżenie o skali
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Nie zaleca się zbyt dużej zmiany wielkości mapy źródłowej. Kontynuować tworzenie?
+
+# Soundset messages
 
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Zrzut ekranu zapisany na dysk z powodzeniem '{STRING}'
@@ -3804,6 +3807,7 @@ STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Nie moż
 STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Nie można usunąć stacji załadunkowej...
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Nie można usunąć przystanku tramwajowego...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Nie można usunąć tramwajowej stacji załadunkowej...
+STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Należy najpierw usunąć przystanek
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Należy najpierw usunąć stację kolejową
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Należy najpierw usunąć przystanek autobusowy
@@ -3857,6 +3861,7 @@ STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(limit funduszy
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Niemożliwa kombinacja torów
+STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Należy najpierw usunąć sygnalizację
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Nieodpowiednie tory
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Należy najpierw usunąć tory
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Droga jest jednokierunkowa lub zablokowana

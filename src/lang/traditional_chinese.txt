@@ -2904,10 +2904,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}顯示�
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}顯示船舶詳細資料
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}顯示飛機詳細資料
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}列車目前的動作 - 按此可停止／起動列車
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}目前車輛動作 - 點選這裡可停止／起動車輛
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}目前船舶動作 - 按此可停止／起動船舶
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}目前飛機動作 - 按此可停止／起動飛機
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}列車目前的動作 - 按此可停止／起動列車。Ctrl+Click 可以捲動到目的地。
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}目前車輛動作 - 點選這裡可停止／起動車輛。Ctrl+Click 可以捲動到目的地。
+STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}目前船舶動作 - 按此可停止／起動船舶。Ctrl+Click 可以捲動到目的地。
+STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}目前飛機動作 - 按此可停止／起動飛機。Ctrl+Click 可以捲動到目的地。
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}正在裝卸客貨

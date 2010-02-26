@@ -229,7 +229,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Nume nou
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Închide fereastra
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Titlul ferestrei - trage de aici pentru a muta fereastra
-STR_TOOLTIP_SHADE                                               :{BLACK}Fereastra "shade" - Afişează doar bara de titlu
+STR_TOOLTIP_SHADE                                               :{BLACK}Minimizează fereastra - Afişează doar bara de titlu
 STR_TOOLTIP_STICKY                                              :{BLACK}Previne închiderea acestei ferestre de către tasta 'Închide toate ferestrele'
 STR_TOOLTIP_RESIZE                                              :{BLACK}Apasă şi trage pentru redimensionarea ferestrei
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Comutator pentru dimensiunea ferestrei
@@ -561,7 +561,7 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Cont cur
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Credite:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Numărul de vehicule profitabile anul precedent. Include autovehicule, trenuri, nave şi aeronave
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Numărul de vehicule profitabile pe anul precedent. Include autovehicule, trenuri, nave şi aeronave
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Numărul staţiilor. Se numără fiecare componentă în cazul unor staţii compuse din gări, aeroporturi, porturi, staţii de autobuz, etc.
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Profitul vehiculului cu cele mai mici încasări (doar vehiculele mai vechi de 2 ani sunt listate)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Suma de bani obţinută în trimestrul cu cel mai mic profit din ultimele 12 trimestre.
@@ -1533,7 +1533,7 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Clic pen
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}INFO JOC
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Clienţi: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Limba: {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Tileset: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Peisaj: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Mărimea hărţii: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Versiune server: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Adresa serverului: {WHITE}{STRING}
@@ -1922,7 +1922,7 @@ STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Alegere 
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Semnal standard (semafor){}Acesta este cel mai simplu tip de semnal, permiţând numai unui tren să fie în acelaşi bloc, la un moment dat.
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Semnal de intrare (semafor){}Verde, atat timp cât există unul sau mai multe semnale verzi de ieşire din secţiunea următoare a căii ferate. Altfel indică roşu.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Semnal de ieşire (semafor){}Se comportă în acelaşi fel ca semnalul normal, dar este necesar pentru declanşarea culorii corecte la presemnalizatoarele de intrare şi cele combinate.
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Semnal combinat (semafor){}Semnalul combinat se comportă atât ca semnal de intrare cât şi de ieşire. Acest lucru permite construcţia "arborilor" mari de presemnalizare.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Semnal combinat (semafor){}Semnalul combinat se comportă atât ca semnal de intrare, cât şi de ieşire. Acest lucru permite construcţia "arborilor" mari de presemnalizare.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Semnal de cale (semafor){}Un semnal de cale va permite trecerea în acelaşi timp în blocurile de semnale a mai multor trenuri, dacă trenurile pot găsi o cale până la un punct sigur pentru oprire. Semnalele standard de cale permit trecerea din ambele sensuri.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Semnal de cale cu sens unic (semafor){}Un semnal de cale permite trecerea simultană a mai multor trenuri prin blocurile de semnale, dacă trenul poate rezerva o cale până la un punct sigur de oprire. Semnalele de cale cu sens unic permit trecerea intr-un singur sens.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Semnal standard (electric){}Acesta este cel mai simplu tip de semnal, permiţând numai unui tren să fie în acelaşi bloc, la un moment dat.
@@ -1939,7 +1939,7 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Creşte 
 # Bridge selection window
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Alege pod de cale ferată
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Alege pod rutier
-STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Alegere pod - clic pe podul selectat pentru a-l construi
+STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Alegere pod - clic pe podul preferat pentru a-l construi
 STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Suspensie (oţel)
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Grindă (oţel)
@@ -2379,7 +2379,7 @@ STR_NEWGRF_ERROR_READ_BOUNDS                                    :Citire dincolo 
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Atentie!
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Esti pe cale sa faci modificari intr-un joc activ. Aceasta poate destabiliza OpenTTD.{}Esti absolut sigur ca vrei sa faci asta?
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Eşti pe cale să faci modificari într-un joc activ. Aceasta poate destabiliza OpenTTD.{}Eşti absolut sigur că vrei să faci asta?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Nu pot adăuga fişierul: ID GRF duplicat
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Nu am gasit niciun fisier corespunzator (am incarcat un GRF compatibil)
@@ -2413,7 +2413,7 @@ STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Oraşe
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Nimic -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Numele oraşelor - clic pe un nume pentru a centra imaginea pe oraşul respectiv. Ctrl+Click deshide o fereastra cu locaţia oraşului
-STR_TOWN_POPULATION                                             :{BLACK}Populatia totala: {COMMA}
+STR_TOWN_POPULATION                                             :{BLACK}Populaţia totală: {COMMA}
 
 # Town view window
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
@@ -2537,7 +2537,7 @@ STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Construcţii
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Vehicule noi
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Costuri trenuri
-STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Costuri autovehicule
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Costuri de exploatare autovehicule
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Costuri aeronave
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Costuri nave
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Întreţinere proprietăţi
@@ -2904,9 +2904,9 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Afişeaz
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Afişează detaliile navei
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Afişează detaliile aeronavei
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Comanda curentă a trenului - clic aici pentru a opri/porni trenul
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Comanda curentă a autovehiculului - clic aici pentru a opri/porni autovehiculul
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Comanda curentă a navei - clic aici pentru a opri/porni nava
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Comanda curentă a trenului - clic aici pentru a opri/porni trenul. Ctrl+Click pentru a vedea destinaţia
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Comanda curentă a autovehiculului - clic aici pentru a opri/porni autovehiculul. Ctrl+Click pentru a vedea destinatia
+STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Comanda curentă a navei - clic aici pentru a opri/porni nava. Ctrl+Click pentru a vedea destinaţia
 STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Comanda curentă a aeronavei - clic aici pentru a opri/porni aeronava
 
 # Messages in the start stop button in the vehicle view
@@ -3425,6 +3425,7 @@ STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Nu pot e
 STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Nu pot elimina statia de camioane...
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Nu pot înlătura staţia de tramvai...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Nu pot înlătura staţia de tramvai...
+STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Trebuie îndepărtată staţia mai întâi
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Mai întâi trebuie demolată gara
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Mai întâi trebuie demolată staţia de autobuz
@@ -3727,9 +3728,9 @@ STR_SV_STNAME_TRANSFER                                          :{STRING} Transf
 STR_SV_STNAME_HALT                                              :Popasul {STRING}
 STR_SV_STNAME_VALLEY                                            :Valea {STRING}
 STR_SV_STNAME_HEIGHTS                                           :Dealurile {STRING}
-STR_SV_STNAME_WOODS                                             :Pãdurea {STRING}
+STR_SV_STNAME_WOODS                                             :Pădurea {STRING}
 STR_SV_STNAME_LAKESIDE                                          :Lacul {STRING}
-STR_SV_STNAME_EXCHANGE                                          :Piata {STRING}
+STR_SV_STNAME_EXCHANGE                                          :Piaţa {STRING}
 STR_SV_STNAME_AIRPORT                                           :Aeroportul {STRING}
 STR_SV_STNAME_OILFIELD                                          :Platforma {STRING}
 STR_SV_STNAME_MINES                                             :Minele {STRING}
@@ -3743,7 +3744,7 @@ STR_SV_STNAME_BRANCH                                            :Ramura {STRING}
 STR_SV_STNAME_UPPER                                             :{STRING} de Sus
 STR_SV_STNAME_LOWER                                             :{STRING} de Jos
 STR_SV_STNAME_HELIPORT                                          :Heliportul {STRING}
-STR_SV_STNAME_FOREST                                            :Pãdurea {STRING}
+STR_SV_STNAME_FOREST                                            :Pădurea {STRING}
 STR_SV_STNAME_FALLBACK                                          :{STRING} Statia #{NUM}
 ############ end of savegame specific region!
 
