@@ -3400,7 +3400,7 @@ STR_ERROR_ALREADY_BUILT                                         :{WHITE}... uz b
 STR_ERROR_OWNED_BY                                              :{WHITE}... vlastníkom je {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... oblasť vlastní iná spoločnosť
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Meno musí byt jedinecné
-STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{STRING} v ceste
+STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{1:STRING} v ceste
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}Miestna správa {TOWN} to nedovolí

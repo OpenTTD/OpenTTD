@@ -477,7 +477,7 @@ static CommandCost ClearTile_Industry(TileIndex tile, DoCommandFlag flags)
 			(_current_company == OWNER_WATER &&
 				((indspec->behaviour & INDUSTRYBEH_BUILT_ONWATER) ||
 				HasBit(GetIndustryTileSpec(GetIndustryGfx(tile))->slopes_refused, 5)))) {
-		SetDParam(0, indspec->name);
+		SetDParam(1, indspec->name);
 		return_cmd_error(flags & DC_AUTO ? STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY : INVALID_STRING_ID);
 	}
 

@@ -3419,7 +3419,7 @@ CommandCost ClearTile_Station(TileIndex tile, DoCommandFlag flags)
 			case STATION_BUOY:     return_cmd_error(STR_ERROR_BUOY_IN_THE_WAY);
 			case STATION_DOCK:     return_cmd_error(STR_ERROR_MUST_DEMOLISH_DOCK_FIRST);
 			case STATION_OILRIG:
-				SetDParam(0, STR_INDUSTRY_NAME_OIL_RIG);
+				SetDParam(1, STR_INDUSTRY_NAME_OIL_RIG);
 				return_cmd_error(STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY);
 		}
 	}

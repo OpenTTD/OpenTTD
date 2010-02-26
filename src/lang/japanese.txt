@@ -3237,7 +3237,7 @@ STR_ERROR_ALREADY_BUILT                                         :{WHITE}...す�
 STR_ERROR_OWNED_BY                                              :{WHITE}...所有者は {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...この土地は他の会社に所有されています
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}名前は唯一でなければなりません
-STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{STRING}があります
+STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{1:STRING}があります
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN}の町議会が拒否しました。

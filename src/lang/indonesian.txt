@@ -3329,7 +3329,7 @@ STR_ERROR_ALREADY_BUILT                                         :{WHITE}...sudah
 STR_ERROR_OWNED_BY                                              :{WHITE}...dimiliki oleh {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...area ini dimiliki oleh perusahaan lain
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Nama haruslah unik
-STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :terhalang {WHITE}{STRING}
+STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :terhalang {WHITE}{1:STRING}
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}Pemkot {TOWN} tidak mengijinkan anda melakukan ini

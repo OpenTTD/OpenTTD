@@ -3312,7 +3312,7 @@ STR_ERROR_ALREADY_BUILT                                         :{WHITE}... 已�
 STR_ERROR_OWNED_BY                                              :{WHITE} 归 {STRING} 所有
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... 此区域由另一公司所有
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}名称重复!请重新命名.
-STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}目标位置有 {STRING}
+STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}目标位置有 {1:STRING}
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} 地方政府不批准此操作……
