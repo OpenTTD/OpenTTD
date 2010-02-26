@@ -106,6 +106,11 @@ public:
 					SetWindowDirty(WC_GAME_OPTIONS, 0);
 					break;
 
+				case CONTENT_TYPE_BASE_MUSIC:
+					BaseMusic::FindSets();
+					SetWindowDirty(WC_GAME_OPTIONS, 0);
+					break;
+
 				case CONTENT_TYPE_NEWGRF:
 					ScanNewGRFFiles();
 					/* Yes... these are the NewGRF windows */
