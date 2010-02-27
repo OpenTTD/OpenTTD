@@ -80,10 +80,10 @@ bool IsHangar(TileIndex t)
  * @param ta the area to search over
  * @param closest_station the closest station found so far
  * @param st to 'return' the found station
- * @return false if more than one stations are found. True when zero or one are found.
+ * @return Succeeded command (if zero or one station found) or failed command (for two or more stations found).
  */
 template <class T>
-bool GetStationAround(TileArea ta, StationID closest_station, T **st)
+CommandCost GetStationAround(TileArea ta, StationID closest_station, T **st)
 {
 	/* check around to see if there's any stations there */
 	TILE_LOOP(tile_cur, ta.w + 2, ta.h + 2, ta.tile - TileDiffXY(1, 1)) {
@@ -93,13 +93,12 @@ bool GetStationAround(TileArea ta, StationID closest_station, T **st)
 			if (closest_station == INVALID_STATION) {
 				if (T::IsValidID(t)) closest_station = t;
 			} else if (closest_station != t) {
-				_error_message = STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING;
-				return false;
+				return_cmd_error(STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING);
 			}
 		}
 	}
 	*st = (closest_station == INVALID_STATION) ? NULL : T::Get(closest_station);
-	return true;
+	return CommandCost();
 }
 
 /**
@@ -1031,7 +1030,8 @@ CommandCost FindJoiningBaseStation(StationID existing_station, StationID station
 
 	if (check_surrounding) {
 		/* Make sure there are no similar stations around us. */
-		if (!GetStationAround(ta, existing_station, st)) return CMD_ERROR;
+		CommandCost ret = GetStationAround(ta, existing_station, st);
+		if (ret.Failed()) return ret;
 	}
 
 	/* Distant join */
@@ -1137,6 +1137,7 @@ CommandCost CmdBuildRailStation(TileIndex tile_org, DoCommandFlag flags, uint32 
 
 	Station *st = NULL;
 	CommandCost ret = FindJoiningStation(est, station_to_join, adjacent, new_location, &st);
+	ret.SetGlobalErrorMessage();
 	if (ret.Failed()) return ret;
 
 	/* See if there is a deleted station close to us. */
@@ -1701,6 +1702,7 @@ CommandCost CmdBuildRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 
 	Station *st = NULL;
 	ret = FindJoiningRoadStop(est, station_to_join, HasBit(p2, 5), roadstop_area, &st);
+	ret.SetGlobalErrorMessage();
 	if (ret.Failed()) return ret;
 
 	/* Find a deleted station close to us */
@@ -2108,6 +2110,7 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 	Station *st = NULL;
 	CommandCost ret = FindJoiningStation(INVALID_STATION, station_to_join, HasBit(p2, 0), TileArea(tile, w, h), &st);
+	ret.SetGlobalErrorMessage();
 	if (ret.Failed()) return ret;
 
 	/* Distant join */
@@ -2354,6 +2357,7 @@ CommandCost CmdBuildDock(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	CommandCost ret = FindJoiningStation(INVALID_STATION, station_to_join, HasBit(p1, 0),
 			TileArea(tile + ToTileIndexDiff(_dock_tileoffs_chkaround[direction]),
 					_dock_w_chk[direction], _dock_h_chk[direction]), &st);
+	ret.SetGlobalErrorMessage();
 	if (ret.Failed()) return ret;
 
 	/* Distant join */
