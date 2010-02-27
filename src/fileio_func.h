@@ -63,6 +63,7 @@ void *ReadFileToMem(const char *filename, size_t *lenp, size_t maxsize);
 bool FileExists(const char *filename);
 const char *FioTarFirstDir(const char *tarname);
 void FioTarAddLink(const char *src, const char *dest);
+bool ExtractTar(const char *tar_filename);
 
 extern char *_personal_dir; ///< custom directory for personal settings, saves, newgrf, etc.
 

@@ -481,6 +481,12 @@ void ClientNetworkContentSocketHandler::AfterDownload()
 
 		TarListAddFile(GetFullFilename(this->curInfo, false));
 
+		if (this->curInfo->type == CONTENT_TYPE_BASE_MUSIC) {
+			/* Music can't be in a tar. So extract the tar! */
+			ExtractTar(GetFullFilename(this->curInfo, false));
+			unlink(GetFullFilename(this->curInfo, false));
+		}
+
 		this->OnDownloadComplete(this->curInfo->id);
 	} else {
 		ShowErrorMessage(STR_CONTENT_ERROR_COULD_NOT_EXTRACT, INVALID_STRING_ID, 0, 0);

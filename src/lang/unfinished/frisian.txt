@@ -1772,7 +1772,7 @@ STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}...terre
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}...is al bout
 STR_ERROR_OWNED_BY                                              :{WHITE}...is fan {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...gebiet is fan in oar bedriuw
-STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{STRING} yn it paad
+STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{1:STRING} yn it paad
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} gemiente stiet dit net ta

@@ -3330,7 +3330,7 @@ STR_ERROR_ALREADY_BUILT                                         :{WHITE}... ist 
 STR_ERROR_OWNED_BY                                              :{WHITE}... Eigentum von {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... Gelände gehört einer anderen Firma
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Name bereits vergeben
-STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{STRING} im Weg
+STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{1:STRING} im Weg
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}Die Stadtverwaltung von {TOWN} erteilt keine Genehmigung

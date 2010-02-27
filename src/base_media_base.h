@@ -170,7 +170,9 @@ public:
 	static uint FindSets()
 	{
 		BaseMedia<Tbase_set> fs;
-		return fs.Scan(GetExtension(), Tbase_set::SUBDIR);
+		/* GM_DIR == music set. Music sets don't support tars,
+		 * so there is no need to search for tars in that case. */
+		return fs.Scan(GetExtension(), Tbase_set::SUBDIR, Tbase_set::SUBDIR != GM_DIR);
 	}
 
 	/**

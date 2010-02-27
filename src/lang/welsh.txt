@@ -3220,7 +3220,7 @@ STR_ERROR_ALREADY_BUILT                                         :{WHITE}...eisoe
 STR_ERROR_OWNED_BY                                              :{WHITE}...eiddo {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...mae'r ardal yn eiddo i gwmni arall
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Rhaid i'r enw fod yn unigryw
-STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{STRING} yn y ffordd
+STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{1:STRING} yn y ffordd
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}Nid yw awdurdod lleol {TOWN}yn caniatáu hyn

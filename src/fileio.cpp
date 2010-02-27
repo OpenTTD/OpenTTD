@@ -743,6 +743,79 @@ bool TarListAddFile(const char *filename)
 	return true;
 }
 
+/**
+ * Extract the tar with the given filename in the directory
+ * where the tar resides.
+ * @param tar_filename the name of the tar to extract.
+ * @return false on failure.
+ */
+bool ExtractTar(const char *tar_filename)
+{
+	TarList::iterator it = _tar_list.find(tar_filename);
+	/* We don't know the file. */
+	if (it == _tar_list.end()) return false;
+
+	const char *dirname = (*it).second.dirname;
+
+	/* The file doesn't have a sub directory! */
+	if (dirname == NULL) return false;
+
+	char filename[MAX_PATH];
+	strecpy(filename, tar_filename, lastof(filename));
+	char *p = strrchr(filename, PATHSEPCHAR);
+	/* The file's path does not have a separator? */
+	if (p == NULL) return false;
+
+	p++;
+	strecpy(p, dirname, lastof(filename));
+	DEBUG(misc, 8, "Extracting %s to directory %s", tar_filename, filename);
+	FioCreateDirectory(filename);
+
+	for (TarFileList::iterator it2 = _tar_filelist.begin(); it2 != _tar_filelist.end(); it2++) {
+		if (strcmp((*it2).second.tar_filename, tar_filename) != 0) continue;
+
+		strecpy(p, (*it2).first.c_str(), lastof(filename));
+
+		DEBUG(misc, 9, "  extracting %s", filename);
+
+		/* First open the file in the .tar. */
+		size_t to_copy = 0;
+		FILE *in = FioFOpenFileTar(&(*it2).second, &to_copy);
+		if (in == NULL) {
+			DEBUG(misc, 6, "Extracting %s failed; could not open %s", filename, tar_filename);
+			return false;
+		}
+
+		/* Now open the 'output' file. */
+		FILE *out = fopen(filename, "wb");
+		if (out == NULL) {
+			DEBUG(misc, 6, "Extracting %s failed; could not open %s", filename, filename);
+			fclose(in);
+			return false;
+		}
+
+		/* Now read from the tar and write it into the file. */
+		char buffer[4096];
+		size_t read;
+		for (; to_copy != 0; to_copy -= read) {
+			read = fread(buffer, 1, min(to_copy, lengthof(buffer)), in);
+			if (read <= 0 || fwrite(buffer, 1, read, out) != read) break;
+		}
+
+		/* Close everything up. */
+		fclose(in);
+		fclose(out);
+
+		if (to_copy != 0) {
+			DEBUG(misc, 6, "Extracting %s failed; still %i bytes to copy", filename, (int)to_copy);
+			return false;
+		}
+	}
+
+	DEBUG(misc, 9, "  extraction successful");
+	return true;
+}
+
 static int ScanPathForTarFiles(const char *path, size_t basepath_length)
 {
 	extern bool FiosIsValidFile(const char *path, const struct dirent *ent, struct stat *sb);

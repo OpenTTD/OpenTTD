@@ -667,6 +667,16 @@ void RecomputePrices()
 			price >>= -shift;
 		}
 
+		/* Make sure the price does not get reduced to zero.
+		 * Zero breaks quite a few commands that use a zero
+		 * cost to see whether something got changed or not
+		 * and based on that cause an error. When the price
+		 * is zero that fails even when things are done. */
+		if (price == 0) {
+			price = Clamp(_price_base_specs[i].start_price, -1, 1);
+			/* No base price should be zero, but be sure. */
+			assert(price != 0);
+		}
 		/* Store value */
 		_price[i] = price;
 	}
