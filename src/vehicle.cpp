@@ -218,6 +218,11 @@ void ShowNewGrfVehicleError(EngineID engine, StringID part1, StringID part2, GRF
 	DEBUG(grf, 0, "%s", buffer + 3);
 }
 
+/** Callback that returns 'real' vehicles lower or at height \c *(byte*)data .
+ * @param v Vehicle to examine.
+ * @param data Pointer to height data.
+ * @return \a v if conditions are met, else \c NULL.
+ */
 static Vehicle *EnsureNoVehicleProcZ(Vehicle *v, void *data)
 {
 	byte z = *(byte*)data;
@@ -229,6 +234,10 @@ static Vehicle *EnsureNoVehicleProcZ(Vehicle *v, void *data)
 	return v;
 }
 
+/* Ensure there is no vehicle at the ground at the given position.
+ * @param tile Position to examine.
+ * @return A vehicle has been found.
+ */
 bool EnsureNoVehicleOnGround(TileIndex tile)
 {
 	byte z = GetTileMaxZ(tile);
@@ -258,7 +267,10 @@ bool HasVehicleOnTunnelBridge(TileIndex tile, TileIndex endtile, const Vehicle *
 			HasVehicleOnPos(endtile, (void *)ignore, &GetVehicleTunnelBridgeProc);
 }
 
-
+/**
+ * Vehicle constructor.
+ * @param type Type of the new vehicle.
+ */
 Vehicle::Vehicle(VehicleType type)
 {
 	this->type               = type;
@@ -373,7 +385,7 @@ bool HasVehicleOnPosXY(int x, int y, void *data, VehicleFromPosProc *proc)
  * Helper function for FindVehicleOnPos/HasVehicleOnPos.
  * @note Do not call this function directly!
  * @param tile The location on the map
- * @param data Arbitrary data passed to proc
+ * @param data Arbitrary data passed to \a proc.
  * @param proc The proc that determines whether a vehicle will be "found".
  * @param find_first Whether to return on the first found or iterate over
  *                   all vehicles
@@ -396,16 +408,16 @@ static Vehicle *VehicleFromPos(TileIndex tile, void *data, VehicleFromPosProc *p
 }
 
 /**
- * Find a vehicle from a specific location. It will call proc for ALL vehicles
+ * Find a vehicle from a specific location. It will call \a proc for ALL vehicles
  * on the tile and YOU must make SURE that the "best one" is stored in the
  * data value and is ALWAYS the same regardless of the order of the vehicles
  * where proc was called on!
  * When you fail to do this properly you create an almost untraceable DESYNC!
- * @note The return value of proc will be ignored.
- * @note Use this when you have the intention that all vehicles
+ * @note The return value of \a proc will be ignored.
+ * @note Use this function when you have the intention that all vehicles
  *       should be iterated over.
  * @param tile The location on the map
- * @param data Arbitrary data passed to proc
+ * @param data Arbitrary data passed to \a proc.
  * @param proc The proc that determines whether a vehicle will be "found".
  */
 void FindVehicleOnPos(TileIndex tile, void *data, VehicleFromPosProc *proc)
@@ -414,13 +426,13 @@ void FindVehicleOnPos(TileIndex tile, void *data, VehicleFromPosProc *proc)
 }
 
 /**
- * Checks whether a vehicle in on a specific location. It will call proc for
+ * Checks whether a vehicle is on a specific location. It will call \a proc for
  * vehicles until it returns non-NULL.
- * @note Use FindVehicleOnPos when you have the intention that all vehicles
+ * @note Use #FindVehicleOnPos when you have the intention that all vehicles
  *       should be iterated over.
  * @param tile The location on the map
- * @param data Arbitrary data passed to proc
- * @param proc The proc that determines whether a vehicle will be "found".
+ * @param data Arbitrary data passed to \a proc.
+ * @param proc The \a proc that determines whether a vehicle will be "found".
  * @return True if proc returned non-NULL.
  */
 bool HasVehicleOnPos(TileIndex tile, void *data, VehicleFromPosProc *proc)
