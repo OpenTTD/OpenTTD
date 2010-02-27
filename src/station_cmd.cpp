@@ -891,9 +891,9 @@ static CommandCost CheckFlatLandRoadStop(TileArea tile_area, DoCommandFlag flags
  * @param st the station to expand
  * @param new_ta the current (and if all is fine new) tile area of the rail part of the station
  * @param axis the axis of the newly build rail
- * @return true if we are allowed to extend
+ * @return Succeeded or failed command.
  */
-bool CanExpandRailStation(const BaseStation *st, TileArea &new_ta, Axis axis)
+CommandCost CanExpandRailStation(const BaseStation *st, TileArea &new_ta, Axis axis)
 {
 	TileArea cur_ta = st->train_station;
 
@@ -909,15 +909,13 @@ bool CanExpandRailStation(const BaseStation *st, TileArea &new_ta, Axis axis)
 		 * the uniform-stations code wouldn't handle it well */
 		TILE_LOOP(t, cur_ta.w, cur_ta.h, cur_ta.tile) {
 			if (!st->TileBelongsToRailStation(t)) { // there may be adjoined station
-				_error_message = STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED;
-				return false;
+				return_cmd_error(STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED);
 			}
 		}
 
 		/* check so the orientation is the same */
 		if (GetRailStationAxis(cur_ta.tile) != axis) {
-			_error_message = STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED;
-			return false;
+			return_cmd_error(STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED);
 		}
 
 		/* check if the new station adjoins the old station in either direction */
@@ -936,17 +934,15 @@ bool CanExpandRailStation(const BaseStation *st, TileArea &new_ta, Axis axis)
 			new_ta.tile = cur_ta.tile;
 			new_ta.w += cur_ta.w;
 		} else {
-			_error_message = STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED;
-			return false;
+			return_cmd_error(STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED);
 		}
 	}
 	/* make sure the final size is not too big. */
 	if (new_ta.w > _settings_game.station.station_spread || new_ta.h > _settings_game.station.station_spread) {
-		_error_message = STR_ERROR_STATION_TOO_SPREAD_OUT;
-		return false;
+		return_cmd_error(STR_ERROR_STATION_TOO_SPREAD_OUT);
 	}
 
-	return true;
+	return CommandCost();
 }
 
 static inline byte *CreateSingle(byte *layout, int n)
@@ -1150,10 +1146,11 @@ CommandCost CmdBuildRailStation(TileIndex tile_org, DoCommandFlag flags, uint32 
 
 		if (st->train_station.tile != INVALID_TILE) {
 			/* check if we want to expanding an already existing station? */
-			if (!_settings_game.station.join_stations)
-				return_cmd_error(STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD);
-			if (!CanExpandRailStation(st, new_location, axis))
-				return CMD_ERROR;
+			if (!_settings_game.station.join_stations) return_cmd_error(STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD);
+
+			CommandCost ret = CanExpandRailStation(st, new_location, axis);
+			ret.SetGlobalErrorMessage();
+			if (ret.Failed()) return ret;
 		}
 
 		/* XXX can't we pack this in the "else" part of the if above? */

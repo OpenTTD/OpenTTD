@@ -194,7 +194,7 @@ static CommandCost IsValidTileForWaypoint(TileIndex tile, Axis axis, StationID *
 
 extern void GetStationLayout(byte *layout, int numtracks, int plat_len, const StationSpec *statspec);
 extern CommandCost FindJoiningWaypoint(StationID existing_station, StationID station_to_join, bool adjacent, TileArea ta, Waypoint **wp);
-extern bool CanExpandRailStation(const BaseStation *st, TileArea &new_ta, Axis axis);
+extern CommandCost CanExpandRailStation(const BaseStation *st, TileArea &new_ta, Axis axis);
 
 /** Convert existing rail to waypoint. Eg build a waypoint station over
  * piece of rail
@@ -265,7 +265,10 @@ CommandCost CmdBuildRailWaypoint(TileIndex start_tile, DoCommandFlag flags, uint
 		if (wp->owner != _current_company) return_cmd_error(STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT);
 
 		/* check if we want to expand an already existing waypoint? */
-		if (wp->train_station.tile != INVALID_TILE && !CanExpandRailStation(wp, new_location, axis)) return CMD_ERROR;
+		if (wp->train_station.tile != INVALID_TILE) {
+			CommandCost ret = CanExpandRailStation(wp, new_location, axis);
+			if (ret.Failed()) return ret;
+		}
 
 		if (!wp->rect.BeforeAddRect(start_tile, width, height, StationRect::ADD_TEST)) return CMD_ERROR;
 	} else {
