@@ -148,7 +148,7 @@ public:
 	 * @param filename      Output for the filename of the written file.
 	 * @param filename_last The last position in the filename buffer.
 	 * @return if less than 0, error. If 0 no dump is made, otherwise the dump
-	 *         was successfull (not all OSes support dumping files).
+	 *         was successful (not all OSes support dumping files).
 	 */
 	virtual int WriteCrashDump(char *filename, const char *filename_last) const;
 

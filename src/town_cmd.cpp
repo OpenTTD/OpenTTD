@@ -1782,7 +1782,7 @@ bool GenerateTowns(TownLayout layout)
 		/* Get a unique name for the town. */
 		if (!GenerateTownName(&townnameparts)) continue;
 		/* try 20 times to create a random-sized town for the first loop. */
-		if (CreateRandomTown(20, townnameparts, TS_RANDOM, city, layout) != NULL) num++; // if creation successfull, raise a flag
+		if (CreateRandomTown(20, townnameparts, TS_RANDOM, city, layout) != NULL) num++; // If creation was successful, raise a flag.
 	} while (--n);
 
 	if (num != 0) return true;

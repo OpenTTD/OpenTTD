@@ -46,7 +46,7 @@ public:
 	/**
 	 * When ever the AI Scanner is reloaded, all infos become invalid. This
 	 *  function tells AIConfig about this.
-	 * @return True if the reset was successfull, false if the AI was no longer
+	 * @return \c true if the reset was successful, \c false if the AI was no longer
 	 *  found.
 	 */
 	bool ResetInfo();

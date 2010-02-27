@@ -172,13 +172,13 @@ private:
 	 *   with before an error is returned.
 	 * @param test If true, don't really store the data but only check if it is
 	 *   valid.
-	 * @return True if the saving was successfull.
+	 * @return True if the saving was successful.
 	 */
 	static bool SaveObject(HSQUIRRELVM vm, SQInteger index, int max_depth, bool test);
 
 	/**
 	 * Load all objects from a savegame.
-	 * @return True if the loading was successfull.
+	 * @return True if the loading was successful.
 	 */
 	static bool LoadObjects(HSQUIRRELVM vm);
 };

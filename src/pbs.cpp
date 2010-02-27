@@ -72,7 +72,7 @@ void SetRailStationPlatformReservation(TileIndex start, DiagDirection dir, bool 
  * Try to reserve a specific track on a tile
  * @param tile the tile
  * @param t the track
- * @return true if reservation was successfull, i.e. the track was
+ * @return \c true if reservation was successful, i.e. the track was
  *     free and didn't cross any other reserved tracks.
  */
 bool TryReserveRailTrack(TileIndex tile, Track t)
