@@ -1760,6 +1760,8 @@ CommandCost CmdBuildRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 			} else {
 				MakeRoadStop(cur_tile, st->owner, st->index, rs_type, rts, ddir);
 			}
+
+			MarkTileDirtyByTile(cur_tile);
 		}
 	}
 
