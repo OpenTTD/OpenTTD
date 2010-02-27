@@ -511,16 +511,16 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CHECK_NEWGRFS)
 
 	/* Check all GRFs */
 	for (; grf_count > 0; grf_count--) {
-		GRFConfig c;
-		MY_CLIENT->Recv_GRFIdentifier(p, &c.ident);
+		GRFIdentifier c;
+		MY_CLIENT->Recv_GRFIdentifier(p, &c);
 
 		/* Check whether we know this GRF */
-		const GRFConfig *f = FindGRFConfig(c.ident.grfid, c.ident.md5sum);
+		const GRFConfig *f = FindGRFConfig(c.grfid, c.md5sum);
 		if (f == NULL) {
 			/* We do not know this GRF, bail out of initialization */
-			char buf[sizeof(c.ident.md5sum) * 2 + 1];
-			md5sumToString(buf, lastof(buf), c.ident.md5sum);
-			DEBUG(grf, 0, "NewGRF %08X not found; checksum %s", BSWAP32(c.ident.grfid), buf);
+			char buf[sizeof(c.md5sum) * 2 + 1];
+			md5sumToString(buf, lastof(buf), c.md5sum);
+			DEBUG(grf, 0, "NewGRF %08X not found; checksum %s", BSWAP32(c.grfid), buf);
 			ret = NETWORK_RECV_STATUS_NEWGRF_MISMATCH;
 		}
 	}
