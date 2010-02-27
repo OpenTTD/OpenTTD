@@ -3308,6 +3308,9 @@ STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... Bild
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Skalierungswarnung
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Zu starke Skalierung des Spielfeldes wird nicht empfohlen. Generierung dennoch fortsetzen?
 
+# Soundset messages
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Nur ein Notbehelfs-Soundset wurde gefunden. Sounds können bei Bedarf als Erweiterung heruntergeladen werden (siehe Hauptmenü).
+
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Screenshot gespeichert als '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Screenshot fehlgeschlagen
@@ -3475,6 +3478,7 @@ STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(Geld fehlt)
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Unmögliche Gleisverbindung
+STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Signal muß zuerst entfernt werden
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Keine geeigneten Gleise
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Gleise müssen erst abgerissen werden
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Einbahnstraße oder blockierter Weg

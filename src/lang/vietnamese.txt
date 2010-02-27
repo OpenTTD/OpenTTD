@@ -383,12 +383,12 @@ STR_GRAPH_MENU_INCOME_GRAPH                                     :Biểu đồ th
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Biểu đồ hàng hoá phân phối
 STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :Biểu đồ lịch sử năng suất
 STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Biểu đồ giá trị công ty
-STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Tỉ giá thanh toán hàng hoá
+STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Bảng giá cước vận chuyển
 ############ range ends here
 
 ############ range for company league menu starts
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Bảng tầm cỡ công ty
-STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Chi tiết năng suất định mức
+STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Chi tiết hệ số hiệu quả
 ############ range ends here
 
 ############ range for industry menu starts
@@ -518,7 +518,7 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Số lư
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Đánh giá uy tín công ty (cao nhất=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Giá trị công ty
 
-STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Tỉ giá thanh toán hàng hóa
+STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Bảng giá cước vận chuyển hàng hoá
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Số ngày vận chuyển
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Tiền trả khi vận chuyển 10 đơn vị (hay 10,000 lít) hàng hóa trên mỗi 20 ô
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Bật/tắt đồ thị hàng hóa
@@ -1223,7 +1223,7 @@ STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Số m�
 STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Số tàu thủy tối đa mỗi người chơi: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Nhân vật máy không được mua tàu hoả: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}Máy không thể mua xe: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}Nhân vật máy không được mua xe ôtô: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Nhân vật máy không được mua máy bay: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Nhân vật máy không được mua tàu thủy: {ORANGE}{STRING}
 
@@ -1768,7 +1768,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Ván chơi tạ
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Game đang dừng ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Game đang dừng ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Game vẫn đang dừng ({STRING}, {STRING}, {STRING})
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Không dừng game ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Bỏ tạm dừng game ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :không đủ người chơi
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :máy con kết nối đến
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :tự chọn
@@ -2015,19 +2015,19 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Xây sâ
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Chọn loại sân bay
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Chọn kích cỡ và kiểu sân bay
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Nhỏ
+STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Cực nhỏ
 STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}Đô thị
-STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Trung tâm
+STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Đô thị trung tâm
 STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Quốc tế
-STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Cỡ trung
+STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Nhỏ
 STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Liên lục địa
 STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Sân bay trực thăng
 STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}Sân bay trực thăng vừa
 STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}Sân bay trực thăng lớn
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}Sân bay nhỏ/trung
-STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Sân bay lớn
-STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Cảng trung chuyển
+STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}Sân bay nhỏ
+STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Sân bay trung bình
+STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Sân bay lớn
 STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Sân bay trực thăng
 
 STR_STATION_BUILD_NOISE                                         :{BLACK}Độ ồn tạo ra: {GOLD}{COMMA}
@@ -2467,7 +2467,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Đút l
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Trợ cấp
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Trợ cấp sẽ có cho dịch vụ sau:
-STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} từ {STRING} đến {STRING}{YELLOW} (ngày {DATE_SHORT})
+STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} từ {STRING} đến {STRING}{YELLOW} (đến {DATE_SHORT})
 STR_SUBSIDIES_NONE                                              :{ORANGE}- không -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Chính quyền đã dành trợ cấp cho dịch vụ của:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} từ {STRING} đến {STRING}{YELLOW} ({COMPANY}{YELLOW}, hết hạn {DATE_SHORT})
@@ -2903,10 +2903,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Hiện c
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Hiện chi tiết tàu thuỷ
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Hiện chi tiết máy bay
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Thao tác với đoàn tàu - bấm để dừng/chạy tàu
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Thao tác với ôtô - bấm để dừng/chạy ôtô
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Thao tác với tàu thuỷ - bấm để dừng/chạy tàu
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Thao tác với máy bay - bấm để dừng/chạy máy bay
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Thao tác với đoàn tàu - bấm để dừng/chạy tàu. Ctrl+Click để chuyển điểm đến
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Thao tác với ôtô - bấm để dừng/chạy ôtô. Ctrl+Click để chuyển điểm đến
+STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Thao tác với tàu thuỷ - bấm để dừng/chạy tàu. Ctrl+Click để chuyển điểm đến
+STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Thao tác với máy bay - bấm để dừng/chạy máy bay. Ctrl+Click để chuyển điểm đến
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Bốc/dỡ hàng
@@ -3118,7 +3118,7 @@ STR_ORDER_NEAREST_HANGAR                                        :xưởng tại 
 STR_ORDER_TRAIN_DEPOT                                           :Xưởng tàu hoả
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Xưởng ôtô
 STR_ORDER_SHIP_DEPOT                                            :Xưởng tàu thuỷ
-STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {TOWN} {STRING}
+STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {TOWN} ({STRING})
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{0:STRING} {2:STRING} {1:STRING}
 STR_ORDER_GO_TO_HANGAR_FORMAT                                   :{STRING} Xưởng {STATION}
 
@@ -3307,6 +3307,9 @@ STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... khô
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Sai tỉ lệ bản đồ
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Co dãn bản đồ gốc quá nhiều là không nên làm. Bạn vẫn cứ thực hiện chứ?
 
+# Soundset messages
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Chỉ có 1 bộ âm thanh phụ. Nếu bạn muốn thêm các âm thanh, cài thêm các bộ âm thanh tải về qua nội dung trực tuyến.
+
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Chụp màn hình lưu thành file là '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Chụp màn hình bị lỗi!
@@ -3373,6 +3376,7 @@ STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... quá
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... không còn khoảng trống nào trên bản đồ
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Độ thị sẽ không xây dựng đường phố. Bạn có thể bật tính năng này ở menu Advanced Settings->Economy->Towns.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Xây dựng cầu đường đang tiến hành
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Không thể xoá đo thị này...{}Có một ga, bến hoặc xưởng thuộc đô thị hoặc là 1 ô đất của đô thị không thể xoá được.
 
 # Industry related errors
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Không thể tạo nhà máy...
@@ -3385,6 +3389,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... ch�
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... chỉ có thể xây dựng ở vùng rừng nhiệt đới
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... chỉ có thể xây ở hoang mạc
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... chỉ xây được ở trong thị trấn
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... chỉ có thể xây ở vùng đất thấp
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... chỉ có thể đặt ở gần mép bản đồ
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... rừng này chỉ đặt ở trên vùng núi cao có tuyết
 
@@ -3472,6 +3477,7 @@ STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(tự thay vư�
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Không thể hoà trộn các đường ray
+STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Phải bỏ đèn báo trước
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Không có đường ray thích hợp
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Phải phá bỏ đường ray trước
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Đường một chiều hoặc bị chặn

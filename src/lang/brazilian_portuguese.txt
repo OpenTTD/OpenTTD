@@ -562,7 +562,7 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Dinheiro
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Empréstimo:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Número de veículos que deram lucro ano passado : Incluindo automóveis, trens, embarcações e aeronaves.
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Número de veículos que deram lucro ano passado. Incluindo automóveis, trens, embarcações e aeronaves
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Número de segmentos de estação. Cada parte de uma estação (ex. estação ferroviária, estação de ônibus, aeroporto) é contado, mesmo se eles unidos como uma estação só.
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}O lucro do veículo com o menor rendimento (de todos os veículos com mais de 2 anos)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Dinheiro conseguido no trimestre com os lucros mais baixos dos últimos 12 trimestres
@@ -2379,7 +2379,7 @@ STR_NEWGRF_ERROR_READ_BOUNDS                                    :Continuar lendo
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Cuidado!
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Você está prestes a efetuar alterações neste jogo atual; isto pode danificar o OpenTTD. {}Tem absoluta certeza que deseja fazer isto?
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Você está prestes a efetuar alterações neste jogo atual. Isto pode travar o OpenTTD. {}Tem absoluta certeza que deseja fazer isto?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Impossível adicionar: registro de GRF já existe
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Arquivo procurado não encontrado (carregado compatível com GRF)
@@ -2904,10 +2904,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Exibir d
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Exibir detalhes da embarcação
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Exibir detalhes da aeronave
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Tarefa atual do trem - clique aqui para iniciar/parar o trem
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Tarefa atual do veículo - clique aqui para iniciar/parar veículo
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Tarefa atual da embarcação - clique aqui para iniciar/parar embarcação
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Tarefa atual da aeronave - clique aqui para iniciar/parar a aeronave
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Tarefa atual do trem - clique aqui para iniciar/parar o trem. Ctrl+Clique para mostrar o destino
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Tarefa atual do veículo - clique aqui para iniciar/parar veículo. Ctrl+Clique para mostrar o destino.
+STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Tarefa atual da embarcação - clique aqui para iniciar/parar embarcação. Ctrl+Clique para mostrar o destino.
+STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Tarefa atual da aeronave - clique aqui para iniciar/parar a aeronave. Ctrl+Clique para mostrar o destino.
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Carregando / descarregando
@@ -3308,6 +3308,9 @@ STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}...não 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Aviso de Escala
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Alterar muito o tamanho do mapa original não é recomendado. Continuar com a geração?
 
+# Soundset messages
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Apenas um conjunto de som vazio foi encontrado. Se quiser sons, instale um conjunto através do sistema de download de conteúdo.
+
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Foto salvado com sucesso como '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Falha ao tirar foto!
@@ -3323,7 +3326,7 @@ STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Não há
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Requer terreno plano
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Terreno inclinado na direção incorreta
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Impossível fazer isto....
-STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}O edifício deve ser demolido primeiro
+STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}O edifício deve ser demolido antes
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Impossível limpar esta área....
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}...local inadequado
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}...já construído
@@ -3381,12 +3384,13 @@ STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Impossí
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Impossível construir {STRING} aqui...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Impossível construir este tipo de indústria aqui...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}...muito perto de outra indústria
-STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}...deve construir uma cidade primeiro
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}...deve construir uma cidade antes
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}...só é permitido uma por cidade
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...só pode ser construído em cidades com pelo menos 1200 habitantes
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...só pode ser construído em zonas florestais
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}...só pode ser construído em áreas desérticas
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}...só se pode ser construído em cidades
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... só pode ser construído em áreas baixas
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}...só pode ser colocado perto das bordas do mapa
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}...a floresta só pode ser plantada acima do nível de neve
 
@@ -3422,13 +3426,13 @@ STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Impossí
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Impossível remover estação de bonde...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Impossível remover estação de bonde...
 
-STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Deve demolir a estação primeiro
-STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Deve demolir a estação de ônibus primeiro
-STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}Deve demolir a área de carga primeiro
-STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Deve demolir a estação de bonde primeiro
-STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Deve demolir a estação de bonde primeiro
-STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Deve demolir a doca primeiro
-STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Deve demolir o aeroporto primeiro
+STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Remova a estação antes
+STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Remova o ponto de ônubis antes
+STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}Remova a área de carga antes
+STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Remova a estação de bonde antes
+STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Remova a estação de bonde antes
+STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Remova a doca antes
+STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Remova o aeroporto antes
 
 # Waypoint related errors
 STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Junta mais de um ponto de controle existente
@@ -3439,7 +3443,7 @@ STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Impossí
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Impossível alterar o nome do ponto de controle...
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Impossível remover ponto de controle de trem aqui...
-STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Deve remover ponto de controle primeiro
+STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Remova o ponto de controle antes
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}...bóia no caminho
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}...bóia está em uso!
 
@@ -3474,8 +3478,9 @@ STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(limite de dinh
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Impossível combinação de linhas
+STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Remova os semáforos antes
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Tipo de linha não apropriado
-STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Deve remover a ferrovia primeiro
+STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Remova a ferrovia antes
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Rua é mão única ou está bloqueado
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Impossível construir sinais aqui...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Impossível construir ferrovia aqui...
@@ -3486,7 +3491,7 @@ STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Impossí
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Impossível converter o tipo de linha aqui...
 
 # Road construction errors
-STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}Deve remover a rodovia primeiro
+STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}Remova a rodovia antes
 STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}... vias de mão única não podem ter junções
 STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Impossível construir rodovia aqui...
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Impossível construir bonde aqui...
@@ -3499,7 +3504,7 @@ STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Impossí
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Impossível fazer rios aqui...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}...deve ser construído na água
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}...Impossível construir na água
-STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Deve demolir o canal primeiro
+STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Remova o canal antes
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Impossível construir aqueduto aqui
 
 # Tree related errors
@@ -3508,7 +3513,7 @@ STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Impossí
 
 # Bridge related errors
 STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}Impossível construir ponte aqui...
-STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Deve demolir a ponte primeiro
+STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Remova a ponte antes
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Impossível iniciar e terminar no mesmo ponto
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Extremidades da ponte não estão no mesmo nível
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Ponte é muito baixa para o terreno
@@ -3518,7 +3523,7 @@ STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}...os ex
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Impossível construir túnel aqui...
 STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}O local não é adequado para a entrada do túnel
-STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Deve demolir o túnel primeiro
+STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Remova o túnel antes
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Há outro túnel no caminho
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}O túnel não tem onde sair
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Incapaz de escavar o terreno para o outro lado do túnel

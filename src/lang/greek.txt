@@ -656,7 +656,7 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Χρήμ
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Δάνειο:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Σύνολο:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Αριθμός οχημάτων που είχαν κέρδος, αυτό περιλαμβάνει οχήματα δρόμου, τρένα, πλοία και αεροπλάνα
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Απαρίθμηση των οχημάτων που ανέφεραν κέρδος πέρσι. Περιλαμβανομένων των επιγείων οχημάτων, τρένων, πλοίων και αεροσκαφών.
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Αριθμός των πρόσφατα επισκευασμένων κομματιών σταθμών. Κάθε κομμάτι ενός σταθμού (π.χ. στάθμος τρένου, στάση λεωφορείου, αεροδρόμιο) προσμετριέται, ακόμα και αν είναι συνδεμένα ως ένας σταθμός
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Το κέρδος του οχήματος με το μικρότερο εισόδημα (μόνο οχήματα παλιότερα των 2 ετών θα λαμβάνονται υπόψην)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Το ποσό των χρημάτων που έγιναν σε ένα τρίμηνο με το μικρότερο κέρδος των τελευταίων 12 τριμήνων
@@ -1579,7 +1579,7 @@ STR_FACE_HAIR_TOOLTIP                                           :{BLACK}Αλλά
 STR_FACE_EYEBROWS                                               :Φρύδια:
 STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}Αλλάξτε φρύδια
 STR_FACE_EYECOLOUR                                              :Χρώμα ματιών:
-STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Αλλάξτε χρώμα ματιών
+STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Αλλαγή χρώμα ματιών
 STR_FACE_GLASSES                                                :Γυαλιά:
 STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}Βάλτε γυαλιά
 STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}Αλλάξτε γυαλιά
@@ -2473,7 +2473,7 @@ STR_NEWGRF_ERROR_READ_BOUNDS                                    :Διάβασμ�
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Προσοχή!
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Πρόκειται να κάνεται αλλαγές σε ενα παιχνίδι σε εξέλιξη, αυτο μπορεί να κρασάρει το OpenTTD.{} Είστε απολύτα σίγουρος/η για αυτό;
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Πρόκειται να κάνετε αλλαγές σε ένα παιχνίδι σε εξέλιξη· αυτό μπορεί να κρασάρει το OpenTTD.{}Είστε απόλυτα σίγουρος/η για την ενέργεια αυτή;
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Δεν μπορεί να γίνει η προσθηκη του αρχείου: διπλότυπο GRF ID
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Δεν βρέθηκε αρχείο ταυτοποιημένο (φορτώθηκε συμβατό GRF)
@@ -2996,18 +2996,18 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Εξαν
 
 STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Εμφάνιση των εντολών του τρένου. Ctrl+κλικ για την εμφάνιση του δρομολογίου
 STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Εμφάνιση των εντολών του οχήματος δρόμου. Ctrl+κλικ για την εμφάνιση του δρομολογίου
-STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Εμφάνιση των εντολών του πλοίου. Ctrl+κλικ για την εμφάνιση του δρομολογίου
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Εμφάνιση των εντολών του αεροπλάνου. Ctrl+κλικ για την εμφάνιση του δρομολογίου
+STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Εμφάνιση των εντολών του πλοίου. Ctrl+κλικ για την εμφάνιση του χρονοδιαγράμματος
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Εμφάνιση των εντολών του αεροσκάφους. Ctrl+κλικ για την εμφάνιση του χρονοδιαγράμματος
 
 STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Εμφάνιση λεπτομεριών τρένου
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Εμφάνιση λεπτομερίων οχήματος δρόμου
-STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Εμφάνιση λεπτομερίων πλοίου
-STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Εμφάνιση λεπτομερίων αεροπλάνου
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Εμφάνιση λεπτομερειών οχήματος δρόμου
+STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Εμφάνιση λεπτομερειών πλοίου
+STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Εμφάνιση λεπτομερειών αεροπλάνου
 
 STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Τρέχουσα ενέργεια τρένου - κάντε κλικ εδώ για ξεκινήσετε/σταματήσετε το τρένο
 STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Τρέχουσα ενέργεια οχήματος - κάντε κλικ εδώ για ξεκινήσετε/σταματήσετε το όχημα
 STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Τρέχουσα ενέργεια πλοίου - κάντε κλικ εδώ για ξεκινήσετε/σταματήσετε το πλοίο
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Τρέχουσα ενέργεια αεροπλάνου - κάντε κλικ εδώ για ξεκινήσετε/σταματήσετε το αεροπλάνο
+STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Τρέχουσα ενέργεια αεροπλάνου - κάντε κλικ για ξεκινήσετε/σταματήσετε το αεροσκάφος. Ctrl + Κλικ για να κυλήσετε στον προορισμό
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Φόρτωση / Ξεφόρτωση
@@ -3319,6 +3319,8 @@ STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Αλλα
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Ξαναφορτώση AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Τερματίστε το AI, ξαναφορτώστε το σενάριο και ξαναεκκινήστε το AI
 
+STR_ERROR_NO_AI                                                 :{WHITE}Στο OpenTTD δεν ενσωματώθηκε υποστήριξη ΤΝ...
+STR_ERROR_NO_AI_SUB                                             :{WHITE}... καμία ΤΝ δεν είναι διαθέσιμη!
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Δεν βρέθηκε κατάλληλο AI για φόρτωση.{}Αυτό το AI είναι ένα ψεύτικο AI και δεν θα κάνει τίποτα.{}Μπορείτε να κατεβάσετε διάφορα AΙ από το σύστημα 'Online περιεχομένου"
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Ένα από τα AI που εκτελούνται κράσαρε. Παρακαλώ ενημερώστε τον συγγραφέα του AI με μια φωτογραφία οθόνης από το παράθυρο αποσφαλμάτωσης AI.
@@ -3406,6 +3408,9 @@ STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... αδ
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Προειδοποιήση κλίμακας
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Αλλάγη μεγέθους του πηγαίου χάρτη δεν συνίσταται. Να προχωρήσω με την δημιουργία;
 
+# Soundset messages
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Μόνο το έκτακτο σετ ήχου βρέθηκε.Αν θέλετε ήχους,εγκαταστήστε ένα πακέτο ήχων μέσω του συστήματος μεταφόρτωσης υλικού.
+
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Φωτογραφία εικόνας αποθηκεύθηκε επιτυχώς ώς '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Φωτογραφία εικόνας απέτυχε!
@@ -3472,6 +3477,7 @@ STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... πά
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... δεν υπάρχει αλλος χώρος στον χάρτη
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Η πόλη δεν θα οικοδομεί δρόμους. Μπορείτε να ενεργοποιήσετε την κατασκευή οδών μέσω των Προχωρημένων Επιλογών->Οικονομία->Πόλεις.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Έργα οδοποιϊας σε εξέλιξη
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Δεν γίνεται να διαγραφεί η πόλη...{}Ένας σταθμός ή ένα αμαξοστάσιο αναφέρεται στην πόλη ή ένα κομμάτι της πόλης δεν μπορεί να αφαιρεθεί
 
 # Industry related errors
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Δεν γίνεται να δημιουργηθούν βιομηχανίες...
@@ -3484,6 +3490,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... μπ
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... μπορεί να χτιστεί μόνο σε δασώδεις περιοχές
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... μπορεί να χτιστεί μόνο σε ερημικές περιοχές
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... μπορεί να χτιστεί μόνο σε πόλεις
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... μπορεί να χτιστεί μόνο σε χαμηλές περιοχές
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... μπορούν να τοποθετηθούν μόνο στις άκρες του χάρτη
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... το δάσος μπορεί να φυτευτεί μόνο πάνω από την γραμμή χιονιού
 
@@ -3571,6 +3578,7 @@ STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(χρηματι
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Αδύνατος συνδυασμός σιδηροδρόμου
+STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Πρέπει να γίνει αφαίρεση του σήματος πρώτα
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Μη συμβατή σιδηροτροχιά
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Πρέπει να αφαιρεθεί ο σιδηρόδρομος πρώτα
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Η δρόμος είναι μονόδρομος ή μπλοκαρισμένος

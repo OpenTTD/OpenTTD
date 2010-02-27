@@ -2912,7 +2912,7 @@ STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}وضع �
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}تحميل / تفريغ
 STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}يرحل
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}تحطم!
-STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED} الاعطال
+STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED} متعطل
 STR_VEHICLE_STATUS_STOPPED                                      :{RED} متوقف
 STR_VEHICLE_STATUS_TRAIN_STOPPING                               :{RED}يتوقف
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}يتوقف , {VELOCITY}
@@ -3373,6 +3373,7 @@ STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... ال
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}.... لا يوجد فراغ في الخريطة
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}لن تبني البلدية طرق جديدة. بامكانك تمكين البلدية من بناء الطرق الجديدة عن طريق الاعدادات المتقدمة --> الاقتصاد --> المدن
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}اعمال الطرق قيد التنفيذ
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}لا يمكن ازالة هذه المدينة {}محطة او ورشة مرتبطة بالمدينة او هناك مربع مملوك للمدينة لا يمكن لزالته
 
 # Industry related errors
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}لا يمكن انشاء مصانع ...
@@ -3385,6 +3386,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...يم�
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... يمكن بنائة في الغابات المطيرة فقط
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}...يمكن بنائة في المناطق الصحراوية فقط
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}...يبنى فقط في المدن
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... يمكن بنائه في المناطق المنخفضة فقط
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... يمكن بنائة على اطراف الخريطة فقط
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... يمكن زراعة الغابة فوق خط الثلج فقط
 

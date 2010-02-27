@@ -479,7 +479,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Prikaži
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Prikaži grafikone
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Prikaži tabele lige preduzeća
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Finansiranje izgradnje nove fabrike, spisak svih fabrika
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Prikaži spisak svih vozova preduzeća. Ctrl+Click uključuje prikaz spiska grupe/vozila
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Prikaži spisak svih vozova preduzeća. Ctrl+Klik uključuje prikaz spiska grupe/vozila
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Prikaži spisak svih drumskih vozila preduzeća. Ctrl+Klik uključuje otvaranje spiska grupe/vozila
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Prikaži spisak svih brodova preduzeća. Ctrl+Klik uključuje otvaranje spiska grupe/vozila
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Prikaži spisak svih letelica preduzeća. Ctrl+Klik uključuje otvaranje spiska grupe/vozila
@@ -739,7 +739,7 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Novac:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Zajam:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Ukupno:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Broj vozila koja su imala dobit prošle godine; ovo uključuje drumska, železnička vozila, brodove i letilice
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Broj vozila koja su imala dobit prošle godine. Ovo uključuje drumska, železnička vozila, brodove i letilice
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Broj nedavno servisiranih delova stanica. Posebno se broji svaki deo (npr. železničko, autobusko stajalište ili aerodrom) stanice.
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Dobit vozila sa najmanjim prihodom (samo vozila starijih od 2 godine)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Zarađen novac u tromesečju sa najmanjom dobiti u proteklih 12 tromesečja
@@ -1135,7 +1135,7 @@ STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Dodatni 
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Osnovni skup muzike
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Odaberite željeni skup osnovne muzike
-STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} oštećen{P "" a ih} fajl{P "" a ova}
+STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} oštećen{P a e ih} datotek{P a e a}
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Dodatni podaci o osnovnom skupu muzike
 
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Neuspešno prebacivanje u ceo ekran
@@ -1982,7 +1982,7 @@ STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Označi 
 STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK}Obeležava sve dodatke za preuzimanje
 STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Obeleži ažurirana
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Obeležava sve preuzete dodatke koje imaju novija izdanja za preuzimanje
-STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Odznači sve
+STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Poništi izbor svega
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Otkazuje preuzimanje svih dodataka
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filter po oznaci/nazivu:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Preuzmi
@@ -2415,10 +2415,10 @@ STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Učitaj 
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Učitavanje Elevacione karte
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Pritisnite ovde kako bi ste otišli u uobičajni direktorijum za čuvanje pozicije
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} slobodno
-STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Spisak diskova, direktorijuma, i fajlova sa sačuvanim pozicijama
+STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Spisak diskova, direktorijuma i datoteka sa sačuvanim pozicijama
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Ime sačuvane pozicije
 STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}Obriši
-STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}Obriši izabrani fajl sa sačuvanom pozicijom
+STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}Obriši trenutno označenu sačuvanu poziciju
 STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Sačuvaj
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Sačuvaj tekuću igru, koristeći odabrano ime
 
@@ -2502,22 +2502,22 @@ STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Unesite 
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Izbriši postavku
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Izbrišite trenutno označenu postavku
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Dodaj
-STR_NEWGRF_SETTINGS_ADD_TOOLTIP                                 :{BLACK}Dodajte NewGRF fajl u spisak
+STR_NEWGRF_SETTINGS_ADD_TOOLTIP                                 :{BLACK}Dodaje NewGRF datoteku u spisak
 STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Ukloni
-STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Uklonite označeni NewGRF fajl sa spiska
+STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Uklanja označenu NewGRF datoteku sa spiska
 STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Naviše
-STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Pomerite označeni NewGRF fajl više na spisku
+STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Pomera označenu NewGRF datoteku više na spisku
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Naniže
-STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Pomerite označeni NewGRF fajl niže na spisku
-STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Spisak instaliranih NewGRF fajlova. Kliknite na fajl kako bi promenili njegova svojstva
+STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Pomera označenu NewGRF datoteku niže na spisku
+STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Spisak instaliranih NewGRF datoteka. Kliknite na datoteku kako bi promenili njena svojstva
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Postavi parametre
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Promeni paletu
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Menja paletu označenog NewGRF-a.{}Promenite paletu ako grafici iz NewGRF-a su ružičasti tokom igre
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Primeni promene
 
-STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Traži nedostajući fajl na Mreži
-STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Pretražuje za nedostajuću dodataku na Internetu
+STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Traži nedostajući dodatak
+STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Proverite da li se nedostajući dodaci mogu naći na mreži
 
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Datoteka: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID: {SILVER}{STRING}
@@ -2551,7 +2551,7 @@ STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Neispravan para
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} mora biti učitan pre {STRING}.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} mora biti učitan posle {STRING}.
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} zahteva {STRING} ili višu verziju OpenTTD-a.
-STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF fajl nije prilagođen za prevod
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF datoteka nije prilagođena za prevod
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Previše učitanih NewGRF-ova.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Učitavanje {STRING} kao statične NewGRF sa {STRING} može da izazove desinhronizacije.
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Nepredviđen sprajt.
@@ -2563,7 +2563,7 @@ STR_NEWGRF_ERROR_READ_BOUNDS                                    :Čitanje posle 
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Oprez!
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Upravo ćete načiniti izmene na tekuću partiju; to može srušiti igru.{}Da li ste apsolutno sigurni da ovo želite?
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Upravo ćete načiniti izmene na tekuću partiju. To može srušiti igru.{}Da li ste apsolutno sigurni da ovo želite?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Nemoguće dodati: duplicirani GRF ID
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Odabrana datoteka nije nađena (kompatibilan GRF učitan)
@@ -3090,18 +3090,18 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Naterajt
 
 STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Prikazuje naredbe vozu. Ctrl+Klik za prikaz reda vožnje
 STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Prikazuje naredbe vozilu. Ctrl+Klik za prikaz reda vožnje
-STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Prikazuje naredbe brodu. Ctrl+Klik za prikaz brodskog rasporeda
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Prikazuje naredbe letilici. Ctrl+Klik za prikaz letelicinog rasporeda
+STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Prikazuje naredbe brodu. Ctrl+Klik za prikaz reda vožnje
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Prikazuje naredbe letilici. Ctrl+Klik za prikaz reda vožnje
 
 STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Prikazuje podatke o vozu
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Prikazuje detalje drumskog vozila
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Prikazuje podatke o brodu
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Prikazuje podatke o letilici
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Trenutno stanje voza - kliknite ovde za zaustavljanje/pokretanje voza
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Trenutno stanje vozila - kliknite ovde za zaustavljanje/pokretanje vozila
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Trenutno stanje broda - kliknite ovde za zaustavljanje/pokretanje broda
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Trenutno stanje letilice - kliknite ovde za zaustavljanje/pokretanje letilice
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Trenutno stanje voza - kliknite ovde za zaustavljanje/pokretanje voza. Ctrl+Klik pomera pogled na odredište
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Trenutno stanje vozila - kliknite ovde za zaustavljanje/pokretanje vozila. Ctrl+Klik pomera pogled na odredište
+STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Trenutno stanje broda - kliknite ovde za zaustavljanje/pokretanje broda. Ctrl+Klik pomera pogled na odredište
+STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Trenutno stanje letilice - kliknite ovde za zaustavljanje/pokretanje letilice. Ctrl+Klik pomera pogled na odredište
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Utovarivanje / Iztovarivanje
@@ -3477,7 +3477,7 @@ STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Čuvanje
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Neuspešno automatsko čuvanje
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Čitanje sa diska nije uspelo
 STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Čuvanje pozicije nije uspelo{}{STRING}
-STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Brisanje fajla nije uspelo
+STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Brisanje datoteke nije uspelo
 STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Učitavanje pozicije nije uspelo{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Unutrašnja greška: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Neispravna sačuvana partija - {STRING}
@@ -3501,6 +3501,9 @@ STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}...ne mo
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Upozorenje o veličini
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Preterana promena veličine karte nije preporučljiva. Da li da se nastavi generisanje?
+
+# Soundset messages
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Pronađen je samo rezervni skup zvukova. Ukoliko želite zvukove, preuzmite skup zvukova preko sistema za dodatke.
 
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Slika je snimljena pod imenom '{STRING}'
@@ -3669,6 +3672,7 @@ STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(novčano ogran
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Nemoguća kombinacija šina
+STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Neophodno je prvo ukloniti signalizaciju
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Nedostaje odgovarajuća železnička pruga
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Potrebno je prvo ukloniti železničku prugu
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Put je jednosmeran ili je blokiran
@@ -3694,7 +3698,7 @@ STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Ovde nij
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Ovde je nemoguće postavljanje reke...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}...mora biti izgrađen na vodi
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}...Ne može se graditi na vodi
-STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Prvo se mora ukloniti kanal
+STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Potrebno je prvo ukloniti kanal
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Akvadukt se ovde ne može izgraditi...
 
 # Tree related errors
@@ -3713,7 +3717,7 @@ STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}...oba k
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Nije moguće ovde izgraditi tunel...
 STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}Lokacija neadekvatna za ulaz tunela
-STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Potrebno je prvo uništiti tunel
+STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Potrebno je prvo ukloniti tunel
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Drugi tunel je na putu
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Tunel bi završio van okvira terena
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Nije moguće iskopati drugi kraj tunela

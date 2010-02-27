@@ -68,14 +68,14 @@ STR_CARGO_SINGULAR_MAIL                                         :Pos
 STR_CARGO_SINGULAR_OIL                                          :Olie
 STR_CARGO_SINGULAR_LIVESTOCK                                    :Lewende Hawe
 STR_CARGO_SINGULAR_GOODS                                        :Goedere
-STR_CARGO_SINGULAR_GRAIN                                        :Graan Korrels
+STR_CARGO_SINGULAR_GRAIN                                        :Graan
 STR_CARGO_SINGULAR_WOOD                                         :Hout
 STR_CARGO_SINGULAR_IRON_ORE                                     :Yster Erts
 STR_CARGO_SINGULAR_STEEL                                        :Staal
 STR_CARGO_SINGULAR_VALUABLES                                    :Kosbaarhede
 STR_CARGO_SINGULAR_COPPER_ORE                                   :Koper Erts
-STR_CARGO_SINGULAR_MAIZE                                        :Mielies
-STR_CARGO_SINGULAR_FRUIT                                        :Vrugte
+STR_CARGO_SINGULAR_MAIZE                                        :Mielie
+STR_CARGO_SINGULAR_FRUIT                                        :Vrug
 STR_CARGO_SINGULAR_DIAMOND                                      :Diamant
 STR_CARGO_SINGULAR_FOOD                                         :Voedsel
 STR_CARGO_SINGULAR_PAPER                                        :Papier
@@ -96,42 +96,42 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Koeldrank
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
-STR_QUANTITY_PASSENGERS                                         :{COMMA} Passasier{P "" s}
-STR_QUANTITY_COAL                                               :{WEIGHT} van kool
-STR_QUANTITY_MAIL                                               :{COMMA} sak{P "" e} van pos
-STR_QUANTITY_OIL                                                :{VOLUME} van olie
+STR_QUANTITY_PASSENGERS                                         :{COMMA} passasier{P "" s}
+STR_QUANTITY_COAL                                               :{WEIGHT} steenkool
+STR_QUANTITY_MAIL                                               :{COMMA} sak{P "" ke} pos
+STR_QUANTITY_OIL                                                :{VOLUME} olie
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} item{P "" s} van lewende hawe
-STR_QUANTITY_GOODS                                              :{COMMA} hok{P "" ke} van goedere
-STR_QUANTITY_GRAIN                                              :{WEIGHT} van graan
-STR_QUANTITY_WOOD                                               :{WEIGHT} van hout
-STR_QUANTITY_IRON_ORE                                           :{WEIGHT} van yster erts
-STR_QUANTITY_STEEL                                              :{WEIGHT} van staal
-STR_QUANTITY_VALUABLES                                          :{COMMA} sak{P "" ke} van kosbaarhede
-STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} van koper erts
-STR_QUANTITY_MAIZE                                              :{WEIGHT} van graan
-STR_QUANTITY_FRUIT                                              :{WEIGHT} van vrugte
-STR_QUANTITY_DIAMONDS                                           :{COMMA} sak{P "" ke} van diamante
-STR_QUANTITY_FOOD                                               :{WEIGHT} van kos
-STR_QUANTITY_PAPER                                              :{WEIGHT} van papier
-STR_QUANTITY_GOLD                                               :{COMMA} sak{P "" ke} van goud
-STR_QUANTITY_WATER                                              :{VOLUME} van water
-STR_QUANTITY_WHEAT                                              :{WEIGHT} van koring
-STR_QUANTITY_RUBBER                                             :{VOLUME} van gomlastiek
-STR_QUANTITY_SUGAR                                              :{WEIGHT} van suiker
+STR_QUANTITY_GOODS                                              :{COMMA} hok{P "" ke} goedere
+STR_QUANTITY_GRAIN                                              :{WEIGHT} graan
+STR_QUANTITY_WOOD                                               :{WEIGHT} hout
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT} yster erts
+STR_QUANTITY_STEEL                                              :{WEIGHT} staal
+STR_QUANTITY_VALUABLES                                          :{COMMA} sak{P "" ke} kosbaarhede
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} koper erts
+STR_QUANTITY_MAIZE                                              :{WEIGHT} graan
+STR_QUANTITY_FRUIT                                              :{WEIGHT} vrugte
+STR_QUANTITY_DIAMONDS                                           :{COMMA} sak{P "" ke} diamante
+STR_QUANTITY_FOOD                                               :{WEIGHT} kos
+STR_QUANTITY_PAPER                                              :{WEIGHT} papier
+STR_QUANTITY_GOLD                                               :{COMMA} sak{P "" ke} goud
+STR_QUANTITY_WATER                                              :{VOLUME} water
+STR_QUANTITY_WHEAT                                              :{WEIGHT} koring
+STR_QUANTITY_RUBBER                                             :{VOLUME} gomlastiek
+STR_QUANTITY_SUGAR                                              :{WEIGHT} suiker
 STR_QUANTITY_TOYS                                               :{COMMA} speel{P ding goed}
-STR_QUANTITY_SWEETS                                             :{COMMA} sak{P "" ke} van lekkers
-STR_QUANTITY_COLA                                               :{VOLUME} van cola
-STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} van spookasem
+STR_QUANTITY_SWEETS                                             :{COMMA} sak{P "" ke} lekkers
+STR_QUANTITY_COLA                                               :{VOLUME} cola
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} spookasem
 STR_QUANTITY_BUBBLES                                            :{COMMA} borrel{P "" s}
-STR_QUANTITY_TOFFEE                                             :{WEIGHT} van tameletjie
+STR_QUANTITY_TOFFEE                                             :{WEIGHT} tameletjie {P "" s}
 STR_QUANTITY_BATTERIES                                          :{COMMA} batter{P y ye}
-STR_QUANTITY_PLASTIC                                            :{VOLUME} van plastiek
+STR_QUANTITY_PLASTIC                                            :{VOLUME} plastiek
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} koeldran{P k ke}
 STR_QUANTITY_N_A                                                :N/A
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
-STR_ABBREV_PASSENGERS                                           :{TINYFONT}PS
+STR_ABBREV_PASSENGERS                                           :{TINYFONT}PA
 STR_ABBREV_COAL                                                 :{TINYFONT}SK
 STR_ABBREV_MAIL                                                 :{TINYFONT}PS
 STR_ABBREV_OIL                                                  :{TINYFONT}OL
@@ -168,10 +168,10 @@ STR_ABBREV_ALL                                                  :{TINYFONT}ALMAL
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :passasiers
 STR_BAGS                                                        :sakke
-STR_TONS                                                        :tonne
-STR_LITERS                                                      :litres
+STR_TONS                                                        :ton
+STR_LITERS                                                      :liters
 STR_ITEMS                                                       :items
-STR_CRATES                                                      :hokke
+STR_CRATES                                                      :kratte
 STR_RES_OTHER                                                   :ander
 STR_NOTHING                                                     :
 
@@ -181,12 +181,12 @@ STR_COLOUR_PALE_GREEN                                           :Vaal Groen
 STR_COLOUR_PINK                                                 :Pienk
 STR_COLOUR_YELLOW                                               :Geel
 STR_COLOUR_RED                                                  :Rooi
-STR_COLOUR_LIGHT_BLUE                                           :Ligte Blou
+STR_COLOUR_LIGHT_BLUE                                           :Ligblou
 STR_COLOUR_GREEN                                                :Groen
 STR_COLOUR_DARK_GREEN                                           :Donker Groen
 STR_COLOUR_BLUE                                                 :Blou
 STR_COLOUR_CREAM                                                :Room
-STR_COLOUR_MAUVE                                                :Ligte pers
+STR_COLOUR_MAUVE                                                :Ligpers
 STR_COLOUR_PURPLE                                               :Pers
 STR_COLOUR_ORANGE                                               :Oranje
 STR_COLOUR_BROWN                                                :Bruin
@@ -205,24 +205,24 @@ STR_UNITS_POWER_SI                                              :{COMMA}kW
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tonne{P "" s}
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} ton
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
-STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litre{P "" s}
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} liter{P "" s}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Sleutel 'n filter string
-STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Sleutel in 'n sleutelwoord om die lys by te filter
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Sleutel 'n sleutelwoord in om die lys te filter
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filter string:
 
-STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Selekteer sorteer orde (afklimende/klimende)
-STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Selekteer sorteer maatstaf
+STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Selekteer sorteer orde (dalende/stygende)
+STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Selekteer sorterings maatstaf
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Selekteer filtrering kriteria
 STR_BUTTON_SORT_BY                                              :{BLACK}Sorteer by
 STR_BUTTON_LOCATION                                             :{BLACK}Lokasie
@@ -235,7 +235,7 @@ STR_TOOLTIP_STICKY                                              :{BLACK}Merk die
 STR_TOOLTIP_RESIZE                                              :{BLACK}Kliek en sleep om venster te vergroot
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Tokkel groot/klein venster groote
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Rolstaaf - rol die lys op/af
-STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Rolstaaf - rol die lys op/af
+STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Rolstaaf - rol die lys links/regs
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Vernietig geboue ens. op 'n vierkant van land
 
 # Query window
@@ -269,7 +269,7 @@ STR_SORT_BY_PROFIT_LAST_YEAR                                    :Profyt verlede 
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Profyt die jaar
 STR_SORT_BY_AGE                                                 :Ouderdom
 STR_SORT_BY_RELIABILITY                                         :Betroubaarheid
-STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Totaale kapasitiet per vrag tipe
+STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Totaale kapasiteit per vrag tipe
 STR_SORT_BY_MAX_SPEED                                           :Maksimum spoed
 STR_SORT_BY_MODEL                                               :Model
 STR_SORT_BY_VALUE                                               :Waarde
@@ -1066,6 +1066,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Permissief
 STR_CITY_APPROVAL_TOLERANT                                      :Toelaatbaar
 STR_CITY_APPROVAL_HOSTILE                                       :Vyandelik
 
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Geen geskikte KI beskikbaar...{}Jy kan verskeie KI's aflaai deur middel van die 'Aanlyn Inhoud' stelsel
 STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Hierdie aksie verander die moeite vlak to gebruiklike
 
 # Advanced settings window
@@ -1115,6 +1116,10 @@ STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Laat di
 STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Ongelyk stasies: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Gewig vermenivoud vir vrag om swaar treine te simuleer: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Vliegtuig spoed faktor: {ORANGE}1 / {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Aantal vliegtuig botsings: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :geen
+STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :verminderd
+STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normaal
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Laat deur-ry padhalte op dorp besite paaie toe: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Laat deur-ry padhalte toe op paaie wat deur ander deelnemers besit word: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Laat die gebou van aangrensende stasies toe: {ORANGE}{STRING}
@@ -1161,6 +1166,10 @@ STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Een of m
 STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Maks stasie gesprei: {ORANGE}{STRING} {RED}Waarskuwing: hoë stel vertraag speletjie
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Versien helikopters by helihawes outomaties: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Verbind landereye werktuigbaan na spoor/pad/water/lughawe werktuigbaan: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Land kleur gebruik op die klein landkaart: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Groen
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Donkergroen
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violet
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}Omkeer rol rigting: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}Maak kykpoort beweegings glad: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}Toon 'n meting wanneer jy verskeie bou-gereedskap gebruik: {ORANGE}{STRING}
@@ -1204,7 +1213,7 @@ STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Verstek
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Eers beskikbaar
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Laas beskikbaar
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Meeste gebruik
-STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Wys geresrveerde spore: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Wys gereserveerde spore: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Hou bou gereedskap aktief na gebruik: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Groep uitgawes in maatskappy finansies venster: {ORANGE}{STRING}
 
@@ -2360,15 +2369,17 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} moet
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} vereis OpenTTD uitgawe {STRING} of beter.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :die GRF lêer dit was ontwerp om te vertaal
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Te veel NewGRFs gelaai
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Die laai van {STRING} as statiese NewGRF met {STRING} kan desinkroniesasies veroorsaak.
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Onverwagte "sprite".
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Onbekende Aksie 0 waarde.
 STR_NEWGRF_ERROR_INVALID_ID                                     :Pooging om onvoldoende ID te gebruik.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} het 'n korrupte "sprite". Alle korrupte "sprites" sal gewys word as 'n rooi vraag teken (?).
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Bevat veelvuldige Aksie 8 inskrywings.
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lees verby einde van pseudo-sprite.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Versigtig!
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Jy is opad om veranderings te maak op tans loopende spel. Dit kan OpenTTD lat staak. {}Is jy heeltemal seker ?
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Jy is oppad om veranderings te maak op tans loopende spel. Dit kan OpenTTD lat staak. {}Is jy heeltemal seker ?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Kan nie lêer voeg: duplikaat GRF ID
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Gelyke lêer nie gevind nie (versoenbaar GRF gelaai)
@@ -2376,12 +2387,16 @@ STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Gelyke 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Versoenbaar GRF(s) gelaai vir vermis lêers
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Vermis GRF lêers is gestrem
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Vermis GRF leêr(s)
+STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Unpausing kan veroorsaak dat OpenTTD bots. Moet nie daaropeenvolgende botsings verslae rapporteer nie. {}Will jy rêrig unpause?
 
 # NewGRF 'it's broken' warnings
+STR_NEWGRF_BROKEN                                               :{WHITE}Die gedrag van NewGRF '{0:STRING}' kan moontlik desinkroniesasies en/of program botsings veroorsaak.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Dit verander voertuig lengte vier '{1:ENGINE}' wanneer die nie in diensstasie is nie.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Trein '{VEHICLE}' wat aan '{COMPANY}' behoort het 'n onaanvaarbare lengte. Dit is heel waarskeinlik veroorsaak deur probleme met NewGRFs. Speeletjie mag uit  sinkrone gaan of  hang.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' verskaf foutiewe inligting.
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Vrag/herbou informasie vir '{1:ENGINE}' verskil van aankope lys na konstruksie. Dit mag veroorsaak dat die outo hernuwing/vervanging van die herbouing korrek faal.
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' het 'n eindelose herhaling in die produksie callback veroorsaak.
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Teken Lys - {COMMA} Teken{P "" s}
@@ -2442,7 +2457,7 @@ STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Koop eksklusief
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Omkoop die plaaslike raad
 
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Begin 'n klein plaaslik advertensie veldtog, om meer passasiers en cargo tot jou vervoer dienste te lok.{}Prys: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Begin 'n middlemaatige plaaslik advertensie veldtog, om meer passasiers en cargo tot jou vervoer dienste te lok.{}Prys: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Begin 'n middlematige plaaslik advertensie veldtog, om meer passasiers en cargo tot jou vervoer dienste te lok.{}Prys: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Begin 'n groot plaaslik advertensie veldtog, om meer passasiers en cargo tot jou vervoer dienste te lok.{}Prys: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW} Fonds die herkonstruksie van die stedelik pad netwerk. Veroorsaak aansienlike skeuring to pad verkeer vir op tot 6 maande.{}  Prys: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW} Bou 'n standbeeld in eer van u maatskappy.{} Prys: {CURRENCY}
@@ -2510,6 +2525,7 @@ STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Hernoem stasie/
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Senter skerm op wegwyser. Ctrl+Kliek maak 'n nuwe venster oop op die wegwyser se lokasie
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Verander wegpunt name
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Sentreer hoof uitsig op bouy lokasie. Ctrl+Kliek maak 'n nuwe uitsig oop op die lokasie van die buoy
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Verander baken naam
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Redigeer wegwyser naam
@@ -2949,6 +2965,7 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Gewig: {
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Gewig: {LTBLUE}{WEIGHT_S} {BLACK}Krag: {LTBLUE}{POWER}{BLACK} Maks. spoed: {LTBLUE}{VELOCITY} {BLACK}Maks. T.E.: {LTBLUE}{FORCE}
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Wins hierdie jaar: {LTBLUE}{CURRENCY} (vorige jaar: {CURRENCY})
+STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Betroubaarheid: {LTBLUE}{COMMA}%  {BLACK}Brekings sedert laaste diens: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Gebou: {LTBLUE}{NUM}{BLACK} Waarde: {LTBLUE}{CURRENCY}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Kapasiteit: {LTBLUE}Geen
@@ -3197,10 +3214,15 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Selektee
 STR_AI_DEBUG                                                    :{WHITE}AI ontfout
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Naam van die AI
+STR_AI_DEBUG_SETTINGS                                           :{BLACK}KI stellings
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Verander die stellings van die KI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Herlaai AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Maak die AI dood, herlaai die skrif en herlaai die AI
 
+STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD is gebou sonder KI ondersteuning...
+STR_ERROR_NO_AI_SUB                                             :{WHITE}... geen KI's is beskikbaar!
 
+STR_ERROR_AI_NO_AI_FOUND                                        :Geen geskikte KI gevind om te laai.{}Die KI is 'n dom KI en doen niks.{}Jy kan verskeie KI's aflaai deur middel van die 'Aanlyn Inhoud' stelsel.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Daar was n fout met een van die AIs. Rapporteer assblief aan die skrywer met n skermkiekie van die AI Ontfout Venster.
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Die AI ontfout venster is net beskikbaar vir die dienaar
 
@@ -3286,6 +3308,9 @@ STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}...kan n
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Skaal waaskuwing
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Om die kaart te veel te verstel is nie aanbeveel. Gaan voort met die generasie?
 
+# Soundset messages
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Slegs 'n terugval klankstel was gevind. As jy klank wil hê, installeer 'n klankstel deur middel van die inhoud aflaai stelsel.
+
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Skermkiekie suksesvol gestoor as '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Skermskoot het misluk!
@@ -3350,7 +3375,9 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}...te na
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}...te naby aan 'n ander dorp
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}...te veel dorpe
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...daar is nie meer spasie oor op die kaart nie
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Die dorp sal nie paaie bou nie. You can enable building of roads via Gevorderde Stellings->Ekonomie->Dorpe.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Pad werke in verloop
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kan nie die dorp verwyder nie... {}'n Stasie of depot verwys na die dorp of die blok wat deur die dorp besit word kan nie verwyder word nie.
 
 # Industry related errors
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Kan nie nywerhede genereer nie...
@@ -3363,6 +3390,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...kan s
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...kan slegs in reënwoud gebiede gebou word
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}...kan slegs in woestyn gebiede gebou word
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}...kan slegs in dorpe gebou word
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... kan slegs gebou word in lae areas
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}...kan net naby aan kant van fkaart geplaas word
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}...woud kan net bo sneeu-lyn beplant word
 
@@ -3415,6 +3443,7 @@ STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Kan nie 
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Kan nie wegpunt naam verander nie...
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Kan nie trein wegpunt van hier werwyder nie...
+STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Moet eers die spoor wegwyser verwyder
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}...baken in die pad
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}...baken is in gebruik!
 
@@ -3449,6 +3478,7 @@ STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(geld perk)
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Onmoontlike spoor kombinasie
+STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Moet eers die sein verwyder
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Geen geskikte spoor
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Moet eers spoor verwyder
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Pad is een rigting of geblok
@@ -3569,6 +3599,7 @@ STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Kan nie 
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Kan nie rigting van trein omkeer nie...
 STR_ERROR_TRAIN_START_NO_CATENARY                               :Die spoor kort n kettinglyn, dus kan die trien nie aanskakel nie
 
+STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Kan nie pad voertuig laat omdraai nie...
 
 STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}Vliegtuig is opvlug
 

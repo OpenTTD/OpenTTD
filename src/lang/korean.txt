@@ -3308,6 +3308,9 @@ STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}...이�
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}맵 크기 경고
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}원본 맵의 크기를 많이 조정하는 것은 좋지 않습니다. 만들기를 계속하시겠습니까?
 
+# Soundset messages
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}fallback 사운드만 있습니다. 다른 사운드를 원하신다면, 컨텐츠 다운로드 시스템에서 사운드 세트를 받아서 설치하세요.
+
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}스크린 샷이 다음과 같이 저장되었습니다 : '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}스크린 샷을 찍지 못했습니다!
@@ -3374,6 +3377,7 @@ STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}...도�
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...맵에 더이상 공간이 없습니다!
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}도시가 도로를 짓지 않을 것입니다. [고급설정->경제->도시]에서 도로를 지을 수 있도록 설정을 변경하실 수 있습니다.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}도로 작업이 진행중입니다
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}이 도시를 삭제할 수 없습니다...{}도시 또는 도시가 소유하고 있는 타일에 있는 역이나 차고때문에 제거할 수 없습니다.
 
 # Industry related errors
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}산업시설을 만들 수 없습니다...
@@ -3386,6 +3390,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...인�
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...열대우림 지역에만 건설할 수 있습니다!
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}...사막 지역에만 건설할 수 있습니다!
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}...도시에만 건설할 수 있습니다!
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... 낮은 지역에만 건설할 수 있습니다!
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}...맵 가장자리에만 위치할 수 있습니다.
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}...숲은 만년설 높이 이상의 고도에만 심을 수 있습니다.
 
@@ -3473,6 +3478,7 @@ STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(자금 제한)
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}불가능한 트랙 조합입니다
+STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}신호등을 먼저 제거하십시오
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}알맞지 않은 철로입니다.
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}철로를 먼저 제거하십시오
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}도로가 일방통행이거나 막혔습니다

@@ -291,7 +291,7 @@ STR_BUTTON_SORT_BY                                              :{BLACK}Usporiad
 STR_BUTTON_LOCATION                                             :{BLACK}Poloha
 STR_BUTTON_RENAME                                               :{BLACK}Premenovat
 
-STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Zavriet okno
+STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Zavrieť okno
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Nadpis okna - potiahni pre posun okna
 STR_TOOLTIP_SHADE                                               :{BLACK}Zabaliť okno - zobraziť len názov okna
 STR_TOOLTIP_STICKY                                              :{BLACK}Oznacit toto okno, aby sa nedalo zatvorit klavesou 'Zavri vsetky okna'
@@ -364,7 +364,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Finančn
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Informácie o spoločnosti
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Grafy
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Hodnotenie spolocností
-STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Financovat vystavbu noveho priemyslu
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Financovať výstavbu nového priemyslu
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Zoznam vlakov
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Zoznam automobilov
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Zoznam lodí
@@ -409,15 +409,15 @@ STR_SETTINGS_MENU_GAME_OPTIONS                                  :Nastavenia hry
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Nastavenia obtiažnosti
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Rozšírené nastavenia
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Nastavenie NewGRF
-STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Nastavenia priehladnosti
+STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Nastavenia priehľadnosti
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Zobraziť názvy miest
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Zobraziť názvy staníc
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Zobraziť navigačné body
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Zobrazit popisy
-STR_SETTINGS_MENU_FULL_ANIMATION                                :Plna animacia
-STR_SETTINGS_MENU_FULL_DETAIL                                   :Plne detaily
-STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Priesvitne budovy
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Transparentne nazvy stanic
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Zobraziť popisy
+STR_SETTINGS_MENU_FULL_ANIMATION                                :Plná animácia
+STR_SETTINGS_MENU_FULL_DETAIL                                   :Plné detaily
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Priesvitné budovy
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Priesvitné názvy staníc
 ############ range ends here
 
 ############ range for file menu starts
@@ -768,7 +768,7 @@ STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Prepnú�
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Zobrazit poslednu spravu alebo novinku
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  ZASTAVENE  *  *
+STR_STATUSBAR_PAUSED                                            :{YELLOW}*  *  PAUZA  *  *
 STR_STATUSBAR_AUTOSAVE                                          :{RED}AUTOULOŽENIE
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  HRA SA UKLADÁ  *  *
 
@@ -794,7 +794,7 @@ STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}Inform�
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}Vznik priemyslu
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}Zánik priemyslu
 STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}Zmeny v ekonomike
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Zmeny produkcie priemyslu obsluhovaného spolocnostou
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Zmeny produkcie priemyslu obsluhovaného spoločnosťou
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Zmeny produkcie priemyslu obsluhovaného konkurenciou
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Ostatné zmeny produkcie priemyslu
 STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Rady / informácie o vozidlách spolocnosti
@@ -819,7 +819,7 @@ STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIGFONT}{BLACK}Zeppelin zniceny pri nehode na {STATION}!
 STR_NEWS_DISASTER_SMALL_UFO                                     :{BIGFONT}{BLACK}Automobil bol zniceny pri kolizii s 'UFO'
-STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIGFONT}{BLACK}Ropna rafineria explodovala nedaleko mesta {TOWN}!
+STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIGFONT}{BLACK}Ropná rafinéria explodovala neďaleko mesta {TOWN}!
 STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIGFONT}{BLACK}Za nejasnych okolnost bola znicena tovaren nedaleko mesta {TOWN}!
 STR_NEWS_DISASTER_BIG_UFO                                       :{BIGFONT}{BLACK}'UFO' pristalo nedaleko mesta {TOWN}!
 STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIGFONT}{BLACK}Zaval v uholnej bani nedaleko mesta {TOWN}!
@@ -838,7 +838,7 @@ STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDE
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}{STRING} sponzoroval výstavbu nového mesta {TOWN}!
 
-STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}{STRING} sa zacina stavat nedaleko mesta {TOWN}!
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}{STRING} sa začína stavať neďaleko mesta {TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}{STRING} sa vysadza nedaleko mesta {TOWN}!
 
 STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}{STRING} oznamuje skore uzavretie!
@@ -1011,7 +1011,7 @@ STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Zvoľte 
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} chýbajúci/poškodený súbor{P "" "y" "ov"}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Dodatočné informácie o základnom grafickom sete
 
-STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Základný set zvukov
+STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Základná sada zvukov
 STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Vyberte základné zvuky
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Dodatočné informácie o základnej sade zvukov
 
@@ -1142,11 +1142,11 @@ STR_CONFIG_SETTING_OFF                                          :nie
 STR_CONFIG_SETTING_ON                                           :áno
 STR_CONFIG_SETTING_DISABLED                                     :zakazane
 STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Zobrazovat rýchlost v stavovej lište vozidla: {ORANGE}{STRING}
-STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Umožnit výstavbu na svahoch a na pobreží: {ORANGE}{STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Umožniť výstavbu na svahoch a na pobreží: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Povolit úpravy terénu pod budovami, kolajami, ... : {ORANGE}{STRING}
-STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Povolit realistickejšiu velkost oblasti pokrytia: {ORANGE}{STRING}
-STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Umožnit odstránenie viacerých mestských ciest, mostov, ... : {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Umožnit stavbu dlhých vlakov: {ORANGE}{STRING}
+STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Povoliť realistickejšiu veľkosť oblasti pokrytia: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Umožniť odstránenie viacerých mestských ciest, mostov, ... : {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Umožniť stavbu dlhých vlakov: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Model akcelerácie vlaku: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Originál
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistický
@@ -1158,26 +1158,26 @@ STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Použi�
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Postupné nakladanie vozidiel: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflácia: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Vykladat náklad len v stanici kde je dopyt: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Umožnit stavbu dlhých mostov: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Umožniť stavbu dlhých mostov: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}Umožnit zaradenie depa do zoznamu príkazov: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Spôsob výstavby priemyslu produkujúceho suroviny: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :žiadny
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :normálny
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :vyhladávací
-STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Umoznit viac priemyslu rovnakeho typu pri jednom meste: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Umožniť viac priemyslu rovnakého typu pri jednom meste: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SAMEINDCLOSE                                 :{LTBLUE}Rovnaky priemysel moze byt stavany blizko seba: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Zobrazovat dátum v stavovej lište v dlhom formáte: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Zobrazovat žel. signály na rovnakej strane ako jazdia vozidlá: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Zobrazit rozpocet na konci roku: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Zobrazovať železničné signály na rovnakej strane ako jazdia vozidlá: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Zobraziť rozpočet na konci roku: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Nové príkazy sú štandardne 'non-stop': {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Nové príkazy vlaku na zastavenie štandardne v {ORANGE}{STRING}{LTBLUE} stanici
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :blízky cieľ
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :stred
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :ďaleký cieľ
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Radenie cestných vozidiel (podla množstva nákladu): {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Posúvat pohlad ked je kurzor myši na okraji okna: {ORANGE}{STRING}
-STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Umoznit podplacanie miestnej spravy: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Povolit zakúpenie exkluzívnych dopravných práv: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Posúvať pohľad ked je kurzor myši na okraji okna: {ORANGE}{STRING}
+STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Umožniť podplácanie miestnej správy: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Povoliť zakúpenie exkluzívnych dopravných práv: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Umožnit posielanie penazí ostatným spolocnostiam: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Roznorode stanice: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Váhový násobok pre nákladné vlaky: {ORANGE}{STRING}
@@ -1186,7 +1186,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Počet 
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :žiadne
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :obmedzené
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normálny
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Povolit prejazdné zastávky na mestských cestách: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Povoliť prejazdné zastávky na mestských cestách: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Povoliť prechádzanie cez stop značky na cestách vlastnené konkurenciou: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Povolit stavbu oddelených staníc: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Povoliť viaceré NewGRF sety s rušňami: {ORANGE}{STRING}
@@ -1201,16 +1201,16 @@ STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :ano, okrem zast
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :ano, u vsetkych vozidiel
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Varovať, ak je vozidlo stratové: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Nikdy neprestat s vyrobou starych vozidiel: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Automaticka obnova dopravnych prostriedkov, ked su stare: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Obnovit vozidlo {ORANGE}{STRING}{LTBLUE} mesiacov pred/po dosiahnuti max. veku
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Automatická obnova dopravných prostriedkov, keď sú staré: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Obnoviť vozidlo {ORANGE}{STRING}{LTBLUE} mesiacov pred/po dosiahnutí max. veku
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Min. mnozstvo penazi pre aut. obnovovanie vozidiel: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Dlžka zobrazenia chybovej správy: {ORANGE}{STRING}
-STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Zobrazit pocet obyvatelov mesta v jeho nazve: {ORANGE}{STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Zobraziť počet obyvateľov mesta v jeho názve: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Generátor uzemia: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Pôvodný
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Maximálna vzdialenost ropných rafinérií od okraja mapy: {ORANGE}{STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Maximálna vzdialenosť ropných rafinérií od okraja mapy: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Uroven ciary snehu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Členitosť terénu (len pre TerraGenesis) : {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Veľmi rovný
@@ -1238,7 +1238,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Tmavozelená
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Fialová
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}Pri posúvaní pohladu myšou posúvat mapu opacným smerom: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}Plynulé posúvanie pohladu: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}Zobrazit údaje o rozmeroch pri výstavbe: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}Zobraziť údaje o rozmeroch pri výstavbe: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}Zobrazit farebné schémy spolocnosti: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LIVERIES_NONE                                :žiadne
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :vlastná spolocnost
@@ -1313,12 +1313,12 @@ STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}Zakáza
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Zobrazovat správy farebne od roku: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Zaciatok hry v roku: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Povoliť zmeny ekonomiky (viac menších zmien): {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Povolit kupovanie podielov v ostatných spolocnostiach: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Povoliť kupovanie podielov v ostatných spoločnostiach: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Percento z časti zisku na zaplatenie v dopravnom systéme: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Pri stavbe tahaním umiestnit signály na každé: {ORANGE}{STRING}. pole
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automaticky stavat semafóry namiesto signálov pred rokom: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Zapnút grafické rozhranie stavby signálov: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Standardne budovaný typ signálov: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Zapnúť grafické rozhranie stavby signálov: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Štandardne budovaný typ signálov: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Blokové signály
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Obojsmerné signály
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Jednosmerné signály
@@ -1334,7 +1334,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :bloky 2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :bloky 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :náhodne
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Mestá môžu staviať cesty: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Povolit mestom urcené hlukové limity pre letiská: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Povoliť mestom určené hlukové limity pre letiská: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Zakladanie nových miest počas hry: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :zakázané
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :povolené
@@ -1375,28 +1375,28 @@ STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interak
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signály
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Manipulácia s tovarom
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Počítačový hráči
-STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Autoobnova
+STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Automatická obnova
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Servis
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Smerovanie
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Vlaky
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Mestá
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Priemysel
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Algoritmus hladania cesty pre vlaky: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Algoritmus hľadania cesty pre vlaky: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(odporúca sa)
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Algoritmus hladania cesty pre automobily: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(odporučený)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Algoritmus hľadania cesty pre automobily: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_NPF             :NPF
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_YAPF            :YAPF {BLUE}(odporúca sa)
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Algoritmus hladania cesty pre lode: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :pôvodný {BLUE}(odporúca sa)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_YAPF            :YAPF {BLUE}(odporučený)
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Algoritmus hľadania cesty pre lode: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :pôvodný {BLUE}(odporučený)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(neodporúca sa)
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(neodporúča sa)
 
 STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}X-rozmer mapy: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Y-rozmer mapy: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Zmenit hodnotu nastavenia
+STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Zmeniť hodnotu nastavenia
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -1420,7 +1420,7 @@ STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Spustiť
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Nahrať uloženú hru
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Začať novú hru s použitím výškovej mapy ako krajiny
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Spustiť novú hru s použitím vlastného scenára
-STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Vytvoriť vlastný scenár
+STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Vytvoriť vlastnú krajinu/scenár
 STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Spustiť hru viacerých hráčov
 
 STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}Vybrať krajinu mierneho pásma
@@ -1430,7 +1430,7 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Vybrať 
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Zobraziť nastavenia hry
 STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Zobraziť nastavenia obtiažnosti
-STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Zobrazit rozšírené nastavenia
+STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Zobraziť rozšírené nastavenia
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Zobraziť NewGRF nastavenia
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Skontrolovať nový a aktualizovaný obsah pre stiahnutie
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Zobraziť AI nastavenia
@@ -1457,71 +1457,71 @@ STR_OSNAME_SUNOS                                                :SunOS
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Opustiť hru
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Si si istý, že chceš opustiť túto hru?
-STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Si si istý že chceš ukončiť tento scenár?
+STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Si si istý že chceš opustiť tento scenár?
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Cheaty
-STR_CHEATS_TOOLTIP                                              :{BLACK}Checkbox indikuje opakovane pouzite cheatu
-STR_CHEATS_WARNING                                              :{BLACK}Varovanie! Chcete podviest vasich protihracov. Tento podvod sa navzdy zapameta.
+STR_CHEATS_TOOLTIP                                              :{BLACK}Zaškrtávacie pole indikuje opakované použite cheatu
+STR_CHEATS_WARNING                                              :{BLACK}Varovanie! Chceš podviesť svojich protihráčov. Tento podvod bude navždy zaznamenaný.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Zvýšiť hotovosť o {CURRENCY}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Hrať za spoločnosť: {ORANGE}{COMMA}
-STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magicky buldozer (odstrani priemysel, budovy): {ORANGE}{STRING}
-STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunely sa mozu navzajom krizit: {ORANGE}{STRING}
-STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Umožniť výstavbu v pauze: {ORANGE}{STRING}
-STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Prudove lietadla nehavaruju (tak casto) na malych letiskach: {ORANGE} {STRING}
-STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Zmenit klimu: {ORANGE} {STRING}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magický buldozér (odstráni priemysel a nehnuteľnosti): {ORANGE}{STRING}
+STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunely sa môžu navzájom krížiť: {ORANGE}{STRING}
+STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Umožniť výstavbu cez pauzu: {ORANGE}{STRING}
+STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Prúdové lietadlá nehavarujú (tak často) na malých letiskách: {ORANGE} {STRING}
+STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Zmeniť klímu: {ORANGE} {STRING}
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Krajina mierneho pásma
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Subarktická krajina
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Subtropická krajina
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Krajina hračiek
-STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Zmenit datum: {ORANGE} {DATE_SHORT}
-STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Povolit zmenu objemu vyroby: {ORANGE}{STRING}
+STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Zmeniť dátum: {ORANGE} {DATE_SHORT}
+STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Povoliť zmenu objemu výroby: {ORANGE}{STRING}
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}Nová farebná schéma
 
-STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Zobrazit všeobecné farebné schémy
-STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Zobrazit farebné schémy pre vlaky
-STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Zobrazit farebné schémy pre cestné vozidlá
-STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Zobrazit farebné schémy pre lode
-STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Zobrazit farebné schémy pre lietadlá
-STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Vyberte primárnu farbu pre vybranú farebnú schému
-STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Vybrat sekundárnu farbu pre vybranú farebnú schému
-STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Vybrat farebnú schému na zmenenie (pre viacero schém použite CTRL+klik). Kliknite na štvorec pre prepnutie používania schémy
+STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Zobraziť všeobecné farebné schémy
+STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Zobraziť farebné schémy pre vlaky
+STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Zobraziť farebné schémy pre cestné vozidlá
+STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Zobraziť farebné schémy pre lode
+STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Zobraziť farebné schémy pre lietadlá
+STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Vyber primárnu farbu pre vybranú schému
+STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Vyber sekundárnu farbu pre vybranú schému
+STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Vyber farebnú schému, ktorá sa má meniť (CTRL+klik pre viacero schém). Zaškrtávacie pole prepína používanie schémy
 
-STR_LIVERY_DEFAULT                                              :Standardna schema
-STR_LIVERY_STEAM                                                :Parny rusen
-STR_LIVERY_DIESEL                                               :Dieslovy rusen
-STR_LIVERY_ELECTRIC                                             :Elektricky rusen
-STR_LIVERY_MONORAIL                                             :Rusen pre Monorail
-STR_LIVERY_MAGLEV                                               :Rusen pre MagLev
+STR_LIVERY_DEFAULT                                              :Štandardná schéma
+STR_LIVERY_STEAM                                                :Parný rušeň
+STR_LIVERY_DIESEL                                               :Dieselový rušeň
+STR_LIVERY_ELECTRIC                                             :Elektrický rušeň
+STR_LIVERY_MONORAIL                                             :Rušeň pre Jednokoľajku
+STR_LIVERY_MAGLEV                                               :MagLev rušeň
 STR_LIVERY_DMU                                                  :DMU
 STR_LIVERY_EMU                                                  :EMU
-STR_LIVERY_PASSENGER_WAGON_STEAM                                :Osobny vozen (Parny)
-STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Osobny vozen (Diesel)
-STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Osobny vozen (Elektricky)
-STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Vagón pre cestujúcich (Monorail)
-STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Vagón pre cestujúcich (Maglev)
-STR_LIVERY_FREIGHT_WAGON                                        :Nakladny vagon
+STR_LIVERY_PASSENGER_WAGON_STEAM                                :Vagón pre cestujúcich (parný)
+STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Vagón pre cestujúcich (diesel)
+STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Vagón pre cestujúcich (elektrický)
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Vagón pre cestujúcich (jednokoľajka)
+STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Vagón pre cestujúcich (MagLev)
+STR_LIVERY_FREIGHT_WAGON                                        :Nákladný vagón
 STR_LIVERY_BUS                                                  :Autobus
-STR_LIVERY_TRUCK                                                :Nakladny automobil
-STR_LIVERY_PASSENGER_SHIP                                       :Trajekt pre cestujucich
-STR_LIVERY_FREIGHT_SHIP                                         :Nakladna lod
-STR_LIVERY_HELICOPTER                                           :Helikoptera
-STR_LIVERY_SMALL_PLANE                                          :Male lietadlo
-STR_LIVERY_LARGE_PLANE                                          :Velke lietadlo
-STR_LIVERY_PASSENGER_TRAM                                       :Osobná elektricka
-STR_LIVERY_FREIGHT_TRAM                                         :Nákladná elektricka
+STR_LIVERY_TRUCK                                                :Nákladné auto
+STR_LIVERY_PASSENGER_SHIP                                       :Trajekt pre cestujúcich
+STR_LIVERY_FREIGHT_SHIP                                         :Nákladná loď
+STR_LIVERY_HELICOPTER                                           :Vrtuľník
+STR_LIVERY_SMALL_PLANE                                          :Malé lietadlo
+STR_LIVERY_LARGE_PLANE                                          :Veľké lietadlo
+STR_LIVERY_PASSENGER_TRAM                                       :Električka pre cestujúcich
+STR_LIVERY_FREIGHT_TRAM                                         :Nákladná električka
 
 # Face selection window
-STR_FACE_CAPTION                                                :{WHITE}Vyber tvare
+STR_FACE_CAPTION                                                :{WHITE}Výber tváre
 STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}Zrušiť výber novej tváre
 STR_FACE_OK_TOOLTIP                                             :{BLACK}Potvrdiť výber tváre
 
-STR_FACE_MALE_BUTTON                                            :{BLACK}Muz
-STR_FACE_MALE_TOOLTIP                                           :{BLACK}Vyber muzskych tvari
-STR_FACE_FEMALE_BUTTON                                          :{BLACK}Zena
-STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Vyber ženské tváre
+STR_FACE_MALE_BUTTON                                            :{BLACK}Muž
+STR_FACE_MALE_TOOLTIP                                           :{BLACK}Výber mužských tvárí
+STR_FACE_FEMALE_BUTTON                                          :{BLACK}Žena
+STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Výber ženských tvárí
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Nová tvár
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Náhodná nová tvár
 STR_FACE_ADVANCED                                               :{BLACK}Rozšírený
@@ -1550,10 +1550,10 @@ STR_FACE_HAIR                                                   :Vlasy:
 STR_FACE_HAIR_TOOLTIP                                           :{BLACK}Zmenit vlasy
 STR_FACE_EYEBROWS                                               :Obocie:
 STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}Zmenit obocie
-STR_FACE_EYECOLOUR                                              :Farba ocí:
+STR_FACE_EYECOLOUR                                              :Farba očí:
 STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Zmeniť farbu očí
 STR_FACE_GLASSES                                                :Okuliare:
-STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}Povolit okuliare
+STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}Povoliť okuliare
 STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}Zmenit okuliare
 STR_FACE_NOSE                                                   :Nos:
 STR_FACE_NOSE_TOOLTIP                                           :{BLACK}Zmenit nos
@@ -2195,20 +2195,20 @@ STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STR
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Skaly
 STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :Nerovný terén
-STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Holy teren
-STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Travnaty teren
+STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Holý terén
+STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Trávnatý terén
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Polia
-STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Zasnezeny teren
-STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Pust
+STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Zasnežený terén
+STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Púšť
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Zeleznicne kolaje
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Zeleznicne kolaje so standartnym semaforom
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Zeleznicne kolaje s pre-signalmi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Zeleznicne kolaje s exit-signalmi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Zeleznicné kolaje s combo signálmi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Kolajnice so semaformi pbs
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Železničná trať s jednosmernými signálmi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Železnicné kolaje s normálnymi a pre-signálmi
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Železničná trať
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Železničná trať so štandardným semaforom
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Železničná trať s pre-semaformi
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Železničné koľaje s exit-semaformi
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Železničné koľaje s kombinovanými semaformi
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Železničná trať so semaformi
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Železničná trať s jednosmernými semaformi
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Železničné koľaje s normálnymi a pre-semaformi
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Železnicné kolaje s normálnymi a exit-signálmi
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Zeleznicné kolaje s normálnymi a combo signálmi
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Železničná trasa s blokovacími a obojstranými signálmi
@@ -2222,7 +2222,7 @@ STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Železničná t
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Železničná trasa s konečnými a jednosmernými signálmi
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Železničná trasa s kombo a obojstranými signálmi
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Železničná trasa s kombo a jednosmernými signálmi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Železničná trať s obojstrannými a jednosmernými signálmi
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Železničná trať s obojstrannými a jednosmernými semaformi
 STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Zeleznicne depo
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Cesta
@@ -2457,7 +2457,7 @@ STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Odpauzov
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Správanie NewGRF '{STRING}' asi sposobí desynchronizáciu a/alebo pád hry.
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Zmenilo dlžku vozidla '{1:ENGINE}' mimo depa.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Zmenilo dĺžku vozidla '{1:ENGINE}' mimo depa.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Vlak '{VEHICLE}' patriaci '{COMPANY}' má neplatnu dlžku. Pravdeposobne to sposobil problém s NewGRF. Je možná desynchronizácia alebo pád hry.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{STRING}' poskytuje nekorektné informácie.
@@ -2485,8 +2485,8 @@ STR_TOWN_POPULATION                                             :{BLACK}Svetova 
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Mesto)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Obyvatelstvo: {ORANGE}{COMMA}{BLACK}  Domov: {ORANGE}{COMMA}
-STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Cestujuci posledny mesiac: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
-STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Posta posledny mesiac: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
+STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Cestujúci posledný mesiac: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
+STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Pošta posledný mesiac: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Tovar potrebný k rozrastu mesta:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{STRING}{BLACK} potrebný
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} potrebné v zime
@@ -2649,7 +2649,7 @@ STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Sidlo sp
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nová tvár
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Vybrat novu tvar prezidenta
-STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Farebna schema
+STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Farebná schéma
 STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Zmenit vzhlad spolocnosti
 STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Nazov spolocnosti
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Zmeniť názov spoločnosti
@@ -2764,7 +2764,7 @@ STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Nove Lie
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Hmotnost: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Rýchlosť: {GOLD}{VELOCITY}{BLACK} Výkon: {GOLD}{POWER}
-STR_PURCHASE_INFO_SPEED                                         :{BLACK}Rychlost: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED                                         :{BLACK}Rýchlosť: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Náklady na prevádzku: {GOLD}{CURRENCY}/rok
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapacita: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(mozna prestavba)
@@ -2883,10 +2883,10 @@ STR_DEPOT_MASS_START_DEPOT_ROAD_VEHICLE_TOOLTIP                 :{BLACK}Kliknite
 STR_DEPOT_MASS_START_DEPOT_SHIP_TOOLTIP                         :{BLACK}Kliknite pre spustenie všetkých lodí v lodenici
 STR_DEPOT_MASS_START_HANGAR_TOOLTIP                             :{BLACK}Kliknite pre spustenie všetkých lietadiel v hangári
 
-STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Chystáte sa predat všetky vozidlá v depe. Ste si isý?
+STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Chystáte sa predať všetky vozidlá v depe. Ste si istý?
 
 # Engine preview window
-STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Sprava od vyrobcu dopravnych prostriedkov
+STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Správa od výrobcu dopravných prostriedkov
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Prave sme vyrobili {STRING} - mate zaujem o pravo exkluzivneho pouzivania na 1 rok? Chceme otestovat vlastnosti tohto vyrobku pred jeho uvedenim na trh.
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :zeleznicna lokomotiva
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :automobil
@@ -2980,7 +2980,7 @@ STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Naklada
 STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Opúšta
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Znicene!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Pokazený
-STR_VEHICLE_STATUS_STOPPED                                      :{RED}Zastavene
+STR_VEHICLE_STATUS_STOPPED                                      :{RED}Zastavené
 STR_VEHICLE_STATUS_TRAIN_STOPPING                               :{RED}Zastavuje
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Zastavuje, {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Nie je prud
@@ -3114,7 +3114,7 @@ STR_ORDER_GO_VIA                                                :Choď cez
 STR_ORDER_GO_NON_STOP_VIA                                       :Choď non-stop cez
 STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Zmenit sposob zastavovania pre tento príkaz
 
-STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Plne nalož cokolvek
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Plne nalož čokoľvek
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Nalož pri dostupnosti
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Plne nalož všetko
 STR_ORDER_DROP_FULL_LOAD_ANY                                    :Plne nalož čokoľvek
@@ -3140,7 +3140,7 @@ STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Vynechat
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Údaje vozidla na základe ktorých sa vykoná skok
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Percento naplnenia
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Spolahlivost
-STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Maximálna rýchlost
+STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Maximálna rýchlosť
 STR_ORDER_CONDITIONAL_AGE                                       :Vek vozidla (v rokoch)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Vyžaduje servis
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Vždy
@@ -3374,6 +3374,9 @@ STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}...nie j
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Upozornenie na stupnicu
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Prilis velka zmena velkosti zdrojovej mapy sa neodporuca. Pokracovat s generovanim?
 
+# Soundset messages
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Bola nájdená len núdzová sada zvukov. Pre plnú podporu zvukových efektov je potrebné nainštalovať zvukovú sadu cez online obsah.
+
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Screenshot bol ulozeny na disk ako '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Ulozenie screeshotu zlyhalo!
@@ -3458,184 +3461,185 @@ STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... moze
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... les sa moze sadit len pod ciarou snehu
 
 # Station construction related errors
-STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Tu nemoze byt postavena zeleznicna stanica ...
+STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Tu nemôže byť postavená železničná stanica...
 STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Nemozno postavit autobusovu zastavku ...
 STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}Nemozno postavit vykladku ...
-STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}Nie je možné postavit elektrickovú osobnú stanicu ...
-STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}Nie je možné postavit elektrickovú nákladnú stanicu ...
-STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Tu nemozno postavit pristav ...
+STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}Nie je možné postaviť električkovú osobnú stanicu...
+STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}Nie je možné postaviť električkovú nákladnú stanicu...
+STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Tu nemožno postaviť prístav...
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Tu sa nedá postaviť letisko...
 
-STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Susedi z viacerymi stanicami/vykladkami
-STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... stanica je prilis velka
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... roznorode stanice nie su povolene
-STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Prilis vela stanic/vykladok
+STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Susedi z viacerými stanicami/výkladkami
+STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... stanica je príliš veľká
+STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... rôznorodé stanice nie sú povolené
+STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Príliš veľa staníc/vykládok
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Veľa častí vlakovej stanice
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Príliš veľa autobusových zastávok
-STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Prilis vela zastavok nakladnych automobilov
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Prilis blizko inej zeleznicnej stanice
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Prilis blizko inej stanice/vykladky
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Priliz blizko ineho pristavu
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Prilis blizko ineho letiska
-STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Stanica sa neda premenovat ...
+STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Príliš veľa zastávok nákladných automobilov
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Príliš blízko inej železničnej stanice
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Príliš blízko inej stanice/vykládky
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Príliš blízko iného prístavu
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Príliš blízko iného letiska
+STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Stanica sa nedá premenovať...
 STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... cesta vlastnená mestom
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... nesprávna orientácia cesty
 
 # Station destruction related errors
-STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Nemozno odstranit cast stanice ...
-STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}Je potrebné najprv odstránit železnicnú stanicu
-STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Nie je možné odstránit autobusovú stanicu ...
-STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Nie je možné odstránit nakladaciu rampu ...
-STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Nie je možné odstránit osobnú elektrickovú stanicu ...
-STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Nie je možné odstránit nákladnú elektrickovú stanicu ...
+STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Nemožno odstrániť časť stanice...
+STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}Je potrebné najprv odstrániť železničnú stanicu
+STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Nie je možné odstrániť autobusovú stanicu...
+STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Nie je možné odstrániť nakladaciu rampu...
+STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Nie je možné odstrániť osobnú električkovú stanicu...
+STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Nie je možné odstrániť nákladnú električkovú stanicu...
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Železničná stanica sa musí najskôr zbúrať
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Stanica musí byť najskôr zbúraná
 STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}Vykládka musí byť najskôr zbúraná
-STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Najprv sa musí zbúrat osobná elektricková stanica
-STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Najprv sa musí zbúrat nákladná elektricková stanica
-STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Pristav musi byt najskor zburany
+STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Najprv sa musí zbúrať osobná električková stanica
+STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Najprv sa musí zbúrať nákladná električková stanica
+STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Prístav musí byť najskôr zbúraný
 STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Letisko sa musí najskôr zbúrať
 
 # Waypoint related errors
 STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Pridať viac než jeden existujúci navádzač
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Veľmi blízko k ďaľšiemu navádzaču
 
-STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Tu nie je mozne postavit zeleznicny smerovy bod ...
-STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Tu nemozno postavit boju ...
-STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Nazov smeroveho bodu sa neda zmenit ...
+STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Tu nie je možné postaviť železničný smerový bod...
+STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Tu nemožno postaviť bóju...
+STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Názov smerového bodu sa nedá zmeniť...
 
-STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Tu nie je mozne odstranit zeleznicny smerovy bod ...
+STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Tu nie je možné odstrániť železničný smerový bod...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Najprv musí byť odstránený železničný navádzač
-STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... boja v ceste
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... boja sa pouziva!
+STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... bója v ceste
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... bója sa používa!
 
 # Depot related errors
-STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Tu nemoze byt postavene depo ...
-STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Tu sa neda postavit garaz ...
-STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Nie je možné postavit elektrickové depo ...
-STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Lodenica sa tu neda postavit
+STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Tu nemôže byť postavené depo...
+STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Tu sa nedá postaviť garáž...
+STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Nie je možné postaviť električkové depo...
+STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Tu sa nedá postaviť lodné depo...
 
-STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Vlak musi byt zastaveny v depe
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... musi byt zastaveny v garazi
-STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Lod musi byt zastavena v lodenici
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Lietadlo musi byt zastavene v hangari
+STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Vlak musí byť zastavený v depe
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... musí byť zastavený v garáži
+STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Loď musí byť zastavená v lodenici
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Lietadlo musí byť zastavené v hangári
 
-STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Vlaky sa daju nahradit len v depe
-STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Vlak je prilis dlhy
+STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Vlaky sa dajú nahradiť len v depe
+STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Vlak je príliš dlhý
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Nemôžem otočiť vozidlo...
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Nie je mozne otacat vozidla zlozené z viacerych jednotiek
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Nie je možné otáčať vozidlá zložené z viacerých jednotiek
 STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Nekompatibilne typy kolaji
 
-STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Nemozno posuvat vozdlo ...
+STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Nemožno posúvať vozidlo...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}Zadný stroj vždy doprevádza svoj druhý stroj vpredu
-STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Nemoze najst cestu do depa
-STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Nemozno najst miestnu garaz
+STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Nemôže nájsť cestu do depa
+STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Nemožno nájsť miestnu garáž
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Nesprávny typ depa
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} je dlho po výmene
 STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Neboli využité žiadne pravidlá pre obnovu.
-STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(finacny limit)
+STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(finančný limit)
 
 # Rail construction errors
-STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Nemozna kombinacia trate
-STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Ziadne pouzitelne zeleznicne kolaje
+STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Nemožná kombinácia trate
+STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Najprv je treba odstrániť semafory
+STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Žiadne použiteľné železničné koľaje
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Najskôr treba odstrániť železničné koľaje
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Cesta je jednosmerná alebo blokovaná.
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Tu sa nedajú stavať semafory...
-STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Tu sa nedaju stavat zeleznicne kolaje ...
-STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Tu nemozno odstranit zeleznicne kolaje ...
-STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Tu nemozno odstranit semafory ...
-STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Nie je možné zmenit typ signálov ...
+STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Tu sa nedajú stavať železničné koľaje...
+STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Tu nemožno odstrániť železničné koľaje...
+STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Tu nemožno odstrániť semafory...
+STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Nie je možné zmeniť typ semaforov...
 
-STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Tu nemozno zkonvertovat typ zeleznice ...
+STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Tu nemožno z konvertovať typ železnice...
 
 # Road construction errors
-STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}Cesta musi byt najskor odstranena
+STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}Najprv treba odstrániť cestu
 STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}... na jednosmerných cestách nie sú dovolené križovatky
 STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Tu sa nedá postaviť cesta...
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Tu sa nedá stavať električková trať...
-STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Tu sa neda odstranit cesta ...
-STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Nie je možné odstránit elektrickovú trat ...
+STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Tu sa nedá odstrániť cesta...
+STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Nie je možné odstrániť električkovú trať...
 
 # Waterway construction errors
-STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Tu sa neda postavit prieplav ...
-STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Tu sa neda postavit stavidlo ...
-STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Tu nie je možné umiestnit rieku ...
+STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Tu sa nedá postaviť prieplav...
+STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Tu sa nedá postaviť stavidlo...
+STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Tu nie je možné umiestniť rieku...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... musí byť postavené na vode
-STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... nemoze byt postavene na vode
-STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Najprv sa musí zbúrat kanál
-STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Tu nie je možné postavit akvadukt ...
+STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... nemôže byť postavené na vode
+STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Najprv sa musí zbúrať kanál
+STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Tu nie je možné postaviť akvadukt...
 
 # Tree related errors
-STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... strom tu uz je
+STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... strom tu už je
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Tu sa strom nedá zasadiť...
 
 # Bridge related errors
 STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}Tu sa nedá postaviť most...
-STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Most musi byt najskor zburany
-STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Nemozno zacat a skoncit na tom istom mieste
+STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Most musí byť najskôr zbúraný
+STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Nemožno začať a skončiť na tom istom mieste
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Konce mosta nie sú v rovnakej výške
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Most je príliš nízky pre tento terén
-STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Zaciatok a koniec musi byt v rovine
-STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}...konce mostu musia byt na pevnine
+STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Začiatok a koniec musí byť v rovine
+STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}...konce mostu musia byť na pevnine
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Tu sa nedá postaviť tunel...
-STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}To miesto je nepouzitelne ako vstup do tunela
-STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Tunel musi byt najskor zburany
+STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}To miesto je nepoužiteľné ako vstup do tunela
+STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Tunel musi byť najskôr zbúraný
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Iny tunel v ceste
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Tunel končí za okrajom mapy
-STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Nemozno zarovnat teren na druhej strane tunela
+STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Nemožno zarovnať terén na druhej strane tunela
 
 # Unmovable related errors
-STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}V ceste je prekazka
-STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... sidlo firmy v ceste
-STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Tento pozemok nie je mozne kupit ...
-STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... uz to vlastnis!
+STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}V ceste je prekážka
+STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... sídlo firmy v ceste
+STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Tento pozemok nie je možné kúpiť...
+STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... už to vlastníš!
 
 # Group related errors
-STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Nie je možné vytvorit skupinu ...
-STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}Nie je možné zrušit túto skupinu ...
-STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Nie je možné premenovat skupinu ...
-STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}Nie je možné odstránit všetky vozdilá z tejto skupiny ...
-STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}Nie je možné pridat vozidlo do tejto skupiny
-STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Nie je možné pridat zdielané vozidlo do skupiny
+STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Nie je možné vytvoriť skupinu...
+STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}Nie je možné zrušiť túto skupinu...
+STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Nie je možné premenovať skupinu...
+STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}Nie je možné odstrániť všetky vozidlá z tejto skupiny...
+STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}Nie je možné pridať vozidlo do tejto skupiny
+STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Nie je možné pridať zdielané vozidlo do skupiny
 
 # Generic vehicle errors
 STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Vlak v ceste
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Automobil v ceste
-STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Lod v ceste
+STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Loď v ceste
 STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Lietadlo v ceste
 
-STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Nemozno prestavat vlak ...
-STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Prestavba vozidla nie je mozna ...
-STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Nemozno prestavat lod...
-STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Nie je mozne prestavat na novy typ nakladu ...
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Nemožno prestavať vlak...
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Prestavba vozidla nie je možná...
+STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Nemožno prestavať loď...
+STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Nie je možné prestavať na nový typ nákladu...
 
-STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Vlak nemozno pomenovat ...
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Nemozno pomenovat automobil ...
-STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}Nemozno pomenovat lod ...
-STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}Nie je mozne pomenovat lietadlo ...
+STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Vlak nemožno pomenovať...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Nemožno pomenovať automobil...
+STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}Nemožno pomenovať loď...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}Nie je možné pomenovať lietadlo...
 
-STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Nemozno zastavit/spustit vlak ...
-STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Nemozno zastavit/spustit automobil ...
-STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Nemozno zastavit/spustit lod ...
-STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Nemozno zastavit/spustit lietadlo ...
+STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Nemožno zastaviť/spustiť vlak...
+STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Nemožno zastaviť/spustiť automobil...
+STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Nemožno zastaviť/spustiť loď...
+STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Nemožno zastaviť/spustiť lietadlo...
 
-STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Vlak sa neda poslat do depa...
-STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Nemozno poslat automobil do garaze ...
-STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Nemozno poslat lod do lodenice ...
-STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Nemozno poslat lietadlo do hangaru ...
+STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Vlak sa nedá poslať do depa...
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Nemožno poslať automobil do garáže...
+STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Nemožno poslať loď do lodenice...
+STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Nemožno poslať lietadlo do hangáru...
 
-STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Nemozno kupit vlak...
-STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Nie je mozne zakupit automobil ...
-STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Nemozno vyrobit lod...
-STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Nemozno vyrobit lietadlo...
+STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Nemožno kúpiť vlak...
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Nie je možné zakúpiť automobil...
+STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Nemožno vyrobiť loď...
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Nemožno vyrobiť lietadlo...
 
-STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Typ vlaku nemoze byt premenovany ...
+STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Typ vlaku nemôže byť premenovaný...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Nemozno premenovat typ automobilu ...
 STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Nemozno premenovat typ lode ...
 STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Nie je mozne premenovat typ lietadla ...
@@ -3731,25 +3735,25 @@ STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Mala Banka
 
 ##id 0x4800
 # industry names
-STR_INDUSTRY_NAME_COAL_MINE                                     :Uholna bana
+STR_INDUSTRY_NAME_COAL_MINE                                     :Uholná baňa
 STR_INDUSTRY_NAME_POWER_STATION                                 :Elektraren
-STR_INDUSTRY_NAME_SAWMILL                                       :Pila
+STR_INDUSTRY_NAME_SAWMILL                                       :Píla
 STR_INDUSTRY_NAME_FOREST                                        :Les
-STR_INDUSTRY_NAME_OIL_REFINERY                                  :Ropna rafineria
+STR_INDUSTRY_NAME_OIL_REFINERY                                  :Ropná rafinéria
 STR_INDUSTRY_NAME_OIL_RIG                                       :Ropny vrt
 STR_INDUSTRY_NAME_FACTORY                                       :Tovaren
 STR_INDUSTRY_NAME_PRINTING_WORKS                                :Tlaciaren
-STR_INDUSTRY_NAME_STEEL_MILL                                    :Oceliaren
+STR_INDUSTRY_NAME_STEEL_MILL                                    :Oceliareň
 STR_INDUSTRY_NAME_FARM                                          :Farma
-STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :Medenna bana
+STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :Medenná baňa
 STR_INDUSTRY_NAME_OIL_WELLS                                     :Ropna plosina
 STR_INDUSTRY_NAME_BANK                                          :Banka
 STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :Potravinársky podnik
 STR_INDUSTRY_NAME_PAPER_MILL                                    :Vyroba papiera
-STR_INDUSTRY_NAME_GOLD_MINE                                     :Zlata bana
+STR_INDUSTRY_NAME_GOLD_MINE                                     :Zlatá baňa
 STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :Banka
-STR_INDUSTRY_NAME_DIAMOND_MINE                                  :Diamantova bana
-STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :Zelezorudna bana
+STR_INDUSTRY_NAME_DIAMOND_MINE                                  :Diamantová baňa
+STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :Železorudná baňa
 STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :Ovocny sad
 STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :Kaucukova plantaz
 STR_INDUSTRY_NAME_WATER_SUPPLY                                  :Vodny zdroj
@@ -3767,7 +3771,7 @@ STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :Zuvackova fonta
 STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :Vyroba sumienky
 STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :Bublifuk
 STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :Karamelovy lom
-STR_INDUSTRY_NAME_SUGAR_MINE                                    :Cukrova bana
+STR_INDUSTRY_NAME_SUGAR_MINE                                    :Cukrová baňa
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
 ############ These strings may never get a new id, or savegames will break!
@@ -3840,22 +3844,22 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_T_I_M_ELECTRIC               :'T.I.M.' (Elekt
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_ASIASTAR_ELECTRIC            :'AsiaStar' (Elektricky)
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PASSENGER_CAR                 :Vagon pre cestujucich
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_MAIL_VAN                      :Postovy vagon
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COAL_CAR                      :Vagon na uhlie
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COAL_CAR                      :Vagón na uhlie
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_OIL_TANKER                    :Vagon na ropu
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_LIVESTOCK_VAN                 :Vagon na dobytok
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GOODS_VAN                     :Vagon na tovar
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GRAIN_HOPPER                  :Vagon na obilie
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WOOD_TRUCK                    :Vagon na drevo
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WOOD_TRUCK                    :Vagón na drevo
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_IRON_ORE_HOPPER               :Vagon na zeleznu rudu
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_STEEL_TRUCK                   :Vagon na ocel
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_STEEL_TRUCK                   :Vagón na oceľ
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_ARMORED_VAN                   :Obrneny vagon
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FOOD_VAN                      :Vagon na jedlo
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PAPER_TRUCK                   :Vagon na papier
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PAPER_TRUCK                   :Vagón na papier
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COPPER_ORE_HOPPER             :Vagon na medennu rudu
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WATER_TANKER                  :Vagon na vodu
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FRUIT_TRUCK                   :Vagon na ovocie
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FRUIT_TRUCK                   :Vagón na ovocie
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_RUBBER_TRUCK                  :Vagon na kaucuk
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_SUGAR_TRUCK                   :Vagon na cukor
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_SUGAR_TRUCK                   :Vagón na cukor
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COTTON_CANDY_HOPPER           :Vagon na cukrovu vatu
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOFFEE_HOPPER                 :Vagon na karamel
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BUBBLE_VAN                    :Vagon na bubliny
