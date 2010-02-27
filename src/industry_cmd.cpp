@@ -1696,54 +1696,54 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const Ind
  * @param itspec_index the index of the itsepc to build/fund
  * @param seed random seed (possibly) used by industries
  * @param founder Founder of the industry
- * @return the pointer of the newly created industry, or NULL if it failed
+ * @param ip Pointer to store newly created industry.
+ * @return Succeeded or failed command.
+ *
+ * @post \c *ip contains the newly created industry if all checks are successful and the \a flags request actual creation, else it contains \c NULL afterwards.
  */
-static Industry *CreateNewIndustryHelper(TileIndex tile, IndustryType type, DoCommandFlag flags, const IndustrySpec *indspec, uint itspec_index, uint32 seed, Owner founder)
+static CommandCost CreateNewIndustryHelper(TileIndex tile, IndustryType type, DoCommandFlag flags, const IndustrySpec *indspec, uint itspec_index, uint32 seed, Owner founder, Industry **ip)
 {
 	assert(itspec_index < indspec->num_table);
 	const IndustryTileTable *it = indspec->table[itspec_index];
 	bool custom_shape_check = false;
 
+	*ip = NULL;
+
 	CommandCost ret = CheckIfIndustryTilesAreFree(tile, it, itspec_index, type, &custom_shape_check);
-	ret.SetGlobalErrorMessage();
-	if (ret.Failed()) return NULL;
+	if (ret.Failed()) return ret;
 
 	if (HasBit(GetIndustrySpec(type)->callback_mask, CBM_IND_LOCATION)) {
 		ret = CheckIfCallBackAllowsCreation(tile, type, itspec_index, seed);
 	} else {
 		ret = _check_new_industry_procs[indspec->check_proc](tile);
 	}
-	ret.SetGlobalErrorMessage();
-	if (ret.Failed()) return NULL;
+	if (ret.Failed()) return ret;
 
-	if (!custom_shape_check && _settings_game.game_creation.land_generator == LG_TERRAGENESIS && _generating_world && !_ignore_restrictions && !CheckIfCanLevelIndustryPlatform(tile, DC_NO_WATER, it, type)) return NULL;
+	if (!custom_shape_check && _settings_game.game_creation.land_generator == LG_TERRAGENESIS && _generating_world &&
+			!_ignore_restrictions && !CheckIfCanLevelIndustryPlatform(tile, DC_NO_WATER, it, type)) {
+		return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
+	}
+
 	ret = CheckIfFarEnoughFromIndustry(tile, type);
-	ret.SetGlobalErrorMessage();
-	if (ret.Failed()) return NULL;
+	if (ret.Failed()) return ret;
 
 	const Town *t = NULL;
 	ret = FindTownForIndustry(tile, type, &t);
-	ret.SetGlobalErrorMessage();
-	if (ret.Failed()) return NULL;
+	if (ret.Failed()) return ret;
 	assert(t != NULL);
 
 	ret = CheckIfIndustryIsAllowed(tile, type, t);
-	ret.SetGlobalErrorMessage();
-	if (ret.Failed()) return NULL;
+	if (ret.Failed()) return ret;
 
-	if (!Industry::CanAllocateItem()) return NULL;
+	if (!Industry::CanAllocateItem()) return_cmd_error(STR_ERROR_TOO_MANY_INDUSTRIES);
 
 	if (flags & DC_EXEC) {
-		Industry *i = new Industry(tile);
+		*ip = new Industry(tile);
 		if (!custom_shape_check) CheckIfCanLevelIndustryPlatform(tile, DC_NO_WATER | DC_EXEC, it, type);
-		DoCreateNewIndustry(i, tile, type, it, itspec_index, t, OWNER_NONE, founder);
-
-		return i;
+		DoCreateNewIndustry(*ip, tile, type, it, itspec_index, t, OWNER_NONE, founder);
 	}
 
-	/* We need to return a non-NULL pointer to tell we have created an industry.
-	 * However, we haven't created a real one (no DC_EXEC), so return a fake one. */
-	return (Industry *)-1;
+	return CommandCost();
 }
 
 /** Build/Fund an industry
@@ -1772,7 +1772,7 @@ CommandCost CmdBuildIndustry(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 		return CMD_ERROR;
 	}
 
-	const Industry *ind = NULL;
+	Industry *ind = NULL;
 	if (_game_mode != GM_EDITOR && _settings_game.construction.raw_industry_construction == 2 && indspec->IsRawIndustry()) {
 		if (flags & DC_EXEC) {
 			/* Prospected industries are build as OWNER_TOWN to not e.g. be build on owned land of the founder */
@@ -1787,10 +1787,9 @@ CommandCost CmdBuildIndustry(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 					 * because parameter evaluation order is not guaranteed in the c++ standard
 					 */
 					tile = RandomTile();
-					ind = CreateNewIndustryHelper(tile, it, flags, indspec, RandomRange(indspec->num_table), p2, founder);
-					if (ind != NULL) {
-						break;
-					}
+					CommandCost ret = CreateNewIndustryHelper(tile, it, flags, indspec, RandomRange(indspec->num_table), p2, founder, &ind);
+					ret.SetGlobalErrorMessage();
+					if (ret.Succeeded()) break;
 				}
 			}
 			_current_company = founder;
@@ -1810,20 +1809,24 @@ CommandCost CmdBuildIndustry(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 			ret.SetGlobalErrorMessage();
 		} while (ret.Failed());
 
-		ind = CreateNewIndustryHelper(tile, it, flags, indspec, num, p2, _current_company);
-		if (ind == NULL) return CMD_ERROR;
+		ret = CreateNewIndustryHelper(tile, it, flags, indspec, num, p2, _current_company, &ind);
+		ret.SetGlobalErrorMessage();
+		if (ret.Failed()) return ret;
 	}
 
-	if ((flags & DC_EXEC) && _game_mode != GM_EDITOR && ind != NULL) {
-		SetDParam(0, indspec->name);
-		if (indspec->new_industry_text > STR_LAST_STRINGID) {
-			SetDParam(1, STR_TOWN_NAME);
-			SetDParam(2, ind->town->index);
-		} else {
-			SetDParam(1, ind->town->index);
+	if (flags & DC_EXEC) {
+		assert(ind != NULL);
+		if (_game_mode != GM_EDITOR) {
+			SetDParam(0, indspec->name);
+			if (indspec->new_industry_text > STR_LAST_STRINGID) {
+				SetDParam(1, STR_TOWN_NAME);
+				SetDParam(2, ind->town->index);
+			} else {
+				SetDParam(1, ind->town->index);
+			}
+			AddIndustryNewsItem(indspec->new_industry_text, NS_INDUSTRY_OPEN, ind->index);
+			AI::BroadcastNewEvent(new AIEventIndustryOpen(ind->index));
 		}
-		AddIndustryNewsItem(indspec->new_industry_text, NS_INDUSTRY_OPEN, ind->index);
-		AI::BroadcastNewEvent(new AIEventIndustryOpen(ind->index));
 	}
 
 	return CommandCost(EXPENSES_OTHER, indspec->GetConstructionCost());
@@ -1835,7 +1838,11 @@ static Industry *CreateNewIndustry(TileIndex tile, IndustryType type)
 	const IndustrySpec *indspec = GetIndustrySpec(type);
 
 	uint32 seed = Random();
-	return CreateNewIndustryHelper(tile, type, DC_EXEC, indspec, RandomRange(indspec->num_table), seed, OWNER_NONE);
+	Industry *i = NULL;
+	CommandCost ret = CreateNewIndustryHelper(tile, type, DC_EXEC, indspec, RandomRange(indspec->num_table), seed, OWNER_NONE, &i);
+	assert(i != NULL || ret.Failed());
+	ret.SetGlobalErrorMessage();
+	return i;
 }
 
 /**
