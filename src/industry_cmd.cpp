@@ -1349,7 +1349,9 @@ static CommandCost CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTil
 
 			if (HasBit(its->callback_mask, CBM_INDT_SHAPE_CHECK)) {
 				custom_shape = true;
-				if (!PerformIndustryTileSlopeCheck(tile, cur_tile, its, type, gfx, itspec_index)) return_cmd_error(_error_message);
+				CommandCost ret = PerformIndustryTileSlopeCheck(tile, cur_tile, its, type, gfx, itspec_index);
+				ret.SetGlobalErrorMessage();
+				if (ret.Failed()) return ret;
 			} else {
 				Slope tileh = GetTileSlope(cur_tile, NULL);
 				refused_slope |= IsSlopeRefused(tileh, its->slopes_refused);
