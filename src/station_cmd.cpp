@@ -2073,8 +2073,7 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	int h = as->size_y;
 
 	if (w > _settings_game.station.station_spread || h > _settings_game.station.station_spread) {
-		_error_message = STR_ERROR_STATION_TOO_SPREAD_OUT;
-		return CMD_ERROR;
+		return_cmd_error(STR_ERROR_STATION_TOO_SPREAD_OUT);
 	}
 
 	CommandCost cost = CheckFlatLand(TileArea(tile, w, h), flags);
