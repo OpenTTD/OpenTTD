@@ -1095,7 +1095,10 @@ CommandCost CmdBuildRailStation(TileIndex tile_org, DoCommandFlag flags, uint32 
 	StationID station_to_join = GB(p2, 16, 16);
 
 	/* Does the authority allow this? */
-	if (!CheckIfAuthorityAllowsNewStation(tile_org, flags)) return CMD_ERROR;
+	CommandCost ret = CheckIfAuthorityAllowsNewStation(tile_org, flags);
+	ret.SetGlobalErrorMessage();
+	if (ret.Failed()) return ret;
+
 	if (!ValParamRailtype(rt)) return CMD_ERROR;
 
 	/* Check if the given station class is valid */
@@ -1132,7 +1135,7 @@ CommandCost CmdBuildRailStation(TileIndex tile_org, DoCommandFlag flags, uint32 
 	cost.AddCost((numtracks * _price[PR_BUILD_STATION_RAIL] + _price[PR_BUILD_STATION_RAIL_LENGTH]) * plat_len);
 
 	Station *st = NULL;
-	CommandCost ret = FindJoiningStation(est, station_to_join, adjacent, new_location, &st);
+	ret = FindJoiningStation(est, station_to_join, adjacent, new_location, &st);
 	ret.SetGlobalErrorMessage();
 	if (ret.Failed()) return ret;
 
@@ -1688,12 +1691,14 @@ CommandCost CmdBuildRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	/* If it is a drive-through stop, check for valid axis. */
 	if (is_drive_through && !IsValidAxis((Axis)ddir)) return CMD_ERROR;
 
-	if (!CheckIfAuthorityAllowsNewStation(tile, flags)) return CMD_ERROR;
+	CommandCost ret = CheckIfAuthorityAllowsNewStation(tile, flags);
+	ret.SetGlobalErrorMessage();
+	if (ret.Failed()) return ret;
 
 	/* Total road stop cost. */
 	CommandCost cost(EXPENSES_CONSTRUCTION, roadstop_area.w * roadstop_area.h * _price[type ? PR_BUILD_STATION_TRUCK : PR_BUILD_STATION_BUS]);
 	StationID est = INVALID_STATION;
-	CommandCost ret = CheckFlatLandRoadStop(roadstop_area, flags, is_drive_through ? 5 << ddir : 1 << ddir, is_drive_through, type, DiagDirToAxis(ddir), &est, rts);
+	ret = CheckFlatLandRoadStop(roadstop_area, flags, is_drive_through ? 5 << ddir : 1 << ddir, is_drive_through, type, DiagDirToAxis(ddir), &est, rts);
 	if (ret.Failed()) return ret;
 	cost.AddCost(ret);
 
@@ -2059,9 +2064,9 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 	if (p1 >= NUM_AIRPORTS) return CMD_ERROR;
 
-	if (!CheckIfAuthorityAllowsNewStation(tile, flags)) {
-		return CMD_ERROR;
-	}
+	CommandCost ret = CheckIfAuthorityAllowsNewStation(tile, flags);
+	ret.SetGlobalErrorMessage();
+	if (ret.Failed()) return ret;
 
 	/* Check if a valid, buildable airport was chosen for construction */
 	const AirportSpec *as = AirportSpec::Get(p1);
@@ -2107,7 +2112,7 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	}
 
 	Station *st = NULL;
-	CommandCost ret = FindJoiningStation(INVALID_STATION, station_to_join, HasBit(p2, 0), TileArea(tile, w, h), &st);
+	ret = FindJoiningStation(INVALID_STATION, station_to_join, HasBit(p2, 0), TileArea(tile, w, h), &st);
 	ret.SetGlobalErrorMessage();
 	if (ret.Failed()) return ret;
 
@@ -2326,7 +2331,9 @@ CommandCost CmdBuildDock(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	/* Docks cannot be placed on rapids */
 	if (IsWaterTile(tile)) return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
 
-	if (!CheckIfAuthorityAllowsNewStation(tile, flags)) return CMD_ERROR;
+	CommandCost ret = CheckIfAuthorityAllowsNewStation(tile, flags);
+	ret.SetGlobalErrorMessage();
+	if (ret.Failed()) return ret;
 
 	if (MayHaveBridgeAbove(tile) && IsBridgeAbove(tile)) return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
 
@@ -2352,7 +2359,7 @@ CommandCost CmdBuildDock(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 
 	/* middle */
 	Station *st = NULL;
-	CommandCost ret = FindJoiningStation(INVALID_STATION, station_to_join, HasBit(p1, 0),
+	ret = FindJoiningStation(INVALID_STATION, station_to_join, HasBit(p1, 0),
 			TileArea(tile + ToTileIndexDiff(_dock_tileoffs_chkaround[direction]),
 					_dock_w_chk[direction], _dock_h_chk[direction]), &st);
 	ret.SetGlobalErrorMessage();
