@@ -686,7 +686,7 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Кошт
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Кредит:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Підсумок:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Кількість транспорту, який приніс прибуток торік; враховуються автомобілі, поїзди, кораблі та літаки
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Кількість транспорту, який приніс прибуток торік. Враховуються автомобілі, поїзди, кораблі та літаки
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Кількість нещодавно обслуговуваних частин станцій. Кожна частина станції (залізнична станція, автобусна зупинка, аеропорт) враховується, навіть якщо вони об'єднані в одну станцію
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Прибуток транспорту з найменшим доходом (тільки транспорт старіший 2 років)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Найменший квартальний прибуток за останні 12 кварталів
@@ -2246,6 +2246,7 @@ STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Коор
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Рік випуску: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Клас станції: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Тип станції: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Назва ділянки аеропорту: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Приймає: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
@@ -2503,7 +2504,7 @@ STR_NEWGRF_ERROR_READ_BOUNDS                                    :Читання 
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Обережно!
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Ви хочете зробити зміни у вже запущеній грі; це може привести до зависання OpenTTD.{}Ви впевнені що хочете зробити це?
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Ви хочете зробити зміни у вже запущеній грі. Це може привести до аварійної відмови OpenTTD.{}Ви точно впевнені, що хочете це зробити?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Не можу додати файл: однакові GRF ID
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Відповідного GRF-файлу не знайдено (завантажено сумісний файл)
@@ -3432,6 +3433,9 @@ STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}...не�
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Завелике значення
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Розміри дуже великі. Продовжити генерацію?
 
+# Soundset messages
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Був знайдений тільки запасний набір звуків. Якщо вам потрібні звуки, встановіть набір звуків через систему завантаження вмісту.
+
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Екран збережено в '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Помилка збереження екрану!
@@ -3546,6 +3550,7 @@ STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Не м�
 STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Не можна знести вантажну станцію...
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Не можна знести пасажирську трамвайну станцію...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Не можна знести вантажну трамвайну станцію...
+STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Спочатку приберіть зупинку
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Спочатку зруйнуйте залізничну станцію
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Спочатку зруйнуйте зупинку
@@ -3599,6 +3604,7 @@ STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(бракує �
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Неможливе з'єднання колії
+STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Спочатку приберіть сигнали
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Невідповідний тип колії
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Спочатку приберіть колію
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Дорога з одностороннім рухом або блокована

@@ -940,14 +940,14 @@ STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Seleccio
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Format de captures de pantalla
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Selecciona el format per les captures de pantalla
 
-STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Conjunt de gràfics bàsics
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Selecciona el conjunt de gràfics bàsics a utilitzar
+STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Conjunt de gràfics base
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Selecciona el conjunt de gràfics base a utilitzar
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} arxiu{P "" s} faltant{P "" s}/corromput{P "" s}
-STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Informació addicional sobre el conjunt de gràfics bàsics
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Informació addicional sobre el conjunt de gràfics base
 
-STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Conjunt de sons bàsics
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Selecciona un conjunt de sons bàsics a utilitzar
-STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Informació additional sobre el joc de sons bàsics
+STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Conjunt de sons base
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Selecciona un conjunt de sons base a utilitzar
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Informació additional sobre el joc de sons base
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Conjunt de músiques base
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Selecciona el conjunt de músiques base a utilitzar
@@ -1824,13 +1824,13 @@ STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD 
 STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... no és possible descarregar continguts!
 
 # Order of these is important!
-STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Gràfics bàsics
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Gràfics base
 STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
 STR_CONTENT_TYPE_AI                                             :IA
 STR_CONTENT_TYPE_AI_LIBRARY                                     :Llibreria IA
 STR_CONTENT_TYPE_SCENARIO                                       :Escenari
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Mapa d'alçades
-STR_CONTENT_TYPE_BASE_SOUNDS                                    :Sons bàsics
+STR_CONTENT_TYPE_BASE_SOUNDS                                    :Sons base
 STR_CONTENT_TYPE_BASE_MUSIC                                     :Música base
 
 # Content downloading progress window
@@ -3381,6 +3381,7 @@ STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Obres en
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}No es pot eliminar aquest poble...{}Hi ha una estació o una cotxera al poble o una cel·la pertanyent al poble no pot ser eliminada
 
 # Industry related errors
+STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... massa indústries
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}No es poden generar indústries...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Aquí no es pot construir {STRING}...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Aquí no es pot construir aquest tipus d'indústria...
@@ -3426,6 +3427,7 @@ STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}No es po
 STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}No es pot treure l'estació de camions...
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}No puc treure l'estació de tramvies de passatgers
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}No puc treure l'estació de tramvies de mercaderies
+STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Primer has de treure la parada
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Primer has d'enderrocar l'estació de tren
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Primer has d'enderrocar la parada d'autobús
