@@ -3568,13 +3568,14 @@ STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Naselje 
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Ovde je nemoguće izgraditi naselje...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}...previše blizu ivici terena
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}...drugo naselje je previše blizu
-STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}...previše naselja
+STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... ima previše naselja
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...više ne postoji slobodnog prostora na terenu
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Naselje neće graditi kolovoze. Možete uključiti gradnju kolovoza preko Napredna Podešavalja->Ekonomija->Naselja.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Putni radovi u toku
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Ovo naselje se ne može ukloniti...{}Stanica ili depo na zemljištvu naselja se ne može ukloniti
 
 # Industry related errors
+STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... ima previše fabrika
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Nemoguće stvaranje fabrika...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE} {STRING} je nemoguće izgraditi ovde...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Nije moguće ovde izgraditi taj tip industrije...
@@ -3822,7 +3823,7 @@ STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Vozilo m
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Ovo vozilo ne staje na tu stanicu.
 
 # Sign related errors
-STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}...previše je znakova
+STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... ima previše znakova
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Ovde je nemoguće postaviti znak...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Ime znaka se ne može promeniti...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Nemoguće je izbrisati znak...

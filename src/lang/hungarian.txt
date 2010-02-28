@@ -831,7 +831,7 @@ STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIGFONT}{BLACK
 STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK}Új szállítási vállalat alakult!
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} {TOWN} közelében kezd építkezni!
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} felvásárlásra került {STRING} által!
-STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Ügyvezető)
+STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Elnök)
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}{STRING} támogatásával új várost alapítottak {TOWN} néven!
 
@@ -2316,7 +2316,7 @@ STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}A hóhat
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}A hóhatár csökkentése eggyel
 STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Véletlen alapszám:
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Kattints ide a véletlen alapszám beírásához
-STR_MAPGEN_RANDOM                                               :{BLACK}Véletlenszerűen
+STR_MAPGEN_RANDOM                                               :{BLACK}Új véletlen alapszám
 STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Megváltoztatja a térképgenerálásnál használt véletlen alapszámot
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Térkép generátor:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Fa algoritmus:
@@ -2625,7 +2625,7 @@ STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}A kölcs
 
 # Company view
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
-STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENTNAME}{}{GOLD}(Ügyvezető)
+STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENTNAME}{}{GOLD}(Elnök)
 
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Alapítás éve: {WHITE}{NUM}
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Színséma:
@@ -2646,13 +2646,13 @@ STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}SZH áth
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}A vállalat székházának újraépítése máshol a vállalat értékének 1%-áért
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Új arc
-STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Új arc választása az ügyvezetőnek
+STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Új arc választása az elnöknek
 STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Színséma
 STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}A vállalat járműszíneinek megváltoztatása
 STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Vállalat neve
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}A vállalat nevének megváltoztatása
-STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Ügyvezető neve
-STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Az ügyvezető nevének megváltoztatása
+STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Elnök neve
+STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Az elnök nevének megváltoztatása
 
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}25% megvétele a vállalatból
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}25% eladása a vállalatból
@@ -2660,7 +2660,7 @@ STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}25%-nyi 
 STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}25%-nyi vállalati részvény eladása
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :A vállalat neve
-STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Ügyvezető neve
+STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Elnök neve
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Vállalatunk vagyontárgyait eladásra kínáljuk: járművek, terület és hálózat tulajdonok, bankszámla{}{}Megveszed {COMPANY} vállalatot {CURRENCY}-ért?
 
@@ -3417,7 +3417,7 @@ STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... már
 
 # Company related errors
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Nem változtathatod meg a vállalat nevét...
-STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Nem változtathatod meg az ügyvezető nevét...
+STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Nem változtathatod meg az elnök nevét...
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}...{CURRENCY} a megengedett legnagyobb kölcsön.
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Nem kölcsönözhetsz több pénzt...

@@ -549,7 +549,7 @@ STR_PERFORMANCE_DETAIL                                          :{WHITE}Detaljer
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detaljer
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
-STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM} %
+STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}{NBSP}%
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Køyretøy:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stasjonar:
@@ -564,9 +564,9 @@ STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Totalt:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Antal køyretøy med positiv forteneste i fjor. Dette inkluderer vegkøyretøy, tog, skip og flymaskiner
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Antal nyleg betjente stasjonsdelar. Kvar del av ein stasjon (t.d. togstasjon, busstopp, flyplass) vert telt, sjølv om dei er kobla saman til éin stasjon
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Vinst frå køyretøya med lågast inntekt (kun køyretøy eldre enn 2 år er tatt med)
-STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Pengar tente i månaden med lægst gevinst dei 12 siste kvartala
-STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Pengar tente i månaden med høgast gevinst dei siste 12 kvartala
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Fortenesta til køyretøyet med lågast inntekt (kun køyretøy eldre enn 2 år er tatt med)
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Inntekt i det kvartalet med lågast forteneste dei siste 12 kvartalene
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Inntekt i det kvartalet med høgast forteneste dei siste 12 kvartalene
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Antal leverte einingar dei siste fire kvartala
 STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Tal på vatetypar, levert dei siste fire kvartala
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Kor mykje pengar dette firmaet har i banken
@@ -757,7 +757,7 @@ STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIGFONT}{BLACK
 STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIGFONT}{BLACK}Fabrikk øydelagd på mistenkeleg vis i nærleiken av {TOWN}!
 STR_NEWS_DISASTER_BIG_UFO                                       :{BIGFONT}{BLACK}UFO landar i nærleiken av {TOWN}!
 STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIGFONT}{BLACK}Kollaps i ein gruvegoag gjer store øydeleggingar i nærleiken av {TOWN}!
-STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIGFONT}{BLACK}Flyt over!{}Minst {COMMA} truleg sakna eller daud{P "" e} etter skrekkeleg flaum!
+STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIGFONT}{BLACK}Flaum!{}Minst {COMMA} sakna eller antatt daud{P "" e} etter valdsam oversymjing!
 
 STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIGFONT}{BLACK}Transportfirma har problem!
 STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIGFONT}{BLACK}{STRING} vil verte seld eller nedlagt, dersom ikkje økonomien til firmaet tek seg opp!
@@ -787,10 +787,10 @@ STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}Ny kolåre funne i {INDUSTRY}!{}Ei dobling i produksjon er venta!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}Nye oljereservar funne i {INDUSTRY}!{}Ei dobling i produksjon er venta!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}Forbetra landbruksmetodar på {INDUSTRY} er venta å doble produksjonen!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK}Produksjonen av {STRING} ved {INDUSTRY} aukar med {COMMA} %!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK}Produksjonen av {STRING} ved {INDUSTRY} aukar med {COMMA}{NBSP}%!
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} sin produksjon har sokke med 50{NBSP}%
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}Insektinvasjon på {INDUSTRY}!{}Produksjonen søkk med 50 %
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK}Produksjonen av {STRING} ved {INDUSTRY} søkk med {COMMA} %!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}Insektinvasjon på {INDUSTRY}!{}Produksjonen søkk med 50{NBSP}%
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK}Produksjonen av {STRING} ved {INDUSTRY} søkk med {COMMA}{NBSP}%!
 
 STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} ventar i togstallen
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} ventar i garasjen
@@ -799,7 +799,7 @@ STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} har for få ordrar i køyreplanen
+STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} har for få ordrar på ruteplanen
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} har ein ugyldig ordre
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} har to like ordrar
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} har ein ugyldig stasjon i sine ordre
@@ -827,12 +827,12 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Tilbod om subsidie har gått ut:{}{}{STRING} frå {STRING} til {STRING} vil ikkje lenger vere subsidiert.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Subsidie trekt attende:{}{}Transport av {STRING} frå {STRING} til {STRING} er ikkje subsidiert lenger.
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Subsidie-tilbod:{}{}Første transport av {STRING} frå {STRING} til {STRING} vil vere subsidiert i eit år av bystyret!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Subsidie gjeve til {STRING}!{}{}Transport av {STRING} frå {STRING} til {STRING} vil gje 50 % meir inntekt i eit år!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Subsidie gjeve til {STRING}!{}{}Transport av {STRING} frå {STRING} til {STRING} vil gje 50{NBSP}% ekstra forteneste det neste året!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Subsidie gjeve til {STRING}!{}{}Transport av {STRING} frå {STRING} til {STRING} vil gje dobbel inntekt i eit år!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Subsidie gjeve til {STRING}!{}{}Transport av {STRING} frå {STRING} til {STRING} vil gje trippel inntekt i eit år!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}Subsidie gjeve til {STRING}!{}{}Transport av {STRING} frå {STRING} til {STRING} vil gje firedobbel inntekt i eit år!
 
-STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}Trafikkaos i {TOWN}!{}{}Ombygging av vegen, finansiert av {STRING}, vil gje vegproblem i 6 månader.
+STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}Trafikkaos i {TOWN}!{}{}Ombyggjing av vegen, finansiert av {STRING}, medførar 6 månaders irritasjon for bilistane!
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Tilleggsvindauge {COMMA}
@@ -1000,7 +1000,7 @@ STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Maks. a
 STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}Antal byar: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}Antal industriar: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Maks. startlån: {ORANGE}{CURRENCY}
-STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}Startrente: {ORANGE}{COMMA}%
+STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}Startrente: {ORANGE}{COMMA}{NBSP}%
 STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}Driftskostnader for køyretøy: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}Konstruksjonshastigheit hos konkurrentar: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_BREAKDOWNS                 :{LTBLUE}Køyretøyhavari: {ORANGE}{STRING}
@@ -1011,7 +1011,7 @@ STR_DIFFICULTY_LEVEL_SETTING_QUANTITY_OF_SEA_LAKES              :{LTBLUE}Mengd s
 STR_DIFFICULTY_LEVEL_SETTING_ECONOMY                            :{LTBLUE}Økonomi: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_TRAIN_REVERSING                    :{LTBLUE}Togreversering: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}Katastrofar: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Haldninga til bystyret til ombygging av felt: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Bystyrets haldning til ombyggjing av felt: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
 STR_NONE                                                        :Ingen
@@ -1084,7 +1084,7 @@ STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Tillet 
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Togakselerasjonsmodell: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Orginal
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistisk
-STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Hellingsnivå for tog {ORANGE}{STRING}%
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Hellingsnivå for tog {ORANGE}{STRING}{NBSP}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Forby tog og skip å gjere 90-graderssvingar: {ORANGE}{STRING} {LTBLUE} (ikkje med OPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Slå saman stasjoner som vert bygde på sida av einannan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Tillet samanbygging av ikkje direkte tilstøtande stasjonar: {ORANGE}{STRING}
@@ -1248,7 +1248,7 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Avisa v
 STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Start spelet i år {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Jamn økonomi (fleire, mindre endringar): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Tillet kjøp av aksjar i andre selskap: {ORANGE}{STRING}
-STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Prosent av etappeforteneste å betale i tilbringarsystemer: {ORANGE}{STRING}%
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Prosent av etappeforteneste å betale i tilbringarsystemer: {ORANGE}{STRING}{NBSP}%
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Ved opptrekking, plasser signal for hver: {ORANGE}{STRING}. rute
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Bygg vingesignal automatisk før: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Slå på signalgrensesnittet: {ORANGE}{STRING}
@@ -1838,7 +1838,7 @@ STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Lastar n
 STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Spør etter filer...
 STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Lastar ned {STRING} ({NUM} av {NUM})
 STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Nedlasting ferdig
-STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} av {BYTES} lasta ned ({NUM} %)
+STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} av {BYTES} lasta ned ({NUM}{NBSP}%)
 
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Kunne ikkje koble til innhaldstenar...
@@ -2300,7 +2300,7 @@ STR_GENERATION_WORLD                                            :{WHITE}Generere
 STR_GENERATION_ABORT                                            :{BLACK}Avbryt
 STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Avbryt verdsgenerering
 STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Vil du verkeleg avbryte verdsgenereringa?
-STR_GENERATION_PROGRESS                                         :{WHITE}{NUM} % ferdig
+STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}{NBSP}% ferdig
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Generer ei verd
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Tregenerering
@@ -2396,7 +2396,7 @@ STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Byter k�
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tog '{VEHICLE}' eigd av '{COMPANY}' har ulovleg lengde. Dette er sansynlegvis forårsaka av eit problem med NewGRFar. Spelet kan bli usynkronisert eller krasje.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' gjer gal informasjon.
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Vare/ombyggings-informasjon for '{1:ENGINE}' er forskjellig frå kjøpslista etter konstruksjon. Dette kan føra til at autofornying/erstatning ikkje tilpasser riktig.
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Vare/ombyggjings-informasjon for '{1:ENGINE}' er forskjellig frå kjøpslista etter konstruksjon. Dette kan føra til at autofornying/erstatning ikkje tilpasser riktig.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' forårsaka ei uendelig løkkje i produksjonskallet.
 
 # Sign list window
@@ -2451,19 +2451,19 @@ STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Gjer den
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Liten reklamekampanje
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Middels stor reklamekampanje
 STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Stor reklamekampanje
-STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Finansier lokal ombygging av vegnettet
+STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Finansier lokal ombyggjing av vegnettet
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Bygg statue av grunnleggjaren til firmaet
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Finansier nye bygningar
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Kjøp eksklusive transportrettar
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Bestikk bystyret
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW} Start ein liten lokal reklamekampanje for å trekkje til deg fleire passasjerar og varer til tenestene dine.{} Kostnad: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW} Start ein middels stor lokal reklamekampanje for å trekkje til deg fleire passajerar og varer til tenestene dine.{} Kostnad: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Start ein liten lokal reklamekampanje for å trekkje til deg fleire passasjerar og varer til tenestene dine.{} Kostnad: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Start ein middels stor lokal reklamekampanje for å trekkje til deg fleire passajerar og varer til tenestene dine.{} Kostnad: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Start ein stor lokal reklamekampanje for å trekkje til deg fleire passasjerar og varer til tenestene dine.{}Kostnad: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW} Finansier ombygging av det lokale vegnettet. Vil gje vegproblem dei neste 6 månadene.{} Kostnad: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Bygg ein statue for å heidre grunnleggjaren av firmaet.{} Kostnad: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW} Finansier bygging av nye forretningsbygg i byen.{} Kostnad: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Kjøp ekslusive transportrettar for eit år i byen. Bystyret tillet då berre bruk av tenestene dine.{} Kostnad: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Finansier ombyggjing av det lokale vegnettet. Vil gje vegproblem dei neste 6 månadene.{}Kostnad: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Bygg ein statue for å heidre grunnleggjaren av firmaet.{}Kostnad: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Finansier bygging av nye forretningsbygg i byen.{}Kostnad: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Kjøp ekslusive transportrettar for eit år i byen. Bystyret tillet då berre bruk av tenestene dine.{}Kostnad: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Bestikk bystyret til å forbetre vurderinga av firmaet, du risikerer bøter dersom du vert oppdaga.{}Kostnad: {CURRENCY}
 
 # Subsidies window
@@ -2499,7 +2499,7 @@ STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Godtek: 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Vurderingar
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Syne stasjonsvurdering
 STR_STATION_VIEW_CARGO_RATINGS_TITLE                            :{BLACK}Lokal vurdering av transporttenester:
-STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
+STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}{NBSP}%)
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :Forferdeleg
@@ -2515,10 +2515,10 @@ STR_CARGO_RATING_OUTSTANDING                                    :Framifrå
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Midtstill hovedvisninga på stasjonen. CTRL+klikk syner stasjonen i eit nytt tilleggsvindauge
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Byt namn på stasjonen
 
-STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Syne alle tog som har denne stasjonen på timeplanen sin
-STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Syne alle køyretøy som har denne stasjonen på timeplanen sin
-STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Syne alle fly som har denne stasjonen på timeplanen sin
-STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Syne alle skip som har denne stasjonen på timeplanen sin
+STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Syne alle tog som har denne stasjonen på ruteplanen sin
+STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Syne alle køyretøy som har denne stasjonen på ruteplanen sin
+STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Syne alle flymaskiner som har denne stasjonen på ruteplanen sin
+STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Syne alle skip som har denne stasjonen på ruteplanen sin
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Endre namnet på stasjon/lasteterminal
 
@@ -2533,7 +2533,7 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Endre na
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Rekneskapen til {COMPANY} {BLACK}{COMPANYNUM}
-STR_FINANCES_EXPENDITURE_INCOME_TITLE                           :{WHITE}Kostnader/inntekter
+STR_FINANCES_EXPENDITURE_INCOME_TITLE                           :{WHITE}Utgifter/inntekter
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Konstruksjon
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Nye køyretøy
@@ -2573,14 +2573,14 @@ STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} skip
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Ingen
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Firmaverdi: {WHITE}{CURRENCY}
-STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA} % eigast av {COMPANY})
+STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}{NBSP}% eigast av {COMPANY})
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Bygg hovudkontor
 STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Bygg firmaet's hovedkvarter
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Syne hovudkontor
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Syne firmaets hovudkontor
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Omplasser hovudkvarter
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Gjenoppbygg selskapets hovudkvarter ein annan stad for 1 % av verdien til firmaet
+STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Gjenoppbygg selskapets hovudkvarter ein annan stad til ein kostnad av 1{NBSP}% av firmaverdien
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nytt andlet
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Gje sjefen ei andletslyfting
@@ -2591,10 +2591,10 @@ STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Byt firm
 STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Namnet til sjefen
 STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Byt namnet på sjefen
 
-STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Kjøp 25 % av aksjane i firmaet
-STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Sel 25 % av aksjane i firmaet
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Kjøp 25 % av aksjane i firmaet
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Sel 25 % av aksjane i firmaet
+STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Kjøp 25{NBSP}% av aksjane i firmaet
+STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Sel 25{NBSP}% av aksjane i firmaet
+STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Kjøp 25{NBSP}% av aksjane i firmaet
+STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Sel 25{NBSP}% av aksjane i firmaet
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Firmanamn
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Namnet til sjefen
@@ -2604,15 +2604,15 @@ STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Vi ser e
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industriar
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Ingen -
-STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA} % transportert)
-STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA} %/{COMMA} % transportert)
+STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}{NBSP}% transportert)
+STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}{NBSP}%/{COMMA}{NBSP}% transportert)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Industrinamn - Klikk på industrinamnet for å syne industrien i hovedvisninga. CTRL+klikk syner industrien i eit nytt tilleggsvindauge
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Produksjon førre månad:
-STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA} % transportert)
+STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}{NBSP}% transportert)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Midtstill hovedvisninga på industrien. CTRL+klikk syner industrien i eit nytt tilleggsvindauge
 
 ############ range for requires starts
@@ -2639,7 +2639,7 @@ STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING}
 STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Tog - klikk på tog for meir informasjon
 STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Køyretøy - klikk på køyretøy for informasjon
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Skip - klikk på skip for meir informasjon
-STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Fly - klikk på flymaskin for meir informasjon
+STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Flymaskin - klikk på flymaskin for meir informasjon
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Forteneste i år: {CURRENCY} (førre år: {CURRENCY})
 
@@ -2704,7 +2704,7 @@ STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Driftsko
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapasitet: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(ombyggbart)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Designa: {GOLD}{NUM}{BLACK} Levetid: {GOLD}{COMMA} år
-STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Maks. pålitelegheit: {GOLD}{COMMA} %
+STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Maks. pålitelegheit: {GOLD}{COMMA}{NBSP}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Kostnad: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Vekt: {GOLD}{WEIGHT_S} ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Kostnad: {GOLD}{CURRENCY}{BLACK} Hastigheit: {GOLD}{VELOCITY}
@@ -2825,7 +2825,7 @@ STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Melding 
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Vi har nyss designa eit nytt {STRING} - er du interessert i å freiste denne farkosten i eit år, slik at vi kan sjå korleis det verkar før vi gjer han tilgjengeleg for alle?
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :lokomotiv
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :køyretøy
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :fly
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :flymaskin
 STR_ENGINE_PREVIEW_SHIP                                         :skip
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :monorail-lokomotiv
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :maglev-lokomotiv
@@ -2840,7 +2840,7 @@ STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Erstatt 
 STR_REPLACE_VEHICLE_TRAIN                                       :Tog
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Køyretøy
 STR_REPLACE_VEHICLE_SHIP                                        :Skip
-STR_REPLACE_VEHICLE_AIRCRAFT                                    :Fly
+STR_REPLACE_VEHICLE_AIRCRAFT                                    :Flymaskin
 
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Vel lokomotivtype å byte ut
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Vel den nye typen lokomotiv du vil at skal ta over for den du har vald til venstre
@@ -2890,7 +2890,7 @@ STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Tving to
 STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Bygg om toget til å frakte ein annan varetype
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Bygg om køyretøyet til å frakte ein annan varetype
 STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Bygg om skipet til å frakte ein annan varetype
-STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Bygg flymaskinen til å frakte ein annan varetype
+STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Bygg om flymaskinen til å frakte ein annan varetype
 
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Byt køyreretning
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Byt køyreretning
@@ -2956,7 +2956,7 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Namngje 
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Namngje skip
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Namngje flymaskin
 
-STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Alder: {LTBLUE}{STRING}{BLACK}   Vedlikeholdskostnadar: {LTBLUE}{CURRENCY}/år
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Alder: {LTBLUE}{STRING}{BLACK}   Driftskostnadar: {LTBLUE}{CURRENCY}/år
 # The next two need to stay in this order
 STR_VEHICLE_INFO_AGE                                            :{COMMA} år ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} år ({COMMA})
@@ -2966,7 +2966,7 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Vekt: {L
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Vekt: {LTBLUE}{WEIGHT_S} {BLACK}Kraft: {LTBLUE}{POWER}{BLACK} Maks. hastigheit: {LTBLUE}{VELOCITY} {BLACK}Maks. trekkraft: {LTBLUE}{FORCE}
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Overskudd i år: {LTBLUE}{CURRENCY} (forrige år: {CURRENCY})
-STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Pålitelegheit: {LTBLUE}{COMMA}%  {BLACK}Havari sidan sist vedlikehald: {LTBLUE}{COMMA}
+STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Pålitelegheit: {LTBLUE}{COMMA}{NBSP}%  {BLACK}Havari sidan sist vedlikehald: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Bygd: {LTBLUE}{NUM}{BLACK} Verdi: {LTBLUE}{CURRENCY}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Kapasitet: {LTBLUE}Ingen
@@ -2977,7 +2977,7 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Kapasite
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Overfør kreditt: {LTBLUE}{CURRENCY}
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Vedlikehaldsintervall: {LTBLUE}{COMMA}dagar{BLACK}   Førre vedlikehald: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Vedlikehaldsintervall: {LTBLUE}{COMMA} %{BLACK}   Førre vedlikehald: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Vedlikehaldsintervall: {LTBLUE}{COMMA}{NBSP}%{BLACK}   Førre vedlikehald: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Auk vedlikehaldsintervall med 10. CTRL+klikk aukar vedlikehaldsintervallet med 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Minsk vedlikehaldsintervall av tog med 10. CTRL+klikk minskar intervallet med 5
 
@@ -3012,7 +3012,7 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Kapasite
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (bygg om)
 STR_REFIT_TITLE                                                 :{GOLD}Vel varetype:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Ny kapasitet: {GOLD}{CARGO}{}{BLACK}Ombyggingskostnader: {GOLD}{CURRENCY}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Ny kapasitet: {GOLD}{CARGO}{}{BLACK}Ombyggjingskostnader: {GOLD}{CURRENCY}
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vel kva type varer toget skal frakte
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Vel kva type varer køyretøyet skal frakte
@@ -3064,7 +3064,7 @@ STR_ORDER_DROP_NO_UNLOADING                                     :Ingen lossing
 STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Byt lossingsrutinane for den merkte ordren
 
 STR_ORDER_REFIT                                                 :{BLACK}Bygg om
-STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Vel hvilken varetype det skal byggas om til i denne ordren. CTRL+klikk for å fjerne ombyggingsordra
+STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Vel hvilken varetype det skal byggjast om til i denne ordren. CTRL+klikk for å fjerne ombyggjingsordra
 
 STR_ORDER_SERVICE                                               :{BLACK}Vedlikehald
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Alltid gå
@@ -3106,7 +3106,7 @@ STR_ORDER_CONDITIONAL                                           :Betinga ordreho
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Set inn ein ny ordre før den valde ordren, eller legg til i slutten av lista. CTRL gjer ordren 'full last, enhver varetype', kontrollpunktordre 'direkte' og verkstadsordre 'vedlikehald'
 STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Set inn ein avansert odre
 
-STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Syne alle køyretøy som delerv denne ruteplanen
+STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Syne alle køyretøy som delar denne ruteplanen
 
 # String parts to build the order string
 STR_ORDER_GO_TO_WAYPOINT                                        :Køyr om {WAYPOINT}
@@ -3364,8 +3364,8 @@ STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Kan ikkj
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Kan ikkje gje vekk pengar som er lånt frå banken...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Kan ikkje kjøpe firma...
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Kan ikkje byggje hovudkontor...
-STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Kan ikkje kjøpa 25 % av aksjane...
-STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Kan ikkje selja 25 % av aksjane...
+STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Kan ikkje kjøpa 25{NBSP}% av aksjane...
+STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Kan ikkje selja 25{NBSP}% av aksjane...
 STR_ERROR_PROTECTED                                             :{WHITE}Dette selskapet sel ikkje aksjer enno...
 
 # Town related errors
@@ -3381,6 +3381,7 @@ STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Vegarbei
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kan ikkje fjerne denne byen...{}Ein stasjon eller garasje/stall/hangar/dokk refererar til byen eller ei by-egd rute som ikkje kan fjernast
 
 # Industry related errors
+STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... for mange industriar
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Kan ikkje generere industriar...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Kan ikkje byggja {STRING} her...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Kan ikkje byggja denne typen industri her...

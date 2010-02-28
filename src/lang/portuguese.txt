@@ -809,7 +809,7 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} está a ficar muito velho e urgentemente necessita de substituição
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} não consegue encontrar um caminho para continuar.
 STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} está perdido.
-STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :O lucro do veículo {WHITE}{VEHICLE} foi de {CURRENCY}
+STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}O lucro do veículo {VEHICLE} foi de {CURRENCY}
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} parado porque a ordem de ajuste não foi bem sucedida
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Auto-renovação falhou em {VEHICLE}{}{STRING}
@@ -3380,6 +3380,7 @@ STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Trabalho
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Não é possível eliminar esta cidade...{}Uma estação ou depósito refere-se à cidade ou não é possível remover terreno pertencente à cidade
 
 # Industry related errors
+STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... demasiadas indústrias
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Não é possível gerar indústrias...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Não é possível construir {STRING} aqui...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Não é possível construir este tipo de indústria aqui...
