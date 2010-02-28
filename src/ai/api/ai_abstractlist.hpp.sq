@@ -41,7 +41,7 @@ void SQAIAbstractList_Register(Squirrel *engine)
 	SQAIAbstractList.DefSQMethod(engine, &AIAbstractList::Begin,              "Begin",              1, "x");
 	SQAIAbstractList.DefSQMethod(engine, &AIAbstractList::Next,               "Next",               1, "x");
 	SQAIAbstractList.DefSQMethod(engine, &AIAbstractList::IsEmpty,            "IsEmpty",            1, "x");
-	SQAIAbstractList.DefSQMethod(engine, &AIAbstractList::HasNext,            "HasNext",            1, "x");
+	SQAIAbstractList.DefSQMethod(engine, &AIAbstractList::IsEnd,              "IsEnd",              1, "x");
 	SQAIAbstractList.DefSQMethod(engine, &AIAbstractList::Count,              "Count",              1, "x");
 	SQAIAbstractList.DefSQMethod(engine, &AIAbstractList::GetValue,           "GetValue",           2, "xi");
 	SQAIAbstractList.DefSQMethod(engine, &AIAbstractList::SetValue,           "SetValue",           3, "xii");

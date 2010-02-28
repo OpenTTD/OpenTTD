@@ -42,9 +42,9 @@ public:
 	virtual int32 Next() = 0;
 
 	/**
-	 * See if there is a next item of the sorter.
+	 * See if the sorter has reached the end.
 	 */
-	virtual bool HasNext() = 0;
+	virtual bool IsEnd() = 0;
 
 	/**
 	 * Callback from the list if an item gets removed.
@@ -114,7 +114,7 @@ public:
 
 	int32 Next()
 	{
-		if (!this->HasNext()) return 0;
+		if (this->IsEnd()) return 0;
 
 		int32 item_current = this->item_next;
 		FindNext();
@@ -123,7 +123,7 @@ public:
 
 	void Remove(int item)
 	{
-		if (!this->HasNext()) return;
+		if (this->IsEnd()) return;
 
 		/* If we remove the 'next' item, skip to the next */
 		if (item == this->item_next) {
@@ -132,9 +132,9 @@ public:
 		}
 	}
 
-	bool HasNext()
+	bool IsEnd()
 	{
-		return !(this->list->buckets.empty() || this->has_no_more_items);
+		return this->list->buckets.empty() || this->has_no_more_items;
 	}
 };
 
@@ -208,7 +208,7 @@ public:
 
 	int32 Next()
 	{
-		if (!this->HasNext()) return 0;
+		if (this->IsEnd()) return 0;
 
 		int32 item_current = this->item_next;
 		FindNext();
@@ -217,7 +217,7 @@ public:
 
 	void Remove(int item)
 	{
-		if (!this->HasNext()) return;
+		if (this->IsEnd()) return;
 
 		/* If we remove the 'next' item, skip to the next */
 		if (item == this->item_next) {
@@ -226,9 +226,9 @@ public:
 		}
 	}
 
-	bool HasNext()
+	bool IsEnd()
 	{
-		return !(this->list->buckets.empty() || this->has_no_more_items);
+		return this->list->buckets.empty() || this->has_no_more_items;
 	}
 };
 
@@ -278,7 +278,7 @@ public:
 
 	int32 Next()
 	{
-		if (!this->HasNext()) return 0;
+		if (this->IsEnd()) return 0;
 
 		int32 item_current = this->item_next;
 		FindNext();
@@ -287,7 +287,7 @@ public:
 
 	void Remove(int item)
 	{
-		if (!this->HasNext()) return;
+		if (this->IsEnd()) return;
 
 		/* If we remove the 'next' item, skip to the next */
 		if (item == this->item_next) {
@@ -296,9 +296,9 @@ public:
 		}
 	}
 
-	bool HasNext()
+	bool IsEnd()
 	{
-		return !(this->list->items.empty() || this->has_no_more_items);
+		return this->list->items.empty() || this->has_no_more_items;
 	}
 };
 
@@ -349,7 +349,7 @@ public:
 
 	int32 Next()
 	{
-		if (!this->HasNext()) return 0;
+		if (this->IsEnd()) return 0;
 
 		int32 item_current = this->item_next;
 		FindNext();
@@ -358,7 +358,7 @@ public:
 
 	void Remove(int item)
 	{
-		if (!this->HasNext()) return;
+		if (this->IsEnd()) return;
 
 		/* If we remove the 'next' item, skip to the next */
 		if (item == this->item_next) {
@@ -367,9 +367,9 @@ public:
 		}
 	}
 
-	bool HasNext()
+	bool IsEnd()
 	{
-		return !(this->list->items.empty() || this->has_no_more_items);
+		return this->list->items.empty() || this->has_no_more_items;
 	}
 };
 
@@ -448,13 +448,13 @@ bool AIAbstractList::IsEmpty()
 	return this->items.empty();
 }
 
-bool AIAbstractList::HasNext()
+bool AIAbstractList::IsEnd()
 {
 	if (this->initialized == false) {
-		DEBUG(ai, 0, "HasNext() is invalid as Begin() is never called");
-		return false;
+		DEBUG(ai, 0, "IsEnd() is invalid as Begin() is never called");
+		return true;
 	}
-	return this->sorter->HasNext();
+	return this->sorter->IsEnd();
 }
 
 int32 AIAbstractList::Count()
@@ -748,7 +748,7 @@ SQInteger AIAbstractList::_nexti(HSQUIRRELVM vm)
 	sq_getinteger(vm, 2, &idx);
 
 	int val = this->Next();
-	if (!this->HasNext()) {
+	if (this->IsEnd()) {
 		sq_pushnull(vm);
 		return 1;
 	}

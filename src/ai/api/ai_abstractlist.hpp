@@ -86,13 +86,14 @@ public:
 	/**
 	 * Go to the beginning of the list.
 	 * @return the item value of the first item.
+	 * @note returns 0 if beyond end-of-list. Use IsEnd() to check for end-of-list.
 	 */
 	int32 Begin();
 
 	/**
 	 * Go to the next item in the list.
 	 * @return the item value of the next item.
-	 * @note returns 0 if beyond end-of-list. Use HasNext() to check for end-of-list.
+	 * @note returns 0 if beyond end-of-list. Use IsEnd() to check for end-of-list.
 	 */
 	int32 Next();
 
@@ -103,11 +104,11 @@ public:
 	bool IsEmpty();
 
 	/**
-	 * Check if there is a next element. In other words, if this is true,
-	 *   Next() will return a valid item.
-	 * @return true if there is a next item.
+	 * Check if there is a element left. In other words, if this is false,
+	 * the last call to Begin() or Next() returned a valid item.
+	 * @return true if the current item is beyond end-of-list.
 	 */
-	bool HasNext();
+	bool IsEnd();
 
 	/**
 	 * Returns the amount of items in the list.

@@ -18,6 +18,12 @@
  *
  * 1.1.0 is not yet released. The following changes are not set in stone yet.
  *
+ * API additions:
+ * \li IsEnd for all lists.
+ *
+ * API removals:
+ * \li HasNext for all lists.
+ *
  * Other changes:
  * \li AIRoad::BuildRoadStation now allows overbuilding
  * \li AIRoad::BuildDriveThroughRoadStation now allows overbuilding

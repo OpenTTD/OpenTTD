@@ -274,3 +274,39 @@ AIRoad.BuildDriveThroughRoadStation <- function(tile, front, road_veh_type, stat
 
 	return AIRoad._BuildDriveThroughRoadStation(tile, front, road_veh_type, station_id);
 }
+
+AIAbstractList.HasNext <-
+AIBridgeList.HasNext <-
+AIBridgeList_Length.HasNext <-
+AICargoList.HasNext <-
+AICargoList_IndustryAccepting.HasNext <-
+AICargoList_IndustryProducing.HasNext <-
+AIDepotList.HasNext <-
+AIEngineList.HasNext <-
+AIGroupList.HasNext <-
+AIIndustryList.HasNext <-
+AIIndustryList_CargoAccepting.HasNext <-
+AIIndustryList_CargoProducing.HasNext <-
+AIIndustryTypeList.HasNext <-
+AIList.HasNext <-
+AIRailTypeList.HasNext <-
+AISignList.HasNext <-
+AIStationList.HasNext <-
+AIStationList_Vehicle.HasNext <-
+AISubsidyList.HasNext <-
+AITileList.HasNext <-
+AITileList_IndustryAccepting.HasNext <-
+AITileList_IndustryProducing.HasNext <-
+AITileList_StationType.HasNext <-
+AITownList.HasNext <-
+AIVehicleList.HasNext <-
+AIVehicleList_DefaultGroup.HasNext <-
+AIVehicleList_Group.HasNext <-
+AIVehicleList_SharedOrders.HasNext <-
+AIVehicleList_Station.HasNext <-
+AIWaypointList.HasNext <-
+AIWaypointList_Vehicle.HasNext <-
+function()
+{
+	return !this.IsEnd();
+}

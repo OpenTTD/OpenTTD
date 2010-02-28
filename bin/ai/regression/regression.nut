@@ -35,7 +35,7 @@ function Regression::TestInit()
 	list.AddItem(35, 40);
 	list.AddItem(40, 40);
 
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		list.RemoveItem(i - 10);
 		list.RemoveItem(i - 5);
 		list.RemoveItem(i);
@@ -48,12 +48,12 @@ function Regression::TestInit()
 	list.AddItem(40, 40);
 
 	print("");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		list.SetValue(i, 2);
 		print("   " + i);
 	}
 	print("");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("   " + i);
 	}
 
@@ -70,7 +70,7 @@ function Regression::TestInit()
 	list.AddItem(35, 40);
 	list.AddItem(40, 40);
 
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		list.RemoveItem(i + 10);
 		list.RemoveItem(i + 5);
 		list.RemoveItem(i);
@@ -83,12 +83,12 @@ function Regression::TestInit()
 	list.AddItem(40, 40);
 
 	print("");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		list.SetValue(i, 50);
 		print("   " + i);
 	}
 	print("");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("   " + i);
 	}
 
@@ -105,7 +105,7 @@ function Regression::TestInit()
 	list.AddItem(35, 40);
 	list.AddItem(40, 40);
 
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		list.RemoveItem(i - 10);
 		list.RemoveItem(i - 5);
 		list.RemoveItem(i);
@@ -118,12 +118,12 @@ function Regression::TestInit()
 	list.AddItem(40, 40);
 
 	print("");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		list.SetValue(i, 2);
 		print("   " + i);
 	}
 	print("");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("   " + i);
 	}
 
@@ -140,7 +140,7 @@ function Regression::TestInit()
 	list.AddItem(35, 40);
 	list.AddItem(40, 40);
 
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		list.RemoveItem(i + 10);
 		list.RemoveItem(i + 5);
 		list.RemoveItem(i);
@@ -153,12 +153,12 @@ function Regression::TestInit()
 	list.AddItem(40, 40);
 
 	print("");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		list.SetValue(i, 50);
 		print("   " + i);
 	}
 	print("");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("   " + i);
 	}
 
@@ -283,22 +283,22 @@ function Regression::BridgeList()
 	print("  Count():             " + list.Count());
 	list.Valuate(AIBridge.GetMaxSpeed);
 	print("  MaxSpeed ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 	list.Valuate(AIBridge.GetPrice, 5);
 	print("  Price ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 	list.Valuate(AIBridge.GetMaxLength);
 	print("  MaxLength ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 	list.Valuate(AIBridge.GetMinLength);
 	print("  MinLength ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 
@@ -309,12 +309,12 @@ function Regression::BridgeList()
 	print("  Count():             " + list.Count());
 	list.Valuate(AIBridge.GetMaxSpeed);
 	print("  MaxSpeed ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 	list.Valuate(AIBridge.GetPrice, 14);
 	print("  Price ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 }
@@ -347,13 +347,13 @@ function Regression::CargoList()
 	print("  Count():            " + list.Count());
 	list.Valuate(AICargo.IsFreight);
 	print("  IsFreight ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 
 	list.Valuate(AICargo.GetCargoIncome, 100, 100);
 	print("  CargoIncomes(100, 100) ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 
@@ -362,7 +362,7 @@ function Regression::CargoList()
 	print("--CargoList_IndustryAccepting--");
 	print("  Count():            " + list.Count());
 	print("  ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i);
 	}
 
@@ -371,7 +371,7 @@ function Regression::CargoList()
 	print("--CargoList_IndustryProducing--");
 	print("  Count():            " + list.Count());
 	print("  ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i);
 	}
 }
@@ -479,27 +479,27 @@ function Regression::EngineList()
 	print("  Count():             " + list.Count());
 	list.Valuate(AIEngine.GetCargoType);
 	print("  CargoType ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 	list.Valuate(AIEngine.GetCapacity);
 	print("  Capacity ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 	list.Valuate(AIEngine.GetReliability);
 	print("  Reliability ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 	list.Valuate(AIEngine.GetMaxSpeed);
 	print("  MaxSpeed ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 	list.Valuate(AIEngine.GetPrice);
 	print("  Price ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 }
@@ -586,7 +586,7 @@ function Regression::Industry()
 	print("  GetIndustryCount():  " + AIIndustry.GetIndustryCount());
 	local list = AIIndustryList();
 	list.Sort(AIAbstractList.SORT_BY_ITEM, AIAbstractList.SORT_ASCENDING);
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		if (AIIndustry.IsValidIndustry(i)) j++;
 		print("  Industry " + i);
 		print("    IsValidIndustry(): " + AIIndustry.IsValidIndustry(i));
@@ -595,7 +595,7 @@ function Regression::Industry()
 		print("    IsCargoAccepted(): " + AIIndustry.IsCargoAccepted(i, 1));
 
 		local cargo_list = AICargoList();
-		for (local j = cargo_list.Begin(); cargo_list.HasNext(); j = cargo_list.Next()) {
+		for (local j = cargo_list.Begin(); !cargo_list.IsEnd(); j = cargo_list.Next()) {
 			if (AIIndustry.IsCargoAccepted(i, j) || AIIndustry.GetLastMonthProduction(i,j) >= 0) {
 				print("	   GetLastMonthProduction():  " + AIIndustry.GetLastMonthProduction(i, j));
 				print("	   GetLastMonthTransported(): " + AIIndustry.GetLastMonthTransported(i, j));
@@ -616,27 +616,27 @@ function Regression::IndustryList()
 	print("  Count():             " + list.Count());
 	list.Valuate(AIIndustry.GetLocation);
 	print("  Location ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 	list.Valuate(AIIndustry.GetDistanceManhattanToTile, 30000);
 	print("  DistanceManhattanToTile(30000) ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 	list.Valuate(AIIndustry.GetDistanceSquareToTile, 30000);
 	print("  DistanceSquareToTile(30000) ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 	list.Valuate(AIIndustry.GetAmountOfStationsAround);
 	print("  GetAmountOfStationsAround(30000) ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 	list.Valuate(AIIndustry.IsCargoAccepted, 1);
 	print("  CargoAccepted(1) ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 
@@ -645,7 +645,7 @@ function Regression::IndustryList()
 	print("  Count():             " + list.Count());
 	list.Valuate(AIIndustry.GetLocation);
 	print("  Location ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 
@@ -654,7 +654,7 @@ function Regression::IndustryList()
 	print("  Count():             " + list.Count());
 	list.Valuate(AIIndustry.GetLocation);
 	print("  Location ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 }
@@ -668,7 +668,7 @@ function Regression::IndustryTypeList()
 	print("  Count():             " + list.Count());
 	list.Valuate(AIIndustry.GetLocation);
 	print("  Location ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    Id:                      " + i);
 		print("    IsRawIndustry():         " + AIIndustryType.IsRawIndustry(i));
 		print("    ProductionCanIncrease(): " + AIIndustryType.ProductionCanIncrease(i));
@@ -709,43 +709,43 @@ function Regression::List()
 	print("  IsEmpty():     " + list.IsEmpty());
 	list.Sort(AIAbstractList.SORT_BY_ITEM, AIAbstractList.SORT_ASCENDING);
 	print("  List Dump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 	list.Valuate(CustomValuator);
 	print("  Custom ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 	list.Valuate(function (a) { return a * 42; });
 	print("  Custom ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 	list.Valuate(AIBase.RandItem);
 	print("  Randomize ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 
 	list.KeepTop(10);
 	print("  KeepTop(10):");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 	list.KeepBottom(8);
 	print("  KeepBottom(8):");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 	list.RemoveBottom(2);
 	print("  RemoveBottom(2):");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 	list.RemoveTop(2);
 	print("  RemoveTop(2):");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 
@@ -754,13 +754,13 @@ function Regression::List()
 	list2.AddItem(1004, 0);
 	list.RemoveList(list2);
 	print("  RemoveList({1003, 1004}):");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 	list2.AddItem(1005, 0);
 	list.KeepList(list2);
 	print("  KeepList({1003, 1004, 1005}):");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 	list2.Clear();
@@ -770,7 +770,7 @@ function Regression::List()
 	list2.AddItem(1005, 1005);
 	list.AddList(list2);
 	print("  AddList({1005, 4000, 4001, 4002}):");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 	list[4000] = 50;
@@ -791,27 +791,27 @@ function Regression::List()
 	}
 
 	local it = list.Begin();
-	print("    " + it + " => " + list.GetValue(it) + "  (" + list.HasNext() + ")");
+	print("    " + it + " => " + list.GetValue(it) + "  (" + !list.IsEnd() + ")");
 	list.Sort(list.SORT_BY_VALUE, list.SORT_ASCENDING);
 	it = list.Next();
-	print("    " + it + " => " + list.GetValue(it) + "  (" + list.HasNext() + ")");
+	print("    " + it + " => " + list.GetValue(it) + "  (" + !list.IsEnd() + ")");
 
 	it = list.Begin();
-	print("    " + it + " => " + list.GetValue(it) + "  (" + list.HasNext() + ")");
+	print("    " + it + " => " + list.GetValue(it) + "  (" + !list.IsEnd() + ")");
 
 	list.SetValue(it + 1, -5);
 	it = list.Next();
-	print("    " + it + " => " + list.GetValue(it) + "  (" + list.HasNext() + ")");
+	print("    " + it + " => " + list.GetValue(it) + "  (" + !list.IsEnd() + ")");
 
 	list.RemoveValue(list.GetValue(it) + 1);
 	it = list.Next();
-	print("    " + it + " => " + list.GetValue(it) + "  (" + list.HasNext() + ")");
+	print("    " + it + " => " + list.GetValue(it) + "  (" + !list.IsEnd() + ")");
 
 	list.RemoveAboveValue(list.GetValue(it));
 	it = list.Next();
-	print("    " + it + " => " + list.GetValue(it) + "  (" + list.HasNext() + ")");
+	print("    " + it + " => " + list.GetValue(it) + "  (" + !list.IsEnd() + ")");
 
-	while (list.HasNext()) {
+	while (!list.IsEnd()) {
 		it = list.Next();
 		print("    " + it + " => " + list.GetValue(it));
 	}
@@ -879,11 +879,11 @@ function Regression::Marine()
 	print("--AIWaypointList(BUOY)--");
 	print("  Count():             " + list.Count());
 	print("  Location ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + AIWaypoint.GetLocation(i));
 	}
 	print("  HasWaypointType:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + AIWaypoint.HasWaypointType(i, AIWaypoint.WAYPOINT_RAIL) + "  " + AIWaypoint.HasWaypointType(i, AIWaypoint.WAYPOINT_BUOY) + "  " + AIWaypoint.HasWaypointType(i, AIWaypoint.WAYPOINT_ANY));
 	}
 	print("");
@@ -966,37 +966,37 @@ function Regression::Order()
 	print("  Count():             " + list.Count());
 	list.Valuate(AIStation.GetLocation);
 	print("  Location ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 	list.Valuate(AIStation.GetCargoWaiting, 0);
 	print("  CargoWaiting(0) ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 	list.Valuate(AIStation.GetCargoWaiting, 1);
 	print("  CargoWaiting(1) ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 	list.Valuate(AIStation.GetCargoRating, 1);
 	print("  CargoRating(1) ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 	list.Valuate(AIStation.GetDistanceManhattanToTile, 30000);
 	print("  DistanceManhattanToTile(30000) ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 	list.Valuate(AIStation.GetDistanceSquareToTile, 30000);
 	print("  DistanceSquareToTile(30000) ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 	list.Valuate(AIStation.IsWithinTownInfluence, 0);
 	print("  IsWithinTownInfluence(0) ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 
@@ -1007,7 +1007,7 @@ function Regression::Order()
 	print("  Count():             " + list.Count());
 	list.Valuate(AIVehicle.GetLocation);
 	print("  Location ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 	print("  foreach():");
@@ -1024,7 +1024,7 @@ function Regression::RailTypeList()
 	print("--RailTypeList--");
 	print("  Count():             " + list.Count());
 	print("  ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    RailType:                " + i);
 		print("    IsRailTypeAvailable():   " + AIRail.IsRailTypeAvailable(i));
 	}
@@ -1059,7 +1059,7 @@ function Regression::Rail()
 	print("      Count():                     " + list.Count());
 	list.Valuate(AITile.GetDistanceManhattanToTile, 0);
 	print("      Depot distance from (0,0) ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("        " + i + " => " + list.GetValue(i));
 	}
 	print("    RemoveDepot():                 " + AITile.DemolishTile(33411));
@@ -1137,7 +1137,7 @@ function Regression::Road()
 	print("      Count():                     " + list.Count());
 	list.Valuate(AITile.GetDistanceManhattanToTile, 0);
 	print("      Depot distance from (0,0) ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("        " + i + " => " + list.GetValue(i));
 	}
 	print("    RemoveRoadDepot():             " + AIRoad.RemoveRoadDepot(33411));
@@ -1196,7 +1196,7 @@ function Regression::Sign()
 	print("");
 	local list = AISignList();
 	list.Sort(AIAbstractList.SORT_BY_ITEM, AIAbstractList.SORT_ASCENDING);
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		j++;
 		print("  Sign " + i);
 		print("    IsValidSign():   " + AISign.IsValidSign(i));
@@ -1246,17 +1246,17 @@ function Regression::Station()
 	print("  Count():             " + list.Count());
 	list.Valuate(AIStation.GetLocation);
 	print("  Location ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 	list.Valuate(AIStation.GetCargoWaiting, 0);
 	print("  CargoWaiting(0) ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 	list.Valuate(AIStation.GetCargoWaiting, 1);
 	print("  CargoWaiting(1) ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 }
@@ -1297,7 +1297,7 @@ function Regression::TileList()
 	print("  Slope():             done");
 	print("  Count():             " + list.Count());
 	print("  ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 		print("    " + i + " => " + AITile.GetComplementSlope(list.GetValue(i)));
 		print("    " + i + " => " + AITile.IsSteepSlope(list.GetValue(i)));
@@ -1315,7 +1315,7 @@ function Regression::TileList()
 	print("  Height():            done");
 	print("  Count():             " + list.Count());
 	print("  ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 
@@ -1323,7 +1323,7 @@ function Regression::TileList()
 	print("  CornerHeight(North): done");
 	print("  Count():             " + list.Count());
 	print("  ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 
@@ -1331,7 +1331,7 @@ function Regression::TileList()
 	print("  MinHeight():         done");
 	print("  Count():             " + list.Count());
 	print("  ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 
@@ -1339,7 +1339,7 @@ function Regression::TileList()
 	print("  MaxHeight():         done");
 	print("  Count():             " + list.Count());
 	print("  ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 
@@ -1349,7 +1349,7 @@ function Regression::TileList()
 	print("  KeepValue(0):        done");
 	print("  Count():             " + list.Count());
 	print("  ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 
@@ -1363,27 +1363,27 @@ function Regression::TileList()
 
 	list.Valuate(AITile.IsBuildableRectangle, 3, 3);
 	print("  BuildableRectangle(3, 3) ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 	list.Valuate(AITile.GetDistanceManhattanToTile, 30000);
 	print("  DistanceManhattanToTile(30000) ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 	list.Valuate(AITile.GetDistanceSquareToTile, 30000);
 	print("  DistanceSquareToTile(30000) ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 	list.Valuate(AITile.GetOwner);
 	print("  GetOwner() ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 	list.Valuate(AITile.GetClosestTown);
 	print("  GetClosestTown() ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 
@@ -1393,7 +1393,7 @@ function Regression::TileList()
 	print("  KeepAboveValue(10):  done");
 	print("  Count():             " + list.Count());
 	print("  ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 
@@ -1403,7 +1403,7 @@ function Regression::TileList()
 	print("  KeepValue(1):        done");
 	print("  Count():             " + list.Count());
 	print("  ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 
@@ -1413,7 +1413,7 @@ function Regression::TileList()
 	print("  KeepValue(1):        done");
 	print("  Count():             " + list.Count());
 	print("  ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 
@@ -1422,7 +1422,7 @@ function Regression::TileList()
 	print("  Water():             done");
 	print("  Count():             " + list.Count());
 	print("  ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 
@@ -1432,7 +1432,7 @@ function Regression::TileList()
 	print("  Count():             " + list.Count());
 	list.Valuate(AITile.GetCargoAcceptance, 3, 1, 1, 3);
 	print("  Location ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 
@@ -1442,7 +1442,7 @@ function Regression::TileList()
 	print("  Count():             " + list.Count());
 	list.Valuate(AITile.GetCargoProduction, 7, 1, 1, 3);
 	print("  Location ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 
@@ -1451,7 +1451,7 @@ function Regression::TileList()
 	print("--TileList_StationType--");
 	print("  Count():             " + list.Count());
 	print("  Location ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 }
@@ -1465,7 +1465,7 @@ function Regression::Town()
 	print("  GetTownCount():    " + AITown.GetTownCount());
 	local list = AITownList();
 	list.Sort(AIAbstractList.SORT_BY_ITEM, AIAbstractList.SORT_ASCENDING);
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		if (AITown.IsValidTown(i)) j++;
 		print("  Town " + i);
 		print("    IsValidTown():   " + AITown.IsValidTown(i));
@@ -1488,27 +1488,27 @@ function Regression::TownList()
 	print("  Count():             " + list.Count());
 	list.Valuate(AITown.GetLocation);
 	print("  Location ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 	list.Valuate(AITown.GetDistanceManhattanToTile, 30000);
 	print("  DistanceManhattanToTile(30000) ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 	list.Valuate(AITown.GetDistanceSquareToTile, 30000);
 	print("  DistanceSquareToTile(30000) ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 	list.Valuate(AITown.IsWithinTownInfluence, AITown.GetLocation(0));
 	print("  IsWithinTownInfluence(" + AITown.GetLocation(0) + ") ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 	list.Valuate(AITown.GetAllowedNoise);
 	print("  GetAllowedNoise() ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 	list.Valuate(AITown.GetPopulation);
@@ -1516,7 +1516,7 @@ function Regression::TownList()
 	print("  KeepAboveValue(500): done");
 	print("  Count():             " + list.Count());
 	print("  Population ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 
@@ -1665,77 +1665,77 @@ function Regression::Vehicle()
 	print("  Count():             " + list.Count());
 	list.Valuate(AIVehicle.GetLocation);
 	print("  Location ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 	list.Valuate(AIVehicle.GetEngineType);
 	print("  EngineType ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 	list.Valuate(AIVehicle.GetUnitNumber);
 	print("  UnitNumber ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 	list.Valuate(AIVehicle.GetAge);
 	print("  Age ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 	list.Valuate(AIVehicle.GetMaxAge);
 	print("  MaxAge ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 	list.Valuate(AIVehicle.GetAgeLeft);
 	print("  AgeLeft ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 	list.Valuate(AIVehicle.GetCurrentSpeed);
 	print("  CurrentSpeed ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 	list.Valuate(AIVehicle.GetRunningCost);
 	print("  RunningCost ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 	list.Valuate(AIVehicle.GetProfitThisYear);
 	print("  ProfitThisYear ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 	list.Valuate(AIVehicle.GetProfitLastYear);
 	print("  ProfitLastYear ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 	list.Valuate(AIVehicle.GetCurrentValue);
 	print("  CurrentValue ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 	list.Valuate(AIVehicle.GetVehicleType);
 	print("  VehicleType ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 	list.Valuate(AIVehicle.GetRoadType);
 	print("  RoadType ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 	list.Valuate(AIVehicle.GetCapacity, 10);
 	print("  VehicleType ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 	list.Valuate(AIVehicle.GetCargoLoad, 10);
 	print("  VehicleType ListDump:");
-	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
+	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
 	}
 }
