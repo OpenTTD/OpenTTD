@@ -437,9 +437,9 @@ static Vehicle *GetVehicleTunnelBridgeProc(Vehicle *v, void *data)
  * @param tile first end
  * @param endtile second end
  * @param ignore Ignore this vehicle when searching
- * @return true if the bridge has a vehicle
+ * @return Succeeded command (if tunnel/bridge is free) or failed command (if a vehicle is using the tunnel/bridge).
  */
-bool HasVehicleOnTunnelBridge(TileIndex tile, TileIndex endtile, const Vehicle *ignore)
+CommandCost TunnelBridgeIsFree(TileIndex tile, TileIndex endtile, const Vehicle *ignore)
 {
 	/* Value v is not safe in MP games, however, it is used to generate a local
 	 * error message only (which may be different for different machines).
@@ -448,8 +448,8 @@ bool HasVehicleOnTunnelBridge(TileIndex tile, TileIndex endtile, const Vehicle *
 	Vehicle *v = VehicleFromPos(tile, (void *)ignore, &GetVehicleTunnelBridgeProc, true);
 	if (v == NULL) v = VehicleFromPos(endtile, (void *)ignore, &GetVehicleTunnelBridgeProc, true);
 
-	if (v != NULL) _error_message = STR_ERROR_TRAIN_IN_THE_WAY + v->type;
-	return v != NULL;
+	if (v != NULL) return_cmd_error(STR_ERROR_TRAIN_IN_THE_WAY + v->type);
+	return CommandCost();
 }
 
 

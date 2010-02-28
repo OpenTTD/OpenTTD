@@ -192,10 +192,12 @@ static CommandCost RemoveRoad(TileIndex tile, DoCommandFlag flags, RoadBits piec
 			if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
 			break;
 
-		case MP_TUNNELBRIDGE:
+		case MP_TUNNELBRIDGE: {
 			if (GetTunnelBridgeTransportType(tile) != TRANSPORT_ROAD) return CMD_ERROR;
-			if (HasVehicleOnTunnelBridge(tile, GetOtherTunnelBridgeEnd(tile))) return CMD_ERROR;
-			break;
+			CommandCost ret = TunnelBridgeIsFree(tile, GetOtherTunnelBridgeEnd(tile));
+			ret.SetGlobalErrorMessage();
+			if (ret.Failed()) return ret;
+		} break;
 
 		default:
 			return CMD_ERROR;
@@ -573,13 +575,15 @@ CommandCost CmdBuildRoad(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 			if (HasTileRoadType(tile, rt)) return_cmd_error(STR_ERROR_ALREADY_BUILT);
 		} break;
 
-		case MP_TUNNELBRIDGE:
+		case MP_TUNNELBRIDGE: {
 			if (GetTunnelBridgeTransportType(tile) != TRANSPORT_ROAD) goto do_clear;
 			if (MirrorRoadBits(DiagDirToRoadBits(GetTunnelBridgeDirection(tile))) != pieces) goto do_clear;
 			if (HasTileRoadType(tile, rt)) return_cmd_error(STR_ERROR_ALREADY_BUILT);
 			/* Don't allow adding roadtype to the bridge/tunnel when vehicles are already driving on it */
-			if (HasVehicleOnTunnelBridge(tile, GetOtherTunnelBridgeEnd(tile))) return CMD_ERROR;
-			break;
+			CommandCost ret = TunnelBridgeIsFree(tile, GetOtherTunnelBridgeEnd(tile));
+			ret.SetGlobalErrorMessage();
+			if (ret.Failed()) return ret;
+		} break;
 
 		default: {
 do_clear:;

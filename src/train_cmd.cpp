@@ -2342,7 +2342,7 @@ static void ClearPathReservation(const Train *v, TileIndex tile, Trackdir track_
 		if (GetTunnelBridgeDirection(tile) == ReverseDiagDir(dir)) {
 			TileIndex end = GetOtherTunnelBridgeEnd(tile);
 
-			if (!HasVehicleOnTunnelBridge(tile, end, v)) {
+			if (TunnelBridgeIsFree(tile, end, v).Succeeded()) {
 				/* Free the reservation only if no other train is on the tiles. */
 				SetTunnelBridgeReservation(tile, false);
 				SetTunnelBridgeReservation(end, false);
