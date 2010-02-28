@@ -218,55 +218,6 @@ void ShowNewGrfVehicleError(EngineID engine, StringID part1, StringID part2, GRF
 	DEBUG(grf, 0, "%s", buffer + 3);
 }
 
-/** Callback that returns 'real' vehicles lower or at height \c *(byte*)data .
- * @param v Vehicle to examine.
- * @param data Pointer to height data.
- * @return \a v if conditions are met, else \c NULL.
- */
-static Vehicle *EnsureNoVehicleProcZ(Vehicle *v, void *data)
-{
-	byte z = *(byte*)data;
-
-	if (v->type == VEH_DISASTER || (v->type == VEH_AIRCRAFT && v->subtype == AIR_SHADOW)) return NULL;
-	if (v->z_pos > z) return NULL;
-
-	_error_message = STR_ERROR_TRAIN_IN_THE_WAY + v->type;
-	return v;
-}
-
-/* Ensure there is no vehicle at the ground at the given position.
- * @param tile Position to examine.
- * @return A vehicle has been found.
- */
-bool EnsureNoVehicleOnGround(TileIndex tile)
-{
-	byte z = GetTileMaxZ(tile);
-	return !HasVehicleOnPos(tile, &z, &EnsureNoVehicleProcZ);
-}
-
-/** Procedure called for every vehicle found in tunnel/bridge in the hash map */
-static Vehicle *GetVehicleTunnelBridgeProc(Vehicle *v, void *data)
-{
-	if (v->type != VEH_TRAIN && v->type != VEH_ROAD && v->type != VEH_SHIP) return NULL;
-	if (v == (const Vehicle *)data) return NULL;
-
-	_error_message = STR_ERROR_TRAIN_IN_THE_WAY + v->type;
-	return v;
-}
-
-/**
- * Finds vehicle in tunnel / bridge
- * @param tile first end
- * @param endtile second end
- * @param ignore Ignore this vehicle when searching
- * @return true if the bridge has a vehicle
- */
-bool HasVehicleOnTunnelBridge(TileIndex tile, TileIndex endtile, const Vehicle *ignore)
-{
-	return HasVehicleOnPos(tile, (void *)ignore, &GetVehicleTunnelBridgeProc) ||
-			HasVehicleOnPos(endtile, (void *)ignore, &GetVehicleTunnelBridgeProc);
-}
-
 /**
  * Vehicle constructor.
  * @param type Type of the new vehicle.
@@ -438,6 +389,55 @@ void FindVehicleOnPos(TileIndex tile, void *data, VehicleFromPosProc *proc)
 bool HasVehicleOnPos(TileIndex tile, void *data, VehicleFromPosProc *proc)
 {
 	return VehicleFromPos(tile, data, proc, true) != NULL;
+}
+
+/** Callback that returns 'real' vehicles lower or at height \c *(byte*)data .
+ * @param v Vehicle to examine.
+ * @param data Pointer to height data.
+ * @return \a v if conditions are met, else \c NULL.
+ */
+static Vehicle *EnsureNoVehicleProcZ(Vehicle *v, void *data)
+{
+	byte z = *(byte*)data;
+
+	if (v->type == VEH_DISASTER || (v->type == VEH_AIRCRAFT && v->subtype == AIR_SHADOW)) return NULL;
+	if (v->z_pos > z) return NULL;
+
+	_error_message = STR_ERROR_TRAIN_IN_THE_WAY + v->type;
+	return v;
+}
+
+/* Ensure there is no vehicle at the ground at the given position.
+ * @param tile Position to examine.
+ * @return A vehicle has been found.
+ */
+bool EnsureNoVehicleOnGround(TileIndex tile)
+{
+	byte z = GetTileMaxZ(tile);
+	return !HasVehicleOnPos(tile, &z, &EnsureNoVehicleProcZ);
+}
+
+/** Procedure called for every vehicle found in tunnel/bridge in the hash map */
+static Vehicle *GetVehicleTunnelBridgeProc(Vehicle *v, void *data)
+{
+	if (v->type != VEH_TRAIN && v->type != VEH_ROAD && v->type != VEH_SHIP) return NULL;
+	if (v == (const Vehicle *)data) return NULL;
+
+	_error_message = STR_ERROR_TRAIN_IN_THE_WAY + v->type;
+	return v;
+}
+
+/**
+ * Finds vehicle in tunnel / bridge
+ * @param tile first end
+ * @param endtile second end
+ * @param ignore Ignore this vehicle when searching
+ * @return true if the bridge has a vehicle
+ */
+bool HasVehicleOnTunnelBridge(TileIndex tile, TileIndex endtile, const Vehicle *ignore)
+{
+	return HasVehicleOnPos(tile, (void *)ignore, &GetVehicleTunnelBridgeProc) ||
+			HasVehicleOnPos(endtile, (void *)ignore, &GetVehicleTunnelBridgeProc);
 }
 
 
