@@ -190,7 +190,7 @@ DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_GET_NEWGRFS)
 		 * the current list and do not send the other data.
 		 * The name could be an empty string, if so take the filename. */
 		packet_len += sizeof(c.grfid) + sizeof(c.md5sum) +
-				min(strlen((!StrEmpty(f->name)) ? f->name : f->filename) + 1, (size_t)NETWORK_GRF_NAME_LENGTH);
+				min(strlen(f->GetName()) + 1, (size_t)NETWORK_GRF_NAME_LENGTH);
 		if (packet_len > SEND_MTU - 4) { // 4 is 3 byte header + grf count in reply
 			break;
 		}
@@ -206,7 +206,7 @@ DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_GET_NEWGRFS)
 		char name[NETWORK_GRF_NAME_LENGTH];
 
 		/* The name could be an empty string, if so take the filename */
-		strecpy(name, (!StrEmpty(in_reply[i]->name)) ? in_reply[i]->name : in_reply[i]->filename, lastof(name));
+		strecpy(name, in_reply[i]->GetName(), lastof(name));
 		this->Send_GRFIdentifier(&packet, &in_reply[i]->ident);
 		packet.Send_string(name);
 	}
@@ -256,7 +256,7 @@ DEF_UDP_RECEIVE_COMMAND(Client, PACKET_UDP_SERVER_RESPONSE)
 
 		for (c = item->info.grfconfig; c != NULL; c = c->next) {
 			if (c->status == GCS_NOT_FOUND) item->info.compatible = false;
-			if (c->status != GCS_NOT_FOUND || strcmp(c->name, UNKNOWN_GRF_NAME_PLACEHOLDER) != 0) continue;
+			if (c->status != GCS_NOT_FOUND || strcmp(c->GetName(), UNKNOWN_GRF_NAME_PLACEHOLDER) != 0) continue;
 			in_request[in_request_count] = c;
 			in_request_count++;
 		}

@@ -36,6 +36,26 @@ GRFConfig::~GRFConfig()
 	}
 }
 
+/**
+ * Get the name of this grf. In case the name isn't known
+ * the filename is returned.
+ * @return The name of filename of this grf.
+ */
+const char *GRFConfig::GetName() const
+{
+	if (this->name == NULL) return this->filename;
+	return this->name;
+}
+
+/**
+ * Get the grf info.
+ * @return A string with a description of this grf.
+ */
+const char *GRFConfig::GetDescription() const
+{
+	return this->info;
+}
+
 GRFConfig *_all_grfs;
 GRFConfig *_grfconfig;
 GRFConfig *_grfconfig_newgame;
@@ -337,7 +357,7 @@ bool GRFFileScanner::AddFile(const char *filename, size_t basepath_length)
 				/* Because there can be multiple grfs with the same name, make sure we checked all grfs with the same name,
 				 *  before inserting the entry. So insert a new grf at the end of all grfs with the same name, instead of
 				 *  just after the first with the same name. Avoids doubles in the list. */
-				if (strcasecmp(c->name, d->name) <= 0) {
+				if (strcasecmp(c->GetName(), d->GetName()) <= 0) {
 					stop = true;
 				} else if (stop) {
 					break;
@@ -372,8 +392,7 @@ static int CDECL GRFSorter(GRFConfig * const *p1, GRFConfig * const *p2)
 	const GRFConfig *c1 = *p1;
 	const GRFConfig *c2 = *p2;
 
-	return strcasecmp(c1->name != NULL ? c1->name : c1->filename,
-		c2->name != NULL ? c2->name : c2->filename);
+	return strcasecmp(c1->GetName(), c2->GetName());
 }
 
 /* Scan for all NewGRFs */

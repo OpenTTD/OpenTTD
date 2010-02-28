@@ -457,7 +457,7 @@ static void GetTileDesc_Industry(TileIndex tile, TileDesc *td)
 	}
 
 	if (is->grf_prop.grffile != NULL) {
-		td->grf = GetGRFConfig(is->grf_prop.grffile->grfid)->name;
+		td->grf = GetGRFConfig(is->grf_prop.grffile->grfid)->GetName();
 	}
 }
 

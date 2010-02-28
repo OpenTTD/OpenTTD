@@ -660,7 +660,7 @@ static void GetTileDesc_Town(TileIndex tile, TileDesc *td)
 
 	if (hs->grffile != NULL) {
 		const GRFConfig *gc = GetGRFConfig(hs->grffile->grfid);
-		td->grf = gc->name;
+		td->grf = gc->GetName();
 	}
 
 	td->owner[0] = OWNER_TOWN;

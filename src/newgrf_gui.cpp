@@ -131,9 +131,9 @@ static void ShowNewGRFInfo(const GRFConfig *c, uint x, uint y, uint right, uint 
 	if (HasBit(c->flags, GCF_COMPATIBLE)) y = DrawStringMultiLine(x, right, y, bottom, STR_NEWGRF_COMPATIBLE_LOADED);
 
 	/* Draw GRF info if it exists */
-	if (!StrEmpty(c->info)) {
+	if (!StrEmpty(c->GetDescription())) {
 		SetDParam(0, STR_JUST_RAW_STRING);
-		SetDParamStr(1, c->info);
+		SetDParamStr(1, c->GetDescription());
 		y = DrawStringMultiLine(x, right, y, bottom, STR_BLACK_STRING);
 	} else {
 		y = DrawStringMultiLine(x, right, y, bottom, STR_NEWGRF_SETTINGS_NO_INFO);
@@ -203,13 +203,7 @@ private:
 	/** Sort grfs by name. */
 	static int CDECL NameSorter(const GRFConfig * const *a, const GRFConfig * const *b)
 	{
-		const char *name_a = ((*a)->name != NULL) ? (*a)->name : "";
-		const char *name_b = ((*b)->name != NULL) ? (*b)->name : "";
-		int result = strcasecmp(name_a, name_b);
-		if (result == 0) {
-			result = strcasecmp((*a)->filename, (*b)->filename);
-		}
-		return result;
+		return strcasecmp((*a)->GetName(), (*b)->GetName());
 	}
 
 	/** Sort the grf list */
@@ -234,9 +228,9 @@ private:
 	/** Filter grfs by tags/name */
 	static bool CDECL TagNameFilter(const GRFConfig * const *a, const char *filter_string)
 	{
-		if ((*a)->name     != NULL && strcasestr((*a)->name,     filter_string) != NULL) return true;
+		if (strcasestr((*a)->GetName(), filter_string) != NULL) return true;
 		if ((*a)->filename != NULL && strcasestr((*a)->filename, filter_string) != NULL) return true;
-		if ((*a)->info     != NULL && strcasestr((*a)->info,     filter_string) != NULL) return true;
+		if ((*a)->GetDescription() != NULL && strcasestr((*a)->GetDescription(), filter_string) != NULL) return true;
 		return false;
 	}
 
@@ -326,7 +320,7 @@ public:
 				{
 					const GRFConfig *c = this->grfs[i];
 					bool h = c == this->sel;
-					const char *text = (!StrEmpty(c->name)) ? c->name : c->filename;
+					const char *text = c->GetName();
 
 					/* Draw selection background */
 					if (h) GfxFillRect(r.left + 1, y, r.right - 1, y + this->resize.step_height - 1, 156);
@@ -657,7 +651,7 @@ struct NewGRFWindow : public Window {
 				int i = 0;
 				for (const GRFConfig *c = this->list; c != NULL; c = c->next, i++) {
 					if (this->vscroll.IsVisible(i)) {
-						const char *text = (!StrEmpty(c->name)) ? c->name : c->filename;
+						const char *text = c->GetName();
 						PaletteID pal;
 
 						/* Pick a colour */
@@ -861,7 +855,7 @@ struct NewGRFWindow : public Window {
 						ContentInfo *ci = new ContentInfo();
 						ci->type = CONTENT_TYPE_NEWGRF;
 						ci->state = ContentInfo::DOES_NOT_EXIST;
-						ttd_strlcpy(ci->name, c->name != NULL ? c->name : c->filename, lengthof(ci->name));
+						ttd_strlcpy(ci->name, c->GetName(), lengthof(ci->name));
 						ci->unique_id = BSWAP32(c->ident.grfid);
 						memcpy(ci->md5sum, c->ident.md5sum, sizeof(ci->md5sum));
 						if (HasBit(c->flags, GCF_COMPATIBLE)) GamelogGetOriginalGRFMD5Checksum(c->ident.grfid, ci->md5sum);

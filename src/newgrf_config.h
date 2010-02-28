@@ -89,6 +89,9 @@ struct GRFConfig : ZeroedMemoryAllocator {
 	struct GRFConfig *next; ///< NOSAVE: Next item in the linked list
 
 	bool IsOpenTTDBaseGRF() const;
+
+	const char *GetName() const;
+	const char *GetDescription() const;
 };
 
 extern GRFConfig *_all_grfs;          ///< First item in list of all scanned NewGRFs

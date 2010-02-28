@@ -4334,7 +4334,7 @@ static void DisableStaticNewGRFInfluencingNonStaticNewGRFs(GRFConfig *c)
 	delete c->error;
 	c->status = GCS_DISABLED;
 	c->error  = new GRFError(STR_NEWGRF_ERROR_MSG_FATAL, STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC);
-	c->error->data = strdup(_cur_grfconfig->name);
+	c->error->data = strdup(_cur_grfconfig->GetName());
 
 	ClearTemporaryNewGRFData(GetFileByGRFID(c->ident.grfid));
 }

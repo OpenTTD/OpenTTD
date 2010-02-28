@@ -200,7 +200,7 @@ void ShowNewGrfVehicleError(EngineID engine, StringID part1, StringID part2, GRF
 
 	if (!HasBit(grfconfig->grf_bugs, bug_type)) {
 		SetBit(grfconfig->grf_bugs, bug_type);
-		SetDParamStr(0, grfconfig->name);
+		SetDParamStr(0, grfconfig->GetName());
 		SetDParam(1, engine);
 		ShowErrorMessage(part1, part2, WL_CRITICAL);
 		if (!_networking) DoCommand(0, critical ? PM_PAUSED_ERROR : PM_PAUSED_NORMAL, 1, DC_EXEC, CMD_PAUSE);
@@ -209,7 +209,7 @@ void ShowNewGrfVehicleError(EngineID engine, StringID part1, StringID part2, GRF
 	/* debug output */
 	char buffer[512];
 
-	SetDParamStr(0, grfconfig->name);
+	SetDParamStr(0, grfconfig->GetName());
 	GetString(buffer, part1, lastof(buffer));
 	DEBUG(grf, 0, "%s", buffer + 3);
 
