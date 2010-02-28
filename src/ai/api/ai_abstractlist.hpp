@@ -63,6 +63,7 @@ protected:
 	/**
 	 * Remove a single item from the list.
 	 * @param item the item to remove. If not existing, it is ignored.
+	 * @note Always use this function for removing items. It keeps the iterator valid!
 	 */
 	void RemoveItem(int32 item);
 

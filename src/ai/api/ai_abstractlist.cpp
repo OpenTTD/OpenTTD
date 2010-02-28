@@ -437,8 +437,8 @@ int32 AIAbstractList::Begin()
 int32 AIAbstractList::Next()
 {
 	if (this->initialized == false) {
-		DEBUG(ai, 0, "ERROR: Next() is invalid as Begin() is never called");
-		return false;
+		DEBUG(ai, 0, "Next() is invalid as Begin() is never called");
+		return 0;
 	}
 	return this->sorter->Next();
 }
@@ -451,7 +451,7 @@ bool AIAbstractList::IsEmpty()
 bool AIAbstractList::HasNext()
 {
 	if (this->initialized == false) {
-		DEBUG(ai, 0, "ERROR: HasNext() is invalid as Begin() is never called");
+		DEBUG(ai, 0, "HasNext() is invalid as Begin() is never called");
 		return false;
 	}
 	return this->sorter->HasNext();
@@ -517,6 +517,7 @@ void AIAbstractList::Sort(SorterType sorter, bool ascending)
 	}
 	this->sorter_type    = sorter;
 	this->sort_ascending = ascending;
+	this->initialized    = false;
 }
 
 void AIAbstractList::AddList(AIAbstractList *list)
@@ -534,12 +535,7 @@ void AIAbstractList::RemoveAboveValue(int32 value)
 
 	for (AIAbstractListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
 		next_iter = iter; next_iter++;
-		if ((*iter).second > value) this->items.erase(iter);
-	}
-
-	for (AIAbstractListBucket::iterator next_iter, iter = this->buckets.begin(); iter != this->buckets.end(); iter = next_iter) {
-		next_iter = iter; next_iter++;
-		if ((*iter).first > value) this->buckets.erase(iter);
+		if ((*iter).second > value) this->RemoveItem((*iter).first);
 	}
 }
 
@@ -549,12 +545,7 @@ void AIAbstractList::RemoveBelowValue(int32 value)
 
 	for (AIAbstractListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
 		next_iter = iter; next_iter++;
-		if ((*iter).second < value) this->items.erase(iter);
-	}
-
-	for (AIAbstractListBucket::iterator next_iter, iter = this->buckets.begin(); iter != this->buckets.end(); iter = next_iter) {
-		next_iter = iter; next_iter++;
-		if ((*iter).first < value) this->buckets.erase(iter);
+		if ((*iter).second < value) this->RemoveItem((*iter).first);
 	}
 }
 
@@ -564,12 +555,7 @@ void AIAbstractList::RemoveBetweenValue(int32 start, int32 end)
 
 	for (AIAbstractListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
 		next_iter = iter; next_iter++;
-		if ((*iter).second > start && (*iter).second < end) this->items.erase(iter);
-	}
-
-	for (AIAbstractListBucket::iterator next_iter, iter = this->buckets.begin(); iter != this->buckets.end(); iter = next_iter) {
-		next_iter = iter; next_iter++;
-		if ((*iter).first > start && (*iter).first < end) this->buckets.erase(iter);
+		if ((*iter).second > start && (*iter).second < end) this->RemoveItem((*iter).first);
 	}
 }
 
@@ -579,12 +565,7 @@ void AIAbstractList::RemoveValue(int32 value)
 
 	for (AIAbstractListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
 		next_iter = iter; next_iter++;
-		if ((*iter).second == value) this->items.erase(iter);
-	}
-
-	for (AIAbstractListBucket::iterator next_iter, iter = this->buckets.begin(); iter != this->buckets.end(); iter = next_iter) {
-		next_iter = iter; next_iter++;
-		if ((*iter).first == value) this->buckets.erase(iter);
+		if ((*iter).second == value) this->RemoveItem((*iter).first);
 	}
 }
 
@@ -677,12 +658,7 @@ void AIAbstractList::KeepAboveValue(int32 value)
 
 	for (AIAbstractListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
 		next_iter = iter; next_iter++;
-		if ((*iter).second <= value) this->items.erase(iter);
-	}
-
-	for (AIAbstractListBucket::iterator next_iter, iter = this->buckets.begin(); iter != this->buckets.end(); iter = next_iter) {
-		next_iter = iter; next_iter++;
-		if ((*iter).first <= value) this->buckets.erase(iter);
+		if ((*iter).second <= value) this->RemoveItem((*iter).first);
 	}
 }
 
@@ -692,12 +668,7 @@ void AIAbstractList::KeepBelowValue(int32 value)
 
 	for (AIAbstractListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
 		next_iter = iter; next_iter++;
-		if ((*iter).second >= value) this->items.erase(iter);
-	}
-
-	for (AIAbstractListBucket::iterator next_iter, iter = this->buckets.begin(); iter != this->buckets.end(); iter = next_iter) {
-		next_iter = iter; next_iter++;
-		if ((*iter).first >= value) this->buckets.erase(iter);
+		if ((*iter).second >= value) this->RemoveItem((*iter).first);
 	}
 }
 
@@ -707,12 +678,7 @@ void AIAbstractList::KeepBetweenValue(int32 start, int32 end)
 
 	for (AIAbstractListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
 		next_iter = iter; next_iter++;
-		if ((*iter).second <= start || (*iter).second >= end) this->items.erase(iter);
-	}
-
-	for (AIAbstractListBucket::iterator next_iter, iter = this->buckets.begin(); iter != this->buckets.end(); iter = next_iter) {
-		next_iter = iter; next_iter++;
-		if ((*iter).first <= start || (*iter).first >= end) this->buckets.erase(iter);
+		if ((*iter).second <= start || (*iter).second >= end) this->RemoveItem((*iter).first);
 	}
 }
 
@@ -722,12 +688,7 @@ void AIAbstractList::KeepValue(int32 value)
 
 	for (AIAbstractListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
 		next_iter = iter; next_iter++;
-		if ((*iter).second != value) this->items.erase(iter);
-	}
-
-	for (AIAbstractListBucket::iterator next_iter, iter = this->buckets.begin(); iter != this->buckets.end(); iter = next_iter) {
-		next_iter = iter; next_iter++;
-		if ((*iter).first != value) this->buckets.erase(iter);
+		if ((*iter).second != value) this->RemoveItem((*iter).first);
 	}
 }
 
