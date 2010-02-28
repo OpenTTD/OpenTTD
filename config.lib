@@ -2307,7 +2307,7 @@ detect_library() {
 		fi
 		eval "res=\$$2"
 		if [ -z "$res" ]; then
-			log 2 "  trying /usr/local/include/$4$5... no"
+			log 2 "  trying /mingw/include/$4$5... no"
 			eval "$2=`ls -1 /opt/local/include/$4*.h 2>/dev/null | egrep \"\/$5\$\"`"
 		fi
 		eval "res=\$$2"
