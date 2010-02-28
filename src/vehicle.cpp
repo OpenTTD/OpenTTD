@@ -403,7 +403,6 @@ static Vehicle *EnsureNoVehicleProcZ(Vehicle *v, void *data)
 	if (v->type == VEH_DISASTER || (v->type == VEH_AIRCRAFT && v->subtype == AIR_SHADOW)) return NULL;
 	if (v->z_pos > z) return NULL;
 
-	_error_message = STR_ERROR_TRAIN_IN_THE_WAY + v->type;
 	return v;
 }
 
@@ -414,7 +413,14 @@ static Vehicle *EnsureNoVehicleProcZ(Vehicle *v, void *data)
 bool EnsureNoVehicleOnGround(TileIndex tile)
 {
 	byte z = GetTileMaxZ(tile);
-	return !HasVehicleOnPos(tile, &z, &EnsureNoVehicleProcZ);
+
+	/* Value v is not safe in MP games, however, it is used to generate a local
+	 * error message only (which may be different for different machines).
+	 * Such a message does not affect MP synchronisation.
+	 */
+	Vehicle *v = VehicleFromPos(tile, &z, &EnsureNoVehicleProcZ, true);
+	if (v != NULL) _error_message = STR_ERROR_TRAIN_IN_THE_WAY + v->type;
+	return v == NULL;
 }
 
 /** Procedure called for every vehicle found in tunnel/bridge in the hash map */
@@ -423,7 +429,6 @@ static Vehicle *GetVehicleTunnelBridgeProc(Vehicle *v, void *data)
 	if (v->type != VEH_TRAIN && v->type != VEH_ROAD && v->type != VEH_SHIP) return NULL;
 	if (v == (const Vehicle *)data) return NULL;
 
-	_error_message = STR_ERROR_TRAIN_IN_THE_WAY + v->type;
 	return v;
 }
 
@@ -436,8 +441,15 @@ static Vehicle *GetVehicleTunnelBridgeProc(Vehicle *v, void *data)
  */
 bool HasVehicleOnTunnelBridge(TileIndex tile, TileIndex endtile, const Vehicle *ignore)
 {
-	return HasVehicleOnPos(tile, (void *)ignore, &GetVehicleTunnelBridgeProc) ||
-			HasVehicleOnPos(endtile, (void *)ignore, &GetVehicleTunnelBridgeProc);
+	/* Value v is not safe in MP games, however, it is used to generate a local
+	 * error message only (which may be different for different machines).
+	 * Such a message does not affect MP synchronisation.
+	 */
+	Vehicle *v = VehicleFromPos(tile, (void *)ignore, &GetVehicleTunnelBridgeProc, true);
+	if (v == NULL) v = VehicleFromPos(endtile, (void *)ignore, &GetVehicleTunnelBridgeProc, true);
+
+	if (v != NULL) _error_message = STR_ERROR_TRAIN_IN_THE_WAY + v->type;
+	return v != NULL;
 }
 
 
