@@ -276,7 +276,7 @@ STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} putnik{P "" a a}
 STR_QUANTITY_COAL                                               :{WEIGHT} uglja
 STR_QUANTITY_MAIL                                               :{COMMA} džak{P "" a ova} pošte
-STR_QUANTITY_OIL                                                :{VOLUME} ulja
+STR_QUANTITY_OIL                                                :{VOLUME} nafte
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} grl{P o a a} stoke
 STR_QUANTITY_GOODS                                              :{COMMA} sanduk{P "" a a} robe
 STR_QUANTITY_GRAIN                                              :{WEIGHT} žitarica
@@ -466,7 +466,7 @@ STR_SORT_BY_POWER_VS_RUNNING_COST                               :Snazi/Troškovi
 STR_SORT_BY_CARGO_CAPACITY                                      :Kapacitetu tovara
 
 # Tooltips for the main toolbar
-STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pauziraj igru
+STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pauziranje partije
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Ubrzavanje igre
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opcije
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Sačuvaj poziciju, prekini igru, izađi
@@ -900,9 +900,9 @@ STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Poruka
 STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}Opcije poruka
 STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Podesi sva obaveštenja na: Isključeno / Sažeto / Potpuno
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Zvučni signal za sažeta novinska obaveštenja
-STR_NEWS_MESSAGES_OFF                                           :Undress
-STR_NEWS_MESSAGES_SUMMARY                                       :kratak pregled
-STR_NEWS_MESSAGES_FULL                                          :Puni
+STR_NEWS_MESSAGES_OFF                                           :Isključeno
+STR_NEWS_MESSAGES_SUMMARY                                       :Sažeto
+STR_NEWS_MESSAGES_FULL                                          :Potpuno
 
 STR_NEWS_MESSAGE_TYPES                                          :{BLACK}Vrste poruka:
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Dolazak prvog vozila na igračevu stanicu
@@ -921,15 +921,15 @@ STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Promene
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Subvencije
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Opšte informacije
 
-STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIGFONT}{BLACK}Narod slavi . . .{}Prvi voz stiže na stanicu {STATION}!
-STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIGFONT}{BLACK}Narod slavi . . .{}Prvi autobus stiže na stanicu {STATION}!
-STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIGFONT}{BLACK}Narod slavi . . .{}Prvi kamion stiže na stanicu {STATION}!
-STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIGFONT}{BLACK}Narod slavi . . .{}Prvi tramvaj stiže na stanicu {STATION}!
-STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIGFONT}{BLACK}Narod slavi . . .{}Prvi teretni tamvaj stiže na stanicu {STATION}!
-STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIGFONT}{BLACK}Narod slavi . . .{}Prvi brod stiže na stanicu {STATION}!
-STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIGFONT}{BLACK}Narod slavi . . .{}Prva letilica stiže na stanicu {STATION}!
+STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIGFONT}{BLACK}Građani proslavljaju . . .{}Dolazak prvog voza na stanicu {STATION}!
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIGFONT}{BLACK}Građani proslavljaju . . .{}Dolazak prvog autobusa na stanicu {STATION}!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIGFONT}{BLACK}Građani proslavljaju . . .{}Dolazak prvog kamiona na stanicu {STATION}!
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIGFONT}{BLACK}Građani proslavljaju . . .{}Dolazak prvog tramvaja na stanicu {STATION}!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIGFONT}{BLACK}Građani proslavljaju . . .{}Dolazak prvog teretnog tamvaja na stanicu {STATION}!
+STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIGFONT}{BLACK}Građani proslavljaju . . .{}Dolazak prvog broda na pristanište {STATION}!
+STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIGFONT}{BLACK}Građani proslavljaju . . .{}Dolazak prve letilice na aerodrom {STATION}!
 
-STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK}Sudar Vozova!{}{COMMA} {P "" su je} poginu{P o la lo} u eksploziji nakon sudara
+STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK}Sudar vozova!{}{COMMA} {P "" su je} poginu{P o la lo} u eksploziji nakon sudara
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}Saobraćajna nesreća!{}Vozač je poginuo u eksploziji nakon sudara sa vozom
 STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIGFONT}{BLACK}Saobraćajna nesreća!{}{COMMA} {P "" je su} poginu{P o la lo} u eksploziji nakon sudara sa vozom
 STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK}Avionska nesraća!{}{COMMA} {P "" su je} poginu{P o la lo} u eksploziji kod {STATION}
@@ -1008,13 +1008,13 @@ STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} od sada prihvata {STRING}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} od sada prihvata {STRING} i {STRING}
 
-STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Ponuda subvencije istekla:{}{}{STRING} iz naselja {STRING} u naselje {STRING} je zatvorena za dalje interesente.
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Subvencija povučena:{}{}{STRING} usluga prevoza između stanica {STRING} i {STRING} više nije u opticaju.
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Ponuda subvencije:{}{}Preduzimač koji prvi preveze {STRING.gen} od naselja {STRING} do naselja {STRING} stiče pravo na dodatnu zaradu tokom sledeća 24 meseca!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Subvencija odobrena preduzeću {STRING}!{}{}Za {STRING} prenet između stanica {STRING} i {STRING} zarada će vredeti 50% više u narednih godinu dana!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Subvencija odobrena preduzeću {STRING}!{}{}Za {STRING} prenet između stanica {STRING} i {STRING} zarada će vredeti duplo više u narednih godinu dana!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Subvencija odobrena preduzeću {STRING}!{}{}Za {STRING} prenet između stanica {STRING} i {STRING} zarada će vredeti trostruko više u narednih godinu dana!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}Subvencija odobrena preduzeću {STRING}!{}{}Za {STRING} prenet između stanica {STRING} i {STRING} zarada će vredeti četvorostruko više u narednih godinu dana!
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Ponuda subvencije istekla:{}{}Prevoz {STRING.aku} iz naselja {STRING} u naselje {STRING} je zatvorena za interesente.
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Subvencija povučena:{}{}Usluga prevoza {STRING.aku} između stanica {STRING} i {STRING} više nije u opticaju.
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Ponuda subvencije:{}{}Preduzimač koji prvi preveze {STRING.aku} od naselja {STRING} do naselja {STRING} stiče pravo na dodatnu zaradu tokom sledeća 24 meseca!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Subvencija odobrena preduzeću {STRING}!{}{}Za prevoz {STRING.aku} između stanica {STRING} i {STRING} zarada će vredeti 50% više u narednih godinu dana!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Subvencija odobrena preduzeću {STRING}!{}{}Za prevoz {STRING.aku} između stanica {STRING} i {STRING} zarada će vredeti duplo više u narednih godinu dana!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Subvencija odobrena preduzeću {STRING}!{}{}Za prevoz {STRING.aku} između stanica {STRING} i {STRING} zarada će vredeti trostruko više u narednih godinu dana!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}Subvencija odobrena preduzeću {STRING}!{}{}Za prevoz {STRING.aku} između stanica {STRING} i {STRING} zarada će vredeti četvorostruko više u narednih godinu dana!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}{TOWN} - haos na ulicama!{}{}Program rekonstrukcije puteva sponzorisan od strane preduzeća {STRING} donosi vozačima 6 meseci agonije!
 
@@ -1066,7 +1066,7 @@ STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Merne je
 STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Izbor svetskih najzastupljenijih mernih jedinica
 
 ############ start of measuring units region
-STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :Carski
+STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :Anglosaksonski
 STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :Metrički
 STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :SI
 ############ end of measuring units region
@@ -1243,8 +1243,8 @@ STR_ECONOMY_FLUCTUATING                                         :promenljiva
 STR_REVERSE_AT_END_OF_LINE_AND_AT_STATIONS                      :na kraju pruge, kao i na stanicama
 STR_REVERSE_AT_END_OF_LINE_ONLY                                 :samo na kraju pruge
 
-STR_DISASTERS_OFF                                               :Off
-STR_DISASTERS_ON                                                :On
+STR_DISASTERS_OFF                                               :Isključeno
+STR_DISASTERS_ON                                                :Uključeno
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :Popustljiv
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerantan
@@ -2046,11 +2046,11 @@ STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Čini ob
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Označavanje zahvaćenog područja
-STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Off
-STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}On
+STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Isključeno
+STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}Uključeno
 STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Isključi označavanje zahvaćenog područja
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Uključi označavanje zahvaćenog područja
-STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Prihvata: {GOLD}{STRING}
+STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Prihvata: {GOLD}{STRING.aku}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Snadbeva: {GOLD}{STRING}
 
 # Join station window
@@ -2226,7 +2226,7 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Kupovina
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Drveće
-STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Izbor vrste drveta
+STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Izbor vrste drveća
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Drveće proizvoljne vrste
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Posadite drveće proizvoljne vrste
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Nasumično postavljeno drveće
@@ -2270,7 +2270,7 @@ STR_FOUND_TOWN_INITIAL_SIZE_LARGE_BUTTON                        :{BLACK}Veliko
 STR_FOUND_TOWN_SIZE_RANDOM                                      :{BLACK}Slučajan
 STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Izbor veličine naselja
 STR_FOUND_TOWN_CITY                                             :{BLACK}Grad
-STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Gradovi rasti brže nego pravilan gradski stanovništvo{}Ovisno o postavljanje , oni biti veći našto valjan
+STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Gradovi se razvijaju brže nego uobičajna naselja{}U zavisnosti od podešavanja, veći su prilikom osnivanja
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Mreža puteva u naselju:
 STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Izbor plana mreže puteva u naselju
@@ -2281,7 +2281,7 @@ STR_FOUND_TOWN_SELECT_LAYOUT_3X3_GRID                           :{BLACK}3x3 mre�
 STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Slučajan
 
 # Fund new industry window
-STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Finansiranje izgradnje nove industrije
+STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Finansiranje izgradnje nove fabrike
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Izaberite odgovarajuću fabriku sa spiska
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :Mnogo nasumičnih fabrika
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Popunjava teren sa nasumično rasporđenim fabrikama
@@ -2399,7 +2399,7 @@ STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT                             :Akvadukt
 
 STR_LAI_UNMOVABLE_DESCRIPTION_TRANSMITTER                       :Predajnik
 STR_LAI_UNMOVABLE_DESCRIPTION_LIGHTHOUSE                        :Svetionik
-STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_HEADQUARTERS              :Centrala preduzeća
+STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_HEADQUARTERS              :Upravna zgrada preduzeća
 STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_OWNED_LAND                :Zemljište u posedu preduzeća
 
 # About OpenTTD window
@@ -2598,7 +2598,7 @@ STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Naselja
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Prazno -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Imena naselja - klik na ime centrira pogled na to naselje. Ctrl+Klik otvara novi pogled na to mesto
-STR_TOWN_POPULATION                                             :{BLACK}Svet Populacija: {COMMA}
+STR_TOWN_POPULATION                                             :{BLACK}Svetska populacija: {COMMA}
 
 # Town view window
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
@@ -2677,7 +2677,7 @@ STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO}
 STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({SHORTCARGO} na putu iz {STATION})
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Prihvata
-STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Prikaži spisak tovara koji stanica prihvata
+STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Prikaži spisak tovara koje stanica prihvata
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Prihvata: {WHITE}{STRING}
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Ocene
@@ -2752,25 +2752,25 @@ STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Osnovano:
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Šema boja:
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Vozila:
 STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} voz{P "" a ova}
-STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} drums{P o a a} vozil{P o a a}
+STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} drumsk{P o a ih} vozil{P o a a}
 STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} letilic{P a e a}
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} brod{P "" a ova}
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Nema
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Vrednost preduzeća: {WHITE}{CURRENCY}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% u vlasništvu preduzeća {COMPANY})
 
-STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Izgradnja centrale preduzeća
-STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Izgrađuje centralu preduzeća
-STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Prikaži centralu preduzeća
-STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Prebacuje pogled na centralu preduzeća
-STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Preseli Sedište
+STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Izgradnja upravne zgrade
+STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Izgrađuje upravnu zgradu preduzeća
+STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Prikaži upravnu zgradu
+STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Prebacuje pogled na upravnu zgradu preduzeća
+STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Preseli upravnu zgradu
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Premesti sedište preduzeća drugde za cenu od 1% vrednosti preduzeća
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Novo lice
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Izbor novog lica za vlasnika
 STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Šema boja
 STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Promena izgleda vozila preduzeća
-STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Ime Preduzeća
+STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Ime preduzeća
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Promena imena preduzeća
 STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Ime vlasnika
 STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Promena imena vlasnika
@@ -2884,20 +2884,20 @@ STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Nove Let
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Težina: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Brzina: {GOLD}{VELOCITY}{BLACK} Snaga: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Brzina: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Cena odrzavanja: {GOLD}{CURRENCY}/yr
+STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Cena održavanja: {GOLD}{CURRENCY}/yr
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Nosivost: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(prepravljiv)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Projektovan: {GOLD}{NUM}{BLACK} Životni vek: {GOLD}{COMMA} godina
-STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Najviša Pouzdanost: {GOLD}{COMMA}%
+STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Najviša pouzdanost: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Cena: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Težina: {GOLD}{WEIGHT_S} ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Brzina: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Nosivost: {GOLD}{CARGO}, {CARGO}
-STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Motorni Vagoni: {GOLD}+{POWER}{BLACK} Težina: {GOLD}+{WEIGHT_S}
-STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Prepravljivo u: {GOLD}
+STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Motorni vagoni: {GOLD}+{POWER}{BLACK} Težina: {GOLD}+{WEIGHT_S}
+STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Prepravljivo za: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Sve vrste tovara
 STR_PURCHASE_INFO_ALL_BUT                                       :Sve sem {GOLD}
-STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Najveća Vučna Svaga: {GOLD}{FORCE}
+STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Najveća vučna snaga: {GOLD}{FORCE}
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Spisak probranih šinskih vozila - kliknite na vozilo za više podataka
 STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Spisak probranih drumskih vozila - kliknite na vozilo za više podataka
@@ -3557,7 +3557,7 @@ STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}...potre
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Nije moguće vratiti deo zajma...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Nemoguće je dati novac koji je pozajmljen od banke...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Nije moguće kupiti preduzeće...
-STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Nije moguće izgraditi centralu...
+STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Nije moguće izgraditi upravnu zgradu...
 STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Otkup 25% udela ovog preduzeća nije moguć...
 STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Prodaja 25% udela ovog preduzeća nije moguća...
 STR_ERROR_PROTECTED                                             :{WHITE}Ovo preduzeće nije dovoljno dugo aktivno za trgovinu akcijama...
@@ -3727,7 +3727,7 @@ STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Nije mog
 
 # Unmovable related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Objekat na putu
-STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}...centrala preduzeća na putu
+STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}...upravna zgrada preduzeća na putu
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Ovo zemljište se ne može kupiti...
 STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}...već pripada preduzeću!
 
@@ -3973,33 +3973,33 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_30_ELECTRIC               :SH '30' (elektr
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_40_ELECTRIC               :SH '40' (električna)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_T_I_M_ELECTRIC               :'T.I.M.' (električna)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_ASIASTAR_ELECTRIC            :'AsiaStar' (električna)
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PASSENGER_CAR                 :Putnička kola
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_MAIL_VAN                      :Zatvoreni vagon za poštu
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COAL_CAR                      :Hoper za ugalj
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_OIL_TANKER                    :Cisterna za naftu
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_LIVESTOCK_VAN                 :Stočni vagon
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GOODS_VAN                     :Zatvoreni vagon za robu
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GRAIN_HOPPER                  :Hoper za žito
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WOOD_TRUCK                    :Otvoreni vagon za drvo
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_IRON_ORE_HOPPER               :Hoper za rudu gvožđa
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_STEEL_TRUCK                   :Otvoreni vagon za čelik
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_ARMORED_VAN                   :Blindirani vagon
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FOOD_VAN                      :Vagon za hranu
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PAPER_TRUCK                   :Otvoreni vagon za papir
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COPPER_ORE_HOPPER             :Hoper za rudu bakra
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WATER_TANKER                  :Cisterna za vodu
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FRUIT_TRUCK                   :Hoper za voće
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_RUBBER_TRUCK                  :Hoper za kaučuk
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_SUGAR_TRUCK                   :Hoper za šećer
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COTTON_CANDY_HOPPER           :Hoper za šećernu vunu
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOFFEE_HOPPER                 :Hoper za karamele
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BUBBLE_VAN                    :Vagon za mehuriće
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COLA_TANKER                   :Cisterna za kolu
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_CANDY_VAN                     :Vagon za slatkiše
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOY_VAN                       :Vagon za igračke
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BATTERY_TRUCK                 :Otvoreni vagon za baterije
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FIZZY_DRINK_TRUCK             :Cisterna za gazirana pića
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PLASTIC_TRUCK                 :Hoper za plastiku
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PASSENGER_CAR                 :Putnička Kola
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_MAIL_VAN                      :Poštanski Vagon
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COAL_CAR                      :Vagon za Ugalj
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_OIL_TANKER                    :Cisterna za Naftu
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_LIVESTOCK_VAN                 :Vagon za Živu Stoku
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GOODS_VAN                     :Vagon za Robu
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GRAIN_HOPPER                  :Vagon za Žito
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WOOD_TRUCK                    :Vagon za Drvo
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_IRON_ORE_HOPPER               :Vagon za Rude gvožđa
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_STEEL_TRUCK                   :Vagon za Čelik
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_ARMORED_VAN                   :Oklopljeni Vagon
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FOOD_VAN                      :Vagon za Hranu
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PAPER_TRUCK                   :Vagon za Papir
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COPPER_ORE_HOPPER             :Vagon za Rude bakra
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WATER_TANKER                  :Cisterna za Vodu
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FRUIT_TRUCK                   :Vagon za Voće
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_RUBBER_TRUCK                  :Vagon za Kaučuk
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_SUGAR_TRUCK                   :Vagon za Šećer
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COTTON_CANDY_HOPPER           :Vagon za Šećernu vunu
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOFFEE_HOPPER                 :Vagon za Karamele
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BUBBLE_VAN                    :Vagon za Mehuriće
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COLA_TANKER                   :Cisterna za Kolu
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_CANDY_VAN                     :Vagon za Slatkiše
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOY_VAN                       :Vagon za Igračke
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BATTERY_TRUCK                 :Vagon za Baterije
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FIZZY_DRINK_TRUCK             :Cisterna za Gazirana pića
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PLASTIC_TRUCK                 :Vagon za Plastiku
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :'X2001' (električna)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_MILLENNIUM_Z1_ELECTRIC   :'Millennium Z1' (Električna)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_WIZZOWOW_Z99             :Wizzowow Z99

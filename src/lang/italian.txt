@@ -3193,7 +3193,7 @@ STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Azzera r
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Azzera il contatore del ritardo, in modo che il veicolo sia considerato in orario
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Auto
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Riempie automaticamente la tabella oraria con i tempi del prossimo viaggio (CTRL-clic per cercare di mantenere i tempi di attesa)
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Riempie automaticamente la tabella oraria con i tempi del prossimo viaggio (CTRL+clic per cercare di mantenere i tempi di attesa)
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}Orari attesi
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Orari programmati
@@ -3992,7 +3992,7 @@ STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A32                           :Airtaxi A32
 STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A33                           :Airtaxi A33
 STR_VEHICLE_NAME_AIRCRAFT_YATE_AEROSPACE_YAE46                  :Yate Aerospace YAe46
 STR_VEHICLE_NAME_AIRCRAFT_DINGER_100                            :Dinger 100
-STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A34_1000                      :AirTaxi A34-1000
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A34_1000                      :Airtaxi A34-1000
 STR_VEHICLE_NAME_AIRCRAFT_YATE_Z_SHUTTLE                        :Yate Z-Shuttle
 STR_VEHICLE_NAME_AIRCRAFT_KELLING_K1                            :Kelling K1
 STR_VEHICLE_NAME_AIRCRAFT_KELLING_K6                            :Kelling K6

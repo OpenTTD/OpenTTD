@@ -706,13 +706,13 @@ STR_STATUSBAR_AUTOSAVE                                          :{RED}AŬTOMATA 
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  KONSERVAS LUDON  *  *
 
 # News message history
-STR_MESSAGE_HISTORY                                             :{WHITE}Mesaĝa Historio
+STR_MESSAGE_HISTORY                                             :{WHITE}Mesaĝa historio
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Listo da aktualaj novaĵoj
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 # Message settings window
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Mesaĝo
-STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}Mesaĝaj Opcioj
+STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}Mesaĝaj opcioj
 STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Turnu ĉiujn mesaĝtipojn al: Ne / Resume/ Plene
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Ludu sonon por resumaj novaĵoj
 STR_NEWS_MESSAGES_OFF                                           :Ne
@@ -2317,6 +2317,9 @@ STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} estu
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} estu ŝarĝata post {STRING}.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :la GRF-dosiero estas farita por traduki
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Tro da novaj grafikaĵoj estas ŝarĝataj
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Neatendita bildeto.
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} enhavas rompitan bildeton. Ĉiuj rompitaj bildetoj aspektos kiel ruĝaj demandsignoj (?).
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Legis ekster limo de pseŭdobildeto.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Atentu!
@@ -2958,6 +2961,8 @@ STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Transfor
 
 # Order view
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Ordonoj)
+STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Horaro
+STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Montri horarovidujon
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Ordonlisto - klaku ordonon por elekti. Stir+Klak rulumas al la stacio.
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
@@ -3024,7 +3029,9 @@ STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Forviŝi
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Iru al
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Iru al la plej proksima garaĝo.
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Iru al la plej proksima hangaro.
+STR_ORDER_CONDITIONAL                                           :Kondiĉe transsaltu ordonon
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Enigi novan ordonon antaŭ la elektita ordono, aŭ aldoni fine de la listo.
+STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Enigi altnivelan ordonon.
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Montru ĉiujn veturilojn kiuj dividas ĉi tiun planon
 
@@ -3045,6 +3052,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRIN
 STR_ORDER_GO_TO_HANGAR_FORMAT                                   :{STRING} Hangaro de {STATION}
 
 STR_ORDER_REFIT_ORDER                                           :(Transformu al {STRING})
+STR_ORDER_REFIT_STOP_ORDER                                      :(Transformu al {STRING} kaj haltu)
 STR_ORDER_STOP_ORDER                                            :(Haltu)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
@@ -3075,20 +3083,29 @@ STR_ORDER_CONDITIONAL_TRUE_FALSE                                :Saltu al ordonu
 STR_INVALID_ORDER                                               :{RED} (Nevalida Ordono)
 
 # Time table window
-STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Timetable)
+STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Horaro)
 STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}Ordonoj
 STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Montri ordonvidujon.
 
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Horaro - Klaku ordonon por emfazi.
 
+STR_TIMETABLE_NO_TRAVEL                                         :Neniu veturo
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Veturo (ne horarita)
+STR_TIMETABLE_TRAVEL_FOR                                        :Veturu por {STRING}
+STR_TIMETABLE_STAY_FOR                                          :kaj restu por {STRING}
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :kaj veturu por {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} tago{P "" j}
 
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK} {STRING} necesas por plenumigi ĉi tiun horaron.
 
 STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Ĉi tiu veturilo nun iras akurate
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Ĉi tiu veturilo nun malfruas je {STRING}
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Ĉi tiu veturilo nun fruas je {STRING}
+STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Ĉi tiu horaro ankoraŭ ne komenciĝas.
+STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Ĉi tiu horaro komenciĝos je {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Komencodato
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Elekti daton por komenci ĉi tiun horaron.
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Ŝanĝu tempon
 
@@ -3100,6 +3117,8 @@ STR_TIMETABLE_EXPECTED                                          :{BLACK}Atendite
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Planite
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Ŝalti inter atendite kaj planite
 
+STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :A:
+STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :F:
 
 
 # Date window (for timetable)

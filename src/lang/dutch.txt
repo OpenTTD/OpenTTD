@@ -3380,6 +3380,7 @@ STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Er wordt
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kan dit dorp niet verwijderen...{}Een station of depot verwijst naar dit dorp of een dorpbeheerde tegel kan niet worden verwijderd
 
 # Industry related errors
+STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... teveel industrieën
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Kan geen industrieën genereren
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Kan {STRING} hier niet bouwen...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Kan dit type industrie hier niet bouwen...

@@ -315,7 +315,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Bou lugh
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Oppe die landargitekteur werktuigbaan om land te verhoog/verlaag, boome beplant, ens.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Vertoon klank/musiek venster
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Vertoon laaste boodskap/nuus verslag, vertoon boodskap opsies
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Land gebied informasie
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Land gebied informasie, konsool, KI debug, skermskyf, omtrent OpenTTD
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Skakel nutsbalke
 
 # Extra tooltips for the scenario editor toolbar
@@ -1474,7 +1474,7 @@ STR_FACE_SAVE                                                   :{BLACK}Spaar
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Spaar gunsteling gesig
 STR_FACE_SAVE_DONE                                              :{WHITE}Die gesig sal as u gunsteling gesig in die OpenTTD stellings lêer gespaar word.
 STR_FACE_EUROPEAN                                               :{BLACK}Europiese
-STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Kies europiese gesige
+STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Kies europese gesigte
 STR_FACE_AFRICAN                                                :{BLACK}Afrikaanse
 STR_FACE_SELECT_AFRICAN                                         :{BLACK}Kies  afrikaanse gesige
 STR_FACE_YES                                                    :Ja
@@ -1534,7 +1534,7 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Die bedi
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}SPEL INFORMASIE
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Kliente:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Taal:  {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Blokkiestel:  {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Landskap: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Kaart groote:  {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Verskaffer hersiening:  {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Verskaffer adres:  {WHITE}{STRING}
@@ -1810,7 +1810,7 @@ STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Jy het 
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Heirde afhanklikheid was gekies om afgelaai te wees
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Jy het hierdie reeds
 STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Heirde inhoud is onbekend en kan afgelaai word in OpenTTD
-STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Heirdie is 'n herplasing van 'n bestaande {STRING}
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Hierdie is 'n vervanging van 'n bestaande {STRING}
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}Naam: {WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Weergawe: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Beskrywing: {WHITE}{STRING}
@@ -1923,13 +1923,13 @@ STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Sein sel
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Blok Sein (semafoor){}Heirde is die mees basiese tipe sein, wat net een trein in 'n block op 'n tyd toelaat.
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Ingangs-Sein (semafoor){}Groen so lank as daar een of meer groen uitgang-siene is van enige agtervolgende treinspoorgedeelte is. Anderste is dit rooi.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Uitgang-Sein (semafoor){}Gedra dieselfde as 'n blok-sein maar is nodig om die regte kleur op ingangs- & combinasie-voor-seine te laat wys.
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Combinasie-Sein (semafoor){}Die combinasie-sein is net 'n ingang- en uitgang-sein op dieselfde tyd. Die laat jou toe om groot "bome" van voor-seine te bou.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Kombinasie-Sein (semafoor){}Die kombinasie-sein is beide 'n ingang- en uitgang-sein. Die laat jou toe om groot "bome" van voor-seine te bou.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Pad Sein (semafoor){}'n Pad sein laat meer as een trein in 'n sein block op die selfde tyd, as die trein 'n pad kan vind na 'n veiligge stop punt. Standaarde pad seine kan nie van die agterkant verby gevat word nie.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Een-rigting pad sein (semafoor){}'n Pad sein laat meer as een trein in 'n sein block op die selfde tyd, as die trein 'n pad kan vind na 'n veiligge stop punt. Een-rigting seine kan nie van die agterkant verby gevat word nie.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Blok Sein (elektries){}Heirde is die mees basiese tipe sein, wat net een trein in 'n block op 'n tyd toelaat.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Ingangs-Sein (elektries){}Groen so lank as daar een of meer groen uitgang-siene is van enige agtervolgende treinspoorgedeelte is. Anderste is dit rooi.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Uitgang-Sein (elektries){}Gedra dieselfde as 'n blok-sein maar is nodig om die regte kleur op ingangs- & combinasie-voor-seine te laat wys.
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Combinasie-Sein (elektries){}Die combinasie-sein is net 'n ingang- en uitgang-sein op dieselfde tyd. Die laat jou toe om groot "bome" van voor-seine te bou.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Kombinasie-Sein (elektries){}Die kombinasie-sein is beide 'n ingang- en uitgang-sein. Die laat jou toe om groot "bome" van voor-seine te bou.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Pad Sein (elektries){}'n Pad sein laat meer as een trein in 'n sein block op die selfde tyd, as die trein 'n pad kan vind na 'n veiligge stop punt. Standaarde pad seine kan nie van die agterkant verby gevat word nie.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Een-rigting pad sein (elektries){}'n Pad sein laat meer as een trein in 'n sein block op die selfde tyd, as die trein 'n pad kan vind na 'n veiligge stop punt. Een-rigting seine kan nie van die agterkant verby gevat word nie.
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Sein verander{}Wanneer geselekteer is, 'n kliek askei op die sein sal die sein verander na die geselekteerde sein tiepe en waarde, CTRL-kliek sal die bestaande waarde tokkel.
@@ -2018,8 +2018,8 @@ STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Kies gro
 
 STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Klein
 STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}Dorp
-STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Metropolitaans lughawe
-STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Internasionaale lughawe
+STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Metropolitaanse
+STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Internasionaal
 STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Pendelaar
 STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Tussenkontinentaal
 STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Helihawe
@@ -2905,10 +2905,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Wys pad 
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Wys skip se aanwyse
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Toon vliegtuig aanwyse
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Huidige trein aksie - kliek hier om trein te stop/aanskakel
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Huidige voertuig aksie - kliek hier om voertuig to stop/aanskakel
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Huidige skip aksie - kliek hier om skip te stop/aanskakel
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Huidige vliegtuig aksie - kliek hier on vliegtuig te stop/aanskakel
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Huidige trein aksie - kliek hier om trein te stop/aanskakel. Ctrl+kliek om na destinasie te skuif.
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Huidige voertuig aksie - kliek hier om voertuig to stop/aanskakel. Ctrl+kliek om na destinasie te skuif.
+STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Huidige skip aksie - kliek hier om skip te stop/aanskakel. Ctrl+kliek om na destinasie te skuif.
+STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Huidige vliegtuig aksie - kliek hier on vliegtuig te stop/aanskakel. Ctrl+kliek om na destinasie te skuif.
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Laai / Aflaai
