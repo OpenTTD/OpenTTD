@@ -1567,11 +1567,19 @@ enum ProductionLevels {
 	PRODLEVEL_MAXIMUM = 0x80,  ///< the industry is running at full speed
 };
 
-static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const IndustryTileTable *it, byte layout, const Town *t, Owner owner, Owner founder)
+/**
+ * Put an industry on the map.
+ * @param i       Just allocated poolitem, mostly empty.
+ * @param tile    North tile of the industry.
+ * @param type    Type of the industry.
+ * @param it      Industrylayout to build.
+ * @param layout  Number of the layout.
+ * @param t       Nearest town.
+ * @param founder Founder of the industry; OWNER_NONE in case of random construction.
+ */
+static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const IndustryTileTable *it, byte layout, const Town *t, Owner founder)
 {
 	const IndustrySpec *indspec = GetIndustrySpec(type);
-	uint32 r;
-	uint j;
 
 	i->location = TileArea(tile, 1, 1);
 	i->type = type;
@@ -1595,9 +1603,9 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const Ind
 	}
 
 	i->town = t;
-	i->owner = owner;
+	i->owner = OWNER_NONE;
 
-	r = Random();
+	uint32 r = Random();
 	i->random_colour = GB(r, 0, 4);
 	i->counter = GB(r, 4, 12);
 	i->random = GB(r, 16, 16);
@@ -1626,8 +1634,8 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const Ind
 	}
 
 	if (HasBit(indspec->callback_mask, CBM_IND_INPUT_CARGO_TYPES)) {
-		for (j = 0; j < lengthof(i->accepts_cargo); j++) i->accepts_cargo[j] = CT_INVALID;
-		for (j = 0; j < lengthof(i->accepts_cargo); j++) {
+		for (uint j = 0; j < lengthof(i->accepts_cargo); j++) i->accepts_cargo[j] = CT_INVALID;
+		for (uint j = 0; j < lengthof(i->accepts_cargo); j++) {
 			uint16 res = GetIndustryCallback(CBID_INDUSTRY_INPUT_CARGO_TYPES, j, 0, i, type, INVALID_TILE);
 			if (res == CALLBACK_FAILED || GB(res, 0, 8) == CT_INVALID) break;
 			i->accepts_cargo[j] = GetCargoTranslation(GB(res, 0, 8), indspec->grf_prop.grffile);
@@ -1635,8 +1643,8 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const Ind
 	}
 
 	if (HasBit(indspec->callback_mask, CBM_IND_OUTPUT_CARGO_TYPES)) {
-		for (j = 0; j < lengthof(i->produced_cargo); j++) i->produced_cargo[j] = CT_INVALID;
-		for (j = 0; j < lengthof(i->produced_cargo); j++) {
+		for (uint j = 0; j < lengthof(i->produced_cargo); j++) i->produced_cargo[j] = CT_INVALID;
+		for (uint j = 0; j < lengthof(i->produced_cargo); j++) {
 			uint16 res = GetIndustryCallback(CBID_INDUSTRY_OUTPUT_CARGO_TYPES, j, 0, i, type, INVALID_TILE);
 			if (res == CALLBACK_FAILED || GB(res, 0, 8) == CT_INVALID) break;
 			i->produced_cargo[j] = GetCargoTranslation(GB(res, 0, 8), indspec->grf_prop.grffile);
@@ -1681,7 +1689,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const Ind
 	} while ((++it)->ti.x != -0x80);
 
 	if (GetIndustrySpec(i->type)->behaviour & INDUSTRYBEH_PLANT_ON_BUILT) {
-		for (j = 0; j != 50; j++) PlantRandomFarmField(i);
+		for (uint j = 0; j != 50; j++) PlantRandomFarmField(i);
 	}
 	InvalidateWindowData(WC_INDUSTRY_DIRECTORY, 0, 0);
 
@@ -1740,7 +1748,7 @@ static CommandCost CreateNewIndustryHelper(TileIndex tile, IndustryType type, Do
 	if (flags & DC_EXEC) {
 		*ip = new Industry(tile);
 		if (!custom_shape_check) CheckIfCanLevelIndustryPlatform(tile, DC_NO_WATER | DC_EXEC, it, type);
-		DoCreateNewIndustry(*ip, tile, type, it, itspec_index, t, OWNER_NONE, founder);
+		DoCreateNewIndustry(*ip, tile, type, it, itspec_index, t, founder);
 	}
 
 	return CommandCost();
