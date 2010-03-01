@@ -15,8 +15,8 @@
 #include "date_func.h"
 #include "settings_type.h"
 
-AirportSpec AirportSpec::dummy = {NULL, NULL, 0, 0, 0, 0, 0, MIN_YEAR, MIN_YEAR};
-AirportSpec AirportSpec::oilrig = {NULL, NULL, 0, 1, 1, 0, 4, MIN_YEAR, MIN_YEAR};
+AirportSpec AirportSpec::dummy = {NULL, NULL, 0, 0, 0, 0, 0, MIN_YEAR, MIN_YEAR, ATP_TTDP_LARGE};
+AirportSpec AirportSpec::oilrig = {NULL, NULL, 0, 1, 1, 0, 4, MIN_YEAR, MIN_YEAR, ATP_TTDP_OILRIG};
 
 /**
  * Retrieve airport spec for the given airport

@@ -366,15 +366,6 @@ static byte MapAircraftMovementAction(const Aircraft *v)
 }
 
 
-/* TTDP airport types. Used to map our types to TTDPatch's */
-enum {
-	ATP_TTDP_SMALL,
-	ATP_TTDP_LARGE,
-	ATP_TTDP_HELIPORT,
-	ATP_TTDP_OILRIG,
-};
-
-
 /* Vehicle Resolver Functions */
 static inline const Vehicle *GRV(const ResolverObject *object)
 {
@@ -608,22 +599,8 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 
 				const Station *st = GetTargetAirportIfValid(Aircraft::From(v));
 
-				if (st != NULL) {
-					switch (st->airport_type) {
-						/* Note, Helidepot and Helistation are treated as small airports
-						 * as they are at ground level. */
-						case AT_HELIDEPOT:
-						case AT_HELISTATION:
-						case AT_COMMUTER:
-						case AT_SMALL:         airporttype = ATP_TTDP_SMALL; break;
-						case AT_METROPOLITAN:
-						case AT_INTERNATIONAL:
-						case AT_INTERCON:
-						case AT_LARGE:         airporttype = ATP_TTDP_LARGE; break;
-						case AT_HELIPORT:      airporttype = ATP_TTDP_HELIPORT; break;
-						case AT_OILRIG:        airporttype = ATP_TTDP_OILRIG; break;
-						default:               airporttype = ATP_TTDP_LARGE; break;
-					}
+				if (st != NULL && st->airport.tile != INVALID_TILE) {
+					airporttype = st->GetAirportSpec()->ttd_airport_type;
 				}
 
 				return (altitude << 8) | airporttype;

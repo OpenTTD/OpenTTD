@@ -524,7 +524,7 @@ uint32 Station::GetNewGRFVariable(const ResolverObject *object, byte variable, b
 		}
 
 		case 0x8A: return this->had_vehicle_of_type;
-		case 0xF1: return this->airport_type;
+		case 0xF1: return (this->airport.tile != INVALID_TILE) ? this->GetAirportSpec()->ttd_airport_type : ATP_TTDP_LARGE;
 		case 0xF2: return (this->truck_stops != NULL) ? this->truck_stops->status : 0;
 		case 0xF3: return (this->bus_stops != NULL)   ? this->bus_stops->status   : 0;
 		case 0xF6: return this->airport_flags;

@@ -377,27 +377,28 @@ static AirportTileTable *_tile_table_helistation[] = {
 #undef MKEND
 
 /** General AirportSpec definition. */
-#define AS_GENERIC(att, depot_tbl, num_depots, size_x, size_y, noise, catchment, min_year, max_year) \
-	{att, depot_tbl, num_depots, size_x, size_y, noise, catchment, min_year, max_year}
+#define AS_GENERIC(att, depot_tbl, num_depots, size_x, size_y, noise, catchment, min_year, max_year, ttdpatch_type) \
+	{att, depot_tbl, num_depots, size_x, size_y, noise, catchment, min_year, max_year, ttdpatch_type}
 
 /** AirportSpec definition for airports without any depot. */
-#define AS_ND(ap_name, size_x, size_y, min_year, max_year, catchment, noise) \
-	AS_GENERIC(_tile_table_##ap_name, NULL, 0, size_x, size_y, noise, catchment, min_year, max_year)
+#define AS_ND(ap_name, size_x, size_y, min_year, max_year, catchment, noise, ttdpatch_type) \
+	AS_GENERIC(_tile_table_##ap_name, NULL, 0, size_x, size_y, noise, catchment, min_year, max_year, ttdpatch_type)
 
 /** AirportSpec definition for airports with at least one depot. */
-#define AS(ap_name, size_x, size_y, min_year, max_year, catchment, noise) \
-	AS_GENERIC(_tile_table_##ap_name, _airport_depots_##ap_name, lengthof(_airport_depots_##ap_name), size_x, size_y, noise, catchment, min_year, max_year)
+#define AS(ap_name, size_x, size_y, min_year, max_year, catchment, noise, ttdpatch_type) \
+	AS_GENERIC(_tile_table_##ap_name, _airport_depots_##ap_name, lengthof(_airport_depots_##ap_name), size_x, size_y, noise, catchment, min_year, max_year, ttdpatch_type)
 
+/* The helidepot and helistation have ATP_TTDP_SMALL because they are at ground level */
 extern const AirportSpec _origin_airport_specs[] = {
-	AS(country, 4, 3, 0, 1959, 4, 3),
-	AS(city, 6, 6, 1955, MAX_YEAR, 5, 5),
-	AS_ND(heliport, 1, 1, 1963, MAX_YEAR, 4, 1),
-	AS(metropolitan, 6, 6, 1980, MAX_YEAR, 6, 8),
-	AS(international, 7, 7, 1990, MAX_YEAR, 8, 17),
-	AS(commuter, 5, 4, 1983, MAX_YEAR, 4, 4),
-	AS(helidepot, 2, 2, 1976, MAX_YEAR, 4, 2),
-	AS(intercontinental, 9, 11, 2002, MAX_YEAR, 10, 25),
-	AS(helistation, 4, 2, 1980, MAX_YEAR, 4, 3),
+	AS(country, 4, 3, 0, 1959, 4, 3, ATP_TTDP_SMALL),
+	AS(city, 6, 6, 1955, MAX_YEAR, 5, 5, ATP_TTDP_LARGE),
+	AS_ND(heliport, 1, 1, 1963, MAX_YEAR, 4, 1, ATP_TTDP_HELIPORT),
+	AS(metropolitan, 6, 6, 1980, MAX_YEAR, 6, 8, ATP_TTDP_LARGE),
+	AS(international, 7, 7, 1990, MAX_YEAR, 8, 17, ATP_TTDP_LARGE),
+	AS(commuter, 5, 4, 1983, MAX_YEAR, 4, 4, ATP_TTDP_SMALL),
+	AS(helidepot, 2, 2, 1976, MAX_YEAR, 4, 2, ATP_TTDP_SMALL),
+	AS(intercontinental, 9, 11, 2002, MAX_YEAR, 10, 25, ATP_TTDP_LARGE),
+	AS(helistation, 4, 2, 1980, MAX_YEAR, 4, 3, ATP_TTDP_SMALL),
 };
 
 assert_compile(NUM_AIRPORTS == lengthof(_origin_airport_specs));
