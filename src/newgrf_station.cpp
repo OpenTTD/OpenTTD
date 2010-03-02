@@ -510,6 +510,8 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, by
 	return st->GetNewGRFVariable(object, variable, parameter, available);
 }
 
+byte MapAirportTypeToTTDType(byte ottd_type);
+
 uint32 Station::GetNewGRFVariable(const ResolverObject *object, byte variable, byte parameter, bool *available) const
 {
 	switch (variable) {
@@ -524,9 +526,9 @@ uint32 Station::GetNewGRFVariable(const ResolverObject *object, byte variable, b
 		}
 
 		case 0x8A: return this->had_vehicle_of_type;
-		case 0xF1: return this->airport_type;
-		case 0xF2: return this->truck_stops->status;
-		case 0xF3: return this->bus_stops->status;
+		case 0xF1: return MapAirportTypeToTTDType(this->airport_type);
+		case 0xF2: return (this->truck_stops != NULL) ? this->truck_stops->status : 0;
+		case 0xF3: return (this->bus_stops != NULL)   ? this->bus_stops->status   : 0;
 		case 0xF6: return this->airport_flags;
 		case 0xF7: return GB(this->airport_flags, 8, 8);
 	}

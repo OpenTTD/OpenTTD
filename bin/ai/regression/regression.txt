@@ -569,6 +569,14 @@
   []:
     4000 => 50
   IsEmpty():     true
+    0 => 5  (true)
+ERROR: Next() is invalid as Begin() is never called
+ERROR: HasNext() is invalid as Begin() is never called
+    0 => 5  (false)
+    0 => 5  (true)
+    2 => 6  (true)
+    3 => 6  (true)
+    9 => 0  (false)
 
 --Company--
   SetName():            true

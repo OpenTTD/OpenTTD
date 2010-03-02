@@ -785,6 +785,36 @@ function Regression::List()
 
 	list.Clear();
 	print("  IsEmpty():     " + list.IsEmpty());
+
+	for (local i = 0; i < 10; i++) {
+		list.AddItem(i, 5 + i / 2);
+	}
+
+	local it = list.Begin();
+	print("    " + it + " => " + list.GetValue(it) + "  (" + list.HasNext() + ")");
+	list.Sort(list.SORT_BY_VALUE, list.SORT_ASCENDING);
+	it = list.Next();
+	print("    " + it + " => " + list.GetValue(it) + "  (" + list.HasNext() + ")");
+
+	it = list.Begin();
+	print("    " + it + " => " + list.GetValue(it) + "  (" + list.HasNext() + ")");
+
+	list.SetValue(it + 1, -5);
+	it = list.Next();
+	print("    " + it + " => " + list.GetValue(it) + "  (" + list.HasNext() + ")");
+
+	list.RemoveValue(list.GetValue(it) + 1);
+	it = list.Next();
+	print("    " + it + " => " + list.GetValue(it) + "  (" + list.HasNext() + ")");
+
+	list.RemoveAboveValue(list.GetValue(it));
+	it = list.Next();
+	print("    " + it + " => " + list.GetValue(it) + "  (" + list.HasNext() + ")");
+
+	while (list.HasNext()) {
+		it = list.Next();
+		print("    " + it + " => " + list.GetValue(it));
+	}
 }
 
 function Regression::Map()

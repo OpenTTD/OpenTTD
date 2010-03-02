@@ -486,6 +486,25 @@ static uint32 PositionHelper(const Vehicle *v, bool consecutive)
 	return chain_before | chain_after << 8 | (chain_before + chain_after + consecutive) << 16;
 }
 
+byte MapAirportTypeToTTDType(byte ottd_type)
+{
+	switch (ottd_type) {
+		/* Note, Helidepot and Helistation are treated as small airports
+		 * as they are at ground level. */
+		case AT_HELIDEPOT:
+		case AT_HELISTATION:
+		case AT_COMMUTER:
+		case AT_SMALL:         return ATP_TTDP_SMALL;
+		case AT_METROPOLITAN:
+		case AT_INTERNATIONAL:
+		case AT_INTERCON:
+		case AT_LARGE:         return ATP_TTDP_LARGE;
+		case AT_HELIPORT:      return ATP_TTDP_HELIPORT;
+		case AT_OILRIG:        return ATP_TTDP_OILRIG;
+		default:               return ATP_TTDP_LARGE;
+	}
+}
+
 static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, byte parameter, bool *available)
 {
 	Vehicle *v = const_cast<Vehicle*>(GRV(object));
@@ -609,21 +628,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 				const Station *st = GetTargetAirportIfValid(Aircraft::From(v));
 
 				if (st != NULL) {
-					switch (st->airport_type) {
-						/* Note, Helidepot and Helistation are treated as small airports
-						 * as they are at ground level. */
-						case AT_HELIDEPOT:
-						case AT_HELISTATION:
-						case AT_COMMUTER:
-						case AT_SMALL:         airporttype = ATP_TTDP_SMALL; break;
-						case AT_METROPOLITAN:
-						case AT_INTERNATIONAL:
-						case AT_INTERCON:
-						case AT_LARGE:         airporttype = ATP_TTDP_LARGE; break;
-						case AT_HELIPORT:      airporttype = ATP_TTDP_HELIPORT; break;
-						case AT_OILRIG:        airporttype = ATP_TTDP_OILRIG; break;
-						default:               airporttype = ATP_TTDP_LARGE; break;
-					}
+					airporttype = MapAirportTypeToTTDType(st->airport_type);
 				}
 
 				return (altitude << 8) | airporttype;
