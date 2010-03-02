@@ -281,7 +281,7 @@ STR_SORT_BY_FACILITY                                            :Tipo di stazion
 STR_SORT_BY_WAITING                                             :Merci in attesa
 STR_SORT_BY_RATING_MAX                                          :Valutazione maggiore
 STR_SORT_BY_RATING_MIN                                          :Valutazione minore
-STR_SORT_BY_ENGINE_ID                                           :EngineID (ord. classico)
+STR_SORT_BY_ENGINE_ID                                           :EngineID (ordine classico)
 STR_SORT_BY_COST                                                :Costo
 STR_SORT_BY_POWER                                               :Potenza
 STR_SORT_BY_INTRO_DATE                                          :Data introduzione
@@ -293,7 +293,7 @@ STR_SORT_BY_CARGO_CAPACITY                                      :Capacità di ca
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pausa
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Aumenta la velocità di gioco
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opzioni
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Salva la partita, abandona la partita, esci
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Salva la partita, abbandona la partita, esci
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Mostra la mappa, apre una mini visuale extra o mostra l'elenco dei cartelli
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Mostra l'elenco delle città
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Mostra i sussidi
@@ -538,10 +538,10 @@ STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPAN
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Ingegnere
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Direttore del traffico
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Coordinatore dei trasporti
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ROUTE_SUPERVISOR           :Supervisore dei percorsi
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_DIRECTOR                   :Direttore
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHIEF_EXECUTIVE            :Amministratore delegato
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHAIRMAN                   :Chairman
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ROUTE_SUPERVISOR           :Supervisore degli itinerari
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_DIRECTOR                   :Dirigente
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHIEF_EXECUTIVE            :Manager
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHAIRMAN                   :Amministratore delegato
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :Presidente
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Magnate
 
@@ -600,7 +600,7 @@ STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Salta al
 STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Ferma la musica
 STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}Avvia la musica
 STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}Trascina i selettori per regolare il volume della musica e degli effetti sonori
-STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM                     :{BLACK}Seleziona il progrmma 'Tutti i brani'
+STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM                     :{BLACK}Seleziona il programma 'Tutti i brani'
 STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}Seleziona il programma 'Musica vecchio stile'
 STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}Seleziona il programma 'Musica nuovo stile'
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Seleziona il programma 'Musica ezy street'
@@ -627,12 +627,12 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Fare cli
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Le migliori compagnie che hanno raggiunto il {NUM}{}(Livello {STRING})
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Classifica compagnie nel {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIGFONT}{BLACK}{COMMA}.
-STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Uomo d'affari
+STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Affarista
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Imprenditore
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Industriale
 STR_HIGHSCORE_PERFORMANCE_TITLE_CAPITALIST                      :Capitalista
-STR_HIGHSCORE_PERFORMANCE_TITLE_MAGNATE                         :Magnate
-STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :Mogul
+STR_HIGHSCORE_PERFORMANCE_TITLE_MAGNATE                         :Finanziere
+STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :Magnate
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Magnate del secolo
 STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESIDENTNAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
@@ -681,7 +681,7 @@ STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINYFONT}{BLAC
 STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINYFONT}{BLACK}Terreno spoglio
 STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINYFONT}{BLACK}Campi
 STR_SMALLMAP_LEGENDA_TREES                                      :{TINYFONT}{BLACK}Alberi
-STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINYFONT}{BLACK}Roccie
+STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINYFONT}{BLACK}Rocce
 STR_SMALLMAP_LEGENDA_WATER                                      :{TINYFONT}{BLACK}Acqua
 STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINYFONT}{BLACK}Senza proprietario
 STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINYFONT}{BLACK}Città
@@ -760,7 +760,7 @@ STR_NEWS_DISASTER_BIG_UFO                                       :{BIGFONT}{BLACK
 STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIGFONT}{BLACK}Cedimento in una miniera di carbone lascia una scia di distruzione vicino a {TOWN}!
 STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIGFONT}{BLACK}Alluvione!{}Almeno {COMMA} dispersi, presunti morti, in una imponente alluvione!
 
-STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIGFONT}{BLACK}Compagnia di trasporti in difficolta!
+STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIGFONT}{BLACK}Compagnia di trasporti in difficoltà!
 STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIGFONT}{BLACK}La {STRING} verrà venduta o dichiarerà bancarotta a meno che le prestazioni non migliorino presto!
 STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIGFONT}{BLACK}Fusione tra compagnie di trasporti!
 STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIGFONT}{BLACK}La {STRING} è stata venduta alla {STRING} per {CURRENCY}!
@@ -827,7 +827,7 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Offerta di sussidio scaduta:{}{}Il trasporto di {STRING} da {STRING} a {STRING} non darà più diritto a sovvenzioni.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Sussidio terminato:{}{}Il trasporto di {STRING} da {STRING} a {STRING} non è più sovvenzionato.
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Offerta di sussidio:{}{}Il primo servizio {STRING} da {STRING} a {STRING} riceverà un'anno di sovvenzioni dall'autorità locale!
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Offerta di sussidio:{}{}Il primo servizio {STRING} da {STRING} a {STRING} riceverà un anno di sovvenzioni dall'autorità locale!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Sussidio aggiudicato alla {STRING}!{}{}Il trasporto di {STRING} da {STRING} a {STRING} verrà pagato il 50% in più per il prossimo anno!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Sussidio aggiudicato alla {STRING}!{}{}Il trasporto di {STRING} da {STRING} a {STRING} verrà pagato il doppio per il prossimo anno!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Sussidio aggiudicato alla {STRING}!{}{}Il trasporto di {STRING} da {STRING} a {STRING} verrà pagato il triplo per il prossimo anno!
@@ -838,7 +838,7 @@ STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Mini visuale {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Copia nella mini visuale
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Copia la posizione della visuale principale in questa mini misuale
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Copia la posizione della visuale principale in questa mini visuale
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Copia dalla mini visuale
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Copia la posizione di questa mini visuale nella visuale principale
 
@@ -1068,7 +1068,7 @@ STR_CITY_APPROVAL_TOLERANT                                      :Tollerante
 STR_CITY_APPROVAL_HOSTILE                                       :Ostile
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Nessuna IA adatta disponibile...{}È possibile scaricare numerose IA tramite il sistema 'Contenuti online'
-STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Questa azione ha cambiato il livello di difficolta in 'Personalizzata'
+STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Questa azione ha cambiato il livello di difficoltà in 'Personalizzata'
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Impostazioni avanzate
@@ -1178,7 +1178,7 @@ STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}Mostra 
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Nessuna
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Propria compagnia
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :Tutte le compagnie
-STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :{LTBLUE}Chatta con la squadra premento INVIO: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :{LTBLUE}Chatta con la squadra premendo INVIO: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Funzione della rotellina: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Zoom mappa
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Scorrimento mappa
@@ -1403,7 +1403,7 @@ STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Compagn
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Bulldozer magico (rimuove industrie e oggetti inamovibili): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}I tunnel possono incrociarsi tra loro: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Consenti costruzione in pausa: {ORANGE}{STRING}
-STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}I jet non si schiantano (frequententemente) nei piccoli aeroporti: {ORANGE} {STRING}
+STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}I jet non si schiantano (frequentemente) nei piccoli aeroporti: {ORANGE} {STRING}
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Cambia tipo di paesaggio: {ORANGE} {STRING}
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Paesaggio 'temperato'
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Paesaggio 'sub-artico'
@@ -1983,7 +1983,7 @@ STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Selezion
 # Road vehicle station construction window
 STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Orientamento stazione
 STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Seleziona l'orientamento della stazione degli autobus
-STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Orient. area carico
+STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Orientamento area carico
 STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Seleziona l'orientamento dell'area di carico per camion
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Orient. stazione tram passeggeri
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Seleziona l'orientamento della stazione tram passeggeri
@@ -2021,7 +2021,7 @@ STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Piccolo
 STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}Cittadino
 STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Metropolitano
 STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Internazionale
-STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Commuter
+STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Minore
 STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Intercontinentale
 STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Eliporto
 STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}Elideposito
@@ -2029,7 +2029,7 @@ STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}Elistazi
 
 STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}Aeroporti piccoli
 STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Aeroporti grandi
-STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Hub aeroportuali
+STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Aeroporti hub
 STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Eliporti
 
 STR_STATION_BUILD_NOISE                                         :{BLACK}Rumore generato: {GOLD}{COMMA}
@@ -2059,10 +2059,10 @@ STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Aumenta 
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Riduce l'ampiezza del terreno da abbassare/alzare
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Genera terreno casuale
 STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Crea nuovo scenario
-STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Azzerra paesaggio
+STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Azzera paesaggio
 STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Rimuove tutte le strutture di proprietà dei giocatori dalla mappa
 
-STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Azzerra Paesaggio
+STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Azzera paesaggio
 STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Si è sicuri di voler rimuovere tutte le proprietà dei giocatori?
 
 # Town generation window (SE)
@@ -2129,7 +2129,7 @@ STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Merce ac
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 
 # Description of land area of different tiles
-STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Roccie
+STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Rocce
 STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :Terreno accidentato
 STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Terreno spoglio
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Erba
@@ -2204,8 +2204,8 @@ STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :Ponte ferroviar
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_CONCRETE                        :Ponte ferroviario in cemento
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_TUBULAR_STEEL                   :Ponte ferroviario tubolare
 
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_STEEL                :Ponte stradale sopeso in acciaio
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_GIRDER_STEEL                    :Ponte stradale a travutara in acciaio
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_STEEL                :Ponte stradale sospeso in acciaio
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_GIRDER_STEEL                    :Ponte stradale a travatura in acciaio
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_CANTILEVER_STEEL                :Ponte stradale a mensola in acciaio
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_CONCRETE             :Ponte stradale sospeso in cemento armato
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_WOODEN                          :Ponte stradale in legno
@@ -2299,7 +2299,7 @@ STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Cambia l
 # Map generation progress
 STR_GENERATION_WORLD                                            :{WHITE}Generazione del mondo...
 STR_GENERATION_ABORT                                            :{BLACK}Interrompi
-STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Interromi generazione mondo
+STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Interrompi generazione mondo
 STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Si è sicuri di voler interrompere la generazione?
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% completato
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
@@ -2425,7 +2425,7 @@ STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Passegge
 STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Posta il mese scorso: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Carichi richiesti per la crescita della città:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{STRING}{BLACK} richiesto
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} richesto in inverno
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} richiesto in inverno
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :Consegnato il mese scorso: {ORANGE}{CARGO}{BLACK}
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Limite di rumore in città: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centra la visuale principale sulla posizione della città. CTRL+clic la mostra in una mini visuale.
@@ -2458,14 +2458,14 @@ STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Finanzia nuove 
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Acquista esclusiva sui trasporti
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Corrompi l'autorità locale
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Inizia una piccola campagnia pubblicitaria, per attirare più passeggeri e merci ai servizi di trasporto della compagnia.{}Costo: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Inizia una campagnia pubblicitaria moderata, per attirare più passeggeri e merci ai servizi di trasporto della compagnia.{}Costo: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Inizia una grande campagnia pubblicitaria locale, per attirare più passeggeri e merci ai servizi di trasporto della compagnia.{}Costo: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Finanzia la ricostruzione della rete stradale cittadina. Causa un cosiderabile disagio al traffico stradale per 6 mesi.{}Costo: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Inizia una piccola campagna pubblicitaria, per attirare più passeggeri e merci ai servizi di trasporto della compagnia.{}Costo: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Inizia una campagna pubblicitaria moderata, per attirare più passeggeri e merci ai servizi di trasporto della compagnia.{}Costo: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Inizia una grande campagna pubblicitaria locale, per attirare più passeggeri e merci ai servizi di trasporto della compagnia.{}Costo: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Finanzia la ricostruzione della rete stradale cittadina. Causa un considerevole disagio al traffico stradale per 6 mesi.{}Costo: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Costruisce una statua in onore della compagnia.{}Costo: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Finanzia la costruzione di nuovi edifici commerciali nella città.{}Costo: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Acquista un anno di diritti di trasporto esclusivi in città. L'autorità cittadina permetterà a passeggeri e merci di usare solo le stazioni della compagnia.{}Costo: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Corrompi l'autorità locale per autmentare la tua valutazione, con il rischio di una severa multa se scoperto.{}Costo: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Corrompi l'autorità locale per aumentare la tua valutazione, con il rischio di una severa multa se scoperto.{}Costo: {CURRENCY}
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Sussidi
@@ -2483,7 +2483,7 @@ STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Nessuna -
-STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Seleziona tuti i fabbricati
+STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Seleziona tutti i fabbricati
 STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Seleziona tutti i tipi di merce (comprese le merci non in attesa)
 STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Non c'è nessun tipo di merce in attesa
 
@@ -2760,12 +2760,12 @@ STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHO
 STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Treni - fare clic su un treno per informazioni, trascinare i veicoli per aggiungerli/rimuoverli dal treno
 STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Veicoli - fare clic su un veicolo per informazioni
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Navi - fare clic su una nave per informazioni
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Aereomobili - fare clic su un aeromobile per informazioni
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Aeromobili - fare clic su un aeromobile per informazioni
 
-STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Trascianre qui un veicolo ferroviario per venderlo
+STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Trascinare qui un veicolo ferroviario per venderlo
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Trascinare qui un automezzo per venderlo
 STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Trascinare qui una nave per venderla
-STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Trascianre qui un aeromobile per venderlo
+STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Trascinare qui un aeromobile per venderlo
 
 STR_DEPOT_DRAG_WHOLE_TRAIN_TO_SELL_TOOLTIP                      :{BLACK}Trascinare qui la locomotiva di un treno per vendere l'intero treno
 
@@ -2797,7 +2797,7 @@ STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Clona ae
 STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Compra una copia di un treno, inclusi tutti i vagoni. Fare clic su questo pulsante e quindi su un treno dentro o fuori dal deposito. Tenere premuto CTRL per condividere gli ordini
 STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Compra una copia di un automezzo. Fare clic su questo pulsante e quindi su un automezzo dentro o fuori dal deposito. Tenere premuto CTRL per condividere gli ordini
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Compra una copia di una nave. Fare clic su questo pulsante e quindi su una nave dentro o fuori dal deposito. Tenere premuto CTRL per condividere gli ordini
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Compra una copia di un aeromobile. Fare clic su questo pusalnte e quindi su un aeromobile dentro o fuori dall'hangar. Tenere premuto CTRL per convidivere gli ordini
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Compra una copia di un aeromobile. Fare clic su questo pulsante e quindi su un aeromobile dentro o fuori dall'hangar. Tenere premuto CTRL per condividere gli ordini
 
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centra la visuale principale sulla posizione del deposito ferroviario. CTRL+clic lo mostra in una mini visuale.
 STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centra la visuale principale sulla posizione del deposito automezzi. CTRL+clic lo mostra in una mini visuale.
@@ -3071,7 +3071,7 @@ STR_ORDER_SERVICE                                               :{BLACK}Manutien
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Sempre
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Solo se necessario
 STR_ORDER_DROP_HALT_DEPOT                                       :Ferma in deposito
-STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Ingnora quest'ordine a meno che non sia necessaria una manutenzione
+STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Ignora quest'ordine a meno che non sia necessaria una manutenzione
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Dato del veicolo sul quale basare il salto
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Percentuale di carico
@@ -3302,7 +3302,7 @@ STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}...non c
 STR_ERROR_PNGMAP                                                :{WHITE}Impossibile caricare il terreno dal file PNG...
 STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}...file non trovato.
 STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}...impossibile convertire il tipo di immagine. È richiesta un'immagine PNG a 8 o 24 bit.
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}...qualcosa non ha funzionato (probabilimente il file è corrotto)
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}...qualcosa non ha funzionato (probabilmente il file è corrotto)
 
 STR_ERROR_BMPMAP                                                :{WHITE}Impossibile caricare il terreno dal file BMP...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}...impossibile convertire il tipo di immagine
@@ -3339,8 +3339,8 @@ STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{1:STRIN
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}L'autorità locale di {TOWN} non lo autorizza
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}L'autorita locale di {TOWN} rifiuta la costruzione di un altro aeroporto nella città
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}L'autorita locale di {TOWN} rifiuta il permesso per motivi di inquinamento acustico
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}L'autorità locale di {TOWN} rifiuta la costruzione di un altro aeroporto nella città
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}L'autorità locale di {TOWN} rifiuta il permesso per motivi di inquinamento acustico
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}Il tuo tentativo di corruzione è stato
 STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}scoperto dalla Guardia di Finanzia.
 

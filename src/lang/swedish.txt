@@ -388,7 +388,7 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Fraktförtjäns
 
 ############ range for company league menu starts
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Tabell över ledande företag
-STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Detaljerade prestandabetyg
+STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Detaljerad prestationsvärdering
 ############ range ends here
 
 ############ range for industry menu starts
@@ -1219,12 +1219,12 @@ STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Grupper
 STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Visa konstruktionsverktygen när det ej finns några passande fordon tillgängligt: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Max antal tåg per spelare: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Max antal vägfordon per spelare: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Max antal flygplan per spelare: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Max antal luftfarkoster per spelare: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Max antal skepp per spelare: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Förbjud tåg för datorn: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}Förbjud vägfordon för datorn: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Förbjud flygplan för datorn: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Förbjud luftfarkoster för datorn: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Förbjud skepp för datorn: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Tillåt datorer i flerspelarläge: {ORANGE}{STRING}
@@ -1235,8 +1235,8 @@ STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Standar
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Standard serviceintervall för tåg: {ORANGE}av
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Standard serviceintervall för vägfordon: {ORANGE}{STRING} dagar/%
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Standard serviceintervall för vägfordon: {ORANGE}av
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Standard serviceintervall för flygplan: {ORANGE}{STRING} dagar/%
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Standard serviceintervall för flygplan: {ORANGE}av
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Standard serviceintervall för luftfarkoster: {ORANGE}{STRING} dagar/%
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Standard serviceintervall för luftfarkoster: {ORANGE}av
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Standard serviceintervall för skepp: {ORANGE}{STRING} dagar/%
 STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Standard serviceintervall för skepp: {ORANGE}av
 STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Avaktivera service när motorstopp är av: {ORANGE}{STRING}
@@ -1292,8 +1292,8 @@ STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Långsamt
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normalt
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Snabbt
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Väldigt snabbt
-STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}Andel av städerna som kommer växa dubbelt så fort: {ORANGE}1 av {STRING}
-STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}Andel av städerna som kommer växa dubbelt så fort: {ORANGE}Inga
+STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}Proportion av tätorter som kommer bli storstäder: {ORANGE}1 av {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}Proportion av tätorter som kommer bli storstäder: {ORANGE}Inga
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Initial stadsstorleks multiplikator: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Ta bort absurda väg-element under vägkonstruktion: {ORANGE}{STRING}
 
@@ -1442,7 +1442,7 @@ STR_LIVERY_PASSENGER_SHIP                                       :Passagerarfärj
 STR_LIVERY_FREIGHT_SHIP                                         :Fraktskepp
 STR_LIVERY_HELICOPTER                                           :Helikopter
 STR_LIVERY_SMALL_PLANE                                          :Litet flygplan
-STR_LIVERY_LARGE_PLANE                                          :Stort Flygplan
+STR_LIVERY_LARGE_PLANE                                          :Stort flygplan
 STR_LIVERY_PASSENGER_TRAM                                       :Passagerarspårvagn
 STR_LIVERY_FREIGHT_TRAM                                         :Fraktspårvagn
 
@@ -1643,7 +1643,7 @@ STR_NETWORK_GAME_LOBBY_INAUGURATION_YEAR                        :{SILVER}Etabler
 STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}Företagsvärde: {WHITE}{CURRENCY}
 STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}Nuvarande saldo: {WHITE}{CURRENCY}
 STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}Förra årets inkomst: {WHITE}{CURRENCY}
-STR_NETWORK_GAME_LOBBY_PERFORMANCE                              :{SILVER}Prestandabetyg: {WHITE}{NUM}
+STR_NETWORK_GAME_LOBBY_PERFORMANCE                              :{SILVER}Prestationsbetyg: {WHITE}{NUM}
 
 STR_NETWORK_GAME_LOBBY_VEHICLES                                 :{SILVER}Fordon: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
 STR_NETWORK_GAME_LOBBY_STATIONS                                 :{SILVER}Stationer: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
@@ -1820,7 +1820,7 @@ STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Vald p�
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Filer som behövs: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Taggar: {WHITE}{STRING}
 STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD har byggts utan stöd för "zlib"...
-STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... ladda ned innehåll är inte möjligt!
+STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... nerladdning av innehåll är inte möjligt!
 
 # Order of these is important!
 STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Grafikpaket
@@ -2255,7 +2255,7 @@ STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Klicka f
 STR_MAPGEN_RANDOM                                               :{BLACK}Slumpa
 STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Ändra slump-nummer som används för terräng-generering
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landgenerator:
-STR_MAPGEN_TREE_PLACER                                          :{BLACK}Träd Algoritm:
+STR_MAPGEN_TREE_PLACER                                          :{BLACK}Trädalgoritm:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terrängtyp:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Havsnivå
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Jämnhet:
@@ -2268,7 +2268,7 @@ STR_MAPGEN_NORTHWEST                                            :{BLACK}Nordväs
 STR_MAPGEN_NORTHEAST                                            :{BLACK}Nordost
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}Sydost
 STR_MAPGEN_SOUTHWEST                                            :{BLACK}Sydväst
-STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Frihand
+STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Fri form
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Vatten
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}På måfå
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}På måfå
@@ -2667,7 +2667,7 @@ STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}Delade i
 STR_GROUP_ALL_TRAINS                                            :Alla tåg
 STR_GROUP_ALL_ROAD_VEHICLES                                     :Alla vägfordon
 STR_GROUP_ALL_SHIPS                                             :Alla skepp
-STR_GROUP_ALL_AIRCRAFTS                                         :Alla flygplan
+STR_GROUP_ALL_AIRCRAFTS                                         :Alla flygmaskiner
 
 STR_GROUP_DEFAULT_TRAINS                                        :Ogrupperade tåg
 STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Ogrupperade vägfordon
@@ -2821,7 +2821,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Du är 
 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Meddelande från fordonstillverkare
-STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Vi har just designat ett nytt {STRING} - är du intresserad av ett års exklusiv användning av detta fordon, så vi kan se hur det fungerar innan vi släpper det på marknaden?
+STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Vi har just designat ett nytt {STRING} - är du intresserad av ett års exklusiv användning av detta fordon, så vi kan se hur det presterar innan vi gör det allmänt tillgängligt?
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :järnvägslok
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :vägfordon
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :flygplan
@@ -2888,8 +2888,8 @@ STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Tvinga t
 
 STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Anpassa tåg för att bära annan godstyp
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Anpassa vägfordon till att bära en annan sorts last
-STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Anpassa skepp till att frakta en annan godstyp
-STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Anpassa flygplan att frakta en annan godstyp
+STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Anpassa skepp för att frakta en annan godstyp
+STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Anpassa flygplan för att frakta en annan godstyp
 
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Byt tågets riktning
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Tvinga fordonet att vända om
@@ -3025,8 +3025,8 @@ STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Anpassa 
 
 STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Anpassa tåg för att bära vald godstyp
 STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Anpassa vägfordon till att bära markerad last
-STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Anpassa skepp att frakta markerad godstyp
-STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Anpassa flygplan att frakta markerad godstyp
+STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Anpassa skepp för att frakta markerad godstyp
+STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Anpassa flygplan för att frakta markerad godstyp
 
 # Order view
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Order)
@@ -3060,7 +3060,7 @@ STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Lasta av om acc
 STR_ORDER_DROP_UNLOAD                                           :Lasta av allt
 STR_ORDER_DROP_TRANSFER                                         :Överför
 STR_ORDER_DROP_NO_UNLOADING                                     :Ej avlastning
-STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Ändra avlastningsbeteende på markerad order
+STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Ändra avlastningsbeteende för markerad order
 
 STR_ORDER_REFIT                                                 :{BLACK}Anpassa
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Välj vilken godstyp anpassningen ska göras i denna order. Ctrl-klick för att ta bort anpassningsordern
@@ -3079,7 +3079,7 @@ STR_ORDER_CONDITIONAL_AGE                                       :Fordonsålder (
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Behöver service
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Alltid
 
-STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}How-to: Jämför fordonsdata med givet värde
+STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Hur man jämför fordonsdata med givet värde
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :samma som
 STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :ej samma som
 STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :mindre än
@@ -3159,7 +3159,7 @@ STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE
 STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}Order
 STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Byt till ordervyn
 
-STR_TIMETABLE_TOOLTIP                                           :{BLACK}Tidstabell - klicka på en order för att markera den.
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}Tidtabell - klicka på en order för att markera den.
 
 STR_TIMETABLE_NO_TRAVEL                                         :Ingen resa
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Avres (Inte tillagd i tidtabell)
@@ -3182,7 +3182,7 @@ STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Startdat
 STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Välj ett datum som startpunkt för den här tidtabellen
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Ändra Tid
-STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Ändra tid som den markerade ordern bör ta
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Ändra hur lång tid den markerade ordern bör ta
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Rensa tid
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Rensa tiden för markerad order
@@ -3380,6 +3380,7 @@ STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Vägarbe
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kan inte ta bort den här staden...{}En station eller depå refererar till staden eller så kan inte en stadsägd ruta tas bort.
 
 # Industry related errors
+STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... för många industrier
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Kan inte generera industrier...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Kan inte bygga {STRING} här...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Kan inte bygga denna typ av industri här...
@@ -3716,7 +3717,7 @@ STR_SV_UNNAMED                                                  :Inget namn
 STR_SV_TRAIN_NAME                                               :Tåg {COMMA}
 STR_SV_ROAD_VEHICLE_NAME                                        :Vägfordon {COMMA}
 STR_SV_SHIP_NAME                                                :Skepp {COMMA}
-STR_SV_AIRCRAFT_NAME                                            :Flygplan {COMMA}
+STR_SV_AIRCRAFT_NAME                                            :Luftfarkost {COMMA}
 
 STR_SV_STNAME                                                   :{STRING}
 STR_SV_STNAME_NORTH                                             :Norra {STRING}

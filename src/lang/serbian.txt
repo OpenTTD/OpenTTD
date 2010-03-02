@@ -489,10 +489,10 @@ STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Izgradnj
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Izgradnja puteva
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Izgradnja pristaništa
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Izgradnja aerodroma
-STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Otvorite traku sa oblikovanje reljefa kako bi ste posadili drveće, uzdigli/snizili zemljište, itd.
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Otvorite traku sa oblikovanje terena kako bi ste posadili drveće, menjali reljef, itd.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Prikaži prozor za zvuk i muziku
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Prikaži poslednju poruku/izveštaj, prikaži opcije poruka
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informacije o zemljištu, konzola, debag veštačke inteligencije, slika sa ekrana, o OpenTTD-u
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Podaci o zemljištu, konzola, debag veštačke inteligencije, slika sa ekrana, o OpenTTD-u
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Zamenjuje trake sa alatima
 
 # Extra tooltips for the scenario editor toolbar
@@ -595,7 +595,7 @@ STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Izgradnja aerod
 ############ range ends here
 
 ############ range for landscaping menu starts
-STR_LANDSCAPING_MENU_LANDSCAPING                                :Oblikovanje reljefa
+STR_LANDSCAPING_MENU_LANDSCAPING                                :Oblikovanje terena
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Posadi drvo
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Postavi znak
 ############ range ends here
@@ -908,7 +908,7 @@ STR_NEWS_MESSAGE_TYPES                                          :{BLACK}Vrste po
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Dolazak prvog vozila na igračevu stanicu
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Dolazak prvog vozila na suparničku stanicu
 STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Udesi/nepogode
-STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}Informacije o preduzeću
+STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}Podaci o preduzeću
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}Otvaranje nove fabrike
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}Zatvaranje fabrike
 STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}Promene u ekonomiji
@@ -919,7 +919,7 @@ STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Savet /
 STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Nova vozila
 STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Promene u prihvatanju tovara
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Subvencije
-STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Opšte informacije
+STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Opšta obaveštenja
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIGFONT}{BLACK}Građani proslavljaju . . .{}Dolazak prvog voza na stanicu {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIGFONT}{BLACK}Građani proslavljaju . . .{}Dolazak prvog autobusa na stanicu {STATION}!
@@ -1340,8 +1340,8 @@ STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Nikakavo
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Originalano
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Unapređeno
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}Orjentacija elevacione karte: {ORANGE}{STRING}
-STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Suprotno okretanju skazaljke na satu
-STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Ka okretanju skazaljke na satu
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Nalevo
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Nadesno
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Visina ravnog terena je: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Dozvoljena izmena reljefa na ivicama terena: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Jedan ili više sektora na severnoj ivici nije prazan
@@ -1495,7 +1495,7 @@ STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Baratan
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Računar
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Automatska zamena
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Servsiranje
-STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Routiranje
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Rutiranje
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Vozovi
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Naselja
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industrije
@@ -1503,7 +1503,7 @@ STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industr
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Pretraživanje putanja vozova: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Preporučuje se)
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Pretraživajne putanja drumskih vozila: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Pretraživanje putanja drumskih vozila: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_NPF             :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_YAPF            :YAPF {BLUE}(Preporučuje se)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Pretraživanje putanja brodova: {ORANGE}{STRING}
@@ -1852,8 +1852,8 @@ STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Pr
 STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Obrađujem podatke..
 STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Prijavljujem se..
 
-STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Tražim informacije o igri..
-STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Tražim informacije o preduzećima..
+STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Tražim podatke o partiji..
+STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Tražim podatke o preduzećima..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} igrač{P "" a a} je ispred Vas
 STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} skinuto do sada
@@ -2183,7 +2183,7 @@ STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Gradi pr
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Postavite bovu kako bi služila kao putokaz
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Izgradite akvadukt
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Vodena površina.{}Napravite kanal, ukoliko držite i Ctrl dok ste na nivou mora, tada popunjavate okolinu vodom
-STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Mjesto reka.
+STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Reka
 
 # Ship depot construction window
 STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Orijentacija brodskog hangara
@@ -2218,7 +2218,7 @@ STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Helidrom
 STR_STATION_BUILD_NOISE                                         :{BLACK}Proizvedena buka: {GOLD}{COMMA}
 
 # Landscaping toolbar
-STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Oblikovanje reljefa
+STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Oblikovanje terena
 STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Spusti ugao tla
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Podigni ugao tla
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Nivo zemljišta
@@ -2230,7 +2230,7 @@ STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Izbor vr
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Drveće proizvoljne vrste
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Posadite drveće proizvoljne vrste
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Nasumično postavljeno drveće
-STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Zasadi drveće nasumično preko čitavog reljefa
+STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Zasadi drveće nasumično preko čitavog terena
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Oblikovanje reljefa
@@ -2291,7 +2291,7 @@ STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Izgradi
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Finansiraj
 
 # Land area window
-STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Prikaži informacije o zemljištu
+STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Prikaži podatke o zemljištu
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Cena čišćenja: {LTBLUE}N/A
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Cena čišćenja: {RED}{CURRENCY}
 STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Dobit po uklanjanju: {LTBLUE}{CURRENCY}
@@ -2526,7 +2526,7 @@ STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: 
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Paleta: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parametri: {SILVER}{STRING}
 
-STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Informacije nepostoje
+STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Podaci nepostoje
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Odabrana datoteka nije nađena
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Isključen
 
@@ -2579,7 +2579,7 @@ STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF '
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Pokušava da promeni dužinu '{1:ENGINE}' dok je van depoa.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Voz '{VEHICLE}' preduzeća '{COMPANY}' je neispravne dužine. Verovatno je izazvana nekim problemima sa NewGRF(ovima). Igra može da krahira ili da se desinhronizuje.
 
-STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' sadrži neispravne informacije.
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' sadrži neispravne podatke.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Podaci o tovaru/prenameni za '{1:ENGINE}' se posle izgradnje razlikuju od nabavne liste. Ovo može izazvati neispravnu automatsku zamenu/preuređenje.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' je izazvao beskrajnu petlju poziva proizvodnje industrija.
 
@@ -3194,7 +3194,7 @@ STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO}
 
 STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}Tovar
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}Prikazuje podatke o tovaru koji se prevozi
-STR_VEHICLE_DETAIL_TAB_INFORMATION                              :{BLACK}Informacija
+STR_VEHICLE_DETAIL_TAB_INFORMATION                              :{BLACK}Podaci
 STR_VEHICLE_DETAILS_TRAIN_INFORMATION_TOOLTIP                   :{BLACK}Prikazuje podatke o kompoziciji
 STR_VEHICLE_DETAIL_TAB_CAPACITIES                               :{BLACK}Kapaciteti
 STR_VEHICLE_DETAILS_TRAIN_CAPACITIES_TOOLTIP                    :{BLACK}Prikazuje nosivost svih vozila u kompoziciji
