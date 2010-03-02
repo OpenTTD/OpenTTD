@@ -24,7 +24,7 @@ struct AirportTileTable {
 };
 
 /** TTDP airport types. Used to map our types to TTDPatch's */
-enum {
+enum TTDPAirportType {
 	ATP_TTDP_SMALL,    ///< Same as AT_SMALL
 	ATP_TTDP_LARGE,    ///< Same as AT_LARGE
 	ATP_TTDP_HELIPORT, ///< Same as AT_HELIPORT
@@ -44,7 +44,7 @@ struct AirportSpec {
 	byte catchment;                        ///< catchment area of this airport
 	Year min_year;                         ///< first year the airport is available
 	Year max_year;                         ///< last year the airport is available
-	byte ttd_airport_type;                 ///< ttdpatch airport type (Small/Large/Helipad/Oilrig)
+	TTDPAirportType ttd_airport_type;      ///< ttdpatch airport type (Small/Large/Helipad/Oilrig)
 
 	static const AirportSpec *Get(byte type);
 
