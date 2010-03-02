@@ -428,11 +428,16 @@ public:
 		int min_speed = 0;
 		int max_speed = INT_MAX; // no limit
 
-		/* for now we handle only on-bridge speed limit */
+		/* Check for on-bridge speed limit */
 		if (!IsWaterTT() && IsBridgeTile(m_old_tile)) {
 			int spd = GetBridgeSpec(GetBridgeType(m_old_tile))->speed;
 			if (IsRoadTT()) spd *= 2;
 			if (max_speed > spd) max_speed = spd;
+		}
+		/* Check for speed limit imposed by railtype */
+		if (IsRailTT()) {
+			uint16 rail_speed = GetRailTypeInfo(GetRailType(m_old_tile))->max_speed;
+			if (rail_speed > 0) max_speed = min(max_speed, rail_speed);
 		}
 
 		/* if min speed was requested, return it */
