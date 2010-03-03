@@ -204,6 +204,11 @@ struct RailtypeInfo {
 	RailTypeLabel label;
 
 	/**
+	 * Colour on mini-map
+	 */
+	byte map_colour;
+
+	/**
 	 * Sprite groups for resolving sprites
 	 */
 	const SpriteGroup *group[RTSG_END];

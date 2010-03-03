@@ -2583,6 +2583,10 @@ static ChangeInfoResult RailTypeChangeInfo(uint id, int numinfo, int prop, ByteR
 				rti->acceleration_type = Clamp(buf->ReadByte(), 0, 2);
 				break;
 
+			case 0x16: // Map colour
+				rti->map_colour = MapDOSColour(buf->ReadByte());
+				break;
+
 			default:
 				ret = CIR_UNKNOWN;
 				break;
@@ -2637,6 +2641,7 @@ static ChangeInfoResult RailTypeReserveInfo(uint id, int numinfo, int prop, Byte
 			case 0x11: // Curve speed advantage
 			case 0x12: // Station graphic
 			case 0x15: // Acceleration model
+			case 0x16: // Map colour
 				buf->ReadByte();
 				break;
 
