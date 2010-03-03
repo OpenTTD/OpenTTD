@@ -9,14 +9,28 @@ shortname         = TTDD
 version           = 1
 palette           = DOS
 description       = Original Transport Tycoon Deluxe DOS edition graphics.
+description.ar_EG = النسخة الاصلية من ترانسبورت تايكون ديلوكس الرسومية نسخة الدوس
+description.bg_BG = Оригинални графики на Transport Tycoon Deluxe за DOS.
+description.ca_ES = Gràfics originals de Transport Tycoon Deluxe per a DOS.
 description.cs_CZ = Původní sada grafik Transport Tycoon Deluxe (verze pro DOS).
 description.de_DE = Original Transport Tycoon Deluxe DOS Basisgrafiken.
 description.en_GB = Original Transport Tycoon Deluxe DOS edition graphics.
 description.en_US = Original Transport Tycoon Deluxe DOS edition graphics.
 description.es_ES = Gráficos originales de Transport Tycoon Deluxe versión DOS.
 description.fi_FI = Alkuperäiset Transport Tycoon Deluxe DOS grafiikat.
-description.hu_HU = Az eredeti Transport Tycoon Deluxe DOS-os verziójának grafikája.
+description.fr_FR = Graphiques originaux de Transport Tycoon Deluxe (version DOS).
+description.hr_HR = Originalna grafika za Transport Tycoon Deluxe DOS izdanje.
+description.hu_HU = Az eredeti Transport Tycoon Deluxe DOS verziójának grafikája.
+description.id_ID = Grafik orisinil Transport Tycoon Deluxe versi DOS.
+description.it_IT = Grafica originale di Transport Tycoon Deluxe, edizione DOS.
+description.nb_NO = Original grafikk fra Transport Tycoon Deluxe for DOS.
 description.nl_NL = Originele graphics van de Transport Tycoon Deluxe DOS-versie.
+description.nn_NO = Original grafikk frå Transport Tycoon Deluxe for DOS.
+description.pt_PT = Gráficos originais da edição DOS de Transport Tycoon Deluxe.
+description.ru_RU = Оригинальная графика из Transport Tycoon Deluxe для DOS.
+description.sl_SL = Originalna grafika Transport Tycoon Deluxe za različico DOS.
+description.sv_SE = Originalgrafiken från Transport Tycoon Deluxe, DOS-utgåvan.
+description.zh_TW = 原版 Transport Tycoon Deluxe DOS 版的圖形。
 
 [files]
 base         = TRG1.GRF
@@ -35,4 +49,5 @@ TRGT.GRF     = e30e8a398ae86c03dc534a8ac7dfb3b6
 OPENTTDD.GRF = 356cf9663aacb212fdbff609d99090d6
 
 [origin]
+default      = You can find it on your Transport Tycoon Deluxe CD-ROM.
 OPENTTDD.GRF = This file was part of your OpenTTD installation.

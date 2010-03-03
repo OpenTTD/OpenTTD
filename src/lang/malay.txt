@@ -683,7 +683,7 @@ STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINYFONT}{BLAC
 STR_SMALLMAP_LEGENDA_WATER                                      :{TINYFONT}{BLACK}Air
 STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINYFONT}{BLACK}Tidak Ada Pemilik
 STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINYFONT}{BLACK}Bandar-bandar
-STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINYFONT}{BLACK}Industri
+STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINYFONT}{BLACK}Kilang
 STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLACK}Padang Pasir
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}Salji
 
@@ -1115,6 +1115,9 @@ STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Benarka
 STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Stesen tidak seragam: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Pengganda keberatan tambang muatan untuk simulasi keretapi berat: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Faktor kelajuan pesawat: {ORANGE}1 / {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :tiada
+STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :dikurangkan
+STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :biasa
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Benarkan hentian pandu-lalu di jalanraya bandar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Benarkan hentian pandu-lalu di jalanraya yang dimiliki oleh pesaing: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Benarkan membina stesen yang bersebelahan stesen lain: {ORANGE}{STRING}
@@ -1161,6 +1164,9 @@ STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Satu ata
 STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Keluasan maks stesen: {ORANGE}{STRING} {RED}Amaran: Ketetapan tinggi akan melembabkan permainan
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Serviskan helikopter di helipad secara automatik: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Kaitkan toolbar lanskap kepada toolbar keretapi/jalanraya/air/lapangan terbang: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Hijau
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Hijau Gelap
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Ungu
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}Arah skrol terbalik: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}Skrol tetingkap pemandangan yang licin: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}Paparkan bantuan ukuran ketika menggunakan alat binaan: {ORANGE}{STRING}
@@ -2836,13 +2842,20 @@ STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Pilih je
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Pilih jenis enjin baru yang anda ingin guna untuk menggantikan jenis enjin sebelah kiri
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Mulakan Penggantian Kenderaan
+STR_REPLACE_NOT_REPLACING                                       :{BLACK}Tidak digantikan
+STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Tiada kenderaan telah dipilih
+STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Hentikan Penggantian Kenderaan
+STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Menekan untuk menghentikan ketukaran jenis engin yang telah dipilih di sebelah kiri
 
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Menggantikan: {ORANGE}{STRING}
 STR_REPLACE_ENGINES                                             :Enjin
+STR_REPLACE_WAGONS                                              :Gerabak
 
+STR_REPLACE_MONORAIL_VEHICLES                                   :Monorel Kenderaan
 
 
 # Vehicle view
+STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
 
 
@@ -2953,13 +2966,16 @@ STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Kenderaa
 
 # AI debug window
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
+STR_AI_DEBUG_SETTINGS                                           :{BLACK}Tetapan AI
 
+STR_ERROR_NO_AI_SUB                                             :{WHITE}... AIs tidak sedia ada!
 
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Konfigurasi AI
 
 
+STR_AI_CONFIG_CHANGE                                            :{BLACK}Pilih AI
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Muat AI yang lain
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Aturcara
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Aturcara parameter AI
@@ -3029,6 +3045,8 @@ STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... tida
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Amaran skala
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Menukar saiz source map dengan terlalu banyak tidak disyorkan. Teruskan janaan?
+
+# Soundset messages
 
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Tangkapan skrin berjaya disimpan sebagai '{STRING}'
@@ -3108,6 +3126,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... hany
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... hanya boleh dibina di kawasan hutan
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... hanya boleh dibina di kawasan gurun
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... hanya boleh dibina di bandar
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... hanya boleh dibina di kawasan rendah
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... hanya boleh diletak berhampiran sempadan peta
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... hutan hanya boleh ditanam di atas paras garisan salji
 
@@ -3195,6 +3214,7 @@ STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(had wang)
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Gabungan landasan yang mustahil
+STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Tanda-tanda mesti dibuang dahulu
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Tiada landasan keretapi yang sesuai
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Landasan keretapi mesti dibuang terlebih dahulu
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Jalanraya adalah sehala atau dihalang

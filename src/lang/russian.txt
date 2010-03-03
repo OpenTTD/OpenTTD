@@ -1743,7 +1743,7 @@ STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Запу
 STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Загрузка игры
 STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Продолжить ранее сохранённую сетевую игру (проверьте, что подсоединились прежним игроком)
 
-STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Введите название серера для сетевой игры
+STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Введите название сетевой игры
 
 # Network game languages
 ############ Leave those lines in this order!!
@@ -1880,7 +1880,7 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Введ
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Не найдены сетевые устройства или игра скомпилирована без поддержки сети
-STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Не смог найти сетевые игры
+STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Не найдены сетевые игры
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Сервер не ответил на запрос
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Невозможно присоединиться из-за несоответствия NewGRF
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Синхронизация сетевой игры не удалась
@@ -3752,7 +3752,7 @@ STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Нево
 STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Невозможно купить корабль...
 STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Невозможно купить возд. транспорт...
 
-STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Невозможно переименовать...
+STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Невозможно переименовать вагон...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Невозможно переименовать...
 STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Невозможно переименовать судно...
 STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Невозможно переименовать...

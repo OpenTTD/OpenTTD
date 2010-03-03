@@ -115,7 +115,7 @@ STR_QUANTITY_FOOD                                               :{WEIGHT} yiyece
 STR_QUANTITY_PAPER                                              :{WEIGHT} kağıt
 STR_QUANTITY_GOLD                                               :{COMMA} çanta altın
 STR_QUANTITY_WATER                                              :{VOLUME} su
-STR_QUANTITY_WHEAT                                              :{WEIGHT} un
+STR_QUANTITY_WHEAT                                              :{WEIGHT} buğday
 STR_QUANTITY_RUBBER                                             :{VOLUME} kauçuk
 STR_QUANTITY_SUGAR                                              :{WEIGHT} şeker
 STR_QUANTITY_TOYS                                               :{COMMA} oyuncak
@@ -787,10 +787,10 @@ STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}{INDUSTRY}nde yeni kömür tabakasi bulundu!{} Üretimin ikiye katlanması bekleniyor!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}{INDUSTRY}nda yeni petrol rezervi bulundu!{} Üretimin ikiye katlanması bekleniyor!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}{INDUSTRY}ndeki yeni tarim tekniklerinin üretimi ikiye katlamasi bekleniyor!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK}{STRING} üretimi şurada arttı: {INDUSTRY} > %{COMMA}!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{1:INDUSTRY}'nin {BIGFONT}{BLACK}{0:STRING} üretimi %{2:COMMA} arttı!
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} üretimi %50 düşürdü
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}{INDUSTRY} bölgesine böcek sürüsü girdi !{} Üretim %50 düştü
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK}{STRING} üretimi şurada düştü: {INDUSTRY} > %{COMMA}!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{1:INDUSTRY}'nin {BIGFONT}{BLACK}{0:STRING} üretimi %{2:COMMA} azaldı!
 
 STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} garajda bekliyor
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} garajda bekliyor
