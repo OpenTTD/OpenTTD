@@ -756,14 +756,19 @@ STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIGFONT}{BLACK
 STR_NEWS_DISASTER_BIG_UFO                                       :{BIGFONT}{BLACK}'ยูเอฟโอ' มาลงใกล้ๆ{TOWN}!
 
 STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIGFONT}{BLACK}บริษัทขนส่งมีปัญหา
+STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIGFONT}{BLACK}{STRING} จะถูกขายหรือประกาศล้มละลาย ยกเว้นเสียแต่จะฟื้นตัวได้ในเวลาอันสั้น
 STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIGFONT}{BLACK}ยุบรวมบริษัทขนส่งแล้ว
+STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} ถูกขายให้ {STRING} เป็นจำนวนเงิน {CURRENCY}!
 STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIGFONT}{BLACK}ล้มละลาย!
+STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIGFONT}{BLACK}{STRING} ถูกปิดตัวโดยนายทุนและทรัพย์สินทั้งหมดจะถูกขายทอดตลาด
 STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK}บริษัทขนส่งใหม่เริ่มกิจการแล้ว!
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} เริ่มการก่อสร้างใกล้ {TOWN}!
+STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} ถูกเซ้งโดย {STRING}!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(ผู้จัดการ)
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}{STRING} ผู้สนับสนุนก่อสร้างเมืองใหม่ในชื่อ {TOWN}!
 
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}{STRING}ใหม่ กำลังถูกสร้างใกล้ ๆ เมือง {TOWN}!
 
 
 STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}เงินสกุลยูโรเริ่มใช้แล้ว!{}{}สหภาพยุโรปได้เริ่มใช้เงินสกุลเดียวกันแล้ว นั่นคือเงินสกุลยูโร รวมถึงในประเทศนี้ตั้งแต่วันนี้เป็นต้นไป!
@@ -1744,6 +1749,8 @@ STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}ขณ�
 
 
 
+# Soundset messages
+
 # Screenshot related messages
 
 # Error message titles
@@ -1777,6 +1784,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...ม�
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}ไม่สามารถทำลายเมืองได้{}สถานีหรือโรงเก็บนี้เป็นทรัพย์สินของเมืองไม่สามารถทำลายหรือเคลื่อนย้ายได้
 
 # Industry related errors
+STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... มีอุตสาหกรรมมากเกินไป
 STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... ต้องสร้างเมืองก่อน
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE} สามารถสร้างได้เฉพาะพื้นที่ต่ำกว่าเท่านั้น
 
@@ -1784,6 +1792,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE} สา�
 
 
 # Station destruction related errors
+STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}ต้องลบถนนออกก่อน
 
 
 # Waypoint related errors

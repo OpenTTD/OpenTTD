@@ -2845,6 +2845,7 @@ STR_REPLACE_VEHICLES_START                                      :{BLACK}Mulakan 
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Tidak digantikan
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Tiada kenderaan telah dipilih
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Hentikan Penggantian Kenderaan
+STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Menekan untuk menghentikan ketukaran jenis engin yang telah dipilih di sebelah kiri
 
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Menggantikan: {ORANGE}{STRING}
 STR_REPLACE_ENGINES                                             :Enjin
