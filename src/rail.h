@@ -186,7 +186,7 @@ struct RailtypeInfo {
 	/**
 	 * Cost multiplier for building this rail type
 	 */
-	uint8 cost_multiplier;
+	uint16 cost_multiplier;
 
 	/**
 	 * Acceleration type of this rail type
