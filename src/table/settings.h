@@ -262,7 +262,7 @@ static const SettingDescGlobVarList _misc_settings[] = {
 	  SDTG_STR("small_font",       SLE_STRB, S, 0, _freetype.small_font,   NULL,    STR_NULL, NULL),
 	  SDTG_STR("medium_font",      SLE_STRB, S, 0, _freetype.medium_font,  NULL,    STR_NULL, NULL),
 	  SDTG_STR("large_font",       SLE_STRB, S, 0, _freetype.large_font,   NULL,    STR_NULL, NULL),
-	  SDTG_VAR("small_size",       SLE_UINT, S, 0, _freetype.small_size,   6, 0, 72, 0, STR_NULL, NULL),
+	  SDTG_VAR("small_size",       SLE_UINT, S, 0, _freetype.small_size,   8, 0, 72, 0, STR_NULL, NULL),
 	  SDTG_VAR("medium_size",      SLE_UINT, S, 0, _freetype.medium_size, 10, 0, 72, 0, STR_NULL, NULL),
 	  SDTG_VAR("large_size",       SLE_UINT, S, 0, _freetype.large_size,  16, 0, 72, 0, STR_NULL, NULL),
 	 SDTG_BOOL("small_aa",                   S, 0, _freetype.small_aa,    false,    STR_NULL, NULL),

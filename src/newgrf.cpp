@@ -2571,7 +2571,7 @@ static ChangeInfoResult RailTypeChangeInfo(uint id, int numinfo, int prop, ByteR
 				break;
 
 			case 0x13: // Construction cost factor
-				rti->cost_multiplier = buf->ReadByte();
+				rti->cost_multiplier = buf->ReadWord();
 				break;
 
 			case 0x14: // Speed limit
@@ -2622,6 +2622,7 @@ static ChangeInfoResult RailTypeReserveInfo(uint id, int numinfo, int prop, Byte
 			case 0x0B: // Build window caption
 			case 0x0C: // Autoreplace text
 			case 0x0D: // New loco
+			case 0x13: // Construction cost
 			case 0x14: // Speed limit
 				buf->ReadWord();
 				break;
@@ -2634,7 +2635,6 @@ static ChangeInfoResult RailTypeReserveInfo(uint id, int numinfo, int prop, Byte
 			case 0x10: // Rail Type flags
 			case 0x11: // Curve speed advantage
 			case 0x12: // Station graphic
-			case 0x13: // Construction cost
 			case 0x15: // Acceleration model
 				buf->ReadByte();
 				break;

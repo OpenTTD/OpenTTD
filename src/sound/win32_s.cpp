@@ -33,7 +33,7 @@ static void PrepareHeader(WAVEHDR *hdr)
 	hdr->dwBufferLength = _bufsize * 4;
 	hdr->dwFlags = 0;
 	hdr->lpData = MallocT<char>(_bufsize * 4);
-	if (waveOutPrepareHeader(_waveout, hdr, sizeof(WAVEHDR)) != MMSYSERR_NOERROR) usererror("waveOutPrepareHeader failed");
+	if (waveOutPrepareHeader(_waveout, hdr, sizeof(WAVEHDR)) != MMSYSERR_NOERROR) throw "waveOutPrepareHeader failed";
 }
 
 static DWORD WINAPI SoundThread(LPVOID arg)
@@ -42,7 +42,10 @@ static DWORD WINAPI SoundThread(LPVOID arg)
 		for (WAVEHDR *hdr = _wave_hdr; hdr != endof(_wave_hdr); hdr++) {
 			if ((hdr->dwFlags & WHDR_INQUEUE) != 0) continue;
 			MxMixSamples(hdr->lpData, hdr->dwBufferLength / 4);
-			if (waveOutWrite(_waveout, hdr, sizeof(WAVEHDR)) != MMSYSERR_NOERROR) usererror("waveOutWrite failed");
+			if (waveOutWrite(_waveout, hdr, sizeof(WAVEHDR)) != MMSYSERR_NOERROR) {
+				MessageBox(NULL, _T("Sounds are disabled until restart."), _T("waveOutWrite failed"), MB_ICONINFORMATION);
+				return 0;
+			}
 		}
 		WaitForSingleObject(_event, INFINITE);
 	} while (_waveout != NULL);
@@ -62,16 +65,21 @@ const char *SoundDriver_Win32::Start(const char * const *parm)
 
 	_bufsize = GetDriverParamInt(parm, "bufsize", (GB(GetVersion(), 0, 8) > 5) ? 8192 : 4096);
 
-	if (NULL == (_event = CreateEvent(NULL, FALSE, FALSE, NULL))) return "Failed to create event";
+	try {
+		if (NULL == (_event = CreateEvent(NULL, FALSE, FALSE, NULL))) throw "Failed to create event";
 
-	if (waveOutOpen(&_waveout, WAVE_MAPPER, &wfex, (DWORD_PTR)_event, 0, CALLBACK_EVENT) != MMSYSERR_NOERROR) return "waveOutOpen failed";
+		if (waveOutOpen(&_waveout, WAVE_MAPPER, &wfex, (DWORD_PTR)_event, 0, CALLBACK_EVENT) != MMSYSERR_NOERROR) throw "waveOutOpen failed";
 
-	MxInitialize(wfex.nSamplesPerSec);
+		MxInitialize(wfex.nSamplesPerSec);
 
-	PrepareHeader(&_wave_hdr[0]);
-	PrepareHeader(&_wave_hdr[1]);
+		PrepareHeader(&_wave_hdr[0]);
+		PrepareHeader(&_wave_hdr[1]);
 
-	if (NULL == (_thread = CreateThread(NULL, 8192, SoundThread, 0, 0, &_threadId))) return "Failed to create thread";
+		if (NULL == (_thread = CreateThread(NULL, 8192, SoundThread, 0, 0, &_threadId))) throw "Failed to create thread";
+	} catch (char *error) {
+		this->Stop();
+		return error;
+	}
 
 	return NULL;
 }

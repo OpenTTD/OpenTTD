@@ -1,6 +1,6 @@
 OpenTTD's known bugs
-Last updated:    2010-02-18
-Release version: 1.0.0-RC1
+Last updated:    2010-03-04
+Release version: 1.0.0-RC2
 ------------------------------------------------------------------------
 
 
@@ -34,6 +34,10 @@ that you can find at: http://bugs.openttd.org
 If the bugs are closed but still listed here it means that the bug is fixed
 and that the nightlies and next major release will not have that bug.
 
+- 3651	[OSX] Crash when selecting full screen
+- 3648	[OSX] Crash when selecting music
+- 3637	Second highest competing station gets penalised twice
+- 3546	Ignoring signals might crash trains
 - 3447	[OSX] SDL port is unuseable
 - 2782	[OSX] Port hopelessly outdated
 - 2585	[OSX] OS' mouse pointer showing
