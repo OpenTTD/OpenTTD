@@ -74,7 +74,7 @@ STR_CARGO_PLURAL_FRUIT.acc                                      :фрукты
 STR_CARGO_PLURAL_DIAMONDS                                       :{G=p}Алмазы
 STR_CARGO_PLURAL_DIAMONDS.gen                                   :алмазов
 STR_CARGO_PLURAL_DIAMONDS.acc                                   :алмазы
-STR_CARGO_PLURAL_FOOD                                           :{G=p}Продукты
+STR_CARGO_PLURAL_FOOD                                           :{G=p}Еда
 STR_CARGO_PLURAL_FOOD.gen                                       :продуктов
 STR_CARGO_PLURAL_FOOD.acc                                       :продукты
 STR_CARGO_PLURAL_PAPER                                          :{G=f}Бумага
@@ -170,7 +170,7 @@ STR_CARGO_SINGULAR_FRUIT.acc                                    :фрукты
 STR_CARGO_SINGULAR_DIAMOND                                      :{G=p}Алмазы
 STR_CARGO_SINGULAR_DIAMOND.gen                                  :алмазов
 STR_CARGO_SINGULAR_DIAMOND.acc                                  :алмазы
-STR_CARGO_SINGULAR_FOOD                                         :{G=p}Продукты
+STR_CARGO_SINGULAR_FOOD                                         :{G=p}Еда
 STR_CARGO_SINGULAR_FOOD.gen                                     :продуктов
 STR_CARGO_SINGULAR_FOOD.acc                                     :продукты
 STR_CARGO_SINGULAR_PAPER                                        :{G=f}Бумага
@@ -236,7 +236,7 @@ STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} мед
 STR_QUANTITY_MAIZE                                              :{WEIGHT} кукурузы
 STR_QUANTITY_FRUIT                                              :{WEIGHT} фруктов
 STR_QUANTITY_DIAMONDS                                           :{COMMA} меш{P ок ка ков} алмазов
-STR_QUANTITY_FOOD                                               :{WEIGHT} продуктов
+STR_QUANTITY_FOOD                                               :{WEIGHT} еды
 STR_QUANTITY_PAPER                                              :{WEIGHT} бумаги
 STR_QUANTITY_GOLD                                               :{COMMA} меш{P ок ка ков} золота
 STR_QUANTITY_WATER                                              :{VOLUME} воды
@@ -271,7 +271,7 @@ STR_ABBREV_COPPER_ORE                                           :{TINYFONT}МР
 STR_ABBREV_MAIZE                                                :{TINYFONT}КК
 STR_ABBREV_FRUIT                                                :{TINYFONT}ФР
 STR_ABBREV_DIAMONDS                                             :{TINYFONT}АЛ
-STR_ABBREV_FOOD                                                 :{TINYFONT}ПР
+STR_ABBREV_FOOD                                                 :{TINYFONT}ЕД
 STR_ABBREV_PAPER                                                :{TINYFONT}БМ
 STR_ABBREV_GOLD                                                 :{TINYFONT}ЗЛ
 STR_ABBREV_WATER                                                :{TINYFONT}ВД
@@ -306,7 +306,7 @@ STR_COLOUR_PALE_GREEN                                           :Светло-з
 STR_COLOUR_PINK                                                 :Розовый
 STR_COLOUR_YELLOW                                               :Жёлтый
 STR_COLOUR_RED                                                  :Красный
-STR_COLOUR_LIGHT_BLUE                                           :Светло-синий
+STR_COLOUR_LIGHT_BLUE                                           :Голубой
 STR_COLOUR_GREEN                                                :Зелёный
 STR_COLOUR_DARK_GREEN                                           :Тёмно-зелёный
 STR_COLOUR_BLUE                                                 :Синий
@@ -319,7 +319,7 @@ STR_COLOUR_GREY                                                 :Серый
 STR_COLOUR_WHITE                                                :Белый
 
 # Units used in OpenTTD
-STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} миль/ч
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} м/ч
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA} км/ч
 STR_UNITS_VELOCITY_SI                                           :{COMMA} м/с
 
@@ -351,7 +351,7 @@ STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Смен
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Выберите фильтр
 STR_BUTTON_SORT_BY                                              :{BLACK}Сортировка
 STR_BUTTON_LOCATION                                             :{BLACK}Обзор
-STR_BUTTON_RENAME                                               :{BLACK}Переимен.
+STR_BUTTON_RENAME                                               :{BLACK}Переименовать
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Закрыть окно
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Заголовок окна - для перемещения окна тащить за него
@@ -414,7 +414,7 @@ STR_SORT_BY_POWER_VS_RUNNING_COST                               :Мощност�
 STR_SORT_BY_CARGO_CAPACITY                                      :Вместимость
 
 # Tooltips for the main toolbar
-STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}ПАУЗА
+STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Пауза
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Ускорить игру
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Настройки
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Сохранение игры; Главное меню; Выход
@@ -432,7 +432,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Спис
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Список кораблей. Ctrl+клик переключает отображение по группам.
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Список авиатранспорта. Ctrl+клик переключает отображение по группам.
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Приблизить
-STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Уменьшить
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Отдалить
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Строительство железных дорог
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Строительство автомобильных дорог
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Строительство водных коммуникаций
@@ -454,8 +454,8 @@ STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Созд
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Создание городов
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Создание промышленности
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Строительство автомобильных дорог
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Высадка деревьев
-STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Установка знаков
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Посадить деревья
+STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Поставить знак
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Сохранить сценарий
@@ -545,7 +545,7 @@ STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Строите�
 ############ range for landscaping menu starts
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Ландшафт
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Высадка деревьев
-STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Установка знаков
+STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Поставить знак
 ############ range ends here
 
 ############ range for music menu starts
@@ -650,14 +650,14 @@ STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRI
 STR_GRAPH_Y_LABEL                                               :{TINYFONT}{STRING}
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
 
-STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}График прибыли от основной деятельности
+STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}График прибыли
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}График доходов
 STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Доставлено грузов
-STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Рейтинг деятельности компании (макс=1000)
+STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Рейтинг компании (макс=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Стоимость активов компании
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Оплата за перевозку грузов
-STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Дней в транзите
+STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Дней в пути
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Оплата за доставку 10 единиц (10 000 литров) груза на расстояние в 20 клеток
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Включить/выключить отображение груза на графике
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
@@ -671,7 +671,7 @@ STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Вклю
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Сравнительная таблица компаний
 STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} «{STRING}»
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Машинист
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Инженер
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Регулировщик
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Диспетчер
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ROUTE_SUPERVISOR           :Координатор
@@ -699,7 +699,7 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}День
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Займ:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Всего:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Общее количество прибыльных транспортных средств
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Колличество транспортных средств, принёсших доход в прошлом году. Включает машины, поезда, лодки и самолёты.
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Количество обслуживаемых станций. Если несколько типов станций связаны в одну, они все учитываются.
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Прибыль транспорта с самым низким доходом (среди транспортных средств старше 2-х лет)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Наименьший квартальный доход за последние 3 года
@@ -1292,7 +1292,7 @@ STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Авт�
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Замена через {ORANGE}{STRING}{LTBLUE} месяц{P "" а ев} после истечения срока службы
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Сумма, необходимая для автозамены: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Макс. длительность сообщений об ошибке: {ORANGE}{STRING} сек.
-STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Показывать количество жителей города после названия: {ORANGE}{STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Показывать количество жителей города в названии: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Генератор земли: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Оригинальный
@@ -3077,7 +3077,7 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Прин
 STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Показать задания. Ctrl+клик - показать график.
 STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Показать задания. Ctrl+клик - показать график.
 STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Показать задания. Ctrl+клик - показать график.
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Показать задания. Ctrl+клик - показать график.
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Показать задания. Ctrl+клик - показать расписание.
 
 STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Показать информацию о поезде
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Показать информацию об автомобиле

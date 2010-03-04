@@ -1894,7 +1894,7 @@ STR_CONTENT_TYPE_AI_LIBRARY                                     :MI könyvtár
 STR_CONTENT_TYPE_SCENARIO                                       :Pálya
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Magasságtérkép
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Hang alapcsomag
-STR_CONTENT_TYPE_BASE_MUSIC                                     :Zenei alacsomag
+STR_CONTENT_TYPE_BASE_MUSIC                                     :Zenei alapcsomag
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Tartalom letöltése...

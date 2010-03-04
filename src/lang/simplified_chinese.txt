@@ -1158,6 +1158,7 @@ STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}一个�
 STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}站台最大尺寸：{ORANGE}{STRING} 格 {RED}警告：站台过大会影响速度
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}直升机在降落平台自动保养：{ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}将景观美化工具栏与铁路/公路/船只/机场工具栏连接：{ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :深绿色
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}拖动方向与屏幕移动方向相反：{ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}平滑视角滚动： {ORANGE}{STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}建设时显示测量数据：{ORANGE}{STRING}
@@ -3203,6 +3204,8 @@ STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}AI名称
 STR_AI_DEBUG_RELOAD                                             :{BLACK}重载 AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}关闭AI并重启AI
 
+STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD在编译的时候没有加入AI支持……
+STR_ERROR_NO_AI_SUB                                             :{WHITE}…… 目前没有可用AI！
 
 STR_ERROR_AI_NO_AI_FOUND                                        :找不到可使用的AI。{}这个AI只是一个演示而不会有任何动作，{}您可以通过“在线查找扩展包”功能下载AI程序。
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}一个运行中的 AI 崩溃了。请附上一张 AI 调试窗口的截图，将此错误通报 AI 作者。
@@ -3290,6 +3293,8 @@ STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}不能�
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}缩放警告
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}不推荐将源图片过度放缩，是否继续生成？
 
+# Soundset messages
+
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}屏幕截图已经被成功保存为{} '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}屏幕截图失败！
@@ -3358,6 +3363,7 @@ STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}这个�
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}正在进行道路工程
 
 # Industry related errors
+STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}…… 游戏中的工业过多
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}不能生成工业设施……
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}不能在这里建设 {STRING} ……
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}不能在此处建设这种类型的工业设施……
@@ -3368,6 +3374,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}只能�
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}只能在雨林中建设……
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}只能在沙漠中建设……
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}只能在城镇中建设……
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}只能在低海拔区域建设……
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}只能被放置在地图边缘……
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}林场只能设置在雪线以上的地方……
 
@@ -3402,6 +3409,7 @@ STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}不能�
 STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}不能移除汽车货场
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}无法移除客运电车车站...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}无法移除货运电车车站...
+STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}必须先拆除汽车站
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}必须先拆除火车站
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}必须先拆除公共汽车站
@@ -3455,6 +3463,7 @@ STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(现金不够)
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}不可能的铁轨组合
+STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}必须先拆除信号灯
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}没有合适的铁轨
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}必须先拆除铁轨
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}这是单行道或这条路被堵死了
