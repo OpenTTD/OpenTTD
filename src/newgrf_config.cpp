@@ -43,7 +43,7 @@ GRFConfig::~GRFConfig()
  */
 const char *GRFConfig::GetName() const
 {
-	if (this->name == NULL) return this->filename;
+	if (StrEmpty(this->name)) return this->filename;
 	return this->name;
 }
 
