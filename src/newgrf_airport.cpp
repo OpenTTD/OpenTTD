@@ -18,6 +18,8 @@
 AirportSpec AirportSpec::dummy = {NULL, NULL, 0, 0, 0, 0, 0, MIN_YEAR, MIN_YEAR, ATP_TTDP_LARGE};
 AirportSpec AirportSpec::oilrig = {NULL, NULL, 0, 1, 1, 0, 4, MIN_YEAR, MIN_YEAR, ATP_TTDP_OILRIG};
 
+AirportSpec AirportSpec::specs[NUM_AIRPORTS];
+
 /**
  * Retrieve airport spec for the given airport
  * @param type index of airport
@@ -26,9 +28,8 @@ AirportSpec AirportSpec::oilrig = {NULL, NULL, 0, 1, 1, 0, 4, MIN_YEAR, MIN_YEAR
 /* static */ const AirportSpec *AirportSpec::Get(byte type)
 {
 	if (type == AT_OILRIG) return &oilrig;
-	assert(type < NUM_AIRPORTS);
-	extern const AirportSpec _origin_airport_specs[];
-	return &_origin_airport_specs[type];
+	assert(type < lengthof(AirportSpec::specs));
+	return &AirportSpec::specs[type];
 }
 
 bool AirportSpec::IsAvailable() const
@@ -36,4 +37,14 @@ bool AirportSpec::IsAvailable() const
 	if (_cur_year < this->min_year) return false;
 	if (_settings_game.station.never_expire_airports) return true;
 	return _cur_year <= this->max_year;
+}
+
+/**
+ * This function initialize the airportspec array.
+ */
+void AirportSpec::ResetAirports()
+{
+	extern const AirportSpec _origin_airport_specs[];
+	memset(&AirportSpec::specs, 0, sizeof(AirportSpec::specs));
+	memcpy(&AirportSpec::specs, &_origin_airport_specs, sizeof(AirportSpec) * NUM_AIRPORTS);
 }

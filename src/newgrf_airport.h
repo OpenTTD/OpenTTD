@@ -50,8 +50,13 @@ struct AirportSpec {
 
 	bool IsAvailable() const;
 
+	static void ResetAirports();
+
 	static AirportSpec dummy;
 	static AirportSpec oilrig;
+
+private:
+	static AirportSpec specs[NUM_AIRPORTS];
 };
 
 
