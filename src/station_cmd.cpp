@@ -671,7 +671,9 @@ CommandCost CheckBuildableTile(TileIndex tile, uint invalid_dirs, int &allowed_z
 		return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
 	}
 
-	if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
+	CommandCost ret = EnsureNoVehicleOnGround(tile);
+	ret.SetGlobalErrorMessage();
+	if (ret.Failed()) return ret;
 
 	uint z;
 	Slope tileh = GetTileSlope(tile, &z);
@@ -1362,7 +1364,11 @@ CommandCost RemoveFromRailBaseStation(TileArea ta, SmallVector<T *, 4> &affected
 		if (!HasStationTileRail(tile)) continue;
 
 		/* If there is a vehicle on ground, do not allow to remove (flood) the tile */
-		if (!EnsureNoVehicleOnGround(tile)) continue;
+		CommandCost ret = EnsureNoVehicleOnGround(tile);
+		if (ret.Failed()) {
+			ret.SetGlobalErrorMessage();
+			continue;
+		}
 
 		/* Check ownership of station */
 		T *st = T::GetByTile(tile);
@@ -1526,7 +1532,9 @@ CommandCost RemoveRailStation(T *st, DoCommandFlag flags)
 		/* for nonuniform stations, only remove tiles that are actually train station tiles */
 		if (!st->TileBelongsToRailStation(tile)) continue;
 
-		if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
+		CommandCost ret = EnsureNoVehicleOnGround(tile);
+		ret.SetGlobalErrorMessage();
+		if (ret.Failed()) return ret;
 
 		cost.AddCost(_price[PR_CLEAR_STATION_RAIL]);
 		if (flags & DC_EXEC) {
@@ -1832,7 +1840,9 @@ static CommandCost RemoveRoadStop(TileIndex tile, DoCommandFlag flags)
 		/* remove the 'going through road stop' status from all vehicles on that tile */
 		if (flags & DC_EXEC) FindVehicleOnPos(tile, NULL, &ClearRoadStopStatusEnum);
 	} else {
-		if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
+		CommandCost ret = EnsureNoVehicleOnGround(tile);
+		ret.SetGlobalErrorMessage();
+		if (ret.Failed()) return ret;
 	}
 
 	if (flags & DC_EXEC) {
@@ -2234,7 +2244,9 @@ static CommandCost RemoveAirport(TileIndex tile, DoCommandFlag flags)
 	TILE_AREA_LOOP(tile_cur, st->airport) {
 		if (!st->TileBelongsToAirport(tile_cur)) continue;
 
-		if (!EnsureNoVehicleOnGround(tile_cur)) return CMD_ERROR;
+		CommandCost ret = EnsureNoVehicleOnGround(tile);
+		ret.SetGlobalErrorMessage();
+		if (ret.Failed()) return ret;
 
 		cost.AddCost(_price[PR_CLEAR_STATION_AIRPORT]);
 
@@ -2432,8 +2444,10 @@ static CommandCost RemoveDock(TileIndex tile, DoCommandFlag flags)
 	TileIndex tile1 = st->dock_tile;
 	TileIndex tile2 = tile1 + TileOffsByDiagDir(GetDockDirection(tile1));
 
-	if (!EnsureNoVehicleOnGround(tile1)) return CMD_ERROR;
-	if (!EnsureNoVehicleOnGround(tile2)) return CMD_ERROR;
+	CommandCost ret = EnsureNoVehicleOnGround(tile1);
+	if (ret.Succeeded()) ret = EnsureNoVehicleOnGround(tile2);
+	ret.SetGlobalErrorMessage();
+	if (ret.Failed()) return ret;
 
 	if (flags & DC_EXEC) {
 		DoClearSquare(tile1);

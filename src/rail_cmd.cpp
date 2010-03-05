@@ -416,7 +416,7 @@ CommandCost CmdBuildSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 			break;
 		}
 
-		case MP_ROAD:
+		case MP_ROAD: {
 #define M(x) (1 << (x))
 			/* Level crossings may only be built on these slopes */
 			if (!HasBit(M(SLOPE_SEN) | M(SLOPE_ENW) | M(SLOPE_NWS) | M(SLOPE_NS) | M(SLOPE_WSE) | M(SLOPE_EW) | M(SLOPE_FLAT), tileh)) {
@@ -424,7 +424,9 @@ CommandCost CmdBuildSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 			}
 #undef M
 
-			if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
+			CommandCost ret = EnsureNoVehicleOnGround(tile);
+			ret.SetGlobalErrorMessage();
+			if (ret.Failed()) return ret;
 
 			if (IsNormalRoad(tile)) {
 				if (HasRoadWorks(tile)) return_cmd_error(STR_ERROR_ROAD_WORKS_IN_PROGRESS);
@@ -463,6 +465,7 @@ CommandCost CmdBuildSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 				return_cmd_error(STR_ERROR_ALREADY_BUILT);
 			}
 			/* FALLTHROUGH */
+		}
 
 		default: {
 			/* Will there be flat water on the lower halftile? */
@@ -528,9 +531,13 @@ CommandCost CmdRemoveSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 		case MP_ROAD: {
 			if (!IsLevelCrossing(tile) ||
 					GetCrossingRailBits(tile) != trackbit ||
-					(_current_company != OWNER_WATER && !CheckTileOwnership(tile)) ||
-					(!(flags & DC_BANKRUPT) && !EnsureNoVehicleOnGround(tile))) {
+					(_current_company != OWNER_WATER && !CheckTileOwnership(tile))) {
 				return CMD_ERROR;
+			}
+			if (!(flags & DC_BANKRUPT)) {
+				CommandCost ret = EnsureNoVehicleOnGround(tile);
+				ret.SetGlobalErrorMessage();
+				if (ret.Failed()) return ret;
 			}
 
 			if (flags & DC_EXEC) {
@@ -1408,7 +1415,13 @@ CommandCost CmdConvertRail(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			/* Vehicle on the tile when not converting Rail <-> ElRail
 			 * Tunnels and bridges have special check later */
 			if (tt != MP_TUNNELBRIDGE) {
-				if (!IsCompatibleRail(type, totype) && !EnsureNoVehicleOnGround(tile)) continue;
+				if (!IsCompatibleRail(type, totype)) {
+					CommandCost ret = EnsureNoVehicleOnGround(tile);
+					if (ret.Failed()) {
+						ret.SetGlobalErrorMessage();
+						continue;
+					}
+				}
 				if (flags & DC_EXEC) { // we can safely convert, too
 					TrackBits reserved = GetReservedTrackbits(tile);
 					Track     track;
@@ -1524,8 +1537,9 @@ static CommandCost RemoveTrainDepot(TileIndex tile, DoCommandFlag flags)
 	if (!CheckTileOwnership(tile) && _current_company != OWNER_WATER)
 		return CMD_ERROR;
 
-	if (!EnsureNoVehicleOnGround(tile))
-		return CMD_ERROR;
+	CommandCost ret = EnsureNoVehicleOnGround(tile);
+	ret.SetGlobalErrorMessage();
+	if (ret.Failed()) return ret;
 
 	if (flags & DC_EXEC) {
 		/* read variables before the depot is removed */
@@ -1581,7 +1595,9 @@ static CommandCost ClearTile_Track(TileIndex tile, DoCommandFlag flags)
 
 			/* when bankrupting, don't make water dirty, there could be a ship on lower halftile */
 			if (water_ground && !(flags & DC_BANKRUPT)) {
-				if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
+				CommandCost ret = EnsureNoVehicleOnGround(tile);
+				ret.SetGlobalErrorMessage();
+				if (ret.Failed()) return ret;
 
 				/* The track was removed, and left a coast tile. Now also clear the water. */
 				if (flags & DC_EXEC) DoClearSquare(tile);

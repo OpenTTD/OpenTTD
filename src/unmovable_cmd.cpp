@@ -177,7 +177,9 @@ CommandCost CmdSellLandArea(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	if (!IsOwnedLandTile(tile)) return CMD_ERROR;
 	if (!CheckTileOwnership(tile) && _current_company != OWNER_WATER) return CMD_ERROR;
 
-	if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
+	CommandCost ret = EnsureNoVehicleOnGround(tile);
+	ret.SetGlobalErrorMessage();
+	if (ret.Failed()) return ret;
 
 	if (flags & DC_EXEC) DoClearSquare(tile);
 

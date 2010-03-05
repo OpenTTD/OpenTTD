@@ -408,9 +408,9 @@ static Vehicle *EnsureNoVehicleProcZ(Vehicle *v, void *data)
 
 /* Ensure there is no vehicle at the ground at the given position.
  * @param tile Position to examine.
- * @return A vehicle has been found.
+ * @return Succeeded command (ground is free) or failed command (a vehicle is found).
  */
-bool EnsureNoVehicleOnGround(TileIndex tile)
+CommandCost EnsureNoVehicleOnGround(TileIndex tile)
 {
 	byte z = GetTileMaxZ(tile);
 
@@ -419,8 +419,8 @@ bool EnsureNoVehicleOnGround(TileIndex tile)
 	 * Such a message does not affect MP synchronisation.
 	 */
 	Vehicle *v = VehicleFromPos(tile, &z, &EnsureNoVehicleProcZ, true);
-	if (v != NULL) _error_message = STR_ERROR_TRAIN_IN_THE_WAY + v->type;
-	return v == NULL;
+	if (v != NULL) return_cmd_error(STR_ERROR_TRAIN_IN_THE_WAY + v->type);
+	return CommandCost();
 }
 
 /** Procedure called for every vehicle found in tunnel/bridge in the hash map */

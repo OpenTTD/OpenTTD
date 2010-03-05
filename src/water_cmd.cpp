@@ -174,7 +174,10 @@ static CommandCost RemoveShipDepot(TileIndex tile, DoCommandFlag flags)
 
 	/* do not check for ship on tile when company goes bankrupt */
 	if (!(flags & DC_BANKRUPT)) {
-		if (!EnsureNoVehicleOnGround(tile) || !EnsureNoVehicleOnGround(tile2)) return CMD_ERROR;
+		CommandCost ret = EnsureNoVehicleOnGround(tile);
+		if (ret.Succeeded()) ret = EnsureNoVehicleOnGround(tile2);
+		ret.SetGlobalErrorMessage();
+		if (ret.Failed()) return ret;
 	}
 
 	if (flags & DC_EXEC) {
@@ -244,8 +247,11 @@ static CommandCost RemoveShiplift(TileIndex tile, DoCommandFlag flags)
 	if (!CheckTileOwnership(tile) && GetTileOwner(tile) != OWNER_NONE) return CMD_ERROR;
 
 	/* make sure no vehicle is on the tile. */
-	if (!EnsureNoVehicleOnGround(tile) || !EnsureNoVehicleOnGround(tile + delta) || !EnsureNoVehicleOnGround(tile - delta))
-		return CMD_ERROR;
+	CommandCost ret = EnsureNoVehicleOnGround(tile);
+	if (ret.Succeeded()) ret = EnsureNoVehicleOnGround(tile + delta);
+	if (ret.Succeeded()) ret = EnsureNoVehicleOnGround(tile - delta);
+	ret.SetGlobalErrorMessage();
+	if (ret.Failed()) return ret;
 
 	if (flags & DC_EXEC) {
 		DoClearSquare(tile);
@@ -341,7 +347,7 @@ CommandCost CmdBuildCanal(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 static CommandCost ClearTile_Water(TileIndex tile, DoCommandFlag flags)
 {
 	switch (GetWaterTileType(tile)) {
-		case WATER_TILE_CLEAR:
+		case WATER_TILE_CLEAR: {
 			if (flags & DC_NO_WATER) return_cmd_error(STR_ERROR_CAN_T_BUILD_ON_WATER);
 
 			/* Make sure freeform edges are allowed or it's not an edge tile. */
@@ -351,7 +357,9 @@ static CommandCost ClearTile_Water(TileIndex tile, DoCommandFlag flags)
 			}
 
 			/* Make sure no vehicle is on the tile */
-			if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
+			CommandCost ret = EnsureNoVehicleOnGround(tile);
+			ret.SetGlobalErrorMessage();
+			if (ret.Failed()) return ret;
 
 			if (GetTileOwner(tile) != OWNER_WATER && GetTileOwner(tile) != OWNER_NONE && !CheckTileOwnership(tile)) return CMD_ERROR;
 
@@ -360,12 +368,15 @@ static CommandCost ClearTile_Water(TileIndex tile, DoCommandFlag flags)
 				MarkCanalsAndRiversAroundDirty(tile);
 			}
 			return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_CLEAR_WATER]);
+		}
 
 		case WATER_TILE_COAST: {
 			Slope slope = GetTileSlope(tile, NULL);
 
 			/* Make sure no vehicle is on the tile */
-			if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
+			CommandCost ret = EnsureNoVehicleOnGround(tile);
+			ret.SetGlobalErrorMessage();
+			if (ret.Failed()) return ret;
 
 			if (flags & DC_EXEC) {
 				DoClearSquare(tile);

@@ -183,14 +183,19 @@ static CommandCost RemoveRoad(TileIndex tile, DoCommandFlag flags, RoadBits piec
 	if (!HasBit(rts, rt)) return CMD_ERROR;
 
 	switch (GetTileType(tile)) {
-		case MP_ROAD:
-			if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
-			break;
+		case MP_ROAD: {
+			CommandCost ret = EnsureNoVehicleOnGround(tile);
+			ret.SetGlobalErrorMessage();
+			if (ret.Failed()) return ret;
+		} break;
 
-		case MP_STATION:
+		case MP_STATION: {
 			if (!IsDriveThroughStopTile(tile)) return CMD_ERROR;
-			if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
-			break;
+
+			CommandCost ret = EnsureNoVehicleOnGround(tile);
+			ret.SetGlobalErrorMessage();
+			if (ret.Failed()) return ret;
+		} break;
 
 		case MP_TUNNELBRIDGE: {
 			if (GetTunnelBridgeTransportType(tile) != TRANSPORT_ROAD) return CMD_ERROR;
@@ -493,7 +498,9 @@ CommandCost CmdBuildRoad(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 							Owner owner = GetRoadOwner(tile, ROADTYPE_ROAD);
 							if (owner != OWNER_NONE && !CheckOwnership(owner, tile)) return CMD_ERROR;
 
-							if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
+							CommandCost ret = EnsureNoVehicleOnGround(tile);
+							ret.SetGlobalErrorMessage();
+							if (ret.Failed()) return ret;
 
 							/* Ignore half built tiles */
 							if ((flags & DC_EXEC) && rt != ROADTYPE_TRAM && IsStraightRoad(existing)) {
@@ -549,7 +556,9 @@ CommandCost CmdBuildRoad(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 				default: goto do_clear;
 			}
 
-			if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
+			CommandCost ret = EnsureNoVehicleOnGround(tile);
+			ret.SetGlobalErrorMessage();
+			if (ret.Failed()) return ret;
 
 			if (flags & DC_EXEC) {
 				Track railtrack = AxisToTrack(OtherAxis(roaddir));
@@ -627,7 +636,11 @@ do_clear:;
 		}
 	}
 
-	if (!tile_cleared && !EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
+	if (!tile_cleared) {
+		CommandCost ret = EnsureNoVehicleOnGround(tile);
+		ret.SetGlobalErrorMessage();
+		if (ret.Failed()) return ret;
+	}
 
 	cost.AddCost(CountBits(pieces) * _price[PR_BUILD_ROAD]);
 	if (!tile_cleared && IsTileType(tile, MP_TUNNELBRIDGE)) {
@@ -900,7 +913,9 @@ static CommandCost RemoveRoadDepot(TileIndex tile, DoCommandFlag flags)
 {
 	if (!CheckTileOwnership(tile) && _current_company != OWNER_WATER) return CMD_ERROR;
 
-	if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
+	CommandCost ret = EnsureNoVehicleOnGround(tile);
+	ret.SetGlobalErrorMessage();
+	if (ret.Failed()) return ret;
 
 	if (flags & DC_EXEC) {
 		delete Depot::GetByTile(tile);
@@ -1358,7 +1373,7 @@ static void TileLoop_Road(TileIndex tile)
 			if (t->road_build_months != 0 &&
 					(DistanceManhattan(t->xy, tile) < 8 || grp != HZB_TOWN_EDGE) &&
 					IsNormalRoad(tile) && !HasAtMostOneBit(GetAllRoadBits(tile))) {
-				if (GetFoundationSlope(tile, NULL) == SLOPE_FLAT && EnsureNoVehicleOnGround(tile) && Chance16(1, 40)) {
+				if (GetFoundationSlope(tile, NULL) == SLOPE_FLAT && EnsureNoVehicleOnGround(tile).Succeeded() && Chance16(1, 40)) {
 					StartRoadWorks(tile);
 
 					SndPlayTileFx(SND_21_JACKHAMMER, tile);

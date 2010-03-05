@@ -1337,7 +1337,9 @@ static CommandCost CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTil
 				return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
 			}
 		} else {
-			if (!EnsureNoVehicleOnGround(cur_tile)) return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
+			CommandCost ret = EnsureNoVehicleOnGround(cur_tile);
+			ret.SetGlobalErrorMessage();
+			if (ret.Failed()) return ret;
 			if (MayHaveBridgeAbove(cur_tile) && IsBridgeAbove(cur_tile)) return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
 
 			const IndustryTileSpec *its = GetIndustryTileSpec(gfx);
