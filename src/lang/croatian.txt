@@ -657,7 +657,7 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Novac:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Zajam:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Ukupno:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Broj vozila koja su ostvarila profit prethodne godine. Ovo uključuje cestovna vozila, vlakove, brodove i zrakoplove.
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Broj vozila koja su ostvarila dobit prošle godine. Ovo uključuje cestovna vozila, vlakove, brodove i zrakoplove.
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Broj nedavno održavanih dijelova postaje. Svaki dio postaje (npr. željeznički kolodvor, autobusna postaja, zračna luka) se računa, čak i ako su spojene kao jedna postaja
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Dobit vozila s najnižim prihodom (u obzir su uzeta samo vozila starija od dvije godine)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Količina gotovine uprihodovana u mjesecu s najnižom dobiti u zadnjih 12 kvartala
@@ -1214,7 +1214,7 @@ STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Faktor 
 STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Broj padova zrakoplova: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :ništa
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :smanjeno
-STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normalo
+STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normalno
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Dopusti prolazne postaje na cestama u vlasništvu gradova: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Dopusti prolazne postaje na cestama koje su u vlasništvu konkurencije: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Dopusti izgradnju pridruženih postaja: {ORANGE}{STRING}
@@ -1486,7 +1486,7 @@ STR_OSNAME_SUNOS                                                :SunOS
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Napusti igru
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Jesi li siguran da želiš napustiti ovu igru?
-STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Jeste li sigurni da želite završiti ovaj scenarij?
+STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Jesi li siguran da želiš napustiti ovaj scenarij?
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Varanje
@@ -2217,7 +2217,7 @@ STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Koordina
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Izgrađeno: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Klasa postaje: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Vrsta postaje: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Ime aurodromskog polja: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Naziv polja zračne luke: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Prihvaćeni teret: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
@@ -2256,7 +2256,7 @@ STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Željeznička p
 STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Željezničko spremište vlakova
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Cesta
-STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Cesta sa javnom rasvjetom
+STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Cesta s javnom rasvjetom
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Cesta s tri trake
 STR_LAI_ROAD_DESCRIPTION_ROAD_VEHICLE_DEPOT                     :Spremište cestovnih vozila
 STR_LAI_ROAD_DESCRIPTION_ROAD_RAIL_LEVEL_CROSSING               :Prijelaz ceste preko željezničke pruge
@@ -2475,7 +2475,7 @@ STR_NEWGRF_ERROR_READ_BOUNDS                                    :Učitavanje izv
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Oprez!
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Spremate se napraviti izmjene u tekućoj igri. Ovo može srušiti OpenTTD.{}Jeste li potpuno sigurni?
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Spremaš se napraviti izmjene u tekućoj igri. Ovo može srušiti OpenTTD.{}Jesi li potpuno siguran?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Ne mogu dodati datoteku: dupli GRF ID
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Odgovarajuća datoteka nije pronađena (kompatibilni GRF podignut)
@@ -3000,10 +3000,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Pokaži 
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Pokaži detalje broda
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Pokaži detalje zrakoplova
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Trenutna radnja vlaka - pritisni za zaustavljanje/pokretanje vlaka. Ctrl+Click za odlazak do odredišta.
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Trenutna radnja vozila - pritisni za zaustavljanje/pokretanje vozila. Ctlr+Click za odlazak do odredišta.
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Trenutna radnja broda - pritisni za zaustavljanje/pokretanje broda. Ctrl+Click za odlazak do odredišta.
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Trenutna radnja zrakoplova - pritisni za zaustavljanje/pokretanje zrakoplova. Ctrl+Click za odlazak do odredišta.
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Trenutna radnja vlaka - pritisni za zaustavljanje/pokretanje vlaka. Ctrl+klik za odlazak do odredišta.
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Trenutna radnja vozila - pritisni za zaustavljanje/pokretanje vozila. Ctlr+klik za odlazak do odredišta.
+STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Trenutna radnja broda - pritisni za zaustavljanje/pokretanje broda. Ctrl+klik za odlazak do odredišta.
+STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Trenutna radnja zrakoplova - pritisni za zaustavljanje/pokretanje zrakoplova. Ctrl+klik za odlazak do odredišta.
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Utovar / Istovar
@@ -3405,7 +3405,7 @@ STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Upozoren
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Prekomjerna promjena veličine karte nije preporučena. Nastaviti sa kreiranjem?
 
 # Soundset messages
-STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Pronađen je samo sigurnosni zvučni sustav. Ako želite zvukove, instalirajte zvučni sustav kroz sustav za preuzimanje sadržaja.
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Pronađen je samo sigurnosni zvučni sustav. Ako želite zvukove, instalirajte set zvukova kroz sustav za preuzimanje sadržaja.
 
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Slika zaslona uspješno spremljena kao '{STRING}'
@@ -3473,7 +3473,7 @@ STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}...previ
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...nema više mjesta na karti
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Grad neće graditi ceste. Možete uključiti gradnju cesta putem Naprednih postavki -> Ekonomija -> Gradovi
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Cestovni radovi u tijeku
-STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Nemoguće izbrisati ovaj grad...{}Stanica ili depo se pozivaju na grad ili jedno od gradskih polja nije moguće izbrisati
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Nije moguće izbrisati ovaj grad...{}Postaja ili spremište se pozivaju na grad ili polja u vlasništvu grada nije moguće ukloniti
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... previše industrija
@@ -3487,7 +3487,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...može
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...može biti izgrađen samo u predjelima kišnih šuma
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}...može biti izgrađen samo u pustinjskim područjima
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}...može biti izgrađen samo u gradovima
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... može se izgraditi samo u nizinskim područjima
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... može biti izgrađen samo u nizinskim područjima
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}...može se postaviti samo blizu rubova karte
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}...šume mogu jedino biti posađene iznad linije snijega
 
@@ -3522,7 +3522,7 @@ STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Nije mog
 STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Nije moguće ukloniti kamionsku postaju...
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Nije moguće ukloniti putničku tramvajsku postaju...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Nije moguće ukloniti teretnu tramvajsku postaju...
-STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Potrebno je prvo izbrisati cestovnu stanicu
+STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Najprije je potrebno ukloniti cestovnu stanicu
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Najprije je potrebno srušiti željezničku postaju
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Najprije je potrebno srušiti autobusnu postaju
@@ -3576,7 +3576,7 @@ STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(novčano ogran
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Nemoguća kombinacija tračnica
-STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Potrebno je prvo izbrisati signale
+STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Najprije je potrebno ukloniti signale
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Nije prikladno za želježnicku prugu
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Najprije je potrebno ukloniti željezničku prugu
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Cesta je jednosmjerna ili je blokirana

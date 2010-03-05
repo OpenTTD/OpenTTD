@@ -3374,13 +3374,14 @@ STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Impossí
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Impossível construir cidade aqui...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}...muito perto da borda do mapa
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}...muito perto de outra cidade
-STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... cidades demais
+STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... existem cidades demais
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...não há mais espaço no mapa
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}A cidade não irá construir estradas. Você pode ativar essa opção através de Config. Avançadas>Economia>Cidades.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Recapeamento rodoviário em progresso
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Impossível remover cidade... {}Uma estação ou depósito referente à essa cidade não pode ser removido
 
 # Industry related errors
+STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... existem indústrias demais
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Impossível gerar indústrias...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Impossível construir {STRING} aqui...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Impossível construir este tipo de indústria aqui...
@@ -3628,7 +3629,7 @@ STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Veículo
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Esse veículo não pára nesta estação
 
 # Sign related errors
-STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... placas demais
+STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... existem placas demais
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Impossível colocar placa aqui...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Impossível alterar nome da placa...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Impossível remover placa
