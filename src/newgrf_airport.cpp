@@ -21,11 +21,25 @@ AirportSpec AirportSpec::oilrig = {NULL, NULL, 0, 1, 1, 0, 4, MIN_YEAR, MIN_YEAR
 AirportSpec AirportSpec::specs[NUM_AIRPORTS];
 
 /**
- * Retrieve airport spec for the given airport
+ * Retrieve airport spec for the given airport. If an override is available
+ *  it is returned.
  * @param type index of airport
  * @return A pointer to the corresponding AirportSpec
  */
 /* static */ const AirportSpec *AirportSpec::Get(byte type)
+{
+	if (type == AT_OILRIG) return &oilrig;
+	assert(type < lengthof(AirportSpec::specs));
+	return &AirportSpec::specs[type];
+}
+
+/**
+ * Retrieve airport spec for the given airport. Even if an override is
+ *  available the base spec is returned.
+ * @param type index of airport
+ * @return A pointer to the corresponding AirportSpec
+ */
+/* static */ AirportSpec *AirportSpec::GetWithoutOverride(byte type)
 {
 	if (type == AT_OILRIG) return &oilrig;
 	assert(type < lengthof(AirportSpec::specs));

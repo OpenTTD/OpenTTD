@@ -47,6 +47,7 @@ struct AirportSpec {
 	TTDPAirportType ttd_airport_type;      ///< ttdpatch airport type (Small/Large/Helipad/Oilrig)
 
 	static const AirportSpec *Get(byte type);
+	static AirportSpec *GetWithoutOverride(byte type);
 
 	bool IsAvailable() const;
 
