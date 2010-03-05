@@ -2162,15 +2162,6 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 		st->rect.BeforeAddRect(tile, w, h, StationRect::ADD_TRY);
 
-		/* if airport was demolished while planes were en-route to it, the
-		 * positions can no longer be the same (v->u.air.pos), since different
-		 * airports have different indexes. So update all planes en-route to this
-		 * airport. Only update if
-		 * 1. airport is upgraded
-		 * 2. airport is added to existing station (unfortunately unavoideable)
-		 */
-		if (airport_upgrade) UpdateAirplanesOnNewStation(st);
-
 		const AirportTileTable *it = as->table[0];
 		do {
 			TileIndex cur_tile = tile + ToTileIndexDiff(it->ti);
@@ -2187,6 +2178,15 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 			TileIndex cur_tile = tile + ToTileIndexDiff(it->ti);
 			AirportTileAnimationTrigger(st, cur_tile, AAT_BUILT);
 		} while ((++it)->ti.x != -0x80);
+
+		/* if airport was demolished while planes were en-route to it, the
+		 * positions can no longer be the same (v->u.air.pos), since different
+		 * airports have different indexes. So update all planes en-route to this
+		 * airport. Only update if
+		 * 1. airport is upgraded
+		 * 2. airport is added to existing station (unfortunately unavoideable)
+		 */
+		if (airport_upgrade) UpdateAirplanesOnNewStation(st);
 
 		st->UpdateVirtCoord();
 		UpdateStationAcceptance(st, false);
