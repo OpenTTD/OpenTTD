@@ -14,6 +14,7 @@
 
 #include "date_type.h"
 #include "map_type.h"
+#include "strings_type.h"
 
 /* Copy from station_map.h */
 typedef byte StationGfx;
@@ -22,6 +23,19 @@ struct AirportTileTable {
 	TileIndexDiffC ti;
 	StationGfx gfx;
 };
+
+/** List of default airport classes. */
+enum AirportClassID {
+	APC_BEGIN     = 0,  ///< Lowest valid airport class id
+	APC_SMALL     = 0,  ///< id for small airports class
+	APC_LARGE,          ///< id for large airports class
+	APC_HUB,            ///< id for hub airports class
+	APC_HELIPORT,       ///< id for heliports
+	APC_MAX       = 16, ///< maximum number of airport classes
+};
+
+/** Allow incrementing of AirportClassID variables */
+DECLARE_POSTFIX_INCREMENT(AirportClassID);
 
 /** TTDP airport types. Used to map our types to TTDPatch's */
 enum TTDPAirportType {
@@ -45,6 +59,7 @@ struct AirportSpec {
 	Year min_year;                         ///< first year the airport is available
 	Year max_year;                         ///< last year the airport is available
 	TTDPAirportType ttd_airport_type;      ///< ttdpatch airport type (Small/Large/Helipad/Oilrig)
+	AirportClassID aclass;                 ///< the class to which this airport type belongs
 
 	static const AirportSpec *Get(byte type);
 	static AirportSpec *GetWithoutOverride(byte type);
@@ -60,5 +75,23 @@ private:
 	static AirportSpec specs[NUM_AIRPORTS];
 };
 
+/** Information related to airport classes. */
+struct AirportClass {
+	uint32 id;          ///< ID of this class, e.g. 'SMAL', 'LARG', 'HUB_', 'HELI', etc.
+	StringID name;      ///< name of this class
+	uint airports;      ///< number of airports in this class
+	AirportSpec **spec; ///< array of airport specifications
+};
+
+void ResetAirportClasses();
+AirportClassID AllocateAirportClass(uint32 cls);
+void SetAirportClassName(AirportClassID id, StringID name);
+StringID GetAirportClassName(AirportClassID id);
+
+uint GetNumAirportClasses();
+uint GetNumAirportsInClass(AirportClassID id);
+
+void BindAirportSpecs();
+const AirportSpec *GetAirportSpecFromClass(AirportClassID aclass, uint airport);
 
 #endif /* NEWGRF_AIRPORT_H */
