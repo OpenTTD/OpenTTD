@@ -20,8 +20,7 @@
 
 static AirportClass _airport_classes[APC_MAX];
 
-AirportSpec AirportSpec::dummy = {NULL, NULL, 0, 0, 0, 0, 0, MIN_YEAR, MIN_YEAR, STR_NULL, ATP_TTDP_LARGE, APC_BEGIN};
-AirportSpec AirportSpec::oilrig = {NULL, NULL, 0, 1, 1, 0, 4, MIN_YEAR, MIN_YEAR, STR_NULL, ATP_TTDP_OILRIG, APC_BEGIN};
+AirportSpec AirportSpec::dummy = {NULL, NULL, 0, 0, 0, 0, 0, MIN_YEAR, MIN_YEAR, STR_NULL, ATP_TTDP_LARGE, APC_BEGIN, false};
 
 AirportSpec AirportSpec::specs[NUM_AIRPORTS];
 
@@ -33,7 +32,6 @@ AirportSpec AirportSpec::specs[NUM_AIRPORTS];
  */
 /* static */ const AirportSpec *AirportSpec::Get(byte type)
 {
-	if (type == AT_OILRIG) return &oilrig;
 	assert(type < lengthof(AirportSpec::specs));
 	return &AirportSpec::specs[type];
 }
@@ -46,13 +44,13 @@ AirportSpec AirportSpec::specs[NUM_AIRPORTS];
  */
 /* static */ AirportSpec *AirportSpec::GetWithoutOverride(byte type)
 {
-	if (type == AT_OILRIG) return &oilrig;
 	assert(type < lengthof(AirportSpec::specs));
 	return &AirportSpec::specs[type];
 }
 
 bool AirportSpec::IsAvailable() const
 {
+	if (!this->enabled) return false;
 	if (_cur_year < this->min_year) return false;
 	if (_settings_game.station.never_expire_airports) return true;
 	return _cur_year <= this->max_year;
@@ -156,7 +154,7 @@ void BindAirportSpecs()
 {
 	for (int i = 0; i < NUM_AIRPORTS; i++) {
 		AirportSpec *as = AirportSpec::GetWithoutOverride(i);
-		BindAirportSpecToClass(as);
+		if (as->enabled) BindAirportSpecToClass(as);
 	}
 }
 

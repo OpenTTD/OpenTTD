@@ -22,7 +22,7 @@
 
 /* static */ bool AIAirport::IsAirportInformationAvailable(AirportType type)
 {
-	return type >= 0 && type < (AirportType)NUM_AIRPORTS;
+	return type >= 0 && type < (AirportType)NUM_AIRPORTS && AirportSpec::Get(type)->enabled;
 }
 
 /* static */ Money AIAirport::GetPrice(AirportType type)

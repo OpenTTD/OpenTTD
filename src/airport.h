@@ -35,8 +35,8 @@ enum {
 	AT_HELIDEPOT     =   6,
 	AT_INTERCON      =   7,
 	AT_HELISTATION   =   8,
-	NUM_AIRPORTS     =   9,
 	AT_OILRIG        =   9,
+	NUM_AIRPORTS     =  10,
 	AT_DUMMY         = 255
 };
 

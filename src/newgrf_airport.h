@@ -61,6 +61,8 @@ struct AirportSpec {
 	StringID name;                         ///< name of this airport
 	TTDPAirportType ttd_airport_type;      ///< ttdpatch airport type (Small/Large/Helipad/Oilrig)
 	AirportClassID aclass;                 ///< the class to which this airport type belongs
+	/* Newgrf data */
+	bool enabled;                          ///< entity still avaible (by default true).newgrf can disable it, though
 
 	static const AirportSpec *Get(byte type);
 	static AirportSpec *GetWithoutOverride(byte type);
