@@ -2014,6 +2014,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Build ai
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Airport Selection
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Select size/type of airport
+STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Airport class
 
 STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Small
 STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}City

@@ -71,6 +71,13 @@ struct AirportSpec {
 
 	static void ResetAirports();
 
+	/** Get the index of this spec. */
+	byte GetIndex() const
+	{
+		assert(this >= specs && this < endof(specs));
+		return (byte)(this - specs);
+	}
+
 	static AirportSpec dummy;
 	static AirportSpec oilrig;
 
