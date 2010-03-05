@@ -2067,6 +2067,7 @@ bool AfterLoadGame()
 		Station *st;
 		FOR_ALL_STATIONS(st) {
 			if (st->airport.tile != INVALID_TILE) {
+				if (st->airport_type == 15) st->airport_type = AT_OILRIG;
 				st->airport.w = st->GetAirportSpec()->size_x;
 				st->airport.h = st->GetAirportSpec()->size_y;
 			}
