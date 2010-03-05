@@ -1478,8 +1478,11 @@ CommandCost CmdConvertRail(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 							TileY(endtile) >= sy && TileY(endtile) <= ey) continue;
 
 					/* When not coverting rail <-> el. rail, any vehicle cannot be in tunnel/bridge */
-					if (!IsCompatibleRail(GetRailType(tile), totype) &&
-							TunnelBridgeIsFree(tile, endtile).Failed()) continue;
+					if (!IsCompatibleRail(GetRailType(tile), totype)) {
+						CommandCost ret = TunnelBridgeIsFree(tile, endtile);
+						ret.SetGlobalErrorMessage();
+						if (ret.Failed()) continue;
+					}
 
 					if (flags & DC_EXEC) {
 						Track track = DiagDirToDiagTrack(GetTunnelBridgeDirection(tile));
