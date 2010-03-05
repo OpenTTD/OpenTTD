@@ -2030,6 +2030,16 @@ STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Large ai
 STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Hub airports
 STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Helicopter airports
 
+STR_AIRPORT_SMALL                                               :Small
+STR_AIRPORT_CITY                                                :City
+STR_AIRPORT_METRO                                               :Metropolitan
+STR_AIRPORT_INTERNATIONAL                                       :International
+STR_AIRPORT_COMMUTER                                            :Commuter
+STR_AIRPORT_INTERCONTINENTAL                                    :Intercontinental
+STR_AIRPORT_HELIPORT                                            :Heliport
+STR_AIRPORT_HELIDEPOT                                           :Helidepot
+STR_AIRPORT_HELISTATION                                         :Helistation
+
 STR_AIRPORT_CLASS_SMALL                                         :Small airports
 STR_AIRPORT_CLASS_LARGE                                         :Large airports
 STR_AIRPORT_CLASS_HUB                                           :Hub airports

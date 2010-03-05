@@ -58,6 +58,7 @@ struct AirportSpec {
 	byte catchment;                        ///< catchment area of this airport
 	Year min_year;                         ///< first year the airport is available
 	Year max_year;                         ///< last year the airport is available
+	StringID name;                         ///< name of this airport
 	TTDPAirportType ttd_airport_type;      ///< ttdpatch airport type (Small/Large/Helipad/Oilrig)
 	AirportClassID aclass;                 ///< the class to which this airport type belongs
 

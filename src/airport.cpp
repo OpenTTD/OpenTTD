@@ -18,6 +18,7 @@
 #include "date_func.h"
 #include "settings_type.h"
 #include "newgrf_airport.h"
+#include "table/strings.h"
 #include "table/airporttile_ids.h"
 #include "table/airport_defaults.h"
 
