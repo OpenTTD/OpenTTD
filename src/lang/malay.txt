@@ -2013,20 +2013,20 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Bina lap
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Pilihan Lapangan Terbang
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Pilih saiz/jenis lapangan terbang
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Kecil
-STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}Bandar
-STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Lapangan terbang metropolitan
-STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Lapangan terbang antarabangsa
-STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Komuter
-STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Antarabenua
-STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Helipad
-STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}Depoh heli
-STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}Stesen heli
+STR_AIRPORT_SMALL                                               :Kecil
+STR_AIRPORT_CITY                                                :Bandar
+STR_AIRPORT_METRO                                               :Lapangan terbang metropolitan
+STR_AIRPORT_INTERNATIONAL                                       :Lapangan terbang antarabangsa
+STR_AIRPORT_COMMUTER                                            :Komuter
+STR_AIRPORT_INTERCONTINENTAL                                    :Antarabenua
+STR_AIRPORT_HELIPORT                                            :Helipad
+STR_AIRPORT_HELIDEPOT                                           :Depoh heli
+STR_AIRPORT_HELISTATION                                         :Stesen heli
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}Lapangan terbang kecil
-STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Lapangan terbang besar
-STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Lapangan terbang hab
-STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Lapangan terbang helikopter
+STR_AIRPORT_CLASS_SMALL                                         :Lapangan terbang kecil
+STR_AIRPORT_CLASS_LARGE                                         :Lapangan terbang besar
+STR_AIRPORT_CLASS_HUB                                           :Lapangan terbang hab
+STR_AIRPORT_CLASS_HELIPORTS                                     :Lapangan terbang helikopter
 
 STR_STATION_BUILD_NOISE                                         :{BLACK}Kebisingan: {GOLD}{COMMA}
 

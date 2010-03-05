@@ -2015,20 +2015,20 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Bygg fly
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Velg flyplasstype
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Velg størrelse/type flyplass
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Liten
-STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}By
-STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Metropol
-STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Internasjonal
-STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Pendler
-STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Interkontinental
-STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Helikopterplass
-STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}Helikopterhangar
-STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}Helikopterstasjon
+STR_AIRPORT_SMALL                                               :Liten
+STR_AIRPORT_CITY                                                :By
+STR_AIRPORT_METRO                                               :Metropol
+STR_AIRPORT_INTERNATIONAL                                       :Internasjonal
+STR_AIRPORT_COMMUTER                                            :Pendler
+STR_AIRPORT_INTERCONTINENTAL                                    :Interkontinental
+STR_AIRPORT_HELIPORT                                            :Helikopterplass
+STR_AIRPORT_HELIDEPOT                                           :Helikopterhangar
+STR_AIRPORT_HELISTATION                                         :Helikopterstasjon
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}Små flyplasser
-STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Store flyplasser
-STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Sentrumsflyplasser
-STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Helikopterplasser
+STR_AIRPORT_CLASS_SMALL                                         :Små flyplasser
+STR_AIRPORT_CLASS_LARGE                                         :Store flyplasser
+STR_AIRPORT_CLASS_HUB                                           :Sentrumsflyplasser
+STR_AIRPORT_CLASS_HELIPORTS                                     :Helikopterplasser
 
 STR_STATION_BUILD_NOISE                                         :{BLACK}Støy generert: {GOLD}{COMMA}
 

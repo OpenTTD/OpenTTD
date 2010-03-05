@@ -2016,20 +2016,20 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Havalima
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Havalimanı seçimi
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Havalimanı boyutunu seç
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Küçük
-STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}Şehirlerarası
-STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Büyükşehir
-STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Uluslararası
-STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Abonman
-STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Kıtalararası
-STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Heliport
-STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}Heligaraj
-STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}Helistasyon
+STR_AIRPORT_SMALL                                               :Küçük
+STR_AIRPORT_CITY                                                :Şehirlerarası
+STR_AIRPORT_METRO                                               :Büyükşehir
+STR_AIRPORT_INTERNATIONAL                                       :Uluslararası
+STR_AIRPORT_COMMUTER                                            :Abonman
+STR_AIRPORT_INTERCONTINENTAL                                    :Kıtalararası
+STR_AIRPORT_HELIPORT                                            :Heliport
+STR_AIRPORT_HELIDEPOT                                           :Heligaraj
+STR_AIRPORT_HELISTATION                                         :Helistasyon
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}Küçük havalimanları
-STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Büyük Havalimanları
-STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Merkezi havalimanları
-STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Helikopter havalimanları
+STR_AIRPORT_CLASS_SMALL                                         :Küçük havalimanları
+STR_AIRPORT_CLASS_LARGE                                         :Büyük Havalimanları
+STR_AIRPORT_CLASS_HUB                                           :Merkezi havalimanları
+STR_AIRPORT_CLASS_HELIPORTS                                     :Helikopter havalimanları
 
 STR_STATION_BUILD_NOISE                                         :{BLACK}Üretilen gürültü: {GOLD}{COMMA}
 

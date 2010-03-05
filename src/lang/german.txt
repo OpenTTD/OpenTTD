@@ -2016,20 +2016,20 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Flughafe
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Flughafen bauen
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Wähle die Größe/Art des Flughafens
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Klein
-STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}Stadt
-STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Großraum
-STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}International
-STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Nahverkehr
-STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Interkontinental
-STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Hubschrauberlandeplatz
-STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}Hubschrauberhalle
-STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}Hubschrauberstation
+STR_AIRPORT_SMALL                                               :Klein
+STR_AIRPORT_CITY                                                :Stadt
+STR_AIRPORT_METRO                                               :Großraum
+STR_AIRPORT_INTERNATIONAL                                       :International
+STR_AIRPORT_COMMUTER                                            :Nahverkehr
+STR_AIRPORT_INTERCONTINENTAL                                    :Interkontinental
+STR_AIRPORT_HELIPORT                                            :Hubschrauberlandeplatz
+STR_AIRPORT_HELIDEPOT                                           :Hubschrauberhalle
+STR_AIRPORT_HELISTATION                                         :Hubschrauberstation
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}Kleine Flughäfen
-STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Große Flughäfen
-STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Luftfahrt-Drehkreuze
-STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Flughäfen für Hubschrauber
+STR_AIRPORT_CLASS_SMALL                                         :Kleine Flughäfen
+STR_AIRPORT_CLASS_LARGE                                         :Große Flughäfen
+STR_AIRPORT_CLASS_HUB                                           :Luftfahrt-Drehkreuze
+STR_AIRPORT_CLASS_HELIPORTS                                     :Flughäfen für Hubschrauber
 
 STR_STATION_BUILD_NOISE                                         :{BLACK}Lärmbelastung: {GOLD}{COMMA}
 

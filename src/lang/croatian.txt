@@ -2111,20 +2111,20 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Izgradi 
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Izbor zračne luke
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Odaberi veličinu/vrstu zračne luke
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Mala
-STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}Grad
-STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Metropolitanska zračna luka
-STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Međunarodna zračna luka
-STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Redoviti putnik
-STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Međukontinentalni
-STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Heliodrom
-STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}Spremište helikoptera
-STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}Postaja za helikoptere
+STR_AIRPORT_SMALL                                               :Mala
+STR_AIRPORT_CITY                                                :Grad
+STR_AIRPORT_METRO                                               :Metropolitanska zračna luka
+STR_AIRPORT_INTERNATIONAL                                       :Međunarodna zračna luka
+STR_AIRPORT_COMMUTER                                            :Redoviti putnik
+STR_AIRPORT_INTERCONTINENTAL                                    :Međukontinentalni
+STR_AIRPORT_HELIPORT                                            :Heliodrom
+STR_AIRPORT_HELIDEPOT                                           :Spremište helikoptera
+STR_AIRPORT_HELISTATION                                         :Postaja za helikoptere
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}Male zračne luke
-STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Velike zračne luke
-STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Središnje zračne luke
-STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Helicopterske zračne luke
+STR_AIRPORT_CLASS_SMALL                                         :Male zračne luke
+STR_AIRPORT_CLASS_LARGE                                         :Velike zračne luke
+STR_AIRPORT_CLASS_HUB                                           :Središnje zračne luke
+STR_AIRPORT_CLASS_HELIPORTS                                     :Helicopterske zračne luke
 
 STR_STATION_BUILD_NOISE                                         :{BLACK}Proizvedeno buke: {GOLD}{COMMA}
 

@@ -2185,20 +2185,20 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Стро
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Выбор аэропорта
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Выберите размер/тип аэропорта
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Малый
-STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}Городской
-STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Федеральный
-STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Международный
-STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Пригородный
-STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Межконтинентальный
-STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Вертолётная площадка
-STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}Вертолётное депо
-STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}Вертолётная станция
+STR_AIRPORT_SMALL                                               :Малый
+STR_AIRPORT_CITY                                                :Городской
+STR_AIRPORT_METRO                                               :Федеральный
+STR_AIRPORT_INTERNATIONAL                                       :Международный
+STR_AIRPORT_COMMUTER                                            :Пригородный
+STR_AIRPORT_INTERCONTINENTAL                                    :Межконтинентальный
+STR_AIRPORT_HELIPORT                                            :Вертолётная площадка
+STR_AIRPORT_HELIDEPOT                                           :Вертолётное депо
+STR_AIRPORT_HELISTATION                                         :Вертолётная станция
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}Малые аэропорты
-STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Средние аэропорты
-STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Большие аэропорты
-STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Вертолётные площадки
+STR_AIRPORT_CLASS_SMALL                                         :Малые аэропорты
+STR_AIRPORT_CLASS_LARGE                                         :Средние аэропорты
+STR_AIRPORT_CLASS_HUB                                           :Большие аэропорты
+STR_AIRPORT_CLASS_HELIPORTS                                     :Вертолётные площадки
 
 STR_STATION_BUILD_NOISE                                         :{BLACK}Производимый шум: {GOLD}{COMMA}
 

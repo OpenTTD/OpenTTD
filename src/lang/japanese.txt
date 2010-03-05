@@ -1969,20 +1969,20 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}空港�
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}空港の選択
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}空港のサイズ／種類を選択します
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}町空港
-STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}市空港
-STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}都市空港
-STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}国際空港
-STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}通勤空港
-STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}大陸間空港
-STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}ヘリポート
-STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}ヘリコプター庫
-STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}ヘリステーション
+STR_AIRPORT_SMALL                                               :町空港
+STR_AIRPORT_CITY                                                :市空港
+STR_AIRPORT_METRO                                               :都市空港
+STR_AIRPORT_INTERNATIONAL                                       :国際空港
+STR_AIRPORT_COMMUTER                                            :通勤空港
+STR_AIRPORT_INTERCONTINENTAL                                    :大陸間空港
+STR_AIRPORT_HELIPORT                                            :ヘリポート
+STR_AIRPORT_HELIDEPOT                                           :ヘリコプター庫
+STR_AIRPORT_HELISTATION                                         :ヘリステーション
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}小型空港
-STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}大型空港
-STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}ハブ型空港
-STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}ヘリコプター空港
+STR_AIRPORT_CLASS_SMALL                                         :小型空港
+STR_AIRPORT_CLASS_LARGE                                         :大型空港
+STR_AIRPORT_CLASS_HUB                                           :ハブ型空港
+STR_AIRPORT_CLASS_HELIPORTS                                     :ヘリコプター空港
 
 STR_STATION_BUILD_NOISE                                         :{BLACK}発生した雑音：{GOLD}{COMMA}
 

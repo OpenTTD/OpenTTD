@@ -2082,20 +2082,20 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Postavit
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Vyber letiska
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Vybrat velkost/typ letiska
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Male
-STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}Mestske
-STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Metropolitné
-STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Medzinárodné
-STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Vnutrostatne
-STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Medzikontinentalne
-STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Heliport
-STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}Heliport s hangarom
-STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}Velky heliport
+STR_AIRPORT_SMALL                                               :Male
+STR_AIRPORT_CITY                                                :Mestske
+STR_AIRPORT_METRO                                               :Metropolitné
+STR_AIRPORT_INTERNATIONAL                                       :Medzinárodné
+STR_AIRPORT_COMMUTER                                            :Vnutrostatne
+STR_AIRPORT_INTERCONTINENTAL                                    :Medzikontinentalne
+STR_AIRPORT_HELIPORT                                            :Heliport
+STR_AIRPORT_HELIDEPOT                                           :Heliport s hangarom
+STR_AIRPORT_HELISTATION                                         :Velky heliport
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}Male letiska
-STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Velke letiska
-STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Najvacsie letiska
-STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Heliporty
+STR_AIRPORT_CLASS_SMALL                                         :Male letiska
+STR_AIRPORT_CLASS_LARGE                                         :Velke letiska
+STR_AIRPORT_CLASS_HUB                                           :Najvacsie letiska
+STR_AIRPORT_CLASS_HELIPORTS                                     :Heliporty
 
 STR_STATION_BUILD_NOISE                                         :{BLACK}Vytváraný hluk: {GOLD}{COMMA}
 

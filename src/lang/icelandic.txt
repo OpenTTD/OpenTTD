@@ -1950,20 +1950,20 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Byggja f
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Flugvallastillingar
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Veldu stærð/tegund flugvallar
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Lítill flugvöllur
-STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}Borgarflugvöllur
-STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Stórborgar
-STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Alþjóðlegt
-STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Innanlandsflugvöllur
-STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Meginlandsflugvöllur
-STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Þyrlupallur
-STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}Þyrluskýli
-STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}Þyrlustöð
+STR_AIRPORT_SMALL                                               :Lítill flugvöllur
+STR_AIRPORT_CITY                                                :Borgarflugvöllur
+STR_AIRPORT_METRO                                               :Stórborgar
+STR_AIRPORT_INTERNATIONAL                                       :Alþjóðlegt
+STR_AIRPORT_COMMUTER                                            :Innanlandsflugvöllur
+STR_AIRPORT_INTERCONTINENTAL                                    :Meginlandsflugvöllur
+STR_AIRPORT_HELIPORT                                            :Þyrlupallur
+STR_AIRPORT_HELIDEPOT                                           :Þyrluskýli
+STR_AIRPORT_HELISTATION                                         :Þyrlustöð
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}Litlir flugvellir
-STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Stórir flugvellir
-STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Háannaflugvellir
-STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Þyrluflugvellir
+STR_AIRPORT_CLASS_SMALL                                         :Litlir flugvellir
+STR_AIRPORT_CLASS_LARGE                                         :Stórir flugvellir
+STR_AIRPORT_CLASS_HUB                                           :Háannaflugvellir
+STR_AIRPORT_CLASS_HELIPORTS                                     :Þyrluflugvellir
 
 STR_STATION_BUILD_NOISE                                         :{BLACK}Hávaði við flugvöll: {GOLD}{COMMA}
 

@@ -2083,20 +2083,20 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Postavit
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Výběr letiště
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Zvol velikost a typ letiště
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Malé
-STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}Městské
-STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Metropolitní
-STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Mezinárodní
-STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Příměstské
-STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Mezikontinentální
-STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Klasické
-STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}Servisní
-STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}Stanice
+STR_AIRPORT_SMALL                                               :Malé
+STR_AIRPORT_CITY                                                :Městské
+STR_AIRPORT_METRO                                               :Metropolitní
+STR_AIRPORT_INTERNATIONAL                                       :Mezinárodní
+STR_AIRPORT_COMMUTER                                            :Příměstské
+STR_AIRPORT_INTERCONTINENTAL                                    :Mezikontinentální
+STR_AIRPORT_HELIPORT                                            :Klasické
+STR_AIRPORT_HELIDEPOT                                           :Servisní
+STR_AIRPORT_HELISTATION                                         :Stanice
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}Malá letiště
-STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Velká letiště
-STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Hlavní letiště
-STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Letiště pro vrtulníky
+STR_AIRPORT_CLASS_SMALL                                         :Malá letiště
+STR_AIRPORT_CLASS_LARGE                                         :Velká letiště
+STR_AIRPORT_CLASS_HUB                                           :Hlavní letiště
+STR_AIRPORT_CLASS_HELIPORTS                                     :Letiště pro vrtulníky
 
 STR_STATION_BUILD_NOISE                                         :{BLACK}Vytvářený hluk: {GOLD}{COMMA}
 

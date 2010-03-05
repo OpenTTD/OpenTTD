@@ -2395,20 +2395,20 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Zbuduj l
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Wybór lotniska
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Wybierz wielkość/typ lotniska
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Małe
-STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}Miejskie
-STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Stołeczne
-STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Międzynarodowe
-STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Lokalne
-STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Międzykontynentalne
-STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Klasyczne
-STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}Serwisowe
-STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}Stacja
+STR_AIRPORT_SMALL                                               :Małe
+STR_AIRPORT_CITY                                                :Miejskie
+STR_AIRPORT_METRO                                               :Stołeczne
+STR_AIRPORT_INTERNATIONAL                                       :Międzynarodowe
+STR_AIRPORT_COMMUTER                                            :Lokalne
+STR_AIRPORT_INTERCONTINENTAL                                    :Międzykontynentalne
+STR_AIRPORT_HELIPORT                                            :Klasyczne
+STR_AIRPORT_HELIDEPOT                                           :Serwisowe
+STR_AIRPORT_HELISTATION                                         :Stacja
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}Małe lotniska
-STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Duże lotniska
-STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Główne lotniska
-STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Lądowiska
+STR_AIRPORT_CLASS_SMALL                                         :Małe lotniska
+STR_AIRPORT_CLASS_LARGE                                         :Duże lotniska
+STR_AIRPORT_CLASS_HUB                                           :Główne lotniska
+STR_AIRPORT_CLASS_HELIPORTS                                     :Lądowiska
 
 STR_STATION_BUILD_NOISE                                         :{BLACK}Wytwarzany hałas: {GOLD}{COMMA}
 

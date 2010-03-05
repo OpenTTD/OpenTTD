@@ -2083,20 +2083,20 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Statyti 
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Oro uosto pasirinkimas
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Pasirinkite oro uosto dydį/tipą
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Mažas
-STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}Miestas
-STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Didmiesčio
-STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Internacionalinis
-STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Rajonas
-STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Tarpkontinentinis
-STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Heliportas
-STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}Helidepas
-STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}Helistotis
+STR_AIRPORT_SMALL                                               :Mažas
+STR_AIRPORT_CITY                                                :Miestas
+STR_AIRPORT_METRO                                               :Didmiesčio
+STR_AIRPORT_INTERNATIONAL                                       :Internacionalinis
+STR_AIRPORT_COMMUTER                                            :Rajonas
+STR_AIRPORT_INTERCONTINENTAL                                    :Tarpkontinentinis
+STR_AIRPORT_HELIPORT                                            :Heliportas
+STR_AIRPORT_HELIDEPOT                                           :Helidepas
+STR_AIRPORT_HELISTATION                                         :Helistotis
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}Maži orouostai
-STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Dideli orouostai
-STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Issisakojantys orouostai
-STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Heliportai
+STR_AIRPORT_CLASS_SMALL                                         :Maži orouostai
+STR_AIRPORT_CLASS_LARGE                                         :Dideli orouostai
+STR_AIRPORT_CLASS_HUB                                           :Issisakojantys orouostai
+STR_AIRPORT_CLASS_HELIPORTS                                     :Heliportai
 
 STR_STATION_BUILD_NOISE                                         :{BLACK}Sukeltas triukšmas: {GOLD}{COMMA}
 

@@ -2015,20 +2015,20 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Bangun b
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Pilih Bandara
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Pilih model bandara
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Bandara Kecil
-STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}Bandara Kota
-STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Metropolitan
-STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Internasional
-STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Bandara Komuter
-STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Bandara Antar Benua
-STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Helipad
-STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}Helipad+Hangar
-STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}Bandara Helikopter
+STR_AIRPORT_SMALL                                               :Bandara Kecil
+STR_AIRPORT_CITY                                                :Bandara Kota
+STR_AIRPORT_METRO                                               :Metropolitan
+STR_AIRPORT_INTERNATIONAL                                       :Internasional
+STR_AIRPORT_COMMUTER                                            :Bandara Komuter
+STR_AIRPORT_INTERCONTINENTAL                                    :Bandara Antar Benua
+STR_AIRPORT_HELIPORT                                            :Helipad
+STR_AIRPORT_HELIDEPOT                                           :Helipad+Hangar
+STR_AIRPORT_HELISTATION                                         :Bandara Helikopter
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}Ukuran kecil
-STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Ukuran besar
-STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Ukuran super
-STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Helikopad
+STR_AIRPORT_CLASS_SMALL                                         :Ukuran kecil
+STR_AIRPORT_CLASS_LARGE                                         :Ukuran besar
+STR_AIRPORT_CLASS_HUB                                           :Ukuran super
+STR_AIRPORT_CLASS_HELIPORTS                                     :Helikopad
 
 STR_STATION_BUILD_NOISE                                         :{BLACK}Tingkat Kebisingan: {GOLD}{COMMA}
 

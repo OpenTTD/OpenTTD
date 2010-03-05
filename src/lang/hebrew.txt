@@ -2029,20 +2029,20 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}בנה �
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}בחירת שדה תעופה
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}בחר את גודל/סוג שדה התעופה
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}קטן
-STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}עירוני
-STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}מחוזי
-STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}בינלאומי
-STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}שדה תעופה מאסף
-STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}שדה תעופה בינלאומי
-STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}מנחת מסוקים
-STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}מוסך מסוקים
-STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}תחנת מסוקים
+STR_AIRPORT_SMALL                                               :קטן
+STR_AIRPORT_CITY                                                :עירוני
+STR_AIRPORT_METRO                                               :מחוזי
+STR_AIRPORT_INTERNATIONAL                                       :בינלאומי
+STR_AIRPORT_COMMUTER                                            :שדה תעופה מאסף
+STR_AIRPORT_INTERCONTINENTAL                                    :שדה תעופה בינלאומי
+STR_AIRPORT_HELIPORT                                            :מנחת מסוקים
+STR_AIRPORT_HELIDEPOT                                           :מוסך מסוקים
+STR_AIRPORT_HELISTATION                                         :תחנת מסוקים
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}שדות תעופה קטנים
-STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}שדות תעופה גדולים
-STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}נמלי תעופה
-STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}שדות תעופה למסוקים
+STR_AIRPORT_CLASS_SMALL                                         :שדות תעופה קטנים
+STR_AIRPORT_CLASS_LARGE                                         :שדות תעופה גדולים
+STR_AIRPORT_CLASS_HUB                                           :נמלי תעופה
+STR_AIRPORT_CLASS_HELIPORTS                                     :שדות תעופה למסוקים
 
 STR_STATION_BUILD_NOISE                                         :{GOLD}{COMMA}{BLACK} :רמת הרעש
 

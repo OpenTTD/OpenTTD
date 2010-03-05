@@ -2015,20 +2015,20 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}興建�
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}選擇機場
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}選擇機場大小／種類
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}小機場
-STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}城市機場
-STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}都會機場
-STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}國際機場
-STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}通勤機場
-STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}洲際機場
-STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}直升機坪
-STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}直升機棚
-STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}直升機站
+STR_AIRPORT_SMALL                                               :小機場
+STR_AIRPORT_CITY                                                :城市機場
+STR_AIRPORT_METRO                                               :都會機場
+STR_AIRPORT_INTERNATIONAL                                       :國際機場
+STR_AIRPORT_COMMUTER                                            :通勤機場
+STR_AIRPORT_INTERCONTINENTAL                                    :洲際機場
+STR_AIRPORT_HELIPORT                                            :直升機坪
+STR_AIRPORT_HELIDEPOT                                           :直升機棚
+STR_AIRPORT_HELISTATION                                         :直升機站
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}小型機場
-STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}大型機場
-STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}轉運機場
-STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}直升機場
+STR_AIRPORT_CLASS_SMALL                                         :小型機場
+STR_AIRPORT_CLASS_LARGE                                         :大型機場
+STR_AIRPORT_CLASS_HUB                                           :轉運機場
+STR_AIRPORT_CLASS_HELIPORTS                                     :直升機場
 
 STR_STATION_BUILD_NOISE                                         :{BLACK}產生噪音：{GOLD}{COMMA}
 

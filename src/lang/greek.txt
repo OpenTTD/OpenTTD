@@ -2110,20 +2110,20 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Κατα
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Επιλογή Αεροδρομίου
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Επιλογή μεγέθους/τύπου αεροδρομίου
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Μικρό
-STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}Πόλης
-STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Μητροπολιτικό
-STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Διεθνές
-STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Ταξιδιωτικό
-STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Διηπειρωτικό
-STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Ελικοδρόμιο
-STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}Υπόστεγο ελικοπτέρων
-STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}Στάθμος ελικοπτέρων
+STR_AIRPORT_SMALL                                               :Μικρό
+STR_AIRPORT_CITY                                                :Πόλης
+STR_AIRPORT_METRO                                               :Μητροπολιτικό
+STR_AIRPORT_INTERNATIONAL                                       :Διεθνές
+STR_AIRPORT_COMMUTER                                            :Ταξιδιωτικό
+STR_AIRPORT_INTERCONTINENTAL                                    :Διηπειρωτικό
+STR_AIRPORT_HELIPORT                                            :Ελικοδρόμιο
+STR_AIRPORT_HELIDEPOT                                           :Υπόστεγο ελικοπτέρων
+STR_AIRPORT_HELISTATION                                         :Στάθμος ελικοπτέρων
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}Μικρά αεροδρόμια
-STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Μεγάλα αεροδρόμια
-STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Κομβίκα αεροδρόμια
-STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Ελικοδρόμια
+STR_AIRPORT_CLASS_SMALL                                         :Μικρά αεροδρόμια
+STR_AIRPORT_CLASS_LARGE                                         :Μεγάλα αεροδρόμια
+STR_AIRPORT_CLASS_HUB                                           :Κομβίκα αεροδρόμια
+STR_AIRPORT_CLASS_HELIPORTS                                     :Ελικοδρόμια
 
 STR_STATION_BUILD_NOISE                                         :{BLACK}Παραγόμενος θόρυβος: {GOLD}{COMMA}
 

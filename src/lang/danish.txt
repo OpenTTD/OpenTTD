@@ -2015,20 +2015,20 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Byg en l
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Valg af lufthavn
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Vælg lufthavnens størrelse/type
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Lille
-STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}By
-STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Metropollufthavn
-STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}International lufthavn
-STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Pendler
-STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Interkontinental
-STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Helikopterlandingsplads
-STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}Helikopterværksted
-STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}Helikopterplads
+STR_AIRPORT_SMALL                                               :Lille
+STR_AIRPORT_CITY                                                :By
+STR_AIRPORT_METRO                                               :Metropollufthavn
+STR_AIRPORT_INTERNATIONAL                                       :International lufthavn
+STR_AIRPORT_COMMUTER                                            :Pendler
+STR_AIRPORT_INTERCONTINENTAL                                    :Interkontinental
+STR_AIRPORT_HELIPORT                                            :Helikopterlandingsplads
+STR_AIRPORT_HELIDEPOT                                           :Helikopterværksted
+STR_AIRPORT_HELISTATION                                         :Helikopterplads
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}Små lufthavne
-STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Store lufthavne
-STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Central lufthavn
-STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Helikopterlufthavn
+STR_AIRPORT_CLASS_SMALL                                         :Små lufthavne
+STR_AIRPORT_CLASS_LARGE                                         :Store lufthavne
+STR_AIRPORT_CLASS_HUB                                           :Central lufthavn
+STR_AIRPORT_CLASS_HELIPORTS                                     :Helikopterlufthavn
 
 STR_STATION_BUILD_NOISE                                         :{BLACK}Genereret støj: {GOLD}{COMMA}
 

@@ -2140,20 +2140,20 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Буду
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Вибір аеропорту
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Виберіть розмір/тип аеропорту
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Малий
-STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}Міський
-STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Столичний
-STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Міжнародний
-STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Приміський
-STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Міжконтинентальний
-STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Гелікопорт
-STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}Депо
-STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}Гелікоптерна станція
+STR_AIRPORT_SMALL                                               :Малий
+STR_AIRPORT_CITY                                                :Міський
+STR_AIRPORT_METRO                                               :Столичний
+STR_AIRPORT_INTERNATIONAL                                       :Міжнародний
+STR_AIRPORT_COMMUTER                                            :Приміський
+STR_AIRPORT_INTERCONTINENTAL                                    :Міжконтинентальний
+STR_AIRPORT_HELIPORT                                            :Гелікопорт
+STR_AIRPORT_HELIDEPOT                                           :Депо
+STR_AIRPORT_HELISTATION                                         :Гелікоптерна станція
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}Малі аеропорти
-STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Великі аеропорти
-STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Вузлові аеропорти
-STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Геліко-аеропорт
+STR_AIRPORT_CLASS_SMALL                                         :Малі аеропорти
+STR_AIRPORT_CLASS_LARGE                                         :Великі аеропорти
+STR_AIRPORT_CLASS_HUB                                           :Вузлові аеропорти
+STR_AIRPORT_CLASS_HELIPORTS                                     :Геліко-аеропорт
 
 STR_STATION_BUILD_NOISE                                         :{BLACK}Генерований шум: {GOLD}{COMMA}
 

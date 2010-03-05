@@ -2015,20 +2015,20 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}بناء
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}اختر المطار
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}اختر حجم / نوع المطار
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}صغير
-STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}مدينة
-STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}مطار متروبوليتان
-STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}مطار دولي
-STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}مطار محلي
-STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}مطار قاري
-STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}مهبط طائرة عمودية
-STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}حظيرة طائرة عمودية
-STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}محطة طيران عمودي
+STR_AIRPORT_SMALL                                               :صغير
+STR_AIRPORT_CITY                                                :مدينة
+STR_AIRPORT_METRO                                               :مطار متروبوليتان
+STR_AIRPORT_INTERNATIONAL                                       :مطار دولي
+STR_AIRPORT_COMMUTER                                            :مطار محلي
+STR_AIRPORT_INTERCONTINENTAL                                    :مطار قاري
+STR_AIRPORT_HELIPORT                                            :مهبط طائرة عمودية
+STR_AIRPORT_HELIDEPOT                                           :حظيرة طائرة عمودية
+STR_AIRPORT_HELISTATION                                         :محطة طيران عمودي
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}مطار صغير
-STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}مطارات كبيرة
-STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}محور مطارات
-STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}مطار طيران عمودي
+STR_AIRPORT_CLASS_SMALL                                         :مطار صغير
+STR_AIRPORT_CLASS_LARGE                                         :مطارات كبيرة
+STR_AIRPORT_CLASS_HUB                                           :محور مطارات
+STR_AIRPORT_CLASS_HELIPORTS                                     :مطار طيران عمودي
 
 STR_STATION_BUILD_NOISE                                         :{BLACK} الضوضاء المتولدة: {GOLD}{COMMA}
 

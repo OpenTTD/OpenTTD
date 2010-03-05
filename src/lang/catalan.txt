@@ -2016,20 +2016,20 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Construe
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Aeroports
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Selecciona mida/tipus d'aeroport
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Petit
-STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}de Ciutat
-STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Metropolità
-STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Internacional
-STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Regional
-STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Intercontinental
-STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Heliport
-STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}Helihangar
-STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}Heliestació
+STR_AIRPORT_SMALL                                               :Petit
+STR_AIRPORT_CITY                                                :de Ciutat
+STR_AIRPORT_METRO                                               :Metropolità
+STR_AIRPORT_INTERNATIONAL                                       :Internacional
+STR_AIRPORT_COMMUTER                                            :Regional
+STR_AIRPORT_INTERCONTINENTAL                                    :Intercontinental
+STR_AIRPORT_HELIPORT                                            :Heliport
+STR_AIRPORT_HELIDEPOT                                           :Helihangar
+STR_AIRPORT_HELISTATION                                         :Heliestació
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}Aeroports petits
-STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Aeroports grans
-STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Aeroports d'enllaç
-STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Aeroports d'helicòpters
+STR_AIRPORT_CLASS_SMALL                                         :Aeroports petits
+STR_AIRPORT_CLASS_LARGE                                         :Aeroports grans
+STR_AIRPORT_CLASS_HUB                                           :Aeroports d'enllaç
+STR_AIRPORT_CLASS_HELIPORTS                                     :Aeroports d'helicòpters
 
 STR_STATION_BUILD_NOISE                                         :{BLACK}Soroll generat: {GOLD}{COMMA}
 

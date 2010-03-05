@@ -2015,20 +2015,20 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Build ai
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Airport Selection
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Select size/type of airport
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Small
-STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}City
-STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Metropolitan
-STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}International
-STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Commuter
-STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Intercontinental
-STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Heliport
-STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}Helidepot
-STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}Helistation
+STR_AIRPORT_SMALL                                               :Small
+STR_AIRPORT_CITY                                                :City
+STR_AIRPORT_METRO                                               :Metropolitan
+STR_AIRPORT_INTERNATIONAL                                       :International
+STR_AIRPORT_COMMUTER                                            :Commuter
+STR_AIRPORT_INTERCONTINENTAL                                    :Intercontinental
+STR_AIRPORT_HELIPORT                                            :Heliport
+STR_AIRPORT_HELIDEPOT                                           :Helidepot
+STR_AIRPORT_HELISTATION                                         :Helistation
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}Small airports
-STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Large airports
-STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Hub airports
-STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Helicopter airports
+STR_AIRPORT_CLASS_SMALL                                         :Small airports
+STR_AIRPORT_CLASS_LARGE                                         :Large airports
+STR_AIRPORT_CLASS_HUB                                           :Hub airports
+STR_AIRPORT_CLASS_HELIPORTS                                     :Helicopter airports
 
 STR_STATION_BUILD_NOISE                                         :{BLACK}Noise generated: {GOLD}{COMMA}
 

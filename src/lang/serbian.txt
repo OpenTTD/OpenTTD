@@ -2210,20 +2210,20 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Izgradnj
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Izbor aerodroma
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Izbor veličine/tipa aerodroma
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Poljski aerodrom
-STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}Gradski aerodrom
-STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Regionalni aerodrom
-STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Međunarodni aerodrom
-STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Lokalni aerodrom
-STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Interkontinentalni aerodrom
-STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Helipad
-STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}Helihangar
-STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}Helidrom
+STR_AIRPORT_SMALL                                               :Poljski aerodrom
+STR_AIRPORT_CITY                                                :Gradski aerodrom
+STR_AIRPORT_METRO                                               :Regionalni aerodrom
+STR_AIRPORT_INTERNATIONAL                                       :Međunarodni aerodrom
+STR_AIRPORT_COMMUTER                                            :Lokalni aerodrom
+STR_AIRPORT_INTERCONTINENTAL                                    :Interkontinentalni aerodrom
+STR_AIRPORT_HELIPORT                                            :Helipad
+STR_AIRPORT_HELIDEPOT                                           :Helihangar
+STR_AIRPORT_HELISTATION                                         :Helidrom
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}Tercijarni promet
-STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Sekundarni promet
-STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Primarni promet
-STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Helidromi
+STR_AIRPORT_CLASS_SMALL                                         :Tercijarni promet
+STR_AIRPORT_CLASS_LARGE                                         :Sekundarni promet
+STR_AIRPORT_CLASS_HUB                                           :Primarni promet
+STR_AIRPORT_CLASS_HELIPORTS                                     :Helidromi
 
 STR_STATION_BUILD_NOISE                                         :{BLACK}Proizvedena buka: {GOLD}{COMMA}
 

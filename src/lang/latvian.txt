@@ -1961,20 +1961,20 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Būvēt 
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Lidostas izvēle
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Izvēlieties lidostas izmēru/veidu
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Maza
-STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}Pilsēta
-STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Metropoles lidosta
-STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Starptautiskā lidosta
-STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Ikdienas satiksme
-STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Interkontinentāls
-STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Heliports
-STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}Helidepo
-STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}Helistacija
+STR_AIRPORT_SMALL                                               :Maza
+STR_AIRPORT_CITY                                                :Pilsēta
+STR_AIRPORT_METRO                                               :Metropoles lidosta
+STR_AIRPORT_INTERNATIONAL                                       :Starptautiskā lidosta
+STR_AIRPORT_COMMUTER                                            :Ikdienas satiksme
+STR_AIRPORT_INTERCONTINENTAL                                    :Interkontinentāls
+STR_AIRPORT_HELIPORT                                            :Heliports
+STR_AIRPORT_HELIDEPOT                                           :Helidepo
+STR_AIRPORT_HELISTATION                                         :Helistacija
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}Mazas lidostas
-STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Lielās lidostas
-STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Centra lidostas
-STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Helikopteru lidostas
+STR_AIRPORT_CLASS_SMALL                                         :Mazas lidostas
+STR_AIRPORT_CLASS_LARGE                                         :Lielās lidostas
+STR_AIRPORT_CLASS_HUB                                           :Centra lidostas
+STR_AIRPORT_CLASS_HELIPORTS                                     :Helikopteru lidostas
 
 STR_STATION_BUILD_NOISE                                         :{BLACK}Radītais troksnis: {GOLD}{COMMA}
 

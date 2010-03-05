@@ -2015,20 +2015,20 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Bouw vli
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Keuze van vliegveld
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Kies grootte en type van vliegveld
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Klein
-STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}Stad
-STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Hoofdstedelijk
-STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Internationaal vliegveld
-STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Pendel
-STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Intercontinentaal
-STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Heliport
-STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}Helihangar
-STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}Helikopterstation
+STR_AIRPORT_SMALL                                               :Klein
+STR_AIRPORT_CITY                                                :Stad
+STR_AIRPORT_METRO                                               :Hoofdstedelijk
+STR_AIRPORT_INTERNATIONAL                                       :Internationaal vliegveld
+STR_AIRPORT_COMMUTER                                            :Pendel
+STR_AIRPORT_INTERCONTINENTAL                                    :Intercontinentaal
+STR_AIRPORT_HELIPORT                                            :Heliport
+STR_AIRPORT_HELIDEPOT                                           :Helihangar
+STR_AIRPORT_HELISTATION                                         :Helikopterstation
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}Kleine vliegvelden
-STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Grote vliegvelden
-STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Centraal vliegveld
-STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Helikopter-vliegvelden
+STR_AIRPORT_CLASS_SMALL                                         :Kleine vliegvelden
+STR_AIRPORT_CLASS_LARGE                                         :Grote vliegvelden
+STR_AIRPORT_CLASS_HUB                                           :Centraal vliegveld
+STR_AIRPORT_CLASS_HELIPORTS                                     :Helikopter-vliegvelden
 
 STR_STATION_BUILD_NOISE                                         :{BLACK}Geluidsoverlast: {GOLD}{COMMA}
 

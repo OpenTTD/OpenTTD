@@ -2015,20 +2015,20 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Xây sâ
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Chọn loại sân bay
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Chọn kích cỡ và kiểu sân bay
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Cực nhỏ
-STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}Đô thị
-STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Đô thị trung tâm
-STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Quốc tế
-STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Nhỏ
-STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Liên lục địa
-STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Sân bay trực thăng
-STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}Sân bay trực thăng vừa
-STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}Sân bay trực thăng lớn
+STR_AIRPORT_SMALL                                               :Cực nhỏ
+STR_AIRPORT_CITY                                                :Đô thị
+STR_AIRPORT_METRO                                               :Đô thị trung tâm
+STR_AIRPORT_INTERNATIONAL                                       :Quốc tế
+STR_AIRPORT_COMMUTER                                            :Nhỏ
+STR_AIRPORT_INTERCONTINENTAL                                    :Liên lục địa
+STR_AIRPORT_HELIPORT                                            :Sân bay trực thăng
+STR_AIRPORT_HELIDEPOT                                           :Sân bay trực thăng vừa
+STR_AIRPORT_HELISTATION                                         :Sân bay trực thăng lớn
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}Sân bay nhỏ
-STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Sân bay trung bình
-STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Sân bay lớn
-STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Sân bay trực thăng
+STR_AIRPORT_CLASS_SMALL                                         :Sân bay nhỏ
+STR_AIRPORT_CLASS_LARGE                                         :Sân bay trung bình
+STR_AIRPORT_CLASS_HUB                                           :Sân bay lớn
+STR_AIRPORT_CLASS_HELIPORTS                                     :Sân bay trực thăng
 
 STR_STATION_BUILD_NOISE                                         :{BLACK}Độ ồn tạo ra: {GOLD}{COMMA}
 

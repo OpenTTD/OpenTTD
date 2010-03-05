@@ -2015,20 +2015,20 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Fluchhaf
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Fluchhafen Selectioun
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Wielt Gréisst/Typ vum Fluchhafen
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Kleng
-STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}City
-STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Metropolitär Fluchhafen
-STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Internationalen Fluchhafen
-STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Pendler
-STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Interkontinental
-STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Heliport
-STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}Helidepot
-STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}Helistatioun
+STR_AIRPORT_SMALL                                               :Kleng
+STR_AIRPORT_CITY                                                :City
+STR_AIRPORT_METRO                                               :Metropolitär Fluchhafen
+STR_AIRPORT_INTERNATIONAL                                       :Internationalen Fluchhafen
+STR_AIRPORT_COMMUTER                                            :Pendler
+STR_AIRPORT_INTERCONTINENTAL                                    :Interkontinental
+STR_AIRPORT_HELIPORT                                            :Heliport
+STR_AIRPORT_HELIDEPOT                                           :Helidepot
+STR_AIRPORT_HELISTATION                                         :Helistatioun
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}Kleng Fluchhäfen
-STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Grouss Fluchhäfen
-STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK} Fluchhafen Verdeeler
-STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Helicopter Fluchhafen
+STR_AIRPORT_CLASS_SMALL                                         :Kleng Fluchhäfen
+STR_AIRPORT_CLASS_LARGE                                         :Grouss Fluchhäfen
+STR_AIRPORT_CLASS_HUB                                           : Fluchhafen Verdeeler
+STR_AIRPORT_CLASS_HELIPORTS                                     :Helicopter Fluchhafen
 
 STR_STATION_BUILD_NOISE                                         :{BLACK}Kaméidi: {GOLD}{COMMA}
 

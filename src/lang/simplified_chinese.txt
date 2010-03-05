@@ -2004,20 +2004,20 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}新建�
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}飞机场选单
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}选择机场的大小和类型
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}小型机场
-STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}城市机场
-STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}国内机场
-STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}国际机场
-STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}通勤机场
-STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}全球机场
-STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}直升机停机楼
-STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}直升机专用机场
-STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}直升机小型机场
+STR_AIRPORT_SMALL                                               :小型机场
+STR_AIRPORT_CITY                                                :城市机场
+STR_AIRPORT_METRO                                               :国内机场
+STR_AIRPORT_INTERNATIONAL                                       :国际机场
+STR_AIRPORT_COMMUTER                                            :通勤机场
+STR_AIRPORT_INTERCONTINENTAL                                    :全球机场
+STR_AIRPORT_HELIPORT                                            :直升机停机楼
+STR_AIRPORT_HELIDEPOT                                           :直升机专用机场
+STR_AIRPORT_HELISTATION                                         :直升机小型机场
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}小型机场
-STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}大型机场
-STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}空运枢纽
-STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}直升机机场
+STR_AIRPORT_CLASS_SMALL                                         :小型机场
+STR_AIRPORT_CLASS_LARGE                                         :大型机场
+STR_AIRPORT_CLASS_HUB                                           :空运枢纽
+STR_AIRPORT_CLASS_HELIPORTS                                     :直升机机场
 
 STR_STATION_BUILD_NOISE                                         :{BLACK}产生的噪音: {GOLD}{COMMA}
 

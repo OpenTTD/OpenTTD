@@ -2015,20 +2015,20 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Rakenna 
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Lentokentän valinta
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Valitse lentokentän koko ja tyyppi.
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Pieni
-STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}Kaupunki
-STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Suurkaupungin
-STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Kansainvälinen
-STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Lähiliikenne
-STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Mannertenvälinen
-STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Helikopterikenttä
-STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}Helikopterihalli
-STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}Helikopteriasema
+STR_AIRPORT_SMALL                                               :Pieni
+STR_AIRPORT_CITY                                                :Kaupunki
+STR_AIRPORT_METRO                                               :Suurkaupungin
+STR_AIRPORT_INTERNATIONAL                                       :Kansainvälinen
+STR_AIRPORT_COMMUTER                                            :Lähiliikenne
+STR_AIRPORT_INTERCONTINENTAL                                    :Mannertenvälinen
+STR_AIRPORT_HELIPORT                                            :Helikopterikenttä
+STR_AIRPORT_HELIDEPOT                                           :Helikopterihalli
+STR_AIRPORT_HELISTATION                                         :Helikopteriasema
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}Pienet lentokentät
-STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Isot lentokentät
-STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Keskuslentokenttä
-STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Helikopterikentät
+STR_AIRPORT_CLASS_SMALL                                         :Pienet lentokentät
+STR_AIRPORT_CLASS_LARGE                                         :Isot lentokentät
+STR_AIRPORT_CLASS_HUB                                           :Keskuslentokenttä
+STR_AIRPORT_CLASS_HELIPORTS                                     :Helikopterikentät
 
 STR_STATION_BUILD_NOISE                                         :{BLACK}Aiheutettu melu: {GOLD}{COMMA}
 

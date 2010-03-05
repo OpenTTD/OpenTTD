@@ -2079,20 +2079,20 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Repülő
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Repülőtér beállítása
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Repülőtér méretének/típusának kiválasztása
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Kicsi
-STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}Városi
-STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Nagyvárosi
-STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Nemzetközi
-STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Elővárosi
-STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Interkontinentális
-STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Helileszálló
-STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}Helihangár
-STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}Heliállomás
+STR_AIRPORT_SMALL                                               :Kicsi
+STR_AIRPORT_CITY                                                :Városi
+STR_AIRPORT_METRO                                               :Nagyvárosi
+STR_AIRPORT_INTERNATIONAL                                       :Nemzetközi
+STR_AIRPORT_COMMUTER                                            :Elővárosi
+STR_AIRPORT_INTERCONTINENTAL                                    :Interkontinentális
+STR_AIRPORT_HELIPORT                                            :Helileszálló
+STR_AIRPORT_HELIDEPOT                                           :Helihangár
+STR_AIRPORT_HELISTATION                                         :Heliállomás
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}Kis repterek
-STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Nagy repterek
-STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Központi repterek
-STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Helikopter-állomások
+STR_AIRPORT_CLASS_SMALL                                         :Kis repterek
+STR_AIRPORT_CLASS_LARGE                                         :Nagy repterek
+STR_AIRPORT_CLASS_HUB                                           :Központi repterek
+STR_AIRPORT_CLASS_HELIPORTS                                     :Helikopter-állomások
 
 STR_STATION_BUILD_NOISE                                         :{BLACK}Zajtermelés: {GOLD}{COMMA}
 

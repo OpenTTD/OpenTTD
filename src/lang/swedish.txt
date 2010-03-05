@@ -2015,20 +2015,20 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Bygg fly
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Val av flygplats
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Välj storlek/typ av flygplats
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Liten
-STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}Stad
-STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Storstads-flygplats
-STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Internationell flygplats
-STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Pendlare
-STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Interkontinental
-STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Helikopterplatta
-STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}Helikopterhangar
-STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}Helikopterstation
+STR_AIRPORT_SMALL                                               :Liten
+STR_AIRPORT_CITY                                                :Stad
+STR_AIRPORT_METRO                                               :Storstads-flygplats
+STR_AIRPORT_INTERNATIONAL                                       :Internationell flygplats
+STR_AIRPORT_COMMUTER                                            :Pendlare
+STR_AIRPORT_INTERCONTINENTAL                                    :Interkontinental
+STR_AIRPORT_HELIPORT                                            :Helikopterplatta
+STR_AIRPORT_HELIDEPOT                                           :Helikopterhangar
+STR_AIRPORT_HELISTATION                                         :Helikopterstation
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}Små flygfält
-STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Stora flygplatser
-STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Centrala flygplatser
-STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Helikopterplattformar
+STR_AIRPORT_CLASS_SMALL                                         :Små flygfält
+STR_AIRPORT_CLASS_LARGE                                         :Stora flygplatser
+STR_AIRPORT_CLASS_HUB                                           :Centrala flygplatser
+STR_AIRPORT_CLASS_HELIPORTS                                     :Helikopterplattformar
 
 STR_STATION_BUILD_NOISE                                         :{BLACK}Genererat buller: {GOLD}{COMMA}
 

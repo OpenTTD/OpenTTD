@@ -2015,20 +2015,20 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Construi
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Alege tipul de aeroport
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Alege tipul şi mărimea aeroportului
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Mic
-STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}Orăşenesc
-STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Metropolitan
-STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Internaţional
-STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Navetist
-STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Intercontinental
-STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Helidrom
-STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}Hangar elicoptere
-STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}Bază elicoptere
+STR_AIRPORT_SMALL                                               :Mic
+STR_AIRPORT_CITY                                                :Orăşenesc
+STR_AIRPORT_METRO                                               :Metropolitan
+STR_AIRPORT_INTERNATIONAL                                       :Internaţional
+STR_AIRPORT_COMMUTER                                            :Navetist
+STR_AIRPORT_INTERCONTINENTAL                                    :Intercontinental
+STR_AIRPORT_HELIPORT                                            :Helidrom
+STR_AIRPORT_HELIDEPOT                                           :Hangar elicoptere
+STR_AIRPORT_HELISTATION                                         :Bază elicoptere
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}Aeroporturi mici
-STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Aeroporturi mari
-STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Aeroporturi centrale
-STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Heliporturi
+STR_AIRPORT_CLASS_SMALL                                         :Aeroporturi mici
+STR_AIRPORT_CLASS_LARGE                                         :Aeroporturi mari
+STR_AIRPORT_CLASS_HUB                                           :Aeroporturi centrale
+STR_AIRPORT_CLASS_HELIPORTS                                     :Heliporturi
 
 STR_STATION_BUILD_NOISE                                         :{BLACK}Zgomot generat: {GOLD}{COMMA}
 

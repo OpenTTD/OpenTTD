@@ -2016,20 +2016,20 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Construi
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Seleção de Aeroporto
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Selecionar tamanho/tipo de aeroporto
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Pequeno
-STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}Cidade
-STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Metropolitano
-STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Internacional
-STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Viajante
-STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Intercontinental
-STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Heliporto
-STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}Deposito de helicópteros
-STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}Heli-estação
+STR_AIRPORT_SMALL                                               :Pequeno
+STR_AIRPORT_CITY                                                :Cidade
+STR_AIRPORT_METRO                                               :Metropolitano
+STR_AIRPORT_INTERNATIONAL                                       :Internacional
+STR_AIRPORT_COMMUTER                                            :Viajante
+STR_AIRPORT_INTERCONTINENTAL                                    :Intercontinental
+STR_AIRPORT_HELIPORT                                            :Heliporto
+STR_AIRPORT_HELIDEPOT                                           :Deposito de helicópteros
+STR_AIRPORT_HELISTATION                                         :Heli-estação
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}Aeroportos pequenos
-STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Aeroportos grandes
-STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Aeroportos modulares
-STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Heliportos
+STR_AIRPORT_CLASS_SMALL                                         :Aeroportos pequenos
+STR_AIRPORT_CLASS_LARGE                                         :Aeroportos grandes
+STR_AIRPORT_CLASS_HUB                                           :Aeroportos modulares
+STR_AIRPORT_CLASS_HELIPORTS                                     :Heliportos
 
 STR_STATION_BUILD_NOISE                                         :{BLACK}Ruído gerado: {GOLD}{COMMA}
 

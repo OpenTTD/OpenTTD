@@ -2057,20 +2057,20 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Zgradi l
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Izbira letališča
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Izbira velikosti/tipa letališča
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Majno letališče
-STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}Mestno
-STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Medmestno
-STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Mednarodno
-STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Vozač
-STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Medkontinentalno letališče
-STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Pristajališče
-STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}Helikopterska garaža
-STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}Helikopterska postaja
+STR_AIRPORT_SMALL                                               :Majno letališče
+STR_AIRPORT_CITY                                                :Mestno
+STR_AIRPORT_METRO                                               :Medmestno
+STR_AIRPORT_INTERNATIONAL                                       :Mednarodno
+STR_AIRPORT_COMMUTER                                            :Vozač
+STR_AIRPORT_INTERCONTINENTAL                                    :Medkontinentalno letališče
+STR_AIRPORT_HELIPORT                                            :Pristajališče
+STR_AIRPORT_HELIDEPOT                                           :Helikopterska garaža
+STR_AIRPORT_HELISTATION                                         :Helikopterska postaja
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}Majhna letališča
-STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Velika letališča
-STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Hub letališča
-STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Helikopterska pristajališča
+STR_AIRPORT_CLASS_SMALL                                         :Majhna letališča
+STR_AIRPORT_CLASS_LARGE                                         :Velika letališča
+STR_AIRPORT_CLASS_HUB                                           :Hub letališča
+STR_AIRPORT_CLASS_HELIPORTS                                     :Helikopterska pristajališča
 
 STR_STATION_BUILD_NOISE                                         :{BLACK}Efektivni hrup: {GOLD}{COMMA}
 

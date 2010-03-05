@@ -1951,20 +1951,20 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Adeiladu
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Dewiswch Faes Awyr
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Dewiswch maint/math y maes awyr
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Bach
-STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}Dinas
-STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Maes awyr metropolitan
-STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Rhyngwladol
-STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Cymudol
-STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Rhyng-gyfandirol
-STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Porth Hofrennydd
-STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}Depo Hofrennydd
-STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}Gorsaf Hofrennydd
+STR_AIRPORT_SMALL                                               :Bach
+STR_AIRPORT_CITY                                                :Dinas
+STR_AIRPORT_METRO                                               :Maes awyr metropolitan
+STR_AIRPORT_INTERNATIONAL                                       :Rhyngwladol
+STR_AIRPORT_COMMUTER                                            :Cymudol
+STR_AIRPORT_INTERCONTINENTAL                                    :Rhyng-gyfandirol
+STR_AIRPORT_HELIPORT                                            :Porth Hofrennydd
+STR_AIRPORT_HELIDEPOT                                           :Depo Hofrennydd
+STR_AIRPORT_HELISTATION                                         :Gorsaf Hofrennydd
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}Meysydd awyr bach
-STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Meysydd awyr mawr
-STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Meysydd awyr cyfnewid
-STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Meysydd awyr hofrennydd
+STR_AIRPORT_CLASS_SMALL                                         :Meysydd awyr bach
+STR_AIRPORT_CLASS_LARGE                                         :Meysydd awyr mawr
+STR_AIRPORT_CLASS_HUB                                           :Meysydd awyr cyfnewid
+STR_AIRPORT_CLASS_HELIPORTS                                     :Meysydd awyr hofrennydd
 
 STR_STATION_BUILD_NOISE                                         :{BLACK}Swn a gynhyrchir: {GOLD}{COMMA}
 

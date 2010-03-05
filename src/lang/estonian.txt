@@ -2072,20 +2072,20 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Ehita le
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Lennuvälja valik
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Vali lennuvälja suurus ja tüüp
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Väike
-STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}Linn
-STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Metropoli lennujaam
-STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Rahvusvaheline lennujaam
-STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Turisti
-STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Ülemaailmne lennuväli
-STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Kopteriväljak
-STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}Helikopteridepoo
-STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}Helijaam
+STR_AIRPORT_SMALL                                               :Väike
+STR_AIRPORT_CITY                                                :Linn
+STR_AIRPORT_METRO                                               :Metropoli lennujaam
+STR_AIRPORT_INTERNATIONAL                                       :Rahvusvaheline lennujaam
+STR_AIRPORT_COMMUTER                                            :Turisti
+STR_AIRPORT_INTERCONTINENTAL                                    :Ülemaailmne lennuväli
+STR_AIRPORT_HELIPORT                                            :Kopteriväljak
+STR_AIRPORT_HELIDEPOT                                           :Helikopteridepoo
+STR_AIRPORT_HELISTATION                                         :Helijaam
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}Väikesed lennuväljad
-STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Suured lennuväljad
-STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Suured lennuväljad
-STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Helikopteri lennuväljad
+STR_AIRPORT_CLASS_SMALL                                         :Väikesed lennuväljad
+STR_AIRPORT_CLASS_LARGE                                         :Suured lennuväljad
+STR_AIRPORT_CLASS_HUB                                           :Suured lennuväljad
+STR_AIRPORT_CLASS_HELIPORTS                                     :Helikopteri lennuväljad
 
 STR_STATION_BUILD_NOISE                                         :{BLACK}Tekitatud müra: {GOLD}{COMMA}
 

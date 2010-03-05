@@ -2009,20 +2009,20 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Стро
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Избор на летище
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Големина/тип на летището
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORT                         :{BLACK}Малко
-STR_STATION_BUILD_AIRPORT_CITY_AIRPORT                          :{BLACK}Град
-STR_STATION_BUILD_AIRPORT_METRO_AIRPORT                         :{BLACK}Метрополисно
-STR_STATION_BUILD_AIRPORT_INTERNATIONAL_AIRPORT                 :{BLACK}Международно
-STR_STATION_BUILD_AIRPORT_COMMUTER_AIRPORT                      :{BLACK}Комютър
-STR_STATION_BUILD_AIRPORT_INTERCONTINENTAL_AIRPORT              :{BLACK}Междуконтинентално
-STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Хеликоптерна площадка
-STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}Хеликоптерен хангар
-STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}Хеликоптерна станция
+STR_AIRPORT_SMALL                                               :Малко
+STR_AIRPORT_CITY                                                :Град
+STR_AIRPORT_METRO                                               :Метрополисно
+STR_AIRPORT_INTERNATIONAL                                       :Международно
+STR_AIRPORT_COMMUTER                                            :Комютър
+STR_AIRPORT_INTERCONTINENTAL                                    :Междуконтинентално
+STR_AIRPORT_HELIPORT                                            :Хеликоптерна площадка
+STR_AIRPORT_HELIDEPOT                                           :Хеликоптерен хангар
+STR_AIRPORT_HELISTATION                                         :Хеликоптерна станция
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}Малки летища
-STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Голямо летище
-STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Централни летища
-STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Хеликоптерни самолети
+STR_AIRPORT_CLASS_SMALL                                         :Малки летища
+STR_AIRPORT_CLASS_LARGE                                         :Голямо летище
+STR_AIRPORT_CLASS_HUB                                           :Централни летища
+STR_AIRPORT_CLASS_HELIPORTS                                     :Хеликоптерни самолети
 
 STR_STATION_BUILD_NOISE                                         :{BLACK}Произведен шум: {GOLD}{COMMA}
 
