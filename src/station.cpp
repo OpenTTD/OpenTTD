@@ -483,13 +483,13 @@ bool StationRect::AfterRemoveTile(BaseStation *st, TileIndex tile)
 	return false; // non-empty remaining rect
 }
 
-bool StationRect::AfterRemoveRect(BaseStation *st, TileIndex tile, int w, int h)
+bool StationRect::AfterRemoveRect(BaseStation *st, TileArea ta)
 {
-	assert(this->PtInExtendedRect(TileX(tile), TileY(tile)));
-	assert(this->PtInExtendedRect(TileX(tile) + w - 1, TileY(tile) + h - 1));
+	assert(this->PtInExtendedRect(TileX(ta.tile), TileY(ta.tile)));
+	assert(this->PtInExtendedRect(TileX(ta.tile) + ta.w - 1, TileY(ta.tile) + ta.h - 1));
 
-	bool empty = this->AfterRemoveTile(st, tile);
-	if (w != 1 || h != 1) empty = empty || this->AfterRemoveTile(st, TILE_ADDXY(tile, w - 1, h - 1));
+	bool empty = this->AfterRemoveTile(st, ta.tile);
+	if (ta.w != 1 || ta.h != 1) empty = empty || this->AfterRemoveTile(st, TILE_ADDXY(ta.tile, ta.w - 1, ta.h - 1));
 	return empty;
 }
 

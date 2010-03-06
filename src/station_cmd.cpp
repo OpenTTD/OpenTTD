@@ -1408,7 +1408,6 @@ CommandCost RemoveFromRailBaseStation(TileArea ta, SmallVector<T *, 4> &affected
 			DoClearSquare(tile);
 			if (keep_rail) MakeRailNormal(tile, owner, TrackToTrackBits(track), rt);
 
-			st->rect.AfterRemoveTile(st, tile);
 			AddTrackToSignalBuffer(tile, track, owner);
 			YapfNotifyTrackLayoutChange(tile, track);
 
@@ -1435,6 +1434,7 @@ CommandCost RemoveFromRailBaseStation(TileArea ta, SmallVector<T *, 4> &affected
 	for (T **stp = affected_stations.Begin(); stp != affected_stations.End(); stp++) {
 		T *st = *stp;
 
+		st->rect.AfterRemoveRect(st, ta);
 		/* now we need to make the "spanned" area of the railway station smaller
 		 * if we deleted something at the edges.
 		 * we also need to adjust train_tile. */
@@ -1556,7 +1556,7 @@ CommandCost RemoveRailStation(T *st, DoCommandFlag flags)
 	}
 
 	if (flags & DC_EXEC) {
-		st->rect.AfterRemoveRect(st, st->train_station.tile, st->train_station.w, st->train_station.h);
+		st->rect.AfterRemoveRect(st, st->train_station);
 
 		st->train_station.Clear();
 
@@ -2272,7 +2272,7 @@ static CommandCost RemoveAirport(TileIndex tile, DoCommandFlag flags)
 		Town *nearest = AirportGetNearestTown(as, tile);
 		nearest->noise_reached -= GetAirportNoiseLevelForTown(as, nearest->xy, tile);
 
-		st->rect.AfterRemoveRect(st, tile, st->airport.w, st->airport.h);
+		st->rect.AfterRemoveRect(st, st->airport);
 
 		st->airport.Clear();
 		st->facilities &= ~FACIL_AIRPORT;
