@@ -79,7 +79,6 @@ struct AirportSpec {
 	}
 
 	static AirportSpec dummy;
-	static AirportSpec oilrig;
 
 private:
 	static AirportSpec specs[NUM_AIRPORTS];
