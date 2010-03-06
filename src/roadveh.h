@@ -12,8 +12,11 @@
 #ifndef ROADVEH_H
 #define ROADVEH_H
 
-#include "vehicle_base.h"
 #include "road_type.h"
+#include "ground_vehicle.hpp"
+#include "engine_base.h"
+#include "cargotype.h"
+#include "road_map.h"
 
 struct RoadVehicle;
 
@@ -89,7 +92,7 @@ struct RoadVehicleCache {
 /**
  * Buses, trucks and trams belong to this class.
  */
-struct RoadVehicle : public SpecializedVehicle<RoadVehicle, VEH_ROAD> {
+struct RoadVehicle : public GroundVehicle<RoadVehicle, VEH_ROAD> {
 	RoadVehicleCache rcache; ///< Cache of often used calculated values
 	byte state;             ///< @see RoadVehicleStates
 	byte frame;
@@ -103,9 +106,11 @@ struct RoadVehicle : public SpecializedVehicle<RoadVehicle, VEH_ROAD> {
 	RoadTypes compatible_roadtypes;
 
 	/** We don't want GCC to zero our struct! It already is zeroed and has an index! */
-	RoadVehicle() : SpecializedVehicle<RoadVehicle, VEH_ROAD>() {}
+	RoadVehicle() : GroundVehicle<RoadVehicle, VEH_ROAD>() {}
 	/** We want to 'destruct' the right class. */
 	virtual ~RoadVehicle() { this->PreDestructor(); }
+
+	friend struct GroundVehicle<RoadVehicle, VEH_ROAD>; // GroundVehicle needs to use the acceleration functions defined at RoadVehicle.
 
 	const char *GetTypeString() const { return "road vehicle"; }
 	void MarkDirty();
@@ -155,6 +160,132 @@ struct RoadVehicle : public SpecializedVehicle<RoadVehicle, VEH_ROAD> {
 	 * @return True if the engine has an articulated part.
 	 */
 	FORCEINLINE bool HasArticulatedPart() const { return this->Next() != NULL && this->Next()->IsArticulatedPart(); }
+
+protected: // These functions should not be called outside acceleration code.
+
+	/**
+	 * Allows to know the power value that this vehicle will use.
+	 * @return Power value from the engine in HP, or zero if the vehicle is not powered.
+	 */
+	FORCEINLINE uint16 GetPower() const
+	{
+		/* Power is not added for articulated parts */
+		if (!this->IsArticulatedPart()) {
+			return 10 * RoadVehInfo(this->engine_type)->power; // Road vehicle power is in units of 10 HP.
+		}
+		return 0;
+	}
+
+	/**
+	 * Returns a value if this articulated part is powered.
+	 * @return Zero, because road vehicles don't have powered parts.
+	 */
+	FORCEINLINE uint16 GetPoweredPartPower(const RoadVehicle *head) const
+	{
+		return 0;
+	}
+
+	/**
+	 * Allows to know the weight value that this vehicle will use.
+	 * @return Weight value from the engine in tonnes.
+	 */
+	FORCEINLINE uint16 GetWeight() const
+	{
+		uint16 weight = (CargoSpec::Get(this->cargo_type)->weight * this->cargo.Count()) / 16;
+
+		/* Vehicle weight is not added for articulated parts. */
+		if (!this->IsArticulatedPart()) {
+			weight += RoadVehInfo(this->engine_type)->weight / 4; // Road vehicle weight is in units of 1/4 t.
+		}
+
+		return weight;
+	}
+
+	/**
+	 * Allows to know the tractive effort value that this vehicle will use.
+	 * @return Tractive effort value from the engine.
+	 */
+	FORCEINLINE byte GetTractiveEffort() const
+	{
+		return RoadVehInfo(this->engine_type)->tractive_effort;
+	}
+
+	/**
+	 * Checks the current acceleration status of this vehicle.
+	 * @return Acceleration status.
+	 */
+	FORCEINLINE AccelStatus GetAccelerationStatus() const
+	{
+		return (this->vehstatus & VS_STOPPED) ? AS_BRAKE : AS_ACCEL;
+	}
+
+	/**
+	 * Calculates the current speed of this vehicle.
+	 * @return Current speed in mph.
+	 */
+	FORCEINLINE uint16 GetCurrentSpeed() const
+	{
+		return this->cur_speed * 10 / 32;
+	}
+
+	/**
+	 * Returns the rolling friction coefficient of this vehicle.
+	 * @return Rolling friction coefficient in [1e-3].
+	 */
+	FORCEINLINE uint32 GetRollingFriction() const
+	{
+		/* Trams have a slightly greater friction coefficient than trains. The rest of road vehicles have bigger values. */
+		return (this->roadtype == ROADTYPE_TRAM) ? 50 : 75;
+	}
+
+	/**
+	 * Allows to know the acceleration type of a vehicle.
+	 * @return Zero, road vehicles always use a normal acceleration method.
+	 */
+	FORCEINLINE int GetAccelerationType() const
+	{
+		return 0;
+	}
+
+	/**
+	 * Returns the slope steepness used by this vehicle.
+	 * @return Slope steepness used by the vehicle.
+	 */
+	FORCEINLINE uint32 GetSlopeSteepness() const
+	{
+		/* Road vehicles use by default a steeper slope than trains. */
+		return 20 * 7; // 1% slope * slope steepness
+	}
+
+	/**
+	 * Gets the maximum speed of the vehicle, ignoring the limitations of the kind of track the vehicle is on.
+	 * @return Maximum speed of the vehicle.
+	 */
+	FORCEINLINE uint16 GetInitialMaxSpeed() const
+	{
+		return this->max_speed;
+	}
+
+	/**
+	 * Gets the maximum speed allowed by the track for this vehicle.
+	 * @return Since roads don't limit road vehicle speed, it returns always zero.
+	 */
+	FORCEINLINE uint16 GetMaxTrackSpeed() const
+	{
+		return 0;
+	}
+
+	/**
+	 * Checks if the vehicle is at a tile that can be sloped.
+	 * @return True if the tile can be sloped.
+	 */
+	FORCEINLINE bool TileMayHaveSlopedTrack() const
+	{
+		if (!IsNormalRoadTile(this->tile)) return false;
+		RoadBits cur_road = GetAllRoadBits(this->tile);
+		/* Any road that isn't ROAD_X or ROAD_Y cannot be sloped. */
+		return cur_road == ROAD_X || cur_road == ROAD_Y;
+	}
 };
 
 #define FOR_ALL_ROADVEHICLES(var) FOR_ALL_VEHICLES_OF_TYPE(RoadVehicle, var)

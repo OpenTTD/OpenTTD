@@ -11,6 +11,7 @@
 
 #include "stdafx.h"
 #include "train.h"
+#include "roadveh.h"
 #include "ground_vehicle.hpp"
 #include "window_type.h"
 #include "vehicle_gui.h"
@@ -148,3 +149,5 @@ int GroundVehicle<T, Type>::GetAcceleration() const
 
 /* Instantiation for Train */
 template struct GroundVehicle<Train, VEH_TRAIN>;
+/* Instantiation for RoadVehicle */
+template struct GroundVehicle<RoadVehicle, VEH_ROAD>;

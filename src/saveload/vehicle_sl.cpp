@@ -563,6 +563,7 @@ const SaveLoad *GetVehicleDescription(VehicleType vt)
 		     SLE_VAR(RoadVehicle, reverse_ctr,          SLE_UINT8),
 
 		SLE_CONDNULL(2,                                                               6,  68),
+		 SLE_CONDVAR(RoadVehicle, gv_flags,             SLE_UINT16,                 139, SL_MAX_VERSION),
 		SLE_CONDNULL(4,                                                              69, 130),
 		SLE_CONDNULL(2,                                                               6, 130),
 		/* reserve extra space in savegame here. (currently 16 bytes) */
