@@ -56,25 +56,8 @@ bool TryPathReserve(Train *v, bool mark_as_stuck = false, bool first_tile_okay =
 
 int GetTrainStopLocation(StationID station_id, TileIndex tile, const Train *v, int *station_ahead, int *station_length);
 
-/**
- * Cached acceleration values.
- * All of these values except cached_slope_resistance are set only for the first part of a vehicle.
- */
-struct AccelerationCache {
-	/* cached values, recalculated when the cargo on a train changes (in addition to the conditions above) */
-	uint32 cached_weight;           ///< total weight of the consist.
-	uint32 cached_slope_resistance; ///< Resistance caused by weight when this vehicle part is at a slope
-	uint32 cached_max_te;           ///< max tractive effort of consist
-
-	/* cached values, recalculated on load and each time a vehicle is added to/removed from the consist. */
-	uint32 cached_power;            ///< total power of the consist.
-	uint32 cached_air_drag;         ///< Air drag coefficient of the vehicle
-	uint16 cached_axle_resistance;  ///< Resistance caused by the axles of the vehicle
-	uint16 cached_max_track_speed;  ///< Max consist speed limited by track type
-};
-
 /** Variables that are cached to improve performance and such */
-struct TrainCache : public AccelerationCache {
+struct TrainCache {
 	/* Cached wagon override spritegroup */
 	const struct SpriteGroup *cached_override;
 
@@ -100,12 +83,6 @@ struct TrainCache : public AccelerationCache {
 	byte user_def_data;
 
 	EngineID first_engine;  ///< cached EngineID of the front vehicle. INVALID_ENGINE for the front vehicle itself.
-};
-
-/** What is the status of our acceleration? */
-enum AccelStatus {
-	AS_ACCEL, ///< We want to go faster, if possible ofcourse
-	AS_BRAKE  ///< We want to stop
 };
 
 /**
@@ -486,9 +463,9 @@ protected: // These functions should not be called outside acceleration code.
 
 		for (const Train *u = this; u != NULL; u = u->Next()) {
 			if (HasBit(u->flags, VRF_GOINGUP)) {
-				incl += u->tcache.cached_slope_resistance;
+				incl += u->acc_cache.cached_slope_resistance;
 			} else if (HasBit(u->flags, VRF_GOINGDOWN)) {
-				incl -= u->tcache.cached_slope_resistance;
+				incl -= u->acc_cache.cached_slope_resistance;
 			}
 		}
 

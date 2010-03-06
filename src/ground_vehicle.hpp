@@ -14,11 +14,35 @@
 
 #include "vehicle_base.h"
 
+/** What is the status of our acceleration? */
+enum AccelStatus {
+	AS_ACCEL, ///< We want to go faster, if possible of course.
+	AS_BRAKE  ///< We want to stop.
+};
+
+/**
+ * Cached acceleration values.
+ * All of these values except cached_slope_resistance are set only for the first part of a vehicle.
+ */
+struct AccelerationCache {
+	/* Cached values, recalculated when the cargo on a vehicle changes (in addition to the conditions below) */
+	uint32 cached_weight;           ///< Total weight of the consist.
+	uint32 cached_slope_resistance; ///< Resistance caused by weight when this vehicle part is at a slope.
+	uint32 cached_max_te;           ///< Maximum tractive effort of consist.
+
+	/* Cached values, recalculated on load and each time a vehicle is added to/removed from the consist. */
+	uint32 cached_power;            ///< Total power of the consist.
+	uint32 cached_air_drag;         ///< Air drag coefficient of the vehicle.
+	uint16 cached_axle_resistance;  ///< Resistance caused by the axles of the vehicle.
+	uint16 cached_max_track_speed;  ///< Maximum consist speed limited by track type.
+};
+
 /**
  * Base class for all vehicles that move through ground.
  */
 template <class T, VehicleType Type>
 struct GroundVehicle : public SpecializedVehicle<T, Type> {
+	AccelerationCache acc_cache;
 
 	/**
 	 * The constructor at SpecializedVehicle must be called.

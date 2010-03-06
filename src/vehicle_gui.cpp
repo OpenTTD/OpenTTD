@@ -1525,9 +1525,9 @@ struct VehicleDetailsWindow : Window {
 				switch (v->type) {
 					case VEH_TRAIN:
 						SetDParam(2, v->GetDisplayMaxSpeed());
-						SetDParam(1, Train::From(v)->tcache.cached_power);
-						SetDParam(0, Train::From(v)->tcache.cached_weight);
-						SetDParam(3, Train::From(v)->tcache.cached_max_te / 1000);
+						SetDParam(1, Train::From(v)->acc_cache.cached_power);
+						SetDParam(0, Train::From(v)->acc_cache.cached_weight);
+						SetDParam(3, Train::From(v)->acc_cache.cached_max_te / 1000);
 						DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, (_settings_game.vehicle.train_acceleration_model != AM_ORIGINAL && GetRailTypeInfo(Train::From(v)->railtype)->acceleration_type != 2) ?
 								STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE : STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED);
 						break;
@@ -1963,7 +1963,7 @@ public:
 		} else if (v->vehstatus & VS_STOPPED) {
 			if (v->type == VEH_TRAIN) {
 				if (v->cur_speed == 0) {
-					if (Train::From(v)->tcache.cached_power == 0) {
+					if (Train::From(v)->acc_cache.cached_power == 0) {
 						str = STR_VEHICLE_STATUS_TRAIN_NO_POWER;
 					} else {
 						str = STR_VEHICLE_STATUS_STOPPED;

@@ -115,22 +115,22 @@ void Train::PowerChanged()
 		if (track_speed > 0) max_track_speed = min(max_track_speed, track_speed);
 	}
 
-	this->tcache.cached_axle_resistance = 60 * number_of_parts;
-	this->tcache.cached_air_drag = 20 + 3 * number_of_parts;
+	this->acc_cache.cached_axle_resistance = 60 * number_of_parts;
+	this->acc_cache.cached_air_drag = 20 + 3 * number_of_parts;
 
 	max_te *= 10000; // Tractive effort in (tonnes * 1000 * 10 =) N
 	max_te /= 256;   // Tractive effort is a [0-255] coefficient
-	if (this->tcache.cached_power != total_power || this->tcache.cached_max_te != max_te) {
+	if (this->acc_cache.cached_power != total_power || this->acc_cache.cached_max_te != max_te) {
 		/* Stop the vehicle if it has no power */
 		if (total_power == 0) this->vehstatus |= VS_STOPPED;
 
-		this->tcache.cached_power = total_power;
-		this->tcache.cached_max_te = max_te;
+		this->acc_cache.cached_power = total_power;
+		this->acc_cache.cached_max_te = max_te;
 		SetWindowDirty(WC_VEHICLE_DETAILS, this->index);
 		SetWindowWidgetDirty(WC_VEHICLE_VIEW, this->index, VVW_WIDGET_START_STOP_VEH);
 	}
 
-	this->tcache.cached_max_track_speed = max_track_speed;
+	this->acc_cache.cached_max_track_speed = max_track_speed;
 }
 
 
@@ -146,11 +146,11 @@ void Train::CargoChanged()
 	for (Train *u = this; u != NULL; u = u->Next()) {
 		uint32 current_weight = u->GetWeight();
 		weight += current_weight;
-		u->tcache.cached_slope_resistance = current_weight * u->GetSlopeSteepness();
+		u->acc_cache.cached_slope_resistance = current_weight * u->GetSlopeSteepness();
 	}
 
 	/* store consist weight in cache */
-	this->tcache.cached_weight = weight;
+	this->acc_cache.cached_weight = weight;
 
 	/* Now update train power (tractive effort is dependent on weight) */
 	this->PowerChanged();
@@ -498,7 +498,7 @@ int Train::GetCurrentMaxSpeed() const
 		}
 	}
 
-	return min(max_speed, this->tcache.cached_max_track_speed);
+	return min(max_speed, this->acc_cache.cached_max_track_speed);
 }
 
 /**
@@ -511,10 +511,10 @@ int Train::GetAcceleration() const
 	int32 speed = this->GetCurrentSpeed();
 
 	/* Weight is stored in tonnes */
-	int32 mass = this->tcache.cached_weight;
+	int32 mass = this->acc_cache.cached_weight;
 
 	/* Power is stored in HP, we need it in watts. */
-	int32 power = this->tcache.cached_power * 746;
+	int32 power = this->acc_cache.cached_power * 746;
 
 	int32 resistance = 0;
 
@@ -523,11 +523,11 @@ int Train::GetAcceleration() const
 	const int area = 120;
 	if (!maglev) {
 		resistance = (13 * mass) / 10;
-		resistance += this->tcache.cached_axle_resistance;
+		resistance += this->acc_cache.cached_axle_resistance;
 		resistance += (this->GetRollingFriction() * mass * speed) / 1000;
-		resistance += (area * this->tcache.cached_air_drag * speed * speed) / 10000;
+		resistance += (area * this->acc_cache.cached_air_drag * speed * speed) / 10000;
 	} else {
-		resistance += (area * this->tcache.cached_air_drag * speed * speed) / 20000;
+		resistance += (area * this->acc_cache.cached_air_drag * speed * speed) / 20000;
 	}
 
 	resistance += this->GetSlopeResistance();
@@ -536,7 +536,7 @@ int Train::GetAcceleration() const
 	/* This value allows to know if the vehicle is accelerating or braking. */
 	AccelStatus mode = this->GetAccelerationStatus();
 
-	const int max_te = this->tcache.cached_max_te; // [N]
+	const int max_te = this->acc_cache.cached_max_te; // [N]
 	int force;
 	if (speed > 0) {
 		if (!maglev) {
@@ -564,10 +564,10 @@ void Train::UpdateAcceleration()
 {
 	assert(this->IsFrontEngine());
 
-	this->max_speed = this->tcache.cached_max_track_speed;
+	this->max_speed = this->acc_cache.cached_max_track_speed;
 
-	uint power = this->tcache.cached_power;
-	uint weight = this->tcache.cached_weight;
+	uint power = this->acc_cache.cached_power;
+	uint weight = this->acc_cache.cached_weight;
 	assert(weight != 0);
 	this->acceleration = Clamp(power / weight * 4, 1, 255);
 }
@@ -2265,7 +2265,7 @@ static bool CheckTrainStayInDepot(Train *v)
 	}
 
 	/* if the train got no power, then keep it in the depot */
-	if (v->tcache.cached_power == 0) {
+	if (v->acc_cache.cached_power == 0) {
 		v->vehstatus |= VS_STOPPED;
 		SetWindowDirty(WC_VEHICLE_DEPOT, v->tile);
 		return true;

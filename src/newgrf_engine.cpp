@@ -778,10 +778,10 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 				case 0x62: return t->track;
 				case 0x66: return t->railtype;
 				case 0x73: return t->tcache.cached_veh_length;
-				case 0x74: return t->tcache.cached_power;
-				case 0x75: return GB(t->tcache.cached_power,  8, 24);
-				case 0x76: return GB(t->tcache.cached_power, 16, 16);
-				case 0x77: return GB(t->tcache.cached_power, 24,  8);
+				case 0x74: return t->acc_cache.cached_power;
+				case 0x75: return GB(t->acc_cache.cached_power,  8, 24);
+				case 0x76: return GB(t->acc_cache.cached_power, 16, 16);
+				case 0x77: return GB(t->acc_cache.cached_power, 24,  8);
 				case 0x7C: return t->First()->index;
 				case 0x7D: return GB(t->First()->index, 8, 8);
 				case 0x7F: return 0; // Used for vehicle reversing hack in TTDP
