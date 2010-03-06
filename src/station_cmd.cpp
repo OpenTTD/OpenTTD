@@ -2059,7 +2059,9 @@ void UpdateAirportsNoise()
 /** Place an Airport.
  * @param tile tile where airport will be built
  * @param flags operation to perform
- * @param p1 airport type, @see airport.h
+ * @param p1
+ * - p1 = (bit  0- 7) - airport type, @see airport.h
+ * - p1 = (bit  8-15) - airport layout
  * @param p2 various bitstuffed elements
  * - p2 = (bit     0) - allow airports directly adjacent to other airports.
  * - p2 = (bit 16-31) - station ID to join (NEW_STATION if build new one)
@@ -2073,18 +2075,20 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	bool reuse = (station_to_join != NEW_STATION);
 	if (!reuse) station_to_join = INVALID_STATION;
 	bool distant_join = (station_to_join != INVALID_STATION);
+	byte airport_type = GB(p1, 0, 8);
+	byte layout = GB(p1, 8, 8);
 
 	if (distant_join && (!_settings_game.station.distant_join_stations || !Station::IsValidID(station_to_join))) return CMD_ERROR;
 
-	if (p1 >= NUM_AIRPORTS) return CMD_ERROR;
+	if (airport_type >= NUM_AIRPORTS) return CMD_ERROR;
 
 	CommandCost ret = CheckIfAuthorityAllowsNewStation(tile, flags);
 	ret.SetGlobalErrorMessage();
 	if (ret.Failed()) return ret;
 
 	/* Check if a valid, buildable airport was chosen for construction */
-	const AirportSpec *as = AirportSpec::Get(p1);
-	if (!as->IsAvailable()) return CMD_ERROR;
+	const AirportSpec *as = AirportSpec::Get(airport_type);
+	if (!as->IsAvailable() || layout >= as->num_table) return CMD_ERROR;
 
 	Town *t = ClosestTownFromTile(tile, UINT_MAX);
 	int w = as->size_x;
@@ -2178,7 +2182,7 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 		st->rect.BeforeAddRect(tile, w, h, StationRect::ADD_TRY);
 
-		const AirportTileTable *it = as->table[0];
+		const AirportTileTable *it = as->table[layout];
 		do {
 			TileIndex cur_tile = tile + ToTileIndexDiff(it->ti);
 			MakeAirport(cur_tile, st->owner, st->index, it->gfx);
@@ -2189,7 +2193,7 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		} while ((++it)->ti.x != -0x80);
 
 		/* Only call the animation trigger after all tiles have been built */
-		it = as->table[0];
+		it = as->table[layout];
 		do {
 			TileIndex cur_tile = tile + ToTileIndexDiff(it->ti);
 			AirportTileAnimationTrigger(st, cur_tile, AAT_BUILT);
