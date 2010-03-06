@@ -287,6 +287,8 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 			u->InvalidateNewGRFCache();
 		}
 		RoadVehUpdateCache(v);
+		/* Initialize cached values for realistic acceleration. */
+		if (_settings_game.vehicle.roadveh_acceleration_model != AM_ORIGINAL) v->CargoChanged();
 
 		VehicleMove(v, false);
 
@@ -431,6 +433,7 @@ void RoadVehicle::MarkDirty()
 	for (Vehicle *v = this; v != NULL; v = v->Next()) {
 		v->UpdateViewport(false, false);
 	}
+	this->CargoChanged();
 }
 
 void RoadVehicle::UpdateDeltaXY(Direction direction)
@@ -454,6 +457,29 @@ void RoadVehicle::UpdateDeltaXY(Direction direction)
 	this->x_extent      = GB(x, 16, 8);
 	this->y_extent      = GB(x, 24, 8);
 	this->z_extent      = 6;
+}
+
+/**
+ * Calculates the maximum speed of the vehicle under its current conditions.
+ * @return Maximum speed of the vehicle.
+ */
+FORCEINLINE int RoadVehicle::GetCurrentMaxSpeed() const
+{
+	if (_settings_game.vehicle.roadveh_acceleration_model == AM_ORIGINAL) return this->max_speed;
+
+	int max_speed = this->max_speed;
+
+	/* Limit speed to 50% while reversing, 75% in curves. */
+	for (const RoadVehicle *u = this; u != NULL; u = u->Next()) {
+		if (this->state <= RVSB_TRACKDIR_MASK && IsReversingRoadTrackdir((Trackdir)this->state)) {
+			max_speed = this->max_speed / 2;
+			break;
+		} else if ((u->direction & 1) == 0) {
+			max_speed = this->max_speed * 3 / 4;
+		}
+	}
+
+	return max_speed;
 }
 
 static void DeleteLastRoadVeh(RoadVehicle *v)
@@ -725,17 +751,20 @@ static void RoadVehArrivesAt(const RoadVehicle *v, Station *st)
 static int RoadVehAccelerate(RoadVehicle *v)
 {
 	uint oldspeed = v->cur_speed;
-	uint accel = 256 + (v->overtaking != 0 ? 256 : 0);
+	uint accel = v->overtaking != 0 ? 256 : 0;
+	accel += (_settings_game.vehicle.roadveh_acceleration_model == AM_ORIGINAL) ? 256 : v->GetAcceleration();
 	uint spd = v->subspeed + accel;
 
 	v->subspeed = (uint8)spd;
 
-	int tempmax = v->max_speed;
-	if (v->cur_speed > v->max_speed) {
+	int tempmax = v->GetCurrentMaxSpeed();
+	if (v->cur_speed > tempmax) {
 		tempmax = v->cur_speed - (v->cur_speed / 10) - 1;
 	}
 
-	v->cur_speed = spd = Clamp(v->cur_speed + ((int)spd >> 8), 0, tempmax);
+	/* Force a minimum speed of 1 km/h when realistic acceleration is on. */
+	int min_speed = (_settings_game.vehicle.roadveh_acceleration_model == AM_ORIGINAL) ? 0 : 4;
+	v->cur_speed = spd = Clamp(v->cur_speed + ((int)spd >> 8), min_speed, tempmax);
 
 	/* Apply bridge speed limit */
 	if (v->state == RVSB_WORMHOLE && !(v->vehstatus & VS_HIDDEN)) {
@@ -873,7 +902,7 @@ static void RoadVehCheckOvertake(RoadVehicle *v, RoadVehicle *u)
 
 static void RoadZPosAffectSpeed(RoadVehicle *v, byte old_z)
 {
-	if (old_z == v->z_pos) return;
+	if (old_z == v->z_pos || _settings_game.vehicle.roadveh_acceleration_model != AM_ORIGINAL) return;
 
 	if (old_z < v->z_pos) {
 		v->cur_speed = v->cur_speed * 232 / 256; // slow down by ~10%
@@ -1317,7 +1346,7 @@ again:
 		}
 		if (new_dir != v->direction) {
 			v->direction = new_dir;
-			v->cur_speed -= v->cur_speed >> 2;
+			if (_settings_game.vehicle.roadveh_acceleration_model == AM_ORIGINAL) v->cur_speed -= v->cur_speed >> 2;
 		}
 		v->x_pos = x;
 		v->y_pos = y;
@@ -1382,7 +1411,7 @@ again:
 
 		if (new_dir != v->direction) {
 			v->direction = new_dir;
-			v->cur_speed -= v->cur_speed >> 2;
+			if (_settings_game.vehicle.roadveh_acceleration_model == AM_ORIGINAL) v->cur_speed -= v->cur_speed >> 2;
 		}
 
 		v->x_pos = x;
@@ -1434,7 +1463,7 @@ again:
 	Direction old_dir = v->direction;
 	if (new_dir != old_dir) {
 		v->direction = new_dir;
-		v->cur_speed -= (v->cur_speed >> 2);
+		if (_settings_game.vehicle.roadveh_acceleration_model == AM_ORIGINAL) v->cur_speed -= v->cur_speed >> 2;
 		if (old_dir != v->state) {
 			/* The vehicle is in a road stop */
 			v->UpdateInclination(false, true);
@@ -1731,6 +1760,7 @@ CommandCost CmdRefitRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	if (flags & DC_EXEC) {
 		RoadVehicle *front = v->First();
 		RoadVehUpdateCache(front);
+		if (_settings_game.vehicle.roadveh_acceleration_model != AM_ORIGINAL) front->CargoChanged();
 		SetWindowDirty(WC_VEHICLE_DETAILS, front->index);
 		SetWindowDirty(WC_VEHICLE_DEPOT, front->tile);
 		InvalidateWindowClassesData(WC_ROADVEH_LIST, 0);

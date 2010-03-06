@@ -1477,9 +1477,13 @@ static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex ti
 					ClrBit(t->gv_flags, GVF_GOINGDOWN_BIT);
 				} break;
 
-				case VEH_ROAD:
-					RoadVehicle::From(v)->state = RVSB_WORMHOLE;
-					break;
+				case VEH_ROAD: {
+					RoadVehicle *rv = RoadVehicle::From(v);
+					rv->state = RVSB_WORMHOLE;
+					/* There are no slopes inside bridges / tunnels. */
+					ClrBit(rv->gv_flags, GVF_GOINGUP_BIT);
+					ClrBit(rv->gv_flags, GVF_GOINGDOWN_BIT);
+				} break;
 
 				case VEH_SHIP:
 					Ship::From(v)->state = TRACK_BIT_WORMHOLE;

@@ -324,6 +324,9 @@ void AfterLoadVehicles(bool part_of_load)
 			RoadVehicle *rv = RoadVehicle::From(v);
 			if (rv->IsRoadVehFront()) {
 				RoadVehUpdateCache(rv);
+				if (_settings_game.vehicle.roadveh_acceleration_model != AM_ORIGINAL) {
+					rv->CargoChanged();
+				}
 			}
 		}
 	}

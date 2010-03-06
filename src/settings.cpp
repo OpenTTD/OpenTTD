@@ -64,6 +64,7 @@
 #include "company_base.h"
 #include "engine_base.h"
 #include "smallmap_gui.h"
+#include "roadveh.h"
 
 #include "void_map.h"
 #include "station_base.h"
@@ -769,6 +770,25 @@ static bool TrainSlopeSteepnessChanged(int32 p1)
 	Train *t;
 	FOR_ALL_TRAINS(t) {
 		if (t->IsFrontEngine()) t->CargoChanged();
+	}
+
+	return true;
+}
+
+/**
+ * This function updates realistic acceleration caches when the setting "Road vehicle acceleration model" is set.
+ * @param p1 Callback parameter
+ * @return Always true
+ */
+static bool RoadVehAccelerationModelChanged(int32 p1)
+{
+	if (_settings_game.vehicle.roadveh_acceleration_model != AM_ORIGINAL) {
+		RoadVehicle *rv;
+		FOR_ALL_ROADVEHICLES(rv) {
+			if (rv->IsRoadVehFront()) {
+				rv->CargoChanged();
+			}
+		}
 	}
 
 	return true;

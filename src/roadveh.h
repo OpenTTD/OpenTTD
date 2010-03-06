@@ -133,6 +133,8 @@ struct RoadVehicle : public GroundVehicle<RoadVehicle, VEH_ROAD> {
 
 	bool IsBus() const;
 
+	int GetCurrentMaxSpeed() const;
+
 	/**
 	 * Check if vehicle is a front engine
 	 * @return Returns true if vehicle is a front engine

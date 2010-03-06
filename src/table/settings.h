@@ -23,6 +23,7 @@ static bool DeleteSelectStationWindow(int32 p1);
 static bool UpdateConsists(int32 p1);
 static bool CheckInterval(int32 p1);
 static bool TrainAccelerationModelChanged(int32 p1);
+static bool RoadVehAccelerationModelChanged(int32 p1);
 static bool TrainSlopeSteepnessChanged(int32 p1);
 static bool DragSignalsDensityChanged(int32);
 static bool TownFoundingChanged(int32 p1);
@@ -371,6 +372,7 @@ const SettingDesc _settings[] = {
 	 SDT_CONDVAR(GameSettings, economy.found_town,                   SLE_UINT8,128, SL_MAX_VERSION, 0,MS,TF_FORBIDDEN,TF_BEGIN,TF_END - 1, 1, STR_CONFIG_SETTING_TOWN_FOUNDING, TownFoundingChanged),
 
 	     SDT_VAR(GameSettings, vehicle.train_acceleration_model,     SLE_UINT8,                     0,MS,     0,     0,       1, 1, STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL, TrainAccelerationModelChanged),
+	 SDT_CONDVAR(GameSettings, vehicle.roadveh_acceleration_model,   SLE_UINT8,139, SL_MAX_VERSION, 0,MS,     0,     0,       1, 1, STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL, RoadVehAccelerationModelChanged),
 	 SDT_CONDVAR(GameSettings, vehicle.train_slope_steepness,        SLE_UINT8,133, SL_MAX_VERSION, 0, 0,     3,     0,      10, 1, STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS,  TrainSlopeSteepnessChanged),
 	    SDT_BOOL(GameSettings, pf.forbid_90_deg,                                                    0, 0, false,                    STR_CONFIG_SETTING_FORBID_90_DEG,          NULL),
 	    SDT_BOOL(GameSettings, vehicle.mammoth_trains,                                              0,NN,  true,                    STR_CONFIG_SETTING_MAMMOTHTRAINS,          NULL),
