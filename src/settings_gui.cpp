@@ -1466,6 +1466,7 @@ static SettingEntry _settings_vehicles[] = {
 	SettingEntry("order.timetabling"),
 	SettingEntry("vehicle.dynamic_engines"),
 	SettingEntry("vehicle.roadveh_acceleration_model"),
+	SettingEntry("vehicle.roadveh_slope_steepness"),
 };
 /** Vehicles sub-page */
 static SettingsPage _settings_vehicles_page = {_settings_vehicles, lengthof(_settings_vehicles)};

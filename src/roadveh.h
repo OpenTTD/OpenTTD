@@ -255,8 +255,7 @@ protected: // These functions should not be called outside acceleration code.
 	 */
 	FORCEINLINE uint32 GetSlopeSteepness() const
 	{
-		/* Road vehicles use by default a steeper slope than trains. */
-		return 20 * 7; // 1% slope * slope steepness
+		return 20 * _settings_game.vehicle.roadveh_slope_steepness; // 1% slope * slope steepness
 	}
 
 	/**

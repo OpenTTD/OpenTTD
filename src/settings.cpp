@@ -794,6 +794,21 @@ static bool RoadVehAccelerationModelChanged(int32 p1)
 	return true;
 }
 
+/**
+ * This function updates the road vehicle acceleration cache after a steepness change.
+ * @param p1 Callback parameter.
+ * @return Always true.
+ */
+static bool RoadVehSlopeSteepnessChanged(int32 p1)
+{
+	RoadVehicle *rv;
+	FOR_ALL_ROADVEHICLES(rv) {
+		if (rv->IsRoadVehFront()) rv->CargoChanged();
+	}
+
+	return true;
+}
+
 static bool DragSignalsDensityChanged(int32)
 {
 	InvalidateWindowData(WC_BUILD_SIGNAL, 0);
