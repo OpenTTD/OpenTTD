@@ -620,6 +620,12 @@ public:
 		this->DrawWidgets();
 	}
 
+	virtual void OnInvalidateData(int data)
+	{
+		/* If company gets shut down, while displaying an error about it, remove the error message. */
+		if (this->face != INVALID_COMPANY && !Company::IsValidID(this->face)) delete this;
+	}
+
 	virtual void SetStringParameters(int widget) const
 	{
 		if (widget == EMW_CAPTION) CopyInDParam(0, this->decode_params, lengthof(this->decode_params));
