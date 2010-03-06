@@ -188,17 +188,36 @@ static StringID GetAircraftEngineInfoString(const Engine *e)
 
 static StringID GetRoadVehEngineInfoString(const Engine *e)
 {
-	SetDParam(0, e->GetCost());
-	SetDParam(1, e->GetDisplayMaxSpeed());
-	uint capacity = GetTotalCapacityOfArticulatedParts(e->index);
-	if (capacity != 0) {
-		SetDParam(2, e->GetDefaultCargoType());
-		SetDParam(3, capacity);
+	if (_settings_game.vehicle.roadveh_acceleration_model == AM_ORIGINAL) {
+		SetDParam(0, e->GetCost());
+		SetDParam(1, e->GetDisplayMaxSpeed());
+		uint capacity = GetTotalCapacityOfArticulatedParts(e->index);
+		if (capacity != 0) {
+			SetDParam(2, e->GetDefaultCargoType());
+			SetDParam(3, capacity);
+		} else {
+			SetDParam(2, CT_INVALID);
+		}
+		SetDParam(4, e->GetRunningCost());
+		return STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST;
 	} else {
-		SetDParam(2, CT_INVALID);
+		SetDParam(0, e->GetCost());
+		SetDParam(2, e->GetDisplayMaxSpeed());
+		SetDParam(3, e->GetPower());
+		SetDParam(1, e->GetDisplayWeight());
+		SetDParam(7, e->GetDisplayMaxTractiveEffort());
+
+		SetDParam(4, e->GetRunningCost());
+
+		uint capacity = GetTotalCapacityOfArticulatedParts(e->index);
+		if (capacity != 0) {
+			SetDParam(5, e->GetDefaultCargoType());
+			SetDParam(6, capacity);
+		} else {
+			SetDParam(5, CT_INVALID);
+		}
+		return STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE;
 	}
-	SetDParam(4, e->GetRunningCost());
-	return STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST;
 }
 
 static StringID GetShipEngineInfoString(const Engine *e)

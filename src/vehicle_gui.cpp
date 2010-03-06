@@ -1533,6 +1533,15 @@ struct VehicleDetailsWindow : Window {
 						break;
 
 					case VEH_ROAD:
+						if (_settings_game.vehicle.roadveh_acceleration_model != AM_ORIGINAL) {
+							SetDParam(2, v->GetDisplayMaxSpeed());
+							SetDParam(1, RoadVehicle::From(v)->acc_cache.cached_power);
+							SetDParam(0, RoadVehicle::From(v)->acc_cache.cached_weight);
+							SetDParam(3, RoadVehicle::From(v)->acc_cache.cached_max_te / 1000);
+							DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE);
+							break;
+						}
+						/* Fallthrough */
 					case VEH_SHIP:
 					case VEH_AIRCRAFT:
 						SetDParam(0, v->GetDisplayMaxSpeed());

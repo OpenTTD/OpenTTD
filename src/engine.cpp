@@ -297,10 +297,12 @@ uint Engine::GetDisplayMaxSpeed() const
 
 uint Engine::GetPower() const
 {
-	/* Currently only trains have 'power' */
+	/* Only trains and road vehicles have 'power'. */
 	switch (this->type) {
 		case VEH_TRAIN:
 			return GetEngineProperty(this->index, PROP_TRAIN_POWER, this->u.rail.power);
+		case VEH_ROAD:
+			return this->u.road.power * 10;
 
 		default: NOT_REACHED();
 	}
@@ -313,10 +315,12 @@ uint Engine::GetPower() const
  */
 uint Engine::GetDisplayWeight() const
 {
-	/* Currently only trains have 'weight' */
+	/* Only trains and road vehicles have 'weight'. */
 	switch (this->type) {
 		case VEH_TRAIN:
 			return GetEngineProperty(this->index, PROP_TRAIN_WEIGHT, this->u.rail.weight) << (this->u.rail.railveh_type == RAILVEH_MULTIHEAD ? 1 : 0);
+		case VEH_ROAD:
+			return this->u.road.weight / 4;
 
 		default: NOT_REACHED();
 	}
@@ -329,10 +333,12 @@ uint Engine::GetDisplayWeight() const
  */
 uint Engine::GetDisplayMaxTractiveEffort() const
 {
-	/* Currently only trains have 'tractive effort' */
+	/* Only trains and road vehicles have 'tractive effort'. */
 	switch (this->type) {
 		case VEH_TRAIN:
 			return (10 * this->GetDisplayWeight() * GetEngineProperty(this->index, PROP_TRAIN_TRACTIVE_EFFORT, this->u.rail.tractive_effort)) / 256;
+		case VEH_ROAD:
+			return (10 * this->GetDisplayWeight() * this->u.road.tractive_effort) / 256;
 
 		default: NOT_REACHED();
 	}

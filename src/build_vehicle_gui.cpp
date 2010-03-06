@@ -508,11 +508,37 @@ static int DrawRoadVehPurchaseInfo(int left, int right, int y, EngineID engine_n
 {
 	const Engine *e = Engine::Get(engine_number);
 
-	/* Purchase cost - Max speed */
-	SetDParam(0, e->GetCost());
-	SetDParam(1, e->GetDisplayMaxSpeed());
-	DrawString(left, right, y, STR_PURCHASE_INFO_COST_SPEED);
-	y += FONT_HEIGHT_NORMAL;
+	if (_settings_game.vehicle.roadveh_acceleration_model != AM_ORIGINAL) {
+		/* Purchase Cost */
+		SetDParam(0, e->GetCost());
+		DrawString(left, right, y, STR_PURCHASE_INFO_COST);
+		y += FONT_HEIGHT_NORMAL;
+
+		/* Road vehicle weight - (including cargo) */
+		int16 weight = e->GetDisplayWeight();
+		SetDParam(0, weight);
+		uint cargo_weight = CargoSpec::Get(e->GetDefaultCargoType())->weight * GetTotalCapacityOfArticulatedParts(engine_number) / 16;
+		SetDParam(1, cargo_weight + weight);
+		DrawString(left, right, y, STR_PURCHASE_INFO_WEIGHT_CWEIGHT);
+		y += FONT_HEIGHT_NORMAL;
+
+		/* Max speed - Engine power */
+		SetDParam(0, e->GetDisplayMaxSpeed());
+		SetDParam(1, e->GetPower());
+		DrawString(left, right, y, STR_PURCHASE_INFO_SPEED_POWER);
+		y += FONT_HEIGHT_NORMAL;
+
+		/* Max tractive effort */
+		SetDParam(0, e->GetDisplayMaxTractiveEffort());
+		DrawString(left, right, y, STR_PURCHASE_INFO_MAX_TE);
+		y += FONT_HEIGHT_NORMAL;
+	} else {
+		/* Purchase cost - Max speed */
+		SetDParam(0, e->GetCost());
+		SetDParam(1, e->GetDisplayMaxSpeed());
+		DrawString(left, right, y, STR_PURCHASE_INFO_COST_SPEED);
+		y += FONT_HEIGHT_NORMAL;
+	}
 
 	/* Running cost */
 	SetDParam(0, e->GetRunningCost());
