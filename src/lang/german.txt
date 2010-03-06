@@ -2015,6 +2015,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Flughafe
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Flughafen bauen
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Wähle die Größe/Art des Flughafens
+STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Flughafenart
 
 STR_AIRPORT_SMALL                                               :Klein
 STR_AIRPORT_CITY                                                :Stadt

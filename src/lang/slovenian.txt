@@ -1125,7 +1125,11 @@ STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Omogoč
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Model pospeškov vlakov: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Original
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realističen
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Model pospeškov cestnih vozil: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Original
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Realistično
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Naklon vzpona za vlake {ORANGE}{STRING}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Naklon vzpona za cestna vozila {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Prepreči vlakom in ladjam 90-stopinjske zavoje: {ORANGE}{STRING} {LTBLUE} (brez OPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Združi železniške postaje, ki si stojijo blizu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Dovoli združevanje postaj, ki niso v dotiku: {ORANGE}{STRING}
@@ -2056,6 +2060,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Zgradi l
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Izbira letališča
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Izbira velikosti/tipa letališča
+STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Vrsta letališča
 
 STR_AIRPORT_SMALL                                               :Majno letališče
 STR_AIRPORT_CITY                                                :Mestno

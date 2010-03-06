@@ -1150,7 +1150,11 @@ STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Umožni
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Model akcelerácie vlaku: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Originál
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistický
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Model zrýchlenia pre cestné vozidlá: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Štandardne
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Realisticky
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Strmosť svahu pre vlaky {ORANGE}{STRING}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Strmosť svahu pre cestné vozidlá {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Zakázať vlakom a lodiam otáčanie o 90 stupňov: {ORANGE}{STRING} {LTBLUE} (vyžaduje NPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Umoznit spajanie stanic: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Povoliť spájať stanice nepriamo hraničiace: {ORANGE}{STRING}
@@ -2081,6 +2085,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Postavit
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Vyber letiska
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Vybrat velkost/typ letiska
+STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Trieda lietadla
 
 STR_AIRPORT_SMALL                                               :Male
 STR_AIRPORT_CITY                                                :Mestske

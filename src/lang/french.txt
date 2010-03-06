@@ -1084,7 +1084,11 @@ STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Permett
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Modèle d'accélération des trains{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Original
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Réaliste
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Modèle d'accélération des véhicules routiers{NBSP}: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Original
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Réaliste
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Inclinaison des pentes pour les trains{NBSP}: {ORANGE}{STRING}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Inclinaison des pentes pour les véhicules routiers{NBSP}: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Interdire aux trains et navires les virages à 90°{NBSP}: {ORANGE}{STRING} {LTBLUE} (pas avec OPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Joindre les gares juxtaposées{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Permettre de joindre une station non adjacente{NBSP}: {ORANGE}{STRING}
@@ -2015,6 +2019,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Construi
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Choix de l'aéroport
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Choix du type & taille de l'aéroport
+STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Type d'aéroport
 
 STR_AIRPORT_SMALL                                               :Petit
 STR_AIRPORT_CITY                                                :Urbain

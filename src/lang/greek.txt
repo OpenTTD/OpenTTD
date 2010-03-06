@@ -1178,7 +1178,11 @@ STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Επι�
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Μοντέλο επιτάχυνσης τρένων: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Αρχικό
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Ρεαλιστικό
-STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Κλίση γραμμης τρένων κατά {ORANGE}{STRING}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Μοντέλο επιτάχυνσης οχημάτων δρόμου: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Αρχικό
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Ρεαλιστικό
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Υπερβολική κλίση γραμμης τρένων κατά {ORANGE}{STRING}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Υπερβολική κλίση για τα οχήματα δρόμου {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Απαγόρευση στροφών 90 μοιρών για τρένα και πλοία: {ORANGE}{STRING} {LTBLUE} (οχι με OPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Συνένωση σταθμών τρένων χτισμένων δίπλα σε άλλο: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Να επιτρέπεται η συνένωση μη παρακείμενων σταθμών: {ORANGE}{STRING}
@@ -2109,6 +2113,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Κατα
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Επιλογή Αεροδρομίου
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Επιλογή μεγέθους/τύπου αεροδρομίου
+STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Κλάση αεροδρομίου
 
 STR_AIRPORT_SMALL                                               :Μικρό
 STR_AIRPORT_CITY                                                :Πόλης

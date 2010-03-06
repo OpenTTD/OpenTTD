@@ -1084,7 +1084,11 @@ STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Permiti
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Modelo de aceleración de trenes: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Original
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realista
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Modelo de aceleración para vehículos de carretera: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Original
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Realista
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Inclinación de las cuestas para trenes: {ORANGE}{STRING}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Inclinación de cuestas para vehículos de carretera: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Prohibir a trenes y barcos realizar giros de 90 grados: {ORANGE}{STRING} {LTBLUE} (no con OPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Unir estaciones de tren unas junto a otras: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Permitir unir estaciones no adyacentes: {ORANGE}{STRING}
@@ -2015,6 +2019,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Construi
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Selección de aeropuerto
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Elige tamaño/tipo de aeropuerto
+STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Clase de aeropuerto
 
 STR_AIRPORT_SMALL                                               :Pequeño
 STR_AIRPORT_CITY                                                :Ciudad

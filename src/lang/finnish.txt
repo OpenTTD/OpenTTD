@@ -1083,7 +1083,11 @@ STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Erittä
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Junien kiihdytysmalli: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Alkuperäinen
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistinen
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Ajoneuvojen kiihdytysmalli: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Alkuperäinen
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Realistinen
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Mäkien jyrkkyys junille {ORANGE}{STRING}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Mäkien jyrkkyys ajoneuvoille {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}90-asteen käännökset kielletty junilta ja laivoilta: {ORANGE}{STRING} {LTBLUE} (ei OPF:n kanssa)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Yhdistä vierekkäiset rautatieasemat: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Salli ei-vierekkäisten asemien yhdistäminen: {ORANGE}{STRING}
@@ -2014,6 +2018,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Rakenna 
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Lentokentän valinta
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Valitse lentokentän koko ja tyyppi.
+STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Lentokentän luokka
 
 STR_AIRPORT_SMALL                                               :Pieni
 STR_AIRPORT_CITY                                                :Kaupunki
@@ -3374,7 +3379,7 @@ STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Kaupunki
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... liian lähellä kartan reunaa.
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... liian lähellä toista kaupunkia.
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... liian monta kaupunkia.
-STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...kartalla ei ole enää tilaa
+STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... kartalla ei ole enää tilaa
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Kaupunki ei rakenna teitä. Voit sallia teiden rakentamisen valikosta Lisäasetukset->Talous->Kaupungit.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Tietyöt ovat käynnissä.
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kaupunkia ei voida poistaa...{}Asema tai varikko viittaa kaupunkiin tai kaupungin omistamaa ruutua ei voida poistaa
