@@ -400,16 +400,15 @@ CommandCost StationRect::BeforeAddTile(TileIndex tile, StationRectMode mode)
 	return CommandCost();
 }
 
-bool StationRect::BeforeAddRect(TileIndex tile, int w, int h, StationRectMode mode)
+CommandCost StationRect::BeforeAddRect(TileIndex tile, int w, int h, StationRectMode mode)
 {
 	if (mode == ADD_FORCE || (w <= _settings_game.station.station_spread && h <= _settings_game.station.station_spread)) {
 		/* Important when the old rect is completely inside the new rect, resp. the old one was empty. */
 		CommandCost ret = this->BeforeAddTile(tile, mode);
 		if (ret.Succeeded()) ret = this->BeforeAddTile(TILE_ADDXY(tile, w - 1, h - 1), mode);
-		if (ret.Succeeded()) return true;
-		ret.SetGlobalErrorMessage();
+		return ret;
 	}
-	return false;
+	return CommandCost();
 }
 
 /**

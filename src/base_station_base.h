@@ -41,7 +41,7 @@ struct StationRect : public Rect {
 	bool PtInExtendedRect(int x, int y, int distance = 0) const;
 	bool IsEmpty() const;
 	CommandCost BeforeAddTile(TileIndex tile, StationRectMode mode);
-	bool BeforeAddRect(TileIndex tile, int w, int h, StationRectMode mode);
+	CommandCost BeforeAddRect(TileIndex tile, int w, int h, StationRectMode mode);
 	bool AfterRemoveTile(BaseStation *st, TileIndex tile);
 	bool AfterRemoveRect(BaseStation *st, TileIndex tile, int w, int h);
 

@@ -1293,7 +1293,7 @@ static bool AddNearbyStation(TileIndex tile, void *user_data)
 	T *st = T::Get(sid);
 	if (st->owner != _local_company || _stations_nearby_list.Contains(sid)) return false;
 
-	if (st->rect.BeforeAddRect(ctx->tile, ctx->w, ctx->h, StationRect::ADD_TEST)) {
+	if (st->rect.BeforeAddRect(ctx->tile, ctx->w, ctx->h, StationRect::ADD_TEST).Succeeded()) {
 		*_stations_nearby_list.Append() = sid;
 	}
 

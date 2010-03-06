@@ -1159,7 +1159,9 @@ CommandCost CmdBuildRailStation(TileIndex tile_org, DoCommandFlag flags, uint32 
 		}
 
 		/* XXX can't we pack this in the "else" part of the if above? */
-		if (!st->rect.BeforeAddRect(tile_org, w_org, h_org, StationRect::ADD_TEST)) return CMD_ERROR;
+		CommandCost ret = st->rect.BeforeAddRect(tile_org, w_org, h_org, StationRect::ADD_TEST);
+		ret.SetGlobalErrorMessage();
+		if (ret.Failed()) return ret;
 	} else {
 		/* allocate and initialize new station */
 		if (!Station::CanAllocateItem()) return_cmd_error(STR_ERROR_TOO_MANY_STATIONS_LOADING);
@@ -1726,7 +1728,9 @@ CommandCost CmdBuildRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 			return_cmd_error(STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION);
 		}
 
-		if (!st->rect.BeforeAddRect(roadstop_area.tile, roadstop_area.w, roadstop_area.h, StationRect::ADD_TEST)) return CMD_ERROR;
+		CommandCost ret = st->rect.BeforeAddRect(roadstop_area.tile, roadstop_area.w, roadstop_area.h, StationRect::ADD_TEST);
+		ret.SetGlobalErrorMessage();
+		if (ret.Failed()) return ret;
 	} else {
 		/* allocate and initialize new station */
 		if (!Station::CanAllocateItem()) return_cmd_error(STR_ERROR_TOO_MANY_STATIONS_LOADING);
@@ -2137,7 +2141,9 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 			return_cmd_error(STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION);
 		}
 
-		if (!st->rect.BeforeAddRect(tile, w, h, StationRect::ADD_TEST)) return CMD_ERROR;
+		CommandCost ret = st->rect.BeforeAddRect(tile, w, h, StationRect::ADD_TEST);
+		ret.SetGlobalErrorMessage();
+		if (ret.Failed()) return ret;
 
 		if (st->airport.tile != INVALID_TILE) {
 			return_cmd_error(STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT);
@@ -2385,9 +2391,11 @@ CommandCost CmdBuildDock(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 			return_cmd_error(STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION);
 		}
 
-		if (!st->rect.BeforeAddRect(
+		CommandCost ret = st->rect.BeforeAddRect(
 				tile + ToTileIndexDiff(_dock_tileoffs_chkaround[direction]),
-				_dock_w_chk[direction], _dock_h_chk[direction], StationRect::ADD_TEST)) return CMD_ERROR;
+				_dock_w_chk[direction], _dock_h_chk[direction], StationRect::ADD_TEST);
+		ret.SetGlobalErrorMessage();
+		if (ret.Failed()) return ret;
 
 		if (st->dock_tile != INVALID_TILE) return_cmd_error(STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK);
 	} else {

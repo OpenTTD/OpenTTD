@@ -273,7 +273,9 @@ CommandCost CmdBuildRailWaypoint(TileIndex start_tile, DoCommandFlag flags, uint
 			if (ret.Failed()) return ret;
 		}
 
-		if (!wp->rect.BeforeAddRect(start_tile, width, height, StationRect::ADD_TEST)) return CMD_ERROR;
+		CommandCost ret = wp->rect.BeforeAddRect(start_tile, width, height, StationRect::ADD_TEST);
+		ret.SetGlobalErrorMessage();
+		if (ret.Failed()) return ret;
 	} else {
 		/* allocate and initialize new waypoint */
 		if (!Waypoint::CanAllocateItem()) return_cmd_error(STR_ERROR_TOO_MANY_STATIONS_LOADING);
