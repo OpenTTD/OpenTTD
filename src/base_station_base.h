@@ -46,7 +46,7 @@ struct StationRect : public Rect {
 
 	static bool ScanForStationTiles(StationID st_id, int left_a, int top_a, int right_a, int bottom_a);
 
-	StationRect& operator = (Rect src);
+	StationRect& operator = (const Rect &src);
 };
 
 /** Base class for all station-ish types */

@@ -370,13 +370,13 @@ bool StationRect::BeforeAddTile(TileIndex tile, StationRectMode mode)
 {
 	int x = TileX(tile);
 	int y = TileY(tile);
-	if (IsEmpty()) {
+	if (this->IsEmpty()) {
 		/* we are adding the first station tile */
 		if (mode != ADD_TEST) {
 			this->left = this->right = x;
 			this->top = this->bottom = y;
 		}
-	} else if (!PtInExtendedRect(x, y)) {
+	} else if (!this->PtInExtendedRect(x, y)) {
 		/* current rect is not empty and new point is outside this rect
 		 * make new spread-out rectangle */
 		Rect new_rect = {min(x, this->left), min(y, this->top), max(x, this->right), max(y, this->bottom)};
@@ -481,15 +481,15 @@ bool StationRect::AfterRemoveTile(BaseStation *st, TileIndex tile)
 
 bool StationRect::AfterRemoveRect(BaseStation *st, TileIndex tile, int w, int h)
 {
-	assert(PtInExtendedRect(TileX(tile), TileY(tile)));
-	assert(PtInExtendedRect(TileX(tile) + w - 1, TileY(tile) + h - 1));
+	assert(this->PtInExtendedRect(TileX(tile), TileY(tile)));
+	assert(this->PtInExtendedRect(TileX(tile) + w - 1, TileY(tile) + h - 1));
 
 	bool empty = this->AfterRemoveTile(st, tile);
-	if (w != 1 || h != 1) empty = empty || AfterRemoveTile(st, TILE_ADDXY(tile, w - 1, h - 1));
+	if (w != 1 || h != 1) empty = empty || this->AfterRemoveTile(st, TILE_ADDXY(tile, w - 1, h - 1));
 	return empty;
 }
 
-StationRect& StationRect::operator = (Rect src)
+StationRect& StationRect::operator = (const Rect &src)
 {
 	this->left = src.left;
 	this->top = src.top;
