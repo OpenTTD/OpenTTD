@@ -28,6 +28,7 @@ gamelog.cpp
 genworld.cpp
 gfx.cpp
 gfxinit.cpp
+ground_vehicle.cpp
 heightmap.cpp
 highscore.cpp
 ini.cpp

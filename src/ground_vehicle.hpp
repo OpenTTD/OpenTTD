@@ -49,6 +49,9 @@ struct GroundVehicle : public SpecializedVehicle<T, Type> {
 	 */
 	GroundVehicle() : SpecializedVehicle<T, Type>() {}
 
+	void PowerChanged();
+	void CargoChanged();
+	int GetAcceleration() const;
 };
 
 #endif /* GROUND_VEHICLE_HPP */

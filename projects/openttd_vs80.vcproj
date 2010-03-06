@@ -572,6 +572,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\ground_vehicle.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\heightmap.cpp"
 				>
 			</File>

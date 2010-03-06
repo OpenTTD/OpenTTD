@@ -110,6 +110,8 @@ struct Train : public GroundVehicle<Train, VEH_TRAIN> {
 	/** We want to 'destruct' the right class. */
 	virtual ~Train() { this->PreDestructor(); }
 
+	friend struct GroundVehicle<Train, VEH_TRAIN>; // GroundVehicle needs to use the acceleration functions defined at Train.
+
 	const char *GetTypeString() const { return "train"; }
 	void MarkDirty();
 	void UpdateDeltaXY(Direction direction);
@@ -135,15 +137,12 @@ struct Train : public GroundVehicle<Train, VEH_TRAIN> {
 	int GetCurveSpeedLimit() const;
 
 	void ConsistChanged(bool same_length);
-	void CargoChanged();
-	void PowerChanged();
 
 	int UpdateSpeed();
 
 	void UpdateAcceleration();
 
 	int GetCurrentMaxSpeed() const;
-	int GetAcceleration() const;
 
 	/**
 	 * enum to handle train subtypes
