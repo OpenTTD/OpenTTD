@@ -81,6 +81,8 @@ Engine::Engine(VehicleType type, EngineID base)
 		this->info.climates = 0x80;
 		/* Set model life to maximum to make wagons available */
 		this->info.base_life = 0xFF;
+		/* Set road vehicle tractive effort to the default value */
+		if (type == VEH_ROAD) this->u.road.tractive_effort = 0x4C;
 		return;
 	}
 
