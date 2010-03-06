@@ -203,8 +203,7 @@ static int CDECL EngineRunningCostSorter(const EngineID *a, const EngineID *b)
 	return _internal_sort_order ? -r : r;
 }
 
-/* Train sorting functions */
-static int CDECL TrainEnginePowerVsRunningCostSorter(const EngineID *a, const EngineID *b)
+static int CDECL EnginePowerVsRunningCostSorter(const EngineID *a, const EngineID *b)
 {
 	const Engine *e_a = Engine::Get(*a);
 	const Engine *e_b = Engine::Get(*b);
@@ -223,6 +222,8 @@ static int CDECL TrainEnginePowerVsRunningCostSorter(const EngineID *a, const En
 	if (r == 0) return EngineNumberSorter(a, b);
 	return _internal_sort_order ? -r : r;
 }
+
+/* Train sorting functions */
 
 static int CDECL TrainEngineCapacitySorter(const EngineID *a, const EngineID *b)
 {
@@ -308,7 +309,7 @@ static EngList_SortTypeFunction * const _sorter[][10] = {{
 	&EngineIntroDateSorter,
 	&EngineNameSorter,
 	&EngineRunningCostSorter,
-	&TrainEnginePowerVsRunningCostSorter,
+	&EnginePowerVsRunningCostSorter,
 	&EngineReliabilitySorter,
 	&TrainEngineCapacitySorter,
 }, {
@@ -321,6 +322,8 @@ static EngList_SortTypeFunction * const _sorter[][10] = {{
 	&EngineRunningCostSorter,
 	&EngineReliabilitySorter,
 	&RoadVehEngineCapacitySorter,
+	&EnginePowerSorter,
+	&EnginePowerVsRunningCostSorter,
 }, {
 	/* Ships */
 	&EngineNumberSorter,
@@ -366,6 +369,8 @@ static const StringID _sort_listing[][11] = {{
 	STR_SORT_BY_RUNNING_COST,
 	STR_SORT_BY_RELIABILITY,
 	STR_SORT_BY_CARGO_CAPACITY,
+	STR_SORT_BY_POWER,
+	STR_SORT_BY_POWER_VS_RUNNING_COST,
 	INVALID_STRING_ID
 }, {
 	/* Ships */
@@ -1047,9 +1052,16 @@ struct BuildVehicleWindow : Window {
 				break;
 			}
 
-			case BUILD_VEHICLE_WIDGET_SORT_DROPDOWN: // Select sorting criteria dropdown menu
-				ShowDropDownMenu(this, _sort_listing[this->vehicle_type], this->sort_criteria, BUILD_VEHICLE_WIDGET_SORT_DROPDOWN, 0, 0);
-				break;
+			case BUILD_VEHICLE_WIDGET_SORT_DROPDOWN: { // Select sorting criteria dropdown menu
+				uint32 hidden_mask = 0;
+				/* Disable sorting by power when the original acceleration model for road vehicles is being used. */
+				if (this->vehicle_type == VEH_ROAD &&
+						_settings_game.vehicle.roadveh_acceleration_model == AM_ORIGINAL) {
+					SetBit(hidden_mask, 8);
+					SetBit(hidden_mask, 9);
+				}
+				ShowDropDownMenu(this, _sort_listing[this->vehicle_type], this->sort_criteria, BUILD_VEHICLE_WIDGET_SORT_DROPDOWN, 0, hidden_mask);
+			} break;
 
 			case BUILD_VEHICLE_WIDGET_CARGO_FILTER_DROPDOWN: // Select cargo filtering criteria dropdown menu
 				ShowDropDownMenu(this, this->cargo_filter_texts, this->cargo_filter_criteria, BUILD_VEHICLE_WIDGET_CARGO_FILTER_DROPDOWN, 0, 0);
@@ -1078,6 +1090,13 @@ struct BuildVehicleWindow : Window {
 
 	virtual void OnInvalidateData(int data)
 	{
+		/* When switching to original acceleration model for road vehicles, clear the selected sort criteria if it is not available now. */
+		if (this->vehicle_type == VEH_ROAD &&
+				_settings_game.vehicle.roadveh_acceleration_model == AM_ORIGINAL &&
+				this->sort_criteria > 7) {
+			this->sort_criteria = 0;
+			_last_sort_criteria[VEH_ROAD] = 0;
+		}
 		this->eng_list.ForceRebuild();
 	}
 
