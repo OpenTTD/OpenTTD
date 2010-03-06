@@ -1487,12 +1487,12 @@ static void SwapTrainFlags(uint16 *swap_flag1, uint16 *swap_flag2)
 		SetBit(*swap_flag2, GVF_GOINGDOWN_BIT);
 	} else if (HasBit(flag1, GVF_GOINGDOWN_BIT)) {
 		SetBit(*swap_flag2, GVF_GOINGUP_BIT);
- 	}
+	}
 	if (HasBit(flag2, GVF_GOINGUP_BIT)) {
 		SetBit(*swap_flag1, GVF_GOINGDOWN_BIT);
 	} else if (HasBit(flag2, GVF_GOINGDOWN_BIT)) {
 		SetBit(*swap_flag1, GVF_GOINGUP_BIT);
- 	}
+	}
 }
 
 static void ReverseTrainSwapVeh(Train *v, int l, int r)

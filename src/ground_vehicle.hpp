@@ -77,7 +77,7 @@ struct GroundVehicle : public SpecializedVehicle<T, Type> {
 	void CargoChanged();
 	int GetAcceleration() const;
 
- 	/**
+	/**
 	 * Calculates the total slope resistance for this vehicle.
 	 * @return Slope resistance.
 	 */
