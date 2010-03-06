@@ -333,9 +333,6 @@ static void ShutdownGame()
 	/* stop the AI */
 	AI::Uninitialize(false);
 
-	/* Uninitialize airport state machines */
-	UnInitializeAirports();
-
 	/* Uninitialize variables that are allocated dynamically */
 	GamelogReset();
 	_town_pool.CleanPool();
@@ -604,9 +601,6 @@ int ttd_main(int argc, char *argv[])
 
 	/* initialize screenshot formats */
 	InitializeScreenshotFormats();
-
-	/* initialize airport state machines */
-	InitializeAirports();
 
 	/* initialize all variables that are allocated dynamically */
 	InitializeDynamicVariables();

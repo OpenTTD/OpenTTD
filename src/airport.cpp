@@ -20,7 +20,6 @@
 #include "newgrf_airport.h"
 #include "table/strings.h"
 #include "table/airporttile_ids.h"
-#include "table/airport_defaults.h"
 
 /* Uncomment this to print out a full report of the airport-structure
  * You should either use
@@ -29,22 +28,7 @@
  * - false: give a summarized report which only shows current and next position */
 //#define DEBUG_AIRPORT false
 
-static AirportFTAClass *_dummy_airport;
-static AirportFTAClass *_country_airport;
-static AirportFTAClass *_city_airport;
-static AirportFTAClass *_oilrig;
-static AirportFTAClass *_heliport;
-static AirportFTAClass *_metropolitan_airport;
-static AirportFTAClass *_international_airport;
-static AirportFTAClass *_commuter_airport;
-static AirportFTAClass *_heli_depot;
-static AirportFTAClass *_intercontinental_airport;
-static AirportFTAClass *_heli_station;
-
-
-void InitializeAirports()
-{
-	_dummy_airport = new AirportFTAClass(
+static AirportFTAClass _airportfta_dummy(
 		_airport_moving_data_dummy,
 		NULL,
 		NULL,
@@ -54,7 +38,7 @@ void InitializeAirports()
 		0
 	);
 
-	_country_airport = new AirportFTAClass(
+static AirportFTAClass _airportfta_country(
 		_airport_moving_data_country,
 		_airport_terminal_country,
 		NULL,
@@ -64,7 +48,7 @@ void InitializeAirports()
 		0
 	);
 
-	_city_airport = new AirportFTAClass(
+static AirportFTAClass _airportfta_city(
 		_airport_moving_data_town,
 		_airport_terminal_city,
 		NULL,
@@ -74,47 +58,7 @@ void InitializeAirports()
 		0
 	);
 
-	_metropolitan_airport = new AirportFTAClass(
-		_airport_moving_data_metropolitan,
-		_airport_terminal_metropolitan,
-		NULL,
-		_airport_entries_metropolitan,
-		AirportFTAClass::ALL,
-		_airport_fta_metropolitan,
-		0
-	);
-
-	_international_airport = new AirportFTAClass(
-		_airport_moving_data_international,
-		_airport_terminal_international,
-		_airport_helipad_international,
-		_airport_entries_international,
-		AirportFTAClass::ALL,
-		_airport_fta_international,
-		0
-	);
-
-	_intercontinental_airport = new AirportFTAClass(
-		_airport_moving_data_intercontinental,
-		_airport_terminal_intercontinental,
-		_airport_helipad_intercontinental,
-		_airport_entries_intercontinental,
-		AirportFTAClass::ALL,
-		_airport_fta_intercontinental,
-		0
-	);
-
-	_heliport = new AirportFTAClass(
-		_airport_moving_data_heliport,
-		NULL,
-		_airport_helipad_heliport_oilrig,
-		_airport_entries_heliport_oilrig,
-		AirportFTAClass::HELICOPTERS,
-		_airport_fta_heliport_oilrig,
-		60
-	);
-
-	_oilrig = new AirportFTAClass(
+static AirportFTAClass _airportfta_oilrig(
 		_airport_moving_data_oilrig,
 		NULL,
 		_airport_helipad_heliport_oilrig,
@@ -124,7 +68,37 @@ void InitializeAirports()
 		54
 	);
 
-	_commuter_airport = new AirportFTAClass(
+static AirportFTAClass _airportfta_heliport(
+		_airport_moving_data_heliport,
+		NULL,
+		_airport_helipad_heliport_oilrig,
+		_airport_entries_heliport_oilrig,
+		AirportFTAClass::HELICOPTERS,
+		_airport_fta_heliport_oilrig,
+		60
+	);
+
+static AirportFTAClass _airportfta_metropolitan(
+		_airport_moving_data_metropolitan,
+		_airport_terminal_metropolitan,
+		NULL,
+		_airport_entries_metropolitan,
+		AirportFTAClass::ALL,
+		_airport_fta_metropolitan,
+		0
+	);
+
+static AirportFTAClass _airportfta_international(
+		_airport_moving_data_international,
+		_airport_terminal_international,
+		_airport_helipad_international,
+		_airport_entries_international,
+		AirportFTAClass::ALL,
+		_airport_fta_international,
+		0
+	);
+
+static AirportFTAClass _airportfta_commuter(
 		_airport_moving_data_commuter,
 		_airport_terminal_commuter,
 		_airport_helipad_commuter,
@@ -134,7 +108,7 @@ void InitializeAirports()
 		0
 	);
 
-	_heli_depot = new AirportFTAClass(
+static AirportFTAClass _airportfta_helidepot(
 		_airport_moving_data_helidepot,
 		NULL,
 		_airport_helipad_helidepot,
@@ -144,7 +118,17 @@ void InitializeAirports()
 		0
 	);
 
-	_heli_station = new AirportFTAClass(
+static AirportFTAClass _airportfta_intercontinental(
+		_airport_moving_data_intercontinental,
+		_airport_terminal_intercontinental,
+		_airport_helipad_intercontinental,
+		_airport_entries_intercontinental,
+		AirportFTAClass::ALL,
+		_airport_fta_intercontinental,
+		0
+	);
+
+static AirportFTAClass _airportfta_helistation(
 		_airport_moving_data_helistation,
 		NULL,
 		_airport_helipad_helistation,
@@ -153,21 +137,8 @@ void InitializeAirports()
 		_airport_fta_helistation,
 		0
 	);
-}
 
-void UnInitializeAirports()
-{
-	delete _dummy_airport;
-	delete _country_airport;
-	delete _city_airport;
-	delete _heliport;
-	delete _metropolitan_airport;
-	delete _international_airport;
-	delete _commuter_airport;
-	delete _heli_depot;
-	delete _intercontinental_airport;
-	delete _heli_station;
-}
+#include "table/airport_defaults.h"
 
 
 static uint16 AirportGetNofElements(const AirportFTAbuildup *apFA);
@@ -407,20 +378,5 @@ static void AirportPrintOut(uint nofelements, const AirportFTA *layout, bool ful
 
 const AirportFTAClass *GetAirport(const byte airport_type)
 {
-	/* FIXME -- AircraftNextAirportPos_and_Order -> Needs something nicer, don't like this code
-	 * needs constant change if more airports are added */
-	switch (airport_type) {
-		default:               NOT_REACHED();
-		case AT_SMALL:         return _country_airport;
-		case AT_LARGE:         return _city_airport;
-		case AT_METROPOLITAN:  return _metropolitan_airport;
-		case AT_HELIPORT:      return _heliport;
-		case AT_OILRIG:        return _oilrig;
-		case AT_INTERNATIONAL: return _international_airport;
-		case AT_COMMUTER:      return _commuter_airport;
-		case AT_HELIDEPOT:     return _heli_depot;
-		case AT_INTERCON:      return _intercontinental_airport;
-		case AT_HELISTATION:   return _heli_station;
-		case AT_DUMMY:         return _dummy_airport;
-	}
+	return AirportSpec::Get(airport_type)->fsm;
 }

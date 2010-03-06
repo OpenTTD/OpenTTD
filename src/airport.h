@@ -185,8 +185,6 @@ struct AirportFTA {
 	byte heading;            ///< heading (current orders), guiding an airplane to its target on an airport
 };
 
-void InitializeAirports();
-void UnInitializeAirports();
 const AirportFTAClass *GetAirport(const byte airport_type);
 
 extern const byte * const _airport_sections[];

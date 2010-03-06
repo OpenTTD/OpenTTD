@@ -20,7 +20,7 @@
 
 static AirportClass _airport_classes[APC_MAX];
 
-AirportSpec AirportSpec::dummy = {NULL, NULL, 0, 0, 0, 0, 0, MIN_YEAR, MIN_YEAR, STR_NULL, ATP_TTDP_LARGE, APC_BEGIN, false};
+AirportSpec AirportSpec::dummy = {NULL, NULL, NULL, 0, 0, 0, 0, 0, MIN_YEAR, MIN_YEAR, STR_NULL, ATP_TTDP_LARGE, APC_BEGIN, false};
 
 AirportSpec AirportSpec::specs[NUM_AIRPORTS];
 

@@ -49,6 +49,7 @@ enum TTDPAirportType {
  * Defines the data structure for an airport.
  */
 struct AirportSpec {
+	const struct AirportFTAClass *fsm;     ///< the finite statemachine for the default airports
 	const AirportTileTable * const *table; ///< list of the tiles composing the airport
 	const TileIndexDiffC *depot_table;     ///< gives the position of the depots on the airports
 	byte nof_depots;                       ///< the number of depots in this airport
