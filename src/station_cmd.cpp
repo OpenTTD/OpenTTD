@@ -2229,10 +2229,6 @@ static CommandCost RemoveAirport(TileIndex tile, DoCommandFlag flags)
 
 	tile = st->airport.tile;
 
-	const AirportSpec *as = st->GetAirportSpec();
-	int w = as->size_x;
-	int h = as->size_y;
-
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 
 	const Aircraft *a;
@@ -2244,7 +2240,7 @@ static CommandCost RemoveAirport(TileIndex tile, DoCommandFlag flags)
 	TILE_AREA_LOOP(tile_cur, st->airport) {
 		if (!st->TileBelongsToAirport(tile_cur)) continue;
 
-		CommandCost ret = EnsureNoVehicleOnGround(tile);
+		CommandCost ret = EnsureNoVehicleOnGround(tile_cur);
 		ret.SetGlobalErrorMessage();
 		if (ret.Failed()) return ret;
 
@@ -2257,6 +2253,7 @@ static CommandCost RemoveAirport(TileIndex tile, DoCommandFlag flags)
 	}
 
 	if (flags & DC_EXEC) {
+		const AirportSpec *as = st->GetAirportSpec();
 		for (uint i = 0; i < as->nof_depots; ++i) {
 			DeleteWindowById(
 				WC_VEHICLE_DEPOT, st->GetHangarTile(i)
@@ -2269,7 +2266,7 @@ static CommandCost RemoveAirport(TileIndex tile, DoCommandFlag flags)
 		Town *nearest = AirportGetNearestTown(as, tile);
 		nearest->noise_reached -= GetAirportNoiseLevelForTown(as, nearest->xy, tile);
 
-		st->rect.AfterRemoveRect(st, tile, w, h);
+		st->rect.AfterRemoveRect(st, tile, st->airport.w, st->airport.h);
 
 		st->airport.Clear();
 		st->facilities &= ~FACIL_AIRPORT;

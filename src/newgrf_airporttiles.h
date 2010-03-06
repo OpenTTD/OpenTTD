@@ -15,7 +15,6 @@
 #include "airport.h"
 #include "station_map.h"
 #include "newgrf_commons.h"
-#include "airport.h"
 
 /** Animation triggers for airport tiles */
 enum AirpAnimationTrigger {
