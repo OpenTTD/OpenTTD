@@ -378,5 +378,6 @@ static void AirportPrintOut(uint nofelements, const AirportFTA *layout, bool ful
 
 const AirportFTAClass *GetAirport(const byte airport_type)
 {
+	if (airport_type == AT_DUMMY) return &_airportfta_dummy;
 	return AirportSpec::Get(airport_type)->fsm;
 }
