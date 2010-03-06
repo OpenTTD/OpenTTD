@@ -2072,6 +2072,18 @@ bool AfterLoadGame()
 				st->airport.h = st->GetAirportSpec()->size_y;
 			}
 		}
+
+		Train *t;
+		FOR_ALL_TRAINS(t) {
+			/* Copy old GOINGUP / GOINGDOWN flags. */
+			if (HasBit(t->flags, 1)) {
+				ClrBit(t->flags, 1);
+				SetBit(t->gv_flags, GVF_GOINGUP_BIT);
+			} else if (HasBit(t->flags, 2)) {
+				ClrBit(t->flags, 2);
+				SetBit(t->gv_flags, GVF_GOINGDOWN_BIT);
+			}
+		}
 	}
 
 	/* Road stops is 'only' updating some caches */

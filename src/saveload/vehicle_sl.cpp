@@ -544,6 +544,7 @@ const SaveLoad *GetVehicleDescription(VehicleType vt)
 		 SLE_CONDVAR(Train, wait_counter,        SLE_UINT16,                 136, SL_MAX_VERSION),
 
 		SLE_CONDNULL(2, 2, 19),
+		 SLE_CONDVAR(Train, gv_flags,            SLE_UINT16,                 139, SL_MAX_VERSION),
 		/* reserve extra space in savegame here. (currently 11 bytes) */
 		SLE_CONDNULL(11, 2, SL_MAX_VERSION),
 

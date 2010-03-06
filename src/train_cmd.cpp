@@ -1477,22 +1477,22 @@ static void SwapTrainFlags(uint16 *swap_flag1, uint16 *swap_flag2)
 	uint16 flag2 = *swap_flag2;
 
 	/* Clear the flags */
-	ClrBit(*swap_flag1, VRF_GOINGUP);
-	ClrBit(*swap_flag1, VRF_GOINGDOWN);
-	ClrBit(*swap_flag2, VRF_GOINGUP);
-	ClrBit(*swap_flag2, VRF_GOINGDOWN);
+	ClrBit(*swap_flag1, GVF_GOINGUP_BIT);
+	ClrBit(*swap_flag1, GVF_GOINGDOWN_BIT);
+	ClrBit(*swap_flag2, GVF_GOINGUP_BIT);
+	ClrBit(*swap_flag2, GVF_GOINGDOWN_BIT);
 
 	/* Reverse the rail-flags (if needed) */
-	if (HasBit(flag1, VRF_GOINGUP)) {
-		SetBit(*swap_flag2, VRF_GOINGDOWN);
-	} else if (HasBit(flag1, VRF_GOINGDOWN)) {
-		SetBit(*swap_flag2, VRF_GOINGUP);
-	}
-	if (HasBit(flag2, VRF_GOINGUP)) {
-		SetBit(*swap_flag1, VRF_GOINGDOWN);
-	} else if (HasBit(flag2, VRF_GOINGDOWN)) {
-		SetBit(*swap_flag1, VRF_GOINGUP);
-	}
+	if (HasBit(flag1, GVF_GOINGUP_BIT)) {
+		SetBit(*swap_flag2, GVF_GOINGDOWN_BIT);
+	} else if (HasBit(flag1, GVF_GOINGDOWN_BIT)) {
+		SetBit(*swap_flag2, GVF_GOINGUP_BIT);
+ 	}
+	if (HasBit(flag2, GVF_GOINGUP_BIT)) {
+		SetBit(*swap_flag1, GVF_GOINGDOWN_BIT);
+	} else if (HasBit(flag2, GVF_GOINGDOWN_BIT)) {
+		SetBit(*swap_flag1, GVF_GOINGUP_BIT);
+ 	}
 }
 
 static void ReverseTrainSwapVeh(Train *v, int l, int r)
@@ -1523,7 +1523,7 @@ static void ReverseTrainSwapVeh(Train *v, int l, int r)
 		Swap(a->tile,  b->tile);
 		Swap(a->z_pos, b->z_pos);
 
-		SwapTrainFlags(&a->flags, &b->flags);
+		SwapTrainFlags(&a->gv_flags, &b->gv_flags);
 
 		/* update other vars */
 		a->UpdateViewport(true, true);
@@ -2875,8 +2875,8 @@ static byte AfterSetTrainPos(Train *v, bool new_tile)
 	v->z_pos = GetSlopeZ(v->x_pos, v->y_pos);
 
 	if (new_tile) {
-		ClrBit(v->flags, VRF_GOINGUP);
-		ClrBit(v->flags, VRF_GOINGDOWN);
+		ClrBit(v->gv_flags, GVF_GOINGUP_BIT);
+		ClrBit(v->gv_flags, GVF_GOINGDOWN_BIT);
 
 		if (v->track == TRACK_BIT_X || v->track == TRACK_BIT_Y) {
 			/* Any track that isn't TRACK_BIT_X or TRACK_BIT_Y cannot be sloped.
@@ -2890,7 +2890,7 @@ static byte AfterSetTrainPos(Train *v, bool new_tile)
 			byte middle_z = GetSlopeZ((v->x_pos & INV_TILE_SIZE_MASK) | HALF_TILE_SIZE, (v->y_pos & INV_TILE_SIZE_MASK) | HALF_TILE_SIZE);
 
 			if (middle_z != v->z_pos) {
-				SetBit(v->flags, (middle_z > old_z) ? VRF_GOINGUP : VRF_GOINGDOWN);
+				SetBit(v->gv_flags, (middle_z > old_z) ? GVF_GOINGUP_BIT : GVF_GOINGDOWN_BIT);
 			}
 		}
 	}

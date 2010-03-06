@@ -1473,8 +1473,8 @@ static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex ti
 				case VEH_TRAIN: {
 					Train *t = Train::From(v);
 					t->track = TRACK_BIT_WORMHOLE;
-					ClrBit(t->flags, VRF_GOINGUP);
-					ClrBit(t->flags, VRF_GOINGDOWN);
+					ClrBit(t->gv_flags, GVF_GOINGUP_BIT);
+					ClrBit(t->gv_flags, GVF_GOINGDOWN_BIT);
 				} break;
 
 				case VEH_ROAD:

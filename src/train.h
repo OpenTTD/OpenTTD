@@ -24,10 +24,6 @@ struct Train;
 enum VehicleRailFlags {
 	VRF_REVERSING         = 0,
 
-	/* used to calculate if train is going up or down */
-	VRF_GOINGUP           = 1,
-	VRF_GOINGDOWN         = 2,
-
 	/* used to store if a wagon is powered or not */
 	VRF_POWEREDWAGON      = 3,
 
@@ -450,25 +446,6 @@ protected: // These functions should not be called outside acceleration code.
 	FORCEINLINE uint32 GetRollingFriction() const
 	{
 		return 35;
-	}
-
-	/**
-	 * Calculates the total slope resistance for this vehicle.
-	 * @return Slope resistance.
-	 */
-	FORCEINLINE int32 GetSlopeResistance() const
-	{
-		int32 incl = 0;
-
-		for (const Train *u = this; u != NULL; u = u->Next()) {
-			if (HasBit(u->flags, VRF_GOINGUP)) {
-				incl += u->acc_cache.cached_slope_resistance;
-			} else if (HasBit(u->flags, VRF_GOINGDOWN)) {
-				incl -= u->acc_cache.cached_slope_resistance;
-			}
-		}
-
-		return incl;
 	}
 
 	/**

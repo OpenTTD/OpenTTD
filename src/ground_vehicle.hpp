@@ -37,6 +37,12 @@ struct AccelerationCache {
 	uint16 cached_max_track_speed;  ///< Maximum consist speed limited by track type.
 };
 
+/** Ground vehicle flags. */
+enum GroundVehicleFlags {
+	GVF_GOINGUP_BIT       = 0,
+	GVF_GOINGDOWN_BIT     = 1,
+};
+
 /**
  * Base class for all vehicles that move through ground.
  *
@@ -58,6 +64,7 @@ struct AccelerationCache {
 template <class T, VehicleType Type>
 struct GroundVehicle : public SpecializedVehicle<T, Type> {
 	AccelerationCache acc_cache;
+	uint16 gv_flags; ///< @see GroundVehicleFlags
 
 	/**
 	 * The constructor at SpecializedVehicle must be called.
@@ -67,6 +74,25 @@ struct GroundVehicle : public SpecializedVehicle<T, Type> {
 	void PowerChanged();
 	void CargoChanged();
 	int GetAcceleration() const;
+
+ 	/**
+	 * Calculates the total slope resistance for this vehicle.
+	 * @return Slope resistance.
+	 */
+	FORCEINLINE int32 GetSlopeResistance() const
+	{
+		int32 incl = 0;
+
+		for (const T *u = T::From(this); u != NULL; u = u->Next()) {
+			if (HasBit(u->gv_flags, GVF_GOINGUP_BIT)) {
+				incl += u->acc_cache.cached_slope_resistance;
+			} else if (HasBit(u->gv_flags, GVF_GOINGDOWN_BIT)) {
+				incl -= u->acc_cache.cached_slope_resistance;
+			}
+		}
+
+		return incl;
+	}
 };
 
 #endif /* GROUND_VEHICLE_HPP */

@@ -116,7 +116,7 @@ int GroundVehicle<T, Type>::GetAcceleration() const
 		resistance += (area * this->acc_cache.cached_air_drag * speed * speed) / 20000;
 	}
 
-	resistance += v->GetSlopeResistance();
+	resistance += this->GetSlopeResistance();
 	resistance *= 4; //[N]
 
 	/* This value allows to know if the vehicle is accelerating or braking. */
