@@ -39,6 +39,21 @@ struct AccelerationCache {
 
 /**
  * Base class for all vehicles that move through ground.
+ *
+ * Child classes must define all of the following functions.
+ * These functions are not defined as pure virtual functions at this class to improve performance.
+ *
+ * virtual uint16      GetPower() const = 0;
+ * virtual uint16      GetPoweredPartPower(const T *head) const = 0;
+ * virtual uint16      GetWeight() const = 0;
+ * virtual byte        GetTractiveEffort() const = 0;
+ * virtual AccelStatus GetAccelerationStatus() const = 0;
+ * virtual uint16      GetCurrentSpeed() const = 0;
+ * virtual uint32      GetRollingFriction() const = 0;
+ * virtual int         GetAccelerationType() const = 0;
+ * virtual int32       GetSlopeSteepness() const = 0;
+ * virtual uint16      GetInitialMaxSpeed() const = 0;
+ * virtual uint16      GetMaxTrackSpeed() const = 0;
  */
 template <class T, VehicleType Type>
 struct GroundVehicle : public SpecializedVehicle<T, Type> {
