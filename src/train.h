@@ -12,12 +12,12 @@
 #ifndef TRAIN_H
 #define TRAIN_H
 
-#include "vehicle_base.h"
 #include "newgrf_engine.h"
 #include "cargotype.h"
 #include "rail.h"
 #include "engine_base.h"
 #include "rail_map.h"
+#include "ground_vehicle.hpp"
 
 struct Train;
 
@@ -111,7 +111,7 @@ enum AccelStatus {
 /**
  * 'Train' is either a loco or a wagon.
  */
-struct Train : public SpecializedVehicle<Train, VEH_TRAIN> {
+struct Train : public GroundVehicle<Train, VEH_TRAIN> {
 	TrainCache tcache;
 
 	/* Link between the two ends of a multiheaded engine */
@@ -129,7 +129,7 @@ struct Train : public SpecializedVehicle<Train, VEH_TRAIN> {
 	uint16 wait_counter;
 
 	/** We don't want GCC to zero our struct! It already is zeroed and has an index! */
-	Train() : SpecializedVehicle<Train, VEH_TRAIN>() {}
+	Train() : GroundVehicle<Train, VEH_TRAIN>() {}
 	/** We want to 'destruct' the right class. */
 	virtual ~Train() { this->PreDestructor(); }
 

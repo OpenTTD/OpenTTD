@@ -1025,6 +1025,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\ground_vehicle.hpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\group.h"
 				>
 			</File>

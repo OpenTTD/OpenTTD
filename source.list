@@ -166,6 +166,7 @@ gfx_func.h
 gfx_type.h
 gfxinit.h
 graph_gui.h
+ground_vehicle.hpp
 group.h
 group_gui.h
 group_type.h
