@@ -13,6 +13,7 @@
 #define GROUND_VEHICLE_HPP
 
 #include "vehicle_base.h"
+#include "landscape.h"
 
 /** What is the status of our acceleration? */
 enum AccelStatus {
@@ -60,6 +61,7 @@ enum GroundVehicleFlags {
  * virtual int32       GetSlopeSteepness() const = 0;
  * virtual uint16      GetInitialMaxSpeed() const = 0;
  * virtual uint16      GetMaxTrackSpeed() const = 0;
+ * virtual bool        TileMayHaveSlopedTrack() const = 0;
  */
 template <class T, VehicleType Type>
 struct GroundVehicle : public SpecializedVehicle<T, Type> {
@@ -92,6 +94,41 @@ struct GroundVehicle : public SpecializedVehicle<T, Type> {
 		}
 
 		return incl;
+	}
+
+	/**
+	 * Checks if the vehicle is in a slope and sets the required flags in that case.
+	 * @param new_tile True if the vehicle reached a new tile.
+	 * @param turned Indicates if the vehicle has turned.
+	 * @return Old height of the vehicle.
+	 */
+	FORCEINLINE byte UpdateInclination(bool new_tile, bool turned)
+	{
+		byte old_z = this->z_pos;
+		this->z_pos = GetSlopeZ(this->x_pos, this->y_pos);
+
+		if (new_tile) {
+			ClrBit(this->gv_flags, GVF_GOINGUP_BIT);
+			ClrBit(this->gv_flags, GVF_GOINGDOWN_BIT);
+
+			if (T::From(this)->TileMayHaveSlopedTrack()) {
+				/* To check whether the current tile is sloped, and in which
+				 * direction it is sloped, we get the 'z' at the center of
+				 * the tile (middle_z) and the edge of the tile (old_z),
+				 * which we then can compare. */
+				static const int HALF_TILE_SIZE = TILE_SIZE / 2;
+				static const int INV_TILE_SIZE_MASK = ~(TILE_SIZE - 1);
+
+				byte middle_z = GetSlopeZ((this->x_pos & INV_TILE_SIZE_MASK) | HALF_TILE_SIZE, (this->y_pos & INV_TILE_SIZE_MASK) | HALF_TILE_SIZE);
+
+				if (middle_z != this->z_pos) {
+					SetBit(this->gv_flags, (middle_z > old_z) ? GVF_GOINGUP_BIT : GVF_GOINGDOWN_BIT);
+				}
+			}
+		}
+
+		this->UpdateViewport(true, turned);
+		return old_z;
 	}
 };
 

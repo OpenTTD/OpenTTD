@@ -2869,36 +2869,6 @@ static void TrainEnterStation(Train *v, StationID station)
 	StationAnimationTrigger(st, v->tile, STAT_ANIM_TRAIN_ARRIVES);
 }
 
-static byte AfterSetTrainPos(Train *v, bool new_tile)
-{
-	byte old_z = v->z_pos;
-	v->z_pos = GetSlopeZ(v->x_pos, v->y_pos);
-
-	if (new_tile) {
-		ClrBit(v->gv_flags, GVF_GOINGUP_BIT);
-		ClrBit(v->gv_flags, GVF_GOINGDOWN_BIT);
-
-		if (v->track == TRACK_BIT_X || v->track == TRACK_BIT_Y) {
-			/* Any track that isn't TRACK_BIT_X or TRACK_BIT_Y cannot be sloped.
-			 * To check whether the current tile is sloped, and in which
-			 * direction it is sloped, we get the 'z' at the center of
-			 * the tile (middle_z) and the edge of the tile (old_z),
-			 * which we then can compare. */
-			static const int HALF_TILE_SIZE = TILE_SIZE / 2;
-			static const int INV_TILE_SIZE_MASK = ~(TILE_SIZE - 1);
-
-			byte middle_z = GetSlopeZ((v->x_pos & INV_TILE_SIZE_MASK) | HALF_TILE_SIZE, (v->y_pos & INV_TILE_SIZE_MASK) | HALF_TILE_SIZE);
-
-			if (middle_z != v->z_pos) {
-				SetBit(v->gv_flags, (middle_z > old_z) ? GVF_GOINGUP_BIT : GVF_GOINGDOWN_BIT);
-			}
-		}
-	}
-
-	VehicleMove(v, true);
-	return old_z;
-}
-
 /* Check if the vehicle is compatible with the specified tile */
 static inline bool CheckCompatibleRail(const Train *v, TileIndex tile)
 {
@@ -3322,7 +3292,7 @@ static void TrainController(Train *v, Vehicle *nomove)
 				}
 
 				/* We need to update signal status, but after the vehicle position hash
-				 * has been updated by AfterSetTrainPos() */
+				 * has been updated by UpdateInclination() */
 				update_signals_crossing = true;
 
 				if (chosen_dir != v->direction) {
@@ -3381,7 +3351,7 @@ static void TrainController(Train *v, Vehicle *nomove)
 		v->y_pos = gp.y;
 
 		/* update the Z position of the vehicle */
-		byte old_z = AfterSetTrainPos(v, (gp.new_tile != gp.old_tile));
+		byte old_z = v->UpdateInclination(gp.new_tile != gp.old_tile, false);
 
 		if (prev == NULL) {
 			/* This is the first vehicle in the train */
@@ -3537,9 +3507,9 @@ static void ChangeTrainDirRandomly(Train *v)
 			v->UpdateDeltaXY(v->direction);
 			v->cur_image = v->GetImage(v->direction);
 			/* Refrain from updating the z position of the vehicle when on
-			 * a bridge, because AfterSetTrainPos will put the vehicle under
+			 * a bridge, because UpdateInclination() will put the vehicle under
 			 * the bridge in that case */
-			if (v->track != TRACK_BIT_WORMHOLE) AfterSetTrainPos(v, false);
+			if (v->track != TRACK_BIT_WORMHOLE) v->UpdateInclination(false, false);
 		}
 	} while ((v = v->Next()) != NULL);
 }

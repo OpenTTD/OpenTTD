@@ -483,6 +483,16 @@ protected: // These functions should not be called outside acceleration code.
 	{
 		return GetRailTypeInfo(GetRailType(this->tile))->max_speed;
 	}
+
+	/**
+	 * Checks if the vehicle is at a tile that can be sloped.
+	 * @return True if the tile can be sloped.
+	 */
+	FORCEINLINE bool TileMayHaveSlopedTrack() const
+	{
+		/* Any track that isn't TRACK_BIT_X or TRACK_BIT_Y cannot be sloped. */
+		return this->track == TRACK_BIT_X || this->track == TRACK_BIT_Y;
+	}
 };
 
 #define FOR_ALL_TRAINS(var) FOR_ALL_VEHICLES_OF_TYPE(Train, var)
