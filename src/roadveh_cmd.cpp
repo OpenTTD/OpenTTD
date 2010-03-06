@@ -468,22 +468,6 @@ static void DeleteLastRoadVeh(RoadVehicle *v)
 	delete v;
 }
 
-static byte SetRoadVehPosition(RoadVehicle *v, int x, int y, bool turned)
-{
-	byte new_z, old_z;
-
-	/* need this hint so it returns the right z coordinate on bridges. */
-	v->x_pos = x;
-	v->y_pos = y;
-	new_z = GetSlopeZ(x, y);
-
-	old_z = v->z_pos;
-	v->z_pos = new_z;
-
-	v->UpdateViewport(true, turned);
-	return old_z;
-}
-
 static void RoadVehSetRandomDirection(RoadVehicle *v)
 {
 	static const DirDiff delta[] = {
@@ -494,7 +478,7 @@ static void RoadVehSetRandomDirection(RoadVehicle *v)
 		uint32 r = Random();
 
 		v->direction = ChangeDir(v->direction, delta[r & 3]);
-		SetRoadVehPosition(v, v->x_pos, v->y_pos, true);
+		v->UpdateInclination(false, true);
 	} while ((v = v->Next()) != NULL);
 }
 
@@ -1054,7 +1038,9 @@ static bool RoadVehLeaveDepot(RoadVehicle *v, bool first)
 	v->state = tdir;
 	v->frame = RVC_DEPOT_START_FRAME;
 
-	SetRoadVehPosition(v, x, y, true);
+	v->x_pos = x;
+	v->y_pos = y;
+	v->UpdateInclination(true, true);
 
 	InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
 
@@ -1181,7 +1167,9 @@ static bool IndividualRoadVehicleController(RoadVehicle *v, const RoadVehicle *p
 
 		if (IsTileType(gp.new_tile, MP_TUNNELBRIDGE) && HasBit(VehicleEnterTile(v, gp.new_tile, gp.x, gp.y), VETS_ENTERED_WORMHOLE)) {
 			/* Vehicle has just entered a bridge or tunnel */
-			SetRoadVehPosition(v, gp.x, gp.y, true);
+			v->x_pos = gp.x;
+			v->y_pos = gp.y;
+			v->UpdateInclination(true, true);
 			return true;
 		}
 
@@ -1331,8 +1319,9 @@ again:
 			v->direction = new_dir;
 			v->cur_speed -= v->cur_speed >> 2;
 		}
-
-		RoadZPosAffectSpeed(v, SetRoadVehPosition(v, x, y, true));
+		v->x_pos = x;
+		v->y_pos = y;
+		RoadZPosAffectSpeed(v, v->UpdateInclination(true, true));
 		return true;
 	}
 
@@ -1396,7 +1385,9 @@ again:
 			v->cur_speed -= v->cur_speed >> 2;
 		}
 
-		RoadZPosAffectSpeed(v, SetRoadVehPosition(v, x, y, true));
+		v->x_pos = x;
+		v->y_pos = y;
+		RoadZPosAffectSpeed(v, v->UpdateInclination(true, true));
 		return true;
 	}
 
@@ -1446,7 +1437,7 @@ again:
 		v->cur_speed -= (v->cur_speed >> 2);
 		if (old_dir != v->state) {
 			/* The vehicle is in a road stop */
-			SetRoadVehPosition(v, v->x_pos, v->y_pos, true);
+			v->UpdateInclination(false, true);
 			/* Note, return here means that the frame counter is not incremented
 			 * for vehicles changing direction in a road stop. This causes frames to
 			 * be repeated. (XXX) Is this intended? */
@@ -1482,7 +1473,9 @@ again:
 				/* Check if next inline bay is free and has compatible road. */
 				if (RoadStop::IsDriveThroughRoadStopContinuation(v->tile, next_tile) && (GetRoadTypes(next_tile) & v->compatible_roadtypes) != 0) {
 					v->frame++;
-					RoadZPosAffectSpeed(v, SetRoadVehPosition(v, x, y, false));
+					v->x_pos = x;
+					v->y_pos = y;
+					RoadZPosAffectSpeed(v, v->UpdateInclination(true, false));
 					return true;
 				}
 			}
@@ -1527,8 +1520,9 @@ again:
 	/* Move to next frame unless vehicle arrived at a stop position
 	 * in a depot or entered a tunnel/bridge */
 	if (!HasBit(r, VETS_ENTERED_WORMHOLE)) v->frame++;
-
-	RoadZPosAffectSpeed(v, SetRoadVehPosition(v, x, y, true));
+	v->x_pos = x;
+	v->y_pos = y;
+	RoadZPosAffectSpeed(v, v->UpdateInclination(false, true));
 	return true;
 }
 

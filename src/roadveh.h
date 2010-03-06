@@ -281,10 +281,10 @@ protected: // These functions should not be called outside acceleration code.
 	 */
 	FORCEINLINE bool TileMayHaveSlopedTrack() const
 	{
-		if (!IsNormalRoadTile(this->tile)) return false;
-		RoadBits cur_road = GetAllRoadBits(this->tile);
-		/* Any road that isn't ROAD_X or ROAD_Y cannot be sloped. */
-		return cur_road == ROAD_X || cur_road == ROAD_Y;
+		TrackStatus ts = GetTileTrackStatus(this->tile, TRANSPORT_ROAD, this->compatible_roadtypes);
+		TrackBits trackbits = TrackStatusToTrackBits(ts);
+
+		return trackbits == TRACK_BIT_X || trackbits == TRACK_BIT_Y;
 	}
 };
 
