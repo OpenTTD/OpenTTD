@@ -151,11 +151,6 @@
  *
  */
 
-#ifndef M_PI_2
-#define M_PI_2 1.57079632679489661923
-#define M_PI   3.14159265358979323846
-#endif /* M_PI_2 */
-
 /** Fixed point type for heights */
 typedef int16 height_t;
 static const int height_decimal_bits = 4;

@@ -328,6 +328,11 @@ assert_compile(sizeof(uint32) == 4);
 assert_compile(sizeof(uint16) == 2);
 assert_compile(sizeof(uint8)  == 1);
 
+#ifndef M_PI_2
+#define M_PI_2 1.57079632679489661923
+#define M_PI   3.14159265358979323846
+#endif /* M_PI_2 */
+
 /**
  * Return the length of an fixed size array.
  * Unlike sizeof this function returns the number of elements
