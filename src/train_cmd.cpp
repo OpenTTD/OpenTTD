@@ -99,7 +99,7 @@ void Train::PowerChanged()
 	uint32 total_power = 0;
 	uint32 max_te = 0;
 	uint32 number_of_parts = 0;
-	uint16 max_rail_speed = this->tcache.cached_max_speed;
+	uint16 max_track_speed = this->GetInitialMaxSpeed();
 
 	for (const Train *u = this; u != NULL; u = u->Next()) {
 		uint32 current_power = u->GetPower();
@@ -110,9 +110,9 @@ void Train::PowerChanged()
 		total_power += u->GetPoweredPartPower(this);
 		number_of_parts++;
 
-		/* Get minimum max speed for rail */
-		uint16 rail_speed = GetRailTypeInfo(GetRailType(u->tile))->max_speed;
-		if (rail_speed > 0) max_rail_speed = min(max_rail_speed, rail_speed);
+		/* Get minimum max speed for this track */
+		uint16 track_speed = u->GetMaxTrackSpeed();
+		if (track_speed > 0) max_track_speed = min(max_track_speed, track_speed);
 	}
 
 	this->tcache.cached_axle_resistance = 60 * number_of_parts;
@@ -130,7 +130,7 @@ void Train::PowerChanged()
 		SetWindowWidgetDirty(WC_VEHICLE_VIEW, this->index, VVW_WIDGET_START_STOP_VEH);
 	}
 
-	this->tcache.cached_max_rail_speed = max_rail_speed;
+	this->tcache.cached_max_track_speed = max_track_speed;
 }
 
 
@@ -498,7 +498,7 @@ int Train::GetCurrentMaxSpeed() const
 		}
 	}
 
-	return min(max_speed, this->tcache.cached_max_rail_speed);
+	return min(max_speed, this->tcache.cached_max_track_speed);
 }
 
 /**
@@ -564,7 +564,7 @@ void Train::UpdateAcceleration()
 {
 	assert(this->IsFrontEngine());
 
-	this->max_speed = this->tcache.cached_max_rail_speed;
+	this->max_speed = this->tcache.cached_max_track_speed;
 
 	uint power = this->tcache.cached_power;
 	uint weight = this->tcache.cached_weight;

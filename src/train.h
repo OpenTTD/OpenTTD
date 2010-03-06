@@ -70,6 +70,7 @@ struct AccelerationCache {
 	uint32 cached_power;            ///< total power of the consist.
 	uint32 cached_air_drag;         ///< Air drag coefficient of the vehicle
 	uint16 cached_axle_resistance;  ///< Resistance caused by the axles of the vehicle
+	uint16 cached_max_track_speed;  ///< Max consist speed limited by track type
 };
 
 /** Variables that are cached to improve performance and such */
@@ -86,7 +87,6 @@ struct TrainCache : public AccelerationCache {
 
 	/* cached max. speed / acceleration data */
 	uint16 cached_max_speed;    ///< max speed of the consist. (minimum of the max speed of all vehicles in the consist)
-	uint16 cached_max_rail_speed; ///< max consist speed limited by rail type
 	int cached_max_curve_speed; ///< max consist speed limited by curves
 
 	/**
@@ -511,6 +511,24 @@ protected: // These functions should not be called outside acceleration code.
 	FORCEINLINE uint32 GetSlopeSteepness() const
 	{
 		return 20 * _settings_game.vehicle.train_slope_steepness; // 1% slope * slope steepness
+	}
+
+	/**
+	 * Gets the maximum speed of the vehicle, ignoring the limitations of the kind of track the vehicle is on.
+	 * @return Maximum speed of the vehicle.
+	 */
+	FORCEINLINE uint16 GetInitialMaxSpeed() const
+	{
+		return this->tcache.cached_max_speed;
+	}
+
+	/**
+	 * Gets the maximum speed allowed by the track for this vehicle.
+	 * @return Maximum speed allowed.
+	 */
+	FORCEINLINE uint16 GetMaxTrackSpeed() const
+	{
+		return GetRailTypeInfo(GetRailType(this->tile))->max_speed;
 	}
 };
 
