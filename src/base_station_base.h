@@ -13,6 +13,7 @@
 #define BASE_STATION_BASE_H
 
 #include "core/pool_type.hpp"
+#include "command_type.h"
 #include "viewport_type.h"
 #include "station_map.h"
 
@@ -39,7 +40,7 @@ struct StationRect : public Rect {
 	void MakeEmpty();
 	bool PtInExtendedRect(int x, int y, int distance = 0) const;
 	bool IsEmpty() const;
-	bool BeforeAddTile(TileIndex tile, StationRectMode mode);
+	CommandCost BeforeAddTile(TileIndex tile, StationRectMode mode);
 	bool BeforeAddRect(TileIndex tile, int w, int h, StationRectMode mode);
 	bool AfterRemoveTile(BaseStation *st, TileIndex tile);
 	bool AfterRemoveRect(BaseStation *st, TileIndex tile, int w, int h);
