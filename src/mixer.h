@@ -19,7 +19,7 @@ void MxMixSamples(void *buffer, uint samples);
 
 MixerChannel *MxAllocateChannel();
 void MxSetChannelRawSrc(MixerChannel *mc, int8 *mem, size_t size, uint rate, bool is16bit);
-void MxSetChannelVolume(MixerChannel *mc, uint left, uint right);
+void MxSetChannelVolume(MixerChannel *mc, uint volume, float pan);
 void MxActivateChannel(MixerChannel*);
 
 #endif /* MIXER_H */

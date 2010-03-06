@@ -10,6 +10,7 @@
 /** @file mixer.cpp Mixing of sound samples. */
 
 #include "stdafx.h"
+#include <math.h>
 #include "core/math_func.hpp"
 
 struct MixerChannel {
@@ -185,10 +186,18 @@ void MxSetChannelRawSrc(MixerChannel *mc, int8 *mem, size_t size, uint rate, boo
 	mc->is16bit = is16bit;
 }
 
-void MxSetChannelVolume(MixerChannel *mc, uint left, uint right)
+/**
+ * Set volume and pan parameters for a sound.
+ * @param mc     MixerChannel to set
+ * @param volume Volume level for sound, range is 0..16384
+ * @param pan    Pan position for sound, range is 0..1
+ */
+void MxSetChannelVolume(MixerChannel *mc, uint volume, float pan)
 {
-	mc->volume_left = left;
-	mc->volume_right = right;
+	/* Use sinusoidal pan to maintain overall sound power level regardless
+	 * of position. */
+	mc->volume_left = volume * sin((1.0 - pan) * M_PI / 2.0);
+	mc->volume_right = volume * sin(pan * M_PI / 2.0);
 }
 
 

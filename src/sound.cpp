@@ -24,9 +24,6 @@
 static SoundEntry _original_sounds[ORIGINAL_SAMPLE_COUNT];
 MusicFileSettings msf;
 
-/* Number of levels of panning per side */
-#define PANNING_LEVELS 16
-
 static void OpenBankFile(const char *filename)
 {
 	memset(_original_sounds, 0, sizeof(_original_sounds));
@@ -158,7 +155,7 @@ void InitializeSound()
 }
 
 /* Low level sound player */
-static void StartSound(SoundID sound_id, int panning, uint volume)
+static void StartSound(SoundID sound_id, float pan, uint volume)
 {
 	if (volume == 0) return;
 
@@ -174,12 +171,9 @@ static void StartSound(SoundID sound_id, int panning, uint volume)
 	if (!SetBankSource(mc, sound)) return;
 
 	/* Apply the sound effect's own volume. */
-	volume = (sound->volume * volume) / 128;
+	volume = sound->volume * volume;
 
-	panning = Clamp(panning, -PANNING_LEVELS, PANNING_LEVELS);
-	uint left_vol = (volume * PANNING_LEVELS) - (volume * panning);
-	uint right_vol = (volume * PANNING_LEVELS) + (volume * panning);
-	MxSetChannelVolume(mc, left_vol * 128 / PANNING_LEVELS, right_vol * 128 / PANNING_LEVELS);
+	MxSetChannelVolume(mc, volume, pan);
 	MxActivateChannel(mc);
 }
 
@@ -244,7 +238,7 @@ static void SndPlayScreenCoordFx(SoundID sound, int left, int right, int top, in
 				top < vp->virtual_top + vp->virtual_height && bottom > vp->virtual_top) {
 			int screen_x = (left + right) / 2 - vp->virtual_left;
 			int width = (vp->virtual_width == 0 ? 1 : vp->virtual_width);
-			int panning = (screen_x * PANNING_LEVELS * 2) / width - PANNING_LEVELS;
+			float panning = (float)screen_x / width;
 
 			StartSound(
 				sound,
@@ -278,7 +272,7 @@ void SndPlayVehicleFx(SoundID sound, const Vehicle *v)
 
 void SndPlayFx(SoundID sound)
 {
-	StartSound(sound, 0, msf.effect_vol);
+	StartSound(sound, 0.5, msf.effect_vol);
 }
 
 INSTANTIATE_BASE_MEDIA_METHODS(BaseMedia<SoundsSet>, SoundsSet)
