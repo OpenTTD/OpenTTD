@@ -146,7 +146,7 @@ public:
 	 * Get the power of an engine.
 	 * @param engine_id The engine to get the power of.
 	 * @pre IsValidEngine(engine_id).
-	 * @pre GetVehicleType(engine_id) == AIVehicle::VT_RAIL && !IsWagon(engine_id).
+	 * @pre (GetVehicleType(engine_id) == AIVehicle::VT_RAIL || GetVehicleType(engine_id) == AIVehicle::VT_ROAD) && !IsWagon(engine_id).
 	 * @return The power of the engine in hp.
 	 */
 	static int32 GetPower(EngineID engine_id);
@@ -155,7 +155,7 @@ public:
 	 * Get the weight of an engine.
 	 * @param engine_id The engine to get the weight of.
 	 * @pre IsValidEngine(engine_id).
-	 * @pre GetVehicleType(engine_id) == AIVehicle::VT_RAIL.
+	 * @pre (GetVehicleType(engine_id) == AIVehicle::VT_RAIL || GetVehicleType(engine_id) == AIVehicle::VT_ROAD).
 	 * @return The weight of the engine in metric tons.
 	 */
 	static int32 GetWeight(EngineID engine_id);
@@ -164,7 +164,7 @@ public:
 	 * Get the maximum tractive effort of an engine.
 	 * @param engine_id The engine to get the maximum tractive effort of.
 	 * @pre IsValidEngine(engine_id).
-	 * @pre GetVehicleType(engine_id) == AIVehicle::VT_RAIL && !IsWagon(engine_id).
+	 * @pre (GetVehicleType(engine_id) == AIVehicle::VT_RAIL || GetVehicleType(engine_id) == AIVehicle::VT_ROAD) && !IsWagon(engine_id).
 	 * @return The maximum tractive effort of the engine in kN.
 	 */
 	static int32 GetMaxTractiveEffort(EngineID engine_id);

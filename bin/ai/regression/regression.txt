@@ -3220,9 +3220,9 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetPrice():         4921
     GetMaxAge():        4392
     GetRunningCost():   426
-    GetPower():         -1
-    GetWeight():        -1
-    GetMaxTractiveEffort(): -1
+    GetPower():         90
+    GetWeight():        10
+    GetMaxTractiveEffort(): 29
     GetVehicleType():   1
     GetRailType():      255
     GetRoadType():      0
@@ -3346,9 +3346,9 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetPrice():         4429
     GetMaxAge():        5490
     GetRunningCost():   421
-    GetPower():         -1
-    GetWeight():        -1
-    GetMaxTractiveEffort(): -1
+    GetPower():         120
+    GetWeight():        9
+    GetMaxTractiveEffort(): 26
     GetVehicleType():   1
     GetRailType():      255
     GetRoadType():      0
@@ -3400,9 +3400,9 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetPrice():         4716
     GetMaxAge():        5490
     GetRunningCost():   421
-    GetPower():         -1
-    GetWeight():        -1
-    GetMaxTractiveEffort(): -1
+    GetPower():         120
+    GetWeight():        9
+    GetMaxTractiveEffort(): 26
     GetVehicleType():   1
     GetRailType():      255
     GetRoadType():      0
@@ -3508,9 +3508,9 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetPrice():         4511
     GetMaxAge():        5490
     GetRunningCost():   421
-    GetPower():         -1
-    GetWeight():        -1
-    GetMaxTractiveEffort(): -1
+    GetPower():         120
+    GetWeight():        9
+    GetMaxTractiveEffort(): 26
     GetVehicleType():   1
     GetRailType():      255
     GetRoadType():      0
@@ -3562,9 +3562,9 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetPrice():         4306
     GetMaxAge():        5490
     GetRunningCost():   421
-    GetPower():         -1
-    GetWeight():        -1
-    GetMaxTractiveEffort(): -1
+    GetPower():         120
+    GetWeight():        9
+    GetMaxTractiveEffort(): 26
     GetVehicleType():   1
     GetRailType():      255
     GetRoadType():      0
@@ -3616,9 +3616,9 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetPrice():         4388
     GetMaxAge():        5490
     GetRunningCost():   421
-    GetPower():         -1
-    GetWeight():        -1
-    GetMaxTractiveEffort(): -1
+    GetPower():         120
+    GetWeight():        9
+    GetMaxTractiveEffort(): 26
     GetVehicleType():   1
     GetRailType():      255
     GetRoadType():      0
@@ -3670,9 +3670,9 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetPrice():         4675
     GetMaxAge():        5490
     GetRunningCost():   421
-    GetPower():         -1
-    GetWeight():        -1
-    GetMaxTractiveEffort(): -1
+    GetPower():         120
+    GetWeight():        9
+    GetMaxTractiveEffort(): 26
     GetVehicleType():   1
     GetRailType():      255
     GetRoadType():      0
@@ -3724,9 +3724,9 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetPrice():         4839
     GetMaxAge():        5490
     GetRunningCost():   421
-    GetPower():         -1
-    GetWeight():        -1
-    GetMaxTractiveEffort(): -1
+    GetPower():         120
+    GetWeight():        9
+    GetMaxTractiveEffort(): 26
     GetVehicleType():   1
     GetRailType():      255
     GetRoadType():      0
@@ -3778,9 +3778,9 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetPrice():         4962
     GetMaxAge():        5490
     GetRunningCost():   421
-    GetPower():         -1
-    GetWeight():        -1
-    GetMaxTractiveEffort(): -1
+    GetPower():         120
+    GetWeight():        9
+    GetMaxTractiveEffort(): 26
     GetVehicleType():   1
     GetRailType():      255
     GetRoadType():      0
@@ -3832,9 +3832,9 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetPrice():         4593
     GetMaxAge():        5490
     GetRunningCost():   421
-    GetPower():         -1
-    GetWeight():        -1
-    GetMaxTractiveEffort(): -1
+    GetPower():         120
+    GetWeight():        9
+    GetMaxTractiveEffort(): 26
     GetVehicleType():   1
     GetRailType():      255
     GetRoadType():      0
@@ -3886,9 +3886,9 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetPrice():         5947
     GetMaxAge():        5490
     GetRunningCost():   421
-    GetPower():         -1
-    GetWeight():        -1
-    GetMaxTractiveEffort(): -1
+    GetPower():         120
+    GetWeight():        9
+    GetMaxTractiveEffort(): 26
     GetVehicleType():   1
     GetRailType():      255
     GetRoadType():      0

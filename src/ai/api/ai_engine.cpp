@@ -148,7 +148,7 @@
 /* static */ int32 AIEngine::GetPower(EngineID engine_id)
 {
 	if (!IsValidEngine(engine_id)) return -1;
-	if (GetVehicleType(engine_id) != AIVehicle::VT_RAIL) return -1;
+	if (GetVehicleType(engine_id) != AIVehicle::VT_RAIL && GetVehicleType(engine_id) != AIVehicle::VT_ROAD) return -1;
 	if (IsWagon(engine_id)) return -1;
 
 	return ::Engine::Get(engine_id)->GetPower();
@@ -157,7 +157,7 @@
 /* static */ int32 AIEngine::GetWeight(EngineID engine_id)
 {
 	if (!IsValidEngine(engine_id)) return -1;
-	if (GetVehicleType(engine_id) != AIVehicle::VT_RAIL) return -1;
+	if (GetVehicleType(engine_id) != AIVehicle::VT_RAIL && GetVehicleType(engine_id) != AIVehicle::VT_ROAD) return -1;
 
 	return ::Engine::Get(engine_id)->GetDisplayWeight();
 }
@@ -165,7 +165,7 @@
 /* static */ int32 AIEngine::GetMaxTractiveEffort(EngineID engine_id)
 {
 	if (!IsValidEngine(engine_id)) return -1;
-	if (GetVehicleType(engine_id) != AIVehicle::VT_RAIL) return -1;
+	if (GetVehicleType(engine_id) != AIVehicle::VT_RAIL && GetVehicleType(engine_id) != AIVehicle::VT_ROAD) return -1;
 	if (IsWagon(engine_id)) return -1;
 
 	return ::Engine::Get(engine_id)->GetDisplayMaxTractiveEffort();
