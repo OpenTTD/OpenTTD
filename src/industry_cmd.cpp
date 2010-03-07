@@ -1824,19 +1824,17 @@ CommandCost CmdBuildIndustry(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 		if (ret.Failed()) return ret;
 	}
 
-	if (flags & DC_EXEC) {
-		assert(ind != NULL);
-		if (_game_mode != GM_EDITOR) {
-			SetDParam(0, indspec->name);
-			if (indspec->new_industry_text > STR_LAST_STRINGID) {
-				SetDParam(1, STR_TOWN_NAME);
-				SetDParam(2, ind->town->index);
-			} else {
-				SetDParam(1, ind->town->index);
-			}
-			AddIndustryNewsItem(indspec->new_industry_text, NS_INDUSTRY_OPEN, ind->index);
-			AI::BroadcastNewEvent(new AIEventIndustryOpen(ind->index));
+	if ((flags & DC_EXEC) && ind != NULL && _game_mode != GM_EDITOR) {
+		/* Created a new industry in-game, advertise the event. */
+		SetDParam(0, indspec->name);
+		if (indspec->new_industry_text > STR_LAST_STRINGID) {
+			SetDParam(1, STR_TOWN_NAME);
+			SetDParam(2, ind->town->index);
+		} else {
+			SetDParam(1, ind->town->index);
 		}
+		AddIndustryNewsItem(indspec->new_industry_text, NS_INDUSTRY_OPEN, ind->index);
+		AI::BroadcastNewEvent(new AIEventIndustryOpen(ind->index));
 	}
 
 	return CommandCost(EXPENSES_OTHER, indspec->GetConstructionCost());
