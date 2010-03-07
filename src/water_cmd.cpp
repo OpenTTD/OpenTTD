@@ -254,7 +254,7 @@ static CommandCost RemoveShiplift(TileIndex tile, DoCommandFlag flags)
 	}
 
 	/* make sure no vehicle is on the tile. */
-	ret = EnsureNoVehicleOnGround(tile);
+	CommandCost ret = EnsureNoVehicleOnGround(tile);
 	if (ret.Succeeded()) ret = EnsureNoVehicleOnGround(tile + delta);
 	if (ret.Succeeded()) ret = EnsureNoVehicleOnGround(tile - delta);
 	ret.SetGlobalErrorMessage();
