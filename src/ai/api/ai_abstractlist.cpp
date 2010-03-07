@@ -476,6 +476,7 @@ bool AIAbstractList::SetValue(int32 item, int32 value)
 	if (!this->HasItem(item)) return false;
 
 	int32 value_old = this->GetValue(item);
+	if (value_old == value) return true;
 
 	this->sorter->Remove(item);
 	this->buckets[value_old].erase(item);
