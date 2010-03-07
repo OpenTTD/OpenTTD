@@ -461,7 +461,6 @@ static Vehicle *EnsureNoTrainOnTrackProc(Vehicle *v, void *data)
 	Train *t = Train::From(v);
 	if ((t->track != rail_bits) && !TracksOverlap(t->track | rail_bits)) return NULL;
 
-	_error_message = STR_ERROR_TRAIN_IN_THE_WAY + v->type;
 	return v;
 }
 
@@ -475,7 +474,13 @@ static Vehicle *EnsureNoTrainOnTrackProc(Vehicle *v, void *data)
  */
 bool EnsureNoTrainOnTrackBits(TileIndex tile, TrackBits track_bits)
 {
-	return !HasVehicleOnPos(tile, &track_bits, &EnsureNoTrainOnTrackProc);
+	/* Value v is not safe in MP games, however, it is used to generate a local
+	 * error message only (which may be different for different machines).
+	 * Such a message does not affect MP synchronisation.
+	 */
+	Vehicle *v = VehicleFromPos(tile, &track_bits, &EnsureNoTrainOnTrackProc, true);
+	if (v != NULL) _error_message = STR_ERROR_TRAIN_IN_THE_WAY + v->type;
+	return v == NULL;
 }
 
 static void UpdateNewVehiclePosHash(Vehicle *v, bool remove)
