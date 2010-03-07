@@ -366,13 +366,15 @@ CommandCost CmdBuildSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 
 	switch (GetTileType(tile)) {
 		case MP_RAILWAY: {
-			if (!CheckTileOwnership(tile)) return CMD_ERROR;
+			CommandCost ret = CheckTileOwnership(tile);
+			ret.SetGlobalErrorMessage();
+			if (ret.Failed()) return ret;
 
 			if (!IsPlainRail(tile)) return CMD_ERROR;
 
 			if (!IsCompatibleRail(GetRailType(tile), railtype)) return_cmd_error(STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION);
 
-			CommandCost ret = CheckTrackCombination(tile, trackbit, flags);
+			ret = CheckTrackCombination(tile, trackbit, flags);
 			if (ret.Succeeded()) ret = EnsureNoTrainOnTrack(tile, track);
 			ret.SetGlobalErrorMessage();
 			if (ret.Failed()) return ret;
@@ -514,11 +516,14 @@ CommandCost CmdRemoveSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 
 	switch (GetTileType(tile)) {
 		case MP_ROAD: {
-			if (!IsLevelCrossing(tile) ||
-					GetCrossingRailBits(tile) != trackbit ||
-					(_current_company != OWNER_WATER && !CheckTileOwnership(tile))) {
-				return CMD_ERROR;
+			if (!IsLevelCrossing(tile) || GetCrossingRailBits(tile) != trackbit) return CMD_ERROR;
+
+			if (_current_company != OWNER_WATER) {
+				CommandCost ret = CheckTileOwnership(tile);
+				ret.SetGlobalErrorMessage();
+				if (ret.Failed()) return ret;
 			}
+
 			if (!(flags & DC_BANKRUPT)) {
 				CommandCost ret = EnsureNoVehicleOnGround(tile);
 				ret.SetGlobalErrorMessage();
@@ -539,7 +544,13 @@ CommandCost CmdRemoveSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 		case MP_RAILWAY: {
 			TrackBits present;
 
-			if (!IsPlainRail(tile) || (_current_company != OWNER_WATER && !CheckTileOwnership(tile))) return CMD_ERROR;
+			if (!IsPlainRail(tile)) return CMD_ERROR;
+
+			if (_current_company != OWNER_WATER) {
+				CommandCost ret = CheckTileOwnership(tile);
+				ret.SetGlobalErrorMessage();
+				if (ret.Failed()) return ret;
+			}
 
 			CommandCost ret = EnsureNoTrainOnTrack(tile, track);
 			ret.SetGlobalErrorMessage();
@@ -906,7 +917,9 @@ CommandCost CmdBuildSingleSignal(TileIndex tile, DoCommandFlag flags, uint32 p1,
 	/* Protect against invalid signal copying */
 	if (p2 != 0 && (p2 & SignalOnTrack(track)) == 0) return CMD_ERROR;
 
-	if (!CheckTileOwnership(tile)) return CMD_ERROR;
+	ret = CheckTileOwnership(tile);
+	ret.SetGlobalErrorMessage();
+	if (ret.Failed()) return ret;
 
 	{
 		/* See if this is a valid track combination for signals, (ie, no overlap) */
@@ -1265,7 +1278,11 @@ CommandCost CmdRemoveSingleSignal(TileIndex tile, DoCommandFlag flags, uint32 p1
 	if (ret.Failed()) return ret;
 
 	/* Only water can remove signals from anyone */
-	if (_current_company != OWNER_WATER && !CheckTileOwnership(tile)) return CMD_ERROR;
+	if (_current_company != OWNER_WATER) {
+		CommandCost ret = CheckTileOwnership(tile);
+		ret.SetGlobalErrorMessage();
+		if (ret.Failed()) return ret;
+	}
 
 	/* Do it? */
 	if (flags & DC_EXEC) {
@@ -1398,7 +1415,11 @@ CommandCost CmdConvertRail(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			if (type == totype || (_settings_game.vehicle.disable_elrails && totype == RAILTYPE_RAIL && type == RAILTYPE_ELECTRIC)) continue;
 
 			/* Trying to convert other's rail */
-			if (!CheckTileOwnership(tile)) continue;
+			CommandCost ret = CheckTileOwnership(tile);
+			if (ret.Failed()) {
+				ret.SetGlobalErrorMessage();
+				continue;
+			}
 
 			SmallVector<Train *, 2> vehicles_affected;
 
@@ -1527,8 +1548,11 @@ CommandCost CmdConvertRail(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 
 static CommandCost RemoveTrainDepot(TileIndex tile, DoCommandFlag flags)
 {
-	if (!CheckTileOwnership(tile) && _current_company != OWNER_WATER)
-		return CMD_ERROR;
+	if (_current_company != OWNER_WATER) {
+		CommandCost ret = CheckTileOwnership(tile);
+		ret.SetGlobalErrorMessage();
+		if (ret.Failed()) return ret;
+	}
 
 	CommandCost ret = EnsureNoVehicleOnGround(tile);
 	ret.SetGlobalErrorMessage();

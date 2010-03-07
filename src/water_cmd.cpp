@@ -168,7 +168,10 @@ void MakeWaterKeepingClass(TileIndex tile, Owner o)
 static CommandCost RemoveShipDepot(TileIndex tile, DoCommandFlag flags)
 {
 	if (!IsShipDepot(tile)) return CMD_ERROR;
-	if (!CheckTileOwnership(tile)) return CMD_ERROR;
+
+	CommandCost ret = CheckTileOwnership(tile);
+	ret.SetGlobalErrorMessage();
+	if (ret.Failed()) return ret;
 
 	TileIndex tile2 = GetOtherShipDepotTile(tile);
 
@@ -244,10 +247,14 @@ static CommandCost RemoveShiplift(TileIndex tile, DoCommandFlag flags)
 {
 	TileIndexDiff delta = TileOffsByDiagDir(GetLockDirection(tile));
 
-	if (!CheckTileOwnership(tile) && GetTileOwner(tile) != OWNER_NONE) return CMD_ERROR;
+	if (GetTileOwner(tile) != OWNER_NONE) {
+		CommandCost ret = CheckTileOwnership(tile);
+		ret.SetGlobalErrorMessage();
+		if (ret.Failed()) return ret;
+	}
 
 	/* make sure no vehicle is on the tile. */
-	CommandCost ret = EnsureNoVehicleOnGround(tile);
+	ret = EnsureNoVehicleOnGround(tile);
 	if (ret.Succeeded()) ret = EnsureNoVehicleOnGround(tile + delta);
 	if (ret.Succeeded()) ret = EnsureNoVehicleOnGround(tile - delta);
 	ret.SetGlobalErrorMessage();
@@ -361,7 +368,11 @@ static CommandCost ClearTile_Water(TileIndex tile, DoCommandFlag flags)
 			ret.SetGlobalErrorMessage();
 			if (ret.Failed()) return ret;
 
-			if (GetTileOwner(tile) != OWNER_WATER && GetTileOwner(tile) != OWNER_NONE && !CheckTileOwnership(tile)) return CMD_ERROR;
+			if (GetTileOwner(tile) != OWNER_WATER && GetTileOwner(tile) != OWNER_NONE) {
+				CommandCost ret = CheckTileOwnership(tile);
+				ret.SetGlobalErrorMessage();
+				if (ret.Failed()) return ret;
+			}
 
 			if (flags & DC_EXEC) {
 				DoClearSquare(tile);

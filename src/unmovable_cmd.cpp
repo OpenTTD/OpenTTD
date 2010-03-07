@@ -175,7 +175,11 @@ CommandCost CmdPurchaseLandArea(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 CommandCost CmdSellLandArea(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	if (!IsOwnedLandTile(tile)) return CMD_ERROR;
-	if (!CheckTileOwnership(tile) && _current_company != OWNER_WATER) return CMD_ERROR;
+	if (_current_company != OWNER_WATER) {
+		CommandCost ret = CheckTileOwnership(tile);
+		ret.SetGlobalErrorMessage();
+		if (ret.Failed()) return ret;
+	}
 
 	CommandCost ret = EnsureNoVehicleOnGround(tile);
 	ret.SetGlobalErrorMessage();
@@ -500,7 +504,11 @@ static void ChangeTileOwner_Unmovable(TileIndex tile, Owner old_owner, Owner new
 static CommandCost TerraformTile_Unmovable(TileIndex tile, DoCommandFlag flags, uint z_new, Slope tileh_new)
 {
 	/* Owned land remains unsold */
-	if (IsOwnedLand(tile) && CheckTileOwnership(tile)) return CommandCost();
+	if (IsOwnedLand(tile)) {
+		CommandCost ret = CheckTileOwnership(tile);
+		ret.SetGlobalErrorMessage();
+		if (ret.Succeeded()) return CommandCost();
+	}
 
 	if (AutoslopeEnabled() && (IsStatue(tile) || IsCompanyHQ(tile))) {
 		if (!IsSteepSlope(tileh_new) && (z_new + GetSlopeMaxZ(tileh_new) == GetTileMaxZ(tile))) return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);

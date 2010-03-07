@@ -587,7 +587,9 @@ static inline bool CheckAllowRemoveTunnelBridge(TileIndex tile)
 			if (HasBit(rts, ROADTYPE_TRAM)) tram_owner = GetRoadOwner(tile, ROADTYPE_TRAM);
 
 			/* We can remove unowned road and if the town allows it */
-			if (road_owner == OWNER_TOWN && !(_settings_game.construction.extra_dynamite || _cheats.magic_bulldozer.value)) return CheckTileOwnership(tile);
+			if (road_owner == OWNER_TOWN && !(_settings_game.construction.extra_dynamite || _cheats.magic_bulldozer.value)) {
+				return CheckTileOwnership(tile).Succeeded();
+			}
 			if (road_owner == OWNER_NONE || road_owner == OWNER_TOWN) road_owner = _current_company;
 			if (tram_owner == OWNER_NONE) tram_owner = _current_company;
 

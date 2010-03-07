@@ -911,7 +911,11 @@ CommandCost CmdBuildRoadDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 
 static CommandCost RemoveRoadDepot(TileIndex tile, DoCommandFlag flags)
 {
-	if (!CheckTileOwnership(tile) && _current_company != OWNER_WATER) return CMD_ERROR;
+	if (_current_company != OWNER_WATER) {
+		CommandCost ret = CheckTileOwnership(tile);
+		ret.SetGlobalErrorMessage();
+		if (ret.Failed()) return ret;
+	}
 
 	CommandCost ret = EnsureNoVehicleOnGround(tile);
 	ret.SetGlobalErrorMessage();
