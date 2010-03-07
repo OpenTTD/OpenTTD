@@ -472,15 +472,15 @@ static Vehicle *EnsureNoTrainOnTrackProc(Vehicle *v, void *data)
  * @param track_bits The track bits.
  * @return \c true if no train that interacts, is found. \c false if a train is found.
  */
-bool EnsureNoTrainOnTrackBits(TileIndex tile, TrackBits track_bits)
+CommandCost EnsureNoTrainOnTrackBits(TileIndex tile, TrackBits track_bits)
 {
 	/* Value v is not safe in MP games, however, it is used to generate a local
 	 * error message only (which may be different for different machines).
 	 * Such a message does not affect MP synchronisation.
 	 */
 	Vehicle *v = VehicleFromPos(tile, &track_bits, &EnsureNoTrainOnTrackProc, true);
-	if (v != NULL) _error_message = STR_ERROR_TRAIN_IN_THE_WAY + v->type;
-	return v == NULL;
+	if (v != NULL) return_cmd_error(STR_ERROR_TRAIN_IN_THE_WAY + v->type);
+	return CommandCost();
 }
 
 static void UpdateNewVehiclePosHash(Vehicle *v, bool remove)

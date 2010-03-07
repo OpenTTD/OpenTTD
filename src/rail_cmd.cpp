@@ -155,7 +155,9 @@ static const byte _track_sloped_sprites[14] = {
 static bool EnsureNoTrainOnTrack(TileIndex tile, Track track)
 {
 	TrackBits rail_bits = TrackToTrackBits(track);
-	return EnsureNoTrainOnTrackBits(tile, rail_bits);
+	CommandCost ret = EnsureNoTrainOnTrackBits(tile, rail_bits);
+	ret.SetGlobalErrorMessage();
+	return ret.Succeeded();
 }
 
 /** Check that the new track bits may be built.

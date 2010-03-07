@@ -158,7 +158,7 @@ static inline uint32 GetCmdSendToDepot(const BaseVehicle *v)
 }
 
 CommandCost EnsureNoVehicleOnGround(TileIndex tile);
-bool EnsureNoTrainOnTrackBits(TileIndex tile, TrackBits track_bits);
+CommandCost EnsureNoTrainOnTrackBits(TileIndex tile, TrackBits track_bits);
 void StopAllVehicles();
 
 extern VehicleID _vehicle_id_ctr_day;

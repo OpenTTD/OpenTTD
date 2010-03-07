@@ -301,7 +301,8 @@ static SigFlags ExploreSegment(Owner owner)
 
 				if (tracks == TRACK_BIT_HORZ || tracks == TRACK_BIT_VERT) { // there is exactly one incidating track, no need to check
 					tracks = tracks_masked;
-					if (!(flags & SF_TRAIN) && !EnsureNoTrainOnTrackBits(tile, tracks)) flags |= SF_TRAIN;
+					/* If no train detected yet, and there is not no train -> there is a train -> set the flag */
+					if (!(flags & SF_TRAIN) && EnsureNoTrainOnTrackBits(tile, tracks).Failed()) flags |= SF_TRAIN;
 				} else {
 					if (tracks_masked == TRACK_BIT_NONE) continue; // no incidating track
 					if (!(flags & SF_TRAIN) && HasVehicleOnPos(tile, NULL, &TrainOnTileEnum)) flags |= SF_TRAIN;
