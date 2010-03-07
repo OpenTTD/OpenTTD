@@ -150,14 +150,12 @@ static const byte _track_sloped_sprites[14] = {
  *
  * @param tile The tile.
  * @param track The track.
- * @return \c true if no train that interacts, is found. \c false if a train is found.
+ * @return Succeeded command (no train found), or a failed command (a train was found).
  */
-static bool EnsureNoTrainOnTrack(TileIndex tile, Track track)
+static CommandCost EnsureNoTrainOnTrack(TileIndex tile, Track track)
 {
 	TrackBits rail_bits = TrackToTrackBits(track);
-	CommandCost ret = EnsureNoTrainOnTrackBits(tile, rail_bits);
-	ret.SetGlobalErrorMessage();
-	return ret.Succeeded();
+	return EnsureNoTrainOnTrackBits(tile, rail_bits);
 }
 
 /** Check that the new track bits may be built.
@@ -375,10 +373,9 @@ CommandCost CmdBuildSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 			if (!IsCompatibleRail(GetRailType(tile), railtype)) return_cmd_error(STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION);
 
 			CommandCost ret = CheckTrackCombination(tile, trackbit, flags);
+			if (ret.Succeeded()) ret = EnsureNoTrainOnTrack(tile, track);
 			ret.SetGlobalErrorMessage();
 			if (ret.Failed()) return ret;
-
-			if (!EnsureNoTrainOnTrack(tile, track)) return CMD_ERROR;
 
 			ret = CheckRailSlope(tileh, trackbit, GetTrackBits(tile), tile);
 			if (ret.Failed()) return ret;
@@ -542,11 +539,11 @@ CommandCost CmdRemoveSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 		case MP_RAILWAY: {
 			TrackBits present;
 
-			if (!IsPlainRail(tile) ||
-					(_current_company != OWNER_WATER && !CheckTileOwnership(tile)) ||
-					!EnsureNoTrainOnTrack(tile, track)) {
-				return CMD_ERROR;
-			}
+			if (!IsPlainRail(tile) || (_current_company != OWNER_WATER && !CheckTileOwnership(tile))) return CMD_ERROR;
+
+			CommandCost ret = EnsureNoTrainOnTrack(tile, track);
+			ret.SetGlobalErrorMessage();
+			if (ret.Failed()) return ret;
 
 			present = GetTrackBits(tile);
 			if ((present & trackbit) == 0) return CMD_ERROR;
@@ -899,9 +896,12 @@ CommandCost CmdBuildSingleSignal(TileIndex tile, DoCommandFlag flags, uint32 p1,
 
 	/* You can only build signals on plain rail tiles, and the selected track must exist */
 	if (!ValParamTrackOrientation(track) || !IsPlainRailTile(tile) ||
-			!HasTrack(tile, track) || !EnsureNoTrainOnTrack(tile, track)) {
+			!HasTrack(tile, track)) {
 		return CMD_ERROR;
 	}
+	CommandCost ret = EnsureNoTrainOnTrack(tile, track);
+	ret.SetGlobalErrorMessage();
+	if (ret.Failed()) return ret;
 
 	/* Protect against invalid signal copying */
 	if (p2 != 0 && (p2 & SignalOnTrack(track)) == 0) return CMD_ERROR;
@@ -1257,10 +1257,12 @@ CommandCost CmdRemoveSingleSignal(TileIndex tile, DoCommandFlag flags, uint32 p1
 	if (!ValParamTrackOrientation(track) ||
 			!IsPlainRailTile(tile) ||
 			!HasTrack(tile, track) ||
-			!EnsureNoTrainOnTrack(tile, track) ||
 			!HasSignalOnTrack(tile, track)) {
 		return CMD_ERROR;
 	}
+	CommandCost ret = EnsureNoTrainOnTrack(tile, track);
+	ret.SetGlobalErrorMessage();
+	if (ret.Failed()) return ret;
 
 	/* Only water can remove signals from anyone */
 	if (_current_company != OWNER_WATER && !CheckTileOwnership(tile)) return CMD_ERROR;
