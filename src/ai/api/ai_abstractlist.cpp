@@ -784,13 +784,10 @@ SQInteger AIAbstractList::Valuate(HSQUIRRELVM vm)
 	/* Push the function to call */
 	sq_push(vm, 2);
 
-	/* Walk all items, and query the result */
-	this->buckets.clear();
-
-	/* Check for changing of items. */
-	int begin_modification_count = this->modifications;
-
 	for (AIAbstractListMap::iterator iter = this->items.begin(); iter != this->items.end(); iter++) {
+		/* Check for changing of items. */
+		int previous_modification_count = this->modifications;
+
 		/* Push the root table as instance object, this is what squirrel does for meta-functions. */
 		sq_pushroottable(vm);
 		/* Push all arguments for the valuator function. */
@@ -828,7 +825,7 @@ SQInteger AIAbstractList::Valuate(HSQUIRRELVM vm)
 		}
 
 		/* Was something changed? */
-		if (begin_modification_count != this->modifications) {
+		if (previous_modification_count != this->modifications) {
 			/* See below for explanation. The extra pop is the return value. */
 			sq_pop(vm, nparam + 4);
 
@@ -836,8 +833,7 @@ SQInteger AIAbstractList::Valuate(HSQUIRRELVM vm)
 			return sq_throwerror(vm, _SC("modifying valuated list outside of valuator function"));
 		}
 
-		(*iter).second = (int32)value;
-		this->buckets[(int32)value].insert((*iter).first);
+		this->SetValue((*iter).first, value);
 
 		/* Pop the return value. */
 		sq_poptop(vm);
