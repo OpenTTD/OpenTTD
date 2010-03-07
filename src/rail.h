@@ -300,7 +300,6 @@ static inline Money RailConvertCost(RailType from, RailType to)
 }
 
 void DrawTrainDepotSprite(int x, int y, int image, RailType railtype);
-Vehicle *EnsureNoTrainOnTrackProc(Vehicle *v, void *data);
 int TicksToLeaveDepot(const Train *v);
 
 Foundation GetRailFoundation(Slope tileh, TrackBits bits);

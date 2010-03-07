@@ -452,6 +452,31 @@ CommandCost TunnelBridgeIsFree(TileIndex tile, TileIndex endtile, const Vehicle 
 	return CommandCost();
 }
 
+static Vehicle *EnsureNoTrainOnTrackProc(Vehicle *v, void *data)
+{
+	TrackBits rail_bits = *(TrackBits *)data;
+
+	if (v->type != VEH_TRAIN) return NULL;
+
+	Train *t = Train::From(v);
+	if ((t->track != rail_bits) && !TracksOverlap(t->track | rail_bits)) return NULL;
+
+	_error_message = STR_ERROR_TRAIN_IN_THE_WAY + v->type;
+	return v;
+}
+
+/**
+ * Tests if a vehicle interacts with the specified track bits.
+ * All track bits interact except parallel #TRACK_BIT_HORZ or #TRACK_BIT_VERT.
+ *
+ * @param tile The tile.
+ * @param track_bits The track bits.
+ * @return \c true if no train that interacts, is found. \c false if a train is found.
+ */
+bool EnsureNoTrainOnTrackBits(TileIndex tile, TrackBits track_bits)
+{
+	return !HasVehicleOnPos(tile, &track_bits, &EnsureNoTrainOnTrackProc);
+}
 
 static void UpdateNewVehiclePosHash(Vehicle *v, bool remove)
 {

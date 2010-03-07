@@ -144,32 +144,18 @@ static const byte _track_sloped_sprites[14] = {
  *               11uuuudd => rail depot
  */
 
-
-Vehicle *EnsureNoTrainOnTrackProc(Vehicle *v, void *data)
-{
-	TrackBits rail_bits = *(TrackBits *)data;
-
-	if (v->type != VEH_TRAIN) return NULL;
-
-	Train *t = Train::From(v);
-	if ((t->track != rail_bits) && !TracksOverlap(t->track | rail_bits)) return NULL;
-
-	_error_message = STR_ERROR_TRAIN_IN_THE_WAY + v->type;
-	return v;
-}
-
 /**
  * Tests if a vehicle interacts with the specified track.
- * All track bits interact except parallel TRACK_BIT_HORZ or TRACK_BIT_VERT.
+ * All track bits interact except parallel #TRACK_BIT_HORZ or #TRACK_BIT_VERT.
  *
  * @param tile The tile.
  * @param track The track.
+ * @return \c true if no train that interacts, is found. \c false if a train is found.
  */
 static bool EnsureNoTrainOnTrack(TileIndex tile, Track track)
 {
 	TrackBits rail_bits = TrackToTrackBits(track);
-
-	return !HasVehicleOnPos(tile, &rail_bits, &EnsureNoTrainOnTrackProc);
+	return EnsureNoTrainOnTrackBits(tile, rail_bits);
 }
 
 /** Check that the new track bits may be built.

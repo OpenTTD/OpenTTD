@@ -20,6 +20,7 @@
 #include "transport_type.h"
 #include "newgrf_config.h"
 #include "company_type.h"
+#include "track_type.h"
 
 #define is_custom_sprite(x) (x >= 0xFD)
 #define IS_CUSTOM_FIRSTHEAD_SPRITE(x) (x == 0xFD)
@@ -157,6 +158,7 @@ static inline uint32 GetCmdSendToDepot(const BaseVehicle *v)
 }
 
 CommandCost EnsureNoVehicleOnGround(TileIndex tile);
+bool EnsureNoTrainOnTrackBits(TileIndex tile, TrackBits track_bits);
 void StopAllVehicles();
 
 extern VehicleID _vehicle_id_ctr_day;
