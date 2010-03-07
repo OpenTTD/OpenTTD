@@ -319,7 +319,7 @@ STR_COLOUR_GREY                                                 :Серый
 STR_COLOUR_WHITE                                                :Белый
 
 # Units used in OpenTTD
-STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} м/ч
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} мил{P я и ь}/ч
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA} км/ч
 STR_UNITS_VELOCITY_SI                                           :{COMMA} м/с
 
@@ -375,7 +375,7 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 # Measurement tooltip
 STR_MEASURE_LENGTH                                              :{BLACK}Длина: {NUM}
 STR_MEASURE_AREA                                                :{BLACK}Площадь: {NUM} x {NUM}
-STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Длина: {NUM}{}Разница высоты: {NUM} м
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Длина: {NUM}{}Разница высот: {NUM} м
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Площадь: {NUM} x {NUM}{}Разница высот: {NUM} м
 
 
@@ -869,8 +869,8 @@ STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Пер�
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Первое транспортное средство конкурента на станции
 STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Аварии и катастрофы
 STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}Информация о Компании
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}Открытие производства
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}Закрытие производства
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}Открытие предприятий
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}Закрытие предприятий
 STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}Изменения в экономике
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Изм. производительности предприятий, обслуж. компанией
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Изм. производительности предприятий, обслуж. конкурентами
@@ -1237,7 +1237,11 @@ STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Раз�
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Модель ускорения поездов: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :оригинальная
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :реалистичная
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Модель ускорения автотранспорта: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :оригинальная
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :реалистичная
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Крутизна склонов (для поездов): {ORANGE}{STRING}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Крутизна склонов (для автотранспорта): {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Запретить 90-градусные повороты на ж/д и море: {ORANGE}{STRING} {LTBLUE} (не для OPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Объединять рядом построенные ж/д станции: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Разрешить объединение не примыкающих друг к другу станций: {ORANGE}{STRING}
@@ -2184,6 +2188,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Стро
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Выбор аэропорта
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Выберите размер/тип аэропорта
+STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Тип аэропорта
 
 STR_AIRPORT_SMALL                                               :Малый
 STR_AIRPORT_CITY                                                :Городской

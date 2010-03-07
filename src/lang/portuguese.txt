@@ -703,7 +703,7 @@ STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Mostrar 
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  EM PAUSA  *  *
 STR_STATUSBAR_AUTOSAVE                                          :{RED}AUTOGUARDADO
-STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  GRAVANDO JOGO *  *
+STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  A GUARDAR JOGO *  *
 
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Histórico de Mensagens
@@ -809,7 +809,7 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} está a ficar muito velho e urgentemente necessita de substituição
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} não consegue encontrar um caminho para continuar.
 STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} está perdido.
-STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}O lucro do veículo {VEHICLE} foi de {CURRENCY}
+STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}O lucro de {VEHICLE} foi de {CURRENCY}
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} parado porque a ordem de ajuste não foi bem sucedida
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Auto-renovação falhou em {VEHICLE}{}{STRING}
@@ -1083,6 +1083,9 @@ STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Permiti
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Modelo de aceleração de comboios: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Original
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realístico
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Tipo de aceleração do veículo de estrada: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Original
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Realístico
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Declive das inclinações para comboios {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Proibir comboios e barcos de virar a 90 graus: {ORANGE}{STRING} {LTBLUE} (not with OPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Juntar estações ferroviárias construídas pegadas: {ORANGE}{STRING}
@@ -2014,6 +2017,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Construi
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Selecção de Aeroporto
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Seleccionar tamanho/tipo de aeroporto
+STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Classe do aeroporto
 
 STR_AIRPORT_SMALL                                               :Pequeno
 STR_AIRPORT_CITY                                                :Cidade

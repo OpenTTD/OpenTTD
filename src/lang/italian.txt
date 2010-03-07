@@ -1085,7 +1085,11 @@ STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Consent
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Modello accelerazione dei treni: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Originale
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistico
-STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Pendenza declivi per i treni: {ORANGE}{STRING}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Modello accelerazione automezzi: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Originale
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Realistico
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Pendenza salite per i treni: {ORANGE}{STRING}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Pendenza salite per gli automezzi: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Impedisci a treni e navi di curvare a 90 gradi: {ORANGE}{STRING} {LTBLUE} (non funziona con OPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Unisci le stazioni costruite una accanto all'altra: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Consenti di unire stazioni non direttamente adiacenti: {ORANGE}{STRING}
@@ -2016,6 +2020,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Costruis
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Selezione aeroporto
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Seleziona dimensione/tipo di aeroporto
+STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Classe aeroporto
 
 STR_AIRPORT_SMALL                                               :Piccolo
 STR_AIRPORT_CITY                                                :Cittadino

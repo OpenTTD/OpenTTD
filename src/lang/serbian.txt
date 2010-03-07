@@ -1278,7 +1278,11 @@ STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Moguća
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Model ubrzavanja vozova: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Originalan
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realističan
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Model ubrzavanja drumskih vozila: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Originalan
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Realističan
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Strmost kosina za železnicu {ORANGE}{STRING}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Strmost kosina za drumska vozila {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Zabranjeno okretanje brodova i vozova za 90 stepeni: {ORANGE}{STRING} {LTBLUE} (ne uz OPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Sjedini železničke stanice sagrađene jedna pored druge: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Dozvoljeno sjedninjavanje udaljenih stanica: {ORANGE}{STRING}
@@ -2209,6 +2213,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Izgradnj
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Izbor aerodroma
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Izbor veličine/tipa aerodroma
+STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Tip aerodroma
 
 STR_AIRPORT_SMALL                                               :Poljski aerodrom
 STR_AIRPORT_CITY                                                :Gradski aerodrom

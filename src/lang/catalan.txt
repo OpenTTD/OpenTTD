@@ -1084,7 +1084,11 @@ STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Activa 
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Model d'acceleració del Tren: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Original
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realístic
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Model d'acceleració per als vehicles: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Original
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Realístic
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Inclinació de les pujades per als trens {ORANGE}{STRING}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Inclinació de les pujades per als vehicles {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Prohibeix fer girs de 90 graus als trens i vaixells: {ORANGE}{STRING} {LTBLUE} (no amb OPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Ajunta estacions de tren fetes al costat d'una altra: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Permet ajuntar estacions no annexes: {ORANGE}{STRING}
@@ -2015,6 +2019,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Construe
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Aeroports
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Selecciona mida/tipus d'aeroport
+STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Classe d'Aeroport
 
 STR_AIRPORT_SMALL                                               :Petit
 STR_AIRPORT_CITY                                                :de Ciutat

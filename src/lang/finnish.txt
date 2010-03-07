@@ -279,7 +279,7 @@ STR_SORT_BY_FACILITY                                            :Asematyyppi
 STR_SORT_BY_WAITING                                             :Odottavan lastin arvo
 STR_SORT_BY_RATING_MAX                                          :Korkein rahtiluokitus
 STR_SORT_BY_RATING_MIN                                          :Matalin rahtiluokitus
-STR_SORT_BY_ENGINE_ID                                           :Veturin ID (perinteinen lajittelu)
+STR_SORT_BY_ENGINE_ID                                           :EngineID (perinteinen lajittelu)
 STR_SORT_BY_COST                                                :Hinta
 STR_SORT_BY_POWER                                               :Teho
 STR_SORT_BY_INTRO_DATE                                          :Julkaisupäivä
