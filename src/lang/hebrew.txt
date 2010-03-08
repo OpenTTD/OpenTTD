@@ -1097,7 +1097,11 @@ STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}אפש�
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{ORANGE}{STRING}{LTBLUE} :מודל האצת רכבות
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :מקורי
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :מציאותי
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}מודל האצת כלי רכב: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :מקורי
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :מציאותי
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}תלילות מדרון עבור רכבות {ORANGE}{STRING}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}תלילות המדרון עבור כלי רכב {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}אסור על רכבות וספינות לבצע פניות של 90 מעלות: {ORANGE}{STRING} {LTBLUE} (not with OPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}אפשר חיבור של תחנות שנבנות ליד תחנה קיימת: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{ORANGE}{STRING}{LTBLUE} :אפשר חיבור בין תחנות שאינן צמודות זו לזו
@@ -2028,6 +2032,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}בנה �
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}בחירת שדה תעופה
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}בחר את גודל/סוג שדה התעופה
+STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}רמת שדה תעופה
 
 STR_AIRPORT_SMALL                                               :קטן
 STR_AIRPORT_CITY                                                :עירוני

@@ -1084,7 +1084,11 @@ STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}매우 
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}열차 가속 모델: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :오리지널 (언덕을 오를 때 속도 감속)
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :현실적으로 (급커브에서 속도 감속)
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}자동차 가속 모델: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :기본값
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :현실적
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}열차를 위한 경사면의 경사도: {ORANGE}{STRING}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}자동차를 위한 경사면의 경사도 {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}열차/선박의 90도 회전을 금지함: {ORANGE}{STRING} {LTBLUE} (OPF로 불가)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}바로 옆에 역이 있으면 그 역의 이름으로 건설 (새로운 이름X) : {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}역이 붙어있지 않아도 같은 이름으로 역을 짓는 것을 허용: {ORANGE}{STRING}
@@ -2015,6 +2019,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}공항 �
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}공항 선택
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}공항의 크기/종류를 선택합니다.
+STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}공항 등급
 
 STR_AIRPORT_SMALL                                               :소형 공항
 STR_AIRPORT_CITY                                                :도시 공항

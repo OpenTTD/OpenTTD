@@ -2082,6 +2082,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Statyti 
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Oro uosto pasirinkimas
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Pasirinkite oro uosto dydį/tipą
+STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Oro uostų tipas
 
 STR_AIRPORT_SMALL                                               :Mažas
 STR_AIRPORT_CITY                                                :Miestas

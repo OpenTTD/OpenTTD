@@ -1084,7 +1084,11 @@ STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Tillet 
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Togakselerasjonsmodell: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Orginal
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistisk
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Køyretøyers akselerasjonstype: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Original
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Realistisk
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Hellingsnivå for tog {ORANGE}{STRING}{NBSP}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Hellingsnivå for køyretøy {ORANGE}{STRING}{NBSP}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Forby tog og skip å gjere 90-graderssvingar: {ORANGE}{STRING} {LTBLUE} (ikkje med OPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Slå saman stasjoner som vert bygde på sida av einannan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Tillet samanbygging av ikkje direkte tilstøtande stasjonar: {ORANGE}{STRING}
@@ -2015,9 +2019,10 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Bygg fly
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Vel flyplasstype
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Vel storleik og flyplasstype
+STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Flyplasstype
 
 STR_AIRPORT_SMALL                                               :Liten
-STR_AIRPORT_CITY                                                :By
+STR_AIRPORT_CITY                                                :Storby
 STR_AIRPORT_METRO                                               :Storbyflyplass
 STR_AIRPORT_INTERNATIONAL                                       :Internasjonal flyplass
 STR_AIRPORT_COMMUTER                                            :Pendler

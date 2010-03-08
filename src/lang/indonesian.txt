@@ -1083,7 +1083,11 @@ STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Ijinkan
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Model akselerasi kereta: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Asli
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistis
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Model kendaraan percepatan: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Asli
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Realistis
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Tingkat dataran slope pada kereta {ORANGE}{STRING}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Lereng kecuraman untuk kendaraan {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Kereta dan kapal dilarang belok 90 derajat: {ORANGE}{STRING} {LTBLUE} (tidak dengan NTP)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Gabungkan pembangunan stasiun kereta: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Ijinkan menggabung stasiun meski tdk menempel: {ORANGE}{STRING}
@@ -2014,6 +2018,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Bangun b
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Pilih Bandara
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Pilih model bandara
+STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Kelas bandara
 
 STR_AIRPORT_SMALL                                               :Bandara Kecil
 STR_AIRPORT_CITY                                                :Bandara Kota

@@ -1083,7 +1083,11 @@ STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Tillat 
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Togakselerasjonstype: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Original
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistisk
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Kjøretøyers akselerasjonstype: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Original
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Realistisk
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Hellingsnivå for tog {ORANGE}{STRING}{NBSP}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Hellingsnivå for kjøretøy {ORANGE}{STRING}{NBSP}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Forby tog og skip å gjøre 90-graders svinger: {ORANGE}{STRING} {LTBLUE} (ikke med OPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Slå sammen stasjoner som bygges ved siden av hverandre: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Tillat sammenslåing av stasjoner som ikke ligger inntil hverandre: {ORANGE}{STRING}
@@ -2014,9 +2018,10 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Bygg fly
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Velg flyplasstype
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Velg størrelse/type flyplass
+STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Flyplasstype
 
 STR_AIRPORT_SMALL                                               :Liten
-STR_AIRPORT_CITY                                                :By
+STR_AIRPORT_CITY                                                :Storby
 STR_AIRPORT_METRO                                               :Metropol
 STR_AIRPORT_INTERNATIONAL                                       :Internasjonal
 STR_AIRPORT_COMMUTER                                            :Pendler

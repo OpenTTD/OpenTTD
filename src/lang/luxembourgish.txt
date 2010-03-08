@@ -1083,7 +1083,11 @@ STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Bau vun
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Zuchbeschleunegung: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Original
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistesch
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Stroossengefier Beschleunigungsmodell: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Original
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Realistësch
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Neigungsstärkt fir Zich{ORANGE}{STRING}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Steigung fir Stroossengefierer {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Zich an Schëffer dierfen keng 90 Grad Kéieren maachen: {ORANGE}{STRING} {LTBLUE} (nët mat NTP)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Nopergaren zesummensetzen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Erlaabt Statiounen zesummen ze setzen och wann se net direkt uneneen leien: {ORANGE}{STRING}
@@ -2014,6 +2018,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Fluchhaf
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Fluchhafen Selectioun
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Wielt Gréisst/Typ vum Fluchhafen
+STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Fluchhafenklass
 
 STR_AIRPORT_SMALL                                               :Kleng
 STR_AIRPORT_CITY                                                :City
