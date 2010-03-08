@@ -964,6 +964,7 @@ STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Dividil
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Difini apartigilon por via valuto
 
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefikso: {ORANGE}{STRING}
+STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Ekekti simbolon de via valuto
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sufikso: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}Difini sufiksĉenon por via valuto
 
@@ -1783,8 +1784,10 @@ STR_CONTENT_NAME_CAPTION                                        :{BLACK}Nomo
 STR_CONTENT_NAME_CAPTION_TOOLTIP                                :{BLACK}Nomo de la enhavo
 STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}Klaku linion por rigardi detalojn{}Klaku markobutonon por elekti elŝuton.
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Elekti ĉiujn
+STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK}Marki ĉiujn enhavojn elŝutotan
 STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Elektu ĝisdatigojn.
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Malelekti ĉiujn
+STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Marki ĉiujn enhavojn neelŝutotan
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Etikeda/noma filtro:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Elŝuti
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Komencu elŝuti la elektitan enhavon.

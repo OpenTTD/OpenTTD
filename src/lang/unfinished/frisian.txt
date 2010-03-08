@@ -163,6 +163,10 @@ STR_ABBREV_NONE                                                 :{TINYFONT}NE
 STR_ABBREV_ALL                                                  :{TINYFONT}AL
 
 # 'Mode' of transport for cargoes
+STR_PASSENGERS                                                  :passazjiers
+STR_LITERS                                                      :liters
+STR_RES_OTHER                                                   :oars
+STR_NOTHING                                                     :
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Tsjuster Blauw
@@ -232,8 +236,14 @@ STR_BUTTON_CANCEL                                               :{BLACK}Annulear
 STR_BUTTON_OK                                                   :{BLACK}OK
 
 # On screen keyboard window
+STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
+STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
 
 # Measurement tooltip
+STR_MEASURE_LENGTH                                              :{BLACK}Lengte: {NUM}
+STR_MEASURE_AREA                                                :{BLACK}Gebied: {NUM} x {NUM}
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Lengte: {NUM}{}Hichte ferskil: {NUM} m
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Gebied: {NUM} x {NUM}{}Hichte ferskil: {NUM} m
 
 
 # These are used in buttons
@@ -241,6 +251,8 @@ STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Populaas
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Namme
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Datum
 # These are used in dropdowns
+STR_SORT_BY_POPULATION                                          :Populaasje
+STR_SORT_BY_NAME                                                :Namme
 STR_SORT_BY_PRODUCTION                                          :Produksje
 STR_SORT_BY_TYPE                                                :Type
 STR_SORT_BY_TRANSPORTED                                         :Ferfierd
@@ -256,6 +268,8 @@ STR_SORT_BY_LENGTH                                              :Lingte
 STR_SORT_BY_FACILITY                                            :Stasjonstype
 STR_SORT_BY_COST                                                :Kosten
 STR_SORT_BY_POWER                                               :Krêft
+STR_SORT_BY_RUNNING_COST                                        :Ûnderhâldskosten
+STR_SORT_BY_CARGO_CAPACITY                                      :Frachtkapasiteit
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pausear spul
@@ -310,6 +324,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Ôfslúte
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spul Opsjes
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Swierrichheid ynstellings
+STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF ynstellings
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Stêd nammen sjen litte
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Stasjon nammen sjen litte
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Nammen fan kontrôleposten sjen litte
@@ -363,15 +378,19 @@ STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :MagLev konstruk
 
 ############ range for road construction menu starts
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Wegenbou
+STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Tramwei konstruksje
 ############ range ends here
 
 ############ range for waterways construction menu starts
+STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Wetterwei konstruksje
 ############ range ends here
 
 ############ range for airport construction menu starts
+STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Fleanfjild konstruksje
 ############ range ends here
 
 ############ range for landscaping menu starts
+STR_LANDSCAPING_MENU_LANDSCAPING                                :Lânskip
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Plantsje beammen
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Set buordsje del
 ############ range ends here
@@ -442,6 +461,18 @@ STR_MONTH_ABBREV_OCT                                            :Okt
 STR_MONTH_ABBREV_NOV                                            :Nov
 STR_MONTH_ABBREV_DEC                                            :Des
 
+STR_MONTH_JAN                                                   :Jannewaris
+STR_MONTH_FEB                                                   :Febrewaris
+STR_MONTH_MAR                                                   :Maart
+STR_MONTH_APR                                                   :April
+STR_MONTH_MAY                                                   :Maaie
+STR_MONTH_JUN                                                   :Juny
+STR_MONTH_JUL                                                   :July
+STR_MONTH_AUG                                                   :Augustus
+STR_MONTH_SEP                                                   :Septimber
+STR_MONTH_OCT                                                   :Oktober
+STR_MONTH_NOV                                                   :Novimber
+STR_MONTH_DEC                                                   :Desimber
 ############ range for months ends
 
 # Graph window
@@ -483,8 +514,17 @@ STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :President
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Tycoon
 
 # Performance detail window
+STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detail
+STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
+STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
+STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 ############ Those following lines need to be in this order!!
+STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stasjons:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Min. fertsjinste:
+STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Min. ynkomsten:
+STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Maks. ynkomsten:
+STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Jild:
+STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Totaal:
 ############ End of order list
 
 # Music window
@@ -497,6 +537,9 @@ STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}{BLAC
 STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}{BLACK}Eigen 2
 STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}Musyk Folume
 STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Effekten Folume
+STR_MUSIC_RULER_MIN                                             :{TINYFONT}{BLACK}MIN
+STR_MUSIC_RULER_MAX                                             :{TINYFONT}{BLACK}MAKS
+STR_MUSIC_RULER_MARKER                                          :{TINYFONT}{BLACK}'
 STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINYFONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------

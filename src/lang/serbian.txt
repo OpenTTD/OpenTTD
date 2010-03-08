@@ -493,8 +493,8 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Prikaži
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Prikaži spisak svih drumskih vozila preduzeća. Ctrl+Klik uključuje otvaranje spiska grupe/vozila
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Prikaži spisak svih brodova preduzeća. Ctrl+Klik uključuje otvaranje spiska grupe/vozila
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Prikaži spisak svih letelica preduzeća. Ctrl+Klik uključuje otvaranje spiska grupe/vozila
-STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Približi pogled (zoom in)
-STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Udalji pogled (zoom out)
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Približi pogled
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Udalji pogled
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Izgradnja železničke pruge
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Izgradnja puteva
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Izgradnja pristaništa
@@ -581,7 +581,7 @@ STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Detaljan pregle
 
 ############ range for industry menu starts
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Spisak fabrika
-STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Finansiranje izgradnje nove fabrike
+STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Finansiranje nove fabrike
 ############ range ends here
 
 ############ range for railway construction menu starts
@@ -597,7 +597,7 @@ STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Izgradnja tramv
 ############ range ends here
 
 ############ range for waterways construction menu starts
-STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Izgradnja plovnih kanala
+STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Izgradnja plovnog sistema
 ############ range ends here
 
 ############ range for airport construction menu starts
@@ -2184,7 +2184,7 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Orijenta
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Odaberite orijentaciju teretne tamvajske stanice
 
 # Waterways toolbar (last two for SE only)
-STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Izgradnja plovnih kanala
+STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Izgradnja plovnog sistema
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Plovni kanali
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Izgradite kanale.
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Izgradnja prevodnica
@@ -2231,7 +2231,7 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Proizved
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Oblikovanje terena
 STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Spusti ugao tla
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Podigni ugao tla
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Nivo zemljišta
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Izjednači nivo tla
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Kupovina zemljišta za kasnije korišćenje
 
 # Tree planting window (last two for SE only)
@@ -2291,7 +2291,7 @@ STR_FOUND_TOWN_SELECT_LAYOUT_3X3_GRID                           :{BLACK}3x3 mre�
 STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Slučajan
 
 # Fund new industry window
-STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Finansiranje izgradnje nove fabrike
+STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Finansiranje nove fabrike
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Izaberite odgovarajuću fabriku sa spiska
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :Mnogo nasumičnih fabrika
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Popunjava teren sa nasumično rasporđenim fabrikama
@@ -2662,7 +2662,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Davanje
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subvencije
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Subvencije u toku (u vezi preuzimanja navedenog tovara):
-STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} iz naselja {STRING} u naselje {STRING}{YELLOW} (pre {DATE_SHORT})
+STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING.big} od {STRING} do {STRING}{YELLOW} (pre {DATE_SHORT})
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Prazno -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Odobrene subvencije:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} između stanica {STRING} i {STRING}{YELLOW} ({COMPANY}{YELLOW}, do {DATE_SHORT})
@@ -3114,7 +3114,7 @@ STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Trenutno
 STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Trenutno stanje letilice - kliknite ovde za zaustavljanje/pokretanje letilice. Ctrl+Klik pomera pogled na odredište
 
 # Messages in the start stop button in the vehicle view
-STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Utovarivanje / Iztovarivanje
+STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Utovarivanje / Istovarivanje
 STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Kreće
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Havarisan!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Pokvaren
@@ -3259,12 +3259,12 @@ STR_ORDER_DROP_FULL_LOAD_ANY                                    :Pun utovar bilo
 STR_ORDER_DROP_NO_LOADING                                       :Bez utovara
 STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Promena načina utovara u označenoj naredbi
 
-STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Iztovar svega
-STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Iztovar ako prihvata
-STR_ORDER_DROP_UNLOAD                                           :Iztovar svega
+STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Istovar svega
+STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Istovar ako se prihvata
+STR_ORDER_DROP_UNLOAD                                           :Istovar svega
 STR_ORDER_DROP_TRANSFER                                         :Prevoz
-STR_ORDER_DROP_NO_UNLOADING                                     :Bez iztovara
-STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Promena načina iztovara u označenoj naredbi
+STR_ORDER_DROP_NO_UNLOADING                                     :Bez istovara
+STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Promena načina istovara u označenoj naredbi
 
 STR_ORDER_REFIT                                                 :{BLACK}Prepravi
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Označite za koji tovar da se prepravi u ovoj naredbi. Ctrl+Klik za uklanjanje prepravljanja
@@ -3336,17 +3336,17 @@ STR_ORDER_GO_TO_STATION                                         :{STRING} {STATI
 STR_ORDER_FULL_LOAD                                             :(Pun utovar)
 STR_ORDER_FULL_LOAD_ANY                                         :(Pun utovar bilo kog)
 STR_ORDER_NO_LOAD                                               :(Bez utovara)
-STR_ORDER_UNLOAD                                                :(Iztovar i utovar)
-STR_ORDER_UNLOAD_FULL_LOAD                                      :(Iztovar i pun utovar svega)
-STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Iztovar i pun utovar bilo kog)
-STR_ORDER_UNLOAD_NO_LOAD                                        :(Iztovar bez utovara)
+STR_ORDER_UNLOAD                                                :(Istovar i utovar)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :(Istovar i pun utovar svega)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Istovar i pun utovar bilo kog)
+STR_ORDER_UNLOAD_NO_LOAD                                        :(Istovar bez utovara)
 STR_ORDER_TRANSFER                                              :(Prevoz i utovar)
 STR_ORDER_TRANSFER_FULL_LOAD                                    :(Prevoz i pun utovar svega)
 STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Prevoz i pun utovar bilo kog)
 STR_ORDER_TRANSFER_NO_LOAD                                      :(Prevoz bez utovara)
-STR_ORDER_NO_UNLOAD                                             :(Bez iztovara i utovar)
-STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Bez iztovara i pun utovar svega)
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Bez iztovara i pun utovar bilo kog)
+STR_ORDER_NO_UNLOAD                                             :(Bez istovara utovar)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Bez istovara i pun utovar svega)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Bez istovara i pun utovar bilo kog)
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[pri početku]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[na sredini]

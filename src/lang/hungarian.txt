@@ -718,7 +718,7 @@ STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Tulajdon
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}Út
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLACK}Vasút
-STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINYFONT}{BLACK}Állomás/Reptér/Kikötő
+STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINYFONT}{BLACK}Állomás/Repülőtér/Kikötő
 STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINYFONT}{BLACK}Épület/Gazdaság
 STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINYFONT}{BLACK}Jármű
 STR_SMALLMAP_LEGENDA_100M                                       :{TINYFONT}{BLACK}100m
@@ -736,7 +736,7 @@ STR_SMALLMAP_LEGENDA_FOREST.t                                   :{TINYFONT}{BLAC
 STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINYFONT}{BLACK}Vasútállomás
 STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINYFONT}{BLACK}Teherautó-rakodóhely
 STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINYFONT}{BLACK}Buszmegálló
-STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINYFONT}{BLACK}Reptér/Helikopter-leszálló
+STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINYFONT}{BLACK}Repülőtér/Helikopter-leszálló
 STR_SMALLMAP_LEGENDA_DOCK                                       :{TINYFONT}{BLACK}Kikötő
 STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINYFONT}{BLACK}Göröngyös Talaj
 STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINYFONT}{BLACK}Füves Talaj
@@ -1189,7 +1189,7 @@ STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Érintk
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Több NewGRF járműgarnitúra engedélyezése: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}A beállítást nem lehet megváltoztatni, ha van használatban jármű.
 
-STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Repterek nem avulnak el: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Repülőterek nem avulnak el: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Figyelmeztet ha a vonat eltévedt: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Menetrend-ellenőrzés: {ORANGE}{STRING}
@@ -1331,7 +1331,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2-es háló
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3-as háló
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :véletlenszerű
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Települések építhetnek utakat: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Településtől függő zajszint engedélyezése a repterek számára: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Településtől függő zajszint engedélyezése a repülőterek számára: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Város alapítása játék közben: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :tiltott
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :megengedett
@@ -1894,7 +1894,7 @@ STR_CONTENT_TYPE_AI_LIBRARY                                     :MI könyvtár
 STR_CONTENT_TYPE_SCENARIO                                       :Pálya
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Magasságtérkép
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Hang alapcsomag
-STR_CONTENT_TYPE_BASE_MUSIC                                     :Zenei alacsomag
+STR_CONTENT_TYPE_BASE_MUSIC                                     :Zenei alapcsomag
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Tartalom letöltése...
@@ -2072,7 +2072,7 @@ STR_DEPOT_BUILD_SHIP_ORIENTATION_TOOLTIP                        :{BLACK}Válaszd
 STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Kikötő
 
 # Airport toolbar
-STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Reptér
+STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Repülőterek
 STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Repülőtér építése. A Ctrl lenyomásával egyesítheted más állomásokkal
 
 # Airport construction window
@@ -2089,9 +2089,9 @@ STR_STATION_BUILD_AIRPORT_HELIPORT                              :{BLACK}Helilesz
 STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}Helihangár
 STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}Heliállomás
 
-STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}Kis repterek
-STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Nagy repterek
-STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Központi repterek
+STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}Kis repülőterek
+STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Nagy repülőterek
+STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Központi repülőterek
 STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Helikopter-állomások
 
 STR_STATION_BUILD_NOISE                                         :{BLACK}Zajtermelés: {GOLD}{COMMA}
@@ -2237,7 +2237,7 @@ STR_LAI_TREE_NAME_RAINFOREST                                    :Esőerdő
 STR_LAI_TREE_NAME_CACTUS_PLANTS                                 :Kaktusz
 
 STR_LAI_STATION_DESCRIPTION_RAILROAD_STATION                    :Vasútállomás
-STR_LAI_STATION_DESCRIPTION_AIRCRAFT_HANGAR                     :Reptéri hangár
+STR_LAI_STATION_DESCRIPTION_AIRCRAFT_HANGAR                     :Repülőtéri hangár
 STR_LAI_STATION_DESCRIPTION_AIRPORT                             :Repülőtér
 STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Teherautó-rakodóhely
 STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :Buszmegálló
@@ -3184,7 +3184,7 @@ STR_ORDER_ROAD_VEHICLE_DEPOT                                    :garázsba
 STR_ORDER_SHIP_DEPOT                                            :dokkba
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {TOWN} {STRING}
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
-STR_ORDER_GO_TO_HANGAR_FORMAT                                   :{STRING} {STATION}i reptér hangárjába
+STR_ORDER_GO_TO_HANGAR_FORMAT                                   :{STRING} {STATION}i repülőtér hangárjába
 
 STR_ORDER_REFIT_ORDER                                           :(Átalakít erre: {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(átalakít erre: {STRING}, és megáll)
@@ -3400,7 +3400,7 @@ STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}...{1:ST
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} önkormányzata nem engedélyezi
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN} önkormányzata nem engedélyez új repteret a városban
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN} önkormányzata nem engedélyez új repülőteret a városban
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} önkormányzata a zajszintnormák miatt megtagadta a repülőtér építését
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}A megvesztegetési kísérleted
 STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}lefülelte egy helyi nyomozó!
@@ -3830,7 +3830,7 @@ STR_SV_STNAME_HEIGHTS                                           :{STRING} Hegy
 STR_SV_STNAME_WOODS                                             :{STRING} Erdő
 STR_SV_STNAME_LAKESIDE                                          :{STRING} Tópart
 STR_SV_STNAME_EXCHANGE                                          :{STRING} Átrakó
-STR_SV_STNAME_AIRPORT                                           :{STRING} Reptér
+STR_SV_STNAME_AIRPORT                                           :{STRING} Repülőtér
 STR_SV_STNAME_OILFIELD                                          :{STRING} Olajmező
 STR_SV_STNAME_MINES                                             :{STRING} Bányák
 STR_SV_STNAME_DOCKS                                             :{STRING} Kikötő

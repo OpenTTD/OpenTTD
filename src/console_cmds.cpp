@@ -814,7 +814,7 @@ DEF_CONSOLE_CMD(ConNetworkConnect)
 {
 	if (argc == 0) {
 		IConsoleHelp("Connect to a remote OTTD server and join the game. Usage: 'connect <ip>'");
-		IConsoleHelp("IP can contain port and company: 'IP[[#Company]:Port]', eg: 'server.ottd.org#2:443'");
+		IConsoleHelp("IP can contain port and company: 'IP[:Port][#Company]', eg: 'server.ottd.org:443#2'");
 		IConsoleHelp("Company #255 is spectator all others are a certain company with Company 1 being #1");
 		return true;
 	}

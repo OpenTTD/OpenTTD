@@ -468,7 +468,7 @@ static void CheckPauseOnJoin()
 }
 
 /** Converts a string to ip/port/company
- *  Format: IP#company:port
+ *  Format: IP:port#company
  *
  * connection_string will be re-terminated to seperate out the hostname, and company and port will
  * be set to the company and port strings given by the user, inside the memory area originally

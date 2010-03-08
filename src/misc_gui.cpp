@@ -532,15 +532,20 @@ private:
 	uint height_summary;            ///< Height of the #summary_msg string in pixels in the #EMW_MESSAGE widget.
 	uint height_detailed;           ///< Height of the #detailed_msg string in pixels in the #EMW_MESSAGE widget.
 	Point position;                 ///< Position of the error message window.
+	CompanyID face;                 ///< Company belonging to the face being shown. #INVALID_COMPANY if no face present.
 
 public:
-	ErrmsgWindow(Point pt, const WindowDesc *desc, StringID summary_msg, StringID detailed_msg, bool no_timeout) : Window()
+	ErrmsgWindow(Point pt, StringID summary_msg, StringID detailed_msg, bool no_timeout) : Window()
 	{
 		this->position = pt;
 		this->duration = no_timeout ? 0 : _settings_client.gui.errmsg_duration;
 		CopyOutDParam(this->decode_params, 0, lengthof(this->decode_params));
 		this->summary_msg  = summary_msg;
 		this->detailed_msg = detailed_msg;
+
+		CompanyID company = (CompanyID)GetDParamX(this->decode_params, 2);
+		this->face = (this->detailed_msg == STR_ERROR_OWNED_BY && company <= MAX_COMPANIES) ? company : INVALID_COMPANY;
+		const WindowDesc *desc = (face == INVALID_COMPANY) ? &_errmsg_desc : &_errmsg_face_desc;
 
 		assert(summary_msg != INVALID_STRING_ID);
 
@@ -586,7 +591,7 @@ public:
 
 		Point pt = RemapCoords2(this->position.x, this->position.y);
 		const ViewPort *vp = FindWindowById(WC_MAIN_WINDOW, 0)->viewport;
-		if (this->detailed_msg != STR_ERROR_OWNED_BY || GetDParamX(this->decode_params, 2) >= MAX_COMPANIES) {
+		if (this->face == INVALID_COMPANY) {
 			/* move x pos to opposite corner */
 			pt.x = UnScaleByZoom(pt.x - vp->virtual_left, vp->zoom) + vp->left;
 			pt.x = (pt.x < (_screen.width >> 1)) ? _screen.width - sm_width - 20 : 20; // Stay 20 pixels away from the edge of the screen.
@@ -606,6 +611,12 @@ public:
 		this->DrawWidgets();
 	}
 
+	virtual void OnInvalidateData(int data)
+	{
+		/* If company gets shut down, while displaying an error about it, remove the error message. */
+		if (this->face != INVALID_COMPANY && !Company::IsValidID(this->face)) delete this;
+	}
+
 	virtual void SetStringParameters(int widget) const
 	{
 		if (widget == EMW_CAPTION) CopyInDParam(0, this->decode_params, lengthof(this->decode_params));
@@ -615,7 +626,7 @@ public:
 	{
 		switch (widget) {
 			case EMW_FACE: {
-				const Company *c = Company::Get((CompanyID)GetDParamX(this->decode_params, 2));
+				const Company *c = Company::Get(this->face);
 				DrawCompanyManagerFace(c->face, c->colour, r.left, r.top);
 				break;
 			}
@@ -695,8 +706,7 @@ void ShowErrorMessage(StringID summary_msg, StringID detailed_msg, int x, int y,
 	if (summary_msg == STR_NULL) summary_msg = STR_EMPTY;
 
 	Point pt = {x, y};
-	const WindowDesc *desc = (detailed_msg != STR_ERROR_OWNED_BY || GetDParam(2) >= MAX_COMPANIES) ? &_errmsg_desc : &_errmsg_face_desc;
-	new ErrmsgWindow(pt, desc, summary_msg, detailed_msg, no_timeout);
+	new ErrmsgWindow(pt, summary_msg, detailed_msg, no_timeout);
 }
 
 void ShowEstimatedCostOrIncome(Money cost, int x, int y)

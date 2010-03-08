@@ -703,7 +703,7 @@ STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Mostrar 
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  EM PAUSA  *  *
 STR_STATUSBAR_AUTOSAVE                                          :{RED}AUTOGUARDADO
-STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  GRAVANDO JOGO *  *
+STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  A GUARDAR JOGO *  *
 
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Histórico de Mensagens
@@ -809,7 +809,7 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} está a ficar muito velho e urgentemente necessita de substituição
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} não consegue encontrar um caminho para continuar.
 STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} está perdido.
-STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}O lucro do veículo {VEHICLE} foi de {CURRENCY}
+STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}O lucro de {VEHICLE} foi de {CURRENCY}
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} parado porque a ordem de ajuste não foi bem sucedida
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Auto-renovação falhou em {VEHICLE}{}{STRING}

@@ -419,6 +419,14 @@ static inline uint32 GetSmallMapRoutesPixels(TileIndex tile, TileType t)
 			case STATION_DOCK:    return MKCOLOUR(0x98989898);
 			default:              return MKCOLOUR(0xFFFFFFFF);
 		}
+	} else if (t == MP_RAILWAY) {
+		AndOr andor = {
+			GetRailTypeInfo(GetRailType(tile))->map_colour * MKCOLOUR(0x00010100),
+			_smallmap_contours_andor[t].mand
+		};
+
+		const SmallMapColourScheme *cs = &_heightmap_schemes[_settings_client.gui.smallmap_land_colour];
+		return ApplyMask(cs->default_colour, &andor);
 	}
 
 	/* Ground colour */
