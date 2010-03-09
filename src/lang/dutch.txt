@@ -1083,7 +1083,11 @@ STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Zeer la
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Trein acceleratie model: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Origineel
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistisch
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Wegvoertuig acceleratie model: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Origineel
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Realistisch
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Hellingshoek voor treinen {ORANGE}{STRING}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Hellingsgraad voor wegvoertuigen {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Verbied treinen en schepen om 90 graden te draaien: {ORANGE}{STRING} {LTBLUE} (onmogelijk met OPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Stations samenvoegen als ze naast elkaar worden gebouwd: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Sta het samenvoegen van niet direct aaneensluitende stations toe: {ORANGE}{STRING}
@@ -2014,6 +2018,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Bouw vli
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Keuze van vliegveld
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Kies grootte en type van vliegveld
+STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Vliegveld klasse
 
 STR_AIRPORT_SMALL                                               :Klein
 STR_AIRPORT_CITY                                                :Stad

@@ -2802,7 +2802,7 @@ STR_PURCHASE_INFO_SPEED                                         :{BLACK}Ταχύ
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Κόστος λειτουργίας: {GOLD}{CURRENCY}/χρ
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Χωρητικότητα: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(μετατρέψιμο)
-STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Σχεδιασμένο: {GOLD}{NUM}{BLACK} Χρόνος ζώης: {GOLD}{COMMA} χρόνια
+STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Έτος σχεδίασης: {GOLD}{NUM}{BLACK} Χρόνος ζώης: {GOLD}{COMMA} χρόνια
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Μεγ. Αξιοπιστία: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Κόστος: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Βάρος: {GOLD}{WEIGHT_S} ({WEIGHT_S})

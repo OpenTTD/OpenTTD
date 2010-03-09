@@ -216,17 +216,20 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA}m³
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 # Common window strings
-STR_LIST_FILTER_OSKTITLE                                        :{BLACK}フィルタを入力
-STR_LIST_FILTER_TOOLTIP                                         :{BLACK}フィルタのキーワードを入力します。
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}フィルターを入力
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}フィルターのキーワードを入力します
+STR_LIST_FILTER_TITLE                                           :{BLACK}フィルター:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}並べ替えの順序を選択（昇順／降順）
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}並べ替えの基準を選択
+STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}フィルターの条件を選択します
 STR_BUTTON_SORT_BY                                              :{BLACK}並べ替え
 STR_BUTTON_LOCATION                                             :{BLACK}見つける
 STR_BUTTON_RENAME                                               :{BLACK}名称を変更
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}ウィンドウを閉じます
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}ウィンドウのタイトル - ウィンドウを動かすには、クリックしてドラッグします
+STR_TOOLTIP_SHADE                                               :{BLACK}ウィンドウを小さくする - ウィンドウのタイトル・バーのみの表示
 STR_TOOLTIP_STICKY                                              :{BLACK}「すべてのウィンドウを閉じる」をクリックしてもこのウィンドウを閉じられないようにします
 STR_TOOLTIP_RESIZE                                              :{BLACK}リサイズするには、クリックしてドラッグします
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}大きい／小さいウィンドウサイズを切り替えます
@@ -271,8 +274,10 @@ STR_SORT_BY_MODEL                                               :モデル
 STR_SORT_BY_VALUE                                               :価値
 STR_SORT_BY_LENGTH                                              :長さ
 STR_SORT_BY_LIFE_TIME                                           :残りライフタイム
+STR_SORT_BY_TIMETABLE_DELAY                                     :時刻の遅延
 STR_SORT_BY_FACILITY                                            :駅の種類
 STR_SORT_BY_WAITING                                             :到着待ち貨物の価値
+STR_SORT_BY_RATING_MAX                                          :最高貨物評価
 STR_SORT_BY_RATING_MIN                                          :最低い貨物評価
 STR_SORT_BY_ENGINE_ID                                           :EngineID（旧式）
 STR_SORT_BY_COST                                                :値段
@@ -310,6 +315,7 @@ STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}整地�
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}エフェクト／音楽のウィンドウを表示します
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}最後のメッセージ、メッセージの設定を表示します
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}地域情報、コンソール、AIデバグ、スクリーンショット、OpenTTDいついて
+STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}ツールバーの切り替え
 
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}シナリオを開く、保存、エディタを終了など
@@ -576,6 +582,9 @@ STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}{BLAC
 STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}{BLACK}カスタム 2
 STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}音楽の音量
 STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}エフェクトの音量
+STR_MUSIC_RULER_MIN                                             :{TINYFONT}{BLACK}MIN
+STR_MUSIC_RULER_MAX                                             :{TINYFONT}{BLACK}MAX
+STR_MUSIC_RULER_MARKER                                          :{TINYFONT}{BLACK}'
 STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINYFONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
@@ -679,7 +688,7 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLAC
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}雪
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}地図に町名の表示を切り替えます
-STR_SMALLMAP_CENTER                                             :{BLACK}予約地図を現在の場所に移動します
+STR_SMALLMAP_CENTER                                             :{BLACK}ミニマップを現在の場所に移動します
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}すべてを切
@@ -940,6 +949,7 @@ STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}ベー�
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}ベース音楽セット
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}使用する音楽の選択
+STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM}つの破損ファイルがあります
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}ベース音楽セットについて追加情報
 
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}フルスクリーンモードが設定できません
@@ -1051,6 +1061,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :寛大
 STR_CITY_APPROVAL_TOLERANT                                      :寛容
 STR_CITY_APPROVAL_HOSTILE                                       :対立
 
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}適切なAIがありません...{}いくつかのAIは「オンラインの項目を確認」からダウンロード可能です
 STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}この動作によって難易度がカスタムになりました。
 
 # Advanced settings window
@@ -1062,12 +1073,15 @@ STR_CONFIG_SETTING_DISABLED                                     :切
 STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}状況バーに車両速度を表示：{ORANGE}{STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}傾斜地／海岸上の建設を許容：{ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}建物、道路、鉄道などの下の地形変更を許容：{ORANGE}{STRING}
-STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}より現実的な受入れ地域を使用：{ORANGE}{STRING}
+STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}より現実的な受入れ地域を許容：{ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}より多くの町有の道路／橋などの破壊を許容：{ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}超長型列車の作成を許容：{ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}電車の加速モデル：{ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :オリジナル
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :現実的
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}道路車両の加速モデル: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :デフォルト
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :現実的
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}列車にとって傾斜地程度{ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}列車／船舶が直角に曲がらないようにする：{ORANGE}{STRING}{LTBLUE}（OPFと一緒に設定できません）
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}隣接した駅を一つの駅に統合：{ORANGE}{STRING}
@@ -1087,6 +1101,10 @@ STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}常に�
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}信号を運転側に表示：{ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}年末に財政ウインドウを表示：{ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}新規指令にデフォルトで 'non-stop'をつける: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}新規鉄道車両は初期設定によりプラットホームの{ORANGE}{STRING}{LTBLUE}に停車します
+STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :始点
+STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :中点
+STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :終点
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}車両の待ち行列を使用：{ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}マウスが端にあるとき画面を移動：{ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}町議会の買収を許容：{ORANGE}{STRING}
@@ -1143,6 +1161,10 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}マッ�
 STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}駅の幅の上限：{ORANGE}{STRING} {RED}注意：高い数はパフォーマンスに悪影響を与えます
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}ヘリコプターを自動的ヘリパッドで修理：{ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}地形のツールバーを鉄道／道路／船舶／空港のツールバーに付ける：{ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}ミニマップに表示する土地の色： {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :緑色
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :濃い緑色
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :スミレ色
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}スクロールの方面を逆転：{ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}画面のスムーズスクロール機能：{ORANGE}{STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}様々な建設のツールを使用するときに、測定ツールティップを表示：{ORANGE}{STRING}
@@ -1180,6 +1202,7 @@ STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :自分
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :すべて
 STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}車両の時刻表を使用：{ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}日の代わりに時刻表をティックで表示：{ORANGE}{STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}時刻表に発着情報を表示する: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}【駅を選択】をデフォルトでONにする： {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}デフォルトの鉄道の種類（新規ゲーム後／ゲームの読み込み後）：{ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :最初の鉄道種類
@@ -1344,6 +1367,7 @@ STR_OSNAME_DOS                                                  :DOS
 STR_OSNAME_UNIX                                                 :Unix
 STR_OSNAME_OSX                                                  :OS{NBSP}X
 STR_OSNAME_BEOS                                                 :BeOS
+STR_OSNAME_HAIKU                                                :Haiku
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
@@ -1757,7 +1781,7 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}アッ�
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}すでにダウンロードした項目のためのアップデートをすべて選択します。
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}選択を解除
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}何も選択していないようにします
-STR_CONTENT_FILTER_TITLE                                        :{BLACK}タグ／名前のフィルタ：
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}タグ／名前のフィルター：
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}ダウンロード
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}選択した項目のダウンロードを開始します。
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}合計ダウンロードサイズ：{WHITE}{BYTES}
@@ -1968,6 +1992,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}空港�
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}空港の選択
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}空港のサイズ／種類を選択します
+STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}空港の種類
 
 STR_AIRPORT_SMALL                                               :町空港
 STR_AIRPORT_CITY                                                :市空港
@@ -2072,8 +2097,9 @@ STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}町議�
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :なし
 STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}座標：{LTBLUE}{NUM}x{NUM}x{NUM}（{STRING}）
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}購入年：{LTBLUE}{DATE_LONG}
-STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}駅のクラス：{LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}駅の種類：{LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}駅の種類：{LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}空港のタイル名: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF：{LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}受入れる貨物：{LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
@@ -2846,7 +2872,7 @@ STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}飛行�
 STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}列車の現在の動作 - 始動／停止するにはここにクリックします
 STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}車両の現在の動作 - 開始／停止するにはクリックします
 STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}船舶の現在の動作 - 始動／停止するにはここへクリックします
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}飛行機の現在の動作 - 始動／停止するにはここへクリックします
+STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}飛行機の現在の動作 - 始動／停止するにはここをクリックします。Ctrlキー+クリックで目的地に移動します
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}積み降ろし中
@@ -3103,6 +3129,7 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}この�
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}この車両は現在{STRING}遅刻しています
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}この車両は現在{STRING}早刻しています
 
+STR_TIMETABLE_STARTING_DATE                                     :{BLACK}開始日
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}時間を変更
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}選択した指令の実行時間を変更します
@@ -3132,6 +3159,8 @@ STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}コン�
 STR_AI_DEBUG_RELOAD                                             :{BLACK}AI を再起動
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}AI を停止して、スクリプトを読み込んで、AI を再起動します。
 
+STR_ERROR_NO_AI                                                 :{WHITE}この OpenTTD は AI のサポートが入っていません...
+STR_ERROR_NO_AI_SUB                                             :{WHITE}...使用可能のAIがありません！
 
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}実行中の AI の一つは予期せずに終了しました。AI の作者に AI デバッグのウインドウのスクリーンショットが含む電子メールをご送信ください。
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI デバッグウインドウはサーバのみで使用することができます。
@@ -3143,7 +3172,9 @@ STR_AI_CONFIG_HUMAN_PLAYER                                      :人間のプレ
 STR_AI_CONFIG_RANDOM_AI                                         :ランダムな AI
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}上にします
+STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}選択したAIの順位を上げる
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}下にします
+STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}選択したAIの順位を下げる
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}AI を選択
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}ほかの AI を開きます
@@ -3215,6 +3246,8 @@ STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}...イ�
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}リサイズ警告
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}ソース地図をリサイズしすぎることはお勧めしません。地形作成を続けてもよろしいですか？
 
+# Soundset messages
+
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}スクリーンショットを'{STRING}'に正常に保存しました
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}スクリーンショットの保存に失敗しました！
@@ -3283,6 +3316,7 @@ STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}この�
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}道路工事中
 
 # Industry related errors
+STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}...産業の件数制限を超えています
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}産業を建設できません...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}ここに{STRING}が建設できません
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}この産業をここに建設できません...
@@ -3293,6 +3327,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...人�
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...雨林地域のみに建設できます
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}...砂漠地域のみに建設できます
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}...町内のみに建設できます
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}...低高度領域にしか建設できません
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}...地図の端のみに設置できます
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}...雪線上のみに植林できます
 
@@ -3327,6 +3362,7 @@ STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}バス�
 STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}荷役所を破壊できません...
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}乗客用路面電車駅を破壊できません...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}貨物用路面電車駅を破壊できません...
+STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}先にバス停を破壊しなければなりません
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}先に駅を破壊しなければなりません
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}先にバス停を破壊しなければなりません
@@ -3377,6 +3413,7 @@ STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(資金の限�
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}不可能な線路の組み合わせ
+STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}先に信号を破壊しなければなりません
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}適当な線路がありません
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}先に線路を破壊しなければなりません
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}道路は一方通行または進入禁止です
