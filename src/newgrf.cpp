@@ -112,7 +112,7 @@ public:
 		return val | (ReadByte() << 8);
 	}
 
-	uint16 ReadExtended()
+	uint16 ReadExtendedByte()
 	{
 		uint16 val = ReadByte();
 		return val == 0xFF ? ReadWord() : val;
@@ -671,7 +671,7 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 			} break;
 
 			case 0x1A: // Alter purchase list sort order
-				AlterVehicleListOrder(e->index, buf->ReadExtended());
+				AlterVehicleListOrder(e->index, buf->ReadExtendedByte());
 				break;
 
 			case 0x1B: // Powered wagons power bonus
@@ -875,7 +875,7 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint engine, int numinfo, int prop
 				break;
 
 			case 0x20: // Alter purchase list sort order
-				AlterVehicleListOrder(e->index, buf->ReadExtended());
+				AlterVehicleListOrder(e->index, buf->ReadExtendedByte());
 				break;
 
 			default:
@@ -989,7 +989,7 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint engine, int numinfo, int prop
 				break;
 
 			case 0x1B: // Alter purchase list sort order
-				AlterVehicleListOrder(e->index, buf->ReadExtended());
+				AlterVehicleListOrder(e->index, buf->ReadExtendedByte());
 				break;
 
 			default:
@@ -1099,7 +1099,7 @@ static ChangeInfoResult AircraftVehicleChangeInfo(uint engine, int numinfo, int 
 				break;
 
 			case 0x1B: // Alter purchase list sort order
-				AlterVehicleListOrder(e->index, buf->ReadExtended());
+				AlterVehicleListOrder(e->index, buf->ReadExtendedByte());
 				break;
 
 			default:
@@ -1145,7 +1145,7 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 			} break;
 
 			case 0x09: // Define sprite layout
-				statspec->tiles = buf->ReadExtended();
+				statspec->tiles = buf->ReadExtendedByte();
 				statspec->renderdata = CallocT<DrawTileSprites>(statspec->tiles);
 				statspec->copied_renderdata = false;
 
@@ -2807,7 +2807,7 @@ static void FeatureChangeInfo(ByteReader *buf)
 	uint8 feature  = buf->ReadByte();
 	uint8 numprops = buf->ReadByte();
 	uint numinfo  = buf->ReadByte();
-	uint engine   = buf->ReadExtended();
+	uint engine   = buf->ReadExtendedByte();
 
 	grfmsg(6, "FeatureChangeInfo: feature %d, %d properties, to apply to %d+%d",
 	               feature, numprops, engine, numinfo);
@@ -2834,7 +2834,7 @@ static void SafeChangeInfo(ByteReader *buf)
 	uint8 feature  = buf->ReadByte();
 	uint8 numprops = buf->ReadByte();
 	uint numinfo = buf->ReadByte();
-	buf->ReadExtended(); // id
+	buf->ReadExtendedByte(); // id
 
 	if (feature == GSF_BRIDGE && numprops == 1) {
 		uint8 prop = buf->ReadByte();
@@ -2874,7 +2874,7 @@ static void ReserveChangeInfo(ByteReader *buf)
 
 	uint8 numprops = buf->ReadByte();
 	uint8 numinfo  = buf->ReadByte();
-	uint8 index    = buf->ReadExtended();
+	uint8 index    = buf->ReadExtendedByte();
 
 	while (numprops-- && buf->HasData()) {
 		uint8 prop = buf->ReadByte();
@@ -2916,7 +2916,7 @@ static void NewSpriteSet(ByteReader *buf)
 
 	uint8 feature   = buf->ReadByte();
 	uint8 num_sets  = buf->ReadByte();
-	uint16 num_ents = buf->ReadExtended();
+	uint16 num_ents = buf->ReadExtendedByte();
 
 	_cur_grffile->spriteset_start = _cur_spriteid;
 	_cur_grffile->spriteset_feature = feature;
@@ -2938,7 +2938,7 @@ static void SkipAct1(ByteReader *buf)
 {
 	buf->ReadByte();
 	uint8 num_sets  = buf->ReadByte();
-	uint16 num_ents = buf->ReadExtended();
+	uint16 num_ents = buf->ReadExtendedByte();
 
 	_skip_sprites = num_sets * num_ents;
 
@@ -3376,7 +3376,7 @@ static void VehicleMapSpriteGroup(ByteReader *buf, byte feature, uint8 idcount)
 
 	EngineID *engines = AllocaM(EngineID, idcount);
 	for (uint i = 0; i < idcount; i++) {
-		engines[i] = GetNewEngine(_cur_grffile, (VehicleType)feature, buf->ReadExtended())->index;
+		engines[i] = GetNewEngine(_cur_grffile, (VehicleType)feature, buf->ReadExtendedByte())->index;
 		if (!wagover) last_engines[i] = engines[i];
 	}
 
@@ -3795,7 +3795,7 @@ static void FeatureNewName(ByteReader *buf)
 	if (generic) {
 		id = buf->ReadWord();
 	} else if (feature <= GSF_AIRCRAFT) {
-		id = buf->ReadExtended();
+		id = buf->ReadExtendedByte();
 	} else {
 		id = buf->ReadByte();
 	}
@@ -3978,8 +3978,8 @@ static void GraphicsNew(ByteReader *buf)
 	};
 
 	uint8 type = buf->ReadByte();
-	uint16 num = buf->ReadExtended();
-	uint16 offset = HasBit(type, 7) ? buf->ReadExtended() : 0;
+	uint16 num = buf->ReadExtendedByte();
+	uint16 offset = HasBit(type, 7) ? buf->ReadExtendedByte() : 0;
 	ClrBit(type, 7); // Clear the high bit as that only indicates whether there is an offset.
 
 	if ((type == 0x0D) && (num == 10) && _cur_grffile->is_ottdfile) {
@@ -4047,7 +4047,7 @@ static void SkipAct5(ByteReader *buf)
 	buf->ReadByte();
 
 	/* Skip the sprites of this action */
-	_skip_sprites = buf->ReadExtended();
+	_skip_sprites = buf->ReadExtendedByte();
 
 	grfmsg(3, "SkipAct5: Skipping %d sprites", _skip_sprites);
 }
@@ -4296,7 +4296,7 @@ static void CfgApply(ByteReader *buf)
 		param_size = GB(param_size, 0, 7);
 
 		/* Where to apply the data to within the pseudo sprite data. */
-		offset     = buf->ReadExtended();
+		offset     = buf->ReadExtendedByte();
 
 		/* If the parameter is a GRF parameter (not an internal variable) check
 		 * if it (and all further sequential parameters) has been defined. */
