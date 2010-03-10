@@ -153,8 +153,6 @@ static const SaveLoad _old_station_desc[] = {
 	SLE_CONDVAR(Station, train_station.tile,         SLE_UINT32,                  6, SL_MAX_VERSION),
 	SLE_CONDVAR(Station, airport.tile,               SLE_FILE_U16 | SLE_VAR_U32,  0, 5),
 	SLE_CONDVAR(Station, airport.tile,               SLE_UINT32,                  6, SL_MAX_VERSION),
-	SLE_CONDVAR(Station, airport.w,                  SLE_UINT8,                   139, SL_MAX_VERSION),
-	SLE_CONDVAR(Station, airport.h,                  SLE_UINT8,                   139, SL_MAX_VERSION),
 	SLE_CONDVAR(Station, dock_tile,                  SLE_FILE_U16 | SLE_VAR_U32,  0, 5),
 	SLE_CONDVAR(Station, dock_tile,                  SLE_UINT32,                  6, SL_MAX_VERSION),
 	    SLE_REF(Station, town,                       REF_TOWN),
@@ -334,6 +332,8 @@ static const SaveLoad _station_desc[] = {
 	      SLE_REF(Station, truck_stops,                REF_ROADSTOPS),
 	      SLE_VAR(Station, dock_tile,                  SLE_UINT32),
 	      SLE_VAR(Station, airport.tile,               SLE_UINT32),
+	  SLE_CONDVAR(Station, airport.w,                  SLE_UINT8, 139, SL_MAX_VERSION),
+	  SLE_CONDVAR(Station, airport.h,                  SLE_UINT8, 139, SL_MAX_VERSION),
 	      SLE_VAR(Station, airport_type,               SLE_UINT8),
 	      SLE_VAR(Station, airport_flags,              SLE_UINT64),
 
