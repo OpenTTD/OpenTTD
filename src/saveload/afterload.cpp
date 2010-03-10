@@ -586,6 +586,18 @@ bool AfterLoadGame()
 	 * filled; and that could eventually lead to desyncs. */
 	CargoPacket::AfterLoad();
 
+	/* Oilrig was moved from id 15 to 9. We have to do this conversion
+	 * here as AfterLoadVehicles can check it indirectly via the newgrf
+	 * code. */
+	if (CheckSavegameVersion(139)) {
+		Station *st;
+		FOR_ALL_STATIONS(st) {
+			if (st->airport.tile != INVALID_TILE && st->airport_type == 15) {
+				st->airport_type = AT_OILRIG;
+			}
+		}
+	}
+
 	/* Update all vehicles */
 	AfterLoadVehicles(true);
 
@@ -2067,7 +2079,6 @@ bool AfterLoadGame()
 		Station *st;
 		FOR_ALL_STATIONS(st) {
 			if (st->airport.tile != INVALID_TILE) {
-				if (st->airport_type == 15) st->airport_type = AT_OILRIG;
 				st->airport.w = st->GetAirportSpec()->size_x;
 				st->airport.h = st->GetAirportSpec()->size_y;
 			}
