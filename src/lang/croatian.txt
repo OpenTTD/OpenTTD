@@ -2129,7 +2129,7 @@ STR_AIRPORT_HELISTATION                                         :Postaja za heli
 STR_AIRPORT_CLASS_SMALL                                         :Male zračne luke
 STR_AIRPORT_CLASS_LARGE                                         :Velike zračne luke
 STR_AIRPORT_CLASS_HUB                                           :Središnje zračne luke
-STR_AIRPORT_CLASS_HELIPORTS                                     :Helicopterske zračne luke
+STR_AIRPORT_CLASS_HELIPORTS                                     :Zračne luke za helikoptere
 
 STR_STATION_BUILD_NOISE                                         :{BLACK}Proizvedeno buke: {GOLD}{COMMA}
 

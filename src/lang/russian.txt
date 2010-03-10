@@ -74,7 +74,7 @@ STR_CARGO_PLURAL_FRUIT.acc                                      :фрукты
 STR_CARGO_PLURAL_DIAMONDS                                       :{G=p}Алмазы
 STR_CARGO_PLURAL_DIAMONDS.gen                                   :алмазов
 STR_CARGO_PLURAL_DIAMONDS.acc                                   :алмазы
-STR_CARGO_PLURAL_FOOD                                           :{G=p}Еда
+STR_CARGO_PLURAL_FOOD                                           :{G=p}Продукты
 STR_CARGO_PLURAL_FOOD.gen                                       :продуктов
 STR_CARGO_PLURAL_FOOD.acc                                       :продукты
 STR_CARGO_PLURAL_PAPER                                          :{G=f}Бумага
@@ -170,7 +170,7 @@ STR_CARGO_SINGULAR_FRUIT.acc                                    :фрукты
 STR_CARGO_SINGULAR_DIAMOND                                      :{G=p}Алмазы
 STR_CARGO_SINGULAR_DIAMOND.gen                                  :алмазов
 STR_CARGO_SINGULAR_DIAMOND.acc                                  :алмазы
-STR_CARGO_SINGULAR_FOOD                                         :{G=p}Еда
+STR_CARGO_SINGULAR_FOOD                                         :{G=p}Продукты
 STR_CARGO_SINGULAR_FOOD.gen                                     :продуктов
 STR_CARGO_SINGULAR_FOOD.acc                                     :продукты
 STR_CARGO_SINGULAR_PAPER                                        :{G=f}Бумага
@@ -236,7 +236,7 @@ STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} мед
 STR_QUANTITY_MAIZE                                              :{WEIGHT} кукурузы
 STR_QUANTITY_FRUIT                                              :{WEIGHT} фруктов
 STR_QUANTITY_DIAMONDS                                           :{COMMA} меш{P ок ка ков} алмазов
-STR_QUANTITY_FOOD                                               :{WEIGHT} еды
+STR_QUANTITY_FOOD                                               :{WEIGHT} продуктов
 STR_QUANTITY_PAPER                                              :{WEIGHT} бумаги
 STR_QUANTITY_GOLD                                               :{COMMA} меш{P ок ка ков} золота
 STR_QUANTITY_WATER                                              :{VOLUME} воды
@@ -271,7 +271,7 @@ STR_ABBREV_COPPER_ORE                                           :{TINYFONT}МР
 STR_ABBREV_MAIZE                                                :{TINYFONT}КК
 STR_ABBREV_FRUIT                                                :{TINYFONT}ФР
 STR_ABBREV_DIAMONDS                                             :{TINYFONT}АЛ
-STR_ABBREV_FOOD                                                 :{TINYFONT}ЕД
+STR_ABBREV_FOOD                                                 :{TINYFONT}ПР
 STR_ABBREV_PAPER                                                :{TINYFONT}БМ
 STR_ABBREV_GOLD                                                 :{TINYFONT}ЗЛ
 STR_ABBREV_WATER                                                :{TINYFONT}ВД
