@@ -332,8 +332,8 @@ static const SaveLoad _station_desc[] = {
 	      SLE_REF(Station, truck_stops,                REF_ROADSTOPS),
 	      SLE_VAR(Station, dock_tile,                  SLE_UINT32),
 	      SLE_VAR(Station, airport.tile,               SLE_UINT32),
-	  SLE_CONDVAR(Station, airport.w,                  SLE_UINT8, 139, SL_MAX_VERSION),
-	  SLE_CONDVAR(Station, airport.h,                  SLE_UINT8, 139, SL_MAX_VERSION),
+	  SLE_CONDVAR(Station, airport.w,                  SLE_UINT8, 140, SL_MAX_VERSION),
+	  SLE_CONDVAR(Station, airport.h,                  SLE_UINT8, 140, SL_MAX_VERSION),
 	      SLE_VAR(Station, airport_type,               SLE_UINT8),
 	      SLE_VAR(Station, airport_flags,              SLE_UINT64),
 

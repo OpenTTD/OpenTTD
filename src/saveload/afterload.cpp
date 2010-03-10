@@ -2076,14 +2076,6 @@ bool AfterLoadGame()
 	}
 
 	if (CheckSavegameVersion(139)) {
-		Station *st;
-		FOR_ALL_STATIONS(st) {
-			if (st->airport.tile != INVALID_TILE) {
-				st->airport.w = st->GetAirportSpec()->size_x;
-				st->airport.h = st->GetAirportSpec()->size_y;
-			}
-		}
-
 		Train *t;
 		FOR_ALL_TRAINS(t) {
 			/* Copy old GOINGUP / GOINGDOWN flags. */
@@ -2093,6 +2085,16 @@ bool AfterLoadGame()
 			} else if (HasBit(t->flags, 2)) {
 				ClrBit(t->flags, 2);
 				SetBit(t->gv_flags, GVF_GOINGDOWN_BIT);
+			}
+		}
+	}
+
+	if (CheckSavegameVersion(140)) {
+		Station *st;
+		FOR_ALL_STATIONS(st) {
+			if (st->airport.tile != INVALID_TILE) {
+				st->airport.w = st->GetAirportSpec()->size_x;
+				st->airport.h = st->GetAirportSpec()->size_y;
 			}
 		}
 	}
