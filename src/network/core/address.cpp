@@ -161,7 +161,7 @@ bool NetworkAddress::IsInNetmask(char *netmask)
 
 	while (cidr > 0) {
 		uint32 msk = cidr >= 32 ? (uint32)-1 : htonl(-(1 << (32 - cidr)));
-		if ((*mask & msk) != (*ip & msk)) return false;
+		if ((*mask++ & msk) != (*ip++ & msk)) return false;
 
 		cidr -= 32;
 	}
