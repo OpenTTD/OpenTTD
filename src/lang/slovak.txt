@@ -1141,7 +1141,7 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Rozšír
 STR_CONFIG_SETTING_OFF                                          :nie
 STR_CONFIG_SETTING_ON                                           :áno
 STR_CONFIG_SETTING_DISABLED                                     :zakazane
-STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Zobrazovať rýchlosť vozidla v stavovej lište: {ORANGE}{STRING}
+STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Zobraziť rýchlosť vozidla v stavovej lište: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Umožniť výstavbu na svahoch a na pobreží: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Povoliť úpravy terénu pod budovami, koľajami, a pod.: {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Povoliť realistickejšiu veľkosť oblasti pokrytia: {ORANGE}{STRING}
@@ -1261,7 +1261,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Ziadna
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Skrolovať ľavým tlačidlom: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Použiť {ORANGE}{STRING}{LTBLUE} formát dátumu pre názvy uložených hier.
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Použiť {ORANGE}{STRING}{LTBLUE} formát dátumu v názve uloženej hry.
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :dlhý (31st Dec 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :krátky (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
@@ -1271,12 +1271,12 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Použit
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :Vypnutý
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :Vlastná spolocnost
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_ALL                   :Všetky spolocnosti
-STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Zobrazovať ukazovatele nakladania/vykladania: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Zobraziť ukazovatele nakladania/vykladania: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :vypnuté
 STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :vlastná spolocnost
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :všetky spolocnosti
 STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Používat cestovné poriadky pre vozidlá: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Zobrazovať cestovné poriadky v tikoch namiesto dní: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Zobraziť cestovné poriadky v tikoch namiesto dní: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Zobraziť príchody a odchody v cestovných poriadkoch: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Rýchla tvorba cestovného poriadku vozidla: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Predvolený typ kolají (v novej/nahranej hre): {ORANGE}{STRING}
@@ -1314,7 +1314,7 @@ STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Vypnú�
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Obmedzenie rýchlosti pre vagóny: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}Zakázat elektrifikovanú železnicu: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Zobrazovať správy farebne od roku: {ORANGE}{STRING}
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Zobraziť správy farebne od roku: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Zaciatok hry v roku: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Povoliť zmeny ekonomiky (viac menších zmien): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Povoliť kupovanie podielov v ostatných spoločnostiach: {ORANGE}{STRING}
@@ -2451,7 +2451,7 @@ STR_NEWGRF_ERROR_READ_BOUNDS                                    :Čítaj na konc
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Upozornenie!
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Chystáte sa vykonat zmeny v spustenej hre, co može sposobit pád hry.{}Naozaj ich chcete vykonat?
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Chystáte sa vykonať zmeny počas spustenej hry, čo môže spôsobiť pád hry.{}Ste si naozaj istý, že chcete zmeny vykonať?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Nie je možné pridat súbor: duplicitné GRF ID
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Príslušný súbor nenájdený (použitý kompatibilný GRF)
@@ -2976,10 +2976,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Zobrazi�
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Zobraziť detaily o lodi
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Zobraziť detaily o lietadle
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Aktualna cinnost vlaku - kliknut pre zastavenie/spustenie
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Aktualna cinnost vozidla - kliknut pre zastavenie/spustenie
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Atualna cinnost lode - klini pre zastavenie/spustenie
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Aktualna cinnost lietadla - klini pre zastavenie/spustenie
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Aktuálna činnosť vlaku - kliknutím sa zastaví/spustí. Ctrl+klik presunie pohľad na cieľovú stanicu
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Aktuálna činnosť vozidla - kliknutím sa zastaví/spustí. Ctrl+klik presunie pohľad na cieľovú stanicu
+STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Aktuálna činnosť lode - kliknutím sa zastaví/spustí. Ctrl+klik presunie pohľad na cieľovú stanicu
+STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Aktuálna činnosť lietadla - kliknutím sa zastaví/spustí. Ctrl+klik presunie pohľad na cieľovú stanicu
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Naklada/Vyklada
