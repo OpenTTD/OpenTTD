@@ -1016,3 +1016,11 @@ void ShowAIDebugWindow(CompanyID show_company)
 		ShowErrorMessage(STR_ERROR_AI_DEBUG_SERVER_ONLY, INVALID_STRING_ID, WL_INFO);
 	}
 }
+
+/**
+ * Reset the AI windows to their initial state.
+ */
+void InitializeAIGui()
+{
+	AIDebugWindow::ai_debug_company = INVALID_COMPANY;
+}
