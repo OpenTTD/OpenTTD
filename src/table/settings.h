@@ -31,6 +31,7 @@ static bool TownFoundingChanged(int32 p1);
 static bool DifficultyReset(int32 level);
 static bool DifficultyChange(int32);
 static bool DifficultyNoiseChange(int32 i);
+static bool MaxNoAIsChange(int32 i);
 static bool CheckRoadSide(int p1);
 static int32 ConvertLandscape(const char *value);
 static bool CheckFreeformEdges(int32 p1);
@@ -336,7 +337,7 @@ const SettingDesc _settings[] = {
 	/***************************************************************************/
 	/* Saved settings variables. */
 	/* Do not ADD or REMOVE something in this "difficulty.XXX" table or before it. It breaks savegame compatability. */
-	 SDT_CONDVAR(GameSettings, difficulty.max_no_competitors,        SLE_UINT8, 97, SL_MAX_VERSION, 0, 0,     0,0,MAX_COMPANIES-1,1,STR_NULL,                                  DifficultyChange),
+	 SDT_CONDVAR(GameSettings, difficulty.max_no_competitors,        SLE_UINT8, 97, SL_MAX_VERSION, 0, 0,     0,0,MAX_COMPANIES-1,1,STR_NULL,                                  MaxNoAIsChange),
 	SDT_CONDNULL(                                                            1, 97, 109),
 	 SDT_CONDVAR(GameSettings, difficulty.number_towns,              SLE_UINT8, 97, SL_MAX_VERSION, 0,NG,     2,     0,      4,  1, STR_NUM_VERY_LOW,                          DifficultyChange),
 	 SDT_CONDVAR(GameSettings, difficulty.number_industries,         SLE_UINT8, 97, SL_MAX_VERSION, 0,NG,     4,     0,      4,  1, STR_NONE,                                  DifficultyChange),

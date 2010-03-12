@@ -905,14 +905,6 @@ static bool DifficultyChange(int32)
 		_settings_game.difficulty.diff_level = 3;
 	}
 
-	if (((_game_mode == GM_MENU) ? _settings_newgame.difficulty : _settings_game.difficulty).max_no_competitors != 0 &&
-#ifdef ENABLE_AI
-			AI::GetInfoList()->size() == 0 &&
-#endif /* ENABLE_AI */
-			(!_networking || _network_server)) {
-		ShowErrorMessage(STR_WARNING_NO_SUITABLE_AI, INVALID_STRING_ID, WL_CRITICAL);
-	}
-
 	/* If we are a network-client, update the difficult setting (if it is open).
 	 * Use this instead of just dirtying the window because we need to load in
 	 * the new difficulty settings */
@@ -930,6 +922,19 @@ static bool DifficultyNoiseChange(int32 i)
 		if (_settings_game.economy.station_noise_level) {
 			InvalidateWindowClassesData(WC_TOWN_VIEW, 0);
 		}
+	}
+
+	return DifficultyChange(i);
+}
+
+static bool MaxNoAIsChange(int32 i)
+{
+	if (((_game_mode == GM_MENU) ? _settings_newgame.difficulty : _settings_game.difficulty).max_no_competitors != 0 &&
+#ifdef ENABLE_AI
+			AI::GetInfoList()->size() == 0 &&
+#endif /* ENABLE_AI */
+			(!_networking || _network_server)) {
+		ShowErrorMessage(STR_WARNING_NO_SUITABLE_AI, INVALID_STRING_ID, WL_CRITICAL);
 	}
 
 	return DifficultyChange(i);
