@@ -3707,7 +3707,7 @@ STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :Bosque de Algod
 STR_INDUSTRY_NAME_CANDY_FACTORY                                 :Fábrica de Dulces
 STR_INDUSTRY_NAME_BATTERY_FARM                                  :Granja de Pilas
 STR_INDUSTRY_NAME_COLA_WELLS                                    :Pozos de Cola
-STR_INDUSTRY_NAME_TOY_SHOP                                      :Tienda de Juguete
+STR_INDUSTRY_NAME_TOY_SHOP                                      :Tienda de Juguetes
 STR_INDUSTRY_NAME_TOY_FACTORY                                   :Fábrica de Juguetes
 STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :Fuentes de Plástico
 STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :Fábrica de Refrescos
