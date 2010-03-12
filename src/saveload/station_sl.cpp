@@ -156,8 +156,8 @@ static const SaveLoad _old_station_desc[] = {
 	SLE_CONDVAR(Station, dock_tile,                  SLE_FILE_U16 | SLE_VAR_U32,  0, 5),
 	SLE_CONDVAR(Station, dock_tile,                  SLE_UINT32,                  6, SL_MAX_VERSION),
 	    SLE_REF(Station, town,                       REF_TOWN),
-	    SLE_VAR(Station, train_station.w,            SLE_UINT8),
-	SLE_CONDVAR(Station, train_station.h,            SLE_UINT8,                   2, SL_MAX_VERSION),
+	    SLE_VAR(Station, train_station.w,            SLE_FILE_U8 | SLE_VAR_U16),
+	SLE_CONDVAR(Station, train_station.h,            SLE_FILE_U8 | SLE_VAR_U16,   2, SL_MAX_VERSION),
 
 	SLE_CONDNULL(1, 0, 3),  ///< alpha_order
 
@@ -325,15 +325,15 @@ static const SaveLoad _station_desc[] = {
 	SLE_ST_INCLUDE(),
 
 	      SLE_VAR(Station, train_station.tile,         SLE_UINT32),
-	      SLE_VAR(Station, train_station.w,            SLE_UINT8),
-	      SLE_VAR(Station, train_station.h,            SLE_UINT8),
+	      SLE_VAR(Station, train_station.w,            SLE_FILE_U8 | SLE_VAR_U16),
+	      SLE_VAR(Station, train_station.h,            SLE_FILE_U8 | SLE_VAR_U16),
 
 	      SLE_REF(Station, bus_stops,                  REF_ROADSTOPS),
 	      SLE_REF(Station, truck_stops,                REF_ROADSTOPS),
 	      SLE_VAR(Station, dock_tile,                  SLE_UINT32),
 	      SLE_VAR(Station, airport.tile,               SLE_UINT32),
-	  SLE_CONDVAR(Station, airport.w,                  SLE_UINT8, 140, SL_MAX_VERSION),
-	  SLE_CONDVAR(Station, airport.h,                  SLE_UINT8, 140, SL_MAX_VERSION),
+	  SLE_CONDVAR(Station, airport.w,                  SLE_FILE_U8 | SLE_VAR_U16, 140, SL_MAX_VERSION),
+	  SLE_CONDVAR(Station, airport.h,                  SLE_FILE_U8 | SLE_VAR_U16, 140, SL_MAX_VERSION),
 	      SLE_VAR(Station, airport_type,               SLE_UINT8),
 	      SLE_VAR(Station, airport_flags,              SLE_UINT64),
 
@@ -356,8 +356,8 @@ static const SaveLoad _waypoint_desc[] = {
 	      SLE_VAR(Waypoint, town_cn,                   SLE_UINT16),
 
 	  SLE_CONDVAR(Waypoint, train_station.tile,        SLE_UINT32,                  124, SL_MAX_VERSION),
-	  SLE_CONDVAR(Waypoint, train_station.w,           SLE_UINT8,                   124, SL_MAX_VERSION),
-	  SLE_CONDVAR(Waypoint, train_station.h,           SLE_UINT8,                   124, SL_MAX_VERSION),
+	  SLE_CONDVAR(Waypoint, train_station.w,           SLE_FILE_U8 | SLE_VAR_U16,   124, SL_MAX_VERSION),
+	  SLE_CONDVAR(Waypoint, train_station.h,           SLE_FILE_U8 | SLE_VAR_U16,   124, SL_MAX_VERSION),
 
 	      SLE_END()
 };

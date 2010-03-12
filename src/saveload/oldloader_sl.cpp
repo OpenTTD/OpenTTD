@@ -714,7 +714,7 @@ static const OldChunks station_chunk[] = {
 	OCL_SVAR(   OC_TILE, Station, train_station.tile ),
 	OCL_SVAR(   OC_TILE, Station, airport.tile ),
 	OCL_SVAR(   OC_TILE, Station, dock_tile ),
-	OCL_SVAR(  OC_UINT8, Station, train_station.w ),
+	OCL_SVAR( OC_FILE_U8 | OC_VAR_U16, Station, train_station.w ),
 
 	OCL_NULL( 1 ),         ///< sort-index, no longer in use
 	OCL_NULL( 2 ),         ///< sign-width, no longer in use
@@ -780,8 +780,8 @@ static bool LoadOldStation(LoadgameState *ls, int num)
 static const OldChunks industry_chunk[] = {
 	OCL_SVAR(   OC_TILE, Industry, location.tile ),
 	OCL_VAR ( OC_UINT32,   1, &_old_town_index ),
-	OCL_SVAR(  OC_UINT8, Industry, location.w ),
-	OCL_SVAR(  OC_UINT8, Industry, location.h ),
+	OCL_SVAR( OC_FILE_U8 | OC_VAR_U16, Industry, location.w ),
+	OCL_SVAR( OC_FILE_U8 | OC_VAR_U16, Industry, location.h ),
 	OCL_NULL( 2 ),  ///< used to be industry's produced_cargo
 
 	OCL_SVAR( OC_TTD | OC_UINT16, Industry, produced_cargo_waiting[0] ),
