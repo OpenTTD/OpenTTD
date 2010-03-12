@@ -543,7 +543,7 @@ void GamelogGRFAdd(const GRFConfig *newg)
 	LoggedChange *lc = GamelogChange(GLCT_GRFADD);
 	if (lc == NULL) return;
 
-	memcpy(&lc->grfadd, newg, sizeof(GRFIdentifier));
+	lc->grfadd = newg->ident;
 }
 
 /** Logs loading compatible GRF
@@ -557,7 +557,7 @@ void GamelogGRFCompatible(const GRFIdentifier *newg)
 	LoggedChange *lc = GamelogChange(GLCT_GRFCOMPAT);
 	if (lc == NULL) return;
 
-	memcpy(&lc->grfcompat, newg, sizeof(GRFIdentifier));
+	lc->grfcompat = *newg;
 }
 
 /** Logs changing GRF order
