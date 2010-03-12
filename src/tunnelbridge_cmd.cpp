@@ -256,6 +256,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 	uint z_end;
 	Slope tileh_start = GetTileSlope(tile_start, &z_start);
 	Slope tileh_end = GetTileSlope(tile_end, &z_end);
+	bool pbs_reservation = false;
 
 	CommandCost terraform_cost_north = CheckBridgeSlopeNorth(direction, &tileh_start, &z_start);
 	CommandCost terraform_cost_south = CheckBridgeSlopeSouth(direction, &tileh_end,   &z_end);
@@ -298,8 +299,19 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 		cost.AddCost((bridge_len + 1) * _price[PR_CLEAR_BRIDGE]); // The cost of clearing the current bridge.
 		owner = GetTileOwner(tile_start);
 
-		/* Do not remove road types when upgrading a bridge */
-		roadtypes |= GetRoadTypes(tile_start);
+		switch (transport_type) {
+			case TRANSPORT_RAIL:
+				/* Keep the reservation, the path stays valid. */
+				pbs_reservation = HasTunnelBridgeReservation(tile_start);
+				break;
+
+			case TRANSPORT_ROAD:
+				/* Do not remove road types when upgrading a bridge */
+				roadtypes |= GetRoadTypes(tile_start);
+				break;
+
+			default: break;
+		}
 	} else {
 		/* Build a new bridge. */
 
@@ -404,6 +416,8 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 			case TRANSPORT_RAIL:
 				MakeRailBridgeRamp(tile_start, owner, bridge_type, dir,                 railtype);
 				MakeRailBridgeRamp(tile_end,   owner, bridge_type, ReverseDiagDir(dir), railtype);
+				SetTunnelBridgeReservation(tile_start, pbs_reservation);
+				SetTunnelBridgeReservation(tile_end,   pbs_reservation);
 				break;
 
 			case TRANSPORT_ROAD:

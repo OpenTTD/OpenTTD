@@ -1350,7 +1350,7 @@ static const NWidgetPart _nested_orders_train_widgets[] = {
 static const WindowDesc _orders_train_desc(
 	WDP_AUTO, 384, 100,
 	WC_VEHICLE_ORDERS, WC_VEHICLE_VIEW,
-	0,
+	WDF_CONSTRUCTION,
 	_nested_orders_train_widgets, lengthof(_nested_orders_train_widgets)
 );
 
@@ -1415,7 +1415,7 @@ static const NWidgetPart _nested_orders_widgets[] = {
 static const WindowDesc _orders_desc(
 	WDP_AUTO, 384, 100,
 	WC_VEHICLE_ORDERS, WC_VEHICLE_VIEW,
-	0,
+	WDF_CONSTRUCTION,
 	_nested_orders_widgets, lengthof(_nested_orders_widgets)
 );
 

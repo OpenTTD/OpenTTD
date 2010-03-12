@@ -672,7 +672,7 @@ CommandCost ClearTile_Station(TileIndex tile, DoCommandFlag flags);
  * @param rt The rail type to check for (overbuilding rail stations over rail)
  * @return the cost in case of success, or an error code if it failed.
  */
-CommandCost CheckFlatLandBelow(TileIndex tile, uint w, uint h, DoCommandFlag flags, uint invalid_dirs, StationID *station, bool check_clear = true, RailType rt = INVALID_RAILTYPE)
+CommandCost CheckFlatLandBelow(TileIndex tile, uint w, uint h, DoCommandFlag flags, uint invalid_dirs, StationID *station, bool check_clear = true, RailType rt = INVALID_RAILTYPE, SmallVector<Train *, 4> *affected_vehicles = NULL)
 {
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 	int allowed_z = -1;
@@ -749,6 +749,13 @@ CommandCost CheckFlatLandBelow(TileIndex tile, uint w, uint h, DoCommandFlag fla
 				Track expected_track = HasBit(invalid_dirs, DIAGDIR_NE) ? TRACK_X : TRACK_Y;
 
 				if (tracks == TRACK_BIT_NONE && track == expected_track) {
+					/* Check for trains having a reservation for this tile. */
+					if (HasBit(GetRailReservationTrackBits(tile_cur), track)) {
+						Train *v = GetTrainForReservation(tile_cur, track);
+						if (v != NULL && affected_vehicles != NULL) {
+							*(*affected_vehicles).Append() = v;
+						}
+					}
 					CommandCost ret = DoCommand(tile_cur, 0, track, flags, CMD_REMOVE_SINGLE_RAIL);
 					if (ret.Failed()) return ret;
 					cost.AddCost(ret);
@@ -1007,8 +1014,9 @@ CommandCost CmdBuildRailStation(TileIndex tile_org, DoCommandFlag flags, uint32 
 
 	/* Make sure the area below consists of clear tiles. (OR tiles belonging to a certain rail station) */
 	StationID est = INVALID_STATION;
+	SmallVector<Train *, 4> affected_vehicles;
 	/* Clear the land below the station. */
-	CommandCost cost = CheckFlatLandBelow(tile_org, w_org, h_org, flags, 5 << axis, _settings_game.station.nonuniform_stations ? &est : NULL, true, rt);
+	CommandCost cost = CheckFlatLandBelow(tile_org, w_org, h_org, flags, 5 << axis, _settings_game.station.nonuniform_stations ? &est : NULL, true, rt, &affected_vehicles);
 	if (cost.Failed()) return cost;
 	/* Add construction expenses. */
 	cost.AddCost((numtracks * _price[PR_BUILD_STATION_RAIL] + _price[PR_BUILD_STATION_RAIL_LENGTH]) * plat_len);
@@ -1095,7 +1103,6 @@ CommandCost CmdBuildRailStation(TileIndex tile_org, DoCommandFlag flags, uint32 
 
 		numtracks_orig = numtracks;
 
-		SmallVector<Train*, 4> affected_vehicles;
 		do {
 			TileIndex tile = tile_org;
 			int w = plat_len;

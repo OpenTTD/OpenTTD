@@ -98,7 +98,7 @@ void UpdateCompanyHQ(Company *c, uint score)
 	MarkTileDirtyByTile(tile + TileDiffXY(1, 1));
 }
 
-extern CommandCost CheckFlatLandBelow(TileIndex tile, uint w, uint h, DoCommandFlag flags, uint invalid_dirs, StationID *station, bool check_clear = true, RailType rt = INVALID_RAILTYPE);
+extern CommandCost CheckFlatLandBelow(TileIndex tile, uint w, uint h, DoCommandFlag flags, uint invalid_dirs, StationID *station, bool check_clear = true, RailType rt = INVALID_RAILTYPE, SmallVector<Train *, 4> *affected_trains = NULL);
 
 /** Build or relocate the HQ. This depends if the HQ is already built or not
  * @param tile tile where the HQ will be built or relocated to

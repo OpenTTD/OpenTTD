@@ -17,8 +17,8 @@
 /** Represents the covered area of e.g. a rail station */
 struct TileArea {
 	TileIndex tile; ///< The base tile of the area
-	uint8 w;        ///< The width of the area
-	uint8 h;        ///< The height of the area
+	uint16 w;       ///< The width of the area
+	uint16 h;       ///< The height of the area
 
 	/** Just construct this tile area */
 	TileArea() {}
