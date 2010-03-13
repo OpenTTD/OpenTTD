@@ -737,11 +737,11 @@ STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}الع�
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}معلومات عامة
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIGFONT}{BLACK} ... المواطنون يحتفلون{} اول قطار وصل في {STATION}!
-STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIGFONT}{BLACK}يحتفل الأهالي ..............{}بوصول اول باص للمحطة ...{STATION}!
-STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIGFONT}{BLACK}الأهالي يحتفلون ......... {}بوصول اول عربة الى .. {STATION}!
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIGFONT}{BLACK}يحتفل الأهالي ...{}بوصول اول باص للمحطة ...{STATION}!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIGFONT}{BLACK}الأهالي يحتفلون ... {}بوصول اول عربة الى .. {STATION}!
 STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIGFONT}{BLACK}المواطنون يحتفلون . . .{}بوصول اول عربة ركاب ترام الى {STATION}!
 STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIGFONT}{BLACK}المواطنون يحتفلون . . . {}بوصول اول عربة ترام لمحطة {STATION}!
-STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIGFONT}{BLACK}المواطنون يحتفلون ..... {}بوصول اول سفينة الى {STATION}!
+STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIGFONT}{BLACK}المواطنون يحتفلون ... {}بوصول اول سفينة الى {STATION}!
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIGFONT}{BLACK}الأهالي يحتفلون . . . {}بوصول أول طائرة الى {STATION}!
 
 STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK}تحطم قطار! {}{COMMA} مات في حريق بعد الحادث
@@ -3321,9 +3321,9 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}قريب
 STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}الرصيد لا يكفي - يلزمك {CURRENCY}
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}يجب ان تكون الأرض مستوية
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}الأرض مائلة في الأتجاة الغير مناسب
-STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}لا يمكن تنفيذة....
+STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}لا يمكن تنفيذة...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}يجب هدم المبنى اولا
-STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}لا يمكن ازالتة ....
+STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}لا يمكن ازالتة ...
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... الموقع غير مناسب
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}...تم بنائة
 STR_ERROR_OWNED_BY                                              :{WHITE} مملوكة من قبل ... {STRING}
@@ -3370,7 +3370,7 @@ STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}لا ي�
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}...قريبة جدا من حافة الخريطة
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}...قريبة جدا من مدينة أخرى
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... المدن كثيرة جدا
-STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}.... لا يوجد فراغ في الخريطة
+STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... لا يوجد فراغ في الخريطة
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}لن تبني البلدية طرق جديدة. بامكانك تمكين البلدية من بناء الطرق الجديدة عن طريق الاعدادات المتقدمة --> الاقتصاد --> المدن
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}اعمال الطرق قيد التنفيذ
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}لا يمكن ازالة هذه المدينة {}محطة او ورشة مرتبطة بالمدينة او هناك مربع مملوك للمدينة لا يمكن لزالته
@@ -3474,7 +3474,7 @@ STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :- حدود ال
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}تركيبة سكك غير صالحة
-STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}....مسار السكة الحديدية غير مناسب
+STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}...مسار السكة الحديدية غير مناسب
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}يجب ازالة السكة اولا
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}طريق بإتجاه واحد أو مغلق
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}لا يمكن بناء اشارة توقف هنا ...
@@ -3545,7 +3545,7 @@ STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}طائر
 
 STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}لايمكن اعادة تهيئة القطار
 STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE} لا يمكن اعادة تهيئة العربة ...
-STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}لا يمكن التغيير ....
+STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}لا يمكن التغيير ...
 STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}لا يمكن تغيير الحمولة ...
 
 STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}لا يمكن تسمية القطار ...
@@ -3571,11 +3571,11 @@ STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}لا ي�
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}لا يمكن اعادة تسمية عربات القطار ...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE} لايمكن اعادة تسمية العربات
 STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}لا يمكن اعادة تسمية نوع السفينة
-STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}لا يمكن اعادة تسمية نوع الطائرة ....
+STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}لا يمكن اعادة تسمية نوع الطائرة ...
 
 STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}لا يمكن بيع العربات
 STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}لا يمكن بيع العربة...
-STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}لا يمكن بيع السفينة ......
+STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}لا يمكن بيع السفينة ...
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}لا يمكن بيع الطائرة
 
 STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :{WHITE}العربة غير متاحة

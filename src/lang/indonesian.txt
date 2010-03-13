@@ -3332,7 +3332,7 @@ STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Daratan 
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Kemiringan daratan tidak sesuai
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Tidak bisa
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Bangunan harus dihancurkan terlebih dahulu
-STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Tidak dapat menghancurkan area ini....
+STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Tidak dapat menghancurkan area ini...
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}...lokasi tidak sesuai
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}...sudah dibangun
 STR_ERROR_OWNED_BY                                              :{WHITE}...dimiliki oleh {STRING}
