@@ -324,6 +324,7 @@ STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Szenario Editor
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Startdatum auf 1 Jahr früher setzen
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Startdatum auf 1 Jahr später setzen
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Startdatum eingeben
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Weltkarte anzeigen, Städteverzeichnis
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Landfläche erzeugen
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Stadt gründen
@@ -2257,7 +2258,7 @@ STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Schneegr
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Schneegrenze um eine Stufe erhöhen
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Schneegrenze um eine Stufe senken
 STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Zufallsstartwert:
-STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Gib einen Zufallsstartwert ein
+STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Zufallsstartwert eingeben
 STR_MAPGEN_RANDOM                                               :{BLACK}Zufällig
 STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Ändere den Zufallsstartwert für die Landschaftsgenerierung
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landgenerator:

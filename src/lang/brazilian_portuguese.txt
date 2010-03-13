@@ -324,6 +324,7 @@ STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Editor de Cenário
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Retrocede a data de inicio em 1 ano
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Avança a data de inicio em 1 ano
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Clique para colocar o ano de início
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Exibir mapa, lista de cidades
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Gerar terreno
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Gerar cidades
@@ -1084,7 +1085,11 @@ STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Permiti
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Sistema de aceleração de trens: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Original
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realista
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Modelo de aceleração para automóveis: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Original
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Realista
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Inclinação do terreno para trens{ORANGE}{STRING}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Declividade para automóveis {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Proibir trens e embarcações girar em angulos de 90 graus: {ORANGE}{STRING} {LTBLUE} (indisp. com OPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Unir estações ferroviárias construídas juntas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Permitie unir estações não adjacentes: {ORANGE}{STRING}
@@ -2015,6 +2020,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Construi
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Seleção de Aeroporto
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Selecionar tamanho/tipo de aeroporto
+STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Classe do aeroporto
 
 STR_AIRPORT_SMALL                                               :Pequeno
 STR_AIRPORT_CITY                                                :Cidade

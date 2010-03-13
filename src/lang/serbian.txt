@@ -511,6 +511,7 @@ STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Editor scenarija
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Pomeranje datuma početka za jednu godinu unazad
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Pomeranje datuma početka za jednu godinu unapred
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Kliknite za unos početne godine
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Prikazuje kartu, popis naselja
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Oblikovanje reljefa
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Stvaranje naselja
@@ -2274,7 +2275,7 @@ STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Popunjav
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Ime grada:
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Unos imena grada
-STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Klik za unos imena grada
+STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Kliknite za unos imena naselja
 STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Proizvoljno ime
 STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Daje gradu proizvoljno ime
 
@@ -2451,7 +2452,7 @@ STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Nivo sne
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Sužava snežni pokrivač naviše za jedan
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Proširuje snežni pojas naniže za jedan
 STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Klica Proizvoljnosti:
-STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Sa klikom se unosi nova vrednos klice
+STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Kliknite za unos klice proizvoljnosti
 STR_MAPGEN_RANDOM                                               :{BLACK}Proizvoljno
 STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Promena klice proizvoljnosti za Oblikovanje Reljefa
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Oblikovanje reljefa:

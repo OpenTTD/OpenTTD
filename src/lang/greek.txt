@@ -38,11 +38,11 @@ STR_CARGO_PLURAL_MAIL.geniki                                    :{G=f}Αλληλ
 STR_CARGO_PLURAL_OIL                                            :{G=n}Πετρέλαια
 STR_CARGO_PLURAL_OIL.geniki                                     :{G=n}Πετρελαίου
 STR_CARGO_PLURAL_LIVESTOCK                                      :{G=n}Ζώα
-STR_CARGO_PLURAL_LIVESTOCK.geniki                               :Ζώου
+STR_CARGO_PLURAL_LIVESTOCK.geniki                               :Ζώων
 STR_CARGO_PLURAL_GOODS                                          :{G=n}Αγαθά
 STR_CARGO_PLURAL_GOODS.geniki                                   :Αγαθού
 STR_CARGO_PLURAL_GRAIN                                          :{G=n}Σιτηρά
-STR_CARGO_PLURAL_GRAIN.geniki                                   :{G=n}Σιτηρού
+STR_CARGO_PLURAL_GRAIN.geniki                                   :{G=n}Σιτηρών
 STR_CARGO_PLURAL_WOOD                                           :{G=f}Ξυλεία
 STR_CARGO_PLURAL_WOOD.geniki                                    :Ξυλείας
 STR_CARGO_PLURAL_IRON_ORE                                       :{G=n}Σιδηρομεταλλεύματα
@@ -387,6 +387,7 @@ STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Πρόγραμμα Επεξεργασίας Σεναρίου
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Μετακίνηση ημ/νίας εκκίνησης 1 χρόνο πίσω
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Μετακίνηση ημ/νίας εκκίνησης 1 χρόνο μπροστά
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Κάντε κλικ εδώ για να εισάγετε την χρονιά έναρξης
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Εμφάνιση χάρτη, καταλόγου πόλεων
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Δημιουργία τοπίου
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Δημιουργία πόλης
@@ -879,7 +880,7 @@ STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK
 
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}{G Ο Η Το} {INDUSTRY} ανεβάζει την παραγωγή!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}Νέα φλέβα άνθρακα βρέθηκε στα {INDUSTRY}!{}Η παραγωγή αναμένεται να διπλασιαστεί!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}Νέα αποθέματα πετρελαίου βρέθηκαν στην {INDUSTRY}!{}Η παραγωγή αναμένεται να διπλασιαστεί!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}Νέα αποθέματα πετρελαίου βρέθηκαν στις {INDUSTRY}!{}Η παραγωγή αναμένεται να διπλασιαστεί!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}Βελτιωμένες μέθοδοι καλλιέργειας στην {INDUSTRY} αναμένεται να διπλασιάσουν την παραγωγή!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK} Η παραγωγή {STRING.geniki} στ{G o η ο} {INDUSTRY} αυξήθηκε κατά {COMMA}%!
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}Η παραγωγή στ{G o η ο} {INDUSTRY} μειώθηκε κατά 50%

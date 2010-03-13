@@ -804,7 +804,7 @@ STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIGFONT}{BLACK
 STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK}RONGIKOKKUPÕRGE!{}{COMMA} surid tules peale kokkusõitmist
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}Rongikokkupõrge!{}Juht suri peale õnnetust tules
 STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIGFONT}{BLACK}Mootorsõiduki kokkupõrge rongiga!{}{COMMA} inimest suri õnnetuses
-STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK}Lennuõnnetus!{}{COMMA} surid tules {STATION}s
+STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK}Lennuõnnetus!{}{COMMA} hukkus tules. {STATION} suletud.
 STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}Lennuõnnetus!{}Lennukil lõppes kütus, {COMMA} surid tules!
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIGFONT}{BLACK}Tsepeliini õnnetus {STATION}s!
@@ -2854,7 +2854,7 @@ STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Ostab sa
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Ostab samasuguse õhusõiduki. Klõpsa sellele nuppule, ning seejärel lennukile angaari sees või väljas. CTRL-klõpsuga jagatakse sihtpunkte
 
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Keskenda põhivaade rongidepoo kohale
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Vii vaade garaaþi asukohale
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Vii vaade garaažile. Ctrl+klõps avab garaažil uue vaate.
 STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Vii pea vaade paadikuuri juurde
 STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Vii vaade angaarile
 
@@ -2986,8 +2986,8 @@ STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Suundub
 
 STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT                      :{ORANGE}Suundub linna {TOWN} rongidepoosse
 STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_VEL                  :{ORANGE}Suundub linna {TOWN} rongidepoosse, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT               :{ORANGE}Suundub {TOWN} garaaþi
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL           :{ORANGE}Suundub {TOWN} garaaþi, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT               :{ORANGE}Suundub {TOWN} garaaži
+STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL           :{ORANGE}Suundub {TOWN} garaaži, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT                       :{ORANGE}Suundub linna {TOWN} laevaremonditehasesse.
 STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_VEL                   :{ORANGE}Suundub linna {TOWN} laevaremonditehasesse, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR                           :{ORANGE}Suundub {STATION} Angaari
