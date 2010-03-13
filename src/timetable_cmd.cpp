@@ -68,7 +68,11 @@ CommandCost CmdChangeTimetable(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 	VehicleID veh = GB(p1, 0, 16);
 
 	Vehicle *v = Vehicle::GetIfValid(veh);
-	if (v == NULL || !CheckOwnership(v->owner) || !v->IsPrimaryVehicle()) return CMD_ERROR;
+	if (v == NULL || !v->IsPrimaryVehicle()) return CMD_ERROR;
+
+	CommandCost ret = CheckOwnership(v->owner);
+	ret.SetGlobalErrorMessage();
+	if (ret.Failed()) return ret;
 
 	VehicleOrderID order_number = GB(p1, 16, 8);
 	Order *order = v->GetOrder(order_number);
@@ -128,7 +132,11 @@ CommandCost CmdSetVehicleOnTime(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 	VehicleID veh = GB(p1, 0, 16);
 
 	Vehicle *v = Vehicle::GetIfValid(veh);
-	if (v == NULL || !CheckOwnership(v->owner) || !v->IsPrimaryVehicle()) return CMD_ERROR;
+	if (v == NULL || !v->IsPrimaryVehicle()) return CMD_ERROR;
+
+	CommandCost ret = CheckOwnership(v->owner);
+	ret.SetGlobalErrorMessage();
+	if (ret.Failed()) return ret;
 
 	if (flags & DC_EXEC) {
 		v->lateness_counter = 0;
@@ -150,7 +158,11 @@ CommandCost CmdSetTimetableStart(TileIndex tile, DoCommandFlag flags, uint32 p1,
 	if (!_settings_game.order.timetabling) return CMD_ERROR;
 
 	Vehicle *v = Vehicle::GetIfValid(GB(p1, 0, 16));
-	if (v == NULL || !CheckOwnership(v->owner) || !v->IsPrimaryVehicle()) return CMD_ERROR;
+	if (v == NULL || !v->IsPrimaryVehicle()) return CMD_ERROR;
+
+	CommandCost ret = CheckOwnership(v->owner);
+	ret.SetGlobalErrorMessage();
+	if (ret.Failed()) return ret;
 
 	/* Don't let a timetable start more than 15 years into the future or 1 year in the past. */
 	Date start_date = (Date)p2;
@@ -190,7 +202,11 @@ CommandCost CmdAutofillTimetable(TileIndex tile, DoCommandFlag flags, uint32 p1,
 	VehicleID veh = GB(p1, 0, 16);
 
 	Vehicle *v = Vehicle::GetIfValid(veh);
-	if (v == NULL || !CheckOwnership(v->owner) || !v->IsPrimaryVehicle()) return CMD_ERROR;
+	if (v == NULL || !v->IsPrimaryVehicle()) return CMD_ERROR;
+
+	CommandCost ret = CheckOwnership(v->owner);
+	ret.SetGlobalErrorMessage();
+	if (ret.Failed()) return ret;
 
 	if (flags & DC_EXEC) {
 		if (HasBit(p2, 0)) {

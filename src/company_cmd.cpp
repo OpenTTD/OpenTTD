@@ -248,17 +248,17 @@ void GetNameOfOwner(Owner owner, TileIndex tile)
  * @param owner the owner of the thing to check.
  * @param tile  optional tile to get the right town.
  * @pre if tile == 0 then the owner can't be OWNER_TOWN.
- * @return true iff it's owned by the current company.
+ * @return A succeeded command iff it's owned by the current company, else a failed command.
  */
-bool CheckOwnership(Owner owner, TileIndex tile)
+CommandCost CheckOwnership(Owner owner, TileIndex tile)
 {
 	assert(owner < OWNER_END);
 	assert(owner != OWNER_TOWN || tile != 0);
 
-	if (owner == _current_company) return true;
-	_error_message = STR_ERROR_OWNED_BY;
+	if (owner == _current_company) return CommandCost();
+
 	GetNameOfOwner(owner, tile);
-	return false;
+	return_cmd_error(STR_ERROR_OWNED_BY);
 }
 
 /**

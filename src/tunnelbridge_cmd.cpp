@@ -613,12 +613,18 @@ static inline CommandCost CheckAllowRemoveTunnelBridge(TileIndex tile)
 			if (road_owner == OWNER_NONE || road_owner == OWNER_TOWN) road_owner = _current_company;
 			if (tram_owner == OWNER_NONE) tram_owner = _current_company;
 
-			return (CheckOwnership(road_owner, tile) && CheckOwnership(tram_owner, tile)) ? CommandCost() : CMD_ERROR;
+			CommandCost ret = CheckOwnership(road_owner, tile);
+			if (ret.Succeeded()) ret = CheckOwnership(tram_owner, tile);
+			ret.SetGlobalErrorMessage();
+			return ret;
 		}
 
 		case TRANSPORT_RAIL:
-		case TRANSPORT_WATER:
-			return CheckOwnership(GetTileOwner(tile)) ? CommandCost() : CMD_ERROR;
+		case TRANSPORT_WATER: {
+			CommandCost ret = CheckOwnership(GetTileOwner(tile));
+			ret.SetGlobalErrorMessage();
+			return ret;
+		}
 
 		default: NOT_REACHED();
 	}

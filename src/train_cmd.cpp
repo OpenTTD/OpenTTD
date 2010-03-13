@@ -1169,7 +1169,11 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 	bool move_chain = HasBit(p2, 0);
 
 	Train *src = Train::GetIfValid(s);
-	if (src == NULL || !CheckOwnership(src->owner)) return CMD_ERROR;
+	if (src == NULL) return CMD_ERROR;
+
+	CommandCost ret = CheckOwnership(src->owner);
+	ret.SetGlobalErrorMessage();
+	if (ret.Failed()) return ret;
 
 	/* Do not allow moving crashed vehicles inside the depot, it is likely to cause asserts later */
 	if (src->vehstatus & VS_CRASHED) return CMD_ERROR;
@@ -1180,7 +1184,11 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 		dst = src->IsEngine() ? NULL : FindGoodVehiclePos(src);
 	} else {
 		dst = Train::GetIfValid(d);
-		if (dst == NULL || !CheckOwnership(dst->owner)) return CMD_ERROR;
+		if (dst == NULL) return CMD_ERROR;
+
+		CommandCost ret = CheckOwnership(dst->owner);
+		ret.SetGlobalErrorMessage();
+		if (ret.Failed()) return ret;
 
 		/* Do not allow appending to crashed vehicles, too */
 		if (dst->vehstatus & VS_CRASHED) return CMD_ERROR;
@@ -1342,7 +1350,11 @@ CommandCost CmdSellRailWagon(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	Window *w = NULL;
 
 	Train *v = Train::GetIfValid(p1);
-	if (v == NULL || !CheckOwnership(v->owner)) return CMD_ERROR;
+	if (v == NULL) return CMD_ERROR;
+
+	CommandCost ret = CheckOwnership(v->owner);
+	ret.SetGlobalErrorMessage();
+	if (ret.Failed()) return ret;
 
 	/* Sell a chain of vehicles or not? */
 	bool sell_chain = HasBit(p2, 0);
@@ -1372,7 +1384,7 @@ CommandCost CmdSellRailWagon(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	ArrangeTrains(&sell_head, NULL, &new_head, v, sell_chain);
 
 	/* We don't need to validate the second train; it's going to be sold. */
-	CommandCost ret = ValidateTrains(NULL, NULL, first, new_head);
+	ret = ValidateTrains(NULL, NULL, first, new_head);
 	if (ret.Failed()) {
 		/* Restore the train we had. */
 		RestoreTrainBackup(original);
@@ -1815,7 +1827,11 @@ static void ReverseTrainDirection(Train *v)
 CommandCost CmdReverseTrainDirection(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	Train *v = Train::GetIfValid(p1);
-	if (v == NULL || !CheckOwnership(v->owner)) return CMD_ERROR;
+	if (v == NULL) return CMD_ERROR;
+
+	CommandCost ret = CheckOwnership(v->owner);
+	ret.SetGlobalErrorMessage();
+	if (ret.Failed()) return ret;
 
 	if (p2 != 0) {
 		/* turn a single unit around */
@@ -1882,7 +1898,12 @@ CommandCost CmdReverseTrainDirection(TileIndex tile, DoCommandFlag flags, uint32
 CommandCost CmdForceTrainProceed(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	Train *t = Train::GetIfValid(p1);
-	if (t == NULL || !CheckOwnership(t->owner)) return CMD_ERROR;
+	if (t == NULL) return CMD_ERROR;
+
+	CommandCost ret = CheckOwnership(t->owner);
+	ret.SetGlobalErrorMessage();
+	if (ret.Failed()) return ret;
+
 
 	if (flags & DC_EXEC) {
 		/* If we are forced to proceed, cancel that order.
@@ -1915,7 +1936,11 @@ CommandCost CmdRefitRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 	bool only_this = HasBit(p2, 16);
 
 	Train *v = Train::GetIfValid(p1);
-	if (v == NULL || !CheckOwnership(v->owner)) return CMD_ERROR;
+	if (v == NULL) return CMD_ERROR;
+
+	CommandCost ret = CheckOwnership(v->owner);
+	ret.SetGlobalErrorMessage();
+	if (ret.Failed()) return ret;
 
 	if (!v->IsStoppedInDepot()) return_cmd_error(STR_TRAIN_MUST_BE_STOPPED);
 	if (v->vehstatus & VS_CRASHED) return_cmd_error(STR_ERROR_CAN_T_REFIT_DESTROYED_VEHICLE);

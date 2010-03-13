@@ -709,7 +709,11 @@ CommandCost CmdBuildShip(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 CommandCost CmdSellShip(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	Ship *v = Ship::GetIfValid(p1);
-	if (v == NULL || !CheckOwnership(v->owner)) return CMD_ERROR;
+	if (v == NULL) return CMD_ERROR;
+
+	CommandCost ret = CheckOwnership(v->owner);
+	ret.SetGlobalErrorMessage();
+	if (ret.Failed()) return ret;
 
 	if (v->vehstatus & VS_CRASHED) return_cmd_error(STR_ERROR_CAN_T_SELL_DESTROYED_VEHICLE);
 
@@ -717,7 +721,7 @@ CommandCost CmdSellShip(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p
 		return_cmd_error(STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT);
 	}
 
-	CommandCost ret(EXPENSES_NEW_VEHICLES, -v->value);
+	ret = CommandCost(EXPENSES_NEW_VEHICLES, -v->value);
 
 	if (flags & DC_EXEC) {
 		delete v;
@@ -780,8 +784,12 @@ CommandCost CmdRefitShip(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	byte new_subtype = GB(p2, 8, 8);
 
 	Ship *v = Ship::GetIfValid(p1);
+	if (v == NULL) return CMD_ERROR;
 
-	if (v == NULL || !CheckOwnership(v->owner)) return CMD_ERROR;
+	CommandCost ret = CheckOwnership(v->owner);
+	ret.SetGlobalErrorMessage();
+	if (ret.Failed()) return ret;
+
 	if (!v->IsStoppedInDepot()) return_cmd_error(STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT);
 	if (v->vehstatus & VS_CRASHED) return_cmd_error(STR_ERROR_CAN_T_REFIT_DESTROYED_VEHICLE);
 

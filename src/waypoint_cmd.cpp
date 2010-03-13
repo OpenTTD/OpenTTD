@@ -178,9 +178,11 @@ static CommandCost IsValidTileForWaypoint(TileIndex tile, Axis axis, StationID *
 	if (GetAxisForNewWaypoint(tile) != axis) return_cmd_error(STR_ERROR_NO_SUITABLE_RAILROAD_TRACK);
 
 	Owner owner = GetTileOwner(tile);
-	if (!CheckOwnership(owner)) return CMD_ERROR;
+	CommandCost ret = CheckOwnership(owner);
+	ret.SetGlobalErrorMessage();
+	if (ret.Failed()) return ret;
 
-	CommandCost ret = EnsureNoVehicleOnGround(tile);
+	ret = EnsureNoVehicleOnGround(tile);
 	ret.SetGlobalErrorMessage();
 	if (ret.Failed()) return ret;
 
@@ -445,7 +447,13 @@ static bool IsUniqueWaypointName(const char *name)
 CommandCost CmdRenameWaypoint(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	Waypoint *wp = Waypoint::GetIfValid(p1);
-	if (wp == NULL || !(CheckOwnership(wp->owner) || wp->owner == OWNER_NONE)) return CMD_ERROR;
+	if (wp == NULL) return CMD_ERROR;
+
+	if (wp->owner != OWNER_NONE) {
+		CommandCost ret = CheckOwnership(wp->owner);
+		ret.SetGlobalErrorMessage();
+		if (ret.Failed()) return ret;
+	}
 
 	bool reset = StrEmpty(text);
 

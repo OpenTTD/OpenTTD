@@ -468,7 +468,11 @@ CommandCost CmdInsertOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	Order new_order(p2);
 
 	Vehicle *v = Vehicle::GetIfValid(veh);
-	if (v == NULL || !CheckOwnership(v->owner)) return CMD_ERROR;
+	if (v == NULL) return CMD_ERROR;
+
+	CommandCost ret = CheckOwnership(v->owner);
+	ret.SetGlobalErrorMessage();
+	if (ret.Failed()) return ret;
 
 	/* Check if the inserted order is to the correct destination (owner, type),
 	 * and has the correct flags if any */
@@ -477,7 +481,11 @@ CommandCost CmdInsertOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			const Station *st = Station::GetIfValid(new_order.GetDestination());
 			if (st == NULL) return CMD_ERROR;
 
-			if (st->owner != OWNER_NONE && !CheckOwnership(st->owner)) return CMD_ERROR;
+			if (st->owner != OWNER_NONE) {
+				CommandCost ret = CheckOwnership(st->owner);
+				ret.SetGlobalErrorMessage();
+				if (ret.Failed()) return ret;
+			}
 
 			if (!CanVehicleUseStation(v, st)) return_cmd_error(STR_ERROR_CAN_T_ADD_ORDER);
 			for (Vehicle *u = v->FirstShared(); u != NULL; u = u->NextShared()) {
@@ -521,15 +529,23 @@ CommandCost CmdInsertOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 				if (v->type == VEH_AIRCRAFT) {
 					const Station *st = Station::GetIfValid(new_order.GetDestination());
 
-					if (st == NULL || !CheckOwnership(st->owner) ||
-							!CanVehicleUseStation(v, st) ||
-							st->GetAirportSpec()->nof_depots == 0) {
+					if (st == NULL) return CMD_ERROR;
+
+					CommandCost ret = CheckOwnership(st->owner);
+					ret.SetGlobalErrorMessage();
+					if (ret.Failed()) return ret;
+
+					if (!CanVehicleUseStation(v, st) || st->GetAirportSpec()->nof_depots == 0) {
 						return CMD_ERROR;
 					}
 				} else {
 					const Depot *dp = Depot::GetIfValid(new_order.GetDestination());
 
-					if (dp == NULL || !CheckOwnership(GetTileOwner(dp->xy))) return CMD_ERROR;
+					if (dp == NULL) return CMD_ERROR;
+
+					CommandCost ret = CheckOwnership(GetTileOwner(dp->xy));
+					ret.SetGlobalErrorMessage();
+					if (ret.Failed()) return ret;
 
 					switch (v->type) {
 						case VEH_TRAIN:
@@ -565,14 +581,22 @@ CommandCost CmdInsertOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			switch (v->type) {
 				default: return CMD_ERROR;
 
-				case VEH_TRAIN:
+				case VEH_TRAIN: {
 					if (!(wp->facilities & FACIL_TRAIN)) return_cmd_error(STR_ERROR_CAN_T_ADD_ORDER);
-					if (!CheckOwnership(wp->owner)) return CMD_ERROR;
+
+					CommandCost ret = CheckOwnership(wp->owner);
+					ret.SetGlobalErrorMessage();
+					if (ret.Failed()) return ret;
 					break;
+				}
 
 				case VEH_SHIP:
 					if (!(wp->facilities & FACIL_DOCK)) return_cmd_error(STR_ERROR_CAN_T_ADD_ORDER);
-					if (!CheckOwnership(wp->owner) && wp->owner != OWNER_NONE) return CMD_ERROR;
+					if (wp->owner != OWNER_NONE) {
+						CommandCost ret = CheckOwnership(wp->owner);
+						ret.SetGlobalErrorMessage();
+						if (ret.Failed()) return ret;
+					}
 					break;
 			}
 
@@ -729,7 +753,11 @@ CommandCost CmdDeleteOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 
 	Vehicle *v = Vehicle::GetIfValid(veh_id);
 
-	if (v == NULL || !CheckOwnership(v->owner)) return CMD_ERROR;
+	if (v == NULL) return CMD_ERROR;
+
+	CommandCost ret = CheckOwnership(v->owner);
+	ret.SetGlobalErrorMessage();
+	if (ret.Failed()) return ret;
 
 	/* If we did not select an order, we maybe want to de-clone the orders */
 	if (sel_ord >= v->GetNumOrders())
@@ -795,10 +823,11 @@ CommandCost CmdSkipToOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 
 	Vehicle *v = Vehicle::GetIfValid(veh_id);
 
-	if (v == NULL || !CheckOwnership(v->owner) || sel_ord == v->cur_order_index ||
-			sel_ord >= v->GetNumOrders() || v->GetNumOrders() < 2) {
-		return CMD_ERROR;
-	}
+	if (v == NULL || sel_ord == v->cur_order_index || sel_ord >= v->GetNumOrders() || v->GetNumOrders() < 2) return CMD_ERROR;
+
+	CommandCost ret = CheckOwnership(v->owner);
+	ret.SetGlobalErrorMessage();
+	if (ret.Failed()) return ret;
 
 	if (flags & DC_EXEC) {
 		v->cur_order_index = sel_ord;
@@ -835,7 +864,11 @@ CommandCost CmdMoveOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	VehicleOrderID target_order = GB(p2, 16, 16);
 
 	Vehicle *v = Vehicle::GetIfValid(veh);
-	if (v == NULL || !CheckOwnership(v->owner)) return CMD_ERROR;
+	if (v == NULL) return CMD_ERROR;
+
+	CommandCost ret = CheckOwnership(v->owner);
+	ret.SetGlobalErrorMessage();
+	if (ret.Failed()) return ret;
 
 	/* Don't make senseless movements */
 	if (moving_order >= v->GetNumOrders() || target_order >= v->GetNumOrders() ||
@@ -916,7 +949,11 @@ CommandCost CmdModifyOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	if (mof >= MOF_END) return CMD_ERROR;
 
 	Vehicle *v = Vehicle::GetIfValid(veh);
-	if (v == NULL || !CheckOwnership(v->owner)) return CMD_ERROR;
+	if (v == NULL) return CMD_ERROR;
+
+	CommandCost ret = CheckOwnership(v->owner);
+	ret.SetGlobalErrorMessage();
+	if (ret.Failed()) return ret;
 
 	/* Is it a valid order? */
 	if (sel_ord >= v->GetNumOrders()) return CMD_ERROR;
@@ -1139,17 +1176,22 @@ CommandCost CmdCloneOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 	VehicleID veh_dst = GB(p1,  0, 16);
 
 	Vehicle *dst = Vehicle::GetIfValid(veh_dst);
+	if (dst == NULL) return CMD_ERROR;
 
-	if (dst == NULL || !CheckOwnership(dst->owner)) return CMD_ERROR;
+	CommandCost ret = CheckOwnership(dst->owner);
+	ret.SetGlobalErrorMessage();
+	if (ret.Failed()) return ret;
 
 	switch (p2) {
 		case CO_SHARE: {
 			Vehicle *src = Vehicle::GetIfValid(veh_src);
 
 			/* Sanity checks */
-			if (src == NULL || !CheckOwnership(src->owner) || dst->type != src->type || dst == src) {
-				return CMD_ERROR;
-			}
+			if (src == NULL || dst->type != src->type || dst == src) return CMD_ERROR;
+
+			CommandCost ret = CheckOwnership(src->owner);
+			ret.SetGlobalErrorMessage();
+			if (ret.Failed()) return ret;
 
 			/* Trucks can't share orders with busses (and visa versa) */
 			if (src->type == VEH_ROAD && RoadVehicle::From(src)->IsBus() != RoadVehicle::From(dst)->IsBus()) {
@@ -1188,9 +1230,11 @@ CommandCost CmdCloneOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 			Vehicle *src = Vehicle::GetIfValid(veh_src);
 
 			/* Sanity checks */
-			if (src == NULL || !CheckOwnership(src->owner) || dst->type != src->type || dst == src) {
-				return CMD_ERROR;
-			}
+			if (src == NULL || dst->type != src->type || dst == src) return CMD_ERROR;
+
+			CommandCost ret = CheckOwnership(src->owner);
+			ret.SetGlobalErrorMessage();
+			if (ret.Failed()) return ret;
 
 			/* Trucks can't copy all the orders from busses (and visa versa),
 			 * and neither can helicopters and aircarft. */
@@ -1264,7 +1308,11 @@ CommandCost CmdOrderRefit(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 	byte subtype  = GB(p2, 8, 8);
 
 	const Vehicle *v = Vehicle::GetIfValid(veh);
-	if (v == NULL || !CheckOwnership(v->owner)) return CMD_ERROR;
+	if (v == NULL) return CMD_ERROR;
+
+	CommandCost ret = CheckOwnership(v->owner);
+	ret.SetGlobalErrorMessage();
+	if (ret.Failed()) return ret;
 
 	Order *order = v->GetOrder(order_number);
 	if (order == NULL) return CMD_ERROR;
@@ -1416,7 +1464,12 @@ CommandCost CmdRestoreOrderIndex(TileIndex tile, DoCommandFlag flags, uint32 p1,
 
 	Vehicle *v = Vehicle::GetIfValid(p1);
 	/* Check the vehicle type and ownership, and if the service interval and order are in range */
-	if (v == NULL || !CheckOwnership(v->owner)) return CMD_ERROR;
+	if (v == NULL) return CMD_ERROR;
+
+	CommandCost ret = CheckOwnership(v->owner);
+	ret.SetGlobalErrorMessage();
+	if (ret.Failed()) return ret;
+
 	if (serv_int != GetServiceIntervalClamped(serv_int, v->owner) || cur_ord >= v->GetNumOrders()) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {

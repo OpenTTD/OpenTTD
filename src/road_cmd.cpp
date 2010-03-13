@@ -131,7 +131,9 @@ CommandCost CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, Owner owner, R
 	 * by a town */
 	if (owner != OWNER_TOWN) {
 		if (owner == OWNER_NONE) return CommandCost();
-		return CheckOwnership(owner) ? CommandCost() : CMD_ERROR;
+		CommandCost ret = CheckOwnership(owner);
+		ret.SetGlobalErrorMessage();
+		return ret;
 	}
 
 	if (!town_check) return CommandCost();
@@ -502,7 +504,11 @@ CommandCost CmdBuildRoad(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 							if (crossing) return_cmd_error(STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION);
 
 							Owner owner = GetRoadOwner(tile, ROADTYPE_ROAD);
-							if (owner != OWNER_NONE && !CheckOwnership(owner, tile)) return CMD_ERROR;
+							if (owner != OWNER_NONE) {
+								CommandCost ret = CheckOwnership(owner, tile);
+								ret.SetGlobalErrorMessage();
+								if (ret.Failed()) return ret;
+							}
 
 							CommandCost ret = EnsureNoVehicleOnGround(tile);
 							ret.SetGlobalErrorMessage();

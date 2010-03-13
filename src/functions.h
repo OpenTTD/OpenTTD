@@ -24,7 +24,7 @@ void TileLoopClearHelper(TileIndex tile);
 bool CheckCompanyHasMoney(CommandCost &cost);
 void SubtractMoneyFromCompany(CommandCost cost);
 void SubtractMoneyFromCompanyFract(CompanyID company, CommandCost cost);
-bool CheckOwnership(Owner owner, TileIndex tile = 0);
+CommandCost CheckOwnership(Owner owner, TileIndex tile = 0);
 CommandCost CheckTileOwnership(TileIndex tile);
 
 /* misc functions */

@@ -74,7 +74,11 @@ CommandCost CmdStartStopVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 	if ((flags & DC_AUTOREPLACE) == 0) SetBit(p2, 0);
 
 	Vehicle *v = Vehicle::GetIfValid(p1);
-	if (v == NULL || !CheckOwnership(v->owner) || !v->IsPrimaryVehicle()) return CMD_ERROR;
+	if (v == NULL || !v->IsPrimaryVehicle()) return CMD_ERROR;
+
+	CommandCost ret = CheckOwnership(v->owner);
+	ret.SetGlobalErrorMessage();
+	if (ret.Failed()) return ret;
 
 	switch (v->type) {
 		case VEH_TRAIN:
@@ -406,7 +410,9 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	 * w_rear is the rear end of the cloned train. It's used to add more cars and is only used by trains
 	 */
 
-	if (!CheckOwnership(v->owner)) return CMD_ERROR;
+	CommandCost ret = CheckOwnership(v->owner);
+	ret.SetGlobalErrorMessage();
+	if (ret.Failed()) return ret;
 
 	if (v->type == VEH_TRAIN && (!Train::From(v)->IsFrontEngine() || Train::From(v)->crash_anim_pos >= 4400)) return CMD_ERROR;
 
@@ -607,7 +613,11 @@ CommandCost SendAllVehiclesToDepot(VehicleType type, DoCommandFlag flags, bool s
 CommandCost CmdRenameVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	Vehicle *v = Vehicle::GetIfValid(p1);
-	if (v == NULL || !CheckOwnership(v->owner)) return CMD_ERROR;
+	if (v == NULL) return CMD_ERROR;
+
+	CommandCost ret = CheckOwnership(v->owner);
+	ret.SetGlobalErrorMessage();
+	if (ret.Failed()) return ret;
 
 	bool reset = StrEmpty(text);
 
@@ -638,7 +648,11 @@ CommandCost CmdRenameVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 CommandCost CmdChangeServiceInt(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	Vehicle *v = Vehicle::GetIfValid(p1);
-	if (v == NULL || !CheckOwnership(v->owner)) return CMD_ERROR;
+	if (v == NULL) return CMD_ERROR;
+
+	CommandCost ret = CheckOwnership(v->owner);
+	ret.SetGlobalErrorMessage();
+	if (ret.Failed()) return ret;
 
 	uint16 serv_int = GetServiceIntervalClamped(p2, v->owner); // Double check the service interval from the user-input
 	if (serv_int != p2) return CMD_ERROR;

@@ -865,8 +865,10 @@ static CommandCost CheckFlatLandRoadStop(TileArea tile_area, DoCommandFlag flags
 					Owner road_owner = GetRoadOwner(cur_tile, ROADTYPE_ROAD);
 					if (road_owner == OWNER_TOWN) {
 						if (!_settings_game.construction.road_stop_on_town_road) return_cmd_error(STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD);
-					} else if (!_settings_game.construction.road_stop_on_competitor_road && road_owner != OWNER_NONE && !CheckOwnership(road_owner)) {
-						return CMD_ERROR;
+					} else if (!_settings_game.construction.road_stop_on_competitor_road && road_owner != OWNER_NONE) {
+						CommandCost ret = CheckOwnership(road_owner);
+						ret.SetGlobalErrorMessage();
+						if (ret.Failed()) return ret;
 					}
 					num_roadbits += CountBits(GetRoadBits(cur_tile, ROADTYPE_ROAD));
 				}
@@ -874,8 +876,10 @@ static CommandCost CheckFlatLandRoadStop(TileArea tile_area, DoCommandFlag flags
 				/* There is a tram, check if we can build road+tram stop over it. */
 				if (HasBit(cur_rts, ROADTYPE_TRAM)) {
 					Owner tram_owner = GetRoadOwner(cur_tile, ROADTYPE_TRAM);
-					if (!_settings_game.construction.road_stop_on_competitor_road && tram_owner != OWNER_NONE && !CheckOwnership(tram_owner)) {
-						return CMD_ERROR;
+					if (!_settings_game.construction.road_stop_on_competitor_road && tram_owner != OWNER_NONE) {
+						CommandCost ret = CheckOwnership(tram_owner);
+						ret.SetGlobalErrorMessage();
+						if (ret.Failed()) return ret;
 					}
 					num_roadbits += CountBits(GetRoadBits(cur_tile, ROADTYPE_TRAM));
 				}
@@ -1383,7 +1387,14 @@ CommandCost RemoveFromRailBaseStation(TileArea ta, SmallVector<T *, 4> &affected
 		/* Check ownership of station */
 		T *st = T::GetByTile(tile);
 		if (st == NULL) continue;
-		if (_current_company != OWNER_WATER && !CheckOwnership(st->owner)) continue;
+
+		if (_current_company != OWNER_WATER) {
+			CommandCost ret = CheckOwnership(st->owner);
+			if (ret.Failed()) {
+				ret.SetGlobalErrorMessage();
+				continue;
+			}
+		}
 
 		/* Do not allow removing from stations if non-uniform stations are not enabled
 		 * The check must be here to give correct error message
@@ -1529,7 +1540,11 @@ template <class T>
 CommandCost RemoveRailStation(T *st, DoCommandFlag flags)
 {
 	/* Current company owns the station? */
-	if (_current_company != OWNER_WATER && !CheckOwnership(st->owner)) return CMD_ERROR;
+	if (_current_company != OWNER_WATER) {
+		CommandCost ret = CheckOwnership(st->owner);
+		ret.SetGlobalErrorMessage();
+		if (ret.Failed()) return ret;
+	}
 
 	/* determine width and height of platforms */
 	TileArea ta = st->train_station;
@@ -1829,8 +1844,10 @@ static CommandCost RemoveRoadStop(TileIndex tile, DoCommandFlag flags)
 {
 	Station *st = Station::GetByTile(tile);
 
-	if (_current_company != OWNER_WATER && !CheckOwnership(st->owner)) {
-		return CMD_ERROR;
+	if (_current_company != OWNER_WATER) {
+		CommandCost ret = CheckOwnership(st->owner);
+		ret.SetGlobalErrorMessage();
+		if (ret.Failed()) return ret;
 	}
 
 	bool is_truck = IsTruckStop(tile);
@@ -2241,8 +2258,10 @@ static CommandCost RemoveAirport(TileIndex tile, DoCommandFlag flags)
 {
 	Station *st = Station::GetByTile(tile);
 
-	if (_current_company != OWNER_WATER && !CheckOwnership(st->owner)) {
-		return CMD_ERROR;
+	if (_current_company != OWNER_WATER) {
+		CommandCost ret = CheckOwnership(st->owner);
+		ret.SetGlobalErrorMessage();
+		if (ret.Failed()) return ret;
 	}
 
 	tile = st->airport.tile;
@@ -2456,12 +2475,14 @@ CommandCost CmdBuildDock(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 static CommandCost RemoveDock(TileIndex tile, DoCommandFlag flags)
 {
 	Station *st = Station::GetByTile(tile);
-	if (!CheckOwnership(st->owner)) return CMD_ERROR;
+	CommandCost ret = CheckOwnership(st->owner);
+	ret.SetGlobalErrorMessage();
+	if (ret.Failed()) return ret;
 
 	TileIndex tile1 = st->dock_tile;
 	TileIndex tile2 = tile1 + TileOffsByDiagDir(GetDockDirection(tile1));
 
-	CommandCost ret = EnsureNoVehicleOnGround(tile1);
+	ret = EnsureNoVehicleOnGround(tile1);
 	if (ret.Succeeded()) ret = EnsureNoVehicleOnGround(tile2);
 	ret.SetGlobalErrorMessage();
 	if (ret.Failed()) return ret;
@@ -3194,7 +3215,11 @@ static bool IsUniqueStationName(const char *name)
 CommandCost CmdRenameStation(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	Station *st = Station::GetIfValid(p1);
-	if (st == NULL || !CheckOwnership(st->owner)) return CMD_ERROR;
+	if (st == NULL) return CMD_ERROR;
+
+	CommandCost ret = CheckOwnership(st->owner);
+	ret.SetGlobalErrorMessage();
+	if (ret.Failed()) return ret;
 
 	bool reset = StrEmpty(text);
 
@@ -3441,7 +3466,7 @@ static bool CanRemoveRoadWithStop(TileIndex tile, DoCommandFlag flags)
 	if (HasBit(rts, ROADTYPE_ROAD)) road_owner = GetRoadOwner(tile, ROADTYPE_ROAD);
 	if (HasBit(rts, ROADTYPE_TRAM)) tram_owner = GetRoadOwner(tile, ROADTYPE_TRAM);
 
-	if ((road_owner != OWNER_TOWN && !CheckOwnership(road_owner)) || !CheckOwnership(tram_owner)) return false;
+	if ((road_owner != OWNER_TOWN && CheckOwnership(road_owner).Failed()) || CheckOwnership(tram_owner).Failed()) return false;
 
 	return road_owner != OWNER_TOWN || CheckAllowRemoveRoad(tile, GetAnyRoadBits(tile, ROADTYPE_ROAD), OWNER_TOWN, ROADTYPE_ROAD, flags).Succeeded();
 }

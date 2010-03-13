@@ -628,7 +628,10 @@ CommandCost CmdAutoreplaceVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1
 	Vehicle *v = Vehicle::GetIfValid(p1);
 	if (v == NULL) return CMD_ERROR;
 
-	if (!CheckOwnership(v->owner)) return CMD_ERROR;
+	CommandCost ret = CheckOwnership(v->owner);
+	ret.SetGlobalErrorMessage();
+	if (ret.Failed()) return ret;
+
 	if (!v->IsInDepot()) return CMD_ERROR;
 	if (v->vehstatus & VS_CRASHED) return CMD_ERROR;
 
