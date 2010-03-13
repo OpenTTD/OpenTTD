@@ -41,6 +41,7 @@
 #include "../company_func.h"
 #include "../road_cmd.h"
 #include "../ai/ai.hpp"
+#include "../ai/ai_gui.hpp"
 #include "../town.h"
 #include "../economy_base.h"
 #include "../animated_tile_func.h"
@@ -263,6 +264,7 @@ static void InitializeWindowsAndCaches()
 
 	CheckTrainsLengths();
 	ShowNewGRFError();
+	ShowAIDebugWindowIfAIError();
 }
 
 typedef void (CDECL *SignalHandlerPointer)(int);
