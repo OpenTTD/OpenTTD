@@ -3424,16 +3424,16 @@ STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Перевір�
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Гра була записана у версії без підтримки трамваїв. Усі трамваї були видалені.
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Генерація карти перервана...{}...немає де розташувати міста
-STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}...у цьому сценарію немає міст
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Генерація карти перервана...{}... немає де розташувати міста
+STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... у цьому сценарію немає міст
 
 STR_ERROR_PNGMAP                                                :{WHITE}Неможливо завантажити ландшафт з PNG...
-STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}...файл не знайдено
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}...неможливо конвертувати. Треба 8 чи 24-bit PNG формат.
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}...помилка (можливо, зіпсований файл).
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... файл не знайдено
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... неможливо конвертувати. Треба 8 чи 24-bit PNG формат.
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}... помилка (можливо, зіпсований файл).
 
 STR_ERROR_BMPMAP                                                :{WHITE}Неможливо завантажити ландшафт з BMP...
-STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}...неможливо перетворити тип зображення
+STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... неможливо перетворити тип зображення
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Завелике значення
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Розміри дуже великі. Продовжити генерацію?
@@ -3504,7 +3504,7 @@ STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Тут �
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... надто близько до краю карти
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... надто близько до іншого міста
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... забагато міст
-STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...на карті немає вільного місця
+STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... на карті немає вільного місця
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Місто не буде будувати дороги. ВИ можете дозволити будівництво доріг у вікні Розширені налаштування->Економіка->Міста.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Дорога ремонтується
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Не можна видалити це місто...{}Станція або депо, що відносяться до міста або знаходяться на землі у власності міста, не можуть бути видалені
@@ -3514,8 +3514,8 @@ STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... за
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Неможливо створити промисловість...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Неможливо будувати {STRING.z} тут...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Неможливо будувати тут...
-STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}...дуже близько до іншої промисловості
-STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}...спочатку збудуйте місто
+STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... дуже близько до іншої промисловості
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... спочатку збудуйте місто
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... у місті може бути тільки один
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... можна будувати лише у містах з населенням не менш 1200
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... можна будувати лише у джунглях
@@ -3536,7 +3536,7 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Немо
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Граничить з іншою станцією
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... станція занадто велика
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}...неоднорідні станції відключені
+STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... неоднорідні станції відключені
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Дуже багато станцій
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Забагато частин залізничної станції
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Дуже багато зупинок
@@ -3546,8 +3546,8 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Дуже
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Дуже близько до іншого порту
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Дуже близько до іншого аеропорту
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Неможливо перейменувати станцію...
-STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}...ця дорога у власності міста
-STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}...дорога не в тому напрямку
+STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... ця дорога у власності міста
+STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... дорога не в тому напрямку
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Не можна зруйнувати частину станції...
@@ -3577,7 +3577,7 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Не м�
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Тут не можна прибрати точку маршруту..
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Спочатку приберіть точку залізничного маршруту
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... бакен на шляху
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}...бакен використовується!
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... бакен використовується!
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Неможливо будувати депо тут...
@@ -3624,7 +3624,7 @@ STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Тут �
 
 # Road construction errors
 STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}Спочатку зруйнуйте дорогу
-STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}...односторонні дороги не можуть перетинатись
+STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}... односторонні дороги не можуть перетинатись
 STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Неможливо тут побудувати дорогу ...
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Тут не можна побудувати трамвайну колію...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Неможливо прибрати дорогу звідси...

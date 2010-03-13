@@ -3363,16 +3363,16 @@ STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Adat integritá
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}A játék olyan verzióban lett elmentve, ami nem támogatja a villamosokat. Az összes villamos törölve lett.
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}A térkép generálása meghiúsult...{}...nincs városépítésre alkalmas hely
-STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}...nincs település ezen a pályán
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}A térkép generálása meghiúsult...{}... nincs városépítésre alkalmas hely
+STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... nincs település ezen a pályán
 
 STR_ERROR_PNGMAP                                                :{WHITE}Nem tudom a térképet betölteni a PNG-ből...
-STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}...fájl nem található.
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}...nem tudtam konverálni a kép típusát. 8 vagy 24-bites PNG kép kell.
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}...valami nem igazán sikerült. Bocs. (talán sérült a fájl)
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... fájl nem található.
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... nem tudtam konverálni a kép típusát. 8 vagy 24-bites PNG kép kell.
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}... valami nem igazán sikerült. Bocs. (talán sérült a fájl)
 
 STR_ERROR_BMPMAP                                                :{WHITE}Nem sikerült a térkép betöltése a BMP-ből...
-STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}...nem sikerült a képtípust konvertálni.
+STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... nem sikerült a képtípust konvertálni.
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Átméretezési figyelmeztetés
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}A forrás térkép túlságosan nagy mértékű átméretezése nem javasolt. Folytatod mégis?
@@ -3397,10 +3397,10 @@ STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Rossz ir
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Nem teheted ezt...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Előbb le kell rombolnod az épületet
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Nem tisztíthatod meg ezt a területet...
-STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}...nem alkalmas rá a hely
-STR_ERROR_ALREADY_BUILT                                         :{WHITE}...már van itt
+STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... nem alkalmas rá a hely
+STR_ERROR_ALREADY_BUILT                                         :{WHITE}... már van itt
 STR_ERROR_OWNED_BY                                              :{WHITE}... {STRING} tulajdona
-STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...a terület más vállalaté
+STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... a terület más vállalaté
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}A névnek egyedinek kell lennie
 STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}...{1:STRING} van az útban
 
@@ -3426,7 +3426,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Nem vál
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}...{CURRENCY} a megengedett legnagyobb kölcsön.
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Nem kölcsönözhetsz több pénzt...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}...nincs visszafizetendő kölcsönöd
+STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... nincs visszafizetendő kölcsönöd
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CURRENCY} kellene hozzá
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Nem törleszthetsz a kölcsönből...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Nem tudod a banktól kölcsönkapott pénzt továbbadni...
@@ -3440,10 +3440,10 @@ STR_ERROR_PROTECTED                                             :{WHITE}Ez a vá
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Nem lehet több települést építeni
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Nem nevezheted át a várost...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Nem építhetsz ide várost...
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}...túl közel van a térkép széléhez
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}...túl közel van egy másik településhez
-STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}...túl sok a település
-STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...nincs több hely a térképen
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... túl közel van a térkép széléhez
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... túl közel van egy másik településhez
+STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... túl sok a település
+STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... nincs több hely a térképen
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}A település nem fog utakat építeni. Az útépítést a Haladó beállítások->Gazdaság->Városok menüben engedélyezheted.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Útkarbantartás folyamatban
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Nem törölheted ezt a várost...{}Egy állomás vagy járműtelep hivatkozik a városra, vagy egy városi tulajdonú mező nem eltávolítható
@@ -3453,16 +3453,16 @@ STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... túl
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Nem tudok gazdasági épületet generálni...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Nem építhető ide {STRING}...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Nem építheted ide ezt a gazdasági épületet...
-STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}...túl közel egy másik gazdasági épülethez
-STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}...előbb települést kell építened
-STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}...városonként csak egy lehet
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...csak 1200-nál nagyobb lakosságszámú településeken építhető
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...csak esőerdőben építhető
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}...csak sivatagban építhető
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}...csak településen építhető
+STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... túl közel egy másik gazdasági épülethez
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... előbb települést kell építened
+STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... városonként csak egy lehet
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... csak 1200-nál nagyobb lakosságszámú településeken építhető
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... csak esőerdőben építhető
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... csak sivatagban építhető
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... csak településen építhető
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... csak alacsony terepen építhető
-STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}...csak a térkép széléhez közel építhető
-STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}...erdő csak a hóhatár fölé ültethető
+STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... csak a térkép széléhez közel építhető
+STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... erdő csak a hóhatár fölé ültethető
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Nem építhetsz ide vasútállomást...
@@ -3474,8 +3474,8 @@ STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Nem ép�
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Nem építhetsz ide repülőteret...
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Több állomással/rakodóhellyel érintkezik
-STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}...az állomás túl kiterjedt
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}...csak egyféle vágánytípusú állomások lehetnek
+STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... az állomás túl kiterjedt
+STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... csak egyféle vágánytípusú állomások lehetnek
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Túl sok az állomás/rakodóhely
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Túl sok vasútállomás-rész
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Túl sok buszmegálló
@@ -3485,8 +3485,8 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Túl kö
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Túl közel van egy másik kikötőhöz
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Túl közel van egy másik repülőtérhez
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Nem nevezheted át az állomást...
-STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}...ez egy városi tulajdonú út
-STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}...az út a másik irányba vezet
+STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... ez egy városi tulajdonú út
+STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... az út a másik irányba vezet
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Nem lehet eltávolítani az állomás részét...
@@ -3515,7 +3515,7 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Nem lehe
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Nem lehet eltávolítani az ellenőrző pontot...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Előbb le kell rombolnod az ellenőrző pontot
-STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}...bója van az útban
+STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... bója van az útban
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... a bóját használják!
 
 # Depot related errors
@@ -3525,7 +3525,7 @@ STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Ide nem 
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Nem építhetsz ide dokkot...
 
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}A járműtelepen kellene állnia ehhez
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...garázsban kellene állnia ehhez
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... garázsban kellene állnia ehhez
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}A dokkban kellene állnia ehhez
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}A hangárban kellene állnia ehhez
 
@@ -3573,13 +3573,13 @@ STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Innen ne
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Ide nem lehet csatornát építeni...
 STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Ide nem lehet zsilipet építeni...
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Ide nem lehet folyót elhelyezni...
-STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}...csak vízen építhető
-STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}...nem építhető vízen
+STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... csak vízen építhető
+STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... nem építhető vízen
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}A csatornát előbb le kell rombolni
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Ide nem lehet akvaduktot építeni...
 
 # Tree related errors
-STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}...már van itt fa
+STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... már van itt fa
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Ide nem lehet fát ültetni...
 
 # Bridge related errors
@@ -3589,7 +3589,7 @@ STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Nem kezd
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Hídfők nem egy szinten vannak
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}A híd túl alacsony a terepre
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}A kezdetének és a végének egy vonalban kell lennie
-STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}...a híd mindkét végének szárazföldön kell lennie
+STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... a híd mindkét végének szárazföldön kell lennie
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Nem áshatsz ide alagutat...
@@ -3603,7 +3603,7 @@ STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Nem lehe
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Objektum van az útban
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... vállalat székháza van az útban
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Nem veheted meg ezt a földterületet...
-STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}...már a tiéd!
+STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... már a tiéd!
 
 # Group related errors
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Csoport létrehozás sikertelen...
@@ -3683,13 +3683,13 @@ STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}Nem mód
 STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Úticél mozgatása nem lehetséges...
 STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Nem lehet átugrani a jelenlegi úticélt...
 STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Nem lehet a kiválasztott úticélra ugrani...
-STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}...a jármű nem tud az összes állomásra eljutni
-STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}...a jármű nem tud a megadott állomásra eljutni
-STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}...egy jármű, amivel meg van osztva ez az utasítás, nem tud a megadott állomásra eljutni
+STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... a jármű nem tud az összes állomásra eljutni
+STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... a jármű nem tud a megadott állomásra eljutni
+STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... egy jármű, amivel meg van osztva ez az utasítás, nem tud a megadott állomásra eljutni
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Nem lehet megosztani a menetrendet...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Nem lehet másolni a menetrendet...
-STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...túl távol van az előző céltól
+STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... túl távol van az előző céltól
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}A jármű nem időzíthető
@@ -3697,7 +3697,7 @@ STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}A járm�
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Ez a jármű nem áll meg ezen az állomáson
 
 # Sign related errors
-STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}...túl sok a felirat
+STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... túl sok a felirat
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Nem rakhatsz ide feliratot...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Nem változtathatod meg a feliratot...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}A felirat nem törölhető...

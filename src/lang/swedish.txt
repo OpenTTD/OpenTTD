@@ -3294,7 +3294,7 @@ STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Integritetskont
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Spelet sparades i en version som ej stöder spårvagn. Alla spårvagnar har tagits bort
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Generering av kartan avbruten...{}...ingen lämplig plats för någon stad
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Generering av kartan avbruten...{}... ingen lämplig plats för någon stad
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... det finns ingen stad i detta scenario
 
 STR_ERROR_PNGMAP                                                :{WHITE}Kan inte ladda landskap från PNG...
@@ -3328,7 +3328,7 @@ STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Marken l
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Kan inte utföra detta...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Byggnad måste rivas först
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Kan inte röja området...
-STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}...platsen passar inte
+STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... platsen passar inte
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... redan byggd
 STR_ERROR_OWNED_BY                                              :{WHITE}... ägs av {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... området ägs av ett annat företag
@@ -3620,7 +3620,7 @@ STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... ett 
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Kan inte dela orderlistan...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Kan inte kopiera orderlistan...
-STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...för långt från föregående destination
+STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... för långt från föregående destination
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Kan inte lägga till fordonet i en tidtabell...

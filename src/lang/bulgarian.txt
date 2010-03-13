@@ -3281,15 +3281,15 @@ STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Игра
 
 # Map generation messages
 STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Правенето на карта е прекратено...{}... няма подходящи места за градове
-STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}...няма град в този сценарий
+STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... няма град в този сценарий
 
 STR_ERROR_PNGMAP                                                :{WHITE}Не може да зареди терена от PNG...
-STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}...файла не е намерен.
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}...преобразуване типа на картинката е невъзможно. Трябва 8 или 24-битова PNG картинка.
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}...нещо лошо слочи. Извинения. (вероятно повреден файл)
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... файла не е намерен.
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... преобразуване типа на картинката е невъзможно. Трябва 8 или 24-битова PNG картинка.
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}... нещо лошо слочи. Извинения. (вероятно повреден файл)
 
 STR_ERROR_BMPMAP                                                :{WHITE}Не може да отвориш пейзаж от BMP..
-STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}...не може да се промени бида на снимката.
+STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... не може да се промени бида на снимката.
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Мащаб предупреждение
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Прекаленото оразмеряване не е препорачително. Продължаване с генерацията?
@@ -3313,10 +3313,10 @@ STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Земя
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Това е невъзможно...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Сградата първо трябва да бъде разрушена
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Изчистването е невъзможно...
-STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}...неподходящо място
-STR_ERROR_ALREADY_BUILT                                         :{WHITE}...вече е построено
-STR_ERROR_OWNED_BY                                              :{WHITE}...собственост на {STRING}
-STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...земята е притежание на друга компания
+STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... неподходящо място
+STR_ERROR_ALREADY_BUILT                                         :{WHITE}... вече е построено
+STR_ERROR_OWNED_BY                                              :{WHITE}... собственост на {STRING}
+STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... земята е притежание на друга компания
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Името трябва да е уникално
 STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{1:STRING} пречи
 
@@ -3340,9 +3340,9 @@ STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... ве
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Не може да бъде променено името на компанията...
 STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Не може да се промени името на управителя...
 
-STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}...максимално разрешеният размер на заема е {CURRENCY}
+STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... максимално разрешеният размер на заема е {CURRENCY}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Не може да изтеглиш повече пари...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}...няма заем за изплащане
+STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... няма заем за изплащане
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CURRENCY} са необходими
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Не може да изплатиш заема...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Не може да се харчат пари които са заети от банка...
@@ -3359,7 +3359,7 @@ STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Не м�
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... прекалено близо до края на картата
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... прекалено близо до друг град
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... прекалено много градове
-STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...няма повече място на картата
+STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... няма повече място на картата
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Пътни ремонти в процес
 
 # Industry related errors
@@ -3388,7 +3388,7 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Не м�
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Граничи с повече от една гара/товарна платформа
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... станцията е прекалено разпръсната
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}...неправилните станции са изключени
+STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... неправилните станции са изключени
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Твърде много гари/товарни платформи
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Твърде много части на гара
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Твърде много автобусни спирки
@@ -3398,8 +3398,8 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Твър
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Прекалено близо до друг док
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Прекалено близо до друго летище
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Станцията не може да бъде преименувана...
-STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}...този път принадлежи на градът
-STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}...пътят е насочен в погрешната посока
+STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... този път принадлежи на градът
+STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... пътят е насочен в погрешната посока
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Не може да се премахва част от гарата...
@@ -3425,7 +3425,7 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Не м�
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Оттук не може да се премахва влаковия пункт...
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... шамандура на пътя
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}...шамандурата се използва!
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... шамандурата се използва!
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Не може да построиш влаково депо тук...

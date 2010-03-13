@@ -3300,7 +3300,7 @@ STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Comprobación d
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}El juego ha sido guardado en una versión sin soporte para tranvías. Todos los tranvías serán eliminados.
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Generación de mapa abortada...{}...no hay localizaciones apropiadas para pueblos
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Generación de mapa abortada...{}... no hay localizaciones apropiadas para pueblos
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... no hay pueblos en el escenario
 
 STR_ERROR_PNGMAP                                                :{WHITE}No se pudo cargar mapa de alturas PNG...

@@ -1978,7 +1978,7 @@ STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Выб�
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Зависимости: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Теги: {WHITE}{STRING}
 STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD собрана без поддержки библиотеки «zlib»...
-STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}...загрузка контента невозможна!
+STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... загрузка контента невозможна!
 
 # Order of these is important!
 STR_CONTENT_TYPE_BASE_GRAPHICS                                  :{G=f}Базовая графика
@@ -2016,8 +2016,8 @@ STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} 
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Не могу соединиться с сервером контента...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Ошибка загрузки...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}...соединение утеряно
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}...не могу записать файл
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... соединение утеряно
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... не могу записать файл
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Не могу распаковать скачанный файл
 
 # Transparency settings window
@@ -3479,7 +3479,7 @@ STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Нарушен�
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Игра была сохранена в игре без поддержки трамваев. Все трамваи были отключены.
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Генерация карты остановлена...{}...нет доступных мест для размещения городов
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Генерация карты остановлена...{}... нет доступных мест для размещения городов
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... в этом сценарии нет городов
 
 STR_ERROR_PNGMAP                                                :{WHITE}Не могу загрузить ландшафт из PNG...
@@ -3521,7 +3521,7 @@ STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Имя �
 STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{1:STRING} на пути
 
 # Local authority errors
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}...администрация города {TOWN} запрещает вам это делать
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}... администрация города {TOWN} запрещает вам это делать
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}Администрация г.{NBSP}{TOWN} запрещает постройку ещё одного аэропорта в городе
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}Администрация г.{NBSP}{TOWN} не разрешает строительство аэропорта из-за высокого уровня шума.
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}Ваша попытка дать взятку была
@@ -3534,7 +3534,7 @@ STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Здес
 STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}Земляные работы разрушат туннель
 STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}Уже на уровне моря
 STR_ERROR_TOO_HIGH                                              :{WHITE}Слишком высоко
-STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}...уже ровно
+STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... уже ровно
 
 # Company related errors
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Невозможно изменить название компании...
@@ -3679,7 +3679,7 @@ STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Здес
 
 # Road construction errors
 STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}Сначала удалите дорогу
-STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}...односторонние дороги не могут иметь такое пересечение
+STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}... односторонние дороги не могут иметь такое пересечение
 STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Здесь невозможно проложить дорогу...
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Здесь нельзя проложить трамвайные рельсы...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Не могу удалить дорогу...

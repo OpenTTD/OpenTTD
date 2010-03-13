@@ -3367,7 +3367,7 @@ STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Kontrola integr
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Hra byla uložena ve verzi bez podpory tramvají. Všechny tramvaje se odstraní.
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Generování mapy zrušeno...{}...nebylo možné založit žádné město
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Generování mapy zrušeno...{}... nebylo možné založit žádné město
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... v tomto scénáři není ani jedno město
 
 STR_ERROR_PNGMAP                                                :{WHITE}Nebylo možné nahrát krajinu z PNG...

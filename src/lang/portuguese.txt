@@ -3299,16 +3299,16 @@ STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Falha ao verifi
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}O jogo foi salvo numa versão sem suporte a eléctricos. Todos os eléctricos foram removidos.
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Geração de mapa abortada...{}...não há locais apropriados para cidades
-STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}...não existe nenhuma cidade neste cenário
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Geração de mapa abortada...{}... não há locais apropriados para cidades
+STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... não existe nenhuma cidade neste cenário
 
 STR_ERROR_PNGMAP                                                :{WHITE}Impossível carregar paisagem de PNG...
-STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}...ficheiro não encontrado.
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}...impossível converter imagem. Necessário PNG de 8 ou 24 bits.
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}...alguma coisa correu mal. Desculpe. (provavelmente um ficheiro corrompido)
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... ficheiro não encontrado.
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... impossível converter imagem. Necessário PNG de 8 ou 24 bits.
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}... alguma coisa correu mal. Desculpe. (provavelmente um ficheiro corrompido)
 
 STR_ERROR_BMPMAP                                                :{WHITE}Impossível carregar paisagem de BMP...
-STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}...impossível converter tipo de imagem.
+STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... impossível converter tipo de imagem.
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Aviso de redimensionamento
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Redimensionar muito o mapa não é recomendado. Continuar com a criação?
@@ -3379,7 +3379,7 @@ STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Não é 
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... muito perto da borda do mapa
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... muito perto de outra cidade
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... demasiadas cidades
-STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...não existe mais espaço no mapa
+STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... não existe mais espaço no mapa
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}A cidade não construirá estradas. Pode-se permitir a construção de estradas por Opções Avançadas->Economia->Cidades.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Trabalhos na estrada em curso
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Não é possível eliminar esta cidade...{}Uma estação ou depósito refere-se à cidade ou não é possível remover terreno pertencente à cidade
@@ -3389,7 +3389,7 @@ STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... dema
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Não é possível gerar indústrias...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Não é possível construir {STRING} aqui...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Não é possível construir este tipo de indústria aqui...
-STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}...muito perto de outra indústria
+STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... muito perto de outra indústria
 STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... é necessário construir uma cidade primeiro
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... só é permitido uma por cidade
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... só pode ser construído em cidades com pelo menos 1200 habitantes
@@ -3411,7 +3411,7 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Não é 
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Muito junto de uma estação/local de carga já existente
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... estação muito extensa
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}...estações não-uniformes desactivadas
+STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... estações não-uniformes desactivadas
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Demasiadas estações/locais de carga
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Demasiadas partes na estação ferroviária
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Demasiadas paragens de autocarro
@@ -3421,8 +3421,8 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Muito ju
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Muito perto de outra doca
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Demasiado perto de outro aeroporto
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Não pode alterar o nome da estação...
-STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}...esta estrada é detida pela cidade
-STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}...estrada orientada na direcção incorrecta
+STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... esta estrada é detida pela cidade
+STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... estrada orientada na direcção incorrecta
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Não é possível remover parte da estação...
@@ -3452,7 +3452,7 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Não é 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Não é possível remover ponto de passagem de comboio aqui...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}É preciso remover o ponto de passagem primeiro
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... bóia no caminho
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}...bóia está em uso!
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... bóia está em uso!
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Não é possível construir depósito aqui...

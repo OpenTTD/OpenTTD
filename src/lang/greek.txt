@@ -3400,7 +3400,7 @@ STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Έλεγχος 
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Το παιχνίδι έχει σωθεί σε έκδοση χώρις υποστήριξη τροχιόδρομου. Όλα τα τραμ έχει αφαιρεθεί
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Η δημιουργία του χάρτη εγκαταλήφτηκε...{}...Δεν υπάρχουν κατάλληλες τοποθεσίες για πόλεις
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Η δημιουργία του χάρτη εγκαταλήφτηκε...{}... Δεν υπάρχουν κατάλληλες τοποθεσίες για πόλεις
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... δεν υπάρχει καμία πόλη σε αυτό το σενάριο
 
 STR_ERROR_PNGMAP                                                :{WHITE}Δεν είναι δυνατή η φόρτωση από PNG...
@@ -3454,7 +3454,7 @@ STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Αδύν
 STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Αδύνατο να έρθει στο ίδιο επίπεδο η γη εδώ...
 STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}Η εκσκαφή θα κατέστρεφε το τούνελ
 STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}Ήδη στο επίπεδο της θάλασσας
-STR_ERROR_TOO_HIGH                                              :{WHITE}...πολύ ψηλά
+STR_ERROR_TOO_HIGH                                              :{WHITE}... πολύ ψηλά
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... ήδη επίπεδο
 
 # Company related errors

@@ -1630,8 +1630,8 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE} فقط 
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE} فقط میتوان در جنگل های بارانی ساخت
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE} فقط می توان در صحرا ساخت
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}فقط می توان در شهر ها ساخت
-STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}...فقط در حاشیه ی نقشه ساخته می شود
-STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}...جنگل باید بالای خط برف کاشته شود
+STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... فقط در حاشیه ی نقشه ساخته می شود
+STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... جنگل باید بالای خط برف کاشته شود
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE} اینجا نمی شود ایستگاه راه آهن ساخت
@@ -1666,7 +1666,7 @@ STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}قطار
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}نمیتوان جهت حرکت وسیله را معکوس کرد...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}نمیتوان جهت وسایلی که از چند قطعه تشکیل شده اند را معکوس کرد
 
-STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE} ...این وسیله را نمی توان حرکت داد
+STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}... این وسیله را نمی توان حرکت داد
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}مسیری به ایستگاه راه آهن پیدا نمیشود
 
 

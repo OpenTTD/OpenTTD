@@ -3296,15 +3296,15 @@ STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Jogo foi
 
 # Map generation messages
 STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Geração do mapa abortada... {}... não há locais para criação de cidades
-STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}...não existe cidade neste cenário
+STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... não existe cidade neste cenário
 
 STR_ERROR_PNGMAP                                                :{WHITE}Impossível carregar terreno a partir de PNG...
-STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}...arquivo não encontrado.
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}...impossível converter tipo de imagem. Precisa imagem PNG de 8 ou 24-bit.
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}...alguma coisa deu errado. Desculpe. (provavel arquivo corrupto)
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... arquivo não encontrado.
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... impossível converter tipo de imagem. Precisa imagem PNG de 8 ou 24-bit.
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}... alguma coisa deu errado. Desculpe. (provavel arquivo corrupto)
 
 STR_ERROR_BMPMAP                                                :{WHITE}Impossível carregar terreno a partir de BMP...
-STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}...não foi possível converter o tipo de imagem
+STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... não foi possível converter o tipo de imagem
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Aviso de Escala
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Alterar muito o tamanho do mapa original não é recomendado. Continuar com a geração?
@@ -3329,10 +3329,10 @@ STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Terreno 
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Impossível fazer isto...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}O edifício deve ser demolido antes
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Impossível limpar esta área...
-STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}...local inadequado
-STR_ERROR_ALREADY_BUILT                                         :{WHITE}...já construído
-STR_ERROR_OWNED_BY                                              :{WHITE}...propriedade de {STRING}
-STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...a área é propriedade de outra empresa
+STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... local inadequado
+STR_ERROR_ALREADY_BUILT                                         :{WHITE}... já construído
+STR_ERROR_OWNED_BY                                              :{WHITE}... propriedade de {STRING}
+STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... a área é propriedade de outra empresa
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Nome deve ser único
 STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{1:STRING} no caminho
 
@@ -3356,10 +3356,10 @@ STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... já 
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Impossível alterar o nome da empresa...
 STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Impossível alterar o nome do presidente...
 
-STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}...o empréstimo máximo permitido é de {CURRENCY}
+STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... o empréstimo máximo permitido é de {CURRENCY}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Impossível pedir mais dinheiro emprestado...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}...não há empréstimo para pagar
-STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}...precisa de {CURRENCY}
+STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... não há empréstimo para pagar
+STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... precisa de {CURRENCY}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Impossível pagar empréstimo...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Impossível dar o dinheiro emprestado do banco
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Impossível comprar empresa...
@@ -3372,10 +3372,10 @@ STR_ERROR_PROTECTED                                             :{WHITE}Esta emp
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Impossível construir qualquer cidade
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Impossível renomear cidade...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Impossível construir cidade aqui...
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}...muito perto da borda do mapa
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}...muito perto de outra cidade
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... muito perto da borda do mapa
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... muito perto de outra cidade
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... existem cidades demais
-STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...não há mais espaço no mapa
+STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... não há mais espaço no mapa
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}A cidade não irá construir estradas. Você pode ativar essa opção através de Config. Avançadas>Economia>Cidades.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Recapeamento rodoviário em progresso
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Impossível remover cidade... {}Uma estação ou depósito referente à essa cidade não pode ser removido
@@ -3385,16 +3385,16 @@ STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... exis
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Impossível gerar indústrias...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Impossível construir {STRING} aqui...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Impossível construir este tipo de indústria aqui...
-STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}...muito perto de outra indústria
-STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}...deve construir uma cidade antes
-STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}...só é permitido uma por cidade
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...só pode ser construído em cidades com pelo menos 1200 habitantes
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...só pode ser construído em zonas florestais
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}...só pode ser construído em áreas desérticas
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}...só se pode ser construído em cidades
+STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... muito perto de outra indústria
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... deve construir uma cidade antes
+STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... só é permitido uma por cidade
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... só pode ser construído em cidades com pelo menos 1200 habitantes
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... só pode ser construído em zonas florestais
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... só pode ser construído em áreas desérticas
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... só se pode ser construído em cidades
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... só pode ser construído em áreas baixas
-STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}...só pode ser colocado perto das bordas do mapa
-STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}...a floresta só pode ser plantada acima do nível de neve
+STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... só pode ser colocado perto das bordas do mapa
+STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... a floresta só pode ser plantada acima do nível de neve
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Impossível construir estação ferroviária aqui...
@@ -3406,8 +3406,8 @@ STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Impossí
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Impossível construir aeroporto aqui...
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Muito perto de uma estação/local de carga já existente
-STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}...estação muito extensa
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}...Estações não-uniformes desativadas
+STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... estação muito extensa
+STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... Estações não-uniformes desativadas
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Estações/áreas de carga demais
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}A estação já tem muitas partes
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Estações de ônibus demais
@@ -3417,8 +3417,8 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Muito pe
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Muito perto de outra doca
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Muito perto de outro aeroporto
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Impossível renomear a estação...
-STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}...é uma rua local
-STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}...rua na direção errada
+STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... é uma rua local
+STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... rua na direção errada
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Impossível remover parte da estação...
@@ -3447,8 +3447,8 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Impossí
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Impossível remover ponto de controle de trem aqui...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Remova o ponto de controle antes
-STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}...bóia no caminho
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}...bóia está em uso!
+STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... bóia no caminho
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... bóia está em uso!
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Impossível construir depósito aqui...
@@ -3457,7 +3457,7 @@ STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Impossí
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Impossível construir depósito naval aqui...
 
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}O trem deve estar parado dentro do depósito
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...deve estar parado dentro de uma garagem
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... deve estar parado dentro de uma garagem
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}A embarcação deve estar parado no depósito naval
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}A aeronave deve estar parada no hangar
 
@@ -3505,13 +3505,13 @@ STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Impossí
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Impossível construir canais aqui...
 STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Impossível construir eclusas aqui...
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Impossível fazer rios aqui...
-STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}...deve ser construído na água
-STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}...Impossível construir na água
+STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... deve ser construído na água
+STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... Impossível construir na água
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Remova o canal antes
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Impossível construir aqueduto aqui
 
 # Tree related errors
-STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}...árvore já plantada aqui
+STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... árvore já plantada aqui
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Impossível plantar árvore aqui...
 
 # Bridge related errors
@@ -3521,7 +3521,7 @@ STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Impossí
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Extremidades da ponte não estão no mesmo nível
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Ponte é muito baixa para o terreno
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Inicio e fim devem estar alinhados
-STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}...os extremos da ponte devem estar sobre a terra
+STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... os extremos da ponte devem estar sobre a terra
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Impossível construir túnel aqui...
@@ -3533,9 +3533,9 @@ STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Incapaz 
 
 # Unmovable related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Objeto no caminho
-STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}...sede de empresa no caminho
+STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... sede de empresa no caminho
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Impossível comprar esta área...
-STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}...já a possui!
+STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... já a possui!
 
 # Group related errors
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Impossível criar grupo...
@@ -3615,13 +3615,13 @@ STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}Impossí
 STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Impossível mudar essa ordem
 STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Impossível pular a ordem atual...
 STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Impossível pular à ordem selecionada...
-STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}...o veículo não pode chegar a todas as estações
-STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}...o veículo não chega àquela estação
-STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}...um veículo com essa mesma ordem não chega àquela estação
+STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... o veículo não pode chegar a todas as estações
+STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... o veículo não chega àquela estação
+STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... um veículo com essa mesma ordem não chega àquela estação
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Impossível compartilhar a lista de ordens...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Impossível copiar a lista de ordens...
-STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...muito distante do destino anterior
+STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... muito distante do destino anterior
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Impossível programar veículo...

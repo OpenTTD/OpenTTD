@@ -3395,16 +3395,16 @@ STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Provjera integr
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Igra je bila spremljena u verziji bez podrške za tramvaje. Zbog toga su svi tramvaji uklonjeni.
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Generiranje karte prekinuto...{}...ne postoje prigodne lokacije za gradove
-STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}...u ovom scenariju nema gradova
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Generiranje karte prekinuto...{}... ne postoje prigodne lokacije za gradove
+STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... u ovom scenariju nema gradova
 
 STR_ERROR_PNGMAP                                                :{WHITE}Nije moguće učitati krajolik iz PNG-a...
-STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}...datoteka nije pronađena.
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}...ne mogu pretvoriti vrstu slike. Potrebna je 8 ili 24-bitna PNG slika.
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}...nešto je otišlo u krivom smjeru. Oprostite. (vjerojatno je pokvarena datoteka)
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... datoteka nije pronađena.
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... ne mogu pretvoriti vrstu slike. Potrebna je 8 ili 24-bitna PNG slika.
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}... nešto je otišlo u krivom smjeru. Oprostite. (vjerojatno je pokvarena datoteka)
 
 STR_ERROR_BMPMAP                                                :{WHITE}Nije moguće učitati krajolik iz BMP-a...
-STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}...ne mogu pretvoriti vrstu slike.
+STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... ne mogu pretvoriti vrstu slike.
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Upozorenje o veličini
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Prekomjerna promjena veličine karte nije preporučena. Nastaviti sa kreiranjem?
@@ -3429,10 +3429,10 @@ STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Zemlja n
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}To nije moguće učiniti...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Najprije je potrebno srušiti građevinu
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Nije moguće očistiti ovo područje...
-STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}...neprikladno mjesto
-STR_ERROR_ALREADY_BUILT                                         :{WHITE}...već izgrađeno
-STR_ERROR_OWNED_BY                                              :{WHITE}...u vlasništvu {STRING}
-STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...područje je u vlasništvu druge tvrtke
+STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... neprikladno mjesto
+STR_ERROR_ALREADY_BUILT                                         :{WHITE}... već izgrađeno
+STR_ERROR_OWNED_BY                                              :{WHITE}... u vlasništvu {STRING}
+STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... područje je u vlasništvu druge tvrtke
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Ime mora biti jedinstveno
 STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{1:STRING} na putu
 
@@ -3456,9 +3456,9 @@ STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... već
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Ime tvrtke nije moguće promijeniti...
 STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Nije moguće promijeniti ime direktora...
 
-STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}...najveći dopušteni zajam iznosi {CURRENCY}
+STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... najveći dopušteni zajam iznosi {CURRENCY}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Nije moguće posuditi još više novaca...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}...nema zajma za otplatu
+STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... nema zajma za otplatu
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}...{CURRENCY} potrebno
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Nije moguće otplatiti zajam...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Nije moguće dati novac koji je pozajmljen od banke...
@@ -3472,10 +3472,10 @@ STR_ERROR_PROTECTED                                             :{WHITE}Ova tvrt
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Nije moguće graditi gradove
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Nije moguće preimenovati grad...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Ovdje nije moguće izgraditi grad...
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}...preblizu rubu karte
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}...preblizu drugome gradu
-STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}...previše gradova
-STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...nema više mjesta na karti
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... preblizu rubu karte
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... preblizu drugome gradu
+STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... previše gradova
+STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... nema više mjesta na karti
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Grad neće graditi ceste. Možete uključiti gradnju cesta putem Naprednih postavki -> Ekonomija -> Gradovi
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Cestovni radovi u tijeku
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Nije moguće izbrisati ovaj grad...{}Postaja ili spremište se pozivaju na grad ili polja u vlasništvu grada nije moguće ukloniti
@@ -3485,16 +3485,16 @@ STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... prev
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Nije moguće generirati industrije...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Ovdje nije moguće izgraditi {STRING}...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Ovdje nije moguće izgraditi ovu vrstu industrije...
-STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}...preblizu drugoj industriji
-STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}...najprije je potrebno napraviti grad
-STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}...dopušten je samo jedan po gradu
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...može biti izgrađen samo u gradovima s najmanje 1200 stanovnika
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...može biti izgrađen samo u predjelima kišnih šuma
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}...može biti izgrađen samo u pustinjskim područjima
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}...može biti izgrađen samo u gradovima
+STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... preblizu drugoj industriji
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... najprije je potrebno napraviti grad
+STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... dopušten je samo jedan po gradu
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... može biti izgrađen samo u gradovima s najmanje 1200 stanovnika
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... može biti izgrađen samo u predjelima kišnih šuma
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... može biti izgrađen samo u pustinjskim područjima
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... može biti izgrađen samo u gradovima
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... može biti izgrađen samo u nizinskim područjima
-STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}...može se postaviti samo blizu rubova karte
-STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}...šume mogu jedino biti posađene iznad linije snijega
+STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... može se postaviti samo blizu rubova karte
+STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... šume mogu jedino biti posađene iznad linije snijega
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Ovdje nije moguće izgraditi željezničku postaju...
@@ -3506,8 +3506,8 @@ STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Ovdje ni
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Ovdje nije moguće izgraditi zračnu luku...
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Spaja više od jedne postojeće postaje/terminala
-STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}...postaja previše proširena
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}...neujednačene postaje onemogućene
+STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... postaja previše proširena
+STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... neujednačene postaje onemogućene
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Previše postaja/terminala
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Previše dijelova željezničke postaje
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Previše autobusnih postaja
@@ -3517,8 +3517,8 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Preblizu
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Preblizu drugom pristaništu
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Preblizu drugoj zračnoj luci
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Nije moguće preimenovati postaju...
-STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}...ovo je gradska cesta
-STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}...cesta je orijentirana u krivom smjeru
+STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... ovo je gradska cesta
+STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... cesta je orijentirana u krivom smjeru
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Nije moguće ukloniti dio postaje...
@@ -3547,8 +3547,8 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Nije mog
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Nije moguće ukloniti željezničko čvorište odavde...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Najprije je potrebno ukloniti željezničko čvorište
-STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}...plutača na putu
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}...plutača je u uporabi!
+STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... plutača na putu
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... plutača je u uporabi!
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Ovdje nije moguće izgraditi spremište vlakova...
@@ -3557,7 +3557,7 @@ STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Ovdje ni
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Ovdje nije moguće izgraditi spremište brodova...
 
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Vlak mora biti zaustavljen unutar spremišta
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...mora biti zaustavljen unutar spremišta cestovnih vozila
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... mora biti zaustavljen unutar spremišta cestovnih vozila
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Brod mora biti zaustavljen u spremištu
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Zrakoplov mora biti zaustavljen u hangaru
 
@@ -3595,7 +3595,7 @@ STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Ovdje ni
 
 # Road construction errors
 STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}Najprije je potrebno ukloniti cestu
-STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}...jednosmjerne ceste ne mogu imati raskrižja
+STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}... jednosmjerne ceste ne mogu imati raskrižja
 STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Ovdje nije moguće izgraditi cestu...
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Ovdje nije moguće izgraditi tramvaj...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Nije moguće ukloniti cestu odavde...
@@ -3605,13 +3605,13 @@ STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Nije mog
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Ovdje nije moguće izgraditi kanale...
 STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Ovdje nije moguće izgraditi brane...
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Ovdje nije moguće postaviti rijeku...
-STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}...mora biti izgrađen na vodi
-STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}...Nije moguće graditi na vodi
+STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... mora biti izgrađen na vodi
+STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... Nije moguće graditi na vodi
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Najprije je potrebno srušiti kanal
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Ovdje nije moguće izgraditi akvadukt...
 
 # Tree related errors
-STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}...ovdje već postoji drvo
+STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... ovdje već postoji drvo
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Ovdje nije moguće posaditi drvo...
 
 # Bridge related errors
@@ -3621,7 +3621,7 @@ STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Početak
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Glave mosta nisu na istoj razini
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Most je prenizak za teren
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Početak i kraj moraju biti u ravnini
-STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}...oba kraja mosta moraju biti na zemlji
+STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... oba kraja mosta moraju biti na zemlji
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Ovdje nije moguće izgraditi tunel...
@@ -3633,9 +3633,9 @@ STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Ne mogu�
 
 # Unmovable related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Smeta objekt
-STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}...smeta sjedište tvrtke
+STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... smeta sjedište tvrtke
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Ovu zemlju nije moguće kupiti...
-STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}...već je u tvom vlasništvu!
+STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... već je u tvom vlasništvu!
 
 # Group related errors
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Nije moguće kreirati grupu...
@@ -3721,7 +3721,7 @@ STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... vozi
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Nije moguće dijeliti popis naredbi...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Nije moguće kopirati popis naredbi...
-STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...predaleko od prethodnog odredišta
+STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... predaleko od prethodnog odredišta
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Nije moguće zadati vozni red za vozilo...
@@ -3729,7 +3729,7 @@ STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Vozila m
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Ovo vozilo se ne zaustavlja na ovoj postaji.
 
 # Sign related errors
-STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}...previše znakova
+STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... previše znakova
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Ovdje nije moguće postaviti znak...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Nije moguće promijeniti ime znaka...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Nije moguće obrisati znak...

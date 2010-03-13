@@ -866,7 +866,7 @@ STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}یہ ج�
 # Town related errors
 
 # Industry related errors
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{G=m}{WHITE}...صرف ان شہروں میں بن سکتا ہے جن کی آبادی ۱۲۰۰ سے زیادہ ہے
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{G=m}{WHITE}... صرف ان شہروں میں بن سکتا ہے جن کی آبادی ۱۲۰۰ سے زیادہ ہے
 
 # Station construction related errors
 
@@ -896,7 +896,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{G=m}{WHITE}...
 # Tree related errors
 
 # Bridge related errors
-STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}...پل کے دونوں کنارے زمین پر ہونے چاہییں
+STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... پل کے دونوں کنارے زمین پر ہونے چاہییں
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}یہاں سورنگ نہئ بنا سکتے
@@ -910,7 +910,7 @@ STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}سورن
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}کوئی عمارت یا چیذ راستے مین ہے
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}کمپنی کا مرکزی دفتر راستے مین ہے
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}آپ یہ زمین نہی خرید سکتے
-STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}...یہ آپ ہی کی ملکیت ہے
+STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... یہ آپ ہی کی ملکیت ہے
 
 # Group related errors
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}یہ گروہ تشکیل نہں دے سکتے

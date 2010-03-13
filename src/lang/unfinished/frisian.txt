@@ -1830,10 +1830,10 @@ STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Lân rin
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Kin dit net dwaan...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Gebou moat earst fuorthelle wurde
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Kin dit gebiet net leech meitsje...
-STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}...terrein net geskikt
-STR_ERROR_ALREADY_BUILT                                         :{WHITE}...is al bout
-STR_ERROR_OWNED_BY                                              :{WHITE}...is fan {STRING}
-STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...gebiet is fan in oar bedriuw
+STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... terrein net geskikt
+STR_ERROR_ALREADY_BUILT                                         :{WHITE}... is al bout
+STR_ERROR_OWNED_BY                                              :{WHITE}... is fan {STRING}
+STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... gebiet is fan in oar bedriuw
 STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{1:STRING} yn it paad
 
 # Local authority errors
@@ -1851,9 +1851,9 @@ STR_ERROR_TOO_HIGH                                              :{WHITE}Te heech
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Kin bedriuwsnamme net feroarje...
 STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Kin namme fan direkteur net feroarje
 
-STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}...maksmaal tasteane liening is {CURRENCY}
+STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... maksmaal tasteane liening is {CURRENCY}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Kin net mear jild liene
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}...gjin liening werom te betelje
+STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... gjin liening werom te betelje
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}...{CURRENCY} nedich
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Kin liening net werombetelje...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Kin bedriuw net keapje...
@@ -1865,23 +1865,23 @@ STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Kin net 
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Kin gjin stêd bouwe
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Kin de namme net feroarje...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Kin hjir gjin stêd boue...
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}...te ticht by de râne fan 'e map
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}...te ticht by in oare stêd
-STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}...te folle stêden
-STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...der is gjin romte mear op'e kaart
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... te ticht by de râne fan 'e map
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... te ticht by in oare stêd
+STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... te folle stêden
+STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... der is gjin romte mear op'e kaart
 
 # Industry related errors
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Kin hjir gjin {STRING} boue...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Kin dit type yndustry hjir net boue...
-STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}...stêd moat earst bout wurde
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... stêd moat earst bout wurde
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}..mei mar ien per stêd wêze
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...kin allinnich bout wurde yn stêden mei 1200 ynwenners of mear
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...kin allinnich yn in reinwâld bout wurde
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}...kin allinnich yn in woastine bout wurde
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}...kin allinnich yn in stêd bout wurde
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... kin allinnich bout wurde yn stêden mei 1200 ynwenners of mear
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... kin allinnich yn in reinwâld bout wurde
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... kin allinnich yn in woastine bout wurde
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... kin allinnich yn in stêd bout wurde
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... kin allinnich yn lege plakken bout wurde
-STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}...kin allinich pleatse wurde by de rân fan'e kaart
-STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}...bosk kin allinich boppe snieline boud wurde
+STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... kin allinich pleatse wurde by de rân fan'e kaart
+STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... bosk kin allinich boppe snieline boud wurde
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Kin hjir gjin treinstasjon boue...
@@ -1889,7 +1889,7 @@ STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Kin hjir
 STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}Kin hjir gjin frachtweinstasjon boue...
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Ferbynt mear dan ien stasjon
-STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}...stasjon is te grut
+STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... stasjon is te grut
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Te folle stasjons
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Te folle bushaltes
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Te folle frachtstasjons
@@ -1916,7 +1916,7 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Kin de n
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Kin kontrôlepost jirre net fuorthelje...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Kontrôlepost op it spoar earst ferwiderje
-STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}...boei yn it paad
+STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... boei yn it paad
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Kin hjir gjin trein depot boue...
@@ -1945,11 +1945,11 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Kin hjir
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Kin hjir gjin wei fuorthelje...
 
 # Waterway construction errors
-STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}...moat bout wurde op it wetter
-STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}...Kin net op it wetter bouwe
+STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... moat bout wurde op it wetter
+STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... Kin net op it wetter bouwe
 
 # Tree related errors
-STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}...hjir stiet al in beam
+STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... hjir stiet al in beam
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Kin hjir gjin beam plantsje
 
 # Bridge related errors
@@ -1957,7 +1957,7 @@ STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}Kin hjir
 STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Brêge moat earst fuorthelle wurde
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Begjin en ein kin net op itselde plak wêze
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Begjin en ein moatte op ien lijn wêze
-STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}...beide úteinden fan'e brêge moatte op lân lizze
+STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... beide úteinden fan'e brêge moatte op lân lizze
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Kin hjir gjin tunnel boue...
@@ -1968,9 +1968,9 @@ STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Kin net 
 
 # Unmovable related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Objekt yn't plak
-STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}...haadkantoar bedriuw yn't plak
+STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... haadkantoar bedriuw yn't plak
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Kin dit stikje lân net keapje...
-STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}...it is al fan dy!
+STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... it is al fan dy!
 
 # Group related errors
 
@@ -1999,12 +1999,12 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Kin tiid
 
 # Order related errors
 
-STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...te fier fan lêste bestimming
+STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... te fier fan lêste bestimming
 
 # Timetable related errors
 
 # Sign related errors
-STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}...te folle buordsjes
+STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... te folle buordsjes
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Kin hjir gjin buordsje delsette
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Kin tekst net feroarje...
 

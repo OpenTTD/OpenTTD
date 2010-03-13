@@ -3111,7 +3111,7 @@ STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Tidak bo
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... terlalu hampir ke hujung peta
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... terlalu hampir ke bandar lain
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... bandar terlalu banyak
-STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...ruang tidak mencukupi di dalam peta
+STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... ruang tidak mencukupi di dalam peta
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Bandar ini tidak akan membina jalan. Anda boleh membenarkan pembinaan jalan melalui Advanced Settings->Economy->Towns.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Kerja-kerja jalanraya sedang berjalan
 
@@ -3121,7 +3121,7 @@ STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Tidak bo
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Tidak boleh bina {STRING} di sini...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Industri jenis ini tidak dapat dibina di sini...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... terlalu hampir dengan industri lain
-STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}...mesti membangunkan bandar dahulu
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... mesti membangunkan bandar dahulu
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... hanya satu dibenarkan untuk setiap bandar
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... hanya boleh dibina di bandar dengan jumlah penduduk sekurang-kurangnya 1200
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... hanya boleh dibina di kawasan hutan

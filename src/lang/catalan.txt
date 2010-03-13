@@ -3300,16 +3300,16 @@ STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :El test d'integ
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}El joc s'ha desat en una versió sense suport de tramvies. Tots els tramvies s'han eliminat.
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Generació del mapa avortada...{}...no hi ha llocs adequats per als pobles
-STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}...no hi ha poblacions en aquest escenari
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Generació del mapa avortada...{}... no hi ha llocs adequats per als pobles
+STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... no hi ha poblacions en aquest escenari
 
 STR_ERROR_PNGMAP                                                :{WHITE}Impossible carregar un terreny des del PNG...
-STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}...fitxer no trobat.
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}...no s'ha pogut convertir la imatge. Es necessita una imatge PNG de 8 o 24-bit.
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}...alguna cosa ha anat malament. Ho sento. (probablement un fitxer corrupte)
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... fitxer no trobat.
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... no s'ha pogut convertir la imatge. Es necessita una imatge PNG de 8 o 24-bit.
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}... alguna cosa ha anat malament. Ho sento. (probablement un fitxer corrupte)
 
 STR_ERROR_BMPMAP                                                :{WHITE}Impossible carregar el terreny des del BMP...
-STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}...no s'ha pogut convertir la imatge.
+STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... no s'ha pogut convertir la imatge.
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Alerta d'escala
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}No es recomana redimensionar massa el mapa d'origen. Vols continuar amb la generació?
@@ -3380,7 +3380,7 @@ STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}No es po
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... massa prop del límit del mapa
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... massa prop d'una altra població
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... massa poblacions
-STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...no queda espai al mapa
+STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... no queda espai al mapa
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}El poble no construirà carrers. Pots activar la construcció de carrers via Paràmetres avançats->Economia->Pobles.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Obres en progrés
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}No es pot eliminar aquest poble...{}Hi ha una estació o una cotxera al poble o una cel·la pertanyent al poble no pot ser eliminada
@@ -3390,7 +3390,7 @@ STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... mass
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}No es poden generar indústries...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Aquí no es pot construir {STRING}...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Aquí no es pot construir aquest tipus d'indústria...
-STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}...massa prop d'altres indústries
+STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... massa prop d'altres indústries
 STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... primer has de construir la població
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... només un permès per població
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... només es pot construir en poblacions de més de 1200 hab.
@@ -3412,7 +3412,7 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Aquí no
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Fusiona més d'una estació/àrea de càrrega existent
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... estació massa extensa
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}...estacions no uniformes desactivades
+STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... estacions no uniformes desactivades
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Massa estacions/àrees de càrrega
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Hi ha massa parts d'estacions de tren
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Massa parades d'autobús
@@ -3422,8 +3422,8 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Massa pr
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Massa prop d'un altre moll
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Massa prop d'un altre aeroport
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}No es pot reanomenar l'estació...
-STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}...aquesta carretera es propietat de la població
-STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}...sentit de la carretera en la direcció incorrecta
+STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... aquesta carretera es propietat de la població
+STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... sentit de la carretera en la direcció incorrecta
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}No es pot treure part de la estació...
@@ -3453,7 +3453,7 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}No es po
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Aquí no es pot treure punt de control de tren...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Primer s'ha de treure la via punt de control
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... boia en el camí
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}...boia en ús!
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... boia en ús!
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Aquí no es poden construir cotxeres de tren...

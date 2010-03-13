@@ -3300,16 +3300,16 @@ STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :데이터 무�
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}전차를 지원하지 않는 버전으로 게임이 저장되었습니다. 모든 전차는 제거되었습니다.
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}맵 생성이 중지되었습니다...{}...도시 위치가 부적절합니다
-STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}...시나리오에 도시가 없습니다.
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}맵 생성이 중지되었습니다...{}... 도시 위치가 부적절합니다
+STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... 시나리오에 도시가 없습니다.
 
 STR_ERROR_PNGMAP                                                :{WHITE}PNG파일로부터 지형을 불러올 수 없습니다...
-STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}...파일이 없습니다.
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}...이미지 타입을 변경할 수 없습니다. 8 또는 24-bit의 PNG 이미지가 필요합니다.
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}...뭔가 잘못되었습니다. 죄송합니다. (손상된 파일로 추정됨)
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... 파일이 없습니다.
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... 이미지 타입을 변경할 수 없습니다. 8 또는 24-bit의 PNG 이미지가 필요합니다.
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}... 뭔가 잘못되었습니다. 죄송합니다. (손상된 파일로 추정됨)
 
 STR_ERROR_BMPMAP                                                :{WHITE}BMP파일로부터 지형을 불러올 수 없습니다...
-STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}...이미지 타입을 변경할 수 없습니다.
+STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... 이미지 타입을 변경할 수 없습니다.
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}맵 크기 경고
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}원본 맵의 크기를 많이 조정하는 것은 좋지 않습니다. 만들기를 계속하시겠습니까?
@@ -3334,10 +3334,10 @@ STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}잘못�
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}그렇게 할 수 없습니다...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}건물을 먼저 제거하십시오!
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}이 지역을 파괴할 수 없습니다...
-STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}...알맞지 않은 장소입니다!
-STR_ERROR_ALREADY_BUILT                                         :{WHITE}...이미 지어져있습니다
+STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... 알맞지 않은 장소입니다!
+STR_ERROR_ALREADY_BUILT                                         :{WHITE}... 이미 지어져있습니다
 STR_ERROR_OWNED_BY                                              :{WHITE}... {STRING}의 소유입니다.
-STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...다른 회사의 소유지입니다!
+STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... 다른 회사의 소유지입니다!
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}이름은 유일해야 합니다
 STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}중간에 {1:STRING}{G 1 "이" "가"} 있습니다.
 
@@ -3361,9 +3361,9 @@ STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... 이�
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}회사 이름을 바꿀 수 없습니다...
 STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}매니저 이름을 바꿀 수 없습니다...
 
-STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}...허용된 최대 대출금은 {CURRENCY} 입니다.
+STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... 허용된 최대 대출금은 {CURRENCY} 입니다.
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}더이상 돈을 빌릴 수 없습니다...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}...값아야할 대출금이 없습니다.
+STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... 값아야할 대출금이 없습니다.
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}...{CURRENCY} 필요합니다.
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}대출금을 갚을 수 없습니다...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}은행에서 빌린 돈은 송금할 수 없습니다...
@@ -3377,10 +3377,10 @@ STR_ERROR_PROTECTED                                             :{WHITE}이 회�
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}도시를 만들 수 없습니다!
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}도시 이름을 바꿀 수 없습니다...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}여기에 도시를 건설할 수 없습니다...
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}...맵 가장자리와 너무 가깝습니다!
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}...다른 도시와 너무 가깝습니다!
-STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}...도시가 너무 많습니다!
-STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...맵에 더이상 공간이 없습니다!
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... 맵 가장자리와 너무 가깝습니다!
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... 다른 도시와 너무 가깝습니다!
+STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... 도시가 너무 많습니다!
+STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... 맵에 더이상 공간이 없습니다!
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}도시가 도로를 짓지 않을 것입니다. [고급설정->경제->도시]에서 도로를 지을 수 있도록 설정을 변경하실 수 있습니다.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}도로 작업이 진행중입니다
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}이 도시를 삭제할 수 없습니다...{}도시 또는 도시가 소유하고 있는 타일에 있는 역이나 차고때문에 제거할 수 없습니다.
@@ -3390,16 +3390,16 @@ STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... 산�
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}산업시설을 만들 수 없습니다...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}여기에 {STRING}{G 0 "을" "를"} 건설할 수 없습니다...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}여기에 이 산업시설을 건설할 수 없습니다...
-STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}...다른 산업시설과 너무 가깝습니다.
-STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}...도시를 먼저 만드십시오
-STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}...한 도시에 하나만 건설 가능합니다!
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...인구 1200명 이상의 도시에만 건설할 수 있습니다!
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...열대우림 지역에만 건설할 수 있습니다!
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}...사막 지역에만 건설할 수 있습니다!
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}...도시에만 건설할 수 있습니다!
+STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... 다른 산업시설과 너무 가깝습니다.
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... 도시를 먼저 만드십시오
+STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... 한 도시에 하나만 건설 가능합니다!
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... 인구 1200명 이상의 도시에만 건설할 수 있습니다!
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... 열대우림 지역에만 건설할 수 있습니다!
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... 사막 지역에만 건설할 수 있습니다!
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... 도시에만 건설할 수 있습니다!
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... 낮은 지역에만 건설할 수 있습니다!
-STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}...맵 가장자리에만 위치할 수 있습니다.
-STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}...숲은 만년설 높이 이상의 고도에만 심을 수 있습니다.
+STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... 맵 가장자리에만 위치할 수 있습니다.
+STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... 숲은 만년설 높이 이상의 고도에만 심을 수 있습니다.
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}여기에 역을 건설할 수 없습니다...
@@ -3411,8 +3411,8 @@ STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}여기�
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}여기에 공항을 만들 수 없습니다...
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}2개 이상의 역이 인접합니다
-STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}...역이 너무 큽니다.
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}...역을 결합할 수 없습니다! (패치 구성 참고)
+STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... 역이 너무 큽니다.
+STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... 역을 결합할 수 없습니다! (패치 구성 참고)
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}역이 너무 많습니다
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}철도역 조각이 너무 많습니다
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}버스 정류장이 너무 많습니다
@@ -3422,8 +3422,8 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}다른 �
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}다른 항구와 너무 가깝습니다!
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}다른 공항과 너무 가깝습니다!
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}역 이름을 바꿀 수 없습니다...
-STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}...여기는 도시 소유의 도로 입니다
-STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}...도로가 잘못된 방향을 향하고 있습니다
+STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... 여기는 도시 소유의 도로 입니다
+STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... 도로가 잘못된 방향을 향하고 있습니다
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}역의 일부를 제거할 수 없습니다...
@@ -3452,8 +3452,8 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}웨이�
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}이 웨이포인트를 제거할 수 없습니다.
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}철도 웨이포인트를 먼저 제거하십시오
-STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}...도중에 부이가 있습니다.
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}...사용중인 부이입니다!
+STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... 도중에 부이가 있습니다.
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... 사용중인 부이입니다!
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}여기에 차량기지를 건설할 수 없습니다...
@@ -3462,7 +3462,7 @@ STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}여기�
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}여기에 정박소를 지을 수 없습니다...
 
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}차량기지 안에 정지해있어야 합니다!
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...차고 안에서 정지해있어야 합니다!
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... 차고 안에서 정지해있어야 합니다!
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}정박소 내에서 정지해있어야 합니다!
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}격납고 내에서 정지해있어야합니다
 
@@ -3510,13 +3510,13 @@ STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}이곳�
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}여기에 운하를 건설할 수 없습니다...
 STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}여기에 갑문을 지을 수 없습니다...
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}여기에 강을 만들 수 없습니다...
-STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}...물 위에 지어져야 합니다!
-STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}...물 위에 지을 수 없습니다
+STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... 물 위에 지어져야 합니다!
+STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... 물 위에 지을 수 없습니다
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}운하를 먼저 제거하십시오
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}여기에 수도교를 지을 수 없습니다...
 
 # Tree related errors
-STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}...이미 나무가 심어져 있습니다.
+STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... 이미 나무가 심어져 있습니다.
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}여기에 나무를 심을 수 없습니다...
 
 # Bridge related errors
@@ -3526,7 +3526,7 @@ STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}같은 �
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}다리는 같은 높이를 연결해야 합니다
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}그 지형은 다리를 건설하기에 너무 낮습니다
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}시작과 끝은 한 줄 위에 있어야 합니다
-STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}...다리의 양 끝은 모두 땅이어야합니다.
+STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... 다리의 양 끝은 모두 땅이어야합니다.
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}여기에 터널을 지을 수 없습니다...
@@ -3538,9 +3538,9 @@ STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}지형 �
 
 # Unmovable related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}중간에 오브젝트가 있습니다
-STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}...중간에 회사 HQ가 있습니다.
+STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... 중간에 회사 HQ가 있습니다.
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}이 지역을 매입할 수 없습니다...
-STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}...이미 소유중입니다!
+STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... 이미 소유중입니다!
 
 # Group related errors
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}그룹을 만들 수 없습니다...
@@ -3626,7 +3626,7 @@ STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... 경�
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}경로를 공유할 수 없습니다...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}경로를 복사할 수 없습니다...
-STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...이전의 목적지로부터 너무 멉니다
+STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... 이전의 목적지로부터 너무 멉니다
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}차량의 시간표를 정할 수 없습니다...
@@ -3634,7 +3634,7 @@ STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}차량�
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}이 차량은 이 정거장에 서지 않습니다.
 
 # Sign related errors
-STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}...팻말 수가 너무 많습니다
+STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... 팻말 수가 너무 많습니다
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}여기에 팻말을 달 수 없습니다...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}팻말 내용을 고칠 수 없습니다...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}팻말을 삭제할 수 없습니다...

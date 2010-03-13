@@ -3366,16 +3366,16 @@ STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Kontrola integr
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Hra bola uložená vo verzii bez elektriciek. Vsetky elektricky boli odstránené.
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Generovanie mapy zrušené...{}...žiadne vyhovujúce lokácie miest
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Generovanie mapy zrušené...{}... žiadne vyhovujúce lokácie miest
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... v tomto scenari nie je ziadne mesto
 
 STR_ERROR_PNGMAP                                                :{WHITE}Nie je možné načítať krajinu z PNG súboru...
 STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... subor nenajdeny.
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}...nie je mozne zkonvertovat format obrazku. Potrebne 8 alebo 24 bitove PNG.
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... nie je mozne zkonvertovat format obrazku. Potrebne 8 alebo 24 bitove PNG.
 STR_ERROR_PNGMAP_MISC                                           :{WHITE}... neocakavana chyba (pravdepodobne poskodeny subor)
 
 STR_ERROR_BMPMAP                                                :{WHITE}Nie je možné načítať krajinu z BMP súboru...
-STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}...nie je mozne zkonvertovat format obrazku.
+STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... nie je mozne zkonvertovat format obrazku.
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Upozornenie na stupnicu
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Prilis velka zmena velkosti zdrojovej mapy sa neodporuca. Pokracovat s generovanim?
@@ -3400,7 +3400,7 @@ STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Teren ma
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Nie je možné vykonat ...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Budova sa musí zbúrať
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Oblasť nie je možné vyčistiť...
-STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}...miesto je nepouzitelne
+STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... miesto je nepouzitelne
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... uz bolo vytvorene
 STR_ERROR_OWNED_BY                                              :{WHITE}... vlastníkom je {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... oblasť vlastní iná spoločnosť
@@ -3444,8 +3444,8 @@ STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Nie je m
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Mesto nemoze byt odstranene ...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Tu sa mesto neda postavit...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... príliš blízko okraja mapy
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}...prilis blizko ineho mesta
-STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}...príliš veľa miest
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... prilis blizko ineho mesta
+STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... príliš veľa miest
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... nie je dalsie miesto na mape
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Mesto nevybuduje cesty. Môžete povoliť budovanie ciest cez Pokročilé nasvavenia->Ekonomika->Mestá.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Prebiehaju cestne prace
@@ -3457,9 +3457,9 @@ STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Nemozno 
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}{STRING} sa tu nedá postaviť...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Tento typ priemyslu sa tu neda postavit ...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... prilis blizko ineho priemyslu
-STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}...najskor treba postavit mesto...
-STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}...povolene len jedno pre mesto...
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...moze byt postavene v mestach z populaciou vacsou ako 1200
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... najskor treba postavit mesto...
+STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... povolene len jedno pre mesto...
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... moze byt postavene v mestach z populaciou vacsou ako 1200
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... môže byť postavené len v dažďovom pralese
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... môže byť postavené len v púšti
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... môže byť postavené len v meste
@@ -3592,7 +3592,7 @@ STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Nemožno
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Konce mosta nie sú v rovnakej výške
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Most je príliš nízky pre tento terén
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Začiatok a koniec musí byť v rovine
-STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}...konce mostu musia byť na pevnine
+STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... konce mostu musia byť na pevnine
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Tu sa nedá postaviť tunel...
@@ -3692,7 +3692,7 @@ STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}vozidlo 
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Nemozno zdielat zoznam smerov ...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Nemozno kopirovat zoznam prikazov ...
-STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...prilis daleko z predchadzajuceho ciela
+STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... prilis daleko z predchadzajuceho ciela
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Vozidlu nie je možné zadat cestovný poriadok ...

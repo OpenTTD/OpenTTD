@@ -3341,13 +3341,13 @@ STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Preverba podatk
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Igra je bila shranjena brez podpore za tramvaj. Vsi tramvaji so bili odstranjeni.
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Ustvarjanje ozemlja prekinjeno...{}...ni primernih lokacij za mesta
-STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}...ni mest na ozemlju
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Ustvarjanje ozemlja prekinjeno...{}... ni primernih lokacij za mesta
+STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... ni mest na ozemlju
 
 STR_ERROR_PNGMAP                                                :{WHITE}Ni mogoče naložiti ozemlja iz PNG...
-STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}...datoteke ni.
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}...nemogoča pretvorba vrste slike. Potrebuješ 8 ali 24-bit PNG sliko.
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}...nekaj je narobe. (najbrž nepopolna datoteka)
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... datoteke ni.
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... nemogoča pretvorba vrste slike. Potrebuješ 8 ali 24-bit PNG sliko.
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}... nekaj je narobe. (najbrž nepopolna datoteka)
 
 STR_ERROR_BMPMAP                                                :{WHITE}Ni mogoče naložiti pokrajine iz formata BMP...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... ni mogoče spremeniti tipa slike.
@@ -3431,7 +3431,7 @@ STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... prev
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Ni mogoče zgraditi industrij...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Tukaj ni možno zgraditi {STRING}...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Tukaj ni mogoče zgraditi tega tipa industrije...
-STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}...preblizu drugi industriji
+STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... preblizu drugi industriji
 STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... najprej je potrebno zgraditi mesto
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... samo en primerek na mesto dovoljen
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... gradnja mogoča samo v mestih z vsaj 1200 ljudmi
@@ -3463,8 +3463,8 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Preblizu
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Preblizu drugemu pristanišču
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Preblizu sosednjemu letališču
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Ni mogoče preimenovati postaje
-STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}...ta cesta je last mesta
-STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}...cesta je obrnjena napačno
+STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... ta cesta je last mesta
+STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... cesta je obrnjena napačno
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Ni mogoče odstraniti dela postaje...

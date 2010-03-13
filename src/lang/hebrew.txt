@@ -3318,7 +3318,7 @@ STR_ERROR_NO_TOWN_IN_SCENARIO                                   ::{WHITE}אין 
 
 STR_ERROR_PNGMAP                                                :{WHITE}לא יכול לטעון שטח אדמה מקובץ...
 STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... הקובץ לא נמצא.
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}...לא יכול להמיר את סוג התמונה. צריך תמונת PNG של 8 או 24-ביט.
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... לא יכול להמיר את סוג התמונה. צריך תמונת PNG של 8 או 24-ביט.
 STR_ERROR_PNGMAP_MISC                                           :{WHITE}... משהו לא הלך כשורה. מצטער. (כנראה קובץ מקולקל)
 
 STR_ERROR_BMPMAP                                                :{WHITE}לא יכול לטעון קרקע מתמונת BMP...
@@ -3435,11 +3435,11 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}קרוב
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}יותר מידי קרוב למזח אחר
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}קרוב מידי לשדה תעופה אחר
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}לא ניתן לשנות שם תחנה...
-STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}...כביש זה בבעלות עירונית
+STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... כביש זה בבעלות עירונית
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}הכביש פונה לכיוון לא נכון...
 
 # Station destruction related errors
-STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}...לא ניתן לבטל חלק מהתחנה
+STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}... לא ניתן לבטל חלק מהתחנה
 STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}חייב למחוק תחנת רכבת קודם
 STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}לא ניתן להסיר תחנת אוטובוס...
 STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}לא ניתן להסיר תחנת משאיות...
@@ -3466,7 +3466,7 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}שינו
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}לא ניתן להסיר תחנת רכבת מאתר זה...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}יש להסיר נקודת ציון של פסי רכבת תחילה
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... מצוף חוסם את הדרך
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}...המצוף בשימוש
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... המצוף בשימוש
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}לא ניתן לבנות מוסך רכבת כאן...
@@ -3575,7 +3575,7 @@ STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}לא נ�
 STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}לא ניתן להתאים את כלי הטייס לנשיאת מטען זה...
 
 STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}לא ניתן לתת שם לרכבת...
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}...לא ניתן לשנות את שם כלי הרכב
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}... לא ניתן לשנות את שם כלי הרכב
 STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}לא ניתן לתת שם לכלי שייט זה...
 STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}לא ניתן לתת שם לכלי טייס זה...
 

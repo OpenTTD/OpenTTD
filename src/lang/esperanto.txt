@@ -3210,16 +3210,16 @@ STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Ne legebla dosi
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Ne enskribebla dosiero
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Mapkreado haltita...{}...mankas taŭgaj urbejoj
-STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}...mankas urboj en ĉi tiu scenaro
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Mapkreado haltita...{}... mankas taŭgaj urbejoj
+STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... mankas urboj en ĉi tiu scenaro
 
 STR_ERROR_PNGMAP                                                :{WHITE}Ne povas ŝarĝi landaspekton de PNG...
-STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}...dosiero ne troviĝis.
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}...ne povis transformi bildtipon. Necesas 8-bita aŭ 24-bita PNG-bildo.
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}...io simple fiaskis. Pardonu. (probable aĉa dosiero)
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... dosiero ne troviĝis.
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... ne povis transformi bildtipon. Necesas 8-bita aŭ 24-bita PNG-bildo.
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}... io simple fiaskis. Pardonu. (probable aĉa dosiero)
 
 STR_ERROR_BMPMAP                                                :{WHITE}Ne povas ŝarĝi landaspekton el BMP...
-STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}...ne povis transigi bildotipon.
+STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... ne povis transigi bildotipon.
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Skala averto
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Ne rekomendindas tro ŝanĝi la grandecon de la mapo. Ĉu daŭrigi la generadon?
@@ -3271,7 +3271,7 @@ STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Ne povas
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... maksimuma permesata prunto estas {CURRENCY}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Ne povas prunti pli da mono...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}...ne estas repagebla prunto
+STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... ne estas repagebla prunto
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CURRENCY} necesas
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Ne povas repagi prunton...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Ne povas donaci monon pruntitan de la banko...
@@ -3285,10 +3285,10 @@ STR_ERROR_PROTECTED                                             :{WHITE}Ĉi tiu 
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Ne povas konstrui ajnan urbon
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Ne povas alinomi urbon...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Ne povas fari urbon ĉi tie...
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}...tro proksime al la maprando
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... tro proksime al la maprando
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... tro proksime al alia urbo
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... tro da urboj
-STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...spaco mankas sur la mapo
+STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... spaco mankas sur la mapo
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}La urbo ne konstruos stratojn. Vi povas ebligi stratkonstruadon per Avancitaj Agordoj->Ekonomio->Urboj.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Aktivas vojprilaborado
 
@@ -3296,11 +3296,11 @@ STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Aktivas 
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Ne povas generi industriojn...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Ne povas konstrui {STRING.n} ĉi tie...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Industritipo ne konstrueblas ĉi tie...
-STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}...tro proksime al alia industrio
-STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}...antaŭe konstruu urbon
+STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... tro proksime al alia industrio
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... antaŭe konstruu urbon
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... nur unu permesata en ĉiu urbo
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...nur konstruebla en urboj havantaj pli ol 1200 enloĝantojn
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...nur konstruebla en praarbaraj regionoj
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... nur konstruebla en urboj havantaj pli ol 1200 enloĝantojn
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... nur konstruebla en praarbaraj regionoj
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... konstruebla nur en dezertaj regionoj
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... konstruebla nur en urboj
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... lokebla nur ĉe la randoj de la mapo
@@ -3317,7 +3317,7 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Ne povas
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Alligas pli ol unu ekzistantan stacion/ŝarĝejon
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... stacio tro vastas
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}...nekonformaj stacioj neebligitaj
+STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... nekonformaj stacioj neebligitaj
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Tro da stacioj/ŝarĝejoj
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Tro da bushaltejoj
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Tro da ŝarĝaŭtaj stacioj
@@ -3357,7 +3357,7 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Ne povas
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Ne povas forigi trajnan vojpunkton ĉi tie...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Antaŭe devas forigi fervojan vojpunkton
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... buo okupas la lokon
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}...buo estas uzata
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... buo estas uzata
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Ne povas konstrui trajngaraĝon ĉi tie...
@@ -3440,7 +3440,7 @@ STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Ne eblas
 
 # Unmovable related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Objekto okupas la lokon
-STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}...kompania ĉefkonstruaĵo okupas la lokon
+STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... kompania ĉefkonstruaĵo okupas la lokon
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Ne povas aĉeti ĉi tiun regionon...
 STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... vi jam posedas ĝin!
 
@@ -3528,14 +3528,14 @@ STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... vetu
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Ne povas kunhavigi ordonliston...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Ne povas kopii ordonliston...
-STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...tro for de la antaŭa destino
+STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... tro for de la antaŭa destino
 
 # Timetable related errors
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Veturiloj povas atendi nur ĉe stacioj.
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Ĉi tiu veturilo ne haltos ĉe tiu ĉi stacio.
 
 # Sign related errors
-STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}...tro da afiŝoj
+STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... tro da afiŝoj
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Ne povas meti afiŝon ĉi tie...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Ne povas ŝanĝi afiŝan nomon...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Ne eblas forigi signon...

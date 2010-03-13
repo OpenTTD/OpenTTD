@@ -3312,7 +3312,7 @@ STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}土地�
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}不能这样做……
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}必须先摧毁建筑
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}无法清除这个区域……
-STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}...地点不合适
+STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... 地点不合适
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... 已经建好了
 STR_ERROR_OWNED_BY                                              :{WHITE} 归 {STRING} 所有
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... 此区域由另一公司所有

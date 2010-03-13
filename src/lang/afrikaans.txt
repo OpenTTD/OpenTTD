@@ -3301,15 +3301,15 @@ STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Speeletj
 
 # Map generation messages
 STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Kaart generasie het gestaak...{}... geen geskikde plekke vir dorpe was gevind nie
-STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}...daar is geen dorp in die draaiboek
+STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... daar is geen dorp in die draaiboek
 
 STR_ERROR_PNGMAP                                                :{WHITE}Kan nie landskap van PNG laai nie...
-STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}...lêer nie gevind nie.
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}...kan nie prent tipe verdoel. 8 of 24-bit PNG prent vereis.
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}...iets het verkeerd gegaan. Jammer. (moontlik korrup lêer)
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... lêer nie gevind nie.
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... kan nie prent tipe verdoel. 8 of 24-bit PNG prent vereis.
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}... iets het verkeerd gegaan. Jammer. (moontlik korrup lêer)
 
 STR_ERROR_BMPMAP                                                :{WHITE}Kan nie landskap van BMP laai nie...
-STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}...kan nie beeld tipe verdoel nie.
+STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... kan nie beeld tipe verdoel nie.
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Skaal waaskuwing
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Om die kaart te veel te verstel is nie aanbeveel. Gaan voort met die generasie?
@@ -3334,10 +3334,10 @@ STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Land loo
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Kan dit nie doen nie...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Gebou moet eers afgebreek word
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Kan nie hierdie gebied skoon maak nie...
-STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}...ligging ongeskik
-STR_ERROR_ALREADY_BUILT                                         :{WHITE}...alreeds gebou
-STR_ERROR_OWNED_BY                                              :{WHITE}...besit deur {STRING}
-STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...gebied is besit deur 'n ander maatskappy
+STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... ligging ongeskik
+STR_ERROR_ALREADY_BUILT                                         :{WHITE}... alreeds gebou
+STR_ERROR_OWNED_BY                                              :{WHITE}... besit deur {STRING}
+STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... gebied is besit deur 'n ander maatskappy
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Naam moet unike wees
 STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{1:STRING} in die pad
 
@@ -3361,9 +3361,9 @@ STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... klaa
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Maatskappy naam kan nie verander word nie...
 STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Bestuurder se naam kan nie verander word nie...
 
-STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}...maksimum toegelaate lening groote is {CURRENCY}
+STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... maksimum toegelaate lening groote is {CURRENCY}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Kan nie meer geld leen nie...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}...geen lening om terug te betaal
+STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... geen lening om terug te betaal
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}...{CURRENCY} vereis
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Kan nie lening terugbetaal nie...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Kan nie geld wat van die bank geleen is weggee nie...
@@ -3377,10 +3377,10 @@ STR_ERROR_PROTECTED                                             :{WHITE}Die maat
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Kan nie enige stede bou nie
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Kan nie dorp hernoem nie...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Dorp kan nie hier gebou word nie...
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}...te naby aan rand van kaart
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}...te naby aan 'n ander dorp
-STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}...te veel dorpe
-STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...daar is nie meer spasie oor op die kaart nie
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... te naby aan rand van kaart
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... te naby aan 'n ander dorp
+STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... te veel dorpe
+STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... daar is nie meer spasie oor op die kaart nie
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Die dorp sal nie paaie bou nie. You can enable building of roads via Gevorderde Stellings->Ekonomie->Dorpe.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Pad werke in verloop
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kan nie die dorp verwyder nie... {}'n Stasie of depot verwys na die dorp of die blok wat deur die dorp besit word kan nie verwyder word nie.
@@ -3390,16 +3390,16 @@ STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... te v
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Kan nie nywerhede genereer nie...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Kan nie {STRING} hier bou nie...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Nywerheid tipe kan nie hier gebou word nie...
-STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}...te naby aan 'n ander nywerheid
-STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}...moet eers 'n dorp bou
-STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}...slegs een toegelaat per dorp
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...kan slegs in dorpe met te minste 1200 mense gebou word
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...kan slegs in reënwoud gebiede gebou word
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}...kan slegs in woestyn gebiede gebou word
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}...kan slegs in dorpe gebou word
+STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... te naby aan 'n ander nywerheid
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... moet eers 'n dorp bou
+STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... slegs een toegelaat per dorp
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... kan slegs in dorpe met te minste 1200 mense gebou word
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... kan slegs in reënwoud gebiede gebou word
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... kan slegs in woestyn gebiede gebou word
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... kan slegs in dorpe gebou word
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... kan slegs gebou word in lae areas
-STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}...kan net naby aan kant van fkaart geplaas word
-STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}...woud kan net bo sneeu-lyn beplant word
+STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... kan net naby aan kant van fkaart geplaas word
+STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... woud kan net bo sneeu-lyn beplant word
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Kan nie spoorweg stasie hier bou nie...
@@ -3411,8 +3411,8 @@ STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Kan nie 
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Lughawe kan nie hier gebou word nie...
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Grens aan meer as een bestaande stasie/laai area
-STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}...Stasie te ver van mekaar af
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}...ongelyk stasies is versper
+STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... Stasie te ver van mekaar af
+STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... ongelyk stasies is versper
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Te veel stasies/laai areas
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Te veel treinstasie deele
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Te veel bushalte
@@ -3422,8 +3422,8 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Te naby 
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Te naby aan 'n ander werf
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Te naby aan 'n ander lughawe
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Stasie kan nie hernoem word nie...
-STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}...hierdie is 'n dorp besit pad
-STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}...pad teenoor in die verkeerde rigting
+STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... hierdie is 'n dorp besit pad
+STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... pad teenoor in die verkeerde rigting
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Kan nie deel van stasie verwyder nie...
@@ -3452,8 +3452,8 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Kan nie 
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Kan nie trein wegpunt van hier werwyder nie...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Moet eers die spoor wegwyser verwyder
-STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}...baken in die pad
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}...baken is in gebruik!
+STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... baken in die pad
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... baken is in gebruik!
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Kan nie trein depot hier bou nie...
@@ -3462,7 +3462,7 @@ STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Kan nie 
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Skip depot kan nie hier gebou word nie...
 
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Trein moet binne in 'n depot gestop word
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...moet gestop binne 'n pad voertuig depot wees
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... moet gestop binne 'n pad voertuig depot wees
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Skip moet in 'n depot gestop wees
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Vliegtuig moet in hangar gestop wees
 
@@ -3510,13 +3510,13 @@ STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Kan nie 
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Kan nie kanaale hier bou nie...
 STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Kan nie sluite hier bou nie...
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Can nie riviere hier plaas nie...
-STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}...moet op water gebou word
-STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}...Kan nie op water bou nie
+STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... moet op water gebou word
+STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... Kan nie op water bou nie
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Moet eers kanaale afbreek
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Kan nie akwamaryn hier bou nie...
 
 # Tree related errors
-STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}...boom reeds daar
+STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... boom reeds daar
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Kan nie boom hier beplant nie...
 
 # Bridge related errors
@@ -3526,7 +3526,7 @@ STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Kan nie 
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Brug hoofde is nie op die selfde vlak nie
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Brug is te laag vie die daal
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Begin en einde moet in lyn wees
-STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}...albei brug eindes moet op land wees
+STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... albei brug eindes moet op land wees
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Tonnel kan nie daar gebou word nie...
@@ -3626,7 +3626,7 @@ STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... 'n v
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Kan nie opdraglys deel nie...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Kan nie opdrag lys kopie nie...
-STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...te ver van vorige destinasie
+STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... te ver van vorige destinasie
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Kan nie voertuig 'n rooster gee nie...
@@ -3634,7 +3634,7 @@ STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Voertuie
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Die voertuig stop nie by die stasie nie.
 
 # Sign related errors
-STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}...te veel tekens
+STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... te veel tekens
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Kan nie teken hier plaas nie...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Kan nie teken naam verander nie...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Kan nie teken verwyder nie

@@ -3299,7 +3299,7 @@ STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Integritetssjek
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Spillet ble lagret i en versjon uten støtte for trikk. Alle trikker har blitt fjernet.
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Kartgenerering avbrutt...{}...ingen passende steder å plassere byer
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Kartgenerering avbrutt...{}... ingen passende steder å plassere byer
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... det er ingen by i dette scenarioet
 
 STR_ERROR_PNGMAP                                                :{WHITE}Kunne ikke laste landskap fra PNG...

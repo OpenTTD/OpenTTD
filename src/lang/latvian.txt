@@ -1788,8 +1788,8 @@ STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} 
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Nav iespējams kontaktēties ar satura serveri...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Lejupielāde nav notikusi...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}...pārtrūkuši sakari
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}...fails nav rakstāms
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... pārtrūkuši sakari
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... fails nav rakstāms
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Neizdevās saspiest lejupielādējamo failu
 
 # Transparency settings window
@@ -3201,16 +3201,16 @@ STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Datu integritā
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Spēle bija saglabāta bez tramvaju atbalsta. Visi tramvaji tikuši aizvākti.
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Kartes ģenerēšana apturēta...{}...nav piemērotas pozīcijas pilsētām
-STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}...šajā scenārijā nav pilsētu
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Kartes ģenerēšana apturēta...{}... nav piemērotas pozīcijas pilsētām
+STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... šajā scenārijā nav pilsētu
 
 STR_ERROR_PNGMAP                                                :{WHITE}Nevar ielādēt reljefu no PNG...
-STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}...fails nav atrasts.
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}...nav iespējams pārkonvertēt šo attēla veidu. Vajadzīgs 8 vai 24-bitu PNG attēls.
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}...kaut kas nogāja greizi. Atvainojiet. (iespējams bojāts fails)
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... fails nav atrasts.
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... nav iespējams pārkonvertēt šo attēla veidu. Vajadzīgs 8 vai 24-bitu PNG attēls.
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}... kaut kas nogāja greizi. Atvainojiet. (iespējams bojāts fails)
 
 STR_ERROR_BMPMAP                                                :{WHITE}Nevar ielādēt no BMP...
-STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}...nav iespējams pārkonvertēt šo attēla veidu.
+STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... nav iespējams pārkonvertēt šo attēla veidu.
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Līmeņa brīdinājums
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Pārāk Izmainīt pamatkarti nav ieteicams. Turpināt ģenerēšanu?
@@ -3232,8 +3232,8 @@ STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Nogāze 
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Nav iespējams tā izdarīt...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Vispirms jānojauc ēka
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Šo laukumu nevar nolīdzināt...
-STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}...vieta nav piemērota
-STR_ERROR_ALREADY_BUILT                                         :{WHITE}...jau uzbūvēts
+STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... vieta nav piemērota
+STR_ERROR_ALREADY_BUILT                                         :{WHITE}... jau uzbūvēts
 STR_ERROR_OWNED_BY                                              :{WHITE}... pieder {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... zemes gabals pieder citam uzņēmumam
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Vārdam jābūt unikālam
@@ -3251,8 +3251,8 @@ STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Šeit ne
 STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Šeit nevar norakt zemāk...
 STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Šajā vietā nevar izlīdzīnāt zemi...
 STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}Rakšana sabojās tuneli
-STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}...jau ir jūras līmenī
-STR_ERROR_TOO_HIGH                                              :{WHITE}...pārāk augstu
+STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}... jau ir jūras līmenī
+STR_ERROR_TOO_HIGH                                              :{WHITE}... pārāk augstu
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... ir jau plakans
 
 # Company related errors
@@ -3278,7 +3278,7 @@ STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Te nevar
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... pārāk tuvu kartes malai
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... pārāk tuvu citai pilsētai
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... pārāk daudz pilsētu
-STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...uz kartes nav vairāk vietas
+STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... uz kartes nav vairāk vietas
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Pilsēta ceļus nebūvēs. Jūs varat iespējot ceļu būvi caur Papildus iestatījumiem -> Ekonomika -> Pilsētas.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Notiek ceļa remonts
 
@@ -3286,7 +3286,7 @@ STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Notiek c
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Nevar izveidot rūpniecības...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Šeit nevar būvēt {STRING}...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Šeit nevar būvēt šī tipa rūpnīcu...
-STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}...pārāk tuvu citai rūpnīcai
+STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... pārāk tuvu citai rūpnīcai
 STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... vispirms jāuzceļ pilsēta
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... pilsētā atļauts tikai viens(a)
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... atļauts būvēt tikai pilsētās ar iedzīvotāju skaitu vismaz 1200
@@ -3307,7 +3307,7 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Šeit ne
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Piekļaujas vairāk par vienu staciju/iekraušanas zonu
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... stacija ir pārāk izplesta
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}...neregulāras stacijas atspējotas
+STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... neregulāras stacijas atspējotas
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Pārāk daudz staciju/iekraušanas zonu
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE} Pārāk daudz dzelzceļastacijas daļu
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Pa'ra'k daudz autobusa pieturu
@@ -3317,8 +3317,8 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Pārāk 
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Pārāk tuvu citam dokam
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Pārāk tuvu citai lidostai
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Nevar pārsaukt staciju...
-STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}...šis ceļš pieder pilsētai
-STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}...ceļš novietots nepareizā virzienā
+STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... šis ceļš pieder pilsētai
+STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... ceļš novietots nepareizā virzienā
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Nevar novākt daļu stacijas...
@@ -3347,7 +3347,7 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Nevar p�
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Nevar šeit noņemt vilcienu kontrolpunktu...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Vispirms vajag noņemt dzelzceļa maršruta punktu
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... ceļā boja
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}...boja jau tiek lietota!
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... boja jau tiek lietota!
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Šeit nevar uzcelt vilcienu depo...

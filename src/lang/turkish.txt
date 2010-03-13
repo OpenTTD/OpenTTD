@@ -3300,16 +3300,16 @@ STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Veri sağlamlı
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Oyun tramvay desteği olmayan bir sürümde kaydedilmiş. Tüm tramvaylar kaldırılmıştır.
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Harita oluşturulması iptal edildi...{}...uygun yerleşim bölgesi yok
-STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}...Bu senaryoda hiç şehir yok
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Harita oluşturulması iptal edildi...{}... uygun yerleşim bölgesi yok
+STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... Bu senaryoda hiç şehir yok
 
 STR_ERROR_PNGMAP                                                :{WHITE}PNG'den yükseklik haritası yüklenemedi...
-STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}...dosya bulunamadı.
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}...resim türü işlenemiyor. 8 veya 24-bit PNG resmi gerekli.
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}...yanlış bir şeyler oldu. (dosya bozuk olabilir)
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... dosya bulunamadı.
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... resim türü işlenemiyor. 8 veya 24-bit PNG resmi gerekli.
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}... yanlış bir şeyler oldu. (dosya bozuk olabilir)
 
 STR_ERROR_BMPMAP                                                :{WHITE}Arazi BMP'den yüklenemedi...
-STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}...resim türü çevrilemedi.
+STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... resim türü çevrilemedi.
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Ölcek uyarısı
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Kaynak haritanin boyutunu değiştirmek önerilmez. Harita oluşturmaya devam edilsin mi?
@@ -3380,7 +3380,7 @@ STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Buraya �
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... haritanin kenarına çok yakın
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... başka bir şehire çok yakın
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... çok fazla şehir var
-STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...haritada boş yer yok
+STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... haritada boş yer yok
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Şehir yol yapmayacak. Yol yapımını Gelişmiş Ayarlar->Ekonomi->Şehirler'den etkinleştirebilirsiniz.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Yol çalışmaları
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Bu kasaba silinemiyor...{}Bir istasyon ya da garaj kasabaya atıfta bulunuyor ya da bir kasaba karesi kaldırılamıyor
@@ -3390,8 +3390,8 @@ STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... çok
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Fabrika yapılamıyor...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Buraya {STRING} yapılamaz...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Buraya bu fabrikadan yapılamaz...
-STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}...başka bir fabrikaya çok yakın
-STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}...önce şehir yapılmalı
+STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... başka bir fabrikaya çok yakın
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... önce şehir yapılmalı
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... her şehirde yalnızca bir tane olabilir
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... yalnızca nüfusu en az 1200 olan şehirlere yapılabilir
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... yalnızca yağmur ormanlarında yapılabilir
@@ -3412,7 +3412,7 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Buraya h
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Birden fazla istasyona bitişik
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... istasyon çok yayılmış
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}...özel istasyon ayarı kapalı
+STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... özel istasyon ayarı kapalı
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Haritada çok fazla istasyon var
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Çok fazla demiryolu istasyon parçası var
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Çok fazla durak var
@@ -3422,8 +3422,8 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Başka b
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Başka bir limana çok yakın
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Başka bir havalimanına çok yakın
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}İsim değiştirilemiyor...
-STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}...bu yol belediyeye ait
-STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}...yol yanlış yönde
+STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... bu yol belediyeye ait
+STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... yol yanlış yönde
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}İstasyonun parçasi kaldırılamaz...
@@ -3453,7 +3453,7 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Yerimi a
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Tren yerimi kaldırılamaz...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Önce demiryolu yerimi kaldırılmalı
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... yolda şamandıra var
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}...samandıra kullanımda!
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... samandıra kullanımda!
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Buraya tren garajı yapılamıyor...
@@ -3500,7 +3500,7 @@ STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Ray tür
 
 # Road construction errors
 STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}Önce yol silinmeli
-STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}...tek yönlü yollar kesişemez
+STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}... tek yönlü yollar kesişemez
 STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Yol buraya yapılamıyor...
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Buraya tramvay yapılamaz...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Yol buradan kaldırılamıyor...

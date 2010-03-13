@@ -3299,16 +3299,16 @@ STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Tietojen varmis
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Peli tallennettiin versiossa, joka ei tue raitiovaunuja. Kaikki raitiovaunut on poistettu.
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Kartan generointi peruutettu...{}...ei kelvollisia kaupunkien sijainteja
-STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}...tässä skenaariossa ei ole kaupunkeja.
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Kartan generointi peruutettu...{}... ei kelvollisia kaupunkien sijainteja
+STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... tässä skenaariossa ei ole kaupunkeja.
 
 STR_ERROR_PNGMAP                                                :{WHITE}Maastoa ei voida ladata PNG-tiedostosta...
-STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}...tiedostoa ei löydy.
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}...kuvan tyyppiä ei voida muuttaa. Tarvitaan 8- tai 24-bittinen PNG-kuva.
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}...tapahtui tunnistamaton virhe. (todennäköisesti viallinen tiedosto)
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... tiedostoa ei löydy.
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... kuvan tyyppiä ei voida muuttaa. Tarvitaan 8- tai 24-bittinen PNG-kuva.
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}... tapahtui tunnistamaton virhe. (todennäköisesti viallinen tiedosto)
 
 STR_ERROR_BMPMAP                                                :{WHITE}Maastoa ei voida ladata BMP-tiedostosta...
-STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}...kuvan tyyppiä ei voida muuntaa.
+STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... kuvan tyyppiä ei voida muuntaa.
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Mittakaava-varoitus
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Lähdekartan koon liiallinen muuttaminen ei ole suositeltavaa. Haluatko jatkaa?
@@ -3333,8 +3333,8 @@ STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Maa viet
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Ei onnistu...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Rakennus täytyy purkaa ensin.
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Aluetta ei voi tyhjentää...
-STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}...maasto on sopimaton
-STR_ERROR_ALREADY_BUILT                                         :{WHITE}...se on jo rakennettu
+STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... maasto on sopimaton
+STR_ERROR_ALREADY_BUILT                                         :{WHITE}... se on jo rakennettu
 STR_ERROR_OWNED_BY                                              :{WHITE}... omistaja: {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... alueen omistaa toinen yhtiö
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Nimen täytyy olla uniikki
@@ -3389,7 +3389,7 @@ STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... liia
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Teollisuusaluetta ei voi luoda...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}{STRING}: tähän ei voi rakentaa...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Teollisuustyyppiä ei voi rakentaa tähän...
-STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}...liian lähellä toista teollisuutta.
+STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... liian lähellä toista teollisuutta.
 STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... kaupunki pitää rakentaa ensin.
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... vain yksi on sallittu kaupunkia kohden.
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... voidaan rakentaa vain kaupunkeihin, joissa on yli 1200 asukasta.
@@ -3411,7 +3411,7 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Lentoken
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Liitä yhteen useampi asema/lastausalue.
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... asema liian levittäytynyt
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}...epäsymmetriset asemat poissa käytöstä.
+STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... epäsymmetriset asemat poissa käytöstä.
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Liian monta asemaa ja lastausaluetta.
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Rautatieasema on jakautunut liian moneen osaan
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Liian monta linja-autopysäkkiä.
@@ -3421,8 +3421,8 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Liian l�
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Liian lähellä toista satamaa.
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Liian lähellä toista lentokenttää.
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Asemaa ei voi nimetä uudelleen.
-STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}...kaupunki omistaa tien
-STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}...tie on väärin päin
+STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... kaupunki omistaa tien
+STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... tie on väärin päin
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Aseman osaa ei voi poistaa...
@@ -3452,7 +3452,7 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Reittipi
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Junien reittipistettä ei voi poistaa...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Junaradan reittipiste täytyy poistaa ensin
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... poiju on tiellä
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}...poiju on käytössä!
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... poiju on käytössä!
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Veturitallia ei voi rakentaa.
