@@ -43,6 +43,7 @@
 #include "company_base.h"
 #include "smallmap_gui.h"
 #include "graph_gui.h"
+#include "textbuf_gui.h"
 
 #include "network/network.h"
 #include "network/network_gui.h"
@@ -795,6 +796,16 @@ static void ToolbarSwitchClick(Window *w)
 
 /* --- Scenario editor specific handlers. */
 
+/**
+ * Called when clicking at the date panel of the scenario editor toolbar.
+ */
+static void ToolbarScenDatePanel(Window *w)
+{
+	SetDParam(0, _settings_newgame.game_creation.starting_year);
+	ShowQueryString(STR_JUST_INT, STR_MAPGEN_START_DATE_QUERY_CAPT, 8, 100, w, CS_NUMERAL, QSF_ENABLE_DEFAULT);
+	_left_button_clicked = false;
+}
+
 static void ToolbarScenDateBackward(Window *w)
 {
 	/* don't allow too fast scrolling */
@@ -1393,7 +1404,7 @@ static ToolbarButtonProc * const _scen_toolbar_button_procs[] = {
 	ToolbarOptionsClick,
 	ToolbarScenSaveOrLoad,
 	ToolbarBtn_NULL,
-	ToolbarBtn_NULL,
+	ToolbarScenDatePanel,
 	ToolbarScenDateBackward,
 	ToolbarScenDateForward,
 	ToolbarScenMapTownDir,
@@ -1555,6 +1566,23 @@ public:
 	{
 		if (FindWindowById(WC_MAIN_WINDOW, 0) != NULL) HandleZoomMessage(this, FindWindowById(WC_MAIN_WINDOW, 0)->viewport, TBSE_ZOOMIN, TBSE_ZOOMOUT);
 	}
+
+	virtual void OnQueryTextFinished(char *str)
+	{
+		/* Was 'cancel' pressed? */
+		if (str == NULL) return;
+
+		int32 value;
+		if (!StrEmpty(str)) {
+			value = atoi(str);
+		} else {
+			/* An empty string means revert to the default */
+			value = DEF_START_YEAR;
+		}
+		_settings_game.game_creation.starting_year = Clamp(value, MIN_YEAR, MAX_YEAR);
+
+		this->SetDirty();
+	}
 };
 
 static const NWidgetPart _nested_toolb_scen_inner_widgets[] = {
@@ -1568,7 +1596,7 @@ static const NWidgetPart _nested_toolb_scen_inner_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_GREY, TBSE_DATEPANEL_CONTAINER),
 		NWidget(NWID_HORIZONTAL), SetPIP(3, 2, 3),
 			NWidget(WWT_IMGBTN, COLOUR_GREY, TBSE_DATEBACKWARD), SetDataTip(SPR_ARROW_DOWN, STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD),
-			NWidget(WWT_EMPTY, COLOUR_GREY, TBSE_DATEPANEL),
+			NWidget(WWT_EMPTY, COLOUR_GREY, TBSE_DATEPANEL), SetDataTip(STR_NULL, STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE),
 			NWidget(WWT_IMGBTN, COLOUR_GREY, TBSE_DATEFORWARD), SetDataTip(SPR_ARROW_UP, STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD),
 		EndContainer(),
 	EndContainer(),
