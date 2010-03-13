@@ -179,7 +179,7 @@ enum {
 	TOWN_HAS_STADIUM    = 2    ///< There can be only one stadium by town.
 };
 
-bool CheckforTownRating(DoCommandFlag flags, Town *t, TownRatingCheckType type);
+CommandCost CheckforTownRating(DoCommandFlag flags, Town *t, TownRatingCheckType type);
 
 
 TileIndexDiff GetHouseNorthPart(HouseID &house);

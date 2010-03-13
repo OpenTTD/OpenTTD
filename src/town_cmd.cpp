@@ -2795,12 +2795,19 @@ void ChangeTownRating(Town *t, int add, int max, DoCommandFlag flags)
 	}
 }
 
-bool CheckforTownRating(DoCommandFlag flags, Town *t, TownRatingCheckType type)
+/**
+ * Does the town authority allow the (destructive) action of the current company?
+ * @param flags Checking flags of the command.
+ * @param t     Town that must allow the company action.
+ * @param type  Type of action that is wanted.
+ * @return A succeeded command if the action is allowed, a failed command if it is not allowed.
+ */
+CommandCost CheckforTownRating(DoCommandFlag flags, Town *t, TownRatingCheckType type)
 {
 	/* if magic_bulldozer cheat is active, town doesn't restrict your destructive actions */
 	if (t == NULL || !Company::IsValidID(_current_company) ||
 			_cheats.magic_bulldozer.value || (flags & DC_NO_TEST_TOWN_RATING)) {
-		return true;
+		return CommandCost();
 	}
 
 	/* minimum rating needed to be allowed to remove stuff */
@@ -2819,11 +2826,10 @@ bool CheckforTownRating(DoCommandFlag flags, Town *t, TownRatingCheckType type)
 
 	if (GetRating(t) < needed) {
 		SetDParam(0, t->index);
-		_error_message = STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS;
-		return false;
+		return_cmd_error(STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS);
 	}
 
-	return true;
+	return CommandCost();
 }
 
 void TownsMonthlyLoop()

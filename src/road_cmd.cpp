@@ -140,7 +140,9 @@ bool CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, Owner owner, RoadType
 
 	/* check if you're allowed to remove the street owned by a town
 	 * removal allowance depends on difficulty setting */
-	if (!CheckforTownRating(flags, t, ROAD_REMOVE)) return false;
+	CommandCost ret = CheckforTownRating(flags, t, ROAD_REMOVE);
+	ret.SetGlobalErrorMessage();
+	if (ret.Failed()) return false;
 
 	/* Get a bitmask of which neighbouring roads has a tile */
 	RoadBits n = ROAD_NONE;

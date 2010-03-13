@@ -638,10 +638,9 @@ static CommandCost DoClearTunnel(TileIndex tile, DoCommandFlag flags)
 
 		/* Check if you are allowed to remove the tunnel owned by a town
 		 * Removal depends on difficulty settings */
-		if (!CheckforTownRating(flags, t, TUNNELBRIDGE_REMOVE)) {
-			SetDParam(0, t->index);
-			return_cmd_error(STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS);
-		}
+		CommandCost ret = CheckforTownRating(flags, t, TUNNELBRIDGE_REMOVE);
+		ret.SetGlobalErrorMessage();
+		if (ret.Failed()) return ret;
 	}
 
 	/* checks if the owner is town then decrease town rating by RATING_TUNNEL_BRIDGE_DOWN_STEP until
@@ -706,10 +705,9 @@ static CommandCost DoClearBridge(TileIndex tile, DoCommandFlag flags)
 
 		/* Check if you are allowed to remove the bridge owned by a town
 		 * Removal depends on difficulty settings */
-		if (!CheckforTownRating(flags, t, TUNNELBRIDGE_REMOVE)) {
-			SetDParam(0, t->index);
-			return_cmd_error(STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS);
-		}
+		CommandCost ret = CheckforTownRating(flags, t, TUNNELBRIDGE_REMOVE);
+		ret.SetGlobalErrorMessage();
+		if (ret.Failed()) return ret;
 	}
 
 	/* checks if the owner is town then decrease town rating by RATING_TUNNEL_BRIDGE_DOWN_STEP until
