@@ -1416,6 +1416,7 @@ CommandCost RemoveFromRailBaseStation(TileArea ta, SmallVector<T *, 4> &affected
 			DoClearSquare(tile);
 			if (keep_rail) MakeRailNormal(tile, owner, TrackToTrackBits(track), rt);
 
+			st->rect.AfterRemoveTile(st, tile);
 			AddTrackToSignalBuffer(tile, track, owner);
 			YapfNotifyTrackLayoutChange(tile, track);
 
@@ -1442,7 +1443,6 @@ CommandCost RemoveFromRailBaseStation(TileArea ta, SmallVector<T *, 4> &affected
 	for (T **stp = affected_stations.Begin(); stp != affected_stations.End(); stp++) {
 		T *st = *stp;
 
-		st->rect.AfterRemoveRect(st, ta);
 		/* now we need to make the "spanned" area of the railway station smaller
 		 * if we deleted something at the edges.
 		 * we also need to adjust train_tile. */
