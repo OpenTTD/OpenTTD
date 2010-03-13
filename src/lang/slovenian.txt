@@ -1767,23 +1767,23 @@ STR_NETWORK_CHAT_ALL                                            :[Vsi] {STRING}:
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Vpiši tekst za mrežni pogovor
 
 # Network messages
-STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE} Ni najdenih mrežnih naprav ali ni aktiviran ENABLE_NETWORK
-STR_NETWORK_ERROR_NOSERVER                                      :{WHITE} Ni mogoče najti mrežnih iger
-STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE} Strežnik ni odgovoril zahtevi
-STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE} Nemogoča povezava zaradi neskladja datotek NewGRF
-STR_NETWORK_ERROR_DESYNC                                        :{WHITE} Sinhronizacija mrežne igre ni uspela
-STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE} Povezava mrežne igre je padla
-STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE} Ni mogoče naložiti shranjene igre
-STR_NETWORK_ERROR_SERVER_START                                  :{WHITE} Nemogoč zagon strežnika
-STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE} Nemogoča povezava
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE} Povezava #{NUM} je potekla
-STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE} Narejena je bila napaka protokola in povezava je bila prekinjena
-STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE} Različica tega gosta je neskladna s strežnikovo razlicico
-STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE} Napačno geslo
-STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE} Strežnik je zaseden
-STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE} Izvrzen/a si iz tega streznika
-STR_NETWORK_ERROR_KICKED                                        :{WHITE} Brcnjen/a si bil/a iz igre
-STR_NETWORK_ERROR_CHEATER                                       :{WHITE} Goljufanje ni dovoljeno na tem strežniku
+STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Ni najdenih mrežnih naprav ali ni aktiviran ENABLE_NETWORK
+STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Ni mogoče najti mrežnih iger
+STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Strežnik ni odgovoril zahtevi
+STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Nemogoča povezava zaradi neskladja datotek NewGRF
+STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Sinhronizacija mrežne igre ni uspela
+STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Povezava mrežne igre je padla
+STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Ni mogoče naložiti shranjene igre
+STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Nemogoč zagon strežnika
+STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Nemogoča povezava
+STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Povezava #{NUM} je potekla
+STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Narejena je bila napaka protokola in povezava je bila prekinjena
+STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Različica tega gosta je neskladna s strežnikovo razlicico
+STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Napačno geslo
+STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Strežnik je zaseden
+STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Izvrzen/a si iz tega streznika
+STR_NETWORK_ERROR_KICKED                                        :{WHITE}Brcnjen/a si bil/a iz igre
+STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Goljufanje ni dovoljeno na tem strežniku
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :splošna napaka
@@ -1825,8 +1825,8 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} od
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} je opravil/a spremembo imena v {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} je podarilo tvojemu podjetju {2:CURRENCY}
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Podjetju {1:STRING} je bil podarjen znesek {2:CURRENCY}
-STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE} Strežnik je zaprl sejo
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE} Strežnik se zaganja...{}Prosim počakaj...
+STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Strežnik je zaprl sejo
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Strežnik se zaganja...{}Prosim počakaj...
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Prenos vsebin
@@ -3335,13 +3335,13 @@ STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Preverba podatk
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Igra je bila shranjena brez podpore za tramvaj. Vsi tramvaji so bili odstranjeni.
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Ustvarjanje ozemlja prekinjeno...{}...ni primernih lokacij za mesta
-STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}...ni mest na ozemlju
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Ustvarjanje ozemlja prekinjeno...{}... ni primernih lokacij za mesta
+STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... ni mest na ozemlju
 
 STR_ERROR_PNGMAP                                                :{WHITE}Ni mogoče naložiti ozemlja iz PNG...
-STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}...datoteke ni.
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}...nemogoča pretvorba vrste slike. Potrebuješ 8 ali 24-bit PNG sliko.
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}...nekaj je narobe. (najbrž nepopolna datoteka)
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... datoteke ni.
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... nemogoča pretvorba vrste slike. Potrebuješ 8 ali 24-bit PNG sliko.
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}... nekaj je narobe. (najbrž nepopolna datoteka)
 
 STR_ERROR_BMPMAP                                                :{WHITE}Ni mogoče naložiti pokrajine iz formata BMP...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... ni mogoče spremeniti tipa slike.
@@ -3424,7 +3424,7 @@ STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Ni mogo�
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Ni mogoče zgraditi industrij...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Tukaj ni možno zgraditi {STRING}...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Tukaj ni mogoče zgraditi tega tipa industrije...
-STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}...preblizu drugi industriji
+STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... preblizu drugi industriji
 STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... najprej je potrebno zgraditi mesto
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... samo en primerek na mesto dovoljen
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... gradnja mogoča samo v mestih z vsaj 1200 ljudmi
@@ -3456,8 +3456,8 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Preblizu
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Preblizu drugemu pristanišču
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Preblizu sosednjemu letališču
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Ni mogoče preimenovati postaje
-STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}...ta cesta je last mesta
-STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}...cesta je obrnjena napačno
+STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... ta cesta je last mesta
+STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... cesta je obrnjena napačno
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Ni mogoče odstraniti dela postaje...

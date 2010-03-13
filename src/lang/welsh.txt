@@ -789,10 +789,10 @@ STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}Mae gan 
 # end of order system
 
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}Mae {VEHICLE} yn heneiddio
-STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE} Mae {VEHICLE} yn hynod o hen
-STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE} Mae {VEHICLE} yn hynod o hen ac angen ei ddisodli
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}Mae {VEHICLE} yn hynod o hen
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}Mae {VEHICLE} yn hynod o hen ac angen ei ddisodli
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}Mae {VEHICLE} yn methu dod o hyd i lwybr er mwyn parhau.
-STR_NEWS_TRAIN_IS_LOST                                          :{WHITE} Mae {VEHICLE} ar goll.
+STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}Mae {VEHICLE} ar goll.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Elw {VEHICLE} y flwyddyn diwethaf oedd {CURRENCY}
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Stopiodd achos methiant hefo trefnu ailffitio {VEHICLE}
@@ -1675,23 +1675,23 @@ STR_NETWORK_CHAT_ALL                                            :[Pawb] {STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}teipiwch destun ar gyfer sgwrs rwydwaith
 
 # Network messages
-STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE} Ni ddaethpwyd o hyd i ddyfeisiau rhwydwaith, neu ni chafodd y gêm ei chrynhoi gyda ENABLE_NETWORK
-STR_NETWORK_ERROR_NOSERVER                                      :{WHITE} Methu darganfod unrhyw gemau rhwydwaith
-STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE} Ni atebodd y gweinydd y cais
-STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE} Doedd dim modd cysylltu oherwydd nid oedd y NewGRF yn cyfateb
-STR_NETWORK_ERROR_DESYNC                                        :{WHITE} Methodd y cydamseru rhwng y rhwydwaith a'r gêm
-STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE} Collwyd y cysylltiad rhwng y rhwydwaith a'r gêm
-STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE} Doedd dim modd llwytho'r gêm a gadwyd
-STR_NETWORK_ERROR_SERVER_START                                  :{WHITE} Methwyd a chychwyn y gweinydd
-STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE} Doedd dim modd cysylltu
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE} Daeth cyfnod cyswllt #{NUM} i ben
-STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE} Caewyd y cyswllt oherwydd gwall protocol
-STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE} Nid y fersiwn y cleient yn cyfateb i fersiwn y gweinydd
-STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE} Cyfrinair anghywir
-STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE} Mae'r gweinydd yn llawn
-STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE} Rydych chi wedi'ch gwahardd o'r gweinydd hwn
-STR_NETWORK_ERROR_KICKED                                        :{WHITE} YCafoch chi eich cicio o'r gêm
-STR_NETWORK_ERROR_CHEATER                                       :{WHITE} Ni chaniateir twyllo ar y gweinydd hwn
+STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Ni ddaethpwyd o hyd i ddyfeisiau rhwydwaith, neu ni chafodd y gêm ei chrynhoi gyda ENABLE_NETWORK
+STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Methu darganfod unrhyw gemau rhwydwaith
+STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Ni atebodd y gweinydd y cais
+STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Doedd dim modd cysylltu oherwydd nid oedd y NewGRF yn cyfateb
+STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Methodd y cydamseru rhwng y rhwydwaith a'r gêm
+STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Collwyd y cysylltiad rhwng y rhwydwaith a'r gêm
+STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Doedd dim modd llwytho'r gêm a gadwyd
+STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Methwyd a chychwyn y gweinydd
+STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Doedd dim modd cysylltu
+STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Daeth cyfnod cyswllt #{NUM} i ben
+STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Caewyd y cyswllt oherwydd gwall protocol
+STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Nid y fersiwn y cleient yn cyfateb i fersiwn y gweinydd
+STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Cyfrinair anghywir
+STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Mae'r gweinydd yn llawn
+STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Rydych chi wedi'ch gwahardd o'r gweinydd hwn
+STR_NETWORK_ERROR_KICKED                                        :{WHITE}YCafoch chi eich cicio o'r gêm
+STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Ni chaniateir twyllo ar y gweinydd hwn
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :gwall cyffredinol
@@ -1723,8 +1723,8 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** Mae {STRING
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** Mae {STRING} wedi newid ei (h)enw i {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** Rhoddodd {STRING} {2:CURRENCY} i'ch cwmni
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Fe roddoch chi {2:CURRENCY} {1:STRING}
-STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE} caeodd y gweinydd y sesiwn
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE} Mae'r gweinydd yn ailgychwyn...{}Arhoswch...
+STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}caeodd y gweinydd y sesiwn
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Mae'r gweinydd yn ailgychwyn...{}Arhoswch...
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Cynnwys wrthi'n llwytho i lawr
@@ -3184,16 +3184,16 @@ STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Methodd y gwiri
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Cafodd y gêm ei gadw mewn fersiwn heb dram. Cafodd y tramiau eu dileu.
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Ataliwyd creu map...{}...nid oedd lleoliadau addas ar gyfer trefi
-STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}...nid oes tref yn y senario hwn
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Ataliwyd creu map...{}... nid oedd lleoliadau addas ar gyfer trefi
+STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... nid oes tref yn y senario hwn
 
 STR_ERROR_PNGMAP                                                :{WHITE}Methwyd llwytho tirwedd o PNG...
-STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}...ni ddaethpwyd o hyd i'r ffeil.
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}...nid oedd modd trosi math y ddelwedd. rhaid cael delwedd PNG 8 neu 24-bit.
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}...aeth rhywbeth o'i le (mwy na thebyg roedd y ffeil wedi'i llygru)
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... ni ddaethpwyd o hyd i'r ffeil.
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... nid oedd modd trosi math y ddelwedd. rhaid cael delwedd PNG 8 neu 24-bit.
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}... aeth rhywbeth o'i le (mwy na thebyg roedd y ffeil wedi'i llygru)
 
 STR_ERROR_BMPMAP                                                :{WHITE}Methu llwytho delwedd o BMP...
-STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}...nid oedd modd trosi math y ddelwedd.
+STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... nid oedd modd trosi math y ddelwedd.
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Rhybudd Graddfa
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Ni argymhellir newid gormod ar faint y map gwreiddiol. Parhau gyda'r cynhyrchu?
@@ -3212,13 +3212,13 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Rhy agos
 STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Dim digon o arian - angen {CURRENCY}
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Rhaid i'r tir fod yn wastad
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Mae'r tir yn goleddu i'r cyfeiriad anghywir
-STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Does dim modd gwneud hynny....
+STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Does dim modd gwneud hynny...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Rhaid dymchwel adeilad yn gyntaf
-STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Does dim modd clirio’r ardal hon....
-STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}...safle anaddas
-STR_ERROR_ALREADY_BUILT                                         :{WHITE}...eisoes wedi'i adeiladu
-STR_ERROR_OWNED_BY                                              :{WHITE}...eiddo {STRING}
-STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...mae'r ardal yn eiddo i gwmni arall
+STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Does dim modd clirio’r ardal hon...
+STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... safle anaddas
+STR_ERROR_ALREADY_BUILT                                         :{WHITE}... eisoes wedi'i adeiladu
+STR_ERROR_OWNED_BY                                              :{WHITE}... eiddo {STRING}
+STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... mae'r ardal yn eiddo i gwmni arall
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Rhaid i'r enw fod yn unigryw
 STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{1:STRING} yn y ffordd
 
@@ -3242,10 +3242,10 @@ STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... mae 
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Does dim modd newid enw'r cwmni...
 STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Does dim modd newid enw'r rheolwr...
 
-STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}...mae'r uchafswm benthyciad posib yn {CURRENCY}
+STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... mae'r uchafswm benthyciad posib yn {CURRENCY}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Does dim modd i chi fenthyg rhagor o arian...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}...nid oes benthyciad i'w ad-dalu
-STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}...angen {CURRENCY}
+STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... nid oes benthyciad i'w ad-dalu
+STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... angen {CURRENCY}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Does dim modd ad-dalu benthyciad...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Does dim modd rhoi arian sydd wedi ei fenthyg gan y banc i ffwrdd...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Methu prynu cwmni...
@@ -3258,10 +3258,10 @@ STR_ERROR_PROTECTED                                             :{WHITE}Nid yw'r
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Methu adeiladu unrhyw drefi
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Methu ailenwi tref...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Methu adeiladu tref yma...
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}...rhy agos i ymyl y map
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}...rhy agos i dref arall
-STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}...gormod o drefi
-STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...nid oes mwy o le ar y map
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... rhy agos i ymyl y map
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... rhy agos i dref arall
+STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... gormod o drefi
+STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... nid oes mwy o le ar y map
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Ni fydd y dref yn adeiladu ffyrdd. Gallwch alluogi adeiladu ffyrdd yn  Gosodiadau Uwch->Economi->Trefi.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Mae gwaith yn cael ei wneud ar y ffordd
 
@@ -3269,15 +3269,15 @@ STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Mae gwai
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Doedd dim modd cynhyrchu diwydiannau...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Ni ellir adeiladu {STRING} yma...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Does dim modd adeiladu diwydiant o'r math hwn yma...
-STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}...rhy agos i ddiwydiant arall
-STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}...rhaid adeiladu tref yn gyntaf
-STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}...caniateir un yn unig ym mhob tref
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...gellir ei adeiladu'n unig mewn trefi gyda phoblogaeth o 1200 neu fwy
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...gellir ei adeiladu'n unig mewn ardal o goedwigoedd glaw
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}...gellir ei adeiladu'n unig mewn ardaloedd o anialwch
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}...gellir ei adeiladu mewn trefi yn unig
-STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}...dim ond ger ymyl y map y gellir ei leoli
-STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}...dim ond uwch ben y llinell eira mae modd plannu fforest
+STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... rhy agos i ddiwydiant arall
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... rhaid adeiladu tref yn gyntaf
+STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... caniateir un yn unig ym mhob tref
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... gellir ei adeiladu'n unig mewn trefi gyda phoblogaeth o 1200 neu fwy
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... gellir ei adeiladu'n unig mewn ardal o goedwigoedd glaw
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... gellir ei adeiladu'n unig mewn ardaloedd o anialwch
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... gellir ei adeiladu mewn trefi yn unig
+STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... dim ond ger ymyl y map y gellir ei leoli
+STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... dim ond uwch ben y llinell eira mae modd plannu fforest
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Methu adeiladu gorsaf reilffordd yma...
@@ -3289,8 +3289,8 @@ STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Methu ad
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Methu adeiladu maes awyr yma...
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Mae'n ymylu ar fwy nag un gorsaf/ardal lwytho sydd eisoes yn bodoli
-STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}...mae'r orsaf yn rhy wasgaredig
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}...analluogwyd gorsafoedd anunffurf
+STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... mae'r orsaf yn rhy wasgaredig
+STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... analluogwyd gorsafoedd anunffurf
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Gormod o orsafoedd/ardaloedd llwytho
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Mae gan yr orsaf ormod o rannau
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Gormod o arosfannau bysus
@@ -3300,8 +3300,8 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Rhy agos
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Rhy agos i ddoc arall
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Rhy agos i faes awyr arall
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Methu ailenwi gorsaf...
-STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}...mae'r ffordd hon yn eiddo i dref
-STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}...mae'r ffordd yn gorwedd yn y cyfeiriad anghywir
+STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... mae'r ffordd hon yn eiddo i dref
+STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... mae'r ffordd yn gorwedd yn y cyfeiriad anghywir
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Methu tynnu rhan o orsaf...
@@ -3326,8 +3326,8 @@ STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Methu go
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Does dim modd newid enw Pwynt Llwybr...
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Does dim modd tynnu'r pwynt llwybr trên yma...
-STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}...bwi yn y ffordd
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}...bwi mewn defnydd!
+STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... bwi yn y ffordd
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... bwi mewn defnydd!
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Methu adeiladu trên depo yma...
@@ -3336,7 +3336,7 @@ STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Methu ad
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Methu adeiladu depo llong yma...
 
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Rhaid i'r trên fod wedi'i stopio mewn depo
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...rhaid iddo fod wedi'i stopio mewn depo cerbyd ffordd
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... rhaid iddo fod wedi'i stopio mewn depo cerbyd ffordd
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Rhaid i'r llong fod wedi'i stopio mewn depo
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Rhaid i awyrennau rhaid i awyrennau fod wedi'i stopio mewn awyrendy
 
@@ -3354,7 +3354,7 @@ STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Methu do
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :math depo anghywir
 
 # Autoreplace related errors
-STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE} Aeth gormod o amser heibio i allu adnewyddu {VEHICLE}
+STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}Aeth gormod o amser heibio i allu adnewyddu {VEHICLE}
 STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Ni weithredwyd unrhyw reolau awtogyfnewid/adnewydd.
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(terfyn arian)
 
@@ -3383,13 +3383,13 @@ STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Methu di
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Methu adeiladu camlesi yma...
 STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Methu adeiladu lociau yma...
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Methu gosod afonydd yma...
-STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}...rhaid ei adeiladu ar ddŵr
-STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}...Methu adeiladu ar ddŵr
+STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... rhaid ei adeiladu ar ddŵr
+STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... Methu adeiladu ar ddŵr
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Rhaid dymchwel camlas yn gyntaf
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Methu adeiladu traphont yma...
 
 # Tree related errors
-STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}...coeden eisoes yma
+STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... coeden eisoes yma
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Methu plannu coeden yma...
 
 # Bridge related errors
@@ -3399,7 +3399,7 @@ STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Does dim
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Nid yw dau ben y bont ar yr un lefel
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Mae'r bont yn rhy isel ar gyfer y tirwedd
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Rhaid i'r cychwyn a'r diwedd fod mewn llinell
-STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}...rhaid i ddau ben y bont orffwys ar y tir
+STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... rhaid i ddau ben y bont orffwys ar y tir
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Methu adeiladu twnnel yma...
@@ -3411,9 +3411,9 @@ STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Does dim
 
 # Unmovable related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Gwrthrych yn y ffordd
-STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}...pencadlys cwmni yn y ffordd
+STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... pencadlys cwmni yn y ffordd
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Does dim modd prynu'r darn yma o dir...
-STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}...rydych chi eisoes yn berchen arno!
+STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... rydych chi eisoes yn berchen arno!
 
 # Group related errors
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Methu creu grw^p
@@ -3499,7 +3499,7 @@ STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}ni all c
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Does dim modd rhannu'r rhestr gorchmynion...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Does dim modd copïo'r rhestr gorchmynion...
-STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...rhy bell o'r gyrchfan flaenorol
+STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... rhy bell o'r gyrchfan flaenorol
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Methu amserlennu cerbyd...
@@ -3507,7 +3507,7 @@ STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Dim ond 
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Nid yw'r cerbyd hwn yn aros yn yr orsaf hon.
 
 # Sign related errors
-STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}...gormod o arwyddion
+STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... gormod o arwyddion
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Methu gosod arwydd yma...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Methu newid enw arwydd...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Methu dileu arwydd...

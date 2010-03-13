@@ -561,11 +561,11 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Money:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Loan:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Number of vehicles that turned a profit last year; this includes road vehicles, trains, ships and aircraft
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Number of vehicles that turned a profit last year. This includes road vehicles, trains, ships and aircraft
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Number of recently-visited station parts. Every part of a station (e.g. train station, bus stop, airport) is counted, even if they are connected as one station
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}The profit of the vehicle with the lowest income (only vehicles older than two years are considered)
-STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Amount of cash made in the month with the lowest profit of the past 12 quarters
-STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Amount of cash made in the month with the highest profit of the past 12 quarters
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Amount of cash made in the quarter with the lowest profit of the past 12 quarters
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Amount of cash made in the quarter with the highest profit of the past 12 quarters
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Units of cargo delivered in the past four quarters.
 STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Number of types of cargo delivered in the past quarter.
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Amount of money this company has in the bank
@@ -1729,13 +1729,13 @@ STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}No netwo
 STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Could not find any network games
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}The server didn't answer the request
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Could not connect due to NewGRF mismatch
-STR_NETWORK_ERROR_DESYNC                                        :{WHITE} Network-Game synchronization failed.
-STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE} Network-Game connection lost.
+STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Network-Game synchronization failed.
+STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Network-Game connection lost.
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Could not load savegame
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Could not start the server
 STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Could not connect
 STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Connection #{NUM} timed out
-STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE} We made a protocol-error and our connection is closed.
+STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}We made a protocol-error and our connection is closed.
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}The revision of this client does not match the server's revision
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Wrong password
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}The server is full
@@ -1783,8 +1783,8 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} ha
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} has changed his/her name to {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} gave your company {2:CURRENCY}
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** You gave {1:STRING} {2:CURRENCY}
-STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE} The server closed the session
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE} The server is restarting...{}Please wait...
+STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}The server closed the session
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}The server is restarting...{}Please wait...
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Content downloading
@@ -2378,7 +2378,7 @@ STR_NEWGRF_ERROR_READ_BOUNDS                                    :Read past end o
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Caution!
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}You are about to make changes to a running game; this can crash OpenTTD.{}Are you absolutely sure about this?
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}You are about to make changes to a running game. This can crash OpenTTD.{}Are you absolutely sure about this?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Can't add file: duplicate GRF ID
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Matching file not found (compatible GRF loaded)
@@ -2903,10 +2903,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Show roa
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Show ship details
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Show aircraft details
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Current train action - click here to stop/start train
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Current vehicle action - click here to stop/start vehicle
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Current ship action - click here to stop/start ship
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Current aircraft action - click here to stop/start aircraft
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Current train action - click to stop/start train. Ctrl+Click to scroll to destination
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Current vehicle action - click to stop/start vehicle. Ctrl+Click to scroll to destination
+STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Current ship action - click to stop/start ship. Ctrl+Click to scroll to destination
+STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Current aircraft action - click to stop/start aircraft. Ctrl+Click to scroll to destination
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Loading / Unloading
@@ -3293,19 +3293,22 @@ STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Data integrity 
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Game was saved in version without streetcar support. All streetcars have been removed.
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Map generation aborted...{}...no suitable town locations
-STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}...there is no town in this scenario
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Map generation aborted...{}... no suitable town locations
+STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... there is no town in this scenario
 
 STR_ERROR_PNGMAP                                                :{WHITE}Can't load landscape from PNG...
-STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}...file not found.
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}...could not convert image type. 8 or 24-bit PNG image needed.
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}...something just went wrong. Sorry. (probably corrupted file)
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... file not found.
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... could not convert image type. 8 or 24-bit PNG image needed.
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}... something just went wrong. Sorry. (probably corrupted file)
 
 STR_ERROR_BMPMAP                                                :{WHITE}Can't load landscape from BMP...
-STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}...could not convert image type.
+STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... could not convert image type.
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Scale warning
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Resizing source map too much is not recommended. Continue with the generation?
+
+# Soundset messages
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Only a fallback sound set was found. If you want sounds, install a sound set via the content download system.
 
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Screenshot successfully saved as '{STRING}'
@@ -3321,9 +3324,9 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Too clos
 STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Not enough cash - requires {CURRENCY}
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Flat land required
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Land sloped in wrong direction
-STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Can't do this....
+STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Can't do this...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Building must be demolished first
-STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Can't clear this area....
+STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Can't clear this area...
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... site unsuitable
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... already built
 STR_ERROR_OWNED_BY                                              :{WHITE}... owned by {STRING}
@@ -3370,7 +3373,7 @@ STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Can't bu
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... too close to edge of map
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... too close to another town
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... too many towns
-STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...there is no more space on the map
+STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... there is no more space on the map
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}The town will not build roads. You can enable building of roads via Advanced Settings->Economy->Towns.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Road works in progress
 
@@ -3378,13 +3381,14 @@ STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Road wor
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Can't generate industries...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Can't build {STRING} here...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Can't construct this industry type here...
-STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}...too close to another industry
+STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... too close to another industry
 STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... must build town first
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... only one allowed per town
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... can only be built in towns with a population of at least 1200
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... can only be built in rainforest areas
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... can only be built in desert areas
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... can only be built in towns
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... can only be built in low areas
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... can only be positioned near edges of map
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... forest can only be planted above snow-line
 
@@ -3399,7 +3403,7 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Can't bu
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Adjoins more than one existing station/loading area
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... station too spread out
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}...nonuniform stations disabled
+STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... nonuniform stations disabled
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Too many stations/loading areas
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Too many railroad station parts
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Too many bus stops
@@ -3409,8 +3413,8 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Too clos
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Too close to another dock
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Too close to another airport
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Can't rename station...
-STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}...this is a town owned road
-STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}...road facing in the wrong direction
+STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... this is a town owned road
+STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... road facing in the wrong direction
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Can't remove part of station...
@@ -3472,6 +3476,7 @@ STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(money limit)
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Impossible track combination
+STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Must remove signals first
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}No suitable railroad track
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Must remove railroad track first
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Road is one way or blocked

@@ -804,7 +804,7 @@ STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIGFONT}{BLACK
 STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK}RONGIKOKKUPÕRGE!{}{COMMA} surid tules peale kokkusõitmist
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}Rongikokkupõrge!{}Juht suri peale õnnetust tules
 STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIGFONT}{BLACK}Mootorsõiduki kokkupõrge rongiga!{}{COMMA} inimest suri õnnetuses
-STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK}Lennuõnnetus!{}{COMMA} surid tules {STATION}s
+STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK}Lennuõnnetus!{}{COMMA} hukkus tules. {STATION} suletud.
 STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}Lennuõnnetus!{}Lennukil lõppes kütus, {COMMA} surid tules!
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIGFONT}{BLACK}Tsepeliini õnnetus {STATION}s!
@@ -1793,7 +1793,7 @@ STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Ei saa u
 STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Ei õnnestu ühendada
 STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}#{NUM}. ühendus aegus
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Tekkis protokolliviga ja ühendus katkes
-STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE} Kliendi osa ei vasta serveri osaga
+STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Kliendi osa ei vasta serveri osaga
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Vale parool
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Server on täis
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Sinu sisenemine siia serverisse on keelatud
@@ -1840,8 +1840,8 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} la
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} vahetas oma nime {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} andis su ettevõttele {2:CURRENCY}
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Sa andsid {1:STRING} {2:CURRENCY}
-STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE} Server sulges sessiooni
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE} Server restardib...{}Palun oota...
+STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Server sulges sessiooni
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Server restardib...{}Palun oota...
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Sisu allalaadimine
@@ -2853,7 +2853,7 @@ STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Ostab sa
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Ostab samasuguse õhusõiduki. Klõpsa sellele nuppule, ning seejärel lennukile angaari sees või väljas. CTRL-klõpsuga jagatakse sihtpunkte
 
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Keskenda põhivaade rongidepoo kohale
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Vii vaade garaaþi asukohale
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Vii vaade garaažile. Ctrl+klõps avab garaažil uue vaate.
 STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Vii pea vaade paadikuuri juurde
 STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Vii vaade angaarile
 
@@ -2985,8 +2985,8 @@ STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Suundub
 
 STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT                      :{ORANGE}Suundub linna {TOWN} rongidepoosse
 STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_VEL                  :{ORANGE}Suundub linna {TOWN} rongidepoosse, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT               :{ORANGE}Suundub {TOWN} garaaþi
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL           :{ORANGE}Suundub {TOWN} garaaþi, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT               :{ORANGE}Suundub {TOWN} garaaži
+STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL           :{ORANGE}Suundub {TOWN} garaaži, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT                       :{ORANGE}Suundub linna {TOWN} laevaremonditehasesse.
 STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_VEL                   :{ORANGE}Suundub linna {TOWN} laevaremonditehasesse, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR                           :{ORANGE}Suundub {STATION} Angaari
@@ -3349,16 +3349,16 @@ STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Andmetervikliku
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Mäng on salvestatud osas, kus trammid ei olnud toetatud. Kõik trammid on eemaldatud.
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Kaarditekitamine katkes...{}...linnadele pole sobilike kohti
-STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}...kaardil puudub linn
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Kaarditekitamine katkes...{}... linnadele pole sobilike kohti
+STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... kaardil puudub linn
 
 STR_ERROR_PNGMAP                                                :{WHITE}Ei suuda laadida maastiku PNG failist...
-STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}...faili ei leitud.
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}...ei suutnud pilditüüpi teisendada. Vaja läheb 8 või 24-bitist PNG pilti.
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}...midagi läks just valesti. Vabandust. (tõenäoliselt rikutud fail)
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... faili ei leitud.
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... ei suutnud pilditüüpi teisendada. Vaja läheb 8 või 24-bitist PNG pilti.
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}... midagi läks just valesti. Vabandust. (tõenäoliselt rikutud fail)
 
 STR_ERROR_BMPMAP                                                :{WHITE}Ei suuda laadida maastikku BMP failist...
-STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}...ei suutnud muuta pildi tüüpi.
+STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... ei suutnud muuta pildi tüüpi.
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Skaala hoiatus
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Kaardi suuruse muutmine pole soovitatav. Jätka?
@@ -3380,13 +3380,13 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Kaardi �
 STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Pole piisavalt raha - vajad {CURRENCY}
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Maapind peab olema tasane
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Maa on vales suunas kaldu
-STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Seda ei saa teha....
+STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Seda ei saa teha...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Hoone tuleb enne lammutada
-STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Seda ala ei saa puhastada....
-STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}...ebasobiv koht
-STR_ERROR_ALREADY_BUILT                                         :{WHITE}...juba ehitatud
-STR_ERROR_OWNED_BY                                              :{WHITE}...omanik on {STRING}
-STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...ala kuulub teisele ettevõttele
+STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Seda ala ei saa puhastada...
+STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... ebasobiv koht
+STR_ERROR_ALREADY_BUILT                                         :{WHITE}... juba ehitatud
+STR_ERROR_OWNED_BY                                              :{WHITE}... omanik on {STRING}
+STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... ala kuulub teisele ettevõttele
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Nime ei tohi korduda
 STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{1:STRING} on ees
 
@@ -3410,10 +3410,10 @@ STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... juba
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Ei saa ettevõtte nime muuta...
 STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Ei saa presidendi nime muuta...
 
-STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}...suurim lubatud laen on {CURRENCY}
+STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... suurim lubatud laen on {CURRENCY}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Rohkem raha ei saa laenata...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}...pole laenu, mida tagasi maksta
-STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}...vajad {CURRENCY}
+STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... pole laenu, mida tagasi maksta
+STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... vajad {CURRENCY}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Ei saa laenu tagasi maksta...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Ei saa anda raha, mis on laenatud pangast.
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Ettevõtet ei saa osta...
@@ -3426,10 +3426,10 @@ STR_ERROR_PROTECTED                                             :{WHITE}See ette
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Ei saa ühtegi linna ehitada...
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Linna nime ei saa vahetada...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Siia ei saa linna ehitada...
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}...liiga lähedal kaardi servale
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}...liiga lähedal teisele linnale
-STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}...liiga palju linnu
-STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...pole enam ruumi kaardil
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... liiga lähedal kaardi servale
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... liiga lähedal teisele linnale
+STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... liiga palju linnu
+STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... pole enam ruumi kaardil
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Linn ei ehita teid. Teedeehituse lubamiseks Täpsemad seaded->Majandus->Linnad.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Teede ehitamine
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Seda linna ei saa kustutada...{}Jaam või depoo viitab linnale või mõnd linna omanduses olevat tükki ei saa kustutada
@@ -3438,16 +3438,16 @@ STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Seda lin
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Tööstust ei saa tekitada...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}{STRING} ei saa siia ehitada...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Seda tüüpi tööstust ei saa siia ehitada...
-STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}...liiga lähedal mõnele teisele tööstusele
-STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}...enne pead linna ehitama
-STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}...iga linna kohta lubatud ainult üks
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...saab ainult ehitada linna, mille rahvastikuarv ületab 1200
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...saab ehitada ainult vihmametsadesse
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}...saab ehitada ainult kõrbesse
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}...saab ainult linnadesse ehitada
+STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... liiga lähedal mõnele teisele tööstusele
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... enne pead linna ehitama
+STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... iga linna kohta lubatud ainult üks
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... saab ainult ehitada linna, mille rahvastikuarv ületab 1200
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... saab ehitada ainult vihmametsadesse
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... saab ehitada ainult kõrbesse
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... saab ainult linnadesse ehitada
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... saab ainult madalatele aladele ehitada
-STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}...saab ainult ehitada kaardi serva
-STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}...metsa saab istutada ainult lumepiirist kõrgemale
+STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... saab ainult ehitada kaardi serva
+STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... metsa saab istutada ainult lumepiirist kõrgemale
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Siia ei saa raudteejaama ehitada...
@@ -3459,8 +3459,8 @@ STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Dokki ei
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Siia ei saa lennuvälja rajada...
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Mitme olemasoleva jaama ühendamine
-STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}...jaam on liiga laiaks venitatud
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}...korrapäratud jaamad keelatud
+STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... jaam on liiga laiaks venitatud
+STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... korrapäratud jaamad keelatud
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Liiga palju jaamu
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Liiga palju raudteejaama osasid
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Liiga palju bussipeatusi
@@ -3470,8 +3470,8 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Mõnele 
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Liiga lähedal teisele dokile
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Liiga lähedal teisele lennuväljale
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Jaama nime ei saa vahetada...
-STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}...see tee on omatud linna poolt
-STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}...tee on vales suunas
+STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... see tee on omatud linna poolt
+STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... tee on vales suunas
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Siinset jaamablokki ei saa lammutada...
@@ -3499,8 +3499,8 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Meldepun
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Meldepunkti ei saa siit eemaldada...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Enne peab rööbastelt kõik teemärgid eemaldama
-STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}...poi on ees
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}...poi on kasutusel!
+STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... poi on ees
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... poi on kasutusel!
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Siia ei saa depood ehitada...
@@ -3509,7 +3509,7 @@ STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Trammide
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Laevaremonditehast ei saa siia ehitada...
 
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Rong peab olema depoos peatatud
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...peab garaaþis olema
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... peab garaaþis olema
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Laev peab olema sadamas peatatud
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Lennuk peab olema peatatud angaari sees
 
@@ -3557,13 +3557,13 @@ STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Siinset 
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Siia ei saa kanaleid ehitada...
 STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Siia ei saa lüüse ehitada...
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Jõgesid ei saa siia teha...
-STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}...peab ehitama vette
-STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}...vette ei saa ehitada
+STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... peab ehitama vette
+STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... vette ei saa ehitada
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Kanal tuleb enne lammutada
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Siia ei saa veejuhet ehitada...
 
 # Tree related errors
-STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}...siin on juba puu olemas
+STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... siin on juba puu olemas
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Siia ei saa puud istutada...
 
 # Bridge related errors
@@ -3573,7 +3573,7 @@ STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Ei saa a
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Sillaotsad pole samal kõrgusel
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Sild on maastiku suhtes liiga madal
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Algus ja lõpp peavad samal joonel olema
-STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}...mõlemad sillaotsad peavad olema maal
+STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... mõlemad sillaotsad peavad olema maal
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Siia ei saa tunnelit ehitada...
@@ -3585,9 +3585,9 @@ STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Ei saa t
 
 # Unmovable related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Mingi objekt on ees
-STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}...ettevõtte peakorter on ees
+STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... ettevõtte peakorter on ees
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Seda maad ei saa osta...
-STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}...see on juba sinu oma!
+STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... see on juba sinu oma!
 
 # Group related errors
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Ei saa rühma luua...
@@ -3673,7 +3673,7 @@ STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}seda kä
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Sihtpunktide nimekirja ei saa jagada...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Sihtpunktide nimekirja ei saa kopeerida...
-STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...liiga kaugel eelmisest sihtpunktist
+STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... liiga kaugel eelmisest sihtpunktist
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Sõidukile ei saa sõiduplaani anda...
@@ -3681,7 +3681,7 @@ STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Sõiduki
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Sellel sõidukil pole ühtegi peatust.
 
 # Sign related errors
-STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}...liiga palju silte
+STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... liiga palju silte
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Siia ei saa silti paigaldada...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Silti ei saa muuta...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Silti ei saa kustutada...

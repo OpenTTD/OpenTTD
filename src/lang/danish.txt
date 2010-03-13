@@ -1725,7 +1725,7 @@ STR_NETWORK_CHAT_ALL                                            :[Alle] {STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Skriv tekst i netværks-chat
 
 # Network messages
-STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE} Ingen netværksheder fundet eller kompilet uden ENABLE_NETWORK
+STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Ingen netværksheder fundet eller kompilet uden ENABLE_NETWORK
 STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Kunne ikke finde nogen netværksspil
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Serveren besvarede ikke denne forspørgsel
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Kunne ikke tilslutte grundet NewGRF ulighed
@@ -1783,8 +1783,8 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} ha
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} har ændret sit navn til {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} gav dit firma {2:CURRENCY}
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Du gav {1:STRING} {2:CURRENCY}
-STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE} Serveren har lukket ned for dette spil
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE} Serveren genstarter...{}Vent venligst...
+STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Serveren har lukket ned for dette spil
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Serveren genstarter...{}Vent venligst...
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Download af indhold
@@ -3293,16 +3293,16 @@ STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Dataintegritets
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Spillet er gemt i en version uden sporveje. Alle sporveje er blevet fjernet.
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Kortgenerering afbrudt...{}...ingen brugbare lokaliteter til byer
-STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}...der er ingen byer i dette scenarie
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Kortgenerering afbrudt...{}... ingen brugbare lokaliteter til byer
+STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... der er ingen byer i dette scenarie
 
 STR_ERROR_PNGMAP                                                :{WHITE}Kan ikke hente landskab fra PNG...
-STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}...filen blev ikke fundet.
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}...kan ikke konvertere billedtype. Der skal bruges 8 eller 24-bit PNG.
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}...noget gik galt. Undskyld (Måske en ødelagt fil)
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... filen blev ikke fundet.
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... kan ikke konvertere billedtype. Der skal bruges 8 eller 24-bit PNG.
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}... noget gik galt. Undskyld (Måske en ødelagt fil)
 
 STR_ERROR_BMPMAP                                                :{WHITE}Kan ikke hente landskab fra BMP...
-STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}...kunne ikke konvertere billedtypen.
+STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... kunne ikke konvertere billedtypen.
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Skalerings advarsel
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}At ændre størrelsen på kildebilledet anbefales ikke. Fortsæt genereringen?
@@ -3324,11 +3324,11 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}For tæt
 STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Ikke nok penge - kræver {CURRENCY}
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Landskabet skal være fladt
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Landet hælder i den forkerte retning
-STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Det kan du ikke....
+STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Det kan du ikke...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Det er nødvendigt at nedrive bygningen først
-STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Kan ikke rydde området....
-STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}...upassende placering
-STR_ERROR_ALREADY_BUILT                                         :{WHITE}...allerede bygget
+STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Kan ikke rydde området...
+STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... upassende placering
+STR_ERROR_ALREADY_BUILT                                         :{WHITE}... allerede bygget
 STR_ERROR_OWNED_BY                                              :{WHITE}... ejes af {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... området ejes af et andet selskab
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Navnet skal være unikt
@@ -3373,7 +3373,7 @@ STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Kan ikke
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... for tæt på kanten af kortet
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... for tæt på en anden by
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... for mange byer
-STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...der er ikke mere plads på kortet
+STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... der er ikke mere plads på kortet
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Byen vil ikke kunne bygge veje. Du kan tillade byer at bygge veje via Avancerede indstillinger->Økonomi->Byer.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Vejarbejde i gang
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kan ikke slette denne by...{}En station eller et depot refererer til byen, eller en brik der er ejet a byen kan ikke fjernes
@@ -3382,7 +3382,7 @@ STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kan ikke
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Kan ikke lave industrier...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Kan ikke bygge {STRING} her...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Kan ikke bygge denne industritype her...
-STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}...for tæt på en anden industribygning
+STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... for tæt på en anden industribygning
 STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... det er nødvendigt at bygge en by først
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... kun en tilladt per by
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... kan kun bygges i byer med mindst 1200 indbyggere
@@ -3404,7 +3404,7 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Kan ikke
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Grænser op til mere end en eksisterende station/fragtcentral
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... stationen er for spredt
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}...ikke-uniforme stationer er slået fra
+STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... ikke-uniforme stationer er slået fra
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}For mange stationer/fragtcentraler
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Banegården er i for mange dele
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}For mange busterminaler
@@ -3414,8 +3414,8 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}For tæt
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}For tæt på en anden havn
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}For tæt på en anden lufthavn
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Kan ikke omdøbe stationen...
-STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}...denne vej er ejet af en by
-STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}...vejen peger i den forkerte retning
+STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... denne vej er ejet af en by
+STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... vejen peger i den forkerte retning
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Kan ikke fjerne en del af en station...

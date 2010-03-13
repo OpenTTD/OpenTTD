@@ -2394,7 +2394,7 @@ STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Modifica
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Trenul '{VEHICLE}', apartinand '{COMPANY}' nu are o lungima valida. Crobabila este o problema cu fisierele NewGRF. Jocul s-ar putea desincroniza sau prabusi.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' produce informaţii incorecte.
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE} Datele despre marfa/regarnisire pentru '{1:ENGINE}' diferă de valorile iniţiale după construcţie. Acest lucru ar putea cauza eşuarea autorenovarii/schimbarii.
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Datele despre marfa/regarnisire pentru '{1:ENGINE}' diferă de valorile iniţiale după construcţie. Acest lucru ar putea cauza eşuarea autorenovarii/schimbarii.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' a cauzat o buclă infinită în funcţia de producţie
 
 # Sign list window
@@ -3293,16 +3293,16 @@ STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Integritatea da
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Jocul a fost salvat într-o versiune fără suport pentru tramvaie. Toate tramvaiele au fost eliminate.
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Generarea hărţii a eşuat...{}...nici o locaţie potrivită pentru oraş
-STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}...în acest scenariu nu există nici un oraş
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Generarea hărţii a eşuat...{}... nici o locaţie potrivită pentru oraş
+STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... în acest scenariu nu există nici un oraş
 
 STR_ERROR_PNGMAP                                                :{WHITE}Nu pot încărca peisajul din PNG...
-STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}...fisierul lipseste.
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}...nu am reusit conversia tipului de imagine. Introdu un imagine PNG 8 sau 24-bit.
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}...ceva a mers gresit. Scuze. (probabil fisierul este defect)
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... fisierul lipseste.
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... nu am reusit conversia tipului de imagine. Introdu un imagine PNG 8 sau 24-bit.
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}... ceva a mers gresit. Scuze. (probabil fisierul este defect)
 
 STR_ERROR_BMPMAP                                                :{WHITE}Nu pot încărca peisajul din BMP...
-STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}...nu am putut converti tipul de imagine.
+STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... nu am putut converti tipul de imagine.
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Avertisment de scala
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Redimensionarea excesiva a hartii nu este recomandata. Continui cu generarea?
@@ -3324,13 +3324,13 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Prea apr
 STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Nu ai destui bani - îţi trebuie {CURRENCY}
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Necesită teren plat
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Terenul are o înclinaţie nepotrivită
-STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Nu se poate face asta....
+STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Nu se poate face asta...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Mai întâi trebuie demolată clădirea
-STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Nu se poate curăţa terenul....
-STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}...locaţie nepotrivită
-STR_ERROR_ALREADY_BUILT                                         :{WHITE}...deja construit
-STR_ERROR_OWNED_BY                                              :{WHITE}...apartine companiei {STRING}
-STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...terenul se află în proprietatea altei companii
+STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Nu se poate curăţa terenul...
+STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... locaţie nepotrivită
+STR_ERROR_ALREADY_BUILT                                         :{WHITE}... deja construit
+STR_ERROR_OWNED_BY                                              :{WHITE}... apartine companiei {STRING}
+STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... terenul se află în proprietatea altei companii
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Numele trebuie să fie unic
 STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{1:STRING} în cale
 
@@ -3354,10 +3354,10 @@ STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... este
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Nu se poate schimba numele companiei...
 STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Nu se poate schimba numele preşedintelui...
 
-STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}...creditul maxim permis este de {CURRENCY}
+STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... creditul maxim permis este de {CURRENCY}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Nu mai poţi împrumuta bani...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}...nu ai nici un credit de plătit
-STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}...ai nevoie de {CURRENCY}
+STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... nu ai nici un credit de plătit
+STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... ai nevoie de {CURRENCY}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Nu poţi plăti creditul...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Nu poţi dona din banii împrumutaţi de la bancă...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Nu se poate cumpăra compania...
@@ -3370,10 +3370,10 @@ STR_ERROR_PROTECTED                                             :{WHITE}Această
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Nu pot construi nici un oras
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Nu se poate redenumi oraşul...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Nu se poate construi un oraş aici...
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}...prea aproape de marginea hărţii
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}...prea aproape de alt oraş
-STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}...prea multe oraşe
-STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...nu mai este loc pe hartă
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... prea aproape de marginea hărţii
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... prea aproape de alt oraş
+STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... prea multe oraşe
+STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... nu mai este loc pe hartă
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Oraşul nu va construi drumuri. Poţi activa construirea drumurilor via Setari avansate -> Economie -> Oraşe
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Lucrari la drum in curs de desfasurare
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Acest oraş nu poate fi şters...{}O staţie sau un depou face referire la acest oraş, sau o parcelă deţinută de oraş nu poate fi eliminată
@@ -3382,16 +3382,16 @@ STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Acest or
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Nu pot genera industrii...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Nu se poate construi {STRING} aici...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Acest tip de industrie nu se poate construi aici...
-STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}...prea aproape de altă industrie
-STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}...mai întâi trebuie creat un oraş
-STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}...un singur obiectiv de acest tip este permis per oraş
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...se poate construi doar în oraşe cu populaţia de cel puţin 1200
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...se poate construi doar in padurile tropicale
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}...se poate construi doar în zonele de deşert
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}...se poate construi doar în oraşe
+STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... prea aproape de altă industrie
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... mai întâi trebuie creat un oraş
+STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... un singur obiectiv de acest tip este permis per oraş
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... se poate construi doar în oraşe cu populaţia de cel puţin 1200
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... se poate construi doar in padurile tropicale
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... se poate construi doar în zonele de deşert
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... se poate construi doar în oraşe
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... poate fi construit(ă) doar în zone joase
-STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}...se poate construi doar la marginea hărţii
-STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}...pădurile pot fi plantate doar în zonele înzăpezite
+STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... se poate construi doar la marginea hărţii
+STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... pădurile pot fi plantate doar în zonele înzăpezite
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Nu se poate construi o gară aici...
@@ -3403,8 +3403,8 @@ STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Nu pot c
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Nu se poate construi un aeroport aici...
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Este adiacentă mai multor staţii
-STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}...staţie prea întinsă
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}...staţiile neuniforme nu sunt permise
+STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... staţie prea întinsă
+STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... staţiile neuniforme nu sunt permise
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Prea multe staţii
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Staţia are prea multe componente
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Prea multe staţii de autobuz
@@ -3414,8 +3414,8 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Prea apr
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Prea aproape de alt port
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Prea aproape de alt aeroport
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Nu se poate redenumi staţia...
-STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}...drum in proprietatea orasului
-STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}...drum orientat in directia gresita
+STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... drum in proprietatea orasului
+STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... drum orientat in directia gresita
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Nu pot demola o parte din statie...
@@ -3443,7 +3443,7 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Nu pot s
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Nu se poate desfiinţa halta de aici...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Trebuie îndepărtat punctul de tranzit feroviar mai intai
-STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}...baliză în cale
+STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... baliză în cale
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... baliza in uz!
 
 # Depot related errors
@@ -3453,7 +3453,7 @@ STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Nu pot c
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Nu se poate construi şantier naval aici...
 
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Trenul trebuie oprit intr-un depou
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...trebuie oprit într-o autobază
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... trebuie oprit într-o autobază
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Nava trebuie să fie staţionată într-un şantier
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Aeronava trebuie să staţioneze într-un hangar
 
@@ -3501,13 +3501,13 @@ STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Nu pot �
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Nu pot construi un canal aici...
 STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Nu se poate construi o ecluză aici...
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Nu pot plasa râuri aici...
-STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}...trebuie construit pe apă
-STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}...nu se poate construi pe apă
+STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... trebuie construit pe apă
+STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... nu se poate construi pe apă
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Trebuie sa demolezi canalul inainte
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Nu pot construi apeductul aici...
 
 # Tree related errors
-STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}...sunt deja plantaţi arbori
+STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... sunt deja plantaţi arbori
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Nu se pot planta arbori aici...
 
 # Bridge related errors
@@ -3517,7 +3517,7 @@ STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Cele dou
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Capetele podului nu sunt la acelasi nivel
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Podul este prea jos pentru terenul corespunzator
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Cele două capete trebuie să se situeze în linie
-STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}...ambele capete ale podului trebuie să se situeze pe uscat
+STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... ambele capete ale podului trebuie să se situeze pe uscat
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Nu se poate construi tunel aici...
@@ -3529,9 +3529,9 @@ STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Terenul 
 
 # Unmovable related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Obiect în cale
-STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}...sediu de companie în cale
+STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... sediu de companie în cale
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Nu poţi cumpăra teren aici...
-STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}...este deja în proprietatea ta!
+STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... este deja în proprietatea ta!
 
 # Group related errors
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Nu pot crea grup...

@@ -1793,23 +1793,23 @@ STR_NETWORK_CHAT_ALL                                            :[Visiems] {STRI
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Įveskite tekstą internetiniam pokalbiui
 
 # Network messages
-STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE} Nerastas tinklo įrenginys arba sukompiliuota be ENABLE_NETWORK
-STR_NETWORK_ERROR_NOSERVER                                      :{WHITE} Nerado nei vieno žaidimo tinkle
-STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE} Serveris neatsakė į užklausą
-STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE} Nepavyko prisijungti dėl Papild. grafikos neatitikimo
-STR_NETWORK_ERROR_DESYNC                                        :{WHITE} Žaidimo tinkle sinchronizacija nepavyko
-STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE} Nutruko ryšys
-STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE} Negali atverti išsaugoto žaidimo
-STR_NETWORK_ERROR_SERVER_START                                  :{WHITE} Negali paleisti serverio
-STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE} Negali prisijungti
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE} Baigėsi prisijungimo #{NUM} laikas
-STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE} Protokolo klaida. Prisijungimas baigtas
-STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE} Žaidimo versija neatitinka serverio žaidimo versijos
-STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE} Blogas slaptažodis
-STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE} Serveris pilnas
-STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE} Tau uždrausta prisijungti prie šio serverio (BAN)
-STR_NETWORK_ERROR_KICKED                                        :{WHITE} Tu išmestas iš žaidimo (KICK)
-STR_NETWORK_ERROR_CHEATER                                       :{WHITE} Sukčiavimas neleidžiamas tinklo žaidime
+STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Nerastas tinklo įrenginys arba sukompiliuota be ENABLE_NETWORK
+STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Nerado nei vieno žaidimo tinkle
+STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Serveris neatsakė į užklausą
+STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Nepavyko prisijungti dėl Papild. grafikos neatitikimo
+STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Žaidimo tinkle sinchronizacija nepavyko
+STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Nutruko ryšys
+STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Negali atverti išsaugoto žaidimo
+STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Negali paleisti serverio
+STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Negali prisijungti
+STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Baigėsi prisijungimo #{NUM} laikas
+STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Protokolo klaida. Prisijungimas baigtas
+STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Žaidimo versija neatitinka serverio žaidimo versijos
+STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Blogas slaptažodis
+STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Serveris pilnas
+STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Tau uždrausta prisijungti prie šio serverio (BAN)
+STR_NETWORK_ERROR_KICKED                                        :{WHITE}Tu išmestas iš žaidimo (KICK)
+STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Sukčiavimas neleidžiamas tinklo žaidime
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :klaida
@@ -1851,8 +1851,8 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} pa
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} pasikeitė vardą į {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} turi savo kompaniją {2:CURRENCY}
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Jūs gavote {1:STRING} {2:CURRENCY}
-STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE} Serveris užsidarė
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE} Serveris persikrauna...{}Prašau palaukti...
+STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Serveris užsidarė
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Serveris persikrauna...{}Prašau palaukti...
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Turinio atsisiuntimas
@@ -3362,15 +3362,15 @@ STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Žaidima
 
 # Map generation messages
 STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Žemėlapio kūrimas nutrauktas...{}... nerasta miestams tinkamų vietų
-STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}...šiame scenarijuje nėra miestų
+STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... šiame scenarijuje nėra miestų
 
 STR_ERROR_PNGMAP                                                :{WHITE}Negalima užkrauti žemėlapio iš PNG...
-STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}...failas nerastas.
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}...Negali perversti paveiklsėlio. 8 arba 24-bit PNG paveikslėlis reikalingas.
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}...kažkas buvo ne taip. Atsiprašome. (greičiausiai pažeistas failas)
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... failas nerastas.
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... Negali perversti paveiklsėlio. 8 arba 24-bit PNG paveikslėlis reikalingas.
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}... kažkas buvo ne taip. Atsiprašome. (greičiausiai pažeistas failas)
 
 STR_ERROR_BMPMAP                                                :{WHITE}Negalima nuskaityti kraštovaizdžio iš BMP...
-STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}...nepavyko pakeisti vaizdo failo formato.
+STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... nepavyko pakeisti vaizdo failo formato.
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Skales ispejimas
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Perdaryti pagrindini zemelapi per daug nerekomenduojama. Testi generavima?
@@ -3392,9 +3392,9 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Per arti
 STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Neužtenka lėšų: reikia {CURRENCY}
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Paviršius turi būti lygus
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Neteisingas žemės nuolydis
-STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}To daryti negalima....
+STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}To daryti negalima...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Pirmiau reikia nugriauti pastatą
-STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Negalima valyti šios teritorijos....
+STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Negalima valyti šios teritorijos...
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... netinkamas sklypas
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... jau pastatyta
 STR_ERROR_OWNED_BY                                              :{WHITE}... priklauso {STRING}
@@ -3441,7 +3441,7 @@ STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Negalima
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... per arti žemėlapio krašto
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... per arti kito miesto
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... per daug miestų
-STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...daugiau nera vietos zemelapyje
+STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... daugiau nera vietos zemelapyje
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Miestas nestatys kelių. Jūs galite įjungti kelių statyba per Sudėtingesni nustatymai>Ekonomika>Miestai.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Vyksta kelio darbai
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Negalima panaikinti šio miesto...{}Mieste yra stotis arba depas, arba miestui priklausantis vienas iš laukelių negali būti ištrintas.
@@ -3450,8 +3450,8 @@ STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Negalima
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Neįmanoma sukurti pramonės įmonių...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}{STRING} čia negali būti pastatyta...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Neįmanoma čia pastatyti šio tipo pramonės įmonės...
-STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}...per arti kitos gamyklos
-STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}...pirma reikia pastatyti miestą
+STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... per arti kitos gamyklos
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... pirma reikia pastatyti miestą
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... mieste gali būti tik vienas
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... gali būti pastatyta tik miestuose, kuriuose yra bent 1200 gyventojų
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... gali būti statomas tik džiunglėse
@@ -3472,7 +3472,7 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Negalima
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Ribojasi su daugiau nei viena stotele/pakrovimo aikštele
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... stotis per daug išsiplėtusi
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}...nestandartines stoteles atjungtos
+STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... nestandartines stoteles atjungtos
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Per daug stotelių
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Perdaug traukinių stoties dalių
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Per daug autobusų stotelių
@@ -3512,12 +3512,12 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Neįmano
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Nepavyko pašalinti šio traukinių kontrolės punkto
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Pirma reikia pašalinti geležinkelio kontrolės punktą
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... trukdo plūduras
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}...pluduras naudojamas!
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... pluduras naudojamas!
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Čia negalima statyti traukinių depo...
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Čia automomobilių garažo statyti negalima...
-STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE} Čia neįmanoma statyti depo...
+STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Čia neįmanoma statyti depo...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Laivų depo statyti negalima...
 
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Traukinys turi buti sustabdytas depe

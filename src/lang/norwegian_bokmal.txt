@@ -1783,8 +1783,8 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} ha
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} har forandret sitt navn til {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} ga {2:CURRENCY} til ditt firma
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Du ga {2:CURRENCY} til {1:STRING}
-STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE} Tjeneren avsluttet spillet
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE} Tjeneren starter på nytt...{}Vennligst vent...
+STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Tjeneren avsluttet spillet
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Tjeneren starter på nytt...{}Vennligst vent...
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Laster ned innhold
@@ -3293,7 +3293,7 @@ STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Integritetssjek
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Spillet ble lagret i en versjon uten støtte for trikk. Alle trikker har blitt fjernet.
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Kartgenerering avbrutt...{}...ingen passende steder å plassere byer
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Kartgenerering avbrutt...{}... ingen passende steder å plassere byer
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... det er ingen by i dette scenarioet
 
 STR_ERROR_PNGMAP                                                :{WHITE}Kunne ikke laste landskap fra PNG...

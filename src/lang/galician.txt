@@ -1687,9 +1687,9 @@ STR_NETWORK_CHAT_ALL                                            :[Todos] {STRING
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Escribe o texto para a charla en rede
 
 # Network messages
-STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE} Non se atoparon dispositivos de rede ou compilouse sen ENABLE_NETWORK
+STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Non se atoparon dispositivos de rede ou compilouse sen ENABLE_NETWORK
 STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Non se atoparon xogos en rede
-STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE} O servidor non respondeu á solicitude
+STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}O servidor non respondeu á solicitude
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Non se pode conectar debido a un problema cos NewGRF
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Sincronización da partida en rede fallida
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Perdeuse a conexión da partida en rede
@@ -1739,8 +1739,8 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} sa
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} cambiou o seu nome a {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} deu a túa companía {2:CURRENCY}
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Diches a {1:STRING} {2:CURRENCY}
-STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE} O servidor pechou a conexión
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE} O servidor estase a reiniciar...{}Espera por favor...
+STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}O servidor pechou a conexión
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}O servidor estase a reiniciar...{}Espera por favor...
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Descargar contido
@@ -3234,15 +3234,15 @@ STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}A partid
 
 # Map generation messages
 STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Xeración de mapas detida...{}... non hai emplazamentos para pobos
-STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}...non hai cidades neste escenario
+STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... non hai cidades neste escenario
 
 STR_ERROR_PNGMAP                                                :{WHITE}Non se pode cargar o mapa desde o PNG...
-STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}...arquivo non atopado.
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}...non se puido convertir o tipo de imaxe. Necesítase unha imaxe PNG de 8 ou 24 bit.
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}...algo saíu mal. Síntoo. (probablemente o ficheiro esté corrupto)
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... arquivo non atopado.
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... non se puido convertir o tipo de imaxe. Necesítase unha imaxe PNG de 8 ou 24 bit.
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}... algo saíu mal. Síntoo. (probablemente o ficheiro esté corrupto)
 
 STR_ERROR_BMPMAP                                                :{WHITE}Non se pode carga-la paisaxe desde o BMP...
-STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}...non se puido convertí-lo tipo de imaxe.
+STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... non se puido convertí-lo tipo de imaxe.
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Aviso de escala
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Non se recomenda redimensionar moito o mapa de orixe. ¿Continuar coa xeración?
@@ -3263,13 +3263,13 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Demasiad
 STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Diñeiro insuficiente - necesitas {CURRENCY}
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Necesitas terreo chan
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Terreo inclinado na dirección incorrecta
-STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Non podes facer eso....
+STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Non podes facer eso...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Debes demole-lo edificio primeiro
-STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Non podes limpar esta área....
-STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}...emprazamento inadecuado
-STR_ERROR_ALREADY_BUILT                                         :{WHITE}...xa está construído
-STR_ERROR_OWNED_BY                                              :{WHITE}...é propiedade de {STRING}
-STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...a área é propiedade doutra compañía
+STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Non podes limpar esta área...
+STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... emprazamento inadecuado
+STR_ERROR_ALREADY_BUILT                                         :{WHITE}... xa está construído
+STR_ERROR_OWNED_BY                                              :{WHITE}... é propiedade de {STRING}
+STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... a área é propiedade doutra compañía
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}O nome debe ser único
 STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{1:STRING} no camiño
 
@@ -3293,10 +3293,10 @@ STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... xa �
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Non se pode cambia-lo nome da compañía...
 STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Non se pode cambia-lo nome do presidente...
 
-STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}...o tamaño máximo do préstamo permitido é de {CURRENCY}
+STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... o tamaño máximo do préstamo permitido é de {CURRENCY}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Non se pode solicitar máis diñeiro...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}...non queda préstamo a pagar
-STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}...necesitas {CURRENCY}
+STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... non queda préstamo a pagar
+STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... necesitas {CURRENCY}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Non se pode paga-lo préstamo...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Non podes da-lo diñeiro prestado do banco...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Non se pode compra-la compañía...
@@ -3309,10 +3309,10 @@ STR_ERROR_PROTECTED                                             :{WHITE}Esta com
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Non se pode construír cidades
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Non se pode renomea-la cidade...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Non se pode construí-la cidade aí...
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}...demasiado cerca do borde do mapa
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}...demasiado cerca doutra cidade
-STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}...hai demasiadas cidades
-STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...non queda máis espacio no mapa
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... demasiado cerca do borde do mapa
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... demasiado cerca doutra cidade
+STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... hai demasiadas cidades
+STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... non queda máis espacio no mapa
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}O pobo non construirá estradas. Podes activar a función de construcción de estradas en Opcións Avanzadas->Economía->Pobos.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Traballos na estrada en progreso
 
@@ -3320,15 +3320,15 @@ STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Traballo
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Non se poden xera-las industrias...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Non se pode construír {STRING} aquí...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Non se pode construír ese tipo de industria aí...
-STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}...demasiado cerca doutra industria
-STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}...debes construír unha cidade primeiro
-STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}...só se permite un por cidade
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...só se pode construír en cidades con polo menos 1200 hab.
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...só se pode construír en zonas de selva tropical
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}...só se pode construír en zonas desérticas
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}...só se pode construír en cidades
-STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}...só se pode emprazar cerca dos bordes do mapa
-STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}...o bosque só se pode plantar sobre a liña de neve
+STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... demasiado cerca doutra industria
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... debes construír unha cidade primeiro
+STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... só se permite un por cidade
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... só se pode construír en cidades con polo menos 1200 hab.
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... só se pode construír en zonas de selva tropical
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... só se pode construír en zonas desérticas
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... só se pode construír en cidades
+STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... só se pode emprazar cerca dos bordes do mapa
+STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... o bosque só se pode plantar sobre a liña de neve
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Non se pode construí-la estación de ferrorcarril aí...
@@ -3340,8 +3340,8 @@ STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Non se p
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Non se pode construí-lo aeroporto aí...
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Xunta máis dunha estación/área de carga existente
-STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}...a estación ocupa demasiado
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}...estacións non uniformes deshabilitadas
+STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... a estación ocupa demasiado
+STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... estacións non uniformes deshabilitadas
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Hay demasiadas estacións/áreas de carga
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Demasiadas partes de estación de tren
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Demasiadas paradas de bus
@@ -3351,8 +3351,8 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Demasiad
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Demasiado cerca doutro peirao
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Demasiado cerca doutro aeroporto
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Non se pode renomea-la estación...
-STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}...esta rúa pertenece á cidade
-STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}...a estrada vai na dirección incorrecta
+STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... esta rúa pertenece á cidade
+STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... a estrada vai na dirección incorrecta
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Non se pode eliminar parte da estación...
@@ -3380,8 +3380,8 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Non se p
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Non se pode eliminar-lo punto de control...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Débese retirar primeiro o punto de ruta para trenes
-STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}...boia no camiño
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}...a boia está en uso!
+STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... boia no camiño
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... a boia está en uso!
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Non se pode construír un depósito aí...
@@ -3390,7 +3390,7 @@ STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Non se p
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Non se pode construí-lo depósito de barcos aí...
 
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}O tren debe estar parado nun depósito
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...debe estar parado dentro dun depósito de vehículos de estrada
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... debe estar parado dentro dun depósito de vehículos de estrada
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}O barco debe estar parado no depósito
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}O avión debe estar parado no hangar
 
@@ -3438,13 +3438,13 @@ STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Non se p
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Non se pode construí-los canais aí...
 STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Non se pode construí-lo peche aí...
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Non se poden colocar ríos aquí...
-STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}...debes construí-lo na auga
-STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}...Non se pode construír na auga
+STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... debes construí-lo na auga
+STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... Non se pode construír na auga
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Debes demole-lo canal primeiro
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Non se pode construír un acueducto aquí...
 
 # Tree related errors
-STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}...xa hai unha árbore aí
+STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... xa hai unha árbore aí
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Non se pode plantar unha árbore aí...
 
 # Bridge related errors
@@ -3454,7 +3454,7 @@ STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Non pode
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Os comezos da ponte non están o mesmo nivel
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}A ponte é demasiado baixa para o terreo
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}O inicio e o final deben estar aliñados
-STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}...os finais da ponte deben estar ambos en terra
+STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... os finais da ponte deben estar ambos en terra
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Non se pode construí-lo túnel ahí...
@@ -3466,9 +3466,9 @@ STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Non se p
 
 # Unmovable related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Hai un obxecto no camiño
-STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}...hai un cuartel xeral no camiño
+STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... hai un cuartel xeral no camiño
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Non se pode compra-la área de terreo...
-STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}...¡xa é da túa propiedade!
+STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... ¡xa é da túa propiedade!
 
 # Group related errors
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Non se pode crear o grupo...

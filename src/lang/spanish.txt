@@ -1784,8 +1784,8 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} ha
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} ha cambiado su nombre a {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} da a tu empresa {2:CURRENCY}
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Entregas {1:STRING} {2:CURRENCY}
-STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE} El servidor ha cerrado la sesión
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE} Se está reiniciando el servidor...{}Espere por favor...
+STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}El servidor ha cerrado la sesión
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Se está reiniciando el servidor...{}Espere por favor...
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Descarga de contenido
@@ -3294,7 +3294,7 @@ STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Comprobación d
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}El juego ha sido guardado en una versión sin soporte para tranvías. Todos los tranvías serán eliminados.
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Generación de mapa abortada...{}...no hay localizaciones apropiadas para pueblos
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Generación de mapa abortada...{}... no hay localizaciones apropiadas para pueblos
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... no hay pueblos en el escenario
 
 STR_ERROR_PNGMAP                                                :{WHITE}No se pudo cargar mapa de alturas PNG...
@@ -3325,7 +3325,7 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Demasiad
 STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}No hay suficiente dinero - se requiere {CURRENCY}
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Se requiere terreno llano
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Tierra inclinada en dirección errónea
-STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}No se puede hacer eso....
+STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}No se puede hacer eso...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}El edificio debe demolerse primero
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}No se puede desbrozar esta zona...
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... lugar no apropiado
@@ -3574,7 +3574,7 @@ STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}No se pu
 STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}No se puede comprar aeronave...
 
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}No se puede renombrar tipo de vehículo...
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}No se puede renombrar tipo de vehículo....
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}No se puede renombrar tipo de vehículo...
 STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}No se puede renombrar tipo de barco...
 STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}No se puede renombrar el tipo de aeronave...
 
@@ -3699,7 +3699,7 @@ STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :Bosque de Algod
 STR_INDUSTRY_NAME_CANDY_FACTORY                                 :Fábrica de Dulces
 STR_INDUSTRY_NAME_BATTERY_FARM                                  :Granja de Pilas
 STR_INDUSTRY_NAME_COLA_WELLS                                    :Pozos de Cola
-STR_INDUSTRY_NAME_TOY_SHOP                                      :Tienda de Juguete
+STR_INDUSTRY_NAME_TOY_SHOP                                      :Tienda de Juguetes
 STR_INDUSTRY_NAME_TOY_FACTORY                                   :Fábrica de Juguetes
 STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :Fuentes de Plástico
 STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :Fábrica de Refrescos

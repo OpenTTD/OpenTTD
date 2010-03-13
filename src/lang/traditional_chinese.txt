@@ -1783,8 +1783,8 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} �
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} 已變更其名稱為 {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} 付給你的公司 {2:CURRENCY}
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** 你付給 {1:STRING} {2:CURRENCY}
-STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE} 伺服器關閉連線
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE} 伺服器正在重新啟動...{}請稍候...
+STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}伺服器關閉連線
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}伺服器正在重新啟動...{}請稍候...
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}內容下載中
@@ -3324,9 +3324,9 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}太接�
 STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}現金不足 - 需要 {CURRENCY}
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}需要平地
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}地面斜坡方向不對
-STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}不能執行以下動作....
+STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}不能執行以下動作...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}必須先摧毀建築物
-STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}不能清除這個地段....
+STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}不能清除這個地段...
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... 地點不適合
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... 已經建了
 STR_ERROR_OWNED_BY                                              :{WHITE}... 所有者是 {STRING}

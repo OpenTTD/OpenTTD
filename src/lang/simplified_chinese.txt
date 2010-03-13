@@ -1714,23 +1714,23 @@ STR_NETWORK_CHAT_ALL                                            :[全体] {STRIN
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}请输入联机聊天内容
 
 # Network messages
-STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE} 没有网络设备或者编译时未使用 ENABLE_NETWORK 参数
-STR_NETWORK_ERROR_NOSERVER                                      :{WHITE} 未找到任何联机游戏
-STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE} 服务器没有响应
-STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE} 因为 NewGRF 不匹配而无法连接
-STR_NETWORK_ERROR_DESYNC                                        :{WHITE} 联机游戏同步失败
-STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE} 联机游戏被断开
-STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE} 无法读取存档
-STR_NETWORK_ERROR_SERVER_START                                  :{WHITE} 无法启动服务器模式
-STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE} 无法连接
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE} 连接 #{NUM} 超时
-STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE} 传输协议错误，连接断开
-STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE} 此客户端版本与服务器端不匹配
-STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE} 密码错误
-STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE} 服务器已经满员
-STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE} 您的IP已被该服务器封禁(ban)
-STR_NETWORK_ERROR_KICKED                                        :{WHITE} 您已被踢出服务器
-STR_NETWORK_ERROR_CHEATER                                       :{WHITE} 此服务器不允许作弊
+STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}没有网络设备或者编译时未使用 ENABLE_NETWORK 参数
+STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}未找到任何联机游戏
+STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}服务器没有响应
+STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}因为 NewGRF 不匹配而无法连接
+STR_NETWORK_ERROR_DESYNC                                        :{WHITE}联机游戏同步失败
+STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}联机游戏被断开
+STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}无法读取存档
+STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}无法启动服务器模式
+STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}无法连接
+STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}连接 #{NUM} 超时
+STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}传输协议错误，连接断开
+STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}此客户端版本与服务器端不匹配
+STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}密码错误
+STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}服务器已经满员
+STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}您的IP已被该服务器封禁(ban)
+STR_NETWORK_ERROR_KICKED                                        :{WHITE}您已被踢出服务器
+STR_NETWORK_ERROR_CHEATER                                       :{WHITE}此服务器不允许作弊
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :一般错误
@@ -1772,8 +1772,8 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} �
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} 已更改姓名为 {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} 送给您的公司 {2:CURRENCY}
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** 您送了 {2:CURRENCY} 给 {1:STRING}
-STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE} 服务器关闭了进程
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE} 服务器正在重新启动。{}请等待……
+STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}服务器关闭了进程
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}服务器正在重新启动。{}请等待……
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}下载内容
@@ -3312,9 +3312,9 @@ STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}土地�
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}不能这样做……
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}必须先摧毁建筑
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}无法清除这个区域……
-STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}...地点不合适
+STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... 地点不合适
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... 已经建好了
-STR_ERROR_OWNED_BY                                              :{WHITE} 归 {STRING} 所有
+STR_ERROR_OWNED_BY                                              :{WHITE}归 {STRING} 所有
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... 此区域由另一公司所有
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}名称重复!请重新命名.
 STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}目标位置有 {1:STRING}

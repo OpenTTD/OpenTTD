@@ -38,11 +38,11 @@ STR_CARGO_PLURAL_MAIL.geniki                                    :{G=f}Αλληλ
 STR_CARGO_PLURAL_OIL                                            :{G=n}Πετρέλαια
 STR_CARGO_PLURAL_OIL.geniki                                     :{G=n}Πετρελαίου
 STR_CARGO_PLURAL_LIVESTOCK                                      :{G=n}Ζώα
-STR_CARGO_PLURAL_LIVESTOCK.geniki                               :Ζώου
+STR_CARGO_PLURAL_LIVESTOCK.geniki                               :Ζώων
 STR_CARGO_PLURAL_GOODS                                          :{G=n}Αγαθά
 STR_CARGO_PLURAL_GOODS.geniki                                   :Αγαθού
 STR_CARGO_PLURAL_GRAIN                                          :{G=n}Σιτηρά
-STR_CARGO_PLURAL_GRAIN.geniki                                   :{G=n}Σιτηρού
+STR_CARGO_PLURAL_GRAIN.geniki                                   :{G=n}Σιτηρών
 STR_CARGO_PLURAL_WOOD                                           :{G=f}Ξυλεία
 STR_CARGO_PLURAL_WOOD.geniki                                    :Ξυλείας
 STR_CARGO_PLURAL_IRON_ORE                                       :{G=n}Σιδηρομεταλλεύματα
@@ -879,12 +879,12 @@ STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK
 
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}{G Ο Η Το} {INDUSTRY} ανεβάζει την παραγωγή!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}Νέα φλέβα άνθρακα βρέθηκε στα {INDUSTRY}!{}Η παραγωγή αναμένεται να διπλασιαστεί!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}Νέα αποθέματα πετρελαίου βρέθηκαν στην {INDUSTRY}!{}Η παραγωγή αναμένεται να διπλασιαστεί!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}Νέα αποθέματα πετρελαίου βρέθηκαν στις {INDUSTRY}!{}Η παραγωγή αναμένεται να διπλασιαστεί!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}Βελτιωμένες μέθοδοι καλλιέργειας στην {INDUSTRY} αναμένεται να διπλασιάσουν την παραγωγή!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK} η παραγωγή {STRING.geniki} στ{G o η ο} {INDUSTRY} αυξήθηκε κατά {COMMA}%!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK} Η παραγωγή {STRING.geniki} στ{G o η ο} {INDUSTRY} αυξήθηκε κατά {COMMA}%!
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}Η παραγωγή στ{G o η ο} {INDUSTRY} μειώθηκε κατά 50%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}Μόλυνση από έντομα προκαλεί καταστροφή στη {INDUSTRY}!{}Η παραγωγή μειώθηκε κατά 50%
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK} η παραγωγή {STRING.geniki} στ{G o η ο} {INDUSTRY} μειώθηκε κατά {COMMA}%!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK} Η παραγωγή {STRING.geniki} στ{G o η ο} {INDUSTRY} μειώθηκε κατά {COMMA}%!
 
 STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} περιμένει στο αμαξόστασιο
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} περιμένει στο αμαξόστασιο
@@ -904,7 +904,7 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} πάλιωσε πολύ και χρειάζεται επειγόντως αλλαγή
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} δεν μπορεί να βρει δρόμο να συνεχίσει
 STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{G Ο Η Το} {VEHICLE} χάθηκε
-STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE} Το κέρδος του {VEHICLE} πέρυσι ήταν {CURRENCY}
+STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Το κέρδος του {VEHICLE} πέρυσι ήταν {CURRENCY}
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} σταμάτησε γιατί μια εντολή μετατροπής απέτυχε
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Αποτυχία Αυτόματης Ανανέωσης για το {VEHICLE}{}{STRING}
@@ -1823,7 +1823,7 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Εισά
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Δεν βρέθηκε συσκευή δικτύου ή έγινε μεταγλώτηση χώρις παράμετρο ENABLE_NETWORK
 STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Δεν βρέθηκε κάποιο δικτυακό παιχνίδι
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Ο διακομιστής δεν απάντησε στο αίτημα
-STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE} Απέτυχε η σύνδεση λόγο ασυμφωνίας NewGRF
+STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Απέτυχε η σύνδεση λόγο ασυμφωνίας NewGRF
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Συγχρονισμός δικτυακού παιχνιδιού απέτυχε
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Χάθηκε η σύνδεση δικτυακού παιχνιδιού
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Δεν είναι δυνατό το φόρτωμα αποθηκευμένου παιχνιδιού
@@ -1831,11 +1831,11 @@ STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Δεν �
 STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Η σύνδεση δεν είναι δυνατή
 STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Τελειώσε ο χρόνος της σύνδεσης #{NUM}
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Έγινε ενα λάθος πρωτόκολλου και η σύνδεση έκλεισε
-STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE} Η υποέκδοση του πελάτη δεν ταιριάζει με την υποέκδοση του διακομιστή
+STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Η υποέκδοση του πελάτη δεν ταιριάζει με την υποέκδοση του διακομιστή
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Λανθασμένος κωδικός
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Ο διακομιστής είναι γεμάτος
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Έχει απαγορευτεί η είσοδος σας από το διακομιστή
-STR_NETWORK_ERROR_KICKED                                        :{WHITE} Έχετε εκδιωχτεί από το παιχνίδι
+STR_NETWORK_ERROR_KICKED                                        :{WHITE}Έχετε εκδιωχτεί από το παιχνίδι
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Η χρήση cheats δεν επιτρέπεται σε αυτό το διακομιστή
 
 ############ Leave those lines in this order!!
@@ -1878,8 +1878,8 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} α
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} άλλαξε το όνομα του/της σε {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} έδωσε στην εταιρία σας {2:CURRENCY}
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Δώσατε {1:STRING} {2:CURRENCY}
-STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE} Ο διακομιστής έκλεισε την συνεδρία
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE} Ο διακομιστής κάνει επανεκκίνηση...{}Παρακαλώ πολύ...
+STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Ο διακομιστής έκλεισε την συνεδρία
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Ο διακομιστής κάνει επανεκκίνηση...{}Παρακαλώ πολύ...
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Κατέβασμα περιεχόμενου
@@ -2796,7 +2796,7 @@ STR_PURCHASE_INFO_SPEED                                         :{BLACK}Ταχύ
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Κόστος λειτουργίας: {GOLD}{CURRENCY}/χρ
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Χωρητικότητα: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(μετατρέψιμο)
-STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Σχεδιασμένο: {GOLD}{NUM}{BLACK} Χρόνος ζώης: {GOLD}{COMMA} χρόνια
+STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Έτος σχεδίασης: {GOLD}{NUM}{BLACK} Χρόνος ζώης: {GOLD}{COMMA} χρόνια
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Μεγ. Αξιοπιστία: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Κόστος: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Βάρος: {GOLD}{WEIGHT_S} ({WEIGHT_S})
@@ -3011,7 +3011,7 @@ STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Τρέχ
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Φόρτωση / Ξεφόρτωση
-STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Αποχώρηση
+STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Αναχώρηση
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Κατεστραμμένο!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Χαλασμένο
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Σταματημένο
@@ -3272,9 +3272,9 @@ STR_TIMETABLE_TICKS                                             :{COMMA} στι�
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Το δρομολόγιο αυτό θα χρειαστεί τουλάχιστον {STRING} για να ολοκληρωθεί.
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Το δρομολόγιο αυτό θα χρειαστεί τουλάχιστον {STRING} για να ολοκληρωθεί (δεν είναι όλα τα χρονοδιαγράμματα)
 
-STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Αυτό το όχημα πηγαίνει στην ώρα του
+STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Αυτό το όχημα πηγαίνει σύμφωνα με το δρομολόγιο του
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Αυτό το όχημα εχει καθυστερήσει κατά {STRING}
-STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Το όχημα αυτό τρέχει {STRING} αργά
+STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Το όχημα εκτελεί το δρομολόγιο του κατα {STRING} νωρίτερα
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Αυτό το δρομολόγιο ακόμα δεν έχει ξεκίνησει
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Αυτό το δρομολόγιο θα ξεκίνησει στις {STRING}
 
@@ -3394,7 +3394,7 @@ STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Έλεγχος 
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Το παιχνίδι έχει σωθεί σε έκδοση χώρις υποστήριξη τροχιόδρομου. Όλα τα τραμ έχει αφαιρεθεί
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Η δημιουργία του χάρτη εγκαταλήφτηκε...{}...Δεν υπάρχουν κατάλληλες τοποθεσίες για πόλεις
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Η δημιουργία του χάρτη εγκαταλήφτηκε...{}... Δεν υπάρχουν κατάλληλες τοποθεσίες για πόλεις
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... δεν υπάρχει καμία πόλη σε αυτό το σενάριο
 
 STR_ERROR_PNGMAP                                                :{WHITE}Δεν είναι δυνατή η φόρτωση από PNG...
@@ -3425,7 +3425,7 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Πολύ
 STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Δεν υπάρχουν αρκετά χρήματα - απαιτούνται {CURRENCY}
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Απαιτείται επίπεδο έδαφος
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Το έδαφος έχει λάθος κλίση
-STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Αυτό δεν γίνεται....
+STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Αυτό δεν γίνεται...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Το κτίριο πρέπει πρώτα να κατεδαφιστεί
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Αυτή η περιοχή είναι αδύνατο να καθαριστεί...
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... ακατάλληλη περιοχή
@@ -3448,7 +3448,7 @@ STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Αδύν
 STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Αδύνατο να έρθει στο ίδιο επίπεδο η γη εδώ...
 STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}Η εκσκαφή θα κατέστρεφε το τούνελ
 STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}Ήδη στο επίπεδο της θάλασσας
-STR_ERROR_TOO_HIGH                                              :{WHITE}...πολύ ψηλά
+STR_ERROR_TOO_HIGH                                              :{WHITE}... πολύ ψηλά
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... ήδη επίπεδο
 
 # Company related errors

@@ -836,7 +836,7 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}آیا 
 ############ End of leave-in-this-order
 
 # Content downloading window
-STR_CONTENT_TITLE                                               :{WHITE} در حال دانلود
+STR_CONTENT_TITLE                                               :{WHITE}در حال دانلود
 STR_CONTENT_TYPE_CAPTION                                        :{BLACK}نوع
 STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}نوع محتوی
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}نام
@@ -936,7 +936,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}انتخ
 
 # Bridge selection window
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}انتخب پل راه آهن
-STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE} ساخت پل ماشین رو
+STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}ساخت پل ماشین رو
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK} ساخت پل - بر روی پل مورد نظر خود کلیک کنید تا ساخته شود
 STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
 STR_BRIDGE_NAME_WOODEN                                          :چوبی
@@ -1015,7 +1015,7 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}انتخ
 
 
 # Fund new industry window
-STR_FUND_INDUSTRY_CAPTION                                       :{WHITE} ساخت کارخانه جدید
+STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}ساخت کارخانه جدید
 STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}خرج: {YELLOW}{CURRENCY}
 
 # Land area window
@@ -1579,7 +1579,7 @@ STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}بازی
 
 
 # Screenshot related messages
-STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE} تصویر با موفقیت در {STRING} ذخیره شد
+STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}تصویر با موفقیت در {STRING} ذخیره شد
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}تصئیر ذخیره نشد
 
 # Error message titles
@@ -1592,20 +1592,20 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}بسیا
 STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}پول به اندازه ی کافی موجود نیست- به {CURRENCY} نیاز است
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}زمین باید مسطح باشد
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}نمی‌توانم انجام دهم
-STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE} اول باید ساختمان تخریب شود
+STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}اول باید ساختمان تخریب شود
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}این منطقه پاک نمی‌شود
-STR_ERROR_SITE_UNSUITABLE                                       :{WHITE} مکان مناسب نیست
-STR_ERROR_ALREADY_BUILT                                         :{WHITE} قبلا در اینجا ساخته شده
-STR_ERROR_OWNED_BY                                              :{WHITE} صاحب {STRING} است.
-STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE} این ناحیه توسط شرکت دیگری تصاحب شده
+STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}مکان مناسب نیست
+STR_ERROR_ALREADY_BUILT                                         :{WHITE}قبلا در اینجا ساخته شده
+STR_ERROR_OWNED_BY                                              :{WHITE}صاحب {STRING} است.
+STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}این ناحیه توسط شرکت دیگری تصاحب شده
 
 # Local authority errors
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE} انجمن شهر {TOWN} اجازه این کار را نمیدهد
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}انجمن شهر {TOWN} اجازه این کار را نمیدهد
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}نمی شود افزایش ارتفاع اد
 STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}نمی توان ارتفاع زمین را کم کرد
-STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE} قبلا یه سطح دریا رسیده است
+STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}قبلا یه سطح دریا رسیده است
 STR_ERROR_TOO_HIGH                                              :{WHITE}بیش از اندازه ارتفاع دارد
 
 # Company related errors
@@ -1617,41 +1617,41 @@ STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}نمی �
 # Town related errors
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}نمی توان اسم شهر را تغییر داد
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}اینجا نمی شود شهر ساخت
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE} به حاشیه ی نقشه زیادی نزدیک است
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE} به شهر دیگری بسیار نزدیک است
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}به حاشیه ی نقشه زیادی نزدیک است
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}به شهر دیگری بسیار نزدیک است
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}تعداد شهر ها بسیار زیاد شده
 
 # Industry related errors
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}نمی شود {STRING} اینجا ساخت
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}این نوع کاخانه را در اینجا نمی شود ساخت...
-STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE} اول باید شهر ساخته شود
-STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE} فقط یکی به ازای هر شهر مجاز است
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE} فقط در شهرهایی با جمعیت بیش از 1200 نفر ممکن است
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE} فقط میتوان در جنگل های بارانی ساخت
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE} فقط می توان در صحرا ساخت
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}اول باید شهر ساخته شود
+STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}فقط یکی به ازای هر شهر مجاز است
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}فقط در شهرهایی با جمعیت بیش از 1200 نفر ممکن است
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}فقط میتوان در جنگل های بارانی ساخت
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}فقط می توان در صحرا ساخت
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}فقط می توان در شهر ها ساخت
-STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}...فقط در حاشیه ی نقشه ساخته می شود
-STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}...جنگل باید بالای خط برف کاشته شود
+STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... فقط در حاشیه ی نقشه ساخته می شود
+STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... جنگل باید بالای خط برف کاشته شود
 
 # Station construction related errors
-STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE} اینجا نمی شود ایستگاه راه آهن ساخت
+STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}اینجا نمی شود ایستگاه راه آهن ساخت
 STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}اینجا ایستگاه اتوبوس نمی شود ساخت
 STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}اینجا ایستگاه کامیون نمیشود ساخت
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}نمی توان اینجا فرودگاه ساخت. . .
 
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}ایستگاه زیادی پخش شده است
-STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE} تعداد محوطه های بارگیری/ایستگاه بسیار زیاد شده
+STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}تعداد محوطه های بارگیری/ایستگاه بسیار زیاد شده
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}به ایستگاه دیگری بسیار نزدیک است
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}به محوطه ی بارگیری/ایستگاه دیگری بسیار نزدیک است
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}به بندر دیگری بسییار نزدیک است
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE} به فرودگاه دیگری بسیار نزدیک شده
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}به فرودگاه دیگری بسیار نزدیک شده
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}نام این ایستگاه را نمی شود تغییر داد
 
 # Station destruction related errors
 
-STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE} اول باید راه آهن تخریب شود
+STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}اول باید راه آهن تخریب شود
 STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}باید اول بندر را تخریب کرد
-STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE} اول باید فرودگاه تخریب شود
+STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}اول باید فرودگاه تخریب شود
 
 # Waypoint related errors
 
@@ -1666,7 +1666,7 @@ STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}قطار
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}نمیتوان جهت حرکت وسیله را معکوس کرد...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}نمیتوان جهت وسایلی که از چند قطعه تشکیل شده اند را معکوس کرد
 
-STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE} ...این وسیله را نمی توان حرکت داد
+STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}... این وسیله را نمی توان حرکت داد
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}مسیری به ایستگاه راه آهن پیدا نمیشود
 
 
@@ -1677,33 +1677,33 @@ STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}ترکی
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}قطعه مناسب راه آهن انتخاب نشده
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}اول باید ریل راه آهن حذف شود
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}اینجا نمی شود علامت ساخت
-STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE} اینجا نمی شود ریل ساخت
+STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}اینجا نمی شود ریل ساخت
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}از اینجا نمی شود ریل را حذف کرد
-STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE} از اینجا نمی شود چراغ ها ی راهنمایی را حذف کرد
+STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}از اینجا نمی شود چراغ ها ی راهنمایی را حذف کرد
 
 
 # Road construction errors
-STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE} اول باید جاده حذف شود
-STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE} اینجا نمی توان جاده ساخت
+STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}اول باید جاده حذف شود
+STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}اینجا نمی توان جاده ساخت
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}جاده را نمی شود از اینجا حذف کرد
 
 # Waterway construction errors
-STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE} باید بر روی آب ساخته شود
+STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}باید بر روی آب ساخته شود
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}نمی شود بر روی آب ساخت
 
 # Tree related errors
-STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE} قبلا اینجا درخت کشته شده است
-STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE} اینجا نمی شود درخت کاشت
+STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}قبلا اینجا درخت کشته شده است
+STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}اینجا نمی شود درخت کاشت
 
 # Bridge related errors
-STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE} اینجا نمی شود پل ساخت
+STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}اینجا نمی شود پل ساخت
 STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}اول باید پل خراب شود
-STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE} محل شروع و پایاننمی توانند در یک نقطه باشند
+STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}محل شروع و پایاننمی توانند در یک نقطه باشند
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}محل شروع پایان باید در یک خط باشند
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}هر دو سر پل باید در خشکی قرار بگیرد
 
 # Tunnel related errors
-STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE} اینجا نمی شود تونل ساخت
+STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}اینجا نمی شود تونل ساخت
 STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}محل برای شروع تونل نا مناسب است
 STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}اول باید تونل خراب شود
 
@@ -1711,7 +1711,7 @@ STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}اول �
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}چیزی در مسیر قرار گرفته
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}ساختمان اصلی شرکت در مسیر قرار گرفته است
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}نمی توان این ناحیه را خرید
-STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE} قبلا توسط شرکت خریداری شده
+STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}قبلا توسط شرکت خریداری شده
 
 # Group related errors
 
@@ -1769,12 +1769,12 @@ STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}نمی �
 STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :{WHITE}نمی شود دستور را حذف کرد
 STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}این دستور تغییر نمی کند...
 
-STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}از هدف قبلی بسیار دور است......
+STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}از هدف قبلی بسیار دور است...
 
 # Timetable related errors
 
 # Sign related errors
-STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE} تعداد لامات بسیار زیاد شده
+STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}تعداد لامات بسیار زیاد شده
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}اینجا نمی شود علامت ساخت
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}نمی شود اسم علامت را عوض کرد
 

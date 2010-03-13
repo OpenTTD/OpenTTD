@@ -1783,8 +1783,8 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} ha
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} har ändrat hans/hennes namn till {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} gav ditt företag {2:CURRENCY}
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** You gave {1:STRING} {2:CURRENCY}
-STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE} Servern avslutade sessionen
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE} Servern startar om...{}Var vänlig vänta...
+STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Servern avslutade sessionen
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Servern startar om...{}Var vänlig vänta...
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Innehåll laddas hem
@@ -3293,7 +3293,7 @@ STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Integritetskont
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Spelet sparades i en version som ej stöder spårvagn. Alla spårvagnar har tagits bort
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Generering av kartan avbruten...{}...ingen lämplig plats för någon stad
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Generering av kartan avbruten...{}... ingen lämplig plats för någon stad
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... det finns ingen stad i detta scenario
 
 STR_ERROR_PNGMAP                                                :{WHITE}Kan inte ladda landskap från PNG...
@@ -3327,7 +3327,7 @@ STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Marken l
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Kan inte utföra detta...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Byggnad måste rivas först
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Kan inte röja området...
-STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}...platsen passar inte
+STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... platsen passar inte
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... redan byggd
 STR_ERROR_OWNED_BY                                              :{WHITE}... ägs av {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... området ägs av ett annat företag
@@ -3364,7 +3364,7 @@ STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Kan inte
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Kan inte bygga huvudkontor här...
 STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Kan inte köpa 25% andelar i detta företag...
 STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Kan inte sälja 25% andelar i detta företag...
-STR_ERROR_PROTECTED                                             :{WHITE}Det här företaget bedriver inte aktiehandel ännu....
+STR_ERROR_PROTECTED                                             :{WHITE}Det här företaget bedriver inte aktiehandel ännu...
 
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Kan inte bygga några städer
@@ -3617,7 +3617,7 @@ STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... ett 
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Kan inte dela orderlistan...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Kan inte kopiera orderlistan...
-STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...för långt från föregående destination
+STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... för långt från föregående destination
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Kan inte lägga till fordonet i en tidtabell...

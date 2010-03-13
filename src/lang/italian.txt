@@ -1785,8 +1785,8 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} ha
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} ha cambiato nome in {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} ha donato alla tua compagnia {2:CURRENCY}
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Hai donato {2:CURRENCY} a {1:STRING}
-STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE} Il server ha chiuso la sessione
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE} Il server si sta riavviando...{}Attendere prego...
+STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Il server ha chiuso la sessione
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Il server si sta riavviando...{}Attendere prego...
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Download contenuti
@@ -3295,16 +3295,16 @@ STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Controllo integ
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}La partita è stata salvata in una versione senza il supporto per i tram. Tutte le tranvie sono state rimosse.
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Generazione mondo interrotta...{}...nessuna posizione adatta per le città
-STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}...non ci sono città in questo scenario
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Generazione mondo interrotta...{}... nessuna posizione adatta per le città
+STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... non ci sono città in questo scenario
 
 STR_ERROR_PNGMAP                                                :{WHITE}Impossibile caricare il terreno dal file PNG...
-STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}...file non trovato.
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}...impossibile convertire il tipo di immagine. È richiesta un'immagine PNG a 8 o 24 bit.
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}...qualcosa non ha funzionato (probabilmente il file è corrotto)
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... file non trovato.
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... impossibile convertire il tipo di immagine. È richiesta un'immagine PNG a 8 o 24 bit.
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}... qualcosa non ha funzionato (probabilmente il file è corrotto)
 
 STR_ERROR_BMPMAP                                                :{WHITE}Impossibile caricare il terreno dal file BMP...
-STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}...impossibile convertire il tipo di immagine
+STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... impossibile convertire il tipo di immagine
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Avviso scala
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Ridimensionare di molto l'heightmap sorgente non è consigliabile. Continuare con la generazione?
@@ -3326,9 +3326,9 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Troppo v
 STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Denaro insufficiente - servono {CURRENCY}
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Richiesto terreno pianeggiante
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Terreno inclinato nella direzione sbagliata
-STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Impossibile farlo....
+STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Impossibile farlo...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}L'edificio deve essere demolito prima
-STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Impossibile ripulire l'area....
+STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Impossibile ripulire l'area...
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... sito inadatto
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... già costruito
 STR_ERROR_OWNED_BY                                              :{WHITE}... posseduto da {STRING}
@@ -3348,9 +3348,9 @@ STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Impossib
 STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Impossibile abbassare il terreno qui...
 STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Impossibile livellare il terreno qui...
 STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}Gli scavi danneggerebbero il tunnel
-STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}...già al livello del mare
-STR_ERROR_TOO_HIGH                                              :{WHITE}...troppo alto
-STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}...già pianeggiante
+STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}... già al livello del mare
+STR_ERROR_TOO_HIGH                                              :{WHITE}... troppo alto
+STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... già pianeggiante
 
 # Company related errors
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Impossibile cambiare il nome della compagnia...
@@ -3375,7 +3375,7 @@ STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Impossib
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... troppo vicino al bordo della mappa
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... troppo vicino ad un'altra città
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... troppe città
-STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...non c'è altro spazio sulla mappa
+STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... non c'è altro spazio sulla mappa
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Alla città non è permesso costruire strade. È possibile abilitare la costruzione di strade in Impostazioni avanzate -> Economia -> Città.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Lavori stradali in corso
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Impossibile eliminare la città...{}Una stazione o un deposito fa ancora riferimento alla città o un riquadro di proprietà della città non può essere rimosso
@@ -3384,7 +3384,7 @@ STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Impossib
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Impossibile generare industrie...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Impossibile costruire {STRING} qui...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Impossibile costruire l'industria qui...
-STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}...troppo vicina ad un'altra industria
+STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... troppo vicina ad un'altra industria
 STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... bisogna fondare una città prima
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... ne è ammessa solo una per città
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... può essere costruita solo in città con almeno 1.200 abitanti
@@ -3406,7 +3406,7 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Impossib
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Farebbe parte di due o più stazioni/aree di carico
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... stazione troppo estesa
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}...stazioni non uniformi disabilitate
+STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... stazioni non uniformi disabilitate
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Troppe stazioni/aree di carico
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Stazione composta da troppe parti
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Troppe stazioni degli autobus
@@ -3416,8 +3416,8 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Troppo v
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Troppo vicino ad un altro molo
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Troppo vicino ad un altro aeroporto
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Impossibile rinominare la stazione...
-STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}...questa è una strada di proprietà della città
-STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}...strada rivolta nella direzione sbagliata
+STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... questa è una strada di proprietà della città
+STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... strada rivolta nella direzione sbagliata
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Impossibile rimuovere parte della stazione...
@@ -3446,7 +3446,7 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Impossib
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Impossibile rimuovere il waypoint ferroviario da qui...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Bisogna rimuovere il waypoint ferroviario prima
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... boa di mezzo
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}...la boa è in uso!
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... la boa è in uso!
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Impossibile costruire il deposito qui...
@@ -3493,7 +3493,7 @@ STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Impossib
 
 # Road construction errors
 STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}Bisogna rimuovere la strada prima
-STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}...le strade a senso unico non possono avere raccordi
+STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}... le strade a senso unico non possono avere raccordi
 STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Impossibile costruire la strada qui...
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Impossibile costruire la tranvia qui...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Impossibile rimuovere la strada da qui...

@@ -1783,8 +1783,8 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} me
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} telah mengganti namanya menjadi {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} telah memberi perusahaanmu {2:CURRENCY}
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Anda telah memberi {1:STRING} {2:CURRENCY}
-STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE} Server menutup sesi
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE} Server memulai ulang...{}Tunggulah...
+STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Server menutup sesi
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Server memulai ulang...{}Tunggulah...
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Mengunduh konten
@@ -2438,7 +2438,7 @@ STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Hapus ko
 STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Ubah nama Kota
 
 # Town local authority window
-STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE} Pemerintah Kota {TOWN}
+STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}Pemerintah Kota {TOWN}
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Peringkat Perusahaan Transportasi:
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Tindakan yang tersedia:
@@ -2744,7 +2744,7 @@ STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Ubah nam
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Ubah nama jenis pesawat
 
 # Depot window
-STR_DEPOT_TRAIN_CAPTION                                         :{WHITE} Depo Kereta {TOWN}
+STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}Depo Kereta {TOWN}
 STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} Bengkel Bus/truk
 STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} Galangan Kapal
 STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} Hangar Pesawat
@@ -3293,16 +3293,16 @@ STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Pemeriksaan int
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Game telah disimpan pada versi terdahulu tanpa dukungan alat transportasi trem. Semua Trem telah dihilangkan.
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Pebuatan peta dibatalkan...{}...tak ada lokasi kota yang cocok
-STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}...disana tidak ada kota dalam skenario ini
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Pebuatan peta dibatalkan...{}... tak ada lokasi kota yang cocok
+STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... disana tidak ada kota dalam skenario ini
 
 STR_ERROR_PNGMAP                                                :{WHITE}Tidak dapat memuat lansekap dari PNG...
-STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}...berkas tidak ada
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}...tak dapat mengkonversi. PNG 8 atau 24-bit diperlukan.
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}...sepertinya ada yang salah. Maaf. (mungkin berkasnya rusak)
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... berkas tidak ada
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... tak dapat mengkonversi. PNG 8 atau 24-bit diperlukan.
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}... sepertinya ada yang salah. Maaf. (mungkin berkasnya rusak)
 
 STR_ERROR_BMPMAP                                                :{WHITE}Tidak dapat memuat lansekap dari BMP...
-STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}...tak dapat mengkonversi jenis gambar.
+STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... tak dapat mengkonversi jenis gambar.
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Peringatan Skala
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Ukuran peta terlalu besar dan tidak direkomendasikan. Lanjutkan?
@@ -3326,11 +3326,11 @@ STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Daratan 
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Kemiringan daratan tidak sesuai
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Tidak bisa
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Bangunan harus dihancurkan terlebih dahulu
-STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Tidak dapat menghancurkan area ini....
-STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}...lokasi tidak sesuai
-STR_ERROR_ALREADY_BUILT                                         :{WHITE}...sudah dibangun
-STR_ERROR_OWNED_BY                                              :{WHITE}...dimiliki oleh {STRING}
-STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...area ini dimiliki oleh perusahaan lain
+STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Tidak dapat menghancurkan area ini...
+STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... lokasi tidak sesuai
+STR_ERROR_ALREADY_BUILT                                         :{WHITE}... sudah dibangun
+STR_ERROR_OWNED_BY                                              :{WHITE}... dimiliki oleh {STRING}
+STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... area ini dimiliki oleh perusahaan lain
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Nama haruslah unik
 STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :terhalang {WHITE}{1:STRING}
 
@@ -3354,10 +3354,10 @@ STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... suda
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Tidak dapat mengubah nama perusahaan
 STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Tidak dapat mengubah nama pimpinan...
 
-STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}...besar pinjaman maksimal yang diizinkan adalah {CURRENCY}
+STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... besar pinjaman maksimal yang diizinkan adalah {CURRENCY}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Tidak dapat meminjam uang lagi...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}...tidak ada hutang yang harus dibayar
-STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}...dibutuhkan {CURRENCY}
+STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... tidak ada hutang yang harus dibayar
+STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... dibutuhkan {CURRENCY}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Tidak dapat membayar hutang...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Tidak dapat memberikan uang yang berasal dari pinjaman bank...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Tidak dapat membeli perusahaan...
@@ -3370,10 +3370,10 @@ STR_ERROR_PROTECTED                                             :{WHITE}Perusaha
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Tidak dapat membuat satu kota pun
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Tidak dapat mengubah nama kota...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Tidak dapat membangun kota disini
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}...terlalu dekat dengan batas tepi peta
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}...terlalu dekat dengan kota lain
-STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}...terlalu banyak kota
-STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...tidak ada lagi ruang tersisa dalam peta
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... terlalu dekat dengan batas tepi peta
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... terlalu dekat dengan kota lain
+STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... terlalu banyak kota
+STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... tidak ada lagi ruang tersisa dalam peta
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Kota tidak akan membangun jalan. Anda dapat mengaktifkan pembangunan jalan pada menu Pengaturan Lanjutan->Ekonomi->Kota.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Jalan sedang dikerjakan
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Tidak dapat menghancurkan kota ini...{}Suatu stasiun atau depo tergantung pada kota ini atau kotak milik kota tidak dapat dihapus
@@ -3382,16 +3382,16 @@ STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Tidak da
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Tidak dapat membangkitkan/membuat industri...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Tidak dapat membangun {STRING} disini...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Tidak dapat membangun industri ini disini...
-STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}...terlalu dekat dengan industri lain
-STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}...harus membangun kota terlebih dahulu
-STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}...hanya diizinkan satu di setiap kota
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...hanya dapat dibangun pada kota dengan populasi paling sedikit 1200
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...hanya dapat dibangun di area hutan hujan
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}...hanya dapat dibangun di area gurun
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}...hanya dapat dibangun di kota
+STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... terlalu dekat dengan industri lain
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... harus membangun kota terlebih dahulu
+STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... hanya diizinkan satu di setiap kota
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... hanya dapat dibangun pada kota dengan populasi paling sedikit 1200
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... hanya dapat dibangun di area hutan hujan
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... hanya dapat dibangun di area gurun
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... hanya dapat dibangun di kota
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... hanya dapat dibangun di daerah rendah
-STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}...hanya dapat diletakkan didekat batas peta
-STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}...hutan hanya dapat ditanam diatas batas salju
+STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... hanya dapat diletakkan didekat batas peta
+STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... hutan hanya dapat ditanam diatas batas salju
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Tidak dapat membangun stasiun kereta disini
@@ -3404,7 +3404,7 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Tidak da
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}berdempetan dengan lebih dari satu stasiun yang telah ada
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... stasiun terlalu membentang/melebar
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}...Stasiun tidak seragam tidak aktif
+STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... Stasiun tidak seragam tidak aktif
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Terlalu banyak stasiun/area bongkar muat
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Terlalu banyak bag. stasiun
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Terlalu banyak pemberhentian Bus
@@ -3414,8 +3414,8 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Terlalu 
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Terlalu dekat dengan dok/galangan kapal lainnya
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Terlalu dekat dengan bandara lainnya
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Tidak dapat mengganti nama stasiun...
-STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}...jalan ini milik kota
-STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}...menghadap pada arah yang salah
+STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... jalan ini milik kota
+STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... menghadap pada arah yang salah
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Tidak dapat menghapus bagian dari stasiun...
@@ -3444,7 +3444,7 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Tidak da
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Tidak dapat menghapus waypoint kereta disini...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Harus membongkar rel waypoint terlebih dahulu
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... terhalang pelampung
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}...Pelampung sedang digunakan!
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... Pelampung sedang digunakan!
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Tidak dapat membangun depo kereta disini...
@@ -3491,7 +3491,7 @@ STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Tidak da
 
 # Road construction errors
 STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}Harus membongkar jalan terlebih dahulu
-STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}...jalan satu arah tak bisa memiliki simpangan
+STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}... jalan satu arah tak bisa memiliki simpangan
 STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Tidak dapat membangun jalan disini...
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Tidak dapat membangun jalan trem disini...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Tidak dapat membongkar jalan di sini...
@@ -3501,13 +3501,13 @@ STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Tidak da
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Tidak dapat membangun kanal disini...
 STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Tidak dapat membangun lock disini...
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Tidak dapat menempatkan sungai disini...
-STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}...harus dibangun di atas air
+STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... harus dibangun di atas air
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... tidak dapat membangun di atas air
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Harus menghancurkan kanal terlebih dahulu
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Tidak dapat membangun jembatan air disini...
 
 # Tree related errors
-STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}...pohon sudah ada disini
+STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... pohon sudah ada disini
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Tidak dapat menanam pohon disini...
 
 # Bridge related errors
@@ -3529,9 +3529,9 @@ STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Tidak da
 
 # Unmovable related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}terhalang obyek
-STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}...terhalang kantor pusat perusahaan
+STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... terhalang kantor pusat perusahaan
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Tidak dapat membeli area ini
-STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}...anda sudah memilikinya!
+STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... anda sudah memilikinya!
 
 # Group related errors
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Tidak data membuat kelompok...
@@ -3617,7 +3617,7 @@ STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... kend
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Tidak dapat berbagi perintah...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Tidak dapat meniru perintah...
-STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...terlalu jauh dari tujuan sebelumnya
+STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... terlalu jauh dari tujuan sebelumnya
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Tidak dapat membuat jadwal keberangkatan kendaraan...

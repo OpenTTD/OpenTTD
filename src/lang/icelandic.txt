@@ -1674,23 +1674,23 @@ STR_NETWORK_CHAT_ALL                                            :[All] {STRING}:
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Sláðu inn texta fyrir netpsjall
 
 # Network messages
-STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE} Enginn netbúnaður fannst eða vistþýtt án ENABLE_NETWORK
-STR_NETWORK_ERROR_NOSERVER                                      :{WHITE} Fann enga netleiki
-STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE} Þjóninn svaraði ekki fyrirspurninni
-STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE} Gat ekki tengst vegna NewGRF misræmis
-STR_NETWORK_ERROR_DESYNC                                        :{WHITE} Samstilling netleiks mistókst.
-STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE} Tenging við netleik glataðist.
-STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE} Gat ekki hlaðið vistuðum leik af þjóni.
-STR_NETWORK_ERROR_SERVER_START                                  :{WHITE} Gat ekki ræst þjón
-STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE} Gat ekki tengst
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE} Tenging #{NUM} fjaraði út.
-STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE} Villa varð í samskiptum og tengingu var lokað
-STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE} Útgáfa biðils er ekki sama og útgáfa þjóns
-STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE} Rangt lykilorð
-STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE} Þjónninn er fullur
-STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE} Þú ert bannaður/bönnuð á þessum þjóni
-STR_NETWORK_ERROR_KICKED                                        :{WHITE} Þér var hent út úr leiknum
-STR_NETWORK_ERROR_CHEATER                                       :{WHITE} Svindl er ekki leyft á þessum þjóni
+STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Enginn netbúnaður fannst eða vistþýtt án ENABLE_NETWORK
+STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Fann enga netleiki
+STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Þjóninn svaraði ekki fyrirspurninni
+STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Gat ekki tengst vegna NewGRF misræmis
+STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Samstilling netleiks mistókst.
+STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Tenging við netleik glataðist.
+STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Gat ekki hlaðið vistuðum leik af þjóni.
+STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Gat ekki ræst þjón
+STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Gat ekki tengst
+STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Tenging #{NUM} fjaraði út.
+STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Villa varð í samskiptum og tengingu var lokað
+STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Útgáfa biðils er ekki sama og útgáfa þjóns
+STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Rangt lykilorð
+STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Þjónninn er fullur
+STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Þú ert bannaður/bönnuð á þessum þjóni
+STR_NETWORK_ERROR_KICKED                                        :{WHITE}Þér var hent út úr leiknum
+STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Svindl er ekki leyft á þessum þjóni
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :almenn villa
@@ -1722,8 +1722,8 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} yf
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} heitir nú {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} sendi þér {2:CURRENCY}
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Þú gafst {1:STRING} {2:CURRENCY}
-STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE} Þjónninn sleit tengingunni
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE} Verið er að endurræsa þjóninn...{}Vinsamlega bíðið...
+STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Þjónninn sleit tengingunni
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Verið er að endurræsa þjóninn...{}Vinsamlega bíðið...
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Niðurhel efni
@@ -3181,13 +3181,13 @@ STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Könnun gagnahe
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Leikurinn var vistaður í útgáfu án sporvagna. Allir sporvagnar hafa verið fjarlægðir.
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Sköpun korts hætt...{}...ekkert hentugt bæjarstæði
-STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}...það er enginn bær í þessu landi
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Sköpun korts hætt...{}... ekkert hentugt bæjarstæði
+STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... það er enginn bær í þessu landi
 
 STR_ERROR_PNGMAP                                                :{WHITE}Get ekki hlaðið landslagi úr PNG skrá...
-STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}...skrá ekki til staðar.
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}...gat ekki meðhöndlað myndsniðið. 8 eða 24 bita PNG myndir nauðsynlegar.
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}...eitthvað fór úrskeiðis (mögulega gölluð skrá).
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... skrá ekki til staðar.
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... gat ekki meðhöndlað myndsniðið. 8 eða 24 bita PNG myndir nauðsynlegar.
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}... eitthvað fór úrskeiðis (mögulega gölluð skrá).
 
 STR_ERROR_BMPMAP                                                :{WHITE}Get ekki hlaðið landslagi úr BMP skrá...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... gat ekki breytt myndsniði.
@@ -3209,13 +3209,13 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Of nál�
 STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Ekki nógu mikið reiðufé - þarf {CURRENCY}
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Sléttlendi nauðsynlegt
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Landssvæði hallar í ranga átt
-STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Get ekki gert þetta....
+STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Get ekki gert þetta...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Verður að eyða byggingu fyrst
-STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Get ekki hreinsað þetta svæði....
-STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}...óhentugur staður
-STR_ERROR_ALREADY_BUILT                                         :{WHITE}...nú þegar byggt
-STR_ERROR_OWNED_BY                                              :{WHITE}...í eigu {STRING}
-STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...svæðið er í eigu annars fyrirtækis
+STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Get ekki hreinsað þetta svæði...
+STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... óhentugur staður
+STR_ERROR_ALREADY_BUILT                                         :{WHITE}... nú þegar byggt
+STR_ERROR_OWNED_BY                                              :{WHITE}... í eigu {STRING}
+STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... svæðið er í eigu annars fyrirtækis
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Nafnið verður að vera sérstætt
 STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{1:STRING} er fyrir
 
@@ -3239,9 +3239,9 @@ STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... nú 
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Ekki hægt að breyta nafni fyrirtækis...
 STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Ekki hægt að breyta nafni forstöðumanns...
 
-STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}...hámarksleyfi á láni er {CURRENCY}
+STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... hámarksleyfi á láni er {CURRENCY}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Ekki hægt að fá meiri pening lánaðan...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}...ekkert lán til að borga
+STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... ekkert lán til að borga
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}...{CURRENCY} vantar
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Getur ekki borgað lán...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Það er ekki hægt að gefa peninga sem teknir eru að láni frá bankanum...
@@ -3255,10 +3255,10 @@ STR_ERROR_PROTECTED                                             :{WHITE}Þetta f
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Get ekki stofnað nýja borg
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Get ekki endurskírt bæ...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Get ekki byggt bæ hér...
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}...of nálægt brún kortsins
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}...of nálægt öðrum bæ
-STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}...of margir bæir
-STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...það er ekkert laust svæði á kortinu
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... of nálægt brún kortsins
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... of nálægt öðrum bæ
+STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... of margir bæir
+STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... það er ekkert laust svæði á kortinu
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Bærinn getur ekki lagt vegi. Því er hægt að breyta í Þróaðri stillingar->Efnahagur->Bæir.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Vegaframkvæmdir standa yfir
 
@@ -3266,15 +3266,15 @@ STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Vegafram
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Get ekki búið til iðnað...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Get ekki byggt {STRING} hérna...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Get ekki reist þennan iðnað hér...
-STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}...of nálægt öðrum iðnaði
-STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}...verður að byggja bæ first
-STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}...aðeins eitt stykki á hvern bæ
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...aðeins hægt að byggja í bæjum með fleiri en 1200 íbúum
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...aðeins hægt að byggja á regnskógasvæðum
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}...aðeins hægt að byggja í eyðimörk
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}...aðeins hægt að byggja í bæjum
-STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}...getur aðeins verið staðsett nálægt brún kortsins
-STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}...skógur getur aðeins verið gróðursettur yfir snjólínu
+STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... of nálægt öðrum iðnaði
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... verður að byggja bæ first
+STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... aðeins eitt stykki á hvern bæ
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... aðeins hægt að byggja í bæjum með fleiri en 1200 íbúum
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... aðeins hægt að byggja á regnskógasvæðum
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... aðeins hægt að byggja í eyðimörk
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... aðeins hægt að byggja í bæjum
+STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... getur aðeins verið staðsett nálægt brún kortsins
+STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... skógur getur aðeins verið gróðursettur yfir snjólínu
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Get ekki byggt lestarstöð hér...
@@ -3286,8 +3286,8 @@ STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Get ekki
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Get ekki byggt flugvöll hér...
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Tengist fleiri en einni annarri stöð
-STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}...stöð of dreyfð
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}...óregluleg lögun lestarstöðva bönnuð
+STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... stöð of dreyfð
+STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... óregluleg lögun lestarstöðva bönnuð
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Of margar stöðvar/lestunarsvæði
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Of margir hlutar af lestarstöðvum
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Of margar strætisvagnastöðvar
@@ -3297,8 +3297,8 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Of nál�
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Of nálægt annarri bryggju
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Of nálægt öðrum flugvelli
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Get ekki endurnefnt stöð...
-STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}...vegurinn er í eigu bæjar
-STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}...vegurinn snýr í ranga átt
+STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... vegurinn er í eigu bæjar
+STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... vegurinn snýr í ranga átt
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Get ekki fjarlægt hluta af stöð...
@@ -3323,7 +3323,7 @@ STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Get ekki
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Get ekki breytt nafni millistöðvar...
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Get ekki fjarlægt lestarmillistöð héðan...
-STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}...bauja fyrir
+STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... bauja fyrir
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... bauja í notkun!
 
 # Depot related errors
@@ -3333,7 +3333,7 @@ STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Get ekki
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Get ekki reist slipp hér...
 
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Lest þarf að vera stöðvuð í skýli
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...verður að stöðvast í bifreiðaskýli
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... verður að stöðvast í bifreiðaskýli
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Skip verður að vera stöðvað í skýli
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Flugvélin verður að vera stöðvuð í flugskýli
 
@@ -3380,13 +3380,13 @@ STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Get ekki
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Ekki hægt að grafa skipaskurð hér...
 STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Ekki hægt að gera skurðgátt hér
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Ekki hægt að setja ár hér...
-STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}...verður að byggjast á vatni
-STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}...Get ekki byggt á vatni
+STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... verður að byggjast á vatni
+STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... Get ekki byggt á vatni
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Verður að fylla upp í skipaskurð fyrst
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Ekki hægt að byggja vatnsleyðslu hér...
 
 # Tree related errors
-STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}...hér er nú þegar tré
+STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... hér er nú þegar tré
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Ekki hægt að gróðursetja tré hér...
 
 # Bridge related errors
@@ -3396,7 +3396,7 @@ STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Getur ek
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Brúarendar ekki í sömu hæð
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Brú er of lág fyrir umhverfið
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Verður að byrja og enda í sömu línu
-STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}...báðir endar brúarinnar verða að vera á landi
+STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... báðir endar brúarinnar verða að vera á landi
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Get ekki grafið göng hér...
@@ -3408,9 +3408,9 @@ STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Get ekki
 
 # Unmovable related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Hluturinn er fyrir
-STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}...höfuðstöðvar fyrirtækis eru fyrir
+STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... höfuðstöðvar fyrirtækis eru fyrir
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Þú getur ekki keypt þetta land...
-STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}...þú átt það nú þegar!
+STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... þú átt það nú þegar!
 
 # Group related errors
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Get ekki búið til hóp...
@@ -3452,7 +3452,7 @@ STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Get ekki
 STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Get ekki smíðað flugvél...
 
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Get ekki endurskírt lestargerð...
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE} Get ekki endurnefnat tegund bifreiðar...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Get ekki endurnefnat tegund bifreiðar...
 STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Get ekki endurnefnt skipategund...
 STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Get ekki endurnefnt tegund flugvélarinnar...
 
@@ -3496,7 +3496,7 @@ STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}farartæ
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Get ekki deilt áætlun...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Get ekki afritað áætlun...
-STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...of langt frá fyrri stað
+STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... of langt frá fyrri stað
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Get ekki stillt áætlun farartækis...
@@ -3504,7 +3504,7 @@ STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Farartæ
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Þetta farartæki mun ekki stoppa við þessa stöð.
 
 # Sign related errors
-STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}...of mörg skilti
+STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... of mörg skilti
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Ekki hægt að setja tré hér...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Get ekki breytt nafni skiltis...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Ekki hægt að eyða skilti...

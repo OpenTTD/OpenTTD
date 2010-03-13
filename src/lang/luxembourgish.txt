@@ -1066,7 +1066,7 @@ STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
 STR_CITY_APPROVAL_HOSTILE                                       :Ofleenend
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Keng KI fonnt...{}KI kënnen iwwert den 'Online Content' system downgeload gin
-STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE} Des Aktioun setzt d'Schwieregkeet op "eegen"
+STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Des Aktioun setzt d'Schwieregkeet op "eegen"
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Erweidert Astellungen
@@ -1725,23 +1725,23 @@ STR_NETWORK_CHAT_ALL                                            :[All] {STRING}:
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Text fir Chat aginn
 
 # Network messages
-STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE} Keng Netzwierkgeräter font oder compiléiert ouni ENABLE_NETWORK
+STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Keng Netzwierkgeräter font oder compiléiert ouni ENABLE_NETWORK
 STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Konnt kéng Netzwierkspiller fannen
-STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE} Den Server huet net op d'Ufro geäntwert
-STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE} Konnt sech wéinst NewGRF ënnerscheed net connectéieren
-STR_NETWORK_ERROR_DESYNC                                        :{WHITE} Netzwierksyncronisatiouns-Fehler
+STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Den Server huet net op d'Ufro geäntwert
+STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Konnt sech wéinst NewGRF ënnerscheed net connectéieren
+STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Netzwierksyncronisatiouns-Fehler
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Netzwierkverbindung verluer
-STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE} Konnt den Spillstand net lueden
+STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Konnt den Spillstand net lueden
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Konnt den Server net starten
-STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE} Konnt sëch net connectéieren
+STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Konnt sëch net connectéieren
 STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Connectioun #{NUM} oofgelaaf
-STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE} En Protokolfehler ass entstaanen an d'Connectioun ass getrennt ginn
+STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}En Protokolfehler ass entstaanen an d'Connectioun ass getrennt ginn
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}D'Versioun vum Client stëmmt net mat där vum Server iwerëneen
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Falscht Passwuert
-STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE} Den Server ass voll
-STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE} Dir sidd vun dësem Server gebannt
-STR_NETWORK_ERROR_KICKED                                        :{WHITE} Dir sidd aus dem Spill gekickt ginn
-STR_NETWORK_ERROR_CHEATER                                       :{WHITE} Cheaten ass op dësem Server net erlaabt
+STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Den Server ass voll
+STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Dir sidd vun dësem Server gebannt
+STR_NETWORK_ERROR_KICKED                                        :{WHITE}Dir sidd aus dem Spill gekickt ginn
+STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Cheaten ass op dësem Server net erlaabt
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :generellen Fehler
@@ -1783,8 +1783,8 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} hu
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} huet säin Numm op {STRING} gewiesselt
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} huet ärer Firma {2:CURRENCY} ginn
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Dir hudd dem {1:STRING} {2:CURRENCY} ginn
-STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE} Den Server huet d'Sessioun zougemaach
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE} Den Server get nei gestart...{}Weg. waarden...
+STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Den Server huet d'Sessioun zougemaach
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Den Server get nei gestart...{}Weg. waarden...
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Downloaden Inhalt
@@ -3293,16 +3293,16 @@ STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Datenintegrité
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Spill gouf an enger Versioun ouni Tram support gesaved. All Tram gouf wechgeholl.
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Kaartenerstellung ofgebrach...{}...keng passend Stadplazen
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Kaartenerstellung ofgebrach...{}... keng passend Stadplazen
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... et ass keen Duerf an dësem Szenario
 
 STR_ERROR_PNGMAP                                                :{WHITE}Kann d'Landschaft net vum PNG lueden...
-STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}...Datei net font.
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}...konnt den Bildtyp net convertéieren. 8 oder 24-bit PNG Bild benéidegt.
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}...eppes ass schief gaagnen. Sorry. (warscheinlech éng korrupt Datei)
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... Datei net font.
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... konnt den Bildtyp net convertéieren. 8 oder 24-bit PNG Bild benéidegt.
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}... eppes ass schief gaagnen. Sorry. (warscheinlech éng korrupt Datei)
 
 STR_ERROR_BMPMAP                                                :{WHITE}Kann d'Landschaft net aus der BMP lueden...
-STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}...konnt den Bildtyp net convertéieren.
+STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... konnt den Bildtyp net convertéieren.
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Scaléirungswarnung
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Quellenkaart zevill an der Gréisst änneren ass net ugeroden. Weiderman ?
@@ -3324,13 +3324,13 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Ze noo u
 STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Net genuch Geld - dës Aktioun kascht {CURRENCY}
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}D'Land muss flaach sinn
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Land ass an dei falsch Richtung geneigt
-STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Kann dat net maachen....
+STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Kann dat net maachen...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Gebai muss fir d'éischt ofgerapt ginn
-STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Kann dei Plaz net frai maachen....
-STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}...Plaz net gëeegent
-STR_ERROR_ALREADY_BUILT                                         :{WHITE}...schon gebaut
-STR_ERROR_OWNED_BY                                              :{WHITE}...am Besëtz vun {STRING}
-STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}...d'Plaz ass am Besëtz vun enger aanerer Firma
+STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Kann dei Plaz net frai maachen...
+STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... Plaz net gëeegent
+STR_ERROR_ALREADY_BUILT                                         :{WHITE}... schon gebaut
+STR_ERROR_OWNED_BY                                              :{WHITE}... am Besëtz vun {STRING}
+STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... d'Plaz ass am Besëtz vun enger aanerer Firma
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Numm muss eenzegartëg sinn
 STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{1:STRING} am Wee
 
@@ -3354,10 +3354,10 @@ STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... scho
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Kann den Firmennumm net änneren...
 STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Kann den Numm vum Manager net änneren...
 
-STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}...Maximalen Kredit ass {CURRENCY}
+STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... Maximalen Kredit ass {CURRENCY}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Kann net méi Geld léinen...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}...keen Kredit zeréckzebezuelen
-STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}...et ginn {CURRENCY} gebraucht
+STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... keen Kredit zeréckzebezuelen
+STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... et ginn {CURRENCY} gebraucht
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Kann den Kredit net zeréckbezuelen...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Kann keng Suen ginn déi vun der Bank geléint sinn...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Kann d'Firma net kafen...
@@ -3370,10 +3370,10 @@ STR_ERROR_PROTECTED                                             :{WHITE}Dës Fir
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Kann keng Stiedt bauen
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Kann d'Stad net ëmbënennen...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Kann d'Stad hei net bauen...
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}...ze noo um Enn vun der Kaart
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}...ze noo un enger aanerer Stadt
-STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}...ze vill Stied
-STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}...et ass keng Plaz méi op der Kaart
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... ze noo um Enn vun der Kaart
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... ze noo un enger aanerer Stadt
+STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... ze vill Stied
+STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... et ass keng Plaz méi op der Kaart
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Stied bauen keng Stroossen. Dir kënnt den Bau iwwert Erweidert Astellungen->Economie->Stied anschalten
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Stroossenarbeschten umgaangen
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kann des Stad net leschen...{}Eng Statioun oder Depot huet den Numm vun dëser Stad oder en Stéck dat der Stad gehéiert kann net ewechgeholl ginn
@@ -3382,16 +3382,16 @@ STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kann des
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Kann keng Industrien bauen...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Kann {STRING} net hei bauen...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Kann deen Industrietyp hei net bauen...
-STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}...ze Noo bei enger aanerer Fabrik
-STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}...muss fir d'éischt eng Stadt bauen
-STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}...nëmmen 1 pro Stad erlaabt
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...kann nëmmen an Stiedt mat opmannst 1200 Anwunner gebaut ginn
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...kann nëmmen am Regenwaldgebitt gebaut ginn
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}...kann nëmmen an der Wüst gebaut ginn
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}...kann nëmmen an Stied gebaut ginn
+STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... ze Noo bei enger aanerer Fabrik
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... muss fir d'éischt eng Stadt bauen
+STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... nëmmen 1 pro Stad erlaabt
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... kann nëmmen an Stiedt mat opmannst 1200 Anwunner gebaut ginn
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... kann nëmmen am Regenwaldgebitt gebaut ginn
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... kann nëmmen an der Wüst gebaut ginn
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... kann nëmmen an Stied gebaut ginn
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... kann nëmmen an niddregen Beräicher gebaut ginn
-STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}...kann nëmmen no un den Ecker vun der Kaart positionéiert ginn
-STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}...Bësch kann nëmmen iwert der Schnéilinn geplanzt ginn
+STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... kann nëmmen no un den Ecker vun der Kaart positionéiert ginn
+STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... Bësch kann nëmmen iwert der Schnéilinn geplanzt ginn
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Kann d'Gare hei net bauen...
@@ -3403,8 +3403,8 @@ STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Kann den
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Kann den Fluchhafen hei net bauen...
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Grenzt un méi wéi eng Gare un
-STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}...Statioun ze ausgebreed
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}...Net Uniform Statiounen ofgeschalt
+STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... Statioun ze ausgebreed
+STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... Net Uniform Statiounen ofgeschalt
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Ze vill Garen
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Ze vill Garesdeeler
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Ze vill Busgaren
@@ -3414,8 +3414,8 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Ze noo u
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Ze noo bei engem aanerem Hafen
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Ze noo un engem aaneren Fluchhafen
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Kann d'Statioun net ëmbenennen...
-STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}...d'Strooss ass am Besëtz vun der Stad
-STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}...Strooss geet an dei falsch Richtung
+STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... d'Strooss ass am Besëtz vun der Stad
+STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... Strooss geet an dei falsch Richtung
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Kann den Deel vun der Gare net ofrappen...
@@ -3443,8 +3443,8 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Kann den
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Kann den Wee-Punkt hei net ofrappen...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Zuchweepunkt muss fir d'éischt ofgerappt ginn
-STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}...Boje am Wee
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}...Boje ass am Gebrauch!
+STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... Boje am Wee
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... Boje ass am Gebrauch!
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Kann den Zuchdepot hei net bauen...
@@ -3453,7 +3453,7 @@ STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Kann den
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Kann de Schëffdepot hei net bauen...
 
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Zuch muss am Depot sinn
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}...muss an engem Depot gestoppt gin
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... muss an engem Depot gestoppt gin
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Schëff muss am Depot stoen
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Fliger muss am Hangar sinn
 
@@ -3501,13 +3501,13 @@ STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Kann den
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Kann hei keen Kanal bauen...
 STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Kann keen Schlass hei setzen...
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Kann hei keen Floss platzéiren...
-STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}...muss op Waasser gebaut ginn
-STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}...Kann net op d'Waasser bauen
+STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... muss op Waasser gebaut ginn
+STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... Kann net op d'Waasser bauen
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Musst den Kanal fir d'éischt ofrappen
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Kann den Aquadukt héi net bauen...
 
 # Tree related errors
-STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}...schon Beem hei
+STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... schon Beem hei
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Kann d'Beem hei net planzen...
 
 # Bridge related errors
@@ -3517,7 +3517,7 @@ STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Kann në
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Bréckenenner net op der selwechter Héicht
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Bréckass ze déif fir dësen Terrain
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Start an Enn mussen op enger Linn sinn
-STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}...dei zwee Enner vun der Bréck mussen um Land sinn
+STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... dei zwee Enner vun der Bréck mussen um Land sinn
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Kann den Tunnel hei net bauen...
@@ -3529,9 +3529,9 @@ STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Kann d'L
 
 # Unmovable related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Objet am Wee
-STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}...Firmen Haaptgebai am Wee
+STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... Firmen Haaptgebai am Wee
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Kann daat Land net kafen...
-STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}...schon am Besëtz!
+STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... schon am Besëtz!
 
 # Group related errors
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Kann d'Grupp net erstellen...
@@ -3617,7 +3617,7 @@ STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... en G
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Kann d'Optragslëscht net deelen...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Kann d'Optragslëscht net kopéieren...
-STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...ze wäit vun leschter Destinatioun
+STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... ze wäit vun leschter Destinatioun
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Kann dem Gefiert keen Zäitplang gin.
@@ -3625,7 +3625,7 @@ STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Gefierte
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Dëst Gefiert bleift net op dëser Statioun stoën.
 
 # Sign related errors
-STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}...ze vill Schëlder
+STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... ze vill Schëlder
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Kann d'Schëld hei net opriichten...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Kann den Numm vum Schëld net änneren...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Kann d'Schëld net läschen...

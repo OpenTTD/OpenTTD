@@ -1209,7 +1209,7 @@ STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Авто
 
 
 STR_ERROR_BMPMAP                                                :{WHITE}Не може да се вчита пејсажот од BMP...
-STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}...не може да се конвертира типот на слика.
+STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... не може да се конвертира типот на слика.
 
 
 # Screenshot related messages
@@ -1223,10 +1223,10 @@ STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Надв
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Преблизу до работ на мапата
 STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Недоволно средства - потребни {CURRENCY}
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Потребно е рамно земјиште
-STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Ова не е можно....
-STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Не може да се исчисти оваа област....
-STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}...несоодветно место
-STR_ERROR_OWNED_BY                                              :{WHITE}...во сопственост на {STRING}
+STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Ова не е можно...
+STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Не може да се исчисти оваа област...
+STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... несоодветно место
+STR_ERROR_OWNED_BY                                              :{WHITE}... во сопственост на {STRING}
 
 # Local authority errors
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}Твојот обид за поткуп беше
@@ -1241,9 +1241,9 @@ STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... ве
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Не може да се направи град
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Овде не може да се изгради град...
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}...премногу блиску до крајот на мапата
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}...премногу блиску до друг град
-STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}...премногу градови
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... премногу блиску до крајот на мапата
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... премногу блиску до друг град
+STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... премногу градови
 
 # Industry related errors
 

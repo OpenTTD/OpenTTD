@@ -866,7 +866,7 @@ STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}یہ ج�
 # Town related errors
 
 # Industry related errors
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{G=m}{WHITE}...صرف ان شہروں میں بن سکتا ہے جن کی آبادی ۱۲۰۰ سے زیادہ ہے
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{G=m}{WHITE}... صرف ان شہروں میں بن سکتا ہے جن کی آبادی ۱۲۰۰ سے زیادہ ہے
 
 # Station construction related errors
 
@@ -896,12 +896,12 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{G=m}{WHITE}...
 # Tree related errors
 
 # Bridge related errors
-STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}...پل کے دونوں کنارے زمین پر ہونے چاہییں
+STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... پل کے دونوں کنارے زمین پر ہونے چاہییں
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}یہاں سورنگ نہئ بنا سکتے
 STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}سورنگ یہاں سے شروع نہئں کر سکتے
-STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE} پہلے سورنگ ختم کرئں
+STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}پہلے سورنگ ختم کرئں
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}دوسری سورنگ بئچ مین ہے
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}سورنگ نقشے سے بائر نکل جاے گی
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}سورنگ کے دوسرے حصے کی طرف روکاوٹ ہے
@@ -910,7 +910,7 @@ STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}سورن
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}کوئی عمارت یا چیذ راستے مین ہے
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}کمپنی کا مرکزی دفتر راستے مین ہے
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}آپ یہ زمین نہی خرید سکتے
-STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}...یہ آپ ہی کی ملکیت ہے
+STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... یہ آپ ہی کی ملکیت ہے
 
 # Group related errors
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}یہ گروہ تشکیل نہں دے سکتے
@@ -931,7 +931,7 @@ STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}کشتی
 STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}ہوایی نہیں تبدیل کر سکتے
 
 STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}ریل گاڑی کا نام نہیں رکھ سکتے
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE} گاڑی کا نام نہیں رکھ سکتے
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}گاڑی کا نام نہیں رکھ سکتے
 STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}بہری جہاز کا نام نہیں رکھ سکتے
 STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}ھوائی جہاز کا نام نہیں رکھ سکتے
 
@@ -945,16 +945,16 @@ STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}گاڑی
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}بہری جہاز کو اڈے نہیں بہیج سکتے
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}ھوائی جہاز کو اڈے نہیں بہیج سکتے
 
-STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE} ریل گاڑی نہیں خرید سکتے
-STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE} گاڑی نہیں خرید سکتے
+STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}ریل گاڑی نہیں خرید سکتے
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}گاڑی نہیں خرید سکتے
 STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}ریل گاڑی نہیں خرید سکتے
 STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}ھوائی جہاز نہیں خرید سکتے
 
 
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}ھوائی جہاز فروخت نہیں کر سکتے
 
-STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :{WHITE} گاڑی دستیاب نہیں ھے
-STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :{WHITE} گاڑی دستیاب نہیں ھے
+STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :{WHITE}گاڑی دستیاب نہیں ھے
+STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :{WHITE}گاڑی دستیاب نہیں ھے
 STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}بہری جہاز دستیاب نہیں ھے
 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}کھیل میں بہت زیادہ سواریاں
