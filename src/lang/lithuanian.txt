@@ -1797,23 +1797,23 @@ STR_NETWORK_CHAT_ALL                                            :[Visiems] {STRI
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Įveskite tekstą internetiniam pokalbiui
 
 # Network messages
-STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE} Nerastas tinklo įrenginys arba sukompiliuota be ENABLE_NETWORK
-STR_NETWORK_ERROR_NOSERVER                                      :{WHITE} Nerado nei vieno žaidimo tinkle
-STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE} Serveris neatsakė į užklausą
-STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE} Nepavyko prisijungti dėl Papild. grafikos neatitikimo
-STR_NETWORK_ERROR_DESYNC                                        :{WHITE} Žaidimo tinkle sinchronizacija nepavyko
-STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE} Nutruko ryšys
-STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE} Negali atverti išsaugoto žaidimo
-STR_NETWORK_ERROR_SERVER_START                                  :{WHITE} Negali paleisti serverio
-STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE} Negali prisijungti
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE} Baigėsi prisijungimo #{NUM} laikas
-STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE} Protokolo klaida. Prisijungimas baigtas
-STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE} Žaidimo versija neatitinka serverio žaidimo versijos
-STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE} Blogas slaptažodis
-STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE} Serveris pilnas
-STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE} Tau uždrausta prisijungti prie šio serverio (BAN)
-STR_NETWORK_ERROR_KICKED                                        :{WHITE} Tu išmestas iš žaidimo (KICK)
-STR_NETWORK_ERROR_CHEATER                                       :{WHITE} Sukčiavimas neleidžiamas tinklo žaidime
+STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Nerastas tinklo įrenginys arba sukompiliuota be ENABLE_NETWORK
+STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Nerado nei vieno žaidimo tinkle
+STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Serveris neatsakė į užklausą
+STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Nepavyko prisijungti dėl Papild. grafikos neatitikimo
+STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Žaidimo tinkle sinchronizacija nepavyko
+STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Nutruko ryšys
+STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Negali atverti išsaugoto žaidimo
+STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Negali paleisti serverio
+STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Negali prisijungti
+STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Baigėsi prisijungimo #{NUM} laikas
+STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Protokolo klaida. Prisijungimas baigtas
+STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Žaidimo versija neatitinka serverio žaidimo versijos
+STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Blogas slaptažodis
+STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Serveris pilnas
+STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Tau uždrausta prisijungti prie šio serverio (BAN)
+STR_NETWORK_ERROR_KICKED                                        :{WHITE}Tu išmestas iš žaidimo (KICK)
+STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Sukčiavimas neleidžiamas tinklo žaidime
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :klaida
@@ -1855,8 +1855,8 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} pa
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} pasikeitė vardą į {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} turi savo kompaniją {2:CURRENCY}
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Jūs gavote {1:STRING} {2:CURRENCY}
-STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE} Serveris užsidarė
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE} Serveris persikrauna...{}Prašau palaukti...
+STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Serveris užsidarė
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Serveris persikrauna...{}Prašau palaukti...
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Turinio atsisiuntimas
@@ -3525,7 +3525,7 @@ STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... plud
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Čia negalima statyti traukinių depo...
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Čia automomobilių garažo statyti negalima...
-STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE} Čia neįmanoma statyti depo...
+STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Čia neįmanoma statyti depo...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Laivų depo statyti negalima...
 
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Traukinys turi buti sustabdytas depe

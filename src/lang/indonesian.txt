@@ -1787,8 +1787,8 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} me
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} telah mengganti namanya menjadi {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} telah memberi perusahaanmu {2:CURRENCY}
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Anda telah memberi {1:STRING} {2:CURRENCY}
-STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE} Server menutup sesi
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE} Server memulai ulang...{}Tunggulah...
+STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Server menutup sesi
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Server memulai ulang...{}Tunggulah...
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Mengunduh konten
@@ -2444,7 +2444,7 @@ STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Hapus ko
 STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Ubah nama Kota
 
 # Town local authority window
-STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE} Pemerintah Kota {TOWN}
+STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}Pemerintah Kota {TOWN}
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Peringkat Perusahaan Transportasi:
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Tindakan yang tersedia:
@@ -2750,7 +2750,7 @@ STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Ubah nam
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Ubah nama jenis pesawat
 
 # Depot window
-STR_DEPOT_TRAIN_CAPTION                                         :{WHITE} Depo Kereta {TOWN}
+STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}Depo Kereta {TOWN}
 STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} Bengkel Bus/truk
 STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} Galangan Kapal
 STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} Hangar Pesawat

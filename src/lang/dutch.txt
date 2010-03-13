@@ -1787,8 +1787,8 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} he
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} heeft zijn/haar naam gewijzigd naar {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} gaf je bedrijf {2:CURRENCY}
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Je gaf {2:CURRENCY} aan {1:STRING}
-STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE} De server heeft de sessie gestopt.
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE} De server wordt opnieuw gestart...{}Wacht aub...
+STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}De server heeft de sessie gestopt.
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}De server wordt opnieuw gestart...{}Wacht aub...
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Download extra content

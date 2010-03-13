@@ -1788,8 +1788,8 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} oy
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} adını {STRING} olarak değiştirdi
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} şirketinize {2:CURRENCY} verdi
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** {1:STRING} oyuncusuna {2:CURRENCY} verdiniz
-STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE} Sunucu kapandı
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE} Sunucu baştan başlatılıyor...{}Lütfen bekleyin...
+STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Sunucu kapandı
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Sunucu baştan başlatılıyor...{}Lütfen bekleyin...
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}İçerik indirme

@@ -1476,7 +1476,7 @@ STR_FACE_FACECODE_SET                                           :{WHITE}Ny kode 
 STR_FACE_FACECODE_ERR                                           :{WHITE}Kunne ikkje angje spelars andletenummer - må vera mellom 0 og 4,294,967,295!
 STR_FACE_SAVE                                                   :{BLACK}Lagre
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Lagre favoritandlete
-STR_FACE_SAVE_DONE                                              :{WHITE} Dette andletet vil verte lagra som favoriten din i OpenTTDs konfigurasjonfil
+STR_FACE_SAVE_DONE                                              :{WHITE}Dette andletet vil verte lagra som favoriten din i OpenTTDs konfigurasjonfil
 STR_FACE_EUROPEAN                                               :{BLACK}Europeisk
 STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Velg europeiske andlet
 STR_FACE_AFRICAN                                                :{BLACK}Afrikans
@@ -1732,19 +1732,19 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Skriv te
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Finn ikkje nettverksadapter eller kompilert utan ENABLE_NETWORK
 STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Kunne ikkje finne nokon nettverksspel
-STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE} Tenaren svarte ikkje på spørringa
+STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Tenaren svarte ikkje på spørringa
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Kunne ikkje koble til grunna NewGRF-filer som ikkje passar saman
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Synkronisering i nettverksspelet feila
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Mista tilkoblinga til nettverksspelet
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Kunne ikkje laste inn spel
-STR_NETWORK_ERROR_SERVER_START                                  :{WHITE} Klarte ikkje å starte tenaren
+STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Klarte ikkje å starte tenaren
 STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Klarte ikkje å opprette tilkobling
 STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Tilkobling #{NUM} vart tidsavbrote
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Det skjedde ein protokoll-feil, så tilkoblinga ble brote
-STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE} Klientversjonen er ikkje den same som tenarversjonen
-STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE} Feil passord
-STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE} Tenaren er full
-STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE} Du er bannlyst frå denne tenaren
+STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Klientversjonen er ikkje den same som tenarversjonen
+STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Feil passord
+STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Tenaren er full
+STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Du er bannlyst frå denne tenaren
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Du vart kasta ut frå spelet
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Juksing er forbode på denne tenaren
 
@@ -1788,8 +1788,8 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} ha
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} har endra namnet sitt til {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} gav firmaet ditt {2:CURRENCY}
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Du gav {1:STRING} {2:CURRENCY}
-STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE} Tenaren avslutta spelet
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE} Tenaren startar om att...{}Vær venleg og vent...
+STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Tenaren avslutta spelet
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Tenaren startar om att...{}Vær venleg og vent...
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Lastar ned innhald

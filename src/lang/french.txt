@@ -1788,8 +1788,8 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} a 
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} a changé son nom en {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} a donné {2:CURRENCY} à votre compagnie
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Vous avez donné {2:CURRENCY} à {1:STRING}
-STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE} Le serveur a fermé la session
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE} Le serveur redémarre...{}Veuillez patienter...
+STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Le serveur a fermé la session
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Le serveur redémarre...{}Veuillez patienter...
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Téléchargement de contenu

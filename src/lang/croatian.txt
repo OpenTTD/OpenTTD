@@ -1825,23 +1825,23 @@ STR_NETWORK_CHAT_ALL                                            :[Svima] {STRING
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Upišite tekst mrežnog razgovora
 
 # Network messages
-STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE} Nisu pronađeni mrežni uređaji ili je kompajlirano bez ENABLE_NETWORK
+STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Nisu pronađeni mrežni uređaji ili je kompajlirano bez ENABLE_NETWORK
 STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Niti jedna mrežna igra nije pronađena
-STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE} Poslužitelj nije odgovorio na zahtjev
-STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE} Ne mogu se spojiti zbog razlike u NewGRF
-STR_NETWORK_ERROR_DESYNC                                        :{WHITE} Neuspješno usklađivanje mrežne igre
-STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE} Izgubljena veza sa mrežnom igrom
-STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE} Nije moguće učitati snimljenu igru
-STR_NETWORK_ERROR_SERVER_START                                  :{WHITE} Nemoguće je pokrenuti poslužitelj
-STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE} Nije se moguće spojiti
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE} Istekla je veza #{NUM}
-STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE} Napravljena je greška u protokolu te se veza prekinula
-STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE} Revizija ovog klijenta ne slaže se s revizijom poslužitelja
+STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Poslužitelj nije odgovorio na zahtjev
+STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Ne mogu se spojiti zbog razlike u NewGRF
+STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Neuspješno usklađivanje mrežne igre
+STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Izgubljena veza sa mrežnom igrom
+STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Nije moguće učitati snimljenu igru
+STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Nemoguće je pokrenuti poslužitelj
+STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Nije se moguće spojiti
+STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Istekla je veza #{NUM}
+STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Napravljena je greška u protokolu te se veza prekinula
+STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Revizija ovog klijenta ne slaže se s revizijom poslužitelja
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Pogrešna zaporka
-STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE} Poslužitelj je pun
-STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE} Zabranjen ti je pristup ovom poslužitelju
+STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Poslužitelj je pun
+STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Zabranjen ti je pristup ovom poslužitelju
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Izbačen si iz igre
-STR_NETWORK_ERROR_CHEATER                                       :{WHITE} Na ovome poslužitelju varanje nije dopušteno
+STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Na ovome poslužitelju varanje nije dopušteno
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :opća greška
@@ -1883,8 +1883,8 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} je
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} je promijenio/la ime u {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} je dao vašoj kompaniji {2:CURRENCY}
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Dao si {1:STRING} {2:CURRENCY}
-STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE} Poslužitelj je zatvorio sesiju
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE} Poslužitelj se ponovno pokreće...{}Molimo pričekajte...
+STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Poslužitelj je zatvorio sesiju
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Poslužitelj se ponovno pokreće...{}Molimo pričekajte...
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Preuzimanje sadržaja
@@ -2848,7 +2848,7 @@ STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Preimenu
 # Depot window
 STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}Spremište vlakova grada {TOWN}a
 STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}Spremište cestovnih vozila grada {TOWN}a
-STR_DEPOT_SHIP_CAPTION                                          :{WHITE} Spremište brodova grada {TOWN}a
+STR_DEPOT_SHIP_CAPTION                                          :{WHITE}Spremište brodova grada {TOWN}a
 STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} Zrakoplovni hangar
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-

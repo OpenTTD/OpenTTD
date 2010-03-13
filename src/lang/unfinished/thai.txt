@@ -1786,7 +1786,7 @@ STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}ไม�
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... มีอุตสาหกรรมมากเกินไป
 STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... ต้องสร้างเมืองก่อน
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE} สามารถสร้างได้เฉพาะพื้นที่ต่ำกว่าเท่านั้น
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}สามารถสร้างได้เฉพาะพื้นที่ต่ำกว่าเท่านั้น
 
 # Station construction related errors
 

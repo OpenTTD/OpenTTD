@@ -1730,23 +1730,23 @@ STR_NETWORK_CHAT_ALL                                            :[All] {STRING}:
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Tik woord in vir netwerk kominikasie
 
 # Network messages
-STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE} Geen netwerk ontwerp gevind of voldoen sonder ENABLE_NETWORK
+STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Geen netwerk ontwerp gevind of voldoen sonder ENABLE_NETWORK
 STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Kan nie enige netwerk speletjies vind nie
-STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE} Die verskaffer het nie die versoek geantwoord nie
-STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE} Kan nie konnekteer te danke aan newgrf mispas nie
-STR_NETWORK_ERROR_DESYNC                                        :{WHITE} Netwerk-Spel sinchroniseering gedop
-STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE} Netwerk-Spel verbinding verloor
-STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE} Kan nie spaarspel laai nie
-STR_NETWORK_ERROR_SERVER_START                                  :{WHITE} Verskaffer kan nie aangesit word nie
-STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE} Kan nie verbinding kry nie
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE} Verbinding #{NUM} het betyds uitgeloop
-STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE} A protokol-fout was gemaak en die verbinding was verlore
-STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE} Die hersiening van die klient is nie gelyk aan die verskaffer se hersiening nie
-STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE} Verkeerde wagwoord
-STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE} Die verskaffer is vol
-STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE} Jy is van die verskaffer verban
-STR_NETWORK_ERROR_KICKED                                        :{WHITE} Jy is van die spel geskop
-STR_NETWORK_ERROR_CHEATER                                       :{WHITE} Bedrieg is nie toegelaat op hierdie verskaffer
+STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Die verskaffer het nie die versoek geantwoord nie
+STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Kan nie konnekteer te danke aan newgrf mispas nie
+STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Netwerk-Spel sinchroniseering gedop
+STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Netwerk-Spel verbinding verloor
+STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Kan nie spaarspel laai nie
+STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Verskaffer kan nie aangesit word nie
+STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Kan nie verbinding kry nie
+STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Verbinding #{NUM} het betyds uitgeloop
+STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}A protokol-fout was gemaak en die verbinding was verlore
+STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Die hersiening van die klient is nie gelyk aan die verskaffer se hersiening nie
+STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Verkeerde wagwoord
+STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Die verskaffer is vol
+STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Jy is van die verskaffer verban
+STR_NETWORK_ERROR_KICKED                                        :{WHITE}Jy is van die spel geskop
+STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Bedrieg is nie toegelaat op hierdie verskaffer
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :algemeen fout
@@ -1788,8 +1788,8 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} he
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} het sy/haar naam verander na {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} het jou besigheid {2:CURRENCY} gegee
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Jy het {1:STRING} {2:CURRENCY} gegee
-STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE} Die verskaffer het die sessie toegemaak
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE} Die verskaffer is besig om te weerbegin...{}Wag asb...
+STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Die verskaffer het die sessie toegemaak
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Die verskaffer is besig om te weerbegin...{}Wag asb...
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Inhoud laai af

@@ -1674,23 +1674,23 @@ STR_NETWORK_CHAT_ALL                                            :[All] {STRING}:
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Sláðu inn texta fyrir netpsjall
 
 # Network messages
-STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE} Enginn netbúnaður fannst eða vistþýtt án ENABLE_NETWORK
-STR_NETWORK_ERROR_NOSERVER                                      :{WHITE} Fann enga netleiki
-STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE} Þjóninn svaraði ekki fyrirspurninni
-STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE} Gat ekki tengst vegna NewGRF misræmis
-STR_NETWORK_ERROR_DESYNC                                        :{WHITE} Samstilling netleiks mistókst.
-STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE} Tenging við netleik glataðist.
-STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE} Gat ekki hlaðið vistuðum leik af þjóni.
-STR_NETWORK_ERROR_SERVER_START                                  :{WHITE} Gat ekki ræst þjón
-STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE} Gat ekki tengst
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE} Tenging #{NUM} fjaraði út.
-STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE} Villa varð í samskiptum og tengingu var lokað
-STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE} Útgáfa biðils er ekki sama og útgáfa þjóns
-STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE} Rangt lykilorð
-STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE} Þjónninn er fullur
-STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE} Þú ert bannaður/bönnuð á þessum þjóni
-STR_NETWORK_ERROR_KICKED                                        :{WHITE} Þér var hent út úr leiknum
-STR_NETWORK_ERROR_CHEATER                                       :{WHITE} Svindl er ekki leyft á þessum þjóni
+STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Enginn netbúnaður fannst eða vistþýtt án ENABLE_NETWORK
+STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Fann enga netleiki
+STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Þjóninn svaraði ekki fyrirspurninni
+STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Gat ekki tengst vegna NewGRF misræmis
+STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Samstilling netleiks mistókst.
+STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Tenging við netleik glataðist.
+STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Gat ekki hlaðið vistuðum leik af þjóni.
+STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Gat ekki ræst þjón
+STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Gat ekki tengst
+STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Tenging #{NUM} fjaraði út.
+STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Villa varð í samskiptum og tengingu var lokað
+STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Útgáfa biðils er ekki sama og útgáfa þjóns
+STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Rangt lykilorð
+STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Þjónninn er fullur
+STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Þú ert bannaður/bönnuð á þessum þjóni
+STR_NETWORK_ERROR_KICKED                                        :{WHITE}Þér var hent út úr leiknum
+STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Svindl er ekki leyft á þessum þjóni
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :almenn villa
@@ -1722,8 +1722,8 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} yf
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} heitir nú {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} sendi þér {2:CURRENCY}
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Þú gafst {1:STRING} {2:CURRENCY}
-STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE} Þjónninn sleit tengingunni
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE} Verið er að endurræsa þjóninn...{}Vinsamlega bíðið...
+STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Þjónninn sleit tengingunni
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Verið er að endurræsa þjóninn...{}Vinsamlega bíðið...
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Niðurhel efni
@@ -3452,7 +3452,7 @@ STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Get ekki
 STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Get ekki smíðað flugvél...
 
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Get ekki endurskírt lestargerð...
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE} Get ekki endurnefnat tegund bifreiðar...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Get ekki endurnefnat tegund bifreiðar...
 STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Get ekki endurnefnt skipategund...
 STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Get ekki endurnefnt tegund flugvélarinnar...
 

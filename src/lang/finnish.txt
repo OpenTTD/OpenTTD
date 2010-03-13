@@ -1787,8 +1787,8 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} on
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} on muuttanut nimekseen {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} antoi yrityksellesi {2:CURRENCY}
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Annoit henkilölle {1:STRING} {2:CURRENCY}
-STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE} Palvelin sulki istunnon
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE} Palvelin käynnistyy uudelleen...{}Odota, ole hyvä...
+STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Palvelin sulki istunnon
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Palvelin käynnistyy uudelleen...{}Odota, ole hyvä...
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Sisällön lataus

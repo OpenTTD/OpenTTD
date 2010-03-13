@@ -649,7 +649,7 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :טיקון המ
 STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESIDENTNAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIGFONT}{BLACK}{COMPANY} הגיעה למעמד '{STRING}'!
-STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIGFONT}{WHITE} '{2:STRING}' הגיע לדרגת {NBSP}{1:COMPANY} מ {NBSP}{0:PRESIDENTNAME}
+STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIGFONT}{WHITE}'{2:STRING}' הגיע לדרגת {NBSP}{1:COMPANY} מ {NBSP}{0:PRESIDENTNAME}
 
 # Smallmap window
 STR_SMALLMAP_CAPTION                                            :{WHITE}{STRING} - מפה
@@ -808,7 +808,7 @@ STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK
 STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}ממתין/ממתינה במוסך {VEHICLE}
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} ממתין במוסך כלי הרכב
 STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}ממתינה במבדוק {VEHICLE}
-STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE} ממתין בסככת המטוסים {VEHICLE}
+STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}ממתין בסככת המטוסים {VEHICLE}
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
@@ -1743,23 +1743,23 @@ STR_NETWORK_CHAT_ALL                                            :[לכולם] {S
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}הקלד טקסט לצאט ברשת
 
 # Network messages
-STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE} לא נמצאה רשת
-STR_NETWORK_ERROR_NOSERVER                                      :{WHITE} לא נמצאו משחקים ברשת
-STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE} השרת אינו מגיב
-STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE} Newgrf לא ניתן להתחבר עקב אי התאמת קבצי
-STR_NETWORK_ERROR_DESYNC                                        :{WHITE} סינכרון משחק רשת נכשל
-STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE} הקשר לשרת נותק
-STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE} טעינת משחק מקובץ נכשלה
-STR_NETWORK_ERROR_SERVER_START                                  :{WHITE} הפעלת השרת נכשלה
-STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE} ניסיון חיבור נכשל
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE} נכשל #{NUM} ניסיון התקשרות
-STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE} שגיאת התקשרות
-STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE} אי התאמה לגרסת השרת
-STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE} ססמה שגוייה
-STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE} השרת מלא
-STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE} הינך מודח משרת זה
-STR_NETWORK_ERROR_KICKED                                        :{WHITE} נזרקת מהמשחק ע"י המשתתפים האחרים
-STR_NETWORK_ERROR_CHEATER                                       :{WHITE} שימוש בטריקים אסור בשרת זה
+STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}לא נמצאה רשת
+STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}לא נמצאו משחקים ברשת
+STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}השרת אינו מגיב
+STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Newgrf לא ניתן להתחבר עקב אי התאמת קבצי
+STR_NETWORK_ERROR_DESYNC                                        :{WHITE}סינכרון משחק רשת נכשל
+STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}הקשר לשרת נותק
+STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}טעינת משחק מקובץ נכשלה
+STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}הפעלת השרת נכשלה
+STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}ניסיון חיבור נכשל
+STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}נכשל #{NUM} ניסיון התקשרות
+STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}שגיאת התקשרות
+STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}אי התאמה לגרסת השרת
+STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}ססמה שגוייה
+STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}השרת מלא
+STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}הינך מודח משרת זה
+STR_NETWORK_ERROR_KICKED                                        :{WHITE}נזרקת מהמשחק ע"י המשתתפים האחרים
+STR_NETWORK_ERROR_CHEATER                                       :{WHITE}שימוש בטריקים אסור בשרת זה
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :שגיאה כללית
@@ -1801,8 +1801,8 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :({2:STRING}) ע
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :{STRING} שינה את שמו ל {STRING} ***
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :{2:CURRENCY} נתן לחברתך {NBSP}{0:STRING} ***
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :{2:CURRENCY} {1:STRING} נתת ל ***
-STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE} השרת סגר את המשחק
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE} השרת מופעל מחדש...{}אנא המתן...
+STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}השרת סגר את המשחק
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}השרת מופעל מחדש...{}אנא המתן...
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}הורדת תוכן
@@ -1859,10 +1859,10 @@ STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}({2:NUM}
 
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}ניסיון התחברות לשרת התוכן נכשל...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE} הורדת רבצים נכשלה...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}הורדת רבצים נכשלה...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... הקשר נותק
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... הקובץ לא ניתן לכתיבה
-STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE} נכשלה פתיחה של קובץ מכווץ
+STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}נכשלה פתיחה של קובץ מכווץ
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}הגדרות שקיפות
@@ -2458,7 +2458,7 @@ STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}מחק �
 STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :שנה את שם העיר
 
 # Town local authority window
-STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE} רשות מקומית {TOWN}
+STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}רשות מקומית {TOWN}
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK} :מדד הביצועים של החברות
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}: פעולות זמינות
@@ -2571,7 +2571,7 @@ STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURREN
 STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}:סה”כ
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}חשבון הבנק
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}הלוואה
-STR_FINANCES_MAX_LOAN                                           :{BLACK}{CURRENCY}{WHITE} : הלוואה מירבית
+STR_FINANCES_MAX_LOAN                                           :{BLACK}{CURRENCY}{WHITE}: הלוואה מירבית
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}לווה {CURRENCY}
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}הגדל את ההלוואה. Ctrl+לחיצה מלווה ככל שניתן
@@ -2590,7 +2590,7 @@ STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}רכבי
 STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}מטוסים {COMMA}
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}כלי שייט {COMMA}
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}אין
-STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}{CURRENCY}{WHITE} :שווי החברה
+STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}{CURRENCY}{WHITE}:שווי החברה
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({1:COMPANY} נמצאים בבעלות{NBSP} {0:COMMA}%)
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}בנה בניין מטה
@@ -2764,9 +2764,9 @@ STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}החלף
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}החלף שם סוג כלי הטיס
 
 # Depot window
-STR_DEPOT_TRAIN_CAPTION                                         :{WHITE} מוסך רכבת {TOWN}
-STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE} מוסך כלי רכב {TOWN}
-STR_DEPOT_SHIP_CAPTION                                          :{WHITE} מבדוק כלי שייט {TOWN}
+STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}מוסך רכבת {TOWN}
+STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}מוסך כלי רכב {TOWN}
+STR_DEPOT_SHIP_CAPTION                                          :{WHITE}מבדוק כלי שייט {TOWN}
 STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} סככת מטוסים
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
@@ -3048,7 +3048,7 @@ STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}}התא�
 STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}התאם את כלי הטייס לנשיאת המטען שנבחר
 
 # Order view
-STR_ORDERS_CAPTION                                              :{WHITE} (יעדים) {VEHICLE}
+STR_ORDERS_CAPTION                                              :{WHITE}(יעדים) {VEHICLE}
 STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}לוח זמנים
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}עבור להצגת לוח זמנים
 
@@ -3174,7 +3174,7 @@ STR_ORDER_CONDITIONAL_TRUE_FALSE                                :{2:STRING} {1:S
 STR_INVALID_ORDER                                               :{RED}(יעד שגוי)
 
 # Time table window
-STR_TIMETABLE_TITLE                                             :{WHITE} (לוח זמנים){VEHICLE}
+STR_TIMETABLE_TITLE                                             :{WHITE}(לוח זמנים){VEHICLE}
 STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}יעדים
 STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}עבור להצגת יעדים
 
@@ -3294,8 +3294,8 @@ STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINYFONT}{GREE
 STR_INCOME_FLOAT_INCOME                                         :{GREEN} {CURRENCY} :הכנסה
 STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}העברה: {CURRENCY}
 STR_FEEDER                                                      :{YELLOW}העברה: {CURRENCY}
-STR_MESSAGE_ESTIMATED_COST                                      :{WHITE} {CURRENCY} :מחיר משוער
-STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE} {CURRENCY} :הכנסה משוערת
+STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}{CURRENCY} :מחיר משוער
+STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}{CURRENCY} :הכנסה משוערת
 
 # Saveload messages
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}!שמירה מתבצעת,{} אנא המתן עד לסיום השמירה
@@ -3355,8 +3355,8 @@ STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}השם �
 STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}חוסם את הדרך {1:STRING}
 
 # Local authority errors
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE} הרשות המקומית של {TOWN} מתנגדת לפעולה זו
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE} הרשות המקומית של {TOWN} מתנגדת לבניית שדה תעופה נוסף בעיר
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}הרשות המקומית של {TOWN} מתנגדת לפעולה זו
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}הרשות המקומית של {TOWN} מתנגדת לבניית שדה תעופה נוסף בעיר
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}הרשות המקומית ב{TOWN} מתנגדת להקמת שדה תעופה בשל חשש מהרעש
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}ניסיונך לשחד את הרשות המקומית
 STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}נחשף ע"י מבקר המדינה
@@ -3382,7 +3382,7 @@ STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}לא נ�
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}לא ניתן למסור כסף שנלווה מהבנק...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}לא ניתן לקנות את החברה...
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}לא ניתן לבנות את מטה החברה באתר זה...
-STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE} אין באפשרותך לקנות 25% ממניות חברה זו...
+STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}אין באפשרותך לקנות 25% ממניות חברה זו...
 STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}אין באפשרותך למכור 25% ממניות חברה זו...
 STR_ERROR_PROTECTED                                             :{WHITE}חברה זו צעירה מידי ואינה יכולה לסחור במניותיה...
 
@@ -3472,7 +3472,7 @@ STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... המ
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}לא ניתן לבנות מוסך רכבת כאן...
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}לא ניתן לבנות מוסך כלי רכב כאן...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}לא ניתן לבנות מוסך לחשמלית כאן...
-STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE} לא ניתן לבנות מבדוק כאן...
+STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}לא ניתן לבנות מבדוק כאן...
 
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}הרכבת צריכה להיות בעצירה במוסך
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}חייב להיות בעצירה בתוך מוסך לכלי רכב...
@@ -3500,7 +3500,7 @@ STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(הגבלת כ�
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}שילוב מסילות בלתי אפשרי
 STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}יש להסיר רמזורים תחילה
-STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE} אין מסילת רכבת מתאימה
+STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}אין מסילת רכבת מתאימה
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}יש להסיר את המסילה הקיימת תחילה
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}כביש חד סיטרי או חסום
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}לא ניתן למקם רמזורים כאן...
@@ -3536,7 +3536,7 @@ STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}לא י�
 STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}לא ניתן לבנות גשר כאן...
 STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}יש לפרק את הגשר תחילה
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}לא ניתן להתחיל ולסיים באותה הנקודה
-STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE} צדדי הגשר לא באותו הגובה
+STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}צדדי הגשר לא באותו הגובה
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}גשר נמוך מידי עבור השטח
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}התחלה וסיום חייבים להיות באותו הקו
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... קצות הגשר צריכים להיות על קרקע
@@ -3546,7 +3546,7 @@ STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}לא נ�
 STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}אזור לא מתאים לכניסה למנהרה
 STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}יש להרוס את המנהרה תחילה
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}מנהרה אחרת מפריעה
-STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE} התעלה תסתיים מחוץ למפה
+STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}התעלה תסתיים מחוץ למפה
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}לא ניתן היה לפנות את השטח בקצה השני של המנהרה
 
 # Unmovable related errors
@@ -3631,8 +3631,8 @@ STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}לא נ�
 STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :{WHITE}לא ניתן למחוק יעד זה...
 STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}לא ניתן לשנות יעד זה...
 STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}לא ניתן להזיז יעד זה...
-STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE} לא ניתן לדלג על היעד הנוכחי...
-STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE} לא ניתן לדלג על היעד שנבחר...
+STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}לא ניתן לדלג על היעד הנוכחי...
+STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}לא ניתן לדלג על היעד שנבחר...
 STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... כלי הרכב לא יכול להגיע לכל התחנות
 STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... כלי הרכב לא יכול להגיע לתחנה זו
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... כלי רכב בעל ההוראה הזו לא יכול להגיע לתחנה זו
@@ -3642,7 +3642,7 @@ STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}לא נ�
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... רחוק מידי מהיעד הקודם
 
 # Timetable related errors
-STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE} לא ניתן ליצור לוח זמנים עבור רכב זה...
+STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}לא ניתן ליצור לוח זמנים עבור רכב זה...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}.כלי תעבורה יכולים להמתין בתחנות בלבד
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}הכלי אינו עובר ביעד זה
 

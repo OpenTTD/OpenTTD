@@ -1066,7 +1066,7 @@ STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
 STR_CITY_APPROVAL_HOSTILE                                       :Ofleenend
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Keng KI fonnt...{}KI kënnen iwwert den 'Online Content' system downgeload gin
-STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE} Des Aktioun setzt d'Schwieregkeet op "eegen"
+STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Des Aktioun setzt d'Schwieregkeet op "eegen"
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Erweidert Astellungen
@@ -1729,23 +1729,23 @@ STR_NETWORK_CHAT_ALL                                            :[All] {STRING}:
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Text fir Chat aginn
 
 # Network messages
-STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE} Keng Netzwierkgeräter font oder compiléiert ouni ENABLE_NETWORK
+STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Keng Netzwierkgeräter font oder compiléiert ouni ENABLE_NETWORK
 STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Konnt kéng Netzwierkspiller fannen
-STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE} Den Server huet net op d'Ufro geäntwert
-STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE} Konnt sech wéinst NewGRF ënnerscheed net connectéieren
-STR_NETWORK_ERROR_DESYNC                                        :{WHITE} Netzwierksyncronisatiouns-Fehler
+STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Den Server huet net op d'Ufro geäntwert
+STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Konnt sech wéinst NewGRF ënnerscheed net connectéieren
+STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Netzwierksyncronisatiouns-Fehler
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Netzwierkverbindung verluer
-STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE} Konnt den Spillstand net lueden
+STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Konnt den Spillstand net lueden
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Konnt den Server net starten
-STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE} Konnt sëch net connectéieren
+STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Konnt sëch net connectéieren
 STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Connectioun #{NUM} oofgelaaf
-STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE} En Protokolfehler ass entstaanen an d'Connectioun ass getrennt ginn
+STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}En Protokolfehler ass entstaanen an d'Connectioun ass getrennt ginn
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}D'Versioun vum Client stëmmt net mat där vum Server iwerëneen
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Falscht Passwuert
-STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE} Den Server ass voll
-STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE} Dir sidd vun dësem Server gebannt
-STR_NETWORK_ERROR_KICKED                                        :{WHITE} Dir sidd aus dem Spill gekickt ginn
-STR_NETWORK_ERROR_CHEATER                                       :{WHITE} Cheaten ass op dësem Server net erlaabt
+STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Den Server ass voll
+STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Dir sidd vun dësem Server gebannt
+STR_NETWORK_ERROR_KICKED                                        :{WHITE}Dir sidd aus dem Spill gekickt ginn
+STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Cheaten ass op dësem Server net erlaabt
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :generellen Fehler
@@ -1787,8 +1787,8 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} hu
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} huet säin Numm op {STRING} gewiesselt
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} huet ärer Firma {2:CURRENCY} ginn
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Dir hudd dem {1:STRING} {2:CURRENCY} ginn
-STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE} Den Server huet d'Sessioun zougemaach
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE} Den Server get nei gestart...{}Weg. waarden...
+STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Den Server huet d'Sessioun zougemaach
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Den Server get nei gestart...{}Weg. waarden...
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Downloaden Inhalt

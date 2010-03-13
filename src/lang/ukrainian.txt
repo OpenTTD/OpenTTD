@@ -1912,8 +1912,8 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} п
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} змінив(-ла) своє ім'я на {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} дав Вашій компанії {2:CURRENCY}
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Ви дали {1:STRING} {2:CURRENCY}
-STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE} Сервер закрив сеанс
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE} Перезавантаження сервера...{}Зачекайте...
+STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Сервер закрив сеанс
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Перезавантаження сервера...{}Зачекайте...
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Завантаження вмісту
@@ -3467,7 +3467,7 @@ STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{1:STRIN
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}Влада міста {TOWN} проти цього
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE} Влада міста {TOWN} відмовляє у будівництві ще одного аеропорту.
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}Влада міста {TOWN} відмовляє у будівництві ще одного аеропорту.
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN}: місцева влада відмовляє у дозволі на аеропорт з міркувань шуму
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}Ваша спроба дати хабара була
 STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}викрита місцевим слідчим

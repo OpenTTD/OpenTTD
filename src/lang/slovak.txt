@@ -1854,8 +1854,8 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} op
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} zmenil/-a svoje meno na {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} dal ti spoločnosť {2:CURRENCY}
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Dal si {1:STRING} {2:CURRENCY}
-STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE} Server ukoncil relaciu
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE} Server sa restartuje ...{}Cakajte prosim ...
+STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Server ukoncil relaciu
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Server sa restartuje ...{}Cakajte prosim ...
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Sťahovanie obsahu

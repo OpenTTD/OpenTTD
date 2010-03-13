@@ -812,7 +812,7 @@ STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :Прихода на {WHITE}{VEHICLE} миналата година е бил {CURRENCY}
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} спря поради провалена задача за преоборудване
-STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE} Неуспешна автоматична замяна на {VEHICLE}{}{STRING}
+STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Неуспешна автоматична замяна на {VEHICLE}{}{STRING}
 
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}Нов {STRING} е на разположение!
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIGFONT}{BLACK}{ENGINE}
@@ -1725,23 +1725,23 @@ STR_NETWORK_CHAT_ALL                                            :[All] {STRING}:
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Въведи текст за мрежов разговор
 
 # Network messages
-STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE} Не са открити мрежови устройства или е компилирано без ENABLE_NETWORK
-STR_NETWORK_ERROR_NOSERVER                                      :{WHITE} Не може да открия мрежови игри
-STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE} Сървърът не отговори на заявката
-STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE} Не може да се свърже поради различие в NewGRF
-STR_NETWORK_ERROR_DESYNC                                        :{WHITE} Синхронизацията на мрежовата игра се провали
-STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE} Връзката с мрежовата игра се загуби
-STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE} Не може да зареди играта
-STR_NETWORK_ERROR_SERVER_START                                  :{WHITE} Сървъра не може да бъде стартиран
-STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE} Не може да се свърже
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE} Връзка #{NUM} изтече времето
-STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE} Грешка в протокола се случи и връзката бе прекъсната
-STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE} Ревизията на клиента не отговаря на сървъра
-STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE} Грешна парола
-STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE} Сървъра е пълен
-STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE} Забранено ви е влизането на този сървър
-STR_NETWORK_ERROR_KICKED                                        :{WHITE} Бяхте изхвърлен от играта
-STR_NETWORK_ERROR_CHEATER                                       :{WHITE} Маменето не е разрешено на този сървър
+STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Не са открити мрежови устройства или е компилирано без ENABLE_NETWORK
+STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Не може да открия мрежови игри
+STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Сървърът не отговори на заявката
+STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Не може да се свърже поради различие в NewGRF
+STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Синхронизацията на мрежовата игра се провали
+STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Връзката с мрежовата игра се загуби
+STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Не може да зареди играта
+STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Сървъра не може да бъде стартиран
+STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Не може да се свърже
+STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Връзка #{NUM} изтече времето
+STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Грешка в протокола се случи и връзката бе прекъсната
+STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Ревизията на клиента не отговаря на сървъра
+STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Грешна парола
+STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Сървъра е пълен
+STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Забранено ви е влизането на този сървър
+STR_NETWORK_ERROR_KICKED                                        :{WHITE}Бяхте изхвърлен от играта
+STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Маменето не е разрешено на този сървър
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :обща грешка
@@ -1783,8 +1783,8 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} н
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} си промени името на {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} изпрати {2:CURRENCY} на твоята компания
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Ти даде {2:CURRENCY} на {1:STRING}
-STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE} Сървъра прекъсна сесията
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE} Сървъра се рестартира...{}Моля изчакайте...
+STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Сървъра прекъсна сесията
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Сървъра се рестартира...{}Моля изчакайте...
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Съдържание за сваляне

@@ -1735,10 +1735,10 @@ STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Tidak bo
 STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Penyambungan #{NUM} 'timed out'
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Kesilapan protokol telah dikesan dan penyambungan ditutup
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Versi klien ini tidak berpadanan dengan versi pelayan
-STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE} Kata laluan salah
+STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Kata laluan salah
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Pelayan ini penuh
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Anda telah dilarang daripada main di pelayan ini
-STR_NETWORK_ERROR_KICKED                                        :{WHITE} Anda telah ditendang keluar daripada permainan ini
+STR_NETWORK_ERROR_KICKED                                        :{WHITE}Anda telah ditendang keluar daripada permainan ini
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Penipuan (Cheats) tidak dibenarkan di pelayan ini
 
 ############ Leave those lines in this order!!
@@ -1781,8 +1781,8 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} su
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} telah menukar namanya kepada {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} telah memberi syarikat anda {2:CURRENCY}
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Anda memberi {1:STRING} {2:CURRENCY}
-STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE} Pelayan telah menutup sesi ini
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE} Pelayan sedang dimulakan semula...{}Harap bersabar...
+STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Pelayan telah menutup sesi ini
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Pelayan sedang dimulakan semula...{}Harap bersabar...
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Kandungan sedang dimuat turun

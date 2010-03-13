@@ -904,7 +904,7 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} πάλιωσε πολύ και χρειάζεται επειγόντως αλλαγή
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} δεν μπορεί να βρει δρόμο να συνεχίσει
 STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{G Ο Η Το} {VEHICLE} χάθηκε
-STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE} Το κέρδος του {VEHICLE} πέρυσι ήταν {CURRENCY}
+STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Το κέρδος του {VEHICLE} πέρυσι ήταν {CURRENCY}
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} σταμάτησε γιατί μια εντολή μετατροπής απέτυχε
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Αποτυχία Αυτόματης Ανανέωσης για το {VEHICLE}{}{STRING}
@@ -1827,7 +1827,7 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Εισά
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Δεν βρέθηκε συσκευή δικτύου ή έγινε μεταγλώτηση χώρις παράμετρο ENABLE_NETWORK
 STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Δεν βρέθηκε κάποιο δικτυακό παιχνίδι
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Ο διακομιστής δεν απάντησε στο αίτημα
-STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE} Απέτυχε η σύνδεση λόγο ασυμφωνίας NewGRF
+STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Απέτυχε η σύνδεση λόγο ασυμφωνίας NewGRF
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Συγχρονισμός δικτυακού παιχνιδιού απέτυχε
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Χάθηκε η σύνδεση δικτυακού παιχνιδιού
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Δεν είναι δυνατό το φόρτωμα αποθηκευμένου παιχνιδιού
@@ -1835,11 +1835,11 @@ STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Δεν �
 STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Η σύνδεση δεν είναι δυνατή
 STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Τελειώσε ο χρόνος της σύνδεσης #{NUM}
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Έγινε ενα λάθος πρωτόκολλου και η σύνδεση έκλεισε
-STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE} Η υποέκδοση του πελάτη δεν ταιριάζει με την υποέκδοση του διακομιστή
+STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Η υποέκδοση του πελάτη δεν ταιριάζει με την υποέκδοση του διακομιστή
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Λανθασμένος κωδικός
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Ο διακομιστής είναι γεμάτος
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Έχει απαγορευτεί η είσοδος σας από το διακομιστή
-STR_NETWORK_ERROR_KICKED                                        :{WHITE} Έχετε εκδιωχτεί από το παιχνίδι
+STR_NETWORK_ERROR_KICKED                                        :{WHITE}Έχετε εκδιωχτεί από το παιχνίδι
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Η χρήση cheats δεν επιτρέπεται σε αυτό το διακομιστή
 
 ############ Leave those lines in this order!!
@@ -1882,8 +1882,8 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} α
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} άλλαξε το όνομα του/της σε {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} έδωσε στην εταιρία σας {2:CURRENCY}
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Δώσατε {1:STRING} {2:CURRENCY}
-STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE} Ο διακομιστής έκλεισε την συνεδρία
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE} Ο διακομιστής κάνει επανεκκίνηση...{}Παρακαλώ πολύ...
+STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Ο διακομιστής έκλεισε την συνεδρία
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Ο διακομιστής κάνει επανεκκίνηση...{}Παρακαλώ πολύ...
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Κατέβασμα περιεχόμενου

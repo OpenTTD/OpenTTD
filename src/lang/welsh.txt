@@ -789,10 +789,10 @@ STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}Mae gan 
 # end of order system
 
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}Mae {VEHICLE} yn heneiddio
-STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE} Mae {VEHICLE} yn hynod o hen
-STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE} Mae {VEHICLE} yn hynod o hen ac angen ei ddisodli
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}Mae {VEHICLE} yn hynod o hen
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}Mae {VEHICLE} yn hynod o hen ac angen ei ddisodli
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}Mae {VEHICLE} yn methu dod o hyd i lwybr er mwyn parhau.
-STR_NEWS_TRAIN_IS_LOST                                          :{WHITE} Mae {VEHICLE} ar goll.
+STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}Mae {VEHICLE} ar goll.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Elw {VEHICLE} y flwyddyn diwethaf oedd {CURRENCY}
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Stopiodd achos methiant hefo trefnu ailffitio {VEHICLE}
@@ -1675,23 +1675,23 @@ STR_NETWORK_CHAT_ALL                                            :[Pawb] {STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}teipiwch destun ar gyfer sgwrs rwydwaith
 
 # Network messages
-STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE} Ni ddaethpwyd o hyd i ddyfeisiau rhwydwaith, neu ni chafodd y gêm ei chrynhoi gyda ENABLE_NETWORK
-STR_NETWORK_ERROR_NOSERVER                                      :{WHITE} Methu darganfod unrhyw gemau rhwydwaith
-STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE} Ni atebodd y gweinydd y cais
-STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE} Doedd dim modd cysylltu oherwydd nid oedd y NewGRF yn cyfateb
-STR_NETWORK_ERROR_DESYNC                                        :{WHITE} Methodd y cydamseru rhwng y rhwydwaith a'r gêm
-STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE} Collwyd y cysylltiad rhwng y rhwydwaith a'r gêm
-STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE} Doedd dim modd llwytho'r gêm a gadwyd
-STR_NETWORK_ERROR_SERVER_START                                  :{WHITE} Methwyd a chychwyn y gweinydd
-STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE} Doedd dim modd cysylltu
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE} Daeth cyfnod cyswllt #{NUM} i ben
-STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE} Caewyd y cyswllt oherwydd gwall protocol
-STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE} Nid y fersiwn y cleient yn cyfateb i fersiwn y gweinydd
-STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE} Cyfrinair anghywir
-STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE} Mae'r gweinydd yn llawn
-STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE} Rydych chi wedi'ch gwahardd o'r gweinydd hwn
-STR_NETWORK_ERROR_KICKED                                        :{WHITE} YCafoch chi eich cicio o'r gêm
-STR_NETWORK_ERROR_CHEATER                                       :{WHITE} Ni chaniateir twyllo ar y gweinydd hwn
+STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Ni ddaethpwyd o hyd i ddyfeisiau rhwydwaith, neu ni chafodd y gêm ei chrynhoi gyda ENABLE_NETWORK
+STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Methu darganfod unrhyw gemau rhwydwaith
+STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Ni atebodd y gweinydd y cais
+STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Doedd dim modd cysylltu oherwydd nid oedd y NewGRF yn cyfateb
+STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Methodd y cydamseru rhwng y rhwydwaith a'r gêm
+STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Collwyd y cysylltiad rhwng y rhwydwaith a'r gêm
+STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Doedd dim modd llwytho'r gêm a gadwyd
+STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Methwyd a chychwyn y gweinydd
+STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Doedd dim modd cysylltu
+STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Daeth cyfnod cyswllt #{NUM} i ben
+STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Caewyd y cyswllt oherwydd gwall protocol
+STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Nid y fersiwn y cleient yn cyfateb i fersiwn y gweinydd
+STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Cyfrinair anghywir
+STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Mae'r gweinydd yn llawn
+STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Rydych chi wedi'ch gwahardd o'r gweinydd hwn
+STR_NETWORK_ERROR_KICKED                                        :{WHITE}YCafoch chi eich cicio o'r gêm
+STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Ni chaniateir twyllo ar y gweinydd hwn
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :gwall cyffredinol
@@ -1723,8 +1723,8 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** Mae {STRING
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** Mae {STRING} wedi newid ei (h)enw i {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** Rhoddodd {STRING} {2:CURRENCY} i'ch cwmni
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Fe roddoch chi {2:CURRENCY} {1:STRING}
-STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE} caeodd y gweinydd y sesiwn
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE} Mae'r gweinydd yn ailgychwyn...{}Arhoswch...
+STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}caeodd y gweinydd y sesiwn
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Mae'r gweinydd yn ailgychwyn...{}Arhoswch...
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Cynnwys wrthi'n llwytho i lawr
@@ -3354,7 +3354,7 @@ STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Methu do
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :math depo anghywir
 
 # Autoreplace related errors
-STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE} Aeth gormod o amser heibio i allu adnewyddu {VEHICLE}
+STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}Aeth gormod o amser heibio i allu adnewyddu {VEHICLE}
 STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Ni weithredwyd unrhyw reolau awtogyfnewid/adnewydd.
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(terfyn arian)
 

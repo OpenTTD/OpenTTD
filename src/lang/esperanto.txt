@@ -1715,19 +1715,19 @@ STR_NETWORK_CHAT_ALL                                            :[Ĉiuj] {STRING
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Tajpu tekston por retbabilado
 
 # Network messages
-STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE} Ne trovis retstirilojn aŭ kompiliĝis sen ENABLE_NETWORK
-STR_NETWORK_ERROR_NOSERVER                                      :{WHITE} Ne povis trovi ajnan retludon
-STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE} La servilo ne respondis al la peto
-STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE} Ne povis konekti pro miso pri NewGRF
-STR_NETWORK_ERROR_DESYNC                                        :{WHITE} Retluda sinkronigado fiaskis
-STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE} Perdis konekton al retludo
-STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE} Ne povis ŝarĝi konservitan ludon
-STR_NETWORK_ERROR_SERVER_START                                  :{WHITE} Ne povis eki la servilon
-STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE} Ne povis konekti
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE} Konekto #{NUM} ekstertempiĝis
-STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE} Okazis protokoleraro kaj la konekto estis fermita
-STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE} La revidaĵo de la kliento ne kongruas kun la servila revidaĵo
-STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE} Malĝusta pasvorto
+STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Ne trovis retstirilojn aŭ kompiliĝis sen ENABLE_NETWORK
+STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Ne povis trovi ajnan retludon
+STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}La servilo ne respondis al la peto
+STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Ne povis konekti pro miso pri NewGRF
+STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Retluda sinkronigado fiaskis
+STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Perdis konekton al retludo
+STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Ne povis ŝarĝi konservitan ludon
+STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Ne povis eki la servilon
+STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Ne povis konekti
+STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Konekto #{NUM} ekstertempiĝis
+STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Okazis protokoleraro kaj la konekto estis fermita
+STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}La revidaĵo de la kliento ne kongruas kun la servila revidaĵo
+STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Malĝusta pasvorto
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}La servilo plenas
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Oni forbaris vin de la servilo
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Oni forbatis vin el la ludo
@@ -1773,8 +1773,8 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} ĉ
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} ŝanĝis sian nomon al {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} donis al via kompanio {2:CURRENCY}
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Vi donis {1:STRING} {2:CURRENCY}
-STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE} La servilo fermis la seancon
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE} La servilo restartiĝas...{}Bonvolu atendi...
+STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}La servilo fermis la seancon
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}La servilo restartiĝas...{}Bonvolu atendi...
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Enhavo elŝutiĝas

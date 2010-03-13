@@ -3416,7 +3416,7 @@ STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :鉄道車庫の
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} は交換後に長過ぎます。
-STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE} 自動交換/更新の規則は適用されませんでした。
+STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}自動交換/更新の規則は適用されませんでした。
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(資金の限度)
 
 # Rail construction errors

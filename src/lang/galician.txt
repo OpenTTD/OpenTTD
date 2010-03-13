@@ -1687,9 +1687,9 @@ STR_NETWORK_CHAT_ALL                                            :[Todos] {STRING
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Escribe o texto para a charla en rede
 
 # Network messages
-STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE} Non se atoparon dispositivos de rede ou compilouse sen ENABLE_NETWORK
+STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Non se atoparon dispositivos de rede ou compilouse sen ENABLE_NETWORK
 STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Non se atoparon xogos en rede
-STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE} O servidor non respondeu á solicitude
+STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}O servidor non respondeu á solicitude
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Non se pode conectar debido a un problema cos NewGRF
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Sincronización da partida en rede fallida
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Perdeuse a conexión da partida en rede
@@ -1739,8 +1739,8 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} sa
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} cambiou o seu nome a {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} deu a túa companía {2:CURRENCY}
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Diches a {1:STRING} {2:CURRENCY}
-STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE} O servidor pechou a conexión
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE} O servidor estase a reiniciar...{}Espera por favor...
+STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}O servidor pechou a conexión
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}O servidor estase a reiniciar...{}Espera por favor...
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Descargar contido

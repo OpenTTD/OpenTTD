@@ -1941,7 +1941,7 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} п
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} изменил свое имя на {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} передал вашей компании {2:CURRENCY}
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Вы передали {1:STRING} {2:CURRENCY}
-STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE} Сервер закрыл сессию
+STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Сервер закрыл сессию
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Сервер перезапускается...{}Пожалуйста, подождите...
 
 # Content downloading window

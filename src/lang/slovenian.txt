@@ -1771,23 +1771,23 @@ STR_NETWORK_CHAT_ALL                                            :[Vsi] {STRING}:
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Vpiši tekst za mrežni pogovor
 
 # Network messages
-STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE} Ni najdenih mrežnih naprav ali ni aktiviran ENABLE_NETWORK
-STR_NETWORK_ERROR_NOSERVER                                      :{WHITE} Ni mogoče najti mrežnih iger
-STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE} Strežnik ni odgovoril zahtevi
-STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE} Nemogoča povezava zaradi neskladja datotek NewGRF
-STR_NETWORK_ERROR_DESYNC                                        :{WHITE} Sinhronizacija mrežne igre ni uspela
-STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE} Povezava mrežne igre je padla
-STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE} Ni mogoče naložiti shranjene igre
-STR_NETWORK_ERROR_SERVER_START                                  :{WHITE} Nemogoč zagon strežnika
-STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE} Nemogoča povezava
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE} Povezava #{NUM} je potekla
-STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE} Narejena je bila napaka protokola in povezava je bila prekinjena
-STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE} Različica tega gosta je neskladna s strežnikovo razlicico
-STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE} Napačno geslo
-STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE} Strežnik je zaseden
-STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE} Izvrzen/a si iz tega streznika
-STR_NETWORK_ERROR_KICKED                                        :{WHITE} Brcnjen/a si bil/a iz igre
-STR_NETWORK_ERROR_CHEATER                                       :{WHITE} Goljufanje ni dovoljeno na tem strežniku
+STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Ni najdenih mrežnih naprav ali ni aktiviran ENABLE_NETWORK
+STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Ni mogoče najti mrežnih iger
+STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Strežnik ni odgovoril zahtevi
+STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Nemogoča povezava zaradi neskladja datotek NewGRF
+STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Sinhronizacija mrežne igre ni uspela
+STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Povezava mrežne igre je padla
+STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Ni mogoče naložiti shranjene igre
+STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Nemogoč zagon strežnika
+STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Nemogoča povezava
+STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Povezava #{NUM} je potekla
+STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Narejena je bila napaka protokola in povezava je bila prekinjena
+STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Različica tega gosta je neskladna s strežnikovo razlicico
+STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Napačno geslo
+STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Strežnik je zaseden
+STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Izvrzen/a si iz tega streznika
+STR_NETWORK_ERROR_KICKED                                        :{WHITE}Brcnjen/a si bil/a iz igre
+STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Goljufanje ni dovoljeno na tem strežniku
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :splošna napaka
@@ -1829,8 +1829,8 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} od
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} je opravil/a spremembo imena v {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} je podarilo tvojemu podjetju {2:CURRENCY}
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Podjetju {1:STRING} je bil podarjen znesek {2:CURRENCY}
-STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE} Strežnik je zaprl sejo
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE} Strežnik se zaganja...{}Prosim počakaj...
+STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Strežnik je zaprl sejo
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Strežnik se zaganja...{}Prosim počakaj...
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Prenos vsebin

@@ -1726,8 +1726,8 @@ STR_NETWORK_CHAT_ALL                                            :[Todos] {STRING
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Coloque o texto para o jogo em rede
 
 # Network messages
-STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE} Não foram encontradas interfaces de rede ou o jogo foi compilado sem ENABLE_NETWORK
-STR_NETWORK_ERROR_NOSERVER                                      :{WHITE} Não foram encontrados jogos em rede
+STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Não foram encontradas interfaces de rede ou o jogo foi compilado sem ENABLE_NETWORK
+STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Não foram encontrados jogos em rede
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}O servidor não respondeu ao pedido
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Não pode conectar devido ao NewGRF errado
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}A sincronização do jogo falhou.
@@ -1784,8 +1784,8 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} sa
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} mudou seu nome para {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} deu à sua companhia{2:CURRENCY}
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Você deu a {1:STRING} {2:CURRENCY}
-STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE} O servidor fechou a sessão
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE} O servidor está reiniciando...{}Aguarde...
+STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}O servidor fechou a sessão
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}O servidor está reiniciando...{}Aguarde...
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Baixando conteúdo
@@ -2391,7 +2391,7 @@ STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Arquivo
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Despausar pode travar OpenTTD. Não envie relatórios de erros sobre travas subsequentes.{}Você realmente quer despausar?
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE} '{0:STRING}' tem altas chances de causar desincronias e/ou travamentos.
+STR_NEWGRF_BROKEN                                               :{WHITE}'{0:STRING}' tem altas chances de causar desincronias e/ou travamentos.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Muda o tamanho de um veículo para '{1:ENGINE}' apesar de não estar em um depósito.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Trem '{VEHICLE}' de '{COMPANY}' tem um tamanho inválido. Provavelmente causado por um NewGRF. O jogo pode travar ou sair de sincronia.
 

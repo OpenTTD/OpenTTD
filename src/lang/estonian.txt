@@ -1793,7 +1793,7 @@ STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Ei saa u
 STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Ei õnnestu ühendada
 STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}#{NUM}. ühendus aegus
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Tekkis protokolliviga ja ühendus katkes
-STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE} Kliendi osa ei vasta serveri osaga
+STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Kliendi osa ei vasta serveri osaga
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Vale parool
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Server on täis
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Sinu sisenemine siia serverisse on keelatud
@@ -1840,8 +1840,8 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} la
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} vahetas oma nime {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} andis su ettevõttele {2:CURRENCY}
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Sa andsid {1:STRING} {2:CURRENCY}
-STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE} Server sulges sessiooni
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE} Server restardib...{}Palun oota...
+STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Server sulges sessiooni
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Server restardib...{}Palun oota...
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Sisu allalaadimine

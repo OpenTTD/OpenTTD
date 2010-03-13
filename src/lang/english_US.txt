@@ -1733,13 +1733,13 @@ STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}No netwo
 STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Could not find any network games
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}The server didn't answer the request
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Could not connect due to NewGRF mismatch
-STR_NETWORK_ERROR_DESYNC                                        :{WHITE} Network-Game synchronization failed.
-STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE} Network-Game connection lost.
+STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Network-Game synchronization failed.
+STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Network-Game connection lost.
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Could not load savegame
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Could not start the server
 STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Could not connect
 STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Connection #{NUM} timed out
-STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE} We made a protocol-error and our connection is closed.
+STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}We made a protocol-error and our connection is closed.
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}The revision of this client does not match the server's revision
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Wrong password
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}The server is full
@@ -1787,8 +1787,8 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} ha
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} has changed his/her name to {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} gave your company {2:CURRENCY}
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** You gave {1:STRING} {2:CURRENCY}
-STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE} The server closed the session
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE} The server is restarting...{}Please wait...
+STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}The server closed the session
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}The server is restarting...{}Please wait...
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Content downloading
