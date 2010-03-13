@@ -23,17 +23,7 @@
  */
 RoadBits CleanUpRoadBits(const TileIndex tile, RoadBits org_rb);
 
-/**
- * Is it allowed to remove the given road bits from the given tile?
- * @param tile      the tile to remove the road from
- * @param remove    the roadbits that are going to be removed
- * @param owner     the actual owner of the roadbits of the tile
- * @param rt        the road type to remove the bits from
- * @param flags     command flags
- * @param town_check Shall the town rating checked/affected
- * @return true when it is allowed to remove the road bits
- */
-bool CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, Owner owner, RoadType rt, DoCommandFlag flags, bool town_check = true);
+CommandCost CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, Owner owner, RoadType rt, DoCommandFlag flags, bool town_check = true);
 
 /**
  * Draw the catenary for tram road bits

@@ -3443,7 +3443,7 @@ static bool CanRemoveRoadWithStop(TileIndex tile, DoCommandFlag flags)
 
 	if ((road_owner != OWNER_TOWN && !CheckOwnership(road_owner)) || !CheckOwnership(tram_owner)) return false;
 
-	return road_owner != OWNER_TOWN || CheckAllowRemoveRoad(tile, GetAnyRoadBits(tile, ROADTYPE_ROAD), OWNER_TOWN, ROADTYPE_ROAD, flags);
+	return road_owner != OWNER_TOWN || CheckAllowRemoveRoad(tile, GetAnyRoadBits(tile, ROADTYPE_ROAD), OWNER_TOWN, ROADTYPE_ROAD, flags).Succeeded();
 }
 
 CommandCost ClearTile_Station(TileIndex tile, DoCommandFlag flags)

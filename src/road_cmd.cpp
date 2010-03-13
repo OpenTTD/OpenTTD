@@ -115,34 +115,37 @@ static Foundation GetRoadFoundation(Slope tileh, RoadBits bits);
  * @param rt        the road type to remove the bits from
  * @param flags     command flags
  * @param town_check Shall the town rating checked/affected
- * @return true when it is allowed to remove the road bits
+ * @return A succeeded command when it is allowed to remove the road bits, a failed command otherwise.
  */
-bool CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, Owner owner, RoadType rt, DoCommandFlag flags, bool town_check)
+CommandCost CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, Owner owner, RoadType rt, DoCommandFlag flags, bool town_check)
 {
-	if (_game_mode == GM_EDITOR || remove == ROAD_NONE) return true;
+	if (_game_mode == GM_EDITOR || remove == ROAD_NONE) return CommandCost();
 
 	/* Water can always flood and towns can always remove "normal" road pieces.
 	 * Towns are not be allowed to remove non "normal" road pieces, like tram
 	 * tracks as that would result in trams that cannot turn. */
 	if (_current_company == OWNER_WATER ||
-			(rt == ROADTYPE_ROAD && !Company::IsValidID(_current_company))) return true;
+			(rt == ROADTYPE_ROAD && !Company::IsValidID(_current_company))) return CommandCost();
 
 	/* Only do the special processing if the road is owned
 	 * by a town */
-	if (owner != OWNER_TOWN) return (owner == OWNER_NONE) || CheckOwnership(owner);
+	if (owner != OWNER_TOWN) {
+		if (owner == OWNER_NONE) return CommandCost();
+		return CheckOwnership(owner) ? CommandCost() : CMD_ERROR;
+	}
 
-	if (!town_check) return true;
+	if (!town_check) return CommandCost();
 
-	if (_cheats.magic_bulldozer.value) return true;
+	if (_cheats.magic_bulldozer.value) return CommandCost();
 
 	Town *t = ClosestTownFromTile(tile, UINT_MAX);
-	if (t == NULL) return true;
+	if (t == NULL) return CommandCost();
 
 	/* check if you're allowed to remove the street owned by a town
 	 * removal allowance depends on difficulty setting */
 	CommandCost ret = CheckforTownRating(flags, t, ROAD_REMOVE);
 	ret.SetGlobalErrorMessage();
-	if (ret.Failed()) return false;
+	if (ret.Failed()) return ret;
 
 	/* Get a bitmask of which neighbouring roads has a tile */
 	RoadBits n = ROAD_NONE;
@@ -159,14 +162,13 @@ bool CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, Owner owner, RoadType
 		/* you can remove all kind of roads with extra dynamite */
 		if (!_settings_game.construction.extra_dynamite) {
 			SetDParam(0, t->index);
-			_error_message = STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS;
-			return false;
+			return_cmd_error(STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS);
 		}
 		rating_decrease = RATING_ROAD_DOWN_STEP_INNER;
 	}
 	ChangeTownRating(t, rating_decrease, RATING_ROAD_MINIMUM, flags);
 
-	return true;
+	return CommandCost();
 }
 
 
@@ -210,7 +212,9 @@ static CommandCost RemoveRoad(TileIndex tile, DoCommandFlag flags, RoadBits piec
 			return CMD_ERROR;
 	}
 
-	if (!CheckAllowRemoveRoad(tile, pieces, GetRoadOwner(tile, rt), rt, flags, town_check)) return CMD_ERROR;
+	CommandCost ret = CheckAllowRemoveRoad(tile, pieces, GetRoadOwner(tile, rt), rt, flags, town_check);
+	ret.SetGlobalErrorMessage();
+	if (ret.Failed()) return ret;
 
 	if (!IsTileType(tile, MP_ROAD)) {
 		/* If it's the last roadtype, just clear the whole tile */
