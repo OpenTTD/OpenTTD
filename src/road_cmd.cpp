@@ -784,12 +784,12 @@ CommandCost CmdBuildLongRoad(TileIndex start_tile, DoCommandFlag flags, uint32 p
 			/* Only pay for the upgrade on one side of the bridges and tunnels */
 			if (IsTileType(tile, MP_TUNNELBRIDGE)) {
 				if (IsBridge(tile)) {
-					if ((!had_bridge || GetTunnelBridgeDirection(tile) == dir)) {
+					if (!had_bridge || GetTunnelBridgeDirection(tile) == dir) {
 						cost.AddCost(ret);
 					}
 					had_bridge = true;
 				} else { // IsTunnel(tile)
-					if ((!had_tunnel || GetTunnelBridgeDirection(tile) == dir)) {
+					if (!had_tunnel || GetTunnelBridgeDirection(tile) == dir) {
 						cost.AddCost(ret);
 					}
 					had_tunnel = true;
