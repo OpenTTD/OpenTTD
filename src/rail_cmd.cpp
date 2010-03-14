@@ -741,7 +741,7 @@ static CommandCost ValidateAutoDrag(Trackdir *trackdir, TileIndex start, TileInd
  */
 static CommandCost CmdRailTrackHelper(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	CommandCost ret, total_cost(EXPENSES_CONSTRUCTION);
+	CommandCost total_cost(EXPENSES_CONSTRUCTION);
 	Track track = (Track)GB(p2, 4, 3);
 	bool remove = HasBit(p2, 7);
 	RailType railtype = (RailType)GB(p2, 0, 4);
@@ -751,12 +751,14 @@ static CommandCost CmdRailTrackHelper(TileIndex tile, DoCommandFlag flags, uint3
 	TileIndex end_tile = p1;
 	Trackdir trackdir = TrackToTrackdir(track);
 
-	if (ValidateAutoDrag(&trackdir, tile, end_tile).Failed()) return CMD_ERROR;
+	CommandCost ret = ValidateAutoDrag(&trackdir, tile, end_tile);
+	ret.SetGlobalErrorMessage();
+	if (ret.Failed()) return ret;
 
 	if (flags & DC_EXEC) SndPlayTileFx(SND_20_SPLAT_2, tile);
 
 	for (;;) {
-		ret = DoCommand(tile, railtype, TrackdirToTrack(trackdir), flags, remove ? CMD_REMOVE_SINGLE_RAIL : CMD_BUILD_SINGLE_RAIL);
+		CommandCost ret = DoCommand(tile, railtype, TrackdirToTrack(trackdir), flags, remove ? CMD_REMOVE_SINGLE_RAIL : CMD_BUILD_SINGLE_RAIL);
 
 		if (ret.Failed()) {
 			if (_error_message != STR_ERROR_ALREADY_BUILT && !remove) {
@@ -851,7 +853,7 @@ CommandCost CmdBuildTrainDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 	}
 
 	CommandCost cost = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-	if (cost.Failed()) return CMD_ERROR;
+	if (cost.Failed()) return cost;
 
 	if (MayHaveBridgeAbove(tile) && IsBridgeAbove(tile)) return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
 
@@ -1122,7 +1124,7 @@ static bool CheckSignalAutoFill(TileIndex &tile, Trackdir &trackdir, int &signal
  */
 static CommandCost CmdSignalTrackHelper(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	CommandCost ret, total_cost(EXPENSES_CONSTRUCTION);
+	CommandCost total_cost(EXPENSES_CONSTRUCTION);
 	bool err = true;
 	TileIndex start_tile = tile;
 
@@ -1144,7 +1146,9 @@ static CommandCost CmdSignalTrackHelper(TileIndex tile, DoCommandFlag flags, uin
 	 * since the original amount will be too dense (shorter tracks) */
 	signal_density *= 2;
 
-	if (ValidateAutoDrag(&trackdir, tile, end_tile).Failed()) return CMD_ERROR;
+	CommandCost ret = ValidateAutoDrag(&trackdir, tile, end_tile);
+	ret.SetGlobalErrorMessage();
+	if (ret.Failed()) return ret;
 
 	track = TrackdirToTrack(trackdir); // trackdir might have changed, keep track in sync
 	Trackdir start_trackdir = trackdir;
@@ -1198,7 +1202,7 @@ static CommandCost CmdSignalTrackHelper(TileIndex tile, DoCommandFlag flags, uin
 			if (HasBit(signal_dir, 0)) signals |= SignalAlongTrackdir(trackdir);
 			if (HasBit(signal_dir, 1)) signals |= SignalAgainstTrackdir(trackdir);
 
-			ret = DoCommand(tile, p1, signals, flags, remove ? CMD_REMOVE_SIGNALS : CMD_BUILD_SIGNALS);
+			CommandCost ret = DoCommand(tile, p1, signals, flags, remove ? CMD_REMOVE_SIGNALS : CMD_BUILD_SIGNALS);
 
 			/* Be user-friendly and try placing signals as much as possible */
 			if (ret.Succeeded()) {
@@ -1606,7 +1610,7 @@ static CommandCost ClearTile_Track(TileIndex tile, DoCommandFlag flags)
 			while (tracks != TRACK_BIT_NONE) {
 				Track track = RemoveFirstTrack(&tracks);
 				CommandCost ret = DoCommand(tile, 0, track, flags, CMD_REMOVE_SINGLE_RAIL);
-				if (ret.Failed()) return CMD_ERROR;
+				if (ret.Failed()) return ret;
 				cost.AddCost(ret);
 			}
 

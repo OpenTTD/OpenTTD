@@ -416,7 +416,7 @@ CommandCost DoCommand(TileIndex tile, uint32 p1, uint32 p2, DoCommandFlag flags,
 		if (_docommand_recursive == 1 &&
 				!(flags & DC_QUERY_COST) &&
 				!(flags & DC_BANKRUPT) &&
-				!CheckCompanyHasMoney(res)) {
+				!CheckCompanyHasMoney(res)) { // CheckCompanyHasMoney() modifies 'res' to an error if it fails.
 			goto error;
 		}
 
@@ -433,7 +433,7 @@ CommandCost DoCommand(TileIndex tile, uint32 p1, uint32 p2, DoCommandFlag flags,
 error:
 		res.SetGlobalErrorMessage();
 		_docommand_recursive--;
-		return CMD_ERROR;
+		return res;
 	}
 
 	/* if toplevel, subtract the money. */

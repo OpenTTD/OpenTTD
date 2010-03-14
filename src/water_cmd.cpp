@@ -126,9 +126,9 @@ CommandCost CmdBuildShipDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 	WaterClass wc1 = GetWaterClass(tile);
 	WaterClass wc2 = GetWaterClass(tile2);
 	ret = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-	if (ret.Failed()) return CMD_ERROR;
+	if (ret.Failed()) return ret;
 	ret = DoCommand(tile2, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-	if (ret.Failed()) return CMD_ERROR;
+	if (ret.Failed()) return ret;
 
 	if (!Depot::CanAllocateItem()) return CMD_ERROR;
 
@@ -204,14 +204,14 @@ static CommandCost DoBuildShiplift(TileIndex tile, DiagDirection dir, DoCommandF
 
 	/* middle tile */
 	ret = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-	if (ret.Failed()) return CMD_ERROR;
+	if (ret.Failed()) return ret;
 
 	delta = TileOffsByDiagDir(dir);
 	/* lower tile */
 	WaterClass wc_lower = IsWaterTile(tile - delta) ? GetWaterClass(tile - delta) : WATER_CLASS_CANAL;
 
 	ret = DoCommand(tile - delta, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-	if (ret.Failed()) return CMD_ERROR;
+	if (ret.Failed()) return ret;
 	if (GetTileSlope(tile - delta, NULL) != SLOPE_FLAT) {
 		return_cmd_error(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
 	}
@@ -220,7 +220,7 @@ static CommandCost DoBuildShiplift(TileIndex tile, DiagDirection dir, DoCommandF
 	WaterClass wc_upper = IsWaterTile(tile + delta) ? GetWaterClass(tile + delta) : WATER_CLASS_CANAL;
 
 	ret = DoCommand(tile + delta, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-	if (ret.Failed()) return CMD_ERROR;
+	if (ret.Failed()) return ret;
 	if (GetTileSlope(tile + delta, NULL) != SLOPE_FLAT) {
 		return_cmd_error(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
 	}

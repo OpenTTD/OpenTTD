@@ -152,7 +152,7 @@ CommandCost CmdPurchaseLandArea(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 	}
 
 	cost = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-	if (cost.Failed()) return CMD_ERROR;
+	if (cost.Failed()) return cost;
 
 	if (flags & DC_EXEC) {
 		MakeOwnedLand(tile, _current_company);

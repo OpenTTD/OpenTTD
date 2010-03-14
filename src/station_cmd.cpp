@@ -2383,7 +2383,9 @@ CommandCost CmdBuildDock(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 
 	if (MayHaveBridgeAbove(tile) && IsBridgeAbove(tile)) return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
 
-	if (DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR).Failed()) return CMD_ERROR;
+	ret = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+	ret.SetGlobalErrorMessage();
+	if (ret.Failed()) return ret;
 
 	TileIndex tile_cur = tile + TileOffsByDiagDir(direction);
 
@@ -2396,7 +2398,9 @@ CommandCost CmdBuildDock(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	/* Get the water class of the water tile before it is cleared.*/
 	WaterClass wc = GetWaterClass(tile_cur);
 
-	if (DoCommand(tile_cur, 0, 0, flags, CMD_LANDSCAPE_CLEAR).Failed()) return CMD_ERROR;
+	ret = DoCommand(tile_cur, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+	ret.SetGlobalErrorMessage();
+	if (ret.Failed()) return ret;
 
 	tile_cur += TileOffsByDiagDir(direction);
 	if (!IsTileType(tile_cur, MP_WATER) || GetTileSlope(tile_cur, NULL) != SLOPE_FLAT) {
