@@ -343,7 +343,10 @@ static CommandCost CheckRailSlope(Slope tileh, TrackBits rail_bits, TrackBits ex
 }
 
 /* Validate functions for rail building */
-static inline bool ValParamTrackOrientation(Track track) {return IsValidTrack(track);}
+static inline bool ValParamTrackOrientation(Track track)
+{
+	return IsValidTrack(track);
+}
 
 /** Build a single piece of rail
  * @param tile tile  to build on
