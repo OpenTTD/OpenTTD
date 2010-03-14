@@ -134,18 +134,12 @@ static void TransferCargo(Vehicle *old_veh, Vehicle *new_head, bool part_of_chai
  */
 static bool VerifyAutoreplaceRefitForOrders(const Vehicle *v, EngineID engine_type)
 {
-	const Order *o;
-	const Vehicle *u;
 
 	uint32 union_refit_mask_a = GetUnionOfArticulatedRefitMasks(v->engine_type, false);
 	uint32 union_refit_mask_b = GetUnionOfArticulatedRefitMasks(engine_type, false);
 
-	if (v->type == VEH_TRAIN) {
-		u = v->First();
-	} else {
-		u = v;
-	}
-
+	const Order *o;
+	const Vehicle *u = (v->type == VEH_TRAIN) ? v->First() : v;
 	FOR_VEHICLE_ORDERS(u, o) {
 		if (!o->IsRefit()) continue;
 		CargoID cargo_type = o->GetRefitCargo();
@@ -168,12 +162,12 @@ static bool VerifyAutoreplaceRefitForOrders(const Vehicle *v, EngineID engine_ty
  */
 static CargoID GetNewCargoTypeForReplace(Vehicle *v, EngineID engine_type, bool part_of_chain)
 {
-	CargoID cargo_type;
 	uint32 available_cargo_types, union_mask;
 	GetArticulatedRefitMasks(engine_type, true, &union_mask, &available_cargo_types);
 
 	if (union_mask == 0) return CT_NO_REFIT; // Don't try to refit an engine with no cargo capacity
 
+	CargoID cargo_type;
 	if (IsArticulatedVehicleCarryingDifferentCargos(v, &cargo_type)) return CT_INVALID; // We cannot refit to mixed cargos in an automated way
 
 	if (cargo_type == CT_INVALID) {
@@ -622,9 +616,6 @@ static CommandCost ReplaceChain(Vehicle **chain, DoCommandFlag flags, bool wagon
  */
 CommandCost CmdAutoreplaceVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	CommandCost cost = CommandCost(EXPENSES_NEW_VEHICLES, 0);
-	bool nothing_to_do = true;
-
 	Vehicle *v = Vehicle::GetIfValid(p1);
 	if (v == NULL) return CMD_ERROR;
 
@@ -655,6 +646,9 @@ CommandCost CmdAutoreplaceVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1
 		any_replacements = (GetNewEngineType(w, c) != INVALID_ENGINE);
 		w = (!free_wagon && w->type == VEH_TRAIN ? Train::From(w)->GetNextUnit() : NULL);
 	}
+
+	CommandCost cost = CommandCost(EXPENSES_NEW_VEHICLES, 0);
+	bool nothing_to_do = true;
 
 	if (any_replacements) {
 		bool was_stopped = free_wagon || ((v->vehstatus & VS_STOPPED) != 0);
