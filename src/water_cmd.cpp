@@ -104,13 +104,9 @@ static void MarkCanalsAndRiversAroundDirty(TileIndex tile)
  */
 CommandCost CmdBuildShipDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	TileIndex tile2;
-
-	CommandCost ret;
-
 	Axis axis = Extract<Axis, 0>(p1);
 
-	tile2 = tile + (axis == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
+	TileIndex tile2 = tile + (axis == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
 
 	if (!IsWaterTile(tile) || !IsWaterTile(tile2)) {
 		return_cmd_error(STR_ERROR_MUST_BE_BUILT_ON_WATER);
@@ -125,7 +121,7 @@ CommandCost CmdBuildShipDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 
 	WaterClass wc1 = GetWaterClass(tile);
 	WaterClass wc2 = GetWaterClass(tile2);
-	ret = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+	CommandCost ret = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 	if (ret.Failed()) return ret;
 	ret = DoCommand(tile2, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 	if (ret.Failed()) return ret;
@@ -199,14 +195,11 @@ static CommandCost RemoveShipDepot(TileIndex tile, DoCommandFlag flags)
 /** build a shiplift */
 static CommandCost DoBuildShiplift(TileIndex tile, DiagDirection dir, DoCommandFlag flags)
 {
-	CommandCost ret;
-	int delta;
-
 	/* middle tile */
-	ret = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+	CommandCost ret = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 	if (ret.Failed()) return ret;
 
-	delta = TileOffsByDiagDir(dir);
+	int delta = TileOffsByDiagDir(dir);
 	/* lower tile */
 	WaterClass wc_lower = IsWaterTile(tile - delta) ? GetWaterClass(tile - delta) : WATER_CLASS_CANAL;
 
@@ -245,13 +238,13 @@ static CommandCost DoBuildShiplift(TileIndex tile, DiagDirection dir, DoCommandF
 
 static CommandCost RemoveShiplift(TileIndex tile, DoCommandFlag flags)
 {
-	TileIndexDiff delta = TileOffsByDiagDir(GetLockDirection(tile));
-
 	if (GetTileOwner(tile) != OWNER_NONE) {
 		CommandCost ret = CheckTileOwnership(tile);
 		ret.SetGlobalErrorMessage();
 		if (ret.Failed()) return ret;
 	}
+
+	TileIndexDiff delta = TileOffsByDiagDir(GetLockDirection(tile));
 
 	/* make sure no vehicle is on the tile. */
 	CommandCost ret = EnsureNoVehicleOnGround(tile);
@@ -302,8 +295,6 @@ CommandCost CmdBuildLock(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
  */
 CommandCost CmdBuildCanal(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	CommandCost cost(EXPENSES_CONSTRUCTION);
-
 	if (p1 >= MapSize()) return CMD_ERROR;
 
 	/* Outside of the editor you can only build canals, not oceans */
@@ -314,6 +305,7 @@ CommandCost CmdBuildCanal(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 	/* Outside the editor you can only drag canals, and not areas */
 	if (_game_mode != GM_EDITOR && ta.w != 1 && ta.h != 1) return CMD_ERROR;
 
+	CommandCost cost(EXPENSES_CONSTRUCTION);
 	TILE_AREA_LOOP(tile, ta) {
 		CommandCost ret;
 
@@ -559,7 +551,6 @@ struct LocksDrawTileStruct {
 static void DrawWaterStuff(const TileInfo *ti, const WaterDrawTileStruct *wdts,
 	PaletteID palette, uint base, bool draw_ground)
 {
-	SpriteID image;
 	SpriteID water_base = GetCanalSprite(CF_WATERSLOPE, ti->tile);
 	SpriteID locks_base = GetCanalSprite(CF_LOCKS, ti->tile);
 
@@ -572,7 +563,7 @@ static void DrawWaterStuff(const TileInfo *ti, const WaterDrawTileStruct *wdts,
 		base = 0;
 	}
 
-	image = wdts++->image;
+	SpriteID image = wdts++->image;
 	if (image < 4) image += water_base;
 	if (draw_ground) DrawGroundSprite(image, PAL_NONE);
 
@@ -1010,12 +1001,10 @@ void TileLoop_Water(TileIndex tile)
 
 void ConvertGroundTilesIntoWaterTiles()
 {
-	TileIndex tile;
 	uint z;
-	Slope slope;
 
-	for (tile = 0; tile < MapSize(); ++tile) {
-		slope = GetTileSlope(tile, &z);
+	for (TileIndex tile = 0; tile < MapSize(); ++tile) {
+		Slope slope = GetTileSlope(tile, &z);
 		if (IsTileType(tile, MP_CLEAR) && z == 0) {
 			/* Make both water for tiles at level 0
 			 * and make shore, as that looks much better
