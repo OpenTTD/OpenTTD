@@ -96,6 +96,26 @@ static inline void GetAllCargoSuffixes(uint cb_offset, CargoSuffixType cst, cons
 	}
 }
 
+/** Command callback. In case of failure to build an industry, show an error message.
+ * @param result Result of the command.
+ * @param tile   Tile where the industry is placed.
+ * @param p1     Additional data of the #CMD_BUILD_INDUSTRY command.
+ * @param p2     Additional data of the #CMD_BUILD_INDUSTRY command.
+ */
+void CcBuildIndustry(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
+{
+	if (result.Succeeded()) return;
+
+	uint8 indtype = GB(p1, 0, 8);
+	if (indtype < NUM_INDUSTRYTYPES) {
+		const IndustrySpec *indsp = GetIndustrySpec(indtype);
+		if (indsp->enabled) {
+			SetDParam(0, indsp->name);
+			ShowErrorMessage(STR_ERROR_CAN_T_BUILD_HERE, result.GetErrorMessage(), WL_INFO, TileX(tile) * TILE_SIZE, TileY(tile) * TILE_SIZE);
+		}
+	}
+}
+
 /** Names of the widgets of the dynamic place industries gui */
 enum DynamicPlaceIndustriesWidgets {
 	DPIW_MATRIX_WIDGET,
@@ -465,11 +485,8 @@ public:
 			_current_company = OWNER_NONE;
 			_generating_world = true;
 			_ignore_restrictions = true;
-			success = DoCommandP(tile, (InteractiveRandomRange(indsp->num_table) << 8) | this->selected_type, seed, CMD_BUILD_INDUSTRY | CMD_MSG(STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY));
-			if (!success) {
-				SetDParam(0, indsp->name);
-				ShowErrorMessage(STR_ERROR_CAN_T_BUILD_HERE, _error_message, WL_INFO, pt.x, pt.y);
-			}
+			DoCommandP(tile, (InteractiveRandomRange(indsp->num_table) << 8) | this->selected_type, seed,
+					CMD_BUILD_INDUSTRY | CMD_MSG(STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY), &CcBuildIndustry);
 
 			_ignore_restrictions = false;
 			_generating_world = false;

@@ -48,6 +48,7 @@ static CommandCallback * const _callback_table[] = {
 	/* 0x15 */ CcCreateGroup,
 	/* 0x16 */ CcFoundRandomTown,
 	/* 0x17 */ CcRoadStop,
+	/* 0x18 */ CcBuildIndustry,
 };
 
 /** Local queue of packets */

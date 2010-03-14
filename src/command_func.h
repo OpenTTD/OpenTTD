@@ -107,6 +107,9 @@ CommandCallback CcCloneVehicle;
 /* group_gui.cpp */
 CommandCallback CcCreateGroup;
 
+/* industry_gui.cpp */
+CommandCallback CcBuildIndustry;
+
 /* main_gui.cpp */
 CommandCallback CcPlaySound10;
 CommandCallback CcPlaceSign;
