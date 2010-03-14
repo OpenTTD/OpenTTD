@@ -387,7 +387,7 @@ void ShowBuildBridgeWindow(TileIndex start, TileIndex end, TransportType transpo
 
 	GUIBridgeList *bl = NULL;
 	if (ret.Failed()) {
-		errmsg = _error_message;
+		errmsg = ret.GetErrorMessage();
 	} else {
 		/* check which bridges can be built */
 		const uint tot_bridgedata_len = CalcBridgeLenCostFactor(bridge_len + 2);
