@@ -20,13 +20,12 @@
 #include "slope_type.h"
 #include "strings_type.h"
 
-enum RailTypeFlag {
-	RTF_CATENARY = 0,  ///< Set if the rail type should have catenary drawn
-};
-
+/** Railtype flags. */
 enum RailTypeFlags {
-	RTFB_NONE     = 0,
-	RTFB_CATENARY = 1 << RTF_CATENARY,
+	RTF_CATENARY = 0,                  ///< Bit number for drawing a catenary.
+
+	RTFB_NONE     = 0,                 ///< All flags cleared.
+	RTFB_CATENARY = 1 << RTF_CATENARY, ///< Value for drawing a catenary.
 };
 DECLARE_ENUM_AS_BIT_SET(RailTypeFlags);
 
