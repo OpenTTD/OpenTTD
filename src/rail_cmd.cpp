@@ -760,16 +760,20 @@ static CommandCost CmdRailTrackHelper(TileIndex tile, DoCommandFlag flags, uint3
 
 	if (flags & DC_EXEC) SndPlayTileFx(SND_20_SPLAT_2, tile);
 
+	bool had_success = false;
+	CommandCost last_error = CMD_ERROR;
 	for (;;) {
 		CommandCost ret = DoCommand(tile, railtype, TrackdirToTrack(trackdir), flags, remove ? CMD_REMOVE_SINGLE_RAIL : CMD_BUILD_SINGLE_RAIL);
 
 		if (ret.Failed()) {
-			if (_error_message != STR_ERROR_ALREADY_BUILT && !remove) {
-				if (HasBit(p2, 8)) return CMD_ERROR;
+			last_error = ret;
+			last_error.SetGlobalErrorMessage();
+			if (last_error.GetErrorMessage() != STR_ERROR_ALREADY_BUILT && !remove) {
+				if (HasBit(p2, 8)) return last_error;
 				break;
 			}
-			_error_message = INVALID_STRING_ID;
 		} else {
+			had_success = true;
 			total_cost.AddCost(ret);
 		}
 
@@ -781,7 +785,9 @@ static CommandCost CmdRailTrackHelper(TileIndex tile, DoCommandFlag flags, uint3
 		if (!IsDiagonalTrackdir(trackdir)) ToggleBit(trackdir, 0);
 	}
 
-	return (total_cost.GetCost() == 0) ? CommandCost(remove ? INVALID_STRING_ID : (_error_message == INVALID_STRING_ID ? STR_ERROR_ALREADY_BUILT : _error_message)) : total_cost;
+	if (had_success) return total_cost;
+	if (remove) return CMD_ERROR;
+	return last_error;
 }
 
 /** Build rail on a stretch of track.
@@ -1128,7 +1134,6 @@ static bool CheckSignalAutoFill(TileIndex &tile, Trackdir &trackdir, int &signal
 static CommandCost CmdSignalTrackHelper(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	CommandCost total_cost(EXPENSES_CONSTRUCTION);
-	bool err = true;
 	TileIndex start_tile = tile;
 
 	Track track = (Track)GB(p2, 0, 3);
@@ -1191,6 +1196,8 @@ static CommandCost CmdSignalTrackHelper(TileIndex tile, DoCommandFlag flags, uin
 	 *              and convert all others to semaphore/signal
 	 * remove     - 1 remove signals, 0 build signals */
 	int signal_ctr = 0;
+	CommandCost last_error = CMD_ERROR;
+	bool had_success = false;
 	for (;;) {
 		/* only build/remove signals with the specified density */
 		if ((remove && autofill) || signal_ctr % signal_density == 0) {
@@ -1209,8 +1216,11 @@ static CommandCost CmdSignalTrackHelper(TileIndex tile, DoCommandFlag flags, uin
 
 			/* Be user-friendly and try placing signals as much as possible */
 			if (ret.Succeeded()) {
-				err = false;
+				had_success = true;
 				total_cost.AddCost(ret);
+			} else {
+				last_error = ret;
+				last_error.SetGlobalErrorMessage();
 			}
 		}
 
@@ -1234,7 +1244,7 @@ static CommandCost CmdSignalTrackHelper(TileIndex tile, DoCommandFlag flags, uin
 		}
 	}
 
-	return err ? CMD_ERROR : total_cost;
+	return had_success ? total_cost : last_error;
 }
 
 /** Build signals on a stretch of track.

@@ -728,13 +728,7 @@ do_clear:;
  */
 CommandCost CmdBuildLongRoad(TileIndex start_tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	CommandCost cost(EXPENSES_CONSTRUCTION);
-	bool had_bridge = false;
-	bool had_tunnel = false;
-	bool had_success = false;
 	DisallowedRoadDirections drd = DRD_NORTHBOUND;
-
-	_error_message = INVALID_STRING_ID;
 
 	if (p1 >= MapSize()) return CMD_ERROR;
 
@@ -763,7 +757,12 @@ CommandCost CmdBuildLongRoad(TileIndex start_tile, DoCommandFlag flags, uint32 p
 	/* No disallowed direction bits have to be toggled */
 	if (!HasBit(p2, 5)) drd = DRD_NONE;
 
+	CommandCost cost(EXPENSES_CONSTRUCTION);
+	CommandCost last_error = CMD_ERROR;
 	TileIndex tile = start_tile;
+	bool had_bridge = false;
+	bool had_tunnel = false;
+	bool had_success = false;
 	/* Start tile is the first tile clicked by the user. */
 	for (;;) {
 		RoadBits bits = AxisToRoadBits(axis);
@@ -772,11 +771,12 @@ CommandCost CmdBuildLongRoad(TileIndex start_tile, DoCommandFlag flags, uint32 p
 		if (tile == end_tile && !HasBit(p2, 1)) bits &= DiagDirToRoadBits(ReverseDiagDir(dir));
 		if (tile == start_tile && HasBit(p2, 0)) bits &= DiagDirToRoadBits(dir);
 
-		_error_message = INVALID_STRING_ID;
 		CommandCost ret = DoCommand(tile, drd << 6 | rt << 4 | bits, 0, flags, CMD_BUILD_ROAD);
 		if (ret.Failed()) {
-			if (_error_message != STR_ERROR_ALREADY_BUILT) {
-				if (HasBit(p2, 6)) return CMD_ERROR;
+			last_error = ret;
+			last_error.SetGlobalErrorMessage();
+			if (last_error.GetErrorMessage() != STR_ERROR_ALREADY_BUILT) {
+				if (HasBit(p2, 6)) return last_error;
 				break;
 			}
 		} else {
@@ -804,7 +804,7 @@ CommandCost CmdBuildLongRoad(TileIndex start_tile, DoCommandFlag flags, uint32 p
 		tile += TileOffsByDiagDir(dir);
 	}
 
-	return !had_success ? CMD_ERROR : cost;
+	return had_success ? cost : last_error;
 }
 
 /** Remove a long piece of road.
