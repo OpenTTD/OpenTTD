@@ -287,6 +287,11 @@ PBSTileInfo FollowTrainReservation(const Train *v, Vehicle **train_on_res)
 				if (ftoti.best != NULL) *train_on_res = ftoti.best->First();
 			}
 		}
+		if (*train_on_res == NULL && IsTileType(ftoti.res.tile, MP_TUNNELBRIDGE)) {
+			/* The target tile is a bridge/tunnel, also check the other end tile. */
+			FindVehicleOnPos(GetOtherTunnelBridgeEnd(ftoti.res.tile), &ftoti, FindTrainOnTrackEnum);
+			if (ftoti.best != NULL) *train_on_res = ftoti.best->First();
+		}
 	}
 	return ftoti.res;
 }
