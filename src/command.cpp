@@ -29,7 +29,7 @@
 
 #include "table/strings.h"
 
-StringID _error_message;
+StringID _error_message; ///< Global error message. @see CommandCost::SetGlobalErrorMessage()
 
 CommandProc CmdBuildRailroadTrack;
 CommandProc CmdRemoveRailroadTrack;
@@ -192,7 +192,7 @@ CommandProc CmdSetTimetableStart;
  * The master command table
  *
  * This table contains all possible CommandProc functions with
- * the flags which belongs to it. The indizes are the same
+ * the flags which belongs to it. The indices are the same
  * as the value from the CMD_* enums.
  */
 static const Command _command_proc_table[] = {
@@ -472,8 +472,8 @@ bool DoCommandP(const CommandContainer *container, bool my_cmd)
 /*!
  * Toplevel network safe docommand function for the current company. Must not be called recursively.
  * The callback is called when the command succeeded or failed. The parameters
- * tile, p1 and p2 are from the #CommandProc function. The paramater cmd is the command to execute.
- * The parameter my_cmd is used to indicate if the command is from a company or the server.
+ * \a tile, \a p1, and \a p2 are from the #CommandProc function. The parameter \a cmd is the command to execute.
+ * The parameter \a my_cmd is used to indicate if the command is from a company or the server.
  *
  * @param tile The tile to perform a command on (see #CommandProc)
  * @param p1 Additional data for the command (see #CommandProc)
@@ -482,7 +482,7 @@ bool DoCommandP(const CommandContainer *container, bool my_cmd)
  * @param callback A callback function to call after the command is finished
  * @param text The text to pass
  * @param my_cmd indicator if the command is from a company or server (to display error messages for a user)
- * @return true if the command succeeded, else false
+ * @return \c true if the command succeeded, else \c false.
  */
 bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallback *callback, const char *text, bool my_cmd)
 {

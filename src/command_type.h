@@ -91,6 +91,7 @@ public:
 
 	/**
 	 * Sets the global error message *if* this class has one.
+	 * @see _error_message
 	 */
 	FORCEINLINE void SetGlobalErrorMessage() const
 	{
@@ -99,8 +100,8 @@ public:
 	}
 
 	/**
-	 * Makes this CommandCost behave like an error command.
-	 * @param mesasge the error message.
+	 * Makes this #CommandCost behave like an error command.
+	 * @param message The error message.
 	 */
 	void MakeError(StringID message)
 	{

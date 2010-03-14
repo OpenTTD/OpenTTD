@@ -31,6 +31,7 @@ DECLARE_ENUM_AS_BIT_SET(RailTypeFlags);
 
 struct SpriteGroup;
 
+/** Sprite groups for a railtype. */
 enum RailTypeSpriteGroup {
 	RTSG_CURSORS,     ///< Cursor and toolbar icon images
 	RTSG_OVERLAY,     ///< Images for overlaying track

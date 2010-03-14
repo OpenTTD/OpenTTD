@@ -60,7 +60,7 @@ enum TreeGround {
 	TREE_GROUND_ROUGH       = 1, ///< some rough tile
 	TREE_GROUND_SNOW_DESERT = 2, ///< a desert or snow tile, depend on landscape
 	TREE_GROUND_SHORE       = 3, ///< shore
-	TREE_GROUND_ROUGH_SNOW  = 4, ///< a snow tile that is rough underneed
+	TREE_GROUND_ROUGH_SNOW  = 4, ///< A snow tile that is rough underneath.
 };
 
 

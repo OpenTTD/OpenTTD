@@ -727,7 +727,7 @@ static CommandCost ValidateAutoDrag(Trackdir *trackdir, TileIndex start, TileInd
 	return CommandCost();
 }
 
-/** Build a stretch of railroad tracks.
+/** Build or remove a stretch of railroad tracks.
  * @param tile start tile of drag
  * @param flags operation to perform
  * @param p1 end tile of drag
