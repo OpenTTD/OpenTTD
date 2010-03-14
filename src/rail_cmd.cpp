@@ -1387,7 +1387,6 @@ static Vehicle *UpdateTrainPowerProc(Vehicle *v, void *data)
  */
 CommandCost CmdConvertRail(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	CommandCost cost(EXPENSES_CONSTRUCTION);
 	RailType totype = (RailType)p2;
 
 	if (!ValParamRailtype(totype)) return CMD_ERROR;
@@ -1402,8 +1401,8 @@ CommandCost CmdConvertRail(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	if (ex < sx) Swap(ex, sx);
 	if (ey < sy) Swap(ey, sy);
 
-	_error_message = STR_ERROR_NO_SUITABLE_RAILROAD_TRACK; // by default, there is no track to convert
-
+	CommandCost cost(EXPENSES_CONSTRUCTION);
+	CommandCost error = CommandCost(STR_ERROR_NO_SUITABLE_RAILROAD_TRACK); // by default, there is no track to convert.
 	for (uint x = sx; x <= ex; ++x) {
 		for (uint y = sy; y <= ey; ++y) {
 			TileIndex tile = TileXY(x, y);
@@ -1434,7 +1433,7 @@ CommandCost CmdConvertRail(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			/* Trying to convert other's rail */
 			CommandCost ret = CheckTileOwnership(tile);
 			if (ret.Failed()) {
-				ret.SetGlobalErrorMessage();
+				error = ret;
 				continue;
 			}
 
@@ -1446,7 +1445,7 @@ CommandCost CmdConvertRail(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 				if (!IsCompatibleRail(type, totype)) {
 					CommandCost ret = EnsureNoVehicleOnGround(tile);
 					if (ret.Failed()) {
-						ret.SetGlobalErrorMessage();
+						error = ret;
 						continue;
 					}
 				}
@@ -1508,8 +1507,10 @@ CommandCost CmdConvertRail(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 					/* When not coverting rail <-> el. rail, any vehicle cannot be in tunnel/bridge */
 					if (!IsCompatibleRail(GetRailType(tile), totype)) {
 						CommandCost ret = TunnelBridgeIsFree(tile, endtile);
-						ret.SetGlobalErrorMessage();
-						if (ret.Failed()) continue;
+						if (ret.Failed()) {
+							error = ret;
+							continue;
+						}
 					}
 
 					if (flags & DC_EXEC) {
@@ -1560,7 +1561,8 @@ CommandCost CmdConvertRail(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 		}
 	}
 
-	return (cost.GetCost() == 0) ? CMD_ERROR : cost;
+	error.SetGlobalErrorMessage();
+	return (cost.GetCost() == 0) ? error : cost;
 }
 
 static CommandCost RemoveTrainDepot(TileIndex tile, DoCommandFlag flags)
