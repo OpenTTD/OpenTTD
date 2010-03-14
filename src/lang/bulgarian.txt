@@ -231,6 +231,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Преи
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Затвори прозореца
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Заглавие на прозорец - преместване на прозореца с мишката
+STR_TOOLTIP_SHADE                                               :{BLACK}Прибиране на прозореца - показва само заглавната лента
 STR_TOOLTIP_STICKY                                              :{BLACK}Маркиране прозореца за незатваряне от клавиша 'Затваряне всички прозороци'
 STR_TOOLTIP_RESIZE                                              :{BLACK}Преместете за оразмеряване прозореца
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Активирай голям/малък размер на прозореца
@@ -324,6 +325,7 @@ STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Редактор на сценарии
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Премести назад началната дата с 1 година
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Премести напред началната дата с 1 година
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Натиснете, за да въведете година на започване
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Покажи картата, списъка с градове
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Създаване на терен
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Създаване на град
@@ -697,6 +699,7 @@ STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Вклю
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Височина на снега
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL                                :{BLACK}Не показвай индустрии на картата
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL                                 :{BLACK}Покажи всички индустрии на картата
+STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Показване/скриване на височинна карта
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Покажи последното съобщение или отчет на новините
@@ -1065,6 +1068,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :разреша�
 STR_CITY_APPROVAL_TOLERANT                                      :толерантни
 STR_CITY_APPROVAL_HOSTILE                                       :враждебни
 
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Няма подходящи AI...{}Можете да свалите допълнителни AI чрез системата Online Content (Онлайн Съдържание)
 STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Това действие промени нивото на трудност на custom
 
 # Advanced settings window
@@ -1085,6 +1089,7 @@ STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Реалист�
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Модел на ускорение на пътни превозни срества: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :{G=m}Оригинален
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :{G=m}Реалистичен
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Стръмнина на склона за влакове {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Стръмнина на склона за пътни превозни средства {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Забрана 90 градусови завои: {ORANGE}{STRING}{LTBLUE} (не може с OPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Обединяване на гари построени една до друга: {ORANGE}{STRING}
@@ -1122,6 +1127,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :никакви
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :намалени
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :нормални
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Преминаване през спирки на градски пътища: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Преминаване през спирки на пътища, собственост на конкуренти: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Позвалявай допрени гари: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Няколко NewGRF алгоритъма едновременно: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Промяната не е възможна, когато има преовцни средства.
@@ -1735,10 +1741,10 @@ STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Не м�
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Сървъра не може да бъде стартиран
 STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Не може да се свърже
 STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Връзка #{NUM} изтече времето
-STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Грешка в протокола се случи и връзката бе прекъсната
+STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Връзката бе прекъсната поради открита грешка в протокола
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Ревизията на клиента не отговаря на сървъра
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Грешна парола
-STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Сървъра е пълен
+STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Сървърът е пълен
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Забранено ви е влизането на този сървър
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Бяхте изхвърлен от играта
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Маменето не е разрешено на този сървър
@@ -1783,8 +1789,8 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} н
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} си промени името на {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} изпрати {2:CURRENCY} на твоята компания
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Ти даде {2:CURRENCY} на {1:STRING}
-STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Сървъра прекъсна сесията
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Сървъра се рестартира...{}Моля изчакайте...
+STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Сървърът прекъсна сесията
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Сървърът се рестартира...{}Моля изчакайте...
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Съдържание за сваляне
@@ -2122,6 +2128,7 @@ STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Коор
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Построен: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Клас на станцията: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Тип на станцията: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Име на плочка на летище: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Приет товар: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
@@ -2393,6 +2400,7 @@ STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Смян
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Влак '{VEHICLE}' на '{COMPANY}' има невалидна дължина. Това вероятно е породено от проблеми с NewGRFs. Играта може да загуби синхронизация или да забие.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{STRING}' дава невярна информация.
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' предизвика вечен цикъл в callback на производството
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Списък с табели - {COMMA} Табел{P а и}
@@ -2406,6 +2414,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Въве
 
 # Town directory window
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Градове
+STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Отсъства -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Имена на градовете - натисни на името за да центрираш този град
 STR_TOWN_POPULATION                                             :{BLACK}Световна популация: {COMMA}
@@ -2595,6 +2604,7 @@ STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Ние �
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Индустрии
+STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Отсъства -
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% превозено)
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% превозено)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
@@ -2960,6 +2970,7 @@ STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Печа
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Надеждност: {LTBLUE}{COMMA}%  {BLACK}Разваляния от последното сервизиране: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{G=m}{LTBLUE}{ENGINE} {BLACK}Построен: {LTBLUE}{NUM}{BLACK} Стойност: {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Капацитет: {LTBLUE}няма
 STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Капацитет: {LTBLUE}{CARGO}{3:STRING}
 STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Капацитет: {LTBLUE}{CARGO}{3:STRING} (x{4:NUM})
 STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Капацитет: {LTBLUE}{CARGO}, {CARGO}{STRING}
@@ -3150,7 +3161,7 @@ STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE
 STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}Заповеди
 STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Промени сортацията
 
-STR_TIMETABLE_TOOLTIP                                           :{BLACK}Времетаблица - кликни върху заповед за да я маркираш.
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}Разписание - кликни върху заповед за да я маркираш.
 
 STR_TIMETABLE_NO_TRAVEL                                         :Без преминаване
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Пътувай (без разписание)
@@ -3182,7 +3193,7 @@ STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Преп
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reset the lateness counter, so the vehicle will be on time
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Афтонапълване
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Запълни времевата таблица със стойностите от следващото пътуване (CTRL-клик за опит за запазване на времената за изчакване)
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Попълни разписанието със стойностите от следващото пътуване (CTRL-клик за опит за запазване на времената за изчакване)
 
 
 STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :П:
@@ -3347,7 +3358,7 @@ STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CUR
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Не може да изплатиш заема...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Не може да се харчат пари които са заети от банка...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Не може да купиш компанията...
-STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Не може на построиш централен офис...
+STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Не може да бъде построен централен офис...
 STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Не може да купиш 25% от акциите на тази компания...
 STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Не може да продадеш 25% от акциите на тази компания...
 STR_ERROR_PROTECTED                                             :{WHITE}Тази компания все още не е достатъчно стара да предлага акции...
@@ -3360,12 +3371,14 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... пр
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... прекалено близо до друг град
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... прекалено много градове
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... няма повече място на картата
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Градът няма да изгражда пътища. Можете да активирате строенето на пътища чрез Настройки за напреднали->Икономика->Градове.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Пътни ремонти в процес
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Градът не може да бъде премахнат...{}Станция или депо има връзка с града, или плочка, собственост на града, не може да бъде отстранена
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... прекалено много индустрии
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Не може да се генерира промишленост...
-STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Не може да построи {STRING} тук...
+STR_ERROR_CAN_T_BUILD_HERE                                      :{G=m}{WHITE}Тук не е възможно изграждането на {STRING}...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Този вид индустия не може да бъде построена тук...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... прекалено близо до друга индустрия
 STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... трябва град
@@ -3378,13 +3391,13 @@ STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... мо
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... гора може да се засажда само над линията на снега
 
 # Station construction related errors
-STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Не може да построиш ЖП гара тук...
-STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Автогарата не може да се построи...
-STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}Товарната гара не може да се построи...
-STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}Не може да се построи пътническа трамвайната спирка...
-STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}Не може да построи товарна трамвайна спирка...
-STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Не може да построиш пристанище тук...
-STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Не може да построи летище...
+STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Тук не може да бъде построена ЖП гара...
+STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Тук не може да бъде построена автогара...
+STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}Тук не може да бъде построена товарна гара...
+STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}Тук не може да бъде построена пътническа трамвайна спирка...
+STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}Тук не може да бъде построена товарна трамвайна спирка...
+STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Тук не може да бъде построено пристанище...
+STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Тук не може да бъде построено летище...
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Граничи с повече от една гара/товарна платформа
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... станцията е прекалено разпръсната
@@ -3403,35 +3416,38 @@ STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... пъ
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Не може да се премахва част от гарата...
-STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}Железопътната гара трябва да бъде премахната първо
+STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}Първо трябва да бъде разрушена ЖП гарата
 STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Не може да премахне автогарата...
 STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Не може да премахне товарната гара...
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Не може да се разруши пътническата трамвайната спирка...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Не може да се разруши товарната трамвайна спирка...
+STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Първо трябва да бъде разрушена спирката
 
-STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Първо разрушете ЖП гарата
-STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Първо разрушете автогарата
-STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}Първо разрушете товарната гара
-STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Първо трябва да се разруши пътническата трамвайната спирка
-STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Първо трябва да се разруши товарната трамвайна спирка
-STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Първо разрушете дока
-STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Първо разрушете летището
+STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Първо трябва да бъде разрушена ЖП гарата
+STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Първо трябва да бъде разрушена автогарата
+STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}Първо трябва да бъде разрушена товарната гара
+STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Първо трябва да бъде разрушена пътническата трамвайната спирка
+STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Първо трябва да бъде разрушена товарната трамвайна спирка
+STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Първо трябва да бъде разрушено пристанището
+STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Първо трябва да бъде разрушено летището
 
 # Waypoint related errors
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Прекалено близо до друг пункт
 
-STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Тук не може да се строи влаков пункт...
+STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Тук не може да бъде построен влаков пункт...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Не може да постави шамандура...
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Не може да се променя името на пункта...
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Оттук не може да се премахва влаковия пункт...
+STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Първо трябва да бъдат разрушени всички пунктове
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... шамандура на пътя
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... шамандурата се използва!
 
 # Depot related errors
-STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Не може да построиш влаково депо тук...
-STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Гаража не може да се построи...
-STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Не може да се построи трамвайно депо...
-STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Дока не може да бъде построен тук...
+STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Тук не може да бъде построено влаково депо...
+STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Тук не може да бъде построен гараж...
+STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Тук не може да бъде построено трамвайно депо...
+STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Тук не може да бъде построен док...
 
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Влакът трябва да бъде спрян в депото
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... трябва да бъде спряно в сервиз за коли
@@ -3458,11 +3474,12 @@ STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(огранич
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Невъзможна комбинация на пътя
+STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Първо трябва да бъдат премахнати сигнализациите
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Неподходящ за употреба релсов път
-STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Първо трябва да премахнеш релсовия път
+STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Първо трябва да бъде премахнат релсовия път
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Пътят е еднопосочен или блокиран
-STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Не може да сложиш сигнализация тук...
-STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Не може да построиш ЖП релси тук...
+STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Тук не може да бъде поставена сигнализация...
+STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Тук не могат да бъдат построени ЖП релси...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Не може да премахнеш тези ЖП релси...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Не може да премахнеш тази сигнализация...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Тук не може да се конвертират сигналите...
@@ -3470,29 +3487,29 @@ STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Тук �
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Тук не може да се променя типа на жп линията...
 
 # Road construction errors
-STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}Първо махнете пътя
+STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}Първо трябва да бъде разрушен асфалтовия път
 STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}... еднопосочни пътища немогат да имат съединениа
-STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Пътя не може да се построи...
-STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Не може да се построи трамвайна линия...
+STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Тук не може да бъде построен асфалтов път...
+STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Тук не може да бъде построена трамвайна линия...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Пътя не може да се махне...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Не може да се разруши трамвайната линия...
 
 # Waterway construction errors
-STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Тук не може да се строят канали...
-STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Тук не може да се строят шлюзове...
+STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Тук не е възможно да се прокопае канал...
+STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Тук не могат да бъдат изградени шлюзове...
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Не можеш да сложиш реката тук...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... трябва да се построи във вода
-STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... Не може да бъде построено във водата
-STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Трябва да разрушиш каналът първо
-STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Не може да построиш акведукт тук...
+STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... това не може да бъде построено във водата
+STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Първо трябва да бъде разрушен каналът
+STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Тук не може да бъде построен акведукт...
 
 # Tree related errors
 STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... вече има дърво
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Тук не може да бъде засадено дърво...
 
 # Bridge related errors
-STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}Не може да бъде построен мост тук...
-STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Първо трябва да разрушите моста
+STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}Тук не може да бъде построен мост...
+STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Първо трябва да бъде разрушен моста
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Не може да започва и да свърша на едно и също място
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Мостни начала не са на същото ниво
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Мостът е ту нисък за теренът
@@ -3500,9 +3517,9 @@ STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Нача
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... краищата на моста трябва да бъдат на земя
 
 # Tunnel related errors
-STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Не може да бъде построен тунел тук...
+STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Тук не може да бъде построен тунел...
 STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}Мястото е неподходящо за вход на тунел
-STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Първо разрушете тунела
+STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Първо трябва да бъде разрушен тунелът
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Друг тунел пречи
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Тунела би завършил извън картата
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Не може да бъде изкопан другия край на тунела
@@ -3992,6 +4009,7 @@ STR_FORMAT_DATE_LONG                                            :{STRING} {STRIN
 STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
 
 STR_FORMAT_BUOY_NAME                                            :{TOWN} Шамандура
+STR_FORMAT_BUOY_NAME_SERIAL                                     :{TOWN} Шамандура #{COMMA}
 STR_FORMAT_COMPANY_NUM                                          :(Компания {COMMA})
 STR_FORMAT_GROUP_NAME                                           :Група {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING} {0:TOWN}

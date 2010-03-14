@@ -40,57 +40,57 @@ STR_CARGO_PLURAL_OIL.geniki                                     :{G=n}Πετρε
 STR_CARGO_PLURAL_LIVESTOCK                                      :{G=n}Ζώα
 STR_CARGO_PLURAL_LIVESTOCK.geniki                               :Ζώων
 STR_CARGO_PLURAL_GOODS                                          :{G=n}Αγαθά
-STR_CARGO_PLURAL_GOODS.geniki                                   :Αγαθού
+STR_CARGO_PLURAL_GOODS.geniki                                   :Αγαθών
 STR_CARGO_PLURAL_GRAIN                                          :{G=n}Σιτηρά
 STR_CARGO_PLURAL_GRAIN.geniki                                   :{G=n}Σιτηρών
 STR_CARGO_PLURAL_WOOD                                           :{G=f}Ξυλεία
 STR_CARGO_PLURAL_WOOD.geniki                                    :Ξυλείας
 STR_CARGO_PLURAL_IRON_ORE                                       :{G=n}Σιδηρομεταλλεύματα
-STR_CARGO_PLURAL_IRON_ORE.geniki                                :{G=n}Σιδηρομεταλλεύματος
+STR_CARGO_PLURAL_IRON_ORE.geniki                                :{G=n}Σιδηρομεταλλευμάτων
 STR_CARGO_PLURAL_STEEL                                          :{G=m}Χάλυβες
 STR_CARGO_PLURAL_STEEL.geniki                                   :{G=m}Χάλυβα
 STR_CARGO_PLURAL_VALUABLES                                      :{G=n}Πολύτιμα είδη
 STR_CARGO_PLURAL_VALUABLES.geniki                               :{G=n}Πολύτιμων ειδών
 STR_CARGO_PLURAL_COPPER_ORE                                     :{G=n}Μεταλλεύματα Χαλκού
-STR_CARGO_PLURAL_COPPER_ORE.geniki                              :{G=n}Μεταλλεύματος Χαλκόυ
+STR_CARGO_PLURAL_COPPER_ORE.geniki                              :{G=n}Μεταλλευμάτων Χαλκού
 STR_CARGO_PLURAL_MAIZE                                          :{G=n}Καλαμπόκια
-STR_CARGO_PLURAL_MAIZE.geniki                                   :{G=n}Καλαμποκιού
+STR_CARGO_PLURAL_MAIZE.geniki                                   :{G=n}Καλαμποκιών
 STR_CARGO_PLURAL_FRUIT                                          :{G=n}Φρούτα
-STR_CARGO_PLURAL_FRUIT.geniki                                   :Φρούτου
+STR_CARGO_PLURAL_FRUIT.geniki                                   :Φρούτων
 STR_CARGO_PLURAL_DIAMONDS                                       :{G=n}Διαμάντια
-STR_CARGO_PLURAL_DIAMONDS.geniki                                :Διαμαντιού
+STR_CARGO_PLURAL_DIAMONDS.geniki                                :Διαμαντιών
 STR_CARGO_PLURAL_FOOD                                           :{G=n}Τρόφιμα
-STR_CARGO_PLURAL_FOOD.geniki                                    :Τροφίμου
+STR_CARGO_PLURAL_FOOD.geniki                                    :Τροφίμων
 STR_CARGO_PLURAL_PAPER                                          :{G=n}Χαρτιά
-STR_CARGO_PLURAL_PAPER.geniki                                   :Χαρτιού
+STR_CARGO_PLURAL_PAPER.geniki                                   :Χαρτιών
 STR_CARGO_PLURAL_GOLD                                           :{G=m}Χρυσός
 STR_CARGO_PLURAL_GOLD.geniki                                    :Χρυσού
 STR_CARGO_PLURAL_WATER                                          :{G=n}Νερά
-STR_CARGO_PLURAL_WATER.geniki                                   :Νερού
+STR_CARGO_PLURAL_WATER.geniki                                   :Νερών
 STR_CARGO_PLURAL_WHEAT                                          :Σιτάρια
-STR_CARGO_PLURAL_WHEAT.geniki                                   :Σιταριού
+STR_CARGO_PLURAL_WHEAT.geniki                                   :Σιταριών
 STR_CARGO_PLURAL_RUBBER                                         :{G=n}Λάστιχα
-STR_CARGO_PLURAL_RUBBER.geniki                                  :Λάστιχου
+STR_CARGO_PLURAL_RUBBER.geniki                                  :Λάστιχων
 STR_CARGO_PLURAL_SUGAR                                          :{G=f}Ζάχαρες
-STR_CARGO_PLURAL_SUGAR.geniki                                   :Ζάχαρου
+STR_CARGO_PLURAL_SUGAR.geniki                                   :Ζάχαρων
 STR_CARGO_PLURAL_TOYS                                           :{G=n}Παιχνίδια
-STR_CARGO_PLURAL_TOYS.geniki                                    :Παιχνιδιού
+STR_CARGO_PLURAL_TOYS.geniki                                    :Παιχνιδιών
 STR_CARGO_PLURAL_CANDY                                          :{G=n}Γλυκίσματα
-STR_CARGO_PLURAL_CANDY.geniki                                   :{G=n}Γλυκίσματος
+STR_CARGO_PLURAL_CANDY.geniki                                   :{G=n}Γλυκισμάτων
 STR_CARGO_PLURAL_COLA                                           :{G=f}Κόλα
 STR_CARGO_PLURAL_COLA.geniki                                    :{G=f}Κόλας
 STR_CARGO_PLURAL_COTTON_CANDY                                   :{G=n}Μαλλιά της γριάς
-STR_CARGO_PLURAL_COTTON_CANDY.geniki                            :{G=n}Μαλλιού της γριάς
+STR_CARGO_PLURAL_COTTON_CANDY.geniki                            :{G=n}Μαλλιών της γριάς
 STR_CARGO_PLURAL_BUBBLES                                        :{G=f}Φυσαλίδες
-STR_CARGO_PLURAL_BUBBLES.geniki                                 :{G=f}Φυδαλίδας
+STR_CARGO_PLURAL_BUBBLES.geniki                                 :{G=f}Φυδαλίδων
 STR_CARGO_PLURAL_TOFFEE                                         :{G=n}Ζαχαρωτά
-STR_CARGO_PLURAL_TOFFEE.geniki                                  :{G=n}Ζαχαρωτού
+STR_CARGO_PLURAL_TOFFEE.geniki                                  :{G=n}Ζαχαρωτών
 STR_CARGO_PLURAL_BATTERIES                                      :{G=f}Μπαταρίες
-STR_CARGO_PLURAL_BATTERIES.geniki                               :{G=f}Μπαταρίας
+STR_CARGO_PLURAL_BATTERIES.geniki                               :{G=f}Μπαταριών
 STR_CARGO_PLURAL_PLASTIC                                        :{G=n}Πλαστικά
-STR_CARGO_PLURAL_PLASTIC.geniki                                 :{G=n}Πλαστικού
+STR_CARGO_PLURAL_PLASTIC.geniki                                 :{G=n}Πλαστικών
 STR_CARGO_PLURAL_FIZZY_DRINKS                                   :{G=n}Αναψυκτικά
-STR_CARGO_PLURAL_FIZZY_DRINKS.geniki                            :{G=n}Αναψυκτικού
+STR_CARGO_PLURAL_FIZZY_DRINKS.geniki                            :{G=n}Αναψυκτικών
 
 # Singular cargo name
 STR_CARGO_SINGULAR_NOTHING                                      :
@@ -595,7 +595,7 @@ STR_MONTH_JUN                                                   :Ιούνιος
 STR_MONTH_JUL                                                   :Ιούλιος
 STR_MONTH_AUG                                                   :Άυγουστος
 STR_MONTH_SEP                                                   :Σεπτέμβριος
-STR_MONTH_OCT                                                   :Οκτόβριος
+STR_MONTH_OCT                                                   :Οκτώβριος
 STR_MONTH_NOV                                                   :Νοέμβριος
 STR_MONTH_DEC                                                   :Δεκέμβριος
 ############ range for months ends
@@ -888,9 +888,9 @@ STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK} Η παραγωγή {STRING.geniki} στ{G o η ο} {INDUSTRY} μειώθηκε κατά {COMMA}%!
 
 STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} περιμένει στο αμαξόστασιο
-STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} περιμένει στο αμαξόστασιο
-STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} περιμένει στο ναυπήγειο
-STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} περιμένει στο υπόστεγο αεροπλάνων
+STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Το {VEHICLE} περιμένει στο αμαξόστασιο
+STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}Το {VEHICLE} περιμένει στο ναυπήγειο
+STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}Το {VEHICLE} περιμένει στο υπόστεγο αεροπλάνων
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
@@ -900,14 +900,14 @@ STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}Το {VE
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}Το {VEHICLE} έχει μη έγκυρο σταθμό στις εντολές του
 # end of order system
 
-STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} παλαιώνει
-STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} ξεπερνά το όριο ηλικίας
-STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} πάλιωσε πολύ και χρειάζεται επειγόντως αλλαγή
-STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} δεν μπορεί να βρει δρόμο να συνεχίσει
+STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}Το {VEHICLE} αρχίζει να παλιώνει
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}Το {VEHICLE} ξεπερνά το όριο ηλικίας
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}Το {VEHICLE} πάλιωσε πολύ και χρειάζεται επειγόντως αλλαγή
+STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}Το {VEHICLE} δεν μπορεί να βρει δρόμο να συνεχίσει
 STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{G Ο Η Το} {VEHICLE} χάθηκε
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Το κέρδος του {VEHICLE} πέρυσι ήταν {CURRENCY}
 
-STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} σταμάτησε γιατί μια εντολή μετατροπής απέτυχε
+STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Το {VEHICLE} σταμάτησε γιατί μια εντολή μετατροπής απέτυχε
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Αποτυχία Αυτόματης Ανανέωσης για το {VEHICLE}{}{STRING}
 
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}Ένα νέο {STRING} είναι πλεόν διαθέσιμο!
@@ -919,13 +919,13 @@ STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}Ο στ�
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}Ο σταθμός {STATION} τώρα δέχεται {STRING}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}Ο σταθμός {STATION} τώρα δέχεται {STRING} και {STRING}
 
-STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Έληξε η προσφορά χρηματοδότησης:{}{}{STRING} από {G το τη το} {STRING} πρός {G το τη το} {STRING} δεν θα είναι κατω από χρηματοδότηση πια.
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Η χρηματοδότηση αποσύρθηκε:{}{}{STRING} υπηρεσία {STRING} προς {STRING} δεν χρηματοδοτείται πια.
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Έληξε η προσφορά χρηματοδότησης:{}{}{STRING} από {G το τη το} {STRING} πρός {G το τη το} {STRING} δεν θα χρηματοδοτείται πια.
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Η χρηματοδότηση αποσύρθηκε:{}{}Η υπηρεσια για {STRING.subs} απο το στάθμο {STRING} προς το στάθμο {STRING} δεν χρηματοδοτείται πια.
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Προσφορά χρηματοδότησης υπηρεσίας:{}{}Η πρώτη υπηρεσία για {STRING.subs} από {G το τη το} {STRING} προς {G το τη το} {STRING} επιχορηγείται για ένα έτος από την τοπική αρχή!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Η χρηματοδότηση της υπηρεσίας απονεμήθη στην εταιρία {STRING}!{}{}Η υπηρεσία για {STRING} από το σταθμό {STRING} προς το σταθμό {STRING} θα χρεώνεται 50% παραπάνω για ένα έτος!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Η επιχορήγηση υπηρεσίας απονεμήθη στην εταιρία {STRING}!{}{}Η υπηρεσία για {STRING} από το σταθμό {STRING} προς το σταθμό {STRING} θα χρεώνεται διπλά για το επόμενο έτος!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Η επιχορήγηση υπηρεσίας απονεμήθη στην εταιρία {STRING}!{}{}Η υπηρεσία για {STRING} από το σταθμό {STRING} προς το σταθμό {STRING} θα χρεώνεται τριπλά για το επόμενο έτος!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}Η επιχορήγηση υπηρεσίας απονεμήθη στην εταιρία {STRING}!{}{}Η υπηρεσία για {STRING} από το σταθμό {STRING} προς το σταθμό {STRING} θα χρεώνεται τετραπλά για το επόμενο έτος!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Η χρηματοδότηση της υπηρεσίας απονεμήθη στην εταιρία {STRING}!{}{}Η υπηρεσία για {STRING.subs} από το σταθμό {STRING} προς το σταθμό {STRING} θα χρεώνεται 50% παραπάνω για ένα έτος!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Η επιχορήγηση υπηρεσίας απονεμήθη στην εταιρία {STRING}!{}{}Η υπηρεσία για {STRING.subs} από το σταθμό {STRING} προς το σταθμό {STRING} θα χρεώνεται διπλά για το επόμενο έτος!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Η επιχορήγηση υπηρεσίας απονεμήθη στην εταιρία {STRING}!{}{}Η υπηρεσία για {STRING.subs} από το σταθμό {STRING} προς το σταθμό {STRING} θα χρεώνεται τριπλά για το επόμενο έτος!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}Η επιχορήγηση υπηρεσίας απονεμήθη στην εταιρία {STRING}!{}{}Η υπηρεσία για {STRING.subs} από το σταθμό {STRING} προς το σταθμό {STRING} θα χρεώνεται τετραπλά για το επόμενο έτος!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}Χαώδης κίνηση στην πόλη {TOWN}!{}{}Χρηματοδοτήθηκε πρόγραμμα ανακατασκευής των δρόμων από την εταιρία {STRING} και προκαλεί 6 μήνες μιζέριας στους οδηγούς!
 
@@ -1207,7 +1207,7 @@ STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Οι ε
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :κοντά στο τέλος
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :στη μέση
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :άκρη
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Ουρά οχημάτων (με κβαντικά εφφέ): {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Ουρά οχημάτων (με κβαντικά εφέ): {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Μετακίνηση παραθύρου όταν είναι το ποντίκι στην άκρη: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Επιτρέπεται η δωροδοκία της τοπικής αρχής: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Επιτρέπεται η αγορά αποκλειστικών δικαιωμάτων μεταφοράς: {ORANGE}{STRING}
@@ -2217,7 +2217,7 @@ STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}Ιδιο
 STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Ιδιοκτήτης του τραμ: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Ιδιοκτήτης του σιδηροδρόμου: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Τοπική αρχή: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Κανένα
+STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Καμιά
 STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Συντεταγμένες: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Κατασκευή: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Κλάση στάθμου: {LTBLUE}{STRING}
