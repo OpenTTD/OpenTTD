@@ -14,6 +14,7 @@
 #include "news_func.h"
 #include "variables.h"
 #include "ai/ai.hpp"
+#include "ai/ai_gui.hpp"
 #include "newgrf_house.h"
 #include "group.h"
 #include "economy_func.h"
@@ -41,7 +42,6 @@ void InitializeRailGui();
 void InitializeRoadGui();
 void InitializeAirportGui();
 void InitializeDockGui();
-void InitializeAIGui();
 void InitializeIndustries();
 void InitializeTowns();
 void InitializeSubsidies();
