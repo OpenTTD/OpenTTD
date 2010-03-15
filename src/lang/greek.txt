@@ -870,7 +870,7 @@ STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Νέ{G ος α ο} {STRING} υπό κατασκευή κοντά στην πόλη {TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Νέο {STRING} φυτεύεται κοντά στην πόλη {TOWN}!
 
-STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}{G 0:2 Ο Η Το} {STRING} ανακοίνωσ{P ε αν} άμεσο κλείσιμο!
+STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}{G 0:2 Ο Η Το} {STRING} ανακοίνωσε άμεσο κλείσιμο!
 STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}Προβλήματα στην προμήθεια υλικών αναγκάζουν {G το τη το} {STRING} να κλείσει αμέσως!
 STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}Η έλλειψη δέντρων αναγκάζει την βιομηχανία {STRING} να κλείσει αμέσως!
 
@@ -3380,8 +3380,8 @@ STR_INCOME_FLOAT_COST_SMALL                                     :{TINYFONT}{RED}
 STR_INCOME_FLOAT_COST                                           :{RED}Κόστος: {CURRENCY}
 STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINYFONT}{GREEN}Έσοδα: {CURRENCY}
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}Έσοδα: {CURRENCY}
-STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Μετέφερε: {CURRENCY}
-STR_FEEDER                                                      :{YELLOW}Μετέφερε: {CURRENCY}
+STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Από μεταφορά: {CURRENCY}
+STR_FEEDER                                                      :{YELLOW}Από Μεταφορά: {CURRENCY}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Εκτιμώμενο Κόστος: {CURRENCY}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Υπολογιζόμενα Έσοδα: {CURRENCY}
 
@@ -3789,7 +3789,7 @@ STR_INDUSTRY_NAME_PRINTING_WORKS                                :{G=n}Τυπογ
 STR_INDUSTRY_NAME_STEEL_MILL                                    :{G=n}Χαλυβουργείο
 STR_INDUSTRY_NAME_FARM                                          :{G=f}Φάρμα
 STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :{G=n}Ορυχείο Μεταλλεύματος Χαλκού
-STR_INDUSTRY_NAME_OIL_WELLS                                     :{G=f}Πετρελαιοπηγές
+STR_INDUSTRY_NAME_OIL_WELLS                                     :{G=f}Πετρελαιοπηγή
 STR_INDUSTRY_NAME_BANK                                          :{G=f}Τράπεζα
 STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :{G=n}Εργοστάσιο Επεξεργασίας Τροφίμων
 STR_INDUSTRY_NAME_PAPER_MILL                                    :{G=m}Μύλος Χαρτιού
@@ -3807,7 +3807,7 @@ STR_INDUSTRY_NAME_LUMBER_MILL                                   :{G=n}Υλοτο
 STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :{G=n}Δάσος Μαλλιού της Γριάς
 STR_INDUSTRY_NAME_CANDY_FACTORY                                 :{G=n}Εργοστάσιο Γλυκών
 STR_INDUSTRY_NAME_BATTERY_FARM                                  :{G=f}Φάρμα Μπαταριών
-STR_INDUSTRY_NAME_COLA_WELLS                                    :{G=f}Πηγές Κόλα
+STR_INDUSTRY_NAME_COLA_WELLS                                    :{G=f}Πηγή Κόλα
 STR_INDUSTRY_NAME_TOY_SHOP                                      :{G=n}Κατάστημα Παιχνιδιών
 STR_INDUSTRY_NAME_TOY_FACTORY                                   :{G=n}Εργοστάσιο Παιχνιδιών
 STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :{G=f}Πηγές Πλαστικού

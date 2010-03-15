@@ -337,6 +337,7 @@ STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}עורך התרחישים
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}שנה את שנת ההתחלה לשנה 1 פחות
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}שנה את שנת ההתחלה לשנה 1 יותר
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}לחץ כאן להכנסת שנת ההתחלה
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}הצג מפה, מדריך עיירות
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}יצירת קרקע
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}יצירת ערים

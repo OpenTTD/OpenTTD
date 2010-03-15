@@ -323,6 +323,7 @@ STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}الن�
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}محرر الخريطة
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}العودة بتاريخ البدأ سنة واحدة
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}تقديم تاريخ البدأ سنة واحدة لالأمام
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}اضغط لادخال سنة البداية
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}عرض الخريطة, دليل المدن
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}بناء المسطحات الأرضية
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}بناء المدن
@@ -1083,7 +1084,11 @@ STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}الس�
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE} موديل تسارع القطارات: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :الاصلي
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :واقعي
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}نمط تسارع عربات الطريق: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :اصلي
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :واقعي
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}تدرج ميلان سكة القطار {ORANGE}{STRING}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}نسبة الميلان للعربات {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}منع القطارات والسفن من الدوران بزاوية تسعين درجة : {ORANGE}{STRING} {LTBLUE} (not with NTP)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}ربط محطات القطار المبنيه بجوار بعض: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE} السماح بربط محطتين غير متجاورتين : {ORANGE}{STRING}
@@ -2014,6 +2019,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}بناء
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}اختر المطار
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}اختر حجم / نوع المطار
+STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}درجة المطار
 
 STR_AIRPORT_SMALL                                               :صغير
 STR_AIRPORT_CITY                                                :مدينة
@@ -2121,6 +2127,7 @@ STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}الأح
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}بني: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK} فئة المحطة: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}نوع المحطة: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}اسم مربع المطار: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}الشحنة المقبولة: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA} /8 {STRING})
@@ -3307,6 +3314,9 @@ STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}لايم
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}تحذير
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}اعادة تحجيم الخريطة المصدر كثيرا غير مستحسن. هل تريد اكمال توليد الخريطة؟
 
+# Soundset messages
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}لايوجد غير مجموعة اصوات. اذا اردت اصوات, نصب مجموعة صوتية من خلال نظام التحميل.
+
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}صورة من الشاشة حفظت بنجاح باسم: '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}لم يتم حفظ الصورة
@@ -3376,6 +3386,7 @@ STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}اعما
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}لا يمكن ازالة هذه المدينة {}محطة او ورشة مرتبطة بالمدينة او هناك مربع مملوك للمدينة لا يمكن لزالته
 
 # Industry related errors
+STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... المصانع كثيرة جدا
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}لا يمكن انشاء مصانع ...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}لايمكن انشاء {STRING} هنا...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}لا بمكن بناء المصنع هنا ...
@@ -3421,6 +3432,7 @@ STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}لا ي�
 STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}لا يمكن ازالة محطة البضائع من هنا ...
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}لا يمكن ازالة محطة الترام للركاب
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}لا يمكن ازالة محطة الترام للشحن
+STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}يجب حذف محطة التوقف اولا
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}يجب ازالة محطة القطار اولا
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}يجب هدم محطة الباصات اولا
@@ -3474,6 +3486,7 @@ STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :- حدود ال
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}تركيبة سكك غير صالحة
+STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}يجب حذف الاشارة اولا
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}... مسار السكة الحديدية غير مناسب
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}يجب ازالة السكة اولا
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}طريق بإتجاه واحد أو مغلق
