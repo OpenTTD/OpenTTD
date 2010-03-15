@@ -563,7 +563,11 @@ bool TarListAddFile(const char *filename)
 	if (it != _tar_list.end()) return false;
 
 	FILE *f = fopen(filename, "rb");
-	assert(f != NULL);
+	/* Although the file has been found there can be
+	 * a number of reasons we cannot open the file.
+	 * Most common case is when we simply have not
+	 * been given read access. */
+	if (f == NULL) return false;
 
 	const char *dupped_filename = strdup(filename);
 	_tar_list[filename].filename = dupped_filename;
