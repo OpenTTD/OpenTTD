@@ -61,7 +61,7 @@ static void Load_AIPL()
 {
 	/* Free all current data */
 	for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {
-		AIConfig::GetConfig(c)->ChangeAI(NULL);
+		AIConfig::GetConfig(c, AIConfig::AISS_FORCE_GAME)->ChangeAI(NULL);
 	}
 
 	CompanyID index;
@@ -74,7 +74,7 @@ static void Load_AIPL()
 			continue;
 		}
 
-		AIConfig *config = AIConfig::GetConfig(index);
+		AIConfig *config = AIConfig::GetConfig(index, AIConfig::AISS_FORCE_GAME);
 		if (StrEmpty(_ai_saveload_name)) {
 			/* A random AI. */
 			config->ChangeAI(NULL, -1, false, true);

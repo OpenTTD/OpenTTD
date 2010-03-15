@@ -61,10 +61,18 @@ public:
 	 */
 	const AIConfigItemList *GetConfigList();
 
+	/* Where to get the config from, either default (depends on current game
+	 * mode) or force either newgame or normal */
+	enum AISettingSource {
+		AISS_DEFAULT,       ///< Get the AI config from the current game mode
+		AISS_FORCE_NEWGAME, ///< Get the newgame AI config
+		AISS_FORCE_GAME,    ///< Get the AI config from the current game
+	};
+
 	/**
 	 * Get the config of a company.
 	 */
-	static AIConfig *GetConfig(CompanyID company, bool forceNewgameSetting = false);
+	static AIConfig *GetConfig(CompanyID company, AISettingSource source = AISS_DEFAULT);
 
 	/**
 	 * Get the value of a setting for this config. It might fallback to his

@@ -93,13 +93,13 @@ const AIConfigItemList *AIConfig::GetConfigList()
 	return this->config_list;
 }
 
-AIConfig *AIConfig::GetConfig(CompanyID company, bool forceNewgameSetting)
+AIConfig *AIConfig::GetConfig(CompanyID company, AISettingSource source)
 {
 	AIConfig **config;
-	if (!forceNewgameSetting) {
-		config = (_game_mode == GM_MENU) ? &_settings_newgame.ai_config[company] : &_settings_game.ai_config[company];
-	} else {
+	if (source == AISS_FORCE_NEWGAME || (source == AISS_DEFAULT && _game_mode == GM_MENU)) {
 		config = &_settings_newgame.ai_config[company];
+	} else {
+		config = &_settings_game.ai_config[company];
 	}
 	if (*config == NULL) *config = new AIConfig();
 	return *config;
