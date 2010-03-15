@@ -17,7 +17,10 @@
 #ifdef ENABLE_AI
 void ShowAIDebugWindow(CompanyID show_company = INVALID_COMPANY);
 void ShowAIConfigWindow();
+void ShowAIDebugWindowIfAIError();
+void InitializeAIGui();
 #else
+#include "../gui.h"
 #include "table/strings.h"
 
 static inline void ShowAIConfigWindow()
@@ -25,6 +28,8 @@ static inline void ShowAIConfigWindow()
 	ShowErrorMessage(STR_ERROR_NO_AI, STR_ERROR_NO_AI_SUB, 0, 0);
 }
 static inline void ShowAIDebugWindow(CompanyID show_company = INVALID_COMPANY) {ShowAIConfigWindow();}
+static inline void ShowAIDebugWindowIfAIError() {}
+static inline void InitializeAIGui() {}
 #endif /* ENABLE_AI */
 
 #endif /* AI_GUI_HPP */

@@ -1087,6 +1087,99 @@ void SwitchToMode(SwitchMode new_mode)
 
 
 /**
+ * Check the validity of some of the caches.
+ * Especially in the sense of desyncs between
+ * the cached value and what the value would
+ * be when calculated from the 'base' data.
+ */
+static void CheckCaches()
+{
+	/* Return here so it is easy to add checks that are run
+	 * always to aid testing of caches. */
+	if (_debug_desync_level <= 1) return;
+
+	/* Strict checking of the road stop cache entries */
+	const RoadStop *rs;
+	FOR_ALL_ROADSTOPS(rs) {
+		if (IsStandardRoadStopTile(rs->xy)) continue;
+
+		assert(rs->GetEntry(DIAGDIR_NE) != rs->GetEntry(DIAGDIR_NW));
+		rs->GetEntry(DIAGDIR_NE)->CheckIntegrity(rs);
+		rs->GetEntry(DIAGDIR_NW)->CheckIntegrity(rs);
+	}
+
+	Vehicle *v;
+	FOR_ALL_VEHICLES(v) {
+		if (v != v->First()) continue;
+
+		switch (v->type) {
+			case VEH_ROAD: {
+				RoadVehicle *rv = RoadVehicle::From(v);
+				RoadVehicleCache cache = rv->rcache;
+				RoadVehUpdateCache(rv);
+
+				if (memcmp(&cache, &rv->rcache, sizeof(RoadVehicleCache)) != 0) {
+					DEBUG(desync, 2, "cache mismatch: vehicle %i, company %i, unit number %i\n", v->index, (int)v->owner, v->unitnumber);
+				}
+			} break;
+
+			case VEH_TRAIN: {
+				uint length = 0;
+				Train *t = Train::From(v);
+				for (Vehicle *u = t; u != NULL; u = u->Next()) length++;
+
+				TrainCache *wagons = MallocT<TrainCache>(length);
+				length = 0;
+				for (Train *u = t; u != NULL; u = u->Next()) wagons[length++] = u->tcache;
+
+				t->ConsistChanged(true);
+
+				length = 0;
+				for (Train *u = t; u != NULL; u = u->Next()) {
+					if (memcmp(&wagons[length], &u->tcache, sizeof(TrainCache)) != 0) {
+						DEBUG(desync, 2, "cache mismatch: vehicle %i, company %i, unit number %i, wagon %i\n", v->index, (int)v->owner, v->unitnumber, length);
+					}
+					length++;
+				}
+
+				free(wagons);
+			} break;
+
+			case VEH_AIRCRAFT: {
+				Aircraft *a = Aircraft::From(v);
+				AircraftCache cache = a->acache;
+				UpdateAircraftCache(a);
+
+				if (memcmp(&cache, &a->acache, sizeof(AircraftCache)) != 0) {
+					DEBUG(desync, 2, "cache mismatch: vehicle %i, company %i, unit number %i\n", v->index, (int)v->owner, v->unitnumber);
+				}
+			} break;
+
+			default:
+				break;
+		}
+	}
+
+	/* Check whether the caches are still valid */
+	FOR_ALL_VEHICLES(v) {
+		byte buff[sizeof(VehicleCargoList)];
+		memcpy(buff, &v->cargo, sizeof(VehicleCargoList));
+		v->cargo.InvalidateCache();
+		assert(memcmp(&v->cargo, buff, sizeof(VehicleCargoList)) == 0);
+	}
+
+	Station *st;
+	FOR_ALL_STATIONS(st) {
+		for (CargoID c = 0; c < NUM_CARGO; c++) {
+			byte buff[sizeof(StationCargoList)];
+			memcpy(buff, &st->goods[c].cargo, sizeof(StationCargoList));
+			st->goods[c].cargo.InvalidateCache();
+			assert(memcmp(&st->goods[c].cargo, buff, sizeof(StationCargoList)) == 0);
+		}
+	}
+}
+
+/**
  * State controlling game loop.
  * The state must not be changed from anywhere but here.
  * That check is enforced in DoCommand.
@@ -1111,88 +1204,7 @@ void StateGameLoop()
 		CallWindowTickEvent();
 		NewsLoop();
 	} else {
-		/* Temporary strict checking of the road stop cache entries */
-		const RoadStop *rs;
-		FOR_ALL_ROADSTOPS(rs) {
-			if (IsStandardRoadStopTile(rs->xy)) continue;
-
-			assert(rs->GetEntry(DIAGDIR_NE) != rs->GetEntry(DIAGDIR_NW));
-			rs->GetEntry(DIAGDIR_NE)->CheckIntegrity(rs);
-			rs->GetEntry(DIAGDIR_NW)->CheckIntegrity(rs);
-		}
-
-		if (_debug_desync_level > 1) {
-			Vehicle *v;
-			FOR_ALL_VEHICLES(v) {
-				if (v != v->First()) continue;
-
-				switch (v->type) {
-					case VEH_ROAD: {
-						RoadVehicle *rv = RoadVehicle::From(v);
-						RoadVehicleCache cache = rv->rcache;
-						RoadVehUpdateCache(rv);
-
-						if (memcmp(&cache, &rv->rcache, sizeof(RoadVehicleCache)) != 0) {
-							DEBUG(desync, 2, "cache mismatch: vehicle %i, company %i, unit number %i\n", v->index, (int)v->owner, v->unitnumber);
-						}
-					} break;
-
-					case VEH_TRAIN: {
-						uint length = 0;
-						Train *t = Train::From(v);
-						for (Vehicle *u = t; u != NULL; u = u->Next()) length++;
-
-						TrainCache *wagons = MallocT<TrainCache>(length);
-						length = 0;
-						for (Train *u = t; u != NULL; u = u->Next()) wagons[length++] = u->tcache;
-
-						t->ConsistChanged(true);
-
-						length = 0;
-						for (Train *u = t; u != NULL; u = u->Next()) {
-							if (memcmp(&wagons[length], &u->tcache, sizeof(TrainCache)) != 0) {
-								DEBUG(desync, 2, "cache mismatch: vehicle %i, company %i, unit number %i, wagon %i\n", v->index, (int)v->owner, v->unitnumber, length);
-							}
-							length++;
-						}
-
-						free(wagons);
-					} break;
-
-					case VEH_AIRCRAFT: {
-						Aircraft *a = Aircraft::From(v);
-						AircraftCache cache = a->acache;
-						UpdateAircraftCache(a);
-
-						if (memcmp(&cache, &a->acache, sizeof(AircraftCache)) != 0) {
-							DEBUG(desync, 2, "cache mismatch: vehicle %i, company %i, unit number %i\n", v->index, (int)v->owner, v->unitnumber);
-						}
-					} break;
-
-					default:
-						break;
-				}
-			}
-		}
-
-		/* Check whether the caches are still valid */
-		Vehicle *v;
-		FOR_ALL_VEHICLES(v) {
-			byte buff[sizeof(VehicleCargoList)];
-			memcpy(buff, &v->cargo, sizeof(VehicleCargoList));
-			v->cargo.InvalidateCache();
-			assert(memcmp(&v->cargo, buff, sizeof(VehicleCargoList)) == 0);
-		}
-
-		Station *st;
-		FOR_ALL_STATIONS(st) {
-			for (CargoID c = 0; c < NUM_CARGO; c++) {
-				byte buff[sizeof(StationCargoList)];
-				memcpy(buff, &st->goods[c].cargo, sizeof(StationCargoList));
-				st->goods[c].cargo.InvalidateCache();
-				assert(memcmp(&st->goods[c].cargo, buff, sizeof(StationCargoList)) == 0);
-			}
-		}
+		CheckCaches();
 
 		/* All these actions has to be done from OWNER_NONE
 		 *  for multiplayer compatibility */

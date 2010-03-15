@@ -1024,3 +1024,15 @@ void InitializeAIGui()
 {
 	AIDebugWindow::ai_debug_company = INVALID_COMPANY;
 }
+
+/** Open the AI debug window if one of the AI scripts has crashed. */
+void ShowAIDebugWindowIfAIError()
+{
+	Company *c;
+	FOR_ALL_COMPANIES(c) {
+		if (c->is_ai && c->ai_instance->IsDead()) {
+			ShowAIDebugWindow(c->index);
+			break;
+		}
+	}
+}
