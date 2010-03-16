@@ -617,6 +617,8 @@ static const RailBuildingGUIButtonData _rail_build_button_data[] = {
  * @param clicked_widget Widget clicked in the toolbar
  */
 struct BuildRailToolbarWindow : Window {
+	RailType railtype;
+
 	BuildRailToolbarWindow(const WindowDesc *desc, WindowNumber window_number, RailType railtype) : Window()
 	{
 		this->InitNested(desc);
@@ -636,10 +638,11 @@ struct BuildRailToolbarWindow : Window {
 	 */
 	void SetupRailToolbar(RailType railtype)
 	{
+		this->railtype = railtype;
 		const RailtypeInfo *rti = GetRailTypeInfo(railtype);
 
 		assert(railtype < RAILTYPE_END);
-		this->GetWidget<NWidgetCore>(RTW_CAPTION)->widget_data      = rti->strings.toolbar_caption;
+		this->GetWidget<NWidgetCore>(RTW_CAPTION)->widget_data      = rti->max_speed > 0 ? STR_TOOLBAR_RAILTYPE_VELOCITY : STR_JUST_STRING;
 		this->GetWidget<NWidgetCore>(RTW_BUILD_NS)->widget_data     = rti->gui_sprites.build_ns_rail;
 		this->GetWidget<NWidgetCore>(RTW_BUILD_X)->widget_data      = rti->gui_sprites.build_x_rail;
 		this->GetWidget<NWidgetCore>(RTW_BUILD_EW)->widget_data     = rti->gui_sprites.build_ew_rail;
@@ -686,6 +689,15 @@ struct BuildRailToolbarWindow : Window {
 				this->DisableWidget(RTW_REMOVE);
 				this->RaiseWidget(RTW_REMOVE);
 				break;
+		}
+	}
+
+	virtual void SetStringParameters(int widget) const
+	{
+		if (widget == RTW_CAPTION) {
+			const RailtypeInfo *rti = GetRailTypeInfo(this->railtype);
+			SetDParam(0, rti->strings.toolbar_caption);
+			SetDParam(1, rti->max_speed);
 		}
 	}
 

@@ -650,7 +650,12 @@ static void ToolbarBuildRailClick(Window *w)
 		const RailtypeInfo *rti = GetRailTypeInfo(rt);
 		/* Skip rail type if it has no label */
 		if (rti->label == 0) continue;
-		list->push_back(new DropDownListStringItem(rti->strings.menu_text, rt, !HasBit(c->avail_railtypes, rt)));
+
+		StringID str = rti->max_speed > 0 ? STR_TOOLBAR_RAILTYPE_VELOCITY : STR_JUST_STRING;
+		DropDownListParamStringItem *item = new DropDownListParamStringItem(str, rt, !HasBit(c->avail_railtypes, rt));
+		item->SetParam(0, rti->strings.menu_text);
+		item->SetParam(1, rti->max_speed);
+		list->push_back(item);
 	}
 	ShowDropDownList(w, list, _last_built_railtype, TBN_RAILS, 140, true, true);
 	SndPlayFx(SND_15_BEEP);
