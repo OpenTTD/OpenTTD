@@ -608,7 +608,7 @@ CommandCost CmdBuildRoad(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 
 		default: {
 do_clear:;
-			CommandCost ret = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+			CommandCost ret = DoCommand(tile, 0, 0, flags & ~DC_EXEC, CMD_LANDSCAPE_CLEAR);
 			if (ret.Failed()) return ret;
 			cost.AddCost(ret);
 			tile_cleared = true;
@@ -661,6 +661,10 @@ do_clear:;
 	}
 
 	if (flags & DC_EXEC) {
+		/* CmdBuildLongRoad calls us directly with DC_EXEC, so we may only clear the tile after all
+		 * fail/success tests have been done. */
+		if (tile_cleared) DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+
 		switch (GetTileType(tile)) {
 			case MP_ROAD: {
 				RoadTileType rtt = GetRoadTileType(tile);
