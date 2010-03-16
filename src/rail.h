@@ -270,6 +270,22 @@ static inline Money RailBuildCost(RailType railtype)
 }
 
 /**
+ * Returns the 'cost' of clearing the specified railtype.
+ * @param railtype The railtype being removed.
+ * @return The cost.
+ */
+static inline Money RailClearCost(RailType railtype)
+{
+	/* Clearing rail in fact earns money, but if the build cost is set
+	 * very low then a loophole exists where money can be made.
+	 * In this case we limit the removal earnings to 3/4s of the build
+	 * cost.
+	 */
+	assert(railtype < RAILTYPE_END);
+	return max(_price[PR_CLEAR_RAIL], -RailBuildCost(railtype) * 3 / 4);
+}
+
+/**
  * Calculates the cost of rail conversion
  * @param from The railtype we are converting from
  * @param to   The railtype we are converting to
@@ -296,7 +312,7 @@ static inline Money RailConvertCost(RailType from, RailType to)
 	}
 
 	/* make the price the same as remove + build new type */
-	return RailBuildCost(to) + _price[PR_CLEAR_RAIL];
+	return RailBuildCost(to) + RailClearCost(from);
 }
 
 void DrawTrainDepotSprite(int x, int y, int image, RailType railtype);

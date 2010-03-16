@@ -503,7 +503,7 @@ CommandCost CmdBuildSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 CommandCost CmdRemoveSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	Track track = (Track)p2;
-	CommandCost cost(EXPENSES_CONSTRUCTION, _price[PR_CLEAR_RAIL] );
+	CommandCost cost(EXPENSES_CONSTRUCTION);
 	bool crossing = false;
 
 	if (!ValParamTrackOrientation((Track)p2)) return CMD_ERROR;
@@ -532,6 +532,8 @@ CommandCost CmdRemoveSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 				ret.SetGlobalErrorMessage();
 				if (ret.Failed()) return ret;
 			}
+
+			cost.AddCost(RailClearCost(GetRailType(tile)));
 
 			if (flags & DC_EXEC) {
 				if (HasReservedTracks(tile, trackbit)) {
@@ -562,6 +564,8 @@ CommandCost CmdRemoveSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 			present = GetTrackBits(tile);
 			if ((present & trackbit) == 0) return CMD_ERROR;
 			if (present == (TRACK_BIT_X | TRACK_BIT_Y)) crossing = true;
+
+			cost.AddCost(RailClearCost(GetRailType(tile)));
 
 			/* Charge extra to remove signals on the track, if they are there */
 			if (HasSignalOnTrack(tile, track))
