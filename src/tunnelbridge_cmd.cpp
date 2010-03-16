@@ -1332,6 +1332,18 @@ static void GetTileDesc_TunnelBridge(TileIndex tile, TileDesc *td)
 			td->owner[i] = tram_owner;
 		}
 	}
+
+	if (tt == TRANSPORT_RAIL) {
+		const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(tile));
+		td->rail_speed = rti->max_speed;
+
+		if (!IsTunnel(tile)) {
+			uint16 spd = GetBridgeSpec(GetBridgeType(tile))->speed;
+			if (td->rail_speed == 0 || spd < td->rail_speed) {
+				td->rail_speed = spd;
+			}
+		}
+	}
 }
 
 

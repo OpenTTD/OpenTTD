@@ -2800,6 +2800,9 @@ static void GetTileDesc_Station(TileIndex tile, TileDesc *td)
 				td->grf = gc->GetName();
 			}
 		}
+
+		const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(tile));
+		td->rail_speed = rti->max_speed;
 	}
 
 	if (IsAirport(tile)) {

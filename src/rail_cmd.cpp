@@ -2575,6 +2575,8 @@ static bool ClickTile_Track(TileIndex tile)
 
 static void GetTileDesc_Track(TileIndex tile, TileDesc *td)
 {
+	const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(tile));
+	td->rail_speed = rti->max_speed;
 	td->owner[0] = GetTileOwner(tile);
 	switch (GetRailTileType(tile)) {
 		case RAIL_TILE_NORMAL:
@@ -2648,6 +2650,11 @@ static void GetTileDesc_Track(TileIndex tile, TileDesc *td)
 
 		case RAIL_TILE_DEPOT:
 			td->str = STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT;
+			if (td->rail_speed > 0) {
+				td->rail_speed = min(td->rail_speed, 61);
+			} else {
+				td->rail_speed = 61;
+			}
 			break;
 
 		default:
