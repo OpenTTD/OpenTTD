@@ -544,7 +544,7 @@ public:
 		this->detailed_msg = detailed_msg;
 
 		CompanyID company = (CompanyID)GetDParamX(this->decode_params, 2);
-		this->face = (this->detailed_msg == STR_ERROR_OWNED_BY && company <= MAX_COMPANIES) ? company : INVALID_COMPANY;
+		this->face = (this->detailed_msg == STR_ERROR_OWNED_BY && company < MAX_COMPANIES) ? company : INVALID_COMPANY;
 		const WindowDesc *desc = (face == INVALID_COMPANY) ? &_errmsg_desc : &_errmsg_face_desc;
 
 		assert(summary_msg != INVALID_STRING_ID);

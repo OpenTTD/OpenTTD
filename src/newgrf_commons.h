@@ -57,7 +57,7 @@ public:
 	void Add(uint8 local_id, uint32 grfid, uint entity_type);
 	virtual uint16 AddEntityID(byte grf_local_id, uint32 grfid, byte substitute_id);
 
-	uint16 GetSubstituteID(byte entity_id);
+	uint16 GetSubstituteID(uint16 entity_id);
 	virtual uint16 GetID(uint8 grf_local_id, uint32 grfid);
 
 	inline uint16 GetMaxMapping() { return max_new_entities; }

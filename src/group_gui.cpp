@@ -400,7 +400,7 @@ public:
 
 					/* draw the selected group in white, else we draw it in black */
 					SetDParam(0, g->index);
-					DrawString(r.left + WD_FRAMERECT_LEFT + 8, r.right - WD_FRAMERECT_RIGHT, y1, STR_GROUP_NAME, (this->group_sel == g->index) ? TC_WHITE : TC_BLACK);
+					DrawString(r.left + WD_FRAMERECT_LEFT + 8, r.right - WD_FRAMERECT_RIGHT - 8, y1, STR_GROUP_NAME, (this->group_sel == g->index) ? TC_WHITE : TC_BLACK);
 
 					/* draw the number of vehicles of the group */
 					SetDParam(0, g->num_vehicle);

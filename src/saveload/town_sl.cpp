@@ -40,7 +40,7 @@ void UpdateHousesAndTowns()
 
 		if (!IsTileType(t, MP_HOUSE)) continue;
 
-		house_id = GetHouseType(t);
+		house_id = GetCleanHouseType(t);
 		if (!HouseSpec::Get(house_id)->enabled && house_id >= NEW_HOUSE_OFFSET) {
 			/* The specs for this type of house are not available any more, so
 			 * replace it with the substitute original house type. */
