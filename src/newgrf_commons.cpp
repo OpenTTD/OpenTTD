@@ -136,7 +136,7 @@ uint16 OverrideManagerBase::AddEntityID(byte grf_local_id, uint32 grfid, byte su
  * @param entity_id of the entity being queried
  * @return mapped id
  */
-uint16 OverrideManagerBase::GetSubstituteID(byte entity_id)
+uint16 OverrideManagerBase::GetSubstituteID(uint16 entity_id)
 {
 	return mapping_ID[entity_id].substitute_id;
 }
