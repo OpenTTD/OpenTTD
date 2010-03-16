@@ -905,7 +905,7 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}Το {VE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}Το {VEHICLE} πάλιωσε πολύ και χρειάζεται επειγόντως αλλαγή
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}Το {VEHICLE} δεν μπορεί να βρει δρόμο να συνεχίσει
 STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{G Ο Η Το} {VEHICLE} χάθηκε
-STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Το κέρδος του {VEHICLE} πέρυσι ήταν {CURRENCY}
+STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Το κέρδος του {VEHICLE.geniki} πέρυσι ήταν {CURRENCY}
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Το {VEHICLE} σταμάτησε γιατί μια εντολή μετατροπής απέτυχε
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Αποτυχία Αυτόματης Ανανέωσης για το {VEHICLE}{}{STRING}
@@ -3822,9 +3822,13 @@ STR_INDUSTRY_NAME_SUGAR_MINE                                    :{G=n}Ορυχε
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Ανώνυμο
 STR_SV_TRAIN_NAME                                               :{G=n}Τρένο {COMMA}
+STR_SV_TRAIN_NAME.geniki                                        :Τρένου {COMMA}
 STR_SV_ROAD_VEHICLE_NAME                                        :{G=n}Όχημα Δρόμου {COMMA}
+STR_SV_ROAD_VEHICLE_NAME.geniki                                 :Οχήματος Δρόμου {COMMA}
 STR_SV_SHIP_NAME                                                :{G=n}Πλοίο {COMMA}
+STR_SV_SHIP_NAME.geniki                                         :Πλοίου {COMMA}
 STR_SV_AIRCRAFT_NAME                                            :{G=n}Αεροπλάνο {COMMA}
+STR_SV_AIRCRAFT_NAME.geniki                                     :Αεροπλάνου {COMMA}
 
 STR_SV_STNAME                                                   :{STRING}
 STR_SV_STNAME_NORTH                                             :Βόρειο {STRING}
@@ -4219,3 +4223,4 @@ STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
+

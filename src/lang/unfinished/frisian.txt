@@ -268,6 +268,7 @@ STR_SORT_BY_LENGTH                                              :Lingte
 STR_SORT_BY_FACILITY                                            :Stasjonstype
 STR_SORT_BY_COST                                                :Kosten
 STR_SORT_BY_POWER                                               :Krêft
+STR_SORT_BY_INTRO_DATE                                          :Yntroduksjedatum
 STR_SORT_BY_RUNNING_COST                                        :Ûnderhâldskosten
 STR_SORT_BY_CARGO_CAPACITY                                      :Frachtkapasiteit
 
@@ -343,6 +344,7 @@ STR_FILE_MENU_EXIT                                              :Ôfslúte
 
 ############ range for map menu starts
 STR_MAP_MENU_MAP_OF_WORLD                                       :Kaart fan 'e wrâld
+STR_MAP_MENU_SIGN_LIST                                          :Buordsjeslist
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Stêden list
 ############ end of the 'Display map' dropdown
@@ -367,11 +369,13 @@ STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Wiidweidiche pr
 ############ range ends here
 
 ############ range for industry menu starts
+STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Yndustry list
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Betelje nije yndustry
 ############ range ends here
 
 ############ range for railway construction menu starts
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Spoarwei konstruksje
+STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Elektryske spoarwei konstruksje
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Monorail konstruksje
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :MagLev konstruksje
 ############ range ends here
@@ -408,8 +412,9 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Berjochtenskied
 ############ range for about menu starts
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Gebiet Ynformaasje
 STR_ABOUT_MENU_SEPARATOR                                        :
+STR_ABOUT_MENU_AI_DEBUG                                         :AI debug
 STR_ABOUT_MENU_SCREENSHOT                                       :Skermfoto (Ctrl-S)
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Grutte Skermfoto (Ctrl-G)
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Grutte skermfoto (Ctrl+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Oer 'OpenTTD'
 ############ range ends here
 
@@ -519,11 +524,14 @@ STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCO
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 ############ Those following lines need to be in this order!!
+STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Ferfiermiddels:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stasjons:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Min. fertsjinste:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Min. ynkomsten:
 STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Maks. ynkomsten:
+STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}Besoarge:
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Jild:
+STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Lean:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Totaal:
 ############ End of order list
 
@@ -562,6 +570,7 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Selektea
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Set musyk wikseljen oan/út
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Lit musyk seleksje skerm sjen.
 
+STR_ERROR_NO_SONGS                                              :{WHITE}In musykset sûnder nûmers is selekteerd. Gjin nûmers sille spile wurden
 
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Musyk Programma Seleksje
@@ -576,7 +585,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klik op 
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klik op musyknûmmer om't út it aktive programma it heljen (allinnich Custom1 of Custom2)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Top bedriuwen dy't  niveau {NUM}{}({STRING} helle ha)
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Top bedriuwen dy't niveau {NUM}{}({STRING} helle ha)
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Bedriuwskompetysjetabel yn {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIGFONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Sakeman
@@ -642,7 +651,10 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLAC
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}Snie
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Set doarpsnammen oan/út op 'e map
+STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
+STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Alles ûtsette
+STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Alles oansette
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Lit hichte sjen
 
 # Status bar messages
@@ -650,6 +662,7 @@ STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Lit lês
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  PAUSEARRE  *  *
 STR_STATUSBAR_AUTOSAVE                                          :{RED}AUTOSAVE
+STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  SLAAT SPUL OP  *  *
 
 # News message history
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
@@ -659,6 +672,8 @@ STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Berjocht
 STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}Berjocht Opsjes
 STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Set alle berjochtensoarten nei: Út / Gearfetting / Hielendal
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Musykje ôfspielje by gearfette nijsberjochten
+STR_NEWS_MESSAGES_OFF                                           :Ut
+STR_NEWS_MESSAGES_FULL                                          :Alles
 
 STR_NEWS_MESSAGE_TYPES                                          :{BLACK}Berjochttypes:
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Oankomst fan earste reau op stasjon fan spyler
@@ -677,6 +692,13 @@ STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Feroari
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Subsydzjes
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Algemiene ynformaasje
 
+STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIGFONT}{BLACK}Ynwenners fiere feest . . .{}Earste trein komt oan yn {STATION}!
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIGFONT}{BLACK}Ynwenners fiere feest . . .{}Earste bus komt oan yn {STATION}!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIGFONT}{BLACK}Ynwenners fiere feest . . .{}Earste wein komt oan yn {STATION}!
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIGFONT}{BLACK}Ynwenners fiere feest . . .{}Earste passazjierstram komt oan yn {STATION}!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIGFONT}{BLACK}Ynwenners fiere feest . . .{}Earste frachttram komt oan yn {STATION}!
+STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIGFONT}{BLACK}Ynwenners fiere feest . . .{}Earste skip komt oan yn {STATION}!
+STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIGFONT}{BLACK}Ynwenners fiere feest . . .{}Earste fleanmasine komt oan yn {STATION}!
 
 
 STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIGFONT}{BLACK}Eksploazje op Oaljefjild yn {TOWN}!
@@ -685,7 +707,7 @@ STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIGFONT}{BLACK
 STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIGFONT}{BLACK}Transportbedriuw yn'e problemen!
 STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIGFONT}{BLACK}{STRING} sil ôfkocht wurde of fallyt ferkleare wurde wannear prestaasjes net ferbetterje
 STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIGFONT}{BLACK}Transportbedriuw fuseare!
-STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} is ferkocht  oan{STRING} foar {CURRENCY}!
+STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} is ferkocht oan {STRING} foar {CURRENCY}!
 STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIGFONT}{BLACK}Fallyt!
 STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIGFONT}{BLACK}{STRING} is slúten troch skuldeaskers en alles is ferkocht!
 STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK}Nij transportbedriuw oprjochte!
@@ -867,6 +889,7 @@ STR_DISASTERS_ON                                                :Oan
 
 # Advanced settings window
 
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Orizjiniel
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :gjin
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :minder
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :gewoan
@@ -877,6 +900,7 @@ STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Maksima
 
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Grien
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Tsjuster grien
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violet
 
 
 
@@ -1227,7 +1251,19 @@ STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Haven
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Fleanfjild Seleksje
 
+STR_AIRPORT_SMALL                                               :Lyts
+STR_AIRPORT_CITY                                                :Stêd
+STR_AIRPORT_INTERNATIONAL                                       :Ynternasjonaal
+STR_AIRPORT_COMMUTER                                            :Forins
+STR_AIRPORT_INTERCONTINENTAL                                    :Ynterkontinentaal
+STR_AIRPORT_HELIPORT                                            :Helipoart
+STR_AIRPORT_HELIDEPOT                                           :Helidepot
+STR_AIRPORT_HELISTATION                                         :Helistasjon
 
+STR_AIRPORT_CLASS_SMALL                                         :Lyts fleanfjild
+STR_AIRPORT_CLASS_LARGE                                         :Grut fleanfjild
+STR_AIRPORT_CLASS_HUB                                           :Hubfleansjilden
+STR_AIRPORT_CLASS_HELIPORTS                                     :Helikopter fleanfjild
 
 
 # Landscaping toolbar
@@ -1470,7 +1506,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Bou in 
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsydzjes
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Subsydzjes dy't oanbean wurde:
 STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} fan {STRING} nei {STRING}{YELLOW} (foar {DATE_SHORT})
-STR_SUBSIDIES_NONE                                              :{ORANGE}Gjin
+STR_SUBSIDIES_NONE                                              :{ORANGE}- Gjin -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Tsjinsten dy't al subsydzje krije:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} fan {STRING} nei {STRING}{YELLOW} ({COMPANY}{YELLOW}, oant {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klik om te sentrearen op yndusty/stêd
@@ -1519,7 +1555,7 @@ STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Konstruksje
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Nije faartúchen
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Trein Ûnderhâldskosten
-STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Auto's Ûnderhâldskosten
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Lânfartugen ûnderhâldskosten
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Fleantúg Ûnderhâldskosten
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Skip Ûnderhâldskosten
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Ûnderhâld fan besittingen
@@ -1772,6 +1808,8 @@ STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Oanienwei lâns
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}AI ynstellings
 
+STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD is bout sûnder AI ûndersteuning...
+STR_ERROR_NO_AI_SUB                                             :{WHITE}... gjin AIs beskikber!
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Gjin geskikte compjûterspiler fûn.{}Disse compjûterspiler is in dummy en docht neat.{}Jo kinne compjûterspilers delhelje fan 'Online Inhâld' ôf.
 
@@ -1871,10 +1909,11 @@ STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... te f
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... der is gjin romte mear op'e kaart
 
 # Industry related errors
+STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... te folle yndustryen
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Kin hjir gjin {STRING} boue...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Kin dit type yndustry hjir net boue...
 STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... stêd moat earst bout wurde
-STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}..mei mar ien per stêd wêze
+STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}.. mei mar ien per stêd wêze
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... kin allinnich bout wurde yn stêden mei 1200 ynwenners of mear
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... kin allinnich yn in reinwâld bout wurde
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... kin allinnich yn in woastine bout wurde
@@ -2091,6 +2130,9 @@ STR_SV_STNAME_WOODS                                             :{STRING} Hout
 STR_SV_STNAME_OILFIELD                                          :{STRING} Oaljefjild
 STR_SV_STNAME_WAYPOINT                                          :{STRING}
 ##id 0x6020
+STR_SV_STNAME_LOWER                                             :Leger {STRING}
+STR_SV_STNAME_FOREST                                            :{STRING} Bosk
+STR_SV_STNAME_FALLBACK                                          :{STRING} Stasjon #{NUM}
 ############ end of savegame specific region!
 
 ##id 0x8000
@@ -2211,6 +2253,13 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOY_VAN                     :Boartersguodswe
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BATTERY_TRUCK               :Batterijwein
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FIZZY_DRINK_TRUCK           :Frisdrinkenwein
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PLASTIC_TRUCK               :Plestikwein
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_REGAL_BUS                     :MPS Regal Bus
+STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_LEOPARD_BUS              :Hereford Leopard Bus
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_BUS                        :Foster Bus
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_MKII_SUPERBUS              :Foster MkII Superbus
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKI_BUS                :Ploddyphut MkI Bus
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKII_BUS               :Ploddyphut MkII Bus
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKIII_BUS              :Ploddyphut MkIII Bus
 STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_COAL_TRUCK                 :Balogh Koaltruck
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COAL_TRUCK                    :Uhl Koaltruck
 STR_VEHICLE_NAME_ROAD_VEHICLE_DW_COAL_TRUCK                     :DW Koaltruck
@@ -2244,6 +2293,9 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_STEEL_TRUCK               :Kelling Stieltr
 STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_FOOD_VAN                   :Foster Itentruck
 STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_FOOD_VAN                    :Perry Itentruck
 STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_FOOD_VAN                   :Chippy Itentruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_PAPER_TRUCK                   :Uhl Papierwein
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_PAPER_TRUCK                :Balogh Papierwein
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_PAPER_TRUCK                   :MPS Papierwein
 STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_COPPER_ORE_TRUCK              :MPS Koperertstruck
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COPPER_ORE_TRUCK              :Uhl Koperertstruck
 STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_COPPER_ORE_TRUCK             :Goss Koperertstruck
@@ -2399,6 +2451,7 @@ STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
 STR_JUST_DATE_LONG                                              :{DATE_LONG}
 STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_STRING_SPACE_STRING                                    :{STRING} {STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
@@ -2416,11 +2469,14 @@ STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LO
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}
 STR_TINY_GROUP                                                  :{TINYFONT}{GROUP}
+STR_BLACK_INT                                                   :{BLACK}{NUM}
 STR_ORANGE_INT                                                  :{ORANGE}{NUM}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
 STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
+STR_GREEN_STRING                                                :{GREEN}{STRING}
+STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
@@ -2438,3 +2494,5 @@ STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
+
+STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
