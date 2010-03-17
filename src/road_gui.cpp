@@ -25,6 +25,7 @@
 #include "sound_func.h"
 #include "company_func.h"
 #include "tunnelbridge.h"
+#include "tunnelbridge_map.h"
 #include "tilehighlight_func.h"
 #include "company_base.h"
 
@@ -112,7 +113,14 @@ static void PlaceRoad_AutoRoad(TileIndex tile)
 
 static void PlaceRoad_Bridge(TileIndex tile)
 {
-	VpStartPlaceSizing(tile, VPM_X_OR_Y, DDSP_BUILD_BRIDGE);
+	if (IsBridgeTile(tile)) {
+		TileIndex other_tile = GetOtherTunnelBridgeEnd(tile);
+		Window *w = GetCallbackWnd();
+		Point pt = {0, 0};
+		if (w != NULL) w->OnPlaceMouseUp(VPM_X_OR_Y, DDSP_BUILD_BRIDGE, pt, tile, other_tile);
+	} else {
+		VpStartPlaceSizing(tile, VPM_X_OR_Y, DDSP_BUILD_BRIDGE);
+	}
 }
 
 
