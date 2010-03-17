@@ -1140,7 +1140,7 @@ STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Väga p
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Rongide kiirendusmudel: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Algupärane
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistlik
-STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Järsakute kalde hulk rongide jaoks {ORANGE}{STRING}%
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Järsakute kalde suurus rongide jaoks {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Rongidel ja laevadel keelatakse 90 kraadised pöörded: {ORANGE}{STRING} {LTBLUE} (vajab NPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Kõrvuti ehitatud jaamade ühendamine: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Mitte kõrvuti asetsevate jaamade liitmine: {ORANGE}{STRING}
@@ -2315,6 +2315,7 @@ STR_MAPGEN_TREE_PLACER                                          :{BLACK}Puude al
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Maapinna tüüp:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Merepinna tase:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Tasapinnalisus:
+STR_MAPGEN_VARIETY                                              :{BLACK}Varieeruvuse jaotamine:
 STR_MAPGEN_GENERATE                                             :{WHITE}Tekita
 
 # Strings for map borders at game generation
@@ -3509,7 +3510,7 @@ STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Trammide
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Laevaremonditehast ei saa siia ehitada...
 
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Rong peab olema depoos peatatud
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... peab garaaþis olema
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... peab garaažis olema
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Laev peab olema sadamas peatatud
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Lennuk peab olema peatatud angaari sees
 

@@ -1311,7 +1311,7 @@ STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Obmedze
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}Zakázat elektrifikovanú železnicu: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Zobraziť správy farebne od roku: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Zaciatok hry v roku: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Začiatok hry v roku: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Povoliť zmeny ekonomiky (viac menších zmien): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Povoliť kupovanie podielov v ostatných spoločnostiach: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Percento z časti zisku na zaplatenie v dopravnom systéme: {ORANGE}{STRING}%
@@ -4176,3 +4176,5 @@ STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
+
+STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})

@@ -1821,18 +1821,18 @@ STR_NETWORK_CHAT_ALL                                            :[Svima] {STRING
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Upišite tekst mrežnog razgovora
 
 # Network messages
-STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Nisu pronađeni mrežni uređaji ili je kompajlirano bez ENABLE_NETWORK
+STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Nisu pronađeni mrežni uređaji ili je kompajlirano bez opcije ENABLE_NETWORK
 STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Niti jedna mrežna igra nije pronađena
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Poslužitelj nije odgovorio na zahtjev
-STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Ne mogu se spojiti zbog razlike u NewGRF
-STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Neuspješno usklađivanje mrežne igre
-STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Izgubljena veza sa mrežnom igrom
+STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Spajanje nije moguće zbog razlike u NewGRF datotekama
+STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Neuspješno usklađivanje s mrežnom igrom
+STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Izgubljena veza s mrežnom igrom
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Nije moguće učitati snimljenu igru
-STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Nemoguće je pokrenuti poslužitelj
+STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Nije moguće pokrenuti poslužitelj
 STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Nije se moguće spojiti
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Istekla je veza #{NUM}
-STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Napravljena je greška u protokolu te se veza prekinula
-STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Revizija ovog klijenta ne slaže se s revizijom poslužitelja
+STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Veza #{NUM} je istekla
+STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Primijećena je greška u protokolu te je veza prekinuta
+STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Revizija ovog klijenta ne odgovara reviziji poslužitelja
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Pogrešna zaporka
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Poslužitelj je pun
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Zabranjen ti je pristup ovom poslužitelju
@@ -3389,7 +3389,7 @@ STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Provjera integr
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Igra je bila spremljena u verziji bez podrške za tramvaje. Zbog toga su svi tramvaji uklonjeni.
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Generiranje karte prekinuto...{}... ne postoje prigodne lokacije za gradove
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Generiranje mape prekinuto...{}... ne postoje pogodne lokacije za gradove
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... u ovom scenariju nema gradova
 
 STR_ERROR_PNGMAP                                                :{WHITE}Nije moguće učitati krajolik iz PNG-a...
@@ -3479,15 +3479,15 @@ STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Nije mog
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Ovdje nije moguće izgraditi {STRING}...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Ovdje nije moguće izgraditi ovu vrstu industrije...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... preblizu drugoj industriji
-STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... najprije je potrebno napraviti grad
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... najprije je potrebno osnovati grad
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... dopušten je samo jedan po gradu
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... može biti izgrađen samo u gradovima s najmanje 1200 stanovnika
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{G=male}{WHITE}... može biti izgrađen samo u gradovima s najmanje 1.200 stanovnika
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... može biti izgrađen samo u predjelima kišnih šuma
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... može biti izgrađen samo u pustinjskim područjima
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... može biti izgrađen samo u gradovima
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... može biti izgrađen samo u nizinskim područjima
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... može se postaviti samo blizu rubova karte
-STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... šume mogu jedino biti posađene iznad linije snijega
+STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... šume mogu biti posađene jedino iznad linije snijega
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Ovdje nije moguće izgraditi željezničku postaju...
@@ -3598,7 +3598,7 @@ STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Ovdje ni
 STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Ovdje nije moguće izgraditi brane...
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Ovdje nije moguće postaviti rijeku...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... mora biti izgrađen na vodi
-STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... Nije moguće graditi na vodi
+STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... nije moguće graditi na vodi
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Najprije je potrebno srušiti kanal
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Ovdje nije moguće izgraditi akvadukt...
 
@@ -4242,3 +4242,5 @@ STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
+
+STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})

@@ -1,6 +1,6 @@
 OpenTTD's known bugs
-Last updated:    2010-03-04
-Release version: 1.0.0-RC2
+Last updated:    2010-03-18
+Release version: 1.0.0-RC3
 ------------------------------------------------------------------------
 
 
@@ -34,6 +34,7 @@ that you can find at: http://bugs.openttd.org
 If the bugs are closed but still listed here it means that the bug is fixed
 and that the nightlies and next major release will not have that bug.
 
+- 3695	Behaviour inconsistency building railway/road down towards water
 - 3651	[OSX] Crash when selecting full screen
 - 3648	[OSX] Crash when selecting music
 - 3637	Second highest competing station gets penalised twice
@@ -135,6 +136,7 @@ Duplicate (station) names after renaming [FS#3204]
 	to the automatically generated names.
 
 Extreme CPU usage/hangs when using SDL and PulseAudio [FS#3294]
+OpenTTD hangs/freezes when closing, OpenTTD is slow, OpenTTD uses a lot of CPU
 	OpenTTD can be extremely slow/use a lot of CPU when the sound is
 	played via SDL and then through PulseAudio's ALSA wrapper. Under the
 	same configuration OpenTTD, or rather SDL, might hang when exiting

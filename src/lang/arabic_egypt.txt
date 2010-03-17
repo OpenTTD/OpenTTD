@@ -3307,6 +3307,9 @@ STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}لايم
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}تحذير
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}اعادة تحجيم الخريطة المصدر كثيرا غير مستحسن. هل تريد اكمال توليد الخريطة؟
 
+# Soundset messages
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}لايوجد غير مجموعة اصوات. اذا اردت اصوات, نصب مجموعة صوتية من خلال نظام التحميل.
+
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}صورة من الشاشة حفظت بنجاح باسم: '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}لم يتم حفظ الصورة
@@ -3474,6 +3477,7 @@ STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :- حدود ال
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}تركيبة سكك غير صالحة
+STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}يجب حذف الاشارة اولا
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}... مسار السكة الحديدية غير مناسب
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}يجب ازالة السكة اولا
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}طريق بإتجاه واحد أو مغلق
