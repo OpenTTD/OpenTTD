@@ -131,6 +131,7 @@ Duplicate (station) names after renaming [FS#3204]
 	to the automatically generated names.
 
 Extreme CPU usage/hangs when using SDL and PulseAudio [FS#3294]
+OpenTTD hangs/freezes when closing, OpenTTD is slow, OpenTTD uses a lot of CPU
 	OpenTTD can be extremely slow/use a lot of CPU when the sound is
 	played via SDL and then through PulseAudio's ALSA wrapper. Under the
 	same configuration OpenTTD, or rather SDL, might hang when exiting

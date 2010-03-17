@@ -202,10 +202,11 @@ when using other versions of the game.
 
 4.1.1) Free graphics and sound files
 ------ -----------------------------
-The free data files, split into OpenGFX for graphics and OpenSFX for sounds
-can be found at:
+The free data files, split into OpenGFX for graphics, OpenSFX for sounds and
+OpenMSX for music can be found at:
  - http://bundles.openttdcoop.org/opengfx/releases/ for OpenGFX
  - http://bundles.openttdcoop.org/opensfx/releases/ for OpenSFX
+ - http://bundles.openttdcoop.org/openmsx/releases/ for OpenMSX
 Please follow the readme of these packages about the installation procedure.
 The Windows installer can optionally download and install these packages.
 
@@ -508,8 +509,12 @@ debugging messages. This is mostly undocumented so best is to look in the
 source code file debug.c for the various debugging types. For more information
 look at http://wiki.openttd.org/index.php/Command_line.
 
-The most frequent problem is missing data files. Don't forget to put all GRF
-files from TTD into your data/ folder including sample.cat!
+The most frequent problem is missing data files. Please install OpenGFX and
+possibly OpenSFX and OpenMSX. See section 4.1.1 for more information.
+
+Under, especially, Ubuntu OpenTTD can be extremely slow and freeze/hand under
+certain circumstance. See known-bugs.txt for more information and how to
+solve this problem on your computer.
 
 Under Windows 98 and lower it is impossible to use a dedicated server; it will
 fail to start. Perhaps this is for the better because those OSes are not known
