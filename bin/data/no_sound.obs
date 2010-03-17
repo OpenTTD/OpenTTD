@@ -29,12 +29,15 @@ description.it_IT = Un pacchetto sonoro non contenente alcun suono.
 description.nb_NO = En lydpakke uten noen lyder.
 description.nl_NL = Een geluidset zonder geluid.
 description.nn_NO = Ei lydpakke utan nokon lydar.
+description.pl_PL = Zestaw dźwięków nie zawierający żadnych dźwięków.
 description.pt_PT = Um conjunto de sons vazio.
 description.ro_RO = Un set de sunete fără nici un sunet inclus.
 description.ru_RU = "Пустой" набор звукового оформления, не содержащий никаких звуков.
+description.sk_SK = Zvuková sada neobsahujúca zvuky.
 description.sl_SL = Zvočni paket brez zvoka.
 description.sr_RS = Prazan skup zvukova.
 description.sv_SE = Ett ljudpaket utan några ljud.
+description.tr_TR = Ses içermeyen boş bir ses kümesi.
 description.zh_TW = 不含任何音效的音效集。
 
 [files]
