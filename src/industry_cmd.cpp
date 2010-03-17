@@ -1959,12 +1959,9 @@ void GenerateIndustries()
 
 static void UpdateIndustryStatistics(Industry *i)
 {
-	byte pct;
-	bool refresh = false;
-
 	for (byte j = 0; j < lengthof(i->produced_cargo); j++) {
 		if (i->produced_cargo[j] != CT_INVALID) {
-			pct = 0;
+			byte pct = 0;
 			if (i->this_month_production[j] != 0) {
 				i->last_prod_year = _cur_year;
 				pct = min(i->this_month_transported[j] * 256 / i->this_month_production[j], 255);
@@ -1976,11 +1973,8 @@ static void UpdateIndustryStatistics(Industry *i)
 
 			i->last_month_transported[j] = i->this_month_transported[j];
 			i->this_month_transported[j] = 0;
-			refresh = true;
 		}
 	}
-
-	if (refresh) SetWindowDirty(WC_INDUSTRY_VIEW, i->index);
 }
 
 /** Simple helper that will collect data for the generation of industries */
@@ -2436,7 +2430,10 @@ void IndustryDailyLoop()
 			MaybeNewIndustry();
 		} else {
 			Industry *i = Industry::GetRandom();
-			if (i != NULL) ChangeIndustryProduction(i, false);
+			if (i != NULL) {
+				ChangeIndustryProduction(i, false);
+				SetWindowDirty(WC_INDUSTRY_VIEW, i->index);
+			}
 		}
 	}
 
@@ -2458,6 +2455,7 @@ void IndustryMonthlyLoop()
 			delete i;
 		} else {
 			ChangeIndustryProduction(i, true);
+			SetWindowDirty(WC_INDUSTRY_VIEW, i->index);
 		}
 	}
 
