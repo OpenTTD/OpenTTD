@@ -125,6 +125,7 @@ STR_QUANTITY_TOFFEE                                             :{WEIGHT} toffee
 STR_QUANTITY_BATTERIES                                          :{COMMA} batterij{P "" en}
 STR_QUANTITY_PLASTIC                                            :{VOLUME} plestik
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} frisdrink{P "" en}
+STR_QUANTITY_N_A                                                :N/B
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
@@ -581,7 +582,7 @@ STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLAC
 STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}Opslaan
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Leechje dit programma (allinnich Eigen 1 of Eigen 2)
 STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Sla musyk ynstellings op
-STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klik op musyk nûmer om te te foegjen oan dit programma (allinnich Eigen 1 of Eigen 2)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klik op musyknûmer om ta te foegjen oan dit programma (allinnich Eigen 1 of Eigen 2)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klik op musyknûmmer om't út it aktive programma it heljen (allinnich Custom1 of Custom2)
 
 # Highscore window
@@ -733,6 +734,8 @@ STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK} Produksje fan {INDUSTRY} giet omleech mei 50%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}Troch in insektenpleach by {INDUSTRY}!{}Produksje giet omleech mei 50%
 
+STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} wacht yn depot
+STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} wacht yn hangar
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
@@ -741,8 +744,12 @@ STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} wurdt âld
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} wurdt tige âld
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} wurdt tige âld en is nedich oan ferfaning ta
+STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} is de wei kwyt.
 
 
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}Neie {STRING} is no beskikber!
+STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIGFONT}{BLACK}{ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Neie {STRING} is no beskikber!  -  {ENGINE}
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} akseptearret gjin {STRING} mear
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} akseptearret gjin {STRING} en {STRING} mear
@@ -766,6 +773,25 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Muntienh
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Muntienheid seleksje
 
 ############ start of currency region
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Pûnen (£)
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Dollars ($)
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (€)
+STR_GAME_OPTIONS_CURRENCY_YEN                                   :Yen (¥)
+STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belgyske frank (BEF)
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :Dútske mark (DEM)
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Peseta (ESP)
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :Finske markka (FIM)
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Franc (FRF)
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :Grykse Drachma (GRD)
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :Yslânske Krona (ISK)
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :Italjaanske lire (ITL)
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :Nederlânske gûne (NLG)
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Poalske Zloty (PLN)
+STR_GAME_OPTIONS_CURRENCY_RON                                   :Roemeenske Leu (RON)
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :Sloveenske tolar (SIT)
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :Slowaakske kroan (SKK)
+STR_GAME_OPTIONS_CURRENCY_EEK                                   :Estlânske kroan (EEK)
+STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Oanpasse...
 ############ end of currency region
 
 
@@ -1939,10 +1965,12 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Te ticht
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Kin namme fan stasjon net feroarje
 
 # Station destruction related errors
+STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Weistop moat earst fuorthelle wurde
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Treinspoar moat earst fuorthelle wurde
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Bushalte moat earst fuorthelle wurde
 STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}Frachtstasjon moat earst fuorthelle wurde
+STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Frachttramstasjon moat earst fuorthelle wurde
 STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Haven moat earst fuorthelle wurde
 STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Fleanfjild moat earst fuorthelle wurde
 
@@ -1951,21 +1979,30 @@ STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Foeget m
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Te ticht by in oar kontrôlepost
 
 STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Kin jirre gjin kontrôlepost bouwe...
+STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Kin hjir gjin boei delsette...
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Kin de namme fan it kontrôlepost net oanpasse...
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Kin kontrôlepost jirre net fuorthelje...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Kontrôlepost op it spoar earst ferwiderje
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... boei yn it paad
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... boei yn gebrûk!
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Kin hjir gjin trein depot boue...
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Kin hjir gjin auto depot boue...
+STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Kin hjir gjin skipdepot boue...
 
+STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Skip moat stopt wêze yn depot
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Fleantúg moat stopt wêze yn hangar
 
+STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Trein te lang
 
+STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Kin gjin route fine nei lokaal depot
+STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Kin lokaal depot net fine
 
 
 # Autoreplace related errors
+STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(jild limiet)
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Spoar kombinaasje net mooglik
@@ -1976,16 +2013,22 @@ STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Kin hjir
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Kin hjir gjin spoarwei boue
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Kin hjir gjin spoar fuorthelje...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Kin hjir gjin stopljochten fuorthelje
+STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Kin stopljochten net omboue...
 
 
 # Road construction errors
 STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}Wei moat earst fuorthelle wurde
 STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Kin hjir gjin wei boue...
+STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Kin hjir gjin tramspoar boue...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Kin hjir gjin wei fuorthelje...
+STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Kin hjir gjin tramspoar fuorthelje
 
 # Waterway construction errors
+STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Kin hjir gjin kanaal boue...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... moat bout wurde op it wetter
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... Kin net op it wetter bouwe
+STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Kanaal moat earst fuorthelle wurde
+STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Kin hjir gjin akwadukt boue...
 
 # Tree related errors
 STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... hjir stiet al in beam
@@ -2012,12 +2055,29 @@ STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Kin dit 
 STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... it is al fan dy!
 
 # Group related errors
+STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Kin de namme net feroarje...
 
 # Generic vehicle errors
+STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Trein yn it paad
+STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Auto yn it paad
+STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Skip yn it paad
+STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Fleantúg yn it paad
 
 
+STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Kin trein net neamje...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Kin auto net neamje...
+STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}Kin skip net neamje...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}Kin fleantúg net neamje...
 
+STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Kin trein net stoppe/starte...
+STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Kin wein net stoppe/starte...
+STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Kin skip net stoppe/starte...
+STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Kin fleantúg net stoppe/starte...
 
+STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Kin trein net nei depot stjoere...
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Kin wein net nei depot stjoere...
+STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Kin skip net nei depot stjoere...
+STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Kin fleantúg net nei hangar stjoere...
 
 STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Kin gjin trein keapje...
 STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Kin gjin auto keapje...
@@ -2025,8 +2085,19 @@ STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Kin gjin
 STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Kin gjin fleantúg keapje...
 
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Kin trein type gjin nije namme joan...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Kin wein type gjin nije namme jaan...
+STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Kin skiptype gjin nije namme jaan...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Kin fleantúgtype gjin nije namme jaan...
 
+STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Kin trein net ferkeapje...
+STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Kin wein net ferkeapje...
+STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Kin skip net ferkeapje...
+STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Kin fleantúg net ferkeapje...
 
+STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :{WHITE}Trein is net beskikber
+STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :{WHITE}Wein is net beskikber
+STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}Skip is net beskikber
+STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Fleantúg is net beskikber
 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Te folle fartugen yn it spul
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Kin tiid tusken ûnderhâldsbeurten net feroarje...
@@ -2046,6 +2117,7 @@ STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... te f
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... te folle buordsjes
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Kin hjir gjin buordsje delsette
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Kin tekst net feroarje...
+STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Kin stopljocht net foarthelje...
 
 ##id 0x2000
 # Town building names
@@ -2105,6 +2177,7 @@ STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :Bank
 STR_INDUSTRY_NAME_DIAMOND_MINE                                  :Diamantmyn
 STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :IIzerertsmyn
 STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :Fruitplantaazje
+STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :Rubberplantaazje
 STR_INDUSTRY_NAME_WATER_SUPPLY                                  :Wetterbron
 STR_INDUSTRY_NAME_WATER_TOWER                                   :Wettertoer
 STR_INDUSTRY_NAME_FACTORY_2                                     :Fabryk
@@ -2125,12 +2198,31 @@ STR_INDUSTRY_NAME_SUGAR_MINE                                    :Sûkermyn
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
 ############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
+STR_SV_EMPTY                                                    :
+STR_SV_UNNAMED                                                  :Net neamt
+STR_SV_TRAIN_NAME                                               :Trein {COMMA}
+STR_SV_ROAD_VEHICLE_NAME                                        :Lânfartúg {COMMA}
+STR_SV_SHIP_NAME                                                :Skip {COMMA}
+STR_SV_AIRCRAFT_NAME                                            :Fleantúg {COMMA}
 
+STR_SV_STNAME                                                   :{STRING}
+STR_SV_STNAME_NORTH                                             :{STRING} Noard
+STR_SV_STNAME_SOUTH                                             :{STRING} Sûd
+STR_SV_STNAME_EAST                                              :{STRING} East
+STR_SV_STNAME_WEST                                              :{STRING} West
+STR_SV_STNAME_CENTRAL                                           :{STRING} Sintraal
+STR_SV_STNAME_HALT                                              :{STRING} Halte
+STR_SV_STNAME_HEIGHTS                                           :{STRING} Hichten
 STR_SV_STNAME_WOODS                                             :{STRING} Hout
+STR_SV_STNAME_LAKESIDE                                          :{STRING} Wetterkant
+STR_SV_STNAME_AIRPORT                                           :{STRING} Fleanfjild
 STR_SV_STNAME_OILFIELD                                          :{STRING} Oaljefjild
+STR_SV_STNAME_BUOY                                              :{STRING}
 STR_SV_STNAME_WAYPOINT                                          :{STRING}
 ##id 0x6020
+STR_SV_STNAME_UPPER                                             :Boppenste {STRING}
 STR_SV_STNAME_LOWER                                             :Leger {STRING}
+STR_SV_STNAME_HELIPORT                                          :{STRING} Heliport
 STR_SV_STNAME_FOREST                                            :{STRING} Bosk
 STR_SV_STNAME_FALLBACK                                          :{STRING} Stasjon #{NUM}
 ############ end of savegame specific region!
@@ -2290,6 +2382,9 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_IRON_ORE_TRUCK             :Chippy Izererts
 STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_STEEL_TRUCK                :Balogh Stieltruck
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_STEEL_TRUCK                   :Uhl Stieltruck
 STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_STEEL_TRUCK               :Kelling Stieltruck
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_ARMORED_TRUCK              :Balogh bewapene truck
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_ARMORED_TRUCK                 :Uhl bewapene truck
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_ARMORED_TRUCK              :Foster bewapene truck
 STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_FOOD_VAN                   :Foster Itentruck
 STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_FOOD_VAN                    :Perry Itentruck
 STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_FOOD_VAN                   :Chippy Itentruck
@@ -2411,6 +2506,7 @@ STR_DEFAULT_SIGN_NAME                                           :Buordsje
 STR_COMPANY_SOMEONE                                             :immen
 
 STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}
+STR_SAVEGAME_NAME_SPECTATOR                                     :Taskôger, {1:STRING}
 
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})

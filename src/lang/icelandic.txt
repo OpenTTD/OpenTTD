@@ -219,6 +219,7 @@ STR_UNITS_FORCE_SI                                              :{COMMA} kN
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Sláðu inn leitarstreng
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Sláðu inn leitarstreng til að sía listann
+STR_LIST_FILTER_TITLE                                           :{BLACK}Leitarsía:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Velja uppröðun (minnkandi/stækkandi)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Velja uppröðun
@@ -229,6 +230,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Endurnef
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Loka glugga
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Haus glugga - dragðu með músinni til að færa gluggann
+STR_TOOLTIP_SHADE                                               :{BLACK}Draga glugga saman - sýna aðeins titlslá
 STR_TOOLTIP_STICKY                                              :{BLACK}Merkja þennan glugga sem ólokanlegan fyrir
 STR_TOOLTIP_RESIZE                                              :{BLACK}Ýttu og dragðu til að breyta stærð gluggans
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Stækka/smækka gluggastærð
@@ -257,6 +259,8 @@ STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Fólksfj
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Nafn
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Dagsetning
 # These are used in dropdowns
+STR_SORT_BY_POPULATION                                          :Fólksfjöldi
+STR_SORT_BY_NAME                                                :Nafn
 STR_SORT_BY_PRODUCTION                                          :Framleiðsla
 STR_SORT_BY_TYPE                                                :Tegund
 STR_SORT_BY_TRANSPORTED                                         :Flutt
@@ -271,6 +275,7 @@ STR_SORT_BY_MODEL                                               :Týpa
 STR_SORT_BY_VALUE                                               :Virði
 STR_SORT_BY_LENGTH                                              :Lengd
 STR_SORT_BY_LIFE_TIME                                           :Líftími eftir
+STR_SORT_BY_TIMETABLE_DELAY                                     :Seinkun áætlunar
 STR_SORT_BY_FACILITY                                            :Tegund stöðvar
 STR_SORT_BY_WAITING                                             :Verðgildi farms á stöð
 STR_SORT_BY_RATING_MAX                                          :Hæsta einkunn stöðvar
@@ -310,7 +315,8 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Byggja f
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Opna landslags verkfæraslána til að hækka/lækka land, gróðursetja tré o.s.frv.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Sýna hljóð/tónlistar glugga
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Sýna síðustu skilaboð/fréttatilkynningu, sýna skilaboðastillingar
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Landssvæðisupplýsingar
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Landsvæðisupplýsingar
+STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Skipta á tækjaslá
 
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Vista kort, opna kort, hætta í kortagerð, hætta í OpenTTD
@@ -318,6 +324,7 @@ STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Kortagerð
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Færa byrjunardagsetninguna aftur um 1 ár
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Færa byrjunardagsetninguna fram um 1 ár
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Smelltu til að stilla upphafsár
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Sýna kort, bæjarmöppu
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Landslagsgerð
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Bæjargerð
@@ -365,6 +372,7 @@ STR_MAP_MENU_SIGN_LIST                                          :Skiltalisti
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Listi yfir bæi
 ############ end of the 'Display map' dropdown
+STR_TOWN_MENU_FOUND_TOWN                                        :Fann bæ
 ############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
@@ -576,6 +584,9 @@ STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}{BLAC
 STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}{BLACK}Sérval 2
 STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}Tónlistarstyrkur
 STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Hljóðstyrkur
+STR_MUSIC_RULER_MIN                                             :{TINYFONT}{BLACK}LÆGST
+STR_MUSIC_RULER_MAX                                             :{TINYFONT}{BLACK}HÆST
+STR_MUSIC_RULER_MARKER                                          :{TINYFONT}{BLACK}:
 STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINYFONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
@@ -598,6 +609,7 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Velja 'S
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Kveikja/slökkva á stokkun
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Sýna lagalista
 
+STR_ERROR_NO_SONGS                                              :{WHITE}Tómur lagalisti hefur verið valinn. Engin lög verða spiluð
 
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Lagalistar
@@ -683,6 +695,10 @@ STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRI
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Fela allt
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Sýna allt
+STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Sýna hæð
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL                                :{BLACK}Sýna ekki iðnaði
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL                                 :{BLACK}Sýna alla iðnaði
+STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Sýna/fela hæðakort
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Sýna seinustu skilaboð eða fréttatilkynningu
@@ -755,6 +771,7 @@ STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} hefur verið yfirtekið af {STRING}!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Forstöðumaður)
 
+STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}{STRING} fjármagnaði nýjan bæ: {TOWN}!
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Ný {STRING} í byggingu við {TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Ný {STRING} er að rísa við {TOWN}!
@@ -929,6 +946,9 @@ STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Nota gru
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} týnd{P "" ar} eða ónýt{P "" ar} skrá{P "" r}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Frekari upplýsingar um grunngrafíkpakkann
 
+STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Grunn hljóðasafn
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Veldu grunn hljóðasafn
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Aukaupplýsingar um grunn hljóðasafnið
 
 
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Skjáfyllihamur brást
@@ -1054,6 +1074,10 @@ STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Leyfa m
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Hröðun lesta: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Upphafleg
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Raunhæf
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Hröðun bifreiða: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Upphafleg
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Raunveruleg
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Halli brekku fyrir bifreiðar {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Banna lestum og skipum að taka 90° beygjur: {ORANGE}{STRING} {LTBLUE} (ekki með OPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Sameina lestarstöðvar sem byggðar eru samsíða: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Leyfa sameiningu stöðva sem ekki tengjast á korti: {ORANGE}{STRING}
@@ -1949,6 +1973,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Byggja f
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Flugvallastillingar
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Veldu stærð/tegund flugvallar
+STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Tegund flugvallar
 
 STR_AIRPORT_SMALL                                               :Lítill flugvöllur
 STR_AIRPORT_CITY                                                :Borgarflugvöllur
@@ -2051,9 +2076,11 @@ STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Hnit: {L
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Byggt: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Tegund stöðvar: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Tegund stöðvar: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Nafn flugvallar: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Tekið á móti: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
+STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Hámarkshraði járnbrautar: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Klettar
@@ -3195,6 +3222,9 @@ STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... gat 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Stærð hæðarlínukorts
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Ekki er mælt með því að breyta stærð grunnkorts of mikið. Viltu halda áfram?
 
+# Soundset messages
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Fann aðeins varahljóðsafn. Ef þú vilt hljóð geturðu sett þau upp með innbyggðu efnisveitunni.
+
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Skjámynd vistuð sem '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Ekki tókst að taka skjámynd!
@@ -3263,6 +3293,7 @@ STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Bærinn 
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Vegaframkvæmdir standa yfir
 
 # Industry related errors
+STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... of margir iðnaðir
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Get ekki búið til iðnað...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Get ekki byggt {STRING} hérna...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Get ekki reist þennan iðnað hér...
@@ -3273,6 +3304,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... aðe
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... aðeins hægt að byggja á regnskógasvæðum
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... aðeins hægt að byggja í eyðimörk
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... aðeins hægt að byggja í bæjum
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... aðeins hægt að byggja á láglendi
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... getur aðeins verið staðsett nálægt brún kortsins
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... skógur getur aðeins verið gróðursettur yfir snjólínu
 
@@ -3307,6 +3339,7 @@ STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Get ekki
 STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Get ekki flutt vörubílastöð...
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Get ekki fjarlægt farþegasporvagnastöð...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Get ekki fjarlægt farmsporvagnastöð...
+STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Verður að fjarlægja strætóstöð fyrst
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Þarf fyrst að rífa lestarstöð
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Verður að eyða strætisvagnastöðinni fyrst
@@ -3357,6 +3390,7 @@ STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(takmarkað fj�
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Ómöguleg lestarteinasamstæða
+STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Verður að fjarlægja ljós fyrst
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Enginn hentugur lestarteinn
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Verður að fjarlægja lestartein fyrst
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Vegurinn er einstefnuvegur eða stíflaður
@@ -3979,3 +4013,5 @@ STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
+
+STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
