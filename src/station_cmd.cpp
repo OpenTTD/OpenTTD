@@ -2195,7 +2195,10 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		}
 	}
 
-	cost.AddCost(_price[PR_BUILD_STATION_AIRPORT] * w * h);
+	const AirportTileTable *it = as->table[layout];
+	do {
+		cost.AddCost(_price[PR_BUILD_STATION_AIRPORT]);
+	} while ((++it)->ti.x != -0x80);
 
 	if (flags & DC_EXEC) {
 		/* Always add the noise, so there will be no need to recalculate when option toggles */
@@ -2207,7 +2210,7 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 		st->rect.BeforeAddRect(tile, w, h, StationRect::ADD_TRY);
 
-		const AirportTileTable *it = as->table[layout];
+		it = as->table[layout];
 		do {
 			TileIndex cur_tile = tile + ToTileIndexDiff(it->ti);
 			MakeAirport(cur_tile, st->owner, st->index, it->gfx);
