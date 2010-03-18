@@ -2187,7 +2187,7 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 			st = new Station(tile);
 
 			st->town = t;
-			st->string_id = GenerateStationName(st, tile, !(GetAirport(p1)->flags & AirportFTAClass::AIRPLANES) ? STATIONNAMING_HELIPORT : STATIONNAMING_AIRPORT);
+			st->string_id = GenerateStationName(st, tile, !(GetAirport(airport_type)->flags & AirportFTAClass::AIRPLANES) ? STATIONNAMING_HELIPORT : STATIONNAMING_AIRPORT);
 
 			if (Company::IsValidID(_current_company)) {
 				SetBit(st->town->have_ratings, _current_company);
@@ -2205,7 +2205,7 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		nearest->noise_reached += newnoise_level;
 
 		st->AddFacility(FACIL_AIRPORT, tile);
-		st->airport.type = (byte)p1;
+		st->airport.type = airport_type;
 		st->airport.flags = 0;
 
 		st->rect.BeforeAddRect(tile, w, h, StationRect::ADD_TRY);
