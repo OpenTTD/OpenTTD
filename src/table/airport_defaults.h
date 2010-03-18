@@ -404,7 +404,7 @@ extern const AirportSpec _origin_airport_specs[] = {
 	AS_GENERIC(&_airportfta_oilrig, NULL, 0, NULL, 0, 1, 1, 0, 4, 0, 0, ATP_TTDP_OILRIG, APC_HELIPORT, STR_NULL, false),
 };
 
-assert_compile(NUM_AIRPORTS == lengthof(_origin_airport_specs));
+assert_compile(NEW_AIRPORT_OFFSET == lengthof(_origin_airport_specs));
 
 #undef AS
 #undef AS_ND

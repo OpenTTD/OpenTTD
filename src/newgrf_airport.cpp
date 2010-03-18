@@ -63,7 +63,7 @@ void AirportSpec::ResetAirports()
 {
 	extern const AirportSpec _origin_airport_specs[];
 	memset(&AirportSpec::specs, 0, sizeof(AirportSpec::specs));
-	memcpy(&AirportSpec::specs, &_origin_airport_specs, sizeof(AirportSpec) * NUM_AIRPORTS);
+	memcpy(&AirportSpec::specs, &_origin_airport_specs, sizeof(AirportSpec) * NEW_AIRPORT_OFFSET);
 }
 
 /**
