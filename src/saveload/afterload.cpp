@@ -594,8 +594,8 @@ bool AfterLoadGame()
 	if (CheckSavegameVersion(139)) {
 		Station *st;
 		FOR_ALL_STATIONS(st) {
-			if (st->airport.tile != INVALID_TILE && st->airport_type == 15) {
-				st->airport_type = AT_OILRIG;
+			if (st->airport.tile != INVALID_TILE && st->airport.type == 15) {
+				st->airport.type = AT_OILRIG;
 			}
 		}
 	}
@@ -734,7 +734,7 @@ bool AfterLoadGame()
 							 * It was 3 (till 2.2) and later 5 (till 5.1).
 							 * Setting it unconditionally does not hurt.
 							 */
-							Station::GetByTile(t)->airport_type = AT_OILRIG;
+							Station::GetByTile(t)->airport.type = AT_OILRIG;
 						} else {
 							DeleteOilRig(t);
 						}
@@ -2095,8 +2095,8 @@ bool AfterLoadGame()
 		Station *st;
 		FOR_ALL_STATIONS(st) {
 			if (st->airport.tile != INVALID_TILE) {
-				st->airport.w = st->GetAirportSpec()->size_x;
-				st->airport.h = st->GetAirportSpec()->size_y;
+				st->airport.w = st->airport.GetSpec()->size_x;
+				st->airport.h = st->airport.GetSpec()->size_y;
 			}
 		}
 	}

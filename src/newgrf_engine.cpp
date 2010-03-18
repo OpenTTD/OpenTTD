@@ -196,7 +196,7 @@ static byte MapAircraftMovementState(const Aircraft *v)
 	const Station *st = GetTargetAirportIfValid(v);
 	if (st == NULL) return AMS_TTDP_FLIGHT_TO_TOWER;
 
-	const AirportFTAClass *afc = st->Airport();
+	const AirportFTAClass *afc = st->airport.GetFTA();
 	uint16 amdflag = afc->MovingData(v->pos)->flag;
 
 	switch (v->state) {
@@ -600,7 +600,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 				const Station *st = GetTargetAirportIfValid(Aircraft::From(v));
 
 				if (st != NULL && st->airport.tile != INVALID_TILE) {
-					airporttype = st->GetAirportSpec()->ttd_airport_type;
+					airporttype = st->airport.GetSpec()->ttd_airport_type;
 				}
 
 				return (altitude << 8) | airporttype;

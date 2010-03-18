@@ -535,7 +535,7 @@ CommandCost CmdInsertOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 					ret.SetGlobalErrorMessage();
 					if (ret.Failed()) return ret;
 
-					if (!CanVehicleUseStation(v, st) || st->GetAirportSpec()->nof_depots == 0) {
+					if (!CanVehicleUseStation(v, st) || st->airport.GetSpec()->nof_depots == 0) {
 						return CMD_ERROR;
 					}
 				} else {

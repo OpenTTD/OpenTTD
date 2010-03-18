@@ -96,7 +96,7 @@
 	if (st->owner != _current_company) return -1;
 	if ((st->facilities & FACIL_AIRPORT) == 0) return -1;
 
-	return st->GetAirportSpec()->nof_depots;
+	return st->airport.GetSpec()->nof_depots;
 }
 
 /* static */ TileIndex AIAirport::GetHangarOfAirport(TileIndex tile)
@@ -120,7 +120,7 @@
 
 	if (!AIStation::HasStationType(station_id, AIStation::STATION_AIRPORT)) return AT_INVALID;
 
-	return (AirportType)::Station::Get(station_id)->airport_type;
+	return (AirportType)::Station::Get(station_id)->airport.type;
 }
 
 

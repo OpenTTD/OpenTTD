@@ -626,8 +626,8 @@ void Vehicle::PreDestructor()
 		Aircraft *a = Aircraft::From(this);
 		Station *st = GetTargetAirportIfValid(a);
 		if (st != NULL) {
-			const AirportFTA *layout = st->Airport()->layout;
-			CLRBITS(st->airport_flags, layout[a->previous_pos].block | layout[a->pos].block);
+			const AirportFTA *layout = st->airport.GetFTA()->layout;
+			CLRBITS(st->airport.flags, layout[a->previous_pos].block | layout[a->pos].block);
 		}
 	}
 
@@ -1874,7 +1874,7 @@ bool CanVehicleUseStation(EngineID engine_type, const Station *st)
 
 		case VEH_AIRCRAFT:
 			return (st->facilities & FACIL_AIRPORT) != 0 &&
-					(st->Airport()->flags & (e->u.air.subtype & AIR_CTOL ? AirportFTAClass::AIRPLANES : AirportFTAClass::HELICOPTERS)) != 0;
+					(st->airport.GetFTA()->flags & (e->u.air.subtype & AIR_CTOL ? AirportFTAClass::AIRPLANES : AirportFTAClass::HELICOPTERS)) != 0;
 
 		default:
 			return false;

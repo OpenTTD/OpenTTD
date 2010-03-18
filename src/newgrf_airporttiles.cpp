@@ -225,7 +225,7 @@ static void AirportTileResolver(ResolverObject *res, StationGfx gfx, TileIndex t
 
 	assert(st != NULL);
 	res->psa                  = NULL;
-	res->u.airport.airport_id = st->airport_type;
+	res->u.airport.airport_id = st->airport.type;
 	res->u.airport.st         = st;
 	res->u.airport.tile       = tile;
 

@@ -172,14 +172,14 @@ static const SaveLoad _old_station_desc[] = {
 	    SLE_VAR(Station, delete_ctr,                 SLE_UINT8),
 	    SLE_VAR(Station, owner,                      SLE_UINT8),
 	    SLE_VAR(Station, facilities,                 SLE_UINT8),
-	    SLE_VAR(Station, airport_type,               SLE_UINT8),
+	    SLE_VAR(Station, airport.type,               SLE_UINT8),
 
 	SLE_CONDNULL(2, 0, 5),  ///< Truck/bus stop status
 	SLE_CONDNULL(1, 0, 4),  ///< Blocked months
 
-	SLE_CONDVAR(Station, airport_flags,              SLE_VAR_U64 | SLE_FILE_U16,  0,  2),
-	SLE_CONDVAR(Station, airport_flags,              SLE_VAR_U64 | SLE_FILE_U32,  3, 45),
-	SLE_CONDVAR(Station, airport_flags,              SLE_UINT64,                 46, SL_MAX_VERSION),
+	SLE_CONDVAR(Station, airport.flags,              SLE_VAR_U64 | SLE_FILE_U16,  0,  2),
+	SLE_CONDVAR(Station, airport.flags,              SLE_VAR_U64 | SLE_FILE_U32,  3, 45),
+	SLE_CONDVAR(Station, airport.flags,              SLE_UINT64,                 46, SL_MAX_VERSION),
 
 	SLE_CONDNULL(2, 0, 25), ///< last-vehicle
 	SLE_CONDVAR(Station, last_vehicle_type,          SLE_UINT8,                  26, SL_MAX_VERSION),
@@ -334,8 +334,8 @@ static const SaveLoad _station_desc[] = {
 	      SLE_VAR(Station, airport.tile,               SLE_UINT32),
 	  SLE_CONDVAR(Station, airport.w,                  SLE_FILE_U8 | SLE_VAR_U16, 140, SL_MAX_VERSION),
 	  SLE_CONDVAR(Station, airport.h,                  SLE_FILE_U8 | SLE_VAR_U16, 140, SL_MAX_VERSION),
-	      SLE_VAR(Station, airport_type,               SLE_UINT8),
-	      SLE_VAR(Station, airport_flags,              SLE_UINT64),
+	      SLE_VAR(Station, airport.type,               SLE_UINT8),
+	      SLE_VAR(Station, airport.flags,              SLE_UINT64),
 
 	      SLE_VAR(Station, indtype,                    SLE_UINT8),
 

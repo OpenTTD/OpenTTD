@@ -391,7 +391,7 @@ const AirportFTAClass *GetAirport(const byte airport_type)
 byte GetVehiclePosOnBuild(TileIndex hangar_tile)
 {
 	const Station *st = Station::GetByTile(hangar_tile);
-	const AirportFTAClass *apc = st->Airport();
+	const AirportFTAClass *apc = st->airport.GetFTA();
 	/* When we click on hangar we know the tile it is on. By that we know
 	 * its position in the array of depots the airport has.....we can search
 	 * layout for #th position of depot. Since layout must start with a listing

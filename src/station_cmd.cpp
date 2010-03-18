@@ -66,7 +66,7 @@ bool IsHangar(TileIndex t)
 	if (!IsAirport(t)) return false;
 
 	const Station *st = Station::GetByTile(t);
-	const AirportSpec *as = st->GetAirportSpec();
+	const AirportSpec *as = st->airport.GetSpec();
 
 	for (uint i = 0; i < as->nof_depots; i++) {
 		if (st->GetHangarTile(i) == t) return true;
@@ -413,7 +413,7 @@ void Station::UpdateVirtCoord()
 	Point pt = RemapCoords2(TileX(this->xy) * TILE_SIZE, TileY(this->xy) * TILE_SIZE);
 
 	pt.y -= 32;
-	if ((this->facilities & FACIL_AIRPORT) && this->airport_type == AT_OILRIG) pt.y -= 16;
+	if ((this->facilities & FACIL_AIRPORT) && this->airport.type == AT_OILRIG) pt.y -= 16;
 
 	SetDParam(0, this->index);
 	SetDParam(1, this->facilities);
@@ -2074,7 +2074,7 @@ void UpdateAirportsNoise()
 
 	FOR_ALL_STATIONS(st) {
 		if (st->airport.tile != INVALID_TILE) {
-			const AirportSpec *as = st->GetAirportSpec();
+			const AirportSpec *as = st->airport.GetSpec();
 			Town *nearest = AirportGetNearestTown(as, st->airport.tile);
 			nearest->noise_reached += GetAirportNoiseLevelForTown(as, nearest->xy, st->airport.tile);
 		}
@@ -2142,7 +2142,7 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		uint num = 0;
 		const Station *st;
 		FOR_ALL_STATIONS(st) {
-			if (st->town == t && (st->facilities & FACIL_AIRPORT) && st->airport_type != AT_OILRIG) num++;
+			if (st->town == t && (st->facilities & FACIL_AIRPORT) && st->airport.type != AT_OILRIG) num++;
 		}
 		if (num >= 2) {
 			authority_refuse_message = STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT;
@@ -2205,8 +2205,8 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		nearest->noise_reached += newnoise_level;
 
 		st->AddFacility(FACIL_AIRPORT, tile);
-		st->airport_type = (byte)p1;
-		st->airport_flags = 0;
+		st->airport.type = (byte)p1;
+		st->airport.flags = 0;
 
 		st->rect.BeforeAddRect(tile, w, h, StationRect::ADD_TRY);
 
@@ -2293,7 +2293,7 @@ static CommandCost RemoveAirport(TileIndex tile, DoCommandFlag flags)
 	}
 
 	if (flags & DC_EXEC) {
-		const AirportSpec *as = st->GetAirportSpec();
+		const AirportSpec *as = st->airport.GetSpec();
 		for (uint i = 0; i < as->nof_depots; ++i) {
 			DeleteWindowById(
 				WC_VEHICLE_DEPOT, st->GetHangarTile(i)
@@ -3375,7 +3375,7 @@ void BuildOilRig(TileIndex tile)
 	MakeOilrig(tile, st->index, GetWaterClass(tile));
 
 	st->owner = OWNER_NONE;
-	st->airport_type = AT_OILRIG;
+	st->airport.type = AT_OILRIG;
 	st->airport.Add(tile);
 	st->dock_tile = tile;
 	st->facilities = FACIL_AIRPORT | FACIL_DOCK;
@@ -3406,7 +3406,7 @@ void DeleteOilRig(TileIndex tile)
 	st->dock_tile = INVALID_TILE;
 	st->airport.Clear();
 	st->facilities &= ~(FACIL_AIRPORT | FACIL_DOCK);
-	st->airport_flags = 0;
+	st->airport.flags = 0;
 
 	st->rect.AfterRemoveTile(st, tile);
 

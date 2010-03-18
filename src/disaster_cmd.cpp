@@ -234,7 +234,7 @@ static bool DisasterTick_Zeppeliner(DisasterVehicle *v)
 
 		if (IsValidTile(v->tile) && IsAirportTile(v->tile)) {
 			Station *st = Station::GetByTile(v->tile);
-			CLRBITS(st->airport_flags, RUNWAY_IN_block);
+			CLRBITS(st->airport.flags, RUNWAY_IN_block);
 			AI::NewEvent(GetTileOwner(v->tile), new AIEventDisasterZeppelinerCleared(st->index));
 		}
 
@@ -271,7 +271,7 @@ static bool DisasterTick_Zeppeliner(DisasterVehicle *v)
 	}
 
 	if (IsValidTile(v->tile) && IsAirportTile(v->tile)) {
-		SETBITS(Station::GetByTile(v->tile)->airport_flags, RUNWAY_IN_block);
+		SETBITS(Station::GetByTile(v->tile)->airport.flags, RUNWAY_IN_block);
 	}
 
 	return true;
@@ -680,7 +680,7 @@ static void Disaster_Zeppeliner_Init()
 
 	Station *st;
 	FOR_ALL_STATIONS(st) {
-		if (st->airport.tile != INVALID_TILE && (st->airport_type == AT_SMALL || st->airport_type == AT_LARGE)) {
+		if (st->airport.tile != INVALID_TILE && (st->airport.type == AT_SMALL || st->airport.type == AT_LARGE)) {
 			x = (TileX(st->airport.tile) + 2) * TILE_SIZE;
 			break;
 		}

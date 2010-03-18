@@ -45,6 +45,25 @@ struct GoodsEntry {
 	StationCargoList cargo; ///< The cargo packets of cargo waiting in this station
 };
 
+/** All airport-related information. Only valid if tile != INVALID_TILE. */
+struct Airport : public TileArea {
+	Airport() : TileArea(INVALID_TILE, 0, 0) {}
+
+	uint64 flags;       ///< stores which blocks on the airport are taken. was 16 bit earlier on, then 32
+	byte type;
+
+	const AirportSpec *GetSpec() const
+	{
+		if (this->tile == INVALID_TILE) return &AirportSpec::dummy;
+		return AirportSpec::Get(this->type);
+	}
+
+	const AirportFTAClass *GetFTA() const
+	{
+		if (this->tile == INVALID_TILE) return GetAirport(AT_DUMMY);
+		return this->GetSpec()->fsm;
+	}
+};
 
 typedef SmallVector<Industry *, 2> IndustryVector;
 
@@ -58,24 +77,12 @@ public:
 
 	RoadStop *GetPrimaryRoadStop(const struct RoadVehicle *v) const;
 
-	const AirportFTAClass *Airport() const
-	{
-		if (airport.tile == INVALID_TILE) return GetAirport(AT_DUMMY);
-		return GetAirport(airport_type);
-	}
-
-	const AirportSpec *GetAirportSpec() const
-	{
-		if (airport.tile == INVALID_TILE) return &AirportSpec::dummy;
-		return AirportSpec::Get(this->airport_type);
-	}
-
 	RoadStop *bus_stops;    ///< All the road stops
 	TileArea bus_station;   ///< Tile area the bus 'station' part covers
 	RoadStop *truck_stops;  ///< All the truck stops
 	TileArea truck_station; ///< Tile area the truck 'station' part covers
 
-	TileArea airport;       ///< Tile area the airport covers
+	Airport airport;        ///< Tile area the airport covers
 	TileIndex dock_tile;    ///< The location of the dock
 
 	IndustryType indtype;   ///< Industry type to get the name from
@@ -84,9 +91,6 @@ public:
 
 	byte time_since_load;
 	byte time_since_unload;
-	byte airport_type;
-
-	uint64 airport_flags;   ///< stores which blocks on the airport are taken. was 16 bit earlier on, then 32
 
 	byte last_vehicle_type;
 	std::list<Vehicle *> loading_vehicles;
@@ -130,8 +134,8 @@ public:
 	FORCEINLINE TileIndex GetHangarTile(uint hangar_num) const
 	{
 		assert(this->airport.tile != INVALID_TILE);
-		assert(hangar_num < this->GetAirportSpec()->nof_depots);
-		return this->airport.tile + ToTileIndexDiff(this->GetAirportSpec()->depot_table[hangar_num]);
+		assert(hangar_num < this->airport.GetSpec()->nof_depots);
+		return this->airport.tile + ToTileIndexDiff(this->airport.GetSpec()->depot_table[hangar_num]);
 	}
 
 	/* virtual */ uint32 GetNewGRFVariable(const ResolverObject *object, byte variable, byte parameter, bool *available) const;

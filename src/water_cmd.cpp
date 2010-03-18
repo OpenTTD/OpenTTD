@@ -739,7 +739,7 @@ static void FloodVehicles(TileIndex tile)
 
 	if (IsAirportTile(tile)) {
 		const Station *st = Station::GetByTile(tile);
-		z = 1 + st->Airport()->delta_z;
+		z = 1 + st->airport.GetFTA()->delta_z;
 		TILE_AREA_LOOP(tile, st->airport) {
 			if (st->TileBelongsToAirport(tile)) FindVehicleOnPos(tile, &z, &FloodVehicleProc);
 		}
@@ -784,7 +784,7 @@ static void FloodVehicle(Vehicle *v)
 		 * that station has a big z_offset for the aircraft. */
 		if (!IsAirportTile(v->tile) || GetTileMaxZ(v->tile) != 0) return;
 		const Station *st = Station::GetByTile(v->tile);
-		const AirportFTAClass *airport = st->Airport();
+		const AirportFTAClass *airport = st->airport.GetFTA();
 
 		if (v->z_pos != airport->delta_z + 1) return;
 	} else {
