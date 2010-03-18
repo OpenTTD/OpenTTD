@@ -1,7 +1,7 @@
 ##name Slovak
 ##ownname Slovensky
 ##isocode sk_SK
-##plural 6
+##plural 10
 ##textdir ltr
 ##digitsep .
 ##digitsepcur .
