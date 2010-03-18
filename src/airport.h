@@ -39,6 +39,7 @@ enum {
 	AT_OILRIG        =   9,
 	NEW_AIRPORT_OFFSET = 10,
 	NUM_AIRPORTS     =  128,
+	AT_INVALID       = 254,
 	AT_DUMMY         = 255
 };
 

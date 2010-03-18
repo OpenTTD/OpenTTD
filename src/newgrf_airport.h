@@ -15,6 +15,7 @@
 #include "date_type.h"
 #include "map_type.h"
 #include "strings_type.h"
+#include "newgrf_commons.h"
 
 /* Copy from station_map.h */
 typedef byte StationGfx;
@@ -65,6 +66,7 @@ struct AirportSpec {
 	AirportClassID aclass;                 ///< the class to which this airport type belongs
 	/* Newgrf data */
 	bool enabled;                          ///< entity still avaible (by default true).newgrf can disable it, though
+	GRFFileProps grf_prop;                 ///< properties related the the grf file
 
 	static const AirportSpec *Get(byte type);
 	static AirportSpec *GetWithoutOverride(byte type);

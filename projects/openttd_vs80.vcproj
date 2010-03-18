@@ -2084,6 +2084,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\saveload\airport_sl.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\saveload\animated_tile_sl.cpp"
 				>
 			</File>

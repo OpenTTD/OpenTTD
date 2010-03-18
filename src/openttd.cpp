@@ -313,6 +313,7 @@ static void InitializeDynamicVariables()
 	_house_mngr.ResetMapping();
 	_industry_mngr.ResetMapping();
 	_industile_mngr.ResetMapping();
+	_airport_mngr.ResetMapping();
 	_airporttile_mngr.ResetMapping();
 }
 

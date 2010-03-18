@@ -378,7 +378,7 @@ static AirportTileTable *_tile_table_helistation[] = {
 
 /** General AirportSpec definition. */
 #define AS_GENERIC(fsm, att, att_len, depot_tbl, num_depots, size_x, size_y, noise, catchment, min_year, max_year, ttdpatch_type, class_id, name, enabled) \
-	{fsm, att, att_len, depot_tbl, num_depots, size_x, size_y, noise, catchment, min_year, max_year, name, ttdpatch_type, class_id, enabled}
+	{fsm, att, att_len, depot_tbl, num_depots, size_x, size_y, noise, catchment, min_year, max_year, name, ttdpatch_type, class_id, enabled, {AT_INVALID, 0, NULL, NULL, AT_INVALID}}
 
 /** AirportSpec definition for airports without any depot. */
 #define AS_ND(ap_name, size_x, size_y, min_year, max_year, catchment, noise, ttdpatch_type, class_id, name) \

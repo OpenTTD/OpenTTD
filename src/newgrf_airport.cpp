@@ -16,11 +16,14 @@
 #include "settings_type.h"
 #include "core/alloc_type.hpp"
 #include "newgrf.h"
+#include "newgrf_commons.h"
 #include "table/strings.h"
 
 static AirportClass _airport_classes[APC_MAX];
 
-AirportSpec AirportSpec::dummy = {NULL, NULL, 0, NULL, 0, 0, 0, 0, 0, MIN_YEAR, MIN_YEAR, STR_NULL, ATP_TTDP_LARGE, APC_BEGIN, false};
+AirportOverrideManager _airport_mngr(NEW_AIRPORT_OFFSET, NUM_AIRPORTS, AT_INVALID);
+
+AirportSpec AirportSpec::dummy = {NULL, NULL, 0, NULL, 0, 0, 0, 0, 0, MIN_YEAR, MIN_YEAR, STR_NULL, ATP_TTDP_LARGE, APC_BEGIN, false, {AT_INVALID, 0, NULL, NULL, AT_INVALID}};
 
 AirportSpec AirportSpec::specs[NUM_AIRPORTS];
 
@@ -33,7 +36,14 @@ AirportSpec AirportSpec::specs[NUM_AIRPORTS];
 /* static */ const AirportSpec *AirportSpec::Get(byte type)
 {
 	assert(type < lengthof(AirportSpec::specs));
-	return &AirportSpec::specs[type];
+	const AirportSpec *as = &AirportSpec::specs[type];
+	if (type >= NEW_AIRPORT_OFFSET && !as->enabled) {
+		byte subst_id = _airport_mngr.GetSubstituteID(type);
+		if (subst_id == AT_INVALID) return as;
+		as = &AirportSpec::specs[subst_id];
+	}
+	if (as->grf_prop.override != AT_INVALID) return &AirportSpec::specs[as->grf_prop.override];
+	return as;
 }
 
 /**
@@ -64,6 +74,8 @@ void AirportSpec::ResetAirports()
 	extern const AirportSpec _origin_airport_specs[];
 	memset(&AirportSpec::specs, 0, sizeof(AirportSpec::specs));
 	memcpy(&AirportSpec::specs, &_origin_airport_specs, sizeof(AirportSpec) * NEW_AIRPORT_OFFSET);
+
+	_airport_mngr.ResetOverride();
 }
 
 /**
@@ -201,5 +213,29 @@ void ResetAirportClasses()
 
 	id = AllocateAirportClass('HELI');
 	SetAirportClassName(id, STR_AIRPORT_CLASS_HELIPORTS);
+}
+
+void AirportOverrideManager::SetEntitySpec(AirportSpec *as)
+{
+	byte airport_id = this->AddEntityID(as->grf_prop.local_id, as->grf_prop.grffile->grfid, as->grf_prop.subst_id);
+
+	if (airport_id == invalid_ID) {
+		grfmsg(1, "Airport.SetEntitySpec: Too many airports allocated. Ignoring.");
+		return;
+	}
+
+	memcpy(AirportSpec::GetWithoutOverride(airport_id), as, sizeof(*as));
+
+	/* Now add the overrides. */
+	for (int i = 0; i < max_offset; i++) {
+		AirportSpec *overridden_as = AirportSpec::GetWithoutOverride(i);
+
+		if (entity_overrides[i] != as->grf_prop.local_id || grfid_overrides[i] != as->grf_prop.grffile->grfid) continue;
+
+		overridden_as->grf_prop.override = airport_id;
+		overridden_as->enabled = false;
+		entity_overrides[i] = invalid_ID;
+		grfid_overrides[i] = 0;
+	}
 }
 

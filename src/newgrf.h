@@ -104,6 +104,7 @@ struct GRFFile {
 	HouseSpec **housespec;
 	IndustrySpec **industryspec;
 	IndustryTileSpec **indtspec;
+	struct AirportSpec **airportspec;
 	struct AirportTileSpec **airtspec;
 
 	uint32 param[0x80];

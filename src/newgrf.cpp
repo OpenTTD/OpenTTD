@@ -6258,6 +6258,15 @@ static void FinaliseAirportsArray()
 {
 	const GRFFile * const *end = _grf_files.End();
 	for (GRFFile **file = _grf_files.Begin(); file != end; file++) {
+		AirportSpec **&airportspec = (*file)->airportspec;
+		if (airportspec != NULL) {
+			for (int i = 0; i < NUM_AIRPORTS; i++) {
+				if (airportspec[i] != NULL && airportspec[i]->enabled) {
+					_airport_mngr.SetEntitySpec(airportspec[i]);
+				}
+			}
+		}
+
 		AirportTileSpec **&airporttilespec = (*file)->airtspec;
 		if (airporttilespec != NULL) {
 			for (int i = 0; i < NUM_AIRPORTTILES; i++) {

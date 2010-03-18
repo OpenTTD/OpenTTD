@@ -97,6 +97,15 @@ public:
 	void SetEntitySpec(const IndustryTileSpec *indts);
 };
 
+struct AirportSpec;
+class AirportOverrideManager : public OverrideManagerBase {
+public:
+	AirportOverrideManager(uint16 offset, uint16 maximum, uint16 invalid) :
+			OverrideManagerBase(offset, maximum, invalid) {}
+
+	void SetEntitySpec(AirportSpec *inds);
+};
+
 struct AirportTileSpec;
 class AirportTileOverrideManager : public OverrideManagerBase {
 protected:
@@ -111,6 +120,7 @@ public:
 extern HouseOverrideManager _house_mngr;
 extern IndustryOverrideManager _industry_mngr;
 extern IndustryTileOverrideManager _industile_mngr;
+extern AirportOverrideManager _airport_mngr;
 extern AirportTileOverrideManager _airporttile_mngr;
 
 uint32 GetTerrainType(TileIndex tile);

@@ -450,6 +450,7 @@ waypoint_cmd.cpp
 # Save/Load handlers
 saveload/afterload.cpp
 saveload/ai_sl.cpp
+saveload/airport_sl.cpp
 saveload/animated_tile_sl.cpp
 saveload/autoreplace_sl.cpp
 saveload/cargopacket_sl.cpp
