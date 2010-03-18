@@ -13,6 +13,7 @@
 #define AIRPORT_H
 
 #include "direction_type.h"
+#include "tile_type.h"
 
 /** Some airport-related constants */
 enum {
@@ -186,5 +187,6 @@ struct AirportFTA {
 };
 
 const AirportFTAClass *GetAirport(const byte airport_type);
+byte GetVehiclePosOnBuild(TileIndex hangar_tile);
 
 #endif /* AIRPORT_H */

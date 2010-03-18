@@ -315,20 +315,7 @@ CommandCost CmdBuildAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 
 		_new_vehicle_id = v->index;
 
-		/* When we click on hangar we know the tile it is on. By that we know
-		 * its position in the array of depots the airport has.....we can search
-		 * layout for #th position of depot. Since layout must start with a listing
-		 * of all depots, it is simple */
-		for (uint i = 0;; i++) {
-			const Station *st = Station::GetByTile(tile);
-			const AirportFTAClass *apc = st->Airport();
-
-			if (st->GetHangarTile(i) == tile) {
-				assert(apc->layout[i].heading == HANGAR);
-				v->pos = apc->layout[i].position;
-				break;
-			}
-		}
+		v->pos = GetVehiclePosOnBuild(tile);
 
 		v->state = HANGAR;
 		v->previous_pos = v->pos;
