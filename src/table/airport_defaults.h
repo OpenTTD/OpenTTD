@@ -16,7 +16,7 @@
  * Definition of an airport tiles layout.
  * @param x offset x of this tile
  * @param y offset y of this tile
- * @param m AirportGfx of the tile
+ * @param m StationGfx of the tile
  * @see _airport_specs
  * @see AirportTileTable
  */

@@ -768,7 +768,6 @@ struct BuildVehicleWindow : Window {
 	VehicleType vehicle_type;
 	union {
 		RailTypeByte railtype;
-		AirportFTAClass::Flags flags;
 		RoadTypes roadtypes;
 	} filter;
 	bool descending_sort_order;
@@ -832,10 +831,7 @@ struct BuildVehicleWindow : Window {
 			case VEH_ROAD:
 				this->filter.roadtypes = (tile == INVALID_TILE) ? ROADTYPES_ALL : GetRoadTypes(tile);
 			case VEH_SHIP:
-				break;
 			case VEH_AIRCRAFT:
-				this->filter.flags =
-					tile == INVALID_TILE ? AirportFTAClass::ALL : Station::GetByTile(tile)->Airport()->flags;
 				break;
 		}
 

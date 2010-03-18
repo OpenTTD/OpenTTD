@@ -187,6 +187,4 @@ struct AirportFTA {
 
 const AirportFTAClass *GetAirport(const byte airport_type);
 
-extern const byte * const _airport_sections[];
-
 #endif /* AIRPORT_H */
