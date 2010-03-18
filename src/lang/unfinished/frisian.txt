@@ -286,9 +286,9 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Lit alge
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Lit grafyken sjen
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Lit de bedriuwskompetysjetabel sjen
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Betelje de bou fan in nije yndustry
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Lit in list sjen fan de treinen fan dit bedriuw
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Lit in list sjen fan de auto's fan dit bedriuw
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Lit in list sjen fan de skepen fan dit bedriuw
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Lit in list sjen fan de treinen fan dit bedriuw. Ctrl + klik ipent of slût de groep/fiertúg list sjen
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Lit in list sjen fan de auto's fan dit bedriuw. Ctrl + klik ipent of slût de groep/fiertúg list sjen
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Lit in list sjen fan de skepen fan dit bedriuw. Ctrl + klik ipent of slût de groep/fiertúg list sjen
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Lit in list sjen fan de fleantúgen fan dit bedriuw.
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Zoom it byld yn
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Zoom it byld út
@@ -959,7 +959,7 @@ STR_INTRO_GAME_OPTIONS                                          :{BLACK}Spul Ops
 STR_INTRO_DIFFICULTY                                            :{BLACK}Moeilikhyd ({STRING})
 STR_INTRO_QUIT                                                  :{BLACK}Ôfslúte
 
-STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Begjin in nei spul
+STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Begjin in nei spul. Ctrl + klik slaat kaartynstelling oer
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Laad in opslein spul
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Begjin in nij spul, mei de hichtekaart as lânskip
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Start in nei spul, mei in selsmakke lânskip
