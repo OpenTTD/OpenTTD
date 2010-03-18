@@ -2491,6 +2491,120 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 	return ret;
 }
 
+/**
+ * Create a copy of the tile table so it can be freed later
+ * without problems.
+ * @param as The AirportSpec to copy the arrays of.
+ */
+static void DuplicateTileTable(AirportSpec *as)
+{
+	AirportTileTable **table_list = MallocT<AirportTileTable*>(as->num_table);
+	for (int i = 0; i < as->num_table; i++) {
+		uint num_tiles = 1;
+		const AirportTileTable *it = as->table[0];
+		do {
+			num_tiles++;
+		} while ((++it)->ti.x != -0x80);
+		table_list[i] = MallocT<AirportTileTable>(num_tiles);
+		MemCpyT(table_list[i], as->table[i], num_tiles);
+	}
+	as->table = table_list;
+	TileIndexDiffC *depot_table = MallocT<TileIndexDiffC>(as->nof_depots);
+	MemCpyT(depot_table, as->depot_table, as->nof_depots);
+	as->depot_table = depot_table;
+}
+
+static ChangeInfoResult AirportChangeInfo(uint airport, int numinfo, int prop, ByteReader *buf)
+{
+	ChangeInfoResult ret = CIR_SUCCESS;
+
+	if (airport + numinfo > NUM_AIRPORTS) {
+		grfmsg(1, "AirportChangeInfo: Too many airports, trying id (%u), max (%u). Ignoring.", airport + numinfo, NUM_AIRPORTS);
+		return CIR_INVALID_ID;
+	}
+
+	grfmsg(1, "AirportChangeInfo: newid %u", airport);
+
+	/* Allocate industry specs if they haven't been allocated already. */
+	if (_cur_grffile->airportspec == NULL) {
+		_cur_grffile->airportspec = CallocT<AirportSpec*>(NUM_AIRPORTS);
+	}
+
+	for (int i = 0; i < numinfo; i++) {
+		AirportSpec *as = _cur_grffile->airportspec[airport + i];
+
+		if (as == NULL && prop != 0x08 && prop != 0x09) {
+			grfmsg(2, "AirportChangeInfo: Attempt to modify undefined airport %u, ignoring", airport + i);
+			return CIR_INVALID_ID;
+		}
+
+		switch (prop) {
+			case 0x08: { // Modify original airport
+				byte subs_id = buf->ReadByte();
+
+				if (subs_id == 0xFF) {
+					/* Instead of defining a new airport, an airport id
+					 * of 0xFF disables the old airport with the current id. */
+					AirportSpec::GetWithoutOverride(airport + i)->enabled = false;
+					continue;
+				} else if (subs_id >= NEW_AIRPORT_OFFSET) {
+					/* The substitute id must be one of the original airports. */
+					grfmsg(2, "AirportChangeInfo: Attempt to use new airport %u as substitute airport for %u. Ignoring.", subs_id, airport + i);
+					continue;
+				}
+
+				AirportSpec **spec = &_cur_grffile->airportspec[airport + i];
+				/* Allocate space for this airport.
+				 * Only need to do it once. If ever it is called again, it should not
+				 * do anything */
+				if (*spec == NULL) {
+					*spec = MallocT<AirportSpec>(1);
+					as = *spec;
+
+					memcpy(as, AirportSpec::GetWithoutOverride(subs_id), sizeof(*as));
+					as->enabled = true;
+					as->grf_prop.local_id = airport + i;
+					as->grf_prop.subst_id = subs_id;
+					as->grf_prop.grffile = _cur_grffile;
+					/* override the default airport */
+					_airport_mngr.Add(airport + i, _cur_grffile->grfid, subs_id);
+					/* Create a copy of the original tiletable so it can be freed later. */
+					DuplicateTileTable(as);
+				}
+			} break;
+
+			case 0x0C:
+				as->min_year = buf->ReadWord();
+				as->max_year = buf->ReadWord();
+				if (as->max_year == 0xFFFF) as->max_year = MAX_YEAR;
+				break;
+
+			case 0x0D:
+				as->ttd_airport_type = (TTDPAirportType)buf->ReadByte();
+				break;
+
+			case 0x0E:
+				as->catchment = Clamp(buf->ReadByte(), 1, MAX_CATCHMENT);
+				break;
+
+			case 0x0F:
+				as->noise_level = buf->ReadByte();
+				break;
+
+			case 0x10:
+				as->name = buf->ReadWord();
+				_string_to_grf_mapping[&as->name] = _cur_grffile->grfid;
+				break;
+
+			default:
+				ret = CIR_UNKNOWN;
+				break;
+		}
+	}
+
+	return ret;
+}
+
 static ChangeInfoResult RailTypeChangeInfo(uint id, int numinfo, int prop, ByteReader *buf)
 {
 	ChangeInfoResult ret = CIR_SUCCESS;
@@ -2797,7 +2911,7 @@ static void FeatureChangeInfo(ByteReader *buf)
 		/* GSF_INDUSTRIES */   IndustriesChangeInfo,
 		/* GSF_CARGOS */       NULL, // Cargo is handled during reservation
 		/* GSF_SOUNDFX */      SoundEffectChangeInfo,
-		/* GSF_AIRPORTS */     NULL,
+		/* GSF_AIRPORTS */     AirportChangeInfo,
 		/* GSF_SIGNALS */      NULL,
 		/* GSF_OBJECTS */      NULL,
 		/* GSF_RAILTYPES */    RailTypeChangeInfo,
@@ -3133,6 +3247,7 @@ static void NewSpriteGroup(ByteReader *buf)
 				case GSF_STATION:
 				case GSF_CANAL:
 				case GSF_CARGOS:
+				case GSF_AIRPORTS:
 				case GSF_RAILTYPES:
 				{
 					byte sprites     = _cur_grffile->spriteset_numents;
@@ -3646,6 +3761,37 @@ static void RailTypeMapSpriteGroup(ByteReader *buf, uint8 idcount)
 	buf->ReadWord();
 }
 
+static void AirportMapSpriteGroup(ByteReader *buf, uint8 idcount)
+{
+	uint8 *airports = AllocaM(uint8, idcount);
+	for (uint i = 0; i < idcount; i++) {
+		airports[i] = buf->ReadByte();
+	}
+
+	/* Skip the cargo type section, we only care about the default group */
+	uint8 cidcount = buf->ReadByte();
+	buf->Skip(cidcount * 3);
+
+	uint16 groupid = buf->ReadWord();
+	if (!IsValidGroupID(groupid, "AirportMapSpriteGroup")) return;
+
+	if (_cur_grffile->airportspec == NULL) {
+		grfmsg(1, "AirportMapSpriteGroup: No airports defined, skipping");
+		return;
+	}
+
+	for (uint i = 0; i < idcount; i++) {
+		AirportSpec *as = _cur_grffile->airportspec[airports[i]];
+
+		if (as == NULL) {
+			grfmsg(1, "AirportMapSpriteGroup: Airport %d undefined, skipping", airports[i]);
+			continue;
+		}
+
+		as->grf_prop.spritegroup = _cur_grffile->spritegroups[groupid];
+	}
+}
+
 static void AirportTileMapSpriteGroup(ByteReader *buf, uint8 idcount)
 {
 	uint8 *airptiles = AllocaM(uint8, idcount);
@@ -3750,6 +3896,10 @@ static void FeatureMapSpriteGroup(ByteReader *buf)
 
 		case GSF_CARGOS:
 			CargoMapSpriteGroup(buf, idcount);
+			return;
+
+		case GSF_AIRPORTS:
+			AirportMapSpriteGroup(buf, idcount);
 			return;
 
 		case GSF_RAILTYPES:
@@ -5777,6 +5927,26 @@ static void ResetCustomAirports()
 {
 	const GRFFile * const *end = _grf_files.End();
 	for (GRFFile **file = _grf_files.Begin(); file != end; file++) {
+		AirportSpec **aslist = (*file)->airportspec;
+		if (aslist != NULL) {
+			for (uint i = 0; i < NUM_AIRPORTS; i++) {
+				AirportSpec *as = aslist[i];
+
+				if (as != NULL) {
+					/* We need to remove the tiles layouts */
+					for (int j = 0; j < as->num_table; j++) {
+						/* remove the individual layouts */
+						free((void*)as->table[j]);
+					}
+					free((void*)as->table);
+
+					free(as);
+				}
+			}
+			free(aslist);
+			(*file)->airportspec = NULL;
+		}
+
 		AirportTileSpec **&airporttilespec = (*file)->airtspec;
 		if (airporttilespec != NULL) {
 			for (uint i = 0; i < NUM_AIRPORTTILES; i++) {
