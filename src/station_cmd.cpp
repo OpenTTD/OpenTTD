@@ -2909,14 +2909,7 @@ static void AnimateTile_Station(TileIndex tile)
 	}
 
 	if (IsAirport(tile)) {
-		const AirportTileSpec *ats = AirportTileSpec::Get(GetStationGfx(tile));
-		uint16 mask = (1 << ats->animation_speed) - 1;
-		if (ats->animation_info != 0xFFFF && (_tick_counter & mask) == 0) {
-			uint8 next_frame = GetStationAnimationFrame(tile) + 1;
-			if (next_frame > GB(ats->animation_info, 0, 8)) next_frame = 0;
-			SetStationAnimationFrame(tile, next_frame);
-			MarkTileDirtyByTile(tile);
-		}
+		AnimateAirportTile(tile);
 	}
 }
 
