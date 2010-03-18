@@ -1062,7 +1062,7 @@ static NPFFoundTargetData NPFRouteToStationOrTile(TileIndex tile, Trackdir track
  * reverse_penalty applied (NPF_TILE_LENGTH is the equivalent of one full
  * tile).
  */
-static NPFFoundTargetData NPFRouteToDepotBreadthFirstTwoWay(TileIndex tile1, Trackdir trackdir1, bool ignore_start_tile1, TileIndex tile2, Trackdir trackdir2, bool ignore_start_tile2, TransportType type, uint sub_type, Owner owner, RailTypes railtypes, uint reverse_penalty)
+static NPFFoundTargetData NPFRouteToDepotBreadthFirstTwoWay(TileIndex tile1, Trackdir trackdir1, bool ignore_start_tile1, TileIndex tile2, Trackdir trackdir2, bool ignore_start_tile2, NPFFindStationOrTileData *target, TransportType type, uint sub_type, Owner owner, RailTypes railtypes, uint reverse_penalty)
 {
 	AyStarNode start1;
 	AyStarNode start2;
@@ -1078,7 +1078,7 @@ static NPFFoundTargetData NPFRouteToDepotBreadthFirstTwoWay(TileIndex tile1, Tra
 
 	/* perform a breadth first search. Target is NULL,
 	 * since we are just looking for any depot...*/
-	return NPFRouteInternal(&start1, ignore_start_tile1, (IsValidTile(tile2) ? &start2 : NULL), ignore_start_tile2, NULL, NPFFindDepot, NPFCalcZero, type, sub_type, owner, railtypes, reverse_penalty);
+	return NPFRouteInternal(&start1, ignore_start_tile1, (IsValidTile(tile2) ? &start2 : NULL), ignore_start_tile2, target, NPFFindDepot, NPFCalcZero, type, sub_type, owner, railtypes, reverse_penalty);
 }
 
 void InitializeNPF()
@@ -1127,7 +1127,7 @@ FindDepotData NPFRoadVehicleFindNearestDepot(const RoadVehicle *v, int max_penal
 {
 	Trackdir trackdir = v->GetVehicleTrackdir();
 
-	NPFFoundTargetData ftd = NPFRouteToDepotBreadthFirstTwoWay(v->tile, trackdir, false, v->tile, ReverseTrackdir(trackdir), false, TRANSPORT_ROAD, v->compatible_roadtypes, v->owner, INVALID_RAILTYPES, 0);
+	NPFFoundTargetData ftd = NPFRouteToDepotBreadthFirstTwoWay(v->tile, trackdir, false, v->tile, ReverseTrackdir(trackdir), false, NULL, TRANSPORT_ROAD, v->compatible_roadtypes, v->owner, INVALID_RAILTYPES, 0);
 
 	if (ftd.best_bird_dist != 0) return FindDepotData();
 
@@ -1188,9 +1188,12 @@ FindDepotData NPFTrainFindNearestDepot(const Train *v, int max_penalty)
 	const Train *last = v->Last();
 	Trackdir trackdir = v->GetVehicleTrackdir();
 	Trackdir trackdir_rev = ReverseTrackdir(last->GetVehicleTrackdir());
+	NPFFindStationOrTileData fstd;
+	fstd.v = v;
+	fstd.reserve_path = false;
 
 	assert(trackdir != INVALID_TRACKDIR);
-	NPFFoundTargetData ftd = NPFRouteToDepotBreadthFirstTwoWay(v->tile, trackdir, false, last->tile, trackdir_rev, false, TRANSPORT_RAIL, 0, v->owner, v->compatible_railtypes, NPF_INFINITE_PENALTY);
+	NPFFoundTargetData ftd = NPFRouteToDepotBreadthFirstTwoWay(v->tile, trackdir, false, last->tile, trackdir_rev, false, &fstd, TRANSPORT_RAIL, 0, v->owner, v->compatible_railtypes, NPF_INFINITE_PENALTY);
 	if (ftd.best_bird_dist != 0) return FindDepotData();
 
 	/* Found target */
