@@ -1527,19 +1527,19 @@ static bool CheckIfCanLevelIndustryPlatform(TileIndex tile, DoCommandFlag flags,
 static CommandCost CheckIfFarEnoughFromIndustry(TileIndex tile, int type)
 {
 	const IndustrySpec *indspec = GetIndustrySpec(type);
-	const Industry *i;
 
-	if (_settings_game.economy.same_industry_close && indspec->IsRawIndustry())
+	if (_settings_game.economy.same_industry_close && indspec->IsRawIndustry()) {
 		/* Allow primary industries to be placed close to any other industry */
 		return CommandCost();
+	}
 
+	const Industry *i;
 	FOR_ALL_INDUSTRIES(i) {
 		/* Within 14 tiles from another industry is considered close */
-		bool in_low_distance = DistanceMax(tile, i->location.tile) <= 14;
+		if (DistanceMax(tile, i->location.tile) > 14) continue;
 
 		/* check if an industry that accepts the same goods is nearby */
-		if (in_low_distance &&
-				!indspec->IsRawIndustry() && // not a primary industry?
+		if (!indspec->IsRawIndustry() && // not a primary industry?
 				indspec->accepts_cargo[0] == i->accepts_cargo[0] && (
 				/* at least one of those options must be true */
 				_game_mode != GM_EDITOR || // editor must not be stopped
@@ -1549,10 +1549,9 @@ static CommandCost CheckIfFarEnoughFromIndustry(TileIndex tile, int type)
 		}
 
 		/* check if there are any conflicting industry types around */
-		if ((i->type == indspec->conflicting[0] ||
+		if (i->type == indspec->conflicting[0] ||
 				i->type == indspec->conflicting[1] ||
-				i->type == indspec->conflicting[2]) &&
-				in_low_distance) {
+				i->type == indspec->conflicting[2]) {
 			return_cmd_error(STR_ERROR_INDUSTRY_TOO_CLOSE);
 		}
 	}
