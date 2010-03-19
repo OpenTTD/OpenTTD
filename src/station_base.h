@@ -60,7 +60,6 @@ struct Airport : public TileArea {
 
 	const AirportFTAClass *GetFTA() const
 	{
-		if (this->tile == INVALID_TILE) return GetAirport(AT_DUMMY);
 		return this->GetSpec()->fsm;
 	}
 };

@@ -23,8 +23,6 @@ static AirportClass _airport_classes[APC_MAX];
 
 AirportOverrideManager _airport_mngr(NEW_AIRPORT_OFFSET, NUM_AIRPORTS, AT_INVALID);
 
-AirportSpec AirportSpec::dummy = {NULL, NULL, 0, NULL, 0, 0, 0, 0, 0, MIN_YEAR, MIN_YEAR, STR_NULL, ATP_TTDP_LARGE, APC_BEGIN, false, {AT_INVALID, 0, NULL, NULL, AT_INVALID}};
-
 AirportSpec AirportSpec::specs[NUM_AIRPORTS];
 
 /**
