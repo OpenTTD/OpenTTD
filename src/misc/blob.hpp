@@ -27,13 +27,13 @@
  *    - no thread synchronization at all
  *
  *  Internal member layout:
- *  1. The only class member is pointer to the first item (see union ptr_u).
+ *  1. The only class member is pointer to the first item (see union).
  *  2. Allocated block contains the blob header (see CHdr) followed by the raw byte data.
  *     Always, when it allocates memory the allocated size is:
  *                                                      sizeof(CHdr) + <data capacity>
  *  3. Two 'virtual' members (m_size and m_max_size) are stored in the CHdr at beginning
  *     of the alloated block.
- *  4. The pointter (in ptr_u) pobsize_ts behind the header (to the first data byte).
+ *  4. The pointer of the union pobsize_ts behind the header (to the first data byte).
  *     When memory block is allocated, the sizeof(CHdr) it added to it.
  *  5. Benefits of this layout:
  *     - items are accessed in the simplest possible way - just dereferencing the pointer,
@@ -55,9 +55,9 @@ protected:
 
 	/** type used as class member */
 	union {
-		byte    *m_pData;    ///< ptr to the first byte of data
-		CHdr       *m_pHdr_1;   ///< ptr just after the CHdr holding m_size and m_max_size
-	} ptr_u;
+		byte *m_pData;    ///< ptr to the first byte of data
+		CHdr *m_pHdr_1;   ///< ptr just after the CHdr holding m_size and m_max_size
+	};
 
 private:
 	/**
@@ -90,7 +90,7 @@ public:
 	FORCEINLINE CBlobBaseSimple(CHdr * const & pHdr_1)
 	{
 		assert(pHdr_1 != NULL);
-		ptr_u.m_pHdr_1 = pHdr_1;
+		m_pHdr_1 = pHdr_1;
 		*const_cast<CHdr**>(&pHdr_1) = NULL;
 	}
 
@@ -101,29 +101,29 @@ public:
 	}
 
 protected:
-	/** initialize the empty blob by setting the ptr_u.m_pHdr_1 pointer to the static CHdr with
+	/** initialize the empty blob by setting the m_pHdr_1 pointer to the static CHdr with
 	 *  both m_size and m_max_size containing zero */
 	FORCEINLINE void InitEmpty()
 	{
-		ptr_u.m_pHdr_1 = const_cast<CHdr *>(&CBlobBaseSimple::hdrEmpty[1]);
+		m_pHdr_1 = const_cast<CHdr *>(&CBlobBaseSimple::hdrEmpty[1]);
 	}
 
 	/** initialize blob by attaching it to the given header followed by data */
 	FORCEINLINE void Init(CHdr *hdr)
 	{
-		ptr_u.m_pHdr_1 = &hdr[1];
+		m_pHdr_1 = &hdr[1];
 	}
 
 	/** blob header accessor - use it rather than using the pointer arithmetics directly - non-const version */
 	FORCEINLINE CHdr& Hdr()
 	{
-		return *(ptr_u.m_pHdr_1 - 1);
+		return *(m_pHdr_1 - 1);
 	}
 
 	/** blob header accessor - use it rather than using the pointer arithmetics directly - const version */
 	FORCEINLINE const CHdr& Hdr() const
 	{
-		return *(ptr_u.m_pHdr_1 - 1);
+		return *(m_pHdr_1 - 1);
 	}
 
 	/** return reference to the actual blob size - used when the size needs to be modified */
@@ -154,13 +154,13 @@ public:
 	/** return pointer to the first byte of data - non-const version */
 	FORCEINLINE byte *RawData()
 	{
-		return ptr_u.m_pData;
+		return m_pData;
 	}
 
 	/** return pointer to the first byte of data - const version */
 	FORCEINLINE const byte *RawData() const
 	{
-		return ptr_u.m_pData;
+		return m_pData;
 	}
 
 	/** return the 32 bit CRC of valid data in the blob */
@@ -195,15 +195,15 @@ public:
 	FORCEINLINE void MoveFrom(CBlobBaseSimple& src)
 	{
 		Free();
-		ptr_u.m_pData = src.ptr_u.m_pData;
+		m_pData = src.m_pData;
 		src.InitEmpty();
 	}
 
 	/** swap buffers (with data) between two blobs (this and source blob) */
 	FORCEINLINE void Swap(CBlobBaseSimple& src)
 	{
-		byte *tmp = ptr_u.m_pData; ptr_u.m_pData = src.ptr_u.m_pData;
-		src.ptr_u.m_pData = tmp;
+		byte *tmp = m_pData; m_pData = src.m_pData;
+		src.m_pData = tmp;
 	}
 
 	/** append new bytes at the end of existing data bytes - reallocates if necessary */
@@ -228,7 +228,7 @@ public:
 	{
 		uint new_size = RawSize() + num_bytes;
 		if (new_size > MaxRawSize()) SmartAlloc(new_size);
-		return ptr_u.m_pData + RawSize();
+		return m_pData + RawSize();
 	}
 
 	/** Increase RawSize() by num_bytes.
@@ -269,7 +269,7 @@ public:
 		pNewHdr->m_max_size = alloc_size - (sizeof(CHdr) + Ttail_reserve);
 		/* copy existing data */
 		if (RawSize() > 0)
-			memcpy(pNewHdr + 1, ptr_u.m_pData, pNewHdr->m_size);
+			memcpy(pNewHdr + 1, m_pData, pNewHdr->m_size);
 		/* replace our block with new one */
 		CHdr *pOldHdr = &Hdr();
 		Init(pNewHdr);
@@ -315,7 +315,7 @@ public:
 	FORCEINLINE void FixTail() const
 	{
 		if (MaxRawSize() > 0) {
-			byte *p = &ptr_u.m_pData[RawSize()];
+			byte *p = &m_pData[RawSize()];
 			for (uint i = 0; i < Ttail_reserve; i++) {
 				p[i] = 0;
 			}
@@ -341,7 +341,7 @@ public:
 	struct OnTransfer {
 		typename base::CHdr *m_pHdr_1;
 		OnTransfer(const OnTransfer& src) : m_pHdr_1(src.m_pHdr_1) {assert(src.m_pHdr_1 != NULL); *const_cast<typename base::CHdr**>(&src.m_pHdr_1) = NULL;}
-		OnTransfer(CBlobT& src) : m_pHdr_1(src.ptr_u.m_pHdr_1) {src.InitEmpty();}
+		OnTransfer(CBlobT& src) : m_pHdr_1(src.m_pHdr_1) {src.InitEmpty();}
 		~OnTransfer() {assert(m_pHdr_1 == NULL);}
 	};
 
