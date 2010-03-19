@@ -89,11 +89,52 @@ public:
 	}
 
 protected:
-	/** initialize the empty blob by setting the header pointer to the static BlobHeader with
-	 *  both items and capacity containing zero */
+	/** all allocation should happen here */
+	static FORCEINLINE BlobHeader *RawAlloc(uint num_bytes)
+	{
+		return (BlobHeader*)MallocT<byte>(num_bytes);
+	}
+
+	/** Return header pointer to the static BlobHeader with
+	 * both items and capacity containing zero */
+	static FORCEINLINE BlobHeader *Zero()
+	{
+		return const_cast<BlobHeader *>(&ByteBlob::hdrEmpty[1]);
+	}
+
+	/** simple allocation policy - can be optimized later */
+	static FORCEINLINE uint AllocPolicy(uint min_alloc)
+	{
+		if (min_alloc < (1 << 9)) {
+			if (min_alloc < (1 << 5)) return (1 << 5);
+			return (min_alloc < (1 << 7)) ? (1 << 7) : (1 << 9);
+		}
+		if (min_alloc < (1 << 15)) {
+			if (min_alloc < (1 << 11)) return (1 << 11);
+			return (min_alloc < (1 << 13)) ? (1 << 13) : (1 << 15);
+		}
+		if (min_alloc < (1 << 20)) {
+			if (min_alloc < (1 << 17)) return (1 << 17);
+			return (min_alloc < (1 << 19)) ? (1 << 19) : (1 << 20);
+		}
+		min_alloc = (min_alloc | ((1 << 20) - 1)) + 1;
+		return min_alloc;
+	}
+
+	/** all deallocations should happen here */
+	static FORCEINLINE void RawFree(BlobHeader *p)
+	{
+		/* Just to silence an unsilencable GCC 4.4+ warning. */
+		assert(p != ByteBlob::hdrEmpty);
+
+		/* In case GCC warns about the following, see GCC's PR38509 why it is bogus. */
+		free(p);
+	}
+
+	/** initialize the empty blob */
 	FORCEINLINE void InitEmpty()
 	{
-		header = const_cast<BlobHeader *>(&ByteBlob::hdrEmpty[1]);
+		header = Zero();
 	}
 
 	/** initialize blob by attaching it to the given header followed by data */
@@ -217,40 +258,6 @@ public:
 			RawFree(pOldHdr);
 	}
 
-	/** simple allocation policy - can be optimized later */
-	FORCEINLINE static uint AllocPolicy(uint min_alloc)
-	{
-		if (min_alloc < (1 << 9)) {
-			if (min_alloc < (1 << 5)) return (1 << 5);
-			return (min_alloc < (1 << 7)) ? (1 << 7) : (1 << 9);
-		}
-		if (min_alloc < (1 << 15)) {
-			if (min_alloc < (1 << 11)) return (1 << 11);
-			return (min_alloc < (1 << 13)) ? (1 << 13) : (1 << 15);
-		}
-		if (min_alloc < (1 << 20)) {
-			if (min_alloc < (1 << 17)) return (1 << 17);
-			return (min_alloc < (1 << 19)) ? (1 << 19) : (1 << 20);
-		}
-		min_alloc = (min_alloc | ((1 << 20) - 1)) + 1;
-		return min_alloc;
-	}
-
-	/** all allocation should happen here */
-	static FORCEINLINE BlobHeader *RawAlloc(uint num_bytes)
-	{
-		return (BlobHeader*)MallocT<byte>(num_bytes);
-	}
-
-	/** all deallocations should happen here */
-	static FORCEINLINE void RawFree(BlobHeader *p)
-	{
-		/* Just to silence an unsilencable GCC 4.4+ warning. */
-		assert(p != ByteBlob::hdrEmpty);
-
-		/* In case GCC warns about the following, see GCC's PR38509 why it is bogus. */
-		free(p);
-	}
 	/** fixing the four bytes at the end of blob data - useful when blob is used to hold string */
 	FORCEINLINE void FixTail() const
 	{
