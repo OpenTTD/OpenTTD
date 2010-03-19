@@ -237,25 +237,24 @@ public:
 	/** reallocate blob data if needed */
 	void SmartAlloc(uint new_size)
 	{
-		uint old_max_size = Capacity();
-		if (old_max_size >= new_size) return;
-		/* calculate minimum block size we need to allocate */
-		uint min_alloc_size = header_size + new_size + tail_reserve;
-		/* ask allocation policy for some reasonable block size */
-		uint alloc_size = AllocPolicy(min_alloc_size);
-		/* allocate new block */
-		BlobHeader *tmp = RawAlloc(alloc_size);
-		/* setup header */
+		if (Capacity() >= new_size) return;
+		/* calculate minimum block size we need to allocate
+		 * and ask allocation policy for some reasonable block size */
+		new_size = AllocPolicy(header_size + new_size + tail_reserve);
+
+		/* allocate new block and setup header */
+		BlobHeader *tmp = RawAlloc(new_size);
 		tmp->items = Length();
-		tmp->capacity = alloc_size - (header_size + tail_reserve);
+		tmp->capacity = new_size - (header_size + tail_reserve);
+
 		/* copy existing data */
-		if (Length() > 0)
+		if (tmp->items != 0)
 			memcpy(tmp + 1, data, tmp->items);
+
 		/* replace our block with new one */
-		BlobHeader *pOldHdr = &Hdr();
+		if (Capacity() > 0)
+			RawFree(&Hdr());
 		Init(tmp);
-		if (old_max_size > 0)
-			RawFree(pOldHdr);
 	}
 
 	/** fixing the four bytes at the end of blob data - useful when blob is used to hold string */
