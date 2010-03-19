@@ -74,6 +74,12 @@ public:
 	/** default constructor - initializes empty blob */
 	FORCEINLINE ByteBlob() { InitEmpty(); }
 
+	/** copy constructor */
+	FORCEINLINE ByteBlob(const ByteBlob &src) {
+		InitEmpty();
+		AppendRaw(src);
+	}
+
 	/** move constructor - take ownership of blob data */
 	FORCEINLINE ByteBlob(BlobHeader * const & src)
 	{
@@ -213,6 +219,14 @@ public:
 		assert(p != NULL);
 		if (num_bytes > 0) {
 			memcpy(Append(num_bytes), p, num_bytes);
+		}
+	}
+
+	/** append bytes from given source blob to the end of existing data bytes - reallocates if necessary */
+	FORCEINLINE void AppendRaw(const ByteBlob& src)
+	{
+		if (!src.IsEmpty()) {
+			memcpy(Append(src.Length()), src.Begin(), src.Length());
 		}
 	}
 
