@@ -67,6 +67,13 @@ struct Airport : public TileArea {
 	{
 		return this->GetSpec()->nof_depots > 0;
 	}
+
+	FORCEINLINE TileIndex GetHangarTile(uint hangar_num) const
+	{
+		assert(this->tile != INVALID_TILE);
+		assert(hangar_num < this->GetSpec()->nof_depots);
+		return this->tile + ToTileIndexDiff(this->GetSpec()->depot_table[hangar_num]);
+	}
 };
 
 typedef SmallVector<Industry *, 2> IndustryVector;
@@ -133,13 +140,6 @@ public:
 	FORCEINLINE bool TileBelongsToAirport(TileIndex tile) const
 	{
 		return IsAirportTile(tile) && GetStationIndex(tile) == this->index;
-	}
-
-	FORCEINLINE TileIndex GetHangarTile(uint hangar_num) const
-	{
-		assert(this->airport.tile != INVALID_TILE);
-		assert(hangar_num < this->airport.GetSpec()->nof_depots);
-		return this->airport.tile + ToTileIndexDiff(this->airport.GetSpec()->depot_table[hangar_num]);
 	}
 
 	/* virtual */ uint32 GetNewGRFVariable(const ResolverObject *object, byte variable, byte parameter, bool *available) const;

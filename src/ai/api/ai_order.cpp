@@ -182,7 +182,7 @@ static const Order *ResolveOrder(VehicleID vehicle_id, AIOrder::OrderPosition or
 			/* Aircraft's hangars are referenced by StationID, not DepotID */
 			const Station *st = ::Station::Get(order->GetDestination());
 			if (!st->airport.HasHangar()) return INVALID_TILE;
-			return st->GetHangarTile(0);
+			return st->airport.GetHangarTile(0);
 		}
 
 		case OT_GOTO_STATION: {
