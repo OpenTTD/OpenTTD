@@ -40,7 +40,7 @@ struct CStrA : public CBlobT<char>
 	}
 
 	/** Grow the actual buffer and fix the trailing zero at the end. */
-	FORCEINLINE char *GrowSizeNC(bsize_t count)
+	FORCEINLINE char *GrowSizeNC(uint count)
 	{
 		char *ret = base::GrowSizeNC(count);
 		base::FixTail();
@@ -93,14 +93,14 @@ struct CStrA : public CBlobT<char>
 	/** Add formated string (like vsprintf) at the end of existing contents. */
 	int AddFormatL(const char *format, va_list args)
 	{
-		bsize_t addSize = max<size_t>(strlen(format), 16);
+		uint addSize = max<uint>(strlen(format), 16);
 		addSize += addSize / 2;
 		int ret;
 		int err = 0;
 		for (;;) {
 			char *buf = MakeFreeSpace(addSize);
 			ret = vsnprintf(buf, base::GetReserve(), format, args);
-			if (ret >= base::GetReserve()) {
+			if (ret >= (int)base::GetReserve()) {
 				/* Greater return than given count means needed buffer size. */
 				addSize = ret + 1;
 				continue;

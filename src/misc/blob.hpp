@@ -46,20 +46,16 @@
  *         - valgrind can generate warning that allocated block is lost (not accessible)
  */
 class CBlobBaseSimple {
-public:
-	typedef ::ptrdiff_t bsize_t;
-	typedef ::byte      bitem_t;
-
 protected:
 	/** header of the allocated memory block */
 	struct CHdr {
-		bsize_t    m_size;      ///< actual blob size in bytes
-		bsize_t    m_max_size;  ///< maximum (allocated) size in bytes
+		uint    m_size;      ///< actual blob size in bytes
+		uint    m_max_size;  ///< maximum (allocated) size in bytes
 	};
 
 	/** type used as class member */
 	union {
-		bitem_t    *m_pData;    ///< ptr to the first byte of data
+		byte    *m_pData;    ///< ptr to the first byte of data
 		CHdr       *m_pHdr_1;   ///< ptr just after the CHdr holding m_size and m_max_size
 	} ptr_u;
 
@@ -72,12 +68,12 @@ private:
 	static CHdr hdrEmpty[];
 
 public:
-	static const bsize_t Ttail_reserve = 4; ///< four extra bytes will be always allocated and zeroed at the end
+	static const uint Ttail_reserve = 4; ///< four extra bytes will be always allocated and zeroed at the end
 
 	/** default constructor - initializes empty blob */
 	FORCEINLINE CBlobBaseSimple() { InitEmpty(); }
 	/** constructor - create blob with data */
-	FORCEINLINE CBlobBaseSimple(const bitem_t *p, bsize_t num_bytes)
+	FORCEINLINE CBlobBaseSimple(const byte *p, uint num_bytes)
 	{
 		InitEmpty();
 		AppendRaw(p, num_bytes);
@@ -131,7 +127,7 @@ protected:
 	}
 
 	/** return reference to the actual blob size - used when the size needs to be modified */
-	FORCEINLINE bsize_t& RawSizeRef()
+	FORCEINLINE uint& RawSizeRef()
 	{
 		return Hdr().m_size;
 	};
@@ -144,31 +140,31 @@ public:
 	}
 
 	/** return the number of valid data bytes in the blob */
-	FORCEINLINE bsize_t RawSize() const
+	FORCEINLINE uint RawSize() const
 	{
 		return Hdr().m_size;
 	};
 
 	/** return the current blob capacity in bytes */
-	FORCEINLINE bsize_t MaxRawSize() const
+	FORCEINLINE uint MaxRawSize() const
 	{
 		return Hdr().m_max_size;
 	};
 
 	/** return pointer to the first byte of data - non-const version */
-	FORCEINLINE bitem_t *RawData()
+	FORCEINLINE byte *RawData()
 	{
 		return ptr_u.m_pData;
 	}
 
 	/** return pointer to the first byte of data - const version */
-	FORCEINLINE const bitem_t *RawData() const
+	FORCEINLINE const byte *RawData() const
 	{
 		return ptr_u.m_pData;
 	}
 
 	/** return the 32 bit CRC of valid data in the blob */
-	//FORCEINLINE bsize_t Crc32() const
+	//FORCEINLINE uint Crc32() const
 	//{
 	//	return CCrc32::Calc(RawData(), RawSize());
 	//}
@@ -206,18 +202,16 @@ public:
 	/** swap buffers (with data) between two blobs (this and source blob) */
 	FORCEINLINE void Swap(CBlobBaseSimple& src)
 	{
-		bitem_t *tmp = ptr_u.m_pData; ptr_u.m_pData = src.ptr_u.m_pData;
+		byte *tmp = ptr_u.m_pData; ptr_u.m_pData = src.ptr_u.m_pData;
 		src.ptr_u.m_pData = tmp;
 	}
 
 	/** append new bytes at the end of existing data bytes - reallocates if necessary */
-	FORCEINLINE void AppendRaw(const void *p, bsize_t num_bytes)
+	FORCEINLINE void AppendRaw(const void *p, uint num_bytes)
 	{
 		assert(p != NULL);
 		if (num_bytes > 0) {
 			memcpy(GrowRawSize(num_bytes), p, num_bytes);
-		} else {
-			assert(num_bytes >= 0);
 		}
 	}
 
@@ -230,25 +224,24 @@ public:
 
 	/** Reallocate if there is no free space for num_bytes bytes.
 	 *  @return pointer to the new data to be added */
-	FORCEINLINE bitem_t *MakeRawFreeSpace(bsize_t num_bytes)
+	FORCEINLINE byte *MakeRawFreeSpace(uint num_bytes)
 	{
-		assert(num_bytes >= 0);
-		bsize_t new_size = RawSize() + num_bytes;
+		uint new_size = RawSize() + num_bytes;
 		if (new_size > MaxRawSize()) SmartAlloc(new_size);
 		return ptr_u.m_pData + RawSize();
 	}
 
 	/** Increase RawSize() by num_bytes.
 	 *  @return pointer to the new data added */
-	FORCEINLINE bitem_t *GrowRawSize(bsize_t num_bytes)
+	FORCEINLINE byte *GrowRawSize(uint num_bytes)
 	{
-		bitem_t *pNewData = MakeRawFreeSpace(num_bytes);
+		byte *pNewData = MakeRawFreeSpace(num_bytes);
 		RawSizeRef() += num_bytes;
 		return pNewData;
 	}
 
 	/** Decrease RawSize() by num_bytes. */
-	FORCEINLINE void ReduceRawSize(bsize_t num_bytes)
+	FORCEINLINE void ReduceRawSize(uint num_bytes)
 	{
 		if (MaxRawSize() > 0 && num_bytes > 0) {
 			assert(num_bytes <= RawSize());
@@ -261,14 +254,14 @@ public:
 	}
 
 	/** reallocate blob data if needed */
-	void SmartAlloc(bsize_t new_size)
+	void SmartAlloc(uint new_size)
 	{
-		bsize_t old_max_size = MaxRawSize();
+		uint old_max_size = MaxRawSize();
 		if (old_max_size >= new_size) return;
 		/* calculate minimum block size we need to allocate */
-		bsize_t min_alloc_size = sizeof(CHdr) + new_size + Ttail_reserve;
+		uint min_alloc_size = sizeof(CHdr) + new_size + Ttail_reserve;
 		/* ask allocation policy for some reasonable block size */
-		bsize_t alloc_size = AllocPolicy(min_alloc_size);
+		uint alloc_size = AllocPolicy(min_alloc_size);
 		/* allocate new block */
 		CHdr *pNewHdr = RawAlloc(alloc_size);
 		/* setup header */
@@ -285,7 +278,7 @@ public:
 	}
 
 	/** simple allocation policy - can be optimized later */
-	FORCEINLINE static bsize_t AllocPolicy(bsize_t min_alloc)
+	FORCEINLINE static uint AllocPolicy(uint min_alloc)
 	{
 		if (min_alloc < (1 << 9)) {
 			if (min_alloc < (1 << 5)) return (1 << 5);
@@ -304,7 +297,7 @@ public:
 	}
 
 	/** all allocation should happen here */
-	static FORCEINLINE CHdr *RawAlloc(bsize_t num_bytes)
+	static FORCEINLINE CHdr *RawAlloc(uint num_bytes)
 	{
 		return (CHdr*)MallocT<byte>(num_bytes);
 	}
@@ -322,58 +315,56 @@ public:
 	FORCEINLINE void FixTail() const
 	{
 		if (MaxRawSize() > 0) {
-			bitem_t *p = &ptr_u.m_pData[RawSize()];
-			for (bsize_t i = 0; i < Ttail_reserve; i++) {
+			byte *p = &ptr_u.m_pData[RawSize()];
+			for (uint i = 0; i < Ttail_reserve; i++) {
 				p[i] = 0;
 			}
 		}
 	}
 };
 
-/** Blob - simple dynamic Titem_ array. Titem_ (template argument) is a placeholder for any type.
- *  Titem_ can be any integral type, pointer, or structure. Using Blob instead of just plain C array
+/** Blob - simple dynamic T array. T (template argument) is a placeholder for any type.
+ *  T can be any integral type, pointer, or structure. Using Blob instead of just plain C array
  *  simplifies the resource management in several ways:
  *  1. When adding new item(s) it automatically grows capacity if needed.
  *  2. When variable of type Blob comes out of scope it automatically frees the data buffer.
  *  3. Takes care about the actual data size (number of used items).
  *  4. Dynamically constructs only used items (as opposite of static array which constructs all items) */
-template <class Titem_, class Tbase_ = CBlobBaseSimple>
-class CBlobT : public Tbase_ {
+template <typename T>
+class CBlobT : public CBlobBaseSimple {
 	/* make template arguments public: */
 public:
-	typedef Titem_ Titem;
-	typedef Tbase_ Tbase;
-	typedef typename Tbase::bsize_t bsize_t;
+	typedef CBlobBaseSimple base;
 
-	static const bsize_t Titem_size = sizeof(Titem);
+	static const uint type_size = sizeof(T);
 
 	struct OnTransfer {
-		typename Tbase_::CHdr *m_pHdr_1;
-		OnTransfer(const OnTransfer& src) : m_pHdr_1(src.m_pHdr_1) {assert(src.m_pHdr_1 != NULL); *const_cast<typename Tbase_::CHdr**>(&src.m_pHdr_1) = NULL;}
+		typename base::CHdr *m_pHdr_1;
+		OnTransfer(const OnTransfer& src) : m_pHdr_1(src.m_pHdr_1) {assert(src.m_pHdr_1 != NULL); *const_cast<typename base::CHdr**>(&src.m_pHdr_1) = NULL;}
 		OnTransfer(CBlobT& src) : m_pHdr_1(src.ptr_u.m_pHdr_1) {src.InitEmpty();}
 		~OnTransfer() {assert(m_pHdr_1 == NULL);}
 	};
 
 	/** Default constructor - makes new Blob ready to accept any data */
 	FORCEINLINE CBlobT()
-		: Tbase()
+		: base()
 	{}
 
 	/** Constructor - makes new Blob with data */
-	FORCEINLINE CBlobT(const Titem_ *p, bsize_t num_items)
-		: Tbase((typename Tbase_::bitem_t*)p, num_items * Titem_size)
+	FORCEINLINE CBlobT(const T *p, uint num_items)
+		: base((byte *)p, num_items * type_size)
 	{}
 
 	/** Copy constructor - make new blob to become copy of the original (source) blob */
-	FORCEINLINE CBlobT(const Tbase& src)
-		: Tbase(src)
+	FORCEINLINE CBlobT(const base& src)
+		: base(src)
 	{
-		assert((Tbase::RawSize() % Titem_size) == 0);
+		assert((base::RawSize() % type_size) == 0);
 	}
 
 	/** Take ownership constructor */
 	FORCEINLINE CBlobT(const OnTransfer& ot)
-		: Tbase(ot.m_pHdr_1)
+		: base(ot.m_pHdr_1)
 	{}
 
 	/** Destructor - ensures that allocated memory (if any) is freed */
@@ -383,150 +374,150 @@ public:
 	}
 
 	/** Check the validity of item index (only in debug mode) */
-	FORCEINLINE void CheckIdx(bsize_t idx) const
+	FORCEINLINE void CheckIdx(uint idx) const
 	{
-		assert(idx >= 0); assert(idx < Size());
+		assert(idx < Size());
 	}
 
 	/** Return pointer to the first data item - non-const version */
-	FORCEINLINE Titem *Data()
+	FORCEINLINE T *Data()
 	{
-		return (Titem*)Tbase::RawData();
+		return (T*)base::RawData();
 	}
 
 	/** Return pointer to the first data item - const version */
-	FORCEINLINE const Titem *Data() const
+	FORCEINLINE const T *Data() const
 	{
-		return (const Titem*)Tbase::RawData();
+		return (const T*)base::RawData();
 	}
 
 	/** Return pointer to the idx-th data item - non-const version */
-	FORCEINLINE Titem *Data(bsize_t idx)
+	FORCEINLINE T *Data(uint idx)
 	{
 		CheckIdx(idx);
 		return (Data() + idx);
 	}
 
 	/** Return pointer to the idx-th data item - const version */
-	FORCEINLINE const Titem *Data(bsize_t idx) const
+	FORCEINLINE const T *Data(uint idx) const
 	{
 		CheckIdx(idx);
 		return (Data() + idx);
 	}
 
 	/** Return number of items in the Blob */
-	FORCEINLINE bsize_t Size() const
+	FORCEINLINE uint Size() const
 	{
-		return (Tbase::RawSize() / Titem_size);
+		return (base::RawSize() / type_size);
 	}
 
 	/** Return total number of items that can fit in the Blob without buffer reallocation */
-	FORCEINLINE bsize_t MaxSize() const
+	FORCEINLINE uint MaxSize() const
 	{
-		return (Tbase::MaxRawSize() / Titem_size);
+		return (base::MaxRawSize() / type_size);
 	}
 	/** Return number of additional items that can fit in the Blob without buffer reallocation */
-	FORCEINLINE bsize_t GetReserve() const
+	FORCEINLINE uint GetReserve() const
 	{
-		return ((Tbase::MaxRawSize() - Tbase::RawSize()) / Titem_size);
+		return ((base::MaxRawSize() - base::RawSize()) / type_size);
 	}
 
 	/** Free the memory occupied by Blob destroying all items */
 	FORCEINLINE void Free()
 	{
-		assert((Tbase::RawSize() % Titem_size) == 0);
-		bsize_t old_size = Size();
+		assert((base::RawSize() % type_size) == 0);
+		uint old_size = Size();
 		if (old_size > 0) {
 			/* destroy removed items; */
-			Titem *pI_last_to_destroy = Data(0);
-			for (Titem *pI = Data(old_size - 1); pI >= pI_last_to_destroy; pI--) pI->~Titem_();
+			T *pI_last_to_destroy = Data(0);
+			for (T *pI = Data(old_size - 1); pI >= pI_last_to_destroy; pI--) pI->~T();
 		}
-		Tbase::Free();
+		base::Free();
 	}
 
 	/** Grow number of data items in Blob by given number - doesn't construct items */
-	FORCEINLINE Titem *GrowSizeNC(bsize_t num_items)
+	FORCEINLINE T *GrowSizeNC(uint num_items)
 	{
-		return (Titem*)Tbase::GrowRawSize(num_items * Titem_size);
+		return (T*)base::GrowRawSize(num_items * type_size);
 	}
 
-	/** Grow number of data items in Blob by given number - constructs new items (using Titem_'s default constructor) */
-	FORCEINLINE Titem *GrowSizeC(bsize_t num_items)
+	/** Grow number of data items in Blob by given number - constructs new items (using T's default constructor) */
+	FORCEINLINE T *GrowSizeC(uint num_items)
 	{
-		Titem *pI = GrowSizeNC(num_items);
-		for (bsize_t i = num_items; i > 0; i--, pI++) new (pI) Titem();
+		T *pI = GrowSizeNC(num_items);
+		for (uint i = num_items; i > 0; i--, pI++) new (pI) T();
 	}
 
 	/** Destroy given number of items and reduce the Blob's data size */
-	FORCEINLINE void ReduceSize(bsize_t num_items)
+	FORCEINLINE void ReduceSize(uint num_items)
 	{
-		assert((Tbase::RawSize() % Titem_size) == 0);
-		bsize_t old_size = Size();
+		assert((base::RawSize() % type_size) == 0);
+		uint old_size = Size();
 		assert(num_items <= old_size);
-		bsize_t new_size = (num_items <= old_size) ? (old_size - num_items) : 0;
+		uint new_size = (num_items <= old_size) ? (old_size - num_items) : 0;
 		/* destroy removed items; */
-		Titem *pI_last_to_destroy = Data(new_size);
-		for (Titem *pI = Data(old_size - 1); pI >= pI_last_to_destroy; pI--) pI->~Titem();
+		T *pI_last_to_destroy = Data(new_size);
+		for (T *pI = Data(old_size - 1); pI >= pI_last_to_destroy; pI--) pI->~T();
 		/* remove them */
-		Tbase::ReduceRawSize(num_items * Titem_size);
+		base::ReduceRawSize(num_items * type_size);
 	}
 
-	/** Append one data item at the end (calls Titem_'s default constructor) */
-	FORCEINLINE Titem *AppendNew()
+	/** Append one data item at the end (calls T's default constructor) */
+	FORCEINLINE T *AppendNew()
 	{
-		Titem& dst = *GrowSizeNC(1); // Grow size by one item
-		Titem *pNewItem = new (&dst) Titem(); // construct the new item by calling in-place new operator
+		T& dst = *GrowSizeNC(1); // Grow size by one item
+		T *pNewItem = new (&dst) T(); // construct the new item by calling in-place new operator
 		return pNewItem;
 	}
 
 	/** Append the copy of given item at the end of Blob (using copy constructor) */
-	FORCEINLINE Titem *Append(const Titem& src)
+	FORCEINLINE T *Append(const T& src)
 	{
-		Titem& dst = *GrowSizeNC(1); // Grow size by one item
-		Titem *pNewItem = new (&dst) Titem(src); // construct the new item by calling in-place new operator with copy ctor()
+		T& dst = *GrowSizeNC(1); // Grow size by one item
+		T *pNewItem = new (&dst) T(src); // construct the new item by calling in-place new operator with copy ctor()
 		return pNewItem;
 	}
 
 	/** Add given items (ptr + number of items) at the end of blob */
-	FORCEINLINE Titem *Append(const Titem *pSrc, bsize_t num_items)
+	FORCEINLINE T *Append(const T *pSrc, uint num_items)
 	{
-		Titem *pDst = GrowSizeNC(num_items);
-		Titem *pDstOrg = pDst;
-		Titem *pDstEnd = pDst + num_items;
-		while (pDst < pDstEnd) new (pDst++) Titem(*(pSrc++));
+		T *pDst = GrowSizeNC(num_items);
+		T *pDstOrg = pDst;
+		T *pDstEnd = pDst + num_items;
+		while (pDst < pDstEnd) new (pDst++) T(*(pSrc++));
 		return pDstOrg;
 	}
 
 	/** Remove item with the given index by replacing it by the last item and reducing the size by one */
-	FORCEINLINE void RemoveBySwap(bsize_t idx)
+	FORCEINLINE void RemoveBySwap(uint idx)
 	{
 		CheckIdx(idx);
 		/* destroy removed item */
-		Titem *pRemoved = Data(idx);
+		T *pRemoved = Data(idx);
 		RemoveBySwap(pRemoved);
 	}
 
 	/** Remove item given by pointer replacing it by the last item and reducing the size by one */
-	FORCEINLINE void RemoveBySwap(Titem *pItem)
+	FORCEINLINE void RemoveBySwap(T *pItem)
 	{
-		Titem *pLast = Data(Size() - 1);
+		T *pLast = Data(Size() - 1);
 		assert(pItem >= Data() && pItem <= pLast);
 		/* move last item to its new place */
 		if (pItem != pLast) {
-			pItem->~Titem_();
-			new (pItem) Titem_(*pLast);
+			pItem->~T();
+			new (pItem) T(*pLast);
 		}
 		/* destroy the last item */
-		pLast->~Titem_();
+		pLast->~T();
 		/* and reduce the raw blob size */
-		Tbase::ReduceRawSize(Titem_size);
+		base::ReduceRawSize(type_size);
 	}
 
 	/** Ensures that given number of items can be added to the end of Blob. Returns pointer to the
 	 *  first free (unused) item */
-	FORCEINLINE Titem *MakeFreeSpace(bsize_t num_items)
+	FORCEINLINE T *MakeFreeSpace(uint num_items)
 	{
-		return (Titem*)Tbase::MakeRawFreeSpace(num_items * Titem_size);
+		return (T*)base::MakeRawFreeSpace(num_items * type_size);
 	}
 
 	FORCEINLINE OnTransfer Transfer()
