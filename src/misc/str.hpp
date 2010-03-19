@@ -56,15 +56,6 @@ struct CStrA : public CBlobT<char>
 		}
 	}
 
-	/** Append another CStrA. */
-	FORCEINLINE void Append(const CStrA &src)
-	{
-		if (src.RawSize() > 0) {
-			base::AppendRaw(src);
-			base::FixTail();
-		}
-	}
-
 	/** Assignment from C string. */
 	FORCEINLINE CStrA &operator = (const char *src)
 	{
