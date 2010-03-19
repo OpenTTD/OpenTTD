@@ -28,95 +28,96 @@
  *
  *  Internal member layout:
  *  1. The only class member is pointer to the first item (see union).
- *  2. Allocated block contains the blob header (see CHdr) followed by the raw byte data.
+ *  2. Allocated block contains the blob header (see BlobHeader) followed by the raw byte data.
  *     Always, when it allocates memory the allocated size is:
- *                                                      sizeof(CHdr) + <data capacity>
- *  3. Two 'virtual' members (m_size and m_max_size) are stored in the CHdr at beginning
+ *                                                      sizeof(BlobHeader) + <data capacity>
+ *  3. Two 'virtual' members (items and capacity) are stored in the BlobHeader at beginning
  *     of the alloated block.
  *  4. The pointer of the union pobsize_ts behind the header (to the first data byte).
- *     When memory block is allocated, the sizeof(CHdr) it added to it.
+ *     When memory block is allocated, the sizeof(BlobHeader) it added to it.
  *  5. Benefits of this layout:
  *     - items are accessed in the simplest possible way - just dereferencing the pointer,
  *       which is good for performance (assuming that data are accessed most often).
  *     - sizeof(blob) is the same as the size of any other pointer
  *  6. Drawbacks of this layout:
- *     - the fact, that pointer to the alocated block is adjusted by sizeof(CHdr) before
+ *     - the fact, that pointer to the alocated block is adjusted by sizeof(BlobHeader) before
  *       it is stored can lead to several confusions:
  *         - it is not common pattern so the implementation code is bit harder to read
  *         - valgrind can generate warning that allocated block is lost (not accessible)
  */
-class CBlobBaseSimple {
+class ByteBlob {
 protected:
 	/** header of the allocated memory block */
-	struct CHdr {
-		uint    m_size;      ///< actual blob size in bytes
-		uint    m_max_size;  ///< maximum (allocated) size in bytes
+	struct BlobHeader {
+		uint    items;      ///< actual blob size in bytes
+		uint    capacity;  ///< maximum (allocated) size in bytes
 	};
 
 	/** type used as class member */
 	union {
-		byte *m_pData;    ///< ptr to the first byte of data
-		CHdr *m_pHdr_1;   ///< ptr just after the CHdr holding m_size and m_max_size
+		byte *data;    ///< ptr to the first byte of data
+		BlobHeader *header;   ///< ptr just after the BlobHeader holding items and capacity
 	};
 
 private:
 	/**
 	 * Just to silence an unsilencable GCC 4.4+ warning
-	 * Note: This cannot be 'const' as we do a lot of 'hdrEmpty[0]->m_size += 0;' and 'hdrEmpty[0]->m_max_size += 0;'
+	 * Note: This cannot be 'const' as we do a lot of 'hdrEmpty[0]->items += 0;' and 'hdrEmpty[0]->capacity += 0;'
 	 *       after const_casting.
 	 */
-	static CHdr hdrEmpty[];
+	static BlobHeader hdrEmpty[];
 
 public:
-	static const uint Ttail_reserve = 4; ///< four extra bytes will be always allocated and zeroed at the end
+	static const uint tail_reserve = 4; ///< four extra bytes will be always allocated and zeroed at the end
+	static const uint header_size = sizeof(BlobHeader);
 
 	/** default constructor - initializes empty blob */
-	FORCEINLINE CBlobBaseSimple() { InitEmpty(); }
+	FORCEINLINE ByteBlob() { InitEmpty(); }
 
 	/** move constructor - take ownership of blob data */
-	FORCEINLINE CBlobBaseSimple(CHdr * const & pHdr_1)
+	FORCEINLINE ByteBlob(BlobHeader * const & src)
 	{
-		assert(pHdr_1 != NULL);
-		m_pHdr_1 = pHdr_1;
-		*const_cast<CHdr**>(&pHdr_1) = NULL;
+		assert(src != NULL);
+		header = src;
+		*const_cast<BlobHeader**>(&src) = NULL;
 	}
 
 	/** destructor */
-	FORCEINLINE ~CBlobBaseSimple()
+	FORCEINLINE ~ByteBlob()
 	{
 		Free();
 	}
 
 protected:
-	/** initialize the empty blob by setting the m_pHdr_1 pointer to the static CHdr with
-	 *  both m_size and m_max_size containing zero */
+	/** initialize the empty blob by setting the header pointer to the static BlobHeader with
+	 *  both items and capacity containing zero */
 	FORCEINLINE void InitEmpty()
 	{
-		m_pHdr_1 = const_cast<CHdr *>(&CBlobBaseSimple::hdrEmpty[1]);
+		header = const_cast<BlobHeader *>(&ByteBlob::hdrEmpty[1]);
 	}
 
 	/** initialize blob by attaching it to the given header followed by data */
-	FORCEINLINE void Init(CHdr *hdr)
+	FORCEINLINE void Init(BlobHeader *src)
 	{
-		m_pHdr_1 = &hdr[1];
+		header = &src[1];
 	}
 
 	/** blob header accessor - use it rather than using the pointer arithmetics directly - non-const version */
-	FORCEINLINE CHdr& Hdr()
+	FORCEINLINE BlobHeader& Hdr()
 	{
-		return *(m_pHdr_1 - 1);
+		return *(header - 1);
 	}
 
 	/** blob header accessor - use it rather than using the pointer arithmetics directly - const version */
-	FORCEINLINE const CHdr& Hdr() const
+	FORCEINLINE const BlobHeader& Hdr() const
 	{
-		return *(m_pHdr_1 - 1);
+		return *(header - 1);
 	}
 
 	/** return reference to the actual blob size - used when the size needs to be modified */
 	FORCEINLINE uint& RawSizeRef()
 	{
-		return Hdr().m_size;
+		return Hdr().items;
 	};
 
 public:
@@ -129,25 +130,25 @@ public:
 	/** return the number of valid data bytes in the blob */
 	FORCEINLINE uint RawSize() const
 	{
-		return Hdr().m_size;
+		return Hdr().items;
 	};
 
 	/** return the current blob capacity in bytes */
 	FORCEINLINE uint MaxRawSize() const
 	{
-		return Hdr().m_max_size;
+		return Hdr().capacity;
 	};
 
 	/** return pointer to the first byte of data - non-const version */
 	FORCEINLINE byte *RawData()
 	{
-		return m_pData;
+		return data;
 	}
 
 	/** return pointer to the first byte of data - const version */
 	FORCEINLINE const byte *RawData() const
 	{
-		return m_pData;
+		return data;
 	}
 
 	/** invalidate blob's data - doesn't free buffer */
@@ -175,7 +176,7 @@ public:
 	}
 
 	/** append bytes from given source blob to the end of existing data bytes - reallocates if necessary */
-	FORCEINLINE void AppendRaw(const CBlobBaseSimple& src)
+	FORCEINLINE void AppendRaw(const ByteBlob& src)
 	{
 		if (!src.IsEmpty())
 			memcpy(GrowRawSize(src.RawSize()), src.RawData(), src.RawSize());
@@ -187,7 +188,7 @@ public:
 	{
 		uint new_size = RawSize() + num_bytes;
 		if (new_size > MaxRawSize()) SmartAlloc(new_size);
-		return m_pData + RawSize();
+		return data + RawSize();
 	}
 
 	/** Increase RawSize() by num_bytes.
@@ -205,20 +206,20 @@ public:
 		uint old_max_size = MaxRawSize();
 		if (old_max_size >= new_size) return;
 		/* calculate minimum block size we need to allocate */
-		uint min_alloc_size = sizeof(CHdr) + new_size + Ttail_reserve;
+		uint min_alloc_size = header_size + new_size + tail_reserve;
 		/* ask allocation policy for some reasonable block size */
 		uint alloc_size = AllocPolicy(min_alloc_size);
 		/* allocate new block */
-		CHdr *pNewHdr = RawAlloc(alloc_size);
+		BlobHeader *tmp = RawAlloc(alloc_size);
 		/* setup header */
-		pNewHdr->m_size = RawSize();
-		pNewHdr->m_max_size = alloc_size - (sizeof(CHdr) + Ttail_reserve);
+		tmp->items = RawSize();
+		tmp->capacity = alloc_size - (header_size + tail_reserve);
 		/* copy existing data */
 		if (RawSize() > 0)
-			memcpy(pNewHdr + 1, m_pData, pNewHdr->m_size);
+			memcpy(tmp + 1, data, tmp->items);
 		/* replace our block with new one */
-		CHdr *pOldHdr = &Hdr();
-		Init(pNewHdr);
+		BlobHeader *pOldHdr = &Hdr();
+		Init(tmp);
 		if (old_max_size > 0)
 			RawFree(pOldHdr);
 	}
@@ -243,16 +244,16 @@ public:
 	}
 
 	/** all allocation should happen here */
-	static FORCEINLINE CHdr *RawAlloc(uint num_bytes)
+	static FORCEINLINE BlobHeader *RawAlloc(uint num_bytes)
 	{
-		return (CHdr*)MallocT<byte>(num_bytes);
+		return (BlobHeader*)MallocT<byte>(num_bytes);
 	}
 
 	/** all deallocations should happen here */
-	static FORCEINLINE void RawFree(CHdr *p)
+	static FORCEINLINE void RawFree(BlobHeader *p)
 	{
 		/* Just to silence an unsilencable GCC 4.4+ warning. */
-		assert(p != CBlobBaseSimple::hdrEmpty);
+		assert(p != ByteBlob::hdrEmpty);
 
 		/* In case GCC warns about the following, see GCC's PR38509 why it is bogus. */
 		free(p);
@@ -261,8 +262,8 @@ public:
 	FORCEINLINE void FixTail() const
 	{
 		if (MaxRawSize() > 0) {
-			byte *p = &m_pData[RawSize()];
-			for (uint i = 0; i < Ttail_reserve; i++) {
+			byte *p = &data[RawSize()];
+			for (uint i = 0; i < tail_reserve; i++) {
 				p[i] = 0;
 			}
 		}
@@ -277,18 +278,18 @@ public:
  *  3. Takes care about the actual data size (number of used items).
  *  4. Dynamically constructs only used items (as opposite of static array which constructs all items) */
 template <typename T>
-class CBlobT : public CBlobBaseSimple {
+class CBlobT : public ByteBlob {
 	/* make template arguments public: */
 public:
-	typedef CBlobBaseSimple base;
+	typedef ByteBlob base;
 
 	static const uint type_size = sizeof(T);
 
 	struct OnTransfer {
-		typename base::CHdr *m_pHdr_1;
-		OnTransfer(const OnTransfer& src) : m_pHdr_1(src.m_pHdr_1) {assert(src.m_pHdr_1 != NULL); *const_cast<typename base::CHdr**>(&src.m_pHdr_1) = NULL;}
-		OnTransfer(CBlobT& src) : m_pHdr_1(src.m_pHdr_1) {src.InitEmpty();}
-		~OnTransfer() {assert(m_pHdr_1 == NULL);}
+		typename base::BlobHeader *header;
+		OnTransfer(const OnTransfer& src) : header(src.header) {assert(src.header != NULL); *const_cast<typename base::BlobHeader**>(&src.header) = NULL;}
+		OnTransfer(CBlobT& src) : header(src.header) {src.InitEmpty();}
+		~OnTransfer() {assert(header == NULL);}
 	};
 
 	/** Default constructor - makes new Blob ready to accept any data */
@@ -298,7 +299,7 @@ public:
 
 	/** Take ownership constructor */
 	FORCEINLINE CBlobT(const OnTransfer& ot)
-		: base(ot.m_pHdr_1)
+		: base(ot.header)
 	{}
 
 	/** Destructor - ensures that allocated memory (if any) is freed */
@@ -308,9 +309,9 @@ public:
 	}
 
 	/** Check the validity of item index (only in debug mode) */
-	FORCEINLINE void CheckIdx(uint idx) const
+	FORCEINLINE void CheckIdx(uint index) const
 	{
-		assert(idx < Size());
+		assert(index < Size());
 	}
 
 	/** Return pointer to the first data item - non-const version */
@@ -325,18 +326,18 @@ public:
 		return (const T*)base::RawData();
 	}
 
-	/** Return pointer to the idx-th data item - non-const version */
-	FORCEINLINE T *Data(uint idx)
+	/** Return pointer to the index-th data item - non-const version */
+	FORCEINLINE T *Data(uint index)
 	{
-		CheckIdx(idx);
-		return (Data() + idx);
+		CheckIdx(index);
+		return (Data() + index);
 	}
 
-	/** Return pointer to the idx-th data item - const version */
-	FORCEINLINE const T *Data(uint idx) const
+	/** Return pointer to the index-th data item - const version */
+	FORCEINLINE const T *Data(uint index) const
 	{
-		CheckIdx(idx);
-		return (Data() + idx);
+		CheckIdx(index);
+		return (Data() + index);
 	}
 
 	/** Return number of items in the Blob */

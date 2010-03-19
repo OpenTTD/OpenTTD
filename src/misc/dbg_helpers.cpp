@@ -177,4 +177,4 @@ void DumpTarget::EndStruct()
 }
 
 /** Just to silence an unsilencable GCC 4.4+ warning */
-/* static */ CBlobBaseSimple::CHdr CBlobBaseSimple::hdrEmpty[] = {{0, 0}, {0, 0}};
+/* static */ ByteBlob::BlobHeader ByteBlob::hdrEmpty[] = {{0, 0}, {0, 0}};
