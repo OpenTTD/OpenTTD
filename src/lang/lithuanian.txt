@@ -25,15 +25,22 @@ STR_NULL                                                        :
 STR_EMPTY                                                       :
 STR_UNDEFINED                                                   :(neapibrėžta eilutė)
 STR_JUST_NOTHING                                                :Nieko
+STR_JUST_NOTHING.kas                                            :Niekas
 STR_JUST_NOTHING.ko                                             :Nieko
+STR_JUST_NOTHING.kam                                            :Niekui
 STR_JUST_NOTHING.ka                                             :Nieką
+STR_JUST_NOTHING.kuo                                            :Nieku
+STR_JUST_NOTHING.kur                                            :Niekur
 
 # Cargo related strings
 # Plural cargo name
 STR_CARGO_PLURAL_NOTHING                                        :
 STR_CARGO_PLURAL_PASSENGERS                                     :Keleiviai
+STR_CARGO_PLURAL_PASSENGERS.kas                                 :Keleiviai
 STR_CARGO_PLURAL_PASSENGERS.ko                                  :Keleivių
+STR_CARGO_PLURAL_PASSENGERS.kam                                 :Keleiviams
 STR_CARGO_PLURAL_PASSENGERS.ka                                  :Keleivius
+STR_CARGO_PLURAL_PASSENGERS.kuo                                 :Keleiviais
 STR_CARGO_PLURAL_COAL                                           :Anglis
 STR_CARGO_PLURAL_COAL.kas                                       :Anglis
 STR_CARGO_PLURAL_COAL.ko                                        :Anglies
@@ -3204,7 +3211,7 @@ STR_ORDER_STOP_ORDER                                            :(Sustoti)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
-STR_ORDER_FULL_LOAD                                             :(Pilanai pasikrauti)
+STR_ORDER_FULL_LOAD                                             :(Pilnai pasikrauti)
 STR_ORDER_FULL_LOAD_ANY                                         :(Pilnai pasikrauti, bet kurio krovinio)
 STR_ORDER_NO_LOAD                                               :(Nepakrauti)
 STR_ORDER_UNLOAD                                                :(Iškrauti ir pasiimti krovinį)

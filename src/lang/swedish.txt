@@ -2250,10 +2250,10 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Antal in
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Snölinjens höjd:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Höj snölinjens höjd ett upp
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Sänk snölinjens höjd ett ner
-STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Slump-nummer:
+STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Slumpnummer:
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Klicka för att mata in ett slump-nummer
 STR_MAPGEN_RANDOM                                               :{BLACK}Slumpa
-STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Ändra slump-nummer som används för terräng-generering
+STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Ändra slumpnummer som används för terräng-generering
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landgenerator:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Trädalgoritm:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terrängtyp:
@@ -2735,12 +2735,12 @@ STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}Byt namn
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Byt namn på
 
 STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Byt namn på tågvagn
-STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Byt namn på vägfordon typ
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Byt namn på vägfordonstyp
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Byt namn på skeppstyp
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Byt namn på flygplanstyp
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Byt namn på tågets fordonstyp
-STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Byt namn på vägfordon typ
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Byt namn på vägfordonstyp
 STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Byt namn på skeppstyp
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Byt namn på flygplanstyp
 
@@ -3426,7 +3426,7 @@ STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Kan inte
 STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Kan inte ta bort lastbrygga...
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Kan inte ta bort passagerarspårvagnsstation...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Kan inte ta bort fraktspårvagnsstation...
-STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Måste ta bort vägstop först
+STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Måste ta bort vägstopp först
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Måste riva järnvägsstation först
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Måste riva busshållplats först
@@ -4112,3 +4112,4 @@ STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
+
