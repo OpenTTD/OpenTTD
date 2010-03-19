@@ -62,6 +62,11 @@ struct Airport : public TileArea {
 	{
 		return this->GetSpec()->fsm;
 	}
+
+	FORCEINLINE bool HasHangar() const
+	{
+		return this->GetSpec()->nof_depots > 0;
+	}
 };
 
 typedef SmallVector<Industry *, 2> IndustryVector;

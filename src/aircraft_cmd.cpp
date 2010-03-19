@@ -117,8 +117,7 @@ static StationID FindNearestHangar(const Aircraft *v)
 		if (st->owner != v->owner || !(st->facilities & FACIL_AIRPORT)) continue;
 
 		const AirportFTAClass *afc = st->airport.GetFTA();
-		const AirportSpec *as = st->airport.GetSpec();
-		if (as->nof_depots == 0 || (
+		if (!st->airport.HasHangar() || (
 					/* don't crash the plane if we know it can't land at the airport */
 					(afc->flags & AirportFTAClass::SHORT_STRIP) &&
 					(avi->subtype & AIR_FAST) &&
@@ -415,7 +414,7 @@ bool Aircraft::FindClosestDepot(TileIndex *location, DestinationID *destination,
 {
 	const Station *st = GetTargetAirportIfValid(this);
 	/* If the station is not a valid airport or if it has no hangars */
-	if (st == NULL || st->airport.GetSpec()->nof_depots == 0) {
+	if (st == NULL || !st->airport.HasHangar()) {
 		/* the aircraft has to search for a hangar on its own */
 		StationID station = FindNearestHangar(this);
 
@@ -515,7 +514,7 @@ static void CheckIfAircraftNeedsService(Aircraft *v)
 	assert(st != NULL);
 
 	/* only goto depot if the target airport has a depot */
-	if (st->airport.GetSpec()->nof_depots > 0 && CanVehicleUseStation(v, st)) {
+	if (st->airport.HasHangar() && CanVehicleUseStation(v, st)) {
 		v->current_order.MakeGoToDepot(st->index, ODTFB_SERVICE);
 		SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 	} else if (v->current_order.IsType(OT_GOTO_DEPOT)) {
@@ -1468,7 +1467,7 @@ static void AircraftEventHandler_AtTerminal(Aircraft *v, const AirportFTAClass *
 			return;
 		default:  // orders have been deleted (no orders), goto depot and don't bother us
 			v->current_order.Free();
-			go_to_hangar = Station::Get(v->targetairport)->airport.GetSpec()->nof_depots != 0;
+			go_to_hangar = Station::Get(v->targetairport)->airport.HasHangar();
 	}
 
 	if (go_to_hangar) {
@@ -1609,8 +1608,7 @@ static void AircraftEventHandler_HeliEndLanding(Aircraft *v, const AirportFTACla
 	if (v->current_order.IsType(OT_GOTO_STATION)) {
 		if (AirportFindFreeHelipad(v, apc)) return;
 	}
-	const AirportSpec *as = Station::Get(v->targetairport)->airport.GetSpec();
-	v->state = (as->nof_depots != 0) ? HANGAR : HELITAKEOFF;
+	v->state = Station::Get(v->targetairport)->airport.HasHangar() ? HANGAR : HELITAKEOFF;
 }
 
 typedef void AircraftStateHandler(Aircraft *v, const AirportFTAClass *apc);
