@@ -2509,7 +2509,7 @@ static void DuplicateTileTable(AirportSpec *as)
 		MemCpyT(table_list[i], as->table[i], num_tiles);
 	}
 	as->table = table_list;
-	TileIndexDiffC *depot_table = MallocT<TileIndexDiffC>(as->nof_depots);
+	HangarTileTable *depot_table = MallocT<HangarTileTable>(as->nof_depots);
 	MemCpyT(depot_table, as->depot_table, as->nof_depots);
 	as->depot_table = depot_table;
 }

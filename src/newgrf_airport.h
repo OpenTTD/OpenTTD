@@ -46,6 +46,12 @@ enum TTDPAirportType {
 	ATP_TTDP_OILRIG,   ///< Same as AT_OILRIG
 };
 
+/** A list of all hangar tiles in an airport */
+struct HangarTileTable {
+	TileIndexDiffC ti;
+	byte hangar_num;
+};
+
 /**
  * Defines the data structure for an airport.
  */
@@ -53,8 +59,8 @@ struct AirportSpec {
 	const struct AirportFTAClass *fsm;     ///< the finite statemachine for the default airports
 	const AirportTileTable * const *table; ///< list of the tiles composing the airport
 	byte num_table;                        ///< number of elements in the table
-	const TileIndexDiffC *depot_table;     ///< gives the position of the depots on the airports
-	byte nof_depots;                       ///< the number of depots in this airport
+	const HangarTileTable *depot_table;    ///< gives the position of the depots on the airports
+	byte nof_depots;                       ///< the number of hangar tiles in this airport
 	byte size_x;                           ///< size of airport in x direction
 	byte size_y;                           ///< size of airport in y direction
 	byte noise_level;                      ///< noise that this airport generates

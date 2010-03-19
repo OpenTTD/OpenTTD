@@ -13,13 +13,13 @@
 #include "debug.h"
 #include "airport.h"
 #include "map_type.h"
-#include "table/airport_movement.h"
 #include "core/alloc_func.hpp"
 #include "date_func.h"
 #include "settings_type.h"
 #include "newgrf_airport.h"
 #include "station_base.h"
 #include "table/strings.h"
+#include "table/airport_movement.h"
 #include "table/airporttile_ids.h"
 
 /* Uncomment this to print out a full report of the airport-structure
