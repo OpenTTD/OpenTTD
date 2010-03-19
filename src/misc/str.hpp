@@ -51,7 +51,7 @@ struct CStrA : public CBlobT<char>
 	FORCEINLINE void AppendStr(const char *str)
 	{
 		if (!StrEmpty(str)) {
-			base::Append(str, strlen(str));
+			base::AppendRaw(str, strlen(str));
 			base::FixTail();
 		}
 	}
@@ -69,7 +69,7 @@ struct CStrA : public CBlobT<char>
 	{
 		if (&src != this) {
 			base::Clear();
-			base::AppendRaw(src);
+			base::AppendRaw(src.Data(), src.Size());
 			base::FixTail();
 		}
 		return *this;

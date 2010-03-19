@@ -115,7 +115,7 @@ protected:
 	}
 
 	/** return reference to the actual blob size - used when the size needs to be modified */
-	FORCEINLINE uint& RawSizeRef()
+	FORCEINLINE uint& LengthRef()
 	{
 		return Hdr().items;
 	};
@@ -124,29 +124,29 @@ public:
 	/** return true if blob doesn't contain valid data */
 	FORCEINLINE bool IsEmpty() const
 	{
-		return RawSize() == 0;
+		return Length() == 0;
 	}
 
 	/** return the number of valid data bytes in the blob */
-	FORCEINLINE uint RawSize() const
+	FORCEINLINE uint Length() const
 	{
 		return Hdr().items;
 	};
 
 	/** return the current blob capacity in bytes */
-	FORCEINLINE uint MaxRawSize() const
+	FORCEINLINE uint Capacity() const
 	{
 		return Hdr().capacity;
 	};
 
 	/** return pointer to the first byte of data - non-const version */
-	FORCEINLINE byte *RawData()
+	FORCEINLINE byte *Begin()
 	{
 		return data;
 	}
 
 	/** return pointer to the first byte of data - const version */
-	FORCEINLINE const byte *RawData() const
+	FORCEINLINE const byte *Begin() const
 	{
 		return data;
 	}
@@ -154,13 +154,13 @@ public:
 	/** invalidate blob's data - doesn't free buffer */
 	FORCEINLINE void Clear()
 	{
-		RawSizeRef() = 0;
+		LengthRef() = 0;
 	}
 
 	/** free the blob's memory */
 	FORCEINLINE void Free()
 	{
-		if (MaxRawSize() > 0) {
+		if (Capacity() > 0) {
 			RawFree(&Hdr());
 			InitEmpty();
 		}
@@ -171,39 +171,32 @@ public:
 	{
 		assert(p != NULL);
 		if (num_bytes > 0) {
-			memcpy(GrowRawSize(num_bytes), p, num_bytes);
+			memcpy(Append(num_bytes), p, num_bytes);
 		}
-	}
-
-	/** append bytes from given source blob to the end of existing data bytes - reallocates if necessary */
-	FORCEINLINE void AppendRaw(const ByteBlob& src)
-	{
-		if (!src.IsEmpty())
-			memcpy(GrowRawSize(src.RawSize()), src.RawData(), src.RawSize());
 	}
 
 	/** Reallocate if there is no free space for num_bytes bytes.
 	 *  @return pointer to the new data to be added */
-	FORCEINLINE byte *MakeRawFreeSpace(uint num_bytes)
+	FORCEINLINE byte *Prepare(uint num_bytes)
 	{
-		uint new_size = RawSize() + num_bytes;
-		if (new_size > MaxRawSize()) SmartAlloc(new_size);
-		return data + RawSize();
+		uint new_size = Length() + num_bytes;
+		if (new_size > Capacity()) SmartAlloc(new_size);
+		return data + Length();
 	}
 
-	/** Increase RawSize() by num_bytes.
+	/** Increase Length() by num_bytes.
 	 *  @return pointer to the new data added */
-	FORCEINLINE byte *GrowRawSize(uint num_bytes)
+	FORCEINLINE byte *Append(uint num_bytes)
 	{
-		byte *pNewData = MakeRawFreeSpace(num_bytes);
-		RawSizeRef() += num_bytes;
+		byte *pNewData = Prepare(num_bytes);
+		LengthRef() += num_bytes;
 		return pNewData;
 	}
 
 	/** reallocate blob data if needed */
 	void SmartAlloc(uint new_size)
 	{
-		uint old_max_size = MaxRawSize();
+		uint old_max_size = Capacity();
 		if (old_max_size >= new_size) return;
 		/* calculate minimum block size we need to allocate */
 		uint min_alloc_size = header_size + new_size + tail_reserve;
@@ -212,10 +205,10 @@ public:
 		/* allocate new block */
 		BlobHeader *tmp = RawAlloc(alloc_size);
 		/* setup header */
-		tmp->items = RawSize();
+		tmp->items = Length();
 		tmp->capacity = alloc_size - (header_size + tail_reserve);
 		/* copy existing data */
-		if (RawSize() > 0)
+		if (Length() > 0)
 			memcpy(tmp + 1, data, tmp->items);
 		/* replace our block with new one */
 		BlobHeader *pOldHdr = &Hdr();
@@ -261,8 +254,8 @@ public:
 	/** fixing the four bytes at the end of blob data - useful when blob is used to hold string */
 	FORCEINLINE void FixTail() const
 	{
-		if (MaxRawSize() > 0) {
-			byte *p = &data[RawSize()];
+		if (Capacity() > 0) {
+			byte *p = &data[Length()];
 			for (uint i = 0; i < tail_reserve; i++) {
 				p[i] = 0;
 			}
@@ -317,13 +310,13 @@ public:
 	/** Return pointer to the first data item - non-const version */
 	FORCEINLINE T *Data()
 	{
-		return (T*)base::RawData();
+		return (T*)base::Begin();
 	}
 
 	/** Return pointer to the first data item - const version */
 	FORCEINLINE const T *Data() const
 	{
-		return (const T*)base::RawData();
+		return (const T*)base::Begin();
 	}
 
 	/** Return pointer to the index-th data item - non-const version */
@@ -343,24 +336,24 @@ public:
 	/** Return number of items in the Blob */
 	FORCEINLINE uint Size() const
 	{
-		return (base::RawSize() / type_size);
+		return (base::Length() / type_size);
 	}
 
 	/** Return total number of items that can fit in the Blob without buffer reallocation */
 	FORCEINLINE uint MaxSize() const
 	{
-		return (base::MaxRawSize() / type_size);
+		return (base::Capacity() / type_size);
 	}
 	/** Return number of additional items that can fit in the Blob without buffer reallocation */
 	FORCEINLINE uint GetReserve() const
 	{
-		return ((base::MaxRawSize() - base::RawSize()) / type_size);
+		return ((base::Capacity() - base::Length()) / type_size);
 	}
 
 	/** Grow number of data items in Blob by given number - doesn't construct items */
 	FORCEINLINE T *GrowSizeNC(uint num_items)
 	{
-		return (T*)base::GrowRawSize(num_items * type_size);
+		return (T*)base::Append(num_items * type_size);
 	}
 
 	/** Add given items (ptr + number of items) at the end of blob */
@@ -377,7 +370,7 @@ public:
 	 *  first free (unused) item */
 	FORCEINLINE T *MakeFreeSpace(uint num_items)
 	{
-		return (T*)base::MakeRawFreeSpace(num_items * type_size);
+		return (T*)base::Prepare(num_items * type_size);
 	}
 
 	FORCEINLINE OnTransfer Transfer()
