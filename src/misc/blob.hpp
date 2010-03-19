@@ -350,6 +350,7 @@ public:
 	{
 		return (base::Capacity() / type_size);
 	}
+
 	/** Return number of additional items that can fit in the Blob without buffer reallocation */
 	FORCEINLINE uint GetReserve() const
 	{
@@ -360,16 +361,6 @@ public:
 	FORCEINLINE T *GrowSizeNC(uint num_items)
 	{
 		return (T*)base::Append(num_items * type_size);
-	}
-
-	/** Add given items (ptr + number of items) at the end of blob */
-	FORCEINLINE T *Append(const T *pSrc, uint num_items)
-	{
-		T *pDst = GrowSizeNC(num_items);
-		T *pDstOrg = pDst;
-		T *pDstEnd = pDst + num_items;
-		while (pDst < pDstEnd) new (pDst++) T(*(pSrc++));
-		return pDstOrg;
 	}
 
 	/** Ensures that given number of items can be added to the end of Blob. Returns pointer to the
