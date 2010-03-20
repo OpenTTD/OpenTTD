@@ -87,9 +87,9 @@ int CalcBridgeLenCostFactor(int x)
 
 Foundation GetBridgeFoundation(Slope tileh, Axis axis)
 {
-	if ((tileh == SLOPE_FLAT) ||
-	    (((tileh == SLOPE_NE) || (tileh == SLOPE_SW)) && (axis == AXIS_X)) ||
-	    (((tileh == SLOPE_NW) || (tileh == SLOPE_SE)) && (axis == AXIS_Y))) return FOUNDATION_NONE;
+	if (tileh == SLOPE_FLAT ||
+			((tileh == SLOPE_NE || tileh == SLOPE_SW) && axis == AXIS_X) ||
+			((tileh == SLOPE_NW || tileh == SLOPE_SE) && axis == AXIS_Y)) return FOUNDATION_NONE;
 
 	return (HasSlopeHighestCorner(tileh) ? InclinedFoundation(axis) : FlatteningFoundation(tileh));
 }

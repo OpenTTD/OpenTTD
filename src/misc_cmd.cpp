@@ -53,7 +53,7 @@ CommandCost CmdIncreaseLoan(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 			loan = _economy.max_loan - c->current_loan;
 			break;
 		case 2: // Take the given amount of loan
-			if ((((int32)p1 < LOAN_INTERVAL) || c->current_loan + (int32)p1 > _economy.max_loan || (p1 % LOAN_INTERVAL) != 0)) return CMD_ERROR;
+			if ((int32)p1 < LOAN_INTERVAL || c->current_loan + (int32)p1 > _economy.max_loan || p1 % LOAN_INTERVAL != 0) return CMD_ERROR;
 			loan = p1;
 			break;
 	}
@@ -97,7 +97,7 @@ CommandCost CmdDecreaseLoan(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 			loan -= loan % LOAN_INTERVAL;
 			break;
 		case 2: // Repay the given amount of loan
-			if ((p1 % LOAN_INTERVAL != 0) || ((int32)p1 < LOAN_INTERVAL)) return CMD_ERROR; // Invalid amount to loan
+			if (p1 % LOAN_INTERVAL != 0 || (int32)p1 < LOAN_INTERVAL) return CMD_ERROR; // Invalid amount to loan
 			loan = p1;
 			break;
 	}

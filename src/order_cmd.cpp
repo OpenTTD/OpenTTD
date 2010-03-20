@@ -872,8 +872,7 @@ CommandCost CmdMoveOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 
 	/* Don't make senseless movements */
 	if (moving_order >= v->GetNumOrders() || target_order >= v->GetNumOrders() ||
-			moving_order == target_order || v->GetNumOrders() <= 1)
-		return CMD_ERROR;
+			moving_order == target_order || v->GetNumOrders() <= 1) return CMD_ERROR;
 
 	Order *moving_one = v->GetOrder(moving_order);
 	/* Don't move an empty order */

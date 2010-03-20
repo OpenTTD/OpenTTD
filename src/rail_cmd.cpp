@@ -727,8 +727,7 @@ static CommandCost ValidateAutoDrag(Trackdir *trackdir, TileIndex start, TileInd
 	if (!IsDiagonalTrackdir(*trackdir)) {
 		trdx = _trackdelta[*trackdir].x;
 		trdy = _trackdelta[*trackdir].y;
-		if (abs(dx) != abs(dy) && abs(dx) + abs(trdy) != abs(dy) + abs(trdx))
-			return CMD_ERROR;
+		if (abs(dx) != abs(dy) && abs(dx) + abs(trdy) != abs(dy) + abs(trdx)) return CMD_ERROR;
 	}
 
 	return CommandCost();
