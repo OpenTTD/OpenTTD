@@ -195,8 +195,6 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 {
 	RailType railtype = INVALID_RAILTYPE;
 	RoadTypes roadtypes = ROADTYPES_NONE;
-	CommandCost cost(EXPENSES_CONSTRUCTION);
-	Owner owner;
 
 	/* unpack parameters */
 	BridgeType bridge_type = GB(p2, 0, 8);
@@ -266,6 +264,8 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 
 	if (z_start != z_end) return_cmd_error(STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT);
 
+	CommandCost cost(EXPENSES_CONSTRUCTION);
+	Owner owner;
 	if (IsBridgeTile(tile_start) && IsBridgeTile(tile_end) &&
 			GetOtherBridgeEnd(tile_start) == tile_end &&
 			GetTunnelBridgeTransportType(tile_start) == transport_type) {
@@ -481,7 +481,6 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 CommandCost CmdBuildTunnel(TileIndex start_tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	TransportType transport_type = (TransportType)GB(p1, 9, 1);
-	CommandCost cost(EXPENSES_CONSTRUCTION);
 
 	_build_tunnel_endtile = 0;
 	if (transport_type == TRANSPORT_RAIL) {
@@ -524,6 +523,7 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, DoCommandFlag flags, uint32 p1,
 	/* Number of tiles at which the cost increase coefficient per tile is halved */
 	int tiles_bump = 25;
 
+	CommandCost cost(EXPENSES_CONSTRUCTION);
 	Slope end_tileh;
 	for (;;) {
 		end_tile += delta;
@@ -640,14 +640,11 @@ static inline CommandCost CheckAllowRemoveTunnelBridge(TileIndex tile)
  */
 static CommandCost DoClearTunnel(TileIndex tile, DoCommandFlag flags)
 {
-	Town *t = NULL;
-	TileIndex endtile;
-
 	CommandCost ret = CheckAllowRemoveTunnelBridge(tile);
 	ret.SetGlobalErrorMessage();
 	if (ret.Failed()) return ret;
 
-	endtile = GetOtherTunnelEnd(tile);
+	TileIndex endtile = GetOtherTunnelEnd(tile);
 
 	ret = TunnelBridgeIsFree(tile, endtile);
 	ret.SetGlobalErrorMessage();
@@ -655,6 +652,7 @@ static CommandCost DoClearTunnel(TileIndex tile, DoCommandFlag flags)
 
 	_build_tunnel_endtile = endtile;
 
+	Town *t = NULL;
 	if (IsTileOwner(tile, OWNER_TOWN) && _game_mode != GM_EDITOR) {
 		t = ClosestTownFromTile(tile, UINT_MAX); // town penalty rating
 
@@ -711,24 +709,20 @@ static CommandCost DoClearTunnel(TileIndex tile, DoCommandFlag flags)
  */
 static CommandCost DoClearBridge(TileIndex tile, DoCommandFlag flags)
 {
-	DiagDirection direction;
-	TileIndexDiff delta;
-	TileIndex endtile;
-	Town *t = NULL;
-
 	CommandCost ret = CheckAllowRemoveTunnelBridge(tile);
 	ret.SetGlobalErrorMessage();
 	if (ret.Failed()) return ret;
 
-	endtile = GetOtherBridgeEnd(tile);
+	TileIndex endtile = GetOtherBridgeEnd(tile);
 
 	ret = TunnelBridgeIsFree(tile, endtile);
 	ret.SetGlobalErrorMessage();
 	if (ret.Failed()) return ret;
 
-	direction = GetTunnelBridgeDirection(tile);
-	delta = TileOffsByDiagDir(direction);
+	DiagDirection direction = GetTunnelBridgeDirection(tile);
+	TileIndexDiff delta = TileOffsByDiagDir(direction);
 
+	Town *t = NULL;
 	if (IsTileOwner(tile, OWNER_TOWN) && _game_mode != GM_EDITOR) {
 		t = ClosestTownFromTile(tile, UINT_MAX); // town penalty rating
 
@@ -925,7 +919,6 @@ static void DrawBridgeTramBits(int x, int y, byte z, int offset, bool overlay, b
  */
 static void DrawTile_TunnelBridge(TileInfo *ti)
 {
-	SpriteID image;
 	TransportType transport_type = GetTunnelBridgeTransportType(ti->tile);
 	DiagDirection tunnelbridge_direction = GetTunnelBridgeDirection(ti->tile);
 
@@ -951,6 +944,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 
 		bool catenary = false;
 
+		SpriteID image;
 		if (transport_type == TRANSPORT_RAIL) {
 			image = GetRailTypeInfo(GetRailType(ti->tile))->base_sprites.tunnel;
 		} else {

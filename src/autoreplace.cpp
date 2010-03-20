@@ -57,10 +57,8 @@ EngineID EngineReplacement(EngineRenewList erl, EngineID engine, GroupID group)
 
 CommandCost AddEngineReplacement(EngineRenewList *erl, EngineID old_engine, EngineID new_engine, GroupID group, DoCommandFlag flags)
 {
-	EngineRenew *er;
-
 	/* Check if the old vehicle is already in the list */
-	er = GetEngineReplacement(*erl, old_engine, group);
+	EngineRenew *er = GetEngineReplacement(*erl, old_engine, group);
 	if (er != NULL) {
 		if (flags & DC_EXEC) er->to = new_engine;
 		return CommandCost();
