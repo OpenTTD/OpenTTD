@@ -179,11 +179,7 @@ static CommandCost IsValidTileForWaypoint(TileIndex tile, Axis axis, StationID *
 
 	Owner owner = GetTileOwner(tile);
 	CommandCost ret = CheckOwnership(owner);
-	ret.SetGlobalErrorMessage();
-	if (ret.Failed()) return ret;
-
-	ret = EnsureNoVehicleOnGround(tile);
-	ret.SetGlobalErrorMessage();
+	if (ret.Succeeded()) ret = EnsureNoVehicleOnGround(tile);
 	if (ret.Failed()) return ret;
 
 	Slope tileh = GetTileSlope(tile, NULL);
@@ -258,7 +254,6 @@ CommandCost CmdBuildRailWaypoint(TileIndex start_tile, DoCommandFlag flags, uint
 	Waypoint *wp = NULL;
 	TileArea new_location(TileArea(start_tile, width, height));
 	CommandCost ret = FindJoiningWaypoint(est, station_to_join, adjacent, new_location, &wp);
-	ret.SetGlobalErrorMessage();
 	if (ret.Failed()) return ret;
 
 	/* Check if there is an already existing, deleted, waypoint close to us that we can reuse. */
@@ -276,7 +271,6 @@ CommandCost CmdBuildRailWaypoint(TileIndex start_tile, DoCommandFlag flags, uint
 		}
 
 		CommandCost ret = wp->rect.BeforeAddRect(start_tile, width, height, StationRect::ADD_TEST);
-		ret.SetGlobalErrorMessage();
 		if (ret.Failed()) return ret;
 	} else {
 		/* allocate and initialize new waypoint */
@@ -399,7 +393,6 @@ CommandCost RemoveBuoy(TileIndex tile, DoCommandFlag flags)
 	/* remove the buoy if there is a ship on tile when company goes bankrupt... */
 	if (!(flags & DC_BANKRUPT)) {
 		CommandCost ret = EnsureNoVehicleOnGround(tile);
-		ret.SetGlobalErrorMessage();
 		if (ret.Failed()) return ret;
 	}
 
@@ -451,7 +444,6 @@ CommandCost CmdRenameWaypoint(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 
 	if (wp->owner != OWNER_NONE) {
 		CommandCost ret = CheckOwnership(wp->owner);
-		ret.SetGlobalErrorMessage();
 		if (ret.Failed()) return ret;
 	}
 

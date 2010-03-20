@@ -214,7 +214,6 @@ bool AIObject::DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint cmd, const c
 
 	/* We failed; set the error and bail out */
 	if (res.Failed()) {
-		res.SetGlobalErrorMessage();
 		SetLastError(AIError::StringToError(res.GetErrorMessage()));
 		return false;
 	}

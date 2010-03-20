@@ -620,7 +620,6 @@ CommandCost CmdAutoreplaceVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1
 	if (v == NULL) return CMD_ERROR;
 
 	CommandCost ret = CheckOwnership(v->owner);
-	ret.SetGlobalErrorMessage();
 	if (ret.Failed()) return ret;
 
 	if (!v->IsInDepot()) return CMD_ERROR;

@@ -334,7 +334,6 @@ CommandCost CmdSellRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	if (v == NULL) return CMD_ERROR;
 
 	CommandCost ret = CheckOwnership(v->owner);
-	ret.SetGlobalErrorMessage();
 	if (ret.Failed()) return ret;
 
 	if (v->vehstatus & VS_CRASHED) return_cmd_error(STR_ERROR_CAN_T_SELL_DESTROYED_VEHICLE);
@@ -413,7 +412,6 @@ CommandCost CmdTurnRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	if (v == NULL) return CMD_ERROR;
 
 	CommandCost ret = CheckOwnership(v->owner);
-	ret.SetGlobalErrorMessage();
 	if (ret.Failed()) return ret;
 
 	if ((v->vehstatus & VS_STOPPED) ||
@@ -1759,7 +1757,6 @@ CommandCost CmdRefitRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	if (v == NULL) return CMD_ERROR;
 
 	CommandCost ret = CheckOwnership(v->owner);
-	ret.SetGlobalErrorMessage();
 	if (ret.Failed()) return ret;
 
 	if (!v->IsStoppedInDepot()) return_cmd_error(STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT);

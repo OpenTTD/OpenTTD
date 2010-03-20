@@ -71,7 +71,6 @@ CommandCost CmdChangeTimetable(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 	if (v == NULL || !v->IsPrimaryVehicle()) return CMD_ERROR;
 
 	CommandCost ret = CheckOwnership(v->owner);
-	ret.SetGlobalErrorMessage();
 	if (ret.Failed()) return ret;
 
 	VehicleOrderID order_number = GB(p1, 16, 8);
@@ -135,7 +134,6 @@ CommandCost CmdSetVehicleOnTime(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 	if (v == NULL || !v->IsPrimaryVehicle()) return CMD_ERROR;
 
 	CommandCost ret = CheckOwnership(v->owner);
-	ret.SetGlobalErrorMessage();
 	if (ret.Failed()) return ret;
 
 	if (flags & DC_EXEC) {
@@ -161,7 +159,6 @@ CommandCost CmdSetTimetableStart(TileIndex tile, DoCommandFlag flags, uint32 p1,
 	if (v == NULL || !v->IsPrimaryVehicle()) return CMD_ERROR;
 
 	CommandCost ret = CheckOwnership(v->owner);
-	ret.SetGlobalErrorMessage();
 	if (ret.Failed()) return ret;
 
 	/* Don't let a timetable start more than 15 years into the future or 1 year in the past. */
@@ -205,7 +202,6 @@ CommandCost CmdAutofillTimetable(TileIndex tile, DoCommandFlag flags, uint32 p1,
 	if (v == NULL || !v->IsPrimaryVehicle()) return CMD_ERROR;
 
 	CommandCost ret = CheckOwnership(v->owner);
-	ret.SetGlobalErrorMessage();
 	if (ret.Failed()) return ret;
 
 	if (flags & DC_EXEC) {

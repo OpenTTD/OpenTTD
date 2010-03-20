@@ -609,25 +609,19 @@ static inline CommandCost CheckAllowRemoveTunnelBridge(TileIndex tile)
 
 			/* We can remove unowned road and if the town allows it */
 			if (road_owner == OWNER_TOWN && !(_settings_game.construction.extra_dynamite || _cheats.magic_bulldozer.value)) {
-				CommandCost ret = CheckTileOwnership(tile);
-				ret.SetGlobalErrorMessage();
-				return ret;
+				return CheckTileOwnership(tile);
 			}
 			if (road_owner == OWNER_NONE || road_owner == OWNER_TOWN) road_owner = _current_company;
 			if (tram_owner == OWNER_NONE) tram_owner = _current_company;
 
 			CommandCost ret = CheckOwnership(road_owner, tile);
 			if (ret.Succeeded()) ret = CheckOwnership(tram_owner, tile);
-			ret.SetGlobalErrorMessage();
 			return ret;
 		}
 
 		case TRANSPORT_RAIL:
-		case TRANSPORT_WATER: {
-			CommandCost ret = CheckOwnership(GetTileOwner(tile));
-			ret.SetGlobalErrorMessage();
-			return ret;
-		}
+		case TRANSPORT_WATER:
+			return CheckOwnership(GetTileOwner(tile));
 
 		default: NOT_REACHED();
 	}
@@ -641,13 +635,11 @@ static inline CommandCost CheckAllowRemoveTunnelBridge(TileIndex tile)
 static CommandCost DoClearTunnel(TileIndex tile, DoCommandFlag flags)
 {
 	CommandCost ret = CheckAllowRemoveTunnelBridge(tile);
-	ret.SetGlobalErrorMessage();
 	if (ret.Failed()) return ret;
 
 	TileIndex endtile = GetOtherTunnelEnd(tile);
 
 	ret = TunnelBridgeIsFree(tile, endtile);
-	ret.SetGlobalErrorMessage();
 	if (ret.Failed()) return ret;
 
 	_build_tunnel_endtile = endtile;
@@ -659,7 +651,6 @@ static CommandCost DoClearTunnel(TileIndex tile, DoCommandFlag flags)
 		/* Check if you are allowed to remove the tunnel owned by a town
 		 * Removal depends on difficulty settings */
 		CommandCost ret = CheckforTownRating(flags, t, TUNNELBRIDGE_REMOVE);
-		ret.SetGlobalErrorMessage();
 		if (ret.Failed()) return ret;
 	}
 
@@ -710,13 +701,11 @@ static CommandCost DoClearTunnel(TileIndex tile, DoCommandFlag flags)
 static CommandCost DoClearBridge(TileIndex tile, DoCommandFlag flags)
 {
 	CommandCost ret = CheckAllowRemoveTunnelBridge(tile);
-	ret.SetGlobalErrorMessage();
 	if (ret.Failed()) return ret;
 
 	TileIndex endtile = GetOtherBridgeEnd(tile);
 
 	ret = TunnelBridgeIsFree(tile, endtile);
-	ret.SetGlobalErrorMessage();
 	if (ret.Failed()) return ret;
 
 	DiagDirection direction = GetTunnelBridgeDirection(tile);
@@ -729,7 +718,6 @@ static CommandCost DoClearBridge(TileIndex tile, DoCommandFlag flags)
 		/* Check if you are allowed to remove the bridge owned by a town
 		 * Removal depends on difficulty settings */
 		CommandCost ret = CheckforTownRating(flags, t, TUNNELBRIDGE_REMOVE);
-		ret.SetGlobalErrorMessage();
 		if (ret.Failed()) return ret;
 	}
 

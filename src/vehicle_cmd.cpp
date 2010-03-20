@@ -77,7 +77,6 @@ CommandCost CmdStartStopVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 	if (v == NULL || !v->IsPrimaryVehicle()) return CMD_ERROR;
 
 	CommandCost ret = CheckOwnership(v->owner);
-	ret.SetGlobalErrorMessage();
 	if (ret.Failed()) return ret;
 
 	switch (v->type) {
@@ -417,7 +416,6 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	 */
 
 	CommandCost ret = CheckOwnership(v->owner);
-	ret.SetGlobalErrorMessage();
 	if (ret.Failed()) return ret;
 
 	if (v->type == VEH_TRAIN && (!Train::From(v)->IsFrontEngine() || Train::From(v)->crash_anim_pos >= 4400)) return CMD_ERROR;
@@ -625,7 +623,6 @@ CommandCost CmdRenameVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	if (v == NULL) return CMD_ERROR;
 
 	CommandCost ret = CheckOwnership(v->owner);
-	ret.SetGlobalErrorMessage();
 	if (ret.Failed()) return ret;
 
 	bool reset = StrEmpty(text);
@@ -660,7 +657,6 @@ CommandCost CmdChangeServiceInt(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 	if (v == NULL) return CMD_ERROR;
 
 	CommandCost ret = CheckOwnership(v->owner);
-	ret.SetGlobalErrorMessage();
 	if (ret.Failed()) return ret;
 
 	uint16 serv_int = GetServiceIntervalClamped(p2, v->owner); // Double check the service interval from the user-input

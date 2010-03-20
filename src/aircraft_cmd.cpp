@@ -394,7 +394,6 @@ CommandCost CmdSellAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	if (v == NULL) return CMD_ERROR;
 
 	CommandCost ret = CheckOwnership(v->owner);
-	ret.SetGlobalErrorMessage();
 	if (ret.Failed()) return ret;
 
 	if (!v->IsStoppedInDepot()) return_cmd_error(STR_ERROR_AIRCRAFT_MUST_BE_STOPPED);
@@ -473,7 +472,6 @@ CommandCost CmdRefitAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	if (v == NULL) return CMD_ERROR;
 
 	CommandCost ret = CheckOwnership(v->owner);
-	ret.SetGlobalErrorMessage();
 	if (ret.Failed()) return ret;
 
 	if (!v->IsStoppedInDepot()) return_cmd_error(STR_ERROR_AIRCRAFT_MUST_BE_STOPPED);

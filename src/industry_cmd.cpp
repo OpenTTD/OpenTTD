@@ -1339,7 +1339,6 @@ static CommandCost CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTil
 			}
 		} else {
 			CommandCost ret = EnsureNoVehicleOnGround(cur_tile);
-			ret.SetGlobalErrorMessage();
 			if (ret.Failed()) return ret;
 			if (MayHaveBridgeAbove(cur_tile) && IsBridgeAbove(cur_tile)) return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
 
@@ -1353,7 +1352,6 @@ static CommandCost CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTil
 			if (HasBit(its->callback_mask, CBM_INDT_SHAPE_CHECK)) {
 				custom_shape = true;
 				CommandCost ret = PerformIndustryTileSlopeCheck(tile, cur_tile, its, type, gfx, itspec_index);
-				ret.SetGlobalErrorMessage();
 				if (ret.Failed()) return ret;
 			} else {
 				Slope tileh = GetTileSlope(cur_tile, NULL);
@@ -1798,7 +1796,6 @@ CommandCost CmdBuildIndustry(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 					 */
 					tile = RandomTile();
 					CommandCost ret = CreateNewIndustryHelper(tile, it, flags, indspec, RandomRange(indspec->num_table), p2, founder, &ind);
-					ret.SetGlobalErrorMessage();
 					if (ret.Succeeded()) break;
 				}
 			}
@@ -1811,16 +1808,13 @@ CommandCost CmdBuildIndustry(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 		if (num >= count) return CMD_ERROR;
 
 		CommandCost ret = CommandCost(STR_ERROR_SITE_UNSUITABLE);
-		ret.SetGlobalErrorMessage();
 		do {
 			if (--count < 0) return ret;
 			if (--num < 0) num = indspec->num_table - 1;
 			ret = CheckIfIndustryTilesAreFree(tile, itt[num], num, it);
-			ret.SetGlobalErrorMessage();
 		} while (ret.Failed());
 
 		ret = CreateNewIndustryHelper(tile, it, flags, indspec, num, p2, _current_company, &ind);
-		ret.SetGlobalErrorMessage();
 		if (ret.Failed()) return ret;
 	}
 
@@ -1849,7 +1843,6 @@ static Industry *CreateNewIndustry(TileIndex tile, IndustryType type)
 	Industry *i = NULL;
 	CommandCost ret = CreateNewIndustryHelper(tile, type, DC_EXEC, indspec, RandomRange(indspec->num_table), seed, OWNER_NONE, &i);
 	assert(i != NULL || ret.Failed());
-	ret.SetGlobalErrorMessage();
 	return i;
 }
 

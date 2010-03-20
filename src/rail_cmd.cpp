@@ -370,7 +370,6 @@ CommandCost CmdBuildSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 	switch (GetTileType(tile)) {
 		case MP_RAILWAY: {
 			CommandCost ret = CheckTileOwnership(tile);
-			ret.SetGlobalErrorMessage();
 			if (ret.Failed()) return ret;
 
 			if (!IsPlainRail(tile)) return CMD_ERROR;
@@ -379,7 +378,6 @@ CommandCost CmdBuildSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 
 			ret = CheckTrackCombination(tile, trackbit, flags);
 			if (ret.Succeeded()) ret = EnsureNoTrainOnTrack(tile, track);
-			ret.SetGlobalErrorMessage();
 			if (ret.Failed()) return ret;
 
 			ret = CheckRailSlope(tileh, trackbit, GetTrackBits(tile), tile);
@@ -415,7 +413,6 @@ CommandCost CmdBuildSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 #undef M
 
 			CommandCost ret = EnsureNoVehicleOnGround(tile);
-			ret.SetGlobalErrorMessage();
 			if (ret.Failed()) return ret;
 
 			if (IsNormalRoad(tile)) {
@@ -523,13 +520,11 @@ CommandCost CmdRemoveSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 
 			if (_current_company != OWNER_WATER) {
 				CommandCost ret = CheckTileOwnership(tile);
-				ret.SetGlobalErrorMessage();
 				if (ret.Failed()) return ret;
 			}
 
 			if (!(flags & DC_BANKRUPT)) {
 				CommandCost ret = EnsureNoVehicleOnGround(tile);
-				ret.SetGlobalErrorMessage();
 				if (ret.Failed()) return ret;
 			}
 
@@ -553,12 +548,10 @@ CommandCost CmdRemoveSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 
 			if (_current_company != OWNER_WATER) {
 				CommandCost ret = CheckTileOwnership(tile);
-				ret.SetGlobalErrorMessage();
 				if (ret.Failed()) return ret;
 			}
 
 			CommandCost ret = EnsureNoTrainOnTrack(tile, track);
-			ret.SetGlobalErrorMessage();
 			if (ret.Failed()) return ret;
 
 			present = GetTrackBits(tile);
@@ -758,7 +751,6 @@ static CommandCost CmdRailTrackHelper(TileIndex tile, DoCommandFlag flags, uint3
 	Trackdir trackdir = TrackToTrackdir(track);
 
 	CommandCost ret = ValidateAutoDrag(&trackdir, tile, end_tile);
-	ret.SetGlobalErrorMessage();
 	if (ret.Failed()) return ret;
 
 	if (flags & DC_EXEC) SndPlayTileFx(SND_20_SPLAT_2, tile);
@@ -770,7 +762,6 @@ static CommandCost CmdRailTrackHelper(TileIndex tile, DoCommandFlag flags, uint3
 
 		if (ret.Failed()) {
 			last_error = ret;
-			last_error.SetGlobalErrorMessage();
 			if (last_error.GetErrorMessage() != STR_ERROR_ALREADY_BUILT && !remove) {
 				if (HasBit(p2, 8)) return last_error;
 				break;
@@ -924,14 +915,12 @@ CommandCost CmdBuildSingleSignal(TileIndex tile, DoCommandFlag flags, uint32 p1,
 		return CMD_ERROR;
 	}
 	CommandCost ret = EnsureNoTrainOnTrack(tile, track);
-	ret.SetGlobalErrorMessage();
 	if (ret.Failed()) return ret;
 
 	/* Protect against invalid signal copying */
 	if (p2 != 0 && (p2 & SignalOnTrack(track)) == 0) return CMD_ERROR;
 
 	ret = CheckTileOwnership(tile);
-	ret.SetGlobalErrorMessage();
 	if (ret.Failed()) return ret;
 
 	{
@@ -1157,7 +1146,6 @@ static CommandCost CmdSignalTrackHelper(TileIndex tile, DoCommandFlag flags, uin
 	signal_density *= 2;
 
 	CommandCost ret = ValidateAutoDrag(&trackdir, tile, end_tile);
-	ret.SetGlobalErrorMessage();
 	if (ret.Failed()) return ret;
 
 	track = TrackdirToTrack(trackdir); // trackdir might have changed, keep track in sync
@@ -1222,7 +1210,6 @@ static CommandCost CmdSignalTrackHelper(TileIndex tile, DoCommandFlag flags, uin
 				total_cost.AddCost(ret);
 			} else {
 				last_error = ret;
-				last_error.SetGlobalErrorMessage();
 			}
 		}
 
@@ -1293,13 +1280,11 @@ CommandCost CmdRemoveSingleSignal(TileIndex tile, DoCommandFlag flags, uint32 p1
 		return CMD_ERROR;
 	}
 	CommandCost ret = EnsureNoTrainOnTrack(tile, track);
-	ret.SetGlobalErrorMessage();
 	if (ret.Failed()) return ret;
 
 	/* Only water can remove signals from anyone */
 	if (_current_company != OWNER_WATER) {
 		CommandCost ret = CheckTileOwnership(tile);
-		ret.SetGlobalErrorMessage();
 		if (ret.Failed()) return ret;
 	}
 
@@ -1563,7 +1548,6 @@ CommandCost CmdConvertRail(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 		}
 	}
 
-	error.SetGlobalErrorMessage();
 	return (cost.GetCost() == 0) ? error : cost;
 }
 
@@ -1571,12 +1555,10 @@ static CommandCost RemoveTrainDepot(TileIndex tile, DoCommandFlag flags)
 {
 	if (_current_company != OWNER_WATER) {
 		CommandCost ret = CheckTileOwnership(tile);
-		ret.SetGlobalErrorMessage();
 		if (ret.Failed()) return ret;
 	}
 
 	CommandCost ret = EnsureNoVehicleOnGround(tile);
-	ret.SetGlobalErrorMessage();
 	if (ret.Failed()) return ret;
 
 	if (flags & DC_EXEC) {
@@ -1634,7 +1616,6 @@ static CommandCost ClearTile_Track(TileIndex tile, DoCommandFlag flags)
 			/* when bankrupting, don't make water dirty, there could be a ship on lower halftile */
 			if (water_ground && !(flags & DC_BANKRUPT)) {
 				CommandCost ret = EnsureNoVehicleOnGround(tile);
-				ret.SetGlobalErrorMessage();
 				if (ret.Failed()) return ret;
 
 				/* The track was removed, and left a coast tile. Now also clear the water. */
@@ -2813,7 +2794,6 @@ static CommandCost TerraformTile_Track(TileIndex tile, DoCommandFlag flags, uint
 
 		/* First test autoslope. However if it succeeds we still have to test the rest, because non-autoslope terraforming is cheaper. */
 		CommandCost autoslope_result = TestAutoslopeOnRailTile(tile, flags, z_old, tileh_old, z_new, tileh_new, rail_bits);
-		autoslope_result.SetGlobalErrorMessage();
 
 		/* When there is only a single horizontal/vertical track, one corner can be terraformed. */
 		Corner allowed_corner;

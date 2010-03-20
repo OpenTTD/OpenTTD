@@ -29,8 +29,6 @@
 
 #include "table/strings.h"
 
-StringID _error_message; ///< Global error message. @see CommandCost::SetGlobalErrorMessage()
-
 CommandProc CmdBuildRailroadTrack;
 CommandProc CmdRemoveRailroadTrack;
 CommandProc CmdBuildSingleRail;
@@ -400,8 +398,6 @@ CommandCost DoCommand(TileIndex tile, uint32 p1, uint32 p2, DoCommandFlag flags,
 	/* Chop of any CMD_MSG or other flags; we don't need those here */
 	CommandProc *proc = _command_proc_table[cmd & CMD_ID_MASK].proc;
 
-	if (_docommand_recursive == 0) _error_message = INVALID_STRING_ID;
-
 	_docommand_recursive++;
 
 	/* only execute the test call if it's toplevel, or we're not execing. */
@@ -431,7 +427,6 @@ CommandCost DoCommand(TileIndex tile, uint32 p1, uint32 p2, DoCommandFlag flags,
 	res = proc(tile, flags, p1, p2, text);
 	if (res.Failed()) {
 error:
-		res.SetGlobalErrorMessage();
 		_docommand_recursive--;
 		return res;
 	}
@@ -506,8 +501,6 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallbac
 
 	CommandCost res = DoCommandPInternal(tile, p1, p2, cmd, callback, text, my_cmd, estimate_only);
 	if (res.Failed()) {
-		res.SetGlobalErrorMessage();
-
 		/* Only show the error when it's for us. */
 		StringID error_part1 = GB(cmd, 16, 16);
 		if (estimate_only || (IsLocalCompany() && error_part1 != 0 && my_cmd)) {
@@ -559,7 +552,6 @@ CommandCost DoCommandPInternal(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd,
 	_docommand_recursive = 1;
 
 	/* Reset the state. */
-	_error_message = INVALID_STRING_ID;
 	_additional_cash_required = 0;
 
 	/* Get pointer to command handler */

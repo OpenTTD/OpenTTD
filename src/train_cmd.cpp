@@ -1172,7 +1172,6 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 	if (src == NULL) return CMD_ERROR;
 
 	CommandCost ret = CheckOwnership(src->owner);
-	ret.SetGlobalErrorMessage();
 	if (ret.Failed()) return ret;
 
 	/* Do not allow moving crashed vehicles inside the depot, it is likely to cause asserts later */
@@ -1187,7 +1186,6 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 		if (dst == NULL) return CMD_ERROR;
 
 		CommandCost ret = CheckOwnership(dst->owner);
-		ret.SetGlobalErrorMessage();
 		if (ret.Failed()) return ret;
 
 		/* Do not allow appending to crashed vehicles, too */
@@ -1353,7 +1351,6 @@ CommandCost CmdSellRailWagon(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	if (v == NULL) return CMD_ERROR;
 
 	CommandCost ret = CheckOwnership(v->owner);
-	ret.SetGlobalErrorMessage();
 	if (ret.Failed()) return ret;
 
 	/* Sell a chain of vehicles or not? */
@@ -1830,7 +1827,6 @@ CommandCost CmdReverseTrainDirection(TileIndex tile, DoCommandFlag flags, uint32
 	if (v == NULL) return CMD_ERROR;
 
 	CommandCost ret = CheckOwnership(v->owner);
-	ret.SetGlobalErrorMessage();
 	if (ret.Failed()) return ret;
 
 	if (p2 != 0) {
@@ -1901,7 +1897,6 @@ CommandCost CmdForceTrainProceed(TileIndex tile, DoCommandFlag flags, uint32 p1,
 	if (t == NULL) return CMD_ERROR;
 
 	CommandCost ret = CheckOwnership(t->owner);
-	ret.SetGlobalErrorMessage();
 	if (ret.Failed()) return ret;
 
 
@@ -1939,7 +1934,6 @@ CommandCost CmdRefitRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 	if (v == NULL) return CMD_ERROR;
 
 	CommandCost ret = CheckOwnership(v->owner);
-	ret.SetGlobalErrorMessage();
 	if (ret.Failed()) return ret;
 
 	if (!v->IsStoppedInDepot()) return_cmd_error(STR_TRAIN_MUST_BE_STOPPED);

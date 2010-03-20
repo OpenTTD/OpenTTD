@@ -471,7 +471,6 @@ CommandCost CmdInsertOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	if (v == NULL) return CMD_ERROR;
 
 	CommandCost ret = CheckOwnership(v->owner);
-	ret.SetGlobalErrorMessage();
 	if (ret.Failed()) return ret;
 
 	/* Check if the inserted order is to the correct destination (owner, type),
@@ -483,7 +482,6 @@ CommandCost CmdInsertOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 
 			if (st->owner != OWNER_NONE) {
 				CommandCost ret = CheckOwnership(st->owner);
-				ret.SetGlobalErrorMessage();
 				if (ret.Failed()) return ret;
 			}
 
@@ -532,7 +530,6 @@ CommandCost CmdInsertOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 					if (st == NULL) return CMD_ERROR;
 
 					CommandCost ret = CheckOwnership(st->owner);
-					ret.SetGlobalErrorMessage();
 					if (ret.Failed()) return ret;
 
 					if (!CanVehicleUseStation(v, st) || !st->airport.HasHangar()) {
@@ -544,7 +541,6 @@ CommandCost CmdInsertOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 					if (dp == NULL) return CMD_ERROR;
 
 					CommandCost ret = CheckOwnership(GetTileOwner(dp->xy));
-					ret.SetGlobalErrorMessage();
 					if (ret.Failed()) return ret;
 
 					switch (v->type) {
@@ -585,7 +581,6 @@ CommandCost CmdInsertOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 					if (!(wp->facilities & FACIL_TRAIN)) return_cmd_error(STR_ERROR_CAN_T_ADD_ORDER);
 
 					CommandCost ret = CheckOwnership(wp->owner);
-					ret.SetGlobalErrorMessage();
 					if (ret.Failed()) return ret;
 					break;
 				}
@@ -594,7 +589,6 @@ CommandCost CmdInsertOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 					if (!(wp->facilities & FACIL_DOCK)) return_cmd_error(STR_ERROR_CAN_T_ADD_ORDER);
 					if (wp->owner != OWNER_NONE) {
 						CommandCost ret = CheckOwnership(wp->owner);
-						ret.SetGlobalErrorMessage();
 						if (ret.Failed()) return ret;
 					}
 					break;
@@ -756,7 +750,6 @@ CommandCost CmdDeleteOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	if (v == NULL) return CMD_ERROR;
 
 	CommandCost ret = CheckOwnership(v->owner);
-	ret.SetGlobalErrorMessage();
 	if (ret.Failed()) return ret;
 
 	/* If we did not select an order, we maybe want to de-clone the orders */
@@ -826,7 +819,6 @@ CommandCost CmdSkipToOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	if (v == NULL || sel_ord == v->cur_order_index || sel_ord >= v->GetNumOrders() || v->GetNumOrders() < 2) return CMD_ERROR;
 
 	CommandCost ret = CheckOwnership(v->owner);
-	ret.SetGlobalErrorMessage();
 	if (ret.Failed()) return ret;
 
 	if (flags & DC_EXEC) {
@@ -867,7 +859,6 @@ CommandCost CmdMoveOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	if (v == NULL) return CMD_ERROR;
 
 	CommandCost ret = CheckOwnership(v->owner);
-	ret.SetGlobalErrorMessage();
 	if (ret.Failed()) return ret;
 
 	/* Don't make senseless movements */
@@ -951,7 +942,6 @@ CommandCost CmdModifyOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	if (v == NULL) return CMD_ERROR;
 
 	CommandCost ret = CheckOwnership(v->owner);
-	ret.SetGlobalErrorMessage();
 	if (ret.Failed()) return ret;
 
 	/* Is it a valid order? */
@@ -1178,7 +1168,6 @@ CommandCost CmdCloneOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 	if (dst == NULL) return CMD_ERROR;
 
 	CommandCost ret = CheckOwnership(dst->owner);
-	ret.SetGlobalErrorMessage();
 	if (ret.Failed()) return ret;
 
 	switch (p2) {
@@ -1189,7 +1178,6 @@ CommandCost CmdCloneOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 			if (src == NULL || dst->type != src->type || dst == src) return CMD_ERROR;
 
 			CommandCost ret = CheckOwnership(src->owner);
-			ret.SetGlobalErrorMessage();
 			if (ret.Failed()) return ret;
 
 			/* Trucks can't share orders with busses (and visa versa) */
@@ -1232,7 +1220,6 @@ CommandCost CmdCloneOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 			if (src == NULL || dst->type != src->type || dst == src) return CMD_ERROR;
 
 			CommandCost ret = CheckOwnership(src->owner);
-			ret.SetGlobalErrorMessage();
 			if (ret.Failed()) return ret;
 
 			/* Trucks can't copy all the orders from busses (and visa versa),
@@ -1310,7 +1297,6 @@ CommandCost CmdOrderRefit(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 	if (v == NULL) return CMD_ERROR;
 
 	CommandCost ret = CheckOwnership(v->owner);
-	ret.SetGlobalErrorMessage();
 	if (ret.Failed()) return ret;
 
 	Order *order = v->GetOrder(order_number);
@@ -1466,7 +1452,6 @@ CommandCost CmdRestoreOrderIndex(TileIndex tile, DoCommandFlag flags, uint32 p1,
 	if (v == NULL) return CMD_ERROR;
 
 	CommandCost ret = CheckOwnership(v->owner);
-	ret.SetGlobalErrorMessage();
 	if (ret.Failed()) return ret;
 
 	if (serv_int != GetServiceIntervalClamped(serv_int, v->owner) || cur_ord >= v->GetNumOrders()) return CMD_ERROR;

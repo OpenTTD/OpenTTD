@@ -90,16 +90,6 @@ public:
 	}
 
 	/**
-	 * Sets the global error message *if* this class has one.
-	 * @see _error_message
-	 */
-	FORCEINLINE void SetGlobalErrorMessage() const
-	{
-		extern StringID _error_message;
-		if (this->message != INVALID_STRING_ID) _error_message = this->message;
-	}
-
-	/**
 	 * Makes this #CommandCost behave like an error command.
 	 * @param message The error message.
 	 */
@@ -112,15 +102,12 @@ public:
 
 	/**
 	 * Returns the error message of a command
-	 * @return the error message, if succeeded INVALID_STRING_ID
+	 * @return the error message, if succeeded #INVALID_STRING_ID
 	 */
 	StringID GetErrorMessage() const
 	{
-		extern StringID _error_message;
-
 		if (this->success) return INVALID_STRING_ID;
-		if (this->message != INVALID_STRING_ID) return this->message;
-		return _error_message;
+		return this->message;
 	}
 
 	/**

@@ -166,7 +166,6 @@ static CommandCost RemoveShipDepot(TileIndex tile, DoCommandFlag flags)
 	if (!IsShipDepot(tile)) return CMD_ERROR;
 
 	CommandCost ret = CheckTileOwnership(tile);
-	ret.SetGlobalErrorMessage();
 	if (ret.Failed()) return ret;
 
 	TileIndex tile2 = GetOtherShipDepotTile(tile);
@@ -175,7 +174,6 @@ static CommandCost RemoveShipDepot(TileIndex tile, DoCommandFlag flags)
 	if (!(flags & DC_BANKRUPT)) {
 		CommandCost ret = EnsureNoVehicleOnGround(tile);
 		if (ret.Succeeded()) ret = EnsureNoVehicleOnGround(tile2);
-		ret.SetGlobalErrorMessage();
 		if (ret.Failed()) return ret;
 	}
 
@@ -240,7 +238,6 @@ static CommandCost RemoveShiplift(TileIndex tile, DoCommandFlag flags)
 {
 	if (GetTileOwner(tile) != OWNER_NONE) {
 		CommandCost ret = CheckTileOwnership(tile);
-		ret.SetGlobalErrorMessage();
 		if (ret.Failed()) return ret;
 	}
 
@@ -250,7 +247,6 @@ static CommandCost RemoveShiplift(TileIndex tile, DoCommandFlag flags)
 	CommandCost ret = EnsureNoVehicleOnGround(tile);
 	if (ret.Succeeded()) ret = EnsureNoVehicleOnGround(tile + delta);
 	if (ret.Succeeded()) ret = EnsureNoVehicleOnGround(tile - delta);
-	ret.SetGlobalErrorMessage();
 	if (ret.Failed()) return ret;
 
 	if (flags & DC_EXEC) {
@@ -357,12 +353,10 @@ static CommandCost ClearTile_Water(TileIndex tile, DoCommandFlag flags)
 
 			/* Make sure no vehicle is on the tile */
 			CommandCost ret = EnsureNoVehicleOnGround(tile);
-			ret.SetGlobalErrorMessage();
 			if (ret.Failed()) return ret;
 
 			if (GetTileOwner(tile) != OWNER_WATER && GetTileOwner(tile) != OWNER_NONE) {
 				CommandCost ret = CheckTileOwnership(tile);
-				ret.SetGlobalErrorMessage();
 				if (ret.Failed()) return ret;
 			}
 
@@ -378,7 +372,6 @@ static CommandCost ClearTile_Water(TileIndex tile, DoCommandFlag flags)
 
 			/* Make sure no vehicle is on the tile */
 			CommandCost ret = EnsureNoVehicleOnGround(tile);
-			ret.SetGlobalErrorMessage();
 			if (ret.Failed()) return ret;
 
 			if (flags & DC_EXEC) {

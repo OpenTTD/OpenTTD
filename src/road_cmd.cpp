@@ -132,7 +132,6 @@ CommandCost CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, Owner owner, R
 	if (owner != OWNER_TOWN) {
 		if (owner == OWNER_NONE) return CommandCost();
 		CommandCost ret = CheckOwnership(owner);
-		ret.SetGlobalErrorMessage();
 		return ret;
 	}
 
@@ -146,7 +145,6 @@ CommandCost CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, Owner owner, R
 	/* check if you're allowed to remove the street owned by a town
 	 * removal allowance depends on difficulty setting */
 	CommandCost ret = CheckforTownRating(flags, t, ROAD_REMOVE);
-	ret.SetGlobalErrorMessage();
 	if (ret.Failed()) return ret;
 
 	/* Get a bitmask of which neighbouring roads has a tile */
@@ -191,7 +189,6 @@ static CommandCost RemoveRoad(TileIndex tile, DoCommandFlag flags, RoadBits piec
 	switch (GetTileType(tile)) {
 		case MP_ROAD: {
 			CommandCost ret = EnsureNoVehicleOnGround(tile);
-			ret.SetGlobalErrorMessage();
 			if (ret.Failed()) return ret;
 		} break;
 
@@ -199,14 +196,12 @@ static CommandCost RemoveRoad(TileIndex tile, DoCommandFlag flags, RoadBits piec
 			if (!IsDriveThroughStopTile(tile)) return CMD_ERROR;
 
 			CommandCost ret = EnsureNoVehicleOnGround(tile);
-			ret.SetGlobalErrorMessage();
 			if (ret.Failed()) return ret;
 		} break;
 
 		case MP_TUNNELBRIDGE: {
 			if (GetTunnelBridgeTransportType(tile) != TRANSPORT_ROAD) return CMD_ERROR;
 			CommandCost ret = TunnelBridgeIsFree(tile, GetOtherTunnelBridgeEnd(tile));
-			ret.SetGlobalErrorMessage();
 			if (ret.Failed()) return ret;
 		} break;
 
@@ -215,7 +210,6 @@ static CommandCost RemoveRoad(TileIndex tile, DoCommandFlag flags, RoadBits piec
 	}
 
 	CommandCost ret = CheckAllowRemoveRoad(tile, pieces, GetRoadOwner(tile, rt), rt, flags, town_check);
-	ret.SetGlobalErrorMessage();
 	if (ret.Failed()) return ret;
 
 	if (!IsTileType(tile, MP_ROAD)) {
@@ -506,12 +500,10 @@ CommandCost CmdBuildRoad(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 							Owner owner = GetRoadOwner(tile, ROADTYPE_ROAD);
 							if (owner != OWNER_NONE) {
 								CommandCost ret = CheckOwnership(owner, tile);
-								ret.SetGlobalErrorMessage();
 								if (ret.Failed()) return ret;
 							}
 
 							CommandCost ret = EnsureNoVehicleOnGround(tile);
-							ret.SetGlobalErrorMessage();
 							if (ret.Failed()) return ret;
 
 							/* Ignore half built tiles */
@@ -569,7 +561,6 @@ CommandCost CmdBuildRoad(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 			}
 
 			CommandCost ret = EnsureNoVehicleOnGround(tile);
-			ret.SetGlobalErrorMessage();
 			if (ret.Failed()) return ret;
 
 			if (flags & DC_EXEC) {
@@ -602,7 +593,6 @@ CommandCost CmdBuildRoad(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 			if (HasTileRoadType(tile, rt)) return_cmd_error(STR_ERROR_ALREADY_BUILT);
 			/* Don't allow adding roadtype to the bridge/tunnel when vehicles are already driving on it */
 			CommandCost ret = TunnelBridgeIsFree(tile, GetOtherTunnelBridgeEnd(tile));
-			ret.SetGlobalErrorMessage();
 			if (ret.Failed()) return ret;
 		} break;
 
@@ -650,7 +640,6 @@ do_clear:;
 
 	if (!tile_cleared) {
 		CommandCost ret = EnsureNoVehicleOnGround(tile);
-		ret.SetGlobalErrorMessage();
 		if (ret.Failed()) return ret;
 	}
 
@@ -778,7 +767,6 @@ CommandCost CmdBuildLongRoad(TileIndex start_tile, DoCommandFlag flags, uint32 p
 		CommandCost ret = DoCommand(tile, drd << 6 | rt << 4 | bits, 0, flags, CMD_BUILD_ROAD);
 		if (ret.Failed()) {
 			last_error = ret;
-			last_error.SetGlobalErrorMessage();
 			if (last_error.GetErrorMessage() != STR_ERROR_ALREADY_BUILT) {
 				if (HasBit(p2, 6)) return last_error;
 				break;
@@ -934,12 +922,10 @@ static CommandCost RemoveRoadDepot(TileIndex tile, DoCommandFlag flags)
 {
 	if (_current_company != OWNER_WATER) {
 		CommandCost ret = CheckTileOwnership(tile);
-		ret.SetGlobalErrorMessage();
 		if (ret.Failed()) return ret;
 	}
 
 	CommandCost ret = EnsureNoVehicleOnGround(tile);
-	ret.SetGlobalErrorMessage();
 	if (ret.Failed()) return ret;
 
 	if (flags & DC_EXEC) {
