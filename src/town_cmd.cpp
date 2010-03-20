@@ -2677,7 +2677,13 @@ CommandCost CheckIfAuthorityAllowsNewStation(TileIndex tile, DoCommandFlag flags
 	return_cmd_error(STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS);
 }
 
-
+/** Return the town closest to the given tile within \a threshold.
+ * @param tile      Starting point of the search.
+ * @param threshold Biggest allowed distance to the town.
+ * @return Closest town to \a tile withinh \a threshold, or \c NULL if there is no such town.
+ *
+ * @note This function only uses distance, the #ClosestTownFromTile function also takes town ownership into account.
+ */
 Town *CalcClosestTownFromTile(TileIndex tile, uint threshold)
 {
 	Town *t;

@@ -66,8 +66,10 @@ void ResetBridges()
 	memcpy(&_bridge, &_orig_bridge, sizeof(_orig_bridge));
 }
 
-/** calculate the price factor for building a long bridge.
- * basically the cost delta is 1,1, 1, 2,2, 3,3,3, 4,4,4,4, 5,5,5,5,5, 6,6,6,6,6,6,  7,7,7,7,7,7,7,  8,8,8,8,8,8,8,8,
+/** Calculate the price factor for building a long bridge.
+ * Basically the cost delta is 1,1, 1, 2,2, 3,3,3, 4,4,4,4, 5,5,5,5,5, 6,6,6,6,6,6,  7,7,7,7,7,7,7,  8,8,8,8,8,8,8,8,
+ * @param length Length of the bridge.
+ * @return Price factor for the bridge.
  */
 int CalcBridgeLenCostFactor(int x)
 {
@@ -630,6 +632,11 @@ static inline CommandCost CheckAllowRemoveTunnelBridge(TileIndex tile)
 	}
 }
 
+/** Remove a tunnel from the game, update town rating, etc.
+ * @param tile Tile containing one of the endpoints of the tunnel.
+ * @param flags Command flags.
+ * @return Succeeded or failed command.
+ */
 static CommandCost DoClearTunnel(TileIndex tile, DoCommandFlag flags)
 {
 	Town *t = NULL;
@@ -696,6 +703,11 @@ static CommandCost DoClearTunnel(TileIndex tile, DoCommandFlag flags)
 }
 
 
+/** Remove a bridge from the game, update town rating, etc.
+ * @param tile Tile containing one of the endpoints of the bridge.
+ * @param flags Command flags.
+ * @return Succeeded or failed command.
+ */
 static CommandCost DoClearBridge(TileIndex tile, DoCommandFlag flags)
 {
 	DiagDirection direction;
@@ -772,6 +784,11 @@ static CommandCost DoClearBridge(TileIndex tile, DoCommandFlag flags)
 	return CommandCost(EXPENSES_CONSTRUCTION, (GetTunnelBridgeLength(tile, endtile) + 2) * _price[PR_CLEAR_BRIDGE]);
 }
 
+/** Remove a tunnel or a bridge from the game.
+ * @param tile Tile containing one of the endpoints.
+ * @param flags Command flags.
+ * @return Succeeded or failed command.
+ */
 static CommandCost ClearTile_TunnelBridge(TileIndex tile, DoCommandFlag flags)
 {
 	if (IsTunnel(tile)) {

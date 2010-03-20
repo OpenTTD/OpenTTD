@@ -274,7 +274,7 @@ static CommandCost GetRefitCost(EngineID engine_type)
  * @param new_cid      Cargotype to refit to
  * @param new_subtype  Cargo subtype to refit to
  * @param flags        Command flags
- * @return refit cost; or CMD_ERROR if no vehicle was actually refitable to the cargo
+ * @return Refit cost.
  */
 CommandCost RefitVehicle(Vehicle *v, bool only_this, CargoID new_cid, byte new_subtype, DoCommandFlag flags)
 {
