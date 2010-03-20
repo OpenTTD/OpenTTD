@@ -1053,7 +1053,7 @@ private:
 public:
 	FoundTownWindow(const WindowDesc *desc, WindowNumber window_number) :
 			QueryStringBaseWindow(MAX_LENGTH_TOWN_NAME_BYTES),
-			town_size(TS_MEDIUM),
+			town_size(TSZ_MEDIUM),
 			town_layout(_settings_game.economy.town_layout),
 			params(_settings_game.game_creation.town_name)
 	{

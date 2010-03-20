@@ -19,10 +19,10 @@ struct Town;
 
 /** Supported initial town sizes */
 enum TownSize {
-	TS_SMALL,  ///< small town
-	TS_MEDIUM, ///< medium town
-	TS_LARGE,  ///< large town
-	TS_RANDOM, ///< random size, bigger than small, smaller than large
+	TSZ_SMALL,  ///< Small town.
+	TSZ_MEDIUM, ///< Medium town.
+	TSZ_LARGE,  ///< Large town.
+	TSZ_RANDOM, ///< Random size, bigger than small, smaller than large.
 };
 
 enum {
