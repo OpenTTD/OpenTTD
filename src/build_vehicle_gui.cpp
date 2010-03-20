@@ -1161,8 +1161,9 @@ struct BuildVehicleWindow : Window {
 				needed_height = max(needed_height, text_end - (int)nwi->pos_y + WD_FRAMERECT_BOTTOM);
 			}
 			if (needed_height != this->details_height) { // Details window are not high enough, enlarge them.
+				int resize = needed_height - this->details_height;
 				this->details_height = needed_height;
-				this->ReInit();
+				this->ReInit(0, resize);
 				return;
 			}
 		}
