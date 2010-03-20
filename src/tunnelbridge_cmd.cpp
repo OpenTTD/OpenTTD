@@ -793,8 +793,6 @@ static CommandCost ClearTile_TunnelBridge(TileIndex tile, DoCommandFlag flags)
 		if (flags & DC_AUTO) return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
 		return DoClearBridge(tile, flags);
 	}
-
-	return CMD_ERROR;
 }
 
 /**
