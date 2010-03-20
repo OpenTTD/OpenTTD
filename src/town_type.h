@@ -23,6 +23,8 @@ enum TownSize {
 	TSZ_MEDIUM, ///< Medium town.
 	TSZ_LARGE,  ///< Large town.
 	TSZ_RANDOM, ///< Random size, bigger than small, smaller than large.
+
+	TSZ_END,    ///< Number of available town sizes.
 };
 
 enum {

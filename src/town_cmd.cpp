@@ -1525,8 +1525,8 @@ CommandCost CmdFoundTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	bool random = HasBit(p1, 6);
 	uint32 townnameparts = p2;
 
-	if (size > TSZ_RANDOM) return CMD_ERROR;
-	if (layout > TL_RANDOM) return CMD_ERROR;
+	if (size >= TSZ_END) return CMD_ERROR;
+	if (layout >= NUM_TLS) return CMD_ERROR;
 
 	/* Some things are allowed only in the scenario editor */
 	if (_game_mode != GM_EDITOR) {
