@@ -848,6 +848,8 @@ CommandCost CmdRemoveLongRoad(TileIndex start_tile, DoCommandFlag flags, uint32 
 
 	Money money = GetAvailableMoneyForCommand();
 	TileIndex tile = start_tile;
+	CommandCost last_error = CMD_ERROR;
+	bool had_success = false;
 	/* Start tile is the small number. */
 	for (;;) {
 		RoadBits bits = AxisToRoadBits(axis);
@@ -868,6 +870,9 @@ CommandCost CmdRemoveLongRoad(TileIndex start_tile, DoCommandFlag flags, uint32 
 					RemoveRoad(tile, flags, bits, rt, true, false);
 				}
 				cost.AddCost(ret);
+				had_success = true;
+			} else {
+				last_error = ret;
 			}
 		}
 
@@ -876,7 +881,7 @@ CommandCost CmdRemoveLongRoad(TileIndex start_tile, DoCommandFlag flags, uint32 
 		tile += (axis == AXIS_Y) ? TileDiffXY(0, 1) : TileDiffXY(1, 0);
 	}
 
-	return (cost.GetCost() == 0) ? CMD_ERROR : cost;
+	return had_success ? cost : last_error;
 }
 
 /** Build a road depot.
