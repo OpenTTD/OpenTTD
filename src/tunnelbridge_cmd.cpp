@@ -73,15 +73,16 @@ void ResetBridges()
  */
 int CalcBridgeLenCostFactor(int length)
 {
-	int n;
-	int r;
-
 	if (length < 2) return length;
+
 	length -= 2;
-	for (n = 0, r = 2;; n++) {
-		if (length <= n) return r + length * n;
-		r += n * n;
-		length -= n;
+	int sum = 2;
+	for (int delta = 1;; delta++) {
+		for (int count = 0; count < delta; count++) {
+			if (length == 0) return sum;
+			sum += delta;
+			length--;
+		}
 	}
 }
 
