@@ -71,17 +71,17 @@ void ResetBridges()
  * @param length Length of the bridge.
  * @return Price factor for the bridge.
  */
-int CalcBridgeLenCostFactor(int x)
+int CalcBridgeLenCostFactor(int length)
 {
 	int n;
 	int r;
 
-	if (x < 2) return x;
-	x -= 2;
+	if (length < 2) return length;
+	length -= 2;
 	for (n = 0, r = 2;; n++) {
-		if (x <= n) return r + x * n;
+		if (length <= n) return r + length * n;
 		r += n * n;
-		x -= n;
+		length -= n;
 	}
 }
 
