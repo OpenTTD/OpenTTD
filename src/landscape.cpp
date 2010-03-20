@@ -624,14 +624,18 @@ CommandCost CmdClearArea(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 
 	Money money = GetAvailableMoneyForCommand();
 	CommandCost cost(EXPENSES_CONSTRUCTION);
-	bool success = false;
+	CommandCost last_error = CMD_ERROR;
+	bool had_success = false;
 
 	for (int x = sx; x <= ex; ++x) {
 		for (int y = sy; y <= ey; ++y) {
 			CommandCost ret = DoCommand(TileXY(x, y), 0, 0, flags & ~DC_EXEC, CMD_LANDSCAPE_CLEAR);
-			if (ret.Failed()) continue;
-			success = true;
+			if (ret.Failed()) {
+				last_error = ret;
+				continue;
+			}
 
+			had_success = true;
 			if (flags & DC_EXEC) {
 				money -= ret.GetCost();
 				if (ret.GetCost() > 0 && money < 0) {
@@ -652,7 +656,7 @@ CommandCost CmdClearArea(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 		}
 	}
 
-	return (success) ? cost : CMD_ERROR;
+	return had_success ? cost : last_error;
 }
 
 
