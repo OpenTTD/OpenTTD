@@ -789,7 +789,6 @@ static CommandCost CmdRailTrackHelper(TileIndex tile, DoCommandFlag flags, uint3
 	}
 
 	if (had_success) return total_cost;
-	if (remove) return CMD_ERROR;
 	return last_error;
 }
 
