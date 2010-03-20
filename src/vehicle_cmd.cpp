@@ -187,13 +187,19 @@ CommandCost CmdDepotSellAllVehicles(TileIndex tile, DoCommandFlag flags, uint32 
 	/* Get the list of vehicles in the depot */
 	BuildDepotVehicleList(vehicle_type, tile, &list, &list);
 
+	CommandCost last_error = CMD_ERROR;
+	bool had_success = false;
 	for (uint i = 0; i < list.Length(); i++) {
 		CommandCost ret = DoCommand(tile, list[i]->index, 1, flags, sell_command);
-		if (ret.Succeeded()) cost.AddCost(ret);
+		if (ret.Succeeded()) {
+			cost.AddCost(ret);
+			had_success = true;
+		} else {
+			last_error = ret;
+		}
 	}
 
-	if (cost.GetCost() == 0) return CMD_ERROR; // no vehicles to sell
-	return cost;
+	return had_success ? cost : last_error;
 }
 
 /**
