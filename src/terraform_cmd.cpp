@@ -379,13 +379,18 @@ CommandCost CmdLevelLand(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 
 	Money money = GetAvailableMoneyForCommand();
 	CommandCost cost(EXPENSES_CONSTRUCTION);
+	CommandCost last_error((p2 == 0) ? STR_ERROR_ALREADY_LEVELLED : INVALID_STRING_ID);
+	bool had_success = false;
 
 	TileArea ta(tile, p1);
 	TILE_AREA_LOOP(tile, ta) {
 		uint curh = TileHeight(tile);
 		while (curh != h) {
 			CommandCost ret = DoCommand(tile, SLOPE_N, (curh > h) ? 0 : 1, flags & ~DC_EXEC, CMD_TERRAFORM_LAND);
-			if (ret.Failed()) return (cost.GetCost() == 0) ? ret : cost;
+			if (ret.Failed()) {
+				last_error = ret;
+				break;
+			}
 
 			if (flags & DC_EXEC) {
 				money -= ret.GetCost();
@@ -398,13 +403,9 @@ CommandCost CmdLevelLand(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 
 			cost.AddCost(ret);
 			curh += (curh > h) ? -1 : 1;
+			had_success = true;
 		}
 	}
 
-	if (cost.GetCost() == 0) {
-		if (p2 != 0) return CMD_ERROR;
-		cost.MakeError(STR_ERROR_ALREADY_LEVELLED);
-		cost.SetGlobalErrorMessage();
-	}
-	return cost;
+	return had_success ? cost : last_error;
 }
