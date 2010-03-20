@@ -204,42 +204,6 @@ static inline IndustryGfx GetTranslatedIndustryTileID(IndustryGfx gfx)
 	}
 }
 
-extern uint16 _industry_counts[NUM_INDUSTRYTYPES]; // Number of industries per type ingame
-
-/** Increment the count of industries for this type
- * @param type IndustryType to increment
- * @pre type < INVALID_INDUSTRYTYPE */
-static inline void IncIndustryTypeCount(IndustryType type)
-{
-	assert(type < INVALID_INDUSTRYTYPE);
-	_industry_counts[type]++;
-}
-
-/** Decrement the count of industries for this type
- * @param type IndustryType to decrement
- * @pre type < INVALID_INDUSTRYTYPE */
-static inline void DecIndustryTypeCount(IndustryType type)
-{
-	assert(type < INVALID_INDUSTRYTYPE);
-	_industry_counts[type]--;
-}
-
-/** get the count of industries for this type
- * @param type IndustryType to query
- * @pre type < INVALID_INDUSTRYTYPE */
-static inline uint8 GetIndustryTypeCount(IndustryType type)
-{
-	assert(type < INVALID_INDUSTRYTYPE);
-	return min(_industry_counts[type], 0xFF); // callback expects only a byte, so cut it
-}
-
-/** Resets both the total_industries and the _industry_counts
- * This way, we centralize all counts activities */
-static inline void ResetIndustryCounts()
-{
-	memset(&_industry_counts, 0, sizeof(_industry_counts));
-}
-
 static const uint8 IT_INVALID = 255;
 
 #endif /* INDUSTRYTYPE_H */

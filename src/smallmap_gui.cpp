@@ -1092,8 +1092,7 @@ public:
 						/* Industry name must be formatted, since it's not in tiny font in the specs.
 						 * So, draw with a parameter and use the STR_SMALLMAP_INDUSTRY string, which is tiny font */
 						SetDParam(0, tbl->legend);
-						assert(tbl->type < NUM_INDUSTRYTYPES);
-						SetDParam(1, _industry_counts[tbl->type]);
+						SetDParam(1, Industry::GetIndustryTypeCount(tbl->type));
 						if (!tbl->show_on_map) {
 							/* Simply draw the string, not the black border of the legend colour.
 							 * This will enforce the idea of the disabled item */

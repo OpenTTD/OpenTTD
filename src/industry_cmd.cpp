@@ -56,7 +56,7 @@ void BuildOilRig(TileIndex tile);
 static byte _industry_sound_ctr;
 static TileIndex _industry_sound_tile;
 
-uint16 _industry_counts[NUM_INDUSTRYTYPES]; ///< Number of industries per type ingame
+uint16 Industry::counts[NUM_INDUSTRYTYPES];
 
 IndustrySpec _industry_specs[NUM_INDUSTRYTYPES];
 IndustryTileSpec _industry_tile_specs[NUM_INDUSTRYTILES];
@@ -134,7 +134,8 @@ Industry::~Industry()
 	if (CleaningPool()) return;
 
 	/* Industry can also be destroyed when not fully initialized.
-	 * This means that we do not have to clear tiles either. */
+	 * This means that we do not have to clear tiles either.
+	 * Also we must not decrement industry counts in that case. */
 	if (this->location.w == 0) return;
 
 	TILE_AREA_LOOP(tile_cur, this->location) {
@@ -1584,7 +1585,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const Ind
 
 	i->location = TileArea(tile, 1, 1);
 	i->type = type;
-	IncIndustryTypeCount(type);
+	Industry::IncIndustryTypeCount(type);
 
 	i->produced_cargo[0] = indspec->produced_cargo[0];
 	i->produced_cargo[1] = indspec->produced_cargo[1];
@@ -2059,7 +2060,7 @@ static bool CheckIndustryCloseDownProtection(IndustryType type)
 
 	/* oil wells (or the industries with that flag set) are always allowed to closedown */
 	if ((indspec->behaviour & INDUSTRYBEH_DONT_INCR_PROD) && _settings_game.game_creation.landscape == LT_TEMPERATE) return false;
-	return (indspec->behaviour & INDUSTRYBEH_CANCLOSE_LASTINSTANCE) == 0 && GetIndustryTypeCount(type) <= 1;
+	return (indspec->behaviour & INDUSTRYBEH_CANCLOSE_LASTINSTANCE) == 0 && Industry::GetIndustryTypeCount(type) <= 1;
 }
 
 /**
@@ -2469,7 +2470,7 @@ void InitializeIndustries()
 {
 	_industry_pool.CleanPool();
 
-	ResetIndustryCounts();
+	Industry::ResetIndustryCounts();
 	_industry_sound_tile = 0;
 }
 

@@ -135,7 +135,7 @@ static uint32 GetCountAndDistanceOfClosestInstance(byte param_setID, byte layout
 		/* If the filter is 0, it could be because none was specified as well as being really a 0.
 		 * In either case, just do the regular var67 */
 		closest_dist = GetClosestIndustry(current->location.tile, ind_index, current);
-		count = GetIndustryTypeCount(ind_index);
+		count = min(Industry::GetIndustryTypeCount(ind_index), UINT8_MAX); // clamp to 8 bit
 	} else {
 		/* Count only those who match the same industry type and layout filter
 		 * Unfortunately, we have to do it manually */
@@ -465,7 +465,7 @@ CommandCost CheckIfCallBackAllowsCreation(TileIndex tile, IndustryType type, uin
 	Industry ind;
 	ind.index = INVALID_INDUSTRY;
 	ind.location.tile = tile;
-	ind.location.w = 0;
+	ind.location.w = 0; // important to mark the industry invalid
 	ind.type = type;
 	ind.selected_layout = layout;
 	ind.town = ClosestTownFromTile(tile, UINT_MAX);

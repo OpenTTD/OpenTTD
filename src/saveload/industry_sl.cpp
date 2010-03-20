@@ -107,12 +107,12 @@ static void Load_INDY()
 {
 	int index;
 
-	ResetIndustryCounts();
+	Industry::ResetIndustryCounts();
 
 	while ((index = SlIterateArray()) != -1) {
 		Industry *i = new (index) Industry();
 		SlObject(i, _industry_desc);
-		IncIndustryTypeCount(i->type);
+		Industry::IncIndustryTypeCount(i->type);
 	}
 }
 

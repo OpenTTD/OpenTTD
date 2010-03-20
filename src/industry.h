@@ -78,6 +78,48 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 
 	static Industry *GetRandom();
 	static void PostDestructor(size_t index);
+
+	/**
+	 * Increment the count of industries for this type.
+	 * @param type IndustryType to increment
+	 * @pre type < NUM_INDUSTRYTYPES
+	 */
+	static inline void IncIndustryTypeCount(IndustryType type)
+	{
+		assert(type < NUM_INDUSTRYTYPES);
+		counts[type]++;
+	}
+
+	/**
+	 * Decrement the count of industries for this type.
+	 * @param type IndustryType to decrement
+	 * @pre type < NUM_INDUSTRYTYPES
+	 */
+	static inline void DecIndustryTypeCount(IndustryType type)
+	{
+		assert(type < NUM_INDUSTRYTYPES);
+		counts[type]--;
+	}
+
+	/**
+	 * Get the count of industries for this type.
+	 * @param type IndustryType to query
+	 * @pre type < NUM_INDUSTRYTYPES
+	 */
+	static inline uint16 GetIndustryTypeCount(IndustryType type)
+	{
+		assert(type < NUM_INDUSTRYTYPES);
+		return counts[type];
+	}
+
+	/** Resets industry counts. */
+	static inline void ResetIndustryCounts()
+	{
+		memset(&counts, 0, sizeof(counts));
+	}
+
+protected:
+	static uint16 counts[NUM_INDUSTRYTYPES]; ///< Number of industries per type ingame
 };
 
 void PlantRandomFarmField(const Industry *i);
