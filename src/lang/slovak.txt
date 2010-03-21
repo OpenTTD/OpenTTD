@@ -1170,7 +1170,6 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :žiadny
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :normálny
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :vyhladávací
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Umožniť viac priemyslu rovnakého typu pri jednom meste: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SAMEINDCLOSE                                 :{LTBLUE}Rovnaky priemysel moze byt stavany blizko seba: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Vždy zobraziť dlhý formát dátumu v stavovej lište: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Zobraziť železničné signály na tej strane, ako jazdia vozidlá: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Zobraziť rozpočet na konci roku: {ORANGE}{STRING}

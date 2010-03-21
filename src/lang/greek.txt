@@ -1198,7 +1198,6 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :κανένα
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :όπως σε άλλες βιομηχανίες
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :επικείμενη
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Επιτρέπονται πολλαπλές όμοιες βιομηχανίες ανα πόλη: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SAMEINDCLOSE                                 :{LTBLUE}Βιομηχανίες ίδου τύπου μπορούν να χτιστούν κοντά η μία στην άλλη: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Εμφάνιση ολόκληρης ημερομηνίας στη γραμμή κατάστασης: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Εμφάνιση σήμανσης στην πλευρά οδήγησης: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Εμφάνιση παράθυρου οικονομικών στο τέλος του έτους: {ORANGE}{STRING}

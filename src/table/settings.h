@@ -429,7 +429,7 @@ const SettingDesc _settings[] = {
 	    SDT_BOOL(GameSettings, economy.inflation,                                                   0, 0,  true,                    STR_CONFIG_SETTING_INFLATION,              NULL),
 	     SDT_VAR(GameSettings, construction.raw_industry_construction, SLE_UINT8,                   0,MS,     0,     0,       2, 0, STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD, InvalidateBuildIndustryWindow),
 	    SDT_BOOL(GameSettings, economy.multiple_industry_per_town,                                  0, 0, false,                    STR_CONFIG_SETTING_MULTIPINDTOWN,          NULL),
-	    SDT_BOOL(GameSettings, economy.same_industry_close,                                         0, 0, false,                    STR_CONFIG_SETTING_SAMEINDCLOSE,           NULL),
+	SDT_CONDNULL(                                                            1,  0, 140),
 	    SDT_BOOL(GameSettings, economy.bribe,                                                       0, 0,  true,                    STR_CONFIG_SETTING_BRIBE,                  NULL),
 	SDT_CONDBOOL(GameSettings, economy.exclusive_rights,                        79, SL_MAX_VERSION, 0, 0,  true,                    STR_CONFIG_SETTING_ALLOW_EXCLUSIVE,        NULL),
 	SDT_CONDBOOL(GameSettings, economy.give_money,                              79, SL_MAX_VERSION, 0, 0,  true,                    STR_CONFIG_SETTING_ALLOW_GIVE_MONEY,       NULL),

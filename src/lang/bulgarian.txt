@@ -1105,7 +1105,6 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :нищо
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :като други промишлености
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :предстоящ
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Няколко еднакви индустрии на град: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SAMEINDCLOSE                                 :{LTBLUE}Индустрии от еднакъв тип могат да бъдат строени близо една до друга: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Дълга дата в лента за състоянието: {ORANGE}{STRING.f}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Семафорите от страната на пътното движение: {ORANGE}{STRING.n}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Финансов отчет в края на годината: {ORANGE}{STRING.m}

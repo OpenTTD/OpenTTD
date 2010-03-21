@@ -1103,7 +1103,6 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :không
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :như nhà máy khác
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :hứa hẹn
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Cho phép nhiều nhà máy tương tự nhau trong mỗi đô thị: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SAMEINDCLOSE                                 :{LTBLUE}Nhà máy cùng kiểu có thể xây sát nhau: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Luôn luôn hiện ngày tháng đầy đủ trên thanh trạng thái: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Hiển thị tín hiệu cùng phía làn đường: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Hiện bảng tài chính vào cuối năm: {ORANGE}{STRING}

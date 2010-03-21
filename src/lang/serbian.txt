@@ -1298,7 +1298,6 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :nikakav
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :uobičajan
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :istraživački
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Dozvoljeno više industrija iste vrste na teritoriji jednog naselja: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SAMEINDCLOSE                                 :{LTBLUE}Dozvoljena gradnja industrije iste vrste u blizini jeda drugoj: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Uvek prikazan pun datum na statusnoj liniji: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Prikazivanje semafora na strani smera voženje: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Prikazivanje finansijskog stanja na kraju godine: {ORANGE}{STRING}

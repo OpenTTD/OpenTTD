@@ -1257,7 +1257,6 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :не созда
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :как и остальные
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :геологоразведка
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Разрешить несколько предприятий одного типа на город: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SAMEINDCLOSE                                 :{LTBLUE}Одинаковые предприятия могут быть рядом друг с другом: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Всегда полная дата в панели состояния: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Показывать светофоры на стороне движения: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Показывать финансовую статистику каждый год: {ORANGE}{STRING}

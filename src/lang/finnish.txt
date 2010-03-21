@@ -1103,7 +1103,6 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :ei mikään
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :kuten muut tehtaat
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :koekaivaus
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Kaupungissa voi olla useita samanlaisia teollisuustyyppejä: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SAMEINDCLOSE                                 :{LTBLUE}Samantyyppistä teollisuutta voidaan rakentaa lähekkäin: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Näytä aina koko päiväys tilapalkissa: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Näytä opastimet ajokaistalla: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Näytä rahoitusikkuna vuoden lopussa: {ORANGE}{STRING}

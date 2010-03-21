@@ -1518,34 +1518,18 @@ static bool CheckIfCanLevelIndustryPlatform(TileIndex tile, DoCommandFlag flags,
 }
 
 
-/** Check that the new industry is far enough from other industries.
+/** Check that the new industry is far enough from conflicting industries.
  * @param tile Tile to construct the industry.
  * @param type Type of the new industry.
  * @return Succeeded or failed command.
  */
-static CommandCost CheckIfFarEnoughFromIndustry(TileIndex tile, int type)
+static CommandCost CheckIfFarEnoughFromConflictingIndustry(TileIndex tile, int type)
 {
 	const IndustrySpec *indspec = GetIndustrySpec(type);
-
-	if (_settings_game.economy.same_industry_close && indspec->IsRawIndustry()) {
-		/* Allow primary industries to be placed close to any other industry */
-		return CommandCost();
-	}
-
 	const Industry *i;
 	FOR_ALL_INDUSTRIES(i) {
 		/* Within 14 tiles from another industry is considered close */
 		if (DistanceMax(tile, i->location.tile) > 14) continue;
-
-		/* check if an industry that accepts the same goods is nearby */
-		if (!indspec->IsRawIndustry() && // not a primary industry?
-				indspec->accepts_cargo[0] == i->accepts_cargo[0] && (
-				/* at least one of those options must be true */
-				_game_mode != GM_EDITOR || // editor must not be stopped
-				!_settings_game.economy.same_industry_close ||
-				!_settings_game.economy.multiple_industry_per_town)) {
-			return_cmd_error(STR_ERROR_INDUSTRY_TOO_CLOSE);
-		}
 
 		/* check if there are any conflicting industry types around */
 		if (i->type == indspec->conflicting[0] ||
@@ -1732,7 +1716,7 @@ static CommandCost CreateNewIndustryHelper(TileIndex tile, IndustryType type, Do
 		return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
 	}
 
-	ret = CheckIfFarEnoughFromIndustry(tile, type);
+	ret = CheckIfFarEnoughFromConflictingIndustry(tile, type);
 	if (ret.Failed()) return ret;
 
 	const Town *t = NULL;

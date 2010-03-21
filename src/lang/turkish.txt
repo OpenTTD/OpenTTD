@@ -1104,7 +1104,6 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :hiçbiri
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :diğer fabrikalar gibi
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :tetkik aramayla
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Bir şehirde birden fazla aynı fabrika olması izinli: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SAMEINDCLOSE                                 :{LTBLUE}Aynı tür fabrikalar yan yana yapılabilir: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Durum çubuğunda uzun tarih göster: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Sinyalizasyon sürüş yönünde olsun: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Sene sonunda ekonomik durumu göster: {ORANGE}{STRING}

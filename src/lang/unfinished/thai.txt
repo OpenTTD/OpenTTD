@@ -1050,7 +1050,6 @@ STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}อน�
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :ไม่เลย
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :ตามอุตสาหกรรมอื่นๆ
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}อนุญาตให้มีหลายอุตสาหกรรมต่อหนึ่งเมือง: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SAMEINDCLOSE                                 :{LTBLUE}อุตสาหกรรมชนิดเดียวกันสามารถสร้างใกล้กันได้: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}แสดงวันที่แบบยาวบนแถบสถานะเสมอ: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}แสดงสัญญาณบนฝั่งถนนมีการขับ: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}แสดงหน้าต่างการเงินเมื่อสิ้นสุดแต่ละปี: {ORANGE}{STRING}
