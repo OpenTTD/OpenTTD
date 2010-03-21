@@ -359,6 +359,7 @@ static void CloneVehicleName(const Vehicle *src, Vehicle *dst)
 
 	/* Format buffer and determine starting number. */
 	int num;
+	byte padding = 0;
 	if (number_position == strlen(src->name)) {
 		/* No digit at the end, so start at number 2. */
 		strecpy(buf, src->name, lastof(buf));
@@ -369,13 +370,15 @@ static void CloneVehicleName(const Vehicle *src, Vehicle *dst)
 		/* Found digits, parse them and start at the next number. */
 		strecpy(buf, src->name, lastof(buf));
 		buf[number_position] = '\0';
-		num = strtol(&src->name[number_position], NULL, 10) + 1;
+		char *endptr;
+		num = strtol(&src->name[number_position], &endptr, 10) + 1;
+		padding = endptr - &src->name[number_position];
 	}
 
 	/* Check if this name is already taken. */
 	for (int max_iterations = 1000; max_iterations > 0; max_iterations--, num++) {
 		/* Attach the number to the temporary name. */
-		seprintf(&buf[number_position], lastof(buf), "%d", num);
+		seprintf(&buf[number_position], lastof(buf), "%0*d", padding, num);
 
 		/* Check the name is unique. */
 		if (IsUniqueVehicleName(buf)) {
