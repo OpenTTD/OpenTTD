@@ -597,7 +597,7 @@ static TextRefStack *_newgrf_textrefstack = &_newgrf_normal_textrefstack;
  */
 void PrepareTextRefStackUsage(byte numEntries)
 {
-	extern TemporaryStorageArray<uint32, 0x110> _temp_store;
+	extern TemporaryStorageArray<int32, 0x110> _temp_store;
 
 	_newgrf_textrefstack->ResetStack();
 

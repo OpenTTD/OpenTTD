@@ -31,7 +31,7 @@
  */
 static inline uint32 GetRegister(uint i)
 {
-	extern TemporaryStorageArray<uint32, 0x110> _temp_store;
+	extern TemporaryStorageArray<int32, 0x110> _temp_store;
 	return _temp_store.Get(i);
 }
 
