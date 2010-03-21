@@ -1266,6 +1266,7 @@ STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Permesu
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Permesu urbe kontrolatan laŭtecon por flughavenoj: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :prohibita
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :permesita
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :permesite, propra urbomapo
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :nur en pluvarbaroj
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :ĉie
@@ -2248,6 +2249,7 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Mapa nom
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Grandeco:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
 
+STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Enigu hazardan semon
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Ŝanĝu altecon de la neĝlinio
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Ŝanĝu komencjaron
 
