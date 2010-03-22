@@ -323,6 +323,7 @@ STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Scenarieeditor
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Flyt startdatoen 1 år tilbage
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Flyt startdatoen 1 år frem
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Klik for at angive startdatoen
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Vis kortet, byoversigt
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Landskabsgenerering
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Bygenerering
@@ -1083,6 +1084,8 @@ STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Aktiver
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Accelerationsmodel for tog: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Original
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistisk
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Standard
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Realistisk
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Skråningers stejlhed for tog {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Forbyd skibe og tog at dreje 90 grader: {ORANGE}{STRING} {LTBLUE} (ikke med OPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Foren togstationer der bygges ved siden af hinanden: {ORANGE}{STRING}
@@ -2124,6 +2127,7 @@ STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Lufthavn
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Accepteret last: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
+STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Togspors hastighedsgrænse: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Klipper
@@ -4111,3 +4115,5 @@ STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
+
+STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
