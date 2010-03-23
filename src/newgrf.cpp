@@ -188,6 +188,7 @@ enum {
 struct GRFTempEngineData {
 	uint16 cargo_allowed;
 	uint16 cargo_disallowed;
+	RailTypeLabel railtypelabel;
 	bool refitmask_valid;    ///< Did the newgrf set any refittability property? If not, default refittability will be applied.
 	uint8 rv_max_speed;      ///< Temporary storage of RV prop 15, maximum speed in mph/0.8
 };
@@ -529,20 +530,14 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 				uint8 tracktype = buf->ReadByte();
 
 				if (tracktype < _cur_grffile->railtype_max) {
-					RailType railtype = GetRailTypeByLabel(_cur_grffile->railtype_list[tracktype]);
-					if (railtype == INVALID_RAILTYPE) {
-						/* Rail type is not available, so disable this engine */
-						ei[i].climates = 0x80;
-					} else {
-						rvi[i].railtype = railtype;
-					}
+					_gted[e->index].railtypelabel = _cur_grffile->railtype_list[tracktype];
 					break;
 				}
 
 				switch (tracktype) {
-					case 0: rvi->railtype = rvi->engclass >= 2 ? RAILTYPE_ELECTRIC : RAILTYPE_RAIL; break;
-					case 1: rvi->railtype = RAILTYPE_MONO; break;
-					case 2: rvi->railtype = RAILTYPE_MAGLEV; break;
+					case 0: _gted[e->index].railtypelabel = rvi->engclass >= 2 ? RAILTYPE_ELECTRIC_LABEL : RAILTYPE_RAIL_LABEL; break;
+					case 1: _gted[e->index].railtypelabel = RAILTYPE_MONO_LABEL; break;
+					case 2: _gted[e->index].railtypelabel = RAILTYPE_MAGLEV_LABEL; break;
 					default:
 						grfmsg(1, "RailVehicleChangeInfo: Invalid track type %d specified, ignoring", tracktype);
 						break;
@@ -663,8 +658,8 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 				if (_cur_grffile->railtype_max == 0) {
 					/* Use traction type to select between normal and electrified
 					 * rail only when no translation list is in place. */
-					if (rvi->railtype == RAILTYPE_RAIL     && engclass >= EC_ELECTRIC) rvi->railtype = RAILTYPE_ELECTRIC;
-					if (rvi->railtype == RAILTYPE_ELECTRIC && engclass  < EC_ELECTRIC) rvi->railtype = RAILTYPE_RAIL;
+					if (rvi->railtype == RAILTYPE_RAIL     && engclass >= EC_ELECTRIC) _gted[e->index].railtypelabel = RAILTYPE_ELECTRIC_LABEL;
+					if (rvi->railtype == RAILTYPE_ELECTRIC && engclass  < EC_ELECTRIC) _gted[e->index].railtypelabel = RAILTYPE_RAIL_LABEL;
 				}
 
 				rvi->engclass = engclass;
@@ -6051,6 +6046,12 @@ static void ResetNewGRFData()
 	/* Allocate temporary refit/cargo class data */
 	_gted = CallocT<GRFTempEngineData>(Engine::GetPoolSize());
 
+	/* Fill rail type label temporary data for default trains */
+	Engine *e;
+	FOR_ALL_ENGINES_OF_TYPE(e, VEH_TRAIN) {
+		_gted[e->index].railtypelabel = GetRailTypeInfo(e->u.rail.railtype)->label;
+	}
+
 	/* Reset GRM reservations */
 	memset(&_grm_engines, 0, sizeof(_grm_engines));
 	memset(&_grm_cargos, 0, sizeof(_grm_cargos));
@@ -6832,6 +6833,16 @@ static void AfterLoadGRFs()
 		if (_gted[e->index].rv_max_speed != 0) {
 			/* Set RV maximum speed from the mph/0.8 unit value */
 			e->u.road.max_speed = _gted[e->index].rv_max_speed * 4;
+		}
+	}
+
+	FOR_ALL_ENGINES_OF_TYPE(e, VEH_TRAIN) {
+		RailType railtype = GetRailTypeByLabel(_gted[e->index].railtypelabel);
+		if (railtype == INVALID_RAILTYPE) {
+			/* Rail type is not available, so disable this engine */
+			e->info.climates = 0x80;
+		} else {
+			e->u.rail.railtype = railtype;
 		}
 	}
 
