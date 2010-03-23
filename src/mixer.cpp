@@ -196,8 +196,8 @@ void MxSetChannelVolume(MixerChannel *mc, uint volume, float pan)
 {
 	/* Use sinusoidal pan to maintain overall sound power level regardless
 	 * of position. */
-	mc->volume_left = volume * sin((1.0 - pan) * M_PI / 2.0);
-	mc->volume_right = volume * sin(pan * M_PI / 2.0);
+	mc->volume_left = (uint)(sin((1.0 - pan) * M_PI / 2.0) * volume);
+	mc->volume_right = (uint)(sin(pan * M_PI / 2.0) * volume);
 }
 
 
