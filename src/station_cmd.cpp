@@ -1697,7 +1697,7 @@ CommandCost CmdBuildRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 
 	if (distant_join && (!_settings_game.station.distant_join_stations || !Station::IsValidID(station_to_join))) return CMD_ERROR;
 
-	if (!AreValidRoadTypes(rts) || !HasRoadTypesAvail(_current_company, rts)) return CMD_ERROR;
+	if (!HasExactlyOneBit(rts) || !HasRoadTypesAvail(_current_company, rts)) return CMD_ERROR;
 
 	/* Trams only have drive through stops */
 	if (!is_drive_through && HasBit(rts, ROADTYPE_TRAM)) return CMD_ERROR;

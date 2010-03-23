@@ -29,16 +29,6 @@ static inline bool IsValidRoadType(RoadType rt)
 }
 
 /**
- * Are the given bits pointing to valid roadtypes?
- * @param rts the roadtypes to check for validness
- * @return true if and only if valid
- */
-static inline bool AreValidRoadTypes(RoadTypes rts)
-{
-	return HasBit(rts, ROADTYPE_ROAD) || HasBit(rts, ROADTYPE_TRAM);
-}
-
-/**
  * Maps a RoadType to the corresponding RoadTypes value
  *
  * @param rt the roadtype to get the roadtypes from

@@ -207,7 +207,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 	switch (transport_type) {
 		case TRANSPORT_ROAD:
 			roadtypes = (RoadTypes)GB(p2, 8, 2);
-			if (!AreValidRoadTypes(roadtypes) || !HasRoadTypesAvail(_current_company, roadtypes)) return CMD_ERROR;
+			if (!HasExactlyOneBit(roadtypes) || !HasRoadTypesAvail(_current_company, roadtypes)) return CMD_ERROR;
 			break;
 
 		case TRANSPORT_RAIL:
@@ -487,7 +487,7 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, DoCommandFlag flags, uint32 p1,
 		if (!ValParamRailtype((RailType)p1)) return CMD_ERROR;
 	} else {
 		const RoadTypes rts = (RoadTypes)GB(p1, 0, 2);
-		if (!AreValidRoadTypes(rts) || !HasRoadTypesAvail(_current_company, rts)) return CMD_ERROR;
+		if (!HasExactlyOneBit(rts) || !HasRoadTypesAvail(_current_company, rts)) return CMD_ERROR;
 	}
 
 	uint start_z;
