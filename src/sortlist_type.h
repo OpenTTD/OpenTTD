@@ -29,7 +29,7 @@ enum SortListFlags {
 	VL_FILTER     = 1 << 4, ///< filter disabled/enabled
 	VL_END        = 1 << 5,
 };
-DECLARE_ENUM_AS_BIT_SET(SortListFlags);
+DECLARE_ENUM_AS_BIT_SET(SortListFlags)
 
 /** Data structure describing how to show the list (what sort direction and criterium). */
 struct Listing {

@@ -230,6 +230,6 @@ public:
 	static uint32 GetAutoRenewMoney(CompanyID company);
 };
 
-DECLARE_POSTFIX_INCREMENT(AICompany::CompanyID);
+DECLARE_POSTFIX_INCREMENT(AICompany::CompanyID)
 
 #endif /* AI_COMPANY_HPP */

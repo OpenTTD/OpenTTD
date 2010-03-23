@@ -39,7 +39,7 @@ enum HighLightStyle {
 	HT_DIR_END,       ///< end marker
 	HT_DIR_MASK = 0x7 ///< masks the drag-direction
 };
-DECLARE_ENUM_AS_BIT_SET(HighLightStyle);
+DECLARE_ENUM_AS_BIT_SET(HighLightStyle)
 
 
 struct TileHighlightData {

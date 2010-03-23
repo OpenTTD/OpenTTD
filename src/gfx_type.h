@@ -165,7 +165,7 @@ enum FontSize {
 
 	FS_BEGIN = FS_NORMAL, ///< First font.
 };
-DECLARE_POSTFIX_INCREMENT(FontSize);
+DECLARE_POSTFIX_INCREMENT(FontSize)
 
 /**
  * Used to only draw a part of the sprite.
@@ -221,7 +221,7 @@ enum TextColour {
 
 	IS_PALETTE_COLOUR = 0x100, ///< colour value is already a real palette colour index, not an index of a StringColour
 };
-DECLARE_ENUM_AS_BIT_SET(TextColour);
+DECLARE_ENUM_AS_BIT_SET(TextColour)
 
 /** Defines a few values that are related to animations using palette changes */
 enum PaletteAnimationSizes {

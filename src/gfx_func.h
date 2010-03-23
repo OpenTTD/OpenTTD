@@ -102,7 +102,7 @@ enum StringAlignment {
 	SA_FORCE = 4, ///< Force the alignment, i.e. don't swap for RTL languages.
 	SA_STRIP = 8, ///< Strip the SETX/SETXY commands from the string
 };
-DECLARE_ENUM_AS_BIT_SET(StringAlignment);
+DECLARE_ENUM_AS_BIT_SET(StringAlignment)
 
 int DrawString(int left, int right, int top, const char *str, TextColour colour = TC_FROMSTRING, StringAlignment align = SA_LEFT, bool underline = false);
 int DrawString(int left, int right, int top, StringID str, TextColour colour = TC_FROMSTRING, StringAlignment align = SA_LEFT, bool underline = false);

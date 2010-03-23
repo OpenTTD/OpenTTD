@@ -30,7 +30,7 @@ enum FrameFlags {
 	FR_DARKENED     =  1 << 6,  ///< If set the background is darker, allows for lowered frames with normal background colour when used with FR_LOWERED (ie. dropdown boxes)
 };
 
-DECLARE_ENUM_AS_BIT_SET(FrameFlags);
+DECLARE_ENUM_AS_BIT_SET(FrameFlags)
 
 /** Distances used in drawing widgets. */
 enum WidgetDrawDistances {

@@ -29,7 +29,7 @@ enum StationClassID {
 typedef SimpleTinyEnumT<StationClassID, byte> StationClassIDByte;
 
 /** Allow incrementing of StationClassID variables */
-DECLARE_POSTFIX_INCREMENT(StationClassID);
+DECLARE_POSTFIX_INCREMENT(StationClassID)
 
 enum StationSpecFlags {
 	SSF_SEPARATE_GROUND,      ///< Use different sprite set for ground sprites.

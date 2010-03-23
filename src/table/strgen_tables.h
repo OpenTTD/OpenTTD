@@ -17,7 +17,7 @@ enum CmdFlags {
 	C_CASE      = 0x2, ///< These commands support cases
 	C_GENDER    = 0x4, ///< These commands support genders
 };
-DECLARE_ENUM_AS_BIT_SET(CmdFlags);
+DECLARE_ENUM_AS_BIT_SET(CmdFlags)
 
 typedef void (*ParseCmdProc)(char *buf, int value);
 

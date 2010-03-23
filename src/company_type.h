@@ -35,7 +35,7 @@ enum Owner {
 	COMPANY_NEW_COMPANY     = 254, ///< The client wants a new company
 	COMPANY_SPECTATOR       = 255, ///< The client is spectating
 };
-DECLARE_POSTFIX_INCREMENT(Owner);
+DECLARE_POSTFIX_INCREMENT(Owner)
 
 enum {
 	MAX_LENGTH_PRESIDENT_NAME_BYTES  =  31, ///< The maximum length of a president name in bytes including '\0'

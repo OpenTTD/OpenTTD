@@ -51,7 +51,7 @@ enum RoadFlags {
 	RF_START_HALFROAD_X = 0x08,    // The start tile in X-dir should have only a half road
 	RF_END_HALFROAD_X   = 0x10,    // The end tile in X-dir should have only a half road
 };
-DECLARE_ENUM_AS_BIT_SET(RoadFlags);
+DECLARE_ENUM_AS_BIT_SET(RoadFlags)
 
 static RoadFlags _place_road_flag;
 

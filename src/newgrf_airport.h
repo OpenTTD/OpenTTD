@@ -36,7 +36,7 @@ enum AirportClassID {
 };
 
 /** Allow incrementing of AirportClassID variables */
-DECLARE_POSTFIX_INCREMENT(AirportClassID);
+DECLARE_POSTFIX_INCREMENT(AirportClassID)
 
 /** TTDP airport types. Used to map our types to TTDPatch's */
 enum TTDPAirportType {

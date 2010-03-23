@@ -235,7 +235,7 @@ enum NWidgetDisplay {
 	ND_SHADE_DIMMED    = 1 << NDB_SHADE_DIMMED,    ///< Bit value of the 'dimmed colours' flag.
 	ND_DROPDOWN_ACTIVE = 1 << NDB_DROPDOWN_ACTIVE, ///< Bit value of the 'dropdown active' flag.
 };
-DECLARE_ENUM_AS_BIT_SET(NWidgetDisplay);
+DECLARE_ENUM_AS_BIT_SET(NWidgetDisplay)
 
 /** Base class for a 'real' widget.
  * @ingroup NestedWidgets */
@@ -358,7 +358,7 @@ enum NWidContainerFlags {
 	NC_NONE = 0,                       ///< All flags cleared.
 	NC_EQUALSIZE = 1 << NCB_EQUALSIZE, ///< Value of the #NCB_EQUALSIZE flag.
 };
-DECLARE_ENUM_AS_BIT_SET(NWidContainerFlags);
+DECLARE_ENUM_AS_BIT_SET(NWidContainerFlags)
 
 /** Container with pre/inter/post child space. */
 class NWidgetPIPContainer : public NWidgetContainer {

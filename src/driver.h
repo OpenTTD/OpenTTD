@@ -40,7 +40,7 @@ public:
 	virtual const char *GetName() const = 0;
 };
 
-DECLARE_POSTFIX_INCREMENT(Driver::Type);
+DECLARE_POSTFIX_INCREMENT(Driver::Type)
 
 
 class DriverFactoryBase {

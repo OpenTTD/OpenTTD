@@ -156,6 +156,6 @@ public:
 	static TownID GetNearestTown(StationID station_id);
 };
 
-DECLARE_ENUM_AS_BIT_SET(AIStation::StationType);
+DECLARE_ENUM_AS_BIT_SET(AIStation::StationType)
 
 #endif /* AI_STATION_HPP */

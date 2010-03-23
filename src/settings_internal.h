@@ -49,7 +49,7 @@ enum SettingGuiFlagLong {
 	SGF_SCENEDIT_TOO = 1 << 7, ///< this setting can be changed in the scenario editor (only makes sense when SGF_NEWGAME_ONLY is set)
 	SGF_PER_COMPANY  = 1 << 8, ///< this setting can be different for each company (saved in company struct)
 };
-DECLARE_ENUM_AS_BIT_SET(SettingGuiFlagLong);
+DECLARE_ENUM_AS_BIT_SET(SettingGuiFlagLong)
 typedef SimpleTinyEnumT<SettingGuiFlagLong, uint16> SettingGuiFlag;
 
 

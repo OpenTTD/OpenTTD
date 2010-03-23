@@ -61,7 +61,7 @@ enum PauseMode {
 	/* Pause mode bits when paused for network reasons */
 	PMB_PAUSED_NETWORK = PM_PAUSED_ACTIVE_CLIENTS | PM_PAUSED_JOIN,
 };
-DECLARE_ENUM_AS_BIT_SET(PauseMode);
+DECLARE_ENUM_AS_BIT_SET(PauseMode)
 typedef SimpleTinyEnumT<PauseMode, byte> PauseModeByte;
 
 /** The current pause mode */

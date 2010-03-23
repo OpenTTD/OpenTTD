@@ -30,7 +30,7 @@ enum BridgePieces {
 	BRIDGE_PIECE_INVALID,
 };
 
-DECLARE_POSTFIX_INCREMENT(BridgePieces);
+DECLARE_POSTFIX_INCREMENT(BridgePieces)
 
 enum {
 	MAX_BRIDGES = 13

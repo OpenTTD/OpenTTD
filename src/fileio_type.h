@@ -47,6 +47,6 @@ enum Searchpath {
 	NUM_SEARCHPATHS
 };
 
-DECLARE_POSTFIX_INCREMENT(Searchpath);
+DECLARE_POSTFIX_INCREMENT(Searchpath)
 
 #endif /* FILEIO_TYPE_H */

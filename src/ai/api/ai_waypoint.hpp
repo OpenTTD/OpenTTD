@@ -71,6 +71,6 @@ public:
 	static bool HasWaypointType(StationID waypoint_id, WaypointType waypoint_type);
 };
 
-DECLARE_ENUM_AS_BIT_SET(AIWaypoint::WaypointType);
+DECLARE_ENUM_AS_BIT_SET(AIWaypoint::WaypointType)
 
 #endif /* AI_WAYPOINT_HPP */

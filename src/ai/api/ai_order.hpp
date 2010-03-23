@@ -503,6 +503,6 @@ public:
 	 */
 	static bool UnshareOrders(VehicleID vehicle_id);
 };
-DECLARE_ENUM_AS_BIT_SET(AIOrder::AIOrderFlags);
+DECLARE_ENUM_AS_BIT_SET(AIOrder::AIOrderFlags)
 
 #endif /* AI_ORDER_HPP */

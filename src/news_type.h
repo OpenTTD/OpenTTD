@@ -97,7 +97,7 @@ enum NewsFlag {
 	NF_NO_TRANSPARENT = 1 << 1, ///< Bit value for disabling transparency.
 	NF_SHADE          = 1 << 2, ///< Bit value for enabling shading.
 };
-DECLARE_ENUM_AS_BIT_SET(NewsFlag);
+DECLARE_ENUM_AS_BIT_SET(NewsFlag)
 
 
 /**

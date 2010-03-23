@@ -29,7 +29,7 @@ enum GrfLoadingStage {
 	GLS_END,
 };
 
-DECLARE_POSTFIX_INCREMENT(GrfLoadingStage);
+DECLARE_POSTFIX_INCREMENT(GrfLoadingStage)
 
 enum GrfMiscBit {
 	GMB_DESERT_TREES_FIELDS    = 0, // Unsupported.

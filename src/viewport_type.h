@@ -82,7 +82,7 @@ enum ViewportPlaceMethod {
 	VPM_RAILDIRS        = 0x40, ///< all rail directions
 	VPM_SIGNALDIRS      = 0x80, ///< similiar to VMP_RAILDIRS, but with different cursor
 };
-DECLARE_ENUM_AS_BIT_SET(ViewportPlaceMethod);
+DECLARE_ENUM_AS_BIT_SET(ViewportPlaceMethod)
 
 /** Drag and drop selection process, or, what to do with an area of land when
  * you've selected it. */

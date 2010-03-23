@@ -27,7 +27,7 @@ enum VehicleType {
 	VEH_END,
 	VEH_INVALID = 0xFF, ///< Non-existing type of vehicle.
 };
-DECLARE_POSTFIX_INCREMENT(VehicleType);
+DECLARE_POSTFIX_INCREMENT(VehicleType)
 /** It needs to be 8bits, because we save and load it as such */
 typedef SimpleTinyEnumT<VehicleType, byte> VehicleTypeByte;
 

@@ -38,7 +38,7 @@ enum VehicleEnterTileStatus {
 	VETSB_ENTERED_WORMHOLE = 1 << VETS_ENTERED_WORMHOLE, ///< The vehicle either entered a bridge, tunnel or depot tile (this includes the last tile of the bridge/tunnel)
 	VETSB_CANNOT_ENTER     = 1 << VETS_CANNOT_ENTER,     ///< The vehicle cannot enter the tile
 };
-DECLARE_ENUM_AS_BIT_SET(VehicleEnterTileStatus);
+DECLARE_ENUM_AS_BIT_SET(VehicleEnterTileStatus)
 
 /** Tile information, used while rendering the tile */
 struct TileInfo {

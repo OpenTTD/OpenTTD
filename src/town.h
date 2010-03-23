@@ -223,7 +223,7 @@ enum TownActions {
 	TACT_FUNDS            = TACT_BUY_RIGHTS | TACT_BRIBE,                                        ///< All possible funding actions.
 	TACT_ALL              = TACT_ADVERTISE | TACT_CONSTRUCTION | TACT_FUNDS,                     ///< All possible actions.
 };
-DECLARE_ENUM_AS_BIT_SET(TownActions);
+DECLARE_ENUM_AS_BIT_SET(TownActions)
 
 extern const byte _town_action_costs[TACT_COUNT];
 extern TownID _new_town_id;

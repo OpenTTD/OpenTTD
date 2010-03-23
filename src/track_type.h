@@ -31,7 +31,7 @@ enum Track {
 };
 
 /** Allow incrementing of Track variables */
-DECLARE_POSTFIX_INCREMENT(Track);
+DECLARE_POSTFIX_INCREMENT(Track)
 /** Define basic enum properties */
 template <> struct EnumPropsT<Track> : MakeEnumPropsT<Track, byte, TRACK_BEGIN, TRACK_END, INVALID_TRACK> {};
 typedef TinyEnumT<Track> TrackByte;
@@ -59,7 +59,7 @@ enum TrackBits {
 	TRACK_BIT_DEPOT   = 0x80U,                                              ///< Bitflag for a depot
 	INVALID_TRACK_BIT = 0xFF                                                ///< Flag for an invalid trackbits value
 };
-DECLARE_ENUM_AS_BIT_SET(TrackBits);
+DECLARE_ENUM_AS_BIT_SET(TrackBits)
 typedef SimpleTinyEnumT<TrackBits, byte> TrackBitsByte;
 
 /**
@@ -121,7 +121,7 @@ enum TrackdirBits {
 	TRACKDIR_BIT_MASK     = 0x3F3F, ///< Bitmask for bit-operations
 	INVALID_TRACKDIR_BIT  = 0xFFFF, ///< Flag for an invalid trackdirbit value
 };
-DECLARE_ENUM_AS_BIT_SET(TrackdirBits);
+DECLARE_ENUM_AS_BIT_SET(TrackdirBits)
 typedef SimpleTinyEnumT<TrackdirBits, uint16> TrackdirBitsShort;
 
 typedef uint32 TrackStatus;

@@ -1738,7 +1738,7 @@ enum CzechAllow {
 	CZA_ALL = ~0
 };
 
-DECLARE_ENUM_AS_BIT_SET(CzechAllow);
+DECLARE_ENUM_AS_BIT_SET(CzechAllow)
 
 /* All these flags must be satisfied (in the stem->others direction): */
 enum CzechChoose {
@@ -1749,7 +1749,7 @@ enum CzechChoose {
 	CZC_ANY = ~0
 };
 
-DECLARE_ENUM_AS_BIT_SET(CzechChoose);
+DECLARE_ENUM_AS_BIT_SET(CzechChoose)
 
 struct CzechNameSubst {
 	CzechGender gender;

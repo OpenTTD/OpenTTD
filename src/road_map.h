@@ -167,7 +167,7 @@ enum DisallowedRoadDirections {
 	DRD_BOTH,       ///< All directions are disallowed
 	DRD_END
 };
-DECLARE_ENUM_AS_BIT_SET(DisallowedRoadDirections);
+DECLARE_ENUM_AS_BIT_SET(DisallowedRoadDirections)
 
 /**
  * Gets the disallowed directions

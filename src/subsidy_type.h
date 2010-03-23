@@ -21,7 +21,7 @@ enum PartOfSubsidy {
 };
 typedef SimpleTinyEnumT<PartOfSubsidy, byte> PartOfSubsidyByte;
 
-DECLARE_ENUM_AS_BIT_SET(PartOfSubsidy);
+DECLARE_ENUM_AS_BIT_SET(PartOfSubsidy)
 
 typedef uint16 SubsidyID; ///< ID of a subsidy
 struct Subsidy;

@@ -303,7 +303,7 @@ enum DoCommandFlag {
 	DC_ALL_TILES             = 0x100, ///< allow this command also on MP_VOID tiles
 	DC_NO_MODIFY_TOWN_RATING = 0x200, ///< do not change town rating
 };
-DECLARE_ENUM_AS_BIT_SET(DoCommandFlag);
+DECLARE_ENUM_AS_BIT_SET(DoCommandFlag)
 
 /**
  * Used to combine a StringID with the command.

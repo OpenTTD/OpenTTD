@@ -56,7 +56,7 @@ enum StationFacility {
 	FACIL_DOCK       = 1 << 4, ///< Station with a dock
 	FACIL_WAYPOINT   = 1 << 7, ///< Station is a waypoint
 };
-DECLARE_ENUM_AS_BIT_SET(StationFacility);
+DECLARE_ENUM_AS_BIT_SET(StationFacility)
 typedef SimpleTinyEnumT<StationFacility, byte> StationFacilityByte;
 
 /** The vehicles that may have visited a station */
@@ -70,7 +70,7 @@ enum StationHadVehicleOfType {
 
 	HVOT_WAYPOINT = 1 << 6, ///< Station is a waypoint (NewGRF only!)
 };
-DECLARE_ENUM_AS_BIT_SET(StationHadVehicleOfType);
+DECLARE_ENUM_AS_BIT_SET(StationHadVehicleOfType)
 typedef SimpleTinyEnumT<StationHadVehicleOfType, byte> StationHadVehicleOfTypeByte;
 
 /** The different catchment areas used */

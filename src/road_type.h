@@ -26,7 +26,7 @@ enum RoadType {
 	ROADTYPE_END,           ///< Used for iterations
 	INVALID_ROADTYPE = 0xFF ///< flag for invalid roadtype
 };
-DECLARE_POSTFIX_INCREMENT(RoadType);
+DECLARE_POSTFIX_INCREMENT(RoadType)
 
 /**
  * The different roadtypes we support, but then a bitmask of them
@@ -40,7 +40,7 @@ enum RoadTypes {
 	ROADTYPES_END,                                         ///< Used for iterations?
 	INVALID_ROADTYPES  = 0xFF                              ///< Invalid roadtypes
 };
-DECLARE_ENUM_AS_BIT_SET(RoadTypes);
+DECLARE_ENUM_AS_BIT_SET(RoadTypes)
 typedef SimpleTinyEnumT<RoadTypes, byte> RoadTypesByte;
 
 
@@ -66,6 +66,6 @@ enum RoadBits {
 
 	ROAD_ALL  = ROAD_X  | ROAD_Y     ///< Full 4-way crossing
 };
-DECLARE_ENUM_AS_BIT_SET(RoadBits);
+DECLARE_ENUM_AS_BIT_SET(RoadBits)
 
 #endif /* ROAD_TYPE_H */

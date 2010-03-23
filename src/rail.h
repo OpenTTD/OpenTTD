@@ -27,7 +27,7 @@ enum RailTypeFlags {
 	RTFB_NONE     = 0,                 ///< All flags cleared.
 	RTFB_CATENARY = 1 << RTF_CATENARY, ///< Value for drawing a catenary.
 };
-DECLARE_ENUM_AS_BIT_SET(RailTypeFlags);
+DECLARE_ENUM_AS_BIT_SET(RailTypeFlags)
 
 struct SpriteGroup;
 

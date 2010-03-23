@@ -115,7 +115,7 @@ enum EndSegmentReasonBits {
 	ESRB_ABORT_PF_MASK = ESRB_DEAD_END | ESRB_PATH_TOO_LONG | ESRB_INFINITE_LOOP | ESRB_FIRST_TWO_WAY_RED,
 };
 
-DECLARE_ENUM_AS_BIT_SET(EndSegmentReasonBits);
+DECLARE_ENUM_AS_BIT_SET(EndSegmentReasonBits)
 
 inline CStrA ValueStr(EndSegmentReasonBits bits)
 {

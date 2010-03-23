@@ -81,14 +81,14 @@ enum IndustryBehaviour {
 	INDUSTRYBEH_NOBUILT_MAPCREATION   = 1 << 16, ///< Do not force one instance of this type to appear on map generation
 	INDUSTRYBEH_CANCLOSE_LASTINSTANCE = 1 << 17, ///< Allow closing down the last instance of this type
 };
-DECLARE_ENUM_AS_BIT_SET(IndustryBehaviour);
+DECLARE_ENUM_AS_BIT_SET(IndustryBehaviour)
 
 /** Flags for miscellaneous industry tile specialities */
 enum IndustryTileSpecialFlags {
 	INDTILE_SPECIAL_NONE                  = 0,
 	INDTILE_SPECIAL_NEXTFRAME_RANDOMBITS  = 1 << 0, ///< Callback 0x26 needs random bits
 };
-DECLARE_ENUM_AS_BIT_SET(IndustryTileSpecialFlags);
+DECLARE_ENUM_AS_BIT_SET(IndustryTileSpecialFlags)
 
 struct IndustryTileTable {
 	TileIndexDiffC ti;

@@ -38,7 +38,7 @@ enum Direction {
 };
 
 /** Allow incrementing of Direction variables */
-DECLARE_POSTFIX_INCREMENT(Direction);
+DECLARE_POSTFIX_INCREMENT(Direction)
 
 /** Define basic enum properties */
 template <> struct EnumPropsT<Direction> : MakeEnumPropsT<Direction, byte, DIR_BEGIN, DIR_END, INVALID_DIR> {};
@@ -88,7 +88,7 @@ enum DiagDirection {
 };
 
 /** Allow incrementing of DiagDirection variables */
-DECLARE_POSTFIX_INCREMENT(DiagDirection);
+DECLARE_POSTFIX_INCREMENT(DiagDirection)
 
 /** Define basic enum properties */
 template <> struct EnumPropsT<DiagDirection> : MakeEnumPropsT<DiagDirection, byte, DIAGDIR_BEGIN, DIAGDIR_END, INVALID_DIAGDIR> {};
@@ -113,7 +113,7 @@ enum DiagDirDiff {
 };
 
 /** Allow incrementing of DiagDirDiff variables */
-DECLARE_POSTFIX_INCREMENT(DiagDirDiff);
+DECLARE_POSTFIX_INCREMENT(DiagDirDiff)
 
 
 /**

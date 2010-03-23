@@ -40,7 +40,7 @@
 #endif /* DEBUG_DUMP_COMMANDS */
 #include "table/strings.h"
 
-DECLARE_POSTFIX_INCREMENT(ClientID);
+DECLARE_POSTFIX_INCREMENT(ClientID)
 
 assert_compile(NetworkClientInfoPool::MAX_SIZE == NetworkClientSocketPool::MAX_SIZE);
 
