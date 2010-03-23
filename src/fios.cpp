@@ -68,7 +68,7 @@ void FiosFreeSavegameList()
 {
 	_fios_items.Clear();
 	_fios_items.Compact();
-};
+}
 
 /**
  * Get descriptive texts. Returns the path and free space

@@ -808,7 +808,7 @@ DEF_CONSOLE_CMD(ConNetworkReconnect)
 
 	NetworkClientConnectGame(NetworkAddress(_settings_client.network.last_host, _settings_client.network.last_port), playas);
 	return true;
-};
+}
 
 DEF_CONSOLE_CMD(ConNetworkConnect)
 {

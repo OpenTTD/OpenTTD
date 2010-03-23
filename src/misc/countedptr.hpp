@@ -34,13 +34,13 @@ protected:
 
 public:
 	/** default (NULL) construct or construct from a raw pointer */
-	FORCEINLINE CCountedPtr(Tcls *pObj = NULL) : m_pT(pObj) {AddRef();};
+	FORCEINLINE CCountedPtr(Tcls *pObj = NULL) : m_pT(pObj) {AddRef();}
 
 	/** copy constructor (invoked also when initializing from another smart ptr) */
-	FORCEINLINE CCountedPtr(const CCountedPtr& src) : m_pT(src.m_pT) {AddRef();};
+	FORCEINLINE CCountedPtr(const CCountedPtr& src) : m_pT(src.m_pT) {AddRef();}
 
 	/** destructor releasing the reference */
-	FORCEINLINE ~CCountedPtr() {Release();};
+	FORCEINLINE ~CCountedPtr() {Release();}
 
 protected:
 	/** add one ref to the underlaying object */
@@ -51,10 +51,10 @@ public:
 	FORCEINLINE void Release() {if (m_pT != NULL) {Tcls *pT = m_pT; m_pT = NULL; pT->Release();}}
 
 	/** dereference of smart pointer - const way */
-	FORCEINLINE const Tcls *operator -> () const {assert(m_pT != NULL); return m_pT;};
+	FORCEINLINE const Tcls *operator -> () const {assert(m_pT != NULL); return m_pT;}
 
 	/** dereference of smart pointer - non const way */
-	FORCEINLINE Tcls *operator -> () {assert(m_pT != NULL); return m_pT;};
+	FORCEINLINE Tcls *operator -> () {assert(m_pT != NULL); return m_pT;}
 
 	/** raw pointer casting operator - const way */
 	FORCEINLINE operator const Tcls*() const {assert(m_pT == NULL); return m_pT;}
@@ -152,7 +152,7 @@ struct SimpleCountedObject {
 	{}
 
 	virtual ~SimpleCountedObject()
-	{};
+	{}
 
 	virtual int32 AddRef();
 	virtual int32 Release();

@@ -91,9 +91,9 @@ public:
 	/** return number of used items */
 	FORCEINLINE uint Length() const { return Hdr().items; }
 	/** return true if array is full */
-	FORCEINLINE bool IsFull() const { return Length() >= C; };
+	FORCEINLINE bool IsFull() const { return Length() >= C; }
 	/** return true if array is empty */
-	FORCEINLINE bool IsEmpty() const { return Length() <= 0; };
+	FORCEINLINE bool IsEmpty() const { return Length() <= 0; }
 	/** add (allocate), but don't construct item */
 	FORCEINLINE T *Append() { assert(!IsFull()); return &data[SizeRef()++]; }
 	/** add and construct item using default constructor */

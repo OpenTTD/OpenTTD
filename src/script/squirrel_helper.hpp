@@ -883,6 +883,6 @@ namespace SQConvert {
 		}
 	}
 
-}; // namespace SQConvert
+} // namespace SQConvert
 
 #endif /* SQUIRREL_HELPER_HPP */

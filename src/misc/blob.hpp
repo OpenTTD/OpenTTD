@@ -75,7 +75,8 @@ public:
 	FORCEINLINE ByteBlob() { InitEmpty(); }
 
 	/** copy constructor */
-	FORCEINLINE ByteBlob(const ByteBlob &src) {
+	FORCEINLINE ByteBlob(const ByteBlob &src)
+	{
 		InitEmpty();
 		AppendRaw(src);
 	}
@@ -165,7 +166,7 @@ protected:
 	FORCEINLINE uint& LengthRef()
 	{
 		return Hdr().items;
-	};
+	}
 
 public:
 	/** return true if blob doesn't contain valid data */
@@ -178,13 +179,13 @@ public:
 	FORCEINLINE uint Length() const
 	{
 		return Hdr().items;
-	};
+	}
 
 	/** return the current blob capacity in bytes */
 	FORCEINLINE uint Capacity() const
 	{
 		return Hdr().capacity;
-	};
+	}
 
 	/** return pointer to the first byte of data - non-const version */
 	FORCEINLINE byte *Begin()
@@ -387,7 +388,7 @@ public:
 	FORCEINLINE OnTransfer Transfer()
 	{
 		return OnTransfer(*this);
-	};
+	}
 };
 
 
