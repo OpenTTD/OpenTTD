@@ -18,7 +18,7 @@ namespace SQConvert {
 	template <> const AIIndustry *GetParam(ForceType<const AIIndustry *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIIndustry *)instance; }
 	template <> const AIIndustry &GetParam(ForceType<const AIIndustry &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIIndustry *)instance; }
 	template <> int Return<AIIndustry *>(HSQUIRRELVM vm, AIIndustry *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIIndustry", res, NULL, DefSQDestructorCallback<AIIndustry>); return 1; }
-}; // namespace SQConvert
+} // namespace SQConvert
 
 void SQAIIndustry_Register(Squirrel *engine)
 {

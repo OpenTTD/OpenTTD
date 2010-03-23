@@ -18,7 +18,7 @@ namespace SQConvert {
 	template <> const AITileList *GetParam(ForceType<const AITileList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AITileList *)instance; }
 	template <> const AITileList &GetParam(ForceType<const AITileList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AITileList *)instance; }
 	template <> int Return<AITileList *>(HSQUIRRELVM vm, AITileList *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AITileList", res, NULL, DefSQDestructorCallback<AITileList>); return 1; }
-}; // namespace SQConvert
+} // namespace SQConvert
 
 void SQAITileList_Register(Squirrel *engine)
 {
@@ -41,7 +41,7 @@ namespace SQConvert {
 	template <> const AITileList_IndustryAccepting *GetParam(ForceType<const AITileList_IndustryAccepting *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AITileList_IndustryAccepting *)instance; }
 	template <> const AITileList_IndustryAccepting &GetParam(ForceType<const AITileList_IndustryAccepting &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AITileList_IndustryAccepting *)instance; }
 	template <> int Return<AITileList_IndustryAccepting *>(HSQUIRRELVM vm, AITileList_IndustryAccepting *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AITileList_IndustryAccepting", res, NULL, DefSQDestructorCallback<AITileList_IndustryAccepting>); return 1; }
-}; // namespace SQConvert
+} // namespace SQConvert
 
 void SQAITileList_IndustryAccepting_Register(Squirrel *engine)
 {
@@ -59,7 +59,7 @@ namespace SQConvert {
 	template <> const AITileList_IndustryProducing *GetParam(ForceType<const AITileList_IndustryProducing *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AITileList_IndustryProducing *)instance; }
 	template <> const AITileList_IndustryProducing &GetParam(ForceType<const AITileList_IndustryProducing &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AITileList_IndustryProducing *)instance; }
 	template <> int Return<AITileList_IndustryProducing *>(HSQUIRRELVM vm, AITileList_IndustryProducing *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AITileList_IndustryProducing", res, NULL, DefSQDestructorCallback<AITileList_IndustryProducing>); return 1; }
-}; // namespace SQConvert
+} // namespace SQConvert
 
 void SQAITileList_IndustryProducing_Register(Squirrel *engine)
 {
@@ -77,7 +77,7 @@ namespace SQConvert {
 	template <> const AITileList_StationType *GetParam(ForceType<const AITileList_StationType *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AITileList_StationType *)instance; }
 	template <> const AITileList_StationType &GetParam(ForceType<const AITileList_StationType &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AITileList_StationType *)instance; }
 	template <> int Return<AITileList_StationType *>(HSQUIRRELVM vm, AITileList_StationType *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AITileList_StationType", res, NULL, DefSQDestructorCallback<AITileList_StationType>); return 1; }
-}; // namespace SQConvert
+} // namespace SQConvert
 
 void SQAITileList_StationType_Register(Squirrel *engine)
 {

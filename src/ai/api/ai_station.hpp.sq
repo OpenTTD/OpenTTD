@@ -24,7 +24,7 @@ namespace SQConvert {
 	template <> const AIStation *GetParam(ForceType<const AIStation *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIStation *)instance; }
 	template <> const AIStation &GetParam(ForceType<const AIStation &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIStation *)instance; }
 	template <> int Return<AIStation *>(HSQUIRRELVM vm, AIStation *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIStation", res, NULL, DefSQDestructorCallback<AIStation>); return 1; }
-}; // namespace SQConvert
+} // namespace SQConvert
 
 void SQAIStation_Register(Squirrel *engine)
 {

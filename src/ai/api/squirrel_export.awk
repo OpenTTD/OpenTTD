@@ -206,7 +206,7 @@ BEGIN {
 	print "	/* Allow " cls " to be used as Squirrel parameter */"
 	dump_class_templates(cls)
 
-	print "}; // namespace SQConvert"
+	print "} // namespace SQConvert"
 
 	print "";
 	# Then do the registration functions of the class. */

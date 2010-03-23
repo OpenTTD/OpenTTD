@@ -24,7 +24,7 @@ namespace SQConvert {
 	template <> const AIWaypoint *GetParam(ForceType<const AIWaypoint *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIWaypoint *)instance; }
 	template <> const AIWaypoint &GetParam(ForceType<const AIWaypoint &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIWaypoint *)instance; }
 	template <> int Return<AIWaypoint *>(HSQUIRRELVM vm, AIWaypoint *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIWaypoint", res, NULL, DefSQDestructorCallback<AIWaypoint>); return 1; }
-}; // namespace SQConvert
+} // namespace SQConvert
 
 void SQAIWaypoint_Register(Squirrel *engine)
 {

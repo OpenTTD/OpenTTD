@@ -18,7 +18,7 @@ namespace SQConvert {
 	template <> const AIGameSettings *GetParam(ForceType<const AIGameSettings *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIGameSettings *)instance; }
 	template <> const AIGameSettings &GetParam(ForceType<const AIGameSettings &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIGameSettings *)instance; }
 	template <> int Return<AIGameSettings *>(HSQUIRRELVM vm, AIGameSettings *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIGameSettings", res, NULL, DefSQDestructorCallback<AIGameSettings>); return 1; }
-}; // namespace SQConvert
+} // namespace SQConvert
 
 void SQAIGameSettings_Register(Squirrel *engine)
 {

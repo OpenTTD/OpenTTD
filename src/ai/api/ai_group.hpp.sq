@@ -22,7 +22,7 @@ namespace SQConvert {
 	template <> const AIGroup *GetParam(ForceType<const AIGroup *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIGroup *)instance; }
 	template <> const AIGroup &GetParam(ForceType<const AIGroup &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIGroup *)instance; }
 	template <> int Return<AIGroup *>(HSQUIRRELVM vm, AIGroup *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIGroup", res, NULL, DefSQDestructorCallback<AIGroup>); return 1; }
-}; // namespace SQConvert
+} // namespace SQConvert
 
 void SQAIGroup_Register(Squirrel *engine)
 {
