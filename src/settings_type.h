@@ -108,6 +108,7 @@ struct GUISettings {
 
 	uint8  developer;                        ///< print non-fatal warnings in console (>= 1), copy debug output to console (== 2)
 	bool   show_date_in_logs;                ///< whether to show dates in console logs
+	bool   newgrf_developer_tools;           ///< activate NewGRF developer tools
 };
 
 /** Settings related to currency/unit systems. */

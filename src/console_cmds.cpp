@@ -34,6 +34,7 @@
 #include "gamelog.h"
 #include "ai/ai.hpp"
 #include "ai/ai_config.hpp"
+#include "newgrf.h"
 #include "console_func.h"
 
 #ifdef ENABLE_NETWORK
@@ -109,6 +110,22 @@ DEF_CONSOLE_HOOK(ConHookNoNetwork)
 #else
 #	define ConHookNoNetwork NULL
 #endif /* ENABLE_NETWORK */
+
+DEF_CONSOLE_HOOK(ConHookNewGRFDeveloperTool)
+{
+	if (_settings_client.gui.newgrf_developer_tools) {
+		if (_game_mode == GM_MENU) {
+			if (echo) IConsoleError("This command is only available in game and editor.");
+			return CHR_DISALLOW;
+		}
+#ifdef ENABLE_NETWORK
+		return ConHookNoNetwork(echo);
+#else
+		return CHR_ALLOW;
+#endif
+	}
+	return CHR_HIDE;
+}
 
 static void IConsoleHelp(const char *str)
 {
@@ -1686,6 +1703,17 @@ DEF_CONSOLE_CMD(ConGamelogPrint)
 	return true;
 }
 
+DEF_CONSOLE_CMD(ConNewGRFReload)
+{
+	if (argc == 0) {
+		IConsoleHelp("Reloads all active NewGRFs from disk. Equivalent to reapplying NewGRFs via the settings, but without asking for confirmation. This might crash OpenTTD!");
+		return true;
+	}
+
+	ReloadNewGRFData();
+	return true;
+}
+
 #ifdef _DEBUG
 /******************
  *  debug commands
@@ -1826,4 +1854,7 @@ void IConsoleStdLibRegister()
 #ifdef _DEBUG
 	IConsoleDebugLibRegister();
 #endif
+
+	/* NewGRF development stuff */
+	IConsoleCmdRegister("reload_newgrfs",  ConNewGRFReload, ConHookNewGRFDeveloperTool);
 }
