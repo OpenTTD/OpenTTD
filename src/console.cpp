@@ -461,12 +461,17 @@ void IConsoleCmdExec(const char *cmdstr)
 	 */
 	cmd = IConsoleCmdGet(tokens[0]);
 	if (cmd != NULL) {
-		if (cmd->hook == NULL || cmd->hook()) {
-			if (!cmd->proc(t_index, tokens)) { // index started with 0
-				cmd->proc(0, NULL); // if command failed, give help
-			}
+		ConsoleHookResult chr = (cmd->hook == NULL ? CHR_ALLOW : cmd->hook(true));
+		switch (chr) {
+			case CHR_ALLOW:
+				if (!cmd->proc(t_index, tokens)) { // index started with 0
+					cmd->proc(0, NULL); // if command failed, give help
+				}
+				return;
+
+			case CHR_DISALLOW: return;
+			case CHR_HIDE: break;
 		}
-		return;
 	}
 
 	t_index--;

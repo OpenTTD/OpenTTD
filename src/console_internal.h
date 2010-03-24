@@ -19,6 +19,13 @@ enum {
 	ICON_MAX_STREAMSIZE = 2048, ///< maximum length of a totally expanded command
 };
 
+/** Return values of console hooks (#IConsoleHook). */
+enum ConsoleHookResult {
+	CHR_ALLOW,    ///< Allow command execution.
+	CHR_DISALLOW, ///< Disallow command execution.
+	CHR_HIDE,     ///< Hide the existance of the command.
+};
+
 /** --Commands--
  * Commands are commands, or functions. They get executed once and any
  * effect they produce are carried out. The arguments to the commands
@@ -27,7 +34,7 @@ enum {
  * eg. 'say "hello sexy boy"'
  */
 typedef bool IConsoleCmdProc(byte argc, char *argv[]);
-typedef bool IConsoleHook();
+typedef ConsoleHookResult IConsoleHook(bool echo);
 struct IConsoleCmd {
 	char *name;               ///< name of command
 	IConsoleCmd *next;        ///< next command in list

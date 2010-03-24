@@ -46,7 +46,7 @@ static bool _script_running;
 
 /* console command defines */
 #define DEF_CONSOLE_CMD(function) static bool function(byte argc, char *argv[])
-#define DEF_CONSOLE_HOOK(function) static bool function()
+#define DEF_CONSOLE_HOOK(function) static ConsoleHookResult function(bool echo)
 
 
 /****************
@@ -55,10 +55,10 @@ static bool _script_running;
 
 #ifdef ENABLE_NETWORK
 
-static inline bool NetworkAvailable()
+static inline bool NetworkAvailable(bool echo)
 {
 	if (!_network_available) {
-		IConsoleError("You cannot use this command because there is no network available.");
+		if (echo) IConsoleError("You cannot use this command because there is no network available.");
 		return false;
 	}
 	return true;
@@ -66,44 +66,44 @@ static inline bool NetworkAvailable()
 
 DEF_CONSOLE_HOOK(ConHookServerOnly)
 {
-	if (!NetworkAvailable()) return false;
+	if (!NetworkAvailable(echo)) return CHR_DISALLOW;
 
 	if (!_network_server) {
-		IConsoleError("This command is only available to a network server.");
-		return false;
+		if (echo) IConsoleError("This command is only available to a network server.");
+		return CHR_DISALLOW;
 	}
-	return true;
+	return CHR_ALLOW;
 }
 
 DEF_CONSOLE_HOOK(ConHookClientOnly)
 {
-	if (!NetworkAvailable()) return false;
+	if (!NetworkAvailable(echo)) return CHR_DISALLOW;
 
 	if (_network_server) {
-		IConsoleError("This command is not available to a network server.");
-		return false;
+		if (echo) IConsoleError("This command is not available to a network server.");
+		return CHR_DISALLOW;
 	}
-	return true;
+	return CHR_ALLOW;
 }
 
 DEF_CONSOLE_HOOK(ConHookNeedNetwork)
 {
-	if (!NetworkAvailable()) return false;
+	if (!NetworkAvailable(echo)) return CHR_DISALLOW;
 
 	if (!_networking) {
-		IConsoleError("Not connected. This command is only available in multiplayer.");
-		return false;
+		if (echo) IConsoleError("Not connected. This command is only available in multiplayer.");
+		return CHR_DISALLOW;
 	}
-	return true;
+	return CHR_ALLOW;
 }
 
 DEF_CONSOLE_HOOK(ConHookNoNetwork)
 {
 	if (_networking) {
-		IConsoleError("This command is forbidden in multiplayer.");
-		return false;
+		if (echo) IConsoleError("This command is forbidden in multiplayer.");
+		return CHR_DISALLOW;
 	}
-	return true;
+	return CHR_ALLOW;
 }
 
 #else
@@ -1365,7 +1365,7 @@ DEF_CONSOLE_CMD(ConListCommands)
 
 	for (cmd = _iconsole_cmds; cmd != NULL; cmd = cmd->next) {
 		if (argv[1] == NULL || strstr(cmd->name, argv[1]) != NULL) {
-				IConsolePrintF(CC_DEFAULT, "%s", cmd->name);
+			if (cmd->hook == NULL || cmd->hook(false) != CHR_HIDE) IConsolePrintF(CC_DEFAULT, "%s", cmd->name);
 		}
 	}
 
