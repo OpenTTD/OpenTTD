@@ -261,6 +261,11 @@ IConsoleCmd *IConsoleCmdGet(const char *name)
  */
 void IConsoleAliasRegister(const char *name, const char *cmd)
 {
+	if (IConsoleAliasGet(name) != NULL) {
+		IConsoleError("an alias with this name already exists; insertion aborted");
+		return;
+	}
+
 	char *new_alias = strdup(name);
 	char *cmd_aliased = strdup(cmd);
 	IConsoleAlias *item_new = MallocT<IConsoleAlias>(1);
