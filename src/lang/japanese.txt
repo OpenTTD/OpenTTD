@@ -1163,6 +1163,8 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :反時計回り
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :時計回り
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}平地シナリオの高さ：{ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}マップの端のタイルの地形変更を有効にする： {ORANGE}{STRING}
+STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}北端の1箇所以上のタイルが空白ではありません。
+STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}マップ端の1箇所以上のタイルが水域ではありません
 
 STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}駅の幅の上限：{ORANGE}{STRING} {RED}注意：高い数はパフォーマンスに悪影響を与えます
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}ヘリコプターを自動的ヘリパッドで修理：{ORANGE}{STRING}
@@ -1216,6 +1218,7 @@ STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :最新の鉄道
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :最も使われている鉄道種類
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}予約済みの線路を表示: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}ビルドのツールバーは使用後に表示したままにする：{ORANGE}{STRING}
+STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}財政ウィンドウ内でグループ分けされた費用表示をする: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}適当な車両がまだ購入不可能であっても、基礎の建設を許容：{ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}一人のプレヤーの列車数上限：{ORANGE}{STRING}
@@ -1247,6 +1250,7 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}色刷�
 STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}開始年：{ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}スムーズな経済を使用：{ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}他社所有株式の購入を許容する：{ORANGE}{STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}フィーダーシステムの末端で支払われる収益比率: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}ドラッグで自動建設する信号設備間隔: {ORANGE}{STRING} タイル
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}次の年まで腕木式信号を建設：{ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}信号のGUIを使用: {ORANGE}{STRING}
@@ -1266,10 +1270,13 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :格子状（2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :格子状（3x3）
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :ランダム
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}町は道路建設を許容： {ORANGE}{STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}空港建設に対する街の騒音レベル規制を許可する: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}インゲームで街の新設に出資: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :不可能
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :可能
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :可能、町を設定もできます
 
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}インゲームでの植樹: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :なし {RED}(製剤所は使えなくなります)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :雨林の中だけ
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :各地
@@ -1280,6 +1287,8 @@ STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :中位
 STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :右
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}ウィンドウスナップ範囲：{ORANGE}{STRING} px
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}ウィンドウスナップ範囲：{ORANGE}切
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}ウィンドウ数のソフトウェア制限 (non-sticky): {ORANGE}{STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}ウィンドウ数のソフトウェア制限 (non-sticky): {ORANGE}無効
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}市町村の展開：{ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :なし
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :遅い
@@ -1333,7 +1342,7 @@ STR_INTRO_LOAD_GAME                                             :{BLACK}ロー�
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}シナリオをプレイ
 STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}ハイトマップをプレイ
 STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}シナリオエディタ
-STR_INTRO_MULTIPLAYER                                           :{BLACK}多人数プレイ
+STR_INTRO_MULTIPLAYER                                           :{BLACK}マルチプレイヤーゲーム
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}ゲームの基本設定
 STR_INTRO_DIFFICULTY                                            :{BLACK} 難易度 ({STRING})
@@ -1359,6 +1368,7 @@ STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}ゲー�
 STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}難易度の設定を表示します
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}パッチ･拡張設定を表示
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF の設定を表示
+STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}コンテンツの新規追加または更新のチェックとダウンロード
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}AI の設定を表示します
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}OpenTTD を終了します
 
@@ -1456,8 +1466,8 @@ STR_FACE_SIMPLE                                                 :{BLACK}簡単
 STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}顔を簡単に選択します。
 STR_FACE_LOAD                                                   :{BLACK}開く
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}お好みの顔を開きます。
-STR_FACE_LOAD_DONE                                              :{WHITE}お好みの顔は OpenTTD の設定ファイルから読み込みました。
-STR_FACE_FACECODE                                               :{BLACK}プレヤーの顔番号
+STR_FACE_LOAD_DONE                                              :{WHITE}お好みの顔を OpenTTD の設定ファイルから読み込みました。
+STR_FACE_FACECODE                                               :{BLACK}プレーヤーの顔番号
 STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}プレヤーの顔番号を表示／変更
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}プレヤーの顔番号を表示／変更
 STR_FACE_FACECODE_SET                                           :{WHITE}新しい顔番号が設定されました。
@@ -1678,6 +1688,7 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}新会�
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :蹴る
+STR_NETWORK_CLIENTLIST_BAN                                      :BAN
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :送金
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :全員へ発言
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :チームへ発言
@@ -1706,6 +1717,7 @@ STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}会社�
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}送信
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :『チーム』：
+STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[プライベート] {STRING}:
 STR_NETWORK_CHAT_ALL_CAPTION                                    :『全員』：
 
 STR_NETWORK_CHAT_COMPANY                                        :『チーム』{STRING}：{WHITE}{STRING}
@@ -1753,6 +1765,7 @@ STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :サーバ満員
 ############ End of leave-in-this-order
 
 # Network related errors
+STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
 ############ Leave those lines in this order!!
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :ゲームはポーズされました。 ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :ゲームはまだポーズされています。 ({STRING})
@@ -1765,6 +1778,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :手動
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :退出
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} は参加してきました
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} がゲームに参加しました (クライアント #{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} が 会社 #{2:NUM} の経営に参加しました。
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} が傍観者として参加しました。
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} が新会社 (#{2:NUM}) を設立しました。
@@ -1773,7 +1787,7 @@ STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} �
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} は {2:CURRENCY} を送金してくれました
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** {1:STRING} に {2:CURRENCY} を送金しました
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}サーバがセッションを終了しました
-STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}サーバが再起道中...{}しばらくお待ちください...
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}このサーバは再起動中です...{}しばらくお待ちください...
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}ダウンロード中
@@ -1795,6 +1809,7 @@ STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}合計�
 STR_CONTENT_DETAIL_TITLE                                        :{SILVER}項目の情報
 STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}これはダウンロードをするために選択しませんでした
 STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}これをダウンロードをするために選択しました
+STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}依存性によりダウンロードを選択されます
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}これはもうダウンロードされました
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}項目名：{WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}バージョン：{WHITE}{STRING}
@@ -2345,6 +2360,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}警告：{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}エラー：{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}エラー：{SILVER}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}致命的な NewGRF エラーが発生しました: {}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING}はOpenTTDのTTDPatchバージョンに対応していません。
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING}はTTDの{STRING}バージョンのみに対応しています。
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING}を使用時に、{STRING}を入にしなければなりません
@@ -2359,12 +2375,12 @@ STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :予期しない
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :不明な Action 0 プロパティ。
 STR_NEWGRF_ERROR_INVALID_ID                                     :無効な ID が含む
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} は壊れたスプライトを含みます。壊れたスプライトは赤疑問符として表示されます。
-STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :複数の Action 8 の項目が含む
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :複数の Action 8 の項目を含んでいます。
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :擬似スプライト読込:既に終端に達しました
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}注意！
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}実行中のゲームに変更を適用して、クラッシュのリスクがあります。{}続けてもよろしいですか？
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}実行中のゲームに変更を適用すると、クラッシュのリスクがあります。{}続けてもよろしいですか？
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}ファイルが追加できません：重複のGRF ID
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}一致しているファイルが見つかりません（代替 GRF を使用中）
@@ -2378,6 +2394,7 @@ STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}ポー�
 STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF '{0:STRING}' のビヘービアは desync もしくはクラッシュを行わせる可能性があります！
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}「{1:COMPANY}」が所有している「{0:VEHICLE}」という電車は無効な長さがあります。使用している NewGRF が原因であるかもしれません。desync もしくはクラッシュが行う可能性があります！
 
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' は生産コールバック内で無限ループを起こしました.
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}標示のリスト - {COMMA}つの標示
@@ -2553,7 +2570,9 @@ STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}会社の
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}（{1:COMPANY}が{0:COMMA}％株式保有）
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}本部ビルを建設
+STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}本社を建てます
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}本部ビルを見る
+STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}本社を見ます
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}本部ビルを移動
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}会社の本部ビルを移動します（価格：会社の価値の１％）
 
@@ -2805,6 +2824,7 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :モノレール
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :磁気浮上式鉄道車両
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}価格：{CURRENCY}　重量：{WEIGHT_S}{}最大速度：{VELOCITY}　出力：{POWER}{}運転費：一年間{CURRENCY}{}容量：{CARGO}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}価格: {CURRENCY} 重量: {WEIGHT_S}{}速度: {VELOCITY}  出力: {POWER}  最大牽引力: {6:FORCE}{}運転費用: {4:CURRENCY}/年{}容量: {5:CARGO}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}値段：{CURRENCY}　最高速度：{VELOCITY}{}収容能力：{CARGO}、{CARGO}{}維持費：一年間{CURRENCY}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}値段：{CURRENCY}　最高速度：{VELOCITY}{}収容能力：{CARGO}{}維持費：一年間{CURRENCY}
 
@@ -3032,6 +3052,7 @@ STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}選択�
 STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}全て降ろす
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :受入有なら降ろす
 STR_ORDER_DROP_UNLOAD                                           :全て降ろす
+STR_ORDER_DROP_TRANSFER                                         :転送
 STR_ORDER_DROP_NO_UNLOADING                                     :降ろさない
 STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}選択した指令の降ろす方法を変更します
 
@@ -3107,9 +3128,9 @@ STR_ORDER_UNLOAD                                                :(降ろして�
 STR_ORDER_UNLOAD_FULL_LOAD                                      :(降ろして全積載まで待つ)
 STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(降ろしていずれか一種のを全積載)
 STR_ORDER_UNLOAD_NO_LOAD                                        :(降ろして空荷のまま出発)
-STR_ORDER_NO_UNLOAD                                             :（積み荷を降ろせずに貨物を積む）
-STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :（積み荷を降ろせずに満載する）
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :（積み荷を降ろせずにいかに満載する）
+STR_ORDER_NO_UNLOAD                                             :（積み荷を降ろさずに貨物を積む）
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :（積み荷を降ろさずに満載するまで待つ）
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :（積み荷を降ろさずにいずれかを満載するまで待つ）
 
 
 STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :指令{COMMA}に飛ぶ
@@ -3169,15 +3190,15 @@ STR_AI_DEBUG_RELOAD                                             :{BLACK}AI を�
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}AI を停止して、スクリプトを読み込んで、AI を再起動します。
 
 STR_ERROR_NO_AI                                                 :{WHITE}この OpenTTD は AI のサポートが入っていません...
-STR_ERROR_NO_AI_SUB                                             :{WHITE}... 使用可能のAIがありません！
+STR_ERROR_NO_AI_SUB                                             :{WHITE}... 使用可能なAIがありません！
 
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}実行中の AI の一つは予期せずに終了しました。AI の作者に AI デバッグのウインドウのスクリーンショットが含む電子メールをご送信ください。
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}実行中の AI の一つが予期せずに終了しました。AI の作者に AI デバッグのウインドウのスクリーンショットが含む電子メールをご送信ください。
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI デバッグウインドウはサーバのみで使用することができます。
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}AI の設定
-STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}次のゲームにすべての使用する AI を表示します。
-STR_AI_CONFIG_HUMAN_PLAYER                                      :人間のプレヤー
+STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}次のゲームに使用するすべての AI を表示します。
+STR_AI_CONFIG_HUMAN_PLAYER                                      :人間のプレーヤー
 STR_AI_CONFIG_RANDOM_AI                                         :ランダムな AI
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}上にします
@@ -3242,6 +3263,7 @@ STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :データイン
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}このゲームは路面電車に対応していないバージョンで保存されましたので、すべての路面電車が削除されました。
 
 # Map generation messages
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}マップ生成中止...{}... 適合する街の配置がありません
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... このシナリオに市町村がありません
 
 STR_ERROR_PNGMAP                                                :{WHITE}PNG ファイルから地形が読み込めません...

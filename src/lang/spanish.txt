@@ -280,7 +280,7 @@ STR_SORT_BY_FACILITY                                            :Tipo de estaci�
 STR_SORT_BY_WAITING                                             :Esperando valor de la carga
 STR_SORT_BY_RATING_MAX                                          :Clasificación de carga más alta
 STR_SORT_BY_RATING_MIN                                          :Clasificación de carga más baja
-STR_SORT_BY_ENGINE_ID                                           :ID Locomotora (ordenación clásica)
+STR_SORT_BY_ENGINE_ID                                           :ID Motor (ordenación clásica)
 STR_SORT_BY_COST                                                :Coste
 STR_SORT_BY_POWER                                               :Potencia
 STR_SORT_BY_INTRO_DATE                                          :Fecha Introducción
