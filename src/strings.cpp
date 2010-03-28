@@ -33,6 +33,8 @@
 #include "townname_func.h"
 #include "string_func.h"
 #include "company_base.h"
+#include "industrytype.h"
+#include "smallmap_gui.h"
 
 #include "table/strings.h"
 #include "table/control_codes.h"
@@ -1324,6 +1326,8 @@ bool ReadLanguagePack(int lang_index)
 	_dynlang.curr = lang_index;
 	_dynlang.text_dir = (TextDirection)lang_pack->text_dir;
 	SetCurrentGrfLangID(_langpack->newgrflangid);
+	SortIndustryTypes();
+	BuildIndustriesLegend();
 	SortNetworkLanguages();
 	return true;
 }

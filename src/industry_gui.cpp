@@ -96,6 +96,40 @@ static inline void GetAllCargoSuffixes(uint cb_offset, CargoSuffixType cst, cons
 	}
 }
 
+IndustryType _sorted_industry_types[NUM_INDUSTRYTYPES];
+
+/** Sort industry types by their name. */
+static int CDECL IndustryTypeNameSorter(const IndustryType *a, const IndustryType *b)
+{
+	static char industry_name[2][64];
+
+	const IndustrySpec *indsp1 = GetIndustrySpec(*a);
+	SetDParam(0, indsp1->name);
+	GetString(industry_name[0], STR_JUST_STRING, lastof(industry_name[0]));
+
+	const IndustrySpec *indsp2 = GetIndustrySpec(*b);
+	SetDParam(0, indsp2->name);
+	GetString(industry_name[1], STR_JUST_STRING, lastof(industry_name[1]));
+
+	int r = strcmp(industry_name[0], industry_name[1]);
+
+	/* If the names are equal, sort by industry type. */
+	return (r != 0) ? r : (*a - *b);
+}
+
+/** Initialize the list of sorted industry types.
+ */
+void SortIndustryTypes()
+{
+	/* Add each industry type to the list. */
+	for (IndustryType i = 0; i < NUM_INDUSTRYTYPES; i++) {
+		_sorted_industry_types[i] = i;
+	}
+
+	/* Sort industry types by name. */
+	QSortT(_sorted_industry_types, NUM_INDUSTRYTYPES, &IndustryTypeNameSorter);
+}
+
 /** Command callback. In case of failure to build an industry, show an error message.
  * @param result Result of the command.
  * @param tile   Tile where the industry is placed.

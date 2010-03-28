@@ -183,6 +183,11 @@ void ResetIndustries();
 extern IndustrySpec _industry_specs[NUM_INDUSTRYTYPES];
 extern IndustryTileSpec _industry_tile_specs[NUM_INDUSTRYTILES];
 
+/* industry_gui.cpp */
+void SortIndustryTypes();
+/* Industry types sorted alphabetically by name. */
+extern IndustryType _sorted_industry_types[NUM_INDUSTRYTYPES];
+
 /**
  * Do industry gfx ID translation for NewGRFs.
  * @param gfx the type to get the override for.
