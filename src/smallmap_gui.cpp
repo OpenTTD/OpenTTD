@@ -393,8 +393,8 @@ static inline uint32 GetSmallMapIndustriesPixels(TileIndex tile, TileType t)
 		if (_legend_from_industries[_industry_to_list_pos[Industry::GetByTile(tile)->type]].show_on_map) {
 			return GetIndustrySpec(Industry::GetByTile(tile)->type)->map_colour * 0x01010101;
 		} else {
-			/* Otherwise, return the colour of the clear tiles, which will make it disappear */
-			t = MP_CLEAR;
+			/* Otherwise, return the colour which will make it disappear */
+			t = (GetWaterClass(tile) == WATER_CLASS_INVALID) ? MP_CLEAR : MP_WATER;
 		}
 	}
 
