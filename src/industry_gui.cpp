@@ -217,7 +217,8 @@ class BuildIndustryWindow : public Window {
 		 * The tests performed after the enabled allow to load the industries
 		 * In the same way they are inserted by grf (if any)
 		 */
-		for (IndustryType ind = 0; ind < NUM_INDUSTRYTYPES; ind++) {
+		for (uint8 i = 0; i < NUM_INDUSTRYTYPES; i++) {
+			IndustryType ind = _sorted_industry_types[i];
 			const IndustrySpec *indsp = GetIndustrySpec(ind);
 			if (indsp->enabled) {
 				/* Rule is that editor mode loads all industries.
@@ -254,12 +255,14 @@ public:
 		this->selected_index = -1;
 		this->selected_type = INVALID_INDUSTRYTYPE;
 
-		/* Initialize arrays */
-		this->SetupArrays();
-
 		this->callback_timer = DAY_TICKS;
 
 		this->InitNested(&_build_industry_desc, 0);
+	}
+
+	virtual void OnInit()
+	{
+		this->SetupArrays();
 	}
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
