@@ -2086,6 +2086,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Postavit
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Výběr letiště
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Zvol velikost a typ letiště
+STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Třída letiště
 
 STR_AIRPORT_SMALL                                               :Malé
 STR_AIRPORT_CITY                                                :Městské
@@ -2193,6 +2194,7 @@ STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Souřadn
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Postaveno: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Třída stanice: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Druh stanice: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Název dlaždice letiště:{LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Přijímané zboží: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
@@ -3387,6 +3389,7 @@ STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Varován
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Tak velká zmena velikosti zdrojové mapy není doporučena. Pokračovat s generováním?
 
 # Soundset messages
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Byl nalezen pouze nouzový zvukový soubor. Pokud chcete zvuky, nainstalujte prosim zvukové soubory skrze systém stahování obsahu
 
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Screenshot úspěšně uložen jako '{STRING}'
@@ -3503,6 +3506,7 @@ STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Nelze od
 STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Nelze odstranit nakládací rampu...
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Nelze zbourat tramvajovou stanici pro cestující...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Nelze odstranit nákladní tramvajovou stanici...
+STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Je nutné nejprve odstranit konec silnice
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Je nutné nejprve zničit stanici
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Je nutné nejprve zničit autobusovou zastávku
@@ -4189,3 +4193,4 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
+STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})

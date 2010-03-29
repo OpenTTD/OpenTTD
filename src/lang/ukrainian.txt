@@ -917,10 +917,10 @@ STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}Нашестя саранчі призвело до спустошення на {INDUSTRY}!{}Виробництво впало на 50%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK}{1:INDUSTRY}: Виробництво {0:STRING.r} впало на {2:COMMA}%!
 
-STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} чакає в депо
-STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} чакає в депо
-STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} чакає в депо
-STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} чакає в ангарі
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} чекає в депо
+STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} чекає в депо
+STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} чекає в депо
+STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} чекає в ангарі
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
