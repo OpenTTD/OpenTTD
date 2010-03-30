@@ -1028,6 +1028,9 @@ void InitializeAIGui()
 /** Open the AI debug window if one of the AI scripts has crashed. */
 void ShowAIDebugWindowIfAIError()
 {
+	/* Network clients can't debug AIs. */
+	if (_networking && !_network_server) return;
+
 	Company *c;
 	FOR_ALL_COMPANIES(c) {
 		if (c->is_ai && c->ai_instance->IsDead()) {
