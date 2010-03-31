@@ -1,3 +1,9 @@
+1.0.0 (2010-04-01)
+------------------------------------------------------------------------
+- Fix: Network clients would crash while connecting to a server with AIs (r19526)
+- Fix: [NPF] Crash when finding a waypoint before finding the closest depot [FS#3703] (r19460)
+
+
 1.0.0-RC3 (2010-03-18)
 ------------------------------------------------------------------------
 - Feature: Append rail type speed limit (if set) to rail type selection list, and toolbar title (r19431)
