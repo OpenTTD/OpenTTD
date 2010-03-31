@@ -230,7 +230,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Yeni ad
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Pencereyi kapat
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Pencere başlığı - pencereyi hareket ettirmek için sürükle
-STR_TOOLTIP_SHADE                                               :{BLACK}Pencereyi gizle - Yalnız başlık çubuğunu göster
+STR_TOOLTIP_SHADE                                               :{BLACK}Pencereyi gizle - yalnız başlık çubuğunu göster
 STR_TOOLTIP_STICKY                                              :{BLACK}'Tüm pencereleri kapat' tuşuyla kapanmasın
 STR_TOOLTIP_RESIZE                                              :{BLACK}Pencereyi boyutlandirmak için tıklayıp sürükle
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Pencere boyutunu büyült/küçült
@@ -2386,7 +2386,7 @@ STR_NEWGRF_ERROR_READ_BOUNDS                                    :Pseudo-sprite b
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Uyarı!
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Çalışan bir oyunu değiştirmek üzeresiniz; bu OpenTTD'yi çökertebilir.{}Emin misiniz?
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Çalışan bir oyunu değiştirmek üzeresiniz. Bu OpenTTD'yi çökertebilir.{}Bundan kesinlikle emin misiniz?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Dosya eklenemiyor: GRF ID çakışması
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Eşleşen dosya bulunamadı (uyumlu GRF yüklendi)
@@ -2914,7 +2914,7 @@ STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Uçak ay
 STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Tren durumu - treni durdurmak/başlatmak için buraya tıklayın
 STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Aracın durumu - durdurmak/başlatmak için tıklayın
 STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Geminin durumu - durdurmak/başlatmak için buraya tıkla
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Uçağın durumu - uçağı durdurmak/başlatmak için tıkla
+STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Uçağın durumu - uçağı durdurmak/başlatmak için tıkla. Ctrl+Tık ile hedefe git
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Yükleme / Boşaltma
