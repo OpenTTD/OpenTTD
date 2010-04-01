@@ -1770,7 +1770,7 @@ CommandCost CmdRefitRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		RoadVehicle *front = v->First();
 		RoadVehUpdateCache(front);
 		if (_settings_game.vehicle.roadveh_acceleration_model != AM_ORIGINAL) front->CargoChanged();
-		SetWindowDirty(WC_VEHICLE_DETAILS, front->index);
+		InvalidateWindowData(WC_VEHICLE_DETAILS, front->index);
 		SetWindowDirty(WC_VEHICLE_DEPOT, front->tile);
 		InvalidateWindowClassesData(WC_ROADVEH_LIST, 0);
 	} else {
