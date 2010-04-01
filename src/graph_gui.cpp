@@ -810,9 +810,11 @@ enum CargoPaymentRatesWidgets {
 };
 
 struct PaymentRatesGraphWindow : BaseGraphWindow {
+	bool first_init; ///< This value is true until the first initialization of the window has finished.
 	PaymentRatesGraphWindow(const WindowDesc *desc, WindowNumber window_number) :
 			BaseGraphWindow(CPW_GRAPH, false, STR_JUST_CURRCOMPACT)
 	{
+		this->first_init = true;
 		this->num_on_x_axis = 20;
 		this->num_vert_lines = 20;
 		this->month = 0xFF;
@@ -824,11 +826,34 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 
 		this->InitNested(desc, window_number);
 
-		int i = 0;
-		const CargoSpec *cs;
-		FOR_ALL_CARGOSPECS(cs) {
-			this->SetWidgetLoweredState(CPW_CARGO_FIRST + cs->Index(), !HasBit(_legend_excluded_cargo, i));
-			i++;
+		this->UpdateLoweredWidgets();
+	}
+
+	virtual void OnInit()
+	{
+		/* UpdateLoweredWidgets needs to be called after a language or NewGRF change, but it can't be called before
+		 * InitNested is done. On the first init these functions are called in the correct order by the constructor. */
+		if (!this->first_init) {
+			/* Initialise the dataset */
+			this->OnHundredthTick();
+			this->UpdateLoweredWidgets();
+		}
+		this->first_init = false;
+	}
+
+	void UpdateExcludedData()
+	{
+		this->excluded_data = 0;
+
+		for (int i = 0; i < _sorted_cargo_specs_size; i++) {
+			if (HasBit(_legend_excluded_cargo, _sorted_cargo_specs[i]->Index())) SetBit(this->excluded_data, i);
+		}
+	}
+
+	void UpdateLoweredWidgets()
+	{
+		for (int i = 0; i < _sorted_cargo_specs_size; i++) {
+			this->SetWidgetLoweredState(CPW_CARGO_FIRST + i, !HasBit(this->excluded_data, i));
 		}
 	}
 
@@ -839,7 +864,7 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 			return;
 		}
 
-		const CargoSpec *cs = CargoSpec::Get(widget - CPW_CARGO_FIRST);
+		const CargoSpec *cs = _sorted_cargo_specs[widget - CPW_CARGO_FIRST];
 		SetDParam(0, cs->name);
 		Dimension d = GetStringBoundingBox(STR_GRAPH_CARGO_PAYMENT_CARGO);
 		d.width += 14; // colour field
@@ -855,7 +880,7 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 			return;
 		}
 
-		const CargoSpec *cs = CargoSpec::Get(widget - CPW_CARGO_FIRST);
+		const CargoSpec *cs = _sorted_cargo_specs[widget - CPW_CARGO_FIRST];
 		bool rtl = _dynlang.text_dir == TD_RTL;
 
 		/* Since the buttons have no text, no images,
@@ -877,16 +902,10 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		if (widget >= CPW_CARGO_FIRST) {
-			int i = 0;
-			const CargoSpec *cs;
-			FOR_ALL_CARGOSPECS(cs) {
-				if (cs->Index() + CPW_CARGO_FIRST == widget) break;
-				i++;
-			}
-
-			ToggleBit(_legend_excluded_cargo, i);
+			int i = widget - CPW_CARGO_FIRST;
+			ToggleBit(_legend_excluded_cargo, _sorted_cargo_specs[i]->Index());
 			this->ToggleWidgetLoweredState(widget);
-			this->excluded_data = _legend_excluded_cargo;
+			this->UpdateExcludedData();
 			this->SetDirty();
 		}
 	}
@@ -898,17 +917,14 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 
 	virtual void OnHundredthTick()
 	{
-		this->excluded_data = _legend_excluded_cargo;
+		this->UpdateExcludedData();
 
-		int i = 0;
-		const CargoSpec *cs;
-		FOR_ALL_CARGOSPECS(cs) {
-			this->colours[i] = cs->legend_colour;
+		int i;
+		for (i = 0; i < _sorted_cargo_specs_size; i++) {
+			this->colours[i] = _sorted_cargo_specs[i]->legend_colour;
 			for (uint j = 0; j != 20; j++) {
-				this->cost[i][j] = GetTransportedGoodsIncome(10, 20, j * 4 + 4, cs->Index());
+				this->cost[i][j] = GetTransportedGoodsIncome(10, 20, j * 4 + 4, _sorted_cargo_specs[i]->Index());
 			}
-
-			i++;
 		}
 		this->num_dataset = i;
 	}
@@ -919,15 +935,14 @@ static NWidgetBase *MakeCargoButtons(int *biggest_index)
 {
 	NWidgetVertical *ver = new NWidgetVertical;
 
-	const CargoSpec *cs;
-	FOR_ALL_CARGOSPECS(cs) {
-		*biggest_index = CPW_CARGO_FIRST + cs->Index();
-		NWidgetBackground *leaf = new NWidgetBackground(WWT_PANEL, COLOUR_ORANGE, *biggest_index, NULL);
+	for (int i = 0; i < _sorted_cargo_specs_size; i++) {
+		NWidgetBackground *leaf = new NWidgetBackground(WWT_PANEL, COLOUR_ORANGE, CPW_CARGO_FIRST + i, NULL);
 		leaf->tool_tip = STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO;
 		leaf->SetFill(1, 0);
 		leaf->SetLowered(true);
 		ver->Add(leaf);
 	}
+	*biggest_index = CPW_CARGO_FIRST + _sorted_cargo_specs_size - 1;
 	return ver;
 }
 
