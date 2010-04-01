@@ -99,9 +99,9 @@ enum {
 };
 
 static bool _internal_sort_order; // descending/ascending
-static byte _last_sort_criteria[]    = {0, 0, 0, 0};
-static bool _last_sort_order[]       = {false, false, false, false};
-static byte _last_filter_criteria[]  = {0, 0, 0, 0};
+static byte _last_sort_criteria[]      = {0, 0, 0, 0};
+static bool _last_sort_order[]         = {false, false, false, false};
+static CargoID _last_filter_criteria[] = {CF_ANY, CF_ANY, CF_ANY, CF_ANY};
 
 static int CDECL EngineNumberSorter(const EngineID *a, const EngineID *b)
 {
@@ -790,38 +790,6 @@ struct BuildVehicleWindow : Window {
 
 		this->sort_criteria         = _last_sort_criteria[type];
 		this->descending_sort_order = _last_sort_order[type];
-		this->cargo_filter_criteria = _last_filter_criteria[type];
-
-		/* Populate filter list */
-		uint filter_items = 0;
-
-		/* Add item for disabling filtering */
-		this->cargo_filter[filter_items] = CF_ANY;
-		this->cargo_filter_texts[filter_items] = STR_PURCHASE_INFO_ALL_TYPES;
-		filter_items++;
-
-		/* Add item for vehicles not carrying anything, e.g. train engines.
-		 * This could also be useful for eyecandy vehicles of other types, but is likely too confusing for joe, */
-		if (type == VEH_TRAIN) {
-			this->cargo_filter[filter_items] = CF_NONE;
-			this->cargo_filter_texts[filter_items] = STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE;
-			filter_items++;
-		}
-
-		/* Collect available cargo types for filtering */
-		const CargoSpec *cargo;
-		FOR_ALL_CARGOSPECS(cargo) {
-			if (IsCargoInClass(cargo->Index(), CC_SPECIAL)) continue; // exclude fake cargo types
-			this->cargo_filter[filter_items] = cargo->Index();
-			this->cargo_filter_texts[filter_items] = cargo->name;
-			filter_items++;
-		}
-
-		this->cargo_filter_texts[filter_items] = INVALID_STRING_ID;
-		if (this->cargo_filter_criteria >= filter_items) this->cargo_filter_criteria = 0;
-
-		this->eng_list.SetFilterFuncs(_filter_funcs);
-		this->eng_list.SetFilterState(this->cargo_filter[this->cargo_filter_criteria] != CF_ANY);
 
 		switch (type) {
 			default: NOT_REACHED();
@@ -864,6 +832,54 @@ struct BuildVehicleWindow : Window {
 		this->GenerateBuildList(); // generate the list, since we need it in the next line
 		/* Select the first engine in the list as default when opening the window */
 		if (this->eng_list.Length() > 0) this->sel_engine = this->eng_list[0];
+	}
+
+	/** Populate the filter list and set the cargo filter criteria. */
+	void SetCargoFilterArray()
+	{
+		uint filter_items = 0;
+
+		/* Add item for disabling filtering. */
+		this->cargo_filter[filter_items] = CF_ANY;
+		this->cargo_filter_texts[filter_items] = STR_PURCHASE_INFO_ALL_TYPES;
+		filter_items++;
+
+		/* Add item for vehicles not carrying anything, e.g. train engines.
+		 * This could also be useful for eyecandy vehicles of other types, but is likely too confusing for joe, */
+		if (this->vehicle_type == VEH_TRAIN) {
+			this->cargo_filter[filter_items] = CF_NONE;
+			this->cargo_filter_texts[filter_items] = STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE;
+			filter_items++;
+		}
+
+		/* Collect available cargo types for filtering. */
+		for (int i = 0; i < _sorted_cargo_specs_size; i++) {
+			this->cargo_filter[filter_items] = _sorted_cargo_specs[i]->Index();
+			this->cargo_filter_texts[filter_items] = _sorted_cargo_specs[i]->name;
+			filter_items++;
+		}
+
+		/* Terminate the filter list. */
+		this->cargo_filter_texts[filter_items] = INVALID_STRING_ID;
+
+		/* If not found, the cargo criteria will be set to all cargos. */
+		this->cargo_filter_criteria = 0;
+
+		/* Find the last cargo filter criteria. */
+		for (uint i = 0; i < filter_items; i++) {
+			if (this->cargo_filter[i] == _last_filter_criteria[this->vehicle_type]) {
+				this->cargo_filter_criteria = i;
+				break;
+			}
+		}
+
+		this->eng_list.SetFilterFuncs(_filter_funcs);
+		this->eng_list.SetFilterState(this->cargo_filter[this->cargo_filter_criteria] != CF_ANY);
+	}
+
+	void OnInit()
+	{
+		this->SetCargoFilterArray();
 	}
 
 	/** Filter the engine list against the currently selected cargo filter */
@@ -1190,7 +1206,7 @@ struct BuildVehicleWindow : Window {
 			case BUILD_VEHICLE_WIDGET_CARGO_FILTER_DROPDOWN: // Select a cargo filter criteria
 				if (this->cargo_filter_criteria != index) {
 					this->cargo_filter_criteria = index;
-					_last_filter_criteria[this->vehicle_type] = this->cargo_filter_criteria;
+					_last_filter_criteria[this->vehicle_type] = this->cargo_filter[this->cargo_filter_criteria];
 					/* deactivate filter if criteria is 'Show All', activate it otherwise */
 					this->eng_list.SetFilterState(this->cargo_filter[this->cargo_filter_criteria] != CF_ANY);
 					this->eng_list.ForceRebuild();
