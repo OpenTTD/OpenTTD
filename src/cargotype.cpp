@@ -13,6 +13,8 @@
 #include "cargotype.h"
 #include "core/bitmath_func.hpp"
 #include "newgrf_cargo.h"
+#include "strings_func.h"
+#include "core/sort_func.hpp"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -111,5 +113,53 @@ SpriteID CargoSpec::GetCargoIcon() const
 	if (sprite == 0) sprite = SPR_CARGO_GOODS;
 
 	return sprite;
+}
+
+const CargoSpec *_sorted_cargo_specs[NUM_CARGO]; ///< Cargo specifications sorted alphabetically by name.
+uint8 _sorted_cargo_specs_size;                  ///< Number of cargo specifications stored at the _sorted_cargo_specs array.
+
+/** Sort cargo specifications by their name. */
+static int CDECL CargoSpecNameSorter(const CargoSpec * const *a, const CargoSpec * const *b)
+{
+	static char a_name[64];
+	static char b_name[64];
+
+	GetString(a_name, (*a)->name, lastof(a_name));
+	GetString(b_name, (*b)->name, lastof(b_name));
+
+	int res = strcmp(a_name, b_name);
+
+	/* If the names are equal, sort by cargo bitnum. */
+	return (res != 0) ? res : ((*a)->bitnum - (*b)->bitnum);
+}
+
+/** Sort cargo specifications by their cargo class. */
+static int CDECL CargoSpecClassSorter(const CargoSpec * const *a, const CargoSpec * const *b)
+{
+	int res = ((*b)->classes & CC_PASSENGERS) - ((*a)->classes & CC_PASSENGERS);
+	if (res == 0) {
+		res = ((*b)->classes & CC_MAIL) - ((*a)->classes & CC_MAIL);
+		if (res == 0) {
+			return CargoSpecNameSorter(a, b);
+		}
+	}
+
+	return res;
+}
+
+/** Initialize the list of sorted cargo specifications. */
+void InitializeSortedCargoSpecs()
+{
+	_sorted_cargo_specs_size = 0;
+	CargoSpec *cargo;
+	/* Add each cargo spec to the list. */
+	FOR_ALL_CARGOSPECS(cargo) {
+		if ((cargo->classes & CC_SPECIAL) != 0) continue; // Exclude fake cargo types.
+		_sorted_cargo_specs[_sorted_cargo_specs_size] = cargo;
+		_sorted_cargo_specs_size++;
+	}
+
+	/* Sort cargo specifications by cargo class and name. */
+	QSortT(_sorted_cargo_specs, _sorted_cargo_specs_size, &CargoSpecClassSorter);
 }
 

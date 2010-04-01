@@ -6809,6 +6809,8 @@ static void AfterLoadGRFs()
 	/* Add all new industries to the industry array. */
 	FinaliseIndustriesArray();
 
+	InitializeSortedCargoSpecs();
+
 	/* Sort the list of industry types. */
 	SortIndustryTypes();
 

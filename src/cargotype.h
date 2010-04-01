@@ -131,6 +131,10 @@ void SetupCargoForClimate(LandscapeID l);
 CargoID GetCargoIDByLabel(CargoLabel cl);
 CargoID GetCargoIDByBitnum(uint8 bitnum);
 
+void InitializeSortedCargoSpecs();
+extern const CargoSpec *_sorted_cargo_specs[NUM_CARGO];
+extern uint8 _sorted_cargo_specs_size;
+
 /** Does cargo \a c have cargo class \a cc?
  * @param c  Cargo type.
  * @param cc Cargo class.

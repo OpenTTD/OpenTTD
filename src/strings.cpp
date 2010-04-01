@@ -1326,6 +1326,7 @@ bool ReadLanguagePack(int lang_index)
 	_dynlang.curr = lang_index;
 	_dynlang.text_dir = (TextDirection)lang_pack->text_dir;
 	SetCurrentGrfLangID(_langpack->newgrflangid);
+	InitializeSortedCargoSpecs();
 	SortIndustryTypes();
 	BuildIndustriesLegend();
 	SortNetworkLanguages();
