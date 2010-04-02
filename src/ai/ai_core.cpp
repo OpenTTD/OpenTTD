@@ -108,6 +108,17 @@
 	DeleteWindowById(WC_AI_SETTINGS, company);
 }
 
+/* static */ void AI::Suspend(CompanyID company)
+{
+	if (_networking && !_network_server) return;
+
+	CompanyID old_company = _current_company;
+	_current_company = company;
+	Company::Get(company)->ai_instance->Suspend();
+
+	_current_company = old_company;
+}
+
 /* static */ void AI::KillAll()
 {
 	/* It might happen there are no companies .. than we have nothing to loop */

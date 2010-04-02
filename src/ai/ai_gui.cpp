@@ -11,8 +11,10 @@
 
 #include "../stdafx.h"
 #include "../openttd.h"
+#include "../table/sprites.h"
 #include "../gui.h"
 #include "../window_gui.h"
+#include "../querystring_gui.h"
 #include "../company_func.h"
 #include "../company_base.h"
 #include "../company_gui.h"
@@ -681,21 +683,31 @@ enum AIDebugWindowWidgets {
 	AID_WIDGET_SCROLLBAR,
 	AID_WIDGET_COMPANY_BUTTON_START,
 	AID_WIDGET_COMPANY_BUTTON_END = AID_WIDGET_COMPANY_BUTTON_START + 14,
+	AID_WIDGET_BREAK_STR_ON_OFF_BTN,
+	AID_WIDGET_BREAK_STR_EDIT_BOX,
+	AID_WIDGET_MATCH_CASE_BTN,
+	AID_WIDGET_CONTINUE_BTN,
 };
 
 /**
  * Window with everything an AI prints via AILog.
  */
-struct AIDebugWindow : public Window {
+struct AIDebugWindow : public QueryStringBaseWindow {
 	static const int top_offset;    ///< Offset of the text at the top of the #AID_WIDGET_LOG_PANEL.
 	static const int bottom_offset; ///< Offset of the text at the bottom of the #AID_WIDGET_LOG_PANEL.
+
+	static const unsigned int MAX_BREAK_STR_STRING_LENGTH = 256;
 
 	static CompanyID ai_debug_company;
 	int redraw_timer;
 	int last_vscroll_pos;
 	bool autoscroll;
+	static bool break_check_enabled;                       ///< Stop an AI when it prints a matching string
+	static char break_string[MAX_BREAK_STR_STRING_LENGTH]; ///< The string to match to the AI output
+	static bool case_sensitive_break_check;                ///< Is the matchding done case-sensitive
+	int highlight_row;                                     ///< The output row that matches the given string, or -1
 
-	AIDebugWindow(const WindowDesc *desc, WindowNumber number) : Window()
+	AIDebugWindow(const WindowDesc *desc, WindowNumber number) : QueryStringBaseWindow(MAX_BREAK_STR_STRING_LENGTH)
 	{
 		this->InitNested(desc, number);
 		/* Disable the companies who are not active or not an AI */
@@ -704,11 +716,22 @@ struct AIDebugWindow : public Window {
 		}
 		this->DisableWidget(AID_WIDGET_RELOAD_TOGGLE);
 		this->DisableWidget(AID_WIDGET_SETTINGS);
+		this->DisableWidget(AID_WIDGET_CONTINUE_BTN);
 
 		this->last_vscroll_pos = 0;
 		this->autoscroll = true;
+		this->highlight_row = -1;
+		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size, MAX_BREAK_STR_STRING_LENGTH);
 
+		/* Restore the break string value from static variable */
+		strecpy(this->edit_str_buf, this->break_string, this->edit_str_buf + MAX_BREAK_STR_STRING_LENGTH);
+		UpdateTextBufferSize(&this->text);
+
+		/* Restore button state from static class variables */
 		if (ai_debug_company != INVALID_COMPANY) this->LowerWidget(ai_debug_company + AID_WIDGET_COMPANY_BUTTON_START);
+		this->SetWidgetLoweredState(AID_WIDGET_BREAK_STR_ON_OFF_BTN, this->break_check_enabled);
+		this->SetWidgetLoweredState(AID_WIDGET_MATCH_CASE_BTN, this->case_sensitive_break_check);
+
 	}
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
@@ -753,6 +776,8 @@ struct AIDebugWindow : public Window {
 		this->DrawWidgets();
 
 		if (this->IsShaded()) return; // Don't draw anything when the window is shaded.
+
+		this->DrawEditBox(AID_WIDGET_BREAK_STR_EDIT_BOX);
 
 		/* If there are no active companies, don't display anything else. */
 		if (ai_debug_company == INVALID_COMPANY) return;
@@ -851,7 +876,7 @@ struct AIDebugWindow : public Window {
 
 				int y = this->top_offset;
 				for (int i = this->vscroll.GetPosition(); this->vscroll.IsVisible(i) && i < log->used; i++) {
-					uint pos = (i + log->pos + 1 - log->used + log->count) % log->count;
+					int pos = (i + log->pos + 1 - log->used + log->count) % log->count;
 					if (log->lines[pos] == NULL) break;
 
 					TextColour colour;
@@ -862,6 +887,12 @@ struct AIDebugWindow : public Window {
 						case AILog::LOG_WARNING:  colour = TC_YELLOW; break;
 						case AILog::LOG_ERROR:    colour = TC_RED;    break;
 						default:                  colour = TC_BLACK;  break;
+					}
+
+					/* Check if the current line should be highlighted */
+					if (pos == this->highlight_row) {
+						GfxFillRect(r.left + 1, r.top + y, r.right - 1, r.top + y + this->resize.step_height - WD_PAR_VSEP_NORMAL, 0);
+						if (colour == TC_BLACK) colour = TC_WHITE; // Make black text readable by inverting it to white.
 					}
 
 					DrawString(r.left + 7, r.right - 7, r.top + y, log->lines[pos], colour, SA_LEFT | SA_FORCE);
@@ -911,6 +942,24 @@ struct AIDebugWindow : public Window {
 			case AID_WIDGET_SETTINGS:
 				ShowAISettingsWindow(ai_debug_company);
 				break;
+
+			case AID_WIDGET_BREAK_STR_ON_OFF_BTN:
+				this->break_check_enabled = !this->break_check_enabled;
+				this->SetWidgetLoweredState(AID_WIDGET_BREAK_STR_ON_OFF_BTN, this->break_check_enabled);
+				this->SetWidgetDirty(AID_WIDGET_BREAK_STR_ON_OFF_BTN);
+				break;
+
+			case AID_WIDGET_MATCH_CASE_BTN:
+				this->case_sensitive_break_check = !this->case_sensitive_break_check;
+				this->SetWidgetLoweredState(AID_WIDGET_MATCH_CASE_BTN, this->case_sensitive_break_check);
+				break;
+
+			case AID_WIDGET_CONTINUE_BTN:
+				/* Unpause */
+				DoCommandP(0, PM_PAUSED_NORMAL, 0, CMD_PAUSE);
+				this->DisableWidget(AID_WIDGET_CONTINUE_BTN);
+				this->RaiseWidget(AID_WIDGET_CONTINUE_BTN); // Disabled widgets don't raise themself
+				break;
 		}
 	}
 
@@ -921,9 +970,62 @@ struct AIDebugWindow : public Window {
 		this->SetDirty();
 	}
 
+	virtual void OnMouseLoop()
+	{
+		this->HandleEditBox(AID_WIDGET_BREAK_STR_EDIT_BOX);
+	}
+
+	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
+	{
+		EventState state;
+		if (this->HandleEditBoxKey(AID_WIDGET_BREAK_STR_EDIT_BOX, key, keycode, state) != HEBR_NOT_FOCUSED) {
+			/* Save the current string to static member so it can be restored next time the window is opened */
+			strecpy(this->break_string, this->edit_str_buf, lastof(this->break_string));
+		}
+		return state;
+	}
+
 	virtual void OnInvalidateData(int data = 0)
 	{
 		if (data == -1 || ai_debug_company == data) this->SetDirty();
+
+		if (data == -2) {
+			/* The continue button should be disabled when the game is unpaused and
+			 * it was previously paused by the break string ( = a line in the log
+			 * was highlighted )*/
+			if ((_pause_mode & PM_PAUSED_NORMAL) == PM_UNPAUSED && this->highlight_row != -1) {
+				this->DisableWidget(AID_WIDGET_CONTINUE_BTN);
+				this->SetWidgetDirty(AID_WIDGET_CONTINUE_BTN);
+				this->SetWidgetDirty(AID_WIDGET_LOG_PANEL);
+				this->highlight_row = -1;
+			}
+		}
+
+		/* If the log message is related to the active company tab, check the break string */
+		if (data == ai_debug_company && this->break_check_enabled && !StrEmpty(this->edit_str_buf)) {
+			/* Get the log instance of the active company */
+			CompanyID old_company = _current_company;
+			_current_company = ai_debug_company;
+			AILog::LogData *log = (AILog::LogData *)AIObject::GetLogPointer();
+			_current_company = old_company;
+
+			if (log != NULL && case_sensitive_break_check?
+					strstr(log->lines[log->pos], this->edit_str_buf) != 0 :
+					strcasestr(log->lines[log->pos], this->edit_str_buf) != 0) {
+
+				AI::Suspend(ai_debug_company);
+				if ((_pause_mode & PM_PAUSED_NORMAL) == PM_UNPAUSED) {
+					DoCommandP(0, PM_PAUSED_NORMAL, 1, CMD_PAUSE);
+				}
+
+				/* Make it possible to click on the continue button */
+				this->EnableWidget(AID_WIDGET_CONTINUE_BTN);
+				this->SetWidgetDirty(AID_WIDGET_CONTINUE_BTN);
+
+				/* Highlight row that matched */
+				this->highlight_row = log->pos;
+			}
+		}
 	}
 
 	virtual void OnResize()
@@ -935,6 +1037,9 @@ struct AIDebugWindow : public Window {
 const int AIDebugWindow::top_offset = WD_FRAMERECT_TOP + 2;
 const int AIDebugWindow::bottom_offset = WD_FRAMERECT_BOTTOM;
 CompanyID AIDebugWindow::ai_debug_company = INVALID_COMPANY;
+char AIDebugWindow::break_string[MAX_BREAK_STR_STRING_LENGTH] = "";
+bool AIDebugWindow::break_check_enabled = true;
+bool AIDebugWindow::case_sensitive_break_check = false;
 
 static const NWidgetPart _nested_ai_debug_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
@@ -990,7 +1095,22 @@ static const NWidgetPart _nested_ai_debug_widgets[] = {
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, AID_WIDGET_RELOAD_TOGGLE), SetMinimalSize(100, 20), SetDataTip(STR_AI_DEBUG_RELOAD, STR_AI_DEBUG_RELOAD_TOOLTIP),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PANEL, COLOUR_GREY, AID_WIDGET_LOG_PANEL), SetMinimalSize(287, 180), SetResize(1, 1),
+		NWidget(NWID_VERTICAL),
+			/* Log panel */
+			NWidget(WWT_PANEL, COLOUR_GREY, AID_WIDGET_LOG_PANEL), SetMinimalSize(287, 180), SetResize(1, 1),
+			EndContainer(),
+			/* Break string widgets */
+			NWidget(NWID_HORIZONTAL),
+				NWidget(WWT_IMGBTN_2, COLOUR_GREY, AID_WIDGET_BREAK_STR_ON_OFF_BTN), SetFill(0, 1), SetDataTip(SPR_FLAG_VEH_STOPPED, STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP),
+				NWidget(WWT_PANEL, COLOUR_GREY),
+					NWidget(NWID_HORIZONTAL),
+						NWidget(WWT_LABEL, COLOUR_GREY), SetPadding(2, 2, 2, 4), SetDataTip(STR_AI_DEBUG_BREAK_ON_LABEL, 0x0),
+						NWidget(WWT_EDITBOX, COLOUR_WHITE, AID_WIDGET_BREAK_STR_EDIT_BOX), SetFill(1, 1), SetResize(1, 0), SetPadding(2, 2, 2, 2), SetDataTip(STR_AI_DEBUG_BREAK_STR_OSKTITLE, STR_AI_DEBUG_BREAK_STR_TOOLTIP),
+					EndContainer(),
+				EndContainer(),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, AID_WIDGET_MATCH_CASE_BTN), SetMinimalSize(100, 0), SetFill(0, 1), SetDataTip(STR_AI_DEBUG_MATCH_CASE, STR_AI_DEBUG_MATCH_CASE_TOOLTIP),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, AID_WIDGET_CONTINUE_BTN), SetMinimalSize(100, 0), SetFill(0, 1), SetDataTip(STR_AI_DEBUG_CONTINUE, STR_AI_DEBUG_CONTINUE_TOOLTIP),
+			EndContainer(),
 		EndContainer(),
 		NWidget(NWID_VERTICAL),
 			NWidget(WWT_SCROLLBAR, COLOUR_GREY, AID_WIDGET_SCROLLBAR),

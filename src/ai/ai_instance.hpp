@@ -137,6 +137,13 @@ public:
 	 */
 	static void LoadEmpty();
 
+	/**
+	 * Reduces the number of opcodes the AI have left to zero. Unless
+	 * the AI is in a state where it cannot suspend it will be suspended
+	 * for the reminder of the current tick. This function is safe to
+	 * call from within a function called by the AI.
+	 */
+	void Suspend();
 private:
 	class AIController *controller;
 	class AIStorage *storage;

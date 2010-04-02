@@ -3228,6 +3228,14 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}AI Setti
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Change the settings of the AI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Reload AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Kill the AI, reload the script, and restart the AI
+STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Enable/disable breaking when an AI log message matches the break string
+STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Break on:
+STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Break on
+STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}When an AI log message matches this string, the game is paused.
+STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Match case
+STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Toggle matching case when comparing AI log messages against the break string
+STR_AI_DEBUG_CONTINUE                                           :{BLACK}Continue
+STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Unpause and continue the AI
 
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD is built without AI support...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... no AIs are available!

@@ -66,6 +66,15 @@ public:
 	static void Stop(CompanyID company);
 
 	/**
+	 * Suspend an AI for the reminder of the current tick. If the AI is
+	 * in a state when it cannot be suspended, it will continue to run
+	 * until it can be suspended.
+	 * @param company The company for which the AI should be suspended.
+	 * @pre Company::IsValidAiID(company)
+	 */
+	static void Suspend(CompanyID company);
+
+	/**
 	 * Kill any and all AIs we manage.
 	 */
 	static void KillAll();

@@ -658,6 +658,12 @@ void AIInstance::Save()
 
 }
 
+void AIInstance::Suspend()
+{
+	HSQUIRRELVM vm = this->engine->GetVM();
+	Squirrel::DecreaseOps(vm, _settings_game.ai.ai_max_opcode_till_suspend);
+}
+
 /* static */ bool AIInstance::LoadObjects(HSQUIRRELVM vm)
 {
 	SlObject(NULL, _ai_byte);
