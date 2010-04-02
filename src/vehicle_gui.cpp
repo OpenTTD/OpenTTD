@@ -234,6 +234,11 @@ struct RefitOption {
 	{
 		return other.cargo != this->cargo || other.value != this->value;
 	}
+
+	FORCEINLINE bool operator == (const RefitOption &other) const
+	{
+		return other.cargo == this->cargo && other.value == this->value;
+	}
 };
 
 typedef SmallVector<RefitOption, 32> RefitList;
@@ -258,7 +263,7 @@ static void BuildRefitList(const Vehicle *v, RefitList *refit_list)
 
 		/* Loop through all cargos in the refit mask */
 		const CargoSpec *cs;
-		FOR_ALL_CARGOSPECS(cs) {
+		FOR_ALL_SORTED_CARGOSPECS(cs) {
 			CargoID cid = cs->Index();
 			/* Skip cargo type if it's not listed */
 			if (!HasBit(cmask, cid)) continue;
@@ -378,6 +383,35 @@ struct RefitWindow : public Window {
 		BuildRefitList(v, &this->list);
 		if (v->type == VEH_TRAIN) this->length = CountVehiclesInChain(v);
 		this->vscroll.SetCount(this->list.Length());
+	}
+
+	virtual void OnInit()
+	{
+		if (this->cargo != NULL) {
+			/* Store the RefitOption currently in use. */
+			RefitOption current_refit_option = *(this->cargo);
+
+			/* Rebuild the refit list */
+			BuildRefitList(Vehicle::Get(this->window_number), &this->list);
+			this->vscroll.SetCount(this->list.Length());
+			this->sel = -1;
+			this->cargo = NULL;
+			for (uint i = 0; i < this->list.Length(); i++) {
+				if (this->list[i] == current_refit_option) {
+					this->sel = i;
+					this->cargo = &this->list[i];
+					this->vscroll.ScrollTowards(i);
+					break;
+				}
+			}
+
+			/* If the selected refit option was not found, scroll the window to the initial position. */
+			if (this->sel == -1) this->vscroll.ScrollTowards(0);
+		} else {
+			/* Rebuild the refit list */
+			BuildRefitList(Vehicle::Get(this->window_number), &this->list);
+			this->vscroll.SetCount(this->list.Length());
+		}
 	}
 
 	virtual void OnPaint()
