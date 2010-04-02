@@ -149,4 +149,6 @@ static inline bool IsCargoInClass(CargoID c, CargoClass cc)
 		if ((var = CargoSpec::Get(cargospec_index))->IsValid())
 #define FOR_ALL_CARGOSPECS(var) FOR_ALL_CARGOSPECS_FROM(var, 0)
 
+#define FOR_ALL_SORTED_CARGOSPECS(var) for (uint8 index = 0; var = _sorted_cargo_specs[index], index < _sorted_cargo_specs_size; index++)
+
 #endif /* CARGOTYPE_H */

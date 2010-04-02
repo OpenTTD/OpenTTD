@@ -845,8 +845,11 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 	{
 		this->excluded_data = 0;
 
-		for (int i = 0; i < _sorted_cargo_specs_size; i++) {
-			if (HasBit(_legend_excluded_cargo, _sorted_cargo_specs[i]->Index())) SetBit(this->excluded_data, i);
+		int i = 0;
+		const CargoSpec *cs;
+		FOR_ALL_SORTED_CARGOSPECS(cs) {
+			if (HasBit(_legend_excluded_cargo, cs->Index())) SetBit(this->excluded_data, i);
+			i++;
 		}
 	}
 
@@ -919,12 +922,14 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 	{
 		this->UpdateExcludedData();
 
-		int i;
-		for (i = 0; i < _sorted_cargo_specs_size; i++) {
-			this->colours[i] = _sorted_cargo_specs[i]->legend_colour;
+		int i = 0;
+		const CargoSpec *cs;
+		FOR_ALL_SORTED_CARGOSPECS(cs) {
+			this->colours[i] = cs->legend_colour;
 			for (uint j = 0; j != 20; j++) {
-				this->cost[i][j] = GetTransportedGoodsIncome(10, 20, j * 4 + 4, _sorted_cargo_specs[i]->Index());
+				this->cost[i][j] = GetTransportedGoodsIncome(10, 20, j * 4 + 4, cs->Index());
 			}
+			i++;
 		}
 		this->num_dataset = i;
 	}
