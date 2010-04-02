@@ -199,25 +199,32 @@ protected:
 	byte colours[GRAPH_MAX_DATASETS];
 	OverflowSafeInt64 cost[GRAPH_MAX_DATASETS][GRAPH_NUM_MONTHS]; ///< Stored costs for the last #GRAPH_NUM_MONTHS months
 
-	int64 GetHighestValue(int initial_highest_value) const
+	/**
+	 * Get the highest value of the graph's data. Excluded data is taken into account too, to prevent the graph
+	 * from changing its size when enabling / disabling data.
+	 * @return Highest value of the graph.
+	 */
+	int64 GetHighestValue() const
 	{
-		OverflowSafeInt64 highest_value = initial_highest_value;
+		OverflowSafeInt64 highest_value = 0;
 
 		for (int i = 0; i < this->num_dataset; i++) {
-			if (!HasBit(this->excluded_data, i)) {
-				for (int j = 0; j < this->num_on_x_axis; j++) {
-					OverflowSafeInt64 datapoint = this->cost[i][j];
+			for (int j = 0; j < this->num_on_x_axis; j++) {
+				OverflowSafeInt64 datapoint = this->cost[i][j];
 
-					if (datapoint != INVALID_DATAPOINT) {
-						/* For now, if the graph has negative values the scaling is
-						 * symmetrical about the x axis, so take the absolute value
-						 * of each data point. */
-						highest_value = max(highest_value, abs(datapoint));
-					}
+				if (datapoint != INVALID_DATAPOINT) {
+					/* For now, if the graph has negative values the scaling is
+					 * symmetrical about the x axis, so take the absolute value
+					 * of each data point. */
+					highest_value = max(highest_value, abs(datapoint));
 				}
 			}
 		}
 
+		/* Prevent showing the highest value too close to the graph upper limit. */
+		highest_value = (11 * highest_value) / 10;
+		/* Avoid using zero as the highest value. */
+		if (highest_value == 0) highest_value = GRAPH_NUM_LINES_Y - 1;
 		/* Round up highest_value so that it will divide cleanly into the number of
 		 * axis labels used. */
 		int round_val = highest_value % (GRAPH_NUM_LINES_Y - 1);
@@ -274,13 +281,7 @@ protected:
 		r.left   += 9;
 		r.right  -= 5;
 
-		/* Start of with a highest_value of twice the height of the graph in pixels.
-		 * It's a bit arbitrary, but it makes the cargo payment graph look a little
-		 * nicer, and prevents division by zero when calculating where the datapoint
-		 * should be drawn. */
-		highest_value = r.bottom - r.top + 1;
-		if (!this->has_negative_values) highest_value *= 2;
-		highest_value = GetHighestValue(highest_value);
+		highest_value = GetHighestValue();
 
 		/* Get width for Y labels */
 		int label_width = GetYLabelWidth(highest_value);
