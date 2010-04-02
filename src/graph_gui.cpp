@@ -806,6 +806,8 @@ enum CargoPaymentRatesWidgets {
 	CPW_HEADER,
 	CPW_GRAPH,
 	CPW_FOOTER,
+	CPW_ENABLE_CARGOS,
+	CPW_DISABLE_CARGOS,
 	CPW_CARGO_FIRST,
 };
 
@@ -904,12 +906,46 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
-		if (widget >= CPW_CARGO_FIRST) {
-			int i = widget - CPW_CARGO_FIRST;
-			ToggleBit(_legend_excluded_cargo, _sorted_cargo_specs[i]->Index());
-			this->ToggleWidgetLoweredState(widget);
-			this->UpdateExcludedData();
-			this->SetDirty();
+		switch (widget) {
+			case CPW_ENABLE_CARGOS:
+				/* Remove all cargos from the excluded lists. */
+				_legend_excluded_cargo = 0;
+				this->excluded_data = 0;
+				this->UpdateLoweredWidgets();
+				/* Toggle appeareance indicating the choice. */
+				this->LowerWidget(CPW_ENABLE_CARGOS);
+				this->RaiseWidget(CPW_DISABLE_CARGOS);
+				this->SetDirty();
+				break;
+
+			case CPW_DISABLE_CARGOS: {
+				/* Add all cargos to the excluded lists. */
+				int i = 0;
+				const CargoSpec *cs;
+				FOR_ALL_SORTED_CARGOSPECS(cs) {
+					SetBit(_legend_excluded_cargo, cs->Index());
+					SetBit(this->excluded_data, i);
+					i++;
+				}
+				this->UpdateLoweredWidgets();
+				/* Toggle appeareance indicating the choice. */
+				this->LowerWidget(CPW_DISABLE_CARGOS);
+				this->RaiseWidget(CPW_ENABLE_CARGOS);
+				this->SetDirty();
+			} break;
+
+			default:
+				if (widget >= CPW_CARGO_FIRST) {
+					int i = widget - CPW_CARGO_FIRST;
+					ToggleBit(_legend_excluded_cargo, _sorted_cargo_specs[i]->Index());
+					this->ToggleWidgetLoweredState(widget);
+					this->UpdateExcludedData();
+					/* Raise the two "all" buttons, as we have done a specific choice. */
+					this->RaiseWidget(CPW_ENABLE_CARGOS);
+					this->RaiseWidget(CPW_DISABLE_CARGOS);
+					this->SetDirty();
+				}
+				break;
 		}
 	}
 
@@ -970,6 +1006,9 @@ static const NWidgetPart _nested_cargo_payment_rates_widgets[] = {
 				NWidget(WWT_EMPTY, COLOUR_GREY, CPW_GRAPH), SetMinimalSize(495, 0), SetFill(1, 1),
 				NWidget(NWID_VERTICAL),
 					NWidget(NWID_SPACER), SetMinimalSize(0, 24), SetFill(0, 0),
+						NWidget(WWT_TEXTBTN, COLOUR_ORANGE, CPW_ENABLE_CARGOS), SetDataTip(STR_GRAPH_CARGO_ENABLE_ALL, STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL),SetFill(1, 0),
+						NWidget(WWT_TEXTBTN, COLOUR_ORANGE, CPW_DISABLE_CARGOS), SetDataTip(STR_GRAPH_CARGO_DISABLE_ALL, STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL),SetFill(1, 0),
+						NWidget(NWID_SPACER), SetMinimalSize(0, 4), SetFill(0, 0),
 						NWidgetFunction(MakeCargoButtons),
 					NWidget(NWID_SPACER), SetMinimalSize(0, 24), SetFill(0, 1),
 				EndContainer(),
