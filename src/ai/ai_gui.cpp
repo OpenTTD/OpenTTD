@@ -704,7 +704,7 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 	bool autoscroll;
 	static bool break_check_enabled;                       ///< Stop an AI when it prints a matching string
 	static char break_string[MAX_BREAK_STR_STRING_LENGTH]; ///< The string to match to the AI output
-	static bool case_sensitive_break_check;                ///< Is the matchding done case-sensitive
+	static bool case_sensitive_break_check;                ///< Is the matching done case-sensitive
 	int highlight_row;                                     ///< The output row that matches the given string, or -1
 
 	AIDebugWindow(const WindowDesc *desc, WindowNumber number) : QueryStringBaseWindow(MAX_BREAK_STR_STRING_LENGTH)
