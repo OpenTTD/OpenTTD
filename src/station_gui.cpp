@@ -1128,7 +1128,7 @@ struct StationViewWindow : public Window {
 		y += FONT_HEIGHT_NORMAL;
 
 		const CargoSpec *cs;
-		FOR_ALL_CARGOSPECS(cs) {
+		FOR_ALL_SORTED_CARGOSPECS(cs) {
 			const GoodsEntry *ge = &st->goods[cs->Index()];
 			if (!HasBit(ge->acceptance_pickup, GoodsEntry::PICKUP)) continue;
 
