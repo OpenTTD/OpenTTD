@@ -1009,18 +1009,14 @@ protected:
 	/** Sort industries by production and name */
 	static int CDECL IndustryProductionSorter(const Industry * const *a, const Industry * const *b)
 	{
-		int r = 0;
-
-		if ((*a)->produced_cargo[0] == CT_INVALID) {
-			if ((*b)->produced_cargo[0] != CT_INVALID) return -1;
-		} else {
-			if ((*b)->produced_cargo[0] == CT_INVALID) return 1;
-
-			r = ((*a)->last_month_production[0] + (*a)->last_month_production[1]) -
-			    ((*b)->last_month_production[0] + (*b)->last_month_production[1]);
+		uint prod_a = 0, prod_b = 0;
+		for (uint i = 0; i < lengthof((*a)->produced_cargo); i++) {
+			if ((*a)->produced_cargo[i] != CT_INVALID) prod_a += (*a)->last_month_production[i];
+			if ((*b)->produced_cargo[i] != CT_INVALID) prod_b += (*b)->last_month_production[i];
 		}
+		int r = prod_a - prod_b;
 
-		return (r == 0) ? IndustryNameSorter(a, b) : r;
+		return (r == 0) ? IndustryTypeSorter(a, b) : r;
 	}
 
 	/** Sort industries by transported cargo and name */
