@@ -523,6 +523,10 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Valeur d
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Valeur des marchandises
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Jours de transit
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Prix payé pour livrer 10 unités (ou 10000 litres) à 20 carrés de distance
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}Activer tout
+STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT}{BLACK}Désactiver tout
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Afficher toutes les marchandises sur le graphique
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}N'afficher aucune marchandise sur le graphique
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Afficher/cacher le type de marchandise
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 

@@ -523,6 +523,8 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}회사 �
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}화물 운송단가 비율
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}통과시간
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}10 단위(1만 리터)의 화물을 20칸 거리만큼 운송할 때의 운송비 지급량
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}모두 사용
+STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT}{BLACK}모두 사용 안함
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}이 화물에 대한 그래프 켜기/끄기
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 

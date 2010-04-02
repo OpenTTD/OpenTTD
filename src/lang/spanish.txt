@@ -523,7 +523,11 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Valores 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Tasas de pago por carga
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Días en tránsito
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Pago por entregar 10 unidades (o 1,000 litros) de mercancía a una distancia de 20 cuadros
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Intercambiar gráfico para tipo de carga
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}Activar todos
+STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT}{BLACK}Desactivar todos
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Mostrar todos los tipos de carga en el gráfico de tarifas de pagos por carga
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Ocultar todos los tipos de carga en el gráfico de tarifas de pagos por carga
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Mostrar / ocultar gráfico de este tipo de carga
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Mostrar detalles de rendimiento
