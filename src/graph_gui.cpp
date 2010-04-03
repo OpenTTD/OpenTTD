@@ -200,15 +200,16 @@ protected:
 	OverflowSafeInt64 cost[GRAPH_MAX_DATASETS][GRAPH_NUM_MONTHS]; ///< Stored costs for the last #GRAPH_NUM_MONTHS months
 
 	/**
-	 * Get the highest value of the graph's data. Excluded data is taken into account too, to prevent the graph
-	 * from changing its size when enabling / disabling data.
-	 * @return Highest value of the graph.
+	 * Get the highest value of the graph's data. Excluded data is ignored to allow showing smaller values in
+	 * better detail when disabling higher ones.
+	 * @return Highest value of the graph (ignoring disabled data).
 	 */
 	int64 GetHighestValue() const
 	{
 		OverflowSafeInt64 highest_value = 0;
 
 		for (int i = 0; i < this->num_dataset; i++) {
+			if (HasBit(this->excluded_data, i)) continue;
 			for (int j = 0; j < this->num_on_x_axis; j++) {
 				OverflowSafeInt64 datapoint = this->cost[i][j];
 
