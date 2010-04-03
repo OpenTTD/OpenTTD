@@ -683,6 +683,7 @@ enum AIDebugWindowWidgets {
 	AID_WIDGET_SCROLLBAR,
 	AID_WIDGET_COMPANY_BUTTON_START,
 	AID_WIDGET_COMPANY_BUTTON_END = AID_WIDGET_COMPANY_BUTTON_START + 14,
+	AID_BREAK_STRING_WIDGETS,
 	AID_WIDGET_BREAK_STR_ON_OFF_BTN,
 	AID_WIDGET_BREAK_STR_EDIT_BOX,
 	AID_WIDGET_MATCH_CASE_BTN,
@@ -702,6 +703,7 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 	int redraw_timer;
 	int last_vscroll_pos;
 	bool autoscroll;
+	bool show_break_box;
 	static bool break_check_enabled;                       ///< Stop an AI when it prints a matching string
 	static char break_string[MAX_BREAK_STR_STRING_LENGTH]; ///< The string to match to the AI output
 	static bool case_sensitive_break_check;                ///< Is the matching done case-sensitive
@@ -709,7 +711,12 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 
 	AIDebugWindow(const WindowDesc *desc, WindowNumber number) : QueryStringBaseWindow(MAX_BREAK_STR_STRING_LENGTH)
 	{
-		this->InitNested(desc, number);
+		this->CreateNestedTree(desc);
+		this->show_break_box = _settings_client.gui.ai_developer_tools;
+		this->GetWidget<NWidgetStacked>(AID_BREAK_STRING_WIDGETS)->SetDisplayedPlane(this->show_break_box ? 0 : SZSP_HORIZONTAL);
+		this->FinishInitNested(desc, number);
+
+		if (!this->show_break_box) break_check_enabled = false;
 		/* Disable the companies who are not active or not an AI */
 		for (CompanyID i = COMPANY_FIRST; i < MAX_COMPANIES; i++) {
 			this->SetWidgetDisabledState(i + AID_WIDGET_COMPANY_BUTTON_START, !Company::IsValidAiID(i));
@@ -777,7 +784,7 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 
 		if (this->IsShaded()) return; // Don't draw anything when the window is shaded.
 
-		this->DrawEditBox(AID_WIDGET_BREAK_STR_EDIT_BOX);
+		if (this->show_break_box) this->DrawEditBox(AID_WIDGET_BREAK_STR_EDIT_BOX);
 
 		/* If there are no active companies, don't display anything else. */
 		if (ai_debug_company == INVALID_COMPANY) return;
@@ -1100,16 +1107,18 @@ static const NWidgetPart _nested_ai_debug_widgets[] = {
 			NWidget(WWT_PANEL, COLOUR_GREY, AID_WIDGET_LOG_PANEL), SetMinimalSize(287, 180), SetResize(1, 1),
 			EndContainer(),
 			/* Break string widgets */
-			NWidget(NWID_HORIZONTAL),
-				NWidget(WWT_IMGBTN_2, COLOUR_GREY, AID_WIDGET_BREAK_STR_ON_OFF_BTN), SetFill(0, 1), SetDataTip(SPR_FLAG_VEH_STOPPED, STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP),
-				NWidget(WWT_PANEL, COLOUR_GREY),
-					NWidget(NWID_HORIZONTAL),
-						NWidget(WWT_LABEL, COLOUR_GREY), SetPadding(2, 2, 2, 4), SetDataTip(STR_AI_DEBUG_BREAK_ON_LABEL, 0x0),
-						NWidget(WWT_EDITBOX, COLOUR_WHITE, AID_WIDGET_BREAK_STR_EDIT_BOX), SetFill(1, 1), SetResize(1, 0), SetPadding(2, 2, 2, 2), SetDataTip(STR_AI_DEBUG_BREAK_STR_OSKTITLE, STR_AI_DEBUG_BREAK_STR_TOOLTIP),
+			NWidget(NWID_SELECTION, INVALID_COLOUR, AID_BREAK_STRING_WIDGETS),
+				NWidget(NWID_HORIZONTAL),
+					NWidget(WWT_IMGBTN_2, COLOUR_GREY, AID_WIDGET_BREAK_STR_ON_OFF_BTN), SetFill(0, 1), SetDataTip(SPR_FLAG_VEH_STOPPED, STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP),
+					NWidget(WWT_PANEL, COLOUR_GREY),
+						NWidget(NWID_HORIZONTAL),
+							NWidget(WWT_LABEL, COLOUR_GREY), SetPadding(2, 2, 2, 4), SetDataTip(STR_AI_DEBUG_BREAK_ON_LABEL, 0x0),
+							NWidget(WWT_EDITBOX, COLOUR_WHITE, AID_WIDGET_BREAK_STR_EDIT_BOX), SetFill(1, 1), SetResize(1, 0), SetPadding(2, 2, 2, 2), SetDataTip(STR_AI_DEBUG_BREAK_STR_OSKTITLE, STR_AI_DEBUG_BREAK_STR_TOOLTIP),
+						EndContainer(),
 					EndContainer(),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, AID_WIDGET_MATCH_CASE_BTN), SetMinimalSize(100, 0), SetFill(0, 1), SetDataTip(STR_AI_DEBUG_MATCH_CASE, STR_AI_DEBUG_MATCH_CASE_TOOLTIP),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, AID_WIDGET_CONTINUE_BTN), SetMinimalSize(100, 0), SetFill(0, 1), SetDataTip(STR_AI_DEBUG_CONTINUE, STR_AI_DEBUG_CONTINUE_TOOLTIP),
 				EndContainer(),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, AID_WIDGET_MATCH_CASE_BTN), SetMinimalSize(100, 0), SetFill(0, 1), SetDataTip(STR_AI_DEBUG_MATCH_CASE, STR_AI_DEBUG_MATCH_CASE_TOOLTIP),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, AID_WIDGET_CONTINUE_BTN), SetMinimalSize(100, 0), SetFill(0, 1), SetDataTip(STR_AI_DEBUG_CONTINUE, STR_AI_DEBUG_CONTINUE_TOOLTIP),
 			EndContainer(),
 		EndContainer(),
 		NWidget(NWID_VERTICAL),
