@@ -2629,10 +2629,12 @@ static void GetTileDesc_Track(TileIndex tile, TileDesc *td)
 
 		case RAIL_TILE_DEPOT:
 			td->str = STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT;
-			if (td->rail_speed > 0) {
-				td->rail_speed = min(td->rail_speed, 61);
-			} else {
-				td->rail_speed = 61;
+			if (_settings_game.vehicle.train_acceleration_model != AM_ORIGINAL) {
+				if (td->rail_speed > 0) {
+					td->rail_speed = min(td->rail_speed, 61);
+				} else {
+					td->rail_speed = 61;
+				}
 			}
 			break;
 
