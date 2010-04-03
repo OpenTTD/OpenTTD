@@ -157,6 +157,7 @@ public:
 
 		td.station_class = STR_NULL;
 		td.station_name = STR_NULL;
+		td.rail_speed = 0;
 
 		td.grf = NULL;
 
@@ -240,6 +241,13 @@ public:
 		if (td.station_name != STR_NULL) {
 			SetDParam(0, td.station_name);
 			GetString(this->landinfo_data[line_nr], STR_LAND_AREA_INFORMATION_STATION_TYPE, lastof(this->landinfo_data[line_nr]));
+			line_nr++;
+		}
+
+		/* Rail speed limit */
+		if (td.rail_speed != 0) {
+			SetDParam(0, td.rail_speed);
+			GetString(this->landinfo_data[line_nr], STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT, lastof(this->landinfo_data[line_nr]));
 			line_nr++;
 		}
 

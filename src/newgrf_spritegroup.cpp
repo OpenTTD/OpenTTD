@@ -42,7 +42,7 @@ TileLayoutSpriteGroup::~TileLayoutSpriteGroup()
 	free(this->dts);
 }
 
-TemporaryStorageArray<uint32, 0x110> _temp_store;
+TemporaryStorageArray<int32, 0x110> _temp_store;
 
 
 static inline uint32 GetVariable(const ResolverObject *object, byte variable, byte parameter, bool *available)
@@ -118,9 +118,9 @@ static U EvalAdjustT(const DeterministicSpriteGroupAdjust *adjust, ResolverObjec
 		case DSGA_OP_AND:  return last_value & value;
 		case DSGA_OP_OR:   return last_value | value;
 		case DSGA_OP_XOR:  return last_value ^ value;
-		case DSGA_OP_STO:  _temp_store.Store(value, last_value); return last_value;
+		case DSGA_OP_STO:  _temp_store.Store((U)value, (S)last_value); return last_value;
 		case DSGA_OP_RST:  return value;
-		case DSGA_OP_STOP: if (object->psa != NULL) object->psa->Store(value, last_value); return last_value;
+		case DSGA_OP_STOP: if (object->psa != NULL) object->psa->Store((U)value, (S)last_value); return last_value;
 		case DSGA_OP_ROR:  return RotateRight(last_value, value);
 		case DSGA_OP_SCMP: return ((S)last_value == (S)value) ? 1 : ((S)last_value < (S)value ? 0 : 2);
 		case DSGA_OP_UCMP: return ((U)last_value == (U)value) ? 1 : ((U)last_value < (U)value ? 0 : 2);

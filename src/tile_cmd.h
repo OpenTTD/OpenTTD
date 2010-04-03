@@ -59,6 +59,7 @@ struct TileDesc {
 	StringID station_name;  ///< Type of station within the class
 	const char *grf;        ///< newGRF used for the tile contents
 	uint64 dparam[2];       ///< Parameters of the \a str string
+	uint16 rail_speed;      ///< Speed limit of rail
 };
 
 /**

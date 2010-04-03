@@ -26,7 +26,7 @@ extern IndustryPool _industry_pool;
  * Defines the internal data of a functionnal industry
  */
 struct Industry : IndustryPool::PoolItem<&_industry_pool> {
-	typedef PersistentStorageArray<uint32, 16> PersistentStorage;
+	typedef PersistentStorageArray<int32, 16> PersistentStorage;
 
 	TileArea location;                  ///< Location of the industry
 	const Town *town;                   ///< Nearest town

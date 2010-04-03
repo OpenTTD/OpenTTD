@@ -2575,6 +2575,9 @@ static void GetTileDesc_Station(TileIndex tile, TileDesc *td)
 				td->grf = gc->name;
 			}
 		}
+
+		const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(tile));
+		td->rail_speed = rti->max_speed;
 	}
 
 	StringID str;

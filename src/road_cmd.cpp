@@ -1500,6 +1500,10 @@ static void GetTileDesc_Road(TileIndex tile, TileDesc *td)
 			rail_owner = GetTileOwner(tile);
 			if (HasBit(rts, ROADTYPE_ROAD)) road_owner = GetRoadOwner(tile, ROADTYPE_ROAD);
 			if (HasBit(rts, ROADTYPE_TRAM)) tram_owner = GetRoadOwner(tile, ROADTYPE_TRAM);
+
+			const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(tile));
+			td->rail_speed = rti->max_speed;
+
 			break;
 		}
 

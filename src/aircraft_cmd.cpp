@@ -876,7 +876,11 @@ static bool AircraftController(Aircraft *v)
 		/* Make sure the rotors don't rotate too fast */
 		if (u->cur_speed > 32) {
 			v->cur_speed = 0;
-			if (--u->cur_speed == 32) SndPlayVehicleFx(SND_18_HELICOPTER, v);
+			if (--u->cur_speed == 32) {
+				if (!PlayVehicleSound(v, VSE_START)) {
+					SndPlayVehicleFx(SND_18_HELICOPTER, v);
+				}
+			}
 		} else {
 			u->cur_speed = 32;
 			count = UpdateAircraftSpeed(v);
