@@ -87,7 +87,10 @@ void UpdateNewGRFConfigPalette()
 	for (GRFConfig *c = _grfconfig_static;  c != NULL; c = c->next) c->windows_paletted = (_use_palette == PAL_WINDOWS);
 }
 
-/* Calculate the MD5 Sum for a GRF */
+/** Calculate the MD5 sum for a GRF, and store it in the config.
+ * @param config GRF to compute.
+ * @return MD5 sum was successfully computed
+ */
 static bool CalcGRFMD5Sum(GRFConfig *config)
 {
 	FILE *f;
@@ -112,7 +115,11 @@ static bool CalcGRFMD5Sum(GRFConfig *config)
 }
 
 
-/* Find the GRFID and calculate the md5sum */
+/** Find the GRFID of a given grf, and calculate its md5sum.
+ * @param config    grf to fill.
+ * @param is_static grf is static.
+ * @return Operation was successfully completed.
+ */
 bool FillGRFDetails(GRFConfig *config, bool is_static)
 {
 	if (!FioCheckFileExists(config->filename)) {
@@ -140,7 +147,10 @@ bool FillGRFDetails(GRFConfig *config, bool is_static)
 }
 
 
-/* Clear a GRF Config list */
+/** Clear a GRF Config list, freeing all nodes.
+ * @param config Start of the list.
+ * @post \a config is set to \c NULL.
+ */
 void ClearGRFConfigList(GRFConfig **config)
 {
 	GRFConfig *c, *next;
@@ -257,7 +267,7 @@ void AppendToGRFConfigList(GRFConfig **dst, GRFConfig *el)
 }
 
 
-/* Reset the current GRF Config to either blank or newgame settings */
+/** Reset the current GRF Config to either blank or newgame settings. */
 void ResetGRFConfig(bool defaults)
 {
 	CopyGRFConfigList(&_grfconfig, _grfconfig_newgame, !defaults);
@@ -395,7 +405,7 @@ static int CDECL GRFSorter(GRFConfig * const *p1, GRFConfig * const *p2)
 	return strcasecmp(c1->GetName(), c2->GetName());
 }
 
-/* Scan for all NewGRFs */
+/** Scan for all NewGRFs. */
 void ScanNewGRFFiles()
 {
 	ClearGRFConfigList(&_all_grfs);
@@ -434,7 +444,11 @@ void ScanNewGRFFiles()
 }
 
 
-/* Find a NewGRF in the scanned list, if md5sum is NULL, we don't care about it*/
+/** Find a NewGRF in the scanned list.
+ * @param grfid GRFID to look for,
+ * @param md5sum Expected MD5 sum (set to \c NULL if not relevant).
+ * @return The matching grf, if it exists in #_all_grfs, else \c NULL.
+ */
 const GRFConfig *FindGRFConfig(uint32 grfid, const uint8 *md5sum)
 {
 	for (const GRFConfig *c = _all_grfs; c != NULL; c = c->next) {
@@ -499,7 +513,11 @@ char *FindUnknownGRFName(uint32 grfid, uint8 *md5sum, bool create)
 #endif /* ENABLE_NETWORK */
 
 
-/* Retrieve a NewGRF from the current config by its grfid */
+/** Retrieve a NewGRF from the current config by its grfid.
+ * @param grfid grf to look for.
+ * @param mask  GRFID mask to allow for partial matching.
+ * @return The grf config, if it exists, else \c NULL.
+ */
 GRFConfig *GetGRFConfig(uint32 grfid, uint32 mask)
 {
 	GRFConfig *c;
@@ -512,7 +530,7 @@ GRFConfig *GetGRFConfig(uint32 grfid, uint32 mask)
 }
 
 
-/* Build a space separated list of parameters, and terminate */
+/** Build a string containing space separated parameter values, and terminate */
 char *GRFBuildParamList(char *dst, const GRFConfig *c, const char *last)
 {
 	uint i;
