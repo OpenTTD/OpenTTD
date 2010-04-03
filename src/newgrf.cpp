@@ -1454,6 +1454,61 @@ static ChangeInfoResult BridgeChangeInfo(uint brid, int numinfo, int prop, ByteR
 	return ret;
 }
 
+static ChangeInfoResult IgnoreTownHouseProperty(int prop, ByteReader *buf)
+{
+	ChangeInfoResult ret = CIR_SUCCESS;
+
+	switch (prop) {
+		case 0x09:
+		case 0x0B:
+		case 0x0C:
+		case 0x0D:
+		case 0x0E:
+		case 0x0F:
+		case 0x11:
+		case 0x14:
+		case 0x15:
+		case 0x16:
+		case 0x18:
+		case 0x19:
+		case 0x1A:
+		case 0x1B:
+		case 0x1C:
+		case 0x1D:
+		case 0x1F:
+			buf->ReadByte();
+			break;
+
+		case 0x0A:
+		case 0x10:
+		case 0x12:
+		case 0x13:
+		case 0x21:
+		case 0x22:
+			buf->ReadWord();
+			break;
+
+		case 0x1E:
+			buf->ReadDWord();
+			break;
+
+		case 0x17:
+			for (uint j = 0; j < 4; j++) buf->ReadByte();
+			break;
+
+		case 0x20: {
+			byte count = buf->ReadByte();
+			for (byte j = 0; j < count; j++) buf->ReadByte();
+			ret = CIR_UNHANDLED;
+		} break;
+
+		default:
+			ret = CIR_UNKNOWN;
+			break;
+	}
+	return ret;
+}
+
 static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, ByteReader *buf)
 {
 	ChangeInfoResult ret = CIR_SUCCESS;
@@ -1472,8 +1527,10 @@ static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, Byt
 		HouseSpec *housespec = _cur_grffile->housespec[hid + i];
 
 		if (prop != 0x08 && housespec == NULL) {
-			grfmsg(2, "TownHouseChangeInfo: Attempt to modify undefined house %u. Ignoring.", hid + i);
-			return CIR_INVALID_ID;
+			/* If the house property 08 is not yet set, ignore this property */
+			ChangeInfoResult cir = IgnoreTownHouseProperty(prop, buf);
+			if (cir > ret) ret = cir;
+			continue;
 		}
 
 		switch (prop) {
@@ -2060,6 +2117,34 @@ static ChangeInfoResult SoundEffectChangeInfo(uint sid, int numinfo, int prop, B
 	return ret;
 }
 
+static ChangeInfoResult IgnoreIndustryTileProperty(int prop, ByteReader *buf)
+{
+	ChangeInfoResult ret = CIR_SUCCESS;
+
+	switch (prop) {
+		case 0x09:
+		case 0x0D:
+		case 0x0E:
+		case 0x10:
+		case 0x11:
+		case 0x12:
+			buf->ReadByte();
+			break;
+
+		case 0x0A:
+		case 0x0B:
+		case 0x0C:
+		case 0x0F:
+			buf->ReadWord();
+			break;
+
+		default:
+			ret = CIR_UNKNOWN;
+			break;
+	}
+	return ret;
+}
+
 static ChangeInfoResult IndustrytilesChangeInfo(uint indtid, int numinfo, int prop, ByteReader *buf)
 {
 	ChangeInfoResult ret = CIR_SUCCESS;
@@ -2078,8 +2163,9 @@ static ChangeInfoResult IndustrytilesChangeInfo(uint indtid, int numinfo, int pr
 		IndustryTileSpec *tsp = _cur_grffile->indtspec[indtid + i];
 
 		if (prop != 0x08 && tsp == NULL) {
-			grfmsg(2, "IndustryTilesChangeInfo: Attempt to modify undefined industry tile %u. Ignoring.", indtid + i);
-			return CIR_INVALID_ID;
+			ChangeInfoResult cir = IgnoreIndustryTileProperty(prop, buf);
+			if (cir > ret) ret = cir;
+			continue;
 		}
 
 		switch (prop) {
@@ -2168,6 +2254,83 @@ static ChangeInfoResult IndustrytilesChangeInfo(uint indtid, int numinfo, int pr
 	return ret;
 }
 
+static ChangeInfoResult IgnoreIndustryProperty(int prop, ByteReader *buf)
+{
+	ChangeInfoResult ret = CIR_SUCCESS;
+
+	switch (prop) {
+		case 0x09:
+		case 0x0B:
+		case 0x0F:
+		case 0x12:
+		case 0x13:
+		case 0x14:
+		case 0x17:
+		case 0x18:
+		case 0x19:
+		case 0x21:
+		case 0x22:
+			buf->ReadByte();
+			break;
+
+		case 0x0C:
+		case 0x0D:
+		case 0x0E:
+		case 0x10:
+		case 0x1B:
+		case 0x1F:
+		case 0x24:
+			buf->ReadWord();
+			break;
+
+		case 0x1A:
+		case 0x1C:
+		case 0x1D:
+		case 0x1E:
+		case 0x20:
+		case 0x23:
+			buf->ReadDWord();
+			break;
+
+		case 0x0A: {
+			byte num_table = buf->ReadByte();
+			for (byte j = 0; j < num_table; j++) {
+				for (uint k = 0;; k++) {
+					byte x = buf->ReadByte();
+					if (x == 0xFE && k == 0) {
+						buf->ReadByte();
+						buf->ReadByte();
+						break;
+					}
+
+					byte y = buf->ReadByte();
+					if (x == 0 && y == 0x80) break;
+
+					byte gfx = buf->ReadByte();
+					if (gfx == 0xFE) buf->ReadWord();
+				}
+			}
+		} break;
+
+		case 0x11:
+		case 0x16:
+			for (byte j = 0; j < 3; j++) buf->ReadByte();
+			break;
+
+		case 0x15: {
+			byte number_of_sounds = buf->ReadByte();
+			for (uint8 j = 0; j < number_of_sounds; j++) {
+				buf->ReadByte();
+			}
+		} break;
+
+		default:
+			ret = CIR_UNKNOWN;
+			break;
+	}
+	return ret;
+}
+
 /**
  * Validate the industry layout; e.g. to prevent duplicate tiles.
  * @param layout the layout to check
@@ -2207,8 +2370,9 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 		IndustrySpec *indsp = _cur_grffile->industryspec[indid + i];
 
 		if (prop != 0x08 && indsp == NULL) {
-			grfmsg(2, "IndustriesChangeInfo: Attempt to modify undefined industry %u. Ignoring.", indid + i);
-			return CIR_INVALID_ID;
+			ChangeInfoResult cir = IgnoreIndustryProperty(prop, buf);
+			if (cir > ret) ret = cir;
+			continue;
 		}
 
 		switch (prop) {

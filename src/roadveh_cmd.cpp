@@ -1737,7 +1737,7 @@ CommandCost CmdRefitRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	if (flags & DC_EXEC) {
 		RoadVehicle *front = v->First();
 		RoadVehUpdateCache(front);
-		SetWindowDirty(WC_VEHICLE_DETAILS, front->index);
+		InvalidateWindowData(WC_VEHICLE_DETAILS, front->index);
 		SetWindowDirty(WC_VEHICLE_DEPOT, front->tile);
 		InvalidateWindowClassesData(WC_ROADVEH_LIST, 0);
 	} else {
