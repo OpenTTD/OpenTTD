@@ -564,6 +564,10 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Vrednost
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Cene tovora
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Dni v tranzitu
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Plačilo za dostavo 10 enot (ali 10.000 litrov) tovora za razdaljo 20 kvadratkov
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}Omogoči vse
+STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT}{BLACK}Onemogoči vse
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Prikaži ves tovor na grafu plačil
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Ne prikaži tovora na grafu plačil
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Prikaži graf za tip tovora vključen/izključen
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 
@@ -3266,6 +3270,13 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}Nastavit
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Spremeni nastavitve UI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Ponovno naloži UI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Uniči UI, ponovno naloži skripto in ponovno zaženi UI
+STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Prelomi na:
+STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Prelomi na
+STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Če se sporočilo v dnevniku UI ujema z besedilom, se igra prekine.
+STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Ujemanje začetnic
+STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Preklopi način ujemanja pri primerjanju dnevnika UI z napako
+STR_AI_DEBUG_CONTINUE                                           :{BLACK}Nadaljuj
+STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Nadaljuj izvajanje UI
 
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD je zgrajen brez podpore za UI...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... ni nobene UI na voljo!

@@ -522,6 +522,10 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}قيمة
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}النسبة التنازلية لقيمة نقل البضائع
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}يوم في النقل
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}الدخل من نقل 10 وحدات (او 10,000 لتر) من البضاعة مسافة 20 مربع
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}فعل الكل
+STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT}{BLACK}اوقف الكل
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}اعرض جميع انواع البضائع في جدول اسعار النقل.
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}لا تعرض البضائع في جدول اسعار النقل.
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}اظهار / اخفاء الشحن
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 
@@ -3224,6 +3228,14 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}اعدا
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}غير اعدادات الذكاء الاصطناعي
 STR_AI_DEBUG_RELOAD                                             :{BLACK} اعادة تحميل الذكاء الصناعي
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK} حذف الذكاء الصناعي - اعادة تحميل الذكاء الصناعي و بدء تشغيلة من جديد
+STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}نشط/اوقف التوقف عندما تتطابق رسائل الذكاء الصناعي مع جمل التوقف.
+STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}توقف:
+STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}توقف
+STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}عندما تتطابق رسالة الذكاء الصناعي مع هذة الجملة, تتوقف اللعبة.
+STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}قارن الحالات
+STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}اظهر الحالات المتشابهة عند مقارنة رسائل الذكاء الصناعي مع الجمل المكسورة.
+STR_AI_DEBUG_CONTINUE                                           :{BLACK}استمر
+STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}عدم توقيف ومواصلة الذكاء الصناعي
 
 STR_ERROR_NO_AI                                                 :{WHITE}تم بناء اللعبة بدون دعم للذكاء الاصطناعي
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... لا يوجد ذكاء اصطناعي متاح!

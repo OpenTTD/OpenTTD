@@ -522,6 +522,10 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Yhtiöid
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Rahtitaksat
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Päivää kauttakulussa
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Maksu 10 yksikön (tai 10.000 litran) rahdin kuljettamisesta 20 ruudun päähän
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}Ota kaikki käyttöön
+STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT}{BLACK}Poista kaikki käytöstä
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Näytä kaikki rahdit rahtitaksojen kaaviossa
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Älä näytä rahtia rahtitaksojen kaaviossa
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Rahtityypin kuvaaja päälle/pois
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 
@@ -3224,6 +3228,14 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}Tekoäly
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Muuta tekoälyn asetuksia
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Lataa tekoäly uudelleen
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Lopeta tekoäly, lataa skripti uudelleen ja käynnistä tekoäly uudelleen
+STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Pysäytetäänkö tekoäly kun tekoälyn lokiviesti on sama kuin pysäytysmerkkijono
+STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Pysäytä kun:
+STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Pysäytä kun
+STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Kun tekoälyn lokiviesti on sama kuin tämä merkkijono, peli pysäytetään.
+STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Isojen ja pienten kirjainten täsmääminen
+STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Isojen ja pienten kirjainten täsmääminen kun tekoälyn lokitiedostoja verrataan pysätysmerkkijonoon
+STR_AI_DEBUG_CONTINUE                                           :{BLACK}Jatka
+STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Jatka tekoälyn suorittamista
 
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD on käännetty ilman AI-tukea...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... tekoälyt eivät ole saatavilla!

@@ -1251,7 +1251,7 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}彩色�
 STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}開始年份：{ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}開啟平滑經濟模式 (更多、更小的變動)：{ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}允許購買其它公司的股票：{ORANGE}{STRING}
-STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}轉運時每段旅程支付的運費比例（避免虧損）：{ORANGE}{STRING}%
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}轉運時每段旅程支付的運費比例 (避免虧損)：{ORANGE}{STRING}%
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}拖拉時每隔：{ORANGE}{STRING} 格自動建造號誌
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}自動在指定年份前建造懸臂號誌：{ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}啟用號誌介面：{ORANGE}{STRING}
@@ -3130,7 +3130,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRIN
 STR_ORDER_GO_TO_HANGAR_FORMAT                                   :{STRING} {STATION} 機棚
 
 STR_ORDER_REFIT_ORDER                                           :(改裝成 {STRING})
-STR_ORDER_REFIT_STOP_ORDER                                      :（裝載 {STRING} 並停止）
+STR_ORDER_REFIT_STOP_ORDER                                      :(裝載 {STRING} 並停止)
 STR_ORDER_STOP_ORDER                                            :(停止)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
@@ -3224,6 +3224,8 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}AI 設�
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}變更 AI 設定
 STR_AI_DEBUG_RELOAD                                             :{BLACK}重新載入 AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}結束 AI、重新載入腳本、重新啟動 AI
+STR_AI_DEBUG_CONTINUE                                           :{BLACK}繼續
+STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}取消暫停並繼續 AI
 
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD 編譯時未加入 AI 支援...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... 無 AI 可使用！

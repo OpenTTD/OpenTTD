@@ -660,6 +660,10 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Стои
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Оплата за перевозку грузов
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Дней в пути
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Оплата за доставку 10 единиц (10 000 литров) груза на расстояние в 20 клеток
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}Показать все
+STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT}{BLACK}Спрятать все
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Показать все виды грузов на графике
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Спрятать все виды грузов на графике
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Включить/выключить отображение груза на графике
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 
@@ -3404,6 +3408,14 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}Наст
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Изменить настройки ИИ
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Перезагрузить ИИ
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Удалить ИИ, перезагрузить скрипт и перезапустить ИИ
+STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Включить/отключить паузу при появлении в журнале сигнальной строки
+STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Строка:
+STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Строка для включения паузы
+STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Когда в журнале появляется данная строка, включается пауза
+STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Регистр
+STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Переключить проверку регистра при сравнении строк
+STR_AI_DEBUG_CONTINUE                                           :{BLACK}Продолжить
+STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Продолжить игру
 
 STR_ERROR_NO_AI                                                 :{WHITE}Поддержка ИИ отключена в этой сборке OpenTTD...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... отсутствуют модули ИИ!

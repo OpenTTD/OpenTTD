@@ -304,8 +304,8 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Şirketl
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Yeni fabrika kur veya tüm fabrikaları listele
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Şirkete ait trenleri listele. Ctrl+sol tuş ile grup/araç listesini aç/kapa
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Şirkete ait karayolu taşıtlarını listele. Ctrl-tık grup/araç listesini açıp kapatır
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Şirkete ait gemileri listele
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Şirkete ait uçakları listele
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Şirkete ait gemileri listele. Ctrl+Tık grup/araç listesini açar/kapatır
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Şirkete ait uçakları listele. Ctrl+Tık grup/araç listesini açar/kapatır
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Yakınlaş
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Uzaklaş
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Tren rayı yapımı
@@ -315,7 +315,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Havalima
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Arazi düzenleme araç çubuğunu aç (ağaç dikme, alçaltma/yükseltme vb. için).
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Ses/müzik penceresini göster
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Son mesajı/haberi göster, mesaj ayarlarını göster
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Arazi bilgisi
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Arazi bilgisi, konsol, YZ hata ayıklama, ekran görüntüsü yakalama, OpenTTD hakkında
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Araç çubuklarını değiştir
 
 # Extra tooltips for the scenario editor toolbar
@@ -523,6 +523,10 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Şirket 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Kargo ödemeleri
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Taşıma süresi
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}20 karelik yolda 10 birim için ödeme (ya da 10,000 litre)
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}Tümünü aç
+STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT}{BLACK}Tümünü kapat
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Kargo ödeme tablosunda tüm kargo tiplerini göster
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Kargo ödeme tablosunda hiçbir kargo tipini gösterme
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Kargo türünü göster/gizle
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 
@@ -690,7 +694,7 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLAC
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}Karlı
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Harita üzerinde şehir isimlerini göster/gizle
-STR_SMALLMAP_CENTER                                             :{BLACK}Küçük haritayı burada ortala
+STR_SMALLMAP_CENTER                                             :{BLACK}Küçük haritayı mevcut konumda ortala
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Hepsini kapa
@@ -1468,7 +1472,7 @@ STR_FACE_SIMPLE                                                 :{BLACK}Basit
 STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Basit yüz seçimi.
 STR_FACE_LOAD                                                   :{BLACK}Yükle
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Tercih edilen yüzü yükle
-STR_FACE_LOAD_DONE                                              :{WHITE}Tercih edilen yüz OpenTTD ayar dosyasından yüklendi.
+STR_FACE_LOAD_DONE                                              :{WHITE}Tercih edilen yüz OpenTTD ayar dosyasından yüklendi
 STR_FACE_FACECODE                                               :{BLACK}Oyuncu yüzü no.
 STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Oyuncu suratının numarasını göster/değiştir
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}Oyuncu suratının numarasını göster/değiştir
@@ -1476,9 +1480,9 @@ STR_FACE_FACECODE_SET                                           :{WHITE}Surat nu
 STR_FACE_FACECODE_ERR                                           :{WHITE}Oyuncu surat numarası ayarlanamadı - 0 ve 4.294.967.295 arasında bir sayı olmalı!
 STR_FACE_SAVE                                                   :{BLACK}Kaydet
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Tercih edilen yüzü kaydet
-STR_FACE_SAVE_DONE                                              :{WHITE}Bu surat OpenTTD ayar dosyasına kaydedilecek.
+STR_FACE_SAVE_DONE                                              :{WHITE}Bu yüz OpenTTD ayar dosyasına favoriniz olarak kaydedilecek
 STR_FACE_EUROPEAN                                               :{BLACK}Avrupalı
-STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Beyaz yüz seç
+STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Avrupalı yüz seç
 STR_FACE_AFRICAN                                                :{BLACK}Afrikalı
 STR_FACE_SELECT_AFRICAN                                         :{BLACK}Siyah yüz seç
 STR_FACE_YES                                                    :Evet
@@ -1538,7 +1542,7 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Son oyna
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}OYUN BİLGİSİ
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}İstemciler: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Dil: {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Set: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Yer yüzü: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Harita boyutu: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Sunucu sürümü: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Sunucu adresi: {WHITE}{STRING}
@@ -1814,7 +1818,7 @@ STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Bunu in
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Bu bağımlılık indirilmek üzere seçildi
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Bu zaten var
 STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Bu içerik bilinmiyor ve OpenTTD'ye indirilemez
-STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Bu mevcut {STRING} için bir yenilemedir
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Bu, mevcut {STRING} için bir yenilemedir
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}Ad: {WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Sürüm: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Tanım: {WHITE}{STRING}
@@ -1927,13 +1931,13 @@ STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Sinyal S
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Blok Sinyali (semafor){}Bu en temel sinyal tipidir, bir blok içinde aynı anda yalnız bir tren bulunmasına izin verir.
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Giriş-Sinyali (semafor){}Yolun devam eden bölümünde en az bir yeşil çıkış sinyali olduğu sürece yeşil yanar. Aksi halde kırmızı yanar.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Çıkış Sinyali (semafor){}Blok sinyali ile aynı şekilde çalışır ancak giriş ve karışık ön sinyaller ile doğru rengi tetiklemek gerekmektedir.
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Karışık Sinyal (semafor){}Karışık sinyal hem giriş hem de çıkış sinyali gibi davranır. Bu büyük ön sinyal "ağaçları" yapmanızı sağlar.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Karışık Sinyal (semafor){}Karışık sinyal hem giriş hem de çıkış sinyali gibi davranır. Bu şekilde büyük ön sinyal "ağaçları" yapabilirsiniz
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Yol Sinyali (semafor){}Yol sinyali, gelen tren güvenli bir durma noktasına yol ayırabiliyor ise bir sinyal bloğuna aynı anda birden fazla trenin girmesine izin verir. Standart yol sinyalleri arka taraftan geçişe izin verir.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Tek Yön Yol Sinyali (semafor){}Yol sinyali, gelen tren güvenli bir durma noktasına yol ayırabiliyor ise bir sinyal bloğuna aynı anda birden fazla trenin girmesine izin verir. Tek yön yol sinyalleri arka taraftan geçişe izin vermez.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Blok Sinyali (elektrikli){}En temel sinyal tipidir, bir blok içinde aynı anda yalnız bir tren bulunmasına izin verir.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Giriş-Sinyali (elektrikli){}Yolun devam eden bölümünde en az bir yeşil çıkış sinyali olduğu sürece yeşil yanar. Aksi halde kırmızı yanar.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Çıkış Sinyali (elektrikli){}Blok sinyali ile aynı şekilde çalışır ancak giriş ve karışık ön sinyaller ile doğru rengi tetiklemek gerekmektedir.
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Karışık Sinyal (elektrikli){}Karışık sinyal hem giriş hem de çıkış sinyali gibi davranır. Bu büyük ön sinyal "ağaçları" yapmanızı sağlar.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Karışık Sinyal (elektrikli){}Karışık sinyal hem giriş hem de çıkış sinyali gibi davranır. Bu şekilde büyük ön sinyal "ağaçları" yapabilirsiniz.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Yol Sinyali (elektrikli){}Yol sinyali, gelen tren güvenli bir durma noktasına yol ayırabiliyor ise bir sinyal bloğuna aynı anda birden fazla trenin girmesine izin verir. Standart yol sinyalleri arka taraftan geçişe izin verir.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Tek Yön Yol Sinyali (elektrikli){}Yol sinyali, gelen tren güvenli bir durma noktasına yol ayırabiliyor ise bir sinyal bloğuna aynı anda birden fazla trenin girmesine izin verir. Tek yön yol sinyalleri arka taraftan geçişe izin vermez.
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Sinyal Dönüştür{}Seçildiğinde, tıklama var olan sinyali seçili sinyal tür ve alt türüne çevirir, CTRL ile tıklama mevcut alt türü değiştirir.
@@ -1944,7 +1948,7 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Sinyal s
 # Bridge selection window
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Tren Köprüsü Seç
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Köprü Seç
-STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Köprü seçimi - yapacağınız köprüyü seçin
+STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Köprü seçimi - tercih ettiğiniz köprüyü yapmak için tıklayın
 STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Çelik, Asma
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Çelik, Kirişli
@@ -2120,7 +2124,7 @@ STR_LAND_AREA_INFORMATION_OWNER_N_A                             :Yok
 STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}Sahibi: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}Yolun sahibi: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Tramvayın sahibi: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Demiryolunun sahibi: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Demiryolu sahibi: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Belediyesi: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Hiçbiri
 STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Koordinatlar: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
@@ -2167,7 +2171,7 @@ STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Ön ve tek yön
 STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Tren garı
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Yol
-STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Lambali yol
+STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Sokak lambalı yol
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Ağaçli yol
 STR_LAI_ROAD_DESCRIPTION_ROAD_VEHICLE_DEPOT                     :Araba garı
 STR_LAI_ROAD_DESCRIPTION_ROAD_RAIL_LEVEL_CROSSING               :Hemzemin geçit
@@ -2544,7 +2548,7 @@ STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}İnşaat
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Yeni araçlar
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Tren Bakımları
-STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Araba Bakımları
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Kara Taşıtı Çalıştırma Giderleri
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Uçak Bakımları
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Gemi Bakımları
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}İnşaat bakımları
@@ -2911,9 +2915,9 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Araba ay
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Gemi ayrıntılarını göster
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Uçak ayrıntılarını göster
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Tren durumu - treni durdurmak/başlatmak için buraya tıklayın
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Aracın durumu - durdurmak/başlatmak için tıklayın
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Geminin durumu - durdurmak/başlatmak için buraya tıkla
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Trenin mevcut hareketi - treni durdurmak/başlatmak için buraya tıklayın. Hedefe gitmek için CTRL+Tıkla
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Aracın mevcut hareketi - durdurmak/başlatmak için tıklayın. Hedefe gitmek için CTRL+Tıkla
+STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Geminin mevcut hareketi - durdurmak/başlatmak için buraya tıkla. Hedefe gitmek için CTRL+Tıkla
 STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Uçağın durumu - uçağı durdurmak/başlatmak için tıkla. Ctrl+Tık ile hedefe git
 
 # Messages in the start stop button in the vehicle view
@@ -3225,6 +3229,14 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}YZ Ayarl
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}YZ ayarlarını değiştir
 STR_AI_DEBUG_RELOAD                                             :{BLACK}YZ'yı baştan yükle
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}YZ'yı öldür, kodu tekrar yükle ve YZ'yı tekrar başlat
+STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}YZ log iletisi durma metni ile eşleştiğinde duraklatmayı aç/kapa
+STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Geldiğinde duraklatılacak metin:
+STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Geldiğinde duraklatılacak metin
+STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Bir YZ log mesajı metin ile eşleşirse, oyun duraklatılır
+STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Büyük/küçük harf eşleştir
+STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}YZ log iletilerini durma metni ile karşılaştırırken büyük/küçük harf eşleşmesini aç/kapa
+STR_AI_DEBUG_CONTINUE                                           :{BLACK}Devam et
+STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}YZ'yi devam ettir
 
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD YZ desteği olmadan derlenmiş...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... hiç YZ yok!

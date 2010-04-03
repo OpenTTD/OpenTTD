@@ -710,6 +710,10 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Vrednost
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Stope prihoda od tovara
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Dana u tranzitu
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Isplata za dostavu 10 jedinica (ili 10 hiljada litara) tovara na razdaljinu od 20 kvadrata
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}Prikaži sve
+STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT}{BLACK}Sakri sve
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Prikazuje sve vrste tovara na grafikonu prihoda
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Sakriva sve vrste tovara na grafikonu prihoda
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Uključi/Isključi grafikone po vrsti tovara
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 
@@ -3022,7 +3026,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Upravo 
 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Poruka od proizvođača vozila
-STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Upravo smo završili projektovanje novog vozila {STRING} - da li ste zainteresovani za jednogodišnja eksluzivna prava upotrebe ovog vozila, kako bi smo proverili radne osobine pre puštanja u masovnu proizvodnju?
+STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Upravo smo završili projektovanje novog {STRING.gen} - da li ste zainteresovani za jednogodišnja eksluzivna prava upotrebe ovog vozila, kako bi smo proverili radne osobine pre puštanja u masovnu proizvodnju?
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :železničko vučno vozilo
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :drumsko vozilo
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :letilica
@@ -3429,6 +3433,14 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}VI Pode�
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Promena podešavanja vezanih za VI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Ponovno učitavanje
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Zaustavlja Veštačku Inteligenciju, ponovo učitava skriptu, i restartuje je
+STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Uključuje/isključuje prekidanje kada VI ispiše poruku koja se poklapa sa prekidnom niskom
+STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Prekid na:
+STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Prekid na
+STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Kada VI ispiše poruku koja se poklapa sa ovom niskom, partija se pauzira.
+STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Podudaranje malih i velikih slova
+STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Uključuje/isključuje podudaranje malih i velikih slova tokom poređenja zapisanih VI poruka sa prekidnom niskom
+STR_AI_DEBUG_CONTINUE                                           :{BLACK}Nastavi
+STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Nastavlja partiju i VI
 
 STR_ERROR_NO_AI                                                 :{WHITE}Ova OpenTTD verzija nema podršku za VI...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... nijedna VI nije dostupna!

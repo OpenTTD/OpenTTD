@@ -524,6 +524,10 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Valore d
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Tariffe di pagamento merci
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Giorni di viaggio
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Pagamento per la consegna di 10 unità (o 10.000 litri) di merce alla distanza di 20 riquadri
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}Abilita tutti
+STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT}{BLACK}Disabilita tutti
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Mostra tutti i tipi di carico sul grafico delle tariffe
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Non mostra alcun tipo di carico sul grafico delle tariffe
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Attiva/disattiva il grafico per il tipo di merce
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 
@@ -3226,6 +3230,14 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}Impostaz
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Cambia le impostazioni dell'IA
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Ricarica IA
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Termina la IA, ricarica lo script, e riavvia la IA
+STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Attiva/disattiva l'interruzione dell'esecuzione quando un messaggio di log della IA corrisponde alla stringa
+STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Stringa interruzione:
+STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Attiva interruzione
+STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Mette in pausa il gioco quando viene loggato un messaggio della IA corrispondente alla stringa
+STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Maiuscole/minuscole
+STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Attiva/disattiva la corrispondenza di lettere maiuscole/minuscole nel confronto fra i messaggi di log della IA e la stringa di interruzione
+STR_AI_DEBUG_CONTINUE                                           :{BLACK}Continua
+STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Esce dalla pausa e continua l'esecuzione della IA
 
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD è stato compilato senza supporto IA...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... nessuna IA disponibile!

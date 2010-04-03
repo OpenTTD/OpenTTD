@@ -3229,6 +3229,14 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}Configur
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Modifier la configuration de l'IA
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Recharger IA
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Tuer l'IA, recharger le script et relancer l'IA
+STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Activer/désactiver l'arrêt lorsqu'un message d'IA correspond à la chaine d'arrêt
+STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Arrêter sur{NBSP}:
+STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Arrêter sur
+STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Lorsqu'un message de l'IA correspond à cette chaine, la partie est suspendue.
+STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Respecter la casse
+STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Basculer "respecter la casse" pour comparer les messages d'IA avec la chaine d'arrêt
+STR_AI_DEBUG_CONTINUE                                           :{BLACK}Continuer
+STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Reprendre la partie et continuer l'IA
 
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD est compilé sans support pour les IAs...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... aucune IA disponible{NBSP}!

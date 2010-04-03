@@ -146,7 +146,7 @@ STR_ABBREV_COPPER_ORE                                           :{TINYFONT}MC
 STR_ABBREV_MAIZE                                                :{TINYFONT}MZ
 STR_ABBREV_FRUIT                                                :{TINYFONT}FT
 STR_ABBREV_DIAMONDS                                             :{TINYFONT}DM
-STR_ABBREV_FOOD                                                 :{TINYFONT}CM
+STR_ABBREV_FOOD                                                 :{TINYFONT}AL
 STR_ABBREV_PAPER                                                :{TINYFONT}PP
 STR_ABBREV_GOLD                                                 :{TINYFONT}OR
 STR_ABBREV_WATER                                                :{TINYFONT}AG
@@ -277,7 +277,7 @@ STR_SORT_BY_LENGTH                                              :Longitud
 STR_SORT_BY_LIFE_TIME                                           :Tiempo de vida remanente
 STR_SORT_BY_TIMETABLE_DELAY                                     :Retraso en horarios
 STR_SORT_BY_FACILITY                                            :Tipo de estación
-STR_SORT_BY_WAITING                                             :Esperando valor de la carga
+STR_SORT_BY_WAITING                                             :Carga en espera
 STR_SORT_BY_RATING_MAX                                          :Clasificación de carga más alta
 STR_SORT_BY_RATING_MIN                                          :Clasificación de carga más baja
 STR_SORT_BY_ENGINE_ID                                           :ID Motor (ordenación clásica)
