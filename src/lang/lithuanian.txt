@@ -1166,7 +1166,6 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :nėra
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :kaip kitos gamyklos
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :vaizdavimas
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Leisti kelias panašias pramonės įmones viename mieste: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SAMEINDCLOSE                                 :{LTBLUE}Leisti statyti to paties tipo fabrikus arti vienas kito: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Rodyti pilną datą būsenos eilutėje: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Šviesoforus rodyti vairuotojo pusėje: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Rodyti finansinę ataskaitą metų pabaigoje: {ORANGE}{STRING}

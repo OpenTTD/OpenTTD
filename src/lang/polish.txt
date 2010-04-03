@@ -1478,7 +1478,6 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :budowa niedost�
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :jak inne przedsiębiorstwa
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :przez poszukiwanie
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Pozwól na wiele podobnych przedsiębiorstw w mieście: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SAMEINDCLOSE                                 :{LTBLUE}Przedsiębiorstwa jednego typu mogą być budowane obok siebie: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Zawsze pokazuj datę w długim formacie w pasku statusu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Pokazuj sygnały po stronie jazdy: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Pokazuj okno finansów na koniec roku: {ORANGE}{STRING}

@@ -1098,7 +1098,6 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Inget
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Som andra industrier
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Prospekterande
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Tillåt flera industrier av samma typ per stad: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SAMEINDCLOSE                                 :{LTBLUE}Industrier av samma typ kan byggas nära varandra: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Visa alltid långt datum i statusfältet: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Visa signaler på körsidan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Visa finansfönstret vid slutet av året: {ORANGE}{STRING}

@@ -1369,7 +1369,6 @@ static SettingsPage _settings_economy_towns_page = {_settings_economy_towns, len
 static SettingEntry _settings_economy_industries[] = {
 	SettingEntry("construction.raw_industry_construction"),
 	SettingEntry("economy.multiple_industry_per_town"),
-	SettingEntry("economy.same_industry_close"),
 	SettingEntry("game_creation.oil_refinery_limit"),
 };
 /** Industries sub-page */

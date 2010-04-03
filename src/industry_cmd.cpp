@@ -1512,30 +1512,13 @@ static bool CheckIfCanLevelIndustryPlatform(TileIndex tile, DoCommandFlag flags,
 }
 
 
-static bool CheckIfFarEnoughFromIndustry(TileIndex tile, int type)
+static bool CheckIfFarEnoughFromConflictingIndustry(TileIndex tile, int type)
 {
 	const IndustrySpec *indspec = GetIndustrySpec(type);
 	const Industry *i;
-
-	if (_settings_game.economy.same_industry_close && indspec->IsRawIndustry())
-		/* Allow primary industries to be placed close to any other industry */
-		return true;
-
 	FOR_ALL_INDUSTRIES(i) {
 		/* Within 14 tiles from another industry is considered close */
 		bool in_low_distance = DistanceMax(tile, i->location.tile) <= 14;
-
-		/* check if an industry that accepts the same goods is nearby */
-		if (in_low_distance &&
-				!indspec->IsRawIndustry() && // not a primary industry?
-				indspec->accepts_cargo[0] == i->accepts_cargo[0] && (
-				/* at least one of those options must be true */
-				_game_mode != GM_EDITOR || // editor must not be stopped
-				!_settings_game.economy.same_industry_close ||
-				!_settings_game.economy.multiple_industry_per_town)) {
-			_error_message = STR_ERROR_INDUSTRY_TOO_CLOSE;
-			return false;
-		}
 
 		/* check if there are any conflicting industry types around */
 		if ((i->type == indspec->conflicting[0] ||
@@ -1705,7 +1688,7 @@ static Industry *CreateNewIndustryHelper(TileIndex tile, IndustryType type, DoCo
 	}
 
 	if (!custom_shape_check && _settings_game.game_creation.land_generator == LG_TERRAGENESIS && _generating_world && !_ignore_restrictions && !CheckIfCanLevelIndustryPlatform(tile, DC_NO_WATER, it, type)) return NULL;
-	if (!CheckIfFarEnoughFromIndustry(tile, type)) return NULL;
+	if (!CheckIfFarEnoughFromConflictingIndustry(tile, type)) return NULL;
 
 	const Town *t = FindTownForIndustry(tile, type);
 	if (t == NULL) return NULL;

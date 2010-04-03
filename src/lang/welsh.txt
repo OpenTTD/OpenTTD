@@ -1067,7 +1067,6 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :dim
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :fel diwydiannau eraill
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :chwilio am adnoddau crai
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Caniatáu nifer o ddiwydiannau bach i bob tref: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SAMEINDCLOSE                                 :{LTBLUE}Gall diwydiannau o'r un math gael eu hadeiladu'n agos i'w gilydd: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Dangos y dyddiad hir yn y bar statws drwy'r amser: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Dangos signalau ar yr ochr yrru: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Dangos y ffenestr gyllid ar ddechrau'r flwyddyn: {ORANGE}{STRING}

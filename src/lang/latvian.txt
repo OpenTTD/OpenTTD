@@ -1075,7 +1075,6 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :nav
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :kā citas industrijas
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :ienesīga
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Atļaut vairākas līdzīgas rūpnīcas vienā pilsētā : {ORANGE}{STRING}
-STR_CONFIG_SETTING_SAMEINDCLOSE                                 :{LTBLUE}Viena veida rūpnīcas var būvēt tuvu vienu otrai: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Vienmēr rādīt garu datumu statusa joslā: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Rādīt signālus braukšanas pusē: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Gada beigās rādīt finanšu pārskatu: {ORANGE}{STRING}
