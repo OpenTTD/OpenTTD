@@ -525,7 +525,7 @@ STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLAC
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}Ota kaikki käyttöön
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT}{BLACK}Poista kaikki käytöstä
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Näytä kaikki rahdit rahtitaksojen kaaviossa
-STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Älä näytä rahtia rahtitaksojen kaaviossa
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Älä näytä mitään rahteja rahtitaksojen kaaviossa
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Rahtityypin kuvaaja päälle/pois
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 
@@ -3539,6 +3539,7 @@ STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Sillan p
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Silta on liian matalalla maastoa varten
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Alku- ja päätepisteen pitää olla linjassa.
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... sillan molempien päiden pitää sijaita maalla.
+STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... silta liian pitkä
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Tunnelia ei voi rakentaa...

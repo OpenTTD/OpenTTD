@@ -3540,6 +3540,7 @@ STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Les extr
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Le pont est trop bas pour le terrain
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Le début et la fin doivent être alignés
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... les deux extrémités du pont doivent être sur la terre ferme
+STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... pont trop long
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Impossible de construire un tunnel ici...

@@ -522,6 +522,10 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Giá tr�
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Bảng giá cước vận chuyển hàng hoá
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Số ngày vận chuyển
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Tiền trả khi vận chuyển 10 đơn vị (hay 10,000 lít) hàng hóa trên mỗi 20 ô
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}Cho phép toàn bộ
+STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT}{BLACK}Bỏ toàn bộ
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Hiển thị toàn bộ toa xe trên đồ thị tỉ lệ trả tiền của toa xe
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Không hiển thị các toa xe trên đồ thị tỉ lệ trả tiền của toa xe
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Bật/tắt đồ thị hàng hóa
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 
@@ -1772,7 +1776,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Ván chơi tạ
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Game đang dừng ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Game đang dừng ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Game vẫn đang dừng ({STRING}, {STRING}, {STRING})
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Bỏ tạm dừng game ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Game được tiếp tục ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :không đủ người chơi
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :máy trạm kết nối đến
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :tự chọn
@@ -3224,6 +3228,10 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}Thiết 
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Thay đổi thiết lập của AI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}nạp lại AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Xoá bỏ AI, nạp lại kịch bản, và khởi động lại AI
+STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Thoát khỏi vòng lặp:
+STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Thoát khỏi vòng lặp
+STR_AI_DEBUG_CONTINUE                                           :{BLACK}Tiếp tục
+STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Cho máy tiếp tục chơi
 
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD biên dịch không hỗ trợ AI...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... Không có AI thích hợp!
@@ -3527,6 +3535,7 @@ STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Hai đ�
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Cầu thấp quá so với mặt đất
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Điểu đầu và cuối phải trên 1 đường thẳng
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... hai đầu cầu phải được gá vào đất
+STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... cầu quá dài
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Không thể đào hầm ở đây...

@@ -618,6 +618,10 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Vrijedno
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Isplatne rate tereta
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Dana u tranzitu
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Plaćanje za dostavu 10 jedinica (ili 10.000 litara) tereta za udaljenost od 20 kvadrata
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}Uključi sve
+STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT}{BLACK}Isključi sve
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Prikaži sve terete na grafikonu cijena prijevoza tereta
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Prikaži bez tereta na grafikonu cijena prijevoza tereta
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Uključi/isključi grafikon za vrstu tereta
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 
@@ -3320,6 +3324,14 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}Postavke
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Promijeni postavke UI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Ponovno učitaj UI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Ubij UI, ponovno učitaj skriptu i ponovno pokreni UI
+STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Uključi/isključi prekid kada neka UI poruka odgovara prekidnom nizu
+STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Prekid kod:
+STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Prekid kod
+STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Kada zapis UI poruka odgovara ovom nizu, igra se pauzira.
+STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Prilagodi veličinu slova
+STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Prilagodi veličinu slova kod uspoređivanja zapisa UI poruka sa prekidnim nizom
+STR_AI_DEBUG_CONTINUE                                           :{BLACK}Nastavi
+STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Prekini pauzu i nastavi UI
 
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD je izrađen bez podrške za UI-u...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... nema dostupnih UI-a!

@@ -3227,6 +3227,7 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}AI 설�
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}AI의 설정 변경
 STR_AI_DEBUG_RELOAD                                             :{BLACK}AI 재시작
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}AI를 종료시키고, 스크립트를 다시 불러와, AI를 재시작합니다
+STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}AI 재개 및 계속됨
 
 STR_ERROR_NO_AI                                                 :{WHITE}AI 지원 없이 OpenTTD를 빌드합니다...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... 사용 가능한 AI가 없습니다!

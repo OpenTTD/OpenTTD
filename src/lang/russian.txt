@@ -1985,7 +1985,7 @@ STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD 
 STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... загрузка контента невозможна!
 
 # Order of these is important!
-STR_CONTENT_TYPE_BASE_GRAPHICS                                  :{G=f}Базовая графика
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :{G=m}Базовая графика
 STR_CONTENT_TYPE_BASE_GRAPHICS.gen                              :{G=m}набора базовой графики
 STR_CONTENT_TYPE_BASE_GRAPHICS.acc                              :{G=m}набор базовой графики
 STR_CONTENT_TYPE_NEWGRF                                         :{G=m}NewGRF

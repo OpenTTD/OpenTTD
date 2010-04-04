@@ -3437,7 +3437,7 @@ STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Uključu
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Prekid na:
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Prekid na
 STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Kada VI ispiše poruku koja se poklapa sa ovom niskom, partija se pauzira.
-STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Podudaranje malih i velikih slova
+STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Podudaranje vel. slova
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Uključuje/isključuje podudaranje malih i velikih slova tokom poređenja zapisanih VI poruka sa prekidnom niskom
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Nastavi
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Nastavlja partiju i VI

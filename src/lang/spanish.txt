@@ -3229,6 +3229,8 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}Configur
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Cambiar la configuración de la IA
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Recarga la IA
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Elimina la IA, recarga el código y reinicia la IA
+STR_AI_DEBUG_CONTINUE                                           :{BLACK}Continuar
+STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Despausar y hacer que la IA continúe
 
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD está compilado sin soporte para IA...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... no hay IAs disponibles!
@@ -3532,6 +3534,7 @@ STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Las cabe
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}El puente es demasiado bajo para el terreno
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Comienzo y final deben estar en línea
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... los dos extremos de un puente han de estar sobre tierra
+STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... puente demasiado largo
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}No se puede construir túnel aquí...
