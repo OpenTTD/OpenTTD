@@ -1413,18 +1413,20 @@ static bool HandleMouseOver()
  */
 void ResizeWindow(Window *w, int delta_x, int delta_y)
 {
-	if (delta_x == 0 && delta_y == 0) return;
+	if (delta_x != 0 || delta_y != 0) {
+		w->SetDirty();
 
-	w->SetDirty();
+		uint new_xinc = max(0, (w->nested_root->resize_x == 0) ? 0 : (int)(w->nested_root->current_x - w->nested_root->smallest_x) + delta_x);
+		uint new_yinc = max(0, (w->nested_root->resize_y == 0) ? 0 : (int)(w->nested_root->current_y - w->nested_root->smallest_y) + delta_y);
+		assert(w->nested_root->resize_x == 0 || new_xinc % w->nested_root->resize_x == 0);
+		assert(w->nested_root->resize_y == 0 || new_yinc % w->nested_root->resize_y == 0);
 
-	uint new_xinc = max(0, (w->nested_root->resize_x == 0) ? 0 : (int)(w->nested_root->current_x - w->nested_root->smallest_x) + delta_x);
-	uint new_yinc = max(0, (w->nested_root->resize_y == 0) ? 0 : (int)(w->nested_root->current_y - w->nested_root->smallest_y) + delta_y);
-	assert(w->nested_root->resize_x == 0 || new_xinc % w->nested_root->resize_x == 0);
-	assert(w->nested_root->resize_y == 0 || new_yinc % w->nested_root->resize_y == 0);
+		w->nested_root->AssignSizePosition(ST_RESIZE, 0, 0, w->nested_root->smallest_x + new_xinc, w->nested_root->smallest_y + new_yinc, _dynlang.text_dir == TD_RTL);
+		w->width  = w->nested_root->current_x;
+		w->height = w->nested_root->current_y;
+	}
 
-	w->nested_root->AssignSizePosition(ST_RESIZE, 0, 0, w->nested_root->smallest_x + new_xinc, w->nested_root->smallest_y + new_yinc, _dynlang.text_dir == TD_RTL);
-	w->width  = w->nested_root->current_x;
-	w->height = w->nested_root->current_y;
+	/* Always call OnResize to make sure everything is initialised correctly if it needs to be. */
 	w->OnResize();
 	w->SetDirty();
 }
