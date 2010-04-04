@@ -163,7 +163,12 @@ static CommandCost CheckBridgeSlopeSouth(Axis axis, Slope *tileh, uint *z)
 	return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);
 }
 
-bool CheckBridge_Stuff(BridgeType bridge_type, uint bridge_len, DoCommandFlag flags)
+/** Is a bridge of the specified type and length available?
+ * @param bridge_type Wanted type of bridge.
+ * @param bridge_len  Wanted length of the bridge.
+ * @return The requested bridge is available.
+ */
+bool CheckBridgeAvailability(BridgeType bridge_type, uint bridge_len, DoCommandFlag flags)
 {
 	if (flags & DC_QUERY_COST) {
 		return bridge_len <= (_settings_game.construction.longbridges ? 100U : 16U);
@@ -243,7 +248,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 	uint bridge_len = GetTunnelBridgeLength(tile_start, tile_end);
 	if (transport_type != TRANSPORT_WATER) {
 		/* set and test bridge length, availability */
-		if (!CheckBridge_Stuff(bridge_type, bridge_len, flags)) return_cmd_error(STR_ERROR_CAN_T_BUILD_BRIDGE_HERE);
+		if (!CheckBridgeAvailability(bridge_type, bridge_len, flags)) return_cmd_error(STR_ERROR_CAN_T_BUILD_BRIDGE_HERE);
 	} else {
 		if (bridge_len > (_settings_game.construction.longbridges ? 100U : 16U)) return_cmd_error(STR_ERROR_CAN_T_BUILD_BRIDGE_HERE);
 	}
