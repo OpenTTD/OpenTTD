@@ -166,23 +166,26 @@ static CommandCost CheckBridgeSlopeSouth(Axis axis, Slope *tileh, uint *z)
 /** Is a bridge of the specified type and length available?
  * @param bridge_type Wanted type of bridge.
  * @param bridge_len  Wanted length of the bridge.
- * @return The requested bridge is available.
+ * @return A succeeded (the requested bridge is available) or failed (it cannot be built) command.
  */
-bool CheckBridgeAvailability(BridgeType bridge_type, uint bridge_len, DoCommandFlag flags)
+CommandCost CheckBridgeAvailability(BridgeType bridge_type, uint bridge_len, DoCommandFlag flags)
 {
 	if (flags & DC_QUERY_COST) {
-		return bridge_len <= (_settings_game.construction.longbridges ? 100U : 16U);
+		if (bridge_len <= (_settings_game.construction.longbridges ? 100U : 16U)) return CommandCost();
+		return_cmd_error(STR_ERROR_BRIDGE_TOO_LONG);
 	}
 
-	if (bridge_type >= MAX_BRIDGES) return false;
+	if (bridge_type >= MAX_BRIDGES) return CMD_ERROR;
 
 	const BridgeSpec *b = GetBridgeSpec(bridge_type);
-	if (b->avail_year > _cur_year) return false;
+	if (b->avail_year > _cur_year) return CMD_ERROR;
 
 	uint max = b->max_length;
 	if (max >= 16 && _settings_game.construction.longbridges) max = 100;
 
-	return b->min_length <= bridge_len && bridge_len <= max;
+	if (b->min_length > bridge_len) return CMD_ERROR;
+	if (bridge_len <= max) return CommandCost();
+	return_cmd_error(STR_ERROR_BRIDGE_TOO_LONG);
 }
 
 /** Build a Bridge
@@ -248,9 +251,10 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 	uint bridge_len = GetTunnelBridgeLength(tile_start, tile_end);
 	if (transport_type != TRANSPORT_WATER) {
 		/* set and test bridge length, availability */
-		if (!CheckBridgeAvailability(bridge_type, bridge_len, flags)) return CMD_ERROR;
+		CommandCost ret = CheckBridgeAvailability(bridge_type, bridge_len, flags);
+		if (ret.Failed()) return ret;
 	} else {
-		if (bridge_len > (_settings_game.construction.longbridges ? 100U : 16U)) return CMD_ERROR;
+		if (bridge_len > (_settings_game.construction.longbridges ? 100U : 16U)) return_cmd_error(STR_ERROR_BRIDGE_TOO_LONG);
 	}
 
 	/* retrieve landscape height and ensure it's on land */
