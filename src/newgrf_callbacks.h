@@ -128,7 +128,7 @@ enum CallbackID {
 	CBID_INDTILE_SHAPE_CHECK             = 0x2F, // 15 bit callback
 
 	/** Called to determine the type (if any) of foundation to draw for industry tile. */
-	CBID_INDUSTRY_DRAW_FOUNDATIONS       = 0x30, // 15 bit callback
+	CBID_INDTILE_DRAW_FOUNDATIONS        = 0x30, // 15 bit callback
 
 	/** Called when the company (or AI) tries to start or stop a vehicle. Mainly
 	 * used for preventing a vehicle from leaving the depot. */
@@ -166,7 +166,7 @@ enum CallbackID {
 	CBID_INDUSTRY_SPECIAL_EFFECT         = 0x3B, // 15 bit callback
 
 	/** Called to determine if industry can alter the ground below industry tile */
-	CBID_INDUSTRY_AUTOSLOPE              = 0x3C, // 15 bit callback
+	CBID_INDTILE_AUTOSLOPE               = 0x3C, // 15 bit callback
 
 	/** Called to determine if the industry can still accept or refuse more cargo arrival */
 	CBID_INDUSTRY_REFUSE_CARGO           = 0x3D, // 15 bit callback
