@@ -3580,6 +3580,7 @@ STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Priklju�
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Most je prenizek za teren
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Začetek in konec morata biti na isti višini
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... oba priključka mostu morata biti na kopnem
+STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... predolg most
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Tukaj ni mogoče zgraditi predora...

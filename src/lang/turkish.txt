@@ -394,13 +394,13 @@ STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Ayrıntılı Pe
 ############ range ends here
 
 ############ range for industry menu starts
-STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Fabrika Listesi
+STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Fabrika listesi
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Yeni fabrika kur
 ############ range ends here
 
 ############ range for railway construction menu starts
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Demiryolu yapımı
-STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Elektrikli Ray Yapımı
+STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Elektrikli ray yapımı
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Monoray yapımı
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :MagLev yapımı
 ############ range ends here
@@ -437,10 +437,10 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Mesaj Geçmişi
 ############ range for about menu starts
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Arazi bilgisi
 STR_ABOUT_MENU_SEPARATOR                                        :
-STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Konsol Aç/Kapa
-STR_ABOUT_MENU_AI_DEBUG                                         :YZ Hata Ayıklama
+STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Konsol aç/kapa
+STR_ABOUT_MENU_AI_DEBUG                                         :YZ hata ayıklama
 STR_ABOUT_MENU_SCREENSHOT                                       :Ekran Görüntüsü (Ctrl-S)
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Dev Ekran Görüntüsü (Ctrl-G)
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Dev ekran görüntüsü (Ctrl-G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :'OpenTTD' Hakkında
 ############ range ends here
 
@@ -3540,6 +3540,7 @@ STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Köprü 
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Köprü bu arazi için çok alçakta
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Başlangıç ve bitiş aynı çizgi üzerinde olmalı
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... köprünün her iki ucu da karada olmalı
+STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... köprü çok uzun
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Buraya tünel yapılamaz...

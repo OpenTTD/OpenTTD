@@ -3719,6 +3719,7 @@ STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Опор
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Слишком низкий мост
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Начало и конец должны быть на одной линии
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... оба конца моста должны опираться на землю
+STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... мост слишком длинный
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Здесь невозможно построить туннель...

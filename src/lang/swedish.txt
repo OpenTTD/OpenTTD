@@ -3539,6 +3539,7 @@ STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Broända
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Bro är för låg för terrängen
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Start- och slutpunkt måste ligga i linje
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... brons båda ändar måste vara på land
+STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... för lång bro
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Kan inte bygga tunnel här...
