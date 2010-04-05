@@ -548,8 +548,7 @@ void Window::ReInit(int rx, int ry)
 	if (this->resize.step_height > 1) dy -= dy % (int)this->resize.step_height;
 
 	ResizeWindow(this, dx, dy);
-	this->OnResize();
-	this->SetDirty();
+	/* ResizeWindow() does this->SetDirty() already, no need to do it again here. */
 }
 
 /** Set the shaded state of the window to \a make_shaded.
@@ -962,10 +961,11 @@ void Window::FindWindowPlacementAndResize(int def_width, int def_height)
 		if (this->resize.step_height > 1) enlarge_y -= enlarge_y % (int)this->resize.step_height;
 
 		ResizeWindow(this, enlarge_x, enlarge_y);
+		/* ResizeWindow() calls this->OnResize(). */
+	} else {
+		/* Always call OnResize; that way the scrollbars and matrices get initialized. */
+		this->OnResize();
 	}
-
-	/* Always call OnResize; that way the scrollbars and matrices get initialized */
-	this->OnResize();
 
 	int nx = this->left;
 	int ny = this->top;
@@ -1413,18 +1413,21 @@ static bool HandleMouseOver()
  */
 void ResizeWindow(Window *w, int delta_x, int delta_y)
 {
-	if (delta_x == 0 && delta_y == 0) return;
+	if (delta_x != 0 || delta_y != 0) {
+		w->SetDirty();
 
-	w->SetDirty();
+		uint new_xinc = max(0, (w->nested_root->resize_x == 0) ? 0 : (int)(w->nested_root->current_x - w->nested_root->smallest_x) + delta_x);
+		uint new_yinc = max(0, (w->nested_root->resize_y == 0) ? 0 : (int)(w->nested_root->current_y - w->nested_root->smallest_y) + delta_y);
+		assert(w->nested_root->resize_x == 0 || new_xinc % w->nested_root->resize_x == 0);
+		assert(w->nested_root->resize_y == 0 || new_yinc % w->nested_root->resize_y == 0);
 
-	uint new_xinc = max(0, (w->nested_root->resize_x == 0) ? 0 : (int)(w->nested_root->current_x - w->nested_root->smallest_x) + delta_x);
-	uint new_yinc = max(0, (w->nested_root->resize_y == 0) ? 0 : (int)(w->nested_root->current_y - w->nested_root->smallest_y) + delta_y);
-	assert(w->nested_root->resize_x == 0 || new_xinc % w->nested_root->resize_x == 0);
-	assert(w->nested_root->resize_y == 0 || new_yinc % w->nested_root->resize_y == 0);
+		w->nested_root->AssignSizePosition(ST_RESIZE, 0, 0, w->nested_root->smallest_x + new_xinc, w->nested_root->smallest_y + new_yinc, _dynlang.text_dir == TD_RTL);
+		w->width  = w->nested_root->current_x;
+		w->height = w->nested_root->current_y;
+	}
 
-	w->nested_root->AssignSizePosition(ST_RESIZE, 0, 0, w->nested_root->smallest_x + new_xinc, w->nested_root->smallest_y + new_yinc, _dynlang.text_dir == TD_RTL);
-	w->width  = w->nested_root->current_x;
-	w->height = w->nested_root->current_y;
+	/* Always call OnResize to make sure everything is initialised correctly if it needs to be. */
+	w->OnResize();
 	w->SetDirty();
 }
 
@@ -1679,7 +1682,6 @@ static bool HandleWindowDragging()
 
 			/* ResizeWindow sets both pre- and after-size to dirty for redrawal */
 			ResizeWindow(w, x, y);
-			w->OnResize();
 			return false;
 		}
 	}
@@ -2548,10 +2550,7 @@ void RelocateAllWindows(int neww, int newh)
 		 * in a 'backup'-desc that the window should always be centred. */
 		switch (w->window_class) {
 			case WC_MAIN_TOOLBAR:
-				if (neww - w->width != 0) {
-					ResizeWindow(w, min(neww, 640) - w->width, 0);
-					w->OnResize();
-				}
+				if (neww - w->width != 0) ResizeWindow(w, min(neww, 640) - w->width, 0);
 
 				top = w->top;
 				left = PositionMainToolbar(w); // changes toolbar orientation

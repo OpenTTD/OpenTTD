@@ -375,7 +375,7 @@ void ShowBuildBridgeWindow(TileIndex start, TileIndex end, TransportType transpo
 		case TRANSPORT_RAIL: last_bridge_type = _last_railbridge_type; break;
 		default: break; // water ways and air routes don't have bridge types
 	}
-	if (_ctrl_pressed && CheckBridge_Stuff(last_bridge_type, bridge_len)) {
+	if (_ctrl_pressed && CheckBridgeAvailability(last_bridge_type, bridge_len).Succeeded()) {
 		DoCommandP(end, start, type | last_bridge_type, CMD_BUILD_BRIDGE | CMD_MSG(STR_ERROR_CAN_T_BUILD_BRIDGE_HERE), CcBuildBridge);
 		return;
 	}
@@ -396,7 +396,7 @@ void ShowBuildBridgeWindow(TileIndex start, TileIndex end, TransportType transpo
 
 		/* loop for all bridgetypes */
 		for (BridgeType brd_type = 0; brd_type != MAX_BRIDGES; brd_type++) {
-			if (CheckBridge_Stuff(brd_type, bridge_len)) {
+			if (CheckBridgeAvailability(brd_type, bridge_len).Succeeded()) {
 				/* bridge is accepted, add to list */
 				BuildBridgeData *item = bl->Append();
 				item->index = brd_type;

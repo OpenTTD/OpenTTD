@@ -218,7 +218,7 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 
 		/* Company info */
 		case 0x45: {
-			byte colours;
+			byte colours = 0;
 			bool is_ai = false;
 
 			const Company *c = Company::GetIfValid(industry->founder);
@@ -227,8 +227,6 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 
 				is_ai = c->is_ai;
 				colours = l->colour1 + l->colour2 * 16;
-			} else {
-				colours = GB(Random(), 0, 8);
 			}
 
 			return industry->founder | (is_ai ? 0x10000 : 0) | (colours << 24);
