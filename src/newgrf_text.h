@@ -28,7 +28,7 @@ void StopTextRefStackUsage();
 void SwitchToNormalRefStack();
 void SwitchToErrorRefStack();
 void RewindTextRefStack();
-uint RemapNewGRFStringControlCode(uint scc, char **buff, const char **str, int64 *argv);
+uint RemapNewGRFStringControlCode(uint scc, char *buf_start, char **buff, const char **str, int64 *argv);
 
 StringID TTDPStringIDToOTTDStringIDMapping(StringID string);
 

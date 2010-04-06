@@ -554,11 +554,12 @@ static char *FormatString(char *buff, const char *str, int64 *argv, uint casei, 
 	WChar b;
 	int64 *argv_orig = argv;
 	uint modifier = 0;
+	char *buf_start = buff;
 
 	while ((b = Utf8Consume(&str)) != '\0') {
 		if (SCC_NEWGRF_FIRST <= b && b <= SCC_NEWGRF_LAST) {
 			/* We need to pass some stuff as it might be modified; oh boy. */
-			b = RemapNewGRFStringControlCode(b, &buff, &str, argv);
+			b = RemapNewGRFStringControlCode(b, buf_start, &buff, &str, argv);
 			if (b == 0) continue;
 		}
 

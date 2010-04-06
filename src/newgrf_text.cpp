@@ -636,7 +636,7 @@ void RewindTextRefStack()
  * @param argv  the OpenTTD stack of values
  * @return the string control code to "execute" now
  */
-uint RemapNewGRFStringControlCode(uint scc, char **buff, const char **str, int64 *argv)
+uint RemapNewGRFStringControlCode(uint scc, char *buf_start, char **buff, const char **str, int64 *argv)
 {
 	if (_newgrf_textrefstack->used) {
 		switch (scc) {
@@ -663,7 +663,7 @@ uint RemapNewGRFStringControlCode(uint scc, char **buff, const char **str, int64
 
 			case SCC_NEWGRF_ROTATE_TOP_4_WORDS:   _newgrf_textrefstack->RotateTop4Words(); break;
 			case SCC_NEWGRF_PUSH_WORD:            _newgrf_textrefstack->PushWord(Utf8Consume(str)); break;
-			case SCC_NEWGRF_UNPRINT:              *buff -= Utf8Consume(str); break;
+			case SCC_NEWGRF_UNPRINT:              *buff = max(*buff - Utf8Consume(str), buf_start); break;
 
 			case SCC_NEWGRF_PRINT_STRING_ID:
 				*argv = TTDPStringIDToOTTDStringIDMapping(_newgrf_textrefstack->PopUnsignedWord());
