@@ -523,6 +523,10 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Firmenwe
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Frachtbeförderungspreise
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Tage unterwegs
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Zahlung für 10 gelieferte Einheiten (oder 10.000 Liter) Fracht über eine Strecke von 20 Feldern
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}Alle auswählen
+STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT}{BLACK}Alle abwählen
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Zeige alle Frachtarten im Frachtraten-Diagramm an
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Zeige keine Fracht im Frachtraten-Diagramm an.
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Diagrammschalter für Frachttyp ein/aus
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 
@@ -3225,6 +3229,14 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}KI Einst
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Einstellungen der KI ändern
 STR_AI_DEBUG_RELOAD                                             :{BLACK}KI erneut laden
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Stoppe die KI, lade das Script neu und starte de KI erneut
+STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}An/Ausschalten des Unterbrechens, wenn eine KI Log-Nachricht dem Unterbrechungs-Text entspricht
+STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Unterbrechung bei:
+STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Unterbrechung an
+STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Wenn eine KI Log-Nachricht auf diesen Text paßt, wird das Spiel pausiert.
+STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Passender Fall
+STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Für den Vergleich der KI Log-Nachrichten mit dem Unterbrechungs-Text den passenden Fall umschalten.
+STR_AI_DEBUG_CONTINUE                                           :{BLACK}Fortfahren
+STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Pause aufheben und die KI weiter ausführen
 
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD wurde ohne KI-Unterstützung kompiliert...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... keine KI verfügbar!
@@ -3528,6 +3540,7 @@ STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Brücken
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Die Brücke ist zu niedrig für diese Umgebung
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Anfang und Ende müssen auf einer Linie liegen
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... Brücke muss an beiden Seiten auf Land enden
+STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... Brücke zu lang
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Tunnel kann hier nicht gebaut werden...

@@ -522,6 +522,8 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Firmaver
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Betalingstakst for varer
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Dager i transport
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Betaling for levering av ti vareenheter (eller 10,000 liter) over en distanse på 20 ruter
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}Slå på alle
+STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT}{BLACK}Slå av alle
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Vis/skjul graf for en bestemt varetype
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 
@@ -3224,6 +3226,8 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}AI-innst
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Endre AI-innstillinger
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Last inn AI på nytt
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Slå av AI, last skript på nytt, og start AI på nytt
+STR_AI_DEBUG_CONTINUE                                           :{BLACK}Fortsett
+STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Slå av pause og fortsett AI-en
 
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD er bygget uten støtte for AI...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... Ingen AIer tilgjengelige!
@@ -3527,6 +3531,7 @@ STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Broender
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Broen er for lav for terrenget
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Start og slutt må være på linje
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... broens ender må være på land
+STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... broen er for lang
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Kan ikke bygge tunnel her...

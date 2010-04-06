@@ -522,6 +522,10 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Bedrijfs
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Vrachtprijzen
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Dagen onderweg
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Betaling voor het leveren van 10 eenheden (of 10,000 liter) aan vracht over een afstand van 20 vakjes
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}Alles aan
+STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT}{BLACK}Alles uit
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Toon alle vrachtsoorten op de vrachtvergoedingen grafiek
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Toon geen vrachtsoorten op de vrachtvergoedingen grafiek
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Schakel grafiek voor vrachttype aan/uit
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 
@@ -3224,6 +3228,14 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}AI Inste
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Wijzig de instelling van de AI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Herlaad computerspeler
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Verwijder computerspeler, herlaad het script en herstart computerspeler
+STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Schakel afbreken wanneer een AI log bericht overeenstemd met het afbreek tekst aan/uit.
+STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Afbreken op:
+STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Afbreken aan
+STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Als een AI log bericht overeenstemd met de string, dan wordt het spel gepauseerd.
+STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Hoofdlettergevoelig
+STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Schakelen tussen hoofdlettergevoeligheid vergeleken met de AI log berichten tov afbreek teken
+STR_AI_DEBUG_CONTINUE                                           :{BLACK}Verder gaan
+STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Het spel vervolgen en de AI voortzetten
 
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD is gecompileerd zonder AI ondersteuning...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... geen AIs zijn beschikbaar!
@@ -3527,6 +3539,7 @@ STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Begin va
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Brug is te laag voor dit terrein
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Begin en einde moeten op een lijn staan
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... uiteinden van brug moeten beiden op land zijn
+STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... brug te lang
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Kan hier geen tunnel bouwen...

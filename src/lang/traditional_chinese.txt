@@ -384,7 +384,7 @@ STR_GRAPH_MENU_INCOME_GRAPH                                     :收入圖表
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :運載報表
 STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :業績歷史圖表
 STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :公司市值圖表
-STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :公定運費表
+STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :貨物運費表
 ############ range ends here
 
 ############ range for company league menu starts
@@ -519,9 +519,13 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}運送�
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}公司效率指標 (最高 1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}公司價值
 
-STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}貨物運價
+STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}貨物運費表
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}運輸日數
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}將 10 單位 (或 10,000 升) 貨物運送 20 格的費用
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}全部啟用
+STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT}{BLACK}全部停用
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}於貨物運費表顯示所有類型的貨物
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}於貨物運費表隱藏所有類型的貨物
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}切換貨物圖示開關
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 
@@ -3224,6 +3228,9 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}AI 設�
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}變更 AI 設定
 STR_AI_DEBUG_RELOAD                                             :{BLACK}重新載入 AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}結束 AI、重新載入腳本、重新啟動 AI
+STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}中斷點：
+STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}開啟中斷點
+STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}當 AI 記錄訊息與此字串相符時暫停遊戲。
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}繼續
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}取消暫停並繼續 AI
 
@@ -3295,7 +3302,7 @@ STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}無法�
 STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}遊戲載入失敗{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :內部錯誤：{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :損壞的存檔 - {STRING}
-STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :存檔是由更新版的遊戲所建立
+STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :該存檔是由較新版本的遊戲所產生
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :檔案無法讀取
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :檔案無法寫入
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :資料完整性檢查失敗
@@ -3356,7 +3363,7 @@ STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}無法�
 STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}無法變更此處地形...
 STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}挖掘工作會摧毀隧道
 STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}已到海平面
-STR_ERROR_TOO_HIGH                                              :{WHITE}太高
+STR_ERROR_TOO_HIGH                                              :{WHITE}... 太高
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... 已經平了
 
 # Company related errors
@@ -3529,6 +3536,7 @@ STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}橋樑�
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}橋樑太接近地面
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}開始與結束位置必須在同一直線上
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... 橋樑的兩端應在陸地上
+STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... 橋樑過長
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}無法在此挖掘隧道...
@@ -3636,7 +3644,7 @@ STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}交通�
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}此交通工具將不停靠此車站
 
 # Sign related errors
-STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... 太多標誌了
+STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... 已有太多標誌
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}不能在這邊放置標誌...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}不能修改標誌名稱...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}無法刪除標誌...

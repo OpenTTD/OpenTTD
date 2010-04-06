@@ -523,6 +523,10 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Valor da
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Tarifas por carga
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Dias em trânsito
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Pagamento por entregar 10 unidades (ou 10 000 litros) de carga numa distância de 20 quadrados
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}Ativar tudo
+STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT}{BLACK}Desativar todos
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Apresentar todas as taxas de pagamento de cargas no gráfico
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Não apresentar as taxas de pagamento de cargas no gráfico
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Alternar exibir/ocultar gráfico para o tipo de carga
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 
@@ -3225,6 +3229,10 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}Config. 
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Mudar as config. da IA
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Recarregar IA
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Desativar a IA, recarregar o script e religar a IA
+STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Ruptura em:
+STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Ruptura em
+STR_AI_DEBUG_CONTINUE                                           :{BLACK}Continuar
+STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Despausar e continuar o AI
 
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD é feito sem suporte para IA...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... não há IAs disponíveis!
@@ -3528,6 +3536,7 @@ STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Extremid
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Ponte é muito baixa para o terreno
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Inicio e fim devem estar alinhados
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... os extremos da ponte devem estar sobre a terra
+STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... ponte muito longa
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Impossível construir túnel aqui...

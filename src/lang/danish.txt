@@ -522,6 +522,10 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Selskabs
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Lastudbetalingsrater
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Antal dage undervejs
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Betaling for at transportere 10 enheder (eller 10,000 liter) last en distance på 20 enheder.
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}Slå alt til
+STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT}{BLACK}Slå alt fra
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Vis alt fragt på fragtbetalings rate grafen
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Vis intet fragt på fragtbetalings rate grafen
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Skift grafen for denne lasttype til/fra
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 
@@ -3224,6 +3228,13 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}Computer
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Skift indstillinger for computerspilleren
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Genindlæs computerspiller
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Stop computerspilleren, genindlæs scriptet og genstart computerspilleren
+STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK} Aktiver / deaktiver breakpoint funktionen, når en AI logmeddelelsen er lig breakpoint tekststrengen
+STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Breakpiont slået til:
+STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Breakpoint slået til
+STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Når en kunstig inteligens log besked er lig denne tekststreng, vil spillet gå på standby.
+STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Match store og små bogstaver
+STR_AI_DEBUG_CONTINUE                                           :{BLACK}Fortsæt
+STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Sæt spillet i gang, og start den kunstige intelligens igen
 
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD er kompileret uden understøttelse for kunstig intelligens...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... ingen kunstig intelligens er tilgængeligt!
@@ -3527,6 +3538,7 @@ STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Brohoved
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Broen er for lav til terrænet
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Start- og slutposition skal være på linje
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... begge ender af en bro skal være på land
+STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... broen er for lang
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Kan ikke bygge en tunnel her...

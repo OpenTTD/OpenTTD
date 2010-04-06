@@ -564,8 +564,8 @@ STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}总表�
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}上一年盈利的车船总数；包括火车、汽车、船只和飞机
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}最近仍然使用的车站组件数量。车站的每个组件（火车站、公交站、机场）即使是连接成为一个车站，也会被独立计数。
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}单一运输工具最低年利润（只计算使用两年以上的车辆、船只和飞机）
-STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}在过去 12 个月中{}利润最少的月份的现金收入
-STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}在过去 12 个月中{}利润最多的月份的现金收入
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}在过去 12 个季度中{}利润最少的季度的现金收入
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}在过去 12 个季度中{}利润最多的季度的现金收入
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}在过去 4 个季度中运输的货物总数
 STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}在上一个季度中运输的货物种类数
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}银行中存款的数量
@@ -688,7 +688,7 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLAC
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}雪地
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}切换是否显示城镇名称
-STR_SMALLMAP_CENTER                                             :{BLACK}把地图显示的中心点对准屏幕中心位置
+STR_SMALLMAP_CENTER                                             :{BLACK}把当前位置在地图中心点显示
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}全部禁用
@@ -1459,7 +1459,7 @@ STR_FACE_FACECODE_SET                                           :{WHITE}新编�
 STR_FACE_FACECODE_ERR                                           :{WHITE}编号必须在 0 ~ 4,294,967,295 范围内!
 STR_FACE_SAVE                                                   :{BLACK}储存头像
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}储存喜好的头像
-STR_FACE_SAVE_DONE                                              :{WHITE}该头像已被储存至 OpenTTD 配置文件中
+STR_FACE_SAVE_DONE                                              :{WHITE}该头像将作为你的喜好储存至 OpenTTD 配置文件中
 STR_FACE_EUROPEAN                                               :{BLACK}欧洲人
 STR_FACE_SELECT_EUROPEAN                                        :{BLACK}使用欧洲人面孔
 STR_FACE_AFRICAN                                                :{BLACK}非洲人
@@ -1797,7 +1797,7 @@ STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}您已�
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}此依存组件已被选择下载。
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}您已经下载过该扩展包
 STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}该扩展包无法识别，OpenTTD无法下载该扩展包
-STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}该扩展包将会影响到当前使用的 {STRING}
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}该扩展包将会替换到当前使用的 {STRING}
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}名称: {WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}版本: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}描述: {WHITE}{STRING}
@@ -1910,13 +1910,13 @@ STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}信号�
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}标准信号（悬臂）{}信号灯是多列车铁路系统的必备设施
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}入口信号（悬臂）{}在下一轨道区间上{}当至少有一个出口信号是绿色时{}此信号亮绿灯 否则亮红灯
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}出口信号（悬臂）{}运作等同与普通信号{}但是对于触发入口及复合信号灯{}来说是必要的
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}复合信号（悬臂）{}复合信号灯可完全担当{}入口信号灯和出口信号灯的功能{}并可建立大的树状信号灯系统
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}复合信号（悬臂）{}复合信号灯可完全担当{}入口信号灯和出口信号灯的功能{}并可建立树状预警信号灯系统
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}双向高级信号（悬臂）{}高级信号允许列车在一个信号区间内{}预留一条到安全停止位的路径{}因此高级信号可以允许一列以上列车{}同时进入和通过一个信号区间
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}单向高级信号（悬臂）{}高级信号允许列车在一个信号区间内{}预留一条到安全停止位的路径{}因此高级信号可以允许一列以上列车{}同时进入和通过一个信号区间
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}标准信号（电子）{}信号灯是多列车铁路系统的必备设施
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}入口信号（电子）{}在下一轨道区间上{}当至少有一个出口信号是绿色时{}此信号亮绿灯 否则亮红灯
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}出口信号（电子）{}运作等同与普通信号{}但是对于触发入口及复合信号灯{}来说是必要的
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}复合信号（电子）{}复合信号灯可完全担当{}入口信号灯和出口信号灯的功能{}并可建立大的树状信号灯系统
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}复合信号（电子）{}复合信号灯可完全担当{}入口信号灯和出口信号灯的功能{}并可建立树状预警信号灯系统
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}双向高级信号（电子）{}高级信号允许列车在一个信号区间内{}预留一条到安全停止位的路径{}因此高级信号可以允许一列以上列车{}同时进入和通过一个信号区间
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}单向高级信号（电子）{}高级信号允许列车在一个信号区间内{}预留一条到安全停止位的路径{}因此高级信号可以允许一列以上列车{}同时进入和通过一个信号区间
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}信号灯转换工具{}当此按钮按下时再选择信号灯种类{}就可以转换信号灯为选择的种类{}CTRL+点击{}可以把现有信号灯在电子和旗帜间转换
@@ -1927,7 +1927,7 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}增加�
 # Bridge selection window
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}选择铁路桥
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}选择公路桥梁
-STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}选择桥梁 - 点击喜欢的桥梁即可建设
+STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}选择桥梁 - 点击选择喜欢的桥梁进行建设
 STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING}，{} {VELOCITY} {WHITE}{CURRENCY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :钢制悬索
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :钢制桁桥
@@ -2054,7 +2054,7 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}你确�
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}生成城镇
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}新建城镇
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}在指定位置设置一个新的城镇
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}在指定位置建设新的城镇
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}随机城镇
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}随机新增一个城镇
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}大量随机城镇
@@ -2102,7 +2102,7 @@ STR_LAND_AREA_INFORMATION_OWNER_N_A                             :无
 STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}产权所属：{LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}道路所属：{LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}有轨电车道路所属：{LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}铁路所属：{LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}铁路归属：{LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}地方政府：{LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :没有
 STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}坐标： {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
@@ -2523,7 +2523,7 @@ STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}建设费用
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}购置交通工具
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}铁路运行费用
-STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}公路运行费用
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}汽车运行费用
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}航空运行费用
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}船舶运行费用
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}固定资产维护
@@ -2890,10 +2890,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}显示�
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}显示船只的详情
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}显示飞机的详情
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}当前列车状态{}点击可以 启动/停止 列车
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}当前车辆的状态{}单击这里可以 停止/启动 车辆
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}船只当前的状态{}点击可以 启动/停止 船只
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}飞机当前的状态{}点击可以 启动/停止 已降落的飞机
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}当前列车状态{}点击可以 启动/停止 列车。Ctrl+点击切换至目的地。
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}当前车辆的任务{}单击这里可以 停止/启动 车辆。Ctrl+点击切换至目的地。
+STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}当前船只的任务{}点击可以 启动/停止 船只。Ctrl+点击切换至目的地。
+STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}飞机当前的状态{}点击可以 停止/启动 飞机。 Ctrl+点击 切换至目的地
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}装载/卸货
@@ -4090,3 +4090,4 @@ STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
+

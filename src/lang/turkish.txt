@@ -567,10 +567,10 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Para:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Kredi:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Toplam:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Araç sayısı; araba, tren uçak ve gemiler dahil
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}İstasyon parçaları. Tek bir istasyon halinde olsa bile istasyonun her parçasi ayri olarak sayılir (ör: tren istasyonu, otobüs durağı, havalimanı)
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Geçen yıl kar eden araç sayısı. Araba, tren, uçak ve gemileri kapsar
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Yakın zamanda hizmet almış istasyon parçaları. Tek bir istasyon halinde olsa bile istasyonun her parçası ayrı olarak sayılır (ör: tren istasyonu, otobüs durağı, havalimanı)
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}En az gelirli aracın kârı (Sadece 2 yıldan yaşlı araçlar için)
-STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Son 12 çeyrekte en az kârlı aydaki gelir
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Son 12 çeyrek içindeki en az kârlı çeyrekteki gelir
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Son 12 çeyreğin en kârlı olanında kazanılan para
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Son 4 çeyrekte taşınan kargo miktar
 STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Son çeyrekte taşınan farkli kargo türleri
@@ -754,7 +754,7 @@ STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}Trafik kazasi!{}Trenle çarpisan aracın soförü feci şekilde can verdi
 STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIGFONT}{BLACK}Trafik kazasi!{}{COMMA} kişi patlamadan kurtulamadı
 STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK}Uçak Kazasi!{}{COMMA} ölü var - {STATION}
-STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}Uçak Kazasi!{}Benzin yetmedi, {COMMA} kisi öldü!
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}Uçak Kazası!{}Uçağın havada yakıtı bitti, {COMMA} kişi hayatını kaybetti
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIGFONT}{BLACK}Zeplin düştü - {STATION}!
 STR_NEWS_DISASTER_SMALL_UFO                                     :{BIGFONT}{BLACK}UFO'yla çarpışan araba parçalandı!
