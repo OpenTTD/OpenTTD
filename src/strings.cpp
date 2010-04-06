@@ -233,9 +233,9 @@ static char *FormatZerofillNumber(char *buff, int64 number, int64 count, const c
 	return FormatNumber(buff, number, last, "", 20 - count);
 }
 
-static char *FormatHexNumber(char *buff, int64 number, const char *last)
+static char *FormatHexNumber(char *buff, uint64 number, const char *last)
 {
-	return buff + seprintf(buff, last, "0x%x", (uint32)number);
+	return buff + seprintf(buff, last, "0x" OTTD_PRINTFHEX64, number);
 }
 
 /**
@@ -859,7 +859,7 @@ static char *FormatString(char *buff, const char *str, int64 *argv, uint casei, 
 			} break;
 
 			case SCC_HEX: // {HEX}
-				buff = FormatHexNumber(buff, GetInt64(&argv), last);
+				buff = FormatHexNumber(buff, (uint64)GetInt64(&argv), last);
 				break;
 
 			case SCC_BYTES: // {BYTES}

@@ -291,6 +291,9 @@ char *TranslateTTDPatchCodes(uint32 grfid, const char *str)
 					case 8:
 						d += Utf8Encode(d, SCC_NEWGRF_PRINT_HEX_DWORD);
 						break;
+					case 0x0B:
+						d += Utf8Encode(d, SCC_NEWGRF_PRINT_HEX_QWORD);
+						break;
 
 					default:
 						grfmsg(1, "missing handler for extended format code");
@@ -650,6 +653,7 @@ uint RemapNewGRFStringControlCode(uint scc, char *buf_start, char **buff, const 
 
 			case SCC_NEWGRF_PRINT_HEX_BYTE:       *argv = _newgrf_textrefstack->PopUnsignedByte();  break;
 			case SCC_NEWGRF_PRINT_HEX_DWORD:      *argv = _newgrf_textrefstack->PopUnsignedDWord(); break;
+			case SCC_NEWGRF_PRINT_HEX_QWORD:      *argv = _newgrf_textrefstack->PopSignedQWord(); break;
 
 			case SCC_NEWGRF_PRINT_HEX_WORD:
 			case SCC_NEWGRF_PRINT_WORD_SPEED:
@@ -682,6 +686,7 @@ uint RemapNewGRFStringControlCode(uint scc, char *buf_start, char **buff, const 
 		case SCC_NEWGRF_PRINT_HEX_BYTE:
 		case SCC_NEWGRF_PRINT_HEX_WORD:
 		case SCC_NEWGRF_PRINT_HEX_DWORD:
+		case SCC_NEWGRF_PRINT_HEX_QWORD:
 			return SCC_HEX;
 
 		case SCC_NEWGRF_PRINT_DWORD_CURRENCY:
