@@ -919,9 +919,6 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 				_legend_excluded_cargo = 0;
 				this->excluded_data = 0;
 				this->UpdateLoweredWidgets();
-				/* Toggle appeareance indicating the choice. */
-				this->LowerWidget(CPW_ENABLE_CARGOS);
-				this->RaiseWidget(CPW_DISABLE_CARGOS);
 				this->SetDirty();
 				break;
 
@@ -935,9 +932,6 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 					i++;
 				}
 				this->UpdateLoweredWidgets();
-				/* Toggle appeareance indicating the choice. */
-				this->LowerWidget(CPW_DISABLE_CARGOS);
-				this->RaiseWidget(CPW_ENABLE_CARGOS);
 				this->SetDirty();
 			} break;
 
@@ -947,9 +941,6 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 					ToggleBit(_legend_excluded_cargo, _sorted_cargo_specs[i]->Index());
 					this->ToggleWidgetLoweredState(widget);
 					this->UpdateExcludedData();
-					/* Raise the two "all" buttons, as we have done a specific choice. */
-					this->RaiseWidget(CPW_ENABLE_CARGOS);
-					this->RaiseWidget(CPW_DISABLE_CARGOS);
 					this->SetDirty();
 				}
 				break;
@@ -1018,8 +1009,8 @@ static const NWidgetPart _nested_cargo_payment_rates_widgets[] = {
 				NWidget(WWT_EMPTY, COLOUR_GREY, CPW_GRAPH), SetMinimalSize(495, 0), SetFill(1, 1),
 				NWidget(NWID_VERTICAL),
 					NWidget(NWID_SPACER), SetMinimalSize(0, 24), SetFill(0, 0),
-						NWidget(WWT_TEXTBTN, COLOUR_ORANGE, CPW_ENABLE_CARGOS), SetDataTip(STR_GRAPH_CARGO_ENABLE_ALL, STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL),SetFill(1, 0),
-						NWidget(WWT_TEXTBTN, COLOUR_ORANGE, CPW_DISABLE_CARGOS), SetDataTip(STR_GRAPH_CARGO_DISABLE_ALL, STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL),SetFill(1, 0),
+						NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, CPW_ENABLE_CARGOS), SetDataTip(STR_GRAPH_CARGO_ENABLE_ALL, STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL), SetFill(1, 0),
+						NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, CPW_DISABLE_CARGOS), SetDataTip(STR_GRAPH_CARGO_DISABLE_ALL, STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL), SetFill(1, 0),
 						NWidget(NWID_SPACER), SetMinimalSize(0, 4), SetFill(0, 0),
 						NWidgetFunction(MakeCargoButtons),
 					NWidget(NWID_SPACER), SetMinimalSize(0, 24), SetFill(0, 1),
@@ -1038,7 +1029,7 @@ static const NWidgetPart _nested_cargo_payment_rates_widgets[] = {
 static const WindowDesc _cargo_payment_rates_desc(
 	WDP_AUTO, 0, 0,
 	WC_PAYMENT_RATES, WC_NONE,
-	0,
+	WDF_UNCLICK_BUTTONS,
 	_nested_cargo_payment_rates_widgets, lengthof(_nested_cargo_payment_rates_widgets)
 );
 
