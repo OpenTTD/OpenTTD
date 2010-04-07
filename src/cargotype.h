@@ -134,6 +134,7 @@ CargoID GetCargoIDByBitnum(uint8 bitnum);
 void InitializeSortedCargoSpecs();
 extern const CargoSpec *_sorted_cargo_specs[NUM_CARGO];
 extern uint8 _sorted_cargo_specs_size;
+extern uint8 _sorted_standard_cargo_specs_size;
 
 /** Does cargo \a c have cargo class \a cc?
  * @param c  Cargo type.
@@ -150,5 +151,7 @@ static inline bool IsCargoInClass(CargoID c, CargoClass cc)
 #define FOR_ALL_CARGOSPECS(var) FOR_ALL_CARGOSPECS_FROM(var, 0)
 
 #define FOR_ALL_SORTED_CARGOSPECS(var) for (uint8 index = 0; var = _sorted_cargo_specs[index], index < _sorted_cargo_specs_size; index++)
+
+#define FOR_ALL_SORTED_STANDARD_CARGOSPECS(var) for (uint8 index = 0; var = _sorted_cargo_specs[index], index < _sorted_standard_cargo_specs_size; index++)
 
 #endif /* CARGOTYPE_H */

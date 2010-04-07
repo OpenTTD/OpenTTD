@@ -851,7 +851,7 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 
 		int i = 0;
 		const CargoSpec *cs;
-		FOR_ALL_SORTED_CARGOSPECS(cs) {
+		FOR_ALL_SORTED_STANDARD_CARGOSPECS(cs) {
 			if (HasBit(_legend_excluded_cargo, cs->Index())) SetBit(this->excluded_data, i);
 			i++;
 		}
@@ -859,7 +859,7 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 
 	void UpdateLoweredWidgets()
 	{
-		for (int i = 0; i < _sorted_cargo_specs_size; i++) {
+		for (int i = 0; i < _sorted_standard_cargo_specs_size; i++) {
 			this->SetWidgetLoweredState(CPW_CARGO_FIRST + i, !HasBit(this->excluded_data, i));
 		}
 	}
@@ -924,7 +924,7 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 				/* Add all cargos to the excluded lists. */
 				int i = 0;
 				const CargoSpec *cs;
-				FOR_ALL_SORTED_CARGOSPECS(cs) {
+				FOR_ALL_SORTED_STANDARD_CARGOSPECS(cs) {
 					SetBit(_legend_excluded_cargo, cs->Index());
 					SetBit(this->excluded_data, i);
 					i++;
@@ -962,7 +962,7 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 
 		int i = 0;
 		const CargoSpec *cs;
-		FOR_ALL_SORTED_CARGOSPECS(cs) {
+		FOR_ALL_SORTED_STANDARD_CARGOSPECS(cs) {
 			this->colours[i] = cs->legend_colour;
 			for (uint j = 0; j != 20; j++) {
 				this->cost[i][j] = GetTransportedGoodsIncome(10, 20, j * 4 + 4, cs->Index());
@@ -978,14 +978,14 @@ static NWidgetBase *MakeCargoButtons(int *biggest_index)
 {
 	NWidgetVertical *ver = new NWidgetVertical;
 
-	for (int i = 0; i < _sorted_cargo_specs_size; i++) {
+	for (int i = 0; i < _sorted_standard_cargo_specs_size; i++) {
 		NWidgetBackground *leaf = new NWidgetBackground(WWT_PANEL, COLOUR_ORANGE, CPW_CARGO_FIRST + i, NULL);
 		leaf->tool_tip = STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO;
 		leaf->SetFill(1, 0);
 		leaf->SetLowered(true);
 		ver->Add(leaf);
 	}
-	*biggest_index = CPW_CARGO_FIRST + _sorted_cargo_specs_size - 1;
+	*biggest_index = CPW_CARGO_FIRST + _sorted_standard_cargo_specs_size - 1;
 	return ver;
 }
 

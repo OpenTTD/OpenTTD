@@ -854,7 +854,7 @@ struct BuildVehicleWindow : Window {
 
 		/* Collect available cargo types for filtering. */
 		const CargoSpec *cs;
-		FOR_ALL_SORTED_CARGOSPECS(cs) {
+		FOR_ALL_SORTED_STANDARD_CARGOSPECS(cs) {
 			this->cargo_filter[filter_items] = cs->Index();
 			this->cargo_filter_texts[filter_items] = cs->name;
 			filter_items++;

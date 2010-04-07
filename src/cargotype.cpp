@@ -116,7 +116,9 @@ SpriteID CargoSpec::GetCargoIcon() const
 }
 
 const CargoSpec *_sorted_cargo_specs[NUM_CARGO]; ///< Cargo specifications sorted alphabetically by name.
-uint8 _sorted_cargo_specs_size;                  ///< Number of cargo specifications stored at the _sorted_cargo_specs array.
+uint8 _sorted_cargo_specs_size;                  ///< Number of cargo specifications stored at the _sorted_cargo_specs array (including special cargos).
+uint8 _sorted_standard_cargo_specs_size;         ///< Number of standard cargo specifications stored at the _sorted_cargo_specs array.
+
 
 /** Sort cargo specifications by their name. */
 static int CDECL CargoSpecNameSorter(const CargoSpec * const *a, const CargoSpec * const *b)
@@ -140,7 +142,10 @@ static int CDECL CargoSpecClassSorter(const CargoSpec * const *a, const CargoSpe
 	if (res == 0) {
 		res = ((*b)->classes & CC_MAIL) - ((*a)->classes & CC_MAIL);
 		if (res == 0) {
-			return CargoSpecNameSorter(a, b);
+			res = ((*a)->classes & CC_SPECIAL) - ((*b)->classes & CC_SPECIAL);
+			if (res == 0) {
+				return CargoSpecNameSorter(a, b);
+			}
 		}
 	}
 
@@ -151,15 +156,20 @@ static int CDECL CargoSpecClassSorter(const CargoSpec * const *a, const CargoSpe
 void InitializeSortedCargoSpecs()
 {
 	_sorted_cargo_specs_size = 0;
-	CargoSpec *cargo;
+	const CargoSpec *cargo;
 	/* Add each cargo spec to the list. */
 	FOR_ALL_CARGOSPECS(cargo) {
-		if ((cargo->classes & CC_SPECIAL) != 0) continue; // Exclude fake cargo types.
 		_sorted_cargo_specs[_sorted_cargo_specs_size] = cargo;
 		_sorted_cargo_specs_size++;
 	}
 
 	/* Sort cargo specifications by cargo class and name. */
 	QSortT(_sorted_cargo_specs, _sorted_cargo_specs_size, &CargoSpecClassSorter);
+
+	_sorted_standard_cargo_specs_size = 0;
+	FOR_ALL_SORTED_CARGOSPECS(cargo) {
+		if (cargo->classes & CC_SPECIAL) break;
+		_sorted_standard_cargo_specs_size++;
+	}
 }
 
