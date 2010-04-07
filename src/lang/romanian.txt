@@ -522,6 +522,10 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Valorile
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Preţurile transportului de călători şi mărfuri
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Zile în tranzit
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Plata pentru livrarea a 10 unităţi (sau 10.000 de litri) de marfă pe o distanţă de 20 de pătrăţele
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}Activează tot
+STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT}{BLACK}Dezactivează tot
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Afişează toate cargo-urile în graficul de plăţi
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Nu afişa nici un cargo în graficul de plăţi
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Comutator pentru afişarea graficului de marfă
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 
@@ -3224,6 +3228,14 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}Setări 
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Schimbă setările IA
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Reîncarcă IA
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Opreşte IA, raîncarcă scriptul, apoi reporneşte IA
+STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Activează/dezactivează suspendarea când un mesaj de la IA se potriveşte cu string-ul de oprire
+STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Opreşte la:
+STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Opreşte la
+STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Când un mesaj al modului de IA se potriveşte cu acest string, se suspendă jocul.
+STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Potrivire majuscule/minuscule
+STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Comuntă potrivirea pe majuscule/minuscule când se compară fişierele log de la IA cu string-ul de oprire
+STR_AI_DEBUG_CONTINUE                                           :{BLACK}Continuă
+STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Continuă execuţia modulului de Inteligenţă Artificială
 
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD este compilat fără suport de Inteligenţă Artificială...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... nu este disponibil nici un modul de Inteligenţă artificială!
@@ -3527,6 +3539,7 @@ STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Capetele
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Podul este prea jos pentru terenul corespunzator
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Cele două capete trebuie să se situeze în linie
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... ambele capete ale podului trebuie să se situeze pe uscat
+STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... podul este prea lung
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Nu se poate construi tunel aici...

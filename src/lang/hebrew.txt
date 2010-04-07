@@ -536,6 +536,10 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}שווי
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}שיעורי התשלום עבור הובלת מטענים
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}משך ההובלה בימים
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}תשלום עבור הובלת 10 יחידות (או 10,000 ליטר) למרחק 20 משבצות
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}אפשר הכל
+STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT}{BLACK}בטל הכל
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}הצג את כל המטענים בגרף שיעורי תשלום למטען
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}הצג ללא מטענים בגרף שיעורי תשלום למטען
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}הצג/הסתר סוג מטען
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 
@@ -3238,6 +3242,14 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}הגדר
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}שנה את הגדרות הבינה המלאכותית
 STR_AI_DEBUG_RELOAD                                             :{BLACK}טען מחדש בינה מלאכותית
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK} הטען מחדש את הסקריפט ואתחל בינה מלאכותית
+STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}אפשר/בטל עצירה כאשר הודעת לוג של AI מתאימה למחרוזת העצירה
+STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}עצירה פועלת:
+STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}עצירה פועלת
+STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}כאשר הודעת לוג של ה-AI מתאימה למחרוזת זו, המשחק יופסק.
+STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}התאם רישיות
+STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}בחר התאמת רישיות בהשוואת הודעות לוג של AI כנגד מחרוזת העצירה
+STR_AI_DEBUG_CONTINUE                                           :{BLACK}המשך
+STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}בטל הפסקה והמשך את הבינה המלאכותית
 
 STR_ERROR_NO_AI                                                 :{WHITE}המשחק נבנה ללא תמיכה בבינה מלאכותית...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... אין בינות מלאכותיות זמינות!
@@ -3541,6 +3553,7 @@ STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}צדדי
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}גשר נמוך מידי עבור השטח
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}התחלה וסיום חייבים להיות באותו הקו
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... קצות הגשר צריכים להיות על קרקע
+STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... גשר ארוך מידי
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}לא ניתן להקים מנהרה כאן...

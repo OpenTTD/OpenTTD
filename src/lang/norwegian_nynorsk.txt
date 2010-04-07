@@ -516,13 +516,17 @@ STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMM
 
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Graf over overskot
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Graf over inntekter
-STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Antal leverte varer
+STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Leverte einingar
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Prestasjonsvurdering av firma (maks. poeng=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Firmaverdi
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Betalingstakst for varer
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Dager i transport
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Betaling for levering av ti einingar (eller 10 000 liter) over ein distanse på 20 ruter
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}Syn valle
+STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT}{BLACK}Gøym alle
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Syn alle typar last på varebetalingsgrafen
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Syn ingen typar last på varebetalingsgrafen
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Skru av/på graf for varetypar
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 

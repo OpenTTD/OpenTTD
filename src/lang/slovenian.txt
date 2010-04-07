@@ -3270,6 +3270,7 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}Nastavit
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Spremeni nastavitve UI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Ponovno naloži UI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Uniči UI, ponovno naloži skripto in ponovno zaženi UI
+STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Vključi/izključi prelom, ko se sporočilo UI ujema z besedilom preloma
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Prelomi na:
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Prelomi na
 STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Če se sporočilo v dnevniku UI ujema z besedilom, se igra prekine.
