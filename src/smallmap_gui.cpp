@@ -1208,10 +1208,6 @@ public:
 					if (industry_pos < _smallmap_industry_count) {
 						_legend_from_industries[industry_pos].show_on_map = !_legend_from_industries[industry_pos].show_on_map;
 					}
-
-					/* Raise the two buttons "all", as we have done a specific choice */
-					this->RaiseWidget(SM_WIDGET_ENABLEINDUSTRIES);
-					this->RaiseWidget(SM_WIDGET_DISABLEINDUSTRIES);
 					this->SetDirty();
 				}
 				break;
@@ -1220,9 +1216,6 @@ public:
 				for (int i = 0; i != _smallmap_industry_count; i++) {
 					_legend_from_industries[i].show_on_map = true;
 				}
-				/* Toggle appeareance indicating the choice */
-				this->LowerWidget(SM_WIDGET_ENABLEINDUSTRIES);
-				this->RaiseWidget(SM_WIDGET_DISABLEINDUSTRIES);
 				this->SetDirty();
 				break;
 
@@ -1230,9 +1223,6 @@ public:
 				for (int i = 0; i != _smallmap_industry_count; i++) {
 					_legend_from_industries[i].show_on_map = false;
 				}
-				/* Toggle appeareance indicating the choice */
-				this->RaiseWidget(SM_WIDGET_ENABLEINDUSTRIES);
-				this->LowerWidget(SM_WIDGET_DISABLEINDUSTRIES);
 				this->SetDirty();
 				break;
 
@@ -1468,8 +1458,8 @@ static const NWidgetPart _nested_smallmap_widgets[] = {
 			NWidget(NWID_HORIZONTAL),
 				NWidget(NWID_SELECTION, INVALID_COLOUR, SM_WIDGET_SELECTINDUSTRIES),
 					NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
-						NWidget(WWT_TEXTBTN, COLOUR_BROWN, SM_WIDGET_ENABLEINDUSTRIES), SetDataTip(STR_SMALLMAP_ENABLE_ALL, STR_SMALLMAP_TOOLTIP_ENABLE_ALL),
-						NWidget(WWT_TEXTBTN, COLOUR_BROWN, SM_WIDGET_DISABLEINDUSTRIES), SetDataTip(STR_SMALLMAP_DISABLE_ALL, STR_SMALLMAP_TOOLTIP_DISABLE_ALL),
+						NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, SM_WIDGET_ENABLEINDUSTRIES), SetDataTip(STR_SMALLMAP_ENABLE_ALL, STR_SMALLMAP_TOOLTIP_ENABLE_ALL),
+						NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, SM_WIDGET_DISABLEINDUSTRIES), SetDataTip(STR_SMALLMAP_DISABLE_ALL, STR_SMALLMAP_TOOLTIP_DISABLE_ALL),
 						NWidget(WWT_TEXTBTN, COLOUR_BROWN, SM_WIDGET_SHOW_HEIGHT), SetDataTip(STR_SMALLMAP_SHOW_HEIGHT, STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT),
 					EndContainer(),
 					NWidget(NWID_SPACER), SetFill(1, 1),
