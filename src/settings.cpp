@@ -158,18 +158,37 @@ static uint32 LookupManyOfMany(const char *many, const char *str)
  * @return returns the number of items found, or -1 on an error */
 int ParseIntList(const char *p, int *items, int maxitems)
 {
-	int n = 0, v;
-	char *end;
+	int n = 0; // number of items read so far
+	bool comma = false; // do we accept comma?
 
-	for (;;) {
-		v = strtol(p, &end, 0);
-		if (p == end || n == maxitems) return -1;
-		p = end;
-		items[n++] = v;
-		if (*p == '\0') break;
-		if (*p != ',' && *p != ' ') return -1;
-		p++;
+	while (*p != '\0') {
+		switch (*p) {
+			case ',':
+				/* Do not accept multiple commas between numbers */
+				if (!comma) return -1;
+				comma = false;
+				/* FALL THROUGH */
+			case ' ':
+				p++;
+				break;
+
+			default: {
+				if (n == maxitems) return -1; // we don't accept that many numbers
+				char *end;
+				long v = strtol(p, &end, 0);
+				if (p == end) return -1; // invalid character (not a number)
+				if (sizeof(int) < sizeof(long)) v = ClampToI32(v);
+				items[n++] = v;
+				p = end; // first non-number
+				comma = true; // we accept comma now
+				break;
+			}
+		}
 	}
+
+	/* If we have read comma but no number after it, fail.
+	 * We have read comma when (n != 0) and comma is not allowed */
+	if (n != 0 && !comma) return -1;
 
 	return n;
 }
