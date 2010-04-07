@@ -2,8 +2,10 @@
 # This is a wrapper script that checks openttd's exit status and
 # displays its stderr output
 
-# Get a file to capture stderr to
-TMPFILE=`mktemp --tmpdir openttd.errout.XXXXXXXXX`
+# Get a file to capture stderr to. Use the deprecated -t option, so this
+# works on the old mktemp from the mktemp package (which has been
+# replaced by the version from the coreutils package).
+TMPFILE=`mktemp -t openttd.errout.XXXXXXXXX`
 
 if [ ! -w "$TMPFILE" ]; then
 	xmessage "Could not create temporary file for error messages. Not starting OpenTTD."

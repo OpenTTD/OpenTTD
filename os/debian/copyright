@@ -1,11 +1,6 @@
 This package was debianized by Matthijs Kooijman <matthijs@stdin.nl>
 on Wed, 15 Sep 2004 00:24:01 +0200.
 
-This package is not part of the main Debian GNU/Linux distribution, but
-uploaded to the contrib section. This is because the openttd program is
-non-functional by itself, it needs (non-free) graphical and sound
-resources from the Transport Tycoon Deluxe game to work.
-
 Upstream author: Ludvig Strigeus (ludde) and many others.
 Upstream homepage: http://www.openttd.org
 
@@ -59,3 +54,24 @@ language, which is shipped under the following license:
 
 		3. This notice may not be removed or
 		altered from any source distribution.
+
+This package contains an implementation of the md5 hash algorithm, which
+is shipped under the following license:
+
+	Copyright (C) 1999, 2000, 2002 Aladdin Enterprises.  All rights reserved.
+
+	This software is provided 'as-is', without any express or implied
+	warranty.  In no event will the authors be held liable for any damages
+	arising from the use of this software.
+
+	Permission is granted to anyone to use this software for any purpose,
+	including commercial applications, and to alter it and redistribute it
+	freely, subject to the following restrictions:
+
+	1. The origin of this software must not be misrepresented; you must not
+	   claim that you wrote the original software. If you use this software
+	   in a product, an acknowledgment in the product documentation would be
+	   appreciated but is not required.
+	2. Altered source versions must be plainly marked as such, and must not be
+	   misrepresented as being the original software.
+	3. This notice may not be removed or altered from any source distribution.
