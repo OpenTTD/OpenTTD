@@ -361,8 +361,6 @@ public:
 		for (uint i = 0; i < 5; i++) {
 			if (HasBit(this->facilities, i)) this->LowerWidget(i + SLW_TRAIN);
 		}
-		this->SetWidgetLoweredState(SLW_FACILALL, this->facilities == (FACIL_TRAIN | FACIL_TRUCK_STOP | FACIL_BUS_STOP | FACIL_AIRPORT | FACIL_DOCK));
-		this->SetWidgetLoweredState(SLW_CARGOALL, this->cargo_filter == _cargo_mask && this->include_empty);
 		this->SetWidgetLoweredState(SLW_NOCARGOWAITING, this->include_empty);
 
 		this->GetWidget<NWidgetCore>(SLW_SORTDROPBTN)->widget_data = this->sorter_names[this->stations.SortType()];
@@ -572,16 +570,14 @@ public:
 					SetBit(this->facilities, widget - SLW_TRAIN);
 					this->LowerWidget(widget);
 				}
-				this->SetWidgetLoweredState(SLW_FACILALL, this->facilities == (FACIL_TRAIN | FACIL_TRUCK_STOP | FACIL_BUS_STOP | FACIL_AIRPORT | FACIL_DOCK));
 				this->stations.ForceRebuild();
 				this->SetDirty();
 				break;
 
 			case SLW_FACILALL:
-				for (uint i = 0; i < 5; i++) {
-					this->LowerWidget(i + SLW_TRAIN);
+				for (uint i = SLW_TRAIN; i <= SLW_SHIP; i++) {
+					this->LowerWidget(i);
 				}
-				this->LowerWidget(SLW_FACILALL);
 
 				this->facilities = FACIL_TRAIN | FACIL_TRUCK_STOP | FACIL_BUS_STOP | FACIL_AIRPORT | FACIL_DOCK;
 				this->stations.ForceRebuild();
@@ -594,7 +590,6 @@ public:
 					if (cs->IsValid()) this->LowerWidget(SLW_CARGOSTART + i);
 				}
 				this->LowerWidget(SLW_NOCARGOWAITING);
-				this->LowerWidget(SLW_CARGOALL);
 
 				this->cargo_filter = _cargo_mask;
 				this->include_empty = true;
@@ -629,7 +624,6 @@ public:
 
 					this->LowerWidget(SLW_NOCARGOWAITING);
 				}
-				this->SetWidgetLoweredState(SLW_CARGOALL, this->cargo_filter == _cargo_mask && this->include_empty);
 				this->stations.ForceRebuild();
 				this->SetDirty();
 				break;
@@ -656,7 +650,6 @@ public:
 						SetBit(this->cargo_filter, cs->Index());
 						this->LowerWidget(widget);
 					}
-					this->SetWidgetLoweredState(SLW_CARGOALL, this->cargo_filter == _cargo_mask && this->include_empty);
 					this->stations.ForceRebuild();
 					this->SetDirty();
 				}
@@ -774,11 +767,11 @@ static const NWidgetPart _nested_company_stations_widgets[] = {
 		NWidget(WWT_TEXTBTN, COLOUR_GREY, SLW_BUS), SetMinimalSize(14, 11), SetDataTip(STR_BUS, STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE), SetFill(0, 1),
 		NWidget(WWT_TEXTBTN, COLOUR_GREY, SLW_AIRPLANE), SetMinimalSize(14, 11), SetDataTip(STR_PLANE, STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE), SetFill(0, 1),
 		NWidget(WWT_TEXTBTN, COLOUR_GREY, SLW_SHIP), SetMinimalSize(14, 11), SetDataTip(STR_SHIP, STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE), SetFill(0, 1),
-		NWidget(WWT_PANEL, COLOUR_GREY, SLW_FACILALL), SetMinimalSize(14, 11), SetDataTip(0x0, STR_STATION_LIST_SELECT_ALL_FACILITIES), SetFill(0, 1), EndContainer(),
+		NWidget(WWT_PUSHBTN, COLOUR_GREY, SLW_FACILALL), SetMinimalSize(14, 11), SetDataTip(0x0, STR_STATION_LIST_SELECT_ALL_FACILITIES), SetFill(0, 1),
 		NWidget(WWT_PANEL, COLOUR_GREY), SetMinimalSize(5, 11), SetFill(0, 1), EndContainer(),
 		NWidgetFunction(CargoWidgets),
 		NWidget(WWT_PANEL, COLOUR_GREY, SLW_NOCARGOWAITING), SetMinimalSize(14, 11), SetDataTip(0x0, STR_STATION_LIST_NO_WAITING_CARGO), SetFill(0, 1), EndContainer(),
-		NWidget(WWT_PANEL, COLOUR_GREY, SLW_CARGOALL), SetMinimalSize(14, 11), SetDataTip(0x0, STR_STATION_LIST_SELECT_ALL_TYPES), SetFill(0, 1), EndContainer(),
+		NWidget(WWT_PUSHBTN, COLOUR_GREY, SLW_CARGOALL), SetMinimalSize(14, 11), SetDataTip(0x0, STR_STATION_LIST_SELECT_ALL_TYPES), SetFill(0, 1),
 		NWidget(WWT_PANEL, COLOUR_GREY), SetDataTip(0x0, STR_NULL), SetResize(1, 0), SetFill(1, 1), EndContainer(),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
@@ -798,7 +791,7 @@ static const NWidgetPart _nested_company_stations_widgets[] = {
 static const WindowDesc _company_stations_desc(
 	WDP_AUTO, 358, 162,
 	WC_STATION_LIST, WC_NONE,
-	0,
+	WDF_UNCLICK_BUTTONS,
 	_nested_company_stations_widgets, lengthof(_nested_company_stations_widgets)
 );
 
