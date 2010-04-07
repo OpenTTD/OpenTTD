@@ -49,30 +49,6 @@ void ShowNewGRFError()
 	}
 }
 
-/** Parse an integerlist string and set each found value
- * @param p the string to be parsed. Each element in the list is seperated by a
- * comma or a space character
- * @param items pointer to the integerlist-array that will be filled with values
- * @param maxitems the maximum number of elements the integerlist-array has
- * @return returns the number of items found, or -1 on an error */
-static int parse_intlist(const char *p, int *items, int maxitems)
-{
-	int n = 0, v;
-	char *end;
-
-	for (;;) {
-		while (*p == ' ' || *p == ',') p++;
-		if (*p == '\0') break;
-		v = strtol(p, &end, 0);
-		if (p == end || n == maxitems) return -1;
-		p = end;
-		items[n++] = v;
-	}
-
-	return n;
-}
-
-
 static void ShowNewGRFInfo(const GRFConfig *c, uint x, uint y, uint right, uint bottom, bool show_params)
 {
 	char buff[256];

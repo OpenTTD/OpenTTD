@@ -156,7 +156,7 @@ static uint32 lookup_manyofmany(const char *many, const char *str)
  * @param items pointer to the integerlist-array that will be filled with values
  * @param maxitems the maximum number of elements the integerlist-array has
  * @return returns the number of items found, or -1 on an error */
-static int parse_intlist(const char *p, int *items, int maxitems)
+int parse_intlist(const char *p, int *items, int maxitems)
 {
 	int n = 0, v;
 	char *end;
