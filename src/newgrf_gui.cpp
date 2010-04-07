@@ -887,9 +887,9 @@ struct NewGRFWindow : public Window {
 			case SNGRFS_SET_PARAMETERS: {
 				/* Parse our new "int list" */
 				GRFConfig *c = this->sel;
-				c->num_params = parse_intlist(str, (int*)c->param, lengthof(c->param));
+				c->num_params = ParseIntList(str, (int*)c->param, lengthof(c->param));
 
-				/* parse_intlist returns -1 on error */
+				/* ParseIntList() returns -1 on error */
 				if (c->num_params == (byte)-1) c->num_params = 0;
 
 				this->preset = -1;

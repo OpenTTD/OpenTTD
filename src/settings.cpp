@@ -98,7 +98,7 @@ static const char * const _list_group_names[] = {
  * @param one the current value of the setting for which a value needs found
  * @param onelen force calculation of the *one parameter
  * @return the integer index of the full-list, or -1 if not found */
-static int lookup_oneofmany(const char *many, const char *one, size_t onelen = 0)
+static int LookupOneOfMany(const char *many, const char *one, size_t onelen = 0)
 {
 	const char *s;
 	int idx;
@@ -126,7 +126,7 @@ static int lookup_oneofmany(const char *many, const char *one, size_t onelen = 0
  * @param str the current string value of the setting, each individual
  * of seperated by a whitespace,tab or | character
  * @return the 'fully' set integer, or -1 if a set is not found */
-static uint32 lookup_manyofmany(const char *many, const char *str)
+static uint32 LookupManyOfMany(const char *many, const char *str)
 {
 	const char *s;
 	int r;
@@ -140,7 +140,7 @@ static uint32 lookup_manyofmany(const char *many, const char *str)
 		s = str;
 		while (*s != 0 && *s != ' ' && *s != '\t' && *s != '|') s++;
 
-		r = lookup_oneofmany(many, str, s - str);
+		r = LookupOneOfMany(many, str, s - str);
 		if (r == -1) return (uint32)-1;
 
 		SetBit(res, r); // value found, set it
@@ -156,7 +156,7 @@ static uint32 lookup_manyofmany(const char *many, const char *str)
  * @param items pointer to the integerlist-array that will be filled with values
  * @param maxitems the maximum number of elements the integerlist-array has
  * @return returns the number of items found, or -1 on an error */
-int parse_intlist(const char *p, int *items, int maxitems)
+int ParseIntList(const char *p, int *items, int maxitems)
 {
 	int n = 0, v;
 	char *end;
@@ -180,7 +180,7 @@ int parse_intlist(const char *p, int *items, int maxitems)
  * @param nelems the number of elements the array holds. Maximum is 64 elements
  * @param type the type of elements the array holds (eg INT8, UINT16, etc.)
  * @return return true on success and false on error */
-static bool load_intlist(const char *str, void *array, int nelems, VarType type)
+static bool LoadIntList(const char *str, void *array, int nelems, VarType type)
 {
 	int items[64];
 	int i, nitems;
@@ -189,7 +189,7 @@ static bool load_intlist(const char *str, void *array, int nelems, VarType type)
 		memset(items, 0, sizeof(items));
 		nitems = nelems;
 	} else {
-		nitems = parse_intlist(str, items, lengthof(items));
+		nitems = ParseIntList(str, items, lengthof(items));
 		if (nitems != nelems) return false;
 	}
 
@@ -220,7 +220,7 @@ static bool load_intlist(const char *str, void *array, int nelems, VarType type)
  * @param array pointer to the integer-arrays that is read from
  * @param nelems the number of elements the array holds.
  * @param type the type of elements the array holds (eg INT8, UINT16, etc.) */
-static void make_intlist(char *buf, const char *last, const void *array, int nelems, VarType type)
+static void MakeIntList(char *buf, const char *last, const void *array, int nelems, VarType type)
 {
 	int i, v = 0;
 	byte *p = (byte*)array;
@@ -245,7 +245,7 @@ static void make_intlist(char *buf, const char *last, const void *array, int nel
  * @param last last item to write to in the output buffer
  * @param many the full-domain string of possible values
  * @param id the value of the variable and whose string-representation must be found */
-static void make_oneofmany(char *buf, const char *last, const char *many, int id)
+static void MakeOneOfMany(char *buf, const char *last, const char *many, int id)
 {
 	int orig_id = id;
 
@@ -271,7 +271,7 @@ static void make_oneofmany(char *buf, const char *last, const char *many, int id
  * @param many the full-domain string of possible values
  * @param x the value of the variable and whose string-representation must
  *        be found in the bitmasked many string */
-static void make_manyofmany(char *buf, const char *last, const char *many, uint32 x)
+static void MakeManyOfMany(char *buf, const char *last, const char *many, uint32 x)
 {
 	const char *start;
 	int i = 0;
@@ -302,7 +302,7 @@ static void make_manyofmany(char *buf, const char *last, const char *many, uint3
  * @param desc SettingDesc struct that holds all information about the variable
  * @param orig_str input string that will be parsed based on the type of desc
  * @return return the parsed value of the setting */
-static const void *string_to_val(const SettingDescBase *desc, const char *orig_str)
+static const void *StringToVal(const SettingDescBase *desc, const char *orig_str)
 {
 	const char *str = orig_str == NULL ? "" : orig_str;
 	switch (desc->cmd) {
@@ -313,7 +313,7 @@ static const void *string_to_val(const SettingDescBase *desc, const char *orig_s
 		return (void*)val;
 	}
 	case SDT_ONEOFMANY: {
-		long r = lookup_oneofmany(desc->many, str);
+		long r = LookupOneOfMany(desc->many, str);
 		/* if the first attempt of conversion from string to the appropriate value fails,
 		 * look if we have defined a converter from old value to new value. */
 		if (r == -1 && desc->proc_cnvt != NULL) r = desc->proc_cnvt(str);
@@ -322,7 +322,7 @@ static const void *string_to_val(const SettingDescBase *desc, const char *orig_s
 		return 0;
 	}
 	case SDT_MANYOFMANY: {
-		unsigned long r = lookup_manyofmany(desc->many, str);
+		unsigned long r = LookupManyOfMany(desc->many, str);
 		if (r != (unsigned long)-1) return (void*)r;
 		ShowInfoF("ini: invalid value '%s' for '%s'", str, desc->name);
 		return 0;
@@ -400,7 +400,7 @@ static void Write_ValidateSetting(void *ptr, const SettingDesc *sd, int32 val)
  *        be given values
  * @param grpname the group of the IniFile to search in for the new values
  * @param object pointer to the object been loaded */
-static void ini_load_settings(IniFile *ini, const SettingDesc *sd, const char *grpname, void *object)
+static void IniLoadSettings(IniFile *ini, const SettingDesc *sd, const char *grpname, void *object)
 {
 	IniGroup *group;
 	IniGroup *group_def = ini->GetGroup(grpname);
@@ -438,7 +438,7 @@ static void ini_load_settings(IniFile *ini, const SettingDesc *sd, const char *g
 			if (sc != NULL) item = ini->GetGroup(s, sc - s)->GetItem(sc + 1, false);
 		}
 
-		p = (item == NULL) ? sdb->def : string_to_val(sdb, item->value);
+		p = (item == NULL) ? sdb->def : StringToVal(sdb, item->value);
 		ptr = GetVariableAddress(object, sld);
 
 		switch (sdb->cmd) {
@@ -465,7 +465,7 @@ static void ini_load_settings(IniFile *ini, const SettingDesc *sd, const char *g
 			break;
 
 		case SDT_INTLIST: {
-			if (!load_intlist((const char*)p, ptr, sld->length, GetVarMemType(sld->conv))) {
+			if (!LoadIntList((const char*)p, ptr, sld->length, GetVarMemType(sld->conv))) {
 				ShowInfoF("ini: error in array '%s'", sdb->name);
 			} else if (sd->desc.proc_cnvt != NULL) {
 				sd->desc.proc_cnvt((const char*)p);
@@ -488,7 +488,7 @@ static void ini_load_settings(IniFile *ini, const SettingDesc *sd, const char *g
  * values are reloaded when saving). If settings indeed have changed, we get
  * these and save them.
  */
-static void ini_save_settings(IniFile *ini, const SettingDesc *sd, const char *grpname, void *object)
+static void IniSaveSettings(IniFile *ini, const SettingDesc *sd, const char *grpname, void *object)
 {
 	IniGroup *group_def = NULL, *group;
 	IniItem *item;
@@ -521,7 +521,7 @@ static void ini_save_settings(IniFile *ini, const SettingDesc *sd, const char *g
 
 		if (item->value != NULL) {
 			/* check if the value is the same as the old value */
-			const void *p = string_to_val(sdb, item->value);
+			const void *p = StringToVal(sdb, item->value);
 
 			/* The main type of a variable/setting is in bytes 8-15
 			 * The subtype (what kind of numbers do we have there) is in 0-7 */
@@ -564,8 +564,8 @@ static void ini_save_settings(IniFile *ini, const SettingDesc *sd, const char *g
 			switch (sdb->cmd) {
 			case SDT_BOOLX:      strecpy(buf, (i != 0) ? "true" : "false", lastof(buf)); break;
 			case SDT_NUMX:       seprintf(buf, lastof(buf), IsSignedVarMemType(sld->conv) ? "%d" : "%u", i); break;
-			case SDT_ONEOFMANY:  make_oneofmany(buf, lastof(buf), sdb->many, i); break;
-			case SDT_MANYOFMANY: make_manyofmany(buf, lastof(buf), sdb->many, i); break;
+			case SDT_ONEOFMANY:  MakeOneOfMany(buf, lastof(buf), sdb->many, i); break;
+			case SDT_MANYOFMANY: MakeManyOfMany(buf, lastof(buf), sdb->many, i); break;
 			default: NOT_REACHED();
 			}
 		} break;
@@ -588,7 +588,7 @@ static void ini_save_settings(IniFile *ini, const SettingDesc *sd, const char *g
 			break;
 
 		case SDT_INTLIST:
-			make_intlist(buf, lastof(buf), ptr, sld->length, GetVarMemType(sld->conv));
+			MakeIntList(buf, lastof(buf), ptr, sld->length, GetVarMemType(sld->conv));
 			break;
 		default: NOT_REACHED();
 		}
@@ -607,7 +607,7 @@ static void ini_save_settings(IniFile *ini, const SettingDesc *sd, const char *g
  * @param grpname character string identifying the section-header of the ini file that will be parsed
  * @param list new list with entries of the given section
  */
-static void ini_load_setting_list(IniFile *ini, const char *grpname, StringList *list)
+static void IniLoadSettingList(IniFile *ini, const char *grpname, StringList *list)
 {
 	IniGroup *group = ini->GetGroup(grpname);
 
@@ -628,7 +628,7 @@ static void ini_load_setting_list(IniFile *ini, const char *grpname, StringList 
  * @param list pointer to an string(pointer) array that will be used as the
  *             source to be saved into the relevant ini section
  */
-static void ini_save_setting_list(IniFile *ini, const char *grpname, StringList *list)
+static void IniSaveSettingList(IniFile *ini, const char *grpname, StringList *list)
 {
 	IniGroup *group = ini->GetGroup(grpname);
 
@@ -960,7 +960,7 @@ static bool CheckRoadSide(int p1)
 static int32 ConvertLandscape(const char *value)
 {
 	/* try with the old values */
-	return lookup_oneofmany("normal|hilly|desert|candy", value);
+	return LookupOneOfMany("normal|hilly|desert|candy", value);
 }
 
 static bool CheckFreeformEdges(int32 p1)
@@ -1239,7 +1239,7 @@ static GRFConfig *GRFLoadConfig(IniFile *ini, const char *grpname, bool is_stati
 
 		/* Parse parameters */
 		if (!StrEmpty(item->value)) {
-			c->num_params = parse_intlist(item->value, (int*)c->param, lengthof(c->param));
+			c->num_params = ParseIntList(item->value, (int*)c->param, lengthof(c->param));
 			if (c->num_params == (byte)-1) {
 				ShowInfoF("ini: error in array '%s'", item->name);
 				c->num_params = 0;
@@ -1399,14 +1399,14 @@ void LoadFromConfig()
 	IniFile *ini = IniLoadConfig();
 	ResetCurrencies(false); // Initialize the array of curencies, without preserving the custom one
 
-	HandleSettingDescs(ini, ini_load_settings, ini_load_setting_list);
+	HandleSettingDescs(ini, IniLoadSettings, IniLoadSettingList);
 	_grfconfig_newgame = GRFLoadConfig(ini, "newgrf", false);
 	_grfconfig_static  = GRFLoadConfig(ini, "newgrf-static", true);
 	NewsDisplayLoadConfig(ini, "news_display");
 	AILoadConfig(ini, "ai_players");
 
 	PrepareOldDiffCustom();
-	ini_load_settings(ini, _gameopt_settings, "gameopt",  &_settings_newgame);
+	IniLoadSettings(ini, _gameopt_settings, "gameopt", &_settings_newgame);
 	HandleOldDiffCustom(false);
 
 	CheckDifficultyLevels();
@@ -1423,7 +1423,7 @@ void SaveToConfig()
 	ini->RemoveGroup("yapf");
 	ini->RemoveGroup("gameopt");
 
-	HandleSettingDescs(ini, ini_save_settings, ini_save_setting_list);
+	HandleSettingDescs(ini, IniSaveSettings, IniSaveSettingList);
 	GRFSaveConfig(ini, "newgrf", _grfconfig_newgame);
 	GRFSaveConfig(ini, "newgrf-static", _grfconfig_static);
 	NewsDisplaySaveConfig(ini, "news_display");
