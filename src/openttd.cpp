@@ -1111,7 +1111,9 @@ static void CheckCaches()
 		switch (v->type) {
 			case VEH_ROAD: {
 				RoadVehicle *rv = RoadVehicle::From(v);
-				RoadVehicleCache cache = rv->rcache;
+				RoadVehicleCache cache;
+				memset(&cache, 0, sizeof(cache));
+				cache = rv->rcache;
 				RoadVehUpdateCache(rv);
 
 				if (memcmp(&cache, &rv->rcache, sizeof(RoadVehicleCache)) != 0) {
@@ -1124,7 +1126,7 @@ static void CheckCaches()
 				Train *t = Train::From(v);
 				for (Vehicle *u = t; u != NULL; u = u->Next()) length++;
 
-				TrainCache *wagons = MallocT<TrainCache>(length);
+				TrainCache *wagons = CallocT<TrainCache>(length);
 				length = 0;
 				for (Train *u = t; u != NULL; u = u->Next()) wagons[length++] = u->tcache;
 
@@ -1143,7 +1145,9 @@ static void CheckCaches()
 
 			case VEH_AIRCRAFT: {
 				Aircraft *a = Aircraft::From(v);
-				AircraftCache cache = a->acache;
+				AircraftCache cache;
+				memset(&cache, 0, sizeof(cache));
+				cache = a->acache;
 				UpdateAircraftCache(a);
 
 				if (memcmp(&cache, &a->acache, sizeof(AircraftCache)) != 0) {
