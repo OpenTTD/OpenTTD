@@ -1884,7 +1884,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb, boo
 		/* General tactic is to first save the game to memory, then use an available writer
 		 * to write it to file, either in threaded mode if possible, or single-threaded */
 		if (mode == SL_SAVE) { // SAVE game
-			DEBUG(desync, 1, "save: %s\n", filename);
+			DEBUG(desync, 1, "save: %s", filename);
 
 			_sl.write_bytes = WriteMem;
 			_sl.excpt_uninit = UnInitMem;
@@ -1908,7 +1908,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb, boo
 			}
 		} else { // LOAD game
 			assert(mode == SL_LOAD);
-			DEBUG(desync, 1, "load: %s\n", filename);
+			DEBUG(desync, 1, "load: %s", filename);
 
 			/* Can't fseek to 0 as in tar files that is not correct */
 			long pos = ftell(_sl.fh);

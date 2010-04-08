@@ -249,7 +249,7 @@ void NetworkTextMessage(NetworkAction action, ConsoleColour colour, bool self_se
 	SetDParam(2, data);
 	GetString(message, strid, lastof(message));
 
-	DEBUG(desync, 1, "msg: %d; %d; %s\n", _date, _date_fract, message);
+	DEBUG(desync, 1, "msg: %08x; %02x; %s", _date, _date_fract, message);
 	IConsolePrintF(colour, "%s", message);
 	NetworkAddChatMessage((TextColour)colour, duration, "%s", message);
 }
@@ -1024,7 +1024,7 @@ static bool NetworkDoClientLoop()
 			if (_sync_seed_1 != _random.state[0]) {
 #endif
 				NetworkError(STR_NETWORK_ERROR_DESYNC);
-				DEBUG(desync, 1, "sync_err: %d; %d\n", _date, _date_fract);
+				DEBUG(desync, 1, "sync_err: %08x; %02x", _date, _date_fract);
 				DEBUG(net, 0, "Sync error detected!");
 				NetworkClientError(NETWORK_RECV_STATUS_DESYNC, NetworkClientSocket::Get(0));
 				return false;

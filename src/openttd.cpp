@@ -1117,7 +1117,7 @@ static void CheckCaches()
 				RoadVehUpdateCache(rv);
 
 				if (memcmp(&cache, &rv->rcache, sizeof(RoadVehicleCache)) != 0) {
-					DEBUG(desync, 2, "cache mismatch: vehicle %i, company %i, unit number %i\n", v->index, (int)v->owner, v->unitnumber);
+					DEBUG(desync, 2, "cache mismatch: vehicle %i, company %i, unit number %i", v->index, (int)v->owner, v->unitnumber);
 				}
 			} break;
 
@@ -1135,7 +1135,7 @@ static void CheckCaches()
 				length = 0;
 				for (Train *u = t; u != NULL; u = u->Next()) {
 					if (memcmp(&wagons[length], &u->tcache, sizeof(TrainCache)) != 0) {
-						DEBUG(desync, 2, "cache mismatch: vehicle %i, company %i, unit number %i, wagon %i\n", v->index, (int)v->owner, v->unitnumber, length);
+						DEBUG(desync, 2, "cache mismatch: vehicle %i, company %i, unit number %i, wagon %i", v->index, (int)v->owner, v->unitnumber, length);
 					}
 					length++;
 				}
@@ -1151,7 +1151,7 @@ static void CheckCaches()
 				UpdateAircraftCache(a);
 
 				if (memcmp(&cache, &a->acache, sizeof(AircraftCache)) != 0) {
-					DEBUG(desync, 2, "cache mismatch: vehicle %i, company %i, unit number %i\n", v->index, (int)v->owner, v->unitnumber);
+					DEBUG(desync, 2, "cache mismatch: vehicle %i, company %i, unit number %i", v->index, (int)v->owner, v->unitnumber);
 				}
 			} break;
 

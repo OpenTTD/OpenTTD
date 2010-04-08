@@ -93,7 +93,7 @@ static void debug_print(const char *dbg, const char *buf)
 		static FILE *f = FioFOpenFile("commands-out.log", "wb", AUTOSAVE_DIR);
 		if (f == NULL) return;
 
-		fprintf(f, "%s%s", GetLogPrefix(), buf);
+		fprintf(f, "%s%s\n", GetLogPrefix(), buf);
 		fflush(f);
 	}
 }
