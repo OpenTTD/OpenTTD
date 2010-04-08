@@ -1106,7 +1106,7 @@ static void CheckCaches()
 
 	Vehicle *v;
 	FOR_ALL_VEHICLES(v) {
-		if (v != v->First()) continue;
+		if (v != v->First() || v->vehstatus & VS_CRASHED) continue;
 
 		switch (v->type) {
 			case VEH_ROAD: {
