@@ -1,0 +1,5 @@
+version=3
+
+options=downloadurlmangle=s/(.*)\/index.html$/\1\/openttd-\1-source.tar.gz/ \
+http://master.binaries.openttd.org/releases/ \
+(\d+(?:\.\d+)*)/index.html

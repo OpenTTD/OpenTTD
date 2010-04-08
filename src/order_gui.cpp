@@ -621,6 +621,8 @@ private:
 	 */
 	void OrderClick_Nonstop(int non_stop)
 	{
+		if (this->vehicle->type != VEH_TRAIN && this->vehicle->type != VEH_ROAD) return;
+
 		VehicleOrderID sel_ord = this->OrderGetSel();
 		const Order *order = this->vehicle->GetOrder(sel_ord);
 
@@ -1277,7 +1279,7 @@ public:
 	virtual void OnTimeout()
 	{
 		static const int raise_widgets[] = {
-			ORDER_WIDGET_SKIP, ORDER_WIDGET_DELETE, ORDER_WIDGET_REFIT, ORDER_WIDGET_SHARED_ORDER_LIST, WIDGET_LIST_END,
+			ORDER_WIDGET_TIMETABLE_VIEW, ORDER_WIDGET_SKIP, ORDER_WIDGET_DELETE, ORDER_WIDGET_REFIT, ORDER_WIDGET_SHARED_ORDER_LIST, WIDGET_LIST_END,
 		};
 
 		/* Unclick all buttons in raise_widgets[]. */

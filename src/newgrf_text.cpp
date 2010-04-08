@@ -291,6 +291,9 @@ char *TranslateTTDPatchCodes(uint32 grfid, const char *str)
 					case 8:
 						d += Utf8Encode(d, SCC_NEWGRF_PRINT_HEX_DWORD);
 						break;
+					case 0x0B:
+						d += Utf8Encode(d, SCC_NEWGRF_PRINT_HEX_QWORD);
+						break;
 
 					default:
 						grfmsg(1, "missing handler for extended format code");
@@ -610,7 +613,7 @@ void RewindTextRefStack()
  * @param argv  the OpenTTD stack of values
  * @return the string control code to "execute" now
  */
-uint RemapNewGRFStringControlCode(uint scc, char **buff, const char **str, int64 *argv)
+uint RemapNewGRFStringControlCode(uint scc, char *buf_start, char **buff, const char **str, int64 *argv)
 {
 	if (_newgrf_textrefstack->used) {
 		switch (scc) {
@@ -624,6 +627,7 @@ uint RemapNewGRFStringControlCode(uint scc, char **buff, const char **str, int64
 
 			case SCC_NEWGRF_PRINT_HEX_BYTE:       *argv = _newgrf_textrefstack->PopUnsignedByte();  break;
 			case SCC_NEWGRF_PRINT_HEX_DWORD:      *argv = _newgrf_textrefstack->PopUnsignedDWord(); break;
+			case SCC_NEWGRF_PRINT_HEX_QWORD:      *argv = _newgrf_textrefstack->PopSignedQWord(); break;
 
 			case SCC_NEWGRF_PRINT_HEX_WORD:
 			case SCC_NEWGRF_PRINT_WORD_SPEED:
@@ -637,7 +641,7 @@ uint RemapNewGRFStringControlCode(uint scc, char **buff, const char **str, int64
 
 			case SCC_NEWGRF_ROTATE_TOP_4_WORDS:   _newgrf_textrefstack->RotateTop4Words(); break;
 			case SCC_NEWGRF_PUSH_WORD:            _newgrf_textrefstack->PushWord(Utf8Consume(str)); break;
-			case SCC_NEWGRF_UNPRINT:              *buff -= Utf8Consume(str); break;
+			case SCC_NEWGRF_UNPRINT:              *buff = max(*buff - Utf8Consume(str), buf_start); break;
 
 			case SCC_NEWGRF_PRINT_STRING_ID:
 				*argv = TTDPStringIDToOTTDStringIDMapping(_newgrf_textrefstack->PopUnsignedWord());
@@ -656,6 +660,7 @@ uint RemapNewGRFStringControlCode(uint scc, char **buff, const char **str, int64
 		case SCC_NEWGRF_PRINT_HEX_BYTE:
 		case SCC_NEWGRF_PRINT_HEX_WORD:
 		case SCC_NEWGRF_PRINT_HEX_DWORD:
+		case SCC_NEWGRF_PRINT_HEX_QWORD:
 			return SCC_HEX;
 
 		case SCC_NEWGRF_PRINT_DWORD_CURRENCY:

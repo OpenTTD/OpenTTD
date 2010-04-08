@@ -231,9 +231,9 @@ static char *FormatZerofillNumber(char *buff, int64 number, int64 count, const c
 	return FormatNumber(buff, number, last, "", 20 - count);
 }
 
-static char *FormatHexNumber(char *buff, int64 number, const char *last)
+static char *FormatHexNumber(char *buff, uint64 number, const char *last)
 {
-	return buff + seprintf(buff, last, "0x%x", (uint32)number);
+	return buff + seprintf(buff, last, "0x" OTTD_PRINTFHEX64, number);
 }
 
 /**
@@ -552,11 +552,12 @@ static char *FormatString(char *buff, const char *str, int64 *argv, uint casei, 
 	WChar b;
 	int64 *argv_orig = argv;
 	uint modifier = 0;
+	char *buf_start = buff;
 
 	while ((b = Utf8Consume(&str)) != '\0') {
 		if (SCC_NEWGRF_FIRST <= b && b <= SCC_NEWGRF_LAST) {
 			/* We need to pass some stuff as it might be modified; oh boy. */
-			b = RemapNewGRFStringControlCode(b, &buff, &str, argv);
+			b = RemapNewGRFStringControlCode(b, buf_start, &buff, &str, argv);
 			if (b == 0) continue;
 		}
 
@@ -856,7 +857,7 @@ static char *FormatString(char *buff, const char *str, int64 *argv, uint casei, 
 			} break;
 
 			case SCC_HEX: // {HEX}
-				buff = FormatHexNumber(buff, GetInt64(&argv), last);
+				buff = FormatHexNumber(buff, (uint64)GetInt64(&argv), last);
 				break;
 
 			case SCC_BYTES: // {BYTES}

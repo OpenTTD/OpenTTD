@@ -88,11 +88,11 @@ struct GraphLegendWindow : Window {
 		ToggleBit(_legend_excluded_companies, widget - GLW_FIRST_COMPANY);
 		this->ToggleWidgetLoweredState(widget);
 		this->SetDirty();
-		SetWindowDirty(WC_INCOME_GRAPH, 0);
-		SetWindowDirty(WC_OPERATING_PROFIT, 0);
-		SetWindowDirty(WC_DELIVERED_CARGO, 0);
-		SetWindowDirty(WC_PERFORMANCE_HISTORY, 0);
-		SetWindowDirty(WC_COMPANY_VALUE, 0);
+		InvalidateWindowData(WC_INCOME_GRAPH, 0);
+		InvalidateWindowData(WC_OPERATING_PROFIT, 0);
+		InvalidateWindowData(WC_DELIVERED_CARGO, 0);
+		InvalidateWindowData(WC_PERFORMANCE_HISTORY, 0);
+		InvalidateWindowData(WC_COMPANY_VALUE, 0);
 	}
 
 	virtual void OnInvalidateData(int data)
@@ -526,6 +526,11 @@ public:
 		this->UpdateStatistics(false);
 	}
 
+	virtual void OnInvalidateData(int data)
+	{
+		this->OnTick();
+	}
+
 	/**
 	 * Update the statistics.
 	 * @param initialize Initialize the data structure.
@@ -896,6 +901,11 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 	virtual void OnTick()
 	{
 		/* Override default OnTick */
+	}
+
+	virtual void OnInvalidateData(int data)
+	{
+		this->OnHundredthTick();
 	}
 
 	virtual void OnHundredthTick()

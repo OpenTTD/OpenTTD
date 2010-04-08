@@ -1,0 +1,25 @@
+openttd (1.0.0~rc3-2) unstable; urgency=low
+
+    The openttd package has been moved from contrib into main. Since the
+    OpenGFX free graphics set has been packaged for Debian, one can now run
+    OpenTTD without needing any of the resources from the original game
+    (though the original resources are still supported).
+
+ -- Matthijs Kooijman <matthijs@stdin.nl>  Thu, 18 Mar 2010 13:09:35 +0100
+
+openttd (0.7.0-1) unstable; urgency=low
+
+    Handling of AI players has changed in 0.7.0. This package no longer
+    contains any AI players, so playing against the computer is not possible
+    out of the box any longer. However, you can easily download AI players
+    through the new "Content Downloading Service", after which playing with
+    computer players is possible.
+
+    Loading old savegames with computer players is supported (AI players will
+    be converted according to the current AI settings), but at this moment
+    there are no AIs that completely handle any existing infrastructure built
+    by the old AI, so starting a new game might be more fun (especially since
+    most of the new AIs are a lot less erratic).
+
+ -- Matthijs Kooijman <matthijs@stdin.nl>  Mon, 13 Apr 2009 15:11:20 +0200
+
