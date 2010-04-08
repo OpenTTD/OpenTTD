@@ -3302,6 +3302,8 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}Nastaven
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Změnit nastavení AI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Obnovit AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Zničit AI, znovu nahrát jeho skript a restartovat AI
+STR_AI_DEBUG_CONTINUE                                           :{BLACK}Pokračovat
+STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Odpauzujte a pokračujte v běhu AI
 
 STR_ERROR_NO_AI                                                 :{WHITE}Hra byla zkompilována bez podpory AI...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... AI není dostupné!
@@ -3605,6 +3607,7 @@ STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Nájezdy
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Most je pro terén moc nízký
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Začátek a konec musí být ve stejné výšce
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... oba konce mostu musí být na zemi
+STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... most je příliš dlouhý
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Zde nelze postavit tunel...

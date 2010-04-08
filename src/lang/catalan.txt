@@ -1946,8 +1946,8 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Disminue
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Incrementa la densitat de senyals en arrossegar
 
 # Bridge selection window
-STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Selecciona pont per la via
-STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Selecciona un Pont per Carretera
+STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Selecciona pont de tren
+STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Selecciona un Pont de carretera
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Selecció de pont - clica sobre el pont triat per construir-lo
 STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Suspensió, Acer
@@ -3540,6 +3540,7 @@ STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Les cap�
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}El pont és massa baix pel terreny
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Inici i final han d'estar en línia recta
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... els extrems del pont han d'estar tots dos a terra
+STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... el pont és massa llarg
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Aquí no es pot construir el túnel...
