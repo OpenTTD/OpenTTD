@@ -621,6 +621,8 @@ private:
 	 */
 	void OrderClick_Nonstop(int non_stop)
 	{
+		if (this->vehicle->type != VEH_TRAIN && this->vehicle->type != VEH_ROAD) return;
+
 		VehicleOrderID sel_ord = this->OrderGetSel();
 		const Order *order = this->vehicle->GetOrder(sel_ord);
 
