@@ -20,6 +20,7 @@
  *
  * API additions:
  * \li IsEnd for all lists.
+ * \li AIRail::GetMaxSpeed
  *
  * API removals:
  * \li HasNext for all lists.
