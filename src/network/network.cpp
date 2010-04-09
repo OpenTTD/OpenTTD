@@ -35,10 +35,13 @@
 #include "../rev.h"
 #include "../core/pool_func.hpp"
 #include "../gfx_func.h"
-#ifdef DEBUG_DUMP_COMMANDS
-	#include "../fileio_func.h"
-#endif /* DEBUG_DUMP_COMMANDS */
 #include "table/strings.h"
+
+#ifdef DEBUG_DUMP_COMMANDS
+#include "../fileio_func.h"
+/** When running the server till the wait point, run as fast as we can! */
+bool _ddc_fastforward = true;
+#endif /* DEBUG_DUMP_COMMANDS */
 
 DECLARE_POSTFIX_INCREMENT(ClientID)
 
@@ -1075,19 +1078,22 @@ void NetworkGameLoop()
 
 	if (_network_server) {
 #ifdef DEBUG_DUMP_COMMANDS
+		/* Loading of the debug commands from -ddesync>=1 */
 		static FILE *f = FioFOpenFile("commands.log", "rb", SAVE_DIR);
 		static Date next_date = 0;
 		static uint32 next_date_fract;
 		static CommandPacket *cp = NULL;
 		if (f == NULL && next_date == 0) {
-			printf("Cannot open commands.log\n");
+			DEBUG(net, 0, "Cannot open commands.log");
 			next_date = 1;
 		}
 
 		while (f != NULL && !feof(f)) {
 			if (cp != NULL && _date == next_date && _date_fract == next_date_fract) {
 				_current_company = cp->company;
-				DoCommandP(cp->tile, cp->p1, cp->p2, cp->cmd, NULL, cp->text);
+				bool ret = DoCommandP(cp->tile, cp->p1, cp->p2, cp->cmd, NULL, cp->text);
+				DEBUG(net, 0, "injecting: %08x; %02x; %02x; %06x; %08x; %08x; %08x; %s -> %i", _date, _date_fract, (int)_current_company, cp->tile, cp->p1, cp->p2, cp->cmd, cp->text, (int)ret);
+				assert(ret);
 				free(cp);
 				cp = NULL;
 			}
@@ -1096,11 +1102,41 @@ void NetworkGameLoop()
 
 			char buff[4096];
 			if (fgets(buff, lengthof(buff), f) == NULL) break;
-			if (strncmp(buff, "cmd: ", 8) != 0) continue;
-			cp = MallocT<CommandPacket>(1);
-			int company;
-			sscanf(&buff[8], "%d; %d; %d; %d; %d; %d; %d; %s", &next_date, &next_date_fract, &company, &cp->tile, &cp->p1, &cp->p2, &cp->cmd, cp->text);
-			cp->company = (CompanyID)company;
+
+			char *p = buff;
+			/* Ignore the "[date time] " part of the message */
+			if (*p == '[') {
+				p = strchr(p, ']');
+				if (p == NULL) break;
+				p += 2;
+			}
+
+			if (strncmp(p, "cmd: ", 5) == 0) {
+				cp = MallocT<CommandPacket>(1);
+				int company;
+				int ret = sscanf(p + 5, "%x; %x; %x; %x; %x; %x; %x; %s", &next_date, &next_date_fract, &company, &cp->tile, &cp->p1, &cp->p2, &cp->cmd, cp->text);
+				/* There are 8 pieces of data to read, however the last is a
+				 * string that might or might not exist. Ignore it if that
+				 * string misses because in 99% of the time it's not used. */
+				assert(ret == 8 || ret == 7);
+				cp->company = (CompanyID)company;
+			} else if (strncmp(p, "join: ", 6) == 0) {
+				/* Manually insert a pause when joining; this way the client can join at the exact right time. */
+				int ret = sscanf(p + 6, "%x; %x", &next_date, &next_date_fract);
+				assert(ret == 2);
+				DEBUG(net, 0, "injecting pause for join at %08x:%02x; please join when paused", next_date, next_date_fract);
+				cp = MallocT<CommandPacket>(1);
+				cp->company = COMPANY_SPECTATOR;
+				cp->cmd = CMD_PAUSE;
+				cp->p1 = PM_PAUSED_NORMAL;
+				cp->p2 = 1;
+				_ddc_fastforward = false;
+			}
+		}
+		if (f != NULL && feof(f)) {
+			DEBUG(net, 0, "End of commands.log");
+			fclose(f);
+			f = NULL;
 		}
 #endif /* DEBUG_DUMP_COMMANDS */
 		if (_frame_counter >= _frame_counter_max) {
