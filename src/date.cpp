@@ -218,12 +218,6 @@ static void OnNewYear()
  */
 static void OnNewMonth()
 {
-	if (_debug_desync_level > 2) {
-		char name[MAX_PATH];
-		snprintf(name, lengthof(name), "dmp_cmds_%08x_%08x.sav", _settings_game.game_creation.generation_seed, _date);
-		SaveOrLoad(name, SL_SAVE, AUTOSAVE_DIR);
-	}
-
 	if (_settings_client.gui.autosave != 0 && (_cur_month % _autosave_months[_settings_client.gui.autosave]) == 0) {
 		_do_autosave = true;
 		RedrawAutosave();

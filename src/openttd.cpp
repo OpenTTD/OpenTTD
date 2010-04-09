@@ -1206,6 +1206,13 @@ void StateGameLoop()
 	} else {
 		CheckCaches();
 
+		if (_debug_desync_level > 2 && _date_fract == 0 && (_date & 0x1F) == 0) {
+			/* Save the desync savegame if needed. */
+			char name[MAX_PATH];
+			snprintf(name, lengthof(name), "dmp_cmds_%08x_%08x.sav", _settings_game.game_creation.generation_seed, _date);
+			SaveOrLoad(name, SL_SAVE, AUTOSAVE_DIR);
+		}
+
 		/* All these actions has to be done from OWNER_NONE
 		 *  for multiplayer compatibility */
 		CompanyID old_company = _current_company;
