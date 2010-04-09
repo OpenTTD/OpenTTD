@@ -295,7 +295,7 @@ STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Seçenek
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Kaydet, ana menüye dön, çık
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Haritayı göster
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Şehir listesini göster
-STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Sübvansiyonları göster
+STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Teşvikleri göster
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Şirkete ait istasyonları listele
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Şirketin ekonomik durumunu göster
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Şirketin genel durumunu göster
@@ -376,7 +376,7 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Şehir başlat
 ############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
-STR_SUBSIDIES_MENU_SUBSIDIES                                    :Sübvansiyonlar
+STR_SUBSIDIES_MENU_SUBSIDIES                                    :Teşvikler
 ############ range ends here
 
 ############ range for graph menu starts
@@ -739,7 +739,7 @@ STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Diğer 
 STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Şirketin araçları hakkında tavsiye / bilgi
 STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Yeni araçlar
 STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Kargo isteğindeki değişiklikler
-STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Sübvansiyonlar
+STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Teşvikler
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Genel bilgi
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIGFONT}{BLACK}Kutlama Yapıldı . . .{} {STATION} istasyonuna ilk kez tren geldi!
@@ -792,10 +792,10 @@ STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}{INDUSTRY}nde yeni kömür tabakasi bulundu!{} Üretimin ikiye katlanması bekleniyor!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}{INDUSTRY}nda yeni petrol rezervi bulundu!{} Üretimin ikiye katlanması bekleniyor!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}{INDUSTRY}ndeki yeni tarim tekniklerinin üretimi ikiye katlamasi bekleniyor!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{1:INDUSTRY}'nin {BIGFONT}{BLACK}{0:STRING} üretimi %{2:COMMA} arttı!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{1:INDUSTRY}'nin {BLACK}{0:STRING} üretimi %{2:COMMA} arttı!
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} üretimi %50 düşürdü
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}{INDUSTRY} bölgesine böcek sürüsü girdi !{} Üretim %50 düştü
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{1:INDUSTRY}'nin {BIGFONT}{BLACK}{0:STRING} üretimi %{2:COMMA} azaldı!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{1:INDUSTRY}'nin {BLACK}{0:STRING} üretimi %{2:COMMA} azaldı!
 
 STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} garajda bekliyor
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} garajda bekliyor
@@ -829,13 +829,13 @@ STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} artık {STRING} istiyor
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} artık {STRING} ve {STRING} istiyor
 
-STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Sübvansiyon zamanı doldu: {}{}{STRING} {STRING} -> {STRING} artık fazla gelir getirmeyecek.
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Sübvansiyon geri çekildi:{}{}{STRING} servisi {STRING} -> {STRING} arasında fazla gelir getirmeyecek.
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Servis ihalesi önerildi: {}{} ilk {STRING} servisi {STRING} -> {STRING} arasında belediyeden prim alacak!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Sübvansiyon {STRING} şirketine verildi!{}{}{STRING} servisi {STRING} -> {STRING} aralığında bir yıl boyunca %50 fazla gelir sağlayacak!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Sübvansiyon {STRING} şirketine verildi!{}{}{STRING} servisi {STRING} -> {STRING} aralığında bir yıl boyunca iki kat fazla gelir sağlayacak!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Sübvansiyon {STRING} şirketine verildi!{}{}{STRING} servisi {STRING} -> {STRING} aralığında bir yıl boyunca üç kat fazla gelir sağlayacak!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}Sübvansiyon {STRING} şirketine verildi!{}{}{STRING} servisi {STRING} -> {STRING} aralığında bir yıl boyunca dört kat fazla gelir sağlayacak!
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Teşvik önerisinin süresi doldu: {}{}{STRING} {STRING} -> {STRING} artık teşvik almayacak.
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Teşvik geri çekildi:{}{}{1:STRING} -> {2:STRING} arasındaki {0:STRING} taşıma hizmeti artık teşvik almayacak.
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Hizmet teşviği önerildi: {}{} {1:STRING} -> {2:STRING} arası ilk {0:STRING} taşıma hizmeti belediyeden teşvik alacak!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Hizmet teşviği {0:STRING} şirketine verildi!{}{}{2:STRING} -> {3:STRING} arasındaki {1:STRING} taşıma hizmeti bir yıl boyunca %50 fazla gelir sağlayacak!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Hizmet teşviği {0:STRING} şirketine verildi!{}{}{2:STRING} -> {3:STRING} arasındaki {1:STRING} taşıma hizmeti bir yıl boyunca iki kat fazla gelir sağlayacak!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Hizmet teşviği {0:STRING} şirketine verildi!{}{}{2:STRING} -> {3:STRING} arasındaki {1:STRING} taşıma hizmeti bir yıl boyunca üç kat fazla gelir sağlayacak!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}Hizmet teşviği {0:STRING} şirketine verildi!{}{}{2:STRING} -> {3:STRING} arasındaki {1:STRING} taşıma hizmeti bir yıl boyunca dört kat fazla gelir sağlayacak!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK} {TOWN} şehrinde trafik durdu!{}{} {STRING} şirketinin yol yapım çalışmaları başladı!
 
@@ -1009,7 +1009,7 @@ STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}Başlan
 STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}Bakım ücretleri: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}Rakip inşa hızı: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_BREAKDOWNS                 :{LTBLUE}Araç bozulmaları: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_SUBSIDY_MULTIPLIER                 :{LTBLUE}İhale çarpanı: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_SUBSIDY_MULTIPLIER                 :{LTBLUE}Teşvik çarpanı: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_COST_OF_CONSTRUCTION               :{LTBLUE}İnşa fiyatları: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_TERRAIN_TYPE                       :{LTBLUE}Yer tipi: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_QUANTITY_OF_SEA_LAKES              :{LTBLUE}Su miktarı: {ORANGE}{STRING}
@@ -2477,11 +2477,11 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW} Bir y�
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Yakalanma riskini göze alarak belediyeye rüşvet ver.{} Fiyat: {CURRENCY}
 
 # Subsidies window
-STR_SUBSIDIES_CAPTION                                           :{WHITE}Sübvansiyonlar
-STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Teklif edilmiş sübvansiyonlar:
+STR_SUBSIDIES_CAPTION                                           :{WHITE}Teşvikler
+STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Teklif edilmiş teşvikler:
 STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} {STRING} -> {STRING}{YELLOW} ({DATE_SHORT} tarihinden itibaren)
 STR_SUBSIDIES_NONE                                              :{ORANGE}Yok
-STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Verilen sübvansiyonlar:
+STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Teşvik almakta olan hizmetler:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} {STRING} -> {STRING}{YELLOW} ({COMPANY}{YELLOW}, {DATE_SHORT} tarihine kadar)
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Görüntüyü ortalamak için servisi tıklayın
 

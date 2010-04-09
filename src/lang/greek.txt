@@ -619,6 +619,8 @@ STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLAC
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Πληρωμή για την παράδοση 10 μονάδων (ή 10.000 λίτρων) φορτίου σε απόσταση 20 τετραγώνων
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}Ενεργοποιήση όλων
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT}{BLACK}Απενεργοποιήση όλων
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Εμφάνιση όλων των εμπορευμάτων στο γράφημα κοστολογιού εμπορευμάτων
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Εμφάνιση κανενός εμπορευμάτος στο γράφημα κοστολογιού εμπορευμάτων
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Εναλλαγή γραφήματος τύπου φορτίου
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 
@@ -1733,7 +1735,7 @@ STR_NETWORK_LANG_LATVIAN                                        :Λετονικ�
 ############ End of leave-in-this-order
 
 # Network game lobby
-STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Αίθουσας παιχνιδιού για πολλούς παίκτες
+STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Αίθουσα παιχνιδιού για πολλούς παίκτες
 
 STR_NETWORK_GAME_LOBBY_PREPARE_TO_JOIN                          :{BLACK}Προετοιμασία για συμμετοχή: {ORANGE}{STRING}
 STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}Λίστα όλων των εταιριών αυτή τη στιγμή στο παιχνίδι. Μπορείτε είτε να συμμετάσχετε σε μία ή να δημιουργήσετε μια νέα αν υπάρχει κενή θέση
@@ -1880,7 +1882,7 @@ STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} σ
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} συμμετέχει στην εταιρία #{2:NUM}
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} συμμετέχει στους θεατές
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} ξεκίνησε μια νεα εταιρία (#{2:NUM})
-STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} αποχώρηση από το παιχνίδι ({2:STRING})
+STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} αποχώρησε από το παιχνίδι ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} άλλαξε το όνομα του/της σε {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} έδωσε στην εταιρία σας {2:CURRENCY}
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Δώσατε {1:STRING} {2:CURRENCY}
@@ -3328,6 +3330,7 @@ STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Αλλα
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Ξαναφορτώση AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Τερματίστε το AI, ξαναφορτώστε το σενάριο και ξαναεκκινήστε το AI
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Συνέχεια
+STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Συνέχιση του παιχνιδιού και της λειτουργίας του AI
 
 STR_ERROR_NO_AI                                                 :{WHITE}Στο OpenTTD δεν ενσωματώθηκε υποστήριξη ΤΝ...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... καμία ΤΝ δεν είναι διαθέσιμη!
