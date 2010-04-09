@@ -2638,7 +2638,7 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 
 			case 0x24: // name for nearby station
 				indsp->station_name = buf->ReadWord();
-				_string_to_grf_mapping[&indsp->station_name] = _cur_grffile->grfid;
+				if (indsp->station_name != STR_NULL) _string_to_grf_mapping[&indsp->station_name] = _cur_grffile->grfid;
 				break;
 
 			default:
