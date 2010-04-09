@@ -106,6 +106,7 @@ void SQAIRail_Register(Squirrel *engine)
 	SQAIRail.DefSQStaticMethod(engine, &AIRail::BuildSignal,                     "BuildSignal",                     4, ".iii");
 	SQAIRail.DefSQStaticMethod(engine, &AIRail::RemoveSignal,                    "RemoveSignal",                    3, ".ii");
 	SQAIRail.DefSQStaticMethod(engine, &AIRail::GetBuildCost,                    "GetBuildCost",                    3, ".ii");
+	SQAIRail.DefSQStaticMethod(engine, &AIRail::GetMaxSpeed,                     "GetMaxSpeed",                     2, ".i");
 
 	SQAIRail.PostRegister(engine);
 }

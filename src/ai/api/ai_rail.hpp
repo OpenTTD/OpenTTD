@@ -440,6 +440,18 @@ public:
 	 * @return The baseprice of building the given object.
 	 */
 	static Money GetBuildCost(RailType railtype, BuildType build_type);
+
+	/**
+	 * Get the maximum speed of trains running on this railtype.
+	 * @param railtype The railtype to get the maximum speed of.
+	 * @pre IsRailTypeAvailable(railtype)
+	 * @return The maximum speed trains can run on this railtype
+	 *   or 0 if there is no limit.
+	 * @note The speed is in OpenTTD's internal speed unit.
+	 *       This is mph / 1.6, which is roughly km/h.
+	 *       To get km/h multiply this number by 1.00584.
+	 */
+	static int32 GetMaxSpeed(RailType railtype);
 };
 
 #endif /* AI_RAIL_HPP */

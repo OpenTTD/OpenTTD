@@ -7208,6 +7208,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
   ListDump:
     RailType:                0
     IsRailTypeAvailable():   true
+    GetMaxSpeed():           0
 
 --Road--
   Road
