@@ -80,7 +80,7 @@ void GroundVehicle<T, Type>::CargoChanged()
 	}
 
 	/* Store consist weight in cache. */
-	this->acc_cache.cached_weight = weight;
+	this->acc_cache.cached_weight = max<uint32>(1, weight);
 
 	/* Now update vehicle power (tractive effort is dependent on weight). */
 	this->PowerChanged();
