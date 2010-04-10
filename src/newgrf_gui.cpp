@@ -721,7 +721,7 @@ struct NewGRFWindow : public Window {
 
 					if (c == this->sel) {
 						*pc = c->next;
-						free(c);
+						delete c;
 						break;
 					}
 				}
