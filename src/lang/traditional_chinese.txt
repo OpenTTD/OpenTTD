@@ -1133,7 +1133,7 @@ STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}允許�
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}允許載入多個 NewGRF 車輛組：{ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}當此項目為交通工具時不能變更此設定。
 
-STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}機場永不過期: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}機場永不過期：{ORANGE}{STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}列車迷路時警告：{ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}檢查交通工具指令：{ORANGE}{STRING}
@@ -3228,9 +3228,12 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}AI 設�
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}變更 AI 設定
 STR_AI_DEBUG_RELOAD                                             :{BLACK}重新載入 AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}結束 AI、重新載入腳本、重新啟動 AI
+STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}啟用／停用當 AI 記錄訊息符合中斷點字串時中斷執行的功能
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}中斷點：
-STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}開啟中斷點
+STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}中斷點
 STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}當 AI 記錄訊息與此字串相符時暫停遊戲。
+STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}符合大小寫
+STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}切換比對 AI 記錄訊息是否與中斷點字串相符時是否要符合大小寫
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}繼續
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}取消暫停並繼續 AI
 

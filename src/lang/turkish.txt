@@ -1358,11 +1358,11 @@ STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Çevrimi
 STR_INTRO_AI_SETTINGS                                           :{BLACK}YZ Ayarları
 STR_INTRO_QUIT                                                  :{BLACK}Çıkış
 
-STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Yeni oyuna başla
+STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Yeni oyuna başla. Ctrl+Click harita ayarlamasını atlar.
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Oyun yükle
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Yükseklik haritasını kullanarak yeni oyun başlat
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Özel bir senaryo kullanarak yeni oyun başlat
-STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Kendi dünyani/senoryonu yarat
+STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Kendi dünyanı/senaryonu yarat
 STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Çok oyunculu oyun başlat
 
 STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}'ılıman' yer stilini seç

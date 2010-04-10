@@ -647,6 +647,8 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Варт
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Тарифи на доставку вантажів
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Днів у дорозі
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Плата за доставку 10 одиниць (або 10,000 літрів) вантажу на відстань 20 квадратів
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}Включити всі
+STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT}{BLACK}Відключити усі
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Вкл/відкл графік типів вантажу
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 
@@ -2746,9 +2748,9 @@ STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Показати підприємство у центрі екрану. Утримання Ctrl відкриє нове вікно з видом підприємства
 
 ############ range for requires starts
-STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Потребує: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Потребує: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Потребує: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
+STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Потребує: {YELLOW}{STRING.z}{STRING.z}
+STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Потребує: {YELLOW}{STRING.z}{STRING.z}, {STRING.z}{STRING.z}
+STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Потребує: {YELLOW}{STRING.z}{STRING.z}, {STRING.z}{STRING.z}, {STRING.z}{STRING.z}
 ############ range for requires ends
 
 ############ range for produces starts
@@ -3349,6 +3351,8 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}Нала
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Змінити налаштування AI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Перезавантажити AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Знищити AI, перезавантажити скрипт, та рестартувати AI
+STR_AI_DEBUG_CONTINUE                                           :{BLACK}Продовжити
+STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Зняти з паузи і продовжити AI
 
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD скомпонований без підтримки AI...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... немає доступних AI!
@@ -3652,6 +3656,7 @@ STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Кінц
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Міст дуже низький для цього місця
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Початок та кінець мають бути на одній лінії
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... обидва кінці мосту мають бути на землі
+STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... міст надто довгий
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Неможливо збудувати тунель...
