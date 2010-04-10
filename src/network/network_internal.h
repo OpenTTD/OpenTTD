@@ -47,7 +47,7 @@
 #ifdef DEBUG_DUMP_COMMANDS
 extern bool _ddc_fastforward;
 #else
-#define _ddc_fastforward (true)
+#define _ddc_fastforward (false)
 #endif /* DEBUG_DUMP_COMMANDS */
 
 enum MapPacket {
