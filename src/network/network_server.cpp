@@ -754,8 +754,9 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_GAME_PASSWORD)
 	char password[NETWORK_PASSWORD_LENGTH];
 	p->Recv_string(password, sizeof(password));
 
-	/* Check game password */
-	if (strcmp(password, _settings_client.network.server_password) != 0) {
+	/* Check game password. Allow joining if we cleared the password meanwhile */
+	if (!StrEmpty(_settings_client.network.server_password) &&
+			strcmp(password, _settings_client.network.server_password) != 0) {
 		/* Password is invalid */
 		return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_WRONG_PASSWORD);
 	}
@@ -778,9 +779,10 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMPANY_PASSWORD)
 	char password[NETWORK_PASSWORD_LENGTH];
 	p->Recv_string(password, sizeof(password));
 
-	/* Check company password */
+	/* Check company password. Allow joining if we cleared the password meanwhile */
 	const NetworkClientInfo *ci = cs->GetInfo();
-	if (strcmp(password, _network_company_states[ci->client_playas].password) != 0) {
+	if (!StrEmpty(_network_company_states[ci->client_playas].password) &&
+			strcmp(password, _network_company_states[ci->client_playas].password) != 0) {
 		/* Password is invalid */
 		return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_WRONG_PASSWORD);
 	}
