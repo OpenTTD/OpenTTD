@@ -38,6 +38,18 @@
 #define NETWORK_SEND_DOUBLE_SEED
 #endif /* RANDOM_DEBUG */
 
+/**
+ * Helper variable to make the dedicated server go fast until the (first) join.
+ * Used to load the desync debug logs, i.e. for reproducing a desync.
+ * There's basically no need to ever enable this, unless you really know what
+ * you are doing, i.e. debugging a desync.
+ */
+#ifdef DEBUG_DUMP_COMMANDS
+extern bool _ddc_fastforward;
+#else
+#define _ddc_fastforward (false)
+#endif /* DEBUG_DUMP_COMMANDS */
+
 enum MapPacket {
 	MAP_PACKET_START,
 	MAP_PACKET_NORMAL,

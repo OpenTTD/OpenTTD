@@ -1110,16 +1110,18 @@ static void CheckCaches()
 
 	Vehicle *v;
 	FOR_ALL_VEHICLES(v) {
-		if (v != v->First()) continue;
+		if (v != v->First() || v->vehstatus & VS_CRASHED) continue;
 
 		switch (v->type) {
 			case VEH_ROAD: {
 				RoadVehicle *rv = RoadVehicle::From(v);
-				RoadVehicleCache cache = rv->rcache;
+				RoadVehicleCache cache;
+				memset(&cache, 0, sizeof(cache));
+				cache = rv->rcache;
 				RoadVehUpdateCache(rv);
 
 				if (memcmp(&cache, &rv->rcache, sizeof(RoadVehicleCache)) != 0) {
-					DEBUG(desync, 2, "cache mismatch: vehicle %i, company %i, unit number %i\n", v->index, (int)v->owner, v->unitnumber);
+					DEBUG(desync, 2, "cache mismatch: vehicle %i, company %i, unit number %i", v->index, (int)v->owner, v->unitnumber);
 				}
 			} break;
 
@@ -1128,7 +1130,7 @@ static void CheckCaches()
 				Train *t = Train::From(v);
 				for (Vehicle *u = t; u != NULL; u = u->Next()) length++;
 
-				TrainCache *wagons = MallocT<TrainCache>(length);
+				TrainCache *wagons = CallocT<TrainCache>(length);
 				length = 0;
 				for (Train *u = t; u != NULL; u = u->Next()) wagons[length++] = u->tcache;
 
@@ -1137,7 +1139,7 @@ static void CheckCaches()
 				length = 0;
 				for (Train *u = t; u != NULL; u = u->Next()) {
 					if (memcmp(&wagons[length], &u->tcache, sizeof(TrainCache)) != 0) {
-						DEBUG(desync, 2, "cache mismatch: vehicle %i, company %i, unit number %i, wagon %i\n", v->index, (int)v->owner, v->unitnumber, length);
+						DEBUG(desync, 2, "cache mismatch: vehicle %i, company %i, unit number %i, wagon %i", v->index, (int)v->owner, v->unitnumber, length);
 					}
 					length++;
 				}
@@ -1147,11 +1149,13 @@ static void CheckCaches()
 
 			case VEH_AIRCRAFT: {
 				Aircraft *a = Aircraft::From(v);
-				AircraftCache cache = a->acache;
+				AircraftCache cache;
+				memset(&cache, 0, sizeof(cache));
+				cache = a->acache;
 				UpdateAircraftCache(a);
 
 				if (memcmp(&cache, &a->acache, sizeof(AircraftCache)) != 0) {
-					DEBUG(desync, 2, "cache mismatch: vehicle %i, company %i, unit number %i\n", v->index, (int)v->owner, v->unitnumber);
+					DEBUG(desync, 2, "cache mismatch: vehicle %i, company %i, unit number %i", v->index, (int)v->owner, v->unitnumber);
 				}
 			} break;
 
@@ -1205,6 +1209,13 @@ void StateGameLoop()
 		NewsLoop();
 	} else {
 		CheckCaches();
+
+		if (_debug_desync_level > 2 && _date_fract == 0 && (_date & 0x1F) == 0) {
+			/* Save the desync savegame if needed. */
+			char name[MAX_PATH];
+			snprintf(name, lengthof(name), "dmp_cmds_%08x_%08x.sav", _settings_game.game_creation.generation_seed, _date);
+			SaveOrLoad(name, SL_SAVE, AUTOSAVE_DIR);
+		}
 
 		/* All these actions has to be done from OWNER_NONE
 		 *  for multiplayer compatibility */

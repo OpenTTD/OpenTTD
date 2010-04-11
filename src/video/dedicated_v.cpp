@@ -300,13 +300,15 @@ void VideoDriver_Dedicated::MainLoop()
 
 		cur_ticks = GetTime();
 		_realtime_tick += cur_ticks - prev_cur_ticks;
-		if (cur_ticks >= next_tick || cur_ticks < prev_cur_ticks) {
+		if (cur_ticks >= next_tick || cur_ticks < prev_cur_ticks || _ddc_fastforward) {
 			next_tick = cur_ticks + 30;
 
 			GameLoop();
 			UpdateWindows();
 		}
-		CSleep(1);
+
+		/* Don't sleep when fast forwarding (for desync debugging) */
+		if (!_ddc_fastforward) CSleep(1);
 	}
 }
 

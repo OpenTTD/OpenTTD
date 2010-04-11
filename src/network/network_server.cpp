@@ -716,6 +716,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 	strecpy(ci->client_name, name, lastof(ci->client_name));
 	ci->client_playas = playas;
 	ci->client_lang = client_lang;
+	DEBUG(desync, 1, "client: %08x; %02x; %02x; %04x", _date, _date_fract, (int)ci->client_playas, ci->index);
 
 	/* Make sure companies to which people try to join are not autocleaned */
 	if (Company::IsValidID(playas)) _network_company_states[playas].months_empty = 0;
@@ -1395,6 +1396,8 @@ void NetworkUpdateClientInfo(ClientID client_id)
 	NetworkClientInfo *ci = NetworkFindClientInfoFromClientID(client_id);
 
 	if (ci == NULL) return;
+
+	DEBUG(desync, 1, "client: %08x; %02x; %02x; %04x", _date, _date_fract, (int)ci->client_playas, client_id);
 
 	FOR_ALL_CLIENT_SOCKETS(cs) {
 		SEND_COMMAND(PACKET_SERVER_CLIENT_INFO)(cs, ci);
