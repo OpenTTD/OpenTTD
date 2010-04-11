@@ -152,7 +152,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR)(NetworkClientSocket *cs, Netw
 	GetString(str, strid, lastof(str));
 
 	/* Only send when the current client was in game */
-	if (cs->status > STATUS_AUTH) {
+	if (cs->status > STATUS_AUTHORIZED) {
 		NetworkClientSocket *new_cs;
 		char client_name[NETWORK_CLIENT_NAME_LENGTH];
 
@@ -163,7 +163,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR)(NetworkClientSocket *cs, Netw
 		NetworkTextMessage(NETWORK_ACTION_LEAVE, CC_DEFAULT, false, client_name, NULL, strid);
 
 		FOR_ALL_CLIENT_SOCKETS(new_cs) {
-			if (new_cs->status > STATUS_AUTH && new_cs != cs) {
+			if (new_cs->status > STATUS_AUTHORIZED && new_cs != cs) {
 				/* Some errors we filter to a more general error. Clients don't have to know the real
 				 *  reason a joining failed. */
 				if (error == NETWORK_ERROR_NOT_AUTHORIZED || error == NETWORK_ERROR_NOT_EXPECTED || error == NETWORK_ERROR_WRONG_REVISION)
@@ -261,9 +261,9 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_WELCOME)
 	NetworkClientSocket *new_cs;
 
 	/* Invalid packet when status is AUTH or higher */
-	if (cs->status >= STATUS_AUTH) return NetworkCloseClient(cs, NETWORK_RECV_STATUS_MALFORMED_PACKET);
+	if (cs->status >= STATUS_AUTHORIZED) return NetworkCloseClient(cs, NETWORK_RECV_STATUS_MALFORMED_PACKET);
 
-	cs->status = STATUS_AUTH;
+	cs->status = STATUS_AUTHORIZED;
 	_network_game_info.clients_on++;
 
 	p = new Packet(PACKET_SERVER_WELCOME);
@@ -274,7 +274,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_WELCOME)
 
 		/* Transmit info about all the active clients */
 	FOR_ALL_CLIENT_SOCKETS(new_cs) {
-		if (new_cs != cs && new_cs->status > STATUS_AUTH)
+		if (new_cs != cs && new_cs->status > STATUS_AUTHORIZED)
 			SEND_COMMAND(PACKET_SERVER_CLIENT_INFO)(cs, new_cs->GetInfo());
 	}
 	/* Also send the info of the server */
@@ -325,12 +325,12 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_MAP)
 	static FILE *file_pointer;
 	static uint sent_packets; // How many packets we did send succecfully last time
 
-	if (cs->status < STATUS_AUTH) {
+	if (cs->status < STATUS_AUTHORIZED) {
 		/* Illegal call, return error and ignore the packet */
 		return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_AUTHORIZED);
 	}
 
-	if (cs->status == STATUS_AUTH) {
+	if (cs->status == STATUS_AUTHORIZED) {
 		const char *filename = "network_server.tmp";
 		Packet *p;
 
@@ -391,7 +391,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_MAP)
 						/* Check if we already have a new client to send the map to */
 						if (!new_map_client) {
 							/* If not, this client will get the map */
-							new_cs->status = STATUS_AUTH;
+							new_cs->status = STATUS_AUTHORIZED;
 							new_map_client = true;
 							SEND_COMMAND(PACKET_SERVER_MAP)(new_cs);
 						} else {
@@ -815,7 +815,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_GETMAP)
 
 	/* The client was never joined.. so this is impossible, right?
 	 *  Ignore the packet, give the client a warning, and close his connection */
-	if (cs->status < STATUS_AUTH || cs->HasClientQuit()) {
+	if (cs->status < STATUS_AUTHORIZED || cs->HasClientQuit()) {
 		return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_AUTHORIZED);
 	}
 
@@ -856,7 +856,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_MAP_OK)
 		cs->last_frame_server = _frame_counter;
 
 		FOR_ALL_CLIENT_SOCKETS(new_cs) {
-			if (new_cs->status > STATUS_AUTH) {
+			if (new_cs->status > STATUS_AUTHORIZED) {
 				SEND_COMMAND(PACKET_SERVER_CLIENT_INFO)(new_cs, cs->GetInfo());
 				SEND_COMMAND(PACKET_SERVER_JOIN)(new_cs, cs->client_id);
 			}
@@ -989,7 +989,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_ERROR)
 	NetworkTextMessage(NETWORK_ACTION_LEAVE, CC_DEFAULT, false, client_name, NULL, strid);
 
 	FOR_ALL_CLIENT_SOCKETS(new_cs) {
-		if (new_cs->status > STATUS_AUTH) {
+		if (new_cs->status > STATUS_AUTHORIZED) {
 			SEND_COMMAND(PACKET_SERVER_ERROR_QUIT)(new_cs, cs->client_id, errorno);
 		}
 	}
@@ -1016,7 +1016,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_QUIT)
 	NetworkTextMessage(NETWORK_ACTION_LEAVE, CC_DEFAULT, false, client_name, NULL, STR_NETWORK_MESSAGE_CLIENT_LEAVING);
 
 	FOR_ALL_CLIENT_SOCKETS(new_cs) {
-		if (new_cs->status > STATUS_AUTH) {
+		if (new_cs->status > STATUS_AUTHORIZED) {
 			SEND_COMMAND(PACKET_SERVER_QUIT)(new_cs, cs->client_id);
 		}
 	}
@@ -1027,7 +1027,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_QUIT)
 
 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_ACK)
 {
-	if (cs->status < STATUS_AUTH) {
+	if (cs->status < STATUS_AUTHORIZED) {
 		/* Illegal call, return error and ignore the packet */
 		return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_AUTHORIZED);
 	}
@@ -1154,7 +1154,7 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 
 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_CHAT)
 {
-	if (cs->status < STATUS_AUTH) {
+	if (cs->status < STATUS_AUTHORIZED) {
 		/* Illegal call, return error and ignore the packet */
 		return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_AUTHORIZED);
 	}

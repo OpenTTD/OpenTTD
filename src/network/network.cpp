@@ -452,7 +452,7 @@ static bool NetworkHasJoiningClient()
 {
 	const NetworkClientSocket *cs;
 	FOR_ALL_CLIENT_SOCKETS(cs) {
-		if (cs->status >= STATUS_AUTH && cs->status < STATUS_ACTIVE) return true;
+		if (cs->status >= STATUS_AUTHORIZED && cs->status < STATUS_ACTIVE) return true;
 	}
 
 	return false;
@@ -548,7 +548,7 @@ NetworkRecvStatus NetworkCloseClient(NetworkClientSocket *cs, NetworkRecvStatus 
 	 */
 	if (cs->sock == INVALID_SOCKET) return status;
 
-	if (status != NETWORK_RECV_STATUS_CONN_LOST && !cs->HasClientQuit() && _network_server && cs->status >= STATUS_AUTH) {
+	if (status != NETWORK_RECV_STATUS_CONN_LOST && !cs->HasClientQuit() && _network_server && cs->status >= STATUS_AUTHORIZED) {
 		/* We did not receive a leave message from this client... */
 		char client_name[NETWORK_CLIENT_NAME_LENGTH];
 		NetworkClientSocket *new_cs;
@@ -559,7 +559,7 @@ NetworkRecvStatus NetworkCloseClient(NetworkClientSocket *cs, NetworkRecvStatus 
 
 		/* Inform other clients of this... strange leaving ;) */
 		FOR_ALL_CLIENT_SOCKETS(new_cs) {
-			if (new_cs->status > STATUS_AUTH && cs != new_cs) {
+			if (new_cs->status > STATUS_AUTHORIZED && cs != new_cs) {
 				SEND_COMMAND(PACKET_SERVER_ERROR_QUIT)(new_cs, cs->client_id, NETWORK_ERROR_CONNECTION_LOST);
 			}
 		}
@@ -569,7 +569,7 @@ NetworkRecvStatus NetworkCloseClient(NetworkClientSocket *cs, NetworkRecvStatus 
 
 	if (_network_server) {
 		/* We just lost one client :( */
-		if (cs->status >= STATUS_AUTH) _network_game_info.clients_on--;
+		if (cs->status >= STATUS_AUTHORIZED) _network_game_info.clients_on--;
 		_network_clients_connected--;
 
 		SetWindowDirty(WC_CLIENT_LIST, 0);
