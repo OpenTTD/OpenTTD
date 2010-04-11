@@ -548,7 +548,7 @@ NetworkRecvStatus NetworkCloseClient(NetworkClientSocket *cs, NetworkRecvStatus 
 	 */
 	if (cs->sock == INVALID_SOCKET) return status;
 
-	if (status != NETWORK_RECV_STATUS_CONN_LOST && !cs->HasClientQuit() && _network_server && cs->status > STATUS_INACTIVE) {
+	if (status != NETWORK_RECV_STATUS_CONN_LOST && !cs->HasClientQuit() && _network_server && cs->status >= STATUS_AUTH) {
 		/* We did not receive a leave message from this client... */
 		char client_name[NETWORK_CLIENT_NAME_LENGTH];
 		NetworkClientSocket *new_cs;
