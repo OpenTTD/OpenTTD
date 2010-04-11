@@ -1095,7 +1095,7 @@ void NetworkGameLoop()
 			if (cp != NULL && _date == next_date && _date_fract == next_date_fract) {
 				_current_company = cp->company;
 				bool ret = DoCommandP(cp->tile, cp->p1, cp->p2, cp->cmd, NULL, cp->text);
-				DEBUG(net, 0, "injecting: %08x; %02x; %02x; %06x; %08x; %08x; %08x; \"%s\" -> %i", _date, _date_fract, (int)_current_company, cp->tile, cp->p1, cp->p2, cp->cmd, cp->text, (int)ret);
+				DEBUG(net, 0, "injecting: %08x; %02x; %02x; %06x; %08x; %08x; %08x; \"%s\" (%s) -> %i", _date, _date_fract, (int)_current_company, cp->tile, cp->p1, cp->p2, cp->cmd, cp->text, GetCommandName(cp->cmd), (int)ret);
 				assert(ret);
 				free(cp);
 				cp = NULL;

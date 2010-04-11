@@ -186,6 +186,8 @@ CommandProc CmdSetVehicleOnTime;
 CommandProc CmdAutofillTimetable;
 CommandProc CmdSetTimetableStart;
 
+#define DEF_CMD(proc, flags) {proc, #proc, flags}
+
 /**
  * The master command table
  *
@@ -194,141 +196,141 @@ CommandProc CmdSetTimetableStart;
  * as the value from the CMD_* enums.
  */
 static const Command _command_proc_table[] = {
-	{CmdBuildRailroadTrack,   CMD_NO_WATER | CMD_AUTO}, // CMD_BUILD_RAILROAD_TRACK
-	{CmdRemoveRailroadTrack,                 CMD_AUTO}, // CMD_REMOVE_RAILROAD_TRACK
-	{CmdBuildSingleRail,      CMD_NO_WATER | CMD_AUTO}, // CMD_BUILD_SINGLE_RAIL
-	{CmdRemoveSingleRail,                    CMD_AUTO}, // CMD_REMOVE_SINGLE_RAIL
-	{CmdLandscapeClear,                             0}, // CMD_LANDSCAPE_CLEAR
-	{CmdBuildBridge,                         CMD_AUTO}, // CMD_BUILD_BRIDGE
-	{CmdBuildRailStation,     CMD_NO_WATER | CMD_AUTO}, // CMD_BUILD_RAIL_STATION
-	{CmdBuildTrainDepot,      CMD_NO_WATER | CMD_AUTO}, // CMD_BUILD_TRAIN_DEPOT
-	{CmdBuildSingleSignal,                   CMD_AUTO}, // CMD_BUILD_SIGNALS
-	{CmdRemoveSingleSignal,                  CMD_AUTO}, // CMD_REMOVE_SIGNALS
-	{CmdTerraformLand,       CMD_ALL_TILES | CMD_AUTO}, // CMD_TERRAFORM_LAND
-	{CmdPurchaseLandArea,     CMD_NO_WATER | CMD_AUTO}, // CMD_PURCHASE_LAND_AREA
-	{CmdSellLandArea,                               0}, // CMD_SELL_LAND_AREA
-	{CmdBuildTunnel,                         CMD_AUTO}, // CMD_BUILD_TUNNEL
-	{CmdRemoveFromRailStation,                      0}, // CMD_REMOVE_FROM_RAIL_STATION
-	{CmdConvertRail,                                0}, // CMD_CONVERT_RAILD
-	{CmdBuildRailWaypoint,                          0}, // CMD_BUILD_RAIL_WAYPOINT
-	{CmdRenameWaypoint,                             0}, // CMD_RENAME_WAYPOINT
-	{CmdRemoveFromRailWaypoint,                     0}, // CMD_REMOVE_FROM_RAIL_WAYPOINT
+	DEF_CMD(CmdBuildRailroadTrack,       CMD_NO_WATER | CMD_AUTO), // CMD_BUILD_RAILROAD_TRACK
+	DEF_CMD(CmdRemoveRailroadTrack,                     CMD_AUTO), // CMD_REMOVE_RAILROAD_TRACK
+	DEF_CMD(CmdBuildSingleRail,          CMD_NO_WATER | CMD_AUTO), // CMD_BUILD_SINGLE_RAIL
+	DEF_CMD(CmdRemoveSingleRail,                        CMD_AUTO), // CMD_REMOVE_SINGLE_RAIL
+	DEF_CMD(CmdLandscapeClear,                                 0), // CMD_LANDSCAPE_CLEAR
+	DEF_CMD(CmdBuildBridge,                             CMD_AUTO), // CMD_BUILD_BRIDGE
+	DEF_CMD(CmdBuildRailStation,         CMD_NO_WATER | CMD_AUTO), // CMD_BUILD_RAIL_STATION
+	DEF_CMD(CmdBuildTrainDepot,          CMD_NO_WATER | CMD_AUTO), // CMD_BUILD_TRAIN_DEPOT
+	DEF_CMD(CmdBuildSingleSignal,                       CMD_AUTO), // CMD_BUILD_SIGNALS
+	DEF_CMD(CmdRemoveSingleSignal,                      CMD_AUTO), // CMD_REMOVE_SIGNALS
+	DEF_CMD(CmdTerraformLand,           CMD_ALL_TILES | CMD_AUTO), // CMD_TERRAFORM_LAND
+	DEF_CMD(CmdPurchaseLandArea,         CMD_NO_WATER | CMD_AUTO), // CMD_PURCHASE_LAND_AREA
+	DEF_CMD(CmdSellLandArea,                                   0), // CMD_SELL_LAND_AREA
+	DEF_CMD(CmdBuildTunnel,                             CMD_AUTO), // CMD_BUILD_TUNNEL
+	DEF_CMD(CmdRemoveFromRailStation,                          0), // CMD_REMOVE_FROM_RAIL_STATION
+	DEF_CMD(CmdConvertRail,                                    0), // CMD_CONVERT_RAILD
+	DEF_CMD(CmdBuildRailWaypoint,                              0), // CMD_BUILD_RAIL_WAYPOINT
+	DEF_CMD(CmdRenameWaypoint,                                 0), // CMD_RENAME_WAYPOINT
+	DEF_CMD(CmdRemoveFromRailWaypoint,                         0), // CMD_REMOVE_FROM_RAIL_WAYPOINT
 
-	{CmdBuildRoadStop,        CMD_NO_WATER | CMD_AUTO}, // CMD_BUILD_ROAD_STOP
-	{CmdRemoveRoadStop,                             0}, // CMD_REMOVE_ROAD_STOP
-	{CmdBuildLongRoad,        CMD_NO_WATER | CMD_AUTO}, // CMD_BUILD_LONG_ROAD
-	{CmdRemoveLongRoad,        CMD_NO_TEST | CMD_AUTO}, // CMD_REMOVE_LONG_ROAD; towns may disallow removing road bits (as they are connected) in test, but in exec they're removed and thus removing is allowed.
-	{CmdBuildRoad,            CMD_NO_WATER | CMD_AUTO}, // CMD_BUILD_ROAD
-	{CmdBuildRoadDepot,       CMD_NO_WATER | CMD_AUTO}, // CMD_BUILD_ROAD_DEPOT
+	DEF_CMD(CmdBuildRoadStop,            CMD_NO_WATER | CMD_AUTO), // CMD_BUILD_ROAD_STOP
+	DEF_CMD(CmdRemoveRoadStop,                                 0), // CMD_REMOVE_ROAD_STOP
+	DEF_CMD(CmdBuildLongRoad,            CMD_NO_WATER | CMD_AUTO), // CMD_BUILD_LONG_ROAD
+	DEF_CMD(CmdRemoveLongRoad,            CMD_NO_TEST | CMD_AUTO), // CMD_REMOVE_LONG_ROAD; towns may disallow removing road bits (as they are connected) in test, but in exec they're removed and thus removing is allowed.
+	DEF_CMD(CmdBuildRoad,                CMD_NO_WATER | CMD_AUTO), // CMD_BUILD_ROAD
+	DEF_CMD(CmdBuildRoadDepot,           CMD_NO_WATER | CMD_AUTO), // CMD_BUILD_ROAD_DEPOT
 
-	{CmdBuildAirport,         CMD_NO_WATER | CMD_AUTO}, // CMD_BUILD_AIRPORT
-	{CmdBuildDock,                           CMD_AUTO}, // CMD_BUILD_DOCK
-	{CmdBuildShipDepot,                      CMD_AUTO}, // CMD_BUILD_SHIP_DEPOT
-	{CmdBuildBuoy,                           CMD_AUTO}, // CMD_BUILD_BUOY
-	{CmdPlantTree,                           CMD_AUTO}, // CMD_PLANT_TREE
-	{CmdBuildRailVehicle,                           0}, // CMD_BUILD_RAIL_VEHICLE
-	{CmdMoveRailVehicle,                            0}, // CMD_MOVE_RAIL_VEHICLE
+	DEF_CMD(CmdBuildAirport,             CMD_NO_WATER | CMD_AUTO), // CMD_BUILD_AIRPORT
+	DEF_CMD(CmdBuildDock,                               CMD_AUTO), // CMD_BUILD_DOCK
+	DEF_CMD(CmdBuildShipDepot,                          CMD_AUTO), // CMD_BUILD_SHIP_DEPOT
+	DEF_CMD(CmdBuildBuoy,                               CMD_AUTO), // CMD_BUILD_BUOY
+	DEF_CMD(CmdPlantTree,                               CMD_AUTO), // CMD_PLANT_TREE
+	DEF_CMD(CmdBuildRailVehicle,                               0), // CMD_BUILD_RAIL_VEHICLE
+	DEF_CMD(CmdMoveRailVehicle,                                0), // CMD_MOVE_RAIL_VEHICLE
 
-	{CmdSellRailWagon,                              0}, // CMD_SELL_RAIL_WAGON
-	{CmdSendTrainToDepot,                           0}, // CMD_SEND_TRAIN_TO_DEPOT
-	{CmdForceTrainProceed,                          0}, // CMD_FORCE_TRAIN_PROCEED
-	{CmdReverseTrainDirection,                      0}, // CMD_REVERSE_TRAIN_DIRECTION
+	DEF_CMD(CmdSellRailWagon,                                  0), // CMD_SELL_RAIL_WAGON
+	DEF_CMD(CmdSendTrainToDepot,                               0), // CMD_SEND_TRAIN_TO_DEPOT
+	DEF_CMD(CmdForceTrainProceed,                              0), // CMD_FORCE_TRAIN_PROCEED
+	DEF_CMD(CmdReverseTrainDirection,                          0), // CMD_REVERSE_TRAIN_DIRECTION
 
-	{CmdModifyOrder,                                0}, // CMD_MODIFY_ORDER
-	{CmdSkipToOrder,                                0}, // CMD_SKIP_TO_ORDER
-	{CmdDeleteOrder,                                0}, // CMD_DELETE_ORDER
-	{CmdInsertOrder,                                0}, // CMD_INSERT_ORDER
+	DEF_CMD(CmdModifyOrder,                                    0), // CMD_MODIFY_ORDER
+	DEF_CMD(CmdSkipToOrder,                                    0), // CMD_SKIP_TO_ORDER
+	DEF_CMD(CmdDeleteOrder,                                    0), // CMD_DELETE_ORDER
+	DEF_CMD(CmdInsertOrder,                                    0), // CMD_INSERT_ORDER
 
-	{CmdChangeServiceInt,                           0}, // CMD_CHANGE_SERVICE_INT
+	DEF_CMD(CmdChangeServiceInt,                               0), // CMD_CHANGE_SERVICE_INT
 
-	{CmdBuildIndustry,                              0}, // CMD_BUILD_INDUSTRY
-	{CmdBuildCompanyHQ,       CMD_NO_WATER | CMD_AUTO}, // CMD_BUILD_COMPANY_HQ
-	{CmdSetCompanyManagerFace,                      0}, // CMD_SET_COMPANY_MANAGER_FACE
-	{CmdSetCompanyColour,                           0}, // CMD_SET_COMPANY_COLOUR
+	DEF_CMD(CmdBuildIndustry,                                  0), // CMD_BUILD_INDUSTRY
+	DEF_CMD(CmdBuildCompanyHQ,           CMD_NO_WATER | CMD_AUTO), // CMD_BUILD_COMPANY_HQ
+	DEF_CMD(CmdSetCompanyManagerFace,                          0), // CMD_SET_COMPANY_MANAGER_FACE
+	DEF_CMD(CmdSetCompanyColour,                               0), // CMD_SET_COMPANY_COLOUR
 
-	{CmdIncreaseLoan,                               0}, // CMD_INCREASE_LOAN
-	{CmdDecreaseLoan,                               0}, // CMD_DECREASE_LOAN
+	DEF_CMD(CmdIncreaseLoan,                                   0), // CMD_INCREASE_LOAN
+	DEF_CMD(CmdDecreaseLoan,                                   0), // CMD_DECREASE_LOAN
 
-	{CmdWantEnginePreview,                          0}, // CMD_WANT_ENGINE_PREVIEW
+	DEF_CMD(CmdWantEnginePreview,                              0), // CMD_WANT_ENGINE_PREVIEW
 
-	{CmdRenameVehicle,                              0}, // CMD_RENAME_VEHICLE
-	{CmdRenameEngine,                               0}, // CMD_RENAME_ENGINE
+	DEF_CMD(CmdRenameVehicle,                                  0), // CMD_RENAME_VEHICLE
+	DEF_CMD(CmdRenameEngine,                                   0), // CMD_RENAME_ENGINE
 
-	{CmdRenameCompany,                              0}, // CMD_RENAME_COMPANY
-	{CmdRenamePresident,                            0}, // CMD_RENAME_PRESIDENT
+	DEF_CMD(CmdRenameCompany,                                  0), // CMD_RENAME_COMPANY
+	DEF_CMD(CmdRenamePresident,                                0), // CMD_RENAME_PRESIDENT
 
-	{CmdRenameStation,                              0}, // CMD_RENAME_STATION
+	DEF_CMD(CmdRenameStation,                                  0), // CMD_RENAME_STATION
 
-	{CmdSellAircraft,                               0}, // CMD_SELL_AIRCRAFT
+	DEF_CMD(CmdSellAircraft,                                   0), // CMD_SELL_AIRCRAFT
 
-	{CmdBuildAircraft,                              0}, // CMD_BUILD_AIRCRAFT
-	{CmdSendAircraftToHangar,                       0}, // CMD_SEND_AIRCRAFT_TO_HANGAR
-	{CmdRefitAircraft,                              0}, // CMD_REFIT_AIRCRAFT
+	DEF_CMD(CmdBuildAircraft,                                  0), // CMD_BUILD_AIRCRAFT
+	DEF_CMD(CmdSendAircraftToHangar,                           0), // CMD_SEND_AIRCRAFT_TO_HANGAR
+	DEF_CMD(CmdRefitAircraft,                                  0), // CMD_REFIT_AIRCRAFT
 
-	{CmdPlaceSign,                                  0}, // CMD_PLACE_SIGN
-	{CmdRenameSign,                                 0}, // CMD_RENAME_SIGN
+	DEF_CMD(CmdPlaceSign,                                      0), // CMD_PLACE_SIGN
+	DEF_CMD(CmdRenameSign,                                     0), // CMD_RENAME_SIGN
 
-	{CmdBuildRoadVeh,                               0}, // CMD_BUILD_ROAD_VEH
-	{CmdSellRoadVeh,                                0}, // CMD_SELL_ROAD_VEH
-	{CmdSendRoadVehToDepot,                         0}, // CMD_SEND_ROADVEH_TO_DEPOT
-	{CmdTurnRoadVeh,                                0}, // CMD_TURN_ROADVEH
-	{CmdRefitRoadVeh,                               0}, // CMD_REFIT_ROAD_VEH
+	DEF_CMD(CmdBuildRoadVeh,                                   0), // CMD_BUILD_ROAD_VEH
+	DEF_CMD(CmdSellRoadVeh,                                    0), // CMD_SELL_ROAD_VEH
+	DEF_CMD(CmdSendRoadVehToDepot,                             0), // CMD_SEND_ROADVEH_TO_DEPOT
+	DEF_CMD(CmdTurnRoadVeh,                                    0), // CMD_TURN_ROADVEH
+	DEF_CMD(CmdRefitRoadVeh,                                   0), // CMD_REFIT_ROAD_VEH
 
-	{CmdPause,                             CMD_SERVER}, // CMD_PAUSE
+	DEF_CMD(CmdPause,                                 CMD_SERVER), // CMD_PAUSE
 
-	{CmdBuyShareInCompany,                          0}, // CMD_BUY_SHARE_IN_COMPANY
-	{CmdSellShareInCompany,                         0}, // CMD_SELL_SHARE_IN_COMPANY
-	{CmdBuyCompany,                                 0}, // CMD_BUY_COMANY
+	DEF_CMD(CmdBuyShareInCompany,                              0), // CMD_BUY_SHARE_IN_COMPANY
+	DEF_CMD(CmdSellShareInCompany,                             0), // CMD_SELL_SHARE_IN_COMPANY
+	DEF_CMD(CmdBuyCompany,                                     0), // CMD_BUY_COMANY
 
-	{CmdFoundTown,                        CMD_NO_TEST}, // CMD_FOUND_TOWN; founding random town can fail only in exec run
-	{CmdRenameTown,                        CMD_SERVER}, // CMD_RENAME_TOWN
-	{CmdDoTownAction,                               0}, // CMD_DO_TOWN_ACTION
+	DEF_CMD(CmdFoundTown,                            CMD_NO_TEST), // CMD_FOUND_TOWN; founding random town can fail only in exec run
+	DEF_CMD(CmdRenameTown,                            CMD_SERVER), // CMD_RENAME_TOWN
+	DEF_CMD(CmdDoTownAction,                                   0), // CMD_DO_TOWN_ACTION
 
-	{CmdSellShip,                                   0}, // CMD_SELL_SHIP
-	{CmdBuildShip,                                  0}, // CMD_BUILD_SHIP
-	{CmdSendShipToDepot,                            0}, // CMD_SEND_SHIP_TO_DEPOT
-	{CmdRefitShip,                                  0}, // CMD_REFIT_SHIP
+	DEF_CMD(CmdSellShip,                                       0), // CMD_SELL_SHIP
+	DEF_CMD(CmdBuildShip,                                      0), // CMD_BUILD_SHIP
+	DEF_CMD(CmdSendShipToDepot,                                0), // CMD_SEND_SHIP_TO_DEPOT
+	DEF_CMD(CmdRefitShip,                                      0), // CMD_REFIT_SHIP
 
-	{CmdOrderRefit,                                 0}, // CMD_ORDER_REFIT
-	{CmdCloneOrder,                                 0}, // CMD_CLONE_ORDER
+	DEF_CMD(CmdOrderRefit,                                     0), // CMD_ORDER_REFIT
+	DEF_CMD(CmdCloneOrder,                                     0), // CMD_CLONE_ORDER
 
-	{CmdClearArea,                        CMD_NO_TEST}, // CMD_CLEAR_AREA; destroying multi-tile houses makes town rating differ between test and execution
+	DEF_CMD(CmdClearArea,                            CMD_NO_TEST), // CMD_CLEAR_AREA; destroying multi-tile houses makes town rating differ between test and execution
 
-	{CmdMoneyCheat,                       CMD_OFFLINE}, // CMD_MONEY_CHEAT
-	{CmdBuildCanal,                          CMD_AUTO}, // CMD_BUILD_CANAL
-	{CmdCompanyCtrl,                    CMD_SPECTATOR}, // CMD_COMPANY_CTRL
+	DEF_CMD(CmdMoneyCheat,                           CMD_OFFLINE), // CMD_MONEY_CHEAT
+	DEF_CMD(CmdBuildCanal,                              CMD_AUTO), // CMD_BUILD_CANAL
+	DEF_CMD(CmdCompanyCtrl,                        CMD_SPECTATOR), // CMD_COMPANY_CTRL
 
-	{CmdLevelLand, CMD_ALL_TILES | CMD_NO_TEST | CMD_AUTO}, // CMD_LEVEL_LAND; test run might clear tiles multiple times, in execution that only happens once
+	DEF_CMD(CmdLevelLand, CMD_ALL_TILES | CMD_NO_TEST | CMD_AUTO), // CMD_LEVEL_LAND; test run might clear tiles multiple times, in execution that only happens once
 
-	{CmdRefitRailVehicle,                           0}, // CMD_REFIT_RAIL_VEHICLE
-	{CmdRestoreOrderIndex,                          0}, // CMD_RESTORE_ORDER_INDEX
-	{CmdBuildLock,                           CMD_AUTO}, // CMD_BUILD_LOCK
+	DEF_CMD(CmdRefitRailVehicle,                               0), // CMD_REFIT_RAIL_VEHICLE
+	DEF_CMD(CmdRestoreOrderIndex,                              0), // CMD_RESTORE_ORDER_INDEX
+	DEF_CMD(CmdBuildLock,                               CMD_AUTO), // CMD_BUILD_LOCK
 
-	{CmdBuildSignalTrack,                    CMD_AUTO}, // CMD_BUILD_SIGNAL_TRACK
-	{CmdRemoveSignalTrack,                   CMD_AUTO}, // CMD_REMOVE_SIGNAL_TRACK
+	DEF_CMD(CmdBuildSignalTrack,                        CMD_AUTO), // CMD_BUILD_SIGNAL_TRACK
+	DEF_CMD(CmdRemoveSignalTrack,                       CMD_AUTO), // CMD_REMOVE_SIGNAL_TRACK
 
-	{CmdGiveMoney,                                  0}, // CMD_GIVE_MONEY
-	{CmdChangeSetting,                     CMD_SERVER}, // CMD_CHANGE_SETTING
-	{CmdChangeCompanySetting,                       0}, // CMD_CHANGE_COMPANY_SETTING
-	{CmdSetAutoReplace,                             0}, // CMD_SET_AUTOREPLACE
-	{CmdCloneVehicle,                     CMD_NO_TEST}, // CMD_CLONE_VEHICLE; NewGRF callbacks influence building and refitting making it impossible to correctly estimate the cost
-	{CmdStartStopVehicle,                           0}, // CMD_START_STOP_VEHICLE
-	{CmdMassStartStopVehicle,                       0}, // CMD_MASS_START_STOP
-	{CmdAutoreplaceVehicle,                         0}, // CMD_AUTOREPLACE_VEHICLE
-	{CmdDepotSellAllVehicles,                       0}, // CMD_DEPOT_SELL_ALL_VEHICLES
-	{CmdDepotMassAutoReplace,                       0}, // CMD_DEPOT_MASS_AUTOREPLACE
-	{CmdCreateGroup,                                0}, // CMD_CREATE_GROUP
-	{CmdDeleteGroup,                                0}, // CMD_DELETE_GROUP
-	{CmdRenameGroup,                                0}, // CMD_RENAME_GROUP
-	{CmdAddVehicleGroup,                            0}, // CMD_ADD_VEHICLE_GROUP
-	{CmdAddSharedVehicleGroup,                      0}, // CMD_ADD_SHARE_VEHICLE_GROUP
-	{CmdRemoveAllVehiclesGroup,                     0}, // CMD_REMOVE_ALL_VEHICLES_GROUP
-	{CmdSetGroupReplaceProtection,                  0}, // CMD_SET_GROUP_REPLACE_PROTECTION
-	{CmdMoveOrder,                                  0}, // CMD_MOVE_ORDER
-	{CmdChangeTimetable,                            0}, // CMD_CHANGE_TIMETABLE
-	{CmdSetVehicleOnTime,                           0}, // CMD_SET_VEHICLE_ON_TIME
-	{CmdAutofillTimetable,                          0}, // CMD_AUTOFILL_TIMETABLE
-	{CmdSetTimetableStart,                          0}, // CMD_SET_TIMETABLE_START
+	DEF_CMD(CmdGiveMoney,                                      0), // CMD_GIVE_MONEY
+	DEF_CMD(CmdChangeSetting,                         CMD_SERVER), // CMD_CHANGE_SETTING
+	DEF_CMD(CmdChangeCompanySetting,                           0), // CMD_CHANGE_COMPANY_SETTING
+	DEF_CMD(CmdSetAutoReplace,                                 0), // CMD_SET_AUTOREPLACE
+	DEF_CMD(CmdCloneVehicle,                         CMD_NO_TEST), // CMD_CLONE_VEHICLE; NewGRF callbacks influence building and refitting making it impossible to correctly estimate the cost
+	DEF_CMD(CmdStartStopVehicle,                               0), // CMD_START_STOP_VEHICLE
+	DEF_CMD(CmdMassStartStopVehicle,                           0), // CMD_MASS_START_STOP
+	DEF_CMD(CmdAutoreplaceVehicle,                             0), // CMD_AUTOREPLACE_VEHICLE
+	DEF_CMD(CmdDepotSellAllVehicles,                           0), // CMD_DEPOT_SELL_ALL_VEHICLES
+	DEF_CMD(CmdDepotMassAutoReplace,                           0), // CMD_DEPOT_MASS_AUTOREPLACE
+	DEF_CMD(CmdCreateGroup,                                    0), // CMD_CREATE_GROUP
+	DEF_CMD(CmdDeleteGroup,                                    0), // CMD_DELETE_GROUP
+	DEF_CMD(CmdRenameGroup,                                    0), // CMD_RENAME_GROUP
+	DEF_CMD(CmdAddVehicleGroup,                                0), // CMD_ADD_VEHICLE_GROUP
+	DEF_CMD(CmdAddSharedVehicleGroup,                          0), // CMD_ADD_SHARE_VEHICLE_GROUP
+	DEF_CMD(CmdRemoveAllVehiclesGroup,                         0), // CMD_REMOVE_ALL_VEHICLES_GROUP
+	DEF_CMD(CmdSetGroupReplaceProtection,                      0), // CMD_SET_GROUP_REPLACE_PROTECTION
+	DEF_CMD(CmdMoveOrder,                                      0), // CMD_MOVE_ORDER
+	DEF_CMD(CmdChangeTimetable,                                0), // CMD_CHANGE_TIMETABLE
+	DEF_CMD(CmdSetVehicleOnTime,                               0), // CMD_SET_VEHICLE_ON_TIME
+	DEF_CMD(CmdAutofillTimetable,                              0), // CMD_AUTOFILL_TIMETABLE
+	DEF_CMD(CmdSetTimetableStart,                              0), // CMD_SET_TIMETABLE_START
 };
 
 /*!
@@ -358,6 +360,20 @@ byte GetCommandFlags(uint32 cmd)
 	assert(IsValidCommand(cmd));
 
 	return _command_proc_table[cmd & CMD_ID_MASK].flags;
+}
+
+/*!
+ * This function mask the parameter with CMD_ID_MASK and returns
+ * the name which belongs to the given command.
+ *
+ * @param cmd The integer value of the command
+ * @return The name for this command
+ */
+const char *GetCommandName(uint32 cmd)
+{
+	assert(IsValidCommand(cmd));
+
+	return _command_proc_table[cmd & CMD_ID_MASK].name;
 }
 
 static int _docommand_recursive = 0;
@@ -632,7 +648,7 @@ CommandCost DoCommandPInternal(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd,
 		return_dcpi(CommandCost(), false);
 	}
 #endif /* ENABLE_NETWORK */
-	DEBUG(desync, 1, "cmd: %08x; %02x; %02x; %06x; %08x; %08x; %08x; \"%s\"", _date, _date_fract, (int)_current_company, tile, p1, p2, cmd & ~CMD_NETWORK_COMMAND, text);
+	DEBUG(desync, 1, "cmd: %08x; %02x; %02x; %06x; %08x; %08x; %08x; \"%s\" (%s)", _date, _date_fract, (int)_current_company, tile, p1, p2, cmd & ~CMD_NETWORK_COMMAND, text, GetCommandName(cmd));
 
 	/* Actually try and execute the command. If no cost-type is given
 	 * use the construction one */

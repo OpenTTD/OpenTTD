@@ -67,6 +67,10 @@ bool IsValidCommand(uint32 cmd);
  */
 byte GetCommandFlags(uint32 cmd);
 /**
+ * Returns the name of a given command.
+ */
+const char *GetCommandName(uint32 cmd);
+/**
  * Returns the current money available which can be used for a command.
  */
 Money GetAvailableMoneyForCommand();

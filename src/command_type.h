@@ -370,8 +370,9 @@ typedef CommandCost CommandProc(TileIndex tile, DoCommandFlag flags, uint32 p1, 
  * the #CMD_AUTO, #CMD_OFFLINE and #CMD_SERVER values.
  */
 struct Command {
-	CommandProc *proc;
-	byte flags;
+	CommandProc *proc; ///< The procedure to actually executing
+	const char *name;  ///< A human readable name for the procedure
+	byte flags;        ///< The (command) flags to that apply to this command
 };
 
 /**
