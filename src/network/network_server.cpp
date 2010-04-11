@@ -779,10 +779,12 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMPANY_PASSWORD)
 	char password[NETWORK_PASSWORD_LENGTH];
 	p->Recv_string(password, sizeof(password));
 
-	/* Check company password. Allow joining if we cleared the password meanwhile */
-	const NetworkClientInfo *ci = cs->GetInfo();
-	if (!StrEmpty(_network_company_states[ci->client_playas].password) &&
-			strcmp(password, _network_company_states[ci->client_playas].password) != 0) {
+	/* Check company password. Allow joining if we cleared the password meanwhile.
+	 * Also, check the company is still valid - client could be moved to spectators
+	 * in the middle of the authorization process */
+	CompanyID playas = cs->GetInfo()->client_playas;
+	if (Company::IsValidID(playas) && !StrEmpty(_network_company_states[playas].password) &&
+			strcmp(password, _network_company_states[playas].password) != 0) {
 		/* Password is invalid */
 		return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_WRONG_PASSWORD);
 	}
