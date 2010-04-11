@@ -1077,6 +1077,9 @@ void NetworkGameLoop()
 	if (!NetworkReceive()) return;
 
 	if (_network_server) {
+		/* Log the sync state to check for in-syncedness of replays. */
+		if (_date_fract == 0) DEBUG(desync, 1, "sync: %08x; %02x; %08x; %08x", _date, _date_fract, _random.state[0], _random.state[1]);
+
 #ifdef DEBUG_DUMP_COMMANDS
 		/* Loading of the debug commands from -ddesync>=1 */
 		static FILE *f = FioFOpenFile("commands.log", "rb", SAVE_DIR);
@@ -1092,7 +1095,7 @@ void NetworkGameLoop()
 			if (cp != NULL && _date == next_date && _date_fract == next_date_fract) {
 				_current_company = cp->company;
 				bool ret = DoCommandP(cp->tile, cp->p1, cp->p2, cp->cmd, NULL, cp->text);
-				DEBUG(net, 0, "injecting: %08x; %02x; %02x; %06x; %08x; %08x; %08x; %s -> %i", _date, _date_fract, (int)_current_company, cp->tile, cp->p1, cp->p2, cp->cmd, cp->text, (int)ret);
+				DEBUG(net, 0, "injecting: %08x; %02x; %02x; %06x; %08x; %08x; %08x; \"%s\" -> %i", _date, _date_fract, (int)_current_company, cp->tile, cp->p1, cp->p2, cp->cmd, cp->text, (int)ret);
 				assert(ret);
 				free(cp);
 				cp = NULL;
@@ -1112,9 +1115,9 @@ void NetworkGameLoop()
 			}
 
 			if (strncmp(p, "cmd: ", 5) == 0) {
-				cp = MallocT<CommandPacket>(1);
+				cp = CallocT<CommandPacket>(1);
 				int company;
-				int ret = sscanf(p + 5, "%x; %x; %x; %x; %x; %x; %x; %s", &next_date, &next_date_fract, &company, &cp->tile, &cp->p1, &cp->p2, &cp->cmd, cp->text);
+				int ret = sscanf(p + 5, "%x; %x; %x; %x; %x; %x; %x; \"%[^\"]\"", &next_date, &next_date_fract, &company, &cp->tile, &cp->p1, &cp->p2, &cp->cmd, cp->text);
 				/* There are 8 pieces of data to read, however the last is a
 				 * string that might or might not exist. Ignore it if that
 				 * string misses because in 99% of the time it's not used. */
