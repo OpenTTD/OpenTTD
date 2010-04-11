@@ -27,6 +27,7 @@ enum RoadType {
 	INVALID_ROADTYPE = 0xFF ///< flag for invalid roadtype
 };
 DECLARE_POSTFIX_INCREMENT(RoadType)
+template <> struct EnumPropsT<RoadType> : MakeEnumPropsT<RoadType, byte, ROADTYPE_BEGIN, ROADTYPE_END, INVALID_ROADTYPE> {};
 
 /**
  * The different roadtypes we support, but then a bitmask of them
@@ -67,5 +68,6 @@ enum RoadBits {
 	ROAD_ALL  = ROAD_X  | ROAD_Y     ///< Full 4-way crossing
 };
 DECLARE_ENUM_AS_BIT_SET(RoadBits)
+template <> struct EnumPropsT<RoadBits> : MakeEnumPropsT<RoadBits, byte, ROAD_NONE, ROAD_ALL, ROAD_NONE, 4> {};
 
 #endif /* ROAD_TYPE_H */

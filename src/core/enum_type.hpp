@@ -58,14 +58,16 @@ template <typename Tenum_t> struct EnumPropsT;
  *  @param Tbegin first valid value from the contiguous range (i.e. TRACK_BEGIN)
  *  @param Tend one past the last valid value from the contiguous range (i.e. TRACK_END)
  *  @param Tinvalid value used as invalid value marker (i.e. INVALID_TRACK)
+ *  @param Tnum_bits Number of bits for storing the enum in command parameters
  */
-template <typename Tenum_t, typename Tstorage_t, Tenum_t Tbegin, Tenum_t Tend, Tenum_t Tinvalid>
+template <typename Tenum_t, typename Tstorage_t, Tenum_t Tbegin, Tenum_t Tend, Tenum_t Tinvalid, uint Tnum_bits = 8 * sizeof(Tstorage_t)>
 struct MakeEnumPropsT {
 	typedef Tenum_t type;                     ///< enum type (i.e. Trackdir)
 	typedef Tstorage_t storage;               ///< storage type (i.e. byte)
 	static const Tenum_t begin = Tbegin;      ///< lowest valid value (i.e. TRACKDIR_BEGIN)
 	static const Tenum_t end = Tend;          ///< one after the last valid value (i.e. TRACKDIR_END)
 	static const Tenum_t invalid = Tinvalid;  ///< what value is used as invalid value (i.e. INVALID_TRACKDIR)
+	static const uint num_bits = Tnum_bits;   ///< Number of bits for storing the enum in command parameters
 };
 
 

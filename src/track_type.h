@@ -33,7 +33,7 @@ enum Track {
 /** Allow incrementing of Track variables */
 DECLARE_POSTFIX_INCREMENT(Track)
 /** Define basic enum properties */
-template <> struct EnumPropsT<Track> : MakeEnumPropsT<Track, byte, TRACK_BEGIN, TRACK_END, INVALID_TRACK> {};
+template <> struct EnumPropsT<Track> : MakeEnumPropsT<Track, byte, TRACK_BEGIN, TRACK_END, INVALID_TRACK, 3> {};
 typedef TinyEnumT<Track> TrackByte;
 
 
@@ -94,7 +94,7 @@ enum Trackdir {
 };
 
 /** Define basic enum properties */
-template <> struct EnumPropsT<Trackdir> : MakeEnumPropsT<Trackdir, byte, TRACKDIR_BEGIN, TRACKDIR_END, INVALID_TRACKDIR> {};
+template <> struct EnumPropsT<Trackdir> : MakeEnumPropsT<Trackdir, byte, TRACKDIR_BEGIN, TRACKDIR_END, INVALID_TRACKDIR, 4> {};
 typedef TinyEnumT<Trackdir> TrackdirByte;
 
 /**
