@@ -522,6 +522,9 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Nilai Pe
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Daftar tarif kargo
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Hari transit
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Pembayaran untuk mengirimkan 10 unit ( atau 10,000 liter ) untuk jarak 20 kotak
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}Aktifkan semua
+STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT}{BLACK}Non-aktifkan semua
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Tampilkan semua kargo pada grafik tarif pembayaran kargo
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Pilih jenis kargo yang akan ditampilkan
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 
@@ -3224,6 +3227,13 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}Pengatur
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Ubah pengaturan AI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Muat ulang AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Matikan fitur AI, muat ulang script, dan restart AI
+STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Berhenti saat:
+STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Berhenti pada
+STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Ketika pesan log AI sesuai dengan isi kotak, permainan diberhentikan.
+STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Persis Besar-Kecil
+STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Hidup matikan pengecekan besar-kecil huruf pada pesan AI dengan kotak pencarian
+STR_AI_DEBUG_CONTINUE                                           :{BLACK}Lanjutkan
+STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}lanjutkan proses AI
 
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD tidak menyertakan AI ...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... tidak ditemukan AI !
@@ -3527,6 +3537,7 @@ STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Ujung je
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Jembatan lebih rendah dari daratan
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Awal dan akhir harus segaris
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... kedua ujung jembatan harus berada di daratan
+STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... jembatan terlalu panjang
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Tidak dapat membangun terowongan disini...
