@@ -209,22 +209,39 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_CHECK_NEWGRFS)(NetworkClientSocket *
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_NEED_PASSWORD)(NetworkClientSocket *cs, NetworkPasswordType type)
+DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_NEED_GAME_PASSWORD)(NetworkClientSocket *cs)
 {
 	/*
-	 * Packet: SERVER_NEED_PASSWORD
-	 * Function: Indication to the client that the server needs a password
-	 * Data:
-	 *    uint8:  Type of password
+	 * Packet: PACKET_SERVER_NEED_GAME_PASSWORD
+	 * Function: Indication to the client that the server needs a game password
 	 */
 
-	/* Invalid packet when status is AUTH or higher */
-	if (cs->status >= STATUS_AUTH) return NetworkCloseClient(cs, NETWORK_RECV_STATUS_MALFORMED_PACKET);
+	/* Invalid packet when status is STATUS_AUTH_GAME or higher */
+	if (cs->status >= STATUS_AUTH_GAME) return NetworkCloseClient(cs, NETWORK_RECV_STATUS_MALFORMED_PACKET);
 
-	cs->status = STATUS_AUTHORIZING;
+	cs->status = STATUS_AUTH_GAME;
 
-	Packet *p = new Packet(PACKET_SERVER_NEED_PASSWORD);
-	p->Send_uint8(type);
+	Packet *p = new Packet(PACKET_SERVER_NEED_GAME_PASSWORD);
+	cs->Send_Packet(p);
+	return NETWORK_RECV_STATUS_OKAY;
+}
+
+DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_NEED_COMPANY_PASSWORD)(NetworkClientSocket *cs)
+{
+	/*
+	 * Packet: PACKET_SERVER_NEED_COMPANY_PASSWORD
+	 * Function: Indication to the client that the server needs a company password
+	 * Data:
+	 *    uint32:  Generation seed
+	 *    string:  Network ID of the server
+	 */
+
+	/* Invalid packet when status is STATUS_AUTH_COMPANY or higher */
+	if (cs->status >= STATUS_AUTH_COMPANY) return NetworkCloseClient(cs, NETWORK_RECV_STATUS_MALFORMED_PACKET);
+
+	cs->status = STATUS_AUTH_COMPANY;
+
+	Packet *p = new Packet(PACKET_SERVER_NEED_COMPANY_PASSWORD);
 	p->Send_uint32(_settings_game.game_creation.generation_seed);
 	p->Send_string(_settings_client.network.network_id);
 	cs->Send_Packet(p);
@@ -647,11 +664,11 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_NEWGRFS_CHECKED)
 
 	/* We now want a password from the client else we do not allow him in! */
 	if (!StrEmpty(_settings_client.network.server_password)) {
-		return SEND_COMMAND(PACKET_SERVER_NEED_PASSWORD)(cs, NETWORK_GAME_PASSWORD);
+		return SEND_COMMAND(PACKET_SERVER_NEED_GAME_PASSWORD)(cs);
 	}
 
 	if (Company::IsValidID(ci->client_playas) && !StrEmpty(_network_company_states[ci->client_playas].password)) {
-		return SEND_COMMAND(PACKET_SERVER_NEED_PASSWORD)(cs, NETWORK_COMPANY_PASSWORD);
+		return SEND_COMMAND(PACKET_SERVER_NEED_COMPANY_PASSWORD)(cs);
 	}
 
 	return SEND_COMMAND(PACKET_SERVER_WELCOME)(cs);
@@ -728,42 +745,47 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 	return SEND_COMMAND(PACKET_SERVER_CHECK_NEWGRFS)(cs);
 }
 
-DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_PASSWORD)
+DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_GAME_PASSWORD)
 {
-	NetworkPasswordType type;
-	char password[NETWORK_PASSWORD_LENGTH];
-	const NetworkClientInfo *ci;
-
-	type = (NetworkPasswordType)p->Recv_uint8();
-	p->Recv_string(password, sizeof(password));
-
-	if (cs->status == STATUS_AUTHORIZING && type == NETWORK_GAME_PASSWORD) {
-		/* Check game-password */
-		if (strcmp(password, _settings_client.network.server_password) != 0) {
-			/* Password is invalid */
-			return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_WRONG_PASSWORD);
-		}
-
-		ci = cs->GetInfo();
-
-		if (Company::IsValidID(ci->client_playas) && !StrEmpty(_network_company_states[ci->client_playas].password)) {
-			return SEND_COMMAND(PACKET_SERVER_NEED_PASSWORD)(cs, NETWORK_COMPANY_PASSWORD);
-		}
-
-		/* Valid password, allow user */
-		return SEND_COMMAND(PACKET_SERVER_WELCOME)(cs);
-	} else if (cs->status == STATUS_AUTHORIZING && type == NETWORK_COMPANY_PASSWORD) {
-		ci = cs->GetInfo();
-
-		if (strcmp(password, _network_company_states[ci->client_playas].password) != 0) {
-			/* Password is invalid */
-			return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_WRONG_PASSWORD);
-		}
-
-		return SEND_COMMAND(PACKET_SERVER_WELCOME)(cs);
+	if (cs->status != STATUS_AUTH_GAME) {
+		return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
 	}
 
-	return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
+	char password[NETWORK_PASSWORD_LENGTH];
+	p->Recv_string(password, sizeof(password));
+
+	/* Check game password */
+	if (strcmp(password, _settings_client.network.server_password) != 0) {
+		/* Password is invalid */
+		return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_WRONG_PASSWORD);
+	}
+
+	const NetworkClientInfo *ci = cs->GetInfo();
+	if (Company::IsValidID(ci->client_playas) && !StrEmpty(_network_company_states[ci->client_playas].password)) {
+		return SEND_COMMAND(PACKET_SERVER_NEED_COMPANY_PASSWORD)(cs);
+	}
+
+	/* Valid password, allow user */
+	return SEND_COMMAND(PACKET_SERVER_WELCOME)(cs);
+}
+
+DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMPANY_PASSWORD)
+{
+	if (cs->status != STATUS_AUTH_COMPANY) {
+		return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
+	}
+
+	char password[NETWORK_PASSWORD_LENGTH];
+	p->Recv_string(password, sizeof(password));
+
+	/* Check company password */
+	const NetworkClientInfo *ci = cs->GetInfo();
+	if (strcmp(password, _network_company_states[ci->client_playas].password) != 0) {
+		/* Password is invalid */
+		return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_WRONG_PASSWORD);
+	}
+
+	return SEND_COMMAND(PACKET_SERVER_WELCOME)(cs);
 }
 
 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_GETMAP)
@@ -1271,8 +1293,10 @@ static NetworkServerPacket * const _network_server_packet[] = {
 	RECEIVE_COMMAND(PACKET_CLIENT_COMPANY_INFO),
 	NULL, // PACKET_SERVER_COMPANY_INFO,
 	NULL, // PACKET_SERVER_CLIENT_INFO,
-	NULL, // PACKET_SERVER_NEED_PASSWORD,
-	RECEIVE_COMMAND(PACKET_CLIENT_PASSWORD),
+	NULL, // PACKET_SERVER_NEED_GAME_PASSWORD,
+	NULL, // PACKET_SERVER_NEED_COMPANY_PASSWORD,
+	RECEIVE_COMMAND(PACKET_CLIENT_GAME_PASSWORD),
+	RECEIVE_COMMAND(PACKET_CLIENT_COMPANY_PASSWORD),
 	NULL, // PACKET_SERVER_WELCOME,
 	RECEIVE_COMMAND(PACKET_CLIENT_GETMAP),
 	NULL, // PACKET_SERVER_WAIT,

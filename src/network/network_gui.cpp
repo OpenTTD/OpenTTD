@@ -2210,8 +2210,13 @@ struct NetworkJoinStatusWindow : Window {
 		if (StrEmpty(str)) {
 			NetworkDisconnect();
 			ShowNetworkGameWindow();
-		} else {
-			SEND_COMMAND(PACKET_CLIENT_PASSWORD)(this->password_type, str);
+			return;
+		}
+
+		switch (this->password_type) {
+			case NETWORK_GAME_PASSWORD:    SEND_COMMAND(PACKET_CLIENT_GAME_PASSWORD)   (str); break;
+			case NETWORK_COMPANY_PASSWORD: SEND_COMMAND(PACKET_CLIENT_COMPANY_PASSWORD)(str); break;
+			default: NOT_REACHED();
 		}
 	}
 };

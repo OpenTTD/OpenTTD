@@ -167,18 +167,32 @@ DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_NEWGRFS_CHECKED)
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_PASSWORD)(NetworkPasswordType type, const char *password)
+DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_GAME_PASSWORD)(const char *password)
 {
 	/*
-	 * Packet: CLIENT_PASSWORD
+	 * Packet: CLIENT_GAME_PASSWORD
 	 * Function: Send a password to the server to authorize
 	 * Data:
 	 *    uint8:  NetworkPasswordType
 	 *    String: Password
 	 */
-	Packet *p = new Packet(PACKET_CLIENT_PASSWORD);
-	p->Send_uint8 (type);
-	p->Send_string(type == NETWORK_GAME_PASSWORD ? password : GenerateCompanyPasswordHash(password));
+	Packet *p = new Packet(PACKET_CLIENT_GAME_PASSWORD);
+	p->Send_string(password);
+	MY_CLIENT->Send_Packet(p);
+	return NETWORK_RECV_STATUS_OKAY;
+}
+
+DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_COMPANY_PASSWORD)(const char *password)
+{
+	/*
+	 * Packet: CLIENT_COMPANY_PASSWORD
+	 * Function: Send a password to the server to authorize
+	 * Data:
+	 *    uint8:  NetworkPasswordType
+	 *    String: Password
+	 */
+	Packet *p = new Packet(PACKET_CLIENT_COMPANY_PASSWORD);
+	p->Send_string(GenerateCompanyPasswordHash(password));
 	MY_CLIENT->Send_Packet(p);
 	return NETWORK_RECV_STATUS_OKAY;
 }
@@ -535,30 +549,32 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CHECK_NEWGRFS)
 	return ret;
 }
 
-DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_NEED_PASSWORD)
+DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_NEED_GAME_PASSWORD)
 {
-	NetworkPasswordType type = (NetworkPasswordType)p->Recv_uint8();
-
 	const char *password = _network_join_server_password;
-
-	switch (type) {
-		case NETWORK_COMPANY_PASSWORD:
-			/* Initialize the password hash salting variables. */
-			_password_game_seed = p->Recv_uint32();
-			p->Recv_string(_password_server_id, sizeof(_password_server_id));
-			if (MY_CLIENT->HasClientQuit()) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
-			password = _network_join_company_password;
-			/* FALL THROUGH */
-		case NETWORK_GAME_PASSWORD:
-			if (StrEmpty(password)) {
-				ShowNetworkNeedPassword(type);
-			} else {
-				return SEND_COMMAND(PACKET_CLIENT_PASSWORD)(type, password);
-			}
-			return NETWORK_RECV_STATUS_OKAY;
-
-		default: return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+	if (!StrEmpty(password)) {
+		return SEND_COMMAND(PACKET_CLIENT_GAME_PASSWORD)(password);
 	}
+
+	ShowNetworkNeedPassword(NETWORK_GAME_PASSWORD);
+
+	return NETWORK_RECV_STATUS_OKAY;
+}
+
+DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_NEED_COMPANY_PASSWORD)
+{
+	_password_game_seed = p->Recv_uint32();
+	p->Recv_string(_password_server_id, sizeof(_password_server_id));
+	if (MY_CLIENT->HasClientQuit()) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+
+	const char *password = _network_join_company_password;
+	if (!StrEmpty(password)) {
+		return SEND_COMMAND(PACKET_CLIENT_COMPANY_PASSWORD)(password);
+	}
+
+	ShowNetworkNeedPassword(NETWORK_COMPANY_PASSWORD);
+
+	return NETWORK_RECV_STATUS_OKAY;
 }
 
 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_WELCOME)
@@ -921,8 +937,10 @@ static NetworkClientPacket * const _network_client_packet[] = {
 	NULL, // PACKET_CLIENT_COMPANY_INFO,
 	RECEIVE_COMMAND(PACKET_SERVER_COMPANY_INFO),
 	RECEIVE_COMMAND(PACKET_SERVER_CLIENT_INFO),
-	RECEIVE_COMMAND(PACKET_SERVER_NEED_PASSWORD),
-	NULL, // PACKET_CLIENT_PASSWORD,
+	RECEIVE_COMMAND(PACKET_SERVER_NEED_GAME_PASSWORD),
+	RECEIVE_COMMAND(PACKET_SERVER_NEED_COMPANY_PASSWORD),
+	NULL, // PACKET_CLIENT_GAME_PASSWORD,
+	NULL, // PACKET_CLIENT_COMPANY_PASSWORD,
 	RECEIVE_COMMAND(PACKET_SERVER_WELCOME),
 	NULL, // PACKET_CLIENT_GETMAP,
 	RECEIVE_COMMAND(PACKET_SERVER_WAIT),
