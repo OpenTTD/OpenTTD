@@ -23,7 +23,7 @@
 
 /**
  * Binary Heap as C++ template.
- *  A carrier which keeps it's items automaticaly holds the smallest item at
+ *  A carrier which keeps its items automaticaly holds the smallest item at
  *  the first position. The order of items is maintained by using a binary tree.
  *  The implementation is used for priority queue's.
  *

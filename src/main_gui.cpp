@@ -47,7 +47,7 @@ void CcGiveMoney(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2
 #ifdef ENABLE_NETWORK
 	if (result.Failed() || !_settings_game.economy.give_money) return;
 
-	/* Inform the company of the action of one of it's clients (controllers). */
+	/* Inform the company of the action of one of its clients (controllers). */
 	char msg[64];
 	SetDParam(0, p2);
 	GetString(msg, STR_COMPANY_NAME, lastof(msg));

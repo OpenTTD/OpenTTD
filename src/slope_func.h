@@ -57,7 +57,7 @@ static inline bool IsHalftileSlope(Slope s)
  * Non-halftile slopes remain unmodified.
  *
  * @param s A #Slope.
- * @return The slope s without it's halftile slope.
+ * @return The slope s without its halftile slope.
  */
 static inline Slope RemoveHalftileSlope(Slope s)
 {

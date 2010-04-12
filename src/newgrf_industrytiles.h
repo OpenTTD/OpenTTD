@@ -37,7 +37,7 @@ bool StartStopIndustryTileAnimation(const Industry *ind, IndustryAnimationTrigge
 enum IndustryTileTrigger {
 	/* The tile of the industry has been triggered during the tileloop. */
 	INDTILE_TRIGGER_TILE_LOOP       = 0x01,
-	/* The industry has been triggered via it's tick. */
+	/* The industry has been triggered via its tick. */
 	INDUSTRY_TRIGGER_INDUSTRY_TICK  = 0x02,
 	/* Cargo has been delivered. */
 	INDUSTRY_TRIGGER_RECEIVED_CARGO = 0x04,

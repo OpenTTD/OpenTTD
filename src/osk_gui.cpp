@@ -465,7 +465,7 @@ void ShowOnScreenKeyboard(QueryStringBaseWindow *parent, int button, int cancel,
  * Updates the original text of the OSK so when the 'parent' changes the
  * original and you press on cancel you won't get the 'old' original text
  * but the updated one.
- * @param parent window that just updated it's orignal text
+ * @param parent window that just updated its orignal text
  * @param button widget number of parent's textbox to update
  */
 void UpdateOSKOriginalText(const QueryStringBaseWindow *parent, int button)

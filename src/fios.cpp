@@ -246,7 +246,7 @@ bool FiosFileScanner::AddFile(const char *filename, size_t basepath_length)
 	fios->type = type;
 	strecpy(fios->name, filename, lastof(fios->name));
 
-	/* If the file doesn't have a title, use it's filename */
+	/* If the file doesn't have a title, use its filename */
 	const char *t = fios_title;
 	if (StrEmpty(fios_title)) {
 		t = strrchr(filename, PATHSEPCHAR);
@@ -609,7 +609,7 @@ public:
 static ScenarioScanner _scanner;
 
 /**
- * Check whether we've got a given scenario based on it's unique ID.
+ * Check whether we've got a given scenario based on its unique ID.
  * @param ci the content info to compare it to
  * @param md5sum whether to look at the md5sum or the id
  * @return true if we've got the scenario

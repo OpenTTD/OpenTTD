@@ -673,7 +673,7 @@ void AddSortableSpriteToDraw(SpriteID image, PaletteID pal, int x, int y, int w,
 	}
 
 	if (_draw_bounding_boxes && (image != SPR_EMPTY_BOUNDING_BOX)) {
-		/* Compute maximal extents of sprite and it's bounding box */
+		/* Compute maximal extents of sprite and its bounding box */
 		left   = min(left  , RemapCoords(x + w          , y + bb_offset_y, z + bb_offset_z).x);
 		right  = max(right , RemapCoords(x + bb_offset_x, y + h          , z + bb_offset_z).x + 1);
 		top    = min(top   , RemapCoords(x + bb_offset_x, y + bb_offset_y, z + dz         ).y);

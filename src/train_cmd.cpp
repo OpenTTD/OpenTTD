@@ -878,7 +878,7 @@ static void RestoreTrainBackup(TrainList &list)
 }
 
 /**
- * Remove the given wagon from it's consist.
+ * Remove the given wagon from its consist.
  * @param part the part of the train to remove.
  * @param chain whether to remove the whole chain.
  */
@@ -2815,7 +2815,7 @@ void Train::MarkDirty()
 }
 
 /**
- * This function looks at the vehicle and updates it's speed (cur_speed
+ * This function looks at the vehicle and updates its speed (cur_speed
  * and subspeed) variables. Furthermore, it returns the distance that
  * the train can drive this tick. This distance is expressed as 256 * n,
  * where n is the number of straight (long) tracks the train can

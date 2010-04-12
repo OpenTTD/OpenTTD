@@ -314,7 +314,7 @@ public:
 	static VehicleID BuildVehicle(TileIndex depot, EngineID engine_id);
 
 	/**
-	 * Clones a vehicle at the given depot, copying or cloning it's orders.
+	 * Clones a vehicle at the given depot, copying or cloning its orders.
 	 * @param depot The depot where the vehicle will be build.
 	 * @param vehicle_id The vehicle to use as example for the new vehicle.
 	 * @param share_orders Should the orders be copied or shared?

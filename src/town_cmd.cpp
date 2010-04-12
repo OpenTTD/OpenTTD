@@ -1657,7 +1657,7 @@ struct SpotData {
 
 /**
  * CircularTileSearch callback; finds the tile furthest from any
- * water. slightly bit tricky, since it has to do a search of it's own
+ * water. slightly bit tricky, since it has to do a search of its own
  * in order to find the distance to the water from each square in the
  * radius.
  *

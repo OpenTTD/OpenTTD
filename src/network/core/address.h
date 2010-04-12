@@ -129,7 +129,7 @@ public:
 	const char *GetAddressAsString(bool with_family = true);
 
 	/**
-	 * Get the address in it's internal representation.
+	 * Get the address in its internal representation.
 	 * @return the address
 	 */
 	const sockaddr_storage *GetAddress();

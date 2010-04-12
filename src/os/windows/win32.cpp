@@ -82,7 +82,7 @@ void ShowOSErrorBox(const char *buf, bool system)
 /* suballocator - satisfies most requests with a reusable static instance.
  * this avoids hundreds of alloc/free which would fragment the heap.
  * To guarantee concurrency, we fall back to malloc if the instance is
- * already in use (it's important to avoid suprises since this is such a
+ * already in use (it's important to avoid surprises since this is such a
  * low-level routine). */
 static DIR _global_dir;
 static LONG _global_dir_is_in_use = false;

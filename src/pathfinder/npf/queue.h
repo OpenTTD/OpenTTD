@@ -55,7 +55,7 @@ struct Queue {
 	 */
 	Queue_DeleteProc *del;
 
-	/* Clears the queue, by removing all values from it. It's state is
+	/* Clears the queue, by removing all values from it. Its state is
 	 * effectively reset. If free_items is true, each of the items cleared
 	 * in this way are free()'d.
 	 */

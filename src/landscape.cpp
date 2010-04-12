@@ -291,7 +291,7 @@ int GetSlopeZInCorner(Slope tileh, Corner corner)
 /**
  * Determine the Z height of the corners of a specific tile edge
  *
- * @note If a tile has a non-continuous halftile foundation, a corner can have different heights wrt. it's edges.
+ * @note If a tile has a non-continuous halftile foundation, a corner can have different heights wrt. its edges.
  *
  * @pre z1 and z2 must be initialized (typ. with TileZ). The corner heights just get added.
  *

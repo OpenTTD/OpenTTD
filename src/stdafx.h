@@ -228,9 +228,9 @@
 #if defined(DOS)
 	/* The DOS port does not have all signals/signal functions. */
 	#define strsignal(sig) ""
-	/* Use 'no floating point' for bus errors; SIGBUS does not
-	 * exist for does, SIGNOFP not for other platforms. So it's
-	 * fairly safe the interchange those. */
+	/* Use 'no floating point' for bus errors; SIGBUS does not exist
+	 * for DOS, SIGNOFP for other platforms. So it's fairly safe
+	 * to interchange those. */
 	#define SIGBUS SIGNOFP
 #endif
 

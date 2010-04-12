@@ -406,7 +406,7 @@ public:
 	 * @pre AIMap::DistanceManhattan(tile, front) == 1.
 	 * @param tile The tile that might have a signal.
 	 * @param front The tile in front of 'tile'.
-	 * @return The SignalType of the signal on 'tile' with it's front to 'front'.
+	 * @return The SignalType of the signal on 'tile' facing to 'front'.
 	 */
 	static SignalType GetSignalType(TileIndex tile, TileIndex front);
 

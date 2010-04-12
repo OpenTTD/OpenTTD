@@ -825,7 +825,7 @@ void ClientNetworkContentSocketHandler::UnselectAll()
 	}
 }
 
-/** Toggle the state of a content info and check it's dependencies */
+/** Toggle the state of a content info and check its dependencies */
 void ClientNetworkContentSocketHandler::ToggleSelectedState(const ContentInfo *ci)
 {
 	switch (ci->state) {

@@ -225,7 +225,7 @@ static CommandCost RemoveRoad(TileIndex tile, DoCommandFlag flags, RoadBits piec
 				SetRoadTypes(other_end, GetRoadTypes(other_end) & ~RoadTypeToRoadTypes(rt));
 				SetRoadTypes(tile, GetRoadTypes(tile) & ~RoadTypeToRoadTypes(rt));
 
-				/* If the owner of the bridge sells all it's road, also move the ownership
+				/* If the owner of the bridge sells all its road, also move the ownership
 				 * to the owner of the other roadtype. */
 				RoadType other_rt = (rt == ROADTYPE_ROAD) ? ROADTYPE_TRAM : ROADTYPE_ROAD;
 				Owner other_owner = GetRoadOwner(tile, other_rt);

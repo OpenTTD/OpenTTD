@@ -1195,7 +1195,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 			payment->SetCargo(v->cargo_type);
 
 			if (HasBit(ge->acceptance_pickup, GoodsEntry::ACCEPTANCE) && !(u->current_order.GetUnloadType() & OUFB_TRANSFER)) {
-				/* The cargo has reached it's final destination, the packets may now be destroyed */
+				/* The cargo has reached its final destination, the packets may now be destroyed */
 				remaining = v->cargo.MoveTo<StationCargoList>(NULL, amount_unloaded, VehicleCargoList::MTA_FINAL_DELIVERY, payment, last_visited);
 
 				dirty_vehicle = true;

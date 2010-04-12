@@ -226,10 +226,10 @@ static FORCEINLINE int32 ClampToI32(const int64 a)
  */
 static FORCEINLINE uint16 ClampToU16(const uint64 a)
 {
-	/* MSVC thinks, in it's infinite wisdom, that int min(int, int) is a better
+	/* MSVC thinks, in its infinite wisdom, that int min(int, int) is a better
 	 * match for min(uint64, uint) than uint64 min(uint64, uint64). As such we
-	 * need to cast the UINT16_MAX to prevent MSVC from displaying it's
-	 * infinite with loads of warnings. */
+	 * need to cast the UINT16_MAX to prevent MSVC from displaying its
+	 * infinite loads of warnings. */
 	return (uint16)min<uint64>(a, (uint64)UINT16_MAX);
 }
 

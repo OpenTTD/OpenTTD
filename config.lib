@@ -1181,7 +1181,7 @@ make_compiler_cflags() {
 			# GCC 4.2+ automatically assumes that signed overflows do
 			# not occur in signed arithmetics, whereas we are not
 			# sure that they will not happen. It furthermore complains
-			# about it's own optimized code in some places.
+			# about its own optimized code in some places.
 			flags="$flags -fno-strict-overflow"
 			ldflags="$ldflags -fno-strict-overflow"
 		fi

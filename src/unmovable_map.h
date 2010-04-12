@@ -256,7 +256,7 @@ static inline void MakeUnmovableHQHelper(TileIndex t, uint8 section, Owner o)
 }
 
 /**
- * Make an HQ with the give tile as it's northern tile.
+ * Make an HQ with the given tile as its northern tile.
  * @param t the tile to make the northern tile of a HQ.
  * @param o the owner of the HQ.
  */

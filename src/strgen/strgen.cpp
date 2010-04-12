@@ -816,7 +816,7 @@ static void ParseFile(const char *file, bool english)
 	FILE *in;
 	char buf[2048];
 
-	/* Only look at the final filename to determine whether it's be base language or not */
+	/* Only look at the final filename to determine whether it's the base language or not */
 	const char *cur_file = strrchr(_file, PATHSEPCHAR);
 	const char *next_file = strrchr(file, PATHSEPCHAR);
 	_translation = next_file != NULL && cur_file != NULL && strcmp(cur_file, next_file) != 0;

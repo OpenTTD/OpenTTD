@@ -322,7 +322,7 @@ static inline void MakeSnow(TileIndex t, uint density = 0)
 }
 
 /**
- * Clear the snow from a tile and return it to it's previous type.
+ * Clear the snow from a tile and return it to its previous type.
  * @param t the tile to clear of snow
  * @pre GetClearGround(t) == CLEAR_SNOW
  */

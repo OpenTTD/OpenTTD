@@ -1142,8 +1142,8 @@ void VehicleEnterDepot(Vehicle *v)
 
 
 /**
- * Move a vehicle in the game state; that is moving it's position in
- * the position hashes and marking it's location in the viewport dirty
+ * Move a vehicle in the game state; that is moving its position in
+ * the position hashes and marking its location in the viewport dirty
  * if requested.
  * @param v vehicle to move
  * @param update_viewport whether to dirty the viewport

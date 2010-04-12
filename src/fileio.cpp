@@ -1127,7 +1127,7 @@ void *ReadFileToMem(const char *filename, size_t *lenp, size_t maxsize)
 
 
 /**
- * Scan a single directory (and recursively it's children) and add
+ * Scan a single directory (and recursively its children) and add
  * any graphics sets that are found.
  * @param fs              the file scanner to add the files to
  * @param extension       the extension of files to search for.

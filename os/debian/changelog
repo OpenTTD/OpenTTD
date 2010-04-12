@@ -216,7 +216,7 @@ openttd (0.6.0-2) unstable; urgency=low
   [ Matthijs Kooijman ]
   * Don't install anything into ~ during make install, this prevented
     successful builds on some architectures. Fix imported from upstream.
-  * Put the homepage in it's own Homepage field instead of in the description.
+  * Put the homepage in its own Homepage field instead of in the description.
   * Bump Standards-Version to 3.7.3
 
  -- Jordi Mallach <jordi@debian.org>  Thu, 03 Apr 2008 00:07:10 +0200

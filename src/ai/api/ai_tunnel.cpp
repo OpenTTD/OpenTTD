@@ -25,7 +25,7 @@
 {
 	if (!::IsValidTile(tile)) return INVALID_TILE;
 
-	/* If it's a tunnel alread, take the easy way out! */
+	/* If it's a tunnel already, take the easy way out! */
 	if (IsTunnelTile(tile)) return ::GetOtherTunnelEnd(tile);
 
 	uint start_z;

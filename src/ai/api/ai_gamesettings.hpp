@@ -44,7 +44,7 @@ public:
 	 * @param setting The setting to check for existence.
 	 * @warning Results of this function are not governed by the API. This means
 	 *          that a setting that previously existed can be gone or has
-	 *          changed it's name.
+	 *          changed its name.
 	 * @note Results achieved in the past offer no gurantee for the future.
 	 * @return True if and only if the setting is valid.
 	 */
@@ -57,7 +57,7 @@ public:
 	 * @warning Results of this function are not governed by the API. This means
 	 *          that the value of settings may be out of the expected range. It
 	 *          also means that a setting that previously existed can be gone or
-	 *          has changed it's name/characteristics.
+	 *          has changed its name/characteristics.
 	 * @note Results achieved in the past offer no gurantee for the future.
 	 * @return The value for the setting.
 	 */
