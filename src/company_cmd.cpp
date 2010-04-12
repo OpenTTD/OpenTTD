@@ -969,6 +969,13 @@ CommandCost CmdSetCompanyColour(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 		ResetVehicleColourMap();
 		MarkWholeScreenDirty();
 
+		/* All graph related to companies use the company colour. */
+		InvalidateWindowData(WC_INCOME_GRAPH, 0);
+		InvalidateWindowData(WC_OPERATING_PROFIT, 0);
+		InvalidateWindowData(WC_DELIVERED_CARGO, 0);
+		InvalidateWindowData(WC_PERFORMANCE_HISTORY, 0);
+		InvalidateWindowData(WC_COMPANY_VALUE, 0);
+
 		/* Company colour data is indirectly cached. */
 		Vehicle *v;
 		FOR_ALL_VEHICLES(v) {

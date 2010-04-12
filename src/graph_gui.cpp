@@ -528,7 +528,7 @@ public:
 
 	virtual void OnInvalidateData(int data)
 	{
-		this->OnTick();
+		this->UpdateStatistics(true);
 	}
 
 	/**
