@@ -353,6 +353,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_MAP)
 
 		sent_packets = 4; // We start with trying 4 packets
 
+		NetworkSyncCommandQueue(cs);
 		cs->status = STATUS_MAP;
 		/* Mark the start of download */
 		cs->last_frame = _frame_counter;

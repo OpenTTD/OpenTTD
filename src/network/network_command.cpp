@@ -130,6 +130,24 @@ void NetworkSend_Command(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, Comma
 }
 
 /**
+ * Sync our local command queue to the command queue of the given
+ * socket. This is needed for the case where we receive a command
+ * before saving the game for a joining client, but without the
+ * execution of those commands. Not syncing those commands means
+ * that the client will never get them and as such will be in a
+ * desynced state from the time it started with joining.
+ * @param cs The client to sync the queue to.
+ */
+void NetworkSyncCommandQueue(NetworkClientSocket *cs)
+{
+	for (CommandPacket *p = _local_command_queue; p != NULL; p = p->next) {
+		CommandPacket c = *p;
+		c.callback = 0;
+		NetworkAddCommandQueue(c, cs);
+	}
+}
+
+/**
  * Execute all commands on the local command queue that ought to be executed this frame.
  */
 void NetworkExecuteLocalCommandQueue()
