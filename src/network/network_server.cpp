@@ -152,7 +152,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR)(NetworkClientSocket *cs, Netw
 	GetString(str, strid, lastof(str));
 
 	/* Only send when the current client was in game */
-	if (cs->status > STATUS_AUTH) {
+	if (cs->status > STATUS_AUTHORIZED) {
 		NetworkClientSocket *new_cs;
 		char client_name[NETWORK_CLIENT_NAME_LENGTH];
 
@@ -163,7 +163,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR)(NetworkClientSocket *cs, Netw
 		NetworkTextMessage(NETWORK_ACTION_LEAVE, CC_DEFAULT, false, client_name, NULL, strid);
 
 		FOR_ALL_CLIENT_SOCKETS(new_cs) {
-			if (new_cs->status > STATUS_AUTH && new_cs != cs) {
+			if (new_cs->status > STATUS_AUTHORIZED && new_cs != cs) {
 				/* Some errors we filter to a more general error. Clients don't have to know the real
 				 *  reason a joining failed. */
 				if (error == NETWORK_ERROR_NOT_AUTHORIZED || error == NETWORK_ERROR_NOT_EXPECTED || error == NETWORK_ERROR_WRONG_REVISION)
@@ -209,22 +209,39 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_CHECK_NEWGRFS)(NetworkClientSocket *
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_NEED_PASSWORD)(NetworkClientSocket *cs, NetworkPasswordType type)
+DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_NEED_GAME_PASSWORD)(NetworkClientSocket *cs)
 {
 	/*
-	 * Packet: SERVER_NEED_PASSWORD
-	 * Function: Indication to the client that the server needs a password
-	 * Data:
-	 *    uint8:  Type of password
+	 * Packet: PACKET_SERVER_NEED_GAME_PASSWORD
+	 * Function: Indication to the client that the server needs a game password
 	 */
 
-	/* Invalid packet when status is AUTH or higher */
-	if (cs->status >= STATUS_AUTH) return NetworkCloseClient(cs, NETWORK_RECV_STATUS_MALFORMED_PACKET);
+	/* Invalid packet when status is STATUS_AUTH_GAME or higher */
+	if (cs->status >= STATUS_AUTH_GAME) return NetworkCloseClient(cs, NETWORK_RECV_STATUS_MALFORMED_PACKET);
 
-	cs->status = STATUS_AUTHORIZING;
+	cs->status = STATUS_AUTH_GAME;
 
-	Packet *p = new Packet(PACKET_SERVER_NEED_PASSWORD);
-	p->Send_uint8(type);
+	Packet *p = new Packet(PACKET_SERVER_NEED_GAME_PASSWORD);
+	cs->Send_Packet(p);
+	return NETWORK_RECV_STATUS_OKAY;
+}
+
+DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_NEED_COMPANY_PASSWORD)(NetworkClientSocket *cs)
+{
+	/*
+	 * Packet: PACKET_SERVER_NEED_COMPANY_PASSWORD
+	 * Function: Indication to the client that the server needs a company password
+	 * Data:
+	 *    uint32:  Generation seed
+	 *    string:  Network ID of the server
+	 */
+
+	/* Invalid packet when status is STATUS_AUTH_COMPANY or higher */
+	if (cs->status >= STATUS_AUTH_COMPANY) return NetworkCloseClient(cs, NETWORK_RECV_STATUS_MALFORMED_PACKET);
+
+	cs->status = STATUS_AUTH_COMPANY;
+
+	Packet *p = new Packet(PACKET_SERVER_NEED_COMPANY_PASSWORD);
 	p->Send_uint32(_settings_game.game_creation.generation_seed);
 	p->Send_string(_settings_client.network.network_id);
 	cs->Send_Packet(p);
@@ -244,9 +261,9 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_WELCOME)
 	NetworkClientSocket *new_cs;
 
 	/* Invalid packet when status is AUTH or higher */
-	if (cs->status >= STATUS_AUTH) return NetworkCloseClient(cs, NETWORK_RECV_STATUS_MALFORMED_PACKET);
+	if (cs->status >= STATUS_AUTHORIZED) return NetworkCloseClient(cs, NETWORK_RECV_STATUS_MALFORMED_PACKET);
 
-	cs->status = STATUS_AUTH;
+	cs->status = STATUS_AUTHORIZED;
 	_network_game_info.clients_on++;
 
 	p = new Packet(PACKET_SERVER_WELCOME);
@@ -257,7 +274,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_WELCOME)
 
 		/* Transmit info about all the active clients */
 	FOR_ALL_CLIENT_SOCKETS(new_cs) {
-		if (new_cs != cs && new_cs->status > STATUS_AUTH)
+		if (new_cs != cs && new_cs->status > STATUS_AUTHORIZED)
 			SEND_COMMAND(PACKET_SERVER_CLIENT_INFO)(cs, new_cs->GetInfo());
 	}
 	/* Also send the info of the server */
@@ -308,12 +325,12 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_MAP)
 	static FILE *file_pointer;
 	static uint sent_packets; // How many packets we did send succecfully last time
 
-	if (cs->status < STATUS_AUTH) {
+	if (cs->status < STATUS_AUTHORIZED) {
 		/* Illegal call, return error and ignore the packet */
 		return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_AUTHORIZED);
 	}
 
-	if (cs->status == STATUS_AUTH) {
+	if (cs->status == STATUS_AUTHORIZED) {
 		const char *filename = "network_server.tmp";
 		Packet *p;
 
@@ -375,7 +392,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_MAP)
 						/* Check if we already have a new client to send the map to */
 						if (!new_map_client) {
 							/* If not, this client will get the map */
-							new_cs->status = STATUS_AUTH;
+							new_cs->status = STATUS_AUTHORIZED;
 							new_map_client = true;
 							SEND_COMMAND(PACKET_SERVER_MAP)(new_cs);
 						} else {
@@ -648,11 +665,11 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_NEWGRFS_CHECKED)
 
 	/* We now want a password from the client else we do not allow him in! */
 	if (!StrEmpty(_settings_client.network.server_password)) {
-		return SEND_COMMAND(PACKET_SERVER_NEED_PASSWORD)(cs, NETWORK_GAME_PASSWORD);
+		return SEND_COMMAND(PACKET_SERVER_NEED_GAME_PASSWORD)(cs);
 	}
 
 	if (Company::IsValidID(ci->client_playas) && !StrEmpty(_network_company_states[ci->client_playas].password)) {
-		return SEND_COMMAND(PACKET_SERVER_NEED_PASSWORD)(cs, NETWORK_COMPANY_PASSWORD);
+		return SEND_COMMAND(PACKET_SERVER_NEED_COMPANY_PASSWORD)(cs);
 	}
 
 	return SEND_COMMAND(PACKET_SERVER_WELCOME)(cs);
@@ -729,42 +746,51 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 	return SEND_COMMAND(PACKET_SERVER_CHECK_NEWGRFS)(cs);
 }
 
-DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_PASSWORD)
+DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_GAME_PASSWORD)
 {
-	NetworkPasswordType type;
-	char password[NETWORK_PASSWORD_LENGTH];
-	const NetworkClientInfo *ci;
-
-	type = (NetworkPasswordType)p->Recv_uint8();
-	p->Recv_string(password, sizeof(password));
-
-	if (cs->status == STATUS_AUTHORIZING && type == NETWORK_GAME_PASSWORD) {
-		/* Check game-password */
-		if (strcmp(password, _settings_client.network.server_password) != 0) {
-			/* Password is invalid */
-			return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_WRONG_PASSWORD);
-		}
-
-		ci = cs->GetInfo();
-
-		if (Company::IsValidID(ci->client_playas) && !StrEmpty(_network_company_states[ci->client_playas].password)) {
-			return SEND_COMMAND(PACKET_SERVER_NEED_PASSWORD)(cs, NETWORK_COMPANY_PASSWORD);
-		}
-
-		/* Valid password, allow user */
-		return SEND_COMMAND(PACKET_SERVER_WELCOME)(cs);
-	} else if (cs->status == STATUS_AUTHORIZING && type == NETWORK_COMPANY_PASSWORD) {
-		ci = cs->GetInfo();
-
-		if (strcmp(password, _network_company_states[ci->client_playas].password) != 0) {
-			/* Password is invalid */
-			return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_WRONG_PASSWORD);
-		}
-
-		return SEND_COMMAND(PACKET_SERVER_WELCOME)(cs);
+	if (cs->status != STATUS_AUTH_GAME) {
+		return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
 	}
 
-	return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
+	char password[NETWORK_PASSWORD_LENGTH];
+	p->Recv_string(password, sizeof(password));
+
+	/* Check game password. Allow joining if we cleared the password meanwhile */
+	if (!StrEmpty(_settings_client.network.server_password) &&
+			strcmp(password, _settings_client.network.server_password) != 0) {
+		/* Password is invalid */
+		return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_WRONG_PASSWORD);
+	}
+
+	const NetworkClientInfo *ci = cs->GetInfo();
+	if (Company::IsValidID(ci->client_playas) && !StrEmpty(_network_company_states[ci->client_playas].password)) {
+		return SEND_COMMAND(PACKET_SERVER_NEED_COMPANY_PASSWORD)(cs);
+	}
+
+	/* Valid password, allow user */
+	return SEND_COMMAND(PACKET_SERVER_WELCOME)(cs);
+}
+
+DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMPANY_PASSWORD)
+{
+	if (cs->status != STATUS_AUTH_COMPANY) {
+		return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
+	}
+
+	char password[NETWORK_PASSWORD_LENGTH];
+	p->Recv_string(password, sizeof(password));
+
+	/* Check company password. Allow joining if we cleared the password meanwhile.
+	 * Also, check the company is still valid - client could be moved to spectators
+	 * in the middle of the authorization process */
+	CompanyID playas = cs->GetInfo()->client_playas;
+	if (Company::IsValidID(playas) && !StrEmpty(_network_company_states[playas].password) &&
+			strcmp(password, _network_company_states[playas].password) != 0) {
+		/* Password is invalid */
+		return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_WRONG_PASSWORD);
+	}
+
+	return SEND_COMMAND(PACKET_SERVER_WELCOME)(cs);
 }
 
 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_GETMAP)
@@ -792,7 +818,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_GETMAP)
 
 	/* The client was never joined.. so this is impossible, right?
 	 *  Ignore the packet, give the client a warning, and close his connection */
-	if (cs->status < STATUS_AUTH || cs->HasClientQuit()) {
+	if (cs->status < STATUS_AUTHORIZED || cs->HasClientQuit()) {
 		return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_AUTHORIZED);
 	}
 
@@ -833,7 +859,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_MAP_OK)
 		cs->last_frame_server = _frame_counter;
 
 		FOR_ALL_CLIENT_SOCKETS(new_cs) {
-			if (new_cs->status > STATUS_AUTH) {
+			if (new_cs->status > STATUS_AUTHORIZED) {
 				SEND_COMMAND(PACKET_SERVER_CLIENT_INFO)(new_cs, cs->GetInfo());
 				SEND_COMMAND(PACKET_SERVER_JOIN)(new_cs, cs->client_id);
 			}
@@ -966,7 +992,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_ERROR)
 	NetworkTextMessage(NETWORK_ACTION_LEAVE, CC_DEFAULT, false, client_name, NULL, strid);
 
 	FOR_ALL_CLIENT_SOCKETS(new_cs) {
-		if (new_cs->status > STATUS_AUTH) {
+		if (new_cs->status > STATUS_AUTHORIZED) {
 			SEND_COMMAND(PACKET_SERVER_ERROR_QUIT)(new_cs, cs->client_id, errorno);
 		}
 	}
@@ -993,7 +1019,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_QUIT)
 	NetworkTextMessage(NETWORK_ACTION_LEAVE, CC_DEFAULT, false, client_name, NULL, STR_NETWORK_MESSAGE_CLIENT_LEAVING);
 
 	FOR_ALL_CLIENT_SOCKETS(new_cs) {
-		if (new_cs->status > STATUS_AUTH) {
+		if (new_cs->status > STATUS_AUTHORIZED) {
 			SEND_COMMAND(PACKET_SERVER_QUIT)(new_cs, cs->client_id);
 		}
 	}
@@ -1004,7 +1030,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_QUIT)
 
 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_ACK)
 {
-	if (cs->status < STATUS_AUTH) {
+	if (cs->status < STATUS_AUTHORIZED) {
 		/* Illegal call, return error and ignore the packet */
 		return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_AUTHORIZED);
 	}
@@ -1131,7 +1157,7 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 
 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_CHAT)
 {
-	if (cs->status < STATUS_AUTH) {
+	if (cs->status < STATUS_AUTHORIZED) {
 		/* Illegal call, return error and ignore the packet */
 		return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_AUTHORIZED);
 	}
@@ -1272,8 +1298,10 @@ static NetworkServerPacket * const _network_server_packet[] = {
 	RECEIVE_COMMAND(PACKET_CLIENT_COMPANY_INFO),
 	NULL, // PACKET_SERVER_COMPANY_INFO,
 	NULL, // PACKET_SERVER_CLIENT_INFO,
-	NULL, // PACKET_SERVER_NEED_PASSWORD,
-	RECEIVE_COMMAND(PACKET_CLIENT_PASSWORD),
+	NULL, // PACKET_SERVER_NEED_GAME_PASSWORD,
+	NULL, // PACKET_SERVER_NEED_COMPANY_PASSWORD,
+	RECEIVE_COMMAND(PACKET_CLIENT_GAME_PASSWORD),
+	RECEIVE_COMMAND(PACKET_CLIENT_COMPANY_PASSWORD),
 	NULL, // PACKET_SERVER_WELCOME,
 	RECEIVE_COMMAND(PACKET_CLIENT_GETMAP),
 	NULL, // PACKET_SERVER_WAIT,

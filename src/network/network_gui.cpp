@@ -2116,23 +2116,6 @@ void ShowClientList()
 	AllocateWindowDescFront<NetworkClientListWindow>(&_client_list_desc, 0);
 }
 
-
-static NetworkPasswordType pw_type;
-
-
-void ShowNetworkNeedPassword(NetworkPasswordType npt)
-{
-	StringID caption;
-
-	pw_type = npt;
-	switch (npt) {
-		default: NOT_REACHED();
-		case NETWORK_GAME_PASSWORD:    caption = STR_NETWORK_NEED_GAME_PASSWORD_CAPTION; break;
-		case NETWORK_COMPANY_PASSWORD: caption = STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION; break;
-	}
-	ShowQueryString(STR_EMPTY, caption, 20, 180, FindWindowById(WC_NETWORK_STATUS_WINDOW, 0), CS_ALPHANUMERAL, QSF_NONE);
-}
-
 /* Vars needed for the join-GUI */
 NetworkJoinStatus _network_join_status;
 uint8 _network_join_waiting;
@@ -2146,6 +2129,8 @@ enum NetworkJoinStatusWidgets {
 };
 
 struct NetworkJoinStatusWindow : Window {
+	NetworkPasswordType password_type;
+
 	NetworkJoinStatusWindow(const WindowDesc *desc) : Window()
 	{
 		this->parent = FindWindowById(WC_NETWORK_WINDOW, 0);
@@ -2225,8 +2210,13 @@ struct NetworkJoinStatusWindow : Window {
 		if (StrEmpty(str)) {
 			NetworkDisconnect();
 			ShowNetworkGameWindow();
-		} else {
-			SEND_COMMAND(PACKET_CLIENT_PASSWORD)(pw_type, str);
+			return;
+		}
+
+		switch (this->password_type) {
+			case NETWORK_GAME_PASSWORD:    SEND_COMMAND(PACKET_CLIENT_GAME_PASSWORD)   (str); break;
+			case NETWORK_COMPANY_PASSWORD: SEND_COMMAND(PACKET_CLIENT_COMPANY_PASSWORD)(str); break;
+			default: NOT_REACHED();
 		}
 	}
 };
@@ -2255,6 +2245,21 @@ void ShowJoinStatusWindow()
 {
 	DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
 	new NetworkJoinStatusWindow(&_network_join_status_window_desc);
+}
+
+void ShowNetworkNeedPassword(NetworkPasswordType npt)
+{
+	NetworkJoinStatusWindow *w = (NetworkJoinStatusWindow *)FindWindowById(WC_NETWORK_STATUS_WINDOW, 0);
+	if (w == NULL) return;
+	w->password_type = npt;
+
+	StringID caption;
+	switch (npt) {
+		default: NOT_REACHED();
+		case NETWORK_GAME_PASSWORD:    caption = STR_NETWORK_NEED_GAME_PASSWORD_CAPTION; break;
+		case NETWORK_COMPANY_PASSWORD: caption = STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION; break;
+	}
+	ShowQueryString(STR_EMPTY, caption, 20, 180, w, CS_ALPHANUMERAL, QSF_NONE);
 }
 
 
