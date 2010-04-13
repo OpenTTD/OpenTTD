@@ -200,9 +200,10 @@ void RoadVehUpdateCache(RoadVehicle *v)
  */
 CommandCost CmdBuildRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	if (!IsEngineBuildable(p1, VEH_ROAD, _current_company)) return_cmd_error(STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE);
+	EngineID eid = GB(p1, 0, 16);
+	if (!IsEngineBuildable(eid, VEH_ROAD, _current_company)) return_cmd_error(STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE);
 
-	const Engine *e = Engine::Get(p1);
+	const Engine *e = Engine::Get(eid);
 	/* Engines without valid cargo should not be available */
 	if (e->GetDefaultCargoType() == CT_INVALID) return CMD_ERROR;
 
@@ -216,7 +217,7 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 	if (HasTileRoadType(tile, ROADTYPE_TRAM) != HasBit(e->info.misc_flags, EF_ROAD_TRAM)) return_cmd_error(STR_ERROR_DEPOT_WRONG_DEPOT_TYPE);
 
-	uint num_vehicles = 1 + CountArticulatedParts(p1, false);
+	uint num_vehicles = 1 + CountArticulatedParts(eid, false);
 
 	/* Allow for the front and the articulated parts */
 	if (!Vehicle::CanAllocateItem(num_vehicles)) {
@@ -254,7 +255,7 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 		v->last_station_visited = INVALID_STATION;
 		v->max_speed = rvi->max_speed;
-		v->engine_type = (EngineID)p1;
+		v->engine_type = eid;
 		v->rcache.first_engine = INVALID_ENGINE; // needs to be set before first callback
 
 		v->reliability = e->reliability;
@@ -299,7 +300,7 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 			InvalidateAutoreplaceWindow(v->engine_type, v->group_id); // updates the replace Road window
 		}
 
-		Company::Get(_current_company)->num_engines[p1]++;
+		Company::Get(_current_company)->num_engines[eid]++;
 
 		CheckConsistencyOfArticulatedVehicle(v);
 	}

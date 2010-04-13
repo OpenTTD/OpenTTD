@@ -611,11 +611,12 @@ bool Ship::Tick()
  */
 CommandCost CmdBuildShip(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
+	EngineID eid = GB(p1, 0, 16);
 	UnitID unit_num;
 
-	if (!IsEngineBuildable(p1, VEH_SHIP, _current_company)) return_cmd_error(STR_ERROR_SHIP_NOT_AVAILABLE);
+	if (!IsEngineBuildable(eid, VEH_SHIP, _current_company)) return_cmd_error(STR_ERROR_SHIP_NOT_AVAILABLE);
 
-	const Engine *e = Engine::Get(p1);
+	const Engine *e = Engine::Get(eid);
 	CommandCost value(EXPENSES_NEW_VEHICLES, e->GetCost());
 
 	/* Engines without valid cargo should not be available */
@@ -660,7 +661,7 @@ CommandCost CmdBuildShip(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 
 		v->last_station_visited = INVALID_STATION;
 		v->max_speed = svi->max_speed;
-		v->engine_type = p1;
+		v->engine_type = eid;
 
 		v->reliability = e->reliability;
 		v->reliability_spd_dec = e->reliability_spd_dec;
@@ -692,7 +693,7 @@ CommandCost CmdBuildShip(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 			InvalidateAutoreplaceWindow(v->engine_type, v->group_id); // updates the replace Ship window
 		}
 
-		Company::Get(_current_company)->num_engines[p1]++;
+		Company::Get(_current_company)->num_engines[eid]++;
 	}
 
 	return value;

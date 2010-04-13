@@ -236,9 +236,10 @@ void GetAircraftSpriteSize(EngineID engine, uint &width, uint &height)
  */
 CommandCost CmdBuildAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	if (!IsEngineBuildable(p1, VEH_AIRCRAFT, _current_company)) return_cmd_error(STR_ERROR_AIRCRAFT_NOT_AVAILABLE);
+	EngineID eid = GB(p1, 0, 16);
+	if (!IsEngineBuildable(eid, VEH_AIRCRAFT, _current_company)) return_cmd_error(STR_ERROR_AIRCRAFT_NOT_AVAILABLE);
 
-	const Engine *e = Engine::Get(p1);
+	const Engine *e = Engine::Get(eid);
 	const AircraftVehicleInfo *avi = &e->u.air;
 	CommandCost value(EXPENSES_NEW_VEHICLES, e->GetCost());
 
@@ -251,7 +252,7 @@ CommandCost CmdBuildAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	if (!IsHangarTile(tile) || !IsTileOwner(tile, _current_company)) return CMD_ERROR;
 
 	/* Prevent building aircraft types at places which can't handle them */
-	if (!CanVehicleUseStation(p1, Station::GetByTile(tile))) return CMD_ERROR;
+	if (!CanVehicleUseStation(eid, Station::GetByTile(tile))) return CMD_ERROR;
 
 	/* We will need to allocate 2 or 3 vehicle structs, depending on type */
 	if (!Vehicle::CanAllocateItem(avi->subtype & AIR_CTOL ? 2 : 3)) {
@@ -298,8 +299,8 @@ CommandCost CmdBuildAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 
 		v->max_speed = avi->max_speed;
 		v->acceleration = avi->acceleration;
-		v->engine_type = p1;
-		u->engine_type = p1;
+		v->engine_type = eid;
+		u->engine_type = eid;
 
 		v->subtype = (avi->subtype & AIR_CTOL ? AIR_AIRCRAFT : AIR_HELICOPTER);
 		v->UpdateDeltaXY(INVALID_DIR);
@@ -348,7 +349,7 @@ CommandCost CmdBuildAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 		/* Aircraft with 3 vehicles (chopper)? */
 		if (v->subtype == AIR_HELICOPTER) {
 			Aircraft *w = new Aircraft();
-			w->engine_type = p1;
+			w->engine_type = eid;
 			w->direction = DIR_N;
 			w->owner = _current_company;
 			w->x_pos = v->x_pos;
@@ -373,7 +374,7 @@ CommandCost CmdBuildAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 		if (IsLocalCompany())
 			InvalidateAutoreplaceWindow(v->engine_type, v->group_id); // updates the replace Aircraft window
 
-		Company::Get(_current_company)->num_engines[p1]++;
+		Company::Get(_current_company)->num_engines[eid]++;
 	}
 
 	return value;
