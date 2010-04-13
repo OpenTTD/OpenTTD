@@ -163,6 +163,7 @@ struct CommandPacket : CommandContainer {
 void NetworkAddCommandQueue(CommandPacket cp, NetworkClientSocket *cs = NULL);
 void NetworkExecuteLocalCommandQueue();
 void NetworkFreeLocalCommandQueue();
+void NetworkSyncCommandQueue(NetworkClientSocket *cs);
 
 /* from network.c */
 NetworkRecvStatus NetworkCloseClient(NetworkClientSocket *cs, NetworkRecvStatus status);
