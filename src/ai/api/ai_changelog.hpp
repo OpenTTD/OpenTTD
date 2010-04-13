@@ -14,6 +14,11 @@
  * functions may still be available if you return an older API version
  * in GetAPIVersion() in info.nut.
  *
+ * \b 1.0.1
+ *
+ * API additions:
+ * \li AIRail::GetMaxSpeed
+ *
  * \b 1.0.0
  *
  * API additions:

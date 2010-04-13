@@ -70,7 +70,12 @@ void MoveWaypointsToBaseStations()
 	 * waypoint struct. */
 	if (CheckSavegameVersion(17)) {
 		for (OldWaypoint *wp = _old_waypoints.Begin(); wp != _old_waypoints.End(); wp++) {
-			if (wp->delete_ctr == 0 && HasBit(_m[wp->xy].m3, 4)) {
+			if (wp->delete_ctr != 0) continue; // The waypoint was deleted
+
+			/* Waypoint indices were not added to the map prior to this. */
+			_m[wp->xy].m2 = wp->index;
+
+			if (HasBit(_m[wp->xy].m3, 4)) {
 				wp->spec = GetCustomStationSpec(STAT_CLASS_WAYP, _m[wp->xy].m4 + 1);
 			}
 		}

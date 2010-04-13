@@ -469,3 +469,10 @@ static bool IsValidSignalType(int signal_type)
 		default: return -1;
 	}
 }
+
+/* static */ int32 AIRail::GetMaxSpeed(RailType railtype)
+{
+	if (!AIRail::IsRailTypeAvailable(railtype)) return -1;
+
+	return ::GetRailTypeInfo((::RailType)railtype)->max_speed;
+}

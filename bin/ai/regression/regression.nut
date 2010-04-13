@@ -1027,6 +1027,7 @@ function Regression::RailTypeList()
 	for (local i = list.Begin(); list.HasNext(); i = list.Next()) {
 		print("    RailType:                " + i);
 		print("    IsRailTypeAvailable():   " + AIRail.IsRailTypeAvailable(i));
+		print("    GetMaxSpeed():           " + AIRail.GetMaxSpeed(i));
 	}
 }
 
