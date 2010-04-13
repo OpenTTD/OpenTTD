@@ -1147,7 +1147,7 @@ void NetworkGameLoop()
 				int ret = sscanf(p + 6, "%x; %x", &next_date, &next_date_fract);
 				assert(ret == 2);
 				DEBUG(net, 0, "injecting pause for join at %08x:%02x; please join when paused", next_date, next_date_fract);
-				cp = MallocT<CommandPacket>(1);
+				cp = CallocT<CommandPacket>(1);
 				cp->company = COMPANY_SPECTATOR;
 				cp->cmd = CMD_PAUSE;
 				cp->p1 = PM_PAUSED_NORMAL;
