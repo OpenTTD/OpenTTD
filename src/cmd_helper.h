@@ -14,12 +14,13 @@
 
 #include "core/enum_type.hpp"
 
-template<typename T, uint N, typename U> static inline T Extract(U v)
+template<typename T, uint S, uint N, typename U> static inline T Extract(U v)
 {
 	/* Check if there are enough bits in v */
-	assert_tcompile(N + EnumPropsT<T>::num_bits <= sizeof(U) * 8);
-	assert_tcompile(EnumPropsT<T>::end <= (1 << EnumPropsT<T>::num_bits));
-	return (T)GB(v, N, EnumPropsT<T>::num_bits);
+	assert_tcompile(N == EnumPropsT<T>::num_bits);
+	assert_tcompile(S + N <= sizeof(U) * 8);
+	assert_tcompile(EnumPropsT<T>::end <= (1 << N));
+	return (T)GB(v, S, N);
 }
 
 #endif

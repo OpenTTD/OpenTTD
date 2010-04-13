@@ -104,7 +104,7 @@ static void MarkCanalsAndRiversAroundDirty(TileIndex tile)
  */
 CommandCost CmdBuildShipDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	Axis axis = Extract<Axis, 0>(p1);
+	Axis axis = Extract<Axis, 0, 1>(p1);
 
 	TileIndex tile2 = tile + (axis == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
 

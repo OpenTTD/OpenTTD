@@ -1096,7 +1096,7 @@ CommandCost CmdBuildRailStation(TileIndex tile_org, DoCommandFlag flags, uint32 
 {
 	/* Unpack parameters */
 	RailType rt    = (RailType)GB(p1, 0, 4);
-	Axis axis      = Extract<Axis, 4>(p1);
+	Axis axis      = Extract<Axis, 4, 1>(p1);
 	byte numtracks = GB(p1,  8, 8);
 	byte plat_len  = GB(p1, 16, 8);
 	bool adjacent  = HasBit(p1, 24);

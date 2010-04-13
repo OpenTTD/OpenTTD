@@ -837,7 +837,7 @@ CommandCost CmdBuildTrainDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 
 	Slope tileh = GetTileSlope(tile, NULL);
 
-	DiagDirection dir = Extract<DiagDirection, 0>(p2);
+	DiagDirection dir = Extract<DiagDirection, 0, 2>(p2);
 
 	/* Prohibit construction if
 	 * The tile is non-flat AND
