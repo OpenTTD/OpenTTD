@@ -187,7 +187,6 @@ protected:
 	uint excluded_data; ///< bitmask of the datasets that shouldn't be displayed.
 	byte num_dataset;
 	byte num_on_x_axis;
-	bool has_negative_values;
 	byte num_vert_lines;
 	static const TextColour graph_axis_label_colour = TC_BLACK; ///< colour of the graph axis label.
 
@@ -482,8 +481,8 @@ protected:
 	}
 
 
-	BaseGraphWindow(int widget, bool has_negative_values, StringID format_str_y_axis) :
-			Window(), has_negative_values(has_negative_values),
+	BaseGraphWindow(int widget, StringID format_str_y_axis) :
+			Window(),
 			format_str_y_axis(format_str_y_axis)
 	{
 		SetWindowDirty(WC_GRAPH_LEGEND, 0);
@@ -630,7 +629,7 @@ public:
 
 struct OperatingProfitGraphWindow : BaseGraphWindow {
 	OperatingProfitGraphWindow(const WindowDesc *desc, WindowNumber window_number) :
-			BaseGraphWindow(BGW_BACKGROUND, true, STR_JUST_CURRCOMPACT)
+			BaseGraphWindow(BGW_BACKGROUND, STR_JUST_CURRCOMPACT)
 	{
 		this->InitializeWindow(desc, window_number);
 	}
@@ -672,7 +671,7 @@ void ShowOperatingProfitGraph()
 
 struct IncomeGraphWindow : BaseGraphWindow {
 	IncomeGraphWindow(const WindowDesc *desc, WindowNumber window_number) :
-			BaseGraphWindow(BGW_BACKGROUND, false, STR_JUST_CURRCOMPACT)
+			BaseGraphWindow(BGW_BACKGROUND, STR_JUST_CURRCOMPACT)
 	{
 		this->InitializeWindow(desc, window_number);
 	}
@@ -713,7 +712,7 @@ void ShowIncomeGraph()
 
 struct DeliveredCargoGraphWindow : BaseGraphWindow {
 	DeliveredCargoGraphWindow(const WindowDesc *desc, WindowNumber window_number) :
-			BaseGraphWindow(BGW_BACKGROUND, false, STR_JUST_COMMA)
+			BaseGraphWindow(BGW_BACKGROUND, STR_JUST_COMMA)
 	{
 		this->InitializeWindow(desc, window_number);
 	}
@@ -760,7 +759,7 @@ enum PerformanceHistoryGraphWidgets {
 
 struct PerformanceHistoryGraphWindow : BaseGraphWindow {
 	PerformanceHistoryGraphWindow(const WindowDesc *desc, WindowNumber window_number) :
-			BaseGraphWindow(PHW_BACKGROUND, false, STR_JUST_COMMA)
+			BaseGraphWindow(PHW_BACKGROUND, STR_JUST_COMMA)
 	{
 		this->InitializeWindow(desc, window_number);
 	}
@@ -807,7 +806,7 @@ void ShowPerformanceHistoryGraph()
 
 struct CompanyValueGraphWindow : BaseGraphWindow {
 	CompanyValueGraphWindow(const WindowDesc *desc, WindowNumber window_number) :
-			BaseGraphWindow(BGW_BACKGROUND, false, STR_JUST_CURRCOMPACT)
+			BaseGraphWindow(BGW_BACKGROUND, STR_JUST_CURRCOMPACT)
 	{
 		this->InitializeWindow(desc, window_number);
 	}
@@ -859,7 +858,7 @@ enum CargoPaymentRatesWidgets {
 struct PaymentRatesGraphWindow : BaseGraphWindow {
 	bool first_init; ///< This value is true until the first initialization of the window has finished.
 	PaymentRatesGraphWindow(const WindowDesc *desc, WindowNumber window_number) :
-			BaseGraphWindow(CPW_GRAPH, false, STR_JUST_CURRCOMPACT)
+			BaseGraphWindow(CPW_GRAPH, STR_JUST_CURRCOMPACT)
 	{
 		this->first_init = true;
 		this->num_on_x_axis = 20;
