@@ -1884,7 +1884,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb, boo
 		/* General tactic is to first save the game to memory, then use an available writer
 		 * to write it to file, either in threaded mode if possible, or single-threaded */
 		if (mode == SL_SAVE) { // SAVE game
-			DEBUG(desync, 1, "save: %s", filename);
+			DEBUG(desync, 1, "save: %08x; %02x; %s", _date, _date_fract, filename);
 
 			_sl.write_bytes = WriteMem;
 			_sl.excpt_uninit = UnInitMem;
