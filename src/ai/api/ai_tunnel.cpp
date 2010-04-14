@@ -77,10 +77,10 @@ static void _DoCommandReturnBuildTunnel1(class AIInstance *instance)
 
 	uint type = 0;
 	if (vehicle_type == AIVehicle::VT_ROAD) {
-		type |= (TRANSPORT_ROAD << 9);
+		type |= (TRANSPORT_ROAD << 8);
 		type |= ::RoadTypeToRoadTypes((::RoadType)AIObject::GetRoadType());
 	} else {
-		type |= (TRANSPORT_RAIL << 9);
+		type |= (TRANSPORT_RAIL << 8);
 		type |= AIRail::GetCurrentRailType();
 	}
 
