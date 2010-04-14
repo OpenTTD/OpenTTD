@@ -1760,7 +1760,7 @@ STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :Verbindung verl
 STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :Protokollfehler
 STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :NewGRF-Versionen stimmen nicht überein
 STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :nicht autorisiert
-STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :Unerwartetes Datenpaket empfangen
+STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :Ungültiges oder unerwartetes Datenpaket empfangen
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :Falsche Version
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :Name wird bereits verwendet
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :Falsches Spielpasswort
@@ -1778,7 +1778,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Spiel weiterhin
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Spiel weiterhin angehalten ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Spiel weiterhin angehalten ({STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Spiel fortgesetzt ({STRING})
-STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :nicht genug Spieler
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :Spieleranzahl
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :Teilnehmer meldet sich an
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :manuell
 ############ End of leave-in-this-order

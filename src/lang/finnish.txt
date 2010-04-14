@@ -1759,7 +1759,7 @@ STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :yhteys katkesi
 STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :protokollavirhe
 STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :NewGRF-virhe
 STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :ei valtuutettu
-STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :vastaanotettiin omituinen paketti
+STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :vastaanotettiin viallinen tai odottamaton paketti
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :väärä revisio
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :nimi on jo käytössä
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :väärä salasana
@@ -1777,7 +1777,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Peli yhä pysä
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Peli yhä pysäytetty ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Peli yhä pysäytetty ({STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Peliä jatketaan ({STRING})
-STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :ei tarpeeksi pelaajia
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :pelaajien määrä
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :yhdistäviä pelaajia
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :manuaalinen
 ############ End of leave-in-this-order

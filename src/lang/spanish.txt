@@ -1760,7 +1760,7 @@ STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :conexión perdi
 STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :error de protocolo
 STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :NewGRF erróneo
 STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :no autorizado
-STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :recibido paquete extraño
+STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :recibido paquete inválido o inesperado
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :versión incorrecta
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :nombre en uso
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :contraseña incorrecta
@@ -1778,7 +1778,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Juego todavía 
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Juego todavía pausado ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Juego todavía pausado ({STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Juego reanudado ({STRING})
-STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :no hay suficientes jugadores
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :numero de jugadores
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :clientes conectándose
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :manual
 ############ End of leave-in-this-order
@@ -3229,6 +3229,12 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}Configur
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Cambiar la configuración de la IA
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Recarga la IA
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Elimina la IA, recarga el código y reinicia la IA
+STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Activar / desactivar pausa cuando un mensaje de log de la IA coincide con la cadena de parada
+STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Pausa activada:
+STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Pausa activada
+STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Cuando el mensaje de log de una IA coincide con esta cadena, el juego se pausa.
+STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Cadena de parada
+STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Activar / desactivar comparación de mensajes de log de la IA con la cadena de parada
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Continuar
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Despausar y hacer que la IA continúe
 

@@ -522,6 +522,10 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Firmenwe
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Luedungs Bezuelraten
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Deeg am ëmmlaaf
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Bezuelung fir Liwwerung vun 10 Unitéiten (oder 10.000 liter) Luedungen op Distanz vun 20 Quadrater
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}All wielen
+STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT}{BLACK}All ofwielen
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}All Wueren op der Wuerenwertgrafik weisen
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Keng Wuer op der Wuerenwertgrafik weisen
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Wieselt den Grafik fir den Luedungstyp un/aus
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 
@@ -1488,7 +1492,7 @@ STR_FACE_HAIR_TOOLTIP                                           :{BLACK}Hoër ä
 STR_FACE_EYEBROWS                                               :Aaenbraaen:
 STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}Aaenbraaen Ouerréng
 STR_FACE_EYECOLOUR                                              :Aaenfaarw:
-STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Aaenfaarw Ouerréng
+STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Aanfaarw änneren
 STR_FACE_GLASSES                                                :Brëll:
 STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}Brëll anschalten
 STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}Brëll änneren
@@ -1537,7 +1541,7 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Klickt f
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}SPILL INFO
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Spiller: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Sprooch: {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Umgebung: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Landschaft: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Kaartegréisst: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Serverversioun: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Serveradress: {WHITE}{STRING}
@@ -1755,7 +1759,7 @@ STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :Connectioun ver
 STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :Protokollfehler
 STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :NewGRF ënnerscheedlech
 STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :net authoriséiert
-STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :komëschen Pak erhaalen
+STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :invaliden oder onerwaarte Packet kritt
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :Falsch Versioun
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :Numm gët schon benotzt
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :falscht Passwuert
@@ -1773,7 +1777,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Spill nach ëmm
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Spill nach ëmmer pauséiert ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Spill nach ëmmer pauséiert ({STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Spill geet weider ({STRING})
-STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :net genuch Spiller
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :Unzuel Spiller
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :Klienten verbannen
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :manuell
 ############ End of leave-in-this-order
@@ -1813,7 +1817,7 @@ STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Du hues
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Dës Ofhängegkeet gouf ausgewielt fir den download
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Du hues des schon
 STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Dësen Inhalt ass net bekannt an kann net an OpenTTD downgeload gin
-STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Dëst ass en Austosch fir eng existent {STRING}
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Dëst ass en Austausch fir eng existent {STRING}
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}Numm: {WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Versioun: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Beschreiwung: {WHITE}{STRING}
@@ -2032,7 +2036,7 @@ STR_AIRPORT_HELISTATION                                         :Helistatioun
 
 STR_AIRPORT_CLASS_SMALL                                         :Kleng Fluchhäfen
 STR_AIRPORT_CLASS_LARGE                                         :Grouss Fluchhäfen
-STR_AIRPORT_CLASS_HUB                                           : Fluchhafen Verdeeler
+STR_AIRPORT_CLASS_HUB                                           :Fluchhafen Verdeeler
 STR_AIRPORT_CLASS_HELIPORTS                                     :Helicopter Fluchhafen
 
 STR_STATION_BUILD_NOISE                                         :{BLACK}Kaméidi: {GOLD}{COMMA}
@@ -2910,10 +2914,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Weist St
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Weist Schëffdetailer
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Weist d'Fligerdetailer
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Momentan Aktioun - klickt hei fir den Zuch ze stopen/starten
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Momentan Aktioun - klickt hei fir d'Gefiert ze stoppen/starten
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Momentan Aktioun - Klickt hei fir d'Schëff ze stoppen/starten
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Momentan Aktioun - Klickt hei fir den Fliger ze stoppen/starten
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Momentan Aktioun - klickt hei fir den Zuch ze stopen/starten. Ctrl+Klick fir op Destinatioun ze scrollen
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Momentan Aktioun - klickt hei fir d'Gefiert ze stoppen/starten. Ctrl+Klick fir op Destinatioun ze scrollen
+STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Momentan Aktioun - Klickt hei fir d'Schëff ze stoppen/starten. Ctrl+Klick fir op Destinatioun ze scrollen
+STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Momentan Aktioun - Klickt hei fir den Fliger ze stoppen/starten. Ctrl+Klick fir op Destinatioun ze scrollen
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Lueden / Entlueden
@@ -3224,6 +3228,14 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}KI Astel
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}KI Astellungen änneren
 STR_AI_DEBUG_RELOAD                                             :{BLACK}KI nei lueden
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}KI stoppen, Skript nei lueden, KI nei starten
+STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Erlab/Verbidd breaks wann en KI Log Message zum break string passt
+STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Break un/op:
+STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Break un
+STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Wann en KI Log message zum String passt, pauséiert d'Spill.
+STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Passenden Fall
+STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Wiessel tëscht passenden Fäll beim vergläichen vun KI Log Messagen mam Break-String
+STR_AI_DEBUG_CONTINUE                                           :{BLACK}Weider
+STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Entpaus an fuer weider mat der KI
 
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD as ouni KI support kompiléiert gin...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... keng KI verfügbar!
@@ -3527,6 +3539,7 @@ STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Brécken
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Bréckass ze déif fir dësen Terrain
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Start an Enn mussen op enger Linn sinn
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... dei zwee Enner vun der Bréck mussen um Land sinn
+STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... Bréck ze laang
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Kann den Tunnel hei net bauen...
