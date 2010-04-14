@@ -132,7 +132,12 @@ static bool LoadPNG(SpriteLoader::Sprite *sprite, const char *filename, uint32 i
 		}
 
 		if (colour_type == PNG_COLOR_TYPE_RGB) {
-			png_set_filler(png_ptr, 0xff, PNG_FILLER_AFTER);
+			if (png_get_valid(png_ptr, info_ptr, PNG_INFO_tRNS)) {
+				/* Create an alpha channel when there is a tRNS chunk */
+				png_set_tRNS_to_alpha(png_ptr);
+			} else {
+				png_set_filler(png_ptr, 0xff, PNG_FILLER_AFTER);
+			}
 		}
 
 		pixelsize = sizeof(uint32);
