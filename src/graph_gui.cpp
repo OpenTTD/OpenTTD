@@ -23,6 +23,7 @@
 #include "gfx_func.h"
 #include "sortlist_type.h"
 #include "core/geometry_func.hpp"
+#include <math.h>
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -154,6 +155,12 @@ static void ShowGraphLegend()
 	AllocateWindowDescFront<GraphLegendWindow>(&_graph_legend_desc, 0);
 }
 
+/** Contains the interval of a graph's data. */
+struct ValuesInterval {
+	OverflowSafeInt64 highest; ///< Highest value of this interval. Must be zero or greater.
+	OverflowSafeInt64 lowest;  ///< Lowest value of this interval. Must be zero or less.
+};
+
 /******************/
 /* BASE OF GRAPHS */
 /*****************/
@@ -200,13 +207,15 @@ protected:
 	OverflowSafeInt64 cost[GRAPH_MAX_DATASETS][GRAPH_NUM_MONTHS]; ///< Stored costs for the last #GRAPH_NUM_MONTHS months
 
 	/**
-	 * Get the highest value of the graph's data. Excluded data is ignored to allow showing smaller values in
+	 * Get the interval that contains the graph's data. Excluded data is ignored to show smaller values in
 	 * better detail when disabling higher ones.
-	 * @return Highest value of the graph (ignoring disabled data).
+	 * @return Highest and lowest values of the graph (ignoring disabled data).
 	 */
-	int64 GetHighestValue() const
+	ValuesInterval GetValuesInterval() const
 	{
-		OverflowSafeInt64 highest_value = 0;
+		ValuesInterval current_interval;
+		current_interval.highest = INT64_MIN;
+		current_interval.lowest  = INT64_MAX;
 
 		for (int i = 0; i < this->num_dataset; i++) {
 			if (HasBit(this->excluded_data, i)) continue;
@@ -214,35 +223,70 @@ protected:
 				OverflowSafeInt64 datapoint = this->cost[i][j];
 
 				if (datapoint != INVALID_DATAPOINT) {
-					/* For now, if the graph has negative values the scaling is
-					 * symmetrical about the x axis, so take the absolute value
-					 * of each data point. */
-					highest_value = max(highest_value, abs(datapoint));
+					current_interval.highest = max(current_interval.highest, datapoint);
+					current_interval.lowest  = min(current_interval.lowest, datapoint);
 				}
 			}
 		}
 
-		/* Prevent showing the highest value too close to the graph upper limit. */
-		highest_value = (11 * highest_value) / 10;
-		/* Avoid using zero as the highest value. */
-		if (highest_value == 0) highest_value = GRAPH_NUM_LINES_Y - 1;
-		/* Round up highest_value so that it will divide cleanly into the number of
-		 * axis labels used. */
-		int round_val = highest_value % (GRAPH_NUM_LINES_Y - 1);
-		if (round_val != 0) highest_value += (GRAPH_NUM_LINES_Y - 1 - round_val);
+		/* Prevent showing values too close to the graph limits. */
+		current_interval.highest = (11 * current_interval.highest) / 10;
+		current_interval.lowest =  (11 * current_interval.lowest) / 10;
 
-		return highest_value;
+		/* Always include zero in the shown range. */
+		OverflowSafeInt64 abs_lower  = (current_interval.lowest > 0) ? (OverflowSafeInt64)0 : abs(current_interval.lowest);
+		OverflowSafeInt64 abs_higher = (current_interval.highest < 0) ? (OverflowSafeInt64)0 : current_interval.highest;
+
+		int num_pos_grids;
+		int grid_size;
+		const int num_grids = GRAPH_NUM_LINES_Y - 1;
+
+		if (abs_lower == 0) {
+			if (abs_higher == 0) {
+				/* If both values are zero, show an empty graph. */
+				num_pos_grids = num_grids / 2;
+				grid_size = 1;
+			} else {
+				/* The positive part of the graph can use all grids. */
+				num_pos_grids = num_grids;
+				grid_size = ceil((float)abs_higher / num_grids);
+			}
+
+		} else {
+			if (abs_higher == 0) {
+				/* The negative part of the graph can use all grids. */
+				num_pos_grids = 0;
+				grid_size = ceil((float)abs_lower / num_grids);
+			} else {
+				/* Get the smallest grid size required and the number of grids for each part of the graph. */
+				int min_pos_grids = 1;
+				int min_grid_size = INT_MAX;
+				for (num_pos_grids = 1; num_pos_grids <= num_grids - 1; num_pos_grids++) {
+					/* Size required for each part of the graph given this number of grids. */
+					int pos_grid_size = ceil((float)abs_higher / num_pos_grids);
+					int neg_grid_size = ceil((float)abs_lower / (num_grids - num_pos_grids));
+					grid_size = max(pos_grid_size, neg_grid_size);
+					if (grid_size < min_grid_size) {
+						min_pos_grids = num_pos_grids;
+						min_grid_size = grid_size;
+					}
+				}
+				grid_size = min_grid_size;
+				num_pos_grids = min_pos_grids;
+			}
+		}
+
+		current_interval.highest = num_pos_grids * grid_size;
+		current_interval.lowest = -(num_grids - num_pos_grids) * grid_size;
+		return current_interval;
 	}
 
-	uint GetYLabelWidth(int64 highest_value) const
+	/** Get width for Y labels */
+	uint GetYLabelWidth(ValuesInterval current_interval) const
 	{
 		/* draw text strings on the y axis */
-		int64 y_label = highest_value;
-		int64 y_label_separation = highest_value / (GRAPH_NUM_LINES_Y - 1);
-
-		/* If there are negative values, the graph goes from highest_value to
-		 * -highest_value, not highest_value to 0. */
-		if (this->has_negative_values) y_label_separation *= 2;
+		int64 y_label = current_interval.highest;
+		int64 y_label_separation = (current_interval.highest - current_interval.lowest) / (GRAPH_NUM_LINES_Y - 1);
 
 		uint max_width = 0;
 
@@ -264,9 +308,9 @@ protected:
 	 */
 	void DrawGraph(Rect r) const
 	{
-		uint x, y;                       ///< Reused whenever x and y coordinates are needed.
-		OverflowSafeInt64 highest_value; ///< Highest value to be drawn.
-		int x_axis_offset;               ///< Distance from the top of the graph to the x axis.
+		uint x, y;               ///< Reused whenever x and y coordinates are needed.
+		ValuesInterval interval; ///< Interval that contains all of the graph data.
+		int x_axis_offset;       ///< Distance from the top of the graph to the x axis.
 
 		/* the colours and cost array of GraphDrawer must accomodate
 		 * both values for cargo and companies. So if any are higher, quit */
@@ -282,10 +326,9 @@ protected:
 		r.left   += 9;
 		r.right  -= 5;
 
-		highest_value = GetHighestValue();
+		interval = GetValuesInterval();
 
-		/* Get width for Y labels */
-		int label_width = GetYLabelWidth(highest_value);
+		int label_width = GetYLabelWidth(interval);
 
 		r.left += label_width;
 
@@ -297,9 +340,9 @@ protected:
 		r.right = r.left + x_sep * this->num_vert_lines;
 		r.bottom = r.top + y_sep * (GRAPH_NUM_LINES_Y - 1);
 
+		OverflowSafeInt64 interval_size = interval.highest + abs(interval.lowest);
 		/* Where to draw the X axis */
-		x_axis_offset = r.bottom - r.top;
-		if (this->has_negative_values) x_axis_offset /= 2;
+		x_axis_offset = (r.bottom - r.top) * interval.highest / interval_size;
 
 		/* Draw the vertical grid lines. */
 
@@ -335,12 +378,8 @@ protected:
 		assert(this->num_dataset > 0);
 
 		/* draw text strings on the y axis */
-		int64 y_label = highest_value;
-		int64 y_label_separation = highest_value / (GRAPH_NUM_LINES_Y - 1);
-
-		/* If there are negative values, the graph goes from highest_value to
-		 * -highest_value, not highest_value to 0. */
-		if (this->has_negative_values) y_label_separation *= 2;
+		int64 y_label = interval.highest;
+		int64 y_label_separation = abs(interval.highest - interval.lowest) / (GRAPH_NUM_LINES_Y - 1);
 
 		y = r.top - GetCharacterHeight(FS_SMALL) / 2;
 
@@ -421,8 +460,7 @@ protected:
 						} else {
 							datapoint >>= reduce_range;
 						}
-
-						y = r.top + x_axis_offset - (x_axis_offset * datapoint) / (highest_value >> reduce_range);
+						y = r.top + x_axis_offset - ((r.bottom - r.top) * datapoint) / (interval_size >> reduce_range);
 
 						/* Draw the point. */
 						GfxFillRect(x - 1, y - 1, x + 1, y + 1, colour);
