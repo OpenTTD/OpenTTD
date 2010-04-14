@@ -1330,6 +1330,10 @@ make_cflags_and_ldflags() {
 
 	if [ "$os" = "OSX" ]; then
 		LDFLAGS="$LDFLAGS -framework Cocoa"
+
+		# Add macports include dir which is not always set a default system dir. This avoids zillions of bogus warnings.
+		CFLAGS="$CFLAGS -isystem/opt/local/include"
+
 		if [ "$enable_dedicated" = "0" ] && ([ "$cpu_type" = "32" ] || [ "$enable_universal" != "0" ]); then
 			LIBS="$LIBS -framework QuickTime"
 		else
