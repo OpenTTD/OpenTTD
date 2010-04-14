@@ -595,14 +595,11 @@ static void HandleBankruptcyTakeover(Company *c)
 
 	SetBit(c->bankrupt_asked, best->index);
 
-	if (IsInteractiveCompany(best->index)) {
-		c->bankrupt_timeout = TAKE_OVER_TIMEOUT;
-		ShowBuyCompanyDialog(c->index);
-		return;
-	}
-
+	c->bankrupt_timeout = TAKE_OVER_TIMEOUT;
 	if (best->is_ai) {
 		AI::NewEvent(best->index, new AIEventCompanyAskMerger(c->index, ClampToI32(c->bankrupt_value)));
+	} else if (IsInteractiveCompany(best->index)) {
+		ShowBuyCompanyDialog(c->index);
 	}
 }
 
