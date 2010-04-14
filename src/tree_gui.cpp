@@ -18,6 +18,7 @@
 #include "company_base.h"
 #include "command_func.h"
 #include "sound_func.h"
+#include "tree_map.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -50,7 +51,7 @@ class BuildTreesWindow : public Window
 {
 	uint16 base;        ///< Base tree number used for drawing the window.
 	uint16 count;       ///< Number of different trees available.
-	uint tree_to_plant; ///< Tree number to plant, \c UINT_MAX for a random tree.
+	TreeType tree_to_plant; ///< Tree number to plant, \c TREE_INVALID for a random tree.
 
 public:
 	BuildTreesWindow(const WindowDesc *desc, WindowNumber window_number) : Window()
@@ -105,13 +106,13 @@ public:
 				if (widget - BTW_TYPE_11 >= this->count) break;
 
 				if (HandlePlacePushButton(this, widget, SPR_CURSOR_TREE, HT_RECT, NULL)) {
-					this->tree_to_plant = this->base + widget - BTW_TYPE_11;
+					this->tree_to_plant = (TreeType)(this->base + widget - BTW_TYPE_11);
 				}
 				break;
 
 			case BTW_TYPE_RANDOM: // tree of random type.
 				if (HandlePlacePushButton(this, BTW_TYPE_RANDOM, SPR_CURSOR_TREE, HT_RECT, NULL)) {
-					this->tree_to_plant = UINT_MAX;
+					this->tree_to_plant = TREE_INVALID;
 				}
 				break;
 
