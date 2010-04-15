@@ -2545,12 +2545,12 @@ STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY
 STR_FINANCES_EXPENDITURE_INCOME_TITLE                           :{WHITE}Ausgaben/Ankommen
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Konstruktioun
-STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Nei Gefieher
+STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Nei Gefierer
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Zuch Betriebskäschten
 STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Stroossengefierer Betriebskäschten
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Fliger Betriebskäschten
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Schëff Betriebskäschten
-STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Besëtzt Ennerhalt
+STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Besëtz Ennerhalt
 STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}Zuch Ankommen
 STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}Stroossengefierer Ankommen
 STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Fliger Ankommen

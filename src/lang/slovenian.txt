@@ -1801,7 +1801,7 @@ STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :povezava prekin
 STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :napaka protokola
 STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :NewGRF neskladje
 STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :nepooblaščen
-STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :sprejet je bil čuden paket
+STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :sprejet je bil neveljaven oz. nepričakovan paket
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :napačna različica
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :ime je že v uporabi
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :napačno geslo
@@ -1819,7 +1819,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Igra je še ved
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Igra je še vedno prekinjena ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Igra je še vedno prekinjena ({STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Igra ponovno teče ({STRING})
-STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :ni dovolj igralcev
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :število igralcev
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :povezujem goste
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :ročno
 ############ End of leave-in-this-order

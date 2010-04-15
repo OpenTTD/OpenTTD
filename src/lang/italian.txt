@@ -1761,7 +1761,7 @@ STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :connessione per
 STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :errore di protocollo
 STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :file NewGRF non corrispondenti
 STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :non autorizzato
-STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :ricevuto un pacchetto inatteso
+STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :ricevuto un pacchetto non validto o inatteso
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :revisione differente
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :nome già in uso
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :password errata
@@ -1779,7 +1779,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Partita ancora 
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Partita ancora in pausa ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Partita ancora in pausa ({STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Partita ripresa ({STRING})
-STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :giocatori insufficienti
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :numero di giocatori
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :connessione client in corso
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :manuale
 ############ End of leave-in-this-order
