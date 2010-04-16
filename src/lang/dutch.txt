@@ -1759,7 +1759,7 @@ STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :verbinding verb
 STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :protocolfout
 STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :Ongelijke NewGRF-instelling
 STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :niet toegestaan
-STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :raar pakket ontvangen
+STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :ongeldig of onverwacht pakket ontvangen
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :foute revisie
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :naam al in gebruik
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :fout spelwachtwoord
@@ -1777,7 +1777,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Spel nog steeds
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Spel nog steeds gepauzeerd ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Spel nog steeds gepauzeerd ({STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Spel vervolgd ({STRING})
-STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :niet genoeg spelers
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :aantal spelers
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :spelers maken verbinding
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :handmatig
 ############ End of leave-in-this-order

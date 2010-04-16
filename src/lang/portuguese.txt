@@ -1257,7 +1257,7 @@ STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Activar
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Permite comprar acções de outras empresas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Percentagem do lucro total a pagar em transferências: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Ao arrastar colocar sinais a cada: {ORANGE}{STRING} quadrado(s)
-STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Construir automaticamente semáforos antes de: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Usar automaticamente sinais clássicos antes de: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Activar ferramenta de sinais: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Tipo de farol padrão para construir: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Faróis de obstrução
@@ -1759,7 +1759,7 @@ STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :ligação perdi
 STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :erro de protocolo
 STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :NewGRF incompatível
 STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :não autorizado
-STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :recebido um pacote estranho
+STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :foi recebido um pacote inesperado ou inválido
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :revisão incorrecta
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :nome já está a ser utilizado
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :palavra-chave incorrecta
@@ -1777,7 +1777,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Jogo ainda em p
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Jogo ainda em pausa ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Jogo ainda em pausa ({STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Jogo a Correr ({STRING})
-STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :jogadores insuficientes
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :número de jogadores
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :a ligar clientes
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :manual
 ############ End of leave-in-this-order
@@ -1894,7 +1894,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construi
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Construir depósito ferroviário (para compra e manutenção de comboios)
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Converter linha em ponto de passagem. Ctrl permite juntar pontos de passagem
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construir estação ferroviária. Ctrl permite juntar estações
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Construir sinais ferroviários. Ctrl alterna entre semáforos/sinais luminosos{}Arrastar constrói sinais numa linha de caminho-de-ferro. Ctrl constrói sinais até a próxima junção{}Ctrl+Clique alterna abrir a janela de selecção de sinais
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Construir sinais ferroviários. Ctrl alterna entre s. clássicos/luminosos{}Arrastar constrói sinais numa linha de caminho-de-ferro. Ctrl constrói sinais até a próxima junção{}Ctrl+Clique alterna abrir a janela de selecção de sinais
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construir ponte ferroviária
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construir túnel ferroviário
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Alternar entre construir/remover linha férrea, sinais, pontos de passagem e estações. Fixar o Ctrl também remove a linha férrea de pontos de passagem e estações
@@ -1927,18 +1927,18 @@ STR_STATION_CLASS_WAYP                                          :Pontos de passa
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Selecção de Sinal
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Sinal Normal (semáforo){}Este é o tipo mais básico de sinal, que só permite um comboio dentro da mesma linha ferroviária ao mesmo tempo.
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Sinal de Entrada (semáforo){}Verde enquanto existir um ou mais sinais de saída verdes no seguimento da linha. De outro modo ficará vermelho.
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Sinal de Saída (semáforo){}Funciona da mesma forma que o sinal normal mas é necessário para conseguir a cor correcta nos pré-sinais de entrada e combinado.
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Sinal Combinado (semáforo){}O sinal combinado funciona como um sinal de entrada e de saída. Este permite construir grandes "árvores" de pré-sinais.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Sinal (semáforo){}Os sinais permitem que vários comboios utilizem a mesma linha desde que consigam chegar aos seus destinos em segurança.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Sinais de sentido único (semáforo){}Os sinais permitem que vários comboios utilizem a mesma linha desde que consigam chegar aos seus destinos em segurança. Os comboios apenas podem passar no sentido dos semáforos.
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Sinal Normal (clássico){}Este é o tipo mais básico de sinal, que só permite um comboio dentro da mesma linha ferroviária ao mesmo tempo.
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Sinal de Entrada (clássico){}Verde enquanto existir um ou mais sinais de saída verdes no seguimento da linha. De outro modo ficará vermelho.
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Sinal de Saída (clássico){}Funciona da mesma forma que o sinal normal mas é necessário para conseguir a cor correcta nos pré-sinais de entrada e combinado.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Sinal Combinado (clássico){}O sinal combinado funciona como um sinal de entrada e de saída. Este permite construir grandes "árvores" de pré-sinais.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Sinal para encaminhar (clássico){}Os sinais permitem que vários comboios utilizem a mesma linha desde que consigam chegar aos seus destinos em segurança.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Sinal para encaminhar de sentido único (clássico){}Os sinais permitem que vários comboios utilizem a mesma linha desde que consigam chegar aos seus destinos em segurança. Os comboios não podem passar no sentido oposto dos sinais.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Sinal Normal(eléctrico){}Este é o tipo mais básico de sinal, que só permite um comboio dentro da mesma linha ferroviária ao mesmo tempo.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Sinal de Entrada (eléctrico){}Verde enquanto existir um ou mais sinais de saída verdes no seguimento da linha. De outro modo ficará vermelho.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Sinal de Saída (eléctrico){}Funciona da mesma forma que o sinal normal mas é necessário para conseguir a cor correcta nos pré-sinais de entrada e combinado.
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Sinal Combinado (eléctrico){}O sinal combinado funciona como um sinal de entrada e de saída. Este permite construir grandes "árvores" de pré-sinais.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Sinal (eléctrico){}Os sinais permitem que vários comboios entrem na mesma linha ao mesmo tempo, desde que consigam chegar ao seu destino em segurança.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Um sinal de sentido único (eléctrico){}Um sinal de trajecto permite que mais de um comboio passe ao mesmo tempo um sinal se, o comboio conseguir reservar um caminho para onde posteriormente possa parar sem prejudicar o seguinte. Sinais de um único sentido não podem ser passados no sentido contrário.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Sinal para encaminhar (eléctrico){}Os sinais permitem que vários comboios entrem na mesma linha ao mesmo tempo, desde que consigam chegar ao seu destino em segurança.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Sinal para encaminhar de sentido único (eléctrico){}Um sinal de trajecto permite que mais de um comboio passe ao mesmo tempo um sinal se, o comboio conseguir reservar um caminho para onde posteriormente possa parar sem prejudicar o seguinte. Sinais de um único sentido não podem ser passados no sentido contrário.
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Converter Sinal{}Quando seleccionado, ao fazer clique num sinal existente este será convertido no tipo e variante de sinal seleccionado, Ctrl+clique irá comutar a variante existente.
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Densidade de sinais
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Diminuir densidade de sinais
