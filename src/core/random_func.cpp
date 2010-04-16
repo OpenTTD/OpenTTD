@@ -57,6 +57,7 @@ uint32 DoRandom(int line, const char *file)
 
 uint DoRandomRange(uint max, int line, const char *file)
 {
+	assert(max <= UINT16_MAX);
 	return GB(DoRandom(line, file), 0, 16) * max >> 16;
 }
 #endif /* RANDOM_DEBUG */

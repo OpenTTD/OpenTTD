@@ -22,17 +22,15 @@
  * offsets from the grfs files. These points to the start of
  * the tree list for a landscape. See the TREE_COUNT_* enumerations
  * for the amount of different trees for a specific landscape.
- *
- * @note TREE_INVALID may be 0xFF according to the coding style, not -1 (Progman)
  */
 enum TreeType {
-	TREE_INVALID      = -1,   ///< An invalid tree
 	TREE_TEMPERATE    = 0x00, ///< temperate tree
 	TREE_SUB_ARCTIC   = 0x0C, ///< tree on a sub_arctic landscape
 	TREE_RAINFOREST   = 0x14, ///< tree on the 'green part' on a sub-tropical map
 	TREE_CACTUS       = 0x1B, ///< a catus for the 'desert part' on a sub-tropical map
 	TREE_SUB_TROPICAL = 0x1C, ///< tree on a sub-tropical map, non-rainforest, non-desert
 	TREE_TOYLAND      = 0x20, ///< tree on a toyland map
+	TREE_INVALID      = 0xFF, ///< An invalid tree
 };
 
 /**

@@ -116,14 +116,15 @@ void CDECL NetworkAddChatMessage(TextColour colour, uint8 duration, const char *
 
 void NetworkInitChatMessage()
 {
-	MAX_CHAT_MESSAGES   = _settings_client.gui.network_chat_box_height;
+	MAX_CHAT_MESSAGES    = _settings_client.gui.network_chat_box_height;
 
-	_chatmsg_list       = ReallocT(_chatmsg_list, _settings_client.gui.network_chat_box_height);
-	_chatmsg_box.x      = 10;
-	_chatmsg_box.y      = 3 * FONT_HEIGHT_NORMAL;
-	_chatmsg_box.width  = _settings_client.gui.network_chat_box_width;
-	_chatmsg_box.height = _settings_client.gui.network_chat_box_height * (FONT_HEIGHT_NORMAL + NETWORK_CHAT_LINE_SPACING) + 2;
-	_chatmessage_backup = ReallocT(_chatmessage_backup, _chatmsg_box.width * _chatmsg_box.height * BlitterFactoryBase::GetCurrentBlitter()->GetBytesPerPixel());
+	_chatmsg_list        = ReallocT(_chatmsg_list, _settings_client.gui.network_chat_box_height);
+	_chatmsg_box.x       = 10;
+	_chatmsg_box.y       = 3 * FONT_HEIGHT_NORMAL;
+	_chatmsg_box.width   = _settings_client.gui.network_chat_box_width;
+	_chatmsg_box.height  = _settings_client.gui.network_chat_box_height * (FONT_HEIGHT_NORMAL + NETWORK_CHAT_LINE_SPACING) + 2;
+	_chatmessage_backup  = ReallocT(_chatmessage_backup, _chatmsg_box.width * _chatmsg_box.height * BlitterFactoryBase::GetCurrentBlitter()->GetBytesPerPixel());
+	_chatmessage_visible = false;
 
 	for (uint i = 0; i < MAX_CHAT_MESSAGES; i++) {
 		_chatmsg_list[i].message[0] = '\0';

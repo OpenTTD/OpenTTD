@@ -336,7 +336,7 @@ void GenerateTrees()
 /** Plant a tree.
  * @param tile start tile of area-drag of tree plantation
  * @param flags type of operation
- * @param p1 tree type, -1 means random.
+ * @param p1 tree type, TREE_INVALID means random.
  * @param p2 end tile of area-drag
  * @param text unused
  * @return the cost of this operation or an error
@@ -345,10 +345,11 @@ CommandCost CmdPlantTree(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 {
 	StringID msg = INVALID_STRING_ID;
 	CommandCost cost(EXPENSES_OTHER);
+	const byte tree_to_plant = GB(p1, 0, 8); // We cannot use Extract as min and max are climate specific.
 
 	if (p2 >= MapSize()) return CMD_ERROR;
-	/* Check the tree type. It can be random or some valid value within the current climate */
-	if (p1 != UINT_MAX && p1 - _tree_base_by_landscape[_settings_game.game_creation.landscape] >= _tree_count_by_landscape[_settings_game.game_creation.landscape]) return CMD_ERROR;
+	/* Check the tree type within the current climate */
+	if (tree_to_plant != TREE_INVALID && !IsInsideBS(tree_to_plant, _tree_base_by_landscape[_settings_game.game_creation.landscape], _tree_count_by_landscape[_settings_game.game_creation.landscape])) return CMD_ERROR;
 
 	TileArea ta(tile, p2);
 	TILE_AREA_LOOP(tile, ta) {
@@ -374,9 +375,22 @@ CommandCost CmdPlantTree(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 					continue;
 				}
 			/* FALL THROUGH */
-			case MP_CLEAR:
+			case MP_CLEAR: {
 				if (IsBridgeAbove(tile)) {
 					msg = STR_ERROR_SITE_UNSUITABLE;
+					continue;
+				}
+
+				TreeType treetype = (TreeType)tree_to_plant;
+				/* Be a bit picky about which trees go where. */
+				if (_settings_game.game_creation.landscape == LT_TROPIC && treetype != TREE_INVALID && (
+						/* No cacti outside the desert */
+						(treetype == TREE_CACTUS && GetTropicZone(tile) != TROPICZONE_DESERT) ||
+						/* No rain forest trees outside the rain forest, except in the editor mode where it makes those tiles rain forest tile */
+						(IsInsideMM(treetype, TREE_RAINFOREST, TREE_CACTUS) && GetTropicZone(tile) != TROPICZONE_RAINFOREST && _game_mode != GM_EDITOR) ||
+						/* And no subtropical trees in the desert/rain forest */
+						(IsInsideMM(treetype, TREE_SUB_TROPICAL, TREE_TOYLAND) && GetTropicZone(tile) != TROPICZONE_NORMAL))) {
+					msg = STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE;
 					continue;
 				}
 
@@ -401,9 +415,6 @@ CommandCost CmdPlantTree(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 				}
 
 				if (flags & DC_EXEC) {
-					TreeType treetype;
-
-					treetype = (TreeType)p1;
 					if (treetype == TREE_INVALID) {
 						treetype = GetRandomTreeType(tile, GB(Random(), 24, 8));
 						if (treetype == TREE_INVALID) treetype = TREE_CACTUS;
@@ -414,11 +425,12 @@ CommandCost CmdPlantTree(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 					MarkTileDirtyByTile(tile);
 
 					/* When planting rainforest-trees, set tropiczone to rainforest in editor. */
-					if (_game_mode == GM_EDITOR && IsInsideMM(treetype, TREE_RAINFOREST, TREE_CACTUS))
+					if (_game_mode == GM_EDITOR && IsInsideMM(treetype, TREE_RAINFOREST, TREE_CACTUS)) {
 						SetTropicZone(tile, TROPICZONE_RAINFOREST);
+					}
 				}
 				cost.AddCost(_price[PR_BUILD_TREES]);
-				break;
+			} break;
 
 			default:
 				msg = STR_ERROR_SITE_UNSUITABLE;

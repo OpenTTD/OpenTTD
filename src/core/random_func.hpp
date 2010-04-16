@@ -99,8 +99,9 @@ void SetRandomSeed(uint32 seed);
 		return _random.Next();
 	}
 
-	static FORCEINLINE uint32 RandomRange(uint16 max)
+	static FORCEINLINE uint32 RandomRange(uint max)
 	{
+		assert(max <= UINT16_MAX);
 		return _random.Next(max);
 	}
 #endif
