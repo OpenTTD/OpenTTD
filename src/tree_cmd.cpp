@@ -375,9 +375,22 @@ CommandCost CmdPlantTree(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 					continue;
 				}
 			/* FALL THROUGH */
-			case MP_CLEAR:
+			case MP_CLEAR: {
 				if (IsBridgeAbove(tile)) {
 					msg = STR_ERROR_SITE_UNSUITABLE;
+					continue;
+				}
+
+				TreeType treetype = (TreeType)tree_to_plant;
+				/* Be a bit picky about which trees go where. */
+				if (_settings_game.game_creation.landscape == LT_TROPIC && treetype != TREE_INVALID && (
+						/* No cacti outside the desert */
+						(treetype == TREE_CACTUS && GetTropicZone(tile) != TROPICZONE_DESERT) ||
+						/* No rain forest trees outside the rain forest, except in the editor mode where it makes those tiles rain forest tile */
+						(IsInsideMM(treetype, TREE_RAINFOREST, TREE_CACTUS) && GetTropicZone(tile) != TROPICZONE_RAINFOREST && _game_mode != GM_EDITOR) ||
+						/* And no subtropical trees in the desert/rain forest */
+						(IsInsideMM(treetype, TREE_SUB_TROPICAL, TREE_TOYLAND) && GetTropicZone(tile) != TROPICZONE_NORMAL))) {
+					msg = STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE;
 					continue;
 				}
 
@@ -402,7 +415,6 @@ CommandCost CmdPlantTree(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 				}
 
 				if (flags & DC_EXEC) {
-					TreeType treetype = (TreeType)tree_to_plant;
 					if (treetype == TREE_INVALID) {
 						treetype = GetRandomTreeType(tile, GB(Random(), 24, 8));
 						if (treetype == TREE_INVALID) treetype = TREE_CACTUS;
@@ -413,11 +425,12 @@ CommandCost CmdPlantTree(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 					MarkTileDirtyByTile(tile);
 
 					/* When planting rainforest-trees, set tropiczone to rainforest in editor. */
-					if (_game_mode == GM_EDITOR && IsInsideMM(treetype, TREE_RAINFOREST, TREE_CACTUS))
+					if (_game_mode == GM_EDITOR && IsInsideMM(treetype, TREE_RAINFOREST, TREE_CACTUS)) {
 						SetTropicZone(tile, TROPICZONE_RAINFOREST);
+					}
 				}
 				cost.AddCost(_price[PR_BUILD_TREES]);
-				break;
+			} break;
 
 			default:
 				msg = STR_ERROR_SITE_UNSUITABLE;
