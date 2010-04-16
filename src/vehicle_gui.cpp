@@ -572,15 +572,16 @@ uint ShowRefitOptionsList(int left, int right, int y, EngineID engine)
 		bool first = true;
 
 		/* Add each cargo type to the list */
-		for (CargoID cid = 0; cid < NUM_CARGO; cid++) {
-			if (!HasBit(cmask, cid)) continue;
+		const CargoSpec *cs;
+		FOR_ALL_SORTED_CARGOSPECS(cs) {
+			if (!HasBit(cmask, cs->Index())) continue;
 
 			if (b >= lastof(string) - (2 + 2 * 4)) break; // ", " and two calls to Utf8Encode()
 
 			if (!first) b = strecpy(b, ", ", lastof(string));
 			first = false;
 
-			b = InlineString(b, CargoSpec::Get(cid)->name);
+			b = InlineString(b, cs->name);
 		}
 	}
 
