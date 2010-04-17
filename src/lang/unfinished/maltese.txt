@@ -21,13 +21,76 @@
 ##id 0x0000
 STR_NULL                                                        :
 STR_EMPTY                                                       :
+STR_JUST_NOTHING                                                :Xejn
 
 # Cargo related strings
 # Plural cargo name
 STR_CARGO_PLURAL_NOTHING                                        :
+STR_CARGO_PLURAL_PASSENGERS                                     :Passiġġieri
+STR_CARGO_PLURAL_COAL                                           :Faħam
+STR_CARGO_PLURAL_MAIL                                           :Posta
+STR_CARGO_PLURAL_OIL                                            :Żejt
+STR_CARGO_PLURAL_LIVESTOCK                                      :Bhejjem
+STR_CARGO_PLURAL_GOODS                                          :Merkanzija
+STR_CARGO_PLURAL_GRAIN                                          :Qamħ
+STR_CARGO_PLURAL_WOOD                                           :Injam
+STR_CARGO_PLURAL_IRON_ORE                                       :Sorsi ta' Ħadid
+STR_CARGO_PLURAL_STEEL                                          :Azzar
+STR_CARGO_PLURAL_VALUABLES                                      :Oġġetti ta' Valur
+STR_CARGO_PLURAL_COPPER_ORE                                     :Sorsi ta' Ram
+STR_CARGO_PLURAL_MAIZE                                          :Qamħirrum
+STR_CARGO_PLURAL_FRUIT                                          :Frott
+STR_CARGO_PLURAL_DIAMONDS                                       :Djamanti
+STR_CARGO_PLURAL_FOOD                                           :Ikel
+STR_CARGO_PLURAL_PAPER                                          :Karti
+STR_CARGO_PLURAL_GOLD                                           :Deheb
+STR_CARGO_PLURAL_WATER                                          :Ilma
+STR_CARGO_PLURAL_WHEAT                                          :Qamħ
+STR_CARGO_PLURAL_RUBBER                                         :Gomma
+STR_CARGO_PLURAL_SUGAR                                          :Zokkor
+STR_CARGO_PLURAL_TOYS                                           :Ġugarelli
+STR_CARGO_PLURAL_CANDY                                          :Ħelu
+STR_CARGO_PLURAL_COLA                                           :Koka
+STR_CARGO_PLURAL_COTTON_CANDY                                   :Kandifloss
+STR_CARGO_PLURAL_BUBBLES                                        :Bżieżaq
+STR_CARGO_PLURAL_TOFFEE                                         :Tofija
+STR_CARGO_PLURAL_BATTERIES                                      :Batteriji
+STR_CARGO_PLURAL_PLASTIC                                        :Plastik
+STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Xarbiet Karbonati
 
 # Singular cargo name
 STR_CARGO_SINGULAR_NOTHING                                      :
+STR_CARGO_SINGULAR_PASSENGER                                    :Passiġġier
+STR_CARGO_SINGULAR_COAL                                         :Faħam
+STR_CARGO_SINGULAR_MAIL                                         :Posta
+STR_CARGO_SINGULAR_OIL                                          :Żejt
+STR_CARGO_SINGULAR_LIVESTOCK                                    :Bhejjem
+STR_CARGO_SINGULAR_GOODS                                        :Merkanzija
+STR_CARGO_SINGULAR_GRAIN                                        :Qamħ
+STR_CARGO_SINGULAR_WOOD                                         :Injam
+STR_CARGO_SINGULAR_IRON_ORE                                     :Sors ta' Ħadid
+STR_CARGO_SINGULAR_STEEL                                        :Azzar
+STR_CARGO_SINGULAR_VALUABLES                                    :Oġġetti ta' Valur
+STR_CARGO_SINGULAR_COPPER_ORE                                   :Sors ta' Ram
+STR_CARGO_SINGULAR_MAIZE                                        :Qamħirrum
+STR_CARGO_SINGULAR_FRUIT                                        :Frotta
+STR_CARGO_SINGULAR_DIAMOND                                      :Djamant
+STR_CARGO_SINGULAR_FOOD                                         :Ikel
+STR_CARGO_SINGULAR_PAPER                                        :Karta
+STR_CARGO_SINGULAR_GOLD                                         :Deheb
+STR_CARGO_SINGULAR_WATER                                        :Ilma
+STR_CARGO_SINGULAR_WHEAT                                        :Qamħ
+STR_CARGO_SINGULAR_RUBBER                                       :Gomma
+STR_CARGO_SINGULAR_SUGAR                                        :Zokkor
+STR_CARGO_SINGULAR_TOY                                          :Ġugarell
+STR_CARGO_SINGULAR_CANDY                                        :Ħelwa
+STR_CARGO_SINGULAR_COLA                                         :Koka
+STR_CARGO_SINGULAR_COTTON_CANDY                                 :Kandiflos
+STR_CARGO_SINGULAR_BUBBLE                                       :Bużżieqa
+STR_CARGO_SINGULAR_TOFFEE                                       :Tofija
+STR_CARGO_SINGULAR_BATTERY                                      :Batterija
+STR_CARGO_SINGULAR_PLASTIC                                      :Plastik
+STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Xarba Karbonata
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
@@ -320,6 +383,9 @@ STR_QUANTITY_NOTHING                                            :
 # Network messages
 
 ############ Leave those lines in this order!!
+STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :reviżjoni ħażina
+STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :isem diġa qed jintuża
+STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :password ħażin
 ############ End of leave-in-this-order
 
 # Network related errors
@@ -751,6 +817,12 @@ STR_SV_STNAME_WAYPOINT                                          :{STRING}
 
 ##id 0x8000
 # Vehicle names
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FIZZY_DRINK_TRUCK         :Trakk tax-Xarbiet Karbonati
+STR_VEHICLE_NAME_AIRCRAFT_JUGGERPLANE_M1                        :Juggerplane M1
+STR_VEHICLE_NAME_AIRCRAFT_FLASHBANG_WIZZER                      :Flashbang Wizzer
+STR_VEHICLE_NAME_AIRCRAFT_TRICARIO_HELICOPTER                   :Ħelikopter Tricario
+STR_VEHICLE_NAME_AIRCRAFT_GURU_X2_HELICOPTER                    :Ħelikopter Guru X2
+STR_VEHICLE_NAME_AIRCRAFT_POWERNAUT_HELICOPTER                  :Ħelikopter Powernaut
 
 ##id 0x8800
 # Formatting of some strings
@@ -760,6 +832,8 @@ STR_FORMAT_DATE_LONG                                            :{STRING} {STRIN
 STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
 
 
+STR_UNKNOWN_STATION                                             :stazzjon mhux magħruf
+STR_COMPANY_SOMEONE                                             :xi ħadd
 
 STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}
 

@@ -3329,6 +3329,7 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}Ρυθμ
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Αλλαγή των ρυθμίσεων του AI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Ξαναφορτώση AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Τερματίστε το AI, ξαναφορτώστε το σενάριο και ξαναεκκινήστε το AI
+STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Όταν ένα αρχείο καταγραφής Al ταιριάζει με αυτό, τότε το παιχνίδι σταματά
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Συνέχεια
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Συνέχιση του παιχνιδιού και της λειτουργίας του AI
 
@@ -3624,6 +3625,7 @@ STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Δεν �
 
 # Tree related errors
 STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... υπάρχει ήδη δέντρο εδώ
+STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... λάθος έδαφος για αυτό το τύπο δέντρου
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Δεν γίνεται να φυτευθεί δέντρο εδώ...
 
 # Bridge related errors

@@ -21,6 +21,8 @@
 ##id 0x0000
 STR_NULL                                                        :
 STR_EMPTY                                                       :
+STR_UNDEFINED                                                   :(teaghrán sainmhíniú)
+STR_JUST_NOTHING                                                :Ní dhéanfaidh aon ní
 
 # Cargo related strings
 # Plural cargo name
