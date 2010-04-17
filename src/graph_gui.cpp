@@ -169,6 +169,8 @@ struct ValuesInterval {
 enum CompanyValueWidgets {
 	BGW_KEY_BUTTON,
 	BGW_BACKGROUND,
+	BGW_GRAPH,
+	BGW_RESIZE,
 };
 
 struct BaseGraphWindow : Window {
@@ -636,7 +638,7 @@ public:
 
 struct OperatingProfitGraphWindow : BaseGraphWindow {
 	OperatingProfitGraphWindow(const WindowDesc *desc, WindowNumber window_number) :
-			BaseGraphWindow(BGW_BACKGROUND, STR_JUST_CURRCOMPACT)
+			BaseGraphWindow(BGW_GRAPH, STR_JUST_CURRCOMPACT)
 	{
 		this->InitializeWindow(desc, window_number);
 	}
@@ -655,7 +657,15 @@ static const NWidgetPart _nested_operating_profit_widgets[] = {
 		NWidget(WWT_SHADEBOX, COLOUR_GREY),
 		NWidget(WWT_STICKYBOX, COLOUR_GREY),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY, BGW_BACKGROUND), SetMinimalSize(576, 160), EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY, BGW_BACKGROUND),
+		NWidget(NWID_HORIZONTAL),
+			NWidget(WWT_EMPTY, COLOUR_GREY, BGW_GRAPH), SetMinimalSize(576, 160), SetFill(1, 1), SetResize(1, 1),
+			NWidget(NWID_VERTICAL),
+				NWidget(NWID_SPACER), SetFill(0, 1), SetResize(0, 1),
+				NWidget(WWT_RESIZEBOX, COLOUR_GREY, BGW_RESIZE),
+			EndContainer(),
+		EndContainer(),
+	EndContainer(),
 };
 
 static const WindowDesc _operating_profit_desc(
@@ -678,7 +688,7 @@ void ShowOperatingProfitGraph()
 
 struct IncomeGraphWindow : BaseGraphWindow {
 	IncomeGraphWindow(const WindowDesc *desc, WindowNumber window_number) :
-			BaseGraphWindow(BGW_BACKGROUND, STR_JUST_CURRCOMPACT)
+			BaseGraphWindow(BGW_GRAPH, STR_JUST_CURRCOMPACT)
 	{
 		this->InitializeWindow(desc, window_number);
 	}
@@ -697,7 +707,15 @@ static const NWidgetPart _nested_income_graph_widgets[] = {
 		NWidget(WWT_SHADEBOX, COLOUR_GREY),
 		NWidget(WWT_STICKYBOX, COLOUR_GREY),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY, BGW_BACKGROUND), SetMinimalSize(576, 128), EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY, BGW_BACKGROUND),
+		NWidget(NWID_HORIZONTAL),
+			NWidget(WWT_EMPTY, COLOUR_GREY, BGW_GRAPH), SetMinimalSize(576, 128), SetFill(1, 1), SetResize(1, 1),
+			NWidget(NWID_VERTICAL),
+				NWidget(NWID_SPACER), SetFill(0, 1), SetResize(0, 1),
+				NWidget(WWT_RESIZEBOX, COLOUR_GREY, BGW_RESIZE),
+			EndContainer(),
+		EndContainer(),
+	EndContainer(),
 };
 
 
@@ -719,7 +737,7 @@ void ShowIncomeGraph()
 
 struct DeliveredCargoGraphWindow : BaseGraphWindow {
 	DeliveredCargoGraphWindow(const WindowDesc *desc, WindowNumber window_number) :
-			BaseGraphWindow(BGW_BACKGROUND, STR_JUST_COMMA)
+			BaseGraphWindow(BGW_GRAPH, STR_JUST_COMMA)
 	{
 		this->InitializeWindow(desc, window_number);
 	}
@@ -738,7 +756,15 @@ static const NWidgetPart _nested_delivered_cargo_graph_widgets[] = {
 		NWidget(WWT_SHADEBOX, COLOUR_GREY),
 		NWidget(WWT_STICKYBOX, COLOUR_GREY),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY, BGW_BACKGROUND), SetMinimalSize(576, 128), EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY, BGW_BACKGROUND),
+		NWidget(NWID_HORIZONTAL),
+			NWidget(WWT_EMPTY, COLOUR_GREY, BGW_GRAPH), SetMinimalSize(576, 128), SetFill(1, 1), SetResize(1, 1),
+			NWidget(NWID_VERTICAL),
+				NWidget(NWID_SPACER), SetFill(0, 1), SetResize(0, 1),
+				NWidget(WWT_RESIZEBOX, COLOUR_GREY, BGW_RESIZE),
+			EndContainer(),
+		EndContainer(),
+	EndContainer(),
 };
 
 static const WindowDesc _delivered_cargo_graph_desc(
@@ -762,11 +788,13 @@ enum PerformanceHistoryGraphWidgets {
 	PHW_KEY,
 	PHW_DETAILED_PERFORMANCE,
 	PHW_BACKGROUND,
+	PHW_GRAPH,
+	PHW_RESIZE,
 };
 
 struct PerformanceHistoryGraphWindow : BaseGraphWindow {
 	PerformanceHistoryGraphWindow(const WindowDesc *desc, WindowNumber window_number) :
-			BaseGraphWindow(PHW_BACKGROUND, STR_JUST_COMMA)
+			BaseGraphWindow(PHW_GRAPH, STR_JUST_COMMA)
 	{
 		this->InitializeWindow(desc, window_number);
 	}
@@ -792,7 +820,15 @@ static const NWidgetPart _nested_performance_history_widgets[] = {
 		NWidget(WWT_SHADEBOX, COLOUR_GREY),
 		NWidget(WWT_STICKYBOX, COLOUR_GREY),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY, PHW_BACKGROUND), SetMinimalSize(576, 224), EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY, PHW_BACKGROUND),
+		NWidget(NWID_HORIZONTAL),
+			NWidget(WWT_EMPTY, COLOUR_GREY, PHW_GRAPH), SetMinimalSize(576, 224), SetFill(1, 1), SetResize(1, 1),
+			NWidget(NWID_VERTICAL),
+				NWidget(NWID_SPACER), SetFill(0, 1), SetResize(0, 1),
+				NWidget(WWT_RESIZEBOX, COLOUR_GREY, PHW_RESIZE),
+			EndContainer(),
+		EndContainer(),
+	EndContainer(),
 };
 
 static const WindowDesc _performance_history_desc(
@@ -813,7 +849,7 @@ void ShowPerformanceHistoryGraph()
 
 struct CompanyValueGraphWindow : BaseGraphWindow {
 	CompanyValueGraphWindow(const WindowDesc *desc, WindowNumber window_number) :
-			BaseGraphWindow(BGW_BACKGROUND, STR_JUST_CURRCOMPACT)
+			BaseGraphWindow(BGW_GRAPH, STR_JUST_CURRCOMPACT)
 	{
 		this->InitializeWindow(desc, window_number);
 	}
@@ -832,7 +868,15 @@ static const NWidgetPart _nested_company_value_graph_widgets[] = {
 		NWidget(WWT_SHADEBOX, COLOUR_GREY),
 		NWidget(WWT_STICKYBOX, COLOUR_GREY),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY, BGW_BACKGROUND), SetMinimalSize(576, 224), EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY, BGW_BACKGROUND),
+		NWidget(NWID_HORIZONTAL),
+			NWidget(WWT_EMPTY, COLOUR_GREY, BGW_GRAPH), SetMinimalSize(576, 224), SetFill(1, 1), SetResize(1, 1),
+			NWidget(NWID_VERTICAL),
+				NWidget(NWID_SPACER), SetFill(0, 1), SetResize(0, 1),
+				NWidget(WWT_RESIZEBOX, COLOUR_GREY, BGW_RESIZE),
+			EndContainer(),
+		EndContainer(),
+	EndContainer(),
 };
 
 static const WindowDesc _company_value_graph_desc(
@@ -856,6 +900,7 @@ enum CargoPaymentRatesWidgets {
 	CPW_BACKGROUND,
 	CPW_HEADER,
 	CPW_GRAPH,
+	CPW_RESIZE,
 	CPW_FOOTER,
 	CPW_ENABLE_CARGOS,
 	CPW_DISABLE_CARGOS,
@@ -1042,30 +1087,29 @@ static const NWidgetPart _nested_cargo_payment_rates_widgets[] = {
 		NWidget(WWT_SHADEBOX, COLOUR_GREY),
 		NWidget(WWT_STICKYBOX, COLOUR_GREY),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_GREY, CPW_BACKGROUND), SetMinimalSize(568, 128), SetResize(0, 1),
-		NWidget(NWID_VERTICAL),
-			NWidget(NWID_HORIZONTAL),
-				NWidget(NWID_SPACER), SetFill(1, 0),
-				NWidget(WWT_TEXT, COLOUR_GREY, CPW_HEADER), SetMinimalSize(0, 6), SetPadding(2, 0, 2, 0), SetDataTip(STR_GRAPH_CARGO_PAYMENT_RATES_TITLE, STR_NULL),
-				NWidget(NWID_SPACER), SetFill(1, 0),
+	NWidget(WWT_PANEL, COLOUR_GREY, CPW_BACKGROUND), SetMinimalSize(568, 128),
+		NWidget(NWID_HORIZONTAL),
+			NWidget(NWID_SPACER), SetFill(1, 0), SetResize(1, 0),
+			NWidget(WWT_TEXT, COLOUR_GREY, CPW_HEADER), SetMinimalSize(0, 6), SetPadding(2, 0, 2, 0), SetDataTip(STR_GRAPH_CARGO_PAYMENT_RATES_TITLE, STR_NULL),
+			NWidget(NWID_SPACER), SetFill(1, 0), SetResize(1, 0),
+		EndContainer(),
+		NWidget(NWID_HORIZONTAL),
+			NWidget(WWT_EMPTY, COLOUR_GREY, CPW_GRAPH), SetMinimalSize(495, 0), SetFill(1, 1), SetResize(1, 1),
+			NWidget(NWID_VERTICAL),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 24), SetFill(0, 0), SetResize(0, 1),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, CPW_ENABLE_CARGOS), SetDataTip(STR_GRAPH_CARGO_ENABLE_ALL, STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL), SetFill(1, 0),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, CPW_DISABLE_CARGOS), SetDataTip(STR_GRAPH_CARGO_DISABLE_ALL, STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL), SetFill(1, 0),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 4),
+				NWidgetFunction(MakeCargoButtons),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 24), SetFill(0, 1), SetResize(0, 1),
 			EndContainer(),
-			NWidget(NWID_HORIZONTAL),
-				NWidget(WWT_EMPTY, COLOUR_GREY, CPW_GRAPH), SetMinimalSize(495, 0), SetFill(1, 1),
-				NWidget(NWID_VERTICAL),
-					NWidget(NWID_SPACER), SetMinimalSize(0, 24), SetFill(0, 0),
-						NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, CPW_ENABLE_CARGOS), SetDataTip(STR_GRAPH_CARGO_ENABLE_ALL, STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL), SetFill(1, 0),
-						NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, CPW_DISABLE_CARGOS), SetDataTip(STR_GRAPH_CARGO_DISABLE_ALL, STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL), SetFill(1, 0),
-						NWidget(NWID_SPACER), SetMinimalSize(0, 4), SetFill(0, 0),
-						NWidgetFunction(MakeCargoButtons),
-					NWidget(NWID_SPACER), SetMinimalSize(0, 24), SetFill(0, 1),
-				EndContainer(),
-				NWidget(NWID_SPACER), SetMinimalSize(5, 0), SetFill(0, 1),
-			EndContainer(),
-			NWidget(NWID_HORIZONTAL),
-				NWidget(NWID_SPACER), SetFill(1, 0),
-				NWidget(WWT_TEXT, COLOUR_GREY, CPW_FOOTER), SetMinimalSize(0, 6), SetPadding(2, 0, 2, 0), SetDataTip(STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL, STR_NULL),
-				NWidget(NWID_SPACER), SetFill(1, 0),
-			EndContainer(),
+			NWidget(NWID_SPACER), SetMinimalSize(5, 0), SetFill(0, 1), SetResize(0, 1),
+		EndContainer(),
+		NWidget(NWID_HORIZONTAL),
+			NWidget(NWID_SPACER), SetMinimalSize(WD_RESIZEBOX_WIDTH, 0), SetFill(1, 0), SetResize(1, 0),
+			NWidget(WWT_TEXT, COLOUR_GREY, CPW_FOOTER), SetMinimalSize(0, 6), SetPadding(2, 0, 2, 0), SetDataTip(STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL, STR_NULL),
+			NWidget(NWID_SPACER), SetFill(1, 0), SetResize(1, 0),
+			NWidget(WWT_RESIZEBOX, COLOUR_GREY, CPW_RESIZE),
 		EndContainer(),
 	EndContainer(),
 };
