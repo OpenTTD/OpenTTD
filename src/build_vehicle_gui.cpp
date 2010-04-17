@@ -1061,7 +1061,7 @@ struct BuildVehicleWindow : Window {
 				size_t num_items = this->eng_list.Length();
 				this->sel_engine = (i < num_items) ? this->eng_list[i] : INVALID_ENGINE;
 				this->SetDirty();
-				if (click_count > 1) this->OnClick(pt, BUILD_VEHICLE_WIDGET_BUILD, 1);
+				if (click_count > 1 && !this->listview_mode) this->OnClick(pt, BUILD_VEHICLE_WIDGET_BUILD, 1);
 				break;
 			}
 
