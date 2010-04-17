@@ -97,7 +97,7 @@ CommandCost CmdDecreaseLoan(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 			loan -= loan % LOAN_INTERVAL;
 			break;
 		case 2: // Repay the given amount of loan
-			if (p1 % LOAN_INTERVAL != 0 || (int32)p1 < LOAN_INTERVAL) return CMD_ERROR; // Invalid amount to loan
+			if (p1 % LOAN_INTERVAL != 0 || (int32)p1 < LOAN_INTERVAL || p1 > c->current_loan) return CMD_ERROR; // Invalid amount to loan
 			loan = p1;
 			break;
 	}

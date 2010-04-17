@@ -604,8 +604,8 @@ CommandCost CmdLandscapeClear(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 
 /** Clear a big piece of landscape
  * @param tile end tile of area dragging
- * @param p1 start tile of area dragging
  * @param flags of operation to conduct
+ * @param p1 start tile of area dragging
  * @param p2 unused
  * @param text unused
  * @return the cost of this operation or an error
