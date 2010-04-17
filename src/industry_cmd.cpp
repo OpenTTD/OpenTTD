@@ -1923,8 +1923,7 @@ void GenerateIndustries()
 
 	/* Add the remaining industries according to their probabilities */
 	for (uint i = 0; i < total_amount; i++) {
-		/* RandomRange() can only deal with 16 bit, which is not enough here. */
-		uint32 r = ((uint64)Random() * (uint64)total_prob) >> 32;
+		uint32 r = RandomRange(total_prob);
 		IndustryType it = 0;
 		while (it < NUM_INDUSTRYTYPES && r >= industry_probs[it]) {
 			r -= industry_probs[it];

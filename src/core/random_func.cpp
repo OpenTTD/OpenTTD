@@ -24,9 +24,9 @@ uint32 Randomizer::Next()
 	return this->state[1] = ROR(s, 3) - 1;
 }
 
-uint32 Randomizer::Next(uint16 max)
+uint32 Randomizer::Next(uint32 max)
 {
-	return GB(this->Next(), 0, 16) * max >> 16;
+	return ((uint64)this->Next() * (uint64)max) >> 32;
 }
 
 void Randomizer::SetSeed(uint32 seed)
@@ -55,9 +55,8 @@ uint32 DoRandom(int line, const char *file)
 	return _random.Next();
 }
 
-uint DoRandomRange(uint max, int line, const char *file)
+uint32 DoRandomRange(uint32 max, int line, const char *file)
 {
-	assert(max <= UINT16_MAX);
-	return GB(DoRandom(line, file), 0, 16) * max >> 16;
+	return ((uint64)DoRandom(line, file) * (uint64)max) >> 32;
 }
 #endif /* RANDOM_DEBUG */

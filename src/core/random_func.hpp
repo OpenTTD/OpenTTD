@@ -48,7 +48,7 @@ struct Randomizer {
 	 * @param max the maximum value of the returned random number
 	 * @return the random number
 	 */
-	uint32 Next(uint16 max);
+	uint32 Next(uint32 max);
 
 	/**
 	 * (Re)set the state of the random number generator.
@@ -92,16 +92,15 @@ void SetRandomSeed(uint32 seed);
 	#endif
 	uint32 DoRandom(int line, const char *file);
 	#define RandomRange(max) DoRandomRange(max, __LINE__, __FILE__)
-	uint DoRandomRange(uint max, int line, const char *file);
+	uint32 DoRandomRange(uint32 max, int line, const char *file);
 #else
 	static FORCEINLINE uint32 Random()
 	{
 		return _random.Next();
 	}
 
-	static FORCEINLINE uint32 RandomRange(uint max)
+	static FORCEINLINE uint32 RandomRange(uint32 max)
 	{
-		assert(max <= UINT16_MAX);
 		return _random.Next(max);
 	}
 #endif
@@ -111,7 +110,7 @@ static FORCEINLINE uint32 InteractiveRandom()
 	return _interactive_random.Next();
 }
 
-static FORCEINLINE uint32 InteractiveRandomRange(uint16 max)
+static FORCEINLINE uint32 InteractiveRandomRange(uint32 max)
 {
 	return _interactive_random.Next(max);
 }
