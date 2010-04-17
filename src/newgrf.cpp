@@ -404,6 +404,9 @@ static Engine *GetNewEngine(const GRFFile *file, VehicleType type, uint16 intern
 		size_t len = (Engine::GetPoolSize() - engine_pool_size) * sizeof(*_gted);
 		memset(_gted + engine_pool_size, 0, len);
 	}
+	if (type == VEH_TRAIN) {
+		_gted[e->index].railtypelabel = GetRailTypeInfo(e->u.rail.railtype)->label;
+	}
 
 	grfmsg(5, "Created new engine at index %d for GRFID %x, type %d, index %d", e->index, BSWAP32(file->grfid), type, internal_id);
 
