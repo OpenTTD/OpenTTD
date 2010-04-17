@@ -392,17 +392,17 @@ static int DeterminePluralForm(int64 count)
 		case 2:
 			return n > 1;
 
-		/* Three forms, special case for zero
+		/* Three forms, special case for 0 and ending in 1, except those ending in 11
 		 * Used in:
 		 *   Latvian */
 		case 3:
 			return n % 10 == 1 && n % 100 != 11 ? 0 : n != 0 ? 1 : 2;
 
-		/* Three forms, special case for one and two
+		/* Five forms, special case for one, two, 3 to 6 and 7 to 10
 		 * Used in:
 		 *   Gaelige (Irish) */
 		case 4:
-			return n == 1 ? 0 : n == 2 ? 1 : 2;
+			return n == 1 ? 0 : n == 2 ? 1 : n < 7 ? 2 : n < 11 ? 3 : 4;
 
 		/* Three forms, special case for numbers ending in 1[2-9]
 		 * Used in:
@@ -465,6 +465,12 @@ static int DeterminePluralForm(int64 count)
 				default:
 					NOT_REACHED();
 			}
+
+		/* Four forms: one, 0 and everything ending in 02..10, everything ending in 11..19.
+		 * Used in:
+		 *  Maltese */
+		case 12:
+			return (n == 1 ? 0 : n == 0 || (n % 100 > 1 && n % 100 < 11) ? 1 : (n % 100 > 10 && n % 100 < 20) ? 2 : 3);
 	}
 }
 
