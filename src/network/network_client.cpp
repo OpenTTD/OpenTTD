@@ -1029,6 +1029,19 @@ void NetworkClientRequestMove(CompanyID company_id, const char *pass)
 	SEND_COMMAND(PACKET_CLIENT_MOVE)(company_id, pass);
 }
 
+void NetworkClientsToSpectators(CompanyID cid)
+{
+	/* If our company is changing owner, go to spectators */
+	if (cid == _local_company) SetLocalCompany(COMPANY_SPECTATOR);
+
+	NetworkClientInfo *ci;
+	FOR_ALL_CLIENT_INFOS(ci) {
+		if (ci->client_playas != cid) continue;
+		NetworkTextMessage(NETWORK_ACTION_COMPANY_SPECTATOR, CC_DEFAULT, false, ci->client_name);
+		ci->client_playas = COMPANY_SPECTATOR;
+	}
+}
+
 void NetworkUpdateClientName()
 {
 	NetworkClientInfo *ci = NetworkFindClientInfoFromClientID(_network_own_client_id);

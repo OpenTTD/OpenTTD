@@ -298,6 +298,11 @@ int UpdateCompanyRatingAndValue(Company *c, bool update)
 /*  use INVALID_OWNER as new_owner to delete the company. */
 void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 {
+#ifdef ENABLE_NETWORK
+	/* In all cases, make spectators of clients connected to that company */
+	if (_networking) NetworkClientsToSpectators(old_owner);
+#endif /* ENABLE_NETWORK */
+
 	Town *t;
 	CompanyID old = _current_company;
 
@@ -472,21 +477,6 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 	MarkWholeScreenDirty();
 }
 
-static void ChangeNetworkOwner(Owner current_owner, Owner new_owner)
-{
-#ifdef ENABLE_NETWORK
-	if (!_networking) return;
-
-	if (current_owner == _local_company) {
-		SetLocalCompany(new_owner);
-	}
-
-	if (!_network_server) return;
-
-	NetworkServerChangeOwner(current_owner, new_owner);
-#endif /* ENABLE_NETWORK */
-}
-
 static void CompanyCheckBankrupt(Company *c)
 {
 	/*  If the company has money again, it does not go bankrupt */
@@ -548,8 +538,6 @@ static void CompanyCheckBankrupt(Company *c)
 			SetDParamStr(2, cni->company_name);
 			AddCompanyNewsItem(STR_MESSAGE_NEWS_FORMAT, NS_COMPANY_BANKRUPT, cni);
 
-			/* Remove the company */
-			ChangeNetworkOwner(c->index, COMPANY_SPECTATOR);
 			ChangeOwnershipOfCompanyItems(c->index, INVALID_OWNER);
 
 			if (c->is_ai) AI::Stop(c->index);
@@ -1461,8 +1449,6 @@ static void DoAcquireCompany(Company *c)
 	AddCompanyNewsItem(STR_MESSAGE_NEWS_FORMAT, NS_COMPANY_MERGER, cni);
 	AI::BroadcastNewEvent(new AIEventCompanyMerger(ci, _current_company));
 
-	/* original code does this a little bit differently */
-	ChangeNetworkOwner(ci, _current_company);
 	ChangeOwnershipOfCompanyItems(ci, _current_company);
 
 	if (c->bankrupt_value == 0) {
