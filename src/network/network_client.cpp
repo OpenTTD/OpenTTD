@@ -453,6 +453,8 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CLIENT_INFO)
 
 	if (MY_CLIENT->HasClientQuit()) return NETWORK_RECV_STATUS_CONN_LOST;
 
+	if (!Company::IsValidID(playas)) playas = COMPANY_SPECTATOR;
+
 	ci = NetworkFindClientInfoFromClientID(client_id);
 	if (ci != NULL) {
 		if (playas == ci->client_playas && strcmp(name, ci->client_name) != 0) {
@@ -462,6 +464,10 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CLIENT_INFO)
 			/* The client changed from client-player..
 			 * Do not display that for now */
 		}
+
+		/* Make sure we're in the company the server tells us to be in,
+		 * for the rare case that we get moved while joining. */
+		if (client_id == _network_own_client_id) SetLocalCompany(playas);
 
 		ci->client_playas = playas;
 		strecpy(ci->client_name, name, lastof(ci->client_name));
