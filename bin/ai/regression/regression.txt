@@ -96,10 +96,10 @@
   RandRange(1): 0
   RandRange(2): 0
   RandRange(2): 0
-  RandRange(2): 1
-  RandRange(9): 6
-  RandRange(9): 7
-  RandRange(9): 4
+  RandRange(2): 0
+  RandRange(1000000): 987346
+  RandRange(1000000): 781750
+  RandRange(1000000): 191841
   Chance(1, 2): true
   Chance(1, 2): false
   Chance(1, 2): false

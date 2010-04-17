@@ -1099,9 +1099,9 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 		}
 		break;
 	case DESTTYPE_TEAM: {
-		bool show_local = true; // If this is false, the message is already displayed
-														/* on the client who did sent it.
-		 * Find all clients that belong to this company */
+		/* If this is false, the message is already displayed on the client who sent it. */
+		bool show_local = true;
+		/* Find all clients that belong to this company */
 		ci_to = NULL;
 		FOR_ALL_CLIENT_SOCKETS(cs) {
 			ci = cs->GetInfo();
@@ -1692,27 +1692,6 @@ void NetworkServerYearlyLoop()
 void NetworkServerMonthlyLoop()
 {
 	NetworkAutoCleanCompanies();
-}
-
-void NetworkServerChangeOwner(Owner current_owner, Owner new_owner)
-{
-	/* The server has to handle all administrative issues, for example
-	 * updating and notifying all clients of what has happened */
-	NetworkClientInfo *ci = NetworkFindClientInfoFromClientID(CLIENT_ID_SERVER);
-
-	/* The server has just changed from owner */
-	if (current_owner == ci->client_playas) {
-		ci->client_playas = new_owner;
-		NetworkUpdateClientInfo(CLIENT_ID_SERVER);
-	}
-
-	/* Find all clients that were in control of this company, and mark them as new_owner */
-	FOR_ALL_CLIENT_INFOS(ci) {
-		if (current_owner == ci->client_playas) {
-			ci->client_playas = new_owner;
-			NetworkUpdateClientInfo(ci->client_id);
-		}
-	}
 }
 
 const char *GetClientIP(NetworkClientInfo *ci)

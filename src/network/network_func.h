@@ -47,6 +47,7 @@ void NetworkStartDebugLog(NetworkAddress address);
 void NetworkPopulateCompanyStats(NetworkCompanyStats *stats);
 
 void NetworkUpdateClientInfo(ClientID client_id);
+void NetworkClientsToSpectators(CompanyID cid);
 void NetworkClientConnectGame(NetworkAddress address, CompanyID join_as, const char *join_server_password = NULL, const char *join_company_password = NULL);
 void NetworkClientRequestMove(CompanyID company, const char *pass = "");
 void NetworkClientSendRcon(const char *password, const char *command);
@@ -61,7 +62,6 @@ void NetworkHandlePauseChange(PauseMode prev_mode, PauseMode changed_mode);
 /*** Commands ran by the server ***/
 void NetworkServerMonthlyLoop();
 void NetworkServerYearlyLoop();
-void NetworkServerChangeOwner(Owner current_owner, Owner new_owner);
 void NetworkServerSendConfigUpdate();
 void NetworkServerShowStatusToConsole();
 bool NetworkServerStart();

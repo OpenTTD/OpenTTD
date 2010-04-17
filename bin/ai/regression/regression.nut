@@ -192,9 +192,9 @@ function Regression::Base()
 	print("  RandRange(2): " + AIBase.RandRange(2));
 	print("  RandRange(2): " + AIBase.RandRange(2));
 	print("  RandRange(2): " + AIBase.RandRange(2));
-	print("  RandRange(9): " + AIBase.RandRange(9));
-	print("  RandRange(9): " + AIBase.RandRange(9));
-	print("  RandRange(9): " + AIBase.RandRange(9));
+	print("  RandRange(1000000): " + AIBase.RandRange(1000000)); // 32 bit tests
+	print("  RandRange(1000000): " + AIBase.RandRange(1000000));
+	print("  RandRange(1000000): " + AIBase.RandRange(1000000));
 	print("  Chance(1, 2): " + AIBase.Chance(1, 2));
 	print("  Chance(1, 2): " + AIBase.Chance(1, 2));
 	print("  Chance(1, 2): " + AIBase.Chance(1, 2));
