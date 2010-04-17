@@ -1141,7 +1141,7 @@ STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Rongide
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Algupärane
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistlik
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Järsakute kalde suurus rongide jaoks {ORANGE}{STRING}%
-STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Rongidel ja laevadel keelatakse 90 kraadised pöörded: {ORANGE}{STRING} {LTBLUE} (vajab NPF)
+STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Rongidel ja laevadel keelatakse 90 kraadised pöörded: {ORANGE}{STRING} {LTBLUE} (ei tööta OPF-ga)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Kõrvuti ehitatud jaamade ühendamine: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Mitte kõrvuti asetsevate jaamade liitmine: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Täiustatud laadimisalgoritm: {ORANGE}{STRING}
@@ -1405,7 +1405,7 @@ STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Internet
 STR_INTRO_AI_SETTINGS                                           :{BLACK}Tehismõistuse seaded
 STR_INTRO_QUIT                                                  :{BLACK}Välju
 
-STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Alusta uut mängu
+STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Alusta uut mängu. Ctrl+Klikk jätab kaardi seadistamise vahele
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Laadi salvestatud mäng
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Alusta uut mängu kasutades kõrguskaarti maastikuna
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Alusta omatehtud stsenaariumit kasutades uut mängu
@@ -1591,7 +1591,7 @@ STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Kliendi
 STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Keel: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Maastik: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Kaardi suurus: {WHITE}{COMMA}x{COMMA}
-STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Osa serveris:  {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Serveri versioon: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Serveri aadress: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Aeg alguses: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Aeg hetkel: {WHITE}{DATE_SHORT}
@@ -1737,7 +1737,7 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Ettevõt
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Klientide nimekiri
 STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Jälgi
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Uus Ettevõte
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Uus ettevõte
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Viska välja
@@ -1937,7 +1937,7 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Elektrir
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Monorelsi ehitamine
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Magnethõljuktee ehitamine
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Ehita rööbasteed
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Ehita raudteed. Ctrl vahetab ehitamise eemaldamise vastu
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Rööbaste ehitamine kasutades "lohistamist"
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Ehita rongidepoo (rongide ehitamiseks ja hoolduseks)
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Muuda rööpad meldepunktiks
@@ -2180,6 +2180,7 @@ STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Jaama r�
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Vastuvõetavad veosed: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
+STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Raudtee kiirusepiirang: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Kaljud
@@ -3361,7 +3362,7 @@ STR_ERROR_BMPMAP                                                :{WHITE}Ei suuda
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... ei suutnud muuta pildi tüüpi.
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Skaala hoiatus
-STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Kaardi suuruse muutmine pole soovitatav. Jätka?
+STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Kaardi suuruse liigne muutmine pole soovitatav. Jätka?
 
 # Soundset messages
 STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Mäng ei leidnud helisid. Helid saad paigaldada Internetisisu laadimise aknast.
@@ -3574,6 +3575,7 @@ STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Sillaots
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Sild on maastiku suhtes liiga madal
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Algus ja lõpp peavad samal joonel olema
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... mõlemad sillaotsad peavad olema maal
+STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}.. sild on liiga pik
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Siia ei saa tunnelit ehitada...
@@ -4165,3 +4167,5 @@ STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
+
+STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})

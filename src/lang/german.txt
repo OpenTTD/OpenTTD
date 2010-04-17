@@ -1751,7 +1751,7 @@ STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :Verbindung verl
 STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :Protokollfehler
 STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :NewGRF-Versionen stimmen nicht überein
 STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :nicht autorisiert
-STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :Unerwartetes Datenpaket empfangen
+STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :Ungültiges oder unerwartetes Datenpaket empfangen
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :Falsche Version
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :Name wird bereits verwendet
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :Falsches Spielpasswort
@@ -1769,7 +1769,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Spiel weiterhin
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Spiel weiterhin angehalten ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Spiel weiterhin angehalten ({STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Spiel fortgesetzt ({STRING})
-STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :nicht genug Spieler
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :Spieleranzahl
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :Teilnehmer meldet sich an
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :manuell
 ############ End of leave-in-this-order
@@ -2124,6 +2124,7 @@ STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Stations
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Akzeptierte Fracht: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
+STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Geschwindigkeitsbegrenzung auf Gleisen: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Felsen
@@ -2903,10 +2904,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Einzelhe
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Zeige Einzelheiten des Schiffes
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Zeige Einzelheiten des Flugzeuges
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Laufende Zugbewegung - Klicke hier, um den Zug anzuhalten / zu starten
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Laufende Fahrzeugbewegung - Klick zum Anhalten bzw. Losschicken
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Laufende Schiffsbewegung - Klicke hier, um das Schiff anzuhalten / zu starten
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Laufende Flugzeugbewegung - Klick zum Anhalten bzw. losschicken
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Laufende Zugbewegung - Klicke hier, um den Zug anzuhalten / zu starten. Strg + Klick scrollt zum Bestimmungsort
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Laufende Fahrzeugbewegung - Klick zum Anhalten bzw. Losschicken. Strg + Klick scrollt zum Bestimmungsort
+STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Laufende Schiffsbewegung - Klicke hier, um das Schiff anzuhalten / zu starten. Strg + Klick scrollt zum Bestimmungsort
+STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Laufende Flugzeugbewegung - Klick zum Anhalten bzw. losschicken. Strg + Klick scrollt zum Bestimmungsort
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Laden / Entladen
@@ -3518,6 +3519,7 @@ STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Brücken
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Die Brücke ist zu niedrig für diese Umgebung
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Anfang und Ende müssen auf einer Linie liegen
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... Brücke muss an beiden Seiten auf Land enden
+STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... Brücke zu lang
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Tunnel kann hier nicht gebaut werden...

@@ -605,7 +605,7 @@ STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}Seleccio
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Selecciona el programa 'Ezy Street style music'
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Selecciona el programa 'Opcional 1' (definit per l'usuari)
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Selecciona el programa 'Opcional 2' (definit per l'usuari)
-STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Control de programa aleatori actiu/inactiu
+STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Commuta el programa aleatori actiu/inactiu
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Mostra la finestra de selecció de pistes de música
 
 STR_ERROR_NO_SONGS                                              :{WHITE}S'ha seleccionat un conjunt de músiques sense cançons. No es reproduiran cançons
@@ -692,8 +692,8 @@ STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Activa/d
 STR_SMALLMAP_CENTER                                             :{BLACK}Centra el mapa petit a la posició actual
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
-STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Desactiva tots
-STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Activa tots
+STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Desactiva-ho tot
+STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Activa-ho tot
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Mostra alçada
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL                                :{BLACK}No mostris les indústries al mapa
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL                                 :{BLACK}Mostra totes les indústries al mapa
@@ -1937,8 +1937,8 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Disminue
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Incrementa la densitat de senyals en arrossegar
 
 # Bridge selection window
-STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Selecciona pont per la via
-STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Selecciona un Pont per Carretera
+STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Selecciona pont de tren
+STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Selecciona un Pont de carretera
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Selecció de pont - clica sobre el pont triat per construir-lo
 STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Suspensió, Acer
@@ -2124,6 +2124,7 @@ STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Tipus d'
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Càrrega acceptada: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
+STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Límit de velocitat de la via: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Roques
@@ -3518,6 +3519,7 @@ STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Les cap�
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}El pont és massa baix pel terreny
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Inici i final han d'estar en línia recta
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... els extrems del pont han d'estar tots dos a terra
+STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... el pont és massa llarg
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Aquí no es pot construir el túnel...

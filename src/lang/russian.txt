@@ -1904,7 +1904,7 @@ STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :соедине�
 STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :ошибка протокола
 STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :Несоответствие NewGRF
 STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :не авторизован
-STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :получен странный пакет
+STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :получен неверно сформированный пакет
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :версии не совпадают
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :это имя уже используется
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :неверный пароль
@@ -1922,7 +1922,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Игра всё
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Игра всё ещё остановлена ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Игра всё ещё остановлена ({STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Игра продолжена ({STRING})
-STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :недостаточно игроков
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :количество игроков
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :подключение клиентов
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :вручную
 ############ End of leave-in-this-order
@@ -1976,7 +1976,7 @@ STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD 
 STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... загрузка контента невозможна!
 
 # Order of these is important!
-STR_CONTENT_TYPE_BASE_GRAPHICS                                  :{G=f}Базовая графика
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :{G=m}Базовая графика
 STR_CONTENT_TYPE_BASE_GRAPHICS.gen                              :{G=m}набора базовой графики
 STR_CONTENT_TYPE_BASE_GRAPHICS.acc                              :{G=m}набор базовой графики
 STR_CONTENT_TYPE_NEWGRF                                         :{G=m}NewGRF
@@ -2293,6 +2293,7 @@ STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Тип �
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Принимает: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
+STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Макс. скорость ж/д: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Скалы
@@ -3687,6 +3688,7 @@ STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Здес
 
 # Tree related errors
 STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... уже есть дерево
+STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... эти деревья здесь не растут
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Невозможно высадить деревья...
 
 # Bridge related errors
@@ -3697,6 +3699,7 @@ STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Опор
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Слишком низкий мост
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Начало и конец должны быть на одной линии
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... оба конца моста должны опираться на землю
+STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... мост слишком длинный
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Здесь невозможно построить туннель...

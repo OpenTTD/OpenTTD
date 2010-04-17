@@ -916,10 +916,10 @@ STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}Нашестя саранчі призвело до спустошення на {INDUSTRY}!{}Виробництво впало на 50%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK}{1:INDUSTRY}: Виробництво {0:STRING.r} впало на {2:COMMA}%!
 
-STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} чакає в депо
-STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} чакає в депо
-STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} чакає в депо
-STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} чакає в ангарі
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} чекає в депо
+STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} чекає в депо
+STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} чекає в депо
+STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} чекає в ангарі
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
@@ -2248,6 +2248,7 @@ STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Тип �
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Приймає: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
+STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Ліміт швидкості залізниці: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Каміння
@@ -2738,9 +2739,9 @@ STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Показати підприємство у центрі екрану. Утримання Ctrl відкриє нове вікно з видом підприємства
 
 ############ range for requires starts
-STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Потребує: {YELLOW}{STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Потребує: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Потребує: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
+STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Потребує: {YELLOW}{STRING.z}{STRING.z}
+STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO                          :{BLACK}Потребує: {YELLOW}{STRING.z}{STRING.z}, {STRING.z}{STRING.z}
+STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Потребує: {YELLOW}{STRING.z}{STRING.z}, {STRING.z}{STRING.z}, {STRING.z}{STRING.z}
 ############ range for requires ends
 
 ############ range for produces starts
@@ -3642,6 +3643,7 @@ STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Кінц
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Міст дуже низький для цього місця
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Початок та кінець мають бути на одній лінії
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... обидва кінці мосту мають бути на землі
+STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... міст надто довгий
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Неможливо збудувати тунель...
@@ -4270,3 +4272,5 @@ STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
+
+STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})

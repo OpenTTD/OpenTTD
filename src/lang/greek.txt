@@ -1726,7 +1726,7 @@ STR_NETWORK_LANG_LATVIAN                                        :Λετονικ�
 ############ End of leave-in-this-order
 
 # Network game lobby
-STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Αίθουσας παιχνιδιού για πολλούς παίκτες
+STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Αίθουσα παιχνιδιού για πολλούς παίκτες
 
 STR_NETWORK_GAME_LOBBY_PREPARE_TO_JOIN                          :{BLACK}Προετοιμασία για συμμετοχή: {ORANGE}{STRING}
 STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}Λίστα όλων των εταιριών αυτή τη στιγμή στο παιχνίδι. Μπορείτε είτε να συμμετάσχετε σε μία ή να δημιουργήσετε μια νέα αν υπάρχει κενή θέση
@@ -1873,7 +1873,7 @@ STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} σ
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} συμμετέχει στην εταιρία #{2:NUM}
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} συμμετέχει στους θεατές
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} ξεκίνησε μια νεα εταιρία (#{2:NUM})
-STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} αποχώρηση από το παιχνίδι ({2:STRING})
+STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} αποχώρησε από το παιχνίδι ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} άλλαξε το όνομα του/της σε {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} έδωσε στην εταιρία σας {2:CURRENCY}
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Δώσατε {1:STRING} {2:CURRENCY}
@@ -2218,6 +2218,7 @@ STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Τύπο
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Αποδεκτό Εμπόρευμα: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
+STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}'Οριο ταχυτητας: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Πέτρες
@@ -3608,6 +3609,7 @@ STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Δεν �
 
 # Tree related errors
 STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... υπάρχει ήδη δέντρο εδώ
+STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... λάθος έδαφος για αυτό το τύπο δέντρου
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Δεν γίνεται να φυτευθεί δέντρο εδώ...
 
 # Bridge related errors
@@ -3618,6 +3620,7 @@ STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Η γέ�
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Η γέφυρα είναι πολύ χαμηλή για το έδαφος
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Η αρχή και το τέλος πρέπει να είναι σε ευθεία
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... και τα δύο άκρα της γέφυρας πρέπει να είναι σε έδαφος
+STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... γέφυρα πολλή μεγάλη
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Δεν μπορεί να χτιστεί τούνελ εδώ...
@@ -4214,3 +4217,4 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
+STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})

@@ -1792,7 +1792,7 @@ STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :povezava prekin
 STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :napaka protokola
 STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :NewGRF neskladje
 STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :nepooblaščen
-STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :sprejet je bil čuden paket
+STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :sprejet je bil neveljaven oz. nepričakovan paket
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :napačna različica
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :ime je že v uporabi
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :napačno geslo
@@ -1810,7 +1810,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Igra je še ved
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Igra je še vedno prekinjena ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Igra je še vedno prekinjena ({STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Igra ponovno teče ({STRING})
-STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :ni dovolj igralcev
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :število igralcev
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :povezujem goste
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :ročno
 ############ End of leave-in-this-order
@@ -2165,6 +2165,7 @@ STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Vrsta po
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Sprejet tovor: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
+STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Omejitev hitrosti vlakov: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Kamenje
@@ -3549,6 +3550,7 @@ STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Tukaj ni
 
 # Tree related errors
 STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... drevo je že posajeno
+STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... napačen teren za to vrsto drevesa
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Tukaj ne moreš posaditi drevesa...
 
 # Bridge related errors
@@ -3559,6 +3561,7 @@ STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Priklju�
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Most je prenizek za teren
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Začetek in konec morata biti na isti višini
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... oba priključka mostu morata biti na kopnem
+STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... predolg most
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Tukaj ni mogoče zgraditi predora...

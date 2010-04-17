@@ -515,7 +515,7 @@ STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMM
 
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Graf over overskot
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Graf over inntekter
-STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Antal leverte varer
+STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Leverte einingar
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Prestasjonsvurdering av firma (maks. poeng=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Firmaverdi
 
@@ -2124,6 +2124,7 @@ STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Stasjont
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Godtekne varer: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
+STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Fartsgrense for jernbanespor: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Steinar
@@ -3518,6 +3519,7 @@ STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Bruhovud
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Brua er for låg for terrenget
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Start og slutt må vere på linje
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... endane på brua må vere på land
+STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... brua er for lang
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Kan ikkje byggje tunnel her...
@@ -4109,3 +4111,5 @@ STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
+
+STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})

@@ -1750,7 +1750,7 @@ STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :verbinding verb
 STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :protocolfout
 STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :Ongelijke NewGRF-instelling
 STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :niet toegestaan
-STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :raar pakket ontvangen
+STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :ongeldig of onverwacht pakket ontvangen
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :foute revisie
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :naam al in gebruik
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :fout spelwachtwoord
@@ -1768,7 +1768,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Spel nog steeds
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Spel nog steeds gepauzeerd ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Spel nog steeds gepauzeerd ({STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Spel vervolgd ({STRING})
-STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :niet genoeg spelers
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :aantal spelers
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :spelers maken verbinding
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :handmatig
 ############ End of leave-in-this-order
@@ -2123,6 +2123,7 @@ STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Stations
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Geaccepteerde vracht: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
+STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Spoor snelheidslimiet: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Rotsen
@@ -3517,6 +3518,7 @@ STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Begin va
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Brug is te laag voor dit terrein
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Begin en einde moeten op een lijn staan
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... uiteinden van brug moeten beiden op land zijn
+STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... brug te lang
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Kan hier geen tunnel bouwen...

@@ -25,15 +25,22 @@ STR_NULL                                                        :
 STR_EMPTY                                                       :
 STR_UNDEFINED                                                   :(neapibrėžta eilutė)
 STR_JUST_NOTHING                                                :Nieko
+STR_JUST_NOTHING.kas                                            :Niekas
 STR_JUST_NOTHING.ko                                             :Nieko
+STR_JUST_NOTHING.kam                                            :Niekui
 STR_JUST_NOTHING.ka                                             :Nieką
+STR_JUST_NOTHING.kuo                                            :Nieku
+STR_JUST_NOTHING.kur                                            :Niekur
 
 # Cargo related strings
 # Plural cargo name
 STR_CARGO_PLURAL_NOTHING                                        :
 STR_CARGO_PLURAL_PASSENGERS                                     :Keleiviai
+STR_CARGO_PLURAL_PASSENGERS.kas                                 :Keleiviai
 STR_CARGO_PLURAL_PASSENGERS.ko                                  :Keleivių
+STR_CARGO_PLURAL_PASSENGERS.kam                                 :Keleiviams
 STR_CARGO_PLURAL_PASSENGERS.ka                                  :Keleivius
+STR_CARGO_PLURAL_PASSENGERS.kuo                                 :Keleiviais
 STR_CARGO_PLURAL_COAL                                           :Anglis
 STR_CARGO_PLURAL_COAL.kas                                       :Anglis
 STR_CARGO_PLURAL_COAL.ko                                        :Anglies
@@ -2191,6 +2198,7 @@ STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Stotelė
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Krovinys priimtas: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
+STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Geležinkelių greičio limitas: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Akmenys
@@ -2409,7 +2417,7 @@ STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parametr
 
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Informacijos nėra
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Atitinkamas failas nerastas
-STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Uždrausta
+STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Išjungta
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Įveskite Papild. grafikos parametrus
 
@@ -2890,6 +2898,8 @@ STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Automobi
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Mes ką tik sukūrėme naują {STRING.ka}! Ar norėtumėt vienerius metus išskirtinėmis teisėmis bandyti šią transporto priemonęm, kol dar nepradėta jos serijinė gamyba?
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :lokomotyvas
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :automobilis
+STR_ENGINE_PREVIEW_ROAD_VEHICLE.kas                             :automobilis
+STR_ENGINE_PREVIEW_ROAD_VEHICLE.ka                              :automobilį
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :lėktuvas
 STR_ENGINE_PREVIEW_SHIP                                         :laivas
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :vienbegis lokomotyvas
@@ -2904,6 +2914,8 @@ STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Kaina: {
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Keisti tr. priemones {STRING}
 STR_REPLACE_VEHICLE_TRAIN                                       :Traukinys
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Automobilis
+STR_REPLACE_VEHICLE_ROAD_VEHICLE.kas                            :automobilis
+STR_REPLACE_VEHICLE_ROAD_VEHICLE.ka                             :Automobilį
 STR_REPLACE_VEHICLE_SHIP                                        :Laivas
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Lėktuvas
 
@@ -3195,7 +3207,7 @@ STR_ORDER_STOP_ORDER                                            :(Sustoti)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
-STR_ORDER_FULL_LOAD                                             :(Pilanai pasikrauti)
+STR_ORDER_FULL_LOAD                                             :(Pilnai pasikrauti)
 STR_ORDER_FULL_LOAD_ANY                                         :(Pilnai pasikrauti, bet kurio krovinio)
 STR_ORDER_NO_LOAD                                               :(Nepakrauti)
 STR_ORDER_UNLOAD                                                :(Iškrauti ir pasiimti krovinį)
@@ -3585,6 +3597,7 @@ STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Tilto pi
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Tiltas per žemas reljefui
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Pradžia ir pabaiga turi būti vienoje linijoje
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... abu tilto galai turi būti ant žemės
+STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... tiltas per ilgas
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Negalima čia statyti tunelio...

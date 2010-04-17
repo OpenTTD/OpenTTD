@@ -436,7 +436,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Meddelandehisto
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Information om mark
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Visa/dölj konsolen
-STR_ABOUT_MENU_AI_DEBUG                                         :AI-debug
+STR_ABOUT_MENU_AI_DEBUG                                         :AI-felsökning
 STR_ABOUT_MENU_SCREENSHOT                                       :Skärmdump (Ctrl-S)
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Gigantisk skärmdump (Ctrl-G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Om 'OpenTTD'
@@ -2123,6 +2123,7 @@ STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Stations
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Accepterat gods: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
+STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Hastighetsgräns för järnvägsspår: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Stenar
@@ -2248,10 +2249,10 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Antal in
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Snölinjens höjd:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Höj snölinjens höjd ett upp
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Sänk snölinjens höjd ett ner
-STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Slump-nummer:
+STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Slumpnummer:
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Klicka för att mata in ett slump-nummer
 STR_MAPGEN_RANDOM                                               :{BLACK}Slumpa
-STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Ändra slump-nummer som används för terräng-generering
+STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Ändra slumpnummer som används för terräng-generering
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landgenerator:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Trädalgoritm:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terrängtyp:
@@ -2733,12 +2734,12 @@ STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}Byt namn
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Byt namn på
 
 STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Byt namn på tågvagn
-STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Byt namn på vägfordon typ
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Byt namn på vägfordonstyp
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Byt namn på skeppstyp
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Byt namn på flygplanstyp
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Byt namn på tågets fordonstyp
-STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Byt namn på vägfordon typ
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Byt namn på vägfordonstyp
 STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Byt namn på skeppstyp
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Byt namn på flygplanstyp
 
@@ -3517,6 +3518,7 @@ STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Broända
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Bro är för låg för terrängen
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Start- och slutpunkt måste ligga i linje
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... brons båda ändar måste vara på land
+STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... för lång bro
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Kan inte bygga tunnel här...
@@ -4108,3 +4110,5 @@ STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
+
+STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})

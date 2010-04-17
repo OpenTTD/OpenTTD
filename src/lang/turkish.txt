@@ -230,7 +230,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Yeni ad
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Pencereyi kapat
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Pencere başlığı - pencereyi hareket ettirmek için sürükle
-STR_TOOLTIP_SHADE                                               :{BLACK}Pencereyi gizle - Yalnız başlık çubuğunu göster
+STR_TOOLTIP_SHADE                                               :{BLACK}Pencereyi gizle - yalnız başlık çubuğunu göster
 STR_TOOLTIP_STICKY                                              :{BLACK}'Tüm pencereleri kapat' tuşuyla kapanmasın
 STR_TOOLTIP_RESIZE                                              :{BLACK}Pencereyi boyutlandirmak için tıklayıp sürükle
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Pencere boyutunu büyült/küçült
@@ -295,7 +295,7 @@ STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Seçenek
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Kaydet, ana menüye dön, çık
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Haritayı göster
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Şehir listesini göster
-STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Sübvansiyonları göster
+STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Teşvikleri göster
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Şirkete ait istasyonları listele
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Şirketin ekonomik durumunu göster
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Şirketin genel durumunu göster
@@ -304,8 +304,8 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Şirketl
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Yeni fabrika kur veya tüm fabrikaları listele
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Şirkete ait trenleri listele. Ctrl+sol tuş ile grup/araç listesini aç/kapa
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Şirkete ait karayolu taşıtlarını listele. Ctrl-tık grup/araç listesini açıp kapatır
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Şirkete ait gemileri listele
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Şirkete ait uçakları listele
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Şirkete ait gemileri listele. Ctrl+Tık grup/araç listesini açar/kapatır
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Şirkete ait uçakları listele. Ctrl+Tık grup/araç listesini açar/kapatır
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Yakınlaş
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Uzaklaş
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Tren rayı yapımı
@@ -315,7 +315,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Havalima
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Arazi düzenleme araç çubuğunu aç (ağaç dikme, alçaltma/yükseltme vb. için).
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Ses/müzik penceresini göster
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Son mesajı/haberi göster, mesaj ayarlarını göster
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Arazi bilgisi
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Arazi bilgisi, konsol, YZ hata ayıklama, ekran görüntüsü yakalama, OpenTTD hakkında
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Araç çubuklarını değiştir
 
 # Extra tooltips for the scenario editor toolbar
@@ -375,7 +375,7 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Şehir başlat
 ############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
-STR_SUBSIDIES_MENU_SUBSIDIES                                    :Sübvansiyonlar
+STR_SUBSIDIES_MENU_SUBSIDIES                                    :Teşvikler
 ############ range ends here
 
 ############ range for graph menu starts
@@ -393,13 +393,13 @@ STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Ayrıntılı Pe
 ############ range ends here
 
 ############ range for industry menu starts
-STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Fabrika Listesi
+STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Fabrika listesi
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Yeni fabrika kur
 ############ range ends here
 
 ############ range for railway construction menu starts
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Demiryolu yapımı
-STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Elektrikli Ray Yapımı
+STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Elektrikli ray yapımı
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Monoray yapımı
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :MagLev yapımı
 ############ range ends here
@@ -436,10 +436,10 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Mesaj Geçmişi
 ############ range for about menu starts
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Arazi bilgisi
 STR_ABOUT_MENU_SEPARATOR                                        :
-STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Konsol Aç/Kapa
-STR_ABOUT_MENU_AI_DEBUG                                         :YZ Hata Ayıklama
+STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Konsol aç/kapa
+STR_ABOUT_MENU_AI_DEBUG                                         :YZ hata ayıklama
 STR_ABOUT_MENU_SCREENSHOT                                       :Ekran Görüntüsü (Ctrl-S)
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Dev Ekran Görüntüsü (Ctrl-G)
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Dev ekran görüntüsü (Ctrl-G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :'OpenTTD' Hakkında
 ############ range ends here
 
@@ -562,10 +562,10 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Para:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Kredi:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Toplam:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Araç sayısı; araba, tren uçak ve gemiler dahil
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}İstasyon parçaları. Tek bir istasyon halinde olsa bile istasyonun her parçasi ayri olarak sayılir (ör: tren istasyonu, otobüs durağı, havalimanı)
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Geçen yıl kar eden araç sayısı. Araba, tren, uçak ve gemileri kapsar
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Yakın zamanda hizmet almış istasyon parçaları. Tek bir istasyon halinde olsa bile istasyonun her parçası ayrı olarak sayılır (ör: tren istasyonu, otobüs durağı, havalimanı)
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}En az gelirli aracın kârı (Sadece 2 yıldan yaşlı araçlar için)
-STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Son 12 çeyrekte en az kârlı aydaki gelir
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Son 12 çeyrek içindeki en az kârlı çeyrekteki gelir
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Son 12 çeyreğin en kârlı olanında kazanılan para
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Son 4 çeyrekte taşınan kargo miktar
 STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Son çeyrekte taşınan farkli kargo türleri
@@ -689,7 +689,7 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLAC
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}Karlı
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Harita üzerinde şehir isimlerini göster/gizle
-STR_SMALLMAP_CENTER                                             :{BLACK}Küçük haritayı burada ortala
+STR_SMALLMAP_CENTER                                             :{BLACK}Küçük haritayı mevcut konumda ortala
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Hepsini kapa
@@ -734,7 +734,7 @@ STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Diğer 
 STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Şirketin araçları hakkında tavsiye / bilgi
 STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Yeni araçlar
 STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Kargo isteğindeki değişiklikler
-STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Sübvansiyonlar
+STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Teşvikler
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Genel bilgi
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIGFONT}{BLACK}Kutlama Yapıldı . . .{} {STATION} istasyonuna ilk kez tren geldi!
@@ -749,7 +749,7 @@ STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}Trafik kazasi!{}Trenle çarpisan aracın soförü feci şekilde can verdi
 STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIGFONT}{BLACK}Trafik kazasi!{}{COMMA} kişi patlamadan kurtulamadı
 STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK}Uçak Kazasi!{}{COMMA} ölü var - {STATION}
-STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}Uçak Kazasi!{}Benzin yetmedi, {COMMA} kisi öldü!
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}Uçak Kazası!{}Uçağın havada yakıtı bitti, {COMMA} kişi hayatını kaybetti
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIGFONT}{BLACK}Zeplin düştü - {STATION}!
 STR_NEWS_DISASTER_SMALL_UFO                                     :{BIGFONT}{BLACK}UFO'yla çarpışan araba parçalandı!
@@ -787,10 +787,10 @@ STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}{INDUSTRY}nde yeni kömür tabakasi bulundu!{} Üretimin ikiye katlanması bekleniyor!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}{INDUSTRY}nda yeni petrol rezervi bulundu!{} Üretimin ikiye katlanması bekleniyor!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}{INDUSTRY}ndeki yeni tarim tekniklerinin üretimi ikiye katlamasi bekleniyor!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{1:INDUSTRY}'nin {BIGFONT}{BLACK}{0:STRING} üretimi %{2:COMMA} arttı!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{1:INDUSTRY}'nin {BLACK}{0:STRING} üretimi %{2:COMMA} arttı!
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} üretimi %50 düşürdü
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}{INDUSTRY} bölgesine böcek sürüsü girdi !{} Üretim %50 düştü
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{1:INDUSTRY}'nin {BIGFONT}{BLACK}{0:STRING} üretimi %{2:COMMA} azaldı!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{1:INDUSTRY}'nin {BLACK}{0:STRING} üretimi %{2:COMMA} azaldı!
 
 STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} garajda bekliyor
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} garajda bekliyor
@@ -824,13 +824,13 @@ STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} artık {STRING} istiyor
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} artık {STRING} ve {STRING} istiyor
 
-STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Sübvansiyon zamanı doldu: {}{}{STRING} {STRING} -> {STRING} artık fazla gelir getirmeyecek.
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Sübvansiyon geri çekildi:{}{}{STRING} servisi {STRING} -> {STRING} arasında fazla gelir getirmeyecek.
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Servis ihalesi önerildi: {}{} ilk {STRING} servisi {STRING} -> {STRING} arasında belediyeden prim alacak!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Sübvansiyon {STRING} şirketine verildi!{}{}{STRING} servisi {STRING} -> {STRING} aralığında bir yıl boyunca %50 fazla gelir sağlayacak!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Sübvansiyon {STRING} şirketine verildi!{}{}{STRING} servisi {STRING} -> {STRING} aralığında bir yıl boyunca iki kat fazla gelir sağlayacak!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Sübvansiyon {STRING} şirketine verildi!{}{}{STRING} servisi {STRING} -> {STRING} aralığında bir yıl boyunca üç kat fazla gelir sağlayacak!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}Sübvansiyon {STRING} şirketine verildi!{}{}{STRING} servisi {STRING} -> {STRING} aralığında bir yıl boyunca dört kat fazla gelir sağlayacak!
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Teşvik önerisinin süresi doldu: {}{}{STRING} {STRING} -> {STRING} artık teşvik almayacak.
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Teşvik geri çekildi:{}{}{1:STRING} -> {2:STRING} arasındaki {0:STRING} taşıma hizmeti artık teşvik almayacak.
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Hizmet teşviği önerildi: {}{} {1:STRING} -> {2:STRING} arası ilk {0:STRING} taşıma hizmeti belediyeden teşvik alacak!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Hizmet teşviği {0:STRING} şirketine verildi!{}{}{2:STRING} -> {3:STRING} arasındaki {1:STRING} taşıma hizmeti bir yıl boyunca %50 fazla gelir sağlayacak!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Hizmet teşviği {0:STRING} şirketine verildi!{}{}{2:STRING} -> {3:STRING} arasındaki {1:STRING} taşıma hizmeti bir yıl boyunca iki kat fazla gelir sağlayacak!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Hizmet teşviği {0:STRING} şirketine verildi!{}{}{2:STRING} -> {3:STRING} arasındaki {1:STRING} taşıma hizmeti bir yıl boyunca üç kat fazla gelir sağlayacak!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}Hizmet teşviği {0:STRING} şirketine verildi!{}{}{2:STRING} -> {3:STRING} arasındaki {1:STRING} taşıma hizmeti bir yıl boyunca dört kat fazla gelir sağlayacak!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK} {TOWN} şehrinde trafik durdu!{}{} {STRING} şirketinin yol yapım çalışmaları başladı!
 
@@ -1004,7 +1004,7 @@ STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}Başlan
 STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}Bakım ücretleri: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}Rakip inşa hızı: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_BREAKDOWNS                 :{LTBLUE}Araç bozulmaları: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_SUBSIDY_MULTIPLIER                 :{LTBLUE}İhale çarpanı: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_SUBSIDY_MULTIPLIER                 :{LTBLUE}Teşvik çarpanı: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_COST_OF_CONSTRUCTION               :{LTBLUE}İnşa fiyatları: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_TERRAIN_TYPE                       :{LTBLUE}Yer tipi: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_QUANTITY_OF_SEA_LAKES              :{LTBLUE}Su miktarı: {ORANGE}{STRING}
@@ -1349,11 +1349,11 @@ STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Çevrimi
 STR_INTRO_AI_SETTINGS                                           :{BLACK}YZ Ayarları
 STR_INTRO_QUIT                                                  :{BLACK}Çıkış
 
-STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Yeni oyuna başla
+STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Yeni oyuna başla. Ctrl+Click harita ayarlamasını atlar.
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Oyun yükle
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Yükseklik haritasını kullanarak yeni oyun başlat
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Özel bir senaryo kullanarak yeni oyun başlat
-STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Kendi dünyani/senoryonu yarat
+STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Kendi dünyanı/senaryonu yarat
 STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Çok oyunculu oyun başlat
 
 STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}'ılıman' yer stilini seç
@@ -1463,7 +1463,7 @@ STR_FACE_SIMPLE                                                 :{BLACK}Basit
 STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Basit yüz seçimi.
 STR_FACE_LOAD                                                   :{BLACK}Yükle
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Tercih edilen yüzü yükle
-STR_FACE_LOAD_DONE                                              :{WHITE}Tercih edilen yüz OpenTTD ayar dosyasından yüklendi.
+STR_FACE_LOAD_DONE                                              :{WHITE}Tercih edilen yüz OpenTTD ayar dosyasından yüklendi
 STR_FACE_FACECODE                                               :{BLACK}Oyuncu yüzü no.
 STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Oyuncu suratının numarasını göster/değiştir
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}Oyuncu suratının numarasını göster/değiştir
@@ -1471,9 +1471,9 @@ STR_FACE_FACECODE_SET                                           :{WHITE}Surat nu
 STR_FACE_FACECODE_ERR                                           :{WHITE}Oyuncu surat numarası ayarlanamadı - 0 ve 4.294.967.295 arasında bir sayı olmalı!
 STR_FACE_SAVE                                                   :{BLACK}Kaydet
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Tercih edilen yüzü kaydet
-STR_FACE_SAVE_DONE                                              :{WHITE}Bu surat OpenTTD ayar dosyasına kaydedilecek.
+STR_FACE_SAVE_DONE                                              :{WHITE}Bu yüz OpenTTD ayar dosyasına favoriniz olarak kaydedilecek
 STR_FACE_EUROPEAN                                               :{BLACK}Avrupalı
-STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Beyaz yüz seç
+STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Avrupalı yüz seç
 STR_FACE_AFRICAN                                                :{BLACK}Afrikalı
 STR_FACE_SELECT_AFRICAN                                         :{BLACK}Siyah yüz seç
 STR_FACE_YES                                                    :Evet
@@ -1533,7 +1533,7 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Son oyna
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}OYUN BİLGİSİ
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}İstemciler: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Dil: {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Set: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Yer yüzü: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Harita boyutu: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Sunucu sürümü: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Sunucu adresi: {WHITE}{STRING}
@@ -1809,7 +1809,7 @@ STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Bunu in
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Bu bağımlılık indirilmek üzere seçildi
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Bu zaten var
 STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Bu içerik bilinmiyor ve OpenTTD'ye indirilemez
-STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Bu mevcut {STRING} için bir yenilemedir
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Bu, mevcut {STRING} için bir yenilemedir
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}Ad: {WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Sürüm: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Tanım: {WHITE}{STRING}
@@ -1922,13 +1922,13 @@ STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Sinyal S
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Blok Sinyali (semafor){}Bu en temel sinyal tipidir, bir blok içinde aynı anda yalnız bir tren bulunmasına izin verir.
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Giriş-Sinyali (semafor){}Yolun devam eden bölümünde en az bir yeşil çıkış sinyali olduğu sürece yeşil yanar. Aksi halde kırmızı yanar.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Çıkış Sinyali (semafor){}Blok sinyali ile aynı şekilde çalışır ancak giriş ve karışık ön sinyaller ile doğru rengi tetiklemek gerekmektedir.
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Karışık Sinyal (semafor){}Karışık sinyal hem giriş hem de çıkış sinyali gibi davranır. Bu büyük ön sinyal "ağaçları" yapmanızı sağlar.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Karışık Sinyal (semafor){}Karışık sinyal hem giriş hem de çıkış sinyali gibi davranır. Bu şekilde büyük ön sinyal "ağaçları" yapabilirsiniz
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Yol Sinyali (semafor){}Yol sinyali, gelen tren güvenli bir durma noktasına yol ayırabiliyor ise bir sinyal bloğuna aynı anda birden fazla trenin girmesine izin verir. Standart yol sinyalleri arka taraftan geçişe izin verir.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Tek Yön Yol Sinyali (semafor){}Yol sinyali, gelen tren güvenli bir durma noktasına yol ayırabiliyor ise bir sinyal bloğuna aynı anda birden fazla trenin girmesine izin verir. Tek yön yol sinyalleri arka taraftan geçişe izin vermez.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Blok Sinyali (elektrikli){}En temel sinyal tipidir, bir blok içinde aynı anda yalnız bir tren bulunmasına izin verir.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Giriş-Sinyali (elektrikli){}Yolun devam eden bölümünde en az bir yeşil çıkış sinyali olduğu sürece yeşil yanar. Aksi halde kırmızı yanar.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Çıkış Sinyali (elektrikli){}Blok sinyali ile aynı şekilde çalışır ancak giriş ve karışık ön sinyaller ile doğru rengi tetiklemek gerekmektedir.
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Karışık Sinyal (elektrikli){}Karışık sinyal hem giriş hem de çıkış sinyali gibi davranır. Bu büyük ön sinyal "ağaçları" yapmanızı sağlar.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Karışık Sinyal (elektrikli){}Karışık sinyal hem giriş hem de çıkış sinyali gibi davranır. Bu şekilde büyük ön sinyal "ağaçları" yapabilirsiniz.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Yol Sinyali (elektrikli){}Yol sinyali, gelen tren güvenli bir durma noktasına yol ayırabiliyor ise bir sinyal bloğuna aynı anda birden fazla trenin girmesine izin verir. Standart yol sinyalleri arka taraftan geçişe izin verir.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Tek Yön Yol Sinyali (elektrikli){}Yol sinyali, gelen tren güvenli bir durma noktasına yol ayırabiliyor ise bir sinyal bloğuna aynı anda birden fazla trenin girmesine izin verir. Tek yön yol sinyalleri arka taraftan geçişe izin vermez.
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Sinyal Dönüştür{}Seçildiğinde, tıklama var olan sinyali seçili sinyal tür ve alt türüne çevirir, CTRL ile tıklama mevcut alt türü değiştirir.
@@ -1939,7 +1939,7 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Sinyal s
 # Bridge selection window
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Tren Köprüsü Seç
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Köprü Seç
-STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Köprü seçimi - yapacağınız köprüyü seçin
+STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Köprü seçimi - tercih ettiğiniz köprüyü yapmak için tıklayın
 STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Çelik, Asma
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Çelik, Kirişli
@@ -2114,7 +2114,7 @@ STR_LAND_AREA_INFORMATION_OWNER_N_A                             :Yok
 STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}Sahibi: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}Yolun sahibi: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Tramvayın sahibi: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Demiryolunun sahibi: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Demiryolu sahibi: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Belediyesi: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Hiçbiri
 STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Koordinatlar: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
@@ -2124,6 +2124,7 @@ STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}İstasyo
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}İstenen: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
+STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Ray hız sınırı: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Kayalar
@@ -2159,7 +2160,7 @@ STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Ön ve tek yön
 STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Tren garı
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Yol
-STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Lambali yol
+STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Sokak lambalı yol
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Ağaçli yol
 STR_LAI_ROAD_DESCRIPTION_ROAD_VEHICLE_DEPOT                     :Araba garı
 STR_LAI_ROAD_DESCRIPTION_ROAD_RAIL_LEVEL_CROSSING               :Hemzemin geçit
@@ -2378,7 +2379,7 @@ STR_NEWGRF_ERROR_READ_BOUNDS                                    :Pseudo-sprite b
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Uyarı!
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Çalışan bir oyunu değiştirmek üzeresiniz; bu OpenTTD'yi çökertebilir.{}Emin misiniz?
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Çalışan bir oyunu değiştirmek üzeresiniz. Bu OpenTTD'yi çökertebilir.{}Bundan kesinlikle emin misiniz?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Dosya eklenemiyor: GRF ID çakışması
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Eşleşen dosya bulunamadı (uyumlu GRF yüklendi)
@@ -2465,11 +2466,11 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW} Bir y�
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Yakalanma riskini göze alarak belediyeye rüşvet ver.{} Fiyat: {CURRENCY}
 
 # Subsidies window
-STR_SUBSIDIES_CAPTION                                           :{WHITE}Sübvansiyonlar
-STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Teklif edilmiş sübvansiyonlar:
+STR_SUBSIDIES_CAPTION                                           :{WHITE}Teşvikler
+STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Teklif edilmiş teşvikler:
 STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} {STRING} -> {STRING}{YELLOW} ({DATE_SHORT} tarihinden itibaren)
 STR_SUBSIDIES_NONE                                              :{ORANGE}Yok
-STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Verilen sübvansiyonlar:
+STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Teşvik almakta olan hizmetler:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} {STRING} -> {STRING}{YELLOW} ({COMPANY}{YELLOW}, {DATE_SHORT} tarihine kadar)
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Görüntüyü ortalamak için servisi tıklayın
 
@@ -2536,7 +2537,7 @@ STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}İnşaat
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Yeni araçlar
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Tren Bakımları
-STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Araba Bakımları
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Kara Taşıtı Çalıştırma Giderleri
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Uçak Bakımları
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Gemi Bakımları
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}İnşaat bakımları
@@ -2903,10 +2904,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Araba ay
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Gemi ayrıntılarını göster
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Uçak ayrıntılarını göster
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Tren durumu - treni durdurmak/başlatmak için buraya tıklayın
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Aracın durumu - durdurmak/başlatmak için tıklayın
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Geminin durumu - durdurmak/başlatmak için buraya tıkla
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Uçağın durumu - uçağı durdurmak/başlatmak için tıkla
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Trenin mevcut hareketi - treni durdurmak/başlatmak için buraya tıklayın. Hedefe gitmek için CTRL+Tıkla
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Aracın mevcut hareketi - durdurmak/başlatmak için tıklayın. Hedefe gitmek için CTRL+Tıkla
+STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Geminin mevcut hareketi - durdurmak/başlatmak için buraya tıkla. Hedefe gitmek için CTRL+Tıkla
+STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Uçağın durumu - uçağı durdurmak/başlatmak için tıkla. Ctrl+Tık ile hedefe git
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Yükleme / Boşaltma
@@ -3518,6 +3519,7 @@ STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Köprü 
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Köprü bu arazi için çok alçakta
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Başlangıç ve bitiş aynı çizgi üzerinde olmalı
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... köprünün her iki ucu da karada olmalı
+STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... köprü çok uzun
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Buraya tünel yapılamaz...

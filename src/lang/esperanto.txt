@@ -895,7 +895,7 @@ STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Urbonomo
 STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Elektu stilon de urbonomoj
 
 ############ start of townname region
-STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Angle (Origine)
+STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Angle (Originale)
 STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :France
 STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Germane
 STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Angle (Aldone)
@@ -1078,8 +1078,8 @@ STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Permesu
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Permesu forigon de pli da urbaj stratoj, pontoj ktp: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Permesu konstrui tre longajn trajnojn: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Modelo de trajnakcelado: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Originala
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realisma
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Originale
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realisme
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Trajnoj kaj ŝipoj ne ort-turniĝu: {ORANGE}{STRING} {LTBLUE} (bezonas NPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Ligu stacidomojn konstruatajn unu apud la alia: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Permesu ligi staciojn ne rekte najbarajn: {ORANGE}{STRING}
@@ -1136,7 +1136,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Daŭro 
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Montru enloĝantaron en urbnomindikilo: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Landgenerilo: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Origina
+STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Originale
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Maksimuma distanco de rando por Oleproduktejoj {ORANGE}{STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Neĝregiona alto: {ORANGE}{STRING}
@@ -1147,7 +1147,7 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Neregule
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Malregule
 STR_CONFIG_SETTING_TREE_PLACER                                  :{LTBLUE}Arbometa algoritmo: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Neniu
-STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Origina
+STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Originale
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Plibonigita
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}Altecmapa turniĝo: {ORANGE}{STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Maldekstrume
@@ -1254,7 +1254,7 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Pad-signaloj so
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :ĉiom
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Strataranĝo por novaj urboj: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :defaŭlte
+STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :originale
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :pli bonaj stratoj
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :kvadrataro de 2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :kvadrataro de 3x3
@@ -1263,6 +1263,7 @@ STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Permesu
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Permesu urbe kontrolatan laŭtecon por flughavenoj: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :prohibita
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :permesita
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :permesite, propra urbomapo
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :nur en pluvarbaroj
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :ĉie
@@ -1306,14 +1307,14 @@ STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industr
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Padtrovilo por trajnoj: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Rekomendita)
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Rekomendite)
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Padtrovilo por stratveturiloj: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_NPF             :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_YAPF            :YAPF {BLUE}(Rekomendita)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Padtrovilo por ŝipoj: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Originala {BLUE}(Rekomendita)
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Originale {BLUE}(Rekomendite)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(malrekomenda)
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Nerekomendite)
 
 STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}X-grandeco de la mapo: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Y-grandeco de la mapo: {ORANGE}{STRING}
@@ -2054,7 +2055,7 @@ STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Urbegoj 
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Urba strataranĝo:
 STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Selektu strataranĝon uzendan por ĉi tiu urbo
-STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Originalo
+STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Originale
 STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}Pli bonaj stratoj
 STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}2x2 krado
 STR_FOUND_TOWN_SELECT_LAYOUT_3X3_GRID                           :{BLACK}3x3 krado
@@ -2089,6 +2090,7 @@ STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Stacioti
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Ŝarĝo akceptata: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
+STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Rela rapideclimo: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Rokoj
@@ -2242,6 +2244,7 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Mapa nom
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Grandeco:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
 
+STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Enigu hazardan semon
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Ŝanĝu altecon de la neĝlinio
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Ŝanĝu komencjaron
 
@@ -4029,3 +4032,5 @@ STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
+
+STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
