@@ -670,6 +670,9 @@ CommandCost DoCommandPInternal(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd,
 	/* If we're needing more money and we haven't done
 	 * anything yet, ask for the money! */
 	if (_additional_cash_required != 0 && res2.GetCost() == 0) {
+		/* It could happen we removed rail, thus gained money, and deleted something else.
+		 * So make sure the signal buffer is empty even in this case */
+		UpdateSignalsInBuffer();
 		SetDParam(0, _additional_cash_required);
 		return_dcpi(CommandCost(STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY), false);
 	}
