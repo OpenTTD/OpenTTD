@@ -144,7 +144,7 @@ CommandCost CmdMassStartStopVehicle(TileIndex tile, DoCommandFlag flags, uint32 
 		uint32 id = p1;
 		uint16 window_type = p2 & VLW_MASK;
 
-		GenerateVehicleSortList(&list, vehicle_type, _current_company, id, window_type);
+		if (!GenerateVehicleSortList(&list, vehicle_type, _current_company, id, window_type)) return CMD_ERROR;
 	} else {
 		/* Get the list of vehicles in the depot */
 		BuildDepotVehicleList(vehicle_type, tile, &list, NULL);
@@ -596,7 +596,7 @@ CommandCost SendAllVehiclesToDepot(VehicleType type, DoCommandFlag flags, bool s
 {
 	VehicleList list;
 
-	GenerateVehicleSortList(&list, type, owner, id, vlw_flag);
+	if (!GenerateVehicleSortList(&list, type, owner, id, vlw_flag)) return CMD_ERROR;
 
 	/* Send all the vehicles to a depot */
 	bool had_success = false;
