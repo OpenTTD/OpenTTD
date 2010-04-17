@@ -108,7 +108,7 @@
 {
 	EnforcePrecondition(false, ::IsValidTile(tile));
 
-	return AIObject::DoCommand(tile, tile, 0, CMD_BUILD_CANAL);
+	return AIObject::DoCommand(tile, tile, WATER_CLASS_CANAL, CMD_BUILD_CANAL);
 }
 
 /* static */ bool AIMarine::RemoveWaterDepot(TileIndex tile)

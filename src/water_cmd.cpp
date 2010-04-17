@@ -285,16 +285,17 @@ CommandCost CmdBuildLock(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
  * @param tile end tile of stretch-dragging
  * @param flags type of operation
  * @param p1 start tile of stretch-dragging
- * @param p2 specifies canal (0), water (1) or river (2); last two can only be built in scenario editor
+ * @param p2 waterclass to build. sea and river can only be built in scenario editor
  * @param text unused
  * @return the cost of this operation or an error
  */
 CommandCost CmdBuildCanal(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	if (p1 >= MapSize() || p2 > 2) return CMD_ERROR;
+	WaterClass wc = Extract<WaterClass, 0, 2>(p2);
+	if (p1 >= MapSize() || wc == WATER_CLASS_INVALID) return CMD_ERROR;
 
 	/* Outside of the editor you can only build canals, not oceans */
-	if (p2 != 0 && _game_mode != GM_EDITOR) return CMD_ERROR;
+	if (wc != WATER_CLASS_CANAL && _game_mode != GM_EDITOR) return CMD_ERROR;
 
 	TileArea ta(tile, p1);
 
@@ -306,24 +307,32 @@ CommandCost CmdBuildCanal(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 		CommandCost ret;
 
 		Slope slope = GetTileSlope(tile, NULL);
-		if (slope != SLOPE_FLAT && (p2 != 2 || !IsInclinedSlope(slope))) {
+		if (slope != SLOPE_FLAT && (wc != WATER_CLASS_RIVER || !IsInclinedSlope(slope))) {
 			return_cmd_error(STR_ERROR_FLAT_LAND_REQUIRED);
 		}
 
 		/* can't make water of water! */
-		if (IsTileType(tile, MP_WATER) && (!IsTileOwner(tile, OWNER_WATER) || p2 == 1)) continue;
+		if (IsTileType(tile, MP_WATER) && (!IsTileOwner(tile, OWNER_WATER) || wc == WATER_CLASS_SEA)) continue;
 
 		ret = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 		if (ret.Failed()) return ret;
 		cost.AddCost(ret);
 
 		if (flags & DC_EXEC) {
-			if (TileHeight(tile) == 0 && p2 == 1) {
-				MakeSea(tile);
-			} else if (p2 == 2) {
-				MakeRiver(tile, Random());
-			} else {
-				MakeCanal(tile, _current_company, Random());
+			switch (wc) {
+				case WATER_CLASS_RIVER:
+					MakeRiver(tile, Random());
+					break;
+
+				case WATER_CLASS_SEA:
+					if (TileHeight(tile) == 0) {
+						MakeSea(tile);
+						break;
+					}
+				/* FALL THROUGH */
+				default:
+					MakeCanal(tile, _current_company, Random());
+					break;
 			}
 			MarkTileDirtyByTile(tile);
 			MarkCanalsAndRiversAroundDirty(tile);
