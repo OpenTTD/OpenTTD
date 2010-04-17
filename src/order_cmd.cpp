@@ -11,6 +11,7 @@
 
 #include "stdafx.h"
 #include "debug.h"
+#include "cmd_helper.h"
 #include "command_func.h"
 #include "company_func.h"
 #include "news_func.h"
@@ -468,7 +469,7 @@ CommandCost CmdInsertOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	Order new_order(p2);
 
 	Vehicle *v = Vehicle::GetIfValid(veh);
-	if (v == NULL || !CheckOwnership(v->owner)) return CMD_ERROR;
+	if (v == NULL || !v->IsPrimaryVehicle() || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	/* Check if the inserted order is to the correct destination (owner, type),
 	 * and has the correct flags if any */
@@ -547,8 +548,6 @@ CommandCost CmdInsertOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 						default: return CMD_ERROR;
 					}
 				}
-			} else {
-				if (!IsCompanyBuildableVehicleType(v)) return CMD_ERROR;
 			}
 
 			if (new_order.GetNonStopType() != ONSF_STOP_EVERYWHERE && v->type != VEH_TRAIN && v->type != VEH_ROAD) return CMD_ERROR;
@@ -729,7 +728,7 @@ CommandCost CmdDeleteOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 
 	Vehicle *v = Vehicle::GetIfValid(veh_id);
 
-	if (v == NULL || !CheckOwnership(v->owner)) return CMD_ERROR;
+	if (v == NULL || !v->IsPrimaryVehicle() || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	/* If we did not select an order, we maybe want to de-clone the orders */
 	if (sel_ord >= v->GetNumOrders())
@@ -795,10 +794,7 @@ CommandCost CmdSkipToOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 
 	Vehicle *v = Vehicle::GetIfValid(veh_id);
 
-	if (v == NULL || !CheckOwnership(v->owner) || sel_ord == v->cur_order_index ||
-			sel_ord >= v->GetNumOrders() || v->GetNumOrders() < 2) {
-		return CMD_ERROR;
-	}
+	if (v == NULL || !v->IsPrimaryVehicle() || !CheckOwnership(v->owner) || sel_ord == v->cur_order_index || sel_ord >= v->GetNumOrders() || v->GetNumOrders() < 2) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		v->cur_order_index = sel_ord;
@@ -835,7 +831,7 @@ CommandCost CmdMoveOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	VehicleOrderID target_order = GB(p2, 16, 16);
 
 	Vehicle *v = Vehicle::GetIfValid(veh);
-	if (v == NULL || !CheckOwnership(v->owner)) return CMD_ERROR;
+	if (v == NULL || !v->IsPrimaryVehicle() || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	/* Don't make senseless movements */
 	if (moving_order >= v->GetNumOrders() || target_order >= v->GetNumOrders() ||
@@ -910,13 +906,13 @@ CommandCost CmdModifyOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 {
 	VehicleOrderID sel_ord = GB(p1, 16, 16); // XXX - automatically truncated to 8 bits.
 	VehicleID veh          = GB(p1,  0, 16);
-	ModifyOrderFlags mof   = (ModifyOrderFlags)GB(p2,  0,  4);
-	uint16 data             = GB(p2, 4, 11);
+	ModifyOrderFlags mof   = Extract<ModifyOrderFlags, 0, 4>(p2);
+	uint16 data            = GB(p2, 4, 11);
 
 	if (mof >= MOF_END) return CMD_ERROR;
 
 	Vehicle *v = Vehicle::GetIfValid(veh);
-	if (v == NULL || !CheckOwnership(v->owner)) return CMD_ERROR;
+	if (v == NULL || !v->IsPrimaryVehicle() || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	/* Is it a valid order? */
 	if (sel_ord >= v->GetNumOrders()) return CMD_ERROR;
@@ -1139,17 +1135,14 @@ CommandCost CmdCloneOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 	VehicleID veh_dst = GB(p1,  0, 16);
 
 	Vehicle *dst = Vehicle::GetIfValid(veh_dst);
-
-	if (dst == NULL || !CheckOwnership(dst->owner)) return CMD_ERROR;
+	if (dst == NULL || !dst->IsPrimaryVehicle() || !CheckOwnership(dst->owner)) return CMD_ERROR;
 
 	switch (p2) {
 		case CO_SHARE: {
 			Vehicle *src = Vehicle::GetIfValid(veh_src);
 
 			/* Sanity checks */
-			if (src == NULL || !CheckOwnership(src->owner) || dst->type != src->type || dst == src) {
-				return CMD_ERROR;
-			}
+			if (src == NULL || !src->IsPrimaryVehicle() || !CheckOwnership(src->owner) || dst->type != src->type || dst == src) return CMD_ERROR;
 
 			/* Trucks can't share orders with busses (and visa versa) */
 			if (src->type == VEH_ROAD && RoadVehicle::From(src)->IsBus() != RoadVehicle::From(dst)->IsBus()) {
@@ -1188,9 +1181,7 @@ CommandCost CmdCloneOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 			Vehicle *src = Vehicle::GetIfValid(veh_src);
 
 			/* Sanity checks */
-			if (src == NULL || !CheckOwnership(src->owner) || dst->type != src->type || dst == src) {
-				return CMD_ERROR;
-			}
+			if (src == NULL || !src->IsPrimaryVehicle() || !CheckOwnership(src->owner) || dst->type != src->type || dst == src) return CMD_ERROR;
 
 			/* Trucks can't copy all the orders from busses (and visa versa),
 			 * and neither can helicopters and aircarft. */
@@ -1263,8 +1254,10 @@ CommandCost CmdOrderRefit(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 	CargoID cargo = GB(p2, 0, 8);
 	byte subtype  = GB(p2, 8, 8);
 
+	if (cargo >= NUM_CARGO) return CMD_ERROR;
+
 	const Vehicle *v = Vehicle::GetIfValid(veh);
-	if (v == NULL || !CheckOwnership(v->owner)) return CMD_ERROR;
+	if (v == NULL || !v->IsPrimaryVehicle() || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	Order *order = v->GetOrder(order_number);
 	if (order == NULL) return CMD_ERROR;
@@ -1416,7 +1409,8 @@ CommandCost CmdRestoreOrderIndex(TileIndex tile, DoCommandFlag flags, uint32 p1,
 
 	Vehicle *v = Vehicle::GetIfValid(p1);
 	/* Check the vehicle type and ownership, and if the service interval and order are in range */
-	if (v == NULL || !CheckOwnership(v->owner)) return CMD_ERROR;
+	if (v == NULL || !v->IsPrimaryVehicle() || !CheckOwnership(v->owner)) return CMD_ERROR;
+
 	if (serv_int != GetServiceIntervalClamped(serv_int, v->owner) || cur_ord >= v->GetNumOrders()) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {

@@ -181,7 +181,7 @@ bool HasRailtypeAvail(const CompanyID company, const RailType railtype)
 
 bool ValParamRailtype(const RailType rail)
 {
-	return HasRailtypeAvail(_current_company, rail);
+	return rail < RAILTYPE_END && HasRailtypeAvail(_current_company, rail);
 }
 
 RailType GetBestRailtype(const CompanyID company)

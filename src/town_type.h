@@ -19,11 +19,14 @@ struct Town;
 
 /** Supported initial town sizes */
 enum TownSize {
-	TS_SMALL,  ///< small town
-	TS_MEDIUM, ///< medium town
-	TS_LARGE,  ///< large town
-	TS_RANDOM, ///< random size, bigger than small, smaller than large
+	TSZ_SMALL,  ///< Small town.
+	TSZ_MEDIUM, ///< Medium town.
+	TSZ_LARGE,  ///< Large town.
+	TSZ_RANDOM, ///< Random size, bigger than small, smaller than large.
+
+	TSZ_END,    ///< Number of available town sizes.
 };
+template <> struct EnumPropsT<TownSize> : MakeEnumPropsT<TownSize, byte, TSZ_SMALL, TSZ_END, TSZ_END, 2> {};
 
 enum {
 	/* These refer to the maximums, so Appalling is -1000 to -400
@@ -87,6 +90,7 @@ enum TownLayout {
 
 	NUM_TLS,             ///< Number of town layouts
 };
+template <> struct EnumPropsT<TownLayout> : MakeEnumPropsT<TownLayout, byte, TL_BEGIN, NUM_TLS, NUM_TLS, 3> {};
 /** It needs to be 8bits, because we save and load it as such */
 typedef SimpleTinyEnumT<TownLayout, byte> TownLayoutByte; // typedefing-enumification of TownLayout
 

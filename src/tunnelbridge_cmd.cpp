@@ -17,6 +17,7 @@
 #include "landscape.h"
 #include "unmovable_map.h"
 #include "viewport_func.h"
+#include "cmd_helper.h"
 #include "command_func.h"
 #include "town.h"
 #include "variables.h"
@@ -191,7 +192,7 @@ CommandCost CheckBridgeAvailability(BridgeType bridge_type, uint bridge_len, DoC
  * @param p1 packed start tile coords (~ dx)
  * @param p2 various bitstuffed elements
  * - p2 = (bit  0- 7) - bridge type (hi bh)
- * - p2 = (bit  8-14) - rail type or road types.
+ * - p2 = (bit  8-11) - rail type or road types.
  * - p2 = (bit 15-16) - transport type.
  * @param text unused
  * @return the cost of this operation or an error
@@ -208,17 +209,17 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 
 	if (p1 >= MapSize()) return CMD_ERROR;
 
-	TransportType transport_type = (TransportType)GB(p2, 15, 2);
+	TransportType transport_type = Extract<TransportType, 15, 2>(p2);
 
 	/* type of bridge */
 	switch (transport_type) {
 		case TRANSPORT_ROAD:
-			roadtypes = (RoadTypes)GB(p2, 8, 2);
+			roadtypes = Extract<RoadTypes, 8, 2>(p2);
 			if (!HasExactlyOneBit(roadtypes) || !HasRoadTypesAvail(_current_company, roadtypes)) return CMD_ERROR;
 			break;
 
 		case TRANSPORT_RAIL:
-			railtype = (RailType)GB(p2, 8, 7);
+			railtype = Extract<RailType, 8, 4>(p2);
 			if (!ValParamRailtype(railtype)) return CMD_ERROR;
 			break;
 
@@ -479,22 +480,32 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 /** Build Tunnel.
  * @param start_tile start tile of tunnel
  * @param flags type of operation
- * @param p1 railtype or roadtypes. bit 9 set means road tunnel
+ * @param p1 bit 0-3 railtype or roadtypes
+ *           bit 8-9 transport type
  * @param p2 unused
  * @param text unused
  * @return the cost of this operation or an error
  */
 CommandCost CmdBuildTunnel(TileIndex start_tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	TransportType transport_type = (TransportType)GB(p1, 9, 1);
+	TransportType transport_type = Extract<TransportType, 8, 2>(p1);
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 
+	RailType railtype = INVALID_RAILTYPE;
+	RoadTypes rts = ROADTYPES_NONE;
 	_build_tunnel_endtile = 0;
-	if (transport_type == TRANSPORT_RAIL) {
-		if (!ValParamRailtype((RailType)p1)) return CMD_ERROR;
-	} else {
-		const RoadTypes rts = (RoadTypes)GB(p1, 0, 2);
-		if (!HasExactlyOneBit(rts) || !HasRoadTypesAvail(_current_company, rts)) return CMD_ERROR;
+	switch (transport_type) {
+		case TRANSPORT_RAIL:
+			railtype = Extract<RailType, 0, 4>(p1);
+			if (!ValParamRailtype(railtype)) return CMD_ERROR;
+			break;
+
+		case TRANSPORT_ROAD:
+			rts = Extract<RoadTypes, 0, 2>(p1);
+			if (!HasExactlyOneBit(rts) || !HasRoadTypesAvail(_current_company, rts)) return CMD_ERROR;
+			break;
+
+		default: return CMD_ERROR;
 	}
 
 	uint start_z;
@@ -581,13 +592,13 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, DoCommandFlag flags, uint32 p1,
 
 	if (flags & DC_EXEC) {
 		if (transport_type == TRANSPORT_RAIL) {
-			MakeRailTunnel(start_tile, _current_company, direction,                 (RailType)GB(p1, 0, 4));
-			MakeRailTunnel(end_tile,   _current_company, ReverseDiagDir(direction), (RailType)GB(p1, 0, 4));
+			MakeRailTunnel(start_tile, _current_company, direction,                 railtype);
+			MakeRailTunnel(end_tile,   _current_company, ReverseDiagDir(direction), railtype);
 			AddSideToSignalBuffer(start_tile, INVALID_DIAGDIR, _current_company);
 			YapfNotifyTrackLayoutChange(start_tile, DiagDirToDiagTrack(direction));
 		} else {
-			MakeRoadTunnel(start_tile, _current_company, direction,                 (RoadTypes)GB(p1, 0, 2));
-			MakeRoadTunnel(end_tile,   _current_company, ReverseDiagDir(direction), (RoadTypes)GB(p1, 0, 2));
+			MakeRoadTunnel(start_tile, _current_company, direction,                 rts);
+			MakeRoadTunnel(end_tile,   _current_company, ReverseDiagDir(direction), rts);
 		}
 	}
 

@@ -104,13 +104,9 @@ static void MarkCanalsAndRiversAroundDirty(TileIndex tile)
  */
 CommandCost CmdBuildShipDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	TileIndex tile2;
+	Axis axis = Extract<Axis, 0, 1>(p1);
 
-	CommandCost ret;
-
-	Axis axis = Extract<Axis, 0>(p1);
-
-	tile2 = tile + (axis == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
+	TileIndex tile2 = tile + (axis == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
 
 	if (!IsWaterTile(tile) || !IsWaterTile(tile2)) {
 		return_cmd_error(STR_ERROR_MUST_BE_BUILT_ON_WATER);
@@ -125,7 +121,7 @@ CommandCost CmdBuildShipDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 
 	WaterClass wc1 = GetWaterClass(tile);
 	WaterClass wc2 = GetWaterClass(tile2);
-	ret = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+	CommandCost ret = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 	if (ret.Failed()) return CMD_ERROR;
 	ret = DoCommand(tile2, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 	if (ret.Failed()) return CMD_ERROR;
@@ -291,7 +287,7 @@ CommandCost CmdBuildCanal(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 {
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 
-	if (p1 >= MapSize()) return CMD_ERROR;
+	if (p1 >= MapSize() || p2 > 2) return CMD_ERROR;
 
 	/* Outside of the editor you can only build canals, not oceans */
 	if (p2 != 0 && _game_mode != GM_EDITOR) return CMD_ERROR;

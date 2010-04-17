@@ -30,5 +30,6 @@ enum TransportType {
 	TRANSPORT_END,
 	INVALID_TRANSPORT = 0xff,
 };
+template <> struct EnumPropsT<TransportType> : MakeEnumPropsT<TransportType, byte, TRANSPORT_BEGIN, TRANSPORT_END, INVALID_TRANSPORT, 2> {};
 
 #endif /* TRANSPORT_TYPE_H */

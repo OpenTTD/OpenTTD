@@ -455,15 +455,15 @@ CommandCost CmdBuildRoad(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 		p2 = (town != NULL) ? town->index : (TownID)INVALID_TOWN;
 	}
 
-	RoadBits pieces = Extract<RoadBits, 0>(p1);
+	RoadBits pieces = Extract<RoadBits, 0, 4>(p1);
 
 	/* do not allow building 'zero' road bits, code wouldn't handle it */
 	if (pieces == ROAD_NONE) return CMD_ERROR;
 
-	RoadType rt = (RoadType)GB(p1, 4, 2);
+	RoadType rt = Extract<RoadType, 4, 2>(p1);
 	if (!IsValidRoadType(rt) || !ValParamRoadType(rt)) return CMD_ERROR;
 
-	DisallowedRoadDirections toggle_drd = (DisallowedRoadDirections)GB(p1, 6, 2);
+	DisallowedRoadDirections toggle_drd = Extract<DisallowedRoadDirections, 6, 2>(p1);
 
 	Slope tileh = GetTileSlope(tile, NULL);
 
@@ -714,10 +714,10 @@ CommandCost CmdBuildLongRoad(TileIndex start_tile, DoCommandFlag flags, uint32 p
 	if (p1 >= MapSize()) return CMD_ERROR;
 
 	TileIndex end_tile = p1;
-	RoadType rt = (RoadType)GB(p2, 3, 2);
+	RoadType rt = Extract<RoadType, 3, 2>(p2);
 	if (!IsValidRoadType(rt) || !ValParamRoadType(rt)) return CMD_ERROR;
 
-	Axis axis = Extract<Axis, 2>(p2);
+	Axis axis = Extract<Axis, 2, 1>(p2);
 	/* Only drag in X or Y direction dictated by the direction variable */
 	if (axis == AXIS_X && TileY(start_tile) != TileY(end_tile)) return CMD_ERROR; // x-axis
 	if (axis == AXIS_Y && TileX(start_tile) != TileX(end_tile)) return CMD_ERROR; // y-axis
@@ -801,10 +801,10 @@ CommandCost CmdRemoveLongRoad(TileIndex start_tile, DoCommandFlag flags, uint32 
 	if (p1 >= MapSize()) return CMD_ERROR;
 
 	TileIndex end_tile = p1;
-	RoadType rt = (RoadType)GB(p2, 3, 2);
+	RoadType rt = Extract<RoadType, 3, 2>(p2);
 	if (!IsValidRoadType(rt)) return CMD_ERROR;
 
-	Axis axis = Extract<Axis, 2>(p2);
+	Axis axis = Extract<Axis, 2, 1>(p2);
 	/* Only drag in X or Y direction dictated by the direction variable */
 	if (axis == AXIS_X && TileY(start_tile) != TileY(end_tile)) return CMD_ERROR; // x-axis
 	if (axis == AXIS_Y && TileX(start_tile) != TileX(end_tile)) return CMD_ERROR; // y-axis
@@ -864,8 +864,8 @@ CommandCost CmdRemoveLongRoad(TileIndex start_tile, DoCommandFlag flags, uint32 
  */
 CommandCost CmdBuildRoadDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	DiagDirection dir = Extract<DiagDirection, 0>(p1);
-	RoadType rt = (RoadType)GB(p1, 2, 2);
+	DiagDirection dir = Extract<DiagDirection, 0, 2>(p1);
+	RoadType rt = Extract<RoadType, 2, 2>(p1);
 
 	if (!IsValidRoadType(rt) || !ValParamRoadType(rt)) return CMD_ERROR;
 

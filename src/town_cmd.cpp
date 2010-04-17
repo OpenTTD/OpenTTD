@@ -14,6 +14,7 @@
 #include "road_cmd.h"
 #include "landscape.h"
 #include "viewport_func.h"
+#include "cmd_helper.h"
 #include "command_func.h"
 #include "industry.h"
 #include "station_base.h"
@@ -1445,7 +1446,7 @@ static void DoCreateTown(Town *t, TileIndex tile, uint32 townnameparts, TownSize
 	t->larger_town = city;
 
 	int x = (int)size * 16 + 3;
-	if (size == TS_RANDOM) x = (Random() & 0xF) + 8;
+	if (size == TSZ_RANDOM) x = (Random() & 0xF) + 8;
 	/* Don't create huge cities when founding town in-game */
 	if (city && (!manual || _game_mode == GM_EDITOR)) x *= _settings_game.economy.initial_city_size;
 
@@ -1518,20 +1519,20 @@ static bool IsUniqueTownName(const char *name)
  */
 CommandCost CmdFoundTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	TownSize size = (TownSize)GB(p1, 0, 2);
+	TownSize size = Extract<TownSize, 0, 2>(p1);
 	bool city = HasBit(p1, 2);
-	TownLayout layout = (TownLayout)GB(p1, 3, 3);
+	TownLayout layout = Extract<TownLayout, 3, 3>(p1);
 	TownNameParams par(_settings_game.game_creation.town_name);
 	bool random = HasBit(p1, 6);
 	uint32 townnameparts = p2;
 
-	if (size > TS_RANDOM) return CMD_ERROR;
+	if (size > TSZ_RANDOM) return CMD_ERROR;
 	if (layout > TL_RANDOM) return CMD_ERROR;
 
 	/* Some things are allowed only in the scenario editor */
 	if (_game_mode != GM_EDITOR) {
 		if (_settings_game.economy.found_town == TF_FORBIDDEN) return CMD_ERROR;
-		if (size == TS_LARGE) return CMD_ERROR;
+		if (size == TSZ_LARGE) return CMD_ERROR;
 		if (random) return CMD_ERROR;
 		if (_settings_game.economy.found_town != TF_CUSTOM_LAYOUT && layout != _settings_game.economy.town_layout) {
 			return CMD_ERROR;
@@ -1555,7 +1556,7 @@ CommandCost CmdFoundTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 		if (ret.Failed()) return ret;
 	}
 
-	static const byte price_mult[][TS_RANDOM + 1] = {{ 15, 25, 40, 25 }, { 20, 35, 55, 35 }};
+	static const byte price_mult[][TSZ_RANDOM + 1] = {{ 15, 25, 40, 25 }, { 20, 35, 55, 35 }};
 	/* multidimensional arrays have to have defined length of non-first dimension */
 	assert_compile(lengthof(price_mult[0]) == 4);
 
@@ -1782,7 +1783,7 @@ bool GenerateTowns(TownLayout layout)
 		/* Get a unique name for the town. */
 		if (!GenerateTownName(&townnameparts)) continue;
 		/* try 20 times to create a random-sized town for the first loop. */
-		if (CreateRandomTown(20, townnameparts, TS_RANDOM, city, layout) != NULL) num++; // if creation successfull, raise a flag
+		if (CreateRandomTown(20, townnameparts, TSZ_RANDOM, city, layout) != NULL) num++; // If creation was successful, raise a flag.
 	} while (--n);
 
 	if (num != 0) return true;
@@ -1790,7 +1791,7 @@ bool GenerateTowns(TownLayout layout)
 	/* If num is still zero at this point, it means that not a single town has been created.
 	 * So give it a last try, but now more aggressive */
 	if (GenerateTownName(&townnameparts) &&
-			CreateRandomTown(10000, townnameparts, TS_RANDOM, _settings_game.economy.larger_towns != 0, layout) != NULL) {
+			CreateRandomTown(10000, townnameparts, TSZ_RANDOM, _settings_game.economy.larger_towns != 0, layout) != NULL) {
 		return true;
 	}
 

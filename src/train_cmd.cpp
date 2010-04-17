@@ -816,10 +816,11 @@ static void AddRearEngineToMultiheadedTrain(Train *v)
  */
 CommandCost CmdBuildRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
+	EngineID eid = GB(p1, 0, 16);
 	/* Check if the engine-type is valid (for the company) */
-	if (!IsEngineBuildable(p1, VEH_TRAIN, _current_company)) return_cmd_error(STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE);
+	if (!IsEngineBuildable(eid, VEH_TRAIN, _current_company)) return_cmd_error(STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE);
 
-	const Engine *e = Engine::Get(p1);
+	const Engine *e = Engine::Get(eid);
 	const RailVehicleInfo *rvi = &e->u.rail;
 	CommandCost value(EXPENSES_NEW_VEHICLES, e->GetCost());
 
@@ -833,11 +834,11 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 	if (!IsRailDepotTile(tile)) return CMD_ERROR;
 	if (!IsTileOwner(tile, _current_company)) return CMD_ERROR;
 
-	if (rvi->railveh_type == RAILVEH_WAGON) return CmdBuildRailWagon(p1, tile, flags);
+	if (rvi->railveh_type == RAILVEH_WAGON) return CmdBuildRailWagon(eid, tile, flags);
 
 	uint num_vehicles =
 		(rvi->railveh_type == RAILVEH_MULTIHEAD ? 2 : 1) +
-		CountArticulatedParts(p1, false);
+		CountArticulatedParts(eid, false);
 
 	/* Check if depot and new engine uses the same kind of tracks *
 	 * We need to see if the engine got power on the tile to avoid eletric engines in non-electric depots */
@@ -875,7 +876,7 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 		v->value = value.GetCost();
 		v->last_station_visited = INVALID_STATION;
 
-		v->engine_type = p1;
+		v->engine_type = eid;
 		v->tcache.first_engine = INVALID_ENGINE; // needs to be set before first callback
 
 		v->reliability = e->reliability;
@@ -920,7 +921,7 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 			InvalidateAutoreplaceWindow(v->engine_type, v->group_id); // updates the replace Train window
 		}
 
-		Company::Get(_current_company)->num_engines[p1]++;
+		Company::Get(_current_company)->num_engines[eid]++;
 
 		CheckConsistencyOfArticulatedVehicle(v);
 	}

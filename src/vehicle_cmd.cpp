@@ -13,6 +13,7 @@
 #include "roadveh.h"
 #include "news_func.h"
 #include "airport.h"
+#include "cmd_helper.h"
 #include "command_func.h"
 #include "company_func.h"
 #include "vehicle_gui.h"
@@ -123,22 +124,24 @@ CommandCost CmdStartStopVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
  *   - bit 0-4 Vehicle type
  *   - bit 5 false = start vehicles, true = stop vehicles
  *   - bit 6 if set, then it's a vehicle list window, not a depot and Tile is ignored in this case
- *   - bit 8-11 Vehicle List Window type (ignored unless bit 1 is set)
+ *   - bit 8-11 Vehicle List Window type (ignored unless bit 6 is set)
  * @param text unused
  * @return the cost of this operation or an error
  */
 CommandCost CmdMassStartStopVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	VehicleList list;
-	VehicleType vehicle_type = (VehicleType)GB(p2, 0, 5);
+	VehicleType vehicle_type = Extract<VehicleType, 0, 3>(p2);
 	bool start_stop = HasBit(p2, 5);
 	bool vehicle_list_window = HasBit(p2, 6);
+
+	if (!IsCompanyBuildableVehicleType(vehicle_type)) return CMD_ERROR;
 
 	if (vehicle_list_window) {
 		uint32 id = p1;
 		uint16 window_type = p2 & VLW_MASK;
 
-		GenerateVehicleSortList(&list, vehicle_type, _current_company, id, window_type);
+		if (!GenerateVehicleSortList(&list, vehicle_type, _current_company, id, window_type)) return CMD_ERROR;
 	} else {
 		/* Get the list of vehicles in the depot */
 		BuildDepotVehicleList(vehicle_type, tile, &list, NULL);
@@ -177,8 +180,10 @@ CommandCost CmdDepotSellAllVehicles(TileIndex tile, DoCommandFlag flags, uint32 
 	VehicleList list;
 
 	CommandCost cost(EXPENSES_NEW_VEHICLES);
-	VehicleType vehicle_type = (VehicleType)GB(p1, 0, 8);
+	VehicleType vehicle_type = Extract<VehicleType, 0, 3>(p1);
 	uint sell_command = GetCmdSellVeh(vehicle_type);
+
+	if (!IsCompanyBuildableVehicleType(vehicle_type)) return CMD_ERROR;
 
 	/* Get the list of vehicles in the depot */
 	BuildDepotVehicleList(vehicle_type, tile, &list, &list);
@@ -205,8 +210,9 @@ CommandCost CmdDepotMassAutoReplace(TileIndex tile, DoCommandFlag flags, uint32 
 {
 	VehicleList list;
 	CommandCost cost = CommandCost(EXPENSES_NEW_VEHICLES);
-	VehicleType vehicle_type = (VehicleType)GB(p1, 0, 8);
+	VehicleType vehicle_type = Extract<VehicleType, 0, 3>(p1);
 
+	if (!IsCompanyBuildableVehicleType(vehicle_type)) return CMD_ERROR;
 	if (!IsDepotTile(tile) || !IsTileOwner(tile, _current_company)) return CMD_ERROR;
 
 	/* Get the list of vehicles in the depot */
@@ -395,7 +401,7 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	uint32 build_argument = 2;
 
 	Vehicle *v = Vehicle::GetIfValid(p1);
-	if (v == NULL) return CMD_ERROR;
+	if (v == NULL || !v->IsPrimaryVehicle()) return CMD_ERROR;
 	Vehicle *v_front = v;
 	Vehicle *w = NULL;
 	Vehicle *w_front = NULL;
@@ -580,7 +586,7 @@ CommandCost SendAllVehiclesToDepot(VehicleType type, DoCommandFlag flags, bool s
 {
 	VehicleList list;
 
-	GenerateVehicleSortList(&list, type, owner, id, vlw_flag);
+	if (!GenerateVehicleSortList(&list, type, owner, id, vlw_flag)) return CMD_ERROR;
 
 	/* Send all the vehicles to a depot */
 	for (uint i = 0; i < list.Length(); i++) {
@@ -610,7 +616,7 @@ CommandCost SendAllVehiclesToDepot(VehicleType type, DoCommandFlag flags, bool s
 CommandCost CmdRenameVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	Vehicle *v = Vehicle::GetIfValid(p1);
-	if (v == NULL || !CheckOwnership(v->owner)) return CMD_ERROR;
+	if (v == NULL || !v->IsPrimaryVehicle() || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	bool reset = StrEmpty(text);
 
@@ -641,7 +647,7 @@ CommandCost CmdRenameVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 CommandCost CmdChangeServiceInt(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	Vehicle *v = Vehicle::GetIfValid(p1);
-	if (v == NULL || !CheckOwnership(v->owner)) return CMD_ERROR;
+	if (v == NULL || !v->IsPrimaryVehicle() || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	uint16 serv_int = GetServiceIntervalClamped(p2, v->owner); // Double check the service interval from the user-input
 	if (serv_int != p2) return CMD_ERROR;

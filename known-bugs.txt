@@ -1,6 +1,6 @@
 OpenTTD's known bugs
-Last updated:    2010-04-01
-Release version: 1.0.0
+Last updated:    2010-04-17
+Release version: 1.0.1-RC1
 ------------------------------------------------------------------------
 
 
@@ -34,8 +34,6 @@ that you can find at: http://bugs.openttd.org
 If the bugs are closed but still listed here it means that the bug is fixed
 and that the nightlies and next major release will not have that bug.
 
-- 3725	[NewGRF] Incorrect handling of some house action0s
-- 3720	When refitting to a vehicle with more trailers, the details view is not made bigger
 - 3714	Some corrupted savegames can cause crashes
 - 3695	Behaviour inconsistency building railway/road down towards water
 - 3651	[OSX] Crash when selecting full screen

@@ -76,8 +76,9 @@ void BuildDepotVehicleList(VehicleType type, TileIndex tile, VehicleList *engine
  *      <li>VLW_WAYPOINT_LIST: index of waypoint to generate a list for</li>
  *    </ul>
  * @param window_type The type of window the list is for, using the VLW_ flags in vehicle_gui.h
+ * @return false if invalid list is requested
  */
-void GenerateVehicleSortList(VehicleList *list, VehicleType type, Owner owner, uint32 index, uint16 window_type)
+bool GenerateVehicleSortList(VehicleList *list, VehicleType type, Owner owner, uint32 index, uint16 window_type)
 {
 	list->Clear();
 
@@ -101,7 +102,10 @@ void GenerateVehicleSortList(VehicleList *list, VehicleType type, Owner owner, u
 
 		case VLW_SHARED_ORDERS:
 			/* Add all vehicles from this vehicle's shared order list */
-			for (v = Vehicle::Get(index); v != NULL; v = v->NextShared()) {
+			v = Vehicle::GetIfValid(index);
+			if (v == NULL || v->type != type || !v->IsPrimaryVehicle()) return false;
+
+			for (; v != NULL; v = v->NextShared()) {
 				*list->Append() = v;
 			}
 			break;
@@ -153,8 +157,9 @@ void GenerateVehicleSortList(VehicleList *list, VehicleType type, Owner owner, u
 			}
 			break;
 
-		default: NOT_REACHED();
+		default: return false;
 	}
 
 	list->Compact();
+	return true;
 }
