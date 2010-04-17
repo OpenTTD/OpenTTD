@@ -1095,13 +1095,13 @@ CommandCost FindJoiningWaypoint(StationID existing_waypoint, StationID waypoint_
 CommandCost CmdBuildRailStation(TileIndex tile_org, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	/* Unpack parameters */
-	RailType rt    = (RailType)GB(p1, 0, 4);
+	RailType rt    = Extract<RailType, 0, 4>(p1);
 	Axis axis      = Extract<Axis, 4, 1>(p1);
 	byte numtracks = GB(p1,  8, 8);
 	byte plat_len  = GB(p1, 16, 8);
 	bool adjacent  = HasBit(p1, 24);
 
-	StationClassID spec_class = (StationClassID)GB(p2, 0, 8);
+	StationClassID spec_class = Extract<StationClassID, 0, 8>(p2);
 	byte spec_index           = GB(p2, 8, 8);
 	StationID station_to_join = GB(p2, 16, 16);
 
@@ -1112,7 +1112,7 @@ CommandCost CmdBuildRailStation(TileIndex tile_org, DoCommandFlag flags, uint32 
 	if (!ValParamRailtype(rt)) return CMD_ERROR;
 
 	/* Check if the given station class is valid */
-	if ((uint)spec_class >= GetNumStationClasses()) return CMD_ERROR;
+	if ((uint)spec_class >= GetNumStationClasses() || spec_class == STAT_CLASS_WAYP) return CMD_ERROR;
 	if (spec_index >= GetNumCustomStations(spec_class)) return CMD_ERROR;
 	if (plat_len == 0 || numtracks == 0) return CMD_ERROR;
 
@@ -1675,7 +1675,7 @@ CommandCost CmdBuildRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 {
 	bool type = HasBit(p2, 0);
 	bool is_drive_through = HasBit(p2, 1);
-	RoadTypes rts = (RoadTypes)GB(p2, 2, 2);
+	RoadTypes rts = Extract<RoadTypes, 2, 2>(p2);
 	StationID station_to_join = GB(p2, 16, 16);
 	bool reuse = (station_to_join != NEW_STATION);
 	if (!reuse) station_to_join = INVALID_STATION;
@@ -1702,7 +1702,7 @@ CommandCost CmdBuildRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	/* Trams only have drive through stops */
 	if (!is_drive_through && HasBit(rts, ROADTYPE_TRAM)) return CMD_ERROR;
 
-	DiagDirection ddir = (DiagDirection)GB(p2, 6, 2);
+	DiagDirection ddir = Extract<DiagDirection, 6, 2>(p2);
 
 	/* Safeguard the parameters. */
 	if (!IsValidDiagDirection(ddir)) return CMD_ERROR;

@@ -20,7 +20,8 @@ template<typename T, uint S, uint N, typename U> static inline T Extract(U v)
 	assert_tcompile(N == EnumPropsT<T>::num_bits);
 	assert_tcompile(S + N <= sizeof(U) * 8);
 	assert_tcompile(EnumPropsT<T>::end <= (1 << N));
-	return (T)GB(v, S, N);
+	U masked = GB(v, S, N);
+	return IsInsideMM(masked, EnumPropsT<T>::begin, EnumPropsT<T>::end) ? (T)masked : EnumPropsT<T>::invalid;
 }
 
 #endif

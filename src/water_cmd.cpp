@@ -291,7 +291,7 @@ CommandCost CmdBuildLock(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
  */
 CommandCost CmdBuildCanal(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	if (p1 >= MapSize()) return CMD_ERROR;
+	if (p1 >= MapSize() || p2 > 2) return CMD_ERROR;
 
 	/* Outside of the editor you can only build canals, not oceans */
 	if (p2 != 0 && _game_mode != GM_EDITOR) return CMD_ERROR;

@@ -10,6 +10,7 @@
 /** @file group_cmd.cpp Handling of the engine groups */
 
 #include "stdafx.h"
+#include "cmd_helper.h"
 #include "command_func.h"
 #include "group.h"
 #include "train.h"
@@ -82,7 +83,7 @@ void InitializeGroup()
  */
 CommandCost CmdCreateGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	VehicleType vt = (VehicleType)p1;
+	VehicleType vt = Extract<VehicleType, 0, 3>(p1);
 	if (!IsCompanyBuildableVehicleType(vt)) return CMD_ERROR;
 
 	if (!Group::CanAllocateItem()) return CMD_ERROR;
@@ -258,13 +259,12 @@ CommandCost CmdAddVehicleGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, u
  */
 CommandCost CmdAddSharedVehicleGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	VehicleType type = (VehicleType)p2;
-	if (!Group::IsValidID(p1) || !IsCompanyBuildableVehicleType(type)) return CMD_ERROR;
+	VehicleType type = Extract<VehicleType, 0, 3>(p2);
+	GroupID id_g = p1;
+	if (!Group::IsValidID(id_g) || !IsCompanyBuildableVehicleType(type)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		Vehicle *v;
-		VehicleType type = (VehicleType)p2;
-		GroupID id_g = p1;
 
 		/* Find the first front engine which belong to the group id_g
 		 * then add all shared vehicles of this front engine to the group id_g */
@@ -298,13 +298,13 @@ CommandCost CmdAddSharedVehicleGroup(TileIndex tile, DoCommandFlag flags, uint32
  */
 CommandCost CmdRemoveAllVehiclesGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	Group *g = Group::GetIfValid(p1);
-	VehicleType type = (VehicleType)p2;
+	GroupID old_g = p1;
+	Group *g = Group::GetIfValid(old_g);
+	VehicleType type = Extract<VehicleType, 0, 3>(p2);
 
 	if (g == NULL || g->owner != _current_company || !IsCompanyBuildableVehicleType(type)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		GroupID old_g = p1;
 		Vehicle *v;
 
 		/* Find each Vehicle that belongs to the group old_g and add it to the default group */

@@ -13,6 +13,7 @@
 #include "roadveh.h"
 #include "news_func.h"
 #include "airport.h"
+#include "cmd_helper.h"
 #include "command_func.h"
 #include "company_func.h"
 #include "vehicle_gui.h"
@@ -126,16 +127,18 @@ CommandCost CmdStartStopVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
  *   - bit 0-4 Vehicle type
  *   - bit 5 false = start vehicles, true = stop vehicles
  *   - bit 6 if set, then it's a vehicle list window, not a depot and Tile is ignored in this case
- *   - bit 8-11 Vehicle List Window type (ignored unless bit 1 is set)
+ *   - bit 8-11 Vehicle List Window type (ignored unless bit 6 is set)
  * @param text unused
  * @return the cost of this operation or an error
  */
 CommandCost CmdMassStartStopVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	VehicleList list;
-	VehicleType vehicle_type = (VehicleType)GB(p2, 0, 5);
+	VehicleType vehicle_type = Extract<VehicleType, 0, 3>(p2);
 	bool start_stop = HasBit(p2, 5);
 	bool vehicle_list_window = HasBit(p2, 6);
+
+	if (!IsCompanyBuildableVehicleType(vehicle_type)) return CMD_ERROR;
 
 	if (vehicle_list_window) {
 		uint32 id = p1;
@@ -180,8 +183,10 @@ CommandCost CmdDepotSellAllVehicles(TileIndex tile, DoCommandFlag flags, uint32 
 	VehicleList list;
 
 	CommandCost cost(EXPENSES_NEW_VEHICLES);
-	VehicleType vehicle_type = (VehicleType)GB(p1, 0, 8);
+	VehicleType vehicle_type = Extract<VehicleType, 0, 3>(p1);
 	uint sell_command = GetCmdSellVeh(vehicle_type);
+
+	if (!IsCompanyBuildableVehicleType(vehicle_type)) return CMD_ERROR;
 
 	/* Get the list of vehicles in the depot */
 	BuildDepotVehicleList(vehicle_type, tile, &list, &list);
@@ -214,8 +219,9 @@ CommandCost CmdDepotMassAutoReplace(TileIndex tile, DoCommandFlag flags, uint32 
 {
 	VehicleList list;
 	CommandCost cost = CommandCost(EXPENSES_NEW_VEHICLES);
-	VehicleType vehicle_type = (VehicleType)GB(p1, 0, 8);
+	VehicleType vehicle_type = Extract<VehicleType, 0, 3>(p1);
 
+	if (!IsCompanyBuildableVehicleType(vehicle_type)) return CMD_ERROR;
 	if (!IsDepotTile(tile) || !IsTileOwner(tile, _current_company)) return CMD_ERROR;
 
 	/* Get the list of vehicles in the depot */

@@ -11,6 +11,7 @@
 
 #include "stdafx.h"
 #include "debug.h"
+#include "cmd_helper.h"
 #include "command_func.h"
 #include "company_func.h"
 #include "news_func.h"
@@ -933,8 +934,8 @@ CommandCost CmdModifyOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 {
 	VehicleOrderID sel_ord = GB(p1, 16, 16); // XXX - automatically truncated to 8 bits.
 	VehicleID veh          = GB(p1,  0, 16);
-	ModifyOrderFlags mof   = (ModifyOrderFlags)GB(p2,  0,  4);
-	uint16 data             = GB(p2, 4, 11);
+	ModifyOrderFlags mof   = Extract<ModifyOrderFlags, 0, 4>(p2);
+	uint16 data            = GB(p2, 4, 11);
 
 	if (mof >= MOF_END) return CMD_ERROR;
 

@@ -149,6 +149,7 @@ enum ModifyOrderFlags {
 	MOF_COND_DESTINATION,///< Change the destination of a conditional order.
 	MOF_END
 };
+template <> struct EnumPropsT<ModifyOrderFlags> : MakeEnumPropsT<ModifyOrderFlags, byte, MOF_NON_STOP, MOF_END, MOF_END, 4> {};
 
 /**
  * Depot action to switch to when doing a MOF_DEPOT_ACTION.

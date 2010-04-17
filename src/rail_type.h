@@ -43,7 +43,7 @@ enum RailType {
 /** Allow incrementing of Track variables */
 DECLARE_POSTFIX_INCREMENT(RailType)
 /** Define basic enum properties */
-template <> struct EnumPropsT<RailType> : MakeEnumPropsT<RailType, byte, RAILTYPE_BEGIN, RAILTYPE_END, INVALID_RAILTYPE> {};
+template <> struct EnumPropsT<RailType> : MakeEnumPropsT<RailType, byte, RAILTYPE_BEGIN, RAILTYPE_END, INVALID_RAILTYPE, 4> {};
 typedef TinyEnumT<RailType> RailTypeByte;
 
 /**

@@ -196,6 +196,7 @@ enum Colours {
 	COLOUR_END,
 	INVALID_COLOUR = 0xFF,
 };
+template <> struct EnumPropsT<Colours> : MakeEnumPropsT<Colours, byte, COLOUR_DARK_BLUE, COLOUR_END, INVALID_COLOUR, 4> {};
 
 /** Colour of the strings, see _string_colourmap in table/palettes.h or docs/ottd-colourtext-palette.png */
 enum TextColour {

@@ -17,6 +17,7 @@
 #include "landscape.h"
 #include "unmovable_map.h"
 #include "viewport_func.h"
+#include "cmd_helper.h"
 #include "command_func.h"
 #include "town.h"
 #include "variables.h"
@@ -194,7 +195,7 @@ CommandCost CheckBridgeAvailability(BridgeType bridge_type, uint bridge_len, DoC
  * @param p1 packed start tile coords (~ dx)
  * @param p2 various bitstuffed elements
  * - p2 = (bit  0- 7) - bridge type (hi bh)
- * - p2 = (bit  8-14) - rail type or road types.
+ * - p2 = (bit  8-11) - rail type or road types.
  * - p2 = (bit 15-16) - transport type.
  * @param text unused
  * @return the cost of this operation or an error
@@ -209,17 +210,17 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 
 	if (p1 >= MapSize()) return CMD_ERROR;
 
-	TransportType transport_type = (TransportType)GB(p2, 15, 2);
+	TransportType transport_type = Extract<TransportType, 15, 2>(p2);
 
 	/* type of bridge */
 	switch (transport_type) {
 		case TRANSPORT_ROAD:
-			roadtypes = (RoadTypes)GB(p2, 8, 2);
+			roadtypes = Extract<RoadTypes, 8, 2>(p2);
 			if (!HasExactlyOneBit(roadtypes) || !HasRoadTypesAvail(_current_company, roadtypes)) return CMD_ERROR;
 			break;
 
 		case TRANSPORT_RAIL:
-			railtype = (RailType)GB(p2, 8, 7);
+			railtype = Extract<RailType, 8, 4>(p2);
 			if (!ValParamRailtype(railtype)) return CMD_ERROR;
 			break;
 
@@ -490,19 +491,19 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
  */
 CommandCost CmdBuildTunnel(TileIndex start_tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	TransportType transport_type = (TransportType)GB(p1, 8, 2);
+	TransportType transport_type = Extract<TransportType, 8, 2>(p1);
 
 	RailType railtype = INVALID_RAILTYPE;
 	RoadTypes rts = ROADTYPES_NONE;
 	_build_tunnel_endtile = 0;
 	switch (transport_type) {
 		case TRANSPORT_RAIL:
-			railtype = (RailType)GB(p1, 0, 4);
+			railtype = Extract<RailType, 0, 4>(p1);
 			if (!ValParamRailtype(railtype)) return CMD_ERROR;
 			break;
 
 		case TRANSPORT_ROAD:
-			rts = (RoadTypes)GB(p1, 0, 2);
+			rts = Extract<RoadTypes, 0, 2>(p1);
 			if (!HasExactlyOneBit(rts) || !HasRoadTypesAvail(_current_company, rts)) return CMD_ERROR;
 			break;
 

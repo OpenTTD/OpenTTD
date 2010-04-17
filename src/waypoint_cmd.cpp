@@ -11,6 +11,7 @@
 
 #include "stdafx.h"
 
+#include "cmd_helper.h"
 #include "command_func.h"
 #include "landscape.h"
 #include "bridge_map.h"
@@ -215,12 +216,12 @@ extern CommandCost CanExpandRailStation(const BaseStation *st, TileArea &new_ta,
 CommandCost CmdBuildRailWaypoint(TileIndex start_tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	/* Unpack parameters */
-	Axis axis      = (Axis)GB(p1,  4, 1);
+	Axis axis      = Extract<Axis, 4, 1>(p1);
 	byte width     = GB(p1,  8, 8);
 	byte height    = GB(p1, 16, 8);
 	bool adjacent  = HasBit(p1, 24);
 
-	StationClassID spec_class = (StationClassID)GB(p2, 0, 8);
+	StationClassID spec_class = Extract<StationClassID, 0, 8>(p2);
 	byte spec_index           = GB(p2, 8, 8);
 	StationID station_to_join = GB(p2, 16, 16);
 

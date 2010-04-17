@@ -168,6 +168,7 @@ enum DisallowedRoadDirections {
 	DRD_END
 };
 DECLARE_ENUM_AS_BIT_SET(DisallowedRoadDirections)
+template <> struct EnumPropsT<DisallowedRoadDirections> : MakeEnumPropsT<DisallowedRoadDirections, byte, DRD_NONE, DRD_END, DRD_END, 2> {};
 
 /**
  * Gets the disallowed directions

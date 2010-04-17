@@ -358,8 +358,8 @@ static inline bool ValParamTrackOrientation(Track track)
  */
 CommandCost CmdBuildSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	RailType railtype = (RailType)p1;
-	Track track = (Track)p2;
+	RailType railtype = Extract<RailType, 0, 4>(p1);
+	Track track = Extract<Track, 0, 3>(p2);
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 
 	if (!ValParamRailtype(railtype) || !ValParamTrackOrientation(track)) return CMD_ERROR;
@@ -499,11 +499,11 @@ CommandCost CmdBuildSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, u
  */
 CommandCost CmdRemoveSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	Track track = (Track)p2;
+	Track track = Extract<Track, 0, 3>(p2);
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 	bool crossing = false;
 
-	if (!ValParamTrackOrientation((Track)p2)) return CMD_ERROR;
+	if (!ValParamTrackOrientation(track)) return CMD_ERROR;
 	TrackBits trackbit = TrackToTrackBits(track);
 
 	/* Need to read tile owner now because it may change when the rail is removed
@@ -741,9 +741,9 @@ static CommandCost ValidateAutoDrag(Trackdir *trackdir, TileIndex start, TileInd
 static CommandCost CmdRailTrackHelper(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	CommandCost total_cost(EXPENSES_CONSTRUCTION);
-	Track track = (Track)GB(p2, 4, 3);
+	Track track = Extract<Track, 4, 3>(p2);
 	bool remove = HasBit(p2, 7);
-	RailType railtype = (RailType)GB(p2, 0, 4);
+	RailType railtype = Extract<RailType, 0, 4>(p2);
 
 	if (!ValParamRailtype(railtype) || !ValParamTrackOrientation(track)) return CMD_ERROR;
 	if (p1 >= MapSize()) return CMD_ERROR;
@@ -833,7 +833,8 @@ CommandCost CmdRemoveRailroadTrack(TileIndex tile, DoCommandFlag flags, uint32 p
 CommandCost CmdBuildTrainDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	/* check railtype and valid direction for depot (0 through 3), 4 in total */
-	if (!ValParamRailtype((RailType)p1)) return CMD_ERROR;
+	RailType railtype = Extract<RailType, 0, 4>(p1);
+	if (!ValParamRailtype(railtype)) return CMD_ERROR;
 
 	Slope tileh = GetTileSlope(tile, NULL);
 
@@ -865,7 +866,7 @@ CommandCost CmdBuildTrainDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 		Depot *d = new Depot(tile);
 		d->town_index = ClosestTownFromTile(tile, UINT_MAX)->index;
 
-		MakeRailDepot(tile, _current_company, d->index, dir, (RailType)p1);
+		MakeRailDepot(tile, _current_company, d->index, dir, railtype);
 		MarkTileDirtyByTile(tile);
 
 		AddSideToSignalBuffer(tile, INVALID_DIAGDIR, _current_company);
@@ -898,16 +899,17 @@ CommandCost CmdBuildTrainDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, u
  */
 CommandCost CmdBuildSingleSignal(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	Track track = (Track)GB(p1, 0, 3);
+	Track track = Extract<Track, 0, 3>(p1);
 	bool ctrl_pressed = HasBit(p1, 3); // was the CTRL button pressed
 	SignalVariant sigvar = (ctrl_pressed ^ HasBit(p1, 4)) ? SIG_SEMAPHORE : SIG_ELECTRIC; // the signal variant of the new signal
-	SignalType sigtype = (SignalType)GB(p1, 5, 3); // the signal type of the new signal
+	SignalType sigtype = Extract<SignalType, 5, 3>(p1); // the signal type of the new signal
 	bool convert_signal = HasBit(p1, 8); // convert button pressed
-	SignalType cycle_start = (SignalType)GB(p1, 9, 3);
-	SignalType cycle_stop = (SignalType)GB(p1, 12, 3);
+	SignalType cycle_start = Extract<SignalType, 9, 3>(p1);
+	SignalType cycle_stop = Extract<SignalType, 12, 3>(p1);
 	uint num_dir_cycle = GB(p1, 15, 2);
 
 	if (sigtype > SIGTYPE_LAST) return CMD_ERROR;
+	if (cycle_start > cycle_stop || cycle_stop > SIGTYPE_LAST) return CMD_ERROR;
 
 	/* You can only build signals on plain rail tiles, and the selected track must exist */
 	if (!ValParamTrackOrientation(track) || !IsPlainRailTile(tile) ||
@@ -1127,15 +1129,14 @@ static CommandCost CmdSignalTrackHelper(TileIndex tile, DoCommandFlag flags, uin
 	CommandCost total_cost(EXPENSES_CONSTRUCTION);
 	TileIndex start_tile = tile;
 
-	Track track = (Track)GB(p2, 0, 3);
+	Track track = Extract<Track, 0, 3>(p2);
 	bool mode = HasBit(p2, 3);
 	bool semaphores = HasBit(p2, 4);
 	bool remove = HasBit(p2, 5);
 	bool autofill = HasBit(p2, 6);
-	Trackdir trackdir = TrackToTrackdir(track);
 	byte signal_density = GB(p2, 24, 8);
 
-	if (p1 >= MapSize()) return CMD_ERROR;
+	if (p1 >= MapSize() || !ValParamTrackOrientation(track)) return CMD_ERROR;
 	TileIndex end_tile = p1;
 	if (signal_density == 0 || signal_density > 20) return CMD_ERROR;
 
@@ -1145,6 +1146,7 @@ static CommandCost CmdSignalTrackHelper(TileIndex tile, DoCommandFlag flags, uin
 	 * since the original amount will be too dense (shorter tracks) */
 	signal_density *= 2;
 
+	Trackdir trackdir = TrackToTrackdir(track);
 	CommandCost ret = ValidateAutoDrag(&trackdir, tile, end_tile);
 	if (ret.Failed()) return ret;
 
@@ -1271,7 +1273,7 @@ CommandCost CmdBuildSignalTrack(TileIndex tile, DoCommandFlag flags, uint32 p1, 
  */
 CommandCost CmdRemoveSingleSignal(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	Track track = (Track)GB(p1, 0, 3);
+	Track track = Extract<Track, 0, 3>(p1);
 
 	if (!ValParamTrackOrientation(track) ||
 			!IsPlainRailTile(tile) ||
@@ -1374,7 +1376,7 @@ static Vehicle *UpdateTrainPowerProc(Vehicle *v, void *data)
  */
 CommandCost CmdConvertRail(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	RailType totype = (RailType)p2;
+	RailType totype = Extract<RailType, 0, 4>(p2);
 
 	if (!ValParamRailtype(totype)) return CMD_ERROR;
 	if (p1 >= MapSize()) return CMD_ERROR;

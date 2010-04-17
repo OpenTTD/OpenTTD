@@ -15,6 +15,7 @@
 #include "company_gui.h"
 #include "town.h"
 #include "news_func.h"
+#include "cmd_helper.h"
 #include "command_func.h"
 #include "network/network.h"
 #include "network/network_func.h"
@@ -898,14 +899,11 @@ CommandCost CmdSetCompanyManagerFace(TileIndex tile, DoCommandFlag flags, uint32
  */
 CommandCost CmdSetCompanyColour(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	if (p2 >= 16) return CMD_ERROR; // max 16 colours
-
-	Colours colour = (Colours)p2;
-
-	LiveryScheme scheme = (LiveryScheme)GB(p1, 0, 8);
+	Colours colour = Extract<Colours, 0, 4>(p2);
+	LiveryScheme scheme = Extract<LiveryScheme, 0, 8>(p1);
 	byte state = GB(p1, 8, 2);
 
-	if (scheme >= LS_END || state >= 3) return CMD_ERROR;
+	if (scheme >= LS_END || state >= 3 || colour == INVALID_COLOUR) return CMD_ERROR;
 
 	Company *c = Company::Get(_current_company);
 

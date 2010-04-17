@@ -14,6 +14,7 @@
 #include "road_cmd.h"
 #include "landscape.h"
 #include "viewport_func.h"
+#include "cmd_helper.h"
 #include "command_func.h"
 #include "industry.h"
 #include "station_base.h"
@@ -1518,9 +1519,9 @@ static bool IsUniqueTownName(const char *name)
  */
 CommandCost CmdFoundTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	TownSize size = (TownSize)GB(p1, 0, 2);
+	TownSize size = Extract<TownSize, 0, 2>(p1);
 	bool city = HasBit(p1, 2);
-	TownLayout layout = (TownLayout)GB(p1, 3, 3);
+	TownLayout layout = Extract<TownLayout, 3, 3>(p1);
 	TownNameParams par(_settings_game.game_creation.town_name);
 	bool random = HasBit(p1, 6);
 	uint32 townnameparts = p2;
