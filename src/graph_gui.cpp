@@ -178,10 +178,8 @@ protected:
 		GRAPH_AXIS_LINE_COLOUR  = 215,
 		GRAPH_NUM_MONTHS = 24, ///< Number of months displayed in the graph.
 
-		GRAPH_NUM_LINES_Y = 9, ///< How many horizontal lines to draw.
-		/* 9 is convenient as that means the distance between them is the gd_height of the graph / 8,
-		 * which is the same
-		 * as height >> 3. */
+		MIN_GRAPH_NUM_LINES_Y = 9,  ///< Minimal number of horizontal lines to draw.
+		MIN_GRID_PIXEL_SIZE   = 20, ///< Minimum distance between graph lines.
 	};
 
 	uint excluded_data; ///< bitmask of the datasets that shouldn't be displayed.
@@ -208,9 +206,10 @@ protected:
 	/**
 	 * Get the interval that contains the graph's data. Excluded data is ignored to show smaller values in
 	 * better detail when disabling higher ones.
+	 * @param num_hori_lines Number of horizontal lines to be drawn.
 	 * @return Highest and lowest values of the graph (ignoring disabled data).
 	 */
-	ValuesInterval GetValuesInterval() const
+	ValuesInterval GetValuesInterval(int num_hori_lines) const
 	{
 		ValuesInterval current_interval;
 		current_interval.highest = INT64_MIN;
@@ -238,32 +237,31 @@ protected:
 
 		int num_pos_grids;
 		int grid_size;
-		const int num_grids = GRAPH_NUM_LINES_Y - 1;
 
 		if (abs_lower == 0) {
 			if (abs_higher == 0) {
 				/* If both values are zero, show an empty graph. */
-				num_pos_grids = num_grids / 2;
+				num_pos_grids = num_hori_lines / 2;
 				grid_size = 1;
 			} else {
 				/* The positive part of the graph can use all grids. */
-				num_pos_grids = num_grids;
-				grid_size = ceil((float)abs_higher / num_grids);
+				num_pos_grids = num_hori_lines;
+				grid_size = ceil((float)abs_higher / num_hori_lines);
 			}
 
 		} else {
 			if (abs_higher == 0) {
 				/* The negative part of the graph can use all grids. */
 				num_pos_grids = 0;
-				grid_size = ceil((float)abs_lower / num_grids);
+				grid_size = ceil((float)abs_lower / num_hori_lines);
 			} else {
 				/* Get the smallest grid size required and the number of grids for each part of the graph. */
 				int min_pos_grids = 1;
 				int min_grid_size = INT_MAX;
-				for (num_pos_grids = 1; num_pos_grids <= num_grids - 1; num_pos_grids++) {
+				for (num_pos_grids = 1; num_pos_grids <= num_hori_lines - 1; num_pos_grids++) {
 					/* Size required for each part of the graph given this number of grids. */
 					int pos_grid_size = ceil((float)abs_higher / num_pos_grids);
-					int neg_grid_size = ceil((float)abs_lower / (num_grids - num_pos_grids));
+					int neg_grid_size = ceil((float)abs_lower / (num_hori_lines - num_pos_grids));
 					grid_size = max(pos_grid_size, neg_grid_size);
 					if (grid_size < min_grid_size) {
 						min_pos_grids = num_pos_grids;
@@ -276,20 +274,23 @@ protected:
 		}
 
 		current_interval.highest = num_pos_grids * grid_size;
-		current_interval.lowest = -(num_grids - num_pos_grids) * grid_size;
+		current_interval.lowest = -(num_hori_lines - num_pos_grids) * grid_size;
 		return current_interval;
 	}
 
-	/** Get width for Y labels */
-	uint GetYLabelWidth(ValuesInterval current_interval) const
+	/** Get width for Y labels.
+	 * @param current_interval Interval that contains all of the graph data.
+	 * @param num_hori_lines Number of horizontal lines to be drawn.
+	 */
+	uint GetYLabelWidth(ValuesInterval current_interval, int num_hori_lines) const
 	{
 		/* draw text strings on the y axis */
 		int64 y_label = current_interval.highest;
-		int64 y_label_separation = (current_interval.highest - current_interval.lowest) / (GRAPH_NUM_LINES_Y - 1);
+		int64 y_label_separation = (current_interval.highest - current_interval.lowest) / num_hori_lines;
 
 		uint max_width = 0;
 
-		for (int i = 0; i < GRAPH_NUM_LINES_Y; i++) {
+		for (int i = 0; i < (num_hori_lines + 1); i++) {
 			SetDParam(0, this->format_str_y_axis);
 			SetDParam(1, y_label);
 			Dimension d = GetStringBoundingBox(STR_GRAPH_Y_LABEL);
@@ -325,19 +326,25 @@ protected:
 		r.left   += 9;
 		r.right  -= 5;
 
-		interval = GetValuesInterval();
+		/* Initial number of horizontal lines. */
+		int num_hori_lines = 160 / MIN_GRID_PIXEL_SIZE;
+		/* For the rest of the height, the number of horizontal lines will increase more slowly. */
+		int resize = (r.bottom - r.top - 160) / (2 * MIN_GRID_PIXEL_SIZE);
+		if (resize > 0) num_hori_lines += resize;
 
-		int label_width = GetYLabelWidth(interval);
+		interval = GetValuesInterval(num_hori_lines);
+
+		int label_width = GetYLabelWidth(interval, num_hori_lines);
 
 		r.left += label_width;
 
 		int x_sep = (r.right - r.left) / this->num_vert_lines;
-		int y_sep = (r.bottom - r.top) / (GRAPH_NUM_LINES_Y - 1);
+		int y_sep = (r.bottom - r.top) / num_hori_lines;
 
 		/* Redetermine right and bottom edge of graph to fit with the integer
 		 * separation values. */
 		r.right = r.left + x_sep * this->num_vert_lines;
-		r.bottom = r.top + y_sep * (GRAPH_NUM_LINES_Y - 1);
+		r.bottom = r.top + y_sep * num_hori_lines;
 
 		OverflowSafeInt64 interval_size = interval.highest + abs(interval.lowest);
 		/* Where to draw the X axis */
@@ -356,7 +363,7 @@ protected:
 		/* Draw the horizontal grid lines. */
 		y = r.bottom;
 
-		for (int i = 0; i < GRAPH_NUM_LINES_Y; i++) {
+		for (int i = 0; i < (num_hori_lines + 1); i++) {
 			GfxFillRect(r.left - 3, y, r.left - 1, y, GRAPH_AXIS_LINE_COLOUR);
 			GfxFillRect(r.left, y, r.right, y, grid_colour);
 			y -= y_sep;
@@ -378,11 +385,11 @@ protected:
 
 		/* draw text strings on the y axis */
 		int64 y_label = interval.highest;
-		int64 y_label_separation = abs(interval.highest - interval.lowest) / (GRAPH_NUM_LINES_Y - 1);
+		int64 y_label_separation = abs(interval.highest - interval.lowest) / num_hori_lines;
 
 		y = r.top - GetCharacterHeight(FS_SMALL) / 2;
 
-		for (int i = 0; i < GRAPH_NUM_LINES_Y; i++) {
+		for (int i = 0; i < (num_hori_lines + 1); i++) {
 			SetDParam(0, this->format_str_y_axis);
 			SetDParam(1, y_label);
 			DrawString(r.left - label_width - 4, r.left - 4, y, STR_GRAPH_Y_LABEL, graph_axis_label_colour, SA_RIGHT);
@@ -536,7 +543,7 @@ public:
 		uint y_label_width = GetStringBoundingBox(STR_GRAPH_Y_LABEL).width;
 
 		size->width  = max<uint>(size->width,  5 + y_label_width + this->num_on_x_axis * (x_label_width + 5) + 9);
-		size->height = max<uint>(size->height, 5 + (1 + GRAPH_NUM_LINES_Y * 2 + (this->month != 0xFF ? 3 : 1)) * FONT_HEIGHT_SMALL + 4);
+		size->height = max<uint>(size->height, 5 + (1 + MIN_GRAPH_NUM_LINES_Y * 2 + (this->month != 0xFF ? 3 : 1)) * FONT_HEIGHT_SMALL + 4);
 		size->height = max<uint>(size->height, size->width / 3);
 	}
 
