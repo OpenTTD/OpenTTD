@@ -1834,7 +1834,7 @@ STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :prarastas ryšy
 STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :protokolo klaida
 STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :Papild. grafikos neatitikimas
 STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :Neautorizuota
-STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :gautas neteisingas paketas
+STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :gautas neteisingas arba nelauktas paketas
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :bloga versija
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :toks vardas jau naudojamas
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :blogas žaidimo slaptažodis
@@ -1852,7 +1852,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Žaidimas vis d
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Žaidimas vis dar sustabdytas ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Žaidimas vis dar sustabdytas ({STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Žaidimas paleistas ({STRING})
-STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :nepakanka žaidėjų
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :žaidėjų skaičius
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :jungiasi žaidėjai
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :rankinis
 ############ End of leave-in-this-order
@@ -3608,6 +3608,7 @@ STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Čia akv
 
 # Tree related errors
 STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... medis jau čia yra
+STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... netinkama vietovė šiam medžių tipui
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Neįmanoma pasodinti medžio...
 
 # Bridge related errors

@@ -1759,7 +1759,7 @@ STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :anslutning för
 STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :protokollfel
 STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :NewGRF är omaka
 STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :inte godkänd
-STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :mottog konstigt paket
+STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :mottog felaktigt eller oväntat paket
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :fel revision
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :namnet används redan
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :fel lösenord
@@ -1777,7 +1777,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Spel fortfarand
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Spel fortfarande pausad ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Spel fortfarande pausad ({STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Spel opausad ({STRING})
-STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :inte tillräckligt med spelare
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :antal spelare
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :ansluter klienter
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :manuell
 ############ End of leave-in-this-order

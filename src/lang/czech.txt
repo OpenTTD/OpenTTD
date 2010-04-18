@@ -75,7 +75,7 @@ STR_CARGO_PLURAL_DIAMONDS                                       :diamanty
 STR_CARGO_PLURAL_DIAMONDS.gen                                   :diamantů
 STR_CARGO_PLURAL_DIAMONDS.big                                   :Diamanty
 STR_CARGO_PLURAL_FOOD                                           :jídlo
-STR_CARGO_PLURAL_FOOD.gen                                       :jídlo
+STR_CARGO_PLURAL_FOOD.gen                                       :jídla
 STR_CARGO_PLURAL_FOOD.big                                       :Jídlo
 STR_CARGO_PLURAL_PAPER                                          :papír
 STR_CARGO_PLURAL_PAPER.gen                                      :papíru
@@ -130,6 +130,8 @@ STR_CARGO_PLURAL_FIZZY_DRINKS.big                               :Limonáda
 # Singular cargo name
 STR_CARGO_SINGULAR_NOTHING                                      :
 STR_CARGO_SINGULAR_PASSENGER                                    :cestujících
+STR_CARGO_SINGULAR_PASSENGER.acc                                :cestující
+STR_CARGO_SINGULAR_PASSENGER.big                                :Cestující
 STR_CARGO_SINGULAR_COAL                                         :uhlí
 STR_CARGO_SINGULAR_MAIL                                         :pošty
 STR_CARGO_SINGULAR_OIL                                          :ropy
@@ -239,7 +241,7 @@ STR_TONS                                                        :tun
 STR_LITERS                                                      :litrů
 STR_ITEMS                                                       :kusů
 STR_CRATES                                                      :krabic
-STR_RES_OTHER                                                   :Jiné
+STR_RES_OTHER                                                   :jiné
 STR_NOTHING                                                     :
 
 # Colours, do not shuffle
@@ -368,7 +370,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Zobrazit
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Zobrazit obecné informace o společnosti
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Zobrazit grafy
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Zobrazit tabulku společností
-STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Průmysl
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Financovat konstrukci nového průmyslu, nebo zobrazit všechen průmysl
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Zobrazit seznam vlaků společnosti. Ctrl+Klik přepíná seznam skupin/vlaků
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Zobrazit seznam silničních vozidel společnosti. Ctrl+Klik přepíná seznam skupin/vozidel
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Zobrazit seznam lodí společnosti. Ctrl+Klik přepíná seznam skupin/lodí
@@ -1850,8 +1852,8 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :připojují se 
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :ručně
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :odpojování
-STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} jde hrát
-STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} jde hrát (klient č. {2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} se připojil do hry
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} se připojil do hry (klient č. {2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} se přidává ke společnosti č. {2:NUM}
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} se stává pozorovatelem
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} zakládá novou společnost (č. {2:NUM})
@@ -3302,6 +3304,7 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}Nastaven
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Změnit nastavení AI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Obnovit AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Zničit AI, znovu nahrát jeho skript a restartovat AI
+STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Rozeznat malá/velká písmena
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Pokračovat
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Odpauzujte a pokračujte v běhu AI
 
@@ -3597,6 +3600,7 @@ STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Zde nelz
 
 # Tree related errors
 STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... strom už tu je
+STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... nevhodný terén pro tento typ stromu
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Zde nelze vysadit strom...
 
 # Bridge related errors

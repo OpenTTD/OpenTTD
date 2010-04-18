@@ -786,7 +786,7 @@ STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK
 
 STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}Avrupa Birliği Karar Aldı!{}{}Artık ülkemizde para birimi olarak Euro kullanılacak!
 STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}Dünyada Kriz!{}{}Çok büyük bir ekonomik kriz yaşanacağı öngörüldü!
-STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}Kriz Atlatıldı!{}{}Ekonomi yine eski güzel günlerine döndü!
+STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}Kriz Atlatıldı!{}{}Ekonomi güçlendikçe ticaretin artması sanayicilere güven veriyor!
 
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} üretimi arttırdi!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}{INDUSTRY}nde yeni kömür tabakasi bulundu!{} Üretimin ikiye katlanması bekleniyor!
@@ -817,7 +817,7 @@ STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE
 STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} kayboldu
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE} aracının geçen yıl karı {CURRENCY} idi
 
-STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Kargo tipi değişikliğinin başarısız olması {VEHICLE} aracını durdurdu
+STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} durdu çünkü kargo tipi değişiklik emri başarısız oldu
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Otomatik yenileme {VEHICLE} için başarısız oldu{}{STRING}
 
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}{STRING} artık kullanılabilir!
@@ -1020,7 +1020,7 @@ STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Belediy
 ############ range for difficulty settings ends
 
 STR_NONE                                                        :Hiç
-STR_NUM_VERY_LOW                                                :Çok az
+STR_NUM_VERY_LOW                                                :Çok Az
 STR_NUM_LOW                                                     :Düşük
 STR_NUM_NORMAL                                                  :Normal
 STR_NUM_HIGH                                                    :Yüksek
@@ -1094,7 +1094,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Orijinal
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Gerçekçi
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Trenler için eğim dikliği {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Kara taşıtları için eğim dikliği %{ORANGE}{STRING}
-STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Tren ve gemilerin 90 derece dönmesini yasakla: {ORANGE}{STRING} {LTBLUE} (NPF gerektirir)
+STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Tren ve gemilerin 90 derece dönmesini yasakla: {ORANGE}{STRING} {LTBLUE} (OPF yok iken)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Yan yana yapılan tren istasyonlarını birleştir: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Doğrudan bitişik olmayan istasyonları birleştirme izni: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Geliştirilmiş yükleme algoritması kullan: {ORANGE}{STRING}
@@ -1410,13 +1410,13 @@ STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Oynanan
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Sihirli buldözer (normalde silinemeyen binaları siler): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tüneller kesişebilir: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Duraklama zamanında inşaat yap: {ORANGE}{STRING}
-STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Jetler kücük havalimanlarında düşmesin: {ORANGE} {STRING}
-STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}İklimi değiştir: {ORANGE} {STRING}
+STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Jetler küçük havalimanlarında (sıklıkla) düşmesin: {ORANGE}{STRING}
+STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}İklimi değiştir: {ORANGE}{STRING}
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Ilıman iklim
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Soğuk iklim
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Tropik iklim
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Oyun bahçesi
-STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Tarihi değiştir: {ORANGE} {DATE_SHORT}
+STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Tarihi değiştir: {ORANGE}{DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Üretim değerlerini değiştir: {ORANGE}{STRING}
 
 # Livery window
@@ -1690,7 +1690,7 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Şirket 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Oyuncu listesi
 STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Gözlemle
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Yeni Şirket
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Yeni şirket
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :At
@@ -1760,7 +1760,7 @@ STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :bağlantı kayb
 STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :protokol hatası
 STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :NewGRF uyuşmazlığı
 STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :izin verilmedi
-STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :ilginç paket alındı
+STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :geçersiz ya da beklenmeyen bir paket alındı
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :yanlış düzeltme
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :isim kullanımda
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :yanlış parola
@@ -1778,7 +1778,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Oyun hala durak
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Oyun hala duraklıyor ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Oyun hala duraklıyor ({STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Oyun devam ediyor ({STRING})
-STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :yeterince oyuncu yok
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :oyuncu sayısı
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :istemcilere bağlanıyor
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :el ile
 ############ End of leave-in-this-order
@@ -1890,7 +1890,7 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Elektrik
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Monoray Yapımı
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Maglev Yapımı
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Ray yap
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Demiryolu yap. Ctrl demiryolu inşa ederken silmeyi açar/kapatır
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Otoray modunda ray yap
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Tren garı yap (tren yapımı ve bakımı için)
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Rayı yerimine çevir
@@ -3530,6 +3530,7 @@ STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Buraya s
 
 # Tree related errors
 STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... burada zaten ağaç var
+STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... bu ağaç türü için yanlış arazi
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Buraya ağaç dikilemez...
 
 # Bridge related errors

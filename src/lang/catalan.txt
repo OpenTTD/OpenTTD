@@ -1760,7 +1760,7 @@ STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :connexió perdu
 STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :error de protocol
 STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :Diferència NewGRF
 STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :no autoritzat
-STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :s'ha rebut un paquet estrany
+STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :s'ha rebut un paquet invàlid o no esperat
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :revisió incorrecta
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :nom ja utilitzat
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :contrasenya incorrecta
@@ -1778,7 +1778,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Joc encara paus
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Joc encara pausat ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Joc encara pausat ({STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Joc despausat ({STRING})
-STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :no hi ha prou jugadors
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :nombre de jugadors
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :connectant clients
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :manual
 ############ End of leave-in-this-order
@@ -3530,6 +3530,7 @@ STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Aquí no
 
 # Tree related errors
 STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... aquí ja hi ha arbres
+STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... el terreny no és vàlid per aquest tipus d'arbre
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Aquí no es poden plantar arbres...
 
 # Bridge related errors

@@ -46,7 +46,7 @@ STR_CARGO_PLURAL_PAPER                                          :Karti
 STR_CARGO_PLURAL_GOLD                                           :Deheb
 STR_CARGO_PLURAL_WATER                                          :Ilma
 STR_CARGO_PLURAL_WHEAT                                          :Qamħ
-STR_CARGO_PLURAL_RUBBER                                         :Gomma
+STR_CARGO_PLURAL_RUBBER                                         :Lastku
 STR_CARGO_PLURAL_SUGAR                                          :Zokkor
 STR_CARGO_PLURAL_TOYS                                           :Ġugarelli
 STR_CARGO_PLURAL_CANDY                                          :Ħelu
@@ -80,7 +80,7 @@ STR_CARGO_SINGULAR_PAPER                                        :Karta
 STR_CARGO_SINGULAR_GOLD                                         :Deheb
 STR_CARGO_SINGULAR_WATER                                        :Ilma
 STR_CARGO_SINGULAR_WHEAT                                        :Qamħ
-STR_CARGO_SINGULAR_RUBBER                                       :Gomma
+STR_CARGO_SINGULAR_RUBBER                                       :Lastku
 STR_CARGO_SINGULAR_SUGAR                                        :Zokkor
 STR_CARGO_SINGULAR_TOY                                          :Ġugarell
 STR_CARGO_SINGULAR_CANDY                                        :Ħelwa
@@ -94,6 +94,21 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Xarba Karbonata
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
+STR_QUANTITY_COAL                                               :{WEIGHT} ta' faħam
+STR_QUANTITY_OIL                                                :{VOLUME} ta' żejt
+STR_QUANTITY_GRAIN                                              :{WEIGHT} ta' qamħ
+STR_QUANTITY_WOOD                                               :{WEIGHT} ta' injam
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT} ta' sorsi tal-ħadid
+STR_QUANTITY_STEEL                                              :{WEIGHT} ta' azzar
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} ta' sorsi tar-ram
+STR_QUANTITY_MAIZE                                              :{WEIGHT} ta' qamħirrun
+STR_QUANTITY_FRUIT                                              :{WEIGHT} ta' frott
+STR_QUANTITY_FOOD                                               :{WEIGHT} ta' ikel
+STR_QUANTITY_PAPER                                              :{WEIGHT} ta' karti
+STR_QUANTITY_WATER                                              :{VOLUME} ta' ilma
+STR_QUANTITY_WHEAT                                              :{WEIGHT} ta' qamħ
+STR_QUANTITY_RUBBER                                             :{VOLUME} ta' lastku
+STR_QUANTITY_SUGAR                                              :{WEIGHT} ta' zokkor
 
 # Two letter abbreviation of cargo name
 
@@ -818,6 +833,13 @@ STR_SV_STNAME_WAYPOINT                                          :{STRING}
 ##id 0x8000
 # Vehicle names
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FIZZY_DRINK_TRUCK         :Trakk tax-Xarbiet Karbonati
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_700                            :Darwin 700
+STR_VEHICLE_NAME_AIRCRAFT_FFP_HYPERDART_2                       :FFP Hyperdart 2
+STR_VEHICLE_NAME_AIRCRAFT_DINGER_200                            :Dinger 200
+STR_VEHICLE_NAME_AIRCRAFT_DINGER_1000                           :Dinger 1000
+STR_VEHICLE_NAME_AIRCRAFT_PLODDYPHUT_100                        :Ploddyphut 100
+STR_VEHICLE_NAME_AIRCRAFT_PLODDYPHUT_500                        :Ploddyphut 500
+STR_VEHICLE_NAME_AIRCRAFT_FLASHBANG_X1                          :Flashbang X1
 STR_VEHICLE_NAME_AIRCRAFT_JUGGERPLANE_M1                        :Juggerplane M1
 STR_VEHICLE_NAME_AIRCRAFT_FLASHBANG_WIZZER                      :Flashbang Wizzer
 STR_VEHICLE_NAME_AIRCRAFT_TRICARIO_HELICOPTER                   :Ħelikopter Tricario
@@ -831,8 +853,10 @@ STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
 STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
 STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
 
+STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 
 STR_UNKNOWN_STATION                                             :stazzjon mhux magħruf
+STR_DEFAULT_SIGN_NAME                                           :Sinjal
 STR_COMPANY_SOMEONE                                             :xi ħadd
 
 STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}
