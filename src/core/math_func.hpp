@@ -330,14 +330,20 @@ static FORCEINLINE uint CeilDiv(uint a, uint b)
 }
 
 /**
- * Computes round(a / b) for non-negative a and b.
+ * Computes round(a / b) for signed a and unsigned b.
  * @param a Numerator
  * @param b Denominator
  * @return Quotient, rounded to nearest
  */
-static FORCEINLINE uint RoundDiv(uint a, uint b)
+static FORCEINLINE int RoundDivSU(int a, uint b)
 {
-	return (a + b / 2) / b;
+	if (a > 0) {
+		/* 0.5 is rounded to 1 */
+		return (a + (int)b / 2) / (int)b;
+	} else {
+		/* -0.5 is rounded to 0 */
+		return (a - ((int)b - 1) / 2) / (int)b;
+	}
 }
 
 #endif /* MATH_FUNC_HPP */

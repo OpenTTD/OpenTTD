@@ -649,8 +649,8 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 	{
 		if (widget != ETTW_DOTS) return;
 
-		int center_x = RoundDiv(r.left + r.right, 2);
-		int center_y = RoundDiv(r.top + r.bottom, 2);
+		int center_x = RoundDivSU(r.left + r.right, 2);
+		int center_y = RoundDivSU(r.top + r.bottom, 2);
 
 		int n = _terraform_size * _terraform_size;
 		const int8 *coords = &_multi_terraform_coords[0][0];

@@ -550,7 +550,7 @@ static int DrawString(int left, int right, int top, char *str, const char *last,
 				break;
 
 			case SA_CENTER:
-				left  = RoundDiv(initial_right + 1 + initial_left - w, 2);
+				left  = RoundDivSU(initial_right + 1 + initial_left - w, 2);
 				/* right + 1 = left + w */
 				right = left + w - 1;
 				break;
@@ -823,7 +823,7 @@ int DrawStringMultiLine(int left, int right, int top, int bottom, StringID str, 
 		total_height = (num + 1) * mt;
 	}
 
-	int y = (align == SA_CENTER) ? RoundDiv(bottom + top - total_height, 2) : top;
+	int y = (align == SA_CENTER) ? RoundDivSU(bottom + top - total_height, 2) : top;
 	const char *src = buffer;
 
 	for (;;) {
