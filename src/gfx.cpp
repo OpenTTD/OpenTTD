@@ -550,8 +550,7 @@ static int DrawString(int left, int right, int top, char *str, const char *last,
 				break;
 
 			case SA_CENTER:
-				/* The second + 1 is to round to the closest number */
-				left  = (initial_right + 1 + initial_left - w + 1) / 2;
+				left  = RoundDiv(initial_right + 1 + initial_left - w, 2);
 				/* right + 1 = left + w */
 				right = left + w - 1;
 				break;
@@ -824,7 +823,7 @@ int DrawStringMultiLine(int left, int right, int top, int bottom, StringID str, 
 		total_height = (num + 1) * mt;
 	}
 
-	int y = (align == SA_CENTER) ? (bottom + top - total_height + 1) / 2 : top;
+	int y = (align == SA_CENTER) ? RoundDiv(bottom + top - total_height, 2) : top;
 	const char *src = buffer;
 
 	for (;;) {
@@ -1324,8 +1323,8 @@ byte GetDigitWidth(FontSize size)
 
 void ScreenSizeChanged()
 {
-	_dirty_bytes_per_line = (_screen.width + DIRTY_BLOCK_WIDTH - 1) / DIRTY_BLOCK_WIDTH;
-	_dirty_blocks = ReallocT<byte>(_dirty_blocks, _dirty_bytes_per_line * ((_screen.height + DIRTY_BLOCK_HEIGHT - 1) / DIRTY_BLOCK_HEIGHT));
+	_dirty_bytes_per_line = CeilDiv(_screen.width, DIRTY_BLOCK_WIDTH);
+	_dirty_blocks = ReallocT<byte>(_dirty_blocks, _dirty_bytes_per_line * CeilDiv(_screen.height, DIRTY_BLOCK_HEIGHT));
 
 	/* check the dirty rect */
 	if (_invalid_rect.right >= _screen.width) _invalid_rect.right = _screen.width;

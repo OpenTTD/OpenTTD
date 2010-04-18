@@ -1061,7 +1061,7 @@ static bool AircraftController(Aircraft *v)
 
 			/* Only start lowering when we're sufficiently close for a 1:1 glide */
 			if (delta >= t) {
-				z -= ((z - curz) + t - 1) / t;
+				z -= CeilDiv(z - curz, t);
 			}
 			if (z < curz) z = curz;
 		}

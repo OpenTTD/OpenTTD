@@ -1105,7 +1105,7 @@ struct StationViewWindow : public Window {
 		}
 		Rect s = {r.left + WD_FRAMERECT_LEFT, r.top + WD_FRAMERECT_TOP, r.right - WD_FRAMERECT_RIGHT, INT32_MAX};
 		int bottom = DrawCargoListText(cargo_mask, s, STR_STATION_VIEW_ACCEPTS_CARGO);
-		return (bottom - r.top - WD_FRAMERECT_TOP + FONT_HEIGHT_NORMAL - 1) / FONT_HEIGHT_NORMAL;
+		return CeilDiv(bottom - r.top - WD_FRAMERECT_TOP, FONT_HEIGHT_NORMAL);
 	}
 
 	/** Draw cargo ratings in the #SVW_ACCEPTLIST widget.
@@ -1131,7 +1131,7 @@ struct StationViewWindow : public Window {
 			DrawString(r.left + WD_FRAMERECT_LEFT + 6, r.right - WD_FRAMERECT_RIGHT - 6, y, STR_STATION_VIEW_CARGO_RATING);
 			y += FONT_HEIGHT_NORMAL;
 		}
-		return (y - r.top - WD_FRAMERECT_TOP + FONT_HEIGHT_NORMAL - 1) / FONT_HEIGHT_NORMAL;
+		return CeilDiv(y - r.top - WD_FRAMERECT_TOP, FONT_HEIGHT_NORMAL);
 	}
 
 	void HandleCargoWaitingClick(int row)

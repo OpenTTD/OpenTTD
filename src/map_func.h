@@ -12,6 +12,7 @@
 #ifndef MAP_FUNC_H
 #define MAP_FUNC_H
 
+#include "core/math_func.hpp"
 #include "tile_type.h"
 #include "map_type.h"
 #include "direction_func.h"
@@ -126,9 +127,8 @@ static inline uint MapMaxY()
 static inline uint ScaleByMapSize(uint n)
 {
 	/* Subtract 12 from shift in order to prevent integer overflow
-	 * for large values of n. It's safe since the min mapsize is 64x64.
-	 * Add (1<<4)-1 to round upwards. */
-	return ((n << (MapLogX() + MapLogY() - 12)) + (1 << 4) - 1) >> 4;
+	 * for large values of n. It's safe since the min mapsize is 64x64. */
+	return CeilDiv(n << (MapLogX() + MapLogY() - 12), 1 << 4);
 }
 
 
@@ -142,9 +142,8 @@ static inline uint ScaleByMapSize1D(uint n)
 {
 	/* Normal circumference for the X+Y is 256+256 = 1<<9
 	 * Note, not actually taking the full circumference into account,
-	 * just half of it.
-	 * (1<<9) - 1 is there to scale upwards. */
-	return ((n << MapLogX()) + (n << MapLogY()) + (1 << 9) - 1) >> 9;
+	 * just half of it. */
+	return CeilDiv((n << MapLogX()) + (n << MapLogY()), 1 << 9);
 }
 
 /**

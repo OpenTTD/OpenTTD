@@ -259,7 +259,7 @@ struct DepotWindow : Window {
 				DrawTrainImage(u, image_left + (rtl ? 0 : x_space), image_right - (rtl ? x_space : 0), sprite_y - 1, this->sel, free_wagon ? 0 : this->hscroll.GetPosition());
 
 				/* Number of wagons relative to a standard length wagon (rounded up) */
-				SetDParam(0, (u->tcache.cached_total_length + 7) / 8);
+				SetDParam(0, CeilDiv(u->tcache.cached_total_length, 8));
 				DrawString(rtl ? left + WD_FRAMERECT_LEFT : right - this->count_width, rtl ? left + this->count_width : right - WD_FRAMERECT_RIGHT, y + (this->resize.step_height - FONT_HEIGHT_SMALL) / 2, STR_TINY_BLACK_COMA, TC_FROMSTRING, SA_RIGHT); // Draw the counter
 				break;
 			}
@@ -692,7 +692,7 @@ struct DepotWindow : Window {
 			this->vscroll.SetCount(this->vehicle_list.Length() + this->wagon_list.Length() + 1);
 			this->hscroll.SetCount(max_width);
 		} else {
-			this->vscroll.SetCount((this->vehicle_list.Length() + this->hscroll.GetCapacity() - 1) / this->hscroll.GetCapacity());
+			this->vscroll.SetCount(CeilDiv(this->vehicle_list.Length(), this->hscroll.GetCapacity()));
 		}
 
 		/* Setup disabled buttons. */

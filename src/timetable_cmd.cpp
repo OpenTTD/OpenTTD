@@ -279,7 +279,7 @@ void UpdateVehicleTimetable(Vehicle *v, bool travelling)
 			/* Round the time taken up to the nearest day, as this will avoid
 			 * confusion for people who are timetabling in days, and can be
 			 * adjusted later by people who aren't. */
-			time_taken = (((time_taken - 1) / DAY_TICKS) + 1) * DAY_TICKS;
+			time_taken = CeilDiv(time_taken, DAY_TICKS) * DAY_TICKS;
 
 			ChangeTimetable(v, v->cur_order_index, time_taken, travelling);
 		}

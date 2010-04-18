@@ -318,4 +318,26 @@ static FORCEINLINE uint ToPercent16(uint i)
 int LeastCommonMultiple(int a, int b);
 int GreatestCommonDivisor(int a, int b);
 
+/**
+ * Computes ceil(a / b) for non-negative a and b.
+ * @param a Numerator
+ * @param b Denominator
+ * @return Quotient, rounded up
+ */
+static FORCEINLINE uint CeilDiv(uint a, uint b)
+{
+	return (a + b - 1) / b;
+}
+
+/**
+ * Computes round(a / b) for non-negative a and b.
+ * @param a Numerator
+ * @param b Denominator
+ * @return Quotient, rounded to nearest
+ */
+static FORCEINLINE uint RoundDiv(uint a, uint b)
+{
+	return (a + b / 2) / b;
+}
+
 #endif /* MATH_FUNC_HPP */

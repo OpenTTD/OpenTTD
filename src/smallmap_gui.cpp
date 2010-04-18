@@ -984,7 +984,7 @@ public:
 	 */
 	inline uint GetMaxLegendHeight() const
 	{
-		uint num_rows = max(this->min_number_of_fixed_rows, (_smallmap_industry_count + this->min_number_of_columns - 1) / this->min_number_of_columns);
+		uint num_rows = max(this->min_number_of_fixed_rows, CeilDiv(_smallmap_industry_count, this->min_number_of_columns));
 		return WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM + num_rows * FONT_HEIGHT_SMALL;
 	}
 
@@ -1010,7 +1010,7 @@ public:
 	uint GetLegendHeight(uint width) const
 	{
 		uint num_columns = this->GetNumberColumnsLegend(width);
-		uint num_rows = max(this->min_number_of_fixed_rows, (_smallmap_industry_count + num_columns - 1) / num_columns);
+		uint num_rows = max(this->min_number_of_fixed_rows, CeilDiv(_smallmap_industry_count, num_columns));
 		return WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM + num_rows * FONT_HEIGHT_SMALL;
 	}
 
@@ -1067,7 +1067,7 @@ public:
 
 			case SM_WIDGET_LEGEND: {
 				uint columns = this->GetNumberColumnsLegend(r.right - r.left + 1);
-				uint number_of_rows = max(this->map_type == SMT_INDUSTRY ? (_smallmap_industry_count + columns - 1) / columns : 0, this->min_number_of_fixed_rows);
+				uint number_of_rows = max(this->map_type == SMT_INDUSTRY ? CeilDiv(_smallmap_industry_count, columns) : 0, this->min_number_of_fixed_rows);
 				bool rtl = _dynlang.text_dir == TD_RTL;
 				uint y_org = r.top + WD_FRAMERECT_TOP;
 				uint x = rtl ? r.right - this->column_width - WD_FRAMERECT_RIGHT : r.left + WD_FRAMERECT_LEFT;
@@ -1195,7 +1195,7 @@ public:
 					const NWidgetBase *wi = this->GetWidget<NWidgetBase>(SM_WIDGET_LEGEND); // Label panel
 					uint line = (pt.y - wi->pos_y - WD_FRAMERECT_TOP) / FONT_HEIGHT_SMALL;
 					uint columns = this->GetNumberColumnsLegend(wi->current_x);
-					uint number_of_rows = max((_smallmap_industry_count + columns - 1) / columns, this->min_number_of_fixed_rows);
+					uint number_of_rows = max(CeilDiv(_smallmap_industry_count, columns), this->min_number_of_fixed_rows);
 					if (line >= number_of_rows) break;
 
 					bool rtl = _dynlang.text_dir == TD_RTL;

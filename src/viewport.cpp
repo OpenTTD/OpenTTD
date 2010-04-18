@@ -2478,7 +2478,7 @@ static void CalcRaildirsDrawstyle(TileHighlightData *thd, int x, int y, int meth
 			 * 2 tiles have a length of 1. To bias towards the ceiling we add
 			 * one before division. It feels more natural to count 3 lengths as 2 */
 			if ((b & HT_DIR_MASK) != HT_DIR_X && (b & HT_DIR_MASK) != HT_DIR_Y) {
-				distance = (distance + 1) / 2;
+				distance = CeilDiv(distance, 2);
 			}
 
 			params[index++] = distance;
