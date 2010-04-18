@@ -23,7 +23,6 @@
 #include "gfx_func.h"
 #include "sortlist_type.h"
 #include "core/geometry_func.hpp"
-#include <math.h>
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -240,39 +239,22 @@ protected:
 		int num_pos_grids;
 		int grid_size;
 
-		if (abs_lower == 0) {
-			if (abs_higher == 0) {
-				/* If both values are zero, show an empty graph. */
-				num_pos_grids = num_hori_lines / 2;
-				grid_size = 1;
-			} else {
-				/* The positive part of the graph can use all grids. */
-				num_pos_grids = num_hori_lines;
-				grid_size = ceil((float)abs_higher / num_hori_lines);
-			}
+		if (abs_lower != 0 || abs_higher != 0) {
+			/* The number of grids to reserve for the positive part is: */
+			num_pos_grids = RoundDivSU(abs_higher * num_hori_lines, abs_higher + abs_lower);
 
+			/* If there are any positive or negative values, force that they have at least one grid. */
+			if (num_pos_grids == 0 && abs_higher != 0) num_pos_grids++;
+			if (num_pos_grids == num_hori_lines && abs_lower != 0) num_pos_grids--;
+
+			/* Get the required grid size for each side and use the maximum one. */
+			int grid_size_higher = (abs_higher > 0) ? (int)(abs_higher + num_pos_grids - 1) / num_pos_grids : 0;
+			int grid_size_lower = (abs_lower > 0) ? (int)(abs_lower + num_hori_lines - num_pos_grids - 1) / (num_hori_lines - num_pos_grids) : 0;
+			grid_size = max(grid_size_higher, grid_size_lower);
 		} else {
-			if (abs_higher == 0) {
-				/* The negative part of the graph can use all grids. */
-				num_pos_grids = 0;
-				grid_size = ceil((float)abs_lower / num_hori_lines);
-			} else {
-				/* Get the smallest grid size required and the number of grids for each part of the graph. */
-				int min_pos_grids = 1;
-				int min_grid_size = INT_MAX;
-				for (num_pos_grids = 1; num_pos_grids <= num_hori_lines - 1; num_pos_grids++) {
-					/* Size required for each part of the graph given this number of grids. */
-					int pos_grid_size = ceil((float)abs_higher / num_pos_grids);
-					int neg_grid_size = ceil((float)abs_lower / (num_hori_lines - num_pos_grids));
-					grid_size = max(pos_grid_size, neg_grid_size);
-					if (grid_size < min_grid_size) {
-						min_pos_grids = num_pos_grids;
-						min_grid_size = grid_size;
-					}
-				}
-				grid_size = min_grid_size;
-				num_pos_grids = min_pos_grids;
-			}
+			/* If both values are zero, show an empty graph. */
+			num_pos_grids = num_hori_lines / 2;
+			grid_size = 1;
 		}
 
 		current_interval.highest = num_pos_grids * grid_size;
