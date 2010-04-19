@@ -3228,6 +3228,12 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}Definiç
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Alterar as definições da IA
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Recarregar IA
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Terminar a IA, recarrega o script e reinicia a IA
+STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Activar/desactivar paragem quando o registo da IA for igual à string de paragem
+STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Parar em:
+STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Parar em
+STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Quando a mensagem do registo da IA for igual a esta string, o jogo é posto em pausa
+STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Caso de igualdade
+STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Alternar o caso de igualdade quando se compara o resgisto da IA contra a string de paragem
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Continuar
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Sair da pausa e continuar a IA
 

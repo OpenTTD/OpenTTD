@@ -1954,7 +1954,7 @@ STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :veza je izgublj
 STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :protokolna greška
 STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :neusaglašenost NewGRF-a
 STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :neovlašćeno
-STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :primljen nepoznat paket
+STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :primljen neispravan ili nepoznat paket
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :pogrešna revizija
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :ime se već koristi
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :pogrešna lozinka
@@ -3734,6 +3734,7 @@ STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Akvadukt
 
 # Tree related errors
 STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... drvo je već na tom mestu
+STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... teren neodgovara vrsti drveća
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Ovde je nemoguće posaditi drvo...
 
 # Bridge related errors

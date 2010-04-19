@@ -174,21 +174,21 @@ STR_QUANTITY_N_A                                                :Ni na voljo
 STR_ABBREV_NOTHING                                              :
 STR_ABBREV_PASSENGERS                                           :{TINYFONT}PO
 STR_ABBREV_COAL                                                 :{TINYFONT}PR
-STR_ABBREV_MAIL                                                 :{TINYFONT}PS
+STR_ABBREV_MAIL                                                 :{TINYFONT}PŠ
 STR_ABBREV_OIL                                                  :{TINYFONT}NF
-STR_ABBREV_LIVESTOCK                                            :{TINYFONT}ZV
+STR_ABBREV_LIVESTOCK                                            :{TINYFONT}ŽV
 STR_ABBREV_GOODS                                                :{TINYFONT}IZ
-STR_ABBREV_GRAIN                                                :{TINYFONT}ZT
+STR_ABBREV_GRAIN                                                :{TINYFONT}ŽT
 STR_ABBREV_WOOD                                                 :{TINYFONT}LS
-STR_ABBREV_IRON_ORE                                             :{TINYFONT}ZR
+STR_ABBREV_IRON_ORE                                             :{TINYFONT}ŽR
 STR_ABBREV_STEEL                                                :{TINYFONT}JK
-STR_ABBREV_VALUABLES                                            :{TINYFONT}DR
+STR_ABBREV_VALUABLES                                            :{TINYFONT}VR
 STR_ABBREV_COPPER_ORE                                           :{TINYFONT}BK
 STR_ABBREV_MAIZE                                                :{TINYFONT}KZ
 STR_ABBREV_FRUIT                                                :{TINYFONT}SJ
 STR_ABBREV_DIAMONDS                                             :{TINYFONT}DM
-STR_ABBREV_FOOD                                                 :{TINYFONT}ZI
-STR_ABBREV_PAPER                                                :{TINYFONT}PR
+STR_ABBREV_FOOD                                                 :{TINYFONT}HR
+STR_ABBREV_PAPER                                                :{TINYFONT}PA
 STR_ABBREV_GOLD                                                 :{TINYFONT}ZL
 STR_ABBREV_WATER                                                :{TINYFONT}VO
 STR_ABBREV_WHEAT                                                :{TINYFONT}PN
@@ -262,7 +262,7 @@ STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Vnesi vr
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Vnesi besedni ključ, po katerem se bo filtriral seznam
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtriraj:
 
-STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Izberi nacin sortiranja (padajoče/naraščajoce)
+STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Izberi način sortiranja (padajoče/naraščajoce)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Izberi kriterij za sortiranje
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Izberi način filtriranja
 STR_BUTTON_SORT_BY                                              :{BLACK}Sortiraj po
@@ -334,7 +334,7 @@ STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pavza
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Hitro naprej
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Možnosti
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Shrani igro, zapusti igro, izhod
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Prikaži zemljevid
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Prikaži zemljevid, dodatno okno ali seznam znakov
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Prikaži imenik mest
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Prikaži subvencije
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Prikaži seznam postaj podjetja
