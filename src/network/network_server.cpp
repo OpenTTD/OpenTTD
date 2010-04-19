@@ -1703,7 +1703,8 @@ void NetworkServerShowStatusToConsole()
 {
 	static const char * const stat_str[] = {
 		"inactive",
-		"authorizing",
+		"authorizing (server password)",
+		"authorizing (company password)",
 		"authorized",
 		"waiting",
 		"loading map",
@@ -1711,6 +1712,7 @@ void NetworkServerShowStatusToConsole()
 		"ready",
 		"active"
 	};
+	assert_compile(lengthof(stat_str) == STATUS_END);
 
 	NetworkClientSocket *cs;
 	FOR_ALL_CLIENT_SOCKETS(cs) {
