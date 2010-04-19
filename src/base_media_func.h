@@ -25,12 +25,13 @@ template <class Tbase_set> /* static */ Tbase_set *BaseMedia<Tbase_set>::availab
 #define fetch_metadata(name) \
 	item = metadata->GetItem(name, false); \
 	if (item == NULL || StrEmpty(item->value)) { \
-		DEBUG(grf, 0, "Base " SET_TYPE "set detail loading: %s field missing", name); \
+		DEBUG(grf, 0, "Base " SET_TYPE "set detail loading: %s field missing.", name); \
+		DEBUG(grf, 0, "  Is %s readable for the user running OpenTTD?", full_filename); \
 		return false; \
 	}
 
 template <class T, size_t Tnum_files, Subdirectory Tsubdir>
-bool BaseSet<T, Tnum_files, Tsubdir>::FillSetDetails(IniFile *ini, const char *path, bool allow_empty_filename)
+bool BaseSet<T, Tnum_files, Tsubdir>::FillSetDetails(IniFile *ini, const char *path, const char *full_filename, bool allow_empty_filename)
 {
 	memset(this, 0, sizeof(*this));
 
@@ -70,7 +71,7 @@ bool BaseSet<T, Tnum_files, Tsubdir>::FillSetDetails(IniFile *ini, const char *p
 		/* Find the filename first. */
 		item = files->GetItem(BaseSet<T, Tnum_files, Tsubdir>::file_names[i], false);
 		if (item == NULL || (item->value == NULL && !allow_empty_filename)) {
-			DEBUG(grf, 0, "No " SET_TYPE " file for: %s", BaseSet<T, Tnum_files, Tsubdir>::file_names[i]);
+			DEBUG(grf, 0, "No " SET_TYPE " file for: %s (in %s)", BaseSet<T, Tnum_files, Tsubdir>::file_names[i], full_filename);
 			return false;
 		}
 
@@ -88,7 +89,7 @@ bool BaseSet<T, Tnum_files, Tsubdir>::FillSetDetails(IniFile *ini, const char *p
 		/* Then find the MD5 checksum */
 		item = md5s->GetItem(filename, false);
 		if (item == NULL) {
-			DEBUG(grf, 0, "No MD5 checksum specified for: %s", filename);
+			DEBUG(grf, 0, "No MD5 checksum specified for: %s (in %s)", filename, full_filename);
 			return false;
 		}
 		char *c = item->value;
@@ -101,7 +102,7 @@ bool BaseSet<T, Tnum_files, Tsubdir>::FillSetDetails(IniFile *ini, const char *p
 			} else if ('A' <= *c && *c <= 'F') {
 				j = *c - 'A' + 10;
 			} else {
-				DEBUG(grf, 0, "Malformed MD5 checksum specified for: %s", filename);
+				DEBUG(grf, 0, "Malformed MD5 checksum specified for: %s (in %s)", filename, full_filename);
 				return false;
 			}
 			if (i % 2 == 0) {
@@ -155,7 +156,7 @@ bool BaseMedia<Tbase_set>::AddFile(const char *filename, size_t basepath_length)
 		*path = '\0';
 	}
 
-	if (set->FillSetDetails(ini, path)) {
+	if (set->FillSetDetails(ini, path, filename)) {
 		Tbase_set *duplicate = NULL;
 		for (Tbase_set *c = BaseMedia<Tbase_set>::available_sets; c != NULL; c = c->next) {
 			if (strcmp(c->name, set->name) == 0 || c->shortname == set->shortname) {
