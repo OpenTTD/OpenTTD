@@ -99,6 +99,7 @@ struct GRFFile {
 	struct SpriteGroup **spritegroups;
 
 	uint sound_offset;
+	uint16 num_sounds;
 
 	StationSpec **stations;
 	HouseSpec **housespec;

@@ -2082,21 +2082,21 @@ static ChangeInfoResult SoundEffectChangeInfo(uint sid, int numinfo, int prop, B
 		return CIR_INVALID_ID;
 	}
 
-	for (int i = 0; i < numinfo; i++) {
-		SoundID sound = sid + i + _cur_grffile->sound_offset - ORIGINAL_SAMPLE_COUNT;
+	if (sid + numinfo - ORIGINAL_SAMPLE_COUNT >= _cur_grffile->num_sounds) {
+		grfmsg(1, "SoundEffectChangeInfo: Attemting to change undefined sound effect (%u), max (%u). Ignoring.", sid + numinfo, ORIGINAL_SAMPLE_COUNT + _cur_grffile->num_sounds);
+		return CIR_INVALID_ID;
+	}
 
-		if (sound >= GetNumSounds()) {
-			grfmsg(1, "SoundEffectChangeInfo: Sound %d not defined (max %d)", sound, GetNumSounds());
-			return CIR_INVALID_ID;
-		}
+	for (int i = 0; i < numinfo; i++) {
+		SoundEntry *sound = GetSound(sid + i + _cur_grffile->sound_offset - ORIGINAL_SAMPLE_COUNT);
 
 		switch (prop) {
 			case 0x08: // Relative volume
-				GetSound(sound)->volume = buf->ReadByte();
+				sound->volume = buf->ReadByte();
 				break;
 
 			case 0x09: // Priority
-				GetSound(sound)->priority = buf->ReadByte();
+				sound->priority = buf->ReadByte();
 				break;
 
 			case 0x0A: { // Override old sound
@@ -2105,11 +2105,10 @@ static ChangeInfoResult SoundEffectChangeInfo(uint sid, int numinfo, int prop, B
 				if (orig_sound >= ORIGINAL_SAMPLE_COUNT) {
 					grfmsg(1, "SoundEffectChangeInfo: Original sound %d not defined (max %d)", orig_sound, ORIGINAL_SAMPLE_COUNT);
 				} else {
-					SoundEntry *new_sound = GetSound(sound);
 					SoundEntry *old_sound = GetSound(orig_sound);
 
 					/* Literally copy the data of the new sound over the original */
-					*old_sound = *new_sound;
+					*old_sound = *sound;
 				}
 			} break;
 
@@ -5655,7 +5654,10 @@ static void GRFSound(ByteReader *buf)
 	_grf_data_blocks = num;
 	_grf_data_type   = GDT_SOUND;
 
-	if (_cur_grffile->sound_offset == 0) _cur_grffile->sound_offset = GetNumSounds();
+	if (_cur_grffile->sound_offset == 0) {
+		_cur_grffile->sound_offset = GetNumSounds();
+		_cur_grffile->num_sounds = num;
+	}
 }
 
 /* Action 0x11 (SKIP) */
@@ -5683,7 +5685,7 @@ static void ImportGRFSound(ByteReader *buf)
 		return;
 	}
 
-	if (file->sound_offset + sound_id >= GetNumSounds()) {
+	if (sound_id >= file->num_sounds) {
 		grfmsg(1, "ImportGRFSound: Sound effect %d is invalid", sound_id);
 		return;
 	}
