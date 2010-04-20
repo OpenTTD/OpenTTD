@@ -2082,7 +2082,7 @@ static ChangeInfoResult SoundEffectChangeInfo(uint sid, int numinfo, int prop, B
 		return CIR_INVALID_ID;
 	}
 
-	if (sid + numinfo - ORIGINAL_SAMPLE_COUNT >= _cur_grffile->num_sounds) {
+	if (sid + numinfo - ORIGINAL_SAMPLE_COUNT > _cur_grffile->num_sounds) {
 		grfmsg(1, "SoundEffectChangeInfo: Attemting to change undefined sound effect (%u), max (%u). Ignoring.", sid + numinfo, ORIGINAL_SAMPLE_COUNT + _cur_grffile->num_sounds);
 		return CIR_INVALID_ID;
 	}
