@@ -66,9 +66,11 @@ enum RoadBits {
 	ROAD_S    = ROAD_SE | ROAD_SW,   ///< Road at the two southern edges
 	ROAD_W    = ROAD_NW | ROAD_SW,   ///< Road at the two western edges
 
-	ROAD_ALL  = ROAD_X  | ROAD_Y     ///< Full 4-way crossing
+	ROAD_ALL  = ROAD_X  | ROAD_Y,    ///< Full 4-way crossing
+
+	ROAD_END  = ROAD_ALL + 1         ///< Out-of-range roadbits, used for iterations
 };
 DECLARE_ENUM_AS_BIT_SET(RoadBits)
-template <> struct EnumPropsT<RoadBits> : MakeEnumPropsT<RoadBits, byte, ROAD_NONE, ROAD_ALL, ROAD_NONE, 4> {};
+template <> struct EnumPropsT<RoadBits> : MakeEnumPropsT<RoadBits, byte, ROAD_NONE, ROAD_END, ROAD_NONE, 4> {};
 
 #endif /* ROAD_TYPE_H */
