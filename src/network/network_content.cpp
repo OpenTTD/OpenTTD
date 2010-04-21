@@ -373,19 +373,38 @@ static bool GunzipFile(const ContentInfo *ci)
 
 	if (fin == NULL || fout == NULL) {
 		ret = false;
-		goto exit;
-	}
-
-	byte buff[8192];
-	while (!gzeof(fin)) {
-		int read = gzread(fin, buff, sizeof(buff));
-		if (read < 0 || (size_t)read != fwrite(buff, 1, read, fout)) {
-			ret = false;
-			break;
+	} else {
+		byte buff[8192];
+		while (1) {
+			int read = gzread(fin, buff, sizeof(buff));
+			if (read == 0) {
+				/* If gzread() returns 0, either the end-of-file has been
+				 * reached or an underlying read error has occurred.
+				 *
+				 * gzeof() can't be used, because:
+				 * 1.2.5 - it is safe, 1 means 'everything was OK'
+				 * 1.2.3.5, 1.2.4 - 0 or 1 is returned 'randomly'
+				 * 1.2.3.3 - 1 is returned for truncated archive
+				 *
+				 * So we use gzerror(). When proper end of archive
+				 * has been reached, then:
+				 * errnum == Z_STREAM_END in 1.2.3.3,
+				 * errnum == 0 in 1.2.4 and 1.2.5 */
+				int errnum;
+				gzerror(fin, &errnum);
+				if (errnum != 0 && errnum != Z_STREAM_END) ret = false;
+				break;
+			}
+			if (read < 0 || (size_t)read != fwrite(buff, 1, read, fout)) {
+				/* If gzread() returns -1, there was an error in archive */
+				ret = false;
+				break;
+			}
+			/* DO NOT DO THIS! It will fail to detect broken archive with 1.2.3.3!
+			 * if (read < sizeof(buff)) break; */
 		}
 	}
 
-exit:
 	if (fin != NULL) {
 		/* Closes ftmp too! */
 		gzclose(fin);

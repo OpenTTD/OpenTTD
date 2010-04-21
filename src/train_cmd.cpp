@@ -481,7 +481,7 @@ int Train::GetCurrentMaxSpeed() const
 				int st_max_speed = 120;
 
 				int delta_v = this->cur_speed / (distance_to_go + 1);
-				if (this->max_speed > (this->cur_speed - delta_v)) {
+				if (max_speed > (this->cur_speed - delta_v)) {
 					st_max_speed = this->cur_speed - (delta_v / 10);
 				}
 
