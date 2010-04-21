@@ -585,6 +585,10 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Vállala
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Rakományok szállítási díja
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}ÚTON TÖLTÖTT NAPOK
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Fizetség 10 egységnyi (vagy 10000 liter) áru 20 négyzet távolságra való szállítsa esetén
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}Bekapcsol mind
+STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT}{BLACK}Kikapcsol mind
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK})Összes áru megjelenítése a rakományok szállítási díja grafikonon
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Ne mutasson árut a rakományok szállítási díja grafikonon
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Az adott áru grafikonjának mutatása be/ki
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 
@@ -752,7 +756,7 @@ STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINYFONT}{BLAC
 STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLACK}Sivatag
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}Hó
 
-STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Városnevek ki/be
+STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Városnevek be/ki
 STR_SMALLMAP_CENTER                                             :{BLACK}A térkép közepét a jelenlegi helyre állítja
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
@@ -761,7 +765,7 @@ STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Bekapcso
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Mutasd a magasságot
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL                                :{BLACK}Ne mutasd a gazdasági létesítményeket a térképen
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL                                 :{BLACK}Mutasd az összes gazdasági létesítményt a térképen
-STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Magasságtérkép ki/bekapcsolása
+STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Magasságtérkép be/kikapcsolása
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Utolsó üzenet vagy újsághír megmutatása
@@ -2032,7 +2036,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Buszmeg�
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Villamos-utasváró építése. A Ctrl lenyomásával egyesítheted más állomásokkal
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Teherautó-rakodóhely építése. A Ctrl lenyomásával egyesítheted más állomásokkal
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Tehervillamos-állomás építése. A Ctrl lenyomásával egyesítheted más állomásokkal
-STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Egyirányú utak ki/be kapcsolása
+STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Egyirányú utak be/kikapcsolása
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Közúti híd építése
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Villamos-híd építése
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Közúti alagút építése
@@ -3288,6 +3292,14 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}MI beál
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}MI beállításainak módosítása
 STR_AI_DEBUG_RELOAD                                             :{BLACK}MI újratöltése
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}MI kilövése, szkript újratöltése, MI újraindítása
+STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Megállítás be/kikapcsolása, ha az AI naplóbejegyzés megegyezik a megállítási sorral
+STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Megállítás:
+STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Megállítás
+STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Ha egy MI naplóbejegyzés megegyezik ezzel a sorral, a játék szünet módba kapcsol.
+STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Egyezés
+STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}AI naplóbejegyzések a megállítási sorral való összehasonlításnál szóegyezés be/ki
+STR_AI_DEBUG_CONTINUE                                           :{BLACK}Folytatás
+STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Játék folytatása és MI visszakapcsolása
 
 STR_ERROR_NO_AI                                                 :{WHITE}Az OpenTTD MI támogatás nélül lett fordítva...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... nincs elérhető MI!
@@ -3581,6 +3593,7 @@ STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Ide nem 
 
 # Tree related errors
 STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... már van itt fa
+STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... rossz tereptípus a fafajtának
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Ide nem lehet fát ültetni...
 
 # Bridge related errors
@@ -3591,6 +3604,7 @@ STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Hídfők
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}A híd túl alacsony a terepre
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}A kezdetének és a végének egy vonalban kell lennie
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... a híd mindkét végének szárazföldön kell lennie
+STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... a híd túl hosszú
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Nem áshatsz ide alagutat...

@@ -1472,7 +1472,7 @@ STR_FACE_LOAD                                                   :{BLACK}Ambil si
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Baca simpanan wajah terpilih
 STR_FACE_LOAD_DONE                                              :{WHITE}Wajah favorit anda telah dimuat kembali dari berkas config OpenTTD.
 STR_FACE_FACECODE                                               :{BLACK}Wajah pemain no.
-STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Lihat/ubah nomer wajah pemain
+STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Lihat/ubah nomor wajah pemain
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}Lihat/ubah nomer wajah pemain
 STR_FACE_FACECODE_SET                                           :{WHITE}Kode jumlah wajah baru telah diatur.
 STR_FACE_FACECODE_ERR                                           :{WHITE}Tidak dapat mengubah nomer wajah pemain - haruslah angka antara 0 dan 4,294,967,295!
@@ -1758,7 +1758,7 @@ STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :koneksi terputu
 STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :Kesalahan protokol
 STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :NewGRF tidak cocok
 STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :tidak sah
-STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :menerima paket aneh
+STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :menerima paket yang tidak sesuai
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :revisi salah
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :nama sudah digunakan
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :kata kunci salah
@@ -1776,7 +1776,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Permainan masih
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Permainan masih dihentikan ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Permainan masih dihentikan ({STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Permainan dilanjutkan ({STRING})
-STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :pemain tidak cukup
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :jumlah pemain
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :menghubungkan ke klien
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :manual
 ############ End of leave-in-this-order

@@ -1760,7 +1760,7 @@ STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :sambandet vart 
 STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :protokollfeil
 STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :NewGRF-filer passar ikkje saman
 STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :ikkje autorisert
-STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :mottok merkeleg pakke
+STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :mottok ugyldig eller uventa pakke
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :feil versjon
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :namnet er brukt av nokon andre
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :feil passord for til spelet
