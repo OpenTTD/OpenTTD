@@ -1,3 +1,12 @@
+1.0.1-RC2 (2010-04-22)
+------------------------------------------------------------------------
+- Fix: Desync when joining the game because of using the wrong variable (r19687)
+- Fix: Truncated archives were not detected when using zlib 1.2.3. This also fixes zlib 1.2.4 compatibility, zlib 1.2.5 is bugfree (r19686)
+- Fix: Towns with 3x3 and 2x2 road layouts could not expand (r19683)
+- Fix: When joining a MP game all clients with company ID > 0 would be shown as if they were a spectator [FS#3775] (r19680)
+- Fix: Client status was shown incorrect in the console (r19678)
+
+
 1.0.1-RC1 (2010-04-17)
 ------------------------------------------------------------------------
 - Feature: [NewGRF] Support for extended text code 0x9A 11, print qword (r19570)
