@@ -1854,7 +1854,7 @@ STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :Η σύνδεσ
 STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :Λάθος πρωτόκολλου
 STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :Αναντιστοιχία NewGRF
 STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :Μη εξουσιοδοτημένο
-STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :λήψη περίεργων πακέτων
+STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :έγινε λήψη εσφαλμένου ή αναπάντεχου πακέτου
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :λάθος έκδοση
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :το όνομα χρησιμοποιείται
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :λάθος κωδικός
@@ -1872,7 +1872,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Παιχνίδ�
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Παιχνίδι ακόμα σε παύση ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Παιχνίδι ακόμα σε παύση ({STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Συνεχίση παιχνιδιού ({STRING})
-STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :μη επαρκείς παίχτες
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :αριθμός παιχτών
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :σύνδεση πελατών
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :χειροκίνητο
 ############ End of leave-in-this-order
@@ -3329,7 +3329,12 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}Ρυθμ
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Αλλαγή των ρυθμίσεων του AI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Ξαναφορτώση AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Τερματίστε το AI, ξαναφορτώστε το σενάριο και ξαναεκκινήστε το AI
-STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Όταν ένα αρχείο καταγραφής Al ταιριάζει με αυτό, τότε το παιχνίδι σταματά
+STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Ενεργοποίηση/Απενεργοποίηση break όταν μια καταχώρηση του ΑΙ ταιριάζει το break string
+STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Break στο:
+STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Break στο
+STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Εάν υπάρξει ταύτιση του παρόντος string με μια καταχώρηση από τα μηνύματα του ΑΙ, τότε γίνεται παύση του παιγνιδιού.
+STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Ταύτιση
+STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Μεταβολή της ταύτισης όταν η γίνεται η σύγκριση με μια καταχώρηση του ΑΙ με ένα break string
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Συνέχεια
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Συνέχιση του παιχνιδιού και της λειτουργίας του AI
 

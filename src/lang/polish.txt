@@ -903,6 +903,8 @@ STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLAC
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Oplata za przewóz 10 jednostek (lub 10,000 litrów) ładunku na odległość 20 pól
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}Włącz wszystko
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT}{BLACK}Wyłącz wszystko
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Wyświetl wszystkie ładunki na wykresie cen za ładunek
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Nie wyświetlaj ładunków na wykresie cen za ładunek
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Przełącznik wykresu ładunku wł./wył.
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 
@@ -1602,7 +1604,7 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Pokaż 
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Pozostaw aktywne narzędzia do budowania po ich użyciu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Pogrupuj wydatki w oknie finsnasów firmy: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Pokaż okno narzędzi niedostępnych pojazdów: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Pokaż okno narzędzi budowy, nawet dla niedostępnych pojazdów: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Maks. liczba pociągów na gracza: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Maks. liczba samochodów na gracza: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Maks. liczba samolotów na gracza: {ORANGE}{STRING}
@@ -1642,7 +1644,7 @@ STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :sygnalizatory b
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :sygnalizatory jazdy
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :sygnalizatory jazdy - jednokierunkowe
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Przełączaj typy sygnalizatorów: {ORANGE}{STRING}
-STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :tylko sygnalizatory bloku
+STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :tylko sygnalizatory blokowe
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :tylko sygnalizatory jazdy
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :wszystkie
 
@@ -2155,7 +2157,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Gra nadal wstrz
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Gra nadal wstrzymana ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Gra nadal wstrzymana ({STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Gra wznowiona ({STRING})
-STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :za mało graczy
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :ilość graczy
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :łączenie klientów
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :ręczny
 ############ End of leave-in-this-order
@@ -2508,6 +2510,7 @@ STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Współr
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Zbudowano: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Klasa stacji: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Typ stacji: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Nazwa pola lotniska: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Akceptowany ładunek: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
@@ -2762,6 +2765,7 @@ STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Unknown Action 
 STR_NEWGRF_ERROR_INVALID_ID                                     :Attempt to use invalid ID.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} zawiera uszkodzoną teksturę. Wszystkie uszkodzone tekstury będą pokazane jako czerwony znak zapytania (?).
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Zawiera wiele wpisów Action 8
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Odczyt poza koniec pseudo obrazków.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Uwaga!
@@ -3610,6 +3614,12 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}Ustawien
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Zmień ustawienia SI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Przeładuj SI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Zabij SI, przeładuj skrypt i zrestartuj SI
+STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Włącz/wyłącz przerwanie, kiedy wiadomość AI zgadza się z wiadomością przerywającą
+STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Zatrzymaj gdy:
+STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Zatrzymaj gdy
+STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Kiedy wiadomość AI zgadza się, gra zostaje wstrzymana.
+STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Uwzględnij wielkość
+STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Przełącz uwzględnianie wielkości liter przy porównywaniu wyrazu przerywającego
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Kontynuuj
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Odpauzowanie i kontynuuowanie SI
 
@@ -3703,6 +3713,7 @@ STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Ostrzeż
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Nie zaleca się zbyt dużej zmiany wielkości mapy źródłowej. Kontynuować tworzenie?
 
 # Soundset messages
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Znaleziono tylko podstawowy schemat dzwiękowy. Jeśli chcesz mieć pełny dzwięk, zainstaluj inny schemat dzwiękowy używając menadzera pobierania.
 
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Zrzut ekranu zapisany na dysk z powodzeniem '{STRING}'
@@ -3770,7 +3781,7 @@ STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... zbyt
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... nie ma więcej miejsca na mapie
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Miasto nie będzie budować dróg. Możesz zezwolić na budowę dróg poprzez Ustawienia zaawansowane->Ekonomia->Miasta.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Trwają roboty drogowe
-STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Nie można usunąć tego miasta...{}Stacja lub zajezdnia przynależy do miasta lub obszar miasta nie może być usunięty
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Nie można usunąć tego miasta...{}Stacja lub zajezdnia przynależy do tego miasta lub obszar miasta nie może być usunięty
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... zbyt wiele przedsiębiorstw
@@ -3904,6 +3915,7 @@ STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Nie moż
 
 # Tree related errors
 STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... drzewo już tu jest
+STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... niewłaściwy teren pod drzewo
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Nie można posadzić drzewa...
 
 # Bridge related errors
