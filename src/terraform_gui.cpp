@@ -333,19 +333,19 @@ Window *ShowTerraformToolbar(Window *link)
 {
 	if (!Company::IsValidID(_local_company)) return NULL;
 
-	Window *w = AllocateWindowDescFront<TerraformToolbarWindow>(&_terraform_desc, 0);
-	if (link == NULL) return w;
-
-	if (w == NULL) {
-		w = FindWindowById(WC_SCEN_LAND_GEN, 0);
-		if (w == NULL) return NULL;
-	} else {
-		w->top -= w->height;
-		w->SetDirty();
+	Window *w;
+	if (link == NULL) {
+		w = AllocateWindowDescFront<TerraformToolbarWindow>(&_terraform_desc, 0);
+		return w;
 	}
 
-	/* Align the terraform toolbar under the main toolbar and put the linked
-	 * toolbar to left/right of it */
+	/* Delete the terraform toolbar to place it again. */
+	DeleteWindowById(WC_SCEN_LAND_GEN, 0, true);
+	w = AllocateWindowDescFront<TerraformToolbarWindow>(&_terraform_desc, 0);
+	/* Align the terraform toolbar under the main toolbar. */
+	w->top -= w->height;
+	w->SetDirty();
+	/* Put the linked toolbar to the left / right of it. */
 	link->left = w->left + (_dynlang.text_dir == TD_RTL ? w->width : -link->width);
 	link->top  = w->top;
 	link->SetDirty();
