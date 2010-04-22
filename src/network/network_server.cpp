@@ -656,7 +656,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMPANY_INFO)
 
 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_NEWGRFS_CHECKED)
 {
-	if (cs->status != STATUS_INACTIVE) {
+	if (cs->status != STATUS_NEWGRFS_CHECK) {
 		/* Illegal call, return error and ignore the packet */
 		return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
 	}
@@ -739,7 +739,10 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 	/* Make sure companies to which people try to join are not autocleaned */
 	if (Company::IsValidID(playas)) _network_company_states[playas].months_empty = 0;
 
+	cs->status = STATUS_NEWGRFS_CHECK;
+
 	if (_grfconfig == NULL) {
+		/* Behave as if we received PACKET_CLIENT_NEWGRFS_CHECKED */
 		return RECEIVE_COMMAND(PACKET_CLIENT_NEWGRFS_CHECKED)(cs, NULL);
 	}
 
@@ -1703,6 +1706,7 @@ void NetworkServerShowStatusToConsole()
 {
 	static const char * const stat_str[] = {
 		"inactive",
+		"checking NewGRFs",
 		"authorizing (server password)",
 		"authorizing (company password)",
 		"authorized",

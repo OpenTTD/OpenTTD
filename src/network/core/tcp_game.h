@@ -77,6 +77,7 @@ struct CommandPacket;
 /** Status of a client */
 enum ClientStatus {
 	STATUS_INACTIVE,     ///< The client is not connected nor active
+	STATUS_NEWGRFS_CHECK, ///< The client is checking NewGRFs
 	STATUS_AUTH_GAME,    ///< The client is authorizing with game (server) password
 	STATUS_AUTH_COMPANY, ///< The client is authorizing with company password
 	STATUS_AUTHORIZED,   ///< The client is authorized
