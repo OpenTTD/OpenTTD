@@ -322,7 +322,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_MAP)
 	 *    nothing
 	 */
 
-	static FILE *file_pointer;
+	static FILE *file_pointer = NULL;
 	static uint sent_packets; // How many packets we did send succecfully last time
 
 	if (cs->status < STATUS_AUTHORIZED) {
@@ -337,9 +337,12 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_MAP)
 		/* Make a dump of the current game */
 		if (SaveOrLoad(filename, SL_SAVE, AUTOSAVE_DIR) != SL_OK) usererror("network savedump failed");
 
-		file_pointer = FioFOpenFile(filename, "rb", AUTOSAVE_DIR);
-		fseek(file_pointer, 0, SEEK_END);
+		if (file_pointer != NULL) fclose(file_pointer);
 
+		file_pointer = FioFOpenFile(filename, "rb", AUTOSAVE_DIR);
+		if (file_pointer == NULL) usererror("network savedump failed - could not open just saved dump");
+
+		fseek(file_pointer, 0, SEEK_END);
 		if (ftell(file_pointer) == 0) usererror("network savedump failed - zero sized savegame?");
 
 		/* Now send the _frame_counter and how many packets are coming */
@@ -382,6 +385,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_MAP)
 				 *  to send it is ready (maybe that happens like never ;)) */
 				cs->status = STATUS_DONE_MAP;
 				fclose(file_pointer);
+				file_pointer = NULL;
 
 				NetworkClientSocket *new_cs;
 				bool new_map_client = false;
