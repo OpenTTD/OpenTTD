@@ -362,7 +362,6 @@ struct RefitWindow : public Window {
 	int sel;              ///< Index in refit options, \c -1 if nothing is selected.
 	RefitOption *cargo;   ///< Refit option selected by \v sel.
 	RefitList list;       ///< List of cargo types available for refitting.
-	uint length;          ///< For trains, the number of vehicles.
 	VehicleOrderID order; ///< If not #INVALID_VEH_ORDER_ID, selection is part of a refit order (rather than execute directly).
 
 	RefitWindow(const WindowDesc *desc, const Vehicle *v, VehicleOrderID order) : Window()
@@ -381,7 +380,6 @@ struct RefitWindow : public Window {
 		this->order = order;
 		this->sel  = -1;
 		BuildRefitList(v, &this->list);
-		if (v->type == VEH_TRAIN) this->length = CountVehiclesInChain(v);
 		this->vscroll.SetCount(this->list.Length());
 	}
 
@@ -409,28 +407,12 @@ struct RefitWindow : public Window {
 			if (this->sel == -1) this->vscroll.ScrollTowards(0);
 		} else {
 			/* Rebuild the refit list */
-			BuildRefitList(Vehicle::Get(this->window_number), &this->list);
-			this->vscroll.SetCount(this->list.Length());
+			this->OnInvalidateData(0);
 		}
 	}
 
 	virtual void OnPaint()
 	{
-		Vehicle *v = Vehicle::Get(this->window_number);
-
-		if (v->type == VEH_TRAIN) {
-			uint length = CountVehiclesInChain(v);
-
-			if (length != this->length) {
-				/* Consist length has changed, so rebuild the refit list */
-				BuildRefitList(v, &this->list);
-				this->length = length;
-			}
-		}
-
-		this->vscroll.SetCount(this->list.Length());
-
-		this->cargo = (this->sel >= 0 && this->sel < (int)this->list.Length()) ? &this->list[this->sel] : NULL;
 		this->DrawWidgets();
 	}
 
@@ -472,6 +454,22 @@ struct RefitWindow : public Window {
 		}
 	}
 
+	virtual void OnInvalidateData(int data)
+	{
+		switch (data) {
+			case 0: { // The consist lenght of the vehicle has changed; rebuild the entire list.
+				Vehicle *v = Vehicle::Get(this->window_number);
+				BuildRefitList(v, &this->list);
+				this->vscroll.SetCount(this->list.Length());
+			}
+			/* FALLTHROUGH */
+
+			case 1: // A new cargo has been selected.
+				this->cargo = (this->sel >= 0 && this->sel < (int)this->list.Length()) ? &this->list[this->sel] : NULL;
+				break;
+		}
+	}
+
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
@@ -479,9 +477,9 @@ struct RefitWindow : public Window {
 				int y = pt.y - this->GetWidget<NWidgetBase>(VRW_MATRIX)->pos_y;
 				if (y >= 0) {
 					this->sel = (y / (int)this->resize.step_height) + this->vscroll.GetPosition();
-					this->SetDirty();
+					this->InvalidateData(1);
 				}
-				/* FIXME We need to call some InvalidateData to make this->cargo valid */
+
 				if (click_count == 1) break;
 			}
 			/* FALL THROUGH */
