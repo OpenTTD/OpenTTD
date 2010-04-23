@@ -371,6 +371,22 @@ assert_compile(sizeof(uint8)  == 1);
 	#define offsetof(s, m) cpp_offsetof(s, m)
 #endif /* offsetof */
 
+/**
+ * Gets the size of a variable within a class.
+ * @param base     The class the variable is in.
+ * @param variable The variable to get the size of.
+ * @return the size of the variable
+ */
+#define cpp_sizeof(base, variable) (sizeof(((base*)8)->variable))
+
+/**
+ * Gets the length of an array variable within a class.
+ * @param base     The class the variable is in.
+ * @param variable The array variable to get the size of.
+ * @return the length of the array
+ */
+#define cpp_lengthof(base, variable) (cpp_sizeof(base, variable) / cpp_sizeof(base, variable[0]))
+
 
 /* take care of some name clashes on MacOS */
 #if defined(__APPLE__)
