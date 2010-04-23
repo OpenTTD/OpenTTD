@@ -171,7 +171,7 @@ STR_TONS                                                        :tonnia
 STR_LITERS                                                      :litraa
 STR_ITEMS                                                       :erää
 STR_CRATES                                                      :laatikkoa
-STR_RES_OTHER                                                   :muut
+STR_RES_OTHER                                                   :muu
 STR_NOTHING                                                     :
 
 # Colours, do not shuffle
@@ -232,7 +232,7 @@ STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Ikkunan 
 STR_TOOLTIP_SHADE                                               :{BLACK}Pienennä ikkuna - näytä vain otsikko
 STR_TOOLTIP_STICKY                                              :{BLACK}'Sulje Kaikki Ikkunat'-nappi ei vaikuta tähän ikkunaan.
 STR_TOOLTIP_RESIZE                                              :{BLACK}Napsauta ja vedä muuttaaksesi tämän ikkunan kokoa.
-STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Suuri/pieni ikkunan koko
+STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Suurenna/pienennä ikkuna
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Vierityspalkki - luettelon vieritys ylös/alas
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Vierityspalkki - luettelon vieritys vasemmalle/oikealle.
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Tuhoa rakennuksia, puita, jne.
@@ -291,7 +291,7 @@ STR_SORT_BY_CARGO_CAPACITY                                      :Rahtikapasiteet
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Tauko
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Nopeuta peliä
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Asetukset
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Pelin tallennus, lopetus ja sulkeminen
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Tallenna peli, lopeta peli, poistu
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Näytä kartta, lisänäkymä ja kylttilista
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Näytä kaupunkihakemisto
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Näytä tukitarjoukset
@@ -318,7 +318,7 @@ STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Maa-alue
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Vaihda työkalupalkkeja
 
 # Extra tooltips for the scenario editor toolbar
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Tallenna skenaario, lataa skenaario, hylkää skenaariomuokkain, poistu
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Tallenna skenaario, lataa skenaario, sulje skenaariomuokkain, poistu
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Skenaariomuokkain
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Siirrä aloituspäivää vuodella taaksepäin
@@ -557,7 +557,7 @@ STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Liikennevälineitä:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Asemia:
-STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Väh. tuotto:
+STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Vähimmäistuotto:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Vähimmäistulo:
 STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Enimmäistulo:
 STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}Kuljetettu:
@@ -1079,7 +1079,7 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Lisäase
 STR_CONFIG_SETTING_OFF                                          :pois
 STR_CONFIG_SETTING_ON                                           :päällä
 STR_CONFIG_SETTING_DISABLED                                     :pois käytöstä
-STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Ajoneuvon nopeus tilapalkissa: {ORANGE}{STRING}
+STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Näytä liikennevälineen nopeus tilapalkissa: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Rakentaminen rinteisiin ja rannikolle sallittu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Salli maaston muokkaaminen rakennusten, raiteiden jne. juurella (autoslope): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Realistisemman kokoiset vaikutusalueet: {ORANGE}{STRING}
@@ -1290,10 +1290,10 @@ STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Pääty
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :vasen
 STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :keskellä
 STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :oikea
-STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Ikkunan kiinniottosäde: {ORANGE}{STRING} piks.
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Ikkunan kiinniottosäde: {ORANGE}{STRING} pikseliä
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Ikkunan kiinniottosäde: {ORANGE}pois päältä
-STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Ikkunoiden rajoitus (ei-kiinnittyvä): {ORANGE}{STRING}
-STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Ikkunoiden rajoitus (ei-kiinnittyvä): {ORANGE}pois käytöstä
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Ikkunoiden rajoitus (ei-kiinnitetyt): {ORANGE}{STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Ikkunoiden rajoitus (ei-kiinnitetyt): {ORANGE}pois käytöstä
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Kaupunkien kasvunopeus: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Ei kasvua
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Hidas
@@ -1807,7 +1807,7 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Valitse 
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Valitse kaikki sisältö, joka on päivitys nykyiseen sisältöön, ladattavaksi
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Poista valinnat
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Poista kaikesta sisällöstä valinta ladattavaksi
-STR_CONTENT_FILTER_TITLE                                        :{BLACK}Tagi/nimi suodatus:
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}Avainsana/nimi suodatus:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Lataa
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Aloita valitun sisällön lataaminen
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Latausten koko: {WHITE}{BYTES}
@@ -2547,7 +2547,7 @@ STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Rakentaminen
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Uudet ajoneuvot
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Junien käyttökustannukset
-STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Autojen käyttökustannukset
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Ajoneuvojen käyttökustannukset
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Lentokoneiden käyttökustannukset
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Laivojen käyttökustannukset
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Omaisuudenhallinta

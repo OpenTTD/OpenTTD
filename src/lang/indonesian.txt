@@ -525,6 +525,7 @@ STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLAC
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}Aktifkan semua
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT}{BLACK}Non-aktifkan semua
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Tampilkan semua kargo pada grafik tarif pembayaran kargo
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}menampilkan tidak ada kargo pada grafik tingkat pembayaran kargo
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Pilih jenis kargo yang akan ditampilkan
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 
@@ -3227,6 +3228,7 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}Pengatur
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Ubah pengaturan AI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Muat ulang AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Matikan fitur AI, muat ulang script, dan restart AI
+STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}mengaktifkan/mematikan peristirahatan ketika pesan AI sesuai dengan string istirahat
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Berhenti saat:
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Berhenti pada
 STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Ketika pesan log AI sesuai dengan isi kotak, permainan diberhentikan.
@@ -3527,6 +3529,7 @@ STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Tidak da
 
 # Tree related errors
 STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... pohon sudah ada disini
+STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... dataran tidak sesuai untuk jenis pohon ini
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Tidak dapat menanam pohon disini...
 
 # Bridge related errors

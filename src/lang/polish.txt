@@ -3614,10 +3614,10 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}Ustawien
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Zmień ustawienia SI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Przeładuj SI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Zabij SI, przeładuj skrypt i zrestartuj SI
-STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Włącz/wyłącz przerwanie, kiedy wiadomość AI zgadza się z wiadomością przerywającą
+STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Włącz/wyłącz przerwanie, kiedy wiadomość SI zgadza się z wiadomością przerywającą
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Zatrzymaj gdy:
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Zatrzymaj gdy
-STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Kiedy wiadomość AI zgadza się, gra zostaje wstrzymana.
+STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Kiedy wiadomość SI zgadza się, gra zostaje wstrzymana.
 STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Uwzględnij wielkość
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Przełącz uwzględnianie wielkości liter przy porównywaniu wyrazu przerywającego
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Kontynuuj
@@ -3713,7 +3713,7 @@ STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Ostrzeż
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Nie zaleca się zbyt dużej zmiany wielkości mapy źródłowej. Kontynuować tworzenie?
 
 # Soundset messages
-STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Znaleziono tylko podstawowy schemat dzwiękowy. Jeśli chcesz mieć pełny dzwięk, zainstaluj inny schemat dzwiękowy używając menadzera pobierania.
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Znaleziono tylko podstawowy schemat dźwiękowy. Jeśli chcesz mieć pełny dźwięk, zainstaluj inny schemat dźwiękowy używając menadżera pobierania.
 
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Zrzut ekranu zapisany na dysk z powodzeniem '{STRING}'
