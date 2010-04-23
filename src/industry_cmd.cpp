@@ -1764,6 +1764,10 @@ CommandCost CmdBuildIndustry(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 		return CMD_ERROR;
 	}
 
+	if (_game_mode != GM_EDITOR && !CheckIfCallBackAllowsAvailability(it, IACT_USERCREATION)) {
+		return CMD_ERROR;
+	}
+
 	Industry *ind = NULL;
 	if (_game_mode != GM_EDITOR && _settings_game.construction.raw_industry_construction == 2 && indspec->IsRawIndustry()) {
 		if (flags & DC_EXEC) {

@@ -463,8 +463,10 @@ public:
 
 					this->SetDirty();
 
-					if ((_game_mode != GM_EDITOR && _settings_game.construction.raw_industry_construction == 2 && indsp != NULL && indsp->IsRawIndustry()) ||
-							this->selected_type == INVALID_INDUSTRYTYPE) {
+					if (GetCallbackWnd() == this &&
+							((_game_mode != GM_EDITOR && _settings_game.construction.raw_industry_construction == 2 && indsp != NULL && indsp->IsRawIndustry()) ||
+							this->selected_type == INVALID_INDUSTRYTYPE ||
+							!this->enabled[this->selected_index])) {
 						/* Reset the button state if going to prospecting or "build many industries" */
 						this->RaiseButtons();
 						ResetObjectToPlace();

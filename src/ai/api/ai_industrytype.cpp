@@ -14,6 +14,7 @@
 #include "../../command_type.h"
 #include "../../strings_func.h"
 #include "../../industry.h"
+#include "../../newgrf_industries.h"
 #include "../../core/random_func.hpp"
 
 /* static */ bool AIIndustryType::IsValidIndustryType(IndustryType industry_type)
@@ -88,6 +89,8 @@
 /* static */ bool AIIndustryType::CanBuildIndustry(IndustryType industry_type)
 {
 	if (!IsValidIndustryType(industry_type)) return false;
+
+	if (!::CheckIfCallBackAllowsAvailability(industry_type, IACT_USERCREATION)) return false;
 	if (!::GetIndustrySpec(industry_type)->IsRawIndustry()) return true;
 
 	/* raw_industry_construction == 1 means "Build as other industries" */
@@ -97,7 +100,9 @@
 /* static */ bool AIIndustryType::CanProspectIndustry(IndustryType industry_type)
 {
 	if (!IsValidIndustryType(industry_type)) return false;
+
 	if (!::GetIndustrySpec(industry_type)->IsRawIndustry()) return false;
+	if (!::CheckIfCallBackAllowsAvailability(industry_type, IACT_USERCREATION)) return false;
 
 	/* raw_industry_construction == 2 means "prospect" */
 	return _settings_game.construction.raw_industry_construction == 2;
