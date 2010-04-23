@@ -55,7 +55,7 @@ static const SpriteID SPR_LARGE_SMALL_WINDOW = 682;
 
 /* Extra graphic spritenumbers */
 static const SpriteID SPR_OPENTTD_BASE   = 4896;
-static const uint16 OPENTTD_SPRITE_COUNT = 153;
+static const uint16 OPENTTD_SPRITE_COUNT = 154;
 
 /* Halftile-selection sprites */
 static const SpriteID SPR_HALFTILE_SELECTION_FLAT = SPR_OPENTTD_BASE;
@@ -72,6 +72,7 @@ static const SpriteID SPR_WINDOW_RESIZE_RIGHT= SPR_OPENTTD_BASE + 44;  // resize
 static const SpriteID SPR_WINDOW_RESIZE_LEFT = SPR_OPENTTD_BASE + 149; // resize icon to the left
 static const SpriteID SPR_WINDOW_SHADE       = SPR_OPENTTD_BASE + 151; // shade the window icon
 static const SpriteID SPR_WINDOW_UNSHADE     = SPR_OPENTTD_BASE + 152; // unshade the window icon
+static const SpriteID SPR_WINDOW_DEBUG       = SPR_OPENTTD_BASE + 153; // NewGRF debug window icon
 static const SpriteID SPR_IMG_PLAY_MUSIC_RTL = SPR_OPENTTD_BASE + 150; // play music button, but then for RTL users
 /* Arrow icons pointing in all 4 directions */
 static const SpriteID SPR_ARROW_DOWN         = SPR_OPENTTD_BASE + 45;
