@@ -508,18 +508,9 @@ struct DepotWindow : Window {
 				ShowVehicleViewWindow(v);
 				break;
 
-			case MODE_START_STOP: { // click start/stop flag
-				uint command;
-
-				switch (this->type) {
-					case VEH_TRAIN:    command = CMD_START_STOP_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_STOP_START_TRAIN);        break;
-					case VEH_ROAD:     command = CMD_START_STOP_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE); break;
-					case VEH_SHIP:     command = CMD_START_STOP_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_STOP_START_SHIP);         break;
-					case VEH_AIRCRAFT: command = CMD_START_STOP_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_STOP_START_AIRCRAFT);     break;
-					default: NOT_REACHED();
-				}
-				DoCommandP(v->tile, v->index, 0, command);
-			} break;
+			case MODE_START_STOP: // click start/stop flag
+				StartStopVehicle(v);
+				break;
 
 			default: NOT_REACHED();
 		}

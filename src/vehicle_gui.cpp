@@ -1868,6 +1868,16 @@ static const uint32 _vehicle_command_translation_table[][4] = {
 	},
 };
 
+/**
+ * Executes #CMD_START_STOP_VEHICLE for given vehicle.
+ * @param v Vehicle to start/stop
+ */
+void StartStopVehicle(const Vehicle *v)
+{
+	assert(v->IsPrimaryVehicle());
+	DoCommandP(v->tile, v->index, 0, _vehicle_command_translation_table[VCT_CMD_START_STOP][v->type]);
+}
+
 /** Checks whether the vehicle may be refitted at the moment.*/
 static bool IsVehicleRefitable(const Vehicle *v)
 {
@@ -2119,8 +2129,7 @@ public:
 					if (tile != INVALID_TILE) ScrollMainWindowToTile(tile);
 				} else {
 					/* Start/Stop */
-					DoCommandP(v->tile, v->index, 0,
-						_vehicle_command_translation_table[VCT_CMD_START_STOP][v->type]);
+					StartStopVehicle(v);
 				}
 				break;
 			case VVW_WIDGET_CENTER_MAIN_VIEH: {// center main view

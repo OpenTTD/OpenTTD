@@ -108,6 +108,7 @@ static inline WindowClass GetWindowClassForVehicleType(VehicleType vt)
 
 /* Unified window procedure */
 void ShowVehicleViewWindow(const Vehicle *v);
+void StartStopVehicle(const Vehicle *v);
 
 Vehicle *CheckClickOnVehicle(const struct ViewPort *vp, int x, int y);
 
