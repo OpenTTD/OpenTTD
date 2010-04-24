@@ -384,7 +384,7 @@ static const NIVariable _niv_towns[] = {
 };
 
 class NIHTown : public NIHelper {
-	bool IsInspectable(uint index) const                 { return false; }
+	bool IsInspectable(uint index) const                 { return Town::IsValidID(index); }
 	uint GetParent(uint index) const                     { return UINT32_MAX; }
 	const void *GetInstance(uint index)const             { return Town::Get(index); }
 	const void *GetSpec(uint index) const                { return NULL; }
