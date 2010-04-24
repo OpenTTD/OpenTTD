@@ -570,38 +570,38 @@ static const SpriteID SPR_WATER_SLOPE_Y_UP        = SPR_CANALS_BASE + 0; // Wate
 static const SpriteID SPR_WATER_SLOPE_X_DOWN      = SPR_CANALS_BASE + 1; // positive X
 static const SpriteID SPR_WATER_SLOPE_X_UP        = SPR_CANALS_BASE + 2; // negative X
 static const SpriteID SPR_WATER_SLOPE_Y_DOWN      = SPR_CANALS_BASE + 3; // positive Y
-/* sprites for the shiplifts
- * there are 4 kinds of shiplifts, each of them is 3 tiles long.
+/* sprites for the locks
+ * there are 4 kinds of locks, each of them is 3 tiles long.
  * the four kinds are running in the X and Y direction and
  * are "lowering" either in the "+" or the "-" direction.
  * the three tiles are the center tile (where the slope is)
  * and a bottom and a top tile */
-static const SpriteID SPR_SHIPLIFT_BASE                 = SPR_CANALS_BASE +  4;
-static const SpriteID SPR_SHIPLIFT_Y_UP_CENTER_REAR     = SPR_CANALS_BASE +  4;
-static const SpriteID SPR_SHIPLIFT_X_DOWN_CENTER_REAR   = SPR_CANALS_BASE +  5;
-static const SpriteID SPR_SHIPLIFT_X_UP_CENTER_REAR     = SPR_CANALS_BASE +  6;
-static const SpriteID SPR_SHIPLIFT_Y_DOWN_CENTER_REAR   = SPR_CANALS_BASE +  7;
-static const SpriteID SPR_SHIPLIFT_Y_UP_CENTER_FRONT    = SPR_CANALS_BASE +  8;
-static const SpriteID SPR_SHIPLIFT_X_DOWN_CENTER_FRONT  = SPR_CANALS_BASE +  9;
-static const SpriteID SPR_SHIPLIFT_X_UP_CENTER_FRONT    = SPR_CANALS_BASE + 10;
-static const SpriteID SPR_SHIPLIFT_Y_DOWN_CENTER_FRONT  = SPR_CANALS_BASE + 11;
-static const SpriteID SPR_SHIPLIFT_Y_UP_BOTTOM_REAR     = SPR_CANALS_BASE + 12;
-static const SpriteID SPR_SHIPLIFT_X_DOWN_BOTTOM_REAR   = SPR_CANALS_BASE + 13;
-static const SpriteID SPR_SHIPLIFT_X_UP_BOTTOM_REAR     = SPR_CANALS_BASE + 14;
-static const SpriteID SPR_SHIPLIFT_Y_DOWN_BOTTOM_REAR   = SPR_CANALS_BASE + 15;
-static const SpriteID SPR_SHIPLIFT_Y_UP_BOTTOM_FRONT    = SPR_CANALS_BASE + 16;
-static const SpriteID SPR_SHIPLIFT_X_DOWN_BOTTOM_FRONT  = SPR_CANALS_BASE + 17;
-static const SpriteID SPR_SHIPLIFT_X_UP_BOTTOM_FRONT    = SPR_CANALS_BASE + 18;
-static const SpriteID SPR_SHIPLIFT_Y_DOWN_BOTTOM_FRONT  = SPR_CANALS_BASE + 19;
-static const SpriteID SPR_SHIPLIFT_Y_UP_TOP_REAR        = SPR_CANALS_BASE + 20;
-static const SpriteID SPR_SHIPLIFT_X_DOWN_TOP_REAR      = SPR_CANALS_BASE + 21;
-static const SpriteID SPR_SHIPLIFT_X_UP_TOP_REAR        = SPR_CANALS_BASE + 22;
-static const SpriteID SPR_SHIPLIFT_Y_DOWN_TOP_REAR      = SPR_CANALS_BASE + 23;
-static const SpriteID SPR_SHIPLIFT_Y_UP_TOP_FRONT       = SPR_CANALS_BASE + 24;
-static const SpriteID SPR_SHIPLIFT_X_DOWN_TOP_FRONT     = SPR_CANALS_BASE + 25;
-static const SpriteID SPR_SHIPLIFT_X_UP_TOP_FRONT       = SPR_CANALS_BASE + 26;
-static const SpriteID SPR_SHIPLIFT_Y_DOWN_TOP_FRONT     = SPR_CANALS_BASE + 27;
-static const SpriteID SPR_CANAL_DIKES_BASE              = SPR_CANALS_BASE + 52;
+static const SpriteID SPR_LOCK_BASE                 = SPR_CANALS_BASE +  4;
+static const SpriteID SPR_LOCK_Y_UP_CENTER_REAR     = SPR_CANALS_BASE +  4;
+static const SpriteID SPR_LOCK_X_DOWN_CENTER_REAR   = SPR_CANALS_BASE +  5;
+static const SpriteID SPR_LOCK_X_UP_CENTER_REAR     = SPR_CANALS_BASE +  6;
+static const SpriteID SPR_LOCK_Y_DOWN_CENTER_REAR   = SPR_CANALS_BASE +  7;
+static const SpriteID SPR_LOCK_Y_UP_CENTER_FRONT    = SPR_CANALS_BASE +  8;
+static const SpriteID SPR_LOCK_X_DOWN_CENTER_FRONT  = SPR_CANALS_BASE +  9;
+static const SpriteID SPR_LOCK_X_UP_CENTER_FRONT    = SPR_CANALS_BASE + 10;
+static const SpriteID SPR_LOCK_Y_DOWN_CENTER_FRONT  = SPR_CANALS_BASE + 11;
+static const SpriteID SPR_LOCK_Y_UP_BOTTOM_REAR     = SPR_CANALS_BASE + 12;
+static const SpriteID SPR_LOCK_X_DOWN_BOTTOM_REAR   = SPR_CANALS_BASE + 13;
+static const SpriteID SPR_LOCK_X_UP_BOTTOM_REAR     = SPR_CANALS_BASE + 14;
+static const SpriteID SPR_LOCK_Y_DOWN_BOTTOM_REAR   = SPR_CANALS_BASE + 15;
+static const SpriteID SPR_LOCK_Y_UP_BOTTOM_FRONT    = SPR_CANALS_BASE + 16;
+static const SpriteID SPR_LOCK_X_DOWN_BOTTOM_FRONT  = SPR_CANALS_BASE + 17;
+static const SpriteID SPR_LOCK_X_UP_BOTTOM_FRONT    = SPR_CANALS_BASE + 18;
+static const SpriteID SPR_LOCK_Y_DOWN_BOTTOM_FRONT  = SPR_CANALS_BASE + 19;
+static const SpriteID SPR_LOCK_Y_UP_TOP_REAR        = SPR_CANALS_BASE + 20;
+static const SpriteID SPR_LOCK_X_DOWN_TOP_REAR      = SPR_CANALS_BASE + 21;
+static const SpriteID SPR_LOCK_X_UP_TOP_REAR        = SPR_CANALS_BASE + 22;
+static const SpriteID SPR_LOCK_Y_DOWN_TOP_REAR      = SPR_CANALS_BASE + 23;
+static const SpriteID SPR_LOCK_Y_UP_TOP_FRONT       = SPR_CANALS_BASE + 24;
+static const SpriteID SPR_LOCK_X_DOWN_TOP_FRONT     = SPR_CANALS_BASE + 25;
+static const SpriteID SPR_LOCK_X_UP_TOP_FRONT       = SPR_CANALS_BASE + 26;
+static const SpriteID SPR_LOCK_Y_DOWN_TOP_FRONT     = SPR_CANALS_BASE + 27;
+static const SpriteID SPR_CANAL_DIKES_BASE          = SPR_CANALS_BASE + 52;
 
 /* Sprites for tunnels and bridges */
 static const SpriteID SPR_TUNNEL_ENTRY_REAR_RAIL   = 2365;

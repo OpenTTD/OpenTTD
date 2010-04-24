@@ -190,8 +190,8 @@ static CommandCost RemoveShipDepot(TileIndex tile, DoCommandFlag flags)
 	return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_CLEAR_DEPOT_SHIP]);
 }
 
-/** build a shiplift */
-static CommandCost DoBuildShiplift(TileIndex tile, DiagDirection dir, DoCommandFlag flags)
+/** build a lock */
+static CommandCost DoBuildLock(TileIndex tile, DiagDirection dir, DoCommandFlag flags)
 {
 	/* middle tile */
 	CommandCost ret = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
@@ -234,7 +234,7 @@ static CommandCost DoBuildShiplift(TileIndex tile, DiagDirection dir, DoCommandF
 	return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_CLEAR_WATER] * 22 >> 3);
 }
 
-static CommandCost RemoveShiplift(TileIndex tile, DoCommandFlag flags)
+static CommandCost RemoveLock(TileIndex tile, DoCommandFlag flags)
 {
 	if (GetTileOwner(tile) != OWNER_NONE) {
 		CommandCost ret = CheckTileOwnership(tile);
@@ -278,7 +278,7 @@ CommandCost CmdBuildLock(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	/* Disallow building of locks on river rapids */
 	if (IsWaterTile(tile)) return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
 
-	return DoBuildShiplift(tile, dir, flags);
+	return DoBuildLock(tile, dir, flags);
 }
 
 /** Build a piece of canal.
@@ -395,7 +395,7 @@ static CommandCost ClearTile_Water(TileIndex tile, DoCommandFlag flags)
 		}
 
 		case WATER_TILE_LOCK: {
-			static const TileIndexDiffC _shiplift_tomiddle_offs[] = {
+			static const TileIndexDiffC _lock_tomiddle_offs[] = {
 				{ 0,  0}, {0,  0}, { 0, 0}, {0,  0}, // middle
 				{-1,  0}, {0,  1}, { 1, 0}, {0, -1}, // lower
 				{ 1,  0}, {0, -1}, {-1, 0}, {0,  1}, // upper
@@ -404,7 +404,7 @@ static CommandCost ClearTile_Water(TileIndex tile, DoCommandFlag flags)
 			if (flags & DC_AUTO) return_cmd_error(STR_ERROR_BUILDING_MUST_BE_DEMOLISHED);
 			if (_current_company == OWNER_WATER) return CMD_ERROR;
 			/* move to the middle tile.. */
-			return RemoveShiplift(tile + ToTileIndexDiff(_shiplift_tomiddle_offs[GetSection(tile)]), flags);
+			return RemoveLock(tile + ToTileIndexDiff(_lock_tomiddle_offs[GetSection(tile)]), flags);
 		}
 
 		case WATER_TILE_DEPOT:
@@ -559,7 +559,7 @@ static void DrawWaterStuff(const TileInfo *ti, const WaterDrawTileStruct *wdts,
 	/* If no custom graphics, use defaults */
 	if (water_base == 0) water_base = SPR_CANALS_BASE;
 	if (locks_base == 0) {
-		locks_base = SPR_SHIPLIFT_BASE;
+		locks_base = SPR_LOCK_BASE;
 	} else {
 		/* If using custom graphics, ignore the variation on height */
 		base = 0;
@@ -654,7 +654,7 @@ static void DrawTile_Water(TileInfo *ti)
 		} break;
 
 		case WATER_TILE_LOCK: {
-			const WaterDrawTileStruct *t = _shiplift_display_seq[GetSection(ti->tile)];
+			const WaterDrawTileStruct *t = _lock_display_seq[GetSection(ti->tile)];
 			DrawWaterStuff(ti, t, 0, ti->z > t[3].delta_y ? 24 : 0, true);
 		} break;
 

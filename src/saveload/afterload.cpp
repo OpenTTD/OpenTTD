@@ -640,7 +640,7 @@ bool AfterLoadGame()
 	}
 
 	if (CheckSavegameVersion(72)) {
-		/* Locks/shiplifts in very old savegames had OWNER_WATER as owner */
+		/* Locks in very old savegames had OWNER_WATER as owner */
 		for (TileIndex t = 0; t < MapSize(); t++) {
 			switch (GetTileType(t)) {
 				default: break;
