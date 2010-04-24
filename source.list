@@ -205,6 +205,7 @@ newgrf_canal.h
 newgrf_cargo.h
 newgrf_commons.h
 newgrf_config.h
+newgrf_debug.h
 newgrf_engine.h
 newgrf_generic.h
 newgrf_house.h
@@ -389,6 +390,7 @@ music_gui.cpp
 network/network_chat_gui.cpp
 network/network_content_gui.cpp
 network/network_gui.cpp
+newgrf_debug_gui.cpp
 newgrf_gui.cpp
 news_gui.cpp
 order_gui.cpp

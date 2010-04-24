@@ -2365,6 +2365,16 @@ STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Add the 
 STR_NEWGRF_ADD_RESCAN_FILES                                     :{BLACK}Rescan files
 STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}Update the list of available NewGRF files
 
+# NewGRF inspect window
+STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspect - {STRING5}
+STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Parent
+STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Inspect the object of the parent scope
+
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING1} at {HEX}
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Rail type
+
+STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF variable 60+x parameter (hexadecimal)
+
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{RAW_STRING}
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Warning: {SILVER}{RAW_STRING}
