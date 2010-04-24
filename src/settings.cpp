@@ -680,6 +680,18 @@ static bool RedrawScreen(int32 p1)
 }
 
 /**
+ * Reinitalise all windows, i.e. construct their windows
+ * from the begin. For example to show a particular button
+ * that was previously hidden.
+ * @param p1 ignored
+ */
+static bool ReinitWindows(int32 p1)
+{
+	ReInitAllWindows();
+	return true;
+}
+
+/**
  * Redraw the smallmap after a colour scheme change.
  * @param p1 Callback parameter.
  * @return Always true.

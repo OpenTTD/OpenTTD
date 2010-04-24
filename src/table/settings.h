@@ -13,6 +13,7 @@
 static bool v_PositionMainToolbar(int32 p1);
 static bool PopulationInLabelActive(int32 p1);
 static bool RedrawScreen(int32 p1);
+static bool ReinitWindows(int32 p1);
 static bool RedrawSmallmap(int32 p1);
 static bool InvalidateDetailsWindow(int32 p1);
 static bool InvalidateStationBuildWindow(int32 p1);
@@ -605,7 +606,7 @@ const SettingDesc _settings[] = {
 	 SDTC_BOOL(gui.show_date_in_logs,                    S,  0, false,                        STR_NULL,                                       NULL),
 #endif
 	  SDTC_VAR(gui.developer,                 SLE_UINT8, S,  0,     1,        0,        2, 0, STR_NULL,                                       NULL),
-	 SDTC_BOOL(gui.newgrf_developer_tools,               S,  0, false,                        STR_NULL,                                       NULL),
+	 SDTC_BOOL(gui.newgrf_developer_tools,               S,  0, false,                        STR_NULL,                                       ReinitWindows),
 	 SDTC_BOOL(gui.ai_developer_tools,                   S,  0, false,                        STR_NULL,                                       NULL),
 	  SDTC_VAR(gui.console_backlog_timeout,  SLE_UINT16, S,  0,   100,       10,    65500, 0, STR_NULL,                                       NULL),
 	  SDTC_VAR(gui.console_backlog_length,   SLE_UINT16, S,  0,   100,       10,    65500, 0, STR_NULL,                                       NULL),
