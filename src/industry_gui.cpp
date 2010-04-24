@@ -23,6 +23,7 @@
 #include "newgrf.h"
 #include "newgrf_industries.h"
 #include "newgrf_text.h"
+#include "newgrf_debug.h"
 #include "strings_func.h"
 #include "company_func.h"
 #include "tilehighlight_func.h"
@@ -834,6 +835,16 @@ public:
 		UpdateIndustryProduction(i);
 		this->SetDirty();
 	}
+
+	virtual bool IsNewGRFInspectable() const
+	{
+		return ::IsNewGRFInspectable(GSF_INDUSTRIES, this->window_number);
+	}
+
+	virtual void ShowNewGRFInspectWindow() const
+	{
+		::ShowNewGRFInspectWindow(GSF_INDUSTRIES, this->window_number);
+	}
 };
 
 static void UpdateIndustryProduction(Industry *i)
@@ -850,6 +861,7 @@ static const NWidgetPart _nested_industry_view_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_CREAM),
 		NWidget(WWT_CAPTION, COLOUR_CREAM, IVW_CAPTION), SetDataTip(STR_INDUSTRY_VIEW_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_DEBUGBOX, COLOUR_CREAM),
 		NWidget(WWT_SHADEBOX, COLOUR_CREAM),
 		NWidget(WWT_STICKYBOX, COLOUR_CREAM),
 	EndContainer(),

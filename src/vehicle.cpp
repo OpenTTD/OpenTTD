@@ -24,6 +24,7 @@
 #include "vehicle_gui.h"
 #include "train.h"
 #include "aircraft.h"
+#include "newgrf_debug.h"
 #include "newgrf_engine.h"
 #include "newgrf_sound.h"
 #include "newgrf_station.h"
@@ -681,6 +682,7 @@ Vehicle::~Vehicle()
 
 	UpdateVehiclePosHash(this, INVALID_COORD, 0);
 	DeleteVehicleNews(this->index, INVALID_STRING_ID);
+	DeleteNewGRFInspectWindow(GetGrfSpecFeature(this->type), this->index);
 }
 
 /** Adds a vehicle to the list of vehicles, that visited a depot this tick

@@ -20,6 +20,7 @@
 #include "viewport_func.h"
 #include "newgrf_engine.h"
 #include "newgrf_text.h"
+#include "newgrf_debug.h"
 #include "waypoint_base.h"
 #include "roadveh.h"
 #include "train.h"
@@ -41,6 +42,7 @@
 #include "company_base.h"
 #include "engine_base.h"
 #include "engine_func.h"
+#include "newgrf.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -1763,6 +1765,7 @@ static const NWidgetPart _nested_vehicle_view_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, VVW_WIDGET_CAPTION), SetDataTip(STR_VEHICLE_VIEW_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_DEBUGBOX, COLOUR_GREY),
 		NWidget(WWT_SHADEBOX, COLOUR_GREY),
 		NWidget(WWT_STICKYBOX, COLOUR_GREY),
 	EndContainer(),
@@ -2194,6 +2197,16 @@ public:
 				this->SetWidgetDirty(VVW_WIDGET_SELECT_REFIT_TURN);
 			}
 		}
+	}
+
+	virtual bool IsNewGRFInspectable() const
+	{
+		return ::IsNewGRFInspectable(GetGrfSpecFeature(Vehicle::Get(this->window_number)->type), this->window_number);
+	}
+
+	virtual void ShowNewGRFInspectWindow() const
+	{
+		::ShowNewGRFInspectWindow(GetGrfSpecFeature(Vehicle::Get(this->window_number)->type), this->window_number);
 	}
 };
 

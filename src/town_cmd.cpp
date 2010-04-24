@@ -24,7 +24,7 @@
 #include "unmovable_map.h"
 #include "variables.h"
 #include "genworld.h"
-#include "newgrf.h"
+#include "newgrf_debug.h"
 #include "newgrf_house.h"
 #include "newgrf_commons.h"
 #include "newgrf_text.h"
@@ -98,6 +98,7 @@ Town::~Town()
 	}
 
 	DeleteSubsidyWith(ST_TOWN, this->index);
+	DeleteNewGRFInspectWindow(GSF_FAKE_TOWNS, this->index);
 	CargoPacket::InvalidateAllFrom(ST_TOWN, this->index);
 	MarkWholeScreenDirty();
 }
@@ -2210,6 +2211,8 @@ static void DoClearTownHouseHelper(TileIndex tile, Town *t, HouseID house)
 	DecreaseBuildingCount(t, house);
 	DoClearSquare(tile);
 	DeleteAnimatedTile(tile);
+
+	DeleteNewGRFInspectWindow(GSF_HOUSES, tile);
 }
 
 /**

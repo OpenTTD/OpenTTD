@@ -19,6 +19,7 @@
 #include "pathfinder/yapf/yapf_cache.h"
 #include "newgrf_engine.h"
 #include "landscape_type.h"
+#include "newgrf_debug.h"
 #include "newgrf_railtype.h"
 #include "newgrf_commons.h"
 #include "train.h"
@@ -537,6 +538,7 @@ CommandCost CmdRemoveSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 				}
 				owner = GetTileOwner(tile);
 				MakeRoadNormal(tile, GetCrossingRoadBits(tile), GetRoadTypes(tile), GetTownIndex(tile), GetRoadOwner(tile, ROADTYPE_ROAD), GetRoadOwner(tile, ROADTYPE_TRAM));
+				DeleteNewGRFInspectWindow(GSF_RAILTYPES, tile);
 			}
 			break;
 		}
@@ -579,6 +581,7 @@ CommandCost CmdRemoveSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 					} else {
 						DoClearSquare(tile);
 					}
+					DeleteNewGRFInspectWindow(GSF_RAILTYPES, tile);
 				} else {
 					SetTrackBits(tile, present);
 					SetTrackReservation(tile, GetRailReservationTrackBits(tile) & present);

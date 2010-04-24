@@ -35,6 +35,7 @@
 #include "querystring_gui.h"
 #include "console_func.h"
 #include "core/geometry_func.hpp"
+#include "newgrf_debug.h"
 
 #include "table/strings.h"
 
@@ -65,6 +66,7 @@ static const NWidgetPart _nested_land_info_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY), SetDataTip(STR_LAND_AREA_INFORMATION_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_DEBUGBOX, COLOUR_GREY),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY, LIW_BACKGROUND), EndContainer(),
 };
@@ -87,6 +89,7 @@ class LandInfoWindow : public Window {
 
 public:
 	char landinfo_data[LAND_INFO_LINE_END][LAND_INFO_LINE_BUFF_SIZE];
+	TileIndex tile;
 
 	virtual void OnPaint()
 	{
@@ -135,7 +138,7 @@ public:
 		}
 	}
 
-	LandInfoWindow(TileIndex tile) : Window() {
+	LandInfoWindow(TileIndex tile) : Window(), tile(tile) {
 		Town *t = ClosestTownFromTile(tile, _settings_game.economy.dist_local_authority);
 
 		/* Because build_date is not set yet in every TileDesc, we make sure it is empty */
@@ -314,6 +317,16 @@ public:
 		DEBUG(misc, LANDINFOD_LEVEL, "m6           = %#x", _m[tile].m6);
 		DEBUG(misc, LANDINFOD_LEVEL, "m7           = %#x", _me[tile].m7);
 #undef LANDINFOD_LEVEL
+	}
+
+	virtual bool IsNewGRFInspectable() const
+	{
+		return ::IsNewGRFInspectable(GetGrfSpecFeature(this->tile), this->tile);
+	}
+
+	virtual void ShowNewGRFInspectWindow() const
+	{
+		::ShowNewGRFInspectWindow(GetGrfSpecFeature(this->tile), this->tile);
 	}
 };
 

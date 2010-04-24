@@ -22,6 +22,7 @@
 #include "roadveh.h"
 #include "industry.h"
 #include "newgrf_cargo.h"
+#include "newgrf_debug.h"
 #include "newgrf_station.h"
 #include "pathfinder/yapf/yapf_cache.h"
 #include "road_internal.h" /* For drawing catenary/checking road removal */
@@ -1412,6 +1413,7 @@ CommandCost RemoveFromRailBaseStation(TileArea ta, SmallVector<T *, 4> &affected
 			}
 
 			DoClearSquare(tile);
+			DeleteNewGRFInspectWindow(GSF_STATIONS, tile);
 			if (keep_rail) MakeRailNormal(tile, owner, TrackToTrackBits(track), rt);
 
 			st->rect.AfterRemoveTile(st, tile);
@@ -1557,6 +1559,7 @@ CommandCost RemoveRailStation(T *st, DoCommandFlag flags)
 				if (v != NULL) FreeTrainTrackReservation(v);
 			}
 			DoClearSquare(tile);
+			DeleteNewGRFInspectWindow(GSF_STATIONS, tile);
 			AddTrackToSignalBuffer(tile, track, owner);
 			YapfNotifyTrackLayoutChange(tile, track);
 			if (v != NULL) TryPathReserve(v, true);
@@ -2264,6 +2267,7 @@ static CommandCost RemoveAirport(TileIndex tile, DoCommandFlag flags)
 		if (flags & DC_EXEC) {
 			DeleteAnimatedTile(tile_cur);
 			DoClearSquare(tile_cur);
+			DeleteNewGRFInspectWindow(GSF_AIRPORTTILES, tile_cur);
 		}
 	}
 
@@ -2295,6 +2299,7 @@ static CommandCost RemoveAirport(TileIndex tile, DoCommandFlag flags)
 		st->UpdateVirtCoord();
 		st->RecomputeIndustriesNear();
 		DeleteStationIfEmpty(st);
+		DeleteNewGRFInspectWindow(GSF_AIRPORTS, st->index);
 	}
 
 	return cost;
