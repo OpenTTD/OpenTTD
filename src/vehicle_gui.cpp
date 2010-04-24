@@ -1869,13 +1869,33 @@ static const uint32 _vehicle_command_translation_table[][4] = {
 };
 
 /**
+ * This is the Callback method after the cloning attempt of a vehicle
+ * @param result the result of the cloning command
+ * @param tile unused
+ * @param p1 vehicle ID
+ * @param p2 unused
+ */
+void CcStartStopVehicle(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
+{
+	if (result.Failed()) return;
+
+	const Vehicle *v = Vehicle::GetIfValid(p1);
+	if (v == NULL || !v->IsPrimaryVehicle() || v->owner != _local_company) return;
+
+	StringID msg = (v->vehstatus & VS_STOPPED) ? STR_VEHICLE_COMMAND_STOPPED : STR_VEHICLE_COMMAND_STARTED;
+	Point pt = RemapCoords(v->x_pos, v->y_pos, v->z_pos);
+	AddTextEffect(msg, pt.x, pt.y, DAY_TICKS, TE_RISING);
+}
+
+/**
  * Executes #CMD_START_STOP_VEHICLE for given vehicle.
  * @param v Vehicle to start/stop
+ * @param texteffect Should a texteffect be shown?
  */
-void StartStopVehicle(const Vehicle *v)
+void StartStopVehicle(const Vehicle *v, bool texteffect)
 {
 	assert(v->IsPrimaryVehicle());
-	DoCommandP(v->tile, v->index, 0, _vehicle_command_translation_table[VCT_CMD_START_STOP][v->type]);
+	DoCommandP(v->tile, v->index, 0, _vehicle_command_translation_table[VCT_CMD_START_STOP][v->type], texteffect ? CcStartStopVehicle : NULL);
 }
 
 /** Checks whether the vehicle may be refitted at the moment.*/
@@ -2129,7 +2149,7 @@ public:
 					if (tile != INVALID_TILE) ScrollMainWindowToTile(tile);
 				} else {
 					/* Start/Stop */
-					StartStopVehicle(v);
+					StartStopVehicle(v, false);
 				}
 				break;
 			case VVW_WIDGET_CENTER_MAIN_VIEH: {// center main view

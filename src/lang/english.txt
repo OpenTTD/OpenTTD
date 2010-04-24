@@ -2967,6 +2967,12 @@ STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL           :{LTBLUE}Service
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE                   :{LTBLUE}Service at {STATION} Hangar
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE_VEL               :{LTBLUE}Service at {STATION} Hangar, {VELOCITY}
 
+# Vehicle stopped/started animations
+STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Stopped
+STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Stopped
+STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINYFONT}{GREEN}Started
+STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Started
+
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Details)
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Name

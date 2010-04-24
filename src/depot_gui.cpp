@@ -509,7 +509,7 @@ struct DepotWindow : Window {
 				break;
 
 			case MODE_START_STOP: // click start/stop flag
-				StartStopVehicle(v);
+				StartStopVehicle(v, false);
 				break;
 
 			default: NOT_REACHED();

@@ -1811,7 +1811,14 @@ bool HandleViewportClicked(const ViewPort *vp, int x, int y)
 	v = CheckClickOnVehicle(vp, x, y);
 	if (v != NULL) {
 		DEBUG(misc, 2, "Vehicle %d (index %d) at %p", v->unitnumber, v->index, v);
-		if (IsCompanyBuildableVehicleType(v)) ShowVehicleViewWindow(v->First());
+		if (IsCompanyBuildableVehicleType(v)) {
+			v = v->First();
+			if (_ctrl_pressed && v->owner == _local_company) {
+				StartStopVehicle(v, true);
+			} else {
+				ShowVehicleViewWindow(v);
+			}
+		}
 		return true;
 	}
 	return CheckClickOnLandscape(vp, x, y);

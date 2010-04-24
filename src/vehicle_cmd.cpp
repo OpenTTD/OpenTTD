@@ -64,7 +64,7 @@ const uint32 _send_to_depot_proc_table[] = {
 /** Start/Stop a vehicle
  * @param tile unused
  * @param flags type of operation
- * @param p1 vehicle to start/stop
+ * @param p1 vehicle to start/stop, don't forget to change CcStartStopVehicle if you modify this!
  * @param p2 bit 0: Shall the start/stop newgrf callback be evaluated (only valid with DC_AUTOREPLACE for network safety)
  * @param text unused
  * @return the cost of this operation or an error
