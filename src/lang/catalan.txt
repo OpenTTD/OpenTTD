@@ -231,6 +231,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Reanomen
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Tanca la finestra
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Títol de la finestra - arrossega això per moure la finestra
 STR_TOOLTIP_SHADE                                               :{BLACK}Ombra de la finestra - mostra només la barra de títol
+STR_TOOLTIP_DEBUG                                               :{BLACK}Mostra la informació de depuració NewGRF
 STR_TOOLTIP_STICKY                                              :{BLACK}Marca aquesta finestra com a no eliminable pel 'Tanca totes les Finestres'
 STR_TOOLTIP_RESIZE                                              :{BLACK}Prem i arrossega per canviar la mida de la finestra
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Intercanvia mida gran/petita de finestra
@@ -360,7 +361,7 @@ STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Signes d'estaci
 
 ############ range for file menu starts
 STR_FILE_MENU_SAVE_GAME                                         :Desa el joc
-STR_FILE_MENU_LOAD_GAME                                         :Carrega el joc
+STR_FILE_MENU_LOAD_GAME                                         :Carrega un joc
 STR_FILE_MENU_QUIT_GAME                                         :Abandona el joc
 STR_FILE_MENU_EXIT                                              :Surt
 ############ range ends here
@@ -735,7 +736,7 @@ STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}Tancame
 STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}Canvis de l'Economia
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Canvis de producció de les indústries aprovisionades per la companyia
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Canvis de producció en indústries proveïdes pel competidor(s)
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Altres canvis de producció de l'indústria
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Altres canvis de producció de la indústria
 STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Alertes / informació sobre els vehicles de la companyia
 STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Nous vehicles
 STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Canvis en l'admissió de càrrega
@@ -829,13 +830,13 @@ STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} ara accepta {STRING}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} ara accepta {STRING} i {STRING}
 
-STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Oferiment de subvenció caducada: {}{}{STRING} des de {STRING} fins a {STRING} s'ha declarat desert.
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Oferta de subvenció caducada: {}{}{STRING} des de {STRING} fins a {STRING} no tindrà subvenció.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Subvenció retirada:{}{}{STRING} des de {STRING} fins a {STRING} ja no està subvencionat.
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Subvenció per un servei oferta:{}{} El primer servei de {STRING} des de {STRING} fins a {STRING} tindrà una subvenció d'un any de l'autoritat local!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Subvenció pel servei concedida a {STRING}!{}{} Servei de {STRING} des de {STRING} fins a {STRING} rebrà un 50% addicional durant el pròxim any!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Subvenció per servei concedida a {STRING}!{}{} Servei de {STRING} des de {STRING} fins a {STRING} pagarà el doble de la tarifa durant el pròxim any!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Subvenció per servei concedida a {STRING}!{}{} Servei de {STRING} des de {STRING} fins a {STRING} pagarà el triple de la tarifa durant el pròxim any!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}Subvenció per servei concedida a {STRING}!{}{} Servei de {STRING} des de {STRING} fins a {STRING} pagarà el quàdruple de la tarifa durant el pròxim any!
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Oferta de subvenció per a un servei:{}{} El primer servei de {STRING} des de {STRING} fins a {STRING} tindrà una subvenció d'un any per part de l'autoritat local!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Subvenció per a un servei concedida a {STRING}!{}{} Servei de {STRING} des de {STRING} fins a {STRING} rebrà un 50% addicional durant el pròxim any!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Subvenció per a un servei concedida a {STRING}!{}{} Servei de {STRING} des de {STRING} fins a {STRING} pagarà el doble de la tarifa durant el pròxim any!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Subvenció per a un servei concedida a {STRING}!{}{} Servei de {STRING} des de {STRING} fins a {STRING} pagarà el triple de la tarifa durant el pròxim any!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}Subvenció per a un servei concedida a {STRING}!{}{} Servei de {STRING} des de {STRING} fins a {STRING} pagarà el quàdruple de la tarifa durant el pròxim any!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}Caos de trànsit a {TOWN}!{}{}El programa de rehabilitació dels carrers patrocinat per {STRING} porta 6 mesos de misèria als motoristes!
 
@@ -1420,7 +1421,7 @@ STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Canvia 
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Activa la modificació de valors de producció: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}Nou esquema de color
+STR_LIVERY_CAPTION                                              :{WHITE}Nou esquema de colors
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Mostra esquemes de colors generals
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Mostra els esquemes de colors dels trens
@@ -1897,7 +1898,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Converte
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construeix una estació de tren. Ctrl permet ajuntar estacions
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Construeix senyals de tren. Ctrl commuta el semàfor/senyals de llums{}Arrossegant es construeixen senyals al llarg d'un tros recte de rail. Ctrl construeix senyals fins a la propera intersecció{}Ctrl+Clic commuta l'obertura de la finestra de detecció de senyals
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construeix un pont de tren
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construeix túnel de tren
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construeix un túnel per a trens
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Commuta construeix/treu per vies de tren, senyals, punts de control i estacions
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Converteix/Millora el tipus de via
 
@@ -1977,7 +1978,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Activa/D
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Construeix un pont per carretera
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Construeix pont per tramvies
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Construeix un túnel per carretera
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Construeix túnel per tramvies
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Construeix un túnel per a tramvies
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Intercanvia funció construeix/treu per la construcció de carreteres
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Canvia construeix/treu de la construcció de vies de tramvia
 
@@ -2365,6 +2366,16 @@ STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Afegeix 
 STR_NEWGRF_ADD_RESCAN_FILES                                     :{BLACK}Reescaneja arxius
 STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}Actualitza la llista d'arxius NewGRF disponibles
 
+# NewGRF inspect window
+STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspecciona - {STRING}
+STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Pare
+STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Inspecciona l'objecte de l'àmbit pare
+
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} a {HEX}
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Tipus de via
+
+STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Paràmetre NewGRF variable 60+x (hexadecimal)
+
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Alerta: {SILVER}{STRING}
@@ -2406,7 +2417,7 @@ STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Canvia l
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}El tren '{VEHICLE}' pertanyent a la '{COMPANY}' té una llargada invàlida. Això està causat probablement per problemes amb els NewGRFs. El joc podria desincronitzar-se i/o penjar-se.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}El NewGRF '{0:STRING}' està donant informació incorrecta.
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}La informació de càrrega/remodelació per '{1:ENGINE}' no encaixa amb la llista de compres després de la construcció. Això podria causar un mal funcionament de autorenov/-substitueix.
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}La informació de càrrega/remodelació per '{1:ENGINE}' no encaixa amb la llista de compres després de la construcció. Això podria causar un mal funcionament de autorenova/-substitueix.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' ha provocat un bucle infinit en la crida de producció.
 
 # Sign list window
@@ -2483,7 +2494,7 @@ STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Cap -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Serveis ja subvencionats:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} des de {STRING} fins a {STRING}{YELLOW} ({COMPANY}{YELLOW}, fins a {DATE_SHORT})
-STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Clica al servei per centrar la vista a l'indústria/població. Ctrl+Clic obre una nova vista al lloc de la indústria/població
+STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Clica al servei per centrar la vista a la indústria/població. Ctrl+Clic obre una nova vista al lloc de la indústria/població
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Noms d'estació - clica al nom per centrar la vista principal a l'estació. Ctrl+Clic obre una nova vista al lloc de l'estació
@@ -2575,7 +2586,7 @@ STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY
 STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENTNAME}{}{GOLD}(President)
 
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Inaugurat: {WHITE}{NUM}
-STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Esquema de color:
+STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Esquema de colors:
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Vehicles:
 STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} tren{P "" s}
 STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} automòbil{P "" s}
@@ -2594,7 +2605,7 @@ STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Trasllad
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nova Cara
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Selecciona una nova cara pel president
-STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Esquema de color
+STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Esquema de colors
 STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Canvia l'aspecte dels vehicles de la companyia
 STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Nom Empresa
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Canvia el nom de la companyia
@@ -2617,13 +2628,13 @@ STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Cap -
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% transportat)
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% transportat)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Nom de les indústries - clica al nom per centrar la vista a l'indústria. Ctrl+Clic obre una nova vista al lloc de l'indústria
+STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Nom de les indústries - clica al nom per centrar la vista a la indústria. Ctrl+Clic obre una nova vista al lloc de la indústria
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Producció del darrer mes:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% transportat)
-STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centra la vista principal al lloc de l'indústria. Ctrl+Clic obre una nova vista al lloc de l'indústria
+STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centra la vista principal al lloc de la indústria. Ctrl+Clic obre una nova vista al lloc de la indústria
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Necessita: {YELLOW}{STRING}{STRING}

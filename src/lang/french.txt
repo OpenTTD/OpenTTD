@@ -231,6 +231,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Renommer
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Fermer la fenêtre
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Titre de fenêtre - Faire Glisser pour déplacer la fenêtre
 STR_TOOLTIP_SHADE                                               :{BLACK}Enrouler la fenêtre - n'afficher que la barre de titre
+STR_TOOLTIP_DEBUG                                               :{BLACK}Afficher les informations de débogage NewGRF
 STR_TOOLTIP_STICKY                                              :{BLACK}Marquer cette fenêtre comme ineffaçable pour la touche 'Fermer toutes les fenêtres'
 STR_TOOLTIP_RESIZE                                              :{BLACK}Cliquer et faire glisse pour redimensionner la fenêtre
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Bascule entre une grande/petite fenêtre
@@ -2333,9 +2334,9 @@ STR_NEWGRF_SETTINGS_ADD_TOOLTIP                                 :{BLACK}Ajouter 
 STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Retirer
 STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Retirer le fichier NewGRF sélectionné de la liste
 STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Monter
-STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Monter le fichier NewGRG sélectionné dans la liste
+STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Monter le fichier NewGRF sélectionné dans la liste
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Descendre
-STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Descendre le fichier NewGRG sélectionné dans la liste
+STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Descendre le fichier NewGRF sélectionné dans la liste
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Liste des fichiers NewGRF installés. Cliquer sur un fichier pour modifier ses paramètres
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Changer les paramètres
@@ -2364,6 +2365,16 @@ STR_NEWGRF_ADD_FILE                                             :{BLACK}Ajouter 
 STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Ajouter le fichier NewGRF sélectionné à votre configuration
 STR_NEWGRF_ADD_RESCAN_FILES                                     :{BLACK}Actualiser la liste
 STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}Mettre à jour la liste des fichiers NewGRF disponibles
+
+# NewGRF inspect window
+STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspection - {STRING}
+STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Parent
+STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Inspecter l'objet parent
+
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} à {HEX}
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Type de rail
+
+STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Paramètre de variable NewGRF 60+x (héxadecimal)
 
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}

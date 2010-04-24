@@ -109,12 +109,34 @@ STR_QUANTITY_WATER                                              :{VOLUME} ta' il
 STR_QUANTITY_WHEAT                                              :{WEIGHT} ta' qamħ
 STR_QUANTITY_RUBBER                                             :{VOLUME} ta' lastku
 STR_QUANTITY_SUGAR                                              :{WEIGHT} ta' zokkor
+STR_QUANTITY_PLASTIC                                            :{VOLUME} ta' plastik
 
 # Two letter abbreviation of cargo name
 
 # 'Mode' of transport for cargoes
+STR_PASSENGERS                                                  :passiġġieri
+STR_BAGS                                                        :boroż
+STR_TONS                                                        :tunnellati
+STR_LITERS                                                      :litri
+STR_ITEMS                                                       :oġġetti
+STR_CRATES                                                      :kaxxi
+STR_RES_OTHER                                                   :oħrajn
+STR_NOTHING                                                     :
 
 # Colours, do not shuffle
+STR_COLOUR_DARK_BLUE                                            :Blu Skur
+STR_COLOUR_PINK                                                 :Roża
+STR_COLOUR_YELLOW                                               :Isfar
+STR_COLOUR_RED                                                  :Aħmar
+STR_COLOUR_LIGHT_BLUE                                           :Blu Ċar
+STR_COLOUR_GREEN                                                :Aħdar
+STR_COLOUR_DARK_GREEN                                           :Aħdar Skur
+STR_COLOUR_BLUE                                                 :Blu
+STR_COLOUR_CREAM                                                :Krema
+STR_COLOUR_ORANGE                                               :Oranġjo
+STR_COLOUR_BROWN                                                :Kannella
+STR_COLOUR_GREY                                                 :Griż
+STR_COLOUR_WHITE                                                :Abjad
 
 # Units used in OpenTTD
 
@@ -136,7 +158,14 @@ STR_QUANTITY_SUGAR                                              :{WEIGHT} ta' zo
 
 
 # These are used in buttons
+STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Isem
+STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Data
 # These are used in dropdowns
+STR_SORT_BY_POPULATION                                          :Popolazzjoni
+STR_SORT_BY_NAME                                                :Isem
+STR_SORT_BY_PRODUCTION                                          :Produzzjoni
+STR_SORT_BY_TYPE                                                :Tip
+STR_SORT_BY_NUMBER                                              :Numru
 
 # Tooltips for the main toolbar
 
@@ -514,6 +543,10 @@ STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :password ħażi
 
 # NewGRF add window
 
+# NewGRF inspect window
+
+
+
 # NewGRF (self) generated warnings/errors
 
 # NewGRF related 'general' warnings
@@ -833,6 +866,46 @@ STR_SV_STNAME_WAYPOINT                                          :{STRING}
 ##id 0x8000
 # Vehicle names
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FIZZY_DRINK_TRUCK         :Trakk tax-Xarbiet Karbonati
+STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER                            :Tanker taż-żejt MPS
+STR_VEHICLE_NAME_SHIP_CS_INC_OIL_TANKER                         :Tanker taż-żejt CS-Inc.
+STR_VEHICLE_NAME_SHIP_MPS_PASSENGER_FERRY                       :Vapur tal-passiġġieri MPS
+STR_VEHICLE_NAME_SHIP_FFP_PASSENGER_FERRY                       :Vapur tal-passiġġieri FFP
+STR_VEHICLE_NAME_SHIP_BAKEWELL_300_HOVERCRAFT                   :Ħoverkraft Bakewell 300
+STR_VEHICLE_NAME_SHIP_CHUGGER_CHUG_PASSENGER                    :Vapur tal-passiġġieri Chugger-Chug
+STR_VEHICLE_NAME_SHIP_SHIVERSHAKE_PASSENGER_FERRY               :Vapur tal-passiġġieri Shivershake
+STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :Vapur tal-merkanzija Yate
+STR_VEHICLE_NAME_SHIP_BAKEWELL_CARGO_SHIP                       :Vapur tal-merkanzija Bakewell
+STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :Vapur tal-merkanzija Mightymover
+STR_VEHICLE_NAME_SHIP_POWERNAUT_CARGO_SHIP                      :Vapur tal-merkanzija Powernaut
+STR_VEHICLE_NAME_AIRCRAFT_SAMPSON_U52                           :Sampson U52
+STR_VEHICLE_NAME_AIRCRAFT_COLEMAN_COUNT                         :Coleman Count
+STR_VEHICLE_NAME_AIRCRAFT_FFP_DART                              :FFP Dart
+STR_VEHICLE_NAME_AIRCRAFT_YATE_HAUGAN                           :Yate Haugan
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_COTSWALD_LB_3                :Bakewell Cotswald LB-3
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_8                 :Bakewell Luckett LB-8
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_9                 :Bakewell Luckett LB-9
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB80                 :Bakewell Luckett LB80
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_10                :Bakewell Luckett LB-10
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_11                :Bakewell Luckett LB-11
+STR_VEHICLE_NAME_AIRCRAFT_YATE_AEROSPACE_YAC_1_11               :Yate Aerospace YAC 1-11
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_100                            :Darwin 100
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_200                            :Darwin 200
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_300                            :Darwin 300
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_400                            :Darwin 400
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_500                            :Darwin 500
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_600                            :Darwin 600
+STR_VEHICLE_NAME_AIRCRAFT_GURU_GALAXY                           :Guru Galaxy
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A21                           :Airtaxi A21
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A31                           :Airtaxi A31
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A32                           :Airtaxi A32
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A33                           :Airtaxi A33
+STR_VEHICLE_NAME_AIRCRAFT_YATE_AEROSPACE_YAE46                  :Yate Aerospace YAe46
+STR_VEHICLE_NAME_AIRCRAFT_DINGER_100                            :Dinger 100
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A34_1000                      :AirTaxi A34-1000
+STR_VEHICLE_NAME_AIRCRAFT_YATE_Z_SHUTTLE                        :Yate Z-Shuttle
+STR_VEHICLE_NAME_AIRCRAFT_KELLING_K1                            :Kelling K1
+STR_VEHICLE_NAME_AIRCRAFT_KELLING_K6                            :Kelling K6
+STR_VEHICLE_NAME_AIRCRAFT_KELLING_K7                            :Kelling K7
 STR_VEHICLE_NAME_AIRCRAFT_DARWIN_700                            :Darwin 700
 STR_VEHICLE_NAME_AIRCRAFT_FFP_HYPERDART_2                       :FFP Hyperdart 2
 STR_VEHICLE_NAME_AIRCRAFT_DINGER_200                            :Dinger 200

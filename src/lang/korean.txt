@@ -231,6 +231,7 @@ STR_BUTTON_RENAME                                               :{BLACK}이름 �
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}창 닫기
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}창 제목 - 창을 움직이려면 여기를 드래그하세요
 STR_TOOLTIP_SHADE                                               :{BLACK}윈도우 숨기기 - 타이틀바만 표시
+STR_TOOLTIP_DEBUG                                               :{BLACK}NewGRF 디버그 정보를 보여주기
 STR_TOOLTIP_STICKY                                              :{BLACK}이 창을 '모든 창 닫기' 키로 닫을 수 없게 하기
 STR_TOOLTIP_RESIZE                                              :{BLACK}이 창의 크기를 조절하려면 여기를 클릭하고 드래그하세요
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}대형/소형 창 크기 토글
@@ -2362,6 +2363,11 @@ STR_NEWGRF_ADD_FILE                                             :{BLACK}선택�
 STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}설정에 선택한 NewGRF 추가
 STR_NEWGRF_ADD_RESCAN_FILES                                     :{BLACK}파일 재검색
 STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}사용 가능한 NewGRF 파일 목록을 업데이트합니다
+
+# NewGRF inspect window
+
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :철도 종류
+
 
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
