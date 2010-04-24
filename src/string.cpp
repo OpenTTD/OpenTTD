@@ -202,6 +202,7 @@ bool IsValidChar(WChar key, CharSetFilter afilter)
 		case CS_NUMERAL:       return (key >= '0' && key <= '9');
 		case CS_NUMERAL_SPACE: return (key >= '0' && key <= '9') || key == ' ';
 		case CS_ALPHA:         return IsPrintable(key) && !(key >= '0' && key <= '9');
+		case CS_HEXADECIMAL:   return (key >= '0' && key <= '9') || (key >= 'a' && key <= 'f') || (key >= 'A' && key <= 'F');
 	}
 
 	return false;
