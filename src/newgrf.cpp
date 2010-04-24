@@ -3059,24 +3059,24 @@ static void FeatureChangeInfo(ByteReader *buf)
 	 * V new-info      new bytes of info (variable size; depends on properties) */
 
 	static const VCI_Handler handler[] = {
-		/* GSF_TRAIN */        RailVehicleChangeInfo,
-		/* GSF_ROAD */         RoadVehicleChangeInfo,
-		/* GSF_SHIP */         ShipVehicleChangeInfo,
-		/* GSF_AIRCRAFT */     AircraftVehicleChangeInfo,
-		/* GSF_STATION */      StationChangeInfo,
-		/* GSF_CANAL */        CanalChangeInfo,
-		/* GSF_BRIDGE */       BridgeChangeInfo,
-		/* GSF_TOWNHOUSE */    TownHouseChangeInfo,
-		/* GSF_GLOBALVAR */    GlobalVarChangeInfo,
-		/* GSF_INDUSTRYTILES */IndustrytilesChangeInfo,
-		/* GSF_INDUSTRIES */   IndustriesChangeInfo,
-		/* GSF_CARGOS */       NULL, // Cargo is handled during reservation
-		/* GSF_SOUNDFX */      SoundEffectChangeInfo,
-		/* GSF_AIRPORTS */     AirportChangeInfo,
-		/* GSF_SIGNALS */      NULL,
-		/* GSF_OBJECTS */      NULL,
-		/* GSF_RAILTYPES */    RailTypeChangeInfo,
-		/* GSF_AIRPORTTILES */ AirportTilesChangeInfo,
+		/* GSF_TRAINS */        RailVehicleChangeInfo,
+		/* GSF_ROADVEHICLES */  RoadVehicleChangeInfo,
+		/* GSF_SHIPS */         ShipVehicleChangeInfo,
+		/* GSF_AIRCRAFT */      AircraftVehicleChangeInfo,
+		/* GSF_STATIONS */      StationChangeInfo,
+		/* GSF_CANALS */        CanalChangeInfo,
+		/* GSF_BRIDGES */       BridgeChangeInfo,
+		/* GSF_HOUSES */        TownHouseChangeInfo,
+		/* GSF_GLOBALVAR */     GlobalVarChangeInfo,
+		/* GSF_INDUSTRYTILES */ IndustrytilesChangeInfo,
+		/* GSF_INDUSTRIES */    IndustriesChangeInfo,
+		/* GSF_CARGOS */        NULL, // Cargo is handled during reservation
+		/* GSF_SOUNDFX */       SoundEffectChangeInfo,
+		/* GSF_AIRPORTS */      AirportChangeInfo,
+		/* GSF_SIGNALS */       NULL,
+		/* GSF_OBJECTS */       NULL,
+		/* GSF_RAILTYPES */     RailTypeChangeInfo,
+		/* GSF_AIRPORTTILES */  AirportTilesChangeInfo,
 	};
 
 	uint8 feature  = buf->ReadByte();
@@ -3111,7 +3111,7 @@ static void SafeChangeInfo(ByteReader *buf)
 	uint numinfo = buf->ReadByte();
 	buf->ReadExtendedByte(); // id
 
-	if (feature == GSF_BRIDGE && numprops == 1) {
+	if (feature == GSF_BRIDGES && numprops == 1) {
 		uint8 prop = buf->ReadByte();
 		/* Bridge property 0x0D is redefinition of sprite layout tables, which
 		 * is considered safe. */
@@ -3401,12 +3401,12 @@ static void NewSpriteGroup(ByteReader *buf)
 		default:
 		{
 			switch (feature) {
-				case GSF_TRAIN:
-				case GSF_ROAD:
-				case GSF_SHIP:
+				case GSF_TRAINS:
+				case GSF_ROADVEHICLES:
+				case GSF_SHIPS:
 				case GSF_AIRCRAFT:
-				case GSF_STATION:
-				case GSF_CANAL:
+				case GSF_STATIONS:
+				case GSF_CANALS:
 				case GSF_CARGOS:
 				case GSF_AIRPORTS:
 				case GSF_RAILTYPES:
@@ -3446,7 +3446,7 @@ static void NewSpriteGroup(ByteReader *buf)
 					break;
 				}
 
-				case GSF_TOWNHOUSE:
+				case GSF_HOUSES:
 				case GSF_AIRPORTTILES:
 				case GSF_INDUSTRYTILES: {
 					byte num_spriteset_ents   = _cur_grffile->spriteset_numents;
@@ -3568,7 +3568,7 @@ static void NewSpriteGroup(ByteReader *buf)
 static CargoID TranslateCargo(uint8 feature, uint8 ctype)
 {
 	/* Special cargo types for purchase list and stations */
-	if (feature == GSF_STATION && ctype == 0xFE) return CT_DEFAULT_NA;
+	if (feature == GSF_STATIONS && ctype == 0xFE) return CT_DEFAULT_NA;
 	if (ctype == 0xFF) return CT_PURCHASE;
 
 	if (_cur_grffile->cargo_max == 0) {
@@ -3738,7 +3738,7 @@ static void StationMapSpriteGroup(ByteReader *buf, uint8 idcount)
 		uint16 groupid = buf->ReadWord();
 		if (!IsValidGroupID(groupid, "StationMapSpriteGroup")) continue;
 
-		ctype = TranslateCargo(GSF_STATION, ctype);
+		ctype = TranslateCargo(GSF_STATIONS, ctype);
 		if (ctype == CT_INVALID) continue;
 
 		for (uint i = 0; i < idcount; i++) {
@@ -4028,22 +4028,22 @@ static void FeatureMapSpriteGroup(ByteReader *buf)
 	grfmsg(6, "FeatureMapSpriteGroup: Feature %d, %d ids", feature, idcount);
 
 	switch (feature) {
-		case GSF_TRAIN:
-		case GSF_ROAD:
-		case GSF_SHIP:
+		case GSF_TRAINS:
+		case GSF_ROADVEHICLES:
+		case GSF_SHIPS:
 		case GSF_AIRCRAFT:
 			VehicleMapSpriteGroup(buf, feature, idcount);
 			return;
 
-		case GSF_CANAL:
+		case GSF_CANALS:
 			CanalMapSpriteGroup(buf, idcount);
 			return;
 
-		case GSF_STATION:
+		case GSF_STATIONS:
 			StationMapSpriteGroup(buf, idcount);
 			return;
 
-		case GSF_TOWNHOUSE:
+		case GSF_HOUSES:
 			TownHouseMapSpriteGroup(buf, idcount);
 			return;
 
@@ -4123,9 +4123,9 @@ static void FeatureNewName(ByteReader *buf)
 		grfmsg(8, "FeatureNewName: 0x%04X <- %s", id, name);
 
 		switch (feature) {
-			case GSF_TRAIN:
-			case GSF_ROAD:
-			case GSF_SHIP:
+			case GSF_TRAINS:
+			case GSF_ROADVEHICLES:
+			case GSF_SHIPS:
 			case GSF_AIRCRAFT:
 				if (!generic) {
 					Engine *e = GetNewEngine(_cur_grffile, (VehicleType)feature, id, HasBit(_cur_grfconfig->flags, GCF_STATIC));
@@ -4142,7 +4142,7 @@ static void FeatureNewName(ByteReader *buf)
 				break;
 			}
 
-			case GSF_TOWNHOUSE:
+			case GSF_HOUSES:
 			default:
 				switch (GB(id, 8, 8)) {
 					case 0xC4: // Station class name
@@ -4193,8 +4193,8 @@ static void FeatureNewName(ByteReader *buf)
 				break;
 
 #if 0
-				case GSF_CANAL :
-				case GSF_BRIDGE :
+				case GSF_CANALS:
+				case GSF_BRIDGES:
 					AddGRFString(_cur_spriteid, id, lang, name);
 					switch (GB(id, 8, 8)) {
 						case 0xC9: // House name
@@ -6839,7 +6839,7 @@ static void ActivateOldShore()
 static void FinalisePriceBaseMultipliers()
 {
 	extern const PriceBaseSpec _price_base_specs[];
-	static const uint32 override_features = (1 << GSF_TRAIN) | (1 << GSF_ROAD) | (1 << GSF_SHIP) | (1 << GSF_AIRCRAFT);
+	static const uint32 override_features = (1 << GSF_TRAINS) | (1 << GSF_ROADVEHICLES) | (1 << GSF_SHIPS) | (1 << GSF_AIRCRAFT);
 
 	/* Evaluate grf overrides */
 	int num_grfs = _grf_files.Length();
