@@ -85,6 +85,13 @@ enum WidgetDrawDistances {
 	WD_STICKYBOX_TOP    = 3,    ///< Top offset of sticky sprite.
 	WD_STICKYBOX_BOTTOM = 3,    ///< Bottom offset of sticky sprite.
 
+	/* WWT_DEBUGBOX */
+	WD_DEBUGBOX_WIDTH  = 12,    ///< Width of a standard debug box widget.
+	WD_DEBUGBOX_LEFT   = 2,     ///< Left offset of debug sprite.
+	WD_DEBUGBOX_RIGHT  = 2,     ///< Right offset of debug sprite.
+	WD_DEBUGBOX_TOP    = 3,     ///< Top offset of debug sprite.
+	WD_DEBUGBOX_BOTTOM = 3,     ///< Bottom offset of debug sprite.
+
 	/* WWT_RESIZEBOX */
 	WD_RESIZEBOX_WIDTH  = 12,   ///< Width of a resize box widget.
 	WD_RESIZEBOX_LEFT   = 3,    ///< Left offset of resize sprite.
@@ -770,6 +777,20 @@ public:
 	virtual void OnPlacePresize(Point pt, TileIndex tile) {}
 
 	/*** End of the event handling ***/
+
+	/**
+	 * Is the data related to this window NewGRF inspectable?
+	 * @return true iff it is inspectable.
+	 */
+	virtual bool IsNewGRFInspectable() const { return false; }
+
+	/**
+	 * Show the NewGRF inspection window. When this function is called it is
+	 * up to the window to call and pass the right parameters to the
+	 * ShowInspectWindow function.
+	 * @pre this->IsNewGRFInspectable()
+	 */
+	virtual void ShowNewGRFInspectWindow() const { NOT_REACHED(); }
 };
 
 /** Get the nested widget with number \a widnum from the nested widget tree.

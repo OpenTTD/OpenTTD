@@ -346,6 +346,10 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, int click_count)
 			nw->SetDirty(w);
 			return;
 
+		case WWT_DEBUGBOX:
+			w->ShowNewGRFInspectWindow();
+			break;
+
 		case WWT_SHADEBOX:
 			nw->SetDirty(w);
 			w->SetShaded(!w->IsShaded());

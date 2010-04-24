@@ -17,6 +17,7 @@
 #include "strings_func.h"
 #include "transparency.h"
 #include "core/geometry_func.hpp"
+#include "settings_type.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -474,6 +475,18 @@ static inline void DrawStickyBox(const Rect &r, Colours colour, bool clicked)
 {
 	DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, (clicked) ? FR_LOWERED : FR_NONE);
 	DrawSprite((clicked) ? SPR_PIN_UP : SPR_PIN_DOWN, PAL_NONE, r.left + WD_STICKYBOX_LEFT + clicked, r.top + WD_STICKYBOX_TOP + clicked);
+}
+
+/**
+ * Draw a NewGRF debug box.
+ * @param r       Rectangle of the box.
+ * @param colour  Colour of the debug box.
+ * @param clicked Box is lowered.
+ */
+static inline void DrawDebugBox(const Rect &r, Colours colour, bool clicked)
+{
+	DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, (clicked) ? FR_LOWERED : FR_NONE);
+	DrawSprite(SPR_WINDOW_DEBUG, PAL_NONE, r.left + WD_DEBUGBOX_LEFT + clicked, r.top + WD_DEBUGBOX_TOP + clicked);
 }
 
 /**
@@ -1690,12 +1703,14 @@ void NWidgetViewport::UpdateViewportCoordinates(Window *w)
 /* static */ void NWidgetLeaf::InvalidateDimensionCache()
 {
 	shadebox_dimension.width  = shadebox_dimension.height  = 0;
+	debugbox_dimension.width  = debugbox_dimension.height  = 0;
 	stickybox_dimension.width = stickybox_dimension.height = 0;
 	resizebox_dimension.width = resizebox_dimension.height = 0;
 	closebox_dimension.width  = closebox_dimension.height  = 0;
 }
 
 Dimension NWidgetLeaf::shadebox_dimension  = {0, 0};
+Dimension NWidgetLeaf::debugbox_dimension  = {0, 0};
 Dimension NWidgetLeaf::stickybox_dimension = {0, 0};
 Dimension NWidgetLeaf::resizebox_dimension = {0, 0};
 Dimension NWidgetLeaf::closebox_dimension  = {0, 0};
@@ -1710,7 +1725,7 @@ Dimension NWidgetLeaf::closebox_dimension  = {0, 0};
  */
 NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, int index, uint16 data, StringID tip) : NWidgetCore(tp, colour, 1, 1, data, tip)
 {
-	assert(index >= 0 || tp == WWT_LABEL || tp == WWT_TEXT || tp == WWT_CAPTION || tp == WWT_RESIZEBOX || tp == WWT_SHADEBOX || tp == WWT_STICKYBOX || tp == WWT_CLOSEBOX);
+	assert(index >= 0 || tp == WWT_LABEL || tp == WWT_TEXT || tp == WWT_CAPTION || tp == WWT_RESIZEBOX || tp == WWT_SHADEBOX || tp == WWT_DEBUGBOX || tp == WWT_STICKYBOX || tp == WWT_CLOSEBOX);
 	if (index >= 0) this->SetIndex(index);
 	this->SetMinimalSize(0, 0);
 	this->SetResize(0, 0);
@@ -1775,6 +1790,12 @@ NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, int index, uint16 data, 
 			this->SetDataTip(STR_NULL, STR_TOOLTIP_SHADE);
 			break;
 
+		case WWT_DEBUGBOX:
+			this->SetFill(0, 0);
+			this->SetMinimalSize(WD_DEBUGBOX_TOP, 14);
+			this->SetDataTip(STR_NULL, STR_TOOLTIP_DEBUG);
+			break;
+
 		case WWT_RESIZEBOX:
 			this->SetFill(0, 0);
 			this->SetMinimalSize(WD_RESIZEBOX_WIDTH, 12);
@@ -1834,6 +1855,24 @@ void NWidgetLeaf::SetupSmallestSize(Window *w, bool init_array)
 			size = maxdim(size, NWidgetLeaf::shadebox_dimension);
 			break;
 		}
+		case WWT_DEBUGBOX:
+			if (_settings_client.gui.newgrf_developer_tools && w->IsNewGRFInspectable()) {
+				static const Dimension extra = {WD_DEBUGBOX_LEFT + WD_DEBUGBOX_RIGHT, WD_DEBUGBOX_TOP + WD_DEBUGBOX_BOTTOM};
+				padding = &extra;
+				if (NWidgetLeaf::debugbox_dimension.width == 0) {
+					NWidgetLeaf::debugbox_dimension = GetSpriteSize(SPR_WINDOW_DEBUG);
+					NWidgetLeaf::debugbox_dimension.width += extra.width;
+					NWidgetLeaf::debugbox_dimension.height += extra.height;
+				}
+				size = maxdim(size, NWidgetLeaf::debugbox_dimension);
+			} else {
+				/* If the setting is disabled we don't want to see it! */
+				size.width = 0;
+				fill.width = 0;
+				resize.width = 0;
+			}
+			break;
+
 		case WWT_STICKYBOX: {
 			static const Dimension extra = {WD_STICKYBOX_LEFT + WD_STICKYBOX_RIGHT, WD_STICKYBOX_TOP + WD_STICKYBOX_BOTTOM};
 			padding = &extra;
@@ -2048,6 +2087,10 @@ void NWidgetLeaf::Draw(const Window *w)
 		case WWT_SHADEBOX:
 			assert(this->widget_data == 0);
 			DrawShadeBox(r, this->colour, w->IsShaded());
+			break;
+
+		case WWT_DEBUGBOX:
+			DrawDebugBox(r, this->colour, clicked);
 			break;
 
 		case WWT_STICKYBOX:
