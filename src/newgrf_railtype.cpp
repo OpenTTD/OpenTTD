@@ -113,3 +113,13 @@ uint8 GetReverseRailTypeTranslation(RailType railtype, const GRFFile *grffile)
 	/* If not found, return as invalid */
 	return 0xFF;
 }
+
+/**
+ * Resolve a railtypes's spec and such so we can get a variable.
+ * @param ro    The resolver object to fill.
+ * @param index The rail tile to get the data from.
+ */
+void GetRailTypeResolver(ResolverObject *ro, uint index)
+{
+	NewRailTypeResolver(ro, index);
+}

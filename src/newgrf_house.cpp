@@ -656,3 +656,13 @@ void TriggerHouse(TileIndex t, HouseTrigger trigger)
 {
 	DoTriggerHouse(t, trigger, 0, true);
 }
+
+/**
+ * Resolve a house's spec and such so we can get a variable.
+ * @param ro    The resolver object to fill.
+ * @param index The house tile to get the data from.
+ */
+void GetHouseResolver(ResolverObject *ro, uint index)
+{
+	NewHouseResolver(ro, GetHouseType(index), index, Town::GetByTile(index));
+}

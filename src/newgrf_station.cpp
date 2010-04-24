@@ -1081,3 +1081,13 @@ void StationUpdateAnimTriggers(BaseStation *st)
 		if (ss != NULL) st->cached_anim_triggers |= ss->anim_triggers;
 	}
 }
+
+/**
+ * Resolve a station's spec and such so we can get a variable.
+ * @param ro    The resolver object to fill.
+ * @param index The station to get the data from.
+ */
+void GetStationResolver(ResolverObject *ro, uint index)
+{
+	NewStationResolver(ro, GetStationSpec(index), Station::GetByTile(index), index);
+}

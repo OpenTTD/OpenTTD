@@ -1188,3 +1188,14 @@ void CommitVehicleListOrderChanges()
 	/* Clear out the queue */
 	_list_order_changes.Reset();
 }
+
+/**
+ * Resolve an engine's spec and such so we can get a variable.
+ * @param ro    The resolver object to fill.
+ * @param index The vehicle to get the data from.
+ */
+void GetVehicleResolver(ResolverObject *ro, uint index)
+{
+	Vehicle *v = Vehicle::Get(index);
+	NewVehicleResolver(ro, v->engine_type, v);
+}

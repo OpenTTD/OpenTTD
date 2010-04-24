@@ -406,3 +406,12 @@ void AirportAnimationTrigger(Station *st, AirpAnimationTrigger trigger, CargoID 
 	}
 }
 
+/**
+ * Resolve an airport tile's spec and such so we can get a variable.
+ * @param ro    The resolver object to fill.
+ * @param index The airport tile to get the data from.
+ */
+void GetAirportTileTypeResolver(ResolverObject *ro, uint index)
+{
+	AirportTileResolver(ro, GetAirportGfx(index), index, Station::GetByTile(index));
+}

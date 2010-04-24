@@ -563,3 +563,14 @@ void IndustryProductionCallback(Industry *ind, int reason)
 
 	SetWindowDirty(WC_INDUSTRY_VIEW, ind->index);
 }
+
+/**
+ * Resolve a industry's spec and such so we can get a variable.
+ * @param ro    The resolver object to fill.
+ * @param index The industry ID to get the data from.
+ */
+void GetIndustryResolver(ResolverObject *ro, uint index)
+{
+	Industry *i = Industry::Get(index);
+	NewIndustryResolver(ro, i->location.tile, i, i->type);
+}

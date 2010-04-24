@@ -430,3 +430,13 @@ void TriggerIndustry(Industry *ind, IndustryTileTrigger trigger)
 		}
 	}
 }
+
+/**
+ * Resolve a industry tile's spec and such so we can get a variable.
+ * @param ro    The resolver object to fill.
+ * @param index The industry tile to get the data from.
+ */
+void GetIndustryTileResolver(ResolverObject *ro, uint index)
+{
+	NewIndustryTileResolver(ro, GetIndustryGfx(index), index, Industry::GetByTile(index));
+}
