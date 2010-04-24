@@ -94,6 +94,7 @@ static const CmdStruct _cmd_structs[] = {
 	{"NUM",             EmitSingleChar, SCC_NUM,                1, C_NONE}, // Signed number
 	{"ZEROFILL_NUM",    EmitSingleChar, SCC_ZEROFILL_NUM,       2, C_NONE}, // Unsigned number with zero fill, e.g. "02". First parameter is number, second minimum length
 	{"BYTES",           EmitSingleChar, SCC_BYTES,              1, C_NONE}, // Unsigned number with "bytes", i.e. "1.02 MiB or 123 KiB"
+	{"HEX",             EmitSingleChar, SCC_HEX,                1, C_NONE}, // Hexadecimally printed number
 
 	{"CURRENCY",        EmitSingleChar, SCC_CURRENCY,           1, C_NONE},
 
