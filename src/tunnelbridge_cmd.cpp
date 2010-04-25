@@ -750,6 +750,8 @@ static CommandCost DoClearBridge(TileIndex tile, DoCommandFlag flags)
 		ChangeTownRating(t, RATING_TUNNEL_BRIDGE_DOWN_STEP, RATING_TUNNEL_BRIDGE_MINIMUM, flags);
 	}
 
+	Money base_cost = (GetTunnelBridgeTransportType(tile) != TRANSPORT_WATER) ? _price[PR_CLEAR_BRIDGE] : _price[PR_CLEAR_AQUEDUCT];
+
 	if (flags & DC_EXEC) {
 		/* read this value before actual removal of bridge */
 		bool rail = GetTunnelBridgeTransportType(tile) == TRANSPORT_RAIL;
@@ -787,7 +789,6 @@ static CommandCost DoClearBridge(TileIndex tile, DoCommandFlag flags)
 		}
 	}
 
-	Money base_cost = (GetTunnelBridgeTransportType(tile) != TRANSPORT_WATER) ? _price[PR_CLEAR_BRIDGE] : _price[PR_CLEAR_AQUEDUCT];
 	return CommandCost(EXPENSES_CONSTRUCTION, (GetTunnelBridgeLength(tile, endtile) + 2) * base_cost);
 }
 
