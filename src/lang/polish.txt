@@ -609,7 +609,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Zmień n
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Zamknij okno
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Tytuł okna - przeciągnij aby przesunąć okno
 STR_TOOLTIP_SHADE                                               :{BLACK}Zwiń okno - pokaż tylko nagłówek
-STR_TOOLTIP_DEBUG                                               :{BLACK}Pokaż informacje debugerra z NewGFR
+STR_TOOLTIP_DEBUG                                               :{BLACK}Pokaż informacje debugerra z NewGRF
 STR_TOOLTIP_STICKY                                              :{BLACK}Zaznacza to okno jako niezamykane dla funkcji 'Zamknij wszystkie okna'
 STR_TOOLTIP_RESIZE                                              :{BLACK}Kliknij i przeciągnij by zmienić rozmiar okna
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Przełącz duży/mały rozmiar okna
@@ -2755,6 +2755,9 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Typ szyn
 
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGFR zmienna 60+parametr x (heksadecymalnie)
 
+# Sprite aligner window
+
+
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Ostrzeżenie: {SILVER}{STRING}
@@ -3352,6 +3355,10 @@ STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE               :{LTBLUE}Serwisu
 STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL           :{LTBLUE}Serwisuj w Stoczni w {TOWN}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE                   :{LTBLUE}Serwisuj w Hangarze na {STATION}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE_VEL               :{LTBLUE}Serwisuj w Hangarze na {STATION}, {VELOCITY}
+
+# Vehicle stopped/started animations
+STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Zatrzymany
+STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Zatrzymany
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Szczegóły)

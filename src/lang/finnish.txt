@@ -230,6 +230,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Nimeä u
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Sulje ikkuna
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Ikkunan otsake - vedä tästä siirtääksesi ikkunaa
 STR_TOOLTIP_SHADE                                               :{BLACK}Pienennä ikkuna - näytä vain otsikko
+STR_TOOLTIP_DEBUG                                               :{BLACK}Näytä NewGRF-vianmääritystiedot
 STR_TOOLTIP_STICKY                                              :{BLACK}'Sulje Kaikki Ikkunat'-nappi ei vaikuta tähän ikkunaan.
 STR_TOOLTIP_RESIZE                                              :{BLACK}Napsauta ja vedä muuttaaksesi tämän ikkunan kokoa.
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Suurenna/pienennä ikkuna
@@ -441,6 +442,7 @@ STR_ABOUT_MENU_AI_DEBUG                                         :Tekoälyn virhe
 STR_ABOUT_MENU_SCREENSHOT                                       :Kuvakaappaus (Ctrl+S)
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Valtava kuvakaappaus (Ctrl+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Tietoja 'OpenTTD':stä
+STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite-kohdistaja
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -2364,6 +2366,30 @@ STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Lisää 
 STR_NEWGRF_ADD_RESCAN_FILES                                     :{BLACK}Päivitä
 STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}Päivitä saatavilla olevien NewGRF-tiedostojen lista
 
+# NewGRF inspect window
+STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Tutki - {STRING}
+STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Vanhempi
+STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Tutki vanhemman kohdetta
+
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} sijainnissa {HEX}
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Rautatien tyyppi
+
+STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF muuttujan 60+x parametri (heksadesimaali)
+
+# Sprite aligner window
+STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Kohdistetaan spriteä {COMMA} ({STRING})
+STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Seuraava sprite
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Mene seuraavaan normaaliin spriteen, hypäten yli pseudo/uudelleenväritetyt/fontti spritet ja mene alkuun kun päästään viimeiseen
+STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Mene spriteen
+STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Mene valittuun spriteen. Jos sprite ei ole tavallinen, jatka seuraavaan tavalliseen spriteen
+STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Edelinen sprite
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Jatka edelliseen tavalliseen spriteen, hypäten yli kaikki pseudo/uudelleenväritetyt/fontti spritet ja mene loppuun kun päästään ensimmäiseen.
+STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Valitun spriten näyttö. Sijaintia ei huomioida spriteä piirrettäessä
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Liikuta spriteä ympäriinsä, muuttaen X- ja Y-sijainteja
+STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X-sijainti: {NUM}, Y-sijainti: {NUM}
+
+STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Mene spriteen
+
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Varoitus: {SILVER}{STRING}
@@ -2955,6 +2981,12 @@ STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE               :{LTBLUE}Huolto 
 STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL           :{LTBLUE}Huolto {TOWN} Telakka, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE                   :{LTBLUE}Huolto {STATION} Halli
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE_VEL               :{LTBLUE}Huolto {STATION} Halli, {VELOCITY}
+
+# Vehicle stopped/started animations
+STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Pysäytetty
+STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Pysäytetty
+STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINYFONT}{GREEN}Käynnistetty
+STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Käynnistetty
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (yksityiskohdat)

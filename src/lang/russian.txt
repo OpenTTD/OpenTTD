@@ -474,7 +474,7 @@ STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Настрой�
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Расширенные настройки
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Настройки NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Настройки прозрачности
-STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Показ названий городов
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Показывать названия городов
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Показывать названия станций
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Показывать имена точек пути
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Показывать знаки
@@ -2506,7 +2506,7 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Ввер
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Переместить выбранный файл NewGRF выше
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Вниз
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Переместить выбранный файл NewGRF ниже
-STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Список установленных файлов NewGRF. Выберите файл для просмотра информации о нем
+STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Список установленных файлов NewGRF. Выберите файл для просмотра информации о нём
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Параметры
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Переключить палитру
@@ -2536,8 +2536,14 @@ STR_NEWGRF_ADD_RESCAN_FILES                                     :{BLACK}Обно
 STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}Обновить список доступных файлов NewGRF
 
 # NewGRF inspect window
+STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Родитель
 
 
+
+# Sprite aligner window
+STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}Смещение по X: {NUM}, Смещение по Y: {NUM}
+
+STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Перейти к спрайту
 
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
@@ -3140,6 +3146,12 @@ STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE               :{LTBLUE}Обс�
 STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL           :{LTBLUE}Обслуж. в доке {TOWN}; {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE                   :{LTBLUE}Обслуж. в ангаре {STATION}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE_VEL               :{LTBLUE}Обслуж. в ангаре {STATION}; {VELOCITY}
+
+# Vehicle stopped/started animations
+STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Остановлен
+STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Остановлен
+STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINYFONT}{GREEN}Запущен
+STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Запущен
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Детали)

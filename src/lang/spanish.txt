@@ -443,6 +443,7 @@ STR_ABOUT_MENU_AI_DEBUG                                         :Depuración de 
 STR_ABOUT_MENU_SCREENSHOT                                       :Captura de pantalla (Ctrl-S)
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Captura gigante (Ctrl+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Acerca de 'OpenTTD'
+STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Alineador de sprites
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -2376,6 +2377,20 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Tipo de rail
 
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Parámetro de variable NewGRF 60+x (hexadecimal)
 
+# Sprite aligner window
+STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Alinear sprite {COMMA} ({STRING})
+STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Siguiente sprite
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Ir al sprite siguiente, ignorando pseudosprites, sprites recoloreados y sprites de fuente
+STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Ir a sprite
+STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Ir al sprite indicado. Si el sprite no es un sprite normal, ir al siguiente sprite normal
+STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Sprite anterior
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Saltar al sprite anterior, ignorando pseudosprites, sprites recoloreados y sprites de fuente
+STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Representación del sprite seleccionado. Su alineamiento es ignorado al dibujarlo
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Mover el sprite, cambiando los ajustes X e Y
+STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}Ajuste X: {NUM}, Ajuste Y: {NUM}
+
+STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Ir a sprite
+
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Atención: {SILVER}{STRING}
@@ -2967,6 +2982,12 @@ STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE               :{LTBLUE}Manteni
 STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL           :{LTBLUE}Mantenimiento en el astillero de {TOWN}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE                   :{LTBLUE}Mantenimiento en el hangar de {STATION}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE_VEL               :{LTBLUE}Mantenimiento en el hangar de {STATION}, {VELOCITY}
+
+# Vehicle stopped/started animations
+STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Detenido
+STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Detenido
+STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINYFONT}{GREEN}Arrancado
+STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Arrancado
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Detalles)

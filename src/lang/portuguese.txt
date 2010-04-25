@@ -230,6 +230,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Renomear
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Fechar janela
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Título da janela - arraste isto para mover a janela
 STR_TOOLTIP_SHADE                                               :{BLACK}Encolher janela - apenas mostra a barra de título
+STR_TOOLTIP_DEBUG                                               :{BLACK}Mostrar informação do debug de NewGRF
 STR_TOOLTIP_STICKY                                              :{BLACK}Marcar esta janela como não-encerrável pela tecla 'Fechar Todas as Janelas'
 STR_TOOLTIP_RESIZE                                              :{BLACK}Clique e arraste para reajustar janela
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Alternar entre janela grande/pequena
@@ -2364,6 +2365,15 @@ STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Adiciona
 STR_NEWGRF_ADD_RESCAN_FILES                                     :{BLACK}Reler ficheiros
 STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}Actualizar a lista de ficheiros NewGRF disponíveis
 
+# NewGRF inspect window
+
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} no {HEX}
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Tipo de linha
+
+
+# Sprite aligner window
+
+
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Aviso: {SILVER}{STRING}
@@ -2955,6 +2965,10 @@ STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE               :{LTBLUE}Serviç
 STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL           :{LTBLUE}Serviço no depósito de {TOWN}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE                   :{LTBLUE}Serviço no hangar de {STATION}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE_VEL               :{LTBLUE}Serviço no hangar de {STATION}, {VELOCITY}
+
+# Vehicle stopped/started animations
+STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Parou
+STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Parou
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Detalhes)

@@ -2570,6 +2570,9 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Vrsta železnic
 
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF promenljiva 60+x parametar (heksadecimalno)
 
+# Sprite aligner window
+
+
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Upozorenje: {SILVER}{STRING}
@@ -3171,6 +3174,12 @@ STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE               :{LTBLUE}Servisi
 STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL           :{LTBLUE}Servisiranje u {TOWN} Brodskom Depou, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE                   :{LTBLUE}Servisiranje u {STATION} Hangaru
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE_VEL               :{LTBLUE}Servisiranje u {STATION} Hangaru, {VELOCITY}
+
+# Vehicle stopped/started animations
+STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Zaustavljeno
+STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Zaustavljeno
+STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINYFONT}{GREEN}Pokrenuto
+STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Pokrenuto
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Opširnije)
