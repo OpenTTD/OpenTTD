@@ -470,10 +470,13 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 
 		if (c != NULL) bridge_len = CalcBridgeLenCostFactor(bridge_len);
 
-		cost.AddCost((int64)bridge_len * _price[PR_BUILD_BRIDGE] * GetBridgeSpec(bridge_type)->price >> 8);
+		if (transport_type != TRANSPORT_WATER) {
+			cost.AddCost((int64)bridge_len * _price[PR_BUILD_BRIDGE] * GetBridgeSpec(bridge_type)->price >> 8);
+		} else {
+			/* Aqueducts use a separate base cost. */
+			cost.AddCost((int64)bridge_len * _price[PR_CLEAR_WATER]);
+		}
 
-		/* Aqueducts are a little more expensive. */
-		if (transport_type == TRANSPORT_WATER) cost.AddCost((int64)bridge_len * _price[PR_CLEAR_WATER]);
 	}
 
 	return cost;
