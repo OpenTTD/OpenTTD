@@ -140,6 +140,41 @@ bool SpriteExists(SpriteID id)
 	return !(GetSpriteCache(id)->file_pos == 0 && GetSpriteCache(id)->file_slot == 0);
 }
 
+/**
+ * Get the sprite type of a given sprite.
+ * @param sprite The sprite to look at.
+ * @return the type of sprite.
+ */
+SpriteType GetSpriteType(SpriteID sprite)
+{
+	if (!SpriteExists(sprite)) return ST_INVALID;
+	return GetSpriteCache(sprite)->type;
+}
+
+/**
+ * Get the (FIOS) file slot of a given sprite.
+ * @param sprite The sprite to look at.
+ * @return the FIOS file slot
+ */
+uint GetOriginFileSlot(SpriteID sprite)
+{
+	if (!SpriteExists(sprite)) return 0;
+	return GetSpriteCache(sprite)->file_slot;
+}
+
+/**
+ * Get a reasonable (upper bound) estimate of the maximum
+ * SpriteID used in OpenTTD; there will be no sprites with
+ * a higher SpriteID, although there might be up to roughly
+ * a thousand unused SpriteIDs below this number.
+ * @note It's actually the number of spritecache items.
+ * @return maximum SpriteID
+ */
+uint GetMaxSpriteID()
+{
+	return _spritecache_items;
+}
+
 static void *AllocSprite(size_t);
 
 static void *ReadSprite(SpriteCache *sc, SpriteID id, SpriteType sprite_type)

@@ -57,4 +57,9 @@ GrfSpecFeature GetGrfSpecFeature(TileIndex tile);
  */
 GrfSpecFeature GetGrfSpecFeature(VehicleType type);
 
+/**
+ * Show the window for aligning sprites.
+ */
+void ShowSpriteAlignerWindow();
+
 #endif /* NEWGRF_DEBUG_H */

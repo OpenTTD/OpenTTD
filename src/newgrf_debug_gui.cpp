@@ -13,7 +13,9 @@
 #include <stdarg.h>
 #include "window_gui.h"
 #include "window_func.h"
+#include "fileio_func.h"
 #include "gfx_func.h"
+#include "spritecache.h"
 #include "string_func.h"
 #include "strings_func.h"
 #include "textbuf_gui.h"
@@ -527,4 +529,202 @@ GrfSpecFeature GetGrfSpecFeature(VehicleType type)
 		case VEH_AIRCRAFT: return GSF_AIRCRAFT;
 		default:           return GSF_INVALID;
 	}
+}
+
+
+
+/**** Sprite Aligner ****/
+
+/** Widgets we want (some) influence over. */
+enum SpriteAlignerWidgets {
+	SAW_CAPTION,  ///< Caption of the window
+	SAW_PREVIOUS, ///< Skip to the previous sprite
+	SAW_GOTO,     ///< Go to a given sprite
+	SAW_NEXT,     ///< Skip to the next sprite
+	SAW_UP,       ///< Move the sprite up
+	SAW_LEFT,     ///< Move the sprite to the left
+	SAW_RIGHT,    ///< Move the sprite to the right
+	SAW_DOWN,     ///< Move the sprite down
+	SAW_SPRITE,   ///< The actual sprite
+	SAW_OFFSETS,  ///< The sprite offsets
+};
+
+/** Window used for aligning sprites. */
+struct SpriteAlignerWindow : Window {
+	SpriteID current_sprite; ///< The currently shown sprite
+
+	SpriteAlignerWindow(const WindowDesc *desc, WindowNumber wno) : Window()
+	{
+		this->InitNested(desc, wno);
+
+		/* Oh yes, we assume there is at least one normal sprite! */
+		while (GetSpriteType(this->current_sprite) != ST_NORMAL) this->current_sprite++;
+	}
+
+	virtual void SetStringParameters(int widget) const
+	{
+		switch (widget) {
+			case SAW_CAPTION:
+				SetDParam(0, this->current_sprite);
+				SetDParamStr(1, FioGetFilename(GetOriginFileSlot(this->current_sprite)));
+				break;
+
+			case SAW_OFFSETS: {
+				const Sprite *spr = GetSprite(this->current_sprite, ST_NORMAL);
+				SetDParam(0, spr->x_offs);
+				SetDParam(1, spr->y_offs);
+			} break;
+
+			default:
+				break;
+		}
+	}
+
+	virtual void DrawWidget(const Rect &r, int widget) const
+	{
+		if (widget != SAW_SPRITE) return;
+
+		/* Center the sprite ourselves */
+		const Sprite *spr = GetSprite(this->current_sprite, ST_NORMAL);
+		int width  = r.right  - r.left + 1;
+		int height = r.bottom - r.top  + 1;
+		int x = r.left - spr->x_offs + (width  - spr->width) / 2;
+		int y = r.top  - spr->y_offs + (height - spr->height) / 2;
+
+		/* And draw only the part within the sprite area */
+		SubSprite subspr = {
+			spr->x_offs + (spr->width  - width)  / 2 + 1,
+			spr->y_offs + (spr->height - height) / 2 + 1,
+			spr->x_offs + (spr->width  + width)  / 2 - 1,
+			spr->y_offs + (spr->height + height) / 2 - 1,
+		};
+
+		DrawSprite(this->current_sprite, PAL_NONE, x, y, &subspr);
+	}
+
+	virtual void OnPaint()
+	{
+		this->DrawWidgets();
+	}
+
+	virtual void OnClick(Point pt, int widget, int click_count)
+	{
+		switch (widget) {
+			case SAW_PREVIOUS:
+				do {
+					this->current_sprite = (this->current_sprite == 0 ? GetMaxSpriteID() :  this->current_sprite) - 1;
+				} while (GetSpriteType(this->current_sprite) != ST_NORMAL);
+				this->SetDirty();
+				break;
+
+			case SAW_GOTO:
+				ShowQueryString(STR_EMPTY, STR_SPRITE_ALIGNER_GOTO_CAPTION, 7, 150, this, CS_NUMERAL, QSF_NONE);
+				break;
+
+			case SAW_NEXT:
+				do {
+					this->current_sprite = (this->current_sprite + 1) % GetMaxSpriteID();
+				} while (GetSpriteType(this->current_sprite) != ST_NORMAL);
+				this->SetDirty();
+				break;
+
+			case SAW_UP:
+			case SAW_DOWN:
+			case SAW_LEFT:
+			case SAW_RIGHT: {
+				/*
+				 * Yes... this is a hack.
+				 *
+				 * No... I don't think it is useful to make this less of a hack.
+				 *
+				 * If you want to align sprites, you just need the number. Generally
+				 * the sprite caches are big enough to not remove the sprite from the
+				 * cache. If that's not the case, just let the NewGRF developer
+				 * increase the cache size instead of storing thousands of offsets
+				 * for the incredibly small chance that it's actually going to be
+				 * used by someone and the sprite cache isn't big enough for that
+				 * particular NewGRF developer.
+				 */
+				Sprite *spr = const_cast<Sprite *>(GetSprite(this->current_sprite, ST_NORMAL));
+				switch (widget) {
+					case SAW_UP:    spr->y_offs--; break;
+					case SAW_DOWN:  spr->y_offs++; break;
+					case SAW_LEFT:  spr->x_offs--; break;
+					case SAW_RIGHT: spr->x_offs++; break;
+				}
+				/* Ofcourse, we need to redraw the sprite, but where is it used?
+				 * Everywhere is a safe bet. */
+				MarkWholeScreenDirty();
+			} break;
+		}
+	}
+
+	virtual void OnQueryTextFinished(char *str)
+	{
+		if (StrEmpty(str)) return;
+
+		this->current_sprite = atoi(str);
+		if (this->current_sprite >= GetMaxSpriteID()) this->current_sprite = 0;
+		while (GetSpriteType(this->current_sprite) != ST_NORMAL) {
+			this->current_sprite = (this->current_sprite + 1) % GetMaxSpriteID();
+		}
+		this->SetDirty();
+	}
+};
+
+static const NWidgetPart _nested_sprite_aligner_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
+		NWidget(WWT_CAPTION, COLOUR_GREY, SAW_CAPTION), SetDataTip(STR_SPRITE_ALIGNER_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_SHADEBOX, COLOUR_GREY),
+		NWidget(WWT_STICKYBOX, COLOUR_GREY),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY),
+		NWidget(NWID_VERTICAL), SetPIP(10, 5, 10),
+			NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(10, 5, 10),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SAW_PREVIOUS), SetDataTip(STR_SPRITE_ALIGNER_PREVIOUS_BUTTON, STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP), SetFill(1, 0),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SAW_GOTO), SetDataTip(STR_SPRITE_ALIGNER_GOTO_BUTTON, STR_SPRITE_ALIGNER_GOTO_TOOLTIP), SetFill(1, 0),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SAW_NEXT), SetDataTip(STR_SPRITE_ALIGNER_NEXT_BUTTON, STR_SPRITE_ALIGNER_NEXT_TOOLTIP), SetFill(1, 0),
+			EndContainer(),
+			NWidget(NWID_HORIZONTAL), SetPIP(10, 5, 10),
+				NWidget(NWID_SPACER), SetFill(1, 1),
+				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, SAW_UP), SetDataTip(SPR_ARROW_UP, STR_SPRITE_ALIGNER_MOVE_TOOLTIP), SetResize(0, 0),
+				NWidget(NWID_SPACER), SetFill(1, 1),
+			EndContainer(),
+			NWidget(NWID_HORIZONTAL_LTR), SetPIP(10, 5, 10),
+				NWidget(NWID_VERTICAL),
+					NWidget(NWID_SPACER), SetFill(1, 1),
+					NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, SAW_LEFT), SetDataTip(SPR_ARROW_LEFT, STR_SPRITE_ALIGNER_MOVE_TOOLTIP), SetResize(0, 0),
+					NWidget(NWID_SPACER), SetFill(1, 1),
+				EndContainer(),
+				NWidget(WWT_PANEL, COLOUR_DARK_BLUE, SAW_SPRITE), SetDataTip(STR_NULL, STR_SPRITE_ALIGNER_SPRITE_TOOLTIP), SetMinimalSize(200, 200),
+				EndContainer(),
+				NWidget(NWID_VERTICAL),
+					NWidget(NWID_SPACER), SetFill(1, 1),
+					NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, SAW_RIGHT), SetDataTip(SPR_ARROW_RIGHT, STR_SPRITE_ALIGNER_MOVE_TOOLTIP), SetResize(0, 0),
+					NWidget(NWID_SPACER), SetFill(1, 1),
+				EndContainer(),
+			EndContainer(),
+			NWidget(NWID_HORIZONTAL), SetPIP(10, 5, 10),
+				NWidget(NWID_SPACER), SetFill(1, 1),
+				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, SAW_DOWN), SetDataTip(SPR_ARROW_DOWN, STR_SPRITE_ALIGNER_MOVE_TOOLTIP), SetResize(0, 0),
+				NWidget(NWID_SPACER), SetFill(1, 1),
+			EndContainer(),
+			NWidget(NWID_HORIZONTAL), SetPIP(10, 5, 10),
+				NWidget(WWT_LABEL, COLOUR_GREY, SAW_OFFSETS), SetDataTip(STR_SPRITE_ALIGNER_OFFSETS, STR_NULL), SetFill(1, 0),
+			EndContainer(),
+		EndContainer(),
+	EndContainer(),
+};
+
+static const WindowDesc _sprite_aligner_desc(
+	WDP_AUTO, 400, 300,
+	WC_SPRITE_ALIGNER, WC_NONE,
+	WDF_UNCLICK_BUTTONS,
+	_nested_sprite_aligner_widgets, lengthof(_nested_sprite_aligner_widgets)
+);
+
+void ShowSpriteAlignerWindow()
+{
+	AllocateWindowDescFront<SpriteAlignerWindow>(&_sprite_aligner_desc, 0);
 }

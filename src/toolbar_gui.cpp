@@ -44,6 +44,7 @@
 #include "smallmap_gui.h"
 #include "graph_gui.h"
 #include "textbuf_gui.h"
+#include "newgrf_debug.h"
 
 #include "network/network.h"
 #include "network/network_gui.h"
@@ -759,7 +760,7 @@ static void MenuClickNewspaper(int index)
 
 static void ToolbarHelpClick(Window *w)
 {
-	PopupMainToolbMenu(w, TBN_HELP, STR_ABOUT_MENU_LAND_BLOCK_INFO, 7);
+	PopupMainToolbMenu(w, TBN_HELP, STR_ABOUT_MENU_LAND_BLOCK_INFO, _settings_client.gui.newgrf_developer_tools ? 8 : 7);
 }
 
 static void MenuClickSmallScreenshot()
@@ -781,6 +782,7 @@ static void MenuClickHelp(int index)
 		case 4: MenuClickSmallScreenshot(); break;
 		case 5: MenuClickWorldScreenshot(); break;
 		case 6: ShowAboutWindow();          break;
+		case 7: ShowSpriteAlignerWindow();  break;
 	}
 }
 

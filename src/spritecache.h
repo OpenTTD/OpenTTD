@@ -28,6 +28,11 @@ extern uint _sprite_cache_size;
 void *GetRawSprite(SpriteID sprite, SpriteType type);
 bool SpriteExists(SpriteID sprite);
 
+SpriteType GetSpriteType(SpriteID sprite);
+uint GetOriginFileSlot(SpriteID sprite);
+uint GetMaxSpriteID();
+
+
 static inline const Sprite *GetSprite(SpriteID sprite, SpriteType type)
 {
 	assert(type != ST_RECOLOUR);

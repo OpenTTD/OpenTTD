@@ -442,6 +442,7 @@ STR_ABOUT_MENU_AI_DEBUG                                         :AI debug
 STR_ABOUT_MENU_SCREENSHOT                                       :Screenshot (Ctrl+S)
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Giant screenshot (Ctrl+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :About 'OpenTTD'
+STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite aligner
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -2374,6 +2375,20 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING1} at {H
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Rail type
 
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF variable 60+x parameter (hexadecimal)
+
+# Sprite aligner window
+STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Aligning sprite {COMMA} ({RAW_STRING})
+STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Next sprite
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Proceed to the next normal sprite, skipping any pseudo/recolour/font sprites and wrapping around at the end
+STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Go to sprite
+STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Go to the given sprite. If the sprite is not a normal sprite, proceed to the next normal sprite
+STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Previous sprite
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Proceed to the previous normal sprite, skipping any pseudo/recolour/font sprites and wrapping around at the begin
+STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Representation of the currently selected sprite. The alignment is ignored when drawing this sprite
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Move the sprite around, changing the X and Y offsets
+STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X offset: {NUM}, Y offset: {NUM}
+
+STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Go to sprite
 
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{RAW_STRING}
