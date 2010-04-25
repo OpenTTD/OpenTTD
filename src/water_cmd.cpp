@@ -246,7 +246,7 @@ static CommandCost DoBuildLock(TileIndex tile, DiagDirection dir, DoCommandFlag 
 		MarkCanalsAndRiversAroundDirty(tile - delta);
 		MarkCanalsAndRiversAroundDirty(tile + delta);
 	}
-	cost.AddCost(_price[PR_CLEAR_WATER] * 3 / 4);
+	cost.AddCost(_price[PR_BUILD_LOCK]);
 
 	return cost;
 }
@@ -281,7 +281,7 @@ static CommandCost RemoveLock(TileIndex tile, DoCommandFlag flags)
 		MarkCanalsAndRiversAroundDirty(tile + delta);
 	}
 
-	return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_CLEAR_WATER] * 2);
+	return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_CLEAR_LOCK]);
 }
 
 /** Builds a lock.
@@ -360,7 +360,7 @@ CommandCost CmdBuildCanal(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 			MarkCanalsAndRiversAroundDirty(tile);
 		}
 
-		cost.AddCost(_price[PR_CLEAR_WATER]);
+		cost.AddCost(_price[PR_BUILD_CANAL]);
 	}
 
 	if (cost.GetCost() == 0) {
@@ -376,6 +376,7 @@ static CommandCost ClearTile_Water(TileIndex tile, DoCommandFlag flags)
 		case WATER_TILE_CLEAR: {
 			if (flags & DC_NO_WATER) return_cmd_error(STR_ERROR_CAN_T_BUILD_ON_WATER);
 
+			Money base_cost = IsCanal(tile) ? _price[PR_CLEAR_CANAL] : _price[PR_CLEAR_WATER];
 			/* Make sure freeform edges are allowed or it's not an edge tile. */
 			if (!_settings_game.construction.freeform_edges && (!IsInsideMM(TileX(tile), 1, MapMaxX() - 1) ||
 					!IsInsideMM(TileY(tile), 1, MapMaxY() - 1))) {
@@ -395,7 +396,8 @@ static CommandCost ClearTile_Water(TileIndex tile, DoCommandFlag flags)
 				DoClearSquare(tile);
 				MarkCanalsAndRiversAroundDirty(tile);
 			}
-			return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_CLEAR_WATER]);
+
+			return CommandCost(EXPENSES_CONSTRUCTION, base_cost);
 		}
 
 		case WATER_TILE_COAST: {

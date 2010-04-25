@@ -474,7 +474,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 			cost.AddCost((int64)bridge_len * _price[PR_BUILD_BRIDGE] * GetBridgeSpec(bridge_type)->price >> 8);
 		} else {
 			/* Aqueducts use a separate base cost. */
-			cost.AddCost((int64)bridge_len * _price[PR_CLEAR_WATER]);
+			cost.AddCost((int64)bridge_len * _price[PR_BUILD_AQUEDUCT]);
 		}
 
 	}
@@ -787,7 +787,8 @@ static CommandCost DoClearBridge(TileIndex tile, DoCommandFlag flags)
 		}
 	}
 
-	return CommandCost(EXPENSES_CONSTRUCTION, (GetTunnelBridgeLength(tile, endtile) + 2) * _price[PR_CLEAR_BRIDGE]);
+	Money base_cost = (GetTunnelBridgeTransportType(tile) != TRANSPORT_WATER) ? _price[PR_CLEAR_BRIDGE] : _price[PR_CLEAR_AQUEDUCT];
+	return CommandCost(EXPENSES_CONSTRUCTION, (GetTunnelBridgeLength(tile, endtile) + 2) * base_cost);
 }
 
 /** Remove a tunnel or a bridge from the game.
