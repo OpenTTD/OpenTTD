@@ -1006,7 +1006,7 @@ DEF_CONSOLE_CMD(ConRestart)
 	/* Don't copy the _newgame pointers to the real pointers, so call SwitchToMode directly */
 	_settings_game.game_creation.map_x = MapLogX();
 	_settings_game.game_creation.map_y = FindFirstBit(MapSizeY());
-	SwitchToMode(SM_RESTARTGAME);
+	_switch_mode = SM_RESTARTGAME;
 	return true;
 }
 
