@@ -213,6 +213,7 @@ static CommandCost DoBuildLock(TileIndex tile, DiagDirection dir, DoCommandFlag 
 		ret = DoCommand(tile - delta, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 		if (ret.Failed()) return ret;
 		cost.AddCost(ret);
+		cost.AddCost(_price[PR_CLEAR_WATER]);
 	}
 	if (GetTileSlope(tile - delta, NULL) != SLOPE_FLAT) {
 		return_cmd_error(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
@@ -225,6 +226,7 @@ static CommandCost DoBuildLock(TileIndex tile, DiagDirection dir, DoCommandFlag 
 		ret = DoCommand(tile + delta, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 		if (ret.Failed()) return ret;
 		cost.AddCost(ret);
+		cost.AddCost(_price[PR_CLEAR_WATER]);
 	}
 	if (GetTileSlope(tile + delta, NULL) != SLOPE_FLAT) {
 		return_cmd_error(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
@@ -244,7 +246,7 @@ static CommandCost DoBuildLock(TileIndex tile, DiagDirection dir, DoCommandFlag 
 		MarkCanalsAndRiversAroundDirty(tile - delta);
 		MarkCanalsAndRiversAroundDirty(tile + delta);
 	}
-	cost.AddCost(_price[PR_CLEAR_WATER] * 22 >> 3);
+	cost.AddCost(_price[PR_CLEAR_WATER] * 3 / 4);
 
 	return cost;
 }
