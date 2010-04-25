@@ -190,7 +190,12 @@ static CommandCost RemoveShipDepot(TileIndex tile, DoCommandFlag flags)
 	return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_CLEAR_DEPOT_SHIP]);
 }
 
-/** build a lock */
+/** Builds a lock.
+ * @param tile Central tile of the lock.
+ * @param dir Uphill direction.
+ * @param flags Operation to perform.
+ * @return The cost in case of success, or an error code if it failed.
+ */
 static CommandCost DoBuildLock(TileIndex tile, DiagDirection dir, DoCommandFlag flags)
 {
 	/* middle tile */
@@ -234,6 +239,11 @@ static CommandCost DoBuildLock(TileIndex tile, DiagDirection dir, DoCommandFlag 
 	return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_CLEAR_WATER] * 22 >> 3);
 }
 
+/** Remove a lock.
+ * @param tile Central tile of the lock.
+ * @param flags Operation to perform.
+ * @return The cost in case of success, or an error code if it failed.
+ */
 static CommandCost RemoveLock(TileIndex tile, DoCommandFlag flags)
 {
 	if (GetTileOwner(tile) != OWNER_NONE) {
@@ -262,7 +272,7 @@ static CommandCost RemoveLock(TileIndex tile, DoCommandFlag flags)
 	return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_CLEAR_WATER] * 2);
 }
 
-/** Builds a lock (ship-lift)
+/** Builds a lock.
  * @param tile tile where to place the lock
  * @param flags type of operation
  * @param p1 unused
