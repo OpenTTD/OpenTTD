@@ -2364,6 +2364,19 @@ STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Thêm Ne
 STR_NEWGRF_ADD_RESCAN_FILES                                     :{BLACK}Quét lại file
 STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}Cập nhật danh sách NewGRF file sẵn có
 
+# NewGRF inspect window
+
+
+
+# Sprite aligner window
+STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Sprite tiếp
+STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Đi tới sprite
+STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Sprite trước
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Di chuyển sprite xung quanh, thay đổi X và Y offsets
+STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X offset: {NUM}, Y offset: {NUM}
+
+STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Đi tới sprite
+
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Cảnh báo: {SILVER}{STRING}
@@ -2955,6 +2968,8 @@ STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE               :{LTBLUE}Bảo t
 STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL           :{LTBLUE}Bảo trì tại xưởng {TOWN}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE                   :{LTBLUE}Bảo trì tại xưởng {STATION}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE_VEL               :{LTBLUE}Bảo trì tại xưởng {STATION}, {VELOCITY}
+
+# Vehicle stopped/started animations
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Chi tiết)

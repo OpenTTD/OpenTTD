@@ -1093,7 +1093,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Original
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Realistisk
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Slutnings lutning för tåg {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Lutningars lutningsgrad för vägfordon {ORANGE}{STRING}%
-STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Förbjud tåg och skepp att göra 90° svängar: {ORANGE}{STRING} {LTBLUE} (kräver NPF)
+STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Förbjud tåg och skepp att göra 90° svängar: {ORANGE}{STRING} {LTBLUE} (ej med original-resruttplanerare)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Kombinera tågstationer som byggs bredvid varandra: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Tillåt att stationer som inte är byggda direkt brevid varandra slås ihop: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Använd förbättrad algoritm: {ORANGE}{STRING}
@@ -2364,6 +2364,13 @@ STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Lägg ti
 STR_NEWGRF_ADD_RESCAN_FILES                                     :{BLACK}Scanna om filer
 STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}Uppdatera listan med tillgängliga NewGRF-filer
 
+# NewGRF inspect window
+
+
+
+# Sprite aligner window
+
+
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Varning: {SILVER}{STRING}
@@ -2955,6 +2962,12 @@ STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE               :{LTBLUE}Service
 STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL           :{LTBLUE}Service vid {TOWN}s skeppsdepå, i{VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE                   :{LTBLUE}Service vid {STATION}s hangar
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE_VEL               :{LTBLUE}Service vid {STATION}s hangar i {VELOCITY}
+
+# Vehicle stopped/started animations
+STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Stoppad
+STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Stoppad
+STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINYFONT}{GREEN}Startad
+STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Startad
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Details)

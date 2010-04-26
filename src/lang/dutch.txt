@@ -230,6 +230,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Hernoem
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Sluit venster
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Vensternaam - sleep om venster te verplaatsen
 STR_TOOLTIP_SHADE                                               :{BLACK}Klap venster in - toon alleen de titelbalk
+STR_TOOLTIP_DEBUG                                               :{BLACK}Toon NewGRF debug informatie
 STR_TOOLTIP_STICKY                                              :{BLACK}Markeer dit venster als niet-sluitbaar door de 'Sluit alle vensters'-knop
 STR_TOOLTIP_RESIZE                                              :{BLACK}Klik en sleep om de grootte van dit venster te veranderen
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Schakel tussen groot/klein venster
@@ -441,6 +442,7 @@ STR_ABOUT_MENU_AI_DEBUG                                         :AI Debug
 STR_ABOUT_MENU_SCREENSHOT                                       :Screenshot (Ctrl+S)
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Groot screenshot (Ctrl+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Over OpenTTD
+STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Afbeelding uitlijner
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -1093,7 +1095,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Origineel
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Realistisch
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Hellingshoek voor treinen {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Hellingsgraad voor wegvoertuigen {ORANGE}{STRING}%
-STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Verbied treinen en schepen om 90 graden te draaien: {ORANGE}{STRING} {LTBLUE} (onmogelijk met OPF)
+STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Verbied treinen en schepen om 90° te draaien: {ORANGE}{STRING} {LTBLUE} (niet met OPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Stations samenvoegen als ze naast elkaar worden gebouwd: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Sta het samenvoegen van niet direct aaneensluitende stations toe: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Gebruik verbeterd laadalgoritme: {ORANGE}{STRING}
@@ -1101,8 +1103,8 @@ STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Voertui
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflatie: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Vracht alleen bezorgen aan een station als er vraag naar is: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Bouwen van zeer lange bruggen toestaan: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}'Ga naar depot' order toestaan: {ORANGE}{STRING}
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Handmatige bouwmethode voor primaire industrieën: {ORANGE}{STRING}
+STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}Sta 'Ga naar depot' order toe: {ORANGE}{STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Handmatige bouwmethode voor primaire industrie: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :geen
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :zoals andere industrieën
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :proberen
@@ -2364,6 +2366,30 @@ STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Voeg het
 STR_NEWGRF_ADD_RESCAN_FILES                                     :{BLACK}Bestanden opnieuw lezen
 STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}Werk de lijst van beschikbare NewGRF-bestanden bij
 
+# NewGRF inspect window
+STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspecteer - {STRING}
+STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Huidig
+STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Inspecteer het object van het huidige hoofd bestand
+
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} bij {HEX}
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Spoor type
+
+STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF variable 60+x parameter (hexadecimaal)
+
+# Sprite aligner window
+STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Afbeelding uitlijnen {COMMA} ({STRING})
+STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Volgende afbeelding
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Ga verder maar volgende normale afbeelding, sla alle pseudo/herkleur/lettertype afbeeldingen over en ga naar het begin bij het einde
+STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Ga naar afbeelding
+STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Ga naar de opgegeven afbeelding. Wanneer dit niet een normale afbeelding is, ga verder naar de volgende normale afbeelding
+STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Vorige afbeelding
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Ga naar vorige normale afbeelding, sla alle pseudo/herkleur/lettertype afbeeldingen over en ga naar het einde bij het begin
+STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Voorbeeld van de huidige afbeelding. De uitlijning wordt genegeerd bij het weergeven van de afbeelding
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Afbeelding verplaatsen, dit verandert X en Y offsets
+STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X offset: {NUM}, Y offset: {NUM}
+
+STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Ga naar afbeelding
+
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Waarschuwing: {SILVER}{STRING}
@@ -2955,6 +2981,12 @@ STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE               :{LTBLUE}Onderho
 STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL           :{LTBLUE}Onderhoud bij {TOWN} Dok, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE                   :{LTBLUE}Onderhoud bij {STATION} Hangar
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE_VEL               :{LTBLUE}Onderhoud bij {STATION} Hangar, {VELOCITY}
+
+# Vehicle stopped/started animations
+STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Gestopt
+STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Gestopt
+STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINYFONT}{GREEN}Gestart
+STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Gestart
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Details)

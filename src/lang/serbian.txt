@@ -630,6 +630,7 @@ STR_ABOUT_MENU_AI_DEBUG                                         :Korekcija vešt
 STR_ABOUT_MENU_SCREENSHOT                                       :Sačuvaj sliku (Ctrl+S)
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Sačuvaj sliku u velikom formatu (Ctrl+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :O OpenTTD-u
+STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Poravnjavanje sprajta
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -2571,7 +2572,18 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Vrsta železnic
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF promenljiva 60+x parametar (heksadecimalno)
 
 # Sprite aligner window
+STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Poravnjavanje sprajta {COMMA} ({STRING})
+STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Sledeći sprajt
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Prelazi na sledeći normalan sprajt, preskačući sve pseudo/prebojavajuće/font sprajtove i vraća se na početak posle zadnjeg
+STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Idi na sprajt
+STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Ide na dati sprajt. Ako taj sprajt nije normalan sprajt, prelazi na prvi sledeći normalni
+STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Prethodni sprajt
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Vraća se na prethodni normalan sprajt, preskačući sve pseudo/prebojavajuće/font sprajtove i prelazi na kraj posle početnog
+STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Prikaz trenutno odabranog sprajta. Poravnanje se ignoriše tokom iscrtavanja ovog sprajta
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Premeštanje sprajta po kordinatama, menjanjem X i Y pomeraja
+STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X pomeraj: {NUM}, Y pomeraj: {NUM}
 
+STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Prelazak na sprajt
 
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}

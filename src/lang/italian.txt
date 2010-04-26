@@ -232,6 +232,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Rinomina
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Chiude la finestra
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Titolo della finestra - trascinarlo per muovere la finestra
 STR_TOOLTIP_SHADE                                               :{BLACK}Comprimi finestra - Mostra solo il titolo
+STR_TOOLTIP_DEBUG                                               :{BLACK}Mostra le informazioni di debug NewGRF
 STR_TOOLTIP_STICKY                                              :{BLACK}Marca questa finestra in modo che non venga chiusa quando si preme il tasto 'Chiudi tutte le finestre'
 STR_TOOLTIP_RESIZE                                              :{BLACK}Fare clic e trascinare per ridimensionare questa finestra
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Seleziona dimensione grande/piccola della finestra
@@ -443,6 +444,7 @@ STR_ABOUT_MENU_AI_DEBUG                                         :Debug IA
 STR_ABOUT_MENU_SCREENSHOT                                       :Screenshot (CTRL+S)
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Screenshot gigante (CTRL+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Informazioni su 'OpenTTD'
+STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Strumento allineamento sprite
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -2366,6 +2368,30 @@ STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Aggiunge
 STR_NEWGRF_ADD_RESCAN_FILES                                     :{BLACK}Aggiorna file
 STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}Aggiorna la lista dei file NewGRF disponibili
 
+# NewGRF inspect window
+STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Ispeziona - {STRING}
+STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Padre
+STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Ispeziona l'oggetto dell'ambito padre
+
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} a {HEX}
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Tipo rotaia
+
+STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Parametro variabile NewGRF 60+x (esadecimale)
+
+# Sprite aligner window
+STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Allineamento sprite {COMMA} ({STRING})
+STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Successivo
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Procede al successivo sprite normale, saltanto qualsiasi sprite speciale, di ricoloramento o carattere e tornando al primo se viene raggiunta la fine
+STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Vai a
+STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Va allo sprite specificato. Se lo sprite non è uno sprite normale, procede allo sprite normale immediatamente successivo
+STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Precedente
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Procede al precedente sprite normale, saltanto qualsiasi sprite speciale, di ricoloramento o carattere e tornando all'ultimo se viene raggiunto l'inizio
+STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Rappresentazione dello sprite corrente. L'allineamento viene ignorato in questa casella.
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Sposta lo sprite, cambiando gli spiazzamenti X e Y
+STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}Spiazzamento X: {NUM}, Spiazzamento Y: {NUM}
+
+STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Vai a
+
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Attenzione: {SILVER}{STRING}
@@ -2957,6 +2983,12 @@ STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE               :{LTBLUE}Manuten
 STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL           :{LTBLUE}Manutenzione al Deposito di {TOWN}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE                   :{LTBLUE}Manutenzione all'Hangar di {STATION}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE_VEL               :{LTBLUE}Manutenzione all'Hangar di {STATION}, {VELOCITY}
+
+# Vehicle stopped/started animations
+STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Fermato
+STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Fermato
+STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINYFONT}{GREEN}Avviato
+STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Avviato
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Dettagli)

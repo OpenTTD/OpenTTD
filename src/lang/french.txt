@@ -443,6 +443,7 @@ STR_ABOUT_MENU_AI_DEBUG                                         :Débogage d'IA
 STR_ABOUT_MENU_SCREENSHOT                                       :Copie d'écran (Ctrl-S)
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Copie géante d'écran (Ctrl-G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :À Propos de 'OpenTTD'
+STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Alignement de sprite
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -2377,7 +2378,18 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Type de rail
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Paramètre de variable NewGRF 60+x (héxadecimal)
 
 # Sprite aligner window
+STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Alignement du sprite {COMMA} ({STRING})
+STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Sprite suivant
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Se rendre au prochain sprite normal, en ignorant les pseudo-sprites et les sprites de recoloration et de police, et en bouclant
+STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Aller au sprite
+STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Se rendre au sprite indiqué. Si ce n'est pas un sprite normal, aller au prochain sprite normal
+STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Sprite précédent
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Se rendre au précédent sprite normal, en ignorant les pseudo-sprites et les sprites de recoloration et de police, et en bouclant
+STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Representation du sprite actuellement séléctionné. L'alignement est ignoré lors de l'affichage de ce sprite
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Déplacer le sprite, en modifiant les décalages X et Y
+STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}Décalage X{NBSP}: {NUM}, décalage Y{NBSP}: {NUM}
 
+STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Aller au sprite
 
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}

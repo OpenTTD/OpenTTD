@@ -326,6 +326,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Preimenu
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Zatvori prozor
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Naslov prozora - povuci ovo za micanje prozora
 STR_TOOLTIP_SHADE                                               :{BLACK}Zasjeni prozor - prikaži samo naslovnu traku
+STR_TOOLTIP_DEBUG                                               :{BLACK}Prikaži NewGRF debug informacije
 STR_TOOLTIP_STICKY                                              :{BLACK}Označi ovaj prozor nezatvorivim prilikom uporabe tipke 'Zatvori sve prozore'
 STR_TOOLTIP_RESIZE                                              :{BLACK}Klikni i povuci za promjenu veličine ovog prozora
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Namjesti veliku/malu veličinu prozora
@@ -537,6 +538,7 @@ STR_ABOUT_MENU_AI_DEBUG                                         :Debugiranje UI
 STR_ABOUT_MENU_SCREENSHOT                                       :Slika zaslona (Ctrl+S)
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Ogromna slika zaslona (Ctrl+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :O 'OpenTTD'
+STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Poravnjanje sprite-a
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -2460,6 +2462,30 @@ STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Dodaj od
 STR_NEWGRF_ADD_RESCAN_FILES                                     :{BLACK}Ponovno skeniraj datoteke
 STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}Osvježi popis dostupnih NewGRF datoteka
 
+# NewGRF inspect window
+STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Pregledaj - {STRING}
+STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Matični
+STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Pregledaj objekt matičnog djelokruga
+
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} na {HEX}
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Vrsta željeznice
+
+STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF varijabla 60+x parametar (heksadecimalni)
+
+# Sprite aligner window
+STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Poravnanje sprite-a {COMMA} ({STRING})
+STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Sljedeći sprite
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Otiđi na sljedeći normalni sprite, preskačući svaki pseudo/prebojani/font sprite i nakon kraja kreni od početka
+STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Otiđi na sprite
+STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Otiđi na određeni sprite. Ako sprite nije normalni sprite, otiđi na slijedeći normalni sprite
+STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Prethodni sprite
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Otiđi na prethodni normalni sprite, preskačući svaki pseudo/prebojani/font sprite i kreni od kraja ako se dođe na početak
+STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Prikaz trenutno odabranog sprite-a. Poravnjanje se ignorira kod crtanja ovog sprite-a
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Pomakni sprite mijenjajući X i Y pomake
+STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X pomak: {NUM}, Y pomak: {NUM}
+
+STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Otiđi na sprite
+
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Upozorenje: {SILVER}{STRING}
@@ -3051,6 +3077,12 @@ STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE               :{LTBLUE}Servisi
 STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL           :{LTBLUE}Servisiranje u spremištu brodova grada {TOWN}a, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE                   :{LTBLUE}Servisiranje u hangaru {STATION}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE_VEL               :{LTBLUE}Servisiranje u hangaru {STATION}, {VELOCITY}
+
+# Vehicle stopped/started animations
+STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Zaustavljen
+STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Zaustavljen
+STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINYFONT}{GREEN}Pokrenut
+STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Pokrenut
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Detalji)
