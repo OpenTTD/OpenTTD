@@ -24,6 +24,7 @@
 #include "network/network_func.h"
 #include "thread/thread.h"
 #include "window_func.h"
+#include "newgrf_debug.h"
 
 #include "table/palettes.h"
 #include "table/sprites.h"
@@ -56,7 +57,7 @@ static byte _stringwidth_table[FS_END][224]; ///< Cache containing width of ofte
 DrawPixelInfo *_cur_dpi;
 byte _colour_gradient[COLOUR_END][8];
 
-static void GfxMainBlitter(const Sprite *sprite, int x, int y, BlitterMode mode, const SubSprite *sub = NULL);
+static void GfxMainBlitter(const Sprite *sprite, int x, int y, BlitterMode mode, const SubSprite *sub = NULL, SpriteID sprite_id = SPR_CURSOR_MOUSE);
 
 FontSize _cur_fontsize;
 static FontSize _last_fontsize;
@@ -1029,18 +1030,19 @@ Dimension GetSpriteSize(SpriteID sprid)
  */
 void DrawSprite(SpriteID img, PaletteID pal, int x, int y, const SubSprite *sub)
 {
+	SpriteID real_sprite = GB(img, 0, SPRITE_WIDTH);
 	if (HasBit(img, PALETTE_MODIFIER_TRANSPARENT)) {
 		_colour_remap_ptr = GetNonSprite(GB(pal, 0, PALETTE_WIDTH), ST_RECOLOUR) + 1;
-		GfxMainBlitter(GetSprite(GB(img, 0, SPRITE_WIDTH), ST_NORMAL), x, y, BM_TRANSPARENT, sub);
+		GfxMainBlitter(GetSprite(real_sprite, ST_NORMAL), x, y, BM_TRANSPARENT, sub, real_sprite);
 	} else if (pal != PAL_NONE) {
 		_colour_remap_ptr = GetNonSprite(GB(pal, 0, PALETTE_WIDTH), ST_RECOLOUR) + 1;
-		GfxMainBlitter(GetSprite(GB(img, 0, SPRITE_WIDTH), ST_NORMAL), x, y, BM_COLOUR_REMAP, sub);
+		GfxMainBlitter(GetSprite(real_sprite, ST_NORMAL), x, y, BM_COLOUR_REMAP, sub, real_sprite);
 	} else {
-		GfxMainBlitter(GetSprite(GB(img, 0, SPRITE_WIDTH), ST_NORMAL), x, y, BM_NORMAL, sub);
+		GfxMainBlitter(GetSprite(real_sprite, ST_NORMAL), x, y, BM_NORMAL, sub, real_sprite);
 	}
 }
 
-static void GfxMainBlitter(const Sprite *sprite, int x, int y, BlitterMode mode, const SubSprite *sub)
+static void GfxMainBlitter(const Sprite *sprite, int x, int y, BlitterMode mode, const SubSprite *sub, SpriteID sprite_id)
 {
 	const DrawPixelInfo *dpi = _cur_dpi;
 	Blitter::BlitterParams bp;
@@ -1120,6 +1122,22 @@ static void GfxMainBlitter(const Sprite *sprite, int x, int y, BlitterMode mode,
 
 	assert(bp.skip_left + bp.width <= UnScaleByZoom(sprite->width, dpi->zoom));
 	assert(bp.skip_top + bp.height <= UnScaleByZoom(sprite->height, dpi->zoom));
+
+	/* We do not want to catch the mouse. However we also use that spritenumber for unknown (text) sprites. */
+	if (_newgrf_debug_sprite_picker.mode == SPM_REDRAW && sprite_id != SPR_CURSOR_MOUSE) {
+		Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
+		void *topleft = blitter->MoveTo(bp.dst, bp.left, bp.top);
+		void *bottomright = blitter->MoveTo(topleft, bp.width - 1, bp.height - 1);
+
+		void *clicked = _newgrf_debug_sprite_picker.clicked_pixel;
+
+		if (topleft <= clicked && clicked <= bottomright) {
+			uint offset = (((size_t)clicked - (size_t)topleft) % bp.pitch) / blitter->GetBytesPerPixel();
+			if (offset < (uint)bp.width) {
+				_newgrf_debug_sprite_picker.sprites.Include(sprite_id);
+			}
+		}
+	}
 
 	BlitterFactoryBase::GetCurrentBlitter()->Draw(&bp, mode, dpi->zoom);
 }

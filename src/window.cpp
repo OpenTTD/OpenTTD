@@ -31,6 +31,7 @@
 #include "widgets/dropdown_func.h"
 #include "strings_func.h"
 #include "settings_type.h"
+#include "newgrf_debug.h"
 
 #include "table/sprites.h"
 
@@ -2190,7 +2191,24 @@ void HandleMouseEvents()
 		_input_events_this_tick++;
 	}
 
-	MouseLoop(click, mousewheel);
+	/* Handle sprite picker before any GUI interaction */
+	if (_newgrf_debug_sprite_picker.mode == SPM_REDRAW && _newgrf_debug_sprite_picker.click_time != _realtime_tick) {
+		/* Next realtime tick? Then redraw has finished */
+		_newgrf_debug_sprite_picker.mode = SPM_NONE;
+		InvalidateWindowData(WC_SPRITE_ALIGNER, 0, 1);
+	}
+
+	if (click == MC_LEFT && _newgrf_debug_sprite_picker.mode == SPM_WAIT_CLICK) {
+		/* Mark whole screen dirty, and wait for the next realtime tick, when drawing is finished. */
+		Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
+		_newgrf_debug_sprite_picker.clicked_pixel = blitter->MoveTo(_screen.dst_ptr, _cursor.pos.x, _cursor.pos.y);
+		_newgrf_debug_sprite_picker.click_time = _realtime_tick;
+		_newgrf_debug_sprite_picker.sprites.Clear();
+		_newgrf_debug_sprite_picker.mode = SPM_REDRAW;
+		MarkWholeScreenDirty();
+	} else {
+		MouseLoop(click, mousewheel);
+	}
 
 	/* We have moved the mouse the required distance,
 	 * no need to move it at any later time. */

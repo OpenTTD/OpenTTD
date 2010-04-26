@@ -13,6 +13,24 @@
 #define NEWGRF_DEBUG_H
 
 #include "newgrf.h"
+#include "vehicle_type.h"
+
+/** Current state of spritepicker */
+enum NewGrfDebugSpritePickerMode {
+	SPM_NONE,
+	SPM_WAIT_CLICK,
+	SPM_REDRAW,
+};
+
+/** Spritepicker of SpriteAligner */
+struct NewGrfDebugSpritePicker {
+	NewGrfDebugSpritePickerMode mode;   ///< Current state
+	void *clicked_pixel;                ///< Clicked pixel (pointer to blitter buffer)
+	uint32 click_time;                  ///< Realtime tick when clicked to detect next frame
+	SmallVector<SpriteID, 256> sprites; ///< Sprites found
+};
+
+extern NewGrfDebugSpritePicker _newgrf_debug_sprite_picker;
 
 /**
  * Can we inspect the data given a certain feature and index.

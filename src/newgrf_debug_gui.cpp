@@ -37,6 +37,8 @@
 
 #include "table/strings.h"
 
+NewGrfDebugSpritePicker _newgrf_debug_sprite_picker = { SPM_NONE, NULL, 0, SmallVector<SpriteID, 256>() };
+
 /**
  * Get the feature index related to the window number.
  * @param window_number The window to get the feature index from.
@@ -547,6 +549,9 @@ enum SpriteAlignerWidgets {
 	SAW_DOWN,     ///< Move the sprite down
 	SAW_SPRITE,   ///< The actual sprite
 	SAW_OFFSETS,  ///< The sprite offsets
+	SAW_PICKER,   ///< Sprite picker
+	SAW_LIST,     ///< Queried sprite list
+	SAW_SCROLLBAR,///< Scrollbar for sprite list
 };
 
 /** Window used for aligning sprites. */
@@ -580,26 +585,56 @@ struct SpriteAlignerWindow : Window {
 		}
 	}
 
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
+	{
+		if (widget != SAW_LIST) return;
+
+		resize->height = max(11, FONT_HEIGHT_NORMAL + 1);
+		resize->width  = 1;
+
+		/* Resize to about 200 pixels (for the preview) */
+		size->height = (1 + 200 / resize->height) * resize->height;
+	}
+
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
-		if (widget != SAW_SPRITE) return;
+		switch (widget) {
+			case SAW_SPRITE: {
+				/* Center the sprite ourselves */
+				const Sprite *spr = GetSprite(this->current_sprite, ST_NORMAL);
+				int width  = r.right  - r.left + 1;
+				int height = r.bottom - r.top  + 1;
+				int x = r.left - spr->x_offs + (width  - spr->width) / 2;
+				int y = r.top  - spr->y_offs + (height - spr->height) / 2;
 
-		/* Center the sprite ourselves */
-		const Sprite *spr = GetSprite(this->current_sprite, ST_NORMAL);
-		int width  = r.right  - r.left + 1;
-		int height = r.bottom - r.top  + 1;
-		int x = r.left - spr->x_offs + (width  - spr->width) / 2;
-		int y = r.top  - spr->y_offs + (height - spr->height) / 2;
+				/* And draw only the part within the sprite area */
+				SubSprite subspr = {
+					spr->x_offs + (spr->width  - width)  / 2 + 1,
+					spr->y_offs + (spr->height - height) / 2 + 1,
+					spr->x_offs + (spr->width  + width)  / 2 - 1,
+					spr->y_offs + (spr->height + height) / 2 - 1,
+				};
 
-		/* And draw only the part within the sprite area */
-		SubSprite subspr = {
-			spr->x_offs + (spr->width  - width)  / 2 + 1,
-			spr->y_offs + (spr->height - height) / 2 + 1,
-			spr->x_offs + (spr->width  + width)  / 2 - 1,
-			spr->y_offs + (spr->height + height) / 2 - 1,
-		};
+				DrawSprite(this->current_sprite, PAL_NONE, x, y, &subspr);
+				break;
+			}
 
-		DrawSprite(this->current_sprite, PAL_NONE, x, y, &subspr);
+			case SAW_LIST: {
+				const NWidgetBase *nwid = this->GetWidget<NWidgetBase>(widget);
+				int step_size = nwid->resize_y;
+
+				SmallVector<SpriteID, 256> &list = _newgrf_debug_sprite_picker.sprites;
+				int max = min(this->vscroll.GetPosition() + this->vscroll.GetCapacity(), list.Length());
+
+				int y = r.top + WD_FRAMERECT_TOP;
+				for (int i = this->vscroll.GetPosition(); i < max; i++) {
+					SetDParam(0, list[i]);
+					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_BLACK_COMMA, TC_FROMSTRING, SA_RIGHT | SA_FORCE);
+					y += step_size;
+				}
+				break;
+			}
+		}
 	}
 
 	virtual void OnPaint()
@@ -627,6 +662,25 @@ struct SpriteAlignerWindow : Window {
 				} while (GetSpriteType(this->current_sprite) != ST_NORMAL);
 				this->SetDirty();
 				break;
+
+			case SAW_PICKER:
+				this->LowerWidget(SAW_PICKER);
+				_newgrf_debug_sprite_picker.mode = SPM_WAIT_CLICK;
+				this->SetDirty();
+				break;
+
+			case SAW_LIST: {
+				const NWidgetBase *nwid = this->GetWidget<NWidgetBase>(widget);
+				int step_size = nwid->resize_y;
+
+				uint i = this->vscroll.GetPosition() + (pt.y - nwid->pos_y) / step_size;
+				if (i < _newgrf_debug_sprite_picker.sprites.Length()) {
+					SpriteID spr = _newgrf_debug_sprite_picker.sprites[i];
+					if (GetSpriteType(spr) == ST_NORMAL) this->current_sprite = spr;
+				}
+				this->SetDirty();
+				break;
+			}
 
 			case SAW_UP:
 			case SAW_DOWN:
@@ -670,6 +724,21 @@ struct SpriteAlignerWindow : Window {
 		}
 		this->SetDirty();
 	}
+
+	virtual void OnInvalidateData(int data)
+	{
+		if (data == 1) {
+			/* Sprite picker finished */
+			this->RaiseWidget(SAW_PICKER);
+			this->vscroll.SetCount(_newgrf_debug_sprite_picker.sprites.Length());
+		}
+	}
+
+	virtual void OnResize()
+	{
+		this->vscroll.SetCapacityFromWidget(this, SAW_LIST);
+		this->GetWidget<NWidgetCore>(SAW_LIST)->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
+	}
 };
 
 static const NWidgetPart _nested_sprite_aligner_widgets[] = {
@@ -680,38 +749,47 @@ static const NWidgetPart _nested_sprite_aligner_widgets[] = {
 		NWidget(WWT_STICKYBOX, COLOUR_GREY),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY),
-		NWidget(NWID_VERTICAL), SetPIP(10, 5, 10),
-			NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(10, 5, 10),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SAW_PREVIOUS), SetDataTip(STR_SPRITE_ALIGNER_PREVIOUS_BUTTON, STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP), SetFill(1, 0),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SAW_GOTO), SetDataTip(STR_SPRITE_ALIGNER_GOTO_BUTTON, STR_SPRITE_ALIGNER_GOTO_TOOLTIP), SetFill(1, 0),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SAW_NEXT), SetDataTip(STR_SPRITE_ALIGNER_NEXT_BUTTON, STR_SPRITE_ALIGNER_NEXT_TOOLTIP), SetFill(1, 0),
-			EndContainer(),
-			NWidget(NWID_HORIZONTAL), SetPIP(10, 5, 10),
-				NWidget(NWID_SPACER), SetFill(1, 1),
-				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, SAW_UP), SetDataTip(SPR_ARROW_UP, STR_SPRITE_ALIGNER_MOVE_TOOLTIP), SetResize(0, 0),
-				NWidget(NWID_SPACER), SetFill(1, 1),
-			EndContainer(),
-			NWidget(NWID_HORIZONTAL_LTR), SetPIP(10, 5, 10),
-				NWidget(NWID_VERTICAL),
+		NWidget(NWID_HORIZONTAL), SetPIP(0, 0, 10),
+			NWidget(NWID_VERTICAL), SetPIP(10, 5, 10),
+				NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(10, 5, 10),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SAW_PREVIOUS), SetDataTip(STR_SPRITE_ALIGNER_PREVIOUS_BUTTON, STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP), SetFill(1, 0),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SAW_GOTO), SetDataTip(STR_SPRITE_ALIGNER_GOTO_BUTTON, STR_SPRITE_ALIGNER_GOTO_TOOLTIP), SetFill(1, 0),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SAW_NEXT), SetDataTip(STR_SPRITE_ALIGNER_NEXT_BUTTON, STR_SPRITE_ALIGNER_NEXT_TOOLTIP), SetFill(1, 0),
+				EndContainer(),
+				NWidget(NWID_HORIZONTAL), SetPIP(10, 5, 10),
 					NWidget(NWID_SPACER), SetFill(1, 1),
-					NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, SAW_LEFT), SetDataTip(SPR_ARROW_LEFT, STR_SPRITE_ALIGNER_MOVE_TOOLTIP), SetResize(0, 0),
+					NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, SAW_UP), SetDataTip(SPR_ARROW_UP, STR_SPRITE_ALIGNER_MOVE_TOOLTIP), SetResize(0, 0),
 					NWidget(NWID_SPACER), SetFill(1, 1),
 				EndContainer(),
-				NWidget(WWT_PANEL, COLOUR_DARK_BLUE, SAW_SPRITE), SetDataTip(STR_NULL, STR_SPRITE_ALIGNER_SPRITE_TOOLTIP), SetMinimalSize(200, 200),
+				NWidget(NWID_HORIZONTAL_LTR), SetPIP(10, 5, 10),
+					NWidget(NWID_VERTICAL),
+						NWidget(NWID_SPACER), SetFill(1, 1),
+						NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, SAW_LEFT), SetDataTip(SPR_ARROW_LEFT, STR_SPRITE_ALIGNER_MOVE_TOOLTIP), SetResize(0, 0),
+						NWidget(NWID_SPACER), SetFill(1, 1),
+					EndContainer(),
+					NWidget(WWT_PANEL, COLOUR_DARK_BLUE, SAW_SPRITE), SetDataTip(STR_NULL, STR_SPRITE_ALIGNER_SPRITE_TOOLTIP),
+					EndContainer(),
+					NWidget(NWID_VERTICAL),
+						NWidget(NWID_SPACER), SetFill(1, 1),
+						NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, SAW_RIGHT), SetDataTip(SPR_ARROW_RIGHT, STR_SPRITE_ALIGNER_MOVE_TOOLTIP), SetResize(0, 0),
+						NWidget(NWID_SPACER), SetFill(1, 1),
+					EndContainer(),
 				EndContainer(),
-				NWidget(NWID_VERTICAL),
+				NWidget(NWID_HORIZONTAL), SetPIP(10, 5, 10),
 					NWidget(NWID_SPACER), SetFill(1, 1),
-					NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, SAW_RIGHT), SetDataTip(SPR_ARROW_RIGHT, STR_SPRITE_ALIGNER_MOVE_TOOLTIP), SetResize(0, 0),
+					NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, SAW_DOWN), SetDataTip(SPR_ARROW_DOWN, STR_SPRITE_ALIGNER_MOVE_TOOLTIP), SetResize(0, 0),
 					NWidget(NWID_SPACER), SetFill(1, 1),
+				EndContainer(),
+				NWidget(NWID_HORIZONTAL), SetPIP(10, 5, 10),
+					NWidget(WWT_LABEL, COLOUR_GREY, SAW_OFFSETS), SetDataTip(STR_SPRITE_ALIGNER_OFFSETS, STR_NULL), SetFill(1, 0),
 				EndContainer(),
 			EndContainer(),
-			NWidget(NWID_HORIZONTAL), SetPIP(10, 5, 10),
-				NWidget(NWID_SPACER), SetFill(1, 1),
-				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, SAW_DOWN), SetDataTip(SPR_ARROW_DOWN, STR_SPRITE_ALIGNER_MOVE_TOOLTIP), SetResize(0, 0),
-				NWidget(NWID_SPACER), SetFill(1, 1),
-			EndContainer(),
-			NWidget(NWID_HORIZONTAL), SetPIP(10, 5, 10),
-				NWidget(WWT_LABEL, COLOUR_GREY, SAW_OFFSETS), SetDataTip(STR_SPRITE_ALIGNER_OFFSETS, STR_NULL), SetFill(1, 0),
+			NWidget(NWID_VERTICAL), SetPIP(10, 5, 10),
+				NWidget(WWT_TEXTBTN, COLOUR_GREY, SAW_PICKER), SetDataTip(STR_SPRITE_ALIGNER_PICKER_BUTTON, STR_SPRITE_ALIGNER_PICKER_TOOLTIP), SetFill(1, 0),
+				NWidget(NWID_HORIZONTAL),
+					NWidget(WWT_MATRIX, COLOUR_GREY, SAW_LIST), SetResize(1, 1), SetDataTip(0x101, STR_NULL), SetFill(1, 1),
+					NWidget(WWT_SCROLLBAR, COLOUR_GREY, SAW_SCROLLBAR),
+				EndContainer(),
 			EndContainer(),
 		EndContainer(),
 	EndContainer(),
