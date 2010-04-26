@@ -23,6 +23,7 @@
 #include "gfx_func.h"
 #include "sortlist_type.h"
 #include "core/geometry_func.hpp"
+#include "math.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -233,23 +234,23 @@ protected:
 		current_interval.lowest =  (11 * current_interval.lowest) / 10;
 
 		/* Always include zero in the shown range. */
-		OverflowSafeInt64 abs_lower  = (current_interval.lowest > 0) ? (OverflowSafeInt64)0 : abs(current_interval.lowest);
-		OverflowSafeInt64 abs_higher = (current_interval.highest < 0) ? (OverflowSafeInt64)0 : current_interval.highest;
+		double abs_lower  = (current_interval.lowest > 0) ? 0 : (double)abs(current_interval.lowest);
+		double abs_higher = (current_interval.highest < 0) ? 0 : (double)current_interval.highest;
 
 		int num_pos_grids;
-		int grid_size;
+		int64 grid_size;
 
 		if (abs_lower != 0 || abs_higher != 0) {
 			/* The number of grids to reserve for the positive part is: */
-			num_pos_grids = RoundDivSU(abs_higher * num_hori_lines, abs_higher + abs_lower);
+			num_pos_grids = (int)floor(0.5 + num_hori_lines * abs_higher / (abs_higher + abs_lower));
 
 			/* If there are any positive or negative values, force that they have at least one grid. */
 			if (num_pos_grids == 0 && abs_higher != 0) num_pos_grids++;
 			if (num_pos_grids == num_hori_lines && abs_lower != 0) num_pos_grids--;
 
 			/* Get the required grid size for each side and use the maximum one. */
-			int grid_size_higher = (abs_higher > 0) ? (int)(abs_higher + num_pos_grids - 1) / num_pos_grids : 0;
-			int grid_size_lower = (abs_lower > 0) ? (int)(abs_lower + num_hori_lines - num_pos_grids - 1) / (num_hori_lines - num_pos_grids) : 0;
+			int64 grid_size_higher = (abs_higher > 0) ? ((int64)abs_higher + num_pos_grids - 1) / num_pos_grids : 0;
+			int64 grid_size_lower = (abs_lower > 0) ? ((int64)abs_lower + num_hori_lines - num_pos_grids - 1) / (num_hori_lines - num_pos_grids) : 0;
 			grid_size = max(grid_size_higher, grid_size_lower);
 		} else {
 			/* If both values are zero, show an empty graph. */
@@ -331,8 +332,8 @@ protected:
 		r.bottom = r.top + y_sep * num_hori_lines;
 
 		OverflowSafeInt64 interval_size = interval.highest + abs(interval.lowest);
-		/* Where to draw the X axis */
-		x_axis_offset = (r.bottom - r.top) * interval.highest / interval_size;
+		/* Where to draw the X axis. Use floating point to avoid overflowing and results of zero. */
+		x_axis_offset = (int)((r.bottom - r.top) * (double)interval.highest / (double)interval_size);
 
 		/* Draw the vertical grid lines. */
 
