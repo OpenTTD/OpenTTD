@@ -243,7 +243,7 @@ struct NewGRFInspectWindow : Window {
 	static const int BOTTOM_OFFSET = 5; ///< Position of bottom edge
 
 	/** The value for the variable 60 parameters. */
-	static byte var60params[0x20];
+	static byte var60params[GSF_FAKE_END][0x20];
 
 	/** The currently editted parameter, to update the right one. */
 	byte current_edit_param;
@@ -319,7 +319,7 @@ struct NewGRFInspectWindow : Window {
 			this->DrawString(r, i++, "Variables:");
 			for (const NIVariable *niv = nif->variables; niv->name != NULL; niv++) {
 				bool avail = true;
-				uint param = HasVariableParameter(niv->var) ? NewGRFInspectWindow::var60params[niv->var - 0x60] : 0;
+				uint param = HasVariableParameter(niv->var) ? NewGRFInspectWindow::var60params[index][niv->var - 0x60] : 0;
 				uint value = nih->Resolve(index, niv->var, param, &avail);
 
 				if (!avail) continue;
@@ -441,7 +441,7 @@ struct NewGRFInspectWindow : Window {
 	{
 		if (StrEmpty(str)) return;
 
-		NewGRFInspectWindow::var60params[this->current_edit_param - 0x60] = strtol(str, NULL, 16);
+		NewGRFInspectWindow::var60params[GetFeatureIndex(this->window_number)][this->current_edit_param - 0x60] = strtol(str, NULL, 16);
 		this->SetDirty();
 	}
 
@@ -451,7 +451,7 @@ struct NewGRFInspectWindow : Window {
 	}
 };
 
-/* static */ byte NewGRFInspectWindow::var60params[0x20] = { 0 }; // Use spec to have 0s in whole array
+/* static */ byte NewGRFInspectWindow::var60params[GSF_FAKE_END][0x20] = { {0} }; // Use spec to have 0s in whole array
 
 static const NWidgetPart _nested_newgrf_inspect_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
