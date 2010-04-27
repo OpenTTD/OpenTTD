@@ -2388,6 +2388,8 @@ STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Se rendr
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Representation du sprite actuellement séléctionné. L'alignement est ignoré lors de l'affichage de ce sprite
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Déplacer le sprite, en modifiant les décalages X et Y
 STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}Décalage X{NBSP}: {NUM}, décalage Y{NBSP}: {NUM}
+STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Choisir un sprite
+STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Choisir un des sprites affichés sur l'écran
 
 STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Aller au sprite
 

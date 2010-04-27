@@ -230,6 +230,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Ëmbenen
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Fënster zoumaachen
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Fënstertitel - hei zéien fir d'Fënster ze bewegen
 STR_TOOLTIP_SHADE                                               :{BLACK}Shade Fenster - Weis nëmmen Titelbar
+STR_TOOLTIP_DEBUG                                               :{BLACK}Weis NewGRF Debug Informatioun
 STR_TOOLTIP_STICKY                                              :{BLACK}Markéier dës Fënster als net zouzemaachen vun dem "All Fënsteren zoumaachen" Knäppchen
 STR_TOOLTIP_RESIZE                                              :{BLACK}Klicken an zéihen fir d'Fënstergréisst ze änneren
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Wiesselt grouss/kleng Fënstergréisst
@@ -349,7 +350,7 @@ STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF Astellun
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Transparenz Optiounen
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Stiednimm ugewisen
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Statiounennimm ugewisen
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Weepunkteb unweisen
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Weepunktnimm uweisen
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Schëlder ugewisen
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Ganz Animatiounen
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Ganz Detailer
@@ -441,6 +442,7 @@ STR_ABOUT_MENU_AI_DEBUG                                         :KI Debug
 STR_ABOUT_MENU_SCREENSHOT                                       :Screenshot (Ctrl+S)
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Riesen Screenshot (Ctrl+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Iwwert 'OpenTTD'
+STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite Alignéirer
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -514,7 +516,7 @@ STR_GRAPH_Y_LABEL                                               :{TINYFONT}{STRI
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
 
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Grafik: Betriibsgewënn
-STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Grafik: Ankommen
+STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Grafik: Akommes
 STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Unitéiten vun Luedung geliwert
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Firmen Preformancebewertung (max bewertung=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Firmenwert
@@ -1083,7 +1085,7 @@ STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Weis d'
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Erlaabt d'Bauen op Küsten an op Oofhäng: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Erlaabt Landforumung ënnert Gebaier, Stroossen, etc. (autoslope): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Erlaabt méi realistësch Staugréisstplazen: {ORANGE}{STRING}
-STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Erlaabt d'Eweschhuelen vun méi Stroosen, Brécken, etc. vun der Stad: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Erlaabt d'Ewechhuelen vun méi Stroosen, Brécken, etc. vun der Stad: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Bau vun ganz groussen Zich aschalten: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Zuchbeschleunegung: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Original
@@ -1093,7 +1095,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Original
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Realistësch
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Neigungsstärkt fir Zich{ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Steigung fir Stroossengefierer {ORANGE}{STRING}%
-STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Zich an Schëffer dierfen keng 90 Grad Kéieren maachen: {ORANGE}{STRING} {LTBLUE} (nët mat NTP)
+STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Verbidd Zich an Schëffer fir 90 Grad Kéieren ze maachen: {ORANGE}{STRING} {LTBLUE} (nët mat NTP)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Nopergaren zesummensetzen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Erlaabt Statiounen zesummen ze setzen och wann se net direkt uneneen leien: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Benotz verbesserten Luedalgorithmus: {ORANGE}{STRING}
@@ -2067,10 +2069,10 @@ STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Verkleng
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Generéier en Zoufallsland
 STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Neien Szenario man
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Setz d'Landschaft zréck
-STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Huel all Grondstécker vun den Spiller ewesch
+STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Huel all Grondstécker vun den Spiller ewech
 
 STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Setz d'Landschaft zréck
-STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Sidd der sëcher dass der all Grondstécker vun den Spiller ewesch huelen wëllt?
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Sidd der sëcher dass der all Grondstécker vun den Spiller ewech huelen wëllt?
 
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Staderstellung
@@ -2364,6 +2366,32 @@ STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Selectio
 STR_NEWGRF_ADD_RESCAN_FILES                                     :{BLACK}Dateien nei scannen
 STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}Update d'Lëscht vun verfügbaren NewGRF Dateien.
 
+# NewGRF inspect window
+STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspzéier - {STRING}
+STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Parent
+STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Inspizéier den Objet vun der "parent scope"
+
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} op {HEX}
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Schinnentyp
+
+STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF Variabel 60+x Parameter (hexadezimal)
+
+# Sprite aligner window
+STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Alignéiren d'Sprite {COMMA} ({STRING})
+STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Nächst Sprite
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Géi weider op déi nächst normal Sprite, iwersprang all pseudo/recolour/font Sprite an emsprangen um Ufank
+STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Géi op Sprite
+STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Géi op d'Sprite. Wann d'Sprite keng normal Sprite ass, géi op déi nächst normal Sprite
+STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Fiirescht Sprite
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Géi weider op déi nächst normal Sprite, iwersprang all pseudo/recolour/font Sprite an emsprangen um Ufank
+STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Representatioun vun der grad gewielter Sprite. Den Alignement get ignoréiert wann d'Sprite gezun gëtt
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Beweg Sprite, X an Y offsets enneren sech
+STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X offset: {NUM}, Y offset: {NUM}
+STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Wiel Sprite
+STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Wiel en Sprite egalwou um Schierm aus
+
+STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Géi op Sprite
+
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Warnung: {SILVER}{STRING}
@@ -2542,7 +2570,7 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Weepunkt
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Finanzen {BLACK}{COMPANYNUM}
-STR_FINANCES_EXPENDITURE_INCOME_TITLE                           :{WHITE}Ausgaben/Ankommen
+STR_FINANCES_EXPENDITURE_INCOME_TITLE                           :{WHITE}Ausgaben/Akommes
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Konstruktioun
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Nei Gefierer
@@ -2551,10 +2579,10 @@ STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Stroossen
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Fliger Betriebskäschten
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Schëff Betriebskäschten
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Besëtz Ennerhalt
-STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}Zuch Ankommen
-STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}Stroossengefierer Ankommen
-STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Fliger Ankommen
-STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}Schëff Ankommen
+STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}Zuch Akommes
+STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}Stroossengefierer Akommes
+STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Fliger Akommes
+STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}Schëff Akommes
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Zënssaz
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Aaner
 STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY}
@@ -2931,7 +2959,7 @@ STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Keng Energ
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Ward op en fraien Wee
 
 STR_VEHICLE_STATUS_HEADING_FOR_STATION                          :{LTBLUE}Um Wee fir {STATION}
-STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Um wee fir {STATION}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Um Wee op {STATION}, {VELOCITY}
 STR_VEHICLE_STATUS_NO_ORDERS                                    :{LTBLUE}Keng Opträg
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Keng Opträg, {VELOCITY}
 
@@ -2955,6 +2983,12 @@ STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE               :{LTBLUE}Revisio
 STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL           :{LTBLUE}Revisioun am {TOWN} Schëffdepot, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE                   :{LTBLUE}Revisioun am {STATION} Hangar
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE_VEL               :{LTBLUE}Revisioun am {STATION} Hangar, {VELOCITY}
+
+# Vehicle stopped/started animations
+STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Gestoppt
+STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Gestoppt
+STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINYFONT}{GREEN}Gestart
+STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Gestart
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Details)
@@ -3500,12 +3534,12 @@ STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(Geldlimit)
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Onméiglech Streckenkombinatioun
 STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Signaler mussen fir d'éischt wechgeholl ginn
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Keng gëeegent Schinnen
-STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}D'Schinnen mussen fir d'éischt ewesch
+STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}D'Schinnen mussen fir d'éischt ewech
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}D'Strooss ass eng Richtung oder blockéiert
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Kann d'Signaler hei net bauen...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Kann d'Schinnen hei net bauen...
-STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Kann d'Schinnen hei net ewesch huelen...
-STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Kann d'Signaler hei net ewesch huelen...
+STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Kann d'Schinnen hei net ewech huelen...
+STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Kann d'Signaler hei net ewech huelen...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Kann d'Signal hei net convertéieren...
 
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Kann Schinnentyp hei net convertéiren...
@@ -3515,7 +3549,7 @@ STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}Muss d'S
 STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}... Einbahnstroossen kënnen keng Kräizung hunn
 STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Kann d'Strooss hei net bauen...
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Kann den Tram heinet bauen...
-STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}CKann d'Strooss hei net ewesch huelen...
+STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Kann d'Strooss hei net ewech huelen...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Kann den Tram net wech huelen...
 
 # Waterway construction errors

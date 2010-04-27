@@ -230,6 +230,7 @@ STR_BUTTON_RENAME                                               :{BLACK}更名
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}關閉視窗
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}視窗標題 - 點此拖曳可移動視窗
 STR_TOOLTIP_SHADE                                               :{BLACK}陰影視窗 - 只顯示標題列
+STR_TOOLTIP_DEBUG                                               :{BLACK}顯示 NewGRF 除錯資訊
 STR_TOOLTIP_STICKY                                              :{BLACK}「關閉所有視窗」不會關閉本視窗
 STR_TOOLTIP_RESIZE                                              :{BLACK}點選並拖曳可縮放視窗大小
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}切換大／小視窗
@@ -1093,7 +1094,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :原版
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :真實
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}列車最大坡度 {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}車輛最大坡度 {ORANGE}{STRING}%
-STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}禁止列車及船舶直角轉向：{ORANGE}{STRING} {LTBLUE} (原版模式下不適用)
+STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}禁止列車及船舶直角轉向：{ORANGE}{STRING} {LTBLUE} (OPF 模式下不適用)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}合併建在一起的車站：{ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}允許將不相鄰的車站與附近的車站結合：{ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}使用改善後的裝載演算法：{ORANGE}{STRING}
@@ -1759,7 +1760,7 @@ STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :失去連線
 STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :通訊協定錯誤
 STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :NewGRF 不符合
 STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :未通過認證
-STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :收到怪異封包
+STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :收到無效或未預期的封包
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :版本錯誤
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :已有人使用相同名稱
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :密碼錯誤
@@ -1777,7 +1778,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :遊戲暫停中
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :遊戲暫停中 ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :遊戲暫停中 ({STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :遊戲取消暫停 ({STRING})
-STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :玩家不足
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :玩家數量
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :連線用戶端中
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :手動
 ############ End of leave-in-this-order
@@ -2363,6 +2364,15 @@ STR_NEWGRF_ADD_FILE                                             :{BLACK}加入�
 STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}將選定的 NewGRF 加入目前設定
 STR_NEWGRF_ADD_RESCAN_FILES                                     :{BLACK}重新掃描檔案
 STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}更新可用的 NewGRF 檔案清單
+
+# NewGRF inspect window
+
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} 於 {HEX}
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :鐵路種類
+
+
+# Sprite aligner window
+
 
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
@@ -2955,6 +2965,12 @@ STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE               :{LTBLUE}正在 
 STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL           :{LTBLUE}正在 {TOWN} 船塢維護中，{VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE                   :{LTBLUE}在 {STATION} 機棚維護中
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE_VEL               :{LTBLUE}在 {STATION} 機棚維護中，{VELOCITY}
+
+# Vehicle stopped/started animations
+STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}已停止
+STR_VEHICLE_COMMAND_STOPPED                                     :{RED}已停止
+STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINYFONT}{GREEN}已起動
+STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}已起動
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (詳細資料)

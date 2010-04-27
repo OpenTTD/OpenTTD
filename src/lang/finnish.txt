@@ -2387,6 +2387,8 @@ STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Jatka ed
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Valitun spriten näyttö. Sijaintia ei huomioida spriteä piirrettäessä
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Liikuta spriteä ympäriinsä, muuttaen X- ja Y-sijainteja
 STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X-sijainti: {NUM}, Y-sijainti: {NUM}
+STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Valitse sprite
+STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Valitse sprite ruudulta
 
 STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Mene spriteen
 

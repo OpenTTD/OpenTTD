@@ -2387,6 +2387,8 @@ STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Ga naar 
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Voorbeeld van de huidige afbeelding. De uitlijning wordt genegeerd bij het weergeven van de afbeelding
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Afbeelding verplaatsen, dit verandert X en Y offsets
 STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X offset: {NUM}, Y offset: {NUM}
+STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Kies afbeelding
+STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Kies een afbeelding van een willekeurige plaats op het scherm
 
 STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Ga naar afbeelding
 

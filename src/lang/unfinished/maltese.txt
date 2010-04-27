@@ -547,6 +547,9 @@ STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :password ħażi
 
 
 
+# Sprite aligner window
+
+
 # NewGRF (self) generated warnings/errors
 
 # NewGRF related 'general' warnings
@@ -677,6 +680,8 @@ STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :password ħażi
 
 
 
+
+# Vehicle stopped/started animations
 
 # Vehicle details
 
@@ -830,16 +835,38 @@ STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :password ħażi
 
 
 
+STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Ma tistax tbiddel l-isem ta' dan it-tip ta' vapur...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Ma tistax tbiddel l-isem ta' dan it-tip t' ajruplan...
 
+STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Ma tistax tbigħ din il-ferrovija...
+STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Ma tistax tbigħ din il-karozza...
+STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Ma tistax tbigħ dan il-vapur...
+STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Ma tistax tbigħ dan l-ajruplan...
 
+STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :{WHITE}Din il-vettura mhix disponibbli
+STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :{WHITE}Din il-vettura mhix disponibbli
+STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}Dan il-vapur mhux disponibbli
+STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Dan l-ajruplan mhux disponibbli
 
+STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Hemm wisq vetturi fil-logħba
 
+STR_ERROR_CAN_T_SELL_DESTROYED_VEHICLE                          :{WHITE}Ma tistax tbigħ vettura meqruda...
+STR_ERROR_CAN_T_REFIT_DESTROYED_VEHICLE                         :{WHITE}Ma tistax timmodifika vettura meqruda...
 
 # Specific vehicle errors
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Ma tistax tbiddel id-direzzjoni tal-ferrovija...
 
+STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Ma tistax tbiddel id-direzzjoni tal-vettura...
 
+STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}L-ajruplan qed itir
 
 # Order related errors
+STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}M'hemmx spazju għal iktar ordnijiet
+STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}Hemm wisq ordnijiet
+STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :{WHITE}Ma tistax tneħħi din l-ordni...
+STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}Ma tistax tbiddel din l-ordni...
+STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Ma tistax iċċaqlaq din l-ordni...
+STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Ma tistax taqbeż din l-ordni...
 
 
 # Timetable related errors
@@ -848,6 +875,24 @@ STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :password ħażi
 
 ##id 0x2000
 # Town building names
+STR_TOWN_BUILDING_NAME_FOUNTAIN_1                               :Funtana
+STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_2                           :Uffiċini
+STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_1                      :Hwienet u uffiċini
+STR_TOWN_BUILDING_NAME_MODERN_OFFICE_BUILDING_1                 :Bini modern tal-uffiċini
+STR_TOWN_BUILDING_NAME_WAREHOUSE_1                              :Maħżen
+STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_3                           :Uffiċini
+STR_TOWN_BUILDING_NAME_STADIUM_1                                :Grawnd
+STR_TOWN_BUILDING_NAME_OLD_HOUSES_1                             :Djar antiki
+STR_TOWN_BUILDING_NAME_HOUSES_1                                 :Djar
+STR_TOWN_BUILDING_NAME_FLATS_1                                  :Appartamenti
+STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_2                      :Bini twil tal-uffiċini
+STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_2                      :Ħwienet u uffiċini
+STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_3                      :Ħwienet u uffiċini
+STR_TOWN_BUILDING_NAME_THEATER_1                                :Teatru
+STR_TOWN_BUILDING_NAME_OFFICES_1                                :Uffiċini
+STR_TOWN_BUILDING_NAME_HOUSES_2                                 :Djar
+STR_TOWN_BUILDING_NAME_CINEMA_1                                 :Ċinema
+STR_TOWN_BUILDING_NAME_IGLOO_1                                  :Iglu'
 
 ##id 0x4800
 # industry names
@@ -865,6 +910,42 @@ STR_SV_STNAME_WAYPOINT                                          :{STRING}
 
 ##id 0x8000
 # Vehicle names
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_UU_37_DIESEL                 :UU '37' (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_FLOSS_47_DIESEL              :Floss '47' (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CS_4000_DIESEL               :CS 4000 (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CS_2400_DIESEL               :CS 2400 (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CENTENNIAL_DIESEL            :Centennial (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KELLING_3100_DIESEL          :Kelling 3100 (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_TURNER_TURBO_DIESEL          :Turner Turbo (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_1000_DIESEL              :MJS 1000 (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_125_DIESEL                :SH '125' (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_30_ELECTRIC               :SH '30' (Elettriku)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_40_ELECTRIC               :SH '40' (Elettriku)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_T_I_M_ELECTRIC               :'T.I.M.' (Elettriku)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_ASIASTAR_ELECTRIC            :'AsiaStar' (Elettriku)
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PASSENGER_CAR                 :Karru għall-passiġġieri
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_MAIL_VAN                      :Vann ghall-posta
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COAL_CAR                      :Karru tal-faħam
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_OIL_TANKER                    :Tanker taż-żejt
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_LIVESTOCK_VAN                 :Vann għall-annimali
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GOODS_VAN                     :Vann għall-merkanzija
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WOOD_TRUCK                    :Karru għall-injam
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FOOD_VAN                      :Vann għall-ikel
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PAPER_TRUCK                   :Karru tal-karti
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WATER_TANKER                  :Tanker tal-ilma
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FRUIT_TRUCK                   :Karru tal-frott
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_SUGAR_TRUCK                   :Karru taz-zokkor
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BUBBLE_VAN                    :Karru tal-bżieżaq
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_CANDY_VAN                     :Vann tal-ħelu
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOY_VAN                       :Vann tal-ġugarelli
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BATTERY_TRUCK                 :Trakk tal-batteriji
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PLASTIC_TRUCK                 :Trakk għall-plastik
+STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :'X2001' (Elettriku)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_MILLENNIUM_Z1_ELECTRIC   :'Millennium Z1' (Elettriku)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_WIZZOWOW_Z99             :Wizzowow Z99
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PASSENGER_CAR             :Karru għall-passiġġieri
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_MAIL_VAN                  :Karru tal-posta
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COAL_CAR                  :Karru tal-faħam
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FIZZY_DRINK_TRUCK         :Trakk tax-Xarbiet Karbonati
 STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER                            :Tanker taż-żejt MPS
 STR_VEHICLE_NAME_SHIP_CS_INC_OIL_TANKER                         :Tanker taż-żejt CS-Inc.
