@@ -1132,7 +1132,7 @@ static void GfxMainBlitter(const Sprite *sprite, int x, int y, BlitterMode mode,
 		void *clicked = _newgrf_debug_sprite_picker.clicked_pixel;
 
 		if (topleft <= clicked && clicked <= bottomright) {
-			uint offset = (((size_t)clicked - (size_t)topleft) / blitter->GetBytesPerPixel()) % bp.pitch;
+			uint offset = (((size_t)clicked - (size_t)topleft) / (blitter->GetScreenDepth() / 8)) % bp.pitch;
 			if (offset < (uint)bp.width) {
 				_newgrf_debug_sprite_picker.sprites.Include(sprite_id);
 			}
