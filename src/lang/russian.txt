@@ -2537,7 +2537,7 @@ STR_NEWGRF_ADD_RESCAN_FILES                                     :{BLACK}Обно
 STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}Обновить список доступных файлов NewGRF
 
 # NewGRF inspect window
-STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Осматривать - {STRING}
+STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Просмотр - {STRING}
 STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Родитель
 
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} в {HEX}
@@ -2547,9 +2547,11 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Тип рель
 # Sprite aligner window
 STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Выравнивание спрайта {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Следующий спрайт
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Перейти к следующему нормальному спрайту, пропуская псевдоспрайты, а также изм. цвета/шрифтовые.
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Перейти к спрайту
 STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Перейти к заданному спрайту. Если спрайт не нормальный, переход пройзойдет к следующему нормальному.
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Предыдущий спрайт
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Перейти к предыдущему нормальному спрайту, пропуская псевдоспрайты, а также изм. цвета/шрифтовые.
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Представление выбранного спрайта. Выравнивание не учитывается при прорисовке этого спрайта.
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Двигайте спрайт, изменяя смещение по X и по Y
 STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}Смещение по X: {NUM}, Смещение по Y: {NUM}
@@ -3653,7 +3655,7 @@ STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}Снач
 STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Невозможно удалить автобусную остановку...
 STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Невозможно удалить грузовой терминал...
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Невозможно удалить пассажирскую трамвайную остановку...
-STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Невозможно грузовую трамвайную остановку...
+STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Невозможно удалить грузовую трамвайную остановку...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Нужно убрать остановку
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Сначала нужно удалить ж/д станцию

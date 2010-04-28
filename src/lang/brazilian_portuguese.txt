@@ -231,6 +231,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Renomear
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Fecha janela
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Título da janela - arraste para mover a janela
 STR_TOOLTIP_SHADE                                               :{BLACK}Esmaecer janela - mostra apenas a barra de título
+STR_TOOLTIP_DEBUG                                               :{BLACK}Exibir informação de NewGRF para "debugging"
 STR_TOOLTIP_STICKY                                              :{BLACK}Marcar esta janela para não fechar pela tecla 'Fechar Todas as Janelas'
 STR_TOOLTIP_RESIZE                                              :{BLACK}Clique e arraste para redimensionar a janela
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Alterna entre janela grande/pequena
@@ -442,6 +443,7 @@ STR_ABOUT_MENU_AI_DEBUG                                         :Debug da I.A.
 STR_ABOUT_MENU_SCREENSHOT                                       :Captura de tela (Ctrl-S)
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Captura gigante (Ctrl+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Sobre o OpenTTD...
+STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Alinhador de "sprites"
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -1094,7 +1096,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Original
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Realista
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Inclinação do terreno para trens{ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Declividade para automóveis {ORANGE}{STRING}%
-STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Proibir trens e embarcações girar em angulos de 90 graus: {ORANGE}{STRING} {LTBLUE} (indisp. com OPF)
+STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Proibir trens e embarcações girar em angulos de 90° graus: {ORANGE}{STRING} {LTBLUE} (indisp. com OPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Unir estações ferroviárias construídas juntas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Permitie unir estações não adjacentes: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Usar algoritmo de carregamento melhorado: {ORANGE}{STRING}
@@ -2365,6 +2367,32 @@ STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Adiciona
 STR_NEWGRF_ADD_RESCAN_FILES                                     :{BLACK}Procurar arquivos NewGRF
 STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}Atualiza a lista de NewGRF disponíveis
 
+# NewGRF inspect window
+STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspecionar - {STRING}
+STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Principal
+STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Inspeciona o objeto no foco principal
+
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} em {HEX}
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Tipo de ferrovia
+
+STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Variável NewGRF 60+ parâmetro x (hexadecimal)
+
+# Sprite aligner window
+STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Alinhando "sprite" {COMMA} ({STRING})
+STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Próximo "sprite"
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Prossegue ao próximo "sprite" normal, pulando quaisquer "sprites" falsos, recoloridos ou de fontes, e junta tudo no fim
+STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Ir para o "sprite"
+STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Vai para o "sprite" determinado. Se o "sprite" não é um "sprite" normal, segue para o próximo "sprite" normal
+STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}"Sprite" anterior
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Retorna ao "sprite" normal anterior, pulando quaisquer "sprites" falsos, recoloridos ou de fontes, e junta tudo no início
+STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Representação do "sprite" atualmente selecionado. O alinhamento é ignorado ao desenhar esse "sprite"
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Move o "sprite", alterando os offsets X e Y
+STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X offset: {NUM}, Y offset: {NUM}
+STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Escolher "sprite"
+STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Escolhe um "sprite" de qualquer lugar na tela
+
+STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Ir ao "sprite"
+
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Atenção: {SILVER}{STRING}
@@ -2956,6 +2984,12 @@ STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE               :{LTBLUE}Manuten
 STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL           :{LTBLUE}Manutenção no depósito naval de {TOWN}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE                   :{LTBLUE}Manutenção no Hangar de {STATION}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE_VEL               :{LTBLUE}Manutenção no Hangar de {STATION}, {VELOCITY}
+
+# Vehicle stopped/started animations
+STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Parado
+STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Parado
+STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINYFONT}{GREEN}Iniciado
+STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Iniciado
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Detalhes)

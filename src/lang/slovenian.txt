@@ -272,6 +272,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Preimenu
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Zapri okno
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Naslov okna - primi in vleci za premik okna
 STR_TOOLTIP_SHADE                                               :{BLACK}Senči okno - pokaži samo naslov
+STR_TOOLTIP_DEBUG                                               :{BLACK}Pokaži informacije razhroščevanja NewGRF
 STR_TOOLTIP_STICKY                                              :{BLACK}Označi to okno za nezapirljivo z 'Zapri vsa okna' tipko
 STR_TOOLTIP_RESIZE                                              :{BLACK}Klikni in vleci to, da zmanjšaš okno
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Preklopi veliko/majhno velikost okna
@@ -483,6 +484,7 @@ STR_ABOUT_MENU_AI_DEBUG                                         :UI razhroščev
 STR_ABOUT_MENU_SCREENSHOT                                       :Zajemi sliko (Ctrl-S)
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Zajemi celostno sliko (Ctrl-G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :O 'OpenTTD'
+STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Uravnavanje sličice
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -1135,7 +1137,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Original
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Realistično
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Naklon vzpona za vlake {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Naklon vzpona za cestna vozila {ORANGE}{STRING}%
-STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Prepreči vlakom in ladjam 90-stopinjske zavoje: {ORANGE}{STRING} {LTBLUE} (brez OPF)
+STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Prepreči vlakom in ladjam 90° zavoje: {ORANGE}{STRING} {LTBLUE} (brez OPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Združi železniške postaje, ki si stojijo blizu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Dovoli združevanje postaj, ki niso v dotiku: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Uporabi izboljšan algoritem polnjenja: {ORANGE}{STRING}
@@ -2406,6 +2408,32 @@ STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Doda izb
 STR_NEWGRF_ADD_RESCAN_FILES                                     :{BLACK}Ponovno preišči
 STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}Posodobi seznam moznih NewGRF datotek
 
+# NewGRF inspect window
+STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Preglej - {STRING}
+STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Starševski objekt
+STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Preglej starševski objekt
+
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} na {HEX}
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Tip železnice
+
+STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF spremenljivka 60+x parameter (hexadecimal)
+
+# Sprite aligner window
+STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Uravnavam sličico {COMMA} ({STRING})
+STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Naslednja sličica
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Nadaljuj k naslednji navadni sličici, zanemari vse navidezne/pobarvane/besedilne sličice in okvir na koncu
+STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Pojdi na sličico
+STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Pojdi na določeno sličico. Če sličica ni navadna, nadaljuj na naslednjo navadno sličico
+STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Prejšnja sličica
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Nadaljuj k prejšnji navadni sličici, zanemari vse navidezne/pobarvane/besedilne sličice in okvir na koncu
+STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Predstavitev trenutno izbrane sličice. Zamik je zanemarjen pri risanju te sličice
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Premakni sličico s spreminjanjem X in Y osi
+STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X zamik: {NUM}, Y zamik: {NUM}
+STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Izberi sličico
+STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Izberi sličico kjerkoli na zaslonu
+
+STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Pojdi na sličico
+
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Pozor: {SILVER}{STRING}
@@ -2997,6 +3025,12 @@ STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE               :{LTBLUE}Gre na 
 STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL           :{LTBLUE}Gre na servis v {TOWN} ladijsko garažo, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE                   :{LTBLUE}Gre na servis v {STATION} hangar
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE_VEL               :{LTBLUE}Gre na servis v {STATION} hangar, {VELOCITY}
+
+# Vehicle stopped/started animations
+STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Ustavljeno
+STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Ustavljeno
+STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINYFONT}{GREEN}Začeto
+STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Začeto
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Podrobnosti)

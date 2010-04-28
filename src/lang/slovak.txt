@@ -2431,6 +2431,19 @@ STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Pridat v
 STR_NEWGRF_ADD_RESCAN_FILES                                     :{BLACK}Obnovit zoznam súborov
 STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}Obnovit zoznam dostupných NewGRF súborov
 
+# NewGRF inspect window
+
+
+
+# Sprite aligner window
+STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Reprezentuje aktuálne zvolený objekt. Zarovnanie je ignorované pri vykresľovaní objektu
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Pri hýbaní objektom, sa menia X a Y súradnice
+STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X súradnica: {NUM}, Y súradnica: {NUM}
+STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Vybrať objekt
+STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Vyberte objekt z obrazovky
+
+STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Ísť na objekt
+
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Upozornenie: {SILVER}{STRING}
@@ -3022,6 +3035,8 @@ STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE               :{LTBLUE}Servis 
 STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL           :{LTBLUE}Servis v lodenici {TOWN}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE                   :{LTBLUE}Servis v hangari {STATION}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE_VEL               :{LTBLUE}Servis v hangari {STATION}, {VELOCITY}
+
+# Vehicle stopped/started animations
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Detaily)

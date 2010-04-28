@@ -2451,7 +2451,13 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Geležinkėlio 
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF kintamojo 60+x parametras (šešioliktainėje sist.)
 
 # Sprite aligner window
+STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Atvaizdavimas dabartinio pasirinkto sprite. Suderinamumas yra ignoruojamas, rengiant šį sprite
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Perkelti sprite aplink, keičiant X ir Y atsvaras
+STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X atsvara: {NUM}, Y atsvara: {NUM}
+STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Pasirinkti sprite
+STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Pasirinkite sprite iš bet kurios vietos ekrane
 
+STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Eiti į sprite
 
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
