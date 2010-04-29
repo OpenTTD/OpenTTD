@@ -56,7 +56,7 @@ STR_CARGO_PLURAL_BUBBLES                                        :Bżieżaq
 STR_CARGO_PLURAL_TOFFEE                                         :Tofija
 STR_CARGO_PLURAL_BATTERIES                                      :Batteriji
 STR_CARGO_PLURAL_PLASTIC                                        :Plastik
-STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Xarbiet Karbonati
+STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Luminati
 
 # Singular cargo name
 STR_CARGO_SINGULAR_NOTHING                                      :
@@ -90,7 +90,7 @@ STR_CARGO_SINGULAR_BUBBLE                                       :Bużżieqa
 STR_CARGO_SINGULAR_TOFFEE                                       :Tofija
 STR_CARGO_SINGULAR_BATTERY                                      :Batterija
 STR_CARGO_SINGULAR_PLASTIC                                      :Plastik
-STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Xarba Karbonata
+STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Luminata
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
@@ -151,13 +151,16 @@ STR_COLOUR_WHITE                                                :Abjad
 
 
 # Query window
+STR_BUTTON_OK                                                   :{BLACK}OK
 
 # On screen keyboard window
 
 # Measurement tooltip
+STR_MEASURE_LENGTH                                              :{BLACK}Tul: {NUM}
 
 
 # These are used in buttons
+STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Popolazzjoni
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Isem
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Data
 # These are used in dropdowns
@@ -166,8 +169,33 @@ STR_SORT_BY_NAME                                                :Isem
 STR_SORT_BY_PRODUCTION                                          :Produzzjoni
 STR_SORT_BY_TYPE                                                :Tip
 STR_SORT_BY_NUMBER                                              :Numru
+STR_SORT_BY_PROFIT_LAST_YEAR                                    :Qligħ is-sena l-oħra
+STR_SORT_BY_PROFIT_THIS_YEAR                                    :Qligħ din is-sena
+STR_SORT_BY_AGE                                                 :Żmien
+STR_SORT_BY_RELIABILITY                                         :Affidabilita'
+STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Kapaċita totali għal kull tip ta' merkanzija
+STR_SORT_BY_MAX_SPEED                                           :Veloċita' massima
+STR_SORT_BY_MODEL                                               :Mudell
+STR_SORT_BY_VALUE                                               :Valur
+STR_SORT_BY_LENGTH                                              :Tul
+STR_SORT_BY_TIMETABLE_DELAY                                     :Dewmien fl-iskeda
+STR_SORT_BY_FACILITY                                            :Tip ta' stazzjon
+STR_SORT_BY_COST                                                :Prezz
+STR_SORT_BY_POWER                                               :Saħħa
+STR_SORT_BY_INTRO_DATE                                          :Data ta' introduzzjoni
+STR_SORT_BY_CARGO_CAPACITY                                      :Kapaċita ta' merkanzija
 
 # Tooltips for the main toolbar
+STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Waqfa temporanja mil-logħba
+STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Għaġġel il-loghba
+STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Preferenzi
+STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Uri l-lista ta' rħula
+STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Uri s-suddisji
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Uri lista ta' stazzjonijiet ta' kumpanija
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Uri informazzjoni finanzjarja ta' kumpanija
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Uri informazzjoni ġenerali dwar kumpanija
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Uri l-pożizzjonijiet tal-kumpaniji
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Ibni industrija ġdida, jew uri lista tal-industriji kollha
 
 # Extra tooltips for the scenario editor toolbar
 
@@ -734,8 +762,10 @@ STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :password ħażi
 
 # Time table window
 
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}Skeda - agħfas fuq ordni biex tagħzilha.
 
 
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Din l-iskeda ser iddum {STRING} biex titlesta
 
 
 
@@ -896,20 +926,79 @@ STR_TOWN_BUILDING_NAME_IGLOO_1                                  :Iglu'
 
 ##id 0x4800
 # industry names
+STR_INDUSTRY_NAME_DIAMOND_MINE                                  :Minjiera tad-djamanti
+STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :Minjiera tal-ħadid
+STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :Masġar tal-frott
+STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :Masġar tal-lastku
+STR_INDUSTRY_NAME_WATER_SUPPLY                                  :Pompa tal-ilma
+STR_INDUSTRY_NAME_FACTORY_2                                     :Fabbrika
+STR_INDUSTRY_NAME_FARM_2                                        :Għalqa
+STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :Foresta tal-candyfloss
+STR_INDUSTRY_NAME_CANDY_FACTORY                                 :Fabbrika tal-Ħelu
+STR_INDUSTRY_NAME_BATTERY_FARM                                  :Għalqa tal-batteriji
+STR_INDUSTRY_NAME_COLA_WELLS                                    :Bjar tal-Kola
+STR_INDUSTRY_NAME_TOY_SHOP                                      :Ħanut tal-Ġugarelli
+STR_INDUSTRY_NAME_TOY_FACTORY                                   :Fabbrika tal-Ġugarelli
+STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :Funtani tal-Plastik
+STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :Fabbrika tal-Luminata
+STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :Ġeneratur tal-bżiezaq
+STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :Barriera tat-Toffee
+STR_INDUSTRY_NAME_SUGAR_MINE                                    :Minjiera taz-zokkor
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
 ############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
 STR_SV_EMPTY                                                    :
+STR_SV_UNNAMED                                                  :Bla isem
+STR_SV_TRAIN_NAME                                               :Ferrovija {COMMA}
+STR_SV_ROAD_VEHICLE_NAME                                        :Vettura tat-triq {COMMA}
+STR_SV_SHIP_NAME                                                :Vapur {COMMA}
+STR_SV_AIRCRAFT_NAME                                            :Ajruplan {COMMA}
 
 STR_SV_STNAME                                                   :{STRING}
+STR_SV_STNAME_NORTH                                             :{STRING} Tramuntana
+STR_SV_STNAME_SOUTH                                             :{STRING} Nofsinhar
+STR_SV_STNAME_EAST                                              :{STRING} Lvant
+STR_SV_STNAME_WEST                                              :{STRING} Punent
+STR_SV_STNAME_CENTRAL                                           :{STRING} Ċentrali
+STR_SV_STNAME_HALT                                              :Waqfa {STRING}
+STR_SV_STNAME_VALLEY                                            :Wied {STRING}
+STR_SV_STNAME_HEIGHTS                                           :Għoljiet {STRING}
+STR_SV_STNAME_WOODS                                             :Bosk {STRING}
+STR_SV_STNAME_LAKESIDE                                          :Lag {STRING}
+STR_SV_STNAME_EXCHANGE                                          :Skambju {STRING}
+STR_SV_STNAME_AIRPORT                                           :Ajruport {STRING}
+STR_SV_STNAME_MINES                                             :Minjieri {STRING}
+STR_SV_STNAME_DOCKS                                             :Port {STRING}
 STR_SV_STNAME_BUOY                                              :{STRING}
 STR_SV_STNAME_WAYPOINT                                          :{STRING}
 ##id 0x6020
+STR_SV_STNAME_ANNEXE                                            :Anness {STRING}
+STR_SV_STNAME_SIDINGS                                           :Naħiet {STRING}
+STR_SV_STNAME_BRANCH                                            :Fergħa {STRING}
+STR_SV_STNAME_UPPER                                             :{STRING} ta' fuq
+STR_SV_STNAME_LOWER                                             :{STRING} t' isfel
+STR_SV_STNAME_HELIPORT                                          :Ħeliport {STRING}
+STR_SV_STNAME_FOREST                                            :Foresta {STRING}
+STR_SV_STNAME_FALLBACK                                          :{STRING}, Stazzjon #{NUM}
 ############ end of savegame specific region!
 
 ##id 0x8000
 # Vehicle names
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KIRBY_PAUL_TANK_STEAM        :Kirby Paul Tank (Fwar)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_250_DIESEL               :MJS 250 (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_CHOO_CHOO         :Ploddyphut Choo-Choo
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_CHOO_CHOO          :Powernaut Choo-Choo
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MIGHTYMOVER_CHOO_CHOO        :Mightymover Choo-Choo
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_DIESEL            :Ploddyphut Diesel
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_DIESEL             :Powernaut Diesel
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_WILLS_2_8_0_STEAM            :Wills 2-8-0 (Fwar)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CHANEY_JUBILEE_STEAM         :Chaney 'Jubilee' (Fwar)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_GINZU_A4_STEAM               :Ginzu 'A4' (Fwar)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_8P_STEAM                  :SH '8P' (Fwar)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MANLEY_MOREL_DMU_DIESEL      :Manley-Morel DMU (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_DASH_DIESEL                  :'Dash' (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_HENDRY_25_DIESEL          :SH/Hendry '25' (Diesel)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_UU_37_DIESEL                 :UU '37' (Diesel)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_FLOSS_47_DIESEL              :Floss '47' (Diesel)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CS_4000_DIESEL               :CS 4000 (Diesel)
@@ -924,28 +1013,29 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_40_ELECTRIC               :SH '40' (Elettr
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_T_I_M_ELECTRIC               :'T.I.M.' (Elettriku)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_ASIASTAR_ELECTRIC            :'AsiaStar' (Elettriku)
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PASSENGER_CAR                 :Karru għall-passiġġieri
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_MAIL_VAN                      :Vann ghall-posta
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COAL_CAR                      :Karru tal-faħam
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_MAIL_VAN                      :Vann għall-posta
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COAL_CAR                      :Karru għall-faħam
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_OIL_TANKER                    :Tanker taż-żejt
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_LIVESTOCK_VAN                 :Vann għall-annimali
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GOODS_VAN                     :Vann għall-merkanzija
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WOOD_TRUCK                    :Karru għall-injam
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FOOD_VAN                      :Vann għall-ikel
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PAPER_TRUCK                   :Karru tal-karti
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FOOD_VAN                      :Karru għall-ikel
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PAPER_TRUCK                   :Karru għall-karti
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WATER_TANKER                  :Tanker tal-ilma
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FRUIT_TRUCK                   :Karru tal-frott
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_SUGAR_TRUCK                   :Karru taz-zokkor
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BUBBLE_VAN                    :Karru tal-bżieżaq
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_CANDY_VAN                     :Vann tal-ħelu
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOY_VAN                       :Vann tal-ġugarelli
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BATTERY_TRUCK                 :Trakk tal-batteriji
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PLASTIC_TRUCK                 :Trakk għall-plastik
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FRUIT_TRUCK                   :Karru għall-frott
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_SUGAR_TRUCK                   :Karru għaz-zokkor
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BUBBLE_VAN                    :Karru għall-bżieżaq
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_CANDY_VAN                     :Karru għall-Ħelu
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOY_VAN                       :Karru għall-Ġugarelli
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BATTERY_TRUCK                 :Karru għall-Batteriji
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FIZZY_DRINK_TRUCK             :Karru għal-Luminata
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PLASTIC_TRUCK                 :Karru għall-Plastik
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :'X2001' (Elettriku)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_MILLENNIUM_Z1_ELECTRIC   :'Millennium Z1' (Elettriku)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_WIZZOWOW_Z99             :Wizzowow Z99
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PASSENGER_CAR             :Karru għall-passiġġieri
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_MAIL_VAN                  :Karru tal-posta
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COAL_CAR                  :Karru tal-faħam
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_MAIL_VAN                  :Karru għall-posta
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COAL_CAR                  :Karru għall-faħam
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FIZZY_DRINK_TRUCK         :Trakk tax-Xarbiet Karbonati
 STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER                            :Tanker taż-żejt MPS
 STR_VEHICLE_NAME_SHIP_CS_INC_OIL_TANKER                         :Tanker taż-żejt CS-Inc.

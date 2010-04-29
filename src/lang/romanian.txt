@@ -230,6 +230,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Nume nou
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Închide fereastra
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Titlul ferestrei - trage de aici pentru a muta fereastra
 STR_TOOLTIP_SHADE                                               :{BLACK}Minimizează fereastra - Afişează doar bara de titlu
+STR_TOOLTIP_DEBUG                                               :{BLACK}Arată informaţii depanare NewGRF
 STR_TOOLTIP_STICKY                                              :{BLACK}Previne închiderea acestei ferestre de către tasta 'Închide toate ferestrele'
 STR_TOOLTIP_RESIZE                                              :{BLACK}Apasă şi trage pentru redimensionarea ferestrei
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Comutator pentru dimensiunea ferestrei
@@ -441,6 +442,7 @@ STR_ABOUT_MENU_AI_DEBUG                                         :Depanare Inteli
 STR_ABOUT_MENU_SCREENSHOT                                       :Capturează ecranul (Ctrl+S)
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Capturează toată harta (Ctrl+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Despre 'OpenTTD'
+STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Aliniere imagini
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -1093,7 +1095,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Original
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Realistic
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Înclinarea pantelor pentru trenuri {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Înclinarea pantei (pentru vehicule) {ORANGE}{STRING}%
-STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Interzice trenurilor şi navelor să facă intoarceri de 90 de grade: {ORANGE}{STRING} {LTBLUE} (nu funcţionează cu OPF)
+STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Interzice trenurilor şi navelor să facă intoarceri de 90°: {ORANGE}{STRING} {LTBLUE} (nu funcţionează cu OPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Uneşte gările alăturate: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Permite contopirea (unirea) staţiilor neînvecinate: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Foloseşte algoritm de încarcare îmbunătăţit: {ORANGE}{STRING}
@@ -1759,7 +1761,7 @@ STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :conexiune pierd
 STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :eroare de protocol
 STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :Nepotrivire NewGRF
 STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :neautorizat
-STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :primit pachet ciudat
+STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :recepţionat pachet invalid sau neaşteptat
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :versiune incorectă
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :nume folosit deja
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :parolă incorectă
@@ -1777,7 +1779,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Jocul este înc
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Jocul este încă în pauză ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Jocul este încă în pauză ({STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Jocul continuă ({STRING})
-STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :insuficienţi jucători
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :număr de jucători
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :conectare clienţi
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :manual
 ############ End of leave-in-this-order
@@ -2363,6 +2365,32 @@ STR_NEWGRF_ADD_FILE                                             :{BLACK}Adauga l
 STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Adauga fisierul NewGRF ales in configuratie
 STR_NEWGRF_ADD_RESCAN_FILES                                     :{BLACK}Redetecteaza fisierele
 STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}Actualizeaza lista de fisiere NewGRF disponibile
+
+# NewGRF inspect window
+STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspectează - {STRING}
+STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Părinte
+STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Analizează obiectul scopului parintelui
+
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} la {HEX}
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Tip şină
+
+STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Parametru variabilă 60+x NewGRF (hexadecimal)
+
+# Sprite aligner window
+STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Aliniere imagine {COMMA} ({STRING})
+STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Imaginea următoare
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Mergi la imaginea indicată. Daca nu este o imagine normală, mergi la următoarea imagine normală
+STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Mergi la imagine
+STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Mergi la imaginea indicată. Daca nu este o imagine normală, mergi la următoarea imagine normală
+STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Imaginea precedentă
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Mergi la următoarea imagine normală, sărind peste orice pseudo-imagini, recolorări sau fonturi
+STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Reprezentarea maginii curente. Aliniamentul este ignorat
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Mişcă imaginea schimbând distanţele pe axe
+STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}distanţa X: {NUM}, distanţaY: {NUM}
+STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Alege imagine
+STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Alege o imagine de oriunde de pe ecran
+
+STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Mergi la imagine
 
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
@@ -2955,6 +2983,12 @@ STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE               :{LTBLUE}Service
 STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL           :{LTBLUE}Service la Santierul Naval {TOWN}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE                   :{LTBLUE}Service la Hangarul {STATION}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE_VEL               :{LTBLUE}Service la Hangarul {STATION}, {VELOCITY}
+
+# Vehicle stopped/started animations
+STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Oprit
+STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Oprit
+STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINYFONT}{GREEN}Pornit
+STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Pornit
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Detalii)

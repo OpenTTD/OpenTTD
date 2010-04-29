@@ -27,9 +27,41 @@ STR_JUST_NOTHING                                                :Ní dhéanfaidh
 # Cargo related strings
 # Plural cargo name
 STR_CARGO_PLURAL_NOTHING                                        :
+STR_CARGO_PLURAL_PASSENGERS                                     :Paisinéirí
+STR_CARGO_PLURAL_COAL                                           :Gual
+STR_CARGO_PLURAL_MAIL                                           :Post
+STR_CARGO_PLURAL_OIL                                            :Ola
+STR_CARGO_PLURAL_LIVESTOCK                                      :Beo-stoc
+STR_CARGO_PLURAL_GOODS                                          :Earraí
+STR_CARGO_PLURAL_GRAIN                                          :Arbhar
+STR_CARGO_PLURAL_WOOD                                           :Adhmad
+STR_CARGO_PLURAL_IRON_ORE                                       :Amhiarann
+STR_CARGO_PLURAL_STEEL                                          :Cruach
+STR_CARGO_PLURAL_VALUABLES                                      :Earraí luachmhara
+STR_CARGO_PLURAL_COPPER_ORE                                     :Mian Chopair
+STR_CARGO_PLURAL_MAIZE                                          :Arbhar Indiach
+STR_CARGO_PLURAL_FRUIT                                          :Torthaí
+STR_CARGO_PLURAL_DIAMONDS                                       :Diamaint
+STR_CARGO_PLURAL_FOOD                                           :Bianna
+STR_CARGO_PLURAL_PAPER                                          :Páipéir
+STR_CARGO_PLURAL_GOLD                                           :Ór
+STR_CARGO_PLURAL_WATER                                          :Uiscí
+STR_CARGO_PLURAL_WHEAT                                          :Cruinneacht
+STR_CARGO_PLURAL_RUBBER                                         :Rubar
+STR_CARGO_PLURAL_SUGAR                                          :Siúcra
+STR_CARGO_PLURAL_TOYS                                           :Bréagáin
+STR_CARGO_PLURAL_CANDY                                          :Milseáin
+STR_CARGO_PLURAL_COLA                                           :Cóla
+STR_CARGO_PLURAL_COTTON_CANDY                                   :Féasóg Daideo
+STR_CARGO_PLURAL_BUBBLES                                        :Súilíní
+STR_CARGO_PLURAL_TOFFEE                                         :Taifí
+STR_CARGO_PLURAL_BATTERIES                                      :Cadhnraí
+STR_CARGO_PLURAL_PLASTIC                                        :Plaistigh
+STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Deochanna Súilíneacha
 
 # Singular cargo name
 STR_CARGO_SINGULAR_NOTHING                                      :
+STR_CARGO_SINGULAR_PASSENGER                                    :Paisinéir
 STR_CARGO_SINGULAR_COAL                                         :Gual
 STR_CARGO_SINGULAR_MAIL                                         :Ríomhphost
 STR_CARGO_SINGULAR_OIL                                          :Ola
@@ -43,6 +75,7 @@ STR_CARGO_SINGULAR_VALUABLES                                    :Earraí luachmh
 STR_CARGO_SINGULAR_COPPER_ORE                                   :Copar méine
 STR_CARGO_SINGULAR_MAIZE                                        :Arbhair
 STR_CARGO_SINGULAR_FRUIT                                        :Torthaí
+STR_CARGO_SINGULAR_DIAMOND                                      :Diamant
 STR_CARGO_SINGULAR_FOOD                                         :Bia
 STR_CARGO_SINGULAR_PAPER                                        :Páipéar
 STR_CARGO_SINGULAR_GOLD                                         :Ór
@@ -52,6 +85,9 @@ STR_CARGO_SINGULAR_RUBBER                                       :Rubar
 STR_CARGO_SINGULAR_SUGAR                                        :Siúcra
 STR_CARGO_SINGULAR_TOY                                          :Bréagán
 STR_CARGO_SINGULAR_CANDY                                        :Milis
+STR_CARGO_SINGULAR_COLA                                         :Cóla
+STR_CARGO_SINGULAR_COTTON_CANDY                                 :Féasóg Daideo
+STR_CARGO_SINGULAR_BUBBLE                                       :Súilín
 STR_CARGO_SINGULAR_TOFFEE                                       :Taifí
 STR_CARGO_SINGULAR_BATTERY                                      :Ceallraí
 STR_CARGO_SINGULAR_PLASTIC                                      :Plaisteach
@@ -59,98 +95,430 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Fizzy Ól
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
+STR_QUANTITY_PASSENGERS                                         :{COMMA} paisinéir{P amháin "" í í ""}
+STR_QUANTITY_COAL                                               :{WEIGHT} guail
+STR_QUANTITY_MAIL                                               :{COMMA} mála{P "" "" "" "" ""} poist
+STR_QUANTITY_OIL                                                :{VOLUME} ola
+STR_QUANTITY_LIVESTOCK                                          :{COMMA} {P m mh m m m}ír{P "" "" "" "" ""} de bheo-stoc
+STR_QUANTITY_GOODS                                              :{COMMA} {P ch ch ch gc c}ráta{P "" "" "" "" ""} earraí
+STR_QUANTITY_GRAIN                                              :{WEIGHT} arbhair
+STR_QUANTITY_WOOD                                               :{WEIGHT} adhmaid
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT} amhiarainn
+STR_QUANTITY_STEEL                                              :{WEIGHT} de chruach
+STR_QUANTITY_VALUABLES                                          :{COMMA} {P mh mh mh m m}ála{P "" "" "" "" ""} d'earraí luachmhara
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} de mhian chopair
+STR_QUANTITY_MAIZE                                              :{WEIGHT} d'arbhar Indiach
+STR_QUANTITY_FRUIT                                              :{WEIGHT} de thorthaí
+STR_QUANTITY_DIAMONDS                                           :{COMMA} {P mh mh mh m m}ála{P "" "" "" "" ""} de dhiamaint
+STR_QUANTITY_FOOD                                               :{WEIGHT} de bhia
+STR_QUANTITY_PAPER                                              :{WEIGHT} de pháipéar
+STR_QUANTITY_GOLD                                               :{COMMA} {P mh mh mh m m}ála{P "" "" "" "" ""} d'ór
+STR_QUANTITY_WATER                                              :{VOLUME} d'uisce
+STR_QUANTITY_WHEAT                                              :{WEIGHT} de chruinneacht
+STR_QUANTITY_RUBBER                                             :{VOLUME} de rubar
+STR_QUANTITY_SUGAR                                              :{WEIGHT} de shiúcra
+STR_QUANTITY_TOYS                                               :{COMMA} {P bh bh bh mb b}réagán
+STR_QUANTITY_SWEETS                                             :{COMMA} {P mh mh mh m m}ála{P "" "" "" "" ""} of sweets
+STR_QUANTITY_COLA                                               :{VOLUME} de chóla
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} d'fhéasóg Daideo
+STR_QUANTITY_BUBBLES                                            :{COMMA} {P sh sh sh s s}súilín{P "" "" "" "" ""}
+STR_QUANTITY_TOFFEE                                             :{WEIGHT} de thaifí
+STR_QUANTITY_BATTERIES                                          :{COMMA} {P ch ch ch gc c}eallra{P "" "" "" "" ""}
+STR_QUANTITY_PLASTIC                                            :{VOLUME} de phlaisteach
+STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} {P dh dh dh nd n}eoch súilíneach
+STR_QUANTITY_N_A                                                :N/B
 
 # Two letter abbreviation of cargo name
+STR_ABBREV_NOTHING                                              :
+STR_ABBREV_PASSENGERS                                           :{TINYFONT}P
+STR_ABBREV_COAL                                                 :{TINYFONT}GL
+STR_ABBREV_MAIL                                                 :{TINYFONT}PT
+STR_ABBREV_OIL                                                  :{TINYFONT}OL
+STR_ABBREV_LIVESTOCK                                            :{TINYFONT}BS
+STR_ABBREV_GOODS                                                :{TINYFONT}EA
+STR_ABBREV_GRAIN                                                :{TINYFONT}AR
+STR_ABBREV_WOOD                                                 :{TINYFONT}AD
+STR_ABBREV_IRON_ORE                                             :{TINYFONT}IA
+STR_ABBREV_STEEL                                                :{TINYFONT}CR
+STR_ABBREV_VALUABLES                                            :{TINYFONT}EL
+STR_ABBREV_COPPER_ORE                                           :{TINYFONT}CO
+STR_ABBREV_MAIZE                                                :{TINYFONT}AI
+STR_ABBREV_FRUIT                                                :{TINYFONT}TO
+STR_ABBREV_DIAMONDS                                             :{TINYFONT}DM
+STR_ABBREV_FOOD                                                 :{TINYFONT}BI
+STR_ABBREV_PAPER                                                :{TINYFONT}PR
+STR_ABBREV_GOLD                                                 :{TINYFONT}ÓR
+STR_ABBREV_WATER                                                :{TINYFONT}UI
+STR_ABBREV_WHEAT                                                :{TINYFONT}CR
+STR_ABBREV_RUBBER                                               :{TINYFONT}RB
+STR_ABBREV_SUGAR                                                :{TINYFONT}SI
+STR_ABBREV_TOYS                                                 :{TINYFONT}BR
+STR_ABBREV_SWEETS                                               :{TINYFONT}MI
+STR_ABBREV_COLA                                                 :{TINYFONT}CL
+STR_ABBREV_CANDYFLOSS                                           :{TINYFONT}FD
+STR_ABBREV_BUBBLES                                              :{TINYFONT}SÚ
+STR_ABBREV_TOFFEE                                               :{TINYFONT}TF
+STR_ABBREV_BATTERIES                                            :{TINYFONT}CE
+STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
+STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}DS
+STR_ABBREV_NONE                                                 :{TINYFONT}TD
+STR_ABBREV_ALL                                                  :{TINYFONT}GACH
 
 # 'Mode' of transport for cargoes
+STR_PASSENGERS                                                  :paisinéirí
+STR_BAGS                                                        :málaí
+STR_TONS                                                        :tonaí
+STR_LITERS                                                      :lítear
+STR_ITEMS                                                       :míreanna
+STR_CRATES                                                      :crátaí
+STR_RES_OTHER                                                   :eile
+STR_NOTHING                                                     :
 
 # Colours, do not shuffle
+STR_COLOUR_DARK_BLUE                                            :Gorm Dorcha
+STR_COLOUR_PALE_GREEN                                           :Liathuaine
+STR_COLOUR_PINK                                                 :Bándearg
+STR_COLOUR_YELLOW                                               :Buí
+STR_COLOUR_RED                                                  :Dearg
+STR_COLOUR_LIGHT_BLUE                                           :Bánghorm
+STR_COLOUR_GREEN                                                :Uaine
+STR_COLOUR_DARK_GREEN                                           :Ciaruaine
+STR_COLOUR_BLUE                                                 :Gorm
+STR_COLOUR_CREAM                                                :Uachtar
+STR_COLOUR_MAUVE                                                :Liathchorcra
+STR_COLOUR_PURPLE                                               :Corcra
+STR_COLOUR_ORANGE                                               :Oráiste
+STR_COLOUR_BROWN                                                :Donn
+STR_COLOUR_GREY                                                 :Liath
+STR_COLOUR_WHITE                                                :Bán
 
 # Units used in OpenTTD
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} m/u
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/u
+STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
 
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hp
+STR_UNITS_POWER_METRIC                                          :{COMMA}hp
+STR_UNITS_POWER_SI                                              :{COMMA}kW
 
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
+STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tona{P "" "" "" "" ""}
+STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} lítear{P "" "" "" "" ""}
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
+STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 # Common window strings
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Iontráil teaghráin scagaire
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Iontráil eochairfhocal chun an liosta a scagadh di
+STR_LIST_FILTER_TITLE                                           :{BLACK}Teaghrán scagtha:
 
+STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Roghnaigh ord sórtála (ardaitheach/íslitheach)
+STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Roghnaigh critéir sórtála
+STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Roghnaigh critéir scagtha
+STR_BUTTON_SORT_BY                                              :{BLACK}Sórtáil de réir
+STR_BUTTON_LOCATION                                             :{BLACK}Suíomh
+STR_BUTTON_RENAME                                               :{BLACK}Athainmnigh
 
+STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Dún an fhuinneog
+STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Teideal fuinneoige - tarraing é seo chun fuinneog a bhogadh
+STR_TOOLTIP_SHADE                                               :{BLACK}Cuir fuinneog faoi scáth - ná taispeáin ach an barra teidil
+STR_TOOLTIP_DEBUG                                               :{BLACK}Taispeáin faisnéis dífhabhtaithe NewGRF
+STR_TOOLTIP_STICKY                                              :{BLACK}Marcáil an fhuinneog seo mar cheann nach féidir a dhúnadh leis an eochair 'Dún gach fuinneog'
+STR_TOOLTIP_RESIZE                                              :{BLACK}Cliceáil agus tarraing chun méid na fuinneoige seo a athrú
+STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Scoránaigh méid fuinneoige mór/beag
+STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Scrollbharraí - déantar liosta a scrollú suas/síos
+STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Scrollbharraí - déantar liosta a scrollú ar dheis/ar chlé
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Leag foirgnimh msh. ar chearnóg talún
 
 # Query window
+STR_BUTTON_DEFAULT                                              :{BLACK}Réamhshocrú
+STR_BUTTON_CANCEL                                               :{BLACK}Cealaigh
+STR_BUTTON_OK                                                   :{BLACK}OK
 
 # On screen keyboard window
+STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
+STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
 
 # Measurement tooltip
+STR_MEASURE_LENGTH                                              :{BLACK}Fad: {NUM}
+STR_MEASURE_AREA                                                :{BLACK}Achar: {NUM} x {NUM}
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Fad: {NUM}{}Difríocht san airde: {NUM} m
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Achar: {NUM}x {NUM}{}Difríocht san airde: {NUM} m
 
 
 # These are used in buttons
+STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Daonra
+STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Ainm
+STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Dáta
 # These are used in dropdowns
+STR_SORT_BY_POPULATION                                          :Daonra
+STR_SORT_BY_NAME                                                :Ainm
+STR_SORT_BY_PRODUCTION                                          :Ag táirgeadh
+STR_SORT_BY_TYPE                                                :Cineál
+STR_SORT_BY_TRANSPORTED                                         :Á Iompar
+STR_SORT_BY_NUMBER                                              :Líon
+STR_SORT_BY_PROFIT_LAST_YEAR                                    :Brabús anuraidh
+STR_SORT_BY_PROFIT_THIS_YEAR                                    :Brabús i mbliana
+STR_SORT_BY_AGE                                                 :Aois
+STR_SORT_BY_RELIABILITY                                         :Iontaofacht
+STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Méid iomlán in aghaidh an chineáil lastais
+STR_SORT_BY_MAX_SPEED                                           :Luas uasta
+STR_SORT_BY_MODEL                                               :Múnla
+STR_SORT_BY_VALUE                                               :Luach
+STR_SORT_BY_LENGTH                                              :Fad
+STR_SORT_BY_LIFE_TIME                                           :Saolré fágtha
+STR_SORT_BY_TIMETABLE_DELAY                                     :Moill san amchlár
+STR_SORT_BY_FACILITY                                            :Cineál stáisiúin
+STR_SORT_BY_WAITING                                             :Luach an lastais atá ag fanacht
+STR_SORT_BY_RATING_MAX                                          :Rátáil lastais is airde
+STR_SORT_BY_RATING_MIN                                          :Rátáil lastais is ísle
+STR_SORT_BY_ENGINE_ID                                           :ID an Innill (sórtáil chlaisiceach)
+STR_SORT_BY_COST                                                :Costas
+STR_SORT_BY_POWER                                               :Cumhacht
+STR_SORT_BY_INTRO_DATE                                          :Dáta a tugadh isteach é
+STR_SORT_BY_RUNNING_COST                                        :Costas le Rith
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :Cumhacht/Costas le Rith
+STR_SORT_BY_CARGO_CAPACITY                                      :Méid an Lastais
 
 # Tooltips for the main toolbar
+STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Cuir an cluiche ar sos
+STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Bog an cluiche ar aghaidh go scioptha
+STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Roghanna
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Sábháil cluiche, fág cluiche, scoir
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Taispeáin léarscáil, amharc breise nó liosta comharthaí
+STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Taispeáin liosta na mbailte
+STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Taispeáin fordheontais
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Taispeáin liosta de stáisiúin na cuideachta
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Taispeáin faisnéis airgeadais faoin gcuideachta
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Taispeáin faisnéis ginearálta faoin gcuideachta
+STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Taispeáin graif
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Taispeáin tábla sraithe na gcuideachtaí
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Tabhair maoiniú do thionscal nua nó liosta de gach tionscal
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Taispeáin liosta de thraenacha na cuideachta. Déantar Ctrl+Cliceáil scoránú ar liosta na ngrúpaí/bhfeithiclí a oscailt
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Taispeáin liosta d'fheithiclí bóithre na cuideachta. Déantar Ctrl+Cliceáil scoránú ar liosta na ngrúpaí/bhfeithiclí a oscailt
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Taispeáin liosta de longa na cuideachta. Déantar Ctrl+Cliceáil scoránú ar liosta na ngrúpaí/bhfeithiclí a oscailt
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Taispeáin liosta d'aerárthaigh na cuideachta. Déantar Ctrl+Cliceáil scoránú ar liosta na ngrúpaí/bhfeithiclí a oscailt
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Zúmáil isteach
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Zúmáil amach
+STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Tóg iarnród
+STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Tóg bóithre
+STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Tóg duganna
+STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Tóg aerfoirt
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Oscail an barra uirlisí tírdhreacha chun talamh a ardú/ísliú, crainnte a chur, srl.
+STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Taispeáin an fhuinneoig fuaime/ceoil
+STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Taispeáin an teachtaireacht/tuairisc nuachta deiridh, taispeáin roghanna do theachtaireachtaí
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Faisnéis faoin talamh, consól, dífhabhtú AI, seatanna scáileáin, maidir le OpenTTD
+STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Athraigh barraí uirlisí
 
 # Extra tooltips for the scenario editor toolbar
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Sábháil scéal, lódáil scéal, fág eagarthóir na scéalta, scoir
+STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}Oscail TTD
+STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Eagarthóir Scéalta
+STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Cuir an dáta tosaigh siar bliain amháin
+STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Cuir an dáta tosaigh ar aghaidh bliain amháin
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Cliceáil chun an dáta tosaigh a iontráil
+STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Taispeáin léarscáil, liosta na mbailte
+STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Tírdhreach a chruthú
+STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Baile a chruthú
+STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Tionscal a chruthú
+STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Bóithre a thógáil
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Crainnte a chur
+STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Comhartha a chur
 
 ############ range for SE file menu starts
+STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Sábháil scéal
+STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Lódáil scéal
+STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Lódáil léarscáil airde
+STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Scoir den eagarthóir
+STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
+STR_SCENEDIT_FILE_MENU_QUIT                                     :Scoir
 ############ range for SE file menu starts
 
 ############ range for settings menu starts
+STR_SETTINGS_MENU_GAME_OPTIONS                                  :Roghann cluiche
+STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Socruithe deacrachta
+STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Ardsocruithe
+STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Socruiteh NewGRF
+STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Roghanna trédhearcachta
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Taispeántar ainmneacha bailte
+STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Taispeántar ainmneacha na stáisiún
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Taispeántar ainmneacha na bpointí bealaigh
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Taispeántar comharthaí
+STR_SETTINGS_MENU_FULL_ANIMATION                                :Míreanna beochana iomlán
+STR_SETTINGS_MENU_FULL_DETAIL                                   :Sonraí iomlán
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Foignimh trédhearcacha
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Comharthaí stáisiún trédhearcacha
 ############ range ends here
 
 ############ range for file menu starts
+STR_FILE_MENU_SAVE_GAME                                         :Sábháil an cluiche
+STR_FILE_MENU_LOAD_GAME                                         :Lódáil cluiche
+STR_FILE_MENU_QUIT_GAME                                         :Fág cluiche
+STR_FILE_MENU_EXIT                                              :Scoir
 ############ range ends here
 
 ############ range for map menu starts
+STR_MAP_MENU_MAP_OF_WORLD                                       :Léarscáil den domhan
+STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Fuinneog amhairc bhreise
+STR_MAP_MENU_SIGN_LIST                                          :Liosta na gcomharthaí
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
+STR_TOWN_MENU_TOWN_DIRECTORY                                    :Liosta bailte
 ############ end of the 'Display map' dropdown
+STR_TOWN_MENU_FOUND_TOWN                                        :Aimsíodh baile
 ############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
+STR_SUBSIDIES_MENU_SUBSIDIES                                    :Fordheontais
 ############ range ends here
 
 ############ range for graph menu starts
+STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Graf den bhrabús oibriúcháin
+STR_GRAPH_MENU_INCOME_GRAPH                                     :Graf den ioncam
+STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Graf den lastas a seachadadh
+STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :Graf den stair feidhmíochta
+STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Graf de luach na cuideachta
+STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Rátaí íocaíochta do lastas
 ############ range ends here
 
 ############ range for company league menu starts
+STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Tábla sraithe na gcuideachtaí
+STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Rátáil feidhmíochta mionsonraithe
 ############ range ends here
 
 ############ range for industry menu starts
+STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Liosta de na tionscail
+STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Déan maoiniú ar thionscal nua
 ############ range ends here
 
 ############ range for railway construction menu starts
+STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Tógáil iarnróid
+STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Tógáil iarnróid leictrithe
+STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Tógáil iarnród aonráille
+STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Tógáil maglev
 ############ range ends here
 
 ############ range for road construction menu starts
+STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Tógáil bóithre
+STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Tógáil trambhealaigh
 ############ range ends here
 
 ############ range for waterways construction menu starts
+STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Tógáil uiscebhealaí
 ############ range ends here
 
 ############ range for airport construction menu starts
+STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Tógáil aerfoirt
 ############ range ends here
 
 ############ range for landscaping menu starts
+STR_LANDSCAPING_MENU_LANDSCAPING                                :Tírdhreachú
+STR_LANDSCAPING_MENU_PLANT_TREES                                :Crainnte a chur
+STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Comhartha a chur
 ############ range ends here
 
 ############ range for music menu starts
+STR_TOOLBAR_SOUND_MUSIC                                         :Fuaim/ceol
 ############ range ends here
 
 ############ range for message menu starts
+STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Teachtaireacht/tuairisc nuachta deiridh
+STR_NEWS_MENU_MESSAGE_SETTINGS                                  :Socruithe teachtaireachtaí
+STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Stair na dteachtaireachtaí
 ############ range ends here
 
 ############ range for about menu starts
+STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Faisnéis faoin limistéar talún
+STR_ABOUT_MENU_SEPARATOR                                        :
+STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Scoránaigh consól
+STR_ABOUT_MENU_AI_DEBUG                                         :Dífhabhtú AI
+STR_ABOUT_MENU_SCREENSHOT                                       :Seat scáileáin (Ctrl+S)
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Seat scáileáin ollmhór (Ctrl+G)
+STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Maidir le 'OpenTTD'
+STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Ailínóir spriteanna
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
+STR_ORDINAL_NUMBER_1ST                                          :1ú
+STR_ORDINAL_NUMBER_2ND                                          :2ú
+STR_ORDINAL_NUMBER_3RD                                          :3ú
+STR_ORDINAL_NUMBER_4TH                                          :4ú
+STR_ORDINAL_NUMBER_5TH                                          :5ú
+STR_ORDINAL_NUMBER_6TH                                          :6ú
+STR_ORDINAL_NUMBER_7TH                                          :7ú
+STR_ORDINAL_NUMBER_8TH                                          :8ú
+STR_ORDINAL_NUMBER_9TH                                          :9ú
+STR_ORDINAL_NUMBER_10TH                                         :10ú
+STR_ORDINAL_NUMBER_11TH                                         :11ú
+STR_ORDINAL_NUMBER_12TH                                         :12ú
+STR_ORDINAL_NUMBER_13TH                                         :13ú
+STR_ORDINAL_NUMBER_14TH                                         :14ú
+STR_ORDINAL_NUMBER_15TH                                         :15ú
+STR_ORDINAL_NUMBER_16TH                                         :16ú
+STR_ORDINAL_NUMBER_17TH                                         :17ú
+STR_ORDINAL_NUMBER_18TH                                         :18ú
+STR_ORDINAL_NUMBER_19TH                                         :19ú
+STR_ORDINAL_NUMBER_20TH                                         :20ú
+STR_ORDINAL_NUMBER_21ST                                         :21ú
+STR_ORDINAL_NUMBER_22ND                                         :22ú
+STR_ORDINAL_NUMBER_23RD                                         :23ú
+STR_ORDINAL_NUMBER_24TH                                         :24ú
+STR_ORDINAL_NUMBER_25TH                                         :25ú
+STR_ORDINAL_NUMBER_26TH                                         :26ú
+STR_ORDINAL_NUMBER_27TH                                         :27ú
+STR_ORDINAL_NUMBER_28TH                                         :28ú
+STR_ORDINAL_NUMBER_29TH                                         :29ú
+STR_ORDINAL_NUMBER_30TH                                         :30ú
+STR_ORDINAL_NUMBER_31ST                                         :31ú
 ############ range for days ends
 
 ############ range for months starts
+STR_MONTH_ABBREV_JAN                                            :Ean
+STR_MONTH_ABBREV_FEB                                            :Fea
+STR_MONTH_ABBREV_MAR                                            :Már
+STR_MONTH_ABBREV_APR                                            :Aib
+STR_MONTH_ABBREV_MAY                                            :Bea
+STR_MONTH_ABBREV_JUN                                            :Mei
+STR_MONTH_ABBREV_JUL                                            :Iúil
+STR_MONTH_ABBREV_AUG                                            :Lún
+STR_MONTH_ABBREV_SEP                                            :M.Fómh
+STR_MONTH_ABBREV_OCT                                            :D.Fómh
+STR_MONTH_ABBREV_NOV                                            :Samh
+STR_MONTH_ABBREV_DEC                                            :Noll
 
+STR_MONTH_JAN                                                   :Eanáir
+STR_MONTH_FEB                                                   :Feabhra
+STR_MONTH_MAR                                                   :Márta
+STR_MONTH_APR                                                   :Aibreán
+STR_MONTH_MAY                                                   :Bealtaine
+STR_MONTH_JUN                                                   :Meitheamh
+STR_MONTH_JUL                                                   :Iúil
+STR_MONTH_AUG                                                   :Lúnasa
+STR_MONTH_SEP                                                   :Meán Fómhair
+STR_MONTH_OCT                                                   :Deireadh Fómhair
+STR_MONTH_NOV                                                   :Samhain
+STR_MONTH_DEC                                                   :Nollaig
 ############ range for months ends
 
 # Graph window
+STR_GRAPH_KEY_BUTTON                                            :{BLACK}Eochair
+STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}Taispeáin eochair na ngraf
+STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
+STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
+STR_GRAPH_Y_LABEL                                               :{TINYFONT}{STRING}
+STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
 
+STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Graf den bhrabús oibriúcháin
+STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Graf den Ioncam
+STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Aonad lastais a seachadadh
+STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Rátálacha feidhmíochta cuideachtaí (uasrátáil=1000)
 
 
 
@@ -461,6 +829,32 @@ STR_QUANTITY_NOTHING                                            :
 
 # NewGRF add window
 
+# NewGRF inspect window
+STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Déan iniúchadh - {STRING}
+STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Máthair
+STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Déan iniúchadh ar an oibiacht de scóip na máthar
+
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} ag {HEX}
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Cineál iarnróid
+
+STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Athróg NewGRF paraiméadar 60+x (heicsidheachúil)
+
+# Sprite aligner window
+STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Ag ailíniú sprite {COMMA} ({STRING})
+STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}An chéad sprite eile
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Téigh chuig an chéad gnáth-sprite eile, ag scipeáil thar aon bhréag-sprite nó sprite athdhathaithe/clófhoirne agus ag timfhilleadh ag an deireadh
+STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Téigh chuig sprite
+STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Téigh chuig an sprite sonraithe. Más rud é nach gnáth-sprite atá ann, téigh ar aghaidh chuig an chéad gnáth-sprite eile
+STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Sprite roimhe
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Téigh ar aghaigh chuig an gnáth-sprite roimhe, ag scipeáil thar aon bhréag-sprite nó sprite athdathaithe/clófhoirne agus ag timfhilleadh ag an tús
+STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Léiriú den sprite atá roghnaithe faoi láthair. Déantar neamhaird den ailíniú agus an sprite seo á tharraingt
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Bog an sprite timpeall, ag athrú an seach-chur X agus Y
+STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}seach-chur X: {NUM}, seach-chur Y: {NUM}
+STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Roghnaigh sprite
+STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Roghnaigh sprite ó áit ar bith ar an scáileán
+
+STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Téigh chuig sprite
+
 # NewGRF (self) generated warnings/errors
 
 # NewGRF related 'general' warnings
@@ -591,6 +985,12 @@ STR_QUANTITY_NOTHING                                            :
 
 
 
+
+# Vehicle stopped/started animations
+STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Stoptha
+STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Stoptha
+STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINYFONT}{GREEN}Tosaithe
+STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Tosaithe
 
 # Vehicle details
 
@@ -728,6 +1128,7 @@ STR_QUANTITY_NOTHING                                            :
 # Waterway construction errors
 
 # Tree related errors
+STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... tír-raon mícheart do chrann den chineál sin
 
 # Bridge related errors
 
@@ -779,6 +1180,27 @@ STR_SV_STNAME_WAYPOINT                                          :{STRING}
 
 ##id 0x8000
 # Vehicle names
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A32                           :Aerthacsaí A32
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A33                           :Aerthacsaí A33
+STR_VEHICLE_NAME_AIRCRAFT_YATE_AEROSPACE_YAE46                  :YAe46 Aeraspás Yate
+STR_VEHICLE_NAME_AIRCRAFT_DINGER_100                            :Dinger 100
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A34_1000                      :Aerthacsaí A34-1000
+STR_VEHICLE_NAME_AIRCRAFT_YATE_Z_SHUTTLE                        :Z-Tointeáil Yate
+STR_VEHICLE_NAME_AIRCRAFT_KELLING_K1                            :Kelling K1
+STR_VEHICLE_NAME_AIRCRAFT_KELLING_K6                            :Kelling K6
+STR_VEHICLE_NAME_AIRCRAFT_KELLING_K7                            :Kelling K7
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_700                            :Darwin 700
+STR_VEHICLE_NAME_AIRCRAFT_FFP_HYPERDART_2                       :FFP Hyperdart 2
+STR_VEHICLE_NAME_AIRCRAFT_DINGER_200                            :Dinger 200
+STR_VEHICLE_NAME_AIRCRAFT_DINGER_1000                           :Dinger 1000
+STR_VEHICLE_NAME_AIRCRAFT_PLODDYPHUT_100                        :Ploddyphut 100
+STR_VEHICLE_NAME_AIRCRAFT_PLODDYPHUT_500                        :Ploddyphut 500
+STR_VEHICLE_NAME_AIRCRAFT_FLASHBANG_X1                          :Flashbang X1
+STR_VEHICLE_NAME_AIRCRAFT_JUGGERPLANE_M1                        :Juggerplane M1
+STR_VEHICLE_NAME_AIRCRAFT_FLASHBANG_WIZZER                      :Flashbang Wizzer
+STR_VEHICLE_NAME_AIRCRAFT_TRICARIO_HELICOPTER                   :Héileacaptar Tricario
+STR_VEHICLE_NAME_AIRCRAFT_GURU_X2_HELICOPTER                    :Héileacaptar Guru X2
+STR_VEHICLE_NAME_AIRCRAFT_POWERNAUT_HELICOPTER                  :Héileacaptar Powernaut
 
 ##id 0x8800
 # Formatting of some strings
@@ -787,9 +1209,20 @@ STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
 STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
 STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
 
+STR_FORMAT_BUOY_NAME                                            :{TOWN} Baoi
+STR_FORMAT_BUOY_NAME_SERIAL                                     :{TOWN} Baoi #{COMMA}
+STR_FORMAT_COMPANY_NUM                                          :(Cuideachta {COMMA})
+STR_FORMAT_GROUP_NAME                                           :Grúpa {COMMA}
+STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
+STR_FORMAT_WAYPOINT_NAME                                        :{TOWN} Pointe bealaigh
+STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN} Pointe bealaigh #{COMMA}
 
+STR_UNKNOWN_STATION                                             :stáisiún anaithnid
+STR_DEFAULT_SIGN_NAME                                           :Comhartha
+STR_COMPANY_SOMEONE                                             :duine éigean
 
 STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}
+STR_SAVEGAME_NAME_SPECTATOR                                     :Duine ag féachaint, {1:STRING}
 
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})

@@ -2388,6 +2388,8 @@ STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Procedei
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Representació de l'sprite seleccionat actualment. L'alineació s'ignora quan es dibuixa aquest sprite
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Mou l'sprite al voltant, canviant els desplaçaments en X i Y
 STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}Desplaçament X: {NUM}, Desplaçament Y: {NUM}
+STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Agafa un sprite
+STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Agafa un sprite de qualsevol lloc de la pantalla
 
 STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Anar a l'sprite
 
