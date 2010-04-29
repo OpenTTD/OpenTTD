@@ -624,7 +624,7 @@ struct SpriteAlignerWindow : Window {
 				int step_size = nwid->resize_y;
 
 				SmallVector<SpriteID, 256> &list = _newgrf_debug_sprite_picker.sprites;
-				int max = min(this->vscroll.GetPosition() + this->vscroll.GetCapacity(), list.Length());
+				int max = min<int>(this->vscroll.GetPosition() + this->vscroll.GetCapacity(), list.Length());
 
 				int y = r.top + WD_FRAMERECT_TOP;
 				for (int i = this->vscroll.GetPosition(); i < max; i++) {
