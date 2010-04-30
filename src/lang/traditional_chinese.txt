@@ -442,6 +442,7 @@ STR_ABOUT_MENU_AI_DEBUG                                         :AI 除錯
 STR_ABOUT_MENU_SCREENSHOT                                       :擷取畫面 (Ctrl-S)
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :巨觀畫面擷取 (Ctrl-G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :關於「OpenTTD」
+STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite 定位工具
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -2366,13 +2367,25 @@ STR_NEWGRF_ADD_RESCAN_FILES                                     :{BLACK}重新�
 STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}更新可用的 NewGRF 檔案清單
 
 # NewGRF inspect window
+STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}變數檢查 - {STRING}
+STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Parent
+STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}檢查該物件的 Parent scope
 
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} 於 {HEX}
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :鐵路種類
 
 
 # Sprite aligner window
+STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}定位 Sprite {COMMA} ({STRING})
+STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}下一個 Sprite
+STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}前往 Sprite
+STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}上一個 Sprite
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}移動 Sprite 到指定的 X 及 Y 座標位移
+STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X 座標位移：{NUM}, Y 座標位移：{NUM}
+STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}選取 Sprite
+STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}請從畫面中任意選取一個 Sprite
 
+STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}前往 Sprite
 
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
@@ -2423,8 +2436,8 @@ STR_SIGN_LIST_CAPTION                                           :{WHITE}標誌�
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}編輯標誌文字
-STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}前往下一個標誌
-STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}前往前一個標誌
+STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}前往下個標誌
+STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}前往上個標誌
 
 STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}輸入標誌名稱
 
@@ -3545,6 +3558,7 @@ STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}無法�
 
 # Tree related errors
 STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... 這邊已經有樹了
+STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... 樹木種類與該地形不符
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}不能在這邊植樹...
 
 # Bridge related errors

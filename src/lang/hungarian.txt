@@ -293,6 +293,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Átnevez
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Ablak bezárása
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Ablak címsora - húzd ezt a mozgatáshoz
 STR_TOOLTIP_SHADE                                               :{BLACK}Ablak összecsukása - csak a címsor látszódik
+STR_TOOLTIP_DEBUG                                               :{BLACK}NewGRF debug információ mutatása
 STR_TOOLTIP_STICKY                                              :{BLACK}Ez az ablak akkor se záródjon be, ha a DEL billentyűvel az összes ablakot bezárjuk
 STR_TOOLTIP_RESIZE                                              :{BLACK}Fogd és húzd hogy átméretezd az ablakot
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Kicsi/nagy ablakméret közötti váltás
@@ -504,6 +505,7 @@ STR_ABOUT_MENU_AI_DEBUG                                         :MI debug
 STR_ABOUT_MENU_SCREENSHOT                                       :Képmentés (Ctrl+S)
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Óriás képmentés (Ctrl+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Az 'OpenTTD'-ről
+STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite elhelyező
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -2429,11 +2431,30 @@ STR_NEWGRF_ADD_RESCAN_FILES                                     :{BLACK}Fájlok 
 STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}Az elérhető NewGRF fájlok listájának frissítése
 
 # NewGRF inspect window
+STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Megtekintés - {STRING}
+STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Szülő
+STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Objektum megtekintése szülőterületen
 
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} {HEX}-ban
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Pályatípus
 
+STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF változó 60+x paraméter (hexadecimális)
 
 # Sprite aligner window
+STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Elhelyezési sprite {COMMA} ({STRING})
+STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Következő sprite
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Továbbhaladás a következő normál spritera, kihagyva bármilyen ál/átszínező/betű spriteokat bezárva a végével
+STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Ugrás a spritehoz
+STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Ugrás a megadott spritehoz. Ha a sprite nem normál sprite, továbbhaladás a következő normál spritehoz
+STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Előző sprite
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Továbbhaladás az előző normál spritera, kihagyva bármilyen ál/átszínező/betű spriteokat bezárva az elejével
+STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}A jelenleg kiválasztott sprite ábrázolása. Az elhelyezkedés kikapcsolt sprite-rajzolás közben
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Sprite elmozdítása, módosítva az X és Y offszeteket
+STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X offszet: {NUM}, Y offszet: {NUM}
+STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Sprite felszedése
+STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Szedj fel egy spriteot akárhonnan a képernyőről
 
+STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Ugrás a spritehoz
 
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
@@ -3028,6 +3049,10 @@ STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE                   :{LTBLUE}Javít�
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE_VEL               :{LTBLUE}Javítás {STATION} hangárjában, {VELOCITY}
 
 # Vehicle stopped/started animations
+STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Megállított
+STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Megállított
+STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINYFONT}{GREEN}Elkezdett
+STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Elkezdett
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} adatai
@@ -3555,7 +3580,7 @@ STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Csak a j
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Túl hosszú a vonat
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}A járművet nem lehet megfordítani...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Több részből álló járművet nem lehet megfordítani...
-STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Inkompatibilis síntípusok
+STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Inkompatibilis pályatípusok
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Nem mozgathatod a járművet...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}A mozdony első felének mindig elől kell lennie

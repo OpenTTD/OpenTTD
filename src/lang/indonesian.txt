@@ -230,6 +230,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Ubah nam
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Tutup window
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Judul Jendela - klik dan tahan disini untuk memindahkan jendela
 STR_TOOLTIP_SHADE                                               :{BLACK}Gulung jendela - Hanya tampilkan judulnya
+STR_TOOLTIP_DEBUG                                               :{BLACK}Tampilkan informasi debug NewGRF
 STR_TOOLTIP_STICKY                                              :{BLACK}Catat jendela ini agar tidak tertutup saat di beri perintah "Tutup Semua Jendela"
 STR_TOOLTIP_RESIZE                                              :{BLACK}Klik dan Geser untuk mengubah ukuran jendela ini.
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Tandai besar/kecil ukuran jendela
@@ -441,6 +442,7 @@ STR_ABOUT_MENU_AI_DEBUG                                         :AI Debug
 STR_ABOUT_MENU_SCREENSHOT                                       :Ambil gambar (Ctrl-S)
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Ambil gambar besar (Ctrl-G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Tentang 'OpenTTD'
+STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Penjajar Sprite
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -2365,10 +2367,22 @@ STR_NEWGRF_ADD_RESCAN_FILES                                     :{BLACK}Telusuri
 STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}Memperbarui daftar berkas NewGRF yang tersedia.
 
 # NewGRF inspect window
+STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Memeriksa - {STRING}
+STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Induk
 
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} pada {HEX}
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Tipe rel
 
 
 # Sprite aligner window
+STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Menjajarkan sprite {COMMA} ({STRING})
+STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Sprite berikutnya
+STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Sprite sebelumnya
+STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Mewakili sprite yang sedang dipilih. Penjajaran diabaikan ketika sprite ini digambar
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Pindahkan sprite, mengubah offset X dan Y
+STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X offset: {NUM}, Y offset: {NUM}
+STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Pilih sprite
+STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Pilih sebuah sprite di manapun pada layar
 
 
 # NewGRF (self) generated warnings/errors
@@ -2964,6 +2978,10 @@ STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE                   :{LTBLUE}Perbaik
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE_VEL               :{LTBLUE}Perbaikkan di Hangar {STATION}, {VELOCITY}
 
 # Vehicle stopped/started animations
+STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Berhenti
+STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Berhenti
+STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINYFONT}{GREEN}Mulai
+STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Mulai
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Detail)
