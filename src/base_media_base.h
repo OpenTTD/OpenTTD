@@ -108,10 +108,11 @@ struct BaseSet {
 	 * Read the set information from a loaded ini.
 	 * @param ini      the ini to read from
 	 * @param path     the path to this ini file (for filenames)
+	 * @param full_filename the full filename of the loaded file (for error reporting purposes)
 	 * @param allow_empty_filename empty filenames are valid
 	 * @return true if loading was successful.
 	 */
-	bool FillSetDetails(IniFile *ini, const char *path, bool allow_empty_filename = true);
+	bool FillSetDetails(IniFile *ini, const char *path, const char *full_filename, bool allow_empty_filename = true);
 
 	/**
 	 * Get the description for the given ISO code.
@@ -238,7 +239,7 @@ enum GraphicsFileType {
 struct GraphicsSet : BaseSet<GraphicsSet, MAX_GFT, DATA_DIR> {
 	PaletteType palette;       ///< Palette of this graphics set
 
-	bool FillSetDetails(struct IniFile *ini, const char *path);
+	bool FillSetDetails(struct IniFile *ini, const char *path, const char *full_filename);
 };
 
 /** All data/functions related with replacing the base graphics. */
@@ -276,7 +277,7 @@ struct MusicSet : BaseSet<MusicSet, NUM_SONGS_AVAILABLE, GM_DIR> {
 	byte track_nr[NUM_SONGS_AVAILABLE];
 	byte num_available;
 
-	bool FillSetDetails(struct IniFile *ini, const char *path);
+	bool FillSetDetails(struct IniFile *ini, const char *path, const char *full_filename);
 };
 
 /** All data/functions related with replacing the base music */

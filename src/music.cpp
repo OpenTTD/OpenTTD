@@ -57,9 +57,9 @@ template <class Tbase_set>
 	return BaseMedia<Tbase_set>::used_set != NULL;
 }
 
-bool MusicSet::FillSetDetails(IniFile *ini, const char *path)
+bool MusicSet::FillSetDetails(IniFile *ini, const char *path, const char *full_filename)
 {
-	bool ret = this->BaseSet<MusicSet, NUM_SONGS_AVAILABLE, GM_DIR>::FillSetDetails(ini, path);
+	bool ret = this->BaseSet<MusicSet, NUM_SONGS_AVAILABLE, GM_DIR>::FillSetDetails(ini, path, full_filename);
 	if (ret) {
 		this->num_available = 0;
 		IniGroup *names = ini->GetGroup("names");
@@ -93,5 +93,5 @@ bool MusicSet::FillSetDetails(IniFile *ini, const char *path)
 			this->num_available++;
 		}
 	}
-	return true;
+	return ret;
 }

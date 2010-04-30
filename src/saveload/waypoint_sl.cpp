@@ -73,7 +73,7 @@ void MoveWaypointsToBaseStations()
 			if (wp->delete_ctr != 0) continue; // The waypoint was deleted
 
 			/* Waypoint indices were not added to the map prior to this. */
-			_m[wp->xy].m2 = wp->index;
+			_m[wp->xy].m2 = (StationID)wp->index;
 
 			if (HasBit(_m[wp->xy].m3, 4)) {
 				wp->spec = GetCustomStationSpec(STAT_CLASS_WAYP, _m[wp->xy].m4 + 1);

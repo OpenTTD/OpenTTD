@@ -1,3 +1,10 @@
+1.0.1 (2010-05-01)
+------------------------------------------------------------------------
+- Fix: Crash when using restart via rcon (r19722)
+- Fix: Leaking a file descriptor [CVE-2010-0406] [FS#3785] (r19695)
+- Fix: Crash when the music/graphics metadata files were unreadable [FS#3774] (r19674)
+
+
 1.0.1-RC2 (2010-04-22)
 ------------------------------------------------------------------------
 - Fix: Desync when joining the game because of using the wrong variable (r19687)
@@ -16,7 +23,7 @@
 - Change: Sync Debian packaging updates from Debian, but keep building a single package (r19572)
 - Fix: Crash of a dedicated server if the null blitter is overridden and (after a while) there is no company 0 on new year anymore [FS#3749] (r19664)
 - Fix: In rare cases, update of signals could be missed (r19663)
-- Fix: Various improvements of command handling, missing error messages (r19658, r19657, r19656, r19655, r19654, r19637, r19633, r19621, r19616, r19605, r19604)
+- Fix: Various improvements of command handling, missing error messages, improper validation causing crashes [CVE-2010-0402] [FS#3748] (r19658, r19657, r19656, r19655, r19654, r19637, r19633, r19621, r19616, r19605, r19604)
 - Fix: Industry generation failed for large maps and lots of industry types (r19652, r19643)
 - Fix: When a company is sold, move connected clients to spectators [FS#3745] (r19651)
 - Fix: A client would not be properly moved when moved while joining, e.g. when entering a company's password. This caused the client to be in the wrong company (according to the rest of the clients) and the client being kicked on the first command [FS#3760] (r19648)
@@ -28,7 +35,7 @@
 - Fix: Company related graphs were not updated correctly after changing the company colour [FS#3763] (r19615)
 - Fix: Possible invalid read when server moves client to spectators before he finishes joining [FS#3755] (r19613)
 - Fix: Crash when opening a savegame with a waypoint from around 0.4.0 [FS#3756] (r19612)
-- Fix: Improve joining behaviour; kicking clients when entering passwords that was just cleared, 'connection lost' for people failing the password (r19610, r19609, r19608, r19607, r19606)
+- Fix: Improve joining behaviour; kicking clients when entering passwords that was just cleared, 'connection lost' for people failing the password, access restriction circumvention [CVE-2010-0401] [FS#3754] (r19610, r19609, r19608, r19607, r19606)
 - Fix: Desync debugging; false positives in the cache validity checks and saving/loading the command stream (r19619, r19617, r19602, r19601, r19600, r19596, r19593, r19592, r19589, r19587, r19586)
 - Fix: Presence of online content was not properly updated after download due to duplicate slashes in the path (r19600)
 - Fix: [NewGRF] Setting industry prop 0x24 to 0 caused empty station names (r19590)

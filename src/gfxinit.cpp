@@ -203,9 +203,9 @@ void GfxLoadSprites()
 	GfxInitPalettes();
 }
 
-bool GraphicsSet::FillSetDetails(IniFile *ini, const char *path)
+bool GraphicsSet::FillSetDetails(IniFile *ini, const char *path, const char *full_filename)
 {
-	bool ret = this->BaseSet<GraphicsSet, MAX_GFT, DATA_DIR>::FillSetDetails(ini, path, false);
+	bool ret = this->BaseSet<GraphicsSet, MAX_GFT, DATA_DIR>::FillSetDetails(ini, path, full_filename, false);
 	if (ret) {
 		IniGroup *metadata = ini->GetGroup("metadata");
 		IniItem *item;
@@ -213,7 +213,7 @@ bool GraphicsSet::FillSetDetails(IniFile *ini, const char *path)
 		fetch_metadata("palette");
 		this->palette = (*item->value == 'D' || *item->value == 'd') ? PAL_DOS : PAL_WINDOWS;
 	}
-	return true;
+	return ret;
 }
 
 

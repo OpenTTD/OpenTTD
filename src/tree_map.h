@@ -41,10 +41,10 @@ enum TreeType {
  * got two types of area, one for normal trees and one only for cacti.
  */
 enum {
-	TREE_COUNT_TEMPERATE    = TREE_SUB_ARCTIC   - TREE_TEMPERATE,  ///< number of treetypes on a temperate map
-	TREE_COUNT_SUB_ARCTIC   = TREE_RAINFOREST   - TREE_SUB_ARCTIC, ///< number of treetypes on a sub arctic map
-	TREE_COUNT_RAINFOREST   = TREE_CACTUS       - TREE_RAINFOREST, ///< number of treetypes for the 'green part' of a sub tropic map
-	TREE_COUNT_SUB_TROPICAL = TREE_SUB_TROPICAL - TREE_CACTUS,     ///< number of treetypes for the 'desert part' of a sub tropic map
+	TREE_COUNT_TEMPERATE    = TREE_SUB_ARCTIC - TREE_TEMPERATE,    ///< number of treetypes on a temperate map
+	TREE_COUNT_SUB_ARCTIC   = TREE_RAINFOREST - TREE_SUB_ARCTIC,   ///< number of treetypes on a sub arctic map
+	TREE_COUNT_RAINFOREST   = TREE_CACTUS     - TREE_RAINFOREST,   ///< number of treetypes for the 'rainforrest part' of a sub-tropic map
+	TREE_COUNT_SUB_TROPICAL = TREE_TOYLAND    - TREE_SUB_TROPICAL, ///< number of treetypes for the 'sub-tropic part' of a sub-tropic map
 	TREE_COUNT_TOYLAND      = 9                                    ///< number of treetypes on a toyland map
 };
 
