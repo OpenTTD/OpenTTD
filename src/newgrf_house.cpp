@@ -99,20 +99,25 @@ void DecreaseBuildingCount(Town *t, HouseID house_id)
 
 static uint32 HouseGetRandomBits(const ResolverObject *object)
 {
-	const TileIndex tile = object->u.house.tile;
-	return (tile == INVALID_TILE || !IsTileType(tile, MP_HOUSE)) ? 0 : GetHouseRandomBits(tile);
+	/* Note: Towns build houses over houses. So during construction checks 'tile' may be a valid but unrelated house. */
+	TileIndex tile = object->u.house.tile;
+	assert(IsValidTile(tile) && (object->u.house.not_yet_constructed || IsTileType(tile, MP_HOUSE)));
+	return object->u.house.not_yet_constructed ? 0 : GetHouseRandomBits(tile);
 }
 
 static uint32 HouseGetTriggers(const ResolverObject *object)
 {
-	const TileIndex tile = object->u.house.tile;
-	return (tile == INVALID_TILE || !IsTileType(tile, MP_HOUSE)) ? 0 : GetHouseTriggers(tile);
+	/* Note: Towns build houses over houses. So during construction checks 'tile' may be a valid but unrelated house. */
+	TileIndex tile = object->u.house.tile;
+	assert(IsValidTile(tile) && (object->u.house.not_yet_constructed || IsTileType(tile, MP_HOUSE)));
+	return object->u.house.not_yet_constructed ? 0 : GetHouseTriggers(tile);
 }
 
 static void HouseSetTriggers(const ResolverObject *object, int triggers)
 {
-	const TileIndex tile = object->u.house.tile;
-	if (IsTileType(tile, MP_HOUSE)) SetHouseTriggers(tile, triggers);
+	TileIndex tile = object->u.house.tile;
+	assert(!object->u.house.not_yet_constructed && IsValidTile(tile) && IsTileType(tile, MP_HOUSE));
+	SetHouseTriggers(tile, triggers);
 }
 
 static uint32 GetNumHouses(HouseID house_id, const Town *town)
@@ -370,6 +375,7 @@ static void NewHouseResolver(ResolverObject *res, HouseID house_id, TileIndex ti
 	res->u.house.tile     = tile;
 	res->u.house.town     = town;
 	res->u.house.house_id = house_id;
+	res->u.house.not_yet_constructed = false;
 
 	res->callback        = CBID_NO_CALLBACK;
 	res->callback_param1 = 0;
@@ -383,15 +389,18 @@ static void NewHouseResolver(ResolverObject *res, HouseID house_id, TileIndex ti
 	res->grffile         = (hs != NULL ? hs->grffile : NULL);
 }
 
-uint16 GetHouseCallback(CallbackID callback, uint32 param1, uint32 param2, HouseID house_id, Town *town, TileIndex tile)
+uint16 GetHouseCallback(CallbackID callback, uint32 param1, uint32 param2, HouseID house_id, Town *town, TileIndex tile, bool not_yet_constructed)
 {
 	ResolverObject object;
 	const SpriteGroup *group;
+
+	assert(IsValidTile(tile) && (not_yet_constructed || IsTileType(tile, MP_HOUSE)));
 
 	NewHouseResolver(&object, house_id, tile, town);
 	object.callback = callback;
 	object.callback_param1 = param1;
 	object.callback_param2 = param2;
+	object.u.house.not_yet_constructed = not_yet_constructed;
 
 	group = SpriteGroup::Resolve(HouseSpec::Get(house_id)->spritegroup, &object);
 	if (group == NULL) return CALLBACK_FAILED;

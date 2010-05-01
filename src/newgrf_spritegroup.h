@@ -319,6 +319,7 @@ struct ResolverObject {
 			TileIndex tile;
 			Town *town;
 			HouseID house_id;
+			bool not_yet_constructed;      ///< True for construction check
 		} house;
 		struct {
 			TileIndex tile;

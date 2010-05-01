@@ -118,26 +118,35 @@ static const SpriteGroup *IndustryTileResolveReal(const ResolverObject *object, 
 static uint32 IndustryTileGetRandomBits(const ResolverObject *object)
 {
 	const TileIndex tile = object->u.industry.tile;
-	if (tile == INVALID_TILE || !IsTileType(tile, MP_INDUSTRY)) return 0;
-	return (object->scope == VSG_SCOPE_SELF) ? GetIndustryRandomBits(tile) : Industry::GetByTile(tile)->random;
+	const Industry *ind = object->u.industry.ind;
+	assert(ind != NULL && IsValidTile(tile));
+	assert(ind->index == INVALID_INDUSTRY || IsTileType(tile, MP_INDUSTRY));
+
+	return (object->scope == VSG_SCOPE_SELF) ?
+			(ind->index != INVALID_INDUSTRY ? GetIndustryRandomBits(tile) : 0) :
+			ind->random;
 }
 
 static uint32 IndustryTileGetTriggers(const ResolverObject *object)
 {
 	const TileIndex tile = object->u.industry.tile;
-	if (tile == INVALID_TILE || !IsTileType(tile, MP_INDUSTRY)) return 0;
-	return (object->scope == VSG_SCOPE_SELF) ? GetIndustryTriggers(tile) : Industry::GetByTile(tile)->random_triggers;
+	const Industry *ind = object->u.industry.ind;
+	assert(ind != NULL && IsValidTile(tile));
+	assert(ind->index == INVALID_INDUSTRY || IsTileType(tile, MP_INDUSTRY));
+	if (ind->index == INVALID_INDUSTRY) return 0;
+	return (object->scope == VSG_SCOPE_SELF) ? GetIndustryTriggers(tile) : ind->random_triggers;
 }
 
 static void IndustryTileSetTriggers(const ResolverObject *object, int triggers)
 {
 	const TileIndex tile = object->u.industry.tile;
-	if (tile == INVALID_TILE || !IsTileType(tile, MP_INDUSTRY)) return;
+	Industry *ind = object->u.industry.ind;
+	assert(ind != NULL && ind->index != INVALID_INDUSTRY && IsValidTile(tile) && IsTileType(tile, MP_INDUSTRY));
 
 	if (object->scope == VSG_SCOPE_SELF) {
 		SetIndustryTriggers(tile, triggers);
 	} else {
-		Industry::GetByTile(tile)->random_triggers = triggers;
+		ind->random_triggers = triggers;
 	}
 }
 
@@ -193,6 +202,9 @@ uint16 GetIndustryTileCallback(CallbackID callback, uint32 param1, uint32 param2
 {
 	ResolverObject object;
 	const SpriteGroup *group;
+
+	assert(industry != NULL && IsValidTile(tile));
+	assert(industry->index == INVALID_INDUSTRY || IsTileType(tile, MP_INDUSTRY));
 
 	NewIndustryTileResolver(&object, gfx_id, tile, industry);
 	object.callback = callback;
@@ -395,6 +407,8 @@ bool StartStopIndustryTileAnimation(const Industry *ind, IndustryAnimationTrigge
 static void DoTriggerIndustryTile(TileIndex tile, IndustryTileTrigger trigger, Industry *ind)
 {
 	ResolverObject object;
+
+	assert(IsValidTile(tile) && IsTileType(tile, MP_INDUSTRY));
 
 	IndustryGfx gfx = GetIndustryGfx(tile);
 	const IndustryTileSpec *itspec = GetIndustryTileSpec(gfx);
