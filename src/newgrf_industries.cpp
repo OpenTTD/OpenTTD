@@ -346,15 +346,13 @@ static const SpriteGroup *IndustryResolveReal(const ResolverObject *object, cons
 static uint32 IndustryGetRandomBits(const ResolverObject *object)
 {
 	const Industry *ind = object->u.industry.ind;
-	assert(ind != NULL);
-	return ind->random;
+	return ind != NULL ? ind->random: 0;
 }
 
 static uint32 IndustryGetTriggers(const ResolverObject *object)
 {
 	const Industry *ind = object->u.industry.ind;
-	assert(ind != NULL);
-	return ind->random_triggers;
+	return ind != NULL ? ind->random_triggers : 0;
 }
 
 static void IndustrySetTriggers(const ResolverObject *object, int triggers)
