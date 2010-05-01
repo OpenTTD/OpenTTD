@@ -102,7 +102,7 @@ static uint32 HouseGetRandomBits(const ResolverObject *object)
 	/* Note: Towns build houses over houses. So during construction checks 'tile' may be a valid but unrelated house. */
 	TileIndex tile = object->u.house.tile;
 	assert(IsValidTile(tile) && (object->u.house.not_yet_constructed || IsTileType(tile, MP_HOUSE)));
-	return object->u.house.not_yet_constructed ? 0 : GetHouseRandomBits(tile);
+	return object->u.house.not_yet_constructed ? object->u.house.initial_random_bits : GetHouseRandomBits(tile);
 }
 
 static uint32 HouseGetTriggers(const ResolverObject *object)
@@ -389,7 +389,7 @@ static void NewHouseResolver(ResolverObject *res, HouseID house_id, TileIndex ti
 	res->grffile         = (hs != NULL ? hs->grffile : NULL);
 }
 
-uint16 GetHouseCallback(CallbackID callback, uint32 param1, uint32 param2, HouseID house_id, Town *town, TileIndex tile, bool not_yet_constructed)
+uint16 GetHouseCallback(CallbackID callback, uint32 param1, uint32 param2, HouseID house_id, Town *town, TileIndex tile, bool not_yet_constructed, uint8 initial_random_bits)
 {
 	ResolverObject object;
 	const SpriteGroup *group;
@@ -401,6 +401,7 @@ uint16 GetHouseCallback(CallbackID callback, uint32 param1, uint32 param2, House
 	object.callback_param1 = param1;
 	object.callback_param2 = param2;
 	object.u.house.not_yet_constructed = not_yet_constructed;
+	object.u.house.initial_random_bits = initial_random_bits;
 
 	group = SpriteGroup::Resolve(HouseSpec::Get(house_id)->spritegroup, &object);
 	if (group == NULL) return CALLBACK_FAILED;

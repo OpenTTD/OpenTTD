@@ -2164,8 +2164,10 @@ static bool BuildTownHouse(Town *t, TileIndex tile)
 			/* 1x1 house checks are already done */
 		}
 
+		byte random_bits = Random();
+
 		if (HasBit(hs->callback_mask, CBM_HOUSE_ALLOW_CONSTRUCTION)) {
-			uint16 callback_res = GetHouseCallback(CBID_HOUSE_ALLOW_CONSTRUCTION, 0, 0, house, t, tile, true);
+			uint16 callback_res = GetHouseCallback(CBID_HOUSE_ALLOW_CONSTRUCTION, 0, 0, house, t, tile, true, random_bits);
 			if (callback_res != CALLBACK_FAILED && GB(callback_res, 0, 8) == 0) continue;
 		}
 
@@ -2191,7 +2193,7 @@ static bool BuildTownHouse(Town *t, TileIndex tile)
 			}
 		}
 
-		MakeTownHouse(tile, t, construction_counter, construction_stage, house, Random());
+		MakeTownHouse(tile, t, construction_counter, construction_stage, house, random_bits);
 
 		return true;
 	}
