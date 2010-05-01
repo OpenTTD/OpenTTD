@@ -204,6 +204,7 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 			uint16 callback = indspec->callback_mask;
 			if (HasBit(callback, CBM_IND_PRODUCTION_CARGO_ARRIVAL) || HasBit(callback, CBM_IND_PRODUCTION_256_TICKS)) {
 				if ((indspec->behaviour & INDUSTRYBEH_PROD_MULTI_HNDLING) != 0) {
+					if (industry->prod_level == 0) return 0;
 					return min(industry->incoming_cargo_waiting[variable - 0x40] / industry->prod_level, (uint16)0xFFFF);
 				} else {
 					return min(industry->incoming_cargo_waiting[variable - 0x40], (uint16)0xFFFF);
