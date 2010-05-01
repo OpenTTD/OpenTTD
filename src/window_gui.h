@@ -341,7 +341,7 @@ struct Window : ZeroedMemoryAllocator {
 	};
 
 protected:
-	void InitializeData(WindowClass cls, int window_number, uint32 desc_flags);
+	void InitializeData(const WindowDesc *desc, WindowNumber window_number);
 	void InitializePositionSize(int x, int y, int min_width, int min_height);
 	void FindWindowPlacementAndResize(int def_width, int def_height);
 
@@ -863,6 +863,8 @@ enum WindowFlags {
 
 	WF_WHITE_BORDER_ONE  = 1 << 13,
 	WF_WHITE_BORDER_MASK = 1 << 14 | WF_WHITE_BORDER_ONE,
+
+	WF_CENTERED          = 1 << 15, ///< Window is centered and shall stay centered after ReInit
 };
 
 Window *BringWindowToFrontById(WindowClass cls, WindowNumber number);

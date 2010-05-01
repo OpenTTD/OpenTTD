@@ -835,22 +835,22 @@ static void BringWindowToFront(Window *w)
 
 /**
  * Initializes the data (except the position and initial size) of a new Window.
- * @param cls           Class of the window, used for identification and grouping. @see WindowClass
+ * @param desc          Window description.
  * @param window_number Number being assigned to the new window
- * @param desc_flags    Window flags. @see WindowDefaultFlag
  * @return Window pointer of the newly created window
  * @pre If nested widgets are used (\a widget is \c NULL), #nested_root and #nested_array_size must be initialized.
  *      In addition, #nested_array is either \c NULL, or already initialized.
  */
-void Window::InitializeData(WindowClass cls, int window_number, uint32 desc_flags)
+void Window::InitializeData(const WindowDesc *desc, WindowNumber window_number)
 {
 	/* Set up window properties; some of them are needed to set up smallest size below */
-	this->window_class = cls;
+	this->window_class = desc->cls;
 	this->flags4 |= WF_WHITE_BORDER_MASK; // just opened windows have a white border
+	if (desc->default_pos == WDP_CENTER) this->flags4 |= WF_CENTERED;
 	this->owner = INVALID_OWNER;
 	this->nested_focus = NULL;
 	this->window_number = window_number;
-	this->desc_flags = desc_flags;
+	this->desc_flags = desc->flags;
 
 	this->OnInit();
 	/* Initialize nested widget tree. */
@@ -1235,7 +1235,7 @@ void Window::CreateNestedTree(const WindowDesc *desc, bool fill_nested)
  */
 void Window::FinishInitNested(const WindowDesc *desc, WindowNumber window_number)
 {
-	this->InitializeData(desc->cls, window_number, desc->flags);
+	this->InitializeData(desc, window_number);
 	Point pt = this->OnInitialPosition(desc, this->nested_root->smallest_x, this->nested_root->smallest_y, window_number);
 	this->InitializePositionSize(pt.x, pt.y, this->nested_root->smallest_x, this->nested_root->smallest_y);
 	this->FindWindowPlacementAndResize(desc->default_width, desc->default_height);
@@ -1702,6 +1702,7 @@ static bool HandleWindowDragging()
 static void StartWindowDrag(Window *w)
 {
 	w->flags4 |= WF_DRAGGING;
+	w->flags4 &= ~WF_CENTERED;
 	_dragging_window = true;
 
 	_drag_delta.x = w->left - _cursor.pos.x;
@@ -1719,6 +1720,7 @@ static void StartWindowDrag(Window *w)
 static void StartWindowSizing(Window *w, bool to_left)
 {
 	w->flags4 |= to_left ? WF_SIZING_LEFT : WF_SIZING_RIGHT;
+	w->flags4 &= ~WF_CENTERED;
 	_dragging_window = true;
 
 	_drag_delta.x = _cursor.pos.x;
@@ -2578,13 +2580,6 @@ void RelocateAllWindows(int neww, int newh)
 				left = PositionMainToolbar(w); // changes toolbar orientation
 				break;
 
-			case WC_SELECT_GAME:
-			case WC_GAME_OPTIONS:
-			case WC_NETWORK_WINDOW:
-				top = (newh - w->height) >> 1;
-				left = (neww - w->width) >> 1;
-				break;
-
 			case WC_NEWS_WINDOW:
 				top = newh - w->height;
 				left = (neww - w->width) >> 1;
@@ -2607,6 +2602,12 @@ void RelocateAllWindows(int neww, int newh)
 				continue;
 
 			default: {
+				if (w->flags4 & WF_CENTERED) {
+					top = (newh - w->height) >> 1;
+					left = (neww - w->width) >> 1;
+					break;
+				}
+
 				left = w->left;
 				if (left + (w->width >> 1) >= neww) left = neww - w->width;
 				if (left < 0) left = 0;
