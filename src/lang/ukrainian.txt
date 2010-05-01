@@ -1216,7 +1216,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Оригіна�
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Реалістична
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Крутизна схилу для поїздів {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Крутизна схилу для автомобілів {ORANGE}{STRING}%
-STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Заборонити поїздам і кораблям повертати на 90 град.: {ORANGE}{STRING} {LTBLUE} (не з OPF)
+STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Заборонити поїздам і кораблям повертати на 90°: {ORANGE}{STRING} {LTBLUE} (не з OPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Будувати суміжні залізничні станції: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Дозволити об'єднувати не безпосередньо суміжні станції: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Використовувати покращений алгоритм завантаження: {ORANGE}{STRING}
@@ -1882,7 +1882,7 @@ STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :з'єднанн
 STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :помилка протоколу
 STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :Неспівпадання NewGRF
 STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :відмова авторизації
-STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :отримано несумісний пакет даних
+STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :отримано невірний або неочікуваний пакет
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :невірна версія гри
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :таке ім'я вже є
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :пароль невірний
@@ -2487,6 +2487,13 @@ STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Дода
 STR_NEWGRF_ADD_RESCAN_FILES                                     :{BLACK}Пересканувати файли
 STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}Оновити список доступних NewGRF файлів
 
+# NewGRF inspect window
+
+
+
+# Sprite aligner window
+
+
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Попередження: {SILVER}{STRING}
@@ -3078,6 +3085,8 @@ STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE               :{LTBLUE}Тех�
 STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL           :{LTBLUE}Техогляд в {TOWN} корабельному депо, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE                   :{LTBLUE}Техогляд в {STATION} ангарі
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE_VEL               :{LTBLUE}Техогляд в {STATION} ангарі, {VELOCITY}
+
+# Vehicle stopped/started animations
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Детально)

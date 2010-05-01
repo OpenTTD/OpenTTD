@@ -720,7 +720,28 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 # Message settings window
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Teachtaireacht
 STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}Roghanna Teachtaireachtaí
+STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Socraigh gach cineál teachtaireacht go: As / Achoimre/ Iomlán
+STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Seinn fuaim le haghaidh teachtaireachtaí nuachta achomair
+STR_NEWS_MESSAGES_OFF                                           :As
+STR_NEWS_MESSAGES_SUMMARY                                       :Achoimre
+STR_NEWS_MESSAGES_FULL                                          :Iomlán
 
+STR_NEWS_MESSAGE_TYPES                                          :{BLACK}Cineálacha teachtaireachta:
+STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Tagann an chéad fheiticil isteach i stáisiún imreora
+STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Tagann an chéad fheithicil isteach i stáisiún iomaitheora
+STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Timpistí / tubaistí
+STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}Faisnéis cuideachta
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}Tionscail ag oscailt
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}Tionscail ag dúnadh
+STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}Athruithe sa gheilleagar
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Athruithe sa táirgeadh i measc tionscail a mbíonn an chuideachta ag freastal orthu
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Athruithe sa táirgeadh i measc tionscail a mbíonn iomaitheoir(í) ag freastal orthu
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Athruithe eile i dtáirgeadh tionscail
+STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Comhairle / faisnéis maidir le feithiclí na cuideachta
+STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Feithiclí nua
+STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Athruithe ar an lastas a nglactar leis
+STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Fordheontais
+STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Faisnéis ginearálta
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIGFONT}{BLACK}Saoránaigh ag ceiliúradh . . .{}Tagann an chéad traein isteach ag {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIGFONT}{BLACK}Saoránaigh ag ceiliúradh . . .{}Tagann an chéad bus isteach ag {STATION}!
@@ -765,24 +786,100 @@ STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK
 STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}Fógraíonn {STRING} go bhfuil sé ar tí dúnadh mar gheall nach bhfuil aon chrainnte in aice leis!
 
 STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}An tAontas Airgeadaíochta Eorpach!{}{}Tugtar isteach an Euro mar an t-aon airgeadra i gcomhair idirbhearta laethúla i do thír!
+STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}Cúlú Domhanda!{}{}Saineolaithe airgeadais an-bhuartha faoin tobthitim sa gheilleagar!
+STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}Cúlú Thart!{}{}Ardú meanman i measc lucht tionscail de bharr an chora chun feabhais sa trádáil agus an geilleagar ag neartú!
 
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}Tháinig méadú ar tháirgeadh {INDUSTRY}!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}Aimsítear síog ghuail nua ag {INDUSTRY}!{}Meastar go dtiocfaidh méadú faoi dhó ar tháirgeadh!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}Aimsítear stoc ola nua ag {INDUSTRY}!{}Meastar go dtiocfaidh méadú faoi dhó ar tháirgeadh!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}Meastar go dtiocfaidh méadú faoi dhó ar tháirgeadh ag {INDUSTRY} mar gheall ar feabhsuithe sna modhanna feirmeoireachta!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK}Tagann méadú ar tháirgeadh {STRING} ag {INDUSTRY} de {COMMA}%!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}Tagann laghdú 50% ar tháirgeadh ag {INDUSTRY}
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}Déantar robach de bharr inmhíolú feithidí ag {INDUSTRY}!{}Lagdhú 50% ar tháirgeadh
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK}Tagann laghdú ar tháirgeadh {STRING} ag {INDUSTRY} de {COMMA}%!
 
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}Tá {VEHICLE} ag fanacht san iosta
+STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Tá feithicil {VEHICLE} ag fanacht san iosta
+STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}Tá {VEHICLE} ag fanacht san iosta
+STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}Tá {VEHICLE} ag fanacht san haingear
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
+STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}Níl a ndóthain orduithe ag {VEHICLE} sa sceideal
+STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}Tá ordú folamh ag {VEHICLE}
+STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}Tá orduithe dúbailte ag {VEHICLE}
+STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}Tá stáisiún neamhbhailí ag {VEHICLE} ina chuid orduithe
 # end of order system
 
+STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}Tá {VEHICLE} ag fáil sean
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}Tá {VEHICLE} ag fáil an-sean
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}Tá {VEHICLE} ag fáil an-sean agus ní mór é a ionadú go práinneach
+STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}Ní féidir le {VEHICLE} bealach a aimsiú le leanúint ar aghaidh.
+STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}Tá {VEHICLE} caillte.
+STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Rinne {VEHICLE} brabús de {CURRENCY} anuraidh
 
+STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Stop {VEHICLE} mar gheall gur theip ar athfheistiú a ordaíodh
+STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Theip ar uath-athnuachan ar {VEHICLE}{}{STRING}
 
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}Tá {STRING} nua ar fáil anois!
+STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIGFONT}{BLACK}{ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Tá {STRING} nua ar fáil anois!  -  {ENGINE}
 
+STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}Ní ghlacann {STATION} le {STRING} a thuilleadh
+STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}Ní ghlacann {STATION} le {STRING} ná le {STRING} a thuilleadh
+STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}Glacann {STATION} le {STRING} anois
+STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}Glacann {STATION} le {STRING} agus le {STRING} anois
 
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Fordheontas a tairiscíodh imithe as dáta:{}{}Ní thabharfar fordheontas ar {STRING} ó {STRING} go {STRING} anois.
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Fordheontas tarraingte siar:{}{}Ní thabharfar fordheontas ar sheirbhís {STRING} ó {STRING} go {STRING} a thuilleadh.
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Déantar fordheontas seirbhíse a thairiscint:{}{}Tabharfaidh an t-údarás aitiúil fordheontas bliana don chéad seirbhís {STRING} ó {STRING} go {STRING}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Bronnadh fordheontas seirbhíse ar {STRING}!{}{}Tabharfar 50% breise ar feadh bliana don tseirbhís {STRING} ó {STRING} go {STRING}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Bronnadh fordheontas seirbhíse ar {STRING}!{}{}Íocfar rátaí dúbailte ar feadh bliana don tseirbhís {STRING} ó {STRING} go {STRING}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Bronnadh fordheontas seirbhíse ar {STRING}!{}{}Íocfar rátaí faoi thrí ar feadh bliana don tseirbhís {STRING} ó {STRING} go {STRING}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}Bronnadh fordheontas seirbhíse ar {STRING}!{}{}Íocfar rátaí faoi cheathair ar feadh bliana don tseirbhís {STRING} ó {STRING} go {STRING}!
 
 
 # Extra view window
+STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Amharc {COMMA}
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Cóipeáil chuig amharc
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Cóipeáil suíomh an amhairc uilíoch chuig an amharc seo
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Greamaigh ón amharc
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Gramaigh suíomh an amhairc seo chuig an amharc uilíoch
 
 # Game options window
+STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Roghanna Cluiche
+STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Aonaid airgeadra
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Aonaid airgeadra a roghnú
 
 ############ start of currency region
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Puint (£)
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Dollair ($)
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (€)
+STR_GAME_OPTIONS_CURRENCY_YEN                                   :Yen (¥)
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :Scilling na hOstaire (ATS)
+STR_GAME_OPTIONS_CURRENCY_BEF                                   :Franc na Beilge (BEF)
+STR_GAME_OPTIONS_CURRENCY_CHF                                   :Franc na hEilbhéise (CHF)
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :Koruna Phoblacht na Seice (CZK)
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :Deutschmark (DEM)
+STR_GAME_OPTIONS_CURRENCY_DKK                                   :Krone na Danmhairge (DKK)
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Peseta (ESP)
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :Markka na Fionlainne (FIM)
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Franc (FRF)
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :Drachma na Gréige (GRD)
+STR_GAME_OPTIONS_CURRENCY_HUF                                   :Forint na hUngáire (HUF)
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :Krona na hÍoslainne (ISK)
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :Lira na hIodáile (ITL)
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :Guilder na hÍsiltíre (NLG)
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :Krone na hIorua (NOK)
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Zloty na Polainne (PLN)
+STR_GAME_OPTIONS_CURRENCY_RON                                   :Leu na Rómáine (RON)
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :Rúbal na Rúise (RUR)
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :Tolar na Slóivéine (SIT)
+STR_GAME_OPTIONS_CURRENCY_SEK                                   :Krona na Sualainne (SEK)
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :Lira na Tuirce (TRY)
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :Koruna na Slováice (SKK)
+STR_GAME_OPTIONS_CURRENCY_BRL                                   :Real na Brasaíle (BRL)
+STR_GAME_OPTIONS_CURRENCY_EEK                                   :Krooni na hEastóine (EEK)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Saincheaptha...
 ############ end of currency region
 
@@ -816,22 +913,68 @@ STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Fionlainnis
 STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Polainnis
 STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Slováicis
 STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Ioruais
+STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Ungárach
+STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Ostarach
+STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Rómánach
+STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Seiceach
+STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Eilvéiseach
+STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Danmhargach
+STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Turcach
+STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Iodálach
+STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Catalónach
 ############ end of townname region
 
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Uathshábháil
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Roghnaigh eatramh idir uathshábhálacha an chluiche
 
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :As
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Gach mí
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Gach 3 mí
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Gach 6 mí
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Gach 12 mí
 
+STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Teanga
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Roghnaigh an teanga comhéadain le húsáid
 
+STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Lánscáileán
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Cuir tic sa bhosca seo chun OpenTTD a imirt sa mhód lánscáileáin
 
+STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Taifeach scáileáin
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Roghnaigh an taifeach scáileáin le húsáid
 
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Formáid seatanna scáileáin
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Roghnaigh an formáid le húsáid do sheatanna scáileáin
 
+STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Sraith graifice bunaidh
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Roghnaigh an sraith grafaice bunaidh le húsáid
+STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} {P ch ch ch gc c}omhad ar iarraidh/truaillithe
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Faisnéis breise faoin sraith grafaice bunaidh
 
+STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Sraith fuaimeanna bunaidh
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Roghnaigh an tsraithe fuaimeanna bunaidh le húsáid
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Faisnéis breise faoin tsraith fuaimeanna bunaidh
 
+STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Sraith ceoil bunaidh
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Roghnaigh an tsraith ceoil bunaidh le húsáid
+STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} {P ch ch ch gc c}omhad truaillithe
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Faisnéis breise faoin tsraith ceoil bunaidh
 
+STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Theip ar an mód lánscáileáin
 
 # Custom currency window
 
+STR_CURRENCY_WINDOW                                             :{WHITE}Airgeadra saincheaptha
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Ráta malairte: {ORANGE}{CURRENCY} = € {COMMA}
+STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Laghdaigh méid d'airgeadra ar Euro (€) amháin
+STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Méadaigh méid d'airgeadra ar Euro (€) amháin
+STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Socraigh ráta malairte d'airgeadra ar Euro (€) amháin
 
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Deighilteoir: {ORANGE}{STRING}
+STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Socraigh an deighilteoir dod' airgeadra
 
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Réimír: {ORANGE}{STRING}
+STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Socraigh an teaghrán réimíre dod' airgeadra
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Iarmhír: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}Socraigh an teaghrán iarmhíre dod' airgeadra
 
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Athraigh go Euro: {ORANGE}{NUM}
@@ -842,30 +985,107 @@ STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Athraigh
 
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Réamhamharc: {ORANGE}{CURRENCY}
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 Punt (£) i d'airgeadra
+STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Athraigh paraiméadar d'airgeadra saincheaptha
 
 # Difficulty level window
+STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Leibhéal deacrachta
 
 ############ range for difficulty levels starts
+STR_DIFFICULTY_LEVEL_EASY                                       :{BLACK}Éasca
+STR_DIFFICULTY_LEVEL_MEDIUM                                     :{BLACK}Meánach
+STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}Deacair
+STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}Saincheaptha
 ############ range for difficulty levels ends
 
+STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Taispeáin cairt na scór is airde
+STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Sábháil
 
 ############ range for difficulty settings starts
+STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Uaslíon na n-iomaitheoirí: {ORANGE}{COMMA}
+STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}Líon na mbailte: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}Líon na dtionscal: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Uas-iasacht tosaigh: {ORANGE}{CURRENCY}
+STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}Ráta úis tosaigh: {ORANGE}{COMMA}%
+STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}Costais le feithiclí a rith: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}Luas tógála na n-iomaitheoirí: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_BREAKDOWNS                 :{LTBLUE}Cliseadh feithiclí: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_SUBSIDY_MULTIPLIER                 :{LTBLUE}Iolraitheoir na bhfordeontas: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_COST_OF_CONSTRUCTION               :{LTBLUE}Costas tógála: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_TERRAIN_TYPE                       :{LTBLUE}Cineál tír-raoin: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_QUANTITY_OF_SEA_LAKES              :{LTBLUE}Méid farraige/locha: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_ECONOMY                            :{LTBLUE}Geilleagar: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_TRAIN_REVERSING                    :{LTBLUE}Aisiompú traenacha: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}Tubaistí: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Dearcadh na comhairle cathrach i leith athstruchtúrú an cheantair: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
+STR_NONE                                                        :Ceann ar bith
+STR_NUM_VERY_LOW                                                :An íseal
+STR_NUM_LOW                                                     :Íseal
+STR_NUM_NORMAL                                                  :Gnáth
+STR_NUM_HIGH                                                    :Ard
+STR_NUM_CUSTOM                                                  :Saincheaptha
 
+STR_VARIETY_NONE                                                :Gan éagsúlacht
+STR_VARIETY_VERY_LOW                                            :An-íseal
+STR_VARIETY_LOW                                                 :Íseal
+STR_VARIETY_MEDIUM                                              :Meánach
+STR_VARIETY_HIGH                                                :Ard
+STR_VARIETY_VERY_HIGH                                           :An-ard
 
+STR_AI_SPEED_VERY_SLOW                                          :An-mhall
+STR_AI_SPEED_SLOW                                               :Mall
+STR_AI_SPEED_MEDIUM                                             :Meánach
+STR_AI_SPEED_FAST                                               :Scioptha
+STR_AI_SPEED_VERY_FAST                                          :An-scioptha
 
+STR_SEA_LEVEL_VERY_LOW                                          :An-íseal
+STR_SEA_LEVEL_LOW                                               :Íseal
+STR_SEA_LEVEL_MEDIUM                                            :Meánach
+STR_SEA_LEVEL_HIGH                                              :Ard
 
+STR_DISASTER_NONE                                               :Gan tubaistí
+STR_DISASTER_REDUCED                                            :Laghdaithe
+STR_DISASTER_NORMAL                                             :Gnáth
 
+STR_SUBSIDY_X1_5                                                :x1.5
+STR_SUBSIDY_X2                                                  :x2
+STR_SUBSIDY_X3                                                  :x3
+STR_SUBSIDY_X4                                                  :x4
 
+STR_TERRAIN_TYPE_VERY_FLAT                                      :An-réidh
+STR_TERRAIN_TYPE_FLAT                                           :Réidh
+STR_TERRAIN_TYPE_HILLY                                          :Cnocach
+STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Sléibhtiúil
 
+STR_ECONOMY_STEADY                                              :Seasta
+STR_ECONOMY_FLUCTUATING                                         :Athraitheach
 
+STR_REVERSE_AT_END_OF_LINE_AND_AT_STATIONS                      :Ag deireadh na líne, agus ag stáisiúin
+STR_REVERSE_AT_END_OF_LINE_ONLY                                 :Ag deireadh na líne amháin
 
+STR_DISASTERS_OFF                                               :As
+STR_DISASTERS_ON                                                :Air
 
+STR_CITY_APPROVAL_PERMISSIVE                                    :Tugtar cead
+STR_CITY_APPROVAL_TOLERANT                                      :Fulangach
+STR_CITY_APPROVAL_HOSTILE                                       :Naimhdeach
 
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Níl aon AI oiriúnach ar fáil...{}Is féidir leat roinnt AI a íoslódáil tríd an gcóras 'Inneachar Ar Líne'
+STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}D'athraigh an gníomh seo an leibhéal deacrachta go saincheaptha
 
 # Advanced settings window
+STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Ardsocruithe
 
+STR_CONFIG_SETTING_OFF                                          :As
+STR_CONFIG_SETTING_ON                                           :Air
+STR_CONFIG_SETTING_DISABLED                                     :díchumasaithe
+STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Taispeáin luas feithiclí sa bharra stádais: {ORANGE}{STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Ceadaigh tógáil a dhéanamh ar fhánaí agus ar chóstaí: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Bunaidh
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Réalaíoch
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Bunaidh
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Réalaíoch
 
 
 
@@ -1235,10 +1455,21 @@ STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINYFONT}{GREE
 STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Tosaithe
 
 # Vehicle details
+STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Sonraí)
+STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Ainm
 
+STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Ainmnith traein
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Ainmnigh feithicil bóthair
+STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Ainmnigh long
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Ainmnigh aerárthach
 
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Aois: {LTBLUE}{STRING}{BLACK}   Costas le Rith: {LTBLUE}{CURRENCY}/bl
 # The next two need to stay in this order
+STR_VEHICLE_INFO_AGE                                            :{COMMA} {P bhliain bhliain bliana mbliana bliana} ({COMMA})
+STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} {P bhliain bhliain bliana mbliana bliana} ({COMMA})
 
+STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Luas uasta: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Meáchan: {LTBLUE}{WEIGHT_S} {BLACK}Cumhacht: {LTBLUE}{POWER}{BLACK}Luas uasta: {LTBLUE}{VELOCITY}
 
 
 
@@ -1438,14 +1669,27 @@ STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... tír
 
 
 
+STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}Níl an long ar fáil
+STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Níl an t-aerárthach ar fáil
 
+STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}An iomarca feithiclí sa chluiche
+STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Ní féidir an t-eatramh seirbhísithe a athrú...
 
 
 # Specific vehicle errors
 
+STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Ní féidir iallach a chur ar fheithicil bóthair casadh timpeall...
 
+STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}Tá an t-aerárthach i mbun eitilte
 
 # Order related errors
+STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}Níl a thuilleadh spáis ann d'orduithe
+STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}An iomarca orduithe
+STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}Ní féidir ordú nua a chur isteach...
+STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :{WHITE}Ní féidir an t-ordú seo a scriosadh...
+STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}Ní féidir an t-ordú seo a athrú...
+STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Ní féidir an t-ordú seo a bhogadh...
+STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Ní féidir an t-ordú reatha a scipeáil...
 STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Ní féidir scipeáil chuig an ordú roghnaith...
 STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... ní féidir leis an bhfeithicil dul chuig gach stáisiún
 STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... ní féidir leis an bhfeithicil dul chuig an stáisiún sin

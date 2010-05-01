@@ -298,9 +298,9 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Amosa-la
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Amosa-la táboa da liga de compañías
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Fundar unha nova industria ou listar tódalas industrias
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Amosa a lista dos trens da compañía. Ctrl+Click amosa a lista de vehículos
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Amosa-la lista dos vehículos de estrada da compañía
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Amosa-la lista dos barcos da compañía
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Amosa-la lista dos avións da compañía
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Amosa-la lista dos vehículos de estrada da compañía. CTRL+Click conmuta a apertura da lista de grupos/vehículos
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Amosar a lista dos barcos da compañía. CTRL+Click conmuta a apertura da lista de grupos/vehículos
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Amosa-la lista dos avións da compañía, CTRL+Click conmuta a apertura da lista de grupos/vehículos
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Achega-la vista
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Alonxa-la vista
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Construír elementos do ferrocarril
@@ -555,8 +555,8 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Diñeiro
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Crédito:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Número de vehículos; inclúe camións/buses, trens, barcos e avións
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Número de partes de estacións. Cóntase cada parte dunha estación (p.e. tren, autobús, aeroporto), incluso aínda que estén conectadas coma unha estación
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Número de vehículos que deron beneficios o ano pasado. Inclúe camións/buses, trens, barcos e avións
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Número de partes de estacións atendida recentemente. Cóntase cada parte da estación (p.e. tren, autobús, aeroporto), aínda que estén conectadas coma unha estación
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Beneficios do vehículo con menos ingresos (só se consideran os de máis de dous anos)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Cantidade de diñeiro ganado no trimestre co beneficio máis baixo dos últimos 12 trimestres
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Cantidade de diñeiro gañado no trimestre co beneficio máis alto dos últimos 12 trimestres
@@ -1069,7 +1069,7 @@ STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Permiti
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Modelo de aceleración dos trens: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Orixinal
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realista
-STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Prohibir os trens e os barcos xirar 90 graos: {ORANGE}{STRING} {LTBLUE} (require NPF)
+STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Prohibir os trens e os barcos xirar 90º: {ORANGE}{STRING} {LTBLUE} (non con OPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Xunta-las estacións construídas xuntas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Usa-lo algoritmo de carga mellorado: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Cargar vehículos gradualmente: {ORANGE}{STRING}
@@ -1712,7 +1712,7 @@ STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :perdeuse a cone
 STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :erro de protocolo
 STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :NewGRF erróneo
 STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :non autorizado
-STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :recibiuse un paquete extraño
+STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :recibiuse un paquete inválido ou inesperado
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :revisión errónea
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :o nome xa está en uso
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :contrasinal incorrecta
@@ -1834,11 +1834,11 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Construc
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Construción de Monorraíl
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Construción de MagLev
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Construír vía de ferrocarril
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construí-la vía de ferrocarril usando o modo Autoraíl
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Construír vía de ferrocarril. CTRL conmuta entre construír/borrar para a construción das vías
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construír a vía de ferrocarril usando o modo Autoraíl. CTRL conmuta entre construír/borrar para a construción das vías
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Construír depósito de trens (para construír e dar servizo os trens)
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Convertir raíl a punto de control
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construír estación de ferrocarril
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Convertir raíl a punto de ruta. CTRL permite unir puntos de ruta
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construír estación de ferrocarril. CTRL permite unir estacións
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Construír sinais de ferrocaril
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construír ponte de ferrocaril
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construír túnel de ferocarril
@@ -1907,7 +1907,7 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Tubular, Silico
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Construción de Estradas
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Construción de Tranvías
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Construír unha sección de estrada
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Construír sección de estrada. CTRL conmuta entre construír/borrar para a construción de estradas
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Construír sección de vía de tranvía
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Construír estrada usando o modo Autoestrada
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Construír sección de tranvía usando o modo Autotranvía
@@ -2019,9 +2019,9 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}¿Estás
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Xeración de Cidades
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Nova Cidade
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Construír nova cidade
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Fundar nova cidade
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Cidade Aleatoria
-STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Construír cidade en emprazamento aleatorio
+STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Fundar cidade nun emprazamento aleatorio
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Moitas cidades aleatorias
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Cubri-lo mapa con cidades colocadas aleatoriamente
 
@@ -2060,6 +2060,7 @@ STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Fundar
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Información dunha área de terreo
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Custo de limpar: {LTBLUE}N/D
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Custo de limpar: {RED}{CURRENCY}
+STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Ingresos cando se borre: {LTBLUE}{CURRENCY}
 STR_LAND_AREA_INFORMATION_OWNER_N_A                             :N/D
 STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}Propietario: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}Propietario da estrada: {LTBLUE}{STRING}
@@ -2243,7 +2244,7 @@ STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Baixar a
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Cambiar a altura do terreo chan
 
 # Map generation progress
-STR_GENERATION_WORLD                                            :{WHITE}Xerando mundo...
+STR_GENERATION_WORLD                                            :{WHITE}Xerando Mundo...
 STR_GENERATION_ABORT                                            :{BLACK}Cancelar
 STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Cancelar Xeración De Mundo
 STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}¿Estás seguro de querer terminar a xeración?
@@ -2258,7 +2259,7 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Executan
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Preparando partida
 
 # NewGRF settings
-STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Configuración NewGRF
+STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Configuracións NewGRF
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Carga la programación seleccionada
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Grabar programación
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Graba-la lista actual como programación
@@ -2301,6 +2302,13 @@ STR_NEWGRF_ADD_FILE                                             :{BLACK}Engadir 
 STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Engadi-lo arquivo NewGRF seleccionado a túa configuración
 STR_NEWGRF_ADD_RESCAN_FILES                                     :{BLACK}Actualizar ficheiros
 STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}Actualiza a lista dos ficheiros NewGRF dispoñibles
+
+# NewGRF inspect window
+
+
+
+# Sprite aligner window
+
 
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
@@ -2845,10 +2853,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Mostra-l
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Mostra-los detalles do barco
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Mostra-los detalles do avión
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Tarefa actual do tren - pincha aquí para parar/arrancar o tren
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Tarefa actual do vehículo - pincha aquí para parar/arrancar o vehículo
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Tarefa actual do barco - pincha aquí para parar/arrancar o barco
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Tarefa actual do avión - pincha aquí para parar/arrincar o avión
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Acción actual do tren - pincha para parar/arrancar o tren. CTRL+Click para desprazarse ao destino
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Acción actual do vehículo - pincha para parar/arrancar o vehículo. CTRL+Click para desprazarse ao destino
+STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Acción actual do barco - pincha para parar/arrancar o barco. CTRL+Click para desprazarse ao destino
+STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Acción actual do avión - pincha para parar/arrancar o avión. CTRL+Click para desprazarse ao destino
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Cargando / Descargando
@@ -2886,6 +2894,8 @@ STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE               :{LTBLUE}Servizo
 STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL           :{LTBLUE}Servizo no Depósito de Barcos de {TOWN}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE                   :{LTBLUE}Servizo no Hangar de {STATION}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE_VEL               :{LTBLUE}Servizo no Hangar de {STATION}, {VELOCITY}
+
+# Vehicle stopped/started animations
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Detalles)
@@ -3496,7 +3506,7 @@ STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}Non se p
 STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}No se pode parar/iniciar o tren...
 STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}No se pode parar/arrancar o vehículo de estrada...
 STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Non se pode parar/arrancar o barco...
-STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Non se pode parar/arrincar o avión...
+STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Non se pode parar/arrancar o avión...
 
 STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}No se pode envia-lo tren o depósito...
 STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Non se pode envia-lo vehículo ó depósito de estrada...
@@ -4045,3 +4055,4 @@ STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
+
