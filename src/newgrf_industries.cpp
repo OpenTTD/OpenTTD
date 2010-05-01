@@ -185,12 +185,6 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 	}
 
 	if (industry == NULL) {
-		/* industry does not exist, only use those variables that are "safe" */
-		switch (variable) {
-			/* Manhattan distance of closes dry/water tile */
-			case 0x43: return GetClosestWaterDistance(tile, (indspec->behaviour & INDUSTRYBEH_BUILT_ONWATER) == 0);
-		}
-
 		DEBUG(grf, 1, "Unhandled property 0x%X (no available industry) in callback 0x%x", variable, object->callback);
 
 		*available = false;
