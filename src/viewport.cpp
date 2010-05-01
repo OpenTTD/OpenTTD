@@ -1776,7 +1776,7 @@ static bool CheckClickOnStation(const ViewPort *vp, int x, int y)
 static bool CheckClickOnSign(const ViewPort *vp, int x, int y)
 {
 	/* Signs are turned off, or they are transparent and invisibility is ON, or company is a spectator */
-	if (!HasBit(_display_opt, DO_SHOW_SIGNS) || IsInvisibilitySet(TO_SIGNS) || _current_company == COMPANY_SPECTATOR) return false;
+	if (!HasBit(_display_opt, DO_SHOW_SIGNS) || IsInvisibilitySet(TO_SIGNS) || _local_company == COMPANY_SPECTATOR) return false;
 
 	const Sign *si;
 	FOR_ALL_SIGNS(si) {
