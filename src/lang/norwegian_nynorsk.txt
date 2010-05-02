@@ -230,7 +230,8 @@ STR_BUTTON_RENAME                                               :{BLACK}Gje nytt
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Lukk vindauge
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Tittel på vindauget - dra for å flytte vindauget
-STR_TOOLTIP_SHADE                                               :{BLACK}Minimer vindauget - vis kun tittelfeltet
+STR_TOOLTIP_SHADE                                               :{BLACK}Minimer vindauget - syn kun tittelfeltet
+STR_TOOLTIP_DEBUG                                               :{BLACK}Syn NewGRF-debuggingsinformasjon
 STR_TOOLTIP_STICKY                                              :{BLACK}Beskytt dette vindauget mot 'Lukk alle vindauge'-knappen
 STR_TOOLTIP_RESIZE                                              :{BLACK}Klikk og dra for å endre storleiken på vindauget
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Byt mellom stor/liten storleik på vindauga
@@ -385,7 +386,7 @@ STR_GRAPH_MENU_INCOME_GRAPH                                     :Inntektsgraf
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Graf over leverte varer
 STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :Prestasjonhistorikk
 STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Graf over firmaverdi
-STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Prisliste for varer
+STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Varetakster
 ############ range ends here
 
 ############ range for company league menu starts
@@ -437,11 +438,12 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Tidlegare meldi
 ############ range for about menu starts
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informasjon om landområde
 STR_ABOUT_MENU_SEPARATOR                                        :
-STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Syne/gjem konsoll
+STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Syne/gøym konsoll
 STR_ABOUT_MENU_AI_DEBUG                                         :AI-feilsøking
 STR_ABOUT_MENU_SCREENSHOT                                       :Skjermfoto (CTRL+S)
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Stort skjermfoto (CTRL+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Om 'OpenTTD'
+STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Spriteforskyver
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -508,7 +510,7 @@ STR_MONTH_DEC                                                   :desember
 
 # Graph window
 STR_GRAPH_KEY_BUTTON                                            :{BLACK}Nøkkel
-STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}Syne oversikt over grafval
+STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}Syne nøkkel til grafer
 STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
 STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
 STR_GRAPH_Y_LABEL                                               :{TINYFONT}{STRING}
@@ -516,25 +518,25 @@ STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMM
 
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Graf over overskot
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Graf over inntekter
-STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Leverte einingar
+STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Vareeiningar levert
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Prestasjonsvurdering av firma (maks. poeng=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Firmaverdi
 
-STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Betalingstakst for varer
+STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Varetakster
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Dager i transport
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Betaling for levering av ti einingar (eller 10 000 liter) over ein distanse på 20 ruter
-STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}Syn valle
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}Syn alle
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT}{BLACK}Gøym alle
-STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Syn alle typar last på varebetalingsgrafen
-STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Syn ingen typar last på varebetalingsgrafen
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Skru av/på graf for varetypar
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Syn alle varer på varetakstgrafen
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Gøym alle varer på varetakstgrafen
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Syne/gøym graf for ein bestemd varetype
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Syne detaljerte ytelsesrangeringar
 
 # Graph key window
-STR_GRAPH_KEY_CAPTION                                           :{WHITE}Oversikt over firmagrafval
-STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Klikk her for å vise/skjule eit firma i grafen
+STR_GRAPH_KEY_CAPTION                                           :{WHITE}Nøkkel til firmagraf
+STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Klikk her for å syne/gøyme firmaet i grafen
 
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Firmarangering
@@ -702,7 +704,7 @@ STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Aktiver 
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Syne høgd
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL                                :{BLACK}Ikkje syne industriar på kart
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL                                 :{BLACK}Syne alle industriar på kart
-STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Byt vising av høgdekart
+STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Byt syning av høgdekart
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Syne siste melding eller nyheit
@@ -1895,7 +1897,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Bygg jer
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Bygg togstall (trengst for bygging og vedlikehald av tog)
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Gjer om jernbane til kontrollpunkt. CTRL mogleggjer samanhengande kontrollpunkt
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Bygg jernbanestasjon. CTRL mogleggjer samanhengande stasjonar
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Bygg jernbanesignaler. CTRL byter mellom vingesignal/lyssignal{}Dra for å bygge signaler langs ei strekke med skinner. CTRL byggjer signaler til neste knutepunkt{}CTRL+klikk opnar/lukker signalval-vindauget
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Bygg jernbanesignaler. CTRL byter mellom vingesignal/lyssignal{}Dra for å bygge signaler langs ei strekke med skinner. CTRL byggjer signaler til neste knutepunkt{}CTRL+klikk synar/gøymer signalval-vindauget
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Bygg jernbanebru
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Bygg jernbanetunnel
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Byt mellom bygging/fjerning for jernbanespor, signal, kontrollpunkt og stasjonar. Halde CTRL inne fjernar også spor frå kontrollpunkt og stasjonar
@@ -2339,8 +2341,8 @@ STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Flytt de
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Ei liste over NewGRF-filene som er installert. Klikk på ei fil for å endre parametrane
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Set parametrar
-STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Syne palett
-STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Syne paletten til den valde NewGRF.{}Gjer dette når grafikken frå denne NewGRF ser rosa ut i spelet
+STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Syne/gøym palett
+STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Syne/gøym paletten til den valde NewGRF.{}Gjer dette når grafikken frå denne NewGRF ser rosa ut i spelet
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Bruk forandringane
 
 STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Finn manglande innhald på nettet
@@ -2364,6 +2366,32 @@ STR_NEWGRF_ADD_FILE                                             :{BLACK}Legg til
 STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Legg til den valde NewGRF-fila i konfigurasjonen din
 STR_NEWGRF_ADD_RESCAN_FILES                                     :{BLACK}Søk om att
 STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}Oppdater lista over tilgjengelege NewGRF-filer
+
+# NewGRF inspect window
+STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspiser - {STRING}
+STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Eigar
+STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Inspiser objektet til eigarvisninga
+
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} ved {HEX}
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Jernbanetype
+
+STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF-variabel 60+x parameter (heksadesimal)
+
+# Sprite aligner window
+STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Forskyver sprite {COMMA} ({STRING})
+STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Neste sprite
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Fortsett til neste normale sprite og hopp over einhver pseudo-/omfargings-/skrifttype- sprite, samt start om ved byrjinga
+STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Gå til sprite
+STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Gå til gitt sprite. Hvis spriten ikkje er ein normal sprite, fortsett til neste normale sprite
+STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Forrige sprite
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Fortsett til neste normale sprite og hopp over einhver pseudo-/omfargings-/skrifttype- sprite, samt start om ved byrjinga
+STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Forhåndsvisning av valgt sprite. Innrettinga ignorerast når spriten tegnes
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Flytt spriten rundt omkring, for å endre X- og Y-forskyvningene
+STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X-forskyvning: {NUM}, Y-forskyvning: {NUM}
+STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Vel sprite
+STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Vel ein sprite frå eit vilkårleg sted på skjermen
+
+STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Gå til sprite
 
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
@@ -2957,6 +2985,12 @@ STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL           :{LTBLUE}Vedlike
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE                   :{LTBLUE}Vedlikehald ved {STATION} hangar
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE_VEL               :{LTBLUE}Vedlikehald ved {STATION} hangar, {VELOCITY}
 
+# Vehicle stopped/started animations
+STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Stoppet
+STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Stoppet
+STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINYFONT}{GREEN}Startet
+STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Startet
+
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Detaljar)
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Namn
@@ -3229,8 +3263,14 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}AI-insti
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Byt AI-innstillingar
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Last inn AI på ny
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Slå av AIen, last inn skriptet på ny og start AIen på ny
+STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Tillet/nekt bryt når ein AI-loggbeskjed tilsvarar brytstrengen
+STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Bryt på:
+STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Bryt på
+STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Når ein AI-loggbeskjed tilsvarar denne strengen, pauses spelet.
+STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Skriftformgjenkjenning
+STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Byt mellom skriftformgjenkjenning ved samanlikning av AI-loggbeskjedar mot bruddstrengen
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Hald fram
-STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Slå av pause og hald fram med AI
+STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Slå av pause og hald fram AIen
 
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD er bygd utan støtte for AI...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... Ingen AI tilgjengeleg!
@@ -3524,6 +3564,7 @@ STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Kan ikkj
 
 # Tree related errors
 STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... det er allereie eit tre her
+STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... feil terreng for treslag
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Kan ikkje plante tre her...
 
 # Bridge related errors

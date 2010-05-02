@@ -318,6 +318,7 @@ STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Editor de Escenario
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Move-lo ano de comezo un ano hacia atrás
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Move-lo ano de comezo un ano hacia adiante
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Pincha para elixir o ano de comezo
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Amosa-lo mapa, directorio de cidades
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Xeración de paisaxe
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Xeración de cidades
@@ -516,6 +517,8 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Valor da
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Taxas de Pagamento por Carga
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Días en tránsito
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Pagamento por transportar 10 unidades (ou 1.000 litros) de carga unha distancia de 20 cadros
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}Activar todo
+STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT}{BLACK}Desactivar todo
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Amosar/ocultar gráfica para o tipo de carga
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 
@@ -761,6 +764,7 @@ STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}¡{STRING} comprada por {STRING}!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Presidente)
 
+STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}¡{STRING} promoveu a construción dunha nova cidade: {TOWN}!
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}¡Nova {STRING} en construción cerca de {TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}¡Nova {STRING} cerca de {TOWN}!
@@ -803,6 +807,7 @@ STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}O beneficio do ano pasado de {VEHICLE} foi de {CURRENCY}
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} parou porque a orde de reaxuste fallou
+STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Renovación automática fallida en {VEHICLE}{}{STRING}
 
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}¡Novo {STRING} agora dispoñible!
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIGFONT}{BLACK}{ENGINE}
@@ -934,6 +939,9 @@ STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Seleccio
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} arquivo{P "" s} inexistente{P "" s}/erróneo{P "" s}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Información adicional sobre o conxunto de gráficos básico
 
+STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Conxunto de sons base
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Selecciona o conxunto de sons base a usar
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Información adicional sobre o conxunto de sons base
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Conxunto de música base
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Selecciona o conxunto de música base a usar
@@ -1069,8 +1077,12 @@ STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Permiti
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Modelo de aceleración dos trens: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Orixinal
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realista
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Modelo de aceleración para camións/buses: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Orixinal
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Realista
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Prohibir os trens e os barcos xirar 90º: {ORANGE}{STRING} {LTBLUE} (non con OPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Xunta-las estacións construídas xuntas: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Permitir a unión de estacións non adxacentes {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Usa-lo algoritmo de carga mellorado: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Cargar vehículos gradualmente: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflación: {ORANGE}{STRING}
@@ -1183,6 +1195,7 @@ STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Propia compañ�
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Tódalas compañías
 STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Habilita-los horarios para os vehículos: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Mostra-lo horario en ticks en lugar de días: {ORANGE}{STRING}
+STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Creación rápida de ordes para vehículos: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Raíl por defecto (nova partida/cargar partida): {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Primeiro dispoñible
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Último dispoñible
@@ -1271,6 +1284,7 @@ STR_CONFIG_SETTING_AI                                           :{ORANGE}Competi
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Mostrar opcións
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interacción
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Sinais
+STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Xestión da carga
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Xogadores do ordenador
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Autorenovar
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Trens
@@ -1647,6 +1661,7 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nova com
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Patear
+STR_NETWORK_CLIENTLIST_BAN                                      :Expulsar
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Dar diñeiro
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Falar a todos
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Falar con compañía
@@ -1725,6 +1740,8 @@ STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :servidor cheo
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
 ############ Leave those lines in this order!!
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Partida en pausa ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :número de xogadores
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :conectando clientes
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :manual
 ############ End of leave-in-this-order
@@ -1827,6 +1844,7 @@ STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Suminist
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Unir estación
 STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Construír unha estación separada
 
+STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Unir punto de ruta
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}Construción de Ferrocarrís
@@ -1842,7 +1860,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Constru�
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Construír sinais de ferrocaril
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construír ponte de ferrocaril
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construír túnel de ferocarril
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Intecambiar construír/eliminar para vías e sinais de ferrocarril
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Conmutar construír/eliminar para vías, sinais e estacións. Pulsando CTRL tamén borra a vía de puntos de ruta e estacións
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Convertir/Actualizar tipo de vía
 
 # Rail depot construction window
@@ -1908,9 +1926,9 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Tubular, Silico
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Construción de Estradas
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Construción de Tranvías
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Construír sección de estrada. CTRL conmuta entre construír/borrar para a construción de estradas
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Construír sección de vía de tranvía
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Construír estrada usando o modo Autoestrada
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Construír sección de tranvía usando o modo Autotranvía
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Construír sección de vía de tranvía. CTRL conmuta entre construír/borrar para a construción de vías de tranvía
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Construír estrada usando o modo Autoestrada. CTRL conmuta entre construír/borrar para a construción de estradas
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Construír sección de tranvía usando o modo Autotranvía. CTRL conmuta entre construír/borrar para as vías de tranvía
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Construír depósito de vehículos de estrada (para comprar e dar servizo aos vehículos de estrada)
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Construír depósito de tranvías (para comprar e dar servizo aos vehículos)
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Construír estación de autobús
@@ -2027,6 +2045,7 @@ STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Cubri-lo
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Nome da poboación:
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Escribe o nome da poboación
+STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Pincha para introducir o nome da cidade
 STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Nome aleatorio
 STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Xerar novo nome aleatoriamente
 
@@ -2037,6 +2056,7 @@ STR_FOUND_TOWN_INITIAL_SIZE_LARGE_BUTTON                        :{BLACK}Grande
 STR_FOUND_TOWN_SIZE_RANDOM                                      :{BLACK}Aleatorio
 STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Selecciona o tamaño da cidade:
 STR_FOUND_TOWN_CITY                                             :{BLACK}Cidade
+STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}As cidades crecen máis rápido que os pobos{}Segundo a configuración, son máis grandes cando se fundan
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Disposición das estradas das poboacións:
 STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Selecciona a disposición das estradas para esta poboación
@@ -2305,9 +2325,11 @@ STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}Actualiz
 
 # NewGRF inspect window
 
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Tipo de vía
 
 
 # Sprite aligner window
+STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}Desp. X: {NUM}, Desp. Y: {NUM}
 
 
 # NewGRF (self) generated warnings/errors
@@ -2365,7 +2387,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Escribe 
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Cidades
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Ningunha -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Nomes de cidades - pincha no nome para centra-la vista principal na cidade
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Nomes de cidades - pincha no nome para centrar a vista na cidade. CTRL+Click abre unha nova fiestra na localización da cidade
 STR_TOWN_POPULATION                                             :{BLACK}Poboación mundial: {COMMA}
 
 # Town view window
@@ -2377,7 +2399,7 @@ STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Correo �
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Carga necesaria para o crecemento:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{STRING}{BLACK} necesario{P "" s}
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Límite de ruído na cidade: {ORANGE}{COMMA}{BLACK}  máx: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centra-la vista principal na situación da cidade
+STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrar a vista principal na localización da cidade. CTRL+Click abre una nova fiestra na localización da cidade
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Aut. Local
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Mostra-la información sobre a autoridade local
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Cambia-lo nome da cidade
@@ -2420,13 +2442,13 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Suborna
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsidios
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Sibsidios en oferta para sevicios que transporten:
 STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} dende {STRING} ata {STRING}{YELLOW} (antes de {DATE_SHORT})
-STR_SUBSIDIES_NONE                                              :{ORANGE}Ningún
+STR_SUBSIDIES_NONE                                              :{ORANGE}- Ningún -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Servizos que xa teñen subsidio:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} dende {STRING} ata {STRING}{YELLOW} ({COMPANY}{YELLOW}, ata {DATE_SHORT})
-STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Pincha no servizo para centra-la vista na industria/poboación
+STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Pincha no servizo para centrar a vista na industria/cidade. CTRL+Click abre unha nova fiestra na localización da industria/cidade
 
 # Station list window
-STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nomes das estacións - pincha nun nome para centra-la vista principal na estación
+STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nomes das estacións - pincha nun nome para centrar a vista na estación. CTRL+Click abre unha nova fiestra na localización da estación
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Presiona CTRL para seleccionar máis dun ítem
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Estacións
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
@@ -2896,6 +2918,10 @@ STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE                   :{LTBLUE}Servizo
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE_VEL               :{LTBLUE}Servizo no Hangar de {STATION}, {VELOCITY}
 
 # Vehicle stopped/started animations
+STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Parado
+STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Parado
+STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINYFONT}{GREEN}Arrancado
+STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Arrancado
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Detalles)
@@ -3169,6 +3195,7 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}Configur
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Cambia-la configuración da IA
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Recargar IA
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Mata-la IA, recargar o script, e reinicia-la IA
+STR_AI_DEBUG_CONTINUE                                           :{BLACK}Continuar
 
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... non hai IA dispoñibles!
 
@@ -3183,7 +3210,9 @@ STR_AI_CONFIG_HUMAN_PLAYER                                      :Xogador humano
 STR_AI_CONFIG_RANDOM_AI                                         :IA Aleatoria
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Subir
+STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Mover a IA seleccionada hacia arriba na lista
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Baixar
+STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Mover a IA seleccionada hacia abaixo na lista
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}IA seleccionada
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Cargar outra IA
@@ -3326,6 +3355,7 @@ STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}O pobo n
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Traballos na estrada en progreso
 
 # Industry related errors
+STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... demasiadas industrias
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Non se poden xera-las industrias...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Non se pode construír {STRING} aquí...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Non se pode construír ese tipo de industria aí...
@@ -3464,6 +3494,7 @@ STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Os comez
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}A ponte é demasiado baixa para o terreo
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}O inicio e o final deben estar aliñados
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... os finais da ponte deben estar ambos en terra
+STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... ponte demasiado longa
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Non se pode construí-lo túnel ahí...
@@ -4056,3 +4087,4 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
+STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})

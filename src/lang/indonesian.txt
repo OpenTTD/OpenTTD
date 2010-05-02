@@ -2369,21 +2369,28 @@ STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}Memperba
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Memeriksa - {STRING}
 STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Induk
+STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Periksa objek dari parent scope
 
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} pada {HEX}
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Tipe rel
 
+STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Variabel NewGRF harus 60+x (hexadecimal)
 
 # Sprite aligner window
 STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Menjajarkan sprite {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Sprite berikutnya
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Pergi ke sprite normal berikutnya, lewati sprite bayangan/warna ulang/huruf dan pembungkus saat mulai
+STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Pergi ke sprite
+STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Pergi ke sprite. Jika ini adalah sprite normal, lanjutkan ke sprite normal berikutnya
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Sprite sebelumnya
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Lanjutkan ke sprite normal sebelumnya, lewati sembarang sprite bayangan/warna ulang/huruf dan pembungkus saat mulai
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Mewakili sprite yang sedang dipilih. Penjajaran diabaikan ketika sprite ini digambar
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Pindahkan sprite, mengubah offset X dan Y
 STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X offset: {NUM}, Y offset: {NUM}
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Pilih sprite
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Pilih sebuah sprite di manapun pada layar
 
+STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Pergi ke sprite
 
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}

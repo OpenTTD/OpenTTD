@@ -1203,10 +1203,10 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Zmena to
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Letiská nikdy neexiprujú: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Upozorniť, ak vlak nedokáže nájsť cestu: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Obnovenie prikazov vozidla: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Obnovenie príkazov vozidla: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :nie
-STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :ano, okrem zastavenych vozidiel
-STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :ano, u vsetkych vozidiel
+STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :áno, okrem zastavených vozidiel
+STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :ano, u všetkých vozidlách
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Varovať, ak je vozidlo stratové: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Nikdy neprestat s vyrobou starych vozidiel: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Automatická obnova dopravných prostriedkov, keď sú staré: {ORANGE}{STRING}
@@ -1724,31 +1724,31 @@ STR_NETWORK_GAME_LOBBY_VEHICLES                                 :{SILVER}Vozidla
 STR_NETWORK_GAME_LOBBY_STATIONS                                 :{SILVER}Stanice: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
 STR_NETWORK_GAME_LOBBY_PLAYERS                                  :{SILVER}Hraci: {WHITE}{STRING}
 
-STR_NETWORK_GAME_LOBBY_NEW_COMPANY                              :{BLACK}Nová spolocnost
+STR_NETWORK_GAME_LOBBY_NEW_COMPANY                              :{BLACK}Nová spoločnosť
 STR_NETWORK_GAME_LOBBY_NEW_COMPANY_TOOLTIP                      :{BLACK}Založiť novú spoločnosť
-STR_NETWORK_GAME_LOBBY_SPECTATE_GAME                            :{BLACK}Sledovat hru
-STR_NETWORK_GAME_LOBBY_SPECTATE_GAME_TOOLTIP                    :{BLACK}Sledovat hru len ako divak
-STR_NETWORK_GAME_LOBBY_JOIN_COMPANY                             :{BLACK}Vstupit do spolocnosti
-STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP                     :{BLACK}Pomoct viest tuto spolocnost
+STR_NETWORK_GAME_LOBBY_SPECTATE_GAME                            :{BLACK}Sledovať hru
+STR_NETWORK_GAME_LOBBY_SPECTATE_GAME_TOOLTIP                    :{BLACK}Sledovať hru len ako divák
+STR_NETWORK_GAME_LOBBY_JOIN_COMPANY                             :{BLACK}Vstúpiť do spoločnosti
+STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP                     :{BLACK}Pomôcť viesť túto spoločnosť
 
 # Network connecting window
-STR_NETWORK_CONNECTING_CAPTION                                  :{WHITE}Pripajam sa ...
+STR_NETWORK_CONNECTING_CAPTION                                  :{WHITE}Pripájam sa...
 
 ############ Leave those lines in this order!!
-STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Pripajam sa ..
-STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Overovanie ..
-STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Cakam ..
-STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Stahovanie mapy..
-STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Spracovanie dat ..
-STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Registracia ..
+STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Pripájam sa..
+STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Overujem..
+STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Čakám..
+STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Sťahujem mapu..
+STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Spracovávam dáta..
+STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Registrujem..
 
-STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Príjem informácií o hre..
-STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Príjem informácií o spoločnosti..
+STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Prijímam informácie o hre..
+STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Prijímam informácie o spoločnosti..
 ############ End of leave-in-this-order
-STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} klient{P "" e i} pred nami
-STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} stiahnute
+STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} klient{P "" i i} pred nami
+STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} stiahnuté
 
-STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Odpojit sa
+STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Odpojiť sa
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server je chránený. Zadaj heslo
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Spoločnosť je chránená. Zadaj heslo
@@ -2577,7 +2577,7 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Nečaká
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATIONFEATURES}
-STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Caka: {WHITE}{STRING}
+STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Čaká: {WHITE}{STRING}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO}
 STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({SHORTCARGO} na ceste z {STATION})
 
@@ -3067,8 +3067,8 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Kapacita
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Transfer kredity: {LTBLUE}{CURRENCY}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Servisny interval: {LTBLUE}{COMMA}dni{BLACK}   Posledny servis: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Servisny interval: {LTBLUE}{COMMA}%{BLACK}   Posledny servis: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Servisný interval: {LTBLUE}{COMMA}dní{BLACK}   Posledný servis: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Servisný interval: {LTBLUE}{COMMA}%{BLACK}   Posledný servis: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Predlzit servisny interval
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Skratit servisny interval
 
@@ -3161,7 +3161,7 @@ STR_ORDER_SERVICE                                               :{BLACK}Oprava
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Vždy choď
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Servis, ak je potrebné
 STR_ORDER_DROP_HALT_DEPOT                                       :Zastav
-STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Vynechat tento prikaz pokial nie je potrebna oprava
+STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Vynechať tento príkaz pokiaľ nie je potrebná oprava
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Údaje vozidla na základe ktorých sa vykoná skok
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Percento naplnenia
@@ -3184,11 +3184,11 @@ STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :je nepravda
 STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Hodnota, s ktorou sa majú porovnat dáta vozidla
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Zadajte hodnotu voci ktorej sa ma porovnat
 
-STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Preskocit
-STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Preskocit aktuálny príkaz a zacat další. Podržte CTRL pre skok na oznacený príkaz
+STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Preskočiť
+STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Preskočiť aktuálny príkaz a začať ďalší. CTRL+klik pre skok na označený príkaz
 
-STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Vynechat
-STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Vymazat oznaceny prikaz
+STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Vynechať
+STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Vymazať označený príkaz
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Choď do
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Choď do najbližšieho depa
@@ -3707,8 +3707,8 @@ STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}Nemožno
 STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :{WHITE}Nemožno vymazať tento príkaz...
 STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}Nemožno zmeniť tento príkaz...
 STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Nie je možné presunúť tento príkaz...
-STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Nie je možné vynechat tento príkaz ...
-STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Nie je možné preskocit na vybraný príkaz ...
+STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Nie je možné vynechať tento príkaz...
+STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Nie je možné preskočiť na vybraný príkaz...
 STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}vozidlo nemôže ísť do všetkých staníc
 STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}vozidlo nemôže ísť do stanice
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}vozidlo zdielajúce tento príkaz nemôže ísť do stanice
