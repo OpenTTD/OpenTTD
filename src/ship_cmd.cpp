@@ -292,7 +292,7 @@ void Ship::UpdateDeltaXY(Direction direction)
 	this->z_extent      = 6;
 }
 
-void RecalcShipStuff(Vehicle *v)
+void RecalcShipStuff(Ship *v)
 {
 	v->UpdateViewport(false, true);
 	SetWindowDirty(WC_VEHICLE_DEPOT, v->tile);

@@ -437,7 +437,7 @@ CommandCost CmdTurnRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 
 void RoadVehicle::MarkDirty()
 {
-	for (Vehicle *v = this; v != NULL; v = v->Next()) {
+	for (RoadVehicle *v = this; v != NULL; v = v->Next()) {
 		v->UpdateViewport(false, false);
 	}
 	this->CargoChanged();

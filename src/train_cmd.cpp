@@ -1771,7 +1771,7 @@ static void ReverseTrainDirection(Train *v)
 	v->ConsistChanged(true);
 
 	/* update all images */
-	for (Vehicle *u = v; u != NULL; u = u->Next()) u->UpdateViewport(false, false);
+	for (Train *u = v; u != NULL; u = u->Next()) u->UpdateViewport(false, false);
 
 	/* update crossing we were approaching */
 	if (crossing != INVALID_TILE) UpdateLevelCrossing(crossing);
@@ -2806,7 +2806,7 @@ TileIndex Train::GetOrderStationLocation(StationID station)
 
 void Train::MarkDirty()
 {
-	Vehicle *v = this;
+	Train *v = this;
 	do {
 		v->UpdateViewport(false, false);
 	} while ((v = v->Next()) != NULL);
