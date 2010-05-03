@@ -1598,13 +1598,18 @@ static bool RoadVehController(RoadVehicle *v)
 	int j = RoadVehAccelerate(v);
 
 	int adv_spd = (v->direction & 1) ? 192 : 256;
+	bool blocked = false;
 	while (j >= adv_spd) {
 		j -= adv_spd;
 
 		RoadVehicle *u = v;
 		for (RoadVehicle *prev = NULL; u != NULL; prev = u, u = u->Next()) {
-			if (!IndividualRoadVehicleController(u, prev)) break;
+			if (!IndividualRoadVehicleController(u, prev)) {
+				blocked = true;
+				break;
+			}
 		}
+		if (blocked) break;
 
 		/* 192 spd used for going straight, 256 for going diagonally. */
 		adv_spd = (v->direction & 1) ? 192 : 256;
@@ -1619,7 +1624,10 @@ static bool RoadVehController(RoadVehicle *v)
 		u->UpdateViewport(false, false);
 	}
 
-	if (v->progress == 0) v->progress = j;
+	/* If movement is blocked, set 'progress' to its maximum, so the roadvehicle does
+	 * not accelerate again before it can actually move. I.e. make sure it tries to advance again
+	 * on next tick to discover whether it is still blocked. */
+	if (v->progress == 0) v->progress = blocked ? adv_spd - 1 : j;
 
 	return true;
 }
