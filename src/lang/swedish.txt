@@ -230,6 +230,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Byt namn
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Stäng fönster
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Fönstertitel - dra för att flytta fönstret
 STR_TOOLTIP_SHADE                                               :{BLACK}Dölj fönster - Visa bara namnlisten
+STR_TOOLTIP_DEBUG                                               :{BLACK}Visa NewGRF felsökningsinformation
 STR_TOOLTIP_STICKY                                              :{BLACK}Markera att fönstret ska lämnas öppet när 'Stäng alla fönster'-knappen används
 STR_TOOLTIP_RESIZE                                              :{BLACK}Klicka och dra för att förstora fönstret
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Växla stor/liten fönsterstorlek
@@ -2365,6 +2366,7 @@ STR_NEWGRF_ADD_RESCAN_FILES                                     :{BLACK}Scanna o
 STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}Uppdatera listan med tillgängliga NewGRF-filer
 
 # NewGRF inspect window
+STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspektera - {STRING}
 
 
 
@@ -3542,6 +3544,7 @@ STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Kan inte
 
 # Tree related errors
 STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... träd redan här
+STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... fel sorts terräng för trädtyp
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Kan inte plantera träd här...
 
 # Bridge related errors

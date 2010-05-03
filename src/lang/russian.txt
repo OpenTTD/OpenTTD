@@ -2935,20 +2935,20 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Купи
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Купить выбранный корабль
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Купить выбранный авиатранспорт
 
-STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Переимен.
-STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Переимен.
-STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}Переимен.
-STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Переимен.
+STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Переименовать
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Переименовать
+STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}Переименовать
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Переименовать
 
-STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Переименовать тип вагона
-STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Переименовать автомобиль
-STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Переименовать
-STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Переименовать
+STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Изменить название модели поезда
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Изменить название модели автомобиля
+STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Изменить название модели корабля
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Изменить название модели возд. судна
 
-STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Переименовать тип вагона
-STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Переименовать автомобиль
-STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Переименовать
-STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Переименовать
+STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Название модели поезда
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Название модели автомобиля
+STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Название модели корабля
+STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Название модели возд. судна
 
 # Depot window
 STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}Депо {TOWN}
@@ -2971,7 +2971,7 @@ STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Пере
 STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Перетащите сюда корабль, чтобы продать его
 STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Перетащите сюда транспорт, чтобы продать его
 
-STR_DEPOT_DRAG_WHOLE_TRAIN_TO_SELL_TOOLTIP                      :{BLACK}Перетащите сюда локомотив для продажи всего поезда
+STR_DEPOT_DRAG_WHOLE_TRAIN_TO_SELL_TOOLTIP                      :{BLACK}Перетащите сюда локомотив для продажи всего состава
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TOOLTIP                         :{BLACK}Продать все поезда в депо
 STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Продать все авто в гараже
@@ -3202,10 +3202,10 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Инте
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Увеличить интервал обслуживания на 10. Ctrl+клик увеличивает интервал обслуживания на 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Уменьшить интервал обслуживания на 10. Ctrl+клик уменьшает интервал обслуживания на 5
 
-STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Назвать поезд
-STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Назвать автотранспорт
-STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Назвать корабль
-STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Назвать самолёт
+STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Название состава
+STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Название автомобиля
+STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Название корабля
+STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Название возд. судна
 
 # Extra buttons for train details windows
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}  Построен в {LTBLUE}{NUM} г.{BLACK} Стоимость: {LTBLUE}{CURRENCY}
@@ -3787,10 +3787,10 @@ STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Нево
 STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Не удалось переоборудовать корабль...
 STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Не удалось переоборудовать самолёт...
 
-STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Невозможно назвать поезд...
+STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Невозможно переименовать поезд...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Невозможно переименовать автомобиль...
-STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}Не удалось назвать корабль...
-STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}Не удалось назвать самолёт...
+STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}Невозможно переименовать корабль...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}Невозможно переименовать воздушное судно...
 
 STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Невозможно остановить/запустить поезд...
 STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Невозможно остановить/запустить автомобиль...
@@ -3807,10 +3807,10 @@ STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Не у�
 STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Не удалось купить корабль...
 STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Не удалось купить возд. транспорт...
 
-STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Не удалось переименовать вагон...
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Не удалось переименовать машину...
-STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Не удалось переименовать судно...
-STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Не удалось переименовать...
+STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Невозможно изменить название модели поезда...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Невозможно изменить название модели автомобиля...
+STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Невозможно изменить название модели корабля...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Невозможно изменить название модели возд. судна...
 
 STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Не удалось продать поезд...
 STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Не удалось продать машину...
