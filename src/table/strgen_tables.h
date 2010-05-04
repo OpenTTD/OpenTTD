@@ -77,6 +77,7 @@ static const CmdStruct _cmd_structs[] = {
 	{"WEIGHT_S",        EmitSingleChar, SCC_WEIGHT_SHORT,       1, C_NONE},
 	{"FORCE",           EmitSingleChar, SCC_FORCE,              1, C_NONE},
 	{"VELOCITY",        EmitSingleChar, SCC_VELOCITY,           1, C_NONE},
+	{"HEIGHT",          EmitSingleChar, SCC_HEIGHT,             1, C_NONE},
 
 	{"P",               EmitPlural,     0,                      0, C_DONTCOUNT}, // plural specifier
 	{"G",               EmitGender,     0,                      0, C_DONTCOUNT}, // gender specifier

@@ -215,6 +215,9 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
+STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} ft
+STR_UNITS_HEIGHT_SI                                             :{COMMA} m
+
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Enter filter string
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Enter a keyword to filter the list for

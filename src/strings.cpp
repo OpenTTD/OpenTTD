@@ -508,6 +508,9 @@ struct Units {
 	int f_m;           ///< Multiplier for force
 	int f_s;           ///< Shift for force
 	StringID force;    ///< String for force
+	int h_m;           ///< Multiplier for height
+	int h_s;           ///< Shift for height
+	StringID height;   ///< String for height
 };
 
 /* Unit conversions */
@@ -518,6 +521,7 @@ static const Units units[] = {
 		   1,  0, STR_UNITS_WEIGHT_SHORT_METRIC, STR_UNITS_WEIGHT_LONG_METRIC,
 		1000,  0, STR_UNITS_VOLUME_SHORT_METRIC, STR_UNITS_VOLUME_LONG_METRIC,
 		   1,  0, STR_UNITS_FORCE_SI,
+		   3,  0, STR_UNITS_HEIGHT_IMPERIAL,
 	},
 	{ // Metric (km/h, hp, metric ton, litre, kN)
 		 103,  6, STR_UNITS_VELOCITY_METRIC,
@@ -525,6 +529,7 @@ static const Units units[] = {
 		   1,  0, STR_UNITS_WEIGHT_SHORT_METRIC, STR_UNITS_WEIGHT_LONG_METRIC,
 		1000,  0, STR_UNITS_VOLUME_SHORT_METRIC, STR_UNITS_VOLUME_LONG_METRIC,
 		   1,  0, STR_UNITS_FORCE_SI,
+		   1,  0, STR_UNITS_HEIGHT_SI,
 	},
 	{ // SI (m/s, kilowatt, kilogram, cubic metres, kilonewton)
 		1831, 12, STR_UNITS_VELOCITY_SI,
@@ -532,6 +537,7 @@ static const Units units[] = {
 		1000,  0, STR_UNITS_WEIGHT_SHORT_SI, STR_UNITS_WEIGHT_LONG_SI,
 		   1,  0, STR_UNITS_VOLUME_SHORT_SI, STR_UNITS_VOLUME_LONG_SI,
 		   1,  0, STR_UNITS_FORCE_SI,
+		   1,  0, STR_UNITS_HEIGHT_SI,
 	},
 };
 
@@ -603,11 +609,18 @@ static char *FormatString(char *buff, const char *str, int64 *argv, uint casei, 
 				buff = FormatMonthAndYear(buff, GetInt32(&argv), last);
 				break;
 
-			case SCC_VELOCITY: {// {VELOCITY}
+			case SCC_VELOCITY: { // {VELOCITY}
 				int64 args[1];
 				assert(_settings_game.locale.units < lengthof(units));
 				args[0] = ConvertSpeedToDisplaySpeed(GetInt32(&argv) * 10 / 16);
 				buff = FormatString(buff, GetStringPtr(units[_settings_game.locale.units].velocity), args, modifier >> 24, last);
+				modifier = 0;
+				break;
+			}
+
+			case SCC_HEIGHT: { // {HEIGHT}
+				int64 args[1] = {GetInt32(&argv) * units[_settings_game.locale.units].h_m >> units[_settings_game.locale.units].h_s};
+				buff = FormatString(buff, GetStringPtr(units[_settings_game.locale.units].height), args, modifier >> 24, last);
 				modifier = 0;
 				break;
 			}
