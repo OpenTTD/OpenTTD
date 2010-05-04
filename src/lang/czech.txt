@@ -733,11 +733,6 @@ STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLAC
 STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINYFONT}{BLACK}Stanice/Letiště/Přístavy
 STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINYFONT}{BLACK}Budovy/Průmysl
 STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINYFONT}{BLACK}Vozidla
-STR_SMALLMAP_LEGENDA_100M                                       :{TINYFONT}{BLACK}100 m
-STR_SMALLMAP_LEGENDA_200M                                       :{TINYFONT}{BLACK}200 m
-STR_SMALLMAP_LEGENDA_300M                                       :{TINYFONT}{BLACK}300 m
-STR_SMALLMAP_LEGENDA_400M                                       :{TINYFONT}{BLACK}400 m
-STR_SMALLMAP_LEGENDA_500M                                       :{TINYFONT}{BLACK}500 m
 STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINYFONT}{BLACK}Vlaky
 STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINYFONT}{BLACK}Silniční vozidla
 STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINYFONT}{BLACK}Lodě

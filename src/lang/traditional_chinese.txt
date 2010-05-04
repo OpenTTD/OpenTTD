@@ -665,11 +665,6 @@ STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLAC
 STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINYFONT}{BLACK}車站／機場／碼頭
 STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINYFONT}{BLACK}建築／工業
 STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINYFONT}{BLACK}交通工具
-STR_SMALLMAP_LEGENDA_100M                                       :{TINYFONT}{BLACK}100公尺
-STR_SMALLMAP_LEGENDA_200M                                       :{TINYFONT}{BLACK}200公尺
-STR_SMALLMAP_LEGENDA_300M                                       :{TINYFONT}{BLACK}300公尺
-STR_SMALLMAP_LEGENDA_400M                                       :{TINYFONT}{BLACK}400公尺
-STR_SMALLMAP_LEGENDA_500M                                       :{TINYFONT}{BLACK}500公尺
 STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINYFONT}{BLACK}列車
 STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINYFONT}{BLACK}公車／貨車
 STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINYFONT}{BLACK}船舶

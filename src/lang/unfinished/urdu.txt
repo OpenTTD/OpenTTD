@@ -276,11 +276,6 @@ STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLAC
 STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINYFONT}{BLACK}اڈے/ہوایی اڈے/بندرگاہیں
 STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINYFONT}{BLACK}عمارتیں/صنعتیں
 STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINYFONT}{BLACK}سواریاں
-STR_SMALLMAP_LEGENDA_100M                                       :{TINYFONT}{BLACK}۱۰۰ میٹر
-STR_SMALLMAP_LEGENDA_200M                                       :{TINYFONT}{BLACK}۲۰۰ میٹر
-STR_SMALLMAP_LEGENDA_300M                                       :{TINYFONT}{BLACK}۳۰۰میٹر
-STR_SMALLMAP_LEGENDA_400M                                       :{TINYFONT}{BLACK}۴۰۰ میٹر
-STR_SMALLMAP_LEGENDA_500M                                       :{TINYFONT}{BLACK}۵۰۰ میٹر
 STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINYFONT}{BLACK}ریل گاڑیاں
 STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINYFONT}{BLACK}سڑک کی گاڑیاں
 STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINYFONT}{BLACK}کشتیاں

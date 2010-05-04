@@ -77,11 +77,11 @@ struct LegendAndColour {
 /** Legend text giving the colours to look for on the minimap */
 static LegendAndColour _legend_land_contours[] = {
 	/* The colours for the following values are set at BuildLandLegend() based on each colour scheme. */
-	MC(STR_SMALLMAP_LEGENDA_100M),
-	MC(STR_SMALLMAP_LEGENDA_200M),
-	MC(STR_SMALLMAP_LEGENDA_300M),
-	MC(STR_SMALLMAP_LEGENDA_400M),
-	MC(STR_SMALLMAP_LEGENDA_500M),
+	MC(STR_TINY_BLACK_HEIGHT),
+	MC(STR_TINY_BLACK_HEIGHT),
+	MC(STR_TINY_BLACK_HEIGHT),
+	MC(STR_TINY_BLACK_HEIGHT),
+	MC(STR_TINY_BLACK_HEIGHT),
 
 	MS(0xD7, STR_SMALLMAP_LEGENDA_ROADS),
 	MK(0x0A, STR_SMALLMAP_LEGENDA_RAILROADS),
@@ -1103,6 +1103,9 @@ public:
 							GfxFillRect(x + blob_left, y + 1, x + blob_right, y + row_height - 1, 0); // Outer border of the legend colour
 						}
 					} else {
+						if (this->map_type == SMT_CONTOUR) {
+							SetDParam(0, (tbl - _legend_table[this->map_type] + 1) * 100);
+						}
 						/* Anything that is not an industry is using normal process */
 						GfxFillRect(x + blob_left, y + 1, x + blob_right, y + row_height - 1, 0);
 						DrawString(x + text_left, x + text_right, y, tbl->legend);

@@ -810,11 +810,6 @@ STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLAC
 STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINYFONT}{BLACK}Станции/Аэропорты/Пристани
 STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINYFONT}{BLACK}Строения/Предприятия
 STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINYFONT}{BLACK}Автотранспорт
-STR_SMALLMAP_LEGENDA_100M                                       :{TINYFONT}{BLACK}100м
-STR_SMALLMAP_LEGENDA_200M                                       :{TINYFONT}{BLACK}200м
-STR_SMALLMAP_LEGENDA_300M                                       :{TINYFONT}{BLACK}300м
-STR_SMALLMAP_LEGENDA_400M                                       :{TINYFONT}{BLACK}400м
-STR_SMALLMAP_LEGENDA_500M                                       :{TINYFONT}{BLACK}500м
 STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINYFONT}{BLACK}Поезда
 STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINYFONT}{BLACK}Автотранспорт
 STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINYFONT}{BLACK}Суда
