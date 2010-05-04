@@ -248,8 +248,8 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :ª!"·$%&/()=?�
 # Measurement tooltip
 STR_MEASURE_LENGTH                                              :{BLACK}Luzera: {NUM}
 STR_MEASURE_AREA                                                :{BLACK}Area: {NUM} x {NUM}
-STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Luzera: {NUM}{}Goratasun diferentzia: {NUM} m
-STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Area: {NUM} x {NUM}{}Goratasun diferentzia: {NUM} m
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Luzera: {NUM}{}Goratasun diferentzia: {HEIGHT}
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Area: {NUM} x {NUM}{}Goratasun diferentzia: {HEIGHT}
 
 
 # These are used in buttons

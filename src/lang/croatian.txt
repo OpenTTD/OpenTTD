@@ -346,8 +346,8 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 # Measurement tooltip
 STR_MEASURE_LENGTH                                              :{BLACK}Dužina: {NUM}
 STR_MEASURE_AREA                                                :{BLACK}Područje: {NUM} x {NUM}
-STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Dužina: {NUM}{}Visinska razlika: {NUM} m
-STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Područje: {NUM} x {NUM}{}Visinska razlika: {NUM} m
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Dužina: {NUM}{}Visinska razlika: {HEIGHT}
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Područje: {NUM} x {NUM}{}Visinska razlika: {HEIGHT}
 
 
 # These are used in buttons

@@ -250,8 +250,8 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 # Measurement tooltip
 STR_MEASURE_LENGTH                                              :{BLACK}Längd: {NUM}
 STR_MEASURE_AREA                                                :{BLACK}Yta: {NUM} x {NUM}
-STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Längd: {NUM}{}Höjdskillnad: {NUM} m
-STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Yta: {NUM} x {NUM}{}Höjdskillnad: {NUM} m
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Längd: {NUM}{}Höjdskillnad: {HEIGHT}
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Yta: {NUM} x {NUM}{}Höjdskillnad: {HEIGHT}
 
 
 # These are used in buttons

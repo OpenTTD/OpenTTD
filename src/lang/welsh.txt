@@ -247,8 +247,8 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 # Measurement tooltip
 STR_MEASURE_LENGTH                                              :{BLACK}Hyd: {NUM}
 STR_MEASURE_AREA                                                :{BLACK}Ardal: {NUM} x {NUM}
-STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Hyd: {NUM}{}Gwahaniaeth uchder: {NUM} m
-STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Ardal: {NUM} x {NUM}{}Gwahaniaeth uchder: {NUM} m
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Hyd: {NUM}{}Gwahaniaeth uchder: {HEIGHT}
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Ardal: {NUM} x {NUM}{}Gwahaniaeth uchder: {HEIGHT}
 
 
 # These are used in buttons

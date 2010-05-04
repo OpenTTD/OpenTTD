@@ -319,8 +319,8 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~1234567890_+|Q
 # Measurement tooltip
 STR_MEASURE_LENGTH                                              :{BLACK}Délka: {NUM}
 STR_MEASURE_AREA                                                :{BLACK}Oblast: {NUM} x {NUM}
-STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Délka: {NUM}{}Výškový rozdíl: {NUM} m
-STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Oblast: {NUM} x {NUM}{}Výškový rozdíl: {NUM} m
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Délka: {NUM}{}Výškový rozdíl: {HEIGHT}
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Oblast: {NUM} x {NUM}{}Výškový rozdíl: {HEIGHT}
 
 
 # These are used in buttons

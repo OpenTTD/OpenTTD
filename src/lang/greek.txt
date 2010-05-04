@@ -313,8 +313,8 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 # Measurement tooltip
 STR_MEASURE_LENGTH                                              :{BLACK}Μήκος: {NUM}
 STR_MEASURE_AREA                                                :{BLACK}Περιοχή: {NUM} x {NUM}
-STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Μήκος: {NUM}{}Υψομετρική διαφορά: {NUM} μ
-STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Περιοχή: {NUM} x {NUM}{}Υψομετρική διαφορά: {NUM} m
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Μήκος: {NUM}{}Υψομετρική διαφορά: {HEIGHT}
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Περιοχή: {NUM} x {NUM}{}Υψομετρική διαφορά: {HEIGHT}
 
 
 # These are used in buttons

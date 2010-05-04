@@ -249,8 +249,8 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 # Measurement tooltip
 STR_MEASURE_LENGTH                                              :{BLACK}Ukuran panjang: {NUM}
 STR_MEASURE_AREA                                                :{BLACK}Ukuran kawasan: {NUM} x {NUM}
-STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Ukuran panjang: {NUM}{}Perbezaan ketinggian: {NUM} m
-STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Ukuran kawasan: {NUM} x {NUM}{}Perbezaan ketinggian: {NUM} m
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Ukuran panjang: {NUM}{}Perbezaan ketinggian: {HEIGHT}
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Ukuran kawasan: {NUM} x {NUM}{}Perbezaan ketinggian: {HEIGHT}
 
 
 # These are used in buttons

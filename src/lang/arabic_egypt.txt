@@ -249,8 +249,7 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :ذ1234567890-=�
 # Measurement tooltip
 STR_MEASURE_LENGTH                                              :{BLACK} الطول: {NUM}
 STR_MEASURE_AREA                                                :{BLACK}المساحة: {NUM} x {NUM}
-STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}الطول: {NUM}{}فرق الارتفاع: {NUM} م
-STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}المساحة: {NUM} x {NUM}{}فرق الارتفاع{NUM} م
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}الطول: {NUM}{}فرق الارتفاع: {HEIGHT}
 
 
 # These are used in buttons

@@ -313,8 +313,8 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :§'"+!%/=()ÖÜ
 # Measurement tooltip
 STR_MEASURE_LENGTH                                              :{BLACK}Távolság: {NUM}
 STR_MEASURE_AREA                                                :{BLACK}Terület: {NUM} x {NUM}
-STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Távolság: {NUM}{}Magasságkülönbség: {NUM} m
-STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Terület: {NUM} x {NUM}{}Magasságkülönbség: {NUM} m
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Távolság: {NUM}{}Magasságkülönbség: {HEIGHT}
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Terület: {NUM} x {NUM}{}Magasságkülönbség: {HEIGHT}
 
 
 # These are used in buttons

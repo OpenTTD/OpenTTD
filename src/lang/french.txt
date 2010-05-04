@@ -251,8 +251,8 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :²1234567890°+
 # Measurement tooltip
 STR_MEASURE_LENGTH                                              :{BLACK}Longueur{NBSP}: {NUM}
 STR_MEASURE_AREA                                                :{BLACK}Région{NBSP}: {NUM} x {NUM}
-STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Longueur{NBSP}: {NUM}{}Écart d'altitude{NBSP}: {NUM} m
-STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Région{NBSP}: {NUM} x {NUM}{}Écart d'altitude{NBSP}: {NUM} m
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Longueur{NBSP}: {NUM}{}Écart d'altitude{NBSP}: {HEIGHT}
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Région{NBSP}: {NUM} x {NUM}{}Écart d'altitude{NBSP}: {HEIGHT}
 
 
 # These are used in buttons
