@@ -229,6 +229,9 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} ³מט�
 
 STR_UNITS_FORCE_SI                                              :{COMMA} קילו ניוטן
 
+STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} רגל
+STR_UNITS_HEIGHT_SI                                             :{COMMA} מ'
+
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}הכנס מחרוזת סינון
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}הכנס מילת מפתח לסינון הרשימה לפיה
@@ -244,6 +247,7 @@ STR_BUTTON_RENAME                                               :{BLACK}שנה �
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}סגור חלון
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}כותרת החלון - גרור להזזה
 STR_TOOLTIP_SHADE                                               :{BLACK}הצל חלון - הצג רק את שורת הכותרת
+STR_TOOLTIP_DEBUG                                               :{BLACK}הצג מידע דיבאג של newGRF
 STR_TOOLTIP_STICKY                                              :{BLACK}'סמן חלון זה כחלון מוגן מפני מקש 'סגור את כל החלונות
 STR_TOOLTIP_RESIZE                                              :{BLACK}לחץ ומשוך כדי לשנות את גודל החלון
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}החלף בין גודל חלון קטן/גדול
@@ -2373,6 +2377,15 @@ STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}מוסי
 STR_NEWGRF_ADD_RESCAN_FILES                                     :{BLACK}רענן רשימת קבצים
 STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}מרענן את רשימת הקבצים הזמינים
 
+# NewGRF inspect window
+STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}בדוק - {STRING}
+STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}הורה
+
+
+
+# Sprite aligner window
+
+
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}אזהרה: {SILVER}{STRING}
@@ -2965,6 +2978,8 @@ STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL           :{LTBLUE}טיפ�
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE                   :{LTBLUE}טיפול בסככת המטוסים {STATION}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE_VEL               :{LTBLUE}טיפול בסככת המטוסים {STATION} , {VELOCITY}
 
+# Vehicle stopped/started animations
+
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}(פרטים){VEHICLE}
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}שם
@@ -3538,6 +3553,7 @@ STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}לא נ�
 
 # Tree related errors
 STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... קיים כאן עץ
+STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... שטח לא נכון עבור סוג עץ זה
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}לא יכול לטעת עצים במשבצת זו...
 
 # Bridge related errors
@@ -4126,6 +4142,7 @@ STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
+STR_TINY_BLACK_HEIGHT                                           :{TINYFONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 

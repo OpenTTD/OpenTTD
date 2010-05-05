@@ -279,6 +279,9 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
+STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} πόδια
+STR_UNITS_HEIGHT_SI                                             :{COMMA} μ
+
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Εισαγώγη κειμένου για φιλτράρισμα
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Εισάγετε μια λέξη για να φιλτραριστεί η λίστα για
@@ -2454,6 +2457,22 @@ STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Προσ
 STR_NEWGRF_ADD_RESCAN_FILES                                     :{BLACK}Ανιχνεύση ξανά για αρχεία
 STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}Ανανέωση της λίστας με τα διαθέσιμα αρχεία NewGRF
 
+# NewGRF inspect window
+STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Επιθεώρηση - {STRING}
+STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Γονικό
+STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Επιθεώρηση του αντικείμενου του γονικού σκοπού
+
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} στο {HEX}
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Τύπος σιδηροτροχιάς
+
+STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Μεταβλητή NewGRF 60+x παράμετρος (δεκαεξαδικό)
+
+# Sprite aligner window
+STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Επιλογή sprite
+STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Επιλογή ενός sprite από οπουδήποτε στη οθόνη
+
+STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Μετακίνηση στο sprite
+
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Προειδοποίηση: {SILVER}{STRING}
@@ -3051,6 +3070,12 @@ STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE               :{LTBLUE}Service
 STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL           :{LTBLUE}Service στο ναυπηγείο της πόλης {TOWN}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE                   :{LTBLUE}Service στο υπόστεγο του στάθμου {STATION}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE_VEL               :{LTBLUE}Επισκεύη στο υπόστεγο του σταθμού {STATION}, {VELOCITY}
+
+# Vehicle stopped/started animations
+STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Σταμάτησε
+STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Σταμάτησε
+STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINYFONT}{GREEN}Ξεκίνησε
+STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Ξεκίνησε
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Λεπτομέριες)
@@ -4216,6 +4241,7 @@ STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
+STR_TINY_BLACK_HEIGHT                                           :{TINYFONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 

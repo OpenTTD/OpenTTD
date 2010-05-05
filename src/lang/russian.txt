@@ -341,6 +341,9 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} м³
 
 STR_UNITS_FORCE_SI                                              :{COMMA} кН
 
+STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} фут{P "" а ов}
+STR_UNITS_HEIGHT_SI                                             :{COMMA} м
+
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Введите строку фильтра
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Введите ключевое слово для фильтрации списка
@@ -568,7 +571,7 @@ STR_ABOUT_MENU_AI_DEBUG                                         :Отладка 
 STR_ABOUT_MENU_SCREENSHOT                                       :Снимок экрана (Ctrl-S)
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Полный снимок экрана (Ctrl-G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Об игре
-STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Выравниватель спрайта
+STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Выравнивание спрайтов
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -1968,7 +1971,7 @@ STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Буд�
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Этот модуль зависит от другого и будет загружен
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Уже установлен
 STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Этот модуль неизвестен и не может быть загружен в OpenTTD
-STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Это замена имеющ{G его ей его их}ся {STRING.gen}
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Это обновление имеющ{G его ей его их}ся {STRING.gen}
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}Наименование: {WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Версия: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Описание: {WHITE}{STRING}
@@ -2534,6 +2537,7 @@ STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}Обно
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Просмотр - {STRING}
 STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Родитель
+STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Просмотр объекта в контексте родителя
 
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} в {HEX}
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Тип рельсов
@@ -2551,7 +2555,7 @@ STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Пред
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Двигайте спрайт, изменяя смещение по X и по Y
 STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}Смещение по X: {NUM}, Смещение по Y: {NUM}
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Выбрать спрайт
-STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Выберите спрайт c любого места на экране
+STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Выберите любой спрайт c экрана
 
 STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Перейти к спрайту
 
@@ -4323,6 +4327,7 @@ STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
+STR_TINY_BLACK_HEIGHT                                           :{TINYFONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
