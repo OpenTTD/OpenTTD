@@ -484,7 +484,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 	if (v == NULL) {
 		/* Vehicle does not exist, so we're in a purchase list */
 		switch (variable) {
-			case 0x43: return _current_company | (LiveryHelper(object->u.vehicle.self_type, NULL) << 24); // Owner information
+			case 0x43: return _current_company | (Company::IsValidAiID(_current_company) ? 0x10000 : 0) | (LiveryHelper(object->u.vehicle.self_type, NULL) << 24); // Owner information
 			case 0x46: return 0;               // Motion counter
 			case 0x47: { // Vehicle cargo info
 				const Engine *e = Engine::Get(object->u.vehicle.self_type);
