@@ -1167,7 +1167,10 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Tuathal
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Deiseal
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Leibhéal airde a fhaighann léarscáil scéil réidh: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Ceadaigh athrú talún ag teorainneacha na léarscáile: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Tá tíl amháin nó níos mó ag an taobh thuaidh nach bhfuil folamh
+STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Tá tíl amháin nó níos mó ag ceann de na taobhanna nach uisce é
 
+STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Uasleathadh stáisún: {ORANGE}{STRING} {RED}Rabhadh: Cuireann socrú ard moill leis an gcluiche
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Déan seirbhísiú ar héileacaptair ag héileapadanna go huathoibríoch: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Uaine
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Ciaruaine

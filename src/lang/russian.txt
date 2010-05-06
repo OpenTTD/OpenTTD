@@ -3171,10 +3171,10 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Запу
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Детали)
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Имя
 
-STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Назвать поезд
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Назвать автотранспорт
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Название корабля
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Название самолёта
+STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Переименовать поезд
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Переименовать автомобиль
+STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Переименовать корабль
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Переименовать воздушное судно
 
 STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Возраст: {LTBLUE}{STRING}{BLACK}   Стоимость обслуживания: {LTBLUE}{CURRENCY}/год
 # The next two need to stay in this order
@@ -3196,7 +3196,7 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Ёмко
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Выручка перевозки: {LTBLUE}{CURRENCY}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Осмотр каждые {LTBLUE}{COMMA}дней{BLACK}   Последний раз: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Осмотр каждые {LTBLUE}{COMMA} дней{BLACK}   Последний раз: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Интервал обслуж.: {LTBLUE}{COMMA}%{BLACK}   Последний раз: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Увеличить интервал обслуживания на 10. Ctrl+клик увеличивает интервал обслуживания на 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Уменьшить интервал обслуживания на 10. Ctrl+клик уменьшает интервал обслуживания на 5
