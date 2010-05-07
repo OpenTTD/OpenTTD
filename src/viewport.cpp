@@ -2169,25 +2169,23 @@ static bool SwapDirection(HighLightStyle style, TileIndex start_tile, TileIndex 
 	return false;
 }
 
-/** Calculates height difference between one tile and another
+/** Calculates height difference between one tile and another.
  * Multiplies the result to suit the standard given by minimap - 50 meters high
  * To correctly get the height difference we need the direction we are dragging
  * in, as well as with what kind of tool we are dragging. For example a horizontal
  * autorail tool that starts in bottom and ends at the top of a tile will need the
  * maximum of SW, S and SE, N corners respectively. This is handled by the lookup table below
- * See _tileoffs_by_dir in map.c for the direction enums if you can't figure out
- * the values yourself.
- * @param style HightlightStyle of drag. This includes direction and style (autorail, rect, etc.)
- * @param distance amount of tiles dragged, important for horizontal/vertical drags
- *        ignored for others
- * @param start_tile, end_tile start and end tile of drag operation
- * @return height difference between two tiles. Tile measurement tool utilizes
- * this value in its tooltips */
+ * See #_tileoffs_by_dir in map.cpp for the direction enums if you can't figure out the values yourself.
+ * @param style      Highlighting style of the drag. This includes direction and style (autorail, rect, etc.)
+ * @param distance   Number of tiles dragged, important for horizontal/vertical drags, ignored for others.
+ * @param start_tile Start tile of the drag operation.
+ * @param end_tile   End tile of the drag operation.
+ * @return Height difference between two tiles. The tile measurement tool utilizes this value in its tooltip.
+ */
 static int CalcHeightdiff(HighLightStyle style, uint distance, TileIndex start_tile, TileIndex end_tile)
 {
 	bool swap = SwapDirection(style, start_tile, end_tile);
-	byte style_t;
-	uint h0, h1, ht; // start heigth, end height, and temp variable
+	uint h0, h1; // Start height and end height.
 
 	if (start_tile == end_tile) return 0;
 	if (swap) Swap(start_tile, end_tile);
@@ -2201,7 +2199,7 @@ static int CalcHeightdiff(HighLightStyle style, uint distance, TileIndex start_t
 
 			/* In the case of an area we can determine whether we were dragging south or
 			 * east by checking the X-coordinates of the tiles */
-			style_t = (byte)(TileX(end_tile) > TileX(start_tile));
+			byte style_t = (byte)(TileX(end_tile) > TileX(start_tile));
 			start_tile = TILE_ADD(start_tile, ToTileIndexDiff(heightdiff_area_by_dir[style_t]));
 			end_tile   = TILE_ADD(end_tile, ToTileIndexDiff(heightdiff_area_by_dir[2 + style_t]));
 		}
@@ -2234,10 +2232,10 @@ static int CalcHeightdiff(HighLightStyle style, uint distance, TileIndex start_t
 			if (swap && distance == 0) style = flip_style_direction[style];
 
 			/* Use lookup table for start-tile based on HighLightStyle direction */
-			style_t = style * 2;
+			byte style_t = style * 2;
 			assert(style_t < lengthof(heightdiff_line_by_dir) - 13);
 			h0 = TileHeight(TILE_ADD(start_tile, ToTileIndexDiff(heightdiff_line_by_dir[style_t])));
-			ht = TileHeight(TILE_ADD(start_tile, ToTileIndexDiff(heightdiff_line_by_dir[style_t + 1])));
+			uint ht = TileHeight(TILE_ADD(start_tile, ToTileIndexDiff(heightdiff_line_by_dir[style_t + 1])));
 			h0 = max(h0, ht);
 
 			/* Use lookup table for end-tile based on HighLightStyle direction
