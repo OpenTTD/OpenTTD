@@ -55,33 +55,39 @@ enum SmallMapWindowWidgets {
 static int _smallmap_industry_count; ///< Number of used industries
 
 /** Macro for ordinary entry of LegendAndColour */
-#define MK(a, b) {a, b, INVALID_INDUSTRYTYPE, true, false, false}
-/** Macro for an entry with configurable colour. */
-#define MC(b) MK(0, b)
+#define MK(a, b) {a, b, {INVALID_INDUSTRYTYPE}, true, false, false}
+
+/** Macro for a height legend entry with configurable colour. */
+#define MC(height)  {0, STR_TINY_BLACK_HEIGHT, {height}, true, false, false}
+
 /** Macro for end of list marker in arrays of LegendAndColour */
-#define MKEND() {0, STR_NULL, INVALID_INDUSTRYTYPE, true, true, false}
+#define MKEND() {0, STR_NULL, {INVALID_INDUSTRYTYPE}, true, true, false}
+
 /** Macro for break marker in arrays of LegendAndColour.
  * It will have valid data, though */
-#define MS(a, b) {a, b, INVALID_INDUSTRYTYPE, true, false, true}
+#define MS(a, b) {a, b, {INVALID_INDUSTRYTYPE}, true, false, true}
 
 /** Structure for holding relevant data for legends in small map */
 struct LegendAndColour {
-	uint8 colour;      ///< colour of the item on the map
-	StringID legend;   ///< string corresponding to the coloured item
-	IndustryType type; ///< type of industry
-	bool show_on_map;  ///< for filtering industries, if true is shown on map in colour
-	bool end;          ///< this is the end of the list
-	bool col_break;    ///< perform a break and go one column further
+	uint8 colour;              ///< Colour of the item on the map.
+	StringID legend;           ///< String corresponding to the coloured item.
+	union {
+		IndustryType type; ///< Type of industry.
+		uint8 height;      ///< Height in tiles.
+	} u;
+	bool show_on_map;          ///< For filtering industries, if \c true, industry is shown on the map in colour.
+	bool end;                  ///< This is the end of the list.
+	bool col_break;            ///< Perform a column break and go further at the next column.
 };
 
 /** Legend text giving the colours to look for on the minimap */
 static LegendAndColour _legend_land_contours[] = {
 	/* The colours for the following values are set at BuildLandLegend() based on each colour scheme. */
-	MC(STR_TINY_BLACK_HEIGHT),
-	MC(STR_TINY_BLACK_HEIGHT),
-	MC(STR_TINY_BLACK_HEIGHT),
-	MC(STR_TINY_BLACK_HEIGHT),
-	MC(STR_TINY_BLACK_HEIGHT),
+	MC(0),
+	MC(4),
+	MC(8),
+	MC(12),
+	MC(14),
 
 	MS(0xD7, STR_SMALLMAP_LEGENDA_ROADS),
 	MK(0x0A, STR_SMALLMAP_LEGENDA_RAILROADS),
@@ -165,7 +171,7 @@ void BuildIndustriesLegend()
 		if (indsp->enabled) {
 			_legend_from_industries[j].legend = indsp->name;
 			_legend_from_industries[j].colour = indsp->map_colour;
-			_legend_from_industries[j].type = ind;
+			_legend_from_industries[j].u.type = ind;
 			_legend_from_industries[j].show_on_map = true;
 			_legend_from_industries[j].col_break = false;
 			_legend_from_industries[j].end = false;
@@ -271,11 +277,9 @@ static const SmallMapColourScheme _heightmap_schemes[] = {
 
 void BuildLandLegend()
 {
-	_legend_land_contours[0].colour = _heightmap_schemes[_settings_client.gui.smallmap_land_colour].height_colours[0];
-	_legend_land_contours[1].colour = _heightmap_schemes[_settings_client.gui.smallmap_land_colour].height_colours[4];
-	_legend_land_contours[2].colour = _heightmap_schemes[_settings_client.gui.smallmap_land_colour].height_colours[8];
-	_legend_land_contours[3].colour = _heightmap_schemes[_settings_client.gui.smallmap_land_colour].height_colours[12];
-	_legend_land_contours[4].colour = _heightmap_schemes[_settings_client.gui.smallmap_land_colour].height_colours[14];
+	for (LegendAndColour *lc = _legend_land_contours; lc->legend == STR_TINY_BLACK_HEIGHT; lc++) {
+		lc->colour = _heightmap_schemes[_settings_client.gui.smallmap_land_colour].height_colours[lc->u.height];
+	}
 }
 
 struct AndOr {
@@ -1093,7 +1097,7 @@ public:
 						/* Industry name must be formatted, since it's not in tiny font in the specs.
 						 * So, draw with a parameter and use the STR_SMALLMAP_INDUSTRY string, which is tiny font */
 						SetDParam(0, tbl->legend);
-						SetDParam(1, Industry::GetIndustryTypeCount(tbl->type));
+						SetDParam(1, Industry::GetIndustryTypeCount(tbl->u.type));
 						if (!tbl->show_on_map) {
 							/* Simply draw the string, not the black border of the legend colour.
 							 * This will enforce the idea of the disabled item */
@@ -1103,9 +1107,8 @@ public:
 							GfxFillRect(x + blob_left, y + 1, x + blob_right, y + row_height - 1, 0); // Outer border of the legend colour
 						}
 					} else {
-						if (this->map_type == SMT_CONTOUR) {
-							SetDParam(0, (tbl - _legend_table[this->map_type] + 1) * 100);
-						}
+						if (this->map_type == SMT_CONTOUR) SetDParam(0, tbl->u.height * 100);
+
 						/* Anything that is not an industry is using normal process */
 						GfxFillRect(x + blob_left, y + 1, x + blob_right, y + row_height - 1, 0);
 						DrawString(x + text_left, x + text_right, y, tbl->legend);
