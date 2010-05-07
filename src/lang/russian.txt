@@ -2015,7 +2015,7 @@ STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Загр
 STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Запрашиваем файлы...
 STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Сейчас скачивается {STRING} ({NUM} из {NUM})
 STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Загрузка завершена
-STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} из {BYTES} скачано ({NUM} %)
+STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} из {BYTES} загружено ({NUM}%)
 
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Не удалось соединиться с сервером контента...
@@ -2586,7 +2586,7 @@ STR_NEWGRF_ERROR_READ_BOUNDS                                    :Данные в
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Осторожно!
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Вы модифицируете запущенную игру - это может привести к нестабильной работе.{}Вы действительно хотите это сделать?
 
-STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Невозможно добавить файл - дублируются GRF ID
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Невозможно добавить файл: дублируются GRF ID
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Соответствующий файл не найден (загружен совместимый GRF)
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Вместо отсутствующих загружены совместимые файлы NewGRF

@@ -1172,19 +1172,26 @@ STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Tá tíl
 
 STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Uasleathadh stáisún: {ORANGE}{STRING} {RED}Rabhadh: Cuireann socrú ard moill leis an gcluiche
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Déan seirbhísiú ar héileacaptair ag héileapadanna go huathoibríoch: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Ceangail an barra uirlisí tírdhreacha leis na barraí uirlisí iarnróid/bóíthre/uisce/aerfort: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Dath na talún a úsáidtear sa léarscáil bheag: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Uaine
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Ciaruaine
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Corcairghorm
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}Aisiompaigh an treo scrollaithe: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}Scrollú mín do na fuinneoga amhairc: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}Taispeáin leid uirlise tomhais agu uirlisí tógála áirithe in úsáid: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}Taispeáin libhréithe na gcuideachtaí: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Ná taispeáin
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Do chuideachta féin
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :Gach cuideachta
+STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :{LTBLUE}Tús áite do chomhrá foirne le <ENTER>: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Feidhm an rotha scrollaithe: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Zúmáil an léarscáil
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Scrollaigh an léarscáil
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :As
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Luas roth scrollaithe an léarscáil: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}Aithris deaschliceála: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Ordú+Cliceáil
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+Cliceáil
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :As
