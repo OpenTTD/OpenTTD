@@ -18,6 +18,8 @@
 #include "window_type.h"
 #include "tile_type.h"
 
+static const int TILE_HEIGHT_STEP = 50; ///< One Z unit tile height difference is displayed as 50m.
+
 void SetSelectionRed(bool);
 
 void DeleteWindowViewport(Window *w);

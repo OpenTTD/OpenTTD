@@ -2170,7 +2170,8 @@ static bool SwapDirection(HighLightStyle style, TileIndex start_tile, TileIndex 
 }
 
 /** Calculates height difference between one tile and another.
- * Multiplies the result to suit the standard given by minimap - 50 meters high
+ * Multiplies the result to suit the standard given by #TILE_HEIGHT_STEP.
+ *
  * To correctly get the height difference we need the direction we are dragging
  * in, as well as with what kind of tool we are dragging. For example a horizontal
  * autorail tool that starts in bottom and ends at the top of a tile will need the
@@ -2249,8 +2250,7 @@ static int CalcHeightdiff(HighLightStyle style, uint distance, TileIndex start_t
 	}
 
 	if (swap) Swap(h0, h1);
-	/* Minimap shows height in intervals of 50 meters, let's do the same */
-	return (int)(h1 - h0) * 50;
+	return (int)(h1 - h0) * TILE_HEIGHT_STEP;
 }
 
 static const StringID measure_strings_length[] = {STR_NULL, STR_MEASURE_LENGTH, STR_MEASURE_LENGTH_HEIGHTDIFF};

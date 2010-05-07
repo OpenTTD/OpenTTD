@@ -1107,7 +1107,7 @@ public:
 							GfxFillRect(x + blob_left, y + 1, x + blob_right, y + row_height - 1, 0); // Outer border of the legend colour
 						}
 					} else {
-						if (this->map_type == SMT_CONTOUR) SetDParam(0, tbl->u.height * 100);
+						if (this->map_type == SMT_CONTOUR) SetDParam(0, tbl->u.height * TILE_HEIGHT_STEP);
 
 						/* Anything that is not an industry is using normal process */
 						GfxFillRect(x + blob_left, y + 1, x + blob_right, y + row_height - 1, 0);
