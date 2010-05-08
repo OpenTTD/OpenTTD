@@ -1212,7 +1212,25 @@ public:
 					/* Check if click is on industry label*/
 					int industry_pos = (column * number_of_rows) + line;
 					if (industry_pos < _smallmap_industry_count) {
-						_legend_from_industries[industry_pos].show_on_map = !_legend_from_industries[industry_pos].show_on_map;
+						if (_ctrl_pressed) {
+							/* Disable all, except the clicked one */
+							bool changes = false;
+							for (int i = 0; i != _smallmap_industry_count; i++) {
+								bool new_state = i == industry_pos;
+								if (_legend_from_industries[i].show_on_map != new_state) {
+									changes = true;
+									_legend_from_industries[i].show_on_map = new_state;
+								}
+							}
+							if (!changes) {
+								/* Nothing changed? Then show all (again). */
+								for (int i = 0; i != _smallmap_industry_count; i++) {
+									_legend_from_industries[i].show_on_map = true;
+								}
+							}
+						} else {
+							_legend_from_industries[industry_pos].show_on_map = !_legend_from_industries[industry_pos].show_on_map;
+						}
 					}
 					this->SetDirty();
 				}
