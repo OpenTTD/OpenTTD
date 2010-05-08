@@ -2101,6 +2101,13 @@ bool AfterLoadGame()
 		}
 	}
 
+	if (CheckSavegameVersion(141)) {
+		for (TileIndex t = 0; t < map_size; t++) {
+			/* Reset tropic zone for VOID tiles, they shall not have any. */
+			if (IsTileType(t, MP_VOID)) SetTropicZone(t, TROPICZONE_NORMAL);
+		}
+	}
+
 	/* Road stops is 'only' updating some caches */
 	AfterLoadRoadStops();
 	AfterLoadLabelMaps();
