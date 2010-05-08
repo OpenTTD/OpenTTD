@@ -189,19 +189,40 @@ static void TileLoopClearAlps(TileIndex tile)
 	MarkTileDirtyByTile(tile);
 }
 
+/**
+ * Tests if at least one surrounding tile is desert
+ * @param tile tile to check
+ * @return does this tile have at least one desert tile around?
+ */
+static inline bool NeighbourIsDesert(TileIndex tile)
+{
+	return GetTropicZone(tile + TileDiffXY(  1,  0)) == TROPICZONE_DESERT ||
+			GetTropicZone(tile + TileDiffXY( -1,  0)) == TROPICZONE_DESERT ||
+			GetTropicZone(tile + TileDiffXY(  0,  1)) == TROPICZONE_DESERT ||
+			GetTropicZone(tile + TileDiffXY(  0, -1)) == TROPICZONE_DESERT;
+}
+
 static void TileLoopClearDesert(TileIndex tile)
 {
-	if (IsClearGround(tile, CLEAR_DESERT)) return;
+	/* Current desert level - 0 if it is not desert */
+	uint current = 0;
+	if (IsClearGround(tile, CLEAR_DESERT)) current = GetClearDensity(tile);
 
+	/* Expected desert level - 0 if it shouldn't be desert */
+	uint expected = 0;
 	if (GetTropicZone(tile) == TROPICZONE_DESERT) {
-		SetClearGroundDensity(tile, CLEAR_DESERT, 3);
+		expected = 3;
+	} else if (NeighbourIsDesert(tile)) {
+		expected = 1;
+	}
+
+	if (current == expected) return;
+
+	if (expected == 0) {
+		SetClearGroundDensity(tile, CLEAR_GRASS, 3);
 	} else {
-		if (GetTropicZone(tile + TileDiffXY( 1,  0)) != TROPICZONE_DESERT &&
-				GetTropicZone(tile + TileDiffXY(-1,  0)) != TROPICZONE_DESERT &&
-				GetTropicZone(tile + TileDiffXY( 0,  1)) != TROPICZONE_DESERT &&
-				GetTropicZone(tile + TileDiffXY( 0, -1)) != TROPICZONE_DESERT)
-			return;
-		SetClearGroundDensity(tile, CLEAR_DESERT, 1);
+		/* Transition from clear to desert is not smooth (after clearing desert tile) */
+		SetClearGroundDensity(tile, CLEAR_DESERT, expected);
 	}
 
 	MarkTileDirtyByTile(tile);
