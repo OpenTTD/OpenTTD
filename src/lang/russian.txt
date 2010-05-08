@@ -2555,7 +2555,7 @@ STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Пред
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Двигайте спрайт, изменяя смещение по X и по Y
 STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}Смещение по X: {NUM}, Смещение по Y: {NUM}
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Выбрать спрайт
-STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Выберите любой спрайт c экрана
+STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Выберите любой спрайт на экране
 
 STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Перейти к спрайту
 
