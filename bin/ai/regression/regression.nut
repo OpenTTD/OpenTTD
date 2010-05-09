@@ -605,6 +605,8 @@ function Regression::Industry()
 	}
 	print("  Valid Industries:    " + j);
 	print("  GetIndustryCount():  " + AIIndustry.GetIndustryCount());
+	print("  GetIndustryID():     " + AIIndustry.GetIndustryID(19694));
+	print("  GetIndustryID():     " + AIIndustry.GetIndustryID(19695));
 }
 
 function Regression::IndustryList()

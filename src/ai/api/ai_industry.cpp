@@ -27,6 +27,12 @@
 	return ::Industry::IsValidID(industry_id);
 }
 
+/* static */ IndustryID AIIndustry::GetIndustryID(TileIndex tile)
+{
+	if (!::IsValidTile(tile) || !::IsTileType(tile, MP_INDUSTRY)) return INVALID_INDUSTRY;
+	return ::GetIndustryIndex(tile);
+}
+
 /* static */ char *AIIndustry::GetName(IndustryID industry_id)
 {
 	if (!IsValidIndustry(industry_id)) return NULL;

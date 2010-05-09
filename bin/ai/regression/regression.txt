@@ -6548,6 +6548,8 @@ ERROR: IsEnd() is invalid as Begin() is never called
 	   GetStockpiledCargo():      0
   Valid Industries:    71
   GetIndustryCount():  71
+  GetIndustryID():     65535
+  GetIndustryID():     0
 
 --IndustryList--
   Count():             71

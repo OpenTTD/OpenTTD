@@ -20,6 +20,7 @@
  *
  * API additions:
  * \li IsEnd for all lists.
+ * \li AIIndustry::GetIndustryID
  * \li AIRail::GetMaxSpeed
  *
  * API removals:

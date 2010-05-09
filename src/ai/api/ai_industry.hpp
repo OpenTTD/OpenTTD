@@ -37,6 +37,16 @@ public:
 	static bool IsValidIndustry(IndustryID industry_id);
 
 	/**
+	 * Get the IndustryID of a tile, if there is an industry.
+	 * @param tile The tile to find the IndustryID of.
+	 * @return IndustryID of the industry.
+	 * @post Use IsValidIndustry() to see if the industry is valid.
+	 * @note GetIndustryID will return an invalid IndustryID for the
+	 *   station tile of industries with a dock/heliport.
+	 */
+	static IndustryID GetIndustryID(TileIndex tile);
+
+	/**
 	 * Get the name of the industry.
 	 * @param industry_id The industry to get the name of.
 	 * @pre IsValidIndustry(industry_id).
