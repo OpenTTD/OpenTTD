@@ -925,19 +925,19 @@ STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Новое предприятие! {STRING} заложен{G 0 "" а о ы} возле г.{NBSP}{TOWN}!
 
 STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}Предприятие «{STRING}» объявляет о скором закрытии!
-STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}Предприятие «{STRING}» закрывается из-за проблем с поставками сырья!
+STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}«{STRING}» закрывается из-за проблем с поставками сырья!
 STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}{STRING} объявляет о закрытии в связи с недостатком деревьев в округе!
 
 STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}Создана зона евро!{}{}Теперь в вашей стране в качестве единой валюты используется евро!
 STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}Мировой спад{}{}Финансовые эксперты дают ужасные прогнозы в связи с кризисом экономики!
 STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}Спад закончился!{}{}Увеличение объёмов торговли внушает уверенность владельцам предприятий. Экономика укрепляет свои позиции.
 
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} увеличивает объёмы производства!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}Предприятие «{INDUSTRY}» увеличивает объёмы производства!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}Найден новый угольный пласт в {INDUSTRY}!{}Добыча увеличена вдвое!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}Обнаружены новые запасы нефти на {INDUSTRY}!{}Добыча увеличена вдвое!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}Внедрение новых методов позволяет поднять производство вдвое на {INDUSTRY}!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK}Предприятие «{1:INDUSTRY}» увеличивает производство {0:STRING.gen} на{NBSP}{2:COMMA}%!
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} производство упало на 50%
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}Производительность предприятия «{INDUSTRY}» упала на 50%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}{INDUSTRY}: Нашествие вредителей,{}производство упало на 50%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK}Предприятие «{1:INDUSTRY}» снижает производство {0:STRING.gen} на{NBSP}{2:COMMA}%!
 
@@ -1402,7 +1402,7 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Обс�
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Интервал обслуживания кораблей: {ORANGE}{STRING} дней/%
 STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Обслуживание кораблей: {ORANGE}не обслуживаются
 STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Не обслуживать транспорт, если отключены поломки: {ORANGE}{STRING}
-STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Использовать ограничение скорости у вагонов (если есть): {ORANGE}{STRING}
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Учитывать ограничение скорости у вагонов: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}Выключить электрифицированную железную дорогу: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Цветные газеты появляются {ORANGE}в {STRING} году
@@ -2712,8 +2712,8 @@ STR_CARGO_RATING_POOR                                           :Плохой
 STR_CARGO_RATING_MEDIOCRE                                       :Посредственный
 STR_CARGO_RATING_GOOD                                           :Хороший
 STR_CARGO_RATING_VERY_GOOD                                      :Очень хороший
-STR_CARGO_RATING_EXCELLENT                                      :Великолепный
-STR_CARGO_RATING_OUTSTANDING                                    :Отличный
+STR_CARGO_RATING_EXCELLENT                                      :Отличный
+STR_CARGO_RATING_OUTSTANDING                                    :Великолепный
 ############ range for rating ends
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Показать станцию в основном окне. Ctrl+клик - показать в дополнительном окне.
@@ -3101,10 +3101,10 @@ STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Созд
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Заставить поезд проехать на красный сигнал светофора
 
-STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Переоборудование поезда для иного типа груза
-STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Переоборуд. авто для доставки разных видов грузов.
-STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Переоборудовать корабль для перевозки других грузов
-STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Переоборудовать транспорт для других грузов
+STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Переоборудование поезда для перевозки иного типа груза
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Переоборудование автомобиля для перевозки иного типа груза
+STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Переоборудование корабля для перевозки иного типа груза
+STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Переоборудование возд. судна для перевозки иного типа груза
 
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Развернуть поезд
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Принудительно развернуть автомобиль
@@ -3149,7 +3149,7 @@ STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT               :{ORANGE}Идё�
 STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL           :{ORANGE}Идёт в гараж {TOWN}; {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT                       :{ORANGE}Идёт в док {TOWN}
 STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_VEL                   :{ORANGE}Идёт в док {TOWN}; {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR                           :{ORANGE}Летит в Ангар {STATION}
+STR_VEHICLE_STATUS_HEADING_FOR_HANGAR                           :{ORANGE}Идёт в ангар {STATION}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_VEL                       :{ORANGE}Идёт в ангар {STATION}; {VELOCITY}
 
 STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_SERVICE              :{LTBLUE}Обслуж. в депо {TOWN}
@@ -3239,14 +3239,14 @@ STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Выбе
 STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}Выберите тип груза для перевозки
 STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Выберите тип грузов для перевозки
 
-STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Переоборудовать поезда
-STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Переоборуд. авто
+STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Переоборудовать поезд
+STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Переоборудовать авто
 STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Переоборудовать корабль
 STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Переоборудовать
 
-STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Переоборудование поезда под выбранный тип груза
-STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Переоборуд авто для перевозки доступных видов грузов
-STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Переоборудовать корабль для перевозки выбранного груза
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Переоборудовать поезд для перевозки выбранного типа груза
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Переоборудовать автомобиль для перевозки выбранного типа груза
+STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Переоборудовать корабль для перевозки выбранного типа груза
 STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Переоборудовать авиатранспорт для перевозки выбранного типа груза
 
 # Order view
@@ -3284,7 +3284,7 @@ STR_ORDER_DROP_NO_UNLOADING                                     :Не разгр
 STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Изменить способ разгрузки для выделенного задания
 
 STR_ORDER_REFIT                                                 :{BLACK}Переоборудовать
-STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Выберите тип грузов для переоборудования. Ctrl+клик - для удаления.
+STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Выберите тип груза для переоборудования. Ctrl+клик - для удаления задания.
 
 STR_ORDER_SERVICE                                               :{BLACK}Обслуживание
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Всегда идти
@@ -3335,14 +3335,18 @@ STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Ехать че
 STR_ORDER_SERVICE_AT                                            :Обслуживание в
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Обслуживание без остановки в
 
-STR_ORDER_NEAREST_DEPOT                                         :ближайшее
+STR_ORDER_NEAREST_DEPOT                                         :ближайший
+STR_ORDER_NEAREST_DEPOT.dat                                     :ближайшему
 STR_ORDER_NEAREST_HANGAR                                        :ближайший ангар
+STR_ORDER_NEAREST_HANGAR.dat                                    :ближайшему ангару
 STR_ORDER_TRAIN_DEPOT                                           :депо
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :гараж
+STR_ORDER_ROAD_VEHICLE_DEPOT.dat                                :гаражу
 STR_ORDER_SHIP_DEPOT                                            :док
-STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {TOWN} {STRING}
+STR_ORDER_SHIP_DEPOT.dat                                        :доку
+STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {2:STRING} {1:TOWN}
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
-STR_ORDER_GO_TO_HANGAR_FORMAT                                   :{STRING} Ангар ({STATION})
+STR_ORDER_GO_TO_HANGAR_FORMAT                                   :{STRING} ангар ({STATION})
 
 STR_ORDER_REFIT_ORDER                                           :(Переоборуд. под {STRING.acc})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Переоборуд. под {STRING.acc} и стоп)
@@ -4250,7 +4254,7 @@ STR_FORMAT_BUOY_NAME                                            :Буй {TOWN}
 STR_FORMAT_BUOY_NAME_SERIAL                                     :Буй {TOWN} #{COMMA}
 STR_FORMAT_COMPANY_NUM                                          :(Компания {COMMA})
 STR_FORMAT_GROUP_NAME                                           :Группа {COMMA}
-STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
+STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING} {0:TOWN}
 STR_FORMAT_WAYPOINT_NAME                                        :Точка пути {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Точка пути {TOWN} #{COMMA}
 

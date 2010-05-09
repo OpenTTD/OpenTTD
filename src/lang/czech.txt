@@ -285,6 +285,9 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
+STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} stop{P a y ""}
+STR_UNITS_HEIGHT_SI                                             :{COMMA} m
+
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Vložte filtr
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Vložte klíčové slovo pro filtr seznamu
@@ -300,6 +303,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Přejmen
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Zavřít okno
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Titulek okna - tahej pro posun okna
 STR_TOOLTIP_SHADE                                               :{BLACK}Srolovat okno - zobrazit pouze jeho záhlaví
+STR_TOOLTIP_DEBUG                                               :{BLACK}Zobrazit ladící informace pro grafiky
 STR_TOOLTIP_STICKY                                              :{BLACK}Označit toto okno, aby se nedalo zavřít klávesou pro zavření všech oken
 STR_TOOLTIP_RESIZE                                              :{BLACK}Velikost okna změníš uchopením a táhnutím zde
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Přepnout velké/malé okno
@@ -511,6 +515,7 @@ STR_ABOUT_MENU_AI_DEBUG                                         :Ladění AI
 STR_ABOUT_MENU_SCREENSHOT                                       :Screenshot (Ctrl-S)
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Obrovský screenshot (Ctrl+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :O 'OpenTTD'
+STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Zarovnávání spritů
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -2429,6 +2434,32 @@ STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Přidat 
 STR_NEWGRF_ADD_RESCAN_FILES                                     :{BLACK}Načíst soubory
 STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}Znovu vytvořit seznam dostupných grafik
 
+# NewGRF inspect window
+STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Zkoumání - {STRING}
+STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Rodič
+STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Vyšetřit objekt patřící do kontextu rodiče
+
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} na {HEX}
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Druh kolejí
+
+STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Hodnota NewGRF proměnné 60+x (šestnáctkově)
+
+# Sprite aligner window
+STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Zarovávání spritu {COMMA} ({STRING})
+STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Další sprite
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Jít na další normální sprite (s grafikou), přičemž se přeskakují pseudo-/barvící/znakové sprity a při dosažení konce se jde zase na začátek.
+STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Jít na sprite
+STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Jít na daný sprite. Negrafické (pseudo-) sprity se přeskakují.
+STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Předchozí sprite
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Jít na předchozí normální sprite (s grafikou), přičemž se přeskakují pseudo-/barvící/znakové sprity a při dosažení začátku se jde na konec.
+STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Zobrazení vybraného spritu. Posun se při jeho vykreslení neuvažoval.
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Posouvání spritu změnou souřadnic X a Y
+STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}Posun X: {NUM}, posun Y: {NUM}
+STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Vybrat sprite
+STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Klikni na sprite kdekoli na obrazovce
+
+STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Jít na sprite
+
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Varování: {SILVER}{STRING}
@@ -3027,6 +3058,12 @@ STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL           :{LTBLUE}Údržb
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE                   :{LTBLUE}Údržba v hangáru {STATION}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE_VEL               :{LTBLUE}Údržba v hangáru {STATION}, {VELOCITY}
 
+# Vehicle stopped/started animations
+STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Zastaveno
+STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Zastaveno
+STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINYFONT}{GREEN}Puštěno
+STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Puštěno
+
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Detaily)
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Jméno
@@ -3299,7 +3336,12 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}Nastaven
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Změnit nastavení AI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Obnovit AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Zničit AI, znovu nahrát jeho skript a restartovat AI
+STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Povolit zastavení AI skriptu, když se v AI logu objeví daný řetězec
+STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Zastavit při:
+STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Zastavit při
+STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Když se v AI logu vyskytne tento řetězec, hra se pozastaví.
 STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Rozeznat malá/velká písmena
+STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Zabývat se velikostí písmen při hledání zastavujícího řetězce v AI logu
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Pokračovat
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Odpauzujte a pokračujte v běhu AI
 
@@ -4182,6 +4224,7 @@ STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
+STR_TINY_BLACK_HEIGHT                                           :{TINYFONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
