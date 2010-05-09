@@ -1014,7 +1014,6 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 			CompanyID old_company = _current_company;
 			_current_company = ai_debug_company;
 			AILog::LogData *log = (AILog::LogData *)AIObject::GetLogPointer();
-			_current_company = old_company;
 
 			if (log != NULL && case_sensitive_break_check?
 					strstr(log->lines[log->pos], this->edit_str_buf) != 0 :
@@ -1032,6 +1031,8 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 				/* Highlight row that matched */
 				this->highlight_row = log->pos;
 			}
+
+			_current_company = old_company;
 		}
 	}
 
