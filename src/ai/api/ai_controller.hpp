@@ -77,7 +77,7 @@ public:
 	 *   you can control that number here.
 	 * @param ticks The minimum amount of ticks to wait.
 	 * @pre Ticks should be positive. Too big values will influence performance of the AI.
-	 * @note If the number is lower then the MP setting, the MP setting wins.
+	 * @note If the number is lower than the MP setting, the MP setting wins.
 	 */
 	static void SetCommandDelay(int ticks);
 

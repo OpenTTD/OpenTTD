@@ -428,7 +428,7 @@ void AIInstance::CollectGarbage() const
  * The data itself, this differs per type:
  *  - integer: a binary representation of the integer (int32).
  *  - string:  First one byte with the string length, then a 0-terminated char
- *             array. The string can't be longer then 255 bytes (including
+ *             array. The string can't be longer than 255 bytes (including
  *             terminating '\0').
  *  - array:   All data-elements of the array are saved recursive in this
  *             format, and ended with an element of the type

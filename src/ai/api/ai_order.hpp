@@ -118,7 +118,7 @@ public:
 		ORDER_INVALID = -1,   //!< An invalid order.
 	};
 
-	/** Where to stop trains in a station that's longer then the train */
+	/** Where to stop trains in a station that's longer than the train */
 	enum StopLocation {
 		STOPLOCATION_NEAR,         //!< Stop the train as soon as it's completely in the station
 		STOPLOCATION_MIDDLE,       //!< Stop the train in the middle of the station

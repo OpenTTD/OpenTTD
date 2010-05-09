@@ -183,7 +183,7 @@ static bool BinaryHeap_Push(Queue *q, void *item, int priority)
 		while (i > 1) {
 			/* Get the parent of this object (divide by 2) */
 			j = i / 2;
-			/* Is the parent bigger then the current, switch them */
+			/* Is the parent bigger than the current, switch them */
 			if (BIN_HEAP_ARR(i).priority <= BIN_HEAP_ARR(j).priority) {
 				temp = BIN_HEAP_ARR(j);
 				BIN_HEAP_ARR(j) = BIN_HEAP_ARR(i);
