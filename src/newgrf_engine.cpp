@@ -374,6 +374,7 @@ static inline const Vehicle *GRV(const ResolverObject *object)
 		case VSG_SCOPE_SELF: return object->u.vehicle.self;
 		case VSG_SCOPE_PARENT: return object->u.vehicle.parent;
 		case VSG_SCOPE_RELATIVE: {
+			if (object->u.vehicle.self == NULL) return NULL;
 			const Vehicle *v = NULL;
 			switch (GB(object->count, 6, 2)) {
 				default: NOT_REACHED();
