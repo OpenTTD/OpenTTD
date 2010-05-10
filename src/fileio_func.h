@@ -87,6 +87,14 @@ public:
 	virtual bool AddFile(const char *filename, size_t basepath_length) = 0;
 };
 
+/** Helper for scanning for files with tar as extension */
+class TarScanner : FileScanner {
+public:
+	/* virtual */ bool AddFile(const char *filename, size_t basepath_length);
+
+	/** Do the scan for Tars. */
+	static uint DoScan();
+};
 
 /* Implementation of opendir/readdir/closedir for Windows */
 #if defined(WIN32)

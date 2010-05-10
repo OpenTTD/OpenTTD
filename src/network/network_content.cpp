@@ -27,7 +27,6 @@
 #include <zlib.h>
 #endif
 
-extern bool TarListAddFile(const char *filename);
 extern bool HasScenario(const ContentInfo *ci, bool md5sum);
 ClientNetworkContentSocketHandler _network_content_client;
 
@@ -498,7 +497,8 @@ void ClientNetworkContentSocketHandler::AfterDownload()
 	if (GunzipFile(this->curInfo)) {
 		unlink(GetFullFilename(this->curInfo, true));
 
-		TarListAddFile(GetFullFilename(this->curInfo, false));
+		TarScanner ts;
+		ts.AddFile(GetFullFilename(this->curInfo, false), 0);
 
 		if (this->curInfo->type == CONTENT_TYPE_BASE_MUSIC) {
 			/* Music can't be in a tar. So extract the tar! */
