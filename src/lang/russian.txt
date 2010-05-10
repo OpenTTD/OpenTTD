@@ -385,7 +385,7 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Площ
 
 # These are used in buttons
 STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Население
-STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Имя
+STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Название
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Дата
 # These are used in dropdowns
 STR_SORT_BY_POPULATION                                          :Население
@@ -925,7 +925,7 @@ STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Новое предприятие! {STRING} заложен{G 0 "" а о ы} возле г.{NBSP}{TOWN}!
 
 STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}Предприятие «{STRING}» объявляет о скором закрытии!
-STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}«{STRING}» закрывается из-за проблем с поставками сырья!
+STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}{STRING} закрывается из-за проблем с поставками сырья!
 STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}{STRING} объявляет о закрытии в связи с недостатком деревьев в округе!
 
 STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}Создана зона евро!{}{}Теперь в вашей стране в качестве единой валюты используется евро!
@@ -938,7 +938,7 @@ STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}Внедрение новых методов позволяет поднять производство вдвое на {INDUSTRY}!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK}Предприятие «{1:INDUSTRY}» увеличивает производство {0:STRING.gen} на{NBSP}{2:COMMA}%!
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}Производительность предприятия «{INDUSTRY}» упала на 50%
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}{INDUSTRY}: Нашествие вредителей,{}производство упало на 50%
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}{INDUSTRY} снижает производительность на 50% из-за нашествия вредителей!
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK}Предприятие «{1:INDUSTRY}» снижает производство {0:STRING.gen} на{NBSP}{2:COMMA}%!
 
 STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} ждёт в депо
@@ -1264,7 +1264,7 @@ STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Раз�
 STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Всегда полная дата в панели состояния: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Показывать светофоры на стороне движения: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Показывать финансовую статистику каждый год: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Создавать задания с меткой «без остановки»: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Создавать задания с меткой «без остановок»: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}По умолчанию поезда останавливаются {ORANGE}{STRING}{LTBLUE} станции
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :в начале
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :в середине
@@ -1362,7 +1362,7 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Исп�
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :нет
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :для своей компании
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_ALL                   :для всех компаний
-STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Использовать индикатор загрузки: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Показывать индикатор загрузки: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :нет
 STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :у своего транспорта
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :у всего транспорта
@@ -1527,7 +1527,7 @@ STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Откр
 STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Настроить сложность игры
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Показать расширенные настройки
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Показать настройки NewGRF
-STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Найти новый и обновлённый контент для скачивания
+STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Найти новый и обновлённый контент для загрузки
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Показать настройки искусственного интеллекта
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Выйти из OpenTTD
 
@@ -1800,7 +1800,7 @@ STR_NETWORK_GAME_LOBBY_PREPARE_TO_JOIN                          :{BLACK}Подг
 STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}Список компаний в игре. Вы можете присоединиться к существующей или основать новую, если есть такая возможность
 
 STR_NETWORK_GAME_LOBBY_COMPANY_INFO                             :{SILVER}ИНФОРМАЦИЯ О КОМПАНИИ
-STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}Имя компании: {WHITE}{STRING}
+STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}Название компании: {WHITE}{STRING}
 STR_NETWORK_GAME_LOBBY_INAUGURATION_YEAR                        :{SILVER}Основана: {WHITE}{NUM}
 STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}Оценочная стоимость: {WHITE}{CURRENCY}
 STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}Текущий баланс: {WHITE}{CURRENCY}
@@ -1952,7 +1952,7 @@ STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Серв
 STR_CONTENT_TITLE                                               :{WHITE}Загрузка контента
 STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Тип
 STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}Тип контента
-STR_CONTENT_NAME_CAPTION                                        :{BLACK}Имя
+STR_CONTENT_NAME_CAPTION                                        :{BLACK}Название
 STR_CONTENT_NAME_CAPTION_TOOLTIP                                :{BLACK}Наименование контента
 STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}Нажмите на строке для просмотра подробностей{}Отметьте чекбокс для загрузки
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Выбрать всё
@@ -2412,13 +2412,13 @@ STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Загр
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Кликните, чтобы перейти к текущей папке загрузки/сохранения по умолчанию
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} свободно
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Список дисков, папок и сохранённых игр
-STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Выбранное имя для сохранения игры
+STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Выбранное название для сохранения игры
 STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}Удалить
 STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}Удалить выбранную сохранённую игру
 STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Сохранить
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Сохранить игру, используя выбранное имя
 
-STR_SAVELOAD_OSKTITLE                                           :{BLACK}Введите имя сохраняемой игры
+STR_SAVELOAD_OSKTITLE                                           :{BLACK}Введите название сохраняемой игры
 
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Создание мира
@@ -2455,7 +2455,7 @@ STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Случ
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Вручную
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Поворот карты:
-STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Имя карты:
+STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Название карты:
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Размер:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
 
@@ -3169,7 +3169,7 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Запу
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Детали)
-STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Имя
+STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Название
 
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Переименовать поезд
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Переименовать автомобиль
@@ -3262,26 +3262,28 @@ STR_ORDERS_END_OF_ORDERS                                        :- - Конец 
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Конец общих заданий - -
 
 # Order bottom buttons
-STR_ORDER_NON_STOP                                              :{BLACK}Без остановки
-STR_ORDER_GO_TO                                                 :Идти на
-STR_ORDER_GO_NON_STOP_TO                                        :Идти без остановки на
+STR_ORDER_NON_STOP                                              :{BLACK}Без остановок
+STR_ORDER_GO_TO                                                 :Идти в
+STR_ORDER_GO_TO.dat                                             :Идти к
+STR_ORDER_GO_NON_STOP_TO                                        :Идти без остановок в
+STR_ORDER_GO_NON_STOP_TO.dat                                    :Идти без остановок к
 STR_ORDER_GO_VIA                                                :Идти через
-STR_ORDER_GO_NON_STOP_VIA                                       :Идти без остановки через
-STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Изменить способ остановки для выделенного задания
+STR_ORDER_GO_NON_STOP_VIA                                       :Идти без остановок через
+STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Изменить режим остановок при выполнении выделенного задания
 
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Полн. загр. любым грузом
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Погрузить, если доступно
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Полная загрузка всего груза
 STR_ORDER_DROP_FULL_LOAD_ANY                                    :Полная загрузка любым грузом
 STR_ORDER_DROP_NO_LOADING                                       :Не грузиться
-STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Изменить способ погрузки для выделенного задания
+STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Изменить способ погрузки на указанной станции
 
 STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Выгрузить всё
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Разгрузиться, если груз принимается
 STR_ORDER_DROP_UNLOAD                                           :Выгрузить всё
 STR_ORDER_DROP_TRANSFER                                         :Передать
 STR_ORDER_DROP_NO_UNLOADING                                     :Не разгружаться
-STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Изменить способ разгрузки для выделенного задания
+STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Изменить способ разгрузки на указанной станции
 
 STR_ORDER_REFIT                                                 :{BLACK}Переоборудовать
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Выберите тип груза для переоборудования. Ctrl+клик - для удаления задания.
@@ -3319,7 +3321,7 @@ STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Пере
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Удалить
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Удалить выделенное задание
 
-STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Ехать
+STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Следовать
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Идти к ближайшему депо
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Идти к ближайшему ангару
 STR_ORDER_CONDITIONAL                                           :Условный переход к заданию
@@ -3330,22 +3332,21 @@ STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Пока
 
 # String parts to build the order string
 STR_ORDER_GO_TO_WAYPOINT                                        :Ехать через {WAYPOINT}
-STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Ехать через {WAYPOINT} без остановки
+STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Ехать без остановок через {WAYPOINT}
 
-STR_ORDER_SERVICE_AT                                            :Обслуживание в
-STR_ORDER_SERVICE_NON_STOP_AT                                   :Обслуживание без остановки в
+STR_ORDER_SERVICE_AT                                            :Для прохождения ТО идти в
+STR_ORDER_SERVICE_AT.dat                                        :Для прохождения ТО идти к
+STR_ORDER_SERVICE_NON_STOP_AT                                   :Для прохождения ТО идти без остановок в
+STR_ORDER_SERVICE_NON_STOP_AT.dat                               :Для прохождения ТО идти без остановок к
 
 STR_ORDER_NEAREST_DEPOT                                         :ближайший
 STR_ORDER_NEAREST_DEPOT.dat                                     :ближайшему
 STR_ORDER_NEAREST_HANGAR                                        :ближайший ангар
-STR_ORDER_NEAREST_HANGAR.dat                                    :ближайшему ангару
 STR_ORDER_TRAIN_DEPOT                                           :депо
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :гараж
-STR_ORDER_ROAD_VEHICLE_DEPOT.dat                                :гаражу
 STR_ORDER_SHIP_DEPOT                                            :док
-STR_ORDER_SHIP_DEPOT.dat                                        :доку
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {2:STRING} {1:TOWN}
-STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
+STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING.dat} {STRING.dat} {STRING.dat}
 STR_ORDER_GO_TO_HANGAR_FORMAT                                   :{STRING} ангар ({STATION})
 
 STR_ORDER_REFIT_ORDER                                           :(Переоборуд. под {STRING.acc})

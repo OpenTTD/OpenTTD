@@ -594,6 +594,9 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
+STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} stopy
+STR_UNITS_HEIGHT_SI                                             :{COMMA} m
+
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Wpisz słowo filtru
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Wpisz słowo kluczowe dla listy filtru
@@ -821,6 +824,7 @@ STR_ABOUT_MENU_AI_DEBUG                                         :Odpluskwianie S
 STR_ABOUT_MENU_SCREENSHOT                                       :Zrzut ekranu (Ctrl+S)
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Gigantyczny zrzut ekranu (Ctrl+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Info o 'OpenTTD'
+STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Wyrównywanie sprite-ów
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -2754,6 +2758,7 @@ STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGFR z
 STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Dostosowanie obrazka {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Następny obrazek
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Idź do obrazka
+STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Idź do danego sprite-a. Jeśli dany sprite nie jest normalnym sprite-em, idz do następnego normalnego sprite-a
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Poprzedni obrazek
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Przedstawienie wybranego orbazka. Dostosowanie jest ignorowane podczas rysowania tego obrazka
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Poruszaj obrazkiem, zmieniając przesunięcia X i Y
@@ -4563,6 +4568,7 @@ STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
+STR_TINY_BLACK_HEIGHT                                           :{TINYFONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
