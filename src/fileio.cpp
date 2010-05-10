@@ -448,16 +448,21 @@ void FioCreateDirectory(const char *name)
  * It does not add the path separator to zero-sized strings.
  * @param buf    string to append the separator to
  * @param buflen the length of the buf
+ * @return true iff the operation succeeded
  */
-void AppendPathSeparator(char *buf, size_t buflen)
+bool AppendPathSeparator(char *buf, size_t buflen)
 {
 	size_t s = strlen(buf);
 
 	/* Length of string + path separator + '\0' */
-	if (s != 0 && buf[s - 1] != PATHSEPCHAR && s + 2 < buflen) {
+	if (s != 0 && buf[s - 1] != PATHSEPCHAR) {
+		if (s + 2 >= buflen) return false;
+
 		buf[s]     = PATHSEPCHAR;
 		buf[s + 1] = '\0';
 	}
+
+	return true;
 }
 
 /**
@@ -1109,7 +1114,7 @@ static uint ScanPath(FileScanner *fs, const char *extension, const char *path, s
 			/* Directory */
 			if (!recursive) continue;
 			if (strcmp(d_name, ".") == 0 || strcmp(d_name, "..") == 0) continue;
-			AppendPathSeparator(filename, lengthof(filename));
+			if (!AppendPathSeparator(filename, lengthof(filename))) continue;
 			num += ScanPath(fs, extension, filename, basepath_length, recursive);
 		} else if (S_ISREG(sb.st_mode)) {
 			/* File */
@@ -1196,6 +1201,6 @@ uint FileScanner::Scan(const char *extension, const char *directory, bool recurs
 {
 	char path[MAX_PATH];
 	strecpy(path, directory, lastof(path));
-	AppendPathSeparator(path, lengthof(path));
+	if (!AppendPathSeparator(path, lengthof(path))) return 0;
 	return ScanPath(this, extension, path, strlen(path), recursive);
 }
