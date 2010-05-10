@@ -92,17 +92,20 @@ bool FiosGetDiskFreeSpace(const char *path, uint64 *tot)
 bool FiosIsValidFile(const char *path, const struct dirent *ent, struct stat *sb)
 {
 	char filename[MAX_PATH];
-
+	int res;
 #if defined(__MORPHOS__) || defined(__AMIGAOS__)
 	/* On MorphOS or AmigaOS paths look like: "Volume:directory/subdirectory" */
 	if (FiosIsRoot(path)) {
-		snprintf(filename, lengthof(filename), "%s:%s", path, ent->d_name);
+		res = snprintf(filename, lengthof(filename), "%s:%s", path, ent->d_name);
 	} else // XXX - only next line!
 #else
 	assert(path[strlen(path) - 1] == PATHSEPCHAR);
 	if (strlen(path) > 2) assert(path[strlen(path) - 2] != PATHSEPCHAR);
 #endif
-	snprintf(filename, lengthof(filename), "%s%s", path, ent->d_name);
+	res = snprintf(filename, lengthof(filename), "%s%s", path, ent->d_name);
+
+	/* Could we fully concatenate the path and filename? */
+	if (res >= (int)lengthof(filename) || res < 0) return false;
 
 	return stat(filename, sb) == 0;
 }
