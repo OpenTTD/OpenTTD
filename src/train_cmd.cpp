@@ -2118,14 +2118,32 @@ static void CheckNextTrainTile(Train *v)
 	/* Don't do any look-ahead if path_backoff_interval is 255. */
 	if (_settings_game.pf.path_backoff_interval == 255) return;
 
-	/* Exit if we reached our destination depot or are inside a depot. */
-	if ((v->tile == v->dest_tile && v->current_order.IsType(OT_GOTO_DEPOT)) || v->track == TRACK_BIT_DEPOT) return;
+	/* Exit if we are inside a depot. */
+	if (v->track == TRACK_BIT_DEPOT) return;
+
+	switch (v->current_order.GetType()) {
+		/* Exit if we reached our destination depot. */
+		case OT_GOTO_DEPOT:
+			if (v->tile == v->dest_tile) return;
+			break;
+
+		case OT_GOTO_WAYPOINT:
+			/* If we reached our waypoint, make sure we see that. */
+			if (IsRailWaypointTile(v->tile) && GetStationIndex(v->tile) == v->current_order.GetDestination()) ProcessOrders(v);
+			break;
+
+		case OT_NOTHING:
+		case OT_LEAVESTATION:
+		case OT_LOADING:
+			/* Exit if the current order doesn't have a destination, but the train has orders. */
+			if (v->GetNumOrders() > 0) return;
+			break;
+
+		default:
+			break;
+	}
 	/* Exit if we are on a station tile and are going to stop. */
 	if (IsRailStationTile(v->tile) && v->current_order.ShouldStopAtStation(v, GetStationIndex(v->tile))) return;
-	/* If we reached our waypoint, make sure we see that. */
-	if (v->current_order.IsType(OT_GOTO_WAYPOINT) && IsRailWaypointTile(v->tile) && GetStationIndex(v->tile) == v->current_order.GetDestination()) ProcessOrders(v);
-	/* Exit if the current order doesn't have a destination, but the train has orders. */
-	if ((v->current_order.IsType(OT_NOTHING) || v->current_order.IsType(OT_LEAVESTATION) || v->current_order.IsType(OT_LOADING)) && v->GetNumOrders() > 0) return;
 
 	Trackdir td = v->GetVehicleTrackdir();
 
