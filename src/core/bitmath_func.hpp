@@ -307,6 +307,31 @@ static FORCEINLINE T ROR(const T x, const uint8 n)
 }
 
 /**
+ * Do an operation for each set bit in a value.
+ *
+ * This macros is used to do an operation for each set
+ * bit in a variable. The second parameter is a
+ * variable that is used as the bit position counter.
+ * The fourth parameter is an expression of the bits
+ * we need to iterate over. This expression will be
+ * evaluated once.
+ *
+ * @param Tbitpos_type Type of the position counter variable.
+ * @param bitpos_var   The position counter variable.
+ * @param Tbitset_type Type of the bitset value.
+ * @param bitset_value The bitset value which we check for bits.
+ *
+ * @see FOR_EACH_SET_BIT
+ */
+#define FOR_EACH_SET_BIT_EX(Tbitpos_type, bitpos_var, Tbitset_type, bitset_value) \
+	for (                                                                           \
+		Tbitset_type ___FESBE_bits = (bitpos_var = (Tbitpos_type)0, bitset_value);    \
+		___FESBE_bits != (Tbitset_type)0;                                             \
+		___FESBE_bits = (Tbitset_type)(___FESBE_bits >> 1), bitpos_var++              \
+	)                                                                               \
+		if ((___FESBE_bits & 1) != 0)
+
+/**
  * Do an operation for each set set bit in a value.
  *
  * This macros is used to do an operation for each set
@@ -316,13 +341,10 @@ static FORCEINLINE T ROR(const T x, const uint8 n)
  * we need to iterate over. This expression will be
  * evaluated once.
  *
- * @param i The position counter
- * @param b The value which we check for set bits
+ * @param bitpos_var   The position counter variable.
+ * @param bitset_value The value which we check for set bits.
  */
-#define FOR_EACH_SET_BIT(i, b)      \
-	for (uint __FESB_bits = (i = 0, b); __FESB_bits != 0; i++, __FESB_bits >>= 1) \
-		if (__FESB_bits & 1)
-
+#define FOR_EACH_SET_BIT(bitpos_var, bitset_value) FOR_EACH_SET_BIT_EX(uint, bitpos_var, uint, bitset_value)
 
 #if defined(__APPLE__)
 	/* Make endian swapping use Apple's macros to increase speed
