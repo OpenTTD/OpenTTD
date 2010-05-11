@@ -2122,6 +2122,8 @@ static void CheckNextTrainTile(Train *v)
 	if ((v->tile == v->dest_tile && v->current_order.IsType(OT_GOTO_DEPOT)) || v->track == TRACK_BIT_DEPOT) return;
 	/* Exit if we are on a station tile and are going to stop. */
 	if (IsRailStationTile(v->tile) && v->current_order.ShouldStopAtStation(v, GetStationIndex(v->tile))) return;
+	/* If we reached our waypoint, make sure we see that. */
+	if (v->current_order.IsType(OT_GOTO_WAYPOINT) && IsRailWaypointTile(v->tile) && GetStationIndex(v->tile) == v->current_order.GetDestination()) ProcessOrders(v);
 	/* Exit if the current order doesn't have a destination, but the train has orders. */
 	if ((v->current_order.IsType(OT_NOTHING) || v->current_order.IsType(OT_LEAVESTATION) || v->current_order.IsType(OT_LOADING)) && v->GetNumOrders() > 0) return;
 
