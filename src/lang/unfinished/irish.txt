@@ -1212,8 +1212,21 @@ STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Úsáid
 STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :As
 STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Do chuideachta féin
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Gach cuideachta
+STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Cumasaigh socrú amchláir d'fheithiclí: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Taispeáin an t-amchlár i dticeanna seachas i laethanta: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Taispeáin am teacht isteach agus fágála in amchláir: {ORANGE}{STRING}
+STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Orduithe feithiclí a chruthú go scioptha: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Cineál ráille réamhshocraithe (tar éis cluiche nua/cluiche a lódáil): {ORANGE}{STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :An chéad cheann atá ar fáil
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :An cheann deiridh atá ar fáil
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Ceann is mó a úsáidtear
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Taispeáin iarnróid forchoimeádta: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Fág uirlisí tógála gníomhach i ndiaidh úsáide: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Speansais an ghrúpa i bhfuinneog airgeadais cuideachta: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Taispeáin uirlisí tógála nuar nach bhfuil aon fheithicil fheiliúnach ar fáil: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Uaslíon na dtraenacha in aghaidh an imreora: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Uaslíon na bhfeithiclí bóthair in aghaidh an imreora: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Uaslíon na n-eitleán in aghaidh an imreora: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Uaslíon na long in aghaidh an imreora: {ORANGE}{STRING}
 
@@ -1223,17 +1236,26 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Díchum
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Díchumasaigh longa don ríomhare: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Ceadaigh AIanna i gcluiche ilimreora: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}#opcodes sula gcuirtear AI ar fionraí: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Eatraimh seirbhísithe i gcéatadán: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Eatramh seirbhísithe réamhshocraithe do thraenacha: {ORANGE}{STRING} lá/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Eatramh seirbhísithe réamhshocraithe do thraenacha: {ORANGE}díchumaithe
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Eatramh seirbhísithe réamhshocraithe d'fheithiclí bóthair: {ORANGE}{STRING} lá/%
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Eatramh seirbhísithe réamhshocraithe d'fheithiclí bóthair: {ORANGE}díchumasaithe
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Eatramh seirbhísithe réamhshocraithe d'aerárthaigh: {ORANGE}{STRING}laethanta/%
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Eatramh seirbhísithe réamhshocraithe d'aerárthaigh: {ORANGE}díchumasaithe
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Eatramh seirbhísithe réamhshocraithe do longa: {ORANGE}{STRING} lá/%
+STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Eatramh seirbhísithe réamhshocraithe do longa: {ORANGE}díchumasaithe
+STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Díchumasaigh seirbhísiú nuair nach mbíonn aon bhriseadh síos: {ORANGE}{STRING}
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Cumasaigh teorainneacha luais vaigíní: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}Díchumasaigh ráillí leictreacha: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Bíonn nuacht daite ann don chéad uair in: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Bliain tosaigh: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Cumasaigh geilleagar níos míne (tuilleadh athruithe, agus iad níos lú): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Ceadaigh scaireanna a cheannach ó chuideachtaí eile: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Le linn tarraingte, cuir síos comharthaí gach: {ORANGE}{STRING} tíl
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Gach
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Leagan amach na mbóithre do bhailte nua: {ORANGE}{STRING}
@@ -1446,13 +1468,61 @@ STR_FACE_CHIN                                                   :Smig:
 STR_FACE_CHIN_TOOLTIP                                           :{BLACK}Athraigh an smig
 STR_FACE_JACKET                                                 :Seaicéad:
 STR_FACE_JACKET_TOOLTIP                                         :{BLACK}Athraigh an seaicéad
+STR_FACE_COLLAR                                                 :Bóna:
+STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}Athraigh an bóna
+STR_FACE_TIE                                                    :Carbhat:
+STR_FACE_EARRING                                                :Fáinne cluaise:
+STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Athraigh carbhat nó fáinne cluaise
 
 # Network server list
+STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Ilimreoirí
+STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK}Nasc:
+STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}Roghnaigh idir cluiche idirlín agus cluiche Líonra Achair Logánta (LAN)
+STR_NETWORK_SERVER_LIST_LAN                                     :LAN
+STR_NETWORK_SERVER_LIST_INTERNET                                :Idirlíon
+STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Ainm imreora:
+STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Seo an t-ainm faoina mbeidh imreoirí eile in ann tú a aithint
 
+STR_NETWORK_SERVER_LIST_GAME_NAME                               :{BLACK}Ainm
+STR_NETWORK_SERVER_LIST_GAME_NAME_TOOLTIP                       :{BLACK}Ainm an chluiche
+STR_NETWORK_SERVER_LIST_GENERAL_ONLINE                          :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
+STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION                         :{BLACK}Cliaint
+STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION_TOOLTIP                 :{BLACK}Cliaint ar líne / cliaint uasta{}Cuideachtaí ar líne / cuideachtaí uasta
+STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x{COMMA}
+STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Méid na léarscáile
+STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Méid léarscáile an chluiche{}Cliceáil le sortáil de réir achair
+STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Dáta
+STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Dáta reatha
+STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}Blianta
+STR_NETWORK_SERVER_LIST_YEARS_CAPTION_TOOLTIP                   :{BLACK}Achar blianta a{}bhfuil an cluiche ar rith
+STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Teanga, leagan an fhreastalaí, srl.
 
+STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Cliceáil ar chluiche ón liosta lena roghnú
+STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}An freastalaí a ndeachaidh tú isteach ann an uair deiridh:
+STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Cliceáil chun an freastalaí ina raibh tú ag imirt an uair deiridh a roghnú
 
+STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}FAISNÉIS FAOIN gCLUICHE
+STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Cliaint: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
+STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Teanga: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Tírdhreach: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Méid na léarscáile: {WHITE}{COMMA}x{COMMA}
+STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Leagan an fhreastalaí: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Seoladh an fhreastalaí: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Dáta tosaigh: {WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Dáta reatha: {WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Faoi chosaint ag pasfhocal!
+STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}FREASTALAÍ AS LÍNE
+STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}FREASTALAÍ LÁN
+STR_NETWORK_SERVER_LIST_VERSION_MISMATCH                        :{SILVER}MÍMHEAITSEÁIL LEAGAIN
+STR_NETWORK_SERVER_LIST_GRF_MISMATCH                            :{SILVER}MÍMHEAITSEÁIL NEWGRF
 
+STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Téigh isteach sa chluiche
+STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Athnuaigh an freastalaí
+STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Athnuaigh faisnéis an fhreastalaí
 
+STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Aimsigh freastalaí
+STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Cuardaigh líonra le haghaidh freastalaí
+STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Cuir freastalaí leis
 
 
 # Start new multiplayer server
@@ -1476,15 +1546,38 @@ STR_NETWORK_LANG_DANISH                                         :Danmhairgis
 # Network connecting window
 
 ############ Leave those lines in this order!!
+STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Ag nascadh..
+STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Ag údarú..
+STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Ag fanacht..
+STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Ag íoslódáil na léarscáile..
+STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Ag próiseáil sonraí..
+STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Ag clárú..
 
+STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Ag fáil faisnéis an chluiche..
+STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Ag fáil faisnéis cuideachtaí..
 ############ End of leave-in-this-order
+STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} {P ch ch ch gc c}liant romhat
+STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} íoslódáilte go dtí seo
 
+STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Dínasc
 
+STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Tá an freastalaí faoi chosaint. Iontráil pasfhocal
+STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Tá an chuideachta faoi chosaint. Iontráil pasfhocal
 
 # Network company list added strings
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Liosta na gcliant
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Féach air
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Cuideachta nua
 
 # Network client list
+STR_NETWORK_CLIENTLIST_KICK                                     :Ciceáil
+STR_NETWORK_CLIENTLIST_BAN                                      :Toirmisc
+STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Tabhair airgead
+STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Labhair le cách
+STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Labhair le cuideachta
+STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Teacht. phríobháideach
 
+STR_NETWORK_SERVER                                              :Freastalaí
 
 
 # Network set password
@@ -1554,6 +1647,7 @@ STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Tá sé
 
 # Airport construction window
 
+STR_AIRPORT_CITY                                                :Cathrach
 
 
 
@@ -1967,6 +2061,7 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}Socruith
 
 # Available AIs window
 
+STR_AI_LIST_URL                                                 :{BLACK}URL: {STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Glac leis
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Roghnaigh an AI aibhsithe

@@ -767,7 +767,7 @@ STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLAC
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Очистка пользовательской программы
 STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Сохранить настройки музыки
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Кликните по названию трека для добавления в пользовательскую программу
-STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Выберите дорожку для удаления из списка (только пользовательского)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Выберите дорожку для удаления из пользовательского списка
 
 # Highscore window
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Крупнейшие компании, достигшие {NUM} года{}({STRING} уровень сложности)
@@ -2043,7 +2043,7 @@ STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Выкл
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}Вкл
 STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Не показывать зону покрытия
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Показывать зону покрытия
-STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Принимаются: {GOLD}{STRING}
+STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Принимается: {GOLD}{STRING}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Отправляются: {GOLD}{STRING}
 
 # Join station window
@@ -2698,7 +2698,7 @@ STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({SHORT
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Принимает
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Показать список принимаемых грузов
-STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Принимаются: {WHITE}{STRING}
+STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Принимается: {WHITE}{STRING}
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Рейтинг
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Показать рейтинг станции
@@ -3342,9 +3342,12 @@ STR_ORDER_SERVICE_NON_STOP_AT.dat                               :Для прох
 STR_ORDER_NEAREST_DEPOT                                         :ближайший
 STR_ORDER_NEAREST_DEPOT.dat                                     :ближайшему
 STR_ORDER_NEAREST_HANGAR                                        :ближайший ангар
+STR_ORDER_NEAREST_HANGAR.dat                                    :ближайшему ангару
 STR_ORDER_TRAIN_DEPOT                                           :депо
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :гараж
+STR_ORDER_ROAD_VEHICLE_DEPOT.dat                                :гаражу
 STR_ORDER_SHIP_DEPOT                                            :док
+STR_ORDER_SHIP_DEPOT.dat                                        :доку
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {2:STRING} {1:TOWN}
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING.dat} {STRING.dat} {STRING.dat}
 STR_ORDER_GO_TO_HANGAR_FORMAT                                   :{STRING} ангар ({STATION})

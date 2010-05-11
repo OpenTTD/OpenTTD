@@ -2757,9 +2757,11 @@ STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGFR z
 # Sprite aligner window
 STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Dostosowanie obrazka {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Następny obrazek
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Idz do następnego sprite-a, pomijając pseudo/kolorowe/znakowe sprite-y i przenieś je na koniec
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Idź do obrazka
 STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Idź do danego sprite-a. Jeśli dany sprite nie jest normalnym sprite-em, idz do następnego normalnego sprite-a
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Poprzedni obrazek
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Idz do poprzedniego sprite-a, pomijając wszystkie pseudo/kolorowe/znakowe sprite-y i przenieś je na początek
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Przedstawienie wybranego orbazka. Dostosowanie jest ignorowane podczas rysowania tego obrazka
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Poruszaj obrazkiem, zmieniając przesunięcia X i Y
 STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}Przesunięcie X: {NUM}, Przesunięcie Y: {NUM}
