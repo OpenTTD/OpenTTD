@@ -17,6 +17,17 @@
 #include "slope_func.h"
 
 /**
+ * Iterate through each set Track in a TrackBits value.
+ * For more informations see FOR_EACH_SET_BIT_EX.
+ *
+ * @param var Loop index variable that stores fallowing set track. Must be of type Track.
+ * @param track_bits The value to iterate through (any expression).
+ *
+ * @see FOR_EACH_SET_BIT_EX
+ */
+#define FOR_EACH_SET_TRACK(var, track_bits) FOR_EACH_SET_BIT_EX(Track, var, TrackBits, track_bits)
+
+/**
  * Convert an Axis to the corresponding Track
  * AXIS_X -> TRACK_X
  * AXIS_Y -> TRACK_Y

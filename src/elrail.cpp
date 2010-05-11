@@ -429,27 +429,26 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 	SpriteID wire_base = GetWireBase(ti->tile);
 
 	/* Drawing of pylons is finished, now draw the wires */
-	for (Track t = TRACK_BEGIN; t < TRACK_END; t++) {
-		if (HasBit(wireconfig[TS_HOME], t)) {
-			byte PCPconfig = HasBit(PCPstatus, PCPpositions[t][0]) +
-				(HasBit(PCPstatus, PCPpositions[t][1]) << 1);
+	Track t;
+	FOR_EACH_SET_TRACK(t, wireconfig[TS_HOME]) {
+		byte PCPconfig = HasBit(PCPstatus, PCPpositions[t][0]) +
+			(HasBit(PCPstatus, PCPpositions[t][1]) << 1);
 
-			const SortableSpriteStruct *sss;
-			int tileh_selector = !(tileh[TS_HOME] % 3) * tileh[TS_HOME] / 3; // tileh for the slopes, 0 otherwise
+		const SortableSpriteStruct *sss;
+		int tileh_selector = !(tileh[TS_HOME] % 3) * tileh[TS_HOME] / 3; // tileh for the slopes, 0 otherwise
 
-			assert(PCPconfig != 0); // We have a pylon on neither end of the wire, that doesn't work (since we have no sprites for that)
-			assert(!IsSteepSlope(tileh[TS_HOME]));
-			sss = &CatenarySpriteData[Wires[tileh_selector][t][PCPconfig]];
+		assert(PCPconfig != 0); // We have a pylon on neither end of the wire, that doesn't work (since we have no sprites for that)
+		assert(!IsSteepSlope(tileh[TS_HOME]));
+		sss = &CatenarySpriteData[Wires[tileh_selector][t][PCPconfig]];
 
-			/*
-			 * The "wire"-sprite position is inside the tile, i.e. 0 <= sss->?_offset < TILE_SIZE.
-			 * Therefore it is safe to use GetSlopeZ() for the elevation.
-			 * Also note, that the result of GetSlopeZ() is very special for bridge-ramps.
-			 */
-			AddSortableSpriteToDraw(wire_base + sss->image_offset, PAL_NONE, ti->x + sss->x_offset, ti->y + sss->y_offset,
-				sss->x_size, sss->y_size, sss->z_size, GetSlopeZ(ti->x + sss->x_offset, ti->y + sss->y_offset) + sss->z_offset,
-				IsTransparencySet(TO_CATENARY));
-		}
+		/*
+		 * The "wire"-sprite position is inside the tile, i.e. 0 <= sss->?_offset < TILE_SIZE.
+		 * Therefore it is safe to use GetSlopeZ() for the elevation.
+		 * Also note, that the result of GetSlopeZ() is very special for bridge-ramps.
+		 */
+		AddSortableSpriteToDraw(wire_base + sss->image_offset, PAL_NONE, ti->x + sss->x_offset, ti->y + sss->y_offset,
+			sss->x_size, sss->y_size, sss->z_size, GetSlopeZ(ti->x + sss->x_offset, ti->y + sss->y_offset) + sss->z_offset,
+			IsTransparencySet(TO_CATENARY));
 	}
 }
 

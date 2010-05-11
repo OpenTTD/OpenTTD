@@ -3517,11 +3517,8 @@ static void DeleteLastWagon(Train *v)
 
 		/* It is important that these two are the first in the loop, as reservation cannot deal with every trackbit combination */
 		assert(TRACK_BEGIN == TRACK_X && TRACK_Y == TRACK_BEGIN + 1);
-		for (Track t = TRACK_BEGIN; t < TRACK_END; t++) {
-			if (HasBit(remaining_trackbits, t)) {
-				TryReserveRailTrack(tile, t);
-			}
-		}
+		Track t;
+		FOR_EACH_SET_TRACK(t, remaining_trackbits) TryReserveRailTrack(tile, t);
 	}
 
 	/* check if the wagon was on a road/rail-crossing */
