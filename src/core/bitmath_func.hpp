@@ -310,16 +310,18 @@ static FORCEINLINE T ROR(const T x, const uint8 n)
  * Do an operation for each set set bit in a value.
  *
  * This macros is used to do an operation for each set
- * bit in a variable. The first variable can be reused
- * in the operation due to it's the bit position counter.
- * The second variable will be cleared during the usage
+ * bit in a variable. The first parameter is a variable
+ * that is used as the bit position counter.
+ * The second parameter is an expression of the bits
+ * we need to iterate over. This expression will be
+ * evaluated once.
  *
  * @param i The position counter
  * @param b The value which we check for set bits
  */
 #define FOR_EACH_SET_BIT(i, b)      \
-	for (i = 0; b != 0; i++, b >>= 1) \
-		if (b & 1)
+	for (uint __FESB_bits = (i = 0, b); __FESB_bits != 0; i++, __FESB_bits >>= 1) \
+		if (__FESB_bits & 1)
 
 
 #if defined(__APPLE__)

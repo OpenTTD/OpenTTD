@@ -567,7 +567,7 @@ public:
 					FOR_EACH_SET_BIT(i, this->facilities) {
 						this->RaiseWidget(i + SLW_TRAIN);
 					}
-					SetBit(this->facilities, widget - SLW_TRAIN);
+					this->facilities = 1 << (widget - SLW_TRAIN);
 					this->LowerWidget(widget);
 				}
 				this->stations.ForceRebuild();

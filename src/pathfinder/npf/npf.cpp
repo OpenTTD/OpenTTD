@@ -921,9 +921,8 @@ static void NPFFollowTrack(AyStar *aystar, OpenListNode *current)
 		TrackBits reserved = GetReservedTrackbits(dst_tile);
 		trackdirbits &= ~TrackBitsToTrackdirBits(reserved);
 
-		uint bits = TrackdirBitsToTrackBits(trackdirbits);
 		int i;
-		FOR_EACH_SET_BIT(i, bits) {
+		FOR_EACH_SET_BIT(i, TrackdirBitsToTrackBits(trackdirbits)) {
 			if (TracksOverlap(reserved | TrackToTrackBits((Track)i))) trackdirbits &= ~TrackToTrackdirBits((Track)i);
 		}
 	}
