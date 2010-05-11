@@ -944,14 +944,12 @@ static CommandCost ClearTile_Road(TileIndex tile, DoCommandFlag flags)
 
 			/* Clear the road if only one piece is on the tile OR we are not using the DC_AUTO flag */
 			if ((HasExactlyOneBit(b) && GetRoadBits(tile, ROADTYPE_TRAM) == ROAD_NONE) || !(flags & DC_AUTO)) {
-				RoadTypes rts = GetRoadTypes(tile);
 				CommandCost ret(EXPENSES_CONSTRUCTION);
-				for (RoadType rt = ROADTYPE_ROAD; rt < ROADTYPE_END; rt++) {
-					if (HasBit(rts, rt)) {
-						CommandCost tmp_ret = RemoveRoad(tile, flags, GetRoadBits(tile, rt), rt, true);
-						if (tmp_ret.Failed()) return tmp_ret;
-						ret.AddCost(tmp_ret);
-					}
+				RoadType rt;
+				FOR_EACH_SET_ROADTYPE(rt, GetRoadTypes(tile)) {
+					CommandCost tmp_ret = RemoveRoad(tile, flags, GetRoadBits(tile, rt), rt, true);
+					if (tmp_ret.Failed()) return tmp_ret;
+					ret.AddCost(tmp_ret);
 				}
 				return ret;
 			}

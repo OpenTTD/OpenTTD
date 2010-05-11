@@ -19,6 +19,17 @@
 #include "tile_type.h"
 
 /**
+ * Iterate through each set RoadType in a RoadTypes value.
+ * For more informations see FOR_EACH_SET_BIT_EX.
+ *
+ * @param var Loop index variable that stores fallowing set road type. Must be of type RoadType.
+ * @param road_types The value to iterate through (any expression).
+ *
+ * @see FOR_EACH_SET_BIT_EX
+ */
+#define FOR_EACH_SET_ROADTYPE(var, road_types) FOR_EACH_SET_BIT_EX(RoadType, var, RoadTypes, road_types)
+
+/**
  * Whether the given roadtype is valid.
  * @param rt the roadtype to check for validness
  * @return true if and only if valid
