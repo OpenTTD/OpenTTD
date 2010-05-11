@@ -45,18 +45,18 @@ static int DrawCargoListText(uint32 cargo_mask, const Rect &r, StringID prefix)
 	char string[512];
 	char *b = string;
 
-	for (CargoID i = 0; i < NUM_CARGO; i++) {
+	CargoID i;
+	FOR_EACH_SET_CARGO_ID(i, cargo_mask) {
 		if (b >= lastof(string) - (1 + 2 * 4)) break; // ',' or ' ' and two calls to Utf8Encode()
-		if (HasBit(cargo_mask, i)) {
-			if (first) {
-				first = false;
-			} else {
-				/* Add a comma if this is not the first item */
-				*b++ = ',';
-				*b++ = ' ';
-			}
-			b = InlineString(b, CargoSpec::Get(i)->name);
+
+		if (first) {
+			first = false;
+		} else {
+			/* Add a comma if this is not the first item */
+			*b++ = ',';
+			*b++ = ' ';
 		}
+		b = InlineString(b, CargoSpec::Get(i)->name);
 	}
 
 	/* If first is still true then no cargo is accepted */
@@ -288,8 +288,8 @@ protected:
 	{
 		Money diff = 0;
 
-		for (CargoID j = 0; j < NUM_CARGO; j++) {
-			if (!HasBit(cargo_filter, j)) continue;
+		CargoID j;
+		FOR_EACH_SET_CARGO_ID(j, cargo_filter) {
 			if (!(*a)->goods[j].cargo.Empty()) diff += GetTransportedGoodsIncome((*a)->goods[j].cargo.Count(), 20, 50, j);
 			if (!(*b)->goods[j].cargo.Empty()) diff -= GetTransportedGoodsIncome((*b)->goods[j].cargo.Count(), 20, 50, j);
 		}
@@ -303,8 +303,8 @@ protected:
 		byte maxr1 = 0;
 		byte maxr2 = 0;
 
-		for (CargoID j = 0; j < NUM_CARGO; j++) {
-			if (!HasBit(cargo_filter, j)) continue;
+		CargoID j;
+		FOR_EACH_SET_CARGO_ID(j, cargo_filter) {
 			if (HasBit((*a)->goods[j].acceptance_pickup, GoodsEntry::PICKUP)) maxr1 = max(maxr1, (*a)->goods[j].rating);
 			if (HasBit((*b)->goods[j].acceptance_pickup, GoodsEntry::PICKUP)) maxr2 = max(maxr2, (*b)->goods[j].rating);
 		}
@@ -351,9 +351,9 @@ public:
 		this->InitNested(desc, window_number);
 		this->owner = (Owner)this->window_number;
 
-		for (uint i = 0; i < NUM_CARGO; i++) {
-			const CargoSpec *cs = CargoSpec::Get(i);
-			if (cs->IsValid() && HasBit(this->cargo_filter, i)) this->LowerWidget(SLW_CARGOSTART + i);
+		CargoID cid;
+		FOR_EACH_SET_CARGO_ID(cid, this->cargo_filter) {
+			if (CargoSpec::Get(cid)->IsValid()) this->LowerWidget(SLW_CARGOSTART + cid);
 		}
 
 		if (this->cargo_filter == this->cargo_filter_max) this->cargo_filter = _cargo_mask;
