@@ -964,6 +964,10 @@ static const SpriteID SPR_CNST1_TOWNHOUSE_06_V1               = 1444;
 static const SpriteID SPR_CNST2_TOWNHOUSE_06_V1               = 1445;
 static const SpriteID SPR_BUILD_TOWNHOUSE_06_V1               = 1446; // 1st variation
 static const SpriteID SPR_GRND_TOWNHOUSE_06_V1                = 1447;
+static const SpriteID SPR_GRND_STADIUM_N                      = 1479, //stadium ground at north
+static const SpriteID SPR_GRND_STADIUM_E                      = 1480, //stadium ground at east
+static const SpriteID SPR_GRND_STADIUM_W                      = 1481, //stadium ground at west
+static const SpriteID SPR_GRND_STADIUM_S                      = 1482, //stadium ground at south
 static const SpriteID SPR_CNST1_TOWNHOUSE_06_V2               = 1501; // used as ground, but is stage1
 static const SpriteID SPR_CNST1_TOWNHOUSE_06_V2_P             = 1502; // pipes extensions for previous
 static const SpriteID SPR_CNST2_TOWNHOUSE_06_V2_G             = 1503; // Ground of cnst stage 2
@@ -989,6 +993,8 @@ static const SpriteID SPR_BUILD_SHOPOFFICE_0E                 = 1463;
 static const SpriteID SPR_CNST1_SHOPOFFICE_0F                 = 1464;
 static const SpriteID SPR_CNST2_SHOPOFFICE_0F                 = 1465;
 static const SpriteID SPR_BUILD_SHOPOFFICE_0F                 = 1466;
+static const SpriteID SPR_GRND_TOWNHOUSE_TOY1                 = 4675;
+static const SpriteID SPR_GRND_TOWNHOUSE_TOY2                 = 4676;
 
 /* Easter egg/disaster sprites */
 static const SpriteID SPR_BLIMP                  = 3905; // Zeppelin
