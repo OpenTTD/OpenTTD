@@ -4060,8 +4060,11 @@ STR_FORMAT_WAYPOINT_NAME                                        :{TOWN} Waypoint
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN} Waypoint #{COMMA}
 
 STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} Train Depot
+STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} Train Depot #{COMMA}
 STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} Road Vehicle Depot
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} Road Vehicle Depot #{COMMA}
 STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} Ship Depot
+STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} Ship Depot #{COMMA}
 STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{STATION} Hangar
 
 STR_UNKNOWN_STATION                                             :unknown station

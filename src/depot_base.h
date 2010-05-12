@@ -19,8 +19,11 @@ typedef Pool<Depot, DepotID, 64, 64000> DepotPool;
 extern DepotPool _depot_pool;
 
 struct Depot : DepotPool::PoolItem<&_depot_pool> {
+	Town *town;
+	const char *name;
+
 	TileIndex xy;
-	TownID town_index;
+	uint16 town_cn;    ///< The Nth depot for this town (consecutive number)
 
 	Depot(TileIndex xy = INVALID_TILE) : xy(xy) {}
 	~Depot();
@@ -28,6 +31,17 @@ struct Depot : DepotPool::PoolItem<&_depot_pool> {
 	static FORCEINLINE Depot *GetByTile(TileIndex tile)
 	{
 		return Depot::Get(GetDepotIndex(tile));
+	}
+
+	/**
+	 * Is the "type" of depot the same as the given depot,
+	 * i.e. are both a rail, road or ship depots?
+	 * @param d The depot to compare to.
+	 * @return true iff their types are equal.
+	 */
+	FORCEINLINE bool IsOfType(const Depot *d) const
+	{
+		return GetTileType(d->xy) == GetTileType(this->xy);
 	}
 };
 

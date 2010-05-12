@@ -11,14 +11,20 @@
 
 #include "../stdafx.h"
 #include "../depot_base.h"
+#include "../town.h"
 
 #include "saveload.h"
 
+static TownID _town_index;
+
 static const SaveLoad _depot_desc[] = {
-	SLE_CONDVAR(Depot, xy,         SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
-	SLE_CONDVAR(Depot, xy,         SLE_UINT32,                 6, SL_MAX_VERSION),
-	    SLE_VAR(Depot, town_index, SLE_UINT16),
-	SLE_END()
+	 SLE_CONDVAR(Depot, xy,         SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
+	 SLE_CONDVAR(Depot, xy,         SLE_UINT32,                 6, SL_MAX_VERSION),
+	SLEG_CONDVAR(_town_index,       SLE_UINT16,                 0, 140),
+	 SLE_CONDREF(Depot, town,       REF_TOWN,                 141, SL_MAX_VERSION),
+	 SLE_CONDVAR(Depot, town_cn,    SLE_UINT16,               141, SL_MAX_VERSION),
+	 SLE_CONDSTR(Depot, name,       SLE_STR, 0,               141, SL_MAX_VERSION),
+	 SLE_END()
 };
 
 static void Save_DEPT()
@@ -38,9 +44,22 @@ static void Load_DEPT()
 	while ((index = SlIterateArray()) != -1) {
 		Depot *depot = new (index) Depot();
 		SlObject(depot, _depot_desc);
+
+		/* Set the town 'pointer' so we can restore it later. */
+		if (CheckSavegameVersion(141)) depot->town = (Town *)_town_index;
+	}
+}
+
+static void Ptrs_DEPT()
+{
+	Depot *depot;
+
+	FOR_ALL_DEPOTS(depot) {
+		SlObject(depot, _depot_desc);
+		if (CheckSavegameVersion(141)) depot->town = Town::Get((size_t)depot->town);
 	}
 }
 
 extern const ChunkHandler _depot_chunk_handlers[] = {
-	{ 'DEPT', Save_DEPT, Load_DEPT, NULL, CH_ARRAY | CH_LAST},
+	{ 'DEPT', Save_DEPT, Load_DEPT, Ptrs_DEPT, CH_ARRAY | CH_LAST},
 };

@@ -909,10 +909,10 @@ CommandCost CmdBuildRoadDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 
 	if (flags & DC_EXEC) {
 		Depot *dep = new Depot(tile);
-		dep->town_index = ClosestTownFromTile(tile, UINT_MAX)->index;
 
 		MakeRoadDepot(tile, _current_company, dep->index, dir, rt);
 		MarkTileDirtyByTile(tile);
+		MakeDefaultName(dep);
 	}
 	cost.AddCost(_price[PR_BUILD_DEPOT_ROAD]);
 	return cost;

@@ -662,7 +662,7 @@ static bool LoadOldDepot(LoadgameState *ls, int num)
 	if (!LoadChunk(ls, d, depot_chunk)) return false;
 
 	if (d->xy != 0) {
-		d->town_index = RemapTownIndex(_old_town_index);
+		d->town = Town::Get(RemapTownIndex(_old_town_index));
 	} else {
 		delete d;
 	}

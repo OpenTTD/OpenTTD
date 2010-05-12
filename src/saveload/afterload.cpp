@@ -2106,6 +2106,14 @@ bool AfterLoadGame()
 			/* Reset tropic zone for VOID tiles, they shall not have any. */
 			if (IsTileType(t, MP_VOID)) SetTropicZone(t, TROPICZONE_NORMAL);
 		}
+
+		/* We need to properly number/name the depots.
+		 * The first step is making sure none of the depots uses the
+		 * 'default' names, after that we can assign the names. */
+		Depot *d;
+		FOR_ALL_DEPOTS(d) d->town_cn = UINT16_MAX;
+
+		FOR_ALL_DEPOTS(d) MakeDefaultName(d);
 	}
 
 	/* Road stops is 'only' updating some caches */
