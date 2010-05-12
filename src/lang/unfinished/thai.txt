@@ -1564,10 +1564,6 @@ STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}เป�
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}เปลี่ยนชื่อชนิดของเครื่องบิน
 
 # Depot window
-STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}{TOWN} โรงเก็บรถไฟ
-STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} โรงรถ
-STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} โรงเก็บเรือ
-STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} โรงเก็บเครื่องบิน
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}

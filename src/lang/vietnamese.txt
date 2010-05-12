@@ -2766,10 +2766,6 @@ STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Đổi t
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Đổi tên kiểu máy bay
 
 # Depot window
-STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}Xưởng tàu hoả {TOWN}
-STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}Xưởng ôtô {TOWN}
-STR_DEPOT_SHIP_CAPTION                                          :{WHITE}Xưởng tàu thuỷ {TOWN}
-STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}Xưởng máy bay {STATION}
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -2949,23 +2945,7 @@ STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Không 
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Nhắm tới {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Nhắm tới {WAYPOINT}, {VELOCITY}
 
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT                      :{ORANGE}Nhắm tới xưởng {TOWN}
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_VEL                  :{ORANGE}Nhắm tới xưởng {TOWN}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT               :{ORANGE}Nhắm tới xưởng {TOWN}
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL           :{ORANGE}Nhắm tới xưởng {TOWN}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT                       :{ORANGE}Nhắm tới xưởng {TOWN}
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_VEL                   :{ORANGE}Nhắm tới xưởng {TOWN}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR                           :{ORANGE}Nhắm tới xưởng {STATION}
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_VEL                       :{ORANGE}Nhắm tới xưởng {STATION}, {VELOCITY}
 
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_SERVICE              :{LTBLUE}Bảo trì tại xưởng {TOWN}
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL          :{LTBLUE}Bảo trì tại xưởng {TOWN}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE       :{LTBLUE}Bảo trì tại xưởng {TOWN}
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL   :{LTBLUE}Bảo trì tại xưởng {TOWN}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE               :{LTBLUE}Bảo trì tại xưởng {TOWN}
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL           :{LTBLUE}Bảo trì tại xưởng {TOWN}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE                   :{LTBLUE}Bảo trì tại xưởng {STATION}
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE_VEL               :{LTBLUE}Bảo trì tại xưởng {STATION}, {VELOCITY}
 
 # Vehicle stopped/started animations
 STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Đã dừng
@@ -3144,9 +3124,7 @@ STR_ORDER_NEAREST_HANGAR                                        :xưởng tại 
 STR_ORDER_TRAIN_DEPOT                                           :Xưởng tàu hoả
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Xưởng ôtô
 STR_ORDER_SHIP_DEPOT                                            :Xưởng tàu thuỷ
-STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {TOWN} ({STRING})
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{0:STRING} {2:STRING} {1:STRING}
-STR_ORDER_GO_TO_HANGAR_FORMAT                                   :{STRING} Xưởng {STATION}
 
 STR_ORDER_REFIT_ORDER                                           :(Cải biến thành {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Cải biến thành {STRING} và dừng)

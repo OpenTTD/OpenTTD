@@ -2778,10 +2778,6 @@ STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Schëffs
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Fligertyp ëmbenennen
 
 # Depot window
-STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}{TOWN} Zuchdepot
-STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} Stroossendepot
-STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} Schëffdepot
-STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} Fligerhangar
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -2961,23 +2957,7 @@ STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Keng Op
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Um Wee fir {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Um Wee fir {WAYPOINT}, {VELOCITY}
 
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT                      :{ORANGE}Ënnerwee fir {TOWN} Zuchdepot
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_VEL                  :{ORANGE}Ënnerwee fir {TOWN} Zuchdepot, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT               :{ORANGE}Um Wee fir {TOWN} Stroossendepot
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL           :{ORANGE}Um Wee fir {TOWN} Stroossendepot, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT                       :{ORANGE}Um Wee fir {TOWN} Schëffdepot
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_VEL                   :{ORANGE}Um Wee fir {TOWN} Schëffdepot, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR                           :{ORANGE}Um Wee fir {STATION} Hangar
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_VEL                       :{ORANGE}Um Wee fir {STATION} Hangar, {VELOCITY}
 
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_SERVICE              :{LTBLUE}Revisioun am {TOWN} Zuchdepot
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL          :{LTBLUE}Revisioun am {TOWN} Zuchdepot, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE       :{LTBLUE}Revisioun am {TOWN} Stroossendepot
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL   :{LTBLUE}Revisioun am {TOWN} Stroossendepot, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE               :{LTBLUE}Revisioun am {TOWN} Schëffdepot
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL           :{LTBLUE}Revisioun am {TOWN} Schëffdepot, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE                   :{LTBLUE}Revisioun am {STATION} Hangar
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE_VEL               :{LTBLUE}Revisioun am {STATION} Hangar, {VELOCITY}
 
 # Vehicle stopped/started animations
 STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Gestoppt
@@ -3158,9 +3138,7 @@ STR_ORDER_NEAREST_HANGAR                                        :den noosten Han
 STR_ORDER_TRAIN_DEPOT                                           :Zuchdepot
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Stroossengefierter-Depot
 STR_ORDER_SHIP_DEPOT                                            :Schëffdepot
-STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {TOWN} {STRING}
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
-STR_ORDER_GO_TO_HANGAR_FORMAT                                   :{STRING} {STATION} Hangar
 
 STR_ORDER_REFIT_ORDER                                           :(Ëmbau op {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Ëmbau op {STRING} an stopen)

@@ -2781,10 +2781,6 @@ STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Nime채 l
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Nime채 lentokonetyyppi uudelleen.
 
 # Depot window
-STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}{TOWN}: veturitalli
-STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} huoltoasema
-STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN}, telakka
-STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}Lentokonehalli, {STATION}
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -2964,23 +2960,7 @@ STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Ei pys�
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Kohde: {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Kohde: {WAYPOINT}, {VELOCITY}
 
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT                      :{ORANGE}Suuntana veturitalli ({TOWN})
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_VEL                  :{ORANGE}Suuntana veturitalli ({TOWN}), {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT               :{ORANGE}Suuntana huoltoasema, {TOWN}.
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL           :{ORANGE}Suuntana huoltoasema, {TOWN}, {VELOCITY}.
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT                       :{ORANGE}Suuntana telakka, {TOWN}
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_VEL                   :{ORANGE}Suuntana telakka, {TOWN}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR                           :{ORANGE}Suuntana lentokonehalli, {STATION}
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_VEL                       :{ORANGE}Suuntana lentokonehalli, {STATION}, {VELOCITY}
 
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_SERVICE              :{LTBLUE}Huolto {TOWN} Varikko
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL          :{LTBLUE}Huolto{TOWN} Varikko, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE       :{LTBLUE}Huolto {TOWN} Varikko
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL   :{LTBLUE}Huolto {TOWN} Varikko, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE               :{LTBLUE}Huolto {TOWN} Telakka
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL           :{LTBLUE}Huolto {TOWN} Telakka, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE                   :{LTBLUE}Huolto {STATION} Halli
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE_VEL               :{LTBLUE}Huolto {STATION} Halli, {VELOCITY}
 
 # Vehicle stopped/started animations
 STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Pys채ytetty
@@ -3161,9 +3141,7 @@ STR_ORDER_NEAREST_HANGAR                                        :l채hin varikko
 STR_ORDER_TRAIN_DEPOT                                           :Junavarikko
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Varikko
 STR_ORDER_SHIP_DEPOT                                            :Varikko
-STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {TOWN} {STRING}
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
-STR_ORDER_GO_TO_HANGAR_FORMAT                                   :{STRING} aseman {STATION} lentokonehalliin
 
 STR_ORDER_REFIT_ORDER                                           :(Sovita {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Sovita rahtityypiksi {STRING} ja pys채hdy)

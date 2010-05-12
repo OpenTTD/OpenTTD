@@ -2744,10 +2744,6 @@ STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Rename s
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Rename aircraft type
 
 # Depot window
-STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}{TOWN} Train Depot
-STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} Road Vehicle Depot
-STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} Ship Depot
-STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} Aircraft Hangar
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -2927,23 +2923,7 @@ STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}No orde
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Heading for {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Heading for {WAYPOINT}, {VELOCITY}
 
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT                      :{ORANGE}Heading for {TOWN} Train Depot
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_VEL                  :{ORANGE}Heading for {TOWN} Train Depot, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT               :{ORANGE}Heading for {TOWN} Road Depot
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL           :{ORANGE}Heading for {TOWN} Road Depot, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT                       :{ORANGE}Heading for {TOWN} Ship Depot
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_VEL                   :{ORANGE}Heading for {TOWN} Ship Depot, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR                           :{ORANGE}Heading for {STATION} Hangar
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_VEL                       :{ORANGE}Heading for {STATION} Hangar, {VELOCITY}
 
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_SERVICE              :{LTBLUE}Maintenance at {TOWN} Train Depot
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL          :{LTBLUE}Maintenance at {TOWN} Train Depot, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE       :{LTBLUE}Maintenance at {TOWN} Road Depot
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL   :{LTBLUE}Maintenance at {TOWN} Road Depot, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE               :{LTBLUE}Maintenance at {TOWN} Ship Depot
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL           :{LTBLUE}Maintenance at {TOWN} Ship Depot, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE                   :{LTBLUE}Maintenance at {STATION} Hangar
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE_VEL               :{LTBLUE}Maintenance at {STATION} Hangar, {VELOCITY}
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Details)
@@ -3118,9 +3098,7 @@ STR_ORDER_NEAREST_HANGAR                                        :the nearest Han
 STR_ORDER_TRAIN_DEPOT                                           :Train Depot
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Road Vehicle Depot
 STR_ORDER_SHIP_DEPOT                                            :Ship Depot
-STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {TOWN} {STRING}
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
-STR_ORDER_GO_TO_HANGAR_FORMAT                                   :{STRING} {STATION} Hangar
 
 STR_ORDER_REFIT_ORDER                                           :(Refit to {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Refit to {STRING} and stop)

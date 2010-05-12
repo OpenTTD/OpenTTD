@@ -2845,10 +2845,6 @@ STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Pakeisti
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Pakeisti lektuvo varda
 
 # Depot window
-STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}{TOWN} Traukinių depas
-STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} Automobilių garažas
-STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} Laivu depas
-STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} Lektuvu angaras
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -3032,23 +3028,7 @@ STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Neturi 
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Juda į {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Juda į {WAYPOINT}, {VELOCITY}
 
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT                      :{ORANGE}Kursas i {TOWN} depa
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_VEL                  :{ORANGE}Kursas i {TOWN} depa, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT               :{ORANGE}Uzduotis: {TOWN} garazas
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL           :{ORANGE}Uzduotis: {TOWN} garazas, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT                       :{ORANGE}Kursas: {TOWN} laivu depas
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_VEL                   :{ORANGE}Kursas: {TOWN} laivu depas, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR                           :{ORANGE}Kursas: {STATION} angaras
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_VEL                       :{ORANGE}Kursas: {STATION} angarasangar, {VELOCITY}
 
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_SERVICE              :{LTBLUE}Servisas {TOWN} Traukiniu Depe
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL          :{LTBLUE}Servisas {TOWN} Traukiniu Depe, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE       :{LTBLUE}Servisas{TOWN} Masinu Depe
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL   :{LTBLUE}Servisas {TOWN} Masinu Depe, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE               :{LTBLUE}Servisas{TOWN} Laivu Depe
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL           :{LTBLUE}Servisas {TOWN} Laivu Depe, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE                   :{LTBLUE}Sevisas {STATION} Angare
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE_VEL               :{LTBLUE}Servisas{STATION} Angare, {VELOCITY}
 
 # Vehicle stopped/started animations
 STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Sustabdyta
@@ -3229,9 +3209,7 @@ STR_ORDER_NEAREST_HANGAR                                        :artimiausias An
 STR_ORDER_TRAIN_DEPOT                                           :Lokomotyvų depas
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Automobilių garažas
 STR_ORDER_SHIP_DEPOT                                            :Laivų statykla
-STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {TOWN} {STRING}
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
-STR_ORDER_GO_TO_HANGAR_FORMAT                                   :{STRING} {STATION} Angaras
 
 STR_ORDER_REFIT_ORDER                                           :(Keisti į {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Pertvarkyti į {STRING} ir sustoti)

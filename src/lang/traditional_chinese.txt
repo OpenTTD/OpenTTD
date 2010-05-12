@@ -2781,10 +2781,6 @@ STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}重新�
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}重新命名飛機種類
 
 # Depot window
-STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}{TOWN} 鐵路機廠
-STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} 車庫
-STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} 船塢
-STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} 機棚
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -2964,23 +2960,7 @@ STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}沒有�
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}正前往 {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}正前往 {WAYPOINT}，{VELOCITY}
 
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT                      :{ORANGE}正前往 {TOWN} 機廠
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_VEL                  :{ORANGE}正前往 {TOWN} 機廠，{VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT               :{ORANGE}正前往 {TOWN} 車庫
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL           :{ORANGE}正前往 {TOWN} 車庫，{VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT                       :{ORANGE}正前往 {TOWN} 船塢
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_VEL                   :{ORANGE}正前往 {TOWN} 船塢，{VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR                           :{ORANGE}正前往 {STATION} 機棚
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_VEL                       :{ORANGE}正前往 {STATION} 機棚，{VELOCITY}
 
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_SERVICE              :{LTBLUE}正在 {TOWN} 機廠維護中
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL          :{LTBLUE}正在 {TOWN} 機廠維護中，{VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE       :{LTBLUE}在 {TOWN} 車庫維護中
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL   :{LTBLUE}在 {TOWN} 車庫維護中，{VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE               :{LTBLUE}正在 {TOWN} 船塢維護中
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL           :{LTBLUE}正在 {TOWN} 船塢維護中，{VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE                   :{LTBLUE}在 {STATION} 機棚維護中
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE_VEL               :{LTBLUE}在 {STATION} 機棚維護中，{VELOCITY}
 
 # Vehicle stopped/started animations
 STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}已停止
@@ -3161,9 +3141,7 @@ STR_ORDER_NEAREST_HANGAR                                        :最近的機棚
 STR_ORDER_TRAIN_DEPOT                                           :機廠
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :車庫
 STR_ORDER_SHIP_DEPOT                                            :船塢
-STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {TOWN} {STRING}
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
-STR_ORDER_GO_TO_HANGAR_FORMAT                                   :{STRING} {STATION} 機棚
 
 STR_ORDER_REFIT_ORDER                                           :(改裝成 {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(裝載 {STRING} 並停止)

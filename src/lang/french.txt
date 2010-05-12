@@ -2782,10 +2782,6 @@ STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Renommer
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Renommer type d'aéronef
 
 # Depot window
-STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}{TOWN} Dépôt ferroviaire
-STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}Dépôt routier de {TOWN}
-STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} Dépôt naval
-STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}Hangar à {STATION}
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -2965,23 +2961,7 @@ STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Aucun o
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}En route pour {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}En route pour {WAYPOINT}, {VELOCITY}
 
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT                      :{ORANGE}En route pour le dépôt de {TOWN}
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_VEL                  :{ORANGE}En route pour le dépôt de {TOWN}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT               :{ORANGE}En route pour le dépôt de {TOWN}
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL           :{ORANGE}En route pour le dépôt de {TOWN}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT                       :{ORANGE}En route pour le dépôt naval de {TOWN}
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_VEL                   :{ORANGE}En route pour le dépôt naval de {TOWN}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR                           :{ORANGE}En route pour le hangar de {STATION}
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_VEL                       :{ORANGE}En route pour le hangar de {STATION}, {VELOCITY}
 
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_SERVICE              :{LTBLUE}Entretien au dépôt de {TOWN}
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL          :{LTBLUE}Entretien au dépôt de {TOWN}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE       :{LTBLUE}Entretien au dépôt de {TOWN}
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL   :{LTBLUE}Entretien au dépôt de {TOWN}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE               :{LTBLUE}Entretien au dépôt naval de {TOWN}
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL           :{LTBLUE}Entretien au dépôt naval de {TOWN}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE                   :{LTBLUE}Entretien au hangar de {STATION}
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE_VEL               :{LTBLUE}Entretien au hangar de {STATION} , {VELOCITY}
 
 # Vehicle stopped/started animations
 STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Arrêté
@@ -3162,9 +3142,7 @@ STR_ORDER_NEAREST_HANGAR                                        :hangar le plus 
 STR_ORDER_TRAIN_DEPOT                                           :dépôt ferroviaire
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :dépôt routier
 STR_ORDER_SHIP_DEPOT                                            :dépôt naval
-STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {2:STRING} de {1:TOWN}
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {2:STRING} {1:STRING}
-STR_ORDER_GO_TO_HANGAR_FORMAT                                   :{STRING} hangar de {STATION}
 
 STR_ORDER_REFIT_ORDER                                           :(Réaménager pour {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Réaménager pour {STRING} et arrêt)

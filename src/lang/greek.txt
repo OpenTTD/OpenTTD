@@ -2864,10 +2864,6 @@ STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Μετο
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Μετονομασία του τύπου αεροπλάνου
 
 # Depot window
-STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}{TOWN} Αμαξοστάσιο Τρένων
-STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} Αμαξοστάσιο Οχημάτων Δρόμου
-STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} Ναυπηγείο Πλοίων
-STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} Υπόστεγο Αεροπλάνων
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -3053,23 +3049,7 @@ STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Δεν 
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Καθ' οδόν {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Πορεία προς {WAYPOINT}, {VELOCITY}
 
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT                      :{ORANGE}Κατευθύνεται προς το αμαξοστάσιο της πόλης {TOWN}
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_VEL                  :{ORANGE}Κατευθύνεται προς το αμαξοστάσιο της πόλης {TOWN}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT               :{ORANGE}Κατευθύνεται προς το αμαξοστάσιο της πόλης {TOWN}
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL           :{ORANGE}Κατευθύνεται προς το αμαξοστάσιο της πόλης {TOWN}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT                       :{ORANGE}Κατευθύνεται προς το ναυπηγείο της πόλης {TOWN}
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_VEL                   :{ORANGE}Κατευθύνεται προς το ναυπήγειο της πόλης {TOWN}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR                           :{ORANGE}Κατευθύνεται προς το υπόστεγο του {STATION}
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_VEL                       :{ORANGE}Κατευθύνεται προς το υπόστεγο του {STATION}, {VELOCITY}
 
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_SERVICE              :{LTBLUE}Επισκευή στο αμαξοστάσιο της πόλης {TOWN}
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL          :{LTBLUE}Service στο αμαξοστάσιο της πόλης {TOWN}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE       :{LTBLUE}Service στο αμαξοστάσιο της πόλης {TOWN}
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL   :{LTBLUE}Service στο αμαξοστάσιο της πόλης {TOWN}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE               :{LTBLUE}Service στο ναυπηγείο της πόλης {TOWN}
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL           :{LTBLUE}Service στο ναυπηγείο της πόλης {TOWN}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE                   :{LTBLUE}Service στο υπόστεγο του στάθμου {STATION}
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE_VEL               :{LTBLUE}Επισκεύη στο υπόστεγο του σταθμού {STATION}, {VELOCITY}
 
 # Vehicle stopped/started animations
 STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Σταμάτησε
@@ -3250,9 +3230,7 @@ STR_ORDER_NEAREST_HANGAR                                        :το κοντι
 STR_ORDER_TRAIN_DEPOT                                           :Αμαξοστάσιο τρένων
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Αμαξοστάσιο οχημάτων
 STR_ORDER_SHIP_DEPOT                                            :Ναυπηγείο Πλοίων
-STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {TOWN} {STRING}
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
-STR_ORDER_GO_TO_HANGAR_FORMAT                                   :{STRING} {STATION} Υπόστεγο
 
 STR_ORDER_REFIT_ORDER                                           :(Μετατροπή σε {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Μετατροπή σε {STRING} και στάση)

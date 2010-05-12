@@ -1033,7 +1033,6 @@ STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Преи
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Преименувај го типот на авиони
 
 # Depot window
-STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} Авионска гаража
 
 
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Авион - кликни на авионот за информации

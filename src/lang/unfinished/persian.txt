@@ -1306,7 +1306,6 @@ STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}نام �
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}نامگذاری مجدد نوع هواپیما
 
 # Depot window
-STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION}آشیانه هواپیما
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 

@@ -2747,10 +2747,6 @@ STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Hernoem 
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Hernoem vliegtuig tipe
 
 # Depot window
-STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}{TOWN} Trein Depot
-STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} Pad Voertuig Depot
-STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} Skip Depot
-STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} Vliegtuig Hangar
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -2930,23 +2926,7 @@ STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Geen op
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Op pad na {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Op pad na {WAYPOINT}, {VELOCITY}
 
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT                      :{ORANGE}Op pad na {TOWN} Trein Depot
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_VEL                  :{ORANGE}Op pad na {TOWN} Trein Depot, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT               :{ORANGE}Op pad na {TOWN} Pad Depot
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL           :{ORANGE}Op pad na {TOWN} Pad Depot, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT                       :{ORANGE}Op pad na {TOWN} Skip Depot
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_VEL                   :{ORANGE}Op pad na {TOWN} Skip Depot, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR                           :{ORANGE}Op pad na {STATION} Hangar
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_VEL                       :{ORANGE}Op pad na {STATION} Hangar, {VELOCITY}
 
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_SERVICE              :{LTBLUE}Diens by {TOWN} Trein Depot
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL          :{LTBLUE}Diens by {TOWN} Trein Depot, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE       :{LTBLUE}Diens by {TOWN} Pad Depot
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL   :{LTBLUE}Diens by {TOWN} Pad Depot, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE               :{LTBLUE}Diens by {TOWN} Skip Depot
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL           :{LTBLUE}Diens by {TOWN} Skip Depot, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE                   :{LTBLUE}Diens by {STATION} Hangar
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE_VEL               :{LTBLUE}Diens by {STATION} Hangar, {VELOCITY}
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Aanwyse)
@@ -3121,9 +3101,7 @@ STR_ORDER_NEAREST_HANGAR                                        :die naaste Vlie
 STR_ORDER_TRAIN_DEPOT                                           :Trein Diensstasie
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Pad Voertuig Diensstasie
 STR_ORDER_SHIP_DEPOT                                            :Sleep Diensstasie
-STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {TOWN} {STRING}
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
-STR_ORDER_GO_TO_HANGAR_FORMAT                                   :{STRING} {STATION} Hangar
 
 STR_ORDER_REFIT_ORDER                                           :(Herpas na {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Herpas na {STRING} en stop)

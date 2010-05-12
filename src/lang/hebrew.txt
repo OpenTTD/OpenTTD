@@ -2777,10 +2777,6 @@ STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}החלף
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}החלף שם סוג כלי הטיס
 
 # Depot window
-STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}מוסך רכבת {TOWN}
-STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}מוסך כלי רכב {TOWN}
-STR_DEPOT_SHIP_CAPTION                                          :{WHITE}מבדוק כלי שייט {TOWN}
-STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} סככת מטוסים
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{0:ENGINE}{1:STRING}
@@ -2960,23 +2956,7 @@ STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}אין 
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}{WAYPOINT} :בדרך אל
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE} {1:VELOCITY},{0:WAYPOINT} :בדרך אל
 
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT                      :{ORANGE}בדרך אל מוסך הרכבות ב{TOWN}
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_VEL                  :{ORANGE}בדרך למוסך הרכבות {TOWN}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT               :{ORANGE}בדרך אל מוסך כלי הרכב {TOWN}
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL           :{ORANGE}בדרך אל מוסך כלי הרכב בעיר {TOWN} ,{VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT                       :{ORANGE}בדרך אל המבדוק ב{TOWN}
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_VEL                   :{ORANGE}בדרך אל המבדוק בעיר {TOWN} ,{VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR                           :{ORANGE}פונה אל סככת המטוסים ב{STATION}
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_VEL                       :{ORANGE}בדרך אל סככת המטוסים בעיר {STATION}, {VELOCITY}
 
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_SERVICE              :{LTBLUE}טיפול במוסך הרכבות {TOWN}
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL          :{LTBLUE}בשירות במוסך הרכבות {TOWN}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE       :{LTBLUE}טיפול במוסך כלי הרכב ב{TOWN}
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL   :{LTBLUE}בשירות במוסך כלי רכב של {TOWN}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE               :{LTBLUE}{TOWN} טיפול במבדוק
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL           :{LTBLUE}טיפול במבדוק {TOWN}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE                   :{LTBLUE}טיפול בסככת המטוסים {STATION}
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE_VEL               :{LTBLUE}טיפול בסככת המטוסים {STATION} , {VELOCITY}
 
 # Vehicle stopped/started animations
 
@@ -3153,9 +3133,7 @@ STR_ORDER_NEAREST_HANGAR                                        :סככת המט
 STR_ORDER_TRAIN_DEPOT                                           :מוסך רכבות
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :מוסך רכבים
 STR_ORDER_SHIP_DEPOT                                            :מבדוק ספינות
-STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {TOWN} {STRING}
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{2:STRING} {1:STRING} {0:STRING}
-STR_ORDER_GO_TO_HANGAR_FORMAT                                   :{STRING} סככת המטוסים ב{STATION}
 
 STR_ORDER_REFIT_ORDER                                           :({STRING} התאם לנשיאת)
 STR_ORDER_REFIT_STOP_ORDER                                      :(ועצור {STRING} התאם לנשיאת)

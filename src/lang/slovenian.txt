@@ -2823,10 +2823,6 @@ STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Preimenu
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Preimenuj letalo
 
 # Depot window
-STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}{TOWN} Železniška garaža
-STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} Garaža za cestna vozila
-STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} Ladijska garaža
-STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} Hangar
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -3006,23 +3002,7 @@ STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Brez uk
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Pelje proti {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Pelje proti {WAYPOINT}, {VELOCITY}
 
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT                      :{ORANGE}Pelje v {TOWN} železniško garažo
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_VEL                  :{ORANGE}Pelje v {TOWN} železniško garažo, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT               :{ORANGE}Pelje v {TOWN} cestno garažo
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL           :{ORANGE}Pelje v {TOWN} cestno garažo, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT                       :{ORANGE}Pelje v {TOWN} ladijsko garažo
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_VEL                   :{ORANGE}Pelje v {TOWN} ladijsko garažo, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR                           :{ORANGE}Na poti v {STATION} hangar
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_VEL                       :{ORANGE}Na poti v {STATION} hangar, {VELOCITY}
 
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_SERVICE              :{LTBLUE}Na servis v {TOWN} železniško garažo
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL          :{LTBLUE}Na servis v {TOWN} železniško garažo, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE       :{LTBLUE}Na servisiranje v {TOWN} cestno garažo
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL   :{LTBLUE}Na servisiranje v {TOWN} cestno garažo, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE               :{LTBLUE}Gre na servis v {TOWN} ladijsko garažo
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL           :{LTBLUE}Gre na servis v {TOWN} ladijsko garažo, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE                   :{LTBLUE}Gre na servis v {STATION} hangar
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE_VEL               :{LTBLUE}Gre na servis v {STATION} hangar, {VELOCITY}
 
 # Vehicle stopped/started animations
 STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Ustavljeno
@@ -3203,9 +3183,7 @@ STR_ORDER_NEAREST_HANGAR                                        :najbližji hang
 STR_ORDER_TRAIN_DEPOT                                           :Železniška garaža
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Cestna garaža
 STR_ORDER_SHIP_DEPOT                                            :Ladijska garaža
-STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {TOWN} {STRING}
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
-STR_ORDER_GO_TO_HANGAR_FORMAT                                   :{STRING} {STATION} hangar
 
 STR_ORDER_REFIT_ORDER                                           :(Predelaj za {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Predelava v {STRING} in zaustavitev)

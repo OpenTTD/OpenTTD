@@ -1918,7 +1918,6 @@ STR_PURCHASE_INFO_ALL_BUT                                       :Gach rud seacha
 
 
 
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE_VEL               :{LTBLUE}Seribhísiú ag Haingear {STATION}, {VELOCITY}
 
 # Vehicle stopped/started animations
 STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Stoptha

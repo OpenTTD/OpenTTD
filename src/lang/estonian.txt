@@ -2807,10 +2807,6 @@ STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Laeva t�
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Lennuki t체체binime vahetamine
 
 # Depot window
-STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}Linna {TOWN} rongidepoo
-STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}Linna {TOWN} mootors천idukidepoo
-STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} Laevaremonditehas
-STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} Lennujaama angaar
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -2990,23 +2986,7 @@ STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Sihita,
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Suudub meldepunkti: {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Suundub {WAYPOINT}, {VELOCITY}
 
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT                      :{ORANGE}Suundub linna {TOWN} rongidepoosse
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_VEL                  :{ORANGE}Suundub linna {TOWN} rongidepoosse, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT               :{ORANGE}Suundub {TOWN} garaa탑i
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL           :{ORANGE}Suundub {TOWN} garaa탑i, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT                       :{ORANGE}Suundub linna {TOWN} laevaremonditehasesse.
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_VEL                   :{ORANGE}Suundub linna {TOWN} laevaremonditehasesse, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR                           :{ORANGE}Suundub {STATION} Angaari
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_VEL                       :{ORANGE}Suundub {STATION} angaari, {VELOCITY}
 
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_SERVICE              :{LTBLUE}Hooldus linna {TOWN} raudteedepoos
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL          :{LTBLUE}Hooldus linna {TOWN} raudteedepoos, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE       :{LTBLUE}Hooldus linna {TOWN} depoos
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL   :{LTBLUE}Hooldus linna {TOWN} depoos, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE               :{LTBLUE}Hooldus linna {TOWN} laevaremonditehases.
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL           :{LTBLUE}Hooldus linna {TOWN} laevaremonditehases, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE                   :{LTBLUE}Hooldus linna {STATION} angaaris
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE_VEL               :{LTBLUE}Hooldus linna {STATION} angaaris, {VELOCITY}
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (t채psustused)
@@ -3181,9 +3161,7 @@ STR_ORDER_NEAREST_HANGAR                                        :l채him angaar
 STR_ORDER_TRAIN_DEPOT                                           :rongidepoos
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :s천idukidepoos
 STR_ORDER_SHIP_DEPOT                                            :laevaremonditehases
-STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {TOWN} {STRING}
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
-STR_ORDER_GO_TO_HANGAR_FORMAT                                   :{STRING} {STATION} angaar
 
 STR_ORDER_REFIT_ORDER                                           :(Taasseadista {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Seadista 체mber {STRING} jaoks ja peatu)

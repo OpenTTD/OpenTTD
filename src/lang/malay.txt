@@ -2736,10 +2736,6 @@ STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Namakan 
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Namakan semula jenis pesawat
 
 # Depot window
-STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}{TOWN} Depoh Keretapi
-STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} Depoh Kenderaan Jalanraya
-STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} Depoh Kapal
-STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} Hangar Pesawat
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}

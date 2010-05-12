@@ -2762,10 +2762,6 @@ STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Byt namn
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Byt namn på flygplanstyp
 
 # Depot window
-STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}{TOWN} tågdepå
-STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} Vägfordonsdepå
-STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} skeppsdepå
-STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} flygplanshangar
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -2945,23 +2941,7 @@ STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Inga or
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}På väg mot {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}På väg mot {WAYPOINT} i {VELOCITY}
 
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT                      :{ORANGE}På väg mot {TOWN}s tågdepå
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_VEL                  :{ORANGE}På väg mot {TOWN}s tågdepå, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT               :{ORANGE}På väg mot {TOWN}s vägdepå
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL           :{ORANGE}På väg mot {TOWN}s vägdepå i {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT                       :{ORANGE}På väg mot {TOWN}s Skeppsdepå
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_VEL                   :{ORANGE}På väg mot {TOWN}s Skeppsdepå i {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR                           :{ORANGE}På väg mot {STATION}s hangar
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_VEL                       :{ORANGE}På väg mot {STATION}s hangar, {VELOCITY}
 
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_SERVICE              :{LTBLUE}Service vid {TOWN}s tågdepå
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL          :{LTBLUE}Service vid {TOWN}s tågdepå, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE       :{LTBLUE}Service vid {TOWN}s vägdepå
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL   :{LTBLUE}Service vid {TOWN}s vägdepå i {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE               :{LTBLUE}Service vid {TOWN}s skeppsdepå
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL           :{LTBLUE}Service vid {TOWN}s skeppsdepå, i{VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE                   :{LTBLUE}Service vid {STATION}s hangar
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE_VEL               :{LTBLUE}Service vid {STATION}s hangar i {VELOCITY}
 
 # Vehicle stopped/started animations
 STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Stoppad
@@ -3142,9 +3122,7 @@ STR_ORDER_NEAREST_HANGAR                                        :närmaste hanga
 STR_ORDER_TRAIN_DEPOT                                           :Tågdepå
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Vägfordonsdepå
 STR_ORDER_SHIP_DEPOT                                            :Skeppsdepå
-STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {TOWN} {STRING}
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
-STR_ORDER_GO_TO_HANGAR_FORMAT                                   :{STRING} {STATION} Hangar
 
 STR_ORDER_REFIT_ORDER                                           :(Anpassa för {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Anpassa för {STRING} och stanna)

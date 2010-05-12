@@ -2750,10 +2750,6 @@ STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Omdøb s
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Ømdøb flytypen
 
 # Depot window
-STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}{TOWN} remise
-STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} værksted
-STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} skibsdok
-STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} flyhangar
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -2933,23 +2929,7 @@ STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Ingen o
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Retning mod {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Retning mod {WAYPOINT}, {VELOCITY}
 
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT                      :{ORANGE}Kører til {TOWN} remise
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_VEL                  :{ORANGE}Kører til {TOWN} remise, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT               :{ORANGE}Kører til {TOWN} værksted
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL           :{ORANGE}Kører til {TOWN} værksted, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT                       :{ORANGE}Sejler til {TOWN} skibsdok
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_VEL                   :{ORANGE}Sejler til {TOWN} skibsdok, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR                           :{ORANGE}Flyver til {STATION} hangar
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_VEL                       :{ORANGE}Flyver til {STATION} hangar, {VELOCITY}
 
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_SERVICE              :{LTBLUE}Service i {TOWN} remise
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL          :{LTBLUE}Service i {TOWN} remise, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE       :{LTBLUE}Service på {TOWN} værksted
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL   :{LTBLUE}Service på {TOWN} værksted, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE               :{LTBLUE}Service i {TOWN} skibsdok
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL           :{LTBLUE}Service i {TOWN} skibsdok, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE                   :{LTBLUE}Service i {STATION} hangar
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE_VEL               :{LTBLUE}Service i {STATION} hangar, {VELOCITY}
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Detaljer)
@@ -3124,9 +3104,7 @@ STR_ORDER_NEAREST_HANGAR                                        :den nærmeste h
 STR_ORDER_TRAIN_DEPOT                                           :Remise
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Værksted
 STR_ORDER_SHIP_DEPOT                                            :Skibsdok
-STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {TOWN} {STRING}
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
-STR_ORDER_GO_TO_HANGAR_FORMAT                                   :{STRING} {STATION} hangar
 
 STR_ORDER_REFIT_ORDER                                           :(Ombyg til {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Ombyg til {STRING} og stop)

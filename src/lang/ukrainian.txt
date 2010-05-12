@@ -2880,10 +2880,6 @@ STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Пере
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Перейменувати тип літака
 
 # Depot window
-STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}{TOWN} Залізничне депо
-STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} Гараж
-STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} Док
-STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} ангар
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -3063,23 +3059,7 @@ STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Без 
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Прямує до {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Прямує до {WAYPOINT}, {VELOCITY}
 
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT                      :{ORANGE}Прямує до {TOWN} депо
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_VEL                  :{ORANGE}Прямує до {TOWN} депо, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT               :{ORANGE}Прямує до {TOWN} дорожного депо
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL           :{ORANGE}Прямує до {TOWN} дорожного депо, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT                       :{ORANGE}Прямує до {TOWN} корабельного депо
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_VEL                   :{ORANGE}Прямує до {TOWN} корабельного депо, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR                           :{ORANGE}Летить до {STATION} ангару
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_VEL                       :{ORANGE}Летить до {STATION} ангару, {VELOCITY}
 
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_SERVICE              :{LTBLUE}Техогляд в {TOWN} депо
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL          :{LTBLUE}Техогляд в {TOWN} депо, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE       :{LTBLUE}Техогляд в {TOWN} дорожному депо
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL   :{LTBLUE}Техогляд в {TOWN} гаражі, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE               :{LTBLUE}Техогляд в {TOWN} корабельному депо
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL           :{LTBLUE}Техогляд в {TOWN} корабельному депо, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE                   :{LTBLUE}Техогляд в {STATION} ангарі
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE_VEL               :{LTBLUE}Техогляд в {STATION} ангарі, {VELOCITY}
 
 # Vehicle stopped/started animations
 
@@ -3256,9 +3236,7 @@ STR_ORDER_NEAREST_HANGAR                                        :найближ�
 STR_ORDER_TRAIN_DEPOT                                           :Залізничне депо
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Автомобільне депо
 STR_ORDER_SHIP_DEPOT                                            :Док
-STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {TOWN} {STRING}
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
-STR_ORDER_GO_TO_HANGAR_FORMAT                                   :{STRING} {STATION} Ангар
 
 STR_ORDER_REFIT_ORDER                                           :(Переобладнати до {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Переобладнати на {STRING} і зупинити)

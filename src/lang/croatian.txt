@@ -2877,10 +2877,6 @@ STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Preimenu
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Preimenuj vrstu zrakoplova
 
 # Depot window
-STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}Spremište vlakova grada {TOWN}a
-STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}Spremište cestovnih vozila grada {TOWN}a
-STR_DEPOT_SHIP_CAPTION                                          :{WHITE}Spremište brodova grada {TOWN}a
-STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} Zrakoplovni hangar
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -3060,23 +3056,7 @@ STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Nema na
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Ide prema {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Ide prema {WAYPOINT}, {VELOCITY}
 
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT                      :{ORANGE}Kreće se prema spremištu vlakova grada {TOWN}a
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_VEL                  :{ORANGE}Kreće se prema spremištu vlakova grada {TOWN}a, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT               :{ORANGE}Kreće se prema cestovnom spremištu grada {TOWN}a
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL           :{ORANGE}Kreće se prema cestovnom spremištu grada {TOWN}a, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT                       :{ORANGE}Kreće se prema spremištu brodova grada {TOWN}a
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_VEL                   :{ORANGE}Kreće se prema spremištu brodova grada {TOWN}a, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR                           :{ORANGE}Putuje prema hangaru {STATION}
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_VEL                       :{ORANGE}Putuje prema hangaru {STATION}, {VELOCITY}
 
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_SERVICE              :{LTBLUE}Servisiranje u spremištu vlakova grada {TOWN}a
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL          :{LTBLUE}Servisiranje u spremištu vlakova grada {TOWN}a, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE       :{LTBLUE}Servisiranje u cestovnom spremištu grada {TOWN}a
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL   :{LTBLUE}Servisiranje u cestovnom spremištu grada {TOWN}a, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE               :{LTBLUE}Servisiranje u spremištu brodova grada {TOWN}a
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL           :{LTBLUE}Servisiranje u spremištu brodova grada {TOWN}a, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE                   :{LTBLUE}Servisiranje u hangaru {STATION}
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE_VEL               :{LTBLUE}Servisiranje u hangaru {STATION}, {VELOCITY}
 
 # Vehicle stopped/started animations
 STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Zaustavljen
@@ -3257,9 +3237,7 @@ STR_ORDER_NEAREST_HANGAR                                        :najbliži hanga
 STR_ORDER_TRAIN_DEPOT                                           :Spremište vlakova
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Spremište cestovnih vozila
 STR_ORDER_SHIP_DEPOT                                            :Spremište brodova
-STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {TOWN} {STRING}
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
-STR_ORDER_GO_TO_HANGAR_FORMAT                                   :{STRING} {STATION} Hangar
 
 STR_ORDER_REFIT_ORDER                                           :(Prenamijeni u {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Prenamijeni u {STRING} i zaustavi se)

@@ -2735,10 +2735,6 @@ STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}船舶�
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}飛行機の名称を変更
 
 # Depot window
-STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}{TOWN}電車庫
-STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN}車庫
-STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN}造船所
-STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION}格納庫
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -2917,23 +2913,7 @@ STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}指令�
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}{WAYPOINT}へ行く
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}{WAYPOINT}へ行く、{VELOCITY}
 
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT                      :{ORANGE}{TOWN}電車庫へ行く
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_VEL                  :{ORANGE}{TOWN}電車庫へ行く、{VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT               :{ORANGE}{TOWN}車庫へ回送
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL           :{ORANGE}{TOWN}車庫へ回送、{VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT                       :{ORANGE}{TOWN}造船所へ回送
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_VEL                   :{ORANGE}{TOWN}造船所へ回送、{VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR                           :{ORANGE}{STATION}格納庫へ行く
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_VEL                       :{ORANGE}{STATION}格納庫へ行く、{VELOCITY}
 
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_SERVICE              :{LTBLUE}{TOWN}電車庫で修理
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL          :{LTBLUE}{TOWN}電車庫で修理、{VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE       :{LTBLUE}{TOWN}車庫で修理
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL   :{LTBLUE}{TOWN}車庫で修理、{VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE               :{LTBLUE}{TOWN}造船所で修理
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL           :{LTBLUE}{TOWN}造船所で修理、{VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE                   :{LTBLUE}{STATION}格納庫で修理
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE_VEL               :{LTBLUE}{STATION}格納庫で修理、{VELOCITY}
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE}（詳細）
@@ -3106,9 +3086,7 @@ STR_ORDER_NEAREST_HANGAR                                        :最も近い格
 STR_ORDER_TRAIN_DEPOT                                           :電車庫
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :車庫
 STR_ORDER_SHIP_DEPOT                                            :造船所
-STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {TOWN} {STRING}
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
-STR_ORDER_GO_TO_HANGAR_FORMAT                                   :{STRING} {STATION} 格納庫
 
 STR_ORDER_REFIT_ORDER                                           :（{STRING}に改装）
 STR_ORDER_REFIT_STOP_ORDER                                      :({STRING}に改装して、止める)

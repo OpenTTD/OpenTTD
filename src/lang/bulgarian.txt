@@ -2741,10 +2741,6 @@ STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Пром
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Сняна името на самолета
 
 # Depot window
-STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}{TOWN} Влаково депо
-STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} гараж за коли
-STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} Корабно депо
-STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} хангар за самолети
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -2924,23 +2920,7 @@ STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Без 
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Отиващ към {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Отиващ към {WAYPOINT}, {VELOCITY}
 
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT                      :{ORANGE}Отиващ към Влаковото депо на {TOWN}
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_VEL                  :{ORANGE}Отиващ към Влаковото депо на {TOWN}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT               :{ORANGE}Отиващ към Автодепото на {TOWN}
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL           :{ORANGE}Отиващ към Автодепото на {TOWN}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT                       :{ORANGE}Отиващ към Корабното депо на {TOWN}
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_VEL                   :{ORANGE}Отиващ към Корабното депо на {TOWN}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR                           :{ORANGE}Отиващ към Хангара на летище {STATION}
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_VEL                       :{ORANGE}Отиващ към Хангара на летище {STATION}, {VELOCITY}
 
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_SERVICE              :{LTBLUE}На ремонт във Влаковото депо на {TOWN}
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL          :{LTBLUE}Ремонт във Влаковото депо на {TOWN}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE       :{LTBLUE}На ремонт в Автодепото на {TOWN}
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL   :{LTBLUE}На ремонт в Автодепото на {TOWN}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE               :{LTBLUE}На ремонт в Корабното депо на {TOWN}
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL           :{LTBLUE}На ремонт в Корабното депо на {TOWN}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE                   :{LTBLUE}На ремонт в Хангара на летище {STATION}
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE_VEL               :{LTBLUE}На ремонт в Хангара на летище {STATION}, {VELOCITY}
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Подробности)
@@ -3115,9 +3095,7 @@ STR_ORDER_NEAREST_HANGAR                                        :най-близ
 STR_ORDER_TRAIN_DEPOT                                           :Депо за влакове
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Депо за пътни превозни средства
 STR_ORDER_SHIP_DEPOT                                            :Депо за кораби
-STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {TOWN} {STRING}
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
-STR_ORDER_GO_TO_HANGAR_FORMAT                                   :{STRING} {STATION} хангар
 
 STR_ORDER_REFIT_ORDER                                           :(Преустройство към {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Преоборудване на {STRING} и спиране)

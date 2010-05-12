@@ -2778,10 +2778,6 @@ STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Ubah nam
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Ubah nama jenis pesawat
 
 # Depot window
-STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}Depo Kereta {TOWN}
-STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} Bengkel Bus/truk
-STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} Galangan Kapal
-STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} Hangar Pesawat
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -2961,23 +2957,7 @@ STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Belum a
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Menuju ke {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Menuju ke {WAYPOINT}, {VELOCITY}
 
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT                      :{ORANGE}Menuju ke Depo Kereta di {TOWN}
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_VEL                  :{ORANGE}Menuju ke Depo Kereta di {TOWN}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT               :{ORANGE}Menuju ke bengkel {TOWN}
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_VEL           :{ORANGE}Menuju ke Bengkel {TOWN}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT                       :{ORANGE}Menuju ke Galangan Kapal {TOWN}
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_VEL                   :{ORANGE}Menuju ke Galangan Kapal {TOWN}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR                           :{ORANGE}Menuju ke hangar di {STATION}
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_VEL                       :{ORANGE}Menuju ke hangar di {STATION}, {VELOCITY}
 
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_SERVICE              :{LTBLUE}Servis di Depo Kereta {TOWN}
-STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL          :{LTBLUE}Servis di Depo Kereta {TOWN}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE       :{LTBLUE}Servis di Bengkel {TOWN}
-STR_VEHICLE_STATUS_HEADING_FOR_ROAD_VEHICLE_DEPOT_SERVICE_VEL   :{LTBLUE}Servis di Bengkel {TOWN}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE               :{LTBLUE}Servis di Galangan Kapal {TOWN}
-STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL           :{LTBLUE}Servis di Galangan Kapal {TOWN}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE                   :{LTBLUE}Perbaikkan di Hangar {STATION}
-STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE_VEL               :{LTBLUE}Perbaikkan di Hangar {STATION}, {VELOCITY}
 
 # Vehicle stopped/started animations
 STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Berhenti
@@ -3158,9 +3138,7 @@ STR_ORDER_NEAREST_HANGAR                                        :Hangar terdekat
 STR_ORDER_TRAIN_DEPOT                                           :Depo Kereta
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Bengkel Bus/truk
 STR_ORDER_SHIP_DEPOT                                            :Galangan Kapal
-STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{0:STRING} {2:STRING} {1:TOWN}
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{0:STRING} {2:STRING} {1:STRING}
-STR_ORDER_GO_TO_HANGAR_FORMAT                                   :{STRING} Hangar {STATION}
 
 STR_ORDER_REFIT_ORDER                                           :(Pasang ulang menjadi {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Pasang {STRING} dan berhenti)
