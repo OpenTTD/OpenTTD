@@ -500,6 +500,7 @@ table/engines.h
 table/genland.h
 table/industry_land.h
 table/landscape_sprite.h
+table/newgrf_debug_data.h
 table/palette_convert.h
 table/palettes.h
 table/pricebase.h

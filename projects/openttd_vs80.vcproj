@@ -2280,6 +2280,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\table\newgrf_debug_data.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\table\palette_convert.h"
 				>
 			</File>
