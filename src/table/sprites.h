@@ -993,8 +993,8 @@ static const SpriteID SPR_BUILD_SHOPOFFICE_0E                 = 1463;
 static const SpriteID SPR_CNST1_SHOPOFFICE_0F                 = 1464;
 static const SpriteID SPR_CNST2_SHOPOFFICE_0F                 = 1465;
 static const SpriteID SPR_BUILD_SHOPOFFICE_0F                 = 1466;
-static const SpriteID SPR_GRND_TOWNHOUSE_TOY1                 = 4675;
-static const SpriteID SPR_GRND_TOWNHOUSE_TOY2                 = 4676;
+static const SpriteID SPR_GRND_HOUSE_TOY1                     = 4675;
+static const SpriteID SPR_GRND_HOUSE_TOY2                     = 4676;
 
 /* Easter egg/disaster sprites */
 static const SpriteID SPR_BLIMP                  = 3905; // Zeppelin
