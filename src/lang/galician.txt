@@ -216,6 +216,9 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
+STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} pes
+STR_UNITS_HEIGHT_SI                                             :{COMMA} m
+
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Introducir cadea de filtrado
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Introduce unha palabra pola que filtra la lista
@@ -1852,7 +1855,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Constru�
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Construír depósito de trens (para construír e dar servizo os trens)
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Convertir raíl a punto de ruta. CTRL permite unir puntos de ruta
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construír estación de ferrocarril. CTRL permite unir estacións
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Construír sinais de ferrocaril
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Construír sinais de ferrocaril. Ctrl troca entre semáforos/sináis luminosas{}Arrastrando constrúense sinais ó longo dun tramo recto de ferrocarril. Ctrl construe sináis ata o seguinte cruce{}Ctrl+Click abre a ventana de selección
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construír ponte de ferrocaril
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construír túnel de ferocarril
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Conmutar construír/eliminar para vías, sinais e estacións. Pulsando CTRL tamén borra a vía de puntos de ruta e estacións
@@ -2479,7 +2482,7 @@ STR_CARGO_RATING_EXCELLENT                                      :Excelente
 STR_CARGO_RATING_OUTSTANDING                                    :Excepcional
 ############ range for rating ends
 
-STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centra-la vista principal na situación da estación
+STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centra a vista principal na situación da estación. Ctrl+Click abre un novo punto de vista da situación da estación
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Cambia-lo nome da estación
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Mostrar tódolos trens que teñen esta estación nas súas ordes
@@ -4065,6 +4068,7 @@ STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
+STR_TINY_BLACK_HEIGHT                                           :{TINYFONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
