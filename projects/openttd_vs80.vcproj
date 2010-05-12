@@ -1992,6 +1992,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\depot_cmd.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\disaster_cmd.cpp"
 				>
 			</File>

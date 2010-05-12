@@ -950,8 +950,13 @@ static char *FormatString(char *buff, const char *str, int64 *argv, uint casei, 
 				if (vt == VEH_AIRCRAFT) {
 					int64 temp[] = { GetInt32(&argv) };
 					buff = GetStringWithArgs(buff, STR_FORMAT_DEPOT_NAME_AIRCRAFT + vt, temp, last);
+					break;
+				}
+
+				const Depot *d = Depot::Get(GetInt32(&argv));
+				if (d->name != NULL) {
+					buff = strecpy(buff, d->name, last);
 				} else {
-					const Depot *d = Depot::Get(GetInt32(&argv));
 					int64 temp[] = { d->town->index, d->town_cn + 1 };
 					buff = GetStringWithArgs(buff, STR_FORMAT_DEPOT_NAME_TRAIN + 2 * vt + (d->town_cn == 0 ? 0 : 1), temp, last);
 				}

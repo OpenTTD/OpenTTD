@@ -53,6 +53,8 @@ enum DepotWindowWidgets {
 	DEPOT_WIDGET_BUILD,
 	DEPOT_WIDGET_CLONE,
 	DEPOT_WIDGET_LOCATION,
+	DEPOT_WIDGET_SHOW_RENAME,
+	DEPOT_WIDGET_RENAME,
 	DEPOT_WIDGET_VEHICLE_LIST,
 	DEPOT_WIDGET_STOP_ALL,
 	DEPOT_WIDGET_START_ALL,
@@ -83,6 +85,9 @@ static const NWidgetPart _nested_train_depot_widgets[] = {
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, DEPOT_WIDGET_BUILD), SetDataTip(0x0, STR_NULL), SetFill(1, 1), SetResize(1, 0),
 		NWidget(WWT_TEXTBTN, COLOUR_GREY, DEPOT_WIDGET_CLONE), SetDataTip(0x0, STR_NULL), SetFill(1, 1), SetResize(1, 0),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, DEPOT_WIDGET_LOCATION), SetDataTip(STR_BUTTON_LOCATION, STR_NULL), SetFill(1, 1), SetResize(1, 0),
+		NWidget(NWID_SELECTION, INVALID_COLOUR, DEPOT_WIDGET_SHOW_RENAME), // rename button
+			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, DEPOT_WIDGET_RENAME), SetDataTip(STR_BUTTON_RENAME, STR_DEPOT_RENAME_TOOLTIP), SetFill(1, 1), SetResize(1, 0),
+		EndContainer(),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, DEPOT_WIDGET_VEHICLE_LIST), SetDataTip(0x0, STR_NULL), SetFill(0, 1),
 		NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, DEPOT_WIDGET_STOP_ALL), SetDataTip(SPR_FLAG_VEH_STOPPED, STR_NULL), SetFill(0, 1),
 		NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, DEPOT_WIDGET_START_ALL), SetDataTip(SPR_FLAG_VEH_RUNNING, STR_NULL), SetFill(0, 1),
@@ -222,6 +227,8 @@ struct DepotWindow : Window {
 		this->type = type;
 
 		this->CreateNestedTree(desc);
+		/* Don't show 'rename button' of aircraft hangar */
+		this->GetWidget<NWidgetStacked>(DEPOT_WIDGET_SHOW_RENAME)->SetDisplayedPlane(type == VEH_AIRCRAFT ? SZSP_NONE : 0);
 		this->SetupWidgetData(type);
 		this->FinishInitNested(desc, tile);
 
@@ -689,6 +696,7 @@ struct DepotWindow : Window {
 			DEPOT_WIDGET_SELL_ALL,
 			DEPOT_WIDGET_BUILD,
 			DEPOT_WIDGET_CLONE,
+			DEPOT_WIDGET_RENAME,
 			DEPOT_WIDGET_AUTOREPLACE,
 			WIDGET_LIST_END);
 
@@ -734,6 +742,12 @@ struct DepotWindow : Window {
 				}
 				break;
 
+			case DEPOT_WIDGET_RENAME: // Rename button
+				SetDParam(0, this->type);
+				SetDParam(1, Depot::GetByTile((TileIndex)this->window_number)->index);
+				ShowQueryString(STR_DEPOT_NAME, STR_DEPOT_RENAME_DEPOT_CAPTION, MAX_LENGTH_DEPOT_NAME_BYTES, MAX_LENGTH_DEPOT_NAME_PIXELS, this, CS_ALPHANUMERAL, QSF_ENABLE_DEFAULT);
+				break;
+
 			case DEPOT_WIDGET_STOP_ALL:
 			case DEPOT_WIDGET_START_ALL:
 				DoCommandP(this->window_number, 0, this->type | (widget == DEPOT_WIDGET_START_ALL ? (1 << 5) : 0), CMD_MASS_START_STOP);
@@ -765,6 +779,14 @@ struct DepotWindow : Window {
 				break;
 
 		}
+	}
+
+	virtual void OnQueryTextFinished(char *str)
+	{
+		if (str == NULL) return;
+
+		/* Do depot renaming */
+		DoCommandP(0, GetDepotIndex(this->window_number), 0, CMD_RENAME_DEPOT | CMD_MSG(STR_ERROR_CAN_T_RENAME_DEPOT), NULL, str);
 	}
 
 	virtual void OnRightClick(Point pt, int widget)

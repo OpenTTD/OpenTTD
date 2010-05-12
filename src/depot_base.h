@@ -20,7 +20,7 @@ extern DepotPool _depot_pool;
 
 struct Depot : DepotPool::PoolItem<&_depot_pool> {
 	Town *town;
-	const char *name;
+	char *name;
 
 	TileIndex xy;
 	uint16 town_cn;    ///< The Nth depot for this town (consecutive number)

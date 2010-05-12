@@ -426,6 +426,7 @@ aircraft_cmd.cpp
 autoreplace_cmd.cpp
 clear_cmd.cpp
 company_cmd.cpp
+depot_cmd.cpp
 disaster_cmd.cpp
 dummy_land.cpp
 group_cmd.cpp

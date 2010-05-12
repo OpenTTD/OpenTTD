@@ -210,6 +210,7 @@ enum {
 	CMD_RENAME_COMPANY,               ///< change the company name
 	CMD_RENAME_PRESIDENT,             ///< change the president name
 	CMD_RENAME_STATION,               ///< rename a station
+	CMD_RENAME_DEPOT,                 ///< rename a depot
 
 	CMD_SELL_AIRCRAFT,                ///< sell an aircraft
 	CMD_BUILD_AIRCRAFT,               ///< build an aircraft

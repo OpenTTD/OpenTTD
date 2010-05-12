@@ -110,6 +110,7 @@ CommandProc CmdRenameCompany;
 CommandProc CmdRenamePresident;
 
 CommandProc CmdRenameStation;
+CommandProc CmdRenameDepot;
 
 CommandProc CmdSellAircraft;
 CommandProc CmdBuildAircraft;
@@ -260,6 +261,7 @@ static const Command _command_proc_table[] = {
 	DEF_CMD(CmdRenamePresident,                                0), // CMD_RENAME_PRESIDENT
 
 	DEF_CMD(CmdRenameStation,                                  0), // CMD_RENAME_STATION
+	DEF_CMD(CmdRenameDepot,                                    0), // CMD_RENAME_DEPOT
 
 	DEF_CMD(CmdSellAircraft,                                   0), // CMD_SELL_AIRCRAFT
 
