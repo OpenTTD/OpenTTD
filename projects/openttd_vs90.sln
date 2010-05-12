@@ -16,6 +16,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "langs", "langs_vs90.vcproj"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "version", "version_vs90.vcproj", "{1A2B3C5E-1C23-41A5-9C9B-ACBA2AA75FEC}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "generate", "generate_vs90.vcproj", "{2F31FD79-D1AC-43C4-89F3-B0D5E4E53E34}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -56,6 +58,10 @@ Global
 		{1A2B3C5E-1C23-41A5-9C9B-ACBA2AA75FEC}.Release|Win32.Build.0 = Debug|Win32
 		{1A2B3C5E-1C23-41A5-9C9B-ACBA2AA75FEC}.Release|x64.ActiveCfg = Debug|Win32
 		{1A2B3C5E-1C23-41A5-9C9B-ACBA2AA75FEC}.Release|x64.Build.0 = Debug|Win32
+		{2F31FD79-D1AC-43C4-89F3-B0D5E4E53E34}.Debug|Win32.ActiveCfg = Debug|Win32
+		{2F31FD79-D1AC-43C4-89F3-B0D5E4E53E34}.Debug|x64.ActiveCfg = Debug|Win32
+		{2F31FD79-D1AC-43C4-89F3-B0D5E4E53E34}.Release|Win32.ActiveCfg = Debug|Win32
+		{2F31FD79-D1AC-43C4-89F3-B0D5E4E53E34}.Release|x64.ActiveCfg = Debug|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
