@@ -49,6 +49,17 @@ struct Waypoint : SpecializedStation<Waypoint, true> {
 	{
 		return (this->facilities & FACIL_TRAIN) != 0 && this->train_station.w == 1 && this->train_station.h == 1;
 	}
+
+	/**
+	 * Is the "type" of waypoint the same as the given waypoint,
+	 * i.e. are both a rail waypoint or are both a buoy?
+	 * @param wp The waypoint to compare to.
+	 * @return true iff their types are equal.
+	 */
+	FORCEINLINE bool IsOfType(const Waypoint *wp) const
+	{
+		return this->string_id == wp->string_id;
+	}
 };
 
 #define FOR_ALL_WAYPOINTS(var) FOR_ALL_BASE_STATIONS_OF_TYPE(Waypoint, var)

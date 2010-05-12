@@ -44,65 +44,6 @@ void Waypoint::UpdateVirtCoord()
 }
 
 /**
- * Set the default name for a waypoint
- * @param wp Waypoint to work on
- */
-static void MakeDefaultWaypointName(Waypoint *wp)
-{
-	uint32 used = 0; // bitmap of used waypoint numbers, sliding window with 'next' as base
-	uint32 next = 0; // first waypoint number in the bitmap
-	StationID idx = 0; // index where we will stop
-
-	wp->town = ClosestTownFromTile(wp->xy, UINT_MAX);
-
-	/* Find first unused waypoint number belonging to this town. This can never fail,
-	 * as long as there can be at most 65535 waypoints in total.
-	 *
-	 * This does 'n * m' search, but with 32bit 'used' bitmap, it needs at most 'n * (1 + ceil(m / 32))'
-	 * steps (n - number of waypoints in pool, m - number of waypoints near this town).
-	 * Usually, it needs only 'n' steps.
-	 *
-	 * If it wasn't using 'used' and 'idx', it would just search for increasing 'next',
-	 * but this way it is faster */
-
-	StationID cid = 0; // current index, goes to Waypoint::GetPoolSize()-1, then wraps to 0
-	do {
-		Waypoint *lwp = Waypoint::GetIfValid(cid);
-
-		/* check only valid waypoints... */
-		if (lwp != NULL && wp != lwp) {
-			/* only waypoints with 'generic' name within the same city */
-			if (lwp->name == NULL && lwp->town == wp->town && lwp->string_id == wp->string_id) {
-				/* if lwp->town_cn < next, uint will overflow to '+inf' */
-				uint i = (uint)lwp->town_cn - next;
-
-				if (i < 32) {
-					SetBit(used, i); // update bitmap
-					if (i == 0) {
-						/* shift bitmap while the lowest bit is '1';
-						 * increase the base of the bitmap too */
-						do {
-							used >>= 1;
-							next++;
-						} while (HasBit(used, 0));
-						/* when we are at 'idx' again at end of the loop and
-						 * 'next' hasn't changed, then no waypoint had town_cn == next,
-						 * so we can safely use it */
-						idx = cid;
-					}
-				}
-			}
-		}
-
-		cid++;
-		if (cid == Waypoint::GetPoolSize()) cid = 0; // wrap to zero...
-	} while (cid != idx);
-
-	wp->town_cn = (uint16)next; // set index...
-	wp->name = NULL; // ... and use generic name
-}
-
-/**
  * Find a deleted waypoint close to a tile.
  * @param tile to search from
  * @param str  the string to get the 'type' of
@@ -295,7 +236,7 @@ CommandCost CmdBuildRailWaypoint(TileIndex start_tile, DoCommandFlag flags, uint
 		wp->string_id = STR_SV_STNAME_WAYPOINT;
 		wp->train_station = new_location;
 
-		if (wp->town == NULL) MakeDefaultWaypointName(wp);
+		if (wp->town == NULL) MakeDefaultName(wp);
 
 		wp->UpdateVirtCoord();
 
@@ -365,7 +306,7 @@ CommandCost CmdBuildBuoy(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 
 		wp->build_date = _date;
 
-		if (wp->town == NULL) MakeDefaultWaypointName(wp);
+		if (wp->town == NULL) MakeDefaultName(wp);
 
 		MakeBuoy(tile, wp->index, GetWaterClass(tile));
 
@@ -459,7 +400,8 @@ CommandCost CmdRenameWaypoint(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 		free(wp->name);
 
 		if (reset) {
-			MakeDefaultWaypointName(wp); // sets wp->name = NULL
+			wp->name = NULL;
+			MakeDefaultName(wp);
 		} else {
 			wp->name = strdup(text);
 		}
