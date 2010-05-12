@@ -62,7 +62,7 @@ enum DepotWindowWidgets {
 static const NWidgetPart _nested_train_depot_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
-		NWidget(WWT_CAPTION, COLOUR_GREY, DEPOT_WIDGET_CAPTION),
+		NWidget(WWT_CAPTION, COLOUR_GREY, DEPOT_WIDGET_CAPTION), SetDataTip(STR_DEPOT_CAPTION, STR_NULL),
 		NWidget(WWT_SHADEBOX, COLOUR_GREY),
 		NWidget(WWT_STICKYBOX, COLOUR_GREY),
 	EndContainer(),
@@ -340,14 +340,8 @@ struct DepotWindow : Window {
 
 		/* locate the depot struct */
 		TileIndex tile = this->window_number;
-		if (this->type == VEH_AIRCRAFT) {
-			SetDParam(0, GetStationIndex(tile)); // Airport name
-		} else {
-			Depot *depot = Depot::GetByTile(tile);
-			assert(depot != NULL);
-
-			SetDParam(0, depot->town_index);
-		}
+		SetDParam(0, this->type);
+		SetDParam(1, (this->type == VEH_AIRCRAFT) ? GetStationIndex(tile) : GetDepotIndex(tile));
 	}
 
 	struct GetDepotVehiclePtData {
@@ -543,7 +537,6 @@ struct DepotWindow : Window {
 	{
 		if (type != VEH_TRAIN) this->GetWidget<NWidgetCore>(DEPOT_WIDGET_SELL_CHAIN)->fill_y = 0; // Disable vertical filling of chain-sell widget for non-train windows.
 
-		this->GetWidget<NWidgetCore>(DEPOT_WIDGET_CAPTION)->widget_data   = STR_DEPOT_TRAIN_CAPTION + type;
 		this->GetWidget<NWidgetCore>(DEPOT_WIDGET_STOP_ALL)->tool_tip     = STR_DEPOT_MASS_STOP_DEPOT_TRAIN_TOOLTIP + type;
 		this->GetWidget<NWidgetCore>(DEPOT_WIDGET_START_ALL)->tool_tip    = STR_DEPOT_MASS_START_DEPOT_TRAIN_TOOLTIP + type;
 		this->GetWidget<NWidgetCore>(DEPOT_WIDGET_SELL)->tool_tip         = STR_DEPOT_TRAIN_SELL_TOOLTIP + type;
@@ -752,9 +745,10 @@ struct DepotWindow : Window {
 					TileIndex tile = this->window_number;
 					byte vehtype = this->type;
 
-					SetDParam(0, (vehtype == VEH_AIRCRAFT) ? GetStationIndex(tile) : Depot::GetByTile(tile)->town_index);
+					SetDParam(0, vehtype);
+					SetDParam(1, (vehtype == VEH_AIRCRAFT) ? GetStationIndex(tile) : GetDepotIndex(tile));
 					ShowQuery(
-						STR_DEPOT_TRAIN_CAPTION + vehtype,
+						STR_DEPOT_CAPTION,
 						STR_DEPOT_SELL_CONFIRMATION_TEXT,
 						this,
 						DepotSellAllConfirmationCallback

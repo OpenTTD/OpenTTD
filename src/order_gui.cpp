@@ -232,25 +232,19 @@ void DrawOrderString(const Vehicle *v, const Order *order, int order_index, int 
 		} break;
 
 		case OT_GOTO_DEPOT:
-			if (v->type == VEH_AIRCRAFT) {
-				if (order->GetDepotActionType() & ODATFB_NEAREST_DEPOT) {
-					SetDParam(0, STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT);
+			if (order->GetDepotActionType() & ODATFB_NEAREST_DEPOT) {
+				SetDParam(0, STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT);
+				if (v->type == VEH_AIRCRAFT) {
 					SetDParam(2, STR_ORDER_NEAREST_HANGAR);
+					SetDParam(3, STR_EMPTY);
 				} else {
-					SetDParam(0, STR_ORDER_GO_TO_HANGAR_FORMAT);
-					SetDParam(2, order->GetDestination());
-				}
-				SetDParam(3, STR_EMPTY);
-			} else {
-				if (order->GetDepotActionType() & ODATFB_NEAREST_DEPOT) {
-					SetDParam(0, STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT);
 					SetDParam(2, STR_ORDER_NEAREST_DEPOT);
-				} else {
-					SetDParam(0, STR_ORDER_GO_TO_DEPOT_FORMAT);
-					SetDParam(2, Depot::Get(order->GetDestination())->town_index);
+					SetDParam(3, STR_ORDER_TRAIN_DEPOT + v->type);
 				}
-
-				SetDParam(3, STR_ORDER_TRAIN_DEPOT + v->type);
+			} else {
+				SetDParam(0, STR_ORDER_GO_TO_DEPOT_FORMAT);
+				SetDParam(2, v->type);
+				SetDParam(3, order->GetDestination());
 			}
 
 			if (order->GetDepotOrderType() & ODTFB_SERVICE) {

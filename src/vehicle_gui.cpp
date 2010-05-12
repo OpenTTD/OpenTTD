@@ -1073,29 +1073,26 @@ public:
 			case VLW_STANDARD: // Company Name
 				SetDParam(0, STR_COMPANY_NAME);
 				SetDParam(1, index);
-				SetDParam(2, this->vscroll.GetCount());
+				SetDParam(3, this->vscroll.GetCount());
 				break;
 
 			case VLW_WAYPOINT_LIST:
 				SetDParam(0, STR_WAYPOINT_NAME);
 				SetDParam(1, index);
-				SetDParam(2, this->vscroll.GetCount());
+				SetDParam(3, this->vscroll.GetCount());
 				break;
 
 			case VLW_STATION_LIST: // Station Name
 				SetDParam(0, STR_STATION_NAME);
 				SetDParam(1, index);
-				SetDParam(2, this->vscroll.GetCount());
+				SetDParam(3, this->vscroll.GetCount());
 				break;
 
 			case VLW_DEPOT_LIST:
-				SetDParam(0, STR_DEPOT_TRAIN_CAPTION + this->vehicle_type);
-				if (this->vehicle_type == VEH_AIRCRAFT) {
-					SetDParam(1, index); // Airport name
-				} else {
-					SetDParam(1, Depot::Get(index)->town_index);
-				}
-				SetDParam(2, this->vscroll.GetCount());
+				SetDParam(0, STR_DEPOT_CAPTION);
+				SetDParam(1, this->vehicle_type);
+				SetDParam(2, index);
+				SetDParam(3, this->vscroll.GetCount());
 				break;
 			default: NOT_REACHED();
 		}
@@ -2086,19 +2083,13 @@ public:
 				} break;
 
 				case OT_GOTO_DEPOT: {
-					if (v->type == VEH_AIRCRAFT) {
-						/* Aircrafts always go to a station, even if you say depot */
-						SetDParam(0, v->current_order.GetDestination());
-						SetDParam(1, v->GetDisplaySpeed());
-					} else {
-						Depot *depot = Depot::Get(v->current_order.GetDestination());
-						SetDParam(0, depot->town_index);
-						SetDParam(1, v->GetDisplaySpeed());
-					}
+					SetDParam(0, v->type);
+					SetDParam(1, v->current_order.GetDestination());
+					SetDParam(2, v->GetDisplaySpeed());
 					if (v->current_order.GetDepotActionType() & ODATFB_HALT) {
-						str = STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT + 2 * v->type + _settings_client.gui.vehicle_speed;
+						str = STR_VEHICLE_STATUS_HEADING_FOR_DEPOT + _settings_client.gui.vehicle_speed;
 					} else {
-						str = STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_SERVICE + 2 * v->type + _settings_client.gui.vehicle_speed;
+						str = STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE + _settings_client.gui.vehicle_speed;
 					}
 				} break;
 

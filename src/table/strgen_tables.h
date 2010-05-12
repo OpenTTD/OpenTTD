@@ -101,6 +101,7 @@ static const CmdStruct _cmd_structs[] = {
 
 	{"WAYPOINT",        EmitSingleChar, SCC_WAYPOINT_NAME,      1, C_NONE | C_GENDER}, // waypoint name
 	{"STATION",         EmitSingleChar, SCC_STATION_NAME,       1, C_NONE | C_GENDER},
+	{"DEPOT",           EmitSingleChar, SCC_DEPOT_NAME,         2, C_NONE | C_GENDER},
 	{"TOWN",            EmitSingleChar, SCC_TOWN_NAME,          1, C_NONE | C_GENDER},
 	{"GROUP",           EmitSingleChar, SCC_GROUP_NAME,         1, C_NONE | C_GENDER},
 	{"SIGN",            EmitSingleChar, SCC_SIGN_NAME,          1, C_NONE | C_GENDER},
