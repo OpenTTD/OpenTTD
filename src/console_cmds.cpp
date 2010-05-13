@@ -408,12 +408,59 @@ DEF_CONSOLE_CMD(ConClearBuffer)
  **********************************/
 #ifdef ENABLE_NETWORK
 
+static bool ConKickOrBan(const char *argv, bool ban)
+{
+	const char *ip = argv;
+
+	if (strchr(argv, '.') == NULL && strchr(argv, ':') == NULL) { // banning with ID
+		ClientID client_id = (ClientID)atoi(argv);
+
+		if (client_id == CLIENT_ID_SERVER) {
+			IConsolePrintF(CC_ERROR, "ERROR: Silly boy, you can not %s yourself!", ban ? "ban" : "kick");
+			return true;
+		}
+
+		NetworkClientInfo *ci = NetworkFindClientInfoFromClientID(client_id);
+		if (ci == NULL) {
+			IConsoleError("Invalid client");
+			return true;
+		}
+
+		if (!ban) {
+			/* Kick only this client, not all clients with that IP */
+			NetworkServerKickClient(client_id);
+			return true;
+		}
+
+		/* When banning, kick+ban all clients with that IP */
+		ip = GetClientIP(ci);
+	}
+
+	uint n = NetworkServerKickOrBanIP(ip, ban);
+	if (n == 0) {
+		IConsolePrint(CC_DEFAULT, ban ? "Client not online, address added to banlist" : "Client not found");
+	} else {
+		IConsolePrintF(CC_DEFAULT, "%sed %u client(s)", ban ? "Bann" : "Kick", n);
+	}
+
+	return true;
+}
+
+DEF_CONSOLE_CMD(ConKick)
+{
+	if (argc == 0) {
+		IConsoleHelp("Kick a client from a network game. Usage: 'kick <ip | client-id>'");
+		IConsoleHelp("For client-id's, see the command 'clients'");
+		return true;
+	}
+
+	if (argc != 2) return false;
+
+	return ConKickOrBan(argv[1], false);
+}
+
 DEF_CONSOLE_CMD(ConBan)
 {
-	NetworkClientInfo *ci;
-	const char *banip = NULL;
-	ClientID client_id;
-
 	if (argc == 0) {
 		IConsoleHelp("Ban a client from a network game. Usage: 'ban <ip | client-id>'");
 		IConsoleHelp("For client-id's, see the command 'clients'");
@@ -423,39 +470,7 @@ DEF_CONSOLE_CMD(ConBan)
 
 	if (argc != 2) return false;
 
-	if (strchr(argv[1], '.') == NULL && strchr(argv[1], ':') == NULL) { // banning with ID
-		client_id = (ClientID)atoi(argv[1]);
-		ci = NetworkFindClientInfoFromClientID(client_id);
-	} else { // banning IP
-		ci = NetworkFindClientInfoFromIP(argv[1]);
-		if (ci == NULL) {
-			banip = argv[1];
-			client_id = (ClientID)-1;
-		} else {
-			client_id = ci->client_id;
-		}
-	}
-
-	if (client_id == CLIENT_ID_SERVER) {
-		IConsoleError("Silly boy, you can not ban yourself!");
-		return true;
-	}
-
-	if (client_id == INVALID_CLIENT_ID || (ci == NULL && client_id != (ClientID)-1)) {
-		IConsoleError("Invalid client");
-		return true;
-	}
-
-	if (ci != NULL) {
-		IConsolePrint(CC_DEFAULT, "Client banned");
-		banip = GetClientIP(ci);
-	} else {
-		IConsolePrint(CC_DEFAULT, "Client not online, banned IP");
-	}
-
-	NetworkServerBanIP(banip);
-
-	return true;
+	return ConKickOrBan(argv[1], true);
 }
 
 DEF_CONSOLE_CMD(ConUnBan)
@@ -607,46 +622,6 @@ DEF_CONSOLE_CMD(ConClientNickChange)
 
 	if (!NetworkServerChangeClientName(client_id, argv[2])) {
 		IConsoleError("Cannot give a client a duplicate name");
-	}
-
-	return true;
-}
-
-DEF_CONSOLE_CMD(ConKick)
-{
-	NetworkClientInfo *ci;
-	ClientID client_id;
-
-	if (argc == 0) {
-		IConsoleHelp("Kick a client from a network game. Usage: 'kick <ip | client-id>'");
-		IConsoleHelp("For client-id's, see the command 'clients'");
-		return true;
-	}
-
-	if (argc != 2) return false;
-
-	if (strchr(argv[1], '.') == NULL) {
-		client_id = (ClientID)atoi(argv[1]);
-		ci = NetworkFindClientInfoFromClientID(client_id);
-	} else {
-		ci = NetworkFindClientInfoFromIP(argv[1]);
-		client_id = (ci == NULL) ? INVALID_CLIENT_ID : ci->client_id;
-	}
-
-	if (client_id == CLIENT_ID_SERVER) {
-		IConsoleError("Silly boy, you can not kick yourself!");
-		return true;
-	}
-
-	if (client_id == INVALID_CLIENT_ID) {
-		IConsoleError("Invalid client");
-		return true;
-	}
-
-	if (ci != NULL) {
-		NetworkServerKickClient(client_id);
-	} else {
-		IConsoleError("Client not found");
 	}
 
 	return true;
