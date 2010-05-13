@@ -110,9 +110,9 @@ template <class Tsegment>
 struct CSegmentCostCacheT
 	: public CSegmentCostCacheBase
 {
-	enum {c_hash_bits = 14};
+	static const int C_HASH_BITS = 14;
 
-	typedef CHashTableT<Tsegment, c_hash_bits> HashTable;
+	typedef CHashTableT<Tsegment, C_HASH_BITS> HashTable;
 	typedef SmallArray<Tsegment> Heap;
 	typedef typename Tsegment::Key Key;    ///< key to hash table
 
