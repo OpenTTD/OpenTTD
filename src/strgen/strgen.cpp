@@ -951,16 +951,14 @@ static void WriteStringsH(const char *filename)
 		}
 	}
 
-	fprintf(_output_file, "\nstatic const StringID STR_LAST_STRINGID = 0x%X;\n", next - 1);
+	fprintf(_output_file, "\nstatic const StringID STR_LAST_STRINGID = 0x%X;\n\n", next - 1);
 
 	fprintf(_output_file,
-		"\nenum {\n"
-		"\tLANGUAGE_PACK_IDENT = 0x474E414C, // Big Endian value for 'LANG' (LE is 0x 4C 41 4E 47)\n"
-		"\tLANGUAGE_PACK_VERSION = 0x%X,\n"
-		"};\n", (uint)_hash
+		"static const uint LANGUAGE_PACK_IDENT = 0x474E414C; // Big Endian value for 'LANG' (LE is 0x 4C 41 4E 47)\n"
+		"static const uint LANGUAGE_PACK_VERSION = 0x%X;\n\n", (uint)_hash
 	);
 
-	fprintf(_output_file, "\n#endif /* TABLE_STRINGS_H */\n");
+	fprintf(_output_file, "#endif /* TABLE_STRINGS_H */\n");
 
 	fclose(_output_file);
 	_output_file = NULL;
