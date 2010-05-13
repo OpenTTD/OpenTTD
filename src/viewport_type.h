@@ -51,7 +51,7 @@ struct ViewportSign {
 	void MarkDirty() const;
 };
 
-enum {
+enum ZoomStateChange {
 	ZOOM_IN   = 0,
 	ZOOM_OUT  = 1,
 	ZOOM_NONE = 2, // hack, used to update the button status

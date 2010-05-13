@@ -35,12 +35,12 @@ void UpdateViewportPosition(Window *w);
  */
 void MarkAllViewportsDirty(int left, int top, int right, int bottom);
 
-bool DoZoomInOutWindow(int how, Window *w);
+bool DoZoomInOutWindow(ZoomStateChange how, Window *w);
 void ZoomInOrOutToCursorWindow(bool in, Window * w);
 Point GetTileZoomCenterWindow(bool in, Window * w);
 void HandleZoomMessage(Window *w, const ViewPort *vp, byte widget_zoom_in, byte widget_zoom_out);
 
-static inline void MaxZoomInOut(int how, Window *w)
+static inline void MaxZoomInOut(ZoomStateChange how, Window *w)
 {
 	while (DoZoomInOutWindow(how, w)) {};
 }
