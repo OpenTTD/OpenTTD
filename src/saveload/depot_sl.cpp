@@ -46,7 +46,7 @@ static void Load_DEPT()
 		SlObject(depot, _depot_desc);
 
 		/* Set the town 'pointer' so we can restore it later. */
-		if (CheckSavegameVersion(141)) depot->town = (Town *)_town_index;
+		if (CheckSavegameVersion(141)) depot->town = (Town *)(size_t)_town_index;
 	}
 }
 
