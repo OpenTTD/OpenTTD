@@ -136,7 +136,10 @@ bool DoZoomInOutWindow(ZoomStateChange how, Window *w)
 	vp = w->viewport;
 
 	switch (how) {
-		case ZOOM_NONE: NOT_REACHED();
+		case ZOOM_NONE:
+			/* On initialisation of the viewport we don't do anything. */
+			break;
+
 		case ZOOM_IN:
 			if (vp->zoom == ZOOM_LVL_MIN) return false;
 			vp->zoom = (ZoomLevel)((int)vp->zoom - 1);
