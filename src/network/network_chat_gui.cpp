@@ -35,9 +35,7 @@
  * some spaces and possible translations of [All] to other languages. */
 assert_compile((int)DRAW_STRING_BUFFER >= (int)NETWORK_CHAT_LENGTH + NETWORK_NAME_LENGTH + 40);
 
-enum {
-	NETWORK_CHAT_LINE_SPACING = 3,
-};
+static const uint NETWORK_CHAT_LINE_SPACING = 3;
 
 struct ChatMessage {
 	char message[DRAW_STRING_BUFFER];

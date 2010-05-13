@@ -211,11 +211,9 @@ static void PopupMainToolbMenu(Window *w, int widget, StringID string, int count
 }
 
 /** Enum for the Company Toolbar's network related buttons */
-enum {
-	CTMN_CLIENT_LIST = -1, ///< Show the client list
-	CTMN_NEW_COMPANY = -2, ///< Create a new company
-	CTMN_SPECTATE    = -3, ///< Become spectator
-};
+static const int CTMN_CLIENT_LIST = -1; ///< Show the client list
+static const int CTMN_NEW_COMPANY = -2; ///< Create a new company
+static const int CTMN_SPECTATE    = -3; ///< Become spectator
 
 /**
  * Pop up a generic company list menu.

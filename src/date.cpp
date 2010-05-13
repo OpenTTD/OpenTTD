@@ -55,7 +55,7 @@ static const uint16 _month_date_from_year_day[] = {
 };
 #undef M
 
-enum {
+enum DaysTillMonth {
 	ACCUM_JAN = 0,
 	ACCUM_FEB = ACCUM_JAN + 31,
 	ACCUM_MAR = ACCUM_FEB + 29,

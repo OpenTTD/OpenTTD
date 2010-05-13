@@ -56,7 +56,7 @@ static void PlaceAirport(TileIndex tile)
 }
 
 /** Widget number of the airport build window. */
-enum {
+enum AirportToolbarWidgets {
 	ATW_AIRPORT,
 	ATW_DEMOLISH,
 };

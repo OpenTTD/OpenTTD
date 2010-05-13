@@ -21,15 +21,13 @@
 #include "../follow_track.hpp"
 #include "aystar.h"
 
-enum {
-	NPF_HASH_BITS = 12, ///< The size of the hash used in pathfinding. Just changing this value should be sufficient to change the hash size. Should be an even value.
-	/* Do no change below values */
-	NPF_HASH_SIZE = 1 << NPF_HASH_BITS,
-	NPF_HASH_HALFBITS = NPF_HASH_BITS / 2,
-	NPF_HASH_HALFMASK = (1 << NPF_HASH_HALFBITS) - 1
-};
+static const uint NPF_HASH_BITS = 12; ///< The size of the hash used in pathfinding. Just changing this value should be sufficient to change the hash size. Should be an even value.
+/* Do no change below values */
+static const uint NPF_HASH_SIZE = 1 << NPF_HASH_BITS;
+static const uint NPF_HASH_HALFBITS = NPF_HASH_BITS / 2;
+static const uint NPF_HASH_HALFMASK = (1 << NPF_HASH_HALFBITS) - 1;
 
-/* Meant to be stored in AyStar.targetdata */
+/** Meant to be stored in AyStar.targetdata */
 struct NPFFindStationOrTileData {
 	TileIndex dest_coords;    ///< An indication of where the station is, for heuristic purposes, or the target tile
 	StationID station_index;  ///< station index we're heading for, or INVALID_STATION when we're heading for a tile
@@ -39,21 +37,21 @@ struct NPFFindStationOrTileData {
 	const Vehicle *v;         ///< The vehicle we are pathfinding for
 };
 
-/* Indices into AyStar.userdata[] */
-enum {
+/** Indices into AyStar.userdata[] */
+enum AyStarUserDataType {
 	NPF_TYPE = 0,  ///< Contains a TransportTypes value
 	NPF_SUB_TYPE,  ///< Contains the sub transport type
 	NPF_OWNER,     ///< Contains an Owner value
 	NPF_RAILTYPES, ///< Contains a bitmask the compatible RailTypes of the engine when NPF_TYPE == TRANSPORT_RAIL. Unused otherwise.
 };
 
-/* Indices into AyStarNode.userdata[] */
-enum {
+/** Indices into AyStarNode.userdata[] */
+enum AyStarNodeUserDataType {
 	NPF_TRACKDIR_CHOICE = 0, ///< The trackdir chosen to get here
 	NPF_NODE_FLAGS,
 };
 
-/* Flags for AyStarNode.userdata[NPF_NODE_FLAGS]. Use NPFSetFlag() and NPFGetFlag() to use them. */
+/** Flags for AyStarNode.userdata[NPF_NODE_FLAGS]. Use NPFSetFlag() and NPFGetFlag() to use them. */
 enum NPFNodeFlag {
 	NPF_FLAG_SEEN_SIGNAL,       ///< Used to mark that a signal was seen on the way, for rail only
 	NPF_FLAG_2ND_SIGNAL,        ///< Used to mark that two signals were seen, rail only
@@ -66,7 +64,7 @@ enum NPFNodeFlag {
 	NPF_FLAG_IGNORE_RESERVED,   ///< Used to mark that reserved tiles should be considered impassable
 };
 
-/* Meant to be stored in AyStar.userpath */
+/** Meant to be stored in AyStar.userpath */
 struct NPFFoundTargetData {
 	uint best_bird_dist;    ///< The best heuristic found. Is 0 if the target was found
 	uint best_path_dist;    ///< The shortest path. Is UINT_MAX if no path is found

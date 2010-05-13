@@ -21,13 +21,10 @@
 #include "console_func.h"
 #include "rev.h"
 
-
-enum {
-	ICON_HISTORY_SIZE       = 20,
-	ICON_LINE_SPACING       =  2,
-	ICON_RIGHT_BORDERWIDTH  = 10,
-	ICON_BOTTOM_BORDERWIDTH = 12,
-};
+static const uint ICON_HISTORY_SIZE       = 20;
+static const uint ICON_LINE_SPACING       =  2;
+static const uint ICON_RIGHT_BORDERWIDTH  = 10;
+static const uint ICON_BOTTOM_BORDERWIDTH = 12;
 
 /**
  * Container for a single line of console output
@@ -446,7 +443,7 @@ static void IConsoleHistoryNavigate(int direction)
 
 	/* watch out for overflows, just wrap around */
 	if (i < 0) i = ICON_HISTORY_SIZE - 1;
-	if (i >= ICON_HISTORY_SIZE) i = 0;
+	if ((uint)i >= ICON_HISTORY_SIZE) i = 0;
 
 	if (direction > 0) {
 		if (_iconsole_history[i] == NULL) i = 0;

@@ -83,12 +83,10 @@ struct StatusBarWindow : Window {
 	int ticker_scroll;
 	int reminder_timeout;
 
-	enum {
-		TICKER_STOP    = 1640, ///< scrolling is finished when counter reaches this value
-		REMINDER_START =   91, ///< initial value of the reminder counter (right dot on the right)
-		REMINDER_STOP  =    0, ///< reminder disappears when counter reaches this value
-		COUNTER_STEP   =    2, ///< this is subtracted from active counters every tick
-	};
+	static const int TICKER_STOP    = 1640; ///< scrolling is finished when counter reaches this value
+	static const int REMINDER_START =   91; ///< initial value of the reminder counter (right dot on the right)
+	static const int REMINDER_STOP  =    0; ///< reminder disappears when counter reaches this value
+	static const int COUNTER_STEP   =    2; ///< this is subtracted from active counters every tick
 
 	StatusBarWindow(const WindowDesc *desc) : Window()
 	{

@@ -51,7 +51,7 @@ enum OskWidgets {
 char _keyboard_opt[2][OSK_KEYBOARD_ENTRIES * 4 + 1];
 static WChar _keyboard[2][OSK_KEYBOARD_ENTRIES];
 
-enum {
+enum KeyStateBits {
 	KEYS_NONE,
 	KEYS_SHIFT,
 	KEYS_CAPS

@@ -79,13 +79,13 @@ static const WindowDesc _land_info_desc(
 );
 
 class LandInfoWindow : public Window {
-	enum {
+	enum LandInfoLines {
 		LAND_INFO_CENTERED_LINES   = 12,                       ///< Up to 12 centered lines
 		LAND_INFO_MULTICENTER_LINE = LAND_INFO_CENTERED_LINES, ///< One multicenter line
 		LAND_INFO_LINE_END,
-
-		LAND_INFO_LINE_BUFF_SIZE = 512,
 	};
+
+	static const uint LAND_INFO_LINE_BUFF_SIZE = 512;
 
 public:
 	char landinfo_data[LAND_INFO_LINE_END][LAND_INFO_LINE_BUFF_SIZE];

@@ -225,10 +225,8 @@ enum NetworkContentListWindowWidgets {
 class NetworkContentListWindow : public QueryStringBaseWindow, ContentCallback {
 	typedef GUIList<const ContentInfo*> GUIContentList;
 
-	enum {
-		EDITBOX_MAX_SIZE = 50,
-		EDITBOX_MAX_LENGTH = 300,
-	};
+	static const uint EDITBOX_MAX_SIZE   =  50;
+	static const uint EDITBOX_MAX_LENGTH = 300;
 
 	/** Runtime saved values */
 	static Listing last_sorting;

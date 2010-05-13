@@ -147,10 +147,8 @@ private:
 	const GRFConfig *sel;
 	int sel_pos;
 
-	enum {
-		EDITBOX_MAX_SIZE = 50,
-		EDITBOX_MAX_LENGTH = 300,
-	};
+	static const uint EDITBOX_MAX_SIZE   =  50;
+	static const uint EDITBOX_MAX_LENGTH = 300;
 
 	/**
 	 * (Re)build the grf as its amount has changed because

@@ -180,9 +180,7 @@ public:
 
 typedef void (*SpecialSpriteHandler)(ByteReader *buf);
 
-enum {
-	MAX_STATIONS = 256,
-};
+static const uint MAX_STATIONS = 256;
 
 /* Temporary data used when loading only */
 struct GRFTempEngineData {
@@ -6609,7 +6607,7 @@ static void FinaliseAirportsArray()
 
 		AirportTileSpec **&airporttilespec = (*file)->airtspec;
 		if (airporttilespec != NULL) {
-			for (int i = 0; i < NUM_AIRPORTTILES; i++) {
+			for (uint i = 0; i < NUM_AIRPORTTILES; i++) {
 				if (airporttilespec[i] != NULL && airporttilespec[i]->enabled) {
 					_airporttile_mngr.SetEntitySpec(airporttilespec[i]);
 				}

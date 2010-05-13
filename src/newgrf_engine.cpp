@@ -154,7 +154,7 @@ static int MapOldSubType(const Vehicle *v)
 
 
 /* TTDP style aircraft movement states for GRF Action 2 Var 0xE2 */
-enum {
+enum TTDPAircraftMovementStates {
 	AMS_TTDP_HANGAR,
 	AMS_TTDP_TO_HANGAR,
 	AMS_TTDP_TO_PAD1,
@@ -290,7 +290,7 @@ static byte MapAircraftMovementState(const Aircraft *v)
 
 
 /* TTDP style aircraft movement action for GRF Action 2 Var 0xE6 */
-enum {
+enum TTDPAircraftMovementActions {
 	AMA_TTDP_IN_HANGAR,
 	AMA_TTDP_ON_PAD1,
 	AMA_TTDP_ON_PAD2,

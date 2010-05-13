@@ -62,7 +62,7 @@ CurrencySpec _currency_specs[NUM_CURRENCY];
  * Every currency used by Ottd is there, just in case TTDPatch will
  * add those missing in its code
  **/
-enum {
+enum Currencies {
 	CURR_GBP,
 	CURR_USD,
 	CURR_EUR,

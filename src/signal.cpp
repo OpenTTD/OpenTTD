@@ -20,12 +20,10 @@
 
 
 /** these are the maximums used for updating signal blocks */
-enum {
-	SIG_TBU_SIZE    =  64, ///< number of signals entering to block
-	SIG_TBD_SIZE    = 256, ///< number of intersections - open nodes in current block
-	SIG_GLOB_SIZE   = 128, ///< number of open blocks (block can be opened more times until detected)
-	SIG_GLOB_UPDATE =  64, ///< how many items need to be in _globset to force update
-};
+static const uint SIG_TBU_SIZE    =  64; ///< number of signals entering to block
+static const uint SIG_TBD_SIZE    = 256; ///< number of intersections - open nodes in current block
+static const uint SIG_GLOB_SIZE   = 128; ///< number of open blocks (block can be opened more times until detected)
+static const uint SIG_GLOB_UPDATE =  64; ///< how many items need to be in _globset to force update
 
 assert_compile(SIG_GLOB_UPDATE <= SIG_GLOB_SIZE);
 

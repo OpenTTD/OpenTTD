@@ -132,11 +132,9 @@ void NetworkGameListRemoveItem(NetworkGameList *remove)
 	}
 }
 
-enum {
-	MAX_GAME_LIST_REQUERY_COUNT  = 10, ///< How often do we requery in number of times per server?
-	REQUERY_EVERY_X_GAMELOOPS    = 60, ///< How often do we requery in time?
-	REFRESH_GAMEINFO_X_REQUERIES = 50, ///< Refresh the game info itself after REFRESH_GAMEINFO_X_REQUERIES * REQUERY_EVERY_X_GAMELOOPS game loops
-};
+static const uint MAX_GAME_LIST_REQUERY_COUNT  = 10; ///< How often do we requery in number of times per server?
+static const uint REQUERY_EVERY_X_GAMELOOPS    = 60; ///< How often do we requery in time?
+static const uint REFRESH_GAMEINFO_X_REQUERIES = 50; ///< Refresh the game info itself after REFRESH_GAMEINFO_X_REQUERIES * REQUERY_EVERY_X_GAMELOOPS game loops
 
 /** Requeries the (game) servers we have not gotten a reply from */
 void NetworkGameListRequery()

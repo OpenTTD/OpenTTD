@@ -85,11 +85,9 @@ void GamelogReset()
 	_current_action  = NULL;
 }
 
-enum {
-	GAMELOG_BUF_LEN = 1024 ///< length of buffer for one line of text
-};
+static const uint GAMELOG_BUF_LEN = 1024; ///< length of buffer for one line of text
 
-static int _dbgofs = 0; ///< offset in current output buffer
+static uint _dbgofs = 0; ///< offset in current output buffer
 
 static void AddDebugText(char *buf, const char *s, ...) WARN_FORMAT(2, 3);
 

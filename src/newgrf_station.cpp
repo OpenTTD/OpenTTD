@@ -35,9 +35,7 @@
 
 static StationClass _station_classes[STAT_CLASS_MAX];
 
-enum {
-	MAX_SPECLIST = 255,
-};
+static const uint MAX_SPECLIST = 255;
 
 enum TriggerArea {
 	TA_TILE,

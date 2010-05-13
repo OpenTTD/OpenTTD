@@ -49,7 +49,7 @@
 
 
 /* Right Mouse Button Emulation enum */
-enum {
+enum RightMouseButtonEmulationState {
 	RMBE_COMMAND,
 	RMBE_CONTROL,
 	RMBE_OFF,

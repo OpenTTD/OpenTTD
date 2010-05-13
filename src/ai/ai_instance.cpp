@@ -460,9 +460,7 @@ static const SaveLoad _ai_byte[] = {
 	SLE_END()
 };
 
-enum {
-	AISAVE_MAX_DEPTH = 25, ///< The maximum recursive depth for items stored in the savegame.
-};
+static const uint AISAVE_MAX_DEPTH = 25; ///< The maximum recursive depth for items stored in the savegame.
 
 /* static */ bool AIInstance::SaveObject(HSQUIRRELVM vm, SQInteger index, int max_depth, bool test)
 {

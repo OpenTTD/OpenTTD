@@ -318,10 +318,8 @@ static uint32 ConvertAllegroKeyIntoMy()
 	return (key << 16) + unicode;
 }
 
-enum {
-	LEFT_BUTTON,
-	RIGHT_BUTTON,
-};
+static const uint LEFT_BUTTON  = 0;
+static const uint RIGHT_BUTTON = 1;
 
 static void PollEvent()
 {

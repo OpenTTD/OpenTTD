@@ -2187,10 +2187,8 @@ static void ReportNewsProductionChangeIndustry(Industry *ind, CargoID type, int 
 	);
 }
 
-enum {
-	PERCENT_TRANSPORTED_60 = 153,
-	PERCENT_TRANSPORTED_80 = 204,
-};
+static const uint PERCENT_TRANSPORTED_60 = 153;
+static const uint PERCENT_TRANSPORTED_80 = 204;
 
 /** Change industry production or do closure
  * @param i Industry for which changes are performed

@@ -41,9 +41,7 @@
 static FMusicDriver_QtMidi iFMusicDriver_QtMidi;
 
 
-enum {
-	midiType = 'Midi' ///< OSType code for MIDI songs.
-};
+static const uint MIDI_TYPE = 'Midi' ///< OSType code for MIDI songs.
 
 
 /**
@@ -61,9 +59,9 @@ static void SetMIDITypeIfNeeded(const FSRef *ref)
 	if (noErr != FSGetCatalogInfo(ref, kFSCatInfoNodeFlags | kFSCatInfoFinderInfo, &catalogInfo, NULL, NULL, NULL)) return;
 	if (!(catalogInfo.nodeFlags & kFSNodeIsDirectoryMask)) {
 		FileInfo * const info = (FileInfo *) catalogInfo.finderInfo;
-		if (info->fileType != midiType && !(info->finderFlags & kIsAlias)) {
+		if (info->fileType != MIDI_TYPE && !(info->finderFlags & kIsAlias)) {
 			OSErr e;
-			info->fileType = midiType;
+			info->fileType = MIDI_TYPE;
 			e = FSSetCatalogInfo(ref, kFSCatInfoFinderInfo, &catalogInfo);
 			if (e == noErr) {
 				DEBUG(driver, 3, "qtmidi: changed filetype to 'Midi'");
@@ -161,7 +159,7 @@ static void InitQuickTimeIfNeeded()
 
 
 /** Possible states of the QuickTime music driver. */
-enum {
+enum QTStates {
 	QT_STATE_IDLE, ///< No file loaded.
 	QT_STATE_PLAY, ///< File loaded, playing.
 	QT_STATE_STOP, ///< File loaded, stopped.

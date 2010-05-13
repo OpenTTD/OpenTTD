@@ -16,14 +16,13 @@
 #include "tile_type.h"
 
 /** Some airport-related constants */
-enum {
-	MAX_TERMINALS =  10,                    ///< maximum number of terminals per airport
-	MAX_HELIPADS  =   4,                    ///< maximum number of helipads per airport
-	MAX_ELEMENTS  = 255,                    ///< maximum number of aircraft positions at airport
-	NUM_AIRPORTTILES = 256,                 ///< total number of airport tiles
-	NEW_AIRPORTTILE_OFFSET = 74,            ///< offset of first newgrf airport tile
-	INVALID_AIRPORTTILE = NUM_AIRPORTTILES, ///< id for an invalid airport tile
-};
+static const uint MAX_TERMINALS =  10;                       ///< maximum number of terminals per airport
+static const uint MAX_HELIPADS  =   4;                       ///< maximum number of helipads per airport
+static const uint MAX_ELEMENTS  = 255;                       ///< maximum number of aircraft positions at airport
+
+static const uint NUM_AIRPORTTILES       = 256;              ///< total number of airport tiles
+static const uint NEW_AIRPORTTILE_OFFSET = 74;               ///< offset of first newgrf airport tile
+static const uint INVALID_AIRPORTTILE    = NUM_AIRPORTTILES; ///< id for an invalid airport tile
 
 /** Airport types */
 enum AirportTypes {

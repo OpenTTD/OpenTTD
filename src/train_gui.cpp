@@ -126,10 +126,8 @@ struct CargoSummaryItem {
 	}
 };
 
-enum {
-	TRAIN_DETAILS_MIN_INDENT = 32, ///< Minimum indent level in the train details window
-	TRAIN_DETAILS_MAX_INDENT = 72, ///< Maximum indent level in the train details window; wider than this and we start on a new line
-};
+static const uint TRAIN_DETAILS_MIN_INDENT = 32; ///< Minimum indent level in the train details window
+static const uint TRAIN_DETAILS_MAX_INDENT = 72; ///< Maximum indent level in the train details window; wider than this and we start on a new line
 
 /** Container for the cargo summary information. */
 typedef SmallVector<CargoSummaryItem, 2> CargoSummary;
@@ -307,7 +305,7 @@ void DrawTrainDetails(const Train *v, int left, int right, int y, int vscroll_po
 			GetCargoSummaryOfArticulatedVehicle(v, &_cargo_summary);
 
 			/* Draw sprites */
-			int dx = 0;
+			uint dx = 0;
 			int px = x;
 			const Train *u = v;
 			do {

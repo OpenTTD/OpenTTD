@@ -36,11 +36,9 @@ static ThreadMutex *_network_udp_mutex = ThreadMutex::New();
 /** Session key to register ourselves to the master server */
 static uint64 _session_key = 0;
 
-enum {
-	ADVERTISE_NORMAL_INTERVAL = 30000, // interval between advertising in ticks (15 minutes)
-	ADVERTISE_RETRY_INTERVAL  =   300, // readvertise when no response after this many ticks (9 seconds)
-	ADVERTISE_RETRY_TIMES     =     3  // give up readvertising after this much failed retries
-};
+static const uint ADVERTISE_NORMAL_INTERVAL = 30000; ///< interval between advertising in ticks (15 minutes)
+static const uint ADVERTISE_RETRY_INTERVAL  =   300; ///< readvertise when no response after this many ticks (9 seconds)
+static const uint ADVERTISE_RETRY_TIMES     =     3; ///< give up readvertising after this much failed retries
 
 NetworkUDPSocketHandler *_udp_client_socket = NULL; ///< udp client socket
 NetworkUDPSocketHandler *_udp_server_socket = NULL; ///< udp server socket
