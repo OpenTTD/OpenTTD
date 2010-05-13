@@ -1098,7 +1098,7 @@ static const uint8 _farm_sounds[] = { SND_24_SHEEP, SND_25_COW, SND_26_HORSE };
 /** Array with... hem... a sound of toyland */
 static const uint8 _plastic_mine_sounds[] = { SND_33_PLASTIC_MINE };
 
-enum {
+enum IndustryTypes {
 	IT_COAL_MINE           =   0,
 	IT_POWER_STATION       =   1,
 	IT_SAWMILL             =   2,

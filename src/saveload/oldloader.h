@@ -15,10 +15,8 @@
 #include "saveload.h"
 #include "../tile_type.h"
 
-enum {
-	BUFFER_SIZE = 4096,
-	OLD_MAP_SIZE = 256 * 256,
-};
+static const uint BUFFER_SIZE = 4096;
+static const uint OLD_MAP_SIZE = 256 * 256;
 
 struct LoadgameState {
 	FILE *file;

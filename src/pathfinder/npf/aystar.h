@@ -23,7 +23,7 @@
 #include "../../track_type.h"
 
 //#define AYSTAR_DEBUG
-enum {
+enum AystarStatus {
 	AYSTAR_FOUND_END_NODE,
 	AYSTAR_EMPTY_OPENLIST,
 	AYSTAR_STILL_BUSY,
@@ -32,9 +32,7 @@ enum {
 	AYSTAR_DONE
 };
 
-enum {
-	AYSTAR_INVALID_NODE = -1,
-};
+static const int AYSTAR_INVALID_NODE = -1;
 
 struct AyStarNode {
 	TileIndex tile;

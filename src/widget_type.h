@@ -18,9 +18,7 @@
 #include "gfx_type.h"
 #include "window_type.h"
 
-enum {
-	WIDGET_LIST_END = -1, ///< indicate the end of widgets' list for vararg functions
-};
+static const int WIDGET_LIST_END = -1; ///< indicate the end of widgets' list for vararg functions
 
 /** Bits of the #WWT_MATRIX widget data. */
 enum MatrixWidgetValues {

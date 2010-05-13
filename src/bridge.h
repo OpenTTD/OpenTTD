@@ -32,9 +32,7 @@ enum BridgePieces {
 
 DECLARE_POSTFIX_INCREMENT(BridgePieces)
 
-enum {
-	MAX_BRIDGES = 13
-};
+static const uint MAX_BRIDGES = 13;
 
 typedef uint BridgeType;
 

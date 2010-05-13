@@ -22,10 +22,8 @@
 #include "saveload_internal.h"
 #include "oldloader.h"
 
-enum {
-	TTO_HEADER_SIZE = 41,
-	TTD_HEADER_SIZE = 49,
-};
+static const int TTO_HEADER_SIZE = 41;
+static const int TTD_HEADER_SIZE = 49;
 
 uint32 _bump_assert_value;
 

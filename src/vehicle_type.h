@@ -48,7 +48,7 @@ struct BaseVehicle
 static const VehicleID INVALID_VEHICLE = 0xFFFF; ///< Constant representing a non-existing vehicle.
 
 /** Pathfinding option states */
-enum {
+enum VehiclePathFinders {
 	VPF_OPF  = 0, ///< The Original PathFinder (only for ships)
 	VPF_NPF  = 1, ///< New PathFinder
 	VPF_YAPF = 2, ///< Yet Another PathFinder
@@ -64,10 +64,8 @@ enum DepotCommand {
 	DEPOT_COMMAND_MASK  = 0xF,
 };
 
-enum {
-	MAX_LENGTH_VEHICLE_NAME_BYTES  =  31, ///< The maximum length of a vehicle name in bytes including '\0'
-	MAX_LENGTH_VEHICLE_NAME_PIXELS = 150, ///< The maximum length of a vehicle name in pixels
-};
+static const uint MAX_LENGTH_VEHICLE_NAME_BYTES  =  31; ///< The maximum length of a vehicle name in bytes including '\0'
+static const uint MAX_LENGTH_VEHICLE_NAME_PIXELS = 150; ///< The maximum length of a vehicle name in pixels
 
 /** Vehicle acceleration models. */
 enum AccelerationModel {

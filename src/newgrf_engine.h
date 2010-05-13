@@ -19,11 +19,9 @@
 #include "engine_type.h"
 #include "gfx_type.h"
 
-enum {
-	TRAININFO_DEFAULT_VEHICLE_WIDTH = 29,
-	ROADVEHINFO_DEFAULT_VEHICLE_WIDTH = 28,
-	VEHICLEINFO_FULL_VEHICLE_WIDTH = 32,
-};
+static const uint TRAININFO_DEFAULT_VEHICLE_WIDTH   = 29;
+static const uint ROADVEHINFO_DEFAULT_VEHICLE_WIDTH = 28;
+static const uint VEHICLEINFO_FULL_VEHICLE_WIDTH    = 32;
 
 void SetWagonOverrideSprites(EngineID engine, CargoID cargo, const struct SpriteGroup *group, EngineID *train_id, uint trains);
 const SpriteGroup *GetWagonOverrideSpriteSet(EngineID engine, CargoID cargo, EngineID overriding_engine);

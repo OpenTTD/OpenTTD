@@ -33,9 +33,7 @@ enum TileSource {
 	TS_END
 };
 
-enum {
-	NUM_TRACKS_AT_PCP = 6
-};
+static const uint NUM_TRACKS_AT_PCP = 6;
 
 /** Which PPPs are possible at all on a given PCP */
 static const byte AllowedPPPonPCP[DIAGDIR_END] = {
@@ -316,12 +314,10 @@ struct SortableSpriteStruct {
 	int8 z_offset;
 };
 
-enum {
-	/** Distance between wire and rail */
-	ELRAIL_ELEVATION = 10,
-	/** Wires that a draw one level higher than the north corner. */
-	ELRAIL_ELEVRAISE = ELRAIL_ELEVATION + TILE_HEIGHT
-};
+/** Distance between wire and rail */
+static const uint ELRAIL_ELEVATION = 10;
+/** Wires that a draw one level higher than the north corner. */
+static const uint ELRAIL_ELEVRAISE = ELRAIL_ELEVATION + TILE_HEIGHT;
 
 static const SortableSpriteStruct CatenarySpriteData[] = {
 /* X direction

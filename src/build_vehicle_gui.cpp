@@ -93,10 +93,8 @@ static const NWidgetPart _nested_build_vehicle_widgets[] = {
 };
 
 /** Special cargo filter criteria */
-enum {
-	CF_ANY  = CT_NO_REFIT, ///< Show all vehicles independent of carried cargo (i.e. no filtering)
-	CF_NONE = CT_INVALID,  ///< Show only vehicles which do not carry cargo (e.g. train engines)
-};
+static const CargoID CF_ANY  = CT_NO_REFIT; ///< Show all vehicles independent of carried cargo (i.e. no filtering)
+static const CargoID CF_NONE = CT_INVALID;  ///< Show only vehicles which do not carry cargo (e.g. train engines)
 
 static bool _internal_sort_order; // descending/ascending
 static byte _last_sort_criteria[]      = {0, 0, 0, 0};

@@ -16,12 +16,9 @@
  * Numeric value that represents a string, independent of the selected language.
  */
 typedef uint16 StringID;
-static const StringID INVALID_STRING_ID = 0xFFFF;  ///< Constant representing an invalid string
-static const int MAX_CHAR_LENGTH = 4; ///< Max. length of UTF-8 encoded unicode character
-
-enum {
-	MAX_LANG = 64, ///< Maximal number of languages supported by the game
-};
+static const StringID INVALID_STRING_ID = 0xFFFF; ///< Constant representing an invalid string
+static const int MAX_CHAR_LENGTH        = 4;      ///< Max. length of UTF-8 encoded unicode character
+static const uint MAX_LANG              = 64;     ///< Maximum number of languages supported by the game
 
 /** Directions a text can go to */
 enum TextDirection {

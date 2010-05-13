@@ -38,9 +38,7 @@ static void Load_MAPS()
 	AllocateMap(_map_dim_x, _map_dim_y);
 }
 
-enum {
-	MAP_SL_BUF_SIZE = 4096
-};
+static const uint MAP_SL_BUF_SIZE = 4096;
 
 static void Load_MAPT()
 {

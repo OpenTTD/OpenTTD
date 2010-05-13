@@ -173,7 +173,7 @@ static const byte TOWN_GROWTH_FREQUENCY = 70;
  * per town, NO MATTER the population of it.
  * And there are 5 more bits available on flags...
  */
-enum {
+enum TownFlags {
 	TOWN_IS_FUNDED      = 0,   ///< Town has received some funds for
 	TOWN_HAS_CHURCH     = 1,   ///< There can be only one church by town.
 	TOWN_HAS_STADIUM    = 2    ///< There can be only one stadium by town.

@@ -15,16 +15,15 @@
 #include "company_type.h"
 
 /** Constants related to world generation */
-enum {
+enum LandscapeGenerator {
 	/* Order of these enums has to be the same as in lang/english.txt
 	 * Otherwise you will get inconsistent behaviour. */
 	LG_ORIGINAL     = 0,  ///< The original landscape generator
 	LG_TERRAGENESIS = 1,  ///< TerraGenesis Perlin landscape generator
-
-	GENERATE_NEW_SEED = UINT_MAX, ///< Create a new random seed
-
-	GENWORLD_REDRAW_TIMEOUT = 200, ///< Timeout between redraws
 };
+
+static const uint GENERATE_NEW_SEED       = UINT_MAX; ///< Create a new random seed
+static const uint GENWORLD_REDRAW_TIMEOUT = 200;      ///< Timeout between redraws
 
 /** Modes for GenerateWorld */
 enum GenWorldMode {

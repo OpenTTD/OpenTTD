@@ -55,24 +55,22 @@ enum RoadVehicleStates {
 };
 
 /** State information about the Road Vehicle controller */
-enum {
-	RDE_NEXT_TILE = 0x80, ///< We should enter the next tile
-	RDE_TURNED    = 0x40, ///< We just finished turning
+static const uint RDE_NEXT_TILE = 0x80; ///< We should enter the next tile
+static const uint RDE_TURNED    = 0x40; ///< We just finished turning
 
-	/* Start frames for when a vehicle enters a tile/changes its state.
-	 * The start frame is different for vehicles that turned around or
-	 * are leaving the depot as the do not start at the edge of the tile.
-	 * For trams there are a few different start frames as there are two
-	 * places where trams can turn. */
-	RVC_DEFAULT_START_FRAME                =  0,
-	RVC_TURN_AROUND_START_FRAME            =  1,
-	RVC_DEPOT_START_FRAME                  =  6,
-	RVC_START_FRAME_AFTER_LONG_TRAM        = 21,
-	RVC_TURN_AROUND_START_FRAME_SHORT_TRAM = 16,
-	/* Stop frame for a vehicle in a drive-through stop */
-	RVC_DRIVE_THROUGH_STOP_FRAME           = 11,
-	RVC_DEPOT_STOP_FRAME                   = 11,
-};
+/* Start frames for when a vehicle enters a tile/changes its state.
+ * The start frame is different for vehicles that turned around or
+ * are leaving the depot as the do not start at the edge of the tile.
+ * For trams there are a few different start frames as there are two
+ * places where trams can turn. */
+static const uint RVC_DEFAULT_START_FRAME                =  0;
+static const uint RVC_TURN_AROUND_START_FRAME            =  1;
+static const uint RVC_DEPOT_START_FRAME                  =  6;
+static const uint RVC_START_FRAME_AFTER_LONG_TRAM        = 21;
+static const uint RVC_TURN_AROUND_START_FRAME_SHORT_TRAM = 16;
+/* Stop frame for a vehicle in a drive-through stop */
+static const uint RVC_DRIVE_THROUGH_STOP_FRAME           = 11;
+static const uint RVC_DEPOT_STOP_FRAME                   = 11;
 
 enum RoadVehicleSubType {
 	RVST_FRONT,

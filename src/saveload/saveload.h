@@ -81,11 +81,7 @@ enum SLRefType {
 
 #define SL_MAX_VERSION 255
 
-enum {
-	INC_VEHICLE_COMMON = 0,
-};
-
-enum {
+enum ChunkType {
 	CH_RIFF         =  0,
 	CH_ARRAY        =  1,
 	CH_SPARSE_ARRAY =  2,

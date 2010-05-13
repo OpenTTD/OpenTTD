@@ -37,16 +37,12 @@ enum Owner {
 };
 DECLARE_POSTFIX_INCREMENT(Owner)
 
-enum {
-	MAX_LENGTH_PRESIDENT_NAME_BYTES  =  31, ///< The maximum length of a president name in bytes including '\0'
-	MAX_LENGTH_PRESIDENT_NAME_PIXELS =  94, ///< The maximum length of a president name in pixels
-	MAX_LENGTH_COMPANY_NAME_BYTES    =  31, ///< The maximum length of a company name in bytes including '\0'
-	MAX_LENGTH_COMPANY_NAME_PIXELS   = 150, ///< The maximum length of a company name in pixels
-};
+static const uint MAX_LENGTH_PRESIDENT_NAME_BYTES  =  31; ///< The maximum length of a president name in bytes including '\0'
+static const uint MAX_LENGTH_PRESIDENT_NAME_PIXELS =  94; ///< The maximum length of a president name in pixels
+static const uint MAX_LENGTH_COMPANY_NAME_BYTES    =  31; ///< The maximum length of a company name in bytes including '\0'
+static const uint MAX_LENGTH_COMPANY_NAME_PIXELS   = 150; ///< The maximum length of a company name in pixels
 
-enum {
-	MAX_HISTORY_MONTHS               =  24, ///< The maximum number of months kept as performance's history
-};
+static const uint MAX_HISTORY_MONTHS               =  24; ///< The maximum number of months kept as performance's history
 
 /** Define basic enum properties */
 template <> struct EnumPropsT<Owner> : MakeEnumPropsT<Owner, byte, OWNER_BEGIN, OWNER_END, INVALID_OWNER> {};

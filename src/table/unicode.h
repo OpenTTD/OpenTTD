@@ -14,10 +14,8 @@ struct DefaultUnicodeMapping {
 	byte key;   ///< Character index of sprite
 };
 
-enum {
-	CLRA = 0, ///< Identifier to clear all glyphs at this codepoint
-	CLRL = 1, ///< Identifier to clear glyphs for large font at this codepoint
-};
+static const byte CLRA = 0; ///< Identifier to clear all glyphs at this codepoint
+static const byte CLRL = 1; ///< Identifier to clear glyphs for large font at this codepoint
 
 /* Default unicode mapping table for sprite based glyphs.
  * This table allows us use unicode characters even though the glyphs don't

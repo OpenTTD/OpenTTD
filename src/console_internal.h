@@ -14,10 +14,8 @@
 
 #include "console_type.h"
 
-enum {
-	ICON_CMDLN_SIZE     = 1024, ///< maximum length of a typed in command
-	ICON_MAX_STREAMSIZE = 2048, ///< maximum length of a totally expanded command
-};
+static const uint ICON_CMDLN_SIZE     = 1024; ///< maximum length of a typed in command
+static const uint ICON_MAX_STREAMSIZE = 2048; ///< maximum length of a totally expanded command
 
 /** Return values of console hooks (#IConsoleHook). */
 enum ConsoleHookResult {

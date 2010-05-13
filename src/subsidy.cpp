@@ -205,7 +205,7 @@ static Subsidy *FindSubsidyCargoRoute()
 	if (i == NULL) return NULL;
 
 	CargoID cargo;
-	int trans, total;
+	uint trans, total;
 
 	/* Randomize cargo type */
 	if (i->produced_cargo[1] != CT_INVALID && HasBit(Random(), 0)) {

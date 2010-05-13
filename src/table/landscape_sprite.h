@@ -9,9 +9,7 @@
 
 /** @file landscape_sprite.h Offsets of sprites to replace for non-temperate landscapes. */
 
-enum {
-	END  = 0xFFFF
-};
+static const SpriteID END = 0xFFFF;
 
 static const SpriteID _landscape_spriteindexes_1[] = {
  0xF67,  0xF9F,

@@ -36,7 +36,7 @@ enum SwitchMode {
 };
 
 /* Display Options */
-enum {
+enum DisplayOptions {
 	DO_SHOW_TOWN_NAMES     = 0,
 	DO_SHOW_STATION_NAMES  = 1,
 	DO_SHOW_SIGNS          = 2,

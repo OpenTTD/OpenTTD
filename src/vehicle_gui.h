@@ -47,7 +47,7 @@ enum TrainDetailsWindowTabs {
 };
 
 /** Vehicle List Window type flags */
-enum {
+enum VehicleListWindowType {
 	VLW_STANDARD      = 0 << 8,
 	VLW_SHARED_ORDERS = 1 << 8,
 	VLW_STATION_LIST  = 2 << 8,

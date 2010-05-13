@@ -28,7 +28,7 @@ enum TownSize {
 };
 template <> struct EnumPropsT<TownSize> : MakeEnumPropsT<TownSize, byte, TSZ_SMALL, TSZ_END, TSZ_END, 2> {};
 
-enum {
+enum Ratings {
 	/* These refer to the maximums, so Appalling is -1000 to -400
 	 * MAXIMUM RATINGS BOUNDARIES */
 	RATING_MINIMUM     = -1000,
@@ -105,9 +105,7 @@ enum TownFounding {
 /** It needs to be 8bits, because we save and load it as such */
 typedef SimpleTinyEnumT<TownFounding, byte> TownFoundingByte;
 
-enum {
-	MAX_LENGTH_TOWN_NAME_BYTES  =  31, ///< The maximum length of a town name in bytes including '\0'
-	MAX_LENGTH_TOWN_NAME_PIXELS = 130, ///< The maximum length of a town name in pixels
-};
+static const uint MAX_LENGTH_TOWN_NAME_BYTES  =  31; ///< The maximum length of a town name in bytes including '\0'
+static const uint MAX_LENGTH_TOWN_NAME_PIXELS = 130; ///< The maximum length of a town name in pixels
 
 #endif /* TOWN_TYPE_H */

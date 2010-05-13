@@ -53,14 +53,12 @@ struct Subsidy : SubsidyPool::PoolItem<&_subsidy_pool> {
 };
 
 /** Constants related to subsidies */
-enum {
-	SUBSIDY_OFFER_MONTHS         =  12, ///< Duration of subsidy offer
-	SUBSIDY_CONTRACT_MONTHS      =  12, ///< Duration of subsidy after awarding
-	SUBSIDY_PAX_MIN_POPULATION   = 400, ///< Min. population of towns for subsidised pax route
-	SUBSIDY_CARGO_MIN_POPULATION = 900, ///< Min. population of destination town for cargo route
-	SUBSIDY_MAX_PCT_TRANSPORTED  =  42, ///< Subsidy will be created only for towns/industries with less % transported
-	SUBSIDY_MAX_DISTANCE         =  70, ///< Max. length of subsidised route (DistanceManhattan)
-};
+static const uint SUBSIDY_OFFER_MONTHS         =  12; ///< Duration of subsidy offer
+static const uint SUBSIDY_CONTRACT_MONTHS      =  12; ///< Duration of subsidy after awarding
+static const uint SUBSIDY_PAX_MIN_POPULATION   = 400; ///< Min. population of towns for subsidised pax route
+static const uint SUBSIDY_CARGO_MIN_POPULATION = 900; ///< Min. population of destination town for cargo route
+static const uint SUBSIDY_MAX_PCT_TRANSPORTED  =  42; ///< Subsidy will be created only for towns/industries with less % transported
+static const uint SUBSIDY_MAX_DISTANCE         =  70; ///< Max. length of subsidised route (DistanceManhattan)
 
 #define FOR_ALL_SUBSIDIES_FROM(var, start) FOR_ALL_ITEMS_FROM(Subsidy, subsidy_index, var, start)
 #define FOR_ALL_SUBSIDIES(var) FOR_ALL_SUBSIDIES_FROM(var, 0)

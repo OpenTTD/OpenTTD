@@ -154,13 +154,11 @@ static const Colour _palettes[][256] = {
 #define GET_PALETTE(x) _palettes[x]
 
 /** Description of the length of the palette cycle animations */
-enum {
-	EPV_CYCLES_DARK_WATER    =  5, ///< length of the dark blue water animation
-	EPV_CYCLES_LIGHTHOUSE    =  4, ///< length of the lighthouse/stadium animation
-	EPV_CYCLES_OIL_REFINERY  =  7, ///< length of the oil refinery's fire animation
-	EPV_CYCLES_FIZZY_DRINK   =  5, ///< length of the fizzy drinks animation
-	EPV_CYCLES_GLITTER_WATER = 15, ///< length of the glittery water animation
-};
+static const uint EPV_CYCLES_DARK_WATER    =  5; ///< length of the dark blue water animation
+static const uint EPV_CYCLES_LIGHTHOUSE    =  4; ///< length of the lighthouse/stadium animation
+static const uint EPV_CYCLES_OIL_REFINERY  =  7; ///< length of the oil refinery's fire animation
+static const uint EPV_CYCLES_FIZZY_DRINK   =  5; ///< length of the fizzy drinks animation
+static const uint EPV_CYCLES_GLITTER_WATER = 15; ///< length of the glittery water animation
 
 /** Description of tables for the palette animation */
 struct ExtraPaletteValues {

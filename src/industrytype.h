@@ -21,7 +21,7 @@
 #include "cargo_type.h"
 #include "newgrf_commons.h"
 
-enum {
+enum IndustryCleanupType {
 	CLEAN_RANDOMSOUNDS,    ///< Free the dynamically allocated sounds table
 	CLEAN_TILELAYOUT,      ///< Free the dynamically allocated tile layout structure
 };

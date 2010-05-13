@@ -26,7 +26,7 @@ enum {
 };
 
 /** Airport types */
-enum {
+enum AirportTypes {
 	AT_SMALL         =   0,
 	AT_LARGE         =   1,
 	AT_HELIPORT      =   2,
@@ -43,7 +43,7 @@ enum {
 	AT_DUMMY         = 255
 };
 
-enum {
+enum AirportMovingDataFlags {
 	AMED_NOSPDCLAMP = 1 << 0,
 	AMED_TAKEOFF    = 1 << 1,
 	AMED_SLOWTURN   = 1 << 2,
@@ -56,7 +56,7 @@ enum {
 };
 
 /* Movement States on Airports (headings target) */
-enum {
+enum AirportMovementStates {
 	TO_ALL         =  0,
 	HANGAR         =  1,
 	TERM1          =  2,

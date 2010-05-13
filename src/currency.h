@@ -15,12 +15,10 @@
 #include "date_type.h"
 #include "strings_type.h"
 
-enum {
-	CF_NOEURO = 0,
-	CF_ISEURO = 1,
-	NUM_CURRENCY = 29,
-	CUSTOM_CURRENCY_ID = NUM_CURRENCY - 1
-};
+static const int CF_NOEURO = 0;
+static const int CF_ISEURO = 1;
+static const uint NUM_CURRENCY = 29;
+static const int CUSTOM_CURRENCY_ID = NUM_CURRENCY - 1;
 
 struct CurrencySpec {
 	uint16 rate;

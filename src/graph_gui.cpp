@@ -175,14 +175,12 @@ enum CompanyValueWidgets {
 
 struct BaseGraphWindow : Window {
 protected:
-	enum {
-		GRAPH_MAX_DATASETS = 32,
-		GRAPH_AXIS_LINE_COLOUR  = 215,
-		GRAPH_NUM_MONTHS = 24, ///< Number of months displayed in the graph.
+	static const int GRAPH_MAX_DATASETS     =  32;
+	static const int GRAPH_AXIS_LINE_COLOUR = 215;
+	static const int GRAPH_NUM_MONTHS       =  24; ///< Number of months displayed in the graph.
 
-		MIN_GRAPH_NUM_LINES_Y = 9,  ///< Minimal number of horizontal lines to draw.
-		MIN_GRID_PIXEL_SIZE   = 20, ///< Minimum distance between graph lines.
-	};
+	static const int MIN_GRAPH_NUM_LINES_Y  =   9; ///< Minimal number of horizontal lines to draw.
+	static const int MIN_GRID_PIXEL_SIZE    =  20; ///< Minimum distance between graph lines.
 
 	uint excluded_data; ///< bitmask of the datasets that shouldn't be displayed.
 	byte num_dataset;

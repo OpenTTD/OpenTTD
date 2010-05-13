@@ -312,9 +312,7 @@ private:
 	Town *town; ///< Town displayed by the window.
 
 public:
-	enum {
-		TVW_HEIGHT_NORMAL = 150,
-	};
+	static const int TVW_HEIGHT_NORMAL = 150;
 
 	TownViewWindow(const WindowDesc *desc, WindowNumber window_number) : Window()
 	{

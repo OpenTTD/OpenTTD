@@ -12,17 +12,24 @@
 #ifndef DATE_TYPE_H
 #define DATE_TYPE_H
 
+
+typedef int32  Date;      ///< The type to store our dates in
+typedef uint16 DateFract; ///< The fraction of a date we're in, i.e. the number of ticks since the last date changeover
+typedef int32  Ticks;     ///< The type to store ticks in
+
+typedef int32  Year;  ///< Type for the year, note: 0 based, i.e. starts at the year 0.
+typedef uint8  Month; ///< Type for the month, note: 0 based, i.e. 0 = January, 11 = December.
+typedef uint8  Day;   ///< Type for the day of the month, note: 1 based, first day of a month is 1.
+
 /**
  * 1 day is 74 ticks; _date_fract used to be uint16 and incremented by 885. On
  *                    an overflow the new day begun and 65535 / 885 = 74.
  * 1 tick is approximately 30 ms.
  * 1 day is thus about 2 seconds (74 * 30 = 2220) on a machine that can run OpenTTD normally
  */
-enum {
-	DAY_TICKS = 74,          ///< ticks per day
-	DAYS_IN_YEAR = 365,      ///< days per year
-	DAYS_IN_LEAP_YEAR = 366, ///< sometimes, you need one day more...
-};
+static const int DAY_TICKS         =  74; ///< ticks per day
+static const int DAYS_IN_YEAR      = 365; ///< days per year
+static const int DAYS_IN_LEAP_YEAR = 366; ///< sometimes, you need one day more...
 
 /*
  * ORIGINAL_BASE_YEAR, ORIGINAL_MAX_YEAR and DAYS_TILL_ORIGINAL_BASE_YEAR are
@@ -32,11 +39,11 @@ enum {
  */
 
 /** The minimum starting year/base year of the original TTD */
-#define ORIGINAL_BASE_YEAR 1920
+static const Year ORIGINAL_BASE_YEAR = 1920;
 /** The original ending year */
-#define ORIGINAL_END_YEAR 2051
+static const Year ORIGINAL_END_YEAR  = 2051;
 /** The maximum year of the original TTD */
-#define ORIGINAL_MAX_YEAR 2090
+static const Year ORIGINAL_MAX_YEAR  = 2090;
 
 /**
  * Calculate the number of leap years till a given year.
@@ -66,27 +73,19 @@ enum {
 #define DAYS_TILL_ORIGINAL_BASE_YEAR DAYS_TILL(ORIGINAL_BASE_YEAR)
 
 /** The absolute minimum & maximum years in OTTD */
-#define MIN_YEAR 0
+static const Year MIN_YEAR = 0;
 
 /** The default starting year */
-#define DEF_START_YEAR 1950
+static const Year DEF_START_YEAR = 1950;
 
 /**
  * MAX_YEAR, nicely rounded value of the number of years that can
  * be encoded in a single 32 bits date, about 2^31 / 366 years.
  */
-#define MAX_YEAR 5000000
+static const Year MAX_YEAR  = 5000000;
 
 /** The number of days till the last day */
 #define MAX_DAY (DAYS_TILL(MAX_YEAR + 1) - 1)
-
-typedef int32  Date;      ///< The type to store our dates in
-typedef uint16 DateFract; ///< The fraction of a date we're in, i.e. the number of ticks since the last date changeover
-typedef int32  Ticks;     ///< The type to store ticks in
-
-typedef int32  Year;  ///< Type for the year, note: 0 based, i.e. starts at the year 0.
-typedef uint8  Month; ///< Type for the month, note: 0 based, i.e. 0 = January, 11 = December.
-typedef uint8  Day;   ///< Type for the day of the month, note: 1 based, first day of a month is 1.
 
 /**
  * Data structure to convert between Date and triplet (year, month, and day).

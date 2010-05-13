@@ -22,16 +22,14 @@
  * construction. */
 static const byte TOWN_HOUSE_COMPLETED = 3;
 
-enum {
-	HOUSE_NO_CLASS   = 0,
-	NEW_HOUSE_OFFSET = 110,
-	HOUSE_MAX        = 512,
-	INVALID_HOUSE_ID = 0xFFFF,
+static const uint HOUSE_NO_CLASS      = 0;
+static const HouseID NEW_HOUSE_OFFSET = 110;
+static const HouseID HOUSE_MAX        = 512;
+static const HouseID INVALID_HOUSE_ID = 0xFFFF;
 
-	/* There can only be as many classes as there are new houses, plus one for
-	 * NO_CLASS, as the original houses don't have classes. */
-	HOUSE_CLASS_MAX  = HOUSE_MAX - NEW_HOUSE_OFFSET + 1,
-};
+/** There can only be as many classes as there are new houses, plus one for
+ * NO_CLASS, as the original houses don't have classes. */
+static const uint HOUSE_CLASS_MAX  = HOUSE_MAX - NEW_HOUSE_OFFSET + 1;
 
 enum BuildingFlags {
 	TILE_NO_FLAG         =       0,

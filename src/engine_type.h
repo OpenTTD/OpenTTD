@@ -71,7 +71,7 @@ struct ShipVehicleInfo {
 /* AircraftVehicleInfo subtypes, bitmask type.
  * If bit 0 is 0 then it is a helicopter, otherwise it is a plane
  * in which case bit 1 tells us whether it's a big(fast) plane or not */
-enum {
+enum AircraftSubTypeBits {
 	AIR_HELI = 0,
 	AIR_CTOL = 1, ///< Conventional Take Off and Landing, i.e. planes
 	AIR_FAST = 2
@@ -125,7 +125,7 @@ struct EngineInfo {
 /**
  * EngineInfo.misc_flags is a bitmask, with the following values
  */
-enum {
+enum EngineMiscFlags {
 	EF_RAIL_TILTS = 0, ///< Rail vehicle tilts in curves
 	EF_ROAD_TRAM  = 0, ///< Road vehicle is a tram/light rail vehicle
 	EF_USES_2CC   = 1, ///< Vehicle uses two company colours
@@ -135,17 +135,15 @@ enum {
 /**
  * Engine.flags is a bitmask, with the following values.
  */
-enum {
+enum EngineFlags {
 	ENGINE_AVAILABLE         = 1, ///< This vehicle is available to everyone.
 	ENGINE_EXCLUSIVE_PREVIEW = 2, ///< This vehicle is in the exclusive preview stage, either being used or being offered to a company.
 	ENGINE_OFFER_WINDOW_OPEN = 4, ///< The exclusive offer window is currently open for a company.
 };
 
-enum {
-	NUM_VEHICLE_TYPES             =   6,
-	MAX_LENGTH_ENGINE_NAME_BYTES  =  31, ///< The maximum length of an engine name in bytes including '\0'
-	MAX_LENGTH_ENGINE_NAME_PIXELS = 160, ///< The maximum length of an engine name in pixels
-};
+static const uint NUM_VEHICLE_TYPES             =   6;
+static const uint MAX_LENGTH_ENGINE_NAME_BYTES  =  31; ///< The maximum length of an engine name in bytes including '\0'
+static const uint MAX_LENGTH_ENGINE_NAME_PIXELS = 160; ///< The maximum length of an engine name in pixels
 
 static const EngineID INVALID_ENGINE = 0xFFFF;
 

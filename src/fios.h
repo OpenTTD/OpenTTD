@@ -15,7 +15,7 @@
 #include "strings_type.h"
 #include "core/smallvec_type.hpp"
 
-enum {
+enum FileSlots {
 	/**
 	 * Slot used for the GRF scanning and such. This slot cannot be reused
 	 * as it will otherwise cause issues when pressing "rescan directories".
@@ -80,7 +80,7 @@ struct SmallFiosItem {
 	char title[255];      ///< internal name of the game
 };
 
-enum {
+enum SortingBits {
 	SORT_ASCENDING  = 0,
 	SORT_DESCENDING = 1,
 	SORT_BY_DATE    = 0,

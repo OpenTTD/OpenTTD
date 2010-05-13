@@ -196,11 +196,9 @@ static const uint64 MAX_INFLATION = (1ull << (63 - 32)) - 1;
  * Increasing base prices by factor 65536 should be enough.
  * @see MAX_INFLATION
  */
-enum {
-	MIN_PRICE_MODIFIER = -8,
-	MAX_PRICE_MODIFIER = 16,
-	INVALID_PRICE_MODIFIER = MIN_PRICE_MODIFIER - 1,
-};
+static const int MIN_PRICE_MODIFIER = -8;
+static const int MAX_PRICE_MODIFIER = 16;
+static const int INVALID_PRICE_MODIFIER = MIN_PRICE_MODIFIER - 1;
 
 struct CargoPayment;
 typedef uint32 CargoPaymentID;

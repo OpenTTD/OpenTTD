@@ -33,10 +33,8 @@ static inline StationID GetStationIndex(TileIndex t)
 }
 
 
-enum {
-	GFX_DOCK_BASE_WATER_PART          =  4,
-	GFX_TRUCK_BUS_DRIVETHROUGH_OFFSET =  4,
-};
+static const int GFX_DOCK_BASE_WATER_PART          =  4;
+static const int GFX_TRUCK_BUS_DRIVETHROUGH_OFFSET =  4;
 
 /**
  * Get the station type of this tile

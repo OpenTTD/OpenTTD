@@ -139,7 +139,7 @@ public:
  *
  * @see _command_proc_table
  */
-enum {
+enum Commands {
 	CMD_BUILD_RAILROAD_TRACK,         ///< build a rail track
 	CMD_REMOVE_RAILROAD_TRACK,        ///< remove a rail track
 	CMD_BUILD_SINGLE_RAIL,            ///< build a single rail track
@@ -322,7 +322,7 @@ DECLARE_ENUM_AS_BIT_SET(DoCommandFlag)
  *
  * This enumeration defines some flags which are binary-or'ed on a command.
  */
-enum {
+enum FlaggedCommands {
 	CMD_NETWORK_COMMAND       = 0x0100, ///< execute the command without sending it on the network
 	CMD_NO_TEST_IF_IN_NETWORK = 0x0200, ///< When enabled, the command will bypass the no-DC_EXEC round if in network
 	CMD_FLAGS_MASK            = 0xFF00, ///< mask for all command flags
@@ -334,7 +334,7 @@ enum {
  *
  * This enumeration defines flags for the _command_proc_table.
  */
-enum {
+enum CommandFlags {
 	CMD_SERVER    = 0x01, ///< the command can only be initiated by the server
 	CMD_SPECTATOR = 0x02, ///< the command may be initiated by a spectator
 	CMD_OFFLINE   = 0x04, ///< the command cannot be executed in a multiplayer game; single-player only

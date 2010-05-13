@@ -163,7 +163,7 @@ enum OrderDepotAction {
 
 
 /* Possible clone options */
-enum {
+enum CloneOptions {
 	CO_SHARE   = 0,
 	CO_COPY    = 1,
 	CO_UNSHARE = 2
