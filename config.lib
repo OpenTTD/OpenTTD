@@ -1163,6 +1163,11 @@ make_compiler_cflags() {
 		if [ $enable_assert -eq 0 ]; then
 			# Do not warn about unused variables when building without asserts
 			flags="$flags -Wno-unused-variable"
+			if [ $cc_version -ge 46 ]; then
+				# GCC 4.6 gives more warnings, disable them too
+				flags="$flags -Wno-unused-but-set-variable"
+				flags="$flags -Wno-unused-but-set-parameter"
+			fi
 		fi
 
 		if [ $cc_version -ge 40 ]; then
