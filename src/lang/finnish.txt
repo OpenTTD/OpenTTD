@@ -2781,6 +2781,8 @@ STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Nimeä l
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Nimeä lentokonetyyppi uudelleen.
 
 # Depot window
+STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
+
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -2960,7 +2962,11 @@ STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Ei pys�
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Kohde: {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Kohde: {WAYPOINT}, {VELOCITY}
 
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE}Suuntana {DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Suuntana {DEPOT}, {VELOCITY}
 
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}Huolto kohteessa {DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Huolto kohteessa {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
 STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Pysäytetty
@@ -3142,6 +3148,7 @@ STR_ORDER_TRAIN_DEPOT                                           :Junavarikko
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Varikko
 STR_ORDER_SHIP_DEPOT                                            :Varikko
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
+STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 STR_ORDER_REFIT_ORDER                                           :(Sovita {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Sovita rahtityypiksi {STRING} ja pysähdy)
@@ -3482,6 +3489,7 @@ STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Veturita
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Autovarikkoa ei voi rakentaa.
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Tähän ei voi rakentaa varikkoa.
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Telakkaa ei voi rakentaa.
+
 
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Juna täytyy pysäyttää veturitallin sisällä
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... sen pitää olla pysähtyneenä huoltoasemalle
@@ -4052,6 +4060,14 @@ STR_FORMAT_GROUP_NAME                                           :Ryhmä {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} ({STRING})
 STR_FORMAT_WAYPOINT_NAME                                        :Reittipiste: {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Reittipiste: {TOWN} #{COMMA}
+
+STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} Veturitalli
+STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} Veturitalli #{COMMA}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} Ajoneuvovarikko
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} Ajoneuvovarikko #{COMMA}
+STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} Telakka
+STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} Telakka #{COMMA}
+STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{STATION} Lentokonehalli
 
 STR_UNKNOWN_STATION                                             :tuntematon asema
 STR_DEFAULT_SIGN_NAME                                           :Kyltti

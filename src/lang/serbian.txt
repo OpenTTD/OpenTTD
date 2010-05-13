@@ -2976,6 +2976,10 @@ STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Promena 
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Promena naziva vrste letilice
 
 # Depot window
+STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
+
+STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}Promena imena depoa
+STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Preimenuj depo
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -3165,7 +3169,11 @@ STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Nema na
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Ide ka {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Ide ka {WAYPOINT}, {VELOCITY}
 
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE}Ide ka {DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Ide ka {DEPOT}, {VELOCITY}
 
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}Servisiranje u {DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Servisiranje u {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
 STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Zaustavljeno
@@ -3347,6 +3355,7 @@ STR_ORDER_TRAIN_DEPOT                                           :Železnički De
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Drumski Depo
 STR_ORDER_SHIP_DEPOT                                            :Brodogradilište
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
+STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 STR_ORDER_REFIT_ORDER                                           :(Prepravi za {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Prepravi za {STRING} i stani)
@@ -3687,6 +3696,8 @@ STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Izgradnj
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Izgradnja drumskog depoa ovde nije moguća...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Izgradnja tramvajkog depoa ovde nije moguća...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Ovde nije moguće izgraditi brodski hangar
+
+STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Ovaj depo se ne može preimenovati...
 
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Voz se mora zaustaviti u nekom depou
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... mora se zaustaviti unutar depoa za drumska vozila
@@ -4258,6 +4269,14 @@ STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 STR_FORMAT_WAYPOINT_NAME                                        :{TOWN} Putanja
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN} Putanja #{COMMA}
 
+STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} Železnički depo
+STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} Železnički depo #{COMMA}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} Drumski depo
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} Drumski depo #{COMMA}
+STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} Brodski hangar
+STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} Brodski hangar #{COMMA}
+STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{STATION} Hangar
+
 STR_UNKNOWN_STATION                                             :nepoznata stanica
 STR_DEFAULT_SIGN_NAME                                           :Znak
 STR_COMPANY_SOMEONE                                             :neko
@@ -4283,6 +4302,7 @@ STR_VIEWPORT_WAYPOINT_TINY                                      :{TINYFONT}{WAYP
 # Simple strings to get specific types of data
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
+STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}

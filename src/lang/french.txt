@@ -2473,7 +2473,7 @@ STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Augmente
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}Supprimer
 STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Supprimer complètement cette ville
 
-STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Renommer Ville
+STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Renommer la ville
 
 # Town local authority window
 STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}Municipalité de {TOWN}
@@ -2623,9 +2623,9 @@ STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Choix d'
 STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Couleur
 STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Change la couleur des véhicules
 STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Nom de la société
-STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Change le nom de la compagnie
+STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Changer le nom de la compagnie
 STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Nom du P.D.G.
-STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Change le nom du président directeur général
+STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Changer le nom du président directeur général
 
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Acheter 25% de la compagnie
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Vendre 25% de la compagnie
@@ -2772,9 +2772,9 @@ STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}Renommer
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Renommer
 
 STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Renommer le type du véhicule
-STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Renommer type de véhicule routier
-STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Renommer type de navire
-STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Renommer type d'aéronef
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Renommer le type de véhicule routier
+STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Renommer le type de navire
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Renommer le type d'aéronef
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Renommer le type de train
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Renommer type de véhicule routier
@@ -2782,6 +2782,10 @@ STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Renommer
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Renommer type d'aéronef
 
 # Depot window
+STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
+
+STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}Changer le nom du dépôt
+STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Renommer le dépôt
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -2961,7 +2965,11 @@ STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Aucun o
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}En route pour {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}En route pour {WAYPOINT}, {VELOCITY}
 
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE}En route pour le {DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}En route pour le {DEPOT}, {VELOCITY}
 
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}Entretien au {DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Entretien au {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
 STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Arrêté
@@ -3143,6 +3151,7 @@ STR_ORDER_TRAIN_DEPOT                                           :dépôt ferrovi
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :dépôt routier
 STR_ORDER_SHIP_DEPOT                                            :dépôt naval
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {2:STRING} {1:STRING}
+STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 STR_ORDER_REFIT_ORDER                                           :(Réaménager pour {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Réaménager pour {STRING} et arrêt)
@@ -3483,6 +3492,8 @@ STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Impossib
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Impossible de construire un dépôt routier ici...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Impossible de construire un dépôt de tramway ici...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Impossible de construire le dépôt naval ici...
+
+STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Impossible de renommer le dépôt...
 
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Le train doit être stoppé dans un dépôt
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... doit être à l'arrêt dans un dépôt routier
@@ -4054,6 +4065,14 @@ STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 STR_FORMAT_WAYPOINT_NAME                                        :Point de contrôle de {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Point de contrôle de {TOWN} #{COMMA}
 
+STR_FORMAT_DEPOT_NAME_TRAIN                                     :Dépôt ferroviaire de {TOWN}
+STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :Dépôt ferroviaire de {TOWN} #{COMMA}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :Dépôt routier de {TOWN}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :Dépôt routier de {TOWN} #{COMMA}
+STR_FORMAT_DEPOT_NAME_SHIP                                      :Dépôt naval de {TOWN}
+STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :Dépôt naval de {TOWN} #{COMMA}
+STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :Hangar de {STATION}
+
 STR_UNKNOWN_STATION                                             :station inconnue
 STR_DEFAULT_SIGN_NAME                                           :Panneau
 STR_COMPANY_SOMEONE                                             :quelqu'un
@@ -4079,6 +4098,7 @@ STR_VIEWPORT_WAYPOINT_TINY                                      :{TINYFONT}{WAYP
 # Simple strings to get specific types of data
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
+STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}

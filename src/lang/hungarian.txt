@@ -2845,6 +2845,10 @@ STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Márkan�
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Márkanév megváltoztatása
 
 # Depot window
+STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
+
+STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}Járműtelep nevének megváltoztatása
+STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Járműtelep átnevezése
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -3021,10 +3025,14 @@ STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}{STATIO
 STR_VEHICLE_STATUS_NO_ORDERS                                    :{LTBLUE}Nincs menetrend
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Nincs menetrend, {VELOCITY}
 
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Úton {WAYPOINT} felé
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Úton {WAYPOINT} felé, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Útban {WAYPOINT} felé
+STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Útban {WAYPOINT} felé, {VELOCITY}
 
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE}Útban {DEPOT} felé
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Útban {DEPOT} felé, {VELOCITY}
 
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}Javítás {DEPOT} helyen
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Javítás {DEPOT} helyen, {VELOCITY}
 
 # Vehicle stopped/started animations
 STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Megállított
@@ -3206,6 +3214,7 @@ STR_ORDER_TRAIN_DEPOT                                           :járműtelepre
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :garázsba
 STR_ORDER_SHIP_DEPOT                                            :dokkba
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
+STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 STR_ORDER_REFIT_ORDER                                           :(Átalakít erre: {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(átalakít erre: {STRING}, és megáll)
@@ -3547,6 +3556,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Nem ép�
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Ide nem lehet remízt építeni...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Nem építhetsz ide dokkot...
 
+STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Nem nevezheted át a járműtelepet...
+
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}A járműtelepen kellene állnia ehhez
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... garázsban kellene állnia ehhez
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}A dokkban kellene állnia ehhez
@@ -3877,7 +3888,7 @@ STR_SV_STNAME_UPPER                                             :{STRING} Felső
 STR_SV_STNAME_LOWER                                             :{STRING} Alsó
 STR_SV_STNAME_HELIPORT                                          :{STRING} Helileszálló
 STR_SV_STNAME_FOREST                                            :{STRING} Erdőség
-STR_SV_STNAME_FALLBACK                                          :{STRING} {NUM}. Állomás
+STR_SV_STNAME_FALLBACK                                          :{STRING} {NUM}. sz. Állomás
 ############ end of savegame specific region!
 
 ##id 0x8000
@@ -4147,12 +4158,20 @@ STR_FORMAT_DATE_LONG                                            :{STRING} {STRIN
 STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
 
 STR_FORMAT_BUOY_NAME                                            :{TOWN} Bója
-STR_FORMAT_BUOY_NAME_SERIAL                                     :{TOWN} {COMMA}. Bója
+STR_FORMAT_BUOY_NAME_SERIAL                                     :{TOWN} {COMMA}. sz. Bója
 STR_FORMAT_COMPANY_NUM                                          :({COMMA}. vállalat)
 STR_FORMAT_GROUP_NAME                                           :{COMMA} csoport
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN}i {STRING}
 STR_FORMAT_WAYPOINT_NAME                                        :{TOWN}i Ellenőrző pont
-STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN}i {COMMA}. Ellenőrző pont
+STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN} {COMMA}. sz. Ellenőrző pont
+
+STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} Vasúti járműtelep
+STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} {COMMA}. sz. Vasúti Járműtelep
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} Garázs
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} {COMMA}. sz. Garázs
+STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} Dokk
+STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} {COMMA}. sz. Dokk
+STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{STATION} Hangár
 
 STR_UNKNOWN_STATION                                             :ismeretlen állomás
 STR_DEFAULT_SIGN_NAME                                           :Felirat
@@ -4179,6 +4198,7 @@ STR_VIEWPORT_WAYPOINT_TINY                                      :{TINYFONT}{WAYP
 # Simple strings to get specific types of data
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
+STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}

@@ -2877,6 +2877,10 @@ STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Preimenu
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Preimenuj vrstu zrakoplova
 
 # Depot window
+STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
+
+STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}Promijeniti ime depoa
+STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Preimenovati depo
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -3056,7 +3060,11 @@ STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Nema na
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Ide prema {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Ide prema {WAYPOINT}, {VELOCITY}
 
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE}Na putu za {DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Na putu za {DEPOT}, {VELOCITY}
 
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}Servis u {DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Servis u {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
 STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Zaustavljen
@@ -3238,6 +3246,7 @@ STR_ORDER_TRAIN_DEPOT                                           :Spremište vlak
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Spremište cestovnih vozila
 STR_ORDER_SHIP_DEPOT                                            :Spremište brodova
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
+STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 STR_ORDER_REFIT_ORDER                                           :(Prenamijeni u {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Prenamijeni u {STRING} i zaustavi se)
@@ -3578,6 +3587,8 @@ STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Ovdje ni
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Ovdje nije moguće izgraditi spremište cestovnih vozila...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Ovdje nije moguće izgraditi tramvajsko spremište...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Ovdje nije moguće izgraditi spremište brodova...
+
+STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Nije moguće preimenovati depo...
 
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Vlak mora biti zaustavljen unutar spremišta
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... mora biti zaustavljen unutar spremišta cestovnih vozila
@@ -4186,6 +4197,14 @@ STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 STR_FORMAT_WAYPOINT_NAME                                        :Čvorište {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Čvorište {TOWN} #{COMMA}
 
+STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} Depo za vlakove
+STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} Depo za vlakove #{COMMA}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} Depo za cestovna vozila
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} Depo za cestovna vozila #{COMMA}
+STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} Depo za brodove
+STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} Depo za brodove #{COMMA}
+STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{STATION} Hangar
+
 STR_UNKNOWN_STATION                                             :nepoznata postaja
 STR_DEFAULT_SIGN_NAME                                           :Znak
 STR_COMPANY_SOMEONE                                             :netko
@@ -4211,6 +4230,7 @@ STR_VIEWPORT_WAYPOINT_TINY                                      :{TINYFONT}{WAYP
 # Simple strings to get specific types of data
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
+STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}

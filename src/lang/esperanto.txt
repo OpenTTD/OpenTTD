@@ -216,6 +216,7 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
+
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Entajpu filtrotekston.
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Enigu ŝlosilvorton laŭ kiu filtri la liston
@@ -2312,6 +2313,13 @@ STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Aldonu l
 STR_NEWGRF_ADD_RESCAN_FILES                                     :{BLACK}Reserĉu dosierojn
 STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}Ĝisdatigu la liston da haveblaj NewGRF-dosieroj
 
+# NewGRF inspect window
+
+
+
+# Sprite aligner window
+
+
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Averto: {SILVER}{STRING}
@@ -2693,6 +2701,7 @@ STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Alinomi 
 
 # Depot window
 
+
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} veturilo{P "" j}{STRING}
@@ -2872,6 +2881,8 @@ STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Irante 
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Irante al {WAYPOINT}, {VELOCITY}
 
 
+
+# Vehicle stopped/started animations
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Detaloj)
@@ -3357,6 +3368,7 @@ STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Ne povas
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Ne povas konstrui stratveturilan garaĝon ĉi tie...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Ne povas konstrui tramgaraĝon ĉi tie...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Ne povas konstrui ŝipgaraĝon ĉi tie...
+
 
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Trajno estu haltita en garaĝo
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... devas esti halta en stratveturila garaĝo
@@ -3922,6 +3934,8 @@ STR_FORMAT_GROUP_NAME                                           :Group {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 STR_FORMAT_WAYPOINT_NAME                                        :Vojpunkto {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Vojpunkto {TOWN} #{COMMA}
+
+STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{STATION} Hangaro
 
 STR_UNKNOWN_STATION                                             :nekonata stacio
 STR_DEFAULT_SIGN_NAME                                           :Signo

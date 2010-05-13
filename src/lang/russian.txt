@@ -2044,7 +2044,7 @@ STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}Вкл
 STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Не показывать зону покрытия
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Показывать зону покрытия
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Принимается: {GOLD}{STRING}
-STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Отправляются: {GOLD}{STRING}
+STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Отправляется: {GOLD}{STRING}
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Объединить станции
@@ -2950,6 +2950,10 @@ STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Назв
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Название модели возд. судна
 
 # Depot window
+STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
+
+STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}Переименовать депо
+STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Переименовать депо
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -3123,12 +3127,12 @@ STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Теку
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Разгрузка/Погрузка
 STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Отъезжает
-STR_VEHICLE_STATUS_CRASHED                                      :{RED}Потерпел крушение!
+STR_VEHICLE_STATUS_CRASHED                                      :{RED}Уничтожен!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Поломка
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Остановлен
 STR_VEHICLE_STATUS_TRAIN_STOPPING                               :{RED}Остановлен
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Останавливается; {VELOCITY}
-STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Нет тока.
+STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Нет тока
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Ожидает свободного пути
 
 STR_VEHICLE_STATUS_HEADING_FOR_STATION                          :{LTBLUE}Идёт к {STATION}
@@ -3139,7 +3143,11 @@ STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Нет 
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Идёт к {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Идёт к {WAYPOINT}; {VELOCITY}
 
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE}Идёт в {DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Идёт в {DEPOT}; {VELOCITY}
 
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}Обслуж. в {DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Обслуж. в {DEPOT}; {VELOCITY}
 
 # Vehicle stopped/started animations
 STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Остановлен
@@ -3244,9 +3252,7 @@ STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Конец 
 # Order bottom buttons
 STR_ORDER_NON_STOP                                              :{BLACK}Без остановок
 STR_ORDER_GO_TO                                                 :Идти в
-STR_ORDER_GO_TO.dat                                             :Идти к
 STR_ORDER_GO_NON_STOP_TO                                        :Идти без остановок в
-STR_ORDER_GO_NON_STOP_TO.dat                                    :Идти без остановок к
 STR_ORDER_GO_VIA                                                :Идти через
 STR_ORDER_GO_NON_STOP_VIA                                       :Идти без остановок через
 STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Изменить режим остановок при выполнении выделенного задания
@@ -3322,13 +3328,11 @@ STR_ORDER_SERVICE_NON_STOP_AT.dat                               :Для прох
 STR_ORDER_NEAREST_DEPOT                                         :ближайший
 STR_ORDER_NEAREST_DEPOT.dat                                     :ближайшему
 STR_ORDER_NEAREST_HANGAR                                        :ближайший ангар
-STR_ORDER_NEAREST_HANGAR.dat                                    :ближайшему ангару
 STR_ORDER_TRAIN_DEPOT                                           :депо
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :гараж
-STR_ORDER_ROAD_VEHICLE_DEPOT.dat                                :гаражу
 STR_ORDER_SHIP_DEPOT                                            :док
-STR_ORDER_SHIP_DEPOT.dat                                        :доку
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING.dat} {STRING.dat} {STRING.dat}
+STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 STR_ORDER_REFIT_ORDER                                           :(Переоборуд. под {STRING.acc})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Переоборуд. под {STRING.acc} и стоп)
@@ -3669,6 +3673,8 @@ STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Здес
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Здесь невозможно построить гараж...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Здесь невозможно построить трамвайное депо...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Здесь невозможно построить док...
+
+STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Невозможно переименовать депо...
 
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Поезд должен быть остановлен в депо
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... должен быть остановлен в гараже
@@ -4240,6 +4246,14 @@ STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING} {0:T
 STR_FORMAT_WAYPOINT_NAME                                        :Точка пути {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Точка пути {TOWN} #{COMMA}
 
+STR_FORMAT_DEPOT_NAME_TRAIN                                     :Депо {TOWN}
+STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :Депо {TOWN} #{COMMA}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :Гараж {TOWN}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :Гараж {TOWN} #{COMMA}
+STR_FORMAT_DEPOT_NAME_SHIP                                      :Док {TOWN}
+STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :Док {TOWN} #{COMMA}
+STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :Ангар - {STATION}
+
 STR_UNKNOWN_STATION                                             :неизвестная странция
 STR_DEFAULT_SIGN_NAME                                           :Знак
 STR_COMPANY_SOMEONE                                             :кто-нибудь
@@ -4265,6 +4279,7 @@ STR_VIEWPORT_WAYPOINT_TINY                                      :{TINYFONT}{WAYP
 # Simple strings to get specific types of data
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
+STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}
