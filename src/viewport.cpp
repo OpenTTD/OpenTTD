@@ -386,8 +386,8 @@ static Point TranslateXYToTileCoord(const ViewPort *vp, int x, int y)
 	/* we need to move variables in to the valid range, as the
 	 * GetTileZoomCenterWindow() function can call here with invalid x and/or y,
 	 * when the user tries to zoom out along the sides of the map */
-	a = Clamp(a, -4 * TILE_SIZE, (int)(MapMaxX() * TILE_SIZE) - 1);
-	b = Clamp(b, -4 * TILE_SIZE, (int)(MapMaxY() * TILE_SIZE) - 1);
+	a = Clamp(a, -4 * (int)TILE_SIZE, (int)(MapMaxX() * TILE_SIZE) - 1);
+	b = Clamp(b, -4 * (int)TILE_SIZE, (int)(MapMaxY() * TILE_SIZE) - 1);
 
 	/* (a, b) is the X/Y-world coordinate that belongs to (x,y) if the landscape would be completely flat on height 0.
 	 * Now find the Z-world coordinate by fix point iteration.
@@ -2330,9 +2330,9 @@ static void CalcRaildirsDrawstyle(TileHighlightData *thd, int x, int y, int meth
 					/* 'Build' the last half rail tile if needed */
 					if ((offset & TILE_UNIT_MASK) > (TILE_SIZE / 2)) {
 						if (dx + dy >= (int)TILE_SIZE) {
-							x += (dx + dy < 0) ? TILE_SIZE : -TILE_SIZE;
+							x += (dx + dy < 0) ? TILE_SIZE : -(int)TILE_SIZE;
 						} else {
-							y += (dx + dy < 0) ? TILE_SIZE : -TILE_SIZE;
+							y += (dx + dy < 0) ? TILE_SIZE : -(int)TILE_SIZE;
 						}
 					}
 
@@ -2365,9 +2365,9 @@ static void CalcRaildirsDrawstyle(TileHighlightData *thd, int x, int y, int meth
 					/* 'Build' the last half rail tile if needed */
 					if ((offset & TILE_UNIT_MASK) > (TILE_SIZE / 2)) {
 						if (dx - dy < 0) {
-							y += (dx > dy) ? TILE_SIZE : -TILE_SIZE;
+							y += (dx > dy) ? TILE_SIZE : -(int)TILE_SIZE;
 						} else {
-							x += (dx < dy) ? TILE_SIZE : -TILE_SIZE;
+							x += (dx < dy) ? TILE_SIZE : -(int)TILE_SIZE;
 						}
 					}
 

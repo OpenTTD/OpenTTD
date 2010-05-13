@@ -1533,7 +1533,7 @@ void DrawDirtyBlocks()
 
 			}
 		} while (b++, (x += DIRTY_BLOCK_WIDTH) != w);
-	} while (b += -(w / DIRTY_BLOCK_WIDTH) + _dirty_bytes_per_line, (y += DIRTY_BLOCK_HEIGHT) != h);
+	} while (b += -(int)(w / DIRTY_BLOCK_WIDTH) + _dirty_bytes_per_line, (y += DIRTY_BLOCK_HEIGHT) != h);
 
 	_invalid_rect.left = w;
 	_invalid_rect.top = h;

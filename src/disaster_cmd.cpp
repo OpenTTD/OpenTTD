@@ -525,13 +525,13 @@ static bool DisasterTick_Big_Ufo(DisasterVehicle *v)
 		}
 		DisasterVehicle *u = new DisasterVehicle();
 
-		InitializeDisasterVehicle(u, -6 * TILE_SIZE, v->y_pos, 135, DIR_SW, ST_BIG_UFO_DESTROYER);
+		InitializeDisasterVehicle(u, -6 * (int)TILE_SIZE, v->y_pos, 135, DIR_SW, ST_BIG_UFO_DESTROYER);
 		u->big_ufo_destroyer_target = v->index;
 
 		DisasterVehicle *w = new DisasterVehicle();
 
 		u->SetNext(w);
-		InitializeDisasterVehicle(w, -6 * TILE_SIZE, v->y_pos, 0, DIR_SW, ST_BIG_UFO_DESTROYER_SHADOW);
+		InitializeDisasterVehicle(w, -6 * (int)TILE_SIZE, v->y_pos, 0, DIR_SW, ST_BIG_UFO_DESTROYER_SHADOW);
 		w->vehstatus |= VS_SHADOW;
 	} else if (v->current_order.GetDestination() == 0) {
 		int x = TileX(v->dest_tile) * TILE_SIZE;
@@ -767,7 +767,7 @@ static void Disaster_Helicopter_Init()
 
 	DisasterVehicle *v = new DisasterVehicle();
 
-	int x = -16 * TILE_SIZE;
+	int x = -16 * (int)TILE_SIZE;
 	int y = TileY(found->location.tile) * TILE_SIZE + 37;
 
 	InitializeDisasterVehicle(v, x, y, 135, DIR_SW, ST_HELICOPTER);
