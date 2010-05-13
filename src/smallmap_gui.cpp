@@ -1304,7 +1304,7 @@ public:
 			sx = -hv.x;
 			sub = 0;
 		}
-		if (sx > (int)MapMaxX() * TILE_SIZE - hv.x) {
+		if (sx > (int)(MapMaxX() * TILE_SIZE) - hv.x) {
 			sx = MapMaxX() * TILE_SIZE - hv.x;
 			sub = 0;
 		}
@@ -1312,7 +1312,7 @@ public:
 			sy = -hv.y;
 			sub = 0;
 		}
-		if (sy > (int)MapMaxY() * TILE_SIZE - hv.y) {
+		if (sy > (int)(MapMaxY() * TILE_SIZE) - hv.y) {
 			sy = MapMaxY() * TILE_SIZE - hv.y;
 			sub = 0;
 		}

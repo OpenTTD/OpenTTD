@@ -156,7 +156,7 @@ static CommandCost TerraformTileHeight(TerraformerState *ts, TileIndex tile, int
 
 	/* Check range of destination height */
 	if (height < 0) return_cmd_error(STR_ERROR_ALREADY_AT_SEA_LEVEL);
-	if (height > MAX_TILE_HEIGHT) return_cmd_error(STR_ERROR_TOO_HIGH);
+	if (height > (int)MAX_TILE_HEIGHT) return_cmd_error(STR_ERROR_TOO_HIGH);
 
 	/*
 	 * Check if the terraforming has any effect.

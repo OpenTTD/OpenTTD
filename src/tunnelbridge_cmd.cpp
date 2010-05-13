@@ -861,7 +861,7 @@ static void DrawBridgePillars(const PalSpriteID *psid, const TileInfo *ti, Axis 
 			}
 
 			/* Draw back facing pillar, but not the highest part directly under the bridge-floor */
-			if (drawfarpillar && cur_z >= back_height && cur_z < z_bridge - TILE_HEIGHT) {
+			if (drawfarpillar && cur_z >= back_height && cur_z < z_bridge - (int)TILE_HEIGHT) {
 				AddSortableSpriteToDraw(image, psid->pal, x_back, y_back, w, h, BB_HEIGHT_UNDER_BRIDGE - 5, cur_z, IsTransparencySet(TO_BRIDGES), 0, 0, -5);
 			}
 		}

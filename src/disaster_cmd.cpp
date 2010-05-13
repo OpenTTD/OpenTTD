@@ -221,7 +221,7 @@ static bool DisasterTick_Zeppeliner(DisasterVehicle *v)
 			}
 		}
 
-		if (v->y_pos >= ((int)MapSizeY() + 9) * TILE_SIZE - 1) {
+		if (v->y_pos >= (int)((MapSizeY() + 9) * TILE_SIZE - 1)) {
 			delete v;
 			return false;
 		}
@@ -291,7 +291,7 @@ static bool DisasterTick_Ufo(DisasterVehicle *v)
 		/* Fly around randomly */
 		int x = TileX(v->dest_tile) * TILE_SIZE;
 		int y = TileY(v->dest_tile) * TILE_SIZE;
-		if (Delta(x, v->x_pos) + Delta(y, v->y_pos) >= TILE_SIZE) {
+		if (Delta(x, v->x_pos) + Delta(y, v->y_pos) >= (int)TILE_SIZE) {
 			v->direction = GetDirectionTowards(v, x, y);
 			GetNewVehiclePosResult gp = GetNewVehiclePos(v);
 			SetDisasterVehiclePos(v, gp.x, gp.y, v->z_pos);
@@ -389,7 +389,7 @@ static bool DisasterTick_Aircraft(DisasterVehicle *v, uint16 image_override, boo
 	GetNewVehiclePosResult gp = GetNewVehiclePos(v);
 	SetDisasterVehiclePos(v, gp.x, gp.y, v->z_pos);
 
-	if ((leave_at_top && gp.x < (-10 * TILE_SIZE)) || (!leave_at_top && gp.x > (int)MapSizeX() * TILE_SIZE + 9 * TILE_SIZE - 1)) {
+	if ((leave_at_top && gp.x < (-10 * (int)TILE_SIZE)) || (!leave_at_top && gp.x > (int)(MapSizeX() * TILE_SIZE + 9 * TILE_SIZE) - 1)) {
 		delete v;
 		return false;
 	}
@@ -505,7 +505,7 @@ static bool DisasterTick_Big_Ufo(DisasterVehicle *v)
 		Vehicle *target;
 		FOR_ALL_VEHICLES(target) {
 			if (target->type == VEH_TRAIN || target->type == VEH_ROAD) {
-				if (Delta(target->x_pos, v->x_pos) + Delta(target->y_pos, v->y_pos) <= 12 * TILE_SIZE) {
+				if (Delta(target->x_pos, v->x_pos) + Delta(target->y_pos, v->y_pos) <= 12 * (int)TILE_SIZE) {
 					target->breakdown_ctr = 5;
 					target->breakdown_delay = 0xF0;
 				}
@@ -536,7 +536,7 @@ static bool DisasterTick_Big_Ufo(DisasterVehicle *v)
 	} else if (v->current_order.GetDestination() == 0) {
 		int x = TileX(v->dest_tile) * TILE_SIZE;
 		int y = TileY(v->dest_tile) * TILE_SIZE;
-		if (Delta(x, v->x_pos) + Delta(y, v->y_pos) >= TILE_SIZE) {
+		if (Delta(x, v->x_pos) + Delta(y, v->y_pos) >= (int)TILE_SIZE) {
 			v->direction = GetDirectionTowards(v, x, y);
 			GetNewVehiclePosResult gp = GetNewVehiclePos(v);
 			SetDisasterVehiclePos(v, gp.x, gp.y, v->z_pos);
@@ -576,14 +576,14 @@ static bool DisasterTick_Big_Ufo_Destroyer(DisasterVehicle *v)
 	GetNewVehiclePosResult gp = GetNewVehiclePos(v);
 	SetDisasterVehiclePos(v, gp.x, gp.y, v->z_pos);
 
-	if (gp.x > (int)MapSizeX() * TILE_SIZE + 9 * TILE_SIZE - 1) {
+	if (gp.x > (int)(MapSizeX() * TILE_SIZE + 9 * TILE_SIZE) - 1) {
 		delete v;
 		return false;
 	}
 
 	if (v->current_order.GetDestination() == 0) {
 		Vehicle *u = Vehicle::Get(v->big_ufo_destroyer_target);
-		if (Delta(v->x_pos, u->x_pos) > TILE_SIZE) return true;
+		if (Delta(v->x_pos, u->x_pos) > (int)TILE_SIZE) return true;
 		v->current_order.SetDestination(1);
 
 		CreateEffectVehicleRel(u, 0, 7, 8, EV_EXPLOSION_LARGE);

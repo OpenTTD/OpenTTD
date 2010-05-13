@@ -12,18 +12,16 @@
 #ifndef TILE_TYPE_H
 #define TILE_TYPE_H
 
+static const uint TILE_SIZE      = 16;            ///< Tiles are 16x16 "units" in size
+static const uint TILE_UNIT_MASK = TILE_SIZE - 1; ///< for masking in/out the inner-tile units.
+static const uint TILE_PIXELS    = 32;            ///< a tile is 32x32 pixels
+static const uint TILE_HEIGHT    =  8;            ///< The standard height-difference between tiles on two levels is 8 (z-diff 8)
 
-enum {
-	TILE_SIZE      = 16,            ///< Tiles are 16x16 "units" in size
-	TILE_UNIT_MASK = TILE_SIZE - 1, ///< for masking in/out the inner-tile units.
-	TILE_PIXELS    = 32,            ///< a tile is 32x32 pixels
-	TILE_HEIGHT    =  8,            ///< The standard height-difference between tiles on two levels is 8 (z-diff 8)
+static const uint MAX_TILE_HEIGHT     = 15;                    ///< Maximum allowed tile height
 
-	MAX_TILE_HEIGHT     = 15,                    ///< Maximum allowed tile height
-	MIN_SNOWLINE_HEIGHT = 2,                     ///< Minimum snowline height
-	DEF_SNOWLINE_HEIGHT = 7,                     ///< Default snowline height
-	MAX_SNOWLINE_HEIGHT = (MAX_TILE_HEIGHT - 2), ///< Maximum allowed snowline height
-};
+static const uint MIN_SNOWLINE_HEIGHT = 2;                     ///< Minimum snowline height
+static const uint DEF_SNOWLINE_HEIGHT = 7;                     ///< Default snowline height
+static const uint MAX_SNOWLINE_HEIGHT = (MAX_TILE_HEIGHT - 2); ///< Maximum allowed snowline height
 
 
 /**

@@ -1017,8 +1017,8 @@ static void ViewportAddLandscape()
 
 	do {
 		int width_cur = width;
-		int x_cur = x;
-		int y_cur = y;
+		uint x_cur = x;
+		uint y_cur = y;
 
 		do {
 			TileType tt = MP_VOID;
@@ -1031,8 +1031,8 @@ static void ViewportAddLandscape()
 			ti.tileh = SLOPE_FLAT;
 			ti.tile = INVALID_TILE;
 
-			if (0 <= x_cur && x_cur < (int)MapMaxX() * TILE_SIZE &&
-					0 <= y_cur && y_cur < (int)MapMaxY() * TILE_SIZE) {
+			if (x_cur < MapMaxX() * TILE_SIZE &&
+					y_cur < MapMaxY() * TILE_SIZE) {
 				TileIndex tile = TileVirtXY(x_cur, y_cur);
 
 				if (!_settings_game.construction.freeform_edges || (TileX(tile) != 0 && TileY(tile) != 0)) {
@@ -2318,7 +2318,7 @@ static void CalcRaildirsDrawstyle(TileHighlightData *thd, int x, int y, int meth
 				} else {
 					/* We are not on a straight line. Determine the rail to build
 					 * based on whether we are above or below it. */
-					b = dx + dy >= TILE_SIZE ? HT_LINE | HT_DIR_HU : HT_LINE | HT_DIR_HL;
+					b = dx + dy >= (int)TILE_SIZE ? HT_LINE | HT_DIR_HU : HT_LINE | HT_DIR_HL;
 
 					/* Calculate where a horizontal line through the start point and
 					 * a vertical line from the selected end point intersect and
@@ -2329,7 +2329,7 @@ static void CalcRaildirsDrawstyle(TileHighlightData *thd, int x, int y, int meth
 
 					/* 'Build' the last half rail tile if needed */
 					if ((offset & TILE_UNIT_MASK) > (TILE_SIZE / 2)) {
-						if (dx + dy >= TILE_SIZE) {
+						if (dx + dy >= (int)TILE_SIZE) {
 							x += (dx + dy < 0) ? TILE_SIZE : -TILE_SIZE;
 						} else {
 							y += (dx + dy < 0) ? TILE_SIZE : -TILE_SIZE;
@@ -2341,7 +2341,7 @@ static void CalcRaildirsDrawstyle(TileHighlightData *thd, int x, int y, int meth
 					CheckUnderflow(y, x, 1);
 					CheckOverflow(x, y, (MapMaxX() - 1) * TILE_SIZE, 1);
 					CheckOverflow(y, x, (MapMaxY() - 1) * TILE_SIZE, 1);
-					assert(x >= 0 && y >= 0 && x <= (int)MapMaxX() * TILE_SIZE && y <= (int)MapMaxY() * TILE_SIZE);
+					assert(x >= 0 && y >= 0 && x <= (int)(MapMaxX() * TILE_SIZE) && y <= (int)(MapMaxY() * TILE_SIZE));
 				}
 				break;
 
@@ -2376,7 +2376,7 @@ static void CalcRaildirsDrawstyle(TileHighlightData *thd, int x, int y, int meth
 					CheckUnderflow(y, x, -1);
 					CheckOverflow(x, y, (MapMaxX() - 1) * TILE_SIZE, -1);
 					CheckOverflow(y, x, (MapMaxY() - 1) * TILE_SIZE, -1);
-					assert(x >= 0 && y >= 0 && x <= (int)MapMaxX() * TILE_SIZE && y <= (int)MapMaxY() * TILE_SIZE);
+					assert(x >= 0 && y >= 0 && x <= (int)(MapMaxX() * TILE_SIZE) && y <= (int)(MapMaxY() * TILE_SIZE));
 				}
 				break;
 
@@ -2390,18 +2390,18 @@ static void CalcRaildirsDrawstyle(TileHighlightData *thd, int x, int y, int meth
 			b = HT_RECT;
 		}
 	} else if (h == TILE_SIZE) { // Is this in X direction?
-		if (dx == TILE_SIZE) { // 2x1 special handling
+		if (dx == (int)TILE_SIZE) { // 2x1 special handling
 			b = (Check2x1AutoRail(3)) | HT_LINE;
-		} else if (dx == -TILE_SIZE) {
+		} else if (dx == -(int)TILE_SIZE) {
 			b = (Check2x1AutoRail(2)) | HT_LINE;
 		} else {
 			b = HT_LINE | HT_DIR_X;
 		}
 		y = thd->selstart.y;
 	} else if (w == TILE_SIZE) { // Or Y direction?
-		if (dy == TILE_SIZE) { // 2x1 special handling
+		if (dy == (int)TILE_SIZE) { // 2x1 special handling
 			b = (Check2x1AutoRail(1)) | HT_LINE;
-		} else if (dy == -TILE_SIZE) { // 2x1 other direction
+		} else if (dy == -(int)TILE_SIZE) { // 2x1 other direction
 			b = (Check2x1AutoRail(0)) | HT_LINE;
 		} else {
 			b = HT_LINE | HT_DIR_Y;
