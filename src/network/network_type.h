@@ -16,21 +16,20 @@
 
 #ifdef ENABLE_NETWORK
 
-enum {
-	/** How many clients can we have */
-	MAX_CLIENTS = 255,
+/** How many clients can we have */
+static const uint MAX_CLIENTS = 255;
 
-	/**
-	 * The number of slots; must be at least 1 more than MAX_CLIENTS. It must
-	 * furthermore be less than or equal to 256 as client indices (sent over
-	 * the network) are 8 bits. It needs 1 more for the dedicated server.
-	 */
-	MAX_CLIENT_SLOTS = 256,
+/**
+ * The number of slots; must be at least 1 more than MAX_CLIENTS. It must
+ * furthermore be less than or equal to 256 as client indices (sent over
+ * the network) are 8 bits. It needs 1 more for the dedicated server.
+ */
+static const uint MAX_CLIENT_SLOTS = 256;
 
-	/** How many vehicle/station types we put over the network */
-	NETWORK_VEHICLE_TYPES = 5,
-	NETWORK_STATION_TYPES = 5,
-};
+/** How many vehicle types we put over the network */
+static const uint NETWORK_VEHICLE_TYPES = 5;
+/** How many station types we put over the network */
+static const uint NETWORK_STATION_TYPES = 5;
 
 /** 'Unique' identifier to be given to clients */
 enum ClientID {

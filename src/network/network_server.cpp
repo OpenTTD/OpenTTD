@@ -1375,11 +1375,11 @@ void NetworkSocketHandler::Send_CompanyInformation(Packet *p, const Company *c, 
 	/* Send 1 if there is a passord for the company else send 0 */
 	p->Send_bool  (!StrEmpty(_network_company_states[c->index].password));
 
-	for (int i = 0; i < NETWORK_VEHICLE_TYPES; i++) {
+	for (uint i = 0; i < NETWORK_VEHICLE_TYPES; i++) {
 		p->Send_uint16(stats->num_vehicle[i]);
 	}
 
-	for (int i = 0; i < NETWORK_STATION_TYPES; i++) {
+	for (uint i = 0; i < NETWORK_STATION_TYPES; i++) {
 		p->Send_uint16(stats->num_station[i]);
 	}
 

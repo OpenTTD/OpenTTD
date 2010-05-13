@@ -27,7 +27,7 @@
  * it protects old clients from joining newer servers
  * (because SERVER_ERROR is the respond to a wrong revision)
  */
-enum {
+enum TCPPacketType {
 	PACKET_SERVER_FULL,
 	PACKET_SERVER_BANNED,
 	PACKET_CLIENT_JOIN,
