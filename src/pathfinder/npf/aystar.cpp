@@ -158,7 +158,7 @@ static int AyStarMain_CheckTile(AyStar *aystar, AyStarNode *current, OpenListNod
  */
 static int AyStarMain_Loop(AyStar *aystar)
 {
-	int i, r;
+	int i;
 
 	/* Get the best node from OpenList */
 	OpenListNode *current = AyStarMain_OpenList_Pop(aystar);
@@ -182,7 +182,7 @@ static int AyStarMain_Loop(AyStar *aystar)
 	/* Go through all neighbours */
 	for (i = 0; i < aystar->num_neighbours; i++) {
 		/* Check and add them to the OpenList if needed */
-		r = aystar->checktile(aystar, &aystar->neighbours[i], current);
+		aystar->checktile(aystar, &aystar->neighbours[i], current);
 	}
 
 	/* Free the node */

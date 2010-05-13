@@ -2183,7 +2183,6 @@ static ChangeInfoResult IndustrytilesChangeInfo(uint indtid, int numinfo, int pr
 
 				/* Allocate space for this industry. */
 				if (*tilespec == NULL) {
-					int tempid;
 					*tilespec = CallocT<IndustryTileSpec>(1);
 					tsp = *tilespec;
 
@@ -2199,7 +2198,7 @@ static ChangeInfoResult IndustrytilesChangeInfo(uint indtid, int numinfo, int pr
 					tsp->grf_prop.local_id = indtid + i;
 					tsp->grf_prop.subst_id = subs_id;
 					tsp->grf_prop.grffile = _cur_grffile;
-					tempid = _industile_mngr.AddEntityID(indtid + i, _cur_grffile->grfid, subs_id); // pre-reserve the tile slot
+					_industile_mngr.AddEntityID(indtid + i, _cur_grffile->grfid, subs_id); // pre-reserve the tile slot
 				}
 			} break;
 
