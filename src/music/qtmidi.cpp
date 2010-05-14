@@ -41,7 +41,7 @@
 static FMusicDriver_QtMidi iFMusicDriver_QtMidi;
 
 
-static const uint MIDI_TYPE = 'Midi' ///< OSType code for MIDI songs.
+static const uint MIDI_TYPE = 'Midi'; ///< OSType code for MIDI songs.
 
 
 /**
