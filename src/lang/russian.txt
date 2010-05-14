@@ -1450,12 +1450,12 @@ STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Мак�
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Макс. число открытых окон (не «приклеенных»): {ORANGE}не ограничено
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Скорость роста городов: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :нет
-STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :медленная
+STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :низкая
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :обычная
-STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :быстрая
-STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :очень быстрая
-STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}Количество городов, растущих вдвое быстрее: {ORANGE}1 из {STRING}
-STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}Количество городов, растущих вдвое быстрее: {ORANGE}нет
+STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :высокая
+STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :очень высокая
+STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}Количество мегаполисов: {ORANGE}1 из {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}Количество мегаполисов: {ORANGE}нет
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Изначальный множитель размера города: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Удалять бесполезные элементы дорог во время реконструкции: {ORANGE}{STRING}
 
@@ -1479,14 +1479,14 @@ STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Про�
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Алгоритм поиска пути для поездов: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Рекоменд.)
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Рекомендуется)
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Алгоритм поиска пути для автотранспорта: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_NPF             :NPF
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_YAPF            :YAPF {BLUE}(Рекоменд.)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_YAPF            :YAPF {BLUE}(Рекомендуется)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Алгоритм поиска путей для кораблей: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Оригин. {BLUE}(Рекоменд.)
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Оригинальный {BLUE}(Рекомендуется)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Не рекоменд.)
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Не рекомендуется)
 
 STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}Горизонтальный размер карты: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Вертикальный размер карты: {ORANGE}{STRING}
@@ -1564,7 +1564,7 @@ STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Вол�
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Туннели могут пересекаться: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Строить в режиме паузы: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Большие самолёты реже разбиваются в малых аэропортах: {ORANGE}{STRING}
-STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Сменить климат на: {ORANGE} {STRING}
+STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Сменить климат на: {ORANGE}{STRING}
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Умеренный ландшафт
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Субарктический ландшафт
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Субтропический ландшафт
@@ -2645,7 +2645,7 @@ STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Переиме�
 
 # Town local authority window
 STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}Администрация г.{NBSP}{TOWN}
-STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Рейтинг транспортной компании
+STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Рейтинг транспортных компаний
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Доступные действия:
 STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}То, что можно сделать в этом городе - кликните для получения доп. сведений
@@ -4252,7 +4252,7 @@ STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :Гараж {TOW
 STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :Гараж {TOWN} #{COMMA}
 STR_FORMAT_DEPOT_NAME_SHIP                                      :Док {TOWN}
 STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :Док {TOWN} #{COMMA}
-STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :Ангар - {STATION}
+STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :Ангар ({STATION})
 
 STR_UNKNOWN_STATION                                             :неизвестная странция
 STR_DEFAULT_SIGN_NAME                                           :Знак

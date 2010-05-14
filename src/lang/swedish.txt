@@ -445,6 +445,7 @@ STR_ABOUT_MENU_AI_DEBUG                                         :AI-felsökning
 STR_ABOUT_MENU_SCREENSHOT                                       :Skärmdump (Ctrl-S)
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Gigantisk skärmdump (Ctrl-G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Om 'OpenTTD'
+STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Spriteobjekt justering
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -2365,11 +2366,29 @@ STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}Uppdater
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspektera - {STRING}
+STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Förälder
+STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Inspektera förälderobjektet
 
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} vid {HEX}
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Spårtyp
 
+STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF variabel 60+x parameter (hexadecimal)
 
 # Sprite aligner window
+STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Justera spriteobjekt {COMMA} ({STRING})
+STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Nästa spriteobjekt
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Fortsätt till nästa nomala spriteobjekt, ignorera eventuella pseudo/recolour/font spriteobjekt och börja om vid slutet
+STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Gå till spriteobjekt
+STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Gå till angivet spriteobjekt. Om objektet inte är ett normalt spriteobjekt, fortsätt till nästa normala spriteobjekt
+STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Tidigare spriteobjekt
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Fortsätt till nästa normala spriteobjekt, ignorera eventuella pseudo/recolour/font spriteobjekt och börja om vid början
+STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Representation av det valda objektet. Justeringen ignoreras när objektet ritas.
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Flytta runt objektet, ändrar X och Y offsets
+STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X offset: {NUM}, Y offset: {NUM}
+STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Välj objekt
+STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Välj ett objekt på bildskärmen
 
+STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Gå till objekt
 
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
@@ -2762,6 +2781,10 @@ STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Byt namn
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Byt namn på flygplanstyp
 
 # Depot window
+STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
+
+STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}Byt namn på terminal
+STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Byt namn på terminal
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -2941,7 +2964,11 @@ STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Inga or
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}På väg mot {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}På väg mot {WAYPOINT} i {VELOCITY}
 
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE}På väg mot {DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}På väg mot {DEPOT}, {VELOCITY}
 
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}Service vid {DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Service vid {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
 STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Stoppad
@@ -3123,6 +3150,7 @@ STR_ORDER_TRAIN_DEPOT                                           :Tågdepå
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Vägfordonsdepå
 STR_ORDER_SHIP_DEPOT                                            :Skeppsdepå
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
+STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 STR_ORDER_REFIT_ORDER                                           :(Anpassa för {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Anpassa för {STRING} och stanna)
@@ -3463,6 +3491,8 @@ STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Kan inte
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Kan inte bygga bussgarage här...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Kan inte bygga spårvagnsdepå här...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Kan inte bygga skeppsdepå här...
+
+STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Kan inte byta namn på terminal
 
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Tåget måste stoppas inne i depån
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... måste stoppas inuti ett bussgarage
@@ -4034,6 +4064,14 @@ STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 STR_FORMAT_WAYPOINT_NAME                                        :Riktmärke {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Riktmärke {TOWN} #{COMMA}
 
+STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} Järnvägsdepå
+STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} Järnvägsterminal #{COMMA}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} Vägfordonsdepå
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} Vägfordons terminal #{COMMA}
+STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} Hamnterminal
+STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} Hamnterminal#{COMMA}
+STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{STATION} Hangar
+
 STR_UNKNOWN_STATION                                             :okänd station
 STR_DEFAULT_SIGN_NAME                                           :Skylt
 STR_COMPANY_SOMEONE                                             :någon
@@ -4059,6 +4097,7 @@ STR_VIEWPORT_WAYPOINT_TINY                                      :{TINYFONT}{WAYP
 # Simple strings to get specific types of data
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
+STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}

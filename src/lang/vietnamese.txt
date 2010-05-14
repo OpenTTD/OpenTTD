@@ -2767,6 +2767,7 @@ STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Đổi t
 
 # Depot window
 
+
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} phương tiện{STRING}
@@ -3462,6 +3463,7 @@ STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Không t
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Không thể xây bến xe điện ở đây...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Không thể xây cảng ở đây...
 
+
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Tàu phải dừng lại ở trong xưởng
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... phải dừng trong xưởng ôtô
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Tàu thuỷ phải dừng ở trong xưởng
@@ -4031,6 +4033,7 @@ STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING} {0:T
 STR_FORMAT_WAYPOINT_NAME                                        :Điểm mốc {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Điểm mốc {TOWN} số #{COMMA}
 
+
 STR_UNKNOWN_STATION                                             :Ga,bến không biết
 STR_DEFAULT_SIGN_NAME                                           :Biển hiệu
 STR_COMPANY_SOMEONE                                             :ai đó
@@ -4056,6 +4059,7 @@ STR_VIEWPORT_WAYPOINT_TINY                                      :{TINYFONT}{WAYP
 # Simple strings to get specific types of data
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
+STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}

@@ -2783,6 +2783,10 @@ STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Rinomina
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Rinomina tipo di aeromobile
 
 # Depot window
+STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
+
+STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}Cambia il nome del deposito
+STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Rinomina deposito
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -2962,7 +2966,11 @@ STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Nessun 
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Diretto a {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Diretto a {WAYPOINT}, {VELOCITY}
 
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE}Diretto al {DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Diretto al {DEPOT}, {VELOCITY}
 
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}Manutenzione al {DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Manutenzione al {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
 STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Fermato
@@ -3144,6 +3152,7 @@ STR_ORDER_TRAIN_DEPOT                                           :Deposito ferrov
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Deposito automezzi
 STR_ORDER_SHIP_DEPOT                                            :Deposito navale
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING}l {STRING} {STRING}
+STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 STR_ORDER_REFIT_ORDER                                           :(Riadatta per {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Riadatta per {STRING} e ferma)
@@ -3484,6 +3493,8 @@ STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Impossib
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Impossibile costruire il deposito qui...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Impossibile costruire il deposito qui...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Impossibile costruire il deposito navale qui...
+
+STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Impossibile rinominare il deposito...
 
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Il treno deve essere fermo in un deposito
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... deve essere fermo nel deposito automezzi
@@ -4055,6 +4066,14 @@ STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING} di {
 STR_FORMAT_WAYPOINT_NAME                                        :Waypoint di {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Waypoint di {TOWN} #{COMMA}
 
+STR_FORMAT_DEPOT_NAME_TRAIN                                     :Deposito ferroviario di {TOWN}
+STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :Deposito ferroviario #{1:COMMA} di {0:TOWN}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :Deposito automezzi di {TOWN}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :Deposito automezzi #{1:COMMA} di {0:TOWN}
+STR_FORMAT_DEPOT_NAME_SHIP                                      :Deposito navale di {TOWN}
+STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :Deposito navale #{1:COMMA} di {0:TOWN}
+STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :Hangar di {STATION}
+
 STR_UNKNOWN_STATION                                             :stazione sconosciuta
 STR_DEFAULT_SIGN_NAME                                           :Cartello
 STR_COMPANY_SOMEONE                                             :qualcuno
@@ -4080,6 +4099,7 @@ STR_VIEWPORT_WAYPOINT_TINY                                      :{TINYFONT}{WAYP
 # Simple strings to get specific types of data
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
+STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}

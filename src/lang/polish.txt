@@ -4492,7 +4492,7 @@ STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :Zajezdnia samoc
 STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :Zajezdnia samochodowa w {TOWN} #{COMMA}
 STR_FORMAT_DEPOT_NAME_SHIP                                      :Stocznia w {TOWN}
 STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :Stocznia w {TOWN} #{COMMA}
-STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :Hangarnia {STATION}
+STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :Hangar {STATION}
 
 STR_UNKNOWN_STATION                                             :Nieznana stacja
 STR_DEFAULT_SIGN_NAME                                           :Napis
