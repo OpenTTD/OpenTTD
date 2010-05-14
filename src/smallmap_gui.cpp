@@ -555,8 +555,8 @@ class SmallMapWindow : public Window {
 	 */
 	FORCEINLINE Point RemapTile(int tile_x, int tile_y) const
 	{
-		int x_offset = tile_x - this->scroll_x / TILE_SIZE;
-		int y_offset = tile_y - this->scroll_y / TILE_SIZE;
+		int x_offset = tile_x - this->scroll_x / (int)TILE_SIZE;
+		int y_offset = tile_y - this->scroll_y / (int)TILE_SIZE;
 
 		if (this->zoom == 1) return RemapCoords(x_offset, y_offset, 0);
 
@@ -922,8 +922,8 @@ class SmallMapWindow : public Window {
 		/* Which tile is displayed at (dpi->left, dpi->top)? */
 		int dx;
 		Point tile = this->PixelToTile(dpi->left, dpi->top, &dx);
-		int tile_x = this->scroll_x / TILE_SIZE + tile.x;
-		int tile_y = this->scroll_y / TILE_SIZE + tile.y;
+		int tile_x = this->scroll_x / (int)TILE_SIZE + tile.x;
+		int tile_y = this->scroll_y / (int)TILE_SIZE + tile.y;
 
 		void *ptr = blitter->MoveTo(dpi->dst_ptr, -dx - 4, 0);
 		int x = - dx - 4;
