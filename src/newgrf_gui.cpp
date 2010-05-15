@@ -581,6 +581,14 @@ struct NewGRFWindow : public Window {
 				*size = maxdim(d, *size);
 				break;
 			}
+
+			case SNGRFS_CONTENT_DOWNLOAD: {
+				Dimension d = GetStringBoundingBox(STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON);
+				*size = maxdim(d, GetStringBoundingBox(STR_INTRO_ONLINE_CONTENT));
+				size->width  += padding.width;
+				size->height += padding.height;
+				break;
+			}
 		}
 	}
 
