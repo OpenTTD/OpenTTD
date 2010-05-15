@@ -3222,15 +3222,15 @@ STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE
 STR_REFIT_TITLE                                                 :{GOLD}Выберите тип груза для перевозки:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Новая ёмкость: {GOLD}{CARGO}{}{BLACK}Стоимость переоборудования: {GOLD}{CURRENCY}
 
-STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Выбор типа груза для перевозки
-STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Выберите тип грузов для перевозки
+STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Выберите тип груза для перевозки
+STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Выберите тип груза для перевозки
 STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}Выберите тип груза для перевозки
-STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Выберите тип грузов для перевозки
+STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Выберите тип груза для перевозки
 
 STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Переоборудовать поезд
 STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Переоборудовать авто
 STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Переоборудовать корабль
-STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Переоборудовать
+STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Переоборудовать возд. судно
 
 STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Переоборудовать поезд для перевозки выбранного типа груза
 STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Переоборудовать автомобиль для перевозки выбранного типа груза
@@ -3321,17 +3321,14 @@ STR_ORDER_GO_TO_WAYPOINT                                        :Ехать че
 STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Ехать без остановок через {WAYPOINT}
 
 STR_ORDER_SERVICE_AT                                            :Для прохождения ТО идти в
-STR_ORDER_SERVICE_AT.dat                                        :Для прохождения ТО идти к
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Для прохождения ТО идти без остановок в
-STR_ORDER_SERVICE_NON_STOP_AT.dat                               :Для прохождения ТО идти без остановок к
 
-STR_ORDER_NEAREST_DEPOT                                         :ближайший
-STR_ORDER_NEAREST_DEPOT.dat                                     :ближайшему
-STR_ORDER_NEAREST_HANGAR                                        :ближайший ангар
-STR_ORDER_TRAIN_DEPOT                                           :депо
-STR_ORDER_ROAD_VEHICLE_DEPOT                                    :гараж
-STR_ORDER_SHIP_DEPOT                                            :док
-STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING.dat} {STRING.dat} {STRING.dat}
+STR_ORDER_NEAREST_DEPOT                                         :{NBSP}
+STR_ORDER_NEAREST_HANGAR                                        :{G=m}{NBSP}ангар
+STR_ORDER_TRAIN_DEPOT                                           :{G=n}депо
+STR_ORDER_ROAD_VEHICLE_DEPOT                                    :{G=m}гараж
+STR_ORDER_SHIP_DEPOT                                            :{G=m}док
+STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} ближайш{G 2 ий ую ее ие}{STRING}{STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 STR_ORDER_REFIT_ORDER                                           :(Переоборуд. под {STRING.acc})
@@ -4254,7 +4251,7 @@ STR_FORMAT_DEPOT_NAME_SHIP                                      :Док {TOWN}
 STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :Док {TOWN} #{COMMA}
 STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :Ангар ({STATION})
 
-STR_UNKNOWN_STATION                                             :неизвестная странция
+STR_UNKNOWN_STATION                                             :неизвестная станция
 STR_DEFAULT_SIGN_NAME                                           :Знак
 STR_COMPANY_SOMEONE                                             :кто-нибудь
 

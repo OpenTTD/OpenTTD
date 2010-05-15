@@ -4162,7 +4162,7 @@ STR_FORMAT_BUOY_NAME_SERIAL                                     :{TOWN} {COMMA}.
 STR_FORMAT_COMPANY_NUM                                          :({COMMA}. vállalat)
 STR_FORMAT_GROUP_NAME                                           :{COMMA} csoport
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN}i {STRING}
-STR_FORMAT_WAYPOINT_NAME                                        :{TOWN}i Ellenőrző pont
+STR_FORMAT_WAYPOINT_NAME                                        :{TOWN} Ellenőrző pont
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN} {COMMA}. sz. Ellenőrző pont
 
 STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} Vasúti járműtelep

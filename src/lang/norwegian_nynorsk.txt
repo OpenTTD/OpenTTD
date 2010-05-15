@@ -2784,6 +2784,8 @@ STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Endre na
 # Depot window
 STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
 
+STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}Byt namn på garasje/stall/hangar/dokk
+STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Byt namn på garasje/stall/hangar/dokk
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -3491,6 +3493,7 @@ STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Kan ikkj
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Kan ikkje byggje trikkestall her...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Kan ikkje byggje skipsdokk her...
 
+STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Kan ikkje byte namn på garasje/stall/hangar/dokk...
 
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Toget må vere stoppa i togstallen
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... må verte stoppa i ein garasje
@@ -4095,6 +4098,7 @@ STR_VIEWPORT_WAYPOINT_TINY                                      :{TINYFONT}{WAYP
 # Simple strings to get specific types of data
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
+STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}

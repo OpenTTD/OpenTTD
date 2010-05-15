@@ -2562,9 +2562,9 @@ STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOIN
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Gå til kontrollpunkt. CTRL+klikk åpner et nytt tilleggsvindu over kontrollpunktet
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Endre kontrollpunktets navn
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Gå til bøye. CTRL+klikk åpner et nytt tilleggsvindu over bøyen
-STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Endre navnet på bøyen
+STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Endre navn på bøye
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Endre navnet på kontrollpunktet
+STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Endre navn på kontrollpunkt
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY}s regnskap{BLACK}{COMPANYNUM}
@@ -2622,7 +2622,7 @@ STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Velg nyt
 STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Firmafarge
 STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Endre firmafarge
 STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Firmanavn
-STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Endre firmanavnet
+STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Endre firmanavn
 STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Sjefens navn
 STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Endre sjefens navn
 
@@ -2719,7 +2719,7 @@ STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Klikk fo
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Legg til delte kjøretøy
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Fjern alle kjøretøy
 
-STR_GROUP_RENAME_CAPTION                                        :{BLACK}Endre navn på en gruppe
+STR_GROUP_RENAME_CAPTION                                        :{BLACK}Endre navn på gruppe
 
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Nye tog/vogner for jernbane
@@ -2783,6 +2783,8 @@ STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Gi flyma
 # Depot window
 STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
 
+STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}Endre navn på garasje/stall/hangar/dokk
+STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Endre navn på garasje/stall/hangar/dokk
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -3387,7 +3389,7 @@ STR_ERROR_TOO_HIGH                                              :{WHITE}... for 
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... allerede flatt
 
 # Company related errors
-STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Kan ikke endre firmanavn...
+STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Kan ikke endre firmaets navn...
 STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Kan ikke endre sjefens navn...
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... maks. lån er {CURRENCY}
@@ -3477,7 +3479,7 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}For nær
 
 STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Kan ikke bygge kontrollpunkt for tog her...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Kan ikke plassere bøye her...
-STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Kan ikke endre navnet til kontrollpunktet...
+STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Kan ikke endre navn på kontrollpunkt...
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Kan ikke fjerne kontrollpunkt for tog her...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Må fjerne kontrollpunkt for tog først
@@ -3490,6 +3492,7 @@ STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Kan ikke
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Kan ikke bygge trikkestall her...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Kan ikke bygge skipsdokk her...
 
+STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Kan ikke endre navn på garasje/stall/hangar/dokk...
 
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Toget må være stoppet i togstallen
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... må være stoppet i en garasje
@@ -4094,6 +4097,7 @@ STR_VIEWPORT_WAYPOINT_TINY                                      :{TINYFONT}{WAYP
 # Simple strings to get specific types of data
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
+STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}

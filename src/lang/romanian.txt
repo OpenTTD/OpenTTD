@@ -2781,6 +2781,10 @@ STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Redenume
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Redenumeşte modelul de aeronavă
 
 # Depot window
+STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
+
+STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}Schimba numele depoului
+STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Redenumire depou
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -2960,7 +2964,11 @@ STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Fără 
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Merge spre {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Merge spre {WAYPOINT}, {VELOCITY}
 
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE}Merge către {DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Merge către {DEPOT}, {VELOCITY}
 
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}Service la {DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Service la {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
 STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Oprit
@@ -3142,6 +3150,7 @@ STR_ORDER_TRAIN_DEPOT                                           :Depou de Trenur
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Autobază
 STR_ORDER_SHIP_DEPOT                                            :Şantier Naval
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
+STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 STR_ORDER_REFIT_ORDER                                           :(Rearanjeaza in {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Modifică pentru {STRING} şi opreşte)
@@ -3483,6 +3492,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Nu se po
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Nu pot construi depou de tramvaie aici...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Nu se poate construi şantier naval aici...
 
+STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Nu se poate redenumi depoul...
+
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Trenul trebuie oprit intr-un depou
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... trebuie oprit într-o autobază
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Nava trebuie să fie staţionată într-un şantier
@@ -3569,7 +3580,7 @@ STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... este
 # Group related errors
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Nu pot crea grup...
 STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}Nu pot şterge grup...
-STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Nu pot redenumi grupul...
+STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Nu se poate redenumi grupul...
 STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}Nu pot elimina toate vehiculele din acest grup...
 STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}Nu pot adauga vehiculul in acest grup...
 STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Nu pot adauga vehicule partajate in grup...
@@ -4053,6 +4064,14 @@ STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 STR_FORMAT_WAYPOINT_NAME                                        :Halta {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Halta {TOWN} #{COMMA}
 
+STR_FORMAT_DEPOT_NAME_TRAIN                                     :Depou trenuri {TOWN}
+STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} Depou trenuri #{COMMA}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :Depou vehicule {TOWN}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} Depou autovehicule #{COMMA}
+STR_FORMAT_DEPOT_NAME_SHIP                                      :Depou nave {TOWN}
+STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} Depou nave #{COMMA}
+STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{STATION} Hangar
+
 STR_UNKNOWN_STATION                                             :statie necunoscuta
 STR_DEFAULT_SIGN_NAME                                           :Semn
 STR_COMPANY_SOMEONE                                             :cineva
@@ -4078,6 +4097,7 @@ STR_VIEWPORT_WAYPOINT_TINY                                      :{TINYFONT}{WAYP
 # Simple strings to get specific types of data
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
+STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}

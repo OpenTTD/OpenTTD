@@ -2761,6 +2761,10 @@ STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}선박 �
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}항공기 타입의 이름 지정
 
 # Depot window
+STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
+
+STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}차량 기지 이름을 변경합니다.
+STR_DEPOT_RENAME_DEPOT_CAPTION                                  :차량기지 이름 변경
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -3118,6 +3122,7 @@ STR_ORDER_TRAIN_DEPOT                                           :차량기지
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :차고
 STR_ORDER_SHIP_DEPOT                                            :정박소
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
+STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 STR_ORDER_REFIT_ORDER                                           :({STRING}(으)로 개조)
 STR_ORDER_REFIT_STOP_ORDER                                      :({STRING}에서 수리 후 멈춤)
@@ -3452,6 +3457,8 @@ STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}여기�
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}여기에 차고를 지을 수 없습니다...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}여기에 차량기지를 건설할 수 없습니다...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}여기에 정박소를 지을 수 없습니다...
+
+STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}차량 기지의 이름을 바꿀 수 없습니다...
 
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}차량기지 안에 정지해있어야 합니다!
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... 차고 안에서 정지해있어야 합니다!
@@ -4022,6 +4029,14 @@ STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 STR_FORMAT_WAYPOINT_NAME                                        :웨이포인트 {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :웨이포인트 {TOWN} #{COMMA}
 
+STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} 차량 기지
+STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} 차량 기지 #{COMMA}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} 차량 기지
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} 차량 기지 #{COMMA}
+STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} 정박소
+STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} 정박소 #{COMMA}
+STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{STATION} 격납고
+
 STR_UNKNOWN_STATION                                             :알수없는 정거장
 STR_DEFAULT_SIGN_NAME                                           :팻말
 STR_COMPANY_SOMEONE                                             :누군가
@@ -4047,6 +4062,7 @@ STR_VIEWPORT_WAYPOINT_TINY                                      :{TINYFONT}{WAYP
 # Simple strings to get specific types of data
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
+STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}
