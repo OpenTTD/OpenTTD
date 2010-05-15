@@ -949,7 +949,7 @@ static char *FormatString(char *buff, const char *str, int64 *argv, uint casei, 
 				VehicleType vt = (VehicleType)GetInt32(&argv);
 				if (vt == VEH_AIRCRAFT) {
 					int64 temp[] = { GetInt32(&argv) };
-					buff = GetStringWithArgs(buff, STR_FORMAT_DEPOT_NAME_AIRCRAFT + vt, temp, last);
+					buff = GetStringWithArgs(buff, STR_FORMAT_DEPOT_NAME_AIRCRAFT, temp, last);
 					break;
 				}
 
