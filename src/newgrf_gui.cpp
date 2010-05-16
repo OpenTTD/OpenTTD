@@ -514,6 +514,7 @@ enum ShowNewGRFStateWidgets {
 	SNGRFS_SET_PARAMETERS,
 	SNGRFS_TOGGLE_PALETTE,
 	SNGRFS_APPLY_CHANGES,
+	SNGRFS_RESCAN_FILES,
 	SNGRFS_CONTENT_DOWNLOAD,
 };
 
@@ -953,6 +954,14 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 #endif
 				}
 				break;
+
+			case SNGRFS_RESCAN_FILES:
+				ScanNewGRFFiles();
+				this->avail_sel = NULL;
+				this->avail_pos = -1;
+				this->avails.ForceRebuild();
+				this->InvalidateData(1);
+				break;
 		}
 	}
 
@@ -1234,7 +1243,7 @@ static const NWidgetPart _nested_newgrf_widgets[] = {
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_MAUVE),
 		NWidget(NWID_HORIZONTAL), SetPIP(WD_RESIZEBOX_WIDTH, WD_RESIZEBOX_WIDTH, WD_RESIZEBOX_WIDTH),
-			NWidget(NWID_VERTICAL), SetPadding(WD_RESIZEBOX_WIDTH, 0, WD_RESIZEBOX_WIDTH, 0),
+			NWidget(NWID_VERTICAL), SetPadding(WD_RESIZEBOX_WIDTH, 0, 0, 0),
 				/* Left side, presets. */
 				NWidget(NWID_HORIZONTAL),
 					NWidget(WWT_TEXT, COLOUR_MAUVE), SetDataTip(STR_NEWGRF_SETTINGS_SELECT_PRESET, STR_NULL),
@@ -1298,6 +1307,13 @@ static const NWidgetPart _nested_newgrf_widgets[] = {
 						EndContainer(),
 						NWidget(WWT_SCROLL2BAR, COLOUR_MAUVE, SNGRFS_SCROLL2BAR),
 					EndContainer(),
+					/* Left side, available grfs, buttons. */
+					NWidget(NWID_VERTICAL), SetPadding(2, 2, 2, 2),
+						NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, SNGRFS_RESCAN_FILES), SetFill(1, 0), SetResize(1, 0),
+								SetDataTip(STR_NEWGRF_ADD_RESCAN_FILES, STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP),
+						NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, SNGRFS_CONTENT_DOWNLOAD), SetFill(1, 0), SetResize(1, 0),
+								SetDataTip(STR_INTRO_ONLINE_CONTENT, STR_INTRO_TOOLTIP_ONLINE_CONTENT),
+					EndContainer(),
 				EndContainer(),
 			EndContainer(),
 
@@ -1318,15 +1334,13 @@ static const NWidgetPart _nested_newgrf_widgets[] = {
 					NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, SNGRFS_APPLY_CHANGES), SetFill(1, 0), SetResize(1, 0),
 							SetDataTip(STR_NEWGRF_SETTINGS_APPLY_CHANGES, STR_NULL),
 				EndContainer(),
-
-				NWidget(NWID_SPACER), SetMinimalSize(0, WD_RESIZEBOX_WIDTH), SetResize(1, 0),
 			EndContainer(),
 		EndContainer(),
-	EndContainer(),
-	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_MAUVE, SNGRFS_CONTENT_DOWNLOAD), SetFill(1, 0), SetResize(1, 0),
-				SetDataTip(STR_INTRO_ONLINE_CONTENT, STR_INTRO_TOOLTIP_ONLINE_CONTENT),
-		NWidget(WWT_RESIZEBOX, COLOUR_MAUVE),
+		/* Resize button. */
+		NWidget(NWID_HORIZONTAL),
+			NWidget(NWID_SPACER), SetFill(1, 0), SetResize(1, 0),
+			NWidget(WWT_RESIZEBOX, COLOUR_MAUVE),
+		EndContainer(),
 	EndContainer(),
 };
 
