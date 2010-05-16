@@ -908,6 +908,312 @@ NewGRFWindow::GUIGRFConfigList::FilterFunction * const NewGRFWindow::filter_func
 	&TagNameFilter,
 };
 
+/** Custom nested widget container for the NewGRF gui.
+ * Depending on the space in the gui, it uses either
+ * - two column mode, put the #acs and the #avs underneath each other and the #info next to it, or
+ * - three column mode, put the #avs, #acs, and #info each in its own column.
+ */
+class NWidgetNewGRFDisplay : public NWidgetContainer {
+public:
+	static const uint INTER_LIST_SPACING;      ///< Empty vertical space between both lists in the 2 column mode.
+	static const uint INTER_COLUMN_SPACING;    ///< Empty horizontal space between two columns.
+	static const uint MAX_EXTRA_INFO_WIDTH;    ///< Maximal additional width given to the panel.
+	static const uint MIN_EXTRA_FOR_3_COLUMNS; ///< Minimal additional width needed before switching to 3 columns.
+
+	NWidgetBase *avs; ///< Widget with the available grfs list and buttons.
+	NWidgetBase *acs; ///< Widget with the active grfs list and buttons.
+	NWidgetBase *inf; ///< Info panel.
+
+	NWidgetNewGRFDisplay(NWidgetBase *avs, NWidgetBase *acs, NWidgetBase *inf) : NWidgetContainer(NWID_HORIZONTAL)
+	{
+		this->avs = avs;
+		this->acs = acs;
+		this->inf = inf;
+
+		this->Add(this->avs);
+		this->Add(this->acs);
+		this->Add(this->inf);
+	}
+
+	virtual void SetupSmallestSize(Window *w, bool init_array)
+	{
+		this->avs->SetupSmallestSize(w, init_array);
+		this->acs->SetupSmallestSize(w, init_array);
+		this->inf->SetupSmallestSize(w, init_array);
+
+		uint min_avs_width = this->avs->smallest_x + this->avs->padding_left + this->avs->padding_right;
+		uint min_acs_width = this->acs->smallest_x + this->acs->padding_left + this->acs->padding_right;
+		uint min_inf_width = this->inf->smallest_x + this->inf->padding_left + this->inf->padding_right;
+
+		uint min_avs_height = this->avs->smallest_y + this->avs->padding_top + this->avs->padding_bottom;
+		uint min_acs_height = this->acs->smallest_y + this->acs->padding_top + this->acs->padding_bottom;
+		uint min_inf_height = this->inf->smallest_y + this->inf->padding_top + this->inf->padding_bottom;
+
+		/* Smallest window is in two column mode. */
+		this->smallest_x = max(min_avs_width, min_acs_width) + INTER_COLUMN_SPACING + min_inf_width;
+		this->smallest_y = max(min_inf_height, min_acs_height + INTER_LIST_SPACING + min_avs_height);
+
+		/* Filling. */
+		this->fill_x = LeastCommonMultiple(this->avs->fill_x, this->acs->fill_x);
+		if (this->inf->fill_x > 0 && (this->fill_x == 0 || this->fill_x > this->inf->fill_x)) this->fill_x = this->inf->fill_x;
+
+		this->fill_y = this->avs->fill_y;
+		if (this->acs->fill_y > 0 && (this->fill_y == 0 || this->fill_y > this->acs->fill_y)) this->fill_y = this->acs->fill_y;
+		this->fill_y = LeastCommonMultiple(this->fill_y, this->inf->fill_y);
+
+		/* Resizing. */
+		this->resize_x = LeastCommonMultiple(this->avs->resize_x, this->acs->resize_x);
+		if (this->inf->resize_x > 0 && (this->resize_x == 0 || this->resize_x > this->inf->resize_x)) this->resize_x = this->inf->resize_x;
+
+		this->resize_y = this->avs->resize_y;
+		if (this->acs->resize_y > 0 && (this->resize_y == 0 || this->resize_y > this->acs->resize_y)) this->resize_y = this->acs->resize_y;
+		this->resize_y = LeastCommonMultiple(this->resize_y, this->inf->resize_y);
+	}
+
+	virtual void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool rtl)
+	{
+		this->StoreSizePosition(sizing, x, y, given_width, given_height);
+
+		uint min_avs_width = this->avs->smallest_x + this->avs->padding_left + this->avs->padding_right;
+		uint min_acs_width = this->acs->smallest_x + this->acs->padding_left + this->acs->padding_right;
+		uint min_inf_width = this->inf->smallest_x + this->inf->padding_left + this->inf->padding_right;
+
+		uint min_list_width = max(min_avs_width, min_acs_width); // Smallest width of the lists such that they have equal width (incl padding).
+		uint avs_extra_width = min_list_width - min_avs_width;   // Additional width needed for avs to reach min_list_width.
+		uint acs_extra_width = min_list_width - min_acs_width;   // Additional width needed for acs to reach min_list_width.
+
+		/* Use 2 or 3 colmuns? */
+		uint min_three_columns = min_avs_width + min_acs_width + min_inf_width + 2 * INTER_COLUMN_SPACING;
+		uint min_two_columns   = min_list_width + min_inf_width + INTER_COLUMN_SPACING;
+		bool use_three_columns = (min_three_columns + MIN_EXTRA_FOR_3_COLUMNS <= given_width);
+
+		/* Info panel is a seperate column in both modes. Compute its width first. */
+		uint extra_width, inf_width;
+		if (use_three_columns) {
+			extra_width = given_width - min_three_columns;
+			inf_width = min(MAX_EXTRA_INFO_WIDTH, extra_width / 2);
+		} else {
+			extra_width = given_width - min_two_columns;
+			inf_width = min(MAX_EXTRA_INFO_WIDTH, extra_width / 2);
+		}
+		inf_width = ComputeMaxSize(this->inf->smallest_x, this->inf->smallest_x + inf_width, this->inf->GetHorizontalStepSize(sizing));
+		extra_width -= inf_width - this->inf->smallest_x;
+
+		uint inf_height = ComputeMaxSize(this->inf->smallest_y, given_height, this->inf->GetVerticalStepSize(sizing));
+
+		if (use_three_columns) {
+			/* Three column display, first make both lists equally wide, then divide whatever is left between both lists.
+			 * Only keep track of what avs gets, all other space goes to acs. */
+			uint avs_width = min(avs_extra_width, extra_width);
+			extra_width -= avs_width;
+			extra_width -= min(acs_extra_width, extra_width);
+			avs_width += extra_width / 2;
+
+			avs_width = ComputeMaxSize(this->avs->smallest_x, this->avs->smallest_x + avs_width, this->avs->GetHorizontalStepSize(sizing));
+
+			uint acs_width = given_width - // Remaining space, including horizontal padding.
+					inf_width - this->inf->padding_left - this->inf->padding_right -
+					avs_width - this->avs->padding_left - this->avs->padding_right - 2 * INTER_COLUMN_SPACING;
+			acs_width = ComputeMaxSize(min_acs_width, acs_width, this->acs->GetHorizontalStepSize(sizing)) -
+					this->acs->padding_left - this->acs->padding_right;
+
+			uint avs_height = ComputeMaxSize(this->avs->smallest_y, given_height, this->avs->GetVerticalStepSize(sizing));
+			uint acs_height = ComputeMaxSize(this->acs->smallest_y, given_height, this->acs->GetVerticalStepSize(sizing));
+
+			/* Assign size and position to the childs. */
+			if (rtl) {
+				x += this->inf->padding_left;
+				this->inf->AssignSizePosition(sizing, x, y + this->inf->padding_top, inf_width, inf_height, rtl);
+				x += inf_width + this->inf->padding_right + INTER_COLUMN_SPACING;
+			} else {
+				x += this->avs->padding_left;
+				this->avs->AssignSizePosition(sizing, x, y + this->avs->padding_top, avs_width, avs_height, rtl);
+				x += avs_width + this->avs->padding_right + INTER_COLUMN_SPACING;
+			}
+
+			x += this->acs->padding_left;
+			this->acs->AssignSizePosition(sizing, x, y + this->acs->padding_top, acs_width, acs_height, rtl);
+			x += acs_width + this->acs->padding_right + INTER_COLUMN_SPACING;
+
+			if (rtl) {
+				x += this->avs->padding_left;
+				this->avs->AssignSizePosition(sizing, x, y + this->avs->padding_top, avs_width, avs_height, rtl);
+			} else {
+				x += this->inf->padding_left;
+				this->inf->AssignSizePosition(sizing, x, y + this->inf->padding_top, inf_width, inf_height, rtl);
+			}
+		} else {
+			/* Two columns, all space in extra_width goes to both lists. Since the lists are underneath each other,
+			 * the column is min_list_width wide at least. */
+			uint avs_width = ComputeMaxSize(this->avs->smallest_x, this->avs->smallest_x + avs_extra_width + extra_width,
+					this->avs->GetHorizontalStepSize(sizing));
+			uint acs_width = ComputeMaxSize(this->acs->smallest_x, this->acs->smallest_x + acs_extra_width + extra_width,
+					this->acs->GetHorizontalStepSize(sizing));
+
+			uint min_avs_height = this->avs->smallest_y + this->avs->padding_top + this->avs->padding_bottom;
+			uint min_acs_height = this->acs->smallest_y + this->acs->padding_top + this->acs->padding_bottom;
+			uint extra_height = given_height - min_acs_height - min_avs_height - INTER_LIST_SPACING;
+
+			uint avs_height = ComputeMaxSize(this->avs->smallest_y, this->avs->smallest_y + extra_height / 2, this->avs->GetVerticalStepSize(sizing));
+			extra_height -= avs_height - this->avs->smallest_y;
+			uint acs_height = ComputeMaxSize(this->acs->smallest_y, this->acs->smallest_y + extra_height, this->acs->GetVerticalStepSize(sizing));
+
+			/* Assign size and position to the childs. */
+			if (rtl) {
+				x += this->inf->padding_left;
+				this->inf->AssignSizePosition(sizing, x, y + this->inf->padding_top, inf_width, inf_height, rtl);
+				x += inf_width + this->inf->padding_right + INTER_COLUMN_SPACING;
+
+				uint ypos = y + this->acs->padding_top;
+				this->acs->AssignSizePosition(sizing, x + this->acs->padding_left, ypos, acs_width, acs_height, rtl);
+				ypos += acs_height + this->acs->padding_bottom + INTER_LIST_SPACING + this->avs->padding_top;
+				this->avs->AssignSizePosition(sizing, x + this->avs->padding_left, ypos, avs_width, avs_height, rtl);
+			} else {
+				uint ypos = y + this->acs->padding_top;
+				this->acs->AssignSizePosition(sizing, x + this->acs->padding_left, ypos, acs_width, acs_height, rtl);
+				ypos += acs_height + this->acs->padding_bottom + INTER_LIST_SPACING + this->avs->padding_top;
+				this->avs->AssignSizePosition(sizing, x + this->avs->padding_left, ypos, avs_width, avs_height, rtl);
+				x += max(this->acs->current_x + this->acs->padding_left + this->acs->padding_right,
+						this->avs->current_x + this->avs->padding_left + this->avs->padding_right) + INTER_COLUMN_SPACING;
+
+				x += this->inf->padding_left;
+				this->inf->AssignSizePosition(sizing, x, y + this->inf->padding_top, inf_width, inf_height, rtl);
+			}
+		}
+	}
+
+	virtual NWidgetCore *GetWidgetFromPos(int x, int y)
+	{
+		if (!IsInsideBS(x, this->pos_x, this->current_x) || !IsInsideBS(y, this->pos_y, this->current_y)) return NULL;
+
+		NWidgetCore *nw = this->avs->GetWidgetFromPos(x, y);
+		if (nw == NULL) nw = this->acs->GetWidgetFromPos(x, y);
+		if (nw == NULL) nw = this->inf->GetWidgetFromPos(x, y);
+		return nw;
+	}
+
+	virtual void Draw(const Window *w)
+	{
+		this->avs->Draw(w);
+		this->acs->Draw(w);
+		this->inf->Draw(w);
+	}
+};
+
+const uint NWidgetNewGRFDisplay::INTER_LIST_SPACING      = WD_RESIZEBOX_WIDTH + 1;
+const uint NWidgetNewGRFDisplay::INTER_COLUMN_SPACING    = WD_RESIZEBOX_WIDTH;
+const uint NWidgetNewGRFDisplay::MAX_EXTRA_INFO_WIDTH    = 150;
+const uint NWidgetNewGRFDisplay::MIN_EXTRA_FOR_3_COLUMNS = 50;
+
+static const NWidgetPart _nested_newgrf_actives_widgets[] = {
+	/* Left side, presets. */
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_TEXT, COLOUR_MAUVE), SetDataTip(STR_NEWGRF_SETTINGS_SELECT_PRESET, STR_NULL),
+				SetPadding(0, WD_FRAMETEXT_RIGHT, 0, 0),
+		NWidget(WWT_DROPDOWN, COLOUR_YELLOW, SNGRFS_PRESET_LIST), SetFill(1, 0), SetResize(1, 0),
+				SetDataTip(STR_JUST_STRING, STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP),
+	EndContainer(),
+	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, SNGRFS_PRESET_SAVE), SetFill(1, 0), SetResize(1, 0),
+				SetDataTip(STR_NEWGRF_SETTINGS_PRESET_SAVE, STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, SNGRFS_PRESET_DELETE), SetFill(1, 0), SetResize(1, 0),
+				SetDataTip(STR_NEWGRF_SETTINGS_PRESET_DELETE, STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP),
+	EndContainer(),
+
+	NWidget(NWID_SPACER), SetMinimalSize(0, WD_RESIZEBOX_WIDTH), SetResize(1, 0), SetFill(1, 0),
+	NWidget(WWT_PANEL, COLOUR_MAUVE),
+		NWidget(WWT_LABEL, COLOUR_MAUVE), SetDataTip(STR_NEWGRF_SETTINGS_ACTIVE_LIST, STR_NULL),
+				SetFill(1, 0), SetResize(1, 0), SetPadding(3, WD_FRAMETEXT_RIGHT, 0, WD_FRAMETEXT_LEFT),
+		/* Left side, active grfs. */
+		NWidget(NWID_HORIZONTAL), SetPadding(0, 2, 0, 2),
+			NWidget(WWT_PANEL, COLOUR_MAUVE),
+				NWidget(WWT_INSET, COLOUR_MAUVE, SNGRFS_FILE_LIST), SetMinimalSize(100, 1), SetPadding(2, 2, 2, 2),
+						SetFill(1, 1), SetResize(1, 1),
+				EndContainer(),
+			EndContainer(),
+			NWidget(WWT_SCROLLBAR, COLOUR_MAUVE, SNGRFS_SCROLLBAR),
+		EndContainer(),
+		/* Buttons. */
+		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPadding(2, 2, 2, 2), SetPIP(0, WD_RESIZEBOX_WIDTH, 0),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, SNGRFS_REMOVE), SetFill(1, 0), SetResize(1, 0),
+					SetDataTip(STR_NEWGRF_SETTINGS_REMOVE, STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP),
+			NWidget(NWID_VERTICAL),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, SNGRFS_MOVE_UP), SetFill(1, 0), SetResize(1, 0),
+						SetDataTip(STR_NEWGRF_SETTINGS_MOVEUP, STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, SNGRFS_MOVE_DOWN), SetFill(1, 0), SetResize(1, 0),
+						SetDataTip(STR_NEWGRF_SETTINGS_MOVEDOWN, STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP),
+			EndContainer(),
+		EndContainer(),
+	EndContainer(),
+};
+
+static const NWidgetPart _nested_newgrf_availables_widgets[] = {
+	NWidget(WWT_PANEL, COLOUR_MAUVE),
+		NWidget(WWT_LABEL, COLOUR_MAUVE), SetDataTip(STR_NEWGRF_SETTINGS_INACTIVE_LIST, STR_NULL),
+				SetFill(1, 0), SetResize(1, 0), SetPadding(3, WD_FRAMETEXT_RIGHT, 0, WD_FRAMETEXT_LEFT),
+		/* Left side, available grfs, filter edit box. */
+		NWidget(NWID_HORIZONTAL), SetPadding(WD_TEXTPANEL_TOP, 0, WD_TEXTPANEL_BOTTOM, 0),
+				SetPIP(WD_FRAMETEXT_LEFT, WD_FRAMETEXT_RIGHT, WD_FRAMETEXT_RIGHT),
+			NWidget(WWT_TEXT, COLOUR_MAUVE), SetFill(0, 1), SetDataTip(STR_NEWGRF_FILTER_TITLE, STR_NULL),
+			NWidget(WWT_EDITBOX, COLOUR_MAUVE, SNGRFS_FILTER), SetFill(1, 0), SetMinimalSize(50, 12), SetResize(1, 0),
+					SetDataTip(STR_LIST_FILTER_OSKTITLE, STR_LIST_FILTER_TOOLTIP),
+		EndContainer(),
+		/* Left side, available grfs. */
+		NWidget(NWID_HORIZONTAL), SetPadding(0, 2, 0, 2),
+			NWidget(WWT_PANEL, COLOUR_MAUVE),
+				NWidget(WWT_INSET, COLOUR_MAUVE, SNGRFS_AVAIL_LIST), SetMinimalSize(100, 1), SetPadding(2, 2, 2, 2),
+						SetFill(1, 1), SetResize(1, 1),
+				EndContainer(),
+			EndContainer(),
+			NWidget(WWT_SCROLL2BAR, COLOUR_MAUVE, SNGRFS_SCROLL2BAR),
+		EndContainer(),
+		/* Left side, available grfs, buttons. */
+		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPadding(2, 2, 2, 2), SetPIP(0, WD_RESIZEBOX_WIDTH, 0),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, SNGRFS_ADD), SetFill(1, 0), SetResize(1, 0),
+					SetDataTip(STR_NEWGRF_SETTINGS_ADD, STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP),
+			NWidget(NWID_VERTICAL),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, SNGRFS_RESCAN_FILES), SetFill(1, 0), SetResize(1, 0),
+						SetDataTip(STR_NEWGRF_SETTINGS_RESCAN_FILES, STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, SNGRFS_CONTENT_DOWNLOAD), SetFill(1, 0), SetResize(1, 0),
+						SetDataTip(STR_INTRO_ONLINE_CONTENT, STR_INTRO_TOOLTIP_ONLINE_CONTENT),
+			EndContainer(),
+		EndContainer(),
+	EndContainer(),
+};
+
+static const NWidgetPart _nested_newgrf_infopanel_widgets[] = {
+	/* Right side, info panel. */
+	NWidget(WWT_PANEL, COLOUR_MAUVE), SetPadding(0, 0, 2, 0),
+		NWidget(WWT_EMPTY, COLOUR_MAUVE, SNGRFS_NEWGRF_INFO_TITLE), SetFill(1, 0), SetResize(1, 0),
+		NWidget(WWT_EMPTY, COLOUR_MAUVE, SNGRFS_NEWGRF_INFO), SetFill(1, 1), SetResize(1, 1), SetMinimalSize(150, 100),
+	EndContainer(),
+	/* Right side, buttons. */
+	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(0, WD_RESIZEBOX_WIDTH, 0),
+		NWidget(NWID_VERTICAL),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, SNGRFS_SET_PARAMETERS), SetFill(1, 0), SetResize(1, 0),
+					SetDataTip(STR_NEWGRF_SETTINGS_SET_PARAMETERS, STR_NULL),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, SNGRFS_TOGGLE_PALETTE), SetFill(1, 0), SetResize(1, 0),
+					SetDataTip(STR_NEWGRF_SETTINGS_TOGGLE_PALETTE, STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP),
+		EndContainer(),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, SNGRFS_APPLY_CHANGES), SetFill(1, 0), SetResize(1, 0),
+				SetDataTip(STR_NEWGRF_SETTINGS_APPLY_CHANGES, STR_NULL),
+	EndContainer(),
+};
+
+/** Construct nested container widget for managing the lists and the info panel of the NewGRF GUI. */
+NWidgetBase* NewGRFDisplay(int *biggest_index)
+{
+	NWidgetBase *avs = MakeNWidgets(_nested_newgrf_availables_widgets, lengthof(_nested_newgrf_availables_widgets), biggest_index, NULL);
+
+	int biggest2;
+	NWidgetBase *acs = MakeNWidgets(_nested_newgrf_actives_widgets, lengthof(_nested_newgrf_actives_widgets), &biggest2, NULL);
+	*biggest_index = max(*biggest_index, biggest2);
+
+	NWidgetBase *inf = MakeNWidgets(_nested_newgrf_infopanel_widgets, lengthof(_nested_newgrf_infopanel_widgets), &biggest2, NULL);
+	*biggest_index = max(*biggest_index, biggest2);
+
+	return new NWidgetNewGRFDisplay(avs, acs, inf);
+}
 
 /* Widget definition of the manage newgrfs window */
 static const NWidgetPart _nested_newgrf_widgets[] = {
@@ -916,100 +1222,7 @@ static const NWidgetPart _nested_newgrf_widgets[] = {
 		NWidget(WWT_CAPTION, COLOUR_MAUVE), SetDataTip(STR_NEWGRF_SETTINGS_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_MAUVE),
-		NWidget(NWID_HORIZONTAL), SetPIP(WD_RESIZEBOX_WIDTH, WD_RESIZEBOX_WIDTH, WD_RESIZEBOX_WIDTH),
-			NWidget(NWID_VERTICAL), SetPadding(WD_RESIZEBOX_WIDTH, 0, 0, 0),
-				/* Left side, presets. */
-				NWidget(NWID_HORIZONTAL),
-					NWidget(WWT_TEXT, COLOUR_MAUVE), SetDataTip(STR_NEWGRF_SETTINGS_SELECT_PRESET, STR_NULL),
-							SetPadding(0, WD_FRAMETEXT_RIGHT, 0, 0),
-					NWidget(WWT_DROPDOWN, COLOUR_YELLOW, SNGRFS_PRESET_LIST), SetFill(1, 0), SetResize(1, 0),
-							SetDataTip(STR_JUST_STRING, STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP),
-				EndContainer(),
-				NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
-					NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, SNGRFS_PRESET_SAVE), SetFill(1, 0), SetResize(1, 0),
-							SetDataTip(STR_NEWGRF_SETTINGS_PRESET_SAVE, STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP),
-					NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, SNGRFS_PRESET_DELETE), SetFill(1, 0), SetResize(1, 0),
-							SetDataTip(STR_NEWGRF_SETTINGS_PRESET_DELETE, STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP),
-				EndContainer(),
-
-				NWidget(NWID_SPACER), SetMinimalSize(0, WD_RESIZEBOX_WIDTH), SetResize(1, 0),
-				NWidget(WWT_PANEL, COLOUR_MAUVE),
-					NWidget(WWT_LABEL, COLOUR_MAUVE), SetDataTip(STR_NEWGRF_SETTINGS_ACTIVE_LIST, STR_NULL),
-							SetFill(1, 0), SetResize(1, 0), SetPadding(3, WD_FRAMETEXT_RIGHT, 0, WD_FRAMETEXT_LEFT),
-					/* Left side, active grfs. */
-					NWidget(NWID_HORIZONTAL), SetPadding(0, 2, 0, 2),
-						NWidget(WWT_PANEL, COLOUR_MAUVE),
-							NWidget(WWT_INSET, COLOUR_MAUVE, SNGRFS_FILE_LIST), SetMinimalSize(100, 1), SetPadding(2, 2, 2, 2),
-									SetFill(1, 1), SetResize(1, 1),
-							EndContainer(),
-						EndContainer(),
-						NWidget(WWT_SCROLLBAR, COLOUR_MAUVE, SNGRFS_SCROLLBAR),
-					EndContainer(),
-					NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPadding(2, 2, 2, 2), SetPIP(0, WD_RESIZEBOX_WIDTH, 0),
-						NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, SNGRFS_REMOVE), SetFill(1, 0), SetResize(1, 0),
-								SetDataTip(STR_NEWGRF_SETTINGS_REMOVE, STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP),
-						NWidget(NWID_VERTICAL),
-							NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, SNGRFS_MOVE_UP), SetFill(1, 0), SetResize(1, 0),
-									SetDataTip(STR_NEWGRF_SETTINGS_MOVEUP, STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP),
-							NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, SNGRFS_MOVE_DOWN), SetFill(1, 0), SetResize(1, 0),
-									SetDataTip(STR_NEWGRF_SETTINGS_MOVEDOWN, STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP),
-						EndContainer(),
-					EndContainer(),
-				EndContainer(),
-
-				NWidget(NWID_SPACER), SetMinimalSize(0, WD_RESIZEBOX_WIDTH), SetResize(1, 0),
-				NWidget(WWT_PANEL, COLOUR_MAUVE),
-					NWidget(WWT_LABEL, COLOUR_MAUVE), SetDataTip(STR_NEWGRF_SETTINGS_INACTIVE_LIST, STR_NULL),
-							SetFill(1, 0), SetResize(1, 0), SetPadding(3, WD_FRAMETEXT_RIGHT, 0, WD_FRAMETEXT_LEFT),
-					/* Left side, available grfs, filter edit box. */
-					NWidget(NWID_HORIZONTAL), SetPadding(WD_TEXTPANEL_TOP, 0, WD_TEXTPANEL_BOTTOM, 0),
-							SetPIP(WD_FRAMETEXT_LEFT, WD_FRAMETEXT_RIGHT, WD_FRAMETEXT_RIGHT),
-						NWidget(WWT_TEXT, COLOUR_MAUVE), SetFill(0, 1), SetDataTip(STR_NEWGRF_FILTER_TITLE, STR_NULL),
-						NWidget(WWT_EDITBOX, COLOUR_MAUVE, SNGRFS_FILTER), SetFill(1, 0), SetMinimalSize(50, 12), SetResize(1, 0),
-								SetDataTip(STR_LIST_FILTER_OSKTITLE, STR_LIST_FILTER_TOOLTIP),
-					EndContainer(),
-					/* Left side, available grfs. */
-					NWidget(NWID_HORIZONTAL), SetPadding(0, 2, 0, 2),
-						NWidget(WWT_PANEL, COLOUR_MAUVE),
-							NWidget(WWT_INSET, COLOUR_MAUVE, SNGRFS_AVAIL_LIST), SetMinimalSize(100, 1), SetPadding(2, 2, 2, 2),
-									SetFill(1, 1), SetResize(1, 1),
-							EndContainer(),
-						EndContainer(),
-						NWidget(WWT_SCROLL2BAR, COLOUR_MAUVE, SNGRFS_SCROLL2BAR),
-					EndContainer(),
-					/* Left side, available grfs, buttons. */
-					NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPadding(2, 2, 2, 2), SetPIP(0, WD_RESIZEBOX_WIDTH, 0),
-						NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, SNGRFS_ADD), SetFill(1, 0), SetResize(1, 0),
-								SetDataTip(STR_NEWGRF_SETTINGS_ADD, STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP),
-						NWidget(NWID_VERTICAL),
-							NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, SNGRFS_RESCAN_FILES), SetFill(1, 0), SetResize(1, 0),
-									SetDataTip(STR_NEWGRF_SETTINGS_RESCAN_FILES, STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP),
-							NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, SNGRFS_CONTENT_DOWNLOAD), SetFill(1, 0), SetResize(1, 0),
-									SetDataTip(STR_INTRO_ONLINE_CONTENT, STR_INTRO_TOOLTIP_ONLINE_CONTENT),
-						EndContainer(),
-					EndContainer(),
-				EndContainer(),
-			EndContainer(),
-
-			NWidget(NWID_VERTICAL),
-				/* Right side, info panel. */
-				NWidget(WWT_PANEL, COLOUR_MAUVE), SetPadding(WD_RESIZEBOX_WIDTH, 0, 2, 0),
-					NWidget(WWT_EMPTY, COLOUR_MAUVE, SNGRFS_NEWGRF_INFO_TITLE), SetFill(1, 0), SetResize(1, 0),
-					NWidget(WWT_EMPTY, COLOUR_MAUVE, SNGRFS_NEWGRF_INFO), SetFill(1, 1), SetResize(1, 1), SetMinimalSize(150, 100),
-				EndContainer(),
-				/* Right side, buttons. */
-				NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(0, WD_RESIZEBOX_WIDTH, 0),
-					NWidget(NWID_VERTICAL),
-						NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, SNGRFS_SET_PARAMETERS), SetFill(1, 0), SetResize(1, 0),
-								SetDataTip(STR_NEWGRF_SETTINGS_SET_PARAMETERS, STR_NULL),
-						NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, SNGRFS_TOGGLE_PALETTE), SetFill(1, 0), SetResize(1, 0),
-								SetDataTip(STR_NEWGRF_SETTINGS_TOGGLE_PALETTE, STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP),
-					EndContainer(),
-					NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, SNGRFS_APPLY_CHANGES), SetFill(1, 0), SetResize(1, 0),
-							SetDataTip(STR_NEWGRF_SETTINGS_APPLY_CHANGES, STR_NULL),
-				EndContainer(),
-			EndContainer(),
-		EndContainer(),
+		NWidgetFunction(NewGRFDisplay), SetPadding(WD_RESIZEBOX_WIDTH, WD_RESIZEBOX_WIDTH, 2, WD_RESIZEBOX_WIDTH),
 		/* Resize button. */
 		NWidget(NWID_HORIZONTAL),
 			NWidget(NWID_SPACER), SetFill(1, 0), SetResize(1, 0),
