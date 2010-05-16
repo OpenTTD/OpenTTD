@@ -778,8 +778,6 @@ STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDE
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}La {STRING} finanzia la costruzione della nuova cittadina di {TOWN}!
 
-STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Nuov{G o a} {STRING} in costruzione vicino a {TOWN}!
-STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Nuov{G 0 o a} {STRING} piantat{G 0 o a} vicino a {TOWN}!
 
 STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}{STRING} annuncia imminente chiusura!!
 STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}Per problemi di rifornimenti {STRING} annuncia imminente chiusura!
@@ -821,9 +819,7 @@ STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Il profi
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} è stato fermato a causa del fallimento di un ordine di riadattamento
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Rinnovo automatico di {VEHICLE}{}{STRING} fallito
 
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}Nuov{G o a} {STRING} disponibile!
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIGFONT}{BLACK}{ENGINE}
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Nuov{G o a} {STRING} disponibile! -  {ENGINE}
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} non accetta più {STRING}
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} non accetta più {STRING} né {STRING}
@@ -1819,7 +1815,6 @@ STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Incluso
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Dipendenza inclusa nel download
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Già installato
 STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Contenuto sconosciuto: non può essere scaricato da OpenTTD
-STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Questo contenuto sostituisce un{G 0 "" a} {STRING} esistente
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}Nome: {WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Versione: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Descrizione: {WHITE}{STRING}
@@ -2859,7 +2854,6 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Stai pe
 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Messaggio da un costruttore di veicoli
-STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Abbiamo appena progettato un{G "" a} nuov{G o a} {STRING} - È interessato ad un anno di uso esclusivo di questo veicolo, in modo da permetterci di valutarne le prestazioni prima di renderlo disponibile sul mercato?
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=f}locomotiva
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=m}automezzo
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=m}aeromobile
