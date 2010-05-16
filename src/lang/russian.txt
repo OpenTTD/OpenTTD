@@ -390,7 +390,7 @@ STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Дата
 # These are used in dropdowns
 STR_SORT_BY_POPULATION                                          :Население
 STR_SORT_BY_NAME                                                :Название
-STR_SORT_BY_PRODUCTION                                          :Продукция
+STR_SORT_BY_PRODUCTION                                          :Производительность
 STR_SORT_BY_TYPE                                                :Тип
 STR_SORT_BY_TRANSPORTED                                         :Вывоз
 STR_SORT_BY_NUMBER                                              :Номер
@@ -2341,7 +2341,7 @@ STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Ж/д депо
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Дорога
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Дорога с уличным освещением
-STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Шоссе
+STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Дорога с озеленением
 STR_LAI_ROAD_DESCRIPTION_ROAD_VEHICLE_DEPOT                     :Гараж
 STR_LAI_ROAD_DESCRIPTION_ROAD_RAIL_LEVEL_CROSSING               :Железнодорожный переезд
 STR_LAI_ROAD_DESCRIPTION_TRAMWAY                                :Трамвайные рельсы
@@ -3109,10 +3109,10 @@ STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Пере
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Развернуть поезд
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Принудительно развернуть автомобиль
 
-STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Показать задания. Ctrl+клик - показать график.
-STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Показать задания. Ctrl+клик - показать график.
-STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Показать задания. Ctrl+клик - показать график.
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Показать задания. Ctrl+клик - показать расписание.
+STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Показать задания. Ctrl+клик - показать график
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Показать задания. Ctrl+клик - показать график
+STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Показать задания. Ctrl+клик - показать график
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Показать задания. Ctrl+клик - показать график
 
 STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Показать информацию о поезде
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Показать информацию об автомобиле
@@ -3130,7 +3130,7 @@ STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Отъ�
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Уничтожен!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Поломка
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Остановлен
-STR_VEHICLE_STATUS_TRAIN_STOPPING                               :{RED}Остановлен
+STR_VEHICLE_STATUS_TRAIN_STOPPING                               :{RED}Останавливается
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Останавливается; {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Нет тока
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Ожидает свободного пути

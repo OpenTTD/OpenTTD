@@ -229,7 +229,7 @@ STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Seleccio
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Selecciona el criteri de filtratge
 STR_BUTTON_SORT_BY                                              :{BLACK}Ordenar per
 STR_BUTTON_LOCATION                                             :{BLACK}Situació
-STR_BUTTON_RENAME                                               :{BLACK}Reanomena
+STR_BUTTON_RENAME                                               :{BLACK}Canvia el nom
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Tanca la finestra
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Títol de la finestra - arrossega això per moure la finestra
@@ -1902,7 +1902,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Commuta 
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Converteix/Millora el tipus de via
 
 # Rail depot construction window
-STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Cotxeres de Tren
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Orientació Cotxeres
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Selecciona l'orientació de les cotxeres de tren
 
 # Rail waypoint construction window
@@ -1988,9 +1988,9 @@ STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Orientac
 STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Selecciona l'orientació de les cotxeres de tramvies
 
 # Road vehicle station construction window
-STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Parada d'autobús
+STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Orientació Parada d'autobús
 STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Selecciona l'orientació de la parada d'autobús
-STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Estació de Mercaderies
+STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Orientació Estació de Mercaderies
 STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Selecciona l'orientació del moll de càrrega de camions
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Orientació estació passatgers
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Selecciona l'orientació de l'estació de tramvies de passatgers
@@ -2473,7 +2473,7 @@ STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Incremen
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}Esborra
 STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Esborra totalment aquesta població
 
-STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Reanomena Població
+STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Canvia el nom de la Població
 
 # Town local authority window
 STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}{TOWN} autoritat local
@@ -2556,7 +2556,7 @@ STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Mostra t
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Mostra tots els avions que tinguin aquest aeroport en el seu itinerari
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Mostra tots els vaixells que tinguin aquest port en el seu itinerari
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Reanomena l'estació/àrea de càrrega
+STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Canvia el nom de l'estació/àrea de càrrega
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
@@ -2766,22 +2766,26 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Compra l
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Compra el vaixell seleccionat
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Compra l'avió seleccionat
 
-STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Reanomena
-STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Reanomena
-STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}Reanomena
-STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Reanomena
+STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Canvia el nom
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Canvia el nom
+STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}Canvia el nom
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Canvia el nom
 
-STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Reanomena el tipus de vehicle ferroviari
-STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Reanomena tipus d'automòbil
-STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Reanomena tipus de vaixell
-STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Reanomena tipus d'avió
+STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Canvia el nom del tipus de vehicle ferroviari
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Canvia el nom del tipus d'automòbil
+STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Canvia el nom del tipus de vaixell
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Canvia el nom del tipus d'avió
 
-STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Reanomena el tipus vehicle ferroviari
-STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Reanomena tipus d'automòbil
-STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Reanomena tipus de vaixell
-STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Reanomena tipus d'avió
+STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Canvia el nom del tipus vehicle ferroviari
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Canvia el nom del tipus d'automòbil
+STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Canvia el nom del tipus de vaixell
+STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Canvia el nom del tipus d'avió
 
 # Depot window
+STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
+
+STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}Canvia el nom de la cotxera
+STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Canvia el nom de la cotxera
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -2961,7 +2965,11 @@ STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Sense o
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Cap a {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Cap a {WAYPOINT}, a {VELOCITY}
 
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE}Cap a {DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Cap a {DEPOT}, {VELOCITY}
 
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}Revisió a {DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Revisió a {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
 STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Parat
@@ -3143,6 +3151,7 @@ STR_ORDER_TRAIN_DEPOT                                           :Cotxeres de tre
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Cotxera de Vehicles
 STR_ORDER_SHIP_DEPOT                                            :Drassanes
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
+STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 STR_ORDER_REFIT_ORDER                                           :(Remodela a {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Remodela a {STRING} i para)
@@ -3398,7 +3407,7 @@ STR_ERROR_PROTECTED                                             :{WHITE}Aquesta 
 
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Impossible construir poblacions
-STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}No es pot reanomenar la població...
+STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}No es pot canviar el nom de la població...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}No es pot construir una població aquí...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... massa prop del límit del mapa
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... massa prop d'una altra població
@@ -3444,7 +3453,7 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Massa pr
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Massa prop d'una altra estació/àrea de càrrega
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Massa prop d'un altre moll
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Massa prop d'un altre aeroport
-STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}No es pot reanomenar l'estació...
+STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}No es pot canviar el nom de l'estació...
 STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... aquesta carretera es propietat de la població
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... sentit de la carretera en la direcció incorrecta
 
@@ -3483,6 +3492,8 @@ STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Aquí no
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Aquí no es pot construir una cotxera...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Aquí no puc construir les cotxeres de tramvies...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Aquí no es pot construir una drassana...
+
+STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}No es pot canviar el nom a la cotxera...
 
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}El tren s'ha de parar dins de la cotxera
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... s'ha de parar dins d'una cotxera
@@ -3606,10 +3617,10 @@ STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}No es po
 STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}No es pot comprar el vaixell...
 STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}No es pot comprar l'avió...
 
-STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}No es pot reanomenar el tipus de vehicle ferroviari...
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}No es pot reanomenar tipus d'automòbil
-STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}No es pot reanomenar el tipus de vaixell...
-STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}No es pot reanomenar el tipus d'avió...
+STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}No es pot canviar el nom del tipus de vehicle ferroviari...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}No es pot canviar el nom del tipus d'automòbil
+STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}No es pot canviar el nom del tipus de vaixell...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}No es pot canviar el nom del tipus d'avió...
 
 STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}No es pot vendre el vehicle...
 STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}No pots vendre l'automòbil...
@@ -4054,6 +4065,14 @@ STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 STR_FORMAT_WAYPOINT_NAME                                        :{TOWN} Punt de Control
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN} Punt de Control #{COMMA}
 
+STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} Cotxera
+STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} Cotxera #{COMMA}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} Cotxera
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} Cotxera #{COMMA}
+STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} Drassana
+STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} Drassanes #{COMMA}
+STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{STATION} Hangar
+
 STR_UNKNOWN_STATION                                             :estació desconeguda
 STR_DEFAULT_SIGN_NAME                                           :Senyal
 STR_COMPANY_SOMEONE                                             :algú
@@ -4079,6 +4098,7 @@ STR_VIEWPORT_WAYPOINT_TINY                                      :{TINYFONT}{WAYP
 # Simple strings to get specific types of data
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
+STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}

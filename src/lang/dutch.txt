@@ -2781,6 +2781,10 @@ STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Hernoem 
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Hernoem type van vliegtuig
 
 # Depot window
+STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
+
+STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}Hernoem depot
+STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Hernoem depot
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -2960,7 +2964,11 @@ STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Geen or
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Op weg naar {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Op weg naar {WAYPOINT}, {VELOCITY}
 
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE}Onderweg naar {DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Onderweg naar {DEPOT}, {VELOCITY}
 
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}Onderhoud in {DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Onderhoud in {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
 STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Gestopt
@@ -3142,6 +3150,7 @@ STR_ORDER_TRAIN_DEPOT                                           :Treindepot
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Garage
 STR_ORDER_SHIP_DEPOT                                            :Dok
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
+STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 STR_ORDER_REFIT_ORDER                                           :(Ombouwen naar {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Ombouwen naar {STRING} en stop)
@@ -3150,16 +3159,16 @@ STR_ORDER_STOP_ORDER                                            :(Stop)
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
 STR_ORDER_FULL_LOAD                                             :(Volledig laden)
-STR_ORDER_FULL_LOAD_ANY                                         :(Volledig laden één soort vracht)
+STR_ORDER_FULL_LOAD_ANY                                         :(Één soort vracht volledig laden)
 STR_ORDER_NO_LOAD                                               :(Niet laden)
 STR_ORDER_UNLOAD                                                :(Lossen en vracht meenemen)
 STR_ORDER_UNLOAD_FULL_LOAD                                      :(Lossen en wacht tot volledig vol)
 STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Lossen en wacht tot één soort vracht vol)
 STR_ORDER_UNLOAD_NO_LOAD                                        :(Lossen en vertrek leeg)
-STR_ORDER_TRANSFER                                              :(Transfer en neem vracht mee)
-STR_ORDER_TRANSFER_FULL_LOAD                                    :(Transfer en wacht tot volledig vol)
-STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Transfer en wacht tot één soort vol)
-STR_ORDER_TRANSFER_NO_LOAD                                      :(Transfer en vertrek leeg)
+STR_ORDER_TRANSFER                                              :(Overladen en neem vracht mee)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :(Overladen en wacht tot volledig vol)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Overladen en wacht tot één soort vol)
+STR_ORDER_TRANSFER_NO_LOAD                                      :(Overladen en vertrek leeg)
 STR_ORDER_NO_UNLOAD                                             :(Niet lossen en neem vracht mee)
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Niet lossen en wacht tot volledig vol)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Niet lossen en wacht tot één soort vol)
@@ -3172,70 +3181,70 @@ STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Spring naar ord
 STR_ORDER_CONDITIONAL_NUM                                       :Spring naar order {COMMA} als {STRING} {STRING} {COMMA}
 STR_ORDER_CONDITIONAL_TRUE_FALSE                                :Spring naar order {COMMA} als {STRING} {STRING}
 
-STR_INVALID_ORDER                                               :{RED} (Ongeldige Order)
+STR_INVALID_ORDER                                               :{RED} (Ongeldige order)
 
 # Time table window
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Dienstregeling)
 STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}Orders
-STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Ga naar het order scherm
+STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Ga naar het orderscherm
 
-STR_TIMETABLE_TOOLTIP                                           :{BLACK}Dienstregeling - klik op een opdracht om het te selecteren
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}Dienstregeling - klik op een order om te selecteren
 
 STR_TIMETABLE_NO_TRAVEL                                         :Niet rijden
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Reis (geen dienstregeling)
 STR_TIMETABLE_TRAVEL_FOR                                        :Reis naar {STRING}
 STR_TIMETABLE_STAY_FOR                                          :en blijf voor {STRING}
-STR_TIMETABLE_AND_TRAVEL_FOR                                    :en rijdt naar {STRING}
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :en rijd naar {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} dag{P "" en}
 STR_TIMETABLE_TICKS                                             :{COMMA} tik{P "" ken}
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Dit tijdschema duurt {STRING} om te volbrengen
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Dit tijdschema duurt minstens {STRING} om te volbrengen (niet alles geselecteerd)
 
-STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Dit voertuig loopt op schema
+STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Dit voertuig is op tijd
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Dit voertuig heeft {STRING} vertraging
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Dit voertuig is {STRING} te vroeg
-STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Dit reisschema is nog niet gestart
-STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Dit reisschema begint bij {STRING}
+STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Deze dienstregeling is nog niet gestart
+STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Deze dienstregeling begint bij {STRING}
 
-STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Startdatum
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Kies een datum als startpunt voor dit reisschema
+STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Begindatum
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Kies een datum als beginpunt voor deze dienstregeling
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Verander de tijd
-STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Verander de hoeveelheid tijd die de geselecteerde opdracht mag innemen
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Verander de tijdsduur die de geselecteerde order mag duren
 
-STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Reset de tijd
-STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Verwijder de hoeveelheid tijd die de geselecteerde opdracht mag innemen
+STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Verwijder tijd
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Verwijder de tijdsduur die de geselecteerde order mag duren
 
-STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Reset teller
-STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reset de teller zodat het voertuig toch op tijd is
+STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Reset vertragingsteller
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reset de vertragingsteller zodat het voertuig op tijd is
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Auto-aanvullen
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Vul de dienstregeling automatisch in aan de hand van de volgende reis (Ctrl+klik om wachttijden proberen te bewaren)
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Vul de dienstregeling automatisch in aan de hand van de volgende reis (Ctrl+klik om proberen wachttijden te bewaren)
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}Verwacht
-STR_TIMETABLE_SCHEDULED                                         :{BLACK}Schema
-STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Wissel tussen verwacht and schema
+STR_TIMETABLE_SCHEDULED                                         :{BLACK}Volgens dienstregeling
+STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Wissel tussen verwacht en volgens dienstregeling
 
 STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :A:
 STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :V:
 
 
 # Date window (for timetable)
-STR_DATE_CAPTION                                                :{WHITE}Datum vastleggen
-STR_DATE_SET_DATE                                               :{BLACK}Datum vastleggen
-STR_DATE_SET_DATE_TOOLTIP                                       :{BLACK}Gebruik de geselecteerde datum als startdatum voor het reisschema
-STR_DATE_DAY_TOOLTIP                                            :{BLACK}Kies dag
-STR_DATE_MONTH_TOOLTIP                                          :{BLACK}Kies maand
-STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Kies jaar
+STR_DATE_CAPTION                                                :{WHITE}Datum selecteren
+STR_DATE_SET_DATE                                               :{BLACK}Datum selecteren
+STR_DATE_SET_DATE_TOOLTIP                                       :{BLACK}Gebruik de geselecteerde datum als startdatum voor de dienstregeling
+STR_DATE_DAY_TOOLTIP                                            :{BLACK}Selecteer dag
+STR_DATE_MONTH_TOOLTIP                                          :{BLACK}Selecteer maand
+STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Selecteer jaar
 
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}AI Debug
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
-STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Naam computerspeler
-STR_AI_DEBUG_SETTINGS                                           :{BLACK}AI Instellingen
-STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Wijzig de instelling van de AI
+STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Naam van computerspeler
+STR_AI_DEBUG_SETTINGS                                           :{BLACK}Instellingen van AI
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Wijzig de instellingen van de AI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Herlaad computerspeler
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Verwijder computerspeler, herlaad het script en herstart computerspeler
 STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Schakel afbreken wanneer een AI log bericht overeenstemd met het afbreek tekst aan/uit.
@@ -3482,6 +3491,8 @@ STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Kan hier
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Kan hier geen garage bouwen...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Kan hier geen tramdepot bouwen...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Kan dok hier niet bouwen...
+
+STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Kan depot niet hernoemen...
 
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Trein moet gestopt zijn in depot
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... moet gestopt zijn binnen een wegvoertuigdepot
@@ -4053,6 +4064,14 @@ STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 STR_FORMAT_WAYPOINT_NAME                                        :{TOWN} Controlepost
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN} Controlepost #{COMMA}
 
+STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} Treindepot
+STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} Treindepot #{COMMA}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} Garage
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} Garage #{COMMA}
+STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} Dok
+STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} Dok#{COMMA}
+STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{STATION} Hangar
+
 STR_UNKNOWN_STATION                                             :onbekend station
 STR_DEFAULT_SIGN_NAME                                           :Bord
 STR_COMPANY_SOMEONE                                             :iemand
@@ -4078,6 +4097,7 @@ STR_VIEWPORT_WAYPOINT_TINY                                      :{TINYFONT}{WAYP
 # Simple strings to get specific types of data
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
+STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}

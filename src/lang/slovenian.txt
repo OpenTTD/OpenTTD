@@ -2823,6 +2823,10 @@ STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Preimenu
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Preimenuj letalo
 
 # Depot window
+STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
+
+STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}Spremeni ime garaže
+STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Preimenuj garažo
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -3002,7 +3006,11 @@ STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Brez uk
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Pelje proti {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Pelje proti {WAYPOINT}, {VELOCITY}
 
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE}Pelje proti {DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Pelje proti {DEPOT}, {VELOCITY}
 
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}Servis v {DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Servis v {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
 STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Ustavljeno
@@ -3184,6 +3192,7 @@ STR_ORDER_TRAIN_DEPOT                                           :Železniška ga
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Cestna garaža
 STR_ORDER_SHIP_DEPOT                                            :Ladijska garaža
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
+STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 STR_ORDER_REFIT_ORDER                                           :(Predelaj za {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Predelava v {STRING} in zaustavitev)
@@ -3524,6 +3533,8 @@ STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Nemogoč
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Tukaj ni mogoče zgraditi garaže...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Tukaj ni mogoče zgraditi tramvaj garaže...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Tukaj ni mogoče zgraditi ladjedelnice...
+
+STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Ni mogoče preimenovati garaže...
 
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Vlak mora biti ustavljen v garaži
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... mora biti ustavljen v garaži cestnih vozil
@@ -4133,6 +4144,14 @@ STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 STR_FORMAT_WAYPOINT_NAME                                        :Točka poti {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Točka poti {TOWN} #{COMMA}
 
+STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} Železniška garaža
+STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} Železniška garaža #{COMMA}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} Cestna garaža
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} Cestna garaža #{COMMA}
+STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} Ladijska garaža
+STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} Ladijska garaža #{COMMA}
+STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{STATION} Hangar
+
 STR_UNKNOWN_STATION                                             :neznana postaja
 STR_DEFAULT_SIGN_NAME                                           :Znak
 STR_COMPANY_SOMEONE                                             :nekdo
@@ -4158,6 +4177,7 @@ STR_VIEWPORT_WAYPOINT_TINY                                      :{TINYFONT}{WAYP
 # Simple strings to get specific types of data
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
+STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}

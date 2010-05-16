@@ -2783,6 +2783,8 @@ STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Nimeä l
 # Depot window
 STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
 
+STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}Vaihda varikon nimi
+STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Nimeä varikko
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -3490,6 +3492,7 @@ STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Autovari
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Tähän ei voi rakentaa varikkoa.
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Telakkaa ei voi rakentaa.
 
+STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Varikon nimeä ei voi vaihtaa...
 
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Juna täytyy pysäyttää veturitallin sisällä
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... sen pitää olla pysähtyneenä huoltoasemalle
@@ -4094,6 +4097,7 @@ STR_VIEWPORT_WAYPOINT_TINY                                      :{TINYFONT}{WAYP
 # Simple strings to get specific types of data
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
+STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}

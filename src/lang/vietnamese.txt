@@ -2767,6 +2767,8 @@ STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Đổi t
 
 # Depot window
 
+STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}Đổi tên xưởng
+STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Đổi tên xưởng
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -3463,6 +3465,7 @@ STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Không t
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Không thể xây bến xe điện ở đây...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Không thể xây cảng ở đây...
 
+STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Không thể đổi tên xưởng...
 
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Tàu phải dừng lại ở trong xưởng
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... phải dừng trong xưởng ôtô
