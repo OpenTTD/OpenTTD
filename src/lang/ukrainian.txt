@@ -2439,6 +2439,7 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Гене
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Налаштування нової графіки
+STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Фільтр за строкою:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Завантажити обрані настройки
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Записати настройки
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Записати поточний список як настройки

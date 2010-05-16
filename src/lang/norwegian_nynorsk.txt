@@ -2322,6 +2322,7 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Gjer kla
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF-Innstillingar
+STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Søkefilter:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Last inn det valde førehandsoppsettet
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Lagre førehandsoppsettet
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Lagre den noverande lista som eit førehandsoppsett

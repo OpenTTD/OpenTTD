@@ -2260,6 +2260,7 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Undirbý
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF stillingar
+STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Leitarsía:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Hlaða valdar stillingu
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Vista stillingu
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Vista núverandi lista sem stillingu

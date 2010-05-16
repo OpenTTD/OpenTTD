@@ -2516,6 +2516,7 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Priprema
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF podešavanja
+STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Filter teksta:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Učitava označenu postavku
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Sačuvaj postavku
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Sačuvajte trenutni spisak u postavku

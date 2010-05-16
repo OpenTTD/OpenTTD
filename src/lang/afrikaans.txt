@@ -2313,6 +2313,7 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Voorbere
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF stellings
+STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Filter string:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Laai die gekose voorafstel
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Stoor voorafstel
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Stoor die huidige lys as 'n voorafstel

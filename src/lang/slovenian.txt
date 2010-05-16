@@ -2363,6 +2363,7 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Priprave
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF nastavitve
+STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Filtriraj:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Naloži izbrano prednastavitev
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Shrani prednastavitev
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Shrani tekoči seznam kot prednastavitev

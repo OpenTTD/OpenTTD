@@ -2396,6 +2396,7 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Ruošiam
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Papild. grafikos nustatymai (NewGRF)
+STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Įrašo filtravimas:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Užkrauti parinktą nustatymą
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Išsaugoti nustatymą
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Išsaugoti esamą sąrašą kaip nuostatą

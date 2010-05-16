@@ -2321,6 +2321,7 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Valmiste
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF-asetukset
+STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Suodatinteksti:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Lataa valittu valmislista
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Tallenna valmislistaksi
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Tallenna nykyinen lista valmislistaksi

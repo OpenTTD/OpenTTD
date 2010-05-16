@@ -2414,6 +2414,7 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Προε
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Ρυθμίσεις NewGRF
+STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Φίλτρο:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Φορτώση του προκαθορισμένου σετ ρυθμίσεων
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Αποθήκευση προκαθορισμένου σετ ρυθμίσεων
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Αποθήκευση της τρέχουσας λίστας ως προκαθορισμένο σετ ρυθμίσεων

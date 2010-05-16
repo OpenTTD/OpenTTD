@@ -2322,6 +2322,7 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Prépara
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Paramètres Newgrf
+STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Filtre{NBSP}:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Charger la liste sélectionnée
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Sauver la liste
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Sauver la liste courante

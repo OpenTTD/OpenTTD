@@ -2701,6 +2701,7 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Przygoto
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Ustawienia NewGRF
+STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Filtruj napis:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Załaduj wskazany stan ustawień
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Zapisz schemat
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Zapisz obecną listę jako stan ustawień

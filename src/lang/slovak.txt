@@ -2388,6 +2388,7 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Priprava
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Nastavenie novych grafickych suborov
+STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Filtrovať podľa:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Nahrať vybraný zoznam
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Uložit zoznam
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Uložit aktuálne nastavenie ako zoznam

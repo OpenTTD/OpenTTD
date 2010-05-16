@@ -2302,6 +2302,7 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Permaina
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Tetapan NewGRF
+STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}String saringan:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Buka pratetapan yang dipilih
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Simpan pratetapan
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Simpan senarai ini sebagai pratetapan

@@ -2315,6 +2315,7 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}يتك �
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}اعدادات NewGRF
+STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}نص المرشح
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}فتح مجموعة الاعدادات المسجلة
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}حفظ مجموعة الاعدادات
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}حفظ القائمة الحالية كمجموعة اعدادات

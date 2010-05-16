@@ -2322,6 +2322,7 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Preparan
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Configuración de NewGRF
+STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Patrón de filtrado:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Cargar la programación seleccionada
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Grabar
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Grabar lista actual como una programación
