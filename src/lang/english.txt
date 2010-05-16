@@ -2323,6 +2323,7 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Preparin
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF Settings
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Detailed NewGRF information
 STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Active NewGRF files
+STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Inactive NewGRF files
 STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Select preset:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Load the selected preset
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Save preset
