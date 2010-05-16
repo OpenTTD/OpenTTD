@@ -2285,7 +2285,9 @@ STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Escribe 
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Borrar programación
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Borra-la programación seleccionada actualmente
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Engadir
-STR_NEWGRF_SETTINGS_ADD_TOOLTIP                                 :{BLACK}Engadir un novo arquivo NewGRF á lista
+STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Engadi-lo arquivo NewGRF seleccionado a túa configuración
+STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}Actualizar ficheiros
+STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Actualiza a lista dos ficheiros NewGRF dispoñibles
 STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Eliminar
 STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Elimina-lo arquivo NewGRF seleccionado da lista
 STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Subir
@@ -2313,13 +2315,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Ficheiro n
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Desactivado
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Introduce os parámetros do NewGRF
-
-# NewGRF add window
-STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Arquivos NewGRF dispoñibles
-STR_NEWGRF_ADD_FILE                                             :{BLACK}Engadir á selección
-STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Engadi-lo arquivo NewGRF seleccionado a túa configuración
-STR_NEWGRF_ADD_RESCAN_FILES                                     :{BLACK}Actualizar ficheiros
-STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}Actualiza a lista dos ficheiros NewGRF dispoñibles
 
 # NewGRF inspect window
 

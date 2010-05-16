@@ -221,7 +221,6 @@ STR_UNITS_HEIGHT_SI                                             :{COMMA} 公尺
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}輸入篩選字串
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}輸入篩選所使用的關鍵字，對於清單……
-STR_LIST_FILTER_TITLE                                           :{BLACK}篩選字串：
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}選擇排序 (逆序／順序)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}選擇排序項目
@@ -2329,7 +2328,9 @@ STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}輸入�
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}刪除設定值
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}刪除目前所選的設定值
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}新增
-STR_NEWGRF_SETTINGS_ADD_TOOLTIP                                 :{BLACK}為清單加入新的 NewGRF 檔
+STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}將選定的 NewGRF 加入目前設定
+STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}重新掃描檔案
+STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}更新可用的 NewGRF 檔案清單
 STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}移除
 STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}從清單移除選定的 NewGRF 檔
 STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}上移
@@ -2357,13 +2358,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}找不到�
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}關閉
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}輸入 NewGRF 參數
-
-# NewGRF add window
-STR_NEWGRF_ADD_CAPTION                                          :{WHITE}可用的 NewGRF 檔案
-STR_NEWGRF_ADD_FILE                                             :{BLACK}加入設定
-STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}將選定的 NewGRF 加入目前設定
-STR_NEWGRF_ADD_RESCAN_FILES                                     :{BLACK}重新掃描檔案
-STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}更新可用的 NewGRF 檔案清單
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}變數檢查 - {STRING}

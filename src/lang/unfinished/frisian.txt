@@ -213,7 +213,6 @@ STR_UNITS_FORCE_SI                                              :{COMMA} kN
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Typ de namme fan filter
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Typ in wurd om in list te filterjen foar
-STR_LIST_FILTER_TITLE                                           :{BLACK}Filter namme:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Selektear skiftrjochting (oprinnend/ôfrinnend)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Selektear skiftnoarm
@@ -1461,8 +1460,6 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 
 
 
-
-# NewGRF add window
 
 # NewGRF (self) generated warnings/errors
 

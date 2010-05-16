@@ -218,7 +218,6 @@ STR_UNITS_FORCE_SI                                              :{COMMA} kN
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Filter string
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Wuert fir d'Lëscht ze filtern
-STR_LIST_FILTER_TITLE                                           :{BLACK}Filter string:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Richtung fir ze sortéieren (oofsteigend/opsteigend)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Argument fir ze sortéieren
@@ -2326,7 +2325,9 @@ STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Presetnu
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Preset leschen
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Selectéierten Preset leschen
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Baifügen
-STR_NEWGRF_SETTINGS_ADD_TOOLTIP                                 :{BLACK}Eng nei NewGRF an d'Lëscht setzen
+STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Selectionéiert NewGRF an der Config baisetzen
+STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}Dateien nei scannen
+STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Update d'Lëscht vun verfügbaren NewGRF Dateien.
 STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Wechhhuelen
 STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Selectéiert NewGRF aus der Lëscht huelen
 STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Rop
@@ -2354,13 +2355,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Datei net 
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Ausgeschalt
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}NewGRF Parameter agin
-
-# NewGRF add window
-STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Verfügbar NewGRF files
-STR_NEWGRF_ADD_FILE                                             :{BLACK}Zur der Selectioun baifügen
-STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Selectionéiert NewGRF an der Config baisetzen
-STR_NEWGRF_ADD_RESCAN_FILES                                     :{BLACK}Dateien nei scannen
-STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}Update d'Lëscht vun verfügbaren NewGRF Dateien.
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspzéier - {STRING}

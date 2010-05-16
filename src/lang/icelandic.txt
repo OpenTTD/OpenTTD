@@ -219,7 +219,6 @@ STR_UNITS_FORCE_SI                                              :{COMMA} kN
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Sláðu inn leitarstreng
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Sláðu inn leitarstreng til að sía listann
-STR_LIST_FILTER_TITLE                                           :{BLACK}Leitarsía:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Velja uppröðun (minnkandi/stækkandi)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Velja uppröðun
@@ -2268,7 +2267,9 @@ STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Skrifað
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Eyða stillingu
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Eyða valinni stillingu
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Bæta við
-STR_NEWGRF_SETTINGS_ADD_TOOLTIP                                 :{BLACK}Bæta NewGRF skrá við listann
+STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Bæta valinni NewGRF skrá í stillingarnar
+STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}Uppfæra lista
+STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Uppfæra listann yfir tiltækar NewGRF skrár
 STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Fjarlægja
 STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Fjarlægja valda NewGRF skrá af listanum
 STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Færa ofar
@@ -2296,13 +2297,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Viðeigand
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Óvirkt
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Sláðu inn NewGRF breytur
-
-# NewGRF add window
-STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Tiltækar NewGRF skrár
-STR_NEWGRF_ADD_FILE                                             :{BLACK}Bæta á lista
-STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Bæta valinni NewGRF skrá í stillingarnar
-STR_NEWGRF_ADD_RESCAN_FILES                                     :{BLACK}Uppfæra lista
-STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}Uppfæra listann yfir tiltækar NewGRF skrár
 
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}

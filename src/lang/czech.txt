@@ -291,7 +291,6 @@ STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Vložte filtr
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Vložte klíčové slovo pro filtr seznamu
-STR_LIST_FILTER_TITLE                                           :{BLACK}Filtrovat podle:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Vyber způsob řazeni (sestupně/vzestupně)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Vyber, podle čeho se má třídit
@@ -2399,7 +2398,9 @@ STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Zadej n�
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Smazat předvolbu
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Odstranit vybranou předvolbu
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Přidat
-STR_NEWGRF_SETTINGS_ADD_TOOLTIP                                 :{BLACK}Přidat grafiku do seznamu
+STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Přidat vybranou grafiku do tvého seznamu
+STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}Načíst soubory
+STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Znovu vytvořit seznam dostupných grafik
 STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Odebrat
 STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Odstranit označenou grafiku ze seznamu
 STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Nahoru
@@ -2427,13 +2428,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Nenalezen 
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Vypnuto
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Zadej parametry grafiky
-
-# NewGRF add window
-STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Dostupné grafiky
-STR_NEWGRF_ADD_FILE                                             :{BLACK}Přidat do výběru
-STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Přidat vybranou grafiku do tvého seznamu
-STR_NEWGRF_ADD_RESCAN_FILES                                     :{BLACK}Načíst soubory
-STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}Znovu vytvořit seznam dostupných grafik
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Zkoumání - {STRING}

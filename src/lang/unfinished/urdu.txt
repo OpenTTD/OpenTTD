@@ -600,8 +600,6 @@ STR_ABOUT_OPENTTD                                               :{WHITE}اوپن
 
 
 
-# NewGRF add window
-
 # NewGRF (self) generated warnings/errors
 
 # NewGRF related 'general' warnings

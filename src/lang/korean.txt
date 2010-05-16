@@ -220,7 +220,6 @@ STR_UNITS_FORCE_SI                                              :{COMMA} kN
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}검색할 문자를 입력하세요
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}검색할 키워드를 입력하세요
-STR_LIST_FILTER_TITLE                                           :{BLACK}필터링할 문자열:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}정렬 방법을 선택하십시오 (내림차순/오름차순)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}정렬 기준 선택
@@ -2325,7 +2324,9 @@ STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}프리�
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}프리셋 제거
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}현재 선택한 프리셋 제거
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}추가
-STR_NEWGRF_SETTINGS_ADD_TOOLTIP                                 :{BLACK}NewGRF 파일을 목록에 추가
+STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}설정에 선택한 NewGRF 추가
+STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}파일 재검색
+STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}사용 가능한 NewGRF 파일 목록을 업데이트합니다
 STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}제거
 STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}선택한 NewGRF 파일을 목록에서 제거
 STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}위로
@@ -2353,13 +2354,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}일치하�
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}사용안함
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}NewGRF 파라미터 입력
-
-# NewGRF add window
-STR_NEWGRF_ADD_CAPTION                                          :{WHITE}사용가능한 NewGRF 파일
-STR_NEWGRF_ADD_FILE                                             :{BLACK}선택목록에 추가
-STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}설정에 선택한 NewGRF 추가
-STR_NEWGRF_ADD_RESCAN_FILES                                     :{BLACK}파일 재검색
-STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}사용 가능한 NewGRF 파일 목록을 업데이트합니다
 
 # NewGRF inspect window
 

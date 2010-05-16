@@ -218,7 +218,6 @@ STR_UNITS_FORCE_SI                                              :{COMMA} kN
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Sartu lokarri iragazkia
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Sartu hitz bat iragazkian zerrendan aurkitzeko
-STR_LIST_FILTER_TITLE                                           :{BLACK}Iragazle lokarria:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Hautatu agertze ordena (deszendientea/aszendientea)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Hautatu agertze kriterioa
@@ -1154,8 +1153,6 @@ STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / 
 
 
 
-
-# NewGRF add window
 
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}

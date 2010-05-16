@@ -220,7 +220,6 @@ STR_UNITS_FORCE_SI                                              :{COMMA} kN
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Въведете филтър
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Въведете ключова дума за филтър на списъка
-STR_LIST_FILTER_TITLE                                           :{BLACK}Филтър:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Избери вида на сортирането (намаляващо/нарастващо)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Избери критерий за сортиране
@@ -2319,7 +2318,9 @@ STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Въве
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Изтрий шаблон
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Изтрий текущо избрания шаблон
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Добави
-STR_NEWGRF_SETTINGS_ADD_TOOLTIP                                 :{BLACK}Добавяне на NewGRF файл към списъка
+STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Добавя избраните NewGRF файлове към конфигурацията
+STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}Обнови
+STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Обновява списъка с налични NewGRF файлове
 STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Махни
 STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Премахва избрания NewGRF файл от списъка
 STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Нагоре
@@ -2347,13 +2348,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Не е н
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Изключен
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Въвеждане на NewGRF параметри
-
-# NewGRF add window
-STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Налични NewGRF файлове
-STR_NEWGRF_ADD_FILE                                             :{BLACK}Добави избраните
-STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Добавя избраните NewGRF файлове към конфигурацията
-STR_NEWGRF_ADD_RESCAN_FILES                                     :{BLACK}Обнови
-STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}Обновява списъка с налични NewGRF файлове
 
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}

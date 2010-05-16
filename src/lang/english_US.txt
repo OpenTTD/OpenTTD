@@ -218,7 +218,6 @@ STR_UNITS_FORCE_SI                                              :{COMMA} kN
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Enter filter string
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Enter a keyword to filter the list for
-STR_LIST_FILTER_TITLE                                           :{BLACK}Filter string:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Select sorting order (descending/ascending)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Select sorting criteria
@@ -2318,7 +2317,9 @@ STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Enter na
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Delete preset
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Delete the currently selected preset
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Add
-STR_NEWGRF_SETTINGS_ADD_TOOLTIP                                 :{BLACK}Add a NewGRF file to the list
+STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Add the selected NewGRF file to your configuration
+STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}Rescan files
+STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Update the list of available NewGRF files
 STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Remove
 STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Remove the selected NewGRF file from the list
 STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Move Up
@@ -2346,13 +2347,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Matching f
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Disabled
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Enter NewGRF parameters
-
-# NewGRF add window
-STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Available NewGRF files
-STR_NEWGRF_ADD_FILE                                             :{BLACK}Add to selection
-STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Add the selected NewGRF file to your configuration
-STR_NEWGRF_ADD_RESCAN_FILES                                     :{BLACK}Rescan files
-STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}Update the list of available NewGRF files
 
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}

@@ -218,7 +218,6 @@ STR_UNITS_FORCE_SI                                              :{COMMA} 千牛
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}输入过滤器字符串
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}输入用以过滤此列表的关键词
-STR_LIST_FILTER_TITLE                                           :{BLACK}过滤器字符串：
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}选择排序方法 （降序/升序）
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}选择排序标准
@@ -2301,7 +2300,9 @@ STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}为预�
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}删除预定义组
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}删掉当前预定义组
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}增加
-STR_NEWGRF_SETTINGS_ADD_TOOLTIP                                 :{BLACK}向列表中增加一个 NewGRF 文件
+STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}将选定的 NewGRF 文件添加到你的配置中
+STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}重新检索文件
+STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}刷新可用的 NewGRF 文件列表
 STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}删除
 STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}从列表中删除一个 NewGRF 文件
 STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}上移
@@ -2329,13 +2330,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}没有找�
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}禁用
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}输入 NewGRF 参数
-
-# NewGRF add window
-STR_NEWGRF_ADD_CAPTION                                          :{WHITE}可用的 NewGRF 文件
-STR_NEWGRF_ADD_FILE                                             :{BLACK}加入选择的范围
-STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}将选定的 NewGRF 文件添加到你的配置中
-STR_NEWGRF_ADD_RESCAN_FILES                                     :{BLACK}重新检索文件
-STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}刷新可用的 NewGRF 文件列表
 
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}

@@ -285,7 +285,6 @@ STR_UNITS_HEIGHT_SI                                             :{COMMA} μ
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Εισαγώγη κειμένου για φιλτράρισμα
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Εισάγετε μια λέξη για να φιλτραριστεί η λίστα για
-STR_LIST_FILTER_TITLE                                           :{BLACK}Φίλτρο:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Επιλογή σειράς ταξινόμησης (καθοδικά/ανοδικά)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Επιλογή κριτηρίου ταξινόμησης
@@ -2422,7 +2421,9 @@ STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Δώστ
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Διαγράψτε το προκαθορισμένο σετ ρυθμίσεων
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Διαγράψτε το επιλεγμένο προκαθορισμένο σετ ρυθμίσεων
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Πρόσθεσε
-STR_NEWGRF_SETTINGS_ADD_TOOLTIP                                 :{BLACK}Πρόσθεσε ένα αρχείο NewGRF στη λίστα
+STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Προσθέστε το επιλεγμένο αρχείο NewGRF στη διαμόρφωση σας
+STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}Ανιχνεύση ξανά για αρχεία
+STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Ανανέωση της λίστας με τα διαθέσιμα αρχεία NewGRF
 STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Αφαίρεσε
 STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Αφαίρεσε ένα αρχείο NewGRF από τη λίστα
 STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Μετακίνηση πάνω
@@ -2450,13 +2451,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Δεν β�
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Απενεργοποιημένο
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Εισαγώγη παραμέτρων NewGRF
-
-# NewGRF add window
-STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Διαθέσιμα αρχεία NewGRF
-STR_NEWGRF_ADD_FILE                                             :{BLACK}Προσθήκη στην επιλόγη
-STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Προσθέστε το επιλεγμένο αρχείο NewGRF στη διαμόρφωση σας
-STR_NEWGRF_ADD_RESCAN_FILES                                     :{BLACK}Ανιχνεύση ξανά για αρχεία
-STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}Ανανέωση της λίστας με τα διαθέσιμα αρχεία NewGRF
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Επιθεώρηση - {STRING}

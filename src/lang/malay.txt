@@ -218,7 +218,6 @@ STR_UNITS_FORCE_SI                                              :{COMMA} kN
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Masukkan string saringan
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Masukkan kata kunci untuk menyaring senarai
-STR_LIST_FILTER_TITLE                                           :{BLACK}String saringan:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Pilih bentuk susunan (menurun/menaik)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Pilih kriteria aturan
@@ -2310,7 +2309,9 @@ STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Masukkan
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Padam pratetapan
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Padam pratetapan yang kini terpilih
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Tambah
-STR_NEWGRF_SETTINGS_ADD_TOOLTIP                                 :{BLACK}Tambah fail NewGRF yang baru ke dalam senarai
+STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Tambah fail NewGRF yang terpilih kepada konfigurasi anda
+STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}Imbas semula fail-fail
+STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Kemaskini senarai fail NewGRF yang tersedia
 STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Buang
 STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Buang fail NewGRF yang terpilih daripada senarai
 STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Gerak Ke Atas
@@ -2338,13 +2339,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Fail yang 
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Dinyahaktifkan
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Masukkan parameter NewGRF
-
-# NewGRF add window
-STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Fail NewGRF yang tersedia
-STR_NEWGRF_ADD_FILE                                             :{BLACK}Tambah ke pilihan
-STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Tambah fail NewGRF yang terpilih kepada konfigurasi anda
-STR_NEWGRF_ADD_RESCAN_FILES                                     :{BLACK}Imbas semula fail-fail
-STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}Kemaskini senarai fail NewGRF yang tersedia
 
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}

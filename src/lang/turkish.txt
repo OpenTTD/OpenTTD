@@ -222,7 +222,6 @@ STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Süzgeç metnini girin
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Listeyi filtrelemek için bir anahtar sözcük girin
-STR_LIST_FILTER_TITLE                                           :{BLACK}Süzgeç metni:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Sıralama türü seçin (azalan/artan)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Sıralama kriteri seçin
@@ -2330,7 +2329,9 @@ STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Seçki i
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Seçkiyi sil
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Seçili olan seçkiyi sil
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Ekle
-STR_NEWGRF_SETTINGS_ADD_TOOLTIP                                 :{BLACK}Listeye NewGRF dosyası ekle
+STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}seçili NewGRF'i ayarlarıma ekle
+STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}Dosyaları tekrar tara
+STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Mümkün olan NewGRF dosyalarının listesini güncelle
 STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Kaldır
 STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Seçili NewGRF dosyasını listeden kaldır
 STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Yukarı Taşı
@@ -2358,13 +2359,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Eşleşen 
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Etkisiz
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}NewGRF seçeneklerini girin
-
-# NewGRF add window
-STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Mümkün olan NewGRF dosyaları
-STR_NEWGRF_ADD_FILE                                             :{BLACK}Seçime ekle
-STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}seçili NewGRF'i ayarlarıma ekle
-STR_NEWGRF_ADD_RESCAN_FILES                                     :{BLACK}Dosyaları tekrar tara
-STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}Mümkün olan NewGRF dosyalarının listesini güncelle
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}İncele - {STRING}

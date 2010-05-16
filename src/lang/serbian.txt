@@ -409,7 +409,6 @@ STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Unes filter teksta
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Unesite ključnu reč kako bi se filtriralo spisak
-STR_LIST_FILTER_TITLE                                           :{BLACK}Filter teksta:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Odaberite način sortiranja (opadajući/rastući)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Odaberite kriterijum za sortiranje
@@ -2524,7 +2523,9 @@ STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Unesite 
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Izbriši postavku
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Izbrišite trenutno označenu postavku
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Dodaj
-STR_NEWGRF_SETTINGS_ADD_TOOLTIP                                 :{BLACK}Dodaje NewGRF datoteku u spisak
+STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Dodajte odabranu NewGRF datoteku na vaš listu
+STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}Osveži izbor
+STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Osvežite izbor dostupnih NewGRF datoteka
 STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Ukloni
 STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Uklanja označenu NewGRF datoteku sa spiska
 STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Naviše
@@ -2552,13 +2553,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Odabrana d
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Isključen
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Unesite NewGRF parametre
-
-# NewGRF add window
-STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Dostupne NewGRF datoteke
-STR_NEWGRF_ADD_FILE                                             :{BLACK}Dodaj na listu
-STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Dodajte odabranu NewGRF datoteku na vaš listu
-STR_NEWGRF_ADD_RESCAN_FILES                                     :{BLACK}Osveži izbor
-STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}Osvežite izbor dostupnih NewGRF datoteka
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Provera - {STRING}

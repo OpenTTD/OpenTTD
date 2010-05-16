@@ -218,7 +218,6 @@ STR_UNITS_FORCE_SI                                              :{COMMA} kN
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Masukkan kata penyaring
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Masukkan kata kunci untuk menyaring daftar
-STR_LIST_FILTER_TITLE                                           :{BLACK}Saring kata:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Pilih modus pengurutan (menurun/menaik)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Pilih kriteria pengurutan
@@ -2326,7 +2325,9 @@ STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Masukkan
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Hapus
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Hapus daftar aturan yang terpilih
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Tambahkan
-STR_NEWGRF_SETTINGS_ADD_TOOLTIP                                 :{BLACK}Tambahkan berkas NewGRF ke dalam daftar
+STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Tambahkan berkas NewGRF terpilih kedalam konfigurasi anda
+STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}Telusuri ulang berkas
+STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Memperbarui daftar berkas NewGRF yang tersedia.
 STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Buang
 STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Buang berkas NewGRF yang terpilih dari daftar
 STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Keatas
@@ -2354,13 +2355,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Berkas yan
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Non-aktifkan
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Masukkan Parameter NewGRF
-
-# NewGRF add window
-STR_NEWGRF_ADD_CAPTION                                          :{WHITE}File NewGRF yang tersedia
-STR_NEWGRF_ADD_FILE                                             :{BLACK}Tambahkan pada pilihan
-STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Tambahkan berkas NewGRF terpilih kedalam konfigurasi anda
-STR_NEWGRF_ADD_RESCAN_FILES                                     :{BLACK}Telusuri ulang berkas
-STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}Memperbarui daftar berkas NewGRF yang tersedia.
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Memeriksa - {STRING}

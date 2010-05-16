@@ -221,7 +221,6 @@ STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Filtru
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Introduceţi un cuvânt-cheie pentru filtrarea listei
-STR_LIST_FILTER_TITLE                                           :{BLACK}Filtru:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Alegeţi ordinea de sortare ascendentă/descendentă
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Alege criteriul de sortare
@@ -2329,7 +2328,9 @@ STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Introdu 
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Sterge presetarea
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Sterge presetarea selectata
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Adauga
-STR_NEWGRF_SETTINGS_ADD_TOOLTIP                                 :{BLACK}Adauga un fisier NewGRF in lista
+STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Adauga fisierul NewGRF ales in configuratie
+STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}Redetecteaza fisierele
+STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Actualizeaza lista de fisiere NewGRF disponibile
 STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Elimina
 STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Elimina fisierul NewGRF ales din lista
 STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Muta Sus
@@ -2357,13 +2358,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Nici un fi
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Dezactivat
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Introdu parametrii NewGRF
-
-# NewGRF add window
-STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Fisiere NewGRF disponibile
-STR_NEWGRF_ADD_FILE                                             :{BLACK}Adauga la selectie
-STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Adauga fisierul NewGRF ales in configuratie
-STR_NEWGRF_ADD_RESCAN_FILES                                     :{BLACK}Redetecteaza fisierele
-STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}Actualizeaza lista de fisiere NewGRF disponibile
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspectează - {STRING}

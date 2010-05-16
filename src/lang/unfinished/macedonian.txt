@@ -908,8 +908,6 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 
 
 
-# NewGRF add window
-
 # NewGRF (self) generated warnings/errors
 
 # NewGRF related 'general' warnings

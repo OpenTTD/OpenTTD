@@ -221,7 +221,6 @@ STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Nhập chuỗi lọc
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Nhập từ khóa vào để lọc danh sách
-STR_LIST_FILTER_TITLE                                           :{BLACK}Lọc giá trị:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Chọn thứ tự sắp xếp (giảm dần/tăng dần)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Chọn tiêu chí sắp xếp
@@ -2327,7 +2326,9 @@ STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Tên c�
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Xoá thiết lập
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Xoá thiết lập đã chọn
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Thêm
-STR_NEWGRF_SETTINGS_ADD_TOOLTIP                                 :{BLACK}Thêm NewGRF vào danh sách
+STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Thêm NewGRF file đã chọn vào cấu hình
+STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}Quét lại file
+STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Cập nhật danh sách NewGRF file sẵn có
 STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Xoá
 STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Xoá NewGRF đã chọn trong danh sách
 STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Dịch lên
@@ -2355,13 +2356,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}File hợp
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Tắt
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Nhập NewGRF tham số
-
-# NewGRF add window
-STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Các NewGRF file sẵn có
-STR_NEWGRF_ADD_FILE                                             :{BLACK}Thêm vào file
-STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Thêm NewGRF file đã chọn vào cấu hình
-STR_NEWGRF_ADD_RESCAN_FILES                                     :{BLACK}Quét lại file
-STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}Cập nhật danh sách NewGRF file sẵn có
 
 # NewGRF inspect window
 

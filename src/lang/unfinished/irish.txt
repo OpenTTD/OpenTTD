@@ -221,7 +221,6 @@ STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Iontráil teaghráin scagaire
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Iontráil eochairfhocal chun an liosta a scagadh di
-STR_LIST_FILTER_TITLE                                           :{BLACK}Teaghrán scagtha:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Roghnaigh ord sórtála (ardaitheach/íslitheach)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Roghnaigh critéir sórtála
@@ -1746,8 +1745,6 @@ STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Talamh faoi shn
 
 
 
-
-# NewGRF add window
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Déan iniúchadh - {STRING}

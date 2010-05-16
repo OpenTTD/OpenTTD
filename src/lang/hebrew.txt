@@ -235,7 +235,6 @@ STR_UNITS_HEIGHT_SI                                             :{COMMA} מ'
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}הכנס מחרוזת סינון
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}הכנס מילת מפתח לסינון הרשימה לפיה
-STR_LIST_FILTER_TITLE                                           :{BLACK}מחרוזת סינון:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}(בחר(י) סדר מיון (עולה\יורד
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}בחר\י קרטריון מיון
@@ -2342,7 +2341,9 @@ STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}תן ש�
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}מחק סביבה גראפית
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}מוחק את הסביבה הגראפית שנבחרה
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}הוסף
-STR_NEWGRF_SETTINGS_ADD_TOOLTIP                                 :{BLACK}מוסיף קובץ שדרוג גראפי חדשה לרשימה
+STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}מוסיף את הקובץ שנבחר לרשימה
+STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}רענן רשימת קבצים
+STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}מרענן את רשימת הקבצים הזמינים
 STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}הסר
 STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}מסיר את הקובץ שנבחר מהרשימה
 STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}העבר למעלה
@@ -2370,13 +2371,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}לא נמ�
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}מושתק
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}הכנס פרמטרים
-
-# NewGRF add window
-STR_NEWGRF_ADD_CAPTION                                          :{WHITE}קבצי שדרוג גראפי זמינים
-STR_NEWGRF_ADD_FILE                                             :{BLACK}הוסף לבחירה
-STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}מוסיף את הקובץ שנבחר לרשימה
-STR_NEWGRF_ADD_RESCAN_FILES                                     :{BLACK}רענן רשימת קבצים
-STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}מרענן את רשימת הקבצים הזמינים
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}בדוק - {STRING}

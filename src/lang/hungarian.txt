@@ -284,7 +284,6 @@ STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Kulcsszó megadása a szűréshez
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Írj ide egy kulcsszót ami alapján szűrni szeretnéd a listát
-STR_LIST_FILTER_TITLE                                           :{BLACK}Szűrendő kifejezés:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Csökkenő/növekvő sorbarendezés
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Sorbarendezési feltétel
@@ -2393,7 +2392,9 @@ STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Írj be 
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Lista törlése
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}A jelenleg kiválasztott lista törlése
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Hozzáad
-STR_NEWGRF_SETTINGS_ADD_TOOLTIP                                 :{BLACK}A NewGRF-et hozzáadja a listához
+STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}A kiválasztott NewGRF fájlt hozzáadja a konfigurációdhoz
+STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}Fájlok újraellenőrzése
+STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Az elérhető NewGRF fájlok listájának frissítése
 STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Eltávolít
 STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Eltávolítja a kiválasztott NewGRF-et a listáról
 STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Fel
@@ -2421,13 +2422,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Fájl nem 
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Kikapcsolva
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Adj meg NewGRF paramétereket
-
-# NewGRF add window
-STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Elérhető NewGRF fileok
-STR_NEWGRF_ADD_FILE                                             :{BLACK}Kiválasztáshoz hozzáad
-STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}A kiválasztott NewGRF fájlt hozzáadja a konfigurációdhoz
-STR_NEWGRF_ADD_RESCAN_FILES                                     :{BLACK}Fájlok újraellenőrzése
-STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}Az elérhető NewGRF fájlok listájának frissítése
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Megtekintés - {STRING}

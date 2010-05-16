@@ -222,7 +222,6 @@ STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Escribe patrón de filtrado
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Introduce una palabra clave para filtrar la lista
-STR_LIST_FILTER_TITLE                                           :{BLACK}Patrón de filtrado:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Seleccione ordenación (descendiente/ascendiente)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Seleccione criterio de orden
@@ -2330,7 +2329,9 @@ STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Introduc
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Borrar
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Borrar la programación seleccionada
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Añadir
-STR_NEWGRF_SETTINGS_ADD_TOOLTIP                                 :{BLACK}Añadir un NewGRF a la lista
+STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Añade el NewGRF seleccionado a tu configuración
+STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}Actualizar ficheros
+STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Actualiza la lista de ficheros NewGRF disponibles
 STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Retirar
 STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Retirar el NewGRF seleccionado de la lista
 STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Mover Arriba
@@ -2358,13 +2359,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Fichero no
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Desactivado
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Introduce los parámetros del NewGRF
-
-# NewGRF add window
-STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Ficheros NewGRF disponibles
-STR_NEWGRF_ADD_FILE                                             :{BLACK}Añadir a la selección
-STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Añade el NewGRF seleccionado a tu configuración
-STR_NEWGRF_ADD_RESCAN_FILES                                     :{BLACK}Actualizar ficheros
-STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}Actualiza la lista de ficheros NewGRF disponibles
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspeccionar - {STRING}

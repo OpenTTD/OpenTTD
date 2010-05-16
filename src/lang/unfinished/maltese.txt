@@ -569,8 +569,6 @@ STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :password ħażi
 
 
 
-# NewGRF add window
-
 # NewGRF inspect window
 
 

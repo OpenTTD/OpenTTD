@@ -343,7 +343,6 @@ STR_UNITS_FORCE_SI                                              :{COMMA} кН
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Введіть строку фільтру
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Введіть ключове слово для фільтраціі списку
-STR_LIST_FILTER_TITLE                                           :{BLACK}Фільтр за строкою:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Виберіть порядок сортування (спадаючий/зростаючий)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Виберіть критерій сортування
@@ -2447,7 +2446,9 @@ STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Введ
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Видалити настройки
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Видалити обрані настройки
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Додати
-STR_NEWGRF_SETTINGS_ADD_TOOLTIP                                 :{BLACK}Додати файли NewGRF до списку
+STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Додати вибраний NewGRF файл до Вашої конфігурації
+STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}Пересканувати файли
+STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Оновити список доступних NewGRF файлів
 STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Видалити
 STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Видалити обрані файли NewGRF зі списку
 STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Вище
@@ -2475,13 +2476,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Таких
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Вимкнено
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Введіть параметри NewGRF
-
-# NewGRF add window
-STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Доступні NewGRF файли
-STR_NEWGRF_ADD_FILE                                             :{BLACK}Додати файл
-STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Додати вибраний NewGRF файл до Вашої конфігурації
-STR_NEWGRF_ADD_RESCAN_FILES                                     :{BLACK}Пересканувати файли
-STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}Оновити список доступних NewGRF файлів
 
 # NewGRF inspect window
 

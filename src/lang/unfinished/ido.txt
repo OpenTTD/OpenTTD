@@ -573,8 +573,6 @@ STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD 
 
 
 
-# NewGRF add window
-
 # NewGRF (self) generated warnings/errors
 
 # NewGRF related 'general' warnings

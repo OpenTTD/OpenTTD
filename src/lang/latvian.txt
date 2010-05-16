@@ -2261,7 +2261,9 @@ STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Ievadiet
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Dzēst shēmu
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Dzēst izvēlēto shēmu
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Pievienot
-STR_NEWGRF_SETTINGS_ADD_TOOLTIP                                 :{BLACK}Pievienot NewGRF failu sarakstam
+STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Pievienot atlasītos NewGRF failus tavai konfigurācijai
+STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}Pārskenēt failus
+STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Atjaunināt pieejamo NewGRF failu sarakstu
 STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Noņemt
 STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Noņemt izvēlēto NewGRF failu no saraksta
 STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Uz augšu
@@ -2289,13 +2291,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Nevar atra
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Atspējots
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Ievadi NewGRF parametrus
-
-# NewGRF add window
-STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Pieejami NewGRF faili
-STR_NEWGRF_ADD_FILE                                             :{BLACK}Pievienot atlasei
-STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Pievienot atlasītos NewGRF failus tavai konfigurācijai
-STR_NEWGRF_ADD_RESCAN_FILES                                     :{BLACK}Pārskenēt failus
-STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}Atjaunināt pieejamo NewGRF failu sarakstu
 
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}

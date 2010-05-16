@@ -221,7 +221,6 @@ STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Syötä suodatin teksti
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Syötä avainsana suodattaaksesi listan
-STR_LIST_FILTER_TITLE                                           :{BLACK}Suodatinteksti:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Valitse järjestys (laskeva/nouseva)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Valitse järjestyskriteeri
@@ -2329,7 +2328,9 @@ STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Syötä 
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Poista valmislista
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Poista valittu valmislista
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Lisää
-STR_NEWGRF_SETTINGS_ADD_TOOLTIP                                 :{BLACK}Lisää NewGRF-tiedosto listaan
+STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Lisää valittu NewGRF-tiedosto peliin
+STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}Päivitä
+STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Päivitä saatavilla olevien NewGRF-tiedostojen lista
 STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Poista
 STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Poista valittu NewGRF-tiedosto listalta
 STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Siirrä ylös
@@ -2357,13 +2358,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Sopivaa ti
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Ei käytössä
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Anna NewGRF-parametrit
-
-# NewGRF add window
-STR_NEWGRF_ADD_CAPTION                                          :{WHITE}NewGRF-tiedostot
-STR_NEWGRF_ADD_FILE                                             :{BLACK}Lisää valintaan
-STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Lisää valittu NewGRF-tiedosto peliin
-STR_NEWGRF_ADD_RESCAN_FILES                                     :{BLACK}Päivitä
-STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}Päivitä saatavilla olevien NewGRF-tiedostojen lista
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Tutki - {STRING}

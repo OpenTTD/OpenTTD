@@ -296,7 +296,6 @@ STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Įveskite filtro eilutę
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Įveskite raktažodį filtruoti sąrašui dėl
-STR_LIST_FILTER_TITLE                                           :{BLACK}Įrašo filtravimas:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Pasirink rikiavimo tvarką (mažėjimo/didėjimo)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Pasirink rikiavimo kriteriju
@@ -2404,7 +2403,9 @@ STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Įvesti 
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Ištrinti nustatymus
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Ištrinti dabar pasirinktas nuostatas
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Pridėti
-STR_NEWGRF_SETTINGS_ADD_TOOLTIP                                 :{BLACK}Pridėti Papild. grafikos failą į sąrašą
+STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Įtraukti pažymėtus Papild. grafikos failus į jūsų nustatymus
+STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}Nuskaityti dar kartą failus
+STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Atnaujinti prieinamų Papild. grafikos failų sąrašą
 STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Pašalinti
 STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Pašalinti pažymėtą Papild. grafikos failą iš sąrašo
 STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Aukštyn
@@ -2432,13 +2433,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Atitinkama
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Išjungta
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Įveskite Papild. grafikos parametrus
-
-# NewGRF add window
-STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Prieinami Papild. grafikos failai
-STR_NEWGRF_ADD_FILE                                             :{BLACK}Pridėti prie pažymėjimo
-STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Įtraukti pažymėtus Papild. grafikos failus į jūsų nustatymus
-STR_NEWGRF_ADD_RESCAN_FILES                                     :{BLACK}Nuskaityti dar kartą failus
-STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}Atnaujinti prieinamų Papild. grafikos failų sąrašą
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Apžiūrėti - {STRING}

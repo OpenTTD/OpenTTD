@@ -218,7 +218,6 @@ STR_UNITS_FORCE_SI                                              :{COMMA} กิ�
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}ใส่คำกรอง
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}ป้อนคำค้นเพื่อกรองรายการ
-STR_LIST_FILTER_TITLE                                           :{BLACK}กรองจากชื่อ:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}เลือกเรียงลำดับ (จากบนลงล่าง/จากล่างขึ้นบน)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}เลือกเกณฑ์การเรียงลำดับ
@@ -1417,8 +1416,6 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 
 
 
-
-# NewGRF add window
 
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}เกิดความผิดพลาดร้ายแรงเกี่ยวกับ NewGRF: {}{STRING}

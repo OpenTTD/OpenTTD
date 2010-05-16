@@ -219,7 +219,6 @@ STR_UNITS_FORCE_SI                                              :{COMMA} kN
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Sleutel 'n filter string
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Sleutel 'n sleutelwoord in om die lys te filter
-STR_LIST_FILTER_TITLE                                           :{BLACK}Filter string:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Selekteer sorteer orde (dalende/stygende)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Selekteer sorterings maatstaf
@@ -2321,7 +2320,9 @@ STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Sleutel 
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Vee voorafstel uit
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Vee die huidige gekose voorafstel uit
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Voeg
-STR_NEWGRF_SETTINGS_ADD_TOOLTIP                                 :{BLACK}Voeg 'n NewGRF na die lys
+STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Voeg die verkiesde NewGRF lêer na u configurasie
+STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}Herskandeer lêers
+STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Bywerk die lys van beskikbaar NewGRF lêers
 STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Verwyder
 STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Verwyder die gekose NewGRF lêer van die lys
 STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Beweeg Op
@@ -2349,13 +2350,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Gelyke lê
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Gestrem
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Invoer NewGRF parameters
-
-# NewGRF add window
-STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Beskikbaar NewGRF lêers
-STR_NEWGRF_ADD_FILE                                             :{BLACK}Voeg na seleksie
-STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Voeg die verkiesde NewGRF lêer na u configurasie
-STR_NEWGRF_ADD_RESCAN_FILES                                     :{BLACK}Herskandeer lêers
-STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}Bywerk die lys van beskikbaar NewGRF lêers
 
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}

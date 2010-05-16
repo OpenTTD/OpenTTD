@@ -285,7 +285,6 @@ STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Vložiť filtrovací reťazec
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Vložiť kľúčové slovo pre filtrovanie zoznamu
-STR_LIST_FILTER_TITLE                                           :{BLACK}Filtrovať podľa:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Vyber sposob triedenia (zostupny/vzostupny)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Vyber kriterium triedenia
@@ -2396,7 +2395,9 @@ STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Zadajte 
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Vymazat zoznam
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Vymazat vybraný zoznam
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Pridat
-STR_NEWGRF_SETTINGS_ADD_TOOLTIP                                 :{BLACK}Pridat NewGRF súbor do zoznamu
+STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Pridat vybraný NewGRF súbor do konfigurácie
+STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}Obnovit zoznam súborov
+STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Obnovit zoznam dostupných NewGRF súborov
 STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Odstránit
 STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Odstránit vybraný NewGRF súbor zo zoznamu
 STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Vyššie
@@ -2424,13 +2425,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Príslušn
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Nedostupný
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Zadajte NewGRF parametre
-
-# NewGRF add window
-STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Dostupné NewGRF súbory
-STR_NEWGRF_ADD_FILE                                             :{BLACK}Pridať do výberu
-STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Pridat vybraný NewGRF súbor do konfigurácie
-STR_NEWGRF_ADD_RESCAN_FILES                                     :{BLACK}Obnovit zoznam súborov
-STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}Obnovit zoznam dostupných NewGRF súborov
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Kontrola - {STRING}

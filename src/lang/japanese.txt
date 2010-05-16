@@ -218,7 +218,6 @@ STR_UNITS_FORCE_SI                                              :{COMMA} kN
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}フィルターを入力
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}フィルターのキーワードを入力します
-STR_LIST_FILTER_TITLE                                           :{BLACK}フィルター:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}並べ替えの順序を選択（昇順／降順）
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}並べ替えの基準を選択
@@ -2315,7 +2314,9 @@ STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}プリ�
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}プリセットを削除
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}選択したプリセットを削除します
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}追加
-STR_NEWGRF_SETTINGS_ADD_TOOLTIP                                 :{BLACK}NewGRFファイルをリストに追加します
+STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}選択したNewGRFファイルをリストに追加します
+STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}ファイルを更新
+STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}使用可能なNewGRFファイルのリストを更新
 STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}削除
 STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}NewGRFファイルをリストから削除します
 STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}上へ
@@ -2343,13 +2344,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}一致し�
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}切
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}NewGRF設定を入力
-
-# NewGRF add window
-STR_NEWGRF_ADD_CAPTION                                          :{WHITE}使用可能NewGRFファイル
-STR_NEWGRF_ADD_FILE                                             :{BLACK}リストに追加
-STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}選択したNewGRFファイルをリストに追加します
-STR_NEWGRF_ADD_RESCAN_FILES                                     :{BLACK}ファイルを更新
-STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}使用可能なNewGRFファイルのリストを更新
 
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}

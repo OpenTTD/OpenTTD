@@ -1105,8 +1105,6 @@ STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK} برر�
 
 
 
-# NewGRF add window
-
 # NewGRF (self) generated warnings/errors
 
 # NewGRF related 'general' warnings

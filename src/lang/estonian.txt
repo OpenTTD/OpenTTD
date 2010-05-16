@@ -275,7 +275,6 @@ STR_UNITS_FORCE_SI                                              :{COMMA} kN
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Sisesta filterkirjend
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Sisesta märksõna mida loendist otsida
-STR_LIST_FILTER_TITLE                                           :{BLACK}Filtreeri sõna:
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Sorteerimise järjekorra valimine (kahanev/kasvav)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Sorteerimistingimuse valimine
@@ -2381,7 +2380,9 @@ STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Sisesta 
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Kustuta eelseadistus
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Kustuta hetkel valitud eelseadistus
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Lisa
-STR_NEWGRF_SETTINGS_ADD_TOOLTIP                                 :{BLACK}Lisa nimekirja NewGRF fail
+STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Lisa valitud NewGRF fail enda seadistusse
+STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}Skanni failid uuesti
+STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Uuenda saadaval olevate NewGRF failide nimekirja
 STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Eemalda
 STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Eemalda nimekirjast valitud NewGRF fail
 STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Liiguta üles
@@ -2409,13 +2410,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Sobivat fa
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Väljas
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Sisesta NewGRF parameetrid
-
-# NewGRF add window
-STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Olemasolevad NewGRF failid
-STR_NEWGRF_ADD_FILE                                             :{BLACK}Lisa valikule
-STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Lisa valitud NewGRF fail enda seadistusse
-STR_NEWGRF_ADD_RESCAN_FILES                                     :{BLACK}Skanni failid uuesti
-STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}Uuenda saadaval olevate NewGRF failide nimekirja
 
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}

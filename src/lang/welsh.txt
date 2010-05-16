@@ -2241,7 +2241,9 @@ STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Rhoi enw
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Dileu rhagosodiad
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Dileu'r rhagosodiad a ddewiswyd
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Ychwanegu
-STR_NEWGRF_SETTINGS_ADD_TOOLTIP                                 :{BLACK}ychwanegu ffeil NewGRF i'r rhestr
+STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Ychwanegu'r ffeil NewGRF a ddewiswyd i'ch ffurfwedd
+STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}Ailsganio ffeiliau
+STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Diweddaru'r rhestr o ffeiliau NewGRF sydd ar gael
 STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Tynnu
 STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Tynnu'r ffeil NewGRF sydd wedi'i ddewis o'r rhestr
 STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Symud i Fyny
@@ -2269,13 +2271,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Ni ddargan
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Analluogwyd
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Rhoi paramedrau NewGRF newydd
-
-# NewGRF add window
-STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Ffeiliau NewGRF sydd ar gael
-STR_NEWGRF_ADD_FILE                                             :{BLACK}Ychwanegu
-STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Ychwanegu'r ffeil NewGRF a ddewiswyd i'ch ffurfwedd
-STR_NEWGRF_ADD_RESCAN_FILES                                     :{BLACK}Ailsganio ffeiliau
-STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}Diweddaru'r rhestr o ffeiliau NewGRF sydd ar gael
 
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
