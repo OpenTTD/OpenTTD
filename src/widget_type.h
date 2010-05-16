@@ -486,6 +486,22 @@ private:
 };
 
 /**
+ * Return the biggest possible size of a nested widget.
+ * @param base      Base size of the widget.
+ * @param max_space Available space for the widget.
+ * @param step      Stepsize of the widget.
+ * @return Biggest possible size of the widget, assuming that \a base may only be incremented by \a step size steps.
+ */
+static FORCEINLINE uint ComputeMaxSize(uint base, uint max_space, uint step)
+{
+	if (base >= max_space || step == 0) return base;
+	if (step == 1) return max_space;
+	uint increment = max_space - base;
+	increment -= increment % step;
+	return base + increment;
+}
+
+/**
  * @defgroup NestedWidgetParts Hierarchical widget parts
  * To make nested widgets easier to enter, nested widget parts have been created. They allow the tree to be defined in a flat array of parts.
  *
