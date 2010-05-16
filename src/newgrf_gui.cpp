@@ -526,17 +526,17 @@ struct NewGRFWindow : public Window {
 	int query_widget;      ///< widget that opened a query
 	int preset;            ///< selected preset
 
-	NewGRFWindow(const WindowDesc *desc, bool editable, bool show_params, bool exec_changes, GRFConfig **config) : Window()
+	NewGRFWindow(const WindowDesc *desc, bool editable, bool show_params, bool execute, GRFConfig **orig_list) : Window()
 	{
 		this->sel         = NULL;
 		this->list        = NULL;
-		this->orig_list   = config;
+		this->orig_list   = orig_list;
 		this->editable    = editable;
-		this->execute     = exec_changes;
+		this->execute     = execute;
 		this->show_params = show_params;
 		this->preset      = -1;
 
-		CopyGRFConfigList(&this->list, *config, false);
+		CopyGRFConfigList(&this->list, *orig_list, false);
 		GetGRFPresetList(&_grf_preset_list);
 
 		this->InitNested(desc);
