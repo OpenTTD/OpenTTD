@@ -51,8 +51,6 @@ void ShowNewGRFError()
 
 static void ShowNewGRFInfo(const GRFConfig *c, uint x, uint y, uint right, uint bottom, bool show_params)
 {
-	char buff[256];
-
 	if (c->error != NULL) {
 		char message[512];
 		SetDParamStr(0, c->error->custom_message); // is skipped by built-in messages
@@ -76,6 +74,7 @@ static void ShowNewGRFInfo(const GRFConfig *c, uint x, uint y, uint right, uint 
 	}
 
 	/* Prepare and draw GRF ID */
+	char buff[256];
 	snprintf(buff, lengthof(buff), "%08X", BSWAP32(c->ident.grfid));
 	SetDParamStr(0, buff);
 	y = DrawStringMultiLine(x, right, y, bottom, STR_NEWGRF_SETTINGS_GRF_ID);
@@ -715,12 +714,10 @@ struct NewGRFWindow : public Window {
 				break;
 
 			case SNGRFS_REMOVE: { // Remove GRF
-				GRFConfig **pc, *newsel;
+				/* Choose the next GRF file to be the selected file. */
+				GRFConfig *newsel = this->sel->next;
 
-				/* Choose the next GRF file to be the selected file */
-				newsel = this->sel->next;
-
-				for (pc = &this->list; *pc != NULL; pc = &(*pc)->next) {
+				for (GRFConfig **pc = &this->list; *pc != NULL; pc = &(*pc)->next) {
 					GRFConfig *c = *pc;
 					/* If the new selection is empty (i.e. we're deleting the last item
 					 * in the list, pick the file just before the selected file */
@@ -741,11 +738,10 @@ struct NewGRFWindow : public Window {
 			}
 
 			case SNGRFS_MOVE_UP: { // Move GRF up
-				GRFConfig **pc;
 				if (this->sel == NULL) break;
 
 				int pos = 0;
-				for (pc = &this->list; *pc != NULL; pc = &(*pc)->next, pos++) {
+				for (GRFConfig **pc = &this->list; *pc != NULL; pc = &(*pc)->next, pos++) {
 					GRFConfig *c = *pc;
 					if (c->next == this->sel) {
 						c->next = this->sel->next;
@@ -761,11 +757,10 @@ struct NewGRFWindow : public Window {
 			}
 
 			case SNGRFS_MOVE_DOWN: { // Move GRF down
-				GRFConfig **pc;
 				if (this->sel == NULL) break;
 
 				int pos = 1; // Start at 1 as we swap the selected newgrf with the next one
-				for (pc = &this->list; *pc != NULL; pc = &(*pc)->next, pos++) {
+				for (GRFConfig **pc = &this->list; *pc != NULL; pc = &(*pc)->next, pos++) {
 					GRFConfig *c = *pc;
 					if (c == this->sel) {
 						*pc = c->next;
@@ -781,9 +776,9 @@ struct NewGRFWindow : public Window {
 			}
 
 			case SNGRFS_FILE_LIST: { // Select a GRF
-				GRFConfig *c;
 				uint i = (pt.y - this->GetWidget<NWidgetBase>(SNGRFS_FILE_LIST)->pos_y) / this->resize.step_height + this->vscroll.GetPosition();
 
+				GRFConfig *c;
 				for (c = this->list; c != NULL && i > 0; c = c->next, i--) {}
 
 				if (this->sel != c) this->DeleteChildWindows(WC_QUERY_STRING); // Remove the parameter query window
@@ -939,16 +934,15 @@ struct NewGRFWindow : public Window {
 			case 2:
 				this->preset = -1;
 				/* Fall through */
-			case 3:
-				const GRFConfig *c;
-				int i;
-
-				for (c = this->list, i = 0; c != NULL; c = c->next, i++) {}
+			case 3: {
+				int i = 0;
+				for (const GRFConfig *c = this->list; c != NULL; c = c->next, i++) {}
 
 				this->vscroll.SetCapacityFromWidget(this, SNGRFS_FILE_LIST);
 				this->GetWidget<NWidgetCore>(SNGRFS_FILE_LIST)->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 				this->vscroll.SetCount(i);
 				break;
+			}
 		}
 
 		this->SetWidgetsDisabledState(!this->editable,
@@ -1050,8 +1044,6 @@ static void NewGRFConfirmationCallback(Window *w, bool confirmed)
 {
 	if (confirmed) {
 		NewGRFWindow *nw = dynamic_cast<NewGRFWindow*>(w);
-		GRFConfig *c;
-		int i = 0;
 
 		GamelogStartAction(GLAT_GRF);
 		GamelogGRFUpdate(_grfconfig, nw->list); // log GRF changes
@@ -1060,6 +1052,8 @@ static void NewGRFConfirmationCallback(Window *w, bool confirmed)
 		GamelogStopAction();
 
 		/* Show new, updated list */
+		GRFConfig *c;
+		int i = 0;
 		for (c = nw->list; c != NULL && c != nw->sel; c = c->next, i++) {}
 		CopyGRFConfigList(&nw->list, *nw->orig_list, false);
 		for (c = nw->list; c != NULL && i > 0; c = c->next, i--) {}
