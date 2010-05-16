@@ -715,12 +715,13 @@ struct NewGRFWindow : public Window {
 				break;
 
 			case SNGRFS_REMOVE: { // Remove GRF
-				GRFConfig **pc, *c, *newsel;
+				GRFConfig **pc, *newsel;
 
 				/* Choose the next GRF file to be the selected file */
 				newsel = this->sel->next;
 
-				for (pc = &this->list; (c = *pc) != NULL; pc = &c->next) {
+				for (pc = &this->list; *pc != NULL; pc = &(*pc)->next) {
+					GRFConfig *c = *pc;
 					/* If the new selection is empty (i.e. we're deleting the last item
 					 * in the list, pick the file just before the selected file */
 					if (newsel == NULL && c->next == this->sel) newsel = c;
@@ -740,11 +741,12 @@ struct NewGRFWindow : public Window {
 			}
 
 			case SNGRFS_MOVE_UP: { // Move GRF up
-				GRFConfig **pc, *c;
+				GRFConfig **pc;
 				if (this->sel == NULL) break;
 
 				int pos = 0;
-				for (pc = &this->list; (c = *pc) != NULL; pc = &c->next, pos++) {
+				for (pc = &this->list; *pc != NULL; pc = &(*pc)->next, pos++) {
+					GRFConfig *c = *pc;
 					if (c->next == this->sel) {
 						c->next = this->sel->next;
 						this->sel->next = c;
@@ -759,11 +761,12 @@ struct NewGRFWindow : public Window {
 			}
 
 			case SNGRFS_MOVE_DOWN: { // Move GRF down
-				GRFConfig **pc, *c;
+				GRFConfig **pc;
 				if (this->sel == NULL) break;
 
 				int pos = 1; // Start at 1 as we swap the selected newgrf with the next one
-				for (pc = &this->list; (c = *pc) != NULL; pc = &c->next, pos++) {
+				for (pc = &this->list; *pc != NULL; pc = &(*pc)->next, pos++) {
+					GRFConfig *c = *pc;
 					if (c == this->sel) {
 						*pc = c->next;
 						c->next = c->next->next;
