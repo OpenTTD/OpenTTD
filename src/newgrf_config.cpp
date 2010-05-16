@@ -452,11 +452,7 @@ void ScanNewGRFFiles()
 const GRFConfig *FindGRFConfig(uint32 grfid, const uint8 *md5sum)
 {
 	for (const GRFConfig *c = _all_grfs; c != NULL; c = c->next) {
-		if (c->ident.grfid == grfid) {
-			if (md5sum == NULL) return c;
-
-			if (memcmp(md5sum, c->ident.md5sum, sizeof(c->ident.md5sum)) == 0) return c;
-		}
+		if (c->ident.HasGrfIdentifier(grfid, md5sum)) return c;
 	}
 
 	return NULL;

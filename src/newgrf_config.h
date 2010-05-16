@@ -53,6 +53,18 @@ enum GRFListCompatibility {
 struct GRFIdentifier {
 	uint32 grfid;     ///< GRF ID (defined by Action 0x08)
 	uint8 md5sum[16]; ///< MD5 checksum of file to distinguish files with the same GRF ID (eg. newer version of GRF)
+
+	/** Does the identification match the provided values?
+	 * @param grfid  Expected grfid.
+	 * @param md5sum Expected md5sum, may be \c NULL (in which case, do not check it).
+	 * @return the object has the provided grfid and md5sum.
+	 */
+	FORCEINLINE bool HasGrfIdentifier(uint32 grfid, const uint8 *md5sum) const
+	{
+		if (this->grfid != grfid) return false;
+		if (md5sum == NULL) return true;
+		return memcmp(md5sum, this->md5sum, sizeof(this->md5sum)) == 0;
+	}
 };
 
 /** Information about why GRF had problems during initialisation */
