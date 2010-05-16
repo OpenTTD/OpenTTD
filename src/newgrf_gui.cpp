@@ -504,6 +504,7 @@ enum ShowNewGRFStateWidgets {
 	SNGRFS_REMOVE,
 	SNGRFS_MOVE_UP,
 	SNGRFS_MOVE_DOWN,
+	SNGRFS_FILTER,
 	SNGRFS_FILE_LIST,
 	SNGRFS_SCROLLBAR,
 	SNGRFS_AVAIL_LIST,
@@ -519,8 +520,11 @@ enum ShowNewGRFStateWidgets {
 /**
  * Window for showing NewGRF files
  */
-struct NewGRFWindow : public Window {
+struct NewGRFWindow : public QueryStringBaseWindow {
 	typedef GUIList<const GRFConfig *> GUIGRFConfigList;
+
+	static const uint EDITBOX_MAX_SIZE   =  50;
+	static const uint EDITBOX_MAX_LENGTH = 300;
 
 	static Listing   last_sorting;   ///< Default sorting of #GUIGRFConfigList.
 	static Filtering last_filtering; ///< Default filtering of #GUIGRFConfigList.
@@ -541,7 +545,7 @@ struct NewGRFWindow : public Window {
 	int query_widget;           ///< Widget that opened the last query.
 	int preset;                 ///< Selected preset.
 
-	NewGRFWindow(const WindowDesc *desc, bool editable, bool show_params, bool execute, GRFConfig **orig_list) : Window()
+	NewGRFWindow(const WindowDesc *desc, bool editable, bool show_params, bool execute, GRFConfig **orig_list) : QueryStringBaseWindow(EDITBOX_MAX_SIZE)
 	{
 		this->avail_sel   = NULL;
 		this->avail_pos   = -1;
@@ -557,6 +561,9 @@ struct NewGRFWindow : public Window {
 		GetGRFPresetList(&_grf_preset_list);
 
 		this->InitNested(desc);
+		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size, EDITBOX_MAX_LENGTH);
+		this->SetFocusedWidget(SNGRFS_FILTER);
+
 		this->avails.SetListing(this->last_sorting);
 		this->avails.SetFiltering(this->last_filtering);
 		this->avails.SetSortFuncs(this->sorter_funcs);
@@ -649,6 +656,7 @@ struct NewGRFWindow : public Window {
 	virtual void OnPaint()
 	{
 		this->DrawWidgets();
+		this->DrawEditBox(SNGRFS_FILTER);
 	}
 
 	/** Pick the palette for the sprite of the grf to display.
@@ -1104,6 +1112,71 @@ struct NewGRFWindow : public Window {
 		this->SetWidgetDisabledState(SNGRFS_PRESET_SAVE, has_missing);
 	}
 
+	virtual void OnMouseLoop()
+	{
+		this->HandleEditBox(SNGRFS_FILTER);
+	}
+
+	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
+	{
+		switch (keycode) {
+			case WKC_UP:
+				/* scroll up by one */
+				if (this->avail_pos > 0) this->avail_pos--;
+				break;
+
+			case WKC_DOWN:
+				/* scroll down by one */
+				if (this->avail_pos < (int)this->avails.Length() - 1) this->avail_pos++;
+				break;
+
+			case WKC_PAGEUP:
+				/* scroll up a page */
+				this->avail_pos = (this->avail_pos < this->vscroll2.GetCapacity()) ? 0 : this->avail_pos - this->vscroll2.GetCapacity();
+				break;
+
+			case WKC_PAGEDOWN:
+				/* scroll down a page */
+				this->avail_pos = min(this->avail_pos + this->vscroll2.GetCapacity(), (int)this->avails.Length() - 1);
+				break;
+
+			case WKC_HOME:
+				/* jump to beginning */
+				this->avail_pos = 0;
+				break;
+
+			case WKC_END:
+				/* jump to end */
+				this->avail_pos = this->avails.Length() - 1;
+				break;
+
+			default: {
+				/* Handle editbox input */
+				EventState state = ES_NOT_HANDLED;
+				if (this->HandleEditBoxKey(SNGRFS_FILTER, key, keycode, state) == HEBR_EDITING) {
+					this->OnOSKInput(SNGRFS_FILTER);
+				}
+				return state;
+			}
+		}
+
+		if (this->avails.Length() == 0) this->avail_pos = -1;
+		if (this->avail_pos >= 0) {
+			this->avail_sel = this->avails[this->avail_pos];
+			this->vscroll2.ScrollTowards(this->avail_pos);
+			this->InvalidateData(0);
+		}
+
+		return ES_HANDLED;
+	}
+
+	virtual void OnOSKInput(int wid)
+	{
+		this->avails.SetFilterState(!StrEmpty(this->edit_str_buf));
+		this->avails.ForceRebuild();
+		this->InvalidateData(0);
+	}
+
 private:
 	/** Sort grfs by name. */
 	static int CDECL NameSorter(const GRFConfig * const *a, const GRFConfig * const *b)
@@ -1132,6 +1205,7 @@ private:
 			if (!found) *this->avails.Append() = c;
 		}
 
+		this->avails.Filter(this->edit_str_buf);
 		this->avails.Compact();
 		this->avails.RebuildDone();
 		this->avails.Sort();
@@ -1208,6 +1282,13 @@ static const NWidgetPart _nested_newgrf_widgets[] = {
 				NWidget(WWT_PANEL, COLOUR_MAUVE),
 					NWidget(WWT_LABEL, COLOUR_MAUVE), SetDataTip(STR_NEWGRF_SETTINGS_INACTIVE_LIST, STR_NULL),
 							SetFill(1, 0), SetResize(1, 0), SetPadding(3, WD_FRAMETEXT_RIGHT, 0, WD_FRAMETEXT_LEFT),
+					/* Left side, available grfs, filter edit box. */
+					NWidget(NWID_HORIZONTAL), SetPadding(WD_TEXTPANEL_TOP, 0, WD_TEXTPANEL_BOTTOM, 0),
+							SetPIP(WD_FRAMETEXT_LEFT, WD_FRAMETEXT_RIGHT, WD_FRAMETEXT_RIGHT),
+						NWidget(WWT_TEXT, COLOUR_MAUVE), SetFill(0, 1), SetDataTip(STR_NEWGRF_FILTER_TITLE, STR_NULL),
+						NWidget(WWT_EDITBOX, COLOUR_MAUVE, SNGRFS_FILTER), SetFill(1, 0), SetMinimalSize(50, 12), SetResize(1, 0),
+								SetDataTip(STR_LIST_FILTER_OSKTITLE, STR_LIST_FILTER_TOOLTIP),
+					EndContainer(),
 					/* Left side, available grfs. */
 					NWidget(NWID_HORIZONTAL), SetPadding(0, 2, 0, 2),
 						NWidget(WWT_PANEL, COLOUR_MAUVE),
