@@ -623,6 +623,40 @@ struct NewGRFWindow : public Window {
 		this->DrawWidgets();
 	}
 
+	/** Pick the palette for the sprite of the grf to display.
+	 * @param c grf to display.
+	 * @return Palette for the sprite.
+	 */
+	FORCEINLINE PaletteID GetPalette(const GRFConfig *c) const
+	{
+		PaletteID pal;
+
+		/* Pick a colour */
+		switch (c->status) {
+			case GCS_NOT_FOUND:
+			case GCS_DISABLED:
+				pal = PALETTE_TO_RED;
+				break;
+			case GCS_ACTIVATED:
+				pal = PALETTE_TO_GREEN;
+				break;
+			default:
+				pal = PALETTE_TO_BLUE;
+				break;
+		}
+
+		/* Do not show a "not-failure" colour when it actually failed to load */
+		if (pal != PALETTE_TO_RED) {
+			if (HasBit(c->flags, GCF_STATIC)) {
+				pal = PALETTE_TO_GREY;
+			} else if (HasBit(c->flags, GCF_COMPATIBLE)) {
+				pal = PALETTE_TO_ORANGE;
+			}
+		}
+
+		return pal;
+	}
+
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
 		switch (widget) {
@@ -644,30 +678,7 @@ struct NewGRFWindow : public Window {
 					if (this->vscroll.IsVisible(i)) {
 						const char *text = c->GetName();
 						bool h = (this->active_sel == c);
-						PaletteID pal;
-
-						/* Pick a colour */
-						switch (c->status) {
-							case GCS_NOT_FOUND:
-							case GCS_DISABLED:
-								pal = PALETTE_TO_RED;
-								break;
-							case GCS_ACTIVATED:
-								pal = PALETTE_TO_GREEN;
-								break;
-							default:
-								pal = PALETTE_TO_BLUE;
-								break;
-						}
-
-						/* Do not show a "not-failure" colour when it actually failed to load */
-						if (pal != PALETTE_TO_RED) {
-							if (HasBit(c->flags, GCF_STATIC)) {
-								pal = PALETTE_TO_GREY;
-							} else if (HasBit(c->flags, GCF_COMPATIBLE)) {
-								pal = PALETTE_TO_ORANGE;
-							}
-						}
+						PaletteID pal = this->GetPalette(c);
 
 						if (h) GfxFillRect(r.left + 1, y, r.right - 1, y + step_height - 1, 156);
 						DrawSprite(SPR_SQUARE, pal, square_left, y + sprite_offset_y);
