@@ -561,8 +561,8 @@ struct NewGRFWindow : public Window {
 	{
 		switch (widget) {
 			case SNGRFS_FILE_LIST:
-				resize->height = FONT_HEIGHT_NORMAL + WD_MATRIX_TOP + WD_MATRIX_BOTTOM;
-				size->height = max(size->height, 7 * resize->height);
+				resize->height = max(12, FONT_HEIGHT_NORMAL + 2);
+				size->height = max(size->height, WD_FRAMERECT_TOP + 8 * resize->height + WD_FRAMERECT_BOTTOM);
 				break;
 
 			case SNGRFS_NEWGRF_INFO_TITLE: {
@@ -602,7 +602,6 @@ struct NewGRFWindow : public Window {
 	virtual void OnResize()
 	{
 		this->vscroll.SetCapacityFromWidget(this, SNGRFS_FILE_LIST);
-		this->GetWidget<NWidgetCore>(SNGRFS_FILE_LIST)->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 
 	virtual void SetStringParameters(int widget) const
@@ -628,8 +627,11 @@ struct NewGRFWindow : public Window {
 	{
 		switch (widget) {
 			case SNGRFS_FILE_LIST: {
-				uint y = r.top + WD_MATRIX_TOP;
-				int sprite_offset_y = (FONT_HEIGHT_NORMAL - 10) / 2 - 1;
+				GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, 0xD7);
+
+				uint step_height = this->GetWidget<NWidgetBase>(SNGRFS_FILE_LIST)->resize_y;
+				uint y = r.top + WD_FRAMERECT_TOP;
+				int sprite_offset_y = (step_height - FONT_HEIGHT_NORMAL) / 2;
 
 				bool rtl = _dynlang.text_dir == TD_RTL;
 				uint text_left    = rtl ? r.left + WD_FRAMERECT_LEFT : r.left + 25;
@@ -641,6 +643,7 @@ struct NewGRFWindow : public Window {
 				for (const GRFConfig *c = this->actives; c != NULL; c = c->next, i++) {
 					if (this->vscroll.IsVisible(i)) {
 						const char *text = c->GetName();
+						bool h = (this->active_sel == c);
 						PaletteID pal;
 
 						/* Pick a colour */
@@ -666,11 +669,12 @@ struct NewGRFWindow : public Window {
 							}
 						}
 
+						if (h) GfxFillRect(r.left + 1, y, r.right - 1, y + step_height - 1, 156);
 						DrawSprite(SPR_SQUARE, pal, square_left, y + sprite_offset_y);
 						if (c->error != NULL) DrawSprite(SPR_WARNING_SIGN, 0, warning_left, y + sprite_offset_y);
 						uint txtoffset = c->error == NULL ? 0 : 10;
-						DrawString(text_left + (rtl ? 0 : txtoffset), text_right - (rtl ? txtoffset : 0), y, text, this->active_sel == c ? TC_WHITE : TC_BLACK);
-						y += this->resize.step_height;
+						DrawString(text_left + (rtl ? 0 : txtoffset), text_right - (rtl ? txtoffset : 0), y + sprite_offset_y, text, h ? TC_WHITE : TC_ORANGE);
+						y += step_height;
 					}
 				}
 			} break;
@@ -790,7 +794,8 @@ struct NewGRFWindow : public Window {
 			}
 
 			case SNGRFS_FILE_LIST: { // Select a GRF
-				uint i = (pt.y - this->GetWidget<NWidgetBase>(SNGRFS_FILE_LIST)->pos_y) / this->resize.step_height + this->vscroll.GetPosition();
+				NWidgetBase *nw = this->GetWidget<NWidgetBase>(SNGRFS_FILE_LIST);
+				uint i = (pt.y - nw->pos_y) / nw->resize_y + this->vscroll.GetPosition();
 
 				GRFConfig *c;
 				for (c = this->actives; c != NULL && i > 0; c = c->next, i--) {}
@@ -953,7 +958,6 @@ struct NewGRFWindow : public Window {
 				for (const GRFConfig *c = this->actives; c != NULL; c = c->next, i++) {}
 
 				this->vscroll.SetCapacityFromWidget(this, SNGRFS_FILE_LIST);
-				this->GetWidget<NWidgetCore>(SNGRFS_FILE_LIST)->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 				this->vscroll.SetCount(i);
 				break;
 			}
@@ -1032,8 +1036,11 @@ static const NWidgetPart _nested_newgrf_widgets[] = {
 							SetFill(1, 0), SetResize(1, 0), SetPadding(3, WD_FRAMETEXT_RIGHT, 0, WD_FRAMETEXT_LEFT),
 					/* Left side, active grfs. */
 					NWidget(NWID_HORIZONTAL), SetPadding(0, 2, 0, 2),
-						NWidget(WWT_MATRIX, COLOUR_MAUVE, SNGRFS_FILE_LIST), SetFill(1, 0), SetResize(1, 0),
-								SetDataTip(0x501, STR_NEWGRF_SETTINGS_FILE_TOOLTIP),
+						NWidget(WWT_PANEL, COLOUR_MAUVE),
+							NWidget(WWT_INSET, COLOUR_MAUVE, SNGRFS_FILE_LIST), SetMinimalSize(100, 1), SetPadding(2, 2, 2, 2),
+									SetFill(1, 1), SetResize(1, 1),
+							EndContainer(),
+						EndContainer(),
 						NWidget(WWT_SCROLLBAR, COLOUR_MAUVE, SNGRFS_SCROLLBAR),
 					EndContainer(),
 					NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPadding(2, 2, 2, 2), SetPIP(0, WD_RESIZEBOX_WIDTH, 0),
