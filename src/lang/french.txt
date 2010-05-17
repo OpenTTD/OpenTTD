@@ -2320,7 +2320,11 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Rafraîc
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Préparation du jeu
 
 # NewGRF settings
-STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Paramètres Newgrf
+STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Paramètres NewGRF
+STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Information NewGRF détaillée
+STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Fichiers NewGRF actifs
+STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Fichiers NewGRF inactifs
+STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Sélectionner la liste{NBSP}:
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filtre{NBSP}:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Charger la liste sélectionnée
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Sauver la liste

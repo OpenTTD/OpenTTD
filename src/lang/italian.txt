@@ -777,6 +777,8 @@ STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDE
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}La {STRING} finanzia la costruzione della nuova cittadina di {TOWN}!
 
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Nuov{G o o a} {STRING} in costruzione vicino a {TOWN}!
+STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Nuov{G 0 o o a} {STRING} piantat{G 0 o o a} vicino a {TOWN}!
 
 STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}{STRING} annuncia imminente chiusura!!
 STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}Per problemi di rifornimenti {STRING} annuncia imminente chiusura!
@@ -818,7 +820,9 @@ STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Il profi
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} è stato fermato a causa del fallimento di un ordine di riadattamento
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Rinnovo automatico di {VEHICLE}{}{STRING} fallito
 
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}Nuov{G o o a} {STRING} disponibile!
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIGFONT}{BLACK}{ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Nuov{G o o a} {STRING} disponibile! -  {ENGINE}
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} non accetta più {STRING}
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} non accetta più {STRING} né {STRING}
@@ -1814,6 +1818,7 @@ STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Incluso
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Dipendenza inclusa nel download
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Già installato
 STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Contenuto sconosciuto: non può essere scaricato da OpenTTD
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Questo contenuto sostituisce {G 0 "un " un' "una "}{STRING} esistente
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}Nome: {WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Versione: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Descrizione: {WHITE}{STRING}
@@ -2317,6 +2322,9 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Preparaz
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Impostazioni NewGRF
+STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Informazioni dettagliate NewGRF
+STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}File NewGRF attivi
+STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}File NewGRF inattivi
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filtro:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Carica il profilo selezionato
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Salva profilo
@@ -2849,6 +2857,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Stai pe
 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Messaggio da un costruttore di veicoli
+STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Abbiamo appena progettato un{G "" "" a} nuov{G o o a} {STRING} - È interessato ad un anno di uso esclusivo di questo veicolo, in modo da permetterci di valutarne le prestazioni prima di renderlo disponibile sul mercato?
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=f}locomotiva
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=m}automezzo
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=m}aeromobile
@@ -2955,11 +2964,11 @@ STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Nessun 
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Diretto a {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Diretto a {WAYPOINT}, {VELOCITY}
 
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE}Diretto al {DEPOT}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Diretto al {DEPOT}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE}Diretto {G "al " all' "alla "}{DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Diretto {G "al " all' "alla "}{DEPOT}, {VELOCITY}
 
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}Manutenzione al {DEPOT}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Manutenzione al {DEPOT}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}Manutenzione {G "al " all' "alla "}{DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Manutenzione {G "al " all' "alla "}{DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
 STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Fermato
@@ -4055,13 +4064,13 @@ STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING} di {
 STR_FORMAT_WAYPOINT_NAME                                        :Waypoint di {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Waypoint di {TOWN} #{COMMA}
 
-STR_FORMAT_DEPOT_NAME_TRAIN                                     :Deposito ferroviario di {TOWN}
-STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :Deposito ferroviario #{1:COMMA} di {0:TOWN}
-STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :Deposito automezzi di {TOWN}
-STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :Deposito automezzi #{1:COMMA} di {0:TOWN}
-STR_FORMAT_DEPOT_NAME_SHIP                                      :Deposito navale di {TOWN}
-STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :Deposito navale #{1:COMMA} di {0:TOWN}
-STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :Hangar di {STATION}
+STR_FORMAT_DEPOT_NAME_TRAIN                                     :{G=m}Deposito ferroviario di {TOWN}
+STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{G=m}Deposito ferroviario #{1:COMMA} di {0:TOWN}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{G=m}Deposito automezzi di {TOWN}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{G=m}Deposito automezzi #{1:COMMA} di {0:TOWN}
+STR_FORMAT_DEPOT_NAME_SHIP                                      :{G=m}Deposito navale di {TOWN}
+STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{G=m}Deposito navale #{1:COMMA} di {0:TOWN}
+STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{G=ma}Hangar di {STATION}
 
 STR_UNKNOWN_STATION                                             :stazione sconosciuta
 STR_DEFAULT_SIGN_NAME                                           :Cartello

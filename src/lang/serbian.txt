@@ -407,7 +407,7 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} ft
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
-STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Unes filter teksta
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Unes filter niske
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Unesite ključnu reč kako bi se filtriralo spisak
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Odaberite način sortiranja (opadajući/rastući)
@@ -2515,7 +2515,11 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Priprema
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF podešavanja
-STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filter teksta:
+STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Detaljni NewGRF podaci
+STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Aktivne NewGRF datoteke
+STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Neaktivne NewGRF datoteke
+STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Odabir postavke:
+STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filter niska:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Učitava označenu postavku
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Sačuvaj postavku
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Sačuvajte trenutni spisak u postavku

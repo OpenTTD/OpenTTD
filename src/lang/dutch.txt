@@ -2320,6 +2320,9 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Voorbere
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF-instellingen
+STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Gedetaileerde NewGRF informatie
+STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Actieve NewGRF bestanden
+STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Inactieve NewGRF bestanden
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filter tekst:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Laad de geselecteerd voorkeursinstelling
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Bewaar voorkeursinstelling
@@ -3242,32 +3245,32 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}Instelli
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Wijzig de instellingen van de AI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Herlaad computerspeler
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Verwijder computerspeler, herlaad het script en herstart computerspeler
-STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Schakel afbreken wanneer een AI log bericht overeenstemd met het afbreek tekst aan/uit.
+STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Afbreken als een AI logbericht overeenstemt met de afbreektekst aan/uitschakelen
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Afbreken op:
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Afbreken aan
-STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Als een AI log bericht overeenstemd met de string, dan wordt het spel gepauseerd.
+STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Als een AI logbericht overeenstemt met deze string wordt het spel gepauseerd.
 STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Hoofdlettergevoelig
-STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Schakelen tussen hoofdlettergevoeligheid vergeleken met de AI log berichten tov afbreek teken
-STR_AI_DEBUG_CONTINUE                                           :{BLACK}Verder gaan
+STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Hoofdlettergevoeligheid bij vergelijken van AI logberichten t.o.v. de afbreekstring aan/uitzetten
+STR_AI_DEBUG_CONTINUE                                           :{BLACK}Doorgaan
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Het spel vervolgen en de AI voortzetten
 
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD is gecompileerd zonder AI ondersteuning...
-STR_ERROR_NO_AI_SUB                                             :{WHITE}... geen AIs zijn beschikbaar!
+STR_ERROR_NO_AI_SUB                                             :{WHITE}... geen AI's beschikbaar!
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Geen geschikte AI gevonden. {} Deze AI is een 'dummy' en voert niets uit.{}Verschillende AI's kunnen worden gedownload via het 'Online Content' systeem.
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Een van de draaiende AI's is gecrashed. Meldt dit bij de schrijver van deze AI met een schermprint van het AI Debugscherm.
-STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}computerspeler Debug venster is alleen beschikbaar voor de server
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Een van de actieve AI's is vastgelopen. Meld dit a.u.b. bij de auteur van deze AI met een schermprint van het AI Debugscherm
+STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Computerspeler Debugvenster is alleen beschikbaar voor de server
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}AI Configuratie
+STR_AI_CONFIG_CAPTION                                           :{WHITE}AI configuratie
 STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}Alle AI's die in het volgende spel geladen zullen worden
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Menselijke speler
 STR_AI_CONFIG_RANDOM_AI                                         :Willekeurige AI
 
-STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Verplaats Omhoog
-STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Verplaats geselecteerde AI omhoog in de lijst
-STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Verplaats Omlaag
-STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Verplaats de geselecteerde AI naar omlaag in de lijst
+STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Omhoog verplaatsen
+STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Geselecteerde AI omhoog verplaatsen in de lijst
+STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Omlaag verplaatsen
+STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}De geselecteerde AI naar omlaag verplaatsen in de lijst
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}Selecteer AI
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Laad andere AI
@@ -3278,19 +3281,19 @@ STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Configur
 STR_AI_LIST_CAPTION                                             :{WHITE}Beschikbare AI's
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Klik om een AI te selecteren
 
-STR_AI_LIST_AUTHOR                                              :{BLACK}Maker: {STRING}
+STR_AI_LIST_AUTHOR                                              :{BLACK}Auteur: {STRING}
 STR_AI_LIST_VERSION                                             :{BLACK}Versie: {NUM}
 STR_AI_LIST_URL                                                 :{BLACK}URL: {STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Accepteer
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Selecteer gemarkeerde AI
 STR_AI_LIST_CANCEL                                              :{BLACK}Annuleren
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Verander AI niet
+STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}AI niet veranderen
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}AI Parameters
-STR_AI_SETTINGS_CLOSE                                           :{BLACK}Sluit
-STR_AI_SETTINGS_RESET                                           :{BLACK}Herstel
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}AI parameters
+STR_AI_SETTINGS_CLOSE                                           :{BLACK}Sluiten
+STR_AI_SETTINGS_RESET                                           :{BLACK}Herstellen
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
@@ -3314,9 +3317,9 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Verwacht
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Opslaan van spel is nog bezig,{}Wacht tot dit voltooid is!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Automatisch opslaan mislukt
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Kan niet lezen van schijf
-STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Opslaan Spel Mislukt{}{STRING}
+STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Opslaan spel mislukt{}{STRING}
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Kan bestand niet verwijderen
-STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Laden Spel Mislukt{}{STRING}
+STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Laden spel mislukt{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Interne fout: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Kapotte savegame - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Opgeslagen spel hoort bij een nieuwere versie
@@ -3331,11 +3334,11 @@ STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... er i
 
 STR_ERROR_PNGMAP                                                :{WHITE}Kan landschap uit PNG niet laden...
 STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... bestand niet gevonden.
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... kon plaatje niet omzetten. 8 óf 24-bit PNG benodigd.
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}... er ging iets fout. Sorry. (waarschijnlijk corrupt bestand)
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... kon afbeelding niet omzetten. 8 óf 24-bit PNG afbeelding nodig.
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}... er ging iets fout. Sorry (bestand waarschijnlijk corrupt).
 
-STR_ERROR_BMPMAP                                                :{WHITE}Kan het landschap uit de BMP niet laden...
-STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... kan dit type foto niet omzetten.
+STR_ERROR_BMPMAP                                                :{WHITE}Kan het landschap uit BMP niet laden...
+STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... kan dit type afbeelding niet omzetten.
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Schaalwaarschuwing
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Het aanpassen van de grootte van een bronkaart is niet aan te bevelen. Toch doorgaan?
@@ -3344,8 +3347,8 @@ STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Het aan
 STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Alleen backup geluid is gevonden. Als je geluid wilt, installeer dan een geluiddsset via het downloadsysteem.
 
 # Screenshot related messages
-STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Screenshot succesvol opgeslagen als '{STRING}'
-STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Screenshot mislukt!
+STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Schermprint succesvol opgeslagen als '{STRING}'
+STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Schermprint mislukt!
 
 # Error message titles
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Bericht
@@ -3370,92 +3373,92 @@ STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{1:STRIN
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}De gemeenteraad van {TOWN} staat dit niet toe
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}De gemeenteraad van {TOWN} staat bouwen van nog een vliegveld niet toe
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} lokale autoriteiten weigeren toestemming te geven voor vliegveld wegens zorgen om geluid
-STR_ERROR_BRIBE_FAILED                                          :{WHITE}Je poging tot omkopen is
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} lokale autoriteiten weigeren toestemming te geven voor vliegveld wegens zorgen om geluidsoverlast
+STR_ERROR_BRIBE_FAILED                                          :{WHITE}Kan land hier niet ontgraven...
 STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}ontdekt door een regionale onderzoeker
 
 # Levelling errors
-STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Kan het land hier niet verhogen...
+STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Kan land hier niet ophogen...
 STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Kan het land hier niet verlagen...
 STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Kan land hier niet egaliseren...
 STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}Graafwerkzaamheden zouden tunnel beschadigen
-STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}Reeds op zeeniveau
-STR_ERROR_TOO_HIGH                                              :{WHITE}Te hoog
-STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... is al plat
+STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}... al op zeeniveau
+STR_ERROR_TOO_HIGH                                              :{WHITE}... te hoog
+STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... al vlak
 
 # Company related errors
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Kan bedrijfsnaam niet veranderen...
-STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Kan naam directeur niet veranderen...
+STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Kan directeursnaam niet veranderen...
 
-STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... maximaal toegestane leninggrootte is {CURRENCY}
+STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... maximaal toegestane lening bedraagt {CURRENCY}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Kan geen geld meer lenen...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... geen lening om terug te betalen
+STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... geen lening om af te betalen
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CURRENCY} benodigd
-STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Kan geen lening terugbetalen
+STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Kan geen lening afbetalen
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Kan geen geld weggeven dat van de bank geleend is...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Kan bedrijf niet kopen...
-STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Kan bedrijfshoofdkwartier niet bouwen
+STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Kan bedrijfshoofdkantoor niet bouwen...
 STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Kan geen 25% aandeel in dit bedrijf kopen...
 STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Kan geen 25% aandeel in dit bedrijf verkopen...
 STR_ERROR_PROTECTED                                             :{WHITE}Dit bedrijf verhandelt nog geen aandelen...
 
 # Town related errors
-STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Kan geen enkele plaats bouwen
-STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Kan dorp niet hernoemen...
-STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Kan hier geen nieuw dorp bouwen...
+STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Kan geen plaatsen bouwen
+STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Kan plaats niet hernoemen...
+STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Kan hier geen nieuwe plaats bouwen...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... te dicht bij de rand van de kaart
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... te dicht bij een ander dorp
-STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... te veel dorpen
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... te dicht bij een andere plaats
+STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... te veel plaatsen
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... er is geen ruimte meer op de kaart
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Het dorp bouwt geen wegen. Het bouwen van wegen kan aangezet worden via Geavanceerde Instellingen->Economie->Dorpen.
-STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Er wordt aan de weg gewerkt
-STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kan dit dorp niet verwijderen...{}Een station of depot verwijst naar dit dorp of een dorpbeheerde tegel kan niet worden verwijderd
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}De plaats bouwt geen wegen. Het bouwen van wegen kan aangezet worden via Geavanceerde Instellingen->Economie->Plaatsen.
+STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Wegwerkzaamheden in uitvoering
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kan deze plaats niet verwijderen...{}Een station of depot verwijst naar deze plaats of een door de plaats beheerde tegel kan niet worden verwijderd
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... teveel industrieën
-STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Kan geen industrieën genereren
+STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Kan geen industrieën genereren...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Kan {STRING} hier niet bouwen...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Kan dit type industrie hier niet bouwen...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... te dicht bij een andere industrie
-STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... plaats eerst dorp
-STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... slechts één per dorp toegestaan
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... kan alleen in dorpen met bevolking van meer dan 1200 worden gebouwd
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... kan alleen in het regenwoud gebouwd worden
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... kan alleen in woestijngebieden gebouwd worden
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... kan alleen in steden gebouwd worden
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... kan alleen gebouwd worden in laaggelegen gebieden
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... bouw eerst een plaats
+STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... slechts één per plaats toegestaan
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... kan alleen in plaatsen met meer dan 1.200 inwoners worden gebouwd
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... kan alleen in regenwouden gebouwd worden
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... kan alleen in woestijnen gebouwd worden
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... kan alleen in plaatsen gebouwd worden
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... kan alleen in laaggelegen gebieden gebouwd worden
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... kan alleen aan de rand van de kaart geplaatst worden
-STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... bossen kunnen alleen worden geplant boven de sneeuwgrens
+STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... bossen kunnen alleen boven de sneeuwgrens worden geplant
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Kan hier geen treinstation bouwen...
 STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Kan hier geen bushalte bouwen...
-STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}Kan hier geen vrachtwagenlaadhal bouwen...
+STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}Kan hier geen vrachtwagenlaadstation bouwen...
 STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}Kan geen passagierstramstation bouwen...
 STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}Kan geen vrachttramhalte bouwen...
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Kan hier geen haven bouwen...
-STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Kan vliegveld hier niet bouwen...
+STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Kan hier geen vliegveld bouwen...
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Voegt meer dan één bestaand (laad)station samen
-STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... station te verspreid
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... niet uniforme stations uit
-STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Te veel (laad)stations
-STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Te veel treinstationsonderdelen
+STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... station te omvangrijk
+STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... niet-uniforme stations uit
+STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Teveel (laad)stations
+STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Teveel treinstationsdelen
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Te veel bushaltes
-STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Te veel vrachtwagenlaadhallen
+STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Te veel vrachtwagenlaadstations
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Te dicht bij een ander station
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Te dicht bij een ander (laad)station
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Te dicht bij een andere haven
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Te dicht bij een ander vliegveld
-STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Kan station niet hernoemen...
-STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... deze weg is van een stad
+STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Kan stationsnaam niet veranderen...
+STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... deze weg is eigendom van een plaats
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... weg is in de verkeerde richting
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Kan deel van station niet weghalen...
 STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}Treinstation moet eerst verwijderd worden
 STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Kan busstation niet verwijderen...
-STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Kan vrachtwagenlaadhal niet verwijderen...
+STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Kan vrachtwagenlaadstation niet verwijderen...
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Kan passagierstramstation niet verwijderen...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Kan vrachttramhalte niet verwijderen...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Moet wegstop eerst weghalen

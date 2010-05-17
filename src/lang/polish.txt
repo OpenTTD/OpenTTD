@@ -2700,6 +2700,9 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Przygoto
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Ustawienia NewGRF
+STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Szczegółowe informacje o NewGRF
+STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Aktywne pliki NewGRF
+STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Nieaktywne pliki NewGRF
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filtruj napis:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Załaduj wskazany stan ustawień
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Zapisz schemat
@@ -3348,8 +3351,8 @@ STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Zmierza
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE}Zmierza do {DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Zmierza do {DEPOT}, {VELOCITY}
 
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}Serwis w {DEPOT}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Zmierza do zajezdni w {DEPOT}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}Serwisuj w {DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Serwisuj w {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
 STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Zatrzymany

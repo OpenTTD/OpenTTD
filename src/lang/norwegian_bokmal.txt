@@ -625,7 +625,7 @@ STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLAC
 STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}Program - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}Tøm
 STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}Lagre
-STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Slett gjeldende program (Gjelder bare Egendefinert 1 og 2)
+STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Slett gjeldende program (gjelder bare Egendefinert 1 og 2)
 STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Lagre musikkvalg
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klikk på et musikkspor for å legge til gjeldende program (Gjelder bare egendefinert 1 og 2)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klikk på et musikkspor for å fjerne det fra nåværende program (Gjelder bare egendefinert 1 og 2)
@@ -1166,7 +1166,7 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Mot klokka
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Med klokka
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Høydenivå et flatt scenariokart får: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Aktiver terraforming av ruter ved endene på kartet: {ORANGE}{STRING}
-STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}En eller flere ruter ved den nordlige kanten av kartet er ikke tom
+STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}En eller flere ruter ved den nordlige kanten av kartet er ikke tom(me)
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}En eller flere ruter ved en av kantene på kartet er ikke vann
 
 STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Maks. stasjonsspredning: {ORANGE}{STRING} {RED}Advarsel: Høy instilling gir tregere spill
@@ -1897,7 +1897,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Bygg jer
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Bygg jernbanebro
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Bygg jernbanetunnel
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Veksle mellom bygging/fjerning av jernbanespor, signaler, kontrollpunkt og stasjoner. CTRL fjerner i tillegg jernbanespor fra kontrollpunkt og stasjoner.
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Gjør om/oppgrader jernbanetypen
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Konverter/oppgrader jernbanetypen
 
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Togstallens retning
@@ -2320,6 +2320,9 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Gjør kl
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Innstillinger for NewGRF
+STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Detaljert NewGRF-informasjon
+STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Aktive NewGRF-filer
+STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Inaktive NewGRF-filer
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Søkefilter:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Last inn valgte forhåndsoppsett
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Lagre forhåndsoppsettet
@@ -2852,7 +2855,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Du er n
 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Melding fra kjøretøysprodusent
-STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Vi har nettopp designet et nytt {STRING} - er du interessert i et års ekslusivt bruk av dette, slik vi kan se hvordan det virker før det blir allment tilgjengelig?
+STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Vi har nettopp designet et nytt {STRING} - er du interessert i et års ekslusivt bruk av dette, slik at vi kan se hvordan det virker før det blir allment tilgjengelig?
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :lokomotiv
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :kjøretøy
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :flymaskin

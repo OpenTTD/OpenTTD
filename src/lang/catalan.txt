@@ -220,7 +220,7 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} ft
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
-STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Introdueix una cadena filtrant
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Introdueix una cadena de filtre
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Introdueix una paraula clau per filtrar la llista de
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Selecciona ordre de classificació (descendent/ascendent)
@@ -554,7 +554,7 @@ STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :President
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Magnat
 
 # Performance detail window
-STR_PERFORMANCE_DETAIL                                          :{WHITE}Detall de ratis de rendiment
+STR_PERFORMANCE_DETAIL                                          :{WHITE}Detall dels ratis de rendiment
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detall
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
@@ -2321,6 +2321,9 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Preparan
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Paràmetres NewGRF
+STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Informació NewGRF detallada
+STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Arxius NewGRF actius
+STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Arxius NewGRF inactius
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Cadena filtrant:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Carrega la predefinició seleccionada
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Desa predef.

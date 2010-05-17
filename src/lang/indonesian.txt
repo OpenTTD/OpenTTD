@@ -215,6 +215,9 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
+STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} ft
+STR_UNITS_HEIGHT_SI                                             :{COMMA} m
+
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Masukkan kata penyaring
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Masukkan kata kunci untuk menyaring daftar
@@ -2317,6 +2320,9 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Menyiapk
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Pengaturan NewGRF
+STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Informasi detail NewGRF
+STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}File NewGRF aktif
+STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}File NewGRF tidak aktif
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Saring kata:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Baca kembali setingan terdahulu yang terpilih
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Simpan
@@ -2773,6 +2779,10 @@ STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Ubah nam
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Ubah nama jenis pesawat
 
 # Depot window
+STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
+
+STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}Ubah nama depo
+STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Ubah nama depo
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -2952,7 +2962,11 @@ STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Belum a
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Menuju ke {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Menuju ke {WAYPOINT}, {VELOCITY}
 
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE}Menuju ke {DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Menuju ke {DEPOT}, {VELOCITY}
 
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}Servis pada {DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Servis pada {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
 STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Berhenti
@@ -3134,6 +3148,7 @@ STR_ORDER_TRAIN_DEPOT                                           :Depo Kereta
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Bengkel Bus/truk
 STR_ORDER_SHIP_DEPOT                                            :Galangan Kapal
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{0:STRING} {2:STRING} {1:STRING}
+STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 STR_ORDER_REFIT_ORDER                                           :(Pasang ulang menjadi {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Pasang {STRING} dan berhenti)
@@ -3474,6 +3489,8 @@ STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Tidak da
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Tidak dapat membangun bengkel disini...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Tidak dapat membangun depo trem disini...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Tidak dapat membangun galangan kapal disini...
+
+STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Tidak dapat mengubah nama depo...
 
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Kereta harus diberhentikan di dalam depo
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... harus dihentikan didalam bengkel kendaraan
@@ -4045,6 +4062,14 @@ STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING} {0:T
 STR_FORMAT_WAYPOINT_NAME                                        :Waypoint {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Waypoint {TOWN} #{COMMA}
 
+STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} Depo Kereta
+STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} Depo Kereta#{COMMA}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} Depo Kendaraan
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} Depo Kendaraan#{COMMA}
+STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} Galangan Kapal
+STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} Galangan Kapal#{COMMA}
+STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{STATION} Hangar
+
 STR_UNKNOWN_STATION                                             :stasiun tidak dikenal
 STR_DEFAULT_SIGN_NAME                                           :Tanda
 STR_COMPANY_SOMEONE                                             :seseorang
@@ -4070,6 +4095,7 @@ STR_VIEWPORT_WAYPOINT_TINY                                      :{TINYFONT}{WAYP
 # Simple strings to get specific types of data
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
+STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}
@@ -4118,6 +4144,7 @@ STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
+STR_TINY_BLACK_HEIGHT                                           :{TINYFONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 

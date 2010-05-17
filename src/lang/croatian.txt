@@ -2416,6 +2416,10 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Priprema
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF postavke
+STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Detaljne NewGRF informacije
+STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Aktivne NewGRF datoteke
+STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Neaktivne NewGRF datoteke
+STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Odaberi predložak:
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Znak za filter:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Učitaj unaprijed odabrane postavke
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Spremi zadano postavljanje
