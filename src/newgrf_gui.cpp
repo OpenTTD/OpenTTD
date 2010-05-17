@@ -372,6 +372,7 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 				GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, 0xD7);
 
 				uint step_height = this->GetWidget<NWidgetBase>(SNGRFS_AVAIL_LIST)->resize_y;
+				int offset_y = (step_height - FONT_HEIGHT_NORMAL) / 2;
 				uint y = r.top + WD_FRAMERECT_TOP;
 				uint min_index = this->vscroll2.GetPosition();
 				uint max_index = min(min_index + this->vscroll2.GetCapacity(), this->avails.Length());
@@ -383,7 +384,7 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 					const char *text = c->GetName();
 
 					if (h) GfxFillRect(r.left + 1, y, r.right - 1, y + step_height - 1, 156);
-					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, text, h ? TC_WHITE : TC_SILVER);
+					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y + offset_y, text, h ? TC_WHITE : TC_SILVER);
 					y += step_height;
 				}
 				break;
