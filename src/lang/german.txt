@@ -2321,7 +2321,7 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Spiel wi
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF-Einstellungen
-STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Filter:
+STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filter:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Ausgewählte Voreinstellung laden
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Voreinstellung speichern
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Aktuelle Liste als Voreinstellung speichern

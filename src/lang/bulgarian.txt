@@ -2310,7 +2310,7 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Подг
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF настройки
-STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Филтър:
+STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Филтър:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Зареди избрания шаблон
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Запиши шаблон
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Запиши текущия списък като шаблон

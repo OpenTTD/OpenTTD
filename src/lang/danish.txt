@@ -2315,7 +2315,7 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Forbered
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF indstillinger
-STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Filtrer udtryk:
+STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filtrer udtryk:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Indlæs den valgte indstilling
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Gem indstilling
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Gem den aktuelle liste som indstilling

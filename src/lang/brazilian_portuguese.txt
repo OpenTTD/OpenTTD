@@ -2321,7 +2321,7 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Preparan
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Configurarções de NewGRF
-STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Filtro:
+STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filtro:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Carrega o padrão selecionado
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Salvar padrão
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Salva a lista atual como um padrão

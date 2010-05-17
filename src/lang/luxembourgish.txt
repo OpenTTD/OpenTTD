@@ -2317,7 +2317,7 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Preparé
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF Astellungen
-STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Filter string:
+STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filter string:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Selectéierten Preset lueden
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Preset späichern
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Aktuell Lëscht als Preset späichern

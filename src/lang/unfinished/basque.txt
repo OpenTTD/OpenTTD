@@ -1148,6 +1148,7 @@ STR_MAPGEN_VARIETY                                              :{BLACK}Barietat
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 
 # NewGRF settings
+STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Iragazle lokarria:
 
 
 

@@ -2321,7 +2321,7 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Oyun haz
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF ayarları
-STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Süzgeç metni:
+STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Süzgeç metni:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Seçili seçkiyi yükle
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Seçkiyi kaydet
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Şimdiki listeyi seçki olarak kaydet

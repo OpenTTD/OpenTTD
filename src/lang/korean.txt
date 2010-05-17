@@ -2316,7 +2316,7 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}게임 �
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF 설정
-STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}필터링할 문자열:
+STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}필터링할 문자열:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}선택한 프리셋을 불러옵니다
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}프리셋 저장
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}현재 목록을 프리셋으로 저장

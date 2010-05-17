@@ -2306,7 +2306,7 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}ゲー�
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRFの設定
-STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}フィルター:
+STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}フィルター:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}選択したプリセットを開きます
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}プリセットを保存
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}現在のリストをプリセットとして保存します

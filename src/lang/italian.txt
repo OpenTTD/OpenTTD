@@ -2317,7 +2317,7 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Preparaz
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Impostazioni NewGRF
-STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Filtro:
+STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filtro:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Carica il profilo selezionato
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Salva profilo
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Salva la lista corrente in un profilo

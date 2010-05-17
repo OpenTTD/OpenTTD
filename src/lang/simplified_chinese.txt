@@ -2292,7 +2292,7 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}准备�
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF 设置
-STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}过滤器字符串：
+STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}过滤器字符串：
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}装载选定的预定义
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}保存预定义
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}将当前组保存为预定义

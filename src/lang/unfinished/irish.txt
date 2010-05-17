@@ -1740,6 +1740,7 @@ STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Talamh faoi shn
 # Map generation progress
 
 # NewGRF settings
+STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Teaghrán scagtha:
 
 
 

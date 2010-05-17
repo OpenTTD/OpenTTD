@@ -2384,7 +2384,7 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Játék 
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF beállítások
-STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Szűrendő kifejezés:
+STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Szűrendő kifejezés:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Kiválasztott lista betöltése
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Lista mentése
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}A kiválasztott elemek listába mentése

@@ -2320,7 +2320,7 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}準備�
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF 設定
-STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}篩選字串：
+STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}篩選字串：
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}載入所選的設定值
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}儲存設定值
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}儲存目前清單為設定值

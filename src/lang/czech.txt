@@ -2390,7 +2390,7 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Připrav
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Nastavení grafických souborů
-STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Filtrovat podle:
+STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filtrovat podle:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Nahrát vybranou předvolbu
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Uložit předvolbu
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Uložit tento seznam jako předvolbu

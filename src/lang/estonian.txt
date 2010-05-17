@@ -2372,7 +2372,7 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Mängu v
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Uue graafika sätted
-STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Filtreeri sõna:
+STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filtreeri sõna:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Laadi valitud eelseadistused
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Salvesta eelseadistus
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Salvesta praegune loend eelseadistusena

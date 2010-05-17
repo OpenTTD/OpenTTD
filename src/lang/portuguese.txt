@@ -2319,7 +2319,7 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}A prepar
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Definições NewGRF
-STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Frase filtro:
+STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Frase filtro:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Carregar a predefinição seleccionada
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Guardar
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Guarde a lista como predefinição

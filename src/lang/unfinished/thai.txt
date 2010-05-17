@@ -1411,6 +1411,7 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 # Map generation progress
 
 # NewGRF settings
+STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}กรองจากชื่อ:
 
 
 
