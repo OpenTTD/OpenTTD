@@ -87,9 +87,6 @@ void ScriptScanner::ScanScriptDir(const char *info_file_name, Subdirectory searc
 	char buf[MAX_PATH];
 	Searchpath sp;
 
-	extern void ScanForTarFiles();
-	ScanForTarFiles();
-
 	FOR_ALL_SEARCHPATHS(sp) {
 		FioAppendDirectory(buf, MAX_PATH, sp, search_dir);
 		if (FileExists(buf)) this->ScanDir(buf, info_file_name);

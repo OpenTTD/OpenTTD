@@ -57,7 +57,7 @@ char *FioAppendDirectory(char *buf, size_t buflen, Searchpath sp, Subdirectory s
 char *FioGetDirectory(char *buf, size_t buflen, Subdirectory subdir);
 
 void SanitizeFilename(char *filename);
-void AppendPathSeparator(char *buf, size_t buflen);
+bool AppendPathSeparator(char *buf, size_t buflen);
 void DeterminePaths(const char *exe);
 void *ReadFileToMem(const char *filename, size_t *lenp, size_t maxsize);
 bool FileExists(const char *filename);
@@ -87,6 +87,14 @@ public:
 	virtual bool AddFile(const char *filename, size_t basepath_length) = 0;
 };
 
+/** Helper for scanning for files with tar as extension */
+class TarScanner : FileScanner {
+public:
+	/* virtual */ bool AddFile(const char *filename, size_t basepath_length);
+
+	/** Do the scan for Tars. */
+	static uint DoScan();
+};
 
 /* Implementation of opendir/readdir/closedir for Windows */
 #if defined(WIN32)

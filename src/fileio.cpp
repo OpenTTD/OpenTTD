@@ -448,16 +448,21 @@ void FioCreateDirectory(const char *name)
  * It does not add the path separator to zero-sized strings.
  * @param buf    string to append the separator to
  * @param buflen the length of the buf
+ * @return true iff the operation succeeded
  */
-void AppendPathSeparator(char *buf, size_t buflen)
+bool AppendPathSeparator(char *buf, size_t buflen)
 {
 	size_t s = strlen(buf);
 
 	/* Length of string + path separator + '\0' */
-	if (s != 0 && buf[s - 1] != PATHSEPCHAR && s + 2 < buflen) {
+	if (s != 0 && buf[s - 1] != PATHSEPCHAR) {
+		if (s + 2 >= buflen) return false;
+
 		buf[s]     = PATHSEPCHAR;
 		buf[s + 1] = '\0';
 	}
+
+	return true;
 }
 
 /**
@@ -534,7 +539,18 @@ static void SimplifyFileName(char *name)
 #endif
 }
 
-bool TarListAddFile(const char *filename)
+/* static */ uint TarScanner::DoScan() {
+	DEBUG(misc, 1, "Scanning for tars");
+	TarScanner fs;
+	uint num = fs.Scan(".tar", DATA_DIR, false);
+	num += fs.Scan(".tar", AI_DIR, false);
+	num += fs.Scan(".tar", AI_LIBRARY_DIR, false);
+	num += fs.Scan(".tar", SCENARIO_DIR, false);
+	DEBUG(misc, 1, "Scan complete, found %d files", num);
+	return num;
+}
+
+bool TarScanner::AddFile(const char *filename, size_t basepath_length)
 {
 	/* The TAR-header, repeated for every file */
 	typedef struct TarHeader {
@@ -820,66 +836,6 @@ bool ExtractTar(const char *tar_filename)
 	return true;
 }
 
-static int ScanPathForTarFiles(const char *path, size_t basepath_length)
-{
-	extern bool FiosIsValidFile(const char *path, const struct dirent *ent, struct stat *sb);
-
-	uint num = 0;
-	struct stat sb;
-	struct dirent *dirent;
-	DIR *dir;
-
-	if (path == NULL || (dir = ttd_opendir(path)) == NULL) return 0;
-
-	while ((dirent = readdir(dir)) != NULL) {
-		const char *d_name = FS2OTTD(dirent->d_name);
-		char filename[MAX_PATH];
-
-		if (!FiosIsValidFile(path, dirent, &sb)) continue;
-
-		snprintf(filename, lengthof(filename), "%s%s", path, d_name);
-
-		if (S_ISDIR(sb.st_mode)) {
-			/* Directory */
-			if (strcmp(d_name, ".") == 0 || strcmp(d_name, "..") == 0) continue;
-			AppendPathSeparator(filename, lengthof(filename));
-			num += ScanPathForTarFiles(filename, basepath_length);
-		} else if (S_ISREG(sb.st_mode)) {
-			/* File */
-			char *ext = strrchr(filename, '.');
-
-			/* If no extension or extension isn't .tar, skip the file */
-			if (ext == NULL) continue;
-			if (strcasecmp(ext, ".tar") != 0) continue;
-
-			if (TarListAddFile(filename)) num++;
-		}
-	}
-
-	closedir(dir);
-	return num;
-}
-
-void ScanForTarFiles()
-{
-	Searchpath sp;
-	char path[MAX_PATH];
-	uint num = 0;
-
-	DEBUG(misc, 1, "Scanning for tars");
-	FOR_ALL_SEARCHPATHS(sp) {
-		FioAppendDirectory(path, MAX_PATH, sp, DATA_DIR);
-		num += ScanPathForTarFiles(path, strlen(path));
-		FioAppendDirectory(path, MAX_PATH, sp, AI_DIR);
-		num += ScanPathForTarFiles(path, strlen(path));
-		FioAppendDirectory(path, MAX_PATH, sp, AI_LIBRARY_DIR);
-		num += ScanPathForTarFiles(path, strlen(path));
-		FioAppendDirectory(path, MAX_PATH, sp, SCENARIO_DIR);
-		num += ScanPathForTarFiles(path, strlen(path));
-	}
-	DEBUG(misc, 1, "Scan complete, found %d files", num);
-}
-
 #if defined(WIN32) || defined(WINCE)
 /**
  * Determine the base (personal dir and game data dir) paths
@@ -1079,7 +1035,7 @@ void DeterminePaths(const char *exe)
 	}
 #endif /* ENABLE_NETWORK */
 
-	ScanForTarFiles();
+	TarScanner::DoScan();
 }
 
 /**
@@ -1158,7 +1114,7 @@ static uint ScanPath(FileScanner *fs, const char *extension, const char *path, s
 			/* Directory */
 			if (!recursive) continue;
 			if (strcmp(d_name, ".") == 0 || strcmp(d_name, "..") == 0) continue;
-			AppendPathSeparator(filename, lengthof(filename));
+			if (!AppendPathSeparator(filename, lengthof(filename))) continue;
 			num += ScanPath(fs, extension, filename, basepath_length, recursive);
 		} else if (S_ISREG(sb.st_mode)) {
 			/* File */
@@ -1245,6 +1201,6 @@ uint FileScanner::Scan(const char *extension, const char *directory, bool recurs
 {
 	char path[MAX_PATH];
 	strecpy(path, directory, lastof(path));
-	AppendPathSeparator(path, lengthof(path));
+	if (!AppendPathSeparator(path, lengthof(path))) return 0;
 	return ScanPath(this, extension, path, strlen(path), recursive);
 }
