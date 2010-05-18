@@ -27,6 +27,10 @@
 #	include <dlfcn.h>
 #endif
 
+#if defined(__NetBSD__)
+#include <unistd.h>
+#endif
+
 /**
  * Unix implementation for the crash logger.
  */

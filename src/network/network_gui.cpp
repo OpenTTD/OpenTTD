@@ -1786,7 +1786,7 @@ static void ClientList_Ban(byte client_no)
 
 	if (ci == NULL) return;
 
-	NetworkServerBanIP(GetClientIP(ci));
+	NetworkServerKickOrBanIP(GetClientIP(ci), true);
 }
 
 static void ClientList_GiveMoney(byte client_no)

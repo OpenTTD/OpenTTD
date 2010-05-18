@@ -79,7 +79,7 @@ void NetworkServerSendError(ClientID client_id, NetworkErrorCode error);
 void NetworkServerSendChat(NetworkAction action, DestType type, int dest, const char *msg, ClientID from_id, int64 data = 0);
 
 void NetworkServerKickClient(ClientID client_id);
-void NetworkServerBanIP(const char *banip);
+uint NetworkServerKickOrBanIP(const char *ip, bool ban);
 
 void NetworkInitChatMessage();
 void CDECL NetworkAddChatMessage(TextColour colour, uint8 duration, const char *message, ...) WARN_FORMAT(3, 4);

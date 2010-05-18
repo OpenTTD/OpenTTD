@@ -1808,19 +1808,24 @@ void NetworkServerKickClient(ClientID client_id)
 	NetworkServerSendError(client_id, NETWORK_ERROR_KICKED);
 }
 
-void NetworkServerBanIP(const char *banip)
+uint NetworkServerKickOrBanIP(const char *ip, bool ban)
 {
-	NetworkClientInfo *ci;
+	/* Add address to ban-list */
+	if (ban) *_network_ban_list.Append() = strdup(ip);
+
+	uint n = 0;
 
 	/* There can be multiple clients with the same IP, kick them all */
+	NetworkClientInfo *ci;
 	FOR_ALL_CLIENT_INFOS(ci) {
-		if (ci->client_address.IsInNetmask(const_cast<char *>(banip))) {
+		if (ci->client_id == CLIENT_ID_SERVER) continue;
+		if (ci->client_address.IsInNetmask(const_cast<char *>(ip))) {
 			NetworkServerKickClient(ci->client_id);
+			n++;
 		}
 	}
 
-	/* Add user to ban-list */
-	*_network_ban_list.Append() = strdup(banip);
+	return n;
 }
 
 bool NetworkCompanyHasClients(CompanyID company)
