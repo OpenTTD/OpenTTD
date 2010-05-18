@@ -2323,6 +2323,7 @@ STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF-i
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Gedetaileerde NewGRF informatie
 STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Actieve NewGRF bestanden
 STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Inactieve NewGRF bestanden
+STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Kies voorkeur:
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filter tekst:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Laad de geselecteerd voorkeursinstelling
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Bewaar voorkeursinstelling

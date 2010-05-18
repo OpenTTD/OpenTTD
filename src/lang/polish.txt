@@ -2703,6 +2703,7 @@ STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Ustawien
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Szczegółowe informacje o NewGRF
 STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Aktywne pliki NewGRF
 STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Nieaktywne pliki NewGRF
+STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Wybierz obecny:
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filtruj napis:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Załaduj wskazany stan ustawień
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Zapisz schemat

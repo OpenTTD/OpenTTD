@@ -2493,6 +2493,7 @@ STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Наст
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Информация о модуле NewGRF
 STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Активные файлы NewGRF
 STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Неактивные файлы NewGRF
+STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Набор файлов:
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Фильтр:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Загрузить выбранный набор
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Сохранить набор

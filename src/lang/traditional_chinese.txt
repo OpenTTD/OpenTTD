@@ -2320,6 +2320,10 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}準備�
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF 設定
+STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}NewGRF 詳細資訊
+STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}啟用 NewGRF 檔案
+STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}停用 NewGRF 檔案
+STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}選擇預置值：
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}篩選字串：
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}載入所選的設定值
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}儲存設定值
@@ -2776,6 +2780,7 @@ STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}重新�
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}重新命名飛機種類
 
 # Depot window
+STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
 
 STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}修改機場名稱
 STR_DEPOT_RENAME_DEPOT_CAPTION                                  :重新命名機廠
@@ -2950,15 +2955,19 @@ STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}正在停�
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}沒有電力
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}正在等候路徑開放
 
-STR_VEHICLE_STATUS_HEADING_FOR_STATION                          :{LTBLUE}正前往：{STATION}
-STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}正前往：{STATION}，{VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_STATION                          :{LTBLUE}正前往 {STATION}
+STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}正前往 {STATION}，{VELOCITY}
 STR_VEHICLE_STATUS_NO_ORDERS                                    :{LTBLUE}沒有指令
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}沒有指令，{VELOCITY}
 
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}正前往 {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}正前往 {WAYPOINT}，{VELOCITY}
 
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE}正前往 {DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}正前往 {DEPOT}，{VELOCITY}
 
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}正在維護於 {DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}正在維護於 {DEPOT}，{VELOCITY}
 
 # Vehicle stopped/started animations
 STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}已停止
@@ -3140,6 +3149,7 @@ STR_ORDER_TRAIN_DEPOT                                           :機廠
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :車庫
 STR_ORDER_SHIP_DEPOT                                            :船塢
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
+STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 STR_ORDER_REFIT_ORDER                                           :(改裝成 {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(裝載 {STRING} 並停止)
@@ -4054,8 +4064,11 @@ STR_FORMAT_WAYPOINT_NAME                                        :{TOWN} 號誌�
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN} 第 {COMMA} 號誌站
 
 STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} 鐵路機廠
+STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} 鐵路機廠 #{COMMA}
 STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} 車廠
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} 車廠 #{COMMA}
 STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} 船塢
+STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} 船塢 #{COMMA}
 STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{STATION} 機棚
 
 STR_UNKNOWN_STATION                                             :未知車站

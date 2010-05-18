@@ -1794,7 +1794,7 @@ STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Servern 
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Servern startar om...{}Var vänlig vänta...
 
 # Content downloading window
-STR_CONTENT_TITLE                                               :{WHITE}Innehåll laddas hem
+STR_CONTENT_TITLE                                               :{WHITE}Nedladdning av innehåll
 STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Typ
 STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}Typ av innehåll
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}Namn
@@ -2320,6 +2320,10 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Förbere
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF-inställningar
+STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Detaljerad NewGRF-information
+STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Aktiva NewGRF-filer
+STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Inaktiva NewGRF-filer
+STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Välj förinställning
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Sökfilter:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Ladda markerad förinställning
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Spara förinställning

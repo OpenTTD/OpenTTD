@@ -2320,6 +2320,10 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Pregates
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Setări NewGRF
+STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Informaţie detaliată NewGRF
+STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Fişiere NewGRF active
+STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Fişiere NewGRF inactive
+STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Selectează preset:
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filtru:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Incarcă presetarea selectată
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Salvează presetare

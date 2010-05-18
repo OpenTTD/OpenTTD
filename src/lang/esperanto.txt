@@ -3428,6 +3428,7 @@ STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Ne povas
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Ponto estas tro malalta por la tereno
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Komenco kaj fino devas esti samliniaj
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... ambaŭ pontfinoj devas esti sur tero
+STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... ponto estas tro longa
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Ne povas konstrui tunelon ĉi tie...
