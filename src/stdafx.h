@@ -24,9 +24,6 @@
 #elif defined(__NDS__)
 	#include <nds/jtypes.h>
 	#define TROUBLED_INTS
-#elif defined(__NetBSD__)
-	#include <unistd.h>
-	#define _GNU_SOURCE
 #endif
 
 /* It seems that we need to include stdint.h before anything else
