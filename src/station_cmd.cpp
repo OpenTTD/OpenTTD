@@ -2580,7 +2580,7 @@ static void DrawTile_Station(TileInfo *ti)
 		palette = PALETTE_TO_GREY;
 	}
 
-	if (t == NULL || t->seq == NULL) t = &_station_display_datas[GetStationType(ti->tile)][GetStationGfx(ti->tile)];
+	if (t == NULL || t->seq == NULL) t = GetStationTileLayout(GetStationType(ti->tile), GetStationGfx(ti->tile));
 
 	/* don't show foundation for docks */
 	if (ti->tileh != SLOPE_FLAT && !IsDock(ti->tile)) {
@@ -2702,7 +2702,7 @@ void StationPickerDrawSprite(int x, int y, StationType st, RailType railtype, Ro
 {
 	int32 total_offset = 0;
 	PaletteID pal = COMPANY_SPRITE_COLOUR(_local_company);
-	const DrawTileSprites *t = &_station_display_datas[st][image];
+	const DrawTileSprites *t = GetStationTileLayout(st, image);
 	const RailtypeInfo *rti = NULL;
 
 	if (railtype != INVALID_RAILTYPE) {
