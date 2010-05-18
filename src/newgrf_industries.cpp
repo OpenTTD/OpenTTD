@@ -201,6 +201,7 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 			uint16 callback = indspec->callback_mask;
 			if (HasBit(callback, CBM_IND_PRODUCTION_CARGO_ARRIVAL) || HasBit(callback, CBM_IND_PRODUCTION_256_TICKS)) {
 				if ((indspec->behaviour & INDUSTRYBEH_PROD_MULTI_HNDLING) != 0) {
+					if (industry->prod_level == 0) return 0;
 					return min(industry->incoming_cargo_waiting[variable - 0x40] / industry->prod_level, (uint16)0xFFFF);
 				} else {
 					return min(industry->incoming_cargo_waiting[variable - 0x40], (uint16)0xFFFF);
@@ -342,18 +343,21 @@ static const SpriteGroup *IndustryResolveReal(const ResolverObject *object, cons
 
 static uint32 IndustryGetRandomBits(const ResolverObject *object)
 {
-	return object->u.industry.ind == NULL ? 0 : object->u.industry.ind->random;
+	const Industry *ind = object->u.industry.ind;
+	return ind != NULL ? ind->random: 0;
 }
 
 static uint32 IndustryGetTriggers(const ResolverObject *object)
 {
-	return object->u.industry.ind == NULL ? 0 : object->u.industry.ind->random_triggers;
+	const Industry *ind = object->u.industry.ind;
+	return ind != NULL ? ind->random_triggers : 0;
 }
 
 static void IndustrySetTriggers(const ResolverObject *object, int triggers)
 {
-	if (object->u.industry.ind == NULL) return;
-	object->u.industry.ind->random_triggers = triggers;
+	Industry *ind = object->u.industry.ind;
+	assert(ind != NULL && ind->index != INVALID_INDUSTRY);
+	ind->random_triggers = triggers;
 }
 
 static void NewIndustryResolver(ResolverObject *res, TileIndex tile, Industry *indus, IndustryType type)
