@@ -17,5 +17,6 @@
 void ShowBuildRailToolbar(RailType railtype, int button);
 void ReinitGuiAfterToggleElrail(bool disable);
 bool ResetSignalVariant(int32 = 0);
+void InitializeRailGUI();
 
 #endif /* RAIL_GUI_H */

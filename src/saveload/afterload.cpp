@@ -51,6 +51,7 @@
 #include "../newgrf.h"
 #include "../engine_base.h"
 #include "../engine_func.h"
+#include "../rail_gui.h"
 
 #include "table/strings.h"
 
@@ -60,7 +61,6 @@
 
 extern StringID _switch_mode_errorstr;
 extern Company *DoStartupNewCompany(bool is_ai, CompanyID company = INVALID_COMPANY);
-extern void InitializeRailGUI();
 
 /**
  * Makes a tile canal or water depending on the surroundings.

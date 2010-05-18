@@ -64,6 +64,7 @@
 #include "engine_base.h"
 #include "engine_func.h"
 #include "core/random_func.hpp"
+#include "rail_gui.h"
 
 #include "newgrf_commons.h"
 
@@ -87,7 +88,6 @@ void CallWindowTickEvent();
 extern void SetDifficultyLevel(int mode, DifficultySettings *gm_opt);
 extern Company *DoStartupNewCompany(bool is_ai, CompanyID company = INVALID_COMPANY);
 extern void ShowOSErrorBox(const char *buf, bool system);
-extern void InitializeRailGUI();
 
 /**
  * Error handling for fatal user errors.
