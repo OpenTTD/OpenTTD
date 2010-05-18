@@ -313,23 +313,44 @@ static int CALLBACK EnumFontCallback(const ENUMLOGFONTEX *logfont, const NEWTEXT
 		if ((fs.fsCsb[0] & info->locale.lsCsbSupported[0]) == 0 && (fs.fsCsb[1] & info->locale.lsCsbSupported[1]) == 0) return 1;
 	}
 
-	const char *english_name = GetEnglishFontName(logfont);
-	const char *font_name = WIDE_TO_MB((const TCHAR*)logfont->elfFullName);
-	DEBUG(freetype, 1, "Fallback font: %s (%s)", font_name, english_name);
+	char font_name[MAX_PATH];
+#if defined(UNICODE)
+	WIDE_TO_MB_BUFFER((const TCHAR*)logfont->elfFullName, font_name, lengthof(font_name));
+#else
+	strecpy(font_name, (const TCHAR*)logfont->elfFullName, lastof(font_name));
+#endif
 
+	/* Add english name after font name */
+	const char *english_name = GetEnglishFontName(logfont);
+	strecpy(font_name + strlen(font_name) + 1, english_name, lastof(font_name));
+
+	/* Check whether we can actually load the font. */
+	bool ft_init = _library != NULL;
+	bool found = false;
+	FT_Face face;
+	/* Init FreeType if needed. */
+	if ((ft_init || FT_Init_FreeType(&_library) == FT_Err_Ok) && GetFontByFaceName(font_name, &face) == FT_Err_Ok) {
+		FT_Done_Face(face);
+		found = true;
+	}
+	if (!ft_init) {
+		/* Uninit FreeType if we did the init. */
+		FT_Done_FreeType(_library);
+		_library = NULL;
+	}
+
+	if (!found) return 1;
+
+	DEBUG(freetype, 1, "Fallback font: %s (%s)", font_name, english_name);
 	strecpy(info->settings->small_font,  font_name, lastof(info->settings->small_font));
 	strecpy(info->settings->medium_font, font_name, lastof(info->settings->medium_font));
 	strecpy(info->settings->large_font,  font_name, lastof(info->settings->large_font));
-
-	/* Add english name after font name */
-	strecpy(info->settings->small_font + strlen(info->settings->small_font) + 1, english_name, lastof(info->settings->small_font));
-	strecpy(info->settings->medium_font + strlen(info->settings->medium_font) + 1, english_name, lastof(info->settings->medium_font));
-	strecpy(info->settings->large_font + strlen(info->settings->large_font) + 1, english_name, lastof(info->settings->large_font));
 	return 0; // stop enumerating
 }
 
 bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, int winlangid, const char *str)
 {
+	DEBUG(freetype, 1, "Trying fallback fonts");
 	EFCParam langInfo;
 	if (GetLocaleInfo(MAKELCID(winlangid, SORT_DEFAULT), LOCALE_FONTSIGNATURE, (LPTSTR)&langInfo.locale, sizeof(langInfo.locale) / sizeof(TCHAR)) == 0) {
 		/* Invalid langid or some other mysterious error, can't determine fallback font. */
