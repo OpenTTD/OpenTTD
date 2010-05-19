@@ -332,7 +332,7 @@ static void PollEvent()
 	if (prev_button_state != mouse_b) {
 		uint diff = prev_button_state ^ mouse_b;
 		while (diff != 0) {
-			int button = FindFirstBit(diff);
+			uint button = FindFirstBit(diff);
 			ClrBit(diff, button);
 			if (HasBit(mouse_b, button)) {
 				/* Pressed mouse button */
