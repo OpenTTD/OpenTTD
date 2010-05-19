@@ -1856,15 +1856,15 @@ STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Impossib
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Options de transparence
-STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Transparence des noms de station. Ctrl-clic pour vérouiller.
-STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Transparence des arbres. Ctrl-clic pour vérouiller.
-STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Transparence des maisons. Ctrl-clic pour vérouiller.
-STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Transparence des industries. Ctrl-clic pour vérouiller.
-STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Transparence des éléments constructibles tels que stations, dépôts, points de contrôle et caténaire. Ctrl-clic pour vérouiller.
-STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Transparence des ponts. Ctrl-clic pour vérouiller.
-STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Transparence des structures telles que phares et antennes. Ctrl-clic pour vérouiller.
-STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Transparence des caténaires. Ctrl-clic pour vérouiller.
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Transparence pour les indicateurs de chargement. Ctrl-clic pour vérouiller.
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Transparence des noms de station. Ctrl-clic pour vérrouiller.
+STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Transparence des arbres. Ctrl-clic pour vérrouiller.
+STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Transparence des maisons. Ctrl-clic pour vérrouiller.
+STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Transparence des industries. Ctrl-clic pour vérrouiller.
+STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Transparence des éléments constructibles tels que stations, dépôts, points de contrôle et caténaire. Ctrl-clic pour vérrouiller.
+STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Transparence des ponts. Ctrl-clic pour vérrouiller.
+STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Transparence des structures telles que phares et antennes. Ctrl-clic pour vérrouiller.
+STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Transparence des caténaires. Ctrl-clic pour vérrouiller.
+STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Transparence pour les indicateurs de chargement. Ctrl-clic pour vérrouiller.
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Basculer transparence/invisibilité
 
 # Base for station construction window(s)

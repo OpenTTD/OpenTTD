@@ -2324,6 +2324,7 @@ STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Paràmet
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Informació NewGRF detallada
 STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Arxius NewGRF actius
 STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Arxius NewGRF inactius
+STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Selecciona configuració:
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Cadena filtrant:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Carrega la predefinició seleccionada
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Desa predef.
