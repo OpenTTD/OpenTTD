@@ -936,7 +936,10 @@ void NetworkDisconnect(bool blocking)
 	NetworkClose();
 }
 
-/* Receives something from the network */
+/**
+ * Receives something from the network.
+ * @return true if everthing went fine, false when the connection got closed.
+ */
 static bool NetworkReceive()
 {
 	NetworkClientSocket *cs;
@@ -991,7 +994,7 @@ static bool NetworkReceive()
 			}
 		}
 	}
-	return true;
+	return _networking;
 }
 
 /* This sends all buffered commands (if possible) */
