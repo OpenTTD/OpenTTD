@@ -1828,7 +1828,7 @@ void IConsoleGetSetting(const char *name, bool force_newgame)
 	ptr = GetVariableAddress((_game_mode == GM_MENU || force_newgame) ? &_settings_newgame : &_settings_game, &sd->save);
 
 	if (sd->desc.cmd == SDT_STRING) {
-		IConsolePrintF(CC_WARNING, "Current value for '%s' is: '%s'", name, (const char *)ptr);
+		IConsolePrintF(CC_WARNING, "Current value for '%s' is: '%s'", name, (GetVarMemType(sd->save.conv) == SLE_VAR_STRQ) ? *(const char **)ptr : (const char *)ptr);
 	} else {
 		if (sd->desc.cmd == SDT_BOOLX) {
 			snprintf(value, sizeof(value), (*(bool*)ptr == 1) ? "on" : "off");
@@ -1859,7 +1859,7 @@ void IConsoleListSettings(const char *prefilter)
 		if (sd->desc.cmd == SDT_BOOLX) {
 			snprintf(value, lengthof(value), (*(bool*)ptr == 1) ? "on" : "off");
 		} else if (sd->desc.cmd == SDT_STRING) {
-			snprintf(value, sizeof(value), "%s", (const char *)ptr);
+			snprintf(value, sizeof(value), "%s", (GetVarMemType(sd->save.conv) == SLE_VAR_STRQ) ? *(const char **)ptr : (const char *)ptr);
 		} else {
 			snprintf(value, lengthof(value), "%d", (uint32)ReadValue(ptr, sd->save.conv));
 		}
