@@ -2323,6 +2323,7 @@ STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Pengatur
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Informasi detail NewGRF
 STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}File NewGRF aktif
 STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}File NewGRF tidak aktif
+STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Pilih preset:
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Saring kata:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Baca kembali setingan terdahulu yang terpilih
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Simpan
@@ -2851,7 +2852,7 @@ STR_DEPOT_MASS_START_DEPOT_ROAD_VEHICLE_TOOLTIP                 :{BLACK}Klik unt
 STR_DEPOT_MASS_START_DEPOT_SHIP_TOOLTIP                         :{BLACK}Klik untuk menjalankan semua kapal di dalam galangan
 STR_DEPOT_MASS_START_HANGAR_TOOLTIP                             :{BLACK}Klik untuk menjalankan semua Pesawat di dalam hangar
 
-STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Anda akan menjual semua kendaraan didalam depo. Anda yakin?
+STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Anda akan menjual semua kendaraan didalam dipo. Anda yakin?
 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Pesan dari pabrik kendaraan
@@ -3492,12 +3493,12 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Tidak da
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Tidak dapat mengubah nama depo...
 
-STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Kereta harus diberhentikan di dalam depo
+STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Kereta harus diberhentikan di dalam dipo
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... harus dihentikan didalam bengkel kendaraan
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Kapal harus berhenti di galangan
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Pesawat harus berhenti di hangar
 
-STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Kereta hanya dapat diubah ketika berhenti di dalam depo
+STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Kereta hanya dapat diubah ketika berhenti di dalam dipo
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Kereta terlalu panjang
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Tidak dapat memutar balik arah kendaraan...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Tidak dapat membalik arah kendaraan yang terdiri dari beberapa unit

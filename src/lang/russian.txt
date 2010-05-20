@@ -902,7 +902,7 @@ STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIGFONT}{BLACK}Крушение дирижабля в {STATION}!
 STR_NEWS_DISASTER_SMALL_UFO                                     :{BIGFONT}{BLACK}Автомобиль уничтожен при столкновении с НЛО!
 STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIGFONT}{BLACK}Взрыв нефтеперегонного завода вблизи г.{NBSP}{TOWN}!
-STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIGFONT}{BLACK}Взрыв завода при подозрительных обстоятельствах вблизи {TOWN}!
+STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIGFONT}{BLACK}Взрыв завода при подозрительных обстоятельствах вблизи г.{NBSP}{TOWN}!
 STR_NEWS_DISASTER_BIG_UFO                                       :{BIGFONT}{BLACK}НЛО приземлилось возле г.{NBSP}{TOWN}!
 STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIGFONT}{BLACK}Обвал на угольной шахте вызывает оползень в районе г.{NBSP}{TOWN}!
 STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIGFONT}{BLACK}ПОТОП!{}{COMMA} человек{P "" а ""} утонул{P "" о о} в результате наводнения!
@@ -1895,7 +1895,7 @@ STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Соед
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Не удалось загрузить сохранение
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Не удалось запустить сервер
 STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Не удалось соединиться
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Истекло время ожидания соединения №{NUM}
+STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Истекло время ожидания соединения #{NUM}
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Произошла ошибка протокола, и соединение было закрыто
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Версия этого клиента не совместима с версией сервера
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Неверный пароль
@@ -1936,10 +1936,10 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :вручную
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :покинул
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} подключился к игре
-STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} подключился к игре (клиент №{2:NUM})
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} подключился к компании №{2:NUM}
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} подключился к игре (клиент #{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} подключился к компании #{2:NUM}
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} подключился наблюдателем
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} основал новую компанию (№{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} основал новую компанию (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} покинул игру ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} изменил имя на {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} передал вашей компании {2:CURRENCY}
@@ -2541,7 +2541,7 @@ STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Прос
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} в {HEX}
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Тип рельсов
 
-STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Переменная NewGRF принимает параметр 60+x (шестнадцатеричный)
+STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Параметр переменной NewGRF 60+x (шестнадцатеричный)
 
 # Sprite aligner window
 STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Выравнивание спрайта {COMMA} ({STRING})
@@ -2724,7 +2724,7 @@ STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Пока
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Показать весь авиатранспорт, в расписании которого есть этот аэропорт
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Показать все корабли, в расписании которых есть эта пристань
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Переименовать станцию
+STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Название станции
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
@@ -2733,7 +2733,7 @@ STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Пере
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Показать буй в основном окне. Ctrl+клик - показать в дополнительном окне.
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Изменить название буя
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Переименовать точку пути
+STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Название точки пути
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}Финансы - {COMPANY} {BLACK}{COMPANYNUM}
@@ -2888,7 +2888,7 @@ STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Защи
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Добавить транспорт с общими заданиями
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Удалить все
 
-STR_GROUP_RENAME_CAPTION                                        :{BLACK}Переименовать группу
+STR_GROUP_RENAME_CAPTION                                        :{BLACK}Название группы
 
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Новый поезд
@@ -2953,7 +2953,7 @@ STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Назв
 STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
 
 STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}Переименовать депо
-STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Переименовать депо
+STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Название депо
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -3127,7 +3127,7 @@ STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Теку
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Разгрузка/Погрузка
 STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Отъезжает
-STR_VEHICLE_STATUS_CRASHED                                      :{RED}Разбился!
+STR_VEHICLE_STATUS_CRASHED                                      :{RED}Попал в аварию!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Поломка
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Остановлен
 STR_VEHICLE_STATUS_TRAIN_STOPPING                               :{RED}Останавливается
@@ -3966,7 +3966,7 @@ STR_SV_STNAME_UPPER                                             :Верхняя 
 STR_SV_STNAME_LOWER                                             :Нижняя {STRING}
 STR_SV_STNAME_HELIPORT                                          :Площадка {STRING}
 STR_SV_STNAME_FOREST                                            :Лес {STRING}
-STR_SV_STNAME_FALLBACK                                          :{STRING} Станция №{NUM}
+STR_SV_STNAME_FALLBACK                                          :г.{NBSP}{STRING}, станция #{NUM}
 ############ end of savegame specific region!
 
 ##id 0x8000
@@ -4236,19 +4236,19 @@ STR_FORMAT_DATE_LONG                                            :{STRING} {STRIN
 STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
 
 STR_FORMAT_BUOY_NAME                                            :Буй {TOWN}
-STR_FORMAT_BUOY_NAME_SERIAL                                     :Буй {TOWN} №{COMMA}
+STR_FORMAT_BUOY_NAME_SERIAL                                     :Буй {TOWN} #{COMMA}
 STR_FORMAT_COMPANY_NUM                                          :(Компания {COMMA})
 STR_FORMAT_GROUP_NAME                                           :Группа {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING} {0:TOWN}
 STR_FORMAT_WAYPOINT_NAME                                        :Точка пути {TOWN}
-STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Точка пути {TOWN} №{COMMA}
+STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Точка пути {TOWN} #{COMMA}
 
 STR_FORMAT_DEPOT_NAME_TRAIN                                     :Депо {TOWN}
-STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :Депо {TOWN} №{COMMA}
+STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :Депо {TOWN} #{COMMA}
 STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :Гараж {TOWN}
-STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :Гараж {TOWN} №{COMMA}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :Гараж {TOWN} #{COMMA}
 STR_FORMAT_DEPOT_NAME_SHIP                                      :Док {TOWN}
-STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :Док {TOWN} №{COMMA}
+STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :Док {TOWN} #{COMMA}
 STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :Ангар ({STATION})
 
 STR_UNKNOWN_STATION                                             :неизвестная станция
