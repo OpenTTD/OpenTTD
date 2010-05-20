@@ -1713,15 +1713,22 @@ uint GetCompanySettingIndex(const char *name)
  * Set a setting value with a string.
  * @param index the settings index.
  * @param value the value to write
- * @note CANNOT BE SAVED IN THE SAVEGAME.
+ * @param force_newgame force the newgame settings
+ * @note Strings WILL NOT be synced over the network
  */
-bool SetSettingValue(uint index, const char *value)
+bool SetSettingValue(uint index, const char *value, bool force_newgame)
 {
 	const SettingDesc *sd = &_settings[index];
 	assert(sd->save.conv & SLF_NETWORK_NO);
 
-	char *var = (char*)GetVariableAddress(NULL, &sd->save);
-	ttd_strlcpy(var, value, sd->save.length);
+	if (GetVarMemType(sd->save.conv) == SLE_VAR_STRQ) {
+		char **var = (char**)GetVariableAddress((_game_mode == GM_MENU || force_newgame) ? &_settings_newgame : &_settings_game, &sd->save);
+		free(*var);
+		*var = strcmp(value, "(null)") == 0 ? NULL : strdup(value);
+	} else {
+		char *var = (char*)GetVariableAddress(NULL, &sd->save);
+		ttd_strlcpy(var, value, sd->save.length);
+	}
 	if (sd->desc.proc != NULL) sd->desc.proc(0);
 
 	return true;
@@ -1778,7 +1785,7 @@ void IConsoleSetSetting(const char *name, const char *value, bool force_newgame)
 
 	bool success;
 	if (sd->desc.cmd == SDT_STRING) {
-		success = SetSettingValue(index, value);
+		success = SetSettingValue(index, value, force_newgame);
 	} else {
 		uint32 val;
 		extern bool GetArgumentInteger(uint32 *value, const char *arg);
