@@ -12,6 +12,9 @@
 #ifndef STRING_TYPE_H
 #define STRING_TYPE_H
 
+/** A non-breaking space. */
+#define NBSP "\xC2\xA0"
+
 /**
  * Valid filter types for IsValidChar.
  */
