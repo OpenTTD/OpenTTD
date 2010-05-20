@@ -432,6 +432,10 @@ void IConsoleCmdExec(const char *cmdstr)
 			break;
 		case '"': // Tokens enclosed in "" are one token
 			longtoken = !longtoken;
+			if (!foundtoken) {
+				tokens[t_index++] = &tokenstream[tstream_i];
+				foundtoken = true;
+			}
 			break;
 		case '\\': // Escape character for ""
 			if (cmdptr[1] == '"' && tstream_i + 1 < lengthof(tokenstream)) {
