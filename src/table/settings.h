@@ -537,11 +537,11 @@ const SettingDesc _settings[] = {
 	 SDT_CONDVAR(GameSettings, game_creation.custom_town_number,             SLE_UINT16,115, SL_MAX_VERSION, 0, 0,     1,                     1,    5000, 0, STR_NULL,                                 NULL),
 	 SDT_CONDVAR(GameSettings, construction.extra_tree_placement,             SLE_UINT8,132, SL_MAX_VERSION, 0,MS,     2,                     0,       2, 0, STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT,  NULL),
 
- SDT_CONDOMANY(GameSettings, locale.currency,                               SLE_UINT8, 97, SL_MAX_VERSION, N, 0, 0, CUSTOM_CURRENCY_ID, _locale_currencies, STR_NULL, NULL, NULL),
- SDT_CONDOMANY(GameSettings, locale.units,                                  SLE_UINT8, 97, SL_MAX_VERSION, N, 0, 1, 2, _locale_units,                       STR_NULL, NULL, NULL),
-   SDT_CONDSTR(GameSettings, locale.digit_group_separator,                   SLE_STRQ,118, SL_MAX_VERSION, N, 0, NULL,                                      STR_NULL, NULL),
-   SDT_CONDSTR(GameSettings, locale.digit_group_separator_currency,          SLE_STRQ,118, SL_MAX_VERSION, N, 0, NULL,                                      STR_NULL, NULL),
-   SDT_CONDSTR(GameSettings, locale.digit_decimal_separator,                 SLE_STRQ,126, SL_MAX_VERSION, N, 0, NULL,                                      STR_NULL, NULL),
+ SDT_CONDOMANY(GameSettings, locale.currency,                               SLE_UINT8, 97, SL_MAX_VERSION, N, 0, 0, CUSTOM_CURRENCY_ID, _locale_currencies, STR_NULL, RedrawScreen, NULL),
+ SDT_CONDOMANY(GameSettings, locale.units,                                  SLE_UINT8, 97, SL_MAX_VERSION, N, 0, 1, 2, _locale_units,                       STR_NULL, RedrawScreen, NULL),
+   SDT_CONDSTR(GameSettings, locale.digit_group_separator,                   SLE_STRQ,118, SL_MAX_VERSION, N, 0, NULL,                                      STR_NULL, RedrawScreen),
+   SDT_CONDSTR(GameSettings, locale.digit_group_separator_currency,          SLE_STRQ,118, SL_MAX_VERSION, N, 0, NULL,                                      STR_NULL, RedrawScreen),
+   SDT_CONDSTR(GameSettings, locale.digit_decimal_separator,                 SLE_STRQ,126, SL_MAX_VERSION, N, 0, NULL,                                      STR_NULL, RedrawScreen),
 
 	/***************************************************************************/
 	/* Unsaved setting variables. */
