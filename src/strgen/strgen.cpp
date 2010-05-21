@@ -536,13 +536,13 @@ static void HandlePragma(char *str)
 		}
 	} else if (!memcmp(str, "digitsep ", 9)) {
 		str += 9;
-		strecpy(_lang_digit_group_separator, strcmp(str, "{NBSP}") == 0 ? "\xC2\xA0" : str, lastof(_lang_digit_group_separator));
+		strecpy(_lang_digit_group_separator, strcmp(str, "{NBSP}") == 0 ? NBSP : str, lastof(_lang_digit_group_separator));
 	} else if (!memcmp(str, "digitsepcur ", 12)) {
 		str += 12;
-		strecpy(_lang_digit_group_separator_currency, strcmp(str, "{NBSP}") == 0 ? "\xC2\xA0" : str, lastof(_lang_digit_group_separator_currency));
+		strecpy(_lang_digit_group_separator_currency, strcmp(str, "{NBSP}") == 0 ? NBSP : str, lastof(_lang_digit_group_separator_currency));
 	} else if (!memcmp(str, "decimalsep ", 11)) {
 		str += 11;
-		strecpy(_lang_digit_decimal_separator, strcmp(str, "{NBSP}") == 0 ? "\xC2\xA0" : str, lastof(_lang_digit_decimal_separator));
+		strecpy(_lang_digit_decimal_separator, strcmp(str, "{NBSP}") == 0 ? NBSP : str, lastof(_lang_digit_decimal_separator));
 	} else if (!memcmp(str, "winlangid ", 10)) {
 		const char *buf = str + 10;
 		long langid = strtol(buf, NULL, 16);
