@@ -2330,9 +2330,9 @@ static void CalcRaildirsDrawstyle(TileHighlightData *thd, int x, int y, int meth
 					/* 'Build' the last half rail tile if needed */
 					if ((offset & TILE_UNIT_MASK) > (TILE_SIZE / 2)) {
 						if (dx + dy >= (int)TILE_SIZE) {
-							x += (dx + dy < 0) ? TILE_SIZE : -(int)TILE_SIZE;
+							x += (dx + dy < 0) ? (int)TILE_SIZE : -(int)TILE_SIZE;
 						} else {
-							y += (dx + dy < 0) ? TILE_SIZE : -(int)TILE_SIZE;
+							y += (dx + dy < 0) ? (int)TILE_SIZE : -(int)TILE_SIZE;
 						}
 					}
 
@@ -2365,9 +2365,9 @@ static void CalcRaildirsDrawstyle(TileHighlightData *thd, int x, int y, int meth
 					/* 'Build' the last half rail tile if needed */
 					if ((offset & TILE_UNIT_MASK) > (TILE_SIZE / 2)) {
 						if (dx - dy < 0) {
-							y += (dx > dy) ? TILE_SIZE : -(int)TILE_SIZE;
+							y += (dx > dy) ? (int)TILE_SIZE : -(int)TILE_SIZE;
 						} else {
-							x += (dx < dy) ? TILE_SIZE : -(int)TILE_SIZE;
+							x += (dx < dy) ? (int)TILE_SIZE : -(int)TILE_SIZE;
 						}
 					}
 
