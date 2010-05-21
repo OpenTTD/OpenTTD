@@ -30,12 +30,6 @@
 #include "table/strings.h"
 #include "table/sprites.h"
 
-static inline void SetNewLandscapeType(byte landscape)
-{
-	_settings_newgame.game_creation.landscape = landscape;
-	SetWindowClassesDirty(WC_SELECT_GAME);
-}
-
 enum SelectGameIntroWidgets {
 	SGI_GENERATE_GAME,
 	SGI_LOAD_GAME,
@@ -61,11 +55,10 @@ struct SelectGameWindow : public Window {
 	SelectGameWindow(const WindowDesc *desc) : Window()
 	{
 		this->InitNested(desc);
-		this->LowerWidget(_settings_newgame.game_creation.landscape + SGI_TEMPERATE_LANDSCAPE);
-		this->SetLandscapeButtons();
+		this->OnInvalidateData();
 	}
 
-	void SetLandscapeButtons()
+	virtual void OnInvalidateData(int data = 0)
 	{
 		this->SetWidgetLoweredState(SGI_TEMPERATE_LANDSCAPE, _settings_newgame.game_creation.landscape == LT_TEMPERATE);
 		this->SetWidgetLoweredState(SGI_ARCTIC_LANDSCAPE,    _settings_newgame.game_creation.landscape == LT_ARCTIC);
@@ -129,9 +122,7 @@ struct SelectGameWindow : public Window {
 
 			case SGI_TEMPERATE_LANDSCAPE: case SGI_ARCTIC_LANDSCAPE:
 			case SGI_TROPIC_LANDSCAPE: case SGI_TOYLAND_LANDSCAPE:
-				this->RaiseWidget(_settings_newgame.game_creation.landscape + SGI_TEMPERATE_LANDSCAPE);
 				SetNewLandscapeType(widget - SGI_TEMPERATE_LANDSCAPE);
-				this->SetLandscapeButtons();
 				break;
 
 			case SGI_OPTIONS:         ShowGameOptions(); break;

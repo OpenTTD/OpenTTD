@@ -52,11 +52,11 @@ extern void MakeNewgameSettingsLive();
  * Changes landscape type and sets genworld window dirty
  * @param landscape new landscape type
  */
-static inline void SetNewLandscapeType(byte landscape)
+void SetNewLandscapeType(byte landscape)
 {
 	_settings_newgame.game_creation.landscape = landscape;
-	SetWindowClassesDirty(WC_SELECT_GAME);
-	SetWindowClassesDirty(WC_GENERATE_LANDSCAPE);
+	InvalidateWindowClassesData(WC_SELECT_GAME);
+	InvalidateWindowClassesData(WC_GENERATE_LANDSCAPE);
 }
 
 /** Widgets of GenerateLandscapeWindow */
@@ -363,6 +363,8 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 		this->afilter = CS_NUMERAL;
 
 		this->mode = (GenenerateLandscapeWindowMode)this->window_number;
+
+		this->OnInvalidateData();
 	}
 
 
@@ -398,6 +400,15 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 				}
 				break;
 		}
+	}
+
+	virtual void OnInvalidateData(int data = 0)
+	{
+		/* Update the climate buttons */
+		this->SetWidgetLoweredState(GLAND_TEMPERATE, _settings_newgame.game_creation.landscape == LT_TEMPERATE);
+		this->SetWidgetLoweredState(GLAND_ARCTIC,    _settings_newgame.game_creation.landscape == LT_ARCTIC);
+		this->SetWidgetLoweredState(GLAND_TROPICAL,  _settings_newgame.game_creation.landscape == LT_TROPIC);
+		this->SetWidgetLoweredState(GLAND_TOYLAND,   _settings_newgame.game_creation.landscape == LT_TOYLAND);
 	}
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
@@ -508,11 +519,6 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 		this->SetWidgetDisabledState(GLAND_START_DATE_UP,   _settings_newgame.game_creation.starting_year >= MAX_YEAR);
 		this->SetWidgetDisabledState(GLAND_SNOW_LEVEL_DOWN, _settings_newgame.game_creation.snow_line_height <= MIN_SNOWLINE_HEIGHT || _settings_newgame.game_creation.landscape != LT_ARCTIC);
 		this->SetWidgetDisabledState(GLAND_SNOW_LEVEL_UP,   _settings_newgame.game_creation.snow_line_height >= MAX_SNOWLINE_HEIGHT || _settings_newgame.game_creation.landscape != LT_ARCTIC);
-
-		this->SetWidgetLoweredState(GLAND_TEMPERATE, _settings_newgame.game_creation.landscape == LT_TEMPERATE);
-		this->SetWidgetLoweredState(GLAND_ARCTIC,    _settings_newgame.game_creation.landscape == LT_ARCTIC);
-		this->SetWidgetLoweredState(GLAND_TROPICAL,  _settings_newgame.game_creation.landscape == LT_TROPIC);
-		this->SetWidgetLoweredState(GLAND_TOYLAND,   _settings_newgame.game_creation.landscape == LT_TOYLAND);
 
 		this->DrawWidgets();
 
