@@ -326,8 +326,11 @@ public:
 
 	FORCEINLINE Trackdir ChooseRoadTrack(const RoadVehicle *v, TileIndex tile, DiagDirection enterdir)
 	{
-		/* handle special case - when next tile is destination tile */
-		if (tile == v->dest_tile) {
+		/* Handle special case - when next tile is destination tile.
+		 * However, when going to a station the (initial) destination
+		 * tile might not be a station, but a junction, in which case
+		 * this method forces the vehicle to jump in circles. */
+		if (tile == v->dest_tile && !v->current_order.IsType(OT_GOTO_STATION)) {
 			/* choose diagonal trackdir reachable from enterdir */
 			return DiagDirToDiagTrackdir(enterdir);
 		}
