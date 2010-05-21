@@ -398,7 +398,7 @@ size_t Utf8TrimString(char *s, size_t maxlen)
 	return length;
 }
 
-#ifndef _GNU_SOURCE
+#ifdef DEFINE_STRNDUP
 #include "core/math_func.hpp"
 char *strndup(const char *s, size_t len)
 {
@@ -407,7 +407,7 @@ char *strndup(const char *s, size_t len)
 	memcpy(tmp, s, len);
 	return tmp;
 }
-#endif /* !_GNU_SOURCE */
+#endif /* DEFINE_STRNDUP */
 
 #ifdef DEFINE_STRCASESTR
 char *strcasestr(const char *haystack, const char *needle)

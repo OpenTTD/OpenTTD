@@ -251,10 +251,13 @@ static inline bool IsWhitespace(WChar c)
 #include <sys/param.h>
 #endif
 
-#if !defined(_GNU_SOURCE) && !(defined(__NetBSD_Version__) && 400000000 < __NetBSD_Version__ )
 /* strndup is a GNU extension */
+#if defined(_GNU_SOURCE) || (defined(__NetBSD_Version__) && 400000000 <= __NetBSD_Version__)
+#	undef DEFINE_STRNDUP
+#else
+#	define DEFINE_STRNDUP
 char *strndup(const char *s, size_t len);
-#endif /* !_GNU_SOURCE */
+#endif /* strndup is available */
 
 /* strcasestr is available for _GNU_SOURCE, BSD and some Apple */
 #if defined(_GNU_SOURCE) || (defined(__BSD_VISIBLE) && __BSD_VISIBLE) || (defined(__APPLE__) && (!defined(_POSIX_C_SOURCE) || defined(_DARWIN_C_SOURCE))) || defined(_NETBSD_SOURCE)
