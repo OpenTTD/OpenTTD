@@ -59,7 +59,7 @@ enum VehicleListWindowType {
 
 static inline bool ValidVLWFlags(uint16 flags)
 {
-	return (flags == VLW_STANDARD || flags == VLW_SHARED_ORDERS || flags == VLW_STATION_LIST || flags == VLW_DEPOT_LIST || flags == VLW_GROUP_LIST);
+	return (flags == VLW_STANDARD || flags == VLW_SHARED_ORDERS || flags == VLW_STATION_LIST || flags == VLW_DEPOT_LIST || flags == VLW_GROUP_LIST || flags == VLW_WAYPOINT_LIST);
 }
 
 int DrawVehiclePurchaseInfo(int left, int right, int y, EngineID engine_number);
