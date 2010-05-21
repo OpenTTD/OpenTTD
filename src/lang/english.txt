@@ -2433,6 +2433,13 @@ STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Cargo/refit information for '{1:ENGINE}' differs from purchase list after construction. This might cause autorenew/-replace to fail refitting correctly.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' caused an endless loop in the production callback.
 
+# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+STR_NEWGRF_INVALID_CARGO                                        :<invalid cargo>
+STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
+STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} of <invalid cargo>
+STR_NEWGRF_INVALID_ENGINE                                       :<invalid engine>
+STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<invalid industry>
+
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Sign List - {COMMA} Sign{P "" s}
 

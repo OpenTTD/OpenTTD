@@ -6455,6 +6455,34 @@ static void CalculateRefitMasks()
 	}
 }
 
+/** Check for invalid engines */
+static void FinaliseEngineArray()
+{
+	Engine *e;
+
+	FOR_ALL_ENGINES(e) {
+		if (e->grffile == NULL) {
+			const EngineIDMapping &eid = _engine_mngr[e->index];
+			if (eid.grfid != INVALID_GRFID || eid.internal_id != eid.substitute_id) {
+				e->info.string_id = STR_NEWGRF_INVALID_ENGINE;
+			}
+		}
+	}
+}
+
+/** Check for invalid cargos */
+static void FinaliseCargoArray()
+{
+	for (CargoID c = 0; c < NUM_CARGO; c++) {
+		CargoSpec *cs = CargoSpec::Get(c);
+		if (!cs->IsValid()) {
+			cs->name = cs->name_single = cs->units_volume = STR_NEWGRF_INVALID_CARGO;
+			cs->quantifier = STR_NEWGRF_INVALID_CARGO_QUANTITY;
+			cs->abbrev = STR_NEWGRF_INVALID_CARGO_ABBREV;
+		}
+	}
+}
+
 /** Add all new houses to the house array. House properties can be set at any
  * time in the GRF file, so we can only add a house spec to the house array
  * after the file has finished loading. We also need to check the dates, due to
@@ -6582,6 +6610,9 @@ static void FinaliseIndustriesArray()
 			for (uint i = 0; i < 3; i++) {
 				indsp->conflicting[i] = MapNewGRFIndustryType(indsp->conflicting[i], indsp->grf_prop.grffile->grfid);
 			}
+		}
+		if (!indsp->enabled) {
+			indsp->name = STR_NEWGRF_INVALID_INDUSTRYTYPE;
 		}
 	}
 }
@@ -6963,8 +6994,14 @@ static void AfterLoadGRFs()
 	}
 	_grf_line_to_action6_sprite_override.clear();
 
+	/* Polish cargos */
+	FinaliseCargoArray();
+
 	/* Pre-calculate all refit masks after loading GRF files. */
 	CalculateRefitMasks();
+
+	/* Polish engines */
+	FinaliseEngineArray();
 
 	/* Set the block size in the depot windows based on vehicle sprite sizes */
 	InitDepotWindowBlockSizes();

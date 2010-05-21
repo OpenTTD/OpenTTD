@@ -998,7 +998,7 @@ static char *FormatString(char *buff, const char *str, int64 *argv, uint casei, 
 
 				assert(e != NULL);
 
-				if (e->name != NULL) {
+				if (e->name != NULL && e->info.string_id != STR_NEWGRF_INVALID_ENGINE) {
 					buff = strecpy(buff, e->name, last);
 				} else {
 					buff = GetStringWithArgs(buff, e->info.string_id, NULL, last);
