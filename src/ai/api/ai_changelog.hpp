@@ -27,8 +27,9 @@
  * \li HasNext for all lists.
  *
  * Other changes:
- * \li AIRoad::BuildRoadStation now allows overbuilding
- * \li AIRoad::BuildDriveThroughRoadStation now allows overbuilding
+ * \li AIBridge::GetPrice now returns the price of the bridge without the cost for the rail or road.
+ * \li AIRoad::BuildRoadStation now allows overbuilding.
+ * \li AIRoad::BuildDriveThroughRoadStation now allows overbuilding.
  * \li AIEngine::GetPower can be used for road vehicles.
  * \li AIEngine::GetWeight can be used for road vehicles.
  * \li AIEngine::GetMaxTractiveEffort can be used for road vehicles.

@@ -468,6 +468,12 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 	if (!(flags & DC_QUERY_COST) || (c != NULL && c->is_ai)) {
 		bridge_len += 2; // begin and end tiles/ramps
 
+		switch (transport_type) {
+			case TRANSPORT_ROAD: cost.AddCost(bridge_len * _price[PR_BUILD_ROAD] * 2); break;
+			case TRANSPORT_RAIL: cost.AddCost(bridge_len * RailBuildCost(railtype)); break;
+			default: break;
+		}
+
 		if (c != NULL) bridge_len = CalcBridgeLenCostFactor(bridge_len);
 
 		if (transport_type != TRANSPORT_WATER) {
@@ -595,6 +601,13 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, DoCommandFlag flags, uint32 p1,
 	}
 	cost.AddCost(_price[PR_BUILD_TUNNEL]);
 	cost.AddCost(ret);
+
+	/* Pay for the rail/road in the tunnel including entrances */
+	switch (transport_type) {
+		case TRANSPORT_ROAD: cost.AddCost((tiles + 2) * _price[PR_BUILD_ROAD] * 2); break;
+		case TRANSPORT_RAIL: cost.AddCost((tiles + 2) * RailBuildCost(railtype)); break;
+		default: break;
+	}
 
 	if (flags & DC_EXEC) {
 		if (transport_type == TRANSPORT_RAIL) {

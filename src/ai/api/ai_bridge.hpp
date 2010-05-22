@@ -86,7 +86,7 @@ public:
 	static int32 GetMaxSpeed(BridgeID bridge_id);
 
 	/**
-	 * Get the new cost of a bridge.
+	 * Get the new cost of a bridge, excluding the road and/or rail.
 	 * @param bridge_id The bridge to get the new cost of.
 	 * @param length The length of the bridge.
 	 * @pre IsValidBridge(bridge_id).
