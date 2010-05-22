@@ -88,7 +88,8 @@ endif
 	$(Q)cp "$(BIN_DIR)/scripts/"*             "$(BUNDLE_DIR)/scripts/"
 ifdef MENU_DIR
 	$(Q)cp "$(ROOT_DIR)/media/openttd.desktop" "$(BUNDLE_DIR)/media/"
-	$(Q)cat "$(ROOT_DIR)/media/openttd.desktop" | sed s/=openttd/=$(BINARY_NAME)/g > "$(ROOT_DIR)/media/openttd.desktop.install"
+	$(Q)$(AWK) -f "$(ROOT_DIR)/media/openttd.desktop.translation.awk" "$(SRC_DIR)/lang/"*.txt | $(SORT) >> "$(BUNDLE_DIR)/media/openttd.desktop"
+	$(Q)sed s/=openttd/=$(BINARY_NAME)/g "$(BUNDLE_DIR)/media/openttd.desktop" > "$(ROOT_DIR)/media/openttd.desktop.install"
 endif
 ifeq ($(TTD), openttd.exe)
 	$(Q)unix2dos "$(BUNDLE_DIR)/docs/"* "$(BUNDLE_DIR)/readme.txt" "$(BUNDLE_DIR)/COPYING" "$(BUNDLE_DIR)/changelog.txt" "$(BUNDLE_DIR)/known-bugs.txt"
