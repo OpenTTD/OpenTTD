@@ -16,20 +16,21 @@
 #include "../../strings_func.h"
 #include "../../rail.h"
 #include "../../engine_base.h"
+#include "../../engine_func.h"
 #include "../../articulated_vehicles.h"
 #include "table/strings.h"
 
 /* static */ bool AIEngine::IsValidEngine(EngineID engine_id)
 {
 	const Engine *e = ::Engine::GetIfValid(engine_id);
-	return e != NULL && (HasBit(e->company_avail, _current_company) || ::Company::Get(_current_company)->num_engines[engine_id] > 0);
+	return e != NULL && (::IsEngineBuildable(engine_id, e->type, _current_company) || ::Company::Get(_current_company)->num_engines[engine_id] > 0);
 
 }
 
 /* static */ bool AIEngine::IsBuildable(EngineID engine_id)
 {
 	const Engine *e = ::Engine::GetIfValid(engine_id);
-	return e != NULL && HasBit(e->company_avail, _current_company);
+	return e != NULL && ::IsEngineBuildable(engine_id, e->type, _current_company);
 }
 
 /* static */ char *AIEngine::GetName(EngineID engine_id)

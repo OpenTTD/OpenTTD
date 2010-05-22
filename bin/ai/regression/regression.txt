@@ -2148,201 +2148,201 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRoadType():      -1
     GetPlaneType():     -1
   Engine 57
-    IsValidEngine():    true
-    GetName():          Passenger Carriage
-    GetCargoType():     0
+    IsValidEngine():    false
+    GetName():          (null : 0x00000000)
+    GetCargoType():     255
     CanRefitCargo():    false
-    GetCapacity():      45
+    GetCapacity():      -1
     GetReliability():   -1
-    GetMaxSpeed():      0
-    GetPrice():         1447
+    GetMaxSpeed():      -1
+    GetPrice():         -1
     GetMaxAge():        -1
-    GetRunningCost():   0
+    GetRunningCost():   -1
     GetPower():         -1
-    GetWeight():        25
+    GetWeight():        -1
     GetMaxTractiveEffort(): -1
-    GetVehicleType():   0
-    GetRailType():      2
+    GetVehicleType():   255
+    GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
   Engine 58
-    IsValidEngine():    true
-    GetName():          Mail Van
-    GetCargoType():     2
+    IsValidEngine():    false
+    GetName():          (null : 0x00000000)
+    GetCargoType():     255
     CanRefitCargo():    false
-    GetCapacity():      35
+    GetCapacity():      -1
     GetReliability():   -1
-    GetMaxSpeed():      0
-    GetPrice():         1335
+    GetMaxSpeed():      -1
+    GetPrice():         -1
     GetMaxAge():        -1
-    GetRunningCost():   0
+    GetRunningCost():   -1
     GetPower():         -1
-    GetWeight():        21
+    GetWeight():        -1
     GetMaxTractiveEffort(): -1
-    GetVehicleType():   0
-    GetRailType():      2
+    GetVehicleType():   255
+    GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
   Engine 59
-    IsValidEngine():    true
-    GetName():          Coal Truck
-    GetCargoType():     1
-    CanRefitCargo():    true
-    GetCapacity():      35
+    IsValidEngine():    false
+    GetName():          (null : 0x00000000)
+    GetCargoType():     255
+    CanRefitCargo():    false
+    GetCapacity():      -1
     GetReliability():   -1
-    GetMaxSpeed():      0
-    GetPrice():         1031
+    GetMaxSpeed():      -1
+    GetPrice():         -1
     GetMaxAge():        -1
-    GetRunningCost():   0
+    GetRunningCost():   -1
     GetPower():         -1
-    GetWeight():        18
+    GetWeight():        -1
     GetMaxTractiveEffort(): -1
-    GetVehicleType():   0
-    GetRailType():      2
+    GetVehicleType():   255
+    GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
   Engine 60
-    IsValidEngine():    true
-    GetName():          Oil Tanker
-    GetCargoType():     3
+    IsValidEngine():    false
+    GetName():          (null : 0x00000000)
+    GetCargoType():     255
     CanRefitCargo():    false
-    GetCapacity():      35
+    GetCapacity():      -1
     GetReliability():   -1
-    GetMaxSpeed():      0
-    GetPrice():         1171
+    GetMaxSpeed():      -1
+    GetPrice():         -1
     GetMaxAge():        -1
-    GetRunningCost():   0
+    GetRunningCost():   -1
     GetPower():         -1
-    GetWeight():        24
+    GetWeight():        -1
     GetMaxTractiveEffort(): -1
-    GetVehicleType():   0
-    GetRailType():      2
+    GetVehicleType():   255
+    GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
   Engine 61
-    IsValidEngine():    true
-    GetName():          Livestock Van
-    GetCargoType():     4
+    IsValidEngine():    false
+    GetName():          (null : 0x00000000)
+    GetCargoType():     255
     CanRefitCargo():    false
-    GetCapacity():      30
+    GetCapacity():      -1
     GetReliability():   -1
-    GetMaxSpeed():      0
-    GetPrice():         1125
+    GetMaxSpeed():      -1
+    GetPrice():         -1
     GetMaxAge():        -1
-    GetRunningCost():   0
+    GetRunningCost():   -1
     GetPower():         -1
-    GetWeight():        20
+    GetWeight():        -1
     GetMaxTractiveEffort(): -1
-    GetVehicleType():   0
-    GetRailType():      2
+    GetVehicleType():   255
+    GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
   Engine 62
-    IsValidEngine():    true
-    GetName():          Goods Van
-    GetCargoType():     5
+    IsValidEngine():    false
+    GetName():          (null : 0x00000000)
+    GetCargoType():     255
     CanRefitCargo():    false
-    GetCapacity():      30
+    GetCapacity():      -1
     GetReliability():   -1
-    GetMaxSpeed():      0
-    GetPrice():         1113
+    GetMaxSpeed():      -1
+    GetPrice():         -1
     GetMaxAge():        -1
-    GetRunningCost():   0
+    GetRunningCost():   -1
     GetPower():         -1
-    GetWeight():        21
+    GetWeight():        -1
     GetMaxTractiveEffort(): -1
-    GetVehicleType():   0
-    GetRailType():      2
+    GetVehicleType():   255
+    GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
   Engine 63
-    IsValidEngine():    true
-    GetName():          Grain Hopper
-    GetCargoType():     6
+    IsValidEngine():    false
+    GetName():          (null : 0x00000000)
+    GetCargoType():     255
     CanRefitCargo():    false
-    GetCapacity():      35
+    GetCapacity():      -1
     GetReliability():   -1
-    GetMaxSpeed():      0
-    GetPrice():         1066
+    GetMaxSpeed():      -1
+    GetPrice():         -1
     GetMaxAge():        -1
-    GetRunningCost():   0
+    GetRunningCost():   -1
     GetPower():         -1
-    GetWeight():        19
+    GetWeight():        -1
     GetMaxTractiveEffort(): -1
-    GetVehicleType():   0
-    GetRailType():      2
+    GetVehicleType():   255
+    GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
   Engine 64
-    IsValidEngine():    true
-    GetName():          Wood Truck
-    GetCargoType():     7
+    IsValidEngine():    false
+    GetName():          (null : 0x00000000)
+    GetCargoType():     255
     CanRefitCargo():    false
-    GetCapacity():      35
+    GetCapacity():      -1
     GetReliability():   -1
-    GetMaxSpeed():      0
-    GetPrice():         1060
+    GetMaxSpeed():      -1
+    GetPrice():         -1
     GetMaxAge():        -1
-    GetRunningCost():   0
+    GetRunningCost():   -1
     GetPower():         -1
-    GetWeight():        16
+    GetWeight():        -1
     GetMaxTractiveEffort(): -1
-    GetVehicleType():   0
-    GetRailType():      2
+    GetVehicleType():   255
+    GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
   Engine 65
-    IsValidEngine():    true
-    GetName():          Iron Ore Hopper
-    GetCargoType():     8
+    IsValidEngine():    false
+    GetName():          (null : 0x00000000)
+    GetCargoType():     255
     CanRefitCargo():    false
-    GetCapacity():      35
+    GetCapacity():      -1
     GetReliability():   -1
-    GetMaxSpeed():      0
-    GetPrice():         1048
+    GetMaxSpeed():      -1
+    GetPrice():         -1
     GetMaxAge():        -1
-    GetRunningCost():   0
+    GetRunningCost():   -1
     GetPower():         -1
-    GetWeight():        19
+    GetWeight():        -1
     GetMaxTractiveEffort(): -1
-    GetVehicleType():   0
-    GetRailType():      2
+    GetVehicleType():   255
+    GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
   Engine 66
-    IsValidEngine():    true
-    GetName():          Steel Truck
-    GetCargoType():     9
+    IsValidEngine():    false
+    GetName():          (null : 0x00000000)
+    GetCargoType():     255
     CanRefitCargo():    false
-    GetCapacity():      25
+    GetCapacity():      -1
     GetReliability():   -1
-    GetMaxSpeed():      0
-    GetPrice():         1148
+    GetMaxSpeed():      -1
+    GetPrice():         -1
     GetMaxAge():        -1
-    GetRunningCost():   0
+    GetRunningCost():   -1
     GetPower():         -1
-    GetWeight():        18
+    GetWeight():        -1
     GetMaxTractiveEffort(): -1
-    GetVehicleType():   0
-    GetRailType():      2
+    GetVehicleType():   255
+    GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
   Engine 67
-    IsValidEngine():    true
-    GetName():          Armoured Van
-    GetCargoType():     10
+    IsValidEngine():    false
+    GetName():          (null : 0x00000000)
+    GetCargoType():     255
     CanRefitCargo():    false
-    GetCapacity():      25
+    GetCapacity():      -1
     GetReliability():   -1
-    GetMaxSpeed():      0
-    GetPrice():         1494
+    GetMaxSpeed():      -1
+    GetPrice():         -1
     GetMaxAge():        -1
-    GetRunningCost():   0
+    GetRunningCost():   -1
     GetPower():         -1
-    GetWeight():        30
+    GetWeight():        -1
     GetMaxTractiveEffort(): -1
-    GetVehicleType():   0
-    GetRailType():      2
+    GetVehicleType():   255
+    GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
   Engine 68
@@ -2724,201 +2724,201 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRoadType():      -1
     GetPlaneType():     -1
   Engine 89
-    IsValidEngine():    true
-    GetName():          Passenger Carriage
-    GetCargoType():     0
+    IsValidEngine():    false
+    GetName():          (null : 0x00000000)
+    GetCargoType():     255
     CanRefitCargo():    false
-    GetCapacity():      47
+    GetCapacity():      -1
     GetReliability():   -1
-    GetMaxSpeed():      0
-    GetPrice():         1447
+    GetMaxSpeed():      -1
+    GetPrice():         -1
     GetMaxAge():        -1
-    GetRunningCost():   0
+    GetRunningCost():   -1
     GetPower():         -1
-    GetWeight():        25
+    GetWeight():        -1
     GetMaxTractiveEffort(): -1
-    GetVehicleType():   0
-    GetRailType():      3
+    GetVehicleType():   255
+    GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
   Engine 90
-    IsValidEngine():    true
-    GetName():          Mail Van
-    GetCargoType():     2
+    IsValidEngine():    false
+    GetName():          (null : 0x00000000)
+    GetCargoType():     255
     CanRefitCargo():    false
-    GetCapacity():      37
+    GetCapacity():      -1
     GetReliability():   -1
-    GetMaxSpeed():      0
-    GetPrice():         1335
+    GetMaxSpeed():      -1
+    GetPrice():         -1
     GetMaxAge():        -1
-    GetRunningCost():   0
+    GetRunningCost():   -1
     GetPower():         -1
-    GetWeight():        21
+    GetWeight():        -1
     GetMaxTractiveEffort(): -1
-    GetVehicleType():   0
-    GetRailType():      3
+    GetVehicleType():   255
+    GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
   Engine 91
-    IsValidEngine():    true
-    GetName():          Coal Truck
-    GetCargoType():     1
-    CanRefitCargo():    true
-    GetCapacity():      37
+    IsValidEngine():    false
+    GetName():          (null : 0x00000000)
+    GetCargoType():     255
+    CanRefitCargo():    false
+    GetCapacity():      -1
     GetReliability():   -1
-    GetMaxSpeed():      0
-    GetPrice():         1031
+    GetMaxSpeed():      -1
+    GetPrice():         -1
     GetMaxAge():        -1
-    GetRunningCost():   0
+    GetRunningCost():   -1
     GetPower():         -1
-    GetWeight():        18
+    GetWeight():        -1
     GetMaxTractiveEffort(): -1
-    GetVehicleType():   0
-    GetRailType():      3
+    GetVehicleType():   255
+    GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
   Engine 92
-    IsValidEngine():    true
-    GetName():          Oil Tanker
-    GetCargoType():     3
+    IsValidEngine():    false
+    GetName():          (null : 0x00000000)
+    GetCargoType():     255
     CanRefitCargo():    false
-    GetCapacity():      37
+    GetCapacity():      -1
     GetReliability():   -1
-    GetMaxSpeed():      0
-    GetPrice():         1171
+    GetMaxSpeed():      -1
+    GetPrice():         -1
     GetMaxAge():        -1
-    GetRunningCost():   0
+    GetRunningCost():   -1
     GetPower():         -1
-    GetWeight():        24
+    GetWeight():        -1
     GetMaxTractiveEffort(): -1
-    GetVehicleType():   0
-    GetRailType():      3
+    GetVehicleType():   255
+    GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
   Engine 93
-    IsValidEngine():    true
-    GetName():          Livestock Van
-    GetCargoType():     4
+    IsValidEngine():    false
+    GetName():          (null : 0x00000000)
+    GetCargoType():     255
     CanRefitCargo():    false
-    GetCapacity():      32
+    GetCapacity():      -1
     GetReliability():   -1
-    GetMaxSpeed():      0
-    GetPrice():         1125
+    GetMaxSpeed():      -1
+    GetPrice():         -1
     GetMaxAge():        -1
-    GetRunningCost():   0
+    GetRunningCost():   -1
     GetPower():         -1
-    GetWeight():        20
+    GetWeight():        -1
     GetMaxTractiveEffort(): -1
-    GetVehicleType():   0
-    GetRailType():      3
+    GetVehicleType():   255
+    GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
   Engine 94
-    IsValidEngine():    true
-    GetName():          Goods Van
-    GetCargoType():     5
+    IsValidEngine():    false
+    GetName():          (null : 0x00000000)
+    GetCargoType():     255
     CanRefitCargo():    false
-    GetCapacity():      32
+    GetCapacity():      -1
     GetReliability():   -1
-    GetMaxSpeed():      0
-    GetPrice():         1113
+    GetMaxSpeed():      -1
+    GetPrice():         -1
     GetMaxAge():        -1
-    GetRunningCost():   0
+    GetRunningCost():   -1
     GetPower():         -1
-    GetWeight():        21
+    GetWeight():        -1
     GetMaxTractiveEffort(): -1
-    GetVehicleType():   0
-    GetRailType():      3
+    GetVehicleType():   255
+    GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
   Engine 95
-    IsValidEngine():    true
-    GetName():          Grain Hopper
-    GetCargoType():     6
+    IsValidEngine():    false
+    GetName():          (null : 0x00000000)
+    GetCargoType():     255
     CanRefitCargo():    false
-    GetCapacity():      37
+    GetCapacity():      -1
     GetReliability():   -1
-    GetMaxSpeed():      0
-    GetPrice():         1066
+    GetMaxSpeed():      -1
+    GetPrice():         -1
     GetMaxAge():        -1
-    GetRunningCost():   0
+    GetRunningCost():   -1
     GetPower():         -1
-    GetWeight():        19
+    GetWeight():        -1
     GetMaxTractiveEffort(): -1
-    GetVehicleType():   0
-    GetRailType():      3
+    GetVehicleType():   255
+    GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
   Engine 96
-    IsValidEngine():    true
-    GetName():          Wood Truck
-    GetCargoType():     7
+    IsValidEngine():    false
+    GetName():          (null : 0x00000000)
+    GetCargoType():     255
     CanRefitCargo():    false
-    GetCapacity():      37
+    GetCapacity():      -1
     GetReliability():   -1
-    GetMaxSpeed():      0
-    GetPrice():         1060
+    GetMaxSpeed():      -1
+    GetPrice():         -1
     GetMaxAge():        -1
-    GetRunningCost():   0
+    GetRunningCost():   -1
     GetPower():         -1
-    GetWeight():        16
+    GetWeight():        -1
     GetMaxTractiveEffort(): -1
-    GetVehicleType():   0
-    GetRailType():      3
+    GetVehicleType():   255
+    GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
   Engine 97
-    IsValidEngine():    true
-    GetName():          Iron Ore Hopper
-    GetCargoType():     8
+    IsValidEngine():    false
+    GetName():          (null : 0x00000000)
+    GetCargoType():     255
     CanRefitCargo():    false
-    GetCapacity():      37
+    GetCapacity():      -1
     GetReliability():   -1
-    GetMaxSpeed():      0
-    GetPrice():         1048
+    GetMaxSpeed():      -1
+    GetPrice():         -1
     GetMaxAge():        -1
-    GetRunningCost():   0
+    GetRunningCost():   -1
     GetPower():         -1
-    GetWeight():        19
+    GetWeight():        -1
     GetMaxTractiveEffort(): -1
-    GetVehicleType():   0
-    GetRailType():      3
+    GetVehicleType():   255
+    GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
   Engine 98
-    IsValidEngine():    true
-    GetName():          Steel Truck
-    GetCargoType():     9
+    IsValidEngine():    false
+    GetName():          (null : 0x00000000)
+    GetCargoType():     255
     CanRefitCargo():    false
-    GetCapacity():      27
+    GetCapacity():      -1
     GetReliability():   -1
-    GetMaxSpeed():      0
-    GetPrice():         1148
+    GetMaxSpeed():      -1
+    GetPrice():         -1
     GetMaxAge():        -1
-    GetRunningCost():   0
+    GetRunningCost():   -1
     GetPower():         -1
-    GetWeight():        18
+    GetWeight():        -1
     GetMaxTractiveEffort(): -1
-    GetVehicleType():   0
-    GetRailType():      3
+    GetVehicleType():   255
+    GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
   Engine 99
-    IsValidEngine():    true
-    GetName():          Armoured Van
-    GetCargoType():     10
+    IsValidEngine():    false
+    GetName():          (null : 0x00000000)
+    GetCargoType():     255
     CanRefitCargo():    false
-    GetCapacity():      27
+    GetCapacity():      -1
     GetReliability():   -1
-    GetMaxSpeed():      0
-    GetPrice():         1494
+    GetMaxSpeed():      -1
+    GetPrice():         -1
     GetMaxAge():        -1
-    GetRunningCost():   0
+    GetRunningCost():   -1
     GetPower():         -1
-    GetWeight():        30
+    GetWeight():        -1
     GetMaxTractiveEffort(): -1
-    GetVehicleType():   0
-    GetRailType():      3
+    GetVehicleType():   255
+    GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
   Engine 100
@@ -5747,7 +5747,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRailType():      255
     GetRoadType():      -1
     GetPlaneType():     -1
-  Valid Engines:        53
+  Valid Engines:        31
 
 --EngineList--
   Count():             11
