@@ -2362,6 +2362,10 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Priprave
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF nastavitve
+STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Podrobna NewGRF informacija
+STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Aktivne NewGRF datoteke
+STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Neaktivne NewGRF datoteke
+STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Izberi prednastavitev:
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filtriraj:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Naloži izbrano prednastavitev
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Shrani prednastavitev
@@ -2470,6 +2474,13 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Vlak '{V
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{STRING}' javlja napačno informacijo.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Informacija o predelavi tovornih zmogljivosti za '{1:ENGINE}' je različna od seznama nakupa po konstrukciji. To lahko povzroči, da bi samoobnova ne uspela pravilno.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' hrošč je povzročil neskončen povratni ciklus proizvodnje.
+
+# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+STR_NEWGRF_INVALID_CARGO                                        :<neveljaven tovor>
+STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
+STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} od <neveljaven tovor>
+STR_NEWGRF_INVALID_ENGINE                                       :<neveljaven pogon>
+STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<neveljavna industrija>
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Seznam oznak - {COMMA} oznak{P a i e ""}

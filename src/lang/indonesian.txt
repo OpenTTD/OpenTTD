@@ -2433,6 +2433,10 @@ STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Informasi muat ulang untuk '{1:ENGINE}' berbeda dengan daftar beli setelah konstruksi. Ini menyebabkan pembaruan otomatis gagal memuat ulang dengan benar..
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' menyebabkan perulangan tanpa akhir di tingkat produksi.
 
+# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+STR_NEWGRF_INVALID_ENGINE                                       :<mesin tidak valid>
+STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<industri tidak valid>
+
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Daftar tanda - {COMMA} Tanda
 

@@ -37,7 +37,7 @@ STR_CARGO_PLURAL_MAIL                                           :Pošta
 STR_CARGO_PLURAL_MAIL.gen                                       :pošte
 STR_CARGO_PLURAL_OIL                                            :Nafta
 STR_CARGO_PLURAL_OIL.gen                                        :nafte
-STR_CARGO_PLURAL_LIVESTOCK                                      :Domaće životinje
+STR_CARGO_PLURAL_LIVESTOCK                                      :Stoka
 STR_CARGO_PLURAL_LIVESTOCK.gen                                  :domaćih životinja
 STR_CARGO_PLURAL_GOODS                                          :Roba
 STR_CARGO_PLURAL_GOODS.gen                                      :robe
@@ -2420,7 +2420,7 @@ STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Detaljne
 STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Aktivne NewGRF datoteke
 STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Neaktivne NewGRF datoteke
 STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Odaberi predložak:
-STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Znak za filter:
+STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filter:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Učitaj unaprijed odabrane postavke
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Spremi zadano postavljanje
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Spremi trenutni popis kao zadano postavljanje
@@ -2528,6 +2528,13 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Vlak'{VE
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' daje netočne informacije.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Informacija o teretu/obnovi za '{1:ENGINE}' je različita od kupovne liste nakon izgradnje. Zbog toga bi automatsko obnavljanje/zamjena mogla biti neuspješna.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{G=male}{WHITE}'{1:STRING}' je uzrokovao beskonačnu petlju u pozivu za povrat produkcije.
+
+# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+STR_NEWGRF_INVALID_CARGO                                        :<pogrešan teret>
+STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
+STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} od <pogrešan teret>
+STR_NEWGRF_INVALID_ENGINE                                       :<pogrešno vozilo>
+STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<pogrešna industrija>
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Popis znakova - {COMMA} znak{P "" a ova}

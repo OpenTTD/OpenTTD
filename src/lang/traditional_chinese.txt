@@ -2433,6 +2433,13 @@ STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF�
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}購買清單中「{1:ENGINE}」的貨物／改裝資訊和購買後的資訊不同。 這可能會導致自動更新／取代時無法正確的改裝交通工具。
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}「{1:STRING}」會導致產量 Callback 時發生無窮迴圈的錯誤。
 
+# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+STR_NEWGRF_INVALID_CARGO                                        :<無效貨物>
+STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
+STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} / <無效貨物>
+STR_NEWGRF_INVALID_ENGINE                                       :<無效機車頭>
+STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<無效工業>
+
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}標誌清單 - 標誌 {COMMA} 個
 

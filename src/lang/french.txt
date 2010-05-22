@@ -2434,6 +2434,13 @@ STR_NEWGRF_BUGGY                                                :{WHITE}Le NewGR
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}L'information de cargaison/réaménagement pour '{1:ENGINE}' après sa construction est différent de la liste d'achat. Cela peut causer un échec de réaménagement lors de l'auto-renouvellement/remplacement.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' a causé une boucle infinie dans la fonction de rappel de production.
 
+# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+STR_NEWGRF_INVALID_CARGO                                        :<marchandise invalide>
+STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
+STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} de <marchandise invalide>
+STR_NEWGRF_INVALID_ENGINE                                       :<véhicule invalide>
+STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<industrie invalide>
+
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Liste des panneaux - {COMMA} panneau{P "" x}
 
