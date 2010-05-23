@@ -3860,6 +3860,9 @@ STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Не у�
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Не удалось изменить надпись на знаке...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Не удалось удалить знак...
 
+# Translatable comment for OpenTTD's desktop shortcut
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Клон игры «Transport Tycoon Deluxe»
+
 ##id 0x2000
 # Town building names
 STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1                      :Высотное офисное здание

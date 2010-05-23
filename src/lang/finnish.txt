@@ -3680,6 +3680,9 @@ STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Kylttiä
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Kyltin nimeä ei voi muuttaa.
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Kylttiä ei voi poistaa...
 
+# Translatable comment for OpenTTD's desktop shortcut
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Klooni Transport Tycoon Deluxesta
+
 ##id 0x2000
 # Town building names
 STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1                      :Korkea toimistorakennus

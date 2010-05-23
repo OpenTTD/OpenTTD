@@ -281,7 +281,7 @@ STR_SORT_BY_LENGTH                                              :Lunghezza
 STR_SORT_BY_LIFE_TIME                                           :Vita rimanente
 STR_SORT_BY_TIMETABLE_DELAY                                     :Ritardo sull'orario
 STR_SORT_BY_FACILITY                                            :Tipo di stazione
-STR_SORT_BY_WAITING                                             :Merci in attesa
+STR_SORT_BY_WAITING                                             :Carichi in attesa
 STR_SORT_BY_RATING_MAX                                          :Valutazione maggiore
 STR_SORT_BY_RATING_MIN                                          :Valutazione minore
 STR_SORT_BY_ENGINE_ID                                           :EngineID (ordine classico)
@@ -2325,6 +2325,7 @@ STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Impostaz
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Informazioni dettagliate NewGRF
 STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}File NewGRF attivi
 STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}File NewGRF inattivi
+STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Seleziona profilo:
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filtro:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Carica il profilo selezionato
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Salva profilo
@@ -2433,6 +2434,13 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Il treno
 STR_NEWGRF_BUGGY                                                :{WHITE}Informazioni scorrette fornite dal NewGRF '{0:STRING}'
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}I dati su carico e riadattamento di '{1:ENGINE}' sono diversi da quelli indicati prima della costruzione. Il rinnovo/rimpiazzo automatico potrebbe fallire.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' ha causato un ciclo infinito nel callback di produzione.
+
+# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+STR_NEWGRF_INVALID_CARGO                                        :<carico non valido>
+STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
+STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} di <carico non valido>
+STR_NEWGRF_INVALID_ENGINE                                       :<locomotiva non valida>
+STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<industria non valida>
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Elenco cartelli - {COMMA} cartell{P o i}
@@ -3673,6 +3681,8 @@ STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... trop
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Impossibile piazzare il cartello qui...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Impossibile modificare il testo del cartello...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Impossibile eliminare il cartello...
+
+# Translatable comment for OpenTTD's desktop shortcut
 
 ##id 0x2000
 # Town building names

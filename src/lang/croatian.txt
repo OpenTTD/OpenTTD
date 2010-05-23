@@ -2591,7 +2591,7 @@ STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Velika oglasna 
 STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Financiraj popravljanje lokalne prometnice
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Izgradi kip vlasnika tvrtke
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Financiraj nove građevine
-STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Kupi ekskluzivna prava prijevozna
+STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Kupi ekskluzivna prava prijevoza
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Podmiti lokalnu samoupravu
 
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Pokreni malu oglasnu kampanju, kako bi privukao više putnika i tereta za svoje prijevozne usluge.{} Trošak: {CURRENCY}
@@ -3775,6 +3775,9 @@ STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... prev
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Ovdje nije moguće postaviti znak...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Nije moguće promijeniti ime znaka...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Nije moguće obrisati znak...
+
+# Translatable comment for OpenTTD's desktop shortcut
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Klon od Transport Tycoon Deluxe-a
 
 ##id 0x2000
 # Town building names

@@ -2628,6 +2628,13 @@ STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Podaci o tovaru/prenameni za '{1:ENGINE}' se posle izgradnje razlikuju od nabavne liste. Ovo može izazvati neispravnu automatsku zamenu/preuređenje.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' je izazvao beskrajnu petlju poziva proizvodnje industrija.
 
+# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+STR_NEWGRF_INVALID_CARGO                                        :<nevažeći tovar>
+STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
+STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} <nevažeć{P i a eg} tovar{P 0 "" a a}>
+STR_NEWGRF_INVALID_ENGINE                                       :<nevažeća mašina>
+STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<nevažeća industrija>
+
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Spisak Znakova - {COMMA} Znak{P "" a ova}
 
@@ -3877,6 +3884,9 @@ STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... ima 
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Ovde je nemoguće postaviti znak...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Ime znaka se ne može promeniti...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Nemoguće je izbrisati znak...
+
+# Translatable comment for OpenTTD's desktop shortcut
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Transport Tycoon Deluxe klon
 
 ##id 0x2000
 # Town building names

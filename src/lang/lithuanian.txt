@@ -2395,6 +2395,10 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Ruošiam
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Papild. grafikos nustatymai (NewGRF)
+STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Detali NewGRF informacija
+STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Aktyvios NewGRF bylos
+STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Neaktyvios NewGRF bylos
+STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Pasirinkti nustatymus:
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Įrašo filtravimas:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Užkrauti parinktą nustatymą
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Išsaugoti nustatymą
@@ -2503,6 +2507,13 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Traukiny
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' teikia neteisingą informaciją.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}'{1:ENGINE}' variklio krovinio/pertvarkymo informacija skiriasi nuo pirkinių sąrašo po pastatymo. Tai gali sukelti neteisingus automatiško atnaujinimo arba pertvarkymo rezultatus.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' sukėle begalinį cikla produkcijos kvietime atgal.
+
+# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+STR_NEWGRF_INVALID_CARGO                                        :<netinkamas krovinys>
+STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
+STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} vnt. <netinkamo krovinio>
+STR_NEWGRF_INVALID_ENGINE                                       :<netinkamas variklis>
+STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<netinkama industrija>
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Ženklų sąrašas - {COMMA} ženkl{P as ai ų}
@@ -3747,6 +3758,8 @@ STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... per 
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Čia ženklo statyti negalima...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Ženklo pavadinimo keisti negalima...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Neįmanoma naikinti ženklo...
+
+# Translatable comment for OpenTTD's desktop shortcut
 
 ##id 0x2000
 # Town building names

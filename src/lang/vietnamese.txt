@@ -2323,6 +2323,7 @@ STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Thiết 
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Thông tin chi tiết của NewGRF
 STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Các NewGRP đã kích hoạt
 STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Các NewGRF chưa kích hoạt
+STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Chọn bộ tham số:
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Lọc giá trị:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Nạp các thiết lập đã chọn
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Lưu thiết lập
@@ -2363,16 +2364,24 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Tắt
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Nhập NewGRF tham số
 
 # NewGRF inspect window
+STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Phân tích - {STRING}
+STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Đối tượng cha
+STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Phân tích đối tượng này theo đối tượng cha
 
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} tại {HEX}
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Kiểu ray
 
+STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Biến số NewGRF là 60+x (dạng hexa)
 
 # Sprite aligner window
 STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Điều chỉnh sprite {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Sprite tiếp
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Chuyển tới sprite bình thường kế tiếp, bỏ qua các loại sprite và căn theo điểm kết thúc
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Đi tới sprite
+STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Nhảy tới sprite đã cho. Nếu sprite không bình thường, thì chuyển tới cái bình thường kế tiếp
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Sprite trước
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Xử lý sprite bình thường ở trước, bỏ qua các loại sprite căn theo điểm bắt đầu
+STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Theo những thông tin của sprite đã chọn. Thì việc căn chỉnh khi vẽ đối với sprite này sẽ bị bỏ qua
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Di chuyển sprite xung quanh, thay đổi X và Y offsets
 STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X offset: {NUM}, Y offset: {NUM}
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Chọn sprite
@@ -2427,6 +2436,7 @@ STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRI
 # 'User removed essential NewGRFs'-placeholders for stuff without specs.
 STR_NEWGRF_INVALID_CARGO                                        :<sai kiểu hàng>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
+STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} hàng hoá bất hợp lệ
 STR_NEWGRF_INVALID_ENGINE                                       :<sai engine>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<sai nhà máy>
 
@@ -3243,8 +3253,12 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}Thiết 
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Thay đổi thiết lập của AI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}nạp lại AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Xoá bỏ AI, nạp lại kịch bản, và khởi động lại AI
+STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Bật/tắt tạm dừng khi thông điệp AI log trùng với chuỗi đã định
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Thoát khỏi vòng lặp:
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Thoát khỏi vòng lặp
+STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Khi thông điệp AI log giống với chuỗi này, ván chơi sẽ tạm dừng
+STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}So sánh hoa/thường
+STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Thay đổi việc so sánh hoa/thường với các thông điệp AI log
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Tiếp tục
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Cho máy tiếp tục chơi
 
@@ -3665,6 +3679,9 @@ STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... quá
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Không thể đặt biển hiệu ở đây...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Không thể đổi tên biển hiệu...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Không thể xoá biển hiệu...
+
+# Translatable comment for OpenTTD's desktop shortcut
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Một bản sao của Transport Tycoon Deluxe
 
 ##id 0x2000
 # Town building names

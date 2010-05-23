@@ -3681,6 +3681,9 @@ STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Impossib
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Impossible d'éditer le texte du panneau...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Impossible de supprimer le panneau...
 
+# Translatable comment for OpenTTD's desktop shortcut
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Un clone de Transport Tycoon Deluxe
+
 ##id 0x2000
 # Town building names
 STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1                      :Grand immeuble de bureaux

@@ -2434,6 +2434,13 @@ STR_NEWGRF_BUGGY                                                :{WHITE}El NewGR
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}La informació de càrrega/remodelació per '{1:ENGINE}' no encaixa amb la llista de compres després de la construcció. Això podria causar un mal funcionament de autorenova/-substitueix.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' ha provocat un bucle infinit en la crida de producció.
 
+# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+STR_NEWGRF_INVALID_CARGO                                        :<càrrega invàlida>
+STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
+STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} de <càrrega invàlida>
+STR_NEWGRF_INVALID_ENGINE                                       :<motor invàlid>
+STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<indústria invàlida>
+
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Llista de senyals - {COMMA} Senyal{P "" s}
 
@@ -3673,6 +3680,9 @@ STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... mass
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Aquí no es pot situar una senyal...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}No es pot canviar el nom del senyal...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}La senyal no es pot esborrar...
+
+# Translatable comment for OpenTTD's desktop shortcut
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Un clon de Transport Tycoon Deluxe
 
 ##id 0x2000
 # Town building names
