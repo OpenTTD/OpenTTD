@@ -136,11 +136,13 @@ public:
 		y += FONT_HEIGHT_NORMAL;
 
 		int sprite_y_offset = (FONT_HEIGHT_NORMAL - 10) / 2;
+		uint icon_width = GetSpriteSize(SPR_COMPANY_ICON).width;
+		uint exclusive_width = GetSpriteSize(SPR_BLOT).width;
 		bool rtl = _dynlang.text_dir == TD_RTL;
-		uint text_left  = left + (rtl ? 0 : 26);
-		uint text_right = right - (rtl ? 26 : 0);
-		uint icon_left  = rtl ? right - 14 : left;
-		uint blob_left  = rtl ? right - 24 : left + 16;
+		uint text_left = left + (rtl ? 0 : icon_width + exclusive_width + 4);
+		uint text_right = right - (rtl ? icon_width + exclusive_width + 4 : 0);
+		uint icon_left = rtl ? right - icon_width : left;
+		uint exclusive_left = rtl ? right - icon_width - exclusive_width - 2 : left + icon_width + 2;
 
 		/* Draw list of companies */
 		const Company *c;
@@ -163,8 +165,8 @@ public:
 				(str++,                    true);                    // Outstanding
 
 				SetDParam(2, str);
-				if (this->town->exclusivity == c->index) { // red icon for company with exclusive rights
-					DrawSprite(SPR_BLOT, PALETTE_TO_RED, blob_left, y + sprite_y_offset);
+				if (this->town->exclusivity == c->index) {
+					DrawSprite(SPR_BLOT, PALETTE_TO_RED, exclusive_left, y + sprite_y_offset);
 				}
 
 				DrawString(text_left, text_right, y, STR_LOCAL_AUTHORITY_COMPANY_RATING);
