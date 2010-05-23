@@ -213,6 +213,7 @@ const Sprite *GetAircraftSprite(EngineID engine);
 
 struct DepotWindow : Window {
 	VehicleID sel;
+	VehicleID vehicle_over; ///< Rail vehicle over which another one is dragged, \c INVALID_VEHICLE if none.
 	VehicleType type;
 	bool generate_list;
 	VehicleList vehicle_list;
@@ -223,6 +224,7 @@ struct DepotWindow : Window {
 		assert(IsCompanyBuildableVehicleType(type)); // ensure that we make the call with a valid type
 
 		this->sel = INVALID_VEHICLE;
+		this->vehicle_over = INVALID_VEHICLE;
 		this->generate_list = true;
 		this->type = type;
 
@@ -263,7 +265,8 @@ struct DepotWindow : Window {
 				free_wagon = u->IsFreeWagon();
 
 				uint x_space = free_wagon ? TRAININFO_DEFAULT_VEHICLE_WIDTH : 0;
-				DrawTrainImage(u, image_left + (rtl ? 0 : x_space), image_right - (rtl ? x_space : 0), sprite_y - 1, this->sel, free_wagon ? 0 : this->hscroll.GetPosition());
+				DrawTrainImage(u, image_left + (rtl ? 0 : x_space), image_right - (rtl ? x_space : 0), sprite_y - 1,
+						this->sel, free_wagon ? 0 : this->hscroll.GetPosition(), this->vehicle_over);
 
 				/* Number of wagons relative to a standard length wagon (rounded up) */
 				SetDParam(0, CeilDiv(u->tcache.cached_total_length, 8));
@@ -862,6 +865,7 @@ struct DepotWindow : Window {
 
 		/* abort drag & drop */
 		this->sel = INVALID_VEHICLE;
+		this->vehicle_over = INVALID_VEHICLE;
 		this->SetWidgetDirty(DEPOT_WIDGET_MATRIX);
 	};
 
@@ -875,6 +879,46 @@ struct DepotWindow : Window {
 			_place_clicked_vehicle = NULL;
 			this->HandleCloneVehClick(v);
 		}
+	}
+
+	virtual void OnMouseDrag(Point pt, int widget)
+	{
+		if (this->type != VEH_TRAIN || this->sel == INVALID_VEHICLE) return;
+
+		/* A rail vehicle is dragged.. */
+		if (widget != DEPOT_WIDGET_MATRIX) { // ..outside of the depot matrix.
+			if (this->vehicle_over != INVALID_VEHICLE) {
+				this->vehicle_over = INVALID_VEHICLE;
+				this->SetWidgetDirty(DEPOT_WIDGET_MATRIX);
+			}
+			return;
+		}
+
+		NWidgetBase *matrix = this->GetWidget<NWidgetBase>(widget);
+		const Vehicle *v = NULL;
+		GetDepotVehiclePtData gdvp = {NULL, NULL};
+
+		if (this->GetVehicleFromDepotWndPt(pt.x - matrix->pos_x, pt.y - matrix->pos_y, &v, &gdvp) != MODE_DRAG_VEHICLE) return;
+
+		VehicleID new_vehicle_over = INVALID_VEHICLE;
+		if (gdvp.head != NULL) {
+			if (gdvp.wagon == NULL && gdvp.head->Last()->index != this->sel) { // ..at the end of the train.
+				/* NOTE: As a wagon can't be moved at the begin of a train, head index isn't used to mark a drag-and-drop
+				 * destination inside a train. This head index is then used to indicate that a wagon is inserted at
+				 * the end of the train.
+				 */
+				new_vehicle_over = gdvp.head->index;
+			} else if (gdvp.wagon != NULL && gdvp.head != gdvp.wagon &&
+					gdvp.wagon->index != this->sel &&
+					gdvp.wagon->Previous()->index != this->sel) { // ..over an existing wagon.
+				new_vehicle_over = gdvp.wagon->index;
+			}
+		}
+
+		if (this->vehicle_over == new_vehicle_over) return;
+
+		this->vehicle_over = new_vehicle_over;
+		this->SetWidgetDirty(widget);
 	}
 
 	virtual void OnDragDrop(Point pt, int widget)
@@ -896,6 +940,7 @@ struct DepotWindow : Window {
 							DoCommandP(Vehicle::Get(sel)->tile, Vehicle::Get(sel)->index, true,
 									CMD_REVERSE_TRAIN_DIRECTION | CMD_MSG(STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE));
 						} else if (gdvp.wagon == NULL || gdvp.wagon->index != sel) {
+							this->vehicle_over = INVALID_VEHICLE;
 							TrainDepotMoveVehicle(gdvp.wagon, sel, gdvp.head);
 						} else if (gdvp.head != NULL && Train::From(gdvp.head)->IsFrontEngine()) {
 							ShowVehicleViewWindow(gdvp.head);

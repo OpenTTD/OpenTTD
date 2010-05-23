@@ -49,6 +49,33 @@ void CcBuildWagon(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p
 }
 
 /**
+ * Highlight the position where a rail vehicle is dragged over by drawing a light gray background.
+ * @param px        The current x position to draw from.
+ * @param max_width The maximum space available to draw.
+ * @param selection Selected vehicle that is dragged.
+ * @return The width of the highlight mark.
+ */
+static uint HighlightDragPosition(int px, int max_width, VehicleID selection)
+{
+	bool rtl = _dynlang.text_dir == TD_RTL;
+
+	assert(selection != INVALID_VEHICLE);
+	Point offset;
+	int dragged_width = Train::Get(selection)->GetDisplayImageWidth(&offset) + WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
+
+	int drag_hlight_left = rtl ? max(px -dragged_width, 0) : px;
+	int drag_hlight_right = rtl ? px : min(px + dragged_width, max_width);
+	int drag_hlight_width = max(drag_hlight_right - drag_hlight_left, 0);
+
+	if (drag_hlight_width > 0) {
+		GfxFillRect(drag_hlight_left + WD_FRAMERECT_LEFT, WD_FRAMERECT_TOP + 1,
+				drag_hlight_right - WD_FRAMERECT_RIGHT, 13 - WD_FRAMERECT_BOTTOM, _colour_gradient[COLOUR_GREY][7]);
+	}
+
+	return drag_hlight_width;
+}
+
+/**
  * Draws an image of a whole train
  * @param v         Front vehicle
  * @param left      The minimum horizontal position
@@ -56,8 +83,9 @@ void CcBuildWagon(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p
  * @param y         Vertical position to draw at
  * @param selection Selected vehicle to draw a frame around
  * @param skip      Number of pixels to skip at the front (for scrolling)
+ * @param drag_dest The vehicle another one is dragged over, \c INVALID_VEHICLE if none.
  */
-void DrawTrainImage(const Train *v, int left, int right, int y, VehicleID selection, int skip)
+void DrawTrainImage(const Train *v, int left, int right, int y, VehicleID selection, int skip, VehicleID drag_dest)
 {
 	bool rtl = _dynlang.text_dir == TD_RTL;
 	Direction dir = rtl ? DIR_E : DIR_W;
@@ -75,7 +103,15 @@ void DrawTrainImage(const Train *v, int left, int right, int y, VehicleID select
 
 	int px = rtl ? max_width + skip : -skip;
 	bool sel_articulated = false;
+	bool dragging = (drag_dest != INVALID_VEHICLE);
+	bool drag_at_end_of_train = (drag_dest == v->index); // Head index is used to mark dragging at end of train.
 	for (; v != NULL && (rtl ? px > 0 : px < max_width); v = v->Next()) {
+		if (dragging && !drag_at_end_of_train && drag_dest == v->index) {
+			/* Highlight the drag-and-drop destination inside the train. */
+			uint drag_hlight_width = HighlightDragPosition(px, max_width, selection);
+			px += rtl ? -drag_hlight_width : drag_hlight_width;
+		}
+
 		Point offset;
 		int width = Train::From(v)->GetDisplayImageWidth(&offset);
 
@@ -100,6 +136,11 @@ void DrawTrainImage(const Train *v, int left, int right, int y, VehicleID select
 		}
 
 		px += rtl ? -width : width;
+	}
+
+	if (dragging && drag_at_end_of_train) {
+		/* Highlight the drag-and-drop destination at the end of the train. */
+		HighlightDragPosition(px, max_width, selection);
 	}
 
 	if (highlight_l != highlight_r) {
