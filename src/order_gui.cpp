@@ -459,6 +459,7 @@ private:
 	};
 
 	int selected_order;
+	OrderID order_over;     ///< Order over which another order is dragged, \c INVALID_ORDER if none.
 	OrderPlaceObjectState goto_type;
 	const Vehicle *vehicle; ///< Vehicle owning the orders being displayed and manipulated.
 
@@ -689,6 +690,7 @@ public:
 		this->InitNested(desc, v->index);
 
 		this->selected_order = -1;
+		this->order_over = INVALID_ORDER;
 		this->owner = v->owner;
 
 		if (_settings_client.gui.quick_goto && v->owner == _local_company) {
@@ -944,7 +946,33 @@ public:
 
 		int i = this->vscroll.GetPosition();
 		const Order *order = this->vehicle->GetOrder(i);
-		StringID str;
+		/* First draw the highlighting underground if it exists. */
+		if (this->order_over != INVALID_ORDER) {
+			while (order != NULL) {
+				/* Don't draw anything if it extends past the end of the window. */
+				if (!this->vscroll.IsVisible(i)) break;
+
+				if (i != this->selected_order && i == this->order_over) {
+					/* Highlight dragged order destination. */
+					int top = (this->order_over < this->selected_order ? y : y + line_height) - WD_FRAMERECT_TOP;
+					int bottom = min(top + 2, r.bottom - WD_FRAMERECT_BOTTOM);
+					top = max(top - 3, r.top + WD_FRAMERECT_TOP);
+					GfxFillRect(r.left + WD_FRAMETEXT_LEFT, top, r.right - WD_FRAMETEXT_RIGHT, bottom, _colour_gradient[COLOUR_GREY][7]);
+					break;
+				}
+				y += line_height;
+
+				i++;
+				order = order->next;
+			}
+
+			/* Reset counters for drawing the orders. */
+			y = r.top + WD_FRAMERECT_TOP;
+			i = this->vscroll.GetPosition();
+			order = this->vehicle->GetOrder(i);
+		}
+
+		/* Draw the orders. */
 		while (order != NULL) {
 			/* Don't draw anything if it extends past the end of the window. */
 			if (!this->vscroll.IsVisible(i)) break;
@@ -957,7 +985,7 @@ public:
 		}
 
 		if (this->vscroll.IsVisible(i)) {
-			str = this->vehicle->IsOrderListShared() ? STR_ORDERS_END_OF_SHARED_ORDERS : STR_ORDERS_END_OF_ORDERS;
+			StringID str = this->vehicle->IsOrderListShared() ? STR_ORDERS_END_OF_SHARED_ORDERS : STR_ORDERS_END_OF_ORDERS;
 			DrawString(rtl ? r.left + WD_FRAMETEXT_LEFT : middle, rtl ? middle : r.right - WD_FRAMETEXT_RIGHT, y, str, (i == this->selected_order) ? TC_WHITE : TC_BLACK);
 		}
 	}
@@ -1184,6 +1212,12 @@ public:
 		}
 
 		ResetObjectToPlace();
+
+		if (this->order_over != INVALID_ORDER) {
+			/* End of drag-and-drop, hide dragged order destination highlight. */
+			this->order_over = INVALID_ORDER;
+			this->SetWidgetDirty(ORDER_WIDGET_ORDER_LIST);
+		}
 	}
 
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
@@ -1261,6 +1295,26 @@ public:
 		if (v != NULL && this->IsWidgetLowered(ORDER_WIDGET_GOTO)) {
 			_place_clicked_vehicle = NULL;
 			this->HandleOrderVehClick(v);
+		}
+	}
+
+	virtual void OnMouseDrag(Point pt, int widget)
+	{
+		if (this->selected_order != -1 && widget == ORDER_WIDGET_ORDER_LIST) {
+			/* An order is dragged.. */
+			OrderID from_order = this->OrderGetSel();
+			OrderID to_order = this->GetOrderFromPt(pt.y);
+			uint num_orders = this->vehicle->GetNumOrders();
+
+			if (from_order != INVALID_ORDER && from_order <= num_orders) {
+				if (to_order != INVALID_ORDER && to_order <= num_orders) { // ..over an existing order.
+					this->order_over = to_order;
+					this->SetWidgetDirty(widget);
+				} else if (from_order != to_order && this->order_over != INVALID_ORDER) { // ..outside of the order list.
+					this->order_over = INVALID_ORDER;
+					this->SetWidgetDirty(widget);
+				}
+			}
 		}
 	}
 
