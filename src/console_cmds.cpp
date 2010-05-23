@@ -269,7 +269,18 @@ static const FiosItem *GetFiosItem(const char *file)
 	int i = strtol(file, &endptr, 10);
 	if (file == endptr || *endptr != '\0') i = -1;
 
-	return IsInsideMM(i, 0, _fios_items.Length()) ? _fios_items.Get(i) : NULL;
+	if (IsInsideMM(i, 0, _fios_items.Length())) return _fios_items.Get(i);
+
+	/* As a last effort assume it is an OpenTTD savegame and
+	 * that the ".sav" part was not given. */
+	char long_file[MAX_PATH];
+	seprintf(long_file, lastof(long_file), "%s.sav", file);
+	for (const FiosItem *item = _fios_items.Begin(); item != _fios_items.End(); item++) {
+		if (strcmp(long_file, item->name) == 0) return item;
+		if (strcmp(long_file, item->title) == 0) return item;
+	}
+
+	return NULL;
 }
 
 
