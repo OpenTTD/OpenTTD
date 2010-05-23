@@ -3455,11 +3455,12 @@ static Vehicle *CollectTrackbitsFromCrashedVehiclesEnum(Vehicle *v, void *data)
 	TrackBits *trackbits = (TrackBits *)data;
 
 	if (v->type == VEH_TRAIN && (v->vehstatus & VS_CRASHED) != 0) {
-		if (Train::From(v)->track == TRACK_BIT_WORMHOLE) {
+		TrackBits train_tbits = Train::From(v)->track;
+		if (train_tbits == TRACK_BIT_WORMHOLE) {
 			/* Vehicle is inside a wormhole, v->track contains no useful value then. */
 			*trackbits |= DiagDirToDiagTrackBits(GetTunnelBridgeDirection(v->tile));
-		} else {
-			*trackbits |= Train::From(v)->track;
+		} else if (train_tbits != TRACK_BIT_DEPOT) {
+			*trackbits |= train_tbits;
 		}
 	}
 
