@@ -657,6 +657,13 @@ public:
 	virtual void OnRightClick(Point pt, int widget) {}
 
 	/**
+	 * An 'object' is being dragged at the provided position, highlight the target if possible.
+	 * @param pt     The point inside the window that the mouse hovers over.
+	 * @param widget The widget the mouse hovers over.
+	 */
+	virtual void OnMouseDrag(Point pt, int widget) {}
+
+	/**
 	 * A dragged 'object' has been released.
 	 * @param pt     the point inside the window where the release took place.
 	 * @param widget the widget where the release took place.

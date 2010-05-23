@@ -1382,6 +1382,24 @@ static bool HandleDragDrop()
 	return false;
 }
 
+static bool HandleMouseDrag()
+{
+	if (_special_mouse_mode != WSM_DRAGDROP) return true;
+	if (!_left_button_down || (_cursor.delta.x == 0 && _cursor.delta.y == 0)) return true;
+
+	Window *w = GetCallbackWnd();
+
+	if (w != NULL) {
+		/* Send an event in client coordinates. */
+		Point pt;
+		pt.x = _cursor.pos.x - w->left;
+		pt.y = _cursor.pos.y - w->top;
+		w->OnMouseDrag(pt, GetWidgetFromPos(w, pt.x, pt.y));
+	}
+
+	return false;
+}
+
 static bool HandleMouseOver()
 {
 	Window *w = FindWindowFromPt(_cursor.pos.x, _cursor.pos.y);
@@ -2057,6 +2075,7 @@ static void MouseLoop(MouseClick click, int mousewheel)
 	UpdateTileSelection();
 
 	if (!VpHandlePlaceSizingDrag())  return;
+	if (!HandleMouseDrag())          return;
 	if (!HandleDragDrop())           return;
 	if (!HandleWindowDragging())     return;
 	if (!HandleScrollbarScrolling()) return;
