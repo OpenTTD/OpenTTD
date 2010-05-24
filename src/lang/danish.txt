@@ -215,6 +215,7 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
+
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Indtast filter-udtryk
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Indtast nøgleord til at filtrere listen efter
@@ -1753,7 +1754,7 @@ STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :forbindelsen bl
 STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :protokol fejl
 STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :NewGRF ulighed
 STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :ikke autoriseret
-STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :modtog en underlig pakke
+STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :modtog en ikke gyldig eller underlig pakke
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :forkert revision
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :navnet er allerede i brug
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :forkert spil kodeord
@@ -1771,7 +1772,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Spillet er stad
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Spillet er stadig pauset. ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Spillet er stadig pauset. ({STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Spillet er sat igang ({STRING})
-STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :ikke nok spillere
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :antal spillere spillere
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :forbinder klienter
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :manuelt
 ############ End of leave-in-this-order
@@ -2315,6 +2316,9 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Forbered
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF indstillinger
+STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Detaljeret NewGRF information
+STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Aktive NewGRF filer
+STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Inaktive NewGRF filer
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filtrer udtryk:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Indlæs den valgte indstilling
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Gem indstilling
@@ -2353,6 +2357,13 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Tilsvarend
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Deaktiveret
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Indtast NewGRF-parameter
+
+# NewGRF inspect window
+
+
+
+# Sprite aligner window
+
 
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
@@ -2397,6 +2408,13 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Toget '{
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' indeholder forkert information.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Fragt-/ombygningsinformation for '{1:ENGINE}' afviger fra indkøbslisten efter konstruktion. Dette kan medføre, at autofornyelse ikke fungerer korrekt.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' forårsagede en uendelig løkke i produktions-callback'en.
+
+# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+STR_NEWGRF_INVALID_CARGO                                        :<ikke gyldigt gods>
+STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
+STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} af <ikke gyldigt gods>
+STR_NEWGRF_INVALID_ENGINE                                       :<ikke gyldig motor>
+STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<ikke gyldig industri type>
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Liste over skilte - {COMMA} Skilt{P "" e}
@@ -2746,6 +2764,9 @@ STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Ømdøb 
 
 # Depot window
 
+STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}Ændere depotets navn
+STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Omdøb depot
+
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} køretøj{P "" er}{STRING}
@@ -2925,6 +2946,8 @@ STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Retning
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Retning mod {WAYPOINT}, {VELOCITY}
 
 
+
+# Vehicle stopped/started animations
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Detaljer)
@@ -3440,6 +3463,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Kan ikke
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Kan ikke bygge sporvognsremise her...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Kan ikke bygge en skibsdok her...
 
+STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Kan ikke omdøbe depot...
+
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Toget skal være stoppet inde i en remise
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... skal være stoppet inde i et værksted først
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Skibet skal være stoppet i dok
@@ -3618,6 +3643,9 @@ STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... for 
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Kan ikke placere skilt her...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Kan ikke ændre navnet på skiltet...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Kan ikke slette skilt...
+
+# Translatable comment for OpenTTD's desktop shortcut
+STR_DESKTOP_SHORTCUT_COMMENT                                    :En klon af Transport Tycoon Deluxe
 
 ##id 0x2000
 # Town building names
@@ -4009,6 +4037,14 @@ STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 STR_FORMAT_WAYPOINT_NAME                                        :Kontrolsted {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Kontrolsted {TOWN} #{COMMA}
 
+STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} Tog Depot
+STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} Tog Depot #{COMMA}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} Køretøjs Depot
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} Køretøj Depot #{COMMA}
+STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} Skibs Depot
+STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} Skibs Depot #{COMMA}
+STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{STATION} Hangar
+
 STR_UNKNOWN_STATION                                             :ukendt station
 STR_DEFAULT_SIGN_NAME                                           :Skilt
 STR_COMPANY_SOMEONE                                             :en eller anden
@@ -4034,6 +4070,7 @@ STR_VIEWPORT_WAYPOINT_TINY                                      :{TINYFONT}{WAYP
 # Simple strings to get specific types of data
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
+STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}

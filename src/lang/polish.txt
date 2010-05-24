@@ -2813,6 +2813,11 @@ STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Informacje o ładunku/naprawie dla '{1:ENGINE}' różnią się od listy zakupu po zbudowaniu. Może to spowodować, że autoodnowienie/-zamiana nie wykona remontu poprawnie.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' spowodował nieskończoną pętlę w wywołaniu produkcji.
 
+# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+STR_NEWGRF_INVALID_CARGO                                        :<niewłaściwy ładunek>
+STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
+STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} of <niewłaściwy ładunek>
+
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista napisów - {COMMA} napis{P "" y ów}
 
@@ -4058,6 +4063,9 @@ STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... zbyt
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Nie można umieścić tutaj napisu...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Nie można zmienić nazwy napisu...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Nie można usunąć napisu...
+
+# Translatable comment for OpenTTD's desktop shortcut
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Klon Transport Tycoon Deluxe
 
 ##id 0x2000
 # Town building names

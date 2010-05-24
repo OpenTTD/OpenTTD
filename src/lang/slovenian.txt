@@ -3722,6 +3722,9 @@ STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Tukaj ne
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Ne moreš spremeniti imena znaka...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Nemogoče brisanje znaka...
 
+# Translatable comment for OpenTTD's desktop shortcut
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Klon Transport Tycoona Deluxe
+
 ##id 0x2000
 # Town building names
 STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1                      :Visok pisarniški blok

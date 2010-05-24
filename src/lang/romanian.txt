@@ -2433,6 +2433,13 @@ STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Datele despre marfa/regarnisire pentru '{1:ENGINE}' diferă de valorile iniţiale după construcţie. Acest lucru ar putea cauza eşuarea autorenovarii/schimbarii.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' a cauzat o buclă infinită în funcţia de producţie
 
+# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+STR_NEWGRF_INVALID_CARGO                                        :<cargo invalid>
+STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
+STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} de <cargo invalid>
+STR_NEWGRF_INVALID_ENGINE                                       :<motor invalid>
+STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<tip de industrie invalid>
+
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de semne - {COMMA} Semne
 
@@ -3672,6 +3679,9 @@ STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... prea
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Nu se poate plasa un semn aici...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Nu se poate schimba numele semnului...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Nu pot sterge semnul...
+
+# Translatable comment for OpenTTD's desktop shortcut
+STR_DESKTOP_SHORTCUT_COMMENT                                    :O clona de Transport Tycoon Deluxe
 
 ##id 0x2000
 # Town building names

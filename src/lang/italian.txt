@@ -3683,6 +3683,7 @@ STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Impossib
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Impossibile eliminare il cartello...
 
 # Translatable comment for OpenTTD's desktop shortcut
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Un clone di Transport Tycoon Deluxe
 
 ##id 0x2000
 # Town building names
