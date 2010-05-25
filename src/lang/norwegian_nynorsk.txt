@@ -2324,6 +2324,7 @@ STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF-I
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Detaljert NewGRF-informasjon
 STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Aktive NewGRF-filer
 STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Inaktive NewGRF-filer
+STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Vel førehandsoppsett:
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Søkefilter:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Last inn det valde førehandsoppsettet
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Lagre førehandsoppsettet
@@ -2432,6 +2433,13 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tog '{VE
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' gjer gal informasjon.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Vare/ombyggjings-informasjon for '{1:ENGINE}' er forskjellig frå kjøpslista etter konstruksjon. Dette kan føra til at autofornying/erstatning ikkje tilpasser riktig.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' forårsaka ei uendelig løkkje i produksjonskallet.
+
+# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+STR_NEWGRF_INVALID_CARGO                                        :<invalid cargo>
+STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
+STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} med <invalid cargo>
+STR_NEWGRF_INVALID_ENGINE                                       :<invalid engine>
+STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<invalid industry>
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Skiltliste - {COMMA} Skilt{P "" er}
@@ -3672,6 +3680,9 @@ STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... for 
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Kan ikkje plassere skilt her...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Kan ikkje byta teksta på skiltet...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Kan ikkje sletta skilt...
+
+# Translatable comment for OpenTTD's desktop shortcut
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Ein Transport Tycoon Deluxe-klone
 
 ##id 0x2000
 # Town building names

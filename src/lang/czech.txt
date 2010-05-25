@@ -2390,6 +2390,10 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Připrav
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Nastavení grafických souborů
+STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Podrobné informace o NewGRF
+STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Aktivní soubory NewGRF
+STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Neaktivní soubory NewGRF
+STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Vybrat předvolbu:
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filtrovat podle:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Nahrát vybranou předvolbu
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Uložit předvolbu
@@ -2498,6 +2502,13 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Vlak '{V
 STR_NEWGRF_BUGGY                                                :{WHITE}Grafika '{0:STRING}' poskytuje neplatné informace.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Informace o nákladu/možnosti přestavby pro '{1:ENGINE}' se po nákupu změnily. To může způsobit problémy při automatické výměně vozidel.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' způsobil(a) nekonečnou smyčku v callbacku produkce průmyslu.
+
+# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+STR_NEWGRF_INVALID_CARGO                                        :<neplatný náklad>
+STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
+STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} od <neplatný náklad>
+STR_NEWGRF_INVALID_ENGINE                                       :<neplatná lokomotiva>
+STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<neplatný průmysl>
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Seznam popisků - {COMMA} popis{P ek ky ků}
@@ -2846,6 +2857,10 @@ STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Přejmen
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Přejmenovat typ letadla
 
 # Depot window
+STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
+
+STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}Změnit název depa
+STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Přejmenovat depo
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -3031,7 +3046,11 @@ STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Bez př
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Míří do {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Míří do {WAYPOINT}, {VELOCITY}
 
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE}Míří do {DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Míří do {DEPOT}, {VELOCITY}
 
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}Servis v {DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Servis v {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
 STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Zastaveno
@@ -3213,6 +3232,7 @@ STR_ORDER_TRAIN_DEPOT                                           :železničním 
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :silničním depu
 STR_ORDER_SHIP_DEPOT                                            :lodním depu
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
+STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 STR_ORDER_REFIT_ORDER                                           :(Přestavět na {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Přestavět na {STRING} a zastavit)
@@ -3554,6 +3574,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Zde nelz
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Zde nelze postavit depo pro tramvaje...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Zde nelze postavit lodní depo...
 
+STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Nelze přejmenovat depo...
+
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Vlak musí stát v depu
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... musí být zastaven v garáži
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Loď musí být zastavena v depu
@@ -3733,6 +3755,9 @@ STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... př�
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Zde nelze umístit nápis...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Nelze změnit nápis...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Nelze smazat nápis...
+
+# Translatable comment for OpenTTD's desktop shortcut
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Klon Transport Tycoon Deluxe
 
 ##id 0x2000
 # Town building names
@@ -4124,6 +4149,14 @@ STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING} {0:T
 STR_FORMAT_WAYPOINT_NAME                                        :Směrování {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Směrování {TOWN} č. {COMMA}
 
+STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} Železniční depo
+STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} Železniční depo #{COMMA}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} Silniční depo
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} Silniční depo #{COMMA}
+STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} Lodní depo
+STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} Lodní depo #{COMMA}
+STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{STATION} Hangár
+
 STR_UNKNOWN_STATION                                             :neznámá stanice
 STR_DEFAULT_SIGN_NAME                                           :Nápis
 STR_COMPANY_SOMEONE                                             :někdo
@@ -4149,6 +4182,7 @@ STR_VIEWPORT_WAYPOINT_TINY                                      :{TINYFONT}{WAYP
 # Simple strings to get specific types of data
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
+STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}
