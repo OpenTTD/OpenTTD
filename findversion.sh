@@ -87,6 +87,8 @@ if [ -d "$ROOT_DIR/.svn" ]; then
 	fi
 elif [ -d "$ROOT_DIR/.git" ]; then
 	# We are a git checkout
+	# Refresh the index to make sure file stat info is in sync, then look for modifications
+	git update-index --refresh >/dev/null
 	if [ -n "`git diff-index HEAD \"$SRC_DIR\"`" ]; then
 		MODIFIED="2"
 	fi

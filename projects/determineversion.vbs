@@ -171,6 +171,14 @@ Function DetermineSVNVersion()
 			If oExec.ExitCode = 0 Then
 				hash = oExec.StdOut.ReadLine()
 				version = "g" & Mid(hash, 1, 8)
+				' Make sure index is in sync with disk
+				Set oExec = WshShell.Exec("git update-index --refresh")
+				If Err.Number = 0 Then
+					' Wait till the application is finished ...
+					Do While oExec.Status = 0
+						WScript.Sleep 10
+					Loop
+				End If
 				Set oExec = WshShell.Exec("git diff-index --exit-code --quiet HEAD ../src")
 				If Err.Number = 0 Then
 					' Wait till the application is finished ...
