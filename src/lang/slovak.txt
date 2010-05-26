@@ -2387,6 +2387,10 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Priprava
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Nastavenie novych grafickych suborov
+STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Detailné NewGRF informácie
+STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Aktívne NewGRF súbory
+STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Neaktívne NewGRF súbory
+STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Vybrať prednastavené:
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filtrovať podľa:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Nahrať vybraný zoznam
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Uložit zoznam
@@ -2495,6 +2499,13 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Vlak '{V
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{STRING}' poskytuje nekorektné informácie.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Informácia o zmene nákladu pre'{1:ENGINE}' sa líši od kúpneho listu. Môže to spôsobiť, že nové vozidlá sa nebudú prerábať na určitý tovar korektne.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' spôsobilo nekonečnú slučku v spätnom odvolávaní produckie.
+
+# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+STR_NEWGRF_INVALID_CARGO                                        :<neplatný náklad>
+STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
+STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} jednot{P ka ky iek} <neplatného nákladu>
+STR_NEWGRF_INVALID_ENGINE                                       :<neplatný rušeň>
+STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<neplatný priemysel>
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Zoznam popisov - {COMMA} popis{P "" y ov}
@@ -3735,6 +3746,9 @@ STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... prí
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Tu sa nedá umiestniť popis...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Nemožno zmeniť text popisu...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Nemôžem zmazať popis...
+
+# Translatable comment for OpenTTD's desktop shortcut
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Klon hry Transport Tycoon Deluxe
 
 ##id 0x2000
 # Town building names

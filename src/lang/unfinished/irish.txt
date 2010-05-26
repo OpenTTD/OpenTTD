@@ -752,7 +752,7 @@ STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}Tubaiste Feithicle Bóthair!{}Maraítear an tiománaí i liathróid tine tar éis imbhuailte
 STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIGFONT}{BLACK}Tubaiste Feithicle Bóthair!{}Maraítear {COMMA} i liathróid tine tar éis imbhuailte
 STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK}Tuaiste Eitleáin!{}Maraítear {COMMA} i liathróid tine ag {STATION}
-STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}Tuaiste Eitleáin!{}Rith an t-aerártha amach as breosla, maraítear {COMMA} i liathróid tine
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}Timpiste Eitleáin!{}Rith an t-aerártha amach as breosla, maraítear {COMMA} i liathróid tine
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIGFONT}{BLACK}Tubaiste Seipilín ag {STATION}!
 STR_NEWS_DISASTER_SMALL_UFO                                     :{BIGFONT}{BLACK}Scriostar feithicil bóthair in imbhualadh le 'UFO'!
@@ -1254,7 +1254,17 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Bíonn 
 STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Bliain tosaigh: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Cumasaigh geilleagar níos míne (tuilleadh athruithe, agus iad níos lú): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Ceadaigh scaireanna a cheannach ó chuideachtaí eile: {ORANGE}{STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Céatadán de bhrabús an turais le n-íoc i gcórais friothálacha: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Le linn tarraingte, cuir síos comharthaí gach: {ORANGE}{STRING} tíl
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Tóg séamafóir go huathoibríoch roimh: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Cumasaigh GUI na gcomharthaí: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Cineál comhartha le tógáil mar réamhshocrú: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Comharthaí bloc
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Comharthaí cosán
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Comharthaí cosán aonbhealaigh
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Téigh trí na cineálacha comharthaí in ord: {ORANGE}{STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Comharthaí bloc amháin
+STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Comharthaí cosán amháin
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Gach
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Leagan amach na mbóithre do bhailte nua: {ORANGE}{STRING}
@@ -1264,6 +1274,9 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :greille 2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :greille 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :randamach
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Ceadaítear do bhailte bóithre a thógáil: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Ceadaigh leibhéal fuaime rialaithe ag an mbaile d'aerfoirt: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Bailte a bhunú sa chluiche: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :coiscthe
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :ceadaithe
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :ceadaithe, leagan amach bailte saincheaptha
 
@@ -1276,6 +1289,8 @@ STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Suíomh
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Ar chlé
 STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Sa lár
 STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :Ar dheis
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Ga léime na bhfuinneog: {ORANGE}{STRING} px
+STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Ga léime na bhfuinneog: {ORANGE}díchumasaithe
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Ráta fáis na mbailte: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Ceann ar bith
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Mall
@@ -1301,6 +1316,7 @@ STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Traenac
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Bailte
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Tionscail
 
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Aimsitheoir bealaigh do thraenacha: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Molta)
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Aimsitheoir bealaigh d'fheithiclí bóthair: {ORANGE}{STRING}
@@ -1378,6 +1394,7 @@ STR_CHEATS                                                      :{WHITE}Caimilé
 STR_CHEATS_TOOLTIP                                              :{BLACK}Tugann ticbhoscaí le fios más rud é gur úsáid tú an chaimiléireacht seo roimhe seo
 STR_CHEAT_MONEY                                                 :{LTBLUE}Méadaigh airgead de {CURRENCY}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Ag imirt mar chuideachta: {ORANGE}{COMMA}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Ollscartaire draíochta (bain tionscail, nithe dobhogtha): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Is féidir le tolláin dul trasna a gcéile: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Tóg agus tú sa mhód ar sos: {ORANGE}{STRING}
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Athraigh aeráid: {ORANGE}{STRING}
@@ -1740,7 +1757,14 @@ STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Talamh faoi shn
 # Map generation progress
 
 # NewGRF settings
+STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Faisnéis NewGRF mionsonraithe
+STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Comhaid NewGRF ghníomhacha
+STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Comhaid NewGRF neamhghníomhacha
+STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Roghnaigh réamhshocrú
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Teaghrán scagtha:
+STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Cuir an comhad NewGRF roghnaithe le do chumraíocht
+STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}Athscan na comhaid
+STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Nuashonraigh liosta na gcomhad NewGRF atá ar fáil
 
 
 
@@ -1781,6 +1805,13 @@ STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Téigh c
 
 # NewGRF 'it's broken' warnings
 
+
+# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+STR_NEWGRF_INVALID_CARGO                                        :<lastas neamhbhailí>
+STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
+STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} de <lastas neamhbhailí>
+STR_NEWGRF_INVALID_ENGINE                                       :<inneall neamhbhailí>
+STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<tionscal neamhbhailí>
 
 # Sign list window
 
@@ -1874,6 +1905,10 @@ STR_PURCHASE_INFO_ALL_BUT                                       :Gach rud seacha
 
 
 # Depot window
+STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
+
+STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}Athraigh ainm iosta
+STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Athainmnigh iosta
 
 
 
@@ -1915,7 +1950,11 @@ STR_PURCHASE_INFO_ALL_BUT                                       :Gach rud seacha
 
 
 
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE}Ag dul chuig {DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Ag dul chuig {DEPOT}, {VELOCITY}
 
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}Seirbhís ag {DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Seirbhís ag {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
 STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Stoptha
@@ -2137,6 +2176,8 @@ STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Níl an comhad 
 
 # Depot related errors
 
+STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Ní féidir an t-iosta a athainmniú...
+
 
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Ní féidir treo feithiclí atá comhdhéanta d'aonaid iolracha a aisiompú...
 STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Cineálacha ráillí neamh-chomhoiriúnacha
@@ -2309,6 +2350,9 @@ STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... an-i
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Ní féidir comhartha a chur anseo...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Ní féidir ainm an chomhartha a athrú...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Ní féidir an comhartha a scriosadh...
+
+# Translatable comment for OpenTTD's desktop shortcut
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Clón de Transport Tycoon Deluxe
 
 ##id 0x2000
 # Town building names
@@ -2700,6 +2744,14 @@ STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 STR_FORMAT_WAYPOINT_NAME                                        :{TOWN} Pointe bealaigh
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN} Pointe bealaigh #{COMMA}
 
+STR_FORMAT_DEPOT_NAME_TRAIN                                     :Iosta Traenacha {TOWN}
+STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} Iosta Traenacha #{COMMA}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :Iosta Feithiclí Bóthair {TOWN}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} Iosta Feithiclí Bóthair #{COMMA}
+STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} Iosta Long
+STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} Iosta Long #{COMMA}
+STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{STATION} Haingear
+
 STR_UNKNOWN_STATION                                             :stáisiún anaithnid
 STR_DEFAULT_SIGN_NAME                                           :Comhartha
 STR_COMPANY_SOMEONE                                             :duine éigean
@@ -2725,6 +2777,7 @@ STR_VIEWPORT_WAYPOINT_TINY                                      :{TINYFONT}{WAYP
 # Simple strings to get specific types of data
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
+STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}

@@ -2433,6 +2433,13 @@ STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Vracht-/ombouwinformatie voor '{1:ENGINE}' wijkt af van aanschaflijst na het bouwen. Dit kan resulteren in problemen bij ombouwen door automatisch vernieuwen/vervangen.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' Een eindeloze loop gevonden in de productie-callback.
 
+# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+STR_NEWGRF_INVALID_CARGO                                        :<ongeldige vracht>
+STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
+STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} van <ongeldige vracht>
+STR_NEWGRF_INVALID_ENGINE                                       :<ongeldige trein>
+STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<ongeldig bedrijf>
+
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Bordenlijst - {COMMA} bord{P "" en}
 
@@ -3672,6 +3679,9 @@ STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... te v
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Kan hier geen bord plaatsen
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Kan de naam van het bord niet wijzigen
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Kan bord niet verwijderen...
+
+# Translatable comment for OpenTTD's desktop shortcut
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Een kloon van Transport Tycoon Deluxe
 
 ##id 0x2000
 # Town building names
