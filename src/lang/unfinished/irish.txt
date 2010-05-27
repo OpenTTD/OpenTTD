@@ -1291,12 +1291,18 @@ STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Sa lár
 STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :Ar dheis
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Ga léime na bhfuinneog: {ORANGE}{STRING} px
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Ga léime na bhfuinneog: {ORANGE}díchumasaithe
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Teorainn bhog fuinneoige (neamh-ghreamaitheach): {ORANGE}{STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Teorainn bhog fuinneoige (neamh-ghreamaitheach): {ORANGE}díchumasaithe
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Ráta fáis na mbailte: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Ceann ar bith
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Mall
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Gnáth
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Scioptha
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :An-scioptha
+STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}Líon na mbailte a bheidh ina gcathracha: {ORANGE}1 as {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}Líon na mbailte a bheidh ina gcathracha: {ORANGE}Ceann ar bith
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Iolraitheoir tosaigh mhéid na gcathracha: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Bain gnéithe bóthair áiféiseacha agus bóithre á dtógáil: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Comhéadan
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Tógáil
@@ -1357,6 +1363,10 @@ STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Toaigh c
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Cruthaigh domhan/scéal saincheaptha don chluiche
 STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Tosaigh cluiche ilimreoirí
 
+STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}Roghnaigh stíl tírdhreacha 'measartha'
+STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Roghnaigh stíl tírdhreacha 'fo-artach'
+STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Roghnaigh stíl tírdhreacha 'fo-theochriosach'
+STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Roghnaigh stíl tírdhreacha 'tír na mbréagán'
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Taispeáin roghanna an chluiche
 STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Taispeáin roghanna deacrachta
@@ -1397,8 +1407,14 @@ STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Ag imir
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Ollscartaire draíochta (bain tionscail, nithe dobhogtha): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Is féidir le tolláin dul trasna a gcéile: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Tóg agus tú sa mhód ar sos: {ORANGE}{STRING}
+STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Ní bheidh timpistí ag scairdeitleáin (go minic) ag aerfoirt bheaga: {ORANGE}{STRING}
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Athraigh aeráid: {ORANGE}{STRING}
+STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Tírdhreach measartha
+STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Tírdhreach fo-artach
+STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Tírdhreach fo-theochriosach
+STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Tírdhreach thír na mbréagán
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Athraigh an dáta: {ORANGE}{DATE_SHORT}
+STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Cumasaigh luachanna táirgeachta a athrú: {ORANGE}{STRING}
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}Scéim Dathanna Nua
@@ -1410,7 +1426,9 @@ STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Taispeá
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Taispeáin scéimeanna dathanna na n-aerárthach
 STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Pioc an dath príomhúil don scéim roghnaithe
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Pioc an dath tánaisteach don scéim roghnaithe
+STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Roghnaigh scéim dathanna le hathrú, nó scéimeanna iolracha le Ctrl+Cliceáil. Cliceáil ar an mbosca chun úsáid na scéime a scoránú
 
+STR_LIVERY_DEFAULT                                              :Libhré caighdeánach
 STR_LIVERY_STEAM                                                :Inneall Gaile
 STR_LIVERY_DIESEL                                               :Inneall Díosail
 STR_LIVERY_ELECTRIC                                             :Inneall Leictreach
@@ -1539,11 +1557,22 @@ STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Athnuaig
 STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Aimsigh freastalaí
 STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Cuardaigh líonra le haghaidh freastalaí
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Cuir freastalaí leis
+STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Tosaigh an freastalaí
+STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Tosaigh d'fhreastalaí féin
 
+STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Iontráil d'ainm
+STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Iontráil seoladh an óstaigh
 
 # Start new multiplayer server
+STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Tosaigh cluiche ilimreora nua
 
+STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Ainm an chluiche:
+STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Socraigh pasfhocal
+STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Roghnaigh léarscáil:
+STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Cén léarscáil is mian leat a imirt?
+STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Cruthaigh cluiche nua randamach
 
+STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Idirlíon
 
 
 
@@ -1551,15 +1580,25 @@ STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Cuir fre
 ############ Leave those lines in this order!!
 STR_NETWORK_LANG_CZECH                                          :Seicis
 STR_NETWORK_LANG_DANISH                                         :Danmhairgis
+STR_NETWORK_LANG_JAPANESE                                       :Seapáinis
+STR_NETWORK_LANG_KOREAN                                         :Cóiréis
 ############ End of leave-in-this-order
 
 # Network game lobby
 
 
 
+STR_NETWORK_GAME_LOBBY_PLAYERS                                  :{SILVER}Imreoirí: {WHITE}{STRING}
 
+STR_NETWORK_GAME_LOBBY_NEW_COMPANY                              :{BLACK}Cuideachta nua
+STR_NETWORK_GAME_LOBBY_NEW_COMPANY_TOOLTIP                      :{BLACK}Cruthaigh cuideachta na
+STR_NETWORK_GAME_LOBBY_SPECTATE_GAME                            :{BLACK}Féach ar chluiche
+STR_NETWORK_GAME_LOBBY_SPECTATE_GAME_TOOLTIP                    :{BLACK}Breathnaigh ar an gcluiche mar fhéachadóir
+STR_NETWORK_GAME_LOBBY_JOIN_COMPANY                             :{BLACK}Téigh isteach sa chuideachta
+STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP                     :{BLACK}Cabhraigh leis an gcuideachta seo a bhainistiú
 
 # Network connecting window
+STR_NETWORK_CONNECTING_CAPTION                                  :{WHITE}Ag nascadh...
 
 ############ Leave those lines in this order!!
 STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Ag nascadh..
@@ -1594,13 +1633,29 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Labhair le cuid
 STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Teacht. phríobháideach
 
 STR_NETWORK_SERVER                                              :Freastalaí
+STR_NETWORK_CLIENT                                              :Cliant
+STR_NETWORK_SPECTATORS                                          :Féachadóirí
 
+STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Iontráil an méid airgid is mian leat a thabhairt
 
 # Network set password
+STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Ná sábháil an pasfhocal a iontráladh
+STR_COMPANY_PASSWORD_OK                                         :{BLACK}Tabhair an pasfhocal nua don chuideachta
+STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Pasfhocal cuideachta
+STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Pasfhocal cuideachta réamhshocraithe
+STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Úsáid an pasfhocal cuideachta seo mar réamhshocrú do chuideachtaí nua
 
 # Network company info join/password
+STR_COMPANY_VIEW_JOIN                                           :{BLACK}Téigh isteach
+STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Téigh isteach agus bí ag imirt leis an gcuideachta seo
+STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Pasfhocal
+STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Socraigh pasfhocal cuideachta
 
 # Network chat
+STR_NETWORK_CHAT_SEND                                           :{BLACK}Seol
+STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Foireann] :
+STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Príobháideach] {STRING}:
+STR_NETWORK_CHAT_ALL_CAPTION                                    :[Gach] :
 
 
 # Network messages
@@ -1613,6 +1668,11 @@ STR_NETWORK_SERVER                                              :Freastalaí
 ############ End of leave-in-this-order
 
 # Content downloading window
+STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Cineál
+STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}Cineál inneachair
+STR_CONTENT_NAME_CAPTION                                        :{BLACK}Ainm
+STR_CONTENT_NAME_CAPTION_TOOLTIP                                :{BLACK}Ainm an inneachair
+STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Roghnaigh gach
 STR_CONTENT_DETAIL_TITLE                                        :{SILVER}FAISNÉIS FAOIN INNEACHAR
 STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Roghnaigh tú gan é seo a íoslódáil
 STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Roghnaigh tú é seo a íoslódáil

@@ -1771,7 +1771,7 @@ STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :הקשר נות
 STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :בעיה בפרוטוקול
 STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :NewGRF חוסר התאמת
 STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :אין אישור
-STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :קיבל פאקט לא מוכר
+STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :התקבלה חבילת מידע לא תקינה או לא צפויה
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :גרסא שונה
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :השם שבחרת תפוס
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :סיסמא שגוייה
@@ -1789,7 +1789,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :המשחק עד
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :המשחק עדיין מופסק ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :המשחק עדיין מופסק ({STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :המשחק הומשך ({STRING})
-STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :אין מספיק שחקנים
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :מספר שחקנים
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :מתחבר ללקוחות
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :ידני
 ############ End of leave-in-this-order
@@ -2425,6 +2425,8 @@ STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}מידע מטען/התאמה מחדש עבור '{1:ENGINE}' שונה מרשימת הרכישה לאחר הבניה. דבר זה עלול לגרום מילוי/חידוש אוטומטי לכישלון התאמה מחדש בצורה נכונה.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' גרם ללולאה אינסופית בהתקשרות חזרה של הייצור.
 
+# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}סימניות {COMMA} - רשימת סימניות
 
@@ -2772,6 +2774,7 @@ STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}החלף
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}החלף שם סוג כלי הטיס
 
 # Depot window
+
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{0:ENGINE}{1:STRING}
@@ -3470,6 +3473,7 @@ STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}לא נ�
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}לא ניתן לבנות מוסך לחשמלית כאן...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}לא ניתן לבנות מבדוק כאן...
 
+
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}הרכבת צריכה להיות בעצירה במוסך
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}חייב להיות בעצירה בתוך מוסך לכלי רכב...
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}כלי השייט חייב להמצא בעצירה במבדוק
@@ -3649,6 +3653,8 @@ STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... יו
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}לא ניתן להציב כאן סימניה...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}... ניתן לשנות את שם הסימניה
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}לא ניתן למחוק סימניה...
+
+# Translatable comment for OpenTTD's desktop shortcut
 
 ##id 0x2000
 # Town building names
@@ -4041,6 +4047,7 @@ STR_FORMAT_GROUP_NAME                                           :{COMMA} קבו�
 STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING.gen} {0:TOWN}
 STR_FORMAT_WAYPOINT_NAME                                        :נקודת ציון {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :נקודת ציון {TOWN} #{COMMA}
+
 
 STR_UNKNOWN_STATION                                             :תחנה לא ידועה
 STR_DEFAULT_SIGN_NAME                                           :סימניה

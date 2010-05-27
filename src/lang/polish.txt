@@ -2814,9 +2814,9 @@ STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Informac
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' spowodował nieskończoną pętlę w wywołaniu produkcji.
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs.
-STR_NEWGRF_INVALID_CARGO                                        :<niewłaściwy ładunek>
+STR_NEWGRF_INVALID_CARGO                                        :<nieprawidłowy ładunek>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
-STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} of <niewłaściwy ładunek>
+STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} of <nieprawidłowy ładunek>
 STR_NEWGRF_INVALID_ENGINE                                       :<nieprawidłowy silnik>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<nieprawidłowy przemysł>
 
