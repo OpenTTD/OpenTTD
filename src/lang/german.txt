@@ -2321,6 +2321,10 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Spiel wi
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF-Einstellungen
+STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Detailierte NewGRF - Informationen
+STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Aktivierte NewGRF - Dateien
+STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Inaktive NewGRF - Dateien
+STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Wähle Voreinstellung
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filter:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Ausgewählte Voreinstellung laden
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Voreinstellung speichern
@@ -2429,6 +2433,13 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Zug '{VE
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' liefert falsche Informationen
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Fracht / Ersetzungs - Informationen für '{1:ENGINE}' weichen von der Einkaufsliste nach dem Kauf ab. Das kann dazu führen, dass das Umrüsten beim autmatisches Ersetzen oder Erneuern nicht korrekt funktioniert
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' verursachte eine Endlosschleife im 'Production callback'.
+
+# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+STR_NEWGRF_INVALID_CARGO                                        :<ungültige Frachtart>
+STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
+STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} of <ungültige Frachtart>
+STR_NEWGRF_INVALID_ENGINE                                       :<ungültige Lokomotive>
+STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<ungültige Industrie>
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Schilderliste ({COMMA} Schild{P "" er})
@@ -3669,6 +3680,9 @@ STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... zu v
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Schild kann hier nicht aufgestellt werden...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Schildname kann nicht geändert werden...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Kann Schild nicht löschen...
+
+# Translatable comment for OpenTTD's desktop shortcut
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Ein Transport Tycoon Deluxe Klon
 
 ##id 0x2000
 # Town building names

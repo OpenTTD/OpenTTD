@@ -2471,9 +2471,11 @@ STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Μετα
 # Sprite aligner window
 STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Ευθυγραμμιση sprite {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Επόμενο sprite
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Συνέχισε στο επόμενο κανονικό sprite, παρακάμπτόντας όποια φευδό/επαναχρωματισμένα/γραμμάτων sprites και στο τέλος
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Μετακινήση στο sprite
 STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Μετακίνηση στο sprite. Εαν το sprite δεν είναι ένα κανονικό sprite, συνεχίζει στο επόμενο κανονικό sprite
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Προηγούμενο sprite
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Συνέχισε στο προηγούμενο κανονικό sprite, παρακάμπτόντας όποια φευδό/επαναχρωματισμένα/γραμμάτων sprites και στην αρχή
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Επανεμφάνιση του επιλεγμένου sprite. Η ευθυγράμμιση αγνοείται όταν γίνεται η σχεδίαση του sprite
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Μετακίνηση του sprite τριγύρω, αλλάζοντας τα στίγματα X και Y
 STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X στίγμα: {NUM}, Y στίγμα: {NUM}
@@ -2527,6 +2529,11 @@ STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Η πλ�
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' προκάλεσε ένα ατέρμονο βρόγχο στην ανακοίνωση παραγωγής.
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs.
+STR_NEWGRF_INVALID_CARGO                                        :<μη έγκυρο φορτίο>
+STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
+STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} <μη έγκυρου φορτίου>
+STR_NEWGRF_INVALID_ENGINE                                       :<μη έγκυρη μηχανή>
+STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<μη έγκυρη βιομηχανία>
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Λίστα πινακίδων - {COMMA} Πινακίδ{P α ες}
@@ -3773,6 +3780,9 @@ STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... πά
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Δεν γίνεται να τοποθετηθεί σηματοδότης εδώ...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Δεν γίνεται να αλλαχθεί το κείμενο της πινακίδας...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Δεν μπορεί να διαγραφεί η πινακίδα
+
+# Translatable comment for OpenTTD's desktop shortcut
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Ένας κλώνος του Transport Tycoon Deluxe
 
 ##id 0x2000
 # Town building names

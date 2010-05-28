@@ -544,7 +544,7 @@ STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Cliquer 
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Classement des compagnies
 STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Ingénieur
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Gestionnaire de traffic
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Gestionnaire de trafic
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Coordinateur de trafic
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ROUTE_SUPERVISOR           :Superviseur de route
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_DIRECTOR                   :Directeur
@@ -626,7 +626,7 @@ STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLAC
 STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}Programme - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}Balayer
 STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}Sauvegarder
-STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Balayer le programme courrant (Personnalisé 1 ou Personnalisé 2 seulement)
+STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Balayer le programme actuel (Personnalisé 1 ou Personnalisé 2 seulement)
 STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Sauver les paramètres musicaux
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Cliquer sur une piste pour l'ajouter au programme courant (Personnalisé 1 ou Personnalisé 2 seulement)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Cliquer sur une piste pour la retirer du programme courant (Personnalisé 1 ou Personnalisé 2 seulement)
@@ -726,7 +726,7 @@ STR_NEWS_MESSAGES_FULL                                          :Complet
 
 STR_NEWS_MESSAGE_TYPES                                          :{BLACK}Types de message{NBSP}:
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}1er véhicule dans la station du joueur
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}1er véhicule dans la station d'un competiteur
+STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}1er véhicule dans la station d'un compétiteur
 STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Accidents / désastres
 STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}Informations corporatives
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}Ouvertures d'industries
@@ -739,7 +739,7 @@ STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Conseil
 STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Nouveaux véhicules
 STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Changements d'acceptation de marchandises
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Subventions
-STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Information génerale
+STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Information générale
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIGFONT}{BLACK}Les habitants célèbrent{}l'arrivée du premier train à {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIGFONT}{BLACK}Les habitants célèbrent . . .{}Le premier bus arrive à {STATION}!
@@ -836,7 +836,7 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Subvention accordée à {STRING}!{}{}Le transport de {STRING} entre {STRING} et {STRING} rapportera triple l'année prochaine!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}Subvention accordée à {STRING}!{}{}Le transport de {STRING} entre {STRING} et {STRING} rapportera quadruple l'année prochaine!
 
-STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}Problèmes de traffic à {TOWN}!{}{}La reconstruction des routes financée par {STRING} provoque 6 mois de problèmes aux automobilistes!
+STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}Problèmes de trafic à {TOWN}!{}{}La reconstruction des routes financée par {STRING} provoque 6 mois de problèmes aux automobilistes!
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Vue {COMMA}
@@ -1315,7 +1315,7 @@ STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Options
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interaction
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signaux
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Gestion des cargaisons
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Intelligence Articielle
+STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Intelligence Artificielle
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Renouvellement automatique
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Entretien
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Routage
@@ -1476,7 +1476,7 @@ STR_FACE_FACECODE                                               :{BLACK}No. de v
 STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Voir et/ou définir le numéro de visage
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}Voir et/ou définir le numéro de visage
 STR_FACE_FACECODE_SET                                           :{WHITE}Le nouveau numéro de visage a été défini.
-STR_FACE_FACECODE_ERR                                           :{WHITE}Impossibe de définir le numéro de visage - doit être un nombre entre 0 et 4.294.967.295!
+STR_FACE_FACECODE_ERR                                           :{WHITE}Impossible de définir le numéro de visage - doit être un nombre entre 0 et 4.294.967.295!
 STR_FACE_SAVE                                                   :{BLACK}Enregistrer
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Enregistrer visage favori
 STR_FACE_SAVE_DONE                                              :{WHITE}Ce visage sera enregistré comme favori dans le fichier de configuration d'OpenTTD.
@@ -1611,17 +1611,17 @@ STR_NETWORK_LANG_CHINESE                                        :Chinois
 STR_NETWORK_LANG_CZECH                                          :Tchèque
 STR_NETWORK_LANG_DANISH                                         :Danois
 STR_NETWORK_LANG_DUTCH                                          :Hollandais
-STR_NETWORK_LANG_ESPERANTO                                      :Esperanto
+STR_NETWORK_LANG_ESPERANTO                                      :Espéranto
 STR_NETWORK_LANG_FINNISH                                        :Finlandais
 STR_NETWORK_LANG_HUNGARIAN                                      :Hongrois
 STR_NETWORK_LANG_ICELANDIC                                      :Islandais
 STR_NETWORK_LANG_ITALIAN                                        :Italien
 STR_NETWORK_LANG_JAPANESE                                       :Japonais
 STR_NETWORK_LANG_KOREAN                                         :Coréen
-STR_NETWORK_LANG_LITHUANIAN                                     :Lithuanien
+STR_NETWORK_LANG_LITHUANIAN                                     :Lituanien
 STR_NETWORK_LANG_NORWEGIAN                                      :Norvégien
 STR_NETWORK_LANG_POLISH                                         :Polonais
-STR_NETWORK_LANG_PORTUGUESE                                     :Portuguais
+STR_NETWORK_LANG_PORTUGUESE                                     :Portugais
 STR_NETWORK_LANG_ROMANIAN                                       :Roumain
 STR_NETWORK_LANG_RUSSIAN                                        :Russe
 STR_NETWORK_LANG_SLOVAK                                         :Slovaque
@@ -2171,13 +2171,13 @@ STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Dépôt ferrovi
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Route
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Route avec lampadaires
-STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Route avec lignée d'arbustres
+STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Route avec lignée d'arbustes
 STR_LAI_ROAD_DESCRIPTION_ROAD_VEHICLE_DEPOT                     :Dépôt de véhicules routiers
 STR_LAI_ROAD_DESCRIPTION_ROAD_RAIL_LEVEL_CROSSING               :Route/rail Croisement à niveau
 STR_LAI_ROAD_DESCRIPTION_TRAMWAY                                :Tramway
 
 # Houses come directly from their building names
-STR_LAI_TOWN_INDUSTRY_DESCRIPTION_UNDER_CONSTRUCTION            :{STRING} (en contruction)
+STR_LAI_TOWN_INDUSTRY_DESCRIPTION_UNDER_CONSTRUCTION            :{STRING} (en construction)
 
 STR_LAI_TREE_NAME_TREES                                         :Arbres
 STR_LAI_TREE_NAME_RAINFOREST                                    :Forêt tropicale
@@ -2405,7 +2405,7 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} doit
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} nécessite OpenTTD version {STRING} ou supérieur.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :le fichier GRF qu'il doit traduire
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Trop de NewGRFs sont chargés.
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Charger {STRING} comme NewGRF statique avec {STRING} peut provoquer des erreurs de synchronistation.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Charger {STRING} comme NewGRF statique avec {STRING} peut provoquer des erreurs de synchronisation.
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Sprite inattendu.
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Propriété d'Action 0 inconnue.
 STR_NEWGRF_ERROR_INVALID_ID                                     :Tentative d'utilisation d'un ID invalide.
@@ -2491,7 +2491,7 @@ STR_LOCAL_AUTHORITY_DO_IT_BUTTON                                :{BLACK}Lancer c
 STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Lancer l'action sélectionnée ci-dessus
 
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Petite campagne de publicité
-STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Moyenne campagne de publicitié
+STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Moyenne campagne de publicité
 STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Grande campagne de publicité
 STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Financer la reconstruction du réseau routier local
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Construire une statue à votre effigie
@@ -2567,7 +2567,7 @@ STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Renommer la gar
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centrer la vue sur le point de contrôle. Ctrl-clic pour ouvrir une nouvelle vue sur le point de contrôle
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Renommer le point decontrôle
+STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Renommer le point de contrôle
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrer la vue sur la bouée. Ctrl-clic pour ouvrir une nouvelle vue sur la bouée
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Renommer la bouée
 
@@ -2745,7 +2745,7 @@ STR_PURCHASE_INFO_SPEED                                         :{BLACK}Vitesse{
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Coût d'entretien{NBSP}: {GOLD}{CURRENCY}/an
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capacité{NBSP}: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(réaménageable)
-STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Concu en{NBSP}: {GOLD}{NUM}{BLACK}Durée de vie{NBSP}: {GOLD}{COMMA} ans
+STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Conçu en{NBSP}: {GOLD}{NUM}{BLACK}Durée de vie{NBSP}: {GOLD}{COMMA} ans
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Fiabilité max.{NBSP}: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Prix{NBSP}: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Poids{NBSP}: {GOLD}{WEIGHT_S} ({WEIGHT_S})
@@ -2902,7 +2902,7 @@ STR_REPLACE_WAGONS                                              :Wagons
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Choisir un type de rail pour le remplacement de locomotives
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Ceci affiche par quelle locomotive celle qui est sélectionnée à gauche sera remplacée
 STR_REPLACE_RAIL_VEHICLES                                       :Véhicules sur rail
-STR_REPLACE_ELRAIL_VEHICLES                                     :Vehicule électriques sur rail
+STR_REPLACE_ELRAIL_VEHICLES                                     :Véhicules électriques sur rail
 STR_REPLACE_MONORAIL_VEHICLES                                   :Véhicules sur monorail
 STR_REPLACE_MAGLEV_VEHICLES                                     :Véhicules sur Maglev
 
@@ -3195,7 +3195,7 @@ STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE
 STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}Ordres
 STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Basculer vers la vue ordres
 
-STR_TIMETABLE_TOOLTIP                                           :{BLACK}Horaire - cliquer sur un ordre pour le séléctionner.
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}Horaire - cliquer sur un ordre pour le sélectionner.
 
 STR_TIMETABLE_NO_TRAVEL                                         :Pas de voyage
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Voyager (sans horaires)
@@ -3218,10 +3218,10 @@ STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Date de 
 STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Sélectionner une date comme point de départ de cet horaire
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Modifier durée
-STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Modifier la durée de l'ordre séléctionné
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Modifier la durée de l'ordre sélectionné
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Annuler durée
-STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Annuler la durée de l'ordre séléctionné
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Annuler la durée de l'ordre sélectionné
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}RAZ compteur de retard
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Remet à zéro le compteur de retard, le véhicule sera donc à l'heure
@@ -3263,7 +3263,7 @@ STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Basculer
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Continuer
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Reprendre la partie et continuer l'IA
 
-STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD est compilé sans support pour les IAs...
+STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD est compilé sans le support des IAs...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... aucune IA disponible{NBSP}!
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Aucune IA n'a été trouvée.{}Cette IA est factice et ne fera rien.{}Vous pouvez télécharger diverses IA via le système de 'Contenu en ligne'.
@@ -3332,7 +3332,7 @@ STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Le charg
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Erreur interne{NBSP}: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Sauvegarde corrompue - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Sauvegarde modifiée avec une version plus récente
-STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Fichier illisibble
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Fichier illisible
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Fichier non modifiable
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Échec du contrôle d'intégrité des données
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Partie sauvegardée avec une version sans support des tramways. Tous les tramways ont été supprimés.
@@ -3437,7 +3437,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... peut
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... peut seulement être construit en ville
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... peut seulement être construit dans les zones basses
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... positionnement uniquement sur les bords de la carte
-STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... les forêts ne peuvent être plantées que au dessus de l'altitude d'enneignement
+STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... les forêts ne peuvent être plantées qu'au dessus de l'altitude d'enneigement
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Impossible de construire la gare ici...
@@ -3625,7 +3625,7 @@ STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Impossib
 
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Impossible de renommer le type de train...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Impossible de renommer type de véhicule routier...
-STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Impossbile de renommer type de navire...
+STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Impossible de renommer type de navire...
 STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Impossible de renommer type d'aéronef...
 
 STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Impossible de vendre le véhicule ferroviaire...

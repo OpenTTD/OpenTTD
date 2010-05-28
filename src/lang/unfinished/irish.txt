@@ -1673,26 +1673,95 @@ STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}Cineál 
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}Ainm
 STR_CONTENT_NAME_CAPTION_TOOLTIP                                :{BLACK}Ainm an inneachair
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Roghnaigh gach
+STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK}Marcáil an t-inneachar ar fad mar inneachar le híoslódáil
+STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Roghnaigh uasghráduithe
+STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Marcáil an t-inneachar ar fad atá ina uasghrádú d'inneachar reatha mar inneachar le híoslódáil
+STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Díroghnaigh gach
+STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Marcáil an t-inneachar ar fad le nach n-íoslódálfar é
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}Scagaire clibe/ainm:
+STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Íoslódáil
+STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Toaigh ag íoslódáil an t-inneachar roghnaithe
+STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Méid iomlán na híoslódála: {WHITE}{BYTES}
 STR_CONTENT_DETAIL_TITLE                                        :{SILVER}FAISNÉIS FAOIN INNEACHAR
 STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Roghnaigh tú gan é seo a íoslódáil
 STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Roghnaigh tú é seo a íoslódáil
+STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Roghnaíodh go bhfuil an spleáchas seo le híoslódáil
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Tá sé seo agat cheana féin
+STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Is inneachar anaithnid é seo agus ní féidir é a íoslódáil in OpenTTD
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Téann sé seo in ionad {STRING} reatha
+STR_CONTENT_DETAIL_NAME                                         :{SILVER}Ainm: {WHITE}{STRING}
+STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Leagan: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Cur Síos: {WHITE}{STRING}
+STR_CONTENT_DETAIL_URL                                          :{SILVER}URL: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TYPE                                         :{SILVER}Cineál: {WHITE}{STRING}
+STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Méid íoslódála: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Roghnaithe mar gheall ar: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Nithe atá spleách air: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Clibeanna: {WHITE}{STRING}
+STR_CONTENT_NO_ZLIB                                             :{WHITE}Tá OpenTTD tógtha gan tacaíocht "zlib"...
+STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... ní féidir inneachar a íoslódáil!
 
 # Order of these is important!
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Grafaicí bunaidh
+STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
+STR_CONTENT_TYPE_AI                                             :AI
+STR_CONTENT_TYPE_AI_LIBRARY                                     :Leabharlann AI
+STR_CONTENT_TYPE_SCENARIO                                       :Scéal
+STR_CONTENT_TYPE_HEIGHTMAP                                      :Mapa airde
+STR_CONTENT_TYPE_BASE_SOUNDS                                    :Fuaimeanna bunaidh
+STR_CONTENT_TYPE_BASE_MUSIC                                     :Ceol bunaidh
 
 # Content downloading progress window
+STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Ag íoslódáil inneachar...
+STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Comhaid á n-iarraidh...
+STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Ag íoslódáil {STRING} faoi láthair ({NUM} de {NUM})
+STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Íoslódail curtha i gcrích
+STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} de {BYTES} íoslódáilte ({NUM} %)
 
 # Content downloading error messages
+STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Níorbh fhéidir nascadh leis an bhfreastalaí inneachair...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Theip ar an íoslódáil...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... cailleadh an nasc
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... níl an comhad inscríofa
+STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Níorbh fhéidir an comhad íoslódáilte a dhíchomhbhrú
 
 # Transparency settings window
+STR_TRANSPARENCY_CAPTION                                        :{WHITE}Roghanna Trédhearcachta
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Scoránaigh trédhearcacht do chomharthaí stáisiún. Ctrl+Cliceáil le glasáil.
+STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Scoránaigh trédhearcacht do chrainnte. Ctrl+Cliceáil le glasáil.
+STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Scoránaigh trédhearcacht do thithe. Ctrl+Cliceáil le glasáil.
+STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Scoránaigh trédhearcacht do thionscail. Ctrl+Cliceáil le glasáil.
+STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Scoránaigh trédhearcacht do nithe i féidir a thógáil, cosúil le stáisiúin, iostaí agus pointí bealaigh. Ctrl+Cliceáil le glasáil.
+STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Scoránaigh trédhearcacht do dhroichid. Ctrl+Cliceáil le glasáil.
+STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Scoránaigh trédhearcacht do struchtúir cosúil le tithe solais agus aeróga. Ctrl+Cliceáil le glasáil.
+STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Scoránaigh trédhearcacht do chuair. Ctrl+Cliceáil le glasáil.
+STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Scoránaigh trédhearcacht do tháscairí lódála. Ctrl+Cliceáil le glasáil.
+STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Socraigh go bhfuil nithe dofheicthe seachas trédhearcach
 
 # Base for station construction window(s)
+STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Aibhsigh an limistéar clúdaigh
+STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}As
+STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}Ar siúl
+STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Ná haibhsigh an limistéar clúdaigh don suíomh beartaithe
+STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Aibhsigh an limistéar clúdaigh don suíomh beartaithe
+STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Glactar le: {GOLD}{STRING}
+STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Soláthar: {GOLD}{STRING}
 
 # Join station window
+STR_JOIN_STATION_CAPTION                                        :{WHITE}Ceangail stáisiún
+STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Tóg stáisiún ar leithligh
 
+STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Ceangail pointe bealaigh
+STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Tóg pointe bealaigh ar leithligh
 
 # Rail construction toolbar
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}Tógáil Iarnróid
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Tógáil Iarnróid Leicrithe
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Tógáil Iarnróid Aonráille
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Tógáil Maglev
 
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Tó ráillí iarnróid. Déanann Ctrl tóg/bain a scoránú do thógáil iarnróid
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Tóg ráille iarnróid ag úsáid an mód Uathráillí. Déanann Ctrl tóg/bain a scoránú do thógail iarnróid
 
 # Rail depot construction window
 
