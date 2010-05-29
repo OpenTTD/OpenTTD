@@ -258,9 +258,10 @@ extern bool IsSlopeRefused(Slope current, Slope refused);
  * @param gfx           Gfx of the tile.
  * @param itspec_index  Layout.
  * @param initial_random_bits Random bits of industry after construction
+ * @param founder       Industry founder
  * @return Suceeded or failed command.
  */
-CommandCost PerformIndustryTileSlopeCheck(TileIndex ind_base_tile, TileIndex ind_tile, const IndustryTileSpec *its, IndustryType type, IndustryGfx gfx, uint itspec_index, uint16 initial_random_bits)
+CommandCost PerformIndustryTileSlopeCheck(TileIndex ind_base_tile, TileIndex ind_tile, const IndustryTileSpec *its, IndustryType type, IndustryGfx gfx, uint itspec_index, uint16 initial_random_bits, Owner founder)
 {
 	Industry ind;
 	ind.index = INVALID_INDUSTRY;
@@ -268,6 +269,7 @@ CommandCost PerformIndustryTileSlopeCheck(TileIndex ind_base_tile, TileIndex ind
 	ind.location.w = 0;
 	ind.type = type;
 	ind.random = initial_random_bits;
+	ind.founder = founder;
 
 	uint16 callback_res = GetIndustryTileCallback(CBID_INDTILE_SHAPE_CHECK, 0, itspec_index, gfx, &ind, ind_tile);
 	if (callback_res == CALLBACK_FAILED) {

@@ -453,9 +453,10 @@ uint32 IndustryLocationGetVariable(const ResolverObject *object, byte variable, 
  * @param layout Layout number.
  * @param seed Seed for the random generator.
  * @param initial_random_bits The random bits the industry is going to have after construction.
+ * @param founder Industry founder
  * @return Succeeded or failed command.
  */
-CommandCost CheckIfCallBackAllowsCreation(TileIndex tile, IndustryType type, uint layout, uint32 seed, uint16 initial_random_bits)
+CommandCost CheckIfCallBackAllowsCreation(TileIndex tile, IndustryType type, uint layout, uint32 seed, uint16 initial_random_bits, Owner founder)
 {
 	const IndustrySpec *indspec = GetIndustrySpec(type);
 
@@ -470,6 +471,7 @@ CommandCost CheckIfCallBackAllowsCreation(TileIndex tile, IndustryType type, uin
 	ind.selected_layout = layout;
 	ind.town = ClosestTownFromTile(tile, UINT_MAX);
 	ind.random = initial_random_bits;
+	ind.founder = founder;
 
 	NewIndustryResolver(&object, tile, &ind, type);
 	object.GetVariable = IndustryLocationGetVariable;
