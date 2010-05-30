@@ -56,8 +56,8 @@ int _scrollbar_start_pos;
 int _scrollbar_size;
 byte _scroller_click_timeout;
 
-bool _scrolling_scrollbar;
-bool _scrolling_viewport;
+bool _scrolling_scrollbar; ///< A scrollbar is being scrolled with the mouse.
+bool _scrolling_viewport;  ///< A viewport is being scrolled with the mouse.
 
 SpecialMouseMode _special_mouse_mode; ///< Mode of the mouse.
 

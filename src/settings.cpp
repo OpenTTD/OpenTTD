@@ -1464,6 +1464,10 @@ void SaveToConfig()
 	delete ini;
 }
 
+/**
+ * Get the list of known NewGrf presets.
+ * @param list[inout] Pointer to list for storing the preset names.
+ */
 void GetGRFPresetList(GRFPresetList *list)
 {
 	list->Clear();
@@ -1479,6 +1483,12 @@ void GetGRFPresetList(GRFPresetList *list)
 	delete ini;
 }
 
+/**
+ * Load a NewGRF configuration by preset-name.
+ * @param config_name Name of the preset.
+ * @return NewGRF configuration.
+ * @see GetGRFPresetList
+ */
 GRFConfig *LoadGRFPresetFromConfig(const char *config_name)
 {
 	char *section = (char*)alloca(strlen(config_name) + 8);
@@ -1491,6 +1501,12 @@ GRFConfig *LoadGRFPresetFromConfig(const char *config_name)
 	return config;
 }
 
+/**
+ * Save a NewGRF configuration with a preset name.
+ * @param config_name Name of the preset.
+ * @param config      NewGRF configuration to save.
+ * @see GetGRFPresetList
+ */
 void SaveGRFPresetToConfig(const char *config_name, GRFConfig *config)
 {
 	char *section = (char*)alloca(strlen(config_name) + 8);
@@ -1502,6 +1518,10 @@ void SaveGRFPresetToConfig(const char *config_name, GRFConfig *config)
 	delete ini;
 }
 
+/**
+ * Delete a NewGRF configuration by preset name.
+ * @param config_name Name of the preset.
+ */
 void DeleteGRFPresetFromConfig(const char *config_name)
 {
 	char *section = (char*)alloca(strlen(config_name) + 8);
