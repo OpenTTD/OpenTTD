@@ -1619,6 +1619,21 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 	i->last_month_production[1] = i->production_rate[1] * 8;
 	i->founder = founder;
 
+	i->construction_date = _date;
+	i->construction_type = (_game_mode == GM_EDITOR) ? ICT_SCENARIO_EDITOR :
+			(_generating_world ? ICT_MAP_GENERATION : ICT_NORMAL_GAMEPLAY);
+
+	/* Adding 1 here makes it conform to specs of var44 of varaction2 for industries
+	 * 0 = created prior of newindustries
+	 * else, chosen layout + 1 */
+	i->selected_layout = layout + 1;
+
+	if (!_generating_world) i->last_month_production[0] = i->last_month_production[1] = 0;
+
+	i->prod_level = PRODLEVEL_DEFAULT;
+
+	/* Call callbacks after the regular fields got initialised. */
+
 	if (HasBit(indspec->callback_mask, CBM_IND_DECIDE_COLOUR)) {
 		uint16 res = GetIndustryCallback(CBID_INDUSTRY_DECIDE_COLOUR, 0, 0, i, type, INVALID_TILE);
 		if (res != CALLBACK_FAILED) i->random_colour = GB(res, 0, 4);
@@ -1642,18 +1657,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 		}
 	}
 
-	i->construction_date = _date;
-	i->construction_type = (_game_mode == GM_EDITOR) ? ICT_SCENARIO_EDITOR :
-			(_generating_world ? ICT_MAP_GENERATION : ICT_NORMAL_GAMEPLAY);
-
-	/* Adding 1 here makes it conform to specs of var44 of varaction2 for industries
-	 * 0 = created prior of newindustries
-	 * else, chosen layout + 1 */
-	i->selected_layout = layout + 1;
-
-	if (!_generating_world) i->last_month_production[0] = i->last_month_production[1] = 0;
-
-	i->prod_level = PRODLEVEL_DEFAULT;
+	/* Plant the tiles */
 
 	do {
 		TileIndex cur_tile = tile + ToTileIndexDiff(it->ti);
