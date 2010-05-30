@@ -913,13 +913,14 @@ extern byte _scroller_click_timeout;
 extern bool _scrolling_scrollbar;
 extern bool _scrolling_viewport;
 
-extern byte _special_mouse_mode;
+/** Mouse modes. */
 enum SpecialMouseMode {
-	WSM_NONE     = 0,
-	WSM_DRAGDROP = 1,
-	WSM_SIZING   = 2,
-	WSM_PRESIZE  = 3,
+	WSM_NONE,     ///< No special mouse mode.
+	WSM_DRAGDROP, ///< Dragging an object.
+	WSM_SIZING,   ///< Sizing mode.
+	WSM_PRESIZE,  ///< Presizing mode (docks, tunnels).
 };
+extern SpecialMouseMode _special_mouse_mode;
 
 Window *GetCallbackWnd();
 

@@ -59,7 +59,7 @@ byte _scroller_click_timeout;
 bool _scrolling_scrollbar;
 bool _scrolling_viewport;
 
-byte _special_mouse_mode;
+SpecialMouseMode _special_mouse_mode; ///< Mode of the mouse.
 
 /** Window description constructor. */
 WindowDesc::WindowDesc(WindowPosition def_pos, int16 def_width, int16 def_height,
