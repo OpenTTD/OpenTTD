@@ -30,7 +30,7 @@ class SmallVector {
 protected:
 	T *data;       ///< The pointer to the first item
 	uint items;    ///< The number of items stored
-	uint capacity; ///< The avalible space for storing items
+	uint capacity; ///< The available space for storing items
 
 public:
 	SmallVector() : data(NULL), items(0), capacity(0) { }
@@ -93,7 +93,7 @@ public:
 	}
 
 	/**
-	 * Search for the first occurence of an item.
+	 * Search for the first occurrence of an item.
 	 * The '!=' operator of T is used for comparison.
 	 * @param item Item to search for
 	 * @return The position of the item, or End() when not present
@@ -107,7 +107,7 @@ public:
 	}
 
 	/**
-	 * Search for the first occurence of an item.
+	 * Search for the first occurrence of an item.
 	 * The '!=' operator of T is used for comparison.
 	 * @param item Item to search for
 	 * @return The position of the item, or End() when not present
@@ -121,7 +121,7 @@ public:
 	}
 
 	/**
-	 * Search for the first occurence of an item.
+	 * Search for the first occurrence of an item.
 	 * The '!=' operator of T is used for comparison.
 	 * @param item Item to search for
 	 * @return The position of the item, or -1 when not present
@@ -250,7 +250,7 @@ public:
 	/**
 	 * Get item "number" (const)
 	 *
-	 * @param index the positon of the item
+	 * @param index the position of the item
 	 * @return the item
 	 */
 	FORCEINLINE const T &operator[](uint index) const
@@ -262,7 +262,7 @@ public:
 	/**
 	 * Get item "number"
 	 *
-	 * @param index the positon of the item
+	 * @param index the position of the item
 	 * @return the item
 	 */
 	FORCEINLINE T &operator[](uint index)

@@ -141,7 +141,7 @@ struct ViewportDrawer {
 	int foundation[FOUNDATION_PART_END];             ///< Foundation sprites (index into parent_sprites_to_draw).
 	FoundationPart foundation_part;                  ///< Currently active foundation for ground sprite drawing.
 	int *last_foundation_child[FOUNDATION_PART_END]; ///< Tail of ChildSprite list of the foundations. (index into child_screen_sprites_to_draw)
-	Point foundation_offset[FOUNDATION_PART_END];    ///< Pixeloffset for ground sprites on the foundations.
+	Point foundation_offset[FOUNDATION_PART_END];    ///< Pixel offset for ground sprites on the foundations.
 };
 
 static ViewportDrawer _vd;
@@ -297,7 +297,7 @@ static void SetViewportPosition(Window *w, int x, int y)
 	vp->virtual_left = x;
 	vp->virtual_top = y;
 
-	/* viewport is bound to its left top corner, so it must be rounded down (UnScaleByZoomLower)
+	/* Viewport is bound to its left top corner, so it must be rounded down (UnScaleByZoomLower)
 	 * else glitch described in FS#1412 will happen (offset by 1 pixel with zoom level > NORMAL)
 	 */
 	old_left = UnScaleByZoomLower(old_left, vp->zoom);
@@ -465,7 +465,7 @@ void HandleZoomMessage(Window *w, const ViewPort *vp, byte widget_zoom_in, byte 
 }
 
 /**
- * Shedules a tile sprite for drawing.
+ * Schedules a tile sprite for drawing.
  *
  * @param image the image to draw.
  * @param pal the provided palette.
@@ -868,7 +868,7 @@ static bool IsPartOfAutoLine(int px, int py)
 		case HT_DIR_Y:  return px == 0; // y direction
 		case HT_DIR_HU: return px == -py || px == -py - 16; // horizontal upper
 		case HT_DIR_HL: return px == -py || px == -py + 16; // horizontal lower
-		case HT_DIR_VL: return px == py || px == py + 16; // vertival left
+		case HT_DIR_VL: return px == py || px == py + 16; // vertical left
 		case HT_DIR_VR: return px == py || px == py - 16; // vertical right
 		default:
 			NOT_REACHED();
@@ -1085,7 +1085,7 @@ static void ViewportAddLandscape()
  * @param sign sign position and dimension
  * @param string_normal String for normal and 2x zoom level
  * @param string_small String for 4x and 8x zoom level
- * @param string_small_shadow Shadow string for 4x and 8x zoom level; or STR_NULL if no shadow
+ * @param string_small_shadow Shadow string for 4x and 8x zoom level; or #STR_NULL if no shadow
  * @param colour colour of the sign background; or 0 if transparent
  */
 void ViewportAddString(const DrawPixelInfo *dpi, ZoomLevel small_from, const ViewportSign *sign, StringID string_normal, StringID string_small, StringID string_small_shadow, uint64 params_1, uint64 params_2, Colours colour)
@@ -1499,7 +1499,7 @@ static inline void ClampViewportToMap(const ViewPort *vp, int &x, int &y)
 	x = (-vx + vy) / 2;
 	y = ( vx + vy) / 4;
 
-	/* Remove centreing */
+	/* Remove centering */
 	x -= vp->virtual_width / 2;
 	y -= vp->virtual_height / 2;
 }
@@ -1529,7 +1529,7 @@ void UpdateViewportPosition(Window *w)
 		if (delta_x != 0 || delta_y != 0) {
 			if (_settings_client.gui.smooth_scroll) {
 				int max_scroll = ScaleByMapSize1D(512);
-				/* Not at our desired positon yet... */
+				/* Not at our desired position yet... */
 				w->viewport->scrollpos_x += Clamp(delta_x / 4, -max_scroll, max_scroll);
 				w->viewport->scrollpos_y += Clamp(delta_y / 4, -max_scroll, max_scroll);
 			} else {

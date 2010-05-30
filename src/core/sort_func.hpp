@@ -38,7 +38,7 @@ static FORCEINLINE void QSortT(T *base, uint num, int (CDECL *comparator)(const 
  * Type safe Gnome Sort.
  *
  * This is a slightly modifyied Gnome search. The basic
- * Gnome search trys to sort already sorted list parts.
+ * Gnome search tries to sort already sorted list parts.
  * The modification skips these.
  *
  * @note Use this sort for presorted / regular sorted data.

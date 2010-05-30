@@ -44,7 +44,7 @@ Window *_z_front_window = NULL;
 Window *_z_back_window  = NULL;
 
 /*
- * Window that currently have focus. - The main purpose is to generate
+ * Window that currently has focus. - The main purpose is to generate
  * FocusLost events, not to give next window in z-order focus when a
  * window is closed.
  */
