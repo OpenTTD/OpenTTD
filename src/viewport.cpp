@@ -2640,23 +2640,23 @@ calc_heightdiff_single_direction:;
 
 /**
  * Handle the mouse while dragging for placement/resizing.
- * @return Boolean whether search for a handler should continue
+ * @return State of handling the event.
  */
-bool VpHandlePlaceSizingDrag()
+EventState VpHandlePlaceSizingDrag()
 {
-	if (_special_mouse_mode != WSM_SIZING) return true;
+	if (_special_mouse_mode != WSM_SIZING) return ES_NOT_HANDLED;
 
 	/* stop drag mode if the window has been closed */
 	Window *w = FindWindowById(_thd.window_class, _thd.window_number);
 	if (w == NULL) {
 		ResetObjectToPlace();
-		return false;
+		return ES_HANDLED;
 	}
 
 	/* while dragging execute the drag procedure of the corresponding window (mostly VpSelectTilesWithMethod() ) */
 	if (_left_button_down) {
 		w->OnPlaceDrag(_thd.select_method, _thd.select_proc, GetTileBelowCursor());
-		return false;
+		return ES_HANDLED;
 	}
 
 	/* mouse button released..
@@ -2675,7 +2675,7 @@ bool VpHandlePlaceSizingDrag()
 
 	w->OnPlaceMouseUp(_thd.select_method, _thd.select_proc, _thd.selend, TileVirtXY(_thd.selstart.x, _thd.selstart.y), TileVirtXY(_thd.selend.x, _thd.selend.y));
 
-	return false;
+	return ES_HANDLED;
 }
 
 void SetObjectToPlaceWnd(CursorID icon, PaletteID pal, HighLightStyle mode, Window *w)
