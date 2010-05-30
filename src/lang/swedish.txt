@@ -2433,6 +2433,13 @@ STR_NEWGRF_BUGGY                                                :{WHITE}NyGRF '{
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Last/återställnings information för '{1:ENGINE}' är skilld ifrån köp lista efter konstruktion. Detta kan leda till att den automatiska förnyelsen slår fel
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' skapade en ändlös loop i produktions-systemet
 
+# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+STR_NEWGRF_INVALID_CARGO                                        :<invalid cargo>
+STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
+STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} av <invalid cargo>
+STR_NEWGRF_INVALID_ENGINE                                       :<invalid engine>
+STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<invalid industry>
+
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Skyltlista - {COMMA} Skylt{P "" ar}
 
@@ -3672,6 +3679,9 @@ STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... för
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Kan inte placera skylt här...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Kan inte ändra skyltnamn...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Kan inte ta bort skylt...
+
+# Translatable comment for OpenTTD's desktop shortcut
+STR_DESKTOP_SHORTCUT_COMMENT                                    :En klon av Transport Tycoon Deluxe
 
 ##id 0x2000
 # Town building names
