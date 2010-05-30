@@ -1406,7 +1406,8 @@ static EventState HandleMouseDrag()
 	return ES_HANDLED;
 }
 
-static bool HandleMouseOver()
+/** Report position of the mouse to the underlying window. */
+static void HandleMouseOver()
 {
 	Window *w = FindWindowFromPt(_cursor.pos.x, _cursor.pos.y);
 
@@ -1426,9 +1427,6 @@ static bool HandleMouseOver()
 		const NWidgetCore *widget = w->nested_root->GetWidgetFromPos(pt.x, pt.y);
 		if (widget != NULL) w->OnMouseOver(pt, widget->index);
 	}
-
-	/* Mouseover never stops execution */
-	return true;
 }
 
 /**
@@ -2094,7 +2092,8 @@ static void MouseLoop(MouseClick click, int mousewheel)
 	if (HandleWindowDragging()     == ES_HANDLED) return;
 	if (HandleScrollbarScrolling() == ES_HANDLED) return;
 	if (HandleViewportScroll()     == ES_HANDLED) return;
-	if (!HandleMouseOver())          return;
+
+	HandleMouseOver();
 
 	bool scrollwheel_scrolling = _settings_client.gui.scrollwheel_scrolling == 1 && (_cursor.v_wheel != 0 || _cursor.h_wheel != 0);
 	if (click == MC_NONE && mousewheel == 0 && !scrollwheel_scrolling) return;
