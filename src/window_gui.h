@@ -19,6 +19,12 @@
 #include "tile_type.h"
 #include "widget_type.h"
 
+/** State of handling an event. */
+enum EventState {
+	ES_HANDLED,     ///< The passed event is handled.
+	ES_NOT_HANDLED, ///< The passed event is not handled.
+};
+
 /**
  * Flags to describe the look of the frame
  */
@@ -334,12 +340,6 @@ struct ViewportData : ViewPort {
  * Data structure for an opened window
  */
 struct Window : ZeroedMemoryAllocator {
-	/** State whether an event is handled or not */
-	enum EventState {
-		ES_HANDLED,     ///< The passed event is handled
-		ES_NOT_HANDLED, ///< The passed event is not handled
-	};
-
 protected:
 	void InitializeData(const WindowDesc *desc, WindowNumber window_number);
 	void InitializePositionSize(int x, int y, int min_width, int min_height);

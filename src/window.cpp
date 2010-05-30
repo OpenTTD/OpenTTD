@@ -1938,14 +1938,14 @@ void HandleKeypress(uint32 raw_key)
 	/* Check if the focused window has a focused editbox */
 	if (EditBoxInGlobalFocus()) {
 		/* All input will in this case go to the focused window */
-		if (_focused_window->OnKeyPress(key, keycode) == Window::ES_HANDLED) return;
+		if (_focused_window->OnKeyPress(key, keycode) == ES_HANDLED) return;
 	}
 
 	/* Call the event, start with the uppermost window, but ignore the toolbar. */
 	Window *w;
 	FOR_ALL_WINDOWS_FROM_FRONT(w) {
 		if (w->window_class == WC_MAIN_TOOLBAR) continue;
-		if (w->OnKeyPress(key, keycode) == Window::ES_HANDLED) return;
+		if (w->OnKeyPress(key, keycode) == ES_HANDLED) return;
 	}
 
 	w = FindWindowById(WC_MAIN_TOOLBAR, 0);
@@ -1961,7 +1961,7 @@ void HandleCtrlChanged()
 	/* Call the event, start with the uppermost window. */
 	Window *w;
 	FOR_ALL_WINDOWS_FROM_FRONT(w) {
-		if (w->OnCTRLStateChange() == Window::ES_HANDLED) return;
+		if (w->OnCTRLStateChange() == ES_HANDLED) return;
 	}
 }
 

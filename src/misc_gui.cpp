@@ -1158,11 +1158,11 @@ bool QueryString::HasEditBoxFocus(const Window *w, int wid) const
 	return w->parent->nested_focus != NULL && w->parent->nested_focus->type == WWT_EDITBOX;
 }
 
-HandleEditBoxResult QueryString::HandleEditBoxKey(Window *w, int wid, uint16 key, uint16 keycode, Window::EventState &state)
+HandleEditBoxResult QueryString::HandleEditBoxKey(Window *w, int wid, uint16 key, uint16 keycode, EventState &state)
 {
 	if (!QueryString::HasEditBoxFocus(w, wid)) return HEBR_NOT_FOCUSED;
 
-	state = Window::ES_HANDLED;
+	state = ES_HANDLED;
 
 	switch (keycode) {
 		case WKC_ESC: return HEBR_CANCEL;
@@ -1196,7 +1196,7 @@ HandleEditBoxResult QueryString::HandleEditBoxKey(Window *w, int wid, uint16 key
 			if (IsValidChar(key, this->afilter)) {
 				if (InsertTextBufferChar(&this->text, key)) w->SetWidgetDirty(wid);
 			} else {
-				state = Window::ES_NOT_HANDLED;
+				state = ES_NOT_HANDLED;
 			}
 	}
 

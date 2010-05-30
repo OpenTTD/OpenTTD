@@ -56,7 +56,7 @@ private:
 public:
 	void DrawEditBox(Window *w, int wid);
 	void HandleEditBox(Window *w, int wid);
-	HandleEditBoxResult HandleEditBoxKey(Window *w, int wid, uint16 key, uint16 keycode, Window::EventState &state);
+	HandleEditBoxResult HandleEditBoxKey(Window *w, int wid, uint16 key, uint16 keycode, EventState &state);
 };
 
 struct QueryStringBaseWindow : public Window, public QueryString {
