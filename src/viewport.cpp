@@ -1187,9 +1187,7 @@ void ViewportSign::UpdatePosition(int center, int top, StringID str)
 	this->center = center;
 
 	/* zoomed out version */
-	_cur_fontsize = FS_SMALL;
-	this->width_small = VPSM_LEFT + Align(GetStringBoundingBox(buffer).width, 2) + VPSM_RIGHT;
-	_cur_fontsize = FS_NORMAL;
+	this->width_small = VPSM_LEFT + Align(GetStringBoundingBox(buffer, FS_SMALL).width, 2) + VPSM_RIGHT;
 
 	this->MarkDirty();
 }

@@ -112,9 +112,9 @@ void GfxFillRect(int left, int top, int right, int bottom, int colour, FillRectM
 void GfxDrawLine(int left, int top, int right, int bottom, int colour);
 void DrawBox(int x, int y, int dx1, int dy1, int dx2, int dy2, int dx3, int dy3);
 
-Dimension GetStringBoundingBox(const char *str);
+Dimension GetStringBoundingBox(const char *str, FontSize start_fontsize = FS_NORMAL);
 Dimension GetStringBoundingBox(StringID strid);
-uint32 FormatStringLinebreaks(char *str, const char *last, int maxw);
+uint32 FormatStringLinebreaks(char *str, const char *last, int maxw, FontSize start_fontsize = FS_NORMAL);
 int GetStringHeight(StringID str, int maxw);
 Dimension GetStringMultiLineBoundingBox(StringID str, const Dimension &suggestion);
 void LoadStringWidthTable();
@@ -155,8 +155,6 @@ void SortResolutions(int count);
 bool ToggleFullScreen(bool fs);
 
 /* gfx.cpp */
-extern FontSize _cur_fontsize; ///< Currently selected font.
-
 byte GetCharacterWidth(FontSize size, uint32 key);
 byte GetDigitWidth(FontSize size = FS_NORMAL);
 

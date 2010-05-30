@@ -59,8 +59,17 @@ byte _colour_gradient[COLOUR_END][8];
 
 static void GfxMainBlitter(const Sprite *sprite, int x, int y, BlitterMode mode, const SubSprite *sub = NULL, SpriteID sprite_id = SPR_CURSOR_MOUSE);
 
-FontSize _cur_fontsize;
-static FontSize _last_fontsize;
+/**
+ * Text drawing parameters, which can change while drawing a line, but are kept between multiple parts
+ * of the same text, e.g. on line breaks.
+ **/
+struct DrawStringParams {
+	FontSize fontsize;
+	TextColour cur_colour, prev_colour;
+
+	DrawStringParams(TextColour colour) : fontsize(FS_NORMAL), cur_colour(colour), prev_colour(colour) {}
+};
+
 static ReusableBuffer<uint8> _cursor_backup;
 
 /**
@@ -331,12 +340,13 @@ static UChar *HandleBiDiAndArabicShapes(UChar *buffer)
  * @param *str string that is checked and possibly truncated
  * @param maxw maximum width in pixels of the string
  * @param ignore_setxy whether to ignore SETX(Y) or not
+ * @param start_fontsize Fontsize to start the text with
  * @return new width of (truncated) string
  */
-static int TruncateString(char *str, int maxw, bool ignore_setxy)
+static int TruncateString(char *str, int maxw, bool ignore_setxy, FontSize start_fontsize)
 {
 	int w = 0;
-	FontSize size = _cur_fontsize;
+	FontSize size = start_fontsize;
 	int ddd, ddd_w;
 
 	WChar c;
@@ -383,16 +393,17 @@ static int TruncateString(char *str, int maxw, bool ignore_setxy)
 	return w;
 }
 
-static int ReallyDoDrawString(const UChar *string, int x, int y, TextColour &colour, bool parse_string_also_when_clipped = false);
+static int ReallyDoDrawString(const UChar *string, int x, int y, DrawStringParams &params, bool parse_string_also_when_clipped = false);
 
 /**
  * Get the real width of the string.
  * @param str the string to draw
+ * @param start_fontsize Fontsize to start the text with
  * @return the width.
  */
-static int GetStringWidth(const UChar *str)
+static int GetStringWidth(const UChar *str, FontSize start_fontsize)
 {
-	FontSize size = _cur_fontsize;
+	FontSize size = start_fontsize;
 	int max_width;
 	int width;
 	WChar c;
@@ -430,7 +441,7 @@ static int GetStringWidth(const UChar *str)
  * @param top    The top most position to draw on.
  * @param str    String to draw.
  * @param last   The end of the string buffer to draw.
- * @param colour Colour used for drawing the string, see DoDrawString() for details
+ * @param params Text drawing parameters.
  * @param align  The alignment of the string when drawing left-to-right. In the
  *               case a right-to-left language is chosen this is inverted so it
  *               will be drawn in the right direction.
@@ -440,7 +451,7 @@ static int GetStringWidth(const UChar *str)
  * @return In case of left or center alignment the right most pixel we have drawn to.
  *         In case of right alignment the left most pixel we have drawn to.
  */
-static int DrawString(int left, int right, int top, char *str, const char *last, TextColour colour, StringAlignment align, bool underline = false, bool truncate = true)
+static int DrawString(int left, int right, int top, char *str, const char *last, DrawStringParams &params, StringAlignment align, bool underline = false, bool truncate = true)
 {
 	/* We need the outer limits of both left/right */
 	int min_left = INT32_MAX;
@@ -450,7 +461,7 @@ static int DrawString(int left, int right, int top, char *str, const char *last,
 	int initial_right = right;
 	int initial_top = top;
 
-	if (truncate) TruncateString(str, right - left + 1, (align & SA_STRIP) == SA_STRIP);
+	if (truncate) TruncateString(str, right - left + 1, (align & SA_STRIP) == SA_STRIP, params.fontsize);
 
 	/*
 	 * To support SETX and SETXY properly with RTL languages we have to
@@ -530,12 +541,10 @@ static int DrawString(int left, int right, int top, char *str, const char *last,
 			to_draw++;
 			offset = *to_draw++;
 			if (*to_draw == SCC_SETXY) top = initial_top + *to_draw++;
-
-			_cur_fontsize = _last_fontsize;
 		}
 
 		to_draw = HandleBiDiAndArabicShapes(to_draw);
-		int w = GetStringWidth(to_draw);
+		int w = GetStringWidth(to_draw, params.fontsize);
 
 		/* right is the right most position to draw on. In this case we want to do
 		 * calculations with the width of the string. In comparison right can be
@@ -566,13 +575,11 @@ static int DrawString(int left, int right, int top, char *str, const char *last,
 		min_left  = min(left, min_left);
 		max_right = max(right, max_right);
 
-		ReallyDoDrawString(to_draw, left, top, colour, !truncate);
+		ReallyDoDrawString(to_draw, left, top, params, !truncate);
 		if (underline) {
 			GfxFillRect(left, top + FONT_HEIGHT_NORMAL, right, top + FONT_HEIGHT_NORMAL, _string_colourremap[1]);
 		}
 	}
-
-	_cur_fontsize = FS_NORMAL;
 
 	return align == SA_RIGHT ? min_left : max_right;
 }
@@ -594,7 +601,8 @@ int DrawString(int left, int right, int top, const char *str, TextColour colour,
 {
 	char buffer[DRAW_STRING_BUFFER];
 	strecpy(buffer, str, lastof(buffer));
-	return DrawString(left, right, top, buffer, lastof(buffer), colour, align, underline);
+	DrawStringParams params(colour);
+	return DrawString(left, right, top, buffer, lastof(buffer), params, align, underline);
 }
 
 /**
@@ -614,7 +622,8 @@ int DrawString(int left, int right, int top, StringID str, TextColour colour, St
 {
 	char buffer[DRAW_STRING_BUFFER];
 	GetString(buffer, str, lastof(buffer));
-	return DrawString(left, right, top, buffer, lastof(buffer), colour, align, underline);
+	DrawStringParams params(colour);
+	return DrawString(left, right, top, buffer, lastof(buffer), params, align, underline);
 }
 
 /**
@@ -632,13 +641,14 @@ int DrawString(int left, int right, int top, StringID str, TextColour colour, St
  * @param str string to check and correct for length restrictions
  * @param last the last valid location (for '\0') in the buffer of str
  * @param maxw the maximum width the string can have on one line
+ * @param start_fontsize Fontsize to start the text with
  * @return return a 32bit wide number consisting of 2 packed values:
  *  0 - 15 the number of lines ADDED to the string
  * 16 - 31 the fontsize in which the length calculation was done at
  */
-uint32 FormatStringLinebreaks(char *str, const char *last, int maxw)
+uint32 FormatStringLinebreaks(char *str, const char *last, int maxw, FontSize start_fontsize)
 {
-	FontSize size = _cur_fontsize;
+	FontSize size = start_fontsize;
 	int num = 0;
 
 	assert(maxw > 0);
@@ -729,14 +739,15 @@ end_of_inner_loop:
 /** Calculates height of string (in pixels). Accepts multiline string with '\0' as separators.
  * @param src string to check
  * @param num number of extra lines (output of FormatStringLinebreaks())
+ * @param start_fontsize Fontsize to start the text with
  * @note assumes text won't be truncated. FormatStringLinebreaks() is a good way to ensure that.
  * @return height of pixels of string when it is drawn
  */
-static int GetMultilineStringHeight(const char *src, int num)
+static int GetMultilineStringHeight(const char *src, int num, FontSize start_fontsize)
 {
 	int maxy = 0;
 	int y = 0;
-	int fh = GetCharacterHeight(_cur_fontsize);
+	int fh = GetCharacterHeight(start_fontsize);
 
 	for (;;) {
 		WChar c = Utf8Consume(&src);
@@ -767,7 +778,7 @@ int GetStringHeight(StringID str, int maxw)
 
 	uint32 tmp = FormatStringLinebreaks(buffer, lastof(buffer), maxw);
 
-	return GetMultilineStringHeight(buffer, GB(tmp, 0, 16));
+	return GetMultilineStringHeight(buffer, GB(tmp, 0, 16), FS_NORMAL);
 }
 
 /** Calculate string bounding box for multi-line strings.
@@ -826,18 +837,18 @@ int DrawStringMultiLine(int left, int right, int top, int bottom, StringID str, 
 	int y = (align == SA_CENTER) ? RoundDivSU(bottom + top - total_height, 2) : top;
 	const char *src = buffer;
 
+	DrawStringParams params(colour);
+
 	for (;;) {
 		char buf2[DRAW_STRING_BUFFER];
 		strecpy(buf2, src, lastof(buf2));
-		DrawString(left, right, y, buf2, lastof(buf2), colour, align, underline, false);
-		_cur_fontsize = _last_fontsize;
+		DrawString(left, right, y, buf2, lastof(buf2), params, align, underline, false);
 
 		for (;;) {
 			WChar c = Utf8Consume(&src);
 			if (c == 0) {
 				y += mt;
 				if (--num < 0) {
-					_cur_fontsize = FS_NORMAL;
 					return y;
 				}
 				break;
@@ -856,10 +867,11 @@ int DrawStringMultiLine(int left, int right, int top, int bottom, StringID str, 
  * are therefore a rough estimation correct for all the current strings
  * but not every possible combination
  * @param str string to calculate pixel-width
+ * @param start_fontsize Fontsize to start the text with
  * @return string width and height in pixels */
-Dimension GetStringBoundingBox(const char *str)
+Dimension GetStringBoundingBox(const char *str, FontSize start_fontsize)
 {
-	FontSize size = _cur_fontsize;
+	FontSize size = start_fontsize;
 	Dimension br;
 	uint max_width;
 	WChar c;
@@ -926,8 +938,7 @@ void DrawCharCentered(WChar c, int x, int y, TextColour colour)
  * @param string              The string to draw. This is already bidi reordered.
  * @param x                   Offset from left side of the screen
  * @param y                   Offset from top side of the screen
- * @param colour              Colour of the string, see _string_colourmap in
- *                            table/palettes.h or docs/ottd-colourtext-palette.png or the enum TextColour in gfx_type.h
+ * @param params              Text drawing parameters
  * @param parse_string_also_when_clipped
  *                            By default, always test the available space where to draw the string.
  *                            When in multipline drawing, it would already be done,
@@ -937,25 +948,20 @@ void DrawCharCentered(WChar c, int x, int y, TextColour colour)
  * @return                    the x-coordinates where the drawing has finished.
  *                            If nothing is drawn, the originally passed x-coordinate is returned
  */
-static int ReallyDoDrawString(const UChar *string, int x, int y, TextColour &colour, bool parse_string_also_when_clipped)
+static int ReallyDoDrawString(const UChar *string, int x, int y, DrawStringParams &params, bool parse_string_also_when_clipped)
 {
 	DrawPixelInfo *dpi = _cur_dpi;
-	FontSize size = _cur_fontsize;
 	UChar c;
 	int xo = x;
-
-	TextColour previous_colour = colour;
 
 	if (!parse_string_also_when_clipped) {
 		/* in "mode multiline", the available space have been verified. Not in regular one.
 		 * So if the string cannot be drawn, return the original start to say so.*/
 		if (x >= dpi->left + dpi->width || y >= dpi->top + dpi->height) return x;
-
-		if (colour != TC_INVALID) { // the invalid colour flag test should not really occur. But better be safe
-switch_colour:;
-			SetColourRemap(colour);
-		}
 	}
+
+switch_colour:;
+	SetColourRemap(params.cur_colour);
 
 check_bounds:
 	if (y + _max_char_height <= dpi->top || dpi->top + dpi->height <= y) {
@@ -970,33 +976,32 @@ skip_char:;
 		c = *string++;
 skip_cont:;
 		if (c == 0) {
-			_last_fontsize = size;
 			return x;  // Nothing more to draw, get out. And here is the new x position
 		}
 		if (IsPrintable(c)) {
 			if (x >= dpi->left + dpi->width) goto skip_char;
 			if (x + _max_char_width >= dpi->left) {
-				GfxMainBlitter(GetGlyph(size, c), x, y, BM_COLOUR_REMAP);
+				GfxMainBlitter(GetGlyph(params.fontsize, c), x, y, BM_COLOUR_REMAP);
 			}
-			x += GetCharacterWidth(size, c);
+			x += GetCharacterWidth(params.fontsize, c);
 		} else if (c == '\n') { // newline = {}
 			x = xo;  // We require a new line, so the x coordinate is reset
-			y += GetCharacterHeight(size);
+			y += GetCharacterHeight(params.fontsize);
 			goto check_bounds;
 		} else if (c >= SCC_BLUE && c <= SCC_BLACK) { // change colour?
-			previous_colour = colour;
-			colour = (TextColour)(c - SCC_BLUE);
+			params.prev_colour = params.cur_colour;
+			params.cur_colour = (TextColour)(c - SCC_BLUE);
 			goto switch_colour;
 		} else if (c == SCC_PREVIOUS_COLOUR) { // revert to the previous colour
-			Swap(colour, previous_colour);
+			Swap(params.cur_colour, params.prev_colour);
 			goto switch_colour;
 		} else if (c == SCC_SETX || c == SCC_SETXY) { // {SETX}/{SETXY}
 			/* The characters are handled before calling this. */
 			NOT_REACHED();
 		} else if (c == SCC_TINYFONT) { // {TINYFONT}
-			size = FS_SMALL;
+			params.fontsize = FS_SMALL;
 		} else if (c == SCC_BIGFONT) { // {BIGFONT}
-			size = FS_LARGE;
+			params.fontsize = FS_LARGE;
 		} else {
 			DEBUG(misc, 0, "[utf8] unknown string command character %d", c);
 		}
