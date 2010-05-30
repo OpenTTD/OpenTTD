@@ -1285,7 +1285,7 @@ void InitWindowSystem()
 	_z_front_window = NULL;
 	_focused_window = NULL;
 	_mouseover_last_w = NULL;
-	_scrolling_viewport = 0;
+	_scrolling_viewport = false;
 
 	NWidgetLeaf::InvalidateDimensionCache(); // Reset cached sizes of several widgets.
 }
