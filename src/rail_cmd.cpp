@@ -36,6 +36,7 @@
 #include "town.h"
 #include "pbs.h"
 #include "company_base.h"
+#include "core/backup_type.hpp"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -641,9 +642,10 @@ bool FloodHalftile(TileIndex t)
 
 		TrackBits to_remove = lower_track & rail_bits;
 		if (to_remove != 0) {
-			_current_company = OWNER_WATER;
-			if (DoCommand(t, 0, FIND_FIRST_BIT(to_remove), DC_EXEC, CMD_REMOVE_SINGLE_RAIL).Failed()) return flooded; // not yet floodable
-			flooded = true;
+			Backup<CompanyByte> cur_company(_current_company, OWNER_WATER);
+			flooded = DoCommand(t, 0, FIND_FIRST_BIT(to_remove), DC_EXEC, CMD_REMOVE_SINGLE_RAIL).Succeeded();
+			cur_company.Restore();
+			if (!flooded) return flooded; // not yet floodable
 			rail_bits = rail_bits & ~to_remove;
 			if (rail_bits == 0) {
 				MakeShore(t);

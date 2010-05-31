@@ -43,6 +43,7 @@
 #include "ai/ai.hpp"
 #include "company_base.h"
 #include "core/random_func.hpp"
+#include "core/backup_type.hpp"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -72,10 +73,9 @@ static void DisasterClearSquare(TileIndex tile)
 	switch (GetTileType(tile)) {
 		case MP_RAILWAY:
 			if (Company::IsHumanID(GetTileOwner(tile))) {
-				CompanyID old_company = _current_company;
-				_current_company = OWNER_WATER;
+				Backup<CompanyByte> cur_company(_current_company, OWNER_WATER);
 				DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
-				_current_company = old_company;
+				cur_company.Restore();
 
 				/* update signals in buffer */
 				UpdateSignalsInBuffer();
@@ -83,10 +83,9 @@ static void DisasterClearSquare(TileIndex tile)
 			break;
 
 		case MP_HOUSE: {
-			CompanyID old_company = _current_company;
-			_current_company = OWNER_NONE;
+			Backup<CompanyByte> cur_company(_current_company, OWNER_NONE);
 			DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
-			_current_company = old_company;
+			cur_company.Restore();
 			break;
 		}
 

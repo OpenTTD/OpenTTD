@@ -34,6 +34,7 @@
 #include "station_base.h"
 #include "ai/ai.hpp"
 #include "core/random_func.hpp"
+#include "core/backup_type.hpp"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -881,7 +882,7 @@ void DoFloodTile(TileIndex target)
 
 	bool flooded = false; // Will be set to true if something is changed.
 
-	_current_company = OWNER_WATER;
+	Backup<CompanyByte> cur_company(_current_company, OWNER_WATER);
 
 	Slope tileh = GetTileSlope(target, NULL);
 	if (tileh != SLOPE_FLAT) {
@@ -933,7 +934,7 @@ void DoFloodTile(TileIndex target)
 		UpdateSignalsInBuffer();
 	}
 
-	_current_company = OWNER_NONE;
+	cur_company.Restore();
 }
 
 /**
@@ -941,7 +942,7 @@ void DoFloodTile(TileIndex target)
  */
 static void DoDryUp(TileIndex tile)
 {
-	_current_company = OWNER_WATER;
+	Backup<CompanyByte> cur_company(_current_company, OWNER_WATER);
 
 	switch (GetTileType(tile)) {
 		case MP_RAILWAY:
@@ -977,7 +978,7 @@ static void DoDryUp(TileIndex tile)
 		default: NOT_REACHED();
 	}
 
-	_current_company = OWNER_NONE;
+	cur_company.Restore();
 }
 
 /**

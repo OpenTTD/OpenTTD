@@ -50,6 +50,7 @@
 #include "core/random_func.hpp"
 #include "engine_base.h"
 #include "newgrf.h"
+#include "core/backup_type.hpp"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -772,10 +773,11 @@ void CallVehicleTicks()
 		}
 	}
 
+	Backup<CompanyByte> cur_company(_current_company);
 	for (AutoreplaceMap::iterator it = _vehicles_to_autoreplace.Begin(); it != _vehicles_to_autoreplace.End(); it++) {
 		v = it->first;
 		/* Autoreplace needs the current company set as the vehicle owner */
-		_current_company = v->owner;
+		cur_company.Change(v->owner);
 
 		/* Start vehicle if we stopped them in VehicleEnteredDepotThisTick()
 		 * We need to stop them between VehicleEnteredDepotThisTick() and here or we risk that
@@ -816,7 +818,7 @@ void CallVehicleTicks()
 		AddVehicleNewsItem(message, NS_ADVICE, v->index);
 	}
 
-	_current_company = OWNER_NONE;
+	cur_company.Restore();
 }
 
 static void DoDrawVehicle(const Vehicle *v)
@@ -1110,8 +1112,9 @@ void VehicleEnterDepot(Vehicle *v)
 		}
 
 		if (t.IsRefit()) {
-			_current_company = v->owner;
+			Backup<CompanyByte> cur_company(_current_company, v->owner);
 			CommandCost cost = DoCommand(v->tile, v->index, t.GetRefitCargo() | t.GetRefitSubtype() << 8, DC_EXEC, GetCmdRefitVeh(v));
+			cur_company.Restore();
 
 			if (cost.Failed()) {
 				_vehicles_to_autoreplace[v] = false;

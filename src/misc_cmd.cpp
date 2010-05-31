@@ -21,6 +21,7 @@
 #include "company_func.h"
 #include "company_gui.h"
 #include "company_base.h"
+#include "core/backup_type.hpp"
 
 #include "table/strings.h"
 
@@ -228,10 +229,9 @@ CommandCost CmdGiveMoney(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 
 	if (flags & DC_EXEC) {
 		/* Add money to company */
-		CompanyID old_company = _current_company;
-		_current_company = (CompanyID)p2;
+		Backup<CompanyByte> cur_company(_current_company, (CompanyID)p2);
 		SubtractMoneyFromCompany(CommandCost(EXPENSES_OTHER, -amount.GetCost()));
-		_current_company = old_company;
+		cur_company.Restore();
 	}
 
 	/* Subtract money from local-company */

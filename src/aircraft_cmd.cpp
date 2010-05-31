@@ -36,6 +36,7 @@
 #include "engine_base.h"
 #include "engine_func.h"
 #include "core/random_func.hpp"
+#include "core/backup_type.hpp"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -1203,12 +1204,9 @@ void HandleMissingAircraftOrders(Aircraft *v)
 	 */
 	const Station *st = GetTargetAirportIfValid(v);
 	if (st == NULL) {
-		CommandCost ret;
-		CompanyID old_company = _current_company;
-
-		_current_company = v->owner;
-		ret = DoCommand(v->tile, v->index, 0, DC_EXEC, CMD_SEND_AIRCRAFT_TO_HANGAR);
-		_current_company = old_company;
+		Backup<CompanyByte> cur_company(_current_company, v->owner);
+		CommandCost ret = DoCommand(v->tile, v->index, 0, DC_EXEC, CMD_SEND_AIRCRAFT_TO_HANGAR);
+		cur_company.Restore();
 
 		if (ret.Failed()) CrashAirplane(v);
 	} else if (!v->current_order.IsType(OT_GOTO_DEPOT)) {
@@ -1512,9 +1510,9 @@ static void AircraftEventHandler_HeliTakeOff(Aircraft *v, const AirportFTAClass 
 
 	/* Send the helicopter to a hangar if needed for replacement */
 	if (v->NeedsAutomaticServicing()) {
-		_current_company = v->owner;
+		Backup<CompanyByte> cur_company(_current_company, v->owner);
 		DoCommand(v->tile, v->index, DEPOT_SERVICE | DEPOT_LOCATE_HANGAR, DC_EXEC, CMD_SEND_AIRCRAFT_TO_HANGAR);
-		_current_company = OWNER_NONE;
+		cur_company.Restore();
 	}
 }
 
@@ -1564,9 +1562,9 @@ static void AircraftEventHandler_Landing(Aircraft *v, const AirportFTAClass *apc
 
 	/* check if the aircraft needs to be replaced or renewed and send it to a hangar if needed */
 	if (v->NeedsAutomaticServicing()) {
-		_current_company = v->owner;
+		Backup<CompanyByte> cur_company(_current_company, v->owner);
 		DoCommand(v->tile, v->index, DEPOT_SERVICE, DC_EXEC, CMD_SEND_AIRCRAFT_TO_HANGAR);
-		_current_company = OWNER_NONE;
+		cur_company.Restore();
 	}
 }
 

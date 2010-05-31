@@ -33,6 +33,7 @@
 #include "company_base.h"
 #include "core/geometry_func.hpp"
 #include "core/random_func.hpp"
+#include "core/backup_type.hpp"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -522,12 +523,14 @@ public:
 				return;
 			}
 
-			_current_company = OWNER_NONE;
+			Backup<CompanyByte> cur_company(_current_company, OWNER_NONE);
 			_generating_world = true;
 			_ignore_restrictions = true;
+
 			DoCommandP(tile, (InteractiveRandomRange(indsp->num_table) << 8) | this->selected_type, seed,
 					CMD_BUILD_INDUSTRY | CMD_MSG(STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY), &CcBuildIndustry);
 
+			cur_company.Restore();
 			_ignore_restrictions = false;
 			_generating_world = false;
 		} else {

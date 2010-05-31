@@ -26,6 +26,7 @@
 #include "../textbuf_gui.h"
 #include "../settings_func.h"
 #include "../network/network_content.h"
+#include "../core/backup_type.hpp"
 
 #include "ai.hpp"
 #include "api/ai_log.hpp"
@@ -819,10 +820,9 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 			DrawCompanyIcon(i, button->pos_x + button->current_x / 2 - 7 + offset, this->GetWidget<NWidgetBase>(AID_WIDGET_COMPANY_BUTTON_START + i)->pos_y + 2 + offset);
 		}
 
-		CompanyID old_company = _current_company;
-		_current_company = ai_debug_company;
+		Backup<CompanyByte> cur_company(_current_company, ai_debug_company);
 		AILog::LogData *log = (AILog::LogData *)AIObject::GetLogPointer();
-		_current_company = old_company;
+		cur_company.Restore();
 
 		int scroll_count = (log == NULL) ? 0 : log->used;
 		if (this->vscroll.GetCount() != scroll_count) {
@@ -875,10 +875,9 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 
 		switch (widget) {
 			case AID_WIDGET_LOG_PANEL: {
-				CompanyID old_company = _current_company;
-				_current_company = ai_debug_company;
+				Backup<CompanyByte> cur_company(_current_company, ai_debug_company);
 				AILog::LogData *log = (AILog::LogData *)AIObject::GetLogPointer();
-				_current_company = old_company;
+				cur_company.Restore();
 				if (log == NULL) return;
 
 				int y = this->top_offset;
@@ -915,10 +914,9 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 		this->RaiseWidget(ai_debug_company + AID_WIDGET_COMPANY_BUTTON_START);
 		ai_debug_company = show_ai;
 
-		CompanyID old_company = _current_company;
-		_current_company = ai_debug_company;
+		Backup<CompanyByte> cur_company(_current_company, ai_debug_company);
 		AILog::LogData *log = (AILog::LogData *)AIObject::GetLogPointer();
-		_current_company = old_company;
+		cur_company.Restore();
 		this->vscroll.SetCount((log == NULL) ? 0 : log->used);
 
 		this->LowerWidget(ai_debug_company + AID_WIDGET_COMPANY_BUTTON_START);
@@ -1011,8 +1009,7 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 		/* If the log message is related to the active company tab, check the break string */
 		if (data == ai_debug_company && this->break_check_enabled && !StrEmpty(this->edit_str_buf)) {
 			/* Get the log instance of the active company */
-			CompanyID old_company = _current_company;
-			_current_company = ai_debug_company;
+			Backup<CompanyByte> cur_company(_current_company, ai_debug_company);
 			AILog::LogData *log = (AILog::LogData *)AIObject::GetLogPointer();
 
 			if (log != NULL && case_sensitive_break_check?
@@ -1032,7 +1029,7 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 				this->highlight_row = log->pos;
 			}
 
-			_current_company = old_company;
+			cur_company.Restore();
 		}
 	}
 

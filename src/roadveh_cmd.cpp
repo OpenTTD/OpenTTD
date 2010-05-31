@@ -41,6 +41,7 @@
 #include "engine_base.h"
 #include "company_base.h"
 #include "engine_func.h"
+#include "core/backup_type.hpp"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -1159,12 +1160,11 @@ static Trackdir FollowPreviousRoadVehicle(const RoadVehicle *v, const RoadVehicl
 static bool CanBuildTramTrackOnTile(CompanyID c, TileIndex t, RoadBits r)
 {
 	/* The 'current' company is not necessarily the owner of the vehicle. */
-	CompanyID original_company = _current_company;
-	_current_company = c;
+	Backup<CompanyByte> cur_company(_current_company, c);
 
 	CommandCost ret = DoCommand(t, ROADTYPE_TRAM << 4 | r, 0, DC_NONE, CMD_BUILD_ROAD);
 
-	_current_company = original_company;
+	cur_company.Restore();
 	return ret.Succeeded();
 }
 

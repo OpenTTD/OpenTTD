@@ -52,6 +52,7 @@
 #include "../engine_base.h"
 #include "../engine_func.h"
 #include "../rail_gui.h"
+#include "../core/backup_type.hpp"
 
 #include "table/strings.h"
 
@@ -1570,8 +1571,9 @@ bool AfterLoadGame()
 			if (IsBuoyTile(t) || IsDriveThroughStopTile(t) || IsTileType(t, MP_WATER)) {
 				Owner o = GetTileOwner(t);
 				if (o < MAX_COMPANIES && !Company::IsValidID(o)) {
-					_current_company = o;
+					Backup<CompanyByte> cur_company(_current_company, o);
 					ChangeTileOwner(t, o, INVALID_OWNER);
+					cur_company.Restore();
 				}
 				if (IsBuoyTile(t)) {
 					/* reset buoy owner to OWNER_NONE in the station struct

@@ -65,6 +65,7 @@
 #include "engine_func.h"
 #include "core/random_func.hpp"
 #include "rail_gui.h"
+#include "core/backup_type.hpp"
 
 #include "newgrf_commons.h"
 
@@ -1215,8 +1216,7 @@ void StateGameLoop()
 
 		/* All these actions has to be done from OWNER_NONE
 		 *  for multiplayer compatibility */
-		CompanyID old_company = _current_company;
-		_current_company = OWNER_NONE;
+		Backup<CompanyByte> cur_company(_current_company, OWNER_NONE);
 
 		AnimateAnimatedTiles();
 		IncreaseDate();
@@ -1229,7 +1229,7 @@ void StateGameLoop()
 
 		CallWindowTickEvent();
 		NewsLoop();
-		_current_company = old_company;
+		cur_company.Restore();
 	}
 }
 
