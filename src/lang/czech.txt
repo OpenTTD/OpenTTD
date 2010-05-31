@@ -2390,11 +2390,11 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Připrav
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Nastavení grafických souborů
-STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Podrobné informace o NewGRF
-STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Aktivní soubory NewGRF
-STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Neaktivní soubory NewGRF
+STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Podrobné informace o grafikách
+STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Aktivní grafiky
+STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Neaktivní grafiky
 STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Vybrat předvolbu:
-STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filtrovat podle:
+STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Třídit podle:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Nahrát vybranou předvolbu
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Uložit předvolbu
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Uložit tento seznam jako předvolbu
@@ -2506,7 +2506,7 @@ STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRI
 # 'User removed essential NewGRFs'-placeholders for stuff without specs.
 STR_NEWGRF_INVALID_CARGO                                        :<neplatný náklad>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
-STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} od <neplatný náklad>
+STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} jednot{P ka ky ek} <neplatného nákladu>
 STR_NEWGRF_INVALID_ENGINE                                       :<neplatná lokomotiva>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<neplatný průmysl>
 
@@ -4149,13 +4149,13 @@ STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING} {0:T
 STR_FORMAT_WAYPOINT_NAME                                        :Směrování {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Směrování {TOWN} č. {COMMA}
 
-STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} Železniční depo
-STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} Železniční depo #{COMMA}
-STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} Silniční depo
-STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} Silniční depo #{COMMA}
-STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} Lodní depo
-STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} Lodní depo #{COMMA}
-STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{STATION} Hangár
+STR_FORMAT_DEPOT_NAME_TRAIN                                     :Železniční depo {TOWN}
+STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :Železniční depo č. {1:COMMA} {0:TOWN}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :Silniční depo {TOWN}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :Silniční depo č. {1:COMMA} {0:TOWN}
+STR_FORMAT_DEPOT_NAME_SHIP                                      :Lodní depo {TOWN}
+STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :Lodní depo č. {1:COMMA} {0:TOWN}
+STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :Hangár {STATION}
 
 STR_UNKNOWN_STATION                                             :neznámá stanice
 STR_DEFAULT_SIGN_NAME                                           :Nápis
