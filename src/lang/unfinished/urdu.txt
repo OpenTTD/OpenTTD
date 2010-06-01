@@ -127,6 +127,9 @@ STR_COLOUR_WHITE                                                :سفید
 
 
 
+STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} ف ت
+STR_UNITS_HEIGHT_SI                                             :{COMMA} م
+
 # Common window strings
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK} (ترتیب کا طریقہ منتخب کریں (کم ہوتا/بڑھتا
@@ -136,6 +139,7 @@ STR_BUTTON_LOCATION                                             :{BLACK}جگہ
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}کھڑکی بند کرو
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}کھڑکی کا نام - کھڑکی کو ہلانے کیلیے اسے پکڑ کر ہلاو
+STR_TOOLTIP_DEBUG                                               :{BLACK} NewGRF کی debug معلومات دکھایئے
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}زمین کے ایک مربے پر عمارتیں وغیرہ گراو
 
 # Query window
@@ -170,7 +174,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}ریل �
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}سڑکیں بناو
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}بندرگاہیں بناو
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}ہوای اڈے بناو
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}زمینی رقبہ کی معلومات
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}زمینی رقبہ کی معلومات، کانسول،AI debug ،اسکرین شاٹس، Open TTD کے بارے میں
 
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}شروع کرنے کی تاریخ کو ایک سال پیچھے کرو
@@ -235,6 +239,7 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :سامان کی
 ############ range ends here
 
 ############ range for about menu starts
+STR_ABOUT_MENU_SPRITE_ALIGNER                                   :sprite صف بندھ
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -594,11 +599,37 @@ STR_ABOUT_OPENTTD                                               :{WHITE}اوپن
 # Map generation progress
 
 # NewGRF settings
+STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE} تفصیلی NewGRF معلومات
+STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE} متحرک NewGRF فائلیں
+STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE} غیر متحرک NewGRF فائلیں
+STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK} منتخب NewGRF فائل اپنے configuration میں شامل کیجئے
+STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK} فائلوں کو دوبارھ اسکین کیجئے
+STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK} نئی دستیاب NewGRF فائلوں کی فھرست حاصل کیجئے
 
 
 
 
 
+
+# NewGRF inspect window
+STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE} معایِئنھ کیجیئے - {STRING}
+
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} {HEX} پر
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :طرزِ ریل
+
+
+# Sprite aligner window
+STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE} صف بندھی کے sprite {COMMA} ({STRING})
+STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK} اگلی sprite
+STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK} جایئے sprite تک
+STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK} جایئے sprite کی طرف۔ اگر sprite اصلی نھیں تو اگلی sprite کی طرف جائیے
+STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK} پچھلا sprite
+STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK} منتخب sprite کا اظھار۔ اس sprite کے نقش میں سف بندی نظر اندازکی جائے گی۔
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK} ارد گرد sprite ھلایئے، X اور Y offset تبدیل کیجئے
+STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK} منتخب sprite کیجئے
+STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK} اسکرین سے کسی sprite کو منتخب کیجئے
+
+STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE} جایئے sprite تک
 
 # NewGRF (self) generated warnings/errors
 
@@ -608,6 +639,12 @@ STR_ABOUT_OPENTTD                                               :{WHITE}اوپن
 
 # NewGRF 'it's broken' warnings
 
+
+# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+STR_NEWGRF_INVALID_CARGO                                        :<غلط سامان>
+STR_NEWGRF_INVALID_CARGO_QUANTITY                               :<غلط سامان> کا {COMMA}
+STR_NEWGRF_INVALID_ENGINE                                       :<غلط اِنجن>
+STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<غلط صنعت>
 
 # Sign list window
 
@@ -630,7 +667,7 @@ STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}اس ش�
 
 # Station list window
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}تمام سہولتوں کا انتخاب کرو
-STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}تمام قسم کا سامان کا انتخاب کرو  (بشمول غیر منتظر سامان کے)
+STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}تمام قسم کے سامان کا انتخاب کرو (بشمول غیر منتظر سامان کے)
 STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}کسی قسم کا کویی سامان انتظار نہیں کر رہا ہے
 
 # Station view window
@@ -703,6 +740,10 @@ STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}فہرس
 
 
 # Depot window
+STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
+
+STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK} ڈیپو کا نام تبدیل کیجئے
+STR_DEPOT_RENAME_DEPOT_CAPTION                                  :ڈیپو کا نام تبدیل کیجئے
 
 
 
@@ -744,7 +785,17 @@ STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}فہرس
 
 
 
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE} روانگی {DEPOT} کی طرف
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE} روانگی {DEPOT} کی طرف، {VELOCITY}
 
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE} {DEPOT} پر خدمات
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE} {DEPOT} پر خدمات، {VELOCITY}
+
+# Vehicle stopped/started animations
+STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED} روک دیا گیا
+STR_VEHICLE_COMMAND_STOPPED                                     :{RED} روک دیا گیا
+STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINYFONT}{GREEN} شروع کر دیا گیا
+STR_VEHICLE_COMMAND_STARTED                                     :{GREEN} شروع کر دیا گیا
 
 # Vehicle details
 
@@ -813,6 +864,8 @@ STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}فہرس
 
 
 # AI debug window
+STR_AI_DEBUG_CONTINUE                                           :{BLACK} جاری کیجیئے
+STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK} وقفھ منقطع اور AI کو جاری کیجیئے
 
 
 
@@ -837,6 +890,8 @@ STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}فہرس
 
 
 
+# Soundset messages
+
 # Screenshot related messages
 
 # Error message titles
@@ -847,9 +902,18 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}نقشے
 STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}ناکافی پیسہ - {CURRENCY} مزید چاہیے
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}ہموار زمین چاہیے
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}یہ نہیں کر سکتا۔۔۔
+STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE} عمارت کو پھلے گرانا ھو گا
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}یہ جگہ صاف نہیں کر سکتا۔۔۔
+STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}۔۔۔جگھ غیرمناسب
+STR_ERROR_ALREADY_BUILT                                         :{WHITE}...تعمیرات مکمل یا جاری ھیں
+STR_ERROR_OWNED_BY                                              :{WHITE}۔۔۔ یھ {STRING} کی ملکیت ھے
+STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}۔۔۔ رقبھ کسی اور کمپنی کی ملکیت ھے
+STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE} نام منفرد ھونا چاھیے
+STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{1:STRING} راستے میں ھے
 
 # Local authority errors
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} مقامی حکومت اس کی اجازت نھیں دیتی
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN} مقامی حکومت اضافی ھوائی اڈے تعمیر کرنے کی اجازت نھیں دیتی
 
 # Levelling errors
 
@@ -873,6 +937,8 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{G=m}{WHITE}...
 
 # Depot related errors
 
+STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE} ڈیپو کا نام تبدیل نھیں کیا جا سکتا۔۔۔
+
 
 
 
@@ -887,9 +953,11 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{G=m}{WHITE}...
 # Waterway construction errors
 
 # Tree related errors
+STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE} ۔۔۔ طرزِ پیڑ کے لیئے غلط طرزِ زپین
 
 # Bridge related errors
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... پل کے دونوں کنارے زمین پر ہونے چاہییں
+STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE} ۔۔۔ پل زیادھ لمبی ھے
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}یہاں سورنگ نہئ بنا سکتے
@@ -967,6 +1035,9 @@ STR_ERROR_CAN_T_REFIT_DESTROYED_VEHICLE                         :{WHITE}یہ گ�
 
 # Sign related errors
 
+# Translatable comment for OpenTTD's desktop shortcut
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Transport Tycoon Deluxe کا ھم جنس
+
 ##id 0x2000
 # Town building names
 
@@ -990,6 +1061,14 @@ STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
 STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
 STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
 
+
+STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} ریل گاڑی ڈیپو
+STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} ریل گاڑی ڈیپو # {COMMA}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} گاڑی ڈیپو
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} گاڑی ڈیپو #{COMMA}
+STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} بحری جھاز ڈیپو
+STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} بحری جھاز ڈیپو #{COMMA}
+STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{STATION} طیارھ گاھ
 
 
 
@@ -1054,6 +1133,7 @@ STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLAC
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
+STR_TINY_BLACK_HEIGHT                                           :{TINYFONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
@@ -1068,3 +1148,4 @@ STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
+

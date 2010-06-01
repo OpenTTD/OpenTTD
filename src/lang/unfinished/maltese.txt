@@ -21,6 +21,7 @@
 ##id 0x0000
 STR_NULL                                                        :
 STR_EMPTY                                                       :
+STR_UNDEFINED                                                   :(frażi mhux definit)
 STR_JUST_NOTHING                                                :Xejn
 
 # Cargo related strings
@@ -109,6 +110,8 @@ STR_QUANTITY_WATER                                              :{VOLUME} ta' il
 STR_QUANTITY_WHEAT                                              :{WEIGHT} ta' qamħ
 STR_QUANTITY_RUBBER                                             :{VOLUME} ta' lastku
 STR_QUANTITY_SUGAR                                              :{WEIGHT} ta' zokkor
+STR_QUANTITY_COLA                                               :{VOLUME} ta' koka
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} ta' kandiflos
 STR_QUANTITY_PLASTIC                                            :{VOLUME} ta' plastik
 
 # Two letter abbreviation of cargo name
@@ -145,6 +148,9 @@ STR_COLOUR_WHITE                                                :Abjad
 
 
 
+
+STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} ft
+STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
 
@@ -563,6 +569,12 @@ STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :password ħażi
 # Map generation progress
 
 # NewGRF settings
+STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Informazzjoni dettaljata dwar NewGRF
+STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}NewGRF fajls attivi
+STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}NewGRF fajls inattivi
+STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Żid il-fajl NewGRF magħżula fil-konfigurazzjoni tiegħek
+STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}Erga' sskanja il-fajls
+STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Aġġorna l-lista tal-fajls NewGRF disponibbli
 
 
 
@@ -584,6 +596,8 @@ STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :password ħażi
 
 # NewGRF 'it's broken' warnings
 
+
+# 'User removed essential NewGRFs'-placeholders for stuff without specs.
 
 # Sign list window
 
@@ -664,6 +678,10 @@ STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :password ħażi
 
 
 # Depot window
+STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
+
+STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}Biddel l-isem tad-depot
+STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Biddel l-isem ta' dan id-depot
 
 
 
@@ -833,6 +851,8 @@ STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Din l-is
 
 # Depot related errors
 
+STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Ma tistax tbiddel l-isem ta' dan id-depot...
+
 
 
 
@@ -900,6 +920,9 @@ STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Ma tista
 # Timetable related errors
 
 # Sign related errors
+
+# Translatable comment for OpenTTD's desktop shortcut
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Klonu ta' Transport Tycoon Deluxe
 
 ##id 0x2000
 # Town building names
@@ -1097,6 +1120,7 @@ STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRI
 
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 
+
 STR_UNKNOWN_STATION                                             :stazzjon mhux magħruf
 STR_DEFAULT_SIGN_NAME                                           :Sinjal
 STR_COMPANY_SOMEONE                                             :xi ħadd
@@ -1121,6 +1145,7 @@ STR_VIEWPORT_WAYPOINT_TINY                                      :{TINYFONT}{WAYP
 # Simple strings to get specific types of data
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
+STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}
@@ -1169,6 +1194,7 @@ STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
+STR_TINY_BLACK_HEIGHT                                           :{TINYFONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
