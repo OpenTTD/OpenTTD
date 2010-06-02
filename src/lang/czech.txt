@@ -2394,7 +2394,7 @@ STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Podrobn�
 STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Aktivní grafiky
 STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Neaktivní grafiky
 STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Vybrat předvolbu:
-STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Třídit podle:
+STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filtrovat podle:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Nahrát vybranou předvolbu
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Uložit předvolbu
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Uložit tento seznam jako předvolbu

@@ -97,11 +97,53 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :گیسی مشر
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} مسافر{P "" s}
 STR_QUANTITY_COAL                                               :{WEIGHT} کویلہ
+STR_QUANTITY_MAIL                                               :{COMMA} ڈاک ک{P ا ے} تھیل{P ا ے}
 STR_QUANTITY_OIL                                                :{VOLUME}خام تیل
+STR_QUANTITY_LIVESTOCK                                          :{COMMA} عدد مویشی
+STR_QUANTITY_GOODS                                              :سامان ک{P ا ے} {COMMA} کریٹ
+STR_QUANTITY_GRAIN                                              :انآج کا {WEIGHT} وزن
+STR_QUANTITY_WOOD                                               :لکڑی کا {WEIGHT} وزن
+STR_QUANTITY_IRON_ORE                                           :خام دھات لوھے کا {WEIGHT} وزن
+STR_QUANTITY_STEEL                                              :اسٹیل کا {WEIGHT} وزن
+STR_QUANTITY_VALUABLES                                          :قیمتی سامان ک{P ا ے} {COMMA} تھیل{P ا ے}
+STR_QUANTITY_COPPER_ORE                                         :خام دھات تانبے کا {WEIGHT} وزن
+STR_QUANTITY_MAIZE                                              :مکئی کا {WEIGHT} وزن
+STR_QUANTITY_FRUIT                                              :پھل کا {WEIGHT} وزن
+STR_QUANTITY_DIAMONDS                                           :ھیرے کے {COMMA} تھیل{P ا ے}
+STR_QUANTITY_FOOD                                               :خوراک کا {WEIGHT} وزن
+STR_QUANTITY_PAPER                                              :کاغز کا {WEIGHT} وزن
+STR_QUANTITY_GOLD                                               :سونے ک{P ا ے} {COMMA} تھیل{P ا ے}
+STR_QUANTITY_WATER                                              :{VOLUME} پانی
+STR_QUANTITY_WHEAT                                              :گندم کا {WEIGHT} وزن
+STR_QUANTITY_RUBBER                                             :{VOLUME} ربڑ
+STR_QUANTITY_SUGAR                                              :چینی کا {WEIGHT} وزن
+STR_QUANTITY_TOYS                                               :{COMMA} کھلون{P ا ے}
+STR_QUANTITY_SWEETS                                             :مٹھائی ک{P ا ے} {COMMA} تھیل{P ا ے}
+STR_QUANTITY_COLA                                               :{VOLUME} کولا
+STR_QUANTITY_CANDYFLOSS                                         :گڑیا کے بالوں کا {WEIGHT} وزن
+STR_QUANTITY_BUBBLES                                            :{COMMA} ببل
+STR_QUANTITY_TOFFEE                                             :ٹافی کا {WEIGHT} وزن
+STR_QUANTITY_BATTERIES                                          :{COMMA} بیٹر{P ی یاں}
+STR_QUANTITY_PLASTIC                                            :{VOLUME} پلاسٹک
+STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} کولڈ ڈرنک
+STR_QUANTITY_N_A                                                :-
 
 # Two letter abbreviation of cargo name
+STR_ABBREV_COAL                                                 :{TINYFONT} کل
+STR_ABBREV_MAIL                                                 :{TINYFONT} ڈاک
+STR_ABBREV_OIL                                                  :{TINYFONT} تیل
+STR_ABBREV_LIVESTOCK                                            :{TINYFONT} م ش
+STR_ABBREV_GOODS                                                :{TINYFONT} س م
 
 # 'Mode' of transport for cargoes
+STR_PASSENGERS                                                  :مسافرین
+STR_BAGS                                                        :تھیلے
+STR_TONS                                                        :من
+STR_LITERS                                                      :لیٹر
+STR_ITEMS                                                       :اشیاء
+STR_CRATES                                                      :کریٹ
+STR_RES_OTHER                                                   :دیگر
+STR_NOTHING                                                     :
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :گہرا نیلا
@@ -113,6 +155,7 @@ STR_COLOUR_LIGHT_BLUE                                           :ہلکا نیل
 STR_COLOUR_GREEN                                                :سبز
 STR_COLOUR_DARK_GREEN                                           :گہرا سبز
 STR_COLOUR_BLUE                                                 :نیلا
+STR_COLOUR_CREAM                                                :بالائی
 STR_COLOUR_PURPLE                                               :جامنی
 STR_COLOUR_ORANGE                                               :نارنجی
 STR_COLOUR_BROWN                                                :بھورا
@@ -120,33 +163,65 @@ STR_COLOUR_GREY                                                 :سلیٹی
 STR_COLOUR_WHITE                                                :سفید
 
 # Units used in OpenTTD
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} میل فی گھنٹھ
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA} کلو میٹر فی گھنٹھ
+STR_UNITS_VELOCITY_SI                                           :{COMMA} میٹر فی سیکنڈ
 
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA} ھارس پآور
+STR_UNITS_POWER_METRIC                                          :{COMMA} ھارس پآور
+STR_UNITS_POWER_SI                                              :{COMMA} کلو واٹ
 
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA} من
+STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA} kg
 
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} من
+STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA} l
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} لیٹر
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
+STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
-STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} ف ت
-STR_UNITS_HEIGHT_SI                                             :{COMMA} م
+STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} فٹ
+STR_UNITS_HEIGHT_SI                                             :{COMMA} میٹر
 
 # Common window strings
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK} چھان کے الفاظ درج کیجیئے
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK} فھرست کے چھان کے لیے کوئی حرف دیجیئے
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK} (ترتیب کا طریقہ منتخب کریں (کم ہوتا/بڑھتا
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}ترتیب کا طریقہ منتخب کریں
+STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK} چھاننے کے اصول چنیئے
 STR_BUTTON_SORT_BY                                              :{BLACK}سے ترتیب دو
 STR_BUTTON_LOCATION                                             :{BLACK}جگہ
+STR_BUTTON_RENAME                                               :{BLACK} تبادلھء نام
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}کھڑکی بند کرو
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}کھڑکی کا نام - کھڑکی کو ہلانے کیلیے اسے پکڑ کر ہلاو
+STR_TOOLTIP_SHADE                                               :{BLACK} ونڈو چھبایئے - صرف ٹائٹل نظر آئے گا
 STR_TOOLTIP_DEBUG                                               :{BLACK} NewGRF کی debug معلومات دکھایئے
+STR_TOOLTIP_STICKY                                              :{BLACK} نشان لگایئے تاکھ یھ ونڈو "Close All Windows" کے بٹن سے بند ناھو
+STR_TOOLTIP_RESIZE                                              :{BLACK} کلک اورگھسیٹ کر ونڈو کے پیمانے تبدیل کیجئے
+STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK} ونڈو کا بڑا یا چھوٹا پیمانا چنیئے
+STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK} فھرستی پٹی - فھرست کو اوپر نیچے کرنے کے لیے
+STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK} فھرستی پٹی - فھرست کو دایئں بایئں کرنے کے لیے
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}زمین کے ایک مربے پر عمارتیں وغیرہ گراو
 
 # Query window
+STR_BUTTON_CANCEL                                               :{BLACK} ترک کیجیئے
+STR_BUTTON_OK                                                   :{BLACK} او کے
 
 # On screen keyboard window
+STR_OSK_KEYBOARD_LAYOUT                                         :ً1234567890-=\ق و ع ر ت ے ء ی ہ پ ] [ ا س د ف گ ح ج ک ل ؛ ' ز ش چ ط ب ن م ، ۔ /
 
 # Measurement tooltip
+STR_MEASURE_LENGTH                                              :{BLACK} لمبائی: {NUM}
+STR_MEASURE_AREA                                                :{BLACK} پھیلاؤ: {NUM} x {NUM}
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK} لمبائی: {NUM} {}تفریقِ اونچائی: {HEIGHT}
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK} پھیلاؤ: {NUM} x {NUM} {}تفریقِ اونچائی: {HEIGHT}
 
 
 # These are used in buttons
@@ -154,16 +229,49 @@ STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}آباد
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}نام
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}تاریخ
 # These are used in dropdowns
+STR_SORT_BY_POPULATION                                          :آبادی
+STR_SORT_BY_NAME                                                :نام
 STR_SORT_BY_PRODUCTION                                          :پیداوار
 STR_SORT_BY_TYPE                                                :طرز
 STR_SORT_BY_TRANSPORTED                                         :منتقل شدہ
 STR_SORT_BY_NUMBER                                              :تعداد
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :پچھلے سال کا منافع
+STR_SORT_BY_PROFIT_THIS_YEAR                                    :اس سال کا منافع
+STR_SORT_BY_AGE                                                 :عمر
+STR_SORT_BY_RELIABILITY                                         :اعتماد
+STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :طرزِ سامان کے مطابق کل گنجائش
+STR_SORT_BY_MAX_SPEED                                           :حدغایت رفتار
+STR_SORT_BY_MODEL                                               :نمونھ
+STR_SORT_BY_VALUE                                               :قیمت
+STR_SORT_BY_LENGTH                                              :لمبائی
+STR_SORT_BY_LIFE_TIME                                           :بقیھ زندگی
+STR_SORT_BY_TIMETABLE_DELAY                                     :ٹایم ٹیبل تاخیر
+STR_SORT_BY_FACILITY                                            :طرزِ اسٹیشن
+STR_SORT_BY_WAITING                                             :قیمتِ منتظر سامان
+STR_SORT_BY_RATING_MAX                                          :سامانی سرِ فھرست درجھ بندی
+STR_SORT_BY_RATING_MIN                                          :سامانی پیشِ فھرست درجھ بندی
+STR_SORT_BY_ENGINE_ID                                           :انجن کی شناخت (کلاسیکی چھانٹ)
+STR_SORT_BY_COST                                                :قیمت
+STR_SORT_BY_POWER                                               :طاقت
+STR_SORT_BY_INTRO_DATE                                          :تاریخِ تعارف
+STR_SORT_BY_RUNNING_COST                                        :قیمتِ رواں
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :قیمتِ رواں/ طاقت
 STR_SORT_BY_CARGO_CAPACITY                                      :سامان کی گنجایش
 
 # Tooltips for the main toolbar
+STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK} کھیل میں وقفھ لیجیئے
+STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK} کھیل کو تیزی سے بڑھایئں
+STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK} اختیارات
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK} کھیل بچایئے، کھیل دستبردار کیجیئے، منقطع کیجئے
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK} نقشھ، اضافی منظر یا اشاروں کی فھرست
+STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK} قصبوں کی کتاب دیکھیئے
+STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK} امداد دیکھیئے
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK} کمپنی کے اسٹیشنوں کی فھرست دیکھیَے
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}کمپنی کی مالیاتی معلومات دکھاو
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}کمپنی کی عام معلومات دکھاو
+STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK} مخطط دیکھیئے
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK} کمہنی کی مسافتی فھرست دیکھیئے
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK} نئی صنعت کی تعمیر شروع کیجیئے یا فھرستِ صنعت دیکھیئے
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}کمپنی کی ریل گاڑیوں کی فہرست دکھاو۔ Ctrl+Click سے گروپ یا ٹرینوں کی فہرست کھلتی یا بند ہوتی ہے
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}کمپنی کی سڑک کی سواریوں کی فہرست دکھاو۔ Ctrl+Click سے گروپ یا گاڑیوں کی فہرست کھلتی یا بند ہوتی ہے
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}کمپنی کی کشتیوں کی فہرست دکھاو۔ Ctrl+Click سے گروپ یا کشتیوں کی فہرست کھلتی یا بند ہوتی ہے
@@ -174,22 +282,50 @@ STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}ریل �
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}سڑکیں بناو
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}بندرگاہیں بناو
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}ہوای اڈے بناو
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK} منظر کشی ٹول بآر کھولیئے اور زمین اوپر نیچے، درخت لگایئے، وغیرھ
+STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK} آواز/موسیقی ونڈو دکھایئے
+STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK} آخری پیغام/ خبر دکھایئے، پیغام کے اختیارات کھولیئے
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}زمینی رقبہ کی معلومات، کانسول،AI debug ،اسکرین شاٹس، Open TTD کے بارے میں
+STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK} ٹول بآر منتقل کیجیئے
 
 # Extra tooltips for the scenario editor toolbar
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK} منظر بچایئے، منظر کھولیں، منظر دست بردار کیجیئے، منظر چھوڑیئے
+STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
+STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW} منظر نامھ
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}شروع کرنے کی تاریخ کو ایک سال پیچھے کرو
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}شروع کرنے کی تاریخ کو ایک سال آگے کرو
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK} کلک کر کے ابتدائی سال درج کیجیئے
+STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK} نقشھ، کتبِ قصبات
+STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK} منظر تخلیق
+STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK} قصبھ تخلیق
+STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK} صنعت تخلیق
+STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK} سڑک کی تعمیر
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK} درخت لگایئے
+STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK} اشارھ لگایئے
 
 ############ range for SE file menu starts
+STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :منظر بچایئے
+STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :منظر کھولیئے
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :اونچائی کا نقشہ دکھائو
+STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :مدیر بند کیجیئے
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :باہر نکلو
 ############ range for SE file menu starts
 
 ############ range for settings menu starts
+STR_SETTINGS_MENU_GAME_OPTIONS                                  :کھیل کے اختیارات
+STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :مشکلات چنئے
+STR_SETTINGS_MENU_CONFIG_SETTINGS                               :اعلی اختیارات
+STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF اختیارات
+STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Transparency کے اختیارات
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :آبادیوں کے نام دکھائے جائیں
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :اڈوں کے نام دکھائے جائیں
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :راھ شناس نقتوں کے نام دکھائے جایئں
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :اشارے دکھائے جائیں
+STR_SETTINGS_MENU_FULL_ANIMATION                                :مکمل animation
+STR_SETTINGS_MENU_FULL_DETAIL                                   :مکمل تفصیل
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :شفاف عمارات
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :شفاف اسٹیشن کے اشارے
 ############ range ends here
 
 ############ range for file menu starts
@@ -200,14 +336,25 @@ STR_FILE_MENU_EXIT                                              :باہر نکل
 ############ range ends here
 
 ############ range for map menu starts
+STR_MAP_MENU_MAP_OF_WORLD                                       :دنیا کا نقشھ
+STR_MAP_MENU_EXTRA_VIEW_PORT                                    :اضافی منظر
+STR_MAP_MENU_SIGN_LIST                                          :اشاروں کی فھرست
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
+STR_TOWN_MENU_TOWN_DIRECTORY                                    :کتبِ قصبھ جات
 ############ end of the 'Display map' dropdown
+STR_TOWN_MENU_FOUND_TOWN                                        :قصبھ قائم کیجیئے
 ############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
+STR_SUBSIDIES_MENU_SUBSIDIES                                    :امداد
 ############ range ends here
 
 ############ range for graph menu starts
+STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :عملی منافع مخطط
+STR_GRAPH_MENU_INCOME_GRAPH                                     :آمدنی مخطط
+STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :پھنچائے گئے سامان کا مخطط
+STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :عملی تاریخ مخطط
+STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :کمپنی کی قیمت مخطط
 STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :سامان کی ادایگی کا تناسب
 ############ range ends here
 
@@ -614,7 +761,7 @@ STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK} نئی 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE} معایِئنھ کیجیئے - {STRING}
 
-STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} {HEX} پر
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} پر {HEX}
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :طرزِ ریل
 
 
@@ -647,11 +794,17 @@ STR_NEWGRF_INVALID_ENGINE                                       :<غلط اِن�
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<غلط صنعت>
 
 # Sign list window
+STR_SIGN_LIST_CAPTION                                           :{WHITE} فھرستِ اشارھ - {COMMA} اشار{P ھ ے}
 
 # Sign window
+STR_EDIT_SIGN_CAPTION                                           :{WHITE} اشارے کے الفاظ تبدیل کیجیئے
+STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK} اگلے اشارے تک جایئے
+STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK} پچھلے اشارے تک جایئے
 
+STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK} اشارے کا نام درج کیجیئے
 
 # Town directory window
+STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE} قصبے
 
 # Town view window
 
