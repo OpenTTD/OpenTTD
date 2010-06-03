@@ -1809,6 +1809,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\fios_gui.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\genworld_gui.cpp"
 				>
 			</File>
