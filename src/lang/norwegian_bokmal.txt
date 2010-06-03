@@ -3,11 +3,13 @@
 ##isocode nb_NO
 ##plural 0
 ##textdir ltr
-##digitsep .
-##digitsepcur .
+##digitsep {NBSP}
+##digitsepcur {NBSP}
 ##decimalsep ,
 ##winlangid 0x0414
 ##grflangid 0x2f
+##gender masculine feminine neuter
+##case small
 
 
 # $Id$

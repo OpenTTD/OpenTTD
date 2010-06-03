@@ -1,14 +1,15 @@
 ##name Norwegian (Nynorsk)
-##ownname Norsk, Nynorsk
+##ownname Norsk (nynorsk)
 ##isocode nn_NO
 ##plural 0
 ##textdir ltr
-##digitsep .
-##digitsepcur .
+##digitsep {NBSP}
+##digitsepcur {NBSP}
 ##decimalsep ,
 ##winlangid 0x0814
 ##grflangid 0x0e
 ##gender masculine feminine neuter
+##case small
 
 
 # $Id$
