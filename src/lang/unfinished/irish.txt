@@ -1986,12 +1986,34 @@ STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Ráille iarnró
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Ráille iarnróid le comharthaí comharthaí amach agus cosán
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Ráille iarnróid le comharthaí amach agus cosán aonbhealaigh
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Ráille iarnróid le comharthaí teaglama agus cosán
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Ráille iarnróid le comharthaí teaglama agus cosán aonbhealaigh
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Ráille iarnróid le comharthaí cosán agus cosán aonbhealaigh
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Iosta traenach
 
+STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Bóthair
+STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Bóthair le soilse sráide
+STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Bóthair le crainn ar gach taobh
+STR_LAI_ROAD_DESCRIPTION_ROAD_VEHICLE_DEPOT                     :Iosta feithiclí bóthair
+STR_LAI_ROAD_DESCRIPTION_ROAD_RAIL_LEVEL_CROSSING               :Crosaire comhréidh bóthair/iarnróid
+STR_LAI_ROAD_DESCRIPTION_TRAMWAY                                :Trambhealach
 
 # Houses come directly from their building names
+STR_LAI_TOWN_INDUSTRY_DESCRIPTION_UNDER_CONSTRUCTION            :{STRING} (á thógáil)
 
+STR_LAI_TREE_NAME_TREES                                         :Crainn
+STR_LAI_TREE_NAME_RAINFOREST                                    :Foraois bháistí
+STR_LAI_TREE_NAME_CACTUS_PLANTS                                 :Plandaí cachtais
 
+STR_LAI_STATION_DESCRIPTION_RAILROAD_STATION                    :Stáisiún iarnróid
+STR_LAI_STATION_DESCRIPTION_AIRCRAFT_HANGAR                     :Haingear aerárthaigh
+STR_LAI_STATION_DESCRIPTION_AIRPORT                             :Aerfort
+STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Limistéar lódála leoraithe
+STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :Stáisiún bus
+STR_LAI_STATION_DESCRIPTION_SHIP_DOCK                           :Dug long
+STR_LAI_STATION_DESCRIPTION_BUOY                                :Baoi
+STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :Pointe bealaigh
 
+STR_LAI_WATER_DESCRIPTION_WATER                                 :Uisce
 
 # Industries come directly from their industry names
 
