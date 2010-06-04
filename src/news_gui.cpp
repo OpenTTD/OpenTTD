@@ -490,24 +490,35 @@ struct NewsWindow : Window {
 	virtual void OnInvalidateData(int data)
 	{
 		/* The chatbar has notified us that is was either created or closed */
+		int newtop = this->top + this->chat_height - data;
 		this->chat_height = data;
+		this->SetWindowTop(newtop);
 	}
 
 	virtual void OnTick()
 	{
 		/* Scroll up newsmessages from the bottom in steps of 4 pixels */
-		int y = max(this->top - 4, _screen.height - this->height - this->status_height - this->chat_height);
-		if (y == this->top) return;
-
-		if (this->viewport != NULL) this->viewport->top += y - this->top;
-
-		int diff = Delta(this->top, y);
-		this->top = y;
-
-		SetDirtyBlocks(this->left, this->top, this->left + this->width, this->top + this->height + diff);
+		int newtop = max(this->top - 4, _screen.height - this->height - this->status_height - this->chat_height);
+		this->SetWindowTop(newtop);
 	}
 
 private:
+	/**
+	 * Moves the window so #newtop is new 'top' coordinate. Makes screen dirty where needed.
+	 * @param newtop new top coordinate
+	 */
+	void SetWindowTop(int newtop)
+	{
+		if (this->top == newtop) return;
+
+		int mintop = min(newtop, this->top);
+		int maxtop = max(newtop, this->top);
+		if (this->viewport != NULL) this->viewport->top += newtop - this->top;
+		this->top = newtop;
+
+		SetDirtyBlocks(this->left, mintop, this->left + this->width, maxtop + this->height);
+	}
+
 	StringID GetCompanyMessageString() const
 	{
 		switch (this->ni->subtype) {
