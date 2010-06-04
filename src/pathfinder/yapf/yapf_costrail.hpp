@@ -507,9 +507,12 @@ no_entry_cost: // jump here at the beginning if the node has no parent (it is th
 			/* Gather the next tile/trackdir/tile_type/rail_type. */
 			TILE next(tf_local.m_new_tile, (Trackdir)FindFirstBit2x64(tf_local.m_new_td_bits));
 
-			if (TrackFollower::DoTrackMasking() && HasPbsSignalOnTrackdir(next.tile, next.td)) {
-				/* Possible safe tile. */
-				end_segment_reason |= ESRB_SAFE_TILE;
+			if (TrackFollower::DoTrackMasking() && IsTileType(next.tile, MP_RAILWAY)) {
+				if ((HasSignalOnTrackdir(next.tile, next.td) && IsPbsSignal(GetSignalType(next.tile, TrackdirToTrack(next.td)))) ||
+						(HasSignalOnTrackdir(next.tile, ReverseTrackdir(next.td)) && GetSignalType(next.tile, TrackdirToTrack(next.td)) == SIGTYPE_PBS_ONEWAY)) {
+					/* Possible safe tile. */
+					end_segment_reason |= ESRB_SAFE_TILE;
+				}
 			}
 
 			/* Check the next tile for the rail type. */
