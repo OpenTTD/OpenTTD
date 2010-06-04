@@ -2409,6 +2409,9 @@ STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}{1:ENGINE}을 위한 화물/개조 정보가 건설 후 구매 목록과 다릅니다. 이것은 자동교체에서 개조를 실패를 초래할 수 있습니다.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' 때문에 결과물 콜백 과정에서 무한 루프가 발생하고 있습니다.
 
+# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
+
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}팻말 목록 - 팻말 {COMMA}개
 
@@ -3633,6 +3636,8 @@ STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... 팻�
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}여기에 팻말을 달 수 없습니다...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}팻말 내용을 고칠 수 없습니다...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}팻말을 삭제할 수 없습니다...
+
+# Translatable comment for OpenTTD's desktop shortcut
 
 ##id 0x2000
 # Town building names

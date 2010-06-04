@@ -526,6 +526,8 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK} رقم:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK} قرضہ:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK} مکمل:
 ############ End of order list
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK} پچھلے سال نفعدار ناقل کی تعداد؛ جس میں گاڑیاں، قطار، بحری جہاز، ہوائی جہاز وغعرہ شامل ہیں
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK} تعداد برائے حالیہ مرمت شدہ مستقر حصے۔ مستقر کا ہر حصہ گنا جاتا ہے۔ مثلا پٹری مستقر، بس اسٹاپ، ہوائی اڈہ وغیرہ، خواہ وہ ایک ساتھ جڑے بھی ہوں۔
 
 # Music window
 

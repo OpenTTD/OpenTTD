@@ -1158,8 +1158,8 @@ STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Model a
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :původní
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :realistický
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Model zrychlování silničních vozidel: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Původní
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Realistický
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :původní
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :realistický
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Strmost svahu pro vlaky {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Strmost svahu pro silniční vozidla {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Zakázat vlakům a lodím otáčení o 90 stupňů: {ORANGE}{STRING} {LTBLUE} (nefunguje s OFP, původním hledačem cesty pro lodě)
@@ -1193,9 +1193,9 @@ STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Nejedno
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Pro simulaci těžkých vlaků vynásobit hmotnost nákladu: {ORANGE}{STRING}x
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Činitel rychlosti letadel: {ORANGE}1/{STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Počet leteckých havárií: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :žádné
-STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :snížené
-STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normální
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :nulový
+STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :nižší
+STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :obvyklý
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Stavba průjezdných zastávek na obecních silnicích: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Stavba průjezdných zastávek na silnicích vlastněných konkurencí: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Povolit stavění přilehlých stanic: {ORANGE}{STRING}
@@ -1243,9 +1243,9 @@ STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Největ
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Údržba vrtulníků na heliportech: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Otevírat lištu na úpravy terénu s lištami na výstavbu tratí/silnic atd.: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Barva země v mapě: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Zelená
-STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Tmavě zelená
-STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Fialová
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :zelená
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :tmavě zelená
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :fialová
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}Posouvat pohled opačným směrem: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}Plynulé posouvání po mapě: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}Ukázat rozměry při použití stavebních nástrojů: {ORANGE}{STRING}
@@ -1376,7 +1376,7 @@ STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Odstra�
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Ovládaní
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Výstavba
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Dop. prostředky
+STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Dopravní prostředky
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stanice
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Ekonomika
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Konkurenti
@@ -3049,8 +3049,8 @@ STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Míří
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE}Míří do {DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Míří do {DEPOT}, {VELOCITY}
 
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}Servis v {DEPOT}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Servis v {DEPOT}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}Údržba v {DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Údržba v {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
 STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Zastaveno
@@ -3179,7 +3179,7 @@ STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Vyber, n
 
 STR_ORDER_SERVICE                                               :{BLACK}Údržba
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Jeď vždy
-STR_ORDER_DROP_SERVICE_DEPOT                                    :Servis v případě potřeby
+STR_ORDER_DROP_SERVICE_DEPOT                                    :Údržba v případě potřeby
 STR_ORDER_DROP_HALT_DEPOT                                       :Zastavit
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Přeskoč tento cíl, pokud není potřeba pravidelná údržba
 
@@ -3198,8 +3198,8 @@ STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :je menší než
 STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :je menší nebo rovno
 STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :je více než
 STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :je více nebo rovno
-STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :je pravda
-STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :není pravda
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :platí
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :neplatí
 
 STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Hodnota, se kterou srovnat vlastnost vozidla
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Zadej hodnotu pro srovnávání

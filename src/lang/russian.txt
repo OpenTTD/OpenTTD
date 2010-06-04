@@ -932,7 +932,7 @@ STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK
 STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}Спад закончился!{}{}Увеличение объёмов торговли внушает уверенность владельцам предприятий. Экономика укрепляет свои позиции.
 
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}Предприятие «{INDUSTRY}» увеличивает объёмы производства!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}Найден новый угольный пласт в {INDUSTRY}!{}Добыча увеличена вдвое!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}{INDUSTRY} начинает разработку нового угольного пласта!{}Добыча увеличена вдвое!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}Обнаружены новые запасы нефти на {INDUSTRY}!{}Добыча увеличена вдвое!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}Внедрение новых методов позволяет поднять производство вдвое на {INDUSTRY}!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK}Предприятие «{1:INDUSTRY}» увеличивает производство {0:STRING.gen} на{NBSP}{2:COMMA}%!
