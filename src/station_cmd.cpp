@@ -1145,6 +1145,7 @@ CommandCost CmdBuildRailStation(TileIndex tile_org, DoCommandFlag flags, uint32 
 	if (cost.Failed()) return cost;
 	/* Add construction expenses. */
 	cost.AddCost((numtracks * _price[PR_BUILD_STATION_RAIL] + _price[PR_BUILD_STATION_RAIL_LENGTH]) * plat_len);
+	cost.AddCost(numtracks * plat_len * RailBuildCost(rt));
 
 	Station *st = NULL;
 	ret = FindJoiningStation(est, station_to_join, adjacent, new_location, &st);
