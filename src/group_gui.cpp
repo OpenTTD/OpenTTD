@@ -381,12 +381,12 @@ public:
 	{
 		switch (widget) {
 			case GRP_WIDGET_ALL_VEHICLES:
-				DrawString(r.left + WD_FRAMERECT_LEFT + 8, r.right - WD_FRAMERECT_RIGHT - 8, r.top + WD_MATRIX_TOP,
+				DrawString(r.left + WD_FRAMERECT_LEFT + 8, r.right - WD_FRAMERECT_RIGHT - 8, r.top + WD_FRAMERECT_TOP + 1,
 						STR_GROUP_ALL_TRAINS + this->vehicle_type, IsAllGroupID(this->group_sel) ? TC_WHITE : TC_BLACK);
 				break;
 
 			case GRP_WIDGET_DEFAULT_VEHICLES:
-				DrawString(r.left + WD_FRAMERECT_LEFT + 8, r.right - WD_FRAMERECT_RIGHT - 8, r.top + WD_MATRIX_TOP,
+				DrawString(r.left + WD_FRAMERECT_LEFT + 8, r.right - WD_FRAMERECT_RIGHT - 8, r.top + WD_FRAMERECT_TOP + 1,
 						STR_GROUP_DEFAULT_TRAINS + this->vehicle_type, IsDefaultGroupID(this->group_sel) ? TC_WHITE : TC_BLACK);
 				break;
 
