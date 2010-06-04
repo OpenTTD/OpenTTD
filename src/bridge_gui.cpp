@@ -14,6 +14,7 @@
 #include "command_func.h"
 #include "economy_func.h"
 #include "bridge.h"
+#include "rail.h"
 #include "strings_func.h"
 #include "window_func.h"
 #include "sound_func.h"
@@ -394,6 +395,13 @@ void ShowBuildBridgeWindow(TileIndex start, TileIndex end, TransportType transpo
 
 		bl = new GUIBridgeList();
 
+		Money infra_cost = 0;
+		switch (transport_type) {
+			case TRANSPORT_ROAD: infra_cost = (bridge_len + 2) * _price[PR_BUILD_ROAD] * 2; break;
+			case TRANSPORT_RAIL: infra_cost = (bridge_len + 2) * RailBuildCost((RailType)road_rail_type); break;
+			default: break;
+		}
+
 		/* loop for all bridgetypes */
 		for (BridgeType brd_type = 0; brd_type != MAX_BRIDGES; brd_type++) {
 			if (CheckBridgeAvailability(brd_type, bridge_len).Succeeded()) {
@@ -403,7 +411,7 @@ void ShowBuildBridgeWindow(TileIndex start, TileIndex end, TransportType transpo
 				item->spec = GetBridgeSpec(brd_type);
 				/* Add to terraforming & bulldozing costs the cost of the
 				 * bridge itself (not computed with DC_QUERY_COST) */
-				item->cost = ret.GetCost() + (((int64)tot_bridgedata_len * _price[PR_BUILD_BRIDGE] * item->spec->price) >> 8);
+				item->cost = ret.GetCost() + (((int64)tot_bridgedata_len * _price[PR_BUILD_BRIDGE] * item->spec->price) >> 8) + infra_cost;
 			}
 		}
 	}

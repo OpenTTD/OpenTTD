@@ -871,6 +871,7 @@ CommandCost CmdBuildTrainDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 	}
 
 	cost.AddCost(_price[PR_BUILD_DEPOT_TRAIN]);
+	cost.AddCost(RailBuildCost(railtype));
 	return cost;
 }
 

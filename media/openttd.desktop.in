@@ -4,8 +4,8 @@
 Type=Application
 Version=1.1
 Name=!!MENU_NAME!!
-Comment=A clone of Transport Tycoon Deluxe
 Icon=openttd
 Exec=!!TTD!!
 Terminal=false
 Categories=!!MENU_GROUP!!
+Comment=A clone of Transport Tycoon Deluxe

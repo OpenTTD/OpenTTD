@@ -14,6 +14,11 @@
  * functions may still be available if you return an older API version
  * in GetAPIVersion() in info.nut.
  *
+ * \b 1.0.2
+ *
+ * Other changes:
+ * \li AIBridge::GetPrice now returns the price of the bridge without the cost for the rail or road.
+ *
  * \b 1.0.1
  *
  * API additions:
