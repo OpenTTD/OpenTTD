@@ -1160,8 +1160,6 @@ STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / 
 
 
 
-# NewGRF add window
-
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
 STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}NewGRF errore larri bat gertatu da: {}{STRING}

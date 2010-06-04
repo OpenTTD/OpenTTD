@@ -1,14 +1,15 @@
 ##name Norwegian (Nynorsk)
-##ownname Norsk, Nynorsk
+##ownname Norsk (nynorsk)
 ##isocode nn_NO
 ##plural 0
 ##textdir ltr
-##digitsep .
-##digitsepcur .
+##digitsep {NBSP}
+##digitsepcur {NBSP}
 ##decimalsep ,
 ##winlangid 0x0814
 ##grflangid 0x0e
 ##gender masculine feminine neuter
+##case small
 
 
 # $Id$
@@ -216,6 +217,7 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
+
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Skriv inn søkefilter
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Skriv eit nøkkelord for filtrering av lista
@@ -230,7 +232,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Gje nytt
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Lukk vindauge
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Tittel på vindauget - dra for å flytte vindauget
-STR_TOOLTIP_SHADE                                               :{BLACK}Minimer vindauget - vis kun tittelfeltet
+STR_TOOLTIP_SHADE                                               :{BLACK}Minimer vindauget - syn kun tittelfeltet
 STR_TOOLTIP_STICKY                                              :{BLACK}Beskytt dette vindauget mot 'Lukk alle vindauge'-knappen
 STR_TOOLTIP_RESIZE                                              :{BLACK}Klikk og dra for å endre storleiken på vindauget
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Byt mellom stor/liten storleik på vindauga
@@ -384,7 +386,7 @@ STR_GRAPH_MENU_INCOME_GRAPH                                     :Inntektsgraf
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Graf over leverte varer
 STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :Prestasjonhistorikk
 STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Graf over firmaverdi
-STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Prisliste for varer
+STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Varetakster
 ############ range ends here
 
 ############ range for company league menu starts
@@ -436,7 +438,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Tidlegare meldi
 ############ range for about menu starts
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informasjon om landområde
 STR_ABOUT_MENU_SEPARATOR                                        :
-STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Syne/gjem konsoll
+STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Syne/gøym konsoll
 STR_ABOUT_MENU_AI_DEBUG                                         :AI-feilsøking
 STR_ABOUT_MENU_SCREENSHOT                                       :Skjermfoto (CTRL+S)
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Stort skjermfoto (CTRL+G)
@@ -507,7 +509,7 @@ STR_MONTH_DEC                                                   :desember
 
 # Graph window
 STR_GRAPH_KEY_BUTTON                                            :{BLACK}Nøkkel
-STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}Syne oversikt over grafval
+STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}Syne nøkkel til grafer
 STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
 STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
 STR_GRAPH_Y_LABEL                                               :{TINYFONT}{STRING}
@@ -515,21 +517,21 @@ STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMM
 
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Graf over overskot
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Graf over inntekter
-STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Leverte einingar
+STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Vareeiningar levert
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Prestasjonsvurdering av firma (maks. poeng=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Firmaverdi
 
-STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Betalingstakst for varer
+STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Varetakster
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Dager i transport
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Betaling for levering av ti einingar (eller 10 000 liter) over ein distanse på 20 ruter
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Skru av/på graf for varetypar
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Syne/gøym graf for ein bestemd varetype
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Syne detaljerte ytelsesrangeringar
 
 # Graph key window
-STR_GRAPH_KEY_CAPTION                                           :{WHITE}Oversikt over firmagrafval
-STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Klikk her for å vise/skjule eit firma i grafen
+STR_GRAPH_KEY_CAPTION                                           :{WHITE}Nøkkel til firmagraf
+STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Klikk her for å syne/gøyme firmaet i grafen
 
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Firmarangering
@@ -697,7 +699,7 @@ STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Aktiver 
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Syne høgd
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL                                :{BLACK}Ikkje syne industriar på kart
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL                                 :{BLACK}Syne alle industriar på kart
-STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Byt vising av høgdekart
+STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Byt syning av høgdekart
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Syne siste melding eller nyheit
@@ -1751,7 +1753,7 @@ STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :sambandet vart 
 STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :protokollfeil
 STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :NewGRF-filer passar ikkje saman
 STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :ikkje autorisert
-STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :mottok merkeleg pakke
+STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :mottok ugyldig eller uventa pakke
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :feil versjon
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :namnet er brukt av nokon andre
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :feil passord for til spelet
@@ -1886,7 +1888,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Bygg jer
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Bygg togstall (trengst for bygging og vedlikehald av tog)
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Gjer om jernbane til kontrollpunkt. CTRL mogleggjer samanhengande kontrollpunkt
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Bygg jernbanestasjon. CTRL mogleggjer samanhengande stasjonar
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Bygg jernbanesignaler. CTRL byter mellom vingesignal/lyssignal{}Dra for å bygge signaler langs ei strekke med skinner. CTRL byggjer signaler til neste knutepunkt{}CTRL+klikk opnar/lukker signalval-vindauget
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Bygg jernbanesignaler. CTRL byter mellom vingesignal/lyssignal{}Dra for å bygge signaler langs ei strekke med skinner. CTRL byggjer signaler til neste knutepunkt{}CTRL+klikk synar/gøymer signalval-vindauget
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Bygg jernbanebru
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Bygg jernbanetunnel
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Byt mellom bygging/fjerning for jernbanespor, signal, kontrollpunkt og stasjonar. Halde CTRL inne fjernar også spor frå kontrollpunkt og stasjonar
@@ -1930,7 +1932,7 @@ STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Inngangs
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Utgangssignal (lyssignal){}Verker på samme måte som blokksignal, men er naudsynte for å utløyse rett farge på inngangs- og kombinasjons-forsignaler.
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Kombinasjonssignal (lyssignal){}Verker som både inn- og utgangssignal. Dette gjer det mogleg å lage store "greinar" av forsignal.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Avansert signal (lyssignal){}Eit avansert signal tillet fleire tog å køyre samstundes på same signalblokk, dersom toga kan reservere ei rute til ein trygg stoppestad. Vanlege avanserte signaler kan passerast bakfrå.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Einvegs avansert signal (lyssignal){}Eit avansert signal tillet fleire tog å køyre samstundes på same signalblokk, dersom toga kan reservere ei rute til ein trygg stoppestad. Einvegs avanserte signaler kan passerast bakfrå.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Einvegs avansert signal (lyssignal){}Eit avansert signal tillet fleire tog å køyre samstundes på same signalblokk, dersom toga kan reservere ei rute til ein trygg stoppestad. Einvegs avanserte signal kan ikkje passerast bakfrå.
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Signalkonvertering{}Klikk på eit signal for å endra det til valde type, CTRL+klikk byter mellom forskjellige variantar.
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Tettleik for dra og slepp signalbygging
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Minsk tettleik for dra og slepp signalbygging
@@ -2328,8 +2330,8 @@ STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Flytt de
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Ei liste over NewGRF-filene som er installert. Klikk på ei fil for å endre parametrane
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Set parametrar
-STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Syne palett
-STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Syne paletten til den valde NewGRF.{}Gjer dette når grafikken frå denne NewGRF ser rosa ut i spelet
+STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Syne/gøym palett
+STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Syne/gøym paletten til den valde NewGRF.{}Gjer dette når grafikken frå denne NewGRF ser rosa ut i spelet
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Bruk forandringane
 
 STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Finn manglande innhald på nettet
@@ -2347,7 +2349,12 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Deaktivert
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Skriv inn NewGRF-parametrar
 
-# NewGRF add window
+# NewGRF inspect window
+
+
+
+# Sprite aligner window
+
 STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Tilgjengelege NewGRF-filer
 STR_NEWGRF_ADD_FILE                                             :{BLACK}Legg til i utvalet
 STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Legg til den valde NewGRF-fila i konfigurasjonen din
@@ -2397,6 +2404,13 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tog '{VE
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' gjer gal informasjon.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Vare/ombyggjings-informasjon for '{1:ENGINE}' er forskjellig frå kjøpslista etter konstruksjon. Dette kan føra til at autofornying/erstatning ikkje tilpasser riktig.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' forårsaka ei uendelig løkkje i produksjonskallet.
+
+# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+STR_NEWGRF_INVALID_CARGO                                        :<invalid cargo>
+STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
+STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} med <invalid cargo>
+STR_NEWGRF_INVALID_ENGINE                                       :<invalid engine>
+STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<invalid industry>
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Skiltliste - {COMMA} Skilt{P "" er}
@@ -2750,6 +2764,7 @@ STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} G
 STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} skipsdokk
 STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} hangar
 
+
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} køyretøy{STRING}
@@ -2945,6 +2960,8 @@ STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE               :{LTBLUE}Vedlike
 STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL           :{LTBLUE}Vedlikehald ved {TOWN} skipsdokk, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE                   :{LTBLUE}Vedlikehald ved {STATION} hangar
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE_VEL               :{LTBLUE}Vedlikehald ved {STATION} hangar, {VELOCITY}
+
+# Vehicle stopped/started animations
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Detaljar)
@@ -3453,6 +3470,7 @@ STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Kan ikkj
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Kan ikkje byggje trikkestall her...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Kan ikkje byggje skipsdokk her...
 
+
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Toget må vere stoppa i togstallen
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... må verte stoppa i ein garasje
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Må vere stoppa i skipsdokken
@@ -3509,6 +3527,7 @@ STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Kan ikkj
 
 # Tree related errors
 STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... det er allereie eit tre her
+STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... feil terreng for treslag
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Kan ikkje plante tre her...
 
 # Bridge related errors
@@ -3631,6 +3650,9 @@ STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... for 
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Kan ikkje plassere skilt her...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Kan ikkje byta teksta på skiltet...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Kan ikkje sletta skilt...
+
+# Translatable comment for OpenTTD's desktop shortcut
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Ein Transport Tycoon Deluxe-klone
 
 ##id 0x2000
 # Town building names
@@ -4021,6 +4043,7 @@ STR_FORMAT_GROUP_NAME                                           :Gruppe {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 STR_FORMAT_WAYPOINT_NAME                                        :{TOWN} kontrollpunkt
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN} Kontrollpunkt #{COMMA}
+
 
 STR_UNKNOWN_STATION                                             :ukjend stasjon
 STR_DEFAULT_SIGN_NAME                                           :Skilt

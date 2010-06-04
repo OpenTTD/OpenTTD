@@ -171,7 +171,7 @@ STR_TONS                                                        :tonnia
 STR_LITERS                                                      :litraa
 STR_ITEMS                                                       :erää
 STR_CRATES                                                      :laatikkoa
-STR_RES_OTHER                                                   :muut
+STR_RES_OTHER                                                   :muu
 STR_NOTHING                                                     :
 
 # Colours, do not shuffle
@@ -215,6 +215,7 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
+
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Syötä suodatin teksti
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Syötä avainsana suodattaaksesi listan
@@ -232,7 +233,7 @@ STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Ikkunan 
 STR_TOOLTIP_SHADE                                               :{BLACK}Pienennä ikkuna - näytä vain otsikko
 STR_TOOLTIP_STICKY                                              :{BLACK}'Sulje Kaikki Ikkunat'-nappi ei vaikuta tähän ikkunaan.
 STR_TOOLTIP_RESIZE                                              :{BLACK}Napsauta ja vedä muuttaaksesi tämän ikkunan kokoa.
-STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Suuri/pieni ikkunan koko
+STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Suurenna/pienennä ikkuna
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Vierityspalkki - luettelon vieritys ylös/alas
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Vierityspalkki - luettelon vieritys vasemmalle/oikealle.
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Tuhoa rakennuksia, puita, jne.
@@ -291,7 +292,7 @@ STR_SORT_BY_CARGO_CAPACITY                                      :Rahtikapasiteet
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Tauko
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Nopeuta peliä
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Asetukset
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Pelin tallennus, lopetus ja sulkeminen
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Tallenna peli, lopeta peli, poistu
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Näytä kartta, lisänäkymä ja kylttilista
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Näytä kaupunkihakemisto
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Näytä tukitarjoukset
@@ -318,7 +319,7 @@ STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Maa-alue
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Vaihda työkalupalkkeja
 
 # Extra tooltips for the scenario editor toolbar
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Tallenna skenaario, lataa skenaario, hylkää skenaariomuokkain, poistu
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Tallenna skenaario, lataa skenaario, sulje skenaariomuokkain, poistu
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Skenaariomuokkain
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Siirrä aloituspäivää vuodella taaksepäin
@@ -552,7 +553,7 @@ STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Liikennevälineitä:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Asemia:
-STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Väh. tuotto:
+STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Vähimmäistuotto:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Vähimmäistulo:
 STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Enimmäistulo:
 STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}Kuljetettu:
@@ -1074,7 +1075,7 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Lisäase
 STR_CONFIG_SETTING_OFF                                          :pois
 STR_CONFIG_SETTING_ON                                           :päällä
 STR_CONFIG_SETTING_DISABLED                                     :pois käytöstä
-STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Ajoneuvon nopeus tilapalkissa: {ORANGE}{STRING}
+STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Näytä liikennevälineen nopeus tilapalkissa: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Rakentaminen rinteisiin ja rannikolle sallittu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Salli maaston muokkaaminen rakennusten, raiteiden jne. juurella (autoslope): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Realistisemman kokoiset vaikutusalueet: {ORANGE}{STRING}
@@ -1281,10 +1282,10 @@ STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Pääty
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :vasen
 STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :keskellä
 STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :oikea
-STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Ikkunan kiinniottosäde: {ORANGE}{STRING} piks.
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Ikkunan kiinniottosäde: {ORANGE}{STRING} pikseliä
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Ikkunan kiinniottosäde: {ORANGE}pois päältä
-STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Ikkunoiden rajoitus (ei-kiinnittyvä): {ORANGE}{STRING}
-STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Ikkunoiden rajoitus (ei-kiinnittyvä): {ORANGE}pois käytöstä
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Ikkunoiden rajoitus (ei-kiinnitetyt): {ORANGE}{STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Ikkunoiden rajoitus (ei-kiinnitetyt): {ORANGE}pois käytöstä
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Kaupunkien kasvunopeus: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Ei kasvua
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Hidas
@@ -1798,7 +1799,7 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Valitse 
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Valitse kaikki sisältö, joka on päivitys nykyiseen sisältöön, ladattavaksi
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Poista valinnat
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Poista kaikesta sisällöstä valinta ladattavaksi
-STR_CONTENT_FILTER_TITLE                                        :{BLACK}Tagi/nimi suodatus:
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}Avainsana/nimi suodatus:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Lataa
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Aloita valitun sisällön lataaminen
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Latausten koko: {WHITE}{BYTES}
@@ -2346,7 +2347,12 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Ei käytö
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Anna NewGRF-parametrit
 
-# NewGRF add window
+# NewGRF inspect window
+
+
+
+# Sprite aligner window
+
 STR_NEWGRF_ADD_CAPTION                                          :{WHITE}NewGRF-tiedostot
 STR_NEWGRF_ADD_FILE                                             :{BLACK}Lisää valintaan
 STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Lisää valittu NewGRF-tiedosto peliin
@@ -2396,6 +2402,13 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Yhtiöll
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' antaa väärää tietoa.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Rahti/uudelleensovitus tiedot kulkuneuvolle '{1:ENGINE}' ovat eri kuin ostolistassa rakentamisen jälkeen. Tämä voi aiheuttaa, että kulkuneuvon korvaus ei uudelleensovita oikein.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' aiheutti ikuisen silmukan tuotannon callback-funktiossa.
+
+# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+STR_NEWGRF_INVALID_CARGO                                        :<virheellinen rahti>
+STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
+STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} <virheellistä rahtia>
+STR_NEWGRF_INVALID_ENGINE                                       :<virheellinen kulkuneuvo>
+STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<virheellinen teollisuus>
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Kylttilista - {COMMA} kylttiä
@@ -2536,7 +2549,7 @@ STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Rakentaminen
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Uudet ajoneuvot
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Junien käyttökustannukset
-STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Autojen käyttökustannukset
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Ajoneuvojen käyttökustannukset
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Lentokoneiden käyttökustannukset
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Laivojen käyttökustannukset
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Omaisuudenhallinta
@@ -2749,6 +2762,7 @@ STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} h
 STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN}, telakka
 STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}Lentokonehalli, {STATION}
 
+
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} kulkuneuvo{P "" a}{STRING}
@@ -2944,6 +2958,8 @@ STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE               :{LTBLUE}Huolto 
 STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL           :{LTBLUE}Huolto {TOWN} Telakka, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE                   :{LTBLUE}Huolto {STATION} Halli
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE_VEL               :{LTBLUE}Huolto {STATION} Halli, {VELOCITY}
+
+# Vehicle stopped/started animations
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (yksityiskohdat)
@@ -3452,6 +3468,7 @@ STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Autovari
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Tähän ei voi rakentaa varikkoa.
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Telakkaa ei voi rakentaa.
 
+
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Juna täytyy pysäyttää veturitallin sisällä
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... sen pitää olla pysähtyneenä huoltoasemalle
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Laivan pitää olla pysähdyksissä telakalla.
@@ -3631,6 +3648,9 @@ STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... liia
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Kylttiä ei voi sijoittaa.
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Kyltin nimeä ei voi muuttaa.
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Kylttiä ei voi poistaa...
+
+# Translatable comment for OpenTTD's desktop shortcut
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Klooni Transport Tycoon Deluxesta
 
 ##id 0x2000
 # Town building names
@@ -4021,6 +4041,7 @@ STR_FORMAT_GROUP_NAME                                           :Ryhmä {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} ({STRING})
 STR_FORMAT_WAYPOINT_NAME                                        :Reittipiste: {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Reittipiste: {TOWN} #{COMMA}
+
 
 STR_UNKNOWN_STATION                                             :tuntematon asema
 STR_DEFAULT_SIGN_NAME                                           :Kyltti

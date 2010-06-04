@@ -97,11 +97,53 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :گیسی مشر
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} مسافر{P "" s}
 STR_QUANTITY_COAL                                               :{WEIGHT} کویلہ
+STR_QUANTITY_MAIL                                               :{COMMA} ڈاک ک{P ا ے} تھیل{P ا ے}
 STR_QUANTITY_OIL                                                :{VOLUME}خام تیل
+STR_QUANTITY_LIVESTOCK                                          :{COMMA} عدد مویشی
+STR_QUANTITY_GOODS                                              :سامان ک{P ا ے} {COMMA} کریٹ
+STR_QUANTITY_GRAIN                                              :انآج کا {WEIGHT} وزن
+STR_QUANTITY_WOOD                                               :لکڑی کا {WEIGHT} وزن
+STR_QUANTITY_IRON_ORE                                           :خام دھات لوھے کا {WEIGHT} وزن
+STR_QUANTITY_STEEL                                              :اسٹیل کا {WEIGHT} وزن
+STR_QUANTITY_VALUABLES                                          :قیمتی سامان ک{P ا ے} {COMMA} تھیل{P ا ے}
+STR_QUANTITY_COPPER_ORE                                         :خام دھات تانبے کا {WEIGHT} وزن
+STR_QUANTITY_MAIZE                                              :مکئی کا {WEIGHT} وزن
+STR_QUANTITY_FRUIT                                              :پھل کا {WEIGHT} وزن
+STR_QUANTITY_DIAMONDS                                           :ھیرے کے {COMMA} تھیل{P ا ے}
+STR_QUANTITY_FOOD                                               :خوراک کا {WEIGHT} وزن
+STR_QUANTITY_PAPER                                              :کاغز کا {WEIGHT} وزن
+STR_QUANTITY_GOLD                                               :سونے ک{P ا ے} {COMMA} تھیل{P ا ے}
+STR_QUANTITY_WATER                                              :{VOLUME} پانی
+STR_QUANTITY_WHEAT                                              :گندم کا {WEIGHT} وزن
+STR_QUANTITY_RUBBER                                             :{VOLUME} ربڑ
+STR_QUANTITY_SUGAR                                              :چینی کا {WEIGHT} وزن
+STR_QUANTITY_TOYS                                               :{COMMA} کھلون{P ا ے}
+STR_QUANTITY_SWEETS                                             :مٹھائی ک{P ا ے} {COMMA} تھیل{P ا ے}
+STR_QUANTITY_COLA                                               :{VOLUME} کولا
+STR_QUANTITY_CANDYFLOSS                                         :گڑیا کے بالوں کا {WEIGHT} وزن
+STR_QUANTITY_BUBBLES                                            :{COMMA} ببل
+STR_QUANTITY_TOFFEE                                             :ٹافی کا {WEIGHT} وزن
+STR_QUANTITY_BATTERIES                                          :{COMMA} بیٹر{P ی یاں}
+STR_QUANTITY_PLASTIC                                            :{VOLUME} پلاسٹک
+STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} کولڈ ڈرنک
+STR_QUANTITY_N_A                                                :-
 
 # Two letter abbreviation of cargo name
+STR_ABBREV_COAL                                                 :{TINYFONT} کل
+STR_ABBREV_MAIL                                                 :{TINYFONT} ڈاک
+STR_ABBREV_OIL                                                  :{TINYFONT} تیل
+STR_ABBREV_LIVESTOCK                                            :{TINYFONT} م ش
+STR_ABBREV_GOODS                                                :{TINYFONT} س م
 
 # 'Mode' of transport for cargoes
+STR_PASSENGERS                                                  :مسافرین
+STR_BAGS                                                        :تھیلے
+STR_TONS                                                        :من
+STR_LITERS                                                      :لیٹر
+STR_ITEMS                                                       :اشیاء
+STR_CRATES                                                      :کریٹ
+STR_RES_OTHER                                                   :دیگر
+STR_NOTHING                                                     :
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :گہرا نیلا
@@ -113,6 +155,7 @@ STR_COLOUR_LIGHT_BLUE                                           :ہلکا نیل
 STR_COLOUR_GREEN                                                :سبز
 STR_COLOUR_DARK_GREEN                                           :گہرا سبز
 STR_COLOUR_BLUE                                                 :نیلا
+STR_COLOUR_CREAM                                                :بالائی
 STR_COLOUR_PURPLE                                               :جامنی
 STR_COLOUR_ORANGE                                               :نارنجی
 STR_COLOUR_BROWN                                                :بھورا
@@ -120,29 +163,60 @@ STR_COLOUR_GREY                                                 :سلیٹی
 STR_COLOUR_WHITE                                                :سفید
 
 # Units used in OpenTTD
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} میل فی گھنٹھ
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA} کلو میٹر فی گھنٹھ
+STR_UNITS_VELOCITY_SI                                           :{COMMA} میٹر فی سیکنڈ
 
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA} ھارس پآور
+STR_UNITS_POWER_METRIC                                          :{COMMA} ھارس پآور
+STR_UNITS_POWER_SI                                              :{COMMA} کلو واٹ
 
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA} من
+STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA} kg
 
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} من
+STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA} l
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} لیٹر
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
+
+STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 
 # Common window strings
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK} چھان کے الفاظ درج کیجیئے
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK} فھرست کے چھان کے لیے کوئی حرف دیجیئے
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK} (ترتیب کا طریقہ منتخب کریں (کم ہوتا/بڑھتا
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}ترتیب کا طریقہ منتخب کریں
+STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK} چھاننے کے اصول چنیئے
 STR_BUTTON_SORT_BY                                              :{BLACK}سے ترتیب دو
 STR_BUTTON_LOCATION                                             :{BLACK}جگہ
+STR_BUTTON_RENAME                                               :{BLACK} تبادلھء نام
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}کھڑکی بند کرو
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}کھڑکی کا نام - کھڑکی کو ہلانے کیلیے اسے پکڑ کر ہلاو
+STR_TOOLTIP_SHADE                                               :{BLACK} ونڈو چھبایئے - صرف ٹائٹل نظر آئے گا
+STR_TOOLTIP_STICKY                                              :{BLACK} نشان لگایئے تاکھ یھ ونڈو "Close All Windows" کے بٹن سے بند ناھو
+STR_TOOLTIP_RESIZE                                              :{BLACK} کلک اورگھسیٹ کر ونڈو کے پیمانے تبدیل کیجئے
+STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK} ونڈو کا بڑا یا چھوٹا پیمانا چنیئے
+STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK} فھرستی پٹی - فھرست کو اوپر نیچے کرنے کے لیے
+STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK} فھرستی پٹی - فھرست کو دایئں بایئں کرنے کے لیے
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}زمین کے ایک مربے پر عمارتیں وغیرہ گراو
 
 # Query window
+STR_BUTTON_CANCEL                                               :{BLACK} ترک کیجیئے
+STR_BUTTON_OK                                                   :{BLACK} او کے
 
 # On screen keyboard window
+STR_OSK_KEYBOARD_LAYOUT                                         :ً1234567890-=\ق و ع ر ت ے ء ی ہ پ ] [ ا س د ف گ ح ج ک ل ؛ ' ز ش چ ط ب ن م ، ۔ /
 
 # Measurement tooltip
+STR_MEASURE_LENGTH                                              :{BLACK} لمبائی: {NUM}
+STR_MEASURE_AREA                                                :{BLACK} پھیلاؤ: {NUM} x {NUM}
 
 
 # These are used in buttons
@@ -150,16 +224,49 @@ STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}آباد
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}نام
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}تاریخ
 # These are used in dropdowns
+STR_SORT_BY_POPULATION                                          :آبادی
+STR_SORT_BY_NAME                                                :نام
 STR_SORT_BY_PRODUCTION                                          :پیداوار
 STR_SORT_BY_TYPE                                                :طرز
 STR_SORT_BY_TRANSPORTED                                         :منتقل شدہ
 STR_SORT_BY_NUMBER                                              :تعداد
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :پچھلے سال کا منافع
+STR_SORT_BY_PROFIT_THIS_YEAR                                    :اس سال کا منافع
+STR_SORT_BY_AGE                                                 :عمر
+STR_SORT_BY_RELIABILITY                                         :اعتماد
+STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :طرزِ سامان کے مطابق کل گنجائش
+STR_SORT_BY_MAX_SPEED                                           :حدغایت رفتار
+STR_SORT_BY_MODEL                                               :نمونھ
+STR_SORT_BY_VALUE                                               :قیمت
+STR_SORT_BY_LENGTH                                              :لمبائی
+STR_SORT_BY_LIFE_TIME                                           :بقیھ زندگی
+STR_SORT_BY_TIMETABLE_DELAY                                     :ٹایم ٹیبل تاخیر
+STR_SORT_BY_FACILITY                                            :طرزِ اسٹیشن
+STR_SORT_BY_WAITING                                             :قیمتِ منتظر سامان
+STR_SORT_BY_RATING_MAX                                          :سامانی سرِ فھرست درجھ بندی
+STR_SORT_BY_RATING_MIN                                          :سامانی پیشِ فھرست درجھ بندی
+STR_SORT_BY_ENGINE_ID                                           :انجن کی شناخت (کلاسیکی چھانٹ)
+STR_SORT_BY_COST                                                :قیمت
+STR_SORT_BY_POWER                                               :طاقت
+STR_SORT_BY_INTRO_DATE                                          :تاریخِ تعارف
+STR_SORT_BY_RUNNING_COST                                        :قیمتِ رواں
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :قیمتِ رواں/ طاقت
 STR_SORT_BY_CARGO_CAPACITY                                      :سامان کی گنجایش
 
 # Tooltips for the main toolbar
+STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK} کھیل میں وقفھ لیجیئے
+STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK} کھیل کو تیزی سے بڑھایئں
+STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK} اختیارات
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK} کھیل بچایئے، کھیل دستبردار کیجیئے، منقطع کیجئے
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK} نقشھ، اضافی منظر یا اشاروں کی فھرست
+STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK} قصبوں کی کتاب دیکھیئے
+STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK} امداد دیکھیئے
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK} کمپنی کے اسٹیشنوں کی فھرست دیکھیَے
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}کمپنی کی مالیاتی معلومات دکھاو
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}کمپنی کی عام معلومات دکھاو
+STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK} مخطط دیکھیئے
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK} کمہنی کی مسافتی فھرست دیکھیئے
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK} نئی صنعت کی تعمیر شروع کیجیئے یا فھرستِ صنعت دیکھیئے
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}کمپنی کی ریل گاڑیوں کی فہرست دکھاو۔ Ctrl+Click سے گروپ یا ٹرینوں کی فہرست کھلتی یا بند ہوتی ہے
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}کمپنی کی سڑک کی سواریوں کی فہرست دکھاو۔ Ctrl+Click سے گروپ یا گاڑیوں کی فہرست کھلتی یا بند ہوتی ہے
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}کمپنی کی کشتیوں کی فہرست دکھاو۔ Ctrl+Click سے گروپ یا کشتیوں کی فہرست کھلتی یا بند ہوتی ہے
@@ -170,22 +277,49 @@ STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}ریل �
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}سڑکیں بناو
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}بندرگاہیں بناو
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}ہوای اڈے بناو
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}زمینی رقبہ کی معلومات
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK} منظر کشی ٹول بآر کھولیئے اور زمین اوپر نیچے، درخت لگایئے، وغیرھ
+STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK} آواز/موسیقی ونڈو دکھایئے
+STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK} آخری پیغام/ خبر دکھایئے، پیغام کے اختیارات کھولیئے
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}زمینی رقبہ کی معلومات، کانسول،AI debug ،اسکرین شاٹس، Open TTD کے بارے میں
+STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK} ٹول بآر منتقل کیجیئے
 
 # Extra tooltips for the scenario editor toolbar
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK} منظر بچایئے، منظر کھولیں، منظر دست بردار کیجیئے، منظر چھوڑیئے
+STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
+STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW} منظر نامھ
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}شروع کرنے کی تاریخ کو ایک سال پیچھے کرو
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}شروع کرنے کی تاریخ کو ایک سال آگے کرو
+STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK} نقشھ، کتبِ قصبات
+STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK} منظر تخلیق
+STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK} قصبھ تخلیق
+STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK} صنعت تخلیق
+STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK} سڑک کی تعمیر
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK} درخت لگایئے
+STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK} اشارھ لگایئے
 
 ############ range for SE file menu starts
+STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :منظر بچایئے
+STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :منظر کھولیئے
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :اونچائی کا نقشہ دکھائو
+STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :مدیر بند کیجیئے
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :باہر نکلو
 ############ range for SE file menu starts
 
 ############ range for settings menu starts
+STR_SETTINGS_MENU_GAME_OPTIONS                                  :کھیل کے اختیارات
+STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :مشکلات چنئے
+STR_SETTINGS_MENU_CONFIG_SETTINGS                               :اعلی اختیارات
+STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF اختیارات
+STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Transparency کے اختیارات
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :آبادیوں کے نام دکھائے جائیں
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :اڈوں کے نام دکھائے جائیں
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :راھ شناس نقتوں کے نام دکھائے جایئں
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :اشارے دکھائے جائیں
+STR_SETTINGS_MENU_FULL_ANIMATION                                :مکمل animation
+STR_SETTINGS_MENU_FULL_DETAIL                                   :مکمل تفصیل
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :شفاف عمارات
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :شفاف اسٹیشن کے اشارے
 ############ range ends here
 
 ############ range for file menu starts
@@ -196,14 +330,25 @@ STR_FILE_MENU_EXIT                                              :باہر نکل
 ############ range ends here
 
 ############ range for map menu starts
+STR_MAP_MENU_MAP_OF_WORLD                                       :دنیا کا نقشھ
+STR_MAP_MENU_EXTRA_VIEW_PORT                                    :اضافی منظر
+STR_MAP_MENU_SIGN_LIST                                          :اشاروں کی فھرست
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
+STR_TOWN_MENU_TOWN_DIRECTORY                                    :کتبِ قصبھ جات
 ############ end of the 'Display map' dropdown
+STR_TOWN_MENU_FOUND_TOWN                                        :قصبھ قائم کیجیئے
 ############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
+STR_SUBSIDIES_MENU_SUBSIDIES                                    :امداد
 ############ range ends here
 
 ############ range for graph menu starts
+STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :عملی منافع مخطط
+STR_GRAPH_MENU_INCOME_GRAPH                                     :آمدنی مخطط
+STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :پھنچائے گئے سامان کا مخطط
+STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :عملی تاریخ مخطط
+STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :کمپنی کی قیمت مخطط
 STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :سامان کی ادایگی کا تناسب
 ############ range ends here
 
@@ -211,51 +356,167 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :سامان کی
 ############ range ends here
 
 ############ range for industry menu starts
+STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :کتبِ صنعت
+STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :نئ سنعت تعمیر کیجیئے
 ############ range ends here
 
 ############ range for railway construction menu starts
+STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :راھ آھن پٹری کی تعمیر
+STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :برقی راھ آھن پٹری کی تعمیر
+STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :وحید راھ کی تعمیر
+STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :علناظیس کی تعمیر
 ############ range ends here
 
 ############ range for road construction menu starts
+STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :سڑک کی تعمیر
+STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :ٹرام وے کی تعمیر
 ############ range ends here
 
 ############ range for waterways construction menu starts
+STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :نھر کی تعمیر
 ############ range ends here
 
 ############ range for airport construction menu starts
+STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :ھواگاھ کی تعمیر
 ############ range ends here
 
 ############ range for landscaping menu starts
+STR_LANDSCAPING_MENU_LANDSCAPING                                :منظر کشی
+STR_LANDSCAPING_MENU_PLANT_TREES                                :درخت لگایئے
+STR_LANDSCAPING_MENU_PLACE_SIGN                                 :اشارھ لگایے
 ############ range ends here
 
 ############ range for music menu starts
+STR_TOOLBAR_SOUND_MUSIC                                         :آواز و موسیقی
 ############ range ends here
 
 ############ range for message menu starts
+STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :پچھلا پیعام/ خبر
+STR_NEWS_MENU_MESSAGE_SETTINGS                                  :اختیاراتِ پعغام
+STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :تاریخِ پیغامات
 ############ range ends here
 
 ############ range for about menu starts
+STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :زمینی رقبہ کی معلومات
+STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :حائطھ تدویم
+STR_ABOUT_MENU_AI_DEBUG                                         :AI debug
+STR_ABOUT_MENU_SCREENSHOT                                       :Screenshot (Ctrl+S)
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :بڑا screenshot (Ctrl+G)
+STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Open TTD کے بارے میں
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
+STR_ORDINAL_NUMBER_1ST                                          :پھل{G ا ی}
+STR_ORDINAL_NUMBER_2ND                                          :دوسر{G ا ی}
+STR_ORDINAL_NUMBER_3RD                                          :تیسر{G ا ی}
+STR_ORDINAL_NUMBER_4TH                                          :چوتھ{G ا ی}
+STR_ORDINAL_NUMBER_5TH                                          :پانچھو{G اں یں}
+STR_ORDINAL_NUMBER_6TH                                          :چھٹ{G ا ی}
+STR_ORDINAL_NUMBER_7TH                                          :ساتو{G اں یں}
+STR_ORDINAL_NUMBER_8TH                                          :آٹھو{G اں یں}
+STR_ORDINAL_NUMBER_9TH                                          :نو{G اں یں}
+STR_ORDINAL_NUMBER_10TH                                         :دسو{G اں یں}
+STR_ORDINAL_NUMBER_11TH                                         :گیارھو{G اں یں}
+STR_ORDINAL_NUMBER_12TH                                         :بارھو{G اں یں}
+STR_ORDINAL_NUMBER_13TH                                         :تیرھو{G اں یں}
+STR_ORDINAL_NUMBER_14TH                                         :چودھو{G اں یں}
+STR_ORDINAL_NUMBER_15TH                                         :پندھرو{G اں یں}
+STR_ORDINAL_NUMBER_16TH                                         :سولھو{G اں یں}
+STR_ORDINAL_NUMBER_17TH                                         :سترھو{G اں یں}
+STR_ORDINAL_NUMBER_18TH                                         :اٹھارو{G اں یں}
+STR_ORDINAL_NUMBER_19TH                                         :انیسو{G اں یں}
+STR_ORDINAL_NUMBER_20TH                                         :بیسو{G اں یں}
+STR_ORDINAL_NUMBER_21ST                                         :اکیسو{G اں یں}
+STR_ORDINAL_NUMBER_22ND                                         :بایئسو{G اں یں}
+STR_ORDINAL_NUMBER_23RD                                         :تیئسو{G اں یں}
+STR_ORDINAL_NUMBER_24TH                                         :چوبیسو{G اں یں}
+STR_ORDINAL_NUMBER_25TH                                         :پچیسو{G اں یں}
+STR_ORDINAL_NUMBER_26TH                                         :چھبیسو{G اں یں}
+STR_ORDINAL_NUMBER_27TH                                         :ستایئسو{G اں یں}
+STR_ORDINAL_NUMBER_28TH                                         :اٹھایئسو{G اں یں}
+STR_ORDINAL_NUMBER_29TH                                         :انتیسو{G اں یں}
+STR_ORDINAL_NUMBER_30TH                                         :تیسو{G اں یں}
+STR_ORDINAL_NUMBER_31ST                                         :اکتیسو{G اں یں}
 ############ range for days ends
 
 ############ range for months starts
+STR_MONTH_ABBREV_JAN                                            :جنوری
+STR_MONTH_ABBREV_FEB                                            :فروری
+STR_MONTH_ABBREV_MAR                                            :مارچ
+STR_MONTH_ABBREV_APR                                            :اپریل
+STR_MONTH_ABBREV_MAY                                            :مئی
+STR_MONTH_ABBREV_JUN                                            :جون
+STR_MONTH_ABBREV_JUL                                            :جولائی
+STR_MONTH_ABBREV_AUG                                            :اگست
+STR_MONTH_ABBREV_SEP                                            :ستمبر
+STR_MONTH_ABBREV_OCT                                            :اکتوبر
+STR_MONTH_ABBREV_NOV                                            :نومبر
+STR_MONTH_ABBREV_DEC                                            :دسمبر
 
+STR_MONTH_JAN                                                   :جنوری
+STR_MONTH_FEB                                                   :فروری
+STR_MONTH_MAR                                                   :مارچ
+STR_MONTH_APR                                                   :اپریل
+STR_MONTH_MAY                                                   :مئی
+STR_MONTH_JUN                                                   :جون
+STR_MONTH_JUL                                                   :جولائی
+STR_MONTH_AUG                                                   :اگست
+STR_MONTH_SEP                                                   :ستمبر
+STR_MONTH_OCT                                                   :اکتوبر
+STR_MONTH_NOV                                                   :نومبر
+STR_MONTH_DEC                                                   :دسمبر
 ############ range for months ends
 
 # Graph window
+STR_GRAPH_KEY_BUTTON                                            :{BLACK} کلید
+STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
+STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
+STR_GRAPH_Y_LABEL                                               :{TINYFONT}{STRING}
+STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
 
+STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE} عملی منافع مخطط
+STR_GRAPH_INCOME_CAPTION                                        :{WHITE} آمدنی مخطط
+STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE} شمار سامان پھنچایا گیا
+STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE} کمپنی کی کارکردگی کی درج بندی (حدِ درجھ = 1000)
 
+STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE} سامان کی ادایگی کا تناسب
+STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK} حرکت میں ایام
+STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK} سامان کی دس اکائیات (یآ 10،000 لیٹر)، 20 چکور تک لے جانے کی ادائیگی
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK} ظرزِ سامان مخطط تدویم کیجئیے
+STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 
+STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK} کارکردگی کی تفصیلی درجہ بندی دکھائیے
 
 # Graph key window
+STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK} مخطط پر کمپنی کی تفصیلات کو تدویم کیجئیے
 
 # Company league window
+STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :مہندس
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :ٹریفک ناظم
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :مواصلاتی رابط
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ROUTE_SUPERVISOR           :نگرانِ راہ
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :صدر
 
 # Performance detail window
+STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK} تفصیل
+STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
+STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
+STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 ############ Those following lines need to be in this order!!
+STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK} ناوقلات:
+STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK} اسٹیشن:
+STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK} کم سے کم منافع:
+STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK} کم سے کم آمدنی:
+STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK} حدِ غایت آمدنی:
+STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK} پھنچا دی گئی:
+STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK} سامان:
+STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK} رقم:
+STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK} قرضہ:
+STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK} مکمل:
 ############ End of order list
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK} پچھلے سال نفعدار ناقل کی تعداد؛ جس میں گاڑیاں، قطار، بحری جہاز، ہوائی جہاز وغعرہ شامل ہیں
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK} تعداد برائے حالیہ مرمت شدہ مستقر حصے۔ مستقر کا ہر حصہ گنا جاتا ہے۔ مثلا پٹری مستقر، بس اسٹاپ، ہوائی اڈہ وغیرہ، خواہ وہ ایک ساتھ جڑے بھی ہوں۔
 
 # Music window
 
@@ -605,7 +866,12 @@ STR_ABOUT_OPENTTD                                               :{WHITE}اوپن
 
 
 
-# NewGRF add window
+# NewGRF inspect window
+
+
+
+# Sprite aligner window
+
 
 # NewGRF (self) generated warnings/errors
 
@@ -616,12 +882,24 @@ STR_ABOUT_OPENTTD                                               :{WHITE}اوپن
 # NewGRF 'it's broken' warnings
 
 
+# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+STR_NEWGRF_INVALID_CARGO                                        :<غلط سامان>
+STR_NEWGRF_INVALID_CARGO_QUANTITY                               :<غلط سامان> کا {COMMA}
+STR_NEWGRF_INVALID_ENGINE                                       :<غلط اِنجن>
+STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<غلط صنعت>
+
 # Sign list window
+STR_SIGN_LIST_CAPTION                                           :{WHITE} فھرستِ اشارھ - {COMMA} اشار{P ھ ے}
 
 # Sign window
+STR_EDIT_SIGN_CAPTION                                           :{WHITE} اشارے کے الفاظ تبدیل کیجیئے
+STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK} اگلے اشارے تک جایئے
+STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK} پچھلے اشارے تک جایئے
 
+STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK} اشارے کا نام درج کیجیئے
 
 # Town directory window
+STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE} قصبے
 
 # Town view window
 
@@ -637,7 +915,7 @@ STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}اس ش�
 
 # Station list window
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}تمام سہولتوں کا انتخاب کرو
-STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}تمام قسم کا سامان کا انتخاب کرو  (بشمول غیر منتظر سامان کے)
+STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}تمام قسم کے سامان کا انتخاب کرو (بشمول غیر منتظر سامان کے)
 STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}کسی قسم کا کویی سامان انتظار نہیں کر رہا ہے
 
 # Station view window
@@ -726,6 +1004,7 @@ STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}فہرس
 
 
 
+
 # Engine preview window
 
 
@@ -752,6 +1031,8 @@ STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}فہرس
 
 
 
+
+# Vehicle stopped/started animations
 
 # Vehicle details
 
@@ -844,6 +1125,8 @@ STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}فہرس
 
 
 
+# Soundset messages
+
 # Screenshot related messages
 
 # Error message titles
@@ -854,9 +1137,18 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}نقشے
 STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}ناکافی پیسہ - {CURRENCY} مزید چاہیے
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}ہموار زمین چاہیے
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}یہ نہیں کر سکتا۔۔۔
+STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE} عمارت کو پھلے گرانا ھو گا
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}یہ جگہ صاف نہیں کر سکتا۔۔۔
+STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}۔۔۔جگھ غیرمناسب
+STR_ERROR_ALREADY_BUILT                                         :{WHITE}...تعمیرات مکمل یا جاری ھیں
+STR_ERROR_OWNED_BY                                              :{WHITE}۔۔۔ یھ {STRING} کی ملکیت ھے
+STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}۔۔۔ رقبھ کسی اور کمپنی کی ملکیت ھے
+STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE} نام منفرد ھونا چاھیے
+STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{1:STRING} راستے میں ھے
 
 # Local authority errors
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} مقامی حکومت اس کی اجازت نھیں دیتی
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN} مقامی حکومت اضافی ھوائی اڈے تعمیر کرنے کی اجازت نھیں دیتی
 
 # Levelling errors
 
@@ -884,6 +1176,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{G=m}{WHITE}...
 
 
 
+
 # Autoreplace related errors
 
 # Rail construction errors
@@ -894,9 +1187,11 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{G=m}{WHITE}...
 # Waterway construction errors
 
 # Tree related errors
+STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE} ۔۔۔ طرزِ پیڑ کے لیئے غلط طرزِ زپین
 
 # Bridge related errors
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... پل کے دونوں کنارے زمین پر ہونے چاہییں
+STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE} ۔۔۔ پل زیادھ لمبی ھے
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}یہاں سورنگ نہئ بنا سکتے
@@ -974,6 +1269,9 @@ STR_ERROR_CAN_T_REFIT_DESTROYED_VEHICLE                         :{WHITE}یہ گ�
 
 # Sign related errors
 
+# Translatable comment for OpenTTD's desktop shortcut
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Transport Tycoon Deluxe کا ھم جنس
+
 ##id 0x2000
 # Town building names
 
@@ -996,6 +1294,7 @@ STR_FORMAT_DATE_TINY                                            :{STRING}-{STRIN
 STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
 STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
 STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
+
 
 
 
@@ -1075,3 +1374,4 @@ STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
+

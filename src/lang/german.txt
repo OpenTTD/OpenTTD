@@ -216,6 +216,7 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
+
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Filter eingeben
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Stichwort eingeben, mit dem die Liste gefiltert werden soll
@@ -2347,7 +2348,12 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Deaktivier
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}NewGRF-Parameter eingeben
 
-# NewGRF add window
+# NewGRF inspect window
+
+
+
+# Sprite aligner window
+
 STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Verfügbare NewGRF-Dateien
 STR_NEWGRF_ADD_FILE                                             :{BLACK}Zur Auswahl hinzufügen
 STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Ausgewählte NewGRF-Datei zur Konfiguration hinzufügen
@@ -2397,6 +2403,13 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Zug '{VE
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' liefert falsche Informationen
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Fracht / Ersetzungs - Informationen für '{1:ENGINE}' weichen von der Einkaufsliste nach dem Kauf ab. Das kann dazu führen, dass das Umrüsten beim autmatisches Ersetzen oder Erneuern nicht korrekt funktioniert
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' verursachte eine Endlosschleife im 'Production callback'.
+
+# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+STR_NEWGRF_INVALID_CARGO                                        :<ungültige Frachtart>
+STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
+STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} of <ungültige Frachtart>
+STR_NEWGRF_INVALID_ENGINE                                       :<ungültige Lokomotive>
+STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<ungültige Industrie>
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Schilderliste ({COMMA} Schild{P "" er})
@@ -2750,6 +2763,7 @@ STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} F
 STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} Werft
 STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} Flugzeughangar
 
+
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} Fahrzeug{P "" e}{STRING}
@@ -2945,6 +2959,8 @@ STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE               :{LTBLUE}Wartung
 STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL           :{LTBLUE}Wartung in der Werft {TOWN}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE                   :{LTBLUE}Wartung in {STATION} Hangar
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE_VEL               :{LTBLUE}Wartung in {STATION} Hangar, {VELOCITY}
+
+# Vehicle stopped/started animations
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Details)
@@ -3453,6 +3469,7 @@ STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Fahrzeug
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Straßenbahndepot kann hier nicht gebaut werden...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Werft kann hier nicht gebaut werden...
 
+
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Zug muss im Depot angehalten sein
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... muss in einem Fahrzeugdepot angehalten werden
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Schiff muss in der Werft angehalten werden
@@ -3509,6 +3526,7 @@ STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Kann hie
 
 # Tree related errors
 STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... hier sind bereits Bäume
+STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... falsches Gelände für die Baumart
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Baum kann hier nicht gepflanzt werden...
 
 # Bridge related errors
@@ -3631,6 +3649,9 @@ STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... zu v
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Schild kann hier nicht aufgestellt werden...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Schildname kann nicht geändert werden...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Kann Schild nicht löschen...
+
+# Translatable comment for OpenTTD's desktop shortcut
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Ein Transport Tycoon Deluxe Klon
 
 ##id 0x2000
 # Town building names
@@ -4021,6 +4042,7 @@ STR_FORMAT_GROUP_NAME                                           :Gruppe {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 STR_FORMAT_WAYPOINT_NAME                                        :Wegpunkt {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Wegpunkt {TOWN} #{COMMA}
+
 
 STR_UNKNOWN_STATION                                             :unbekannte Station
 STR_DEFAULT_SIGN_NAME                                           :Schild

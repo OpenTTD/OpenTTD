@@ -403,8 +403,9 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
+
 # Common window strings
-STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Unes filter teksta
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Unes filter niske
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Unesite ključnu reč kako bi se filtriralo spisak
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filter teksta:
 
@@ -1945,7 +1946,7 @@ STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :veza je izgublj
 STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :protokolna greška
 STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :neusaglašenost NewGRF-a
 STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :neovlašćeno
-STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :primljen nepoznat paket
+STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :primljen neispravan ili nepoznat paket
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :pogrešna revizija
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :ime se već koristi
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :pogrešna lozinka
@@ -2541,7 +2542,12 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Isključen
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Unesite NewGRF parametre
 
-# NewGRF add window
+# NewGRF inspect window
+
+
+
+# Sprite aligner window
+
 STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Dostupne NewGRF datoteke
 STR_NEWGRF_ADD_FILE                                             :{BLACK}Dodaj na listu
 STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Dodajte odabranu NewGRF datoteku na vaš listu
@@ -2591,6 +2597,13 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Voz '{VE
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' sadrži neispravne podatke.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Podaci o tovaru/prenameni za '{1:ENGINE}' se posle izgradnje razlikuju od nabavne liste. Ovo može izazvati neispravnu automatsku zamenu/preuređenje.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' je izazvao beskrajnu petlju poziva proizvodnje industrija.
+
+# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+STR_NEWGRF_INVALID_CARGO                                        :<nevažeći tovar>
+STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
+STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} <nevažeć{P i a eg} tovar{P 0 "" a a}>
+STR_NEWGRF_INVALID_ENGINE                                       :<nevažeća mašina>
+STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<nevažeća industrija>
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Spisak Znakova - {COMMA} Znak{P "" a ova}
@@ -2944,6 +2957,7 @@ STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} D
 STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} Depo Plovila
 STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} Hangar
 
+
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} vozil{P o a a}{STRING}
@@ -3149,6 +3163,8 @@ STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE               :{LTBLUE}Servisi
 STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL           :{LTBLUE}Servisiranje u {TOWN} Brodskom Depou, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE                   :{LTBLUE}Servisiranje u {STATION} Hangaru
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE_VEL               :{LTBLUE}Servisiranje u {STATION} Hangaru, {VELOCITY}
+
+# Vehicle stopped/started animations
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Opširnije)
@@ -3657,6 +3673,7 @@ STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Izgradnj
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Izgradnja tramvajkog depoa ovde nije moguća...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Ovde nije moguće izgraditi brodski hangar
 
+
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Voz se mora zaustaviti u nekom depou
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... mora se zaustaviti unutar depoa za drumska vozila
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Brod mora biti zaustavljen u depou
@@ -3713,6 +3730,7 @@ STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Akvadukt
 
 # Tree related errors
 STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... drvo je već na tom mestu
+STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... teren neodgovara vrsti drveća
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Ovde je nemoguće posaditi drvo...
 
 # Bridge related errors
@@ -3835,6 +3853,9 @@ STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... ima 
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Ovde je nemoguće postaviti znak...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Ime znaka se ne može promeniti...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Nemoguće je izbrisati znak...
+
+# Translatable comment for OpenTTD's desktop shortcut
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Transport Tycoon Deluxe klon
 
 ##id 0x2000
 # Town building names
@@ -4225,6 +4246,7 @@ STR_FORMAT_GROUP_NAME                                           :Grupa {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 STR_FORMAT_WAYPOINT_NAME                                        :{TOWN} Putanja
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN} Putanja #{COMMA}
+
 
 STR_UNKNOWN_STATION                                             :nepoznata stanica
 STR_DEFAULT_SIGN_NAME                                           :Znak

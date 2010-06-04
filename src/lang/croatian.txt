@@ -37,7 +37,7 @@ STR_CARGO_PLURAL_MAIL                                           :Pošta
 STR_CARGO_PLURAL_MAIL.gen                                       :pošte
 STR_CARGO_PLURAL_OIL                                            :Nafta
 STR_CARGO_PLURAL_OIL.gen                                        :nafte
-STR_CARGO_PLURAL_LIVESTOCK                                      :Domaće životinje
+STR_CARGO_PLURAL_LIVESTOCK                                      :Stoka
 STR_CARGO_PLURAL_LIVESTOCK.gen                                  :domaćih životinja
 STR_CARGO_PLURAL_GOODS                                          :Roba
 STR_CARGO_PLURAL_GOODS.gen                                      :robe
@@ -310,6 +310,7 @@ STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} lit{P r
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
+
 
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Unesi znak za filter
@@ -1846,7 +1847,7 @@ STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :veza je izgublj
 STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :greška u protokolu
 STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :NewGRF nepodudaranje
 STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :nije ovlašten
-STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :primljen je nepoznat paket
+STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :primljen je nepoznat ili neočekivani paket
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :pogrešna revizija
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :ime se već koristi
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :pogrešna zaporka
@@ -2442,7 +2443,12 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Onemoguće
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Unesite NewGRF parametre
 
-# NewGRF add window
+# NewGRF inspect window
+
+
+
+# Sprite aligner window
+
 STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Dostupne NewGRF datoteke
 STR_NEWGRF_ADD_FILE                                             :{BLACK}Dodaj u izabrano
 STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Dodaj odabrane NewGRF datoteke u svoju konfiguraciju
@@ -2492,6 +2498,13 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Vlak'{VE
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' daje netočne informacije.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Informacija o teretu/obnovi za '{1:ENGINE}' je različita od kupovne liste nakon izgradnje. Zbog toga bi automatsko obnavljanje/zamjena mogla biti neuspješna.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{G=male}{WHITE}'{1:STRING}' je uzrokovao beskonačnu petlju u pozivu za povrat produkcije.
+
+# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+STR_NEWGRF_INVALID_CARGO                                        :<pogrešan teret>
+STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
+STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} od <pogrešan teret>
+STR_NEWGRF_INVALID_ENGINE                                       :<pogrešno vozilo>
+STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<pogrešna industrija>
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Popis znakova - {COMMA} znak{P "" a ova}
@@ -2548,7 +2561,7 @@ STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Velika oglasna 
 STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Financiraj popravljanje lokalne prometnice
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Izgradi kip vlasnika tvrtke
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Financiraj nove građevine
-STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Kupi ekskluzivna prava prijevozna
+STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Kupi ekskluzivna prava prijevoza
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Podmiti lokalnu samoupravu
 
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Pokreni malu oglasnu kampanju, kako bi privukao više putnika i tereta za svoje prijevozne usluge.{} Trošak: {CURRENCY}
@@ -2845,6 +2858,7 @@ STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}Spremiš
 STR_DEPOT_SHIP_CAPTION                                          :{WHITE}Spremište brodova grada {TOWN}a
 STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} Zrakoplovni hangar
 
+
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} vozil{P o a a}{STRING}
@@ -3040,6 +3054,8 @@ STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE               :{LTBLUE}Servisi
 STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL           :{LTBLUE}Servisiranje u spremištu brodova grada {TOWN}a, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE                   :{LTBLUE}Servisiranje u hangaru {STATION}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE_VEL               :{LTBLUE}Servisiranje u hangaru {STATION}, {VELOCITY}
+
+# Vehicle stopped/started animations
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Detalji)
@@ -3548,6 +3564,7 @@ STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Ovdje ni
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Ovdje nije moguće izgraditi tramvajsko spremište...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Ovdje nije moguće izgraditi spremište brodova...
 
+
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Vlak mora biti zaustavljen unutar spremišta
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... mora biti zaustavljen unutar spremišta cestovnih vozila
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Brod mora biti zaustavljen u spremištu
@@ -3604,6 +3621,7 @@ STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Ovdje ni
 
 # Tree related errors
 STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... ovdje već postoji drvo
+STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... pogrešan teren za tu vrstu drveća
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Ovdje nije moguće posaditi drvo...
 
 # Bridge related errors
@@ -3726,6 +3744,9 @@ STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... prev
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Ovdje nije moguće postaviti znak...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Nije moguće promijeniti ime znaka...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Nije moguće obrisati znak...
+
+# Translatable comment for OpenTTD's desktop shortcut
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Klon od Transport Tycoon Deluxe-a
 
 ##id 0x2000
 # Town building names
@@ -4153,6 +4174,7 @@ STR_FORMAT_GROUP_NAME                                           :Groupa {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 STR_FORMAT_WAYPOINT_NAME                                        :Čvorište {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Čvorište {TOWN} #{COMMA}
+
 
 STR_UNKNOWN_STATION                                             :nepoznata postaja
 STR_DEFAULT_SIGN_NAME                                           :Znak

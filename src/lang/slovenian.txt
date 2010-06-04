@@ -174,21 +174,21 @@ STR_QUANTITY_N_A                                                :Ni na voljo
 STR_ABBREV_NOTHING                                              :
 STR_ABBREV_PASSENGERS                                           :{TINYFONT}PO
 STR_ABBREV_COAL                                                 :{TINYFONT}PR
-STR_ABBREV_MAIL                                                 :{TINYFONT}PS
+STR_ABBREV_MAIL                                                 :{TINYFONT}PŠ
 STR_ABBREV_OIL                                                  :{TINYFONT}NF
-STR_ABBREV_LIVESTOCK                                            :{TINYFONT}ZV
+STR_ABBREV_LIVESTOCK                                            :{TINYFONT}ŽV
 STR_ABBREV_GOODS                                                :{TINYFONT}IZ
-STR_ABBREV_GRAIN                                                :{TINYFONT}ZT
+STR_ABBREV_GRAIN                                                :{TINYFONT}ŽT
 STR_ABBREV_WOOD                                                 :{TINYFONT}LS
-STR_ABBREV_IRON_ORE                                             :{TINYFONT}ZR
+STR_ABBREV_IRON_ORE                                             :{TINYFONT}ŽR
 STR_ABBREV_STEEL                                                :{TINYFONT}JK
-STR_ABBREV_VALUABLES                                            :{TINYFONT}DR
+STR_ABBREV_VALUABLES                                            :{TINYFONT}VR
 STR_ABBREV_COPPER_ORE                                           :{TINYFONT}BK
 STR_ABBREV_MAIZE                                                :{TINYFONT}KZ
 STR_ABBREV_FRUIT                                                :{TINYFONT}SJ
 STR_ABBREV_DIAMONDS                                             :{TINYFONT}DM
-STR_ABBREV_FOOD                                                 :{TINYFONT}ZI
-STR_ABBREV_PAPER                                                :{TINYFONT}PR
+STR_ABBREV_FOOD                                                 :{TINYFONT}HR
+STR_ABBREV_PAPER                                                :{TINYFONT}PA
 STR_ABBREV_GOLD                                                 :{TINYFONT}ZL
 STR_ABBREV_WATER                                                :{TINYFONT}VO
 STR_ABBREV_WHEAT                                                :{TINYFONT}PN
@@ -334,7 +334,7 @@ STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pavza
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Hitro naprej
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Možnosti
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Shrani igro, zapusti igro, izhod
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Prikaži zemljevid
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Prikaži zemljevid, dodatno okno ali seznam znakov
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Prikaži imenik mest
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Prikaži subvencije
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Prikaži seznam postaj podjetja
@@ -1126,7 +1126,7 @@ STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Model p
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Original
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realističen
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Naklon vzpona za vlake {ORANGE}{STRING}%
-STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Prepreči vlakom in ladjam 90-stopinjske zavoje: {ORANGE}{STRING} {LTBLUE} (brez OPF)
+STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Prepreči vlakom in ladjam 90° zavoje: {ORANGE}{STRING} {LTBLUE} (brez OPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Združi železniške postaje, ki si stojijo blizu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Dovoli združevanje postaj, ki niso v dotiku: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Uporabi izboljšan algoritem polnjenja: {ORANGE}{STRING}
@@ -2388,7 +2388,12 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Onemogoče
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Vnesi NewGRF parametre
 
-# NewGRF add window
+# NewGRF inspect window
+
+
+
+# Sprite aligner window
+
 STR_NEWGRF_ADD_CAPTION                                          :{WHITE}NewGRF datoteke na voljo
 STR_NEWGRF_ADD_FILE                                             :{BLACK}Dodaj izboru
 STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Doda izbrano NewGRF datoteko tvoji konfiguraciji
@@ -2438,6 +2443,13 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Vlak '{V
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{STRING}' javlja napačno informacijo.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Informacija o predelavi tovornih zmogljivosti za '{1:ENGINE}' je različna od seznama nakupa po konstrukciji. To lahko povzroči, da bi samoobnova ne uspela pravilno.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' hrošč je povzročil neskončen povratni ciklus proizvodnje.
+
+# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+STR_NEWGRF_INVALID_CARGO                                        :<neveljaven tovor>
+STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
+STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} od <neveljaven tovor>
+STR_NEWGRF_INVALID_ENGINE                                       :<neveljaven pogon>
+STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<neveljavna industrija>
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Seznam oznak - {COMMA} oznak{P a i e ""}
@@ -2791,6 +2803,7 @@ STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} G
 STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} Ladijska garaža
 STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} Hangar
 
+
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} vozil{P o i a ""}{STRING}
@@ -2986,6 +2999,8 @@ STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE               :{LTBLUE}Gre na 
 STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL           :{LTBLUE}Gre na servis v {TOWN} ladijsko garažo, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE                   :{LTBLUE}Gre na servis v {STATION} hangar
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE_VEL               :{LTBLUE}Gre na servis v {STATION} hangar, {VELOCITY}
+
+# Vehicle stopped/started animations
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Podrobnosti)
@@ -3494,6 +3509,7 @@ STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Tukaj ni
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Tukaj ni mogoče zgraditi tramvaj garaže...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Tukaj ni mogoče zgraditi ladjedelnice...
 
+
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Vlak mora biti ustavljen v garaži
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... mora biti ustavljen v garaži cestnih vozil
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Ladja mora biti ustavljena in v garaži
@@ -3673,6 +3689,9 @@ STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... prev
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Tukaj ne moreš postaviti znaka...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Ne moreš spremeniti imena znaka...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Nemogoče brisanje znaka...
+
+# Translatable comment for OpenTTD's desktop shortcut
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Klon Transport Tycoona Deluxe
 
 ##id 0x2000
 # Town building names
@@ -4101,6 +4120,7 @@ STR_FORMAT_GROUP_NAME                                           :Skupina {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 STR_FORMAT_WAYPOINT_NAME                                        :Točka poti {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Točka poti {TOWN} #{COMMA}
+
 
 STR_UNKNOWN_STATION                                             :neznana postaja
 STR_DEFAULT_SIGN_NAME                                           :Znak

@@ -279,6 +279,7 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
+
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Εισαγώγη κειμένου για φιλτράρισμα
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Εισάγετε μια λέξη για να φιλτραριστεί η λίστα για
@@ -1179,7 +1180,7 @@ STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Μον�
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Αρχικό
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Ρεαλιστικό
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Υπερβολική κλίση γραμμης τρένων κατά {ORANGE}{STRING}%
-STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Απαγόρευση στροφών 90 μοιρών για τρένα και πλοία: {ORANGE}{STRING} {LTBLUE} (οχι με OPF)
+STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Απαγόρευση στα τρένα και πλοια να κάνουν στροφες 90°: {ORANGE}{STRING} {LTBLUE} (οχι με OPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Συνένωση σταθμών τρένων χτισμένων δίπλα σε άλλο: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Να επιτρέπεται η συνένωση μη παρακείμενων σταθμών: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Χρησιμοποίηση βελτιωμένου αλγόριθμου φόρτωσης: {ORANGE}{STRING}
@@ -1845,7 +1846,7 @@ STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :Η σύνδεσ
 STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :Λάθος πρωτόκολλου
 STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :Αναντιστοιχία NewGRF
 STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :Μη εξουσιοδοτημένο
-STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :λήψη περίεργων πακέτων
+STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :έγινε λήψη εσφαλμένου ή αναπάντεχου πακέτου
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :λάθος έκδοση
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :το όνομα χρησιμοποιείται
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :λάθος κωδικός
@@ -1863,7 +1864,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Παιχνίδ�
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Παιχνίδι ακόμα σε παύση ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Παιχνίδι ακόμα σε παύση ({STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Συνεχίση παιχνιδιού ({STRING})
-STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :μη επαρκείς παίχτες
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :αριθμός παιχτών
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :σύνδεση πελατών
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :χειροκίνητο
 ############ End of leave-in-this-order
@@ -2441,7 +2442,12 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Απενε
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Εισαγώγη παραμέτρων NewGRF
 
-# NewGRF add window
+# NewGRF inspect window
+
+
+
+# Sprite aligner window
+
 STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Διαθέσιμα αρχεία NewGRF
 STR_NEWGRF_ADD_FILE                                             :{BLACK}Προσθήκη στην επιλόγη
 STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Προσθέστε το επιλεγμένο αρχείο NewGRF στη διαμόρφωση σας
@@ -2491,6 +2497,13 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Το τ�
 STR_NEWGRF_BUGGY                                                :{WHITE}Το NewGRF '{0:STRING}' δίνει λάθος πληροφορίες
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Η πληροφορία εμπορεύματος/ανακατασκευή για την μηχανή '{1:ENGINE}' διαφέρει από την λίστα αγοράς μετά την κατασκευή. Αυτό μπορεί να προκαλέσει την αυτόματη ανανέωση/αντικατάσταση να αποτύχει να ανακατασκευάσει σώστα
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' προκάλεσε ένα ατέρμονο βρόγχο στην ανακοίνωση παραγωγής.
+
+# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+STR_NEWGRF_INVALID_CARGO                                        :<μη έγκυρο φορτίο>
+STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
+STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} <μη έγκυρου φορτίου>
+STR_NEWGRF_INVALID_ENGINE                                       :<μη έγκυρη μηχανή>
+STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<μη έγκυρη βιομηχανία>
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Λίστα πινακίδων - {COMMA} Πινακίδ{P α ες}
@@ -2844,6 +2857,7 @@ STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} �
 STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} Ναυπηγείο Πλοίων
 STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} Υπόστεγο Αεροπλάνων
 
+
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} {P όχημα οχήματα}{STRING}
@@ -3045,6 +3059,8 @@ STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE               :{LTBLUE}Service
 STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL           :{LTBLUE}Service στο ναυπηγείο της πόλης {TOWN}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE                   :{LTBLUE}Service στο υπόστεγο του στάθμου {STATION}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE_VEL               :{LTBLUE}Επισκεύη στο υπόστεγο του σταθμού {STATION}, {VELOCITY}
+
+# Vehicle stopped/started animations
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Λεπτομέριες)
@@ -3553,6 +3569,7 @@ STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Αδύν
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Δεν μπορεί να χτιστεί σταθμαρχείο τραμ εδώ...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Δεν μπορεί να χτιστεί ναυπηγείο πλοίων εδώ...
 
+
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Το τρένο πρέπει να σταματήσει μέσα σε αμαξοστάσιο
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... πρέπει να σταματήσει μέσα σε αμαξοστάσιο οχημάτων
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Το πλοίο πρέπει να σταματήσει μέσα στο ναυπηγείο
@@ -3732,6 +3749,9 @@ STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... πά
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Δεν γίνεται να τοποθετηθεί σηματοδότης εδώ...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Δεν γίνεται να αλλαχθεί το κείμενο της πινακίδας...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Δεν μπορεί να διαγραφεί η πινακίδα
+
+# Translatable comment for OpenTTD's desktop shortcut
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Ένας κλώνος του Transport Tycoon Deluxe
 
 ##id 0x2000
 # Town building names
@@ -4126,6 +4146,7 @@ STR_FORMAT_GROUP_NAME                                           :Ομάδα {COM
 STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING} {0:TOWN}
 STR_FORMAT_WAYPOINT_NAME                                        :Σημείο καθοδηγήσης {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Σημείο καθοδηγήσης {TOWN} #{COMMA}
+
 
 STR_UNKNOWN_STATION                                             :άγνωστος σταθμός
 STR_DEFAULT_SIGN_NAME                                           :Πινακίδα

@@ -8,7 +8,7 @@
 ##decimalsep ,
 ##winlangid 0x0410
 ##grflangid 0x27
-##gender m f
+##gender m ma f
 ##case ms mp fs fp
 
 
@@ -217,6 +217,7 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
+
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Inserire il filtro
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Inserire una parola da utilizzare per filtrare la lista
@@ -278,7 +279,7 @@ STR_SORT_BY_LENGTH                                              :Lunghezza
 STR_SORT_BY_LIFE_TIME                                           :Vita rimanente
 STR_SORT_BY_TIMETABLE_DELAY                                     :Ritardo sull'orario
 STR_SORT_BY_FACILITY                                            :Tipo di stazione
-STR_SORT_BY_WAITING                                             :Merci in attesa
+STR_SORT_BY_WAITING                                             :Carichi in attesa
 STR_SORT_BY_RATING_MAX                                          :Valutazione maggiore
 STR_SORT_BY_RATING_MIN                                          :Valutazione minore
 STR_SORT_BY_ENGINE_ID                                           :EngineID (ordine classico)
@@ -773,8 +774,8 @@ STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDE
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}La {STRING} finanzia la costruzione della nuova cittadina di {TOWN}!
 
-STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Nuov{G o a} {STRING} in costruzione vicino a {TOWN}!
-STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Nuov{G 0 o a} {STRING} piantat{G 0 o a} vicino a {TOWN}!
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Nuov{G o o a} {STRING} in costruzione vicino a {TOWN}!
+STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Nuov{G 0 o o a} {STRING} piantat{G 0 o o a} vicino a {TOWN}!
 
 STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}{STRING} annuncia imminente chiusura!!
 STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}Per problemi di rifornimenti {STRING} annuncia imminente chiusura!
@@ -816,9 +817,9 @@ STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Il profi
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} è stato fermato a causa del fallimento di un ordine di riadattamento
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Rinnovo automatico di {VEHICLE}{}{STRING} fallito
 
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}Nuov{G o a} {STRING} disponibile!
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}Nuov{G o o a} {STRING} disponibile!
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIGFONT}{BLACK}{ENGINE}
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Nuov{G o a} {STRING} disponibile! -  {ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Nuov{G o o a} {STRING} disponibile! -  {ENGINE}
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} non accetta più {STRING}
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} non accetta più {STRING} né {STRING}
@@ -1810,7 +1811,7 @@ STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Incluso
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Dipendenza inclusa nel download
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Già installato
 STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Contenuto sconosciuto: non può essere scaricato da OpenTTD
-STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Questo contenuto sostituisce un{G 0 "" a} {STRING} esistente
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Questo contenuto sostituisce {G 0 "un " un' "una "}{STRING} esistente
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}Nome: {WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Versione: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Descrizione: {WHITE}{STRING}
@@ -2348,7 +2349,12 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Disabilita
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Inserire i parametri NewGRF
 
-# NewGRF add window
+# NewGRF inspect window
+
+
+
+# Sprite aligner window
+
 STR_NEWGRF_ADD_CAPTION                                          :{WHITE}File NewGRF disponibili
 STR_NEWGRF_ADD_FILE                                             :{BLACK}Aggiungi alla selezione
 STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Aggiunge il file NewGRF selezionato alla configurazione
@@ -2398,6 +2404,13 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Il treno
 STR_NEWGRF_BUGGY                                                :{WHITE}Informazioni scorrette fornite dal NewGRF '{0:STRING}'
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}I dati su carico e riadattamento di '{1:ENGINE}' sono diversi da quelli indicati prima della costruzione. Il rinnovo/rimpiazzo automatico potrebbe fallire.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' ha causato un ciclo infinito nel callback di produzione.
+
+# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+STR_NEWGRF_INVALID_CARGO                                        :<carico non valido>
+STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
+STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} di <carico non valido>
+STR_NEWGRF_INVALID_ENGINE                                       :<locomotiva non valida>
+STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<industria non valida>
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Elenco cartelli - {COMMA} cartell{P o i}
@@ -2751,6 +2764,7 @@ STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}Deposito
 STR_DEPOT_SHIP_CAPTION                                          :{WHITE}Deposito navale di {TOWN}
 STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}Hangar di {STATION}
 
+
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} component{P e i}{STRING}
@@ -2822,7 +2836,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Stai pe
 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Messaggio da un costruttore di veicoli
-STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Abbiamo appena progettato un{G "" a} nuov{G o a} {STRING} - È interessato ad un anno di uso esclusivo di questo veicolo, in modo da permetterci di valutarne le prestazioni prima di renderlo disponibile sul mercato?
+STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Abbiamo appena progettato un{G "" "" a} nuov{G o o a} {STRING} - È interessato ad un anno di uso esclusivo di questo veicolo, in modo da permetterci di valutarne le prestazioni prima di renderlo disponibile sul mercato?
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=f}locomotiva
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=m}automezzo
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=m}aeromobile
@@ -2946,6 +2960,8 @@ STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE               :{LTBLUE}Manuten
 STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL           :{LTBLUE}Manutenzione al Deposito di {TOWN}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE                   :{LTBLUE}Manutenzione all'Hangar di {STATION}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE_VEL               :{LTBLUE}Manutenzione all'Hangar di {STATION}, {VELOCITY}
+
+# Vehicle stopped/started animations
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Dettagli)
@@ -3454,6 +3470,7 @@ STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Impossib
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Impossibile costruire il deposito qui...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Impossibile costruire il deposito navale qui...
 
+
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Il treno deve essere fermo in un deposito
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... deve essere fermo nel deposito automezzi
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}La nave deve essere ferma nel deposito
@@ -3510,6 +3527,7 @@ STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Impossib
 
 # Tree related errors
 STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... albero già presente
+STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... terreno inadatto per il tipo di albero
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Impossibile piantare l'albero qui...
 
 # Bridge related errors
@@ -3632,6 +3650,9 @@ STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... trop
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Impossibile piazzare il cartello qui...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Impossibile modificare il testo del cartello...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Impossibile eliminare il cartello...
+
+# Translatable comment for OpenTTD's desktop shortcut
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Un clone di Transport Tycoon Deluxe
 
 ##id 0x2000
 # Town building names
@@ -4022,6 +4043,7 @@ STR_FORMAT_GROUP_NAME                                           :Gruppo {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING} di {0:TOWN}
 STR_FORMAT_WAYPOINT_NAME                                        :Waypoint di {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Waypoint di {TOWN} #{COMMA}
+
 
 STR_UNKNOWN_STATION                                             :stazione sconosciuta
 STR_DEFAULT_SIGN_NAME                                           :Cartello

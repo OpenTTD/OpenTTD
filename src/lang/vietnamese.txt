@@ -215,6 +215,7 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
+
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Nhập chuỗi lọc
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Nhập từ khóa vào để lọc danh sách
@@ -261,7 +262,7 @@ STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Ngày th
 STR_SORT_BY_POPULATION                                          :Dân số
 STR_SORT_BY_NAME                                                :Tên
 STR_SORT_BY_PRODUCTION                                          :Sản lượng
-STR_SORT_BY_TYPE                                                :Loại
+STR_SORT_BY_TYPE                                                :Kiểu
 STR_SORT_BY_TRANSPORTED                                         :Dung lượng đã vận chuyển
 STR_SORT_BY_NUMBER                                              :Số
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Lợi nhuận năm trước
@@ -2346,7 +2347,12 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Tắt
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Nhập NewGRF tham số
 
-# NewGRF add window
+# NewGRF inspect window
+
+
+
+# Sprite aligner window
+
 STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Các NewGRF file sẵn có
 STR_NEWGRF_ADD_FILE                                             :{BLACK}Thêm vào file
 STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Thêm NewGRF file đã chọn vào cấu hình
@@ -2396,6 +2402,13 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Đoàn t
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' không hợp lệ.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Danh mục hàng hoá/cải biến được cho '{1:ENGINE}' khác với danh mục mua được sau khi đã có. Việc này khiến cho việc tự thay thế hay là tự cải biến không chính xác.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' gây ra một vòng lặp vô tận khi gọi hàm callback.
+
+# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+STR_NEWGRF_INVALID_CARGO                                        :<sai kiểu hàng>
+STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
+STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} hàng hoá bất hợp lệ
+STR_NEWGRF_INVALID_ENGINE                                       :<sai engine>
+STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<sai nhà máy>
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Danh sách biển hiệu - {COMMA} Biển hiệu
@@ -2749,6 +2762,7 @@ STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}Xưởng
 STR_DEPOT_SHIP_CAPTION                                          :{WHITE}Xưởng tàu thuỷ {TOWN}
 STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}Xưởng máy bay {STATION}
 
+
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} phương tiện{STRING}
@@ -2944,6 +2958,8 @@ STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE               :{LTBLUE}Bảo t
 STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL           :{LTBLUE}Bảo trì tại xưởng {TOWN}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE                   :{LTBLUE}Bảo trì tại xưởng {STATION}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE_VEL               :{LTBLUE}Bảo trì tại xưởng {STATION}, {VELOCITY}
+
+# Vehicle stopped/started animations
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Chi tiết)
@@ -3452,6 +3468,7 @@ STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Không t
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Không thể xây bến xe điện ở đây...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Không thể xây cảng ở đây...
 
+
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Tàu phải dừng lại ở trong xưởng
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... phải dừng trong xưởng ôtô
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Tàu thuỷ phải dừng ở trong xưởng
@@ -3508,6 +3525,7 @@ STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Không t
 
 # Tree related errors
 STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... có cây cối rồi
+STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... loại đất không thích hợp cho cây
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Không thể trồng cây ở đây...
 
 # Bridge related errors
@@ -3630,6 +3648,9 @@ STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... quá
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Không thể đặt biển hiệu ở đây...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Không thể đổi tên biển hiệu...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Không thể xoá biển hiệu...
+
+# Translatable comment for OpenTTD's desktop shortcut
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Một bản sao của Transport Tycoon Deluxe
 
 ##id 0x2000
 # Town building names
@@ -4020,6 +4041,7 @@ STR_FORMAT_GROUP_NAME                                           :Nhóm {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING} {0:TOWN}
 STR_FORMAT_WAYPOINT_NAME                                        :Điểm mốc {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Điểm mốc {TOWN} số #{COMMA}
+
 
 STR_UNKNOWN_STATION                                             :Ga,bến không biết
 STR_DEFAULT_SIGN_NAME                                           :Biển hiệu

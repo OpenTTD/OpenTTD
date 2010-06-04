@@ -278,6 +278,7 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} köbmé
 
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
+
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Kulcsszó megadása a szűréshez
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Írj ide egy kulcsszót ami alapján szűrni szeretnéd a listát
@@ -340,8 +341,8 @@ STR_SORT_BY_LIFE_TIME                                           :Élettartamból
 STR_SORT_BY_TIMETABLE_DELAY                                     :Menetrendi késés
 STR_SORT_BY_FACILITY                                            :Állomástípus
 STR_SORT_BY_WAITING                                             :Várakozó rakomány értéke
-STR_SORT_BY_RATING_MAX                                          :Legtöbb áru szerint
-STR_SORT_BY_RATING_MIN                                          :Legkevesebb áru szerint
+STR_SORT_BY_RATING_MAX                                          :Legtöbb rakomány szerint
+STR_SORT_BY_RATING_MIN                                          :Legkevesebb rakomány szerint
 STR_SORT_BY_ENGINE_ID                                           :JárműID
 STR_SORT_BY_COST                                                :Ár
 STR_SORT_BY_POWER                                               :Telj.
@@ -583,8 +584,8 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Vállala
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Rakományok szállítási díja
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}ÚTON TÖLTÖTT NAPOK
-STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Fizetség 10 egységnyi (vagy 10000 liter) áru 20 négyzet távolságra való szállítsa esetén
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Az adott áru grafikonjának mutatása be/ki
+STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Fizetség 10 egységnyi (vagy 10000 liter) rakomány 20 négyzet távolságra való szállítsa esetén
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Az adott rakomány grafikonjának mutatása be/ki
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Részletes teljesítményértékelés mutatása
@@ -630,7 +631,7 @@ STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}A legala
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Megkeresett pénz a negyedévben a legkisebb profitnál az utolsó 12 negyedévben.
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Megkeresett pénz a negyedévben a legnagyobb profitnál az utolsó 12 negyedévben
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Utolsó négy negyedévben elszállított rakomány
-STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Az utolsó negyedévben elszállított áruk típusa
+STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Az utolsó negyedévben elszállított rakományok típusa
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Vállalat elérhető készpénzmennyisége a bankban
 STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}A vállalat által felvett hitelösszeg
 STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Megszerzett pontok az elérhető pontokból
@@ -751,7 +752,7 @@ STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINYFONT}{BLAC
 STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLACK}Sivatag
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}Hó
 
-STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Városnevek ki/be
+STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Városnevek be/ki
 STR_SMALLMAP_CENTER                                             :{BLACK}A térkép közepét a jelenlegi helyre állítja
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
@@ -760,7 +761,7 @@ STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Bekapcso
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Mutasd a magasságot
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL                                :{BLACK}Ne mutasd a gazdasági létesítményeket a térképen
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL                                 :{BLACK}Mutasd az összes gazdasági létesítményt a térképen
-STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Magasságtérkép ki/bekapcsolása
+STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Magasságtérkép be/kikapcsolása
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Utolsó üzenet vagy újsághír megmutatása
@@ -796,7 +797,7 @@ STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Termel�
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Más gazdasági termelési változások
 STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}A vállalat járműveire vonatkozó ötletek / információk
 STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Új járművek
-STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Áruk elfogadásainak változásai
+STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Rakományok elfogadásainak változásai
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Támogatások
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Általános információk
 
@@ -1148,13 +1149,13 @@ STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Vonatok
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Eredeti
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Valósághű
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Lejtő meredeksége vonatoknak: {ORANGE}{STRING}%
-STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Vonatok és hajók nem tesznek 90 fokos kanyart: {ORANGE}{STRING} {LTBLUE}(nem OPF-fell)
+STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Vonatok és hajók nem tehetnek 90 fokos kanyart: {ORANGE}{STRING} {LTBLUE}(nem OPF-fell)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Meglévő vasútállomás utólag bővíthető: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Nem közvetlen szomszédos állomások egyesítése: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Járművek egymás utáni telerakodása (egyidejű helyett): {ORANGE}{STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Járművek fokozatos rakodása: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Infláció: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Csak igény esetén kerüljön áru az állomásra: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Csak igény esetén kerüljön rakomány az állomásra: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Nagyon hosszú hidak engedélyezése: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}'Menj a garázsba' engedélyezés a menetrendben: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Kézi nyersanyaglelőhely-létesítési módszer: {ORANGE}{STRING}
@@ -1369,7 +1370,7 @@ STR_CONFIG_SETTING_AI                                           :{ORANGE}Ellenfe
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Megjelenítési beállítások
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Irányítás
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Jelzők
-STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Áru kezelés
+STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Rakomány kezelés
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Számítógép által vezérelt ellenfelek
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Automata felújítás
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Szervíz
@@ -1814,7 +1815,7 @@ STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :elveszett a kap
 STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :protokoll hiba
 STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :NewGRF eltérés(ek)
 STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :nem engedélyezett
-STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :ismeretlen csomag érkezett
+STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :ismeretlen vagy érvénytelen csomag érkezett
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :rossz verzió
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :a név már használva van
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :rossz jelszó
@@ -1832,7 +1833,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :A játék tová
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :A játék továbbra is szünetel ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :A játék továbbra is szünetel ({STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :A játék folytatódik ({STRING})
-STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :nincs elég játékos
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :játékosok száma
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :kapcsolódó kliensek
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :kézi
 ############ End of leave-in-this-order
@@ -2027,7 +2028,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Buszmeg�
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Villamos-utasváró építése. A Ctrl lenyomásával egyesítheted más állomásokkal
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Teherautó-rakodóhely építése. A Ctrl lenyomásával egyesítheted más állomásokkal
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Tehervillamos-állomás építése. A Ctrl lenyomásával egyesítheted más állomásokkal
-STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Egyirányú utak ki/be kapcsolása
+STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Egyirányú utak be/kikapcsolása
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Közúti híd építése
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Villamos-híd építése
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Közúti alagút építése
@@ -2410,7 +2411,12 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Kikapcsolv
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Adj meg NewGRF paramétereket
 
-# NewGRF add window
+# NewGRF inspect window
+
+
+
+# Sprite aligner window
+
 STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Elérhető NewGRF fileok
 STR_NEWGRF_ADD_FILE                                             :{BLACK}Kiválasztáshoz hozzáad
 STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}A kiválasztott NewGRF fájlt hozzáadja a konfigurációdhoz
@@ -2461,6 +2467,13 @@ STR_NEWGRF_BUGGY                                                :{WHITE}A(z) '{0
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}A(z) '{1:ENGINE}' rakomány/átalakítás információja a gyártás után különbözik a vételi listán találhatótól. Ez hibát okozhat az automatikus felújítás/lecserélés során az átalakításban.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' végtelen ciklust okozott a termelés folyamatnál.
 
+# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+STR_NEWGRF_INVALID_CARGO                                        :<érvénytelen rakomány>
+STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
+STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} of <érvénytelen rakomány>
+STR_NEWGRF_INVALID_ENGINE                                       :<érvénytelen mozdony>
+STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<érvénytelen gazdasági épület>
+
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Feliratok listája ({COMMA} db)
 
@@ -2484,7 +2497,7 @@ STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Lakosság: {ORANGE}{COMMA}{BLACK} Házak: {ORANGE}{COMMA}
 STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Utasok az előző hónapban: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Levélcsomagok az előző hónapban: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}A város növekedéséhez szükséges áru:
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}A város növekedéséhez szükséges rakomány:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{STRING}{BLACK} szükséges
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} szükséges télen
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{ORANGE}{CARGO}{BLACK} szállítva a múlt hónapban
@@ -2519,13 +2532,13 @@ STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Új épületek 
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Kizárólagos szállítási jogok vétele
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Önkormányzat megvesztegetése
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Kis helyi reklámhadjárat indítása, hogy több utast és árut vonzz a megállóidba.{}Ára: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Közepes helyi reklámhadjárat indítása, hogy több utast és árut vonzz a megállóidba.{}Ára: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Nagy helyi reklámhadjárat indítása, hogy több utast és árut vonzz a megállóidba.{}Ára: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Kis helyi reklámhadjárat indítása, hogy több utast és rakományt vonzz a megállóidba.{}Ára: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Közepes helyi reklámhadjárat indítása, hogy több utast és rakományt vonzz a megállóidba.{}Ára: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Nagy helyi reklámhadjárat indítása, hogy több utast és rakományt vonzz a megállóidba.{}Ára: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}A városi úthálózat felújításának támogatása. Hat hónapig jelentősen összezavarja a közúti forgalmat.{}Ára: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Szobor építése a vállalatod tiszteletére.{}Ára: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Új kereskedelmi épületek építésének támogatása a városban.{}Ára: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Egy éves kizárólagos szállítási jogok vétele a városban. Az önkormányzat csak a te állomásaid használatát engedi meg az utasoknak és az áruknak.{}Ára: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Egy éves kizárólagos szállítási jogok vétele a városban. Az önkormányzat csak a te állomásaid használatát engedi meg az utasoknak és a rakományoknak.{}Ára: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}A megítélésed növelése az önkormányzat megvesztegetésével, komoly büntetést kockáztatva, ha ez kiderül.{}Ára: {CURRENCY}
 
 # Subsidies window
@@ -2684,7 +2697,7 @@ STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Felhaszn
 ############ range for requires ends
 
 ############ range for produces starts
-STR_INDUSTRY_VIEW_WAITING_FOR_PROCESSING                        :{BLACK}Feldolgozásra váró szállítmány:
+STR_INDUSTRY_VIEW_WAITING_FOR_PROCESSING                        :{BLACK}Feldolgozásra váró rakomány:
 STR_INDUSTRY_VIEW_WAITING_STOCKPILE_CARGO                       :{YELLOW}{CARGO}{STRING}{BLACK}
 STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Gyárt: {YELLOW}{STRING}{STRING}
 STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Gyárt: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
@@ -2773,7 +2786,7 @@ STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Ár: {GO
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapacitás: {GOLD}{CARGO}, {CARGO}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Meghajtott vagonok: {GOLD}+{POWER}{BLACK} Súly: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Átalakítható: {GOLD}
-STR_PURCHASE_INFO_ALL_TYPES                                     :Minden szállítmány típusra
+STR_PURCHASE_INFO_ALL_TYPES                                     :Minden rakomány típusra
 STR_PURCHASE_INFO_ALL_BUT                                       :Mindenre, kivéve {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Maximális vonóerő: {GOLD}{FORCE}
 
@@ -2812,6 +2825,7 @@ STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}{TOWN}i 
 STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN}i garázs
 STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN}i dokk
 STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} hangárja
+
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -3086,10 +3100,10 @@ STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Közúti
 STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Hajó átalakítása
 STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Repülőgép átalakítása
 
-STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Vonat átalakítása a kijelölt áru szállítására
-STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Közúti jármű átalakítása a kijelölt áru szállítására
-STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Hajó átalakítása a kijelölt áru szállítására
-STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Repülőgép átalakítása a kijelölt áru szállítására
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Vonat átalakítása a kijelölt rakomány szállítására
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Közúti jármű átalakítása a kijelölt rakomány szállítására
+STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Hajó átalakítása a kijelölt rakomány szállítására
+STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Repülőgép átalakítása a kijelölt rakomány szállítására
 
 # Order view
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} menetrendje
@@ -3516,6 +3530,7 @@ STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Nem ép�
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Ide nem lehet remízt építeni...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Nem építhetsz ide dokkot...
 
+
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}A járműtelepen kellene állnia ehhez
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... garázsban kellene állnia ehhez
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}A dokkban kellene állnia ehhez
@@ -3525,7 +3540,7 @@ STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Csak a j
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Túl hosszú a vonat
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}A járművet nem lehet megfordítani...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Több részből álló járművet nem lehet megfordítani...
-STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Inkompatibilis síntípusok
+STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Inkompatibilis pályatípusok
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Nem mozgathatod a járművet...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}A mozdony első felének mindig elől kell lennie
@@ -3572,6 +3587,7 @@ STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Ide nem 
 
 # Tree related errors
 STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... már van itt fa
+STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... rossz tereptípus a fafajtának
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Ide nem lehet fát ültetni...
 
 # Bridge related errors
@@ -3582,6 +3598,7 @@ STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Hídfők
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}A híd túl alacsony a terepre
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}A kezdetének és a végének egy vonalban kell lennie
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... a híd mindkét végének szárazföldön kell lennie
+STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... a híd túl hosszú
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Nem áshatsz ide alagutat...
@@ -3693,6 +3710,9 @@ STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... túl
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Nem rakhatsz ide feliratot...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Nem változtathatod meg a feliratot...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}A felirat nem törölhető...
+
+# Translatable comment for OpenTTD's desktop shortcut
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Egy Transport Tycoon Deluxe klón
 
 ##id 0x2000
 # Town building names
@@ -3844,7 +3864,7 @@ STR_SV_STNAME_UPPER                                             :{STRING} Felső
 STR_SV_STNAME_LOWER                                             :{STRING} Alsó
 STR_SV_STNAME_HELIPORT                                          :{STRING} Helileszálló
 STR_SV_STNAME_FOREST                                            :{STRING} Erdőség
-STR_SV_STNAME_FALLBACK                                          :{STRING} {NUM}. Állomás
+STR_SV_STNAME_FALLBACK                                          :{STRING} {NUM}. sz. Állomás
 ############ end of savegame specific region!
 
 ##id 0x8000
@@ -4114,12 +4134,13 @@ STR_FORMAT_DATE_LONG                                            :{STRING} {STRIN
 STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
 
 STR_FORMAT_BUOY_NAME                                            :{TOWN} Bója
-STR_FORMAT_BUOY_NAME_SERIAL                                     :{TOWN} {COMMA}. Bója
+STR_FORMAT_BUOY_NAME_SERIAL                                     :{TOWN} {COMMA}. sz. Bója
 STR_FORMAT_COMPANY_NUM                                          :({COMMA}. vállalat)
 STR_FORMAT_GROUP_NAME                                           :{COMMA} csoport
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN}i {STRING}
-STR_FORMAT_WAYPOINT_NAME                                        :{TOWN}i Ellenőrző pont
-STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN}i {COMMA}. Ellenőrző pont
+STR_FORMAT_WAYPOINT_NAME                                        :{TOWN} Ellenőrző pont
+STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN} {COMMA}. sz. Ellenőrző pont
+
 
 STR_UNKNOWN_STATION                                             :ismeretlen állomás
 STR_DEFAULT_SIGN_NAME                                           :Felirat

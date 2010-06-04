@@ -229,6 +229,7 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} ³מט�
 
 STR_UNITS_FORCE_SI                                              :{COMMA} קילו ניוטן
 
+
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}הכנס מחרוזת סינון
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}הכנס מילת מפתח לסינון הרשימה לפיה
@@ -1764,7 +1765,7 @@ STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :הקשר נות
 STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :בעיה בפרוטוקול
 STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :NewGRF חוסר התאמת
 STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :אין אישור
-STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :קיבל פאקט לא מוכר
+STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :התקבלה חבילת מידע לא תקינה או לא צפויה
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :גרסא שונה
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :השם שבחרת תפוס
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :סיסמא שגוייה
@@ -1782,7 +1783,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :המשחק עד
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :המשחק עדיין מופסק ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :המשחק עדיין מופסק ({STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :המשחק הומשך ({STRING})
-STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :אין מספיק שחקנים
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :מספר שחקנים
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :מתחבר ללקוחות
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :ידני
 ############ End of leave-in-this-order
@@ -2360,7 +2361,12 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}מושתק
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}הכנס פרמטרים
 
-# NewGRF add window
+# NewGRF inspect window
+
+
+
+# Sprite aligner window
+
 STR_NEWGRF_ADD_CAPTION                                          :{WHITE}קבצי שדרוג גראפי זמינים
 STR_NEWGRF_ADD_FILE                                             :{BLACK}הוסף לבחירה
 STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}מוסיף את הקובץ שנבחר לרשימה
@@ -2410,6 +2416,8 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}רכבת
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' סיפק מידע לא נכון.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}מידע מטען/התאמה מחדש עבור '{1:ENGINE}' שונה מרשימת הרכישה לאחר הבניה. דבר זה עלול לגרום מילוי/חידוש אוטומטי לכישלון התאמה מחדש בצורה נכונה.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' גרם ללולאה אינסופית בהתקשרות חזרה של הייצור.
+
+# 'User removed essential NewGRFs'-placeholders for stuff without specs.
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}סימניות {COMMA} - רשימת סימניות
@@ -2763,6 +2771,7 @@ STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}מוסך
 STR_DEPOT_SHIP_CAPTION                                          :{WHITE}מבדוק כלי שייט {TOWN}
 STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} סככת מטוסים
 
+
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{0:ENGINE}{1:STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} כלי{P "" s}{STRING}
@@ -2958,6 +2967,8 @@ STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE               :{LTBLUE}{TOWN} 
 STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL           :{LTBLUE}טיפול במבדוק {TOWN}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE                   :{LTBLUE}טיפול בסככת המטוסים {STATION}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE_VEL               :{LTBLUE}טיפול בסככת המטוסים {STATION} , {VELOCITY}
+
+# Vehicle stopped/started animations
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}(פרטים){VEHICLE}
@@ -3466,6 +3477,7 @@ STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}לא נ�
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}לא ניתן לבנות מוסך לחשמלית כאן...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}לא ניתן לבנות מבדוק כאן...
 
+
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}הרכבת צריכה להיות בעצירה במוסך
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}חייב להיות בעצירה בתוך מוסך לכלי רכב...
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}כלי השייט חייב להמצא בעצירה במבדוק
@@ -3522,6 +3534,7 @@ STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}לא נ�
 
 # Tree related errors
 STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... קיים כאן עץ
+STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... שטח לא נכון עבור סוג עץ זה
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}לא יכול לטעת עצים במשבצת זו...
 
 # Bridge related errors
@@ -3644,6 +3657,8 @@ STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... יו
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}לא ניתן להציב כאן סימניה...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}... ניתן לשנות את שם הסימניה
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}לא ניתן למחוק סימניה...
+
+# Translatable comment for OpenTTD's desktop shortcut
 
 ##id 0x2000
 # Town building names
@@ -4036,6 +4051,7 @@ STR_FORMAT_GROUP_NAME                                           :{COMMA} קבו�
 STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING.gen} {0:TOWN}
 STR_FORMAT_WAYPOINT_NAME                                        :נקודת ציון {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :נקודת ציון {TOWN} #{COMMA}
+
 
 STR_UNKNOWN_STATION                                             :תחנה לא ידועה
 STR_DEFAULT_SIGN_NAME                                           :סימניה

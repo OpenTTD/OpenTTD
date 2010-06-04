@@ -1,0 +1,1201 @@
+##name Maltese
+##ownname Malti
+##isocode mt_MT
+##plural 12
+##textdir ltr
+##digitsep ,
+##digitsepcur ,
+##decimalsep .
+##winlangid 0x043a
+##grflangid 0x09
+
+
+# $Id$
+
+# This file is part of OpenTTD.
+# OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+# OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+
+
+##id 0x0000
+STR_NULL                                                        :
+STR_EMPTY                                                       :
+STR_UNDEFINED                                                   :(frażi mhux definit)
+STR_JUST_NOTHING                                                :Xejn
+
+# Cargo related strings
+# Plural cargo name
+STR_CARGO_PLURAL_NOTHING                                        :
+STR_CARGO_PLURAL_PASSENGERS                                     :Passiġġieri
+STR_CARGO_PLURAL_COAL                                           :Faħam
+STR_CARGO_PLURAL_MAIL                                           :Posta
+STR_CARGO_PLURAL_OIL                                            :Żejt
+STR_CARGO_PLURAL_LIVESTOCK                                      :Bhejjem
+STR_CARGO_PLURAL_GOODS                                          :Merkanzija
+STR_CARGO_PLURAL_GRAIN                                          :Qamħ
+STR_CARGO_PLURAL_WOOD                                           :Injam
+STR_CARGO_PLURAL_IRON_ORE                                       :Sorsi ta' Ħadid
+STR_CARGO_PLURAL_STEEL                                          :Azzar
+STR_CARGO_PLURAL_VALUABLES                                      :Oġġetti ta' Valur
+STR_CARGO_PLURAL_COPPER_ORE                                     :Sorsi ta' Ram
+STR_CARGO_PLURAL_MAIZE                                          :Qamħirrum
+STR_CARGO_PLURAL_FRUIT                                          :Frott
+STR_CARGO_PLURAL_DIAMONDS                                       :Djamanti
+STR_CARGO_PLURAL_FOOD                                           :Ikel
+STR_CARGO_PLURAL_PAPER                                          :Karti
+STR_CARGO_PLURAL_GOLD                                           :Deheb
+STR_CARGO_PLURAL_WATER                                          :Ilma
+STR_CARGO_PLURAL_WHEAT                                          :Qamħ
+STR_CARGO_PLURAL_RUBBER                                         :Lastku
+STR_CARGO_PLURAL_SUGAR                                          :Zokkor
+STR_CARGO_PLURAL_TOYS                                           :Ġugarelli
+STR_CARGO_PLURAL_CANDY                                          :Ħelu
+STR_CARGO_PLURAL_COLA                                           :Koka
+STR_CARGO_PLURAL_COTTON_CANDY                                   :Kandifloss
+STR_CARGO_PLURAL_BUBBLES                                        :Bżieżaq
+STR_CARGO_PLURAL_TOFFEE                                         :Tofija
+STR_CARGO_PLURAL_BATTERIES                                      :Batteriji
+STR_CARGO_PLURAL_PLASTIC                                        :Plastik
+STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Luminati
+
+# Singular cargo name
+STR_CARGO_SINGULAR_NOTHING                                      :
+STR_CARGO_SINGULAR_PASSENGER                                    :Passiġġier
+STR_CARGO_SINGULAR_COAL                                         :Faħam
+STR_CARGO_SINGULAR_MAIL                                         :Posta
+STR_CARGO_SINGULAR_OIL                                          :Żejt
+STR_CARGO_SINGULAR_LIVESTOCK                                    :Bhejjem
+STR_CARGO_SINGULAR_GOODS                                        :Merkanzija
+STR_CARGO_SINGULAR_GRAIN                                        :Qamħ
+STR_CARGO_SINGULAR_WOOD                                         :Injam
+STR_CARGO_SINGULAR_IRON_ORE                                     :Sors ta' Ħadid
+STR_CARGO_SINGULAR_STEEL                                        :Azzar
+STR_CARGO_SINGULAR_VALUABLES                                    :Oġġetti ta' Valur
+STR_CARGO_SINGULAR_COPPER_ORE                                   :Sors ta' Ram
+STR_CARGO_SINGULAR_MAIZE                                        :Qamħirrum
+STR_CARGO_SINGULAR_FRUIT                                        :Frotta
+STR_CARGO_SINGULAR_DIAMOND                                      :Djamant
+STR_CARGO_SINGULAR_FOOD                                         :Ikel
+STR_CARGO_SINGULAR_PAPER                                        :Karta
+STR_CARGO_SINGULAR_GOLD                                         :Deheb
+STR_CARGO_SINGULAR_WATER                                        :Ilma
+STR_CARGO_SINGULAR_WHEAT                                        :Qamħ
+STR_CARGO_SINGULAR_RUBBER                                       :Lastku
+STR_CARGO_SINGULAR_SUGAR                                        :Zokkor
+STR_CARGO_SINGULAR_TOY                                          :Ġugarell
+STR_CARGO_SINGULAR_CANDY                                        :Ħelwa
+STR_CARGO_SINGULAR_COLA                                         :Koka
+STR_CARGO_SINGULAR_COTTON_CANDY                                 :Kandiflos
+STR_CARGO_SINGULAR_BUBBLE                                       :Bużżieqa
+STR_CARGO_SINGULAR_TOFFEE                                       :Tofija
+STR_CARGO_SINGULAR_BATTERY                                      :Batterija
+STR_CARGO_SINGULAR_PLASTIC                                      :Plastik
+STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Luminata
+
+# Quantity of cargo
+STR_QUANTITY_NOTHING                                            :
+STR_QUANTITY_COAL                                               :{WEIGHT} ta' faħam
+STR_QUANTITY_OIL                                                :{VOLUME} ta' żejt
+STR_QUANTITY_GRAIN                                              :{WEIGHT} ta' qamħ
+STR_QUANTITY_WOOD                                               :{WEIGHT} ta' injam
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT} ta' sorsi tal-ħadid
+STR_QUANTITY_STEEL                                              :{WEIGHT} ta' azzar
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} ta' sorsi tar-ram
+STR_QUANTITY_MAIZE                                              :{WEIGHT} ta' qamħirrun
+STR_QUANTITY_FRUIT                                              :{WEIGHT} ta' frott
+STR_QUANTITY_FOOD                                               :{WEIGHT} ta' ikel
+STR_QUANTITY_PAPER                                              :{WEIGHT} ta' karti
+STR_QUANTITY_WATER                                              :{VOLUME} ta' ilma
+STR_QUANTITY_WHEAT                                              :{WEIGHT} ta' qamħ
+STR_QUANTITY_RUBBER                                             :{VOLUME} ta' lastku
+STR_QUANTITY_SUGAR                                              :{WEIGHT} ta' zokkor
+STR_QUANTITY_COLA                                               :{VOLUME} ta' koka
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} ta' kandiflos
+STR_QUANTITY_PLASTIC                                            :{VOLUME} ta' plastik
+
+# Two letter abbreviation of cargo name
+
+# 'Mode' of transport for cargoes
+STR_PASSENGERS                                                  :passiġġieri
+STR_BAGS                                                        :boroż
+STR_TONS                                                        :tunnellati
+STR_LITERS                                                      :litri
+STR_ITEMS                                                       :oġġetti
+STR_CRATES                                                      :kaxxi
+STR_RES_OTHER                                                   :oħrajn
+STR_NOTHING                                                     :
+
+# Colours, do not shuffle
+STR_COLOUR_DARK_BLUE                                            :Blu Skur
+STR_COLOUR_PINK                                                 :Roża
+STR_COLOUR_YELLOW                                               :Isfar
+STR_COLOUR_RED                                                  :Aħmar
+STR_COLOUR_LIGHT_BLUE                                           :Blu Ċar
+STR_COLOUR_GREEN                                                :Aħdar
+STR_COLOUR_DARK_GREEN                                           :Aħdar Skur
+STR_COLOUR_BLUE                                                 :Blu
+STR_COLOUR_CREAM                                                :Krema
+STR_COLOUR_ORANGE                                               :Oranġjo
+STR_COLOUR_BROWN                                                :Kannella
+STR_COLOUR_GREY                                                 :Griż
+STR_COLOUR_WHITE                                                :Abjad
+
+# Units used in OpenTTD
+
+
+
+
+
+
+
+
+# Common window strings
+
+
+
+# Query window
+STR_BUTTON_OK                                                   :{BLACK}OK
+
+# On screen keyboard window
+
+# Measurement tooltip
+STR_MEASURE_LENGTH                                              :{BLACK}Tul: {NUM}
+
+
+# These are used in buttons
+STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Popolazzjoni
+STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Isem
+STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Data
+# These are used in dropdowns
+STR_SORT_BY_POPULATION                                          :Popolazzjoni
+STR_SORT_BY_NAME                                                :Isem
+STR_SORT_BY_PRODUCTION                                          :Produzzjoni
+STR_SORT_BY_TYPE                                                :Tip
+STR_SORT_BY_NUMBER                                              :Numru
+STR_SORT_BY_PROFIT_LAST_YEAR                                    :Qligħ is-sena l-oħra
+STR_SORT_BY_PROFIT_THIS_YEAR                                    :Qligħ din is-sena
+STR_SORT_BY_AGE                                                 :Żmien
+STR_SORT_BY_RELIABILITY                                         :Affidabilita'
+STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Kapaċita totali għal kull tip ta' merkanzija
+STR_SORT_BY_MAX_SPEED                                           :Veloċita' massima
+STR_SORT_BY_MODEL                                               :Mudell
+STR_SORT_BY_VALUE                                               :Valur
+STR_SORT_BY_LENGTH                                              :Tul
+STR_SORT_BY_TIMETABLE_DELAY                                     :Dewmien fl-iskeda
+STR_SORT_BY_FACILITY                                            :Tip ta' stazzjon
+STR_SORT_BY_COST                                                :Prezz
+STR_SORT_BY_POWER                                               :Saħħa
+STR_SORT_BY_INTRO_DATE                                          :Data ta' introduzzjoni
+STR_SORT_BY_CARGO_CAPACITY                                      :Kapaċita ta' merkanzija
+
+# Tooltips for the main toolbar
+STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Waqfa temporanja mil-logħba
+STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Għaġġel il-loghba
+STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Preferenzi
+STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Uri l-lista ta' rħula
+STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Uri s-suddisji
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Uri lista ta' stazzjonijiet ta' kumpanija
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Uri informazzjoni finanzjarja ta' kumpanija
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Uri informazzjoni ġenerali dwar kumpanija
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Uri l-pożizzjonijiet tal-kumpaniji
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Ibni industrija ġdida, jew uri lista tal-industriji kollha
+
+# Extra tooltips for the scenario editor toolbar
+
+############ range for SE file menu starts
+############ range for SE file menu starts
+
+############ range for settings menu starts
+############ range ends here
+
+############ range for file menu starts
+############ range ends here
+
+############ range for map menu starts
+############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
+############ end of the 'Display map' dropdown
+############ end of the 'Town' dropdown
+
+############ range for subsidies menu starts
+############ range ends here
+
+############ range for graph menu starts
+############ range ends here
+
+############ range for company league menu starts
+############ range ends here
+
+############ range for industry menu starts
+############ range ends here
+
+############ range for railway construction menu starts
+############ range ends here
+
+############ range for road construction menu starts
+############ range ends here
+
+############ range for waterways construction menu starts
+############ range ends here
+
+############ range for airport construction menu starts
+############ range ends here
+
+############ range for landscaping menu starts
+############ range ends here
+
+############ range for music menu starts
+############ range ends here
+
+############ range for message menu starts
+############ range ends here
+
+############ range for about menu starts
+############ range ends here
+
+############ range for days starts (also used for the place in the highscore window)
+############ range for days ends
+
+############ range for months starts
+
+############ range for months ends
+
+# Graph window
+
+
+
+
+# Graph key window
+
+# Company league window
+
+# Performance detail window
+############ Those following lines need to be in this order!!
+############ End of order list
+
+# Music window
+
+
+# Playlist window
+
+# Highscore window
+
+# Smallmap window
+
+
+
+
+# Status bar messages
+
+# News message history
+
+# Message settings window
+
+
+
+
+
+
+
+
+
+
+
+
+# Start of order review system.
+# DON'T ADD OR REMOVE LINES HERE
+# end of order system
+
+
+
+
+
+
+
+# Extra view window
+
+# Game options window
+
+############ start of currency region
+############ end of currency region
+
+
+############ start of measuring units region
+############ end of measuring units region
+
+
+
+############ start of townname region
+############ end of townname region
+
+
+
+
+
+
+
+
+
+
+
+# Custom currency window
+
+
+
+
+
+
+# Difficulty level window
+
+############ range for difficulty levels starts
+############ range for difficulty levels ends
+
+
+############ range for difficulty settings starts
+############ range for difficulty settings ends
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Advanced settings window
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Intro window
+
+
+
+
+
+
+# Quit window
+
+# Supported OSes
+
+# Abandon game
+
+# Cheat window
+
+# Livery window
+
+
+
+# Face selection window
+
+
+# Network server list
+
+
+
+
+
+
+
+# Start new multiplayer server
+
+
+
+
+
+# Network game languages
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+
+# Network game lobby
+
+
+
+
+
+# Network connecting window
+
+############ Leave those lines in this order!!
+
+############ End of leave-in-this-order
+
+
+
+# Network company list added strings
+
+# Network client list
+
+
+
+# Network set password
+
+# Network company info join/password
+
+# Network chat
+
+
+# Network messages
+
+############ Leave those lines in this order!!
+STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :reviżjoni ħażina
+STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :isem diġa qed jintuża
+STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :password ħażin
+############ End of leave-in-this-order
+
+# Network related errors
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+
+# Content downloading window
+
+# Order of these is important!
+
+# Content downloading progress window
+
+# Content downloading error messages
+
+# Transparency settings window
+
+# Base for station construction window(s)
+
+# Join station window
+
+
+# Rail construction toolbar
+
+
+# Rail depot construction window
+
+# Rail waypoint construction window
+
+# Rail station construction window
+
+
+
+# Signal window
+
+# Bridge selection window
+
+
+# Road construction toolbar
+
+# Road depot construction window
+
+# Road vehicle station construction window
+
+# Waterways toolbar (last two for SE only)
+
+# Ship depot construction window
+
+# Dock construction window
+
+# Airport toolbar
+
+# Airport construction window
+
+
+
+
+# Landscaping toolbar
+
+# Tree planting window (last two for SE only)
+
+# Land generation window (SE)
+
+
+# Town generation window (SE)
+
+
+
+
+# Fund new industry window
+
+# Land area window
+
+# Description of land area of different tiles
+
+
+
+# Houses come directly from their building names
+
+
+
+
+# Industries come directly from their industry names
+
+
+
+
+
+
+# About OpenTTD window
+
+# Save/load game/scenario
+
+
+# World generation
+
+# Strings for map borders at game generation
+
+
+
+# SE Map generation
+
+
+# Map generation progress
+
+# NewGRF settings
+
+
+
+
+
+
+# NewGRF inspect window
+
+
+
+# Sprite aligner window
+
+
+# NewGRF (self) generated warnings/errors
+
+# NewGRF related 'general' warnings
+
+
+
+# NewGRF 'it's broken' warnings
+
+
+# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+
+# Sign list window
+
+# Sign window
+
+
+# Town directory window
+
+# Town view window
+
+
+
+# Town local authority window
+
+
+
+# Subsidies window
+
+# Station list window
+
+# Station view window
+
+
+
+############ range for rating starts
+############ range for rating ends
+
+
+
+
+# Waypoint/buoy view window
+
+
+# Finances window
+
+# Company view
+
+
+
+
+
+
+
+# Industry directory
+
+# Industry view
+
+############ range for requires starts
+############ range for requires ends
+
+############ range for produces starts
+############ range for produces ends
+
+
+# Vehicle lists
+
+
+
+
+
+
+
+
+# Group window
+
+
+
+
+
+# Build vehicle window
+
+
+
+
+
+
+
+
+
+# Depot window
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Engine preview window
+
+
+# Autoreplace window
+
+
+
+
+
+
+# Vehicle view
+
+
+
+
+
+
+
+
+
+
+# Messages in the start stop button in the vehicle view
+
+
+
+
+
+# Vehicle stopped/started animations
+
+# Vehicle details
+
+
+# The next two need to stay in this order
+
+
+
+
+
+
+
+# Extra buttons for train details windows
+
+
+
+
+
+# Vehicle refit
+
+
+
+
+# Order view
+
+
+
+# Order bottom buttons
+
+
+
+
+
+
+
+
+
+
+
+
+# String parts to build the order string
+
+
+
+
+
+
+
+
+
+# Time table window
+
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}Skeda - agħfas fuq ordni biex tagħzilha.
+
+
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Din l-iskeda ser iddum {STRING} biex titlesta
+
+
+
+
+
+
+
+
+
+
+# Date window (for timetable)
+
+
+# AI debug window
+
+
+
+# AI configuration window
+
+
+
+# Available AIs window
+
+
+
+# AI Parameters
+
+# Vehicle loading indicators
+
+# Income 'floats'
+
+# Saveload messages
+
+# Map generation messages
+
+
+
+
+# Soundset messages
+
+# Screenshot related messages
+
+# Error message titles
+
+# Generic construction errors
+
+# Local authority errors
+
+# Levelling errors
+
+# Company related errors
+
+
+# Town related errors
+
+# Industry related errors
+
+# Station construction related errors
+
+
+# Station destruction related errors
+
+
+# Waypoint related errors
+
+
+
+# Depot related errors
+
+
+
+
+
+
+# Autoreplace related errors
+
+# Rail construction errors
+
+
+# Road construction errors
+
+# Waterway construction errors
+
+# Tree related errors
+
+# Bridge related errors
+
+# Tunnel related errors
+
+# Unmovable related errors
+
+# Group related errors
+
+# Generic vehicle errors
+
+
+
+
+
+
+STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Ma tistax tbiddel l-isem ta' dan it-tip ta' vapur...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Ma tistax tbiddel l-isem ta' dan it-tip t' ajruplan...
+
+STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Ma tistax tbigħ din il-ferrovija...
+STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Ma tistax tbigħ din il-karozza...
+STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Ma tistax tbigħ dan il-vapur...
+STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Ma tistax tbigħ dan l-ajruplan...
+
+STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :{WHITE}Din il-vettura mhix disponibbli
+STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :{WHITE}Din il-vettura mhix disponibbli
+STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}Dan il-vapur mhux disponibbli
+STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Dan l-ajruplan mhux disponibbli
+
+STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Hemm wisq vetturi fil-logħba
+
+STR_ERROR_CAN_T_SELL_DESTROYED_VEHICLE                          :{WHITE}Ma tistax tbigħ vettura meqruda...
+STR_ERROR_CAN_T_REFIT_DESTROYED_VEHICLE                         :{WHITE}Ma tistax timmodifika vettura meqruda...
+
+# Specific vehicle errors
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Ma tistax tbiddel id-direzzjoni tal-ferrovija...
+
+STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Ma tistax tbiddel id-direzzjoni tal-vettura...
+
+STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}L-ajruplan qed itir
+
+# Order related errors
+STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}M'hemmx spazju għal iktar ordnijiet
+STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}Hemm wisq ordnijiet
+STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :{WHITE}Ma tistax tneħħi din l-ordni...
+STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}Ma tistax tbiddel din l-ordni...
+STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Ma tistax iċċaqlaq din l-ordni...
+STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Ma tistax taqbeż din l-ordni...
+
+
+# Timetable related errors
+
+# Sign related errors
+
+# Translatable comment for OpenTTD's desktop shortcut
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Klonu ta' Transport Tycoon Deluxe
+
+##id 0x2000
+# Town building names
+STR_TOWN_BUILDING_NAME_FOUNTAIN_1                               :Funtana
+STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_2                           :Uffiċini
+STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_1                      :Hwienet u uffiċini
+STR_TOWN_BUILDING_NAME_MODERN_OFFICE_BUILDING_1                 :Bini modern tal-uffiċini
+STR_TOWN_BUILDING_NAME_WAREHOUSE_1                              :Maħżen
+STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_3                           :Uffiċini
+STR_TOWN_BUILDING_NAME_STADIUM_1                                :Grawnd
+STR_TOWN_BUILDING_NAME_OLD_HOUSES_1                             :Djar antiki
+STR_TOWN_BUILDING_NAME_HOUSES_1                                 :Djar
+STR_TOWN_BUILDING_NAME_FLATS_1                                  :Appartamenti
+STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_2                      :Bini twil tal-uffiċini
+STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_2                      :Ħwienet u uffiċini
+STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_3                      :Ħwienet u uffiċini
+STR_TOWN_BUILDING_NAME_THEATER_1                                :Teatru
+STR_TOWN_BUILDING_NAME_OFFICES_1                                :Uffiċini
+STR_TOWN_BUILDING_NAME_HOUSES_2                                 :Djar
+STR_TOWN_BUILDING_NAME_CINEMA_1                                 :Ċinema
+STR_TOWN_BUILDING_NAME_IGLOO_1                                  :Iglu'
+
+##id 0x4800
+# industry names
+STR_INDUSTRY_NAME_DIAMOND_MINE                                  :Minjiera tad-djamanti
+STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :Minjiera tal-ħadid
+STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :Masġar tal-frott
+STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :Masġar tal-lastku
+STR_INDUSTRY_NAME_WATER_SUPPLY                                  :Pompa tal-ilma
+STR_INDUSTRY_NAME_FACTORY_2                                     :Fabbrika
+STR_INDUSTRY_NAME_FARM_2                                        :Għalqa
+STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :Foresta tal-candyfloss
+STR_INDUSTRY_NAME_CANDY_FACTORY                                 :Fabbrika tal-Ħelu
+STR_INDUSTRY_NAME_BATTERY_FARM                                  :Għalqa tal-batteriji
+STR_INDUSTRY_NAME_COLA_WELLS                                    :Bjar tal-Kola
+STR_INDUSTRY_NAME_TOY_SHOP                                      :Ħanut tal-Ġugarelli
+STR_INDUSTRY_NAME_TOY_FACTORY                                   :Fabbrika tal-Ġugarelli
+STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :Funtani tal-Plastik
+STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :Fabbrika tal-Luminata
+STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :Ġeneratur tal-bżiezaq
+STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :Barriera tat-Toffee
+STR_INDUSTRY_NAME_SUGAR_MINE                                    :Minjiera taz-zokkor
+
+############ WARNING, using range 0x6000 for strings that are stored in the savegame
+############ These strings may never get a new id, or savegames will break!
+##id 0x6000
+STR_SV_EMPTY                                                    :
+STR_SV_UNNAMED                                                  :Bla isem
+STR_SV_TRAIN_NAME                                               :Ferrovija {COMMA}
+STR_SV_ROAD_VEHICLE_NAME                                        :Vettura tat-triq {COMMA}
+STR_SV_SHIP_NAME                                                :Vapur {COMMA}
+STR_SV_AIRCRAFT_NAME                                            :Ajruplan {COMMA}
+
+STR_SV_STNAME                                                   :{STRING}
+STR_SV_STNAME_NORTH                                             :{STRING} Tramuntana
+STR_SV_STNAME_SOUTH                                             :{STRING} Nofsinhar
+STR_SV_STNAME_EAST                                              :{STRING} Lvant
+STR_SV_STNAME_WEST                                              :{STRING} Punent
+STR_SV_STNAME_CENTRAL                                           :{STRING} Ċentrali
+STR_SV_STNAME_HALT                                              :Waqfa {STRING}
+STR_SV_STNAME_VALLEY                                            :Wied {STRING}
+STR_SV_STNAME_HEIGHTS                                           :Għoljiet {STRING}
+STR_SV_STNAME_WOODS                                             :Bosk {STRING}
+STR_SV_STNAME_LAKESIDE                                          :Lag {STRING}
+STR_SV_STNAME_EXCHANGE                                          :Skambju {STRING}
+STR_SV_STNAME_AIRPORT                                           :Ajruport {STRING}
+STR_SV_STNAME_MINES                                             :Minjieri {STRING}
+STR_SV_STNAME_DOCKS                                             :Port {STRING}
+STR_SV_STNAME_BUOY                                              :{STRING}
+STR_SV_STNAME_WAYPOINT                                          :{STRING}
+##id 0x6020
+STR_SV_STNAME_ANNEXE                                            :Anness {STRING}
+STR_SV_STNAME_SIDINGS                                           :Naħiet {STRING}
+STR_SV_STNAME_BRANCH                                            :Fergħa {STRING}
+STR_SV_STNAME_UPPER                                             :{STRING} ta' fuq
+STR_SV_STNAME_LOWER                                             :{STRING} t' isfel
+STR_SV_STNAME_HELIPORT                                          :Ħeliport {STRING}
+STR_SV_STNAME_FOREST                                            :Foresta {STRING}
+STR_SV_STNAME_FALLBACK                                          :{STRING}, Stazzjon #{NUM}
+############ end of savegame specific region!
+
+##id 0x8000
+# Vehicle names
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KIRBY_PAUL_TANK_STEAM        :Kirby Paul Tank (Fwar)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_250_DIESEL               :MJS 250 (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_CHOO_CHOO         :Ploddyphut Choo-Choo
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_CHOO_CHOO          :Powernaut Choo-Choo
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MIGHTYMOVER_CHOO_CHOO        :Mightymover Choo-Choo
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_DIESEL            :Ploddyphut Diesel
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_DIESEL             :Powernaut Diesel
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_WILLS_2_8_0_STEAM            :Wills 2-8-0 (Fwar)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CHANEY_JUBILEE_STEAM         :Chaney 'Jubilee' (Fwar)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_GINZU_A4_STEAM               :Ginzu 'A4' (Fwar)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_8P_STEAM                  :SH '8P' (Fwar)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MANLEY_MOREL_DMU_DIESEL      :Manley-Morel DMU (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_DASH_DIESEL                  :'Dash' (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_HENDRY_25_DIESEL          :SH/Hendry '25' (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_UU_37_DIESEL                 :UU '37' (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_FLOSS_47_DIESEL              :Floss '47' (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CS_4000_DIESEL               :CS 4000 (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CS_2400_DIESEL               :CS 2400 (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CENTENNIAL_DIESEL            :Centennial (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KELLING_3100_DIESEL          :Kelling 3100 (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_TURNER_TURBO_DIESEL          :Turner Turbo (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_1000_DIESEL              :MJS 1000 (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_125_DIESEL                :SH '125' (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_30_ELECTRIC               :SH '30' (Elettriku)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_40_ELECTRIC               :SH '40' (Elettriku)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_T_I_M_ELECTRIC               :'T.I.M.' (Elettriku)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_ASIASTAR_ELECTRIC            :'AsiaStar' (Elettriku)
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PASSENGER_CAR                 :Karru għall-passiġġieri
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_MAIL_VAN                      :Vann għall-posta
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COAL_CAR                      :Karru għall-faħam
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_OIL_TANKER                    :Tanker taż-żejt
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_LIVESTOCK_VAN                 :Vann għall-annimali
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GOODS_VAN                     :Vann għall-merkanzija
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WOOD_TRUCK                    :Karru għall-injam
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FOOD_VAN                      :Karru għall-ikel
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PAPER_TRUCK                   :Karru għall-karti
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WATER_TANKER                  :Tanker tal-ilma
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FRUIT_TRUCK                   :Karru għall-frott
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_SUGAR_TRUCK                   :Karru għaz-zokkor
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BUBBLE_VAN                    :Karru għall-bżieżaq
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_CANDY_VAN                     :Karru għall-Ħelu
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOY_VAN                       :Karru għall-Ġugarelli
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BATTERY_TRUCK                 :Karru għall-Batteriji
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FIZZY_DRINK_TRUCK             :Karru għal-Luminata
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PLASTIC_TRUCK                 :Karru għall-Plastik
+STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :'X2001' (Elettriku)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_MILLENNIUM_Z1_ELECTRIC   :'Millennium Z1' (Elettriku)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_WIZZOWOW_Z99             :Wizzowow Z99
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PASSENGER_CAR             :Karru għall-passiġġieri
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_MAIL_VAN                  :Karru għall-posta
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COAL_CAR                  :Karru għall-faħam
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FIZZY_DRINK_TRUCK         :Trakk tax-Xarbiet Karbonati
+STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER                            :Tanker taż-żejt MPS
+STR_VEHICLE_NAME_SHIP_CS_INC_OIL_TANKER                         :Tanker taż-żejt CS-Inc.
+STR_VEHICLE_NAME_SHIP_MPS_PASSENGER_FERRY                       :Vapur tal-passiġġieri MPS
+STR_VEHICLE_NAME_SHIP_FFP_PASSENGER_FERRY                       :Vapur tal-passiġġieri FFP
+STR_VEHICLE_NAME_SHIP_BAKEWELL_300_HOVERCRAFT                   :Ħoverkraft Bakewell 300
+STR_VEHICLE_NAME_SHIP_CHUGGER_CHUG_PASSENGER                    :Vapur tal-passiġġieri Chugger-Chug
+STR_VEHICLE_NAME_SHIP_SHIVERSHAKE_PASSENGER_FERRY               :Vapur tal-passiġġieri Shivershake
+STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :Vapur tal-merkanzija Yate
+STR_VEHICLE_NAME_SHIP_BAKEWELL_CARGO_SHIP                       :Vapur tal-merkanzija Bakewell
+STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :Vapur tal-merkanzija Mightymover
+STR_VEHICLE_NAME_SHIP_POWERNAUT_CARGO_SHIP                      :Vapur tal-merkanzija Powernaut
+STR_VEHICLE_NAME_AIRCRAFT_SAMPSON_U52                           :Sampson U52
+STR_VEHICLE_NAME_AIRCRAFT_COLEMAN_COUNT                         :Coleman Count
+STR_VEHICLE_NAME_AIRCRAFT_FFP_DART                              :FFP Dart
+STR_VEHICLE_NAME_AIRCRAFT_YATE_HAUGAN                           :Yate Haugan
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_COTSWALD_LB_3                :Bakewell Cotswald LB-3
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_8                 :Bakewell Luckett LB-8
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_9                 :Bakewell Luckett LB-9
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB80                 :Bakewell Luckett LB80
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_10                :Bakewell Luckett LB-10
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_11                :Bakewell Luckett LB-11
+STR_VEHICLE_NAME_AIRCRAFT_YATE_AEROSPACE_YAC_1_11               :Yate Aerospace YAC 1-11
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_100                            :Darwin 100
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_200                            :Darwin 200
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_300                            :Darwin 300
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_400                            :Darwin 400
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_500                            :Darwin 500
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_600                            :Darwin 600
+STR_VEHICLE_NAME_AIRCRAFT_GURU_GALAXY                           :Guru Galaxy
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A21                           :Airtaxi A21
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A31                           :Airtaxi A31
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A32                           :Airtaxi A32
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A33                           :Airtaxi A33
+STR_VEHICLE_NAME_AIRCRAFT_YATE_AEROSPACE_YAE46                  :Yate Aerospace YAe46
+STR_VEHICLE_NAME_AIRCRAFT_DINGER_100                            :Dinger 100
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A34_1000                      :AirTaxi A34-1000
+STR_VEHICLE_NAME_AIRCRAFT_YATE_Z_SHUTTLE                        :Yate Z-Shuttle
+STR_VEHICLE_NAME_AIRCRAFT_KELLING_K1                            :Kelling K1
+STR_VEHICLE_NAME_AIRCRAFT_KELLING_K6                            :Kelling K6
+STR_VEHICLE_NAME_AIRCRAFT_KELLING_K7                            :Kelling K7
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_700                            :Darwin 700
+STR_VEHICLE_NAME_AIRCRAFT_FFP_HYPERDART_2                       :FFP Hyperdart 2
+STR_VEHICLE_NAME_AIRCRAFT_DINGER_200                            :Dinger 200
+STR_VEHICLE_NAME_AIRCRAFT_DINGER_1000                           :Dinger 1000
+STR_VEHICLE_NAME_AIRCRAFT_PLODDYPHUT_100                        :Ploddyphut 100
+STR_VEHICLE_NAME_AIRCRAFT_PLODDYPHUT_500                        :Ploddyphut 500
+STR_VEHICLE_NAME_AIRCRAFT_FLASHBANG_X1                          :Flashbang X1
+STR_VEHICLE_NAME_AIRCRAFT_JUGGERPLANE_M1                        :Juggerplane M1
+STR_VEHICLE_NAME_AIRCRAFT_FLASHBANG_WIZZER                      :Flashbang Wizzer
+STR_VEHICLE_NAME_AIRCRAFT_TRICARIO_HELICOPTER                   :Ħelikopter Tricario
+STR_VEHICLE_NAME_AIRCRAFT_GURU_X2_HELICOPTER                    :Ħelikopter Guru X2
+STR_VEHICLE_NAME_AIRCRAFT_POWERNAUT_HELICOPTER                  :Ħelikopter Powernaut
+
+##id 0x8800
+# Formatting of some strings
+STR_FORMAT_DATE_TINY                                            :{STRING}-{STRING}-{NUM}
+STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
+STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
+STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
+
+STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
+
+
+STR_UNKNOWN_STATION                                             :stazzjon mhux magħruf
+STR_DEFAULT_SIGN_NAME                                           :Sinjal
+STR_COMPANY_SOMEONE                                             :xi ħadd
+
+STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}
+
+# Viewport strings
+STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})
+STR_VIEWPORT_TOWN                                               :{WHITE}{TOWN}
+STR_VIEWPORT_TOWN_TINY_BLACK                                    :{TINYFONT}{BLACK}{TOWN}
+STR_VIEWPORT_TOWN_TINY_WHITE                                    :{TINYFONT}{WHITE}{TOWN}
+
+STR_VIEWPORT_SIGN_SMALL_BLACK                                   :{TINYFONT}{BLACK}{SIGN}
+STR_VIEWPORT_SIGN_SMALL_WHITE                                   :{TINYFONT}{WHITE}{SIGN}
+
+STR_VIEWPORT_STATION                                            :{STATION} {STATIONFEATURES}
+STR_VIEWPORT_STATION_TINY                                       :{TINYFONT}{STATION}
+
+STR_VIEWPORT_WAYPOINT                                           :{WAYPOINT}
+STR_VIEWPORT_WAYPOINT_TINY                                      :{TINYFONT}{WAYPOINT}
+
+# Simple strings to get specific types of data
+STR_COMPANY_NAME                                                :{COMPANY}
+STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
+STR_ENGINE_NAME                                                 :{ENGINE}
+STR_GROUP_NAME                                                  :{GROUP}
+STR_INDUSTRY_NAME                                               :{INDUSTRY}
+STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
+STR_SIGN_NAME                                                   :{SIGN}
+STR_STATION_NAME                                                :{STATION}
+STR_TOWN_NAME                                                   :{TOWN}
+STR_VEHICLE_NAME                                                :{VEHICLE}
+STR_WAYPOINT_NAME                                               :{WAYPOINT}
+
+STR_JUST_CARGO                                                  :{CARGO}
+STR_JUST_CHECKMARK                                              :{CHECKMARK}
+STR_JUST_COMMA                                                  :{COMMA}
+STR_JUST_CURRCOMPACT                                            :{CURRCOMPACT}
+STR_JUST_CURRENCY                                               :{CURRENCY}
+STR_JUST_INT                                                    :{NUM}
+STR_JUST_DATE_TINY                                              :{DATE_TINY}
+STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
+STR_JUST_DATE_LONG                                              :{DATE_LONG}
+STR_JUST_DATE_ISO                                               :{DATE_ISO}
+STR_JUST_STRING                                                 :{STRING}
+STR_JUST_STRING_SPACE_STRING                                    :{STRING} {STRING}
+STR_JUST_RAW_STRING                                             :{STRING}
+
+# Slightly 'raw' stringcodes with colour or size
+STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
+STR_TINY_BLACK_COMA                                             :{TINYFONT}{BLACK}{COMMA}
+STR_TINY_COMMA                                                  :{TINYFONT}{COMMA}
+STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
+STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY}
+STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
+STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
+STR_SILVER_CROSS                                                :{SILVER}{CROSS}
+STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
+STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
+STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
+STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}
+STR_TINY_GROUP                                                  :{TINYFONT}{GROUP}
+STR_BLACK_INT                                                   :{BLACK}{NUM}
+STR_ORANGE_INT                                                  :{ORANGE}{NUM}
+STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
+STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
+STR_BLACK_STRING                                                :{BLACK}{STRING}
+STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
+STR_GREEN_STRING                                                :{GREEN}{STRING}
+STR_RED_STRING                                                  :{RED}{STRING}
+STR_WHITE_STRING                                                :{WHITE}{STRING}
+STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
+STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
+
+STR_BLACK_1                                                     :{BLACK}1
+STR_BLACK_2                                                     :{BLACK}2
+STR_BLACK_3                                                     :{BLACK}3
+STR_BLACK_4                                                     :{BLACK}4
+STR_BLACK_5                                                     :{BLACK}5
+STR_BLACK_6                                                     :{BLACK}6
+STR_BLACK_7                                                     :{BLACK}7
+
+STR_TRAIN                                                       :{BLACK}{TRAIN}
+STR_BUS                                                         :{BLACK}{BUS}
+STR_LORRY                                                       :{BLACK}{LORRY}
+STR_PLANE                                                       :{BLACK}{PLANE}
+STR_SHIP                                                        :{BLACK}{SHIP}
+
+STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
