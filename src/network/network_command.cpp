@@ -153,6 +153,8 @@ void NetworkSyncCommandQueue(NetworkClientSocket *cs)
  */
 void NetworkExecuteLocalCommandQueue()
 {
+	assert(_current_company == _local_company);
+
 	while (_local_command_queue != NULL) {
 
 		/* The queue is always in order, which means
@@ -175,6 +177,9 @@ void NetworkExecuteLocalCommandQueue()
 		_local_command_queue = _local_command_queue->next;
 		free(cp);
 	}
+
+	/* Local company may have changed, so we should not restore the old value */
+	_current_company = _local_company;
 }
 
 /**

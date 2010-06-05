@@ -809,7 +809,6 @@ static void MakeNewGameDone()
 	IConsoleCmdExec("exec scripts/game_start.scr 0");
 
 	SetLocalCompany(COMPANY_FIRST);
-	_current_company = _local_company;
 
 	InitializeRailGUI();
 
@@ -895,7 +894,6 @@ static void StartScenario()
 	StartupDisasters();
 
 	SetLocalCompany(COMPANY_FIRST);
-	_current_company = _local_company;
 	Company *c = Company::Get(COMPANY_FIRST);
 	c->settings = _settings_client.company;
 
@@ -1231,6 +1229,8 @@ void StateGameLoop()
 		NewsLoop();
 		cur_company.Restore();
 	}
+
+	assert(_current_company == _local_company);
 }
 
 /** Create an autosave. The default name is "autosave#.sav". However with

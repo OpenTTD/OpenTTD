@@ -34,6 +34,7 @@
 #include "town.h"
 #include "newgrf.h"
 #include "core/random_func.hpp"
+#include "core/backup_type.hpp"
 
 #include "table/sprites.h"
 
@@ -96,6 +97,9 @@ static void CleanupGeneration()
  */
 static void _GenerateWorld(void *)
 {
+	/* Make sure everything is done via OWNER_NONE. */
+	Backup<CompanyByte> _cur_company(_current_company, OWNER_NONE, FILE_LINE);
+
 	try {
 		_generating_world = true;
 		_genworld_mapgen_mutex->BeginCritical();
@@ -132,6 +136,7 @@ static void _GenerateWorld(void *)
 			/* only generate towns, tree and industries in newgame mode. */
 			if (_game_mode != GM_EDITOR) {
 				if (!GenerateTowns(_settings_game.economy.town_layout)) {
+					_cur_company.Restore();
 					HandleGeneratingWorldAbortion();
 					return;
 				}
@@ -164,7 +169,8 @@ static void _GenerateWorld(void *)
 		}
 
 		ResetObjectToPlace();
-		_local_company = _gw.lc;
+		_cur_company.Trash();
+		_current_company = _local_company = _gw.lc;
 
 		SetGeneratingWorldProgress(GWP_GAME_START, 1);
 		/* Call any callback */
@@ -185,6 +191,7 @@ static void _GenerateWorld(void *)
 			SaveOrLoad(name, SL_SAVE, AUTOSAVE_DIR);
 		}
 	} catch (...) {
+		if (_cur_company.IsValid()) _cur_company.Restore();
 		_generating_world = false;
 		_genworld_mapgen_mutex->EndCritical();
 		throw;
@@ -287,8 +294,6 @@ void GenerateWorld(GenWorldMode mode, uint size_x, uint size_y, bool reset_setti
 
 	/* This disables some commands and stuff */
 	SetLocalCompany(COMPANY_SPECTATOR);
-	/* Make sure everything is done via OWNER_NONE */
-	_current_company = OWNER_NONE;
 
 	/* Set the date before loading sprites as some newgrfs check it */
 	SetDate(ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1));

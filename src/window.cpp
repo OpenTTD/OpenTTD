@@ -1918,16 +1918,9 @@ static bool MaybeBringWindowToFront(Window *w)
  */
 void HandleKeypress(uint32 raw_key)
 {
-	/*
-	 * During the generation of the world, there might be
-	 * another thread that is currently building for example
-	 * a road. To not interfere with those tasks, we should
-	 * NOT change the _current_company here.
-	 *
-	 * This is not necessary either, as the only events that
-	 * can be handled are the 'close application' events
-	 */
-	if (!IsGeneratingWorld()) _current_company = _local_company;
+	/* World generation is multithreaded and messes with companies.
+	 * But there is no company related window open anyway, so _current_company is not used. */
+	assert(IsGeneratingWorld() || _local_company == _current_company);
 
 	/* Setup event */
 	uint16 key     = GB(raw_key,  0, 16);
@@ -2083,6 +2076,10 @@ static void HandleKeyScrolling()
 
 static void MouseLoop(MouseClick click, int mousewheel)
 {
+	/* World generation is multithreaded and messes with companies.
+	 * But there is no company related window open anyway, so _current_company is not used. */
+	assert(IsGeneratingWorld() || _local_company == _current_company);
+
 	HandlePlacePresize();
 	UpdateTileSelection();
 
@@ -2183,20 +2180,13 @@ static void MouseLoop(MouseClick click, int mousewheel)
  */
 void HandleMouseEvents()
 {
+	/* World generation is multithreaded and messes with companies.
+	 * But there is no company related window open anyway, so _current_company is not used. */
+	assert(IsGeneratingWorld() || _local_company == _current_company);
+
 	static int double_click_time = 0;
 	static int double_click_x = 0;
 	static int double_click_y = 0;
-
-	/*
-	 * During the generation of the world, there might be
-	 * another thread that is currently building for example
-	 * a road. To not interfere with those tasks, we should
-	 * NOT change the _current_company here.
-	 *
-	 * This is not necessary either, as the only events that
-	 * can be handled are the 'close application' events
-	 */
-	if (!IsGeneratingWorld()) _current_company = _local_company;
 
 	/* Mouse event? */
 	MouseClick click = MC_NONE;
@@ -2280,6 +2270,10 @@ static void CheckSoftLimit()
  */
 void InputLoop()
 {
+	/* World generation is multithreaded and messes with companies.
+	 * But there is no company related window open anyway, so _current_company is not used. */
+	assert(IsGeneratingWorld() || _local_company == _current_company);
+
 	CheckSoftLimit();
 	HandleKeyScrolling();
 

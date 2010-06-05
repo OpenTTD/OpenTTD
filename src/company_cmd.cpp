@@ -99,7 +99,9 @@ void SetLocalCompany(CompanyID new_company)
 	InvalidateWindowData(WC_SEND_NETWORK_MSG, DESTTYPE_TEAM, _local_company);
 #endif
 
-	_local_company = new_company;
+	assert(_current_company == _local_company);
+
+	_current_company = _local_company = new_company;
 
 	/* Delete any construction windows... */
 	DeleteConstructionWindows();
@@ -736,8 +738,6 @@ void CompanyNewsInformation::FillData(const Company *c, const Company *other)
  */
 CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	if (flags & DC_EXEC) _current_company = OWNER_NONE;
-
 	InvalidateWindowData(WC_COMPANY_LEAGUE, 0, 0);
 
 	switch (p1) {
@@ -782,8 +782,6 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 				if (!StrEmpty(_settings_client.network.default_company_pass)) {
 					NetworkChangeCompanyPassword(_settings_client.network.default_company_pass);
 				}
-
-				_current_company = _local_company;
 
 				/* Now that we have a new company, broadcast our company settings to
 				 * all clients so everything is in sync */

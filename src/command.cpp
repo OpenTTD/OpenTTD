@@ -26,6 +26,7 @@
 #include "company_func.h"
 #include "company_base.h"
 #include "signal_func.h"
+#include "core/backup_type.hpp"
 
 #include "table/strings.h"
 
@@ -590,16 +591,17 @@ CommandCost DoCommandPInternal(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd,
 	if (tile != 0 && (tile >= MapSize() || (!IsValidTile(tile) && (cmd_flags & CMD_ALL_TILES) == 0))) return_dcpi(CMD_ERROR, false);
 
 	/* Always execute server and spectator commands as spectator */
-	if (cmd_flags & (CMD_SPECTATOR | CMD_SERVER)) _current_company = COMPANY_SPECTATOR;
-
-	CompanyID old_company = _current_company;
+	bool exec_as_spectator = cmd_flags & (CMD_SPECTATOR | CMD_SERVER);
 
 	/* If the company isn't valid it may only do server command or start a new company!
 	 * The server will ditch any server commands a client sends to it, so effectively
 	 * this guards the server from executing functions for an invalid company. */
-	if (_game_mode == GM_NORMAL && (cmd_flags & (CMD_SPECTATOR | CMD_SERVER)) == 0 && !Company::IsValidID(_current_company)) {
+	if (_game_mode == GM_NORMAL && !exec_as_spectator && !Company::IsValidID(_current_company)) {
 		return_dcpi(CMD_ERROR, false);
 	}
+
+	Backup<CompanyByte> cur_company(_current_company, FILE_LINE);
+	if (exec_as_spectator) cur_company.Change(COMPANY_SPECTATOR);
 
 	bool test_and_exec_can_differ = (cmd_flags & CMD_NO_TEST) != 0;
 	bool skip_test = _networking && (cmd & CMD_NO_TEST_IF_IN_NETWORK) != 0;
@@ -622,7 +624,7 @@ CommandCost DoCommandPInternal(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd,
 		SetTownRatingTestMode(false);
 
 		/* Make sure we're not messing things up here. */
-		assert(cmd_id == CMD_COMPANY_CTRL || old_company == _current_company);
+		assert(exec_as_spectator ? _current_company == COMPANY_SPECTATOR : cur_company.Verify());
 
 		/* If the command fails, we're doing an estimate
 		 * or the player does not have enough money
@@ -631,6 +633,7 @@ CommandCost DoCommandPInternal(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd,
 		 * we bail out here. */
 		if (res.Failed() || estimate_only ||
 				(!test_and_exec_can_differ && !CheckCompanyHasMoney(res))) {
+			cur_company.Restore();
 			return_dcpi(res, false);
 		}
 	}
@@ -642,6 +645,7 @@ CommandCost DoCommandPInternal(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd,
 	 */
 	if (_networking && !(cmd & CMD_NETWORK_COMMAND)) {
 		NetworkSend_Command(tile, p1, p2, cmd & ~CMD_FLAGS_MASK, callback, text, _current_company);
+		cur_company.Restore();
 
 		/* Don't return anything special here; no error, no costs.
 		 * This way it's not handled by DoCommand and only the
@@ -656,8 +660,17 @@ CommandCost DoCommandPInternal(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd,
 	 * use the construction one */
 	CommandCost res2 = proc(tile, flags | DC_EXEC, p1, p2, text);
 
-	/* Make sure nothing bad happened, like changing the current company. */
-	assert(cmd_id == CMD_COMPANY_CTRL || old_company == _current_company);
+	if (cmd_id == CMD_COMPANY_CTRL) {
+		cur_company.Trash();
+		/* We are a new company                  -> Switch to new local company.
+		 * We were closed down                   -> Switch to spectator
+		 * Some other company opened/closed down -> The outside function will switch back */
+		_current_company = _local_company;
+	} else {
+		/* Make sure nothing bad happened, like changing the current company. */
+		assert(exec_as_spectator ? _current_company == COMPANY_SPECTATOR : cur_company.Verify());
+		cur_company.Restore();
+	}
 
 	/* If the test and execution can differ, or we skipped the test
 	 * we have to check the return of the command. Otherwise we can
