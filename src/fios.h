@@ -15,6 +15,7 @@
 #include "strings_type.h"
 #include "core/smallvec_type.hpp"
 #include "core/enum_type.hpp"
+#include "gfx_type.h"
 
 enum FileSlots {
 	/**
@@ -118,5 +119,11 @@ void FiosMakeSavegameName(char *buf, const char *name, size_t size);
 FiosType FiosGetSavegameListCallback(SaveLoadDialogMode mode, const char *file, const char *ext, char *title, const char *last);
 
 int CDECL CompareFiosItems(const FiosItem *a, const FiosItem *b);
+
+/* FIOS_TYPE_FILE, FIOS_TYPE_OLDFILE etc. different colours */
+extern const TextColour _fios_colours[];
+
+void BuildFileList();
+void SetFiosType(const byte fiostype);
 
 #endif /* FIOS_H */

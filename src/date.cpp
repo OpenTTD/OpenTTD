@@ -15,7 +15,7 @@
 #include "network/network_func.h"
 #include "currency.h"
 #include "window_func.h"
-#include "functions.h"
+#include "settings_type.h"
 #include "date_func.h"
 #include "vehicle_base.h"
 #include "debug.h"
@@ -220,7 +220,7 @@ static void OnNewMonth()
 {
 	if (_settings_client.gui.autosave != 0 && (_cur_month % _autosave_months[_settings_client.gui.autosave]) == 0) {
 		_do_autosave = true;
-		RedrawAutosave();
+		SetWindowDirty(WC_STATUS_BAR, 0);
 	}
 
 	SetWindowClassesDirty(WC_CHEATS);

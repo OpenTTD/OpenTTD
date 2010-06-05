@@ -65,12 +65,6 @@ void ShowErrorMessage(StringID summary_msg, StringID detailed_msg, WarningLevel 
 
 void ShowExtraViewPortWindow(TileIndex tile = INVALID_TILE);
 
-void BuildFileList();
-void SetFiosType(const byte fiostype);
-
-/* FIOS_TYPE_FILE, FIOS_TYPE_OLDFILE etc. different colours */
-extern const TextColour _fios_colours[];
-
 /* bridge_gui.cpp */
 void ShowBuildBridgeWindow(TileIndex start, TileIndex end, TransportType transport_type, byte bridge_type);
 

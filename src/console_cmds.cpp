@@ -214,9 +214,6 @@ DEF_CONSOLE_CMD(ConScrollToTile)
 	return false;
 }
 
-extern void BuildFileList();
-extern void SetFiosType(const byte fiostype);
-
 /* Save the map to a file */
 DEF_CONSOLE_CMD(ConSave)
 {

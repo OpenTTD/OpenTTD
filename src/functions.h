@@ -41,8 +41,6 @@ void ShowFeederIncomeAnimation(int x, int y, int z, Money cost);
 void AskExitGame();
 void AskExitToGameMenu();
 
-void RedrawAutosave();
-
 int ttd_main(int argc, char *argv[]);
 void HandleExitGameRequest();
 

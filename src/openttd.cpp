@@ -1270,7 +1270,7 @@ void GameLoop()
 	if (_do_autosave) {
 		_do_autosave = false;
 		DoAutosave();
-		RedrawAutosave();
+		SetWindowDirty(WC_STATUS_BAR, 0);
 	}
 
 	/* switch game mode? */

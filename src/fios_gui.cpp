@@ -23,6 +23,7 @@
 #include "window_func.h"
 #include "tilehighlight_func.h"
 #include "querystring_gui.h"
+#include "engine_func.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -151,8 +152,6 @@ static void MakeSortedSaveGameList()
 	uint s_amount = _fios_items.Length() - sort_start - sort_end;
 	QSortT(_fios_items.Get(sort_start), s_amount, CompareFiosItems);
 }
-
-extern void StartupEngines();
 
 struct SaveLoadWindow : public QueryStringBaseWindow {
 private:
@@ -491,11 +490,6 @@ void ShowSaveLoadDialog(SaveLoadDialogMode mode)
 	_file_to_saveload.filetype = _file_modetotype[mode];
 
 	new SaveLoadWindow(sld, mode);
-}
-
-void RedrawAutosave()
-{
-	SetWindowDirty(WC_STATUS_BAR, 0);
 }
 
 void SetFiosType(const byte fiostype)
