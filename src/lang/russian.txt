@@ -893,7 +893,7 @@ STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIGFONT}{BLACK
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIGFONT}{BLACK}Жители празднуют!{}Первый корабль причалил к {STATION}!
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIGFONT}{BLACK}Жители празднуют!{}Первый самолёт прибыл в {STATION}!
 
-STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK}Столкновение поездов!{}{COMMA} человек{P "" а ""} погиб{P "" ло ло} в огне!
+STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK}Столкновение поездов!{}{COMMA} человек{P "" а ""} погиб{P "" ло ло} в результате крушения!
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}АВАРИЯ!{}Водитель транспортного средства погиб при столкновении с поездом.
 STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIGFONT}{BLACK}АВАРИЯ!{}{COMMA} человек{P "" а ""} погиб{P "" ло ло} при столкновении с поездом!
 STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK}Авиакатастрофа!{}{COMMA} человек{P "" а ""} погиб{P "" ло ло} в огне в {STATION}!
@@ -925,7 +925,7 @@ STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK
 
 STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}Предприятие «{STRING}» объявляет о скором закрытии!
 STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}{STRING} закрывается из-за проблем с поставками сырья!
-STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}{STRING} объявляет о закрытии в связи с недостатком деревьев в округе!
+STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}{STRING} объявляет о закрытии в связи с отсутствием деревьев в округе!
 
 STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}Создана зона евро!{}{}Теперь в вашей стране в качестве единой валюты используется евро!
 STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}Мировой спад{}{}Финансовые эксперты дают ужасные прогнозы в связи с кризисом экономики!
@@ -933,8 +933,8 @@ STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK
 
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}Предприятие «{INDUSTRY}» увеличивает объёмы производства!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}{INDUSTRY} начинает разработку нового угольного пласта!{}Добыча увеличена вдвое!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}Обнаружены новые запасы нефти на {INDUSTRY}!{}Добыча увеличена вдвое!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}Внедрение новых методов позволяет поднять производство вдвое на {INDUSTRY}!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}Обнаружены новые запасы нефти!{}{INDUSTRY} увеличивает темпы добычи вдвое!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}{INDUSTRY} внедряет новые методы ведения с/х, что позволит удвоить производительность!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK}Предприятие «{1:INDUSTRY}» увеличивает производство {0:STRING.gen} на{NBSP}{2:COMMA}%!
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}Производительность предприятия «{INDUSTRY}» упала на 50%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}{INDUSTRY} снижает производительность на 50% из-за нашествия вредителей!
@@ -4263,7 +4263,7 @@ STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :Ангар ({ST
 
 STR_UNKNOWN_STATION                                             :неизвестная станция
 STR_DEFAULT_SIGN_NAME                                           :Знак
-STR_COMPANY_SOMEONE                                             :кто-нибудь
+STR_COMPANY_SOMEONE                                             :кто-то
 
 STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}
 STR_SAVEGAME_NAME_SPECTATOR                                     :Наблюдатель, {1:STRING}

@@ -3489,7 +3489,7 @@ STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Wybierz 
 
 STR_ORDER_SERVICE                                               :{BLACK}Serwis
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Zawsze do
-STR_ORDER_DROP_SERVICE_DEPOT                                    :Obsluga jesli wymagana
+STR_ORDER_DROP_SERVICE_DEPOT                                    :Serwisuj jeśli trzeba
 STR_ORDER_DROP_HALT_DEPOT                                       :Zatrzymaj
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Pomiń to polecenie jesli serwis nie jest wymagany
 
@@ -3498,7 +3498,7 @@ STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Procent załado
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Niezawodność
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Prędkość maksymalna
 STR_ORDER_CONDITIONAL_AGE                                       :Wiek pojazdu (lata)
-STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Wymaga obslugi
+STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Wymaga serwisowania
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Zawsze
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Jak porównać dane pojazdu z zadaną wartością
@@ -3534,7 +3534,7 @@ STR_ORDER_GO_TO_WAYPOINT                                        :Idź przez {WAY
 STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Idź bez zatrzymywania przez {WAYPOINT}
 
 STR_ORDER_SERVICE_AT                                            :Serwisuj w
-STR_ORDER_SERVICE_NON_STOP_AT                                   :Obsluga non-stop w
+STR_ORDER_SERVICE_NON_STOP_AT                                   :Serwisuj non-stop w
 
 STR_ORDER_NEAREST_DEPOT                                         :najbliższy
 STR_ORDER_NEAREST_HANGAR                                        :najbliższy hangar
