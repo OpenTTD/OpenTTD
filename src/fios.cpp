@@ -32,6 +32,7 @@
 SmallVector<FiosItem, 32> _fios_items;
 static char *_fios_path;
 SmallFiosItem _file_to_saveload;
+SortingBits _savegame_sort_order = SORT_BY_DATE | SORT_DESCENDING;
 
 /* OS-specific functions are taken from their respective files (win32/unix/os2 .c) */
 extern bool FiosIsRoot(const char *path);
@@ -306,7 +307,7 @@ static void FiosGetFileList(SaveLoadDialogMode mode, fios_getlist_callback_proc 
 
 	/* Sort the subdirs always by name, ascending, remember user-sorting order */
 	{
-		byte order = _savegame_sort_order;
+		SortingBits order = _savegame_sort_order;
 		_savegame_sort_order = SORT_BY_NAME | SORT_ASCENDING;
 		QSortT(_fios_items.Begin(), _fios_items.Length(), CompareFiosItems);
 		_savegame_sort_order = order;

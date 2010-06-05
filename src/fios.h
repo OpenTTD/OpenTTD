@@ -14,6 +14,7 @@
 
 #include "strings_type.h"
 #include "core/smallvec_type.hpp"
+#include "core/enum_type.hpp"
 
 enum FileSlots {
 	/**
@@ -86,12 +87,13 @@ enum SortingBits {
 	SORT_BY_DATE    = 0,
 	SORT_BY_NAME    = 2
 };
+DECLARE_ENUM_AS_BIT_SET(SortingBits)
 
 /* Variables to display file lists */
-extern SmallVector<FiosItem, 32> _fios_items; ///< defined in fios.cpp
+extern SmallVector<FiosItem, 32> _fios_items;
 extern SmallFiosItem _file_to_saveload;
-extern SaveLoadDialogMode _saveload_mode;   ///< defined in misc_gui.cpp
-extern byte _savegame_sort_order;
+extern SaveLoadDialogMode _saveload_mode;
+extern SortingBits _savegame_sort_order;
 
 /* Launch save/load dialog */
 void ShowSaveLoadDialog(SaveLoadDialogMode mode);

@@ -405,7 +405,6 @@ void MakeNewgameSettingsLive()
 #endif /* ENABLE_AI */
 }
 
-byte _savegame_sort_order;
 #if defined(UNIX) && !defined(__MORPHOS__)
 extern void DedicatedFork();
 #endif
@@ -680,7 +679,6 @@ int ttd_main(int argc, char *argv[])
 	}
 	free(musicdriver);
 
-	_savegame_sort_order = SORT_BY_DATE | SORT_DESCENDING;
 	/* Initialize the zoom level of the screen to normal */
 	_screen.zoom = ZOOM_LVL_NORMAL;
 
