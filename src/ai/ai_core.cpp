@@ -48,12 +48,14 @@
 		config->ChangeAI(info->GetName(), -1, false, true);
 	}
 
-	_current_company = company;
+	Backup<CompanyByte> cur_company(_current_company, company, FILE_LINE);
 	Company *c = Company::Get(company);
 
 	c->ai_info = info;
 	assert(c->ai_instance == NULL);
 	c->ai_instance = new AIInstance(info);
+
+	cur_company.Restore();
 
 	InvalidateWindowData(WC_AI_DEBUG, 0, -1);
 	return;
