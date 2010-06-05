@@ -1216,7 +1216,7 @@ void StateGameLoop()
 
 		/* All these actions has to be done from OWNER_NONE
 		 *  for multiplayer compatibility */
-		Backup<CompanyByte> cur_company(_current_company, OWNER_NONE);
+		Backup<CompanyByte> cur_company(_current_company, OWNER_NONE, FILE_LINE);
 
 		AnimateAnimatedTiles();
 		IncreaseDate();

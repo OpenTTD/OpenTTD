@@ -230,7 +230,7 @@ CommandCost CmdGiveMoney(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 
 	if (flags & DC_EXEC) {
 		/* Add money to company */
-		Backup<CompanyByte> cur_company(_current_company, dest_company);
+		Backup<CompanyByte> cur_company(_current_company, dest_company, FILE_LINE);
 		SubtractMoneyFromCompany(CommandCost(EXPENSES_OTHER, -amount.GetCost()));
 		cur_company.Restore();
 	}

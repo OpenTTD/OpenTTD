@@ -1043,7 +1043,7 @@ static bool SearchLumberMillTrees(TileIndex tile, void *user_data)
 	if (IsTileType(tile, MP_TREES) && GetTreeGrowth(tile) > 2) { ///< 3 and up means all fully grown trees
 		/* found a tree */
 
-		Backup<CompanyByte> cur_company(_current_company, OWNER_NONE);
+		Backup<CompanyByte> cur_company(_current_company, OWNER_NONE, FILE_LINE);
 
 		_industry_sound_ctr = 1;
 		_industry_sound_tile = tile;
@@ -1372,7 +1372,7 @@ static CommandCost CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTil
 				}
 
 				/* Clear the tiles as OWNER_TOWN to not affect town rating, and to not clear protected buildings */
-				Backup<CompanyByte> cur_company(_current_company, OWNER_TOWN);
+				Backup<CompanyByte> cur_company(_current_company, OWNER_TOWN, FILE_LINE);
 				CommandCost ret = DoCommand(cur_tile, 0, 0, DC_NONE, CMD_LANDSCAPE_CLEAR);
 				cur_company.Restore();
 
@@ -1484,7 +1484,7 @@ static bool CheckIfCanLevelIndustryPlatform(TileIndex tile, DoCommandFlag flags,
 
 	/* _current_company is OWNER_NONE for randomly generated industries and in editor, or the company who funded or prospected the industry.
 	 * Perform terraforming as OWNER_TOWN to disable autoslope and town ratings. */
-	Backup<CompanyByte> cur_company(_current_company, OWNER_TOWN);
+	Backup<CompanyByte> cur_company(_current_company, OWNER_TOWN, FILE_LINE);
 
 	TILE_LOOP(tile_walk, size_x, size_y, cur_tile) {
 		curh = TileHeight(tile_walk);
@@ -1788,7 +1788,7 @@ CommandCost CmdBuildIndustry(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	if (_game_mode != GM_EDITOR && _settings_game.construction.raw_industry_construction == 2 && indspec->IsRawIndustry()) {
 		if (flags & DC_EXEC) {
 			/* Prospected industries are build as OWNER_TOWN to not e.g. be build on owned land of the founder */
-			Backup<CompanyByte> cur_company(_current_company, OWNER_TOWN);
+			Backup<CompanyByte> cur_company(_current_company, OWNER_TOWN, FILE_LINE);
 			/* Prospecting has a chance to fail, however we cannot guarantee that something can
 			 * be built on the map, so the chance gets lower when the map is fuller, but there
 			 * is nothing we can really do about that. */
@@ -1890,7 +1890,7 @@ static const byte _numof_industry_table[]= {
  */
 static void PlaceInitialIndustry(IndustryType type, bool try_hard)
 {
-	Backup<CompanyByte> cur_company(_current_company, OWNER_NONE);
+	Backup<CompanyByte> cur_company(_current_company, OWNER_NONE, FILE_LINE);
 
 	IncreaseGeneratingWorldProgress(GWP_INDUSTRY);
 
@@ -2414,7 +2414,7 @@ void IndustryDailyLoop()
 		return;  // Nothing to do? get out
 	}
 
-	Backup<CompanyByte> cur_company(_current_company, OWNER_NONE);
+	Backup<CompanyByte> cur_company(_current_company, OWNER_NONE, FILE_LINE);
 
 	/* perform the required industry changes for the day */
 	for (uint16 j = 0; j < change_loop; j++) {
@@ -2439,7 +2439,7 @@ void IndustryDailyLoop()
 void IndustryMonthlyLoop()
 {
 	Industry *i;
-	Backup<CompanyByte> cur_company(_current_company, OWNER_NONE);
+	Backup<CompanyByte> cur_company(_current_company, OWNER_NONE, FILE_LINE);
 
 	FOR_ALL_INDUSTRIES(i) {
 		UpdateIndustryStatistics(i);

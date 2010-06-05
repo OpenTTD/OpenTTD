@@ -305,7 +305,7 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 #endif /* ENABLE_NETWORK */
 
 	Town *t;
-	Backup<CompanyByte> cur_company(_current_company, old_owner);
+	Backup<CompanyByte> cur_company(_current_company, old_owner, FILE_LINE);
 
 	assert(old_owner != new_owner);
 
@@ -327,7 +327,7 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 		}
 
 		/* Sell all the shares that people have on this company */
-		Backup<CompanyByte> cur_company2(_current_company);
+		Backup<CompanyByte> cur_company2(_current_company, FILE_LINE);
 		c = Company::Get(old_owner);
 		for (i = 0; i < 4; i++) {
 			cur_company2.Change(c->share_owners[i]);
@@ -553,7 +553,7 @@ static void CompaniesGenStatistics()
 	Station *st;
 	Company *c;
 
-	Backup<CompanyByte> cur_company(_current_company);
+	Backup<CompanyByte> cur_company(_current_company, FILE_LINE);
 	FOR_ALL_STATIONS(st) {
 		cur_company.Change(st->owner);
 		CommandCost cost(EXPENSES_PROPERTY, _price[PR_STATION_VALUE] >> 1);
@@ -688,7 +688,7 @@ static void CompaniesPayInterest()
 {
 	const Company *c;
 
-	Backup<CompanyByte> cur_company(_current_company);
+	Backup<CompanyByte> cur_company(_current_company, FILE_LINE);
 	FOR_ALL_COMPANIES(c) {
 		cur_company.Change(c->index);
 
@@ -1027,7 +1027,7 @@ CargoPayment::~CargoPayment()
 
 	if (this->visual_profit == 0) return;
 
-	Backup<CompanyByte> cur_company(_current_company, this->front->owner);
+	Backup<CompanyByte> cur_company(_current_company, this->front->owner, FILE_LINE);
 
 	SubtractMoneyFromCompany(CommandCost(this->front->GetExpenseType(true), -this->route_profit));
 	this->front->profit_this_year += this->visual_profit << 8;
@@ -1458,7 +1458,7 @@ static void DoAcquireCompany(Company *c)
 	}
 
 	value = CalculateCompanyValue(c) >> 2;
-	Backup<CompanyByte> cur_company(_current_company);
+	Backup<CompanyByte> cur_company(_current_company, FILE_LINE);
 	for (i = 0; i != 4; i++) {
 		if (c->share_owners[i] != COMPANY_SPECTATOR) {
 			cur_company.Change(c->share_owners[i]);

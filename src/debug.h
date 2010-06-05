@@ -53,6 +53,9 @@
 void SetDebugString(const char *s);
 const char *GetDebugString();
 
+/* Shorter form for passing filename and linenumber */
+#define FILE_LINE __FILE__, __LINE__
+
 /* Used for profiling
  *
  * Usage:

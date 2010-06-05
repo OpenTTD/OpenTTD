@@ -69,7 +69,7 @@
 	assert(_settings_game.difficulty.competitor_speed <= 4);
 	if ((AI::frame_counter & ((1 << (4 - _settings_game.difficulty.competitor_speed)) - 1)) != 0) return;
 
-	Backup<CompanyByte> cur_company(_current_company);
+	Backup<CompanyByte> cur_company(_current_company, FILE_LINE);
 	const Company *c;
 	FOR_ALL_COMPANIES(c) {
 		if (c->is_ai) {
@@ -96,7 +96,7 @@
 {
 	if (_networking && !_network_server) return;
 
-	Backup<CompanyByte> cur_company(_current_company, company);
+	Backup<CompanyByte> cur_company(_current_company, company, FILE_LINE);
 	Company *c = Company::Get(company);
 
 	delete c->ai_instance;
@@ -112,7 +112,7 @@
 {
 	if (_networking && !_network_server) return;
 
-	Backup<CompanyByte> cur_company(_current_company, company);
+	Backup<CompanyByte> cur_company(_current_company, company, FILE_LINE);
 	Company::Get(company)->ai_instance->Suspend();
 
 	cur_company.Restore();
@@ -201,7 +201,7 @@
 	}
 
 	/* Queue the event */
-	Backup<CompanyByte> cur_company(_current_company, company);
+	Backup<CompanyByte> cur_company(_current_company, company, FILE_LINE);
 	AIEventController::InsertEvent(event);
 	cur_company.Restore();
 
@@ -247,7 +247,7 @@ void CcAI(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
 		Company *c = Company::GetIfValid(company);
 		assert(c != NULL && c->ai_instance != NULL);
 
-		Backup<CompanyByte> cur_company(_current_company, company);
+		Backup<CompanyByte> cur_company(_current_company, company, FILE_LINE);
 		c->ai_instance->Save();
 		cur_company.Restore();
 	} else {
@@ -261,7 +261,7 @@ void CcAI(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
 		Company *c = Company::GetIfValid(company);
 		assert(c != NULL && c->ai_instance != NULL);
 
-		Backup<CompanyByte> cur_company(_current_company, company);
+		Backup<CompanyByte> cur_company(_current_company, company, FILE_LINE);
 		c->ai_instance->Load(version);
 		cur_company.Restore();
 	} else {

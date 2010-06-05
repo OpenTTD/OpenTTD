@@ -12,6 +12,8 @@
 #ifndef BACKUP_TYPE_HPP
 #define BACKUP_TYPE_HPP
 
+#include "../debug.h"
+
 /**
  * Class to backup a specific variable and restore it later.
  * The variable is not restored automatically, but assertions make sure it is restored.
@@ -22,16 +24,20 @@ struct Backup {
 	/**
 	 * Backup variable.
 	 * @param original Variable to backup.
+	 * @param file Filename for debug output. Use FILE_LINE macro.
+	 * @param line Linenumber for debug output. Use FILE_LINE macro.
 	 */
-	Backup(T &original) : original(original), valid(true), original_value(original) {}
+	Backup(T &original, const char * const file, const int line) : original(original), valid(true), original_value(original), file(file), line(line) {}
 
 	/**
 	 * Backup variable and switch to new value.
 	 * @param original Variable to backup.
 	 * @param new_value New value for variable.
+	 * @param file Filename for debug output. Use FILE_LINE macro.
+	 * @param line Linenumber for debug output. Use FILE_LINE macro.
 	 */
 	template <typename U>
-	Backup(T &original, const U &new_value) : original(original), valid(true), original_value(original)
+	Backup(T &original, const U &new_value, const char * const file, const int line) : original(original), valid(true), original_value(original), file(file), line(line)
 	{
 		/* Note: We use a separate typename U, so type conversions are handled by assignment operator. */
 		original = new_value;
@@ -43,7 +49,13 @@ struct Backup {
 	~Backup()
 	{
 		/* Check whether restoration was done */
-		assert(!this->valid);
+		if (this->valid)
+		{
+			/* We cannot assert here, as missing restoration is 'normal' when exceptions are thrown.
+			 * Exceptions are especially used to abort world generation. */
+			DEBUG(misc, 0, "%s:%d: Backupped value was not restored!", this->file, this->line);
+			this->Restore();
+		}
 	}
 
 	/**
@@ -129,6 +141,9 @@ private:
 	T &original;
 	bool valid;
 	T original_value;
+
+	const char * const file;
+	const int line;
 };
 
 #endif /* BACKUP_TYPE_HPP */

@@ -773,7 +773,7 @@ void CallVehicleTicks()
 		}
 	}
 
-	Backup<CompanyByte> cur_company(_current_company);
+	Backup<CompanyByte> cur_company(_current_company, FILE_LINE);
 	for (AutoreplaceMap::iterator it = _vehicles_to_autoreplace.Begin(); it != _vehicles_to_autoreplace.End(); it++) {
 		v = it->first;
 		/* Autoreplace needs the current company set as the vehicle owner */
@@ -1112,7 +1112,7 @@ void VehicleEnterDepot(Vehicle *v)
 		}
 
 		if (t.IsRefit()) {
-			Backup<CompanyByte> cur_company(_current_company, v->owner);
+			Backup<CompanyByte> cur_company(_current_company, v->owner, FILE_LINE);
 			CommandCost cost = DoCommand(v->tile, v->index, t.GetRefitCargo() | t.GetRefitSubtype() << 8, DC_EXEC, GetCmdRefitVeh(v));
 			cur_company.Restore();
 

@@ -523,7 +523,7 @@ public:
 				return;
 			}
 
-			Backup<CompanyByte> cur_company(_current_company, OWNER_NONE);
+			Backup<CompanyByte> cur_company(_current_company, OWNER_NONE, FILE_LINE);
 			_generating_world = true;
 			_ignore_restrictions = true;
 

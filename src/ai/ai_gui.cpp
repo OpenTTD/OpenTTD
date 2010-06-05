@@ -820,7 +820,7 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 			DrawCompanyIcon(i, button->pos_x + button->current_x / 2 - 7 + offset, this->GetWidget<NWidgetBase>(AID_WIDGET_COMPANY_BUTTON_START + i)->pos_y + 2 + offset);
 		}
 
-		Backup<CompanyByte> cur_company(_current_company, ai_debug_company);
+		Backup<CompanyByte> cur_company(_current_company, ai_debug_company, FILE_LINE);
 		AILog::LogData *log = (AILog::LogData *)AIObject::GetLogPointer();
 		cur_company.Restore();
 
@@ -875,7 +875,7 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 
 		switch (widget) {
 			case AID_WIDGET_LOG_PANEL: {
-				Backup<CompanyByte> cur_company(_current_company, ai_debug_company);
+				Backup<CompanyByte> cur_company(_current_company, ai_debug_company, FILE_LINE);
 				AILog::LogData *log = (AILog::LogData *)AIObject::GetLogPointer();
 				cur_company.Restore();
 				if (log == NULL) return;
@@ -914,7 +914,7 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 		this->RaiseWidget(ai_debug_company + AID_WIDGET_COMPANY_BUTTON_START);
 		ai_debug_company = show_ai;
 
-		Backup<CompanyByte> cur_company(_current_company, ai_debug_company);
+		Backup<CompanyByte> cur_company(_current_company, ai_debug_company, FILE_LINE);
 		AILog::LogData *log = (AILog::LogData *)AIObject::GetLogPointer();
 		cur_company.Restore();
 		this->vscroll.SetCount((log == NULL) ? 0 : log->used);
@@ -1009,7 +1009,7 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 		/* If the log message is related to the active company tab, check the break string */
 		if (data == ai_debug_company && this->break_check_enabled && !StrEmpty(this->edit_str_buf)) {
 			/* Get the log instance of the active company */
-			Backup<CompanyByte> cur_company(_current_company, ai_debug_company);
+			Backup<CompanyByte> cur_company(_current_company, ai_debug_company, FILE_LINE);
 			AILog::LogData *log = (AILog::LogData *)AIObject::GetLogPointer();
 
 			if (log != NULL && case_sensitive_break_check?

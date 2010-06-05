@@ -516,7 +516,7 @@ static void TileLoop_Town(TileIndex tile)
 		}
 	}
 
-	Backup<CompanyByte> cur_company(_current_company, OWNER_TOWN);
+	Backup<CompanyByte> cur_company(_current_company, OWNER_TOWN, FILE_LINE);
 
 	if ((hs->building_flags & BUILDING_HAS_1_TILE) &&
 			HasBit(t->flags, TOWN_IS_FUNDED) &&
@@ -1297,7 +1297,7 @@ static bool GrowTown(Town *t)
 	};
 
 	/* Current "company" is a town */
-	Backup<CompanyByte> cur_company(_current_company, OWNER_TOWN);
+	Backup<CompanyByte> cur_company(_current_company, OWNER_TOWN, FILE_LINE);
 
 	TileIndex tile = t->xy; // The tile we are working with ATM
 
@@ -2383,7 +2383,7 @@ static bool DoBuildStatueOfCompany(TileIndex tile, TownID town_id)
 		return false;
 	}
 
-	Backup<CompanyByte> cur_company(_current_company, OWNER_NONE);
+	Backup<CompanyByte> cur_company(_current_company, OWNER_NONE, FILE_LINE);
 	CommandCost r = DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
 	cur_company.Restore();
 
