@@ -34,6 +34,8 @@ that you can find at: http://bugs.openttd.org
 If the bugs are closed but still listed here it means that the bug is fixed
 and that the nightlies and next major release will not have that bug.
 
+- 3816	Console text does not always fit at 640x480
+- 3746	Console output with right-to-left texts in left-to-right texts is not correct
 - 3714	Some corrupted savegames can cause crashes
 - 3695	Behaviour inconsistency building railway/road down towards water
 - 3651	[OSX] Crash when selecting full screen

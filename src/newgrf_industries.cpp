@@ -131,6 +131,9 @@ static uint32 GetCountAndDistanceOfClosestInstance(byte param_setID, byte layout
 			break;
 	}
 
+	/* If the industry type is invalid, there is none and the closest is far away. */
+	if (ind_index >= NUM_INDUSTRYTYPES) return 0 | 0xFFFF;
+
 	if (layout_filter == 0) {
 		/* If the filter is 0, it could be because none was specified as well as being really a 0.
 		 * In either case, just do the regular var67 */

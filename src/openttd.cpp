@@ -824,6 +824,8 @@ static void MakeNewGameDone()
 	}
 #endif /* ENABLE_NETWORK */
 
+	if (_settings_client.gui.pause_on_newgame) DoCommandP(0, PM_PAUSED_NORMAL, 1, CMD_PAUSE);
+
 	MarkWholeScreenDirty();
 }
 
