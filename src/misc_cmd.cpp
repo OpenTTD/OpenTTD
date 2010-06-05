@@ -222,14 +222,15 @@ CommandCost CmdGiveMoney(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 
 	const Company *c = Company::Get(_current_company);
 	CommandCost amount(EXPENSES_OTHER, min((Money)p1, (Money)20000000LL));
+	CompanyID dest_company = (CompanyID)p2;
 
 	/* You can only transfer funds that is in excess of your loan */
 	if (c->money - c->current_loan < amount.GetCost() || amount.GetCost() < 0) return CMD_ERROR;
-	if (!_networking || !Company::IsValidID((CompanyID)p2)) return CMD_ERROR;
+	if (!_networking || !Company::IsValidID(dest_company)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		/* Add money to company */
-		Backup<CompanyByte> cur_company(_current_company, (CompanyID)p2);
+		Backup<CompanyByte> cur_company(_current_company, dest_company);
 		SubtractMoneyFromCompany(CommandCost(EXPENSES_OTHER, -amount.GetCost()));
 		cur_company.Restore();
 	}
