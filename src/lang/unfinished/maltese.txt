@@ -598,6 +598,8 @@ STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Aġġorn
 
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs.
+STR_NEWGRF_INVALID_ENGINE                                       :<magna invalida>
+STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<industrija invalida>
 
 # Sign list window
 

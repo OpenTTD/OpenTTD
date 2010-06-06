@@ -513,6 +513,7 @@ STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHAIRMAN                   :صدر
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :صدر
 
 # Performance detail window
+STR_PERFORMANCE_DETAIL                                          :{WHITE} تفصیلی عملی درجہ بندی
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK} تفصیل
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
