@@ -18,6 +18,7 @@
 #include "date_func.h"
 #include "vehicle_base.h"
 #include "vehicle_func.h"
+#include "vehicle_gui.h"
 #include "station_base.h"
 #include "industry.h"
 #include "town.h"
@@ -458,6 +459,12 @@ struct NewsWindow : Window {
 				break;
 
 			case NTW_CAPTION:
+				if (this->ni->reftype1 == NR_VEHICLE) {
+					const Vehicle *v = Vehicle::Get(this->ni->ref1);
+					ShowVehicleViewWindow(v);
+				}
+				break;
+
 			case NTW_VIEWPORT:
 				break; // Ignore clicks
 
