@@ -132,8 +132,9 @@ enum WidgetDrawDistances {
 	WD_PAR_VSEP_WIDE   = 8,      ///< Large amount of vertical space between two paragraphs of text.
 };
 
-/* wiget.cpp */
+/* widget.cpp */
 void DrawFrameRect(int left, int top, int right, int bottom, Colours colour, FrameFlags flags);
+void DrawCaption(const Rect &r, Colours colour, Owner owner, StringID str);
 
 /* window.cpp */
 extern Window *_z_front_window;

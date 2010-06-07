@@ -526,7 +526,7 @@ static inline void DrawCloseBox(const Rect &r, Colours colour, StringID str)
  * @param owner  'Owner' of the window.
  * @param str    Text to draw in the bar.
  */
-static inline void DrawCaption(const Rect &r, Colours colour, Owner owner, StringID str)
+void DrawCaption(const Rect &r, Colours colour, Owner owner, StringID str)
 {
 	DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, FR_BORDERONLY);
 	DrawFrameRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, colour, (owner == INVALID_OWNER) ? FR_LOWERED | FR_DARKENED : FR_LOWERED | FR_DARKENED | FR_BORDERONLY);

@@ -193,10 +193,10 @@ static const WindowDesc _thin_news_desc(
 
 /* Small news items. */
 static const NWidgetPart _nested_small_news_widgets[] = {
-	/* Caption + close box */
+	/* Caption + close box. The caption is no WWT_CAPTION as the window shall not be moveable and so on. */
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_LIGHT_BLUE, NTW_CLOSEBOX),
-		NWidget(WWT_CAPTION, COLOUR_LIGHT_BLUE, NTW_CAPTION), SetDataTip(STR_NEWS_MESSAGE_CAPTION, STR_NULL),
+		NWidget(WWT_EMPTY, COLOUR_LIGHT_BLUE, NTW_CAPTION), SetFill(1, 0),
 	EndContainer(),
 
 	/* Main part */
@@ -394,9 +394,13 @@ struct NewsWindow : Window {
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
 		switch (widget) {
+			case NTW_CAPTION:
+				DrawCaption(r, COLOUR_LIGHT_BLUE, this->owner, STR_NEWS_MESSAGE_CAPTION);
+				break;
+
 			case NTW_PANEL:
 				this->DrawNewsBorder(r);
-				return;
+				break;
 
 			case NTW_MESSAGE:
 				CopyInDParam(0, this->ni->params, lengthof(this->ni->params));
