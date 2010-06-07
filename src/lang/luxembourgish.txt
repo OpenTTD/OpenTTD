@@ -215,6 +215,9 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
+STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} ft
+STR_UNITS_HEIGHT_SI                                             :{COMMA} m
+
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Filter string
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Wuert fir d'Lëscht ze filtern
@@ -2317,6 +2320,10 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Preparé
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF Astellungen
+STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Detailléiert NewGRF Informatioun
+STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Aktiv NewGRF Files
+STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Inaktiv NewGRF Files
+STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Wiel Preset:
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filter string:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Selectéierten Preset lueden
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Preset späichern
@@ -2425,6 +2432,13 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Zuch'{VE
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' huet Fehlinfos.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Cargo/refit Informatioun fir '{1:ENGINE}' ass anescht wéi an der Kaflëscht no der Constructioun. Dëst kann en autoerneirung/-ersetzen Fehler oprufen.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' huet eng Endlosschläif am Production callback verursaacht.
+
+# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+STR_NEWGRF_INVALID_CARGO                                        :<invalid Wuer>
+STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
+STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} vunn <invalider Wuer>
+STR_NEWGRF_INVALID_ENGINE                                       :<invalid Maschinn>
+STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<invalid Industrie>
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Schëlderlëscht - {COMMA} Schëld{P "" er}
@@ -2773,6 +2787,10 @@ STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Schëffs
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Fligertyp ëmbenennen
 
 # Depot window
+STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
+
+STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}Enner den Numm vum Depot
+STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Depot ëmbenennen
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -2952,7 +2970,11 @@ STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Keng Op
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Um Wee fir {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Um Wee fir {WAYPOINT}, {VELOCITY}
 
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE}Um Wee an den {DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Um Wee an den {DEPOT}, {VELOCITY}
 
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}Revisioun am {DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Revisioun am {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
 STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Gestoppt
@@ -3113,7 +3135,7 @@ STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Leschen
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Lescht den ungewieltenen Optrag
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Géi op
-STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Géi bei den noosten Depot
+STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Géi an den noosten Depot
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Géi bei den noosten Hangar
 STR_ORDER_CONDITIONAL                                           :Bedéngten Optragssprong
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Setzt en neien Optrag firun den ungewielten Optrag, oder un d'Enn vun der Lëscht. Ctrl setzt Statioun Opträg op voll lueden, Weepunkter op 'non-stop', an Depot Opträg 'Revisioun'
@@ -3134,6 +3156,7 @@ STR_ORDER_TRAIN_DEPOT                                           :Zuchdepot
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Stroossengefierter-Depot
 STR_ORDER_SHIP_DEPOT                                            :Schëffdepot
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
+STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 STR_ORDER_REFIT_ORDER                                           :(Ëmbau op {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Ëmbau op {STRING} an stopen)
@@ -3475,6 +3498,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Kann den
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Kann den Tramschapp hei net bauen...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Kann de Schëffdepot hei net bauen...
 
+STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Kann den Depot net ëmbenennen
+
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Zuch muss am Depot sinn
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... muss an engem Depot gestoppt gin
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Schëff muss am Depot stoen
@@ -3654,6 +3679,9 @@ STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... ze v
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Kann d'Schëld hei net opriichten...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Kann den Numm vum Schëld net änneren...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Kann d'Schëld net läschen...
+
+# Translatable comment for OpenTTD's desktop shortcut
+STR_DESKTOP_SHORTCUT_COMMENT                                    :En Transport Tycoon Deluxe Klon
 
 ##id 0x2000
 # Town building names
@@ -4045,6 +4073,14 @@ STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 STR_FORMAT_WAYPOINT_NAME                                        :Weepunkt {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Weepunkt {TOWN} #{COMMA}
 
+STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} Zuchdepot
+STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} Zuchdepot #{COMMA}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} Stroossendepot
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} Stroossendepot #{COMMA}
+STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} Schëffdepot
+STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} Schëffdepot #{COMMA}
+STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{STATION} Hangar
+
 STR_UNKNOWN_STATION                                             :onbekannt Statioun
 STR_DEFAULT_SIGN_NAME                                           :Schëld
 STR_COMPANY_SOMEONE                                             :iergendeen
@@ -4070,6 +4106,7 @@ STR_VIEWPORT_WAYPOINT_TINY                                      :{TINYFONT}{WAYP
 # Simple strings to get specific types of data
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
+STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}
@@ -4118,6 +4155,7 @@ STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
+STR_TINY_BLACK_HEIGHT                                           :{TINYFONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 

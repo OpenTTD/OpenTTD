@@ -932,7 +932,7 @@ STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK
 STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}Спад закончился!{}{}Увеличение объёмов торговли внушает уверенность владельцам предприятий. Экономика укрепляет свои позиции.
 
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}Предприятие «{INDUSTRY}» увеличивает объёмы производства!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}{INDUSTRY} начинает разработку нового угольного пласта!{}Добыча увеличена вдвое!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}{INDUSTRY} начинает разработку нового угольного пласта! Добыча увеличена вдвое!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}Обнаружены новые запасы нефти!{}{INDUSTRY} увеличивает темпы добычи вдвое!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}{INDUSTRY} внедряет новые методы ведения с/х, что позволит удвоить производительность!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK}Предприятие «{1:INDUSTRY}» увеличивает производство {0:STRING.gen} на{NBSP}{2:COMMA}%!
@@ -3193,8 +3193,8 @@ STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Выру
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Осмотр каждые {LTBLUE}{COMMA} дней{BLACK}   Последний раз: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Интервал обслуж.: {LTBLUE}{COMMA}%{BLACK}   Последний раз: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Увеличить интервал обслуживания на 10. Ctrl+клик увеличивает интервал обслуживания на 5
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Уменьшить интервал обслуживания на 10. Ctrl+клик уменьшает интервал обслуживания на 5
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Увеличить интервал обслуживания на 10. Ctrl+щелчок увеличивает интервал обслуживания на 5.
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Уменьшить интервал обслуживания на 10. Ctrl+щелчок уменьшает интервал обслуживания на 5.
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Название поезда
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Название автомобиля
