@@ -422,7 +422,7 @@ CommandCost CmdTurnRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			v->overtaking != 0 ||
 			v->state == RVSB_WORMHOLE ||
 			v->IsInDepot() ||
-			v->cur_speed < 5) {
+			v->current_order.IsType(OT_LOADING)) {
 		return CMD_ERROR;
 	}
 
