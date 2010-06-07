@@ -2356,7 +2356,7 @@ static void CalcRaildirsDrawstyle(TileHighlightData *thd, int x, int y, int meth
 					/* Calculate where a vertical line through the start point and
 					 * a horizontal line from the selected end point intersect and
 					 * use that point as the end point. */
-					int offset = (raw_dx + raw_dy + TILE_SIZE) / 2;
+					int offset = (raw_dx + raw_dy + (int)TILE_SIZE) / 2;
 					x = thd->selstart.x - (offset & ~TILE_UNIT_MASK);
 					y = thd->selstart.y - (offset & ~TILE_UNIT_MASK);
 
