@@ -3339,7 +3339,7 @@ STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Partie s
 
 # Map generation messages
 STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Génération de la carte annulée...{}... pas d'emplacements valables pour une ville
-STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... il n'y a pas de ville dans ce scenario
+STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... il n'y a pas de ville dans ce scénario
 
 STR_ERROR_PNGMAP                                                :{WHITE}Chargement du paysage depuis PNG impossible...
 STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... fichier non trouvé.
@@ -3430,7 +3430,7 @@ STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Impossib
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Impossible de construire cette industrie ici...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... trop proche d'une autre industrie
 STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... une ville doit d'abord être construite
-STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... droit à un par ville seulement
+STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... droit à un seul par ville
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... peut seulement être construit dans des villes ayant une population d'au moins 1200 habitants
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... peut seulement être construit en forêt tropicale
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... peut seulement être construit dans les endroits désertiques
@@ -3445,7 +3445,7 @@ STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Impossib
 STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}Impossible de construire une aire de chargement...
 STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}Impossible de construire une station de tramway pour passagers...
 STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}Impossible de construire une station de tramway pour fret...
-STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Impossible de construire port ici...
+STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Impossible de construire un port ici...
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Impossible de construire un aéroport ici...
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Adjacent à plus d'une gare à la fois
@@ -3548,7 +3548,7 @@ STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Impossib
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Impossible de construire un canal ici...
-STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Impossible de construire un écluse ici...
+STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Impossible de construire une écluse ici...
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Impossible de construire une rivière ici...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... doit être construit sur l'eau
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... impossible de construire sur l'eau
@@ -3672,8 +3672,8 @@ STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... trop
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Impossible d'affecter un horaire au véhicule...
-STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Les véhicules ne peuvent attendre qu'aux stations.
-STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Ce véhicule ne s'arrête pas à cette station.
+STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Les véhicules ne peuvent attendre qu'aux stations
+STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Ce véhicule ne s'arrête pas à cette station
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... trop de panneaux
@@ -3690,7 +3690,7 @@ STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1                      :Grand immeuble 
 STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_1                           :Immeuble de bureaux
 STR_TOWN_BUILDING_NAME_SMALL_BLOCK_OF_FLATS_1                   :Petit immeuble résidentiel
 STR_TOWN_BUILDING_NAME_CHURCH_1                                 :Eglise
-STR_TOWN_BUILDING_NAME_LARGE_OFFICE_BLOCK_1                     :Gros immeuble de bureau
+STR_TOWN_BUILDING_NAME_LARGE_OFFICE_BLOCK_1                     :Gros immeuble de bureaux
 STR_TOWN_BUILDING_NAME_TOWN_HOUSES_1                            :Bâtiments municipaux
 STR_TOWN_BUILDING_NAME_HOTEL_1                                  :Hôtel
 STR_TOWN_BUILDING_NAME_STATUE_1                                 :Statue
@@ -3706,7 +3706,7 @@ STR_TOWN_BUILDING_NAME_OLD_HOUSES_1                             :Vieilles maison
 STR_TOWN_BUILDING_NAME_COTTAGES_1                               :Petites maisons
 STR_TOWN_BUILDING_NAME_HOUSES_1                                 :Maisons
 STR_TOWN_BUILDING_NAME_FLATS_1                                  :Appartements
-STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_2                      :Grand immeuble de bureau
+STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_2                      :Grand immeuble de bureaux
 STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_2                      :Commerces et bureaux
 STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_3                      :Commerces et bureaux
 STR_TOWN_BUILDING_NAME_THEATER_1                                :Théâtre
@@ -3807,8 +3807,8 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_250_DIESEL               :MJS 250 (Diesel
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_CHOO_CHOO         :Ploddyphut Choo-Choo
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_CHOO_CHOO          :Powernaut Choo-Choo
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MIGHTYMOVER_CHOO_CHOO        :Mightymover Choo-Choo
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_DIESEL            :Ploddyphut Diesel
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_DIESEL             :Powernaut Diesel
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_DIESEL            :Ploddyphut (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_DIESEL             :Powernaut (Diesel)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_WILLS_2_8_0_STEAM            :Wills 2-8-0 (Vapeur)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CHANEY_JUBILEE_STEAM         :Chaney 'Jubilee' (Vapeur)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_GINZU_A4_STEAM               :Ginzu 'A4' (Vapeur)
@@ -3854,7 +3854,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COLA_TANKER                   :Wagon-citerne d
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_CANDY_VAN                     :Wagon à bonbons
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOY_VAN                       :Wagon à jouets
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BATTERY_TRUCK                 :Wagon à batteries
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FIZZY_DRINK_TRUCK             :Wagon à boisson gazeuses
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FIZZY_DRINK_TRUCK             :Wagon à boissons gazeuses
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PLASTIC_TRUCK                 :Wagon à plastique
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :'X2001' (Electrique)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_MILLENNIUM_Z1_ELECTRIC   :'Millennium Z1' (Electrique)
@@ -3884,7 +3884,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COLA_TANKER               :Wagon-citerne d
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_CANDY_VAN                 :Wagon à bonbons
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOY_VAN                   :Wagon à jouets
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BATTERY_TRUCK             :Wagon à batteries
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FIZZY_DRINK_TRUCK         :Wagon à boisson gazeuses
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FIZZY_DRINK_TRUCK         :Wagon à boissons gazeuses
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PLASTIC_TRUCK             :Wagon à plastique
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV1_LEVIATHAN_ELECTRIC    :Lev1 'Leviathan' (Electrique)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV2_CYCLOPS_ELECTRIC      :Lev2 'Cyclops' (Electrique)
@@ -3916,7 +3916,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COLA_TANKER                 :Wagon-citerne d
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_CANDY_VAN                   :Wagon à bonbons
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOY_VAN                     :Wagon à jouets
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BATTERY_TRUCK               :Wagon à batteries
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FIZZY_DRINK_TRUCK           :Wagon à boisson gazeuses
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FIZZY_DRINK_TRUCK           :Wagon à boissons gazeuses
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PLASTIC_TRUCK               :Wagon à plastique
 STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_REGAL_BUS                     :Autobus MPS Regal
 STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_LEOPARD_BUS              :Autobus Hereford Leopard
@@ -3955,9 +3955,9 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_IRON_ORE_TRUCK             :Camion de fer C
 STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_STEEL_TRUCK                :Camion d'acier Balogh
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_STEEL_TRUCK                   :Camion d'acier Uhl
 STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_STEEL_TRUCK               :Camion d'acier Kelling
-STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_ARMORED_TRUCK              :Balogh Fourgon blindé
-STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_ARMORED_TRUCK                 :Uhl Fourgon blindé
-STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_ARMORED_TRUCK              :Foster Fourgon blindé
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_ARMORED_TRUCK              :Fourgon blindé Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_ARMORED_TRUCK                 :Fourgon blindé Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_ARMORED_TRUCK              :Fourgon blindé Foster
 STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_FOOD_VAN                   :Camion de nourriture Foster
 STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_FOOD_VAN                    :Camion de nourriture Perry
 STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_FOOD_VAN                   :Camion de nourriture Chippy
@@ -3965,8 +3965,8 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_PAPER_TRUCK                   :Camion de papie
 STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_PAPER_TRUCK                :Camion de papier Balogh
 STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_PAPER_TRUCK                   :Camion de papier MPS
 STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_COPPER_ORE_TRUCK              :Camion de cuivre MPS
-STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COPPER_ORE_TRUCK              :Uhl Camion de cuivre
-STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_COPPER_ORE_TRUCK             :Goss Camion de cuivre
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COPPER_ORE_TRUCK              :Camion de cuivre Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_COPPER_ORE_TRUCK             :Camion de cuivre Goss
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_WATER_TANKER                  :Camion-citerne d'eau Uhl
 STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_WATER_TANKER               :Camion-citerne d'eau Balogh
 STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_WATER_TANKER                  :Camion-citerne d'eau MPS
@@ -4010,7 +4010,7 @@ STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER                            :Pétrolier MPS
 STR_VEHICLE_NAME_SHIP_CS_INC_OIL_TANKER                         :Pétrolier CS-Inc.
 STR_VEHICLE_NAME_SHIP_MPS_PASSENGER_FERRY                       :Ferry de voyageurs MPS
 STR_VEHICLE_NAME_SHIP_FFP_PASSENGER_FERRY                       :Ferry de voyageurs FFP
-STR_VEHICLE_NAME_SHIP_BAKEWELL_300_HOVERCRAFT                   :Bakewell 300 Aéroglisseur
+STR_VEHICLE_NAME_SHIP_BAKEWELL_300_HOVERCRAFT                   :Aéroglisseur Bakewell 300
 STR_VEHICLE_NAME_SHIP_CHUGGER_CHUG_PASSENGER                    :Ferry de voyageurs Chugger-Chug
 STR_VEHICLE_NAME_SHIP_SHIVERSHAKE_PASSENGER_FERRY               :Ferry de voyageurs Shivershake
 STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :Navire cargo Yate
