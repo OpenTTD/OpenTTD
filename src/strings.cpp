@@ -516,7 +516,7 @@ struct Units {
 
 /* Unit conversions */
 static const Units units[] = {
-	{ // Imperial (Original, mph, hp, metric ton, litre, kN)
+	{ // Imperial (Original, mph, hp, metric ton, litre, kN, ft)
 		   1,  0, STR_UNITS_VELOCITY_IMPERIAL,
 		   1,  0, STR_UNITS_POWER_IMPERIAL,
 		   1,  0, STR_UNITS_WEIGHT_SHORT_METRIC, STR_UNITS_WEIGHT_LONG_METRIC,
@@ -524,7 +524,7 @@ static const Units units[] = {
 		   1,  0, STR_UNITS_FORCE_SI,
 		   3,  0, STR_UNITS_HEIGHT_IMPERIAL,
 	},
-	{ // Metric (km/h, hp, metric ton, litre, kN)
+	{ // Metric (km/h, hp, metric ton, litre, kN, metre)
 		 103,  6, STR_UNITS_VELOCITY_METRIC,
 		   1,  0, STR_UNITS_POWER_METRIC,
 		   1,  0, STR_UNITS_WEIGHT_SHORT_METRIC, STR_UNITS_WEIGHT_LONG_METRIC,
@@ -532,7 +532,7 @@ static const Units units[] = {
 		   1,  0, STR_UNITS_FORCE_SI,
 		   1,  0, STR_UNITS_HEIGHT_SI,
 	},
-	{ // SI (m/s, kilowatt, kilogram, cubic metres, kilonewton)
+	{ // SI (m/s, kilowatt, kilogram, cubic metre, kilonewton, metre)
 		1831, 12, STR_UNITS_VELOCITY_SI,
 		 764, 10, STR_UNITS_POWER_SI,
 		1000,  0, STR_UNITS_WEIGHT_SHORT_SI, STR_UNITS_WEIGHT_LONG_SI,
