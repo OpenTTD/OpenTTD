@@ -16,55 +16,55 @@
 
 /** Writes the properties of a train or road vehicle into the EngineInfo struct.
  * @see EngineInfo
- * @param a Introduction date
+ * @param a base introduction date (days since 1920-01-01)
  * @param b decay speed
- * @param c life length
+ * @param c life length (years)
  * @param d base life
  * @param e cargo type
  * @param f Bitmask of the climates
  * @note the 0x80 in parameter b sets the "is carriage bit"
- * @note the 5 between d and e is the load amount
+ * @note the 5 between b and f is the load amount
  */
 #define MK(a, b, c, d, e, f) { DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 5, f, e, 0, 8, 0, 0, 0, STR_EMPTY }
 
 /** Writes the properties of a train carriage into the EngineInfo struct.
- * @param a Introduction date
+ * @param a base introduction date (days since 1920-01-01)
  * @param b decay speed
- * @param c life length
+ * @param c life length (years)
  * @param d base life
  * @param e cargo type
  * @param f Bitmask of the climates
  * @see MK
- * @note the 5 between d and e is the load amount
+ * @note the 5 between b and f is the load amount
  */
 #define MW(a, b, c, d, e, f) { DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 5, f, e, 0, 8, 0, 0, 0, STR_EMPTY }
 
 /** Writes the properties of a ship into the EngineInfo struct.
- * @param a Introduction date
+ * @param a base introduction date (days since 1920-01-01)
  * @param b decay speed
- * @param c life length
+ * @param c life length (years)
  * @param d base life
  * @param e cargo type
  * @param f Bitmask of the climates
  * @see MK
- * @note the 10 between d and e is the load amount
+ * @note the 10 between b and f is the load amount
  */
 #define MS(a, b, c, d, e, f) { DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 10, f, e, 0, 8, 0, 0, 0, STR_EMPTY }
 
 /** Writes the properties of an aeroplane into the EngineInfo struct.
- * @param a Introduction date
+ * @param a base introduction date (days since 1920-01-01)
  * @param b decay speed
- * @param c life length
+ * @param c life length (years)
  * @param d base life
  * @param e Bitmask of the climates
  * @see MK
- * @note the 20 between d and e is the load amount
+ * @note the 20 between b and e is the load amount
  */
 #define MA(a, b, c, d, e) { DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 20, e, CT_INVALID, 0, 8, 0, 0, 0, STR_EMPTY }
 
 /* Climates
  * T = Temperate
- * A = Arctic
+ * A = Sub-Arctic
  * S = Sub-Tropic
  * Y = Toyland */
 #define T 1
@@ -72,6 +72,10 @@
 #define S 4
 #define Y 8
 static const EngineInfo _orig_engine_info[] = {
+	/*      base_intro     base_life
+	 *      |    decay_speed         cargo_type
+	 *      |    |    lifelength     |         climates
+	 *      |    |    |    |         |         | */
 	MK(  1827,  20,  15,  30, 0              , T      ), //   0 Kirby Paul Tank (Steam)
 	MK( 12784,  20,  22,  30, 0              ,   A|S  ), //   1 MJS 250 (Diesel)
 	MK(  9497,  20,  20,  50, 0              ,       Y), //   2 Ploddyphut Choo-Choo
@@ -341,14 +345,14 @@ static const EngineInfo _orig_engine_info[] = {
 /** Writes the properties of a rail vehicle into the RailVehicleInfo struct.
  * @see RailVehicleInfo
  * @param a image_index
- * @param b flags
- * @param c base_cost
- * @param d max_speed (kph)
+ * @param b type
+ * @param c cost_factor
+ * @param d max_speed
  * @param e power (hp)
- * @param f weight
+ * @param f weight (tons)
  * @param g running_cost
  * @param h running_cost_class
- * @param i capacity
+ * @param i capacity (persons, bags, tons, pieces, items, cubic metres, ...)
  * @param j railtype
  * @param k engclass
  * Tractive effort coefficient by default is the same as TTDPatch, 0.30*256=76
@@ -376,127 +380,130 @@ static const EngineInfo _orig_engine_info[] = {
 #define RC_W INVALID_PRICE
 
 static const RailVehicleInfo _orig_rail_vehicle_info[] = {
-	/*   image_index  max_speed (kph)    running_cost      engclass
-	 *   |  flags     |        power (hp)  |  running_cost_class
-	 *   |  |    base_cost     |    weight |  |      capacity
+	/*   image_index  max_speed          running_cost      engclass
+	 *   |  type      |        power       |  running_cost_class
+	 *   |  |    cost_factor   |    weight |  |      capacity
 	 *   |  |    |    |        |    |      |  |      |  railtype
 	 *   |  |    |    |        |    |      |  |      |  |  | */
-	RVI( 2, G,   7,  64,     300,  47,    50, RC_S,  0, R, S), //   0
-	RVI(19, G,   8,  80,     600,  65,    65, RC_D,  0, R, D), //   1
-	RVI( 2, G,  10,  72,     400,  85,    90, RC_S,  0, R, S), //   2
-	RVI( 0, G,  15,  96,     900, 130,   130, RC_S,  0, R, S), //   3
-	RVI( 1, G,  19, 112,    1000, 140,   145, RC_S,  0, R, S), //   4
-	RVI(12, G,  16, 120,    1400,  95,   125, RC_D,  0, R, D), //   5
-	RVI(14, G,  20, 152,    2000, 120,   135, RC_D,  0, R, D), //   6
-	RVI( 3, G,  14,  88,    1100, 145,   130, RC_S,  0, R, S), //   7
-	RVI( 0, G,  13, 112,    1000, 131,   120, RC_S,  0, R, S), //   8
-	RVI( 1, G,  19, 128,    1200, 162,   140, RC_S,  0, R, S), //   9
-	RVI( 0, G,  22, 144,    1600, 170,   130, RC_S,  0, R, S), //  10
-	RVI( 8, M,  11, 112,     600,  32,    85, RC_D, 38, R, D), //  11
-	RVI(10, M,  14, 120,     700,  38,    70, RC_D, 40, R, D), //  12
-	RVI( 4, G,  15, 128,    1250,  72,    95, RC_D,  0, R, D), //  13
-	RVI( 5, G,  17, 144,    1750, 101,   120, RC_D,  0, R, D), //  14
-	RVI( 4, G,  18, 160,    2580, 112,   140, RC_D,  0, R, D), //  15
-	RVI(14, G,  23,  96,    4000, 150,   135, RC_D,  0, R, D), //  16
-	RVI(12, G,  16, 112,    2400, 120,   105, RC_D,  0, R, D), //  17
-	RVI(13, G,  30, 112,    6600, 207,   155, RC_D,  0, R, D), //  18
-	RVI(15, G,  18, 104,    1500, 110,   105, RC_D,  0, R, D), //  19
-	RVI(16, M,  35, 160,    3500,  95,   205, RC_D,  0, R, D), //  20
-	RVI(18, G,  21, 104,    2200, 120,   145, RC_D,  0, R, D), //  21
-	RVI( 6, M,  20, 200,    4500,  70,   190, RC_D,  4, R, D), //  22
-	RVI(20, G,  26, 160,    3600,  84,   180, RC_E,  0, C, E), //  23
-	RVI(20, G,  30, 176,    5000,  82,   205, RC_E,  0, C, E), //  24
-	RVI(21, M,  40, 240,    7000,  90,   240, RC_E,  0, C, E), //  25
-	RVI(23, M,  43, 264,    8000,  95,   250, RC_E,  0, C, E), //  26
-	RVI(33, W, 247,   0,       0,  25,     0, RC_W, 40, R, A), //  27
-	RVI(35, W, 228,   0,       0,  21,     0, RC_W, 30, R, A), //  28
-	RVI(34, W, 176,   0,       0,  18,     0, RC_W, 30, R, A), //  29
-	RVI(36, W, 200,   0,       0,  24,     0, RC_W, 30, R, A), //  30
-	RVI(37, W, 192,   0,       0,  20,     0, RC_W, 25, R, A), //  31
-	RVI(38, W, 190,   0,       0,  21,     0, RC_W, 25, R, A), //  32
-	RVI(39, W, 182,   0,       0,  19,     0, RC_W, 30, R, A), //  33
-	RVI(40, W, 181,   0,       0,  16,     0, RC_W, 30, R, A), //  34
-	RVI(41, W, 179,   0,       0,  19,     0, RC_W, 30, R, A), //  35
-	RVI(42, W, 196,   0,       0,  18,     0, RC_W, 20, R, A), //  36
-	RVI(43, W, 255,   0,       0,  30,     0, RC_W, 20, R, A), //  37
-	RVI(44, W, 191,   0,       0,  22,     0, RC_W, 25, R, A), //  38
-	RVI(45, W, 196,   0,       0,  18,     0, RC_W, 20, R, A), //  39
-	RVI(46, W, 179,   0,       0,  19,     0, RC_W, 30, R, A), //  40
-	RVI(47, W, 199,   0,       0,  25,     0, RC_W, 25, R, A), //  41
-	RVI(48, W, 182,   0,       0,  18,     0, RC_W, 25, R, A), //  42
-	RVI(49, W, 185,   0,       0,  19,     0, RC_W, 21, R, A), //  43
-	RVI(50, W, 176,   0,       0,  19,     0, RC_W, 30, R, A), //  44
-	RVI(51, W, 178,   0,       0,  20,     0, RC_W, 30, R, A), //  45
-	RVI(52, W, 192,   0,       0,  20,     0, RC_W, 30, R, A), //  46
-	RVI(53, W, 190,   0,       0,  21,     0, RC_W, 20, R, A), //  47
-	RVI(54, W, 182,   0,       0,  24,     0, RC_W, 25, R, A), //  48
-	RVI(55, W, 181,   0,       0,  21,     0, RC_W, 25, R, A), //  49
-	RVI(56, W, 183,   0,       0,  21,     0, RC_W, 20, R, A), //  50
-	RVI(57, W, 196,   0,       0,  18,     0, RC_W, 22, R, A), //  51
-	RVI(58, W, 193,   0,       0,  18,     0, RC_W, 25, R, A), //  52
-	RVI(59, W, 191,   0,       0,  18,     0, RC_W, 30, R, A), //  53
-	RVI(25, G,  52, 304,    9000,  95,   230, RC_E,  0, O, N), //  54
-	RVI(26, M,  60, 336,   10000,  85,   240, RC_E, 25, O, N), //  55
-	RVI(26, G,  53, 320,    5000,  95,   230, RC_E,  0, O, N), //  56
-	RVI(60, W, 247,   0,       0,  25,     0, RC_W, 45, O, A), //  57
-	RVI(62, W, 228,   0,       0,  21,     0, RC_W, 35, O, A), //  58
-	RVI(61, W, 176,   0,       0,  18,     0, RC_W, 35, O, A), //  59
-	RVI(63, W, 200,   0,       0,  24,     0, RC_W, 35, O, A), //  60
-	RVI(64, W, 192,   0,       0,  20,     0, RC_W, 30, O, A), //  61
-	RVI(65, W, 190,   0,       0,  21,     0, RC_W, 30, O, A), //  62
-	RVI(66, W, 182,   0,       0,  19,     0, RC_W, 35, O, A), //  63
-	RVI(67, W, 181,   0,       0,  16,     0, RC_W, 35, O, A), //  64
-	RVI(68, W, 179,   0,       0,  19,     0, RC_W, 35, O, A), //  65
-	RVI(69, W, 196,   0,       0,  18,     0, RC_W, 25, O, A), //  66
-	RVI(70, W, 255,   0,       0,  30,     0, RC_W, 25, O, A), //  67
-	RVI(71, W, 191,   0,       0,  22,     0, RC_W, 30, O, A), //  68
-	RVI(72, W, 196,   0,       0,  18,     0, RC_W, 25, O, A), //  69
-	RVI(73, W, 179,   0,       0,  19,     0, RC_W, 35, O, A), //  70
-	RVI(47, W, 199,   0,       0,  25,     0, RC_W, 30, O, A), //  71
-	RVI(48, W, 182,   0,       0,  18,     0, RC_W, 30, O, A), //  72
-	RVI(49, W, 185,   0,       0,  19,     0, RC_W, 26, O, A), //  73
-	RVI(50, W, 176,   0,       0,  19,     0, RC_W, 35, O, A), //  74
-	RVI(51, W, 178,   0,       0,  20,     0, RC_W, 35, O, A), //  75
-	RVI(52, W, 192,   0,       0,  20,     0, RC_W, 35, O, A), //  76
-	RVI(53, W, 190,   0,       0,  21,     0, RC_W, 25, O, A), //  77
-	RVI(54, W, 182,   0,       0,  24,     0, RC_W, 30, O, A), //  78
-	RVI(55, W, 181,   0,       0,  21,     0, RC_W, 30, O, A), //  79
-	RVI(56, W, 183,   0,       0,  21,     0, RC_W, 25, O, A), //  80
-	RVI(57, W, 196,   0,       0,  18,     0, RC_W, 27, O, A), //  81
-	RVI(58, W, 193,   0,       0,  18,     0, RC_W, 30, O, A), //  82
-	RVI(59, W, 191,   0,       0,  18,     0, RC_W, 35, O, A), //  83
-	RVI(28, G,  70, 400,   10000, 105,   250, RC_E,  0, L, V), //  84
-	RVI(29, G,  74, 448,   12000, 120,   253, RC_E,  0, L, V), //  85
-	RVI(30, G,  82, 480,   15000, 130,   254, RC_E,  0, L, V), //  86
-	RVI(31, M,  95, 640,   20000, 150,   255, RC_E,  0, L, V), //  87
-	RVI(28, G,  70, 480,   10000, 120,   250, RC_E,  0, L, V), //  88
-	RVI(60, W, 247,   0,       0,  25,     0, RC_W, 47, L, A), //  89
-	RVI(62, W, 228,   0,       0,  21,     0, RC_W, 37, L, A), //  90
-	RVI(61, W, 176,   0,       0,  18,     0, RC_W, 37, L, A), //  91
-	RVI(63, W, 200,   0,       0,  24,     0, RC_W, 37, L, A), //  92
-	RVI(64, W, 192,   0,       0,  20,     0, RC_W, 32, L, A), //  93
-	RVI(65, W, 190,   0,       0,  21,     0, RC_W, 32, L, A), //  94
-	RVI(66, W, 182,   0,       0,  19,     0, RC_W, 37, L, A), //  95
-	RVI(67, W, 181,   0,       0,  16,     0, RC_W, 37, L, A), //  96
-	RVI(68, W, 179,   0,       0,  19,     0, RC_W, 37, L, A), //  97
-	RVI(69, W, 196,   0,       0,  18,     0, RC_W, 27, L, A), //  98
-	RVI(70, W, 255,   0,       0,  30,     0, RC_W, 27, L, A), //  99
-	RVI(71, W, 191,   0,       0,  22,     0, RC_W, 32, L, A), // 100
-	RVI(72, W, 196,   0,       0,  18,     0, RC_W, 27, L, A), // 101
-	RVI(73, W, 179,   0,       0,  19,     0, RC_W, 37, L, A), // 102
-	RVI(47, W, 199,   0,       0,  25,     0, RC_W, 32, L, A), // 103
-	RVI(48, W, 182,   0,       0,  18,     0, RC_W, 32, L, A), // 104
-	RVI(49, W, 185,   0,       0,  19,     0, RC_W, 28, L, A), // 105
-	RVI(50, W, 176,   0,       0,  19,     0, RC_W, 37, L, A), // 106
-	RVI(51, W, 178,   0,       0,  20,     0, RC_W, 37, L, A), // 107
-	RVI(52, W, 192,   0,       0,  20,     0, RC_W, 37, L, A), // 108
-	RVI(53, W, 190,   0,       0,  21,     0, RC_W, 27, L, A), // 109
-	RVI(54, W, 182,   0,       0,  24,     0, RC_W, 32, L, A), // 110
-	RVI(55, W, 181,   0,       0,  21,     0, RC_W, 32, L, A), // 111
-	RVI(56, W, 183,   0,       0,  21,     0, RC_W, 27, L, A), // 112
-	RVI(57, W, 196,   0,       0,  18,     0, RC_W, 29, L, A), // 113
-	RVI(58, W, 193,   0,       0,  18,     0, RC_W, 32, L, A), // 114
-	RVI(59, W, 191,   0,       0,  18,     0, RC_W, 37, L, A), // 115
+	/* Rail */
+	RVI( 2, G,   7,  64,     300,  47,    50, RC_S,  0, R, S), //   0 Kirby Paul Tank (Steam)
+	RVI(19, G,   8,  80,     600,  65,    65, RC_D,  0, R, D), //   1 MJS 250 (Diesel)
+	RVI( 2, G,  10,  72,     400,  85,    90, RC_S,  0, R, S), //   2 Ploddyphut Choo-Choo
+	RVI( 0, G,  15,  96,     900, 130,   130, RC_S,  0, R, S), //   3 Powernaut Choo-Choo
+	RVI( 1, G,  19, 112,    1000, 140,   145, RC_S,  0, R, S), //   4 Mightymover Choo-Choo
+	RVI(12, G,  16, 120,    1400,  95,   125, RC_D,  0, R, D), //   5 Ploddyphut Diesel
+	RVI(14, G,  20, 152,    2000, 120,   135, RC_D,  0, R, D), //   6 Powernaut Diesel
+	RVI( 3, G,  14,  88,    1100, 145,   130, RC_S,  0, R, S), //   7 Wills 2-8-0 (Steam)
+	RVI( 0, G,  13, 112,    1000, 131,   120, RC_S,  0, R, S), //   8 Chaney 'Jubilee' (Steam)
+	RVI( 1, G,  19, 128,    1200, 162,   140, RC_S,  0, R, S), //   9 Ginzu 'A4' (Steam)
+	RVI( 0, G,  22, 144,    1600, 170,   130, RC_S,  0, R, S), //  10 SH '8P' (Steam)
+	RVI( 8, M,  11, 112,     600,  32,    85, RC_D, 38, R, D), //  11 Manley-Morel DMU (Diesel)
+	RVI(10, M,  14, 120,     700,  38,    70, RC_D, 40, R, D), //  12 'Dash' (Diesel)
+	RVI( 4, G,  15, 128,    1250,  72,    95, RC_D,  0, R, D), //  13 SH/Hendry '25' (Diesel)
+	RVI( 5, G,  17, 144,    1750, 101,   120, RC_D,  0, R, D), //  14 UU '37' (Diesel)
+	RVI( 4, G,  18, 160,    2580, 112,   140, RC_D,  0, R, D), //  15 Floss '47' (Diesel)
+	RVI(14, G,  23,  96,    4000, 150,   135, RC_D,  0, R, D), //  16 CS 4000 (Diesel)
+	RVI(12, G,  16, 112,    2400, 120,   105, RC_D,  0, R, D), //  17 CS 2400 (Diesel)
+	RVI(13, G,  30, 112,    6600, 207,   155, RC_D,  0, R, D), //  18 Centennial (Diesel)
+	RVI(15, G,  18, 104,    1500, 110,   105, RC_D,  0, R, D), //  19 Kelling 3100 (Diesel)
+	RVI(16, M,  35, 160,    3500,  95,   205, RC_D,  0, R, D), //  20 Turner Turbo (Diesel)
+	RVI(18, G,  21, 104,    2200, 120,   145, RC_D,  0, R, D), //  21 MJS 1000 (Diesel)
+	RVI( 6, M,  20, 200,    4500,  70,   190, RC_D,  4, R, D), //  22 SH '125' (Diesel)
+	RVI(20, G,  26, 160,    3600,  84,   180, RC_E,  0, C, E), //  23 SH '30' (Electric)
+	RVI(20, G,  30, 176,    5000,  82,   205, RC_E,  0, C, E), //  24 SH '40' (Electric)
+	RVI(21, M,  40, 240,    7000,  90,   240, RC_E,  0, C, E), //  25 'T.I.M.' (Electric)
+	RVI(23, M,  43, 264,    8000,  95,   250, RC_E,  0, C, E), //  26 'AsiaStar' (Electric)
+	RVI(33, W, 247,   0,       0,  25,     0, RC_W, 40, R, A), //  27 Passenger Carriage
+	RVI(35, W, 228,   0,       0,  21,     0, RC_W, 30, R, A), //  28 Mail Van
+	RVI(34, W, 176,   0,       0,  18,     0, RC_W, 30, R, A), //  29 Coal Truck
+	RVI(36, W, 200,   0,       0,  24,     0, RC_W, 30, R, A), //  30 Oil Tanker
+	RVI(37, W, 192,   0,       0,  20,     0, RC_W, 25, R, A), //  31 Livestock Van
+	RVI(38, W, 190,   0,       0,  21,     0, RC_W, 25, R, A), //  32 Goods Van
+	RVI(39, W, 182,   0,       0,  19,     0, RC_W, 30, R, A), //  33 Grain Hopper
+	RVI(40, W, 181,   0,       0,  16,     0, RC_W, 30, R, A), //  34 Wood Truck
+	RVI(41, W, 179,   0,       0,  19,     0, RC_W, 30, R, A), //  35 Iron Ore Hopper
+	RVI(42, W, 196,   0,       0,  18,     0, RC_W, 20, R, A), //  36 Steel Truck
+	RVI(43, W, 255,   0,       0,  30,     0, RC_W, 20, R, A), //  37 Armoured Van
+	RVI(44, W, 191,   0,       0,  22,     0, RC_W, 25, R, A), //  38 Food Van
+	RVI(45, W, 196,   0,       0,  18,     0, RC_W, 20, R, A), //  39 Paper Truck
+	RVI(46, W, 179,   0,       0,  19,     0, RC_W, 30, R, A), //  40 Copper Ore Hopper
+	RVI(47, W, 199,   0,       0,  25,     0, RC_W, 25, R, A), //  41 Water Tanker
+	RVI(48, W, 182,   0,       0,  18,     0, RC_W, 25, R, A), //  42 Fruit Truck
+	RVI(49, W, 185,   0,       0,  19,     0, RC_W, 21, R, A), //  43 Rubber Truck
+	RVI(50, W, 176,   0,       0,  19,     0, RC_W, 30, R, A), //  44 Sugar Truck
+	RVI(51, W, 178,   0,       0,  20,     0, RC_W, 30, R, A), //  45 Candyfloss Hopper
+	RVI(52, W, 192,   0,       0,  20,     0, RC_W, 30, R, A), //  46 Toffee Hopper
+	RVI(53, W, 190,   0,       0,  21,     0, RC_W, 20, R, A), //  47 Bubble Van
+	RVI(54, W, 182,   0,       0,  24,     0, RC_W, 25, R, A), //  48 Cola Tanker
+	RVI(55, W, 181,   0,       0,  21,     0, RC_W, 25, R, A), //  49 Sweet Van
+	RVI(56, W, 183,   0,       0,  21,     0, RC_W, 20, R, A), //  50 Toy Van
+	RVI(57, W, 196,   0,       0,  18,     0, RC_W, 22, R, A), //  51 Battery Truck
+	RVI(58, W, 193,   0,       0,  18,     0, RC_W, 25, R, A), //  52 Fizzy Drink Truck
+	RVI(59, W, 191,   0,       0,  18,     0, RC_W, 30, R, A), //  53 Plastic Truck
+	/* Monorail */
+	RVI(25, G,  52, 304,    9000,  95,   230, RC_E,  0, O, N), //  54 'X2001' (Electric)
+	RVI(26, M,  60, 336,   10000,  85,   240, RC_E, 25, O, N), //  55 'Millennium Z1' (Electric)
+	RVI(26, G,  53, 320,    5000,  95,   230, RC_E,  0, O, N), //  56 Wizzowow Z99
+	RVI(60, W, 247,   0,       0,  25,     0, RC_W, 45, O, A), //  57 Passenger Carriage
+	RVI(62, W, 228,   0,       0,  21,     0, RC_W, 35, O, A), //  58 Mail Van
+	RVI(61, W, 176,   0,       0,  18,     0, RC_W, 35, O, A), //  59 Coal Truck
+	RVI(63, W, 200,   0,       0,  24,     0, RC_W, 35, O, A), //  60 Oil Tanker
+	RVI(64, W, 192,   0,       0,  20,     0, RC_W, 30, O, A), //  61 Livestock Van
+	RVI(65, W, 190,   0,       0,  21,     0, RC_W, 30, O, A), //  62 Goods Van
+	RVI(66, W, 182,   0,       0,  19,     0, RC_W, 35, O, A), //  63 Grain Hopper
+	RVI(67, W, 181,   0,       0,  16,     0, RC_W, 35, O, A), //  64 Wood Truck
+	RVI(68, W, 179,   0,       0,  19,     0, RC_W, 35, O, A), //  65 Iron Ore Hopper
+	RVI(69, W, 196,   0,       0,  18,     0, RC_W, 25, O, A), //  66 Steel Truck
+	RVI(70, W, 255,   0,       0,  30,     0, RC_W, 25, O, A), //  67 Armoured Van
+	RVI(71, W, 191,   0,       0,  22,     0, RC_W, 30, O, A), //  68 Food Van
+	RVI(72, W, 196,   0,       0,  18,     0, RC_W, 25, O, A), //  69 Paper Truck
+	RVI(73, W, 179,   0,       0,  19,     0, RC_W, 35, O, A), //  70 Copper Ore Hopper
+	RVI(47, W, 199,   0,       0,  25,     0, RC_W, 30, O, A), //  71 Water Tanker
+	RVI(48, W, 182,   0,       0,  18,     0, RC_W, 30, O, A), //  72 Fruit Truck
+	RVI(49, W, 185,   0,       0,  19,     0, RC_W, 26, O, A), //  73 Rubber Truck
+	RVI(50, W, 176,   0,       0,  19,     0, RC_W, 35, O, A), //  74 Sugar Truck
+	RVI(51, W, 178,   0,       0,  20,     0, RC_W, 35, O, A), //  75 Candyfloss Hopper
+	RVI(52, W, 192,   0,       0,  20,     0, RC_W, 35, O, A), //  76 Toffee Hopper
+	RVI(53, W, 190,   0,       0,  21,     0, RC_W, 25, O, A), //  77 Bubble Van
+	RVI(54, W, 182,   0,       0,  24,     0, RC_W, 30, O, A), //  78 Cola Tanker
+	RVI(55, W, 181,   0,       0,  21,     0, RC_W, 30, O, A), //  79 Sweet Van
+	RVI(56, W, 183,   0,       0,  21,     0, RC_W, 25, O, A), //  80 Toy Van
+	RVI(57, W, 196,   0,       0,  18,     0, RC_W, 27, O, A), //  81 Battery Truck
+	RVI(58, W, 193,   0,       0,  18,     0, RC_W, 30, O, A), //  82 Fizzy Drink Truck
+	RVI(59, W, 191,   0,       0,  18,     0, RC_W, 35, O, A), //  83 Plastic Truck
+	/* Maglev */
+	RVI(28, G,  70, 400,   10000, 105,   250, RC_E,  0, L, V), //  84 Lev1 'Leviathan' (Electric)
+	RVI(29, G,  74, 448,   12000, 120,   253, RC_E,  0, L, V), //  85 Lev2 'Cyclops' (Electric)
+	RVI(30, G,  82, 480,   15000, 130,   254, RC_E,  0, L, V), //  86 Lev3 'Pegasus' (Electric)
+	RVI(31, M,  95, 640,   20000, 150,   255, RC_E,  0, L, V), //  87 Lev4 'Chimaera' (Electric)
+	RVI(28, G,  70, 480,   10000, 120,   250, RC_E,  0, L, V), //  88 Wizzowow Rocketeer
+	RVI(60, W, 247,   0,       0,  25,     0, RC_W, 47, L, A), //  89 Passenger Carriage
+	RVI(62, W, 228,   0,       0,  21,     0, RC_W, 37, L, A), //  90 Mail Van
+	RVI(61, W, 176,   0,       0,  18,     0, RC_W, 37, L, A), //  91 Coal Truck
+	RVI(63, W, 200,   0,       0,  24,     0, RC_W, 37, L, A), //  92 Oil Tanker
+	RVI(64, W, 192,   0,       0,  20,     0, RC_W, 32, L, A), //  93 Livestock Van
+	RVI(65, W, 190,   0,       0,  21,     0, RC_W, 32, L, A), //  94 Goods Van
+	RVI(66, W, 182,   0,       0,  19,     0, RC_W, 37, L, A), //  95 Grain Hopper
+	RVI(67, W, 181,   0,       0,  16,     0, RC_W, 37, L, A), //  96 Wood Truck
+	RVI(68, W, 179,   0,       0,  19,     0, RC_W, 37, L, A), //  97 Iron Ore Hopper
+	RVI(69, W, 196,   0,       0,  18,     0, RC_W, 27, L, A), //  98 Steel Truck
+	RVI(70, W, 255,   0,       0,  30,     0, RC_W, 27, L, A), //  99 Armoured Van
+	RVI(71, W, 191,   0,       0,  22,     0, RC_W, 32, L, A), // 100 Food Van
+	RVI(72, W, 196,   0,       0,  18,     0, RC_W, 27, L, A), // 101 Paper Truck
+	RVI(73, W, 179,   0,       0,  19,     0, RC_W, 37, L, A), // 102 Copper Ore Hopper
+	RVI(47, W, 199,   0,       0,  25,     0, RC_W, 32, L, A), // 103 Water Tanker
+	RVI(48, W, 182,   0,       0,  18,     0, RC_W, 32, L, A), // 104 Fruit Truck
+	RVI(49, W, 185,   0,       0,  19,     0, RC_W, 28, L, A), // 105 Rubber Truck
+	RVI(50, W, 176,   0,       0,  19,     0, RC_W, 37, L, A), // 106 Sugar Truck
+	RVI(51, W, 178,   0,       0,  20,     0, RC_W, 37, L, A), // 107 Candyfloss Hopper
+	RVI(52, W, 192,   0,       0,  20,     0, RC_W, 37, L, A), // 108 Toffee Hopper
+	RVI(53, W, 190,   0,       0,  21,     0, RC_W, 27, L, A), // 109 Bubble Van
+	RVI(54, W, 182,   0,       0,  24,     0, RC_W, 32, L, A), // 110 Cola Tanker
+	RVI(55, W, 181,   0,       0,  21,     0, RC_W, 32, L, A), // 111 Sweet Van
+	RVI(56, W, 183,   0,       0,  21,     0, RC_W, 27, L, A), // 112 Toy Van
+	RVI(57, W, 196,   0,       0,  18,     0, RC_W, 29, L, A), // 113 Battery Truck
+	RVI(58, W, 193,   0,       0,  18,     0, RC_W, 32, L, A), // 114 Fizzy Drink Truck
+	RVI(59, W, 191,   0,       0,  18,     0, RC_W, 37, L, A), // 115 Plastic Truck
 };
 #undef RC_W
 #undef RC_E
@@ -519,44 +526,44 @@ static const RailVehicleInfo _orig_rail_vehicle_info[] = {
 /** Writes the properties of a ship into the ShipVehicleInfo struct.
  * @see ShipVehicleInfo
  * @param a image_index
- * @param b base_cost
+ * @param b cost_factor
  * @param c max_speed
- * @param d cargo_amount
+ * @param d capacity (persons, bags, tons, pieces, items, cubic metres, ...)
  * @param e running_cost
  * @param f sound effect
  * @param g refittable
  */
 #define SVI(a, b, c, d, e, f, g) { a, b, c, d, e, f, g }
 static const ShipVehicleInfo _orig_ship_vehicle_info[] = {
-	/*   image_index    cargo_amount               refittable
-	 *   |    base_cost |    running_cost          |
+	/*   image_index    capacity                   refittable
+	 *   |    cost_factor    running_cost          |
 	 *   |    |    max_speed |  sfx                |
 	 *   |    |    |    |    |  |                  | */
-	SVI( 1, 160,  48, 220, 140, SND_06_SHIP_HORN,  0 ), //  0
-	SVI( 1, 176,  80, 350, 125, SND_06_SHIP_HORN,  0 ), //  1
-	SVI( 2,  96,  64, 100,  90, SND_07_FERRY_HORN, 0 ), //  2
-	SVI( 2, 112, 128, 130,  80, SND_07_FERRY_HORN, 0 ), //  3
-	SVI( 3, 148, 224, 100, 190, SND_07_FERRY_HORN, 0 ), //  4
-	SVI( 2,  96,  64, 100,  90, SND_07_FERRY_HORN, 0 ), //  5
-	SVI( 2, 112, 128, 130,  80, SND_07_FERRY_HORN, 0 ), //  6
-	SVI( 0, 128,  48, 160, 150, SND_06_SHIP_HORN,  1 ), //  7
-	SVI( 0, 144,  80, 190, 113, SND_06_SHIP_HORN,  1 ), //  8
-	SVI( 0, 128,  48, 160, 150, SND_06_SHIP_HORN,  1 ), //  9
-	SVI( 0, 144,  80, 190, 113, SND_06_SHIP_HORN,  1 ), // 10
+	SVI( 1, 160,  48, 220, 140, SND_06_SHIP_HORN,  0 ), //  0 MPS Oil Tanker
+	SVI( 1, 176,  80, 350, 125, SND_06_SHIP_HORN,  0 ), //  1 CS-Inc. Oil Tanker
+	SVI( 2,  96,  64, 100,  90, SND_07_FERRY_HORN, 0 ), //  2 MPS Passenger Ferry
+	SVI( 2, 112, 128, 130,  80, SND_07_FERRY_HORN, 0 ), //  3 FFP Passenger Ferry
+	SVI( 3, 148, 224, 100, 190, SND_07_FERRY_HORN, 0 ), //  4 Bakewell 300 Hovercraft
+	SVI( 2,  96,  64, 100,  90, SND_07_FERRY_HORN, 0 ), //  5 Chugger-Chug Passenger Ferry
+	SVI( 2, 112, 128, 130,  80, SND_07_FERRY_HORN, 0 ), //  6 Shivershake Passenger Ferry
+	SVI( 0, 128,  48, 160, 150, SND_06_SHIP_HORN,  1 ), //  7 Yate Cargo ship
+	SVI( 0, 144,  80, 190, 113, SND_06_SHIP_HORN,  1 ), //  8 Bakewell Cargo ship
+	SVI( 0, 128,  48, 160, 150, SND_06_SHIP_HORN,  1 ), //  9 Mightymover Cargo ship
+	SVI( 0, 144,  80, 190, 113, SND_06_SHIP_HORN,  1 ), // 10 Powernaut Cargo ship
 };
 #undef SVI
 
 /** Writes the properties of an aircraft into the AircraftVehicleInfo struct.
  * @see AircraftVehicleInfo
  * @param a image_index
- * @param b base_cost
+ * @param b cost_factor
  * @param c running_Cost
  * @param d subtype (bit 0 - plane, bit 1 - large plane)
  * @param e sound effect
  * @param f acceleration
  * @param g max_speed
- * @param h mail_capacity
- * @param i passenger_capacity
+ * @param h mail_capacity (bags)
+ * @param i passenger_capacity (persons)
  */
 #define AVI(a, b, c, d, e, f, g, h, i) { a, b, c, d, e, f, (g * 129) / 10, h, i }
 #define H AIR_HELI
@@ -564,51 +571,51 @@ static const ShipVehicleInfo _orig_ship_vehicle_info[] = {
 #define J AIR_CTOL | AIR_FAST
 static const AircraftVehicleInfo _orig_aircraft_vehicle_info[] = {
 	/*    image_index         sfx                         acceleration
-	 *    |   base_cost       |                           |   max_speed
+	 *    |   cost_factor     |                           |   max_speed
 	 *    |   |    running_cost                           |   |    mail_capacity
 	 *    |   |    |  subtype |                           |   |    |    passenger_capacity
 	 *    |   |    |  |       |                           |   |    |    | */
-	AVI(  1, 14,  85, P, SND_08_PLANE_TAKE_OFF,          18,  37,  4,  25 ), //  0
-	AVI(  0, 15, 100, P, SND_08_PLANE_TAKE_OFF,          20,  37,  8,  65 ), //  1
-	AVI(  2, 16, 130, J, SND_09_JET,                     35,  74, 10,  90 ), //  2
-	AVI(  8, 75, 250, J, SND_3B_JET_OVERHEAD,            50, 181, 20, 100 ), //  3
-	AVI(  5, 15,  98, P, SND_08_PLANE_TAKE_OFF,          20,  37,  6,  30 ), //  4
-	AVI(  6, 18, 240, J, SND_09_JET,                     40,  74, 30, 200 ), //  5
-	AVI(  2, 17, 150, P, SND_09_JET,                     35,  74, 15, 100 ), //  6
-	AVI(  2, 18, 245, J, SND_09_JET,                     40,  74, 30, 150 ), //  7
-	AVI(  3, 19, 192, J, SND_09_JET,                     40,  74, 40, 220 ), //  8
-	AVI(  3, 20, 190, J, SND_09_JET,                     40,  74, 25, 230 ), //  9
-	AVI(  2, 16, 135, J, SND_09_JET,                     35,  74, 10,  95 ), // 10
-	AVI(  2, 18, 240, J, SND_09_JET,                     40,  74, 35, 170 ), // 11
-	AVI(  4, 17, 155, J, SND_09_JET,                     40,  74, 15, 110 ), // 12
-	AVI(  7, 30, 253, J, SND_3D_ANOTHER_JET_OVERHEAD,    40,  74, 50, 300 ), // 13
-	AVI(  4, 18, 210, J, SND_09_JET,                     40,  74, 25, 200 ), // 14
-	AVI(  4, 19, 220, J, SND_09_JET,                     40,  74, 25, 240 ), // 15
-	AVI(  4, 27, 230, J, SND_09_JET,                     40,  74, 40, 260 ), // 16
-	AVI(  3, 25, 225, J, SND_09_JET,                     40,  74, 35, 240 ), // 17
-	AVI(  4, 20, 235, J, SND_09_JET,                     40,  74, 30, 260 ), // 18
-	AVI(  4, 19, 220, J, SND_09_JET,                     40,  74, 25, 210 ), // 19
-	AVI(  4, 18, 170, J, SND_09_JET,                     40,  74, 20, 160 ), // 20
-	AVI(  4, 26, 210, J, SND_09_JET,                     40,  74, 20, 220 ), // 21
-	AVI(  6, 16, 125, P, SND_09_JET,                     50,  74, 10,  80 ), // 22
-	AVI(  2, 17, 145, P, SND_09_JET,                     40,  74, 10,  85 ), // 23
-	AVI( 11, 16, 130, P, SND_09_JET,                     40,  74, 10,  75 ), // 24
-	AVI( 10, 16, 149, P, SND_09_JET,                     40,  74, 10,  85 ), // 25
-	AVI( 15, 17, 170, P, SND_09_JET,                     40,  74, 18,  65 ), // 26
-	AVI( 12, 18, 210, J, SND_09_JET,                     40,  74, 25, 110 ), // 27
-	AVI( 13, 20, 230, J, SND_09_JET,                     40,  74, 60, 180 ), // 28
-	AVI( 14, 21, 220, J, SND_09_JET,                     40,  74, 65, 150 ), // 29
-	AVI( 16, 19, 160, J, SND_09_JET,                     40, 181, 45,  85 ), // 30
-	AVI( 17, 24, 248, J, SND_3D_ANOTHER_JET_OVERHEAD,    40,  74, 80, 400 ), // 31
-	AVI( 18, 80, 251, J, SND_3B_JET_OVERHEAD,            50, 181, 45, 130 ), // 32
-	AVI( 20, 13,  85, P, SND_45_PLANE_CRASHING,          18,  37,  5,  25 ), // 33
-	AVI( 21, 18, 100, P, SND_46_PLANE_ENGINE_SPUTTERING, 20,  37,  9,  60 ), // 34
-	AVI( 22, 25, 140, P, SND_09_JET,                     40,  74, 12,  90 ), // 35
-	AVI( 23, 32, 220, J, SND_3D_ANOTHER_JET_OVERHEAD,    40,  74, 40, 200 ), // 36
-	AVI( 24, 80, 255, J, SND_3B_JET_OVERHEAD,            50, 181, 30, 100 ), // 37
-	AVI(  9, 15,  81, H, SND_09_JET,                     20,  25, 15,  40 ), // 38
-	AVI( 19, 17,  77, H, SND_09_JET,                     20,  40, 20,  55 ), // 39
-	AVI( 25, 15,  80, H, SND_09_JET,                     20,  25, 10,  40 ), // 40
+	AVI(  1, 14,  85, P, SND_08_PLANE_TAKE_OFF,          18,  37,  4,  25 ), //  0 Sampson U52
+	AVI(  0, 15, 100, P, SND_08_PLANE_TAKE_OFF,          20,  37,  8,  65 ), //  1 Coleman Count
+	AVI(  2, 16, 130, J, SND_09_JET,                     35,  74, 10,  90 ), //  2 FFP Dart
+	AVI(  8, 75, 250, J, SND_3B_JET_OVERHEAD,            50, 181, 20, 100 ), //  3 Yate Haugan
+	AVI(  5, 15,  98, P, SND_08_PLANE_TAKE_OFF,          20,  37,  6,  30 ), //  4 Bakewell Cotswald LB-3
+	AVI(  6, 18, 240, J, SND_09_JET,                     40,  74, 30, 200 ), //  5 Bakewell Luckett LB-8
+	AVI(  2, 17, 150, P, SND_09_JET,                     35,  74, 15, 100 ), //  6 Bakewell Luckett LB-9
+	AVI(  2, 18, 245, J, SND_09_JET,                     40,  74, 30, 150 ), //  7 Bakewell Luckett LB80
+	AVI(  3, 19, 192, J, SND_09_JET,                     40,  74, 40, 220 ), //  8 Bakewell Luckett LB-10
+	AVI(  3, 20, 190, J, SND_09_JET,                     40,  74, 25, 230 ), //  9 Bakewell Luckett LB-11
+	AVI(  2, 16, 135, J, SND_09_JET,                     35,  74, 10,  95 ), // 10 Yate Aerospace YAC 1-11
+	AVI(  2, 18, 240, J, SND_09_JET,                     40,  74, 35, 170 ), // 11 Darwin 100
+	AVI(  4, 17, 155, J, SND_09_JET,                     40,  74, 15, 110 ), // 12 Darwin 200
+	AVI(  7, 30, 253, J, SND_3D_ANOTHER_JET_OVERHEAD,    40,  74, 50, 300 ), // 13 Darwin 300
+	AVI(  4, 18, 210, J, SND_09_JET,                     40,  74, 25, 200 ), // 14 Darwin 400
+	AVI(  4, 19, 220, J, SND_09_JET,                     40,  74, 25, 240 ), // 15 Darwin 500
+	AVI(  4, 27, 230, J, SND_09_JET,                     40,  74, 40, 260 ), // 16 Darwin 600
+	AVI(  3, 25, 225, J, SND_09_JET,                     40,  74, 35, 240 ), // 17 Guru Galaxy
+	AVI(  4, 20, 235, J, SND_09_JET,                     40,  74, 30, 260 ), // 18 Airtaxi A21
+	AVI(  4, 19, 220, J, SND_09_JET,                     40,  74, 25, 210 ), // 19 Airtaxi A31
+	AVI(  4, 18, 170, J, SND_09_JET,                     40,  74, 20, 160 ), // 20 Airtaxi A32
+	AVI(  4, 26, 210, J, SND_09_JET,                     40,  74, 20, 220 ), // 21 Airtaxi A33
+	AVI(  6, 16, 125, P, SND_09_JET,                     50,  74, 10,  80 ), // 22 Yate Aerospace YAe46
+	AVI(  2, 17, 145, P, SND_09_JET,                     40,  74, 10,  85 ), // 23 Dinger 100
+	AVI( 11, 16, 130, P, SND_09_JET,                     40,  74, 10,  75 ), // 24 AirTaxi A34-1000
+	AVI( 10, 16, 149, P, SND_09_JET,                     40,  74, 10,  85 ), // 25 Yate Z-Shuttle
+	AVI( 15, 17, 170, P, SND_09_JET,                     40,  74, 18,  65 ), // 26 Kelling K1
+	AVI( 12, 18, 210, J, SND_09_JET,                     40,  74, 25, 110 ), // 27 Kelling K6
+	AVI( 13, 20, 230, J, SND_09_JET,                     40,  74, 60, 180 ), // 28 Kelling K7
+	AVI( 14, 21, 220, J, SND_09_JET,                     40,  74, 65, 150 ), // 29 Darwin 700
+	AVI( 16, 19, 160, J, SND_09_JET,                     40, 181, 45,  85 ), // 30 FFP Hyperdart 2
+	AVI( 17, 24, 248, J, SND_3D_ANOTHER_JET_OVERHEAD,    40,  74, 80, 400 ), // 31 Dinger 200
+	AVI( 18, 80, 251, J, SND_3B_JET_OVERHEAD,            50, 181, 45, 130 ), // 32 Dinger 1000
+	AVI( 20, 13,  85, P, SND_45_PLANE_CRASHING,          18,  37,  5,  25 ), // 33 Ploddyphut 100
+	AVI( 21, 18, 100, P, SND_46_PLANE_ENGINE_SPUTTERING, 20,  37,  9,  60 ), // 34 Ploddyphut 500
+	AVI( 22, 25, 140, P, SND_09_JET,                     40,  74, 12,  90 ), // 35 Flashbang X1
+	AVI( 23, 32, 220, J, SND_3D_ANOTHER_JET_OVERHEAD,    40,  74, 40, 200 ), // 36 Juggerplane M1
+	AVI( 24, 80, 255, J, SND_3B_JET_OVERHEAD,            50, 181, 30, 100 ), // 37 Flashbang Wizzer
+	AVI(  9, 15,  81, H, SND_09_JET,                     20,  25, 15,  40 ), // 38 Tricario Helicopter
+	AVI( 19, 17,  77, H, SND_09_JET,                     20,  40, 20,  55 ), // 39 Guru X2 Helicopter
+	AVI( 25, 15,  80, H, SND_09_JET,                     20,  25, 10,  40 ), // 40 Powernaut Helicopter
 };
 #undef J
 #undef P
@@ -618,108 +625,108 @@ static const AircraftVehicleInfo _orig_aircraft_vehicle_info[] = {
 /** Writes the properties of a road vehicle into the RoadVehicleInfo struct.
  * @see RoadVehicleInfo
  * @param a image_index
- * @param b base_cost
+ * @param b cost_factor
  * @param c running_cost
  * @param d sound effect
  * @param e max_speed
- * @param f capacity
- * @param g weight (1/4ton)
- * @param h power (10hp)
+ * @param f capacity (persons, bags, tons, pieces, items, cubic metres, ...)
+ * @param g weight (1/4 ton)
+ * @param h power (10 hp)
  */
 #define ROV(a, b, c, d, e, f, g, h) { a, b, c, PR_RUNNING_ROADVEH, d, e, f, g, h, 76, 0 }
 static const RoadVehicleInfo _orig_road_vehicle_info[] = {
 	/*    image_index       sfx                                 max_speed    power
-	 *    |    base_cost    |                                   |   capacity |
+	 *    |    cost_factor  |                                   |   capacity |
 	 *    |    |    running_cost                                |   |    weight
 	 *    |    |    |       |                                   |   |    |   |*/
-	ROV(  0, 120,  91, SND_19_BUS_START_PULL_AWAY,            112, 31,  42,  9), //  0
-	ROV( 17, 140, 128, SND_1C_TRUCK_START_2,                  176, 35,  60, 12), //  1
-	ROV( 17, 150, 178, SND_1B_TRUCK_START,                    224, 37,  70, 15), //  2
-	ROV( 34, 160, 240, SND_1B_TRUCK_START,                    255, 40, 100, 25), //  3
-	ROV( 51, 120,  91, SND_3C_COMEDY_CAR,                     112, 30,  42,  9), //  4
-	ROV( 51, 140, 171, SND_3E_COMEDY_CAR_2,                   192, 35,  60, 15), //  5
-	ROV( 51, 160, 240, SND_3C_COMEDY_CAR,                     240, 38,  90, 25), //  6
-	ROV(  1, 108,  90, SND_19_BUS_START_PULL_AWAY,             96, 20,  38, 12), //  7
-	ROV( 18, 128, 168, SND_19_BUS_START_PULL_AWAY,            176, 25,  48, 22), //  8
-	ROV( 35, 138, 240, SND_19_BUS_START_PULL_AWAY,            224, 28,  69, 45), //  9
-	ROV(  2, 115,  90, SND_19_BUS_START_PULL_AWAY,             96, 22,  38, 12), // 10
-	ROV( 19, 135, 168, SND_19_BUS_START_PULL_AWAY,            176, 28,  48, 22), // 11
-	ROV( 36, 145, 240, SND_19_BUS_START_PULL_AWAY,            224, 30,  69, 45), // 12
-	ROV( 57, 115,  90, SND_3E_COMEDY_CAR_2,                    96, 22,  38, 12), // 13
-	ROV( 57, 135, 168, SND_3C_COMEDY_CAR,                     176, 28,  48, 22), // 14
-	ROV( 57, 145, 240, SND_3E_COMEDY_CAR_2,                   224, 30,  69, 45), // 15
-	ROV(  3, 110,  90, SND_19_BUS_START_PULL_AWAY,             96, 21,  38, 12), // 16
-	ROV( 20, 140, 168, SND_19_BUS_START_PULL_AWAY,            176, 25,  48, 22), // 17
-	ROV( 37, 150, 240, SND_19_BUS_START_PULL_AWAY,            224, 27,  69, 45), // 18
-	ROV(  4, 105,  90, SND_19_BUS_START_PULL_AWAY,             96, 14,  38, 12), // 19
-	ROV( 21, 130, 168, SND_19_BUS_START_PULL_AWAY,            176, 16,  48, 22), // 20
-	ROV( 38, 140, 240, SND_19_BUS_START_PULL_AWAY,            224, 18,  69, 45), // 21
-	ROV(  5, 107,  90, SND_19_BUS_START_PULL_AWAY,             96, 14,  38, 12), // 22
-	ROV( 22, 130, 168, SND_19_BUS_START_PULL_AWAY,            176, 16,  48, 22), // 23
-	ROV( 39, 140, 240, SND_19_BUS_START_PULL_AWAY,            224, 18,  69, 45), // 24
-	ROV(  6, 114,  90, SND_19_BUS_START_PULL_AWAY,             96, 20,  38, 12), // 25
-	ROV( 23, 133, 168, SND_19_BUS_START_PULL_AWAY,            176, 25,  48, 22), // 26
-	ROV( 40, 143, 240, SND_19_BUS_START_PULL_AWAY,            224, 30,  69, 45), // 27
-	ROV(  7, 118,  90, SND_19_BUS_START_PULL_AWAY,             96, 20,  38, 12), // 28
-	ROV( 24, 137, 168, SND_19_BUS_START_PULL_AWAY,            176, 22,  48, 22), // 29
-	ROV( 41, 147, 240, SND_19_BUS_START_PULL_AWAY,            224, 24,  69, 45), // 30
-	ROV(  8, 121,  90, SND_19_BUS_START_PULL_AWAY,             96, 22,  38, 12), // 31
-	ROV( 25, 140, 168, SND_19_BUS_START_PULL_AWAY,            176, 25,  48, 22), // 32
-	ROV( 42, 150, 240, SND_19_BUS_START_PULL_AWAY,            224, 27,  69, 45), // 33
-	ROV(  9, 112,  90, SND_19_BUS_START_PULL_AWAY,             96, 15,  38, 12), // 34
-	ROV( 26, 135, 168, SND_19_BUS_START_PULL_AWAY,            176, 18,  48, 22), // 35
-	ROV( 43, 145, 240, SND_19_BUS_START_PULL_AWAY,            224, 20,  69, 45), // 36
-	ROV( 10, 145,  90, SND_19_BUS_START_PULL_AWAY,             96, 12,  38, 12), // 37
-	ROV( 27, 170, 168, SND_19_BUS_START_PULL_AWAY,            176, 15,  48, 22), // 38
-	ROV( 44, 180, 240, SND_19_BUS_START_PULL_AWAY,            224, 16,  69, 45), // 39
-	ROV( 11, 112,  90, SND_19_BUS_START_PULL_AWAY,             96, 17,  38, 12), // 40
-	ROV( 28, 134, 168, SND_19_BUS_START_PULL_AWAY,            176, 20,  48, 22), // 41
-	ROV( 45, 144, 240, SND_19_BUS_START_PULL_AWAY,            224, 22,  69, 45), // 42
-	ROV( 12, 112,  90, SND_19_BUS_START_PULL_AWAY,             96, 15,  38, 12), // 43
-	ROV( 29, 135, 168, SND_19_BUS_START_PULL_AWAY,            176, 18,  48, 22), // 44
-	ROV( 46, 145, 240, SND_19_BUS_START_PULL_AWAY,            224, 20,  69, 45), // 45
-	ROV( 13, 121,  90, SND_19_BUS_START_PULL_AWAY,             96, 22,  38, 12), // 46
-	ROV( 30, 140, 168, SND_19_BUS_START_PULL_AWAY,            176, 25,  48, 22), // 47
-	ROV( 47, 150, 240, SND_19_BUS_START_PULL_AWAY,            224, 27,  69, 45), // 48
-	ROV( 14, 111,  90, SND_19_BUS_START_PULL_AWAY,             96, 21,  38, 12), // 49
-	ROV( 31, 141, 168, SND_19_BUS_START_PULL_AWAY,            176, 25,  48, 22), // 50
-	ROV( 48, 151, 240, SND_19_BUS_START_PULL_AWAY,            224, 27,  69, 45), // 51
-	ROV( 15, 118,  90, SND_19_BUS_START_PULL_AWAY,             96, 18,  38, 12), // 52
-	ROV( 32, 148, 168, SND_19_BUS_START_PULL_AWAY,            176, 20,  48, 22), // 53
-	ROV( 49, 158, 240, SND_19_BUS_START_PULL_AWAY,            224, 23,  69, 45), // 54
-	ROV( 16, 117,  90, SND_19_BUS_START_PULL_AWAY,             96, 17,  38, 12), // 55
-	ROV( 33, 147, 168, SND_19_BUS_START_PULL_AWAY,            176, 19,  48, 22), // 56
-	ROV( 50, 157, 240, SND_19_BUS_START_PULL_AWAY,            224, 22,  69, 45), // 57
-	ROV( 52, 117,  90, SND_3F_COMEDY_CAR_3,                    96, 17,  38, 12), // 58
-	ROV( 52, 147, 168, SND_40_COMEDY_CAR_START_AND_PULL_AWAY, 176, 19,  48, 22), // 59
-	ROV( 52, 157, 240, SND_3F_COMEDY_CAR_3,                   224, 22,  69, 45), // 60
-	ROV( 53, 117,  90, SND_40_COMEDY_CAR_START_AND_PULL_AWAY,  96, 17,  38, 12), // 61
-	ROV( 53, 147, 168, SND_3F_COMEDY_CAR_3,                   176, 19,  48, 22), // 62
-	ROV( 53, 157, 240, SND_40_COMEDY_CAR_START_AND_PULL_AWAY, 224, 22,  69, 45), // 63
-	ROV( 54, 117,  90, SND_3F_COMEDY_CAR_3,                    96, 17,  38, 12), // 64
-	ROV( 54, 147, 168, SND_40_COMEDY_CAR_START_AND_PULL_AWAY, 176, 19,  48, 22), // 65
-	ROV( 54, 157, 240, SND_3F_COMEDY_CAR_3,                   224, 22,  69, 45), // 66
-	ROV( 55, 117,  90, SND_40_COMEDY_CAR_START_AND_PULL_AWAY,  96, 17,  38, 12), // 67
-	ROV( 55, 147, 168, SND_3F_COMEDY_CAR_3,                   176, 19,  48, 22), // 68
-	ROV( 55, 157, 240, SND_40_COMEDY_CAR_START_AND_PULL_AWAY, 224, 22,  69, 45), // 69
-	ROV( 56, 117,  90, SND_3F_COMEDY_CAR_3,                    96, 17,  38, 12), // 70
-	ROV( 56, 147, 168, SND_40_COMEDY_CAR_START_AND_PULL_AWAY, 176, 19,  48, 22), // 71
-	ROV( 56, 157, 240, SND_3F_COMEDY_CAR_3,                   224, 22,  69, 45), // 72
-	ROV( 58, 117,  90, SND_40_COMEDY_CAR_START_AND_PULL_AWAY,  96, 17,  38, 12), // 73
-	ROV( 58, 147, 168, SND_3F_COMEDY_CAR_3,                   176, 19,  48, 22), // 74
-	ROV( 58, 157, 240, SND_40_COMEDY_CAR_START_AND_PULL_AWAY, 224, 22,  69, 45), // 75
-	ROV( 59, 117,  90, SND_3F_COMEDY_CAR_3,                    96, 17,  38, 12), // 76
-	ROV( 59, 147, 168, SND_40_COMEDY_CAR_START_AND_PULL_AWAY, 176, 19,  48, 22), // 77
-	ROV( 59, 157, 240, SND_3F_COMEDY_CAR_3,                   224, 22,  69, 45), // 78
-	ROV( 60, 117,  90, SND_40_COMEDY_CAR_START_AND_PULL_AWAY,  96, 17,  38, 12), // 79
-	ROV( 60, 147, 168, SND_3F_COMEDY_CAR_3,                   176, 19,  48, 22), // 80
-	ROV( 60, 157, 240, SND_40_COMEDY_CAR_START_AND_PULL_AWAY, 224, 22,  69, 45), // 81
-	ROV( 61, 117,  90, SND_3F_COMEDY_CAR_3,                    96, 17,  38, 12), // 82
-	ROV( 61, 147, 168, SND_40_COMEDY_CAR_START_AND_PULL_AWAY, 176, 19,  48, 22), // 83
-	ROV( 61, 157, 240, SND_3F_COMEDY_CAR_3,                   224, 22,  69, 45), // 84
-	ROV( 62, 117,  90, SND_40_COMEDY_CAR_START_AND_PULL_AWAY,  96, 17,  38, 12), // 85
-	ROV( 62, 147, 168, SND_3F_COMEDY_CAR_3,                   176, 19,  48, 22), // 86
-	ROV( 62, 157, 240, SND_40_COMEDY_CAR_START_AND_PULL_AWAY, 224, 22,  69, 45), // 87
+	ROV(  0, 120,  91, SND_19_BUS_START_PULL_AWAY,            112, 31,  42,  9), //  0 MPS Regal Bus
+	ROV( 17, 140, 128, SND_1C_TRUCK_START_2,                  176, 35,  60, 12), //  1 Hereford Leopard Bus
+	ROV( 17, 150, 178, SND_1B_TRUCK_START,                    224, 37,  70, 15), //  2 Foster Bus
+	ROV( 34, 160, 240, SND_1B_TRUCK_START,                    255, 40, 100, 25), //  3 Foster MkII Superbus
+	ROV( 51, 120,  91, SND_3C_COMEDY_CAR,                     112, 30,  42,  9), //  4 Ploddyphut MkI Bus
+	ROV( 51, 140, 171, SND_3E_COMEDY_CAR_2,                   192, 35,  60, 15), //  5 Ploddyphut MkII Bus
+	ROV( 51, 160, 240, SND_3C_COMEDY_CAR,                     240, 38,  90, 25), //  6 Ploddyphut MkIII Bus
+	ROV(  1, 108,  90, SND_19_BUS_START_PULL_AWAY,             96, 20,  38, 12), //  7 Balogh Coal Truck
+	ROV( 18, 128, 168, SND_19_BUS_START_PULL_AWAY,            176, 25,  48, 22), //  8 Uhl Coal Truck
+	ROV( 35, 138, 240, SND_19_BUS_START_PULL_AWAY,            224, 28,  69, 45), //  9 DW Coal Truck
+	ROV(  2, 115,  90, SND_19_BUS_START_PULL_AWAY,             96, 22,  38, 12), // 10 MPS Mail Truck
+	ROV( 19, 135, 168, SND_19_BUS_START_PULL_AWAY,            176, 28,  48, 22), // 11 Reynard Mail Truck
+	ROV( 36, 145, 240, SND_19_BUS_START_PULL_AWAY,            224, 30,  69, 45), // 12 Perry Mail Truck
+	ROV( 57, 115,  90, SND_3E_COMEDY_CAR_2,                    96, 22,  38, 12), // 13 MightyMover Mail Truck
+	ROV( 57, 135, 168, SND_3C_COMEDY_CAR,                     176, 28,  48, 22), // 14 Powernaught Mail Truck
+	ROV( 57, 145, 240, SND_3E_COMEDY_CAR_2,                   224, 30,  69, 45), // 15 Wizzowow Mail Truck
+	ROV(  3, 110,  90, SND_19_BUS_START_PULL_AWAY,             96, 21,  38, 12), // 16 Witcombe Oil Tanker
+	ROV( 20, 140, 168, SND_19_BUS_START_PULL_AWAY,            176, 25,  48, 22), // 17 Foster Oil Tanker
+	ROV( 37, 150, 240, SND_19_BUS_START_PULL_AWAY,            224, 27,  69, 45), // 18 Perry Oil Tanker
+	ROV(  4, 105,  90, SND_19_BUS_START_PULL_AWAY,             96, 14,  38, 12), // 19 Talbott Livestock Van
+	ROV( 21, 130, 168, SND_19_BUS_START_PULL_AWAY,            176, 16,  48, 22), // 20 Uhl Livestock Van
+	ROV( 38, 140, 240, SND_19_BUS_START_PULL_AWAY,            224, 18,  69, 45), // 21 Foster Livestock Van
+	ROV(  5, 107,  90, SND_19_BUS_START_PULL_AWAY,             96, 14,  38, 12), // 22 Balogh Goods Truck
+	ROV( 22, 130, 168, SND_19_BUS_START_PULL_AWAY,            176, 16,  48, 22), // 23 Craighead Goods Truck
+	ROV( 39, 140, 240, SND_19_BUS_START_PULL_AWAY,            224, 18,  69, 45), // 24 Goss Goods Truck
+	ROV(  6, 114,  90, SND_19_BUS_START_PULL_AWAY,             96, 20,  38, 12), // 25 Hereford Grain Truck
+	ROV( 23, 133, 168, SND_19_BUS_START_PULL_AWAY,            176, 25,  48, 22), // 26 Thomas Grain Truck
+	ROV( 40, 143, 240, SND_19_BUS_START_PULL_AWAY,            224, 30,  69, 45), // 27 Goss Grain Truck
+	ROV(  7, 118,  90, SND_19_BUS_START_PULL_AWAY,             96, 20,  38, 12), // 28 Witcombe Wood Truck
+	ROV( 24, 137, 168, SND_19_BUS_START_PULL_AWAY,            176, 22,  48, 22), // 29 Foster Wood Truck
+	ROV( 41, 147, 240, SND_19_BUS_START_PULL_AWAY,            224, 24,  69, 45), // 30 Moreland Wood Truck
+	ROV(  8, 121,  90, SND_19_BUS_START_PULL_AWAY,             96, 22,  38, 12), // 31 MPS Iron Ore Truck
+	ROV( 25, 140, 168, SND_19_BUS_START_PULL_AWAY,            176, 25,  48, 22), // 32 Uhl Iron Ore Truck
+	ROV( 42, 150, 240, SND_19_BUS_START_PULL_AWAY,            224, 27,  69, 45), // 33 Chippy Iron Ore Truck
+	ROV(  9, 112,  90, SND_19_BUS_START_PULL_AWAY,             96, 15,  38, 12), // 34 Balogh Steel Truck
+	ROV( 26, 135, 168, SND_19_BUS_START_PULL_AWAY,            176, 18,  48, 22), // 35 Uhl Steel Truck
+	ROV( 43, 145, 240, SND_19_BUS_START_PULL_AWAY,            224, 20,  69, 45), // 36 Kelling Steel Truck
+	ROV( 10, 145,  90, SND_19_BUS_START_PULL_AWAY,             96, 12,  38, 12), // 37 Balogh Armoured Truck
+	ROV( 27, 170, 168, SND_19_BUS_START_PULL_AWAY,            176, 15,  48, 22), // 38 Uhl Armoured Truck
+	ROV( 44, 180, 240, SND_19_BUS_START_PULL_AWAY,            224, 16,  69, 45), // 39 Foster Armoured Truck
+	ROV( 11, 112,  90, SND_19_BUS_START_PULL_AWAY,             96, 17,  38, 12), // 40 Foster Food Van
+	ROV( 28, 134, 168, SND_19_BUS_START_PULL_AWAY,            176, 20,  48, 22), // 41 Perry Food Van
+	ROV( 45, 144, 240, SND_19_BUS_START_PULL_AWAY,            224, 22,  69, 45), // 42 Chippy Food Van
+	ROV( 12, 112,  90, SND_19_BUS_START_PULL_AWAY,             96, 15,  38, 12), // 43 Uhl Paper Truck
+	ROV( 29, 135, 168, SND_19_BUS_START_PULL_AWAY,            176, 18,  48, 22), // 44 Balogh Paper Truck
+	ROV( 46, 145, 240, SND_19_BUS_START_PULL_AWAY,            224, 20,  69, 45), // 45 MPS Paper Truck
+	ROV( 13, 121,  90, SND_19_BUS_START_PULL_AWAY,             96, 22,  38, 12), // 46 MPS Copper Ore Truck
+	ROV( 30, 140, 168, SND_19_BUS_START_PULL_AWAY,            176, 25,  48, 22), // 47 Uhl Copper Ore Truck
+	ROV( 47, 150, 240, SND_19_BUS_START_PULL_AWAY,            224, 27,  69, 45), // 48 Goss Copper Ore Truck
+	ROV( 14, 111,  90, SND_19_BUS_START_PULL_AWAY,             96, 21,  38, 12), // 49 Uhl Water Tanker
+	ROV( 31, 141, 168, SND_19_BUS_START_PULL_AWAY,            176, 25,  48, 22), // 50 Balogh Water Tanker
+	ROV( 48, 151, 240, SND_19_BUS_START_PULL_AWAY,            224, 27,  69, 45), // 51 MPS Water Tanker
+	ROV( 15, 118,  90, SND_19_BUS_START_PULL_AWAY,             96, 18,  38, 12), // 52 Balogh Fruit Truck
+	ROV( 32, 148, 168, SND_19_BUS_START_PULL_AWAY,            176, 20,  48, 22), // 53 Uhl Fruit Truck
+	ROV( 49, 158, 240, SND_19_BUS_START_PULL_AWAY,            224, 23,  69, 45), // 54 Kelling Fruit Truck
+	ROV( 16, 117,  90, SND_19_BUS_START_PULL_AWAY,             96, 17,  38, 12), // 55 Balogh Rubber Truck
+	ROV( 33, 147, 168, SND_19_BUS_START_PULL_AWAY,            176, 19,  48, 22), // 56 Uhl Rubber Truck
+	ROV( 50, 157, 240, SND_19_BUS_START_PULL_AWAY,            224, 22,  69, 45), // 57 RMT Rubber Truck
+	ROV( 52, 117,  90, SND_3F_COMEDY_CAR_3,                    96, 17,  38, 12), // 58 MightyMover Sugar Truck
+	ROV( 52, 147, 168, SND_40_COMEDY_CAR_START_AND_PULL_AWAY, 176, 19,  48, 22), // 59 Powernaught Sugar Truck
+	ROV( 52, 157, 240, SND_3F_COMEDY_CAR_3,                   224, 22,  69, 45), // 60 Wizzowow Sugar Truck
+	ROV( 53, 117,  90, SND_40_COMEDY_CAR_START_AND_PULL_AWAY,  96, 17,  38, 12), // 61 MightyMover Cola Truck
+	ROV( 53, 147, 168, SND_3F_COMEDY_CAR_3,                   176, 19,  48, 22), // 62 Powernaught Cola Truck
+	ROV( 53, 157, 240, SND_40_COMEDY_CAR_START_AND_PULL_AWAY, 224, 22,  69, 45), // 63 Wizzowow Cola Truck
+	ROV( 54, 117,  90, SND_3F_COMEDY_CAR_3,                    96, 17,  38, 12), // 64 MightyMover Candyfloss Truck
+	ROV( 54, 147, 168, SND_40_COMEDY_CAR_START_AND_PULL_AWAY, 176, 19,  48, 22), // 65 Powernaught Candyfloss Truck
+	ROV( 54, 157, 240, SND_3F_COMEDY_CAR_3,                   224, 22,  69, 45), // 66 Wizzowow Candyfloss Truck
+	ROV( 55, 117,  90, SND_40_COMEDY_CAR_START_AND_PULL_AWAY,  96, 17,  38, 12), // 67 MightyMover Toffee Truck
+	ROV( 55, 147, 168, SND_3F_COMEDY_CAR_3,                   176, 19,  48, 22), // 68 Powernaught Toffee Truck
+	ROV( 55, 157, 240, SND_40_COMEDY_CAR_START_AND_PULL_AWAY, 224, 22,  69, 45), // 69 Wizzowow Toffee Truck
+	ROV( 56, 117,  90, SND_3F_COMEDY_CAR_3,                    96, 17,  38, 12), // 70 MightyMover Toy Van
+	ROV( 56, 147, 168, SND_40_COMEDY_CAR_START_AND_PULL_AWAY, 176, 19,  48, 22), // 71 Powernaught Toy Van
+	ROV( 56, 157, 240, SND_3F_COMEDY_CAR_3,                   224, 22,  69, 45), // 72 Wizzowow Toy Van
+	ROV( 58, 117,  90, SND_40_COMEDY_CAR_START_AND_PULL_AWAY,  96, 17,  38, 12), // 73 MightyMover Sweet Truck
+	ROV( 58, 147, 168, SND_3F_COMEDY_CAR_3,                   176, 19,  48, 22), // 74 Powernaught Sweet Truck
+	ROV( 58, 157, 240, SND_40_COMEDY_CAR_START_AND_PULL_AWAY, 224, 22,  69, 45), // 75 Wizzowow Sweet Truck
+	ROV( 59, 117,  90, SND_3F_COMEDY_CAR_3,                    96, 17,  38, 12), // 76 MightyMover Battery Truck
+	ROV( 59, 147, 168, SND_40_COMEDY_CAR_START_AND_PULL_AWAY, 176, 19,  48, 22), // 77 Powernaught Battery Truck
+	ROV( 59, 157, 240, SND_3F_COMEDY_CAR_3,                   224, 22,  69, 45), // 78 Wizzowow Battery Truck
+	ROV( 60, 117,  90, SND_40_COMEDY_CAR_START_AND_PULL_AWAY,  96, 17,  38, 12), // 79 MightyMover Fizzy Drink Truck
+	ROV( 60, 147, 168, SND_3F_COMEDY_CAR_3,                   176, 19,  48, 22), // 80 Powernaught Fizzy Drink Truck
+	ROV( 60, 157, 240, SND_40_COMEDY_CAR_START_AND_PULL_AWAY, 224, 22,  69, 45), // 81 Wizzowow Fizzy Drink Truck
+	ROV( 61, 117,  90, SND_3F_COMEDY_CAR_3,                    96, 17,  38, 12), // 82 MightyMover Plastic Truck
+	ROV( 61, 147, 168, SND_40_COMEDY_CAR_START_AND_PULL_AWAY, 176, 19,  48, 22), // 83 Powernaught Plastic Truck
+	ROV( 61, 157, 240, SND_3F_COMEDY_CAR_3,                   224, 22,  69, 45), // 84 Wizzowow Plastic Truck
+	ROV( 62, 117,  90, SND_40_COMEDY_CAR_START_AND_PULL_AWAY,  96, 17,  38, 12), // 85 MightyMover Bubble Truck
+	ROV( 62, 147, 168, SND_3F_COMEDY_CAR_3,                   176, 19,  48, 22), // 86 Powernaught Bubble Truck
+	ROV( 62, 157, 240, SND_40_COMEDY_CAR_START_AND_PULL_AWAY, 224, 22,  69, 45), // 87 Wizzowow Bubble Truck
 };
 #undef ROV
 
