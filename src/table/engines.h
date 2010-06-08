@@ -19,7 +19,7 @@
  * @param a base introduction date (days since 1920-01-01)
  * @param b decay speed
  * @param c life length (years)
- * @param d base life
+ * @param d base life (years)
  * @param e cargo type
  * @param f Bitmask of the climates
  * @note the 0x80 in parameter b sets the "is carriage bit"
@@ -31,7 +31,7 @@
  * @param a base introduction date (days since 1920-01-01)
  * @param b decay speed
  * @param c life length (years)
- * @param d base life
+ * @param d base life (years)
  * @param e cargo type
  * @param f Bitmask of the climates
  * @see MK
@@ -43,7 +43,7 @@
  * @param a base introduction date (days since 1920-01-01)
  * @param b decay speed
  * @param c life length (years)
- * @param d base life
+ * @param d base life (years)
  * @param e cargo type
  * @param f Bitmask of the climates
  * @see MK
@@ -55,7 +55,7 @@
  * @param a base introduction date (days since 1920-01-01)
  * @param b decay speed
  * @param c life length (years)
- * @param d base life
+ * @param d base life (years)
  * @param e Bitmask of the climates
  * @see MK
  * @note the 20 between b and e is the load amount
@@ -347,7 +347,7 @@ static const EngineInfo _orig_engine_info[] = {
  * @param a image_index
  * @param b type
  * @param c cost_factor
- * @param d max_speed
+ * @param d max_speed (1 unit = 1/1.6 mph = 1 km-ish/h)
  * @param e power (hp)
  * @param f weight (tons)
  * @param g running_cost
@@ -527,7 +527,7 @@ static const RailVehicleInfo _orig_rail_vehicle_info[] = {
  * @see ShipVehicleInfo
  * @param a image_index
  * @param b cost_factor
- * @param c max_speed
+ * @param c max_speed (1 unit = 1/3.2 mph = 0.5 km-ish/h)
  * @param d capacity (persons, bags, tons, pieces, items, cubic metres, ...)
  * @param e running_cost
  * @param f sound effect
@@ -561,7 +561,7 @@ static const ShipVehicleInfo _orig_ship_vehicle_info[] = {
  * @param d subtype (bit 0 - plane, bit 1 - large plane)
  * @param e sound effect
  * @param f acceleration
- * @param g max_speed
+ * @param g max_speed (1 unit = 8 mph = 12.8 km-ish/h)
  * @param h mail_capacity (bags)
  * @param i passenger_capacity (persons)
  */
@@ -628,7 +628,7 @@ static const AircraftVehicleInfo _orig_aircraft_vehicle_info[] = {
  * @param b cost_factor
  * @param c running_cost
  * @param d sound effect
- * @param e max_speed
+ * @param e max_speed (1 unit = 1/3.2 mph = 0.5 km-ish/h)
  * @param f capacity (persons, bags, tons, pieces, items, cubic metres, ...)
  * @param g weight (1/4 ton)
  * @param h power (10 hp)

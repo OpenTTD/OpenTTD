@@ -728,10 +728,10 @@ static const PalSpriteID * const * const _bridge_sprite_table[MAX_BRIDGES] = {
 
 /** Describes the data that defines each bridge in the game
  * @param y   year of availablity
- * @param mnl minimum length
- * @param mxl maximum length
- * @param p   price
- * @param mxs maximum speed allowed
+ * @param mnl minimum length (not counting bridge heads)
+ * @param mxl maximum length (not counting bridge heads)
+ * @param p   price multiplier
+ * @param mxs maximum speed allowed (1 unit = 1/1.6 mph = 1 km-ish/h)
  * @param spr sprite to use in purchase GUI
  * @param plt palette for the sprite in purchase GUI
  * @param dsc description of the bridge in purchase GUI
@@ -746,12 +746,12 @@ const BridgeSpec _orig_bridge[] = {
 	       year of availablity
 	       |  minimum length
 	       |  |   maximum length
-	       |  |   |    price
+	       |  |   |    price multiplier
 	       |  |   |    |    maximum speed
 	       |  |   |    |    |  sprite to use in GUI
 	       |  |   |    |    |  |      palette in GUI
-	   string with description               name on rail                                     name on road
-	   |                              |      |                                                | */
+	   string with description               name on rail                                         name on road
+	   |                              |      |                                                    | */
 	MBR(   0, 0, 16,  80,  32, 0xA24, PAL_NONE,
 	   STR_BRIDGE_NAME_WOODEN,               STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN,              STR_LAI_BRIDGE_DESCRIPTION_ROAD_WOODEN),
 

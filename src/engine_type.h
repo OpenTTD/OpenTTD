@@ -42,9 +42,9 @@ struct RailVehicleInfo {
 	RailVehicleTypes railveh_type;
 	byte cost_factor;               ///< Purchase cost factor;      For multiheaded engines the sum of both engine prices.
 	RailTypeByte railtype;
-	uint16 max_speed;
-	uint16 power;                   ///< Power of engine;           For multiheaded engines the sum of both engine powers.
-	uint16 weight;                  ///< Weight of vehicle;         For multiheaded engines the weight of each single engine.
+	uint16 max_speed;               ///< Maximum speed (1 unit = 1/1.6 mph = 1 km-ish/h)
+	uint16 power;                   ///< Power of engine (hp);      For multiheaded engines the sum of both engine powers.
+	uint16 weight;                  ///< Weight of vehicle (tons);  For multiheaded engines the weight of each single engine.
 	byte running_cost;              ///< Running cost of engine;    For multiheaded engines the sum of both running costs.
 	Price running_cost_class;
 	EngineClass engclass;           ///< Class of engine for this vehicle
@@ -61,7 +61,7 @@ struct RailVehicleInfo {
 struct ShipVehicleInfo {
 	byte image_index;
 	byte cost_factor;
-	uint16 max_speed;
+	uint16 max_speed;      ///< Maximum speed (1 unit = 1/3.2 mph = 0.5 km-ish/h)
 	uint16 capacity;
 	byte running_cost;
 	SoundID sfx;
@@ -84,7 +84,7 @@ struct AircraftVehicleInfo {
 	byte subtype;
 	SoundID sfx;
 	byte acceleration;
-	uint16 max_speed;
+	uint16 max_speed;           ///< Maximum speed (1 unit = 8 mph = 12.8 km-ish/h)
 	byte mail_capacity;
 	uint16 passenger_capacity;
 };
@@ -95,7 +95,7 @@ struct RoadVehicleInfo {
 	byte running_cost;
 	Price running_cost_class;
 	SoundID sfx;
-	uint16 max_speed;        ///< Maximum speed in mph/3.2 units
+	uint16 max_speed;        ///< Maximum speed (1 unit = 1/3.2 mph = 0.5 km-ish/h)
 	byte capacity;
 	uint8 weight;            ///< Weight in 1/4t units
 	uint8 power;             ///< Power in 10hp units
@@ -108,8 +108,8 @@ struct RoadVehicleInfo {
  */
 struct EngineInfo {
 	Date base_intro;
-	Year lifelength;
-	Year base_life;
+	Year lifelength;    ///< Lifetime of a single vehicle
+	Year base_life;     ///< Basic duration of engine availability (without random parts)
 	byte decay_speed;
 	byte load_amount;
 	byte climates;
