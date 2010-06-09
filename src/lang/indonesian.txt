@@ -795,7 +795,7 @@ STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}Serangan serangga menyebabkan malapetaka pada {INDUSTRY}!{}Produksi menurun hingga 50%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK}Produksi {STRING} di {INDUSTRY} turun hingga {COMMA}%!
 
-STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} sedang menunggu di depo
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} sedang menunggu di dipo
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} sedang menunggu di bengkel
 STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} sedang menunggu di galangan
 STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} sedang menunggu di hangar
@@ -1901,7 +1901,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Konversi
 
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Arah Dipo Lokomotif
-STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Pilih arah depo kereta
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Pilih arah dipo kereta
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Waypoint
@@ -1966,7 +1966,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Bangun j
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Bangun jalan menggunakan mode Autoroad. Ctrl untuk mengganti mode bangun/bongkar pada konstruksi jalan
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Bangun jalur trem menggunakan mode Autotram. Ctrl untuk mengganti mode bangun/bongkar pada konstruksi jalur trem
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Bangun bengkel (untuk pembelian dan perbaikan kendaraan)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Bangun depo trem (untuk pembelian dan perbaikan kendaraan)
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Bangun dipo trem (untuk pembelian dan perbaikan kendaraan)
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Bangun stasiun bus. Ctrl untuk mengaktifkan penggabungan stasiun
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Bangun stasion trem penumpang. Ctrl untuk mengaktifkan penggabungan stasiun
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Bangun terminal bongkar muat. Ctrl untuk mengaktifkan penggabungan stasiun
@@ -1980,10 +1980,10 @@ STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Bangun/B
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Membangun/bongkar konstruksi jalur trem
 
 # Road depot construction window
-STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Arah Depo kendaraan
+STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Arah Bengkel Kendaraan
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Pilih arah bengkel kendaraan
-STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Orientasi Depo Trem
-STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Pilih arah depo trem
+STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Arah Dipo Trem
+STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Pilih arah dipo trem
 
 # Road vehicle station construction window
 STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Orientasi stasiun Bus
@@ -2030,7 +2030,7 @@ STR_AIRPORT_INTERNATIONAL                                       :Internasional
 STR_AIRPORT_COMMUTER                                            :Bandara Komuter
 STR_AIRPORT_INTERCONTINENTAL                                    :Bandara Antar Benua
 STR_AIRPORT_HELIPORT                                            :Helipad
-STR_AIRPORT_HELIDEPOT                                           :Helipad+Hangar
+STR_AIRPORT_HELIDEPOT                                           :Hangar Helipad
 STR_AIRPORT_HELISTATION                                         :Bandara Helikopter
 
 STR_AIRPORT_CLASS_SMALL                                         :Ukuran kecil
@@ -2166,7 +2166,7 @@ STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Rel dengan siny
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Jalur rel kereta dengan sinyal combo dan sinyal jalur
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Rel dengan sinyal campuran dan jalan satu arah
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Rel dengan sinyal jalan dan sinyal jalan satu arah
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Depo kereta
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Dipo lokomotif
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Jalan
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Jalan raya dengan lampu
@@ -2789,8 +2789,8 @@ STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Ubah nam
 # Depot window
 STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
 
-STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}Ubah nama depo
-STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Ubah nama depo
+STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}Ubah nama dipo
+STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Ubah nama dipo
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -2809,12 +2809,12 @@ STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Drag pes
 
 STR_DEPOT_DRAG_WHOLE_TRAIN_TO_SELL_TOOLTIP                      :{BLACK}Seret lokomotif ke sini untuk menjualnya (termasuk gerbong)
 
-STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TOOLTIP                         :{BLACK}Jual kereta di depo
+STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TOOLTIP                         :{BLACK}Jual semua kereta di dipo
 STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Jual semua kendaraan di bengkel
-STR_DEPOT_SELL_ALL_BUTTON_SHIP_TOOLTIP                          :{BLACK}Jual kapal di galangan
-STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TOOLTIP                      :{BLACK}Jual pesawat di hangar
+STR_DEPOT_SELL_ALL_BUTTON_SHIP_TOOLTIP                          :{BLACK}Jual semua kapal di galangan
+STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TOOLTIP                      :{BLACK}Jual semua pesawat di hangar
 
-STR_DEPOT_AUTOREPLACE_TRAIN_TOOLTIP                             :{BLACK}Penggantian secara otomatis semua kereta di dalam depo
+STR_DEPOT_AUTOREPLACE_TRAIN_TOOLTIP                             :{BLACK}Penggantian secara otomatis semua kereta di dalam dipo
 STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TOOLTIP                      :{BLACK}Penggantian secara otomatis semua kendaraan di dalam bengkel
 STR_DEPOT_AUTOREPLACE_SHIP_TOOLTIP                              :{BLACK}Penggantian secara otomatis semua kapal di dalam galangan
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}Penggantian secara otomatis semua Pesawat di dalam hangar
@@ -2834,27 +2834,27 @@ STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Gandakan
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Gandakan
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Gandakan
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Ini akan membeli satu unit kereta yang sama termasuk gerbongnya. Klik tombol ini lalu klik kereta yang ingin digandakan baik didalam maupun diluar depo. Ctrl+Click untuk berbagi perintah
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Ini akan membeli satu unit kereta yang sama termasuk gerbongnya. Klik tombol ini lalu klik kereta yang ingin digandakan baik didalam maupun diluar dipo. Ctrl+Click untuk berbagi perintah
 STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Ini akan membeli satu unit kendaraan yang sama. Klik tombol ini lalu klik kendaraan yang ingin digandakan, baik didalam maupun diluar bengkel.Ctrl+Click untuk berbagi perintah
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Ini akan membeli satu unit kapal yang sama . Klik tombol ini dan kemudian pada satu kapal di dalam atau diluar galangan. Ctrl+Click untuk berbagi perintah
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Ini akan membeli satu unit pesawat yang sama. Klik tombol ini dan kemudian pada satu pesawat didalam atau diluar hangar. Ctrl+Click untuk berbagi perintah
 
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Arahkan pandangan utama pada lokasi depo kereta. Ctrl+Click akan membuka viewport baru pada lokasi depo kereta
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Arahkan pandangan utama pada lokasi dipo lokomotif. Ctrl+Click akan membuka viewport baru pada lokasi dipo lokomotif
 STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Arahkan pandangan utama pada lokasi bengkel kendaraan. Ctrl+Click akan membuka viewport baru pada lokasi bengkel kendaraan
 STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Arahkan pandangan utama pada lokasi galangan kapal. Ctrl+Click akan membuka viewport baru pada lokasi galangan kapal
 STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Arahkan pandangan utama pada lokasi hangar. Ctrl+Click akan membuka viewport baru pada lokasi hangar
 
-STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Mendaftar semua kereta dengan depo ini beserta perintahnya.
-STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Mendaftar semua kendaraan dari bengkel ini beserta perintahnya.
-STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TOOLTIP                       :{BLACK}Mendaftar semua kapal dari galangan ini beserta perintah.
-STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TOOLTIP                   :{BLACK}Mendaftar semua Pesawat dari hangar ini beserta perintah.
+STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Mendaftar semua kereta pada dipo ini beserta perintahnya
+STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Mendaftar semua kendaraan pada bengkel ini beserta perintahnya
+STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TOOLTIP                       :{BLACK}Mendaftar semua kapal pada galangan ini beserta perintahnya
+STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TOOLTIP                   :{BLACK}Mendaftar semua pesawat pada hangar ini beserta perintahnya
 
-STR_DEPOT_MASS_STOP_DEPOT_TRAIN_TOOLTIP                         :{BLACK}Klik untuk menghentikan semua kereta di dalam depo
+STR_DEPOT_MASS_STOP_DEPOT_TRAIN_TOOLTIP                         :{BLACK}Klik untuk menghentikan semua kereta di dalam dipo
 STR_DEPOT_MASS_STOP_DEPOT_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Klik untuk menghentikan semua kendaraan di dalam bengkel
 STR_DEPOT_MASS_STOP_DEPOT_SHIP_TOOLTIP                          :{BLACK}Klik untuk menghentikan semua kapal di dalam galangan
 STR_DEPOT_MASS_STOP_HANGAR_TOOLTIP                              :{BLACK}Klik untuk menghentikan semua Pesawat di dalam hangar
 
-STR_DEPOT_MASS_START_DEPOT_TRAIN_TOOLTIP                        :{BLACK}Klik untuk menjalankan semua kereta di dalam depo
+STR_DEPOT_MASS_START_DEPOT_TRAIN_TOOLTIP                        :{BLACK}Klik untuk menjalankan semua kereta di dalam dipo
 STR_DEPOT_MASS_START_DEPOT_ROAD_VEHICLE_TOOLTIP                 :{BLACK}Klik untuk menjalankan semua kendaraan di dalam bengkel
 STR_DEPOT_MASS_START_DEPOT_SHIP_TOOLTIP                         :{BLACK}Klik untuk menjalankan semua kapal di dalam galangan
 STR_DEPOT_MASS_START_HANGAR_TOOLTIP                             :{BLACK}Klik untuk menjalankan semua Pesawat di dalam hangar
@@ -3498,7 +3498,7 @@ STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Tidak da
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Tidak dapat membangun dipo trem disini...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Tidak dapat membangun galangan kapal disini...
 
-STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Tidak dapat mengubah nama depo...
+STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Tidak dapat mengubah nama dipo...
 
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Kereta harus diberhentikan di dalam dipo
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... harus dihentikan didalam bengkel kendaraan
@@ -3513,8 +3513,8 @@ STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Jenis rel tidak
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Tidak dapat memindahkan kendaraan...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}Bagian belakang mesin akan selalu mengikuti bagian depannya
-STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Tidak menemukan rute menuju depo terdekat
-STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Tidak dapat menemukan garasi terdekat
+STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Tidak menemukan rute menuju dipo terdekat
+STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Tidak dapat menemukan dipo terdekat
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Jenis dipo salah
 
@@ -4073,12 +4073,12 @@ STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING} {0:T
 STR_FORMAT_WAYPOINT_NAME                                        :Waypoint {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Waypoint {TOWN} #{COMMA}
 
-STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} Depo Kereta
-STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} Depo Kereta#{COMMA}
+STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} Dipo Lokomotif
+STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} Dipo Lokomotif #{COMMA}
 STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} Bengkel Kendaraan
 STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} Bengkel Kendaraan #{COMMA}
 STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} Galangan Kapal
-STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} Galangan Kapal#{COMMA}
+STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} Galangan Kapal #{COMMA}
 STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{STATION} Hangar
 
 STR_UNKNOWN_STATION                                             :stasiun tidak dikenal

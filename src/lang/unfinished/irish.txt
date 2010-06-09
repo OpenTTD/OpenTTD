@@ -2014,24 +2014,82 @@ STR_LAI_STATION_DESCRIPTION_BUOY                                :Baoi
 STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :Pointe bealaigh
 
 STR_LAI_WATER_DESCRIPTION_WATER                                 :Uisce
+STR_LAI_WATER_DESCRIPTION_CANAL                                 :Canáil
+STR_LAI_WATER_DESCRIPTION_LOCK                                  :Loc
+STR_LAI_WATER_DESCRIPTION_RIVER                                 :Abhainn
+STR_LAI_WATER_DESCRIPTION_COAST_OR_RIVERBANK                    :Cósta nó bruach
+STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT                            :Iosta long
 
 # Industries come directly from their industry names
 
+STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :Tollán iarnróid
+STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :Tollán bóthair
 
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :Droichead iarnróid cruach starrmhaide
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Droichead iarnróid crochta de choincréit threisithe
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :Droichead iarnróid adhmaid
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_CONCRETE                        :Droichead iarnróid coincréite
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_TUBULAR_STEEL                   :Droichead iarnróid feadánach
 
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_STEEL                :Droichead bóthair crochta cruach
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_GIRDER_STEEL                    :Droichead bóthair cearchaillí cruach
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_CANTILEVER_STEEL                :Droicheadh bóthair starrmhaide cruach
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_CONCRETE             :Droichead bóthair crochta de choincréit threisithe
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_WOODEN                          :Droichead bóthair adhmaid
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_CONCRETE                        :Droichead bóthair coincréite
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                   :Droichead bóthair feadánach
 
+STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT                             :Uiscerian
 
+STR_LAI_UNMOVABLE_DESCRIPTION_TRANSMITTER                       :Tarchuradóir
+STR_LAI_UNMOVABLE_DESCRIPTION_LIGHTHOUSE                        :Teach solais
+STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_HEADQUARTERS              :Ceanncheathrú cuideachta
+STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_OWNED_LAND                :Talamh faoi úinéireacht cuideachta
 
 # About OpenTTD window
+STR_ABOUT_OPENTTD                                               :{WHITE}Maidir le OpenTTD
+STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Cóipcheart bunaidh {COPYRIGHT} 1995 Chris Sawyer, Gach ceart ar cosaint
+STR_ABOUT_VERSION                                               :{BLACK}OpenTTD leagan {REV}
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2010 An fhoireann OpenTTD
 
 # Save/load game/scenario
+STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}Sábháil an Cluiche
+STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Lódáil Cluiche
+STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Sábháil Scéal
+STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Lódáil Scéal
+STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Lódáil Mapa airde
+STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} saor
+STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Ainm atá roghnaithe faoi láthair don chluiche sábháilte
+STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}Scrios
+STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}Scrios an cluiche sábháilte atá roghnaithe faoi láthair
+STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Sábháil
+STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Sábháil an cluiche reatha, ag úsáid an t-ainm roghnaithe
 
+STR_SAVELOAD_OSKTITLE                                           :{BLACK}Iontráil ainm don chluiche sábháilte
 
 # World generation
+STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Domhan a Chruthú
+STR_MAPGEN_MAPSIZE                                              :{BLACK}Méid na léarscáile:
+STR_MAPGEN_BY                                                   :{BLACK}*
+STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Líon na mbailte:
+STR_MAPGEN_DATE                                                 :{BLACK}Dáta:
+STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Líon na dtionscal:
+STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Airde na líne sneachta:
+STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Leibhéal na farraige:
+STR_MAPGEN_GENERATE                                             :{WHITE}Cruthaigh
 
 # Strings for map borders at game generation
+STR_MAPGEN_BORDER_WATER                                         :{BLACK}Uisce
+STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Randamach
+STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Randamach
+STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}De láimh
 
+STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Rothlú an mhapa airde:
+STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Ainm an mhapa airde:
+STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Méid:
+STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
 
+STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Athraigh an bhliain tosaigh
 
 # SE Map generation
 

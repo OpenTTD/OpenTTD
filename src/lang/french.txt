@@ -170,7 +170,7 @@ STR_PASSENGERS                                                  :passagers
 STR_BAGS                                                        :sacs
 STR_TONS                                                        :tonnes
 STR_LITERS                                                      :litres
-STR_ITEMS                                                       :items
+STR_ITEMS                                                       :unités
 STR_CRATES                                                      :caisses
 STR_RES_OTHER                                                   :autre
 STR_NOTHING                                                     :
@@ -231,7 +231,7 @@ STR_BUTTON_LOCATION                                             :{BLACK}Emplacem
 STR_BUTTON_RENAME                                               :{BLACK}Renommer
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Fermer la fenêtre
-STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Titre de fenêtre - Faire Glisser pour déplacer la fenêtre
+STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Titre de fenêtre - Faire glisser pour déplacer la fenêtre
 STR_TOOLTIP_SHADE                                               :{BLACK}Enrouler la fenêtre - n'afficher que la barre de titre
 STR_TOOLTIP_DEBUG                                               :{BLACK}Afficher les informations de débogage NewGRF
 STR_TOOLTIP_STICKY                                              :{BLACK}Marquer cette fenêtre comme ineffaçable pour la touche 'Fermer toutes les fenêtres'
@@ -308,7 +308,7 @@ STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Financer
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Afficher la liste des trains. Ctrl-clic pour ouvrir avec l'autre mode (avancé/normal)
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Afficher la liste des véhicules routiers. Ctrl-clic pour ouvrir avec l'autre mode (avancé/normal)
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Afficher la liste des navires. Ctrl-clic pour ouvrir avec l'autre mode (avancé/normal)
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Afficher la liste des aéronefs Ctrl-clic pour ouvrir avec l'autre mode (avancé/normal)
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Afficher la liste des aéronefs. Ctrl-clic pour ouvrir avec l'autre mode (avancé/normal)
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Zoom avant
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Zoom arrière
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Construction ferroviaire
@@ -358,7 +358,7 @@ STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Afficher les pa
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Animation complète
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Détails maximums
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Édifices transparents
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Nom de station transparent
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Noms et panneaux transparents
 ############ range ends here
 
 ############ range for file menu starts
@@ -526,7 +526,7 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Valeur d
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Valeur des marchandises
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Jours de transit
-STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Prix payé pour livrer 10 unités (ou 10000 litres) à 20 carrés de distance
+STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Prix payé pour livrer 10 unités (ou 10.000 litres) à 20 carrés de distance
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}Activer tout
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT}{BLACK}Désactiver tout
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Afficher toutes les marchandises sur le graphique
@@ -571,11 +571,11 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Argent{N
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Emprunt{NBSP}:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total{NBSP}:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Nombre de véhicules ayant fait un profit l'an passé. Ceci inclut les véhicules routiers, les trains, les navires et les aéronefs.
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Nombre de véhicules ayant fait du profit l'an passé. Ceci inclut les véhicules routiers, les trains, les navires et les aéronefs.
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Nombre de parties de stations utilisées récemment. Chaque partie d'une station (i.e. gare, arrêt de bus, [aéro]port) est comptée, même si elles sont connectées à une seule station.
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Le profit du véhicule ayant le revenu le plus bas (de tous les véhicules ayant plus de 2 années d'existence)
-STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Quantité d'argent fait dans le quadrimestre ayant le plus bas profit des 12 derniers.
-STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Quantité d'argent fait dans le quadrimestre ayant le plus haut profit des 12 derniers.
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Quantité d'argent fait dans le trimestre ayant le plus bas profit des 12 derniers.
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Quantité d'argent fait dans le trimestre ayant le plus haut profit des 12 derniers.
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Unités de cargo livrées durant les 4 derniers trimestres.
 STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Types de cargo livrés durant le dernier trimestre.
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Quantité d'argent disponible.
@@ -607,7 +607,7 @@ STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Sauter �
 STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Sauter à la piste suivante dans la sélection
 STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Arrêter la musique
 STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}Démarrer la musique
-STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}Faire glisser les curseurs pour changer le volume
+STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}Faire glisser les curseurs pour changer les volumes
 STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM                     :{BLACK}Choisir le programme 'tout'
 STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}Choisir le programme 'ancien style musical'
 STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}Choisir le programme 'nouveau style musical'
@@ -814,7 +814,7 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} devient très vieux et doit être remplacé d'urgence
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} ne trouve pas de chemin pour continuer.
 STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} est perdu.
-STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Le profit de {VEHICLE} l'an dernier était {CURRENCY}
+STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Le profit de {VEHICLE} l'an dernier était de {CURRENCY}
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}L'échec du réaménagement a stoppé {VEHICLE}
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Le renouvellement automatique de {VEHICLE} a échoué {}{STRING}
@@ -983,7 +983,7 @@ STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Passer �
 STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Passer à l'Euro plus tard
 
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Prévisualisation{NBSP}: {ORANGE}{CURRENCY}
-STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 Livres (£) dans votre monnaie
+STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10.000 Livres (£) dans votre monnaie
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Changer les paramètres de devises personnalisées
 
 # Difficulty level window
@@ -1668,15 +1668,15 @@ STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP                     :{BLACK}Aider à
 STR_NETWORK_CONNECTING_CAPTION                                  :{WHITE}Connexion en cours...
 
 ############ Leave those lines in this order!!
-STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Connexion en cours..
-STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Autorisation en cours..
-STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Attente..
-STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Téléchargement de la carte..
-STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Traitement des données..
-STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Enregistrement..
+STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Connexion en cours...
+STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Autorisation en cours...
+STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Attente...
+STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Téléchargement de la carte...
+STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Traitement des données...
+STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Enregistrement...
 
-STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Rapatriement des infos sur le jeu..
-STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Rapatriement des infos sur la compagnie..
+STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Rapatriement des infos sur le jeu...
+STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Rapatriement des infos sur la compagnie...
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} client{P "" s} avant vous
 STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} téléchargés
@@ -1845,7 +1845,7 @@ STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Téléch
 STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Demande des fichiers...
 STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Téléchargement de {STRING} ({NUM} sur {NUM})
 STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Téléchargement terminé
-STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} sur {BYTES} téléchargés ({NUM} %)
+STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} sur {BYTES} téléchargés ({NUM}%)
 
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Connexion au serveur de contenu impossible...
@@ -2125,7 +2125,7 @@ STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}Proprié
 STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Propriétaire du tramway{NBSP}: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Propriétaire des rails{NBSP}: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Municipalité{NBSP}: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Aucun
+STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Aucune
 STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Coordonnées{NBSP}: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Construit le{NBSP}: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Classe de station{NBSP}: {LTBLUE}{STRING}
@@ -2808,7 +2808,7 @@ STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Glisser 
 STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Glisse le navire jusqu'ici pour le vendre
 STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Glisser l'aéronef jusqu'ici ici pour le vendre
 
-STR_DEPOT_DRAG_WHOLE_TRAIN_TO_SELL_TOOLTIP                      :{BLACK}Faire Glisser la locomotive ici pour vendre tout le train
+STR_DEPOT_DRAG_WHOLE_TRAIN_TO_SELL_TOOLTIP                      :{BLACK}Faire glisser la locomotive ici pour vendre tout le train
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TOOLTIP                         :{BLACK}Vendre tous les trains du dépôt
 STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Vendre tous les véhicules routiers du dépôt
@@ -2989,8 +2989,8 @@ STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Nom
 
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Renommer le train
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Renommer le véhicule
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Nommer navire
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Nommer l'aéronef
+STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Rebaptiser le navire
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Renommer l'aéronef
 
 STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Âge{NBSP}: {LTBLUE}{STRING}{BLACK}   Coût d'entretien{NBSP}: {LTBLUE}{CURRENCY}/an
 # The next two need to stay in this order
@@ -3019,8 +3019,8 @@ STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Diminuer
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Renommer le train
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Renommer le véhicule
-STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Nommer navire
-STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Nommer l'aéronef
+STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Rebaptiser le navire
+STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Renommer l'aéronef
 
 # Extra buttons for train details windows
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Construit en{NBSP}: {LTBLUE}{NUM}{BLACK} Valeur{NBSP}: {LTBLUE}{CURRENCY}
@@ -3037,7 +3037,7 @@ STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO}
 STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}Cargaison
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}Afficher des informations sur les marchandises transportées
 STR_VEHICLE_DETAIL_TAB_INFORMATION                              :{BLACK}Information
-STR_VEHICLE_DETAILS_TRAIN_INFORMATION_TOOLTIP                   :{BLACK}Afficher des informations sur les wagons
+STR_VEHICLE_DETAILS_TRAIN_INFORMATION_TOOLTIP                   :{BLACK}Afficher des informations sur la locomotive et les wagons
 STR_VEHICLE_DETAIL_TAB_CAPACITIES                               :{BLACK}Capacités
 STR_VEHICLE_DETAILS_TRAIN_CAPACITIES_TOOLTIP                    :{BLACK}Afficher la capacité de chaque wagon
 STR_VEHICLE_DETAIL_TAB_TOTAL_CARGO                              :{BLACK}Charge totale
@@ -3100,7 +3100,7 @@ STR_ORDER_DROP_NO_UNLOADING                                     :Pas de décharg
 STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Modifier le comportement de déchargement de l'ordre sélectionné
 
 STR_ORDER_REFIT                                                 :{BLACK}Réaménager
-STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Choisir pour quelle cargaison réaménager pour cet ordre. Ctrl-clic pour retirer l'instruction de réaménagement
+STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Choisir pour quelle cargaison réaménager avec cet ordre. Ctrl-clic pour retirer l'instruction de réaménagement
 
 STR_ORDER_SERVICE                                               :{BLACK}Entretien
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Toujours aller
@@ -3253,7 +3253,7 @@ STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Nom de l
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}Configuration IA
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Modifier la configuration de l'IA
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Recharger IA
-STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Tuer l'IA, recharger le script et relancer l'IA
+STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Arrêter l'IA, en recharger le script puis la relancer
 STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Activer/désactiver l'arrêt lorsqu'un message d'IA correspond à la chaine d'arrêt
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Arrêter sur{NBSP}:
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Arrêter sur
@@ -3323,12 +3323,12 @@ STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Coût es
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Revenu estimé{NBSP}: {CURRENCY}
 
 # Saveload messages
-STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Sauvegarde en cours,{}Veuillez attendre la fin du processus!
+STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Sauvegarde en cours...{}Veuillez attendre la fin du processus!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Enregistrement automatique échoué
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Impossible d'accéder au disque
-STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}La sauvegarde à échoué{}{STRING}
+STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}La sauvegarde a échoué{}{STRING}
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Impossible de supprimer le fichier
-STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Le chargement à échoué{}{STRING}
+STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Le chargement a échoué{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Erreur interne{NBSP}: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Sauvegarde corrompue - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Sauvegarde modifiée avec une version plus récente
@@ -3829,7 +3829,7 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_30_ELECTRIC               :SH '30' (Electr
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_40_ELECTRIC               :SH '40' (Electrique)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_T_I_M_ELECTRIC               :'T.I.M.' (Electrique)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_ASIASTAR_ELECTRIC            :'AsiaStar' (Electrique)
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PASSENGER_CAR                 :Wagon de voyageurs
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PASSENGER_CAR                 :Voiture à voyageurs
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_MAIL_VAN                      :Wagon de courrier
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COAL_CAR                      :Wagon de charbon
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_OIL_TANKER                    :Wagon-citerne de pétrole
@@ -3859,7 +3859,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PLASTIC_TRUCK                 :Wagon à plasti
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :'X2001' (Electrique)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_MILLENNIUM_Z1_ELECTRIC   :'Millennium Z1' (Electrique)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_WIZZOWOW_Z99             :Wizzowow Z99
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PASSENGER_CAR             :Wagon de voyageurs
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PASSENGER_CAR             :Voiture à voyageurs
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_MAIL_VAN                  :Wagon de courrier
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COAL_CAR                  :Wagon de charbon
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_OIL_TANKER                :Wagon-citerne de pétrole
@@ -3891,7 +3891,7 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV2_CYCLOPS_ELECTRIC      :Lev2 'Cyclops' 
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV3_PEGASUS_ELECTRIC      :Lev3 'Pegasus' (Electrique)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV4_CHIMAERA_ELECTRIC     :Lev4 'Chimaera' (Electrique)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_WIZZOWOW_ROCKETEER         :Wizzowow Rocketeer
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PASSENGER_CAR               :Wagon de voyageurs
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PASSENGER_CAR               :Voiture à voyageurs
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_MAIL_VAN                    :Wagon de courrier
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COAL_CAR                    :Wagon de charbon
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_OIL_TANKER                  :Wagon-citerne de pétrole
