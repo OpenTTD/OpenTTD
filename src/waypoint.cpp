@@ -15,6 +15,8 @@
 #include "window_func.h"
 #include "newgrf_station.h"
 #include "waypoint_base.h"
+#include "vehicle_gui.h"
+#include "company_func.h"
 
 /**
  * Draw a waypoint
@@ -52,6 +54,10 @@ Waypoint::~Waypoint()
 	if (CleaningPool()) return;
 	DeleteWindowById(WC_WAYPOINT_VIEW, this->index);
 	RemoveOrderFromAllVehicles(OT_GOTO_WAYPOINT, this->index);
+
+	WindowNumber wno = (this->index << 16) | VLW_WAYPOINT_LIST | (this->owner == OWNER_NONE ? _local_company : this->owner);
+	DeleteWindowById(WC_TRAINS_LIST, wno | (VEH_TRAIN << 11));
+	DeleteWindowById(WC_SHIPS_LIST, wno | (VEH_SHIP << 11));
 
 	this->sign.MarkDirty();
 }
