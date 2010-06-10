@@ -1183,33 +1183,12 @@ struct StationViewWindow : public Window {
 						this, CS_ALPHANUMERAL, QSF_ENABLE_DEFAULT);
 				break;
 
-			case SVW_TRAINS: { // Show a list of scheduled trains to this station
-				const Station *st = Station::Get(this->window_number);
-				ShowVehicleListWindow(st->owner, VEH_TRAIN, (StationID)this->window_number);
+			case SVW_TRAINS:   // Show list of scheduled trains to this station
+			case SVW_ROADVEHS: // Show list of scheduled road-vehicles to this station
+			case SVW_PLANES:   // Show list of scheduled aircraft to this station
+			case SVW_SHIPS:    // Show list of scheduled ships to this station
+				ShowVehicleListWindow(this->owner, (VehicleType)(widget - SVW_TRAINS), (StationID)this->window_number);
 				break;
-			}
-
-			case SVW_ROADVEHS: { // Show a list of scheduled road-vehicles to this station
-				const Station *st = Station::Get(this->window_number);
-				ShowVehicleListWindow(st->owner, VEH_ROAD, (StationID)this->window_number);
-				break;
-			}
-
-			case SVW_PLANES: { // Show a list of scheduled aircraft to this station
-				const Station *st = Station::Get(this->window_number);
-				/* Since oilrigs have no owners, show the scheduled aircraft of local company */
-				Owner owner = (st->owner == OWNER_NONE) ? _local_company : st->owner;
-				ShowVehicleListWindow(owner, VEH_AIRCRAFT, (StationID)this->window_number);
-				break;
-			}
-
-			case SVW_SHIPS: { // Show a list of scheduled ships to this station
-				const Station *st = Station::Get(this->window_number);
-				/* Since oilrigs/bouys have no owners, show the scheduled ships of local company */
-				Owner owner = (st->owner == OWNER_NONE) ? _local_company : st->owner;
-				ShowVehicleListWindow(owner, VEH_SHIP, (StationID)this->window_number);
-				break;
-			}
 		}
 	}
 

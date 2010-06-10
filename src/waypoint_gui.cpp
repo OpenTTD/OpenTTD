@@ -87,7 +87,7 @@ public:
 				break;
 
 			case WAYPVW_SHOW_VEHICLES: // show list of vehicles having this waypoint in their orders
-				ShowVehicleListWindow((this->wp->owner == OWNER_NONE) ? _local_company : this->wp->owner, this->vt, this->wp);
+				ShowVehicleListWindow(this->owner, this->vt, this->wp);
 				break;
 		}
 	}
