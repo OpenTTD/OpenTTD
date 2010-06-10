@@ -60,11 +60,6 @@ public:
 		this->OnInvalidateData(0);
 	}
 
-	~WaypointWindow()
-	{
-		DeleteWindowById(GetWindowClassForVehicleType(this->vt), (this->window_number << 16) | (this->vt << 11) | VLW_WAYPOINT_LIST | this->wp->owner);
-	}
-
 	virtual void SetStringParameters(int widget) const
 	{
 		if (widget == WAYPVW_CAPTION) SetDParam(0, this->wp->index);
