@@ -2125,7 +2125,7 @@ STR_BRIDGE_NAME_SUSPENSION_CONCRETE                             :Висячий 
 STR_BRIDGE_NAME_WOODEN                                          :Деревянный
 STR_BRIDGE_NAME_CONCRETE                                        :Бетонный
 STR_BRIDGE_NAME_TUBULAR_STEEL                                   :Трубчатый стальной
-STR_BRIDGE_TUBULAR_SILICON                                      :Трубчатый силиконовый
+STR_BRIDGE_TUBULAR_SILICON                                      :Трубчатый кремниевый
 
 
 # Road construction toolbar

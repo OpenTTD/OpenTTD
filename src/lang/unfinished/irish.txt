@@ -2092,24 +2092,70 @@ STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} *
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Athraigh an bhliain tosaigh
 
 # SE Map generation
+STR_SE_MAPGEN_CAPTION                                           :{WHITE}Cineál Scéil
+STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Talamh réidh
+STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Cruthaigh talamh réidh
+STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Talamh randamach
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Airde na talún réidh:
 
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Athraigh airde na talún réidh
 
 # Map generation progress
+STR_GENERATION_WORLD                                            :{WHITE}Domhan á Chruthú...
+STR_GENERATION_ABORT                                            :{BLACK}Tobscoir
+STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Tobscoir Cruthú Domhain
+STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}An bhfuil tú cinnte gur mhaith leat an ghiniúit a thobscor?
+STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% críochnaithe
+STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
+STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Domhan a chruthú
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}Crainn a chruthú
+STR_GENERATION_UNMOVABLE_GENERATION                             :{BLACK}Nithe nach féidir bogadh a chruthú
+STR_GENERATION_CLEARING_TILES                                   :{BLACK}Limistear garbh agus carraigeach a chruthú
+STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Cluiche á chumrú
+STR_GENERATION_PREPARING_GAME                                   :{BLACK}Cluiche á ullmhú
 
 # NewGRF settings
+STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Socruithe NewGRF
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Faisnéis NewGRF mionsonraithe
 STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Comhaid NewGRF ghníomhacha
 STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Comhaid NewGRF neamhghníomhacha
 STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Roghnaigh réamhshocrú
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Teaghrán scagtha:
+STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Lódáil an réamhshocrú roghnaithe
+STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Sábháil réamhshocrú
+STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Sábháil an liosta reatha mar réamhshocrú
+STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Iontráil ainm don réamhshocrú
+STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Scrios réamhshocrú
+STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Scrios an réamhshocrú atá roghnaithe faoi láthair
+STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Cuir leis
 STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Cuir an comhad NewGRF roghnaithe le do chumraíocht
 STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}Athscan na comhaid
 STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Nuashonraigh liosta na gcomhad NewGRF atá ar fáil
+STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Bain
+STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Bain an comhad NewGRF roghnaith ón liosta
+STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Bog Suas
+STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Bog an comhad NewGRF roghnaithe suas an liosta
+STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Bog Síos
+STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Bog an comhad NewGRF roghnaithe síos an liosta
+STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Liosta de na comhaid NewGRF atá suiteáilte. Cliceáil ar chomhad chun a pharaiméadair a athrú
 
+STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Socraigh paraiméadair
+STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Scoránaigh an pailéad
+STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Cuir athruithe i bhfeidhm
 
+STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Aimsigh inneachar atá ar iarraidh ar líne
+STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Seiceáil an féidir an t-inneachar atá ar iarraidh a aimsiú ar líne
 
+STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Comhadainm: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}ID an GRF: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Pailéad: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Paraiméadair: {SILVER}{STRING}
 
+STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Níl aon fhaisnéis ar fáil
+STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Díchumasaithe
 
+STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Iontráil paraiméadair NewGRF
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Déan iniúchadh - {STRING}
@@ -2138,13 +2184,33 @@ STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Roghnaig
 STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Téigh chuig sprite
 
 # NewGRF (self) generated warnings/errors
+STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Rabhadh: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Earráid: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Marfach: {SILVER}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Tharla earráid mharfach NewGRF: {}{STRING}
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING}: Is don leagan {STRING} de TTD é
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :Tá {1:STRING} deartha le húsáid le {STRING}
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Paraiméadar neamhbhailí le haghaidh {1:STRING}: paraiméadar {STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :Ní mór {1:STRING} a lódáil roimh {STRING}.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :Ní mór {1:STRING} a lódáil tar éis {STRING}.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING}: Tá an leagan {STRING} nó níos fearr de OpenTTD de dhíth uaidh
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :an comhad GRF a bhí sé deartha a aistriú
+STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Tá an iomarca NewGRF lódáilte.
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Sprite gan choinne.
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Airí Gníomh 0 anaithnid.
+STR_NEWGRF_ERROR_INVALID_ID                                     :Iarracht ID neamhbhailí a úsáid.
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}Tá sprite truaillithe in {STRING}. Taispeánfar gach sprite truaillithe mar chomhartha ceiste (?) dearg.
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Tá iontrálacha Gníomh 8 iolracha ann.
 
 # NewGRF related 'general' warnings
 
 
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Comha(i)d GRF ar lár
 
 # NewGRF 'it's broken' warnings
 
+STR_NEWGRF_BUGGY                                                :{WHITE}Cuireann an NewGRF '{0:STRING}' faisnéis mícheart ar fáil.
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs.
 STR_NEWGRF_INVALID_CARGO                                        :<lastas neamhbhailí>
@@ -2154,11 +2220,17 @@ STR_NEWGRF_INVALID_ENGINE                                       :<inneall neamhb
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<tionscal neamhbhailí>
 
 # Sign list window
+STR_SIGN_LIST_CAPTION                                           :{WHITE}Liosta Comhartaí - {COMMA} {P Ch Ch Ch gC C}omhartha
 
 # Sign window
+STR_EDIT_SIGN_CAPTION                                           :{WHITE}Cuir téacs an chomhartha in eagar
+STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Gabh chuig an chéad chomhartha eile
+STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Gabh chuig an comhartha roimhe
 
+STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Iontráil ainm don chomhartha
 
 # Town directory window
+STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Bailte
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Ceann ar bith -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 
@@ -2508,17 +2580,51 @@ STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Níl an comhad 
 
 
 # Station destruction related errors
+STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Ní féidir cuid den stáisiún a bhaint...
+STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}Ní mór an stáisiún iarnróid a bhaint ar dtús
+STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Ní féidir an stáisiún busanna a bhaint...
+STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Ní féidir an stáisiún leoraithe a bhaint...
+STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Ní féidir an stáisiún tramanna paisinéirí a bhaint...
+STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Ní féidir an stáisiún tramanna lastais a bhaint...
+STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Ní mór an stad bóthair a bhaint ar dtús
 
+STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Ní mór an stáisiún iarnróid a leagan ar dtús
+STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Ní mór an stáisiún busanna a leagan ar dtús
+STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}Ní mór an stáisiún leoraithe a leagan ar dtús
+STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Ní mór an stáisiún tramanna paisinéirí a leagan ar dtús
+STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Ní mór an stáisiún tramanna lastais a leagan ar dtús
+STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Ní mór an dug a leagan ar dtús
+STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Ní mór an t-aerfort a leagan ar dtús
 
 # Waypoint related errors
+STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Tá sé taobh le níos mó ná pointe bealaigh amháin eile atá ann cheana
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Roghearr do phointe bealaigh eile
 
+STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Ní féidir pointe bealaigh traenach a thógáil anseo...
+STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Ní féidir baoi a chur anseo...
+STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Ní féidir ainm an phointe bealaigh a athrú...
 
+STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Ní féidir an pointe bealaigh traenach a bhaint anseo...
+STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Ní mór an pointe bealaigh iarnróid a bhait ar dtús
+STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... tá baoi sa mbealach
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... tá an baoi in úsáid!
 
 # Depot related errors
+STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Ní féidir iosta traenacha a thógáil anseo...
+STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Ní féidir iosta feithiclí bóthair a thógáil anseo...
+STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Ní féidir iosta tramfheithiclí a thógáil anseo...
+STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Ní féidir iosta long a thógáil anseo...
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Ní féidir an t-iosta a athainmniú...
 
+STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Ní mór an traein a bheith stoptha in iosta
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... ní mór go mbeadh sé stoptha in iosta feithiclí bóthair
+STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Ní mór an long a bheith stoptha in iosta
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Ní mór don aerárthach a bheith stoptha i haingear
 
+STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Ní féidir traenacha a athrú ach amháin nuair atá siad in iosta
+STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Tá an traein rófhada
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Ní féidir treo na feithicle a aisiompú...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Ní féidir treo feithiclí atá comhdhéanta d'aonaid iolracha a aisiompú...
 STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Cineálacha ráillí neamh-chomhoiriúnacha
 
@@ -2686,7 +2792,7 @@ STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Ní féi
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Níl an fheithicil seo ag stopadh ag an stáisiún seo.
 
 # Sign related errors
-STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... an-iomarca comharthaí
+STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... an iomarca comharthaí
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Ní féidir comhartha a chur anseo...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Ní féidir ainm an chomhartha a athrú...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Ní féidir an comhartha a scriosadh...

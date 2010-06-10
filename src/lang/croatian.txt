@@ -37,7 +37,7 @@ STR_CARGO_PLURAL_MAIL                                           :Pošta
 STR_CARGO_PLURAL_MAIL.gen                                       :pošte
 STR_CARGO_PLURAL_OIL                                            :Nafta
 STR_CARGO_PLURAL_OIL.gen                                        :nafte
-STR_CARGO_PLURAL_LIVESTOCK                                      :Stoka
+STR_CARGO_PLURAL_LIVESTOCK                                      :Domaće životinje
 STR_CARGO_PLURAL_LIVESTOCK.gen                                  :domaćih životinja
 STR_CARGO_PLURAL_GOODS                                          :Roba
 STR_CARGO_PLURAL_GOODS.gen                                      :robe
@@ -194,7 +194,7 @@ STR_QUANTITY_PASSENGERS                                         :{COMMA} putnik{
 STR_QUANTITY_COAL                                               :{WEIGHT} ugljena
 STR_QUANTITY_MAIL                                               :{COMMA} poštansk{P a e ih} vreć{P a e a}
 STR_QUANTITY_OIL                                                :{VOLUME} nafte
-STR_QUANTITY_LIVESTOCK                                          :{COMMA} grl{P o a a} stoke
+STR_QUANTITY_LIVESTOCK                                          :{COMMA} grl{P o a a} domaćih životinja
 STR_QUANTITY_GOODS                                              :{COMMA} sanduk{P "" a a} robe
 STR_QUANTITY_GRAIN                                              :{WEIGHT} žita
 STR_QUANTITY_WOOD                                               :{WEIGHT} drveta
@@ -3777,7 +3777,7 @@ STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Nije mog
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Nije moguće obrisati znak...
 
 # Translatable comment for OpenTTD's desktop shortcut
-STR_DESKTOP_SHORTCUT_COMMENT                                    :Klon od Transport Tycoon Deluxe-a
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Klon Transport Tycoon Deluxea
 
 ##id 0x2000
 # Town building names

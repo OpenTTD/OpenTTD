@@ -232,6 +232,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Omdøb
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Luk vindue
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Vinduestitel - træk her for at flytte vinduet
 STR_TOOLTIP_SHADE                                               :{BLACK}Oprul vindue - vis kun titellinien
+STR_TOOLTIP_DEBUG                                               :{BLACK}Vis information om NewGRF fejl
 STR_TOOLTIP_STICKY                                              :{BLACK}Marker dette vindue som ulukkeligt af 'Luk ALLE vinduer' tasten
 STR_TOOLTIP_RESIZE                                              :{BLACK}Klik og træk for at ændre vinduets størrelse
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Skift mellem stort/lille vindue
@@ -2321,6 +2322,7 @@ STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF i
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Detaljeret NewGRF information
 STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Aktive NewGRF filer
 STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Inaktive NewGRF filer
+STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Vælg forudindstillet
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filtrer udtryk:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Indlæs den valgte indstilling
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Gem indstilling
@@ -2361,17 +2363,24 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Deaktivere
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Indtast NewGRF-parameter
 
 # NewGRF inspect window
+STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspicer - {STRING}
 STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Forældrer
+STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Inspicer objektet fra foregående råderum
 
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} ved {HEX}
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Jernbanetype
 
+STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF variabel 60+x parameter (hexadecimal)
 
 # Sprite aligner window
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Næste grafikelement
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Gå til grafikelement
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Tidligere grafikelement
+STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Repræsentation af den markerede sprite. Justeringen ignoreres når denne sprite tegnes.
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Flyt spriten rundt for at ændre X- og Y-forskydningen
+STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X-forskydning: {NUM}, Y-forskydning: {NUM}
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Vælg grafikelement
+STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Vælg en sprite fra et vilkårligt sted på skærmen
 
 STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Gå til grafikelement
 
@@ -2394,7 +2403,7 @@ STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Indlæsning af 
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Uventet grafikelement.
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Ukendt Action 0 egenskab.
 STR_NEWGRF_ERROR_INVALID_ID                                     :Forsøg på brug af ugyldig ID.
-STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} indeholder en ødelagt sprite. Alle ødelagte sprites vil blive vist som et rødt spørgsmålstegm (?).
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} indeholder en ødelagt sprite. Alle ødelagte sprites vil blive vist som et rødt spørgsmålstegn (?).
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Indeholder flere "Action 8" poster.
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Læs forbi enden af pseudo-sprite
 
