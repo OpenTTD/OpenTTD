@@ -18,6 +18,7 @@
 #include "strings_func.h"
 #include "command_func.h"
 #include "company_func.h"
+#include "company_base.h"
 #include "window_func.h"
 #include "waypoint_base.h"
 
@@ -58,6 +59,13 @@ public:
 		nvp->InitializeViewport(this, this->wp->xy, ZOOM_LVL_MIN);
 
 		this->OnInvalidateData(0);
+	}
+
+	~WaypointWindow()
+	{
+		Owner owner = this->owner;
+		if (!Company::IsValidID(owner)) owner = _local_company;
+		DeleteWindowById(GetWindowClassForVehicleType(this->vt), (this->window_number << 16) | (this->vt << 11) | VLW_WAYPOINT_LIST | owner, false);
 	}
 
 	virtual void SetStringParameters(int widget) const
