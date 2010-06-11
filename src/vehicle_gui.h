@@ -53,13 +53,12 @@ enum VehicleListWindowType {
 	VLW_STATION_LIST  = 2 << 8,
 	VLW_DEPOT_LIST    = 3 << 8,
 	VLW_GROUP_LIST    = 4 << 8,
-	VLW_WAYPOINT_LIST = 5 << 8,
 	VLW_MASK          = 0x700,
 };
 
 static inline bool ValidVLWFlags(uint16 flags)
 {
-	return (flags == VLW_STANDARD || flags == VLW_SHARED_ORDERS || flags == VLW_STATION_LIST || flags == VLW_DEPOT_LIST || flags == VLW_GROUP_LIST || flags == VLW_WAYPOINT_LIST);
+	return (flags == VLW_STANDARD || flags == VLW_SHARED_ORDERS || flags == VLW_STATION_LIST || flags == VLW_DEPOT_LIST || flags == VLW_GROUP_LIST);
 }
 
 int DrawVehiclePurchaseInfo(int left, int right, int y, EngineID engine_number);
@@ -75,7 +74,6 @@ uint ShowRefitOptionsList(int left, int right, int y, EngineID engine);
 StringID GetCargoSubtypeText(const Vehicle *v);
 
 void ShowVehicleListWindow(const Vehicle *v);
-void ShowVehicleListWindow(CompanyID company, VehicleType vehicle_type, const Waypoint *wp);
 void ShowVehicleListWindow(CompanyID company, VehicleType vehicle_type);
 void ShowVehicleListWindow(CompanyID company, VehicleType vehicle_type, StationID station);
 void ShowVehicleListWindow(CompanyID company, VehicleType vehicle_type, TileIndex depot_tile);

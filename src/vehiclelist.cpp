@@ -68,12 +68,11 @@ void BuildDepotVehicleList(VehicleType type, TileIndex tile, VehicleList *engine
  * @param owner       Company to generate list for
  * @param index       This parameter has different meanings depending on window_type
  *    <ul>
- *      <li>VLW_STATION_LIST:  index of station to generate a list for</li>
+ *      <li>VLW_STATION_LIST:  index of station/waypoint to generate a list for</li>
  *      <li>VLW_SHARED_ORDERS: index of order to generate a list for<li>
  *      <li>VLW_STANDARD: not used<li>
  *      <li>VLW_DEPOT_LIST: TileIndex of the depot/hangar to make the list for</li>
  *      <li>VLW_GROUP_LIST: index of group to generate a list for</li>
- *      <li>VLW_WAYPOINT_LIST: index of waypoint to generate a list for</li>
  *    </ul>
  * @param window_type The type of window the list is for, using the VLW_ flags in vehicle_gui.h
  * @return false if invalid list is requested
@@ -91,7 +90,8 @@ bool GenerateVehicleSortList(VehicleList *list, VehicleType type, Owner owner, u
 					const Order *order;
 
 					FOR_VEHICLE_ORDERS(v, order) {
-						if (order->IsType(OT_GOTO_STATION) && order->GetDestination() == index) {
+						if ((order->IsType(OT_GOTO_STATION) || order->IsType(OT_GOTO_WAYPOINT))
+								&& order->GetDestination() == index) {
 							*list->Append() = v;
 							break;
 						}
@@ -125,21 +125,6 @@ bool GenerateVehicleSortList(VehicleList *list, VehicleType type, Owner owner, u
 
 					FOR_VEHICLE_ORDERS(v, order) {
 						if (order->IsType(OT_GOTO_DEPOT) && !(order->GetDepotActionType() & ODATFB_NEAREST_DEPOT) && order->GetDestination() == index) {
-							*list->Append() = v;
-							break;
-						}
-					}
-				}
-			}
-			break;
-
-		case VLW_WAYPOINT_LIST:
-			FOR_ALL_VEHICLES(v) {
-				if (v->type == type && v->IsPrimaryVehicle()) {
-					const Order *order;
-
-					FOR_VEHICLE_ORDERS(v, order) {
-						if (order->IsType(OT_GOTO_WAYPOINT) && order->GetDestination() == index) {
 							*list->Append() = v;
 							break;
 						}

@@ -65,7 +65,7 @@ public:
 	{
 		Owner owner = this->owner;
 		if (!Company::IsValidID(owner)) owner = _local_company;
-		DeleteWindowById(GetWindowClassForVehicleType(this->vt), (this->window_number << 16) | (this->vt << 11) | VLW_WAYPOINT_LIST | owner, false);
+		DeleteWindowById(GetWindowClassForVehicleType(this->vt), (this->window_number << 16) | (this->vt << 11) | VLW_STATION_LIST | owner, false);
 	}
 
 	virtual void SetStringParameters(int widget) const
@@ -95,7 +95,7 @@ public:
 				break;
 
 			case WAYPVW_SHOW_VEHICLES: // show list of vehicles having this waypoint in their orders
-				ShowVehicleListWindow(this->owner, this->vt, this->wp);
+				ShowVehicleListWindow(this->owner, this->vt, this->wp->index);
 				break;
 		}
 	}

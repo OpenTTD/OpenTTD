@@ -43,6 +43,7 @@
 #include "engine_base.h"
 #include "engine_func.h"
 #include "newgrf.h"
+#include "station_base.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -1076,14 +1077,8 @@ public:
 				SetDParam(3, this->vscroll.GetCount());
 				break;
 
-			case VLW_WAYPOINT_LIST:
-				SetDParam(0, STR_WAYPOINT_NAME);
-				SetDParam(1, index);
-				SetDParam(3, this->vscroll.GetCount());
-				break;
-
-			case VLW_STATION_LIST: // Station Name
-				SetDParam(0, STR_STATION_NAME);
+			case VLW_STATION_LIST: // Station/Waypoint Name
+				SetDParam(0, Station::IsExpected(BaseStation::Get(index)) ? STR_STATION_NAME : STR_WAYPOINT_NAME);
 				SetDParam(1, index);
 				SetDParam(3, this->vscroll.GetCount());
 				break;
@@ -1301,12 +1296,6 @@ void ShowVehicleListWindow(CompanyID company, VehicleType vehicle_type)
 	} else {
 		ShowVehicleListWindowLocal(company, VLW_STANDARD, vehicle_type, company);
 	}
-}
-
-void ShowVehicleListWindow(CompanyID company, VehicleType vehicle_type, const Waypoint *wp)
-{
-	if (wp == NULL) return;
-	ShowVehicleListWindowLocal(company, VLW_WAYPOINT_LIST, vehicle_type, wp->index);
 }
 
 void ShowVehicleListWindow(const Vehicle *v)
