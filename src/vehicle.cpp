@@ -169,6 +169,8 @@ uint Vehicle::Crash(bool flooded)
 	assert(this->Previous() == NULL); // IsPrimaryVehicle fails for free-wagon-chains
 
 	uint pass = 0;
+	/* Stop the vehicle. */
+	if (this->IsPrimaryVehicle()) this->vehstatus |= VS_STOPPED;
 	/* crash all wagons, and count passengers */
 	for (Vehicle *v = this; v != NULL; v = v->Next()) {
 		if (IsCargoInClass(v->cargo_type, CC_PASSENGERS)) pass += v->cargo.Count();
