@@ -45,6 +45,8 @@ BaseStation::~BaseStation()
 	DeleteWindowById(WC_ROADVEH_LIST, wno | (VEH_ROAD << 11));
 	DeleteWindowById(WC_SHIPS_LIST, wno | (VEH_SHIP << 11));
 	DeleteWindowById(WC_AIRCRAFT_LIST, wno | (VEH_AIRCRAFT << 11));
+
+	this->sign.MarkDirty();
 }
 
 Station::Station(TileIndex tile) :
@@ -88,7 +90,6 @@ Station::~Station()
 		}
 	}
 
-	this->sign.MarkDirty();
 	InvalidateWindowData(WC_STATION_LIST, this->owner, 0);
 
 	DeleteWindowById(WC_STATION_VIEW, index);
