@@ -1279,6 +1279,12 @@ public:
 		}
 		this->RaiseWidget(ORDER_WIDGET_GOTO);
 		this->SetWidgetDirty(ORDER_WIDGET_GOTO);
+
+		/* Remove drag highlighting if it exists. */
+		if (this->order_over != INVALID_ORDER) {
+			this->order_over = INVALID_ORDER;
+			this->SetWidgetDirty(ORDER_WIDGET_ORDER_LIST);
+		}
 	}
 
 	virtual void OnMouseLoop()
