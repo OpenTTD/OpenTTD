@@ -1558,6 +1558,7 @@ STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Athnuaig
 STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Aimsigh freastalaí
 STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Cuardaigh líonra le haghaidh freastalaí
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Cuir freastalaí leis
+STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Cuirtear freastalaí leis an liosta a sheiceálfar i gcónaí le haghaidh cluichí ar rith.
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Tosaigh an freastalaí
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Tosaigh d'fhreastalaí féin
 
@@ -1568,7 +1569,9 @@ STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Iontrái
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Tosaigh cluiche ilimreora nua
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Ainm an chluiche:
+STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Taispeánfar ainm an chluiche d'imreoirí eile sa roghchlár le cluiche ilimreorí a roghnú
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Socraigh pasfhocal
+STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Cosain do chluiche le pasfhocal más mian leat nach mbeidh rochtain phoiblí air
 STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Roghnaigh léarscáil:
 STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Cén léarscáil is mian leat a imirt?
 STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Cruthaigh cluiche nua randamach
@@ -1577,9 +1580,19 @@ STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Idirlíon
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Idirlíon (déan fógraíocht)
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} {P ch ch ch gc c}lia{P "" "" "" "" i}nt
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Cliaint uasta:
+STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Roghnaigh uaslíon na gcliant. Ní gá gach áit a líonadh
+STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} {P ch ch ch gc c}uideachta
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Uaslíon na gcuideachtaí:
+STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Déan an freastalaí a theorannú go líon áirithe cuideachtaí
+STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} féachadóir{P "" í í í í}
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Uaslíon na bhféachóirí:
+STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Déan an freastalaí a theorannú go líon áirithe féachadóirí
+STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}An teanga a labhraítear:
+STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Beidh a fhios ag imreoirí eile cén teanga a labhraítear ar an bhfreastalaí
 
+STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Tosaigh Cluiche
+STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Tosaigh cluiche líonra nua ó léarscáil randamach, nó ó scéal
+STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Lódáil Cluiche
 
 
 # Network game languages
@@ -2573,11 +2586,49 @@ STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Níl an comhad 
 
 
 # Town related errors
+STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... níl a thuilleadh spáis ar an léarscáil
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Ní thógfaidh an baile seo bóithre. Is féidir leat tógáil bóithre a chumasú in Ardsocruithe->Geilleagar->Bailte.
+STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Tá oibreacha bóthair ar bun
 
 # Industry related errors
+STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... an iomarca tionscal
+STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Ní féidir tionscail a chruthú...
+STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Ní féidir {STRING} a thógáil anseo...
+STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Ní féidir an cineál tionscail seo a thógáil anseo...
+STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... roghearr do thionscal eile
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... is gá baile a bhunú ar dtús
+STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... ní cheadaítear ach ceann amháin in aghaidh an bhaile
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... ní féidir é a thógáil ach i mbailte a bhfuil daonra de 1200 ar a laghad iontu
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... ní féidir é a thógáil ach i limistéar foraois bháistí
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... ní féidir é a thógáil ach i limistéar fásaigh
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... ní féidir é a thógáil ach i mbailte
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... ní féidir é a thógáil ach i gceantar íseal
+STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... ní féidir é a chur ach in aice le taobhanna na léarscáile
+STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... ní féidir foraois a chur ach taobh thuas den líne sneachta amháin
 
 # Station construction related errors
+STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Ní féidir stáisiún iarnróid a thógáil anseo...
+STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Ní féidir stáisiún busanna a thógáil...
+STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}Ní féidir stáisiún leoraithe a thógáil...
+STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}Ní féidir stáisiún tramanna paisinéirí a thógáil anseo...
+STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}Ní féidir stáisiún tramanna lastais a thógáil anseo...
+STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Ní féidir dug a thógáil anseo...
+STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Ní féidir aerfort a thógáil anseo...
 
+STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Tá sé taobh le níos mó ná stáisiún/limistéar lódála amháin eile atá ann cheana
+STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... tá an stáisiún ró-leata amach
+STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... tá stáisiún nach bhfuil aonfhoirme díchumasaithe
+STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}An iomarca stáisiún/limistéar lódála
+STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}An iomarca codanna stáisiún iarnróid
+STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}An iomarca stadanna bus
+STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}An iomarca stáisiúin leoraithe
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Roghearr do stáisiún iarnróid eile
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Roghearr do stáisiún/limistéar lódála eile
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Roghearr do dug eile
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Roghearr d'aerfort eile
+STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Ní féidir an stáisiún a athainmniú...
+STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... seo bóthair faoi úinéireacht an bhaile
+STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... tá an bóthair ag dul sa treo mícheart
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Ní féidir cuid den stáisiún a bhaint...

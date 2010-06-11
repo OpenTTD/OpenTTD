@@ -232,11 +232,11 @@ STR_BUTTON_RENAME                                               :{BLACK}Renommer
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Fermer la fenêtre
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Titre de fenêtre - Faire glisser pour déplacer la fenêtre
-STR_TOOLTIP_SHADE                                               :{BLACK}Enrouler la fenêtre - n'afficher que la barre de titre
+STR_TOOLTIP_SHADE                                               :{BLACK}Enrouler la fenêtre - N'afficher que la barre de titre
 STR_TOOLTIP_DEBUG                                               :{BLACK}Afficher les informations de débogage NewGRF
 STR_TOOLTIP_STICKY                                              :{BLACK}Marquer cette fenêtre comme ineffaçable pour la touche 'Fermer toutes les fenêtres'
-STR_TOOLTIP_RESIZE                                              :{BLACK}Cliquer et faire glisse pour redimensionner la fenêtre
-STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Bascule entre une grande/petite fenêtre
+STR_TOOLTIP_RESIZE                                              :{BLACK}Cliquer et faire glisser pour redimensionner la fenêtre
+STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Bascule entre grande et petite fenêtre
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barre de défilement - Défile la liste de bas en haut
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barre de défilement - Défile la liste de gauche à droite
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Démolir les constructions sur un carré de terrain
@@ -1061,7 +1061,7 @@ STR_ECONOMY_STEADY                                              :Stable
 STR_ECONOMY_FLUCTUATING                                         :Fluctuant
 
 STR_REVERSE_AT_END_OF_LINE_AND_AT_STATIONS                      :À la fin de la ligne et aux gares
-STR_REVERSE_AT_END_OF_LINE_ONLY                                 :A la fin de la ligne seulement
+STR_REVERSE_AT_END_OF_LINE_ONLY                                 :À la fin de la ligne seulement
 
 STR_DISASTERS_OFF                                               :Désactivé
 STR_DISASTERS_ON                                                :Activé
@@ -1078,7 +1078,7 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Options 
 
 STR_CONFIG_SETTING_OFF                                          :Désactivé
 STR_CONFIG_SETTING_ON                                           :Activé
-STR_CONFIG_SETTING_DISABLED                                     :inactif
+STR_CONFIG_SETTING_DISABLED                                     :Inactif
 STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Afficher vitesse du véhicule dans la barre d'état{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Construction côtière et sur pentes{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Terrassement sous les bâtiments, voies, etc. (Autoslope){NBSP}: {ORANGE}{STRING}
@@ -1103,9 +1103,9 @@ STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Livrer 
 STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Permettre la construction de longs ponts{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}Permettre l'ordre d'aller au dépôt{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Méthode de construction manuelle des industries primaires{NBSP}: {ORANGE}{STRING}
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :aucune
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :comme les autres industries
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :prospection
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Aucune
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Comme les autres industries
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Prospection
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Permettre plusieurs industries similaires par ville{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Afficher la date complète dans la barre d'état{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Signaux ferroviaires du côté du sens de conduite{NBSP}: {ORANGE}{STRING}
@@ -1124,9 +1124,9 @@ STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Gares n
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Multiplier le poids pour les trains fret (simule des trains lourds){NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Facteur de vitesse des aéroplanes{NBSP}: {ORANGE}1 / {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Nombre d'accidents d'avion{NBSP}: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :aucun
-STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :réduit
-STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normal
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Aucun
+STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Réduit
+STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normal
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Autoriser les arrêts de bus sur les routes des municipalités{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Autoriser les arrêts de bus sur les routes des concurrents{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Autoriser la construction de stations adjacentes{NBSP}: {ORANGE}{STRING}
@@ -1137,14 +1137,14 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Les aé
 
 STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Avertir si un train est perdu{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Vérification des ordres des véhicules{NBSP}: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :non
-STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :de tous, sauf ceux stoppés
-STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :de tous les véhicules
+STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :Non
+STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :De tous, sauf ceux stoppés
+STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :De tous les véhicules
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Alerte en cas de profit négatif pour un véhicule{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Les véhicules n'expirent jamais{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Renouveler automatiquement les véhicules quand ils sont vieux{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Auto-renouveler les véhicules {ORANGE}{STRING}{LTBLUE} mois avant/après l'âge maximum
-STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Argent nécessaire pour l'auto-renouvellement{NBSP}: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Argent minimum avant auto-renouvellement{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Temps d'affichage des messages d'erreur{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Afficher la population d'une ville dans son label{NBSP}: {ORANGE}{STRING}
 
@@ -1170,7 +1170,7 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Autoris
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Une ou plusieurs cases sur le bord nord ne sont pas vides
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Une ou plusieurs cases sur l'un des bords ne sont pas de l'eau
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Etendue max. des stations{NBSP}: {ORANGE}{STRING} {RED}Attention{NBSP}: Valeur élevée = jeu lent
+STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Étendue max. des stations{NBSP}: {ORANGE}{STRING} {RED}Attention{NBSP}: Valeur élevée = jeu lent
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Entretenir automatiquement les hélicoptères à l'héliport{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Relier la barre d'outils paysage avec celle des rails/routes/eau et aéroport{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Couleur utilisée pour le terrain sur la carte{NBSP}: {ORANGE}{STRING}
@@ -1199,8 +1199,8 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Désactivé
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Défilement par clic gauche{NBSP}: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Utiliser le format de date {ORANGE}{STRING}{LTBLUE} pour les noms de sauvegarde.
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :long (31 Déc 2008)
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :court (31-12-2008)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :Long (31 Déc 2008)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :Court (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Pause automatique en début de nouvelle partie{NBSP}: {ORANGE}{STRING}
@@ -1269,17 +1269,17 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Signaux de chem
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Tous
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Agencement des routes pour les nouvelles villes{NBSP}: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :défaut
-STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :meilleures routes
-STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :grille 2x2
-STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :grille 3x3
-STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :aléatoire
+STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :Original
+STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :Meilleures routes
+STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :Grille 2x2
+STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :Grille 3x3
+STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Aléatoire
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Autoriser la construction des routes par les villes{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Permettre plus d'aéroport par ville, selon les nuisances{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Fonder des villes en cours de jeu{NBSP}: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :interdit
-STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :autorisé
-STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :autorisé, agencement des routes personnalisé
+STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Interdit
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Autorisé
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Autorisé, agencement des routes personnalisé
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}Plantation des arbres durant la partie{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Nulle part {RED}(les scieries ne fonctionneront plus)
@@ -1403,7 +1403,7 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Voulez-
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Triches
 STR_CHEATS_TOOLTIP                                              :{BLACK}Les cases à cocher indiquent que vous avez déjà utilisé cette triche auparavant
-STR_CHEATS_WARNING                                              :{BLACK}Attention ! Vous êtes sur le point de trahir vos adversaires. Gardez en tête qu'une telle honte sera gardée en mémoire pour l'éternité.
+STR_CHEATS_WARNING                                              :{BLACK}Attention{NBSP}! Vous êtes sur le point de trahir vos adversaires. Gardez en tête qu'une telle honte sera gardée en mémoire pour l'éternité.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Augmenter l'argent de {CURRENCY}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Jouer en tant que compagnie{NBSP}: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Bulldozer magique (enlèvement industries et objets fixes){NBSP}: {ORANGE}{STRING}
@@ -1411,10 +1411,10 @@ STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Les tun
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Construire pendant le mode pause{NBSP}: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Les jets ne s'écrasent plus (fréquemment) sur les petits aéroports{NBSP}: {ORANGE} {STRING}
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Changer de climat{NBSP}: {ORANGE}{STRING}
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :environnement 'Tempéré'
-STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :environnement 'Arctique'
-STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :environnement 'Tropical'
-STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :environnement 'Jouets'
+STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Environnement 'Tempéré'
+STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Environnement 'Arctique'
+STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Environnement 'Tropical'
+STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Environnement 'Jouets'
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Changer la date{NBSP}: {ORANGE}{DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Permettre la modification des valeurs de production{NBSP}: {ORANGE}{STRING}
 
@@ -1466,9 +1466,9 @@ STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Choisir 
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Nouveau visage
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Génère un visage au hasard
 STR_FACE_ADVANCED                                               :{BLACK}Avancé
-STR_FACE_ADVANCED_TOOLTIP                                       :{BLACK}Sélection avancée du visage.
+STR_FACE_ADVANCED_TOOLTIP                                       :{BLACK}Sélection avancée du visage
 STR_FACE_SIMPLE                                                 :{BLACK}Simple
-STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Sélection simple du visage.
+STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Sélection simple du visage
 STR_FACE_LOAD                                                   :{BLACK}Charger
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Charger visage favori
 STR_FACE_LOAD_DONE                                              :{WHITE}Votre visage favori a été chargé depuis le fichier de configuration d'OpenTTD.
@@ -1476,7 +1476,7 @@ STR_FACE_FACECODE                                               :{BLACK}No. de v
 STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Voir et/ou définir le numéro de visage
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}Voir et/ou définir le numéro de visage
 STR_FACE_FACECODE_SET                                           :{WHITE}Le nouveau numéro de visage a été défini.
-STR_FACE_FACECODE_ERR                                           :{WHITE}Impossible de définir le numéro de visage - doit être un nombre entre 0 et 4.294.967.295!
+STR_FACE_FACECODE_ERR                                           :{WHITE}Impossible de définir le numéro de visage - doit être un nombre entre 0 et 4.294.967.295{NBSP}!
 STR_FACE_SAVE                                                   :{BLACK}Enregistrer
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Enregistrer visage favori
 STR_FACE_SAVE_DONE                                              :{WHITE}Ce visage sera enregistré comme favori dans le fichier de configuration d'OpenTTD.
@@ -1514,7 +1514,7 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Modifier
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Multijoueur
 STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK}Connexion{NBSP}:
-STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}Choisir entre un jeu sur Internet ou sur réseau local
+STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}Choisir entre un jeu sur Internet ou sur le réseau local
 STR_NETWORK_SERVER_LIST_LAN                                     :LAN
 STR_NETWORK_SERVER_LIST_INTERNET                                :Internet
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Nom du joueur{NBSP}:
@@ -1547,7 +1547,7 @@ STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Version
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Adresse du serveur{NBSP}: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Date de début{NBSP}: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Date courante{NBSP}: {WHITE}{DATE_SHORT}
-STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Protégée par mot de passe !
+STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Protégée par mot de passe{NBSP}!
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}SERVEUR HORS-LIGNE
 STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}SERVEUR PLEIN
 STR_NETWORK_SERVER_LIST_VERSION_MISMATCH                        :{SILVER}VERSION NON CORRESPONDANTE
@@ -1562,7 +1562,7 @@ STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Cherche 
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Ajouter un serveur
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Ajouter à la liste un serveur où le jeu cherchera toujours des parties en cours.
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Démarrer le serveur
-STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Démarre son propre serveur
+STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Démarre son propre serveur, sur cet ordinateur
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Entrer votre nom
 STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Saisir l'adresse IP du serveur
@@ -1673,7 +1673,7 @@ STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Au
 STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Attente...
 STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Téléchargement de la carte...
 STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Traitement des données...
-STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Enregistrement...
+STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Inscription...
 
 STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Rapatriement des infos sur le jeu...
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Rapatriement des infos sur la compagnie...
@@ -1828,7 +1828,7 @@ STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Sélect
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Dépendances{NBSP}: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Tags{NBSP}: {WHITE}{STRING}
 STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD est compilé sans "zlib"...
-STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... télécharger du contenu est impossible!
+STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... télécharger du contenu est impossible{NBSP}!
 
 # Order of these is important!
 STR_CONTENT_TYPE_BASE_GRAPHICS                                  :{G=m2}Graphiques de base
@@ -2955,7 +2955,7 @@ STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Action c
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Chargement/déchargement
 STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Départ
-STR_VEHICLE_STATUS_CRASHED                                      :{RED}Crashé!
+STR_VEHICLE_STATUS_CRASHED                                      :{RED}Crashé{NBSP}!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}En Panne
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Stoppé
 STR_VEHICLE_STATUS_TRAIN_STOPPING                               :{RED}Ralentit
@@ -3357,7 +3357,7 @@ STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Seul les
 
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Copie d'écran enregistrée avec succès sous '{STRING}'
-STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Copie d'écran a échoué!
+STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Copie d'écran a échoué{NBSP}!
 
 # Error message titles
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Message
@@ -3419,7 +3419,7 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... trop
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... trop près d'une autre ville
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... trop de villes
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... il n'y a plus d'emplacement sur la carte
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}La ville ne construira pas de routes. Vous pouvez activer la construction des routes sous Options avancées->Economie->Villes.
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}La ville ne construira pas de routes. Vous pouvez activer la construction des routes sous Options avancées->Économie->Villes.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Route en travaux
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Impossible de supprimer cette ville...{}Une station ou un dépôt font référence à cette ville ou une propriété municipale ne peut pas être supprimé
 
@@ -3491,7 +3491,7 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Impossib
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Impossible de retirer point de contrôle ici...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Vous devez d'abord retirer le point de contrôle
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... bouée présente
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... bouée utilisée !
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... bouée utilisée{NBSP}!
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Impossible de construire un dépôt ferroviaire ici...
@@ -3582,7 +3582,7 @@ STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Impossib
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Objet présent
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... siège de la compagnie présent
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Impossible d'acheter ce terrain...
-STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... il vous appartient déjà!
+STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... il vous appartient déjà{NBSP}!
 
 # Group related errors
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Impossible de créer le groupe...
@@ -3689,7 +3689,7 @@ STR_DESKTOP_SHORTCUT_COMMENT                                    :Un clone de Tra
 STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1                      :Grand immeuble de bureaux
 STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_1                           :Immeuble de bureaux
 STR_TOWN_BUILDING_NAME_SMALL_BLOCK_OF_FLATS_1                   :Petit immeuble résidentiel
-STR_TOWN_BUILDING_NAME_CHURCH_1                                 :Eglise
+STR_TOWN_BUILDING_NAME_CHURCH_1                                 :Église
 STR_TOWN_BUILDING_NAME_LARGE_OFFICE_BLOCK_1                     :Gros immeuble de bureaux
 STR_TOWN_BUILDING_NAME_TOWN_HOUSES_1                            :Bâtiments municipaux
 STR_TOWN_BUILDING_NAME_HOTEL_1                                  :Hôtel
