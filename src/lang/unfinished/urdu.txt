@@ -1298,8 +1298,6 @@ STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}بہری
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}کھیل میں بہت زیادہ سواریاں
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}مرمت کا دورانیہ تبدیل نہین کرسکتے
 
-STR_ERROR_CAN_T_SELL_DESTROYED_VEHICLE                          :{WHITE}تباہ شدہ گاڑی فروخت نہیں کرسکتے
-STR_ERROR_CAN_T_REFIT_DESTROYED_VEHICLE                         :{WHITE}یہ گاڑی تباہ ھو چکی ھے
 
 # Specific vehicle errors
 

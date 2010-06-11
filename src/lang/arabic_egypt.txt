@@ -3578,8 +3578,6 @@ STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}الطا
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}العربات كثيرة جدا في اللعبة
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}لا يمكن تغيير فترات الصيانة
 
-STR_ERROR_CAN_T_SELL_DESTROYED_VEHICLE                          :{WHITE}لا يمكن بيع العربة المحطمة ...
-STR_ERROR_CAN_T_REFIT_DESTROYED_VEHICLE                         :{WHITE}لا يمكن اعادة العربة المحطمة ...
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}لا يمكن السماح للقطار بالعبور من الاشارة في وضع الخطر
