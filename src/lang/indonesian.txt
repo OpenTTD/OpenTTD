@@ -3640,6 +3640,7 @@ STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Pesawat 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Terlalu banyak kendaraan dalam permainan
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Tidak dapat mengubah jarak waktu perbaikan...
 
+STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... kendaraan hancur
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Tidak dapat memaksa kereta melanggar sinyal pada saat bahaya...

@@ -3641,6 +3641,7 @@ STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Aéronef
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Trop de véhicules en jeu
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Impossible de modifier l'intervalle de service...
 
+STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... véhicule détruit
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Impossible de forcer le train à avancer sous le danger...

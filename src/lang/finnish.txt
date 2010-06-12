@@ -3640,6 +3640,7 @@ STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Lentokon
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Liian monta ajoneuvoa pelissä.
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Huoltoväliä ei voi muuttaa.
 
+STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... kulkuneuvo on tuhoutunut
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Junaa ei voi pakottaa jatkamaan opastimen ohi vaaratilanteessa...

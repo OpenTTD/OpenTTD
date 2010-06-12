@@ -3682,6 +3682,7 @@ STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Letalo n
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Preveč vozil v igri
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Ni mogoča sprememba obdobja servisiranja...
 
+STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... vozilo je uničeno
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Ni mogoče, da vlak v nevarnosti pelje mimo signalov...

@@ -3640,6 +3640,7 @@ STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Flygplan
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}För många fordon i spelet
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Kan inte ändra service-intervall...
 
+STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... fordonet är förstört
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Kan inte tillåta tåg att passera signal under fara...

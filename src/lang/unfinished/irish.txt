@@ -1359,7 +1359,7 @@ STR_INTRO_QUIT                                                  :{BLACK}Amach
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Tosaigh cluiche nua. Scipeáltar cumrú an léarscáil le Ctrl+Cliceáil
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Lódáil cluiche sábháilte
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Tosaigh cluiche nua, ag úsáid mapa airde mar thír-raon
-STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Toaigh cluiche nua, ag úsáid scéal saincheaptha
+STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Tosaigh cluiche nua, ag úsáid scéal saincheaptha
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Cruthaigh domhan/scéal saincheaptha don chluiche
 STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Tosaigh cluiche ilimreoirí
 
@@ -1594,6 +1594,7 @@ STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Tosaigh 
 STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Tosaigh cluiche líonra nua ó léarscáil randamach, nó ó scéal
 STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Lódáil Cluiche
 
+STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Iontráil ainm don chluiche líonra
 
 # Network game languages
 ############ Leave those lines in this order!!
@@ -1602,10 +1603,37 @@ STR_NETWORK_LANG_ENGLISH                                        :Béarla
 STR_NETWORK_LANG_GERMAN                                         :Gearmáinis
 STR_NETWORK_LANG_FRENCH                                         :Fraincis
 STR_NETWORK_LANG_BRAZILIAN                                      :Brasaílis
+STR_NETWORK_LANG_BULGARIAN                                      :Bulgáiris
+STR_NETWORK_LANG_CHINESE                                        :Sínis
 STR_NETWORK_LANG_CZECH                                          :Seicis
 STR_NETWORK_LANG_DANISH                                         :Danmhairgis
+STR_NETWORK_LANG_DUTCH                                          :Ollainnis
+STR_NETWORK_LANG_ESPERANTO                                      :Esperanto
+STR_NETWORK_LANG_FINNISH                                        :Fionlainnis
+STR_NETWORK_LANG_HUNGARIAN                                      :Ungáiris
+STR_NETWORK_LANG_ICELANDIC                                      :Íoslainnis
+STR_NETWORK_LANG_ITALIAN                                        :Iodáilis
 STR_NETWORK_LANG_JAPANESE                                       :Seapáinis
 STR_NETWORK_LANG_KOREAN                                         :Cóiréis
+STR_NETWORK_LANG_LITHUANIAN                                     :Liotuáinis
+STR_NETWORK_LANG_NORWEGIAN                                      :Ioruais
+STR_NETWORK_LANG_POLISH                                         :Polainnis
+STR_NETWORK_LANG_PORTUGUESE                                     :Portaingéilis
+STR_NETWORK_LANG_ROMANIAN                                       :Rómáinis
+STR_NETWORK_LANG_RUSSIAN                                        :Rúisis
+STR_NETWORK_LANG_SLOVAK                                         :Slóvaicis
+STR_NETWORK_LANG_SLOVENIAN                                      :Slóivéinis
+STR_NETWORK_LANG_SPANISH                                        :Spáinnis
+STR_NETWORK_LANG_SWEDISH                                        :Sualainnis
+STR_NETWORK_LANG_TURKISH                                        :Tuircis
+STR_NETWORK_LANG_UKRAINIAN                                      :Úcráinis
+STR_NETWORK_LANG_AFRIKAANS                                      :Afracáinis
+STR_NETWORK_LANG_CROATIAN                                       :Cróitis
+STR_NETWORK_LANG_CATALAN                                        :Catalóinis
+STR_NETWORK_LANG_ESTONIAN                                       :Eastóinis
+STR_NETWORK_LANG_GALICIAN                                       :Gailísis
+STR_NETWORK_LANG_GREEK                                          :Gréigis
+STR_NETWORK_LANG_LATVIAN                                        :Laitvis
 ############ End of leave-in-this-order
 
 # Network game lobby
@@ -1696,8 +1724,10 @@ STR_NETWORK_CHAT_TO_COMPANY                                     :[Foireann] Chui
 STR_NETWORK_CHAT_CLIENT                                         :[Príobháideach] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Príobháideach] Chuig {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL                                            :[Gach duine] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Iontráil téacs don chomhrá líonra
 
 # Network messages
+STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Níorbh fhéidir aon chluiche líonra a aimsiú
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Níor thug an freastalaí freagra don iarratas
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Níorbh fhéidir nascadh de bharr mímheaitseáil NewGRF
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Níorbh fhéidir cluiche sábháilte a lódáil
@@ -1722,6 +1752,8 @@ STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :fuarthas paicé
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :ainm in úsáid cheana féin
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :pasfhocal mícheart
 STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :cuideachta mícheart in DoCommand
+STR_NETWORK_ERROR_CLIENT_KICKED                                 :ciceáilte ag an bhfreastalaí
+STR_NETWORK_ERROR_CLIENT_CHEATER                                :ag iarraidh caimiléireacht a úsáid
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :freastalaí lán
 ############ End of leave-in-this-order
 
@@ -1733,7 +1765,16 @@ STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Cluiche fós ar
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Cluiche fós ar sos ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Cluiche fós ar sos ({STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :líon na n-imreoirí
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :cliaint á nascadh
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :de láimh
 ############ End of leave-in-this-order
+STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :ag fágáil
+STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** Tháinig {STRING} isteach sa chluiche
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** Tháinig {STRING} isteach sa chluiche (Cliant #{2:NUM})
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** Thug {STRING} {2:CURRENCY} dod' chuideachta
+STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Thug tú {2:CURRENCY} do {1:STRING}
+STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Dhún an freastalaí an seisiún
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Tá an freastalaí á atosú...{}Fan go fóill...
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Inneachar á íoslódáil
@@ -1842,8 +1883,10 @@ STR_WAYPOINT_CAPTION                                            :{WHITE}Pointe b
 STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Roghnaigh an cineál pointe bealaigh
 
 # Rail station construction window
+STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Stáisiún Iarnróid a Thógáil
 STR_STATION_BUILD_ORIENTATION                                   :{BLACK}Treosuíomh
 STR_STATION_BUILD_RAILROAD_ORIENTATION_TOOLTIP                  :{BLACK}Roghnaigh treosuíomh an stáisiúin iarnróid
+STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}Líon na ráillí
 STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Fad an ardáin
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Roghnaigh fad an stáisiúin iarnróid
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Tarraing & Scaoil
@@ -1889,7 +1932,10 @@ STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Aicme an
 
 STR_AIRPORT_SMALL                                               :Beag
 STR_AIRPORT_CITY                                                :Cathrach
+STR_AIRPORT_METRO                                               :Cathrach
 STR_AIRPORT_INTERNATIONAL                                       :Idirnáisiúnta
+STR_AIRPORT_COMMUTER                                            :Comaitéireachta
+STR_AIRPORT_INTERCONTINENTAL                                    :Idir-ilchríochach
 STR_AIRPORT_HELIPORT                                            :Héileaport
 STR_AIRPORT_HELISTATION                                         :Héileastáisiún
 
@@ -1897,14 +1943,26 @@ STR_AIRPORT_CLASS_SMALL                                         :Aerfoirt bheaga
 STR_AIRPORT_CLASS_LARGE                                         :Aerfoirt mhóra
 STR_AIRPORT_CLASS_HELIPORTS                                     :Aerfoirt héileacaptair
 
+STR_STATION_BUILD_NOISE                                         :{BLACK}Torann a ghintear: {GOLD}{COMMA}
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Tírdhreachú
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Ísligh cúinne talún
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Ardaigh cúinne talún
+STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Ceannaigh talamh le húsáid amach anseo
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Crainnte
+STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Roghnaigh an cineál crainn le cur
+STR_TREES_RANDOM_TYPE                                           :{BLACK}Crainnte randamacha
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Cuir crainnte de chineálacha randamacha
+STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Crainnte Randamacha
+STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Cuir crainnte go randamacha ar an tírdhreach
 
 # Land generation window (SE)
+STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Talamh a Chruthú
+STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Cuir ceantair charraige ar an tírdhreach
+STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Cuir síos teach solais
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Cruthaigh talamh randamach
 STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Cruthaigh scéal nua
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Athshocraigh an tírdhreach
@@ -2808,6 +2866,7 @@ STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Níl an 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}An iomarca feithiclí sa chluiche
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Ní féidir an t-eatramh seirbhísithe a athrú...
 
+STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... tá an fheithicil scriosta
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Ní féidir iallach a chur ar thraein dul thar comhartha agus contúirt ann...

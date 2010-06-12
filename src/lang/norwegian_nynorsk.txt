@@ -309,7 +309,7 @@ STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Finansie
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Syne liste over toga til firmaet. CTRL+klikk opnar lista i eit nytt vindauge.
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Syne liste over bilane til firmaet
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Syne liste over skipa til firmaet. CTRL+klikk opnar lista i eit nytt vindauge
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Syne liste over flymaskina til firmaet. CTRL+klikk syner lista i eit nytt vindauge
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Syne liste over luftfartøya til firmaet. CTRL+klikk syner lista i eit nytt vindauge
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Zoom inn
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Zoom ut
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Bygg jernbanespor
@@ -572,7 +572,7 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Pengar:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Lån:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Totalt:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Antal køyretøy med positiv forteneste i fjor. Dette inkluderer vegkøyretøy, tog, skip og flymaskiner
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Antal køyretøy med positiv forteneste i fjor. Dette inkluderer vegkøyretøy, tog, skip og luftfartøy
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Antal nyleg betjente stasjonsdelar. Kvar del av ein stasjon (t.d. togstasjon, busstopp, flyplass) vert telt, sjølv om dei er kobla saman til éin stasjon
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Fortenesta til køyretøyet med lågast inntekt (kun køyretøy eldre enn 2 år er tatt med)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Inntekt i det kvartalet med lågast forteneste dei siste 12 kvartalene
@@ -672,7 +672,7 @@ STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINYFONT}{BLAC
 STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINYFONT}{BLACK}Tog
 STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINYFONT}{BLACK}Køyretøy
 STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINYFONT}{BLACK}Skip
-STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINYFONT}{BLACK}Flymaskiner
+STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINYFONT}{BLACK}Luftfartøy
 STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINYFONT}{BLACK}Transportruter
 STR_SMALLMAP_LEGENDA_FOREST                                     :{TINYFONT}{BLACK}Skog
 STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINYFONT}{BLACK}Jernbanestasjon
@@ -748,7 +748,7 @@ STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIGFONT}{BLACK
 STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIGFONT}{BLACK}Innbygjarane feirer . . .{}Første passasjertrikk kjem til{STATION}!
 STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIGFONT}{BLACK}Innbygjarane feirer . . .{}Første varektetrikk kjem til {STATION}!
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIGFONT}{BLACK}Innbyggjarane jublar . . .{}Første skip kjem til {STATION}!
-STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIGFONT}{BLACK}Innbyggjarane jublar . . .{}Første flymaskin kjem til {STATION}!
+STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIGFONT}{BLACK}Innbyggjarane jublar . . .{}Første luftfartøy kjem til {STATION}!
 
 STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK}Togkrasj!{}{COMMA} døyr i flammehav etter kollisjon
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}Køyretøykollisjon!{}Sjåfør døyr i flammehav etter kollisjon med tog
@@ -1228,12 +1228,12 @@ STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Grupper
 STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Syne bygningsverktøy når ingen høvelege køyretøy er tilgjengeleg: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Maks. antal tog per speler: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Maks. antal køyretøy per spelar: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Maks. antal flymaskiner per spelar: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Maks. antal luftfartøy per spelar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Maks. antal skip per spelar: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Hindre datamaskina i å byggje tog: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}Hindre datamaskina i å byggje køyretøy: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Hindre datamaskina i å byggje flymaskiner: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Hindre datamaskina i å byggje luftfartøy: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Hindre datamaskina i å byggje skip: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Tillet AI-spelarar i fleirspelarmodus: {ORANGE}{STRING}
@@ -1244,7 +1244,7 @@ STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Standar
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Standard vedlikehaldsintervall for tog: {ORANGE}deaktivert
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Standard vedlikehaldsintervall for køyretøy: {ORANGE}{STRING} dagar/%
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Standard vedlikehaldsintervall for køyretøy: {ORANGE}deaktivert
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Standard vedlikehaldsintervall for flymaskiner: {ORANGE}{STRING} dagar/%
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Standard vedlikehaldsintervall for luftfartøy: {ORANGE}{STRING} dagar/%
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Standard vedlikehaldsintervall for køyretøy: {ORANGE}deaktivert
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Standard vedlikehaldsintervall for skip: {ORANGE}{STRING} dagar/%
 STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Standard vedlikehaldsintervall for skip: {ORANGE}deaktivert
@@ -1426,7 +1426,7 @@ STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Syne gen
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Syne togfargetema
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Syne bilfargetema
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Syne skipsfargetema
-STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Syne flymaskinfargartema
+STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Syne luftfartøyfargartema
 STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Vel ein primærfarge for valde tema
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Vel sekundærfarge for valde tema
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Vel eit fargetema å endre, eller fleire fargetema med CTRL+klikk. Klikk på boksen for å vise bruken av fargetema
@@ -2560,7 +2560,7 @@ STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Byt namn
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Syne alle tog som har denne stasjonen på ruteplanen sin
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Syne alle køyretøy som har denne stasjonen på ruteplanen sin
-STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Syne alle flymaskiner som har denne stasjonen på ruteplanen sin
+STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Syne alle luftfartøy som har denne stasjonen på ruteplanen sin
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Syne alle skip som har denne stasjonen på ruteplanen sin
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Endre namnet på stasjon/lasteterminal
@@ -2582,12 +2582,12 @@ STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Konstruks
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Nye køyretøy
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Driftskostnader på tog
 STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Driftskostnader på køyretøy
-STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Driftskostnader på flymaskiner
+STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Driftskostnader på luftfartøy
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Driftskostnader på skip
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Vedlikehald av eigedom
 STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}Inntekter frå tog
 STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}Inntekter frå køyretøy
-STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Inntekter frå flymaskiner
+STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Inntekter frå luftfartøy
 STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}Inntekter frå skip
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Renter
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Anna
@@ -2612,7 +2612,7 @@ STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Firmafarg
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Køyretøy:
 STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} tog
 STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} køyretøy
-STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} flymaskiner
+STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} luftfartøy
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} skip
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Ingen
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Firmaverdi: {WHITE}{CURRENCY}
@@ -2677,19 +2677,19 @@ STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Byt prod
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Tog
 STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} køyretøy
 STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} skip
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} flymaskin
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Luftfartøy
 
 STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Tog - klikk på tog for meir informasjon
 STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Køyretøy - klikk på køyretøy for informasjon
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Skip - klikk på skip for meir informasjon
-STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Flymaskin - klikk på flymaskin for meir informasjon
+STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Luftfartøy - klikk på luftfartøy for meir informasjon
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Forteneste i år: {CURRENCY} (førre år: {CURRENCY})
 
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}Tilgjengelege tog
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}Tilgjengelege køyretøy
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}Tilgjengelege skip
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Tilgjengelege flymaskiner
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Tilgjengelege luftfartøy
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Sjå ei liste over mogelege modellar for denne køyretøytypen.
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Behandle liste
@@ -2711,12 +2711,12 @@ STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}Delte or
 STR_GROUP_ALL_TRAINS                                            :Alle tog
 STR_GROUP_ALL_ROAD_VEHICLES                                     :Alle køyretøty
 STR_GROUP_ALL_SHIPS                                             :Alle skip
-STR_GROUP_ALL_AIRCRAFTS                                         :Alle flymaskiner
+STR_GROUP_ALL_AIRCRAFTS                                         :Alle luftfartøy
 
 STR_GROUP_DEFAULT_TRAINS                                        :Ugrupperte tog
 STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :køyretøy utan gruppe
 STR_GROUP_DEFAULT_SHIPS                                         :Ugrupperte skip
-STR_GROUP_DEFAULT_AIRCRAFTS                                     :Flymaskiner utan gruppe
+STR_GROUP_DEFAULT_AIRCRAFTS                                     :Luftfartøy utan gruppe
 
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Grupper - Klikk på ei gruppe for å få ei liste over alle køyretøya i den
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Klikk for å lage ei gruppe
@@ -2738,7 +2738,7 @@ STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Nye tog/
 STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Nye tog/vogner
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Nye køyretøy
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Nye skip
-STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Ny flymaskin
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Nytt luftfartøy
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Kostnad: {GOLD}{CURRENCY}{BLACK} Vekt: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Hastigheit: {GOLD}{VELOCITY}{BLACK} Kraft: {GOLD}{POWER}
@@ -2761,17 +2761,17 @@ STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Maks. tr
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Tog-/vognliste - klikk på tog/vogn for meir informasjon
 STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Køyretøyliste - klikk på køyretøy for meir informasjon
 STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Skipsliste - klikk på skip for meir informasjon
-STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Flymaskinliste - klikk på flymaskin for meir informasjon
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Luftfartøyliste - klikk på luftfartøy for meir informasjon
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Kjøp tog/vogner
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Kjøp køyretøy
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Bygg skip
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Bygg flymaskin
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Bygg luftfartøy
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Bygg den valde farkosten
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Bygg det valde køyretøyet
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Bygg det valde skipet
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Bygg den valde flymaskinen
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Bygg det valde luftfartøyet
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Gje nytt namn
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Endre namn
@@ -2781,12 +2781,12 @@ STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Endre na
 STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Gje nytt namn til tog-/vogntypen
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Endre namnet til køyretøytypen
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Endre namnet til skipstypen
-STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Endre namn til flymaskintype
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Endre namn til luftfartøytype
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Gje tog/vogn nytt namn
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Endre namnet til køyretøytypen
 STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Endre namnet til skipstypen
-STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Endre namn til flymaskintype
+STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Endre namn til luftfartøytype
 
 # Depot window
 STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
@@ -2802,44 +2802,44 @@ STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHO
 STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Tog - klikk på tog for meir informasjon, dra vogn for å leggje til/fjerne frå tog
 STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Køyretøyliste - klikk på køyretøy for meir informasjon
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Skip - klikk på skip for meir informasjon
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Flymaskin - klikk på flymaskin for meir informasjon
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Luftfartøy - klikk på luftfartøy for meir informasjon
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Dra tog (vogn) her for å selje
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Dra køyretøy her for å selje det
 STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Dra skip her for å selje det
-STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Dra flymaskin her for å selje
+STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Dra luftfartøy her for å selje
 
 STR_DEPOT_DRAG_WHOLE_TRAIN_TO_SELL_TOOLTIP                      :{BLACK}Dra lokomotivet hit for å selje heile toget
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TOOLTIP                         :{BLACK}Sel alle toga i togstallen
 STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Sel alle køyretøya i garasjen
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TOOLTIP                          :{BLACK}Sel alle skipa i skipsdokken
-STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TOOLTIP                      :{BLACK}Sel alle flymaskina i hangaren
+STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TOOLTIP                      :{BLACK}Sel alle luftfartøya i hangaren
 
 STR_DEPOT_AUTOREPLACE_TRAIN_TOOLTIP                             :{BLACK}Autoerstatt alle toga i togstallen
 STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TOOLTIP                      :{BLACK}Autoerstatt alle køyretøya i garasjen
 STR_DEPOT_AUTOREPLACE_SHIP_TOOLTIP                              :{BLACK}Autoerstatt alle skipa i skipsdokken
-STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}Autoerstatt alle flymaskina i hangaren
+STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}Autoerstatt alle luftfartøya i hangaren
 
 STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Nye tog/vogner
 STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Nye køyretøy
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Nye skip
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Ny flymaskin
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Nytt luftfartøy
 
 STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Bygg nytt tog (vogn)
 STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Bygg nytt køyretøy
 STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Bygg nytt skip
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Bygg ny flymaskin
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Bygg nytt luftfartøy
 
 STR_DEPOT_CLONE_TRAIN                                           :{BLACK}Klon tog
 STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Klon køyretøy
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Klon skip
-STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Klon flymaskin
+STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Klon luftfartøy
 
 STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Dette vil lage ein kopi av eit lokomotiv inkludert alle vognene. Klikk på denne knappen og etter det på eit anna tog. CTRL+klikk deler ordrane
 STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Dette vil lage ein kopi av eit køyretøy. Klikk denne knappen og etter det på eit anna køyretøy. CTRL+klikk deler ordrane
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Dette vil laga ein kopi av eit skip. Klikk på denne knappen og etter det på eit anna skip. CTRL+klikk deler ordrane
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Dette vil lage ein kopi av ein flymaskin. Klikk denne knappen og etter det på eit anna fly. CTRL+klikk deler ordrane
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Dette vil lage ein kopi av eit luftfartøy. Klikk denne knappen og etter det på eit anna luftfartøy. CTRL+klikk deler ordrane
 
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Midtstill hovedvisninga på togstallen. CTRL+klikk syner togstallen i eit nytt tilleggsvindauge
 STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Midtstill hovedvisninga på garasjen. CTRL+klikk syner garasjen i eit nytt tilleggsvindauge
@@ -2849,17 +2849,17 @@ STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Midtstil
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Syne ei liste over alle toga som har denne togstallen i ordrane sine.
 STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Syne ei liste over alle køyretøya som har denne garasjen i ordrane
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TOOLTIP                       :{BLACK}Syne ei liste over alle skipa som har denne skipsdokken i ordrane
-STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TOOLTIP                   :{BLACK}Syne ei liste over alle flymaskina som har denne hangaren i ordrane
+STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TOOLTIP                   :{BLACK}Syne ei liste over alle luftfartøya som har denne hangaren i ordrane
 
 STR_DEPOT_MASS_STOP_DEPOT_TRAIN_TOOLTIP                         :{BLACK}Klikk for å stoppe alle toga i togstallen
 STR_DEPOT_MASS_STOP_DEPOT_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Klikk for å stoppe alle køyretøya i garasjen
 STR_DEPOT_MASS_STOP_DEPOT_SHIP_TOOLTIP                          :{BLACK}Klikk for å stoppe alle skipa i skipsdokken
-STR_DEPOT_MASS_STOP_HANGAR_TOOLTIP                              :{BLACK}Klikk for å stoppe alle flymaskina i hangaren
+STR_DEPOT_MASS_STOP_HANGAR_TOOLTIP                              :{BLACK}Klikk for å stoppe alle luftfartøya i hangaren
 
 STR_DEPOT_MASS_START_DEPOT_TRAIN_TOOLTIP                        :{BLACK}Klikk for å starte alle toga i togstallen
 STR_DEPOT_MASS_START_DEPOT_ROAD_VEHICLE_TOOLTIP                 :{BLACK}Klikk for å starte alle køyretøya i garasjen
 STR_DEPOT_MASS_START_DEPOT_SHIP_TOOLTIP                         :{BLACK}Klikk for å starte alle skipa i skipsdokken
-STR_DEPOT_MASS_START_HANGAR_TOOLTIP                             :{BLACK}Klikk for å starte alle flymaskina i hangaren
+STR_DEPOT_MASS_START_HANGAR_TOOLTIP                             :{BLACK}Klikk for å starte alle luftfartøya i hangaren
 
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Du er i ferd med å selje alle køyretøya i garasje/stall/hangar/dokk. Er du sikker?
 
@@ -2868,7 +2868,7 @@ STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Melding 
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Vi har nyss designa eit nytt {STRING} - er du interessert i å freiste denne farkosten i eit år, slik at vi kan sjå korleis det verkar før vi gjer han tilgjengeleg for alle?
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :lokomotiv
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :køyretøy
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :flymaskin
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :luftfartøy
 STR_ENGINE_PREVIEW_SHIP                                         :skip
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :monorail-lokomotiv
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :maglev-lokomotiv
@@ -2883,7 +2883,7 @@ STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Erstatt 
 STR_REPLACE_VEHICLE_TRAIN                                       :Tog
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Køyretøy
 STR_REPLACE_VEHICLE_SHIP                                        :Skip
-STR_REPLACE_VEHICLE_AIRCRAFT                                    :Flymaskin
+STR_REPLACE_VEHICLE_AIRCRAFT                                    :Luftfartøy
 
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Vel lokomotivtype å byte ut
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Vel den nye typen lokomotiv du vil at skal ta over for den du har vald til venstre
@@ -2916,24 +2916,24 @@ STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE
 STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Syne toget sin gjeldande posisjon. CTRL+klikk vil følgja toget i hovudvindauget
 STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Syne køyretøyet sin gjeldande posisjon. CTRL+klikk vil følgja køyretøyet i hovudvindauget
 STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Syne skipet sin gjeldande posisjon. CTRL+klikk vil følgja skipet i hovudvindauget
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Syne flymaskinen sin gjeldande posisjon. CTRL+klikk vil følgja flymaskinen i hovudvindauget
+STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Syne luftfartøyet sin gjeldande posisjon. CTRL+klikk vil følgja luftfartøyet i hovudvindauget
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Send toget til togstallen. CTRL+klikk for å berre utføre vedlikehald
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Send køyretøyet til garasjen. CTRL+klikk for å berre sende til vedlikehald
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Send skipet til skipsdokken. CTRL+klikk for å berre sende til vedlikehald
-STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Send flymaskinen til hangaren. CTRL+klikk for å berre utføre vedlikehald
+STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Send luftfartøyet til hangaren. CTRL+klikk for å berre utføre vedlikehald
 
 STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Dette vil lage ein kopi av eit lokomotiv inkludert alle vognene. CTRL+klikk deler ordrane
 STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Dette vil lage ein kopi av eit køyretøy. CTRL+klikk deler ordrane
 STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Dette vil laga ein kopi av eit skip. CTRL+klikk deler ordrane
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Dette vil lage ein kopi av ein flymaskin. CTRL+klikk deler ordrane
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Dette vil lage ein kopi av eit luftfartøy. CTRL+klikk deler ordrane
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Tving toget til å køyre utan å ha fått klarsignal
 
 STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Bygg om toget til å frakte ein annan varetype
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Bygg om køyretøyet til å frakte ein annan varetype
 STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Bygg om skipet til å frakte ein annan varetype
-STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Bygg om flymaskinen til å frakte ein annan varetype
+STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Bygg om luftfartøyet til å frakte ein annan varetype
 
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Byt køyreretning
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Byt køyreretning
@@ -2941,17 +2941,17 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Byt køy
 STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Syne ordrane til toget. CTRL+klikk syner togets rutetabell
 STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Syne ordrelista til køyretøyet. CTRL+klikk syner rutetabell
 STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Syne ordrane til skipet. CTRL+klikk syner rutetabell
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Syne ordrane til flymaskinen. CTRL+klikk syner flymaskinens rutetabell
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Syne ordrane til luftfartøyet. CTRL+klikk syner luftfartøyets rutetabell
 
 STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Syne detaljar om toget
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Syne køyretøydetaljar
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Syne skipsdetaljar
-STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Syne detaljar om flymaskin
+STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Syne detaljar om luftfartøy
 
 STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Gjeldande togstatus - klikk her for å stoppe/starte tog. CTRL+klikk ruller til destinasjonen
 STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Gjeldande køyretøystatus - klikk her for å stoppa/starta køyretøy. CTRL+klikk ruller til destinasjonen
 STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Gjeldende skipsstatus - klikk her for å stoppe/starte skip. CTRL+klikk ruller til destinasjonen
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Gjeldande flymaskinstatus - klikk her for å stoppe/starte flymaskin. CTRL+klikk ruller til destinasjonen
+STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Gjeldande luftfartøystatus - klikk her for å stoppe/starte luftfartøy. CTRL+klikk ruller til destinasjonen
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Lastar / Lossar
@@ -2991,7 +2991,7 @@ STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Namn
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Namngje tog
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Namngje køyretøy
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Namngje skip
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Namngje flymaskin
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Namngje luftfartøy
 
 STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Alder: {LTBLUE}{STRING}{BLACK}   Driftskostnadar: {LTBLUE}{CURRENCY}/år
 # The next two need to stay in this order
@@ -3021,7 +3021,7 @@ STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Minsk ve
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Namngje tog
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Namngje køyretøy
 STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Namngje skip
-STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Namngje flymaskin
+STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Namngje luftfartøy
 
 # Extra buttons for train details windows
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Bygd: {LTBLUE}{NUM}{BLACK} Verdi: {LTBLUE}{CURRENCY}
@@ -3054,17 +3054,17 @@ STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Ny kapas
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vel kva type varer toget skal frakte
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Vel kva type varer køyretøyet skal frakte
 STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}Vel kva type varer skipet skal frakte
-STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Vel kva type varer flymaskinen skal frakte
+STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Vel kva type varer luftfartøyet skal frakte
 
 STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Bygg om toget
 STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Bygg om bil
 STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Bygg om skip
-STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Bygg om flymaskin
+STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Bygg om luftfartøy
 
 STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Bygg om toget til å frakte den valde varetypen
 STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Bygg om køyretøyet til å frakte den valde varetypen
 STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Bygg om skipet til å frakte den valde varetypen
-STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Bygg om flymaskinen til å frakte den valde varetypen
+STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Bygg om luftfartøyet til å frakte den valde varetypen
 
 # Order view
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Ordre)
@@ -3597,32 +3597,32 @@ STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Kan ikkj
 STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Tog i vegen
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Køyretøy i vegen
 STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Det er eit skip i vegen
-STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Det er ein flymaskin i vegen
+STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Det er eit luftfartøy i vegen
 
 STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Kan ikkje byggje om toget...
 STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Kan ikkje byggje om bil...
 STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Kan ikkje bygge om skip...
-STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Kan ikkje byggje om flymaskin...
+STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Kan ikkje byggje om luftfartøy...
 
 STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Kan ikkje namngje tog...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Kan ikkje namngje køyretøy...
 STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}Kan ikkje namngje skip...
-STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}Kan ikkje namngje flymaskin...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}Kan ikkje namngje luftfartøy...
 
 STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Kan ikkje stoppe/starte tog...
 STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Kan ikkje stoppe/starte køyretøy...
 STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Kan ikkje stoppe/starte skip...
-STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Kan ikkje stoppe/starte flymaskinen...
+STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Kan ikkje stoppe/starte luftfartøyet...
 
 STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Kan ikkje sende tog til togstall...
 STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Kan ikkje sende køyretøy til garasje...
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Kan ikkje sende skip til skipsdokk...
-STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Kan ikkje sende flymaskin til hangar...
+STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Kan ikkje sende luftfartøy til hangar...
 
 STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Kan ikkje kjøpe jernbanekøyretøy...
 STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Kan ikkje kjøpe køyretøy...
 STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Kan ikkje byggje skip...
-STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Kan ikkje byggje flymaskin...
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Kan ikkje byggje luftfartøy...
 
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Kan ikkje gje lokomotiv-/vogntypen nytt namn...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Kan ikkje endre namnet til køyretøytypen...
@@ -3632,16 +3632,17 @@ STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Kan ikkj
 STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Kan ikkje selje jernbanekøyretøy...
 STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Kan ikkje selje køyretøy...
 STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Kan ikkje selje skip...
-STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Kan ikkje selje flymaskin...
+STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Kan ikkje selje luftfartøy...
 
 STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :{WHITE}Jernbanekøyretøyet er ikkje tilgjengeleg
 STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :{WHITE}Køyretøyet er ikkje tilgjengeleg
 STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}Skipet er ikkje tilgjengeleg
-STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Flymaskinen er ikkje tilgjengeleg
+STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Luftfartøyet er ikkje tilgjengeleg
 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}For mange køyretøy i spelet
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Kan ikkje endre vedlikehaldsintervall...
 
+STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... køyretøy er øydelagd
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Kan ikkje tvinge tog til å passere signal ved fare...
@@ -3650,7 +3651,7 @@ STR_ERROR_TRAIN_START_NO_CATENARY                               :Dette sporet ma
 
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Kan ikkje snu køyretøyet...
 
-STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}Flymaskinen er i lufta
+STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}Lluftfartøyet er i lufta
 
 # Order related errors
 STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}Ikkje plass til fleire ordrar
@@ -3767,7 +3768,7 @@ STR_SV_UNNAMED                                                  :Utan namn
 STR_SV_TRAIN_NAME                                               :Tog {COMMA}
 STR_SV_ROAD_VEHICLE_NAME                                        :Køyretøy {COMMA}
 STR_SV_SHIP_NAME                                                :Skip {COMMA}
-STR_SV_AIRCRAFT_NAME                                            :Flymaskiner {COMMA}
+STR_SV_AIRCRAFT_NAME                                            :Luftfartøy {COMMA}
 
 STR_SV_STNAME                                                   :{STRING}
 STR_SV_STNAME_NORTH                                             :{STRING} nord
