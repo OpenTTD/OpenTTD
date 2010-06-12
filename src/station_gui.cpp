@@ -828,8 +828,8 @@ static const NWidgetPart _nested_station_view_widgets[] = {
 				SetDataTip(STR_BUTTON_RENAME, STR_STATION_VIEW_RENAME_TOOLTIP),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SVW_TRAINS), SetMinimalSize(14, 12), SetFill(0, 1), SetDataTip(STR_TRAIN, STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SVW_ROADVEHS), SetMinimalSize(14, 12), SetFill(0, 1), SetDataTip(STR_LORRY, STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SVW_PLANES),  SetMinimalSize(14, 12), SetFill(0, 1), SetDataTip(STR_PLANE, STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SVW_SHIPS), SetMinimalSize(14, 12), SetFill(0, 1), SetDataTip(STR_SHIP, STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SVW_PLANES),  SetMinimalSize(14, 12), SetFill(0, 1), SetDataTip(STR_PLANE, STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP),
 		NWidget(WWT_RESIZEBOX, COLOUR_GREY),
 	EndContainer(),
 };
@@ -939,8 +939,8 @@ struct StationViewWindow : public Window {
 		this->SetWidgetDisabledState(SVW_RENAME,   st->owner != _local_company);
 		this->SetWidgetDisabledState(SVW_TRAINS,   !(st->facilities & FACIL_TRAIN));
 		this->SetWidgetDisabledState(SVW_ROADVEHS, !(st->facilities & FACIL_TRUCK_STOP) && !(st->facilities & FACIL_BUS_STOP));
-		this->SetWidgetDisabledState(SVW_PLANES,   !(st->facilities & FACIL_AIRPORT));
 		this->SetWidgetDisabledState(SVW_SHIPS,    !(st->facilities & FACIL_DOCK));
+		this->SetWidgetDisabledState(SVW_PLANES,   !(st->facilities & FACIL_AIRPORT));
 
 		this->DrawWidgets();
 
@@ -1185,8 +1185,8 @@ struct StationViewWindow : public Window {
 
 			case SVW_TRAINS:   // Show list of scheduled trains to this station
 			case SVW_ROADVEHS: // Show list of scheduled road-vehicles to this station
-			case SVW_PLANES:   // Show list of scheduled aircraft to this station
 			case SVW_SHIPS:    // Show list of scheduled ships to this station
+			case SVW_PLANES:   // Show list of scheduled aircraft to this station
 				ShowVehicleListWindow(this->owner, (VehicleType)(widget - SVW_TRAINS), (StationID)this->window_number);
 				break;
 		}
