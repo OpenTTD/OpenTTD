@@ -476,7 +476,7 @@ const char *VideoDriver_SDL::Start(const char * const *parm)
 		return SDL_CALL SDL_GetError();
 	}
 
-	SDL_CALL SDL_VideoDriverName(buf, 30);
+	SDL_CALL SDL_VideoDriverName(buf, sizeof buf);
 	DEBUG(driver, 1, "SDL: using driver '%s'", buf);
 
 	MarkWholeScreenDirty();
