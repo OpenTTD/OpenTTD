@@ -200,7 +200,7 @@ public:
 		}
 		SetObjectToPlace(SPR_CURSOR_ZZZ, PAL_NONE, HT_NONE, WC_MAIN_WINDOW, 0);
 
-		BuildFileList();
+		this->OnInvalidateData(0);
 
 		ResetObjectToPlace();
 
@@ -327,8 +327,7 @@ public:
 
 			case SLWW_HOME_BUTTON: // OpenTTD 'button', jumps to OpenTTD directory
 				FiosBrowseTo(&o_dir);
-				this->SetDirty();
-				BuildFileList();
+				this->InvalidateData();
 				break;
 
 			case SLWW_DRIVES_DIRECTORIES_LIST: { // Click the listbox
@@ -362,9 +361,8 @@ public:
 						this->SetWidgetDirty(SLWW_SAVE_OSK_TITLE);
 					}
 				} else {
-					/* Changed directory, need repaint. */
-					this->SetDirty();
-					BuildFileList();
+					/* Changed directory, need refresh. */
+					this->InvalidateData();
 				}
 				break;
 			}
@@ -421,13 +419,12 @@ public:
 			if (!FiosDelete(this->text.buf)) {
 				ShowErrorMessage(STR_ERROR_UNABLE_TO_DELETE_FILE, INVALID_STRING_ID, WL_ERROR);
 			} else {
-				BuildFileList();
+				this->InvalidateData();
 				/* Reset file name to current date on successful delete */
 				if (_saveload_mode == SLD_SAVE_GAME) GenerateFileName();
 			}
 
 			UpdateTextBufferSize(&this->text);
-			this->SetDirty();
 		} else if (this->IsWidgetLowered(SLWW_SAVE_GAME)) { // Save button clicked
 			_switch_mode = SM_SAVE;
 			FiosMakeSavegameName(_file_to_saveload.name, this->text.buf, sizeof(_file_to_saveload.name));
