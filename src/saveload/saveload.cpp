@@ -373,6 +373,15 @@ static inline void SlWriteUint64(uint64 x)
 	SlWriteUint32((uint32)x);
 }
 
+/** Read in bytes from the file/data structure but don't do
+ * anything with them, discarding them in effect
+ * @param length The amount of bytes that is being treated this way
+ */
+static inline void SlSkipBytes(size_t length)
+{
+	for (; length != 0; length--) SlReadByte();
+}
+
 /**
  * Read in the header descriptor of an object or an array.
  * If the highest bit is set (7), then the index is bigger than 127
@@ -489,6 +498,16 @@ int SlIterateArray()
 }
 
 /**
+ * Skip an array or sparse array
+ */
+void SlSkipArray()
+{
+	while (SlIterateArray() != -1) {
+		SlSkipBytes(_next_offs - SlGetOffs());
+	}
+}
+
+/**
  * Sets the length of either a RIFF object or the number of items in an array.
  * This lets us load an object or an array of arbitrary size
  * @param length The length of the sought object/array
@@ -549,15 +568,6 @@ static void SlCopyBytes(void *ptr, size_t length)
 			break;
 		default: NOT_REACHED();
 	}
-}
-
-/** Read in bytes from the file/data structure but don't do
- * anything with them, discarding them in effect
- * @param length The amount of bytes that is being treated this way
- */
-static inline void SlSkipBytes(size_t length)
-{
-	for (; length != 0; length--) SlReadByte();
 }
 
 /* Get the length of the current object */
