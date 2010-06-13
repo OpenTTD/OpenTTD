@@ -2342,6 +2342,12 @@ STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}Obriši
 STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}Obriši trenutno odabranu spremljenu igru
 STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Spremi
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Spremi trenutnu igru koristeći odabrano ime
+STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Učitaj
+STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Učitaj odabranu igru
+STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Detalji o igri
+STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Nema dostupnih informacija.
+STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
+STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Upiši ime za spremanje igre
 
@@ -2519,6 +2525,12 @@ STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatib
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Nepronađene GRF datoteke su isključene
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Nedostaje GRF datoteka(e)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Odpauziranje može uzrokovati rušenje OpenTTD-a. Nemojte slati prijave bugova za posljedična rušenja.{}Želite li stvarno odpauzirati?
+
+# NewGRF status
+STR_NEWGRF_LIST_NONE                                            :Nijedan
+STR_NEWGRF_LIST_ALL_FOUND                                       :Svi fajlovi prisutni
+STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Pronađeni kompatibilni fajlovi
+STR_NEWGRF_LIST_MISSING                                         :{RED}Nedostaju fajlovi
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Ponašanje NewGRF '{0:STRING}' će vjerojatno uzrokovati deharmonizaciju i/ili rušenje igre.
@@ -3430,6 +3442,7 @@ STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Spremljena igra
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Datoteka nije čitljiva
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Ne mogu pisati u datoteku
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Provjera integriteta podataka nije uspjela
+STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<not available>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Igra je bila spremljena u verziji bez podrške za tramvaje. Zbog toga su svi tramvaji uklonjeni.
 
 # Map generation messages

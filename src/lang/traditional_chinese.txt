@@ -2424,6 +2424,8 @@ STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}找不�
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}缺少某些 GRF 檔案
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}取消暫停可能會讓 OpenTTD 當掉，請不要回報之後的當機情形。{}您真的要取消暫停嗎？
 
+# NewGRF status
+
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF「{0:STRING}」的行為可能會造成失去同步或當機
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}「{1:ENGINE}」不在機廠內卻發生列車長度的變動
@@ -3640,6 +3642,7 @@ STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}飛機�
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}遊戲中已有太多交通工具
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}不能更改檢修週期...
 
+STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... 交通工具已摧毀
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}無法讓列車通過險阻號誌...

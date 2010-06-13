@@ -2416,6 +2416,12 @@ STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}Удал
 STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}Удалить выбранную сохранённую игру
 STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Сохранить
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Сохранить игру под выбранным именем
+STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Загрузить
+STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Загрузить выбранную игру
+STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Информация об игре
+STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Нет информации.
+STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
+STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Введите название сохраняемой игры
 
@@ -2593,6 +2599,12 @@ STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Вмес
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Отсутствующие файлы NewGRF были отключены
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Недостающие GRF файлы
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Снятие с паузы может привести к ошибке OpenTTD.{}Вы хотите запустить игру?
+
+# NewGRF status
+STR_NEWGRF_LIST_NONE                                            :Нет
+STR_NEWGRF_LIST_ALL_FOUND                                       :Все файлы доступны
+STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Найдены совместимые файлы
+STR_NEWGRF_LIST_MISSING                                         :{RED}Файлы отсутствуют
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Файл NewGRF «{STRING}» может привести к потере синхронизации и вылету игры.
@@ -3514,6 +3526,7 @@ STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Сохране�
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Файл не читается
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Незаписываемый файл
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Нарушена целостность
+STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<недоступно>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Игра была сохранена в игре без поддержки трамваев. Все трамваи были отключены.
 
 # Map generation messages
@@ -3820,6 +3833,7 @@ STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Авиа
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Слишком много транспорта в игре
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Не удалось изменить частоту обслуживания...
 
+STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... транспортное средство уничтожено
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Невозможно игнорировать сигнал. Опасно...

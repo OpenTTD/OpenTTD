@@ -2424,6 +2424,8 @@ STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Các GRF
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Thiếu GRF file
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Tiếp tục có thể làm treo OpenTTD. Không nên báo cáo lỗi sau khi bị treo.{}Bạn có chắc là tiếp tục chơi?
 
+# NewGRF status
+
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Hoạt động của NewGRF '{0:STRING}' có thể gây mất đồng bộ hoặc bị treo.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Nó cắt ngắn độ dài của đoàn tàu '{1:ENGINE}' nếu không ở trong xưởng.
@@ -3640,6 +3642,7 @@ STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Máy bay
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Quá nhiều phương tiện trong trò chơi
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Không thể thay đổi tần suất bảo trì...
 
+STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... xe đã bị phá hủy
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Không thể để tàu hoả qua tín hiệu đèn khi nguy hiểm...

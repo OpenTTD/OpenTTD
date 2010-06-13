@@ -2426,6 +2426,8 @@ STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}I file G
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}File GRF mancanti
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Uscire dalla pausa può causare un crash: nel caso, si prega di non inviare segnalazioni bug al riguardo.{}Uscire dalla pausa?
 
+# NewGRF status
+
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Le caratteristiche del NewGRF '{0:STRING}' possono causare errori di sincronizzazione e/o crash.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}La lunghezza dei veicoli '{1:ENGINE}' può cambiare al di fuori dei depositi.
@@ -3642,6 +3644,7 @@ STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}L'aeromo
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Troppi veicoli nel gioco
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Impossibile cambiare l'intervallo di manutenzione...
 
+STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... il veicolo è distrutto
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Impossibile far passare al treno un segnale di pericolo...

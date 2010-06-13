@@ -2247,6 +2247,12 @@ STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}Borrar
 STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}Borrar el juego guardado seleccionado
 STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Guardar
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Guarda el juego actual, usando el nombre seleccionado
+STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Cargar
+STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Cargar la partida seleccionada
+STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Detalles de la Partida
+STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}No hay información disponible.
+STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
+STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Introduce un nombre para el juego guardado
 
@@ -2424,6 +2430,12 @@ STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}GRF(s) c
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Fichero(s) GRF perdidos han sido desactivados
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Fichero(s) GRF que faltan
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Quitar la pausa puede hacer que se cierre OpenTTD. No notifique este error.{}¿Desea realmente quitar la pausa?
+
+# NewGRF status
+STR_NEWGRF_LIST_NONE                                            :Ninguno
+STR_NEWGRF_LIST_ALL_FOUND                                       :Todos los ficheros presentes
+STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Ficheros compatibles encontrados
+STR_NEWGRF_LIST_MISSING                                         :{RED}Ficheros que faltan
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Problema con el NewGRF '{STRING}' puede causar desincronización o cuelgues
@@ -3335,6 +3347,7 @@ STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :La partida guar
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :No se puede leer fichero
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :No se puede escribir en el fichero
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Comprobación de integridad de los datos fallida.
+STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<no disponible>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}El juego ha sido guardado en una versión sin soporte para tranvías. Todos los tranvías serán eliminados.
 
 # Map generation messages
