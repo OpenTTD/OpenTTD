@@ -26,6 +26,8 @@ struct LoadCheckData {
 	StringID error;     ///< Error message from loading. INVALID_STRING_ID if no error.
 	char *error_data;   ///< Data to pass to SetDParamStr when displaying #error.
 
+	uint32 map_size_x, map_size_y;
+
 	LoadCheckData() : error_data(NULL)
 	{
 		this->Clear();

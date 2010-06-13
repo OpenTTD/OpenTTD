@@ -13,6 +13,7 @@
 #include "../map_func.h"
 #include "../core/alloc_type.hpp"
 #include "../core/bitmath_func.hpp"
+#include "../fios.h"
 
 #include "saveload.h"
 
@@ -36,6 +37,13 @@ static void Load_MAPS()
 {
 	SlGlobList(_map_dimensions);
 	AllocateMap(_map_dim_x, _map_dim_y);
+}
+
+static void Check_MAPS()
+{
+	SlGlobList(_map_dimensions);
+	_load_check_data.map_size_x = _map_dim_x;
+	_load_check_data.map_size_y = _map_dim_y;
 }
 
 static const uint MAP_SL_BUF_SIZE = 4096;
@@ -241,13 +249,13 @@ static void Save_MAP7()
 }
 
 extern const ChunkHandler _map_chunk_handlers[] = {
-	{ 'MAPS', Save_MAPS, Load_MAPS, NULL, NULL, CH_RIFF },
-	{ 'MAPT', Save_MAPT, Load_MAPT, NULL, NULL, CH_RIFF },
-	{ 'MAPO', Save_MAP1, Load_MAP1, NULL, NULL, CH_RIFF },
-	{ 'MAP2', Save_MAP2, Load_MAP2, NULL, NULL, CH_RIFF },
-	{ 'M3LO', Save_MAP3, Load_MAP3, NULL, NULL, CH_RIFF },
-	{ 'M3HI', Save_MAP4, Load_MAP4, NULL, NULL, CH_RIFF },
-	{ 'MAP5', Save_MAP5, Load_MAP5, NULL, NULL, CH_RIFF },
-	{ 'MAPE', Save_MAP6, Load_MAP6, NULL, NULL, CH_RIFF },
-	{ 'MAP7', Save_MAP7, Load_MAP7, NULL, NULL, CH_RIFF | CH_LAST },
+	{ 'MAPS', Save_MAPS, Load_MAPS, NULL, Check_MAPS, CH_RIFF },
+	{ 'MAPT', Save_MAPT, Load_MAPT, NULL, NULL,       CH_RIFF },
+	{ 'MAPO', Save_MAP1, Load_MAP1, NULL, NULL,       CH_RIFF },
+	{ 'MAP2', Save_MAP2, Load_MAP2, NULL, NULL,       CH_RIFF },
+	{ 'M3LO', Save_MAP3, Load_MAP3, NULL, NULL,       CH_RIFF },
+	{ 'M3HI', Save_MAP4, Load_MAP4, NULL, NULL,       CH_RIFF },
+	{ 'MAP5', Save_MAP5, Load_MAP5, NULL, NULL,       CH_RIFF },
+	{ 'MAPE', Save_MAP6, Load_MAP6, NULL, NULL,       CH_RIFF },
+	{ 'MAP7', Save_MAP7, Load_MAP7, NULL, NULL,       CH_RIFF | CH_LAST },
 };

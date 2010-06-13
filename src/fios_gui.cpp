@@ -44,6 +44,8 @@ void LoadCheckData::Clear()
 	this->error = INVALID_STRING_ID;
 	free(this->error_data);
 	this->error_data = NULL;
+
+	this->map_size_x = this->map_size_y = 256; // Default for old savegames which do not store mapsize.
 }
 
 
