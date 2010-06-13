@@ -299,7 +299,11 @@ GRFListCompatibility IsGoodGRFConfigList(GRFConfig *grfconfig)
 			if (f != NULL) {
 				md5sumToString(buf, lastof(buf), c->ident.md5sum);
 				DEBUG(grf, 1, "NewGRF %08X (%s) not found; checksum %s. Compatibility mode on", BSWAP32(c->ident.grfid), c->filename, buf);
-				SetBit(c->flags, GCF_COMPATIBLE);
+				if (!HasBit(c->flags, GCF_COMPATIBLE)) {
+					/* Preserve original_md5sum after it has been assigned */
+					SetBit(c->flags, GCF_COMPATIBLE);
+					memcpy(c->original_md5sum, c->ident.md5sum, sizeof(c->original_md5sum));
+				}
 
 				/* Non-found has precedence over compatibility load */
 				if (res != GLC_NOT_FOUND) res = GLC_COMPATIBLE;

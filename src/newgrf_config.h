@@ -86,6 +86,7 @@ struct GRFConfig : ZeroedMemoryAllocator {
 	~GRFConfig();
 
 	GRFIdentifier ident; ///< grfid and md5sum to uniquely identify newgrfs
+	uint8 original_md5sum[16]; ///< MD5 checksum of original file if only a 'compatible' file was loaded
 	char *filename;     ///< Filename - either with or without full path
 	char *name;         ///< NOSAVE: GRF name (Action 0x08)
 	char *info;         ///< NOSAVE: GRF info (author, copyright, ...) (Action 0x08)

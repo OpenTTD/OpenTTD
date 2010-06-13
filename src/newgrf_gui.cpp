@@ -604,9 +604,9 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 					ShowErrorMessage(STR_NETWORK_ERROR_NOTAVAILABLE, INVALID_STRING_ID, WL_ERROR);
 				} else {
 #if defined(ENABLE_NETWORK)
-				this->DeleteChildWindows(WC_QUERY_STRING); // Remove the parameter query window
+					this->DeleteChildWindows(WC_QUERY_STRING); // Remove the parameter query window
 
-				/* Only show the things in the current list, or everything when nothing's selected */
+					/* Only show the things in the current list, or everything when nothing's selected */
 					ContentVector cv;
 					for (const GRFConfig *c = this->actives; c != NULL; c = c->next) {
 						if (c->status != GCS_NOT_FOUND && !HasBit(c->flags, GCF_COMPATIBLE)) continue;
@@ -616,8 +616,7 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 						ci->state = ContentInfo::DOES_NOT_EXIST;
 						ttd_strlcpy(ci->name, c->GetName(), lengthof(ci->name));
 						ci->unique_id = BSWAP32(c->ident.grfid);
-						memcpy(ci->md5sum, c->ident.md5sum, sizeof(ci->md5sum));
-						if (HasBit(c->flags, GCF_COMPATIBLE)) GamelogGetOriginalGRFMD5Checksum(c->ident.grfid, ci->md5sum);
+						memcpy(ci->md5sum, HasBit(c->flags, GCF_COMPATIBLE) ? c->original_md5sum : c->ident.md5sum, sizeof(ci->md5sum));
 						*cv.Append() = ci;
 					}
 					ShowNetworkContentListWindow(cv.Length() == 0 ? NULL : &cv, CONTENT_TYPE_NEWGRF);
