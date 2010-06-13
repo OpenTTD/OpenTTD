@@ -48,6 +48,12 @@ void LoadCheckData::Clear()
 	this->map_size_x = this->map_size_y = 256; // Default for old savegames which do not store mapsize.
 	this->current_date = 0;
 	memset(&this->settings, 0, sizeof(this->settings));
+
+	const CompanyPropertiesMap::iterator end = this->companies.End();
+	for (CompanyPropertiesMap::iterator it = this->companies.Begin(); it != end; it++) {
+		delete it->second;
+	}
+	companies.Clear();
 }
 
 

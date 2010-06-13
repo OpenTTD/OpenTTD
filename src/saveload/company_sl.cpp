@@ -13,8 +13,11 @@
 #include "../company_base.h"
 #include "../company_func.h"
 #include "../company_manager_face.h"
+#include "../fios.h"
 
 #include "saveload.h"
+
+#include "table/strings.h"
 
 /**
  * Converts an old company manager's face format to the new company manager's face format
@@ -163,6 +166,29 @@ static const SaveLoad _company_settings_desc[] = {
 	SLE_END()
 };
 
+static const SaveLoad _company_settings_skip_desc[] = {
+	/* Engine renewal settings */
+	SLE_CONDNULL(512, 16, 18),
+	SLE_CONDNULL(2, 19, 68),                 // engine_renew_list
+	SLE_CONDNULL(4, 69, SL_MAX_VERSION),     // engine_renew_list
+	SLE_CONDNULL(1, 16, SL_MAX_VERSION),     // settings.engine_renew
+	SLE_CONDNULL(2, 16, SL_MAX_VERSION),     // settings.engine_renew_months
+	SLE_CONDNULL(4, 16, SL_MAX_VERSION),     // settings.engine_renew_money
+	SLE_CONDNULL(1,  2, SL_MAX_VERSION),     // settings.renew_keep_length
+
+	/* Default vehicle settings */
+	SLE_CONDNULL(1, 120, SL_MAX_VERSION),    // settings.vehicle.servint_ispercent
+	SLE_CONDNULL(2, 120, SL_MAX_VERSION),    // settings.vehicle.servint_trains
+	SLE_CONDNULL(2, 120, SL_MAX_VERSION),    // settings.vehicle.servint_roadveh
+	SLE_CONDNULL(2, 120, SL_MAX_VERSION),    // settings.vehicle.servint_aircraft
+	SLE_CONDNULL(2, 120, SL_MAX_VERSION),    // settings.vehicle.servint_ships
+
+	/* Reserve extra space in savegame here. (currently 63 bytes) */
+	SLE_CONDNULL(63, 2, SL_MAX_VERSION),
+
+	SLE_END()
+};
+
 static const SaveLoad _company_economy_desc[] = {
 	/* these were changed to 64-bit in savegame format 2 */
 	SLE_CONDVAR(CompanyEconomyEntry, income,              SLE_FILE_I32 | SLE_VAR_I64, 0, 1),
@@ -230,15 +256,20 @@ static const SaveLoad _company_livery_desc[] = {
 	SLE_END()
 };
 
-static void SaveLoad_PLYR(Company *c)
+static void SaveLoad_PLYR_common(Company *c, CompanyProperties *cprops)
 {
 	int i;
 
-	SlObject((CompanyProperties *)c, _company_desc);
-	SlObject(c, _company_settings_desc);
+	SlObject(cprops, _company_desc);
+	if (c != NULL) {
+		SlObject(c, _company_settings_desc);
+	} else {
+		char nothing;
+		SlObject(&nothing, _company_settings_skip_desc);
+	}
 
 	/* Keep backwards compatible for savegames, so load the old AI block */
-	if (CheckSavegameVersion(107) && c->is_ai) {
+	if (CheckSavegameVersion(107) && cprops->is_ai) {
 		CompanyOldAI old_ai;
 		char nothing;
 
@@ -249,31 +280,44 @@ static void SaveLoad_PLYR(Company *c)
 	}
 
 	/* Write economy */
-	SlObject(&c->cur_economy, _company_economy_desc);
+	SlObject(&cprops->cur_economy, _company_economy_desc);
 
 	/* Write old economy entries. */
-	for (i = 0; i < c->num_valid_stat_ent; i++) {
-		SlObject(&c->old_economy[i], _company_economy_desc);
+	for (i = 0; i < cprops->num_valid_stat_ent; i++) {
+		SlObject(&cprops->old_economy[i], _company_economy_desc);
 	}
 
 	/* Write each livery entry. */
 	int num_liveries = CheckSavegameVersion(63) ? LS_END - 4 : (CheckSavegameVersion(85) ? LS_END - 2: LS_END);
-	for (i = 0; i < num_liveries; i++) {
-		SlObject(&c->livery[i], _company_livery_desc);
-	}
+	if (c != NULL) {
+		for (i = 0; i < num_liveries; i++) {
+			SlObject(&c->livery[i], _company_livery_desc);
+		}
 
-	if (num_liveries < LS_END) {
-		/* We want to insert some liveries somewhere in between. This means some have to be moved. */
-		memmove(&c->livery[LS_FREIGHT_WAGON], &c->livery[LS_PASSENGER_WAGON_MONORAIL], (LS_END - LS_FREIGHT_WAGON) * sizeof(c->livery[0]));
-		c->livery[LS_PASSENGER_WAGON_MONORAIL] = c->livery[LS_MONORAIL];
-		c->livery[LS_PASSENGER_WAGON_MAGLEV]   = c->livery[LS_MAGLEV];
-	}
+		if (num_liveries < LS_END) {
+			/* We want to insert some liveries somewhere in between. This means some have to be moved. */
+			memmove(&c->livery[LS_FREIGHT_WAGON], &c->livery[LS_PASSENGER_WAGON_MONORAIL], (LS_END - LS_FREIGHT_WAGON) * sizeof(c->livery[0]));
+			c->livery[LS_PASSENGER_WAGON_MONORAIL] = c->livery[LS_MONORAIL];
+			c->livery[LS_PASSENGER_WAGON_MAGLEV]   = c->livery[LS_MAGLEV];
+		}
 
-	if (num_liveries == LS_END - 4) {
-		/* Copy bus/truck liveries over to trams */
-		c->livery[LS_PASSENGER_TRAM] = c->livery[LS_BUS];
-		c->livery[LS_FREIGHT_TRAM]   = c->livery[LS_TRUCK];
+		if (num_liveries == LS_END - 4) {
+			/* Copy bus/truck liveries over to trams */
+			c->livery[LS_PASSENGER_TRAM] = c->livery[LS_BUS];
+			c->livery[LS_FREIGHT_TRAM]   = c->livery[LS_TRUCK];
+		}
+	} else {
+		/* Skip liveries */
+		Livery dummy_livery;
+		for (i = 0; i < num_liveries; i++) {
+			SlObject(&dummy_livery, _company_livery_desc);
+		}
 	}
+}
+
+static void SaveLoad_PLYR(Company *c)
+{
+	SaveLoad_PLYR_common(c, c);
 }
 
 static void Save_PLYR()
@@ -295,15 +339,38 @@ static void Load_PLYR()
 	}
 }
 
+static void Check_PLYR()
+{
+	int index;
+	while ((index = SlIterateArray()) != -1) {
+		CompanyProperties *cprops = new CompanyProperties();
+		SaveLoad_PLYR_common(NULL, cprops);
+
+		/* We do not load old custom names */
+		if (CheckSavegameVersion(84))
+		{
+			if (GB(cprops->name_1, 11, 5) == 15) {
+				cprops->name_1 = STR_GAME_SAVELOAD_NOT_AVAILABLE;
+			}
+
+			if (GB(cprops->president_name_1, 11, 5) == 15) {
+				cprops->president_name_1 = STR_GAME_SAVELOAD_NOT_AVAILABLE;
+			}
+		}
+
+		if (!_load_check_data.companies.Insert(index, cprops)) delete cprops;
+	}
+}
+
 static void Ptrs_PLYR()
 {
 	Company *c;
 	FOR_ALL_COMPANIES(c) {
-		SlObject(c, _company_desc);
+		SlObject(c, _company_settings_desc);
 	}
 }
 
 
 extern const ChunkHandler _company_chunk_handlers[] = {
-	{ 'PLYR', Save_PLYR, Load_PLYR, Ptrs_PLYR, NULL, CH_ARRAY | CH_LAST},
+	{ 'PLYR', Save_PLYR, Load_PLYR, Ptrs_PLYR, Check_PLYR, CH_ARRAY | CH_LAST},
 };

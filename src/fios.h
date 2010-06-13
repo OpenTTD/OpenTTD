@@ -14,11 +14,15 @@
 
 #include "strings_type.h"
 #include "core/smallvec_type.hpp"
+#include "core/smallmap_type.hpp"
 #include "core/enum_type.hpp"
 #include "gfx_type.h"
 #include "date_type.h"
 #include "settings_type.h"
+#include "company_base.h"
 
+
+typedef SmallMap<uint, CompanyProperties *> CompanyPropertiesMap;
 
 /**
  * Container for loading in mode SL_LOAD_CHECK.
@@ -32,6 +36,8 @@ struct LoadCheckData {
 	Date current_date;
 
 	GameSettings settings;
+
+	CompanyPropertiesMap companies;               ///< Company information.
 
 	LoadCheckData() : error_data(NULL)
 	{
