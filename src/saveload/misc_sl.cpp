@@ -21,6 +21,7 @@
 #include "../gfx_func.h"
 #include "../company_base.h"
 #include "../core/random_func.hpp"
+#include "../fios.h"
 
 #include "saveload.h"
 
@@ -86,11 +87,44 @@ static const SaveLoadGlobVarList _date_desc[] = {
 	    SLEG_END()
 };
 
+static const SaveLoadGlobVarList _date_check_desc[] = {
+	SLEG_CONDVAR(_load_check_data.current_date,  SLE_FILE_U16 | SLE_VAR_I32,  0,  30),
+	SLEG_CONDVAR(_load_check_data.current_date,  SLE_INT32,                  31, SL_MAX_VERSION),
+	    SLE_NULL(2),                       // _date_fract
+	    SLE_NULL(2),                       // _tick_counter
+	    SLE_NULL(2),                       // _vehicle_id_ctr_day
+	    SLE_NULL(1),                       // _age_cargo_skip_counter
+	SLE_CONDNULL(1, 0, 45),
+	SLE_CONDNULL(2, 0, 5),                 // _cur_tileloop_tile
+	SLE_CONDNULL(4, 6, SL_MAX_VERSION),    // _cur_tileloop_tile
+	    SLE_NULL(2),                       // _disaster_delay
+	SLE_CONDNULL(2, 0, 119),
+	    SLE_NULL(4),                       // _random.state[0]
+	    SLE_NULL(4),                       // _random.state[1]
+	SLE_CONDNULL(1,  0,   9),
+	SLE_CONDNULL(4, 10, 119),
+	    SLE_NULL(1),                       // _cur_company_tick_index
+	SLE_CONDNULL(2, 0, 108),               // _next_competitor_start
+	SLE_CONDNULL(4, 109, SL_MAX_VERSION),  // _next_competitor_start
+	    SLE_NULL(1),                       // _trees_tick_ctr
+	SLE_CONDNULL(1, 4, SL_MAX_VERSION),    // _pause_mode
+	SLE_CONDNULL(4, 11, 119),
+	    SLEG_END()
+};
+
 /* Save load date related variables as well as persistent tick counters
  * XXX: currently some unrelated stuff is just put here */
 static void SaveLoad_DATE()
 {
 	SlGlobList(_date_desc);
+}
+
+static void Check_DATE()
+{
+	SlGlobList(_date_check_desc);
+	if (CheckSavegameVersion(31)) {
+		_load_check_data.current_date += DAYS_TILL_ORIGINAL_BASE_YEAR;
+	}
 }
 
 
@@ -109,6 +143,6 @@ static void SaveLoad_VIEW()
 }
 
 extern const ChunkHandler _misc_chunk_handlers[] = {
-	{ 'DATE', SaveLoad_DATE, SaveLoad_DATE, NULL, NULL, CH_RIFF},
-	{ 'VIEW', SaveLoad_VIEW, SaveLoad_VIEW, NULL, NULL, CH_RIFF | CH_LAST},
+	{ 'DATE', SaveLoad_DATE, SaveLoad_DATE, NULL, Check_DATE, CH_RIFF},
+	{ 'VIEW', SaveLoad_VIEW, SaveLoad_VIEW, NULL, NULL,       CH_RIFF | CH_LAST},
 };

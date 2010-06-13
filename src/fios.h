@@ -16,6 +16,7 @@
 #include "core/smallvec_type.hpp"
 #include "core/enum_type.hpp"
 #include "gfx_type.h"
+#include "date_type.h"
 
 
 /**
@@ -27,6 +28,7 @@ struct LoadCheckData {
 	char *error_data;   ///< Data to pass to SetDParamStr when displaying #error.
 
 	uint32 map_size_x, map_size_y;
+	Date current_date;
 
 	LoadCheckData() : error_data(NULL)
 	{

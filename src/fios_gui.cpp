@@ -46,6 +46,7 @@ void LoadCheckData::Clear()
 	this->error_data = NULL;
 
 	this->map_size_x = this->map_size_y = 256; // Default for old savegames which do not store mapsize.
+	this->current_date = 0;
 }
 
 
