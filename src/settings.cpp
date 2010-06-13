@@ -65,6 +65,7 @@
 #include "engine_base.h"
 #include "smallmap_gui.h"
 #include "roadveh.h"
+#include "fios.h"
 
 #include "void_map.h"
 #include "station_base.h"
@@ -1967,6 +1968,11 @@ static void Load_PATS()
 	LoadSettings(_settings, &_settings_game);
 }
 
+static void Check_PATS()
+{
+	LoadSettings(_settings, &_load_check_data.settings);
+}
+
 static void Save_PATS()
 {
 	SaveSettings(_settings, &_settings_game);
@@ -1985,8 +1991,8 @@ void CheckConfig()
 }
 
 extern const ChunkHandler _setting_chunk_handlers[] = {
-	{ 'OPTS', NULL,      Load_OPTS, NULL, NULL, CH_RIFF},
-	{ 'PATS', Save_PATS, Load_PATS, NULL, NULL, CH_RIFF | CH_LAST},
+	{ 'OPTS', NULL,      Load_OPTS, NULL, NULL,       CH_RIFF},
+	{ 'PATS', Save_PATS, Load_PATS, NULL, Check_PATS, CH_RIFF | CH_LAST},
 };
 
 static bool IsSignedVarMemType(VarType vt)

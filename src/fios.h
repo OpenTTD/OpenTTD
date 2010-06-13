@@ -17,6 +17,7 @@
 #include "core/enum_type.hpp"
 #include "gfx_type.h"
 #include "date_type.h"
+#include "settings_type.h"
 
 
 /**
@@ -29,6 +30,8 @@ struct LoadCheckData {
 
 	uint32 map_size_x, map_size_y;
 	Date current_date;
+
+	GameSettings settings;
 
 	LoadCheckData() : error_data(NULL)
 	{
