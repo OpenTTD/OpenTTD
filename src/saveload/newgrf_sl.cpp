@@ -14,6 +14,7 @@
 #include "../core/bitmath_func.hpp"
 #include "../core/alloc_func.hpp"
 #include "../gfx_func.h"
+#include "../fios.h"
 
 #include "saveload.h"
 
@@ -40,20 +41,30 @@ static void Save_NGRF()
 }
 
 
-static void Load_NGRF()
+static void Load_NGRF_common(GRFConfig *&grfconfig)
 {
-	ClearGRFConfigList(&_grfconfig);
+	ClearGRFConfigList(&grfconfig);
 	while (SlIterateArray() != -1) {
 		GRFConfig *c = new GRFConfig();
 		SlObject(c, _grfconfig_desc);
 		if (CheckSavegameVersion(101)) c->windows_paletted = (_use_palette == PAL_WINDOWS);
-		AppendToGRFConfigList(&_grfconfig, c);
+		AppendToGRFConfigList(&grfconfig, c);
 	}
+}
+
+static void Load_NGRF()
+{
+	Load_NGRF_common(_grfconfig);
 
 	/* Append static NewGRF configuration */
 	AppendStaticGRFConfigs(&_grfconfig);
 }
 
+static void Check_NGRF()
+{
+	Load_NGRF_common(_load_check_data.grfconfig);
+}
+
 extern const ChunkHandler _newgrf_chunk_handlers[] = {
-	{ 'NGRF', Save_NGRF, Load_NGRF, NULL, NULL, CH_ARRAY | CH_LAST }
+	{ 'NGRF', Save_NGRF, Load_NGRF, NULL, Check_NGRF, CH_ARRAY | CH_LAST }
 };

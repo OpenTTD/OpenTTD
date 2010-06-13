@@ -54,6 +54,8 @@ void LoadCheckData::Clear()
 		delete it->second;
 	}
 	companies.Clear();
+
+	ClearGRFConfigList(&this->grfconfig);
 }
 
 

@@ -20,6 +20,7 @@
 #include "date_type.h"
 #include "settings_type.h"
 #include "company_base.h"
+#include "newgrf_config.h"
 
 
 typedef SmallMap<uint, CompanyProperties *> CompanyPropertiesMap;
@@ -39,7 +40,10 @@ struct LoadCheckData {
 
 	CompanyPropertiesMap companies;               ///< Company information.
 
-	LoadCheckData() : error_data(NULL)
+	GRFConfig *grfconfig;                         ///< NewGrf configuration from save.
+	GRFListCompatibility grf_compatibility;       ///< Summary state of NewGrfs, whether missing files or only compatible found.
+
+	LoadCheckData() : error_data(NULL), grfconfig(NULL)
 	{
 		this->Clear();
 	}

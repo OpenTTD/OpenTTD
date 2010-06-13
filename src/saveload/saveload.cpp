@@ -2123,7 +2123,10 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb, boo
 
 			_savegame_type = SGT_OTTD;
 
-			if (mode != SL_LOAD_CHECK) {
+			if (mode == SL_LOAD_CHECK) {
+				/* The only part from AfterLoadGame() we need */
+				_load_check_data.grf_compatibility = IsGoodGRFConfigList(_load_check_data.grfconfig);
+			} else {
 				GamelogStartAction(GLAT_LOAD);
 
 				/* After loading fix up savegame for any internal changes that
