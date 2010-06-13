@@ -546,7 +546,15 @@ bool AfterLoadGame()
 	if (_settings_game.vehicle.road_side) _settings_game.vehicle.road_side = 1;
 
 	/* Check if all NewGRFs are present, we are very strict in MP mode */
-	GRFListCompatibility gcf_res = IsGoodGRFConfigList();
+	GRFListCompatibility gcf_res = IsGoodGRFConfigList(_grfconfig);
+	for (GRFConfig *c = _grfconfig; c != NULL; c = c->next) {
+		if (c->status == GCS_NOT_FOUND) {
+			GamelogGRFRemove(c->ident.grfid);
+		} else if (HasBit(c->flags, GCF_COMPATIBLE)) {
+			GamelogGRFCompatible(&c->ident);
+		}
+	}
+
 	if (_networking && gcf_res != GLC_ALL_GOOD) {
 		SetSaveLoadError(STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH);
 		/* Restore the signals */

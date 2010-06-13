@@ -119,7 +119,7 @@ void AppendStaticGRFConfigs(GRFConfig **dst);
 void AppendToGRFConfigList(GRFConfig **dst, GRFConfig *el);
 void ClearGRFConfigList(GRFConfig **config);
 void ResetGRFConfig(bool defaults);
-GRFListCompatibility IsGoodGRFConfigList();
+GRFListCompatibility IsGoodGRFConfigList(GRFConfig *grfconfig);
 bool FillGRFDetails(GRFConfig *config, bool is_static);
 char *GRFBuildParamList(char *dst, const GRFConfig *c, const char *last);
 GRFConfig *DuplicateGRFConfig(const GRFConfig *c);

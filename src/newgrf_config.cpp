@@ -276,6 +276,7 @@ void ResetGRFConfig(bool defaults)
 
 
 /** Check if all GRFs in the GRF config from a savegame can be loaded.
+ * @param grfconfig GrfConfig to check
  * @return will return any of the following 3 values:<br>
  * <ul>
  * <li> GLC_ALL_GOOD: No problems occured, all GRF files were found and loaded
@@ -283,11 +284,11 @@ void ResetGRFConfig(bool defaults)
  *     compatible GRF with the same grfid was found and used instead
  * <li> GLC_NOT_FOUND: For one or more GRF's no match was found at all
  * </ul> */
-GRFListCompatibility IsGoodGRFConfigList()
+GRFListCompatibility IsGoodGRFConfigList(GRFConfig *grfconfig)
 {
 	GRFListCompatibility res = GLC_ALL_GOOD;
 
-	for (GRFConfig *c = _grfconfig; c != NULL; c = c->next) {
+	for (GRFConfig *c = grfconfig; c != NULL; c = c->next) {
 		const GRFConfig *f = FindGRFConfig(c->ident.grfid, c->ident.md5sum);
 		if (f == NULL) {
 			char buf[256];
@@ -302,15 +303,12 @@ GRFListCompatibility IsGoodGRFConfigList()
 
 				/* Non-found has precedence over compatibility load */
 				if (res != GLC_NOT_FOUND) res = GLC_COMPATIBLE;
-				GamelogGRFCompatible(&f->ident);
 				goto compatible_grf;
 			}
 
 			/* No compatible grf was found, mark it as disabled */
 			md5sumToString(buf, lastof(buf), c->ident.md5sum);
 			DEBUG(grf, 0, "NewGRF %08X (%s) not found; checksum %s", BSWAP32(c->ident.grfid), c->filename, buf);
-
-			GamelogGRFRemove(c->ident.grfid);
 
 			c->status = GCS_NOT_FOUND;
 			res = GLC_NOT_FOUND;
