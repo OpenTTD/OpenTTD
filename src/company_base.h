@@ -33,10 +33,8 @@ typedef Pool<Company, CompanyByte, 1, MAX_COMPANIES> CompanyPool;
 extern CompanyPool _company_pool;
 
 
-struct Company : CompanyPool::PoolItem<&_company_pool> {
-	Company(uint16 name_1 = 0, bool is_ai = false);
-	~Company();
-
+/** Statically loadable part of Company pool item */
+struct CompanyProperties {
 	uint32 name_2;
 	uint16 name_1;
 	char *name;
@@ -52,9 +50,9 @@ struct Company : CompanyPool::PoolItem<&_company_pool> {
 	Money current_loan;
 
 	byte colour;
-	Livery livery[LS_END];
+
 	RailTypes avail_railtypes;
-	RoadTypes avail_roadtypes;
+
 	byte block_preview;
 
 	uint32 cargo_types; ///< which cargo types were transported the last year
@@ -74,12 +72,29 @@ struct Company : CompanyPool::PoolItem<&_company_pool> {
 
 	bool is_ai;
 
-	class AIInstance *ai_instance;
-	class AIInfo *ai_info;
-
 	Money yearly_expenses[3][EXPENSES_END];
 	CompanyEconomyEntry cur_economy;
 	CompanyEconomyEntry old_economy[MAX_HISTORY_MONTHS];
+
+	CompanyProperties() : name(NULL), president_name(NULL) {}
+
+	~CompanyProperties()
+	{
+		free(this->name);
+		free(this->president_name);
+	}
+};
+
+struct Company : CompanyPool::PoolItem<&_company_pool>, CompanyProperties {
+	Company(uint16 name_1 = 0, bool is_ai = false);
+	~Company();
+
+	Livery livery[LS_END];
+	RoadTypes avail_roadtypes;
+
+	class AIInstance *ai_instance;
+	class AIInfo *ai_info;
+
 	EngineRenewList engine_renew_list; ///< Defined later
 	CompanySettings settings;          ///< settings specific for each company
 	uint16 *num_engines; ///< caches the number of engines of each type the company owns (no need to save this)

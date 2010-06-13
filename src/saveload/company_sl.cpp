@@ -88,56 +88,60 @@ CompanyManagerFace ConvertFromOldCompanyManagerFace(uint32 face)
 
 /* Save/load of companies */
 static const SaveLoad _company_desc[] = {
-	    SLE_VAR(Company, name_2,          SLE_UINT32),
-	    SLE_VAR(Company, name_1,          SLE_STRINGID),
-	SLE_CONDSTR(Company, name,            SLE_STR, 0,                       84, SL_MAX_VERSION),
+	    SLE_VAR(CompanyProperties, name_2,          SLE_UINT32),
+	    SLE_VAR(CompanyProperties, name_1,          SLE_STRINGID),
+	SLE_CONDSTR(CompanyProperties, name,            SLE_STR, 0,                       84, SL_MAX_VERSION),
 
-	    SLE_VAR(Company, president_name_1, SLE_UINT16),
-	    SLE_VAR(Company, president_name_2, SLE_UINT32),
-	SLE_CONDSTR(Company, president_name,  SLE_STR, 0,                       84, SL_MAX_VERSION),
+	    SLE_VAR(CompanyProperties, president_name_1, SLE_UINT16),
+	    SLE_VAR(CompanyProperties, president_name_2, SLE_UINT32),
+	SLE_CONDSTR(CompanyProperties, president_name,  SLE_STR, 0,                       84, SL_MAX_VERSION),
 
-	    SLE_VAR(Company, face,            SLE_UINT32),
+	    SLE_VAR(CompanyProperties, face,            SLE_UINT32),
 
 	/* money was changed to a 64 bit field in savegame version 1. */
-	SLE_CONDVAR(Company, money,                 SLE_VAR_I64 | SLE_FILE_I32,  0, 0),
-	SLE_CONDVAR(Company, money,                 SLE_INT64,                   1, SL_MAX_VERSION),
+	SLE_CONDVAR(CompanyProperties, money,                 SLE_VAR_I64 | SLE_FILE_I32,  0, 0),
+	SLE_CONDVAR(CompanyProperties, money,                 SLE_INT64,                   1, SL_MAX_VERSION),
 
-	SLE_CONDVAR(Company, current_loan,          SLE_VAR_I64 | SLE_FILE_I32,  0, 64),
-	SLE_CONDVAR(Company, current_loan,          SLE_INT64,                  65, SL_MAX_VERSION),
+	SLE_CONDVAR(CompanyProperties, current_loan,          SLE_VAR_I64 | SLE_FILE_I32,  0, 64),
+	SLE_CONDVAR(CompanyProperties, current_loan,          SLE_INT64,                  65, SL_MAX_VERSION),
 
-	    SLE_VAR(Company, colour,                SLE_UINT8),
-	    SLE_VAR(Company, money_fraction,        SLE_UINT8),
-	SLE_CONDVAR(Company, avail_railtypes,       SLE_UINT8,                   0, 57),
-	    SLE_VAR(Company, block_preview,         SLE_UINT8),
+	    SLE_VAR(CompanyProperties, colour,                SLE_UINT8),
+	    SLE_VAR(CompanyProperties, money_fraction,        SLE_UINT8),
+	SLE_CONDVAR(CompanyProperties, avail_railtypes,       SLE_UINT8,                   0, 57),
+	    SLE_VAR(CompanyProperties, block_preview,         SLE_UINT8),
 
-	SLE_CONDVAR(Company, cargo_types,           SLE_FILE_U16 | SLE_VAR_U32,  0, 93),
-	SLE_CONDVAR(Company, cargo_types,           SLE_UINT32,                 94, SL_MAX_VERSION),
-	SLE_CONDVAR(Company, location_of_HQ,        SLE_FILE_U16 | SLE_VAR_U32,  0,  5),
-	SLE_CONDVAR(Company, location_of_HQ,        SLE_UINT32,                  6, SL_MAX_VERSION),
-	SLE_CONDVAR(Company, last_build_coordinate, SLE_FILE_U16 | SLE_VAR_U32,  0,  5),
-	SLE_CONDVAR(Company, last_build_coordinate, SLE_UINT32,                  6, SL_MAX_VERSION),
-	SLE_CONDVAR(Company, inaugurated_year,      SLE_FILE_U8  | SLE_VAR_I32,  0, 30),
-	SLE_CONDVAR(Company, inaugurated_year,      SLE_INT32,                  31, SL_MAX_VERSION),
+	SLE_CONDVAR(CompanyProperties, cargo_types,           SLE_FILE_U16 | SLE_VAR_U32,  0, 93),
+	SLE_CONDVAR(CompanyProperties, cargo_types,           SLE_UINT32,                 94, SL_MAX_VERSION),
+	SLE_CONDVAR(CompanyProperties, location_of_HQ,        SLE_FILE_U16 | SLE_VAR_U32,  0,  5),
+	SLE_CONDVAR(CompanyProperties, location_of_HQ,        SLE_UINT32,                  6, SL_MAX_VERSION),
+	SLE_CONDVAR(CompanyProperties, last_build_coordinate, SLE_FILE_U16 | SLE_VAR_U32,  0,  5),
+	SLE_CONDVAR(CompanyProperties, last_build_coordinate, SLE_UINT32,                  6, SL_MAX_VERSION),
+	SLE_CONDVAR(CompanyProperties, inaugurated_year,      SLE_FILE_U8  | SLE_VAR_I32,  0, 30),
+	SLE_CONDVAR(CompanyProperties, inaugurated_year,      SLE_INT32,                  31, SL_MAX_VERSION),
 
-	    SLE_ARR(Company, share_owners,          SLE_UINT8, 4),
+	    SLE_ARR(CompanyProperties, share_owners,          SLE_UINT8, 4),
 
-	    SLE_VAR(Company, num_valid_stat_ent,    SLE_UINT8),
+	    SLE_VAR(CompanyProperties, num_valid_stat_ent,    SLE_UINT8),
 
-	    SLE_VAR(Company, quarters_of_bankruptcy,SLE_UINT8),
-	SLE_CONDVAR(Company, bankrupt_asked,        SLE_FILE_U8  | SLE_VAR_U16,  0, 103),
-	SLE_CONDVAR(Company, bankrupt_asked,        SLE_UINT16,                104, SL_MAX_VERSION),
-	    SLE_VAR(Company, bankrupt_timeout,      SLE_INT16),
-	SLE_CONDVAR(Company, bankrupt_value,        SLE_VAR_I64 | SLE_FILE_I32,  0, 64),
-	SLE_CONDVAR(Company, bankrupt_value,        SLE_INT64,                  65, SL_MAX_VERSION),
+	    SLE_VAR(CompanyProperties, quarters_of_bankruptcy,SLE_UINT8),
+	SLE_CONDVAR(CompanyProperties, bankrupt_asked,        SLE_FILE_U8  | SLE_VAR_U16,  0, 103),
+	SLE_CONDVAR(CompanyProperties, bankrupt_asked,        SLE_UINT16,                104, SL_MAX_VERSION),
+	    SLE_VAR(CompanyProperties, bankrupt_timeout,      SLE_INT16),
+	SLE_CONDVAR(CompanyProperties, bankrupt_value,        SLE_VAR_I64 | SLE_FILE_I32,  0, 64),
+	SLE_CONDVAR(CompanyProperties, bankrupt_value,        SLE_INT64,                  65, SL_MAX_VERSION),
 
 	/* yearly expenses was changed to 64-bit in savegame version 2. */
-	SLE_CONDARR(Company, yearly_expenses,       SLE_FILE_I32 | SLE_VAR_I64, 3 * 13, 0, 1),
-	SLE_CONDARR(Company, yearly_expenses,       SLE_INT64, 3 * 13,                  2, SL_MAX_VERSION),
+	SLE_CONDARR(CompanyProperties, yearly_expenses,       SLE_FILE_I32 | SLE_VAR_I64, 3 * 13, 0, 1),
+	SLE_CONDARR(CompanyProperties, yearly_expenses,       SLE_INT64, 3 * 13,                  2, SL_MAX_VERSION),
 
-	SLE_CONDVAR(Company, is_ai,                 SLE_BOOL,                    2, SL_MAX_VERSION),
+	SLE_CONDVAR(CompanyProperties, is_ai,                 SLE_BOOL,                    2, SL_MAX_VERSION),
 	SLE_CONDNULL(1, 107, 111), ///< is_noai
 	SLE_CONDNULL(1, 4, 99),
 
+	SLE_END()
+};
+
+static const SaveLoad _company_settings_desc[] = {
 	/* Engine renewal settings */
 	SLE_CONDNULL(512, 16, 18),
 	SLE_CONDREF(Company, engine_renew_list,            REF_ENGINE_RENEWS,   19, SL_MAX_VERSION),
@@ -230,7 +234,8 @@ static void SaveLoad_PLYR(Company *c)
 {
 	int i;
 
-	SlObject(c, _company_desc);
+	SlObject((CompanyProperties *)c, _company_desc);
+	SlObject(c, _company_settings_desc);
 
 	/* Keep backwards compatible for savegames, so load the old AI block */
 	if (CheckSavegameVersion(107) && c->is_ai) {

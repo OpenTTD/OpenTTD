@@ -50,19 +50,17 @@ uint _cur_company_tick_index;             ///< used to generate a name for one c
 CompanyPool _company_pool("Company");
 INSTANTIATE_POOL_METHODS(Company)
 
-Company::Company(uint16 name_1, bool is_ai) :
-	name_1(name_1),
-	location_of_HQ(INVALID_TILE),
-	is_ai(is_ai)
+Company::Company(uint16 name_1, bool is_ai)
 {
+	this->name_1 = name_1;
+	this->location_of_HQ = INVALID_TILE;
+	this->is_ai = is_ai;
 	for (uint j = 0; j < 4; j++) this->share_owners[j] = COMPANY_SPECTATOR;
 	InvalidateWindowData(WC_PERFORMANCE_DETAIL, 0, INVALID_COMPANY);
 }
 
 Company::~Company()
 {
-	free(this->name);
-	free(this->president_name);
 	free(this->num_engines);
 
 	if (CleaningPool()) return;
