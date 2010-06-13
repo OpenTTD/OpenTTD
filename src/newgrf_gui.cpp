@@ -444,7 +444,7 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 				break;
 
 			case SNGRFS_MOVE_UP: { // Move GRF up
-				if (this->active_sel == NULL) break;
+				if (this->active_sel == NULL || !this->editable) break;
 
 				int pos = 0;
 				for (GRFConfig **pc = &this->actives; *pc != NULL; pc = &(*pc)->next, pos++) {
@@ -463,7 +463,7 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 			}
 
 			case SNGRFS_MOVE_DOWN: { // Move GRF down
-				if (this->active_sel == NULL) break;
+				if (this->active_sel == NULL || !this->editable) break;
 
 				int pos = 1; // Start at 1 as we swap the selected newgrf with the next one
 				for (GRFConfig **pc = &this->actives; *pc != NULL; pc = &(*pc)->next, pos++) {
@@ -498,7 +498,7 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 			}
 			/* Fall through with double click. */
 			case SNGRFS_REMOVE: { // Remove GRF
-				if (this->active_sel == NULL) break;
+				if (this->active_sel == NULL || !this->editable) break;
 
 				/* Choose the next GRF file to be the selected file. */
 				GRFConfig *newsel = this->active_sel->next;
@@ -539,7 +539,7 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 			}
 			/* Fall through with double click. */
 			case SNGRFS_ADD: {
-				if (this->avail_sel == NULL) break;
+				if (this->avail_sel == NULL || !this->editable) break;
 
 				GRFConfig **list;
 				/* Find last entry in the list, checking for duplicate grfid on the way */
@@ -566,6 +566,7 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 			}
 
 			case SNGRFS_APPLY_CHANGES: // Apply changes made to GRF list
+				if (!this->editable) break;
 				if (this->execute) {
 					ShowQuery(
 						STR_NEWGRF_POPUP_CAUTION_CAPTION,
@@ -582,7 +583,7 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 				break;
 
 			case SNGRFS_SET_PARAMETERS: { // Edit parameters
-				if (this->active_sel == NULL) break;
+				if (this->active_sel == NULL || !this->editable || !this->show_params) break;
 
 				this->query_widget = widget;
 				static char buff[512];
@@ -593,7 +594,7 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 			}
 
 			case SNGRFS_TOGGLE_PALETTE:
-				if (this->active_sel != NULL) {
+				if (this->active_sel != NULL || !this->editable) {
 					this->active_sel->windows_paletted ^= true;
 					this->SetDirty();
 				}
@@ -637,6 +638,7 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 
 	virtual void OnDropdownSelect(int widget, int index)
 	{
+		if (!this->editable) return;
 		if (index == -1) {
 			ClearGRFConfigList(&this->actives);
 			this->preset = -1;
@@ -677,7 +679,7 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 				break;
 
 			case SNGRFS_SET_PARAMETERS: {
-				if (this->active_sel == NULL) return;
+				if (this->active_sel == NULL || !this->editable || !this->show_params) return;
 
 				/* Parse our new "int list" */
 				GRFConfig *c = this->active_sel;
