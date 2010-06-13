@@ -86,7 +86,9 @@ struct SmallMap : SmallVector<SmallPair<T, U>, S> {
 	FORCEINLINE bool Insert(const T &key, const U &data)
 	{
 		if (this->Find(key) != this->End()) return false;
-		new (this->Append()) Pair(key, data);
+		Pair *n = this->Append();
+		n->first = key;
+		n->second = data;
 		return true;
 	}
 
