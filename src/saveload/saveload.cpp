@@ -41,6 +41,7 @@
 #include "../string_func.h"
 #include "../engine_base.h"
 #include "../company_base.h"
+#include "../fios.h"
 
 #include "table/strings.h"
 
@@ -60,10 +61,11 @@ typedef size_t ReaderProc();
 
 /** What are we currently doing? */
 enum SaveLoadAction {
-	SLA_LOAD, ///< loading
-	SLA_SAVE, ///< saving
-	SLA_PTRS, ///< fixing pointers
-	SLA_NULL, ///< null all pointers (on loading error)
+	SLA_LOAD,        ///< loading
+	SLA_SAVE,        ///< saving
+	SLA_PTRS,        ///< fixing pointers
+	SLA_NULL,        ///< null all pointers (on loading error)
+	SLA_LOAD_CHECK,  ///< partial loading into #_load_check_data
 };
 
 enum NeedLength {
@@ -194,13 +196,20 @@ static void SlNullPointers()
  * pretty ugly, and seriously interferes with any multithreaded approaches */
 static void NORETURN SlError(StringID string, const char *extra_msg = NULL)
 {
-	_sl.error_str = string;
-	free(_sl.extra_msg);
-	_sl.extra_msg = (extra_msg == NULL) ? NULL : strdup(extra_msg);
-	/* We have to NULL all pointers here; we might be in a state where
-	 * the pointers are actually filled with indices, which means that
-	 * when we access them during cleaning the pool dereferences of
-	 * those indices will be made with segmentation faults as result. */
+	/* Distinguish between loading into _load_check_data vs. normal save/load. */
+	if (_sl.action == SLA_LOAD_CHECK) {
+		_load_check_data.error = string;
+		free(_load_check_data.error_data);
+		_load_check_data.error_data = (extra_msg == NULL) ? NULL : strdup(extra_msg);
+	} else {
+		_sl.error_str = string;
+		free(_sl.extra_msg);
+		_sl.extra_msg = (extra_msg == NULL) ? NULL : strdup(extra_msg);
+		/* We have to NULL all pointers here; we might be in a state where
+		 * the pointers are actually filled with indices, which means that
+		 * when we access them during cleaning the pool dereferences of
+		 * those indices will be made with segmentation faults as result. */
+	}
 	if (_sl.action == SLA_LOAD || _sl.action == SLA_PTRS) SlNullPointers();
 	throw std::exception();
 }
@@ -560,6 +569,7 @@ static void SlCopyBytes(void *ptr, size_t length)
 	byte *p = (byte *)ptr;
 
 	switch (_sl.action) {
+		case SLA_LOAD_CHECK:
 		case SLA_LOAD:
 			for (; length != 0; length--) { *p++ = SlReadByteInternal(); }
 			break;
@@ -647,6 +657,7 @@ static void SlSaveLoadConv(void *ptr, VarType conv)
 			}
 			break;
 		}
+		case SLA_LOAD_CHECK:
 		case SLA_LOAD: {
 			int64 x;
 			/* Read a value from the file */
@@ -743,6 +754,7 @@ static void SlString(void *ptr, size_t length, VarType conv)
 			SlCopyBytes(ptr, len);
 			break;
 		}
+		case SLA_LOAD_CHECK:
 		case SLA_LOAD: {
 			size_t len = SlReadArrayLength();
 
@@ -890,6 +902,7 @@ static void SlList(void *list, SLRefType conv)
 			}
 			break;
 		}
+		case SLA_LOAD_CHECK:
 		case SLA_LOAD: {
 			size_t length = CheckSavegameVersion(69) ? SlReadUint16() : SlReadUint32();
 
@@ -1009,6 +1022,7 @@ bool SlObjectMember(void *ptr, const SaveLoad *sld)
 						case SLA_SAVE:
 							SlWriteUint32((uint32)ReferenceToInt(*(void **)ptr, (SLRefType)conv));
 							break;
+						case SLA_LOAD_CHECK:
 						case SLA_LOAD:
 							*(size_t *)ptr = CheckSavegameVersion(69) ? SlReadUint16() : SlReadUint32();
 							break;
@@ -1036,6 +1050,7 @@ bool SlObjectMember(void *ptr, const SaveLoad *sld)
 		case SL_WRITEBYTE:
 			switch (_sl.action) {
 				case SLA_SAVE: SlWriteByte(sld->version_to); break;
+				case SLA_LOAD_CHECK:
 				case SLA_LOAD: *(byte *)ptr = sld->version_from; break;
 				case SLA_PTRS: break;
 				case SLA_NULL: break;
@@ -1150,6 +1165,56 @@ static void SlLoadChunk(const ChunkHandler *ch)
 	}
 }
 
+/**
+ * Load a chunk of data for checking savegames.
+ * If the chunkhandler is NULL, the chunk is skipped.
+ * @param ch The chunkhandler that will be used for the operation
+ */
+static void SlLoadCheckChunk(const ChunkHandler *ch)
+{
+	byte m = SlReadByte();
+	size_t len;
+	size_t endoffs;
+
+	_sl.block_mode = m;
+	_sl.obj_len = 0;
+
+	switch (m) {
+		case CH_ARRAY:
+			_sl.array_index = 0;
+			if (ch->load_check_proc) {
+				ch->load_check_proc();
+			} else {
+				SlSkipArray();
+			}
+			break;
+		case CH_SPARSE_ARRAY:
+			if (ch->load_check_proc) {
+				ch->load_check_proc();
+			} else {
+				SlSkipArray();
+			}
+			break;
+		default:
+			if ((m & 0xF) == CH_RIFF) {
+				/* Read length */
+				len = (SlReadByte() << 16) | ((m >> 4) << 24);
+				len += SlReadUint16();
+				_sl.obj_len = len;
+				endoffs = SlGetOffs() + len;
+				if (ch->load_check_proc) {
+					ch->load_check_proc();
+				} else {
+					SlSkipBytes(len);
+				}
+				if (SlGetOffs() != endoffs) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Invalid chunk size");
+			} else {
+				SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Invalid chunk type");
+			}
+			break;
+	}
+}
+
 /* Stub Chunk handlers to only calculate length and do nothing else */
 static ChunkSaveLoadProc *_tmp_proc_1;
 static inline void SlStubSaveProc2(void *arg) {_tmp_proc_1();}
@@ -1230,6 +1295,21 @@ static void SlLoadChunks()
 		ch = SlFindChunkHandler(id);
 		if (ch == NULL) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Unknown chunk type");
 		SlLoadChunk(ch);
+	}
+}
+
+/** Load all chunks for savegame checking */
+static void SlLoadCheckChunks()
+{
+	uint32 id;
+	const ChunkHandler *ch;
+
+	for (id = SlReadUint32(); id != 0; id = SlReadUint32()) {
+		DEBUG(sl, 2, "Loading chunk %c%c%c%c", id >> 24, id >> 16, id >> 8, id);
+
+		ch = SlFindChunkHandler(id);
+		if (ch == NULL) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Unknown chunk type");
+		SlLoadCheckChunk(ch);
 	}
 }
 
@@ -1850,6 +1930,8 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb, boo
 	}
 	WaitTillSaved();
 
+	/* Clear previous check data */
+	if (mode == SL_LOAD_CHECK) _load_check_data.Clear();
 	_next_offs = 0;
 
 	/* Load a TTDLX or TTDPatch game */
@@ -1875,13 +1957,16 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb, boo
 		return SL_OK;
 	}
 
+	/* Mark SL_LOAD_CHECK as supported for this savegame. */
+	if (mode == SL_LOAD_CHECK) _load_check_data.checkable = true;
+
 	_sl.excpt_uninit = NULL;
 	try {
 		_sl.fh = (mode == SL_SAVE) ? FioFOpenFile(filename, "wb", sb) : FioFOpenFile(filename, "rb", sb);
 
 		/* Make it a little easier to load savegames from the console */
-		if (_sl.fh == NULL && mode == SL_LOAD) _sl.fh = FioFOpenFile(filename, "rb", SAVE_DIR);
-		if (_sl.fh == NULL && mode == SL_LOAD) _sl.fh = FioFOpenFile(filename, "rb", BASE_DIR);
+		if (_sl.fh == NULL && mode != SL_SAVE) _sl.fh = FioFOpenFile(filename, "rb", SAVE_DIR);
+		if (_sl.fh == NULL && mode != SL_SAVE) _sl.fh = FioFOpenFile(filename, "rb", BASE_DIR);
 
 		if (_sl.fh == NULL) {
 			SlError(mode == SL_SAVE ? STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE : STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE);
@@ -1889,7 +1974,12 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb, boo
 
 		_sl.bufe = _sl.bufp = NULL;
 		_sl.offs_base = 0;
-		_sl.action = (mode != 0) ? SLA_SAVE : SLA_LOAD;
+		switch (mode) {
+			case SL_LOAD_CHECK: _sl.action = SLA_LOAD_CHECK; break;
+			case SL_LOAD: _sl.action = SLA_LOAD; break;
+			case SL_SAVE: _sl.action = SLA_SAVE; break;
+			default: NOT_REACHED();
+		}
 
 		/* General tactic is to first save the game to memory, then use an available writer
 		 * to write it to file, either in threaded mode if possible, or single-threaded */
@@ -1917,7 +2007,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb, boo
 				return result;
 			}
 		} else { // LOAD game
-			assert(mode == SL_LOAD);
+			assert(mode == SL_LOAD || mode == SL_LOAD_CHECK);
 			DEBUG(desync, 1, "load: %s", filename);
 
 			/* Can't fseek to 0 as in tar files that is not correct */
@@ -1983,57 +2073,68 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb, boo
 				SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, err_str);
 			}
 
-			_engine_mngr.ResetToDefaultMapping();
+			if (mode != SL_LOAD_CHECK) {
+				_engine_mngr.ResetToDefaultMapping();
 
-			/* Old maps were hardcoded to 256x256 and thus did not contain
-			 * any mapsize information. Pre-initialize to 256x256 to not to
-			 * confuse old games */
-			InitializeGame(256, 256, true, true);
+				/* Old maps were hardcoded to 256x256 and thus did not contain
+				 * any mapsize information. Pre-initialize to 256x256 to not to
+				 * confuse old games */
+				InitializeGame(256, 256, true, true);
 
-			GamelogReset();
+				GamelogReset();
 
-			if (CheckSavegameVersion(4)) {
-				/*
-				 * NewGRFs were introduced between 0.3,4 and 0.3.5, which both
-				 * shared savegame version 4. Anything before that 'obviously'
-				 * does not have any NewGRFs. Between the introduction and
-				 * savegame version 41 (just before 0.5) the NewGRF settings
-				 * were not stored in the savegame and they were loaded by
-				 * using the settings from the main menu.
-				 * So, to recap:
-				 * - savegame version  <  4:  do not load any NewGRFs.
-				 * - savegame version >= 41:  load NewGRFs from savegame, which is
-				 *                            already done at this stage by
-				 *                            overwriting the main menu settings.
-				 * - other savegame versions: use main menu settings.
-				 *
-				 * This means that users *can* crash savegame version 4..40
-				 * savegames if they set incompatible NewGRFs in the main menu,
-				 * but can't crash anymore for savegame version < 4 savegames.
-				 *
-				 * Note: this is done here because AfterLoadGame is also called
-				 * for TTO/TTD/TTDP savegames which have their own NewGRF logic.
-				 */
-				ClearGRFConfigList(&_grfconfig);
+				if (CheckSavegameVersion(4)) {
+					/*
+					 * NewGRFs were introduced between 0.3,4 and 0.3.5, which both
+					 * shared savegame version 4. Anything before that 'obviously'
+					 * does not have any NewGRFs. Between the introduction and
+					 * savegame version 41 (just before 0.5) the NewGRF settings
+					 * were not stored in the savegame and they were loaded by
+					 * using the settings from the main menu.
+					 * So, to recap:
+					 * - savegame version  <  4:  do not load any NewGRFs.
+					 * - savegame version >= 41:  load NewGRFs from savegame, which is
+					 *                            already done at this stage by
+					 *                            overwriting the main menu settings.
+					 * - other savegame versions: use main menu settings.
+					 *
+					 * This means that users *can* crash savegame version 4..40
+					 * savegames if they set incompatible NewGRFs in the main menu,
+					 * but can't crash anymore for savegame version < 4 savegames.
+					 *
+					 * Note: this is done here because AfterLoadGame is also called
+					 * for TTO/TTD/TTDP savegames which have their own NewGRF logic.
+					 */
+					ClearGRFConfigList(&_grfconfig);
+				}
 			}
 
-			SlLoadChunks();
-			SlFixPointers();
+			if (mode == SL_LOAD_CHECK) {
+				/* Load chunks into _load_check_data.
+				 * No pools are loaded. References are not possible, and thus do not need resolving. */
+				SlLoadCheckChunks();
+			} else {
+				/* Load chunks and resolve references */
+				SlLoadChunks();
+				SlFixPointers();
+			}
 			fmt->uninit_read();
 			fclose(_sl.fh);
 
-			GamelogStartAction(GLAT_LOAD);
-
 			_savegame_type = SGT_OTTD;
 
-			/* After loading fix up savegame for any internal changes that
-			 * might've occured since then. If it fails, load back the old game */
-			if (!AfterLoadGame()) {
-				GamelogStopAction();
-				return SL_REINIT;
-			}
+			if (mode != SL_LOAD_CHECK) {
+				GamelogStartAction(GLAT_LOAD);
 
-			GamelogStopAction();
+				/* After loading fix up savegame for any internal changes that
+				 * might've occured since then. If it fails, load back the old game */
+				if (!AfterLoadGame()) {
+					GamelogStopAction();
+					return SL_REINIT;
+				}
+
+				GamelogStopAction();
+			}
 		}
 
 		return SL_OK;
@@ -2045,7 +2146,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb, boo
 		if (_sl.excpt_uninit != NULL) _sl.excpt_uninit();
 
 		/* Skip the "colour" character */
-		DEBUG(sl, 0, "%s", GetSaveLoadErrorString() + 3);
+		if (mode != SL_LOAD_CHECK) DEBUG(sl, 0, "%s", GetSaveLoadErrorString() + 3);
 
 		/* A saver/loader exception!! reinitialize all variables to prevent crash! */
 		return (mode == SL_LOAD) ? SL_REINIT : SL_ERROR;

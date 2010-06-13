@@ -17,6 +17,26 @@
 #include "core/enum_type.hpp"
 #include "gfx_type.h"
 
+
+/**
+ * Container for loading in mode SL_LOAD_CHECK.
+ */
+struct LoadCheckData {
+	bool checkable;     ///< True if the savegame could be checked by SL_LOAD_CHECK. (Old savegames are not checkable.)
+	StringID error;     ///< Error message from loading. INVALID_STRING_ID if no error.
+	char *error_data;   ///< Data to pass to SetDParamStr when displaying #error.
+
+	LoadCheckData() : error_data(NULL)
+	{
+		this->Clear();
+	}
+
+	void Clear();
+};
+
+extern LoadCheckData _load_check_data;
+
+
 enum FileSlots {
 	/**
 	 * Slot used for the GRF scanning and such. This slot cannot be reused

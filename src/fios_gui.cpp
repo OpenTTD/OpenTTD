@@ -29,9 +29,22 @@
 #include "table/strings.h"
 
 SaveLoadDialogMode _saveload_mode;
+LoadCheckData _load_check_data;    ///< Data loaded from save during SL_LOAD_CHECK.
 
 static bool _fios_path_changed;
 static bool _savegame_sort_dirty;
+
+
+/**
+ * Reset read data.
+ */
+void LoadCheckData::Clear()
+{
+	this->checkable = false;
+	this->error = INVALID_STRING_ID;
+	free(this->error_data);
+	this->error_data = NULL;
+}
 
 
 enum SaveLoadWindowWidgets {

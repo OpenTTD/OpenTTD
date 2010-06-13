@@ -27,12 +27,13 @@ enum SaveOrLoadResult {
 };
 
 enum SaveOrLoadMode {
-	SL_INVALID  = -1,
-	SL_LOAD     =  0,
-	SL_SAVE     =  1,
-	SL_OLD_LOAD =  2,
-	SL_PNG      =  3,
-	SL_BMP      =  4,
+	SL_INVALID    = -1,
+	SL_LOAD       =  0,
+	SL_SAVE       =  1,
+	SL_OLD_LOAD   =  2,
+	SL_PNG        =  3,
+	SL_BMP        =  4,
+	SL_LOAD_CHECK =  5,
 };
 
 enum SavegameType {
@@ -216,6 +217,7 @@ typedef SaveLoad SaveLoadGlobVarList;
 #define SLE_ARR(base, variable, type, length) SLE_CONDARR(base, variable, type, length, 0, SL_MAX_VERSION)
 #define SLE_STR(base, variable, type, length) SLE_CONDSTR(base, variable, type, length, 0, SL_MAX_VERSION)
 #define SLE_LST(base, variable, type) SLE_CONDLST(base, variable, type, 0, SL_MAX_VERSION)
+#define SLE_NULL(length) SLE_CONDNULL(length, 0, SL_MAX_VERSION)
 
 #define SLE_CONDNULL(length, from, to) SLE_CONDARR(NullStruct, null, SLE_FILE_U8 | SLE_VAR_NULL | SLF_CONFIG_NO, length, from, to)
 
