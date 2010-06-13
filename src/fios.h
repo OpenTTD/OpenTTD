@@ -48,6 +48,24 @@ struct LoadCheckData {
 		this->Clear();
 	}
 
+	/**
+	 * Check whether loading the game resulted in errors.
+	 * @return true if errors were encountered.
+	 */
+	bool HasErrors()
+	{
+		return this->checkable && this->error != INVALID_STRING_ID;
+	}
+
+	/**
+	 * Check whether the game uses any NewGrfs.
+	 * @return true if NewGrfs are used.
+	 */
+	bool HasNewGrfs()
+	{
+		return this->checkable && this->error == INVALID_STRING_ID && this->grfconfig != NULL;
+	}
+
 	void Clear();
 };
 

@@ -2246,6 +2246,12 @@ STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}Delete
 STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}Delete the currently selected saved-game
 STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Save
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Save the current game, using the selected name
+STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Load
+STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Load the selected game
+STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Game Details
+STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}No information available.
+STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING1}
+STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Enter a name for the savegame
 
@@ -2423,6 +2429,12 @@ STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Compatib
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Missing GRF file(s) have been disabled
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Missing GRF file(s)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Unpausing can crash OpenTTD. Do not file bug reports for subsequent crashes.{}Do you really want to unpause?
+
+# NewGRF status
+STR_NEWGRF_LIST_NONE                                            :None
+STR_NEWGRF_LIST_ALL_FOUND                                       :All files present
+STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Found compatible files
+STR_NEWGRF_LIST_MISSING                                         :{RED}Missing files
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Behaviour of NewGRF '{0:RAW_STRING}' is likely to cause desyncs and/or crashes.
