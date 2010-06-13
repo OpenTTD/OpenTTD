@@ -75,6 +75,7 @@ enum SaveLoadWindowWidgets {
 	SLWW_CONTENT_DOWNLOAD_SEL, ///< Selection 'stack' to 'hide' the content download
 };
 
+/** Load game/scenario with optional content download */
 static const NWidgetPart _nested_load_dialog_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
@@ -108,6 +109,37 @@ static const NWidgetPart _nested_load_dialog_widgets[] = {
 	EndContainer(),
 };
 
+/** Load heightmap with content download */
+static const NWidgetPart _nested_load_heightmap_dialog_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
+		NWidget(WWT_CAPTION, COLOUR_GREY, SLWW_WINDOWTITLE),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY, SLWW_BACKGROUND), SetFill(1, 0), SetResize(1, 0), EndContainer(),
+	NWidget(NWID_VERTICAL),
+		NWidget(NWID_HORIZONTAL),
+			NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SLWW_SORT_BYNAME), SetDataTip(STR_SORT_BY_CAPTION_NAME, STR_TOOLTIP_SORT_ORDER), SetFill(1, 0), SetResize(1, 0),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SLWW_SORT_BYDATE), SetDataTip(STR_SORT_BY_CAPTION_DATE, STR_TOOLTIP_SORT_ORDER), SetFill(1, 0), SetResize(1, 0),
+			EndContainer(),
+			NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, SLWW_HOME_BUTTON), SetMinimalSize(12, 12), SetDataTip(SPR_HOUSE_ICON, STR_SAVELOAD_HOME_BUTTON),
+		EndContainer(),
+		NWidget(WWT_PANEL, COLOUR_GREY, SLWW_FILE_BACKGROUND),
+			NWidget(NWID_HORIZONTAL),
+				NWidget(WWT_INSET, COLOUR_GREY, SLWW_DRIVES_DIRECTORIES_LIST), SetFill(1, 1), SetPadding(2, 1, 2, 2),
+						SetDataTip(0x0, STR_SAVELOAD_LIST_TOOLTIP), SetResize(1, 10), EndContainer(),
+				NWidget(WWT_SCROLLBAR, COLOUR_GREY, SLWW_SCROLLBAR),
+			EndContainer(),
+			NWidget(NWID_HORIZONTAL),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, SLWW_CONTENT_DOWNLOAD), SetResize(1, 0),
+						SetDataTip(STR_INTRO_ONLINE_CONTENT, STR_INTRO_TOOLTIP_ONLINE_CONTENT),
+				NWidget(WWT_RESIZEBOX, COLOUR_GREY),
+			EndContainer(),
+		EndContainer(),
+	EndContainer(),
+};
+
+/** Save game/scenario */
 static const NWidgetPart _nested_save_dialog_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
@@ -476,6 +508,7 @@ public:
 	}
 };
 
+/** Load game/scenario */
 static const WindowDesc _load_dialog_desc(
 	WDP_CENTER, 257, 294,
 	WC_SAVELOAD, WC_NONE,
@@ -483,6 +516,15 @@ static const WindowDesc _load_dialog_desc(
 	_nested_load_dialog_widgets, lengthof(_nested_load_dialog_widgets)
 );
 
+/** Load heightmap */
+static const WindowDesc _load_heightmap_dialog_desc(
+	WDP_CENTER, 257, 294,
+	WC_SAVELOAD, WC_NONE,
+	WDF_UNCLICK_BUTTONS,
+	_nested_load_heightmap_dialog_widgets, lengthof(_nested_load_heightmap_dialog_widgets)
+);
+
+/** Save game/scenario */
 static const WindowDesc _save_dialog_desc(
 	WDP_CENTER, 257, 320,
 	WC_SAVELOAD, WC_NONE,
@@ -510,6 +552,8 @@ void ShowSaveLoadDialog(SaveLoadDialogMode mode)
 		case SLD_SAVE_GAME:
 		case SLD_SAVE_SCENARIO:
 			sld = &_save_dialog_desc; break;
+		case SLD_LOAD_HEIGHTMAP:
+			sld = &_load_heightmap_dialog_desc; break;
 		default:
 			sld = &_load_dialog_desc; break;
 	}
