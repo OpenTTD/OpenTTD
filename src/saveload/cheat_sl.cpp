@@ -40,5 +40,5 @@ static void Load_CHTS()
 }
 
 extern const ChunkHandler _cheat_chunk_handlers[] = {
-	{ 'CHTS', Save_CHTS, Load_CHTS, NULL, CH_RIFF | CH_LAST},
+	{ 'CHTS', Save_CHTS, Load_CHTS, NULL, NULL, CH_RIFF | CH_LAST},
 };

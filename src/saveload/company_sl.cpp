@@ -300,5 +300,5 @@ static void Ptrs_PLYR()
 
 
 extern const ChunkHandler _company_chunk_handlers[] = {
-	{ 'PLYR', Save_PLYR, Load_PLYR, Ptrs_PLYR, CH_ARRAY | CH_LAST},
+	{ 'PLYR', Save_PLYR, Load_PLYR, Ptrs_PLYR, NULL, CH_ARRAY | CH_LAST},
 };

@@ -50,5 +50,5 @@ static void Load_APID()
 }
 
 extern const ChunkHandler _airport_chunk_handlers[] = {
-	{ 'APID', Save_APID, Load_APID, NULL, CH_ARRAY | CH_LAST },
+	{ 'APID', Save_APID, Load_APID, NULL, NULL, CH_ARRAY | CH_LAST },
 };

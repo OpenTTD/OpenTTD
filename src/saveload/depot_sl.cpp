@@ -61,5 +61,5 @@ static void Ptrs_DEPT()
 }
 
 extern const ChunkHandler _depot_chunk_handlers[] = {
-	{ 'DEPT', Save_DEPT, Load_DEPT, Ptrs_DEPT, CH_ARRAY | CH_LAST},
+	{ 'DEPT', Save_DEPT, Load_DEPT, Ptrs_DEPT, NULL, CH_ARRAY | CH_LAST},
 };

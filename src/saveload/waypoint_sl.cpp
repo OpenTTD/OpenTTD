@@ -199,5 +199,5 @@ static void Ptrs_WAYP()
 }
 
 extern const ChunkHandler _waypoint_chunk_handlers[] = {
-	{ 'CHKP', NULL, Load_WAYP, Ptrs_WAYP, CH_ARRAY | CH_LAST},
+	{ 'CHKP', NULL, Load_WAYP, Ptrs_WAYP, NULL, CH_ARRAY | CH_LAST},
 };

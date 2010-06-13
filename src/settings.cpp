@@ -1985,8 +1985,8 @@ void CheckConfig()
 }
 
 extern const ChunkHandler _setting_chunk_handlers[] = {
-	{ 'OPTS', NULL,      Load_OPTS, NULL, CH_RIFF},
-	{ 'PATS', Save_PATS, Load_PATS, NULL, CH_RIFF | CH_LAST},
+	{ 'OPTS', NULL,      Load_OPTS, NULL, NULL, CH_RIFF},
+	{ 'PATS', Save_PATS, Load_PATS, NULL, NULL, CH_RIFF | CH_LAST},
 };
 
 static bool IsSignedVarMemType(VarType vt)

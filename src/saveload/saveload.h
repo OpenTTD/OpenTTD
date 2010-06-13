@@ -60,6 +60,7 @@ struct ChunkHandler {
 	ChunkSaveLoadProc *save_proc;
 	ChunkSaveLoadProc *load_proc;
 	ChunkSaveLoadProc *ptrs_proc;
+	ChunkSaveLoadProc *load_check_proc;
 	uint32 flags;
 };
 

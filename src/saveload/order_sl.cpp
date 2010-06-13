@@ -234,6 +234,6 @@ static void Ptrs_ORDL()
 }
 
 extern const ChunkHandler _order_chunk_handlers[] = {
-	{ 'ORDR', Save_ORDR, Load_ORDR, Ptrs_ORDR, CH_ARRAY},
-	{ 'ORDL', Save_ORDL, Load_ORDL, Ptrs_ORDL, CH_ARRAY | CH_LAST},
+	{ 'ORDR', Save_ORDR, Load_ORDR, Ptrs_ORDR, NULL, CH_ARRAY},
+	{ 'ORDL', Save_ORDL, Load_ORDL, Ptrs_ORDL, NULL, CH_ARRAY | CH_LAST},
 };

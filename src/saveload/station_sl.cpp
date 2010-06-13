@@ -475,7 +475,7 @@ static void Ptrs_ROADSTOP()
 }
 
 extern const ChunkHandler _station_chunk_handlers[] = {
-	{ 'STNS', NULL,          Load_STNS,     Ptrs_STNS,     CH_ARRAY },
-	{ 'STNN', Save_STNN,     Load_STNN,     Ptrs_STNN,     CH_ARRAY },
-	{ 'ROAD', Save_ROADSTOP, Load_ROADSTOP, Ptrs_ROADSTOP, CH_ARRAY | CH_LAST},
+	{ 'STNS', NULL,          Load_STNS,     Ptrs_STNS,     NULL, CH_ARRAY },
+	{ 'STNN', Save_STNN,     Load_STNN,     Ptrs_STNN,     NULL, CH_ARRAY },
+	{ 'ROAD', Save_ROADSTOP, Load_ROADSTOP, Ptrs_ROADSTOP, NULL, CH_ARRAY | CH_LAST},
 };

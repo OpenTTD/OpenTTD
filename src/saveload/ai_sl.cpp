@@ -121,7 +121,7 @@ static void Save_AIPL()
 }
 
 extern const ChunkHandler _ai_chunk_handlers[] = {
-	{ 'AIPL', Save_AIPL, Load_AIPL, NULL, CH_ARRAY | CH_LAST},
+	{ 'AIPL', Save_AIPL, Load_AIPL, NULL, NULL, CH_ARRAY | CH_LAST},
 };
 #else
 
@@ -197,6 +197,6 @@ static void Load_AIPL()
 }
 
 extern const ChunkHandler _ai_chunk_handlers[] = {
-	{ 'AIPL', NULL, Load_AIPL, NULL, CH_ARRAY | CH_LAST},
+	{ 'AIPL', NULL, Load_AIPL, NULL, NULL, CH_ARRAY | CH_LAST},
 };
 #endif /* ENABLE_AI */

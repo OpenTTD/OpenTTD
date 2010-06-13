@@ -122,5 +122,5 @@ static void Load_CAPA()
 }
 
 extern const ChunkHandler _cargopacket_chunk_handlers[] = {
-	{ 'CAPA', Save_CAPA, Load_CAPA, NULL, CH_ARRAY | CH_LAST},
+	{ 'CAPA', Save_CAPA, Load_CAPA, NULL, NULL, CH_ARRAY | CH_LAST},
 };
