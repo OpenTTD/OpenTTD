@@ -2316,6 +2316,12 @@ STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}Smazat
 STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}Smazat označenou uloženou hru
 STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Uložit
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Uložit současnou hru se zvoleným jménem
+STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Nahrát
+STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Rozehrát vybranou hru
+STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Vlastnosti hry
+STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Není dostupná žádná informace
+STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
+STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}Grafiky: {WHITE}{STRING}
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Zadej jméno pro uloženou hru
 
@@ -2493,6 +2499,12 @@ STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatib
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Chybějící grafiky byly vypnuty
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Chybějící grafické soubory
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Spuštění hry může shodit OpenTTD. Nehlaš chybu kvůli pádům způsobeným touto akcí.{}Opravdu chceš rozjet hru?
+
+# NewGRF status
+STR_NEWGRF_LIST_NONE                                            :bez
+STR_NEWGRF_LIST_ALL_FOUND                                       :všechny nalezeny
+STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}jsou dostupné kompatibilní
+STR_NEWGRF_LIST_MISSING                                         :{RED}některé chybějí
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Chování grafiky '{0:STRING}' by mohlo způsobit desynchronizaci a/nebo pád hry.
@@ -3410,6 +3422,7 @@ STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Uložená hra j
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Soubor je nečitelný
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Do souboru nelze zapisovat
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Kontrola integrity dat selhala
+STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<nedostupné>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Hra byla uložena ve verzi bez podpory tramvají. Všechny tramvaje se odstraní.
 
 # Map generation messages
@@ -3716,6 +3729,7 @@ STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Letadlo 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Příliš mnoho vozidel ve hře
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Nelze změnit interval oprav...
 
+STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... vozidlo bylo zničeno
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Nelze nechat vlak projet semafory v nebezpečí...

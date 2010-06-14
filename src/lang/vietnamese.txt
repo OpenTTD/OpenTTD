@@ -2246,6 +2246,12 @@ STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}Xoá b�
 STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}Xoá bỏ file lưu ván chơi
 STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Lưu
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Lưu ván chơi hiện tại, sử dụng tên đã chọn
+STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Nạp
+STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Nạp ván chơi được chọn
+STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Chi Tiết Trò Chơi
+STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Không có thông tin gì cả.
+STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
+STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Nhập tên của ván chơi để lưu
 
@@ -2425,6 +2431,10 @@ STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Thiếu
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Tiếp tục có thể làm treo OpenTTD. Không nên báo cáo lỗi sau khi bị treo.{}Bạn có chắc là tiếp tục chơi?
 
 # NewGRF status
+STR_NEWGRF_LIST_NONE                                            :Không
+STR_NEWGRF_LIST_ALL_FOUND                                       :Tất cả files tìm được
+STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Đã tìm thấy files thích hợp
+STR_NEWGRF_LIST_MISSING                                         :{RED}Thiếu files
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Hoạt động của NewGRF '{0:STRING}' có thể gây mất đồng bộ hoặc bị treo.
@@ -3336,6 +3346,7 @@ STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Bản lưu ván
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Không có quyền đọc file
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Không có quyền ghi file
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Kiểm tra thấy không toàn vẹn dữ liệu
+STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<không có sẵn>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Lưu ván chơi sẽ không có xe điện. Những công trình cho xe điện sẽ bị xoá bỏ
 
 # Map generation messages

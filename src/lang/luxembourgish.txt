@@ -2246,6 +2246,12 @@ STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}Leschen
 STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}Lescht den momentan gewielten Spillstand
 STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Späicheren
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Späichert dei aktuell Partie ënnert dem gewielten Numm
+STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Lueden
+STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Lued d'ugewielten Spill
+STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Spill Detailer
+STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Keng Informatioun do.
+STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
+STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Gidd en Numm an fir den Späicherstand
 
@@ -2321,8 +2327,8 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Preparé
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF Astellungen
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Detailléiert NewGRF Informatioun
-STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Aktiv NewGRF Files
-STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Inaktiv NewGRF Files
+STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Aktiv NewGRF Dateien
+STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Inaktiv NewGRF Dateien
 STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Wiel Preset:
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filter string:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Selectéierten Preset lueden
@@ -2423,6 +2429,12 @@ STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatib
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Fehlend GRF datei(en) sin ausgeschalt
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Fehlend GRF Datei(en)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Entpausen cann OpenTTD crashen.{} Wellsde wierklech entpausen ?
+
+# NewGRF status
+STR_NEWGRF_LIST_NONE                                            :Keng
+STR_NEWGRF_LIST_ALL_FOUND                                       :All Dateien fonnt
+STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Kompatibel Dateien fonnt
+STR_NEWGRF_LIST_MISSING                                         :{RED}Dateien fehlen
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Verhalen vun der NewGRF '{0:STRING}' kann Desyncs oder Crashen verursachen.
@@ -3334,6 +3346,7 @@ STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Späicherstand 
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Datei net liesbar
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Datei net beschreiwbar
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Datenintegritéitfehler
+STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<keent do>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Spill gouf an enger Versioun ouni Tram support gesaved. All Tram gouf wechgeholl.
 
 # Map generation messages
@@ -3640,6 +3653,7 @@ STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Fliger n
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Ze vill Gefierer am Spill
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Den Service-Intervall kann net geännert ginn...
 
+STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... Gefiert ass zerstéiert
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Kann den Zuch net bei Gefohr lanscht d'Signal schecken...

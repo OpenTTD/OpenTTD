@@ -2248,6 +2248,12 @@ STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}Elimina
 STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}Elimina il salvataggio selezionato
 STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Salva
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Salva la partita corrente, usando il nome scelto
+STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Carica
+STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Carica la partita selezionata
+STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Dettagli partita
+STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Informazioni non disponibili.
+STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
+STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Inserire un nome per il salvataggio
 
@@ -2427,6 +2433,10 @@ STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}File GR
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Uscire dalla pausa può causare un crash: nel caso, si prega di non inviare segnalazioni bug al riguardo.{}Uscire dalla pausa?
 
 # NewGRF status
+STR_NEWGRF_LIST_NONE                                            :Nessuno
+STR_NEWGRF_LIST_ALL_FOUND                                       :Tutti i file presenti
+STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Trovati file compatibili
+STR_NEWGRF_LIST_MISSING                                         :{RED}File mancanti
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Le caratteristiche del NewGRF '{0:STRING}' possono causare errori di sincronizzazione e/o crash.
@@ -3338,6 +3348,7 @@ STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Salvataggio cre
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :File non leggibile
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :File non scrivibile
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Controllo integrità dati fallito
+STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<non disponibile>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}La partita è stata salvata in una versione senza il supporto per i tram. Tutte le tranvie sono state rimosse.
 
 # Map generation messages

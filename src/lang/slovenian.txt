@@ -2288,6 +2288,12 @@ STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}Izbriši
 STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}Izbriši trenutno izbrano shranjeno igro
 STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Shrani
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Shrani trenutno igro z izbranim imenom
+STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Naloži
+STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Naloži izbrano igro
+STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Podrobnosti igre
+STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Na voljo ni nobene informacije.
+STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
+STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Vpiši ime za shranjeno igro
 
@@ -2465,6 +2471,12 @@ STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatib
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Manjkajoče GRF datoteke so bile onemogočene
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Manjkajoče GRF datoteke
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Izklop pavze lahko sesuje OpenTTD. Ne poročaj o napaki zaradi takih problemov.{}Zagotovo želiš izklopiti pavzo?
+
+# NewGRF status
+STR_NEWGRF_LIST_NONE                                            :Brez
+STR_NEWGRF_LIST_ALL_FOUND                                       :Vse datoteke so prisotne
+STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Najdene ujemajoče datoteke
+STR_NEWGRF_LIST_MISSING                                         :{RED}Manjkajoče datoteke
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Ozadje NewGRFa '{0:STRING}' lahko povzroči desinhronizacijo in sesutje igre.
@@ -3376,6 +3388,7 @@ STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Igra je bila sh
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Datoteke ni mozno brati
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :V datoteko ni mozno pisati
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Preverba podatkov ni uspela
+STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<ni na voljo>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Igra je bila shranjena brez podpore za tramvaj. Vsi tramvaji so bili odstranjeni.
 
 # Map generation messages
