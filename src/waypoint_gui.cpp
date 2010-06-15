@@ -44,8 +44,6 @@ public:
 		this->wp = Waypoint::Get(window_number);
 		this->vt = (wp->string_id == STR_SV_STNAME_WAYPOINT) ? VEH_TRAIN : VEH_SHIP;
 
-		if (this->wp->owner != OWNER_NONE) this->owner = this->wp->owner;
-
 		this->CreateNestedTree(desc);
 		if (this->vt == VEH_TRAIN) {
 			this->GetWidget<NWidgetCore>(WAYPVW_SHOW_VEHICLES)->SetDataTip(STR_TRAIN, STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP);
@@ -54,7 +52,9 @@ public:
 		}
 		this->FinishInitNested(desc, window_number);
 
+		if (this->wp->owner != OWNER_NONE) this->owner = this->wp->owner;
 		this->flags4 |= WF_DISABLE_VP_SCROLL;
+
 		NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(WAYPVW_VIEWPORT);
 		nvp->InitializeViewport(this, this->wp->xy, ZOOM_LVL_MIN);
 
