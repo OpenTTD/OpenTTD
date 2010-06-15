@@ -1887,11 +1887,12 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Tógáil
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Tógáil Iarnróid Aonráille
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Tógáil Maglev
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Tó ráillí iarnróid. Déanann Ctrl tóg/bain a scoránú do thógáil iarnróid
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Tóg ráillí iarnróid. Déanann Ctrl tóg/bain a scoránú agus tú ag tógáil iarnróid
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Tóg ráille iarnróid ag úsáid an mód Uathráillí. Déanann Ctrl tóg/bain a scoránú do thógail iarnróid
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Tóg iosta traenach (chun traenacha a cheannach agus a sheirbhísiú)
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Athraigh ráille go pointe bealaigh. Is féidir pointí bealaí a chur le chéile le Ctrl
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Tóg stáisiún iarnróid. Is féidir stáisiúin a chur le chéile le Ctrl
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Tóg comharthaí iarnróid. Déantar comharthaí séamafóir/solais a scoránú le Ctrl{}Is féidir tarraingt le comharthaí a thógáil feadh píosa díreach iarnróid. Tógtar comharthaí chomh fada leis an gcéad acomhal eile le Ctrl{}Déantar fuinneog roghnú na gcomharthaí a oscailt nó gan oscailt le Ctrl
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Tóg droichead iarnróid
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Tóg tollán iarnróid
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Tiontaigh/Uasghrádaigh an cineál ráille
@@ -1923,17 +1924,29 @@ STR_STATION_CLASS_WAYP                                          :Pointí bealaig
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Comharthaí a Roghnú
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Eatramh comharthaí agus tú ag tarraingt
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Laghdaigh an spás idir na comharthaí agus tú ag tarraingt
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Méadaigh an spás idir na comharthaí agus tú ag tarraingt
 
 # Bridge selection window
+STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Roghnaigh Droichead Iarnróid
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Roghnaigh Droichead Bóthair
+STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Droichead a roghnú - cliceáil ar an droichead is rogha leat chun é a thógáil
 STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
+STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Crochta, Cruach
+STR_BRIDGE_NAME_GIRDER_STEEL                                    :Cearchaill, Cruach
+STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Starrmhaide, Cruach
+STR_BRIDGE_NAME_SUSPENSION_CONCRETE                             :Crochta, Coincréite
 STR_BRIDGE_NAME_WOODEN                                          :Adhmaid
 STR_BRIDGE_NAME_CONCRETE                                        :Coincréite
+STR_BRIDGE_NAME_TUBULAR_STEEL                                   :Feadánach, Cruach
+STR_BRIDGE_TUBULAR_SILICON                                      :Feadánach, Sileacan
 
 
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Bóithre a thógáil
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Tógáil Trambhealaigh
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Tóg cuid de bhóthar. Déantar tógáil/baint a scoránú le Ctrl agus tú ag tógáil bóithre
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Tóg droichead bóthair
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Tóg droichead trambhealaigh
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Tóg tollán bóthair
@@ -2189,6 +2202,10 @@ STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Leibhéa
 STR_MAPGEN_GENERATE                                             :{WHITE}Cruthaigh
 
 # Strings for map borders at game generation
+STR_MAPGEN_NORTHEAST                                            :{BLACK}Oirthuaisceart
+STR_MAPGEN_SOUTHEAST                                            :{BLACK}Oirdheisceart
+STR_MAPGEN_SOUTHWEST                                            :{BLACK}Iardheisceart
+STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Saorfhoirme
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Uisce
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Randamach
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Randamach
@@ -2349,6 +2366,8 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Iontrái
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Bailte
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Ceann ar bith -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Ainmneacha bailte - cliceáil ar ainm le go mbeidh an baile i lár an scáileán. Osclaítear amharc nua ar shuíomh an bhaile le Ctrl+Cliceáil
+STR_TOWN_POPULATION                                             :{BLACK}Daonra domhanda: {COMMA}
 
 # Town view window
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
@@ -2361,14 +2380,44 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} ag teastáil sa Gheimhreadh
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{ORANGE}{CARGO}{BLACK} seachadta an mhí seo caite
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Teorainn torainn sa bhaile: {ORANGE}{COMMA}{BLACK}  uasmhéid: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Cuir suíomh an bhaile i lár an phríomh-amhairc. Osclaítar amharc nua ar shuíomh an bhaile le Ctrl+Cliceáil
+STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Údarás áitiúil
+STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Taispeáin faisnéís faoin údarás áitiúil
+STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Athraigh ainm an bhaile
 
+STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Leathnaigh
+STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Méadaigh méid an bhaile
+STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}Scrios
+STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Scrios an baile seo go hiomlán
 
+STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Athainmnigh baile
 
 # Town local authority window
+STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}Údarás áitiúil {TOWN}
+STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Rátálacha cuideachtaí iompair:
+STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
+STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Gníomhartha atá ar fáil:
+STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}Liosta de na rudaí is féidir a dhéanamh sa bhaile seo - cliceáil ar mhír le tuilleadh sonraí a fháil
+STR_LOCAL_AUTHORITY_DO_IT_BUTTON                                :{BLACK}Déan é
+STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Déan an gníomh atá aibhsithe sa liosta thuas
 
+STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Feachtas beag fógraíochta
+STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Feachtas meánach fógraíochta
+STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Feachtas mór fógraíochta
+STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Tabhair maoiniú le bóithre áitiúla a thógáil
+STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Tóg dealbh d'úinéir na cuideachta
+STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Tabhair maoiniú d'fhoirgnimh nua
+STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Ceannaigh cearta eisiacha iompair
+STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Tabhair breab don údarás áitiúil
 
 
 # Subsidies window
+STR_SUBSIDIES_CAPTION                                           :{WHITE}Fordheontais
+STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Fordheontais le fáil do sheirbhísí chun:
+STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} a thabhairt ó{STRING} go {STRING}{YELLOW} (roimh {DATE_SHORT})
+STR_SUBSIDIES_NONE                                              :{ORANGE}- Ceann ar bith -
+STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Seirbhísí a fhaigheann fordheontas:
+STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} a thabhairt ó {STRING} go {STRING}{YELLOW} ({COMPANY}{YELLOW}, go dtí {DATE_SHORT})
 
 # Station list window
 
@@ -2683,16 +2732,45 @@ STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<níl sé ar f�
 # Generic construction errors
 
 # Local authority errors
+STR_ERROR_BRIBE_FAILED                                          :{WHITE}D'aimsigh imscrúdaitheoir réigiúnda
+STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}d'iarracht ar bhreab a thabhairt
 
 # Levelling errors
+STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Ní féidir talamh a ardú anseo...
+STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Ní féidir talamh a ísliú anseo...
+STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Ní féidir talamh a chothromú anseo...
+STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}Dhéanfadh an tochailt damáiste don tollán
+STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}... ag leibhéal na farraige cheana féin
+STR_ERROR_TOO_HIGH                                              :{WHITE}... ró-ard
+STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... tá sé réidh cheana féin
 
 # Company related errors
+STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Ní féidir ainm na cuideachta a athrú...
+STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Ní féidir ainm an bhainisteora a athrú...
 
+STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... is é uasmhéid na hiasachta a cheadaítear ná {CURRENCY}
+STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Ní féidir a thuilleadh airgid a fháil ar iasacht...
+STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... níl aon iasacht le haisíoc
+STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CURRENCY} ag teastáil
+STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Ní féidir an iasacht a aisíoc...
+STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Ní féidir airgead a thabhairt uait atá ar iasacht ón mbanc...
+STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Ní féidir an chuideachta a cheannach...
+STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Ní féidir ceanncheathrú na cuideachta a thógáil...
+STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Ní féidir sciar 25% a cheannach sa chuideachta seo...
+STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Ní féidir sciar 25% a dhíol sa chuideachta seo...
+STR_ERROR_PROTECTED                                             :{WHITE}Níl an chuideachta seo sean go leor le scaireanna a thrádáil fós...
 
 # Town related errors
+STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Ní féidir baile ar bith a thógáil
+STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Ní féidir an baile a athainmniú...
+STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Ní féidir baile a bhunú anseo...
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... roghearr to thaobh na léarscáile
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... roghearr do bhaile eile
+STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... an iomarca bailte
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... níl a thuilleadh spáis ar an léarscáil
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Ní thógfaidh an baile seo bóithre. Is féidir leat tógáil bóithre a chumasú in Ardsocruithe->Geilleagar->Bailte.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Tá oibreacha bóthair ar bun
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Ní féidir an baile seo a scriosadh...{}Ní féidir stáisiún nó iosta atá ag tagairt don bhaile nó do thíle atá faoi úinéireacht an bhaile a bhaint
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... an iomarca tionscal

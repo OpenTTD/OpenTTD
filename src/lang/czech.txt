@@ -1139,7 +1139,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :nezaujatý
 STR_CITY_APPROVAL_TOLERANT                                      :tolerantní
 STR_CITY_APPROVAL_HOSTILE                                       :zaujatý
 
-STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Žádné vhodné AI není k dispozici...{}některé Ai lze stáhnout pomocí služby 'Stahovat součásti'
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Žádná vhodná AI není k dispozici...{}Některé AI lze stáhnout pomocí služby "Stahovat součásti"
 STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Tato akce změnila úroveň obtížnosti na 'vlastní'
 
 # Advanced settings window
@@ -1881,8 +1881,8 @@ STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Stáhnou
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Začít stahovat vybraný obsah
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Celková velikost dat: {WHITE}{BYTES}
 STR_CONTENT_DETAIL_TITLE                                        :{SILVER}INFORMACE O OBSAHU
-STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Tohle nemáš vybráno ke stažení
-STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Tohle máš vybráno ke stažení
+STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Položka není vybrána ke stažení
+STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Položka je vybrána ke stažení
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Ke stažení byla vybrána i tato závislost
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Tohle už máš
 STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Tento obsah je neznámý a nejde stáhnout do OpenTTD
