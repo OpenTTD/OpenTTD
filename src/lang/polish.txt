@@ -2812,6 +2812,7 @@ STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Wyłącz
 
 # NewGRF status
 STR_NEWGRF_LIST_NONE                                            :Nic
+STR_NEWGRF_LIST_ALL_FOUND                                       :Wszystkie pliki są na dostępne
 STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Znaleziono kompatybilne pliki
 STR_NEWGRF_LIST_MISSING                                         :{RED}Brakujące pliki
 
@@ -3731,6 +3732,7 @@ STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Zapisana gra zr
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Plik nie jest odczytywalny
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Plik nie jest zapisywalny
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Sprawdzenie integralności danych nie powiodło się
+STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<not available>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Gra została zapisana w wersji nie obsługującej tramwajów. Wszystkie tramwaje zostały usunięte.
 
 # Map generation messages
