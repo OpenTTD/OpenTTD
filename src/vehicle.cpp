@@ -1061,6 +1061,7 @@ void VehicleEnterDepot(Vehicle *v)
 
 			UpdateSignalsOnSegment(t->tile, INVALID_DIAGDIR, t->owner);
 			t->wait_counter = 0;
+			t->force_proceed = 0;
 			ClrBit(t->flags, VRF_TOGGLE_REVERSE);
 			t->ConsistChanged(true);
 			break;
@@ -1082,6 +1083,7 @@ void VehicleEnterDepot(Vehicle *v)
 			break;
 		default: NOT_REACHED();
 	}
+	SetWindowDirty(WC_VEHICLE_VIEW, v->index);
 
 	if (v->type != VEH_TRAIN) {
 		/* Trains update the vehicle list when the first unit enters the depot and calls VehicleEnterDepot() when the last unit enters.

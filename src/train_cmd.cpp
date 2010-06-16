@@ -2905,6 +2905,9 @@ static void TrainEnterStation(Train *v, StationID station)
 		AI::NewEvent(v->owner, new AIEventStationFirstVehicle(st->index, v->index));
 	}
 
+	v->force_proceed = 0;
+	SetWindowDirty(WC_VEHICLE_VIEW, v->index);
+
 	v->BeginLoading();
 
 	StationAnimationTrigger(st, v->tile, STAT_ANIM_TRAIN_ARRIVES);
@@ -3876,10 +3879,10 @@ static bool TrainLocoHandler(Train *v, bool mode)
 	int j = v->UpdateSpeed();
 
 	/* we need to invalidate the widget if we are stopping from 'Stopping 0 km/h' to 'Stopped' */
-	if (v->cur_speed == 0 && v->tcache.last_speed == 0 && (v->vehstatus & VS_STOPPED)) {
+	if (v->cur_speed == 0 && (v->vehstatus & VS_STOPPED)) {
 		/* If we manually stopped, we're not force-proceeding anymore. */
 		v->force_proceed = 0;
-		SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
+		SetWindowDirty(WC_VEHICLE_VIEW, v->index);
 	}
 
 	int adv_spd = (v->direction & 1) ? 192 : 256;
