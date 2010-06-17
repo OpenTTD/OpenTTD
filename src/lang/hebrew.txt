@@ -2259,6 +2259,12 @@ STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}מחק
 STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}מחק את קובץ השמירה שנבחר
 STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}שמור
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}שמור את המשחק הנוכחי עם השם שנבחר
+STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}טען
+STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}טען את המשחק שנבחר
+STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}פרטי משחק
+STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}אין מידע זמין.
+STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
+STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}הכנס שם לשמירה
 
@@ -2333,6 +2339,10 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}מכין
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}(NewGRF) הגדרות שדרוג גראפי
+STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}מידע NewGRF מפורט
+STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}קבצי NewGRF פעילים
+STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}קבצי NewGRF לא פעילים
+STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}בחר הגדרות מוכנות:
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}מחרוזת סינון:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}טען סביבה גראפית
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}שמור סביבה גראפית
@@ -2376,9 +2386,11 @@ STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}הכנס
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}בדוק - {STRING}
 STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}הורה
 
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :סוג מסילה
 
 
 # Sprite aligner window
+STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X היסט: {NUM}, Y היסט: {NUM}
 
 
 # NewGRF (self) generated warnings/errors
@@ -2416,6 +2428,12 @@ STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}שדרו
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}קבצים חסרים
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}?הפשרת המשחק עלולה להביא לקריסה. להמשיך
 
+# NewGRF status
+STR_NEWGRF_LIST_NONE                                            :ללא
+STR_NEWGRF_LIST_ALL_FOUND                                       :כל הקבצים נמצאים
+STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}נמצאו קבצים מתאימים
+STR_NEWGRF_LIST_MISSING                                         :{RED}חסרים קבצים
+
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}התנהגות ה-NewGRF '{STRING}' עלולה לגרום לקריסה ו/או חוסר סנכרון במשחק.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}It changes vehicle length for '{1:ENGINE}' when not inside a depot.
@@ -2426,6 +2444,11 @@ STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}מידע
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' גרם ללולאה אינסופית בהתקשרות חזרה של הייצור.
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs.
+STR_NEWGRF_INVALID_CARGO                                        :<מטען לא חוקי>
+STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
+STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} של <מטען לא חוקי>
+STR_NEWGRF_INVALID_ENGINE                                       :<מנוע לא תקין>
+STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<תעשייה לא תקינה>
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}סימניות {COMMA} - רשימת סימניות
@@ -2774,7 +2797,10 @@ STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}החלף
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}החלף שם סוג כלי הטיס
 
 # Depot window
+STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
 
+STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}שנה שם של מוסך
+STR_DEPOT_RENAME_DEPOT_CAPTION                                  :שינוי שם מוסך
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{0:ENGINE}{1:STRING}
@@ -2954,9 +2980,17 @@ STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}אין 
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}{WAYPOINT} :בדרך אל
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE} {1:VELOCITY},{0:WAYPOINT} :בדרך אל
 
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE}בדרך אל {DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}בדרך אל {DEPOT}, {VELOCITY}
 
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}קבלת שירות ב{DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}קבלת שירות ב{DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
+STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}הופסק
+STR_VEHICLE_COMMAND_STOPPED                                     :{RED}הופסק
+STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINYFONT}{GREEN}הותחל
+STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}הותחל
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}(פרטים){VEHICLE}
@@ -2989,8 +3023,8 @@ STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}העבר
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{LTBLUE}{1:DATE_LONG} :טיפול אחרוןֿ {BLACK}{LTBLUE}{0:COMMA}% {BLACK} :מרווח בין טיפולים
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{LTBLUE}{1:DATE_LONG} :טיפול אחרוןֿ {BLACK}{LTBLUE}{0:COMMA}% {BLACK} :מרווח בין טיפולים
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}הגדל את המרווח בין קבלת שירות ב-10. Ctrl+לחיצה מגדיל את המרווח ב-5
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}הקטן את המרווח בין קבלת שירות ב-10. Ctrl+לחיצה מקטינה את המרווח ב-5
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}הגדל את מרווח הזמן עד קבלת שירות ב-10. Ctrl+לחיצה מגדיל את המרווח ב-5
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}הקטן את מרווח הזמן עד קבלת שירות ב-10. Ctrl+לחיצה מקטינה את המרווח ב-5
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}תן שם לרכבת
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}תן שם לכלי הרכב
@@ -3132,6 +3166,7 @@ STR_ORDER_TRAIN_DEPOT                                           :מוסך רכב
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :מוסך רכבים
 STR_ORDER_SHIP_DEPOT                                            :מבדוק ספינות
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{2:STRING} {1:STRING} {0:STRING}
+STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 STR_ORDER_REFIT_ORDER                                           :({STRING} התאם לנשיאת)
 STR_ORDER_REFIT_STOP_ORDER                                      :(ועצור {STRING} התאם לנשיאת)
@@ -3309,6 +3344,7 @@ STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :קובץ השמ
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :קובץ לא קריא
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :קןבץ לא כתיב
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :בדיקת שלמות נתונים נכשלה
+STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<לא זמין>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}המשחק נשמר ללא תמיכה בחשמליות. כל החשמליות הוסרו.
 
 # Map generation messages
@@ -3473,6 +3509,7 @@ STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}לא נ�
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}לא ניתן לבנות מוסך לחשמלית כאן...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}לא ניתן לבנות מבדוק כאן...
 
+STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}לא ניתן לשנות שם מוסך...
 
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}הרכבת צריכה להיות בעצירה במוסך
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}חייב להיות בעצירה בתוך מוסך לכלי רכב...
@@ -3614,6 +3651,7 @@ STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}כלי �
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}יותר מידי כלי תעבורה במשחק
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}לא ניתן לשנות את מרווחי הטיפול...
 
+STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... הרכב נהרס
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}לא ניתן להכריח את הרכבת לעבור ברמזור בעת סכנה...
@@ -3653,6 +3691,7 @@ STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}... ני
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}לא ניתן למחוק סימניה...
 
 # Translatable comment for OpenTTD's desktop shortcut
+STR_DESKTOP_SHORTCUT_COMMENT                                    :עותק של Transport Tycoon Deluxe
 
 ##id 0x2000
 # Town building names
@@ -4046,6 +4085,13 @@ STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING.gen} 
 STR_FORMAT_WAYPOINT_NAME                                        :נקודת ציון {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :נקודת ציון {TOWN} #{COMMA}
 
+STR_FORMAT_DEPOT_NAME_TRAIN                                     :מוסך רכבות {TOWN}
+STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} מוסך רכבות #{COMMA}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :מוסך כלי רכב {TOWN}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} מוסך כלי רכב #{COMMA}
+STR_FORMAT_DEPOT_NAME_SHIP                                      :מוסך ספינות {TOWN}
+STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} מוסך ספינות #{COMMA}
+STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :סככת מטוסים {STATION}
 
 STR_UNKNOWN_STATION                                             :תחנה לא ידועה
 STR_DEFAULT_SIGN_NAME                                           :סימניה
@@ -4072,6 +4118,7 @@ STR_VIEWPORT_WAYPOINT_TINY                                      :{TINYFONT}{WAYP
 # Simple strings to get specific types of data
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
+STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}

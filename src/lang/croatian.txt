@@ -374,7 +374,7 @@ STR_SORT_BY_VALUE                                               :Vrijednost
 STR_SORT_BY_LENGTH                                              :Dužina
 STR_SORT_BY_LIFE_TIME                                           :Preostali životni vijek
 STR_SORT_BY_TIMETABLE_DELAY                                     :Kašnjenje voznog reda
-STR_SORT_BY_FACILITY                                            :Vrsta postaje
+STR_SORT_BY_FACILITY                                            :Vrsta stanice
 STR_SORT_BY_WAITING                                             :Vrijednost tereta koji čeka
 STR_SORT_BY_RATING_MAX                                          :Najviša ocjena tereta
 STR_SORT_BY_RATING_MIN                                          :Najniža ocjena tereta
@@ -1420,14 +1420,14 @@ STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industr
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Pronalaženje putanje za vlakove: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Preporučeno)
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Preporučljivo)
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Pronalaženje putanje za cestovna vozila: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_NPF             :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_YAPF            :YAPF {BLUE}(Preporučeno)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Pronalaženje putanje za brodove: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(Preporučeno)
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(Preporučljivo)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Nije preporučivo)
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Nije preporučljivo)
 
 STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}X veličina karte: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Y veličina karte: {ORANGE}{STRING}
@@ -3915,8 +3915,8 @@ STR_SV_SHIP_NAME                                                :Brod {COMMA}
 STR_SV_AIRCRAFT_NAME                                            :Zrakoplov {COMMA}
 
 STR_SV_STNAME                                                   :{STRING}
-STR_SV_STNAME_NORTH                                             :{STRING} sjever
-STR_SV_STNAME_SOUTH                                             :{STRING} jug
+STR_SV_STNAME_NORTH                                             :{STRING} Sjever
+STR_SV_STNAME_SOUTH                                             :{STRING} Jug
 STR_SV_STNAME_EAST                                              :{STRING} Istok
 STR_SV_STNAME_WEST                                              :{STRING} Zapad
 STR_SV_STNAME_CENTRAL                                           :Centrala {STRING}

@@ -2247,6 +2247,12 @@ STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}Remover
 STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}Remover o jogo selecionado
 STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Salvar
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Salvar o jogo atual, usando o nome escolhido
+STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Carregar
+STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Carrega o jogo selecionado
+STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Detalhes do Jogo
+STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Nenhuma informação disponível.
+STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
+STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Coloque o nome para o jogo salvo
 
@@ -2424,6 +2430,12 @@ STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}GRG(s) c
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}arquivo(s) GRF em falta foram desativados
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Arquivo(s) GRF faltantes
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Despausar pode travar OpenTTD. Não envie relatórios de erros sobre travas subsequentes.{}Você realmente quer despausar?
+
+# NewGRF status
+STR_NEWGRF_LIST_NONE                                            :Nenhum
+STR_NEWGRF_LIST_ALL_FOUND                                       :Todos os arquivos presentes
+STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Arquivos compatíveis encontrados
+STR_NEWGRF_LIST_MISSING                                         :{RED}Arquivos faltando
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}'{0:STRING}' tem altas chances de causar desincronias e/ou travamentos.
@@ -3335,6 +3347,7 @@ STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :O arquivo foi c
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Arquivo não legível
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Arquivo não editável
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Integridade do arquivo falha
+STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<não disponível>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Jogo foi salvo numa versão sem suporte a bondes. Todos os bondes foram removidos.
 
 # Map generation messages
