@@ -2128,8 +2128,8 @@ STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Umiestni
 STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Umiestnit majak
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Vytvorit oblast puste.{}Drzanim CTRL ju odstranite
 STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Umiestnit vysielac
-STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Pre zvysenie/znizenie oblasti je potrebne zvacsit uzemie
-STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Pre zvysenie/znizenie oblasti je potrebne zmensit uzemie
+STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Pre zvýšenie/zníženie oblasti je potrebné zväčšiť územie
+STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Pre zvýšenie/zníženie oblasti je potrebné zmenšiť územie
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Vygenerovať náhodné územie
 STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Vytvoriť nový scenár
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Zresetovat uzemie
@@ -2313,6 +2313,12 @@ STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}Vymazat
 STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}Vymazať vybranú uloženú hru
 STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Uložiť
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Uložiť aktuálnu hru s použitím vybraného mena
+STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Načítať
+STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Načítať označenú hru
+STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Detaily hry
+STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Nie sú dostupné žiadne informácie.
+STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
+STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Zadajte názov pre uloženie hry
 
@@ -2390,7 +2396,7 @@ STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Nastaven
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Detailné NewGRF informácie
 STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Aktívne NewGRF súbory
 STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Neaktívne NewGRF súbory
-STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Vybrať prednastavené:
+STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Vybrať predvoľbu:
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filtrovať podľa:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Nahrať vybraný zoznam
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Uložit zoznam
@@ -2490,6 +2496,12 @@ STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatib
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Chýbajúce GRF súbory boli vypnuté
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Chýba(jú) GRF súbor(y)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Odpauzovanie môže spôsobit pád OpenTTD. Nezaznamenávajte nasledujúce chyby.{}Naozaj chcete odpauzovat?
+
+# NewGRF status
+STR_NEWGRF_LIST_NONE                                            :Žiadne
+STR_NEWGRF_LIST_ALL_FOUND                                       :Všetky súbory nájdené
+STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Nájdené kompatibilné súbory
+STR_NEWGRF_LIST_MISSING                                         :{RED}Chýbajúce súbory
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Správanie NewGRF '{STRING}' asi sposobí desynchronizáciu a/alebo pád hry.
@@ -3080,8 +3092,8 @@ STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Transfer
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Servisný interval: {LTBLUE}{COMMA}dní{BLACK}   Posledný servis: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Servisný interval: {LTBLUE}{COMMA}%{BLACK}   Posledný servis: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Predlzit servisny interval
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Skratit servisny interval
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Predĺžiť servisný interval o 10. Ctrl+klik predĺži servisný interval o 5
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Skrátiť servisný interval o 10. Ctrl+klik pre skrátenie servisného intervalu o 5
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Pomenovat vlak
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Pomenovat automobil
@@ -3401,6 +3413,7 @@ STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Hra bola ulože
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Súbor nie je možné precítat
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Nie je možný zápis do súboru
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Kontrola integrity dát zlyhala
+STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<nedostupné>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Hra bola uložená vo verzii bez elektriciek. Vsetky elektricky boli odstránené.
 
 # Map generation messages
@@ -3707,6 +3720,7 @@ STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Lietadlo
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}V hre je príliš veľa dopravných prostriedkov
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Nie je možné zmenit servisný interval ...
 
+STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... vozidlo je zničené
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Nemozno pustit vlak na cervenu ked hrozi nebezpecenstvo...
