@@ -1,3 +1,12 @@
+1.0.2 (2010-06-19)
+------------------------------------------------------------------------
+- Fix: Owner of the Waypoint View window was not properly set (r19990)
+- Fix: Close list of vehicles with given oil rig in orders when the oil rig is deleted (r19956)
+- Fix: Close list of vehicles with given buoy/oil rig in orders when switching company (r19955)
+- Fix: Do not close list of waypoint's trains when the waypoint view is closed when it is sticky (r19952)
+- Fix: Close buoy's vehicle list when the buoy is deleted [FS#3869] (r19951)
+
+
 1.0.2-RC1 (2010-06-05)
 ------------------------------------------------------------------------
 - Feature: Translated desktop shortcut comments (r19884)

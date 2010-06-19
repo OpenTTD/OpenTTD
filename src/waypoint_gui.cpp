@@ -18,6 +18,7 @@
 #include "strings_func.h"
 #include "command_func.h"
 #include "company_func.h"
+#include "company_base.h"
 #include "window_func.h"
 #include "waypoint_base.h"
 
@@ -43,8 +44,6 @@ public:
 		this->wp = Waypoint::Get(window_number);
 		this->vt = (wp->string_id == STR_SV_STNAME_WAYPOINT) ? VEH_TRAIN : VEH_SHIP;
 
-		if (this->wp->owner != OWNER_NONE) this->owner = this->wp->owner;
-
 		this->CreateNestedTree(desc);
 		if (this->vt == VEH_TRAIN) {
 			this->GetWidget<NWidgetCore>(WAYPVW_SHOW_VEHICLES)->SetDataTip(STR_TRAIN, STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP);
@@ -53,7 +52,9 @@ public:
 		}
 		this->FinishInitNested(desc, window_number);
 
+		if (this->wp->owner != OWNER_NONE) this->owner = this->wp->owner;
 		this->flags4 |= WF_DISABLE_VP_SCROLL;
+
 		NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(WAYPVW_VIEWPORT);
 		nvp->InitializeViewport(this, this->wp->xy, ZOOM_LVL_MIN);
 
@@ -62,7 +63,9 @@ public:
 
 	~WaypointWindow()
 	{
-		DeleteWindowById(GetWindowClassForVehicleType(this->vt), (this->window_number << 16) | (this->vt << 11) | VLW_WAYPOINT_LIST | this->wp->owner);
+		Owner owner = this->owner;
+		if (!Company::IsValidID(owner)) owner = _local_company;
+		DeleteWindowById(GetWindowClassForVehicleType(this->vt), (this->window_number << 16) | (this->vt << 11) | VLW_WAYPOINT_LIST | owner, false);
 	}
 
 	virtual void SetStringParameters(int widget) const
@@ -92,7 +95,7 @@ public:
 				break;
 
 			case WAYPVW_SHOW_VEHICLES: // show list of vehicles having this waypoint in their orders
-				ShowVehicleListWindow((this->wp->owner == OWNER_NONE) ? _local_company : this->wp->owner, this->vt, this->wp);
+				ShowVehicleListWindow(this->owner, this->vt, this->wp);
 				break;
 		}
 	}
