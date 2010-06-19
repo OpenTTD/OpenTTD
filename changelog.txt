@@ -349,7 +349,7 @@
 - Fix: Some inconsistencies with the difficulty settings in the scenario editor. Also re-enable changing some difficulty settings (e.g. max loan) in the scenario editor [FS#3219] (r17644)
 - Fix: Do not accept cargo produced in the same industry; generalise and improve the check used only for valuables (r17437)
 - Fix: Pay only for cargo actually delivered, not for all cargo unloaded at station; can differ with 'stockpiling' industries (r17436)
-- Fix: Improve movement of aircraft; do not make turns bigger then 45 degrees while in flight, do not move while turning on the ground (r17415, r17405)
+- Fix: Improve movement of aircraft; do not make turns bigger than 45 degrees while in flight, do not move while turning on the ground (r17415, r17405)
 - Fix: Crash in order GUI when changing some orders with both the mouse and keyboard at the exact same time [FS#2859] (r17384)
 - Fix: Trains would not show smoke if the load/unload counter was not 0, though there does not seem to be a reason to check that variable anyhow anymore [FS#3162] (r17352)
 - Fix: One was not offered to take over bankrupt companies anymore; caused by the introduction NoAI, although NewAI had the same problem too [FS#2769] (r17345)
@@ -2502,7 +2502,7 @@
 - Fix: [Network] 'kick 1' did crash dedicated servers
 - Fix: [Network] A server no longer crashes when a client sends an invalid DoCommand, but drops the client instead
 - Fix: [Network] Added packet protection. No longer a client or server
-- Fix: [Network] Bug in bind system. Advertising failed on systems with more then 1 ip, and server_bind active to one of them
+- Fix: [Network] Bug in bind system. Advertising failed on systems with more than 1 ip, and server_bind active to one of them
 - Fix: [Network] Disabled 'money-cheat' (read: bug which could give people a lot of money)
 - Fix: [SDL] Now the binary never links to SDL if DEDICATED is set
 - Fix: [Windows] Somehow mousewheel was disabled on windows using SDL; reenabled again

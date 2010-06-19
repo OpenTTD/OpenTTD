@@ -23,7 +23,7 @@ Multiplayer Manual for OpenTTD (0.3.5)
  - If you want to see which servers all online on the Internet, click on 'Internet'
     and 'Find Server'
 
- - If there were more then one server
+ - If there were more than one server
    - select one in the list below the buttons
    - click on 'join game'
 
