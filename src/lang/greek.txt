@@ -1814,7 +1814,7 @@ STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Προσ
 STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Θέστε τον κωδικό της εταιρίας
 
 # Network chat
-STR_NETWORK_CHAT_SEND                                           :{BLACK}Στείλε
+STR_NETWORK_CHAT_SEND                                           :{BLACK}Αποστολή
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Ομάδα] :
 STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Προσωπικό] {STRING}:
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Σε όλους] :
