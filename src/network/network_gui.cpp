@@ -1603,15 +1603,19 @@ struct NetworkLobbyWindow : public Window {
 		DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_NETWORK_GAME_LOBBY_PERFORMANCE); // performance
 		y += FONT_HEIGHT_NORMAL;
 
-		for (uint i = 0; i < lengthof(this->company_info[this->company].num_vehicle); i++) {
-			SetDParam(i, this->company_info[this->company].num_vehicle[i]);
-		}
+		SetDParam(0, this->company_info[this->company].num_vehicle[NETWORK_VEH_TRAIN]);
+		SetDParam(1, this->company_info[this->company].num_vehicle[NETWORK_VEH_LORRY]);
+		SetDParam(2, this->company_info[this->company].num_vehicle[NETWORK_VEH_BUS]);
+		SetDParam(3, this->company_info[this->company].num_vehicle[NETWORK_VEH_PLANE]);
+		SetDParam(4, this->company_info[this->company].num_vehicle[NETWORK_VEH_SHIP]);
 		DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_NETWORK_GAME_LOBBY_VEHICLES); // vehicles
 		y += FONT_HEIGHT_NORMAL;
 
-		for (uint i = 0; i < lengthof(this->company_info[this->company].num_station); i++) {
-			SetDParam(i, this->company_info[this->company].num_station[i]);
-		}
+		SetDParam(0, this->company_info[this->company].num_station[NETWORK_VEH_TRAIN]);
+		SetDParam(1, this->company_info[this->company].num_station[NETWORK_VEH_LORRY]);
+		SetDParam(2, this->company_info[this->company].num_station[NETWORK_VEH_BUS]);
+		SetDParam(3, this->company_info[this->company].num_station[NETWORK_VEH_PLANE]);
+		SetDParam(4, this->company_info[this->company].num_station[NETWORK_VEH_SHIP]);
 		DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_NETWORK_GAME_LOBBY_STATIONS); // stations
 		y += FONT_HEIGHT_NORMAL;
 

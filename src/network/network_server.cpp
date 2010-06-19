@@ -1375,11 +1375,11 @@ void NetworkSocketHandler::Send_CompanyInformation(Packet *p, const Company *c, 
 	/* Send 1 if there is a passord for the company else send 0 */
 	p->Send_bool  (!StrEmpty(_network_company_states[c->index].password));
 
-	for (uint i = 0; i < NETWORK_VEHICLE_TYPES; i++) {
+	for (uint i = 0; i < NETWORK_VEH_END; i++) {
 		p->Send_uint16(stats->num_vehicle[i]);
 	}
 
-	for (uint i = 0; i < NETWORK_STATION_TYPES; i++) {
+	for (uint i = 0; i < NETWORK_VEH_END; i++) {
 		p->Send_uint16(stats->num_station[i]);
 	}
 
@@ -1402,10 +1402,10 @@ void NetworkPopulateCompanyStats(NetworkCompanyStats *stats)
 		if (!Company::IsValidID(v->owner) || !v->IsPrimaryVehicle()) continue;
 		byte type = 0;
 		switch (v->type) {
-			case VEH_TRAIN: type = 0; break;
-			case VEH_ROAD: type = RoadVehicle::From(v)->IsBus() ? 2 : 1; break;
-			case VEH_AIRCRAFT: type = 3; break;
-			case VEH_SHIP: type = 4; break;
+			case VEH_TRAIN: type = NETWORK_VEH_TRAIN; break;
+			case VEH_ROAD: type = RoadVehicle::From(v)->IsBus() ? NETWORK_VEH_BUS : NETWORK_VEH_LORRY; break;
+			case VEH_AIRCRAFT: type = NETWORK_VEH_PLANE; break;
+			case VEH_SHIP: type = NETWORK_VEH_SHIP; break;
 			default: continue;
 		}
 		stats[v->owner].num_vehicle[type]++;
@@ -1416,11 +1416,11 @@ void NetworkPopulateCompanyStats(NetworkCompanyStats *stats)
 		if (Company::IsValidID(s->owner)) {
 			NetworkCompanyStats *npi = &stats[s->owner];
 
-			if (s->facilities & FACIL_TRAIN)      npi->num_station[0]++;
-			if (s->facilities & FACIL_TRUCK_STOP) npi->num_station[1]++;
-			if (s->facilities & FACIL_BUS_STOP)   npi->num_station[2]++;
-			if (s->facilities & FACIL_AIRPORT)    npi->num_station[3]++;
-			if (s->facilities & FACIL_DOCK)       npi->num_station[4]++;
+			if (s->facilities & FACIL_TRAIN)      npi->num_station[NETWORK_VEH_TRAIN]++;
+			if (s->facilities & FACIL_TRUCK_STOP) npi->num_station[NETWORK_VEH_LORRY]++;
+			if (s->facilities & FACIL_BUS_STOP)   npi->num_station[NETWORK_VEH_BUS]++;
+			if (s->facilities & FACIL_AIRPORT)    npi->num_station[NETWORK_VEH_PLANE]++;
+			if (s->facilities & FACIL_DOCK)       npi->num_station[NETWORK_VEH_SHIP]++;
 		}
 	}
 }

@@ -423,10 +423,10 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_COMPANY_INFO)
 		company_info->income           = p->Recv_uint64();
 		company_info->performance      = p->Recv_uint16();
 		company_info->use_password     = p->Recv_bool();
-		for (uint i = 0; i < NETWORK_VEHICLE_TYPES; i++) {
+		for (uint i = 0; i < NETWORK_VEH_END; i++) {
 			company_info->num_vehicle[i] = p->Recv_uint16();
 		}
-		for (uint i = 0; i < NETWORK_STATION_TYPES; i++) {
+		for (uint i = 0; i < NETWORK_VEH_END; i++) {
 			company_info->num_station[i] = p->Recv_uint16();
 		}
 		company_info->ai               = p->Recv_bool();

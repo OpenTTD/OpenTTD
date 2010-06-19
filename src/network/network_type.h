@@ -26,10 +26,18 @@ static const uint MAX_CLIENTS = 255;
  */
 static const uint MAX_CLIENT_SLOTS = 256;
 
-/** How many vehicle types we put over the network */
-static const uint NETWORK_VEHICLE_TYPES = 5;
-/** How many station types we put over the network */
-static const uint NETWORK_STATION_TYPES = 5;
+/**
+ * Vehicletypes in the order they are send in info packets.
+ */
+enum NetworkVehicleType {
+	NETWORK_VEH_TRAIN = 0,
+	NETWORK_VEH_LORRY,
+	NETWORK_VEH_BUS,
+	NETWORK_VEH_PLANE,
+	NETWORK_VEH_SHIP,
+
+	NETWORK_VEH_END
+};
 
 /** 'Unique' identifier to be given to clients */
 enum ClientID {
@@ -43,8 +51,8 @@ typedef uint8 ClientIndex;
 
 /** Simple calculated statistics of a company */
 struct NetworkCompanyStats {
-	uint16 num_vehicle[NETWORK_VEHICLE_TYPES];      ///< How many vehicles are there of this type?
-	uint16 num_station[NETWORK_STATION_TYPES];      ///< How many stations are there of this type?
+	uint16 num_vehicle[NETWORK_VEH_END];            ///< How many vehicles are there of this type?
+	uint16 num_station[NETWORK_VEH_END];            ///< How many stations are there of this type?
 	bool ai;                                        ///< Is this company an AI
 };
 
