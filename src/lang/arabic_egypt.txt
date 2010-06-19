@@ -1646,8 +1646,8 @@ STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}الر�
 STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}دخل السنة الماضية:{WHITE}{CURRENCY}
 STR_NETWORK_GAME_LOBBY_PERFORMANCE                              :{SILVER}الأداء:{WHITE}{NUM}
 
-STR_NETWORK_GAME_LOBBY_VEHICLES                                 :{SILVER}مركبة:{WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
-STR_NETWORK_GAME_LOBBY_STATIONS                                 :{SILVER}محطات:{WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_GAME_LOBBY_VEHICLES                                 :{SILVER}مركبة:{WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE}
+STR_NETWORK_GAME_LOBBY_STATIONS                                 :{SILVER}محطات:{WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE}
 STR_NETWORK_GAME_LOBBY_PLAYERS                                  :{SILVER}لاعبين:{WHITE}{STRING}
 
 STR_NETWORK_GAME_LOBBY_NEW_COMPANY                              :{BLACK}شركة جديدة

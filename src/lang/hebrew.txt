@@ -1665,8 +1665,8 @@ STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{WHITE}{CURRENC
 STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{WHITE}{CURRENCY}{SILVER} :הכנסות בשנה האחרונה
 STR_NETWORK_GAME_LOBBY_PERFORMANCE                              :{WHITE}{NUM}{SILVER} :מדד הביצועים
 
-STR_NETWORK_GAME_LOBBY_VEHICLES                                 :{WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP} {SILVER} :כלי תעבורה
-STR_NETWORK_GAME_LOBBY_STATIONS                                 :{WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP} {SILVER} :תחנות
+STR_NETWORK_GAME_LOBBY_VEHICLES                                 :{WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE} {SILVER} :כלי תעבורה
+STR_NETWORK_GAME_LOBBY_STATIONS                                 :{WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE} {SILVER} :תחנות
 STR_NETWORK_GAME_LOBBY_PLAYERS                                  :{WHITE}{STRING} {SILVER} :שחקנים
 
 STR_NETWORK_GAME_LOBBY_NEW_COMPANY                              :{BLACK}חברה חדשה

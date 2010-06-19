@@ -1642,8 +1642,8 @@ STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}残額�
 STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}昨年の損益：{WHITE}{CURRENCY}
 STR_NETWORK_GAME_LOBBY_PERFORMANCE                              :{SILVER}パフォーマンス：{WHITE}{NUM}
 
-STR_NETWORK_GAME_LOBBY_VEHICLES                                 :{SILVER}車両：{WHITE}{NUM} {TRAIN}、{NUM} {LORRY}、{NUM} {BUS}、{NUM} {PLANE}、{NUM} {SHIP}
-STR_NETWORK_GAME_LOBBY_STATIONS                                 :{SILVER}駅／バス停／空港／埠頭：{WHITE}{NUM} {TRAIN}、{NUM} {LORRY}、{NUM} {BUS}、{NUM} {PLANE}、{NUM} {SHIP}
+STR_NETWORK_GAME_LOBBY_VEHICLES                                 :{SILVER}車両：{WHITE}{NUM} {TRAIN}、{NUM} {LORRY}、{NUM} {BUS}、{NUM} {SHIP}、{NUM} {PLANE}
+STR_NETWORK_GAME_LOBBY_STATIONS                                 :{SILVER}駅／バス停／空港／埠頭：{WHITE}{NUM} {TRAIN}、{NUM} {LORRY}、{NUM} {BUS}、{NUM} {SHIP}、{NUM} {PLANE}
 STR_NETWORK_GAME_LOBBY_PLAYERS                                  :{SILVER}プレヤー：{WHITE}{STRING}
 
 STR_NETWORK_GAME_LOBBY_NEW_COMPANY                              :{BLACK}新規会社
