@@ -2247,6 +2247,12 @@ STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}Sil
 STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}Seçili oyunu sil
 STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Kaydet
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Oyunu seçilen isimle kaydet
+STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Yükle
+STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Seçili oyunu yükle
+STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Oyun Ayrıntıları
+STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Mevcut bilgi yok.
+STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
+STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Kayıtlı oyun için bir isim girin
 
@@ -2424,6 +2430,12 @@ STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Eksik do
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Eksik GRF dosyaları etkisizleştirildi
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Eksik GRF dosyası
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Devam ettırme OpenTTD'yi çökertebilir. Takip eden çökmeler için hata rapor etmeyiniz.{}Gerçekten devam ettirmek istiyor musunuz?
+
+# NewGRF status
+STR_NEWGRF_LIST_NONE                                            :Hiçbiri
+STR_NEWGRF_LIST_ALL_FOUND                                       :Tüm mevcut dosyalar
+STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Uyumlu dosyalar bulundu
+STR_NEWGRF_LIST_MISSING                                         :{RED}Eksik dosyalar
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF '{0:STRING}' davranışı muhtemelen senkron kaybı ve/veya çakılmalara neden olacak.
@@ -3335,6 +3347,7 @@ STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Kayıtlı oyun 
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Dosya okunabilir değil
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Dosya yazılabilir değil
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Veri sağlamlık kontrolü başarısız
+STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<uygun değil>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Oyun tramvay desteği olmayan bir sürümde kaydedilmiş. Tüm tramvaylar kaldırılmıştır.
 
 # Map generation messages
@@ -3641,6 +3654,7 @@ STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Uçak ku
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Oyunda çok fazla araç var
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Servis aralığı değiştirilemiyor...
 
+STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... araç imha edilmiş
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Tehlikedeki tren sinyali geçemez...

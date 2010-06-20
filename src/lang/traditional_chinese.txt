@@ -317,7 +317,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}興建�
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}打開地形工具列、提升／降低地面、 植樹等
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}顯示音效／背景音樂視窗
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}顯示上次訊息／新聞報告、顯示訊息選項
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}土地資訊、主控台、AI 除錯、螢幕抓圖、關於 OpenTTD
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}土地資訊、主控台、AI 除錯、擷取畫面、關於 OpenTTD
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}切換工具列
 
 # Extra tooltips for the scenario editor toolbar
@@ -442,7 +442,7 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :切換主控台
 STR_ABOUT_MENU_AI_DEBUG                                         :AI 除錯
 STR_ABOUT_MENU_SCREENSHOT                                       :擷取畫面 (Ctrl-S)
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :巨觀畫面擷取 (Ctrl-G)
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :擷取全場景畫面 (Ctrl-G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :關於「OpenTTD」
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite 定位工具
 ############ range ends here
@@ -2246,6 +2246,12 @@ STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}刪除
 STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}刪除目前選定的存檔
 STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}儲存
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}以選定的名稱儲存目前遊戲
+STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}載入
+STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}載入所選的遊戲
+STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}遊戲詳細資料
+STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}沒有相關資訊
+STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
+STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF：{WHITE}{STRING}
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}為存檔輸入一個名稱
 
@@ -2425,6 +2431,10 @@ STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}缺少�
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}取消暫停可能會讓 OpenTTD 當掉，請不要回報之後的當機情形。{}您真的要取消暫停嗎？
 
 # NewGRF status
+STR_NEWGRF_LIST_NONE                                            :無
+STR_NEWGRF_LIST_ALL_FOUND                                       :目前所有檔案
+STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}發現相容檔案
+STR_NEWGRF_LIST_MISSING                                         :{RED}缺少檔案
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF「{0:STRING}」的行為可能會造成失去同步或當機
@@ -3336,6 +3346,7 @@ STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :該存檔是由
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :檔案無法讀取
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :檔案無法寫入
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :資料完整性檢查失敗
+STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<無法使用>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}此存檔版本不支援路面電車，已移除所有路面電車
 
 # Map generation messages
