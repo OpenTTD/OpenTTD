@@ -35,6 +35,7 @@
 #include "ai/ai.hpp"
 #include "core/random_func.hpp"
 #include "core/backup_type.hpp"
+#include "date_func.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -131,6 +132,7 @@ CommandCost CmdBuildShipDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 
 	if (flags & DC_EXEC) {
 		Depot *depot = new Depot(tile);
+		depot->build_date = _date;
 
 		MakeShipDepot(tile,  _current_company, depot->index, DEPOT_NORTH, axis, wc1);
 		MakeShipDepot(tile2, _current_company, depot->index, DEPOT_SOUTH, axis, wc2);
@@ -729,7 +731,10 @@ static void GetTileDesc_Water(TileIndex tile, TileDesc *td)
 			break;
 		case WATER_TILE_COAST: td->str = STR_LAI_WATER_DESCRIPTION_COAST_OR_RIVERBANK; break;
 		case WATER_TILE_LOCK : td->str = STR_LAI_WATER_DESCRIPTION_LOCK;               break;
-		case WATER_TILE_DEPOT: td->str = STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT;         break;
+		case WATER_TILE_DEPOT:
+			td->str = STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT;
+			td->build_date = Depot::GetByTile(tile)->build_date;
+			break;
 		default: NOT_REACHED(); break;
 	}
 

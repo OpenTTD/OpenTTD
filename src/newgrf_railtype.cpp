@@ -15,6 +15,9 @@
 #include "newgrf_railtype.h"
 #include "newgrf_spritegroup.h"
 #include "core/bitmath_func.hpp"
+#include "date_func.h"
+#include "depot_base.h"
+#include "rail_map.h"
 
 static uint32 RailTypeGetRandomBits(const ResolverObject *object)
 {
@@ -41,6 +44,7 @@ static uint32 RailTypeGetVariable(const ResolverObject *object, byte variable, b
 			case 0x40: return 0;
 			case 0x41: return 0;
 			case 0x42: return 0;
+			case 0x43: return _date;
 		}
 	}
 
@@ -48,6 +52,9 @@ static uint32 RailTypeGetVariable(const ResolverObject *object, byte variable, b
 		case 0x40: return GetTerrainType(tile);
 		case 0x41: return 0;
 		case 0x42: return IsLevelCrossingTile(tile) && IsCrossingBarred(tile);
+		case 0x43:
+			if (IsRailDepotTile(tile)) return Depot::GetByTile(tile)->build_date;
+			return _date;
 	}
 
 	DEBUG(grf, 1, "Unhandled rail type tile property 0x%X", variable);

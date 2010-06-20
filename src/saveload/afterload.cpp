@@ -2126,6 +2126,11 @@ bool AfterLoadGame()
 		FOR_ALL_DEPOTS(d) MakeDefaultName(d);
 	}
 
+	if (CheckSavegameVersion(142)) {
+		Depot *d;
+		FOR_ALL_DEPOTS(d) d->build_date = _date;
+	}
+
 	/* Road stops is 'only' updating some caches */
 	AfterLoadRoadStops();
 	AfterLoadLabelMaps();

@@ -24,6 +24,7 @@ static const SaveLoad _depot_desc[] = {
 	 SLE_CONDREF(Depot, town,       REF_TOWN,                 141, SL_MAX_VERSION),
 	 SLE_CONDVAR(Depot, town_cn,    SLE_UINT16,               141, SL_MAX_VERSION),
 	 SLE_CONDSTR(Depot, name,       SLE_STR, 0,               141, SL_MAX_VERSION),
+	 SLE_CONDVAR(Depot, build_date, SLE_INT32,                142, SL_MAX_VERSION),
 	 SLE_END()
 };
 

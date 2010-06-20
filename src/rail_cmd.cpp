@@ -37,6 +37,7 @@
 #include "pbs.h"
 #include "company_base.h"
 #include "core/backup_type.hpp"
+#include "date_func.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -869,6 +870,7 @@ CommandCost CmdBuildTrainDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 
 	if (flags & DC_EXEC) {
 		Depot *d = new Depot(tile);
+		d->build_date = _date;
 
 		MakeRailDepot(tile, _current_company, d->index, dir, railtype);
 		MarkTileDirtyByTile(tile);
@@ -2644,6 +2646,7 @@ static void GetTileDesc_Track(TileIndex tile, TileDesc *td)
 					td->rail_speed = 61;
 				}
 			}
+			td->build_date = Depot::GetByTile(tile)->build_date;
 			break;
 
 		default:

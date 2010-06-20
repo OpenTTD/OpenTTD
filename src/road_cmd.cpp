@@ -36,6 +36,7 @@
 #include "company_base.h"
 #include "core/random_func.hpp"
 #include "newgrf_railtype.h"
+#include "date_func.h"
 
 #include "table/strings.h"
 
@@ -909,6 +910,7 @@ CommandCost CmdBuildRoadDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 
 	if (flags & DC_EXEC) {
 		Depot *dep = new Depot(tile);
+		dep->build_date = _date;
 
 		MakeRoadDepot(tile, _current_company, dep->index, dir, rt);
 		MarkTileDirtyByTile(tile);
@@ -1534,6 +1536,7 @@ static void GetTileDesc_Road(TileIndex tile, TileDesc *td)
 		case ROAD_TILE_DEPOT:
 			td->str = STR_LAI_ROAD_DESCRIPTION_ROAD_VEHICLE_DEPOT;
 			road_owner = GetTileOwner(tile); // Tile has only one owner, roadtype does not matter
+			td->build_date = Depot::GetByTile(tile)->build_date;
 			break;
 
 		default: {
