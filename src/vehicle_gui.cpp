@@ -2025,7 +2025,7 @@ public:
 		this->SetWidgetDisabledState(VVW_WIDGET_CLONE_VEH, !is_localcompany);
 
 		if (v->type == VEH_TRAIN) {
-			this->SetWidgetLoweredState(VVW_WIDGET_FORCE_PROCEED, Train::From(v)->force_proceed == 2);
+			this->SetWidgetLoweredState(VVW_WIDGET_FORCE_PROCEED, Train::From(v)->force_proceed == TFP_SIGNAL);
 			this->SetWidgetDisabledState(VVW_WIDGET_FORCE_PROCEED, !is_localcompany);
 			this->SetWidgetDisabledState(VVW_WIDGET_TURN_AROUND, !is_localcompany);
 		}

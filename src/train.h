@@ -43,6 +43,14 @@ enum VehicleRailFlags {
 	VRF_TRAIN_STUCK    = 8,
 };
 
+/** Modes for ignoring signals. */
+enum TrainForceProceeding {
+	TFP_NONE   = 0,    ///< Normal operation.
+	TFP_STUCK  = 1,    ///< Proceed till next signal, but ignore being stuck till then. This includes force leaving depots.
+	TFP_SIGNAL = 2,    ///< Ignore next signal, after the signal ignore being stucked.
+};
+typedef SimpleTinyEnumT<TrainForceProceeding, byte> TrainForceProceedingByte;
+
 byte FreightWagonMult(CargoID cargo);
 
 void CheckTrainsLengths();
@@ -94,7 +102,7 @@ struct Train : public GroundVehicle<Train, VEH_TRAIN> {
 
 	uint16 flags;
 	TrackBitsByte track;
-	byte force_proceed;
+	TrainForceProceedingByte force_proceed;
 	RailTypeByte railtype;
 	RailTypes compatible_railtypes;
 

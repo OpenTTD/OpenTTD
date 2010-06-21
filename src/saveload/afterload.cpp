@@ -2012,7 +2012,9 @@ bool AfterLoadGame()
 	if (CheckSavegameVersion(131)) {
 		Train *t;
 		FOR_ALL_TRAINS(t) {
-			t->force_proceed = min<byte>(t->force_proceed, 1);
+			if (t->force_proceed != TFP_NONE) {
+				t->force_proceed = TFP_STUCK;
+			}
 		}
 	}
 

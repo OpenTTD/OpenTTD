@@ -1061,7 +1061,7 @@ void VehicleEnterDepot(Vehicle *v)
 
 			UpdateSignalsOnSegment(t->tile, INVALID_DIAGDIR, t->owner);
 			t->wait_counter = 0;
-			t->force_proceed = 0;
+			t->force_proceed = TFP_NONE;
 			ClrBit(t->flags, VRF_TOGGLE_REVERSE);
 			t->ConsistChanged(true);
 			break;
