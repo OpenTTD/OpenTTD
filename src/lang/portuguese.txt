@@ -2245,6 +2245,12 @@ STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}Eliminar
 STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}Eliminar o jogo guardado seleccionado
 STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Guardar
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Guardar o jogo actual, usando o nome escolhido
+STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Carregar
+STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Carregar o jogo selecionado
+STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Detalhes do Jogo
+STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Nenhuma informação disponível
+STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
+STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Introduza um nome para o jogo gravado
 
@@ -2404,6 +2410,12 @@ STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}GRF(s) c
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Ficheiro(s) GRF ausentes foram desactivados
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Ficheiro(s) GRF em falta
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Sair da pausa pode causar problemas ao OpenTTD. Não envie informações sobre este tipo de problemas.{}Deseja realmente sair da pausa?
+
+# NewGRF status
+STR_NEWGRF_LIST_NONE                                            :Nenhum
+STR_NEWGRF_LIST_ALL_FOUND                                       :Todos os ficheiros presentes
+STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Encontrar ficheiros compatíveis
+STR_NEWGRF_LIST_MISSING                                         :{RED}Ficheiros em falta
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Os ficheiros NewGRF '{0:STRING}' podem causar erros e/ou perda de sincronismo da aplicação.
@@ -3313,6 +3325,7 @@ STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Jogo gravado nu
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Impossível ler ficheiro
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Impossível escrever ficheiro
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Falha ao verificar integridade de dados
+STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<indisponível>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}O jogo foi salvo numa versão sem suporte a eléctricos. Todos os eléctricos foram removidos.
 
 # Map generation messages
@@ -3619,6 +3632,7 @@ STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Aeronave
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Existem demasiados veículos em jogo
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Não é possível alterar o intervalo de serviço...
 
+STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... o veículo está destruido
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Não é possível fazer o comboio passar o sinal com perigo...

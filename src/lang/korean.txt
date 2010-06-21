@@ -2244,6 +2244,7 @@ STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}파일 �
 STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}선택된 세이브 파일을 삭제합니다.
 STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}저장
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}선택한 이름으로 현재 게임을 저장합니다
+STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}불러오기
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}선택한 게임을 불러옵니다
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}사용가능한 정보 없음.
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}

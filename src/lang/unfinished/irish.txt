@@ -1924,6 +1924,7 @@ STR_STATION_CLASS_WAYP                                          :Pointí bealaig
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Comharthaí a Roghnú
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Comhartha Isteach (séamafór){}Uaine chomh fada agus go bhfuil comhartha amach uaine amháin ar a laghad sa chuid den iarnróid ina dhiaidh. Mura bhfuil, bíonn sé dearg.
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Eatramh comharthaí agus tú ag tarraingt
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Laghdaigh an spás idir na comharthaí agus tú ag tarraingt
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Méadaigh an spás idir na comharthaí agus tú ag tarraingt
@@ -1947,6 +1948,8 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Feadánach, Sil
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Bóithre a thógáil
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Tógáil Trambhealaigh
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Tóg cuid de bhóthar. Déantar tógáil/baint a scoránú le Ctrl agus tú ag tógáil bóithre
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Tóg an chuid den trambhealach. Déantar tóg/bain a scoránú le Ctrl agus trambhealach á thógáil
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Tóg cuid den bhóthar ag úsáid an mód Uathbhóithre. Athraítear idir tógáil agus baint le Ctrl agus bóithre á dtógáil
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Tóg droichead bóthair
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Tóg droichead trambhealaigh
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Tóg tollán bóthair
@@ -1955,8 +1958,24 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Tóg tol
 # Road depot construction window
 
 # Road vehicle station construction window
+STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Treosuíomh Stáisiún Bus
+STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Roghnaigh treosuíomh an stáisiúin bus
+STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Treosuíomh Stáisiún Leoraithe
+STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Roghnaigh treosuíomh don bhá lódála leoraithe
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Treosuíomh Tram Paisinéirí
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Roghnaigh treosuíomh an stáisiúin tramanna paisinéirí
+STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Treosuíomh Tram Lastais
+STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Roghnaigh treosuíomh an stáisiúin tramanna lastais
 
 # Waterways toolbar (last two for SE only)
+STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Uiscebhealaí a Thógáil
+STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Uiscebhealaí
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Tóg canálacha.
+STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Tóg loic
+STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Tóg iosta long (le longa a cheannach agus a sheirbhísiú)
+STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Tóg dug long. Is féidir stáisiúin a chur le chéile le Ctrl
+STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Cuir síos baoi is féidir a úsáid mar phointe bealaigh
+STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Tóg uiscerian
 
 # Ship depot construction window
 
