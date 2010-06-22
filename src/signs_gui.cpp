@@ -65,7 +65,9 @@ struct SignList {
 			GetString(buf_cache, STR_SIGN_NAME, lastof(buf_cache));
 		}
 
-		return strcasecmp(buf, buf_cache);
+		int r = strcasecmp(buf, buf_cache);
+
+		return r != 0 ? r : ((*a)->index - (*b)->index);
 	}
 
 	void SortSignsList()
