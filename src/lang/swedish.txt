@@ -2246,6 +2246,12 @@ STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}Ta bort
 STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}Ta bort markerat sparat spel
 STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Spara
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Spara spelet med valt namn
+STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Ladda
+STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Ladda valt spel
+STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Speldetaljer
+STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Ingen information tillgänglig.
+STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
+STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Mata in ett namn för detta sparade spel
 
@@ -2423,6 +2429,12 @@ STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatib
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Saknad GRF fil har stängts av
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Saknad(e) GRF-fil(er)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Avpausning kan krascha OpenTTD. Skicka ej igen bugg-rapport för möjlig krasch.{}Är du säker att du vill avpausa?
+
+# NewGRF status
+STR_NEWGRF_LIST_NONE                                            :Inga
+STR_NEWGRF_LIST_ALL_FOUND                                       :Alla filer finns
+STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Hittade kompatibla filer
+STR_NEWGRF_LIST_MISSING                                         :{RED}Saknade filer
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}'Beteendet hos '{STRING}' kommer troligen orsaka desynkronisering och/eller krascher.
@@ -3334,6 +3346,7 @@ STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Sparfilen är g
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Filen är inte läsbar
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Filen är inte skrivbar
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Integritetskontrollen på datan misslyckades
+STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<not available>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Spelet sparades i en version som ej stöder spårvagn. Alla spårvagnar har tagits bort
 
 # Map generation messages
