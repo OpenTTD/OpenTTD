@@ -1114,7 +1114,9 @@ public:
 		this->BuildVehicleList(this->owner, GB(this->window_number, 16, 16), window_type);
 		this->SortVehicleList();
 
-		if (this->vehicles.Length() == 0) HideDropDownMenu(this);
+		if (this->vehicles.Length() == 0 && this->IsWidgetLowered(VLW_WIDGET_MANAGE_VEHICLES_DROPDOWN)) {
+			HideDropDownMenu(this);
+		}
 
 		/* Hide the widgets that we will not use in this window
 		 * Some windows contains actions only fit for the owner */
