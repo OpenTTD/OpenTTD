@@ -25,6 +25,17 @@ STR_EMPTY                                                       :
 # Cargo related strings
 # Plural cargo name
 STR_CARGO_PLURAL_NOTHING                                        :
+STR_CARGO_PLURAL_MAIL                                           :Почта
+STR_CARGO_PLURAL_GOODS                                          :Таварĕсем
+STR_CARGO_PLURAL_GRAIN                                          :Пĕрчĕ
+STR_CARGO_PLURAL_WOOD                                           :Йывăç
+STR_CARGO_PLURAL_STEEL                                          :Хурçă
+STR_CARGO_PLURAL_FRUIT                                          :Çимеçсем
+STR_CARGO_PLURAL_FOOD                                           :Апат-çимĕçе
+STR_CARGO_PLURAL_GOLD                                           :Ылтăн
+STR_CARGO_PLURAL_WATER                                          :Шыв
+STR_CARGO_PLURAL_WHEAT                                          :Тулă
+STR_CARGO_PLURAL_SUGAR                                          :Сахăр
 
 # Singular cargo name
 STR_CARGO_SINGULAR_NOTHING                                      :
@@ -761,7 +772,8 @@ STR_NOTHING                                                     :
 ##id 0x6000
 STR_SV_EMPTY                                                    :
 
-STR_SV_STNAME                                                   :{STRING1}
+STR_SV_STNAME                                                   :{STRING}
+##id 0x6020
 ############ end of savegame specific region!
 
 ##id 0x8000
@@ -769,15 +781,15 @@ STR_SV_STNAME                                                   :{STRING1}
 
 ##id 0x8800
 # Formatting of some strings
-STR_FORMAT_DATE_TINY                                            :{RAW_STRING}-{RAW_STRING}-{NUM}
+STR_FORMAT_DATE_TINY                                            :{STRING}.{STRING}.{NUM}
 STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
 STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
-STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:RAW_STRING}-{0:RAW_STRING}
+STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
 
 
 
 
-STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING1}
+STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}
 
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})
@@ -820,7 +832,7 @@ STR_JUST_DATE_LONG                                              :{DATE_LONG}
 STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_STRING_SPACE_STRING                                    :{STRING} {STRING}
-STR_JUST_RAW_STRING                                             :{RAW_STRING}
+STR_JUST_RAW_STRING                                             :{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
 STR_BLACK_COMMA                                                 :{BLACK}{COMMA}
@@ -842,7 +854,7 @@ STR_ORANGE_INT                                                  :{ORANGE}{NUM}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
 STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
-STR_BLACK_RAW_STRING                                            :{BLACK}{RAW_STRING}
+STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}

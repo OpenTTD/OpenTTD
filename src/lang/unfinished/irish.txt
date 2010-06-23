@@ -1976,16 +1976,23 @@ STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Tóg ios
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Tóg dug long. Is féidir stáisiúin a chur le chéile le Ctrl
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Cuir síos baoi is féidir a úsáid mar phointe bealaigh
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Tóg uiscerian
+STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Sainigh limistéar uisce.{}Déan canáil, ach amháin má dhéantar Ctrl a choinneáil síos ag leibhéal na farraige. Sa chás sin, déanfar tuilleadh mórthimpeall ina áit
+STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Cuir síos aibhneacha.
 
 # Ship depot construction window
+STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Treosuíomh an Iosta Long
+STR_DEPOT_BUILD_SHIP_ORIENTATION_TOOLTIP                        :{BLACK}Roghnaigh treosuíomh an iosta long
 
 # Dock construction window
+STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Dug
 
 # Airport toolbar
+STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Aerfoirt
 STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Tóg aerfort. Is féidir stáisiúin a chur le chéile le Ctrl
 
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Roghnú Aerfoirt
+STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Rognaigh cineál/méid an aerfoirt
 STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Aicme an aerfoirt
 
 STR_AIRPORT_SMALL                                               :Beag
@@ -1995,10 +2002,12 @@ STR_AIRPORT_INTERNATIONAL                                       :Idirnáisiúnta
 STR_AIRPORT_COMMUTER                                            :Comaitéireachta
 STR_AIRPORT_INTERCONTINENTAL                                    :Idir-ilchríochach
 STR_AIRPORT_HELIPORT                                            :Héileaport
+STR_AIRPORT_HELIDEPOT                                           :Héilea-iosta
 STR_AIRPORT_HELISTATION                                         :Héileastáisiún
 
 STR_AIRPORT_CLASS_SMALL                                         :Aerfoirt bheaga
 STR_AIRPORT_CLASS_LARGE                                         :Aerfoirt mhóra
+STR_AIRPORT_CLASS_HUB                                           :Aerfoirt moil
 STR_AIRPORT_CLASS_HELIPORTS                                     :Aerfoirt héileacaptair
 
 STR_STATION_BUILD_NOISE                                         :{BLACK}Torann a ghintear: {GOLD}{COMMA}
@@ -2034,6 +2043,7 @@ STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Bain na 
 STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Athshocraigh an Tírdhreach
 
 # Town generation window (SE)
+STR_FOUND_TOWN_CAPTION                                          :{WHITE}Bailte a Chruthú
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Baile Nua
 STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Bunaigh baile nua
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Baile Randamach
@@ -2070,6 +2080,7 @@ STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Roghnaig
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :Go leor tionscal randamach
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Clúdaigh an léarscáil le tionscail a chuirtear síos go randamach
 STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Costas: {YELLOW}{CURRENCY}
+STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Dóigh
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Tóg
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Maoinigh
 
@@ -2089,9 +2100,11 @@ STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Comhorda
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Tógtha: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Aicme an stáisiúin: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Cineál stáisiúin: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Ainm tíl aerfoirt: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Lastas a ghlactar leis: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
+STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Teorainn luais iarnróid: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Carraigeacha
@@ -2161,6 +2174,8 @@ STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT                            :Iosta long
 STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :Tollán iarnróid
 STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :Tollán bóthair
 
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :Droichead iarnróid crochta cruach
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEELE                   :Droichead iarnróid cearchaillí cruach
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :Droichead iarnróid cruach starrmhaide
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Droichead iarnróid crochta de choincréit threisithe
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :Droichead iarnróid adhmaid
@@ -2194,7 +2209,9 @@ STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Lódáil
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Sábháil Scéal
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Lódáil Scéal
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Lódáil Mapa airde
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Cliceáil anseo le léim chuig an comhadlann réamhshocraithe sábhála/lódála reatha
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} saor
+STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Liosta na dtiomántán, na gcomhadlann agus na gcomhad cluichí sábháilte
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Ainm atá roghnaithe faoi láthair don chluiche sábháilte
 STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}Scrios
 STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}Scrios an cluiche sábháilte atá roghnaithe faoi láthair
@@ -2217,10 +2234,23 @@ STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Líon na
 STR_MAPGEN_DATE                                                 :{BLACK}Dáta:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Líon na dtionscal:
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Airde na líne sneachta:
+STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Bog airde na líne sneachta suas ceann amháin
+STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Bog airde na líne sneachta síos ceann amháin
+STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Síol randamach:
+STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Cliceáil chun síol randamach a iontráil
+STR_MAPGEN_RANDOM                                               :{BLACK}Déan randamú
+STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Athraigh an síol randamach a úsáidtear chun an Tír-Raon a chruthú
+STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Talamh a chruthú:
+STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algartam na gcrann:
+STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Cineál tír-raoin:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Leibhéal na farraige:
+STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Míne:
+STR_MAPGEN_VARIETY                                              :{BLACK}Éagsúlacht:
 STR_MAPGEN_GENERATE                                             :{WHITE}Cruthaigh
 
 # Strings for map borders at game generation
+STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Taobhanna na léarscáile:
+STR_MAPGEN_NORTHWEST                                            :{BLACK}Iarthuaisceart
 STR_MAPGEN_NORTHEAST                                            :{BLACK}Oirthuaisceart
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}Oirdheisceart
 STR_MAPGEN_SOUTHWEST                                            :{BLACK}Iardheisceart
@@ -2235,6 +2265,8 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Ainm an 
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Méid:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
 
+STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Iontráil síol randamach
+STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Athraigh airde na líne sneachta
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Athraigh an bhliain tosaigh
 
 # SE Map generation
@@ -2243,6 +2275,8 @@ STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Talamh r
 STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Cruthaigh talamh réidh
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Talamh randamach
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Airde na talún réidh:
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Bog airde na talún réidh síos ceann amháin
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Bog airde na talún réidh suas ceann amháin
 
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Athraigh airde na talún réidh
 
@@ -2258,6 +2292,7 @@ STR_GENERATION_TREE_GENERATION                                  :{BLACK}Crainn a
 STR_GENERATION_UNMOVABLE_GENERATION                             :{BLACK}Nithe nach féidir bogadh a chruthú
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Limistear garbh agus carraigeach a chruthú
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Cluiche á chumrú
+STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Lúb tíleanna á rith
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Cluiche á ullmhú
 
 # NewGRF settings
@@ -2299,6 +2334,7 @@ STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Pailéad
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Paraiméadair: {SILVER}{STRING}
 
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Níl aon fhaisnéis ar fáil
+STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Níor aimsíodh comhad a mheaitseálann
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Díchumasaithe
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Iontráil paraiméadair NewGRF
@@ -2335,6 +2371,7 @@ STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Rabhadh: {
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Earráid: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Marfach: {SILVER}{STRING}
 STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Tharla earráid mharfach NewGRF: {}{STRING}
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :Ní oibreoidh {1:STRING} leis an leagan de TTDPatch a thuairiscigh OpenTTD.
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING}: Is don leagan {STRING} de TTD é
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :Tá {1:STRING} deartha le húsáid le {STRING}
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Paraiméadar neamhbhailí le haghaidh {1:STRING}: paraiméadar {STRING} ({NUM})
@@ -2343,6 +2380,7 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :Ní mór {1:STR
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING}: Tá an leagan {STRING} nó níos fearr de OpenTTD de dhíth uaidh
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :an comhad GRF a bhí sé deartha a aistriú
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Tá an iomarca NewGRF lódáilte.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :D'fhéadfaí go mbeidh díshioncronú ann má dhéantar {STRING} a lódáil mar NewGRF statach le {STRING}.
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Sprite gan choinne.
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Airí Gníomh 0 anaithnid.
 STR_NEWGRF_ERROR_INVALID_ID                                     :Iarracht ID neamhbhailí a úsáid.
@@ -2350,7 +2388,9 @@ STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}Tá spr
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Tá iontrálacha Gníomh 8 iolracha ann.
 
 # NewGRF related 'general' warnings
+STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Rabhadh!
 
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Ní féidir comhad a chur leis: ID GRF dúbailte
 
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Comha(i)d GRF ar lár
 
