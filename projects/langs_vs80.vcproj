@@ -377,6 +377,21 @@
 			</FileConfiguration>
 		</File>
 		<File
+			RelativePath="..\src\lang\irish.txt"
+			>
+			<FileConfiguration
+				Name="Debug|Win32"
+				>
+				<Tool
+					Name="VCCustomBuildTool"
+					Description="Generating irish language file"
+					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0&#x0D;&#x0A;"
+					AdditionalDependencies="..\src\lang\english.txt;..\objs\strgen\strgen.exe"
+					Outputs="..\bin\lang\irish.lng"
+				/>
+			</FileConfiguration>
+		</File>
+		<File
 			RelativePath="..\src\lang\italian.txt"
 			>
 			<FileConfiguration
