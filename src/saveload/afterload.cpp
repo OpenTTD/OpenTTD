@@ -431,7 +431,6 @@ bool AfterLoadGame()
 	SetSignalHandlers();
 
 	TileIndex map_size = MapSize();
-	Company *c;
 
 	if (CheckSavegameVersion(98)) GamelogOldver();
 
@@ -500,6 +499,7 @@ bool AfterLoadGame()
 	}
 
 	if (CheckSavegameVersion(84)) {
+		Company *c;
 		FOR_ALL_COMPANIES(c) {
 			c->name = CopyFromOldName(c->name_1);
 			if (c->name != NULL) c->name_1 = STR_SV_UNNAMED;
@@ -803,6 +803,7 @@ bool AfterLoadGame()
 	/* From version 16.0, we included autorenew on engines, which are now saved, but
 	 *  of course, we do need to initialize them for older savegames. */
 	if (CheckSavegameVersion(16)) {
+		Company *c;
 		FOR_ALL_COMPANIES(c) {
 			c->engine_renew_list            = NULL;
 			c->settings.engine_renew        = false;
@@ -1089,6 +1090,7 @@ bool AfterLoadGame()
 	 * replaced, shall keep their old length. In all prior versions, just default
 	 * to false */
 	if (CheckSavegameVersionOldStyle(16, 1)) {
+		Company *c;
 		FOR_ALL_COMPANIES(c) c->settings.renew_keep_length = false;
 	}
 
@@ -1147,8 +1149,12 @@ bool AfterLoadGame()
 
 	YapfNotifyTrackLayoutChange(INVALID_TILE, INVALID_TRACK);
 
-	if (CheckSavegameVersion(34)) FOR_ALL_COMPANIES(c) ResetCompanyLivery(c);
+	if (CheckSavegameVersion(34)) {
+		Company *c;
+		FOR_ALL_COMPANIES(c) ResetCompanyLivery(c);
+	}
 
+	Company *c;
 	FOR_ALL_COMPANIES(c) {
 		c->avail_railtypes = GetCompanyRailtypes(c->index);
 		c->avail_roadtypes = GetCompanyRoadtypes(c->index);

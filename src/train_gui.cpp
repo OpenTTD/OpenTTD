@@ -55,7 +55,7 @@ void CcBuildWagon(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p
  * @param selection Selected vehicle that is dragged.
  * @return The width of the highlight mark.
  */
-static uint HighlightDragPosition(int px, int max_width, VehicleID selection)
+static int HighlightDragPosition(int px, int max_width, VehicleID selection)
 {
 	bool rtl = _dynlang.text_dir == TD_RTL;
 
@@ -108,7 +108,7 @@ void DrawTrainImage(const Train *v, int left, int right, int y, VehicleID select
 	for (; v != NULL && (rtl ? px > 0 : px < max_width); v = v->Next()) {
 		if (dragging && !drag_at_end_of_train && drag_dest == v->index) {
 			/* Highlight the drag-and-drop destination inside the train. */
-			uint drag_hlight_width = HighlightDragPosition(px, max_width, selection);
+			int drag_hlight_width = HighlightDragPosition(px, max_width, selection);
 			px += rtl ? -drag_hlight_width : drag_hlight_width;
 		}
 

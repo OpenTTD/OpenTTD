@@ -104,6 +104,9 @@ struct NIVariable {
 /** Helper class to wrap some functionality/queries in. */
 class NIHelper {
 public:
+	/** Silence a warning. */
+	virtual ~NIHelper() {}
+
 	/**
 	 * Is the item with the given index inspectable?
 	 * @param index the index to check.
