@@ -2263,7 +2263,7 @@ void ShowNetworkNeedPassword(NetworkPasswordType npt)
 		case NETWORK_GAME_PASSWORD:    caption = STR_NETWORK_NEED_GAME_PASSWORD_CAPTION; break;
 		case NETWORK_COMPANY_PASSWORD: caption = STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION; break;
 	}
-	ShowQueryString(STR_EMPTY, caption, 20, 180, w, CS_ALPHANUMERAL, QSF_NONE);
+	ShowQueryString(STR_EMPTY, caption, NETWORK_PASSWORD_LENGTH, 180, w, CS_ALPHANUMERAL, QSF_NONE);
 }
 
 

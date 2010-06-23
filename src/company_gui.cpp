@@ -1982,7 +1982,7 @@ struct CompanyWindow : Window
 					MarkWholeScreenDirty();
 				} else if (NetworkCompanyIsPassworded(company)) {
 					/* ask for the password */
-					ShowQueryString(STR_EMPTY, STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION, 20, 180, this, CS_ALPHANUMERAL, QSF_NONE);
+					ShowQueryString(STR_EMPTY, STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION, NETWORK_PASSWORD_LENGTH, 180, this, CS_ALPHANUMERAL, QSF_NONE);
 				} else {
 					/* just send the join command */
 					NetworkClientRequestMove(company);
