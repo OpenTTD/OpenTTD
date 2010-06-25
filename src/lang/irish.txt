@@ -2391,7 +2391,9 @@ STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Tá iontrálach
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Rabhadh!
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Ní féidir comhad a chur leis: ID GRF dúbailte
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Níor aimsíodh comhad a mheaitseálann (GRF comhoiriúnach lódáilte)
 
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Lódáladh GRF(anna) comhoiriúnacha do na comhaid atá ar lár
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Comha(i)d GRF ar lár
 
 # NewGRF status
@@ -2401,6 +2403,7 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Aimsío
 STR_NEWGRF_LIST_MISSING                                         :{RED}Comhaid ar lár
 
 # NewGRF 'it's broken' warnings
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tá fad neamhbhailí ag '{VEHICLE}' le '{COMPANY}'. Is dócha gur fadhbanna le NewGRFanna is cúis leis. Is féidir go ndíshioncronófar an cluiche nó go gclisfidh sé
 
 STR_NEWGRF_BUGGY                                                :{WHITE}Cuireann an NewGRF '{0:STRING}' faisnéis mícheart ar fáil.
 
@@ -2472,6 +2475,8 @@ STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Tabhair breab d
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Cuir tús le feachtas beag áitiúil fógraíochta, chun tuilleadh paisinéirí agus lastais a mhealladh chuig do sheirbhísí iompair.{}Costas: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Cuir tús le feachtas meánach áitiúil fógraíochta, chun tuilleadh paisinéirí agus lastais a mhealladh chuig do sheirbhísí iompair.{}Costas: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Cuir tús le feachtas mór áitiúil fógraíochta, chun tuilleadh paisinéirí agus lastais a mhealladh chuig do sheirbhísí iompair.{}Costas: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Tóg dealbh le comóradh a dhéanamh ar do chuideachta.{}Costas: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Tabhair maoiniú chun foirgnimh tráchtála nua a thógáil sa bhaile.{}Costas: {CURRENCY}
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Fordheontais
@@ -2626,6 +2631,10 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Táirgte
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Athraigh táirgeacht (iolra de 8, suas go 2040)
 
 # Vehicle lists
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} {P Th Th Th dT T}raein
+STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} {P Fh Fh Fh bhF F}eithicil Bóthair
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} {P "" "" "" "" ""}Long
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} { A A A nA A}erárthach
 
 STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Traenacha - cliceáil ar thraein le faisnéis a fháil
 STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Feithiclí bóthair - cliceáil ar fheithicil le faisnéis a fháil
@@ -2669,6 +2678,7 @@ STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Grúpaí
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Cliceáil le grúpa a chruthú
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Scrios an grúpa roghnaithe
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Athainmnigh an grúpa roghnaithe
+STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Cliceáil chun an grúpa seo a chosaint ón uathionadú uilíoch
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Cuir le feithiclí comhroinnte
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Bain gach feithicil
@@ -2691,17 +2701,23 @@ STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Luas: {G
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Luas: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Costas Coinneála: {GOLD}{CURRENCY}/bl
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Toilleadh: {GOLD}{CARGO} {STRING}
+STR_PURCHASE_INFO_REFITTABLE                                    :(is féidir athfheistiú)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Deartha: {GOLD}{NUM}{BLACK} Saolré: {GOLD}{COMMA} bliain
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Iontaofacht uasta: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Costas: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Meáchan: {GOLD}{WEIGHT_S} ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Costas: {GOLD}{CURRENCY}{BLACK} Luas: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Toilleadh: {GOLD}{CARGO}, {CARGO}
+STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vaigíní faoi Chumhacht: {GOLD}+{POWER}{BLACK} Meáchan: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Is féidir athfheistiú go: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Gach cineál lastais
 STR_PURCHASE_INFO_ALL_BUT                                       :Gach rud seachas {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Iarracht uasta tarraingthe: {GOLD}{FORCE}
 
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Liosta chun feithicil traenach a roghnú - cliceáil ar fheithicil le faisnéis a fháil
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Liosta chun feithicil bóthair a roghnú - cliceáil ar fheithicil le faisnéis a fháil
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Liosta chun long a roghnú - cliceáil ar long le faisnéis a fháil
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Liosta chun aerárthach a roghnú - cliceáil ar aerárthach le faisnéis a fháil
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Ceannaigh Feithicil
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Ceannaigh Feithicil
@@ -2718,7 +2734,15 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Athainmn
 STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}Athainmnigh
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Athainmnigh
 
+STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Athainmnigh an cineál feithicle traenach
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Athainmnigh an cineál feithicle bóthair
+STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Athainmnigh an cineál loinge
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Athainmnigh an cineál aerárthaigh
 
+STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Athainmnigh an cineál feithicle traenach
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Athainmnigh an cineál feithicle bóthair
+STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Athainmnigh an cineál loinge
+STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Athainmnigh an cineál aerárthaigh
 
 # Depot window
 STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
@@ -2726,13 +2750,41 @@ STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
 STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}Athraigh ainm iosta
 STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Athainmnigh iosta
 
+STR_DEPOT_NO_ENGINE                                             :{BLACK}-
+STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} {P fh fh fh bhf f}eithicil{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Feithiclí - cliceáil ar fheithicil le faisnéis a fháil
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Longa - cliceáil ar long le faisnéis a fháil
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Aerárthaigh - cliceáil ar aerárthach le faisnéis a fháil
 
+STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Tarraing feithicil traenach anseo chun í a dhíol
+STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Tarraing feithicil bóthair anseo chun í a dhíol
+STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Tarraing long anseo chun í a dhíol
+STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Tarraing aerárthach anseo chun é a dhíol
 
+STR_DEPOT_DRAG_WHOLE_TRAIN_TO_SELL_TOOLTIP                      :{BLACK}Tarraing inneall traenach anseo chun an traein iomlán a dhíol
 
+STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TOOLTIP                         :{BLACK}Díol gach traein san iosta seo
+STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Díol gach feithicil bóthair san iosta seo
+STR_DEPOT_SELL_ALL_BUTTON_SHIP_TOOLTIP                          :{BLACK}Díol gach long san iosta seo
+STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TOOLTIP                      :{BLACK}Díol gach aerárthach sa haingear
 
+STR_DEPOT_AUTOREPLACE_TRAIN_TOOLTIP                             :{BLACK}Uathionadaigh gach traein san iosta
+STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TOOLTIP                      :{BLACK}Uathionadaigh gach feithicil bóthair san iosta
+STR_DEPOT_AUTOREPLACE_SHIP_TOOLTIP                              :{BLACK}Uathionadaigh gach long san iosta
+STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}Uathionadaigh gach aerárthach sa haingear
 
+STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Feithiclí Nua
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Feithiclí Nua
+STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Longa Nua
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Aerárthaigh Nua
 
+STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Ceannaigh feithicil traenach nua
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Ceannaigh feithicil bóthair nua
+STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Ceannaigh long nua
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Ceannaigh aerárthach nua
 
 STR_DEPOT_CLONE_TRAIN                                           :{BLACK}Clónáil Traein
 STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Clónáil Feithicil
