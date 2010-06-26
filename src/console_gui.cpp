@@ -140,7 +140,10 @@ static void IConsoleClearCommand()
 	SetWindowDirty(WC_CONSOLE, 0);
 }
 
-static inline void IConsoleResetHistoryPos() {_iconsole_historypos = ICON_HISTORY_SIZE - 1;}
+static inline void IConsoleResetHistoryPos()
+{
+	_iconsole_historypos = ICON_HISTORY_SIZE - 1;
+}
 
 
 static const char *IConsoleHistoryAdd(const char *cmd);
@@ -404,7 +407,11 @@ void IConsoleSwitch()
 	MarkWholeScreenDirty();
 }
 
-void IConsoleClose() {if (_iconsole_mode == ICONSOLE_OPENED) IConsoleSwitch();}
+/** Close the in-game console. */
+void IConsoleClose()
+{
+	if (_iconsole_mode == ICONSOLE_OPENED) IConsoleSwitch();
+}
 
 /**
  * Add the entered line into the history so you can look it back

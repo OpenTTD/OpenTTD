@@ -614,7 +614,10 @@ void PrepareTextRefStackUsage(byte numEntries)
 }
 
 /** Stop using the TTDP compatible string code parsing */
-void StopTextRefStackUsage() { _newgrf_textrefstack->used = false; }
+void StopTextRefStackUsage()
+{
+	_newgrf_textrefstack->used = false;
+}
 
 void SwitchToNormalRefStack()
 {
