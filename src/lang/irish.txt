@@ -1402,6 +1402,7 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}An bhfu
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Caimiléireacht
 STR_CHEATS_TOOLTIP                                              :{BLACK}Tugann ticbhoscaí le fios más rud é gur úsáid tú an chaimiléireacht seo roimhe seo
+STR_CHEATS_WARNING                                              :{BLACK}Rabhadh! Tá tú ar tí feall a imirt ar do chomhimreoirí. Coinnigh i gcuimhne nach ndéanfar dearmad go brách ar a leithead de náire.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Méadaigh airgead de {CURRENCY}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Ag imirt mar chuideachta: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Ollscartaire draíochta (bain tionscail, nithe dobhogtha): {ORANGE}{STRING}
@@ -1956,6 +1957,10 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Tóg tol
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Tóg tollán trambhealaigh
 
 # Road depot construction window
+STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Treosuíomh an Iosta Bhóthair
+STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Roghnaigh treosuíomh an iosta feithiclí bóthair
+STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Treosuíomh Iosta Tramanna
+STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Roghnaigh treosuíomh an iosta tramfheithiclí
 
 # Road vehicle station construction window
 STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Treosuíomh Stáisiún Bus
@@ -2041,6 +2046,7 @@ STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Athshocr
 STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Bain na maoine ar fad ar le himreoirí iad ón léarscáil
 
 STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Athshocraigh an Tírdhreach
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}An bhfuil tú cinnte gur mian leat na maoine uile atá faoi úinéireacht imreoirí a bhaint?
 
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Bailte a Chruthú
@@ -2389,11 +2395,13 @@ STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Tá iontrálach
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Rabhadh!
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Tá tú ar tí athruithe a dhéanamh ar chluiche atá ar rith. D'fhéadfadh sé go gclisfidh OpenTTD dá bharr.{}An bhfuil tú cinnte dearfa faoi seo?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Ní féidir comhad a chur leis: ID GRF dúbailte
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Níor aimsíodh comhad a mheaitseálann (GRF comhoiriúnach lódáilte)
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Lódáladh GRF(anna) comhoiriúnacha do na comhaid atá ar lár
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Díchumasaíodh na comha(i)d GRF atá ar lár
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Comha(i)d GRF ar lár
 
 # NewGRF status
@@ -2403,6 +2411,7 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Aimsío
 STR_NEWGRF_LIST_MISSING                                         :{RED}Comhaid ar lár
 
 # NewGRF 'it's broken' warnings
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Athraíonn sé fad na feithicle le haghaidh '{1:ENGINE}' nuair nach bhfuil sé laistigh d'iosta.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tá fad neamhbhailí ag '{VEHICLE}' le '{COMPANY}'. Is dócha gur fadhbanna le NewGRFanna is cúis leis. Is féidir go ndíshioncronófar an cluiche nó go gclisfidh sé
 
 STR_NEWGRF_BUGGY                                                :{WHITE}Cuireann an NewGRF '{0:STRING}' faisnéis mícheart ar fáil.
@@ -2475,8 +2484,10 @@ STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Tabhair breab d
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Cuir tús le feachtas beag áitiúil fógraíochta, chun tuilleadh paisinéirí agus lastais a mhealladh chuig do sheirbhísí iompair.{}Costas: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Cuir tús le feachtas meánach áitiúil fógraíochta, chun tuilleadh paisinéirí agus lastais a mhealladh chuig do sheirbhísí iompair.{}Costas: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Cuir tús le feachtas mór áitiúil fógraíochta, chun tuilleadh paisinéirí agus lastais a mhealladh chuig do sheirbhísí iompair.{}Costas: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Tabhair maoiniú chun atógáil a dhéanamh ar an líonra bóithre uirbeach. Cuirtear isteach go mór ar thrácht ar bhóithre ar feadh suas le 6 mhí.{}Costas: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Tóg dealbh le comóradh a dhéanamh ar do chuideachta.{}Costas: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Tabhair maoiniú chun foirgnimh tráchtála nua a thógáil sa bhaile.{}Costas: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Ceannaigh cearta eisiacha iompair ar feadh bliana sa bhaile seo. Ní cheadóidh údarás an bhaile do phaisinéirí agus lastas ach na stáisiúin atá agatsa a úsáid.{}Costas: {CURRENCY}
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Fordheontais
@@ -2485,6 +2496,7 @@ STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Ceann ar bith -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Seirbhísí a fhaigheann fordheontas:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} a thabhairt ó {STRING} go {STRING}{YELLOW} ({COMPANY}{YELLOW}, go dtí {DATE_SHORT})
+STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Cliceáil ar sheirbhís chun an t-amharc a lárú ar thionscal/bhaile. Déantar amharc nua a oscailt ar shuíomh an tionscail/bhaile le Ctrl+Cliceáil
 
 # Station list window
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Coinnigh síos Ctrl le níos mó ná rud amháin a roghnú
@@ -2563,7 +2575,9 @@ STR_FINANCES_LOAN_TITLE                                         :{WHITE}Iasacht
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Iasacht Uasta: {BLACK}{CURRENCY}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Tabhair ar iasacht{CURRENCY}
+STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Méadaigh méid na hiasachta. Tógtar an oiread agus is féidir a fháil ar iasacht le Ctrl+Cliceáil
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Aisíoc{CURRENCY}
+STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Aisíoc cuid den íosacht. Déantar an oiread agus is féidir den iasacht a aisíoc le Ctrl+Cliceáil
 
 # Company view
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
@@ -2578,12 +2592,14 @@ STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} {P "" "" "" "" ""}long
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Ceann ar bith
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Luach na cuideachta: {WHITE}{CURRENCY}
+STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}(is le {1:COMPANY} {0:COMMA}%)
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Tóg CC
 STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Tóg ceanncheathrú na cuideachta
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Breathanaigh ar CC
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Breathnaigh ar cheanncheathrú na cuideachta
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Athlonnaigh an CC
+STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Tóg ceanncheathrú na cuideachta in áit eile ar chostas 1% de luach na cuideachta
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Aghaigh Nua
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Roghnaigh aghaidh nua don bhainisteoir
@@ -2634,7 +2650,7 @@ STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Athraigh
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} {P Th Th Th dT T}raein
 STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} {P Fh Fh Fh bhF F}eithicil Bóthair
 STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} {P "" "" "" "" ""}Long
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} { A A A nA A}erárthach
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} {P A A A nA A}erárthach
 
 STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Traenacha - cliceáil ar thraein le faisnéis a fháil
 STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Feithiclí bóthair - cliceáil ar fheithicil le faisnéis a fháil
@@ -2647,6 +2663,7 @@ STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}Traenach
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}Feithiclí atá le fáil
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}Longa atá le fáil
 STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Aerárthaigh atá le fáil
+STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Féach liosta de na dearthaí innill atá ar fáil don chineál feithicle seo.
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Bainistigh liosta
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Seol treoracha le gach feithicil sa liosta seo
@@ -2812,10 +2829,23 @@ STR_DEPOT_MASS_STOP_DEPOT_SHIP_TOOLTIP                          :{BLACK}Cliceái
 STR_DEPOT_MASS_STOP_HANGAR_TOOLTIP                              :{BLACK}Cliceáil chun gach aerárthach laistigh den haingear a stopadh
 
 STR_DEPOT_MASS_START_DEPOT_TRAIN_TOOLTIP                        :{BLACK}Cliceáil chun gach traein laistigh den iosta a thosú
+STR_DEPOT_MASS_START_DEPOT_ROAD_VEHICLE_TOOLTIP                 :{BLACK}Cliceáil chun gach feithicil bóthair laistaigh den iosta a thosú
+STR_DEPOT_MASS_START_DEPOT_SHIP_TOOLTIP                         :{BLACK}Cliceáil chun gach long laistigh den iosta a thosú
+STR_DEPOT_MASS_START_HANGAR_TOOLTIP                             :{BLACK}Cliceáil chun gach aerárthach laistigh den haingear a thosú
 
+STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Tá tú ar tí gach feithicil san iosta a dhíol. An bhfuil tú cinnte?
 
 # Engine preview window
+STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Teachtaireacht ó dhéantóir feithiclí
+STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Táimid díreach tar éis {STRING} nua a dhearadh - an mbeadh suim agat úsáid eisiach a bhaint as ar feadh bliana, le go mbeimid in ann a fheiceáil mar a fheidhmíonn sé sula gcuirfimid ar fáil do chách é?
+STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :inneall gluaiste iarnróid
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :feithicil bóthair
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :aerárthach
+STR_ENGINE_PREVIEW_SHIP                                         :long
+STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :inneall gluaiste aonráille
+STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :inneall gluaiste maglev
 
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Cost:as {CURRENCY} Meáchan: {WEIGHT_S}{}Luas: {VELOCITY}  Cumhacht: {POWER}{}Costas Coinneála {CURRENCY}/bl{}Toilleadh: {CARGO}
 
 # Autoreplace window
 
@@ -3005,6 +3035,10 @@ STR_AI_DEBUG                                                    :{WHITE}Dífhabh
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Ainm an AI
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}Socruithe an AI
+STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Briseadh ar:
+STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Briseadh air
+STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Nuair a bheidh teachtaireacht loga AI mar an gcéanna leis an teaghrán seo, cuirtear an cluiche ar sos.
+STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Meaitseáil an cás
 
 
 
@@ -3078,10 +3112,12 @@ STR_ERROR_PNGMAP                                                :{WHITE}Ní féi
 STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... níor aimsíodh an comhad.
 STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... níorbh fhéidir an cineál íomhá a thiontú. íomhá PNG 8 nó 24 giotán ag teastáil.
 
+STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... níorbh fhéidir an cineál íomhá a thiontú.
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Rabhadh faoin scála
 
 # Soundset messages
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Níor aimsíodh ach sraith fuaimeanna tacachumais. Má tá fuaimeanna uait, suiteáil sraith fuaimeanna sa chóras íoslódála inneachair.
 
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Sábháladh an seat scáileáin mar '{STRING}'

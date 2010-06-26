@@ -25,18 +25,29 @@ STR_EMPTY                                                       :
 # Cargo related strings
 # Plural cargo name
 STR_CARGO_PLURAL_NOTHING                                        :
+STR_CARGO_PLURAL_PASSENGERS                                     :Пассажирсем
+STR_CARGO_PLURAL_COAL                                           :Кăмрăк
 STR_CARGO_PLURAL_MAIL                                           :Почта
 STR_CARGO_PLURAL_OIL                                            :Нефть
+STR_CARGO_PLURAL_LIVESTOCK                                      :Выльăх
 STR_CARGO_PLURAL_GOODS                                          :Таварĕсем
 STR_CARGO_PLURAL_GRAIN                                          :Пĕрчĕ
 STR_CARGO_PLURAL_WOOD                                           :Йывăç
+STR_CARGO_PLURAL_IRON_ORE                                       :Тимĕр
 STR_CARGO_PLURAL_STEEL                                          :Хурçă
+STR_CARGO_PLURAL_VALUABLES                                      :Капăрлăх
+STR_CARGO_PLURAL_COPPER_ORE                                     :Пăхăр
+STR_CARGO_PLURAL_MAIZE                                          :Кукуруза
 STR_CARGO_PLURAL_FRUIT                                          :Çимеçсем
+STR_CARGO_PLURAL_DIAMONDS                                       :Капăрлăх
 STR_CARGO_PLURAL_FOOD                                           :Апат-çимĕçе
+STR_CARGO_PLURAL_PAPER                                          :Хут
 STR_CARGO_PLURAL_GOLD                                           :Ылтăн
 STR_CARGO_PLURAL_WATER                                          :Шыв
 STR_CARGO_PLURAL_WHEAT                                          :Тулă
+STR_CARGO_PLURAL_RUBBER                                         :Каучук
 STR_CARGO_PLURAL_SUGAR                                          :Сахăр
+STR_CARGO_PLURAL_TOYS                                           :Теттесем
 STR_CARGO_PLURAL_CANDY                                          :Канфетсем
 STR_CARGO_PLURAL_COLA                                           :Кола
 STR_CARGO_PLURAL_COTTON_CANDY                                   :Сахăр ваткĕ
@@ -67,6 +78,7 @@ STR_CARGO_SINGULAR_PAPER                                        :Хут
 STR_CARGO_SINGULAR_GOLD                                         :Ылтăн
 STR_CARGO_SINGULAR_WATER                                        :Шыв
 STR_CARGO_SINGULAR_WHEAT                                        :Тулă
+STR_CARGO_SINGULAR_RUBBER                                       :Каучук
 STR_CARGO_SINGULAR_SUGAR                                        :Сахăр
 STR_CARGO_SINGULAR_TOY                                          :Тетте
 STR_CARGO_SINGULAR_CANDY                                        :Канфетсем

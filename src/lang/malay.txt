@@ -215,6 +215,9 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
+STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} ka
+STR_UNITS_HEIGHT_SI                                             :{COMMA} m
+
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Masukkan string saringan
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Masukkan kata kunci untuk menyaring senarai
@@ -228,7 +231,8 @@ STR_BUTTON_RENAME                                               :{BLACK}Tukar Na
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Tutup window
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Tajuk tetingkap - seret untuk menggerakkan tetingkap
-STR_TOOLTIP_SHADE                                               :{BLACK}Mampatkan tetingkap - Hanya titlebar akan dipaparkan
+STR_TOOLTIP_SHADE                                               :{BLACK}Mampatkan tetingkap - paparkan titlebar sahaja
+STR_TOOLTIP_DEBUG                                               :{BLACK}Paparkan maklumat nyahpepijat NewGRF
 STR_TOOLTIP_STICKY                                              :{BLACK} Tandakan tetingkap ini sebagai tidak boleh ditutup dengan menggunakan kunci 'Padamkan Semua Tetingkap'
 STR_TOOLTIP_RESIZE                                              :{BLACK}Klik dan seret untuk mengubah saiz tetingkap
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Tukar di antara tetingkap bersaiz besar/kecil
@@ -439,6 +443,7 @@ STR_ABOUT_MENU_AI_DEBUG                                         :AI debug
 STR_ABOUT_MENU_SCREENSHOT                                       :Tangkap gambar skrin (Ctrl-S)
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Tangkap gambar skrin besar (Ctrl+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Tentang 'OpenTTD'
+STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Penjajar peperi
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -560,11 +565,11 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Wang:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Pinjaman:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Jumlah:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Jumlah kenderaan yang meraih keuntungan pada tahun lepas; ini termasuk kenderaan jalanraya, keretapi, kapal dan pesawat
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Jumlah kenderaan yang meraih keuntungan pada tahun lepas. Ini termasuk kenderaan jalan raya, keretapi, kapal dan pesawat
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Jumlah bahagian stesen yang diservis. Setiap bahagian stesen (contohnya: stesen keretapi, stesen bas, lapangan terbang) termasuk kira, walaupun semuanya disambungkan menjadi satu stesen
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Keuntungan kenderaan yang mempunyai pendapatan terendah (hanya kenderaan yang berumur lebih daripada dua tahun termasuk kira)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Jumlah wang yang masuk dalam sebulan dengan keuntungan terendah dalam 12 suku tahun yang lepas
-STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Jumlah wang yang masuk dalam sebulan dengan keuntungan tertinggi dalam 12 suku tahun yang lepas
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Jumlah wang keuntungan dalam suku tahun dengan keuntungan tertinggi dalam 12 suku tahun yang lepas
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Unit-unit kargo yang dihantar dalam 4 suku tahun yang lepas
 STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Jumlah jenis kargo yang dihantar dalam suku tahun yang lepas
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Jumlah wang syarikat ini mempunyai dalam bank
@@ -682,7 +687,7 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLAC
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}Salji
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Papar atau padamkan nama bandar dalam peta
-STR_SMALLMAP_CENTER                                             :{BLACK}Pusatkan peta kecil ke tempat semasa
+STR_SMALLMAP_CENTER                                             :{BLACK}Tengahkan peta kecil ke tempat semasa
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Nyahaktifkan semua
@@ -1078,7 +1083,7 @@ STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Model p
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Asal
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistik
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Kecerunan bukit untuk keretapi {ORANGE}{STRING}%
-STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Halangkan keretapi dan kapal daripada membuat pusingan 90 darjah: {ORANGE}{STRING} {LTBLUE} (not with NTP)
+STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Halangkan keretapi dan kapal daripada membuat pusingan 90 darjah: {ORANGE}{STRING} {LTBLUE} (bukan dengan OPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Sambungkan stesen keretapi yang dibina bersebelahan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Benarkan penyambungan stesen yang tidak bersebelahan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Gunakan algoritma muatan yang diperbaiki: {ORANGE}{STRING}
@@ -1454,7 +1459,7 @@ STR_FACE_SIMPLE                                                 :{BLACK}Mudah
 STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Pilihan wajah mudah.
 STR_FACE_LOAD                                                   :{BLACK}Buka
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Buka wajah kegemaran anda
-STR_FACE_LOAD_DONE                                              :{WHITE}Wajah kegemaran anda telah dibuka daripada fail config OpenTTD.
+STR_FACE_LOAD_DONE                                              :{WHITE}Wajah kegemaran anda telah dimuat daripada fail config OpenTTD.
 STR_FACE_FACECODE                                               :{BLACK}Wajah pemain no.
 STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Pandang dan/atau tetapkan nombor wajah pemain
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}Pandang dan/atau tetapkan nombor wajah pemain
@@ -1462,11 +1467,11 @@ STR_FACE_FACECODE_SET                                           :{WHITE}Kod baru
 STR_FACE_FACECODE_ERR                                           :{WHITE}Tidak dapat menetapkan nombor wajah pemain - nombor mesti di antara 0 dan 4,294,967,295!
 STR_FACE_SAVE                                                   :{BLACK}Simpan
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Simpan wajah kegemaran anda
-STR_FACE_SAVE_DONE                                              :{WHITE}Wajah ini akan disimpankan sebagai kegemaran anda dalam fail config OpenTTD.
+STR_FACE_SAVE_DONE                                              :{WHITE}Wajah ini akan disimpan sebagai wajah kegemaran anda dalam fail config OpenTTD.
 STR_FACE_EUROPEAN                                               :{BLACK}Eropah
-STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Pilih wajah eropah
+STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Pilih wajah orang Eropah
 STR_FACE_AFRICAN                                                :{BLACK}Afrika
-STR_FACE_SELECT_AFRICAN                                         :{BLACK}Pilih wajah afrika
+STR_FACE_SELECT_AFRICAN                                         :{BLACK}Pilih wajah orang Afrika
 STR_FACE_YES                                                    :Ya
 STR_FACE_NO                                                     :Tidak
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Benarkan misai atau anting-anting
@@ -1524,7 +1529,7 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Klik unt
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}MAKLUMAT PERMAINAN
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Klien: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Bahasa: {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Setpetak (Tileset): {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Pandangan darat: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Saiz peta: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Versi pelayan: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Alamat pelayan: {WHITE}{STRING}
@@ -1742,7 +1747,7 @@ STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :sambungan terpu
 STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :kesilapan protokol
 STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :NewGRF tidak berpadanan
 STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :tiada kebenaran
-STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :paket yang ganjil telah diterima
+STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :paket yang tidak sah atau tidak diduga telah diterima
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :versi yang salah
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :nama sudah digunakan
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :kata laluan salah
@@ -1760,7 +1765,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Permainan masih
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Permainan masih dihentikan ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Permainan masih dihentikan ({STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Permainan bersambung ({STRING})
-STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :pemain tidak mencukupi
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :jumlah pemain
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :menyambungkan klien
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :manual
 ############ End of leave-in-this-order
@@ -1913,13 +1918,13 @@ STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Pilihan 
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Isyarat blok (semafor){}Isyarat terasas, membenarkan yang hanya satu keretapi sahaja berada di dalam blok pada satu-satu masa.
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Isyarat-Masuk (semafor){}Hijau selagi terdapat satu atau lebih isyarat-keluar di seksyen landasan seterusnya. Jika tiada ianya merah.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Isyarat-Keluar (semafor){}Sama seperti isyarat blok tetapi ianya penting untuk mencetuskan warna yang betul pada isyarat-masuk & pra-isyarat kombo.
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Isyarat-Kombo (semafor){}Isyarat kombo boleh dijadikan sebagai isyarat keluar dan masuk. Ini membenarkan anda membina banyak cabang menggunakan pra-isyarat.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Isyarat-Kombo (semafor){}Isyarat kombo boleh dijadikan sebagai isyarat keluar dan masuk. Ini membenarkan anda membina banyak cabangan pra-isyarat.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Isyarat Laluan (semafor){}Isyarat laluan membenarkan lebih daripada satu keretapi memasuki blok isyarat pada masa yang sama, jika keretapi itu boleh menempah laluan ke tempat berhenti yang selamat. Isyarat laluan biasa boleh diberi dari belah belakang.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Isyarat Laluan Sehala (semafor){}Isyarat laluan sehala membenarkan lebih daripada satu keretapi memasuki blok isyarat pada masa yang sama, jika keretapi itu boleh menempah laluan ke tempat berhenti yang selamat. Isyarat laluan biasa tidak boleh diberi dari belah belakang.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Isyarat blok (elektrik){}Isyarat terasas, membenarkan yang hanya satu keretapi sahaja berada di dalam blok pada satu-satu masa.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Isyarat-Masuk (elektrik){}Hijau selagi terdapat satu atau lebih isyarat-keluar di seksyen landasan seterusnya. Jika tiada ianya merah.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Isyarat-Keluar (elektrik){}Sama seperti isyarat blok tetapi ianya penting untuk mencetuskan warna yang betul pada isyarat-masuk & pra-isyarat kombo.
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Isyarat-Kombo (elektrik){}Isyarat kombo boleh dijadikan sebagai isyarat keluar dan masuk. Ini membenarkan anda membina banyak cabang menggunakan pra-isyarat.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Isyarat-Kombo (elektrik){}Isyarat kombo boleh dijadikan sebagai isyarat keluar dan masuk. Ini membenarkan anda membina banyak cabangan pra-isyarat.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Isyarat Laluan (elektrik){}Isyarat laluan membenarkan lebih daripada satu keretapi memasuki blok isyarat pada masa yang sama, jika keretapi itu boleh menempah laluan ke tempat berhenti yang selamat. Isyarat laluan biasa boleh diberi dari belah belakang.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Isyarat Laluan Sehala (semafor){}Isyarat laluan sehala membenarkan lebih daripada satu keretapi memasuki blok isyarat pada masa yang sama, jika keretapi itu boleh menempah laluan ke tempat berhenti yang selamat. Isyarat laluan biasa tidak boleh diberi dari belah belakang.
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Gantikan isyarat{}Apabila dipilih, isyarat yang diklik akan digantikan dengan jenis isyarat yang dipilih, Ctrl+Klik akan menukar di antara variannya.
@@ -2150,7 +2155,7 @@ STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Landasan kereta
 STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Depot keretapi
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Jalanraya
-STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Jalanraya berlampu
+STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Jalan raya berlampu
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Jalanraya dibarisi pokok
 STR_LAI_ROAD_DESCRIPTION_ROAD_VEHICLE_DEPOT                     :Depoh kenderaan jalanraya
 STR_LAI_ROAD_DESCRIPTION_ROAD_RAIL_LEVEL_CROSSING               :Jalanraya/lintasan keretapi
@@ -2227,6 +2232,12 @@ STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}Padam
 STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}Padam permainan tersimpan yang kini terpilih
 STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Simpan
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Simpan permainan semasa, menggunakan nama yang terpilih
+STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Buka
+STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Buka permainan yang terpilih
+STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Butiran Permainan
+STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Tiada maklumat.
+STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
+STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Masukkan nama untuk simpanan permainan
 
@@ -2301,6 +2312,10 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Permaina
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Tetapan NewGRF
+STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Maklumat NewGRF terperinci
+STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Fail NewGRF yang aktif
+STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Fail NewGRF yang tidak aktif
+STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Pilih praset:
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}String saringan:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Buka pratetapan yang dipilih
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Simpan pratetapan
@@ -2340,6 +2355,32 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Dinyahakti
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Masukkan parameter NewGRF
 
+# NewGRF inspect window
+STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Periksa - {STRING}
+STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Ibu
+STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Periksa objek itu yang dalam skop ibu
+
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} di {HEX}
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Jenis landasan
+
+STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Pemboleh ubah NewGRF, parameter 60+x (hexadecimal)
+
+# Sprite aligner window
+STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Megalih peperi {COMMA} ({STRING})
+STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Peperi seterusnya
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Teruskan ke peperi seterusan yang biasa, melangkau sebarang peperi pseudo/warna kembali/fon dan memusing balik semula
+STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Pergi ke peperi
+STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Pergi ke peperi yang diberi. Kalau peperi itu bukan peperi normal, teruskan ke peperi normal.
+STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Peperi sebelumnya
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Teruskan ke peperi dahulu yang biasa, melangkau sebarang peperi pseudo/warna kembali/fon dan memusing balik semula
+STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Perwakilan peperi yang terpilih. Penjajaran tidak diendahkan apabila sedang melukiskan peperi.
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Alih peperi, mengubahkan ofset X dan Y
+STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X ofset: {NUM}, Y ofset: {NUM}
+STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Pilih peperi
+STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Pilih peperi di mana-mana sahaja dari skrin
+
+STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Pergi ke peperi
+
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Amaran: {SILVER}{STRING}
@@ -2356,16 +2397,16 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} meme
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :fail GRF yang ianya direka untuk menterjemah
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Terlalu banyak NewGRF dimuatkan.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Memuatkan {STRING} sebagai NewGRF statik dengan {STRING} mungkin boleh menyebabkan kesilapan sinkronisasi (desync).
-STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Sprite yang tidak disangka.
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Peperi yang tidak disangka.
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Unknown Action 0 property.
 STR_NEWGRF_ERROR_INVALID_ID                                     :Percubaan menggunakan ID yang tidak sah.
-STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} mengandungi sprite yang rosak. Semua sprite yang rosak akan dipaparkan menggunakan tanda soal (?) merah.
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} mengandungi peperi yang rosak. Semua peperi yang rosak akan dipaparkan menggunakan tanda soal (?) merah.
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Contains multiple Action 8 entries.
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Pembacaan melebihi hujung pseudo-sprite.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Amaran!
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Anda akan melakukan perubahan kepada permainan yang sedang berjalan; ini akan menyebabkan OpenTTD crash.{}Pastikah anda ingin lakukan?
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Anda akan melakukan perubahan kepada permainan yang sedang berjalan. Ini boleh menyebabkan crash OpenTTD.{}Pastikah anda ingin lakukan tersebut?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Tidak boleh menambah fail: GRF ID berduplikat
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Fail berpadanan tidak dijumpai (GRF yang secocok telah dimuat)
@@ -2375,6 +2416,12 @@ STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Fail GRF
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Fail GRF tidak dijumpai
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Unpausing can crash OpenTTD. Do not file bug reports for subsequent crashes.{}Do you really want to unpause?
 
+# NewGRF status
+STR_NEWGRF_LIST_NONE                                            :Tiada
+STR_NEWGRF_LIST_ALL_FOUND                                       :Ada semua fail-fail
+STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Menjumpai fail serasi
+STR_NEWGRF_LIST_MISSING                                         :{RED}Kehilangan fail-fail
+
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Kelakuan NewGRF '{0:STRING}' boleh menyebabkan desync dan/atau crash.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Ianya menukar kepanjangan kenderaan untuk '{1:ENGINE}' di luar depoh.
@@ -2383,6 +2430,13 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Keretapi
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' menyediakan maklumat yang salah.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Maklumat kargo/pengubahsuaian untuk '{1:ENGINE}' berbeza daripada senarai pembelian selepas dibina. Ini mungkin akan menyebabkan pembaharuan/penggantian automatik gagal diubahsuai dengan betul.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' caused an endless loop in the production callback.
+
+# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+STR_NEWGRF_INVALID_CARGO                                        :<kargo tidak sah>
+STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
+STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} dari <kargo tidak benar>
+STR_NEWGRF_INVALID_ENGINE                                       :<enjin tidak sah>
+STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<industry tidak sah>
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Senarai Papan Tanda - {COMMA} Papan Tanda
@@ -2523,7 +2577,7 @@ STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Pembinaan
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Kenderaan Baru
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Kos Pengendalian Keretapi
-STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Kos Pengendalian Kend. Jalan
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Kos Menjalankan Kenderaan
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Kos Pengendalian Pesawat
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Kos Pengendalian Kapal
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Penyelenggaraan Hartanah
@@ -2731,6 +2785,10 @@ STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Namakan 
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Namakan semula jenis pesawat
 
 # Depot window
+STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
+
+STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}Tukar nama depoh
+STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Namakan semula depoh
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -2860,7 +2918,17 @@ STR_VEHICLE_STATUS_NO_ORDERS                                    :{LTBLUE}Tiada p
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Tiada perintah, {VELOCITY}
 
 
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE}Menuju ke {DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Menuju ke {DEPOT}, {VELOCITY}
 
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}Servis di {DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Servis di {DEPOT}, {VELOCITY}
+
+# Vehicle stopped/started animations
+STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Berhenti
+STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Berhenti
+STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINYFONT}{GREEN}Mula
+STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Sudah Mula
 
 # Vehicle details
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Nama
@@ -2952,6 +3020,13 @@ STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Kenderaa
 # AI debug window
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}Tetapan AI
+STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Putusan on:
+STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}On Putus
+STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Apabila log mesej AI memadan dengan rentetan ini, pemainan akan menjeda.
+STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Pemadanan kes
+STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Togol pemadanan apabila membandingkan log mesej AI dengan rententan putu
+STR_AI_DEBUG_CONTINUE                                           :{BLACK}Sambung
+STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Keluar jeda dan menyambung AI
 
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... AIs tidak sedia ada!
 
@@ -3014,6 +3089,7 @@ STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Simpanan permai
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Fail tidak boleh dibaca
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Fail tidak boleh ditulis
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Pemeriksaan ketulusan data gagal
+STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<tidak terdapat>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Permainan ini telah disimpan dengan versi yang tidak mempunyai sokongan trem. Semua trem telah dibuang.
 
 # Map generation messages
@@ -3175,6 +3251,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Depoh ke
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Depoh trem tidak dapat dibina di sini...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Depoh kapal tidak dapat dibina di sini...
 
+STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Nama depoh tidak dapat ditukar...
+
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Keretapi mesti dihentikan di dalam depoh
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... mesti dihentikan di dalam depoh kenderaan jalanraya
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Kapal mesti dihentikan di dalam depoh
@@ -3231,6 +3309,7 @@ STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Akueduk 
 
 # Tree related errors
 STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... sudah ada pokok di sini
+STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... salah jenis bumi untuk jenis pokok ini
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Pokok tidak dapat ditanam di sini...
 
 # Bridge related errors
@@ -3241,6 +3320,7 @@ STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Kedua-du
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Jambatan terlalu rendah untuk rupa bumi ini
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Mula dan hujung mesti pada garisan yang sama
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... kedua-dua kepala jambatan mesti berada di atas tanah
+STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... jambatan telalu panjang
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Terowong tidak dapat dibina di sini...
@@ -3313,6 +3393,7 @@ STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Pesawat 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Terlalu banyak kenderaan dalam permainan
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Tidak boleh tukar tempoh perkhidmatan...
 
+STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... kenderaan sudah musnah
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Keretapi tidak boleh melanggar isyarat kerana terdapat kemungkinan bahaya...
@@ -3350,6 +3431,9 @@ STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... papa
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Papan tanda tidak dapat diletak di sini...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Nama papan tanda tidak dapat ditukar...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Papan tanda tidak dapat dibuang...
+
+# Translatable comment for OpenTTD's desktop shortcut
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Klon Transport Tycoon Deluxe
 
 ##id 0x2000
 # Town building names
@@ -3741,6 +3825,14 @@ STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 STR_FORMAT_WAYPOINT_NAME                                        :{TOWN} Tandatuju
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN} Tandatuju #{COMMA}
 
+STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} Depoh Kereta Api
+STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} Depoh Kereta Api #{COMMA}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} Depoh Keneraan
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} Depoh Kenderaan #{COMMA}
+STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} Depoh Kapal
+STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} Depoh Kapal #{COMMA}
+STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{STATION} Hangar
+
 STR_UNKNOWN_STATION                                             :stesen tidak diketahui
 STR_DEFAULT_SIGN_NAME                                           :Papan tanda
 STR_COMPANY_SOMEONE                                             :seseorang
@@ -3766,6 +3858,7 @@ STR_VIEWPORT_WAYPOINT_TINY                                      :{TINYFONT}{WAYP
 # Simple strings to get specific types of data
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
+STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}
@@ -3814,6 +3907,7 @@ STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
+STR_TINY_BLACK_HEIGHT                                           :{TINYFONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
@@ -3830,3 +3924,4 @@ STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
+
