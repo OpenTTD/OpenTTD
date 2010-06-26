@@ -42,7 +42,6 @@
 #endif /* ENABLE_NETWORK */
 
 /* scriptfile handling */
-static FILE *_script_file;
 static bool _script_running;
 
 /* console command defines */
@@ -871,16 +870,16 @@ DEF_CONSOLE_CMD(ConExec)
 
 	if (argc < 2) return false;
 
-	_script_file = FioFOpenFile(argv[1], "r", BASE_DIR);
+	FILE *script_file = FioFOpenFile(argv[1], "r", BASE_DIR);
 
-	if (_script_file == NULL) {
+	if (script_file == NULL) {
 		if (argc == 2 || atoi(argv[2]) != 0) IConsoleError("script file not found");
 		return true;
 	}
 
 	_script_running = true;
 
-	while (_script_running && fgets(cmdline, sizeof(cmdline), _script_file) != NULL) {
+	while (_script_running && fgets(cmdline, sizeof(cmdline), script_file) != NULL) {
 		/* Remove newline characters from the executing script */
 		for (cmdptr = cmdline; *cmdptr != '\0'; cmdptr++) {
 			if (*cmdptr == '\n' || *cmdptr == '\r') {
@@ -891,11 +890,11 @@ DEF_CONSOLE_CMD(ConExec)
 		IConsoleCmdExec(cmdline);
 	}
 
-	if (ferror(_script_file))
+	if (ferror(script_file))
 		IConsoleError("Encountered errror while trying to read from script file");
 
 	_script_running = false;
-	FioFCloseFile(_script_file);
+	FioFCloseFile(script_file);
 	return true;
 }
 
