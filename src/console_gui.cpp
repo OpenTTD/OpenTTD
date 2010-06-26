@@ -168,7 +168,7 @@ static const WindowDesc _console_window_desc(
 struct IConsoleWindow : Window
 {
 	static int scroll;
-	int line_height;
+	int line_height;   ///< Height of one line of text in the console.
 	int line_offset;
 
 	IConsoleWindow() : Window()
@@ -375,6 +375,7 @@ void IConsoleGUIFree()
 	IConsoleClearBuffer();
 }
 
+/** Change the size of the in-game console window after the screen size changed, or the window state changed. */
 void IConsoleResize(Window *w)
 {
 	switch (_iconsole_mode) {
@@ -392,6 +393,7 @@ void IConsoleResize(Window *w)
 	MarkWholeScreenDirty();
 }
 
+/** Toggle in-game console between opened and closed. */
 void IConsoleSwitch()
 {
 	switch (_iconsole_mode) {

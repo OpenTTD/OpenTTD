@@ -14,7 +14,7 @@
 
 #include "company_type.h"
 
-/* List of different livery schemes. */
+/** List of different livery schemes. */
 enum LiveryScheme {
 	LS_BEGIN = 0,
 	LS_DEFAULT = 0,
@@ -57,7 +57,7 @@ enum LiveryScheme {
 DECLARE_POSTFIX_INCREMENT(LiveryScheme)
 template <> struct EnumPropsT<LiveryScheme> : MakeEnumPropsT<LiveryScheme, byte, LS_BEGIN, LS_END, LS_END, 8> {};
 
-/* List of different livery classes, used only by the livery GUI. */
+/** List of different livery classes, used only by the livery GUI. */
 enum LiveryClass {
 	LC_OTHER,
 	LC_RAIL,

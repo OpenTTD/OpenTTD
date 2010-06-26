@@ -42,7 +42,7 @@
 #endif /* ENABLE_NETWORK */
 
 /* scriptfile handling */
-static bool _script_running;
+static bool _script_running; ///< Script is running (used to abort execution when #ConReturn is encountered).
 
 /* console command defines */
 #define DEF_CONSOLE_CMD(function) static bool function(byte argc, char *argv[])

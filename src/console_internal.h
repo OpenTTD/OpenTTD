@@ -60,8 +60,8 @@ struct IConsoleAlias {
 };
 
 /* console parser */
-extern IConsoleCmd   *_iconsole_cmds;    ///< list of registred commands
-extern IConsoleAlias *_iconsole_aliases; ///< list of registred aliases
+extern IConsoleCmd   *_iconsole_cmds;    ///< List of registered commands.
+extern IConsoleAlias *_iconsole_aliases; ///< List of registered aliases.
 
 /* console functions */
 void IConsoleClearBuffer();

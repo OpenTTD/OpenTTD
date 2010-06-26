@@ -12,12 +12,14 @@
 #ifndef CONSOLE_TYPE_H
 #define CONSOLE_TYPE_H
 
+/** Modes of the in-game console. */
 enum IConsoleModes {
-	ICONSOLE_FULL,
-	ICONSOLE_OPENED,
-	ICONSOLE_CLOSED
+	ICONSOLE_FULL,   ///< In-game console is closed.
+	ICONSOLE_OPENED, ///< In-game console is opened, upper 1/3 of the screen.
+	ICONSOLE_CLOSED  ///< In-game console is opened, whole screen.
 };
 
+/** Colours of the console messages. */
 enum ConsoleColour {
 	CC_DEFAULT =  1,
 	CC_ERROR   =  3,
