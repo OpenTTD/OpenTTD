@@ -386,9 +386,6 @@ static void IConsoleAliasExec(const IConsoleAlias *alias, byte tokencount, char 
  */
 void IConsoleCmdExec(const char *cmdstr)
 {
-	IConsoleCmd   *cmd    = NULL;
-	IConsoleAlias *alias  = NULL;
-
 	const char *cmdptr;
 	char *tokens[ICON_TOKEN_COUNT], tokenstream[ICON_MAX_STREAMSIZE];
 	uint t_index, tstream_i;
@@ -463,7 +460,7 @@ void IConsoleCmdExec(const char *cmdstr)
 	 * First try commands, then aliases. Execute
 	 * the found action taking into account its hooking code
 	 */
-	cmd = IConsoleCmdGet(tokens[0]);
+	IConsoleCmd *cmd = IConsoleCmdGet(tokens[0]);
 	if (cmd != NULL) {
 		ConsoleHookResult chr = (cmd->hook == NULL ? CHR_ALLOW : cmd->hook(true));
 		switch (chr) {
@@ -479,7 +476,7 @@ void IConsoleCmdExec(const char *cmdstr)
 	}
 
 	t_index--;
-	alias = IConsoleAliasGet(tokens[0]);
+	IConsoleAlias *alias = IConsoleAliasGet(tokens[0]);
 	if (alias != NULL) {
 		IConsoleAliasExec(alias, t_index, &tokens[1]);
 		return;

@@ -860,9 +860,6 @@ DEF_CONSOLE_CMD(ConNetworkConnect)
 
 DEF_CONSOLE_CMD(ConExec)
 {
-	char cmdline[ICON_CMDLN_SIZE];
-	char *cmdptr;
-
 	if (argc == 0) {
 		IConsoleHelp("Execute a local script file. Usage: 'exec <script> <?>'");
 		return true;
@@ -879,9 +876,10 @@ DEF_CONSOLE_CMD(ConExec)
 
 	_script_running = true;
 
+	char cmdline[ICON_CMDLN_SIZE];
 	while (_script_running && fgets(cmdline, sizeof(cmdline), script_file) != NULL) {
 		/* Remove newline characters from the executing script */
-		for (cmdptr = cmdline; *cmdptr != '\0'; cmdptr++) {
+		for (char *cmdptr = cmdline; *cmdptr != '\0'; cmdptr++) {
 			if (*cmdptr == '\n' || *cmdptr == '\r') {
 				*cmdptr = '\0';
 				break;
@@ -1246,8 +1244,6 @@ DEF_CONSOLE_CMD(ConScreenShot)
 
 DEF_CONSOLE_CMD(ConInfoCmd)
 {
-	const IConsoleCmd *cmd;
-
 	if (argc == 0) {
 		IConsoleHelp("Print out debugging information about a command. Usage: 'info_cmd <cmd>'");
 		return true;
@@ -1255,7 +1251,7 @@ DEF_CONSOLE_CMD(ConInfoCmd)
 
 	if (argc < 2) return false;
 
-	cmd = IConsoleCmdGet(argv[1]);
+	const IConsoleCmd *cmd = IConsoleCmdGet(argv[1]);
 	if (cmd == NULL) {
 		IConsoleError("the given command was not found");
 		return true;
@@ -1355,14 +1351,12 @@ DEF_CONSOLE_CMD(ConHelp)
 
 DEF_CONSOLE_CMD(ConListCommands)
 {
-	const IConsoleCmd *cmd;
-
 	if (argc == 0) {
 		IConsoleHelp("List all registered commands. Usage: 'list_cmds [<pre-filter>]'");
 		return true;
 	}
 
-	for (cmd = _iconsole_cmds; cmd != NULL; cmd = cmd->next) {
+	for (const IConsoleCmd *cmd = _iconsole_cmds; cmd != NULL; cmd = cmd->next) {
 		if (argv[1] == NULL || strstr(cmd->name, argv[1]) != NULL) {
 			if (cmd->hook == NULL || cmd->hook(false) != CHR_HIDE) IConsolePrintF(CC_DEFAULT, "%s", cmd->name);
 		}
@@ -1373,14 +1367,12 @@ DEF_CONSOLE_CMD(ConListCommands)
 
 DEF_CONSOLE_CMD(ConListAliases)
 {
-	const IConsoleAlias *alias;
-
 	if (argc == 0) {
 		IConsoleHelp("List all registered aliases. Usage: 'list_aliases [<pre-filter>]'");
 		return true;
 	}
 
-	for (alias = _iconsole_aliases; alias != NULL; alias = alias->next) {
+	for (const IConsoleAlias *alias = _iconsole_aliases; alias != NULL; alias = alias->next) {
 		if (argv[1] == NULL || strstr(alias->name, argv[1]) != NULL) {
 			IConsolePrintF(CC_DEFAULT, "%s => %s", alias->name, alias->cmdline);
 		}
@@ -1411,8 +1403,6 @@ DEF_CONSOLE_CMD(ConSay)
 
 DEF_CONSOLE_CMD(ConCompanies)
 {
-	Company *c;
-
 	if (argc == 0) {
 		IConsoleHelp("List the in-game details of all clients connected to the server. Usage 'companies'");
 		return true;
@@ -1420,6 +1410,7 @@ DEF_CONSOLE_CMD(ConCompanies)
 	NetworkCompanyStats company_stats[MAX_COMPANIES];
 	NetworkPopulateCompanyStats(company_stats);
 
+	Company *c;
 	FOR_ALL_COMPANIES(c) {
 		/* Grab the company name */
 		char company_name[NETWORK_COMPANY_NAME_LENGTH];
