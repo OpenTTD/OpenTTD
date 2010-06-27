@@ -300,7 +300,8 @@ char *md5sumToString(char *buf, const char *last, const uint8 md5sum[16])
 /* UTF-8 handling routines */
 
 
-/* Decode and consume the next UTF-8 encoded character
+/**
+ * Decode and consume the next UTF-8 encoded character.
  * @param c Buffer to place decoded character.
  * @param s Character stream to retrieve character from.
  * @return Number of characters in the sequence.
@@ -339,7 +340,8 @@ size_t Utf8Decode(WChar *c, const char *s)
 }
 
 
-/* Encode a unicode character and place it in the buffer
+/**
+ * Encode a unicode character and place it in the buffer.
  * @param buf Buffer to place character.
  * @param c   Unicode character to encode.
  * @return Number of characters in the encoded sequence.

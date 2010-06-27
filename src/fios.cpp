@@ -84,9 +84,11 @@ StringID FiosGetDescText(const char **path, uint64 *total_free)
 	return FiosGetDiskFreeSpace(*path, total_free) ? STR_SAVELOAD_BYTES_FREE : STR_ERROR_UNABLE_TO_READ_DRIVE;
 }
 
-/* Browse to a new path based on the passed FiosItem struct
- * @param *item FiosItem object telling us what to do
- * @return a string if we have given a file as a target, otherwise NULL */
+/**
+ * Browse to a new path based on the passed \a item.
+ * @param *item #FiosItem object telling us what to do.
+ * @return A string if we have given a file as a target, otherwise \c NULL.
+ */
 const char *FiosBrowseTo(const FiosItem *item)
 {
 	char *path = _fios_path;

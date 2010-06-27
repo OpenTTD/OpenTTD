@@ -410,7 +410,8 @@ static Vehicle *EnsureNoVehicleProcZ(Vehicle *v, void *data)
 	return v;
 }
 
-/* Ensure there is no vehicle at the ground at the given position.
+/**
+ * Ensure there is no vehicle at the ground at the given position.
  * @param tile Position to examine.
  * @return Succeeded command (ground is free) or failed command (a vehicle is found).
  */

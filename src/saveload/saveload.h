@@ -20,6 +20,7 @@
 
 #define SIZE_MAX ((size_t)-1)
 
+/** Save or load result codes. */
 enum SaveOrLoadResult {
 	SL_OK     = 0, ///< completed successfully
 	SL_ERROR  = 1, ///< error that was caught before internal structures were modified
@@ -36,6 +37,7 @@ enum SaveOrLoadMode {
 	SL_LOAD_CHECK =  5,
 };
 
+/** Types of save games. */
 enum SavegameType {
 	SGT_TTD,    ///< TTD  savegame (can be detected incorrectly)
 	SGT_TTDP1,  ///< TTDP savegame ( -//- ) (data at NW border)
@@ -276,19 +278,23 @@ static inline bool SlIsObjectCurrentlyValid(uint16 version_from, uint16 version_
 	return true;
 }
 
-/* Get the NumberType of a setting. This describes the integer type
+/**
+ * Get the NumberType of a setting. This describes the integer type
  * as it is represented in memory
  * @param type VarType holding information about the variable-type
- * @return return the SLE_VAR_* part of a variable-type description */
+ * @return return the SLE_VAR_* part of a variable-type description
+ */
 static inline VarType GetVarMemType(VarType type)
 {
 	return type & 0xF0; // GB(type, 4, 4) << 4;
 }
 
-/* Get the FileType of a setting. This describes the integer type
+/**
+ * Get the FileType of a setting. This describes the integer type
  * as it is represented in a savegame/file
  * @param type VarType holding information about the variable-type
- * @param return the SLE_FILE_* part of a variable-type description */
+ * @param return the SLE_FILE_* part of a variable-type description
+ */
 static inline VarType GetVarFileType(VarType type)
 {
 	return type & 0xF; // GB(type, 0, 4);

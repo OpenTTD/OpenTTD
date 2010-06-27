@@ -1718,8 +1718,10 @@ static const WindowDesc _network_lobby_window_desc(
 	_nested_network_lobby_window_widgets, lengthof(_nested_network_lobby_window_widgets)
 );
 
-/* Show the networklobbywindow with the selected server
- * @param ngl Selected game pointer which is passed to the new window */
+/**
+ * Show the networklobbywindow with the selected server.
+ * @param ngl Selected game pointer which is passed to the new window.
+ */
 static void ShowNetworkLobbyWindow(NetworkGameList *ngl)
 {
 	DeleteWindowById(WC_NETWORK_WINDOW, 0);
