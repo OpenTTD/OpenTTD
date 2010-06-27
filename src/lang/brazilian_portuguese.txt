@@ -375,7 +375,7 @@ STR_MAP_MENU_SIGN_LIST                                          :Lista de placas
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Lista de cidades
 ############ end of the 'Display map' dropdown
-STR_TOWN_MENU_FOUND_TOWN                                        :Cidade encontrada
+STR_TOWN_MENU_FOUND_TOWN                                        :Fundar cidade
 ############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts

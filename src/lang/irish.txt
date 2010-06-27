@@ -2994,21 +2994,69 @@ STR_ORDER_CONDITIONAL                                           :Léim choinnío
 
 
 
+STR_ORDER_REFIT_STOP_ORDER                                      :(Athfheistigh go {STRING} agus stop)
+STR_ORDER_STOP_ORDER                                            :(Stop)
 
+STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
+STR_ORDER_FULL_LOAD                                             :(Lasta iomlán)
+STR_ORDER_FULL_LOAD_ANY                                         :(Lasta iomlán de lastas ar bith)
+STR_ORDER_NO_LOAD                                               :(Ná lódáil)
+STR_ORDER_UNLOAD                                                :(Dílódáil agus tóg lastas)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :(Dílódáil agus fan ar lasta iomlán)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Dílódáil agus fan ar lasta iomlán ar bith)
+STR_ORDER_UNLOAD_NO_LOAD                                        :(Dílódáil agus fág folamh)
+STR_ORDER_TRANSFER                                              :(Aistrigh agus tóg lastas)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :(Aistrigh agus fan ar lasta iomlán)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Aistrigh agus fan ar lasta iomlán ar bith)
+STR_ORDER_TRANSFER_NO_LOAD                                      :(Aistrigh agus fág folamh)
+STR_ORDER_NO_UNLOAD                                             :(Ná dílódáil agus tóg lastas)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Ná dílódáil agus fan ar lasta iomlán)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Ná dílódáil agus fan ar lasta iomlán ar bith)
 
+STR_ORDER_STOP_LOCATION_MIDDLE                                  :[lár]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :[taobh is faide]
 
+STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Léim chuig ordú {COMMA}
+STR_ORDER_CONDITIONAL_NUM                                       :Léim chuig ordú {COMMA} nuair {STRING} {STRING} {COMMA}
+STR_ORDER_CONDITIONAL_TRUE_FALSE                                :Léim chuig ordú {COMMA} nuair {STRING} {STRING}
 
+STR_INVALID_ORDER                                               :{RED} (Ordú neamhbhailí)
 
 # Time table window
+STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Amchlár)
+STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}Orduithe
+STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Athraigh chuig amharc na n-orduithe
 
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}Amchlár - cliceáil ar ordú chun é a aibhsiú
 
+STR_TIMETABLE_NO_TRAVEL                                         :Ná taisteal
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Taisteal (gan amchlár)
+STR_TIMETABLE_TRAVEL_FOR                                        :Taisteal ar feadh {STRING}
+STR_TIMETABLE_STAY_FOR                                          :agus fan ar feadh {STRING}
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :agus taisteal ar feadh {STRING}
+STR_TIMETABLE_DAYS                                              :{COMMA} lá{P "" "" "" "" ""}
+STR_TIMETABLE_TICKS                                             :{COMMA} {P th th th dt t}ic
 
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Tógfaidh sé {STRING} an t-amchlár seo a chur i gcrích
 
+STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Tá an fheithicil seo ag rith ar am faoi láthair
+STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Tá an fheithicil seo ag rith {STRING} mall faoi láthair
+STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Tá an fheithicil seo ag rith {STRING} luath faoi láthair
+STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Níor thosaigh an t-amchlár seo fós
+STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Tosóidh an t-amchlár seo ag {STRING}
 
+STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Dáta tosaigh
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Roghnaith dáta mar phointe tosaigh don amchlár seo
 
+STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Athraigh Am
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Athraigh an méid ama ar chóir don ordú aibhsithe a thógáil
 
+STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Glan Am
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Glan an méid ama don ordú aibhsithe
 
+STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Athshocraigh an tAmadóir Moille
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Athshocraigh an t-amadóir moille, le go mbeidh an fheithicil ar am
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Uathlíon
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Líon an amchlár go huathoibríoch leis na luachanna ón gcéad aistear eile (Ctrl+Cliceáil chun iarracht a dhéanamh amanna feithimh a choinneáil)
@@ -3035,15 +3083,27 @@ STR_AI_DEBUG                                                    :{WHITE}Dífhabh
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Ainm an AI
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}Socruithe an AI
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Athraigh socruithe an AI
+STR_AI_DEBUG_RELOAD                                             :{BLACK}Athlódáil an AI
+STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Maraigh an AI, athlódáil an script agus atosaigh an AI
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Briseadh ar:
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Briseadh air
 STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Nuair a bheidh teachtaireacht loga AI mar an gcéanna leis an teaghrán seo, cuirtear an cluiche ar sos.
 STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Meaitseáil an cás
 
+STR_ERROR_NO_AI                                                 :{WHITE}Tá OpenTTD gan tacaíocht do AIanna...
+STR_ERROR_NO_AI_SUB                                             :{WHITE}... níl aon AI ar fáil!
 
+STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Níl an fhuinneog Dífhabhtú AI ar fáil ach don fhreastalaí amháin
 
 # AI configuration window
+STR_AI_CONFIG_CAPTION                                           :{WHITE}Cumrú AI
+STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}Gach AI a lódálfar sa chéad chluiche eile
+STR_AI_CONFIG_HUMAN_PLAYER                                      :Imreoir Daonna
+STR_AI_CONFIG_RANDOM_AI                                         :AI Randamach
 
+STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Bog Suas
+STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Bog an AI roghnaithe suas an liosta
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Bog Síos
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Bog an AI roghnaithe síos sa liosta
 
@@ -3112,6 +3172,7 @@ STR_ERROR_PNGMAP                                                :{WHITE}Ní féi
 STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... níor aimsíodh an comhad.
 STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... níorbh fhéidir an cineál íomhá a thiontú. íomhá PNG 8 nó 24 giotán ag teastáil.
 
+STR_ERROR_BMPMAP                                                :{WHITE}Ní féidir tírdhreach a lódáil ó BMP...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... níorbh fhéidir an cineál íomhá a thiontú.
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Rabhadh faoin scála

@@ -2246,6 +2246,12 @@ STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}Şterge
 STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}Şterge jocul salvat selectat
 STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Salvează
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Salvează cu numele selectat jocul curent
+STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Încarcă
+STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Încarcă salvarea selectată
+STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Detalii joc
+STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Nicio informaţie disponibilă
+STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
+STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Introduceţi un nume pentru salvare
 
@@ -2423,6 +2429,12 @@ STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Fisier(e
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Fisierele GRF lipsa au fost dezactivate
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Fisier(e) GRF lipsa
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Reluarea jocului poate bloca OpenTTD. Nu raportati raporturi cu probleme pentru blocari succesive.{}Sigur doresti sa reiei jocul?
+
+# NewGRF status
+STR_NEWGRF_LIST_NONE                                            :Nimic
+STR_NEWGRF_LIST_ALL_FOUND                                       :Toate fişierele necesare sunt prezente
+STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Fişiere compatibile găsite
+STR_NEWGRF_LIST_MISSING                                         :{RED}Fişiere lipsă
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Comportamentul NewGRF '{0:STRING}' poate cauza desincronizari sau opriri.
@@ -3334,6 +3346,7 @@ STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Slavarea a fost
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Fisierul nu poate fi citit
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Fisierul nu poate fi scris
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Integritatea datelor compromisă
+STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<indisponibil>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Jocul a fost salvat într-o versiune fără suport pentru tramvaie. Toate tramvaiele au fost eliminate.
 
 # Map generation messages
@@ -3640,6 +3653,7 @@ STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Aeronava
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Prea multe vehicule în joc
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Nu se poate schimba intervalul de întreţinere...
 
+STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... vehiculul este distrus
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Nu se poate permite trenului să treacă în caz de pericol...
