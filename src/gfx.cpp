@@ -641,14 +641,13 @@ int DrawString(int left, int right, int top, StringID str, TextColour colour, St
  * @param str string to check and correct for length restrictions
  * @param last the last valid location (for '\0') in the buffer of str
  * @param maxw the maximum width the string can have on one line
- * @param start_fontsize Fontsize to start the text with
+ * @param size Fontsize to start the text with
  * @return return a 32bit wide number consisting of 2 packed values:
  *  0 - 15 the number of lines ADDED to the string
  * 16 - 31 the fontsize in which the length calculation was done at
  */
-uint32 FormatStringLinebreaks(char *str, const char *last, int maxw, FontSize start_fontsize)
+uint32 FormatStringLinebreaks(char *str, const char *last, int maxw, FontSize size)
 {
-	FontSize size = start_fontsize;
 	int num = 0;
 
 	assert(maxw > 0);
