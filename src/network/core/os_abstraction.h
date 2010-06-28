@@ -22,11 +22,13 @@
 
 /* Windows stuff */
 #if defined(WIN32) || defined(WIN64)
+#include <errno.h>
 #include <winsock2.h>
 #include <ws2tcpip.h>
 #include <windows.h>
 
 #define GET_LAST_ERROR() WSAGetLastError()
+#undef EWOULDBLOCK
 #define EWOULDBLOCK WSAEWOULDBLOCK
 /* Windows has some different names for some types */
 typedef unsigned long in_addr_t;
