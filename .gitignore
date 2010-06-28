@@ -10,3 +10,4 @@ bundle/*
 config.*
 objs/*
 src/rev.cpp
+src/os/windows/ottdres.rc
