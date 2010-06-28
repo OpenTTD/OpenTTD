@@ -1,12 +1,25 @@
+syntax: glob
+
 bin/lang/*
-bin/opentd*
+bin/openttd*
+bin/*.cfg
 bundle/*
+bundles/*
 config.cache.*
 config.log
 config.pwd
+docs/aidocs/*
+docs/source/*
 Makefile
 Makefile.am
-media/openttd.desktop*
+media/openttd.desktop
+media/openttd.desktop.install
 objs/*
+projects/*.ncb
+projects/*.suo
+projects/*.sdf
+projects/*.opensdf
+projects/*.vcproj.*.user
+projects/*.vcxproj.user
 src/rev.cpp
 src/os/windows/ottdres.rc
