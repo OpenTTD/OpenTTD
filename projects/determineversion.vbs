@@ -96,7 +96,7 @@ Function DetermineSVNVersion()
 	Dim sTortoise
 	' First, try with 32-bit architecture
 	sTortoise = ReadRegistryKey("HKLM", "SOFTWARE\TortoiseSVN", "Directory", 32)
-	If sTortoise = "" Then
+	If sTortoise = "" Or IsNull(sTortoise) Then
 		' No 32-bit version of TortoiseSVN installed, try 64-bit version (doesn't hurt on 32-bit machines, it returns nothing or is ignored)
 		sTortoise = ReadRegistryKey("HKLM", "SOFTWARE\TortoiseSVN", "Directory", 64)
 	End If
