@@ -15,8 +15,6 @@
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="$(SolutionDir)"
-			IntermediateDirectory="..\objs\generate"
 			ConfigurationType="10"
 			>
 		</Configuration>
@@ -33,7 +31,7 @@
 					Description="Running 'generate.vbs' ..."
 					CommandLine="cscript &quot;$(ProjectDir)generate.vbs&quot;"
 					AdditionalDependencies="$(InputPath)"
-					Outputs="$(SolutionDir)openttd_vs80.vcproj;$(SolutionDir)openttd_vs90.vcproj"
+					Outputs="$(SolutionDir)openttd_vs80.vcproj;$(SolutionDir)openttd_vs90.vcproj;$(SolutionDir)openttd_vs100.vcxproj;$(SolutionDir)openttd_vs100.vcxproj.filters;$(SolutionDir)langs_vs80.vcproj;$(SolutionDir)langs_vs90.vcproj;$(SolutionDir)langs_vs100.vcxproj"
 				/>
 			</FileConfiguration>
 		</File>

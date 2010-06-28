@@ -10,15 +10,28 @@ Option Explicit
 Dim FSO
 Set FSO = CreateObject("Scripting.FileSystemObject")
 
-' openttd_vs90.sln    is for MSVC 2008
-' openttd_vs90.vcproj is for MSVC 2008
-' langs_vs90.vcproj   is for MSVC 2008
-' strgen_vs90.vcproj  is for MSVC 2008
+' openttd_vs100.sln             is for MSVC 2010
+' openttd_vs100.vcxproj         is for MSVC 2010
+' openttd_vs100.vcxproj.filters is for MSVC 2010
+' langs_vs100.vcxproj           is for MSVC 2010
+' strgen_vs100.vcxproj          is for MSVC 2010
+' strgen_vs100.vcxproj.filters  is for MSVC 2010
+' generate_vs100.vcxproj        is for MSVC 2010
+' version_vs100.vcxproj         is for MSVC 2010
 
-' openttd_vs80.sln    is for MSVC 2005
-' openttd_vs80.vcproj is for MSVC 2005
-' langs_vs80.vcproj   is for MSVC 2005
-' strgen_vs80.vcproj  is for MSVC 2005
+' openttd_vs90.sln              is for MSVC 2008
+' openttd_vs90.vcproj           is for MSVC 2008
+' langs_vs90.vcproj             is for MSVC 2008
+' strgen_vs90.vcproj            is for MSVC 2008
+' generate_vs90.vcproj          is for MSVC 2008
+' version_vs90.vcproj           is for MSVC 2008
+
+' openttd_vs80.sln              is for MSVC 2005
+' openttd_vs80.vcproj           is for MSVC 2005
+' langs_vs80.vcproj             is for MSVC 2005
+' strgen_vs80.vcproj            is for MSVC 2005
+' generate_vs80.vcproj          is for MSVC 2005
+' version_vs80.vcproj           is for MSVC 2005
 
 Sub safety_check(filename)
 	Dim file, line, regexp, list
@@ -132,9 +145,10 @@ Sub headers_check(filename, dir)
 	End If
 End Sub
 
-Function load_main_data(filename)
-	Dim res, file, line, deep, skip, first_time
+Function load_main_data(filename, ByRef vcxproj, ByRef filters, ByRef files)
+	Dim res, file, line, deep, skip, first_filter, first_file, filter, cltype, index
 	res = ""
+	index = 0
 	' Read the source.list and process it
 	Set file = FSO.OpenTextFile(filename, 1, 0, 0)
 	While Not file.AtEndOfStream
@@ -165,24 +179,50 @@ Function load_main_data(filename)
 				Case "#"
 					if deep = skip Then
 						line = Replace(line, "# ", "")
-						if first_time <> 0 Then
+						if first_filter <> 0 Then
 							res = res & "		</Filter>" & vbCrLf
+							filters = filters & vbCrLf
 						Else
-							first_time = 1
+							first_filter = 1
 						End If
+						filter = line
 						res = res & _
 						"		<Filter" & vbCrLf & _
-						"			Name=" & Chr(34) & line & Chr(34) & vbCrLf & _
+						"			Name=" & Chr(34) & filter & Chr(34) & vbCrLf & _
 						"			>" & vbCrLf
+						filters = filters & _
+						"    <Filter Include="& Chr(34) & filter & Chr(34) & ">" & vbCrLf & _
+						"      <UniqueIdentifier>{c76ff9f1-1e62-46d8-8d55-" & String(12 - Len(CStr(index)), "0") & index & "}</UniqueIdentifier>" & vbCrLf & _
+						"    </Filter>"
+						index = index + 1
 					End If
 				Case Else
 					If deep = skip Then
 						line = Replace(line, "/" ,"\")
+						if first_file <> 0 Then
+							vcxproj = vcxproj & vbCrLf
+							files = files & vbCrLf
+						Else
+							first_file = 1
+						End If
 						res = res & _
 						"			<File" & vbCrLf & _
 						"				RelativePath=" & Chr(34) & ".\..\src\" & line & Chr(34) & vbCrLf & _
 						"				>" & vbCrLf & _
 						"			</File>" & vbCrLf
+						Select Case Split(Line, ".")(1)
+							Case "cpp"
+								cltype = "ClCompile"
+							Case "rc"
+								cltype = "ResourceCompile"
+							Case Else
+								cltype = "ClInclude"
+						End Select
+						vcxproj = vcxproj & "    <" & cltype & " Include="& Chr(34) & "..\src\" & line & Chr(34) & " />"
+						files = files & _
+						"    <" & cltype & " Include="& Chr(34) & "..\src\" & line & Chr(34) & ">" & vbCrLf & _
+						"      <Filter>" & filter & "</Filter>" & vbCrLf & _
+						"    </" & cltype & ">"
 					End If
 			End Select
 		End If
@@ -192,40 +232,65 @@ Function load_main_data(filename)
 	load_main_data = res
 End Function
 
-Function load_lang_data(dir)
-	Dim res, folder, file
+Function load_lang_data(dir, ByRef vcxproj)
+	Dim res, folder, file, first_time
 	res = ""
 	Set folder = FSO.GetFolder(dir)
 	For Each file In folder.Files
 		file = FSO.GetFileName(file)
 		If FSO.GetExtensionName(file) = "txt" Then
 			file = Left(file, Len(file) - 4)
-			res = res _
-			& vbCrLf & "		<File" _
-			& vbCrLf & "			RelativePath=" & Chr(34) & "..\src\lang\" & file & ".txt" & Chr(34) _
-			& vbCrLf & "			>" _
-			& vbCrLf & "			<FileConfiguration" _
-			& vbCrLf & "				Name=" & Chr(34) & "Debug|Win32" & Chr(34) _
-			& vbCrLf & "				>" _
-			& vbCrLf & "				<Tool" _
-			& vbCrLf & "					Name=" & Chr(34) & "VCCustomBuildTool" & Chr(34) _
-			& vbCrLf & "					Description=" & Chr(34) & "Generating " & file & " language file" & Chr(34) _
-			& vbCrLf & "					CommandLine=" & Chr(34) & "..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0&#x0D;&#x0A;" & Chr(34) _
-			& vbCrLf & "					AdditionalDependencies=" & Chr(34) & "..\src\lang\english.txt;..\objs\strgen\strgen.exe" & Chr(34) _
-			& vbCrLf & "					Outputs=" & Chr(34) & "..\bin\lang\" & file & ".lng" & Chr(34) _
-			& vbCrLf & "				/>" _
-			& vbCrLf & "			</FileConfiguration>" _
-			& vbCrLf & "		</File>"
+			if first_time <> 0 Then
+				res = res & vbCrLf
+				vcxproj = vcxproj & vbCrLf
+			Else
+				first_time = 1
+			End If
+			res = res & _
+			"		<File" & vbCrLf & _
+			"			RelativePath=" & Chr(34) & "..\src\lang\" & file & ".txt" & Chr(34) & vbCrLf & _
+			"			>" & vbCrLf & _
+			"			<FileConfiguration" & vbCrLf & _
+			"				Name=" & Chr(34) & "Debug|Win32" & Chr(34) & vbCrLf & _
+			"				>" & vbCrLf & _
+			"				<Tool" & vbCrLf & _
+			"					Name=" & Chr(34) & "VCCustomBuildTool" & Chr(34) & vbCrLf & _
+			"					Description=" & Chr(34) & "Generating " & file & " language file" & Chr(34) & vbCrLf & _
+			"					CommandLine=" & Chr(34) & "..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;exit 0&#x0D;&#x0A;" & Chr(34) & vbCrLf & _
+			"					AdditionalDependencies=" & Chr(34) & "..\src\lang\english.txt;..\objs\strgen\strgen.exe" & Chr(34) & vbCrLf & _
+			"					Outputs=" & Chr(34) & "..\bin\lang\" & file & ".lng" & Chr(34) & vbCrLf & _
+			"				/>" & vbCrLf & _
+			"			</FileConfiguration>" & vbCrLf & _
+			"		</File>"
+			vcxproj = vcxproj & _
+			"    <CustomBuild Include=" & Chr(34) & "..\src\lang\" & file & ".txt" & Chr(34) & ">" & vbCrLf & _
+			"      <Message Condition=" & Chr(34) & "'$(Configuration)|$(Platform)'=='Debug|Win32'" & Chr(34) & ">Generating " & file & " language file</Message>" & vbCrLf & _
+			"      <Command Condition=" & Chr(34) & "'$(Configuration)|$(Platform)'=='Debug|Win32'" & Chr(34) & ">..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang " & Chr(34) & "%(FullPath)" & Chr(34) & "</Command>" & vbCrLf & _
+			"      <AdditionalInputs Condition=" & Chr(34) & "'$(Configuration)|$(Platform)'=='Debug|Win32'" & Chr(34) & ">..\src\lang\english.txt;..\objs\strgen\strgen.exe;%(AdditionalInputs)</AdditionalInputs>" & vbCrLf & _
+			"      <Outputs Condition=" & Chr(34) & "'$(Configuration)|$(Platform)'=='Debug|Win32'" & Chr(34) & ">..\bin\lang\" & file & ".lng;%(Outputs)</Outputs>" & vbCrLf & _
+			"    </CustomBuild>"
 		End If
 	Next
 	load_lang_data = res
 End Function
 
-Sub generate(data, dest)
+Sub generate(data, dest, data2)
 	Dim srcfile, destfile, line
 	WScript.Echo "Generating " & FSO.GetFileName(dest) & "..."
 	Set srcfile = FSO.OpenTextFile(dest & ".in", 1, 0, 0)
 	Set destfile = FSO.CreateTextFile(dest, -1, 0)
+
+	If Not IsNull(data2) Then
+		' Everything above the !!FILTERS!! marker
+		line = srcfile.ReadLine()
+		While line <> "!!FILTERS!!"
+			If len(line) > 0 Then destfile.WriteLine(line)
+			line = srcfile.ReadLine()
+		Wend
+
+		' Our generated content
+		destfile.WriteLine(data2)
+	End If
 
 	' Everything above the !!FILES!! marker
 	line = srcfile.ReadLine()
@@ -260,12 +325,15 @@ End If
 safety_check ROOT_DIR & "/source.list"
 headers_check ROOT_DIR & "/source.list", ROOT_DIR & "\src\" ' Backslashes needed for DoFiles
 
-Dim openttd
-openttd = load_main_data(ROOT_DIR &"/source.list")
-generate openttd, ROOT_DIR & "/projects/openttd_vs80.vcproj"
-generate openttd, ROOT_DIR & "/projects/openttd_vs90.vcproj"
+Dim openttd, openttdvcxproj, openttdfilters, openttdfiles
+openttd = load_main_data(ROOT_DIR & "/source.list", openttdvcxproj, openttdfilters, openttdfiles)
+generate openttd, ROOT_DIR & "/projects/openttd_vs80.vcproj", Null
+generate openttd, ROOT_DIR & "/projects/openttd_vs90.vcproj", Null
+generate openttdvcxproj, ROOT_DIR & "/projects/openttd_vs100.vcxproj", Null
+generate openttdfiles, ROOT_DIR & "/projects/openttd_vs100.vcxproj.filters", openttdfilters
 
-Dim lang
-lang = load_lang_data(ROOT_DIR & "/src/lang")
-generate lang, ROOT_DIR & "/projects/langs_vs80.vcproj"
-generate lang, ROOT_DIR & "/projects/langs_vs90.vcproj"
+Dim lang, langvcxproj
+lang = load_lang_data(ROOT_DIR & "/src/lang", langvcxproj)
+generate lang, ROOT_DIR & "/projects/langs_vs80.vcproj", Null
+generate lang, ROOT_DIR & "/projects/langs_vs90.vcproj", Null
+generate langvcxproj, ROOT_DIR & "/projects/langs_vs100.vcxproj", Null

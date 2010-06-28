@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{5894294c-d4dc-41f0-be31-e56cff4e0405}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\core\alloc_func.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\strgen\strgen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\string.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\core\alloc_func.hpp" />
+    <ClInclude Include="..\src\table\control_codes.h" />
+    <ClInclude Include="..\src\debug.h" />
+    <ClInclude Include="..\src\core\endian_func.hpp" />
+    <ClInclude Include="..\src\stdafx.h" />
+    <ClInclude Include="..\src\string.h" />
+  </ItemGroup>
+</Project>

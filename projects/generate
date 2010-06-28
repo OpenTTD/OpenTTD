@@ -22,15 +22,28 @@ then
 	exit 1
 fi
 
-# openttd_vs90.sln    is for MSVC 2008
-# openttd_vs90.vcproj is for MSVC 2008
-# langs_vs90.vcproj   is for MSVC 2008
-# strgen_vs90.vcproj  is for MSVC 2008
+# openttd_vs100.sln             is for MSVC 2010
+# openttd_vs100.vcxproj         is for MSVC 2010
+# openttd_vs100.vcxproj.filters is for MSVC 2010
+# langs_vs100.vcxproj           is for MSVC 2010
+# strgen_vs100.vcxproj          is for MSVC 2010
+# strgen_vs100.vcxproj.filters  is for MSVC 2010
+# generate_vs100.vcxproj        is for MSVC 2010
+# version_vs100.vcxproj         is for MSVC 2010
 
-# openttd_vs80.sln    is for MSVC 2005
-# openttd_vs80.vcproj is for MSVC 2005
-# langs_vs80.vcproj   is for MSVC 2005
-# strgen_vs80.vcproj  is for MSVC 2005
+# openttd_vs90.sln              is for MSVC 2008
+# openttd_vs90.vcproj           is for MSVC 2008
+# langs_vs90.vcproj             is for MSVC 2008
+# strgen_vs90.vcproj            is for MSVC 2008
+# generate_vs90.vcproj          is for MSVC 2008
+# version_vs90.vcproj           is for MSVC 2008
+
+# openttd_vs80.sln              is for MSVC 2005
+# openttd_vs80.vcproj           is for MSVC 2005
+# langs_vs80.vcproj             is for MSVC 2005
+# strgen_vs80.vcproj            is for MSVC 2005
+# generate_vs80.vcproj          is for MSVC 2005
+# version_vs80.vcproj           is for MSVC 2005
 
 
 
@@ -117,14 +130,19 @@ load_main_data() {
 				gsub("^ ", "", $0);
 
 				if (first_time != 0) {
-					print "		</Filter>";
+					print "#1		</Filter>";
 				} else {
 					first_time = 1;
 				}
 
-				print "		<Filter";
-				print "			Name=\\""$0"\\"";
-				print "			>";
+				filter = $0;
+				print "#1		<Filter";
+				print "#1			Name=\\""filter"\\"";
+				print "#1			>";
+				print "#3    <Filter Include=\\""filter"\\">";
+				printf "#3      <UniqueIdentifier>{c76ff9f1-1e62-46d8-8d55-%012d}</UniqueIdentifier>\n", i;
+				print "#3    </Filter>";
+				i += 1;
 			}
 
 			next;
@@ -134,13 +152,21 @@ load_main_data() {
 			if (deep == skip) {
 				gsub("	", "", $0);
 				gsub("/", "\\\\", $0);
-				print "			<File";
-				print "				RelativePath=\\".\\\\'$file_prefix'"$0"\\"";
-				print "				>";
-				print "			</File>";
+				print "#1			<File";
+				print "#1				RelativePath=\\".\\\\'$file_prefix'"$0"\\"";
+				print "#1				>";
+				print "#1			</File>";
+				split($0, file, ".");
+				cltype = "ClInclude"
+				if (file[2] == "cpp") cltype = "ClCompile";
+				if (file[2] == "rc") cltype = "ResourceCompile";
+				print "#2    <"cltype" Include=\\"'$file_prefix'"$0"\\" />";
+				print "#4    <"cltype" Include=\\"'$file_prefix'"$0"\\">";
+				print "#4      <Filter>"filter"</Filter>";
+				print "#4    </"cltype">";
 			}
 		}
-		END { print "		</Filter>"; }
+		END { print "#1		</Filter>"; }
 	'`"
 
 	eval "$2=\"\$RES\""
@@ -152,21 +178,27 @@ load_lang_data() {
 	do
 		i=`basename $i | sed s~.txt$~~g`
 		RES="$RES
-		<File
-			RelativePath=\"..\\src\\lang\\"$i".txt\"
-			>
-			<FileConfiguration
-				Name=\"Debug|Win32\"
-				>
-				<Tool
-					Name=\"VCCustomBuildTool\"
-					Description=\"Generating "$i" language file\"
-					CommandLine=\"..\\objs\\strgen\\strgen.exe -s ..\\src\\lang -d ..\\bin\\lang &quot;\$(InputPath)&quot;&#x0D;&#x0A;exit 0&#x0D;&#x0A;\"
-					AdditionalDependencies=\"..\\src\\lang\\english.txt;..\\objs\\strgen\\strgen.exe\"
-					Outputs=\"..\\bin\\lang\\"$i".lng\"
-				/>
-			</FileConfiguration>
-		</File>"
+#1		<File
+#1			RelativePath=\"..\\src\\lang\\"$i".txt\"
+#1			>
+#1			<FileConfiguration
+#1				Name=\"Debug|Win32\"
+#1				>
+#1				<Tool
+#1					Name=\"VCCustomBuildTool\"
+#1					Description=\"Generating "$i" language file\"
+#1					CommandLine=\"..\\objs\\strgen\\strgen.exe -s ..\\src\\lang -d ..\\bin\\lang &quot;\$(InputPath)&quot;&#x0D;&#x0A;exit 0&#x0D;&#x0A;\"
+#1					AdditionalDependencies=\"..\\src\\lang\\english.txt;..\\objs\\strgen\\strgen.exe\"
+#1					Outputs=\"..\\bin\\lang\\"$i".lng\"
+#1				/>
+#1			</FileConfiguration>
+#1		</File>
+#2    <CustomBuild Include=\"..\\src\\lang\\"$i".txt\">
+#2      <Message Condition=\"'\$(Configuration)|\$(Platform)'=='Debug|Win32'\">Generating "$i" language file</Message>
+#2      <Command Condition=\"'\$(Configuration)|\$(Platform)'=='Debug|Win32'\">..\\objs\\strgen\\strgen.exe -s ..\\src\\lang -d ..\\bin\\lang \"%(FullPath)\"</Command>
+#2      <AdditionalInputs Condition=\"'\$(Configuration)|\$(Platform)'=='Debug|Win32'\">..\\src\\lang\\english.txt;..\\objs\\strgen\\strgen.exe;%(AdditionalInputs)</AdditionalInputs>
+#2      <Outputs Condition=\"'\$(Configuration)|\$(Platform)'=='Debug|Win32'\">..\\bin\\lang\\"$i".lng;%(Outputs)</Outputs>
+#2    </CustomBuild>"
 	done
 
 	eval "$2=\"\$RES\""
@@ -174,14 +206,39 @@ load_lang_data() {
 
 generate() {
 	echo "Generating $2..."
-	# Everything above the !!FILES!! marker
-	cat "$ROOT_DIR/projects/$2".in | tr '\r' '\n' | awk '
-		/^$/ { next }
-		/!!FILES!!/ { stop = 1; }
-		{
-			if (stop == 0) { print $0 }
-		}
-	' > "$ROOT_DIR/projects/$2"
+	if [ $# -eq 3 ]; then
+		# Everything above the !!FILTERS!! marker
+		cat "$ROOT_DIR/projects/$2".in | tr '\r' '\n' | awk '
+			/^$/ { next }
+			/!!FILTERS!!/ { stop = 1; }
+			{
+				if (stop == 0) { print $0 }
+			}
+		' > "$ROOT_DIR/projects/$2"
+
+		echo "$3" >> "$ROOT_DIR/projects/$2"
+
+		# Everything below the !!FILTERS!! marker and above the !!FILES!! marker
+		cat "$ROOT_DIR/projects/$2".in | tr '\r' '\n' | awk '
+			BEGIN { stop = 1; }
+			/^$/ { next }
+			/!!FILTERS!!/ { stop = 2; }
+			/!!FILES!!/ { stop = 1; }
+			{
+				if (stop == 0) { print $0 }
+				if (stop == 2) { stop = 0 }
+			}
+		' >> "$ROOT_DIR/projects/$2"
+	else
+		# Everything above the !!FILES!! marker
+		cat "$ROOT_DIR/projects/$2".in | tr '\r' '\n' | awk '
+			/^$/ { next }
+			/!!FILES!!/ { stop = 1; }
+			{
+				if (stop == 0) { print $0 }
+			}
+		' > "$ROOT_DIR/projects/$2"
+	fi
 
 	echo "$1" >> "$ROOT_DIR/projects/$2"
 
@@ -200,9 +257,19 @@ generate() {
 safety_check "$ROOT_DIR/source.list"
 
 load_main_data "$ROOT_DIR/source.list" openttd
+openttdfiles=`echo "$openttd" | grep "^#4" | sed "s~#4~~g"`
+openttdfilters=`echo "$openttd" | grep "^#3" | sed "s~#3~~g"`
+openttdvcxproj=`echo "$openttd" | grep "^#2" | sed "s~#2~~g"`
+openttd=`echo "$openttd" | grep "^#1" | sed "s~#1~~g"`
+
 load_lang_data "$ROOT_DIR/src/lang/*.txt" lang
+langvcxproj=`echo "$lang" | grep "^#2" | sed "s~#2~~g"`
+lang=`echo "$lang" | grep "^#1" | sed "s~#1~~g"`
 
 generate "$openttd" "openttd_vs80.vcproj"
 generate "$openttd" "openttd_vs90.vcproj"
+generate "$openttdvcxproj" "openttd_vs100.vcxproj"
+generate "$openttdfiles" "openttd_vs100.vcxproj.filters" "$openttdfilters"
 generate "$lang" "langs_vs80.vcproj"
 generate "$lang" "langs_vs90.vcproj"
+generate "$langvcxproj" "langs_vs100.vcxproj"

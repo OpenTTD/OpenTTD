@@ -45,7 +45,6 @@
 	<References>
 	</References>
 	<Files>
-
 		<File
 			RelativePath="..\src\lang\afrikaans.txt"
 			>
