@@ -144,6 +144,7 @@ void NetworkSyncCommandQueue(NetworkClientSocket *cs)
 	for (CommandPacket *p = _local_command_queue; p != NULL; p = p->next) {
 		CommandPacket c = *p;
 		c.callback = 0;
+		c.next = NULL;
 		NetworkAddCommandQueue(c, cs);
 	}
 }
