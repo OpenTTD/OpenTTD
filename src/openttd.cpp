@@ -854,6 +854,38 @@ void StartupDisasters();
 extern void StartupEconomy();
 
 /**
+ * Load the specified savegame but on error do different things.
+ * If loading fails due to corrupt savegame, bad version, etc. go back to
+ * a previous correct state. In the menu for example load the intro game again.
+ * @param filename file to be loaded
+ * @param mode mode of loading, either SL_LOAD or SL_OLD_LOAD
+ * @param newgm switch to this mode of loading fails due to some unknown error
+ * @param subdir default directory to look for filename, set to 0 if not needed
+ */
+bool SafeSaveOrLoad(const char *filename, int mode, GameMode newgm, Subdirectory subdir)
+{
+	GameMode ogm = _game_mode;
+
+	_game_mode = newgm;
+	assert(mode == SL_LOAD || mode == SL_OLD_LOAD);
+	switch (SaveOrLoad(filename, mode, subdir)) {
+		case SL_OK: return true;
+
+		case SL_REINIT:
+			switch (ogm) {
+				default:
+				case GM_MENU:   LoadIntroGame();      break;
+				case GM_EDITOR: MakeNewEditorWorld(); break;
+			}
+			return false;
+
+		default:
+			_game_mode = ogm;
+			return false;
+	}
+}
+
+/**
  * Start Scenario starts a new game based on a scenario.
  * Eg 'New Game' --> select a preset scenario
  * This starts a scenario based on your current difficulty settings
@@ -898,37 +930,6 @@ static void StartScenario()
 	c->settings = _settings_client.company;
 
 	MarkWholeScreenDirty();
-}
-
-/** Load the specified savegame but on error do different things.
- * If loading fails due to corrupt savegame, bad version, etc. go back to
- * a previous correct state. In the menu for example load the intro game again.
- * @param filename file to be loaded
- * @param mode mode of loading, either SL_LOAD or SL_OLD_LOAD
- * @param newgm switch to this mode of loading fails due to some unknown error
- * @param subdir default directory to look for filename, set to 0 if not needed
- */
-bool SafeSaveOrLoad(const char *filename, int mode, GameMode newgm, Subdirectory subdir)
-{
-	GameMode ogm = _game_mode;
-
-	_game_mode = newgm;
-	assert(mode == SL_LOAD || mode == SL_OLD_LOAD);
-	switch (SaveOrLoad(filename, mode, subdir)) {
-		case SL_OK: return true;
-
-		case SL_REINIT:
-			switch (ogm) {
-				default:
-				case GM_MENU:   LoadIntroGame();      break;
-				case GM_EDITOR: MakeNewEditorWorld(); break;
-			}
-			return false;
-
-		default:
-			_game_mode = ogm;
-			return false;
-	}
 }
 
 void SwitchToMode(SwitchMode new_mode)
