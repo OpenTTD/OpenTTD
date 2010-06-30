@@ -3070,13 +3070,19 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Upravo 
 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Poruka od proizvođača vozila
-STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Upravo smo završili projektovanje novog {STRING.gen} - da li ste zainteresovani za jednogodišnja eksluzivna prava upotrebe ovog vozila, kako bi smo proverili radne osobine pre puštanja u masovnu proizvodnju?
-STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :železničko vučno vozilo
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :drumsko vozilo
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :letilica
-STR_ENGINE_PREVIEW_SHIP                                         :brod
-STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :jednopružno žel. vučno vozilo
-STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :megnetno žel. vučno vozilo
+STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Upravo smo završili projektovanje nov{G og e og} {STRING.aku} - da li ste zainteresovani za jednogodišnja eksluzivna prava upotrebe ovog vozila, kako bi smo proverili radne osobine pre puštanja u masovnu proizvodnju?
+STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=srednji}železničko vučno vozilo
+STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.aku                      :železničkog vučnog vozila
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=srednji}drumsko vozilo
+STR_ENGINE_PREVIEW_ROAD_VEHICLE.aku                             :drumskog vozila
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=ženski}letilica
+STR_ENGINE_PREVIEW_AIRCRAFT.aku                                 :letilice
+STR_ENGINE_PREVIEW_SHIP                                         :{G=muški}brod
+STR_ENGINE_PREVIEW_SHIP.aku                                     :broda
+STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=srednji}jednopružno žel. vučno vozilo
+STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE.aku                      :jednopružnog žel. vučnog vozila
+STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=srednji}megnetno žel. vučno vozilo
+STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE.aku                        :magnetnog žel. vučnog vozila
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Cena: {CURRENCY} Težina: {WEIGHT_S}{}Brzina: {VELOCITY}  Snaga: {POWER}{}Cena Održavanja: {CURRENCY}/god.{}Nosivost: {CARGO}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Cena: {CURRENCY} Težina: {WEIGHT_S}{}Brzina: {VELOCITY}  Snaga: {POWER}  Najveća vučna snaga: {6:FORCE}{}Cena Održavanja: {4:CURRENCY}/god{}Nosivost: {5:CARGO}
