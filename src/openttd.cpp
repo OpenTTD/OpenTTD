@@ -872,6 +872,18 @@ bool SafeSaveOrLoad(const char *filename, int mode, GameMode newgm, Subdirectory
 		case SL_OK: return true;
 
 		case SL_REINIT:
+			if (_network_dedicated) {
+				/*
+				 * We need to reinit a network map...
+				 * We can't simply load the intro game here as that game has many
+				 * special cases which make clients desync immediately. So we fall
+				 * back to just generating a new game with the current settings.
+				 */
+				DEBUG(net, 0, "Loading game failed, so a new (random) game will be started!");
+				MakeNewGame(false, true);
+				return false;
+			}
+
 			switch (ogm) {
 				default:
 				case GM_MENU:   LoadIntroGame();      break;
@@ -911,10 +923,10 @@ static void StartScenario()
 	ResetGRFConfig(true);
 
 	/* Load game */
-	if (SaveOrLoad(_file_to_saveload.name, _file_to_saveload.mode, SCENARIO_DIR) != SL_OK) {
-		LoadIntroGame();
+	if (!SafeSaveOrLoad(_file_to_saveload.name, _file_to_saveload.mode, GM_NORMAL, SCENARIO_DIR)) {
 		SetDParamStr(0, GetSaveLoadErrorString());
 		ShowErrorMessage(STR_JUST_RAW_STRING, INVALID_STRING_ID, WL_ERROR);
+		return;
 	}
 
 	_settings_game.difficulty = _settings_newgame.difficulty;
@@ -996,7 +1008,6 @@ void SwitchToMode(SwitchMode new_mode)
 			ResetWindowSystem();
 
 			if (!SafeSaveOrLoad(_file_to_saveload.name, _file_to_saveload.mode, GM_NORMAL, NO_DIRECTORY)) {
-				LoadIntroGame();
 				SetDParamStr(0, GetSaveLoadErrorString());
 				ShowErrorMessage(STR_JUST_RAW_STRING, INVALID_STRING_ID, WL_ERROR);
 			} else {
