@@ -482,12 +482,13 @@ static const ScreenshotFormat _screenshot_formats[] = {
 
 void InitializeScreenshotFormats()
 {
-	int i, j;
-	for (i = 0, j = 0; i != lengthof(_screenshot_formats); i++)
+	uint j = 0;
+	for (uint i = 0; i < lengthof(_screenshot_formats); i++) {
 		if (!strcmp(_screenshot_format_name, _screenshot_formats[i].extension)) {
 			j = i;
 			break;
 		}
+	}
 	_cur_screenshot_format = j;
 	_num_screenshot_formats = lengthof(_screenshot_formats);
 }
@@ -497,8 +498,9 @@ const char *GetScreenshotFormatDesc(int i)
 	return _screenshot_formats[i].name;
 }
 
-void SetScreenshotFormat(int i)
+void SetScreenshotFormat(uint i)
 {
+	assert(i < _num_screenshot_formats);
 	_cur_screenshot_format = i;
 	strecpy(_screenshot_format_name, _screenshot_formats[i].extension, lastof(_screenshot_format_name));
 }
