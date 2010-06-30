@@ -1196,12 +1196,12 @@ static void DrawTile_Road(TileInfo *ti)
 		case ROAD_TILE_CROSSING: {
 			if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, FOUNDATION_LEVELED);
 
+			PaletteID pal = PAL_NONE;
 			const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(ti->tile));
 
 			if (rti->UsesOverlay()) {
 				Axis axis = GetCrossingRailAxis(ti->tile);
 				SpriteID road = SPR_ROAD_Y + axis;
-				PaletteID pal = PAL_NONE;
 
 				Roadside roadside = GetRoadside(ti->tile);
 
@@ -1220,34 +1220,30 @@ static void DrawTile_Road(TileInfo *ti)
 				SpriteID rail = GetCustomRailSprite(rti, ti->tile, RTSG_CROSSING) + axis;
 				DrawGroundSprite(rail, PAL_NONE);
 				DrawRailTileSeq(ti, &_crossing_layout, TO_CATENARY, rail, 0, PAL_NONE);
-
-				if (HasCatenaryDrawn(GetRailType(ti->tile))) DrawCatenary(ti);
-				break;
-			}
-
-			SpriteID image = rti->base_sprites.crossing;
-			PaletteID pal = PAL_NONE;
-
-			if (GetCrossingRoadAxis(ti->tile) == AXIS_X) image++;
-			if (IsCrossingBarred(ti->tile)) image += 2;
-
-			Roadside roadside = GetRoadside(ti->tile);
-
-			if (AlwaysDrawUnpavedRoads(ti->tile, roadside)) {
-				image += 8;
 			} else {
-				switch (roadside) {
-					case ROADSIDE_BARREN: pal = PALETTE_TO_BARE_LAND; break;
-					case ROADSIDE_GRASS:  break;
-					default:              image += 4; break; // Paved
+				SpriteID image = rti->base_sprites.crossing;
+
+				if (GetCrossingRoadAxis(ti->tile) == AXIS_X) image++;
+				if (IsCrossingBarred(ti->tile)) image += 2;
+
+				Roadside roadside = GetRoadside(ti->tile);
+
+				if (AlwaysDrawUnpavedRoads(ti->tile, roadside)) {
+					image += 8;
+				} else {
+					switch (roadside) {
+						case ROADSIDE_BARREN: pal = PALETTE_TO_BARE_LAND; break;
+						case ROADSIDE_GRASS:  break;
+						default:              image += 4; break; // Paved
+					}
 				}
-			}
 
-			DrawGroundSprite(image, pal);
+				DrawGroundSprite(image, pal);
 
-			/* PBS debugging, draw reserved tracks darker */
-			if (_game_mode != GM_MENU && _settings_client.gui.show_track_reservation && HasCrossingReservation(ti->tile)) {
-				DrawGroundSprite(GetCrossingRoadAxis(ti->tile) == AXIS_Y ? GetRailTypeInfo(GetRailType(ti->tile))->base_sprites.single_x : GetRailTypeInfo(GetRailType(ti->tile))->base_sprites.single_y, PALETTE_CRASH);
+				/* PBS debugging, draw reserved tracks darker */
+				if (_game_mode != GM_MENU && _settings_client.gui.show_track_reservation && HasCrossingReservation(ti->tile)) {
+					DrawGroundSprite(GetCrossingRoadAxis(ti->tile) == AXIS_Y ? GetRailTypeInfo(GetRailType(ti->tile))->base_sprites.single_x : GetRailTypeInfo(GetRailType(ti->tile))->base_sprites.single_y, PALETTE_CRASH);
+				}
 			}
 
 			if (HasTileRoadType(ti->tile, ROADTYPE_TRAM)) {
