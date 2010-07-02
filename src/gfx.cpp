@@ -62,12 +62,36 @@ static void GfxMainBlitter(const Sprite *sprite, int x, int y, BlitterMode mode,
 /**
  * Text drawing parameters, which can change while drawing a line, but are kept between multiple parts
  * of the same text, e.g. on line breaks.
- **/
+ */
 struct DrawStringParams {
 	FontSize fontsize;
 	TextColour cur_colour, prev_colour;
 
 	DrawStringParams(TextColour colour) : fontsize(FS_NORMAL), cur_colour(colour), prev_colour(colour) {}
+
+	/** Switch to new colour \a c.
+	 * @param c New colour to use.
+	 */
+	FORCEINLINE void SetColour(TextColour c)
+	{
+		assert(c >=  TC_BLUE && c <= TC_BLACK);
+		this->prev_colour = this->cur_colour;
+		this->cur_colour = c;
+	}
+
+	/** Switch to previous colour. */
+	FORCEINLINE void SetPreviousColour()
+	{
+		Swap(this->cur_colour, this->prev_colour);
+	}
+
+	/** Switch to using a new font \a f.
+	 * @param f New font to use.
+	 */
+	FORCEINLINE void SetFontSize(FontSize f)
+	{
+		this->fontsize = f;
+	}
 };
 
 static ReusableBuffer<uint8> _cursor_backup;
@@ -988,19 +1012,18 @@ skip_cont:;
 			y += GetCharacterHeight(params.fontsize);
 			goto check_bounds;
 		} else if (c >= SCC_BLUE && c <= SCC_BLACK) { // change colour?
-			params.prev_colour = params.cur_colour;
-			params.cur_colour = (TextColour)(c - SCC_BLUE);
+			params.SetColour((TextColour)(c - SCC_BLUE));
 			goto switch_colour;
 		} else if (c == SCC_PREVIOUS_COLOUR) { // revert to the previous colour
-			Swap(params.cur_colour, params.prev_colour);
+			params.SetPreviousColour();
 			goto switch_colour;
 		} else if (c == SCC_SETX || c == SCC_SETXY) { // {SETX}/{SETXY}
 			/* The characters are handled before calling this. */
 			NOT_REACHED();
 		} else if (c == SCC_TINYFONT) { // {TINYFONT}
-			params.fontsize = FS_SMALL;
+			params.SetFontSize(FS_SMALL);
 		} else if (c == SCC_BIGFONT) { // {BIGFONT}
-			params.fontsize = FS_LARGE;
+			params.SetFontSize(FS_LARGE);
 		} else {
 			DEBUG(misc, 0, "[utf8] unknown string command character %d", c);
 		}
