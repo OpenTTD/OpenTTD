@@ -783,7 +783,7 @@ static bool IsRoadAllowedHere(Town *t, TileIndex tile, DiagDirection dir)
 			/* No, try if we are able to build a road piece there.
 			 * If that fails clear the land, and if that fails exit.
 			 * This is to make sure that we can build a road here later. */
-			if (DoCommand(tile, ((dir == DIAGDIR_NW || dir == DIAGDIR_SE) ? ROAD_X : ROAD_Y), 0, DC_AUTO, CMD_BUILD_ROAD).Failed() &&
+			if (DoCommand(tile, ((dir == DIAGDIR_NW || dir == DIAGDIR_SE) ? ROAD_Y : ROAD_X), 0, DC_AUTO, CMD_BUILD_ROAD).Failed() &&
 					DoCommand(tile, 0, 0, DC_AUTO, CMD_LANDSCAPE_CLEAR).Failed())
 				return false;
 		}
