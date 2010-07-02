@@ -203,6 +203,17 @@ Function DetermineSVNVersion()
 						revision = Mid(oExec.StdOut.ReadLine(), 7)
 						revision = Mid(revision, 1, InStr(revision, ")") - 1)
 					End If ' Err.Number = 0
+					If revision = "" Then
+						' No revision? Maybe it is a custom git-svn clone
+						' Reset error number as WshShell.Exec will not do that on success
+						Err.Clear
+						Set oExec = WshShell.Exec("git log --pretty=format:%b --grep=" & Chr(34) & "git-svn-id:.*@[0-9]*" & Chr(34) & " -1 ../src")
+						If Err.Number = 0 Then
+							revision = oExec.StdOut.ReadLine()
+							revision = Mid(revision, InStr(revision, "@") + 1)
+							revision = Mid(revision, 1, InStr(revision, " ") - 1)
+						End If ' Err.Number = 0
+					End If ' revision = ""
 				End If ' Err.Number = 0
 			End If ' oExec.ExitCode = 0
 		End If ' Err.Number = 0

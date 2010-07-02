@@ -94,8 +94,12 @@ elif [ -d "$ROOT_DIR/.git" ]; then
 	fi
 	HASH=`LC_ALL=C git rev-parse --verify HEAD 2>/dev/null`
 	REV="g`echo $HASH | cut -c1-8`"
-	BRANCH=`git branch|grep '[*]' | sed 's@\* @@;s@^master$@@'`
-	REV_NR=`LC_ALL=C git log --pretty=format:%s "$SRC_DIR" | grep "^(svn r[0-9]*)" | head -n 1 | sed "s@.*(svn r\([0-9]*\)).*@\1@"`
+	BRANCH=`git symbolic-ref -q HEAD 2>/dev/null | sed 's@.*/@@;s@^master$@@'`
+	REV_NR=`LC_ALL=C git log --pretty=format:%s --grep="^(svn r[0-9]*)" -1 -- "$SRC_DIR" | sed "s@.*(svn r\([0-9]*\)).*@\1@"`
+	if [ -z "$REV_NR" ]; then
+		# No rev? Maybe it is a custom git-svn clone
+		REV_NR=`LC_ALL=C git log --pretty=format:%b --grep="git-svn-id:.*@[0-9]*" -1 -- "$SRC_DIR" | sed "s@.*\@\([0-9]*\).*@\1@"`
+	fi
 elif [ -d "$ROOT_DIR/.hg" ]; then
 	# We are a hg checkout
 	if [ -n "`hg status \"$SRC_DIR\" | grep -v '^?'`" ]; then
