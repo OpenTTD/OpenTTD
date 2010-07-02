@@ -527,7 +527,7 @@ static int DrawString(int left, int right, int top, char *str, const char *last,
 			continue;
 		}
 
-		if ((align & SA_MASK) != SA_LEFT) {
+		if ((align & SA_HOR_MASK) != SA_LEFT) {
 			DEBUG(grf, 1, "Using SETX and/or SETXY when not aligned to the left. Fixing alignment...");
 
 			/* For left alignment and change the left so it will roughly be in the
@@ -554,7 +554,7 @@ static int DrawString(int left, int right, int top, char *str, const char *last,
 	}
 
 	/* In case we have a RTL language we swap the alignment. */
-	if (!(align & SA_FORCE) && _dynlang.text_dir == TD_RTL && align != SA_CENTER) align ^= SA_RIGHT;
+	if (!(align & SA_FORCE) && _dynlang.text_dir == TD_RTL && !(align & SA_STRIP) && (align & SA_HOR_MASK) != SA_HOR_CENTER) align ^= SA_RIGHT;
 
 	for (UChar **iter = setx_offsets.Begin(); iter != setx_offsets.End(); iter++) {
 		UChar *to_draw = *iter;
@@ -575,14 +575,14 @@ static int DrawString(int left, int right, int top, char *str, const char *last,
 		 * seen as lastof(todraw) and width as lengthof(todraw). They differ by 1.
 		 * So most +1/-1 additions are to move from lengthof to 'indices'.
 		 */
-		switch (align & SA_MASK) {
+		switch (align & SA_HOR_MASK) {
 			case SA_LEFT:
 				/* right + 1 = left + w */
 				left = initial_left + offset;
 				right = left + w - 1;
 				break;
 
-			case SA_CENTER:
+			case SA_HOR_CENTER:
 				left  = RoundDivSU(initial_right + 1 + initial_left - w, 2);
 				/* right + 1 = left + w */
 				right = left + w - 1;
@@ -605,7 +605,7 @@ static int DrawString(int left, int right, int top, char *str, const char *last,
 		}
 	}
 
-	return align == SA_RIGHT ? min_left : max_right;
+	return (align & SA_HOR_MASK) == SA_RIGHT ? min_left : max_right;
 }
 
 /**
@@ -824,9 +824,7 @@ Dimension GetStringMultiLineBoundingBox(StringID str, const Dimension &suggestio
  * @param bottom The bottom most position to draw on.
  * @param str    String to draw.
  * @param colour Colour used for drawing the string, see DoDrawString() for details
- * @param align  The alignment of the string when drawing left-to-right. In the
- *               case a right-to-left language is chosen this is inverted so it
- *               will be drawn in the right direction.
+ * @param align  The horizontal and vertical alignment of the string.
  * @param underline Whether to underline all strings
  *
  * @return The bottom to where we have written.
@@ -857,7 +855,7 @@ int DrawStringMultiLine(int left, int right, int top, int bottom, StringID str, 
 		total_height = (num + 1) * mt;
 	}
 
-	int y = (align == SA_CENTER) ? RoundDivSU(bottom + top - total_height, 2) : top;
+	int y = ((align & SA_VERT_MASK) == SA_VERT_CENTER) ? RoundDivSU(bottom + top - total_height, 2) : top;
 	const char *src = buffer;
 
 	DrawStringParams params(colour);

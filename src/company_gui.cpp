@@ -149,7 +149,7 @@ static void DrawCategories(const Rect &r)
 {
 	int y = r.top;
 
-	DrawString(r.left, r.right, y, STR_FINANCES_EXPENDITURE_INCOME_TITLE, TC_FROMSTRING, SA_CENTER, true);
+	DrawString(r.left, r.right, y, STR_FINANCES_EXPENDITURE_INCOME_TITLE, TC_FROMSTRING, SA_HOR_CENTER, true);
 	y += FONT_HEIGHT_NORMAL + EXP_LINESPACE;
 
 	int type = _settings_client.gui.expenses_layout;
@@ -1119,7 +1119,7 @@ class SelectCompanyManagerFaceWindow : public Window
 
 			/* Draw the value/bool in white (0xC). If the button clicked adds 1px to x and y text coordinates (IsWindowWidgetLowered()). */
 			DrawString(nwi_widget->pos_x + nwi_widget->IsLowered(), nwi_widget->pos_x + nwi_widget->current_x - 1 - nwi_widget->IsLowered(),
-					nwi_widget->pos_y + 1 + nwi_widget->IsLowered(), str, TC_WHITE, SA_CENTER);
+					nwi_widget->pos_y + 1 + nwi_widget->IsLowered(), str, TC_WHITE, SA_HOR_CENTER);
 		}
 	}
 

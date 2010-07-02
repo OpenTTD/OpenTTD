@@ -367,7 +367,7 @@ public:
 			case SLWW_DETAILS: {
 				GfxFillRect(r.left + WD_FRAMERECT_LEFT, r.top + WD_FRAMERECT_TOP,
 						r.right - WD_FRAMERECT_RIGHT, r.top + FONT_HEIGHT_NORMAL * 2 + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM, 0x0A);
-				DrawString(r.left, r.right, r.top + FONT_HEIGHT_NORMAL / 2 + WD_FRAMERECT_TOP, STR_SAVELOAD_DETAIL_CAPTION, TC_FROMSTRING, SA_CENTER);
+				DrawString(r.left, r.right, r.top + FONT_HEIGHT_NORMAL / 2 + WD_FRAMERECT_TOP, STR_SAVELOAD_DETAIL_CAPTION, TC_FROMSTRING, SA_HOR_CENTER);
 
 				if (this->selected == NULL) break;
 

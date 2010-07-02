@@ -408,7 +408,7 @@ protected:
 
 			for (int i = 0; i < this->num_on_x_axis; i++) {
 				SetDParam(0, label);
-				DrawString(x + 1, x + x_sep - 1, y, STR_GRAPH_Y_LABEL_NUMBER, graph_axis_label_colour, SA_CENTER);
+				DrawString(x + 1, x + x_sep - 1, y, STR_GRAPH_Y_LABEL_NUMBER, graph_axis_label_colour, SA_HOR_CENTER);
 
 				label += this->x_values_increment;
 				x += x_sep;
@@ -1439,7 +1439,7 @@ struct PerformanceRatingDetailWindow : Window {
 
 		/* Draw it */
 		SetDParam(0, Clamp(val, 0, needed) * 100 / needed);
-		DrawString(this->bar_left, this->bar_right, text_top, STR_PERFORMANCE_DETAIL_PERCENT, TC_FROMSTRING, SA_CENTER);
+		DrawString(this->bar_left, this->bar_right, text_top, STR_PERFORMANCE_DETAIL_PERCENT, TC_FROMSTRING, SA_HOR_CENTER);
 
 		/* SCORE_LOAN is inversed */
 		if (score_type == SCORE_LOAN) val = needed - val;

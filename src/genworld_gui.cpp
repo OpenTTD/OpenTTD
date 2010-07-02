@@ -1220,17 +1220,17 @@ struct GenerateProgressWindow : public Window {
 				DrawFrameRect(r.left, r.top, r.right, r.bottom, COLOUR_GREY, FR_BORDERONLY);
 				DrawFrameRect(r.left + 1, r.top + 1, (int)((r.right - r.left - 2) * _gws.percent / 100) + r.left + 1, r.bottom - 1, COLOUR_MAUVE, FR_NONE);
 				SetDParam(0, _gws.percent);
-				DrawString(r.left, r.right, r.top + 5, STR_GENERATION_PROGRESS, TC_FROMSTRING, SA_CENTER);
+				DrawString(r.left, r.right, r.top + 5, STR_GENERATION_PROGRESS, TC_FROMSTRING, SA_HOR_CENTER);
 				break;
 
 			case GPWW_PROGRESS_TEXT:
 				/* Tell which class we are generating */
-				DrawString(r.left, r.right, r.top, _gws.cls, TC_FROMSTRING, SA_CENTER);
+				DrawString(r.left, r.right, r.top, _gws.cls, TC_FROMSTRING, SA_HOR_CENTER);
 
 				/* And say where we are in that class */
 				SetDParam(0, _gws.current);
 				SetDParam(1, _gws.total);
-				DrawString(r.left, r.right, r.top + FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL, STR_GENERATION_PROGRESS_NUM, TC_FROMSTRING, SA_CENTER);
+				DrawString(r.left, r.right, r.top + FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL, STR_GENERATION_PROGRESS_NUM, TC_FROMSTRING, SA_HOR_CENTER);
 		}
 	}
 };

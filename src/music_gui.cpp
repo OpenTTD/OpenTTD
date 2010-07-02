@@ -613,7 +613,7 @@ struct MusicWindow : public Window {
 					str = STR_MUSIC_TITLE_NAME;
 					SetDParamStr(0, GetSongName(_music_wnd_cursong - 1));
 				}
-				DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, str, TC_FROMSTRING, SA_CENTER);
+				DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, str, TC_FROMSTRING, SA_HOR_CENTER);
 			} break;
 
 			case MW_MUSIC_VOL: case MW_EFFECT_VOL: {

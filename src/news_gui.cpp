@@ -1136,7 +1136,7 @@ struct MessageOptionsWindow : Window {
 		if (widget >= WIDGET_NEWSOPT_START_OPTION && widget < WIDGET_NEWSOPT_END_OPTION && (widget -  WIDGET_NEWSOPT_START_OPTION) % MOS_WIDG_PER_SETTING == 1) {
 			/* Draw the string of each setting on each button. */
 			int i = (widget -  WIDGET_NEWSOPT_START_OPTION) / MOS_WIDG_PER_SETTING;
-			DrawString(r.left, r.right, r.top + 2, this->message_opt[_news_type_data[i].display], TC_BLACK, SA_CENTER);
+			DrawString(r.left, r.right, r.top + 2, this->message_opt[_news_type_data[i].display], TC_BLACK, SA_HOR_CENTER);
 		}
 	}
 
