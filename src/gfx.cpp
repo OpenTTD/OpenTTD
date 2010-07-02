@@ -842,17 +842,17 @@ int DrawStringMultiLine(int left, int right, int top, int bottom, StringID str, 
 	GetString(buffer, str, lastof(buffer));
 
 	uint32 tmp = FormatStringLinebreaks(buffer, lastof(buffer), maxw);
-	int num = GB(tmp, 0, 16);
+	int num = GB(tmp, 0, 16) + 1;
 
 	int mt = GetCharacterHeight((FontSize)GB(tmp, 16, 16));
-	int total_height = (num + 1) * mt;
+	int total_height = num * mt;
 
 	if (total_height > maxh) {
 		/* Check there's room enough for at least one line. */
 		if (maxh < mt) return top;
 
-		num = maxh / mt - 1;
-		total_height = (num + 1) * mt;
+		num = maxh / mt;
+		total_height = num * mt;
 	}
 
 	int y = ((align & SA_VERT_MASK) == SA_VERT_CENTER) ? RoundDivSU(bottom + top - total_height, 2) : top;
@@ -869,7 +869,7 @@ int DrawStringMultiLine(int left, int right, int top, int bottom, StringID str, 
 			WChar c = Utf8Consume(&src);
 			if (c == 0) {
 				y += mt;
-				if (--num < 0) {
+				if (--num <= 0) {
 					return y;
 				}
 				break;
