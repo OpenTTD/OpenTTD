@@ -373,6 +373,7 @@ const SettingDesc _settings[] = {
 	 SDT_CONDVAR(GameSettings, economy.town_layout,                  SLE_UINT8, 59, SL_MAX_VERSION, 0,MS,TL_ORIGINAL,TL_BEGIN,NUM_TLS - 1, 1, STR_CONFIG_SETTING_TOWN_LAYOUT,  TownFoundingChanged),
 	SDT_CONDBOOL(GameSettings, economy.allow_town_roads,                       113, SL_MAX_VERSION, 0,NN,  true,                    STR_CONFIG_SETTING_ALLOW_TOWN_ROADS,       NULL),
 	 SDT_CONDVAR(GameSettings, economy.found_town,                   SLE_UINT8,128, SL_MAX_VERSION, 0,MS,TF_FORBIDDEN,TF_BEGIN,TF_END - 1, 1, STR_CONFIG_SETTING_TOWN_FOUNDING, TownFoundingChanged),
+	SDT_CONDBOOL(GameSettings, economy.allow_town_level_crossings,             143, SL_MAX_VERSION, 0,NN,  true,                    STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS, NULL),
 
 	     SDT_VAR(GameSettings, vehicle.train_acceleration_model,     SLE_UINT8,                     0,MS,     0,     0,       1, 1, STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL, TrainAccelerationModelChanged),
 	 SDT_CONDVAR(GameSettings, vehicle.roadveh_acceleration_model,   SLE_UINT8,139, SL_MAX_VERSION, 0,MS,     0,     0,       1, 1, STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL, RoadVehAccelerationModelChanged),

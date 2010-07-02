@@ -350,6 +350,7 @@ struct EconomySettings {
 	TownFoundingByte found_town;             ///< town founding, @see TownFounding
 	bool   station_noise_level;              ///< build new airports when the town noise level is still within accepted limits
 	uint16 town_noise_population[3];         ///< population to base decision on noise evaluation (@see town_council_tolerance)
+	bool   allow_town_level_crossings;       ///< towns are allowed to build level crossings
 };
 
 /** Settings related to stations. */
