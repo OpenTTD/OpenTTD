@@ -16,10 +16,13 @@
 #include "console_internal.h"
 #include "window_func.h"
 #include "string_func.h"
+#include "strings_func.h"
 #include "gfx_func.h"
 #include "settings_type.h"
 #include "console_func.h"
 #include "rev.h"
+
+#include "table/strings.h"
 
 static const uint ICON_HISTORY_SIZE       = 20;
 static const uint ICON_LINE_SPACING       =  2;
@@ -174,7 +177,7 @@ struct IConsoleWindow : Window
 	IConsoleWindow() : Window()
 	{
 		_iconsole_mode = ICONSOLE_OPENED;
-		this->line_height = FONT_HEIGHT_NORMAL + ICON_LINE_SPACING;
+		this->line_height = FONT_HEIGHT_NORMAL;
 		this->line_offset = GetStringBoundingBox("] ").width + 5;
 
 		this->InitNested(&_console_window_desc, 0);
@@ -188,13 +191,14 @@ struct IConsoleWindow : Window
 
 	virtual void OnPaint()
 	{
-		const int max = (this->height / this->line_height) - 1;
 		const int right = this->width - 5;
 
-		const IConsoleLine *print = IConsoleLine::Get(IConsoleWindow::scroll);
 		GfxFillRect(this->left, this->top, this->width, this->height - 1, 0);
-		for (int i = 0; i < max && print != NULL; i++, print = print->previous) {
-			DrawString(5, right, this->height - (2 + i) * this->line_height, print->buffer, print->colour, SA_LEFT | SA_FORCE);
+		int ypos = this->height - this->line_height - ICON_LINE_SPACING;
+		for (const IConsoleLine *print = IConsoleLine::Get(IConsoleWindow::scroll); print != NULL; print = print->previous) {
+			SetDParamStr(0, print->buffer);
+			ypos = DrawStringMultiLine(5, right, top, ypos, STR_JUST_RAW_STRING, print->colour, SA_LEFT | SA_BOTTOM | SA_FORCE) - ICON_LINE_SPACING;
+			if (ypos <= top) break;
 		}
 		/* If the text is longer than the window, don't show the starting ']' */
 		int delta = this->width - this->line_offset - _iconsole_cmdline.width - ICON_RIGHT_BORDERWIDTH;
