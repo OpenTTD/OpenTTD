@@ -22,6 +22,7 @@
  * \li IsEnd for all lists.
  * \li AIIndustry::GetIndustryID
  * \li AIRail::GetMaxSpeed
+ * \li AIRail::ERR_RAILTYPE_DISALLOWS_CROSSING
  *
  * API removals:
  * \li HasNext for all lists.

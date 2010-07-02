@@ -546,6 +546,10 @@ CommandCost CmdBuildRoad(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 
 			if (GetRailTileType(tile) != RAIL_TILE_NORMAL) goto do_clear;
 
+			if (RailNoLevelCrossings(GetRailType(tile))) {
+				return_cmd_error(STR_ERROR_CROSSING_DISALLOWED);
+			}
+
 			Axis roaddir;
 			switch (GetTrackBits(tile)) {
 				case TRACK_BIT_X:
