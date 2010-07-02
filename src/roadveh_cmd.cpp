@@ -1569,10 +1569,8 @@ static bool RoadVehController(RoadVehicle *v)
 	v->current_order_time++;
 	if (v->reverse_ctr != 0) v->reverse_ctr--;
 
-	RoadVehCheckTrainCrash(v);
-
 	/* handle crashed */
-	if (v->vehstatus & VS_CRASHED) {
+	if (v->vehstatus & VS_CRASHED || RoadVehCheckTrainCrash(v)) {
 		return RoadVehIsCrashed(v);
 	}
 
