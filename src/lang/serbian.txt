@@ -1469,6 +1469,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 mreže
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 mreže
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :proizvoljan plan
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Naseljima je dozvoljeno da grade kolovoze: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}Naseljima je dozvoljeno da grade putne prelaze: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Naseljima je dozvoljeno da kontrolišu nivo buke aerodroma: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Osnivanje naselja u toku partije: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :zabranjeno
@@ -3753,6 +3754,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Neophodn
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Nedostaje odgovarajuća železnička pruga
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Potrebno je prvo ukloniti železničku prugu
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Put je jednosmeran ili je blokiran
+STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Putni prelaz nije dozvoljen za ovu vrstu pruge
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Izgradnja signalizacije ovde nije moguća...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Izgradnja železničke pruge ovde nije moguća...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Nemoguće je ukloniti železničku prugu odatle...

@@ -1275,6 +1275,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :rejilla 2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :rejilla 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :aleatorio
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Permitir que los pueblos construyan carreteras: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}Permitir a las ciudades construir pasos a nivel: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Permitir al pueblo controlar el nivel de ruido de los aeropuertos: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Fundar pueblos: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :prohibido
@@ -3543,6 +3544,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Primero 
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Tramo de ferrocarril no apropiado
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Se debe retirar primero tramo de vía
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Carretera de un solo sentido o bloqueada
+STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}No se permiten pasos a nivel para este tipo de raíl
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}No se pueden construir señales aquí...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}No se pueden construir raíles aquí...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}No se pueden retirar raíles aquí...

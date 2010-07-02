@@ -22,7 +22,7 @@
 STR_NULL                                                        :
 STR_EMPTY                                                       :
 STR_UNDEFINED                                                   :(teaghrán gan sainmhíniú)
-STR_JUST_NOTHING                                                :Ní dhéanfaidh aon ní
+STR_JUST_NOTHING                                                :Tada
 
 # Cargo related strings
 # Plural cargo name
@@ -1951,6 +1951,10 @@ STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Tógáil
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Tóg cuid de bhóthar. Déantar tógáil/baint a scoránú le Ctrl agus tú ag tógáil bóithre
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Tóg an chuid den trambhealach. Déantar tóg/bain a scoránú le Ctrl agus trambhealach á thógáil
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Tóg cuid den bhóthar ag úsáid an mód Uathbhóithre. Athraítear idir tógáil agus baint le Ctrl agus bóithre á dtógáil
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Tóg stáisiún bus. Is féidir stáisiúin a chur le chéile le Ctrl
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Tóg stáisiún tramanna paisinéirí. Is féidir stáisiúin a chur le chéile le Ctrl
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Tóg bá lódála leoraithe. Is féidir stáisiúin a chur le chéile le Ctrl
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Tóg stáisiún tramanna lastais. Is féidir stáisiúin a chur le chéile le Ctrl
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Tóg droichead bóthair
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Tóg droichead trambhealaigh
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Tóg tollán bóthair
@@ -2846,16 +2850,37 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :inneall gluaist
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :inneall gluaiste maglev
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Cost:as {CURRENCY} Meáchan: {WEIGHT_S}{}Luas: {VELOCITY}  Cumhacht: {POWER}{}Costas Coinneála {CURRENCY}/bl{}Toilleadh: {CARGO}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Costas: {CURRENCY} Meáchan: {WEIGHT_S}{}Luas: {VELOCITY}  Cumhacht: {POWER}  T.E. uasta: {6:FORCE}{}Costas Coinneála: {4:CURRENCY}/bl{}Toilleadh: {5:CARGO}
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Costas: {CURRENCY} Luas Uasta: {VELOCITY}{}Toilleadh: {CARGO}, {CARGO}{}Costas Coinneála: {CURRENCY}/bl
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Costas: {CURRENCY} Luas Uasta: {VELOCITY}{}Toilleadh: {CARGO}{}Costas Coinneála: {CURRENCY}/bl
 
 # Autoreplace window
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Ionadaigh{STRING}
+STR_REPLACE_VEHICLE_TRAIN                                       :Traein
+STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Feithicil Bóthair
+STR_REPLACE_VEHICLE_SHIP                                        :Long
+STR_REPLACE_VEHICLE_AIRCRAFT                                    :Aerárthach
 
+STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Roghnaigh an cineál innill le hathsholáthar
 
+STR_REPLACE_VEHICLES_START                                      :{BLACK}Tosaigh ag athsholáthar Feithiclí
+STR_REPLACE_NOT_REPLACING                                       :{BLACK}Níl athsholáthar ar bun
+STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Níl aon fheithicil roghnaithe
+STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Stop ag athsholáthar Feithiclí
 
+STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Ag athsholáthar: {ORANGE}{STRING}
+STR_REPLACE_ENGINES                                             :Innill
+STR_REPLACE_WAGONS                                              :Vaigíní
 
+STR_REPLACE_RAIL_VEHICLES                                       :Feithiclí Iarnróid
+STR_REPLACE_ELRAIL_VEHICLES                                     :Feithiclí Iarnróid Leictreacha
+STR_REPLACE_MONORAIL_VEHICLES                                   :Feithiclí Aonráille
 STR_REPLACE_MAGLEV_VEHICLES                                     :Feithiclí Maglev
 
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vaigíní a bhaint: {ORANGE}{STRING}
 
 # Vehicle view
+STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
 
 
@@ -2868,12 +2893,33 @@ STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Athfheis
 
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Aisiompaigh treo na traenach
 
+STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Taispeáin orduithe na traenach. Ctrl+Cliceáil chun amchlár na traenach a thaispeáint
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Taispeáin orduithe na feithicle. Ctrl+Cliceáil chun amchlár na feithicle a thaispeáint
+STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Taispeáin orduithe na loinge. Ctrl+Cliceáil chun amchlár na loinge a thaispeáint
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Taispeáin orduithe an aerárthaigh. Ctrl+Cliceáil chun amchlár an aerárthaigh a thaispeáint
 
+STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Taispeáin sonraí na traenach
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Taispeáin sonraí na feithicle bóthair
+STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Taispeáin sonraí na loinge
+STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Taispeáin sonraí an aerárthaigh
 
 
 # Messages in the start stop button in the vehicle view
+STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Ag Lódáil / Dílódáil
+STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Ag fágáil
+STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Briste síos
+STR_VEHICLE_STATUS_STOPPED                                      :{RED}Stoptha
+STR_VEHICLE_STATUS_TRAIN_STOPPING                               :{RED}Ag stopadh
+STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Ag stopadh, {VELOCITY}
+STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Gan chumhacht
 
+STR_VEHICLE_STATUS_HEADING_FOR_STATION                          :{LTBLUE}Ag déanamh ar {STATION}
+STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Ag déanamh ar {STATION}, {VELOCITY}
+STR_VEHICLE_STATUS_NO_ORDERS                                    :{LTBLUE}Gan ordú
+STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Gan ordú, {VELOCITY}
 
+STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Ag déanamh ar {WAYPOINT}
+STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Ag déanamh ar {WAYPOINT}, {VELOCITY}
 
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE}Ag dul chuig {DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Ag dul chuig {DEPOT}, {VELOCITY}
@@ -2917,7 +2963,9 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Toillead
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Creidmheasanna Aistrithe: {LTBLUE}{CURRENCY}
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Eatramh seirbhísithe: {LTBLUE}{COMMA}lá{BLACK}   Seirbhísiú deiridh: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Eatramh seirbhísithe: {LTBLUE}{COMMA}%{BLACK}   Seirbhísiú deiridh: {LTBLUE}{DATE_LONG}
 
+STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Ainmnigh traein
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Ainmnigh feithicil bóthair
 STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Ainmnigh long
 STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Ainmnigh aerárthach
@@ -2947,20 +2995,65 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Toillead
 
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Athfeistigh)
+STR_REFIT_TITLE                                                 :{GOLD}Roghnaigh an lastas le hiompar:
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Toilleadh nua: {GOLD}{CARGO}{}{BLACK}Costas an aisfheistithe: {GOLD}{CURRENCY}
 
+STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Roghnaigh an cineál lastais a iompróidh an traein
+STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Roghnaigh an cineál lastais a iompróidh an fheithicil bóthair
+STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}Roghnaigh an cineál lastais a iompróidh an long
+STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Roghnaigh an cineál lastais a iompróidh an t-aerárthach
 
+STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Athfheistigh traein
+STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Athfheistigh feithicil bóthair
+STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Athfheistigh long
+STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Athfheistigh aerárthach
 
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Athfheistigh traein chun an cineál lastais atá aibhsithe a iompar
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Athfheistigh feithicil bóthair chun an cineál lastais atá aibhsithe a iompar
+STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Athfheistigh long chun an cineál lastais atá aibhsithe a iompar
+STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Athfheistigh aerárthach chun an cineál lastais atá aibhsithe a iompar
 
 # Order view
+STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Orduithe)
+STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Amchlár
+STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Athraigh chuig amharc an amchláir
 
+STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
+STR_ORDER_TEXT                                                  :{STRING} {STRING}
 
+STR_ORDERS_END_OF_ORDERS                                        :- - Deireadh na nOrduithe - -
+STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Deireadh na nOrduithe Comhroinnte - -
 
 # Order bottom buttons
+STR_ORDER_NON_STOP                                              :{BLACK}Gan stad
+STR_ORDER_GO_TO                                                 :Gabh chuig
+STR_ORDER_GO_NON_STOP_TO                                        :Gabh gan stad chuig
+STR_ORDER_GO_VIA                                                :Gabh trí
+STR_ORDER_GO_NON_STOP_VIA                                       :Gabh gan stad trí
 
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Lasta iomlán de lastas ar bith
+STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Lódáil má tá fáil air
+STR_ORDER_DROP_FULL_LOAD_ALL                                    :Lasta iomlán de gach lastas
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :Lasta iomlán de lastas ar bith
+STR_ORDER_DROP_NO_LOADING                                       :Ná lódáil
 
+STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Dílódáil gach rud
+STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Dílódáil má ghlactar leis
+STR_ORDER_DROP_UNLOAD                                           :Dílódáil gach rud
+STR_ORDER_DROP_TRANSFER                                         :Aistrigh
+STR_ORDER_DROP_NO_UNLOADING                                     :Ná dílódáil
 
+STR_ORDER_REFIT                                                 :{BLACK}Athfheistigh
 
+STR_ORDER_SERVICE                                               :{BLACK}Seirbhísigh
+STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Téigh i gcónaí
+STR_ORDER_DROP_SERVICE_DEPOT                                    :Seirbhísigh más gá
+STR_ORDER_DROP_HALT_DEPOT                                       :Stop
+STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Téigh thar an t-ordú seo ach amháin má theastaíonn seirbhísiú
 
+STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Céatadán lódáilte
+STR_ORDER_CONDITIONAL_RELIABILITY                               :Iontaofacht
+STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Luas uasta
 STR_ORDER_CONDITIONAL_AGE                                       :Aois na feithicle (blianta)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Seirbhís ag teastáil
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :I gcónaí
@@ -2988,12 +3081,25 @@ STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Gabh Chu
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Gabh chuig an iosta is gaire
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Gabh chuig an haingear is gaire
 STR_ORDER_CONDITIONAL                                           :Léim choinníollach ordaithe
+STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Cuir isteach ard-ordú
 
 
 # String parts to build the order string
+STR_ORDER_GO_TO_WAYPOINT                                        :Gabh trí {WAYPOINT}
+STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Gabh gan stad trí {WAYPOINT}
 
+STR_ORDER_SERVICE_AT                                            :Seirbhísigh ag
+STR_ORDER_SERVICE_NON_STOP_AT                                   :Seirbhísigh gan stad ag
 
+STR_ORDER_NEAREST_DEPOT                                         :is gaire
+STR_ORDER_NEAREST_HANGAR                                        :an Haingear is gaire
+STR_ORDER_TRAIN_DEPOT                                           :Iosta Traenach
+STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Iosta Feithiclí Bóthair
+STR_ORDER_SHIP_DEPOT                                            :Iosta Traenach
+STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
+STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
+STR_ORDER_REFIT_ORDER                                           :(Athfheistigh go {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Athfheistigh go {STRING} agus stop)
 STR_ORDER_STOP_ORDER                                            :(Stop)
 
@@ -3014,6 +3120,7 @@ STR_ORDER_NO_UNLOAD                                             :(Ná dílódái
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Ná dílódáil agus fan ar lasta iomlán)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Ná dílódáil agus fan ar lasta iomlán ar bith)
 
+STR_ORDER_STOP_LOCATION_NEAR_END                                :[taobh is gaire]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[lár]
 STR_ORDER_STOP_LOCATION_FAR_END                                 :[taobh is faide]
 
@@ -3090,6 +3197,7 @@ STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Briseadh
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Briseadh air
 STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Nuair a bheidh teachtaireacht loga AI mar an gcéanna leis an teaghrán seo, cuirtear an cluiche ar sos.
 STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Meaitseáil an cás
+STR_AI_DEBUG_CONTINUE                                           :{BLACK}Lean ar aghaidh
 
 STR_ERROR_NO_AI                                                 :{WHITE}Tá OpenTTD gan tacaíocht do AIanna...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... níl aon AI ar fáil!
@@ -3894,16 +4002,16 @@ STR_FORMAT_BUOY_NAME                                            :{TOWN} Baoi
 STR_FORMAT_BUOY_NAME_SERIAL                                     :{TOWN} Baoi #{COMMA}
 STR_FORMAT_COMPANY_NUM                                          :(Cuideachta {COMMA})
 STR_FORMAT_GROUP_NAME                                           :Grúpa {COMMA}
-STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
-STR_FORMAT_WAYPOINT_NAME                                        :{TOWN} Pointe bealaigh
-STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN} Pointe bealaigh #{COMMA}
+STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING} {0:TOWN}
+STR_FORMAT_WAYPOINT_NAME                                        :Pointe bealaigh {TOWN}
+STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Pointe bealaigh {TOWN} #{COMMA}
 
 STR_FORMAT_DEPOT_NAME_TRAIN                                     :Iosta Traenacha {TOWN}
-STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} Iosta Traenacha #{COMMA}
+STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :Iosta Traenacha {TOWN} #{COMMA}
 STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :Iosta Feithiclí Bóthair {TOWN}
-STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} Iosta Feithiclí Bóthair #{COMMA}
-STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} Iosta Long
-STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} Iosta Long #{COMMA}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :Iosta Feithiclí Bóthair {TOWN} #{COMMA}
+STR_FORMAT_DEPOT_NAME_SHIP                                      :Iosta Long {TOWN}
+STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :Iosta Long {TOWN} #{COMMA}
 STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{STATION} Haingear
 
 STR_UNKNOWN_STATION                                             :stáisiún anaithnid
