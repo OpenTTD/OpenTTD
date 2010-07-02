@@ -1275,8 +1275,12 @@ static WindowDesc _vehicle_list_desc(
 static void ShowVehicleListWindowLocal(CompanyID company, uint16 VLW_flag, VehicleType vehicle_type, uint16 unique_number)
 {
 	if (!Company::IsValidID(company)) {
-		_vehicle_list_desc.flags |= WDF_CONSTRUCTION;
 		company = _local_company;
+		/* This can happen when opening the vehicle list as a spectator.
+		 * While it would be cleaner to check this somewhere else, having
+		 * it here reduces code duplication */
+		if (!Company::IsValidID(company)) return;
+		_vehicle_list_desc.flags |= WDF_CONSTRUCTION;
 	} else {
 		_vehicle_list_desc.flags &= ~WDF_CONSTRUCTION;
 	}
