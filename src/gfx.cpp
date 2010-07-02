@@ -827,7 +827,7 @@ Dimension GetStringMultiLineBoundingBox(StringID str, const Dimension &suggestio
  * @param align  The horizontal and vertical alignment of the string.
  * @param underline Whether to underline all strings
  *
- * @return The bottom to where we have written.
+ * @return If \a align is #SA_BOTTOM, the top to where we have written, else the bottom to where we have written.
  */
 int DrawStringMultiLine(int left, int right, int top, int bottom, StringID str, TextColour colour, StringAlignment align, bool underline)
 {
@@ -847,38 +847,73 @@ int DrawStringMultiLine(int left, int right, int top, int bottom, StringID str, 
 	int mt = GetCharacterHeight((FontSize)GB(tmp, 16, 16));
 	int total_height = num * mt;
 
+	int skip_lines = 0;
 	if (total_height > maxh) {
-		/* Check there's room enough for at least one line. */
-		if (maxh < mt) return top;
-
-		num = maxh / mt;
+		if (maxh < mt) return top; //  Not enough room for a single line.
+		if ((align & SA_VERT_MASK) == SA_BOTTOM) {
+			skip_lines = num;
+			num = maxh / mt;
+			skip_lines -= num;
+		} else {
+			num = maxh / mt;
+		}
 		total_height = num * mt;
 	}
 
-	int y = ((align & SA_VERT_MASK) == SA_VERT_CENTER) ? RoundDivSU(bottom + top - total_height, 2) : top;
+	int y;
+	switch (align & SA_VERT_MASK) {
+		case SA_TOP:
+			y = top;
+			break;
+
+		case SA_VERT_CENTER:
+			y = RoundDivSU(bottom + top - total_height, 2);
+			break;
+
+		case SA_BOTTOM:
+			y = bottom - total_height;
+			break;
+
+		default: NOT_REACHED();
+	}
+
 	const char *src = buffer;
-
 	DrawStringParams params(colour);
-
+	int written_top = bottom; // Uppermost position of rendering a line of text
 	for (;;) {
-		char buf2[DRAW_STRING_BUFFER];
-		strecpy(buf2, src, lastof(buf2));
-		DrawString(left, right, y, buf2, lastof(buf2), params, align, underline, false);
+		if (skip_lines == 0) {
+			char buf2[DRAW_STRING_BUFFER];
+			strecpy(buf2, src, lastof(buf2));
+			DrawString(left, right, y, buf2, lastof(buf2), params, align, underline, false);
+			if (written_top > y) written_top = y;
+			y += mt;
+			num--;
+		}
 
 		for (;;) {
 			WChar c = Utf8Consume(&src);
 			if (c == 0) {
-				y += mt;
-				if (--num <= 0) {
-					return y;
-				}
 				break;
 			} else if (c == SCC_SETX) {
 				src++;
 			} else if (c == SCC_SETXY) {
 				src += 2;
+			} else if (skip_lines > 0) {
+				/* Skipped drawing, so do additional processing to update params. */
+				if (c >= SCC_BLUE && c <= SCC_BLACK) {
+					params.SetColour((TextColour)(c - SCC_BLUE));
+				} else if (c == SCC_PREVIOUS_COLOUR) { // Revert to the previous colour.
+					params.SetPreviousColour();
+				} else if (c == SCC_TINYFONT) {
+					params.SetFontSize(FS_SMALL);
+				} else if (c == SCC_BIGFONT) {
+					params.SetFontSize(FS_LARGE);
+				}
+
 			}
 		}
+		if (skip_lines > 0) skip_lines--;
+		if (num == 0) return ((align & SA_VERT_MASK) == SA_BOTTOM) ? written_top : y;
 	}
 }
 
