@@ -122,4 +122,7 @@ int CheckHotkeyMatch(Hotkey<T> *list, uint16 keycode, T *w)
 	return -1;
 }
 
+void LoadHotkeysFromConfig();
+void SaveHotkeysToConfig();
+
 #endif /* HOTKEYS_H */

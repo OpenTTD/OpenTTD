@@ -998,6 +998,8 @@ void DeterminePaths(const char *exe)
 
 	_highscore_file = str_fmt("%shs.dat", _personal_dir);
 	_log_file = str_fmt("%sopenttd.log",  _personal_dir);
+	extern char *_hotkeys_file;
+	_hotkeys_file = str_fmt("%shotkeys.cfg",  _personal_dir);
 
 	/* Make the necessary folders */
 #if !defined(__MORPHOS__) && !defined(__AMIGA__) && defined(WITH_PERSONAL_DIR)

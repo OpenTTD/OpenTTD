@@ -66,6 +66,7 @@
 #include "core/random_func.hpp"
 #include "rail_gui.h"
 #include "core/backup_type.hpp"
+#include "hotkeys.h"
 
 #include "newgrf_commons.h"
 
@@ -575,6 +576,7 @@ int ttd_main(int argc, char *argv[])
 	AI::Uninitialize(true);
 	CheckConfig();
 	LoadFromHighScore();
+	LoadHotkeysFromConfig();
 
 	if (resolution.width != 0) { _cur_resolution = resolution; }
 	if (startyear != INVALID_YEAR) _settings_newgame.game_creation.starting_year = startyear;
@@ -758,6 +760,7 @@ int ttd_main(int argc, char *argv[])
 	/* only save config if we have to */
 	if (save_config) {
 		SaveToConfig();
+		SaveHotkeysToConfig();
 		SaveToHighScore();
 	}
 
