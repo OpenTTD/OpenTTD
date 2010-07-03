@@ -49,6 +49,10 @@ static const KeycodeNames _keycode_to_name[] = {
 	{"PAUSE", WKC_PAUSE},
 	{"PLUS", (WindowKeyCodes)'+'},
 	{"COMMA", (WindowKeyCodes)','},
+	{"NUM_PLUS", WKC_NUM_PLUS},
+	{"NUM_PLUS", WKC_NUM_MINUS},
+	{"=", WKC_EQUALS},
+	{"-", WKC_MINUS},
 };
 
 /**
@@ -200,7 +204,7 @@ void LoadHotkeyGroup(IniGroup *group, T *hotkey_list)
 		IniItem *item = group->GetItem(hotkey->name, false);
 		if (item != NULL) {
 			hotkey->keycodes.Clear();
-			ParseHotkeys(hotkey, item->value);
+			if (item->value != NULL) ParseHotkeys(hotkey, item->value);
 		}
 	}
 }
@@ -233,6 +237,7 @@ struct ScenarioEditorLandscapeGenerationWindow;
 struct OrdersWindow;
 struct BuildAirToolbarWindow;
 struct BuildDocksToolbarWindow;
+struct MainToolbarWindow;
 
 static void SaveLoadHotkeys(bool save)
 {
@@ -252,6 +257,7 @@ static void SaveLoadHotkeys(bool save)
 	SL_HOTKEYS(order, OrdersWindow);
 	SL_HOTKEYS(airtoolbar, BuildAirToolbarWindow);
 	SL_HOTKEYS(dockstoolbar, BuildDocksToolbarWindow);
+	SL_HOTKEYS(maintoolbar, MainToolbarWindow);
 
 
 #undef SL_HOTKEYS
