@@ -26,6 +26,7 @@
 #include "newgrf_airport.h"
 #include "widgets/dropdown_type.h"
 #include "core/geometry_func.hpp"
+#include "hotkeys.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -106,11 +107,9 @@ struct BuildAirToolbarWindow : Window {
 
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
-		switch (keycode) {
-			case '1': BuildAirClick_Airport(this); break;
-			case '2': BuildAirClick_Demolish(this); break;
-			default: return ES_NOT_HANDLED;
-		}
+		int num = CheckHotkeyMatch(airtoolbar_hotkeys, keycode, this);
+		if (num == -1) return ES_NOT_HANDLED;
+		this->OnClick(Point(), num, 1);
 		return ES_HANDLED;
 	}
 
@@ -138,7 +137,16 @@ struct BuildAirToolbarWindow : Window {
 		DeleteWindowById(WC_BUILD_STATION, TRANSPORT_AIR);
 		DeleteWindowById(WC_SELECT_STATION, 0);
 	}
+
+	static Hotkey<BuildAirToolbarWindow> airtoolbar_hotkeys[];
 };
+
+Hotkey<BuildAirToolbarWindow> BuildAirToolbarWindow::airtoolbar_hotkeys[] = {
+	Hotkey<BuildAirToolbarWindow>('1', "airport", ATW_AIRPORT),
+	Hotkey<BuildAirToolbarWindow>('2', "demolish", ATW_DEMOLISH),
+	HOTKEY_LIST_END(BuildAirToolbarWindow)
+};
+Hotkey<BuildAirToolbarWindow> *_airtoolbar_hotkeys = BuildAirToolbarWindow::airtoolbar_hotkeys;
 
 static const NWidgetPart _nested_air_toolbar_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
