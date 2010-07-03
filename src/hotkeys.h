@@ -52,7 +52,7 @@ struct Hotkey {
 		} else {
 			this->callback = new CallbackWrapper(callback);
 		}
-		if (default_keycode != 0) *this->keycodes.Append() = default_keycode;
+		if (default_keycode != 0) this->AddKeycode(default_keycode);
 	}
 
 	/**
@@ -74,7 +74,7 @@ struct Hotkey {
 
 		const uint16 *keycode = default_keycodes;
 		while (*keycode != 0) {
-			this->keycodes.Include(*keycode);
+			this->AddKeycode(*keycode);
 			keycode++;
 		}
 	}
@@ -107,13 +107,14 @@ struct Hotkey {
  * @param list The list with hotkeys to check
  * @param keycode The keycode that was pressed
  * @param w The window-pointer to give to the callback function (if any).
+ * @param global_only Limit the search to hotkeys defined as 'global'.
  * @return The number of the matching hotkey or -1.
  */
 template<class T>
-int CheckHotkeyMatch(Hotkey<T> *list, uint16 keycode, T *w)
+int CheckHotkeyMatch(Hotkey<T> *list, uint16 keycode, T *w, bool global_only = false)
 {
 	while (list->num != -1) {
-		if (list->keycodes.Contains(keycode)) {
+		if (list->keycodes.Contains(keycode | WKC_GLOBAL_HOTKEY) || (!global_only && list->keycodes.Contains(keycode))) {
 			if (list->callback != NULL) (w->*(list->callback->callback))(-1);
 			return list->num;
 		}

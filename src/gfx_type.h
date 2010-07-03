@@ -32,7 +32,9 @@ enum WindowKeyCodes {
 	WKC_ALT   = 0x2000,
 	WKC_META  = 0x1000,
 
-	WKC_SPECIAL_KEYS = WKC_SHIFT | WKC_CTRL | WKC_ALT | WKC_META,
+	WKC_GLOBAL_HOTKEY = 0x0800, ///< Fake keycode bit to indicate global hotkeys
+
+	WKC_SPECIAL_KEYS = WKC_SHIFT | WKC_CTRL | WKC_ALT | WKC_META | WKC_GLOBAL_HOTKEY,
 
 	/* Special ones */
 	WKC_NONE        =  0,
