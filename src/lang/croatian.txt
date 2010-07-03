@@ -1370,6 +1370,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 mreža
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 mreža
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :nasumično
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Gradovi mogu graditi ceste: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}Gradovi smiju graditi pružne prijelaze: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Omogući određivanje razine buke za zračne luke od strane gradova: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Osnivanje gradova tijekom igre: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :zabranjeno
@@ -3638,6 +3639,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Najprije
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Nije prikladno za želježnicku prugu
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Najprije je potrebno ukloniti željezničku prugu
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Cesta je jednosmjerna ili je blokirana
+STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Pružni prijelazi nisu dozvoljeni za ovu vrstu pruge
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Ovdje nije moguće postaviti signale...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Ovdje nije moguće izgraditi željezničke tračnice...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Nije moguće ukloniti željezničku prugu odavde...

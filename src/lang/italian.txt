@@ -1276,6 +1276,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :Griglia 2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :Griglia 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Casuale
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Permetti alle città di costruire strade: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}Permetti alle città di costruire passaggi a livello: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Consenti controllo rumore aeroporti da parte delle città: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Fondazione città durante la partita: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Non permessa
@@ -3544,6 +3545,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Bisogna 
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Tipo di binari non adatti
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Bisogna rimuovere i binari prima
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}La strada è bloccata o a senso unico
+STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Passaggi a livello non consentiti per questo tipo di rotaia
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Impossibile costruire i segnali qui...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Impossibile costruire i binari qui...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Impossibile rimuovere i binari da qui...

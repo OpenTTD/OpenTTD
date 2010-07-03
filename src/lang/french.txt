@@ -1275,6 +1275,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :Grille 2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :Grille 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Aléatoire
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Autoriser la construction des routes par les villes{NBSP}: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}Autoriser la construction des passages à niveau par les villes{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Permettre plus d'aéroport par ville, selon les nuisances{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Fonder des villes en cours de jeu{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Interdit
@@ -3543,6 +3544,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Vous dev
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Aucuns rails convenables
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Vous devez d'abord enlever les rails
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}La route est à sens unique ou bloquée
+STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Les passages à niveau ne sont pas authorisés pour ce type de rails
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Impossible de construire des signaux ici...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Impossible de construire des rails ici...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Impossible de retirer les rails d'ici...

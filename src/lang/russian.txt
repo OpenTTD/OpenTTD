@@ -1428,6 +1428,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :решётко�
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :решёткой 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :случайно
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Городам разрешено строить дороги: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}Города создают ж/д переезды: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Разрешить городам контролировать уровень шума аэропортов: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Строительство городов в игре: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :запрещено
@@ -3722,6 +3723,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Нужн
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Нет подходящих рельсов
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Сначала надо удалить рельсы
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Дорога односторонняя или блокирована
+STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Через этот вид рельсов запрещено строить переезды
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Здесь невозможно поставить светофор...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Здесь невозможно проложить рельсы...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Не удалось удалить рельсы...
