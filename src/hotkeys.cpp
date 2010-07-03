@@ -229,6 +229,7 @@ void SaveLoadHotkeyGroup(IniGroup *group, T *hotkey_list, bool save)
 
 struct TerraformToolbarWindow;
 struct ScenarioEditorLandscapeGenerationWindow;
+struct OrdersWindow;
 
 static void SaveLoadHotkeys(bool save)
 {
@@ -244,6 +245,7 @@ static void SaveLoadHotkeys(bool save)
 
 	SL_HOTKEYS(terraform, TerraformToolbarWindow);
 	SL_HOTKEYS(terraform_editor, ScenarioEditorLandscapeGenerationWindow);
+	SL_HOTKEYS(order, OrdersWindow);
 
 
 #undef SL_HOTKEYS

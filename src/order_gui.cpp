@@ -29,6 +29,7 @@
 #include "station_base.h"
 #include "waypoint_base.h"
 #include "core/geometry_func.hpp"
+#include "hotkeys.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -1222,25 +1223,10 @@ public:
 
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
-		static const KeyToEvent keytoevent[] = {
-			{'D', &OrdersWindow::OrderClick_Skip},
-			{'F', &OrdersWindow::OrderClick_Delete},
-			{'G', &OrdersWindow::OrderClick_Goto},
-			{'H', &OrdersWindow::OrderClick_Nonstop},
-			{'J', &OrdersWindow::OrderClick_FullLoad},
-			{'K', &OrdersWindow::OrderClick_Unload},
-			//('?', &OrdersWindow::OrderClick_Service},
-		};
 
 		if (this->vehicle->owner != _local_company) return ES_NOT_HANDLED;
 
-		for (uint i = 0; i < lengthof(keytoevent); i++) {
-			if (keycode == keytoevent[i].keycode) {
-				(this->*(keytoevent[i].proc))(-1);
-				return ES_HANDLED;
-			}
-		}
-		return ES_NOT_HANDLED;
+		return CheckHotkeyMatch<OrdersWindow>(order_hotkeys, keycode, this) != -1 ? ES_HANDLED : ES_NOT_HANDLED;
 	}
 
 	virtual void OnPlaceObject(Point pt, TileIndex tile)
@@ -1344,7 +1330,20 @@ public:
 			}
 		}
 	}
+
+	static Hotkey<OrdersWindow> order_hotkeys[];
 };
+
+Hotkey<OrdersWindow> OrdersWindow::order_hotkeys[]= {
+	Hotkey<OrdersWindow>('D', "skip", 0, &OrdersWindow::OrderClick_Skip),
+	Hotkey<OrdersWindow>('F', "delete", 0, &OrdersWindow::OrderClick_Delete),
+	Hotkey<OrdersWindow>('G', "goto", 0, &OrdersWindow::OrderClick_Goto),
+	Hotkey<OrdersWindow>('H', "nonstop", 0, &OrdersWindow::OrderClick_Nonstop),
+	Hotkey<OrdersWindow>('J', "fullload", 0, &OrdersWindow::OrderClick_FullLoad),
+	Hotkey<OrdersWindow>('K', "unload", 0, &OrdersWindow::OrderClick_Unload),
+	HOTKEY_LIST_END(OrdersWindow)
+};
+Hotkey<OrdersWindow> *_order_hotkeys = OrdersWindow::order_hotkeys;
 
 /** Nested widget definition for "your" train orders. */
 static const NWidgetPart _nested_orders_train_widgets[] = {
