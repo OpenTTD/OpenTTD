@@ -221,9 +221,7 @@ void SaveHotkeyGroup(IniGroup *group, T *hotkey_list)
 	for (uint i = 0; hotkey_list[i].num != -1; i++) {
 		T *hotkey = &hotkey_list[i];
 		IniItem *item = group->GetItem(hotkey->name, true);
-		if (hotkey->keycodes.Length() > 0) {
-			item->value = strdup(SaveKeycodes(hotkey));
-		}
+		item->SetValue(SaveKeycodes(hotkey));
 	}
 }
 
