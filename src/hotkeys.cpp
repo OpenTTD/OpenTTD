@@ -67,7 +67,7 @@ static uint16 ParseCode(const char *start, const char *end)
 		return *start;
 	}
 	for (uint i = 0; i < lengthof(_keycode_to_name); i++) {
-		if (strnicmp(start, _keycode_to_name[i].name, end - start) == 0) {
+		if (strncasecmp(start, _keycode_to_name[i].name, end - start) == 0) {
 			return _keycode_to_name[i].keycode;
 		}
 	}
