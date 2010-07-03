@@ -713,20 +713,20 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 
 			case 1:
 				/* Search the list for items that are now found and mark them as such. */
-				for (GRFConfig *c = this->actives; c != NULL; c = c->next) {
-					if (c->status != GCS_NOT_FOUND) continue;
+				for (GRFConfig **l = &this->actives; *l != NULL; l = &(*l)->next) {
+					GRFConfig *c = *l;
+					bool compatible = HasBit(c->flags, GCF_COMPATIBLE);
+					if (c->status != GCS_NOT_FOUND && !compatible) continue;
 
-					const GRFConfig *f = FindGRFConfig(c->ident.grfid, c->ident.md5sum);
+					const GRFConfig *f = FindGRFConfig(c->ident.grfid, compatible ? c->original_md5sum : c->ident.md5sum);
 					if (f == NULL) continue;
 
-					free(c->filename);
-					free(c->name);
-					free(c->info);
+					*l = DuplicateGRFConfig(f);
+					(*l)->next = c->next;
 
-					c->filename  = f->filename == NULL ? NULL : strdup(f->filename);
-					c->name      = f->name == NULL ? NULL : strdup(f->name);
-					c->info      = f->info == NULL ? NULL : strdup(f->info);
-					c->status    = GCS_UNKNOWN;
+					if (active_sel == c) active_sel = *l;
+
+					delete c;
 				}
 				/* Fall through. */
 			case 4:
