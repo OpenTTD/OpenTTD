@@ -193,6 +193,9 @@
     <ClCompile Include="..\src\highscore.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\hotkeys.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="..\src\ini.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -545,6 +548,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\src\highscore.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hotkeys.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\src\house.h">

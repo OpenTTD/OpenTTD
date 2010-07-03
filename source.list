@@ -31,6 +31,7 @@ gfxinit.cpp
 ground_vehicle.cpp
 heightmap.cpp
 highscore.cpp
+hotkeys.cpp
 ini.cpp
 landscape.cpp
 map.cpp
@@ -174,6 +175,7 @@ group_type.h
 gui.h
 heightmap.h
 highscore.h
+hotkeys.h
 house.h
 house_type.h
 industry.h

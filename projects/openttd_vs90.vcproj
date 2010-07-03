@@ -581,6 +581,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\hotkeys.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\ini.cpp"
 				>
 			</File>
@@ -1054,6 +1058,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\highscore.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\hotkeys.h"
 				>
 			</File>
 			<File
