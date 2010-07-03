@@ -74,7 +74,7 @@ struct Hotkey {
 
 		const uint16 *keycode = default_keycodes;
 		while (*keycode != 0) {
-			this->keycodes.Include(keycode);
+			this->keycodes.Include(*keycode);
 			keycode++;
 		}
 	}
