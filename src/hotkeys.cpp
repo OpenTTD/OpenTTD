@@ -10,10 +10,12 @@
 /** @file hotkeys.cpp Implementation of hotkey related functions */
 
 #include "stdafx.h"
+#include "openttd.h"
 #include "hotkeys.h"
 #include "ini_type.h"
 #include "string_func.h"
 #include "gfx_type.h"
+#include "window_gui.h"
 #include <string.h>
 
 char *_hotkeys_file;
@@ -282,5 +284,39 @@ void LoadHotkeysFromConfig()
 void SaveHotkeysToConfig()
 {
 	SaveLoadHotkeys(true);
+}
+
+typedef EventState GlobalHotkeyHandler(uint16, uint16);
+
+GlobalHotkeyHandler RailToolbarGlobalHotkeys;
+GlobalHotkeyHandler DockToolbarGlobalHotkeys;
+GlobalHotkeyHandler AirportToolbarGlobalHotkeys;
+GlobalHotkeyHandler TerraformToolbarGlobalHotkeys;
+GlobalHotkeyHandler TerraformToolbarEditorGlobalHotkeys;
+
+
+GlobalHotkeyHandler *_global_hotkey_handlers[] = {
+	RailToolbarGlobalHotkeys,
+	DockToolbarGlobalHotkeys,
+	AirportToolbarGlobalHotkeys,
+	TerraformToolbarGlobalHotkeys,
+};
+
+GlobalHotkeyHandler *_global_hotkey_handlers_editor[] = {
+	TerraformToolbarEditorGlobalHotkeys,
+};
+
+
+void HandleGlobalHotkeys(uint16 key, uint16 keycode)
+{
+	if (_game_mode == GM_NORMAL) {
+		for (uint i = 0; i < lengthof(_global_hotkey_handlers); i++) {
+			if (_global_hotkey_handlers[i](key, keycode) == ES_HANDLED) return;
+		}
+	} else if (_game_mode == GM_EDITOR) {
+		for (uint i = 0; i < lengthof(_global_hotkey_handlers_editor); i++) {
+			if (_global_hotkey_handlers_editor[i](key, keycode) == ES_HANDLED) return;
+		}
+	}
 }
 

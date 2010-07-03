@@ -15,8 +15,6 @@
 #include "window_type.h"
 
 Window *ShowTerraformToolbar(Window *link = NULL);
-void ShowTerraformToolbarWithTool(uint16 key, uint16 keycode);
 Window *ShowEditorTerraformToolbar();
-void ShowEditorTerraformToolbarWithTool(uint16 key, uint16 keycode);
 
 #endif /* GUI_H */

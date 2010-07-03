@@ -176,6 +176,15 @@ void ShowBuildAirToolbar()
 	AllocateWindowDescFront<BuildAirToolbarWindow>(&_air_toolbar_desc, TRANSPORT_AIR);
 }
 
+EventState AirportToolbarGlobalHotkeys(uint16 key, uint16 keycode)
+{
+	int num = CheckHotkeyMatch<BuildAirToolbarWindow>(_airtoolbar_hotkeys, keycode, NULL, true);
+	if (num == -1) return ES_NOT_HANDLED;
+	ShowBuildAirToolbar();
+	Window *w = FindWindowByClass(WC_BUILD_TOOLBAR);
+	return w->OnKeyPress(key, keycode);
+}
+
 /** Airport widgets in the airport picker window. */
 enum AirportPickerWidgets {
 	BAIRW_CLASS_DROPDOWN,

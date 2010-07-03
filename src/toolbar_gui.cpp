@@ -1602,7 +1602,6 @@ public:
 			case WKC_SHIFT | WKC_F6: ToolbarZoomOutClick(this); break;
 
 			case 'L': ShowEditorTerraformToolbar(); break;
-			case 'Q': case 'W': case 'E': case 'D': ShowEditorTerraformToolbarWithTool(key, keycode); break;
 			case 'M': ShowSmallMap(); break;
 			case 'V': ShowExtraViewPortWindow(); break;
 			default: return ES_NOT_HANDLED;

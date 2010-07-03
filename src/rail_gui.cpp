@@ -910,6 +910,16 @@ void ShowBuildRailToolbar(RailType railtype)
 	_remove_button_clicked = false;
 }
 
+EventState RailToolbarGlobalHotkeys(uint16 key, uint16 keycode)
+{
+	extern RailType _last_built_railtype;
+	int num = CheckHotkeyMatch<BuildRailToolbarWindow>(_railtoolbar_hotkeys, keycode, NULL, true);
+	if (num == -1) return ES_NOT_HANDLED;
+	ShowBuildRailToolbar(_last_built_railtype);
+	Window *w = FindWindowByClass(WC_BUILD_TOOLBAR);
+	return w->OnKeyPress(key, keycode);
+}
+
 /* TODO: For custom stations, respect their allowed platforms/lengths bitmasks!
  * --pasky */
 

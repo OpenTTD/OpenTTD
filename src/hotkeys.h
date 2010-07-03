@@ -13,6 +13,7 @@
 #define HOTKEYS_H
 
 #include "core/smallvec_type.hpp"
+#include "gfx_type.h"
 
 /**
  * All data for a single hotkey. The name (for saving/loading a configfile),
@@ -115,7 +116,7 @@ int CheckHotkeyMatch(Hotkey<T> *list, uint16 keycode, T *w, bool global_only = f
 {
 	while (list->num != -1) {
 		if (list->keycodes.Contains(keycode | WKC_GLOBAL_HOTKEY) || (!global_only && list->keycodes.Contains(keycode))) {
-			if (list->callback != NULL) (w->*(list->callback->callback))(-1);
+			if (!global_only && list->callback != NULL) (w->*(list->callback->callback))(-1);
 			return list->num;
 		}
 		list++;
@@ -125,5 +126,8 @@ int CheckHotkeyMatch(Hotkey<T> *list, uint16 keycode, T *w, bool global_only = f
 
 void LoadHotkeysFromConfig();
 void SaveHotkeysToConfig();
+
+
+void HandleGlobalHotkeys(uint16 key, uint16 keycode);
 
 #endif /* HOTKEYS_H */

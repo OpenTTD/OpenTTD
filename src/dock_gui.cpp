@@ -302,6 +302,15 @@ void ShowBuildDocksToolbar()
 	AllocateWindowDescFront<BuildDocksToolbarWindow>(&_build_docks_toolbar_desc, TRANSPORT_WATER);
 }
 
+EventState DockToolbarGlobalHotkeys(uint16 key, uint16 keycode)
+{
+	int num = CheckHotkeyMatch<BuildDocksToolbarWindow>(_dockstoolbar_hotkeys, keycode, NULL, true);
+	if (num == -1) return ES_NOT_HANDLED;
+	ShowBuildDocksToolbar();
+	Window *w = FindWindowByClass(WC_BUILD_TOOLBAR);
+	return w->OnKeyPress(key, keycode);
+}
+
 /**
  * Nested widget parts of docks toolbar, scenario editor version.
  * Positions of #DTW_DEPOT, #DTW_STATION, and #DTW_BUOY widgets have changed.

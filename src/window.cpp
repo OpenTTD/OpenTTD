@@ -32,6 +32,7 @@
 #include "strings_func.h"
 #include "settings_type.h"
 #include "newgrf_debug.h"
+#include "hotkeys.h"
 
 #include "table/sprites.h"
 
@@ -1955,7 +1956,9 @@ void HandleKeypress(uint32 raw_key)
 
 	w = FindWindowById(WC_MAIN_TOOLBAR, 0);
 	/* When there is no toolbar w is null, check for that */
-	if (w != NULL) w->OnKeyPress(key, keycode);
+	if (w != NULL && w->OnKeyPress(key, keycode) == ES_HANDLED) return;
+
+	HandleGlobalHotkeys(key, keycode);
 }
 
 /**
