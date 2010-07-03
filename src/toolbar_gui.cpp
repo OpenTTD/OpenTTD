@@ -664,7 +664,7 @@ static void ToolbarBuildRailClick(Window *w)
 static void MenuClickBuildRail(int index)
 {
 	_last_built_railtype = (RailType)index;
-	ShowBuildRailToolbar(_last_built_railtype, -1);
+	ShowBuildRailToolbar(_last_built_railtype);
 }
 
 /* --- Road button menu --- */
@@ -1317,7 +1317,7 @@ struct MainToolbarWindow : Window {
 			case MTHK_AIRCRAFT_LIST: ShowVehicleListWindow(_local_company, VEH_AIRCRAFT); break;
 			case MTHK_ZOOM_IN: ToolbarZoomInClick(this); break;
 			case MTHK_ZOOM_OUT: ToolbarZoomOutClick(this); break;
-			case MTHK_BUILD_RAIL: if (CanBuildVehicleInfrastructure(VEH_TRAIN)) ShowBuildRailToolbar(_last_built_railtype, -1); break;
+			case MTHK_BUILD_RAIL: if (CanBuildVehicleInfrastructure(VEH_TRAIN)) ShowBuildRailToolbar(_last_built_railtype); break;
 			case MTHK_BUILD_ROAD: ShowBuildRoadToolbar(_last_built_roadtype); break;
 			case MTHK_BUILD_DOCKS: ShowBuildDocksToolbar(); break;
 			case MTHK_BUILD_AIRPORT: if (CanBuildVehicleInfrastructure(VEH_AIRCRAFT)) ShowBuildAirToolbar(); break;

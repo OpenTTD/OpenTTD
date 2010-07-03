@@ -30,6 +30,7 @@
 #include "tilehighlight_func.h"
 #include "spritecache.h"
 #include "core/geometry_func.hpp"
+#include "hotkeys.h"
 
 #include "station_map.h"
 #include "tunnelbridge_map.h"
@@ -591,31 +592,25 @@ static void HandleAutoSignalPlacement()
 
 typedef void OnButtonClick(Window *w);
 
-/** Data associated with a push button in the build rail toolbar window */
-struct RailBuildingGUIButtonData {
-	uint16 keycode;            ///< Keycode associated with the button
-	OnButtonClick *click_proc; ///< Procedure to call when button is clicked
-};
-
 /**
- * GUI rail-building button data constants.
+ * Procedure to call when button in rail toolbar is clicked.
  * Offsets match widget order, starting at RTW_BUILD_NS
  */
-static const RailBuildingGUIButtonData _rail_build_button_data[] = {
-	{'1', BuildRailClick_N          },
-	{'2', BuildRailClick_NE         },
-	{'3', BuildRailClick_E          },
-	{'4', BuildRailClick_NW         },
-	{'5', BuildRailClick_AutoRail   },
-	{'6', BuildRailClick_Demolish   },
-	{'7', BuildRailClick_Depot      },
-	{'8', BuildRailClick_Waypoint   },
-	{'9', BuildRailClick_Station    },
-	{'S', BuildRailClick_AutoSignals},
-	{'B', BuildRailClick_Bridge     },
-	{'T', BuildRailClick_Tunnel     },
-	{'R', BuildRailClick_Remove     },
-	{'C', BuildRailClick_Convert    }
+static OnButtonClick *_rail_build_button[] = {
+	BuildRailClick_N,
+	BuildRailClick_NE,
+	BuildRailClick_E,
+	BuildRailClick_NW,
+	BuildRailClick_AutoRail,
+	BuildRailClick_Demolish,
+	BuildRailClick_Depot,
+	BuildRailClick_Waypoint,
+	BuildRailClick_Station,
+	BuildRailClick_AutoSignals,
+	BuildRailClick_Bridge,
+	BuildRailClick_Tunnel,
+	BuildRailClick_Remove,
+	BuildRailClick_Convert
 };
 
 /**
@@ -717,7 +712,7 @@ struct BuildRailToolbarWindow : Window {
 	{
 		if (widget >= RTW_BUILD_NS) {
 			_remove_button_clicked = false;
-			_rail_build_button_data[widget - RTW_BUILD_NS].click_proc(this);
+			_rail_build_button[widget - RTW_BUILD_NS](this);
 		}
 		this->UpdateRemoveWidgetStatus(widget);
 		if (_ctrl_pressed) RailToolbar_CtrlChanged(this);
@@ -725,19 +720,11 @@ struct BuildRailToolbarWindow : Window {
 
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
-		EventState state = ES_NOT_HANDLED;
-		for (uint8 i = 0; i != lengthof(_rail_build_button_data); i++) {
-			if (keycode == _rail_build_button_data[i].keycode) {
-				_remove_button_clicked = false;
-				_rail_build_button_data[i].click_proc(this);
-				this->UpdateRemoveWidgetStatus(i + RTW_BUILD_NS);
-				if (_ctrl_pressed) RailToolbar_CtrlChanged(this);
-				state = ES_HANDLED;
-				break;
-			}
-		}
+		int num = CheckHotkeyMatch(railtoolbar_hotkeys, keycode, this);
+		if (num == -1) return ES_NOT_HANDLED;
+		this->OnClick(Point(), num, 1);
 		MarkTileDirtyByTile(TileVirtXY(_thd.pos.x, _thd.pos.y)); // redraw tile selection
-		return state;
+		return ES_HANDLED;
 	}
 
 	virtual void OnPlaceObject(Point pt, TileIndex tile)
@@ -831,7 +818,30 @@ struct BuildRailToolbarWindow : Window {
 		if (!this->IsWidgetLowered(RTW_BUILD_STATION) && !this->IsWidgetLowered(RTW_BUILD_WAYPOINT) && RailToolbar_CtrlChanged(this)) return ES_HANDLED;
 		return ES_NOT_HANDLED;
 	}
+
+	static Hotkey<BuildRailToolbarWindow> railtoolbar_hotkeys[];
 };
+
+const uint16 _railtoolbar_autorail_keys[] = {'5', 'A' | WKC_GLOBAL_HOTKEY, 0};
+
+Hotkey<BuildRailToolbarWindow> BuildRailToolbarWindow::railtoolbar_hotkeys[] = {
+	Hotkey<BuildRailToolbarWindow>('1', "build_ns", RTW_BUILD_NS),
+	Hotkey<BuildRailToolbarWindow>('2', "build_x", RTW_BUILD_X),
+	Hotkey<BuildRailToolbarWindow>('3', "build_ew", RTW_BUILD_EW),
+	Hotkey<BuildRailToolbarWindow>('4', "build_y", RTW_BUILD_Y),
+	Hotkey<BuildRailToolbarWindow>(_railtoolbar_autorail_keys, "autorail", RTW_AUTORAIL),
+	Hotkey<BuildRailToolbarWindow>('6', "demolish", RTW_DEMOLISH),
+	Hotkey<BuildRailToolbarWindow>('7', "depot", RTW_BUILD_DEPOT),
+	Hotkey<BuildRailToolbarWindow>('8', "waypoint", RTW_BUILD_WAYPOINT),
+	Hotkey<BuildRailToolbarWindow>('9', "station", RTW_BUILD_STATION),
+	Hotkey<BuildRailToolbarWindow>('S', "signal", RTW_BUILD_SIGNALS),
+	Hotkey<BuildRailToolbarWindow>('B', "bridge", RTW_BUILD_BRIDGE),
+	Hotkey<BuildRailToolbarWindow>('T', "tunnel", RTW_BUILD_TUNNEL),
+	Hotkey<BuildRailToolbarWindow>('R', "remove", RTW_REMOVE),
+	Hotkey<BuildRailToolbarWindow>('C', "convert", RTW_CONVERT_RAIL),
+	HOTKEY_LIST_END(BuildRailToolbarWindow)
+};
+Hotkey<BuildRailToolbarWindow> *_railtoolbar_hotkeys = BuildRailToolbarWindow::railtoolbar_hotkeys;
 
 static const NWidgetPart _nested_build_rail_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
@@ -884,34 +894,20 @@ static const WindowDesc _build_rail_desc(
 
 /**
  * Open the build rail toolbar window for a specific rail type.
- * The window may be opened in the 'normal' way by clicking at the rail icon in
- * the main toolbar, or by means of selecting one of the functions of the
- * toolbar. In the latter case, the corresponding widget is also selected.
  *
  * If the terraform toolbar is linked to the toolbar, that window is also opened.
  *
  * @param railtype Rail type to open the window for
- * @param button   Widget clicked (\c -1 means no button clicked)
  */
-void ShowBuildRailToolbar(RailType railtype, int button)
+void ShowBuildRailToolbar(RailType railtype)
 {
 	if (!Company::IsValidID(_local_company)) return;
 	if (!ValParamRailtype(railtype)) return;
 
-	BuildRailToolbarWindow *w = (BuildRailToolbarWindow *)FindWindowById(WC_BUILD_TOOLBAR, TRANSPORT_RAIL);
-
-	/* don't recreate the window if we're clicking on a button and the window exists. */
-	if (button < 0 || w == NULL) {
-		DeleteWindowByClass(WC_BUILD_TOOLBAR);
-		_cur_railtype = railtype;
-		w = new BuildRailToolbarWindow(&_build_rail_desc, TRANSPORT_RAIL, railtype);
-	}
-
+	DeleteWindowByClass(WC_BUILD_TOOLBAR);
+	_cur_railtype = railtype;
+	BuildRailToolbarWindow *w = new BuildRailToolbarWindow(&_build_rail_desc, TRANSPORT_RAIL, railtype);
 	_remove_button_clicked = false;
-	if (w != NULL && button >= 0) {
-		_rail_build_button_data[button].click_proc(w);
-		w->UpdateRemoveWidgetStatus(button + RTW_BUILD_NS);
-	}
 }
 
 /* TODO: For custom stations, respect their allowed platforms/lengths bitmasks!

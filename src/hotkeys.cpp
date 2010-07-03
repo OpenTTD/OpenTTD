@@ -140,7 +140,12 @@ static const char *KeycodeToString(uint16 keycode)
 	static char buf[32];
 	buf[0] = '\0';
 	bool first = true;
+	if (keycode & WKC_GLOBAL_HOTKEY) {
+		strecat(buf, "GLOBAL", lastof(buf));
+		first = false;
+	}
 	if (keycode & WKC_SHIFT) {
+		if (!first) strecat(buf, "+", lastof(buf));
 		strecat(buf, "SHIFT", lastof(buf));
 		first = false;
 	}
@@ -239,6 +244,7 @@ struct OrdersWindow;
 struct BuildAirToolbarWindow;
 struct BuildDocksToolbarWindow;
 struct MainToolbarWindow;
+struct BuildRailToolbarWindow;
 
 static void SaveLoadHotkeys(bool save)
 {
@@ -259,6 +265,7 @@ static void SaveLoadHotkeys(bool save)
 	SL_HOTKEYS(airtoolbar, BuildAirToolbarWindow);
 	SL_HOTKEYS(dockstoolbar, BuildDocksToolbarWindow);
 	SL_HOTKEYS(maintoolbar, MainToolbarWindow);
+	SL_HOTKEYS(railtoolbar, BuildRailToolbarWindow);
 
 
 #undef SL_HOTKEYS
