@@ -227,6 +227,7 @@ void SaveLoadHotkeyGroup(IniGroup *group, T *hotkey_list, bool save)
 	}
 }
 
+struct TerraformToolbarWindow;
 
 static void SaveLoadHotkeys(bool save)
 {
@@ -240,6 +241,7 @@ static void SaveLoadHotkeys(bool save)
 	group = ini->GetGroup(#name);\
 	SaveLoadHotkeyGroup(group, _##name##_hotkeys, save);
 
+	SL_HOTKEYS(terraform, TerraformToolbarWindow);
 
 
 #undef SL_HOTKEYS

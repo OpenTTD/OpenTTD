@@ -30,6 +30,7 @@
 #include "landscape_type.h"
 #include "tilehighlight_func.h"
 #include "strings_func.h"
+#include "hotkeys.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -132,16 +133,6 @@ bool GUIPlaceProcDragXY(ViewportDragDropSelectionProcess proc, TileIndex start_t
 }
 
 typedef void OnButtonClick(Window *w);
-
-static const uint16 _terraform_keycodes[] = {
-	'Q',
-	'W',
-	'E',
-	'D',
-	'U',
-	'I',
-	'O',
-};
 
 static void PlaceProc_BuyLand(TileIndex tile)
 {
@@ -248,13 +239,10 @@ struct TerraformToolbarWindow : Window {
 
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
-		for (uint i = 0; i != lengthof(_terraform_keycodes); i++) {
-			if (keycode == _terraform_keycodes[i]) {
-				_terraform_button_proc[i](this);
-				return ES_HANDLED;
-			}
-		}
-		return ES_NOT_HANDLED;
+		int num = CheckHotkeyMatch(terraform_hotkeys, keycode, this);
+		if (num == -1) return ES_NOT_HANDLED;
+		this->OnClick(Point(), num, 1);
+		return ES_HANDLED;
 	}
 
 	virtual void OnPlaceObject(Point pt, TileIndex tile)
@@ -293,7 +281,21 @@ struct TerraformToolbarWindow : Window {
 	{
 		this->RaiseButtons();
 	}
+
+	static Hotkey<TerraformToolbarWindow> terraform_hotkeys[];
 };
+
+Hotkey<TerraformToolbarWindow> TerraformToolbarWindow::terraform_hotkeys[] = {
+	Hotkey<TerraformToolbarWindow>('Q', "lower", TTW_LOWER_LAND),
+	Hotkey<TerraformToolbarWindow>('W', "raise", TTW_RAISE_LAND),
+	Hotkey<TerraformToolbarWindow>('E', "level", TTW_LEVEL_LAND),
+	Hotkey<TerraformToolbarWindow>('D', "dynamite", TTW_DEMOLISH),
+	Hotkey<TerraformToolbarWindow>('U', "buyland", TTW_BUY_LAND),
+	Hotkey<TerraformToolbarWindow>('I', "trees", TTW_PLANT_TREES),
+	Hotkey<TerraformToolbarWindow>('O', "placesign", TTW_PLACE_SIGN),
+	HOTKEY_LIST_END(TerraformToolbarWindow)
+};
+Hotkey<TerraformToolbarWindow> *_terraform_hotkeys = TerraformToolbarWindow::terraform_hotkeys;
 
 static const NWidgetPart _nested_terraform_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
