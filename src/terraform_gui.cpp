@@ -578,17 +578,6 @@ static void EditorTerraformClick_Transmitter(Window *w)
 	HandlePlacePushButton(w, ETTW_PLACE_TRANSMITTER, SPR_CURSOR_TRANSMITTER, HT_RECT, PlaceProc_Transmitter);
 }
 
-static const uint16 _editor_terraform_keycodes[] = {
-	'D',
-	'Q',
-	'W',
-	'E',
-	'R',
-	'T',
-	'Y'
-};
-
-typedef void OnButtonClick(Window *w);
 static OnButtonClick * const _editor_terraform_button_proc[] = {
 	EditorTerraformClick_Dynamite,
 	EditorTerraformClick_LowerBigLand,
@@ -666,13 +655,10 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
-		for (uint i = 0; i != lengthof(_editor_terraform_keycodes); i++) {
-			if (keycode == _editor_terraform_keycodes[i]) {
-				_editor_terraform_button_proc[i](this);
-				return ES_HANDLED;
-			}
-		}
-		return ES_NOT_HANDLED;
+		int num = CheckHotkeyMatch(terraform_editor_hotkeys, keycode, this);
+		if (num == -1) return ES_NOT_HANDLED;
+		this->OnClick(Point(), num, 1);
+		return ES_HANDLED;
 	}
 
 	virtual void OnClick(Point pt, int widget, int click_count)
@@ -751,7 +737,23 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 		this->RaiseButtons();
 		this->SetDirty();
 	}
+
+	static Hotkey<ScenarioEditorLandscapeGenerationWindow> terraform_editor_hotkeys[];
 };
+
+Hotkey<ScenarioEditorLandscapeGenerationWindow> ScenarioEditorLandscapeGenerationWindow::terraform_editor_hotkeys[] = {
+	Hotkey<ScenarioEditorLandscapeGenerationWindow>('D', "dynamite", ETTW_DEMOLISH),
+	Hotkey<ScenarioEditorLandscapeGenerationWindow>('Q', "lower", ETTW_LOWER_LAND),
+	Hotkey<ScenarioEditorLandscapeGenerationWindow>('W', "raise", ETTW_RAISE_LAND),
+	Hotkey<ScenarioEditorLandscapeGenerationWindow>('E', "level", ETTW_LEVEL_LAND),
+	Hotkey<ScenarioEditorLandscapeGenerationWindow>('R', "rocky", ETTW_PLACE_ROCKS),
+	Hotkey<ScenarioEditorLandscapeGenerationWindow>('T', "desertlighthouse", ETTW_PLACE_DESERT_LIGHTHOUSE),
+	Hotkey<ScenarioEditorLandscapeGenerationWindow>('Y', "transmitter", ETTW_PLACE_TRANSMITTER),
+	HOTKEY_LIST_END(ScenarioEditorLandscapeGenerationWindow)
+};
+
+Hotkey<ScenarioEditorLandscapeGenerationWindow> *_terraform_editor_hotkeys = ScenarioEditorLandscapeGenerationWindow::terraform_editor_hotkeys;
+
 
 static const WindowDesc _scen_edit_land_gen_desc(
 	WDP_AUTO, 0, 0,
