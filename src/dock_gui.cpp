@@ -28,6 +28,7 @@
 #include "tilehighlight_func.h"
 #include "company_base.h"
 #include "station_type.h"
+#include "hotkeys.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -189,18 +190,9 @@ struct BuildDocksToolbarWindow : Window {
 
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
-		switch (keycode) {
-			case '1': BuildDocksClick_Canal(this); break;
-			case '2': BuildDocksClick_Lock(this); break;
-			case '3': BuildDocksClick_Demolish(this); break;
-			case '4': BuildDocksClick_Depot(this); break;
-			case '5': BuildDocksClick_Dock(this); break;
-			case '6': BuildDocksClick_Buoy(this); break;
-			case '7': BuildDocksClick_River(this); break;
-			case 'B':
-			case '8': BuildDocksClick_Aqueduct(this); break;
-			default:  return ES_NOT_HANDLED;
-		}
+		int num = CheckHotkeyMatch(dockstoolbar_hotkeys, keycode, this);
+		if (num == -1) return ES_NOT_HANDLED;
+		this->OnClick(Point(), num, 1);
 		return ES_HANDLED;
 	}
 
@@ -254,8 +246,24 @@ struct BuildDocksToolbarWindow : Window {
 
 		VpSetPresizeRange(tile_from, tile_to);
 	}
+
+	static Hotkey<BuildDocksToolbarWindow> dockstoolbar_hotkeys[];
 };
 
+const uint16 _dockstoolbar_aqueduct_keys[] = {'B', '8', 0};
+
+Hotkey<BuildDocksToolbarWindow> BuildDocksToolbarWindow::dockstoolbar_hotkeys[] = {
+	Hotkey<BuildDocksToolbarWindow>('1', "canal", DTW_CANAL),
+	Hotkey<BuildDocksToolbarWindow>('2', "lock", DTW_LOCK),
+	Hotkey<BuildDocksToolbarWindow>('3', "demolish", DTW_DEMOLISH),
+	Hotkey<BuildDocksToolbarWindow>('4', "depot", DTW_DEPOT),
+	Hotkey<BuildDocksToolbarWindow>('5', "dock", DTW_STATION),
+	Hotkey<BuildDocksToolbarWindow>('6', "buoy", DTW_BUOY),
+	Hotkey<BuildDocksToolbarWindow>('7', "river", DTW_RIVER),
+	Hotkey<BuildDocksToolbarWindow>(_dockstoolbar_aqueduct_keys, "aqueduct", DTW_BUILD_AQUEDUCT),
+	HOTKEY_LIST_END(BuildDocksToolbarWindow)
+};
+Hotkey<BuildDocksToolbarWindow> *_dockstoolbar_hotkeys = BuildDocksToolbarWindow::dockstoolbar_hotkeys;
 
 /**
  * Nested widget parts of docks toolbar, game version.

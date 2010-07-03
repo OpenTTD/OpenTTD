@@ -232,6 +232,7 @@ struct TerraformToolbarWindow;
 struct ScenarioEditorLandscapeGenerationWindow;
 struct OrdersWindow;
 struct BuildAirToolbarWindow;
+struct BuildDocksToolbarWindow;
 
 static void SaveLoadHotkeys(bool save)
 {
@@ -250,6 +251,7 @@ static void SaveLoadHotkeys(bool save)
 	SL_HOTKEYS(terraform_editor, ScenarioEditorLandscapeGenerationWindow);
 	SL_HOTKEYS(order, OrdersWindow);
 	SL_HOTKEYS(airtoolbar, BuildAirToolbarWindow);
+	SL_HOTKEYS(dockstoolbar, BuildDocksToolbarWindow);
 
 
 #undef SL_HOTKEYS
