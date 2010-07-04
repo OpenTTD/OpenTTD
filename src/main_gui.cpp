@@ -467,6 +467,17 @@ Hotkey<MainWindow> MainWindow::global_hotkeys[] = {
 };
 Hotkey<MainWindow> *_global_hotkeys = MainWindow::global_hotkeys;
 
+/**
+ * Does the given keycode match one of the keycodes bound to 'quit game'?
+ * @param keycode The keycode that was pressed by the user.
+ * @return True iff the keycode matches one of the hotkeys for 'quit'.
+ */
+bool IsQuitKey(uint16 keycode)
+{
+	int num = CheckHotkeyMatch<MainWindow>(_global_hotkeys, keycode, NULL);
+	return num == GHK_QUIT;
+}
+
 
 void ShowSelectGameWindow();
 

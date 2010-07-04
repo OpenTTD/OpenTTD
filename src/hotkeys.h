@@ -124,6 +124,8 @@ int CheckHotkeyMatch(Hotkey<T> *list, uint16 keycode, T *w, bool global_only = f
 	return -1;
 }
 
+bool IsQuitKey(uint16 keycode);
+
 void LoadHotkeysFromConfig();
 void SaveHotkeysToConfig();
 

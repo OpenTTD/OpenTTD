@@ -22,6 +22,7 @@
 #include "company_base.h"
 #include "strings_func.h"
 #include "openttd.h"
+#include "hotkeys.h"
 
 enum HighscoreWidgets {
 	HSW_BACKGROUND,
@@ -66,6 +67,11 @@ struct EndGameHighScoreBaseWindow : Window {
 
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
+		/* All keys are 'handled' by this window but we want to make
+		 * sure that 'quit' still works correctly. Not handling the
+		 * quit key is enough so the main toolbar can handle it. */
+		if (IsQuitKey(keycode)) return ES_NOT_HANDLED;
+
 		switch (keycode) {
 			/* Keys for telling we want to go on */
 			case WKC_RETURN:
@@ -73,11 +79,6 @@ struct EndGameHighScoreBaseWindow : Window {
 			case WKC_SPACE:
 				delete this;
 				return ES_HANDLED;
-
-			/* Allow CTRL-Q to work like ALT-F4 in all cases */
-			case 'Q' | WKC_CTRL:
-			case 'Q' | WKC_META:
-				return ES_NOT_HANDLED;
 
 			default:
 				/* We want to handle all keys; we don't want windows in
