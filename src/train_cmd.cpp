@@ -2839,10 +2839,8 @@ void Train::MarkDirty()
 /**
  * This function looks at the vehicle and updates its speed (cur_speed
  * and subspeed) variables. Furthermore, it returns the distance that
- * the train can drive this tick. This distance is expressed as 256 * n,
- * where n is the number of straight (long) tracks the train can
- * traverse. This means that moving along a straight track costs 256
- * "speed" and a diagonal track costs 192 "speed".
+ * the train can drive this tick. #Vehicle::GetAdvanceDistance() determines
+ * the distance to drive before moving a step on the map.
  * @return distance to drive.
  */
 int Train::UpdateSpeed()
@@ -2869,18 +2867,7 @@ int Train::UpdateSpeed()
 		this->cur_speed = spd = Clamp(this->cur_speed + ((int)spd >> 8), 0, tempmax);
 	}
 
-	/* Scale speed by 3/4. Previously this was only done when the train was
-	 * facing diagonally and would apply to however many moves the train made
-	 * regardless the of direction actually moved in. Now it is always scaled,
-	 * 256 spd is used to go straight and 192 is used to go diagonally
-	 * (3/4 of 256). This results in the same effect, but without the error the
-	 * previous method caused.
-	 *
-	 * The scaling is done in this direction and not by multiplying the amount
-	 * to be subtracted by 4/3 so that the leftover speed can be saved in a
-	 * byte in this->progress.
-	 */
-	int scaled_spd = spd * 3 >> 2;
+	int scaled_spd = this->GetAdvanceSpeed(spd);
 
 	scaled_spd += this->progress;
 	this->progress = 0; // set later in TrainLocoHandler or TrainController
@@ -3885,7 +3872,7 @@ static bool TrainLocoHandler(Train *v, bool mode)
 		SetWindowDirty(WC_VEHICLE_VIEW, v->index);
 	}
 
-	int adv_spd = (v->direction & 1) ? 192 : 256;
+	int adv_spd = v->GetAdvanceDistance();
 	if (j < adv_spd) {
 		/* if the vehicle has speed 0, update the last_speed field. */
 		if (v->cur_speed == 0) SetLastSpeed(v, v->cur_speed);
@@ -3897,8 +3884,8 @@ static bool TrainLocoHandler(Train *v, bool mode)
 			TrainController(v, NULL);
 			/* Don't continue to move if the train crashed. */
 			if (CheckTrainCollision(v)) break;
-			/* 192 spd used for going straight, 256 for going diagonally. */
-			adv_spd = (v->direction & 1) ? 192 : 256;
+			/* Determine distance to next map position */
+			adv_spd = v->GetAdvanceDistance();
 
 			/* No more moving this tick */
 			if (j < adv_spd || v->cur_speed == 0) break;

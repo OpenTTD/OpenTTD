@@ -227,6 +227,53 @@ public:
 	virtual void UpdateDeltaXY(Direction direction) {}
 
 	/**
+	 * Determines the effective direction-specific vehicle movement speed.
+	 *
+	 * This method belongs to the old vehicle movement method:
+	 * A vehicle moves a step every 256 progress units.
+	 * The vehicle speed is scaled by 3/4 when moving in X or Y direction due to the longer distance.
+	 *
+	 * However, this method is slightly wrong in corners, as the leftover progress is not scaled correctly
+	 * when changing movement direction. #GetAdvanceSpeed() and #GetAdvanceDistance() are better wrt. this.
+	 *
+	 * @param speed Direction-independent unscaled speed.
+	 * @return speed scaled by movement direction. 256 units are required for each movement step.
+	 */
+	FORCEINLINE uint GetOldAdvanceSpeed(uint speed)
+	{
+		return (this->direction & 1) ? speed : speed * 3 / 4;
+	}
+
+	/**
+	 * Determines the effective vehicle movement speed.
+	 *
+	 * Together with #GetAdvanceDistance() this function is a replacement for #GetOldAdvanceSpeed().
+	 *
+	 * A vehicle progresses independent of it's movement direction.
+	 * However different amounts of "progress" are needed for moving a step in a specific direction.
+	 * That way the leftover progress does not need any adaption when changing movement direction.
+	 *
+	 * @param speed Direction-independent unscaled speed.
+	 * @return speed, scaled to match #GetAdvanceDistance().
+	 */
+	static FORCEINLINE uint GetAdvanceSpeed(uint speed)
+	{
+		return speed * 3 / 4;
+	}
+
+	/**
+	 * Determines the vehicle "progress" needed for moving a step.
+	 *
+	 * Together with #GetAdvanceSpeed() this function is a replacement for #GetOldAdvanceSpeed().
+	 *
+	 * @return distance to drive for a movement step on the map.
+	 */
+	FORCEINLINE uint GetAdvanceDistance()
+	{
+		return (this->direction & 1) ? 192 : 256;
+	}
+
+	/**
 	 * Sets the expense type associated to this vehicle type
 	 * @param income whether this is income or (running) expenses of the vehicle
 	 */

@@ -346,8 +346,8 @@ static bool ShipAccelerate(Vehicle *v)
 			SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 	}
 
-	/* Decrease somewhat when turning */
-	if (!(v->direction & 1)) spd = spd * 3 / 4;
+	/* Convert direction-indepenent speed into direction-dependent speed. (old movement method) */
+	spd = v->GetOldAdvanceSpeed(spd);
 
 	if (spd == 0) return false;
 	if ((byte)++spd == 0) return true;

@@ -756,6 +756,13 @@ static void RoadVehArrivesAt(const RoadVehicle *v, Station *st)
 	}
 }
 
+/**
+ * This function looks at the vehicle and updates its speed (cur_speed
+ * and subspeed) variables. Furthermore, it returns the distance that
+ * the vehicle can drive this tick. #Vehicle::GetAdvanceDistance() determines
+ * the distance to drive before moving a step on the map.
+ * @return distance to drive.
+ */
 static int RoadVehAccelerate(RoadVehicle *v)
 {
 	uint oldspeed = v->cur_speed;
@@ -786,8 +793,7 @@ static int RoadVehAccelerate(RoadVehicle *v)
 		}
 	}
 
-	/* Speed is scaled in the same manner as for trains. @see train_cmd.cpp */
-	int scaled_spd = spd * 3 >> 2;
+	int scaled_spd = v->GetAdvanceSpeed(spd);
 
 	scaled_spd += v->progress;
 	v->progress = 0;
@@ -1595,7 +1601,7 @@ static bool RoadVehController(RoadVehicle *v)
 	/* Check how far the vehicle needs to proceed */
 	int j = RoadVehAccelerate(v);
 
-	int adv_spd = (v->direction & 1) ? 192 : 256;
+	int adv_spd = v->GetAdvanceDistance();
 	bool blocked = false;
 	while (j >= adv_spd) {
 		j -= adv_spd;
@@ -1609,8 +1615,8 @@ static bool RoadVehController(RoadVehicle *v)
 		}
 		if (blocked) break;
 
-		/* 192 spd used for going straight, 256 for going diagonally. */
-		adv_spd = (v->direction & 1) ? 192 : 256;
+		/* Determine distance to next map position */
+		adv_spd = v->GetAdvanceDistance();
 
 		/* Test for a collision, but only if another movement will occur. */
 		if (j >= adv_spd && RoadVehCheckTrainCrash(v)) break;
