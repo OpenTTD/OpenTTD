@@ -5,13 +5,14 @@ bin/openttd*
 bin/*.cfg
 bundle/*
 bundles/*
-config.cache.*
+config.cache*
 config.log
 config.pwd
 docs/aidocs/*
 docs/source/*
 Makefile
 Makefile.am
+Makefile.bundle
 media/openttd.desktop
 media/openttd.desktop.install
 objs/*
