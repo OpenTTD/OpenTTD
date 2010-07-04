@@ -238,14 +238,15 @@ void SaveLoadHotkeyGroup(IniGroup *group, T *hotkey_list, bool save)
 }
 
 struct MainWindow;
+struct MainToolbarWindow;
+struct ScenarioEditorToolbarWindow;
 struct TerraformToolbarWindow;
 struct ScenarioEditorLandscapeGenerationWindow;
 struct OrdersWindow;
 struct BuildAirToolbarWindow;
 struct BuildDocksToolbarWindow;
-struct MainToolbarWindow;
-struct ScenarioEditorToolbarWindow;
 struct BuildRailToolbarWindow;
+struct BuildRoadToolbarWindow;
 
 static void SaveLoadHotkeys(bool save)
 {
@@ -260,14 +261,15 @@ static void SaveLoadHotkeys(bool save)
 	SaveLoadHotkeyGroup(group, _##name##_hotkeys, save);
 
 	SL_HOTKEYS(global, MainWindow);
+	SL_HOTKEYS(maintoolbar, MainToolbarWindow);
+	SL_HOTKEYS(scenedit_maintoolbar, ScenarioEditorToolbarWindow);
 	SL_HOTKEYS(terraform, TerraformToolbarWindow);
 	SL_HOTKEYS(terraform_editor, ScenarioEditorLandscapeGenerationWindow);
 	SL_HOTKEYS(order, OrdersWindow);
 	SL_HOTKEYS(airtoolbar, BuildAirToolbarWindow);
 	SL_HOTKEYS(dockstoolbar, BuildDocksToolbarWindow);
-	SL_HOTKEYS(maintoolbar, MainToolbarWindow);
 	SL_HOTKEYS(railtoolbar, BuildRailToolbarWindow);
-	SL_HOTKEYS(scenedit_maintoolbar, ScenarioEditorToolbarWindow);
+	SL_HOTKEYS(roadtoolbar, BuildRoadToolbarWindow);
 
 
 #undef SL_HOTKEYS
