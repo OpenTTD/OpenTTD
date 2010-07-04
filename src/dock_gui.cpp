@@ -294,20 +294,27 @@ static const WindowDesc _build_docks_toolbar_desc(
 	_nested_build_docks_toolbar_widgets, lengthof(_nested_build_docks_toolbar_widgets)
 );
 
-void ShowBuildDocksToolbar()
+/**
+ * Open the build water toolbar window
+ *
+ * If the terraform toolbar is linked to the toolbar, that window is also opened.
+ *
+ * @return newly opened water toolbar, or NULL if the toolbar could not be opened.
+ */
+Window *ShowBuildDocksToolbar()
 {
-	if (!Company::IsValidID(_local_company)) return;
+	if (!Company::IsValidID(_local_company)) return NULL;
 
 	DeleteWindowByClass(WC_BUILD_TOOLBAR);
-	AllocateWindowDescFront<BuildDocksToolbarWindow>(&_build_docks_toolbar_desc, TRANSPORT_WATER);
+	return AllocateWindowDescFront<BuildDocksToolbarWindow>(&_build_docks_toolbar_desc, TRANSPORT_WATER);
 }
 
 EventState DockToolbarGlobalHotkeys(uint16 key, uint16 keycode)
 {
 	int num = CheckHotkeyMatch<BuildDocksToolbarWindow>(_dockstoolbar_hotkeys, keycode, NULL, true);
 	if (num == -1) return ES_NOT_HANDLED;
-	ShowBuildDocksToolbar();
-	Window *w = FindWindowByClass(WC_BUILD_TOOLBAR);
+	Window *w = ShowBuildDocksToolbar();
+	if (w == NULL) return ES_NOT_HANDLED;
 	return w->OnKeyPress(key, keycode);
 }
 
@@ -339,9 +346,14 @@ static const WindowDesc _build_docks_scen_toolbar_desc(
 	_nested_build_docks_scen_toolbar_widgets, lengthof(_nested_build_docks_scen_toolbar_widgets)
 );
 
-void ShowBuildDocksScenToolbar()
+/**
+ * Open the build water toolbar window for the scenario editor.
+ *
+ * @return newly opened water toolbar, or NULL if the toolbar could not be opened.
+ */
+Window *ShowBuildDocksScenToolbar()
 {
-	AllocateWindowDescFront<BuildDocksToolbarWindow>(&_build_docks_scen_toolbar_desc, TRANSPORT_WATER);
+	return AllocateWindowDescFront<BuildDocksToolbarWindow>(&_build_docks_scen_toolbar_desc, TRANSPORT_WATER);
 }
 
 /** Widget numbers of the build-dock GUI. */

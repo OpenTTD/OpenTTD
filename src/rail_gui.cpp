@@ -898,16 +898,17 @@ static const WindowDesc _build_rail_desc(
  * If the terraform toolbar is linked to the toolbar, that window is also opened.
  *
  * @param railtype Rail type to open the window for
+ * @return newly opened rail toolbar, or NULL if the toolbar could not be opened.
  */
-void ShowBuildRailToolbar(RailType railtype)
+Window *ShowBuildRailToolbar(RailType railtype)
 {
-	if (!Company::IsValidID(_local_company)) return;
-	if (!ValParamRailtype(railtype)) return;
+	if (!Company::IsValidID(_local_company)) return NULL;
+	if (!ValParamRailtype(railtype)) return NULL;
 
 	DeleteWindowByClass(WC_BUILD_TOOLBAR);
 	_cur_railtype = railtype;
-	BuildRailToolbarWindow *w = new BuildRailToolbarWindow(&_build_rail_desc, TRANSPORT_RAIL, railtype);
 	_remove_button_clicked = false;
+	return new BuildRailToolbarWindow(&_build_rail_desc, TRANSPORT_RAIL, railtype);
 }
 
 EventState RailToolbarGlobalHotkeys(uint16 key, uint16 keycode)
@@ -915,8 +916,8 @@ EventState RailToolbarGlobalHotkeys(uint16 key, uint16 keycode)
 	extern RailType _last_built_railtype;
 	int num = CheckHotkeyMatch<BuildRailToolbarWindow>(_railtoolbar_hotkeys, keycode, NULL, true);
 	if (num == -1) return ES_NOT_HANDLED;
-	ShowBuildRailToolbar(_last_built_railtype);
-	Window *w = FindWindowByClass(WC_BUILD_TOOLBAR);
+	Window *w = ShowBuildRailToolbar(_last_built_railtype);
+	if (w == NULL) return ES_NOT_HANDLED;
 	return w->OnKeyPress(key, keycode);
 }
 

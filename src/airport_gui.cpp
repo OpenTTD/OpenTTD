@@ -168,20 +168,27 @@ static const WindowDesc _air_toolbar_desc(
 	_nested_air_toolbar_widgets, lengthof(_nested_air_toolbar_widgets)
 );
 
-void ShowBuildAirToolbar()
+/**
+ * Open the build airport toolbar window
+ *
+ * If the terraform toolbar is linked to the toolbar, that window is also opened.
+ *
+ * @return newly opened airport toolbar, or NULL if the toolbar could not be opened.
+ */
+Window *ShowBuildAirToolbar()
 {
-	if (!Company::IsValidID(_local_company)) return;
+	if (!Company::IsValidID(_local_company)) return NULL;
 
 	DeleteWindowByClass(WC_BUILD_TOOLBAR);
-	AllocateWindowDescFront<BuildAirToolbarWindow>(&_air_toolbar_desc, TRANSPORT_AIR);
+	return AllocateWindowDescFront<BuildAirToolbarWindow>(&_air_toolbar_desc, TRANSPORT_AIR);
 }
 
 EventState AirportToolbarGlobalHotkeys(uint16 key, uint16 keycode)
 {
 	int num = CheckHotkeyMatch<BuildAirToolbarWindow>(_airtoolbar_hotkeys, keycode, NULL, true);
 	if (num == -1) return ES_NOT_HANDLED;
-	ShowBuildAirToolbar();
-	Window *w = FindWindowByClass(WC_BUILD_TOOLBAR);
+	Window *w = ShowBuildAirToolbar();
+	if (w == NULL) return ES_NOT_HANDLED;
 	return w->OnKeyPress(key, keycode);
 }
 

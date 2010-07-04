@@ -360,6 +360,7 @@ EventState TerraformToolbarGlobalHotkeys(uint16 key, uint16 keycode)
 	int num = CheckHotkeyMatch<TerraformToolbarWindow>(_terraform_hotkeys, keycode, NULL, true);
 	if (num == -1) return ES_NOT_HANDLED;
 	Window *w = ShowTerraformToolbar(NULL);
+	if (w == NULL) return ES_NOT_HANDLED;
 	return w->OnKeyPress(key, keycode);
 }
 
@@ -769,5 +770,6 @@ EventState TerraformToolbarEditorGlobalHotkeys(uint16 key, uint16 keycode)
 	int num = CheckHotkeyMatch<ScenarioEditorLandscapeGenerationWindow>(_terraform_editor_hotkeys, keycode, NULL, true);
 	if (num == -1) return ES_NOT_HANDLED;
 	Window *w = ShowEditorTerraformToolbar();
+	if (w == NULL) return ES_NOT_HANDLED;
 	return w->OnKeyPress(key, keycode);
 }

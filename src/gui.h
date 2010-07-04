@@ -19,6 +19,8 @@
 #include "strings_type.h"
 #include "transport_type.h"
 
+struct Window;
+
 /* main_gui.cpp */
 void HandleOnEditText(const char *str);
 void InitializeGUI();
@@ -33,11 +35,11 @@ void DrawArrowButtons(int x, int y, Colours button_colour, byte state, bool clic
 void ShowOrdersWindow(const Vehicle *v);
 
 /* dock_gui.cpp */
-void ShowBuildDocksToolbar();
-void ShowBuildDocksScenToolbar();
+Window *ShowBuildDocksToolbar();
+Window *ShowBuildDocksScenToolbar();
 
-/* aircraft_gui.cpp */
-void ShowBuildAirToolbar();
+/* airport_gui.cpp */
+Window *ShowBuildAirToolbar();
 
 /* tgp_gui.cpp */
 void ShowGenerateLandscape();
