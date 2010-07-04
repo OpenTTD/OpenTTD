@@ -244,6 +244,7 @@ struct OrdersWindow;
 struct BuildAirToolbarWindow;
 struct BuildDocksToolbarWindow;
 struct MainToolbarWindow;
+struct ScenarioEditorToolbarWindow;
 struct BuildRailToolbarWindow;
 
 static void SaveLoadHotkeys(bool save)
@@ -266,6 +267,7 @@ static void SaveLoadHotkeys(bool save)
 	SL_HOTKEYS(dockstoolbar, BuildDocksToolbarWindow);
 	SL_HOTKEYS(maintoolbar, MainToolbarWindow);
 	SL_HOTKEYS(railtoolbar, BuildRailToolbarWindow);
+	SL_HOTKEYS(scenedit_maintoolbar, ScenarioEditorToolbarWindow);
 
 
 #undef SL_HOTKEYS

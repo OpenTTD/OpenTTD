@@ -1502,6 +1502,29 @@ static ToolbarButtonProc * const _scen_toolbar_button_procs[] = {
 	ToolbarSwitchClick,
 };
 
+enum MainToolbarEditorHotkeys {
+	MTEHK_PAUSE,
+	MTEHK_FASTFORWARD,
+	MTEHK_SETTINGS,
+	MTEHK_SAVEGAME,
+	MTEHK_GENLAND,
+	MTEHK_GENTOWN,
+	MTEHK_GENINDUSTRY,
+	MTEHK_BUILD_ROAD,
+	MTEHK_BUILD_DOCKS,
+	MTEHK_BUILD_TREES,
+	MTEHK_SIGN,
+	MTEHK_MUSIC,
+	MTEHK_LANDINFO,
+	MTEHK_SMALL_SCREENSHOT,
+	MTEHK_GIANT_SCREENSHOT,
+	MTEHK_ZOOM_IN,
+	MTEHK_ZOOM_OUT,
+	MTEHK_TERRAFORM,
+	MTEHK_SMALLMAP,
+	MTEHK_EXTRA_VIEWPORT,
+};
+
 struct ScenarioEditorToolbarWindow : Window {
 public:
 	ScenarioEditorToolbarWindow(const WindowDesc *desc) : Window()
@@ -1573,37 +1596,27 @@ public:
 
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
-		switch (keycode) {
-			case WKC_F1: case WKC_PAUSE: ToolbarPauseClick(this); break;
-			case WKC_F2: ShowGameOptions(); break;
-			case WKC_F3: MenuClickSaveLoad(); break;
-			case WKC_F4: ToolbarScenGenLand(this); break;
-			case WKC_F5: ToolbarScenGenTown(this); break;
-			case WKC_F6: ToolbarScenGenIndustry(this); break;
-			case WKC_F7: ToolbarScenBuildRoad(this); break;
-			case WKC_F8: ToolbarScenBuildDocks(this); break;
-			case WKC_F9: ToolbarScenPlantTrees(this); break;
-			case WKC_F10: ToolbarScenPlaceSign(this); break;
-			case WKC_F11: ShowMusicWindow(); break;
-			case WKC_F12: PlaceLandBlockInfo(); break;
-			case WKC_CTRL | 'S': MenuClickSmallScreenshot(); break;
-			case WKC_CTRL | 'G': MenuClickWorldScreenshot(); break;
-
-			/* those following are all fall through */
-			case WKC_NUM_PLUS:
-			case WKC_EQUALS:
-			case WKC_SHIFT | WKC_EQUALS:
-			case WKC_SHIFT | WKC_F5: ToolbarZoomInClick(this); break;
-
-			/* those following are all fall through */
-			case WKC_NUM_MINUS:
-			case WKC_MINUS:
-			case WKC_SHIFT | WKC_MINUS:
-			case WKC_SHIFT | WKC_F6: ToolbarZoomOutClick(this); break;
-
-			case 'L': ShowEditorTerraformToolbar(); break;
-			case 'M': ShowSmallMap(); break;
-			case 'V': ShowExtraViewPortWindow(); break;
+		switch (CheckHotkeyMatch(scenedit_maintoolbar_hotkeys, keycode, this)) {
+			case MTEHK_PAUSE: ToolbarPauseClick(this); break;
+			case MTEHK_FASTFORWARD: ToolbarFastForwardClick(this); break;
+			case MTEHK_SETTINGS: ShowGameOptions(); break;
+			case MTEHK_SAVEGAME: MenuClickSaveLoad(); break;
+			case MTEHK_GENLAND: ToolbarScenGenLand(this); break;
+			case MTEHK_GENTOWN: ToolbarScenGenTown(this); break;
+			case MTEHK_GENINDUSTRY: ToolbarScenGenIndustry(this); break;
+			case MTEHK_BUILD_ROAD: ToolbarScenBuildRoad(this); break;
+			case MTEHK_BUILD_DOCKS: ToolbarScenBuildDocks(this); break;
+			case MTEHK_BUILD_TREES: ToolbarScenPlantTrees(this); break;
+			case MTEHK_SIGN: ToolbarScenPlaceSign(this); break;
+			case MTEHK_MUSIC: ShowMusicWindow(); break;
+			case MTEHK_LANDINFO: PlaceLandBlockInfo(); break;
+			case MTEHK_SMALL_SCREENSHOT: MenuClickSmallScreenshot(); break;
+			case MTEHK_GIANT_SCREENSHOT: MenuClickWorldScreenshot(); break;
+			case MTEHK_ZOOM_IN: ToolbarZoomInClick(this); break;
+			case MTEHK_ZOOM_OUT: ToolbarZoomOutClick(this); break;
+			case MTHK_TERRAFORM: ShowEditorTerraformToolbar(); break;
+			case MTEHK_SMALLMAP: ShowSmallMap(); break;
+			case MTHK_EXTRA_VIEWPORT: ShowExtraViewPortWindow(); break;
 			default: return ES_NOT_HANDLED;
 		}
 		return ES_HANDLED;
@@ -1655,7 +1668,34 @@ public:
 
 		this->SetDirty();
 	}
+
+	static Hotkey<ScenarioEditorToolbarWindow> scenedit_maintoolbar_hotkeys[];
 };
+
+Hotkey<ScenarioEditorToolbarWindow> ScenarioEditorToolbarWindow::scenedit_maintoolbar_hotkeys[] = {
+	Hotkey<ScenarioEditorToolbarWindow>(_maintoolbar_pause_keys, "pause", MTEHK_PAUSE),
+	Hotkey<ScenarioEditorToolbarWindow>((uint16)0, "fastforward", MTEHK_FASTFORWARD),
+	Hotkey<ScenarioEditorToolbarWindow>(WKC_F2, "settings", MTEHK_SETTINGS),
+	Hotkey<ScenarioEditorToolbarWindow>(WKC_F3, "saveload", MTEHK_SAVEGAME),
+	Hotkey<ScenarioEditorToolbarWindow>(WKC_F4, "town_list", MTEHK_GENLAND),
+	Hotkey<ScenarioEditorToolbarWindow>(WKC_F5, "subsidies", MTEHK_GENTOWN),
+	Hotkey<ScenarioEditorToolbarWindow>(WKC_F6, "station_list", MTEHK_GENINDUSTRY),
+	Hotkey<ScenarioEditorToolbarWindow>(WKC_F7, "finances", MTEHK_BUILD_ROAD),
+	Hotkey<ScenarioEditorToolbarWindow>(WKC_F8, "companies", MTEHK_BUILD_DOCKS),
+	Hotkey<ScenarioEditorToolbarWindow>(WKC_F9, "graphs", MTEHK_BUILD_TREES),
+	Hotkey<ScenarioEditorToolbarWindow>(WKC_F10, "league", MTEHK_SIGN),
+	Hotkey<ScenarioEditorToolbarWindow>(WKC_F11, "industry_list", MTEHK_MUSIC),
+	Hotkey<ScenarioEditorToolbarWindow>(WKC_F12, "train_list", MTEHK_LANDINFO),
+	Hotkey<ScenarioEditorToolbarWindow>(WKC_CTRL  | 'S', "small_screenshot", MTEHK_SMALL_SCREENSHOT),
+	Hotkey<ScenarioEditorToolbarWindow>(WKC_CTRL  | 'G', "giant_screenshot", MTEHK_GIANT_SCREENSHOT),
+	Hotkey<ScenarioEditorToolbarWindow>(_maintoolbar_zoomin_keys, "zoomin", MTEHK_ZOOM_IN),
+	Hotkey<ScenarioEditorToolbarWindow>(_maintoolbar_zoomout_keys, "zoomout", MTEHK_ZOOM_OUT),
+	Hotkey<ScenarioEditorToolbarWindow>('L', "terraform", MTEHK_TERRAFORM),
+	Hotkey<ScenarioEditorToolbarWindow>('M', "smallmap", MTEHK_SMALLMAP),
+	Hotkey<ScenarioEditorToolbarWindow>('V', "extra_viewport", MTEHK_EXTRA_VIEWPORT),
+	HOTKEY_LIST_END(ScenarioEditorToolbarWindow)
+};
+Hotkey<ScenarioEditorToolbarWindow> *_scenedit_maintoolbar_hotkeys = ScenarioEditorToolbarWindow::scenedit_maintoolbar_hotkeys;
 
 static const NWidgetPart _nested_toolb_scen_inner_widgets[] = {
 	NWidget(WWT_IMGBTN, COLOUR_GREY, TBSE_PAUSE), SetDataTip(SPR_IMG_PAUSE, STR_TOOLBAR_TOOLTIP_PAUSE_GAME),
