@@ -53,7 +53,7 @@ static const KeycodeNames _keycode_to_name[] = {
 	{"PLUS", (WindowKeyCodes)'+'},
 	{"COMMA", (WindowKeyCodes)','},
 	{"NUM_PLUS", WKC_NUM_PLUS},
-	{"NUM_PLUS", WKC_NUM_MINUS},
+	{"NUM_MINUS", WKC_NUM_MINUS},
 	{"=", WKC_EQUALS},
 	{"-", WKC_MINUS},
 };
