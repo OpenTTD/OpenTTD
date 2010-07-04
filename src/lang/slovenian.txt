@@ -1316,6 +1316,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 mreža
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 mreža
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :naključno
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Mesta lahko gradijo ceste: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}Mestom je dovoljena izgradnja prehodov nivojev: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Omogoči mestni nadzor hrupa za letališča: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Ustanavljanje mest v igri: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :prepovedano
@@ -3584,6 +3585,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Najprej 
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Ni primernih tračnic
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Najprej moraš odstraniti tračnice
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Cesta je enosmerna ali blokirana
+STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Menjava nivojev ni dovoljena za ta tip železnice
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Nemogoča gradnja signalov...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Nemogoča gradnja tirov...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Nemogoča odstranitev tirov...

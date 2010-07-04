@@ -1275,6 +1275,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :grade 2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :grade 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :random
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Permitir cidades construir novas ruas?: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}Permitir cidades construirem cruzamentos de nível: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Permitir controle de ruído de aeronaves pelas cidades: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Fundando cidades no jogo: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :proibido
@@ -3543,6 +3544,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Remova o
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Tipo de linha não apropriado
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Remova a ferrovia antes
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Rua é mão única ou está bloqueado
+STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Cruzamentos de nível não são permitidos para esse tipo de trilho
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Impossível construir sinais aqui...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Impossível construir ferrovia aqui...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Impossível remover a ferrovia daqui...

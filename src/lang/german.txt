@@ -1275,6 +1275,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2×2-Gitter
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3×3-Gitter
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Zufällig
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Städten das Bauen von Straßen erlauben: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}Städte dürfen Bahnübergänge bauen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Stadt kontrolliert Lärmbelastung der Flughäfen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Städte im Spiel gründen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :verboten
@@ -3543,6 +3544,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Signal m
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Keine geeigneten Gleise
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Gleise müssen erst abgerissen werden
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Einbahnstraße oder blockierter Weg
+STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Bahnübergänge sind für diesen Schienentyp nicht erlaubt.
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Signal kann hier nicht aufgestellt werden...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Gleise können hier nicht verlegt werden...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Gleise können nicht abgerissen werden...

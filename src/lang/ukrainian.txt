@@ -340,6 +340,7 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} м³
 
 STR_UNITS_FORCE_SI                                              :{COMMA} кН
 
+
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Введіть строку фільтру
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Введіть ключове слово для фільтраціі списку
@@ -2364,6 +2365,8 @@ STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}Вида
 STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}Стерти вибрану збережену гру
 STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Зберегти
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Зберегти поточну гру, використовуючи вибране ім'я файлу
+STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
+STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Введіть назву файла збереженої гри
 
@@ -2519,6 +2522,12 @@ STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Відс
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Відсутній GRF файл(и)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Зняття з паузи може привести до аварійної відмови OpenTTD. Не рапортуйте про наступні відмови.{}Ви дійсно хочете зняти з паузи?
 
+# NewGRF status
+STR_NEWGRF_LIST_NONE                                            :Немає
+STR_NEWGRF_LIST_ALL_FOUND                                       :Є всі файли
+STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Знайдено сумісні файли
+STR_NEWGRF_LIST_MISSING                                         :{RED}Відсутні файли
+
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Поведінка NewGRF '{0:STRING}' може спричинити розсинхронізацію та/або аварійне завершення.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Це змінить довжину транспорту для '{1:ENGINE}', якщо він не в депо.
@@ -2527,6 +2536,8 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Потя
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' надає некоректну інформацію.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Інформація про вантаж/переобладнання для '{1:ENGINE}' відрізняється від списку покупки після побудови. Це може спричинити невідповідності під час автооновлення/заміни.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' спричинив нескінченний цикл у виклику виробництва
+
+# 'User removed essential NewGRFs'-placeholders for stuff without specs.
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Список позначень - {COMMA} Позначен{P ня ня ь}
@@ -2876,6 +2887,7 @@ STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Пере
 
 # Depot window
 
+
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} транспорт{P "" и ів}{STRING}
@@ -3150,7 +3162,7 @@ STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 STR_ORDER_TEXT                                                  :{STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Кінець наказів - -
-STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Кінець наказів - -
+STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Кінець спільних наказів - -
 
 # Order bottom buttons
 STR_ORDER_NON_STOP                                              :{BLACK}Без зупинки
@@ -3567,6 +3579,7 @@ STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Немо
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Тут не можна побудувати трамвайне депо...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Неможливо будувати корабельне депо тут...
 
+
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Поїзд повинен стояти в депо
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... повинно стояти в гаражі
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Корабль має стояти в доці
@@ -3743,6 +3756,8 @@ STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... ду
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Неможливо позначити місце
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Неможливо перейменувати місце...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Не можна видалити позначку...
+
+# Translatable comment for OpenTTD's desktop shortcut
 
 ##id 0x2000
 # Town building names
@@ -4170,6 +4185,7 @@ STR_FORMAT_GROUP_NAME                                           :Група {COM
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 STR_FORMAT_WAYPOINT_NAME                                        :Пункт {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Пункт {TOWN} #{COMMA}
+
 
 STR_UNKNOWN_STATION                                             :невідома станція
 STR_DEFAULT_SIGN_NAME                                           :Позначення

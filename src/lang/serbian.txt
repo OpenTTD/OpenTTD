@@ -971,7 +971,7 @@ STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDE
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}{STRING} je sponzorisao izgradnju novog naselja {TOWN}!
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Nov{G i a o} {STRING} je u izgradnji kod naselja {TOWN}!
-STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Nova {STRING} je posađena kod naselja {TOWN}!
+STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Nov{G i a o} {STRING} je posađen{G 0 "" a o} kod naselja {TOWN}!
 
 STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}{STRING} objavljuje prestanak sa daljim radom!
 STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}Problem sa zalihama je prouzrokovao da {STRING} objavi prestanak sa daljim radom!

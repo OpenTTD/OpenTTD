@@ -1275,6 +1275,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :rastgele
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Kasabalara yol yapma izni verilsin: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}Şehirlerde hemzemin geçit yapmaya izin ver: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Kasabalar tarafından kontrol edilen havaalanı gürültü seviyesine izin ver: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Oyunda yeni şehirler kurma: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :yasak
@@ -3543,6 +3544,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Önce i�
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Uygun ray yok
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Önce ray kaldırılmalı
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Yol tek yönlü veya kapalı
+STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Bu ray tipi için hemzemin geçit yapılamaz
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Buraya sinyal yapılamıyor...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Buraya ray yapılamıyor...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Buradan ray kaldırılamıyor...
