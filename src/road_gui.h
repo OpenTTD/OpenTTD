@@ -14,7 +14,7 @@
 
 #include "road_type.h"
 
-void ShowBuildRoadToolbar(RoadType roadtype);
-void ShowBuildRoadScenToolbar();
+Window *ShowBuildRoadToolbar(RoadType roadtype);
+Window *ShowBuildRoadScenToolbar();
 
 #endif /* ROAD_GUI_H */

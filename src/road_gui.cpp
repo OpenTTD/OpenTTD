@@ -28,6 +28,7 @@
 #include "tunnelbridge_map.h"
 #include "tilehighlight_func.h"
 #include "company_base.h"
+#include "hotkeys.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -446,21 +447,6 @@ static OnButtonClick * const _build_road_button_proc[] = {
 	BuildRoadClick_Remove
 };
 
-/** Array with the keycode of the button-clicks for the road-toolbar */
-static const uint16 _road_keycodes[] = {
-	'1',
-	'2',
-	'3',
-	'4',
-	'5',
-	'6',
-	'7',
-	'8',
-	'B',
-	'T',
-	'R',
-};
-
 struct BuildRoadToolbarWindow : Window {
 	BuildRoadToolbarWindow(const WindowDesc *desc, WindowNumber window_number) : Window()
 	{
@@ -553,20 +539,11 @@ struct BuildRoadToolbarWindow : Window {
 
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
-		EventState state = ES_NOT_HANDLED;
-		for (uint i = 0; i != lengthof(_road_keycodes); i++) {
-			if (keycode == _road_keycodes[i]) {
-				_remove_button_clicked = false;
-				_one_way_button_clicked = false;
-				_build_road_button_proc[i](this);
-				this->UpdateOptionWidgetStatus((RoadToolbarWidgets)(i + RTW_ROAD_X));
-				if (_ctrl_pressed) RoadToolbar_CtrlChanged(this);
-				state = ES_HANDLED;
-				break;
-			}
-		}
+		int num = CheckHotkeyMatch(roadtoolbar_hotkeys, keycode, this);
+		if (num == -1 || this->GetWidget<NWidgetBase>(num) == NULL) return ES_NOT_HANDLED;
+		this->OnClick(Point(), num, 1);
 		MarkTileDirtyByTile(TileVirtXY(_thd.pos.x, _thd.pos.y)); // redraw tile selection
-		return state;
+		return ES_HANDLED;
 	}
 
 	virtual void OnPlaceObject(Point pt, TileIndex tile)
@@ -697,7 +674,26 @@ struct BuildRoadToolbarWindow : Window {
 		if (RoadToolbar_CtrlChanged(this)) return ES_HANDLED;
 		return ES_NOT_HANDLED;
 	}
+
+	static Hotkey<BuildRoadToolbarWindow> roadtoolbar_hotkeys[];
 };
+
+Hotkey<BuildRoadToolbarWindow> BuildRoadToolbarWindow::roadtoolbar_hotkeys[] = {
+	Hotkey<BuildRoadToolbarWindow>('1', "build_x", RTW_ROAD_X),
+	Hotkey<BuildRoadToolbarWindow>('2', "build_y", RTW_ROAD_Y),
+	Hotkey<BuildRoadToolbarWindow>('3', "autoroad", RTW_AUTOROAD),
+	Hotkey<BuildRoadToolbarWindow>('4', "demolish", RTW_DEMOLISH),
+	Hotkey<BuildRoadToolbarWindow>('5', "depot", RTW_DEPOT),
+	Hotkey<BuildRoadToolbarWindow>('6', "bus_station", RTW_BUS_STATION),
+	Hotkey<BuildRoadToolbarWindow>('7', "truck_station", RTW_TRUCK_STATION),
+	Hotkey<BuildRoadToolbarWindow>('8', "oneway", RTW_ONE_WAY),
+	Hotkey<BuildRoadToolbarWindow>('B', "bridge", RTW_BUILD_BRIDGE),
+	Hotkey<BuildRoadToolbarWindow>('T', "tunnel", RTW_BUILD_TUNNEL),
+	Hotkey<BuildRoadToolbarWindow>('R', "remove", RTW_REMOVE),
+	HOTKEY_LIST_END(BuildRoadToolbarWindow)
+};
+Hotkey<BuildRoadToolbarWindow> *_roadtoolbar_hotkeys = BuildRoadToolbarWindow::roadtoolbar_hotkeys;
+
 
 static const NWidgetPart _nested_build_road_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
@@ -778,13 +774,30 @@ static const WindowDesc _build_tramway_desc(
 	_nested_build_tramway_widgets, lengthof(_nested_build_tramway_widgets)
 );
 
-void ShowBuildRoadToolbar(RoadType roadtype)
+/**
+ * Open the build road toolbar window
+ *
+ * If the terraform toolbar is linked to the toolbar, that window is also opened.
+ *
+ * @return newly opened road toolbar, or NULL if the toolbar could not be opened.
+ */
+Window *ShowBuildRoadToolbar(RoadType roadtype)
 {
-	if (!Company::IsValidID(_local_company)) return;
+	if (!Company::IsValidID(_local_company)) return NULL;
 	_cur_roadtype = roadtype;
 
 	DeleteWindowByClass(WC_BUILD_TOOLBAR);
-	AllocateWindowDescFront<BuildRoadToolbarWindow>(roadtype == ROADTYPE_ROAD ? &_build_road_desc : &_build_tramway_desc, TRANSPORT_ROAD);
+	return AllocateWindowDescFront<BuildRoadToolbarWindow>(roadtype == ROADTYPE_ROAD ? &_build_road_desc : &_build_tramway_desc, TRANSPORT_ROAD);
+}
+
+EventState RoadToolbarGlobalHotkeys(uint16 key, uint16 keycode)
+{
+	extern RoadType _last_built_roadtype;
+	int num = CheckHotkeyMatch<BuildRoadToolbarWindow>(_roadtoolbar_hotkeys, keycode, NULL, true);
+	if (num == -1) return ES_NOT_HANDLED;
+	Window *w = ShowBuildRoadToolbar(_last_built_roadtype);
+	if (w == NULL) return ES_NOT_HANDLED;
+	return w->OnKeyPress(key, keycode);
 }
 
 static const NWidgetPart _nested_build_road_scen_widgets[] = {
@@ -821,10 +834,19 @@ static const WindowDesc _build_road_scen_desc(
 	_nested_build_road_scen_widgets, lengthof(_nested_build_road_scen_widgets)
 );
 
-void ShowBuildRoadScenToolbar()
+Window *ShowBuildRoadScenToolbar()
 {
 	_cur_roadtype = ROADTYPE_ROAD;
-	AllocateWindowDescFront<BuildRoadToolbarWindow>(&_build_road_scen_desc, 0);
+	return AllocateWindowDescFront<BuildRoadToolbarWindow>(&_build_road_scen_desc, 0);
+}
+
+EventState RoadToolbarEditorGlobalHotkeys(uint16 key, uint16 keycode)
+{
+	int num = CheckHotkeyMatch<BuildRoadToolbarWindow>(_roadtoolbar_hotkeys, keycode, NULL, true);
+	if (num == -1) return ES_NOT_HANDLED;
+	Window *w = ShowBuildRoadScenToolbar();
+	if (w == NULL) return ES_NOT_HANDLED;
+	return w->OnKeyPress(key, keycode);
 }
 
 /** Enum referring to the widgets of the build road depot window */

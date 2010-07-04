@@ -293,6 +293,8 @@ GlobalHotkeyHandler DockToolbarGlobalHotkeys;
 GlobalHotkeyHandler AirportToolbarGlobalHotkeys;
 GlobalHotkeyHandler TerraformToolbarGlobalHotkeys;
 GlobalHotkeyHandler TerraformToolbarEditorGlobalHotkeys;
+GlobalHotkeyHandler RoadToolbarGlobalHotkeys;
+GlobalHotkeyHandler RoadToolbarEditorGlobalHotkeys;
 
 
 GlobalHotkeyHandler *_global_hotkey_handlers[] = {
@@ -300,10 +302,12 @@ GlobalHotkeyHandler *_global_hotkey_handlers[] = {
 	DockToolbarGlobalHotkeys,
 	AirportToolbarGlobalHotkeys,
 	TerraformToolbarGlobalHotkeys,
+	RoadToolbarGlobalHotkeys,
 };
 
 GlobalHotkeyHandler *_global_hotkey_handlers_editor[] = {
 	TerraformToolbarEditorGlobalHotkeys,
+	RoadToolbarEditorGlobalHotkeys,
 };
 
 
