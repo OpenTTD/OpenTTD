@@ -215,6 +215,7 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
+
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Enter filter string
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Enter a keyword to filter the list for
@@ -2348,6 +2349,13 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Disabled
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Enter NewGRF parameters
 
+# NewGRF inspect window
+
+
+
+# Sprite aligner window
+
+
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Warning: {SILVER}{STRING}
@@ -2383,6 +2391,9 @@ STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Missing 
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Missing GRF file(s)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Unpausing can crash OpenTTD. Do not file bug reports for subsequent crashes.{}Do you really want to unpause?
 
+# NewGRF status
+STR_NEWGRF_LIST_MISSING                                         :{RED}Missing files
+
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Behaviour of NewGRF '{STRING}' is likely to cause desyncs and/or crashes.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}It changes vehicle length for '{1:ENGINE}' when not inside a depot.
@@ -2391,6 +2402,8 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Train '{
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' provides incorrect information.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Cargo/refit information for '{1:ENGINE}' differs from purchase list after construction. This might cause autorenew/-replace to fail refitting correctly.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' caused an endless loop in the production callback.
+
+# 'User removed essential NewGRFs'-placeholders for stuff without specs.
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Sign List - {COMMA} Sign{P "" s}
@@ -2740,6 +2753,7 @@ STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Rename a
 
 # Depot window
 
+
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} vehicle{P "" s}{STRING}
@@ -2919,6 +2933,8 @@ STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Heading
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Heading for {WAYPOINT}, {VELOCITY}
 
 
+
+# Vehicle stopped/started animations
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Details)
@@ -3426,6 +3442,7 @@ STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Can't bu
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Can't build streetcar depot here...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Can't build ship depot here...
 
+
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Train must be stopped inside a depot
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... must be stopped inside a road vehicle depot
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Ship must be stopped in depot
@@ -3601,6 +3618,8 @@ STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... too 
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Can't place sign here...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Can't change sign name...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Can't delete sign...
+
+# Translatable comment for OpenTTD's desktop shortcut
 
 ##id 0x2000
 # Town building names
@@ -3992,6 +4011,7 @@ STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 STR_FORMAT_WAYPOINT_NAME                                        :Waypoint {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Waypoint {TOWN} #{COMMA}
 
+
 STR_UNKNOWN_STATION                                             :unknown station
 STR_DEFAULT_SIGN_NAME                                           :Sign
 STR_COMPANY_SOMEONE                                             :someone
@@ -4081,3 +4101,4 @@ STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
+

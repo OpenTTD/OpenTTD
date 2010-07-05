@@ -1274,6 +1274,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 raster
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 raster
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :willekeurig
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Steden mogen wegen bouwen: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}Steden mogen gelijkvloerse kruisingen bouwen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Geluidsniveaucontrole door steden voor vliegvelden toestaan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Steden stichten in spel: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :verboden
@@ -3542,6 +3543,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Sein moe
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Geen bruikbaar spoor
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Bestaand spoor moet eerst weggehaald worden
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Weg is eenrichtingsverkeer of geblokkeerd
+STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Gelijkvloerse kruisingen zijn niet toegestaan voor dit type spoor
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Kan hier geen seinen plaatsen...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Kan hier geen spoor leggen...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Kan hier geen spoor weghalen...

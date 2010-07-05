@@ -2477,11 +2477,11 @@ STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Μετα
 # Sprite aligner window
 STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Ευθυγραμμιση sprite {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Επόμενο sprite
-STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Συνέχισε στο επόμενο κανονικό sprite, παρακάμπτόντας όποια φευδό/επαναχρωματισμένα/γραμμάτων sprites και στο τέλος
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Συνέχισε στο επόμενο κανονικό sprite, προσπερνώντας οποιοδήποτε ψευδο/επαναναχρωματιζόμενο/γραμματοσειράς sprite και κάνε τις τελικές διαδικασίες στο τέλος
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Μετακινήση στο sprite
 STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Μετακίνηση στο sprite. Εαν το sprite δεν είναι ένα κανονικό sprite, συνεχίζει στο επόμενο κανονικό sprite
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Προηγούμενο sprite
-STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Συνέχισε στο προηγούμενο κανονικό sprite, παρακάμπτόντας όποια φευδό/επαναχρωματισμένα/γραμμάτων sprites και στην αρχή
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Συνέχισε στο επόμενο κανονικό sprite, προσπερνώντας οποιοδήποτε ψευδο/επαναναχρωματιζόμενο/γραμματοσειράς sprite και κάνε τις τελικές διαδικασίες στη αρχή
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Επανεμφάνιση του επιλεγμένου sprite. Η ευθυγράμμιση αγνοείται όταν γίνεται η σχεδίαση του sprite
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Μετακίνηση του sprite τριγύρω, αλλάζοντας τα στίγματα X και Y
 STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X στίγμα: {NUM}, Y στίγμα: {NUM}

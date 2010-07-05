@@ -340,6 +340,8 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} м³
 
 STR_UNITS_FORCE_SI                                              :{COMMA} кН
 
+STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} фт
+STR_UNITS_HEIGHT_SI                                             :{COMMA} м
 
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Введіть строку фільтру
@@ -355,6 +357,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Назв
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Закрити вікно
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Заголовок вікна - потягніть для переміщення вікна
 STR_TOOLTIP_SHADE                                               :{BLACK}Згорнути вікно - показувати тільки заголовок
+STR_TOOLTIP_DEBUG                                               :{BLACK}Показати дебагову інформацію NewGRF
 STR_TOOLTIP_STICKY                                              :{BLACK}Закріпити вікно - воно не буде закриватися командою "Закрити всі вікна"
 STR_TOOLTIP_RESIZE                                              :{BLACK}Натисніть і тягніть для зміни розміру вікна
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Розмір вікна великий/малий
@@ -566,6 +569,7 @@ STR_ABOUT_MENU_AI_DEBUG                                         :Дебаг AI
 STR_ABOUT_MENU_SCREENSHOT                                       :Копія екрану (Ctrl-S)
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Знімок всієї карти (Ctrl+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Про гру 'OpenTTD'
+STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Вирівнювання спрайтів
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -649,6 +653,8 @@ STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLAC
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Плата за доставку 10 одиниць (або 10,000 літрів) вантажу на відстань 20 квадратів
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}Включити всі
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT}{BLACK}Відключити усі
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Показувати всі види вантажів на графіку
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Не показувати всі види вантажів на графіку
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Вкл/відкл графік типів вантажу
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 
@@ -1393,6 +1399,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :сітка 2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :сітка 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :випадково
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Міста можуть будувати шляхи: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}Міста можуть будувати переїзди: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Дозволити залежний від міста рівень шуму для аеропортів: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Заснування міст у грі: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :заборонено
@@ -2365,6 +2372,10 @@ STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}Вида
 STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}Стерти вибрану збережену гру
 STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Зберегти
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Зберегти поточну гру, використовуючи вибране ім'я файлу
+STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Завантажити
+STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Завантажити обрану гру
+STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Деталі гри
+STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Інформація відсутня.
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
 
@@ -2441,6 +2452,10 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Гене
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Налаштування нової графіки
+STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Детальна інформація про NewGRF
+STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Активні файли NewGRF
+STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Неактивні файли NewGRF
+STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Обрати набір:
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Фільтр за строкою:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Завантажити обрані настройки
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Записати настройки
@@ -2481,11 +2496,30 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Вимкн
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Введіть параметри NewGRF
 
 # NewGRF inspect window
+STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Перегляд - {STRING}
+STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Батько (parent)
+STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Перегляд об'єкту з погляду батька
 
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} в {HEX}
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Тип колії
 
+STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Параметр змінної NewGRF 60+x (шістнадцятковий)
 
 # Sprite aligner window
+STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Вирівнювання спрайту {COMMA} ({STRING})
+STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Наступний спрайт
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Йти до наступного нормального спрайту пропускаючи будь-які псевдоспрайти, спрайти зі зміненими кольорами та шрифтові спрайти, а також обгортки (wrap) навколо на початку
+STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Йти до спрайту
+STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Йти до заданого спрайту. Якщо він не є нормальним, йти до наступного нормального
+STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Попередній спрайт
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Повернутися до попереднього нормального спрайту пропускаючи будь-які псевдоспрайти, спрайти зі зміненими кольорами та шрифтові спрайти, а також обгортки (wrap) навколо на початку
+STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Відображення обраного спрайту (вирівнювання ігнорується)
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Рухайте спрайт навколо, змінюючи його зміщення за X та Y
+STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}Зміщення за X: {NUM}, Зміщення за Y: {NUM}
+STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Вибрати спрайт
+STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Оберіть будь-який спрайт на екрані
 
+STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Йти до спрайту
 
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
@@ -2538,6 +2572,11 @@ STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Інфо
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' спричинив нескінченний цикл у виклику виробництва
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs.
+STR_NEWGRF_INVALID_CARGO                                        :<невідомий вантаж>
+STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
+STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} <невідомого вантажу>
+STR_NEWGRF_INVALID_ENGINE                                       :<невідомий двигун>
+STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<невідоме підприємство>
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Список позначень - {COMMA} Позначен{P ня ня ь}
@@ -2821,7 +2860,7 @@ STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Стер
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Перейменувати вибрану групу
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Клікніть, щоб захистити групу від глобальної автозаміни
 
-STR_GROUP_ADD_SHARED_VEHICLE                                    :Добавити спільний транспорт
+STR_GROUP_ADD_SHARED_VEHICLE                                    :Додати спільний транспорт
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Позбутися всього транспорту
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Перейменувати групу
@@ -2886,7 +2925,10 @@ STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Пере
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Перейменувати тип літака
 
 # Depot window
+STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
 
+STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}Змінити назву депо
+STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Перейменувати депо
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -3066,9 +3108,17 @@ STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Без 
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Прямує до {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Прямує до {WAYPOINT}, {VELOCITY}
 
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE}Прямує до {DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Прямує до {DEPOT}, {VELOCITY}
 
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}Техогляд у {DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Техогляд у {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
+STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Зупинено
+STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Зупинено
+STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINYFONT}{GREEN}Розпочато
+STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Розпочато
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Детально)
@@ -3244,6 +3294,7 @@ STR_ORDER_TRAIN_DEPOT                                           :Залізни�
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Автомобільне депо
 STR_ORDER_SHIP_DEPOT                                            :Док
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
+STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 STR_ORDER_REFIT_ORDER                                           :(Переобладнати до {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Переобладнати на {STRING} і зупинити)
@@ -3340,6 +3391,12 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}Нала
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Змінити налаштування AI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Перезавантажити AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Знищити AI, перезавантажити скрипт, та рестартувати AI
+STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Увімкнути/вимкнути паузу при появі сигнального рядку в журналі АІ
+STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Рядок:
+STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Рядок
+STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}У разі появи в журналі АІ цього рядку гра зупиняється.
+STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Регістр
+STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Перемкнути перевірку регістру при порівнянні рядків журналу АІ з сигнальним рядком
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Продовжити
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Зняти з паузи і продовжити AI
 
@@ -3415,6 +3472,7 @@ STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Файл збе
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Неможливо прочитати файл
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Неможливо записати файл
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Перевірка на цілісність зазнала невдачі
+STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<недоступно>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Гра була записана у версії без підтримки трамваїв. Усі трамваї були видалені.
 
 # Map generation messages
@@ -3579,6 +3637,7 @@ STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Немо
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Тут не можна побудувати трамвайне депо...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Неможливо будувати корабельне депо тут...
 
+STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Неможливо перейменувати депо...
 
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Поїзд повинен стояти в депо
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... повинно стояти в гаражі
@@ -3609,6 +3668,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Споч
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Невідповідний тип колії
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Спочатку приберіть колію
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Дорога з одностороннім рухом або блокована
+STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Переїзди для такого виду колії є забороненими
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Неможливо будувати сигнали тут...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Неможливо будувати колію тут...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Неможливо прибрати колію звідси...
@@ -3636,6 +3696,7 @@ STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Тут �
 
 # Tree related errors
 STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... тут вже росте дерево
+STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... невірний тип поверхні для цього виду дерева
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Неможливо посадити тут дерево
 
 # Bridge related errors
@@ -3719,6 +3780,7 @@ STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Літа
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Дуже багато транспорту у грі
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Не можна змінити інтервал обслуговування...
 
+STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... транспорт знищено
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Неможливо проїхати сигнал - небезпечно...
@@ -3758,6 +3820,7 @@ STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Немо
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Не можна видалити позначку...
 
 # Translatable comment for OpenTTD's desktop shortcut
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Клон гри "Transport Tycoon Deluxe"
 
 ##id 0x2000
 # Town building names
@@ -4186,6 +4249,13 @@ STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 STR_FORMAT_WAYPOINT_NAME                                        :Пункт {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Пункт {TOWN} #{COMMA}
 
+STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} Залізничне депо
+STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :Депо {TOWN} #{COMMA}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} Автомобільне депо
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :Автомобільне депо {TOWN} #{COMMA}
+STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} Док
+STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :Док {TOWN} #{COMMA}
+STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{STATION} Ангар
 
 STR_UNKNOWN_STATION                                             :невідома станція
 STR_DEFAULT_SIGN_NAME                                           :Позначення
@@ -4212,6 +4282,7 @@ STR_VIEWPORT_WAYPOINT_TINY                                      :{TINYFONT}{WAYP
 # Simple strings to get specific types of data
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
+STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}
@@ -4260,6 +4331,7 @@ STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
+STR_TINY_BLACK_HEIGHT                                           :{TINYFONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
