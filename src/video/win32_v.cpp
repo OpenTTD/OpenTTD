@@ -417,7 +417,6 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 			_cursor.in_window = false;
 
 			if (!_left_button_down && !_right_button_down) MyShowCursor(true);
-			HandleMouseEvents();
 			return 0;
 
 		case WM_MOUSEMOVE: {
