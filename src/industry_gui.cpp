@@ -433,14 +433,12 @@ public:
 					uint16 callback_res = GetIndustryCallback(CBID_INDUSTRY_FUND_MORE_TEXT, 0, 0, NULL, this->selected_type, INVALID_TILE);
 					if (callback_res != CALLBACK_FAILED) {  // Did it fail?
 						str = GetGRFStringID(indsp->grf_prop.grffile->grfid, 0xD000 + callback_res);  // No. here's the new string
+						if (str != STR_UNDEFINED) {
+							PrepareTextRefStackUsage(6);
+							DrawStringMultiLine(left, right, y, bottom, str);
+							StopTextRefStackUsage();
+						}
 					}
-				}
-
-				/* Draw the Additional purchase text, provided by newgrf callback, if any.
-				 * Otherwhise, will print Nothing */
-				if (str != STR_NULL && str != STR_UNDEFINED) {
-					SetDParam(0, str);
-					DrawStringMultiLine(left, right, y, bottom, STR_JUST_STRING);
 				}
 			} break;
 		}
