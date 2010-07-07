@@ -2891,13 +2891,21 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vaigín�
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Láraigh an príomhamharc ar shuíomh na feithicle. Leanfar an fheithicil sa phríomhamharc le Ctrl+Cliceáil
+STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Láraigh an príomhamharc ar shuíomh na loinge. Leanfar an long sa phríomhamharc le Ctrl+Cliceáil
+STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Láraigh an príomhamharc ar shuíomh an aerárthaigh. Leanfar an t-aerárthach sa phríomhamharc le Ctrl+Cliceáil
 
+STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Seol an traein chuig an iosta. Ní dhéanfar ach seirbhísiú le Ctrl+Cliceáil
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Seol an fheithicil chuig an iosta. Ní dhéanfar ach seirbhísiú le Ctrl+Cliceáil
+STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Seol an long chuig an iosta. Ní dhéanfar ach seirbhísiú le Ctrl+Cliceáil
+STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Seol an t-aerárthach chuig an haingear. Ní dhéanfar ach seirbhísiú le Ctrl+Cliceáil
 
 STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Ceannófar cóip den traein lena n-áirítear gach vaigín. Déanfar na horduithe a chomhroinnt le Ctrl+Cliceáil
 STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Ceannófar cóip den fheithicil bóthair. Déanfar na horduithe a chomhroinnt le Ctrl+Cliceáil
 STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Ceannófar cóip den long. Déanfar na horduithe a chomhroinnt le Ctrl+Cliceáil
 STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Ceannófar cóip den aerárthach. Déanfar na horduithe a chomhroinnt le Ctrl+Cliceáil
 
+STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Leag ar an traein dul ar aghaidh gan fanacht ar an gcomhartha
 
 STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Athfheistigh traein le cineál lastais eile a iompar
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Athfheistigh feithicil bóthair le cineál lastais eile a iompar
@@ -2905,6 +2913,7 @@ STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Athfheis
 STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Athfheistigh aerárthach le cineál lastais eile a iompar
 
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Aisiompaigh treo na traenach
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Cuir iallach ar an bhfeithicil casadh timpeall
 
 STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Taispeáin orduithe na traenach. Ctrl+Cliceáil chun amchlár na traenach a thaispeáint
 STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Taispeáin orduithe na feithicle. Ctrl+Cliceáil chun amchlár na feithicle a thaispeáint

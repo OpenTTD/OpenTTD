@@ -1274,6 +1274,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :lưới 2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :lưới 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :ngẫu nhiên
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Đô thị có thể tự xây đường sá: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}Đô thị cho phép xây giao nhau đồng mức: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Cho phép chính quyền địa phương kiểm soát độ ồn của sân bay: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Thành lập đô thị trong ván chơi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :không cho phép
@@ -3542,6 +3543,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Phải b
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Không có đường ray thích hợp
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Phải phá bỏ đường ray trước
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Đường một chiều hoặc bị chặn
+STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Đường giao nhau không cho phép với loại ray này
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Không thể xây đèn hiệu ở đây...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Không thể xây đường ray ở đây...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Không thể phá bỏ đường ray ở đây...

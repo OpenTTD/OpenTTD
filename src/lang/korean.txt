@@ -1272,6 +1272,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 칸
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 칸
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :무작위
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}도시 스스로의 도로 건설 허용: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}도시가 회사소유의 철도에 건널목을 만드는 것을 허용: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}도시가 공항에서 나오는 소음을 제한하도록 함: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}게임 도중에 도시 건설: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :금지
@@ -2323,6 +2324,9 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}게임 �
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF 설정
+STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}NewGRF 상세 정보
+STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}활성화된 NewGRF 파일
+STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}비활성화된 NewGRF 파일
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}필터링할 문자열:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}선택한 프리셋을 불러옵니다
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}프리셋 저장
@@ -3498,6 +3502,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}신호�
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}알맞지 않은 철로입니다.
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}철로를 먼저 제거하십시오
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}도로가 일방통행이거나 막혔습니다
+STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}이 철도 타입에서는 건널목을 만들 수 없습니다.
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}여기에 신호기를 건설할 수 없습니다...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}여기에 철로를 건설할 수 없습니다...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}이곳의 철로를 제거할 수 없습니다...

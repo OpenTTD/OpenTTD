@@ -1472,7 +1472,7 @@ STR_INTRO_LOAD_GAME                                             :{BLACK}Зава
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Грати за сценарієм
 STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Грати з карти висот
 STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Редактор сценарію
-STR_INTRO_MULTIPLAYER                                           :{BLACK}Мережна гра
+STR_INTRO_MULTIPLAYER                                           :{BLACK}Мережева гра
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Налаштування гри
 STR_INTRO_DIFFICULTY                                            :{BLACK}Складність ({STRING})
@@ -1637,7 +1637,7 @@ STR_FACE_EARRING                                                :Сережки:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Змінити комір або сережки
 
 # Network server list
-STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Мережна гра
+STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Мережева гра
 STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK}З'єднання:
 STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}Виберіть гру через інтернет або через локальну мережу(ЛОМ)
 STR_NETWORK_SERVER_LIST_LAN                                     :Локальна
@@ -1696,7 +1696,7 @@ STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Введ
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Створити нову мережеву гру
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Назва гри:
-STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Назва гри відображатиметься іншим гравцям у меню мережної гри
+STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Назва гри відображатиметься іншим гравцям у меню мережевої гри
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Встановити пароль
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Захистіть вашу гру паролем, якщо не бажаєте загального доступу
 STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Виберіть карту:
@@ -1718,9 +1718,9 @@ STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Мова
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Інші гравці будуть знати якою мовою спілкуються на сервері
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Почати гру
-STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Почати нову мережну гру з випадковою картою або сценарієм
+STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Почати нову мережеву гру з випадковою картою або сценарієм
 STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Завантаження гри
-STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Продовжити збережену мережну гру
+STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Продовжити збережену мережеву гру
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Введіть назву мережевої гри
 
@@ -1859,10 +1859,10 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Введ
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Не знайдено мережевого пристрою або скомпільовано без ENABLE_NETWORK
-STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Не знайдено жодної мережної гри
+STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Не знайдено жодної мережевої гри
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Сервер не відповів на запит
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Не можна з'єднатись внаслідок неспівпадання NewGRF
-STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Помилка синхронізації з мережною грою
+STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Помилка синхронізації з мережевою грою
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}З'єднання втрачено
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Неможливо завантажити гру
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Неможливо запустити сервер
