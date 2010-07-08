@@ -245,7 +245,7 @@ char *TranslateTTDPatchCodes(uint32 grfid, const char *str)
 			}
 			case 0x82:
 			case 0x83:
-			case 0x84: d += Utf8Encode(d, SCC_NEWGRF_PRINT_WORD_SPEED + c - 0x82); break;
+			case 0x84: d += Utf8Encode(d, SCC_NEWGRF_PRINT_DATE + c - 0x82); break;
 			case 0x85: d += Utf8Encode(d, SCC_NEWGRF_DISCARD_WORD);       break;
 			case 0x86: d += Utf8Encode(d, SCC_NEWGRF_ROTATE_TOP_4_WORDS); break;
 			case 0x87: d += Utf8Encode(d, SCC_NEWGRF_PRINT_WORD_LITRES);  break;
