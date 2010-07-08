@@ -2226,6 +2226,17 @@ static void CheckSoftLimit()
  */
 void InputLoop()
 {
+	/*
+	 * During the generation of the world, there might be
+	 * another thread that is currently building for example
+	 * a road. To not interfere with those tasks, we should
+	 * NOT change the _current_company here.
+	 *
+	 * This is not necessary either, as the only events that
+	 * can be handled are the 'close application' events
+	 */
+	if (!IsGeneratingWorld()) _current_company = _local_company;
+
 	CheckSoftLimit();
 	HandleKeyScrolling();
 
