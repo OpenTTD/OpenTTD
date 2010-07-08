@@ -42,6 +42,7 @@ void SQAIRail_Register(Squirrel *engine)
 	SQAIRail.DefSQConst(engine, AIRail::ERR_CROSSING_ON_ONEWAY_ROAD,      "ERR_CROSSING_ON_ONEWAY_ROAD");
 	SQAIRail.DefSQConst(engine, AIRail::ERR_UNSUITABLE_TRACK,             "ERR_UNSUITABLE_TRACK");
 	SQAIRail.DefSQConst(engine, AIRail::ERR_NONUNIFORM_STATIONS_DISABLED, "ERR_NONUNIFORM_STATIONS_DISABLED");
+	SQAIRail.DefSQConst(engine, AIRail::ERR_RAILTYPE_DISALLOWS_CROSSING,  "ERR_RAILTYPE_DISALLOWS_CROSSING");
 	SQAIRail.DefSQConst(engine, AIRail::RAILTYPE_INVALID,                 "RAILTYPE_INVALID");
 	SQAIRail.DefSQConst(engine, AIRail::RAILTRACK_NE_SW,                  "RAILTRACK_NE_SW");
 	SQAIRail.DefSQConst(engine, AIRail::RAILTRACK_NW_SE,                  "RAILTRACK_NW_SE");
@@ -71,10 +72,12 @@ void SQAIRail_Register(Squirrel *engine)
 	AIError::RegisterErrorMap(STR_ERROR_CROSSING_ON_ONEWAY_ROAD,        AIRail::ERR_CROSSING_ON_ONEWAY_ROAD);
 	AIError::RegisterErrorMap(STR_ERROR_NO_SUITABLE_RAILROAD_TRACK,     AIRail::ERR_UNSUITABLE_TRACK);
 	AIError::RegisterErrorMap(STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED, AIRail::ERR_NONUNIFORM_STATIONS_DISABLED);
+	AIError::RegisterErrorMap(STR_ERROR_CROSSING_DISALLOWED,            AIRail::ERR_RAILTYPE_DISALLOWS_CROSSING);
 
 	AIError::RegisterErrorMapString(AIRail::ERR_CROSSING_ON_ONEWAY_ROAD,      "ERR_CROSSING_ON_ONEWAY_ROAD");
 	AIError::RegisterErrorMapString(AIRail::ERR_UNSUITABLE_TRACK,             "ERR_UNSUITABLE_TRACK");
 	AIError::RegisterErrorMapString(AIRail::ERR_NONUNIFORM_STATIONS_DISABLED, "ERR_NONUNIFORM_STATIONS_DISABLED");
+	AIError::RegisterErrorMapString(AIRail::ERR_RAILTYPE_DISALLOWS_CROSSING,  "ERR_RAILTYPE_DISALLOWS_CROSSING");
 
 	SQAIRail.DefSQStaticMethod(engine, &AIRail::IsRailTile,                      "IsRailTile",                      2, ".i");
 	SQAIRail.DefSQStaticMethod(engine, &AIRail::IsLevelCrossingTile,             "IsLevelCrossingTile",             2, ".i");

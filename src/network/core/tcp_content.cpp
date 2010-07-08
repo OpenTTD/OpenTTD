@@ -27,6 +27,21 @@ ContentInfo::~ContentInfo()
 	free(this->tags);
 }
 
+/**
+ * Copy data from other #ContentInfo and take ownership of allocated stuff.
+ * @param other Source to copy from. #dependencies and #tags will be NULLed.
+ */
+void ContentInfo::TransferFrom(ContentInfo *other)
+{
+	if (other != this) {
+		free(this->dependencies);
+		free(this->tags);
+		memcpy(this, other, sizeof(ContentInfo));
+		other->dependencies = NULL;
+		other->tags = NULL;
+	}
+}
+
 size_t ContentInfo::Size() const
 {
 	size_t len = 0;

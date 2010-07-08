@@ -14,6 +14,11 @@
  * functions may still be available if you return an older API version
  * in GetAPIVersion() in info.nut.
  *
+ * \b 1.0.3
+ *
+ * API additions:
+ * \li AIRail::ERR_RAILTYPE_DISALLOWS_CROSSING
+ *
  * \b 1.0.2
  *
  * Other changes:

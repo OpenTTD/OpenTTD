@@ -1864,6 +1864,10 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb, boo
 	}
 
 	_sl.excpt_uninit = NULL;
+	_sl.bufe = _sl.bufp = NULL;
+	_sl.offs_base = 0;
+	_sl.action = (mode != 0) ? SLA_SAVE : SLA_LOAD;
+
 	try {
 		_sl.fh = (mode == SL_SAVE) ? FioFOpenFile(filename, "wb", sb) : FioFOpenFile(filename, "rb", sb);
 
@@ -1874,10 +1878,6 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb, boo
 		if (_sl.fh == NULL) {
 			SlError(mode == SL_SAVE ? STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE : STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE);
 		}
-
-		_sl.bufe = _sl.bufp = NULL;
-		_sl.offs_base = 0;
-		_sl.action = (mode != 0) ? SLA_SAVE : SLA_LOAD;
 
 		/* General tactic is to first save the game to memory, then use an available writer
 		 * to write it to file, either in threaded mode if possible, or single-threaded */

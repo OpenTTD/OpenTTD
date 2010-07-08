@@ -88,6 +88,8 @@ struct ContentInfo {
 	/** Free everything allocated */
 	~ContentInfo();
 
+	void TransferFrom(ContentInfo *other);
+
 	/**
 	 * Get the size of the data as send over the network.
 	 * @return the size.

@@ -20,13 +20,13 @@
 #include "slope_type.h"
 #include "strings_type.h"
 
-enum RailTypeFlag {
-	RTF_CATENARY = 0,  ///< Set if the rail type should have catenary drawn
-};
-
 enum RailTypeFlags {
-	RTFB_NONE     = 0,
-	RTFB_CATENARY = 1 << RTF_CATENARY,
+	RTF_CATENARY          = 0,                           ///< Bit number for drawing a catenary.
+	RTF_NO_LEVEL_CROSSING = 1,                           ///< Bit number for disallowing level crossings.
+
+	RTFB_NONE              = 0,                          ///< All flags cleared.
+	RTFB_CATENARY          = 1 << RTF_CATENARY,          ///< Value for drawing a catenary.
+	RTFB_NO_LEVEL_CROSSING = 1 << RTF_NO_LEVEL_CROSSING, ///< Value for disallowing level crossings.
 };
 DECLARE_ENUM_AS_BIT_SET(RailTypeFlags);
 
@@ -256,6 +256,16 @@ static inline bool IsCompatibleRail(RailType enginetype, RailType tiletype)
 static inline bool HasPowerOnRail(RailType enginetype, RailType tiletype)
 {
 	return HasBit(GetRailTypeInfo(enginetype)->powered_railtypes, tiletype);
+}
+
+/**
+ * Test if a RailType disallows build of level crossings.
+ * @param rt The RailType to check.
+ * @return Whether level crossings are not allowed.
+ */
+static inline bool RailNoLevelCrossings(RailType rt)
+{
+	return HasBit(GetRailTypeInfo(rt)->flags, RTF_NO_LEVEL_CROSSING);
 }
 
 /**

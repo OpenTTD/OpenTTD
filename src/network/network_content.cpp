@@ -132,10 +132,16 @@ DEF_CONTENT_RECEIVE_COMMAND(Client, PACKET_CONTENT_SERVER_INFO)
 			if (StrEmpty(ci->name)) strecpy(ci->name, ici->name, lastof(ci->name));
 			if (ici->IsSelected()) ci->state = ici->state;
 
-			delete ici;
-			*iter = ci;
+			/*
+			 * As ici might be selected by the content window we cannot delete that.
+			 * However, we want to keep most of the values of ci, except the values
+			 * we (just) already preserved.
+			 * So transfer data and ownership of allocated memory from ci to ici.
+			 */
+			ici->TransferFrom(ci);
+			delete ci;
 
-			this->OnReceiveContentInfo(ci);
+			this->OnReceiveContentInfo(ici);
 			return true;
 		}
 	}
