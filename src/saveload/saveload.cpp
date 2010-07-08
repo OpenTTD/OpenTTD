@@ -1961,6 +1961,15 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb, boo
 	if (mode == SL_LOAD_CHECK) _load_check_data.checkable = true;
 
 	_sl.excpt_uninit = NULL;
+	_sl.bufe = _sl.bufp = NULL;
+	_sl.offs_base = 0;
+	switch (mode) {
+		case SL_LOAD_CHECK: _sl.action = SLA_LOAD_CHECK; break;
+		case SL_LOAD: _sl.action = SLA_LOAD; break;
+		case SL_SAVE: _sl.action = SLA_SAVE; break;
+		default: NOT_REACHED();
+	}
+
 	try {
 		_sl.fh = (mode == SL_SAVE) ? FioFOpenFile(filename, "wb", sb) : FioFOpenFile(filename, "rb", sb);
 
@@ -1970,15 +1979,6 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb, boo
 
 		if (_sl.fh == NULL) {
 			SlError(mode == SL_SAVE ? STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE : STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE);
-		}
-
-		_sl.bufe = _sl.bufp = NULL;
-		_sl.offs_base = 0;
-		switch (mode) {
-			case SL_LOAD_CHECK: _sl.action = SLA_LOAD_CHECK; break;
-			case SL_LOAD: _sl.action = SLA_LOAD; break;
-			case SL_SAVE: _sl.action = SLA_SAVE; break;
-			default: NOT_REACHED();
 		}
 
 		/* General tactic is to first save the game to memory, then use an available writer
