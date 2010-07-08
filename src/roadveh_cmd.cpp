@@ -1541,11 +1541,9 @@ static bool RoadVehController(RoadVehicle *v)
 	if (v->reverse_ctr != 0) v->reverse_ctr--;
 
 	/* handle crashed */
-	if (v->vehstatus & VS_CRASHED) {
+	if (v->vehstatus & VS_CRASHED || RoadVehCheckTrainCrash(v)) {
 		return RoadVehIsCrashed(v);
 	}
-
-	RoadVehCheckTrainCrash(v);
 
 	/* road vehicle has broken down? */
 	if (v->breakdown_ctr != 0) {
