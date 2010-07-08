@@ -135,15 +135,13 @@ DEF_CONTENT_RECEIVE_COMMAND(Client, PACKET_CONTENT_SERVER_INFO)
 			/*
 			 * As ici might be selected by the content window we cannot delete that.
 			 * However, we want to keep most of the values of ci, except the values
-			 * we (just) already preserved. As there are already allocated blobs of
-			 * memory and more may be added, we cannot simply copy ci to ici as that
-			 * might cause a leak of memory. As such we need to swap the data and
-			 * then delete the memory we allocated here.
+			 * we (just) already preserved.
+			 * So transfer data and ownership of allocated memory from ci to ici.
 			 */
-			Swap(*ici, *ci);
+			ici->TransferFrom(ci);
 			delete ci;
 
-			this->OnReceiveContentInfo(ci);
+			this->OnReceiveContentInfo(ici);
 			return true;
 		}
 	}
