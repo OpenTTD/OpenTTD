@@ -319,7 +319,7 @@ STR_COLOUR_GREY                                                 :Серый
 STR_COLOUR_WHITE                                                :Белый
 
 # Units used in OpenTTD
-STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} мил{P я и ь}/ч
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} м/ч
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA} км/ч
 STR_UNITS_VELOCITY_SI                                           :{COMMA} м/с
 
@@ -355,7 +355,7 @@ STR_BUTTON_LOCATION                                             :{BLACK}Обзо
 STR_BUTTON_RENAME                                               :{BLACK}Переименовать
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Закрыть окно
-STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Заголовок окна - для перемещения окна тащить за него
+STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Заголовок окна - тащите его для перемещения окна
 STR_TOOLTIP_SHADE                                               :{BLACK}Свернуть окно, оставив заголовок
 STR_TOOLTIP_STICKY                                              :{BLACK}Игнорировать нажатия клавиши «Закрыть все окна»
 STR_TOOLTIP_RESIZE                                              :{BLACK}Нажмите и тащите для изменения размера окна
@@ -890,7 +890,7 @@ STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIGFONT}{BLACK
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIGFONT}{BLACK}Жители празднуют!{}Первый корабль причалил к {STATION}!
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIGFONT}{BLACK}Жители празднуют!{}Первый самолёт прибыл в {STATION}!
 
-STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK}Столкновение поездов!{}{COMMA} человек{P "" а ""} погиб{P "" ло ло} в огне!
+STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK}Столкновение поездов!{}{COMMA} человек{P "" а ""} погиб{P "" ло ло} в результате крушения!
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}АВАРИЯ!{}Водитель транспортного средства погиб при столкновении с поездом.
 STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIGFONT}{BLACK}АВАРИЯ!{}{COMMA} человек{P "" а ""} погиб{P "" ло ло} при столкновении с поездом!
 STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK}Авиакатастрофа!{}{COMMA} человек{P "" а ""} погиб{P "" ло ло} в огне в {STATION}!
@@ -922,16 +922,16 @@ STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK
 
 STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}Предприятие «{STRING}» объявляет о скором закрытии!
 STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}{STRING} закрывается из-за проблем с поставками сырья!
-STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}{STRING} объявляет о закрытии в связи с недостатком деревьев в округе!
+STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}{STRING} объявляет о закрытии в связи с отсутствием деревьев в округе!
 
 STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}Создана зона евро!{}{}Теперь в вашей стране в качестве единой валюты используется евро!
 STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}Мировой спад{}{}Финансовые эксперты дают ужасные прогнозы в связи с кризисом экономики!
 STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}Спад закончился!{}{}Увеличение объёмов торговли внушает уверенность владельцам предприятий. Экономика укрепляет свои позиции.
 
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}Предприятие «{INDUSTRY}» увеличивает объёмы производства!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}{INDUSTRY} начинает разработку нового угольного пласта!{}Добыча увеличена вдвое!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}Обнаружены новые запасы нефти на {INDUSTRY}!{}Добыча увеличена вдвое!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}Внедрение новых методов позволяет поднять производство вдвое на {INDUSTRY}!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}{INDUSTRY} начинает разработку нового угольного пласта! Добыча увеличена вдвое!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}Обнаружены новые запасы нефти!{}{INDUSTRY} увеличивает темпы добычи вдвое!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}{INDUSTRY} внедряет новые методы ведения с/х, что позволит удвоить производительность!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK}Предприятие «{1:INDUSTRY}» увеличивает производство {0:STRING.gen} на{NBSP}{2:COMMA}%!
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}Производительность предприятия «{INDUSTRY}» упала на 50%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}{INDUSTRY} снижает производительность на 50% из-за нашествия вредителей!
@@ -2118,7 +2118,7 @@ STR_BRIDGE_NAME_SUSPENSION_CONCRETE                             :Висячий 
 STR_BRIDGE_NAME_WOODEN                                          :Деревянный
 STR_BRIDGE_NAME_CONCRETE                                        :Бетонный
 STR_BRIDGE_NAME_TUBULAR_STEEL                                   :Трубчатый стальной
-STR_BRIDGE_TUBULAR_SILICON                                      :Трубчатый силиконовый
+STR_BRIDGE_TUBULAR_SILICON                                      :Трубчатый кремниевый
 
 
 # Road construction toolbar
@@ -2563,6 +2563,8 @@ STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Вмес
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Отсутствующие файлы NewGRF были отключены
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Недостающие GRF файлы
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Снятие с паузы может привести к ошибке OpenTTD.{}Вы хотите запустить игру?
+
+# NewGRF status
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Файл NewGRF «{STRING}» может привести к потере синхронизации и вылету игры.
@@ -3171,8 +3173,8 @@ STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Выру
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Осмотр каждые {LTBLUE}{COMMA} дней{BLACK}   Последний раз: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Интервал обслуж.: {LTBLUE}{COMMA}%{BLACK}   Последний раз: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Увеличить интервал обслуживания на 10. Ctrl+клик увеличивает интервал обслуживания на 5
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Уменьшить интервал обслуживания на 10. Ctrl+клик уменьшает интервал обслуживания на 5
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Увеличить интервал обслуживания на 10. Ctrl+щелчок увеличивает интервал обслуживания на 5.
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Уменьшить интервал обслуживания на 10. Ctrl+щелчок уменьшает интервал обслуживания на 5.
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Название поезда
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Название автомобиля
@@ -3677,6 +3679,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Нужн
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Нет подходящих рельсов
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Сначала надо удалить рельсы
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Дорога односторонняя или блокирована
+STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Через этот вид рельсов запрещено строить переезды
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Здесь невозможно поставить светофор...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Здесь невозможно проложить рельсы...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Не удалось удалить рельсы...
@@ -4224,7 +4227,7 @@ STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Точка пу
 
 STR_UNKNOWN_STATION                                             :неизвестная станция
 STR_DEFAULT_SIGN_NAME                                           :Знак
-STR_COMPANY_SOMEONE                                             :кто-нибудь
+STR_COMPANY_SOMEONE                                             :кто-то
 
 STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}
 STR_SAVEGAME_NAME_SPECTATOR                                     :Наблюдатель, {1:STRING}

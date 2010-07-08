@@ -2408,6 +2408,8 @@ STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}שדרו
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}קבצים חסרים
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}?הפשרת המשחק עלולה להביא לקריסה. להמשיך
 
+# NewGRF status
+
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}התנהגות ה-NewGRF '{STRING}' עלולה לגרום לקריסה ו/או חוסר סנכרון במשחק.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}It changes vehicle length for '{1:ENGINE}' when not inside a depot.
@@ -2418,6 +2420,11 @@ STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}מידע
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' גרם ללולאה אינסופית בהתקשרות חזרה של הייצור.
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs.
+STR_NEWGRF_INVALID_CARGO                                        :<מטען לא חוקי>
+STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
+STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} של <מטען לא חוקי>
+STR_NEWGRF_INVALID_ENGINE                                       :<מנוע לא תקין>
+STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<תעשייה לא תקינה>
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}סימניות {COMMA} - רשימת סימניות
@@ -3001,8 +3008,8 @@ STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}העבר
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{LTBLUE}{1:DATE_LONG} :טיפול אחרוןֿ {BLACK}{LTBLUE}{0:COMMA}% {BLACK} :מרווח בין טיפולים
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{LTBLUE}{1:DATE_LONG} :טיפול אחרוןֿ {BLACK}{LTBLUE}{0:COMMA}% {BLACK} :מרווח בין טיפולים
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}הגדל את המרווח בין קבלת שירות ב-10. Ctrl+לחיצה מגדיל את המרווח ב-5
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}הקטן את המרווח בין קבלת שירות ב-10. Ctrl+לחיצה מקטינה את המרווח ב-5
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}הגדל את מרווח הזמן עד קבלת שירות ב-10. Ctrl+לחיצה מגדיל את המרווח ב-5
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}הקטן את מרווח הזמן עד קבלת שירות ב-10. Ctrl+לחיצה מקטינה את המרווח ב-5
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}תן שם לרכבת
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}תן שם לכלי הרכב
@@ -3659,6 +3666,7 @@ STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}... ני
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}לא ניתן למחוק סימניה...
 
 # Translatable comment for OpenTTD's desktop shortcut
+STR_DESKTOP_SHORTCUT_COMMENT                                    :עותק של Transport Tycoon Deluxe
 
 ##id 0x2000
 # Town building names

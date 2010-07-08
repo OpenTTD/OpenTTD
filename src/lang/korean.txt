@@ -2395,6 +2395,8 @@ STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}사라�
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}GRF 파일 없음
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}일시정지를 해제하면 오류가 발생할 수도 있습니다. 차후에 나오는 오류에 대해서 버그 리포트를 제출하지 마십시오.{}정말로 일시정지를 해제하시겠습니까?
 
+# NewGRF status
+
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF '{STRING}'는 비동기화 혹은 충돌을 일으킬 수 있습니다.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}'{1:ENGINE}'{G 1 "이" "가"} 차고 안에 있지 않으면 차량 길이가 바뀝니다.
@@ -3495,6 +3497,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}신호�
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}알맞지 않은 철로입니다.
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}철로를 먼저 제거하십시오
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}도로가 일방통행이거나 막혔습니다
+STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}이 철도 타입에서는 건널목을 만들 수 없습니다.
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}여기에 신호기를 건설할 수 없습니다...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}여기에 철로를 건설할 수 없습니다...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}이곳의 철로를 제거할 수 없습니다...
@@ -3522,6 +3525,7 @@ STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}여기�
 
 # Tree related errors
 STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... 이미 나무가 심어져 있습니다.
+STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... 지형에 맞지 않는 나무타입입니다.
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}여기에 나무를 심을 수 없습니다...
 
 # Bridge related errors

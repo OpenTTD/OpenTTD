@@ -2394,6 +2394,8 @@ STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Missend(
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Ontbrekend(e) GRF-bestand(en)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Het spel vervolgen kan OpenTTD laten vastlopen. Rapporteer geen bugs als het spel vastloopt.{}Weet je zeker dat je het spel wilt vervolgen?
 
+# NewGRF status
+
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Gedrag van NewGRF '{0:STRING}' zal waarschijnlijk desynchronisatiefouten (desyncs) en/of crashes veroorzaken.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Het verandert de lengte van voertuig '{1:ENGINE}' terwijl het niet in een depot is.
@@ -3498,6 +3500,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Sein moe
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Geen bruikbaar spoor
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Bestaand spoor moet eerst weggehaald worden
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Weg is eenrichtingsverkeer of geblokkeerd
+STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Gelijkvloerse kruisingen zijn niet toegestaan voor dit type spoor
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Kan hier geen seinen plaatsen...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Kan hier geen spoor leggen...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Kan hier geen spoor weghalen...

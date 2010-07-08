@@ -372,7 +372,7 @@ STR_MAP_MENU_SIGN_LIST                                          :Lista de placas
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Lista de cidades
 ############ end of the 'Display map' dropdown
-STR_TOWN_MENU_FOUND_TOWN                                        :Cidade encontrada
+STR_TOWN_MENU_FOUND_TOWN                                        :Fundar cidade
 ############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
@@ -2115,7 +2115,7 @@ STR_LAND_AREA_INFORMATION_OWNER_N_A                             :N/D
 STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}Proprietário: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}Dono da estrada: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Dono da linha de bonde: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Dono da linha de trem: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Dono da linha ferroviária: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Autoridade local: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Nenhum
 STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Coordenadas: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
@@ -2395,6 +2395,8 @@ STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}arquivo(
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Arquivo(s) GRF faltantes
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Despausar pode travar OpenTTD. Não envie relatórios de erros sobre travas subsequentes.{}Você realmente quer despausar?
 
+# NewGRF status
+
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}'{0:STRING}' tem altas chances de causar desincronias e/ou travamentos.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Muda o tamanho de um veículo para '{1:ENGINE}' apesar de não estar em um depósito.
@@ -2403,6 +2405,13 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Trem '{V
 STR_NEWGRF_BUGGY                                                :{WHITE}O NewGRF '{0:STRING}' retorna informação incorreta.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}A informação de adaptação para '{1:ENGINE}' difere da lista de compras após a construção. Isso pode causar erros na autosubstituição/autoadaptação.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' causou um loop infinito no callback da produção.
+
+# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+STR_NEWGRF_INVALID_CARGO                                        :<carga inválida>
+STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
+STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} de <carga inválida>
+STR_NEWGRF_INVALID_ENGINE                                       :<locom. inválida>
+STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<indústria inválida>
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de Placas - {COMMA} Placa{P "" s}
@@ -2755,6 +2764,7 @@ STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}Depósit
 STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} Garagem
 STR_DEPOT_SHIP_CAPTION                                          :{WHITE}Depósito Naval de {TOWN}
 STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} Hangar
+
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -3124,7 +3134,7 @@ STR_ORDER_SERVICE_NON_STOP_AT                                   :Manutenção se
 
 STR_ORDER_NEAREST_DEPOT                                         :mais próximo
 STR_ORDER_NEAREST_HANGAR                                        :hangar mais próximo
-STR_ORDER_TRAIN_DEPOT                                           :Depósito de Trem
+STR_ORDER_TRAIN_DEPOT                                           :Depósito Ferroviário
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Depósito de Veículos
 STR_ORDER_SHIP_DEPOT                                            :Depósito de Navios
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {TOWN} {STRING}
@@ -3461,6 +3471,7 @@ STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Impossí
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Impossível construir depósito aqui...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Impossível construir depósito naval aqui...
 
+
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}O trem deve estar parado dentro do depósito
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... deve estar parado dentro de uma garagem
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}A embarcação deve estar parado no depósito naval
@@ -3490,6 +3501,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Remova o
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Tipo de linha não apropriado
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Remova a ferrovia antes
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Rua é mão única ou está bloqueado
+STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Cruzamentos de nível não são permitidos para esse tipo de trilho
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Impossível construir sinais aqui...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Impossível construir ferrovia aqui...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Impossível remover a ferrovia daqui...
@@ -3640,6 +3652,9 @@ STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... exis
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Impossível colocar placa aqui...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Impossível alterar nome da placa...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Impossível remover placa
+
+# Translatable comment for OpenTTD's desktop shortcut
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Um clone de Transport Tycoon Deluxe
 
 ##id 0x2000
 # Town building names
@@ -4030,6 +4045,7 @@ STR_FORMAT_GROUP_NAME                                           :Agrupar {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING} de {0:TOWN}
 STR_FORMAT_WAYPOINT_NAME                                        :Ponto de controle {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Ponto de controle {TOWN} #{COMMA}
+
 
 STR_UNKNOWN_STATION                                             :estação desconhecida
 STR_DEFAULT_SIGN_NAME                                           :Placa

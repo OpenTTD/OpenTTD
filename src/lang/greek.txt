@@ -1765,7 +1765,7 @@ STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Κ
 STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Ανεύρεση πληροφοριών του παιχνιδιού..
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Ανεύρεση πληροφοριών της εταρίας...
 ############ End of leave-in-this-order
-STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} συμπαίχτ{P ης ες} είναι πριν από σας
+STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} συμπαίκτ{P ης ες} είναι πριν από σας
 STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} κατέβηκαν μέχρι τώρα
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Αποσύνδεση
@@ -1807,7 +1807,7 @@ STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Προσ
 STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Θέστε τον κωδικό της εταιρίας
 
 # Network chat
-STR_NETWORK_CHAT_SEND                                           :{BLACK}Στείλε
+STR_NETWORK_CHAT_SEND                                           :{BLACK}Αποστολή
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Ομάδα] :
 STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Προσωπικό] {STRING}:
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Σε όλους] :
@@ -2488,6 +2488,8 @@ STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Φόρτ
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Ανύπαρκτο/α αρχείο/α GRF έχουν απενεργοποιηθεί
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Ανύπαρκτο/α αρχείο/α GRF
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Συνέχιση λειτουργίας μπόρει να κρασάρει το OpenTTD. Μην δώσετε αναφορές σφαλμάτων για συνεχόμενα κρασαρίσματα.{}Θέλετε πραγματικά να συνεχίσετε την λειτουργία;
+
+# NewGRF status
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Η συμπεριφορά του NewGRF '{0:STRING}' είναι πιθάνο να προκαλέσει αποσυγχρονισμούς και/ή κρασαρίσματα.

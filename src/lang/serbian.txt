@@ -967,8 +967,8 @@ STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDE
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}{STRING} je sponzorisao izgradnju novog naselja {TOWN}!
 
-STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Novi {STRING} je u izgradnji kod naselja {TOWN}!
-STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Nova {STRING} je posađena kod naselja {TOWN}!
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Nov{G i a o} {STRING} je u izgradnji kod naselja {TOWN}!
+STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Nov{G i a o} {STRING} je posađen{G 0 "" a o} kod naselja {TOWN}!
 
 STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}{STRING} objavljuje prestanak sa daljim radom!
 STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}Problem sa zalihama je prouzrokovao da {STRING} objavi prestanak sa daljim radom!
@@ -1206,7 +1206,7 @@ STR_DIFFICULTY_LEVEL_SETTING_QUANTITY_OF_SEA_LAKES              :{LTBLUE}Količi
 STR_DIFFICULTY_LEVEL_SETTING_ECONOMY                            :{LTBLUE}Ekonomija: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_TRAIN_REVERSING                    :{LTBLUE}Promena smera vozova: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}Katastrofe: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Stav gradskih vlasti prema radovima u oblasti: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Stav vlasti naselja prema radovima na njihovoj teritoriji: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
 STR_NONE                                                        :Nijedan
@@ -1281,12 +1281,12 @@ STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Originalan
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realističan
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Strmost kosina za železnicu {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Zabranjeno okretanje brodova i vozova za 90 stepeni: {ORANGE}{STRING} {LTBLUE} (ne uz OPF)
-STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Sjedini železničke stanice sagrađene jedna pored druge: {ORANGE}{STRING}
+STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Spajanje železničkih stanica sagrađenih jedna do druge: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Dozvoljeno sjedninjavanje udaljenih stanica: {ORANGE}{STRING}
-STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Koristi poboljšan algoritam utovara: {ORANGE}{STRING}
+STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Koristiti poboljšan algoritam utovara: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Postepeno utovarivanje u vozilo: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflacija: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Dostavi tovar na stanicu samo ako ima potražnje: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Dostavljanje tovara na stanicu samo ako ima potražnje: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Dozvoljena gradnja veoma dugačkih mostova: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}Dozvoljene naredbe za odlazak u depo: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Metod izgradnje finansiranih primarnih industrija: {ORANGE}{STRING}
@@ -1332,7 +1332,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Vozila 
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Automatksa zamena kada vozilo ostari: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Automatska zamena nakon {ORANGE}{STRING}{LTBLUE} meseci po ostarenju
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Najmanja potrebna količina novca za zamenu: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Dužina ispisa poruka o grešci: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Trajanje ispisa poruka o grešci: {ORANGE}{STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Prikazivanje broja populacije pored naziva naselja: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Oblikovanje reljefa: {ORANGE}{STRING}
@@ -1385,7 +1385,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Nikakvo
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Pomeranje sa levim klikom: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Koristiti {ORANGE}{STRING}{LTBLUE} oblik datuma u nazivima sačivanih partija.
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Koristiti {ORANGE}{STRING}{LTBLUE} oblik datuma u nazivima sačuvanih partija.
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :dugačak (31st Dec 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :kratak (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
@@ -1393,11 +1393,11 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Pauzirati odmah po pokretanju nove partije : {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Koristiti napredan spisak vozila: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :Ne
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :Samo za sopstvenu
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :Za svoje preduzeće
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_ALL                   :Za sva preduzeća
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Koristiti pokazatelj utovarivanja: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Ne
-STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Samo za sopstvenu
+STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Za svoje preduzeće
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Za sva preduzeća
 STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Omogućiti red vožnje vozila: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Prikazati red vožnje u diskretnim otkucajima: {ORANGE}{STRING}
@@ -1471,14 +1471,14 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :dozvoljeno, zas
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}Rasejavanje drveća tokom partije: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :nikakvo {RED}(onesposobljava rad drvnih kombinata)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :samo u tropskim šumama
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :svugde
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :svuda
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Lokacija glavne trake sa alatima: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Levo
-STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :U sredini
+STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Sredina
 STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :Desno
-STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Radijus prijanjanje prozora: {ORANGE}{STRING} px
-STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Radijus prijanjanje prozora: {ORANGE}isključen
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Radijus prijanjanja prozora: {ORANGE}{STRING} px
+STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Radijus prijanjanja prozora: {ORANGE}isključen
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Najviše otvorenih prozora (nepridenutih): {ORANGE}{STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Najviše otvorenih prozora (nepridenutih): {ORANGE}isključeno
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Brzina razvoja naselja: {ORANGE}{STRING}
@@ -2589,6 +2589,8 @@ STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Neprona�
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Nepronađene GRF datoteke
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Nastavljenje može da krahira OpenTTD. Nemojte čuvati izveštaje o ovom mogućem krahu.{}Da li stvarno želite da nastavite?
 
+# NewGRF status
+
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF '{0:STRING}' može izazvati desinhronizacije i/ili krahove.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Pokušava da promeni dužinu '{1:ENGINE}' dok je van depoa.
@@ -3029,13 +3031,19 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Upravo 
 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Poruka od proizvođača vozila
-STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Upravo smo završili projektovanje novog {STRING.gen} - da li ste zainteresovani za jednogodišnja eksluzivna prava upotrebe ovog vozila, kako bi smo proverili radne osobine pre puštanja u masovnu proizvodnju?
-STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :železničko vučno vozilo
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :drumsko vozilo
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :letilica
-STR_ENGINE_PREVIEW_SHIP                                         :brod
-STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :jednopružno žel. vučno vozilo
-STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :megnetno žel. vučno vozilo
+STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Upravo smo završili projektovanje nov{G og e og} {STRING.aku} - da li ste zainteresovani za jednogodišnja eksluzivna prava upotrebe ovog vozila, kako bi smo proverili radne osobine pre puštanja u masovnu proizvodnju?
+STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=srednji}železničko vučno vozilo
+STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.aku                      :železničkog vučnog vozila
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=srednji}drumsko vozilo
+STR_ENGINE_PREVIEW_ROAD_VEHICLE.aku                             :drumskog vozila
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=ženski}letilica
+STR_ENGINE_PREVIEW_AIRCRAFT.aku                                 :letilice
+STR_ENGINE_PREVIEW_SHIP                                         :{G=muški}brod
+STR_ENGINE_PREVIEW_SHIP.aku                                     :broda
+STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=srednji}jednopružno žel. vučno vozilo
+STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE.aku                      :jednopružnog žel. vučnog vozila
+STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=srednji}megnetno žel. vučno vozilo
+STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE.aku                        :magnetnog žel. vučnog vozila
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Cena: {CURRENCY} Težina: {WEIGHT_S}{}Brzina: {VELOCITY}  Snaga: {POWER}{}Cena Održavanja: {CURRENCY}/god.{}Nosivost: {CARGO}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Cena: {CURRENCY} Težina: {WEIGHT_S}{}Brzina: {VELOCITY}  Snaga: {POWER}  Najveća vučna snaga: {6:FORCE}{}Cena Održavanja: {4:CURRENCY}/god{}Nosivost: {5:CARGO}
@@ -3197,8 +3205,8 @@ STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Zarada o
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Period servisiranja: {LTBLUE}{COMMA}dana{BLACK}   Poslednji servis: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Period servisiranja: {LTBLUE}{COMMA}%{BLACK}   Poslednji servis: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Povećava period servisiranja za 10. Ctrl+Klik povećava period za 5
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Smanjuje period servisiranja za 10. Ctrl+Klik smanjuje period za 5
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Povećava period servisiranja za 10. Ctrl+Klik povećava period servisiranja za 5
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Smanjuje period servisiranja za 10. Ctrl+Klik smanjuje period servisiranja za 5
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Naziv voza
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Naziv drumskog vozila
@@ -3703,6 +3711,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Neophodn
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Nedostaje odgovarajuća železnička pruga
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Potrebno je prvo ukloniti železničku prugu
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Put je jednosmeran ili je blokiran
+STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Putni prelaz nije dozvoljen za ovu vrstu pruge
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Izgradnja signalizacije ovde nije moguća...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Izgradnja železničke pruge ovde nije moguća...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Nemoguće je ukloniti železničku prugu odatle...
@@ -3819,7 +3828,7 @@ STR_ERROR_CAN_T_REFIT_DESTROYED_VEHICLE                         :{WHITE}Ne može
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Nemoguć je prolaz voza na signal opasnosti...
-STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Nije moguće obrnuti smer kretanja voza...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}... vozilo je uništeno
 STR_ERROR_TRAIN_START_NO_CATENARY                               :Voz ne može da se kreće jer pruga nije elektrifikovana
 
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Drumsko vozilo ne može da se okrene...
@@ -3895,43 +3904,43 @@ STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Kasica-prasica
 
 ##id 0x4800
 # industry names
-STR_INDUSTRY_NAME_COAL_MINE                                     :Rudnik uglja
-STR_INDUSTRY_NAME_POWER_STATION                                 :Termoelektrana
-STR_INDUSTRY_NAME_SAWMILL                                       :Pilana
-STR_INDUSTRY_NAME_FOREST                                        :Šuma
-STR_INDUSTRY_NAME_OIL_REFINERY                                  :Rafinerija nafte
-STR_INDUSTRY_NAME_OIL_RIG                                       :Naftna platforma
-STR_INDUSTRY_NAME_FACTORY                                       :Fabrika
-STR_INDUSTRY_NAME_PRINTING_WORKS                                :Štamparija
-STR_INDUSTRY_NAME_STEEL_MILL                                    :Železara
-STR_INDUSTRY_NAME_FARM                                          :Farma
-STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :Rudnik bakra
-STR_INDUSTRY_NAME_OIL_WELLS                                     :Naftna bušotina
-STR_INDUSTRY_NAME_BANK                                          :Banka
-STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :Prehrambeni kombinat
-STR_INDUSTRY_NAME_PAPER_MILL                                    :Fabrika papira
-STR_INDUSTRY_NAME_GOLD_MINE                                     :Rudnik zlata
-STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :Banka
-STR_INDUSTRY_NAME_DIAMOND_MINE                                  :Rudnik dijamanata
-STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :Rudnik gvožđa
-STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :Plantaža voća
-STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :Plantaža kaučuka
-STR_INDUSTRY_NAME_WATER_SUPPLY                                  :Izvor vode
-STR_INDUSTRY_NAME_WATER_TOWER                                   :Vodotoranj
-STR_INDUSTRY_NAME_FACTORY_2                                     :Fabrika
-STR_INDUSTRY_NAME_FARM_2                                        :Farma
-STR_INDUSTRY_NAME_LUMBER_MILL                                   :Drvni kombinat
-STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :Šuma šećerne vune
-STR_INDUSTRY_NAME_CANDY_FACTORY                                 :Fabrika slatkiša
-STR_INDUSTRY_NAME_BATTERY_FARM                                  :Farma baterija
-STR_INDUSTRY_NAME_COLA_WELLS                                    :Izvor kole
-STR_INDUSTRY_NAME_TOY_SHOP                                      :Prodavnica igračaka
-STR_INDUSTRY_NAME_TOY_FACTORY                                   :Fabrika igračaka
-STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :Gejziri plastike
-STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :Fabrika gaziranih pića
-STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :Generator mehurića
-STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :Karamenolom
-STR_INDUSTRY_NAME_SUGAR_MINE                                    :Rudnik šećera
+STR_INDUSTRY_NAME_COAL_MINE                                     :{G=muški}Rudnik uglja
+STR_INDUSTRY_NAME_POWER_STATION                                 :{G=ženski}Termoelektrana
+STR_INDUSTRY_NAME_SAWMILL                                       :{G=ženski}Pilana
+STR_INDUSTRY_NAME_FOREST                                        :{G=ženski}Šuma
+STR_INDUSTRY_NAME_OIL_REFINERY                                  :{G=ženski}Rafinerija nafte
+STR_INDUSTRY_NAME_OIL_RIG                                       :{G=ženski}Naftna platforma
+STR_INDUSTRY_NAME_FACTORY                                       :{G=ženski}Fabrika
+STR_INDUSTRY_NAME_PRINTING_WORKS                                :{G=ženski}Štamparija
+STR_INDUSTRY_NAME_STEEL_MILL                                    :{G=ženski}Železara
+STR_INDUSTRY_NAME_FARM                                          :{G=ženski}Farma
+STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :{G=muški}Rudnik bakra
+STR_INDUSTRY_NAME_OIL_WELLS                                     :{G=ženski}Naftna bušotina
+STR_INDUSTRY_NAME_BANK                                          :{G=ženski}Banka
+STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :{G=muški}Prehrambeni kombinat
+STR_INDUSTRY_NAME_PAPER_MILL                                    :{G=ženski}Fabrika papira
+STR_INDUSTRY_NAME_GOLD_MINE                                     :{G=muški}Rudnik zlata
+STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :{G=ženski}Banka
+STR_INDUSTRY_NAME_DIAMOND_MINE                                  :{G=muški}Rudnik dijamanata
+STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :{G=muški}Rudnik gvožđa
+STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :{G=ženski}Plantaža voća
+STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :{G=ženski}Plantaža kaučuka
+STR_INDUSTRY_NAME_WATER_SUPPLY                                  :{G=muški}Izvor vode
+STR_INDUSTRY_NAME_WATER_TOWER                                   :{G=muški}Vodotoranj
+STR_INDUSTRY_NAME_FACTORY_2                                     :{G=ženski}Fabrika
+STR_INDUSTRY_NAME_FARM_2                                        :{G=ženski}Farma
+STR_INDUSTRY_NAME_LUMBER_MILL                                   :{G=muški}Drvni kombinat
+STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :{G=ženski}Šuma šećerne vune
+STR_INDUSTRY_NAME_CANDY_FACTORY                                 :{G=ženski}Fabrika slatkiša
+STR_INDUSTRY_NAME_BATTERY_FARM                                  :{G=ženski}Farma baterija
+STR_INDUSTRY_NAME_COLA_WELLS                                    :{G=muški}Izvor kole
+STR_INDUSTRY_NAME_TOY_SHOP                                      :{G=ženski}Prodavnica igračaka
+STR_INDUSTRY_NAME_TOY_FACTORY                                   :{G=ženski}Fabrika igračaka
+STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :{G=muški}Gejziri plastike
+STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :{G=ženski}Fabrika gaziranih pića
+STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :{G=muški}Generator mehurića
+STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :{G=muški}Karamenolom
+STR_INDUSTRY_NAME_SUGAR_MINE                                    :{G=muški}Rudnik šećera
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
 ############ These strings may never get a new id, or savegames will break!
