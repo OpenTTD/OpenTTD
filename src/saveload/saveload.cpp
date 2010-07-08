@@ -1454,7 +1454,7 @@ struct ThreadedSave {
 };
 
 /** Save in chunks of 128 KiB. */
-static const int MEMORY_CHUNK_SIZE = 128 * 1024;
+static const size_t MEMORY_CHUNK_SIZE = 128 * 1024;
 /** Memory allocation for storing savegames in memory. */
 static AutoFreeSmallVector<byte *, 16> _memory_savegame;
 
@@ -1855,19 +1855,23 @@ static SaveOrLoadResult SaveFileToDisk(bool threaded)
 
 		if (!fmt->init_write(compression)) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, "cannot initialize compressor");
 
-		{
-			uint i;
+		uint i = 0;
+		size_t t = _ts.count;
 
-			if (_ts.count != _sl.offs_base) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Unexpected size of chunk");
-			for (i = 0; i != _memory_savegame.Length() - 1; i++) {
-				_sl.buf = _memory_savegame[i];
-				fmt->writer(MEMORY_CHUNK_SIZE);
-			}
+		if (_ts.count != _sl.offs_base) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Unexpected size of chunk");
+		while (t >= MEMORY_CHUNK_SIZE) {
+			_sl.buf = _memory_savegame[i++];
+			fmt->writer(MEMORY_CHUNK_SIZE);
+			t -= MEMORY_CHUNK_SIZE;
+		}
 
+		if (t != 0) {
 			/* The last block is (almost) always not fully filled, so only write away
 			 * as much data as it is in there */
 			_sl.buf = _memory_savegame[i];
-			fmt->writer(_ts.count % MEMORY_CHUNK_SIZE);
+
+			assert(t == _ts.count % MEMORY_CHUNK_SIZE);
+			fmt->writer(t);
 		}
 
 		fmt->uninit_write();
