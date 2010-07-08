@@ -215,6 +215,7 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} 立方�
 
 STR_UNITS_FORCE_SI                                              :{COMMA} 千牛
 
+
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}输入过滤器字符串
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}输入用以过滤此列表的关键词
@@ -228,7 +229,7 @@ STR_BUTTON_RENAME                                               :{BLACK}重命�
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}关闭窗口
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}窗口标题 - 拖动这里可以移动该窗口
-STR_TOOLTIP_SHADE                                               :{BLACK}阴影窗口-仅显示标题栏
+STR_TOOLTIP_SHADE                                               :{BLACK}阴影窗口 - 仅显示标题栏
 STR_TOOLTIP_STICKY                                              :{BLACK}锁定窗口 使用“关闭所有窗口”快捷键时保留此窗口
 STR_TOOLTIP_RESIZE                                              :{BLACK}点击并拖动这里可以缩放窗口
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}切换窗口大小
@@ -1075,7 +1076,7 @@ STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}允许�
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}列车加速度： {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :TTD原版
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :改良真实版
-STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}禁止列车和轮船 90 度转弯：{ORANGE}{STRING} {LTBLUE} (需要 NPF)
+STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}禁止列车和轮船 90 度转弯：{ORANGE}{STRING} {LTBLUE} (无需 OPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}将相邻的火车站进行整合：{ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}允许非毗邻站台合并：{ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}使用进阶的装货算法：{ORANGE}{STRING}
@@ -1466,7 +1467,7 @@ STR_FACE_HAIR_TOOLTIP                                           :{BLACK}选择�
 STR_FACE_EYEBROWS                                               :眉毛
 STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}选择眉毛
 STR_FACE_EYECOLOUR                                              :眼睛
-STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}选择眼珠颜色
+STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}选择眼睛颜色
 STR_FACE_GLASSES                                                :眼镜
 STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}是否有 眼镜
 STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}选择眼镜
@@ -1733,7 +1734,7 @@ STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :连接丢失
 STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :套接字错误
 STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :NewGRF 不匹配
 STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :没有授权
-STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :收到异常包
+STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :收到异常数据包
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :错误的版本
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :已经有人用这个名字了
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :错误的密码
@@ -1751,7 +1752,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :游戏仍然暂
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :游戏仍然暂停 ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :游戏仍然暂停 ({STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :游戏取消暂停 ({STRING})
-STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :没有足够的玩家
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :玩家数
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :连接客户端
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :手动
 ############ End of leave-in-this-order
@@ -2218,6 +2219,12 @@ STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}删除
 STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}删除选定的游戏存档
 STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}保存
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}以选定的名字保存当前游戏
+STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}载入
+STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}载入所选
+STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}游戏详情
+STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}无可用信息
+STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
+STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}为存档命名
 
@@ -2331,6 +2338,13 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}禁用
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}输入 NewGRF 参数
 
+# NewGRF inspect window
+
+
+
+# Sprite aligner window
+
+
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}警告：{SILVER}{STRING}
@@ -2355,7 +2369,7 @@ STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :包含复数的
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}注意！
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}你将要改变一个正在运行的游戏，{}这可能导致该游戏崩溃，{}你确定要这样做吗？
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}此操作将要改变一个进行中的游戏，{}操作可能导致游戏崩溃，{}确定继续？
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}不能添加文件：重复的 GRF ID
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}未找到匹配的文件 (已载入兼容的 GRF)
@@ -2365,6 +2379,10 @@ STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}缺失�
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}无法找到GRF文件
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}取消暂停可能造成错误. 请不要把接下来可能发生的错误当做Bug.{}继续么?
 
+# NewGRF status
+STR_NEWGRF_LIST_NONE                                            :空
+STR_NEWGRF_LIST_MISSING                                         :{RED}缺失文件
+
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF '{0:STRING}'的行为可能造成同步错误或是崩溃。
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}当车辆不在车库中时,这将改变 '{1:ENGINE}' 的车辆长度.
@@ -2373,6 +2391,9 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}列车 '
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{STRING}' 的信息不正确
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}购买'{1:ENGINE}' 后，将造成货物/运费的参数与购买列表不符，这将有可能造成自动更新/购买不成功。
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' 产生了一个死循环
+
+# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}标志列表 - {COMMA} 个标志
@@ -2672,19 +2693,19 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}购买�
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}购买船只
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}购买飞机
 
-STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}售价：{GOLD}{CURRENCY}{BLACK}   重量：{GOLD}{WEIGHT_S}
+STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}售价：{GOLD}{CURRENCY}{BLACK} 重量：{GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}速度：{GOLD}{VELOCITY}{BLACK} 功率：{GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}速度：{GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}运行费用：{GOLD}{CURRENCY}/年
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}运载能力：{GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(可改装)
-STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}设计日期：{GOLD}{NUM}{BLACK}     寿命：{GOLD}{COMMA} 年
+STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}设计日期：{GOLD}{NUM}{BLACK} 寿命：{GOLD}{COMMA} 年
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}最大可靠性：{GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}售价：{GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}重量：{GOLD}{WEIGHT_S} ({WEIGHT_S})
-STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}售价：{GOLD}{CURRENCY}{BLACK}   速度：{GOLD}{VELOCITY}
+STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}售价：{GOLD}{CURRENCY}{BLACK} 速度：{GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}运载能力：{GOLD}{CARGO}, {CARGO}
-STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}功率：{GOLD}+{POWER}{BLACK}     重量：{GOLD}+{WEIGHT_S}
+STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}功率：{GOLD}+{POWER}{BLACK} 重量：{GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}可改装为：{GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :所有类型
 STR_PURCHASE_INFO_ALL_BUT                                       :除了 {GOLD}
@@ -2721,6 +2742,8 @@ STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}重命�
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}重命名飞机型号
 
 # Depot window
+
+STR_DEPOT_RENAME_DEPOT_CAPTION                                  :重命名车库
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -2902,6 +2925,8 @@ STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}正在�
 
 
 
+# Vehicle stopped/started animations
+
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (详细信息)
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}名称
@@ -2933,8 +2958,8 @@ STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}转运�
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}保养周期：{LTBLUE}{COMMA}天{BLACK}   上次保养：{LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}保养周期：{LTBLUE}{COMMA}%{BLACK}   上次保养：{LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}增大检修时间间隔,以10为单位进行调整. 同时按住Ctrl点击则以5为单位进行调整
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}减少检修时间间隔,以10为单位进行调整. 同时按住Ctrl点击则以5为单位进行调整
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}增大检修时间间隔,以10为单位进行调整. 按住Ctrl同时点击则以5为单位进行调整
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}减少检修时间间隔,以10为单位进行调整. 按住Ctrl同时点击则以5为单位进行调整
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}给列车命名
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}命名汽车
@@ -3243,6 +3268,7 @@ STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :该存档是新
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :文件无法读取
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :文件无法写入
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :数据完整性检查失败
+STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<不可用>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}游戏已保存为无电车版。所有电车已被去除。
 
 # Map generation messages
@@ -3404,6 +3430,8 @@ STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}不能�
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}不能在这里修建汽车车库……
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}此处无法建造电车车库...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}不能在这里建造船坞……
+
+STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}无法重命名车库...
 
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}列车必须停在一个车库中
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}……必须完全停在一个车库中
@@ -3580,6 +3608,8 @@ STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}……�
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}不能在这里放置标志……
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}不能更改标志的名称……
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}无法删除标记...
+
+# Translatable comment for OpenTTD's desktop shortcut
 
 ##id 0x2000
 # Town building names
@@ -3971,6 +4001,7 @@ STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 STR_FORMAT_WAYPOINT_NAME                                        :{TOWN} 路点
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN} 路点 #{COMMA}
 
+
 STR_UNKNOWN_STATION                                             :未知车站（目的地）
 STR_DEFAULT_SIGN_NAME                                           :标志
 STR_COMPANY_SOMEONE                                             :某人
@@ -3996,6 +4027,7 @@ STR_VIEWPORT_WAYPOINT_TINY                                      :{TINYFONT}{WAYP
 # Simple strings to get specific types of data
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
+STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}
@@ -4017,6 +4049,7 @@ STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
 STR_JUST_DATE_LONG                                              :{DATE_LONG}
 STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_STRING_SPACE_STRING                                    :{STRING} {STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
@@ -4034,11 +4067,14 @@ STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LO
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}
 STR_TINY_GROUP                                                  :{TINYFONT}{GROUP}
+STR_BLACK_INT                                                   :{BLACK}{NUM}
 STR_ORANGE_INT                                                  :{ORANGE}{NUM}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
 STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
+STR_GREEN_STRING                                                :{GREEN}{STRING}
+STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
