@@ -165,8 +165,8 @@ void MusicDriver_DMusic::PlaySong(const char *filename)
 
 	/* release the existing segment if we have any */
 	if (segment != NULL) {
-		segment->Release();
-		segment = NULL;
+		this->Stop();
+		if (this->Start(NULL) != NULL) return;
 	}
 
 	/* make a new segment */
