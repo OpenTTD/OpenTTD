@@ -41,6 +41,9 @@ enum VehicleRailFlags {
 
 	/* used to mark a train that can't get a path reservation */
 	VRF_TRAIN_STUCK    = 8,
+
+	/* used to mark a train that is just leaving a station */
+	VRF_LEAVING_STATION = 9,
 };
 
 /** Modes for ignoring signals. */

@@ -1635,12 +1635,7 @@ void Vehicle::LeaveStation()
 		/* Trigger station animation (trains only) */
 		if (IsTileType(this->tile, MP_STATION)) StationAnimationTrigger(st, this->tile, STAT_ANIM_TRAIN_DEPARTS);
 
-		/* Try to reserve a path when leaving the station as we
-		 * might not be marked as wanting a reservation, e.g.
-		 * when an overlength train gets turned around in a station. */
-		if (UpdateSignalsOnSegment(this->tile, TrackdirToExitdir(this->GetVehicleTrackdir()), this->owner) == SIGSEG_PBS || _settings_game.pf.reserve_paths) {
-			TryPathReserve(Train::From(this), true, true);
-		}
+		SetBit(Train::From(this)->flags, VRF_LEAVING_STATION);
 	}
 }
 

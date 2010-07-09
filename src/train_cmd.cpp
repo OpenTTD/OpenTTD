@@ -3808,8 +3808,17 @@ static bool TrainLocoHandler(Train *v, bool mode)
 		v->wait_counter = 0;
 		v->cur_speed = 0;
 		v->subspeed = 0;
+		ClrBit(v->flags, VRF_LEAVING_STATION);
 		ReverseTrainDirection(v);
 		return true;
+	} else if (HasBit(v->flags, VRF_LEAVING_STATION)) {
+		/* Try to reserve a path when leaving the station as we
+		 * might not be marked as wanting a reservation, e.g.
+		 * when an overlength train gets turned around in a station. */
+		if (UpdateSignalsOnSegment(v->tile, TrackdirToExitdir(v->GetVehicleTrackdir()), v->owner) == SIGSEG_PBS || _settings_game.pf.reserve_paths) {
+			TryPathReserve(v, true, true);
+		}
+		ClrBit(v->flags, VRF_LEAVING_STATION);
 	}
 
 	v->HandleLoading(mode);
