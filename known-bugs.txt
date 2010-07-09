@@ -66,6 +66,22 @@ No suitable AI can be found
 	"AI Settings" -> "Select AI" -> "Check Online Content" which is also
 	accessed via the main menu.
 
+Long delay between switching songs/music
+	On Windows there is a delay of a (few) second(s) between switching of
+	songs for the "win32" driver. This delay is caused by the fact that
+	opening a MIDI file via MCI is extremely slow.
+
+	DirectMusic, known as "dmusic" in OpenTTD, has a much shorter delay.
+	However, under some circumstances DirectMusic does not reset its
+	state properly causing wrongly pitched/bad sounding songs. This
+	problem is in DirectMusic as it is reproducable with Microsoft's
+	DirectMusic Producer. DirectMusic has been deprecated since 2004
+	and as such has no support for 64 bits OpenTTD.
+
+	As a delay is favourable over bad sounding music the "win32" driver
+	is the default driver for OpenTTD. You can change this default by
+	setting the "musicdriver" in your openttd.cfg to "dmusic".
+
 Clipping problems [FS#119]
 	In some cases sprites are not drawn as one would expect. Examples of
 	this are aircraft that might be hidden below the runway or trees that
