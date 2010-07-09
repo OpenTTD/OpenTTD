@@ -770,6 +770,9 @@ static CommandCost CmdRailTrackHelper(TileIndex tile, DoCommandFlag flags, uint3
 				if (HasBit(p2, 8)) return last_error;
 				break;
 			}
+
+			/* Ownership errors are more important. */
+			if (last_error.GetErrorMessage() == STR_ERROR_OWNED_BY && remove) break;
 		} else {
 			had_success = true;
 			total_cost.AddCost(ret);
