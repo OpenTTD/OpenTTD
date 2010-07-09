@@ -79,7 +79,8 @@ static bool MidiIntPlaySong(const char *filename)
 		if (MidiSendCommand(_T("open \"%s\" type sequencer alias song"), buf) != 0) return false;
 	}
 
-	return MidiSendCommand(_T("play song from 0")) == 0;
+	MidiSendCommand(_T("seek song to start wait"));
+	return MidiSendCommand(_T("play song")) == 0;
 }
 
 static void MidiIntStopSong()
