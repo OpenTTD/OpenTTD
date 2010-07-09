@@ -385,7 +385,7 @@ STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsídios
 STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Benefícios operativos
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Rendimentos
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Carga entregue
-STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :Histórico de rendimentos
+STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :Histórico de Avaliação
 STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Valor da empresa
 STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Tarifas por carga
 ############ range ends here
@@ -1273,6 +1273,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :grelha 2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :grelha 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :ao acaso
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}As cidades têm permissão para construir estradas: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}Cidades podem construir passagens de nível: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Permitir que a cidade controle o nível de ruído dos aeroportos: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Fundar cidades no jogo: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :proibido
@@ -2269,7 +2270,7 @@ STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Clique p
 STR_MAPGEN_RANDOM                                               :{BLACK}Gerar aleatório
 STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Mudar a semente aleatória para a criação do terreno
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Criação do terreno:
-STR_MAPGEN_TREE_PLACER                                          :{BLACK}Colocação árvores:
+STR_MAPGEN_TREE_PLACER                                          :{BLACK}Colocação de árvores:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tipo de terreno:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Nível do mar:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Suavidade:
@@ -3521,6 +3522,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Deverá 
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Tipo de linha não apropriado
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Deverá remover a linha férrea primeiro
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Estrada de sentido único ou bloqueada
+STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Passagens de nível não são permitidas para este tipo de linha
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Não é possível construir sinais aqui...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Não é possível construir linha férrea aqui...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Não é possível remover linha férrea daqui...
@@ -3767,7 +3769,7 @@ STR_SV_STNAME_EAST                                              :{STRING} Este
 STR_SV_STNAME_WEST                                              :{STRING} Oeste
 STR_SV_STNAME_CENTRAL                                           :{STRING} Central
 STR_SV_STNAME_TRANSFER                                          :{STRING} Transporte
-STR_SV_STNAME_HALT                                              :{STRING} Paragem
+STR_SV_STNAME_HALT                                              :Paragem de {STRING}
 STR_SV_STNAME_VALLEY                                            :Vale de {STRING}
 STR_SV_STNAME_HEIGHTS                                           :Montes de {STRING}
 STR_SV_STNAME_WOODS                                             :Floresta de {STRING}
@@ -3787,7 +3789,7 @@ STR_SV_STNAME_UPPER                                             :{STRING} de cim
 STR_SV_STNAME_LOWER                                             :{STRING} de baixo
 STR_SV_STNAME_HELIPORT                                          :Heliporto de {STRING}
 STR_SV_STNAME_FOREST                                            :Floresta de {STRING}
-STR_SV_STNAME_FALLBACK                                          :{STRING} Estação #{NUM}
+STR_SV_STNAME_FALLBACK                                          :Estação de {STRING} #{NUM}
 ############ end of savegame specific region!
 
 ##id 0x8000

@@ -1653,7 +1653,8 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :lepsze drogi
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :siatka 2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :siatka 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :losowy
-STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Miasta mogą budować drogi: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Miasta, które mogą budować drogi: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}Miasta, które mogą budować przejazdy kolejowe: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Pozwól miastom kontrolować poziom hałasu dla lotnisk: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Zakładanie miast w grze: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :zabronione
@@ -3928,6 +3929,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Należy 
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Nieodpowiednie tory
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Należy najpierw usunąć tory
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Droga jest jednokierunkowa lub zablokowana
+STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Przejazd kolejowy nie dozwolony dla tego typu torów
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Nie można tutaj postawić sygnałów...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Nie można tutaj ułożyć torów...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Nie można stąd usunąć torów...

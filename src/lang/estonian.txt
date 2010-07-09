@@ -1331,6 +1331,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 võrgustik
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 võrgustik
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :suvaline
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Linnapoolne teedeehitus: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}Linnadel on lubatud ehitada ülesõidukohti: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Lennujaamade mürapiirangud linnades: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Linnade rajamine keset mängu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :keelatud
@@ -2303,6 +2304,12 @@ STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}Kustuta
 STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}Kustuta valitud salvestus
 STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Salvesta
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Salvesta mäng valitud nimega
+STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Lae
+STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Lae valitud mäng
+STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Mängu üksikasjad
+STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Andmed puuduvad
+STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
+STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Sisesta salvestatavale mängule nimi
 
@@ -2480,6 +2487,12 @@ STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Puuduvat
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Puuduvad GRF failid on välja lülitatud
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Puuduolevad GRF failid
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Seisatuse lõpetamine võib põhjustada OpenTTD krahhi. Ära teavita järgnevatest krahhidest.{}Oled sa tõepoolest veendunud, et sa soovid seisatuse lõpetada?
+
+# NewGRF status
+STR_NEWGRF_LIST_NONE                                            :Puudub
+STR_NEWGRF_LIST_ALL_FOUND                                       :Kõik failid olemas
+STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Sobivad failid leitud
+STR_NEWGRF_LIST_MISSING                                         :{RED}Puuduvad failid
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF '{STRING}' käitumine põhjustab tõenäoliselt sünkrooni katkemisi ja/või mängu kokkujooksmiseid.
@@ -3391,6 +3404,7 @@ STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Salvestus on te
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Fail pole loetav
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Faili ei saanud kirjutada
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Andmeterviklikuse kontrolli ei läbitud
+STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<mitte saadaval>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Mäng on salvestatud osas, kus trammid ei olnud toetatud. Kõik trammid on eemaldatud.
 
 # Map generation messages
@@ -3586,9 +3600,10 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Signaali
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Sobiv rongitee puudub
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Rööbastee tuleb eelnevalt lammutada
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Läbipääsmatu või ühesuunaline maantee
+STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Ülesõidukohad on selle raudteetüübi puhul keelatud
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Siia ei saa signaale rajada...
-STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Siia ei saa rööbasteed ehitada...
-STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Siit ei saa rööbasteed lammutada...
+STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Siia ei saa raudteed ehitada...
+STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Siit ei saa raudteed lammutada...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Siit ei saa signaale lammutada...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Siin ei saa signaale teisendada...
 
@@ -3697,6 +3712,7 @@ STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Lennuk p
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Mängus on liiga palju veovahendeid
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Hooldusvahemiku ei saa muuta...
 
+STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... sõiduk hävitatud
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Rongi ei saa ohu korral sundida signaale eirama...

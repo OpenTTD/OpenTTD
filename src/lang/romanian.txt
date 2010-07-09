@@ -1274,6 +1274,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :grilă 2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :grilă 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :aleator
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Oraşele pot construi drumuri: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}Oraşele au voie să construiască treceri la nivel cu calea ferată: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Permite controlarea nivelului de zgomot al aeroportului de către oras: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Crearea oraşelor în joc: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :nepermis
@@ -3542,6 +3543,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Trebuie 
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Cale ferată nepotrivită
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Mai întâi trebuie înlăturată calea ferată
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Drum cu sens unic sau blocat
+STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Trecerea la nivel nu este permisă pentru acest tip de cale ferată
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Nu se pot plasa semafoare aici...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Nu se poate construi cale ferată aici...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Nu se poate înlătura calea ferată...
