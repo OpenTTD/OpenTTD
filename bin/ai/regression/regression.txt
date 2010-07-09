@@ -8049,7 +8049,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetPopulation(): 737
     GetLocation():   6446
     GetHouseCount(): 26
-    GetRating():     5
+    GetRating():     6
   Town 11
     IsValidTown():   true
     GetName():       Fort Frindston
@@ -8084,7 +8084,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetPopulation(): 807
     GetLocation():   42338
     GetHouseCount(): 33
-    GetRating():     5
+    GetRating():     6
   Town 16
     IsValidTown():   true
     GetName():       Kennville
@@ -8119,7 +8119,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetPopulation(): 437
     GetLocation():   22585
     GetHouseCount(): 15
-    GetRating():     5
+    GetRating():     6
   Town 21
     IsValidTown():   true
     GetName():       Franinghead
