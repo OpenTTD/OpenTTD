@@ -52,11 +52,6 @@ bool RoadVehiclesAreBuilt()
 	return false;
 }
 
-#define M(x) (1 << (x))
-/* Level crossings may only be built on these slopes */
-static const uint32 VALID_LEVEL_CROSSING_SLOPES = (M(SLOPE_SEN) | M(SLOPE_ENW) | M(SLOPE_NWS) | M(SLOPE_NS) | M(SLOPE_WSE) | M(SLOPE_EW) | M(SLOPE_FLAT));
-#undef M
-
 /* Invalid RoadBits on slopes  */
 static const RoadBits _invalid_tileh_slopes_road[2][15] = {
 	/* The inverse of the mixable RoadBits on a leveled slope */
