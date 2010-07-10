@@ -517,7 +517,7 @@ CommandCost CmdRemoveSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 
 	switch (GetTileType(tile)) {
 		case MP_ROAD: {
-			if (!IsLevelCrossing(tile) || GetCrossingRailBits(tile) != trackbit) return CMD_ERROR;
+			if (!IsLevelCrossing(tile) || GetCrossingRailBits(tile) != trackbit) return_cmd_error(STR_ERROR_THERE_IS_NO_RAILROAD_TRACK);
 
 			if (_current_company != OWNER_WATER) {
 				CommandCost ret = CheckTileOwnership(tile);
@@ -545,8 +545,8 @@ CommandCost CmdRemoveSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 
 		case MP_RAILWAY: {
 			TrackBits present;
-
-			if (!IsPlainRail(tile)) return CMD_ERROR;
+			/* There are no rails present at depots. */
+			if (!IsPlainRail(tile)) return_cmd_error(STR_ERROR_THERE_IS_NO_RAILROAD_TRACK);
 
 			if (_current_company != OWNER_WATER) {
 				CommandCost ret = CheckTileOwnership(tile);
@@ -557,7 +557,7 @@ CommandCost CmdRemoveSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 			if (ret.Failed()) return ret;
 
 			present = GetTrackBits(tile);
-			if ((present & trackbit) == 0) return CMD_ERROR;
+			if ((present & trackbit) == 0) return_cmd_error(STR_ERROR_THERE_IS_NO_RAILROAD_TRACK);
 			if (present == (TRACK_BIT_X | TRACK_BIT_Y)) crossing = true;
 
 			cost.AddCost(RailClearCost(GetRailType(tile)));
@@ -590,7 +590,7 @@ CommandCost CmdRemoveSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 			break;
 		}
 
-		default: return CMD_ERROR;
+		default: return_cmd_error(STR_ERROR_THERE_IS_NO_RAILROAD_TRACK);
 	}
 
 	if (flags & DC_EXEC) {
@@ -923,7 +923,7 @@ CommandCost CmdBuildSingleSignal(TileIndex tile, DoCommandFlag flags, uint32 p1,
 	/* You can only build signals on plain rail tiles, and the selected track must exist */
 	if (!ValParamTrackOrientation(track) || !IsPlainRailTile(tile) ||
 			!HasTrack(tile, track)) {
-		return CMD_ERROR;
+		return_cmd_error(STR_ERROR_THERE_IS_NO_RAILROAD_TRACK);
 	}
 	CommandCost ret = EnsureNoTrainOnTrack(tile, track);
 	if (ret.Failed()) return ret;
@@ -1149,7 +1149,7 @@ static CommandCost CmdSignalTrackHelper(TileIndex tile, DoCommandFlag flags, uin
 	TileIndex end_tile = p1;
 	if (signal_density == 0 || signal_density > 20) return CMD_ERROR;
 
-	if (!IsPlainRailTile(tile)) return CMD_ERROR;
+	if (!IsPlainRailTile(tile)) return_cmd_error(STR_ERROR_THERE_IS_NO_RAILROAD_TRACK);
 
 	/* for vertical/horizontal tracks, double the given signals density
 	 * since the original amount will be too dense (shorter tracks) */
@@ -1284,10 +1284,10 @@ CommandCost CmdRemoveSingleSignal(TileIndex tile, DoCommandFlag flags, uint32 p1
 {
 	Track track = Extract<Track, 0, 3>(p1);
 
-	if (!ValParamTrackOrientation(track) ||
-			!IsPlainRailTile(tile) ||
-			!HasTrack(tile, track) ||
-			!HasSignalOnTrack(tile, track)) {
+	if (!ValParamTrackOrientation(track) || !IsPlainRailTile(tile) || !HasTrack(tile, track)) {
+		return_cmd_error(STR_ERROR_THERE_IS_NO_RAILROAD_TRACK);
+	}
+	if (!HasSignalOnTrack(tile, track)) {
 		return CMD_ERROR;
 	}
 	CommandCost ret = EnsureNoTrainOnTrack(tile, track);
