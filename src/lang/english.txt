@@ -3484,6 +3484,7 @@ STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Can't re
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Can't remove passenger tram station...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Can't remove freight tram station...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Must remove road stop first
+STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}...there is no station here
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Must demolish railway station first
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Must demolish bus station first

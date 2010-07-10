@@ -1439,7 +1439,7 @@ CommandCost RemoveFromRailBaseStation(TileArea ta, SmallVector<T *, 4> &affected
 		}
 	}
 
-	if (quantity == 0) return CMD_ERROR;
+	if (quantity == 0) return_cmd_error(STR_ERROR_THERE_IS_NO_STATION);
 
 	for (T **stp = affected_stations.Begin(); stp != affected_stations.End(); stp++) {
 		T *st = *stp;
@@ -1960,7 +1960,7 @@ CommandCost CmdRemoveRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 		}
 	}
 
-	if (quantity == 0) return CMD_ERROR;
+	if (quantity == 0) return_cmd_error(STR_ERROR_THERE_IS_NO_STATION);
 
 	return cost;
 }
