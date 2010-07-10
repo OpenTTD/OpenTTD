@@ -39,6 +39,9 @@ enum AIConstructionEvent {
 	AICE_STATION_GET_STATION_ID      = 0x00, ///< Get a station ID to build
 };
 
+static const IndustryType IT_AI_UNKNOWN = 0xFE; ///< The AI has no specific industry in mind.
+static const IndustryType IT_AI_TOWN    = 0xFF; ///< The AI actually wants to transport to/from a town, not an industry.
+
 void ResetGenericCallbacks();
 void AddGenericCallback(uint8 feature, const struct GRFFile *file, const struct SpriteGroup *group);
 

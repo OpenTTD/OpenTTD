@@ -13,6 +13,7 @@
 #include "debug.h"
 #include "newgrf.h"
 #include "newgrf_spritegroup.h"
+#include "industrytype.h"
 #include "core/bitmath_func.hpp"
 #include <list>
 
@@ -169,6 +170,18 @@ uint16 GetAiPurchaseCallbackResult(uint8 feature, CargoID cargo_type, uint8 defa
 	ResolverObject object;
 
 	NewGenericResolver(&object, *file);
+
+	if (src_industry != IT_AI_UNKNOWN && src_industry != IT_AI_TOWN) {
+		const IndustrySpec *is = GetIndustrySpec(src_industry);
+		/* If this is no original industry, use the substitute type */
+		if (is->grf_prop.subst_id != INVALID_INDUSTRYTYPE) src_industry = is->grf_prop.subst_id;
+	}
+
+	if (dst_industry != IT_AI_UNKNOWN && dst_industry != IT_AI_TOWN) {
+		const IndustrySpec *is = GetIndustrySpec(dst_industry);
+		/* If this is no original industry, use the substitute type */
+		if (is->grf_prop.subst_id != INVALID_INDUSTRYTYPE) dst_industry = is->grf_prop.subst_id;
+	}
 
 	object.callback = CBID_GENERIC_AI_PURCHASE_SELECTION;
 	object.u.generic.cargo_type        = cargo_type;
