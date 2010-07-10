@@ -971,7 +971,7 @@ void CheckVehicleBreakdown(Vehicle *v)
 
 void AgeVehicle(Vehicle *v)
 {
-	if (v->age < 65535) v->age++;
+	if (v->age < MAX_DAY) v->age++;
 
 	int age = v->age - v->max_age;
 	if (age == DAYS_IN_LEAP_YEAR * 0 || age == DAYS_IN_LEAP_YEAR * 1 ||
