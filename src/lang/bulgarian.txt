@@ -217,6 +217,9 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} куб.
 
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
+STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} фут
+STR_UNITS_HEIGHT_SI                                             :{COMMA} м
+
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Въведете филтър
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Въведете ключова дума за филтър на списъка
@@ -304,8 +307,8 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Пока
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Инвестирай в нова индустрия
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Покажи списъка с влакове на компанията. Ctrl-click превключва между списъците с групи/превозни средства
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Покажи списъка с камиони/автобуси на компанията
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Покажи списъка с кораби на компанията
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Покажи списъка със самолети на компанията
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Покажи списъка с кораби на компанията. Ctrl+Click показва списък с корабите.
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Покажи списъка със самолети на компанията. Ctrl+Click показва списъка със самолетите.
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Увеличи мащаба
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Намаляване на мащаба
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Построй ЖП линии
@@ -685,7 +688,7 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLAC
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}Сняг
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Покажи имената на градовете на картата
-STR_SMALLMAP_CENTER                                             :{BLACK}Центриране на малката карта на текущата позиция
+STR_SMALLMAP_CENTER                                             :{BLACK}Фиксиране на малката карта на текущата позиция
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Изключване на всички
@@ -1085,7 +1088,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :{G=m}Ориги
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :{G=m}Реалистичен
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Стръмнина на склона за влакове {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Стръмнина на склона за пътни превозни средства {ORANGE}{STRING}%
-STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Забрана 90 градусови завои: {ORANGE}{STRING}{LTBLUE} (не може с OPF)
+STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Забрани 90 градусовите завои: {ORANGE}{STRING}{LTBLUE} (не може с OPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Обединяване на гари построени една до друга: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Позволено е присъединяването на станции, които не се допират: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Подобрен алгоритъм за зареждане: {ORANGE}{STRING}
@@ -1266,6 +1269,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2х2 мрежа
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3х3 мрежа
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :случаен
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Градове са разрешени да изграждат пътища: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}На градовете е позолено да строят кръстовища: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Градовете контролират нивото на шум от летищата: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Построяване на градове в играта: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :забранено
@@ -1532,7 +1536,7 @@ STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Нати
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}ИНФО ЗА ИГРАТА
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Играчи: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Език: {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Терен: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Пейзаж: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Големина на картата: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Версия на сървъра: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Адрес на сървъра: {WHITE}{STRING}
@@ -1750,7 +1754,7 @@ STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :връзкат�
 STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :грешка в протокола
 STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :NewGRF се различават
 STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :не оторизиран
-STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :получен странен пакет
+STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :грешка при свързването
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :грешна ревизия
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :името вече се използва
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :грешна парола
@@ -1880,15 +1884,15 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Стро
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Конструкции за Еднорелсов път
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Конструкции за Магниторелсов път
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Построй релсовия път
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK} Строеж на жп линия в режим Автоматичен
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Построй релсовия път. Ctrl показва възможните конструкции.
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK} Строеж на жп линия в режим Автоматичен. Ctrl показва възможните конфигурации.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Построй влаково депо (за купуване и обслужване на влакове)
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Промяна ЖП линия на пункт
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Промяна ЖП линия на ЖП пункт. Ctrl позволява обединяване на ЖП пунктовете.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Построй ЖП гара. Ctrl позволява съединяването на гари
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Построй ЖП сигнализация
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Построй ЖП сигнализация. Ctrl показва семафорната/светлинната сигнализация.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Построй ЖП мост
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Строене на жп тунел
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Строене/премахване на жп линия и семафори
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Показва строене/премахване на жп линия, сигнализация, пунктове и гари. Задържането на Ctrl премахва линиите от пунктовете и гарите
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Промяна/обновяване на ЖП линия
 
 # Rail depot construction window
@@ -1921,13 +1925,13 @@ STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Сигн
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Нормален сигнал (семафор){}Сигналите са необходими за да предпазват влаковете от катастрофи по ЖП мрежата.
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Входен сигнал (семафор){}Свети зелено докато има поне един зелен изходен сигнал от следващия сегмент от пътя. В противен случай свети червено.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Изходен сигнал (семафор){}Действа като нормален сигнал, но е необходим за да работят входните и комбинираните сигнали.
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Комбиниран сигнал (семафор){}Комбинирания сигнал действа едновременно като входен и изходен сигнал. Това позволява за изграждането на големи "дървета" от сигнали.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Комбиниран сигнал (семафор){}Комбинирания сигнал действа едновременно като входен и изходен сигнал. Това позволява изграждането на големи разклонения от сигнали.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Маршрутизиращ знак(семафор){}Маршрутизиращите знаци позволяват на повече от един влак да навлязат в сигнален блок едновременно ако влаковете могат да резервират маршрут до безопасно място. През стандартните сигнали може да се преминава и в двете посоки.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Еднопосочен маршрутизиращ знак(семафор){}Маршрутизиращите знаци позволяват на повече от един влак да навлязат в сигнален блок едновременно ако влаковете могат да резервират маршрут до безопасно място. рез еднопосочните сигнали може да се премине само в едната посока.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Нормален сигнал (електрически){}Сигналите са необходими за да предпазват влаковете от катастрофи по ЖП мрежата.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Входен сигнал (електрически){}Свети зелено докато има поне един зелен изходен сигнал от следващия сегмент от пътя. В противен случай свети червено.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Изходен сигнал (електрически){}Действа като нормален сигнал, но е необходим за да работят входните и комбинираните сигнали.
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Комбиниран сигнал (електрически){}Комбинирания сигнал действа едновременно като входен и изходен сигнал. Това позволява за изграждането на големи "дървета" от сигнали.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Комбиниран сигнал (електрически){}Комбинирания сигнал действа едновременно като входен и изходен сигнал. Това позволява изграждането на големи разклонения от сигнали.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Маршрутизиращ знак(електрически){}Маршрутизиращите знаци позволяват на повече от един влак да навлязат в сигнален блок едновременно ако влаковете могат да резервират маршрут до безопасно място. През стандартните сигнали може да се преминава и в двете посоки.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Еднопосочен маршрутизиращ знак(електрически){}Маршрутизиращите знаци позволяват на повече от един влак да навлязат в сигнален блок едновременно ако влаковете могат да резервират маршрут до безопасно място. рез еднопосочните сигнали може да се премине само в едната посока.
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Конвертиране на сигнал{}Когато е избран, натискането на съществуващ сигнал ще го конвертира в избрания тип и вариант, CTRL-click ще смени съществуващия вариант.
@@ -2237,6 +2241,12 @@ STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}Изтр
 STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}Изтрий избраната запазената игра
 STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Запази
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Запазване на настоящата игра с избраното име
+STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Отвори
+STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Отвори избраната игра
+STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Детайли за играта
+STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Няма налична информация.
+STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
+STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}Нови Графики: {WHITE}{STRING}
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Въведете име за запазената игра
 
@@ -2310,6 +2320,10 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Подг
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF настройки
+STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Подробна информация за графиката
+STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Активни графични файлове
+STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Неактивни графични файлове
+STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Избери настройка
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Филтър:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Зареди избрания шаблон
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Запиши шаблон
@@ -2349,6 +2363,13 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Изклю
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Въвеждане на NewGRF параметри
 
+# NewGRF inspect window
+
+
+
+# Sprite aligner window
+
+
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Внимание: {SILVER}{STRING}
@@ -2383,6 +2404,12 @@ STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Липс
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Липсва GRF файл(ове)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Може да счупи OpenTTD. Не пускайте съобщение за грешка за последвали счупвания.{}Желаете ли да се махне паузата?
 
+# NewGRF status
+STR_NEWGRF_LIST_NONE                                            :Няма
+STR_NEWGRF_LIST_ALL_FOUND                                       :Всички файлове са налице
+STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Намерени са съвместими файлове
+STR_NEWGRF_LIST_MISSING                                         :{RED}Липсват файлове
+
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Поведението на NewGRF '{STRING}' вероятно ще предизвика десинхронизции и/или сривове
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Смяна на дължината на превозното средство '{1:ENGINE}', когато не е в депо.
@@ -2390,6 +2417,13 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Влак
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{STRING}' дава невярна информация.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' предизвика вечен цикъл в callback на производството
+
+# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+STR_NEWGRF_INVALID_CARGO                                        :<невалиден товар>
+STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
+STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} на <невалиден товар>
+STR_NEWGRF_INVALID_ENGINE                                       :<невалидна машина>
+STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<невалдна индустрия>
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Списък с табели - {COMMA} Табел{P а и}
@@ -2405,7 +2439,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Въве
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Градове
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Отсъства -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Имена на градовете - натисни на името за да центрираш този град
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Имена на градовете - натисни на името, за да фокусираш този град. Ctrl+Click отваря нова гледна точка от позицията на града.
 STR_TOWN_POPULATION                                             :{BLACK}Световна популация: {COMMA}
 
 # Town view window
@@ -2419,7 +2453,7 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} необходим през зимата
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{ORANGE}{CARGO}{BLACK} доставено миналия месец
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Лимит на шумът в градът: {ORANGE}{COMMA}{BLACK}  най-много: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Центриране на главния изглед спрямо разположението на града
+STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Фиксиране на главния изглед върху града. Ctrl+Click отваря прозорец на нов изглед върху града.
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Местни власти
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Показване на информация за местните власти
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Промяна на име на град
@@ -2468,7 +2502,7 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Кликни върху услугата, за да се фокусира върху индустрията/града
 
 # Station list window
-STR_STATION_LIST_TOOLTIP                                        :{BLACK}Имена на станции - натиснете върху името за да центрирате главния прозорец върху станцията
+STR_STATION_LIST_TOOLTIP                                        :{BLACK}Имена на станции - натиснете върху името, за да фиксирате главния прозорец върху станцията
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Задържете CTRL за да изберете повече от един обект
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Станци{P я и}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
@@ -2504,7 +2538,7 @@ STR_CARGO_RATING_EXCELLENT                                      :Отлично
 STR_CARGO_RATING_OUTSTANDING                                    :Невероятно
 ############ range for rating ends
 
-STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Центриране на главния прозорец върху станцията
+STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Фокусиране на главния изглед върху станцията. Ctrl+Click отваря прозорец на нов изглед върху гарата.
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Промяна името на станцията
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Показване на всички влакове които минават през гарата
@@ -2597,13 +2631,13 @@ STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- От�
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% превозено)
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% превозено)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Имена на индустиите - натисни за да центрираш изгледа
+STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Имена на индустриите - натисни за да фокусираш върху индустрията. Ctrl+Click отваря прозорец на нов изглед върху индустрията.
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Произведено миналия месец:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% превозено)
-STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Центриране главния прозорец върху индустрията
+STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Фокусиране на основният изглед върху индустрията. Ctrl+Click отваря прозорец на нов изглед върху индустрията.
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Нуждае се от: {YELLOW}{STRING}{STRING}
@@ -2618,7 +2652,7 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Прои
 STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Произвежда: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
 ############ range for produces ends
 
-STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Промяна на производство
+STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Промени производството
 
 # Vehicle lists
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Влак{P "" ове}
@@ -2711,14 +2745,14 @@ STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Спис
 STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Избор на самолет - натиснете върху самолет за информация
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Купи Машина
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Покупка на превозно средство
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Купи Машина
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Купи Кораб
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Строене на самолет
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Купи самолет
 
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Строене на избрания влак
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Купи маркираният влак
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Купи посоченото МПС
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Купи посоченият кораб
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Строене на избрания самолет
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Купи посоченият самолет
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Преименувай
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Преименувай
@@ -2736,6 +2770,10 @@ STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Пром
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Сняна името на самолета
 
 # Depot window
+STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
+
+STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}Промени името на депото
+STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Преименувай депото
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -2770,19 +2808,19 @@ STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Нови
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Ново летище
 
 STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Купи нова ЖП машина
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Покупка на нов автомобил
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Купи ново МПС
 STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Купи нов кораб
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Строене на самолет
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Купи нов самолет
 
 STR_DEPOT_CLONE_TRAIN                                           :{BLACK}Клониране на влак
 STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Копиране на превозно средство
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Клониране на кораб
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Клониране на летателен апарат
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Така ще бъде построено копие на влака заедно с всички негови вагони. Натисни на този бутон и след това на влак вътре или вън от депото. Натисни CTRL за да споделиш задачите
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Така ще бъде построено копие на пътното превозно средство. Натисни на този бутон и след това на пътно превозно средство вътре или вън от депото. Натисни CTRL за да споделиш задачите
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Така ще бъде построено копие на кораб. Натисни този бутон и след това върху кораб вътре или вън от депото. Натисни CTRL за да споделиш задачите
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Така ще бъде построено копие на летателния апарат. Натисни на този бутон и след това на летателен апарат вътре или вън от хангара. Натисни CTRL за да споделиш задачите
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Така ще бъде построено копие на влака, заедно с всички негови вагони. Натисни този бутон и след това върху влак вътре или вън от депото. Натисни CTRL, за да споделиш задачите
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Така ще бъде построено копие на пътното превозно средство. Натисни този бутон и след това върху пътно превозно средство вътре или вън от депото. Натисни CTRL, за да споделиш задачите
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Така ще бъде построено копие на кораб. Натисни този бутон и след това върху кораб вътре или вън от депото. Натисни CTRL, за да споделиш задачите
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Така ще бъде построено копие на летателния апарат. Натисни този бутон и след това върху летателен апарат вътре или вън от хангара. Натисни CTRL, за да споделиш задачите
 
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Фокусирай върху мястото на влаковото депо
 STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Фокусирай общия план върху местонахождението на МПС-депото
@@ -2915,7 +2953,13 @@ STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Без 
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Отиващ към {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Отиващ към {WAYPOINT}, {VELOCITY}
 
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE}Отправя се към {DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Отправя се към {DEPOT}, {VELOCITY}
 
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}Сервиз в {DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Сервиз в {DEPOT}, {VELOCITY}
+
+# Vehicle stopped/started animations
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Подробности)
@@ -3091,6 +3135,7 @@ STR_ORDER_TRAIN_DEPOT                                           :Депо за �
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Депо за пътни превозни средства
 STR_ORDER_SHIP_DEPOT                                            :Депо за кораби
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
+STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 STR_ORDER_REFIT_ORDER                                           :(Преустройство към {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Преоборудване на {STRING} и спиране)
@@ -3255,6 +3300,7 @@ STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Запазен�
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Фаилат е непрочетим
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Фаилат е неписуем
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Неуспешна проверкат за валидност на данните
+STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<няма я>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Играта бе записана във версия без поддръжка на трамваи. Всички трамваи са изтрити.
 
 # Map generation messages
@@ -3416,6 +3462,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Тук �
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Тук не може да бъде построено трамвайно депо...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Тук не може да бъде построен док...
 
+STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Преименуването на депото не се получи...
+
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Влакът трябва да бъде спрян в депото
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... трябва да бъде спряно в сервиз за коли
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Корабът трябва да е спрян в депото
@@ -3445,6 +3493,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Първ
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Неподходящ за употреба релсов път
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Първо трябва да бъде премахнат релсовия път
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Пътят е еднопосочен или блокиран
+STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Пресичането на различни видове ЖП линии не е позволено.
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Тук не може да бъде поставена сигнализация...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Тук не могат да бъдат построени ЖП релси...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Не може да премахнеш тези ЖП релси...
@@ -3554,6 +3603,7 @@ STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Само
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Прекалено много превозни средства
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Интервала на техн. преглед не може да се промени...
 
+STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... машината е унищожена
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Влака не може да пропусне сигнала при опасност...
@@ -3590,6 +3640,9 @@ STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... тв
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Тук не може да бъде поставян знак...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Името на знака не може да бъде променяно...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Не може да изтриеш знака...
+
+# Translatable comment for OpenTTD's desktop shortcut
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Клонинг на Transport Tycoon Deluxe
 
 ##id 0x2000
 # Town building names
@@ -3981,6 +4034,14 @@ STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING} {0:T
 STR_FORMAT_WAYPOINT_NAME                                        :Пътна точка {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Пътна точка {TOWN} #{COMMA}
 
+STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} Влаково депо
+STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} Влаково депо #{COMMA}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} Депо за ППС
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} Депо за ППС #{COMMA}
+STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} Корабно депо
+STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} Корабно депо #{COMMA}
+STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{STATION} Хангар
+
 STR_UNKNOWN_STATION                                             :неизвестна гара
 STR_DEFAULT_SIGN_NAME                                           :Знак
 STR_COMPANY_SOMEONE                                             :някой
@@ -4006,6 +4067,7 @@ STR_VIEWPORT_WAYPOINT_TINY                                      :{TINYFONT}{WAYP
 # Simple strings to get specific types of data
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
+STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}
@@ -4054,6 +4116,7 @@ STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
+STR_TINY_BLACK_HEIGHT                                           :{TINYFONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
@@ -4070,3 +4133,4 @@ STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
+

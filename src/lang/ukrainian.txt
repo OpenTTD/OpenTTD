@@ -295,7 +295,7 @@ STR_BAGS                                                        :мішків
 STR_TONS                                                        :тони
 STR_LITERS                                                      :літрів
 STR_ITEMS                                                       :штук
-STR_CRATES                                                      :ЯщикИ
+STR_CRATES                                                      :ящики
 STR_RES_OTHER                                                   :інша
 STR_NOTHING                                                     :
 
