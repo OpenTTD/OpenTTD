@@ -12,6 +12,10 @@
 #include "ai_industrytype.hpp"
 
 namespace SQConvert {
+	/* Allow enums to be used as Squirrel parameters */
+	template <> AIIndustryType::SpecialIndustryType GetParam(ForceType<AIIndustryType::SpecialIndustryType>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIIndustryType::SpecialIndustryType)tmp; }
+	template <> int Return<AIIndustryType::SpecialIndustryType>(HSQUIRRELVM vm, AIIndustryType::SpecialIndustryType res) { sq_pushinteger(vm, (int32)res); return 1; }
+
 	/* Allow AIIndustryType to be used as Squirrel parameter */
 	template <> AIIndustryType *GetParam(ForceType<AIIndustryType *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIIndustryType *)instance; }
 	template <> AIIndustryType &GetParam(ForceType<AIIndustryType &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIIndustryType *)instance; }
@@ -25,6 +29,9 @@ void SQAIIndustryType_Register(Squirrel *engine)
 	DefSQClass <AIIndustryType> SQAIIndustryType("AIIndustryType");
 	SQAIIndustryType.PreRegister(engine);
 	SQAIIndustryType.AddConstructor<void (AIIndustryType::*)(), 1>(engine, "x");
+
+	SQAIIndustryType.DefSQConst(engine, AIIndustryType::INDUSTRYTYPE_UNKNOWN, "INDUSTRYTYPE_UNKNOWN");
+	SQAIIndustryType.DefSQConst(engine, AIIndustryType::INDUSTRYTYPE_TOWN,    "INDUSTRYTYPE_TOWN");
 
 	SQAIIndustryType.DefSQStaticMethod(engine, &AIIndustryType::IsValidIndustryType,   "IsValidIndustryType",   2, ".i");
 	SQAIIndustryType.DefSQStaticMethod(engine, &AIIndustryType::GetName,               "GetName",               2, ".i");

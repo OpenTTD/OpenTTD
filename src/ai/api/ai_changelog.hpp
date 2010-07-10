@@ -21,6 +21,8 @@
  * API additions:
  * \li IsEnd for all lists.
  * \li AIIndustry::GetIndustryID
+ * \li AIIndustryType::INDUSTRYTYPE_TOWN
+ * \li AIIndustryType::INDUSTRYTYPE_UNKNOWN
  * \li AIRail::GetMaxSpeed
  * \li AIRail::ERR_RAILTYPE_DISALLOWS_CROSSING
  *

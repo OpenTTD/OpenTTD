@@ -24,6 +24,14 @@ public:
 	static const char *GetClassName() { return "AIIndustryType"; }
 
 	/**
+	 * Special IndustryTypes.
+	 */
+	enum SpecialIndustryType {
+		INDUSTRYTYPE_UNKNOWN = 0xFE, //!< Unknown/unspecific industrytype. (Usable for AIRail::BuildNewGRFRailStation())
+		INDUSTRYTYPE_TOWN    = 0xFF, //!< No industry, but town. (Usable for AIRail::BuildNewGRFRailStation())
+	};
+
+	/**
 	 * Checks whether the given industry-type is valid.
 	 * @param industry_type The type check.
 	 * @return True if and only if the industry-type is valid.

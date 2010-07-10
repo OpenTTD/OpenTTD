@@ -261,8 +261,8 @@ public:
 	 * @param platform_length The length of each platform.
 	 * @param station_id The station to join, AIStation::STATION_NEW or AIStation::STATION_JOIN_ADJACENT.
 	 * @param cargo_id The CargoID of the cargo that will be transported from / to this station.
-	 * @param source_industry The IndustryType of the industry you'll transport goods from.
-	 * @param goal_industry The IndustryType of the industry you'll transport goods to.
+	 * @param source_industry The IndustryType of the industry you'll transport goods from, AIIndustryType::INDUSTRYTYPE_UNKNOWN or AIIndustryType::INDUSTRYTYPE_TOWN.
+	 * @param goal_industry The IndustryType of the industry you'll transport goods to, AIIndustryType::INDUSTRYTYPE_UNKNOWN or AIIndustryType::INDUSTRYTYPE_TOWN.
 	 * @param distance The manhattan distance you'll transport the cargo over.
 	 * @param source_station True if this is the source station, false otherwise.
 	 * @pre IsRailTypeAvailable(GetCurrentRailType()).
@@ -271,6 +271,8 @@ public:
 	 * @pre num_platforms > 0 && num_platforms <= 255.
 	 * @pre platform_length > 0 && platform_length <= 255.
 	 * @pre station_id == AIStation::STATION_NEW || station_id == AIStation::STATION_JOIN_ADJACENT || AIStation::IsValidStation(station_id).
+	 * @pre source_industry == AIIndustryType::INDUSTRYTYPE_UNKNOWN || source_industry == AIIndustryType::INDUSTRYTYPE_TOWN || AIIndustryType::IsValidIndustryType(source_industry).
+	 * @pre goal_industry == AIIndustryType::INDUSTRYTYPE_UNKNOWN || goal_industry == AIIndustryType::INDUSTRYTYPE_TOWN || AIIndustryType::IsValidIndustryType(goal_industry).
 	 * @exception AIError::ERR_OWNED_BY_ANOTHER_COMPANY
 	 * @exception AIError::ERR_AREA_NOT_CLEAR
 	 * @exception AIError::ERR_FLAT_LAND_REQUIRED
