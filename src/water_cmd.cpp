@@ -41,16 +41,6 @@
 #include "table/strings.h"
 
 /**
- * Describes the behaviour of a tile during flooding.
- */
-enum FloodingBehaviour {
-	FLOOD_NONE,    ///< The tile does not flood neighboured tiles.
-	FLOOD_ACTIVE,  ///< The tile floods neighboured tiles.
-	FLOOD_PASSIVE, ///< The tile does not actively flood neighboured tiles, but it prevents them from drying up.
-	FLOOD_DRYUP,   ///< The tile drys up if it is not constantly flooded from neighboured tiles.
-};
-
-/**
  * Describes from which directions a specific slope can be flooded (if the tile is floodable at all).
  */
 static const uint8 _flood_from_dirs[] = {
@@ -839,7 +829,7 @@ static void FloodVehicle(Vehicle *v)
  *
  * @return Behaviour of the tile
  */
-static FloodingBehaviour GetFloodingBehaviour(TileIndex tile)
+FloodingBehaviour GetFloodingBehaviour(TileIndex tile)
 {
 	/* FLOOD_ACTIVE:  'single-corner-raised'-coast, sea, sea-shipdepots, sea-buoys, sea-docks (water part), rail with flooded halftile, sea-water-industries, sea-oilrigs
 	 * FLOOD_DRYUP:   coast with more than one corner raised, coast with rail-track, coast with trees
