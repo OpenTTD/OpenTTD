@@ -948,7 +948,7 @@ CommandCost CmdBuildSingleSignal(TileIndex tile, DoCommandFlag flags, uint32 p1,
 	if (HasBit(p1, 17) && HasSignalOnTrack(tile, track)) return CommandCost();
 
 	/* you can not convert a signal if no signal is on track */
-	if (convert_signal && !HasSignalOnTrack(tile, track)) return CMD_ERROR;
+	if (convert_signal && !HasSignalOnTrack(tile, track)) return_cmd_error(STR_ERROR_THERE_ARE_NO_SIGNALS);
 
 	CommandCost cost;
 	if (!HasSignalOnTrack(tile, track)) {
@@ -1220,7 +1220,11 @@ static CommandCost CmdSignalTrackHelper(TileIndex tile, DoCommandFlag flags, uin
 				had_success = true;
 				total_cost.AddCost(ret);
 			} else {
-				last_error = ret;
+				/* The "No railway" error is the least important one. */
+				if (ret.GetErrorMessage() != STR_ERROR_THERE_IS_NO_RAILROAD_TRACK ||
+						last_error.GetErrorMessage() == INVALID_STRING_ID) {
+					last_error = ret;
+				}
 			}
 		}
 
@@ -1288,7 +1292,7 @@ CommandCost CmdRemoveSingleSignal(TileIndex tile, DoCommandFlag flags, uint32 p1
 		return_cmd_error(STR_ERROR_THERE_IS_NO_RAILROAD_TRACK);
 	}
 	if (!HasSignalOnTrack(tile, track)) {
-		return CMD_ERROR;
+		return_cmd_error(STR_ERROR_THERE_ARE_NO_SIGNALS);
 	}
 	CommandCost ret = EnsureNoTrainOnTrack(tile, track);
 	if (ret.Failed()) return ret;
