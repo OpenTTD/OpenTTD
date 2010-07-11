@@ -409,6 +409,12 @@ static void DispatchHoverEvent(Window *w, int x, int y)
 		GuiShowTooltips(wid->tool_tip);
 		return;
 	}
+
+	/* Widget has no index, so the window is not interested in it. */
+	if (wid->index < 0) return;
+
+	Point pt = { x, y };
+	w->OnHover(pt, wid->index);
 }
 
 /**

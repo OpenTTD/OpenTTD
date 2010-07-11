@@ -658,6 +658,13 @@ public:
 	virtual void OnRightClick(Point pt, int widget) {}
 
 	/**
+	 * The mouse is hovering over a widget in the window, perform an action for it, like opening a custom tooltip.
+	 * @param pt     The point where the mouse is hovering.
+	 * @param widget The widget where the mouse is hovering.
+	 */
+	virtual void OnHover(Point pt, int widget) {}
+
+	/**
 	 * An 'object' is being dragged at the provided position, highlight the target if possible.
 	 * @param pt     The point inside the window that the mouse hovers over.
 	 * @param widget The widget the mouse hovers over.

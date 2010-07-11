@@ -558,6 +558,7 @@ struct DepotWindow : Window {
 		this->GetWidget<NWidgetCore>(DEPOT_WIDGET_LOCATION)->tool_tip     = STR_DEPOT_TRAIN_LOCATION_TOOLTIP + type;
 		this->GetWidget<NWidgetCore>(DEPOT_WIDGET_VEHICLE_LIST)->tool_tip = STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP + type;
 		this->GetWidget<NWidgetCore>(DEPOT_WIDGET_AUTOREPLACE)->tool_tip  = STR_DEPOT_AUTOREPLACE_TRAIN_TOOLTIP + type;
+		this->GetWidget<NWidgetCore>(DEPOT_WIDGET_MATRIX)->tool_tip       = STR_DEPOT_TRAIN_LIST_TOOLTIP + this->type;
 
 		switch (type) {
 			default: NOT_REACHED();
@@ -843,12 +844,8 @@ struct DepotWindow : Window {
 			args[0] = (whole_chain ? num : v->engine_type);
 			args[1] = (uint64)(size_t)details;
 			GuiShowTooltips(whole_chain ? STR_DEPOT_VEHICLE_TOOLTIP_CHAIN : STR_DEPOT_VEHICLE_TOOLTIP, 2, args, TCC_RIGHT_CLICK);
-		} else {
-			/* Show tooltip help */
-			GuiShowTooltips(STR_DEPOT_TRAIN_LIST_TOOLTIP + this->type, TCC_RIGHT_CLICK);
 		}
 	}
-
 
 	virtual void OnPlaceObject(Point pt, TileIndex tile)
 	{
