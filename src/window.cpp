@@ -384,6 +384,23 @@ static void DispatchRightClickEvent(Window *w, int x, int y)
 {
 	NWidgetCore *wid = w->nested_root->GetWidgetFromPos(x, y);
 
+	/* No widget to handle, or the window is not interested in it. */
+	if (wid == NULL || wid->index < 0) return;
+
+	Point pt = { x, y };
+	w->OnRightClick(pt, wid->index);
+}
+
+/**
+ * Dispatch hover of the mouse over a window.
+ * @param w Window to dispatch event in.
+ * @param x X coordinate of the click.
+ * @param y Y coordinate of the click.
+ */
+static void DispatchHoverEvent(Window *w, int x, int y)
+{
+	NWidgetCore *wid = w->nested_root->GetWidgetFromPos(x, y);
+
 	/* No widget to handle */
 	if (wid == NULL) return;
 
@@ -392,12 +409,6 @@ static void DispatchRightClickEvent(Window *w, int x, int y)
 		GuiShowTooltips(wid->tool_tip);
 		return;
 	}
-
-	/* Widget has no index, so the window is not interested in it. */
-	if (wid->index < 0) return;
-
-	Point pt = { x, y };
-	w->OnRightClick(pt, wid->index);
 }
 
 /**
@@ -2178,6 +2189,8 @@ static void MouseLoop(MouseClick click, int mousewheel)
 
 				/* fallthough */
 			case MC_RIGHT: DispatchRightClickEvent(w, x - w->left, y - w->top); break;
+
+			case MC_HOVER: DispatchHoverEvent(w, x - w->left, y - w->top); break;
 		}
 	}
 }
