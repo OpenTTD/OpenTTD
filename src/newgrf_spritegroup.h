@@ -343,6 +343,7 @@ struct ResolverObject {
 		} generic;
 		struct {
 			TileIndex tile;
+			bool upper_halftile;           ///< Are we resolving sprites for the upper halftile?
 		} routes;
 		struct {
 			const struct Station *st;

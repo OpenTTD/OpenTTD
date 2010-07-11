@@ -5,7 +5,7 @@
 
 #include "rail.h"
 
-SpriteID GetCustomRailSprite(const RailtypeInfo *rti, TileIndex tile, RailTypeSpriteGroup rtsg);
+SpriteID GetCustomRailSprite(const RailtypeInfo *rti, TileIndex tile, RailTypeSpriteGroup rtsg, bool upper_halftile = false);
 
 uint8 GetReverseRailTypeTranslation(RailType railtype, const GRFFile *grffile);
 

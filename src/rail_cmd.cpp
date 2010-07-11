@@ -1791,8 +1791,9 @@ static void DrawTrackFence_WE_2(const TileInfo *ti, SpriteID base_image)
 
 static void DrawTrackDetails(const TileInfo *ti, const RailtypeInfo *rti)
 {
-	/* Base sprite for track fences. */
-	SpriteID base_image = GetCustomRailSprite(rti, ti->tile, RTSG_FENCES);
+	/* Base sprite for track fences.
+	 * Note: Halftile slopes only have fences on the upper part. */
+	SpriteID base_image = GetCustomRailSprite(rti, ti->tile, RTSG_FENCES, IsHalftileSlope(ti->tileh));
 	if (base_image == 0) base_image = SPR_TRACK_FENCE_FLAT_X;
 
 	switch (GetRailGroundType(ti->tile)) {
@@ -1951,6 +1952,8 @@ static void DrawTrackBitsOverlay(TileInfo *ti, TrackBits track, const RailtypeIn
 
 	if (IsValidCorner(halftile_corner)) {
 		DrawFoundation(ti, HalftileFoundation(halftile_corner));
+		overlay = GetCustomRailSprite(rti, ti->tile, RTSG_OVERLAY, true);
+		ground = GetCustomRailSprite(rti, ti->tile, RTSG_GROUND, true);
 
 		/* Draw higher halftile-overlay: Use the sloped sprites with three corners raised. They probably best fit the lightning. */
 		Slope fake_slope = SlopeWithThreeCornersRaised(OppositeCorner(halftile_corner));

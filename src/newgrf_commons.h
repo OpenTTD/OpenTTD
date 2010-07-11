@@ -123,7 +123,7 @@ extern IndustryTileOverrideManager _industile_mngr;
 extern AirportOverrideManager _airport_mngr;
 extern AirportTileOverrideManager _airporttile_mngr;
 
-uint32 GetTerrainType(TileIndex tile);
+uint32 GetTerrainType(TileIndex tile, bool upper_halftile = false);
 TileIndex GetNearbyTile(byte parameter, TileIndex tile);
 uint32 GetNearbyTileInformation(TileIndex tile);
 

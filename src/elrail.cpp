@@ -165,20 +165,20 @@ static TrackBits MaskWireBits(TileIndex t, TrackBits tracks)
 /**
  * Get the base wire sprite to use.
  */
-static inline SpriteID GetWireBase(TileIndex tile)
+static inline SpriteID GetWireBase(TileIndex tile, bool upper_halftile = false)
 {
 	const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(tile));
-	SpriteID wires = GetCustomRailSprite(rti, tile, RTSG_WIRES);
+	SpriteID wires = GetCustomRailSprite(rti, tile, RTSG_WIRES, upper_halftile);
 	return wires == 0 ? SPR_WIRE_BASE : wires;
 }
 
 /**
  * Get the base pylon sprite to use.
  */
-static inline SpriteID GetPylonBase(TileIndex tile)
+static inline SpriteID GetPylonBase(TileIndex tile, bool upper_halftile = false)
 {
 	const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(tile));
-	SpriteID pylons = GetCustomRailSprite(rti, tile, RTSG_PYLONS);
+	SpriteID pylons = GetCustomRailSprite(rti, tile, RTSG_PYLONS, upper_halftile);
 	return pylons == 0 ? SPR_PYLON_BASE : pylons;
 }
 
@@ -274,7 +274,11 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 
 	/* Half tile slopes coincide only with horizontal/vertical track.
 	 * Faking a flat slope results in the correct sprites on positions. */
-	if (IsHalftileSlope(tileh[TS_HOME])) tileh[TS_HOME] = SLOPE_FLAT;
+	Corner halftile_corner = CORNER_INVALID;
+	if (IsHalftileSlope(tileh[TS_HOME])) {
+		halftile_corner = GetHighestSlopeCorner(tileh[TS_HOME]);
+		tileh[TS_HOME] = SLOPE_FLAT;
+	}
 
 	TLG tlg = GetTLG(ti->tile);
 	byte PCPstatus = 0;
@@ -295,9 +299,17 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 
 	AdjustTileh(ti->tile, &tileh[TS_HOME]);
 
-	SpriteID pylon_base = GetPylonBase(ti->tile);
+	SpriteID pylon_normal = GetPylonBase(ti->tile);
+	SpriteID pylon_halftile = (halftile_corner != CORNER_INVALID) ? GetPylonBase(ti->tile, true) : pylon_normal;
 
 	for (DiagDirection i = DIAGDIR_BEGIN; i < DIAGDIR_END; i++) {
+		static const uint edge_corners[] = {
+			1 << CORNER_N | 1 << CORNER_E, // DIAGDIR_NE
+			1 << CORNER_S | 1 << CORNER_E, // DIAGDIR_SE
+			1 << CORNER_S | 1 << CORNER_W, // DIAGDIR_SW
+			1 << CORNER_N | 1 << CORNER_W, // DIAGDIR_NW
+		};
+		SpriteID pylon_base = (halftile_corner != CORNER_INVALID && HasBit(edge_corners[i], halftile_corner)) ? pylon_halftile : pylon_normal;
 		TileIndex neighbour = ti->tile + TileOffsByDiagDir(i);
 		Foundation foundation = FOUNDATION_NONE;
 		byte elevation = GetPCPElevation(ti->tile, i);
@@ -426,11 +438,21 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 		if (height <= GetTileMaxZ(ti->tile) + TILE_HEIGHT) return;
 	}
 
-	SpriteID wire_base = GetWireBase(ti->tile);
+	SpriteID wire_normal = GetWireBase(ti->tile);
+	SpriteID wire_halftile = (halftile_corner != CORNER_INVALID) ? GetWireBase(ti->tile, true) : wire_normal;
+	Track halftile_track;
+	switch (halftile_corner) {
+		case CORNER_W: halftile_track = TRACK_LEFT; break;
+		case CORNER_S: halftile_track = TRACK_LOWER; break;
+		case CORNER_E: halftile_track = TRACK_RIGHT; break;
+		case CORNER_N: halftile_track = TRACK_UPPER; break;
+		default:       halftile_track = INVALID_TRACK; break;
+	}
 
 	/* Drawing of pylons is finished, now draw the wires */
 	Track t;
 	FOR_EACH_SET_TRACK(t, wireconfig[TS_HOME]) {
+		SpriteID wire_base = (t == halftile_track) ? wire_halftile : wire_normal;
 		byte PCPconfig = HasBit(PCPstatus, PCPpositions[t][0]) +
 			(HasBit(PCPstatus, PCPpositions[t][1]) << 1);
 

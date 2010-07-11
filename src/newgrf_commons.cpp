@@ -280,9 +280,10 @@ void IndustryTileOverrideManager::SetEntitySpec(const IndustryTileSpec *its)
 /** Function used by houses (and soon industries) to get information
  * on type of "terrain" the tile it is queries sits on.
  * @param tile TileIndex of the tile been queried
+ * @param upper_halftile If true, query upper halftile in case of rail tiles.
  * @return value corresponding to the grf expected format:
  *         Terrain type: 0 normal, 1 desert, 2 rainforest, 4 on or above snowline */
-uint32 GetTerrainType(TileIndex tile)
+uint32 GetTerrainType(TileIndex tile, bool upper_halftile)
 {
 	switch (_settings_game.game_creation.landscape) {
 		case LT_TROPIC: return GetTropicZone(tile);
@@ -295,7 +296,7 @@ uint32 GetTerrainType(TileIndex tile)
 
 				case MP_RAILWAY: {
 					RailGroundType ground = GetRailGroundType(tile);
-					has_snow = (ground == RAIL_GROUND_ICE_DESERT);
+					has_snow = (ground == RAIL_GROUND_ICE_DESERT || (upper_halftile && ground == RAIL_GROUND_HALF_SNOW));
 					break;
 				}
 
