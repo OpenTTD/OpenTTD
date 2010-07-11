@@ -1941,7 +1941,7 @@ STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Señal c
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Señal de ruta (eléctrica){}Una señal de ruta permite a más de un tren entrar a un bloque de señales a la vez, si el tren puede reservar una ruta hasta un lugar seguro. Pueden ser traspasadas desde atrás.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Señal de ruta de un sentido (eléctrica){}Una señal de ruta permite a más de un tren entrar a un bloque de señales a la vez, si el tren puede reservar una ruta hasta un lugar seguro. No pueden ser traspasadas desde atrás.
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Convertir señal{}Cuando es seleccionado, pulsar sobre una señal existente la convierte en el tipo y variante indicados. Pulsar Ctrl+Click permite cambiar de variante
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Arrastrar densidad de señales
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Densidad de arrastre de señales
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Reducir arrastre de intensidad de señales
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Incrementar arrastre de intensidad de señales
 
@@ -2811,10 +2811,10 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} vehículo {P "" s}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trenes - Click en tren para información, arrastrar vehículo para añadir/retirar del tren
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Vehículos - Click en vehículo para información
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Barcos - Click en barco para información
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Aeronave - Click en la aeronave para información
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trenes - arrastrar vehículo con click izquierdo para añadir/retirar del tren, click derecho para mostrar información del vehículo, CTRL+click para mostrar información del tren
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Vehículos - Click derecho en vehículo para información
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Barcos - Click derecho en barco para información
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Aeronave - Click derecho en la aeronave para información
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Arrastrar aquí vehículo para venderlo
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Arrastra aquí el vehículo para venderlo
@@ -3485,6 +3485,7 @@ STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}No se pu
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}No se puede quitar estación de tranvía de pasajeros...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}No se puede quitar estación de tranvía de carga...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Primero debe retirar la parada
+STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}...no hay ninguna estación aquí
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Primero debe demolerse estación de trenes
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Primero debe demolerse estación de autobús
@@ -3550,6 +3551,8 @@ STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}No se pu
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}No se pueden retirar raíles aquí...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}No se pueden retirar señales de aquí...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}No se pueden convertir las señales aquí...
+STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}...no hay ferrocarril
+STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}...no hay señales
 
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}No se puede convertir tipo de raíl aquí...
 
@@ -3560,6 +3563,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}No se pu
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}No se puede construir un tranvía aquí...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}No se puede retirar carretera de aquí...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}No se puede retirar tranvía de aquí...
+STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}...no hay carretera
+STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}...no hay tranvía
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}No se pueden construir canales aquí...

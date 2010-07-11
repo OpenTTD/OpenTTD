@@ -2811,10 +2811,10 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} Fahrzeug{P "" e}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Züge - für Informationen auf einen Zug klicken; Waggon ziehen, um ihn an-/abzukoppeln
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Straßenfahrzeuge - für Einzelheiten auf das Fahrzeug klicken
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Schiffe - für Einzelheiten auf das Schiff klicken
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Flugzeuge - für Einzelheiten auf das Flugzeug klicken
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Züge - Fahrzeug ziehen, um es an-/abzukoppeln. Rechts-Klick für Fahrzeuginformationen, Strg+Rechts-Klick für Gespann-Informationen.
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Straßenfahrzeuge - Rechts-Klick für Einzelheiten
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Schiffe - Rechts-Klick für Einzelheiten
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Flugzeuge - Rechts-Klick für Einzelheiten
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Schienenfahrzeug hierher ziehen, um es zu verkaufen
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Ziehe Fahrzeug hierher, um es zu verkaufen
@@ -3485,6 +3485,7 @@ STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}LKW-Lade
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Straßenbahnhaltestelle kann nicht entfernt werden...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Güterverladestelle kann nicht entfernt werden...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Haltestelle muß erst entfernt werden
+STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}...da ist kein Bahnhof
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Bahnhof muss erst abgerissen werden
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Der Busbahnhof muss erst abgerissen werden
@@ -3550,6 +3551,8 @@ STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Gleise k
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Gleise können nicht abgerissen werden...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Signale können hier nicht entfernt werden...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Kann Signale hier nicht umbauen...
+STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}...da sind keine Schienen
+STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}...da sind keine Signale
 
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Gleistyp kann hier nicht verändert werden...
 
@@ -3560,6 +3563,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Straße 
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Straßenbahn kann hier nicht gebaut werden...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Diese Straße kann nicht entfernt werden...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Straßenbahn kann hier nicht entfernt werden...
+STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}...da ist keine Straße
+STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}...da sind keine Straßenbahnschienen
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Kanal kann hier nicht gebaut werden...

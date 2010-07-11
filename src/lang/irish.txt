@@ -1274,6 +1274,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :greille 2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :greille 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :randamach
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Ceadaítear do bhailte bóithre a thógáil: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}Ceadaítear do bhailte crosairí comhréidh a thógáil: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Ceadaigh leibhéal fuaime rialaithe ag an mbaile d'aerfoirt: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Bailte a bhunú sa chluiche: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :coiscthe
@@ -2403,6 +2404,7 @@ STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Airí Gníomh 0
 STR_NEWGRF_ERROR_INVALID_ID                                     :Iarracht ID neamhbhailí a úsáid.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}Tá sprite truaillithe in {STRING}. Taispeánfar gach sprite truaillithe mar chomhartha ceiste (?) dearg.
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Tá iontrálacha Gníomh 8 iolracha ann.
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Léadh thar deireadh an bhréag-sprite.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Rabhadh!
@@ -3445,6 +3447,7 @@ STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Ní féi
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Ní féidir an stáisiún tramanna paisinéirí a bhaint...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Ní féidir an stáisiún tramanna lastais a bhaint...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Ní mór an stad bóthair a bhaint ar dtús
+STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... níl aon stáisiún anseo
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Ní mór an stáisiún iarnróid a leagan ar dtús
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Ní mór an stáisiún busanna a leagan ar dtús
@@ -3509,6 +3512,8 @@ STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Ní féi
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Ní féidir ráillí iarnróid a bhaint as seo...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Ní féidir comharthaí a bhaint as seo...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Ní féidir comharthaí a thiontú anseo...
+STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... níl aon ráille iarnróid ann
+STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... níl aon chomhartha ann
 
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Ní féidir an cineál ráillí a thiontú anseo...
 
@@ -3519,6 +3524,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Ní féi
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Ní féidir trambhealach a thógáil anseo...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Ní féidir bóthair a bhaint as seo...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Ní féidir trambhealach a bhaint as seo...
+STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... níl aon bhóthair ann
+STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... níl aon trambhealach ann
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Ní féidir canálacha a thógáil anseo...

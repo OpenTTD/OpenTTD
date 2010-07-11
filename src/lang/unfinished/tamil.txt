@@ -36,6 +36,7 @@ STR_CARGO_PLURAL_GOODS                                          :சரக்க
 STR_CARGO_PLURAL_GRAIN                                          :தானியம்
 STR_CARGO_PLURAL_WOOD                                           :மரங்கள்
 STR_CARGO_PLURAL_IRON_ORE                                       :இரும்புத் தாது
+STR_CARGO_PLURAL_STEEL                                          :ஸ்டீல்
 STR_CARGO_PLURAL_VALUABLES                                      :மதிப்புள்ளவை
 STR_CARGO_PLURAL_COPPER_ORE                                     :தாமிரத் தாது
 STR_CARGO_PLURAL_MAIZE                                          :சோளம்
@@ -69,6 +70,7 @@ STR_CARGO_SINGULAR_GOODS                                        :சரக்க
 STR_CARGO_SINGULAR_GRAIN                                        :தானியம்
 STR_CARGO_SINGULAR_WOOD                                         :மரம்
 STR_CARGO_SINGULAR_IRON_ORE                                     :இரும்புத் தாது
+STR_CARGO_SINGULAR_STEEL                                        :ஸ்டீல்
 STR_CARGO_SINGULAR_VALUABLES                                    :மதிப்புள்ளது
 STR_CARGO_SINGULAR_COPPER_ORE                                   :தாமிரத் தாது
 STR_CARGO_SINGULAR_MAIZE                                        :சோளம்
@@ -99,9 +101,10 @@ STR_QUANTITY_MAIL                                               :{COMMA} அஞ�
 STR_QUANTITY_OIL                                                :{VOLUME} எண்ணெய்
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} கால்நடை{P "" கள்}
 STR_QUANTITY_GOODS                                              :{COMMA} பெட்டி சரக்கு{P "" கள்}
-STR_QUANTITY_GRAIN                                              :{WEIGHT} of தானியம்
+STR_QUANTITY_GRAIN                                              :{WEIGHT} தானியம்
 STR_QUANTITY_WOOD                                               :{WEIGHT} மரம்
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT} இரும்புத் தாது
+STR_QUANTITY_STEEL                                              :{WEIGHT} ஸ்டீல்
 STR_QUANTITY_VALUABLES                                          :{COMMA} மதிப்புள்ள பை{P "" கள்}
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} தாமிரத் தாது
 STR_QUANTITY_MAIZE                                              :{WEIGHT} சோளம்
@@ -113,37 +116,170 @@ STR_QUANTITY_GOLD                                               :{COMMA} தங�
 STR_QUANTITY_WATER                                              :{VOLUME} நீர்
 STR_QUANTITY_WHEAT                                              :{WEIGHT} கோதுமை
 STR_QUANTITY_RUBBER                                             :{VOLUME} ரப்பர்
+STR_QUANTITY_SUGAR                                              :{WEIGHT} சர்க்கரை
+STR_QUANTITY_TOYS                                               :{COMMA} பொம்மை{P "" கள்}
+STR_QUANTITY_SWEETS                                             :{COMMA} இனிப்பு பெட்டி{P "" கள்}
+STR_QUANTITY_COLA                                               :{VOLUME} கோலா
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} பஞ்சு மிட்டாய்
+STR_QUANTITY_BUBBLES                                            :{COMMA} குமிழி{P "" கள்}
+STR_QUANTITY_TOFFEE                                             :{WEIGHT} மிட்டாய்
+STR_QUANTITY_BATTERIES                                          :{COMMA} பாட்டரி{P ... கள்}
+STR_QUANTITY_PLASTIC                                            :{VOLUME} பிளாஸ்டிக்
+STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} fizzy drink{P "" s}
+STR_QUANTITY_N_A                                                :N/A
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
+STR_ABBREV_PASSENGERS                                           :{TINYFONT}PS
+STR_ABBREV_COAL                                                 :{TINYFONT}CL
+STR_ABBREV_MAIL                                                 :{TINYFONT}ML
+STR_ABBREV_OIL                                                  :{TINYFONT}OL
+STR_ABBREV_LIVESTOCK                                            :{TINYFONT}LV
+STR_ABBREV_GOODS                                                :{TINYFONT}GD
+STR_ABBREV_GRAIN                                                :{TINYFONT}GR
+STR_ABBREV_WOOD                                                 :{TINYFONT}WD
+STR_ABBREV_IRON_ORE                                             :{TINYFONT}OR
+STR_ABBREV_STEEL                                                :{TINYFONT}ST
+STR_ABBREV_VALUABLES                                            :{TINYFONT}VL
+STR_ABBREV_COPPER_ORE                                           :{TINYFONT}CO
+STR_ABBREV_MAIZE                                                :{TINYFONT}MZ
+STR_ABBREV_FRUIT                                                :{TINYFONT}FT
+STR_ABBREV_DIAMONDS                                             :{TINYFONT}DM
+STR_ABBREV_FOOD                                                 :{TINYFONT}FD
+STR_ABBREV_PAPER                                                :{TINYFONT}PR
+STR_ABBREV_GOLD                                                 :{TINYFONT}GD
+STR_ABBREV_WATER                                                :{TINYFONT}WR
+STR_ABBREV_WHEAT                                                :{TINYFONT}WH
+STR_ABBREV_RUBBER                                               :{TINYFONT}RB
+STR_ABBREV_SUGAR                                                :{TINYFONT}SG
+STR_ABBREV_TOYS                                                 :{TINYFONT}TY
+STR_ABBREV_SWEETS                                               :{TINYFONT}SW
+STR_ABBREV_COLA                                                 :{TINYFONT}CL
+STR_ABBREV_CANDYFLOSS                                           :{TINYFONT}CF
+STR_ABBREV_BUBBLES                                              :{TINYFONT}BU
+STR_ABBREV_TOFFEE                                               :{TINYFONT}TF
+STR_ABBREV_BATTERIES                                            :{TINYFONT}BA
+STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
+STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}FZ
+STR_ABBREV_NONE                                                 :{TINYFONT}NO
+STR_ABBREV_ALL                                                  :{TINYFONT}ALL
 
 # 'Mode' of transport for cargoes
+STR_PASSENGERS                                                  :பயணிகள்
+STR_BAGS                                                        :பைகள்
+STR_TONS                                                        :டன்
+STR_LITERS                                                      :லிட்டர்
+STR_ITEMS                                                       :பொருட்கள்
+STR_CRATES                                                      :பேட்டிகள்
+STR_RES_OTHER                                                   :மற்றவை
 STR_NOTHING                                                     :
 
 # Colours, do not shuffle
+STR_COLOUR_DARK_BLUE                                            :கருநீலம்
+STR_COLOUR_PALE_GREEN                                           :வெளிர் பச்சை
+STR_COLOUR_PINK                                                 :பிங்க்
+STR_COLOUR_YELLOW                                               :மஞ்சள்
+STR_COLOUR_RED                                                  :சிவப்பு
+STR_COLOUR_LIGHT_BLUE                                           :வெளிர் நீலம்
+STR_COLOUR_GREEN                                                :பச்சை
+STR_COLOUR_DARK_GREEN                                           :கரும்பச்சை
+STR_COLOUR_BLUE                                                 :நீலம்
+STR_COLOUR_CREAM                                                :கிரீம்
+STR_COLOUR_MAUVE                                                :Mauve
+STR_COLOUR_PURPLE                                               :ஊதா
+STR_COLOUR_ORANGE                                               :ஆரஞ்சு
+STR_COLOUR_BROWN                                                :பழுப்பு
+STR_COLOUR_GREY                                                 :சாம்பல்
+STR_COLOUR_WHITE                                                :வெள்ளை
 
 # Units used in OpenTTD
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
+STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
 
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hp
+STR_UNITS_POWER_METRIC                                          :{COMMA}hp
+STR_UNITS_POWER_SI                                              :{COMMA}kW
 
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
+STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} டன்{P "" கள்}
+STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} கிலோ
 
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} லிட்டர்{P "" கள்}
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
+STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
+STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} அடி
+STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Enter filter string
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Enter a keyword to filter the list for
 
+STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Select sorting order (descending/ascending)
+STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Select sorting criteria
+STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Select filtering criteria
+STR_BUTTON_SORT_BY                                              :{BLACK}Sort by
+STR_BUTTON_LOCATION                                             :{BLACK}Location
+STR_BUTTON_RENAME                                               :{BLACK}Rename
 
+STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}சாளரத்தை மூடு
+STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}சாளர தலைப்பு - சாளரத்தை நகர்த்த இழுக்கவும்
+STR_TOOLTIP_SHADE                                               :{BLACK}சாளரத்தை சுருக்கவும் - தலைப்பை மட்டும் காண்பி
+STR_TOOLTIP_DEBUG                                               :{BLACK}Show NewGRF debug information
+STR_TOOLTIP_STICKY                                              :{BLACK}Mark this window as uncloseable by the 'Close All Windows' key
+STR_TOOLTIP_RESIZE                                              :{BLACK}Click and drag to resize this window
+STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Toggle large/small window size
+STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Scroll bar - scrolls list up/down
+STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Scroll bar - scrolls list left/right
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}நிலப்பகுதியில் கட்டிடம் போன்றவற்றை இடிக்க
 
 # Query window
+STR_BUTTON_DEFAULT                                              :{BLACK}Default
+STR_BUTTON_CANCEL                                               :{BLACK}தவிர்
+STR_BUTTON_OK                                                   :{BLACK}சரி
 
 # On screen keyboard window
+STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
+STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
 
 # Measurement tooltip
+STR_MEASURE_LENGTH                                              :{BLACK}நீளம்: {NUM}
+STR_MEASURE_AREA                                                :{BLACK}பகுதி: {NUM} x {NUM}
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}நீளம்: {NUM}{}உயர மாற்றம்: {HEIGHT}
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}நீளம்: {NUM} x {NUM}{}உயர மாற்றம்: {HEIGHT}
 
 
 # These are used in buttons
+STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}மக்கள் தொகை
+STR_SORT_BY_CAPTION_NAME                                        :{BLACK}பெயர்
+STR_SORT_BY_CAPTION_DATE                                        :{BLACK}தேதி
 # These are used in dropdowns
+STR_SORT_BY_POPULATION                                          :மக்கள் தொகை
+STR_SORT_BY_NAME                                                :பெயர்
+STR_SORT_BY_PRODUCTION                                          :உற்பத்தி
+STR_SORT_BY_TYPE                                                :வகை
+STR_SORT_BY_TRANSPORTED                                         :அனுப்பப்பட்டது
+STR_SORT_BY_NUMBER                                              :எண்
+STR_SORT_BY_PROFIT_LAST_YEAR                                    :கடந்த ஆண்டு வருமானம்
+STR_SORT_BY_PROFIT_THIS_YEAR                                    :இந்த ஆண்டு வருமானம்
+STR_SORT_BY_AGE                                                 :வயது
+STR_SORT_BY_RELIABILITY                                         :நம்பகத்தன்மை
+STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Total capacity per cargo type
+STR_SORT_BY_MAX_SPEED                                           :அதிகபட்ச வேகம்
+STR_SORT_BY_MODEL                                               :மாடல்
+STR_SORT_BY_VALUE                                               :மதிப்பு
+STR_SORT_BY_LENGTH                                              :நீளம்
+STR_SORT_BY_LIFE_TIME                                           :மீதமிருக்கும் வாழ்நாள்
+STR_SORT_BY_TIMETABLE_DELAY                                     :Timetable delay
+STR_SORT_BY_FACILITY                                            :நிலைய வகை
+STR_SORT_BY_WAITING                                             :Waiting cargo value
 
 # Tooltips for the main toolbar
 
@@ -775,6 +911,7 @@ STR_NOTHING                                                     :
 
 
 # Station destruction related errors
+STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}...தொடர்வண்டி நிலையம் இல்லை
 
 
 # Waypoint related errors
@@ -791,9 +928,13 @@ STR_NOTHING                                                     :
 # Autoreplace related errors
 
 # Rail construction errors
+STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}...தண்டவாளம் இல்லை
+STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}...சிக்னல்கள் இல்லை
 
 
 # Road construction errors
+STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}...சாலை இல்லை
+STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}...ட்ராம் வழி இல்லை
 
 # Waterway construction errors
 

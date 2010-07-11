@@ -2811,10 +2811,10 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} véhicule{P "" s}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trains - cliquer sur un train pour obtenir des informations, glisser le wagon pour l'ajouter/le supprimer du train
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Véhicules - cliquer pour obtenir des informations
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Navires - cliquer sur un navire pour informations
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Aéronef - cliquer sur l'aéronef pour informations
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trains - glisser un élément pour l'ajouter/le supprimer du train, cliquer droit pour obtenir des information sur l'élément, Ctrl-clic droit pour obtenir des information sur l'ensemble
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Véhicules - cliquer droit sur un véhicule pour obtenir des informations
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Navires - cliquer droit sur un navire pour obtenir des informations
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Aéronef - cliquer droit sur l'aéronef pour obtenir des informations
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Glisser le véhicule ici pour le vendre
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Glisser un véhicule jusqu'ici pour le vendre
@@ -3485,6 +3485,7 @@ STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Impossib
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Impossible de retirer la station de tramway pour passagers...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Impossible de retirer la station de tramway pour fret...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Vous devez d'abord retirer l'arrêt de bus
+STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}...il n'y a pas de station ici
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Vous devez d'abord détruire la gare
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Vous devez d'abord détruire l'arrêt d'autobus
@@ -3550,6 +3551,8 @@ STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Impossib
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Impossible de retirer les rails d'ici...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Impossible de retirer les signaux d'ici...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Impossible de convertir les signaux...
+STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}...il n'y a pas de voie ferrée
+STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}...il n'y pas de signaux
 
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Impossible de convertir le type de rail...
 
@@ -3560,6 +3563,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Impossib
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Impossible de construire une section de tramway ici...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Impossible de retirer la route ici...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Impossible de retirer la section de tramway d'ici...
+STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}...il n'y a pas de route
+STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}...il n'y a pas de tramway
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Impossible de construire un canal ici...
