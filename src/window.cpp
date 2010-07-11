@@ -2124,7 +2124,7 @@ static void MouseLoop(MouseClick click, int mousewheel)
 	Window *w = FindWindowFromPt(x, y);
 	if (w == NULL) return;
 
-	if (!MaybeBringWindowToFront(w)) return;
+	if (click != MC_HOVER && !MaybeBringWindowToFront(w)) return;
 	ViewPort *vp = IsPtInWindowViewport(w, x, y);
 
 	/* Don't allow any action in a viewport if either in menu of in generating world */
