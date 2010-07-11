@@ -2039,7 +2039,7 @@ void UpdateTileSelection()
 static inline void ShowMeasurementTooltips(StringID str, uint paramcount, const uint64 params[])
 {
 	if (!_settings_client.gui.measure_tooltip) return;
-	GuiShowTooltips(str, paramcount, params, true);
+	GuiShowTooltips(str, paramcount, params, TCC_LEFT_CLICK);
 }
 
 /** highlighting tiles while only going over them with the mouse */

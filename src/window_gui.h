@@ -894,7 +894,13 @@ Wcls *AllocateWindowDescFront(const WindowDesc *desc, int window_number)
 void RelocateAllWindows(int neww, int newh);
 
 /* misc_gui.cpp */
-void GuiShowTooltips(StringID str, uint paramcount = 0, const uint64 params[] = NULL, bool use_left_mouse_button = false);
+enum TooltipCloseCondition {
+	TCC_RIGHT_CLICK,
+	TCC_LEFT_CLICK,
+	TCC_HOVER,
+};
+
+void GuiShowTooltips(StringID str, uint paramcount = 0, const uint64 params[] = NULL, TooltipCloseCondition close_tooltip = TCC_RIGHT_CLICK);
 
 /* widget.cpp */
 int GetWidgetFromPos(const Window *w, int x, int y);

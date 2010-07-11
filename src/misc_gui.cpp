@@ -817,19 +817,19 @@ static const WindowDesc _tool_tips_desc(
 /** Window for displaying a tooltip. */
 struct TooltipsWindow : public Window
 {
-	StringID string_id;         ///< String to display as tooltip.
-	byte paramcount;            ///< Number of string parameters in #string_id.
-	uint64 params[5];           ///< The string parameters.
-	bool use_left_mouse_button; ///< Wait for left mouse button to close window (else, wait for right button).
+	StringID string_id;               ///< String to display as tooltip.
+	byte paramcount;                  ///< Number of string parameters in #string_id.
+	uint64 params[5];                 ///< The string parameters.
+	TooltipCloseCondition close_cond; ///< Condition for closing the window.
 
-	TooltipsWindow(StringID str, uint paramcount, const uint64 params[], bool use_left_mouse_button) : Window()
+	TooltipsWindow(StringID str, uint paramcount, const uint64 params[], TooltipCloseCondition close_tooltip) : Window()
 	{
 		this->string_id = str;
 		assert_compile(sizeof(this->params[0]) == sizeof(params[0]));
 		assert(paramcount <= lengthof(this->params));
 		memcpy(this->params, params, sizeof(this->params[0]) * paramcount);
 		this->paramcount = paramcount;
-		this->use_left_mouse_button = use_left_mouse_button;
+		this->close_cond = close_tooltip;
 
 		this->InitNested(&_tool_tips_desc);
 
@@ -891,7 +891,11 @@ struct TooltipsWindow : public Window
 	{
 		/* We can show tooltips while dragging tools. These are shown as long as
 		 * we are dragging the tool. Normal tooltips work with rmb */
-		if (this->use_left_mouse_button ? !_left_button_down : !_right_button_down) delete this;
+		switch (this->close_cond) {
+			case TCC_RIGHT_CLICK: if (!_right_button_down) delete this; break;
+			case TCC_LEFT_CLICK: if (!_left_button_down) delete this; break;
+			case TCC_HOVER: if (!_mouse_hovering) delete this; break;
+		}
 	}
 };
 
@@ -901,13 +905,13 @@ struct TooltipsWindow : public Window
  * @param params (optional) up to 5 pieces of additional information that may be added to a tooltip
  * @param use_left_mouse_button close the tooltip when the left (true) or right (false) mousebutton is released
  */
-void GuiShowTooltips(StringID str, uint paramcount, const uint64 params[], bool use_left_mouse_button)
+void GuiShowTooltips(StringID str, uint paramcount, const uint64 params[], TooltipCloseCondition close_tooltip)
 {
 	DeleteWindowById(WC_TOOLTIPS, 0);
 
 	if (str == STR_NULL) return;
 
-	new TooltipsWindow(str, paramcount, params, use_left_mouse_button);
+	new TooltipsWindow(str, paramcount, params, close_tooltip);
 }
 
 /* Delete a character at the caret position in a text buf.
