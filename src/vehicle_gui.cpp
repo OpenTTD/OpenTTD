@@ -1635,10 +1635,15 @@ struct VehicleDetailsWindow : Window {
 				uint text_left  = r.left  + (rtl ? 0 : sprite_width);
 				uint text_right = r.right - (rtl ? sprite_width : 0);
 
-				uint sprite_left  = rtl ? text_right : r.left;
-				uint sprite_right = rtl ? r.right : text_left;
+				/* Articulated road vehicles use a complete line. */
+				if (v->type == VEH_ROAD && RoadVehicle::From(v)->HasArticulatedPart()) {
+					DrawVehicleImage(v, r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, INVALID_VEHICLE, 0);
+				} else {
+					uint sprite_left  = rtl ? text_right : r.left;
+					uint sprite_right = rtl ? r.right : text_left;
 
-				DrawVehicleImage(v, sprite_left + WD_FRAMERECT_LEFT, sprite_right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, INVALID_VEHICLE, 0);
+					DrawVehicleImage(v, sprite_left + WD_FRAMERECT_LEFT, sprite_right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, INVALID_VEHICLE, 0);
+				}
 				DrawVehicleDetails(v, text_left + WD_FRAMERECT_LEFT, text_right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, this->vscroll.GetPosition(), this->vscroll.GetCapacity(), this->tab);
 			} break;
 
