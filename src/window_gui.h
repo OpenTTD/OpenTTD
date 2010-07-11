@@ -913,6 +913,7 @@ extern byte _scroller_click_timeout;
 
 extern bool _scrolling_scrollbar;
 extern bool _scrolling_viewport;
+extern bool _mouse_hovering;
 
 /** Mouse modes. */
 enum SpecialMouseMode {

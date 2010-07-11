@@ -59,6 +59,7 @@ byte _scroller_click_timeout;
 
 bool _scrolling_scrollbar; ///< A scrollbar is being scrolled with the mouse.
 bool _scrolling_viewport;  ///< A viewport is being scrolled with the mouse.
+bool _mouse_hovering;      ///< The mouse is hovering over the same point.
 
 SpecialMouseMode _special_mouse_mode; ///< Mode of the mouse.
 
@@ -1287,6 +1288,7 @@ void InitWindowSystem()
 	_focused_window = NULL;
 	_mouseover_last_w = NULL;
 	_scrolling_viewport = false;
+	_mouse_hovering = false;
 
 	NWidgetLeaf::InvalidateDimensionCache(); // Reset cached sizes of several widgets.
 }
@@ -2019,11 +2021,13 @@ enum MouseClick {
 	MC_LEFT,
 	MC_RIGHT,
 	MC_DOUBLE_LEFT,
+	MC_HOVER,
 
 	MAX_OFFSET_DOUBLE_CLICK = 5,     ///< How much the mouse is allowed to move to call it a double click
 	TIME_BETWEEN_DOUBLE_CLICK = 500, ///< Time between 2 left clicks before it becoming a double click, in ms
+	MAX_OFFSET_HOVER = 5,            ///< Maximum mouse movement before stopping a hover event.
+	TIME_HOVER = 1000,               ///< Time required to activate a hover event, in ms.
 };
-
 extern EventState VpHandlePlaceSizingDrag();
 
 static void ScrollMainViewport(int x, int y)
@@ -2214,6 +2218,23 @@ void HandleMouseEvents()
 		mousewheel = _cursor.wheel;
 		_cursor.wheel = 0;
 		_input_events_this_tick++;
+	}
+
+	static int hover_time = 0;
+	static Point hover_pos = {0, 0};
+
+	if (click != MC_NONE || mousewheel != 0 || _left_button_down || _right_button_down ||
+			hover_pos.x == 0 || abs(_cursor.pos.x - hover_pos.x) >= MAX_OFFSET_HOVER  ||
+			hover_pos.y == 0 || abs(_cursor.pos.y - hover_pos.y) >= MAX_OFFSET_HOVER) {
+		hover_pos = _cursor.pos;
+		hover_time = _realtime_tick;
+		_mouse_hovering = false;
+	} else {
+		if (hover_time != 0 && _realtime_tick - hover_time > TIME_HOVER) {
+			click = MC_HOVER;
+			_input_events_this_tick++;
+			_mouse_hovering = true;
+		}
 	}
 
 	/* Handle sprite picker before any GUI interaction */
