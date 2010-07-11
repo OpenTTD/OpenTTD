@@ -17,8 +17,10 @@
 #include "industrytype.h"
 #include "newgrf.h"
 #include "newgrf_commons.h"
+#include "clear_map.h"
 #include "station_map.h"
 #include "tree_map.h"
+#include "tunnelbridge_map.h"
 #include "core/mem_func.hpp"
 
 /** Constructor of generic class
@@ -284,7 +286,49 @@ uint32 GetTerrainType(TileIndex tile)
 {
 	switch (_settings_game.game_creation.landscape) {
 		case LT_TROPIC: return GetTropicZone(tile);
-		case LT_ARCTIC: return GetTileZ(tile) > GetSnowLine() ? 4 : 0;
+		case LT_ARCTIC: {
+			bool has_snow;
+			switch (GetTileType(tile)) {
+				case MP_CLEAR:
+					has_snow = IsSnowTile(tile);
+					break;
+
+				case MP_RAILWAY: {
+					RailGroundType ground = GetRailGroundType(tile);
+					has_snow = (ground == RAIL_GROUND_ICE_DESERT);
+					break;
+				}
+
+				case MP_ROAD:
+					has_snow = IsOnSnow(tile);
+					break;
+
+				case MP_TREES: {
+					TreeGround ground = GetTreeGround(tile);
+					has_snow = (ground == TREE_GROUND_SNOW_DESERT || ground == TREE_GROUND_ROUGH_SNOW);
+					break;
+				}
+
+				case MP_TUNNELBRIDGE:
+					has_snow = HasTunnelBridgeSnowOrDesert(tile);
+					break;
+
+				case MP_STATION:
+				case MP_HOUSE:
+				case MP_INDUSTRY:
+				case MP_UNMOVABLE:
+					/* These tiles usually have a levelling foundation. So use max Z */
+					has_snow = (GetTileMaxZ(tile) > GetSnowLine());
+					break;
+
+				case MP_WATER:
+					has_snow = (GetTileZ(tile) > GetSnowLine());
+					break;
+
+				default: NOT_REACHED();
+			}
+			return has_snow ? 4 : 0;
+		}
 		default:        return 0;
 	}
 }
