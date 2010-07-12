@@ -1085,10 +1085,10 @@ STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Permiti
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Permitir a construção de comboios muito longos: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Modelo de aceleração de comboios: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Original
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realístico
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Tipo de aceleração do veículo de estrada: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realista
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Tipo de aceleração dos veículos de estrada: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Original
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Realístico
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Realista
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Declive das inclinações para comboios {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Inclinação das subidas para veículos de estrada {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Proibir comboios e barcos fazer curvas de 90 graus: {ORANGE}{STRING} {LTBLUE} (Não com OPF)
@@ -1825,7 +1825,7 @@ STR_CONTENT_DETAIL_TYPE                                         :{SILVER}Tipo: {
 STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Tamanho da descarga: {WHITE}{BYTES}
 STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Seleccionado devido a: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Dependências: {WHITE}{STRING}
-STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Tags: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Etiquetas: {WHITE}{STRING}
 STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD está compilado sem suporte "zlib"...
 STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... não é possível o descarregamento de conteúdo!
 
@@ -3463,6 +3463,7 @@ STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Impossí
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Impossível remover paragem de eléctricos de passageiros
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Impossível remover estação de eléctricos de mercadorias...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Deverá remover a paragem rodoviária primeiro
+STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}...não há nenhuma estação aqui
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Precisa de demolir a estação primeiro
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Precisa de demolir a estação de autocarros primeiro
@@ -3528,6 +3529,8 @@ STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Não é 
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Não é possível remover linha férrea daqui...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Não é possível remover sinais daqui...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Não é possível converter sinais aqui...
+STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}...não há linha férrea
+STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}...não há sinais
 
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Não é possível converter o tipo de linha aqui...
 
@@ -3538,6 +3541,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Não é 
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Não é possível construir carris para eléctricos neste local...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Não é possível remover estrada daqui...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Não é possível remover carris para eléctricos deste local...
+STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}...não há estrada
+STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}...não há carris para eléctricos
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Não é possível construir canais aqui...

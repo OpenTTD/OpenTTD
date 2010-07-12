@@ -2620,7 +2620,7 @@ STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}«{1:STR
 STR_NEWGRF_INVALID_CARGO                                        :<неизвестный груз>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} <неизвестного груза>
-STR_NEWGRF_INVALID_ENGINE                                       :<неизвестное ТС>
+STR_NEWGRF_INVALID_ENGINE                                       :<неизвестная модель>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<неизвестное предприятие>
 
 # Sign list window
@@ -2980,10 +2980,10 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} единиц{P а "" ""}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Поезда - кликните на поезде для получения информации, используйте перетаскивание для изменения состава
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Автомобили - кликните для получения справки
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Корабли - нажмите для получения справки
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Авиатранспорт - нажмите для получения справки
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Поезда - используйте перетаскивание для изменения состава; нажмите ПКМ для получения информации
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Автомобили - нажмите ПКМ для получения информации
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Корабли - нажмите ПКМ для получения информации
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Авиатранспорт - нажмите ПКМ для получения информации
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Перетащите сюда транспорт, чтобы продать его
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Перетащите сюда автомобиль, чтобы продать его
@@ -3664,6 +3664,7 @@ STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Нево
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Невозможно удалить пассажирскую трамвайную остановку...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Невозможно удалить грузовую трамвайную остановку...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Нужно убрать остановку
+STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}...здесь нет станции
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Сначала нужно удалить ж/д станцию
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Сначала удалите автобусную остановку
@@ -3729,6 +3730,8 @@ STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Здес
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Не удалось удалить рельсы...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Не удалось удалить светофор...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Невозможно преобразовать здесь сигнал...
+STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}...здесь нет железной дороги
+STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}...сигналы отсутствуют
 
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Здесь невозможно преобразовать тип рельса...
 
@@ -3739,6 +3742,7 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Не у�
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Не удалось проложить трамвайные рельсы...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Не удалось удалить дорогу...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Не удалось удалить трамвайные рельсы...
+STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}...здесь нет трамвайных путей
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Здесь невозможно построить канал...
