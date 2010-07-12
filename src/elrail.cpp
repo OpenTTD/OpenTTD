@@ -276,7 +276,7 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 	 * Faking a flat slope results in the correct sprites on positions. */
 	Corner halftile_corner = CORNER_INVALID;
 	if (IsHalftileSlope(tileh[TS_HOME])) {
-		halftile_corner = GetHighestSlopeCorner(tileh[TS_HOME]);
+		halftile_corner = GetHalftileSlopeCorner(tileh[TS_HOME]);
 		tileh[TS_HOME] = SLOPE_FLAT;
 	}
 
