@@ -1506,7 +1506,7 @@ again:
 		/* Vehicle is at the stop position (at a bay) in a road stop.
 		 * Note, if vehicle is loading/unloading it has already been handled,
 		 * so if we get here the vehicle has just arrived or is just ready to leave. */
-		if (v->current_order.ShouldStopAtStation(v, st->index)) {
+		if (!v->current_order.IsType(OT_LEAVESTATION)) {
 			/* Vehicle has arrived at a bay in a road stop */
 
 			if (IsDriveThroughStopTile(v->tile)) {
@@ -1538,7 +1538,7 @@ again:
 				v->cur_speed = 0;
 				return false;
 			}
-			if (v->current_order.IsType(OT_LEAVESTATION)) v->current_order.Free();
+			v->current_order.Free();
 		}
 
 		if (IsStandardRoadStopTile(v->tile)) rs->SetEntranceBusy(true);
