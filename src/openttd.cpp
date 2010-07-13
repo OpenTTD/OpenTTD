@@ -1120,58 +1120,82 @@ static void CheckCaches()
 
 	Vehicle *v;
 	FOR_ALL_VEHICLES(v) {
-		if (v != v->First() || v->vehstatus & VS_CRASHED) continue;
+		if (v != v->First() || v->vehstatus & VS_CRASHED || !v->IsPrimaryVehicle()) continue;
+
+		uint length = 0;
+		for (const Vehicle *u = v; u != NULL; u = u->Next()) length++;
+
+		VehicleCache      *veh_cache = CallocT<VehicleCache>(length);
+		AccelerationCache *acc_cache = CallocT<AccelerationCache>(length);
+		TrainCache        *tra_cache = CallocT<TrainCache>(length);
+		RoadVehicleCache  *roa_cache = CallocT<RoadVehicleCache>(length);
+		AircraftCache     *air_cache = CallocT<AircraftCache>(length);
+
+		length = 0;
+		for (const Vehicle *u = v; u != NULL; u = u->Next()) {
+			veh_cache[length] = u->vcache;
+			switch (u->type) {
+				case VEH_TRAIN:
+					acc_cache[length] = Train::From(u)->acc_cache;
+					tra_cache[length] = Train::From(u)->tcache;
+					break;
+				case VEH_ROAD:
+					acc_cache[length] = RoadVehicle::From(u)->acc_cache;
+					roa_cache[length] = RoadVehicle::From(u)->rcache;
+					break;
+				case VEH_AIRCRAFT:
+					air_cache[length] = Aircraft::From(u)->acache;
+				default:
+					break;
+			}
+			length++;
+		}
 
 		switch (v->type) {
-			case VEH_ROAD: {
-				RoadVehicle *rv = RoadVehicle::From(v);
-				RoadVehicleCache cache;
-				memset(&cache, 0, sizeof(cache));
-				cache = rv->rcache;
-				RoadVehUpdateCache(rv);
-
-				if (memcmp(&cache, &rv->rcache, sizeof(RoadVehicleCache)) != 0) {
-					DEBUG(desync, 2, "cache mismatch: vehicle %i, company %i, unit number %i", v->index, (int)v->owner, v->unitnumber);
-				}
-			} break;
-
-			case VEH_TRAIN: {
-				uint length = 0;
-				Train *t = Train::From(v);
-				for (Vehicle *u = t; u != NULL; u = u->Next()) length++;
-
-				TrainCache *wagons = CallocT<TrainCache>(length);
-				length = 0;
-				for (Train *u = t; u != NULL; u = u->Next()) wagons[length++] = u->tcache;
-
-				t->ConsistChanged(true);
-
-				length = 0;
-				for (Train *u = t; u != NULL; u = u->Next()) {
-					if (memcmp(&wagons[length], &u->tcache, sizeof(TrainCache)) != 0) {
-						DEBUG(desync, 2, "cache mismatch: vehicle %i, company %i, unit number %i, wagon %i", v->index, (int)v->owner, v->unitnumber, length);
-					}
-					length++;
-				}
-
-				free(wagons);
-			} break;
-
-			case VEH_AIRCRAFT: {
-				Aircraft *a = Aircraft::From(v);
-				AircraftCache cache;
-				memset(&cache, 0, sizeof(cache));
-				cache = a->acache;
-				UpdateAircraftCache(a);
-
-				if (memcmp(&cache, &a->acache, sizeof(AircraftCache)) != 0) {
-					DEBUG(desync, 2, "cache mismatch: vehicle %i, company %i, unit number %i", v->index, (int)v->owner, v->unitnumber);
-				}
-			} break;
-
-			default:
-				break;
+			case VEH_TRAIN:    Train::From(v)->ConsistChanged(true);     break;
+			case VEH_ROAD:     RoadVehUpdateCache(RoadVehicle::From(v)); break;
+			case VEH_AIRCRAFT: UpdateAircraftCache(Aircraft::From(v));   break;
+			default: break;
 		}
+
+		length = 0;
+		for (const Vehicle *u = v; u != NULL; u = u->Next()) {
+			if (memcmp(&veh_cache[length], &u->vcache, sizeof(VehicleCache)) != 0) {
+				DEBUG(desync, 2, "vehicle cache mismatch: type %i, vehicle %i, company %i, unit number %i, wagon %i", (int)v->type, v->index, (int)v->owner, v->unitnumber, length);
+			}
+			switch (u->type) {
+				case VEH_TRAIN:
+					if (memcmp(&acc_cache[length], &Train::From(u)->acc_cache, sizeof(AccelerationCache)) != 0) {
+						DEBUG(desync, 2, "train acceleration cache mismatch: vehicle %i, company %i, unit number %i, wagon %i", v->index, (int)v->owner, v->unitnumber, length);
+					}
+					if (memcmp(&tra_cache[length], &Train::From(u)->tcache, sizeof(TrainCache)) != 0) {
+						DEBUG(desync, 2, "train cache mismatch: vehicle %i, company %i, unit number %i, wagon %i", v->index, (int)v->owner, v->unitnumber, length);
+					}
+					break;
+				case VEH_ROAD:
+					if (memcmp(&acc_cache[length], &RoadVehicle::From(u)->acc_cache, sizeof(AccelerationCache)) != 0) {
+						DEBUG(desync, 2, "road vehicle acceleration cache mismatch: vehicle %i, company %i, unit number %i, wagon %i", v->index, (int)v->owner, v->unitnumber, length);
+					}
+					if (memcmp(&tra_cache[length], &RoadVehicle::From(u)->rcache, sizeof(RoadVehicleCache)) != 0) {
+						DEBUG(desync, 2, "road vehicle cache mismatch: vehicle %i, company %i, unit number %i, wagon %i", v->index, (int)v->owner, v->unitnumber, length);
+					}
+					break;
+				case VEH_AIRCRAFT:
+					if (memcmp(&air_cache[length], &Aircraft::From(u)->acache, sizeof(AircraftCache)) != 0) {
+						DEBUG(desync, 2, "aircraft cache mismatch: vehicle %i, company %i, unit number %i", v->index, (int)v->owner, v->unitnumber);
+					}
+					break;
+				default:
+					break;
+			}
+			length++;
+		}
+
+		free(veh_cache);
+		free(acc_cache);
+		free(tra_cache);
+		free(roa_cache);
+		free(air_cache);
 	}
 
 	/* Check whether the caches are still valid */
