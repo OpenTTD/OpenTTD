@@ -1076,6 +1076,8 @@ STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}允许�
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}列车加速度： {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :TTD原版
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :改良真实版
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}坡度对列车速度的影响 {ORANGE}{STRING}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}坡度对汽车速度的影响 {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}禁止列车和轮船 90 度转弯：{ORANGE}{STRING} {LTBLUE} (无需 OPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}将相邻的火车站进行整合：{ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}允许非毗邻站台合并：{ORANGE}{STRING}
@@ -1106,6 +1108,9 @@ STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}允许�
 STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}允许异形站台：{ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}根据装载货物的数量模拟超重列车：{ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}飞机速度比例： {ORANGE}1 / {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}空难: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :不出现
+STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :较少出现
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}允许在城镇所属的道路上建通过式车站： {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}允许在竞争对手所属的道路上建通过式车站： {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}允许建设临近站台： {ORANGE}{STRING}
@@ -1152,7 +1157,10 @@ STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}一个�
 STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}站台最大尺寸：{ORANGE}{STRING} 格 {RED}警告：站台过大会影响速度
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}直升机在降落平台自动保养：{ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}将景观美化工具栏与铁路/公路/船只/机场工具栏连接：{ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}缩略地图颜色选择: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :绿色
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :深绿色
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :紫色
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}拖动方向与屏幕移动方向相反：{ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}平滑视角滚动： {ORANGE}{STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}建设时显示测量数据：{ORANGE}{STRING}
@@ -1231,6 +1239,7 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}彩色�
 STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}开始年份：{ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}启用平滑经济模式 (更多小的经济变化)：{ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}允许购买其他公司的股份：{ORANGE}{STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}联运各运输方式的收入比例 (避免出现亏损): {ORANGE}{STRING}%
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}当拖动的时候每 {ORANGE}{STRING} 个地块放置一个信号灯
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}在 {ORANGE}{STRING} 年前自动设置悬臂信号
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}使用信号GUI： {ORANGE}{STRING}
@@ -1332,11 +1341,11 @@ STR_INTRO_ONLINE_CONTENT                                        :{BLACK}在线�
 STR_INTRO_AI_SETTINGS                                           :{BLACK}AI 设定
 STR_INTRO_QUIT                                                  :{BLACK}退出
 
-STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}开始一个新游戏. 单击的同时按住Ctrl以跳过地图设置界面
-STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}读取一个游戏存档
+STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}开始新游戏. 单击的同时按住Ctrl以跳过地图设置界面
+STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}读取游戏存档
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}以高度图决定的地形开始一个新游戏
-STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}使用一个自定义场景开始游戏
-STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}创建一个自定义的游戏场景
+STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}使用自定义场景开始游戏
+STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}创建自定义的游戏场景
 STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}开始联机游戏
 
 STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}选择 '温带' 景观风格
@@ -1539,7 +1548,7 @@ STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}添加�
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}启动服务器
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}启动本机作为服务器
 
-STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}请输入大名
+STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}输入姓名
 STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}输入服务器地址
 
 # Start new multiplayer server
@@ -1633,7 +1642,7 @@ STR_NETWORK_GAME_LOBBY_STATIONS                                 :{SILVER}站台:
 STR_NETWORK_GAME_LOBBY_PLAYERS                                  :{SILVER}玩家：{WHITE}{STRING}
 
 STR_NETWORK_GAME_LOBBY_NEW_COMPANY                              :{BLACK}新公司
-STR_NETWORK_GAME_LOBBY_NEW_COMPANY_TOOLTIP                      :{BLACK}创建一个新公司
+STR_NETWORK_GAME_LOBBY_NEW_COMPANY_TOOLTIP                      :{BLACK}创建新公司
 STR_NETWORK_GAME_LOBBY_SPECTATE_GAME                            :{BLACK}旁观公司
 STR_NETWORK_GAME_LOBBY_SPECTATE_GAME_TOOLTIP                    :{BLACK}作为旁观者观看公司
 STR_NETWORK_GAME_LOBBY_JOIN_COMPANY                             :{BLACK}加入公司
@@ -1972,7 +1981,7 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}货运�
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}选择货运电车车站方向
 
 # Waterways toolbar (last two for SE only)
-STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}水运建设
+STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}码头建设
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}水运
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}修建运河
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}建设船闸
@@ -1997,6 +2006,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}新建�
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}飞机场选单
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}选择机场的大小和类型
+STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}机场等级
 
 STR_AIRPORT_SMALL                                               :小型机场
 STR_AIRPORT_CITY                                                :城市机场
@@ -2107,6 +2117,7 @@ STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}车站�
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}接受货物：{LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
+STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}轨道限速: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :岩石
@@ -4001,6 +4012,12 @@ STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 STR_FORMAT_WAYPOINT_NAME                                        :{TOWN} 路点
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN} 路点 #{COMMA}
 
+STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} 列车车库
+STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} 列车车库 #{COMMA}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} 汽车车库
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} 汽车车库 #{COMMA}
+STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} 船坞
+STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} 船坞 #{COMMA}
 
 STR_UNKNOWN_STATION                                             :未知车站（目的地）
 STR_DEFAULT_SIGN_NAME                                           :标志
@@ -4076,6 +4093,7 @@ STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
+STR_TINY_BLACK_HEIGHT                                           :{TINYFONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
@@ -4093,3 +4111,4 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
+STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})

@@ -2450,7 +2450,7 @@ STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRI
 STR_NEWGRF_INVALID_CARGO                                        :<cargo invalid>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} de <cargo invalid>
-STR_NEWGRF_INVALID_ENGINE                                       :<motor invalid>
+STR_NEWGRF_INVALID_ENGINE                                       :<model vehicul invalid>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<tip de industrie invalid>
 
 # Sign list window
@@ -2810,10 +2810,10 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} vehicul{P "" e}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trenuri - clic pe tren pentru informaţii, mută vehiculele pentru adăugare/scoatere din tren
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Autovehicule - clic pe vehicul pentru informatii
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Nave - clic pe o navă pentru informaţii
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Aeronavă - clic pe aeronavă pentru informaţii
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trenuri - trage vehiculele cu butonul stânga pentru a adauga/elimina din tren, clic dreapta pe vehicul pentru informaţii, CTRL+clic dreapta pentru informaţii despre garnitura
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Autovehicule - clic dreapta pe vehicul pentru informatii
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Nave - clic dreapta pe o navă pentru informaţii
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Aeronavă - clic dreapta pe aeronavă pentru informaţii
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Mută un vehicul aici pentru a-l vinde
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Mută un autovehicul aici pentru a-l vinde
@@ -3484,6 +3484,7 @@ STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Nu pot e
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Nu pot înlătura staţia de tramvai...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Nu pot înlătura staţia de tramvai...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Trebuie îndepărtată staţia mai întâi
+STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}...nu există staţie aici
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Mai întâi trebuie demolată gara
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Mai întâi trebuie demolată staţia de autobuz
@@ -3549,6 +3550,8 @@ STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Nu se po
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Nu se poate înlătura calea ferată...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Nu se pot înlătura semafoarele de aici...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Nu se pot transforma semnalele...
+STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}...nu există cale ferată aici
+STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}...nu există semafoare
 
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Nu pot converti linia aici...
 
@@ -3559,6 +3562,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Nu se po
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Nu pot construi şină de tramvai aici...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Nu se poate înlătura şoseaua...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Nu pot înlătura şina de tramvai de aici...
+STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}...nu există drum aici
+STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}...nu există şină de tramvai aici
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Nu pot construi un canal aici...

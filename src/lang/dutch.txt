@@ -2450,7 +2450,7 @@ STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRI
 STR_NEWGRF_INVALID_CARGO                                        :<ongeldige vracht>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} van <ongeldige vracht>
-STR_NEWGRF_INVALID_ENGINE                                       :<ongeldige trein>
+STR_NEWGRF_INVALID_ENGINE                                       :<ongeldige treinmodel>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<ongeldig bedrijf>
 
 # Sign list window
@@ -2810,10 +2810,10 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} voertuig{P "" en}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Treinen - klik op trein voor informatie, sleep voertuig om voor toevoegen/verwijderen van trein
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Wegvoertuigen - klik op wegvoertuig voor informatie
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Schepen - klik op schip voor informatie
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Vliegtuig - klik op vliegtuig voor informatie
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Treinen - klik op trein voor informatie, sleep voertuig voor toevoegen/verwijderen van trein, klik rechts voor trein informatie, CTRL+klik voor samengestelde informatie
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Wegvoertuigen - rechts-klik op wegvoertuig voor informatie
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Schepen - rechts-klik op schip voor informatie
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Vliegtuig - rechts-klik op vliegtuig voor informatie
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Sleep railvoertuig hier om het te verkopen
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Sleep wegvoertuig hier om het te verkopen
@@ -3484,6 +3484,7 @@ STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Kan vrac
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Kan passagierstramstation niet verwijderen...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Kan vrachttramhalte niet verwijderen...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Moet wegstop eerst weghalen
+STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}...er is hier geen station
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Verwijder eerst treinstation
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Verwijder eerst bushalte
@@ -3549,6 +3550,8 @@ STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Kan hier
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Kan hier geen spoor weghalen...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Kan hier geen seinen weghalen...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Kan sein hier niet ombouwen...
+STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}...er is hier geen spoorlijn
+STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}...er zijn geen seinen
 
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Kan railtype hier niet veranderen...
 
@@ -3559,6 +3562,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Kan hier
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Kan hier geen tramrails bouwen...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Kan hier geen weg weghalen...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Kan de tramrails hier niet verwijderen...
+STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}...er is geen weg
+STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}...er is geen tramlijn
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Kan hier geen kanaal bouwen...

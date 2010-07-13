@@ -2449,7 +2449,7 @@ STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}「{1:ST
 STR_NEWGRF_INVALID_CARGO                                        :<無效貨物>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} / <無效貨物>
-STR_NEWGRF_INVALID_ENGINE                                       :<無效機車頭>
+STR_NEWGRF_INVALID_ENGINE                                       :<無效交通工具模型>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<無效工業>
 
 # Sign list window
@@ -3483,6 +3483,7 @@ STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}無法�
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}無法移除載客電車站...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}無法移除載貨電車站...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}必須先移除路通站
+STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}...這裡沒有車站
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}必須先摧毀火車站
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}必須先摧毀公車站
@@ -3547,6 +3548,8 @@ STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}不能�
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}不能從這邊移除鐵路...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}不能從這邊移除號誌...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}無法轉換這裡的號誌...
+STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}...這裡沒有鐵軌
+STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}...這裡沒有號誌
 
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}無法轉換軌道種類...
 
@@ -3557,6 +3560,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}不能�
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}無法在此鋪設電車軌...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}不能從此移除道路...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}無法移除此處的電車軌...
+STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}...這裡沒有道路
+STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}...這裡沒有電車軌
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}無法在此興建運河...

@@ -2645,7 +2645,7 @@ STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRI
 STR_NEWGRF_INVALID_CARGO                                        :<nevažeći tovar>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} <nevažeć{P i a eg} tovar{P 0 "" a a}>
-STR_NEWGRF_INVALID_ENGINE                                       :<nevažeća mašina>
+STR_NEWGRF_INVALID_ENGINE                                       :<nevažeći model vozila>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<nevažeća industrija>
 
 # Sign list window
@@ -3005,10 +3005,10 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} vozil{P o a a}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vozovi - kliknite na voz za podatke, prevucite vozilo da bi dodali/sklonili iz kompozicije
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Vozila - kliknite na vozilo za podatke
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Brodovi - kliknite na brod za podatke
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Letilice - kliknite na letilicu za podatke
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vozovi - prevlačenjem se vozila dodaju/uklanjaju iz kompozicije, desni klik na voz za podatke o njemu, CTRL i desni klik za podatke o kompoziciji
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Vozila - desni klik na vozilo za podatke o njemu
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Brodovi - desni klik na brod za podatke o njemu
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Letilice - desni klik na letilicu za podatke o njoj
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Ovde prevucite šinsko vozilo kako biste ga prodali
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Ovde prevucite drumsko vozilo kako biste ga prodali
