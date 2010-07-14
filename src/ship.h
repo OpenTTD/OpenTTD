@@ -14,7 +14,6 @@
 
 #include "vehicle_base.h"
 
-void RecalcShipStuff(Ship *v);
 void GetShipSpriteSize(EngineID engine, uint &width, uint &height);
 
 /**

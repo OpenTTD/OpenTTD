@@ -292,12 +292,6 @@ void Ship::UpdateDeltaXY(Direction direction)
 	this->z_extent      = 6;
 }
 
-void RecalcShipStuff(Ship *v)
-{
-	v->UpdateViewport(false, true);
-	SetWindowDirty(WC_VEHICLE_DEPOT, v->tile);
-}
-
 static const TileIndexDiffC _ship_leave_depot_offs[] = {
 	{-1,  0},
 	{ 0, -1}
@@ -324,7 +318,8 @@ static void CheckShipLeaveDepot(Ship *v)
 	v->vehstatus &= ~VS_HIDDEN;
 
 	v->cur_speed = 0;
-	RecalcShipStuff(v);
+	v->UpdateViewport(false, true);
+	SetWindowDirty(WC_VEHICLE_DEPOT, v->tile);
 
 	PlayShipSound(v);
 	VehicleServiceInDepot(v);
