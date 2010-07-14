@@ -291,7 +291,7 @@ uint32 GetTerrainType(TileIndex tile, bool upper_halftile)
 			bool has_snow;
 			switch (GetTileType(tile)) {
 				case MP_CLEAR:
-					has_snow = IsSnowTile(tile);
+					has_snow = IsSnowTile(tile) && GetClearDensity(tile) >= 2;
 					break;
 
 				case MP_RAILWAY: {
@@ -306,7 +306,7 @@ uint32 GetTerrainType(TileIndex tile, bool upper_halftile)
 
 				case MP_TREES: {
 					TreeGround ground = GetTreeGround(tile);
-					has_snow = (ground == TREE_GROUND_SNOW_DESERT || ground == TREE_GROUND_ROUGH_SNOW);
+					has_snow = (ground == TREE_GROUND_SNOW_DESERT || ground == TREE_GROUND_ROUGH_SNOW) && GetTreeDensity(tile) >= 2;
 					break;
 				}
 
