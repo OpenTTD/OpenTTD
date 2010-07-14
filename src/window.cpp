@@ -2241,7 +2241,7 @@ void HandleMouseEvents()
 		_input_events_this_tick++;
 	}
 
-	static int hover_time = 0;
+	static uint32 hover_time = 0;
 	static Point hover_pos = {0, 0};
 
 	if (_settings_client.gui.hover_delay > 0) {
@@ -2252,7 +2252,7 @@ void HandleMouseEvents()
 			hover_time = _realtime_tick;
 			_mouse_hovering = false;
 		} else {
-			if (hover_time != 0 && _realtime_tick - hover_time > _settings_client.gui.hover_delay * 1000) {
+			if (hover_time != 0 && _realtime_tick > hover_time + _settings_client.gui.hover_delay * 1000) {
 				click = MC_HOVER;
 				_input_events_this_tick++;
 				_mouse_hovering = true;
