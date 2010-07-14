@@ -2913,20 +2913,20 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Купи
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Купить выбранный корабль
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Купить выбранный авиатранспорт
 
-STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Переимен.
-STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Переимен.
-STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}Переимен.
-STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Переимен.
+STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Переименовать
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Переименовать
+STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}Переименовать
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Переименовать
 
-STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Переименовать тип вагона
-STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Переименовать автомобиль
-STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Переименовать
-STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Переименовать
+STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Изменить название модели поезда
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Изменить название модели автомобиля
+STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Изменить название модели корабля
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Изменить название модели возд. судна
 
-STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Переименовать тип вагона
-STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Переименовать автомобиль
-STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Переименовать
-STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Переименовать
+STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Название модели поезда
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Название модели автомобиля
+STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Название модели корабля
+STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Название модели возд. судна
 
 # Depot window
 STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}Депо {TOWN}
@@ -2934,15 +2934,16 @@ STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}Гара
 STR_DEPOT_SHIP_CAPTION                                          :{WHITE}Док {TOWN}
 STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}Ангар {STATION}
 
+
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} единиц{P а "" ""}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Поезда - кликните на поезде для получения информации, используйте перетаскивание для изменения состава
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Автомобили - кликните для получения справки
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Корабли - нажмите для получения справки
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Авиатранспорт - нажмите для получения справки
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Поезда - используйте перетаскивание для изменения состава; нажмите ПКМ для получения информации
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Автомобили - нажмите ПКМ для получения информации
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Корабли - нажмите ПКМ для получения информации
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Авиатранспорт - нажмите ПКМ для получения информации
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Перетащите сюда транспорт, чтобы продать его
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Перетащите сюда автомобиль, чтобы продать его
@@ -3305,18 +3306,18 @@ STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Пока
 
 # String parts to build the order string
 STR_ORDER_GO_TO_WAYPOINT                                        :Ехать через {WAYPOINT}
-STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Ехать через {WAYPOINT} без остановки
+STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Ехать без остановок через {WAYPOINT}
 
-STR_ORDER_SERVICE_AT                                            :Обслуживание в
-STR_ORDER_SERVICE_NON_STOP_AT                                   :Обслуживание без остановки в
+STR_ORDER_SERVICE_AT                                            :Для прохождения ТО идти в
+STR_ORDER_SERVICE_NON_STOP_AT                                   :Для прохождения ТО идти без остановок в
 
-STR_ORDER_NEAREST_DEPOT                                         :ближайший
-STR_ORDER_NEAREST_HANGAR                                        :ближайший ангар
-STR_ORDER_TRAIN_DEPOT                                           :депо
-STR_ORDER_ROAD_VEHICLE_DEPOT                                    :гараж
-STR_ORDER_SHIP_DEPOT                                            :док
+STR_ORDER_NEAREST_DEPOT                                         :{NBSP}
+STR_ORDER_NEAREST_HANGAR                                        :{G=m}{NBSP}ангар
+STR_ORDER_TRAIN_DEPOT                                           :{G=n}депо
+STR_ORDER_ROAD_VEHICLE_DEPOT                                    :{G=m}гараж
+STR_ORDER_SHIP_DEPOT                                            :{G=m}док
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {TOWN} {STRING}
-STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
+STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} ближайш{G 2 ий ую ее ие}{STRING}{STRING}
 STR_ORDER_GO_TO_HANGAR_FORMAT                                   :{STRING} Ангар ({STATION})
 
 STR_ORDER_REFIT_ORDER                                           :(Переоборуд. под {STRING.acc})

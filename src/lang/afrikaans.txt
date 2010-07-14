@@ -2346,8 +2346,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Gelyke lê
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Gestrem
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Invoer NewGRF parameters
-
-# NewGRF add window
 STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Beskikbaar NewGRF lêers
 STR_NEWGRF_ADD_FILE                                             :{BLACK}Voeg na seleksie
 STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Voeg die verkiesde NewGRF lêer na u configurasie

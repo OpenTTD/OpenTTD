@@ -2753,18 +2753,19 @@ STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Endre na
 STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Gi nytt navn til tog-/vogntypen
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Gi nytt navn til kjøretøytypen
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Gi nytt navn til skipstypen
-STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Gi nytt navn til flymaskintypen
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Gi nytt navn til luftfartøytypen
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Gi tog/vogntype nytt navn
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Gi kjøretøytypen nytt navn
 STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Gi skipstypen nytt navn
-STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Gi flymaskintypen nytt navn
+STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Gi luftfartøytypen nytt navn
 
 # Depot window
 STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}{TOWN} Togstall
 STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} Garasje
 STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} Skipsdokk
 STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} Hangar
+
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}

@@ -3004,8 +3004,8 @@ STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}{STATIO
 STR_VEHICLE_STATUS_NO_ORDERS                                    :{LTBLUE}Nincs menetrend
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Nincs menetrend, {VELOCITY}
 
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Úton {WAYPOINT} felé
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Úton {WAYPOINT} felé, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Útban {WAYPOINT} felé
+STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Útban {WAYPOINT} felé, {VELOCITY}
 
 STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT                      :{ORANGE}Úton {TOWN} járműtelepére
 STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_VEL                  :{ORANGE}Úton {TOWN} járműtelepére, {VELOCITY}
@@ -3024,6 +3024,8 @@ STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE               :{LTBLUE}Javít�
 STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL           :{LTBLUE}Javítás {TOWN} dokkjában, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE                   :{LTBLUE}Javítás {STATION} hangárjában
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE_VEL               :{LTBLUE}Javítás {STATION} hangárjában, {VELOCITY}
+
+# Vehicle stopped/started animations
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} adatai

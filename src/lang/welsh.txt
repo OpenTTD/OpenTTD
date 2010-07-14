@@ -2274,8 +2274,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Ni ddargan
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Analluogwyd
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Rhoi paramedrau NewGRF newydd
-
-# NewGRF add window
 STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Ffeiliau NewGRF sydd ar gael
 STR_NEWGRF_ADD_FILE                                             :{BLACK}Ychwanegu
 STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Ychwanegu'r ffeil NewGRF a ddewiswyd i'ch ffurfwedd

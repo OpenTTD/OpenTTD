@@ -2340,8 +2340,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}一致し�
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}切
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}NewGRF設定を入力
-
-# NewGRF add window
 STR_NEWGRF_ADD_CAPTION                                          :{WHITE}使用可能NewGRFファイル
 STR_NEWGRF_ADD_FILE                                             :{BLACK}リストに追加
 STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}選択したNewGRFファイルをリストに追加します

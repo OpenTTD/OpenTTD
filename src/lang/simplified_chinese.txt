@@ -2347,7 +2347,12 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}禁用
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}输入 NewGRF 参数
 
-# NewGRF add window
+# NewGRF inspect window
+
+
+
+# Sprite aligner window
+
 STR_NEWGRF_ADD_CAPTION                                          :{WHITE}可用的 NewGRF 文件
 STR_NEWGRF_ADD_FILE                                             :{BLACK}加入选择的范围
 STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}将选定的 NewGRF 文件添加到你的配置中

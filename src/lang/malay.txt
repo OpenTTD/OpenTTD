@@ -2344,7 +2344,12 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Dinyahakti
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Masukkan parameter NewGRF
 
-# NewGRF add window
+# NewGRF inspect window
+
+
+
+# Sprite aligner window
+
 STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Fail NewGRF yang tersedia
 STR_NEWGRF_ADD_FILE                                             :{BLACK}Tambah ke pilihan
 STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Tambah fail NewGRF yang terpilih kepada konfigurasi anda

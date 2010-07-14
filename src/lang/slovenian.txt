@@ -257,12 +257,13 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
+
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Vnesi vrstico za filtriranje
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Vnesi besedni ključ, po katerem se bo filtriral seznam
 STR_LIST_FILTER_TITLE                                           :{BLACK}Filtriraj:
 
-STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Izberi nacin sortiranja (padajoče/naraščajoce)
+STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Izberi način sortiranja (padajoče/naraščajoce)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Izberi kriterij za sortiranje
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Izberi način filtriranja
 STR_BUTTON_SORT_BY                                              :{BLACK}Sortiraj po

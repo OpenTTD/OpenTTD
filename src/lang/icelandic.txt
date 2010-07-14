@@ -2293,8 +2293,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Viðeigand
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Óvirkt
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Sláðu inn NewGRF breytur
-
-# NewGRF add window
 STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Tiltækar NewGRF skrár
 STR_NEWGRF_ADD_FILE                                             :{BLACK}Bæta á lista
 STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Bæta valinni NewGRF skrá í stillingarnar

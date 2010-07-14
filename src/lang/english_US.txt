@@ -2346,7 +2346,12 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Disabled
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Enter NewGRF parameters
 
-# NewGRF add window
+# NewGRF inspect window
+
+
+
+# Sprite aligner window
+
 STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Available NewGRF files
 STR_NEWGRF_ADD_FILE                                             :{BLACK}Add to selection
 STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Add the selected NewGRF file to your configuration

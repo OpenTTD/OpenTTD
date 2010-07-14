@@ -2742,26 +2742,27 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Compra l
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Compra el vaixell seleccionat
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Compra l'avió seleccionat
 
-STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Reanomena
-STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Reanomena
-STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}Reanomena
-STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Reanomena
+STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Canvia el nom
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Canvia el nom
+STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}Canvia el nom
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Canvia el nom
 
-STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Reanomena el tipus de vehicle ferroviari
-STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Reanomena tipus d'automòbil
-STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Reanomena tipus de vaixell
-STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Reanomena tipus d'avió
+STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Canvia el nom del tipus de vehicle ferroviari
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Canvia el nom del tipus d'automòbil
+STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Canvia el nom del tipus de vaixell
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Canvia el nom del tipus d'avió
 
-STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Reanomena el tipus vehicle ferroviari
-STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Reanomena tipus d'automòbil
-STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Reanomena tipus de vaixell
-STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Reanomena tipus d'avió
+STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Canvia el nom del tipus vehicle ferroviari
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Canvia el nom del tipus d'automòbil
+STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Canvia el nom del tipus de vaixell
+STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Canvia el nom del tipus d'avió
 
 # Depot window
 STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}{TOWN} Cotxeres de Tren
 STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} Cotxera de Vehicles
 STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} Drassana
 STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} Hangar d'Avions
+
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}

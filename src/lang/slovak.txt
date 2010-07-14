@@ -2810,20 +2810,20 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Zakupit 
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Vyrobit vybranu lod
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Vyrobit vybrane lietadlo
 
-STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Premenovat
-STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Premenovat
-STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}Premenovat
-STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Premenovat
+STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Premenovať
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Premenovať
+STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}Premenovať
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Premenovať
 
-STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Premenovat vlak
-STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Premenovat typ automobilu
-STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Premenovat typ lode
-STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Premenovat typ lietadla
+STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Premenovať typ vlaku
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Premenovať typ automobilu
+STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Premenovať typ lode
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Premenovať typ lietadla
 
-STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Premenovať typ vlak
+STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Premenovať typ vlaku
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Premenovať typ automobilu
-STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Premenovat typ lode
-STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Premenovat typ lietadla
+STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Premenovať typ lode
+STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Premenovať typ lietadla
 
 # Depot window
 STR_DEPOT_TRAIN_CAPTION                                         :{WHITE}{TOWN} Depo
@@ -2831,51 +2831,52 @@ STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} D
 STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN} Lodenica
 STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} Hangar
 
+
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} vozid{P lo lá iel}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vlaky - kliknut na vlak pre informacie, potiahni pre zmenu pozicie
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Vozidla - kliknut pre detaily
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Lode - kliknut pre informacie
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Lietadlo - kliknut pre informacie
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vlaky - ťahaj ľavým kliknutím pre pridanie/odoberanie vozňa, pravým kliknutím sa zobrazia informácie o vozni a CTRL + pravé kliknutie zobrazí celkové informácie
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Vozidlá - pravým kliknutím na vozidlo sa zobrazia informácie
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Lode - pravým kliknutím na loď sa zobrazia informácie
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Lietadlo - pravým kliknutím na lietadlo sa zobrazia informácie
 
-STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Pre predaj vlaku ho potiahni sem
-STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Potiahni sem pre predaj automobilu
-STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Potiahnut lod sem, na predaj
-STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Potiahni lietadlo sem pre predaj
+STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Presunutím lokomotívy bude predaná
+STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Presunutím automobilu sem sa predá
+STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Presunutím lode sem sa predá
+STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Presunutím lietadla sem sa predá
 
-STR_DEPOT_DRAG_WHOLE_TRAIN_TO_SELL_TOOLTIP                      :{BLACK}Presun lokomotivu sem, pre predaj celeho vlaku
+STR_DEPOT_DRAG_WHOLE_TRAIN_TO_SELL_TOOLTIP                      :{BLACK}Presunutím lokomotívy sem sa predá celý vlak
 
-STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TOOLTIP                         :{BLACK}Predat všetky vlaky v depe
-STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Predat všetky vozidlá v garáži
-STR_DEPOT_SELL_ALL_BUTTON_SHIP_TOOLTIP                          :{BLACK}Predat všetky lode v lodenici
-STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TOOLTIP                      :{BLACK}Predat všetky lietadlá v hangári
+STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TOOLTIP                         :{BLACK}Predať všetky vlaky v depe
+STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Predať všetky vozidlá v garáži
+STR_DEPOT_SELL_ALL_BUTTON_SHIP_TOOLTIP                          :{BLACK}Predať všetky lode v lodenici
+STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TOOLTIP                      :{BLACK}Predať všetky lietadlá v hangári
 
 STR_DEPOT_AUTOREPLACE_TRAIN_TOOLTIP                             :{BLACK}Automaticky nahradit všetky vlaky v depe
 STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TOOLTIP                      :{BLACK}Automaticky nahradit všetky vozidlá v garáži
 STR_DEPOT_AUTOREPLACE_SHIP_TOOLTIP                              :{BLACK}Automaticky nahradit všetky lode v lodenici
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}Automaticky nahradit všetky lietadlá v hangári
 
-STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Nove vozidla
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Nove vozidla
+STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Nové vozidlá
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Nové vozidlá
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Nove lode
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Nove Lietadlo
 
-STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Kupit novy vlak
+STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Kúpiť nový vlak
 STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Zakupit novy automobil
 STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Vyrobit novu lod
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Vyrobit nove lietadlo
 
-STR_DEPOT_CLONE_TRAIN                                           :{BLACK}Klonovat vlak
+STR_DEPOT_CLONE_TRAIN                                           :{BLACK}Klonovať vlak
 STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Klonovat vozidlo
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Klonovat lod
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Klonovat lietadlo
 
 STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Vytvori kopiu vlaku vratane voznov. Klikni na toto tlacidlo a potom na vlak v depe alebo mimo neho. Stlacenim Control budu prikazy zdielane
 STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Vytvori kopiu cestneho vozidla. Klikni na toto tlacidlo a potom na vozidlo v garazi alebo mimo nej. Stlacenim Control budu prikazy zdielane
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Vytvori kopiu lode. Klikni na toto tlacidlo a potom na lod v depe alebo mimo neho. Stlacenim Control budu prikazy zdielane
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Vytvorí kópiu lode. Klikni na toto tlačidlo a následne na loď v depe alebo mimo neho. CTRL+klik skopíruje aj príkazy
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Vytvori kopiu lietadla. Klikni na toto tlacidlo a potom na lietadlo v hangari alebo mimo neho. Stlacenim Control budu prikazy zdielane
 
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Vycentrovať pohľad na pozíciu depa. Ctrl+klik otvorí nové okno s pohľadom na depo

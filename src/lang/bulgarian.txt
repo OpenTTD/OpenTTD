@@ -2346,7 +2346,12 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Изклю
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Въвеждане на NewGRF параметри
 
-# NewGRF add window
+# NewGRF inspect window
+
+
+
+# Sprite aligner window
+
 STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Налични NewGRF файлове
 STR_NEWGRF_ADD_FILE                                             :{BLACK}Добави избраните
 STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}Добавя избраните NewGRF файлове към конфигурацията
