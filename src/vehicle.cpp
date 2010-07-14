@@ -1072,11 +1072,14 @@ void VehicleEnterDepot(Vehicle *v)
 			SetWindowClassesDirty(WC_ROADVEH_LIST);
 			break;
 
-		case VEH_SHIP:
+		case VEH_SHIP: {
 			SetWindowClassesDirty(WC_SHIPS_LIST);
-			Ship::From(v)->state = TRACK_BIT_DEPOT;
-			RecalcShipStuff(Ship::From(v));
+			Ship *ship = Ship::From(v);
+			ship->state = TRACK_BIT_DEPOT;
+			ship->UpdateViewport(true, true);
+			SetWindowDirty(WC_VEHICLE_DEPOT, v->tile);
 			break;
+		}
 
 		case VEH_AIRCRAFT:
 			SetWindowClassesDirty(WC_AIRCRAFT_LIST);
