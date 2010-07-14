@@ -2771,10 +2771,10 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} Fahrzeug{P "" e}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Züge - für Informationen auf einen Zug klicken; Waggon ziehen, um ihn an-/abzukoppeln
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Straßenfahrzeuge - für Einzelheiten auf das Fahrzeug klicken
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Schiffe - für Einzelheiten auf das Schiff klicken
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Flugzeuge - für Einzelheiten auf das Flugzeug klicken
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Züge - Fahrzeug ziehen, um es an-/abzukoppeln. Rechts-Klick für Fahrzeuginformationen, Strg+Rechts-Klick für Gespann-Informationen.
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Straßenfahrzeuge - Rechts-Klick für Einzelheiten
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Schiffe - Rechts-Klick für Einzelheiten
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Flugzeuge - Rechts-Klick für Einzelheiten
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Schienenfahrzeug hierher ziehen, um es zu verkaufen
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Ziehe Fahrzeug hierher, um es zu verkaufen

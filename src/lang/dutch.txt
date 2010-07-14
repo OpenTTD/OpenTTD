@@ -2409,7 +2409,7 @@ STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRI
 STR_NEWGRF_INVALID_CARGO                                        :<ongeldige vracht>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} van <ongeldige vracht>
-STR_NEWGRF_INVALID_ENGINE                                       :<ongeldige trein>
+STR_NEWGRF_INVALID_ENGINE                                       :<ongeldige treinmodel>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<ongeldig bedrijf>
 
 # Sign list window
@@ -2770,10 +2770,10 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} voertuig{P "" en}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Treinen - klik op trein voor informatie, sleep voertuig om voor toevoegen/verwijderen van trein
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Wegvoertuigen - klik op wegvoertuig voor informatie
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Schepen - klik op schip voor informatie
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Vliegtuig - klik op vliegtuig voor informatie
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Treinen - klik op trein voor informatie, sleep voertuig voor toevoegen/verwijderen van trein, klik rechts voor trein informatie, CTRL+klik voor samengestelde informatie
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Wegvoertuigen - rechts-klik op wegvoertuig voor informatie
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Schepen - rechts-klik op schip voor informatie
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Vliegtuig - rechts-klik op vliegtuig voor informatie
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Sleep railvoertuig hier om het te verkopen
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Sleep wegvoertuig hier om het te verkopen

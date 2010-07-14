@@ -1317,11 +1317,11 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automat
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Jelzőépítés-kezelő engedélyezése: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Alapértelmezett jelzőtípus: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Normál
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Fejlett (PBS)
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Egyirányú fejlett (PBS)
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Irányjelzők
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Csak egyirányú irányjelzők
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Jelzők típusa átalakításkor: {ORANGE}{STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Csak normál
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Csak fejlett (PBS)
+STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Csak irányjelzők
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Mind
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Új települések útépítési mintája: {ORANGE}{STRING}
@@ -1484,7 +1484,7 @@ STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Hajó sz
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Repülőgép színsémák mutatása
 STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Válassz egy elsődleges színt a kiválasztott sémához
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Válassz egy másodlagos színt a kiválasztott sémához
-STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Válassz megváltoztatandó színsémát, vagy színsémákat CTRL+kattintással. Kattints a dobozra a színséma használat váltásához.
+STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Válassz megváltoztatandó színsémát, vagy színsémákat Ctrl+kattintással. Kattints a dobozra a színséma használat váltásához.
 
 STR_LIVERY_DEFAULT                                              :Alapértelmezett
 STR_LIVERY_STEAM                                                :Gőzmozdony
@@ -1912,15 +1912,15 @@ STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Nem sike
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Átlátszósági beállítások
-STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Keret nélküli állomásnevek bekapcsolása. CTRL+Kattintással zárolható.
-STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Fák átlátszóságának bekapcsolása. CTRL+Kattintással zárolható.
-STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Épületek átlátszóságának bekapcsolása. CTRL+Kattintással zárolható.
-STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Gazdasági létesítmények átlátszóságának bekapcsolása. CTRL+Kattintással zárolható.
-STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Építhető elemek (állomások, járműtelepek, ellenőrző pontok) átlátszóságának bekapcsolása. CTRL+Kattintással zárolható.
-STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Hidak átlátszóságának bekapcsolása. CTRL+Kattintással zárolható.
-STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Tereptárgyak (adótornyok, világítótornyok, stb.) átlátszóságának bekapcsolása. CTRL+Kattintással zárolható.
-STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Felsővezetékek átlátszóságának bekapcsolása. CTRL+Kattintással zárolható.
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Átlátszó rakodásjelző bekapcsolása. CTRL+Kattintással zárolható.
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Keret nélküli állomásnevek bekapcsolása. Ctrl+Kattintással zárolható.
+STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Fák átlátszóságának bekapcsolása. Ctrl+Kattintással zárolható.
+STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Épületek átlátszóságának bekapcsolása. Ctrl+Kattintással zárolható.
+STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Gazdasági létesítmények átlátszóságának bekapcsolása. Ctrl+Kattintással zárolható.
+STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Építhető elemek (állomások, járműtelepek, ellenőrző pontok) átlátszóságának bekapcsolása. Ctrl+Kattintással zárolható.
+STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Hidak átlátszóságának bekapcsolása. Ctrl+Kattintással zárolható.
+STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Tereptárgyak (adótornyok, világítótornyok, stb.) átlátszóságának bekapcsolása. Ctrl+Kattintással zárolható.
+STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Felsővezetékek átlátszóságának bekapcsolása. Ctrl+Kattintással zárolható.
+STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Átlátszó rakodásjelző bekapcsolása. Ctrl+Kattintással zárolható.
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Az objektum ne átlátszó legyen, hanem láthatatlan
 
 # Base for station construction window(s)
@@ -2061,7 +2061,7 @@ STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Dokk ép
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Kikötő építése. A Ctrl lenyomásával egyesítheted más állomásokkal
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Bója lerakása, ellenőrzőpontként használható
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Akvadukt építése
-STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Vizi terület definiálása.{}Csatornát készít, kivéve ha tengerszinten Ctrl gombott lenyomva használod, ekkor elárasztja a területet
+STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Vizi terület definiálása.{}Csatornát készít, kivéve ha tengerszinten Ctrl gombot lenyomva használod, ekkor elárasztja a területet
 STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Folyók elhelyezése
 
 # Ship depot construction window
@@ -2115,7 +2115,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Véletle
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Táj szerkesztése
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Sziklás területek elhelyezése a térképen
 STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Világítótorony építése
-STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Sivatagot hoz létre.{}Nyomj CTRL-t az eltávolításához
+STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Sivatagot hoz létre.{}Nyomj Ctrl-t az eltávolításához
 STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Adótorony építése
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Az emelendő/süllyesztendő földterület növelése
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Az emelendő/süllyesztendő földterület csökkentése
@@ -2473,7 +2473,7 @@ STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRI
 STR_NEWGRF_INVALID_CARGO                                        :<érvénytelen rakomány>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} of <érvénytelen rakomány>
-STR_NEWGRF_INVALID_ENGINE                                       :<érvénytelen mozdony>
+STR_NEWGRF_INVALID_ENGINE                                       :<érvénytelen jármű modell>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<érvénytelen gazdasági épület>
 
 # Sign list window
@@ -2834,10 +2834,10 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} jármű{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vonatok - kattints egy vonatra az adataihoz, húzással áthelyezheted a járműveket a vonatba/vonatból
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Járművek - kattints egy járműre az adataihoz
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Hajók - kattints egy hajóra az adataihoz
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Repülőgépek - kattints egy repülőgépre az adataihoz
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vonatok - bal gombbal húzással áthelyezheted a járműveket a vonatba/vonatból, jobb gombbal kattintással járműinformáció, Ctrl+Jobb kattintással szerelvény információ
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Járművek - kattints jobb gombbal egy járműre az adataihoz
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Hajók - kattints jobb gombbal egy hajóra az adataihoz
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Repülőgépek - kattints jobb gombbal egy repülőgépre az adataihoz
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Dobj ide egy járművet az eladásához
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Dobj ide egy járművet az eladásához

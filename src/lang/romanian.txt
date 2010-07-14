@@ -2409,7 +2409,7 @@ STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRI
 STR_NEWGRF_INVALID_CARGO                                        :<cargo invalid>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} de <cargo invalid>
-STR_NEWGRF_INVALID_ENGINE                                       :<motor invalid>
+STR_NEWGRF_INVALID_ENGINE                                       :<model vehicul invalid>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<tip de industrie invalid>
 
 # Sign list window
@@ -2770,10 +2770,10 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} vehicul{P "" e}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trenuri - clic pe tren pentru informaţii, mută vehiculele pentru adăugare/scoatere din tren
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Autovehicule - clic pe vehicul pentru informatii
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Nave - clic pe o navă pentru informaţii
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Aeronavă - clic pe aeronavă pentru informaţii
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trenuri - trage vehiculele cu butonul stânga pentru a adauga/elimina din tren, clic dreapta pe vehicul pentru informaţii, CTRL+clic dreapta pentru informaţii despre garnitura
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Autovehicule - clic dreapta pe vehicul pentru informatii
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Nave - clic dreapta pe o navă pentru informaţii
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Aeronavă - clic dreapta pe aeronavă pentru informaţii
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Mută un vehicul aici pentru a-l vinde
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Mută un autovehicul aici pentru a-l vinde
@@ -3500,6 +3500,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Trebuie 
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Cale ferată nepotrivită
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Mai întâi trebuie înlăturată calea ferată
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Drum cu sens unic sau blocat
+STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Trecerea la nivel nu este permisă pentru acest tip de cale ferată
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Nu se pot plasa semafoare aici...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Nu se poate construi cale ferată aici...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Nu se poate înlătura calea ferată...

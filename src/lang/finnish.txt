@@ -2770,10 +2770,10 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} kulkuneuvo{P "" a}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Junat - napsauta junaa saadaksesi tietoja, vedä vaunu lisätäksesi/poistaaksesi junasta.
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Ajoneuvot - napsauta ajoneuvoa saadaksesi tietoja.
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Laivat - napsauta laivaa saadaksesi tietoja.
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Lentokoneet - napsauta lentokonetta saadaksesi tietoja.
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Junat - vedä kulkuneuvoa vasemmalla hiiren painikkella lisätäksesi/poistaaksesi junasta, oikealla näppäimellä lisätietoja, CTRL+oikea hiiren näppäin näyttää koko junan tiedot.
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Ajoneuvot - napsauta ajoneuvoa oikealla hiiren näppäimellä saadaksesi tietoja.
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Laivat - napsauta laivaa oikealla hiiren näppäimellä saadaksesi tietoja.
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Lentokoneet - napsauta lentokonetta oikealla hiiren näppäimellä saadaksesi tietoja.
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Vedä yksikkö tähän myydäksesi sen.
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Vedä ajoneuvo tähän myydäksesi sen.

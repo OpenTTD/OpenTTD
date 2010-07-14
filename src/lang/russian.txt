@@ -2579,7 +2579,7 @@ STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}«{1:STR
 STR_NEWGRF_INVALID_CARGO                                        :<неизвестный груз>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} <неизвестного груза>
-STR_NEWGRF_INVALID_ENGINE                                       :<неизвестное ТС>
+STR_NEWGRF_INVALID_ENGINE                                       :<неизвестная модель>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<неизвестное предприятие>
 
 # Sign list window
