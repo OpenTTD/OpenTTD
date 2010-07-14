@@ -1258,12 +1258,12 @@ public:
 		}
 	}
 
-	virtual void OnRightClick(Point pt, int widget)
+	virtual bool OnRightClick(Point pt, int widget)
 	{
-		if (widget == SM_WIDGET_MAP) {
-			if (_scrolling_viewport) return;
-			_scrolling_viewport = true;
-		}
+		if (widget != SM_WIDGET_MAP || _scrolling_viewport) return false;
+
+		_scrolling_viewport = true;
+		return true;
 	}
 
 	virtual void OnMouseWheel(int wheel)

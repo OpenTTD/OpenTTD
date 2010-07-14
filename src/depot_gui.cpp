@@ -793,9 +793,9 @@ struct DepotWindow : Window {
 		DoCommandP(0, GetDepotIndex(this->window_number), 0, CMD_RENAME_DEPOT | CMD_MSG(STR_ERROR_CAN_T_RENAME_DEPOT), NULL, str);
 	}
 
-	virtual void OnRightClick(Point pt, int widget)
+	virtual bool OnRightClick(Point pt, int widget)
 	{
-		if (widget != DEPOT_WIDGET_MATRIX) return;
+		if (widget != DEPOT_WIDGET_MATRIX) return false;
 
 		GetDepotVehiclePtData gdvp = { NULL, NULL };
 		const Vehicle *v = NULL;
@@ -804,47 +804,49 @@ struct DepotWindow : Window {
 
 		if (this->type == VEH_TRAIN) v = gdvp.wagon;
 
-		if (v != NULL && mode == MODE_DRAG_VEHICLE) {
-			CargoArray capacity, loaded;
+		if (v == NULL || mode != MODE_DRAG_VEHICLE) return false;
 
-			/* Display info for single (articulated) vehicle, or for whole chain starting with selected vehicle */
-			bool whole_chain = (this->type == VEH_TRAIN && _ctrl_pressed);
+		CargoArray capacity, loaded;
 
-			/* loop through vehicle chain and collect cargos */
-			uint num = 0;
-			for (const Vehicle *w = v; w != NULL; w = w->Next()) {
-				if (w->cargo_cap > 0 && w->cargo_type < NUM_CARGO) {
-					capacity[w->cargo_type] += w->cargo_cap;
-					loaded  [w->cargo_type] += w->cargo.Count();
-				}
+		/* Display info for single (articulated) vehicle, or for whole chain starting with selected vehicle */
+		bool whole_chain = (this->type == VEH_TRAIN && _ctrl_pressed);
 
-				if (w->type == VEH_TRAIN && !Train::From(w)->HasArticulatedPart()) {
-					num++;
-					if (!whole_chain) break;
-				}
+		/* loop through vehicle chain and collect cargos */
+		uint num = 0;
+		for (const Vehicle *w = v; w != NULL; w = w->Next()) {
+			if (w->cargo_cap > 0 && w->cargo_type < NUM_CARGO) {
+				capacity[w->cargo_type] += w->cargo_cap;
+				loaded  [w->cargo_type] += w->cargo.Count();
 			}
 
-			/* Build tooltipstring */
-			static char details[1024];
-			details[0] = '\0';
-			char *pos = details;
-
-			for (CargoID cargo_type = 0; cargo_type < NUM_CARGO; cargo_type++) {
-				if (capacity[cargo_type] == 0) continue;
-
-				SetDParam(0, cargo_type);           // {CARGO} #1
-				SetDParam(1, loaded[cargo_type]);   // {CARGO} #2
-				SetDParam(2, cargo_type);           // {SHORTCARGO} #1
-				SetDParam(3, capacity[cargo_type]); // {SHORTCARGO} #2
-				pos = GetString(pos, STR_DEPOT_VEHICLE_TOOLTIP_CARGO, lastof(details));
+			if (w->type == VEH_TRAIN && !Train::From(w)->HasArticulatedPart()) {
+				num++;
+				if (!whole_chain) break;
 			}
-
-			/* Show tooltip window */
-			uint64 args[2];
-			args[0] = (whole_chain ? num : v->engine_type);
-			args[1] = (uint64)(size_t)details;
-			GuiShowTooltips(whole_chain ? STR_DEPOT_VEHICLE_TOOLTIP_CHAIN : STR_DEPOT_VEHICLE_TOOLTIP, 2, args, TCC_RIGHT_CLICK);
 		}
+
+		/* Build tooltipstring */
+		static char details[1024];
+		details[0] = '\0';
+		char *pos = details;
+
+		for (CargoID cargo_type = 0; cargo_type < NUM_CARGO; cargo_type++) {
+			if (capacity[cargo_type] == 0) continue;
+
+			SetDParam(0, cargo_type);           // {CARGO} #1
+			SetDParam(1, loaded[cargo_type]);   // {CARGO} #2
+			SetDParam(2, cargo_type);           // {SHORTCARGO} #1
+			SetDParam(3, capacity[cargo_type]); // {SHORTCARGO} #2
+			pos = GetString(pos, STR_DEPOT_VEHICLE_TOOLTIP_CARGO, lastof(details));
+		}
+
+		/* Show tooltip window */
+		uint64 args[2];
+		args[0] = (whole_chain ? num : v->engine_type);
+		args[1] = (uint64)(size_t)details;
+		GuiShowTooltips(whole_chain ? STR_DEPOT_VEHICLE_TOOLTIP_CHAIN : STR_DEPOT_VEHICLE_TOOLTIP, 2, args, TCC_RIGHT_CLICK);
+
+		return true;
 	}
 
 	virtual void OnPlaceObject(Point pt, TileIndex tile)

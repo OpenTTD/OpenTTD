@@ -383,12 +383,15 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, int click_count)
 static void DispatchRightClickEvent(Window *w, int x, int y)
 {
 	NWidgetCore *wid = w->nested_root->GetWidgetFromPos(x, y);
+	if (wid == NULL) return;
 
 	/* No widget to handle, or the window is not interested in it. */
-	if (wid == NULL || wid->index < 0) return;
+	if (wid->index >= 0) {
+		Point pt = { x, y };
+		if (w->OnRightClick(pt, wid->index)) return;
+	}
 
-	Point pt = { x, y };
-	w->OnRightClick(pt, wid->index);
+	if (_settings_client.gui.hover_delay == 0 && wid->tool_tip != 0) GuiShowTooltips(wid->tool_tip, 0, NULL, TCC_RIGHT_CLICK);
 }
 
 /**

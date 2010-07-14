@@ -654,8 +654,10 @@ public:
 	 * A click with the right mouse button has been made on the window.
 	 * @param pt     the point inside the window that has been clicked.
 	 * @param widget the clicked widget.
+	 * @return true if the click was actually handled, i.e. do not show a
+	 *         tooltip if tooltip-on-right-click is enabled.
 	 */
-	virtual void OnRightClick(Point pt, int widget) {}
+	virtual bool OnRightClick(Point pt, int widget) { return false; }
 
 	/**
 	 * The mouse is hovering over a widget in the window, perform an action for it, like opening a custom tooltip.
