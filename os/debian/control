@@ -25,3 +25,13 @@ Description: reimplementation of Transport Tycoon Deluxe with enhancements
  package and optional sound files from the openttd-opensfx package (which is in
  non-free). Alternatively, OpenTTD can use the graphics files from the original
  Transport Tycoon Deluxe game (See README.Debian on how to set this up).
+
+Package: openttd-dbg
+Architecture: any
+Section: debug
+Priority: extra
+Depends: openttd (= ${binary:Version}), ${misc:Depends}
+Description: debugging symbols for openttd
+ This package contains the debugging symbols for OpenTTD, the reimplementation
+ of the Micropose game "Transport Tycoon Deluxe" with lots of new features and
+ enhancements.

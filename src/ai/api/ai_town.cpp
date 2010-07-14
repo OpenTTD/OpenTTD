@@ -14,6 +14,7 @@
 #include "ai_cargo.hpp"
 #include "ai_error.hpp"
 #include "../../town.h"
+#include "../../town_type.h"
 #include "../../strings_func.h"
 #include "../../company_func.h"
 #include "../../station_base.h"
@@ -172,8 +173,25 @@
 	if (company == AICompany::COMPANY_INVALID) return TOWN_RATING_INVALID;
 
 	const Town *t = ::Town::Get(town_id);
-	if (!HasBit(t->have_ratings, company)) return TOWN_RATING_NONE;
-	return max(TOWN_RATING_APPALLING, (TownRating)((t->ratings[company] / 200) + 3));
+	if (!HasBit(t->have_ratings, company)) {
+		return TOWN_RATING_NONE;
+	} else if (t->ratings[company] <= RATING_APPALLING) {
+		return TOWN_RATING_APPALLING;
+	} else if (t->ratings[company] <= RATING_VERYPOOR) {
+		return TOWN_RATING_VERY_POOR;
+	} else if (t->ratings[company] <= RATING_POOR) {
+		return TOWN_RATING_POOR;
+	} else if (t->ratings[company] <= RATING_MEDIOCRE) {
+		return TOWN_RATING_MEDIOCRE;
+	} else if (t->ratings[company] <= RATING_GOOD) {
+		return TOWN_RATING_GOOD;
+	} else if (t->ratings[company] <= RATING_VERYGOOD) {
+		return TOWN_RATING_VERY_GOOD;
+	} else if (t->ratings[company] <= RATING_EXCELLENT) {
+		return TOWN_RATING_EXCELLENT;
+	} else {
+		return TOWN_RATING_OUTSTANDING;
+	}
 }
 
 /* static */ int AITown::GetAllowedNoise(TownID town_id)

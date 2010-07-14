@@ -17,7 +17,7 @@ endif
 # to be explicit about the dependencies, in case we're not running in a
 # clean build root.
 override_dh_auto_configure:
-	./configure $(CROSS) --prefix-dir=/usr --install-dir=debian/openttd --without-allegro --with-zlib --with-sdl --with-png --with-freetype --with-fontconfig --with-icu --with-liblzo2 --without-iconv
+	./configure $(CROSS) --prefix-dir=/usr --install-dir=debian/openttd --without-allegro --with-zlib --with-sdl --with-png --with-freetype --with-fontconfig --with-icu --with-liblzo2 --without-iconv --disable-strip CFLAGS="$(CFLAGS) -g"
 
 # Do some extra installation
 override_dh_auto_install:
@@ -41,3 +41,7 @@ override_dh_auto_test:
 # target, while there isn't.
 override_dh_auto_clean:
 	[ ! -f Makefile ] || $(MAKE) mrproper
+
+# We want to strip the debug informatiton into the -dbg package.
+override_dh_strip:
+	dh_strip --dbg-package=openttd-dbg

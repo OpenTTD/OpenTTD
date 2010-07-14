@@ -7,13 +7,14 @@ wrapper instead of the openttd binary directly.
 
 Index: media/openttd.desktop.in
 ===================================================================
---- a/media/openttd.desktop.in	(revision 17228)
+--- a/media/openttd.desktop.in	(revision 20124)
 +++ b/media/openttd.desktop.in	(working copy)
-@@ -6,6 +6,6 @@
+@@ -5,7 +5,7 @@
+ Version=1.1
  Name=!!MENU_NAME!!
- Comment=A clone of Transport Tycoon Deluxe
  Icon=openttd
 -Exec=!!TTD!!
 +Exec=/usr/share/games/openttd/openttd-wrapper
  Terminal=false
  Categories=!!MENU_GROUP!!
+ Comment=A clone of Transport Tycoon Deluxe
