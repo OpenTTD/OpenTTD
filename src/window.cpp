@@ -2043,7 +2043,6 @@ enum MouseClick {
 	MAX_OFFSET_DOUBLE_CLICK = 5,     ///< How much the mouse is allowed to move to call it a double click
 	TIME_BETWEEN_DOUBLE_CLICK = 500, ///< Time between 2 left clicks before it becoming a double click, in ms
 	MAX_OFFSET_HOVER = 5,            ///< Maximum mouse movement before stopping a hover event.
-	TIME_HOVER = 1000,               ///< Time required to activate a hover event, in ms.
 };
 extern EventState VpHandlePlaceSizingDrag();
 
@@ -2242,17 +2241,19 @@ void HandleMouseEvents()
 	static int hover_time = 0;
 	static Point hover_pos = {0, 0};
 
-	if (click != MC_NONE || mousewheel != 0 || _left_button_down || _right_button_down ||
-			hover_pos.x == 0 || abs(_cursor.pos.x - hover_pos.x) >= MAX_OFFSET_HOVER  ||
-			hover_pos.y == 0 || abs(_cursor.pos.y - hover_pos.y) >= MAX_OFFSET_HOVER) {
-		hover_pos = _cursor.pos;
-		hover_time = _realtime_tick;
-		_mouse_hovering = false;
-	} else {
-		if (hover_time != 0 && _realtime_tick - hover_time > TIME_HOVER) {
-			click = MC_HOVER;
-			_input_events_this_tick++;
-			_mouse_hovering = true;
+	if (_settings_client.gui.hover_delay > 0) {
+		if (click != MC_NONE || mousewheel != 0 || _left_button_down || _right_button_down ||
+				hover_pos.x == 0 || abs(_cursor.pos.x - hover_pos.x) >= MAX_OFFSET_HOVER  ||
+				hover_pos.y == 0 || abs(_cursor.pos.y - hover_pos.y) >= MAX_OFFSET_HOVER) {
+			hover_pos = _cursor.pos;
+			hover_time = _realtime_tick;
+			_mouse_hovering = false;
+		} else {
+			if (hover_time != 0 && _realtime_tick - hover_time > _settings_client.gui.hover_delay * 1000) {
+				click = MC_HOVER;
+				_input_events_this_tick++;
+				_mouse_hovering = true;
+			}
 		}
 	}
 

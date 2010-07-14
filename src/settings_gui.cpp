@@ -1291,6 +1291,7 @@ static SettingEntry _settings_ui[] = {
 	SettingEntry(&_settings_ui_interaction_page, STR_CONFIG_SETTING_INTERACTION),
 	SettingEntry("gui.show_finances"),
 	SettingEntry("gui.errmsg_duration"),
+	SettingEntry("gui.hover_delay"),
 	SettingEntry("gui.toolbar_pos"),
 	SettingEntry("gui.pause_on_newgame"),
 	SettingEntry("gui.advanced_vehicle_list"),

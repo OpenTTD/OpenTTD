@@ -558,6 +558,7 @@ const SettingDesc _settings[] = {
 	 SDTC_BOOL(gui.left_mouse_btn_scrolling,             S,  0, false,                        STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING,    NULL),
 	 SDTC_BOOL(gui.measure_tooltip,                      S,  0,  true,                        STR_CONFIG_SETTING_MEASURE_TOOLTIP,             NULL),
 	  SDTC_VAR(gui.errmsg_duration,           SLE_UINT8, S,  0,     5,        0,       20, 0, STR_CONFIG_SETTING_ERRMSG_DURATION,             NULL),
+	  SDTC_VAR(gui.hover_delay,               SLE_UINT8, S, D0,     2,        1,        5, 0, STR_CONFIG_SETTING_HOVER_DELAY,                 NULL),
 	  SDTC_VAR(gui.toolbar_pos,               SLE_UINT8, S, MS,     1,        0,        2, 0, STR_CONFIG_SETTING_TOOLBAR_POS,                 v_PositionMainToolbar),
 	  SDTC_VAR(gui.window_snap_radius,        SLE_UINT8, S, D0,    10,        1,       32, 0, STR_CONFIG_SETTING_SNAP_RADIUS,                 NULL),
 	  SDTC_VAR(gui.window_soft_limit,         SLE_UINT8, S, D0,    20,        5,      255, 1, STR_CONFIG_SETTING_SOFT_LIMIT,                  NULL),

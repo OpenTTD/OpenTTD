@@ -53,6 +53,7 @@ struct GUISettings {
 	uint8  stop_location;                    ///< what is the default stop location of trains?
 	bool   autoscroll;                       ///< scroll when moving mouse to the edge
 	byte   errmsg_duration;                  ///< duration of error message
+	byte   hover_delay;                      ///< time required to activate a hover event, in seconds
 	bool   link_terraform_toolbar;           ///< display terraform toolbar when displaying rail, road, water and airport toolbars
 	uint8  smallmap_land_colour;             ///< colour used for land and heightmap at the smallmap
 	bool   reverse_scroll;                   ///< right-Click-Scrolling scrolls in the opposite direction
