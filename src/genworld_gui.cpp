@@ -688,7 +688,7 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
-		EventState state;
+		EventState state = ES_NOT_HANDLED;
 		this->HandleEditBoxKey(GLAND_RANDOM_EDITBOX, key, keycode, state);
 		/* the seed is unsigned, therefore atoi cannot be used.
 		 * As UINT32_MAX is a 'magic' value (use random seed) it
