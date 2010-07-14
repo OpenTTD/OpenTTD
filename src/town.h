@@ -149,7 +149,6 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 uint32 GetWorldPopulation();
 
 void UpdateAllTownVirtCoords();
-void InitializeTown();
 void ShowTownViewWindow(TownID town);
 void ExpandTown(Town *t);
 
