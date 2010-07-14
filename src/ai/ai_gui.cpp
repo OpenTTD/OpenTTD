@@ -982,7 +982,7 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
-		EventState state;
+		EventState state = ES_NOT_HANDLED;
 		if (this->HandleEditBoxKey(AID_WIDGET_BREAK_STR_EDIT_BOX, key, keycode, state) != HEBR_NOT_FOCUSED) {
 			/* Save the current string to static member so it can be restored next time the window is opened */
 			strecpy(this->break_string, this->edit_str_buf, lastof(this->break_string));
