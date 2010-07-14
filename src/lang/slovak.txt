@@ -896,11 +896,11 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Ponuka dotacie skoncila:{}{}Preprava {STRING.g} z {STRING} do {STRING} uz nebude dotovana.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Dotacia ukoncena:{}{}Preprava {STRING.g} z {STRING} do {STRING} uz viac nebude dotovana.
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Ponuka dotacie:{}{}Prva preprava {STRING.g} z {STRING} do {STRING} bude dotovana miestnou spravou!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Dotacia udelena spolocnosti {STRING}!{}{}Preprava {STRING.g} z {STRING} do {STRING} bude buduci rok o 50% vynosnejsia!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Dotácia udelená spolocnosti {STRING}!{}{}Preprava {STRING.g} z {STRING} to {STRING} bude budúci rok 2x výnosnejšia!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Dotacia udelena spolocnosti {STRING}!{}{}Preprava {STRING.g} z {STRING} do {STRING} bude buduci rok 3x vynosnejsia!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}Dotacia udelena spolocnosti {STRING}!{}{}Preprava {STRING.g} z {STRING} do {STRING} bude buduci rok 4x vynosnejsia!
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Ponuka dotácie:{}{}Prvá preprava {STRING.g} z {STRING} do {STRING} bude dotovaná miestnou správou!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Dotácia udelená spoločnosti {STRING}!{}{}Preprava {STRING.g} z {STRING} do {STRING} bude budúci rok o 50% výnosnejšia!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Dotácia udelená spoločnosti {STRING}!{}{}Preprava {STRING.g} z {STRING} to {STRING} bude budúci rok 2x výnosnejšia!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Dotácia udelená spoločnosti {STRING}!{}{}Preprava {STRING.g} z {STRING} do {STRING} bude budúci rok 3x výnosnejšia!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}Dotácia udelená spoločnosti {STRING}!{}{}Preprava {STRING.g} z {STRING} do {STRING} bude budúci rok 4x výnosnejšia!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}V meste {TOWN} zavladol dopravny chaos!{}{}Rekonstrukcia ciest financovana {STRING} prinesie 6 mesiacov utrpenia pre motoristov!
 
@@ -1341,6 +1341,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :bloky 2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :bloky 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :náhodne
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Mestá môžu staviať cesty: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}Mestá umožňujú stavbu železničných priecestí: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Povoliť mestom určené hlukové limity pre letiská: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Zakladanie nových miest počas hry: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :zakázané
@@ -1993,7 +1994,7 @@ STR_STATION_CLASS_WAYP                                          :Smerove body
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Výber signálu
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Standardný signál (semafór){}Signály sú nevyhnutné pre zabránenie zrážke v železnicnej sieti s viac ako 1 vlakom.
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Štandardný signál (semafór){}Signály sú nevyhnutné pre zabránenie zrážke v železničnej sieti s viac ako 1 vlakom.
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Vstupný signál (semafór){}Zelený ak je na danom úseku trate 1 alebo viac zelených výstupných signálov, inak je cervený.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Výstupný signál (semafór){}Funguje rovnako ako štandardný signál, avšak je nevyhnutný pre urcenie správnej farby na na vstupných a kombinovaných signáloch.
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Kombinovaný signál (semafór){}Funguje jednoducho ako vstupný a výstupný signál zároveň, čo umožnuje budovať "stromové" štruktúry.
@@ -2516,7 +2517,7 @@ STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRI
 STR_NEWGRF_INVALID_CARGO                                        :<neplatný náklad>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} jednot{P ka ky iek} <neplatného nákladu>
-STR_NEWGRF_INVALID_ENGINE                                       :<neplatný rušeň>
+STR_NEWGRF_INVALID_ENGINE                                       :<chybný model rušňa>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<neplatný priemysel>
 
 # Sign list window
@@ -2757,7 +2758,7 @@ STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING}
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Lietad{P lo la iel}
 
 STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Vlaky - kliknut na vlak pre informacie
-STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Automobily - kliknúť pre detaily
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Automobily - kliknutím na vozidlo sa zobrazia detaily
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Lode - kliknut pre informacie
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Lietadlo - kliknut pre informacie
 
@@ -2876,10 +2877,10 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} vozid{P lo lá iel}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vlaky - kliknut na vlak pre informacie, potiahni pre zmenu pozicie
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Vozidlá - kliknúť pre detaily
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Lode - kliknut pre informacie
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Lietadlo - kliknut pre informacie
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vlaky - ťahaj ľavým kliknutím pre pridanie/odoberanie vozňa, pravým kliknutím sa zobrazia informácie o vozni a CTRL + pravé kliknutie zobrazí celkové informácie
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Vozidlá - pravým kliknutím na vozidlo sa zobrazia informácie
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Lode - pravým kliknutím na loď sa zobrazia informácie
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Lietadlo - pravým kliknutím na lietadlo sa zobrazia informácie
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Presunutím lokomotívy bude predaná
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Presunutím automobilu sem sa predá
@@ -2915,7 +2916,7 @@ STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Klonovat
 
 STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Vytvori kopiu vlaku vratane voznov. Klikni na toto tlacidlo a potom na vlak v depe alebo mimo neho. Stlacenim Control budu prikazy zdielane
 STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Vytvori kopiu cestneho vozidla. Klikni na toto tlacidlo a potom na vozidlo v garazi alebo mimo nej. Stlacenim Control budu prikazy zdielane
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Vytvori kopiu lode. Klikni na toto tlacidlo a potom na lod v depe alebo mimo neho. Stlacenim Control budu prikazy zdielane
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Vytvorí kópiu lode. Klikni na toto tlačidlo a následne na loď v depe alebo mimo neho. CTRL+klik skopíruje aj príkazy
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Vytvori kopiu lietadla. Klikni na toto tlacidlo a potom na lietadlo v hangari alebo mimo neho. Stlacenim Control budu prikazy zdielane
 
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Vycentrovať pohľad na pozíciu depa. Ctrl+klik otvorí nové okno s pohľadom na depo
@@ -3550,6 +3551,7 @@ STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Nie je m
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Nie je možné odstrániť osobnú električkovú stanicu...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Nie je možné odstrániť nákladnú električkovú stanicu...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Najprv treba odstrániť zastávku na ceste
+STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}...nenašla sa stanica
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Železničná stanica sa musí najskôr zbúrať
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Stanica musí byť najskôr zbúraná
@@ -3609,11 +3611,14 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Najprv j
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Žiadne použiteľné železničné koľaje
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Najskôr treba odstrániť železničné koľaje
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Cesta je jednosmerná alebo blokovaná.
+STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Nie sú povolené priecestia pre tento typ železníc
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Tu sa nedajú stavať semafory...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Tu sa nedajú stavať železničné koľaje...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Tu nemožno odstrániť železničné koľaje...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Tu nemožno odstrániť semafory...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Nie je možné zmeniť typ semaforov...
+STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}...nenašli sa železničné koľaje
+STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}...nenašli sa signály
 
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Tu nemožno z konvertovať typ železnice...
 
@@ -3624,6 +3629,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Tu sa ne
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Tu sa nedá stavať električková trať...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Tu sa nedá odstrániť cesta...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Nie je možné odstrániť električkovú trať...
+STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}...nenašla sa cesta
+STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}...nenašla sa tramvaj
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Tu sa nedá postaviť prieplav...

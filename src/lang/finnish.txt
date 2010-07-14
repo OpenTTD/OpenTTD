@@ -1145,6 +1145,8 @@ STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Uudista
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Uudista ajoneuvo automaattisesti {ORANGE}{STRING}{LTBLUE} kuukautta ennen/jälkeen enimmäisiän
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Vähimmäisrahamäärä ajoneuvon automaattiseen uudistukseen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Virheilmoituksen kesto: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Osoittimen päälläpitotapahtumien viive: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Osoittimen päälläpitotapahtumien viive: {ORANGE}ei käytössä
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Näytä kaupungin asukasluku kaupungin nimessä: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Maastogeneraattori: {ORANGE}{STRING}

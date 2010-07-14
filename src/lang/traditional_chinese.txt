@@ -1274,6 +1274,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :２x２網格
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :３x３網格
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :隨機
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}市鎮可以興建道路：{ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}允許城鎮建設交叉道路: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}允許市鎮限制機場噪音：{ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}於遊戲中興建新市鎮：{ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :禁止
@@ -3543,6 +3544,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}必須�
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}沒有適合的鐵路軌道
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}必須先移除鐵路
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}道路是單行道或已封閉
+STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}軌道類型不允許交叉
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}不能在這邊興建號誌...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}不能在這邊鋪設鐵路...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}不能從這邊移除鐵路...

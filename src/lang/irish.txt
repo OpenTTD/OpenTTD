@@ -1897,6 +1897,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Tóg st�
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Tóg comharthaí iarnróid. Déantar comharthaí séamafóir/solais a scoránú le Ctrl{}Is féidir tarraingt le comharthaí a thógáil feadh píosa díreach iarnróid. Tógtar comharthaí chomh fada leis an gcéad acomhal eile le Ctrl{}Déantar fuinneog roghnú na gcomharthaí a oscailt nó gan oscailt le Ctrl
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Tóg droichead iarnróid
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Tóg tollán iarnróid
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Athraigh idir tógáil/baint le haghaidh ráillí iarnróid, comharthaí, pointí bealaigh agus stáisiúin. Má choinnítear Ctrl síos, baintear ráillí ó phointí bealaigh agus ó stáisiúin freisin
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Tiontaigh/Uasghrádaigh an cineál ráille
 
 # Rail depot construction window
@@ -1929,6 +1930,16 @@ STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Comharth
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Bloc-comhartha (séamafór){}Is é seo an cineál comhartha is bunúsáí, agus ní cheadaítear ach do thraein amháin a bheith sa bhloc céanna ag aon am amháin
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Comhartha Isteach (séamafór){}Uaine chomh fada agus go bhfuil comhartha amach uaine amháin ar a laghad sa chuid den iarnróid ina dhiaidh. Mura bhfuil, bíonn sé dearg.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Comhartha Amach (séamafór){}Feidhmíonn sé seo ar an mbealach céanna leis an gcomhartha bloic ach tá sé ag teastáil mar thruicear don dath ceart ar réamhchomharthaí isteach & teaglama.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Comhartha teaglama (séamafór){}Feidhmíonn an comhartha teaglama mar chomhartha isteach agus amach araon, go simplí. Cuireann sé seo ar do chumas "crainn" mhóra de réamhchomharthaí a thógáil.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Comhartha cosán (séamafór){}Ligeann comhartha cosán do níos mó ná traein amháin dul isteach i mbloc comharthaí in aon am amháin, más féidir leis an traein bealach a chur in áirithe chuig pointe stoptha sábháilte. Is féidir dul thar gnáthchomharthaí cosán ón gcúl..
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Comhartha cosán aonbhealaigh (séamafór){}Ligeann comhartha cosán do níos mó ná traein amháin dul isteach i mbloc comharthaí in aon am amháin, más féidir leis an traein bealach a chur in áirithe chuig pointe stoptha sábháilte. Ní féidir dul thar comharthaí cosán aonbhealaigh ón gcúl.
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Bloc-chomhartha (leictreach){}Is é seo an cineál comhartha is bunúsaí, agus ní cheadaítear ach do thraein amháin a bheith sa bhloc céanna ag aon am amháin
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Comhartha Isteach (leictreach){}Uaine chomh fada agus go bhfuil comhartha amach uaine amháin ar a laghad sa chuid den iarnróid ina dhiaidh. Mura bhfuil, bíonn sé dearg.
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Comhartha Amach (leictreach){}Feidhmíonn sé seo ar an mbealach céanna leis an mbloc-chomhartha ach tá sé ag teastáil mar thruicear don dath ceart ar réamhchomharthaí isteach & teaglama.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Comhartha teaglama (leictreach){}Feidhmíonn an comhartha teaglama mar chomhartha isteach agus amach araon, go simplí. Cuireann sé seo ar do chumas "crainn" mhóra de réamhchomharthaí a thógáil.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Comhartha cosán (leictreach){}Ligeann comhartha cosán do níos mó ná traein amháin dul isteach i mbloc comharthaí in aon am amháin, más féidir leis an traein bealach a chur in áirithe chuig pointe stoptha sábháilte. Is féidir dul thar gnáthchomharthaí cosán ón gcúl.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Comhartha cosán aonbhealaigh (leictreach){}Ligeann comhartha cosán do níos mó ná traein amháin dul isteach i mbloc comharthaí in aon am amháin, más féidir leis an traein bealach a chur in áirithe chuig pointe stoptha sábháilte. Ní féidir dul thar comharthaí cosán aonbhealaigh ón gcúl.
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Comharthaí a Thiontú{}Agus é seo roghnaithe, má chliceáiltear ar chomhartha atá ann cheana déanfar é a thiontú chuig an cineál comhartha agus an leagan den chomhartha atá roghnaithe, Déanfar an leagan atá ann cheana féin a scoránú le Ctrl+Cliceáil.
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Eatramh comharthaí agus tú ag tarraingt
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Laghdaigh an spás idir na comharthaí agus tú ag tarraingt
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Méadaigh an spás idir na comharthaí agus tú ag tarraingt
@@ -1954,6 +1965,7 @@ STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Tógáil
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Tóg cuid de bhóthar. Déantar tógáil/baint a scoránú le Ctrl agus tú ag tógáil bóithre
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Tóg an chuid den trambhealach. Déantar tóg/bain a scoránú le Ctrl agus trambhealach á thógáil
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Tóg cuid den bhóthar ag úsáid an mód Uathbhóithre. Athraítear idir tógáil agus baint le Ctrl agus bóithre á dtógáil
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Tóg cuid den Trambhealach ag úsáid an mhóid Uath-tramanna. Déantar tógáil/baint a scoránú don tógáil trambhealaí le Ctrl
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Tóg iosta feithiclí bóthair (chun feithiclí a cheannach agus a sheirbhísiú)
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Tóg iosta tramanna (chun feithiclí a cheananch agus a sheirbhísiú)
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Tóg stáisiún bus. Is féidir stáisiúin a chur le chéile le Ctrl
@@ -2340,6 +2352,7 @@ STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Liosta d
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Socraigh paraiméadair
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Scoránaigh an pailéad
+STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Déan an pailéad den NewGRF roghnaithe a scoránú.{}Déan é seo má bhíonn cuma bhándearg ar na grafaicí ón NewGRF seo sa chluiche
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Cuir athruithe i bhfeidhm
 
 STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Aimsigh inneachar atá ar iarraidh ar líne
@@ -2416,6 +2429,7 @@ STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Níor a
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Lódáladh GRF(anna) comhoiriúnacha do na comhaid atá ar lár
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Díchumasaíodh na comha(i)d GRF atá ar lár
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Comha(i)d GRF ar lár
+STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Is féidir go ndéanfar OpenTTD a thuairteáil má chuirtear deireadh leis an sos. Ná seol isteach tuairiscí ar fabhtanna le haghaidh tuairteálacha ina dhiaidh seo.{}An bhfuil tú cinnte gur mian leat deireadh a chur leis an sos?
 
 # NewGRF status
 STR_NEWGRF_LIST_NONE                                            :Ceann ar bith
@@ -2424,10 +2438,13 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Aimsío
 STR_NEWGRF_LIST_MISSING                                         :{RED}Comhaid ar lár
 
 # NewGRF 'it's broken' warnings
+STR_NEWGRF_BROKEN                                               :{WHITE}Tá seans maith ann go mbeidh díshioncronú agus/nó tuairteálacha de thoradh ar iompar an NewGRF '{0:STRING}'.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Athraíonn sé fad na feithicle le haghaidh '{1:ENGINE}' nuair nach bhfuil sé laistigh d'iosta.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tá fad neamhbhailí ag '{VEHICLE}' le '{COMPANY}'. Is dócha gur fadhbanna le NewGRFanna is cúis leis. Is féidir go ndíshioncronófar an cluiche nó go gclisfidh sé
 
 STR_NEWGRF_BUGGY                                                :{WHITE}Cuireann an NewGRF '{0:STRING}' faisnéis mícheart ar fáil.
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Tá an fhaisnéis lastais/athfheistithe le haghaidh '{1:ENGINE}' difriúil ón liosta ceannacháin i ndiaidh tógála. B'fhéidir go dteipfidh uath-athnuachan/uath-ionadú athfheistiú i gceart dá bharr.
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}Chruthaigh '{1:STRING}' lúb éigríochta san aisghlaoch táirgeachta.
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs.
 STR_NEWGRF_INVALID_CARGO                                        :<lastas neamhbhailí>
@@ -2501,6 +2518,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Tabhair
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Tóg dealbh le comóradh a dhéanamh ar do chuideachta.{}Costas: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Tabhair maoiniú chun foirgnimh tráchtála nua a thógáil sa bhaile.{}Costas: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Ceannaigh cearta eisiacha iompair ar feadh bliana sa bhaile seo. Ní cheadóidh údarás an bhaile do phaisinéirí agus lastas ach na stáisiúin atá agatsa a úsáid.{}Costas: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Tabhair breab don údarás áitiúil chun do rátáil a mhéadú, leis an mbaol ann go mbeidh pionós trom ort má bheirtear ort.{}Costas: {CURRENCY}
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Fordheontais
@@ -2512,6 +2530,7 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Cliceáil ar sheirbhís chun an t-amharc a lárú ar thionscal/bhaile. Déantar amharc nua a oscailt ar shuíomh an tionscail/bhaile le Ctrl+Cliceáil
 
 # Station list window
+STR_STATION_LIST_TOOLTIP                                        :{BLACK}Ainmneacha na stáisiún - cliceáil ar ainm chun an t-amharc a lárú ar stáisiún. Osclaítear amharc nua ar shuíomh an stáisiúin le Ctrl+Cliceáil
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Coinnigh síos Ctrl le níos mó ná rud amháin a roghnú
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Stáisiú{P "" "" "" "" ""}n
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
@@ -2547,6 +2566,7 @@ STR_CARGO_RATING_EXCELLENT                                      :Ar fheabhas
 STR_CARGO_RATING_OUTSTANDING                                    :Go hiontach
 ############ range for rating ends
 
+STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Láraigh an príomhamharc ar shuíomh an stáisiúin. Osclaítear amharc nua ar shuíomh an stáisiúin le Ctrl+Cliceáil
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Athraigh ainm an stásiúin
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Taispeáin gach traein a bhfuil an stáisiún seo ar a sceideal
@@ -2558,7 +2578,9 @@ STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Athainmnigh st�
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Láraigh an príomhamharc ar shuíomh an phointe bealaigh. Osclaítear amharc nua ar shuíomh an phointe bealaigh le Ctrl+Cliceáil
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Athraigh ainm an phointe bealaigh
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Láraigh an príomhamharc ar shuíomh an bhaoi. Osclaítear amharc nua ar shuíomh an bhaoi le Ctrl+Cliceáil
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Athraigh ainm an bhaoi
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Cuir ainm an phointe bealaigh in eagar
@@ -2890,12 +2912,14 @@ STR_REPLACE_ENGINES                                             :Innill
 STR_REPLACE_WAGONS                                              :Vaigíní
 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Roghnaigh an cineál ráille is mian leat innill a athsholáthar air
+STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Taispeántar cén inneall a dhéanfar an t-inneall atá roghnaithe ar chlé a athsholáthar leis, má dhéanfar é a athsholáthar
 STR_REPLACE_RAIL_VEHICLES                                       :Feithiclí Iarnróid
 STR_REPLACE_ELRAIL_VEHICLES                                     :Feithiclí Iarnróid Leictreacha
 STR_REPLACE_MONORAIL_VEHICLES                                   :Feithiclí Aonráille
 STR_REPLACE_MAGLEV_VEHICLES                                     :Feithiclí Maglev
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vaigíní a bhaint: {ORANGE}{STRING}
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Ceangail ar uath-athsholáthar fad na traenach a choinneáil mar an gcéanna trí vaigíní a bhaint (ag tosú ag an tosach), má tharlaíonn sé go mbeadh an traein níos faide tar éis an t-inneall a athsholáthar.
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
@@ -2935,6 +2959,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Taispeá
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Taispeáin sonraí na loinge
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Taispeáin sonraí an aerárthaigh
 
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}An gníomh don traein reatha - cliceáil chun an traein a thosú/stopadh. Ctrl+Cliceáil le scrollú chuig an gceann scríbe.
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}An gníomh don fheithicil reatha - cliceáil chun an fheithicil a thosú/stopadh. Ctrl+Cliceáil le scrollú chuig an gceann scríbe.
+STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}An gníomh don long reatha - cliceáil chun an long a thosú/stopadh. Ctrl+Cliceáil le scrollú chuig an gceann scríbe.
+STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}An gníomh don aerárthach reatha - cliceáil chun an t-aerárthach a thosú/stopadh. Ctrl+Cliceáil le scrollú chuig an gceann scríbe.
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Ag Lódáil / Dílódáil
@@ -3084,6 +3112,7 @@ STR_ORDER_DROP_NO_UNLOADING                                     :Ná dílódáil
 STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Athraigh an chaoil a dílódáiltear san ordú aibhsithe
 
 STR_ORDER_REFIT                                                 :{BLACK}Athfheistigh
+STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Roghnaigh an cineál lastais le hathfheistiú chuig san ordú seo. Bainfear an t-ordú athfheistithe le Ctrl+Cliceáil
 
 STR_ORDER_SERVICE                                               :{BLACK}Seirbhísigh
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Téigh i gcónaí
@@ -3122,6 +3151,7 @@ STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Gabh Chu
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Gabh chuig an iosta is gaire
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Gabh chuig an haingear is gaire
 STR_ORDER_CONDITIONAL                                           :Léim choinníollach ordaithe
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Ionsáigh ordú nua roimh an ordú aibhsithe, nó cuir le deireadh an liosta é. Le Ctrl, beidh orduithe stáisiúin 'lasta iomlán de lastas ar bith', beidh orduithe do phointí bealaigh 'gan stad' agus beidh orduithe d'iostaí 'déan seirbhísiú'
 STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Cuir isteach ard-ordú
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Taispeáin gach feithicil a dhéanann an sceideal seo a chomhroinnt
@@ -3188,6 +3218,7 @@ STR_TIMETABLE_DAYS                                              :{COMMA} lá{P "
 STR_TIMETABLE_TICKS                                             :{COMMA} {P th th th dt t}ic
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Tógfaidh sé {STRING} an t-amchlár seo a chur i gcrích
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Glacfaidh sé ar a laghad {STRING} chun an t-amhchlár seo a chur i gcrích (níl gach rud ar an amchlár)
 
 STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Tá an fheithicil seo ag rith ar am faoi láthair
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Tá an fheithicil seo ag rith {STRING} mall faoi láthair
@@ -3235,16 +3266,20 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}Socruith
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Athraigh socruithe an AI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Athlódáil an AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Maraigh an AI, athlódáil an script agus atosaigh an AI
+STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Cumasaigh/díchumasaigh briseadh nuair is ionann teachtaireacht loga an AI agus teaghrán an bhriste
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Briseadh ar:
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Briseadh air
 STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Nuair a bheidh teachtaireacht loga AI mar an gcéanna leis an teaghrán seo, cuirtear an cluiche ar sos.
 STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Meaitseáil an cás
+STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Déan scoránú idir an cás a mheaitseáil agus teachtaireachtaí loga an AI á gcur i gcomparáid le teaghrán an bhriste
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Lean ar aghaidh
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Cuir deireadh leis an sos agus lean leis an AI
 
 STR_ERROR_NO_AI                                                 :{WHITE}Tá OpenTTD gan tacaíocht do AIanna...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... níl aon AI ar fáil!
 
+STR_ERROR_AI_NO_AI_FOUND                                        :Níor aimsíodh AI feiliúnach le lódáil.{}Is AI caoch é an AI seo agus ní dhéanfaidh sé aon rud.{}Is féidir leat roinnt AI a íoslódáil leis an gcóras 'Inneachar Ar Líne'..
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Thuairteáil ceann de na AIanna atá ar rith. Déan é seo a thuairisciú d'údar an AI le do thoil, le seat scáileáin den Fhuinneog Dífhabhtaithe AI ag gabháil leis.
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Níl an fhuinneog Dífhabhtú AI ar fáil ach don fhreastalaí amháin
 
 # AI configuration window
@@ -3322,11 +3357,13 @@ STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... níl
 STR_ERROR_PNGMAP                                                :{WHITE}Ní féidir tírdhreach a lódáil ó PNG...
 STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... níor aimsíodh an comhad.
 STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... níorbh fhéidir an cineál íomhá a thiontú. íomhá PNG 8 nó 24 giotán ag teastáil.
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}... chuaigh rud éigin mícheart, sin a bhfuil le rá. Ár leithscéal. (gach seans go bhfuil comhad truaillithe)
 
 STR_ERROR_BMPMAP                                                :{WHITE}Ní féidir tírdhreach a lódáil ó BMP...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... níorbh fhéidir an cineál íomhá a thiontú.
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Rabhadh faoin scála
+STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Ní mholtar duit méid na léarscáile foinsí a athrú an iomarca. Lean leis an nginiúint?
 
 # Soundset messages
 STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Níor aimsíodh ach sraith fuaimeanna tacachumais. Má tá fuaimeanna uait, suiteáil sraith fuaimeanna sa chóras íoslódála inneachair.
@@ -3507,6 +3544,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Ní mór
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Níl ráillí iarnróid feiliúnacha ann
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Ní mór na ráillí iarnróid a bhaint ar dtús
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Is bóthar aonbhealaigh nó blocáilte é
+STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Ní cheadaítear crosairí comhréidh don chineál ráille seo
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Ní féidir comharthaí a thógáil anseo...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Ní féidir ráillí iarnróid a thógáil anseo...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Ní féidir ráillí iarnróid a bhaint as seo...

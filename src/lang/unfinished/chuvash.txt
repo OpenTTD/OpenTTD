@@ -21,6 +21,8 @@
 ##id 0x0000
 STR_NULL                                                        :
 STR_EMPTY                                                       :
+STR_UNDEFINED                                                   :(уҫӑмсӑрӑн)
+STR_JUST_NOTHING                                                :Ним те
 
 # Cargo related strings
 # Plural cargo name
@@ -91,14 +93,33 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Газланă 
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
+STR_QUANTITY_N_A                                                :палӑ мар
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
+STR_ABBREV_PASSENGERS                                           :{TINYFONT}ПА
+STR_ABBREV_COAL                                                 :{TINYFONT}КӐ
+STR_ABBREV_MAIL                                                 :{TINYFONT}ПО
+STR_ABBREV_OIL                                                  :{TINYFONT}НЕ
+STR_ABBREV_LIVESTOCK                                            :{TINYFONT}ВЫ
+STR_ABBREV_ALL                                                  :{TINYFONT}ПӖРМАЙ
 
 # 'Mode' of transport for cargoes
+STR_PASSENGERS                                                  :пассажирсем
+STR_RES_OTHER                                                   :расна
 STR_NOTHING                                                     :
 
 # Colours, do not shuffle
+STR_COLOUR_PINK                                                 :Кӗрен
+STR_COLOUR_YELLOW                                               :Сарӑ
+STR_COLOUR_RED                                                  :Хӗрлӗ
+STR_COLOUR_GREEN                                                :Симĕс
+STR_COLOUR_BLUE                                                 :Кăвак
+STR_COLOUR_CREAM                                                :Ҫутӑ хӑмӑр
+STR_COLOUR_ORANGE                                               :Хӗрлӗрех сарӑ
+STR_COLOUR_BROWN                                                :Хӑмӑр
+STR_COLOUR_GREY                                                 :Сӑрӑ
+STR_COLOUR_WHITE                                                :Шурӑ
 
 # Units used in OpenTTD
 
@@ -111,9 +132,13 @@ STR_NOTHING                                                     :
 
 # Common window strings
 
+STR_BUTTON_RENAME                                               :{BLACK}Ята улӑштар
 
+STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Чӳречене хуп
 
 # Query window
+STR_BUTTON_DEFAULT                                              :{BLACK}Пӳрнӗ пек
+STR_BUTTON_CANCEL                                               :{BLACK}Улӑштар
 
 # On screen keyboard window
 

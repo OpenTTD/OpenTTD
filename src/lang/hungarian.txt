@@ -1209,6 +1209,8 @@ STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Automat
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Autom. járműfelújítás {ORANGE}{STRING}{LTBLUE} hónappal a max. életkora előtt/után
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Autom. felújításhoz szükséges min. pénz: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Hibaüzenetek megjelenítési ideje: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Lebegési események késése: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Lebegési események késése: {ORANGE}kikapcsolva
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Mutassa a település lakosságát a feliratban: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Térkép generálás: {ORANGE}{STRING}
@@ -2514,7 +2516,7 @@ STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRI
 STR_NEWGRF_INVALID_CARGO                                        :<érvénytelen rakomány>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} of <érvénytelen rakomány>
-STR_NEWGRF_INVALID_ENGINE                                       :<érvénytelen mozdony>
+STR_NEWGRF_INVALID_ENGINE                                       :<érvénytelen jármű modell>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<érvénytelen gazdasági épület>
 
 # Sign list window

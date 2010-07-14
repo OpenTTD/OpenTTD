@@ -1146,6 +1146,8 @@ STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Fahrzeu
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Erneuere Fahrzeug {ORANGE}{STRING}{LTBLUE} Monate vor/nach Maximalalter
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Minimaler Kontostand für automatisches Erneuern: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Dauer der Fehlermeldungen: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Verzögerung von Hilfstexten: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Verzögerung von Hilfstexten {ORANGE}nicht aktiviert
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Zeige die Einwohnerzahl von Städten neben ihrem Namen: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Algorithmus zur Landschaftserzeugung: {ORANGE}{STRING}

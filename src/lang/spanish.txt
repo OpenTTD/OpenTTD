@@ -1146,6 +1146,8 @@ STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Renovac
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Renovación automática si tiene {ORANGE}{STRING}{LTBLUE} meses antes/después edad máxima
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Mínimo de dinero requerido para renovación automática: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Duración del mensaje de error: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Retraso requerido al mantener ratón: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Retraso requerido al mantener ratón: {ORANGE}desactivado
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Muestra la población de un pueblo en su etiqueta: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Generador terreno: {ORANGE}{STRING}

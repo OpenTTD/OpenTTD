@@ -2519,7 +2519,7 @@ STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRI
 STR_NEWGRF_INVALID_CARGO                                        :<neplatný náklad>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} jednot{P ka ky ek} <neplatného nákladu>
-STR_NEWGRF_INVALID_ENGINE                                       :<neplatná lokomotiva>
+STR_NEWGRF_INVALID_ENGINE                                       :<neplatný druh vozidla>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<neplatný průmysl>
 
 # Sign list window
