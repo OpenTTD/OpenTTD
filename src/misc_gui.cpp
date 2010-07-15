@@ -400,7 +400,7 @@ static const char * const _credits[] = {
 	"",
 	"Special thanks go out to:",
 	"  Josef Drexler - For his great work on TTDPatch",
-	"  Marcin Grzegorczyk - For his documentation of TTD internals",
+	"  Marcin Grzegorczyk - For describing Transport Tycoon Deluxe internals",
 	"  Petr Baudi\xC5\xA1 (pasky) - Many patches, newGRF support",
 	"  Stefan Mei\xC3\x9Fner (sign_de) - For his work on the console",
 	"  Simon Sasburg (HackyKid) - Many bugfixes he has blessed us with",
