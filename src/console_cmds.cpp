@@ -241,7 +241,8 @@ DEF_CONSOLE_CMD(ConSave)
 DEF_CONSOLE_CMD(ConSaveConfig)
 {
 	if (argc == 0) {
-		IConsoleHelp("Saves the current config, typically to 'openttd.cfg'.");
+		IConsoleHelp("Saves the configuration for new games to the configuration file, typically 'openttd.cfg'.");
+		IConsoleHelp("It does not save the configuration of the current game to the configuration file.");
 		return true;
 	}
 
