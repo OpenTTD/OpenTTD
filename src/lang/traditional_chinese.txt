@@ -1145,6 +1145,8 @@ STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}交通�
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}當交通工具在使用年限 {ORANGE}{STRING}{LTBLUE} 個月前／後自動更新
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}自動翻新所需最低餘額：{ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}錯誤訊息顯示時間：{ORANGE}{STRING}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}滑鼠停留時顯示工具提示的延遲時間：{ORANGE}{STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}滑鼠停留時顯示工具提示的延遲時間：{ORANGE}停用
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}於標籤顯示市鎮人口：{ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}地形產生器：{ORANGE}{STRING}
@@ -1215,10 +1217,10 @@ STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}啟用�
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}顯示時刻表時以 Tick 取代日為單位：{ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}顯示時刻表排定的到離時間：{ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}快速建立交通工具調度命令：{ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}預設的路軌種類 (將在新遊戲／載入遊戲時生效)：{ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :最先可用的路軌
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :最新可用的路軌
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :最常用的路軌
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}預設的鐵軌種類 (將在新遊戲／載入遊戲時生效)：{ORANGE}{STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :最先可用的軌道
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :最新可用的軌道
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :最常用的軌道
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}顯示列車佔用的路徑：{ORANGE}{STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}使建設工具在建造後仍保持啟用狀態：{ORANGE}{STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}將公司財務視窗的收支分組顯示：{ORANGE}{STRING}
@@ -1274,7 +1276,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :２x２網格
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :３x３網格
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :隨機
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}市鎮可以興建道路：{ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}允許城鎮建設交叉道路: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}允許市鎮建設平交道：{ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}允許市鎮限制機場噪音：{ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}於遊戲中興建新市鎮：{ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :禁止
@@ -1897,7 +1899,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}興建�
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}興建鐵路號誌。 按住 Ctrl 點選可切換懸臂／燈號號誌{} 於直線鐵路上拖曳可興建多個號誌。 按住 Ctrl 拖曳則只興建號誌至下個岔道{} 於選單按鈕按住 Ctrl 點選可切換顯示號誌選擇視窗
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}興建鐵路橋樑
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}挖掘鐵路隧道
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}切換建築／移除鐵軌、號誌站及車站。 按住 Ctrl 點選可移除號誌站及車站中的鐵軌
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}切換建築／移除鐵軌、號誌、號誌站及車站。 按住 Ctrl 點選可移除號誌站及車站中的鐵軌
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}轉換／升級軌道種類
 
 # Rail depot construction window
@@ -2060,7 +2062,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}在場�
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}產生地形
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}在場景中產生岩石區
 STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}放置燈塔
-STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}定義沙漠區{}點擊並按住 CTRL 可以移除
+STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}定義沙漠區{}按住 CTRL 可移除
 STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}放置天線塔
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}增加地形升降的範圍
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}減少地形升降的範圍
@@ -2810,10 +2812,10 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}車輛 {NUM} 部 {STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}列車 - 點選列車檢視資訊，拖放車廂可加掛／解聯
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}車輛 - 點選車輛顯示詳細資料
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}船舶 - 點選船舶可看到詳細資料
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}飛機 - 點選飛機顯示詳細資料
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}列車 - 拖放車廂可加掛／解聯、點選右鍵可顯示詳細資訊。按住 Ctrl 可一併選擇之後的車廂
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}車輛 - 點選右鍵可顯示詳細資訊
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}船舶 - 點選右鍵可顯示詳細資訊
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}飛機 - 點選右鍵可顯示詳細資訊
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}將列車拖到這裡即可出售
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}將車輛拖到這裡即可出售
@@ -3541,10 +3543,10 @@ STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(金錢限制)
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}不合理的軌道組合
 STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}必須先移除號誌
-STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}沒有適合的鐵路軌道
+STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}沒有適合的鐵軌
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}必須先移除鐵路
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}道路是單行道或已封閉
-STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}軌道類型不允許交叉
+STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}這種軌道不能建設平交道
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}不能在這邊興建號誌...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}不能在這邊鋪設鐵路...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}不能從這邊移除鐵路...

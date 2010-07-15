@@ -905,7 +905,7 @@ STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIGFONT}{BLACK
 STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIGFONT}{BLACK}Взрыв завода при подозрительных обстоятельствах вблизи г.{NBSP}{TOWN}!
 STR_NEWS_DISASTER_BIG_UFO                                       :{BIGFONT}{BLACK}НЛО приземлилось возле г.{NBSP}{TOWN}!
 STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIGFONT}{BLACK}Обвал на угольной шахте вызывает оползень в районе г.{NBSP}{TOWN}!
-STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIGFONT}{BLACK}ПОТОП!{}{COMMA} человек{P "" а ""} утонул{P "" о о} в результате наводнения!
+STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIGFONT}{BLACK}Потоп!{}Не меньше {P "" ",чем " ""} {COMMA} человек{P "" а ""} признан{P "" о о} пропавшим{P "" и и} без вести в результате наводнения!
 
 STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIGFONT}{BLACK}Транспортная компания в опасном положении!
 STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIGFONT}{BLACK}{STRING} будет продана или объявлена банкротом, если не начнёт приносить прибыль!
@@ -932,12 +932,12 @@ STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK
 STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}Спад закончился!{}{}Увеличение объёмов торговли внушает уверенность владельцам предприятий. Экономика укрепляет свои позиции.
 
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}Предприятие «{INDUSTRY}» увеличивает объёмы производства!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}{INDUSTRY} начинает разработку нового угольного пласта! Добыча увеличена вдвое!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}Обнаружены новые запасы нефти!{}{INDUSTRY} увеличивает темпы добычи вдвое!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}{INDUSTRY} внедряет новые методы ведения с/х, что позволит удвоить производительность!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}«{INDUSTRY}» начинает разработку нового угольного пласта! Добыча увеличена вдвое!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}Обнаружены новые запасы нефти!{}«{INDUSTRY}» увеличивает темпы добычи вдвое!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}«{INDUSTRY}» внедряет новые методы ведения с/х, что позволит удвоить производительность!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK}Предприятие «{1:INDUSTRY}» увеличивает производство {0:STRING.gen} на{NBSP}{2:COMMA}%!
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}Производительность предприятия «{INDUSTRY}» упала на 50%
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}{INDUSTRY} снижает производительность на 50% из-за нашествия вредителей!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}«{INDUSTRY}» снижает производительность на 50% из-за нашествия вредителей!
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK}Предприятие «{1:INDUSTRY}» снижает производство {0:STRING.gen} на{NBSP}{2:COMMA}%!
 
 STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} ждёт в депо
@@ -1299,6 +1299,8 @@ STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Авт�
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Замена через {ORANGE}{STRING}{LTBLUE} месяц{P "" а ев} после истечения срока службы
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Сумма, необходимая для автозамены: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Макс. длительность сообщений об ошибке: {ORANGE}{STRING} сек.
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Задержка появления подсказки при наведении курсора: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Задержка появления подсказки при наведении курсора: {ORANGE}отключена
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Показывать количество жителей города в названии: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Генератор земли: {ORANGE}{STRING}
@@ -2067,7 +2069,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Стро
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Установка сигналов. Ctrl переключает семафоры/светофоры.{}Перетаскиваием можно строить сигналы на прямом участке пути. Ctrl строит сигналы до ближайшего пересечения.{}Ctrl+щелчок переключает открытие окна выбора сигналов.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Строительство ж/д мостов
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Строительство ж/д туннелей
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Строительство/удаление ж/д путей, сигналов, станций. При нажатом Ctrl убирает станции с рельсами.
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Переключение между строительством и удалением ж/д путей, сигналов, станций. При нажатом Ctrl убирает станции с рельсами.
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Преобразовать/модернизировать тип рельсов
 
 # Rail depot construction window
@@ -2980,7 +2982,7 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} единиц{P а "" ""}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Поезда - используйте перетаскивание для изменения состава; нажмите ПКМ для получения информации
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Поезда - используйте перетаскивание для изменения состава; нажмите ПКМ для получения информации. Удерживайте Ctrl для перетаскивания вагона вместе со всеми следующими за ним.
 STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Автомобили - нажмите ПКМ для получения информации
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Корабли - нажмите ПКМ для получения информации
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Авиатранспорт - нажмите ПКМ для получения информации
@@ -4002,25 +4004,25 @@ STR_SV_STNAME_FALLBACK                                          :г.{NBSP}{STRIN
 # Vehicle names
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KIRBY_PAUL_TANK_STEAM        :Паровоз Kirby Paul Tank
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_250_DIESEL               :Тепловоз MJS 250
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_CHOO_CHOO         :Паровоз Ploddyphut Choo-Choo
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_CHOO_CHOO         :Паровоз Плодифат Чу-Чу
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_CHOO_CHOO          :Паровоз Powernaut Choo-Choo
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MIGHTYMOVER_CHOO_CHOO        :Паровоз MightyMover Choo-Choo
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_DIESEL            :Тепловоз Ploddyphut
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_DIESEL             :Тепловоз Powernaut
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_WILLS_2_8_0_STEAM            :Паровоз Wills 2-8-0
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CHANEY_JUBILEE_STEAM         :Паровоз Chaney «Jubilee»
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_GINZU_A4_STEAM               :Паровоз Ginzu «A4»
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MIGHTYMOVER_CHOO_CHOO        :Паровоз Майтимувер «Чу-чу»
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_DIESEL            :Тепловоз Плодифат
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_DIESEL             :Тепловоз Повернат
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_WILLS_2_8_0_STEAM            :Паровоз Вилс 2-8-0
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CHANEY_JUBILEE_STEAM         :Паровоз Чейни «Юбилей»
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_GINZU_A4_STEAM               :Паровоз Гинзу «A4»
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_8P_STEAM                  :Паровоз SH «8P»
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MANLEY_MOREL_DMU_DIESEL      :Дизель-поезд Manley-Morel
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_DASH_DIESEL                  :Дизель-поезд «Dash»
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MANLEY_MOREL_DMU_DIESEL      :Дизель-поезд Мэнли-Морел
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_DASH_DIESEL                  :Дизель-поезд «Дэш»
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_HENDRY_25_DIESEL          :Тепловоз SH/Hendry «25»
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_UU_37_DIESEL                 :Тепловоз UU «37»
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_FLOSS_47_DIESEL              :Тепловоз Floss «47»
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_FLOSS_47_DIESEL              :Тепловоз Флос «47»
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CS_4000_DIESEL               :Тепловоз CS 4000
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CS_2400_DIESEL               :Тепловоз CS 2400
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CENTENNIAL_DIESEL            :Тепловоз Centennial
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KELLING_3100_DIESEL          :Тепловоз Kelling 3100
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_TURNER_TURBO_DIESEL          :Тепловоз Turner Turbo
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CENTENNIAL_DIESEL            :Тепловоз «Вековой»
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KELLING_3100_DIESEL          :Тепловоз Келлинг 3100
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_TURNER_TURBO_DIESEL          :Тепловоз «Тёрнер Турбо»
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_1000_DIESEL              :Тепловоз MJS 1000
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_125_DIESEL                :Тепловоз SH «125»
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_30_ELECTRIC               :Электровоз SH «30»
@@ -4033,20 +4035,20 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COAL_CAR                      :Угольна�
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_OIL_TANKER                    :Нефтяная цистерна
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_LIVESTOCK_VAN                 :Вагон для скота
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GOODS_VAN                     :Товарный вагон
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GRAIN_HOPPER                  :Хоппер
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GRAIN_HOPPER                  :Хоппер для зерна
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WOOD_TRUCK                    :Вагон для дерева
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_IRON_ORE_HOPPER               :Вагон для железной руды
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_IRON_ORE_HOPPER               :Хоппер для железной руды
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_STEEL_TRUCK                   :Вагон для стали
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_ARMORED_VAN                   :Бронированный вагон
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FOOD_VAN                      :Рефрижератор
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PAPER_TRUCK                   :Вагон для бумаги
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COPPER_ORE_HOPPER             :Вагон для медной руды
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COPPER_ORE_HOPPER             :Хоппер для медной руды
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WATER_TANKER                  :Водная цистерна
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FRUIT_TRUCK                   :Рефрижератор (фрукты)
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_RUBBER_TRUCK                  :Вагон для каучука
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_SUGAR_TRUCK                   :Вагон для сахара
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COTTON_CANDY_HOPPER           :Вагон для сахарной ваты
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOFFEE_HOPPER                 :Вагон для ирисок
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COTTON_CANDY_HOPPER           :Хоппер для сахарной ваты
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOFFEE_HOPPER                 :Хоппер для ирисок
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BUBBLE_VAN                    :Вагон для пузырьков
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COLA_TANKER                   :Цистерна для колы
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_CANDY_VAN                     :Вагон для конфет
@@ -4056,27 +4058,27 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FIZZY_DRINK_TRUCK             :Вагон дл
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PLASTIC_TRUCK                 :Вагон для пластика
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :Электровоз «X2001»
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_MILLENNIUM_Z1_ELECTRIC   :Электровоз «Millennium Z1»
-STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_WIZZOWOW_Z99             :Wizzowow Z99
+STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_WIZZOWOW_Z99             :Визовов Z99
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PASSENGER_CAR             :Пассажирский вагон
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_MAIL_VAN                  :Почтовый вагон
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COAL_CAR                  :Угольная платформа
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_OIL_TANKER                :Нефтяная цистерна
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_LIVESTOCK_VAN             :Вагон для скота
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GOODS_VAN                 :Товарный вагон
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GRAIN_HOPPER              :Хоппер
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GRAIN_HOPPER              :Хоппер для зерна
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WOOD_TRUCK                :Вагон для дерева
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_IRON_ORE_HOPPER           :Вагон для железной руды
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_IRON_ORE_HOPPER           :Хоппер для железной руды
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_STEEL_TRUCK               :Вагон для стали
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_ARMORED_VAN               :Бронированный вагон
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FOOD_VAN                  :Рефрижератор
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PAPER_TRUCK               :Вагон для бумаги
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COPPER_ORE_HOPPER         :Вагон для медной руды
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COPPER_ORE_HOPPER         :Хоппер для медной руды
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WATER_TANKER              :Водная цистерна
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FRUIT_TRUCK               :Рефрижератор (фрукты)
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_RUBBER_TRUCK              :Вагон для каучука
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_SUGAR_TRUCK               :Вагон для сахара
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COTTON_CANDY_HOPPER       :Вагон для сахарной ваты
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOFFEE_HOPPER             :Вагон для ирисок
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COTTON_CANDY_HOPPER       :Хоппер для сахарной ваты
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOFFEE_HOPPER             :Хоппер для ирисок
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BUBBLE_VAN                :Вагон для пузырьков
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COLA_TANKER               :Цистерна для колы
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_CANDY_VAN                 :Вагон для конфет
@@ -4088,27 +4090,27 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV1_LEVIATHAN_ELECTRIC    :Lev1 «Леви
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV2_CYCLOPS_ELECTRIC      :Lev2 «Циклоп»
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV3_PEGASUS_ELECTRIC      :Lev3 «Пегас»
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV4_CHIMAERA_ELECTRIC     :Lev4 «Химера»
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_WIZZOWOW_ROCKETEER         :Wizzowow Rocketeer
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_WIZZOWOW_ROCKETEER         :Визовов «Ракета»
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PASSENGER_CAR               :Пассажирский вагон
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_MAIL_VAN                    :Почтовый вагон
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COAL_CAR                    :Угольная платформа
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_OIL_TANKER                  :Нефтяная цистерна
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_LIVESTOCK_VAN               :Вагон для скота
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GOODS_VAN                   :Товарный вагон
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GRAIN_HOPPER                :Хоппер
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GRAIN_HOPPER                :Хоппер для зерна
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WOOD_TRUCK                  :Вагон для дерева
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_IRON_ORE_HOPPER             :Вагон для железной руды
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_IRON_ORE_HOPPER             :Хоппер для железной руды
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_STEEL_TRUCK                 :Вагон для стали
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_ARMORED_VAN                 :Бронированный вагон
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FOOD_VAN                    :Рефрижератор
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PAPER_TRUCK                 :Вагон для бумаги
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COPPER_ORE_HOPPER           :Вагон для медной руды
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COPPER_ORE_HOPPER           :Хоппер для медной руды
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WATER_TANKER                :Водная цистерна
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FRUIT_TRUCK                 :Рефрижератор (фрукты)
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FRUIT_TRUCK                 :Рефрижератор для фруктов
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_RUBBER_TRUCK                :Вагон для каучука
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_SUGAR_TRUCK                 :Вагон для сахара
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COTTON_CANDY_HOPPER         :Вагон для сахарной ваты
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOFFEE_HOPPER               :Вагон для ирисок
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COTTON_CANDY_HOPPER         :Хоппер для сахарной ваты
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOFFEE_HOPPER               :Хоппер для ирисок
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BUBBLE_VAN                  :Вагон для пузырьков
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COLA_TANKER                 :Цистерна для колы
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_CANDY_VAN                   :Вагон для конфет
@@ -4120,18 +4122,18 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_REGAL_BUS                     :Автобус 
 STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_LEOPARD_BUS              :Автобус Hereford Leopard
 STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_BUS                        :Автобус Foster
 STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_MKII_SUPERBUS              :Автобус Foster MkII
-STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKI_BUS                :Автобус Ploddyphut MkI
-STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKII_BUS               :Автобус Ploddyphut MkII
-STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKIII_BUS              :Автобус Ploddyphut MkIII
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKI_BUS                :Автобус Плодифат MkI
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKII_BUS               :Автобус Плодифат MkII
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKIII_BUS              :Автобус Плодифат MkIII
 STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_COAL_TRUCK                 :Грузовик Balogh (уголь)
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COAL_TRUCK                    :Грузовик Uhl (уголь)
 STR_VEHICLE_NAME_ROAD_VEHICLE_DW_COAL_TRUCK                     :Грузовик DW (уголь)
 STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_MAIL_TRUCK                    :Почтовый фургон MPS
 STR_VEHICLE_NAME_ROAD_VEHICLE_REYNARD_MAIL_TRUCK                :Почтовый фургон Reynard
 STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_MAIL_TRUCK                  :Почтовый фургон Perry
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_MAIL_TRUCK            :Почтовый фургон MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_MAIL_TRUCK            :Почтовый фургон Майтимувер
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_MAIL_TRUCK            :Почтовый фургон Powernaught
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_MAIL_TRUCK               :Почтовый фургон Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_MAIL_TRUCK               :Почтовый фургон Визовов
 STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_OIL_TANKER               :Цистерна Witcombe (нефть)
 STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_OIL_TANKER                 :Цистерна Foster (нефть)
 STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_OIL_TANKER                  :Цистерна Perry (нефть)
@@ -4174,88 +4176,88 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_FRUIT_TRUCK               :Рефриже�
 STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_RUBBER_TRUCK               :Грузовик Balogh (каучук)
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_RUBBER_TRUCK                  :Грузовик Uhl (каучук)
 STR_VEHICLE_NAME_ROAD_VEHICLE_RMT_RUBBER_TRUCK                  :Грузовик RMT (каучук)
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_SUGAR_TRUCK           :Грузовик MightyMover (сахар)
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_SUGAR_TRUCK           :Грузовик Майтимувер (сахар)
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_SUGAR_TRUCK           :Грузовик Powernaught (сахар)
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_SUGAR_TRUCK              :Грузовик Wizzowow (сахар)
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COLA_TRUCK            :Цистерна MightyMover (кола)
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_SUGAR_TRUCK              :Грузовик Визовов (сахар)
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COLA_TRUCK            :Цистерна Майтимувер (кола)
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COLA_TRUCK            :Цистерна Powernaught (кола)
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COLA_TRUCK               :Цистерна Wizzowow (кола)
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COTTON_CANDY          :Грузовик MightyMover (сах. вата)
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COLA_TRUCK               :Цистерна Визовов (кола)
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COTTON_CANDY          :Грузовик Майтимувер (сах. вата)
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COTTON_CANDY          :Грузовик Powernaught (сах. вата)
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COTTON_CANDY_TRUCK       :Грузовик Wizzowow (сах. вата)
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOFFEE_TRUCK          :Грузовик MightyMover (ириски)
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COTTON_CANDY_TRUCK       :Грузовик Визовов (сах. вата)
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOFFEE_TRUCK          :Грузовик Майтимувер (ириски)
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOFFEE_TRUCK          :Грузовик Powernaught (ириски)
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOFFEE_TRUCK             :Грузовик Wizzowow (ириски)
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOY_VAN               :Грузовик MightyMover (игрушки)
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOFFEE_TRUCK             :Грузовик Визовов (ириски)
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOY_VAN               :Грузовик Майтимувер (игрушки)
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOY_VAN               :Грузовик Powernaught (игрушки)
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOY_VAN                  :Грузовик Wizzowow (игрушки)
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_CANDY_TRUCK           :Грузовик MightyMover (конфеты)
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOY_VAN                  :Грузовик Визовов (игрушки)
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_CANDY_TRUCK           :Грузовик Майтимувер (конфеты)
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_CANDY_TRUCK           :Грузовик Powernaught (конфеты)
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_CANDY_TRUCK              :Грузовик Wizzowow (конфеты)
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BATTERY_TRUCK         :Грузовик MightyMover (батарейки)
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_CANDY_TRUCK              :Грузовик Визовов (конфеты)
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BATTERY_TRUCK         :Грузовик Майтимувер (батарейки)
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BATTERY_TRUCK         :Грузовик Powernaught (батарейки)
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BATTERY_TRUCK            :Грузовик Wizzowow (батарейки)
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_FIZZY_DRINK           :Грузовик MightyMover (газировка)
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BATTERY_TRUCK            :Грузовик Визовов (батарейки)
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_FIZZY_DRINK           :Грузовик Майтимувер (газировка)
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_FIZZY_DRINK           :Грузовик Powernaught (газировка)
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_FIZZY_DRINK_TRUCK        :Грузовик Wizzowow (газировка)
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_PLASTIC_TRUCK         :Грузовик MightyMover (пластик)
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_FIZZY_DRINK_TRUCK        :Грузовик Визовов (газировка)
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_PLASTIC_TRUCK         :Грузовик Майтимувер (пластик)
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_PLASTIC_TRUCK         :Грузовик Powernaught (пластик)
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_PLASTIC_TRUCK            :Грузовик Wizzowow (пластик)
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BUBBLE_TRUCK          :Грузовик MightyMover (пузырьки)
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_PLASTIC_TRUCK            :Грузовик Визовов (пластик)
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BUBBLE_TRUCK          :Грузовик Майтимувер (пузырьки)
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BUBBLE_TRUCK          :Грузовик Powernaught (пузырьки)
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BUBBLE_TRUCK             :Грузовик Wizzowow (пузырьки)
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BUBBLE_TRUCK             :Грузовик Визовов (пузырьки)
 STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER                            :Нефт. танкер MPS
 STR_VEHICLE_NAME_SHIP_CS_INC_OIL_TANKER                         :Нефт. танкер CS-Inc.
 STR_VEHICLE_NAME_SHIP_MPS_PASSENGER_FERRY                       :Пассажир. судно MPS
 STR_VEHICLE_NAME_SHIP_FFP_PASSENGER_FERRY                       :Пассажир. судно FFP
-STR_VEHICLE_NAME_SHIP_BAKEWELL_300_HOVERCRAFT                   :Судно на возд. подушке Bakewell 300
+STR_VEHICLE_NAME_SHIP_BAKEWELL_300_HOVERCRAFT                   :Судно на возд. подушке Бейквел 300
 STR_VEHICLE_NAME_SHIP_CHUGGER_CHUG_PASSENGER                    :Пассажир. судно Chugger-Chug
 STR_VEHICLE_NAME_SHIP_SHIVERSHAKE_PASSENGER_FERRY               :Пассажир. судно Shivershake
-STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :Сухогруз Yate
-STR_VEHICLE_NAME_SHIP_BAKEWELL_CARGO_SHIP                       :Сухогруз Bakewell
-STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :Сухогруз MightyMover
-STR_VEHICLE_NAME_SHIP_POWERNAUT_CARGO_SHIP                      :Сухогруз Powernaut
-STR_VEHICLE_NAME_AIRCRAFT_SAMPSON_U52                           :Sampson U52
-STR_VEHICLE_NAME_AIRCRAFT_COLEMAN_COUNT                         :Coleman Count
-STR_VEHICLE_NAME_AIRCRAFT_FFP_DART                              :FFP Dart
-STR_VEHICLE_NAME_AIRCRAFT_YATE_HAUGAN                           :Yate Haugan
-STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_COTSWALD_LB_3                :Bakewell Cotswald LB-3
-STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_8                 :Bakewell Luckett LB-8
-STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_9                 :Bakewell Luckett LB-9
-STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB80                 :Bakewell Luckett LB80
-STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_10                :Bakewell Luckett LB-10
-STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_11                :Bakewell Luckett LB-11
-STR_VEHICLE_NAME_AIRCRAFT_YATE_AEROSPACE_YAC_1_11               :Yate Aerospace YAC 1-11
-STR_VEHICLE_NAME_AIRCRAFT_DARWIN_100                            :Darwin 100
-STR_VEHICLE_NAME_AIRCRAFT_DARWIN_200                            :Darwin 200
-STR_VEHICLE_NAME_AIRCRAFT_DARWIN_300                            :Darwin 300
-STR_VEHICLE_NAME_AIRCRAFT_DARWIN_400                            :Darwin 400
-STR_VEHICLE_NAME_AIRCRAFT_DARWIN_500                            :Darwin 500
-STR_VEHICLE_NAME_AIRCRAFT_DARWIN_600                            :Darwin 600
-STR_VEHICLE_NAME_AIRCRAFT_GURU_GALAXY                           :Guru Galaxy
-STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A21                           :AirTaxi A21
-STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A31                           :AirTaxi A31
-STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A32                           :AirTaxi A32
-STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A33                           :AirTaxi A33
-STR_VEHICLE_NAME_AIRCRAFT_YATE_AEROSPACE_YAE46                  :Yate Aerospace YAe46
-STR_VEHICLE_NAME_AIRCRAFT_DINGER_100                            :Dinger 100
-STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A34_1000                      :AirTaxi A34-1000
-STR_VEHICLE_NAME_AIRCRAFT_YATE_Z_SHUTTLE                        :Yate Z-Shuttle
-STR_VEHICLE_NAME_AIRCRAFT_KELLING_K1                            :Kelling K1
-STR_VEHICLE_NAME_AIRCRAFT_KELLING_K6                            :Kelling K6
-STR_VEHICLE_NAME_AIRCRAFT_KELLING_K7                            :Kelling K7
-STR_VEHICLE_NAME_AIRCRAFT_DARWIN_700                            :Darwin 700
-STR_VEHICLE_NAME_AIRCRAFT_FFP_HYPERDART_2                       :FFP Hyperdart 2
-STR_VEHICLE_NAME_AIRCRAFT_DINGER_200                            :Dinger 200
-STR_VEHICLE_NAME_AIRCRAFT_DINGER_1000                           :Dinger 1000
-STR_VEHICLE_NAME_AIRCRAFT_PLODDYPHUT_100                        :Ploddyphut 100
-STR_VEHICLE_NAME_AIRCRAFT_PLODDYPHUT_500                        :Ploddyphut 500
-STR_VEHICLE_NAME_AIRCRAFT_FLASHBANG_X1                          :Flashbang X1
-STR_VEHICLE_NAME_AIRCRAFT_JUGGERPLANE_M1                        :Juggerplane M1
-STR_VEHICLE_NAME_AIRCRAFT_FLASHBANG_WIZZER                      :Flashbang Wizzer
+STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :Сухогруз Ят
+STR_VEHICLE_NAME_SHIP_BAKEWELL_CARGO_SHIP                       :Сухогруз Бейквел
+STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :Сухогруз Майтимувер
+STR_VEHICLE_NAME_SHIP_POWERNAUT_CARGO_SHIP                      :Сухогруз Повернат
+STR_VEHICLE_NAME_AIRCRAFT_SAMPSON_U52                           :Сампсон U52
+STR_VEHICLE_NAME_AIRCRAFT_COLEMAN_COUNT                         :Колман Каунт
+STR_VEHICLE_NAME_AIRCRAFT_FFP_DART                              :FFP Дарт
+STR_VEHICLE_NAME_AIRCRAFT_YATE_HAUGAN                           :Ят Хоган
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_COTSWALD_LB_3                :Бейквел Котсвалд LB-3
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_8                 :Бейквел Лакет LB-8
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_9                 :Бейквел Лакет LB-9
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB80                 :Бейквел Лакет LB80
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_10                :Бейквел Лакет LB-10
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_11                :Бейквел Лакет LB-11
+STR_VEHICLE_NAME_AIRCRAFT_YATE_AEROSPACE_YAC_1_11               :Ят Аэроспейс YAC 1-11
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_100                            :Дарвин 100
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_200                            :Дарвин 200
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_300                            :Дарвин 300
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_400                            :Дарвин 400
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_500                            :Дарвин 500
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_600                            :Дарвин 600
+STR_VEHICLE_NAME_AIRCRAFT_GURU_GALAXY                           :Гуру «Галактика»
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A21                           :Аэротакси A21
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A31                           :Аэротакси A31
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A32                           :Аэротакси A32
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A33                           :Аэротакси A33
+STR_VEHICLE_NAME_AIRCRAFT_YATE_AEROSPACE_YAE46                  :Ят Аэроспейс YAe46
+STR_VEHICLE_NAME_AIRCRAFT_DINGER_100                            :Дингер 100
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A34_1000                      :Аэротакси A34-1000
+STR_VEHICLE_NAME_AIRCRAFT_YATE_Z_SHUTTLE                        :Ят Z-Шаттл
+STR_VEHICLE_NAME_AIRCRAFT_KELLING_K1                            :Келлинг K1
+STR_VEHICLE_NAME_AIRCRAFT_KELLING_K6                            :Келлинг K6
+STR_VEHICLE_NAME_AIRCRAFT_KELLING_K7                            :Келлинг K7
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_700                            :Дарвин 700
+STR_VEHICLE_NAME_AIRCRAFT_FFP_HYPERDART_2                       :FFP Гипердарт 2
+STR_VEHICLE_NAME_AIRCRAFT_DINGER_200                            :Дингер 200
+STR_VEHICLE_NAME_AIRCRAFT_DINGER_1000                           :Дингер 1000
+STR_VEHICLE_NAME_AIRCRAFT_PLODDYPHUT_100                        :Плодифат 100
+STR_VEHICLE_NAME_AIRCRAFT_PLODDYPHUT_500                        :Плодифат 500
+STR_VEHICLE_NAME_AIRCRAFT_FLASHBANG_X1                          :Вспышка-и-шум X1
+STR_VEHICLE_NAME_AIRCRAFT_JUGGERPLANE_M1                        :Джаггерлёт M1
+STR_VEHICLE_NAME_AIRCRAFT_FLASHBANG_WIZZER                      :Вспышка-и-взрыв Свист
 STR_VEHICLE_NAME_AIRCRAFT_TRICARIO_HELICOPTER                   :Вертолёт Tricario
-STR_VEHICLE_NAME_AIRCRAFT_GURU_X2_HELICOPTER                    :Вертолёт Guru X2
-STR_VEHICLE_NAME_AIRCRAFT_POWERNAUT_HELICOPTER                  :Вертолёт Powernaut
+STR_VEHICLE_NAME_AIRCRAFT_GURU_X2_HELICOPTER                    :Вертолёт Гуру X2
+STR_VEHICLE_NAME_AIRCRAFT_POWERNAUT_HELICOPTER                  :Вертолёт Павернат
 
 ##id 0x8800
 # Formatting of some strings

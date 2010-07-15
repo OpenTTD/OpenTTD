@@ -2063,7 +2063,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Semer de
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Création du terrain
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Placer des endroits rocheux sur le terrain
 STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Placer un Phare
-STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Définir une zone désertique.{}Garder Ctrl enfoncé pour retrait
+STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Définir une zone désertique.{}Maintenir Ctrl pour retrait
 STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Placer un Transmetteur
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Augmenter la quantité de terre à modifier
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Diminuer la quantité de terre à modifier
@@ -2534,7 +2534,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Cliquer 
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nom des stations - Cliquer sur un nom pour centrer la vue sur la station. Ctrl-clic pour ouvrir une nouvelle vue sur la station
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Cliquer avec Ctrl pour sélectionner plus d'un élément
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Maintenir Ctrl pour sélectionner plus d'un élément
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Station{P 1 "" s}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
@@ -2813,7 +2813,7 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} véhicule{P "" s}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trains - glisser un élément pour l'ajouter/le supprimer du train, cliquer droit pour obtenir des information sur l'élément, Ctrl-clic droit pour obtenir des information sur l'ensemble
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trains - glisser un élément pour l'ajouter/le supprimer du train, cliquer droit pour obtenir des information sur l'élément. Maintenir Ctrl pour que les deux fonctions s'appliquent à la chaine qui suit
 STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Véhicules - cliquer droit sur un véhicule pour obtenir des informations
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Navires - cliquer droit sur un navire pour obtenir des informations
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Aéronef - cliquer droit sur l'aéronef pour obtenir des informations

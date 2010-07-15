@@ -1145,6 +1145,8 @@ STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Déan u
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Uathathnuaigh feithicil agus é {ORANGE}{STRING}{LTBLUE} mí roimh/i ndiaih a haois uasta
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Uathathnuachan: uasmhéid airgead a theastaíonn le hathnuachan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Fad na teachtaireachta earráide: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Moill na n-imeachtaí ainlithe: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Moill na n-imeachtaí ainlithe: {ORANGE}díchumasaithe
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Taispéain daonra an bhaile i lipéad ainm an bhaile: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Gineadóir talún: {ORANGE}{STRING}

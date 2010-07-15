@@ -1340,6 +1340,8 @@ STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Automat
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Automatska zamena nakon {ORANGE}{STRING}{LTBLUE} meseci po ostarenju
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Najmanja potrebna količina novca za zamenu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Trajanje ispisa poruka o grešci: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Odlaganje događaja pri zadržavanju pokazivača: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Odlaganje događaja pri zadržavanju pokazivača: {ORANGE}isključeno
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Prikazivanje broja populacije pored naziva naselja: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Oblikovanje reljefa: {ORANGE}{STRING}
@@ -2092,7 +2094,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Izgradnj
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Izgradnja železničke signalizacije. Ctrl uključuje semafore/svetlosne signale{}Prevlačenjem se grade signali duž prave linije pruge. Ctrl gradi signale do sledeće raskrsnice{}Ctrl+Klik uključuje otvaranje prozora za izbor signala
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Izgradnja železničkog mosta
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Izgradnja železničkog tunela
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Izgradnja/Uklanjanje železničkih pruga,signalizacije, putnih tačaka i stanica (kad je uključeno). Držanjem Ctrl takođe se uklanja pruga sa putnih tačaka i stanica
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Izgradnja/Uklanjanje železničkih pruga, signalizacije, putnih tačaka i stanica (kad je uključeno). Držanjem Ctrl takođe se uklanja pruga sa putnih tačaka i stanica
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Promena/Nadogradnja vrste pruge
 
 # Rail depot construction window
@@ -2255,7 +2257,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Zasadi d
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Oblikovanje reljefa
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Postavi stenovita područja na reljef
 STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Postavi svetionik
-STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Definiši pustinjsku oblast.{}Pritisni i drži Ctrl da je ukloniš
+STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Definisanje pustinjske oblasti.{}Držanjem Ctrl se uklanja
 STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Postavi predajnik
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Uvećaj područje koje treba sniziti/povisiti
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Smanji područje koje treba sniziti/povisiti
@@ -2726,7 +2728,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klikom n
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Imena stanica - klik na ime centrira pogled na stanicu. Ctrl+Klik otvara novi pogled na to mesto
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Držite Ctrl kako biste označili više od jedne stavke
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Držanjem Ctrl moguće je označiti više od jedne stavke
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Stanic{P a e a}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}

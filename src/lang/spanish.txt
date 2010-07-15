@@ -2453,7 +2453,7 @@ STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRI
 STR_NEWGRF_INVALID_CARGO                                        :<carga incorrecta>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} de <carga incorrecta>
-STR_NEWGRF_INVALID_ENGINE                                       :<vehículo incorrecto>
+STR_NEWGRF_INVALID_ENGINE                                       :<modelo de vehículo incorrecto>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<industria incorrecta>
 
 # Sign list window

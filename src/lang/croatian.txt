@@ -1241,6 +1241,8 @@ STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Automat
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Automatski obnovi vozilo {ORANGE}{STRING}{LTBLUE} mjeseci prije/poslije maksimalne starosti
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Minimum novca potrebnih za automatsko obnavljanje: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Trajanje poruke s greškom: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Odgoda lebdjećih događaja: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Odgoda lebdjećih dođađaja: {ORANGE}isključen
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Pokaži broj stanovnika u oznaci imena grada: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Generator zemlje: {ORANGE}{STRING}
@@ -1993,7 +1995,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Izgradi 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Izgradi željezničke signale. Ctrl aktivira semafore/svjetlosne signale{}Povlačenjem će se izgraditi signali uzduž ravnog dijela pruge. Ctrl će izgraditi signale do sljedećeg križanja.{}Ctrl+klik aktivira otvaranje prozora za odabir signala
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Izgradi željeznički most
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Izgradi željeznički tunel
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Aktiviraj izgradnju/uklanjanje željezničke pruge, znakova, čvorišta i postaja. Držanjem tipke Ctrl također se uklanjaju tračnice na čvorištima i postajama.
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Aktiviraj izgradnju/uklanjanje željezničke pruge, signala, čvorišta i postaja. Držanjem tipke Ctrl također se uklanjaju tračnice na čvorištima i postajama.
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Pretvori/nadogradi vrstu pruge
 
 # Rail depot construction window
@@ -2546,7 +2548,7 @@ STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{G=male}{WHITE}
 STR_NEWGRF_INVALID_CARGO                                        :<pogrešan teret>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} od <pogrešan teret>
-STR_NEWGRF_INVALID_ENGINE                                       :<pogrešno vozilo>
+STR_NEWGRF_INVALID_ENGINE                                       :<pogrešan model vozila>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<pogrešna industrija>
 
 # Sign list window
@@ -2906,10 +2908,10 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} vozil{P o a a}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vlakovi - klikni na vlak za informacije, vuci vozilo kako bi dodao/oduzeo od vlaka
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Vozila - klikni na vozilo za informaciju
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Brodovi - klikni na brod za informacije
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Zrakoplov - klikni na zrakoplov za informacije
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vlakovi - drži lijevi klik i vuci vozilo za dodavanje/skidanjed iz vlaka, desni klik za informacije. Drži tipku Ctrl da obje funkcije rade na slijedu
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Vozila - desni klik na vozilo za informacije
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Brodovi - desni klik na brod za informacije
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Zrakoplov - desni klik na zrakoplov za informacije
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Ovdje povuci vlak kako bi ga prodao
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Povuci cestovno vozilo ovdje kako bi ga prodao

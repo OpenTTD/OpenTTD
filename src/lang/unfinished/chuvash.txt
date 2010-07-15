@@ -139,14 +139,24 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Чӳре
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Пӳрнӗ пек
 STR_BUTTON_CANCEL                                               :{BLACK}Улӑштар
+STR_BUTTON_OK                                                   :{BLACK}Юрӗ
 
 # On screen keyboard window
 
 # Measurement tooltip
+STR_MEASURE_LENGTH                                              :{BLACK}Тӑршшӗ: {NUM}
+STR_MEASURE_AREA                                                :{BLACK}Лаптӑкӑш: {NUM} x {NUM}
 
 
 # These are used in buttons
+STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Ҫынисем
+STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Ячӗ
+STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Кун
 # These are used in dropdowns
+STR_SORT_BY_POPULATION                                          :Ҫынисем
+STR_SORT_BY_NAME                                                :Ячӗ
+STR_SORT_BY_PRODUCTION                                          :Тухӑҫлӑх
+STR_SORT_BY_TYPE                                                :Тип
 
 # Tooltips for the main toolbar
 

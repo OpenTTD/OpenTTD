@@ -1900,7 +1900,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Bahnhof 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Signale errichten. Strg+Klick wechselt zwischen Formsignal-/Signaltypen{}Klicken und Ziehen, um mehrere Signale entlang einer geraden Strecke zu bauen. Strg halten, um bis zur nächsten Kreuzung zu bauen{}Strg+Klick auf die Schaltfläche zeigt das Signal-Menü
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Eisenbahnbrücke bauen
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Eisenbahntunnel bauen
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Umschalter für Bau/Abriss von aktuellem Bauwerkzeug. Strg+Klick um die Gleise von Wegpunkten und Bahnhöfen ebenfalls zu entfernen.
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Umschalter für Bau/Abriss mit aktuellem Bauwerkzeug. Strg+Klick um die Gleise von Wegpunkten und Bahnhöfen ebenfalls zu entfernen.
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}In aktuellen Gleistyp umwandeln
 
 # Rail depot construction window
@@ -2453,7 +2453,7 @@ STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRI
 STR_NEWGRF_INVALID_CARGO                                        :<ungültige Frachtart>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} of <ungültige Frachtart>
-STR_NEWGRF_INVALID_ENGINE                                       :<ungültige Lokomotive>
+STR_NEWGRF_INVALID_ENGINE                                       :<ungültiger Fahrzeugtyp>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<ungültige Industrie>
 
 # Sign list window
@@ -2813,7 +2813,7 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} Fahrzeug{P "" e}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Züge - Fahrzeug ziehen, um es an-/abzukoppeln. Rechts-Klick für Fahrzeuginformationen, Strg+Rechts-Klick für Gespann-Informationen.
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Züge - Fahrzeug ziehen, um es an-/abzukoppeln. Rechts-Klick für Fahrzeuginformationen, Rechts-Klick für Einzelheiten. Strg, um die jeweilige Funktion für das gesamte Gespann auszuführen
 STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Straßenfahrzeuge - Rechts-Klick für Einzelheiten
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Schiffe - Rechts-Klick für Einzelheiten
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Flugzeuge - Rechts-Klick für Einzelheiten
