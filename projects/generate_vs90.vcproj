@@ -15,6 +15,7 @@
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
+			IntermediateDirectory="..\objs\generate"
 			ConfigurationType="10"
 			>
 		</Configuration>
