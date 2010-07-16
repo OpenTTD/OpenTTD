@@ -177,3 +177,11 @@ OpenTTD not properly resizing with SDL on X [FS#3305]
 	Window managers that are known to exhibit this behaviour are KDE's
 	and GNOME's. With the XFCE's and LXDE's window managers the resize
 	event is sent when the user releases the mouse.
+
+Content files not properly extracted with zlib 1.2.3.5-1.2.4 [FS#3753]
+	With zlib 1.2.3.5 up to and including 1.2.4 the function "gzeof",
+	which tells when we read the whole file, is broken in such a way
+	that OpenTTD thinks it has extracted and written the whole file
+	while the last few hundred/thousand bytes are not extracted yet.
+	This causes problems for everything that is downloaded from the
+	online content system when using one of those versions of zlib.

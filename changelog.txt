@@ -209,7 +209,7 @@
 - Fix: Crash when a baseset has an empty metadata field (r19095)
 - Fix: Possible read/write after free when the client triggered the server to close the connection [FS#3599] (r19072)
 - Fix: Remove Bidi control characters from the reordered text so they are not drawn [FS#3604] (r19067)
-- Fix: [NewGRF] Settings that are part of the 'TTPatch flags' can cause desyncs if they are changed in network games (r19066)
+- Fix: [NewGRF] Settings that are part of the 'TTDPatch flags' can cause desyncs if they are changed in network games (r19066)
 - Fix: When banning yourself via rcon do not send the 'command response' to the client as the connection has already been terminated [FS#3598] (r19054)
 - Fix: Mass stopping/starting/autoreplacing gave empty errors when there were no vehicles [FS#3577] (r19024)
 - Fix: City airport introduction date had become 5 years later (r19023)
@@ -1656,7 +1656,7 @@
 - Codechange: Add new vehicle hash table for collision detection and finding vehicles on a tile. The hash area scanned is far smaller than the old hash table, which is now used for viewport updates only. This should give a significant performance improvement for games with many vehicles (r10111)
 - Codechange: Do not redraw all station tiles when cargo is added or removed if the station has no custom graphics (r10062)
 - Codechange: Add some support for NewGRF var 7D, temporary storage array (r9707)
-- Codechange: Add support for returning 'ttdpatch variables' (Action D) (r9701)
+- Codechange: Add support for returning 'TTDPatch variables' (Action D) (r9701)
 - Codechange: Implement NewGRF callback 36, which allows changing of various properties which were previously static (r9671 and several others)
 - Codechange: Add support for multiple 'base' directories for NewGRF searching (r9560)
 - Codechange: Implement actions 1/2/3 for cargoes, callback handler and custom icon sprites (rmany)
@@ -2426,7 +2426,7 @@
 - Fix: Incorrect validating of tree-planting command which can allow a buffer-overflow (r3446)
 - Fix: [NewGRF] When changing the sprite ID of a vehicle, if it is not FD (custom graphics), the value needs to changed from a 16bit array offset to an array index. (fixes tropicstw.grf) (r3449)
 - Fix: You could not remove an item from a list-type of config ingame from the configuration file (r3475)
-- Fix: [NewGRF] Always reinitialize the ttdpatch flags as patch settings may have changed (r3486)
+- Fix: [NewGRF] Always reinitialize the TTDPatch flags as patch settings may have changed (r3486)
 - Fix: Price for demolishing a bridge was dependent on orientation and map size (r3487)
 
 

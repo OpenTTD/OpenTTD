@@ -226,9 +226,10 @@ You need to copy the following files:
 
 4.1.3) Original Transport Tycoon Deluxe music
 ------ --------------------------------------
-If you want the TTD music, copy the gm/ folder from the Windows version
-of TTD to your OpenTTD folder (not your data folder - also explained in
-the following sections). The music from the DOS version does not work.
+If you want the Transport Tycoon Deluxe music, copy the gm/ folder from the
+Windows version of Transport Tycoon Deluxe to your OpenTTD folder (not your
+data folder - also explained in the following sections). The music from the
+DOS version as well as the original Transport Tycoon does not work.
 
 4.1.4) AIs
 ------ ---
@@ -248,8 +249,9 @@ wait for an error message to pop up. The error message will tell you
 4.2) OpenTTD directories
 ---- -------------------------------
 
-The TTD artwork files listed in the section 4.1 "(Required) 3rd party files"
-can be placed in a few different locations:
+The required 3rd party files listed in the section 4.1 "(Required) 3rd party files"
+as well as other non-compulsory extensions (NewGRFs, AI, heightmaps, scenarios) can be
+placed in a few different locations:
 	1. The current working directory (from where you started OpenTTD)
 	2. Your personal directory
 		Windows: C:\My Documents (95, 98, ME)
@@ -302,9 +304,9 @@ again, see section 4.1).
 5.0) OpenTTD features:
 ---- -----------------
 
-OpenTTD has a lot of features going beyond the original TTD emulation.
-Unfortunately, there is currently no comprehensive list of features, but there
-is a basic features list on the web, and some optional features can be
+OpenTTD has a lot of features going beyond the original Transport Tycoon Deluxe
+emulation. Unfortunately, there is currently no comprehensive list of features,
+but there is a basic features list on the web, and some optional features can be
 controlled through the Advanced Settings dialog. We also implement some
 features known from TTDPatch (http://www.ttdpatch.net/).
 
@@ -335,7 +337,8 @@ Information logged:
 * Adding / removing / changing order of NewGRFs
 * Changing NewGRF parameters, loading compatible NewGRF
 * Changing game mode (scenario editor <-> normal game)
-* Loading game saved in a different OpenTTD / TTDPatch / TTD version
+* Loading game saved in a different OpenTTD / TTDPatch / Transport Tycoon Deluxe /
+  original Transport Tycoon version
 * Running a modified OpenTTD build
 * Changing settings affecting NewGRF behaviour (non-network-safe settings)
 * Changing landscape (by cheat)
@@ -565,7 +568,7 @@ Retired Developers:
 
 Thanks to:
   Josef Drexler                  - For his great work on TTDPatch.
-  Marcin Grzegorczyk             - For his TTDPatch work and documentation of TTD internals and graphics (signals and track foundations)
+  Marcin Grzegorczyk             - For his TTDPatch work and documentation of Transport Tycoon Deluxe internals and graphics (signals and track foundations)
   Petr Baudiš (pasky)            - Many patches, newgrf support, etc.
   Simon Sasburg (HackyKid)       - For the many bugfixes he has blessed us with
   Stefan Meißner (sign_de)       - For his work on the console
