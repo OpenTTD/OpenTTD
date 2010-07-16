@@ -23,19 +23,31 @@
  * \li AIIndustry::GetIndustryID
  * \li AIIndustryType::INDUSTRYTYPE_TOWN
  * \li AIIndustryType::INDUSTRYTYPE_UNKNOWN
- * \li AIRail::GetMaxSpeed
- * \li AIRail::ERR_RAILTYPE_DISALLOWS_CROSSING
  *
  * API removals:
  * \li HasNext for all lists.
  *
  * Other changes:
- * \li AIBridge::GetPrice now returns the price of the bridge without the cost for the rail or road.
  * \li AIRoad::BuildRoadStation now allows overbuilding.
  * \li AIRoad::BuildDriveThroughRoadStation now allows overbuilding.
  * \li AIEngine::GetPower can be used for road vehicles.
  * \li AIEngine::GetWeight can be used for road vehicles.
  * \li AIEngine::GetMaxTractiveEffort can be used for road vehicles.
+ *
+ * \b 1.0.3
+ *
+ * API additions:
+ * \li AIRail::ERR_RAILTYPE_DISALLOWS_CROSSING
+ *
+ * \b 1.0.2
+ *
+ * Other changes:
+ * \li AIBridge::GetPrice now returns the price of the bridge without the cost for the rail or road.
+ *
+ * \b 1.0.1
+ *
+ * API additions:
+ * \li AIRail::GetMaxSpeed
  *
  * \b 1.0.0
  *

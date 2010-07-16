@@ -3,7 +3,37 @@ openttd (1.1~svn-0) UNRELEASED; urgency=low
   * Unreleased SVN version. Versioned to allow normal upgrades to released
     versions.
 
- -- Matthijs Kooijman <matthijs@stdin.nl>  Sat, 03 Apr 2010 00:00:00 +0000
+ -- Matthijs Kooijman <matthijs@stdin.nl>  Fri, 16 Jul 2010 00:00:00 +0000
+
+openttd (1.0.2-0) unstable; urgency=low
+
+  * New upstream release 1.0.2
+
+ -- Matthijs Kooijman <matthijs@stdin.nl>  Sat, 19 Jun 2010 18:36:21 +0000
+
+openttd (1.0.2~rc1-0) unstable; urgency=low
+
+  * New upstream release 1.0.2-RC1
+
+ -- Matthijs Kooijman <matthijs@stdin.nl>  Sat, 05 Jun 2010 23:36:21 +0000
+
+openttd (1.0.1-0) unstable; urgency=low
+
+  * New upstream release 1.0.1
+
+ -- Matthijs Kooijman <matthijs@stdin.nl>  Sat, 01 May 2010 00:00:00 +0200
+
+openttd (1.0.1~rc2-0) unstable; urgency=low
+
+  * New upstream release 1.0.1-RC2
+
+ -- Matthijs Kooijman <matthijs@stdin.nl>  Wed, 21 Apr 2010 21:36:21 +0200
+
+openttd (1.0.1~rc1-0) unstable; urgency=low
+
+  * New upstream release 1.0.1-RC1
+
+ -- Matthijs Kooijman <matthijs@stdin.nl>  Sat, 17 Apr 2010 23:36:21 +0000
 
 openttd (1.0.0-1) unstable; urgency=low
 
