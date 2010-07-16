@@ -26,6 +26,7 @@
 #include "station_base.h"
 #include "engine_base.h"
 #include "company_base.h"
+#include "newgrf_railtype.h"
 
 struct WagonOverride {
 	EngineID *train_id;
@@ -643,6 +644,12 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 
 		case 0x48: return Engine::Get(v->engine_type)->flags; // Vehicle Type Info
 		case 0x49: return v->build_year;
+
+		case 0x4A: {
+			if (v->type != VEH_TRAIN) return 0;
+			RailType rt = GetTileRailType(v->tile);
+			return (HasPowerOnRail(Train::From(v)->railtype, rt) ? 0x100 : 0) | GetReverseRailTypeTranslation(rt, object->grffile);
+		}
 
 		/* Variables which use the parameter */
 		case 0x60: // Count consist's engine ID occurance
