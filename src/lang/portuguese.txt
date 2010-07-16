@@ -444,6 +444,7 @@ STR_ABOUT_MENU_AI_DEBUG                                         :Depuração da 
 STR_ABOUT_MENU_SCREENSHOT                                       :Captura de ecrã (Ctrl-S)
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Captura gigante (Ctrl+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Sobre o OpenTTD...
+STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Alinhador de sprites
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -1144,6 +1145,8 @@ STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Auto-re
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Auto-renovação do veículo {ORANGE}{STRING}{LTBLUE} meses antes/depois da idade máx.
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Dinheiro mínimo para fazer auto-renovação: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Duração das mensagens de erro: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Atraso de eventos de pairar do rato: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Atraso de eventos de pairar do rato: {ORANGE}desactivado
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Mostra população da cidade na janela da cidade: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Gerador de terra: {ORANGE}{STRING}
@@ -2375,7 +2378,17 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Tipo de linha
 
 
 # Sprite aligner window
+STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}A alinhar sprite {COMMA} ({STRING})
+STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Próximo sprite
+STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Ir para sprite
+STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Sprite anterior
+STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Representação do sprite seleccionado actualmente. O alinhamento é ignorado este sprite é desenhado
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Mover o sprite, mudando os desvios X e Y
+STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}Desvio X: {NUM}, Desvio Y: {NUM}
+STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Escolher sprite
+STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Escolha um sprite de qualquer lado no ecrã
 
+STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Ir para sprite
 
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
@@ -2431,7 +2444,7 @@ STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRI
 STR_NEWGRF_INVALID_CARGO                                        :<invalid cargo>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} de <invalid cargo>
-STR_NEWGRF_INVALID_ENGINE                                       :<invalid engine>
+STR_NEWGRF_INVALID_ENGINE                                       :<modelo de veículo inválido>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<invalid industry>
 
 # Sign list window
@@ -2791,10 +2804,10 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} veículo{P "" s}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Comboios - clique num comboio para informações, arraste um veículo para o adicionar/remover ao comboio
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Veículos - clique num veículo para informações
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Barcos - clique num barco para informações
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Aeronave - clique na aeronave para informações
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Comboios - arraste o veículo com o botão esquerdo do rato para adicionar/remover do comboio, clique com o botão direito do rato para informações. Fixe o Ctrl para fazer com que as duas funções se apliquem à seguinte cadeia
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Veículos - faça clique direito num veículo para informações
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Barcos - faça clique direito num barco para informações
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Aeronave - faça clique direito na aeronave para informações
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Arraste o veículo ferroviário para aqui para o vender
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Arraste o veículo de estrada para aqui para o vender

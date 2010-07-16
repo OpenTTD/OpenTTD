@@ -1145,6 +1145,8 @@ STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Vernieu
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Vernieuw voertuig automatisch {ORANGE}{STRING}{LTBLUE} maanden voor/na max. leeftijd
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Minimum benodigd geld voor automatisch vernieuwen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Duur van foutmeldingen: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Vertraging muis-over: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Vertraging muis-over: {ORANGE}uit
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Geef het inwoneraantal bij een stad weer: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Landgenerator: {ORANGE}{STRING}
@@ -2060,7 +2062,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Versprei
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Landontwikkeling
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Plaats rotsachtige gebieden op de kaart
 STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Plaats vuurtoren
-STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Definieer woestijngebied.{}Gebruik Ctrl om het te verwijderen
+STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Definieer woestijngebied.{}Hou Ctrl vast om het te verwijderen
 STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Plaats radiomast
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Vergroot de landoppervlakte om te verhogen/verlagen
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Verklein de landoppervlakte om te verhogen/verlagen

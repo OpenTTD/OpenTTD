@@ -1963,7 +1963,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Vasútá
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Vasúti jelzők építése. Ctrl gombbal váltás az alak- és fényjelzők között{}Húzással a sínek mentén végig jelzők épülnek. Húzva Ctrl gombbal a következő pályakiágazásig épít jelzőket{}Ctrl+Kattintással válthatod a megnyitandó jelzőépítés-kezelő ablakot
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Vasúti híd építése
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Vasúti alagút építése
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Váltás felszedés és építés között vasúti pályák, jelzők, ellenőrző pontok és vasútállomások esetében. Ctrl nyomvatartásával az ellenőrző pontokon és állomásokon a vasúti pályát is eltávolítja
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Váltás fépítés/feleszedés között vasúti pályák, jelzők, ellenőrző pontok és vasútállomások esetében. Ctrl nyomvatartásával az ellenőrző pontokon és állomásokon a vasúti pályát is eltávolítja
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Sínek átalakítása a kiválasztott típusra
 
 # Rail depot construction window
@@ -2876,7 +2876,7 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} jármű{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vonatok - bal gombbal húzással áthelyezheted a járműveket a vonatba/vonatból, jobb gombbal kattintással járműinformáció, Ctrl+Jobb kattintással szerelvény információ
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vonatok - bal gombbal húzással áthelyezheted a járműveket a vonatba/vonatból, jobb gombbal kattintással járműinformáció. Ctrl lenyomásával a funkciókat a szerelvényre alkalmazod.
 STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Járművek - kattints jobb gombbal egy járműre az adataihoz
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Hajók - kattints jobb gombbal egy hajóra az adataihoz
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Repülőgépek - kattints jobb gombbal egy repülőgépre az adataihoz

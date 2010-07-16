@@ -304,10 +304,10 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Taispeá
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Taispeáin graif
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Taispeáin tábla sraithe na gcuideachtaí
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Tabhair maoiniú do thionscal nua nó liosta de gach tionscal
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Taispeáin liosta de thraenacha na cuideachta. Déantar Ctrl+Cliceáil scoránú ar liosta na ngrúpaí/bhfeithiclí a oscailt
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Taispeáin liosta d'fheithiclí bóithre na cuideachta. Déantar Ctrl+Cliceáil scoránú ar liosta na ngrúpaí/bhfeithiclí a oscailt
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Taispeáin liosta de longa na cuideachta. Déantar Ctrl+Cliceáil scoránú ar liosta na ngrúpaí/bhfeithiclí a oscailt
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Taispeáin liosta d'aerárthaigh na cuideachta. Déantar Ctrl+Cliceáil scoránú ar liosta na ngrúpaí/bhfeithiclí a oscailt
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Taispeáin liosta de thraenacha na cuideachta. Déantar scoránú ar liosta na ngrúpaí/bhfeithiclí a oscailt le Ctrl+Cliceáil
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Taispeáin liosta d'fheithiclí bóithre na cuideachta. Déantar scoránú ar liosta na ngrúpaí/bhfeithiclí a oscailt le Ctrl+Cliceáil
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Taispeáin liosta de longa na cuideachta. Déantar scoránú ar liosta na ngrúpaí/bhfeithiclí a oscailt le Ctrl+Cliceáil
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Taispeáin liosta d'aerárthaigh na cuideachta. Déantar scoránú ar liosta na ngrúpaí/bhfeithiclí a oscailt le Ctrl+Cliceáil
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Zúmáil isteach
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Zúmáil amach
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Tóg iarnród
@@ -345,10 +345,10 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Scoir
 ############ range for SE file menu starts
 
 ############ range for settings menu starts
-STR_SETTINGS_MENU_GAME_OPTIONS                                  :Roghann cluiche
+STR_SETTINGS_MENU_GAME_OPTIONS                                  :Roghanna an chluiche
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Socruithe deacrachta
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Ardsocruithe
-STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Socruiteh NewGRF
+STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Socruithe NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Roghanna trédhearcachta
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Taispeántar ainmneacha bailte
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Taispeántar ainmneacha na stáisiún
