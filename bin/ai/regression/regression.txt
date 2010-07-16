@@ -8632,4 +8632,37 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetEventType:        6
       Unknown Event
   IsEventWaiting:        false
+
+--Math--
+  -2147483648 < -2147483647:   true
+  -2147483648 < -1         :   true
+  -2147483648 <  0         :   true
+  -2147483648 <  1         :   true
+  -2147483648 <  2147483647:   true
+  -2147483647 < -2147483648:   false
+  -1          < -2147483648:   false
+   0          < -2147483648:   false
+   1          < -2147483648:   false
+   2147483647 < -2147483648:   false
+  -1          >  2147483647:   false
+  -1          >  1         :   false
+  -1          >  0         :   false
+  -1          > -1         :   false
+  -1          > -2147483648:   true
+   1          >  2147483647:   false
+   1          >  1         :   false
+   1          >  0         :   true
+   1          > -1         :   true
+   1          > -2147483648:   true
+   2147483647 >  2147483646:   true
+   2147483647 >  1         :   true
+   2147483647 >  0         :   true
+   2147483647 > -1         :   true
+   2147483647 > -2147483648:   true
+   2147483646 >  2147483647:   false
+   1          >  2147483647:   false
+   0          >  2147483647:   false
+  -1          >  2147483647:   false
+  -2147483648 >  2147483647:   false
+   13725      > -2147483648:   true
 ERROR: The AI died unexpectedly.
