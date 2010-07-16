@@ -253,6 +253,9 @@ The required 3rd party files listed in the section 4.1 "(Required) 3rd party fil
 as well as other non-compulsory extensions (NewGRFs, AI, heightmaps, scenarios) can be
 placed in a few different locations:
 	1. The current working directory (from where you started OpenTTD)
+		For non-Windows operating systems OpenTTD will not scan for files in this
+		directory if it is your personal directory, i.e. "~/", or when it is the
+		root directory, i.e. "/".
 	2. Your personal directory
 		Windows: C:\My Documents (95, 98, ME)
 		         C:\Documents and Settings\<username>\My Documents\OpenTTD (2000, XP)
