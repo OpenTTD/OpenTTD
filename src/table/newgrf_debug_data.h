@@ -55,6 +55,7 @@ static const NIVariable _niv_vehicles[] = {
 	NIV(0x47, "vehicle cargo info"),
 	NIV(0x48, "vehicle type info"),
 	NIV(0x49, "year of construction"),
+	NIV(0x4A, "current rail type info"),
 	NIV(0x60, "count vehicle id occurrences"),
 	NIV_END()
 };
