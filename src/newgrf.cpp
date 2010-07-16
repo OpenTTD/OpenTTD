@@ -1034,12 +1034,12 @@ static ChangeInfoResult AircraftVehicleChangeInfo(uint engine, int numinfo, int 
 				avi->cost_factor = buf->ReadByte();
 				break;
 
-			case PROP_AIRCRAFT_SPEED: // 0x0C Speed (1 unit is 8 mph, we translate to 1 unit is 1 km/h)
-				avi->max_speed = (buf->ReadByte() * 129) / 10;
+			case PROP_AIRCRAFT_SPEED: // 0x0C Speed (1 unit is 8 mph, we translate to 1 unit is 1 km-ish/h)
+				avi->max_speed = (buf->ReadByte() * 128) / 10;
 				break;
 
 			case 0x0D: // Acceleration
-				avi->acceleration = (buf->ReadByte() * 129) / 10;
+				avi->acceleration = (buf->ReadByte() * 128) / 10;
 				break;
 
 			case PROP_AIRCRAFT_RUNNING_COST_FACTOR: // 0x0E Running cost factor

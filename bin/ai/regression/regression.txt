@@ -4998,7 +4998,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     CanRefitCargo():    false
     GetCapacity():      25
     GetReliability():   58
-    GetMaxSpeed():      238
+    GetMaxSpeed():      236
     GetPrice():         28710
     GetMaxAge():        7320
     GetRunningCost():   2390
@@ -5016,7 +5016,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     CanRefitCargo():    false
     GetCapacity():      65
     GetReliability():   95
-    GetMaxSpeed():      238
+    GetMaxSpeed():      236
     GetPrice():         30761
     GetMaxAge():        8784
     GetRunningCost():   2812
@@ -5070,7 +5070,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     CanRefitCargo():    false
     GetCapacity():      30
     GetReliability():   77
-    GetMaxSpeed():      238
+    GetMaxSpeed():      236
     GetPrice():         30761
     GetMaxAge():        10980
     GetRunningCost():   2756

@@ -1322,11 +1322,11 @@ bool AfterLoadGame()
 
 	if (CheckSavegameVersion(50)) {
 		Aircraft *v;
-		/* Aircraft units changed from 8 mph to 1 km/h */
+		/* Aircraft units changed from 8 mph to 1 km-ish/h */
 		FOR_ALL_AIRCRAFT(v) {
 			if (v->subtype <= AIR_AIRCRAFT) {
 				const AircraftVehicleInfo *avi = AircraftVehInfo(v->engine_type);
-				v->cur_speed *= 129;
+				v->cur_speed *= 128;
 				v->cur_speed /= 10;
 				v->max_speed = avi->max_speed;
 				v->acceleration = avi->acceleration;

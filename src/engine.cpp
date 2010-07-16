@@ -293,7 +293,7 @@ uint Engine::GetDisplayMaxSpeed() const
 		case VEH_AIRCRAFT: {
 			uint max_speed = GetEngineProperty(this->index, PROP_AIRCRAFT_SPEED, 0);
 			if (max_speed != 0) {
-				return (max_speed * 129) / 10;
+				return (max_speed * 128) / 10;
 			}
 			return this->u.air.max_speed;
 		}

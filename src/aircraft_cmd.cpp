@@ -663,8 +663,8 @@ void UpdateAircraftCache(Aircraft *v)
 {
 	uint max_speed = GetVehicleProperty(v, PROP_AIRCRAFT_SPEED, 0);
 	if (max_speed != 0) {
-		/* Convert from original units to (approx) km/h */
-		max_speed = (max_speed * 129) / 10;
+		/* Convert from original units to km-ish/h */
+		max_speed = (max_speed * 128) / 10;
 
 		v->acache.cached_max_speed = max_speed;
 	} else {

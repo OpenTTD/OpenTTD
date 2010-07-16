@@ -565,7 +565,7 @@ static const ShipVehicleInfo _orig_ship_vehicle_info[] = {
  * @param h mail_capacity (bags)
  * @param i passenger_capacity (persons)
  */
-#define AVI(a, b, c, d, e, f, g, h, i) { a, b, c, d, e, f, (g * 129) / 10, h, i }
+#define AVI(a, b, c, d, e, f, g, h, i) { a, b, c, d, e, f, (g * 128) / 10, h, i }
 #define H AIR_HELI
 #define P AIR_CTOL
 #define J AIR_CTOL | AIR_FAST
