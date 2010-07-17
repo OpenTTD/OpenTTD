@@ -101,7 +101,7 @@ extern HouseOverrideManager _house_mngr;
 extern IndustryOverrideManager _industry_mngr;
 extern IndustryTileOverrideManager _industile_mngr;
 
-uint32 GetTerrainType(TileIndex tile);
+uint32 GetTerrainType(TileIndex tile, bool upper_halftile = false);
 TileIndex GetNearbyTile(byte parameter, TileIndex tile);
 uint32 GetNearbyTileInformation(TileIndex tile);
 

@@ -17,8 +17,10 @@
 #include "industrytype.h"
 #include "newgrf.h"
 #include "newgrf_commons.h"
+#include "clear_map.h"
 #include "station_map.h"
 #include "tree_map.h"
+#include "tunnelbridge_map.h"
 #include "core/mem_func.hpp"
 
 /** Constructor of generic class
@@ -278,13 +280,56 @@ void IndustryTileOverrideManager::SetEntitySpec(const IndustryTileSpec *its)
 /** Function used by houses (and soon industries) to get information
  * on type of "terrain" the tile it is queries sits on.
  * @param tile TileIndex of the tile been queried
+ * @param upper_halftile If true, query upper halftile in case of rail tiles.
  * @return value corresponding to the grf expected format:
  *         Terrain type: 0 normal, 1 desert, 2 rainforest, 4 on or above snowline */
-uint32 GetTerrainType(TileIndex tile)
+uint32 GetTerrainType(TileIndex tile, bool upper_halftile)
 {
 	switch (_settings_game.game_creation.landscape) {
 		case LT_TROPIC: return GetTropicZone(tile);
-		case LT_ARCTIC: return GetTileZ(tile) > GetSnowLine() ? 4 : 0;
+		case LT_ARCTIC: {
+			bool has_snow;
+			switch (GetTileType(tile)) {
+				case MP_CLEAR:
+					has_snow = IsSnowTile(tile) && GetClearDensity(tile) >= 2;
+					break;
+
+				case MP_RAILWAY: {
+					RailGroundType ground = GetRailGroundType(tile);
+					has_snow = (ground == RAIL_GROUND_ICE_DESERT || (upper_halftile && ground == RAIL_GROUND_HALF_SNOW));
+					break;
+				}
+
+				case MP_ROAD:
+					has_snow = IsOnSnow(tile);
+					break;
+
+				case MP_TREES: {
+					TreeGround ground = GetTreeGround(tile);
+					has_snow = (ground == TREE_GROUND_SNOW_DESERT || ground == TREE_GROUND_ROUGH_SNOW) && GetTreeDensity(tile) >= 2;
+					break;
+				}
+
+				case MP_TUNNELBRIDGE:
+					has_snow = HasTunnelBridgeSnowOrDesert(tile);
+					break;
+
+				case MP_STATION:
+				case MP_HOUSE:
+				case MP_INDUSTRY:
+				case MP_UNMOVABLE:
+					/* These tiles usually have a levelling foundation. So use max Z */
+					has_snow = (GetTileMaxZ(tile) > GetSnowLine());
+					break;
+
+				case MP_WATER:
+					has_snow = (GetTileZ(tile) > GetSnowLine());
+					break;
+
+				default: NOT_REACHED();
+			}
+			return has_snow ? 4 : 0;
+		}
 		default:        return 0;
 	}
 }

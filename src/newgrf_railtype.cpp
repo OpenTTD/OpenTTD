@@ -45,7 +45,7 @@ static uint32 RailTypeGetVariable(const ResolverObject *object, byte variable, b
 	}
 
 	switch (variable) {
-		case 0x40: return GetTerrainType(tile);
+		case 0x40: return GetTerrainType(tile, object->u.routes.upper_halftile);
 		case 0x41: return 0;
 		case 0x42: return IsLevelCrossingTile(tile) && IsCrossingBarred(tile);
 	}
@@ -63,7 +63,7 @@ static const SpriteGroup *RailTypeResolveReal(const ResolverObject *object, cons
 	return NULL;
 }
 
-static inline void NewRailTypeResolver(ResolverObject *res, TileIndex tile)
+static inline void NewRailTypeResolver(ResolverObject *res, TileIndex tile, bool upper_halftile)
 {
 	res->GetRandomBits = &RailTypeGetRandomBits;
 	res->GetTriggers   = &RailTypeGetTriggers;
@@ -72,6 +72,7 @@ static inline void NewRailTypeResolver(ResolverObject *res, TileIndex tile)
 	res->ResolveReal   = &RailTypeResolveReal;
 
 	res->u.routes.tile = tile;
+	res->u.routes.upper_halftile = upper_halftile;
 
 	res->callback        = CBID_NO_CALLBACK;
 	res->callback_param1 = 0;
@@ -82,7 +83,7 @@ static inline void NewRailTypeResolver(ResolverObject *res, TileIndex tile)
 	res->count           = 0;
 }
 
-SpriteID GetCustomRailSprite(const RailtypeInfo *rti, TileIndex tile, RailTypeSpriteGroup rtsg)
+SpriteID GetCustomRailSprite(const RailtypeInfo *rti, TileIndex tile, RailTypeSpriteGroup rtsg, bool upper_halftile)
 {
 	assert(rtsg < RTSG_END);
 
@@ -91,7 +92,7 @@ SpriteID GetCustomRailSprite(const RailtypeInfo *rti, TileIndex tile, RailTypeSp
 	const SpriteGroup *group;
 	ResolverObject object;
 
-	NewRailTypeResolver(&object, tile);
+	NewRailTypeResolver(&object, tile, upper_halftile);
 
 	group = SpriteGroup::Resolve(rti->group[rtsg], &object);
 	if (group == NULL || group->GetNumResults() == 0) return 0;
