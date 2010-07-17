@@ -14,6 +14,7 @@
 
 #include "sortlist_type.h"
 #include "window_gui.h"
+#include "widgets/dropdown_type.h"
 
 typedef GUIList<const Vehicle*> GUIVehicleList;
 
@@ -22,6 +23,14 @@ struct BaseVehicleListWindow : public Window {
 	Listing *sorting;         ///< Pointer to the vehicle type related sorting.
 	VehicleType vehicle_type; ///< The vehicle type that is sorted
 	byte unitnumber_digits;   ///< The number of digits of the highest unit number
+
+	enum ActionDropdownItem {
+		ADI_REPLACE,
+		ADI_SERVICE,
+		ADI_DEPOT,
+		ADI_ADD_SHARED,
+		ADI_REMOVE_ALL,
+	};
 
 	static const StringID vehicle_sorter_names[];
 	static GUIVehicleList::SortFunction * const vehicle_sorter_funcs[];
@@ -34,6 +43,7 @@ struct BaseVehicleListWindow : public Window {
 	void DrawVehicleListItems(VehicleID selected_vehicle, int line_height, const Rect &r) const;
 	void SortVehicleList();
 	void BuildVehicleList(Owner owner, uint16 index, uint16 window_type);
+	DropDownList *BuildActionDropdownList(bool show_group);
 };
 
 uint GetVehicleListHeight(VehicleType type, uint divisor = 1);

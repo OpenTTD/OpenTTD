@@ -125,6 +125,27 @@ void BaseVehicleListWindow::BuildVehicleList(Owner owner, uint16 index, uint16 w
 	this->vscroll.SetCount(this->vehicles.Length());
 }
 
+/**
+ * Display the Action dropdown window.
+ * @param show_group If true include group-related stuff.
+ * @return Itemlist for dropdown
+ */
+DropDownList *BaseVehicleListWindow::BuildActionDropdownList(bool show_group)
+{
+	DropDownList *list = new DropDownList();
+
+	list->push_back(new DropDownListStringItem(STR_VEHICLE_LIST_REPLACE_VEHICLES, ADI_REPLACE, false));
+	list->push_back(new DropDownListStringItem(STR_VEHICLE_LIST_SEND_FOR_SERVICING, ADI_SERVICE, false));
+	list->push_back(new DropDownListStringItem(STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT, ADI_DEPOT, false));
+
+	if (show_group) {
+		list->push_back(new DropDownListStringItem(STR_GROUP_ADD_SHARED_VEHICLE, ADI_ADD_SHARED, false));
+		list->push_back(new DropDownListStringItem(STR_GROUP_REMOVE_ALL_VEHICLES, ADI_REMOVE_ALL, false));
+	}
+
+	return list;
+}
+
 /* cached values for VehicleNameSorter to spare many GetString() calls */
 static const Vehicle *_last_vehicle[2] = { NULL, NULL };
 

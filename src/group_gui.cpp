@@ -54,35 +54,6 @@ enum GroupListWidgets {
 	GRP_WIDGET_REPLACE_PROTECTION,
 };
 
-enum GroupActionListFunction {
-	GALF_REPLACE,
-	GALF_SERVICE,
-	GALF_DEPOT,
-	GALF_ADD_SHARED,
-	GALF_REMOVE_ALL,
-};
-
-/**
- * Update/redraw the group action dropdown
- * @param w   the window the dropdown belongs to
- * @param gid the currently selected group in the window
- */
-static void ShowGroupActionDropdown(Window *w, GroupID gid)
-{
-	DropDownList *list = new DropDownList();
-
-	list->push_back(new DropDownListStringItem(STR_VEHICLE_LIST_REPLACE_VEHICLES,    GALF_REPLACE, false));
-	list->push_back(new DropDownListStringItem(STR_VEHICLE_LIST_SEND_FOR_SERVICING,  GALF_SERVICE, false));
-	list->push_back(new DropDownListStringItem(STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT, GALF_DEPOT,   false));
-
-	if (Group::IsValidID(gid)) {
-		list->push_back(new DropDownListStringItem(STR_GROUP_ADD_SHARED_VEHICLE,  GALF_ADD_SHARED, false));
-		list->push_back(new DropDownListStringItem(STR_GROUP_REMOVE_ALL_VEHICLES, GALF_REMOVE_ALL, false));
-	}
-
-	ShowDropDownList(w, list, 0, GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN);
-}
-
 static const NWidgetPart _nested_group_widgets[] = {
 	NWidget(NWID_HORIZONTAL), // Window header
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
@@ -505,9 +476,11 @@ public:
 				ShowBuildVehicleWindow(INVALID_TILE, this->vehicle_type);
 				break;
 
-			case GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN:
-				ShowGroupActionDropdown(this, this->group_sel);
+			case GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN: {
+				DropDownList *list = this->BuildActionDropdownList(Group::IsValidID(this->group_sel));
+				ShowDropDownList(this, list, 0, GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN);
 				break;
+			}
 
 			case GRP_WIDGET_START_ALL:
 			case GRP_WIDGET_STOP_ALL: { // Start/stop all vehicles of the list
@@ -611,24 +584,24 @@ public:
 				assert(this->vehicles.Length() != 0);
 
 				switch (index) {
-					case GALF_REPLACE: // Replace window
+					case ADI_REPLACE: // Replace window
 						ShowReplaceGroupVehicleWindow(this->group_sel, this->vehicle_type);
 						break;
-					case GALF_SERVICE: // Send for servicing
+					case ADI_SERVICE: // Send for servicing
 						DoCommandP(0, this->group_sel, ((IsAllGroupID(this->group_sel) ? VLW_STANDARD : VLW_GROUP_LIST) & VLW_MASK)
 									| DEPOT_MASS_SEND
 									| DEPOT_SERVICE, GetCmdSendToDepot(this->vehicle_type));
 						break;
-					case GALF_DEPOT: // Send to Depots
+					case ADI_DEPOT: // Send to Depots
 						DoCommandP(0, this->group_sel, ((IsAllGroupID(this->group_sel) ? VLW_STANDARD : VLW_GROUP_LIST) & VLW_MASK)
 									| DEPOT_MASS_SEND, GetCmdSendToDepot(this->vehicle_type));
 						break;
-					case GALF_ADD_SHARED: // Add shared Vehicles
+					case ADI_ADD_SHARED: // Add shared Vehicles
 						assert(Group::IsValidID(this->group_sel));
 
 						DoCommandP(0, this->group_sel, this->vehicle_type, CMD_ADD_SHARED_VEHICLE_GROUP | CMD_MSG(STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE));
 						break;
-					case GALF_REMOVE_ALL: // Remove all Vehicles from the selected group
+					case ADI_REMOVE_ALL: // Remove all Vehicles from the selected group
 						assert(Group::IsValidID(this->group_sel));
 
 						DoCommandP(0, this->group_sel, this->vehicle_type, CMD_REMOVE_ALL_VEHICLES_GROUP | CMD_MSG(STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES));
