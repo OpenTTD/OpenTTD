@@ -126,6 +126,27 @@ void BaseVehicleListWindow::BuildVehicleList(Owner owner, uint16 index, uint16 w
 }
 
 /**
+ * Compute the size for the Action dropdown.
+ * @param show_group If true include group-related stuff.
+ * @return Required size.
+ */
+Dimension BaseVehicleListWindow::GetActionDropdownSize(bool show_group)
+{
+	Dimension d = {0, 0};
+
+	d = maxdim(d, GetStringBoundingBox(STR_VEHICLE_LIST_REPLACE_VEHICLES));
+	d = maxdim(d, GetStringBoundingBox(STR_VEHICLE_LIST_SEND_FOR_SERVICING));
+	d = maxdim(d, GetStringBoundingBox(STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT));
+
+	if (show_group) {
+		d = maxdim(d, GetStringBoundingBox(STR_GROUP_ADD_SHARED_VEHICLE));
+		d = maxdim(d, GetStringBoundingBox(STR_GROUP_REMOVE_ALL_VEHICLES));
+	}
+
+	return d;
+}
+
+/**
  * Display the Action dropdown window.
  * @param show_group If true include group-related stuff.
  * @return Itemlist for dropdown

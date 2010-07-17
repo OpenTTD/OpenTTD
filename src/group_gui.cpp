@@ -236,11 +236,7 @@ public:
 				break;
 
 			case GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN: {
-				static const StringID _dropdown_text[] = {STR_VEHICLE_LIST_REPLACE_VEHICLES, STR_VEHICLE_LIST_SEND_FOR_SERVICING, STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT, STR_GROUP_ADD_SHARED_VEHICLE, STR_GROUP_REMOVE_ALL_VEHICLES};
-				Dimension d = {0, 0};
-				for (const StringID *sid = _dropdown_text; sid != endof(_dropdown_text); sid++) {
-					d = maxdim(d, GetStringBoundingBox(*sid));
-				}
+				Dimension d = this->GetActionDropdownSize(true);
 				d.height += padding.height;
 				d.width  += padding.width;
 				*size = maxdim(*size, d);
