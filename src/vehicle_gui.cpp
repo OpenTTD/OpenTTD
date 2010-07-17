@@ -863,7 +863,7 @@ static const NWidgetPart _nested_vehicle_list[] = {
 	EndContainer(),
 
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_MATRIX, COLOUR_GREY, VLW_WIDGET_LIST), SetMinimalSize(248, 0), SetFill(1, 0),
+		NWidget(WWT_MATRIX, COLOUR_GREY, VLW_WIDGET_LIST), SetMinimalSize(248, 0), SetFill(1, 0), SetResize(1, 1),
 		NWidget(WWT_SCROLLBAR, COLOUR_GREY, VLW_WIDGET_SCROLLBAR),
 	EndContainer(),
 
@@ -1089,13 +1089,10 @@ public:
 	{
 		switch (widget) {
 			case VLW_WIDGET_LIST:
-				resize->width = 0;
 				resize->height = GetVehicleListHeight(this->vehicle_type, 1);
 
 				switch (this->vehicle_type) {
 					case VEH_TRAIN:
-						resize->width = 1;
-						/* Fallthrough */
 					case VEH_ROAD:
 						size->height = 6 * resize->height;
 						break;
