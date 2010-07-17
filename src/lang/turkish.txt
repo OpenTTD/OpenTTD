@@ -1146,6 +1146,8 @@ STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Araç e
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Araç ömrüne su kadar ay yaklaşınca yenile: {ORANGE}{STRING}{LTBLUE}
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Yenileme icin gerekli en az parayı otomatik yenile: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Hata mesajı görünme süresi: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Hover gecikmesi: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Hover gecikmesi: {ORANGE}kapalı
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Şehir nüfusunu isminin yanına yaz: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Arazi üretici: {ORANGE}{STRING}
@@ -3485,6 +3487,7 @@ STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Kamyon d
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Yolcu tramvayı istasyonu kaldırılamıyor...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Yük tramvayı istasyonu kaldırılamıyor...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Önce durağı kaldırmalısınız
+STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}...burada istasyon yok
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Önce tren istasyonu yıkılmalı
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Önce otobüs durağı yıkılmalı
@@ -3550,6 +3553,8 @@ STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Buraya r
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Buradan ray kaldırılamıyor...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Buradan sinyaller kaldırılamıyor...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Buradaki sinyaller dönüştürülemez...
+STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}...burada ray yok
+STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}...burada sinyal yok
 
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Ray türü değiştirilemiyor...
 
@@ -3560,6 +3565,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Yol bura
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Buraya tramvay yapılamaz...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Yol buradan kaldırılamıyor...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Tramvay kaldırılamaz...
+STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}...burada yol yok
+STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}...burada tramvay yolu yok
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Buraya kanal yapılamaz...

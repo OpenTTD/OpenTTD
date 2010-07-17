@@ -53,6 +53,7 @@ STR_CARGO_PLURAL_TOYS                                           :Теттесе�
 STR_CARGO_PLURAL_CANDY                                          :Канфетсем
 STR_CARGO_PLURAL_COLA                                           :Кола
 STR_CARGO_PLURAL_COTTON_CANDY                                   :Сахăр ваткĕ
+STR_CARGO_PLURAL_BUBBLES                                        :Хӑмпӑҫӑмсем
 STR_CARGO_PLURAL_TOFFEE                                         :Карамель
 STR_CARGO_PLURAL_BATTERIES                                      :Батарейкасем
 STR_CARGO_PLURAL_PLASTIC                                        :Пластик
@@ -86,6 +87,7 @@ STR_CARGO_SINGULAR_TOY                                          :Тетте
 STR_CARGO_SINGULAR_CANDY                                        :Канфетсем
 STR_CARGO_SINGULAR_COLA                                         :Кола
 STR_CARGO_SINGULAR_COTTON_CANDY                                 :Сахăр ваткĕ
+STR_CARGO_SINGULAR_BUBBLE                                       :Хӑмпӑҫӑм
 STR_CARGO_SINGULAR_TOFFEE                                       :Карамель
 STR_CARGO_SINGULAR_BATTERY                                      :Батарейкасем
 STR_CARGO_SINGULAR_PLASTIC                                      :Пластик
@@ -157,18 +159,33 @@ STR_SORT_BY_POPULATION                                          :Ҫынисем
 STR_SORT_BY_NAME                                                :Ячӗ
 STR_SORT_BY_PRODUCTION                                          :Тухӑҫлӑх
 STR_SORT_BY_TYPE                                                :Тип
+STR_SORT_BY_AGE                                                 :Ӳсӗм
+STR_SORT_BY_RELIABILITY                                         :Шанчӑклӑх
+STR_SORT_BY_MODEL                                               :Модель
+STR_SORT_BY_VALUE                                               :Хак
+STR_SORT_BY_LENGTH                                              :Тӑршшӗ
+STR_SORT_BY_COST                                                :Хак
+STR_SORT_BY_POWER                                               :Хӑватлӑх
 
 # Tooltips for the main toolbar
+STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Вӑййи тӑхтав
+STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Вӑййи хӑвӑртлат
+STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Майлаштару
 
 # Extra tooltips for the scenario editor toolbar
 
 ############ range for SE file menu starts
+STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
+STR_SCENEDIT_FILE_MENU_QUIT                                     :Вӗҫле
 ############ range for SE file menu starts
 
 ############ range for settings menu starts
+STR_SETTINGS_MENU_GAME_OPTIONS                                  :Вӑййи майлаштару
+STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF майлаштару
 ############ range ends here
 
 ############ range for file menu starts
+STR_FILE_MENU_EXIT                                              :Тух
 ############ range ends here
 
 ############ range for map menu starts
@@ -177,6 +194,7 @@ STR_SORT_BY_TYPE                                                :Тип
 ############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
+STR_SUBSIDIES_MENU_SUBSIDIES                                    :Грантсем
 ############ range ends here
 
 ############ range for graph menu starts
@@ -210,6 +228,7 @@ STR_SORT_BY_TYPE                                                :Тип
 ############ range ends here
 
 ############ range for about menu starts
+STR_ABOUT_MENU_SEPARATOR                                        :
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)

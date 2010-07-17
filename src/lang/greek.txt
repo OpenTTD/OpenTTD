@@ -2055,7 +2055,7 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Σιλικόν�
 
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Κατασκευή Δρόμου
-STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Κατασκευή τροχιοδρομού(τραμ)
+STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Κατασκευή τροχιόδρομου(τραμ)
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Κατασκευή κομματιού δρόμου. Ctrl εναλλάσει την κατασκευή/αφαίρεση δρόμου
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Κατασκευή κομματιού τροχιόδρομου(τραμ). Ctrl εναλλάσει την κατασκευή/αφαίρεση τροχιόδρομου
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Κατασκευή οδικού δικτύου χρησιμοποιώντας τον Αυτόματο Δρόμο. Ctrl εναλλάσει την κατασκευή/αφαίρεση δρόμου
@@ -2068,9 +2068,9 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Κατα
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Κατασκευή εμπορευματικού σταθμού τραμ. Ctrl ενεργοποιεί συνένωση εμπορευματικών σταθμών
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Ενεργοποίηση/Απενεργοποίηση μονόδρομων
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Κατασκευή γέφυρας δρόμου
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Κατασκευή γέφυρας τροχιόδρομού(τραμ)
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Κατασκευή γέφυρας τροχιόδρομου(τραμ)
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Κατασκευή τούνελ δρόμου
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Κατασκευή τούνελ τροχιόδρομού(τραμ)
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Κατασκευή τούνελ τροχιόδρομου(τραμ)
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Εναλλαγή κατασκευής/αφαίρεσης για αυτοκινητόδρομους
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Εναλλαγή κτισίματος/αφαίρεσης της κατασκευής τροχιόδρομου
 
@@ -3448,7 +3448,7 @@ STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Το αρχεί
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Το αρχείο δεν είναι για γράψιμο
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Έλεγχος ακεραιότητας δεδομένων απέτυχε
 STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<μη διαθέσιμο>
-STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Το παιχνίδι έχει σωθεί σε έκδοση χώρις υποστήριξη τροχιόδρομου. Όλα τα τραμ έχει αφαιρεθεί
+STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Το παιχνίδι έχει σωθεί σε έκδοση χώρις υποστήριξη τροχιόδρομου. Όλα τα τραμ έχουν αφαιρεθεί
 
 # Map generation messages
 STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Η δημιουργία του χάρτη εγκαταλήφτηκε...{}... Δεν υπάρχουν κατάλληλες τοποθεσίες για πόλεις
@@ -3584,6 +3584,7 @@ STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Δεν �
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Δεν μπορεί να αφαιρεθεί η στάση επιβατών τραμ...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Δεν μπορεί να αφαιρεθεί ο στάθμος εμπορευμάτων τραμ...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Πρέπει να γίνει αφαίρεση της στάσης οχημάτων πρώτα
+STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}...δεν υπάρχει σταθμός εδώ
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Πρέπει να κατεδαφιστεί ο σιδηροδρομικός σταθμός πρώτα
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Πρέπει να κατεδαφιστεί η στάσης λεωφορείου πρώτα
@@ -3648,6 +3649,8 @@ STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Δεν �
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Δεν μπορεί να αφαιρεθεί σιδηρόδρομος από εδώ...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Αδύνατο να αφαιρεθούν σηματοδότες από εδώ...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Δεν μπορούν να μετατραπούν οι σηματοδότες εδώ...
+STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}...δεν υπάρχει σιδηροτροχιά
+STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}...δεν υπάρχουν σηματοδότες
 
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Δεν γίνεται να μετατραπεί ο τύπος της σιδηροτροχιάς εδώ...
 
@@ -3658,6 +3661,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Αδύν
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Δεν μπορεί να χτιστεί γραμμή τραμ εδώ...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Αδύνατο να αφαιρεθεί δρόμος από εδώ...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Δεν μπορω να αφαιρέσω τροχιόδρομο(τραμ) από εδώ
+STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}...δεν υπάρχει δρόμος
+STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}...δεν υπάρχει τροχιόδρομος(τραμ)
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Δεν μπορεί να χτιστεί κανάλι εδώ

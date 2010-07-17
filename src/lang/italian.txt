@@ -1147,6 +1147,8 @@ STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Rinnova
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Rinnova un veicolo quando è {ORANGE}{STRING}{LTBLUE} mesi fuori età massima
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Rinnova solo se disponibile il fondo minimo di {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Durata dei messaggi d'errore: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Ritardo eventi mouse: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Ritardo eventi mouse: {ORANGE}eventi disabilitati
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Mostra la popolazione di una città nell'etichetta del nome: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Generatore terreno: {ORANGE}{STRING}
@@ -2062,7 +2064,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Pianta a
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Generazione terreno
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Piazza terreno roccioso nel paesaggio
 STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Piazza faro
-STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Definisce un'area desertica.{}Fare clic tenendo premuto CTRL per rimuoverla
+STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Definisce un'area desertica.{}Tenere premuto CTRL per rimuoverla
 STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Piazza trasmettitore
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Aumenta l'ampiezza del terreno da abbassare/alzare
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Riduce l'ampiezza del terreno da abbassare/alzare
@@ -2452,7 +2454,7 @@ STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRI
 STR_NEWGRF_INVALID_CARGO                                        :<carico non valido>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} di <carico non valido>
-STR_NEWGRF_INVALID_ENGINE                                       :<locomotiva non valida>
+STR_NEWGRF_INVALID_ENGINE                                       :<modello di veicolo non valido>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<industria non valida>
 
 # Sign list window
@@ -2812,10 +2814,10 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} component{P e i}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Treni - fare clic su un treno per informazioni, trascinare i veicoli per aggiungerli/rimuoverli dal treno
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Veicoli - fare clic su un veicolo per informazioni
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Navi - fare clic su una nave per informazioni
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Aeromobili - fare clic su un aeromobile per informazioni
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Treni - trascinare i veicoli col pulsante sinistro per aggiungerli/rimuoverli dal treno, fare clic col pulsante destro per informazioni, tenere premuto CTRL per operare anche sulla parte successiva della composizione
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Veicoli - fare clic col pulsante destro su un veicolo per informazioni
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Navi - fare clic col pulsante destro su una nave per informazioni
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Aeromobili - fare clic col pulsante destro su un aeromobile per informazioni
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Trascinare qui un veicolo ferroviario per venderlo
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Trascinare qui un automezzo per venderlo
@@ -3486,6 +3488,7 @@ STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Impossib
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Impossibile rimuovere la stazione tram passeggeri...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Impossibile rimuovere la stazione tram merci...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Bisogna rimuovere la fermata prima
+STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}...stazione non presente
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Bisogna demolire la stazione ferroviaria prima
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Bisogna demolire la stazione degli autobus prima
@@ -3551,6 +3554,8 @@ STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Impossib
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Impossibile rimuovere i binari da qui...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Impossibile rimuovere i segnali da qui...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Impossibile convertire i segnali qui...
+STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}...ferrovia non presente
+STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}...segnali non presenti
 
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Impossibile convertire il tipo di rotaie qui...
 
@@ -3561,6 +3566,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Impossib
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Impossibile costruire la tranvia qui...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Impossibile rimuovere la strada da qui...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Impossibile rimuovere la tranvia da qui...
+STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}...strada non presente
+STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}...tranvia non presente
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Impossibile costruire qui il canale...

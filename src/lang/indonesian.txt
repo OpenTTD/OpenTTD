@@ -1896,7 +1896,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Bangun s
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Membangun sinyal kereta. Ctrl - berganti sinyal bendera-lampu.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Membangun Jembatan rel
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Membangun terowongan kereta
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Membangun/bongkar rel kereta, sinyal
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Membangun/bongkar rel kereta, sinyal, waypoint, dan stasiun. Tekan Ctrl juga dapat membongkar rel pada waypoint dan stasiun
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Konversi jenis rel
 
 # Rail depot construction window
@@ -2059,7 +2059,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Menanam 
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Pertumbuhan Wilayah
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Meletakkan bebatuan pada lansekap
 STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Menempatkan Mercusuar
-STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Menentukan wilayah gurun {} Klik dan tahan CTRL untuk menghapusnya
+STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Membuat wilayah gurun.{}Tahan CTRL untuk membatalkannya
 STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Meletakkan Pemancar
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Tambah ukuran area untuk menurunkan/menaikkan
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Kurangi ukuran area untuk menurunkan/menaikkan
@@ -2449,7 +2449,7 @@ STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRI
 STR_NEWGRF_INVALID_CARGO                                        :<kargo tidak valid>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} dari <kargo tidak valid>
-STR_NEWGRF_INVALID_ENGINE                                       :<mesin tidak valid>
+STR_NEWGRF_INVALID_ENGINE                                       :<model kendaraan tidak valid>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<industri tidak valid>
 
 # Sign list window
@@ -2809,10 +2809,10 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} kendaraan{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Kereta - klik untuk info kereta, drag kendaraan untuk menambah atau membuang dari rangkaian
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Kendaraan - klik pada kendaraan untuk informasi
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Kapal - klik pada kapal untuk menampilkan informasi
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Pesawat - klik pada pesawat untuk informasi
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Kereta - tahan klik kiri untuk menambah/mengurangi dari kereta, klik kanan untuk informasi. Tahan Ctrl untuk membuat kedua fungsi berlaku pada rangkaian berikut
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Kendaraan - klik kanan pada kendaraan untuk informasi
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Kapal - klik kanan pada kapal untuk informasi
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Pesawat - klik kanan pada pesawat untuk informasi
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Drag kereta ke sini untuk menjualnya
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Drag kendaraan ke sini untuk menjualnya
