@@ -32,6 +32,7 @@ struct BaseVehicleListWindow : public Window {
 		ADI_REMOVE_ALL,
 	};
 
+	static const StringID vehicle_depot_name[];
 	static const StringID vehicle_sorter_names[];
 	static GUIVehicleList::SortFunction * const vehicle_sorter_funcs[];
 

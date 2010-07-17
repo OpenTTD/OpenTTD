@@ -97,6 +97,13 @@ const StringID BaseVehicleListWindow::vehicle_sorter_names[] = {
 	INVALID_STRING_ID
 };
 
+const StringID BaseVehicleListWindow::vehicle_depot_name[] = {
+	STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT,
+	STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT,
+	STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT,
+	STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR
+};
+
 void BaseVehicleListWindow::BuildVehicleList(Owner owner, uint16 index, uint16 window_type)
 {
 	if (!this->vehicles.NeedRebuild()) return;
@@ -136,7 +143,7 @@ Dimension BaseVehicleListWindow::GetActionDropdownSize(bool show_group)
 
 	d = maxdim(d, GetStringBoundingBox(STR_VEHICLE_LIST_REPLACE_VEHICLES));
 	d = maxdim(d, GetStringBoundingBox(STR_VEHICLE_LIST_SEND_FOR_SERVICING));
-	d = maxdim(d, GetStringBoundingBox(STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT));
+	d = maxdim(d, GetStringBoundingBox(this->vehicle_depot_name[this->vehicle_type]));
 
 	if (show_group) {
 		d = maxdim(d, GetStringBoundingBox(STR_GROUP_ADD_SHARED_VEHICLE));
@@ -157,7 +164,7 @@ DropDownList *BaseVehicleListWindow::BuildActionDropdownList(bool show_group)
 
 	list->push_back(new DropDownListStringItem(STR_VEHICLE_LIST_REPLACE_VEHICLES, ADI_REPLACE, false));
 	list->push_back(new DropDownListStringItem(STR_VEHICLE_LIST_SEND_FOR_SERVICING, ADI_SERVICE, false));
-	list->push_back(new DropDownListStringItem(STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT, ADI_DEPOT, false));
+	list->push_back(new DropDownListStringItem(this->vehicle_depot_name[this->vehicle_type], ADI_DEPOT, false));
 
 	if (show_group) {
 		list->push_back(new DropDownListStringItem(STR_GROUP_ADD_SHARED_VEHICLE, ADI_ADD_SHARED, false));
