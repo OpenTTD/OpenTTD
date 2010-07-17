@@ -2053,7 +2053,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Pianta a
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Generazione terreno
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Piazza terreno roccioso nel paesaggio
 STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Piazza faro
-STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Definisce un'area desertica.{}Fare clic tenendo premuto CTRL per rimuoverla
+STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Definisce un'area desertica.{}Tenere premuto CTRL per rimuoverla
 STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Piazza trasmettitore
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Aumenta l'ampiezza del terreno da abbassare/alzare
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Riduce l'ampiezza del terreno da abbassare/alzare
@@ -2411,7 +2411,7 @@ STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRI
 STR_NEWGRF_INVALID_CARGO                                        :<carico non valido>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} di <carico non valido>
-STR_NEWGRF_INVALID_ENGINE                                       :<locomotiva non valida>
+STR_NEWGRF_INVALID_ENGINE                                       :<modello di veicolo non valido>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<industria non valida>
 
 # Sign list window
@@ -2772,10 +2772,10 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} component{P e i}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Treni - fare clic su un treno per informazioni, trascinare i veicoli per aggiungerli/rimuoverli dal treno
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Veicoli - fare clic su un veicolo per informazioni
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Navi - fare clic su una nave per informazioni
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Aeromobili - fare clic su un aeromobile per informazioni
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Treni - trascinare i veicoli col pulsante sinistro per aggiungerli/rimuoverli dal treno, fare clic col pulsante destro per informazioni, tenere premuto CTRL per operare anche sulla parte successiva della composizione
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Veicoli - fare clic col pulsante destro su un veicolo per informazioni
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Navi - fare clic col pulsante destro su una nave per informazioni
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Aeromobili - fare clic col pulsante destro su un aeromobile per informazioni
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Trascinare qui un veicolo ferroviario per venderlo
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Trascinare qui un automezzo per venderlo

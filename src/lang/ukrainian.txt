@@ -324,7 +324,7 @@ STR_UNITS_VELOCITY_SI                                           :{COMMA} м/с
 
 STR_UNITS_POWER_IMPERIAL                                        :{COMMA}к.с.
 STR_UNITS_POWER_METRIC                                          :{COMMA}к.с.
-STR_UNITS_POWER_SI                                              :{COMMA}КВт
+STR_UNITS_POWER_SI                                              :{COMMA}кВт
 
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}т
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}кг
