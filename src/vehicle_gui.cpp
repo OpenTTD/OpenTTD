@@ -1087,23 +1087,33 @@ public:
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
-		if (widget != VLW_WIDGET_LIST) return;
+		switch (widget) {
+			case VLW_WIDGET_LIST:
+				resize->width = 0;
+				resize->height = GetVehicleListHeight(this->vehicle_type, 1);
 
-		resize->width = 0;
-		resize->height = GetVehicleListHeight(this->vehicle_type, 1);
+				switch (this->vehicle_type) {
+					case VEH_TRAIN:
+						resize->width = 1;
+						/* Fallthrough */
+					case VEH_ROAD:
+						size->height = 6 * resize->height;
+						break;
+					case VEH_SHIP:
+					case VEH_AIRCRAFT:
+						size->height = 4 * resize->height;
+						break;
+					default: NOT_REACHED();
+				}
+				break;
 
-		switch (this->vehicle_type) {
-			case VEH_TRAIN:
-				resize->width = 1;
-				/* Fallthrough */
-			case VEH_ROAD:
-				size->height = 6 * resize->height;
+			case VLW_WIDGET_MANAGE_VEHICLES_DROPDOWN: {
+				Dimension d = this->GetActionDropdownSize((this->window_number & VLW_MASK) == VLW_STANDARD, false);
+				d.height += padding.height;
+				d.width  += padding.width;
+				*size = maxdim(*size, d);
 				break;
-			case VEH_SHIP:
-			case VEH_AIRCRAFT:
-				size->height = 4 * resize->height;
-				break;
-			default: NOT_REACHED();
+			}
 		}
 	}
 
