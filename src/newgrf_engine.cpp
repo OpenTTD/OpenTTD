@@ -673,11 +673,10 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 				const Train *u = t->IsWagon() && HasBit(t->vehicle_flags, VRF_POWEREDWAGON) ? t->First() : t;
 				RailType railtype = GetRailType(v->tile);
 				bool powered = t->IsEngine() || (t->IsWagon() && HasBit(t->vehicle_flags, VRF_POWEREDWAGON));
-				bool has_power = powered && HasPowerOnRail(u->railtype, railtype);
-				bool is_electric = powered && u->railtype == RAILTYPE_ELECTRIC;
+				bool has_power = HasPowerOnRail(u->railtype, railtype);
 
-				if (has_power) SetBit(modflags, 5);
-				if (is_electric && !has_power) SetBit(modflags, 6);
+				if (powered && has_power) SetBit(modflags, 5);
+				if (powered && !has_power) SetBit(modflags, 6);
 				if (HasBit(t->flags, VRF_TOGGLE_REVERSE)) SetBit(modflags, 8);
 			}
 			if (HasBit(v->vehicle_flags, VF_BUILT_AS_PROTOTYPE)) SetBit(modflags, 10);
