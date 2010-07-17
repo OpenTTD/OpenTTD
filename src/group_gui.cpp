@@ -236,7 +236,7 @@ public:
 				break;
 
 			case GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN: {
-				Dimension d = this->GetActionDropdownSize(true);
+				Dimension d = this->GetActionDropdownSize(true, true);
 				d.height += padding.height;
 				d.width  += padding.width;
 				*size = maxdim(*size, d);
@@ -473,7 +473,7 @@ public:
 				break;
 
 			case GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN: {
-				DropDownList *list = this->BuildActionDropdownList(Group::IsValidID(this->group_sel));
+				DropDownList *list = this->BuildActionDropdownList(true, Group::IsValidID(this->group_sel));
 				ShowDropDownList(this, list, 0, GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN);
 				break;
 			}
