@@ -2332,6 +2332,7 @@ STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Definiç
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Informação detalhada do NewGRF
 STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Ficheiros NewGRF Activos
 STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Ficheiros NewGRF inactivos
+STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Seleccionar predefinição:
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Frase filtro:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Carregar a predefinição seleccionada
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Guardar
@@ -2372,16 +2373,23 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Desactivad
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Insira parâmetros do NewGRF
 
 # NewGRF inspect window
+STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspeccionar - {STRING}
+STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Pai
+STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Inspeccionar o objecto do escopo pai
 
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} no {HEX}
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Tipo de linha
 
+STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Parâmetro da variável NewGRF 60+x (hexadecimal)
 
 # Sprite aligner window
 STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}A alinhar sprite {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Próximo sprite
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Proceder ao gráfico normal seguinte, ignorando quaisquer gráficos pseudo/recolorir/tipo-de-letra e dando a volta no fim
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Ir para sprite
+STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Ir para o gráfico seguinte. Se o gráfico não for um gráfico normal, proceder ao gráfico normal seguinte
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Sprite anterior
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Proceder ao gráfico normal anterior, ignorando quaisquer gráficos pseudo/recolorir/tipo-de-letra e dando a volta no início
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Representação do sprite seleccionado actualmente. O alinhamento é ignorado este sprite é desenhado
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Mover o sprite, mudando os desvios X e Y
 STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}Desvio X: {NUM}, Desvio Y: {NUM}
@@ -2409,7 +2417,7 @@ STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Carregar {STRIN
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Rotina inesperada.
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Propriedade da Acção 0 desconhecida.
 STR_NEWGRF_ERROR_INVALID_ID                                     :Tentativa de usar ID inválido.
-STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} contém uma rotina corrompida. As rotinas corrompidas serão assinaladas com um ponto de interrogação (?) vermelho.
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} contém um gráfico corrompido. Todos os gráficos corrompidas serão apresentados como um ponto de interrogação (?) vermelho.
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Contém 8 entradas de acção múltipla
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Leitura ultrapassou o fim do pseudo-sprite.
 
@@ -2986,6 +2994,8 @@ STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Efectua
 # Vehicle stopped/started animations
 STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Parou
 STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Parou
+STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINYFONT}{GREEN}Iniciado
+STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Iniciado
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Detalhes)

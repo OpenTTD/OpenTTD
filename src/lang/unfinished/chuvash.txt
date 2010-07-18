@@ -222,6 +222,7 @@ STR_SUBSIDIES_MENU_SUBSIDIES                                    :Грантсе�
 ############ range ends here
 
 ############ range for music menu starts
+STR_TOOLBAR_SOUND_MUSIC                                         :Сасӑ/Юрӑ-кӗвӗ
 ############ range ends here
 
 ############ range for message menu starts
@@ -229,23 +230,87 @@ STR_SUBSIDIES_MENU_SUBSIDIES                                    :Грантсе�
 
 ############ range for about menu starts
 STR_ABOUT_MENU_SEPARATOR                                        :
+STR_ABOUT_MENU_SCREENSHOT                                       :Экран сӑнӗ (Ctrl+S)
+STR_ABOUT_MENU_ABOUT_OPENTTD                                    :'OpenTTD' çинчен
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
+STR_ORDINAL_NUMBER_1ST                                          :1мӗш
+STR_ORDINAL_NUMBER_2ND                                          :2мӗш
+STR_ORDINAL_NUMBER_3RD                                          :3-мӗш
+STR_ORDINAL_NUMBER_4TH                                          :4-мӗш
+STR_ORDINAL_NUMBER_5TH                                          :5-мӗш
+STR_ORDINAL_NUMBER_6TH                                          :6-мӗш
+STR_ORDINAL_NUMBER_7TH                                          :7-мӗш
+STR_ORDINAL_NUMBER_8TH                                          :8-мӗш
+STR_ORDINAL_NUMBER_9TH                                          :9-мӗш
+STR_ORDINAL_NUMBER_10TH                                         :10-мӗш
+STR_ORDINAL_NUMBER_11TH                                         :11-мӗш
+STR_ORDINAL_NUMBER_12TH                                         :12-мӗш
+STR_ORDINAL_NUMBER_13TH                                         :13-мӗш
+STR_ORDINAL_NUMBER_14TH                                         :14-мӗш
+STR_ORDINAL_NUMBER_15TH                                         :15-мӗш
+STR_ORDINAL_NUMBER_16TH                                         :16-мӗш
+STR_ORDINAL_NUMBER_17TH                                         :17-мӗш
+STR_ORDINAL_NUMBER_18TH                                         :18-мӗш
+STR_ORDINAL_NUMBER_19TH                                         :19-мӗш
+STR_ORDINAL_NUMBER_20TH                                         :20-мӗш
+STR_ORDINAL_NUMBER_21ST                                         :21-мӗш
+STR_ORDINAL_NUMBER_22ND                                         :22-мӗш
+STR_ORDINAL_NUMBER_23RD                                         :23-мӗш
+STR_ORDINAL_NUMBER_24TH                                         :24-мӗш
+STR_ORDINAL_NUMBER_25TH                                         :25-мӗш
+STR_ORDINAL_NUMBER_26TH                                         :26-мӗш
+STR_ORDINAL_NUMBER_27TH                                         :27-мӗш
+STR_ORDINAL_NUMBER_28TH                                         :28-мӗш
+STR_ORDINAL_NUMBER_29TH                                         :29-мӗш
+STR_ORDINAL_NUMBER_30TH                                         :30-мӗш
+STR_ORDINAL_NUMBER_31ST                                         :31-мӗш
 ############ range for days ends
 
 ############ range for months starts
+STR_MONTH_ABBREV_JAN                                            :Кӑр
+STR_MONTH_ABBREV_FEB                                            :Нар
+STR_MONTH_ABBREV_MAR                                            :Пуш
+STR_MONTH_ABBREV_APR                                            :Ака
+STR_MONTH_ABBREV_MAY                                            :Ҫу
+STR_MONTH_ABBREV_JUN                                            :Ҫӗр
+STR_MONTH_ABBREV_JUL                                            :Утӑ
+STR_MONTH_ABBREV_AUG                                            :Ҫур
+STR_MONTH_ABBREV_SEP                                            :Авӑ
+STR_MONTH_ABBREV_OCT                                            :Юпа
+STR_MONTH_ABBREV_NOV                                            :Чӳк
+STR_MONTH_ABBREV_DEC                                            :Раш
 
+STR_MONTH_JAN                                                   :Кӑрлач
+STR_MONTH_FEB                                                   :Нарӑс
+STR_MONTH_MAR                                                   :Пуш
+STR_MONTH_APR                                                   :Ака
+STR_MONTH_MAY                                                   :Ҫу
+STR_MONTH_JUN                                                   :Ҫӗртме
+STR_MONTH_JUL                                                   :Утӑ
+STR_MONTH_AUG                                                   :Ҫурла
+STR_MONTH_SEP                                                   :Авӑн
+STR_MONTH_OCT                                                   :Юпа
+STR_MONTH_NOV                                                   :Чӳк
+STR_MONTH_DEC                                                   :Раштав
 ############ range for months ends
 
 # Graph window
+STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
+STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
+STR_GRAPH_Y_LABEL                                               :{TINYFONT}{STRING}
+STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
 
 
+STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 
 
 # Graph key window
 
 # Company league window
+STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Инженер
 
 # Performance detail window
 ############ Those following lines need to be in this order!!
