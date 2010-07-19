@@ -19,7 +19,6 @@
 #include "command_func.h"
 #include "town.h"
 #include "news_func.h"
-#include "variables.h"
 #include "cheat_type.h"
 #include "genworld.h"
 #include "tree_map.h"

@@ -18,7 +18,6 @@
 #include "viewport_func.h"
 #include "command_func.h"
 #include "landscape.h"
-#include "variables.h"
 #include "void_map.h"
 #include "tgp.h"
 #include "genworld.h"

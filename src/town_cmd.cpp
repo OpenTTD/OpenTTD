@@ -22,7 +22,6 @@
 #include "news_func.h"
 #include "gui.h"
 #include "unmovable_map.h"
-#include "variables.h"
 #include "genworld.h"
 #include "newgrf_debug.h"
 #include "newgrf_house.h"

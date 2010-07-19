@@ -10,7 +10,6 @@
 /** @file newgrf_house.cpp Implementation of NewGRF houses. */
 
 #include "stdafx.h"
-#include "variables.h"
 #include "debug.h"
 #include "viewport_func.h"
 #include "landscape.h"

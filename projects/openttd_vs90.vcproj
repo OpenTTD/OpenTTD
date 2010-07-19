@@ -1577,10 +1577,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\variables.h"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\vehicle_base.h"
 				>
 			</File>

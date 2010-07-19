@@ -12,7 +12,6 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "heightmap.h"
-#include "variables.h"
 #include "debug.h"
 #include "genworld.h"
 #include "network/network.h"

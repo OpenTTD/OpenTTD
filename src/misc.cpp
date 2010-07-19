@@ -12,7 +12,6 @@
 #include "stdafx.h"
 #include "landscape.h"
 #include "news_func.h"
-#include "variables.h"
 #include "ai/ai.hpp"
 #include "ai/ai_gui.hpp"
 #include "newgrf_house.h"

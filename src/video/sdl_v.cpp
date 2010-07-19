@@ -15,7 +15,6 @@
 #include "../openttd.h"
 #include "../gfx_func.h"
 #include "../sdl.h"
-#include "../variables.h"
 #include "../rev.h"
 #include "../blitter/factory.hpp"
 #include "../network/network.h"

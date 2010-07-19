@@ -32,7 +32,6 @@
 #include "news_func.h"
 #include "town.h"
 #include "company_func.h"
-#include "variables.h"
 #include "strings_func.h"
 #include "date_func.h"
 #include "functions.h"

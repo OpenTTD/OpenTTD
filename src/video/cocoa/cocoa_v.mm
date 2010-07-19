@@ -26,7 +26,6 @@
 
 #include "../../openttd.h"
 #include "../../debug.h"
-#include "../../variables.h"
 #include "../../core/geometry_type.hpp"
 #include "cocoa_v.h"
 #include "../../blitter/factory.hpp"

@@ -18,7 +18,6 @@
 #include "gfx_func.h"
 #include "industry.h"
 #include "town.h"
-#include "variables.h"
 #include "cheat_type.h"
 #include "newgrf.h"
 #include "newgrf_industries.h"

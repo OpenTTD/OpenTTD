@@ -26,7 +26,6 @@
 #include "../thread/thread.h"
 #include "../town.h"
 #include "../network/network.h"
-#include "../variables.h"
 #include "../window_func.h"
 #include "../strings_func.h"
 #include "../core/endian_func.hpp"

@@ -4,7 +4,6 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "variables.h"
 #include "debug.h"
 #include "strings_type.h"
 #include "rail.h"

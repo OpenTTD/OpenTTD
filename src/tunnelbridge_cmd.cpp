@@ -20,7 +20,6 @@
 #include "cmd_helper.h"
 #include "command_func.h"
 #include "town.h"
-#include "variables.h"
 #include "train.h"
 #include "ship.h"
 #include "roadveh.h"

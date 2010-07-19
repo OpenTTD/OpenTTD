@@ -15,7 +15,6 @@
 #include "window_func.h"
 #include "viewport_func.h"
 #include "command_func.h"
-#include "variables.h"
 #include "vehicle_gui.h"
 #include "rail_gui.h"
 #include "road_gui.h"

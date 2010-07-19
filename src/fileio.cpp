@@ -11,7 +11,6 @@
 
 #include "stdafx.h"
 #include "fileio_func.h"
-#include "variables.h"
 #include "debug.h"
 #include "fios.h"
 #include "string_func.h"

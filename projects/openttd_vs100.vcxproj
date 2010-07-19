@@ -578,7 +578,6 @@
     <ClInclude Include="..\src\transport_type.h" />
     <ClInclude Include="..\src\tunnelbridge.h" />
     <ClInclude Include="..\src\unmovable.h" />
-    <ClInclude Include="..\src\variables.h" />
     <ClInclude Include="..\src\vehicle_base.h" />
     <ClInclude Include="..\src\vehicle_func.h" />
     <ClInclude Include="..\src\vehicle_gui.h" />

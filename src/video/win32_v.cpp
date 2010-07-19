@@ -12,7 +12,6 @@
 #include "../stdafx.h"
 #include "../openttd.h"
 #include "../gfx_func.h"
-#include "../variables.h"
 #include "../os/windows/win32.h"
 #include "../rev.h"
 #include "../blitter/factory.hpp"

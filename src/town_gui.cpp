@@ -20,7 +20,6 @@
 #include "company_base.h"
 #include "company_gui.h"
 #include "network/network.h"
-#include "variables.h"
 #include "strings_func.h"
 #include "sound_func.h"
 #include "economy_func.h"

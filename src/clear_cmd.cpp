@@ -14,7 +14,6 @@
 #include "clear_map.h"
 #include "command_func.h"
 #include "landscape.h"
-#include "variables.h"
 #include "genworld.h"
 #include "landscape_type.h"
 #include "functions.h"

@@ -10,7 +10,6 @@
 /** @file newgrf_industrytiles.cpp NewGRF handling of industry tiles. */
 
 #include "stdafx.h"
-#include "variables.h"
 #include "debug.h"
 #include "viewport_func.h"
 #include "landscape.h"

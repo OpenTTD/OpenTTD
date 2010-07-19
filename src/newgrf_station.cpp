@@ -10,7 +10,6 @@
 /** @file newgrf_station.cpp Functions for dealing with station classes and custom stations. */
 
 #include "stdafx.h"
-#include "variables.h"
 #include "debug.h"
 #include "station_base.h"
 #include "waypoint_base.h"

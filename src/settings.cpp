@@ -25,7 +25,6 @@
 #include "stdafx.h"
 #include "currency.h"
 #include "screenshot.h"
-#include "variables.h"
 #include "network/network.h"
 #include "network/network_func.h"
 #include "settings_internal.h"

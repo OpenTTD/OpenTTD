@@ -18,7 +18,6 @@
 #include "pathfinder/yapf/yapf_cache.h"
 #include "depot_base.h"
 #include "newgrf.h"
-#include "variables.h"
 #include "autoslope.h"
 #include "tunnelbridge_map.h"
 #include "window_func.h"

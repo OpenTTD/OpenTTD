@@ -16,7 +16,6 @@
 #include "../ai/ai.hpp"
 #include "../window_func.h"
 #include "../gui.h"
-#include "../variables.h"
 #include "../base_media_base.h"
 #include "../settings_type.h"
 #include "network_content.h"

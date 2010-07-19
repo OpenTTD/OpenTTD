@@ -17,7 +17,6 @@
 #include "command_func.h"
 #include "economy_func.h"
 #include "town.h"
-#include "variables.h"
 #include "genworld.h"
 #include "transparency.h"
 #include "functions.h"

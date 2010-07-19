@@ -17,7 +17,6 @@
 #include "../network/network.h"
 #include "../network/network_internal.h"
 #include "../console_func.h"
-#include "../variables.h"
 #include "../genworld.h"
 #include "../fileio_type.h"
 #include "../fios.h"

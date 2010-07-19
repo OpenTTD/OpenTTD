@@ -24,7 +24,6 @@
 #include "../depot_base.h"
 #include "../date_func.h"
 #include "../vehicle_func.h"
-#include "../variables.h"
 #include "../effectvehicle_base.h"
 #include "../core/mem_func.hpp"
 #include "../core/alloc_type.hpp"

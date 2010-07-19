@@ -17,7 +17,6 @@
 #include "console_func.h"
 #include "console_gui.h"
 #include "viewport_func.h"
-#include "variables.h"
 #include "genworld.h"
 #include "blitter/factory.hpp"
 #include "zoom_func.h"

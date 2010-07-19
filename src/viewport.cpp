@@ -33,7 +33,6 @@
 #include "town.h"
 #include "signs_base.h"
 #include "signs_func.h"
-#include "variables.h"
 #include "vehicle_base.h"
 #include "vehicle_gui.h"
 #include "blitter/factory.hpp"

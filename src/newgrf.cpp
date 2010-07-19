@@ -17,7 +17,6 @@
 #include "fileio_func.h"
 #include "engine_func.h"
 #include "engine_base.h"
-#include "variables.h"
 #include "bridge.h"
 #include "town.h"
 #include "newgrf_engine.h"

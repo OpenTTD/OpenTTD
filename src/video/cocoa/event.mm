@@ -26,7 +26,6 @@
 #include "../../openttd.h"
 #include "../../debug.h"
 #include "../../os/macosx/splash.h"
-#include "../../variables.h"
 #include "../../settings_type.h"
 #include "../../core/geometry_type.hpp"
 #include "cocoa_v.h"

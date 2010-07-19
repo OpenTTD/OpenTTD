@@ -17,8 +17,6 @@ char *_log_file; ///< File to reroute output of a forked OpenTTD to
 
 #if defined(UNIX) && !defined(__MORPHOS__)
 
-#include "variables.h"
-
 #include <unistd.h>
 
 #if (defined(SUNOS) && !defined(_LP64) && !defined(_I32LPx)) || defined(__HAIKU__)

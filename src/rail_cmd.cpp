@@ -23,7 +23,6 @@
 #include "newgrf_railtype.h"
 #include "newgrf_commons.h"
 #include "train.h"
-#include "variables.h"
 #include "autoslope.h"
 #include "water.h"
 #include "tunnelbridge_map.h"

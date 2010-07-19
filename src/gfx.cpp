@@ -11,7 +11,6 @@
 
 #include "stdafx.h"
 #include "gfx_func.h"
-#include "variables.h"
 #include "fontcache.h"
 #include "genworld.h"
 #include "zoom_func.h"
