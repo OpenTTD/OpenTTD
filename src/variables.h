@@ -19,8 +19,6 @@
 /* Amount of game ticks */
 VARDEF uint16 _tick_counter;
 
-VARDEF byte _display_opt;
-
 /* IN/OUT parameters to commands */
 VARDEF bool _generating_world;
 

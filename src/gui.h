@@ -74,5 +74,4 @@ void ShowBuildIndustryWindow();
 void ShowFoundTownWindow();
 void ShowMusicWindow();
 
-
 #endif /* GUI_H */

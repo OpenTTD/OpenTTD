@@ -20,6 +20,7 @@
 TransparencyOptionBits _transparency_opt;
 TransparencyOptionBits _transparency_lock;
 TransparencyOptionBits _invisibility_opt;
+byte _display_opt;
 
 /** Widget numbers of the transparency window. */
 enum TransparencyToolbarWidgets {
