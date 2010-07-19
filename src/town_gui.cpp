@@ -1061,7 +1061,6 @@ public:
 		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size, MAX_LENGTH_TOWN_NAME_PIXELS);
 		this->RandomTownName();
 		this->UpdateButtons(true);
-		this->SetFocusedWidget(TSEW_TOWNNAME_EDITBOX);
 	}
 
 	void RandomTownName()
