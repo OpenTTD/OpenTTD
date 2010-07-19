@@ -45,5 +45,6 @@ extern char *_ini_videodriver;
 extern int _num_resolutions;
 extern Dimension _resolutions[32];
 extern Dimension _cur_resolution;
+extern bool _rightclick_emulate;
 
 #endif /* VIDEO_VIDEO_DRIVER_HPP */

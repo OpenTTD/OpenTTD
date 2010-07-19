@@ -40,6 +40,7 @@ int _debug_gamelog_level;
 int _debug_desync_level;
 int _debug_console_level;
 
+uint32 _realtime_tick = 0;
 
 struct DebugLevel {
 	const char *name;

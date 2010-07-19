@@ -21,6 +21,7 @@ char *_ini_videodriver;
 int _num_resolutions;
 Dimension _resolutions[32];
 Dimension _cur_resolution;
+bool _rightclick_emulate;
 
 SoundDriver *_sound_driver;
 char *_ini_sounddriver;
