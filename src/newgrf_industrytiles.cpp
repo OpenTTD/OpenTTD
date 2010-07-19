@@ -27,6 +27,7 @@
 #include "animated_tile_func.h"
 #include "water.h"
 #include "sprite.h"
+#include "date_func.h"
 
 #include "table/strings.h"
 

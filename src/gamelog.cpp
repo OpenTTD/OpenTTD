@@ -19,6 +19,7 @@
 #include "gamelog_internal.h"
 #include "console_func.h"
 #include "debug.h"
+#include "date_func.h"
 #include "rev.h"
 
 #include <stdarg.h>

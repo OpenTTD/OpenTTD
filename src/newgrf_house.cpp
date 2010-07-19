@@ -28,6 +28,7 @@
 #include "core/random_func.hpp"
 #include "sprite.h"
 #include "genworld.h"
+#include "date_func.h"
 
 static BuildingCounts<uint32> _building_counts;
 static HouseClassMapping _class_mapping[HOUSE_CLASS_MAX];

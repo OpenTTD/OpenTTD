@@ -16,7 +16,4 @@
 #define VARDEF extern
 #endif
 
-/* Amount of game ticks */
-VARDEF uint16 _tick_counter;
-
 #endif /* VARIABLES_H */
