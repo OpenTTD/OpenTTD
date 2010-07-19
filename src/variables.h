@@ -19,7 +19,4 @@
 /* Amount of game ticks */
 VARDEF uint16 _tick_counter;
 
-/* IN/OUT parameters to commands */
-VARDEF bool _generating_world;
-
 #endif /* VARIABLES_H */

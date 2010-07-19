@@ -48,6 +48,7 @@
 #include "core/alloc_type.hpp"
 #include "core/mem_func.hpp"
 #include "smallmap_gui.h"
+#include "genworld.h"
 
 #include "table/strings.h"
 #include "table/build_industry.h"

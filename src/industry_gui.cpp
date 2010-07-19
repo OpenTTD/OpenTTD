@@ -34,6 +34,7 @@
 #include "core/geometry_func.hpp"
 #include "core/random_func.hpp"
 #include "core/backup_type.hpp"
+#include "genworld.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"

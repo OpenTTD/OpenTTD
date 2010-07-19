@@ -62,6 +62,9 @@ ThreadMutex *_genworld_mapgen_mutex = ThreadMutex::New();
 /** Rights for the painting */
 ThreadMutex *_genworld_paint_mutex = ThreadMutex::New();
 
+/** Whether we are generating the map or not. */
+bool _generating_world;
+
 /**
  * Tells if the world generation is done in a thread or not.
  * @return the 'threaded' status

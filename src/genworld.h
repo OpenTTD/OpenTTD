@@ -98,5 +98,6 @@ void StartScenarioEditor();
 
 extern class ThreadMutex *_genworld_mapgen_mutex;
 extern class ThreadMutex *_genworld_paint_mutex;
+extern bool _generating_world;
 
 #endif /* GENWORLD_H */

@@ -36,6 +36,7 @@
 #include "core/geometry_func.hpp"
 #include "station_base.h"
 #include "depot_base.h"
+#include "genworld.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"

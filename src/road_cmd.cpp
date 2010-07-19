@@ -37,6 +37,7 @@
 #include "core/random_func.hpp"
 #include "newgrf_railtype.h"
 #include "date_func.h"
+#include "genworld.h"
 
 #include "table/strings.h"
 
