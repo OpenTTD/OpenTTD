@@ -132,6 +132,9 @@ static void CloseWindowsConsoleThread()
 
 static void *_dedicated_video_mem;
 
+/* Whether a fork has been done. */
+bool _dedicated_forks;
+
 extern bool SafeSaveOrLoad(const char *filename, int mode, GameMode newgm, Subdirectory subdir);
 extern void SwitchToMode(SwitchMode new_mode);
 
@@ -295,8 +298,7 @@ void VideoDriver_Dedicated::MainLoop()
 		uint32 prev_cur_ticks = cur_ticks; // to check for wrapping
 		InteractiveRandom(); // randomness
 
-		if (!_dedicated_forks)
-			DedicatedHandleKeyInput();
+		if (!_dedicated_forks) DedicatedHandleKeyInput();
 
 		cur_ticks = GetTime();
 		_realtime_tick += cur_ticks - prev_cur_ticks;

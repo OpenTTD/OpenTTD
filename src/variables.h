@@ -30,8 +30,6 @@ VARDEF int _palette_animation_counter;
 
 VARDEF uint32 _realtime_tick;
 
-VARDEF bool _do_autosave;
-
 VARDEF byte _display_opt;
 
 VARDEF bool _rightclick_emulate;
@@ -45,8 +43,5 @@ VARDEF char *_log_file;
 
 /* landscape.cpp */
 extern const byte _tileh_to_sprite[32];
-
-/* Forking stuff */
-VARDEF bool _dedicated_forks;
 
 #endif /* VARIABLES_H */

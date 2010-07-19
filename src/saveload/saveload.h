@@ -342,5 +342,6 @@ bool SlObjectMember(void *object, const SaveLoad *sld);
 bool SaveloadCrashWithMissingNewGRFs();
 
 extern char _savegame_format[8];
+extern bool _do_autosave;
 
 #endif /* SAVELOAD_H */

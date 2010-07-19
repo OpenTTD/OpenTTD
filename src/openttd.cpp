@@ -90,6 +90,7 @@ void CallWindowTickEvent();
 extern void SetDifficultyLevel(int mode, DifficultySettings *gm_opt);
 extern Company *DoStartupNewCompany(bool is_ai, CompanyID company = INVALID_COMPANY);
 extern void ShowOSErrorBox(const char *buf, bool system);
+extern bool _dedicated_forks;
 
 /**
  * Error handling for fatal user errors.
@@ -567,8 +568,7 @@ int ttd_main(int argc, char *argv[])
 
 #if defined(UNIX) && !defined(__MORPHOS__)
 	/* We must fork here, or we'll end up without some resources we need (like sockets) */
-	if (_dedicated_forks)
-		DedicatedFork();
+	if (_dedicated_forks) DedicatedFork();
 #endif
 
 	AI::Initialize();

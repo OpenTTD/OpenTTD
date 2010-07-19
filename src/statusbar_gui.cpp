@@ -22,7 +22,7 @@
 #include "news_gui.h"
 #include "company_gui.h"
 #include "window_gui.h"
-#include "variables.h"
+#include "saveload/saveload.h"
 #include "window_func.h"
 #include "statusbar_gui.h"
 #include "core/geometry_func.hpp"

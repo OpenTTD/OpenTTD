@@ -55,6 +55,7 @@ uint32 _ttdp_version;     ///< version of TTDP savegame (if applicable)
 uint16 _sl_version;       ///< the major savegame version identifier
 byte   _sl_minor_version; ///< the minor savegame version, DO NOT USE!
 char _savegame_format[8]; ///< how to compress savegames
+bool _do_autosave;        ///< are we doing an autosave at the moment?
 
 typedef void WriterProc(size_t len);
 typedef size_t ReaderProc();
