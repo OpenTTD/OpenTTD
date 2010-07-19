@@ -56,6 +56,10 @@ static Fio _fio;
 /** Whether the working directory should be scanned. */
 static bool _do_scan_working_directory = true;
 
+extern char *_config_file;
+extern char *_highscore_file;
+extern char *_log_file;
+
 /* Get current position in file */
 size_t FioGetPos()
 {

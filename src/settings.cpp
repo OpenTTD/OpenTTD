@@ -77,6 +77,7 @@ ClientSettings _settings_client;
 GameSettings _settings_game;
 GameSettings _settings_newgame;
 VehicleDefaultSettings _old_vds; ///< Used for loading default vehicles settings from old savegames
+char *_config_file; ///< Configuration file of OpenTTD
 
 typedef void SettingDescProc(IniFile *ini, const SettingDesc *desc, const char *grpname, void *object);
 typedef void SettingDescProcList(IniFile *ini, const char *grpname, StringList *list);

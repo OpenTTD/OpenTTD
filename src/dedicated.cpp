@@ -11,6 +11,8 @@
 
 #include "stdafx.h"
 
+char *_log_file; ///< File to reroute output of a forked OpenTTD to
+
 #ifdef ENABLE_NETWORK
 
 #if defined(UNIX) && !defined(__MORPHOS__)

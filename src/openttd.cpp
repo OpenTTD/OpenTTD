@@ -91,6 +91,7 @@ extern void SetDifficultyLevel(int mode, DifficultySettings *gm_opt);
 extern Company *DoStartupNewCompany(bool is_ai, CompanyID company = INVALID_COMPANY);
 extern void ShowOSErrorBox(const char *buf, bool system);
 extern bool _dedicated_forks;
+extern char *_config_file;
 
 /**
  * Error handling for fatal user errors.

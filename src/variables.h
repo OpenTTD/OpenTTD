@@ -24,8 +24,4 @@ VARDEF byte _display_opt;
 /* IN/OUT parameters to commands */
 VARDEF bool _generating_world;
 
-VARDEF char *_config_file;
-VARDEF char *_highscore_file;
-VARDEF char *_log_file;
-
 #endif /* VARIABLES_H */
