@@ -50,13 +50,13 @@ static CommandCost ClearTile_Clear(TileIndex tile, DoCommandFlag flags)
 
 void DrawClearLandTile(const TileInfo *ti, byte set)
 {
-	DrawGroundSprite(SPR_FLAT_BARE_LAND + _tileh_to_sprite[ti->tileh] + set * 19, PAL_NONE);
+	DrawGroundSprite(SPR_FLAT_BARE_LAND + SlopeToSpriteOffset(ti->tileh) + set * 19, PAL_NONE);
 }
 
 void DrawHillyLandTile(const TileInfo *ti)
 {
 	if (ti->tileh != SLOPE_FLAT) {
-		DrawGroundSprite(SPR_FLAT_ROUGH_LAND + _tileh_to_sprite[ti->tileh], PAL_NONE);
+		DrawGroundSprite(SPR_FLAT_ROUGH_LAND + SlopeToSpriteOffset(ti->tileh), PAL_NONE);
 	} else {
 		DrawGroundSprite(_landscape_clear_sprites_rough[GB(ti->x ^ ti->y, 4, 3)], PAL_NONE);
 	}
@@ -92,16 +92,16 @@ static void DrawTile_Clear(TileInfo *ti)
 			break;
 
 		case CLEAR_ROCKS:
-			DrawGroundSprite(SPR_FLAT_ROCKY_LAND_1 + _tileh_to_sprite[ti->tileh], PAL_NONE);
+			DrawGroundSprite(SPR_FLAT_ROCKY_LAND_1 + SlopeToSpriteOffset(ti->tileh), PAL_NONE);
 			break;
 
 		case CLEAR_FIELDS:
-			DrawGroundSprite(_clear_land_sprites_farmland[GetFieldType(ti->tile)] + _tileh_to_sprite[ti->tileh], PAL_NONE);
+			DrawGroundSprite(_clear_land_sprites_farmland[GetFieldType(ti->tile)] + SlopeToSpriteOffset(ti->tileh), PAL_NONE);
 			break;
 
 		case CLEAR_SNOW:
 		case CLEAR_DESERT:
-			DrawGroundSprite(_clear_land_sprites_snow_desert[GetClearDensity(ti->tile)] + _tileh_to_sprite[ti->tileh], PAL_NONE);
+			DrawGroundSprite(_clear_land_sprites_snow_desert[GetClearDensity(ti->tile)] + SlopeToSpriteOffset(ti->tileh), PAL_NONE);
 			break;
 	}
 

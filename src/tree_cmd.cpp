@@ -457,7 +457,7 @@ static void DrawTile_Trees(TileInfo *ti)
 		case TREE_GROUND_SHORE: DrawShoreTile(ti->tileh); break;
 		case TREE_GROUND_GRASS: DrawClearLandTile(ti, GetTreeDensity(ti->tile)); break;
 		case TREE_GROUND_ROUGH: DrawHillyLandTile(ti); break;
-		default: DrawGroundSprite(_clear_land_sprites_snow_desert[GetTreeDensity(ti->tile)] + _tileh_to_sprite[ti->tileh], PAL_NONE); break;
+		default: DrawGroundSprite(_clear_land_sprites_snow_desert[GetTreeDensity(ti->tile)] + SlopeToSpriteOffset(ti->tileh), PAL_NONE); break;
 	}
 
 	DrawClearLandFence(ti);

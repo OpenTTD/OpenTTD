@@ -851,7 +851,7 @@ static void DrawTileSelectionRect(const TileInfo *ti, PaletteID pal)
 		}
 		sel += opposite_corner;
 	} else {
-		sel = SPR_SELECT_TILE + _tileh_to_sprite[ti->tileh];
+		sel = SPR_SELECT_TILE + SlopeToSpriteOffset(ti->tileh);
 	}
 	DrawSelectionSprite(sel, pal, ti, 7, FOUNDATION_PART_NORMAL);
 }

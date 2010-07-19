@@ -397,4 +397,16 @@ static inline Foundation SpecialRailFoundation(Corner corner)
 	return (Foundation)(FOUNDATION_RAIL_W + corner);
 }
 
+/**
+ * Returns the #Sprite offset for a given #Slope.
+ *
+ * @param s The #Slope to get the offset for.
+ * @return The sprite offset for this #Slope.
+ */
+static inline uint SlopeToSpriteOffset(Slope s)
+{
+	extern const byte _slope_to_sprite_offset[32];
+	return _slope_to_sprite_offset[s];
+}
+
 #endif /* SLOPE_FUNC_H */

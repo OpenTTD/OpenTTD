@@ -28,7 +28,4 @@ VARDEF char *_config_file;
 VARDEF char *_highscore_file;
 VARDEF char *_log_file;
 
-/* landscape.cpp */
-extern const byte _tileh_to_sprite[32];
-
 #endif /* VARIABLES_H */

@@ -1876,7 +1876,7 @@ static void DrawTrackBitsOverlay(TileInfo *ti, TrackBits track, const RailtypeIn
 			default:                     image = SPR_FLAT_GRASS_TILE; break;
 		}
 
-		image += _tileh_to_sprite[ti->tileh];
+		image += SlopeToSpriteOffset(ti->tileh);
 
 		DrawGroundSprite(image, PAL_NONE);
 	}
@@ -1966,7 +1966,7 @@ static void DrawTrackBitsOverlay(TileInfo *ti, TrackBits track, const RailtypeIn
 			default:                     image = SPR_FLAT_GRASS_TILE; break;
 		}
 
-		image += _tileh_to_sprite[fake_slope];
+		image += SlopeToSpriteOffset(fake_slope);
 
 		DrawGroundSprite(image, PAL_NONE, &(_halftile_sub_sprite[halftile_corner]));
 
@@ -2038,7 +2038,7 @@ static void DrawTrackBits(TileInfo *ti, TrackBits track)
 				case RAIL_GROUND_ICE_DESERT: image = SPR_FLAT_SNOW_DESERT_TILE; break;
 				default:                     image = SPR_FLAT_GRASS_TILE; break;
 			}
-			image += _tileh_to_sprite[ti->tileh];
+			image += SlopeToSpriteOffset(ti->tileh);
 		}
 	} else {
 		if (ti->tileh != SLOPE_FLAT) {
