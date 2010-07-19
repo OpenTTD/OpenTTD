@@ -57,7 +57,6 @@ static bool _do_scan_working_directory = true;
 
 extern char *_config_file;
 extern char *_highscore_file;
-extern char *_log_file;
 
 /* Get current position in file */
 size_t FioGetPos()
@@ -1035,7 +1034,6 @@ void DeterminePaths(const char *exe)
 	DEBUG(misc, 3, "%s found as personal directory", _personal_dir);
 
 	_highscore_file = str_fmt("%shs.dat", _personal_dir);
-	_log_file = str_fmt("%sopenttd.log",  _personal_dir);
 	extern char *_hotkeys_file;
 	_hotkeys_file = str_fmt("%shotkeys.cfg",  _personal_dir);
 
@@ -1066,6 +1064,9 @@ void DeterminePaths(const char *exe)
 		FioCreateDirectory(tmp);
 		free(tmp);
 	}
+
+	extern char *_log_file;
+	_log_file = str_fmt("%sopenttd.log",  _personal_dir);
 #else /* ENABLE_NETWORK */
 	/* If we don't have networking, we don't need to make the directory. But
 	 * if it exists we keep it, otherwise remove it from the search paths. */
