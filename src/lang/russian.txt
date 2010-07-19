@@ -905,7 +905,7 @@ STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIGFONT}{BLACK
 STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIGFONT}{BLACK}Взрыв завода при подозрительных обстоятельствах вблизи г.{NBSP}{TOWN}!
 STR_NEWS_DISASTER_BIG_UFO                                       :{BIGFONT}{BLACK}НЛО приземлилось возле г.{NBSP}{TOWN}!
 STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIGFONT}{BLACK}Обвал на угольной шахте вызывает оползень в районе г.{NBSP}{TOWN}!
-STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIGFONT}{BLACK}Потоп!{}Не меньше {P 0 "" ",чем " ""} {COMMA} человек{P "" а ""} признан{P "" о о} пропавшим{P "" и и} без вести в результате наводнения!
+STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIGFONT}{BLACK}Потоп!{}По крайней мере {COMMA} человек{P "" а ""} признан{P "" о о} пропавшим{P "" и и} без вести в результате наводнения!
 
 STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIGFONT}{BLACK}Транспортная компания в опасном положении!
 STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIGFONT}{BLACK}{STRING} будет продана или объявлена банкротом, если не начнёт приносить прибыль!

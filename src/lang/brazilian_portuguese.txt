@@ -1146,6 +1146,8 @@ STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Auto-re
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Auto-renovação do veículo {ORANGE}{STRING}{LTBLUE} meses antes/depois da idade máx.
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Dinheiro mínimo para fazer auto-renovação: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Duração das mensagens de erro: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Intervalo para eventos mouse-sobre: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Intervalo para eventos mouse-sobre: {ORANGE}desativado
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Exibir população da cidade na janela da cidade: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Gerador de Terreno: {ORANGE}{STRING}
@@ -1898,7 +1900,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construi
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Construir sinais ferroviários. Ctrl liga/desliga a constução de semáforos/sinais{}Clicar e arrastar constroi sinais até a próxima junção{}Ctrl+Clique liga/desliga a janela de seleção de sinais
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construir ponte ferroviária
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construir túnel ferroviário
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Alternar construir/remover ferrovias, sinais, pontos de controle e estações
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Alternar construir/remover ferrovias, sinais, pontos de controle e estações. Segure ctrl para remover os trilhos de estações e pontos de controle.
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Converter/Atualizar tipo de linha
 
 # Rail depot construction window
@@ -2061,7 +2063,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Planta �
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Gerar Terreno
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Coloca rochas no terreno
 STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Coloca farol
-STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Define área desértica.{} Pressione e segure CTRL para removê-la
+STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Define área desértica.{} Segure Ctrl para removê-la
 STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Coloca transmissor
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Aumenta área de terreno a baixar/levantar
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Diminui área de terreno a baixar/levantar
@@ -2451,7 +2453,7 @@ STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRI
 STR_NEWGRF_INVALID_CARGO                                        :<carga inválida>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} de <carga inválida>
-STR_NEWGRF_INVALID_ENGINE                                       :<locom. inválida>
+STR_NEWGRF_INVALID_ENGINE                                       :<modelo de veíc. inválido>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<indústria inválida>
 
 # Sign list window
@@ -2532,7 +2534,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Clique n
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nome da estação - clique no nome para centralizar a visualização na estação. Ctrl+Clique abre uma nova janela de visualização
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Segure CTRL para selecionar mais de um item
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Segure Ctrl para selecionar mais de um item
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Estações
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
@@ -2811,10 +2813,10 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} veículo{P "" s}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trens - clique num trem para informações, arraste um veículo para adicionar/remover do trem
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Veículos - clique num veículo para informações
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Embarcações - clique numa embarcação para informações
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Aeronave - clique na aeronave para informações
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trens - arraste um veículo para adicionar/remover do trem, clique com o botão direito num trem para informações. Segurar Ctrl aplica ambas funções na composição
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Veículos - clique com o botão direito num veículo para informações
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Embarcações - clique com o botão direito numa embarcação para informações
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Aeronave - cliquecomo botão direito na aeronave para informações
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Arraste o veículo aqui para vendê-lo
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Arraste o automóvel aqui para vendê-lo
@@ -3485,6 +3487,7 @@ STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Impossí
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Impossível remover estação de bonde...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Impossível remover estação de bonde...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Remova o ponto antes
+STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}...não há estações aqui
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Remova a estação antes
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Remova o ponto de ônubis antes
@@ -3550,6 +3553,8 @@ STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Impossí
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Impossível remover a ferrovia daqui...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Impossível remover sinais daqui...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Impossível converter sinais aqui...
+STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}...não há ferrovia aqui
+STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}...não há sinais
 
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Impossível converter o tipo de linha aqui...
 
@@ -3560,6 +3565,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Impossí
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Impossível construir bonde aqui...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Impossível remover rodovia daqui...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Impossível remover bonde daqui...
+STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}...não há rodovias
+STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}...não há linha de bonde
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Impossível construir canais aqui...

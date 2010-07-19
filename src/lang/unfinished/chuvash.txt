@@ -311,15 +311,30 @@ STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLAC
 # Company league window
 STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Инженер
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Хуҫа(Tycoon)
 
 # Performance detail window
 ############ Those following lines need to be in this order!!
+STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Тиев:
+STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Укҫӑ:
+STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Кивҫен:
+STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Пурӗ:
 ############ End of order list
 
 # Music window
+STR_MUSIC_RULER_MIN                                             :{TINYFONT}{BLACK}ЧИ САХ(MIN)
+STR_MUSIC_RULER_MAX                                             :{TINYFONT}{BLACK}ЧИ НУМ(MAX)
+STR_MUSIC_RULER_MARKER                                          :{TINYFONT}{BLACK}'
+STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
+STR_MUSIC_TRACK_DIGIT                                           :{TINYFONT}{DKGREEN}{ZEROFILL_NUM}
+STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
+STR_MUSIC_TITLE_NAME                                            :{TINYFONT}{DKGREEN}"{STRING}"
+STR_MUSIC_TRACK                                                 :{TINYFONT}{BLACK}Кӗвӗ
+STR_MUSIC_XTITLE                                                :{TINYFONT}{BLACK}Ят
 
 
 # Playlist window
+STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
 
 # Highscore window
 

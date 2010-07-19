@@ -1276,6 +1276,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 rutenett
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 rutenett
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :tilfeldig
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Byer kan bygge veier: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}Byer har lov å bygge overganger: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Tillat bykontrollert støynivå for flyplasser: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Grunnlegging av byer i spillet: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :forbudt
@@ -1898,7 +1899,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Bygg jer
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Bygg jernbanesignaler. CTRL veksler mellom vingesignaler/lyssignaler{}Hold og dra for å bygge signaler langs en rett jernbanestrekning. CTRL bygger signaler til det neste krysset. CTRL+klikk viser/skjuler signalvalgsvinduet.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Bygg jernbanebro
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Bygg jernbanetunnel
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Veksle mellom bygging/fjerning av jernbanespor, signaler, kontrollpunkt og stasjoner. CTRL fjerner i tillegg jernbanespor fra kontrollpunkt og stasjoner.
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Veksle mellom bygging/fjerning av jernbanespor, signaler, kontrollpunkt og stasjoner. Hold inne CTRL for å fjerne jernbanespor fra kontrollpunkt og stasjoner.
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Konverter/oppgrader jernbanetypen
 
 # Rail depot construction window
@@ -2061,7 +2062,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Plasser 
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Landskapsgenerering
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Plasser steinete felt i landskapet
 STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Plasser fyrtårn
-STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Definer ørkenområde.{}Klikk og hold inne CTRL for å fjerne det
+STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Definer ørkenområde.{}Hold inne CTRL for å fjerne det
 STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Plasser radiosender
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Øk størrelse av landareal for heving/senking
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Reduser størrelse av landareal for heving/senking
@@ -2451,7 +2452,7 @@ STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRI
 STR_NEWGRF_INVALID_CARGO                                        :<invalid cargo>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} med <invalid cargo>
-STR_NEWGRF_INVALID_ENGINE                                       :<invalid engine>
+STR_NEWGRF_INVALID_ENGINE                                       :<ugyldig kjøretøymodell>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<invalid industry>
 
 # Sign list window
@@ -2532,7 +2533,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klikk fo
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Stasjonsnavn - klikk på navnet for å gå til stasjonen. CTRL+klikk åpner et nytt tilleggsvindu over stasjonen.
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Hold nede CTRL for å velge mer enn en ting
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Hold nede CTRL for å velge flere
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} stasjon{P "" er}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
@@ -2811,10 +2812,10 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} kjøretøy{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Tog - klikk på tog for mer informasjon. Dra vogn for å legge til/fjerne fra tog
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Kjøretøy - klikk på kjøretøy for mer informasjon
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Skip - klikk på skip for mer informasjon
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Luftfartøy - klikk på luftfartøy for mer informasjon
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Tog - dra vogn for å legge til/fjerne fra tog, høyreklikk for mer informasjon. Hold inne CTRL for at begge funksjonene skal gjelde for hele toget
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Kjøretøy - høyreklikk på kjøretøy for mer informasjon
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Skip - høyreklikk på skip for mer informasjon
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Luftfartøy - høyreklikk på luftfartøy for mer informasjon
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Dra tog/vogn hit for å selge det
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Dra kjøretøy hit for å selge det
@@ -3485,6 +3486,7 @@ STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Kan ikke
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Kan ikke fjerne trikkestasjon for passasjerer...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Kan ikke fjerne trikkestasjon for varer...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Må fjerne stoppested først
+STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}...det finnes ingen stasjon her
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Må rive jernbanestasjon først
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Må rive bussterminal først
@@ -3544,11 +3546,14 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Må fjer
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Ingen passende jernbanespor
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Må fjerne jernbanespor først
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Veien er enveiskjørt eller blokkert
+STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Denne jernbanetypen tillater ikke overganger
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Kan ikke bygge signaler her...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Kan ikke bygge jernbanespor her...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Kan ikke fjerne jernbanespor herfra...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Kan ikke fjerne signaler herfra...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Kan ikke konvertere signaler her...
+STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}...det finnes ingen jernbanespor her
+STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}...det finnes ingen signaler
 
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Kan ikke konvertere jernbanetype her...
 
@@ -3559,6 +3564,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Kan ikke
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Kan ikke bygge trikkespor her...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Kan ikke fjerne vei herfra...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Kan ikke fjerne trikkespor herfra...
+STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}...det finnes ingen vei
+STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}...det finnes ingen trikkespor her
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Kan ikke bygge kanaler her...

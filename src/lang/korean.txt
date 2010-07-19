@@ -528,6 +528,8 @@ STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLAC
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}10 단위(1만 리터)의 화물을 20칸 거리만큼 운송할 때의 운송비 지급량
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}모두 사용
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT}{BLACK}모두 사용 안함
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}화물 운송단가 비율 그래프에서 모든 화물을 표시
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}화물 운송단가 비율 그래프에서 모든 화물을 표시안함
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}이 화물에 대한 그래프 켜기/끄기
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 
@@ -1143,6 +1145,8 @@ STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}차량�
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}차량이 최고수명의 {ORANGE}{STRING}{LTBLUE}개월 전/후이면 자동 교체
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}교체를 위한 자동 교체 최소 요구 자금 : {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}오류 메시지 표시 : {ORANGE}{STRING}초 동안
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}마우스를 갖다 댈때 도구팁이 뜨는 데 걸리는 시간: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}마우스를 갖다 댈때 도구팁이 뜨는 데 걸리는 시간: {ORANGE}도구팁 사용 안함
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}도시명 옆에 인구를 표시함 : {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}지형 만들기: {ORANGE}{STRING}
@@ -2964,8 +2968,8 @@ STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}{WAYPOI
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE}{DEPOT}{G 0 "으" ""}로 향하는 중
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}{DEPOT}{G 0 "으" ""}로 향하는 중, ({VELOCITY})
 
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}{DEPOT}로 점검하러 가는 중
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}{DEPOT}로 점검하러 가는 중, ({VELOCITY})
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}{DEPOT}{G 0 "으" ""}로 점검하러 가는 중
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}{DEPOT}{G 0 "으" ""}로 점검하러 가는 중, ({VELOCITY})
 
 # Vehicle stopped/started animations
 STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}정지
