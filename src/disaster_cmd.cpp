@@ -48,6 +48,9 @@
 #include "table/strings.h"
 #include "table/sprites.h"
 
+/** Delay counter for considering the next disaster. */
+uint16 _disaster_delay;
+
 enum DisasterSubType {
 	ST_ZEPPELINER,
 	ST_ZEPPELINER_SHADOW,

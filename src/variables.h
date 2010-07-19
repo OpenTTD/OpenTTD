@@ -19,12 +19,6 @@
 /* Amount of game ticks */
 VARDEF uint16 _tick_counter;
 
-/* Also save scrollpos_x, scrollpos_y and zoom */
-VARDEF uint16 _disaster_delay;
-
-/* Determines how often to run the tree loop */
-VARDEF byte _trees_tick_ctr;
-
 /* NOSAVE: Used in palette animations only, not really important. */
 VARDEF int _palette_animation_counter;
 

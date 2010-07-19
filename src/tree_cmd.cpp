@@ -52,6 +52,8 @@ enum ExtraTreePlacement {
 	ETP_ALL,        ///< Place trees on all tiles
 };
 
+/** Determines when to consider building more trees. */
+byte _trees_tick_ctr;
 
 /**
  * Tests if a tile can be converted to MP_TREES
