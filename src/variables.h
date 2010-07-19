@@ -19,9 +19,6 @@
 /* Amount of game ticks */
 VARDEF uint16 _tick_counter;
 
-/* NOSAVE: Used in palette animations only, not really important. */
-VARDEF int _palette_animation_counter;
-
 VARDEF uint32 _realtime_tick;
 
 VARDEF byte _display_opt;

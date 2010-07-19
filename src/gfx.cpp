@@ -1212,11 +1212,15 @@ void GfxInitPalettes()
 	_pal_count_dirty = 256;
 }
 
-#define EXTR(p, q) (((uint16)(_palette_animation_counter * (p)) * (q)) >> 16)
-#define EXTR2(p, q) (((uint16)(~_palette_animation_counter * (p)) * (q)) >> 16)
+#define EXTR(p, q) (((uint16)(palette_animation_counter * (p)) * (q)) >> 16)
+#define EXTR2(p, q) (((uint16)(~palette_animation_counter * (p)) * (q)) >> 16)
 
 void DoPaletteAnimations()
 {
+	/* Animation counter for the palette animation. */
+	static int palette_animation_counter = 0;
+	palette_animation_counter += 8;
+
 	Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
 	const Colour *s;
 	const ExtraPaletteValues *ev = &_extra_palette_values;
@@ -1226,12 +1230,12 @@ void DoPaletteAnimations()
 	const int colour_rotation_amount = (_use_palette == PAL_DOS) ? PALETTE_ANIM_SIZE_DOS : PALETTE_ANIM_SIZE_WIN;
 	Colour old_val[PALETTE_ANIM_SIZE_DOS];
 	const int oldval_size = colour_rotation_amount * sizeof(*old_val);
-	const uint old_tc = _palette_animation_counter;
+	const uint old_tc = palette_animation_counter;
 	uint i;
 	uint j;
 
 	if (blitter != NULL && blitter->UsePaletteAnimation() == Blitter::PALETTE_ANIMATION_NONE) {
-		_palette_animation_counter = 0;
+		palette_animation_counter = 0;
 	}
 
 	Colour *palette_pos = &_cur_palette[PALETTE_ANIM_SIZE_START];  // Points to where animations are taking place on the palette
@@ -1277,7 +1281,7 @@ void DoPaletteAnimations()
 
 	/* Radio tower blinking */
 	{
-		byte i = (_palette_animation_counter >> 1) & 0x7F;
+		byte i = (palette_animation_counter >> 1) & 0x7F;
 		byte v;
 
 		if (i < 0x3f) {
@@ -1337,7 +1341,7 @@ void DoPaletteAnimations()
 	}
 
 	if (blitter != NULL && blitter->UsePaletteAnimation() == Blitter::PALETTE_ANIMATION_NONE) {
-		_palette_animation_counter = old_tc;
+		palette_animation_counter = old_tc;
 	} else {
 		if (memcmp(old_val, &_cur_palette[PALETTE_ANIM_SIZE_START], oldval_size) != 0) {
 			/* Did we changed anything on the palette? Seems so.  Mark it as dirty */
