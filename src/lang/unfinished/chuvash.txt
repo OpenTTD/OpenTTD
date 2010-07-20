@@ -33,7 +33,7 @@ STR_CARGO_PLURAL_MAIL                                           :Почта
 STR_CARGO_PLURAL_OIL                                            :Нефть
 STR_CARGO_PLURAL_LIVESTOCK                                      :Выльăх
 STR_CARGO_PLURAL_GOODS                                          :Таварĕсем
-STR_CARGO_PLURAL_GRAIN                                          :Пĕрчĕ
+STR_CARGO_PLURAL_GRAIN                                          :Пĕрче
 STR_CARGO_PLURAL_WOOD                                           :Йывăç
 STR_CARGO_PLURAL_IRON_ORE                                       :Тимĕр
 STR_CARGO_PLURAL_STEEL                                          :Хурçă
@@ -104,6 +104,33 @@ STR_ABBREV_COAL                                                 :{TINYFONT}КӐ
 STR_ABBREV_MAIL                                                 :{TINYFONT}ПО
 STR_ABBREV_OIL                                                  :{TINYFONT}НЕ
 STR_ABBREV_LIVESTOCK                                            :{TINYFONT}ВЫ
+STR_ABBREV_GOODS                                                :{TINYFONT}ТВ
+STR_ABBREV_GRAIN                                                :{TINYFONT}ПР
+STR_ABBREV_WOOD                                                 :{TINYFONT}ЙВ
+STR_ABBREV_IRON_ORE                                             :{TINYFONT}ТМ
+STR_ABBREV_STEEL                                                :{TINYFONT}ХР
+STR_ABBREV_VALUABLES                                            :{TINYFONT}КП
+STR_ABBREV_COPPER_ORE                                           :{TINYFONT}ПХ
+STR_ABBREV_MAIZE                                                :{TINYFONT}КК
+STR_ABBREV_FRUIT                                                :{TINYFONT}ҪМ
+STR_ABBREV_DIAMONDS                                             :{TINYFONT}КА
+STR_ABBREV_FOOD                                                 :{TINYFONT}АП
+STR_ABBREV_PAPER                                                :{TINYFONT}ХТ
+STR_ABBREV_GOLD                                                 :{TINYFONT}ЫЛ
+STR_ABBREV_WATER                                                :{TINYFONT}ШВ
+STR_ABBREV_WHEAT                                                :{TINYFONT}ТЛ
+STR_ABBREV_RUBBER                                               :{TINYFONT}КЧ
+STR_ABBREV_SUGAR                                                :{TINYFONT}СХ
+STR_ABBREV_TOYS                                                 :{TINYFONT}ТТ
+STR_ABBREV_SWEETS                                               :{TINYFONT}КН
+STR_ABBREV_COLA                                                 :{TINYFONT}КЛ
+STR_ABBREV_CANDYFLOSS                                           :{TINYFONT}СВ
+STR_ABBREV_BUBBLES                                              :{TINYFONT}ХМ
+STR_ABBREV_TOFFEE                                               :{TINYFONT}КР
+STR_ABBREV_BATTERIES                                            :{TINYFONT}БТ
+STR_ABBREV_PLASTIC                                              :{TINYFONT}ПЛ
+STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}ГШ
+STR_ABBREV_NONE                                                 :{TINYFONT}ҪУК
 STR_ABBREV_ALL                                                  :{TINYFONT}ПӖРМАЙ
 
 # 'Mode' of transport for cargoes
@@ -144,6 +171,8 @@ STR_BUTTON_CANCEL                                               :{BLACK}Улӑш
 STR_BUTTON_OK                                                   :{BLACK}Юрӗ
 
 # On screen keyboard window
+STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
+STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
 
 # Measurement tooltip
 STR_MEASURE_LENGTH                                              :{BLACK}Тӑршшӗ: {NUM}
@@ -159,6 +188,7 @@ STR_SORT_BY_POPULATION                                          :Ҫынисем
 STR_SORT_BY_NAME                                                :Ячӗ
 STR_SORT_BY_PRODUCTION                                          :Тухӑҫлӑх
 STR_SORT_BY_TYPE                                                :Тип
+STR_SORT_BY_TRANSPORTED                                         :Кӑларӑм
 STR_SORT_BY_AGE                                                 :Ӳсӗм
 STR_SORT_BY_RELIABILITY                                         :Шанчӑклӑх
 STR_SORT_BY_MODEL                                               :Модель
@@ -173,6 +203,7 @@ STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Вӑйй
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Майлаштару
 
 # Extra tooltips for the scenario editor toolbar
+STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
@@ -297,6 +328,7 @@ STR_MONTH_DEC                                                   :Раштав
 ############ range for months ends
 
 # Graph window
+STR_GRAPH_KEY_BUTTON                                            :{BLACK}Уҫӑ
 STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
 STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
 STR_GRAPH_Y_LABEL                                               :{TINYFONT}{STRING}
@@ -311,9 +343,15 @@ STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLAC
 # Company league window
 STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Инженер
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_DIRECTOR                   :Директор
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :Президент
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Хуҫа(Tycoon)
 
 # Performance detail window
+STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Вакки-тӗвекки
+STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
+STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
+STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Тиев:
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Укҫӑ:
