@@ -1229,6 +1229,7 @@ enum MainToolbarHotkeys {
 	MTHK_FASTFORWARD,
 	MTHK_SETTINGS,
 	MTHK_SAVEGAME,
+	MTHK_LOADGAME,
 	MTHK_SMALLMAP,
 	MTHK_TOWNDIRECTORY,
 	MTHK_SUBSIDIES,
@@ -1255,6 +1256,8 @@ enum MainToolbarHotkeys {
 	MTHK_CHEATS,
 	MTHK_TERRAFORM,
 	MTHK_EXTRA_VIEWPORT,
+	MTHK_CLIENT_LIST,
+	MTHK_SIGN_LIST,
 };
 
 struct MainToolbarWindow : Window {
@@ -1301,6 +1304,7 @@ struct MainToolbarWindow : Window {
 			case MTHK_FASTFORWARD: ToolbarFastForwardClick(this); break;
 			case MTHK_SETTINGS: ShowGameOptions(); break;
 			case MTHK_SAVEGAME: MenuClickSaveLoad(); break;
+			case MTHK_LOADGAME: ShowSaveLoadDialog(SLD_LOAD_GAME); break;
 			case MTHK_SMALLMAP: ShowSmallMap(); break;
 			case MTHK_TOWNDIRECTORY: ShowTownDirectory(); break;
 			case MTHK_SUBSIDIES: ShowSubsidiesList(); break;
@@ -1327,6 +1331,10 @@ struct MainToolbarWindow : Window {
 			case MTHK_CHEATS: if (!_networking) ShowCheatWindow(); break;
 			case MTHK_TERRAFORM: ShowTerraformToolbar(); break;
 			case MTHK_EXTRA_VIEWPORT: ShowExtraViewPortWindow(); break;
+#ifdef ENABLE_NETWORK
+			case MTHK_CLIENT_LIST: if (_networking) ShowClientList(); break;
+#endif
+			case MTHK_SIGN_LIST: ShowSignList(); break;
 			default: return ES_NOT_HANDLED;
 		}
 		return ES_HANDLED;
@@ -1380,6 +1388,7 @@ Hotkey<MainToolbarWindow> MainToolbarWindow::maintoolbar_hotkeys[] = {
 	Hotkey<MainToolbarWindow>((uint16)0, "fastforward", MTHK_FASTFORWARD),
 	Hotkey<MainToolbarWindow>(WKC_F2, "settings", MTHK_SETTINGS),
 	Hotkey<MainToolbarWindow>(WKC_F3, "saveload", MTHK_SAVEGAME),
+	Hotkey<MainToolbarWindow>((uint16)0, "load_game", MTHK_LOADGAME),
 	Hotkey<MainToolbarWindow>(_maintoolbar_smallmap_keys, "smallmap", MTHK_SMALLMAP),
 	Hotkey<MainToolbarWindow>(WKC_F5, "town_list", MTHK_TOWNDIRECTORY),
 	Hotkey<MainToolbarWindow>(WKC_F6, "subsidies", MTHK_SUBSIDIES),
@@ -1406,6 +1415,10 @@ Hotkey<MainToolbarWindow> MainToolbarWindow::maintoolbar_hotkeys[] = {
 	Hotkey<MainToolbarWindow>(WKC_CTRL | WKC_ALT | 'C', "cheats", MTHK_CHEATS),
 	Hotkey<MainToolbarWindow>('L', "terraform", MTHK_TERRAFORM),
 	Hotkey<MainToolbarWindow>('V', "extra_viewport", MTHK_EXTRA_VIEWPORT),
+#ifdef ENABLE_NETWORK
+	Hotkey<MainToolbarWindow>((uint16)0, "client_list", MTHK_CLIENT_LIST),
+#endif
+	Hotkey<MainToolbarWindow>((uint16)0, "sign_list", MTHK_SIGN_LIST),
 	HOTKEY_LIST_END(MainToolbarWindow)
 };
 Hotkey<MainToolbarWindow> *_maintoolbar_hotkeys = MainToolbarWindow::maintoolbar_hotkeys;

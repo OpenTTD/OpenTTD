@@ -552,6 +552,14 @@ private:
 	}
 
 	/**
+	 * Handle the 'no loading' hotkey
+	 */
+	void OrderHotkey_NoLoad(int i)
+	{
+		this->OrderClick_FullLoad(OLFB_NO_LOAD);
+	}
+
+	/**
 	 * Handle the click on the service.
 	 */
 	void OrderClick_Service(int i)
@@ -609,6 +617,22 @@ private:
 		}
 
 		DoCommandP(this->vehicle->tile, this->vehicle->index + (sel_ord << 16), MOF_UNLOAD | (unload_type << 4), CMD_MODIFY_ORDER | CMD_MSG(STR_ERROR_CAN_T_MODIFY_THIS_ORDER));
+	}
+
+	/**
+	 * Handle the transfer hotkey
+	 */
+	void OrderHotkey_Transfer(int i)
+	{
+		this->OrderClick_Unload(OUFB_TRANSFER);
+	}
+
+	/**
+	 * Handle the 'no unload' hotkey
+	 */
+	void OrderHotkey_NoUnload(int i)
+	{
+		this->OrderClick_Unload(OUFB_NO_UNLOAD);
 	}
 
 	/**
@@ -677,11 +701,6 @@ private:
 			ShowVehicleRefitWindow(this->vehicle, this->OrderGetSel(), this);
 		}
 	}
-	typedef void (OrdersWindow::*Handler)(int);
-	struct KeyToEvent {
-		uint16 keycode;
-		Handler proc;
-	};
 
 public:
 	OrdersWindow(const WindowDesc *desc, const Vehicle *v) : Window()
@@ -1341,6 +1360,12 @@ Hotkey<OrdersWindow> OrdersWindow::order_hotkeys[]= {
 	Hotkey<OrdersWindow>('H', "nonstop", 0, &OrdersWindow::OrderClick_Nonstop),
 	Hotkey<OrdersWindow>('J', "fullload", 0, &OrdersWindow::OrderClick_FullLoad),
 	Hotkey<OrdersWindow>('K', "unload", 0, &OrdersWindow::OrderClick_Unload),
+	Hotkey<OrdersWindow>((uint16)0, "nearest_depot", 0, &OrdersWindow::OrderClick_NearestDepot),
+	Hotkey<OrdersWindow>((uint16)0, "always_service", 0, &OrdersWindow::OrderClick_Service),
+	Hotkey<OrdersWindow>((uint16)0, "force_unload", 0, &OrdersWindow::OrderClick_Unload),
+	Hotkey<OrdersWindow>((uint16)0, "transfer", 0, &OrdersWindow::OrderHotkey_Transfer),
+	Hotkey<OrdersWindow>((uint16)0, "no_unload", 0, &OrdersWindow::OrderHotkey_NoUnload),
+	Hotkey<OrdersWindow>((uint16)0, "no_load", 0, &OrdersWindow::OrderHotkey_NoLoad),
 	HOTKEY_LIST_END(OrdersWindow)
 };
 Hotkey<OrdersWindow> *_order_hotkeys = OrdersWindow::order_hotkeys;
