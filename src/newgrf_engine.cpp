@@ -841,6 +841,8 @@ static const SpriteGroup *VehicleResolveReal(const ResolverObject *object, const
 
 	uint totalsets = in_motion ? group->num_loaded : group->num_loading;
 
+	if (totalsets == 0) return NULL;
+
 	uint set = (v->cargo.Count() * totalsets) / max((uint16)1, v->cargo_cap);
 	set = min(set, totalsets - 1);
 
