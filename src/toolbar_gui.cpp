@@ -1613,9 +1613,9 @@ public:
 			case MTEHK_GIANT_SCREENSHOT: MenuClickWorldScreenshot(); break;
 			case MTEHK_ZOOM_IN: ToolbarZoomInClick(this); break;
 			case MTEHK_ZOOM_OUT: ToolbarZoomOutClick(this); break;
-			case MTHK_TERRAFORM: ShowEditorTerraformToolbar(); break;
+			case MTEHK_TERRAFORM: ShowEditorTerraformToolbar(); break;
 			case MTEHK_SMALLMAP: ShowSmallMap(); break;
-			case MTHK_EXTRA_VIEWPORT: ShowExtraViewPortWindow(); break;
+			case MTEHK_EXTRA_VIEWPORT: ShowExtraViewPortWindow(); break;
 			default: return ES_NOT_HANDLED;
 		}
 		return ES_HANDLED;
