@@ -2062,7 +2062,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Cuir cra
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Talamh a Chruthú
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Cuir ceantair charraige ar an tírdhreach
 STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Cuir síos teach solais
-STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Sainigh limistéar fásaigh.{}Brúigh agus coinnigh síos Ctrl chun é a bhaint
+STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Sainigh limistéar fásaigh.{}Coinnigh síos Ctrl chun é a bhaint
 STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Cur síos tarchuradóir
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Méadaigh an limistéar talún atá le hardú/le hísliú
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Laghdaigh an limistéar talún atá le hardú/le hísliú
@@ -2452,7 +2452,7 @@ STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}Chruthai
 STR_NEWGRF_INVALID_CARGO                                        :<lastas neamhbhailí>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} de <lastas neamhbhailí>
-STR_NEWGRF_INVALID_ENGINE                                       :<inneall neamhbhailí>
+STR_NEWGRF_INVALID_ENGINE                                       :<samhail feithicle neamhbhailí>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<tionscal neamhbhailí>
 
 # Sign list window
@@ -2813,9 +2813,9 @@ STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} {P
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
 STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Traenacha - cliceáil ar thraein le haghaidh faisnéise, tarraing feithicil lena chur leis an traein nó a bhaint de
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Feithiclí - cliceáil ar fheithicil le faisnéis a fháil
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Longa - cliceáil ar long le faisnéis a fháil
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Aerárthaigh - cliceáil ar aerárthach le faisnéis a fháil
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Feithiclí - deaschliceáil ar fheithicil le faisnéis a fháil
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Longa - deaschliceáil ar long le faisnéis a fháil
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Aerárthaigh - deaschliceáil ar aerárthach le faisnéis a fháil
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Tarraing feithicil traenach anseo chun í a dhíol
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Tarraing feithicil bóthair anseo chun í a dhíol

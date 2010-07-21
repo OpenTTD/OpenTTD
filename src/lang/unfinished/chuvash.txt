@@ -353,6 +353,8 @@ STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCO
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 ############ Those following lines need to be in this order!!
+STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Ҫул-йӗр:
+STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Станцисем:
 STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Тиев:
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Укҫӑ:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Кивҫен:
@@ -373,20 +375,56 @@ STR_MUSIC_XTITLE                                                :{TINYFONT}{BLAC
 
 # Playlist window
 STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
+STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}Тасат
+STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}Упра
 
 # Highscore window
+STR_HIGHSCORE_POSITION                                          :{BIGFONT}{BLACK}{COMMA}.
+STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESIDENTNAME}, {COMPANY}
+STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 
 # Smallmap window
+STR_SMALLMAP_CAPTION                                            :{WHITE}Карттӑ - {STRING}
 
+STR_SMALLMAP_TYPE_VEHICLES                                      :Ҫул-йӗр
+STR_SMALLMAP_TYPE_VEGETATION                                    :Йывăç-курӑк
+STR_SMALLMAP_TYPE_OWNERS                                        :Хуҫасем
 
+STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}Ҫулсем
+STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLACK}Чукун ҫулсем
+STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINYFONT}{BLACK}Ҫул-йӗр
+STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINYFONT}{BLACK}Пуйăссем
+STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINYFONT}{BLACK}Транспорт ҫул
+STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINYFONT}{BLACK}Карапсем
+STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINYFONT}{BLACK}Сывлӑш ҫул-йӗрӗ
+STR_SMALLMAP_LEGENDA_FOREST                                     :{TINYFONT}{BLACK}Вӑрман
+STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINYFONT}{BLACK}Уйсем
+STR_SMALLMAP_LEGENDA_TREES                                      :{TINYFONT}{BLACK}Йывӑссем
+STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINYFONT}{BLACK}Ту хысакӗсем
+STR_SMALLMAP_LEGENDA_WATER                                      :{TINYFONT}{BLACK}Шыв
+STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLACK}Пуш хир
+STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}Юр
 
+STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
+STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 
 # Status bar messages
+STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
+STR_STATUSBAR_PAUSED                                            :{YELLOW}*  *  ТӐХТАВ  *  *
+STR_STATUSBAR_AUTOSAVE                                          :{RED}ХӐЙ УПРАВ
+STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  ВӐЙЙИ УПРАВ  *  *
 
 # News message history
+STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 # Message settings window
+STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Пӗлтерӳ
+STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}Майлаштару пӗлтерӗвӗ
+STR_NEWS_MESSAGES_OFF                                           :Сӳнтер
+STR_NEWS_MESSAGES_SUMMARY                                       :Кӗске
+STR_NEWS_MESSAGES_FULL                                          :Тулли
 
+STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Грантсем
 
 
 
@@ -413,6 +451,7 @@ STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBL
 # Game options window
 
 ############ start of currency region
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :Вырӑсла тенкӗ (RUR)
 ############ end of currency region
 
 
@@ -422,13 +461,38 @@ STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBL
 
 
 ############ start of townname region
+STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Акӑлчан
+STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Францири
+STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Нимӗҫ
+STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Акӑлчан (Хушма)
+STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Акӑлчан (Кулӑшма)
+STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Шведла
+STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Голланд
+STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Финла
+STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Поляк
+STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Словак
+STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Венгрла
+STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Австри
+STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Рим
+STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Чехла
+STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Швеци
+STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Датчан
+STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Турккӑла
+STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Итали
+STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Катталун
 ############ end of townname region
 
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Хӑй управ
 
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Сӳнтер
 
+STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Чӗлхи
 
+STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Тулли экран
 
+STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Экрана сӑнарлама пултарни
 
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Формат экран сӑнӗ
 
 
 
@@ -438,32 +502,61 @@ STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBL
 
 
 
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Префикс: {ORANGE}{STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Суффикс: {ORANGE}{STRING}
 
 
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Малтанласа пӑхса тухни: {ORANGE}{CURRENCY}
 
 # Difficulty level window
 
 ############ range for difficulty levels starts
+STR_DIFFICULTY_LEVEL_EASY                                       :{BLACK}Ҫӑмӑл
+STR_DIFFICULTY_LEVEL_MEDIUM                                     :{BLACK}Вӑтам
+STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}Йывӑр
+STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}Харпӑр хӑй
 ############ range for difficulty levels ends
 
+STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Упра
 
 ############ range for difficulty settings starts
+STR_DIFFICULTY_LEVEL_SETTING_ECONOMY                            :{LTBLUE}Экономика: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}Инкек: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
+STR_NONE                                                        :Ҫук
+STR_NUM_CUSTOM                                                  :Харпӑр хӑй
+
+STR_VARIETY_NONE                                                :Ҫук
+
+
+
+STR_DISASTER_NONE                                               :Ҫук
+
+STR_SUBSIDY_X1_5                                                :x1.5
+STR_SUBSIDY_X2                                                  :x2
+STR_SUBSIDY_X3                                                  :x3
+STR_SUBSIDY_X4                                                  :x4
 
 
 
 
-
-
-
-
-
+STR_DISASTERS_OFF                                               :Сӳнтер
+STR_DISASTERS_ON                                                :Ҫут
 
 
 
 # Advanced settings window
 
+STR_CONFIG_SETTING_OFF                                          :Сӳнтер
+STR_CONFIG_SETTING_ON                                           :Ҫут
+STR_CONFIG_SETTING_DISABLED                                     :хастар мар
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Чӑн
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Реаллӑ
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Чӑн
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Реаллӑ
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :ҫук
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :ҫук
 
 
 
