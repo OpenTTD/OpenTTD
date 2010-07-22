@@ -1344,6 +1344,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :mřížka 2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :mřížka 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :náhodně
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Města smějí stavět silnice: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}Města mohou stavět přejezdy: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Umožnit městům ovlivňovat hlukový limit pro letiště: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Zakládání měst během hry: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :zakázáno
