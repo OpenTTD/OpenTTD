@@ -759,11 +759,9 @@ public:
 
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
-		Industry *i;
-
 		switch (widget) {
 			case IVW_INFO: {
-				i = Industry::Get(this->window_number);
+				Industry *i = Industry::Get(this->window_number);
 
 				/* We should work if needed.. */
 				if (!IsProductionAlterable(i)) return;
@@ -799,14 +797,15 @@ public:
 				}
 			} break;
 
-			case IVW_GOTO:
-				i = Industry::Get(this->window_number);
+			case IVW_GOTO: {
+				Industry *i = Industry::Get(this->window_number);
 				if (_ctrl_pressed) {
 					ShowExtraViewPortWindow(i->location.tile + TileDiffXY(1, 1));
 				} else {
 					ScrollMainWindowToTile(i->location.tile + TileDiffXY(1, 1));
 				}
 				break;
+			}
 		}
 	}
 
