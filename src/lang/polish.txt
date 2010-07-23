@@ -1525,6 +1525,8 @@ STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Autoodn
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Autoodnowienie następuje {ORANGE}{STRING}{LTBLUE} miesięcy przed/po maks. wieku
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Min. ilość pieniędzy potrzebna do autoodnowienia: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Czas trwania komunikatu o błędzie: {ORANGE}{STRING} sekund{P a y ""}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Opóźnienie dla akcji przy najechaniu: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Opóźnienie dla akcji przy najechaniu: {ORANGE}wyłączone
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Pokaż populację miasta w jego nazwie: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Generator krajobrazu: {ORANGE}{STRING}
@@ -2830,7 +2832,7 @@ STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRI
 STR_NEWGRF_INVALID_CARGO                                        :<nieprawidłowy ładunek>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} of <nieprawidłowy ładunek>
-STR_NEWGRF_INVALID_ENGINE                                       :<nieprawidłowy silnik>
+STR_NEWGRF_INVALID_ENGINE                                       :<nieprawidłowy model pojazdu>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<nieprawidłowy przemysł>
 
 # Sign list window
@@ -3190,10 +3192,10 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} pojazd{P "" y ów}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Pociągi - kliknij na pociągu aby uzyskać informacje, przeciągnij pojazd/wagon aby dodać/usunąć z pociągu
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Pojazdy - klik na pojeździe po więcej informacji
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Statki - kliknij aby uzyskać informacje o statku
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Samolot - klik na samolocie aby uzyskać informacje
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Pociągi - przeciągnij pojazd/wagon przytrzymując lewy klawisz myszy aby go dodać/usunąć ze składu pociągu, prawy-klik na pociągu aby uzyskać informacje, przytrzymując ctrl dla podanych akcji stosuje zmiany do całego składu pociągu
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Pojazdy - prawy-klik na pojeździe po więcej informacji
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Statki - prawy-kliknij aby uzyskać informacje o statku
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Samolot - prawy-klik na samolocie aby uzyskać informacje
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Przeciągnij tutaj pociąg aby go sprzedać
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Przeciągnij tutaj samochód aby go sprzedać

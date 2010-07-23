@@ -290,7 +290,7 @@ STR_ABBREV_NONE                                                 :{TINYFONT}Ні
 STR_ABBREV_ALL                                                  :{TINYFONT}Все
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :пасАжир
+STR_PASSENGERS                                                  :пасажирів
 STR_BAGS                                                        :мішків
 STR_TONS                                                        :тони
 STR_LITERS                                                      :літрів
