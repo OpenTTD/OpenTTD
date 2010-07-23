@@ -47,6 +47,8 @@ enum CargoSuffixType {
 	CST_DIR,   ///< Industry-directory window
 };
 
+static void ShowIndustryCargoesWindow(IndustryType id);
+
 /**
  * Gets the string to display after the cargo name (using callback 37)
  * @param cargo the cargo for which the suffix is requested
@@ -614,6 +616,7 @@ enum IndustryViewWidgets {
 	IVW_VIEWPORT,
 	IVW_INFO,
 	IVW_GOTO,
+	IVW_DISPLAY,
 };
 
 class IndustryViewWindow : public Window
@@ -806,6 +809,12 @@ public:
 				}
 				break;
 			}
+
+			case IVW_DISPLAY: {
+				Industry *i = Industry::Get(this->window_number);
+				ShowIndustryCargoesWindow(i->type);
+				break;
+			}
 		}
 	}
 
@@ -873,8 +882,8 @@ static const NWidgetPart _nested_industry_view_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_CREAM, IVW_INFO), SetMinimalSize(260, 2), SetResize(1, 0),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_CREAM, IVW_GOTO), SetMinimalSize(130, 12), SetDataTip(STR_BUTTON_LOCATION, STR_INDUSTRY_VIEW_LOCATION_TOOLTIP),
-		NWidget(WWT_PANEL, COLOUR_CREAM), SetResize(1, 0), EndContainer(),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_CREAM, IVW_GOTO), SetFill(1, 0), SetResize(1, 0), SetDataTip(STR_BUTTON_LOCATION, STR_INDUSTRY_VIEW_LOCATION_TOOLTIP),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_CREAM, IVW_DISPLAY), SetFill(1, 0), SetResize(1, 0), SetDataTip(STR_INDUSTRY_DISPLAY_CHAIN, STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP),
 		NWidget(WWT_RESIZEBOX, COLOUR_CREAM),
 	EndContainer(),
 };
@@ -2384,7 +2393,7 @@ const int IndustryCargoesWindow::VERT_TEXT_PADDING = 5; ///< Vertical padding ar
  * Open the industry and cargoes window.
  * @param id Industry type to display.
  */
-void ShowIndustryCargoesWindow(IndustryType id)
+static void ShowIndustryCargoesWindow(IndustryType id)
 {
 	assert(id < NUM_INDUSTRYTYPES);
 
