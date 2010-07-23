@@ -1258,3 +1258,1141 @@ void ShowIndustryDirectory()
 {
 	AllocateWindowDescFront<IndustryDirectoryWindow>(&_industry_directory_desc, 0);
 }
+
+/** Widget numbers of the industry cargoes window, */
+enum IndustryCargoesWidgets {
+	ICW_CAPTION,
+	ICW_PANEL,
+	ICW_SCROLLBAR,
+};
+
+/** Widgets of the industry cargoes window. */
+static const NWidgetPart _nested_industry_cargoes_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
+		NWidget(WWT_CAPTION, COLOUR_BROWN, ICW_CAPTION), SetDataTip(STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_SHADEBOX, COLOUR_BROWN),
+		NWidget(WWT_STICKYBOX, COLOUR_BROWN),
+	EndContainer(),
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_PANEL, COLOUR_BROWN, ICW_PANEL), SetResize(1, 1), SetMinimalSize(200, 90), EndContainer(),
+		NWidget(NWID_VERTICAL),
+			NWidget(WWT_SCROLLBAR, COLOUR_BROWN, ICW_SCROLLBAR),
+			NWidget(WWT_RESIZEBOX, COLOUR_BROWN),
+		EndContainer(),
+	EndContainer(),
+};
+
+/** Window description for the industry cargoes window. */
+static const WindowDesc _industry_cargoes_desc(
+	WDP_AUTO, 300, 200,
+	WC_INDUSTRY_CARGOES, WC_NONE,
+	0,
+	_nested_industry_cargoes_widgets, lengthof(_nested_industry_cargoes_widgets)
+);
+
+/** Available types of field. */
+enum CargoesFieldType {
+	CFT_EMPTY,       ///< Empty field.
+	CFT_SMALL_EMPTY, ///< Empty small field (for the header).
+	CFT_INDUSTRY,    ///< Display industry.
+	CFT_CARGO,       ///< Display cargo connections.
+	CFT_CARGO_LABEL, ///< Display cargo labels.
+	CFT_HEADER,      ///< Header text.
+};
+
+static const uint MAX_CARGOES = 3; ///< Maximum number of cargoes carried in a #CFT_CARGO field in #CargoesField.
+
+/** Data about a single field in the #IndustryCargoesWindow panel. */
+struct CargoesField {
+	static const int VERT_INTER_INDUSTRY_SPACE;
+	static const int HOR_CARGO_BORDER_SPACE;
+	static const int CARGO_STUB_WIDTH;
+	static const int HOR_CARGO_WIDTH, HOR_CARGO_SPACE;
+	static const int CARGO_FIELD_WIDTH;
+	static const int VERT_CARGO_SPACE, VERT_CARGO_EDGE;
+
+	static const int INDUSTRY_LINE_COLOUR;
+	static const int CARGO_LINE_COLOUR;
+
+	static int small_height, normal_height;
+	static int industry_width;
+
+	CargoesFieldType type; ///< Type of field.
+	union {
+		struct {
+			IndustryType ind_type;                 ///< Industry type (#NUM_INDUSTRYTYPES means 'houses').
+			CargoID other_produced[MAX_CARGOES];   ///< Cargoes produced but not used in this figure.
+			CargoID other_accepted[MAX_CARGOES];   ///< Cargoes accepted but not used in this figure.
+		} industry; ///< Industry data (for #CFT_INDUSTRY).
+		struct {
+			CargoID vertical_cargoes[MAX_CARGOES]; ///< Cargoes running from top to bottom (cargo ID or #INVALID_CARGO).
+			byte num_cargoes;                      ///< Number of cargoes.
+			CargoID supp_cargoes[MAX_CARGOES];     ///< Cargoes entering from the left (index in #vertical_cargoes, or #INVALID_CARGO).
+			byte top_end;                          ///< Stop at the top of the vertical cargoes.
+			CargoID cust_cargoes[MAX_CARGOES];     ///< Cargoes leaving to the right (index in #vertical_cargoes, or #INVALID_CARGO).
+			byte bottom_end;                       ///< Stop at the bottom of the vertical cargoes.
+		} cargo; ///< Cargo data (for #CFT_CARGO).
+		struct {
+			CargoID cargoes[MAX_CARGOES];          ///< Cargoes to display (or #INVALID_CARGO).
+			bool left_align;                       ///< Align all cargo texts to the left (else align to the right).
+		} cargo_label;   ///< Label data (for #CFT_CARGO_LABEL).
+		StringID header; ///< Header text (for #CFT_HEADER).
+	} u; // Data for each type.
+
+	/**
+	 * Make one of the empty fields (#CFT_EMPTY or #CFT_SMALL_EMPTY).
+	 * @param type Type of empty field.
+	 */
+	void MakeEmpty(CargoesFieldType type)
+	{
+		this->type = type;
+	}
+
+	/**
+	 * Make an industry type field.
+	 * @param ind_type Industry type (#NUM_INDUSTRYTYPES means 'houses').
+	 * @note #other_accepted and #other_produced should be filled later.
+	 */
+	void MakeIndustry(IndustryType ind_type)
+	{
+		this->type = CFT_INDUSTRY;
+		this->u.industry.ind_type = ind_type;
+		MemSetT(this->u.industry.other_accepted, INVALID_CARGO, MAX_CARGOES);
+		MemSetT(this->u.industry.other_produced, INVALID_CARGO, MAX_CARGOES);
+	}
+
+	/**
+	 * Connect a cargo from an industry to the #CFT_CARGO column.
+	 * @param cargo Cargo to connect.
+	 * @param produced Cargo is produced (if \c false, cargo is assumed to be accepted).
+	 * @return Horizontal connection index, or \c -1 if not accepted at all.
+	 */
+	int ConnectCargo(CargoID cargo, bool producer)
+	{
+		assert(this->type == CFT_CARGO);
+		if (cargo == INVALID_CARGO) return -1;
+
+		/* Find the vertical cargo column carrying the cargo. */
+		int column = -1;
+		for (int i = 0; i < this->u.cargo.num_cargoes; i++) {
+			if (cargo == this->u.cargo.vertical_cargoes[i]) {
+				column = i;
+				break;
+			}
+		}
+		if (column < 0) return -1;
+
+		if (producer) {
+			assert(this->u.cargo.supp_cargoes[column] == INVALID_CARGO);
+			this->u.cargo.supp_cargoes[column]  = column;
+		} else {
+			assert(this->u.cargo.cust_cargoes[column] == INVALID_CARGO);
+			this->u.cargo.cust_cargoes[column] = column;
+		}
+		return column;
+	}
+
+	/**
+	 * Does this #CFT_CARGO field have a horizontal connection?
+	 * @return \c true if a horizontal connection exists, \c false otherwise.
+	 */
+	bool HasConnection()
+	{
+		assert(this->type == CFT_CARGO);
+
+		for (uint i = 0; i < MAX_CARGOES; i++) {
+			if (this->u.cargo.supp_cargoes[i] != INVALID_CARGO) return true;
+			if (this->u.cargo.cust_cargoes[i] != INVALID_CARGO) return true;
+		}
+		return false;
+	}
+
+	/**
+	 * Make a piece of cargo column.
+	 * @param cargoes    Array of #CargoID (may contain #INVALID_CARGO).
+	 * @param length     Number of cargoes in #cargoes.
+	 * @param count      Number of cargoes to display (should be at least the number of valid cargoes, or \c -1 to let the method compute it).
+	 * @param top_end    This is the first cargo field of this column.
+	 * @param bottom_end This is the last cargo field of this column.
+	 * @note #supp_cargoes and #cust_cargoes should be filled in later.
+	 */
+	void MakeCargo(const CargoID *cargoes, uint length, int count = -1, bool top_end = false, bool bottom_end = false)
+	{
+		this->type = CFT_CARGO;
+		uint i;
+		uint num = 0;
+		for (i = 0; i < MAX_CARGOES && i < length; i++) {
+			if (cargoes[i] != INVALID_CARGO) {
+				this->u.cargo.vertical_cargoes[num] = cargoes[i];
+				num++;
+			}
+		}
+		this->u.cargo.num_cargoes = (count < 0) ? num : count;
+		for (; num < MAX_CARGOES; num++) this->u.cargo.vertical_cargoes[num] = INVALID_CARGO;
+		this->u.cargo.top_end = top_end;
+		this->u.cargo.bottom_end = bottom_end;
+		MemSetT(this->u.cargo.supp_cargoes, INVALID_CARGO, MAX_CARGOES);
+		MemSetT(this->u.cargo.cust_cargoes, INVALID_CARGO, MAX_CARGOES);
+	}
+
+	/**
+	 * Make a field displaying cargo type names.
+	 * @param cargoes    Array of #CargoID (may contain #INVALID_CARGO).
+	 * @param length     Number of cargoes in #cargoes.
+	 * @param left_align ALign texts to the left (else to the right).
+	 */
+	void MakeCargoLabel(const CargoID *cargoes, uint length, bool left_align)
+	{
+		this->type = CFT_CARGO_LABEL;
+		uint i;
+		for (i = 0; i < MAX_CARGOES && i < length; i++) this->u.cargo_label.cargoes[i] = cargoes[i];
+		for (; i < MAX_CARGOES; i++) this->u.cargo_label.cargoes[i] = INVALID_CARGO;
+		this->u.cargo_label.left_align = left_align;
+	}
+
+	/**
+	 * Make a header above an industry column.
+	 * @param textid Text to display.
+	 */
+	void MakeHeader(StringID textid)
+	{
+		this->type = CFT_HEADER;
+		this->u.header = textid;
+	}
+
+	/**
+	 * For a #CFT_CARGO, compute the left position of the left-most vertical cargo connection.
+	 * @param xpos Left position of the field.
+	 * @return Left position of the left-most vertical cargo column.
+	 */
+	int GetCargoBase(int xpos) const
+	{
+		assert(this->type == CFT_CARGO);
+
+		switch (this->u.cargo.num_cargoes) {
+			case 0: return xpos + CARGO_FIELD_WIDTH / 2;
+			case 1: return xpos + CARGO_FIELD_WIDTH / 2 - HOR_CARGO_WIDTH / 2;
+			case 2: return xpos + CARGO_FIELD_WIDTH / 2 - HOR_CARGO_WIDTH - HOR_CARGO_SPACE / 2;
+			case 3: return xpos + CARGO_FIELD_WIDTH / 2 - HOR_CARGO_WIDTH - HOR_CARGO_SPACE - HOR_CARGO_WIDTH / 2;
+			default: NOT_REACHED();
+		}
+	}
+
+	/**
+	 * Draw the field.
+	 * @param xpos Position of the left edge.
+	 * @param vpos Position of the top edge.
+	 */
+	void Draw(int xpos, int ypos) const
+	{
+		switch (this->type) {
+			case CFT_EMPTY:
+			case CFT_SMALL_EMPTY:
+				break;
+
+			case CFT_HEADER:
+				ypos += (small_height - FONT_HEIGHT_NORMAL) / 2;
+				DrawString(xpos, xpos + industry_width, ypos, this->u.header, TC_WHITE, SA_HOR_CENTER);
+				break;
+
+			case CFT_INDUSTRY: {
+				int ypos1 = ypos + VERT_INTER_INDUSTRY_SPACE / 2;
+				int ypos2 = ypos + normal_height - 1 - VERT_INTER_INDUSTRY_SPACE / 2;
+				int xpos2 = xpos + industry_width - 1;
+				GfxDrawLine(xpos,  ypos1, xpos2, ypos1, INDUSTRY_LINE_COLOUR);
+				GfxDrawLine(xpos,  ypos1, xpos,  ypos2, INDUSTRY_LINE_COLOUR);
+				GfxDrawLine(xpos,  ypos2, xpos2, ypos2, INDUSTRY_LINE_COLOUR);
+				GfxDrawLine(xpos2, ypos1, xpos2, ypos2, INDUSTRY_LINE_COLOUR);
+				ypos += (normal_height - FONT_HEIGHT_NORMAL) / 2;
+				if (this->u.industry.ind_type < NUM_INDUSTRYTYPES) {
+					SetDParam(0, GetIndustrySpec(this->u.industry.ind_type)->name);
+					DrawString(xpos, xpos2, ypos, STR_JUST_STRING, TC_WHITE, SA_HOR_CENTER);
+				} else {
+					DrawString(xpos, xpos2, ypos, STR_INDUSTRY_CARGOES_HOUSES, TC_FROMSTRING, SA_HOR_CENTER);
+				}
+
+				/* Draw the other_produced/other_accepted cargoes. */
+				const CargoID *other_right, *other_left;
+				if (_dynlang.text_dir == TD_RTL) {
+					other_right = this->u.industry.other_accepted;
+					other_left  = this->u.industry.other_produced;
+				} else {
+					other_right = this->u.industry.other_produced;
+					other_left  = this->u.industry.other_accepted;
+				}
+				ypos1 += VERT_CARGO_EDGE;
+				for (uint i = 0; i < MAX_CARGOES; i++) {
+					if (other_right[i] != INVALID_CARGO) {
+						const CargoSpec *csp = CargoSpec::Get(other_right[i]);
+						int xp = xpos + industry_width + CARGO_STUB_WIDTH;
+						DrawHorConnection(xpos + industry_width, xp - 1, ypos1, csp);
+						GfxDrawLine(xp, ypos1, xp, ypos1 + FONT_HEIGHT_NORMAL - 1, CARGO_LINE_COLOUR);
+					}
+					if (other_left[i] != INVALID_CARGO) {
+						const CargoSpec *csp = CargoSpec::Get(other_left[i]);
+						int xp = xpos - CARGO_STUB_WIDTH;
+						DrawHorConnection(xp + 1, xpos - 1, ypos1, csp);
+						GfxDrawLine(xp, ypos1, xp, ypos1 + FONT_HEIGHT_NORMAL - 1, CARGO_LINE_COLOUR);
+					}
+					ypos1 += FONT_HEIGHT_NORMAL + VERT_CARGO_SPACE;
+				}
+				break;
+			}
+
+			case CFT_CARGO: {
+				int cargo_base = this->GetCargoBase(xpos);
+				int top = ypos + (this->u.cargo.top_end ? VERT_INTER_INDUSTRY_SPACE / 2 + 1 : 0);
+				int bot = ypos - (this->u.cargo.bottom_end ? VERT_INTER_INDUSTRY_SPACE / 2 + 1 : 0) + normal_height - 1;
+				int colpos = cargo_base;
+				for (int i = 0; i < this->u.cargo.num_cargoes; i++) {
+					if (this->u.cargo.top_end) GfxDrawLine(colpos, top - 1, colpos + HOR_CARGO_WIDTH - 1, top - 1, CARGO_LINE_COLOUR);
+					if (this->u.cargo.bottom_end) GfxDrawLine(colpos, bot + 1, colpos + HOR_CARGO_WIDTH - 1, bot + 1, CARGO_LINE_COLOUR);
+					GfxDrawLine(colpos, top, colpos, bot, CARGO_LINE_COLOUR);
+					colpos++;
+					const CargoSpec *csp = CargoSpec::Get(this->u.cargo.vertical_cargoes[i]);
+					GfxFillRect(colpos, top, colpos + HOR_CARGO_WIDTH - 2, bot, csp->legend_colour, FILLRECT_OPAQUE);
+					colpos += HOR_CARGO_WIDTH - 2;
+					GfxDrawLine(colpos, top, colpos, bot, CARGO_LINE_COLOUR);
+					colpos += 1 + HOR_CARGO_SPACE;
+				}
+
+				const CargoID *hor_left, *hor_right;
+				if (_dynlang.text_dir == TD_RTL) {
+					hor_left  = this->u.cargo.cust_cargoes;
+					hor_right = this->u.cargo.supp_cargoes;
+				} else {
+					hor_left  = this->u.cargo.supp_cargoes;
+					hor_right = this->u.cargo.cust_cargoes;
+				}
+				ypos += VERT_CARGO_EDGE + VERT_INTER_INDUSTRY_SPACE / 2;
+				for (uint i = 0; i < MAX_CARGOES; i++) {
+					if (hor_left[i] != INVALID_CARGO) {
+						int col = hor_left[i];
+						int dx = 0;
+						const CargoSpec *csp = CargoSpec::Get(this->u.cargo.vertical_cargoes[col]);
+						for (; col > 0; col--) {
+							int lf = cargo_base + col * HOR_CARGO_WIDTH + (col - 1) * HOR_CARGO_SPACE;
+							DrawHorConnection(lf, lf + HOR_CARGO_SPACE - dx, ypos, csp);
+							dx = 1;
+						}
+						DrawHorConnection(xpos, cargo_base - dx, ypos, csp);
+					}
+					if (hor_right[i] != INVALID_CARGO) {
+						int col = hor_right[i];
+						int dx = 0;
+						const CargoSpec *csp = CargoSpec::Get(this->u.cargo.vertical_cargoes[col]);
+						for (; col < this->u.cargo.num_cargoes - 1; col++) {
+							int lf = cargo_base + (col + 1) * HOR_CARGO_WIDTH + col * HOR_CARGO_SPACE;
+							DrawHorConnection(lf + dx - 1, lf + HOR_CARGO_SPACE - 1, ypos, csp);
+							dx = 1;
+						}
+						DrawHorConnection(cargo_base + col * HOR_CARGO_SPACE + (col + 1) * HOR_CARGO_WIDTH - 1 + dx, xpos + CARGO_FIELD_WIDTH - 1, ypos, csp);
+					}
+					ypos += FONT_HEIGHT_NORMAL + VERT_CARGO_SPACE;
+				}
+				break;
+			}
+
+			case CFT_CARGO_LABEL:
+				ypos += VERT_CARGO_EDGE + VERT_INTER_INDUSTRY_SPACE / 2;
+				for (uint i = 0; i < MAX_CARGOES; i++) {
+					if (this->u.cargo_label.cargoes[i] != INVALID_CARGO) {
+						const CargoSpec *csp = CargoSpec::Get(this->u.cargo_label.cargoes[i]);
+						DrawString(xpos + WD_FRAMERECT_LEFT, xpos + industry_width - 1 - WD_FRAMERECT_RIGHT, ypos, csp->name, TC_WHITE,
+								(this->u.cargo_label.left_align) ? SA_LEFT : SA_RIGHT);
+					}
+					ypos += FONT_HEIGHT_NORMAL + VERT_CARGO_SPACE;
+				}
+				break;
+
+			default:
+				NOT_REACHED();
+		}
+	}
+
+	/**
+	 * Decide which cargo was clicked at in a #CFT_CARGO field.
+	 * @param left  Left industry neighbour if available (else \c NULL should be supplied).
+	 * @param right Right industry neighbour if available (else \c NULL should be supplied).
+	 * @param pt    Click position in the cargo field.
+	 * @return Cargo clicked at, or #INVALID_CARGO if none.
+	 */
+	CargoID CargoClickedAt(const CargoesField *left, const CargoesField *right, Point pt) const
+	{
+		assert(this->type == CFT_CARGO);
+
+		/* Vertical matching. */
+		int cpos = this->GetCargoBase(0);
+		uint col;
+		for (col = 0; col < this->u.cargo.num_cargoes; col++) {
+			if (pt.x < cpos) break;
+			if (pt.x < cpos + CargoesField::HOR_CARGO_WIDTH) return this->u.cargo.vertical_cargoes[col];
+			cpos += CargoesField::HOR_CARGO_WIDTH + CargoesField::HOR_CARGO_SPACE;
+		}
+		// col = 0 -> left of first col, 1 -> left of 2nd col, ... this->u.cargo.num_cargoes right of last-col
+
+		int vpos = VERT_INTER_INDUSTRY_SPACE / 2 + VERT_CARGO_EDGE;
+		uint row;
+		for (row = 0; row < MAX_CARGOES; row++) {
+			if (pt.y < vpos) return INVALID_CARGO;
+			if (pt.y < vpos + FONT_HEIGHT_NORMAL) break;
+			vpos += FONT_HEIGHT_NORMAL + VERT_CARGO_SPACE;
+		}
+		if (row == MAX_CARGOES) return INVALID_CARGO;
+
+		// row = 0 -> at first horizontal row, row = 1 -> second horizontal row, 2 = 3rd horizontal row.
+		if (col == 0) {
+			if (this->u.cargo.supp_cargoes[row] != INVALID_CARGO) return this->u.cargo.vertical_cargoes[this->u.cargo.supp_cargoes[row]];
+			if (left != NULL) {
+				if (left->type == CFT_INDUSTRY) return left->u.industry.other_produced[row];
+				if (left->type == CFT_CARGO_LABEL && !left->u.cargo_label.left_align) return left->u.cargo_label.cargoes[row];
+			}
+			return INVALID_CARGO;
+		}
+		if (col == this->u.cargo.num_cargoes) {
+			if (this->u.cargo.cust_cargoes[row] != INVALID_CARGO) return this->u.cargo.vertical_cargoes[this->u.cargo.cust_cargoes[row]];
+			if (right != NULL) {
+				if (right->type == CFT_INDUSTRY) return right->u.industry.other_accepted[row];
+				if (right->type == CFT_CARGO_LABEL && right->u.cargo_label.left_align) return right->u.cargo_label.cargoes[row];
+			}
+			return INVALID_CARGO;
+		}
+		if (row >= col) {
+			/* Clicked somewhere in-between vertical cargo connection.
+			 * Since the horizontal connection is made in the same order as the vertical list, the above condition
+			 * ensures we are left-below the main diagonal, thus at the supplying side.
+			 */
+			return (this->u.cargo.supp_cargoes[row] != INVALID_CARGO) ? this->u.cargo.vertical_cargoes[this->u.cargo.supp_cargoes[row]] : INVALID_CARGO;
+		} else {
+			/* Clicked at a customer connection. */
+			return (this->u.cargo.cust_cargoes[row] != INVALID_CARGO) ? this->u.cargo.vertical_cargoes[this->u.cargo.cust_cargoes[row]] : INVALID_CARGO;
+		}
+	}
+
+	/**
+	 * Decide what cargo the user clicked in the cargo label field.
+	 * @param pt Click position in the cargo label field.
+	 * @return Cargo clicked at, or #INVALID_CARGO if none.
+	 */
+	CargoID CargoLabelClickedAt(Point pt) const
+	{
+		assert(this->type == CFT_CARGO_LABEL);
+
+		int vpos = VERT_INTER_INDUSTRY_SPACE / 2 + VERT_CARGO_EDGE;
+		uint row;
+		for (row = 0; row < MAX_CARGOES; row++) {
+			if (pt.y < vpos) return INVALID_CARGO;
+			if (pt.y < vpos + FONT_HEIGHT_NORMAL) break;
+			vpos += FONT_HEIGHT_NORMAL + VERT_CARGO_SPACE;
+		}
+		if (row == MAX_CARGOES) return INVALID_CARGO;
+		return this->u.cargo_label.cargoes[row];
+	}
+
+private:
+	/**
+	 * Draw a horizontal cargo connection.
+	 * @param left  Left-most coordinate to draw.
+	 * @param right Right-most coordinate to draw.
+	 * @param top   Top coordinate of the cargo connection.
+	 * @csp         Cargo to draw.
+	 */
+	static void DrawHorConnection(int left, int right, int top, const CargoSpec *csp)
+	{
+		GfxDrawLine(left, top, right, top, CARGO_LINE_COLOUR);
+		GfxFillRect(left, top + 1, right, top + FONT_HEIGHT_NORMAL - 2, csp->legend_colour, FILLRECT_OPAQUE);
+		GfxDrawLine(left, top + FONT_HEIGHT_NORMAL - 1, right, top + FONT_HEIGHT_NORMAL - 1, CARGO_LINE_COLOUR);
+	}
+};
+
+assert_compile(MAX_CARGOES >= lengthof(IndustrySpec::produced_cargo));
+assert_compile(MAX_CARGOES >= lengthof(IndustrySpec::accepts_cargo));
+
+int CargoesField::small_height;   ///< Height of the header row.
+int CargoesField::normal_height;  ///< Height of the non-header rows.
+int CargoesField::industry_width; ///< Width of an industry field.
+const int CargoesField::VERT_INTER_INDUSTRY_SPACE = 6; ///< Amount of space between two industries in a column.
+
+const int CargoesField::HOR_CARGO_BORDER_SPACE = 15; ///< Amount of space between the left/right edge of a #CFT_CARGO field, and the left/right most vertical cargo.
+const int CargoesField::CARGO_STUB_WIDTH       = 10; ///< Width of a cargo not carried in the column (should be less than #HOR_CARGO_BORDER_SPACE).
+const int CargoesField::HOR_CARGO_WIDTH        = 15; ///< Width of a vertical cargo column (inclusive the border line).
+const int CargoesField::HOR_CARGO_SPACE        =  5; ///< Amount of horizontal space between two vertical cargoes.
+const int CargoesField::VERT_CARGO_EDGE        =  4; ///< Amount of vertical space between top/bottom and the top/bottom connected cargo at an industry.
+const int CargoesField::VERT_CARGO_SPACE       =  4; ///< Amount of vertical space between two connected cargoes at an industry.
+
+/** Width of a #CFT_CARGO field. */
+const int CargoesField::CARGO_FIELD_WIDTH = HOR_CARGO_BORDER_SPACE * 2 + HOR_CARGO_WIDTH * MAX_CARGOES + HOR_CARGO_SPACE * (MAX_CARGOES - 1);
+
+const int CargoesField::INDUSTRY_LINE_COLOUR = 191; ///< Line colour of the industry type box.
+const int CargoesField::CARGO_LINE_COLOUR    = 191; ///< Line colour around the cargo.
+
+/** A single row of #CargoesField. */
+struct CargoesRow {
+	CargoesField columns[5]; ///< One row of fields.
+
+	/**
+	 * Connect industry production cargoes to the cargo column after it.
+	 * @param column Column of the industry.
+	 */
+	void ConnectIndustryProduced(int column)
+	{
+		CargoesField *ind_fld   = this->columns + column;
+		CargoesField *cargo_fld = this->columns + column + 1;
+		assert(ind_fld->type == CFT_INDUSTRY && cargo_fld->type == CFT_CARGO);
+
+		MemSetT(ind_fld->u.industry.other_produced, INVALID_CARGO, MAX_CARGOES);
+
+		if (ind_fld->u.industry.ind_type < NUM_INDUSTRYTYPES) {
+			CargoID others[MAX_CARGOES]; // Produced cargoes not carried in the cargo column.
+			int other_count = 0;
+
+			const IndustrySpec *indsp = GetIndustrySpec(ind_fld->u.industry.ind_type);
+			for (uint i = 0; i < lengthof(indsp->produced_cargo); i++) {
+				int col = cargo_fld->ConnectCargo(indsp->produced_cargo[i], true);
+				if (col < 0) others[other_count++] = indsp->produced_cargo[i];
+			}
+
+			/* Allocate other cargoes in the empty holes of the horizontal cargo connections. */
+			for (uint i = 0; i < MAX_CARGOES && other_count > 0; i++) {
+				if (cargo_fld->u.cargo.supp_cargoes[i] == INVALID_CARGO) ind_fld->u.industry.other_produced[i] = others[--other_count];
+			}
+		} else {
+			/* Houses only display what is demanded. */
+			for (uint i = 0; i < cargo_fld->u.cargo.num_cargoes; i++) {
+				CargoID cid = cargo_fld->u.cargo.vertical_cargoes[i];
+				if (cid == CT_PASSENGERS || cid == CT_MAIL) cargo_fld->ConnectCargo(cid, true);
+			}
+		}
+	}
+
+	/**
+	 * Construct a #CFT_CARGO_LABEL field.
+	 * @param column    Column to create the new field.
+	 * @param accepting Display accepted cargo (if \c false, display produced cargo).
+	 */
+	void MakeCargoLabel(int column, bool accepting)
+	{
+		CargoID cargoes[MAX_CARGOES];
+		MemSetT(cargoes, INVALID_CARGO, lengthof(cargoes));
+
+		CargoesField *label_fld = this->columns + column;
+		CargoesField *cargo_fld = this->columns + (accepting ? column - 1 : column + 1);
+
+		assert(cargo_fld->type == CFT_CARGO && label_fld->type == CFT_EMPTY);
+		for (uint i = 0; i < cargo_fld->u.cargo.num_cargoes; i++) {
+			int col = cargo_fld->ConnectCargo(cargo_fld->u.cargo.vertical_cargoes[i], !accepting);
+			cargoes[col] = cargo_fld->u.cargo.vertical_cargoes[i];
+		}
+		label_fld->MakeCargoLabel(cargoes, lengthof(cargoes), accepting);
+	}
+
+
+	/**
+	 * Connect industry accepted cargoes to the cargo column before it.
+	 * @param column Column of the industry.
+	 */
+	void ConnectIndustryAccepted(int column)
+	{
+		CargoesField *ind_fld   = this->columns + column;
+		CargoesField *cargo_fld = this->columns + column - 1;
+		assert(ind_fld->type == CFT_INDUSTRY && cargo_fld->type == CFT_CARGO);
+
+		MemSetT(ind_fld->u.industry.other_accepted, INVALID_CARGO, MAX_CARGOES);
+
+		if (ind_fld->u.industry.ind_type < NUM_INDUSTRYTYPES) {
+			CargoID others[MAX_CARGOES]; // Accepted cargoes not carried in the cargo column.
+			int other_count = 0;
+
+			const IndustrySpec *indsp = GetIndustrySpec(ind_fld->u.industry.ind_type);
+			for (uint i = 0; i < lengthof(indsp->accepts_cargo); i++) {
+				int col = cargo_fld->ConnectCargo(indsp->accepts_cargo[i], false);
+				if (col < 0) others[other_count++] = indsp->accepts_cargo[i];
+			}
+
+			/* Allocate other cargoes in the empty holes of the horizontal cargo connections. */
+			for (uint i = 0; i < MAX_CARGOES && other_count > 0; i++) {
+				if (cargo_fld->u.cargo.cust_cargoes[i] == INVALID_CARGO) ind_fld->u.industry.other_accepted[i] = others[--other_count];
+			}
+		} else {
+			/* Houses only display what is demanded. */
+			for (uint i = 0; i < cargo_fld->u.cargo.num_cargoes; i++) {
+				for (uint h = 0; h < HOUSE_MAX; h++) {
+					HouseSpec *hs = HouseSpec::Get(h);
+					if (!hs->enabled) continue;
+
+					for (uint j = 0; j < lengthof(hs->accepts_cargo); j++) {
+						if (cargo_fld->u.cargo.vertical_cargoes[i] == hs->accepts_cargo[j]) {
+							cargo_fld->ConnectCargo(cargo_fld->u.cargo.vertical_cargoes[i], false);
+							goto next_cargo;
+						}
+					}
+				}
+next_cargo: ;
+			}
+		}
+	}
+};
+
+
+/**
+ * Window displaying the cargo connections around an industry (or cargo).
+ *
+ * The main display is constructed from 'fields', rectangles that contain an industry, piece of the cargo connection, cargo labels, or headers.
+ * For a nice display, the following should be kept in mind:
+ * - A #CFT_HEADER is always at the top of an column of #CFT_INDUSTRY fields.
+ * - A #CFT_CARGO_LABEL field is also always put in a column of #CFT_INDUSTRY fields.
+ * - The top row contains #CFT_HEADER and #CFT_SMALL_EMPTY fields.
+ * - Cargo connections have a column of their own (#CFT_CARGO fields).
+ * - Cargo accepted or produced by an industry, but not carried in a cargo connection, is drawn in the space of a cargo column attached to the industry.
+ *   The information however is part of the industry.
+ *
+ * This results in the following invariants:
+ * - Width of a #CFT_INDUSTRY column is large enough to hold all industry type labels, all cargo labels, and all header texts.
+ * - Height of a #CFT_INDUSTRY is large enough to hold a header line, or a industry type line, \c N cargo labels
+ *   (where \c N is the maximum number of cargoes connected between industries), \c N connections of cargo types, and space
+ *   between two industry types (1/2 above it, and 1/2 underneath it).
+ * - Width of a cargo field (#CFT_CARGO) is large enough to hold \c N vertical columns (one for each type of cargo).
+ *   Also, space is needed between an industry and the leftmost/rightmost column to draw the non-carried cargoes.
+ * - Height of a #CFT_CARGO field is equally high as the height of the #CFT_INDUSTRY.
+ * - A field at the top (#CFT_HEADER or #CFT_SMALL_EMPTY) match the width of the fields below them (#CFT_INDUSTRY respectively
+ *   #CFT_CARGO), the height should be sufficient to display the header text.
+ *
+ * When displaying the cargoes around an industry type, five columns are needed (supplying industries, accepted cargoes, the industry,
+ * produced cargoes, customer industries). Displaying the industries around a cargo needs three columns (supplying industries, the cargo,
+ * customer industries). The remaining two columns are set to #CFT_EMPTY, that has a width equal to the average of a cargo and an industry column.
+ */
+struct IndustryCargoesWindow : public Window {
+	static const int HOR_TEXT_PADDING, VERT_TEXT_PADDING;
+
+	typedef SmallVector<CargoesRow, 4> Fields;
+
+	Fields fields;  ///< Fields to display in the #ICW_PANEL.
+	uint ind_cargo; ///< If less than #NUM_INDUSTRYTYPES, an industry type, else a cargo id + NUM_INDUSTRYTYPES.
+
+	IndustryCargoesWindow(int id) : Window()
+	{
+		this->OnInit();
+		this->InitNested(&_industry_cargoes_desc, 0);
+		this->OnInvalidateData(id);
+	}
+
+	virtual void OnInit()
+	{
+		/* Initialize static CargoesField size variables. */
+		Dimension d = GetStringBoundingBox(STR_INDUSTRY_CARGOES_PRODUCERS);
+		d = maxdim(d, GetStringBoundingBox(STR_INDUSTRY_CARGOES_CUSTOMERS));
+		d.width  += WD_FRAMETEXT_LEFT + WD_FRAMETEXT_RIGHT;
+		d.height += WD_FRAMETEXT_TOP + WD_FRAMETEXT_BOTTOM;
+		CargoesField::small_height = d.height;
+
+		/* Decide about the size of the box holding the text of an industry type. */
+		d.height = 0;
+		for (IndustryType it = 0; it < NUM_INDUSTRYTYPES; it++) {
+			const IndustrySpec *indsp = GetIndustrySpec(it);
+			if (!indsp->enabled) continue;
+			SetDParam(0, indsp->name);
+			d = maxdim(d, GetStringBoundingBox(STR_JUST_STRING));
+		}
+		/* Box must also be wide enough to hold any cargo label. */
+		for (uint i = 0; i < NUM_CARGO; i++) {
+			const CargoSpec *csp = CargoSpec::Get(i);
+			if (!csp->IsValid()) continue;
+			d = maxdim(d, GetStringBoundingBox(csp->name));
+		}
+		d.width  += 2 * HOR_TEXT_PADDING;
+		/* Ensure the height is enough for the industry type text, for the horizontal connections, and for the cargo labels. */
+		uint min_ind_height = CargoesField::VERT_CARGO_EDGE * 2 + MAX_CARGOES * FONT_HEIGHT_NORMAL + (MAX_CARGOES - 1) *  CargoesField::VERT_CARGO_SPACE;
+		d.height = max(d.height + 2 * VERT_TEXT_PADDING, min_ind_height);
+
+		CargoesField::industry_width = d.width;
+		CargoesField::normal_height = d.height + CargoesField::VERT_INTER_INDUSTRY_SPACE;
+	}
+
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
+	{
+		if (widget != ICW_PANEL) return;
+
+		size->width = WD_FRAMETEXT_LEFT + CargoesField::industry_width * 3 + CargoesField::CARGO_FIELD_WIDTH * 2 + WD_FRAMETEXT_RIGHT;
+	}
+
+
+	CargoesFieldType type; ///< Type of field.
+	virtual void SetStringParameters  (int widget) const
+	{
+		if (widget != ICW_CAPTION) return;
+
+		if (this->ind_cargo < NUM_INDUSTRYTYPES) {
+			const IndustrySpec *indsp = GetIndustrySpec(this->ind_cargo);
+			SetDParam(0, indsp->name);
+		} else {
+			const CargoSpec *csp = CargoSpec::Get(this->ind_cargo - NUM_INDUSTRYTYPES);
+			SetDParam(0, csp->name);
+		}
+	}
+
+	/**
+	 * Do the two sets of cargoes have a valid cargo in common?
+	 * @param cargoes1 Base address of the first cargo array.
+	 * @param length1  Number of cargoes in the first cargo array.
+	 * @param cargoes2 Base address of the second cargo array.
+	 * @param length2  Number of cargoes in the second cargo array.
+	 * @return Arrays have at least one valid cargo in common.
+	 */
+	static bool HasCommonValidCargo(const CargoID *cargoes1, uint length1, const CargoID *cargoes2, uint length2)
+	{
+		while (length1 > 0) {
+			if (*cargoes1 != INVALID_CARGO) {
+				for (uint i = 0; i < length2; i++) if (*cargoes1 == cargoes2[i]) return true;
+			}
+			cargoes1++;
+			length1--;
+		}
+		return false;
+	}
+
+	/**
+	 * Can houses be used to supply one of the cargoes?
+	 * @param cargoes Base address of the cargo array.
+	 * @param length  Number of cargoes in the array.
+	 * @return Houses can supply at least one of the cargoes.
+	 */
+	static bool HousesCanSupply(const CargoID *cargoes, uint length)
+	{
+		for (uint i = 0; i < length; i++) {
+			if (cargoes[i] == INVALID_CARGO) continue;
+			if (cargoes[i] == CT_PASSENGERS || cargoes[i] == CT_MAIL) return true;
+		}
+		return false;
+	}
+
+	/**
+	 * Can houses be used as customers of the produced cargoes?
+	 * @param cargoes Base address of the cargo array.
+	 * @param length  Number of cargoes in the array.
+	 * @return Houses can accept at least one of the cargoes.
+	 */
+	static bool HousesCanAccept(const CargoID *cargoes, uint length)
+	{
+		for (uint i = 0; i < length; i++) {
+			if (cargoes[i] == INVALID_CARGO) continue;
+
+			for (uint h = 0; h < HOUSE_MAX; h++) {
+				HouseSpec *hs = HouseSpec::Get(h);
+				if (!hs->enabled) continue;
+
+				for (uint j = 0; j < lengthof(hs->accepts_cargo); j++) {
+					if (cargoes[i] == hs->accepts_cargo[j]) return true;
+				}
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * Count how many industries have accepted cargoes in common with one of the supplied set.
+	 * @param cargoes Cargoes to search.
+	 * @param length  Number of cargoes in #cargoes.
+	 * @return Number of industries that have an accepted cargo in common with the supplied set.
+	 */
+	static int CountMatchingAcceptingIndustries(const CargoID *cargoes, uint length)
+	{
+		int count = 0;
+		for (IndustryType it = 0; it < NUM_INDUSTRYTYPES; it++) {
+			const IndustrySpec *indsp = GetIndustrySpec(it);
+			if (!indsp->enabled) continue;
+
+			if (HasCommonValidCargo(cargoes, length, indsp->accepts_cargo, lengthof(indsp->accepts_cargo))) count++;
+		}
+		return count;
+	}
+
+	/**
+	 * Count how many industries have produced cargoes in common with one of the supplied set.
+	 * @param cargoes Cargoes to search.
+	 * @param length  Number of cargoes in #cargoes.
+	 * @return Number of industries that have a produced cargo in common with the supplied set.
+	 */
+	static int CountMatchingProducingIndustries(const CargoID *cargoes, uint length)
+	{
+		int count = 0;
+		for (IndustryType it = 0; it < NUM_INDUSTRYTYPES; it++) {
+			const IndustrySpec *indsp = GetIndustrySpec(it);
+			if (!indsp->enabled) continue;
+
+			if (HasCommonValidCargo(cargoes, length, indsp->produced_cargo, lengthof(indsp->produced_cargo))) count++;
+		}
+		return count;
+	}
+
+	/**
+	 * Shorten the cargo column to just the part between industries.
+	 * @param column Column number of the cargo column.
+	 * @param top    Current top row.
+	 * @param bottom Current bottom row.
+	 */
+	void ShortenCargoColumn(int column, int top, int bottom)
+	{
+		while (top < bottom && !this->fields[top].columns[column].HasConnection()) {
+			this->fields[top].columns[column].MakeEmpty(CFT_EMPTY);
+			top++;
+		}
+		this->fields[top].columns[column].u.cargo.top_end = true;
+
+		while (bottom > top && !this->fields[bottom].columns[column].HasConnection()) {
+			this->fields[bottom].columns[column].MakeEmpty(CFT_EMPTY);
+			bottom--;
+		}
+		this->fields[bottom].columns[column].u.cargo.bottom_end = true;
+	}
+
+	/**
+	 * Place an industry in the fields.
+	 * @param row Row of the new industry.
+	 * @param col Column of the new industry.
+	 * @param it  Industry to place.
+	 */
+	void PlaceIndustry(int row, int col, IndustryType it)
+	{
+		assert(this->fields[row].columns[col].type == CFT_EMPTY);
+		this->fields[row].columns[col].MakeIndustry(it);
+		if (col == 0) {
+			this->fields[row].ConnectIndustryProduced(col);
+		} else {
+			this->fields[row].ConnectIndustryAccepted(col);
+		}
+	}
+
+	/**
+	 * Compute what and where to display for industry type \a it.
+	 * @param it Industry type to display.
+	 */
+	void ComputeIndustryDisplay(IndustryType it)
+	{
+		this->GetWidget<NWidgetCore>(ICW_CAPTION)->widget_data = STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION;
+		this->ind_cargo = it;
+
+		this->fields.Clear();
+		CargoesRow *row = this->fields.Append();
+		row->columns[0].MakeHeader(STR_INDUSTRY_CARGOES_PRODUCERS);
+		row->columns[1].MakeEmpty(CFT_SMALL_EMPTY);
+		row->columns[2].MakeEmpty(CFT_SMALL_EMPTY);
+		row->columns[3].MakeEmpty(CFT_SMALL_EMPTY);
+		row->columns[4].MakeHeader(STR_INDUSTRY_CARGOES_CUSTOMERS);
+
+		const IndustrySpec *central_sp = GetIndustrySpec(it);
+		bool houses_supply = HousesCanSupply(central_sp->accepts_cargo, lengthof(central_sp->accepts_cargo));
+		bool houses_accept = HousesCanAccept(central_sp->produced_cargo, lengthof(central_sp->produced_cargo));
+		/* Make a field consisting of two cargo columns. */
+		int num_supp = CountMatchingProducingIndustries(central_sp->accepts_cargo, lengthof(central_sp->accepts_cargo)) + houses_supply;
+		int num_cust = CountMatchingAcceptingIndustries(central_sp->produced_cargo, lengthof(central_sp->produced_cargo)) + houses_accept;
+		int num_indrows = max(3, max(num_supp, num_cust)); // One is needed for the 'it' industry, and 2 for the cargo labels.
+		for (int i = 0; i < num_indrows; i++) {
+			CargoesRow *row = this->fields.Append();
+			row->columns[0].MakeEmpty(CFT_EMPTY);
+			row->columns[1].MakeCargo(central_sp->accepts_cargo, lengthof(central_sp->accepts_cargo));
+			row->columns[2].MakeEmpty(CFT_EMPTY);
+			row->columns[3].MakeCargo(central_sp->produced_cargo, lengthof(central_sp->produced_cargo));
+			row->columns[4].MakeEmpty(CFT_EMPTY);
+		}
+		/* Add central industry. */
+		int central_row = 1 + num_indrows / 2;
+		this->fields[central_row].columns[2].MakeIndustry(it);
+		this->fields[central_row].ConnectIndustryProduced(2);
+		this->fields[central_row].ConnectIndustryAccepted(2);
+
+		/* Add cargo labels. */
+		this->fields[central_row - 1].MakeCargoLabel(2, true);
+		this->fields[central_row + 1].MakeCargoLabel(2, false);
+
+		/* Add suppliers and customers of the 'it' industry. */
+		int supp_count = 0;
+		int cust_count = 0;
+		for (IndustryType it = 0; it < NUM_INDUSTRYTYPES; it++) {
+			const IndustrySpec *indsp = GetIndustrySpec(it);
+			if (!indsp->enabled) continue;
+
+			if (HasCommonValidCargo(central_sp->accepts_cargo, lengthof(central_sp->accepts_cargo), indsp->produced_cargo, lengthof(indsp->produced_cargo))) {
+				this->PlaceIndustry(1 + supp_count * num_indrows / num_supp, 0, it);
+				supp_count++;
+			}
+			if (HasCommonValidCargo(central_sp->produced_cargo, lengthof(central_sp->produced_cargo), indsp->accepts_cargo, lengthof(indsp->accepts_cargo))) {
+				this->PlaceIndustry(1 + cust_count * num_indrows / num_cust, 4, it);
+				cust_count++;
+			}
+		}
+		if (houses_supply) {
+			this->PlaceIndustry(1 + supp_count * num_indrows / num_supp, 0, NUM_INDUSTRYTYPES);
+			supp_count++;
+		}
+		if (houses_accept) {
+			this->PlaceIndustry(1 + cust_count * num_indrows / num_cust, 4, NUM_INDUSTRYTYPES);
+			cust_count++;
+		}
+
+		this->ShortenCargoColumn(1, 1, num_indrows);
+		this->ShortenCargoColumn(3, 1, num_indrows);
+		this->vscroll.SetCount(WD_FRAMETEXT_TOP + WD_FRAMETEXT_BOTTOM + CargoesField::small_height + num_indrows * CargoesField::normal_height);
+		this->SetDirty();
+	}
+
+	/**
+	 * Compute what and where to display for cargo id \a cid.
+	 * @param cid Cargo id to display.
+	 */
+	void ComputeCargoDisplay(CargoID cid)
+	{
+		this->GetWidget<NWidgetCore>(ICW_CAPTION)->widget_data = STR_INDUSTRY_CARGOES_CARGO_CAPTION;
+		this->ind_cargo = cid + NUM_INDUSTRYTYPES;
+
+		this->fields.Clear();
+		CargoesRow *row = this->fields.Append();
+		row->columns[0].MakeHeader(STR_INDUSTRY_CARGOES_PRODUCERS);
+		row->columns[1].MakeEmpty(CFT_SMALL_EMPTY);
+		row->columns[2].MakeHeader(STR_INDUSTRY_CARGOES_CUSTOMERS);
+		row->columns[3].MakeEmpty(CFT_SMALL_EMPTY);
+		row->columns[4].MakeEmpty(CFT_SMALL_EMPTY);
+
+		bool houses_supply = HousesCanSupply(&cid, 1);
+		bool houses_accept = HousesCanAccept(&cid, 1);
+		int num_supp = CountMatchingProducingIndustries(&cid, 1) + houses_supply + 1; // Ensure room for the cargo label.
+		int num_cust = CountMatchingAcceptingIndustries(&cid, 1) + houses_accept;
+		int num_indrows = max(num_supp, num_cust);
+		for (int i = 0; i < num_indrows; i++) {
+			CargoesRow *row = this->fields.Append();
+			row->columns[0].MakeEmpty(CFT_EMPTY);
+			row->columns[1].MakeCargo(&cid, 1);
+			row->columns[2].MakeEmpty(CFT_EMPTY);
+			row->columns[3].MakeEmpty(CFT_EMPTY);
+			row->columns[4].MakeEmpty(CFT_EMPTY);
+		}
+
+		this->fields[num_indrows].MakeCargoLabel(0, false); // Add cargo labels at the left bottom.
+
+		/* Add suppliers and customers of the cargo. */
+		int supp_count = 0;
+		int cust_count = 0;
+		for (IndustryType it = 0; it < NUM_INDUSTRYTYPES; it++) {
+			const IndustrySpec *indsp = GetIndustrySpec(it);
+			if (!indsp->enabled) continue;
+
+			if (HasCommonValidCargo(&cid, 1, indsp->produced_cargo, lengthof(indsp->produced_cargo))) {
+				this->PlaceIndustry(1 + supp_count * num_indrows / num_supp, 0, it);
+				supp_count++;
+			}
+			if (HasCommonValidCargo(&cid, 1, indsp->accepts_cargo, lengthof(indsp->accepts_cargo))) {
+				this->PlaceIndustry(1 + cust_count * num_indrows / num_cust, 2, it);
+				cust_count++;
+			}
+		}
+		if (houses_supply) {
+			this->PlaceIndustry(1 + supp_count * num_indrows / num_supp, 0, NUM_INDUSTRYTYPES);
+			supp_count++;
+		}
+		if (houses_accept) {
+			this->PlaceIndustry(1 + cust_count * num_indrows / num_cust, 2, NUM_INDUSTRYTYPES);
+			cust_count++;
+		}
+
+		this->ShortenCargoColumn(1, 1, num_indrows);
+		this->vscroll.SetCount(WD_FRAMETEXT_TOP + WD_FRAMETEXT_BOTTOM + CargoesField::small_height + num_indrows * CargoesField::normal_height);
+		this->SetDirty();
+	}
+
+	/**
+	 * Notify the window to display another industry type.
+	 * @param data The new industry type to display.
+	 */
+	virtual void OnInvalidateData(int data)
+	{
+		assert(data >= 0 && data < NUM_INDUSTRYTYPES);
+		this->ComputeIndustryDisplay(data);
+	}
+
+	virtual void DrawWidget(const Rect &r, int widget) const
+	{
+		if (widget != ICW_PANEL) return;
+
+		DrawPixelInfo tmp_dpi, *old_dpi;
+		int width = r.right - r.left + 1;
+		int height = r.bottom - r.top + 1 - WD_FRAMERECT_TOP - WD_FRAMERECT_BOTTOM;
+		if (!FillDrawPixelInfo(&tmp_dpi, r.left + WD_FRAMERECT_LEFT, r.top + WD_FRAMERECT_TOP, width, height)) return;
+		old_dpi = _cur_dpi;
+		_cur_dpi = &tmp_dpi;
+
+		int left_pos = WD_FRAMERECT_LEFT;
+		if (this->ind_cargo >= NUM_INDUSTRYTYPES) left_pos += (CargoesField::industry_width + CargoesField::CARGO_FIELD_WIDTH) / 2;
+		int last_column = (this->ind_cargo < NUM_INDUSTRYTYPES) ? 4 : 2;
+
+		int vpos = -this->vscroll.GetPosition();
+		for (uint i = 0; i < this->fields.Length(); i++) {
+			int row_height = (i == 0) ? CargoesField::small_height : CargoesField::normal_height;
+			if (vpos + row_height >= 0) {
+				int xpos = left_pos;
+				int col, dir;
+				if (_dynlang.text_dir == TD_RTL) {
+					col = last_column;
+					dir = -1;
+				} else {
+					col = 0;
+					dir = 1;
+				}
+				while (col >= 0 && col <= last_column) {
+					this->fields[i].columns[col].Draw(xpos, vpos);
+					xpos += (col & 1) ? CargoesField::CARGO_FIELD_WIDTH : CargoesField::industry_width;
+					col += dir;
+				}
+			}
+			vpos += row_height;
+			if (vpos >= height) break;
+		}
+
+		_cur_dpi = old_dpi;
+	}
+
+	/**
+	 * Calculate in which field was clicked, and within the field, at what position.
+	 * @param pt Clicked position in the #ICW_PANEL widget.
+	 * @param fieldxy If \c true is returned, field x/y coordinate of \a pt.
+	 * @param xy      If \c true is returned, x/y coordinate with in the field.
+	 * @return Clicked at a valid position.
+	 */
+	bool CalculatePositionInWidget(Point pt, Point *fieldxy, Point *xy)
+	{
+		NWidgetBase *nw = this->GetWidget<NWidgetBase>(ICW_PANEL);
+		pt.x -= nw->pos_x;
+		pt.y -= nw->pos_y;
+
+		int vpos = WD_FRAMERECT_TOP + CargoesField::small_height - this->vscroll.GetPosition();
+		if (pt.y < vpos) return false;
+
+		int row = (pt.y - vpos) / CargoesField::normal_height; // row is relative to row 1.
+		if (row + 1 >= (int)this->fields.Length()) return false;
+		vpos = pt.y - vpos - row * CargoesField::normal_height; // Position in the row + 1 field
+		row++; // rebase row to match index of this->fields.
+
+		int xpos = 2 * WD_FRAMERECT_LEFT + ((this->ind_cargo < NUM_INDUSTRYTYPES) ? 0 :  (CargoesField::industry_width + CargoesField::CARGO_FIELD_WIDTH) / 2);
+		if (pt.x < xpos) return false;
+		int column;
+		for (column = 0; column <= 5; column++) {
+			int width = (column & 1) ? CargoesField::CARGO_FIELD_WIDTH : CargoesField::industry_width;
+			if (pt.x < xpos + width) break;
+			xpos += width;
+		}
+		int num_columns = (this->ind_cargo < NUM_INDUSTRYTYPES) ? 4 : 2;
+		if (column > num_columns) return false;
+		xpos = pt.x - xpos;
+
+		/* Return both positions, compensating for RTL languages (which works due to the equal symmetry in both displays). */
+		fieldxy->y = row;
+		xy->y = vpos;
+		if (_dynlang.text_dir == TD_RTL) {
+			fieldxy->x = num_columns - column;
+			xy->x = ((column & 1) ? CargoesField::CARGO_FIELD_WIDTH : CargoesField::industry_width) - xpos;
+		} else {
+			fieldxy->x = column;
+			xy->x = xpos;
+		}
+		return true;
+	}
+
+	virtual void OnClick(Point pt, int widget, int click_count)
+	{
+		if (widget != ICW_PANEL) return;
+
+		Point fieldxy, xy;
+		if (!CalculatePositionInWidget(pt, &fieldxy, &xy)) return;
+
+		const CargoesField *fld = this->fields[fieldxy.y].columns + fieldxy.x;
+		switch (fld->type) {
+			case CFT_INDUSTRY:
+				if (fld->u.industry.ind_type < NUM_INDUSTRYTYPES) this->ComputeIndustryDisplay(fld->u.industry.ind_type);
+				break;
+
+			case CFT_CARGO: {
+				CargoesField *lft = (fieldxy.x > 0) ? this->fields[fieldxy.y].columns + fieldxy.x - 1 : NULL;
+				CargoesField *rgt = (fieldxy.x < 4) ? this->fields[fieldxy.y].columns + fieldxy.x + 1 : NULL;
+				CargoID cid = fld->CargoClickedAt(lft, rgt, xy);
+				if (cid != INVALID_CARGO) this->ComputeCargoDisplay(cid);
+				break;
+			}
+
+			case CFT_CARGO_LABEL: {
+				CargoID cid = fld->CargoLabelClickedAt(xy);
+				if (cid != INVALID_CARGO) this->ComputeCargoDisplay(cid);
+				break;
+			}
+
+			default:
+				break;
+		}
+	}
+
+	virtual void OnHover(Point pt, int widget)
+	{
+		if (widget != ICW_PANEL) return;
+
+		Point fieldxy, xy;
+		if (!CalculatePositionInWidget(pt, &fieldxy, &xy)) return;
+
+		const CargoesField *fld = this->fields[fieldxy.y].columns + fieldxy.x;
+		CargoID cid = INVALID_CARGO;
+		switch (fld->type) {
+			case CFT_CARGO: {
+				CargoesField *lft = (fieldxy.x > 0) ? this->fields[fieldxy.y].columns + fieldxy.x - 1 : NULL;
+				CargoesField *rgt = (fieldxy.x < 4) ? this->fields[fieldxy.y].columns + fieldxy.x + 1 : NULL;
+				cid = fld->CargoClickedAt(lft, rgt, xy);
+				break;
+			}
+
+			case CFT_CARGO_LABEL: {
+				cid = fld->CargoLabelClickedAt(xy);
+				break;
+			}
+
+			case CFT_INDUSTRY:
+				if (fld->u.industry.ind_type < NUM_INDUSTRYTYPES && (this->ind_cargo >= NUM_INDUSTRYTYPES || fieldxy.x != 2)) {
+					GuiShowTooltips(STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP, 0, NULL, TCC_HOVER);
+				}
+				return;
+
+			default:
+				break;
+		}
+		if (cid != INVALID_CARGO && (this->ind_cargo < NUM_INDUSTRYTYPES || cid != this->ind_cargo - NUM_INDUSTRYTYPES)) {
+			const CargoSpec *csp = CargoSpec::Get(cid);
+			uint64 params[5];
+			params[0] = csp->name;
+			GuiShowTooltips(STR_INDUSTRY_CARGOES_CARGO_TOOLTIP, 1, params, TCC_HOVER);
+		}
+	}
+
+	virtual void OnPaint()
+	{
+		this->DrawWidgets();
+	}
+
+	virtual void OnResize()
+	{
+		this->vscroll.SetCapacityFromWidget(this, ICW_PANEL);
+	}
+};
+
+const int IndustryCargoesWindow::HOR_TEXT_PADDING  = 5; ///< Horizontal padding around the industry type text.
+const int IndustryCargoesWindow::VERT_TEXT_PADDING = 5; ///< Vertical padding around the industry type text.
+
+/**
+ * Open the industry and cargoes window.
+ * @param id Industry type to display.
+ */
+void ShowIndustryCargoesWindow(IndustryType id)
+{
+	assert(id < NUM_INDUSTRYTYPES);
+
+	Window *w = BringWindowToFrontById(WC_INDUSTRY_CARGOES, 0);
+	if (w != NULL) {
+		w->InvalidateData(id);
+		return;
+	}
+	new IndustryCargoesWindow(id);
+}

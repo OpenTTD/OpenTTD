@@ -2116,6 +2116,15 @@ STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Prospect
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Build
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Fund
 
+# Industry cargoes window
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Industry chain for {STRING} industry
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Industry chain for {STRING} cargo
+STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Producing industries
+STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Accepting industries
+STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Houses
+STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Click at the industry to see its suppliers and customers
+STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Click at the cargo to see its suppliers and customers
+
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Land Area Information
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Cost to clear: {LTBLUE}N/A
