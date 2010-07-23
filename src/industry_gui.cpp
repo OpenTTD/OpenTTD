@@ -159,6 +159,7 @@ enum DynamicPlaceIndustriesWidgets {
 	DPIW_MATRIX_WIDGET,
 	DPIW_SCROLLBAR,
 	DPIW_INFOPANEL,
+	DPIW_DISPLAY_WIDGET,
 	DPIW_FUND_WIDGET,
 };
 
@@ -176,6 +177,8 @@ static const NWidgetPart _nested_build_industry_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_DARK_GREEN, DPIW_INFOPANEL), SetResize(1, 0),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_TEXTBTN, COLOUR_DARK_GREEN, DPIW_DISPLAY_WIDGET), SetFill(1, 0), SetResize(1, 0),
+				SetDataTip(STR_INDUSTRY_DISPLAY_CHAIN, STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP),
 		NWidget(WWT_TEXTBTN, COLOUR_DARK_GREEN, DPIW_FUND_WIDGET), SetFill(1, 0), SetResize(1, 0), SetDataTip(STR_JUST_STRING, STR_NULL),
 		NWidget(WWT_RESIZEBOX, COLOUR_DARK_GREEN),
 	EndContainer(),
@@ -474,10 +477,14 @@ public:
 						ResetObjectToPlace();
 					}
 
-					this->SetWidgetDisabledState(DPIW_FUND_WIDGET, !this->enabled[this->selected_index]);
+					this->SetWidgetsDisabledState(!this->enabled[this->selected_index], DPIW_DISPLAY_WIDGET, DPIW_FUND_WIDGET, WIDGET_LIST_END);
 					if (this->enabled[this->selected_index] && click_count > 1) this->OnClick(pt, DPIW_FUND_WIDGET, 1);
 				}
 			} break;
+
+			case DPIW_DISPLAY_WIDGET:
+				if (this->selected_type != INVALID_INDUSTRYTYPE) ShowIndustryCargoesWindow(this->selected_type);
+				break;
 
 			case DPIW_FUND_WIDGET: {
 				if (this->selected_type == INVALID_INDUSTRYTYPE) {
@@ -558,7 +565,7 @@ public:
 				/* Only if result does match the previous state would it require a redraw. */
 				if (call_back_result != this->enabled[this->selected_index]) {
 					this->enabled[this->selected_index] = call_back_result;
-					this->SetWidgetDisabledState(DPIW_FUND_WIDGET, !this->enabled[this->selected_index]);
+					this->SetWidgetsDisabledState(!this->enabled[this->selected_index], DPIW_DISPLAY_WIDGET, DPIW_FUND_WIDGET, WIDGET_LIST_END);
 					this->SetDirty();
 				}
 			}
@@ -581,7 +588,7 @@ public:
 
 		const IndustrySpec *indsp = (this->selected_type == INVALID_INDUSTRYTYPE) ? NULL : GetIndustrySpec(this->selected_type);
 		if (indsp == NULL) this->enabled[this->selected_index] = _settings_game.difficulty.number_industries != 0;
-		this->SetWidgetDisabledState(DPIW_FUND_WIDGET, !this->enabled[this->selected_index]);
+		this->SetWidgetsDisabledState(!this->enabled[this->selected_index], DPIW_DISPLAY_WIDGET, DPIW_FUND_WIDGET, WIDGET_LIST_END);
 	}
 };
 
