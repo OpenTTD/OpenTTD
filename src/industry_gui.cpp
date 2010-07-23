@@ -1721,8 +1721,8 @@ private:
 	}
 };
 
-assert_compile(MAX_CARGOES >= lengthof(IndustrySpec::produced_cargo));
-assert_compile(MAX_CARGOES >= lengthof(IndustrySpec::accepts_cargo));
+assert_compile(MAX_CARGOES >= cpp_lengthof(IndustrySpec, produced_cargo));
+assert_compile(MAX_CARGOES >= cpp_lengthof(IndustrySpec, accepts_cargo));
 
 int CargoesField::small_height;   ///< Height of the header row.
 int CargoesField::normal_height;  ///< Height of the non-header rows.
