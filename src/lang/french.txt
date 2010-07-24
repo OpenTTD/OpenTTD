@@ -2117,6 +2117,17 @@ STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Prospect
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Construire
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Fonder
 
+# Industry cargoes window
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Chaine d'industries pour l'industrie {STRING}
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Chaine d'industries pour le type de marchandise {STRING}
+STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Industries fournisseuses
+STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Industries clientes
+STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Maisons
+STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Cliquer sur l'industrie pour voir ses fournisseurs et ses clients
+STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Cliquer sur le type de marchandise pour voir ses fournisseurs et ses clients
+STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Afficher la chaine
+STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Afficher les industries fournisseuses et clientes du type de marchandise
+
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Information sur le Terrain
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Coût si démolition{NBSP}: {LTBLUE}N/D

@@ -2116,6 +2116,17 @@ STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Koekaiva
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Rakenna
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Perusta
 
+# Industry cargoes window
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Teollisuusketju teollisuudelle {STRING}
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Teollisuusketju rahdille {STRING}
+STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Tuottavia teollisuuksia
+STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Hyväksyviä teollisuuksia
+STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Taloja
+STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Klikkaa teollisuutta nähdäksesi sen tuottajat ja kuluttajat
+STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Klikkaa rahtia nähdäksesi sen tuottajat ja kuluttajat
+STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Näytä ketju
+STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Näytä rahdin tuottajat ja hyväksyvät teollisuudet
+
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Maa-aluetiedot
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Raivaamisen hinta: {LTBLUE}-

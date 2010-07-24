@@ -2117,6 +2117,17 @@ STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Prospekt
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Bauen
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Finanzieren
 
+# Industry cargoes window
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Produktionskette für {STRING}
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Produktionskette für {STRING}
+STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Zulieferer
+STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Abnehmer
+STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Häuser
+STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Auf Industrie klicken, um ihre Lieferanten und Abnehmer anzuzeigen
+STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Auf Frachttyp klicken, um dessen Anbieter und Abnehmer anzuzeigen
+STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Produktionskette
+STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Zeige Industrien, die Fracht liefern oder akzeptieren
+
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Gebietsinformation
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Räumungskosten: {LTBLUE}k.A.

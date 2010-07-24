@@ -2311,6 +2311,17 @@ STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Istraži
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Izgradi
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Finansiraj
 
+# Industry cargoes window
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Industrijski lanac za industriju {STRING.gen}
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Industrijski lanac za tovar {STRING.gen}
+STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Snadbevačke industrije
+STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Potrošačke industrije
+STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Domaćinstva
+STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Klikom na industriju prikazuju se njegovi snadbevači i potrošači
+STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Klikom na tovar prikazuju se njegovi snadbevači i potrošači
+STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Prikaži lanac
+STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Prikazuje proizvodni lanac industrija
+
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Prikaži podatke o zemljištu
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Cena čišćenja: {LTBLUE}N/A

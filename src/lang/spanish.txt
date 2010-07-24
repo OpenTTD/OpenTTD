@@ -2117,6 +2117,17 @@ STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Prospecc
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Construir
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Fundar
 
+# Industry cargoes window
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Cadena de industrias para la industria {STRING}
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Cadena de industrias para la carga {STRING}
+STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Industrias suministradoras
+STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Industrias clientes
+STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Casas
+STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Click en la industria para ver sus suministradores y clientes
+STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Click en la carga para mostrar sus suministradores y clientes
+STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Mostrar cadena
+STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Mostrar industrias que suministran o aceptan la carga
+
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Información sobre el terreno
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Coste de desbroce: {LTBLUE}N/D
