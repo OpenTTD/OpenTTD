@@ -757,7 +757,7 @@ static bool IsNeighborRoadTile(TileIndex tile, const DiagDirection dir, uint dis
 
 		/* Test for roadbit parallel to dir and facing towards the middle axis */
 		if (IsValidTile(tile + cur) &&
-			GetTownRoadBits(TILE_ADD(tile, cur)) & DiagDirToRoadBits((pos & 2) ? dir : ReverseDiagDir(dir))) return true;
+				GetTownRoadBits(TILE_ADD(tile, cur)) & DiagDirToRoadBits((pos & 2) ? dir : ReverseDiagDir(dir))) return true;
 	}
 	return false;
 }
@@ -1232,8 +1232,9 @@ static int GrowTownAtRoad(Town *t, TileIndex tile)
 		/* Exclude the source position from the bitmask
 		 * and return if no more road blocks available */
 		cur_rb &= ~DiagDirToRoadBits(ReverseDiagDir(target_dir));
-		if (cur_rb == ROAD_NONE)
+		if (cur_rb == ROAD_NONE) {
 			return _grow_town_result;
+		}
 
 		/* Select a random bit from the blockmask, walk a step
 		 * and continue the search from there. */
@@ -2508,16 +2509,13 @@ uint GetMaskOfTownActions(int *nump, CompanyID cid, const Town *t)
 			const TownActions cur = (TownActions)(1 << i);
 
 			/* Is the company not able to bribe ? */
-			if (cur == TACT_BRIBE && (!_settings_game.economy.bribe || t->ratings[cid] >= RATING_BRIBE_MAXIMUM))
-				continue;
+			if (cur == TACT_BRIBE && (!_settings_game.economy.bribe || t->ratings[cid] >= RATING_BRIBE_MAXIMUM)) continue;
 
 			/* Is the company not able to buy exclusive rights ? */
-			if (cur == TACT_BUY_RIGHTS && !_settings_game.economy.exclusive_rights)
-				continue;
+			if (cur == TACT_BUY_RIGHTS && !_settings_game.economy.exclusive_rights) continue;
 
 			/* Is the company not able to build a statue ? */
-			if (cur == TACT_BUILD_STATUE && HasBit(t->statues, cid))
-				continue;
+			if (cur == TACT_BUILD_STATUE && HasBit(t->statues, cid)) continue;
 
 			if (avail >= _town_action_costs[i] * _price[PR_TOWN_ACTION] >> 8) {
 				buttons |= cur;
@@ -2615,11 +2613,10 @@ static void UpdateTownGrowRate(Town *t)
 	}
 
 	if (_settings_game.game_creation.landscape == LT_ARCTIC) {
-		if (TilePixelHeight(t->xy) >= GetSnowLine() && t->act_food == 0 && t->population > 90)
-			return;
+		if (TilePixelHeight(t->xy) >= GetSnowLine() && t->act_food == 0 && t->population > 90) return;
+
 	} else if (_settings_game.game_creation.landscape == LT_TROPIC) {
-		if (GetTropicZone(t->xy) == TROPICZONE_DESERT && (t->act_food == 0 || t->act_water == 0) && t->population > 60)
-			return;
+		if (GetTropicZone(t->xy) == TROPICZONE_DESERT && (t->act_food == 0 || t->act_water == 0) && t->population > 60) return;
 	}
 
 	/* Use the normal growth rate values if new buildings have been funded in
@@ -2630,8 +2627,9 @@ static void UpdateTownGrowRate(Town *t)
 	if (t->larger_town) m /= 2;
 
 	t->growth_rate = m / (t->num_houses / 50 + 1);
-	if (m <= t->grow_counter)
+	if (m <= t->grow_counter) {
 		t->grow_counter = m;
+	}
 
 	SetBit(t->flags, TOWN_IS_FUNDED);
 }
@@ -2850,8 +2848,9 @@ void TownsMonthlyLoop()
 	FOR_ALL_TOWNS(t) {
 		if (t->road_build_months != 0) t->road_build_months--;
 
-		if (t->exclusive_counter != 0)
+		if (t->exclusive_counter != 0) {
 			if (--t->exclusive_counter == 0) t->exclusivity = INVALID_COMPANY;
+		}
 
 		UpdateTownGrowRate(t);
 		UpdateTownAmounts(t);

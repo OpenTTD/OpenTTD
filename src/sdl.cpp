@@ -67,10 +67,12 @@ SDLProcs sdl_proc;
 
 static const char *LoadSdlDLL()
 {
-	if (sdl_proc.SDL_Init != NULL)
+	if (sdl_proc.SDL_Init != NULL) {
 		return NULL;
-	if (!LoadLibraryList((Function *)(void *)&sdl_proc, sdl_files))
+	}
+	if (!LoadLibraryList((Function *)(void *)&sdl_proc, sdl_files)) {
 		return "Unable to load sdl.dll";
+	}
 	return NULL;
 }
 
@@ -86,11 +88,9 @@ const char *SdlOpen(uint32 x)
 	}
 #endif
 	if (_sdl_usage++ == 0) {
-		if (SDL_CALL SDL_Init(x | SDL_INIT_NOPARACHUTE) == -1)
-			return SDL_CALL SDL_GetError();
+		if (SDL_CALL SDL_Init(x | SDL_INIT_NOPARACHUTE) == -1) return SDL_CALL SDL_GetError();
 	} else if (x != 0) {
-		if (SDL_CALL SDL_InitSubSystem(x) == -1)
-			return SDL_CALL SDL_GetError();
+		if (SDL_CALL SDL_InitSubSystem(x) == -1) return SDL_CALL SDL_GetError();
 	}
 
 	return NULL;
@@ -98,8 +98,9 @@ const char *SdlOpen(uint32 x)
 
 void SdlClose(uint32 x)
 {
-	if (x != 0)
+	if (x != 0) {
 		SDL_CALL SDL_QuitSubSystem(x);
+	}
 	if (--_sdl_usage == 0) {
 		SDL_CALL SDL_Quit();
 	}

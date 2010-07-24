@@ -168,8 +168,9 @@ static int32 NPFCalcStationOrTileHeuristic(AyStar *as, AyStarNode *current, Open
 	uint dist;
 
 	/* for train-stations, we are going to aim for the closest station tile */
-	if (as->user_data[NPF_TYPE] != TRANSPORT_WATER && fstd->station_index != INVALID_STATION)
+	if (as->user_data[NPF_TYPE] != TRANSPORT_WATER && fstd->station_index != INVALID_STATION) {
 		to = CalcClosestStationTile(fstd->station_index, from, fstd->station_type);
+	}
 
 	if (as->user_data[NPF_TYPE] == TRANSPORT_ROAD) {
 		/* Since roads only have diagonal pieces, we use manhattan distance here */
@@ -314,11 +315,13 @@ static int32 NPFWaterPathCost(AyStar *as, AyStarNode *current, OpenListNode *par
 
 	cost = _trackdir_length[trackdir]; // Should be different for diagonal tracks
 
-	if (IsBuoyTile(current->tile) && IsDiagonalTrackdir(trackdir))
+	if (IsBuoyTile(current->tile) && IsDiagonalTrackdir(trackdir)) {
 		cost += _settings_game.pf.npf.npf_buoy_penalty; // A small penalty for going over buoys
+	}
 
-	if (current->direction != NextTrackdir((Trackdir)parent->path.node.direction))
+	if (current->direction != NextTrackdir((Trackdir)parent->path.node.direction)) {
 		cost += _settings_game.pf.npf.npf_water_curve_penalty;
+	}
 
 	/* @todo More penalties? */
 
@@ -373,8 +376,9 @@ static int32 NPFRoadPathCost(AyStar *as, AyStarNode *current, OpenListNode *pare
 
 	/* Check for turns. Road vehicles only really drive diagonal, turns are
 	 * represented by non-diagonal tracks */
-	if (!IsDiagonalTrackdir(current->direction))
+	if (!IsDiagonalTrackdir(current->direction)) {
 		cost += _settings_game.pf.npf.npf_road_curve_penalty;
+	}
 
 	NPFMarkTile(tile);
 	DEBUG(npf, 4, "Calculating G for: (%d, %d). Result: %d", TileX(current->tile), TileY(current->tile), cost);
@@ -502,15 +506,17 @@ static int32 NPFRailPathCost(AyStar *as, AyStarNode *current, OpenListNode *pare
 	/* HACK: We create a new_node here so we can call EndNodeCheck. Ugly as hell
 	 * of course... */
 	new_node.path.node = *current;
-	if (as->EndNodeCheck(as, &new_node) == AYSTAR_FOUND_END_NODE && NPFGetFlag(current, NPF_FLAG_LAST_SIGNAL_RED))
+	if (as->EndNodeCheck(as, &new_node) == AYSTAR_FOUND_END_NODE && NPFGetFlag(current, NPF_FLAG_LAST_SIGNAL_RED)) {
 		cost += _settings_game.pf.npf.npf_rail_lastred_penalty;
+	}
 
 	/* Check for slope */
 	cost += NPFSlopeCost(current);
 
 	/* Check for turns */
-	if (current->direction != NextTrackdir((Trackdir)parent->path.node.direction))
+	if (current->direction != NextTrackdir((Trackdir)parent->path.node.direction)) {
 		cost += _settings_game.pf.npf.npf_rail_curve_penalty;
+	}
 	/* TODO, with realistic acceleration, also the amount of straight track between
 	 *      curves should be taken into account, as this affects the speed limit. */
 
@@ -933,9 +939,10 @@ static void NPFFollowTrack(AyStar *aystar, OpenListNode *current)
 
 		/* Tile with signals? */
 		if (IsTileType(dst_tile, MP_RAILWAY) && GetRailTileType(dst_tile) == RAIL_TILE_SIGNALS) {
-			if (HasSignalOnTrackdir(dst_tile, ReverseTrackdir(dst_trackdir)) && !HasSignalOnTrackdir(dst_tile, dst_trackdir) && IsOnewaySignal(dst_tile, TrackdirToTrack(dst_trackdir)))
+			if (HasSignalOnTrackdir(dst_tile, ReverseTrackdir(dst_trackdir)) && !HasSignalOnTrackdir(dst_tile, dst_trackdir) && IsOnewaySignal(dst_tile, TrackdirToTrack(dst_trackdir))) {
 				/* If there's a one-way signal not pointing towards us, stop going in this direction. */
 				break;
+			}
 		}
 		{
 			/* We've found ourselves a neighbour :-) */

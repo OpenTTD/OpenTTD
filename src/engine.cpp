@@ -747,8 +747,9 @@ void EnginesMonthlyLoop()
 				e->flags |= ENGINE_EXCLUSIVE_PREVIEW;
 
 				/* Do not introduce new rail wagons */
-				if (!IsWagon(e->index))
+				if (!IsWagon(e->index)) {
 					e->preview_company_rank = 1; // Give to the company with the highest rating.
+				}
 			}
 		}
 	}

@@ -166,8 +166,9 @@ Money Ship::GetRunningCost() const
 
 void Ship::OnNewDay()
 {
-	if ((++this->day_counter & 7) == 0)
+	if ((++this->day_counter & 7) == 0) {
 		DecreaseVehicleValue(this);
+	}
 
 	CheckVehicleBreakdown(this);
 	AgeVehicle(this);
@@ -212,8 +213,9 @@ static void HandleBrokenShip(Vehicle *v)
 		v->breakdown_ctr = 1;
 		v->cur_speed = 0;
 
-		if (v->breakdowns_since_last_service != 255)
+		if (v->breakdowns_since_last_service != 255) {
 			v->breakdowns_since_last_service++;
+		}
 
 		v->MarkDirty();
 		SetWindowDirty(WC_VEHICLE_VIEW, v->index);
@@ -337,8 +339,9 @@ static bool ShipAccelerate(Vehicle *v)
 	/* updates statusbar only if speed have changed to save CPU time */
 	if (spd != v->cur_speed) {
 		v->cur_speed = spd;
-		if (_settings_client.gui.vehicle_speed)
+		if (_settings_client.gui.vehicle_speed) {
 			SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
+		}
 	}
 
 	/* Convert direction-indepenent speed into direction-dependent speed. (old movement method) */
@@ -626,8 +629,7 @@ CommandCost CmdBuildShip(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 
 	unit_num = (flags & DC_AUTOREPLACE) ? 0 : GetFreeUnitNumber(VEH_SHIP);
 
-	if (!Vehicle::CanAllocateItem() || unit_num > _settings_game.vehicle.max_ships)
-		return_cmd_error(STR_ERROR_TOO_MANY_VEHICLES_IN_GAME);
+	if (!Vehicle::CanAllocateItem() || unit_num > _settings_game.vehicle.max_ships) return_cmd_error(STR_ERROR_TOO_MANY_VEHICLES_IN_GAME);
 
 	if (flags & DC_EXEC) {
 		int x;

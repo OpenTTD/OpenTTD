@@ -532,8 +532,7 @@ static void NetworkUDPAdvertiseThread(void *pntr)
 void NetworkUDPAdvertise()
 {
 	/* Check if we should send an advertise */
-	if (!_networking || !_network_server || !_network_udp_server || !_settings_client.network.server_advertise)
-		return;
+	if (!_networking || !_network_server || !_network_udp_server || !_settings_client.network.server_advertise) return;
 
 	if (_network_need_advertise) {
 		_network_need_advertise = false;
@@ -541,13 +540,12 @@ void NetworkUDPAdvertise()
 	} else {
 		/* Only send once every ADVERTISE_NORMAL_INTERVAL ticks */
 		if (_network_advertise_retries == 0) {
-			if ((_network_last_advertise_frame + ADVERTISE_NORMAL_INTERVAL) > _frame_counter)
-				return;
+			if ((_network_last_advertise_frame + ADVERTISE_NORMAL_INTERVAL) > _frame_counter) return;
+
 			_network_advertise_retries = ADVERTISE_RETRY_TIMES;
 		}
 
-		if ((_network_last_advertise_frame + ADVERTISE_RETRY_INTERVAL) > _frame_counter)
-			return;
+		if ((_network_last_advertise_frame + ADVERTISE_RETRY_INTERVAL) > _frame_counter) return;
 	}
 
 	_network_advertise_retries--;

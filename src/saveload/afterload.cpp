@@ -638,8 +638,9 @@ bool AfterLoadGame()
 	 *  a company does not exist yet. So create one here.
 	 * 1 exeption: network-games. Those can have 0 companies
 	 *   But this exeption is not true for non dedicated network_servers! */
-	if (!Company::IsValidID(COMPANY_FIRST) && (!_networking || (_networking && _network_server && !_network_dedicated)))
+	if (!Company::IsValidID(COMPANY_FIRST) && (!_networking || (_networking && _network_server && !_network_dedicated))) {
 		DoStartupNewCompany(false);
+	}
 
 	/* Fix the cache for cargo payments. */
 	CargoPayment *cp;

@@ -87,8 +87,9 @@ protected:
 		/* while children are valid */
 		while (child <= this->items) {
 			/* choose the smaller child */
-			if (child < this->items && *this->data[child + 1] < *this->data[child])
+			if (child < this->items && *this->data[child + 1] < *this->data[child]) {
 				child++;
+			}
 			/* is it smaller than our parent? */
 			if (!(*this->data[child] < *item)) {
 				/* the smaller child is still bigger or same as parent => we are done */

@@ -601,8 +601,9 @@ static void HandleBrokenRoadVeh(RoadVehicle *v)
 		v->breakdown_ctr = 1;
 		v->cur_speed = 0;
 
-		if (v->breakdowns_since_last_service != 255)
+		if (v->breakdowns_since_last_service != 255) {
 			v->breakdowns_since_last_service++;
+		}
 
 		v->MarkDirty();
 		SetWindowDirty(WC_VEHICLE_VIEW, v->index);
@@ -646,8 +647,9 @@ static void StartRoadVehSound(const RoadVehicle *v)
 {
 	if (!PlayVehicleSound(v, VSE_START)) {
 		SoundID s = RoadVehInfo(v->engine_type)->sfx;
-		if (s == SND_19_BUS_START_PULL_AWAY && (v->tick_counter & 3) == 0)
+		if (s == SND_19_BUS_START_PULL_AWAY && (v->tick_counter & 3) == 0) {
 			s = SND_1A_BUS_START_PULL_AWAY_WITH_HORN;
+		}
 		SndPlayVehicleFx(s, v);
 	}
 }

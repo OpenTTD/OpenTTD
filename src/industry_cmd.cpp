@@ -244,8 +244,9 @@ static void IndustryDrawToffeeQuarry(const TileInfo *ti)
 
 	if (IsIndustryCompleted(ti->tile)) {
 		x = _industry_anim_offs_toffee[GetIndustryAnimationState(ti->tile)];
-		if (x == 0xFF)
+		if (x == 0xFF) {
 			x = 0;
+		}
 	}
 
 	AddChildSpriteScreen(SPR_IT_TOFFEE_QUARRY_SHOVEL, PAL_NONE, 22 - x, 24 + x);
@@ -670,8 +671,7 @@ static void AnimateTile_Industry(TileIndex tile)
 	case GFX_GOLD_MINE_TOWER_ANIMATED: {
 			int state = _tick_counter & 0x7FF;
 
-			if ((state -= 0x400) < 0)
-				return;
+			if ((state -= 0x400) < 0) return;
 
 			if (state < 0x1A0) {
 				if (state < 0x20 || state >= 0x180) {
@@ -680,11 +680,9 @@ static void AnimateTile_Industry(TileIndex tile)
 						SetIndustryAnimationState(tile, m | 0x40);
 						SndPlayTileFx(SND_0B_MINING_MACHINERY, tile);
 					}
-					if (state & 7)
-						return;
+					if (state & 7) return;
 				} else {
-					if (state & 3)
-						return;
+					if (state & 3) return;
 				}
 				m = (GetIndustryAnimationState(tile) + 1) | 0x40;
 				if (m > 0xC2) m = 0xC0;
@@ -693,8 +691,7 @@ static void AnimateTile_Industry(TileIndex tile)
 			} else if (state >= 0x200 && state < 0x3A0) {
 				int i;
 				i = (state < 0x220 || state >= 0x380) ? 7 : 3;
-				if (state & i)
-					return;
+				if (state & i) return;
 
 				m = (GetIndustryAnimationState(tile) & 0xBF) - 1;
 				if (m < 0x80) m = 0x82;
@@ -972,8 +969,7 @@ static void PlantFarmField(TileIndex tile, IndustryID industry)
 	int type;
 
 	if (_settings_game.game_creation.landscape == LT_ARCTIC) {
-		if (GetTileZ(tile) + TILE_HEIGHT * 2 >= GetSnowLine())
-			return;
+		if (GetTileZ(tile) + TILE_HEIGHT * 2 >= GetSnowLine()) return;
 	}
 
 	/* determine field size */
@@ -1066,8 +1062,9 @@ static void ChopLumberMillTrees(Industry *i)
 
 	if (!IsIndustryCompleted(tile)) return;  ///< Can't proceed if not completed
 
-	if (CircularTileSearch(&tile, 40, SearchLumberMillTrees, NULL)) ///< 40x40 tiles  to search
+	if (CircularTileSearch(&tile, 40, SearchLumberMillTrees, NULL)) { ///< 40x40 tiles  to search
 		i->produced_cargo_waiting[0] = min(0xffff, i->produced_cargo_waiting[0] + 45); ///< Found a tree, add according value to waiting cargo
+	}
 }
 
 static void ProduceIndustryGoods(Industry *i)
@@ -1430,8 +1427,7 @@ static bool CheckCanTerraformSurroundingTiles(TileIndex tile, uint height, int i
 	TILE_LOOP(tile_walk, size_x, size_y, tile) {
 		curh = TileHeight(tile_walk);
 		/* Is the tile clear? */
-		if ((GetTileType(tile_walk) != MP_CLEAR) && (GetTileType(tile_walk) != MP_TREES))
-			return false;
+		if ((GetTileType(tile_walk) != MP_CLEAR) && (GetTileType(tile_walk) != MP_TREES)) return false;
 
 		/* Don't allow too big of a change if this is the sub-tile check */
 		if (internal != 0 && Delta(curh, height) > 1) return false;
@@ -1440,8 +1436,9 @@ static bool CheckCanTerraformSurroundingTiles(TileIndex tile, uint height, int i
 		 *  has to be correct too (in level, or almost in level)
 		 *  else you get a chain-reaction of terraforming. */
 		if (internal == 0 && curh != height) {
-			if (TileX(tile_walk) == 0 || TileY(tile_walk) == 0 || !CheckCanTerraformSurroundingTiles(tile_walk + TileDiffXY(-1, -1), height, internal + 1))
+			if (TileX(tile_walk) == 0 || TileY(tile_walk) == 0 || !CheckCanTerraformSurroundingTiles(tile_walk + TileDiffXY(-1, -1), height, internal + 1)) {
 				return false;
+			}
 		}
 	}
 
@@ -2279,8 +2276,9 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 				/* Prevent production to overflow or Oil Rig passengers to be over-"produced" */
 				new_prod = Clamp(new_prod, 1, 255);
 
-				if (((indspec->behaviour & INDUSTRYBEH_BUILT_ONWATER) != 0) && j == 1)
+				if (((indspec->behaviour & INDUSTRYBEH_BUILT_ONWATER) != 0) && j == 1) {
 					new_prod = Clamp(new_prod, 0, 16);
+				}
 
 				/* Do not stop closing the industry when it has the lowest possible production rate */
 				if (new_prod == old_prod && old_prod > 1) {

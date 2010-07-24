@@ -1155,8 +1155,7 @@ CommandCost CmdBuildRailStation(TileIndex tile_org, DoCommandFlag flags, uint32 
 
 	if (st != NULL) {
 		/* Reuse an existing station. */
-		if (st->owner != _current_company)
-			return_cmd_error(STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION);
+		if (st->owner != _current_company) return_cmd_error(STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION);
 
 		if (st->train_station.tile != INVALID_TILE) {
 			/* check if we want to expanding an already existing station? */

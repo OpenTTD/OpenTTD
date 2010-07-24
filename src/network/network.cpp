@@ -264,9 +264,9 @@ uint NetworkCalculateLag(const NetworkClientSocket *cs)
 	/* This client has missed his ACK packet after 1 DAY_TICKS..
 	 *  so we increase his lag for every frame that passes!
 	 * The packet can be out by a max of _net_frame_freq */
-	if (cs->last_frame_server + DAY_TICKS + _settings_client.network.frame_freq < _frame_counter)
+	if (cs->last_frame_server + DAY_TICKS + _settings_client.network.frame_freq < _frame_counter) {
 		lag += _frame_counter - (cs->last_frame_server + DAY_TICKS + _settings_client.network.frame_freq);
-
+	}
 	return lag;
 }
 

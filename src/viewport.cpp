@@ -1057,7 +1057,7 @@ static void ViewportAddLandscape()
 			_tile_type_procs[tt]->draw_tile_proc(&ti);
 
 			if ((x_cur == (int)MapMaxX() * TILE_SIZE && IsInsideMM(y_cur, 0, MapMaxY() * TILE_SIZE + 1)) ||
-				(y_cur == (int)MapMaxY() * TILE_SIZE && IsInsideMM(x_cur, 0, MapMaxX() * TILE_SIZE + 1))) {
+					(y_cur == (int)MapMaxY() * TILE_SIZE && IsInsideMM(x_cur, 0, MapMaxX() * TILE_SIZE + 1))) {
 				TileIndex tile = TileVirtXY(x_cur, y_cur);
 				ti.tile = tile;
 				ti.tileh = GetTileSlope(tile, &ti.z);
@@ -1875,8 +1875,7 @@ bool ScrollWindowTo(int x, int y, int z, Window *w, bool instant)
 	Point pt = MapXYZToViewport(w->viewport, x, y, z);
 	w->viewport->follow_vehicle = INVALID_VEHICLE;
 
-	if (w->viewport->dest_scrollpos_x == pt.x && w->viewport->dest_scrollpos_y == pt.y)
-		return false;
+	if (w->viewport->dest_scrollpos_x == pt.x && w->viewport->dest_scrollpos_y == pt.y) return false;
 
 	if (instant) {
 		w->viewport->scrollpos_x = pt.x;
@@ -2713,8 +2712,9 @@ void SetObjectToPlace(CursorID icon, PaletteID pal, HighLightStyle mode, WindowC
 	_thd.window_class = window_class;
 	_thd.window_number = window_num;
 
-	if (mode == HT_SPECIAL) // special tools, like tunnels or docks start with presizing mode
+	if (mode == HT_SPECIAL) { // special tools, like tunnels or docks start with presizing mode
 		VpStartPreSizing();
+	}
 
 	if ((icon & ANIMCURSOR_FLAG) != 0) {
 		SetAnimatedMouseCursor(_animcursors[icon & ~ANIMCURSOR_FLAG]);

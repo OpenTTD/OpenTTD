@@ -263,7 +263,7 @@ static const char *GetEnglishFontName(const ENUMLOGFONTEX *logfont)
 		font_name[length] = '\0';
 
 		if ((platformId == 1 && languageId == 0) ||      // Macintosh English
-			(platformId == 3 && languageId == 0x0409)) { // Microsoft English (US)
+				(platformId == 3 && languageId == 0x0409)) { // Microsoft English (US)
 			ret_font_name = font_name;
 			break;
 		}
@@ -467,8 +467,8 @@ bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, i
 						CFRelease(font_name);
 						/* Skip some inappropriate or ugly looking fonts that have better alternatives. */
 						if (strncmp(name, "Courier", 7) == 0 || strncmp(name, "Apple Symbols", 13) == 0 ||
-							strncmp(name, ".Aqua", 5) == 0 || strncmp(name, "LastResort", 10) == 0 ||
-							strncmp(name, "GB18030 Bitmap", 14) == 0) continue;
+								strncmp(name, ".Aqua", 5) == 0 || strncmp(name, "LastResort", 10) == 0 ||
+								strncmp(name, "GB18030 Bitmap", 14) == 0) continue;
 
 						/* Save result. */
 						strecpy(settings->small_font,  name, lastof(settings->small_font));

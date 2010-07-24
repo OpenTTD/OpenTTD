@@ -107,8 +107,7 @@ static int LookupOneOfMany(const char *many, const char *one, size_t onelen = 0)
 	if (onelen == 0) onelen = strlen(one);
 
 	/* check if it's an integer */
-	if (*one >= '0' && *one <= '9')
-		return strtoul(one, NULL, 0);
+	if (*one >= '0' && *one <= '9') return strtoul(one, NULL, 0);
 
 	idx = 0;
 	for (;;) {
@@ -348,10 +347,8 @@ static const void *StringToVal(const SettingDescBase *desc, const char *orig_str
 		return 0;
 	}
 	case SDT_BOOLX:
-		if (strcmp(str, "true")  == 0 || strcmp(str, "on")  == 0 || strcmp(str, "1") == 0)
-			return (void*)true;
-		if (strcmp(str, "false") == 0 || strcmp(str, "off") == 0 || strcmp(str, "0") == 0)
-			return (void*)false;
+		if (strcmp(str, "true")  == 0 || strcmp(str, "on")  == 0 || strcmp(str, "1") == 0) return (void*)true;
+		if (strcmp(str, "false") == 0 || strcmp(str, "off") == 0 || strcmp(str, "0") == 0) return (void*)false;
 		ShowInfoF("ini: invalid setting value '%s' for '%s'", str, desc->name);
 		break;
 

@@ -176,8 +176,9 @@ public:
 
 		if (target != NULL) target->okay = true;
 
-		if (Yapf().CanUseGlobalCache(*m_res_node))
+		if (Yapf().CanUseGlobalCache(*m_res_node)) {
 			YapfNotifyTrackLayoutChange(INVALID_TILE, INVALID_TRACK);
+		}
 
 		return true;
 	}

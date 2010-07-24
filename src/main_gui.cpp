@@ -180,8 +180,7 @@ void ZoomInOrOutToCursorWindow(bool in, Window *w)
 
 	if (_game_mode != GM_MENU) {
 		ViewPort *vp = w->viewport;
-		if ((in && vp->zoom == ZOOM_LVL_MIN) || (!in && vp->zoom == ZOOM_LVL_MAX))
-			return;
+		if ((in && vp->zoom == ZOOM_LVL_MIN) || (!in && vp->zoom == ZOOM_LVL_MAX)) return;
 
 		Point pt = GetTileZoomCenterWindow(in, w);
 		if (pt.x != -1) {

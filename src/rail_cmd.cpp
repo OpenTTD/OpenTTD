@@ -562,8 +562,9 @@ CommandCost CmdRemoveSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 			cost.AddCost(RailClearCost(GetRailType(tile)));
 
 			/* Charge extra to remove signals on the track, if they are there */
-			if (HasSignalOnTrack(tile, track))
+			if (HasSignalOnTrack(tile, track)) {
 				cost.AddCost(DoCommand(tile, track, 0, flags, CMD_REMOVE_SIGNALS));
+			}
 
 			if (flags & DC_EXEC) {
 				if (HasReservedTracks(tile, trackbit)) {
@@ -703,12 +704,10 @@ static CommandCost ValidateAutoDrag(Trackdir *trackdir, TileIndex start, TileInd
 	}
 
 	/* validate the direction */
-	while (
-		(trdx <= 0 && dx > 0) ||
-		(trdx >= 0 && dx < 0) ||
-		(trdy <= 0 && dy > 0) ||
-		(trdy >= 0 && dy < 0)
-	) {
+	while ((trdx <= 0 && dx > 0) ||
+			(trdx >= 0 && dx < 0) ||
+			(trdy <= 0 && dy > 0) ||
+			(trdy >= 0 && dy < 0)) {
 		if (!HasBit(*trackdir, 3)) { // first direction is invalid, try the other
 			SetBit(*trackdir, 3); // reverse the direction
 			trdx = -trdx;

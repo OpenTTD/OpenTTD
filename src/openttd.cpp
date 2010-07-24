@@ -239,8 +239,9 @@ struct MyGetOptData {
 static int MyGetOpt(MyGetOptData *md)
 {
 	char *s = md->cont;
-	if (s != NULL)
+	if (s != NULL) {
 		goto md_continue_here;
+	}
 
 	for (;;) {
 		if (--md->numleft < 0) return -1;
@@ -263,8 +264,7 @@ md_continue_here:;
 						/* It comes as a separate arg. Check if out of args? */
 						if (--md->numleft < 0 || *(t = *md->argv) == '-') {
 							/* Check if item is optional? */
-							if (r[2] != ':')
-								return -2;
+							if (r[2] != ':') return -2;
 							md->numleft++;
 							t = NULL;
 						} else {
@@ -645,10 +645,11 @@ int ttd_main(int argc, char *argv[])
 
 	DEBUG(misc, 1, "Loading blitter...");
 	if (blitter == NULL && _ini_blitter != NULL) blitter = strdup(_ini_blitter);
-	if (BlitterFactoryBase::SelectBlitter(blitter) == NULL)
+	if (BlitterFactoryBase::SelectBlitter(blitter) == NULL) {
 		StrEmpty(blitter) ?
 			usererror("Failed to autoprobe blitter") :
 			usererror("Failed to select requested blitter '%s'; does it exist?", blitter);
+	}
 	free(blitter);
 
 	DEBUG(driver, 1, "Loading drivers...");

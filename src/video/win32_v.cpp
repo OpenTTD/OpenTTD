@@ -689,8 +689,7 @@ static bool AllocateDibSection(int w, int h)
 
 	if (bpp == 0) usererror("Can't use a blitter that blits 0 bpp for normal visuals");
 
-	if (w == _screen.width && h == _screen.height)
-		return false;
+	if (w == _screen.width && h == _screen.height) return false;
 
 	_screen.width = w;
 	_screen.pitch = (bpp == 8) ? Align(w, 4) : w;
@@ -822,8 +821,8 @@ void VideoDriver_Win32::MakeDirty(int left, int top, int width, int height)
 
 static void CheckPaletteAnim()
 {
-	if (_pal_count_dirty == 0)
-		return;
+	if (_pal_count_dirty == 0) return;
+
 	InvalidateRect(_wnd.main_wnd, NULL, FALSE);
 }
 

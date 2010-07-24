@@ -733,8 +733,9 @@ void Load_VEHS()
 		}
 
 		/* Old savegames used 'last_station_visited = 0xFF' */
-		if (CheckSavegameVersion(5) && v->last_station_visited == 0xFF)
+		if (CheckSavegameVersion(5) && v->last_station_visited == 0xFF) {
 			v->last_station_visited = INVALID_STATION;
+		}
 
 		if (CheckSavegameVersion(5)) {
 			/* Convert the current_order.type (which is a mix of type and flags, because

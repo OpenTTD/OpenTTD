@@ -360,8 +360,7 @@ protected:
 		GfxFillRect(r.left, y, r.right, y, GRAPH_AXIS_LINE_COLOUR);
 
 		/* Find the largest value that will be drawn. */
-		if (this->num_on_x_axis == 0)
-			return;
+		if (this->num_on_x_axis == 0) return;
 
 		assert(this->num_on_x_axis > 0);
 		assert(this->num_dataset > 0);

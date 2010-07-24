@@ -524,8 +524,9 @@ static void HandlePragma(char *str)
 		strecpy(_lang_isocode, str + 8, lastof(_lang_isocode));
 	} else if (!memcmp(str, "plural ", 7)) {
 		_lang_pluralform = atoi(str + 7);
-		if (_lang_pluralform >= lengthof(_plural_forms))
+		if (_lang_pluralform >= lengthof(_plural_forms)) {
 			error("Invalid pluralform %d", _lang_pluralform);
+		}
 	} else if (!memcmp(str, "textdir ", 8)) {
 		if (!memcmp(str + 8, "ltr", 3)) {
 			_lang_textdir = TD_LTR;

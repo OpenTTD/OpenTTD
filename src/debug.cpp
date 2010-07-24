@@ -142,11 +142,12 @@ void SetDebugString(const char *s)
 
 		/* check debugging levels */
 		p = NULL;
-		for (i = debug_level; i != endof(debug_level); ++i)
+		for (i = debug_level; i != endof(debug_level); ++i) {
 			if (s == t + strlen(i->name) && strncmp(t, i->name, s - t) == 0) {
 				p = i->level;
 				break;
 			}
+		}
 
 		if (*s == '=') s++;
 		v = strtoul(s, &end, 0);

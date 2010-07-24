@@ -167,8 +167,9 @@ static int AyStarMain_Loop(AyStar *aystar)
 
 	/* Check for end node and if found, return that code */
 	if (aystar->EndNodeCheck(aystar, current) == AYSTAR_FOUND_END_NODE) {
-		if (aystar->FoundEndNode != NULL)
+		if (aystar->FoundEndNode != NULL) {
 			aystar->FoundEndNode(aystar, current);
+		}
 		free(current);
 		return AYSTAR_FOUND_END_NODE;
 	}

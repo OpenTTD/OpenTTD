@@ -324,8 +324,9 @@ DEF_CONSOLE_CMD(ConRemove)
 	const char *file = argv[1];
 	const FiosItem *item = GetFiosItem(file);
 	if (item != NULL) {
-		if (!FiosDelete(item->name))
+		if (!FiosDelete(item->name)) {
 			IConsolePrintF(CC_ERROR, "%s: Failed to delete file", file);
+		}
 	} else {
 		IConsolePrintF(CC_ERROR, "%s: No such file or directory.", file);
 	}
@@ -889,8 +890,9 @@ DEF_CONSOLE_CMD(ConExec)
 		IConsoleCmdExec(cmdline);
 	}
 
-	if (ferror(script_file))
+	if (ferror(script_file)) {
 		IConsoleError("Encountered errror while trying to read from script file");
+	}
 
 	_script_running = false;
 	FioFCloseFile(script_file);

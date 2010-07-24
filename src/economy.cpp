@@ -192,8 +192,9 @@ int UpdateCompanyRatingAndValue(Company *c, bool update)
 
 		_score_part[owner][SCORE_VEHICLES] = num;
 		/* Don't allow negative min_profit to show */
-		if (min_profit > 0)
+		if (min_profit > 0) {
 			_score_part[owner][SCORE_MIN_PROFIT] = ClampToI32(min_profit);
+		}
 	}
 
 	/* Count stations */
@@ -561,8 +562,7 @@ static void CompaniesGenStatistics()
 	}
 	cur_company.Restore();
 
-	if (!HasBit(1 << 0 | 1 << 3 | 1 << 6 | 1 << 9, _cur_month))
-		return;
+	if (!HasBit(1 << 0 | 1 << 3 | 1 << 6 | 1 << 9, _cur_month)) return;
 
 	FOR_ALL_COMPANIES(c) {
 		memmove(&c->old_economy[1], &c->old_economy[0], sizeof(c->old_economy) - sizeof(c->old_economy[0]));

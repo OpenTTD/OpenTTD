@@ -148,8 +148,7 @@ static bool HaveHangarInOrderList(Aircraft *v)
 		const Station *st = Station::Get(order->station);
 		if (st->owner == v->owner && (st->facilities & FACIL_AIRPORT)) {
 			/* If an airport doesn't have a hangar, skip it */
-			if (st->Airport()->nof_depots != 0)
-				return true;
+			if (st->Airport()->nof_depots != 0) return true;
 		}
 	}
 
@@ -261,8 +260,9 @@ CommandCost CmdBuildAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	}
 
 	UnitID unit_num = (flags & DC_AUTOREPLACE) ? 0 : GetFreeUnitNumber(VEH_AIRCRAFT);
-	if (unit_num > _settings_game.vehicle.max_aircraft)
+	if (unit_num > _settings_game.vehicle.max_aircraft) {
 		return_cmd_error(STR_ERROR_TOO_MANY_VEHICLES_IN_GAME);
+	}
 
 	if (flags & DC_EXEC) {
 		Aircraft *v = new Aircraft(); // aircraft
@@ -372,8 +372,9 @@ CommandCost CmdBuildAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 		InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
 		InvalidateWindowClassesData(WC_AIRCRAFT_LIST, 0);
 		SetWindowDirty(WC_COMPANY, v->owner);
-		if (IsLocalCompany())
+		if (IsLocalCompany()) {
 			InvalidateAutoreplaceWindow(v->engine_type, v->group_id); // updates the replace Aircraft window
+		}
 
 		Company::Get(_current_company)->num_engines[eid]++;
 	}
@@ -571,11 +572,12 @@ static void HelicopterTickHandler(Aircraft *v)
 			}
 		}
 	} else {
-		if (u->cur_speed == 0)
+		if (u->cur_speed == 0) {
 			u->cur_speed = 0x70;
-
-		if (u->cur_speed >= 0x50)
+		}
+		if (u->cur_speed >= 0x50) {
 			u->cur_speed--;
+		}
 	}
 
 	int tick = ++u->tick_counter;
@@ -727,8 +729,9 @@ static int UpdateAircraftSpeed(Aircraft *v, uint speed_limit = SPEED_LIMIT_NONE,
 	/* updates statusbar only if speed have changed to save CPU time */
 	if (spd != v->cur_speed) {
 		v->cur_speed = spd;
-		if (_settings_client.gui.vehicle_speed)
+		if (_settings_client.gui.vehicle_speed) {
 			SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
+		}
 	}
 
 	/* Adjust distance moved by plane speed setting */
@@ -1144,8 +1147,9 @@ static void HandleBrokenAircraft(Aircraft *v)
 		v->breakdown_ctr = 1;
 		v->vehstatus |= VS_AIRCRAFT_BROKEN;
 
-		if (v->breakdowns_since_last_service != 255)
+		if (v->breakdowns_since_last_service != 255) {
 			v->breakdowns_since_last_service++;
+		}
 		SetWindowDirty(WC_VEHICLE_VIEW, v->index);
 		SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
 	}

@@ -157,12 +157,13 @@ void MxMixSamples(void *buffer, uint samples)
 MixerChannel *MxAllocateChannel()
 {
 	MixerChannel *mc;
-	for (mc = _channels; mc != endof(_channels); mc++)
+	for (mc = _channels; mc != endof(_channels); mc++) {
 		if (!mc->active) {
 			free(mc->memory);
 			mc->memory = NULL;
 			return mc;
 		}
+	}
 	return NULL;
 }
 

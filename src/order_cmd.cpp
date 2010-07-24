@@ -252,9 +252,9 @@ Order *OrderList::GetOrderAt(int index) const
 
 	Order *order = this->first;
 
-	while (order != NULL && index-- > 0)
+	while (order != NULL && index-- > 0) {
 		order = order->next;
-
+	}
 	return order;
 }
 
@@ -686,8 +686,9 @@ CommandCost CmdInsertOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			if (sel_ord <= u->cur_order_index) {
 				uint cur = u->cur_order_index + 1;
 				/* Check if we don't go out of bound */
-				if (cur < u->GetNumOrders())
+				if (cur < u->GetNumOrders()) {
 					u->cur_order_index = cur;
+				}
 			}
 			/* Update any possible open window of the vehicle */
 			InvalidateVehicleOrder(u, INVALID_VEH_ORDER_ID | (sel_ord << 8));
@@ -752,8 +753,7 @@ CommandCost CmdDeleteOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	if (ret.Failed()) return ret;
 
 	/* If we did not select an order, we maybe want to de-clone the orders */
-	if (sel_ord >= v->GetNumOrders())
-		return DecloneOrder(v, flags);
+	if (sel_ord >= v->GetNumOrders()) return DecloneOrder(v, flags);
 
 	order = v->GetOrder(sel_ord);
 	if (order == NULL) return CMD_ERROR;
@@ -764,8 +764,7 @@ CommandCost CmdDeleteOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 		Vehicle *u = v->FirstShared();
 		DeleteOrderWarnings(u);
 		for (; u != NULL; u = u->NextShared()) {
-			if (sel_ord < u->cur_order_index)
-				u->cur_order_index--;
+			if (sel_ord < u->cur_order_index) u->cur_order_index--;
 
 			assert(v->orders.list == u->orders.list);
 
@@ -1480,8 +1479,7 @@ void CheckOrders(const Vehicle *v)
 	if (v->vehstatus & VS_CRASHED) return;
 
 	/* Do nothing for stopped vehicles if setting is '1' */
-	if (_settings_client.gui.order_review_system == 1 && (v->vehstatus & VS_STOPPED))
-		return;
+	if (_settings_client.gui.order_review_system == 1 && (v->vehstatus & VS_STOPPED)) return;
 
 	/* do nothing we we're not the first vehicle in a share-chain */
 	if (v->FirstShared() != v) return;
@@ -1595,8 +1593,7 @@ bool VehicleHasDepotOrders(const Vehicle *v)
 	const Order *order;
 
 	FOR_VEHICLE_ORDERS(v, order) {
-		if (order->IsType(OT_GOTO_DEPOT))
-			return true;
+		if (order->IsType(OT_GOTO_DEPOT)) return true;
 	}
 
 	return false;

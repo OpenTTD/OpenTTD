@@ -113,13 +113,15 @@ char *GetStringWithArgs(char *buffr, uint string, int64 *argv, const char *last)
 
 	switch (tab) {
 		case 4:
-			if (index >= 0xC0)
+			if (index >= 0xC0) {
 				return GetSpecialTownNameString(buffr, index - 0xC0, GetInt32(&argv), last);
+			}
 			break;
 
 		case 14:
-			if (index >= 0xE4)
+			if (index >= 0xE4) {
 				return GetSpecialNameString(buffr, index - 0xE4, argv, last);
+			}
 			break;
 
 		case 15:

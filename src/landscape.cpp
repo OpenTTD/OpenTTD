@@ -837,8 +837,9 @@ static void CreateDesertOrRainForest()
 			TileIndex t = AddTileIndexDiffCWrap(tile, *data);
 			if (t != INVALID_TILE && (TileHeight(t) >= 4 || IsTileType(t, MP_WATER))) break;
 		}
-		if (data == endof(_make_desert_or_rainforest_data))
+		if (data == endof(_make_desert_or_rainforest_data)) {
 			SetTropicZone(tile, TROPICZONE_DESERT);
+		}
 	}
 
 	for (uint i = 0; i != 256; i++) {
@@ -857,8 +858,9 @@ static void CreateDesertOrRainForest()
 			TileIndex t = AddTileIndexDiffCWrap(tile, *data);
 			if (t != INVALID_TILE && IsTileType(t, MP_CLEAR) && IsClearGround(t, CLEAR_DESERT)) break;
 		}
-		if (data == endof(_make_desert_or_rainforest_data))
+		if (data == endof(_make_desert_or_rainforest_data)) {
 			SetTropicZone(tile, TROPICZONE_RAINFOREST);
+		}
 	}
 }
 

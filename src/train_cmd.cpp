@@ -206,7 +206,7 @@ void Train::ConsistChanged(bool same_length)
 		}
 
 		if (rvi_v->pow_wag_power != 0 && rvi_u->railveh_type == RAILVEH_WAGON &&
-			UsesWagonOverride(u) && !HasBit(u->tcache.cached_vis_effect, 7)) {
+				UsesWagonOverride(u) && !HasBit(u->tcache.cached_vis_effect, 7)) {
 			/* wagon is powered */
 			SetBit(u->flags, VRF_POWEREDWAGON); // cache 'powered' status
 		} else {
@@ -2862,8 +2862,9 @@ int Train::UpdateSpeed()
 	this->subspeed = (byte)spd;
 	{
 		int tempmax = this->max_speed;
-		if (this->cur_speed > this->max_speed)
+		if (this->cur_speed > this->max_speed) {
 			tempmax = this->cur_speed - (this->cur_speed / 10) - 1;
+		}
 		this->cur_speed = spd = Clamp(this->cur_speed + ((int)spd >> 8), 0, tempmax);
 	}
 
@@ -3587,8 +3588,9 @@ static void HandleBrokenTrain(Train *v)
 		v->breakdown_ctr = 1;
 		v->cur_speed = 0;
 
-		if (v->breakdowns_since_last_service != 255)
+		if (v->breakdowns_since_last_service != 255) {
 			v->breakdowns_since_last_service++;
+		}
 
 		v->MarkDirty();
 		SetWindowDirty(WC_VEHICLE_VIEW, v->index);

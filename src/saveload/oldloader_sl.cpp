@@ -993,8 +993,9 @@ static bool LoadOldCompany(LoadgameState *ls, int num)
 
 		if (num == 0) {
 			/* If the first company has no name, make sure we call it UNNAMED */
-			if (c->name_1 == 0)
+			if (c->name_1 == 0) {
 				c->name_1 = STR_SV_UNNAMED;
+			}
 		} else {
 			/* Beside some multiplayer maps (1 on 1), which we don't official support,
 			 * all other companys are an AI.. mark them as such */

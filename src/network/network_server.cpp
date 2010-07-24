@@ -166,9 +166,9 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR)(NetworkClientSocket *cs, Netw
 			if (new_cs->status > STATUS_AUTHORIZED && new_cs != cs) {
 				/* Some errors we filter to a more general error. Clients don't have to know the real
 				 *  reason a joining failed. */
-				if (error == NETWORK_ERROR_NOT_AUTHORIZED || error == NETWORK_ERROR_NOT_EXPECTED || error == NETWORK_ERROR_WRONG_REVISION)
+				if (error == NETWORK_ERROR_NOT_AUTHORIZED || error == NETWORK_ERROR_NOT_EXPECTED || error == NETWORK_ERROR_WRONG_REVISION) {
 					error = NETWORK_ERROR_ILLEGAL_PACKET;
-
+				}
 				SEND_COMMAND(PACKET_SERVER_ERROR_QUIT)(new_cs, cs->client_id, error);
 			}
 		}
@@ -274,8 +274,9 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_WELCOME)
 
 		/* Transmit info about all the active clients */
 	FOR_ALL_CLIENT_SOCKETS(new_cs) {
-		if (new_cs != cs && new_cs->status > STATUS_AUTHORIZED)
+		if (new_cs != cs && new_cs->status > STATUS_AUTHORIZED) {
 			SEND_COMMAND(PACKET_SERVER_CLIENT_INFO)(cs, new_cs->GetInfo());
+		}
 	}
 	/* Also send the info of the server */
 	return SEND_COMMAND(PACKET_SERVER_CLIENT_INFO)(cs, NetworkFindClientInfoFromClientID(CLIENT_ID_SERVER));
@@ -1076,8 +1077,9 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 		if ((ClientID)dest == CLIENT_ID_SERVER) {
 			ci = NetworkFindClientInfoFromClientID(from_id);
 			/* Display the text locally, and that is it */
-			if (ci != NULL)
+			if (ci != NULL) {
 				NetworkTextMessage(action, (ConsoleColour)GetDrawStringCompanyColour(ci->client_playas), false, ci->client_name, msg, data);
+			}
 		} else {
 			/* Else find the client to send the message to */
 			FOR_ALL_CLIENT_SOCKETS(cs) {
@@ -1093,8 +1095,9 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 			if (from_id == CLIENT_ID_SERVER) {
 				ci = NetworkFindClientInfoFromClientID(from_id);
 				ci_to = NetworkFindClientInfoFromClientID((ClientID)dest);
-				if (ci != NULL && ci_to != NULL)
+				if (ci != NULL && ci_to != NULL) {
 					NetworkTextMessage(action, (ConsoleColour)GetDrawStringCompanyColour(ci->client_playas), true, ci_to->client_name, msg, data);
+				}
 			} else {
 				FOR_ALL_CLIENT_SOCKETS(cs) {
 					if (cs->client_id == from_id) {
@@ -1156,8 +1159,9 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 			SEND_COMMAND(PACKET_SERVER_CHAT)(cs, action, from_id, false, msg, data);
 		}
 		ci = NetworkFindClientInfoFromClientID(from_id);
-		if (ci != NULL)
+		if (ci != NULL) {
 			NetworkTextMessage(action, (ConsoleColour)GetDrawStringCompanyColour(ci->client_playas), false, ci->client_name, msg, data);
+		}
 		break;
 	}
 }

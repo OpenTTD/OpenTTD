@@ -1757,8 +1757,9 @@ static void SwitchAnimatedCursor()
 
 void CursorTick()
 {
-	if (_cursor.animate_timeout != 0 && --_cursor.animate_timeout == 0)
+	if (_cursor.animate_timeout != 0 && --_cursor.animate_timeout == 0) {
 		SwitchAnimatedCursor();
+	}
 }
 
 void SetMouseCursor(CursorID sprite, PaletteID pal)

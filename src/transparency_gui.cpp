@@ -100,8 +100,9 @@ public:
 			uint i;
 			for (i = TTW_WIDGET_BEGIN; i < TTW_WIDGET_END; i++) {
 				const NWidgetBase *nwid = this->GetWidget<NWidgetBase>(i);
-				if (IsInsideBS(pt.x, nwid->pos_x, nwid->current_x))
+				if (IsInsideBS(pt.x, nwid->pos_x, nwid->current_x)) {
 					break;
+				}
 			}
 			if (i == TTW_WIDGET_LOADING || i == TTW_WIDGET_END) return;
 

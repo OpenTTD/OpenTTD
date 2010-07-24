@@ -1072,14 +1072,14 @@ public:
 			int x = _settings_client.gui.station_numtracks;
 			int y = _settings_client.gui.station_platlength;
 			if (_railstation.orientation == AXIS_X) Swap(x, y);
-			if (!_remove_button_clicked)
+			if (!_remove_button_clicked) {
 				SetTileSelectSize(x, y);
+			}
 		}
 
 		int rad = (_settings_game.station.modified_catchment) ? CA_TRAIN : CA_UNMODIFIED;
 
-		if (_settings_client.gui.station_show_coverage)
-			SetTileSelectBigSize(-rad, -rad, 2 * rad, 2 * rad);
+		if (_settings_client.gui.station_show_coverage) SetTileSelectBigSize(-rad, -rad, 2 * rad, 2 * rad);
 
 		for (uint bits = 0; bits < 7; bits++) {
 			bool disable = bits >= _settings_game.station.station_spread;
@@ -1335,9 +1335,8 @@ public:
 
 				/* Check station availability callback */
 				statspec = GetCustomStationSpec(_railstation.station_class, y);
-				if (statspec != NULL &&
-					HasBit(statspec->callback_mask, CBM_STATION_AVAIL) &&
-					GB(GetStationCallback(CBID_STATION_AVAILABILITY, 0, 0, statspec, NULL, INVALID_TILE), 0, 8) == 0) return;
+				if (statspec != NULL && HasBit(statspec->callback_mask, CBM_STATION_AVAIL) &&
+						GB(GetStationCallback(CBID_STATION_AVAILABILITY, 0, 0, statspec, NULL, INVALID_TILE), 0, 8) == 0) return;
 
 				_railstation.station_type = y;
 

@@ -286,8 +286,9 @@ static CommandCost ClearTile_Unmovable(TileIndex tile, DoCommandFlag flags)
 	}
 
 	/* checks if you're allowed to remove unmovable things */
-	if (_game_mode != GM_EDITOR && _current_company != OWNER_WATER && ((flags & DC_AUTO) || !_cheats.magic_bulldozer.value) )
-		return_cmd_error(flags & DC_AUTO ? STR_ERROR_OBJECT_IN_THE_WAY : INVALID_STRING_ID);
+	if (_game_mode != GM_EDITOR && _current_company != OWNER_WATER && ((flags & DC_AUTO) || !_cheats.magic_bulldozer.value)) {
+		return_cmd_error((flags & DC_AUTO) ? STR_ERROR_OBJECT_IN_THE_WAY : INVALID_STRING_ID);
+	}
 
 	if (IsStatue(tile)) {
 		if (flags & DC_AUTO) return_cmd_error(STR_ERROR_OBJECT_IN_THE_WAY);

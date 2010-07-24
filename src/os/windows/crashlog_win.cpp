@@ -152,8 +152,9 @@ static void GetFileInfo(DebugFileInfo *dfi, const TCHAR *filename)
 		uint32 crc = (uint32)-1;
 
 		for (;;) {
-			if (ReadFile(file, buffer, sizeof(buffer), &numread, NULL) == 0 || numread == 0)
+			if (ReadFile(file, buffer, sizeof(buffer), &numread, NULL) == 0 || numread == 0) {
 				break;
+			}
 			filesize += numread;
 			crc = CalcCRC(buffer, numread, crc);
 		}

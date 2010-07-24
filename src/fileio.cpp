@@ -164,10 +164,9 @@ static inline void FioCloseFile(int slot)
 
 void FioCloseAll()
 {
-	int i;
-
-	for (i = 0; i != lengthof(_fio.handles); i++)
+	for (int i = 0; i != lengthof(_fio.handles); i++) {
 		FioCloseFile(i);
+	}
 }
 
 #if defined(LIMITED_FDS)

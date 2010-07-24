@@ -307,8 +307,9 @@ static bool MakePNGImage(const char *name, ScreenshotCallback *callb, void *user
 		y += n;
 
 		/* write them to png */
-		for (i = 0; i != n; i++)
+		for (i = 0; i != n; i++) {
 			png_write_row(png_ptr, (png_bytep)buff + i * w * bpp);
+		}
 	} while (y != h);
 
 	png_write_end(png_ptr, info_ptr);
@@ -356,8 +357,7 @@ static bool MakePCXImage(const char *name, ScreenshotCallback *callb, void *user
 		DEBUG(misc, 0, "Can't convert a 32bpp screenshot to PCX format. Please pick another format.");
 		return false;
 	}
-	if (pixelformat != 8 || w == 0)
-		return false;
+	if (pixelformat != 8 || w == 0) return false;
 
 	f = fopen(name, "wb");
 	if (f == NULL) return false;
@@ -413,12 +413,13 @@ static bool MakePCXImage(const char *name, ScreenshotCallback *callb, void *user
 				uint8 ch = bufp[j];
 
 				if (ch != runchar || runcount >= 0x3f) {
-					if (runcount > 1 || (runchar & 0xC0) == 0xC0)
+					if (runcount > 1 || (runchar & 0xC0) == 0xC0) {
 						if (fputc(0xC0 | runcount, f) == EOF) {
 							free(buff);
 							fclose(f);
 							return false;
 						}
+					}
 					if (fputc(runchar, f) == EOF) {
 						free(buff);
 						fclose(f);
@@ -431,12 +432,13 @@ static bool MakePCXImage(const char *name, ScreenshotCallback *callb, void *user
 			}
 
 			/* write remaining bytes.. */
-			if (runcount > 1 || (runchar & 0xC0) == 0xC0)
+			if (runcount > 1 || (runchar & 0xC0) == 0xC0) {
 				if (fputc(0xC0 | runcount, f) == EOF) {
 					free(buff);
 					fclose(f);
 					return false;
 				}
+			}
 			if (fputc(runchar, f) == EOF) {
 				free(buff);
 				fclose(f);

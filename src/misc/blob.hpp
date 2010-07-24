@@ -263,12 +263,14 @@ public:
 		tmp->capacity = new_size - (header_size + tail_reserve);
 
 		/* copy existing data */
-		if (tmp->items != 0)
+		if (tmp->items != 0) {
 			memcpy(tmp + 1, data, tmp->items);
+		}
 
 		/* replace our block with new one */
-		if (Capacity() > 0)
+		if (Capacity() > 0) {
 			RawFree(&Hdr());
+		}
 		Init(tmp);
 	}
 

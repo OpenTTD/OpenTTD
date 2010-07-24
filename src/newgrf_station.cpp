@@ -195,8 +195,7 @@ void SetCustomStationSpec(StationSpec *statspec)
 const StationSpec *GetCustomStationSpec(StationClassID sclass, uint station)
 {
 	assert(sclass < STAT_CLASS_MAX);
-	if (station < _station_classes[sclass].stations)
-		return _station_classes[sclass].spec[station];
+	if (station < _station_classes[sclass].stations) return _station_classes[sclass].spec[station];
 
 	/* If the custom station isn't defined any more, then the GRF file
 	 * probably was not loaded. */
