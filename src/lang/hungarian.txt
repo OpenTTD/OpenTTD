@@ -2180,6 +2180,17 @@ STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Kutatás
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Épít
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Alapít
 
+# Industry cargoes window
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Ipari láncolat {STRING} gazdasági épületnek
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Ipari láncolat {STRING} rakománynak
+STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Termelő gazdasági épületek
+STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Elfogadó gazdasági épületek
+STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Házak
+STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Kattints a gazdasági épületre az ellátók és a fogyasztók megjelenítéséhez
+STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Kattints a rakományra az ellátók és a fogyasztók megjelenítéséhez.
+STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Láncolat mutatása
+STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Rakományellátó és fogyasztó gazdasági épületek megjelenítése
+
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Terület-információ
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}{LTBLUE}Nem lehet lerombolni

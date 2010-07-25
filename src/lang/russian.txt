@@ -2286,6 +2286,17 @@ STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Разв
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Построить
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Профинансировать
 
+# Industry cargoes window
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Цепочка грузоперевозок для {STRING.gen}
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Цепочка грузоперевозок для {STRING.gen}
+STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Производители
+STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Потребители
+STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Городские здания
+STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Щелчок по предприятию покажет его поставщиков и потребителей
+STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Щелчок по типу груза покажет его производителей и потребителей
+STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Показать цепочку
+STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Показать производителей сырья и потребителей продукции этого предприятия
+
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Информация об участке земли
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Чтобы очистить, надо: {LTBLUE}(нет данных)
@@ -3923,42 +3934,79 @@ STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Хрюшка-К
 ##id 0x4800
 # industry names
 STR_INDUSTRY_NAME_COAL_MINE                                     :{G=f}Угольная шахта
+STR_INDUSTRY_NAME_COAL_MINE.gen                                 :угольной шахты
 STR_INDUSTRY_NAME_POWER_STATION                                 :{G=f}Электростанция
+STR_INDUSTRY_NAME_POWER_STATION.gen                             :электростанции
 STR_INDUSTRY_NAME_SAWMILL                                       :{G=f}Лесопилка
+STR_INDUSTRY_NAME_SAWMILL.gen                                   :лесопилки
 STR_INDUSTRY_NAME_FOREST                                        :{G=m}Лес
+STR_INDUSTRY_NAME_FOREST.gen                                    :леса
 STR_INDUSTRY_NAME_OIL_REFINERY                                  :{G=m}Нефтезавод
+STR_INDUSTRY_NAME_OIL_REFINERY.gen                              :нефтезавода
 STR_INDUSTRY_NAME_OIL_RIG                                       :{G=f}Нефтяная вышка
+STR_INDUSTRY_NAME_OIL_RIG.gen                                   :нефтяной вышки
 STR_INDUSTRY_NAME_FACTORY                                       :{G=m}Завод
+STR_INDUSTRY_NAME_FACTORY.gen                                   :завода
 STR_INDUSTRY_NAME_PRINTING_WORKS                                :{G=f}Типография
+STR_INDUSTRY_NAME_PRINTING_WORKS.gen                            :типографии
 STR_INDUSTRY_NAME_STEEL_MILL                                    :{G=m}Сталелитейный завод
+STR_INDUSTRY_NAME_STEEL_MILL.gen                                :сталелитейного завода
 STR_INDUSTRY_NAME_FARM                                          :{G=f}Ферма
+STR_INDUSTRY_NAME_FARM.gen                                      :фермы
 STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :{G=f}Шахта медной руды
+STR_INDUSTRY_NAME_COPPER_ORE_MINE.gen                           :шахты медной руды
 STR_INDUSTRY_NAME_OIL_WELLS                                     :{G=f}Нефтяная скважина
+STR_INDUSTRY_NAME_OIL_WELLS.gen                                 :нефтяной скважины
 STR_INDUSTRY_NAME_BANK                                          :{G=m}Банк
+STR_INDUSTRY_NAME_BANK.gen                                      :банка
 STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :{G=m}Продуктовый завод
+STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT.gen                     :продуктового завода
 STR_INDUSTRY_NAME_PAPER_MILL                                    :{G=f}Бумажная фабрика
+STR_INDUSTRY_NAME_PAPER_MILL.gen                                :бумажной фабрики
 STR_INDUSTRY_NAME_GOLD_MINE                                     :{G=f}Золотая шахта
+STR_INDUSTRY_NAME_GOLD_MINE.gen                                 :золотой шахты
 STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :{G=m}Банк
+STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC.gen                        :банка
 STR_INDUSTRY_NAME_DIAMOND_MINE                                  :{G=p}Алмазные копи
+STR_INDUSTRY_NAME_DIAMOND_MINE.gen                              :алмазных копей
 STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :{G=f}Шахта железной руды
+STR_INDUSTRY_NAME_IRON_ORE_MINE.gen                             :шахты железной руды
 STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :{G=f}Фруктовая плантация
+STR_INDUSTRY_NAME_FRUIT_PLANTATION.gen                          :фруктовой плантации
 STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :{G=f}Плантация гевеи
+STR_INDUSTRY_NAME_RUBBER_PLANTATION.gen                         :плантации гевеи
 STR_INDUSTRY_NAME_WATER_SUPPLY                                  :{G=f}Водная скважина
+STR_INDUSTRY_NAME_WATER_SUPPLY.gen                              :водной скважины
 STR_INDUSTRY_NAME_WATER_TOWER                                   :{G=f}Водонапорная башня
+STR_INDUSTRY_NAME_WATER_TOWER.gen                               :водонапорной башни
 STR_INDUSTRY_NAME_FACTORY_2                                     :{G=m}Завод
+STR_INDUSTRY_NAME_FACTORY_2.gen                                 :завода
 STR_INDUSTRY_NAME_FARM_2                                        :{G=f}Ферма
+STR_INDUSTRY_NAME_FARM_2.gen                                    :фермы
 STR_INDUSTRY_NAME_LUMBER_MILL                                   :{G=f}Лесопилка
+STR_INDUSTRY_NAME_LUMBER_MILL.gen                               :лесопилки
 STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :{G=m}Лес сахарной ваты
+STR_INDUSTRY_NAME_COTTON_CANDY_FOREST.gen                       :леса сахарной ваты
 STR_INDUSTRY_NAME_CANDY_FACTORY                                 :{G=f}Конфетная фабрика
+STR_INDUSTRY_NAME_CANDY_FACTORY.gen                             :конфетной фабрики
 STR_INDUSTRY_NAME_BATTERY_FARM                                  :{G=n}Поле батареек
+STR_INDUSTRY_NAME_BATTERY_FARM.gen                              :поля батареек
 STR_INDUSTRY_NAME_COLA_WELLS                                    :{G=p}Колодцы колы
+STR_INDUSTRY_NAME_COLA_WELLS.gen                                :колодцев колы
 STR_INDUSTRY_NAME_TOY_SHOP                                      :{G=m}Магазин игрушек
+STR_INDUSTRY_NAME_TOY_SHOP.gen                                  :магазина игрушек
 STR_INDUSTRY_NAME_TOY_FACTORY                                   :{G=m}Завод игрушек
+STR_INDUSTRY_NAME_TOY_FACTORY.gen                               :завода игрушек
 STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :{G=p}Фонтаны пластика
+STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS.gen                         :фонтанов пластика
 STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :{G=m}Завод газировки
+STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY.gen                       :завода газировки
 STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :{G=m}Генератор пузырьков
+STR_INDUSTRY_NAME_BUBBLE_GENERATOR.gen                          :генератора пузырьков
 STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :{G=m}Ирисовый карьер
+STR_INDUSTRY_NAME_TOFFEE_QUARRY.gen                             :ирисового карьера
 STR_INDUSTRY_NAME_SUGAR_MINE                                    :{G=f}Сахарная шахта
+STR_INDUSTRY_NAME_SUGAR_MINE.gen                                :сахарной шахты
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
 ############ These strings may never get a new id, or savegames will break!

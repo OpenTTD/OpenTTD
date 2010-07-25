@@ -445,6 +445,7 @@ STR_ABOUT_MENU_AI_DEBUG                                         :AI 디버그
 STR_ABOUT_MENU_SCREENSHOT                                       :스크린 샷 (Ctrl+S)
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :대형 스크린샷 (Ctrl+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :'OpenTTD'에 대해서
+STR_ABOUT_MENU_SPRITE_ALIGNER                                   :스프라이트 정렬도구
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -2116,6 +2117,17 @@ STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}답사
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}건설
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}투자
 
+# Industry cargoes window
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}{STRING} 산업시설의 산업망
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}{STRING} 화물의 산업망
+STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}생산 산업시설
+STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}소비 산업시설
+STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}도시 가구
+STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}이 산업시설의 공급자와 고객을 보려면 클릭하세요.
+STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}이 화물의 공급자와 고객을 보려면 클릭하세요.
+STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}산업망 표시
+STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}이 산업시설에서 생산되고 소비되는 화물을 보여줍니다.
+
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}이 지역의 지형 정보
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}초기화 가격: {LTBLUE}없음
@@ -2373,14 +2385,30 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}사용안�
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}NewGRF 파라미터 입력
 
 # NewGRF inspect window
+STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}NEWGRF 검사 - {STRING}
+STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}상위 단계
+STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}상위 단계 범위의 오브젝트를 검사합니다.
 
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING}, {HEX}에서
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :철도 종류
 
+STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF 변수 60+x 파라미터 (16진법에서)
 
 # Sprite aligner window
+STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}스프라이트 정렬 {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}다음 스프라이트
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}다음의 정상 스프라이트로 이동합니다, 이때 pseudo/recolour/font 스프라이트는 건너뛰고 원래 설정으로 다시 채워집니다.
+STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}스프라이트로 이동
+STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}입력한 스프라이트로 이동합니다. 만약 정상적인 스프라이트가 아닐경우, 다음 정상 스프라이트로 이동합니다.
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}이전의 스프라이트
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}이전의 정상 스프라이트로 이동합니다, 이때 pseudo/recolour/font 스프라이트는 건너뛰고 원래 설정으로 다시 채워집니다.
+STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}현재 선택된 스프라이트를 표시합니다. 이 스프라이트가 그려졌을때의 정렬은 무시합니다.
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}X축이나 Y축 방향으로 스프라이트를 이동시킵니다.
+STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X축: {NUM}, Y축: {NUM}
+STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}스프라이트 집어들기
+STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}화면에서 스프라이트를 끌어옵니다.
 
+STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}스프라이트로 이동
 
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
@@ -2433,7 +2461,11 @@ STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}{1:ENGIN
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' 때문에 결과물 콜백 과정에서 무한 루프가 발생하고 있습니다.
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs.
+STR_NEWGRF_INVALID_CARGO                                        :<인식오류 화물>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
+STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA}<인식오류 화물>의
+STR_NEWGRF_INVALID_ENGINE                                       :<인식오류 차량모델>
+STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<인식오류 산업시설>
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}팻말 목록 - 팻말 {COMMA}개
@@ -3248,6 +3280,12 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}AI 설�
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}AI의 설정 변경
 STR_AI_DEBUG_RELOAD                                             :{BLACK}AI 재시작
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}AI를 종료시키고, 스크립트를 다시 불러와, AI를 재시작합니다
+STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}AI 로그 메세지가 중단 문자열과 일치할때 AI 중단을 활성화/비활성화
+STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}중단:
+STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}중단
+STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}AI 로그 메세지가 이 문자열과 일치할때, 게임이 일시 정지.
+STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}일치 케이스
+STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}AI 로그 메세지를 중단 문자열과 비교할때 일치 케이스 검색으로 전환.
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}계속
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}AI 재개 및 계속됨
 
@@ -3323,6 +3361,7 @@ STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :상위 버젼�
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :파일을 읽을 수 없습니다
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :파일을 쓸 수 없습니다
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :데이터 무결성 검사 실패
+STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<사용 불가능>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}전차를 지원하지 않는 버전으로 게임이 저장되었습니다. 모든 전차는 제거되었습니다.
 
 # Map generation messages
@@ -3675,6 +3714,7 @@ STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}팻말 �
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}팻말을 삭제할 수 없습니다...
 
 # Translatable comment for OpenTTD's desktop shortcut
+STR_DESKTOP_SHORTCUT_COMMENT                                    :트랜스포트 타이쿤 디럭스 복사본
 
 ##id 0x2000
 # Town building names

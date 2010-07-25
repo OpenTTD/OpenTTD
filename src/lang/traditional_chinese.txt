@@ -2116,6 +2116,17 @@ STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}探勘
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}設立
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}設立
 
+# Industry cargoes window
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}{STRING} 工業的產業鍊
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}{STRING} 貨物的產業鍊
+STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}供應商
+STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}購買商
+STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}房屋
+STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}按該工業可顯示其上下游工業
+STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}按該貨物可顯示其上下游工業
+STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}顯示產業鍊
+STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}顯示貨物的上下游工業
+
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}土地資訊
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}整地花費：{LTBLUE}不適用

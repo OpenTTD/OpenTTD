@@ -2116,6 +2116,12 @@ STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Dóigh
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Tóg
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Maoinigh
 
+# Industry cargoes window
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Slabhra na dtionscal le haghaidh lastas {STRING}
+STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Tionscail á tháirgeadh
+STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Tionscail a ghlacann leis
+STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Tithe
+
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Faisnéis faoin bPíosa Talún
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Costas le glanadh: {LTBLUE}N/B
