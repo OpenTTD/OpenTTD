@@ -2330,6 +2330,13 @@ detect_library() {
 				log 2 "  trying /usr/pkg/include/$4$5... no"
 			fi
 		fi
+		if [ -z "$res" ] && [ "$os" = "HAIKU" ]; then
+			eval "$2=`ls -1 /boot/common/include/$4*.h 2>/dev/null | egrep \"\/$5\$\"`"
+			eval "res=\$$2"
+			if [ -z "$res" ]; then
+				log 2 "  trying /boot/common/include/$4$5... no"
+			fi
+		fi
 
 		eval "res=\$$2"
 		if [ -n "$res" ] && ( [ -n "$force_static" ] || ( [ "$enable_static" != "0" ] && [ "$os" != "OSX" ] ) ); then
