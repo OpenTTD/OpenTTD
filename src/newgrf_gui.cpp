@@ -632,6 +632,7 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 				this->avails.ForceRebuild();
 				this->InvalidateData(1);
 				this->DeleteChildWindows(WC_QUERY_STRING); // Remove the parameter query window
+				InvalidateWindowClassesData(WC_SAVELOAD);
 				break;
 		}
 	}
