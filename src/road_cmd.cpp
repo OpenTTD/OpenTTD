@@ -860,10 +860,8 @@ CommandCost CmdRemoveLongRoad(TileIndex start_tile, DoCommandFlag flags, uint32 
 				cost.AddCost(ret);
 				had_success = true;
 			} else {
-				last_error = ret;
-
 				/* Ownership errors are more important. */
-				if (last_error.GetErrorMessage() == STR_ERROR_OWNED_BY) break;
+				if (last_error.GetErrorMessage() != STR_ERROR_OWNED_BY) last_error = ret;
 			}
 		}
 
