@@ -82,6 +82,15 @@ Long delay between switching songs/music
 	is the default driver for OpenTTD. You can change this default by
 	setting the "musicdriver" in your openttd.cfg to "dmusic".
 
+Custom vehicle type name is incorrectly aligned
+	Some NewGRFs use sprites that are bigger than normal in the "buy
+	vehicle" window. Due to this they have to encode an offset for the
+	vehicle type name. Upon renaming the vehicle type this encoded offset
+	is stripped from the name because the "edit box" cannot show this
+	encoding. As a result the custom vehicle type names will get the
+	default alignment. The only way to (partly) fix this is by adding
+	spaces to the custom name.
+
 Clipping problems [FS#119]
 	In some cases sprites are not drawn as one would expect. Examples of
 	this are aircraft that might be hidden below the runway or trees that

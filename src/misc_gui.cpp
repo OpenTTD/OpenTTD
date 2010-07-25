@@ -1282,7 +1282,7 @@ struct QueryStringWindow : public QueryStringBaseWindow
 			QueryStringBaseWindow(maxsize)
 	{
 		GetString(this->edit_str_buf, str, &this->edit_str_buf[maxsize - 1]);
-		this->edit_str_buf[maxsize - 1] = '\0';
+		str_validate(this->edit_str_buf, &this->edit_str_buf[maxsize - 1], false, true);
 
 		if ((flags & QSF_ACCEPT_UNCHANGED) == 0) this->orig = strdup(this->edit_str_buf);
 
