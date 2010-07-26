@@ -1145,6 +1145,8 @@ STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Înnoir
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Înnoire automată cu {ORANGE}{STRING}{LTBLUE} luni înainte de/după atingerea vechimii max.
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Fonduri minime pentru înnoire automată: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Durata mesajelor de eroare: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Întârzierea evenimentelor de hover: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Întârzierea evenimentelor de hover: {ORANGE}dezactivat
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Afişează populaţia unui oras lângă nume: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Generator teren: {ORANGE}{STRING}
@@ -1897,7 +1899,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construi
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Plasează semnale feroviare. Ctrl comută între semafoare/semnale electrice{}Trage cu mouse-ul pentru a construi semnale automat pe o porţiune de şină dreaptă. Apasă Ctrl pentru a construi semnale până la următoarea joncţiune{}Ctrl+Click comută deschiderea ferestrei de selectie a tipului semnalului
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construieşte pod de cale ferată
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construieşte tunel feroviar
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Comută construcţia/înlăturarea căilor ferate, semnalelor, punctelor de tranzit şi a staţiilor. Ctrl+Click înlătură şinele din punctele de tranzit şi staţii
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Comută construcţia/înlăturarea căilor ferate, semnalelor, punctelor de tranzit şi a staţiilor. Ctrl+Click înlătură şinele din punctele de tranzit şi din staţii
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Converteşte tipul de cale ferată
 
 # Rail depot construction window
@@ -2060,7 +2062,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Planteaz
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Generator suprafaţă uscat
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Plasează formaţiuni pietroase
 STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Plasează far
-STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Defineşte suprafaţa de deşert.{}Apasă şi menţine apăsat CTRL pentru a o şterge
+STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Defineşte suprafaţa de deşert.{}Ţine apăsat Ctrl pentru a şterge
 STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Plasează transmiţător
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Măreşte aria de editare a terenului
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Micşorează aria de editare a terenului
@@ -2113,6 +2115,17 @@ STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Cost: {Y
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Prospectează
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Construieste
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Finanteaza
+
+# Industry cargoes window
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Lanţ industrial pentru industria {STRING}
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Lanţ industrial pentru cargo {STRING}
+STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Industrii producătoare
+STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Industrii acceptante
+STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Case
+STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Click pe industrie pentru a vedea furnizorii şi clienţii săi
+STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Click pe cargo pentru a vedea furnizorii şi clienţii săi
+STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Afişează lanţ
+STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Afişează industriile care furnizează şi acceptă cargo
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Informatii teren
@@ -2531,7 +2544,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Click pe
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Numele staţiilor - clic pe un nume pentru a centra imaginea pe staţia respectivă. Ctrl+Click deshide o fereastra cu locaţia staţiei
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Ţine apăsat Ctrl pentru a alege mai mult decât un obiect
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Ţine apăsat Ctrl pentru a alege mai multe obiecte
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Staţi{P e i}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
@@ -2810,8 +2823,8 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} vehicul{P "" e}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trenuri - trage vehiculele cu butonul stânga pentru a adauga/elimina din tren, clic dreapta pe vehicul pentru informaţii, CTRL+clic dreapta pentru informaţii despre garnitura
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Autovehicule - clic dreapta pe vehicul pentru informatii
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trenuri - trage vehiculele cu click stânga pentru a adauga/elimina din tren, click dreapta pe vehicul pentru informaţii. Tasta Ctrl aplică funcţiile pentru întreaga garnitură
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Autovehicule - clic dreapta pe vehicul pentru informaţii
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Nave - clic dreapta pe o navă pentru informaţii
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Aeronavă - clic dreapta pe aeronavă pentru informaţii
 

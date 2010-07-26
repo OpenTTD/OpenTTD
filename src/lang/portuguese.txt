@@ -828,7 +828,7 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} agora aceita {STRING} e {STRING}
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}A oferta do subsídio expirou:{}{}{STRING} de {STRING} para {STRING} já não será subsidiado.
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Subsídio retirado:{}{}serviço de transporte de {STRING} de {STRING} para {STRING} já não é subsidiado.
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Subsídio retirado:{}{}Serviço de transporte de {STRING} de {STRING} para {STRING} já não é subsidiado.
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Subsídio de ligação oferecido:{}{}Primeiro serviço de {STRING} de {STRING} para {STRING} atrairá o subsídio de um ano da autoridade local!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Subsídio de ligação concedido a {STRING}!{}{}{STRING} ligação de {STRING} para {STRING} pagará 50% extra durante o próximo ano!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Subsídio de ligação concedido a {STRING}!{}{}{STRING} ligação de {STRING} para {STRING} pagará a dobrar durante o próximo ano!
@@ -1870,11 +1870,11 @@ STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Alterar 
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Definir objectos como invisíveis em vez de transparentes
 
 # Base for station construction window(s)
-STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Evidenciar cobertura
+STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Exibir área de cobertura
 STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Off
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}On
-STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Não evidenciar área de cobertura do sítio proposto
-STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Evidenciar área de cobertura do sítio proposto
+STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Não exibir área de cobertura do sítio proposto
+STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Exibir área de cobertura do sítio proposto
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Aceita: {GOLD}{STRING}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Fornecimentos: {GOLD}{STRING}
 
@@ -2115,6 +2115,15 @@ STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Custo: {
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Prospectar
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Construir
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Criar
+
+# Industry cargoes window
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Cadeia de indústrias para a indústria {STRING}
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Cadeia de indústrias para a mercadoria {STRING}
+STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Indústrias produtoras
+STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Casas
+STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Clique na indústria para ver os seus fornecedores e clientes
+STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Clique na mercadoria para ver os seus fornecedores e clientes
+STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Mostrar cadeia
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Informações do Terreno

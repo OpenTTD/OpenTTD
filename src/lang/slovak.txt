@@ -2183,6 +2183,17 @@ STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Vyhladat
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Postavit
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Založit
 
+# Industry cargoes window
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Reťazec pre priemysel: {STRING}
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Reťazec pre náklad: {STRING}
+STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Produkujúci priemysel
+STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Podporovaný priemysel
+STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Domy
+STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Klikni na priemysel pre zobrazenie dodávateľov a zákazníkov
+STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Klikni na náklad pre zobrazenie dodávateľov a zákazníkov
+STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Zobraziť reťazec
+STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Zobraziť náklad dodávaného a prijímaného priemyslu
+
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Informácie o pozemku
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Náklady na odstránenie: {LTBLUE}N/A
@@ -3498,7 +3509,7 @@ STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Nie je m
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Mesto nemôže byť odstránené...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Tu sa mesto neda postavit...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... príliš blízko okraja mapy
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... prilis blizko ineho mesta
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... príliš blízko iného mesta
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... príliš veľa miest
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... nie je dalsie miesto na mape
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Mesto nevybuduje cesty. Môžete povoliť budovanie ciest cez Pokročilé nasvavenia->Ekonomika->Mestá.
@@ -3510,7 +3521,7 @@ STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... prí
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Nemozno vygenerovat priemysel ...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}{STRING} sa tu nedá postaviť...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Tento typ priemyslu sa tu neda postavit ...
-STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... prilis blizko ineho priemyslu
+STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... príliš blízko iného priemyslu
 STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... najskor treba postavit mesto...
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... povolene len jedno pre mesto...
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... moze byt postavene v mestach z populaciou vacsou ako 1200
