@@ -2407,11 +2407,9 @@ static void TileLoop_Track(TileIndex tile)
 			break;
 	}
 
-	if (!IsPlainRail(tile)) return;
-
 	new_ground = RAIL_GROUND_GRASS;
 
-	if (old_ground != RAIL_GROUND_BARREN) { // wait until bottom is green
+	if (IsPlainRail(tile) && old_ground != RAIL_GROUND_BARREN) { // wait until bottom is green
 		/* determine direction of fence */
 		TrackBits rail = GetTrackBits(tile);
 
