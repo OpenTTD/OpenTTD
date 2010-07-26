@@ -689,11 +689,7 @@ public:
 				break;
 
 			case NGWW_MATRIX: { // Matrix to show networkgames
-				uint32 id_v = (pt.y - this->GetWidget<NWidgetBase>(NGWW_MATRIX)->pos_y) / this->resize.step_height;
-
-				if (id_v >= this->vscroll.GetCapacity()) return; // click out of bounds
-				id_v += this->vscroll.GetPosition();
-
+				uint id_v = this->vscroll.GetScrolledRowFromWidget(pt.y, this, NGWW_MATRIX);
 				this->server = (id_v < this->servers.Length()) ? this->servers[id_v] : NULL;
 				this->list_pos = (server == NULL) ? SLP_INVALID : id_v;
 				this->SetDirty();
@@ -1170,9 +1166,7 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 				break;
 
 			case NSSW_SELMAP: { // Select map
-				int y = (pt.y - this->GetWidget<NWidgetBase>(NSSW_SELMAP)->pos_y - WD_FRAMERECT_TOP) / FONT_HEIGHT_NORMAL;
-
-				y += this->vscroll.GetPosition();
+				int y = this->vscroll.GetScrolledRowFromWidget(pt.y, this, NSSW_SELMAP, WD_FRAMERECT_TOP, FONT_HEIGHT_NORMAL);
 				if (y >= this->vscroll.GetCount()) return;
 
 				this->map = (y == 0) ? NULL : _fios_items.Get(y - 1);
@@ -1631,11 +1625,7 @@ struct NetworkLobbyWindow : public Window {
 				break;
 
 			case NLWW_MATRIX: { // Company list
-				uint32 id_v = (pt.y - this->GetWidget<NWidgetBase>(NLWW_MATRIX)->pos_y) / this->resize.step_height;
-
-				if (id_v >= this->vscroll.GetCapacity()) break;
-
-				id_v += this->vscroll.GetPosition();
+				uint id_v = this->vscroll.GetScrolledRowFromWidget(pt.y, this, NLWW_MATRIX);
 				this->company = (id_v >= this->server->info.companies_on) ? INVALID_COMPANY : NetworkLobbyFindCompanyIndex(id_v);
 				this->SetDirty();
 

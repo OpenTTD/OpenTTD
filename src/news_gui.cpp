@@ -1014,7 +1014,7 @@ struct MessageHistoryWindow : Window {
 			NewsItem *ni = _latest_news;
 			if (ni == NULL) return;
 
-			for (int n = (pt.y - this->GetWidget<NWidgetBase>(MHW_BACKGROUND)->pos_y - WD_FRAMERECT_TOP) / this->line_height + this->vscroll.GetPosition(); n > 0; n--) {
+			for (int n = this->vscroll.GetScrolledRowFromWidget(pt.y, this, MHW_BACKGROUND, WD_FRAMERECT_TOP, this->line_height); n > 0; n--) {
 				ni = ni->prev;
 				if (ni == NULL) return;
 			}

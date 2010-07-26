@@ -590,11 +590,7 @@ public:
 	{
 		switch (widget) {
 			case NCLWW_MATRIX: {
-				uint32 id_v = (pt.y - this->GetWidget<NWidgetBase>(NCLWW_MATRIX)->pos_y) / this->resize.step_height;
-
-				if (id_v >= this->vscroll.GetCapacity()) return; // click out of bounds
-				id_v += this->vscroll.GetPosition();
-
+				uint id_v = this->vscroll.GetScrolledRowFromWidget(pt.y, this, NCLWW_MATRIX);
 				if (id_v >= this->content.Length()) return; // click out of bounds
 
 				this->selected = *this->content.Get(id_v);

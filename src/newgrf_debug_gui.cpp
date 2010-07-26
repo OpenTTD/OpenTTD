@@ -423,9 +423,8 @@ struct NewGRFInspectWindow : Window {
 				if (nif->variables == NULL) return;
 
 				/* Get the line, make sure it's within the boundaries. */
-				int line = (pt.y - this->GetWidget<NWidgetBase>(NIW_MAINPANEL)->pos_y - TOP_OFFSET) / this->resize.step_height;
-				if (line >= this->vscroll.GetCapacity()) return;
-				line += this->vscroll.GetPosition();
+				int line = this->vscroll.GetScrolledRowFromWidget(pt.y, this, NIW_MAINPANEL, TOP_OFFSET);
+				if (line == INT_MAX) return;
 
 				/* Find the variable related to the line */
 				for (const NIVariable *niv = nif->variables; niv->name != NULL; niv++, line--) {

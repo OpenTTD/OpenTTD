@@ -417,12 +417,7 @@ public:
 				break;
 
 			case GRP_WIDGET_LIST_GROUP: { // Matrix Group
-				uint16 id_g = (pt.y - this->GetWidget<NWidgetBase>(GRP_WIDGET_LIST_GROUP)->pos_y) / (int)this->tiny_step_height;
-
-				if (id_g >= this->vscroll2.GetCapacity()) return;
-
-				id_g += this->vscroll2.GetPosition();
-
+				uint id_g = this->vscroll2.GetScrolledRowFromWidget(pt.y, this, GRP_WIDGET_LIST_GROUP, 0, this->tiny_step_height);
 				if (id_g >= this->groups.Length()) return;
 
 				this->group_sel = this->groups[id_g]->index;
@@ -433,11 +428,7 @@ public:
 			}
 
 			case GRP_WIDGET_LIST_VEHICLE: { // Matrix Vehicle
-				uint32 id_v = (pt.y - this->GetWidget<NWidgetBase>(GRP_WIDGET_LIST_VEHICLE)->pos_y) / (int)this->resize.step_height;
-				if (id_v >= this->vscroll.GetCapacity()) return; // click out of bounds
-
-				id_v += this->vscroll.GetPosition();
-
+				uint id_v = this->vscroll.GetScrolledRowFromWidget(pt.y, this, GRP_WIDGET_LIST_VEHICLE);
 				if (id_v >= this->vehicles.Length()) return; // click out of list bound
 
 				const Vehicle *v = this->vehicles[id_v];
@@ -511,17 +502,11 @@ public:
 				break;
 
 			case GRP_WIDGET_LIST_GROUP: { // Maxtrix group
-				uint16 id_g = (pt.y - this->GetWidget<NWidgetBase>(GRP_WIDGET_LIST_GROUP)->pos_y) / (int)this->tiny_step_height;
 				const VehicleID vindex = this->vehicle_sel;
-
 				this->vehicle_sel = INVALID_VEHICLE;
-
 				this->SetDirty();
 
-				if (id_g >= this->vscroll2.GetCapacity()) return;
-
-				id_g += this->vscroll2.GetPosition();
-
+				uint id_g = this->vscroll2.GetScrolledRowFromWidget(pt.y, this, GRP_WIDGET_LIST_GROUP, 0, this->tiny_step_height);
 				if (id_g >= this->groups.Length()) return;
 
 				DoCommandP(0, this->groups[id_g]->index, vindex, CMD_ADD_VEHICLE_GROUP | CMD_MSG(STR_ERROR_GROUP_CAN_T_ADD_VEHICLE));
@@ -529,17 +514,11 @@ public:
 			}
 
 			case GRP_WIDGET_LIST_VEHICLE: { // Maxtrix vehicle
-				uint32 id_v = (pt.y - this->GetWidget<NWidgetBase>(GRP_WIDGET_LIST_VEHICLE)->pos_y) / (int)this->resize.step_height;
 				const VehicleID vindex = this->vehicle_sel;
-
 				this->vehicle_sel = INVALID_VEHICLE;
-
 				this->SetDirty();
 
-				if (id_v >= this->vscroll.GetCapacity()) return; // click out of bounds
-
-				id_v += this->vscroll.GetPosition();
-
+				uint id_v = this->vscroll.GetScrolledRowFromWidget(pt.y, this, GRP_WIDGET_LIST_VEHICLE);
 				if (id_v >= this->vehicles.Length()) return; // click out of list bound
 
 				const Vehicle *v = this->vehicles[id_v];

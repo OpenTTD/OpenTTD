@@ -459,9 +459,8 @@ public:
 		switch (widget) {
 			case DPIW_MATRIX_WIDGET: {
 				const IndustrySpec *indsp;
-				int y = (pt.y - this->GetWidget<NWidgetBase>(DPIW_MATRIX_WIDGET)->pos_y) / this->resize.step_height + this->vscroll.GetPosition();
-
-				if (y >= 0 && y < count) { // Is it within the boundaries of available data?
+				int y = this->vscroll.GetScrolledRowFromWidget(pt.y, this, DPIW_MATRIX_WIDGET);
+				if (y < this->count) { // Is it within the boundaries of available data?
 					this->selected_index = y;
 					this->selected_type = this->index[y];
 					indsp = (this->selected_type == INVALID_INDUSTRYTYPE) ? NULL : GetIndustrySpec(this->selected_type);
@@ -1194,11 +1193,7 @@ public:
 				break;
 
 			case IDW_INDUSTRY_LIST: {
-				int y = (pt.y - this->GetWidget<NWidgetBase>(widget)->pos_y - WD_FRAMERECT_TOP) / this->resize.step_height;
-				uint16 p;
-
-				if (!IsInsideMM(y, 0, this->vscroll.GetCapacity())) return;
-				p = y + this->vscroll.GetPosition();
+				uint p = this->vscroll.GetScrolledRowFromWidget(pt.y, this, IDW_INDUSTRY_LIST, WD_FRAMERECT_TOP);
 				if (p < this->industries.Length()) {
 					if (_ctrl_pressed) {
 						ShowExtraViewPortWindow(this->industries[p]->location.tile);

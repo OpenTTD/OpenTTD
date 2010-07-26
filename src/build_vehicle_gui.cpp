@@ -1055,7 +1055,7 @@ struct BuildVehicleWindow : Window {
 				break;
 
 			case BUILD_VEHICLE_WIDGET_LIST: {
-				uint i = (pt.y - this->GetWidget<NWidgetBase>(BUILD_VEHICLE_WIDGET_LIST)->pos_y) / this->resize.step_height + this->vscroll.GetPosition();
+				uint i = this->vscroll.GetScrolledRowFromWidget(pt.y, this, BUILD_VEHICLE_WIDGET_LIST);
 				size_t num_items = this->eng_list.Length();
 				this->sel_engine = (i < num_items) ? this->eng_list[i] : INVALID_ENGINE;
 				this->SetDirty();

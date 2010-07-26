@@ -528,11 +528,8 @@ struct RefitWindow : public Window {
 	{
 		switch (widget) {
 			case VRW_MATRIX: { // listbox
-				int y = pt.y - this->GetWidget<NWidgetBase>(VRW_MATRIX)->pos_y;
-				if (y >= 0) {
-					this->sel = (y / (int)this->resize.step_height) + this->vscroll.GetPosition();
-					this->InvalidateData(1);
-				}
+				this->sel = this->vscroll.GetScrolledRowFromWidget(pt.y, this, VRW_MATRIX);
+				this->InvalidateData(1);
 
 				if (click_count == 1) break;
 			}
@@ -1213,13 +1210,8 @@ public:
 				return;
 
 			case VLW_WIDGET_LIST: { // Matrix to show vehicles
-				uint32 id_v = (pt.y - this->GetWidget<NWidgetBase>(VLW_WIDGET_LIST)->pos_y) / this->resize.step_height;
 				const Vehicle *v;
-
-				if (id_v >= this->vscroll.GetCapacity()) return; // click out of bounds
-
-				id_v += this->vscroll.GetPosition();
-
+				uint id_v = this->vscroll.GetScrolledRowFromWidget(pt.y, this, VLW_WIDGET_LIST);
 				if (id_v >= this->vehicles.Length()) return; // click out of list bound
 
 				v = this->vehicles[id_v];

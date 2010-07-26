@@ -249,13 +249,10 @@ public:
 		switch (widget) {
 			default: break;
 			case BBSW_BRIDGE_LIST: {
-				uint i = ((int)pt.y - this->GetWidget<NWidgetBase>(BBSW_BRIDGE_LIST)->pos_y) / this->resize.step_height;
-				if (i < this->vscroll.GetCapacity()) {
-					i += this->vscroll.GetPosition();
-					if (i < this->bridges->Length()) {
-						this->BuildBridge(i);
-						delete this;
-					}
+				uint i = this->vscroll.GetScrolledRowFromWidget(pt.y, this, BBSW_BRIDGE_LIST);
+				if (i < this->bridges->Length()) {
+					this->BuildBridge(i);
+					delete this;
 				}
 			} break;
 

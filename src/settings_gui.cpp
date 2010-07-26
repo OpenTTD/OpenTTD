@@ -1550,11 +1550,8 @@ struct GameSettingsWindow : Window {
 	{
 		if (widget != SETTINGSEL_OPTIONSPANEL) return;
 
-		int y = pt.y - this->GetWidget<NWidgetBase>(widget)->pos_y - SETTINGTREE_TOP_OFFSET;  // Shift y coordinate
-		if (y < 0) return;  // Clicked above first entry
-
-		byte btn = this->vscroll.GetPosition() + y / this->resize.step_height;  // Compute which setting is selected
-		if (y % this->resize.step_height > this->resize.step_height - 2) return;  // Clicked too low at the setting
+		uint btn = this->vscroll.GetScrolledRowFromWidget(pt.y, this, SETTINGSEL_OPTIONSPANEL, SETTINGTREE_TOP_OFFSET - 1);
+		if (btn == INT_MAX) return;
 
 		uint cur_row = 0;
 		SettingEntry *pe = _settings_main_page.FindEntry(btn, &cur_row);

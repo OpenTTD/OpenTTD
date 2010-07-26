@@ -531,9 +531,8 @@ public:
 				break;
 
 			case SLWW_DRIVES_DIRECTORIES_LIST: { // Click the listbox
-				int y = (pt.y - this->GetWidget<NWidgetBase>(SLWW_DRIVES_DIRECTORIES_LIST)->pos_y - WD_FRAMERECT_TOP) / this->resize.step_height;
-
-				if (y < 0 || (y += this->vscroll.GetPosition()) >= this->vscroll.GetCount()) return;
+				int y = this->vscroll.GetScrolledRowFromWidget(pt.y, this, SLWW_DRIVES_DIRECTORIES_LIST, WD_FRAMERECT_TOP);
+				if (y == INT_MAX) return;
 
 				const FiosItem *file = _fios_items.Get(y);
 

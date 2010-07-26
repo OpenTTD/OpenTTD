@@ -443,25 +443,27 @@ public:
 
 			case RVW_WIDGET_LEFT_MATRIX:
 			case RVW_WIDGET_RIGHT_MATRIX: {
-				uint i = (pt.y - this->GetWidget<NWidgetBase>(RVW_WIDGET_LEFT_MATRIX)->pos_y) / this->resize.step_height;
-				uint16 click_scroll_pos = widget == RVW_WIDGET_LEFT_MATRIX ? this->vscroll.GetPosition() : this->vscroll2.GetPosition();
-				uint16 click_scroll_cap = widget == RVW_WIDGET_LEFT_MATRIX ? this->vscroll.GetCapacity() : this->vscroll2.GetCapacity();
-				byte click_side         = widget == RVW_WIDGET_LEFT_MATRIX ? 0 : 1;
-				size_t engine_count     = this->engines[click_side].Length();
-
-				if (i < click_scroll_cap) {
-					i += click_scroll_pos;
-					EngineID e = engine_count > i ? this->engines[click_side][i] : INVALID_ENGINE;
-					if (e == this->sel_engine[click_side]) break; // we clicked the one we already selected
-					this->sel_engine[click_side] = e;
-					if (click_side == 0) {
-						this->engines[1].ForceRebuild();
-						this->reset_sel_engine = true;
-					}
-					this->SetDirty();
-					}
-				break;
+				uint i;
+				byte click_side;
+				if (widget == RVW_WIDGET_LEFT_MATRIX) {
+					i = this->vscroll.GetScrolledRowFromWidget(pt.y, this, RVW_WIDGET_LEFT_MATRIX);
+					click_side = 0;
+				} else {
+					i = this->vscroll2.GetScrolledRowFromWidget(pt.y, this, RVW_WIDGET_RIGHT_MATRIX);
+					click_side = 1;
 				}
+				size_t engine_count = this->engines[click_side].Length();
+
+				EngineID e = engine_count > i ? this->engines[click_side][i] : INVALID_ENGINE;
+				if (e == this->sel_engine[click_side]) break; // we clicked the one we already selected
+				this->sel_engine[click_side] = e;
+				if (click_side == 0) {
+					this->engines[1].ForceRebuild();
+					this->reset_sel_engine = true;
+				}
+				this->SetDirty();
+				break;
+			}
 		}
 	}
 

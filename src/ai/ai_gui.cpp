@@ -156,7 +156,7 @@ struct AIListWindow : public Window {
 	{
 		switch (widget) {
 			case AIL_WIDGET_LIST: { // Select one of the AIs
-				int sel = (pt.y - this->GetWidget<NWidgetBase>(AIL_WIDGET_LIST)->pos_y) / this->line_height + this->vscroll.GetPosition() - 1;
+				int sel = this->vscroll.GetScrolledRowFromWidget(pt.y, this, AIL_WIDGET_LIST, 0, this->line_height) - 1;
 				if (sel < (int)this->ai_info_list->size()) {
 					this->selected = sel;
 					this->SetDirty();
@@ -597,7 +597,7 @@ struct AIConfigWindow : public Window {
 			}
 
 			case AIC_WIDGET_LIST: { // Select a slot
-				this->selected_slot = (CompanyID)((pt.y - this->GetWidget<NWidgetBase>(widget)->pos_y) / this->line_height + this->vscroll.GetPosition());
+				this->selected_slot = (CompanyID)this->vscroll.GetScrolledRowFromWidget(pt.y, this, widget, 0, this->line_height);
 				this->InvalidateData();
 				if (click_count > 1 && this->selected_slot != INVALID_COMPANY) ShowAIListWindow((CompanyID)this->selected_slot);
 				break;

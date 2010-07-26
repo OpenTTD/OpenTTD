@@ -1327,10 +1327,7 @@ public:
 
 			case BRSW_NEWST_LIST: {
 				const StationSpec *statspec;
-				int y = (pt.y - this->GetWidget<NWidgetBase>(BRSW_NEWST_LIST)->pos_y) / this->line_height;
-
-				if (y >= this->vscroll.GetCapacity()) return;
-				y += this->vscroll.GetPosition();
+				int y = this->vscroll.GetScrolledRowFromWidget(pt.y, this, BRSW_NEWST_LIST, 0, this->line_height);
 				if (y >= _railstation.station_count) return;
 
 				/* Check station availability callback */

@@ -148,11 +148,8 @@ struct SignListWindow : Window, SignList {
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		if (widget == SLW_LIST) {
-			uint id_v = (pt.y - this->GetWidget<NWidgetBase>(SLW_LIST)->pos_y - WD_FRAMERECT_TOP) / this->resize.step_height;
-
-			if (id_v >= this->vscroll.GetCapacity()) return;
-			id_v += this->vscroll.GetPosition();
-			if (id_v >= this->vscroll.GetCount()) return;
+			uint id_v = this->vscroll.GetScrolledRowFromWidget(pt.y, this, SLW_LIST, WD_FRAMERECT_TOP);
+			if (id_v == INT_MAX) return;
 
 			const Sign *si = this->signs[id_v];
 			ScrollMainWindowToTile(TileVirtXY(si->x, si->y));

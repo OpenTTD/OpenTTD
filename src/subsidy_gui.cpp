@@ -41,11 +41,7 @@ struct SubsidyListWindow : Window {
 	{
 		if (widget != SLW_PANEL) return;
 
-		int y = (pt.y - this->GetWidget<NWidgetBase>(SLW_PANEL)->pos_y - WD_FRAMERECT_TOP) / this->resize.step_height;
-		if (!IsInsideMM(y, 0, this->vscroll.GetCapacity())) return;
-
-		y += this->vscroll.GetPosition();
-
+		int y = this->vscroll.GetScrolledRowFromWidget(pt.y, this, SLW_PANEL, WD_FRAMERECT_TOP);
 		int num = 0;
 		const Subsidy *s;
 		FOR_ALL_SUBSIDIES(s) {

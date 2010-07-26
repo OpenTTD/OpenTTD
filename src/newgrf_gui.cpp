@@ -482,8 +482,7 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 			}
 
 			case SNGRFS_FILE_LIST: { // Select an active GRF.
-				NWidgetBase *nw = this->GetWidget<NWidgetBase>(SNGRFS_FILE_LIST);
-				uint i = (pt.y - nw->pos_y) / nw->resize_y + this->vscroll.GetPosition();
+				uint i = this->vscroll.GetScrolledRowFromWidget(pt.y, this, SNGRFS_FILE_LIST);
 
 				GRFConfig *c;
 				for (c = this->actives; c != NULL && i > 0; c = c->next, i--) {}
@@ -526,8 +525,7 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 			}
 
 			case SNGRFS_AVAIL_LIST: { // Select a non-active GRF.
-				NWidgetBase *nw = this->GetWidget<NWidgetBase>(SNGRFS_AVAIL_LIST);
-				uint i = (pt.y - nw->pos_y) / nw->resize_y + this->vscroll2.GetPosition();
+				uint i = this->vscroll2.GetScrolledRowFromWidget(pt.y, this, SNGRFS_AVAIL_LIST);
 				this->active_sel = NULL;
 				if (i < this->avails.Length()) {
 					this->avail_sel = this->avails[i];
