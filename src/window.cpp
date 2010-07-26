@@ -82,6 +82,22 @@ WindowDesc::~WindowDesc()
 }
 
 /**
+ * Compute the row of a widget that a user clicked in.
+ * @param clickpos    Vertical position of the mouse click.
+ * @param widget      Widget number of the widget clicked in.
+ * @param padding     Amount of empty space between the widget edge and the top of the first row.
+ * @param line_height Height of a single row.
+ * @return Row number clicked at. If clicked at a wrong position, #INT_MAX is returned.
+ * @note The widget does not know where a list printed at the widget ends, so below a list is not a wrong position.
+ */
+int Window::GetRowFromWidget(int clickpos, int widget, int padding, int line_height) const
+{
+	const NWidgetBase *wid = this->GetWidget<NWidgetBase>(widget);
+	if (clickpos < (int)wid->pos_y + padding) return INT_MAX;
+	return (clickpos - (int)wid->pos_y - padding) / line_height;
+}
+
+/**
  * Set capacity of visible elements from the size and resize properties of a widget.
  * @param w       Window.
  * @param widget  Widget with size and resize properties.

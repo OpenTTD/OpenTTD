@@ -528,6 +528,7 @@ public:
 	bool SetFocusedWidget(byte widget_index);
 
 	void HandleButtonClick(byte widget);
+	int GetRowFromWidget(int clickpos, int widget, int padding, int line_height) const;
 
 	void RaiseButtons(bool autoraise = false);
 	void CDECL SetWidgetsDisabledState(bool disab_stat, int widgets, ...);

@@ -401,7 +401,7 @@ struct MusicTrackSelectionWindow : public Window {
 	{
 		switch (widget) {
 			case MTSW_LIST_LEFT: { // add to playlist
-				int y = (pt.y - this->GetWidget<NWidgetBase>(widget)->pos_y) / FONT_HEIGHT_SMALL;
+				int y = this->GetRowFromWidget(pt.y, widget, 0, FONT_HEIGHT_SMALL);
 
 				if (msf.playlist < 4) return;
 				if (!IsInsideMM(y, 0, BaseMusic::GetUsedSet()->num_available)) return;
@@ -425,7 +425,7 @@ struct MusicTrackSelectionWindow : public Window {
 			} break;
 
 			case MTSW_LIST_RIGHT: { // remove from playlist
-				int y = (pt.y - this->GetWidget<NWidgetBase>(widget)->pos_y) / FONT_HEIGHT_SMALL;
+				int y = this->GetRowFromWidget(pt.y, widget, 0, FONT_HEIGHT_SMALL);
 
 				if (msf.playlist < 4) return;
 				if (!IsInsideMM(y, 0, NUM_SONGS_PLAYLIST)) return;
