@@ -305,6 +305,8 @@ public:
 			this->SetPosition(position - this->GetCapacity() + 1);
 		}
 	}
+
+	int GetScrolledRowFromWidget(int clickpos, const Window * const w, int widget, int padding = 0, int line_height = -1) const;
 };
 
 /**
@@ -528,7 +530,7 @@ public:
 	bool SetFocusedWidget(byte widget_index);
 
 	void HandleButtonClick(byte widget);
-	int GetRowFromWidget(int clickpos, int widget, int padding, int line_height) const;
+	int GetRowFromWidget(int clickpos, int widget, int padding, int line_height = -1) const;
 
 	void RaiseButtons(bool autoraise = false);
 	void CDECL SetWidgetsDisabledState(bool disab_stat, int widgets, ...);

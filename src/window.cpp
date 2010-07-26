@@ -86,15 +86,31 @@ WindowDesc::~WindowDesc()
  * @param clickpos    Vertical position of the mouse click.
  * @param widget      Widget number of the widget clicked in.
  * @param padding     Amount of empty space between the widget edge and the top of the first row.
- * @param line_height Height of a single row.
+ * @param line_height Height of a single row. A negative value means using the vertical resize step of the widget.
  * @return Row number clicked at. If clicked at a wrong position, #INT_MAX is returned.
  * @note The widget does not know where a list printed at the widget ends, so below a list is not a wrong position.
  */
 int Window::GetRowFromWidget(int clickpos, int widget, int padding, int line_height) const
 {
 	const NWidgetBase *wid = this->GetWidget<NWidgetBase>(widget);
+	if (line_height < 0) line_height = wid->resize_y;
 	if (clickpos < (int)wid->pos_y + padding) return INT_MAX;
 	return (clickpos - (int)wid->pos_y - padding) / line_height;
+}
+
+/**
+ * Compute the row of a scrolled widget that a user clicked in.
+ * @param clickpos    Vertical position of the mouse click (without taking scrolling into account).
+ * @param widget      Widget number of the widget clicked in.
+ * @param padding     Amount of empty space between the widget edge and the top of the first row. Default value is \c 0.
+ * @param line_height Height of a single row. A negative value means using the vertical resize step of the widget.
+ * @return Row number clicked at. If clicked at a wrong position, #INT_MAX is returned.
+ */
+int Scrollbar::GetScrolledRowFromWidget(int clickpos, const Window * const w, int widget, int padding, int line_height) const
+{
+	uint pos = w->GetRowFromWidget(clickpos, widget, padding, line_height);
+	if (pos != INT_MAX) pos += this->GetPosition();
+	return (pos >= this->GetCount()) ? INT_MAX : pos;
 }
 
 /**
