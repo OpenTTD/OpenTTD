@@ -2341,37 +2341,55 @@ const byte _town_action_costs[TACT_COUNT] = {
 	2, 4, 9, 35, 48, 53, 117, 175
 };
 
-static void TownActionAdvertiseSmall(Town *t)
+static CommandCost TownActionAdvertiseSmall(Town *t, DoCommandFlag flags)
 {
-	ModifyStationRatingAround(t->xy, _current_company, 0x40, 10);
+	if (flags & DC_EXEC) {
+		ModifyStationRatingAround(t->xy, _current_company, 0x40, 10);
+	}
+	return CommandCost();
 }
 
-static void TownActionAdvertiseMedium(Town *t)
+static CommandCost TownActionAdvertiseMedium(Town *t, DoCommandFlag flags)
 {
-	ModifyStationRatingAround(t->xy, _current_company, 0x70, 15);
+	if (flags & DC_EXEC) {
+		ModifyStationRatingAround(t->xy, _current_company, 0x70, 15);
+	}
+	return CommandCost();
 }
 
-static void TownActionAdvertiseLarge(Town *t)
+static CommandCost TownActionAdvertiseLarge(Town *t, DoCommandFlag flags)
 {
-	ModifyStationRatingAround(t->xy, _current_company, 0xA0, 20);
+	if (flags & DC_EXEC) {
+		ModifyStationRatingAround(t->xy, _current_company, 0xA0, 20);
+	}
+	return CommandCost();
 }
 
-static void TownActionRoadRebuild(Town *t)
+static CommandCost TownActionRoadRebuild(Town *t, DoCommandFlag flags)
 {
-	t->road_build_months = 6;
+	if (flags & DC_EXEC) {
+		t->road_build_months = 6;
 
-	char company_name[MAX_LENGTH_COMPANY_NAME_BYTES];
-	SetDParam(0, _current_company);
-	GetString(company_name, STR_COMPANY_NAME, lastof(company_name));
+		char company_name[MAX_LENGTH_COMPANY_NAME_BYTES];
+		SetDParam(0, _current_company);
+		GetString(company_name, STR_COMPANY_NAME, lastof(company_name));
 
-	char *cn = strdup(company_name);
-	SetDParam(0, t->index);
-	SetDParamStr(1, cn);
+		char *cn = strdup(company_name);
+		SetDParam(0, t->index);
+		SetDParamStr(1, cn);
 
-	AddNewsItem(STR_NEWS_ROAD_REBUILDING, NS_GENERAL, NR_TOWN, t->index, NR_NONE, UINT32_MAX, cn);
+		AddNewsItem(STR_NEWS_ROAD_REBUILDING, NS_GENERAL, NR_TOWN, t->index, NR_NONE, UINT32_MAX, cn);
+	}
+	return CommandCost();
 }
 
-static bool DoBuildStatueOfCompany(TileIndex tile, TownID town_id)
+/**
+ * Search callback function for TownActionBuildStatue.
+ * @param tile Tile on which to perform the search.
+ * @param user_data Unused.
+ * @return Result of the test.
+ */
+static bool SearchTileForStatue(TileIndex tile, void *user_data)
 {
 	/* Statues can be build on slopes, just like houses. Only the steep slopes is a no go. */
 	if (IsSteepSlope(GetTileSlope(tile, NULL))) return false;
@@ -2385,96 +2403,98 @@ static bool DoBuildStatueOfCompany(TileIndex tile, TownID town_id)
 	}
 
 	Backup<CompanyByte> cur_company(_current_company, OWNER_NONE, FILE_LINE);
-	CommandCost r = DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
+	CommandCost r = DoCommand(tile, 0, 0, DC_NONE, CMD_LANDSCAPE_CLEAR);
 	cur_company.Restore();
 
 	if (r.Failed()) return false;
 
-	MakeStatue(tile, _current_company, town_id);
-	MarkTileDirtyByTile(tile);
-
 	return true;
-}
-
-/**
- * Search callback function for TownActionBuildStatue
- * @param tile on which to perform the search
- * @param user_data The town_id for which we want a statue
- * @return the result of the test
- */
-static bool SearchTileForStatue(TileIndex tile, void *user_data)
-{
-	TownID *town_id = (TownID *)user_data;
-	return DoBuildStatueOfCompany(tile, *town_id);
 }
 
 /**
  * Perform a 9x9 tiles circular search from the center of the town
  * in order to find a free tile to place a statue
  * @param t town to search in
+ * @param flags Used to check if the statue must be built or not.
+ * @return Empty cost or an error.
  */
-static void TownActionBuildStatue(Town *t)
+static CommandCost TownActionBuildStatue(Town *t, DoCommandFlag flags)
 {
 	TileIndex tile = t->xy;
-
-	if (CircularTileSearch(&tile, 9, SearchTileForStatue, &t->index)) {
-		SetBit(t->statues, _current_company); // Once found and built, "inform" the Town
+	if (CircularTileSearch(&tile, 9, SearchTileForStatue, NULL)) {
+		if (flags & DC_EXEC) {
+			DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
+			MakeStatue(tile, _current_company, t->index);
+			SetBit(t->statues, _current_company); // Once found and built, "inform" the Town.
+			MarkTileDirtyByTile(tile);
+		}
+		return CommandCost();
 	}
+	return_cmd_error(STR_ERROR_STATUE_NO_SUITABLE_PLACE);
 }
 
-static void TownActionFundBuildings(Town *t)
+static CommandCost TownActionFundBuildings(Town *t, DoCommandFlag flags)
 {
-	/* Build next tick */
-	t->grow_counter = 1;
-	/* If we were not already growing */
-	SetBit(t->flags, TOWN_IS_FUNDED);
-	/* And grow for 3 months */
-	t->fund_buildings_months = 3;
+	if (flags & DC_EXEC) {
+		/* Build next tick */
+		t->grow_counter = 1;
+		/* If we were not already growing */
+		SetBit(t->flags, TOWN_IS_FUNDED);
+		/* And grow for 3 months */
+		t->fund_buildings_months = 3;
+	}
+	return CommandCost();
 }
 
-static void TownActionBuyRights(Town *t)
+static CommandCost TownActionBuyRights(Town *t, DoCommandFlag flags)
 {
 	/* Check if it's allowed to by the rights */
-	if (!_settings_game.economy.exclusive_rights) return;
+	if (!_settings_game.economy.exclusive_rights) return CMD_ERROR;
 
-	t->exclusive_counter = 12;
-	t->exclusivity = _current_company;
+	if (flags & DC_EXEC) {
+		t->exclusive_counter = 12;
+		t->exclusivity = _current_company;
 
-	ModifyStationRatingAround(t->xy, _current_company, 130, 17);
-}
-
-static void TownActionBribe(Town *t)
-{
-	if (Chance16(1, 14)) {
-		/* set as unwanted for 6 months */
-		t->unwanted[_current_company] = 6;
-
-		/* set all close by station ratings to 0 */
-		Station *st;
-		FOR_ALL_STATIONS(st) {
-			if (st->town == t && st->owner == _current_company) {
-				for (CargoID i = 0; i < NUM_CARGO; i++) st->goods[i].rating = 0;
-			}
-		}
-
-		/* only show errormessage to the executing player. All errors are handled command.c
-		 * but this is special, because it can only 'fail' on a DC_EXEC */
-		if (IsLocalCompany()) ShowErrorMessage(STR_ERROR_BRIBE_FAILED, STR_ERROR_BRIBE_FAILED_2, WL_INFO);
-
-		/* decrease by a lot!
-		 * ChangeTownRating is only for stuff in demolishing. Bribe failure should
-		 * be independent of any cheat settings
-		 */
-		if (t->ratings[_current_company] > RATING_BRIBE_DOWN_TO) {
-			t->ratings[_current_company] = RATING_BRIBE_DOWN_TO;
-			SetWindowDirty(WC_TOWN_AUTHORITY, t->index);
-		}
-	} else {
-		ChangeTownRating(t, RATING_BRIBE_UP_STEP, RATING_BRIBE_MAXIMUM, DC_EXEC);
+		ModifyStationRatingAround(t->xy, _current_company, 130, 17);
 	}
+	return CommandCost();
 }
 
-typedef void TownActionProc(Town *t);
+static CommandCost TownActionBribe(Town *t, DoCommandFlag flags)
+{
+	if (flags & DC_EXEC) {
+		if (Chance16(1, 14)) {
+			/* set as unwanted for 6 months */
+			t->unwanted[_current_company] = 6;
+
+			/* set all close by station ratings to 0 */
+			Station *st;
+			FOR_ALL_STATIONS(st) {
+				if (st->town == t && st->owner == _current_company) {
+					for (CargoID i = 0; i < NUM_CARGO; i++) st->goods[i].rating = 0;
+				}
+			}
+
+			/* only show errormessage to the executing player. All errors are handled command.c
+			 * but this is special, because it can only 'fail' on a DC_EXEC */
+			if (IsLocalCompany()) ShowErrorMessage(STR_ERROR_BRIBE_FAILED, STR_ERROR_BRIBE_FAILED_2, WL_INFO);
+
+			/* decrease by a lot!
+			 * ChangeTownRating is only for stuff in demolishing. Bribe failure should
+			 * be independent of any cheat settings
+			 */
+			if (t->ratings[_current_company] > RATING_BRIBE_DOWN_TO) {
+				t->ratings[_current_company] = RATING_BRIBE_DOWN_TO;
+				SetWindowDirty(WC_TOWN_AUTHORITY, t->index);
+			}
+		} else {
+			ChangeTownRating(t, RATING_BRIBE_UP_STEP, RATING_BRIBE_MAXIMUM, DC_EXEC);
+		}
+	}
+	return CommandCost();
+}
+
+typedef CommandCost TownActionProc(Town *t, DoCommandFlag flags);
 static TownActionProc * const _town_action_proc[] = {
 	TownActionAdvertiseSmall,
 	TownActionAdvertiseMedium,
@@ -2547,8 +2567,10 @@ CommandCost CmdDoTownAction(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 	CommandCost cost(EXPENSES_OTHER, _price[PR_TOWN_ACTION] * _town_action_costs[p2] >> 8);
 
+	CommandCost ret = _town_action_proc[p2](t, flags);
+	if (ret.Failed()) return ret;
+
 	if (flags & DC_EXEC) {
-		_town_action_proc[p2](t);
 		SetWindowDirty(WC_TOWN_AUTHORITY, p1);
 	}
 
