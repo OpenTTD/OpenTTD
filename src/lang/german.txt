@@ -2541,7 +2541,7 @@ STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Keine -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Bereits vergebene Subventionen:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} von {STRING} nach {STRING}{YELLOW} ({COMPANY}{YELLOW}, bis {DATE_SHORT})
-STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klick auf Dienstleistung scrollt Hauptansicht zur Industrie/Stadt. Strg+Klick öffnet neue Zusatzansicht bei der Industrie/Stadt
+STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klick auf Dienstleistung scrollt Hauptansicht zur Industrie/Stadt. Strg+Klick öffnet neue Zusatzansicht zentriert auf die Industrie/Stadt
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Stationsnamen - Klick auf den Namen scrollt Hauptansicht zur Station. Strg+Klick öffnet neue Zusatzansicht bei der Station
@@ -2675,13 +2675,13 @@ STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Keine
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% transportiert)
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% transportiert)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Industrienamen - Klick auf den Namen scrollt Hauptansicht zur Industrie. Strg+Klick öffnet neue Zusatzansicht bei der Industrie
+STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Industrienamen - Klick auf den Namen scrollt Hauptansicht zur Industrie. Strg+Klick öffnet neue Zusatzansicht zentriert auf die Industrie
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Produktion im letzten Monat:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% befördert)
-STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Hauptansicht zur Industrie scrollen. Strg+Klick öffnet neue Zusatzansicht bei der Industrie
+STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Hauptansicht zur Industrie scrollen. Strg+Klick öffnet neue Zusatzansicht zentriert auf die Industrie
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Benötigt: {YELLOW}{STRING}{STRING}

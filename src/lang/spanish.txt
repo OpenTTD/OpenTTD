@@ -2063,7 +2063,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Planta �
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Generación de terrenos
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Coloca zonas rocosas sobre el paisaje
 STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Colocar faro
-STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Define área désertica.{}Pulsa y mantén Ctrl para quitarla
+STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Define área désertica.{}Mantén pulsado Ctrl para quitarla
 STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Colocar transmisor
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Aumentar el tamaño del bloque de terreno a bajar/subir
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Reducir tamaño del bloque de terreno a bajar/subir
@@ -2545,7 +2545,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Haga cli
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nombres de estación - Click sobre un nombre para centrar vista en la estación. Ctrl+Click abre un punto de vista en dicha posición
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Mantén pulsado Ctrl para seleccionar varios elementos
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Mantén pulsado Ctrl para seleccionar más de un elemento
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Estaciones
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
@@ -2824,7 +2824,7 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} vehículo {P "" s}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trenes - arrastrar vehículo con click izquierdo para añadir/retirar del tren, click derecho para mostrar información del vehículo, CTRL+click para mostrar información del tren
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trenes - arrastrar vehículo con click izquierdo para añadir/retirar del tren, click derecho para mostrar información. Mantén pulsado Ctrl para usar estos comandos con el resto del tren
 STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Vehículos - Click derecho en vehículo para información
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Barcos - Click derecho en barco para información
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Aeronave - Click derecho en la aeronave para información
@@ -3449,6 +3449,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... no h
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}El pueblo no construirá carreteras. Puedes activar la función de construcción de carreteras en Opciones Avanzadas->Economía->Pueblos.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Trabajos de carretera en progreso
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}No se puede borrar este pueblo...{}Quedan estaciones o depósitos relacionados con la ciudad, o una propiedad del pueblo no puede ser retirada
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... no existe un lugar apropiado para una estatua en el centro de este pueblo
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... demasiadas industrias
@@ -3498,7 +3499,7 @@ STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}No se pu
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}No se puede quitar estación de tranvía de pasajeros...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}No se puede quitar estación de tranvía de carga...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Primero debe retirar la parada
-STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}...no hay ninguna estación aquí
+STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... no hay ninguna estación aquí
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Primero debe demolerse estación de trenes
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Primero debe demolerse estación de autobús
@@ -3564,8 +3565,8 @@ STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}No se pu
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}No se pueden retirar raíles aquí...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}No se pueden retirar señales de aquí...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}No se pueden convertir las señales aquí...
-STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}...no hay ferrocarril
-STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}...no hay señales
+STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... no hay ferrocarril
+STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... no hay señales
 
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}No se puede convertir tipo de raíl aquí...
 
@@ -3576,8 +3577,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}No se pu
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}No se puede construir un tranvía aquí...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}No se puede retirar carretera de aquí...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}No se puede retirar tranvía de aquí...
-STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}...no hay carretera
-STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}...no hay tranvía
+STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... no hay carretera
+STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... no hay tranvía
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}No se pueden construir canales aquí...

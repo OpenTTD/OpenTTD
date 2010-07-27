@@ -3497,7 +3497,7 @@ STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Kuorma-a
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Ei voi poistaa asemaa.
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Ei voi poistaa rahtiasemaa.
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Pysäkki täytyy poistaa ensin
-STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}...tässä ei ole asemaa
+STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... tässä ei ole asemaa
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Rautatieasema pitää tuhota ensin.
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Linja-autoasema pitää purkaa ensin.
@@ -3563,8 +3563,8 @@ STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Rautatie
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Rautatietä ei voi poistaa.
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Opastinta ei voi poistaa tästä.
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Ei voi muuntaa opastimia tässä...
-STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}...tässä ei ole rautatietä
-STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}...tässä ei ole opastimia
+STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... tässä ei ole rautatietä
+STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... tässä ei ole opastimia
 
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Raidetyyppiä ei voi muuntaa...
 
@@ -3575,8 +3575,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Tietä e
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Tähän ei voi rakentaa raitiotietä.
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Tietä ei voi poistaa.
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Tästä ei voi poistaa raitiotietä.
-STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}...tässä ei ole tietä
-STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}...tässä ei ole raitiotietä
+STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... tässä ei ole tietä
+STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... tässä ei ole raitiotietä
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Kanaalia ei voi rakentaa tähän...

@@ -2116,6 +2116,17 @@ STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Probeer
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Bouw
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Betaal
 
+# Industry cargoes window
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Industrie keten voor {STRING} industrie
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Industrie keten voor {STRING} vracht
+STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Producerende industrieën
+STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Accepterende industrieën
+STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Huizen
+STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Klik op de industrie om de leveranciers en klanten te zien
+STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Klik op de vracht om de leveranciers en klanten te zien
+STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Toon keten
+STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Toon vracht leverende en accepterende industrieën
+
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Landinformatie
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Sloopkosten: {LTBLUE}niet mogelijk

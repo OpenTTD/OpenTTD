@@ -2118,6 +2118,17 @@ STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Esegui p
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Costruisci
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Finanzia
 
+# Industry cargoes window
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Catena di distribuzione di {G un un' una} {STRING}
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Catena di distribuzione {G del dell' della} {STRING}
+STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Produttori
+STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Consumatori
+STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Case
+STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Fare clic sull'industria per visualizzarne fornitori e clienti
+STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Fare clic sul carico per visualizzarne fornitori e clienti
+STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Catena distributiva
+STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Mostra la catena di industrie fornitrici e clienti
+
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Informazioni sull'area di terreno
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Costo di demolizione: {LTBLUE}N/A
