@@ -1417,6 +1417,10 @@ CommandCost CmdConvertRail(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 					break;
 				case MP_ROAD:
 					if (!IsLevelCrossing(tile)) continue;
+					if (RailNoLevelCrossings(totype)) {
+						error.MakeError(STR_ERROR_CROSSING_DISALLOWED);
+						continue;
+					}
 					break;
 				case MP_TUNNELBRIDGE:
 					if (GetTunnelBridgeTransportType(tile) != TRANSPORT_RAIL) continue;
