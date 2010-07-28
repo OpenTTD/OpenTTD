@@ -72,7 +72,7 @@
  *   10.0  2030
  *   11.0  2033
  *   11.1  2041
- *   12,1  2046
+ *   12.1  2046
  *   13.1  2080   0.4.0, 0.4.0.1
  *   14.0  2441
  *   15.0  2499
@@ -352,9 +352,14 @@ static void SlNullPointers()
 	assert(_sl.action == SLA_NULL);
 }
 
-/** Error handler, calls longjmp to simulate an exception.
- * @todo this was used to have a central place to handle errors, but it is
- * pretty ugly, and seriously interferes with any multithreaded approaches */
+/**
+ * Error handler. Sets everything up to show an error message and to clean
+ * up the mess of a partial savegame load.
+ * @param string The translatable error message to show.
+ * @param extra_msg An extra error message coming from one of the APIs.
+ * @note This function does never return as it throws an exception to
+ *       break out of all the saveload code.
+ */
 static void NORETURN SlError(StringID string, const char *extra_msg = NULL)
 {
 	/* Distinguish between loading into _load_check_data vs. normal save/load. */
@@ -375,12 +380,13 @@ static void NORETURN SlError(StringID string, const char *extra_msg = NULL)
 	throw std::exception();
 }
 
-typedef void (*AsyncSaveFinishProc)();
-static AsyncSaveFinishProc _async_save_finish = NULL;
-static ThreadObject *_save_thread;
+typedef void (*AsyncSaveFinishProc)();                ///< Callback for when the savegame loading is finished.
+static AsyncSaveFinishProc _async_save_finish = NULL; ///< Callback to call when the savegame loading is finished.
+static ThreadObject *_save_thread;                    ///< The thread we're using to compress and write a savegame
 
 /**
  * Called by save thread to tell we finished saving.
+ * @param proc The callback to call when saving is done.
  */
 static void SetAsyncSaveFinish(AsyncSaveFinishProc proc)
 {
@@ -421,7 +427,10 @@ static void SlReadFill()
 	_sl.offs_base += len;
 }
 
-static inline size_t SlGetOffs() {return _sl.offs_base - (_sl.bufe - _sl.bufp);}
+static inline size_t SlGetOffs()
+{
+	return _sl.offs_base - (_sl.bufe - _sl.bufp);
+}
 
 /** Flush the output buffer by writing to disk with the given reader.
  * If the buffer pointer has not yet been set up, set it up now. Usually
@@ -581,17 +590,37 @@ static inline uint SlGetGammaLength(size_t i)
 	return 1 + (i >= (1 << 7)) + (i >= (1 << 14)) + (i >= (1 << 21));
 }
 
-static inline uint SlReadSparseIndex() {return SlReadSimpleGamma();}
-static inline void SlWriteSparseIndex(uint index) {SlWriteSimpleGamma(index);}
+static inline uint SlReadSparseIndex()
+{
+	return SlReadSimpleGamma();
+}
 
-static inline uint SlReadArrayLength() {return SlReadSimpleGamma();}
-static inline void SlWriteArrayLength(size_t length) {SlWriteSimpleGamma(length);}
-static inline uint SlGetArrayLength(size_t length) {return SlGetGammaLength(length);}
+static inline void SlWriteSparseIndex(uint index)
+{
+	SlWriteSimpleGamma(index);
+}
 
-/** Return the size in bytes of a certain type of normal/atomic variable
+static inline uint SlReadArrayLength()
+{
+	return SlReadSimpleGamma();
+}
+
+static inline void SlWriteArrayLength(size_t length)
+{
+	SlWriteSimpleGamma(length);
+}
+
+static inline uint SlGetArrayLength(size_t length)
+{
+	return SlGetGammaLength(length);
+}
+
+/**
+ * Return the size in bytes of a certain type of normal/atomic variable
  * as it appears in memory. See VarTypes
  * @param conv VarType type of variable that is used for calculating the size
- * @return Return the size of this type in bytes */
+ * @return Return the size of this type in bytes
+ */
 static inline uint SlCalcConvMemLen(VarType conv)
 {
 	static const byte conv_mem_size[] = {1, 1, 1, 2, 2, 4, 4, 8, 8, 0};
@@ -610,10 +639,12 @@ static inline uint SlCalcConvMemLen(VarType conv)
 	}
 }
 
-/** Return the size in bytes of a certain type of normal/atomic variable
+/**
+ * Return the size in bytes of a certain type of normal/atomic variable
  * as it appears in a saved game. See VarTypes
  * @param conv VarType type of variable that is used for calculating the size
- * @return Return the size of this type in bytes */
+ * @return Return the size of this type in bytes
+ */
 static inline byte SlCalcConvFileLen(VarType conv)
 {
 	static const byte conv_file_size[] = {1, 1, 2, 2, 4, 4, 8, 8, 2};
@@ -623,7 +654,10 @@ static inline byte SlCalcConvFileLen(VarType conv)
 }
 
 /** Return the size in bytes of a reference (pointer) */
-static inline size_t SlCalcRefLen() {return CheckSavegameVersion(69) ? 2 : 4;}
+static inline size_t SlCalcRefLen()
+{
+	return CheckSavegameVersion(69) ? 2 : 4;
+}
 
 void SlSetArrayIndex(uint index)
 {
@@ -733,23 +767,28 @@ static void SlCopyBytes(void *ptr, size_t length)
 	switch (_sl.action) {
 		case SLA_LOAD_CHECK:
 		case SLA_LOAD:
-			for (; length != 0; length--) { *p++ = SlReadByteInternal(); }
+			for (; length != 0; length--) *p++ = SlReadByteInternal();
 			break;
 		case SLA_SAVE:
-			for (; length != 0; length--) { SlWriteByteInternal(*p++); }
+			for (; length != 0; length--) SlWriteByteInternal(*p++);
 			break;
 		default: NOT_REACHED();
 	}
 }
 
-/* Get the length of the current object */
-size_t SlGetFieldLength() {return _sl.obj_len;}
+/** Get the length of the current object */
+size_t SlGetFieldLength()
+{
+	return _sl.obj_len;
+}
 
-/** Return a signed-long version of the value of a setting
+/**
+ * Return a signed-long version of the value of a setting
  * @param ptr pointer to the variable
  * @param conv type of variable, can be a non-clean
  * type, eg one with other flags because it is parsed
- * @return returns the value of the pointer-setting */
+ * @return returns the value of the pointer-setting
+ */
 int64 ReadValue(const void *ptr, VarType conv)
 {
 	switch (GetVarMemType(conv)) {
@@ -767,11 +806,13 @@ int64 ReadValue(const void *ptr, VarType conv)
 	}
 }
 
-/** Write the value of a setting
+/**
+ * Write the value of a setting
  * @param ptr pointer to the variable
  * @param conv type of variable, can be a non-clean type, eg
  *             with other flags. It is parsed upon read
- * @param val the new value being given to the variable */
+ * @param val the new value being given to the variable
+ */
 void WriteValue(void *ptr, VarType conv, int64 val)
 {
 	switch (GetVarMemType(conv)) {
@@ -846,26 +887,30 @@ static void SlSaveLoadConv(void *ptr, VarType conv)
 	}
 }
 
-/** Calculate the net length of a string. This is in almost all cases
+/**
+ * Calculate the net length of a string. This is in almost all cases
  * just strlen(), but if the string is not properly terminated, we'll
  * resort to the maximum length of the buffer.
  * @param ptr pointer to the stringbuffer
  * @param length maximum length of the string (buffer). If -1 we don't care
  * about a maximum length, but take string length as it is.
- * @return return the net length of the string */
+ * @return return the net length of the string
+ */
 static inline size_t SlCalcNetStringLen(const char *ptr, size_t length)
 {
 	if (ptr == NULL) return 0;
 	return min(strlen(ptr), length - 1);
 }
 
-/** Calculate the gross length of the string that it
+/**
+ * Calculate the gross length of the string that it
  * will occupy in the savegame. This includes the real length, returned
  * by SlCalcNetStringLen and the length that the index will occupy.
  * @param ptr pointer to the stringbuffer
  * @param length maximum length of the string (buffer size, etc.)
  * @param conv type of data been used
- * @return return the gross length of the string */
+ * @return return the gross length of the string
+ */
 static inline size_t SlCalcStringLen(const void *ptr, size_t length, VarType conv)
 {
 	size_t len;
@@ -893,7 +938,8 @@ static inline size_t SlCalcStringLen(const void *ptr, size_t length, VarType con
  * Save/Load a string.
  * @param ptr the string being manipulated
  * @param length of the string (full length)
- * @param conv must be SLE_FILE_STRING */
+ * @param conv must be SLE_FILE_STRING
+ */
 static void SlString(void *ptr, size_t length, VarType conv)
 {
 	switch (_sl.action) {
@@ -1472,12 +1518,34 @@ static void SlLoadCheckChunk(const ChunkHandler *ch)
 	}
 }
 
-/* Stub Chunk handlers to only calculate length and do nothing else */
-static ChunkSaveLoadProc *_tmp_proc_1;
-static inline void SlStubSaveProc2(void *arg) {_tmp_proc_1();}
-static void SlStubSaveProc() {SlAutolength(SlStubSaveProc2, NULL);}
+/**
+ * Stub Chunk handlers to only calculate length and do nothing else.
+ * The intended chunk handler that should be called.
+ */
+static ChunkSaveLoadProc *_stub_save_proc;
 
-/** Save a chunk of data (eg. vehicles, stations, etc.). Each chunk is
+/**
+ * Stub Chunk handlers to only calculate length and do nothing else.
+ * Actually call the intended chunk handler.
+ * @param arg ignored parameter.
+ */
+static inline void SlStubSaveProc2(void *arg)
+{
+	_stub_save_proc();
+}
+
+/**
+ * Stub Chunk handlers to only calculate length and do nothing else.
+ * Call SlAutoLenth with our stub save proc that will eventually
+ * call the intended chunk handler.
+ */
+static void SlStubSaveProc()
+{
+	SlAutolength(SlStubSaveProc2, NULL);
+}
+
+/**
+ * Save a chunk of data (eg. vehicles, stations, etc.). Each chunk is
  * prefixed by an ID identifying it, followed by data, and terminator where appropiate
  * @param ch The chunkhandler that will be used for the operation
  */
@@ -1493,7 +1561,7 @@ static void SlSaveChunk(const ChunkHandler *ch)
 
 	if (ch->flags & CH_AUTO_LENGTH) {
 		/* Need to calculate the length. Solve that by calling SlAutoLength in the save_proc. */
-		_tmp_proc_1 = proc;
+		_stub_save_proc = proc;
 		proc = SlStubSaveProc;
 	}
 
@@ -1529,7 +1597,8 @@ static void SlSaveChunks()
 	SlWriteUint32(0);
 }
 
-/** Find the ChunkHandler that will be used for processing the found
+/**
+ * Find the ChunkHandler that will be used for processing the found
  * chunk in the savegame or in memory
  * @param id the chunk in question
  * @return returns the appropiate chunkhandler
@@ -1938,7 +2007,7 @@ void InitializeGame(uint size_x, uint size_y, bool reset_date, bool reset_settin
 extern bool AfterLoadGame();
 extern bool LoadOldSaveGame(const char *file);
 
-/** Small helper function to close the to be loaded savegame an signal error */
+/** Small helper function to close the to be loaded savegame and signal error */
 static inline SaveOrLoadResult AbortSaveLoad()
 {
 	if (_sl.fh != NULL) fclose(_sl.fh);
@@ -1947,9 +2016,11 @@ static inline SaveOrLoadResult AbortSaveLoad()
 	return SL_ERROR;
 }
 
-/** Update the gui accordingly when starting saving
+/**
+ * Update the gui accordingly when starting saving
  * and set locks on saveload. Also turn off fast-forward cause with that
- * saving takes Aaaaages */
+ * saving takes Aaaaages
+ */
 static void SaveFileStart()
 {
 	_ts.ff_state = _fast_forward;
@@ -1960,8 +2031,7 @@ static void SaveFileStart()
 	_ts.saveinprogress = true;
 }
 
-/** Update the gui accordingly when saving is done and release locks
- * on saveload */
+/** Update the gui accordingly when saving is done and release locks on saveload. */
 static void SaveFileDone()
 {
 	if (_game_mode != GM_MENU) _fast_forward = _ts.ff_state;
@@ -2039,8 +2109,7 @@ static SaveOrLoadResult SaveFileToDisk(bool threaded)
 		if (threaded) SetAsyncSaveFinish(SaveFileDone);
 
 		return SL_OK;
-	}
-	catch (...) {
+	} catch (...) {
 		AbortSaveLoad();
 		if (_sl.excpt_uninit != NULL) _sl.excpt_uninit();
 
@@ -2302,8 +2371,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb, boo
 		}
 
 		return SL_OK;
-	}
-	catch (...) {
+	} catch (...) {
 		AbortSaveLoad();
 
 		/* deinitialize compressor. */
