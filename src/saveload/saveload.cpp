@@ -422,44 +422,6 @@ static void SlReadFill()
 }
 
 static inline size_t SlGetOffs() {return _sl.offs_base - (_sl.bufe - _sl.bufp);}
-static inline uint SlReadArrayLength();
-
-/** Return the size in bytes of a certain type of normal/atomic variable
- * as it appears in memory. See VarTypes
- * @param conv VarType type of variable that is used for calculating the size
- * @return Return the size of this type in bytes */
-static inline uint SlCalcConvMemLen(VarType conv)
-{
-	static const byte conv_mem_size[] = {1, 1, 1, 2, 2, 4, 4, 8, 8, 0};
-	byte length = GB(conv, 4, 4);
-
-	switch (length << 4) {
-		case SLE_VAR_STRB:
-		case SLE_VAR_STRBQ:
-		case SLE_VAR_STR:
-		case SLE_VAR_STRQ:
-			return SlReadArrayLength();
-
-		default:
-			assert(length < lengthof(conv_mem_size));
-			return conv_mem_size[length];
-	}
-}
-
-/** Return the size in bytes of a certain type of normal/atomic variable
- * as it appears in a saved game. See VarTypes
- * @param conv VarType type of variable that is used for calculating the size
- * @return Return the size of this type in bytes */
-static inline byte SlCalcConvFileLen(VarType conv)
-{
-	static const byte conv_file_size[] = {1, 1, 2, 2, 4, 4, 8, 8, 2};
-	byte length = GB(conv, 0, 4);
-	assert(length < lengthof(conv_file_size));
-	return conv_file_size[length];
-}
-
-/** Return the size in bytes of a reference (pointer) */
-static inline size_t SlCalcRefLen() {return CheckSavegameVersion(69) ? 2 : 4;}
 
 /** Flush the output buffer by writing to disk with the given reader.
  * If the buffer pointer has not yet been set up, set it up now. Usually
@@ -625,6 +587,43 @@ static inline void SlWriteSparseIndex(uint index) {SlWriteSimpleGamma(index);}
 static inline uint SlReadArrayLength() {return SlReadSimpleGamma();}
 static inline void SlWriteArrayLength(size_t length) {SlWriteSimpleGamma(length);}
 static inline uint SlGetArrayLength(size_t length) {return SlGetGammaLength(length);}
+
+/** Return the size in bytes of a certain type of normal/atomic variable
+ * as it appears in memory. See VarTypes
+ * @param conv VarType type of variable that is used for calculating the size
+ * @return Return the size of this type in bytes */
+static inline uint SlCalcConvMemLen(VarType conv)
+{
+	static const byte conv_mem_size[] = {1, 1, 1, 2, 2, 4, 4, 8, 8, 0};
+	byte length = GB(conv, 4, 4);
+
+	switch (length << 4) {
+		case SLE_VAR_STRB:
+		case SLE_VAR_STRBQ:
+		case SLE_VAR_STR:
+		case SLE_VAR_STRQ:
+			return SlReadArrayLength();
+
+		default:
+			assert(length < lengthof(conv_mem_size));
+			return conv_mem_size[length];
+	}
+}
+
+/** Return the size in bytes of a certain type of normal/atomic variable
+ * as it appears in a saved game. See VarTypes
+ * @param conv VarType type of variable that is used for calculating the size
+ * @return Return the size of this type in bytes */
+static inline byte SlCalcConvFileLen(VarType conv)
+{
+	static const byte conv_file_size[] = {1, 1, 2, 2, 4, 4, 8, 8, 2};
+	byte length = GB(conv, 0, 4);
+	assert(length < lengthof(conv_file_size));
+	return conv_file_size[length];
+}
+
+/** Return the size in bytes of a reference (pointer) */
+static inline size_t SlCalcRefLen() {return CheckSavegameVersion(69) ? 2 : 4;}
 
 void SlSetArrayIndex(uint index)
 {
@@ -1018,9 +1017,104 @@ void SlArray(void *array, size_t length, VarType conv)
 }
 
 
-static size_t ReferenceToInt(const void *obj, SLRefType rt);
-static void *IntToReference(size_t index, SLRefType rt);
+/**
+ * Pointers cannot be saved to a savegame, so this functions gets
+ * the index of the item, and if not available, it hussles with
+ * pointers (looks really bad :()
+ * Remember that a NULL item has value 0, and all
+ * indeces have +1, so vehicle 0 is saved as index 1.
+ * @param obj The object that we want to get the index of
+ * @param rt SLRefType type of the object the index is being sought of
+ * @return Return the pointer converted to an index of the type pointed to
+ */
+static size_t ReferenceToInt(const void *obj, SLRefType rt)
+{
+	assert(_sl.action == SLA_SAVE);
 
+	if (obj == NULL) return 0;
+
+	switch (rt) {
+		case REF_VEHICLE_OLD: // Old vehicles we save as new onces
+		case REF_VEHICLE:   return ((const  Vehicle*)obj)->index + 1;
+		case REF_STATION:   return ((const  Station*)obj)->index + 1;
+		case REF_TOWN:      return ((const     Town*)obj)->index + 1;
+		case REF_ORDER:     return ((const    Order*)obj)->index + 1;
+		case REF_ROADSTOPS: return ((const RoadStop*)obj)->index + 1;
+		case REF_ENGINE_RENEWS: return ((const EngineRenew*)obj)->index + 1;
+		case REF_CARGO_PACKET:  return ((const CargoPacket*)obj)->index + 1;
+		case REF_ORDERLIST:     return ((const   OrderList*)obj)->index + 1;
+		default: NOT_REACHED();
+	}
+}
+
+/**
+ * Pointers cannot be loaded from a savegame, so this function
+ * gets the index from the savegame and returns the appropiate
+ * pointer from the already loaded base.
+ * Remember that an index of 0 is a NULL pointer so all indeces
+ * are +1 so vehicle 0 is saved as 1.
+ * @param index The index that is being converted to a pointer
+ * @param rt SLRefType type of the object the pointer is sought of
+ * @return Return the index converted to a pointer of any type
+ */
+static void *IntToReference(size_t index, SLRefType rt)
+{
+	assert_compile(sizeof(size_t) <= sizeof(void *));
+
+	assert(_sl.action == SLA_PTRS);
+
+	/* After version 4.3 REF_VEHICLE_OLD is saved as REF_VEHICLE,
+	 * and should be loaded like that */
+	if (rt == REF_VEHICLE_OLD && !CheckSavegameVersionOldStyle(4, 4)) {
+		rt = REF_VEHICLE;
+	}
+
+	/* No need to look up NULL pointers, just return immediately */
+	if (index == (rt == REF_VEHICLE_OLD ? 0xFFFF : 0)) return NULL;
+
+	/* Correct index. Old vehicles were saved differently:
+	 * invalid vehicle was 0xFFFF, now we use 0x0000 for everything invalid. */
+	if (rt != REF_VEHICLE_OLD) index--;
+
+	switch (rt) {
+		case REF_ORDERLIST:
+			if (OrderList::IsValidID(index)) return OrderList::Get(index);
+			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Referencing invalid OrderList");
+
+		case REF_ORDER:
+			if (Order::IsValidID(index)) return Order::Get(index);
+			/* in old versions, invalid order was used to mark end of order list */
+			if (CheckSavegameVersionOldStyle(5, 2)) return NULL;
+			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Referencing invalid Order");
+
+		case REF_VEHICLE_OLD:
+		case REF_VEHICLE:
+			if (Vehicle::IsValidID(index)) return Vehicle::Get(index);
+			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Referencing invalid Vehicle");
+
+		case REF_STATION:
+			if (Station::IsValidID(index)) return Station::Get(index);
+			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Referencing invalid Station");
+
+		case REF_TOWN:
+			if (Town::IsValidID(index)) return Town::Get(index);
+			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Referencing invalid Town");
+
+		case REF_ROADSTOPS:
+			if (RoadStop::IsValidID(index)) return RoadStop::Get(index);
+			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Referencing invalid RoadStop");
+
+		case REF_ENGINE_RENEWS:
+			if (EngineRenew::IsValidID(index)) return EngineRenew::Get(index);
+			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Referencing invalid EngineRenew");
+
+		case REF_CARGO_PACKET:
+			if (CargoPacket::IsValidID(index)) return CargoPacket::Get(index);
+			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Referencing invalid CargoPacket");
+
+		default: NOT_REACHED();
+	}
+}
 
 /**
  * Return the size in bytes of a list
@@ -1755,105 +1849,6 @@ static void UninitWriteZlib()
 /*******************************************
  ************* END OF CODE *****************
  *******************************************/
-
-/**
- * Pointers cannot be saved to a savegame, so this functions gets
- * the index of the item, and if not available, it hussles with
- * pointers (looks really bad :()
- * Remember that a NULL item has value 0, and all
- * indeces have +1, so vehicle 0 is saved as index 1.
- * @param obj The object that we want to get the index of
- * @param rt SLRefType type of the object the index is being sought of
- * @return Return the pointer converted to an index of the type pointed to
- */
-static size_t ReferenceToInt(const void *obj, SLRefType rt)
-{
-	assert(_sl.action == SLA_SAVE);
-
-	if (obj == NULL) return 0;
-
-	switch (rt) {
-		case REF_VEHICLE_OLD: // Old vehicles we save as new onces
-		case REF_VEHICLE:   return ((const  Vehicle*)obj)->index + 1;
-		case REF_STATION:   return ((const  Station*)obj)->index + 1;
-		case REF_TOWN:      return ((const     Town*)obj)->index + 1;
-		case REF_ORDER:     return ((const    Order*)obj)->index + 1;
-		case REF_ROADSTOPS: return ((const RoadStop*)obj)->index + 1;
-		case REF_ENGINE_RENEWS: return ((const EngineRenew*)obj)->index + 1;
-		case REF_CARGO_PACKET:  return ((const CargoPacket*)obj)->index + 1;
-		case REF_ORDERLIST:     return ((const   OrderList*)obj)->index + 1;
-		default: NOT_REACHED();
-	}
-}
-
-/**
- * Pointers cannot be loaded from a savegame, so this function
- * gets the index from the savegame and returns the appropiate
- * pointer from the already loaded base.
- * Remember that an index of 0 is a NULL pointer so all indeces
- * are +1 so vehicle 0 is saved as 1.
- * @param index The index that is being converted to a pointer
- * @param rt SLRefType type of the object the pointer is sought of
- * @return Return the index converted to a pointer of any type
- */
-static void *IntToReference(size_t index, SLRefType rt)
-{
-	assert_compile(sizeof(size_t) <= sizeof(void *));
-
-	assert(_sl.action == SLA_PTRS);
-
-	/* After version 4.3 REF_VEHICLE_OLD is saved as REF_VEHICLE,
-	 * and should be loaded like that */
-	if (rt == REF_VEHICLE_OLD && !CheckSavegameVersionOldStyle(4, 4)) {
-		rt = REF_VEHICLE;
-	}
-
-	/* No need to look up NULL pointers, just return immediately */
-	if (index == (rt == REF_VEHICLE_OLD ? 0xFFFF : 0)) return NULL;
-
-	/* Correct index. Old vehicles were saved differently:
-	 * invalid vehicle was 0xFFFF, now we use 0x0000 for everything invalid. */
-	if (rt != REF_VEHICLE_OLD) index--;
-
-	switch (rt) {
-		case REF_ORDERLIST:
-			if (OrderList::IsValidID(index)) return OrderList::Get(index);
-			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Referencing invalid OrderList");
-
-		case REF_ORDER:
-			if (Order::IsValidID(index)) return Order::Get(index);
-			/* in old versions, invalid order was used to mark end of order list */
-			if (CheckSavegameVersionOldStyle(5, 2)) return NULL;
-			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Referencing invalid Order");
-
-		case REF_VEHICLE_OLD:
-		case REF_VEHICLE:
-			if (Vehicle::IsValidID(index)) return Vehicle::Get(index);
-			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Referencing invalid Vehicle");
-
-		case REF_STATION:
-			if (Station::IsValidID(index)) return Station::Get(index);
-			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Referencing invalid Station");
-
-		case REF_TOWN:
-			if (Town::IsValidID(index)) return Town::Get(index);
-			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Referencing invalid Town");
-
-		case REF_ROADSTOPS:
-			if (RoadStop::IsValidID(index)) return RoadStop::Get(index);
-			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Referencing invalid RoadStop");
-
-		case REF_ENGINE_RENEWS:
-			if (EngineRenew::IsValidID(index)) return EngineRenew::Get(index);
-			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Referencing invalid EngineRenew");
-
-		case REF_CARGO_PACKET:
-			if (CargoPacket::IsValidID(index)) return CargoPacket::Get(index);
-			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Referencing invalid CargoPacket");
-
-		default: NOT_REACHED();
-	}
-}
 
 /** The format for a reader/writer type of a savegame */
 struct SaveLoadFormat {
