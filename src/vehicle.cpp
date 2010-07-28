@@ -1131,8 +1131,11 @@ void VehicleEnterDepot(Vehicle *v)
 					SetDParam(0, v->index);
 					AddVehicleNewsItem(STR_NEWS_ORDER_REFIT_FAILED, NS_ADVICE, v->index);
 				}
-			} else if (v->owner == _local_company && cost.GetCost() != 0) {
-				ShowCostOrIncomeAnimation(v->x_pos, v->y_pos, v->z_pos, cost.GetCost());
+			} else if (cost.GetCost() != 0) {
+				v->profit_this_year -= cost.GetCost() << 8;
+				if (v->owner == _local_company) {
+					ShowCostOrIncomeAnimation(v->x_pos, v->y_pos, v->z_pos, cost.GetCost());
+				}
 			}
 		}
 
