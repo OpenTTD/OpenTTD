@@ -3573,6 +3573,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... на
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Місто не буде будувати дороги. ВИ можете дозволити будівництво доріг у вікні Розширені налаштування->Економіка->Міста.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Дорога ремонтується
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Не можна видалити це місто...{}Станція або депо, що відносяться до міста або знаходяться на землі у власності міста, не можуть бути видалені
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... немає підходящого місця для статуї в центрі цього міста
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... забагато промисловості

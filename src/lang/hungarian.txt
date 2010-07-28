@@ -3512,6 +3512,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... ninc
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}A település nem fog utakat építeni. Az útépítést a Haladó beállítások->Gazdaság->Városok menüben engedélyezheted.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Útkarbantartás folyamatban
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Nem törölheted ezt a várost...{}Egy állomás vagy járműtelep hivatkozik a városra, vagy egy városi tulajdonú mező nem eltávolítható
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... nincs megfelelő hely szobrot elhelyezni a város központjában
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... túl sok a gazdasági épület
@@ -3561,7 +3562,7 @@ STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Nem táv
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Nem lehet a villamos-utasvárót eltávolítani...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Nem lehet a tehervillamos-állomást eltávolítani
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Előbb el kell távolítanod a megállóhelyet
-STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}...nincs itt állomás
+STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... nincs itt állomás
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Előbb le kell rombolnod a vasútállomást
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Előbb le kell rombolnod a buszmegállót
@@ -3627,8 +3628,8 @@ STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Nem ép�
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Nem szedheted fel innen a vasúti pályát...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Innen nem távolíthatod el a jelzőt...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Itt nem lehet konvertálni a jelzőket...
-STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}...nincs itt vasúti pálya
-STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}...nincs itt jelző
+STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... nincs itt vasúti pálya
+STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... nincs itt jelző
 
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Itt nem lehet átalakítani a vasúti pályát...
 
@@ -3639,8 +3640,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Ide nem 
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Ide nem lehet villamospályát építeni...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Nem rombolhatod le innen az utat...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Innen nem lehet villamospályát eltávolítani...
-STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}...nincs itt út
-STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}...nincs itt villamospálya
+STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... nincs itt út
+STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... nincs itt villamospálya
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Ide nem lehet csatornát építeni...

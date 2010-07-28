@@ -560,7 +560,14 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :ҫук
 
 
 
+STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Чӑн
+STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Ҫук
+STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Чӑн
 
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Симĕс
+STR_CONFIG_SETTING_LIVERIES_NONE                                :Ҫук
+STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Сӳнтер
 
 
 
@@ -717,6 +724,8 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :ҫук
 
 
 # Fund new industry window
+
+# Industry cargoes window
 
 # Land area window
 

@@ -3544,6 +3544,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... nema
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Grad neće graditi ceste. Možete uključiti gradnju cesta putem Naprednih postavki -> Ekonomija -> Gradovi
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Cestovni radovi u tijeku
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Nije moguće izbrisati ovaj grad...{}Postaja ili spremište se pozivaju na grad ili polja u vlasništvu grada nije moguće ukloniti
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... nema odgovarajućeg mjesta za kip u središtu ovog grada
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... previše industrija
@@ -3659,8 +3660,8 @@ STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Ovdje ni
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Nije moguće ukloniti željezničku prugu odavde...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Nije moguće ukloniti signale odavde...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Ovdje nije moguće pretvoriti signale...
-STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}...nema pruge
-STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}...nema signala
+STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... nema pruge
+STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... nema signala
 
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Ovdje nije moguće pretvoriti vrstu pruge...
 
@@ -3671,8 +3672,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Ovdje ni
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Ovdje nije moguće izgraditi tramvaj...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Nije moguće ukloniti cestu odavde...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Nije moguće ukloniti tramvaj odavde...
-STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}...nema ceste
-STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}...nema tramvajske pruge
+STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... nema ceste
+STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... nema tramvajske pruge
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Ovdje nije moguće izgraditi kanale...

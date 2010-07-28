@@ -3448,6 +3448,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... tida
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Kota tidak akan membangun jalan. Anda dapat mengaktifkan pembangunan jalan pada menu Pengaturan Lanjutan->Ekonomi->Kota.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Jalan sedang dikerjakan
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Tidak dapat menghancurkan kota ini...{}Suatu stasiun atau depo tergantung pada kota ini atau kotak milik kota tidak dapat dihapus
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... tidak ada tempat yang cocok untuk patung di tengah kota ini
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... terlalu banyak industri
@@ -3563,7 +3564,7 @@ STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Tidak da
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Tidak dapat menghapus jalur rel dari sini
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Tidak dapat menghapus sinyal dari sini
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Tidak dapat mengubah sinyal ini...
-STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}...tidak ada rel
+STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... tidak ada rel
 STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}...tidak ada sinyal
 
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Tidak dapat mengubah tipe rel disini...
@@ -3575,8 +3576,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Tidak da
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Tidak dapat membangun jalan trem disini...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Tidak dapat membongkar jalan di sini...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Tidak dapat membongkar jalan trem disini...
-STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}...tidak ada jalan
-STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}...tidak ada jalur trem
+STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... tidak ada jalan
+STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... tidak ada jalur trem
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Tidak dapat membangun kanal disini...

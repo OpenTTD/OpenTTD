@@ -1183,6 +1183,9 @@ STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}NewGRF e
 
 
 # NewGRF status
+STR_NEWGRF_LIST_ALL_FOUND                                       :Artxibo guztiak presente
+STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Artxibo baterakideak aurkituta
+STR_NEWGRF_LIST_MISSING                                         :{RED}Artxiboak faltatzen dira
 
 # NewGRF 'it's broken' warnings
 
@@ -1464,6 +1467,7 @@ STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{U
 
 
 # Station destruction related errors
+STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... ez dago geltokirik hemen
 
 
 # Waypoint related errors
@@ -1480,9 +1484,13 @@ STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{U
 # Autoreplace related errors
 
 # Rail construction errors
+STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... ez dago trenbiderik
+STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... ez dago seinalerik
 
 
 # Road construction errors
+STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... ez dago biderik
+STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... ez dago tranbia biderik
 
 # Waterway construction errors
 

@@ -386,10 +386,10 @@ STR_SUBSIDIES_MENU_SUBSIDIES                                    :Sussidi
 ############ range for graph menu starts
 STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Grafico margine operativo
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Grafico incassi
-STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Grafico merci consegnate
+STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Grafico carichi consegnati
 STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :Grafico storico prestazioni
 STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Grafico valore compagnie
-STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Grafico tariffe merci
+STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Grafico tariffe carichi
 ############ range ends here
 
 ############ range for company league menu starts
@@ -525,7 +525,7 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Unità d
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Valutazione prestazioni compagnie (massima valutazione=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Valore delle compagnie
 
-STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Tariffe di pagamento merci
+STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Tariffe di pagamento carichi
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Giorni di viaggio
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Pagamento per la consegna di 10 unità (o 10.000 litri) di merce alla distanza di 20 riquadri
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}Abilita tutti
@@ -567,7 +567,7 @@ STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Profitto
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Incasso min:
 STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Incasso max:
 STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}Consegnato:
-STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Merci:
+STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Carichi:
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Denaro:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Prestito:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Totale:
@@ -2120,7 +2120,7 @@ STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Finanzia
 
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Catena di distribuzione di {G un un' una} {STRING}
-STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Catena di distribuzione {G del dell' della} {STRING}
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Catena di distribuzione dei carichi di {STRING}
 STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Produttori
 STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Consumatori
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Case
@@ -3450,6 +3450,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... non 
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Alla città non è permesso costruire strade. È possibile abilitare la costruzione di strade in Impostazioni avanzate -> Economia -> Città.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Lavori stradali in corso
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Impossibile eliminare la città...{}Una stazione o un deposito fa ancora riferimento alla città o un riquadro di proprietà della città non può essere rimosso
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... non ci sono spazi adeguati per una statua nel centro di questa città
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... troppe industrie
@@ -3499,7 +3500,7 @@ STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Impossib
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Impossibile rimuovere la stazione tram passeggeri...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Impossibile rimuovere la stazione tram merci...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Bisogna rimuovere la fermata prima
-STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}...stazione non presente
+STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... stazione non presente
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Bisogna demolire la stazione ferroviaria prima
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Bisogna demolire la stazione degli autobus prima
@@ -3520,7 +3521,7 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Impossib
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Impossibile rimuovere il waypoint ferroviario da qui...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Bisogna rimuovere il waypoint ferroviario prima
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... boa di mezzo
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... la boa è in uso!
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... boa in uso
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Impossibile costruire il deposito qui...
@@ -3565,8 +3566,8 @@ STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Impossib
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Impossibile rimuovere i binari da qui...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Impossibile rimuovere i segnali da qui...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Impossibile convertire i segnali qui...
-STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}...ferrovia non presente
-STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}...segnali non presenti
+STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... ferrovia non presente
+STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... segnali non presenti
 
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Impossibile convertire il tipo di rotaie qui...
 
@@ -3577,8 +3578,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Impossib
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Impossibile costruire la tranvia qui...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Impossibile rimuovere la strada da qui...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Impossibile rimuovere la tranvia da qui...
-STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}...strada non presente
-STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}...tranvia non presente
+STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... strada non presente
+STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... tranvia non presente
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Impossibile costruire qui il canale...

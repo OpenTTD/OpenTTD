@@ -3448,6 +3448,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... er i
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}De plaats bouwt geen wegen. Het bouwen van wegen kan aangezet worden via Geavanceerde Instellingen->Economie->Plaatsen.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Wegwerkzaamheden in uitvoering
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kan deze plaats niet verwijderen...{}Een station of depot verwijst naar deze plaats of een door de plaats beheerde tegel kan niet worden verwijderd
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... er is geen geschikte plaats voor een standbeeld in het centrum van dit dorp
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... teveel industrieën

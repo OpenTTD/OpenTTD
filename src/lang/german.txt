@@ -2756,7 +2756,7 @@ STR_GROUP_RENAME_CAPTION                                        :{BLACK}Gruppe u
 
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Neues Schienenfahrzeug
-STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Neue E-Loks
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Neue elektrische Schienenfahrzeuge
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Neues Einschienenbahn-Fahrzeug
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Neue Magnetzüge
 
@@ -2910,25 +2910,25 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Straßenfahrzeu
 STR_REPLACE_VEHICLE_SHIP                                        :Schiff
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Flugzeug
 
-STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Zu ersetzenden Loktyp auswählen
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Loktyp auswählen, der anstelle des links gewählten Loktyps verwendet werden soll
+STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Zu ersetzenden Fahrzeugtyp auswählen
+STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Fahrzeugtyp auswählen, der anstelle des links gewählten Typs verwendet werden soll
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Fahrzeugersetzung an
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Klick zum Ersetzen des Loktyps auf der linken Seite mit dem auf der rechten Seite
+STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Klick zum Ersetzen des Fahrzeugtyps auf der linken Seite mit dem auf der rechten Seite
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Keine Ersetzung
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Kein Fahrzeug gewählt
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Fahrzeugersetzung aus
-STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Klick zum Abbrechen der Ersetzung des Loktyps auf der linken Seite
+STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Klick zum Abbrechen der Ersetzung des Fahrzeugtyps auf der linken Seite
 
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Ersetzen: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Umschalter für Lok- oder Waggonersetzung
-STR_REPLACE_ENGINES                                             :Loks
+STR_REPLACE_ENGINES                                             :Schienenfahrzeuge
 STR_REPLACE_WAGONS                                              :Waggons
 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Gleistyp auswählen, für den Loks ersetzt werden sollen
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Hier wird angezeigt, gegen welche Lok die auf der linken Seite gewählte ersetzt wird
+STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Hier wird angezeigt, gegen welches Fahrzeug das auf der linken Seite gewählte ersetzt wird
 STR_REPLACE_RAIL_VEHICLES                                       :Eisenbahn
-STR_REPLACE_ELRAIL_VEHICLES                                     :E-Loks
+STR_REPLACE_ELRAIL_VEHICLES                                     :elektrische Schienenfahrzeuge
 STR_REPLACE_MONORAIL_VEHICLES                                   :Einschienenbahn
 STR_REPLACE_MAGLEV_VEHICLES                                     :Magnetschwebebahn
 

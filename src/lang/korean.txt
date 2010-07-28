@@ -3449,6 +3449,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... 맵�
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}도시가 도로를 짓지 않을 것입니다. [고급설정->경제->도시]에서 도로를 지을 수 있도록 설정을 변경하실 수 있습니다.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}도로 작업이 진행중입니다
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}이 도시를 삭제할 수 없습니다...{}도시 또는 도시가 소유하고 있는 타일에 있는 역이나 차고때문에 제거할 수 없습니다.
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... 이 도시의 중심에 동상을 세우기 적합한 장소가 없습니다.
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... 산업시설이 너무 많습니다!
