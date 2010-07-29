@@ -1861,7 +1861,7 @@ void NWidgetLeaf::SetupSmallestSize(Window *w, bool init_array)
 		}
 		case WWT_EDITBOX:
 			size.height = max(size.height, GetStringBoundingBox("_").height + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM);
-			/* fall through */
+			/* FALL THROUGH */
 		case WWT_PUSHBTN: {
 			static const Dimension extra = {WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT, WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM};
 			padding = &extra;

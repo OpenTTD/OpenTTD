@@ -298,7 +298,7 @@ AIInfo *AIScanner::FindInfo(const char *nameParam, int versionParam, bool force_
 		*e = '\0';
 		e++;
 		versionParam = atoi(e);
-		/* Fall-through, like we were calling this function with a version */
+		/* FALL THROUGH, like we were calling this function with a version. */
 	}
 
 	if (force_exact_match) {

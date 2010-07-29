@@ -688,7 +688,7 @@ public:
 					}
 					return ES_HANDLED;
 				}
-				/* Fall through when pressing space is pressed and filter isn't focused */
+				/* FALL THROUGH, space is pressed and filter isn't focused. */
 
 			default: {
 				/* Handle editbox input */

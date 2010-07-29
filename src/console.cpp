@@ -439,7 +439,7 @@ void IConsoleCmdExec(const char *cmdstr)
 				tokenstream[tstream_i++] = *++cmdptr;
 				break;
 			}
-			/* fallthrough */
+			/* FALL THROUGH */
 		default: // Normal character
 			tokenstream[tstream_i++] = *cmdptr;
 

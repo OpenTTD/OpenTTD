@@ -1153,7 +1153,7 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 		break;
 	default:
 		DEBUG(net, 0, "[server] received unknown chat destination type %d. Doing broadcast instead", desttype);
-		/* fall-through to next case */
+		/* FALL THROUGH */
 	case DESTTYPE_BROADCAST:
 		FOR_ALL_CLIENT_SOCKETS(cs) {
 			SEND_COMMAND(PACKET_SERVER_CHAT)(cs, action, from_id, false, msg, data);
@@ -1185,7 +1185,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_CHAT)
 	switch (action) {
 		case NETWORK_ACTION_GIVE_MONEY:
 			if (!Company::IsValidID(ci->client_playas)) break;
-			/* Fall-through */
+			/* FALL THROUGH */
 		case NETWORK_ACTION_CHAT:
 		case NETWORK_ACTION_CHAT_CLIENT:
 		case NETWORK_ACTION_CHAT_COMPANY:

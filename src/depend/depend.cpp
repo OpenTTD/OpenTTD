@@ -674,7 +674,7 @@ void ScanFile(const char *filename, const char *ext, bool header, bool verbose)
 									free((void*)h);
 								}
 							}
-							/* Fall through */
+							/* FALL THROUGH */
 							default: break;
 						}
 						break;
@@ -796,7 +796,7 @@ void ScanFile(const char *filename, const char *ext, bool header, bool verbose)
 						break;
 				}
 				if (verbose) fprintf(stderr, "\n");
-			/* Fall through */
+				/* FALL THROUGH */
 			default:
 				/* Ignore the rest of the garbage on this line */
 				while (lexer.GetToken() != TOKEN_EOL && lexer.GetToken() != TOKEN_END) lexer.Lex();

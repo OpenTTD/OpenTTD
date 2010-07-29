@@ -327,7 +327,7 @@ struct CompanyFinancesWindow : Window {
 			case CFW_EXPS_PRICE2:
 			case CFW_EXPS_PRICE3:
 				size->height = _expenses_list_types[type].GetHeight();
-				/* Fall through */
+				/* FALL THROUGH */
 			case CFW_BALANCE_VALUE:
 			case CFW_LOAN_VALUE:
 			case CFW_TOTAL_VALUE:
@@ -640,7 +640,7 @@ public:
 					size->width = 0;
 					break;
 				}
-				/* Fall through */
+				/* FALL THROUGH */
 			case SCLW_WIDGET_PRI_COL_DROPDOWN: {
 				for (const StringID *id = _colour_dropdown; id != endof(_colour_dropdown); id++) {
 					size->width = max(size->width, GetStringBoundingBox(*id).width + 34);
@@ -1405,7 +1405,7 @@ public:
 			/* OK button */
 			case SCMFW_WIDGET_ACCEPT:
 				DoCommandP(0, 0, this->face, CMD_SET_COMPANY_MANAGER_FACE);
-				/* Fall-Through */
+				/* FALL THROUGH */
 
 			/* Cancel button */
 			case SCMFW_WIDGET_CANCEL:

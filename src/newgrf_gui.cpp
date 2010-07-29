@@ -495,7 +495,7 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 				this->InvalidateData();
 				if (click_count == 1) break;
 			}
-			/* Fall through with double click. */
+			/* FALL THROUGH, with double click. */
 			case SNGRFS_REMOVE: { // Remove GRF
 				if (this->active_sel == NULL || !this->editable) break;
 
@@ -535,7 +535,7 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 				this->DeleteChildWindows(WC_QUERY_STRING); // Remove the parameter query window
 				if (click_count == 1) break;
 			}
-			/* Fall through with double click. */
+			/* FALL THROUGH, with double click. */
 			case SNGRFS_ADD: {
 				if (this->avail_sel == NULL || !this->editable) break;
 
@@ -727,13 +727,13 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 
 					delete c;
 				}
-				/* Fall through. */
+				/* FALL THROUGH */
 			case 4:
 				this->avails.ForceRebuild();
-				/* Fall through. */
+				/* FALL THROUGH */
 			case 2:
 				this->preset = -1;
-				/* Fall through */
+				/* FALL THROUGH */
 			case 3: {
 				int i = 0;
 				for (const GRFConfig *c = this->actives; c != NULL; c = c->next, i++) {}

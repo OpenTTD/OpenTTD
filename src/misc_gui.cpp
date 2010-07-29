@@ -1340,10 +1340,10 @@ struct QueryStringWindow : public QueryStringBaseWindow
 		switch (widget) {
 			case QUERY_STR_WIDGET_DEFAULT:
 				this->text.buf[0] = '\0';
-				/* Fallthrough */
+				/* FALL THROUGH */
 			case QUERY_STR_WIDGET_OK:
 				this->OnOk();
-				/* Fallthrough */
+				/* FALL THROUGH */
 			case QUERY_STR_WIDGET_CANCEL:
 				delete this;
 				break;
@@ -1532,7 +1532,7 @@ struct QueryWindow : public Window {
 					this->proc(this->parent, true);
 					this->proc = NULL;
 				}
-				/* Fallthrough */
+				/* FALL THROUGH */
 			case WKC_ESC:
 				delete this;
 				return ES_HANDLED;

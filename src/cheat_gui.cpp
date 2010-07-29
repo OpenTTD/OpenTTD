@@ -202,8 +202,8 @@ struct CheatWindow : Window {
 
 						/* Set correct string for switch climate cheat */
 						case STR_CHEAT_SWITCH_CLIMATE: val += STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE;
+							/* FALL THROUGH */
 
-						/* Fallthrough */
 						default: SetDParam(0, val);
 					}
 				} break;

@@ -516,7 +516,7 @@ struct RefitWindow : public Window {
 				BuildRefitList(v, &this->list);
 				this->vscroll.SetCount(this->list.Length());
 			}
-			/* FALLTHROUGH */
+			/* FALL THROUGH */
 
 			case 1: // A new cargo has been selected.
 				this->cargo = (this->sel >= 0 && this->sel < (int)this->list.Length()) ? &this->list[this->sel] : NULL;
@@ -1633,7 +1633,7 @@ struct VehicleDetailsWindow : Window {
 							DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE);
 							break;
 						}
-						/* Fallthrough */
+						/* FALL THROUGH */
 					case VEH_SHIP:
 					case VEH_AIRCRAFT:
 						SetDParam(0, v->GetDisplayMaxSpeed());
@@ -2150,7 +2150,7 @@ public:
 						str = STR_VEHICLE_STATUS_LEAVING;
 						break;
 					}
-					/* fall-through if aircraft. Does this even happen? */
+					/* FALL THROUGH, if aircraft. Does this even happen? */
 
 				default:
 					if (v->GetNumOrders() == 0) {

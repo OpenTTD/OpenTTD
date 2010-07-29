@@ -2158,7 +2158,7 @@ struct NetworkJoinStatusWindow : Window {
 				SetDParam(0, _network_join_bytes);
 				SetDParam(1, _network_join_bytes_total);
 				DrawString(r.left + 2, r.right - 2, r.top + 20 + FONT_HEIGHT_NORMAL, STR_NETWORK_CONNECTING_DOWNLOADING, TC_FROMSTRING, SA_HOR_CENTER);
-				/* Fallthrough */
+				/* FALL THROUGH */
 			default: // Waiting is 15%, so the resting receivement of map is maximum 70%
 				progress = 15 + _network_join_bytes * (100 - 15) / _network_join_bytes_total;
 		}

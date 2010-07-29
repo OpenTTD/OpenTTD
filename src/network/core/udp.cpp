@@ -246,16 +246,16 @@ void NetworkUDPSocketHandler::Recv_NetworkGameInfo(Packet *p, NetworkGameInfo *i
 				*dst = c;
 				dst = &c->next;
 			}
-		} // Fallthrough
+		} // FALL THROUGH
 		case 3:
 			info->game_date      = Clamp(p->Recv_uint32(), 0, MAX_DATE);
 			info->start_date     = Clamp(p->Recv_uint32(), 0, MAX_DATE);
-			/* Fallthrough */
+			/* FALL THROUGH */
 		case 2:
 			info->companies_max  = p->Recv_uint8 ();
 			info->companies_on   = p->Recv_uint8 ();
 			info->spectators_max = p->Recv_uint8 ();
-			/* Fallthrough */
+			/* FALL THROUGH */
 		case 1:
 			p->Recv_string(info->server_name,     sizeof(info->server_name));
 			p->Recv_string(info->server_revision, sizeof(info->server_revision));

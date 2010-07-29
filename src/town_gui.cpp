@@ -267,7 +267,7 @@ public:
 					this->sel_index = y;
 					this->SetDirty();
 				}
-				/* Fall through to clicking in case we are double-clicked */
+				/* FALL THROUGH, when double-clicking. */
 				if (click_count == 1 || y < 0) break;
 			}
 

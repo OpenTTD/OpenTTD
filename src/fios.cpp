@@ -100,7 +100,7 @@ const char *FiosBrowseTo(const FiosItem *item)
 #elif defined(WIN32) || defined(__OS2__)
 			snprintf(path, MAX_PATH, "%c:" PATHSEP, item->title[0]);
 #endif
-		/* Fallthrough */
+			/* FALL THROUGH */
 		case FIOS_TYPE_INVALID:
 			break;
 

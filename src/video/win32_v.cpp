@@ -364,7 +364,7 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 
 		case WM_PALETTECHANGED:
 			if ((HWND)wParam == hwnd) return 0;
-			/* FALLTHROUGH */
+			/* FALL THROUGH */
 
 		case WM_QUERYNEWPALETTE: {
 			HDC hDC = GetWindowDC(hwnd);

@@ -111,7 +111,7 @@ struct EnginePreviewWindow : Window {
 		switch (widget) {
 			case EPW_YES:
 				DoCommandP(0, this->window_number, 0, CMD_WANT_ENGINE_PREVIEW);
-				/* Fallthrough */
+				/* FALL THROUGH */
 			case EPW_NO:
 				delete this;
 				break;

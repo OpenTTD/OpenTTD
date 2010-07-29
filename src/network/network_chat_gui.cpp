@@ -484,7 +484,7 @@ struct NetworkChatWindow : public QueryStringBaseWindow {
 		switch (widget) {
 			/* Send */
 			case NWCW_SENDBUTTON: SendChat(this->text.buf, this->dtype, this->dest);
-			/* FALLTHROUGH */
+				/* FALL THROUGH */
 			case NWCW_CLOSE: /* Cancel */ delete this; break;
 		}
 	}
@@ -510,7 +510,7 @@ struct NetworkChatWindow : public QueryStringBaseWindow {
 				} break;
 				case HEBR_CONFIRM:
 					SendChat(this->text.buf, this->dtype, this->dest);
-				/* FALLTHROUGH */
+					/* FALL THROUGH */
 				case HEBR_CANCEL: delete this; break;
 				case HEBR_NOT_FOCUSED: break;
 			}

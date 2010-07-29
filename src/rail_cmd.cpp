@@ -451,7 +451,7 @@ CommandCost CmdBuildSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 			if (IsLevelCrossing(tile) && GetCrossingRailBits(tile) == trackbit) {
 				return_cmd_error(STR_ERROR_ALREADY_BUILT);
 			}
-			/* FALLTHROUGH */
+			/* FALL THROUGH */
 		}
 
 		default: {

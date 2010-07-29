@@ -3028,7 +3028,7 @@ static bool HandleChangeInfoResult(const char *caller, ChangeInfoResult cir, uin
 
 		case CIR_UNKNOWN:
 			grfmsg(0, "%s: Unknown property 0x%02X of feature 0x%02X, disabling", caller, property, feature);
-			/* Fall through */
+			/* FALL THROUGH */
 
 		case CIR_INVALID_ID:
 			/* No debug message for an invalid ID, as it has already been output */

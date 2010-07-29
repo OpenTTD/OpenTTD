@@ -3639,7 +3639,7 @@ static bool TrainApproachingLineEnd(Train *v, bool signal)
 	 * for other directions, it will be 1, 3, 5, ..., 15 */
 	switch (v->direction) {
 		case DIR_N : x = ~x + ~y + 25; break;
-		case DIR_NW: x = y;            // FALLTHROUGH
+		case DIR_NW: x = y;            // FALL THROUGH
 		case DIR_NE: x = ~x + 16;      break;
 		case DIR_E : x = ~x + y + 9;   break;
 		case DIR_SE: x = y;            break;

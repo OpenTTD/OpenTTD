@@ -2200,7 +2200,7 @@ static int CalcHeightdiff(HighLightStyle style, uint distance, TileIndex start_t
 			start_tile = TILE_ADD(start_tile, ToTileIndexDiff(heightdiff_area_by_dir[style_t]));
 			end_tile   = TILE_ADD(end_tile, ToTileIndexDiff(heightdiff_area_by_dir[2 + style_t]));
 		}
-		/* Fallthrough */
+		/* FALL THROUGH */
 		case HT_POINT:
 			h0 = TileHeight(start_tile);
 			h1 = TileHeight(end_tile);
@@ -2542,7 +2542,7 @@ void VpSelectTilesWithMethod(int x, int y, ViewportPlaceMethod method)
 
 		case VPM_X_LIMITED: // Drag in X direction (limited size).
 			limit = (_thd.sizelimit - 1) * TILE_SIZE;
-			/* Fallthrough. */
+			/* FALL THROUGH */
 
 		case VPM_FIX_X: // drag in Y direction
 			x = sx;
@@ -2551,7 +2551,7 @@ void VpSelectTilesWithMethod(int x, int y, ViewportPlaceMethod method)
 
 		case VPM_Y_LIMITED: // Drag in Y direction (limited size).
 			limit = (_thd.sizelimit - 1) * TILE_SIZE;
-			/* Fallthrough. */
+			/* FALL THROUGH */
 
 		case VPM_FIX_Y: // drag in X direction
 			y = sy;
@@ -2588,7 +2588,7 @@ calc_heightdiff_single_direction:;
 			limit = (_thd.sizelimit - 1) * TILE_SIZE;
 			x = sx + Clamp(x - sx, -limit, limit);
 			y = sy + Clamp(y - sy, -limit, limit);
-			/* Fallthrough. */
+			/* FALL THROUGH */
 
 		case VPM_X_AND_Y: { // drag an X by Y area
 			if (_settings_client.gui.measure_tooltip) {
