@@ -569,34 +569,84 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Симĕс
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Ҫук
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Сӳнтер
 
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Сӳнтер
+
+
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :вӑрӑм (2008 раш 31меш)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :кӗске (2008-12-31)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
+
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :Сӳнтер
+STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Сӳнтер
 
 
 
 
 
 
+STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :чӑн
+STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2
+STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3
 
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :таҫта та
 
+STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Сулахайра
+STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Варринче
+STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :Сылтӑмра
+STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Ҫук
+STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Вӑрах
+STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Виҫеллӗ
+STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Хӑвӑрт
+STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Питӗ хӑвӑрт
 
+STR_CONFIG_SETTING_GUI                                          :{ORANGE}Интерфейс
+STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Лартӑм
+STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Ҫул-йӗр:
+STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Станцисем:
+STR_CONFIG_SETTING_AI                                           :{ORANGE}Ӑмӑртуҫӑсем
+STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Автоҫӗнет
+STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Пуйӑссем
+STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Хуласем
 
-
-
-
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_NPF             :NPF
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 
 
 
 # Intro window
+STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
+
+
+STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF майлаштару
+STR_INTRO_AI_SETTINGS                                           :{BLACK}AI майлаштару
+STR_INTRO_QUIT                                                  :{BLACK}Вӗҫле
 
 
 
-
-
+STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF майлаштару кӑтар
+STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}AI майлаштару кӑтар
+STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}'OpenTTD' вӗҫле
 
 # Quit window
+STR_QUIT_CAPTION                                                :{WHITE}Вӗҫле
+STR_QUIT_YES                                                    :{BLACK}Ийя
+STR_QUIT_NO                                                     :{BLACK}Ҫук
 
 # Supported OSes
+STR_OSNAME_WINDOWS                                              :Windows
+STR_OSNAME_DOS                                                  :DOS
+STR_OSNAME_UNIX                                                 :Unix
+STR_OSNAME_OSX                                                  :OS{NBSP}X
+STR_OSNAME_BEOS                                                 :BeOS
+STR_OSNAME_HAIKU                                                :Haiku
+STR_OSNAME_MORPHOS                                              :MorphOS
+STR_OSNAME_AMIGAOS                                              :AmigaOS
+STR_OSNAME_OS2                                                  :OS/2
+STR_OSNAME_SUNOS                                                :SunOS
 
 # Abandon game
+STR_ABANDON_GAME_CAPTION                                        :{WHITE}Вӑййи ан килӗш
 
 # Cheat window
 

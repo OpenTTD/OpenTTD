@@ -21,10 +21,13 @@
 ##id 0x0000
 STR_NULL                                                        :
 STR_EMPTY                                                       :
+STR_UNDEFINED                                                   :(ня вызначана)
+STR_JUST_NOTHING                                                :Нiчога
 
 # Cargo related strings
 # Plural cargo name
 STR_CARGO_PLURAL_NOTHING                                        :
+STR_CARGO_PLURAL_PASSENGERS                                     :Пасажыры
 
 # Singular cargo name
 STR_CARGO_SINGULAR_NOTHING                                      :
@@ -41,6 +44,13 @@ STR_NOTHING                                                     :
 # Colours, do not shuffle
 
 # Units used in OpenTTD
+
+
+
+
+
+
+
 
 # Common window strings
 
@@ -387,6 +397,8 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 
 
 # Fund new industry window
+
+# Industry cargoes window
 
 # Land area window
 
