@@ -64,7 +64,9 @@ public:
 	 * Get the current location of a basestation.
 	 * @param station_id The basestation to get the location of.
 	 * @pre IsValidBaseStation(station_id).
-	 * @return The tile the basestation is currently on.
+	 * @return The tile the basestation sign above it.
+	 * @note The tile is not necessarily a station tile (and if it is, it could also belong to another station).
+	 * @see AITileList_StationType.
 	 */
 	static TileIndex GetLocation(StationID station_id);
 
