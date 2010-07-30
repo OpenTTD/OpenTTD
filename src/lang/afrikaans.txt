@@ -2639,10 +2639,10 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Vliegtui
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Wins die jaar: {CURRENCY} (verlede jaar: {CURRENCY})
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}Beskikbaar Treine
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}Beskikbaar Voertuie
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}Beskikbaar Skepe
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Beskikbaar Vliegtuie
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Beskikbaar Treine
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Beskikbaar Voertuie
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Beskikbaar Skepe
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Beskikbaar Vliegtuie
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Toon 'n lys van beskikbaare enjin tipes vir die voertiug tipe.
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Bestuur lys

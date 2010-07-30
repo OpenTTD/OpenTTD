@@ -2699,10 +2699,10 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}飞机 -
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}今年利润：{CURRENCY} (去年利润：{CURRENCY})
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}可用的列车
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}可用的汽车
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}可用的船只
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}可用的飞机
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :可用的列车
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :可用的汽车
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :可用的船只
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :可用的飞机
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}查看此运输工具类型的{}全部可选购列表
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}管理列表

@@ -2710,10 +2710,10 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Vliegtui
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Winst dit jaar: {CURRENCY} (vorig jaar: {CURRENCY})
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}Beschikbare railvoertuigen
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}Beschikbare wegvoertuigen
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}Beschikbare schepen
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Beschikbare vliegtuigen
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Beschikbare railvoertuigen
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Beschikbare wegvoertuigen
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Beschikbare schepen
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Beschikbare vliegtuigen
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Bekijk een lijst van beschikbare ontwerpen voor dit type voertuig.
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Beheer lijst

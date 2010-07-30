@@ -2835,10 +2835,10 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Літа
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Прибуток цього року: {CURRENCY} (торік: {CURRENCY})
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}Доступні поїзди
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}Доступні автомобілі
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}Доступні кораблі
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Доступні літаки
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Доступні поїзди
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Доступні автомобілі
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Доступні кораблі
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Доступні літаки
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Перелік доступного транспорту
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Редагувати список

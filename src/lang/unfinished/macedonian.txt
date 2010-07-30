@@ -990,10 +990,10 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Авио
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Годинашна заработка: {CURRENCY} (лани: {CURRENCY})
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}Достапни Возови
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}Достапни Возила
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}Достапни Бродови
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Достапни Летала
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Достапни Возови
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Достапни Возила
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Достапни Бродови
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Достапни Летала
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Преглед на листа на достапни мотори за овој вид на возило
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Менаџирање на листа

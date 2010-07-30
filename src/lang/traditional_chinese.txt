@@ -2710,10 +2710,10 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}飛機 -
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}今年盈利：{CURRENCY} (去年盈利：{CURRENCY})
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}可用列車
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}可用車輛
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}可用船舶
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}可用飛機
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :可用列車
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :可用車輛
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :可用船舶
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :可用飛機
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}顯示此交通工具的所有設計
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}管理名單

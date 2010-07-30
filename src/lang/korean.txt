@@ -2711,10 +2711,10 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}항공�
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}올해 수입: {CURRENCY} (작년: {CURRENCY})
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}사용 가능 열차
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}사용 가능 자동차
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}사용 가능 선박
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}사용 가능 항공기
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :사용 가능 열차
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :사용 가능 자동차
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :사용 가능 선박
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :사용 가능 항공기
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}이 차량 타입에 사용할 수 있는 기관차의 목록 보기
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}관리

@@ -2694,10 +2694,10 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}כלי �
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}{1:CURRENCY} :בשנה שעברה{NBSP} {0:CURRENCY}) :רווח השנה
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}רכבות זמינות
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}רכבים זמינים
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}כלי שייט זמינות
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}כלי טייס זמינים
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :רכבות זמינות
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :רכבים זמינים
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :כלי שייט זמינות
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :כלי טייס זמינים
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK} ראה רשימה של קטרים זמינים לסוג כלי הרכב הזה
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}נהל רשימה

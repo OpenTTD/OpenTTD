@@ -2712,10 +2712,10 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Aeromobi
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Profitto quest'anno: {CURRENCY} (anno scorso: {CURRENCY})
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}Treni disponibili
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}Automezzi disponibili
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}Navi disponibili
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Aeromobili disponibili
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Treni disponibili
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Automezzi disponibili
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Navi disponibili
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Aeromobili disponibili
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Mostra un elenco di veicoli disponibili in questa categoria di mezzi di trasporto
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Gestione veicoli

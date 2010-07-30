@@ -2711,10 +2711,10 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Aeronave
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Beneficio este año: {CURRENCY} (año anterior: {CURRENCY})
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}Trenes disponibles
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}Vehículos disponibles
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}Barcos disponibles
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Aviones disponibles
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Trenes disponibles
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Vehículos disponibles
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Barcos disponibles
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Aviones disponibles
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Ver la lista de los motores disponibles para este tipo de vehículo.
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Administrar lista

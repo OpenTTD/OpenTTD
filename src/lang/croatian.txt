@@ -2806,10 +2806,10 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Zrakoplo
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Ovogodišnja dobit: {CURRENCY} (prošlogodišnja: {CURRENCY})
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}Dostupni vlakovi
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}Dostupna vozila
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}Dostupni brodovi
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Dostupni zrakoplovi
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Dostupni vlakovi
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Dostupna vozila
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Dostupni brodovi
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Dostupni zrakoplovi
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Pogledaj popis dostupnih dizajna motora za ovu vrstu vozila.
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Uredi popis

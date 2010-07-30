@@ -2710,10 +2710,10 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}AeronavÄ
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Profit anul acesta: {CURRENCY} (anul trecut: {CURRENCY})
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}Trenuri disponibile
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}Vehicule disponibile
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}Nave disponibile
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Aeronave disponibile
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Trenuri disponibile
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Vehicule disponibile
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Nave disponibile
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Aeronave disponibile
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Vezi o lista de proiecte disponibile de motoare pentru acest tip de vehicul.
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Gestioneaza lista

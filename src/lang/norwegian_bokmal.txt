@@ -2699,10 +2699,10 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Luftfart
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Fortjeneste i år: {CURRENCY} (i fjor: {CURRENCY})
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}Tilgjengelige tog
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}Tilgjengelige kjøretøy
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}Tilgjengelige skip
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Tilgjengelige luftfartøy
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Tilgjengelige tog
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Tilgjengelige kjøretøy
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Tilgjengelige skip
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Tilgjengelige luftfartøy
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Se en liste over tilgjengelige modeller for denne kjøretøytypen.
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Administrer liste

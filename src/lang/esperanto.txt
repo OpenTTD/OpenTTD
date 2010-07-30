@@ -2592,10 +2592,10 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Aviadilo
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Gajno ĉi-jare: {CURRENCY} (pasintjare: {CURRENCY})
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}Haveblaj Trajnoj
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}Haveblaj Veturiloj
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}Haveblaj Ŝipoj
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Haveblaj Aviadiloj
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Haveblaj Trajnoj
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Haveblaj Veturiloj
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Haveblaj Ŝipoj
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Haveblaj Aviadiloj
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Vidu liston da ĉiuj haveblaj maŝinoj por ĉi tiu veturilspeco.
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Manaĝu liston

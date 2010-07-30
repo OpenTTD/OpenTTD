@@ -2700,10 +2700,10 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Uçak - 
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Bu seneki kâr: {CURRENCY} (geçen sene: {CURRENCY})
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}Kullanılabilir Trenler
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}Kullanılabilir Arabalar
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}Kullanılabilir Gemiler
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Kullanılabilir Uçaklar
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Kullanılabilir Trenler
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Kullanılabilir Arabalar
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Kullanılabilir Gemiler
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Kullanılabilir Uçaklar
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Bu araç türü için mümkün olan lokomotif tasarimlari
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Listeyi yönet

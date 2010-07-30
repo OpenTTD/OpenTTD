@@ -2682,10 +2682,10 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Pesawat 
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Keuntungan tahun ini: {CURRENCY} (tahun lalu: {CURRENCY})
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}Keretapi sedia ada
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}Kenderaan sedia ada
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}Kapal sedia ada
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Pesawat sedia ada
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Keretapi sedia ada
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Kenderaan sedia ada
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Kapal sedia ada
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Pesawat sedia ada
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Senaraikan rekabentuk enjin yang tersedia untuk jenis kenderaan ini.
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Uruskan senarai

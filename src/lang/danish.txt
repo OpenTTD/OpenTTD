@@ -2679,10 +2679,10 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Fly - kl
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Afkast i år: {CURRENCY} (sidste år: {CURRENCY})
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}Tilgængelige tog
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}Tilgæn. vejkøretøjer
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}Tilgængelige skibe
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Tilgængelige fly
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Tilgængelige tog
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Tilgæn. vejkøretøjer
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Tilgængelige skibe
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Tilgængelige fly
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Se liste over tilgængelige designs for denne køretøjstype.
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Administrer liste

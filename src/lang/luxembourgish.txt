@@ -2696,10 +2696,10 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Fliger -
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Profit dëst Joer: {CURRENCY} (lescht Joer: {CURRENCY})
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}Verfügbar Zich
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}Verfügbar Gefierer
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}Verfügbar Schëffer
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Verfügbar Fligern
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Verfügbar Zich
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Verfügbar Gefierer
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Verfügbar Schëffer
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Verfügbar Fligern
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Lëscht vun allen Maschinen fir dësen Typ weisen.
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Verwaltungslëscht

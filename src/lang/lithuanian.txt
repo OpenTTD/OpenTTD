@@ -2772,10 +2772,10 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Lėktuva
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Šių metų pelnas: {CURRENCY} (praėjusių metų: {CURRENCY})
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}Galimi traukiniai
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}Galimi automobiliai
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}Galimi laivai
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Galimi lėktuvai
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Galimi traukiniai
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Galimi automobiliai
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Galimi laivai
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Galimi lėktuvai
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Peržiūrėti galimų variklių sąrašą tinkamų šiai transporto priemonei.
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Tvarkyti sąrašą

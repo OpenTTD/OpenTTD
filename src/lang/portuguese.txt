@@ -2710,10 +2710,10 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Aeronave
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Lucro deste ano: {CURRENCY} (último ano: {CURRENCY})
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}Comboios Disponíveis
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}Veículos Disponíveis
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}Barcos Disponíveis
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Aviões Disponíveis
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Comboios Disponíveis
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Veículos Disponíveis
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Barcos Disponíveis
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Aviões Disponíveis
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Ver lista de designs disponíveis de locomotivas para este tipo de veículo.
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Gerir lista

@@ -2739,10 +2739,10 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Letalo -
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Dobiček letos: {CURRENCY} (lani: {CURRENCY})
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}Vlaki na voljo
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}Vozila na voljo
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}Ladje na voljo
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Letala na voljo
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Vlaki na voljo
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Vozila na voljo
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Ladje na voljo
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Letala na voljo
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Prikaži seznam motorjev na voljo za ta tip vozila.
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Uredi seznam

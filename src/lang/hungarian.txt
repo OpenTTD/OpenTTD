@@ -2774,10 +2774,10 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Repülő
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Idei nyereség: {CURRENCY} (Tavalyi: {CURRENCY})
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}Elérhető vonatok
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}Elérhető közúti járművek
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}Elérhető hajók
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Elérhető repülők
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Elérhető vonatok
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Elérhető közúti járművek
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Elérhető hajók
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Elérhető repülők
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Tekintsd meg az ehhez a járműtípushoz választható mozdonyok listáját
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Lista kezelése

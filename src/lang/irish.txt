@@ -2710,10 +2710,10 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Aerárth
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Brabús i mbliana: {CURRENCY} (anuraidh: {CURRENCY})
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}Traenacha atá ar fáil
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}Feithiclí atá le fáil
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}Longa atá le fáil
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Aerárthaigh atá le fáil
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Traenacha atá ar fáil
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Feithiclí atá le fáil
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Longa atá le fáil
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Aerárthaigh atá le fáil
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Féach liosta de na dearthaí innill atá ar fáil don chineál feithicle seo.
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Bainistigh liosta

@@ -2641,10 +2641,10 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}الطا
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK} دخل السنة الحالية : {CURRENCY} السنة السابقة : {CURRENCY}
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}القطارات المتاحة
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}العربات المتاحة
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}السفن المتاحة
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}الطائرات المتاحة
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :القطارات المتاحة
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :العربات المتاحة
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :السفن المتاحة
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :الطائرات المتاحة
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}عرض جميع المحركات لهذا النوع من العربات
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}ادارة الوحدات

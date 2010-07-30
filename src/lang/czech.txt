@@ -2767,10 +2767,10 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Letadlo 
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Zisk tento rok: {CURRENCY} (minulý rok: {CURRENCY})
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}Dostupné vlaky
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}Dostupná vozidla
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}Dostupné lodě
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Dostupná letadla
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Dostupné vlaky
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Dostupná vozidla
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Dostupné lodě
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Dostupná letadla
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Ukázat seznam dostupných variant pro tento typ vozidla.
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Upravit seznam

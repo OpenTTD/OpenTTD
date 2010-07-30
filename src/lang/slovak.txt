@@ -2777,10 +2777,10 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Lietadlo
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Zisk tento rok: {CURRENCY} (posledný rok: {CURRENCY})
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}Dostupné vlaky
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}Dostupné vozidlá
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}Dostupné lode
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Dostupné lietadlá
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Dostupné vlaky
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Dostupné vozidlá
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Dostupné lode
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Dostupné lietadlá
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Zobraziť zoznam dostupných dizajnov rušňov pre tento typ.
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Možnosti

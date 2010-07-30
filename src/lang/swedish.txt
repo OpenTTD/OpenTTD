@@ -2699,10 +2699,10 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Flygplan
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Vinst detta år: {CURRENCY} (förra året: {CURRENCY})
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}Tillgängliga tåg
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}Tillgängliga fordon
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}Tillgängliga skepp
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Tillgängliga flyplan
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Tillgängliga tåg
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Tillgängliga fordon
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Tillgängliga skepp
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Tillgängliga flyplan
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Se lista med tillgängliga motordesigner för denna fordonstyp
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Behandlingslista

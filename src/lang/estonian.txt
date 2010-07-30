@@ -2754,10 +2754,10 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Lennuk -
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Kasum sellel aastal: {CURRENCY} (eelneval: {CURRENCY})
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}Saadaval rongid
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}Saadaval sõidukid
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}Saadaval laevad
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Saadaval õhusõidukid
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Saadaval rongid
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Saadaval sõidukid
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Saadaval laevad
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Saadaval õhusõidukid
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Vaata nimekirja seda tüüpi veovahenditest
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Halda nimekirja

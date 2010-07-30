@@ -2576,10 +2576,10 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Lidapar�
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Peļņa šogad: {CURRENCY} (pērn: {CURRENCY})
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}Pieejamie vilcieni
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}Pieejamie transportlīdzekļi
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}Pieejamie kuģi
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Pieejamie lidaparāti
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Pieejamie vilcieni
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Pieejamie transportlīdzekļi
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Pieejamie kuģi
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Pieejamie lidaparāti
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Apskatīties visus vilcējus, kas pieejami šim transportlīdzekļu veidam.
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Labot sarakstu

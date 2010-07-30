@@ -2606,10 +2606,10 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Avións 
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Beneficio este ano: {CURRENCY} (ano pasado: {CURRENCY})
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}Trens Dispoñibles
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}Vehículos Dispoñibles
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}Barcos Dispoñibles
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Aeronaves Dispoñibles
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Trens Dispoñibles
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Vehículos Dispoñibles
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Barcos Dispoñibles
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Aeronaves Dispoñibles
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Ve-la lista das máquinas dispoñibles para este tipo de vehículo.
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Xestionar lista

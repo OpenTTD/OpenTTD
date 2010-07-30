@@ -2627,10 +2627,10 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}飛行�
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}今年の損益：{CURRENCY} (去年：{CURRENCY})
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}購入可能な列車
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}購入可能な道路車両
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}購入可能な船舶
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}購入可能な飛行機
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :購入可能な列車
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :購入可能な道路車両
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :購入可能な船舶
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :購入可能な飛行機
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}この車両種類のデザインのリストを表示します
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}リストを管理

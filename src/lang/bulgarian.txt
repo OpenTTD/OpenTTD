@@ -2667,10 +2667,10 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Само
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Печалба тази година: {CURRENCY} (минала година: {CURRENCY})
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}Налични влакове
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}Налични коли
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}Налични кораби
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Налични самолети
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Налични влакове
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Налични коли
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Налични кораби
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Налични самолети
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Виж списъкът с наличните видове машини за този тип превозно средство.
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Направи списък

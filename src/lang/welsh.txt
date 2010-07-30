@@ -2549,10 +2549,10 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Awyrenna
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Elw eleni: {CURRENCY} (llynedd: {CURRENCY})
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}Trenau sydd ar gael
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}Cerbydau sydd ar gael
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}Llongau sydd ar gael
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Awyrennau sydd ar gael
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Trenau sydd ar gael
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Cerbydau sydd ar gael
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Llongau sydd ar gael
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Awyrennau sydd ar gael
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Gweld rhestr o'r cynlluniau modur sydd ar gael ar gyfer y math cerbyd hwn.
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Golygu'r rhestr

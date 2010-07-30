@@ -2574,10 +2574,10 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Flugvél
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Hagnaður þetta ár: {CURRENCY} (síðasta ár: {CURRENCY})
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}Lestaúrval
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}Bifreiðaúrval
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}Skipaúrval
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Flugvélaúrval
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Lestaúrval
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Bifreiðaúrval
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Skipaúrval
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Flugvélaúrval
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Skoða úrval
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Stýra lista

@@ -2698,10 +2698,10 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Luftfart
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Forteneste i år: {CURRENCY} (førre år: {CURRENCY})
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}Tilgjengelege tog
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}Tilgjengelege køyretøy
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}Tilgjengelege skip
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Tilgjengelege luftfartøy
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Tilgjengelege tog
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Tilgjengelege køyretøy
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Tilgjengelege skip
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Tilgjengelege luftfartøy
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Sjå ei liste over mogelege modellar for denne køyretøytypen.
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Behandle liste

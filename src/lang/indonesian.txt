@@ -2710,10 +2710,10 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Pesawat 
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Laba tahun ini: {CURRENCY} (tahun lalu: {CURRENCY})
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}Kereta tersedia
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}Kendaraan tersedia
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}Kapal tersedia
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Pesawat tersedia
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Kereta tersedia
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Kendaraan tersedia
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Kapal tersedia
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Pesawat tersedia
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Lihat daftar desain mesin yang tersedia untuk kendaraan tipe ini
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Atur Daftar

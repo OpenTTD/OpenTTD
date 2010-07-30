@@ -2649,10 +2649,10 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Aircraft
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Profit this year: {CURRENCY} (last year: {CURRENCY})
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}Available Trains
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}Available Road Vehicles
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}Available Ships
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Available Aircraft
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Available Trains
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Available Road Vehicles
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Available Ships
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Available Aircraft
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}See a list of available engine designs for this vehicle type.
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Manage list

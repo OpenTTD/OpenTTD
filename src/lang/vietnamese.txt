@@ -2710,10 +2710,10 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Máy bay
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Lợi nhuận năm nay: {CURRENCY} (năm ngoái: {CURRENCY})
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}Tàu sẵn có
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}Xe sẵn có
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}Các tàu thuỷ sẵn có
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Máy bay sẵn có
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Tàu sẵn có
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Xe sẵn có
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Các tàu thuỷ sẵn có
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Máy bay sẵn có
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Xam danh sách các động cơ thiết kế cho loại toa xe này.
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Quản lý danh sách

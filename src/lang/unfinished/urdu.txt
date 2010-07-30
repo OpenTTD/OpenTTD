@@ -989,10 +989,10 @@ STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}منظو
 
 
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}دستیاب ریل گاڑیاں
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}دستیاب گاڑیاں
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}دستیاب کشتیاں
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}دستیاب ہوایی جہاز
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :دستیاب ریل گاڑیاں
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :دستیاب گاڑیاں
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :دستیاب کشتیاں
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :دستیاب ہوایی جہاز
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}اس قسم کی گاڑیوں کےلیے دستیاب انجنوں کی فہرست دیکھو
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}فہرست کا انتظام کرو

@@ -2905,10 +2905,10 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Letilice
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Ovogodišnja zarada: {CURRENCY} (prošle godine: {CURRENCY})
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}Dostupni Vozovi
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}Dostupna Drumska Vozila
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}Dostupni Brodovi
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Dostupne Letelice
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Dostupni Vozovi
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Dostupna Drumska Vozila
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Dostupni Brodovi
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Dostupne Letelice
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Pogledajte listu raspoloživih mašina za ovu vrstu vozila.
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Upravljanje

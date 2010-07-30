@@ -3079,10 +3079,10 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Samolot 
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Zysk w tym roku: {CURRENCY} (ostatni rok: {CURRENCY})
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}Dostępne lokomotywy
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}Dostępne pojazdy
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}Dostępne statki
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Dostępny samolot
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Dostępne lokomotywy
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Dostępne pojazdy
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Dostępne statki
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Dostępny samolot
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Zobacz listę dostępnych projektów silników dla tego typu pojazdów.
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Zarządzaj listą

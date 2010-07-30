@@ -2880,10 +2880,10 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Авиа
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Прибыль в этом году: {CURRENCY} (прошлый год: {CURRENCY})
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}Доступные поезда
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}Доступные автомобили
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}Доступные суда
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Доступные самолёты
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Доступные поезда
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Доступные автомобили
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Доступные суда
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Доступные самолёты
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Список доступного транспорта
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Организация

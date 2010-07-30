@@ -2711,10 +2711,10 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Flugzeug
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Gewinn im laufenden Jahr: {CURRENCY} (vergangenes Jahr: {CURRENCY})
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}Verfügbare Züge
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}Verfügbare Fahrzeuge
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}Verfügbare Schiffe
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Verfügbare Flugzeuge
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Verfügbare Züge
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Verfügbare Fahrzeuge
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Verfügbare Schiffe
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Verfügbare Flugzeuge
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Verfügbare Fahrzeuge für diesen Fahrzeugtyp auflisten
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Liste verwalten

@@ -2791,10 +2791,10 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Αερο
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Κέρδος αυτό το έτος: {CURRENCY} (προηγούμενο έτος: {CURRENCY})
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}Διαθέσιμα Τρένα
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}Διαθέσιμα Οχήματα
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}Διαθέσιμα Πλοία
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Διαθέσιμα Αεροπλάνα
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Διαθέσιμα Τρένα
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Διαθέσιμα Οχήματα
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Διαθέσιμα Πλοία
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Διαθέσιμα Αεροπλάνα
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Προβολή λίστας διαθέσιμων σχεδίων μηχανών για τον τύπο οχήματος.
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Διαχείριση λίστας

@@ -1241,10 +1241,10 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}هواپ
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}سود امسال : {CURRENCY} (سود پارسال: {CURRENCY})
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}قطارهای موجود
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}خودروهای موجود
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}کشتی های موجود
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}هواپیماهای موجود
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :قطارهای موجود
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :خودروهای موجود
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :کشتی های موجود
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :هواپیماهای موجود
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}مشاهده ی تمامی موتورهای موجود برای این نوع وسیله ی نقلیه
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}اداره ی لیست
