@@ -215,6 +215,7 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} ลู�
 
 STR_UNITS_FORCE_SI                                              :{COMMA} กิโลนิวตัน
 
+
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}ใส่คำกรอง
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}ป้อนคำค้นเพื่อกรองรายการ
@@ -560,7 +561,7 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}เง�
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}เงินกู้:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}รวมทั้งสิ้น:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}ตัวเลขแสดงรายได้จากการขนส่งของพานะนั้นๆในปีที่แล้ว
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}จำนวนของยานพาหนะที่ทำกำไรในปีที่ผ่านมา ทั้ง รถ รถไฟ เรือ และ เครื่องบิน
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}ตัวเลขแสดงสถานีที่รองรับการซ่อมแซมในปัจจุบัน
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}รายได้จากยานพาหนะนี้รวมกับรายได้ต่ำสุด (แสดงเฉพาะยานพาหนะที่มีอายุมากกว่าสองปีขึ้นไป)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}รายได้รวมทั้งหมดในฟนึ่งไตรมาส กับรายได้ต่ำสุดในรอบ 12 ไตรมาส
@@ -1032,73 +1033,105 @@ STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}ต้�
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :ดั้งเดิม
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :เหมือนจริง
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}เนินสูงเกินไปสำหรับรถไฟ {ORANGE}{STRING}%
-STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}ห้ามรถไฟและเรือหันกลับในมุม 90 องศา: {ORANGE}{STRING} {LTBLUE} (ใช้ไม่ได้กับตัวค้นหาเส้นทางใหม่)
+STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}ห้ามรถไฟและเรือเลี้ยวในมุม 90 องศา: {ORANGE}{STRING} {LTBLUE} (ใช้ไม่ได้กับ OPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}รวมสถานีรถไฟที่สร้างต่อกันเป็นสถานีเดียว: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}อนุญาตให้ใช้สถานีร่วมกันแม้ไม่ได้ติดกัน: {ORANGE}{STRING}
-STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}ใช้อัลกอริธึมเพื่อการบรรจุเข้าไปในพาหนะที่ดีขึ้น: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}อนุญาตให้เป็นสถานีเดียวกันแม้ไม่ได้ติดกัน: {ORANGE}{STRING}
+STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}ใช้การคำนวณการบรรจุสินค้าบรรทุกที่ปรับปรุงแล้ว: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}บรรจุเข้าไปในพาหนะทีละน้อยๆ: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}ภาวะเงินเฟ้อ: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}ส่งสินค้าที่บรรทุกมาลงสถานีเฉพาะเมื่อมีความต้องการเท่านั้น: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}ส่งสินค้าที่บรรทุกลงที่สถานีที่มีความต้องการเท่านั้น: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}อนุญาตให้สร้างสะพานยาวมากๆ ได้: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}อนุญาตมีโรงเก็บพาหนะอยู่ในรายการการเดินทาง: {ORANGE}{STRING}
+STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}อนุญาติให้เข้าโรงซ่อมบำรุงในรายการเดินทาง: {ORANGE}{STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}กำหนดวิธีหลักในการก่อสร้างอุตสาหกรรมเอง: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :ไม่เลย
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :ตามอุตสาหกรรมอื่นๆ
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :สำรวจ
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}อนุญาตให้มีหลายอุตสาหกรรมต่อหนึ่งเมือง: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}แสดงวันที่แบบยาวบนแถบสถานะเสมอ: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}แสดงสัญญาณบนฝั่งถนนมีการขับ: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}แสดงสัญญาณในข้างที่ขับ: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}แสดงหน้าต่างการเงินเมื่อสิ้นสุดแต่ละปี: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}ให้ค่าเริ่มต้นคำสั่งใหม่เป็น 'ไม่หยุดที่ใด': {ORANGE}{STRING}
-STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :ใกล้ปลาย
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}ตั้งให้คำสั่งที่เพิ่มใหม่เป็น 'ไม่หยุด' โดยปริยาย: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}คำสั่งใหม่ หยุดโดยปริยายที่ {ORANGE}{STRING}{LTBLUE} ของชานชาลา
+STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :ฝั่งใกล้
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :ตรงกลาง
-STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :สุดปลาย
+STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :ฝั่งไกล
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}การเข้าคิวรถ (มี quantum effects): {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}แพนหน้าต่างเมื่อเม้าส์อยู่ใกล้ขอบ: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}อนุญาตให้ติดสินบนเจ้าหน้าที่ท้องถิ่น: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}อนุญาตให้ซื้อสิทธิ์การขนส่งแต่เพียงผู้เดียว: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}อนุญาตให้ส่งเงินแก่บริษัทอื่นๆ: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}สถานีที่ไม่มีรูปแบบ: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}ตัวแปรความเร็วเครื่องบิน: {ORANGE}1 / {STRING}
-STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}ปริมาณเครื่องบินที่ตก: {ORANGE}{STRING}
+STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}ตัวคุณสำหรับการขนส่งสินค้า เพื่อจำลองรถไฟหนัก: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}อัตราส่วนความเร็วเครื่องบิน: {ORANGE}1 / {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}จำนวนเครื่องบินที่ตก: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :ไม่มี
-STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :ลดต่ำลง
+STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :ลดลง
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :ปกติ
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}อนุญาตให้ขับผ่านที่หยุดรถบนถนนของเมือง: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}อนุญาตให้ขับผ่านที่หยุดรถบนถนนของบริษัทอื่นๆ: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}อนุญาตให้มีที่หยุดรถแบบขับผ่านบนถนนที่เมืองเป็นเจ้าของ: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}อนุญาตให้มีที่หยุดรถแบบขับผ่านบนถนนของบริษัทอื่นๆ: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}อนุญาติให้สร้างสถานีติดกัน: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}เปิดใช้การ NewGRF engine หลายชุดพร้อมกัน: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}เปลี่ยนการตั้งค่านี้ไม่สามารถทำได้เมื่อมียานพาหนะ
 
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}สนามบินไม่มีวันหมดอายุ: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}ยานพาหนะไม่มีวันหมดอายุ: {ORANGE}{STRING}
+STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}เตือนเมื่อรถไฟหลงทาง: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}ทบทวนดูคำสั่งของยานพาหนะ: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :ไม่
+STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :ใช่ แต่ยกเว้นยานพาหนะที่หยุดวิ่ง
+STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :ของทุกยานพาหนะ
+STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}เตือนเมือรายได้ของยานพาหนะเป็นลบ: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}ยานพาหนะไม่หมดอายุ: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}เปลี่ยนยานพาหนะใหม่โดยอัตโนมัติเมื่อเก่าเกินไป: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}เปลี่ยนยานพาหนะใหม่โดยอัตโนมัติเมื่อครบ {ORANGE}{STRING}{LTBLUE} เดือน ก่อน/หลัง สิ้นสุดอายุ
-STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}จำนวนเงินขั้นต่ำที่ต้องใช้ในการเปลี่ยน: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}จำนวนเงินขั้นต่ำที่ให้เปลี่ยนยานพาหนะโดยอัตโนมัติ: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}ระยะเวลาแสดงข้อความผิดพลาด: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}เวลาหน่วงของ hover events: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}เวลาหน่วงของ hover events: {ORANGE}ปิดใช้งาน
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}แสดงจำนวนประชากรของเมืองในป้ายชื่อเมือง: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}ตัวสังเคราะห์ภูมิประเทศ: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :ดั้งเดิม
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}ระยะห่างมากที่สุดจากขอบสำหรับโรงน้ำมัน{ORANGE}{STRING}
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}เส้นความสูงสำหรับหิมะ: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}ระยะห่างมากที่สุดจากขอบสำหรับโรงกลั่นน้ำมัน{ORANGE}{STRING}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}ระดับความสูงแนวหิมะ: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}ความหยาบของพื้นที่ (เฉพาะ TerraGenesis) : {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :ราบเรียบมาก
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :ราบเรียบ
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :หยาบ
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :หยาบมาก
 STR_CONFIG_SETTING_TREE_PLACER                                  :{LTBLUE}อัลกอริธึมสำหรับการวางต้นไม้: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TREE_PLACER_NONE                             :ไม่เลย
+STR_CONFIG_SETTING_TREE_PLACER_NONE                             :ไม่มี
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :ดั้งเดิม
-STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :ทำให้ดีขึ้น
+STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :ปรังปรุงแล้ว
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}ทิศการหมุน Heightmap: {ORANGE}{STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :ทวนเข็มนาฬิกา
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :ตามเข็มนาฬิกา
+STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}ระดับความสูงที่ แผนที่ flat scenario ได้: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}ยอมให้เปลี่ยนสภาพพื้นผิวบริเวณช่องริมขอบแผนที่: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}หนึ่งช่องหรือมากกว่านั้นที่ขอบด้านทิศเหนือไม่ว่าง
+STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}ช่องหนึ่งหรือมากกว่าที่ขอบด้านในด้านหนึ่งไม่ใช่น้ำ
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}ขยายสถานีสูงสุด: {ORANGE}{STRING} {RED}คำเตือน: ยิ่งค่าสูงยิ่งทำให้เกมช้า
+STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}ระยะแผ่สถานีสูงสุด: {ORANGE}{STRING} {RED}คำเตือน: ยิ่งค่าสูงยิ่งทำให้เกมช้า
+STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}ซ่อมบำรุง เฮลิคอปเตอร์ ที่ลานจอด ฮ. โดยอัตโนมัติ: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}โยงแถบเครื่องมือภูมิทัศน์กับแถบเครื่องมือรถไฟ/ถนน/น้ำ/สนามบิน: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}สีของพื้นที่ใช้ในแผนที่ย่อ: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}สีของพื้นดินที่ใช้ในแผนที่ย่อ: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :สีเขียว
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :สีเขียวแก่
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :สีม่วง
+STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}กลับทิศการเลื่อน: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}เลื่อนอย่างนิ่มนวลบนจอภาพ: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}แสดง tooltip วัดขนาดเมื่อใช่เครื่องมีสร้างต่าง ๆ: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LIVERIES_NONE                                :ไม่เลย
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :บริษัทของท่าน
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :ทุกบริษัท
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :{LTBLUE}ความสามารถของปุ่มเลื่อน: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :ขยายแผนที่
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :เลื่อนแผนที่
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :ปิด
+STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}ความเร็วการเลื่อนของแผนที่: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}จำลองคลิกขวา: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+Click
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :ปิด
 
@@ -1109,13 +1142,15 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :สั้น (3
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :มาตรฐาน (2551-12-31)
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}หยุดเกมอัตโนมัติเมื่อเริ่มเกมใหม่: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}ใช้รายชื่อยานพาหนะพิเศษ: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}ใช้รายการยานพาหนะขั้นสุง: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :ปิด
+STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}ใช้ตัวบ่งบอกการบรรจุ: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :ปิด
-STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}ยอมให้ใช้การเคาะเวลาสำหรับยานพาหนะ: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}เปิดใช้งานตารางเวลาสำหรับยานพาหนะ: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}แสดงตารางเวลาในแบบติ๊กแทนแบบวัน: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}แสดงเวลามาถึงและออกไปในตารางเวลา: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}ค่าเริ่มต้นของรางรถไฟ(หลังเริ่มเกมใหม่/โหลดเกมเก่า): {ORANGE}{STRING}
+STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}การสร้างคำสั่งยานพาหนะอย่างรวดเร็ว: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}ค่าเริ่มต้นชนิดรางรถไฟ(หลังเริ่มเกมใหม่/โหลดเกมเก่า): {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :มีใช้ครั้งแรก
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :มีใช้ครั้งสุดท้าย
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :ใช้มากที่สุด
@@ -1358,6 +1393,8 @@ STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}สุ�
 
 # Fund new industry window
 
+# Industry cargoes window
+
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}ข้อมูลพื้นที่
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}ราคาค่าทำพื้นที่ให้โล่ง: {LTBLUE}ไม่สามารถทำได้
@@ -1418,6 +1455,13 @@ STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}กร�
 
 
 
+# NewGRF inspect window
+
+
+
+# Sprite aligner window
+
+
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}เกิดความผิดพลาดร้ายแรงเกี่ยวกับ NewGRF: {}{STRING}
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Read past end of pseudo-sprite.
@@ -1427,8 +1471,12 @@ STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}คำ�
 
 
 
+# NewGRF status
+
 # NewGRF 'it's broken' warnings
 
+
+# 'User removed essential NewGRFs'-placeholders for stuff without specs.
 
 # Sign list window
 
@@ -1563,14 +1611,15 @@ STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}เป�
 
 # Depot window
 
+
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}รถไฟ - คลิกที่รถไฟเพื่อดูรายละเอียด, คลิกค้างแล้ววางตู้แต่ละตู้เพื่อ เพิ่ม/ลบ จากขบวน
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}รถ - คลิกที่รถเพื่อดูรายละเอียด
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}เรือ - คลิกที่เรือเพื่อดูรายละเอียด
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}เครื่องบิน - คลิกที่เครื่องบินเพื่อดูรายละเอียด
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}รถไฟ - ลากพาหนะด้วยคลิกซ้ายสำหรับ เพิ่ม/ลด จากขบวนรถไฟ, คลิกขวาสำหรับข้อมูล, กด Ctrl ค้างไว้เพื่อกำหนดให้กับขบวนต่อไป
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}รถ - คลิกขวาที่รถเพื่อดูรายละเอียด
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}เรือ - คลิกขวาที่เรือเพื่อดูรายละเอียด
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}เครื่องบิน - คลิกขวาที่เครื่องบินเพื่อดูรายละเอียด
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}คลิกค้างที่ตู้รถไฟแล้วลากมาวางที่นี่เพื่อขาย
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}คลิกค้างที่รถแล้วลากมาวางที่นี่เพื่อขาย
@@ -1625,6 +1674,8 @@ STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}ไม�
 
 
 
+
+# Vehicle stopped/started animations
 
 # Vehicle details
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}ชื่อ
@@ -1793,6 +1844,7 @@ STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}ต้�
 
 
 
+
 # Autoreplace related errors
 
 # Rail construction errors
@@ -1844,6 +1896,8 @@ STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... ไ�
 # Timetable related errors
 
 # Sign related errors
+
+# Translatable comment for OpenTTD's desktop shortcut
 
 ##id 0x2000
 # Town building names
@@ -1900,6 +1954,7 @@ STR_FORMAT_BUOY_NAME_SERIAL                                     :ทุ่น {T
 STR_FORMAT_COMPANY_NUM                                          :(บริษัท {COMMA})
 STR_FORMAT_GROUP_NAME                                           :กลุ่ม {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
+
 
 STR_UNKNOWN_STATION                                             :ไม่ทราบสถานี
 STR_DEFAULT_SIGN_NAME                                           :ป้าย
@@ -1989,3 +2044,4 @@ STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
+

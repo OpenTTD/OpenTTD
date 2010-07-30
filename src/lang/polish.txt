@@ -2496,6 +2496,17 @@ STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Zleć po
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Zbuduj
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Ufunduj
 
+# Industry cargoes window
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Kolejność przetwarzania dla {STRING}
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Kolejność przetwarzania dla {STRING}
+STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Przedsiębiorstwa produkujące
+STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Przedsiębiorstwa odbierające
+STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Domy
+STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Kliknij na przedsiębiorstwie aby zobaczyć jego dostawców i odbiorców
+STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Kliknij na towar aby zobaczyć jego dostawców i odbiorców
+STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Łańcuch przetwarzania
+STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Wyświetla dostawców i odbiorców dla towaru
+
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Informacja o terenie
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Koszt czyszczenia: {LTBLUE}N/D
@@ -3823,6 +3834,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... nie 
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Miasto nie będzie budować dróg. Możesz zezwolić na budowę dróg poprzez Ustawienia zaawansowane->Ekonomia->Miasta.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Trwają roboty drogowe
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Nie można usunąć tego miasta...{}Stacja lub zajezdnia przynależy do tego miasta lub obszar miasta nie może być usunięty
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... w centrum tego miasta nie ma odpowiedniego miejsca na statułę
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... zbyt wiele przedsiębiorstw
@@ -3938,8 +3950,8 @@ STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Nie moż
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Nie można stąd usunąć torów...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Nie można stąd usunąć sygnałów...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Nie można tutaj zmienić sygnałów...
-STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}...brak torów kolejowych
-STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}...brak sygnałów
+STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... brak torów kolejowych
+STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... brak sygnałów
 
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Nie można zmienić typu torów w tym miejscu...
 

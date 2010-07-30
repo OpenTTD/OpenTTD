@@ -653,6 +653,8 @@ STR_ABANDON_GAME_CAPTION                                        :{WHITE}Вӑйй
 # Livery window
 
 
+STR_LIVERY_DMU                                                  :DMU
+STR_LIVERY_EMU                                                  :EMU
 
 # Face selection window
 

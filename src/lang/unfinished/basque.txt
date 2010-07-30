@@ -1143,6 +1143,12 @@ STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STR
 # About OpenTTD window
 
 # Save/load game/scenario
+STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Kargatu
+STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Aukeratutako partida kargatu
+STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Jokoaren Xehetasunak
+STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Ez dago informaziorik.
+STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
+STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
 
 
 # World generation
@@ -1160,7 +1166,11 @@ STR_MAPGEN_VARIETY                                              :{BLACK}Barietat
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 
 # NewGRF settings
+STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}NewGRF-ko artxibo aktiboak
+STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}NewGRF artxibo ez aktiboak
+STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Aukeratu aurre-ezarria
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Iragazle lokarria:
+STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}Artxiboak berriro eskaneatu
 
 
 
@@ -1183,6 +1193,7 @@ STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}NewGRF e
 
 
 # NewGRF status
+STR_NEWGRF_LIST_NONE                                            :Bat ere ez
 STR_NEWGRF_LIST_ALL_FOUND                                       :Artxibo guztiak presente
 STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Artxibo baterakideak aurkituta
 STR_NEWGRF_LIST_MISSING                                         :{RED}Artxiboak faltatzen dira
@@ -1191,6 +1202,9 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Artxiboak 
 
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs.
+STR_NEWGRF_INVALID_CARGO                                        :<karga baliogabea>
+STR_NEWGRF_INVALID_ENGINE                                       :<garraio modelo baliogabea>
+STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<industria baliogabea>
 
 # Sign list window
 
@@ -1290,6 +1304,7 @@ STR_INDUSTRY_VIEW_WAITING_STOCKPILE_CARGO                       :{YELLOW}{CARGO}
 
 # Depot window
 
+STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}Deposituaren izena aldatu
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -1438,6 +1453,7 @@ STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{U
 # Income 'floats'
 
 # Saveload messages
+STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<ez dago baliagarri>
 
 # Map generation messages
 
@@ -1515,6 +1531,7 @@ STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... ez d
 
 
 
+STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... garraioa suntsituta
 
 # Specific vehicle errors
 
@@ -1528,6 +1545,7 @@ STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... ez d
 # Sign related errors
 
 # Translatable comment for OpenTTD's desktop shortcut
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Transport Tycoon Deluxe-ren klon bat
 
 ##id 0x2000
 # Town building names
@@ -1558,6 +1576,7 @@ STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRI
 
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 
+STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{STATION} Hangarra
 
 
 STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}
@@ -1580,6 +1599,7 @@ STR_VIEWPORT_WAYPOINT_TINY                                      :{TINYFONT}{WAYP
 # Simple strings to get specific types of data
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
+STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}

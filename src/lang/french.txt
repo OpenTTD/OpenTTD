@@ -3449,6 +3449,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... il n
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}La ville ne construira pas de routes. Vous pouvez activer la construction des routes sous Options avancées->Économie->Villes.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Route en travaux
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Impossible de supprimer cette ville...{}Une station ou un dépôt font référence à cette ville ou une propriété municipale ne peut pas être supprimé
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... aucun emplacement convenable disponible pour une statue dans ce centre-ville
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... trop d'industries

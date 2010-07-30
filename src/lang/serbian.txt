@@ -3659,6 +3659,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... viš
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Naselje neće graditi kolovoze. Možete uključiti gradnju kolovoza preko Napredna Podešavalja->Ekonomija->Naselja.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Putni radovi u toku
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Ovo naselje se ne može ukloniti...{}Stanica ili depo na zemljištvu naselja se ne može ukloniti
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... ne postoji prikladno mesto za spomenik u centru ovog naselja
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... ima previše fabrika
@@ -3708,7 +3709,7 @@ STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Nemoguć
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Nemoguće je ukloniti putničku tramvajsku stanicu odatle...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Nemoguće je ukloniti teretnu tramvajsku stanicu odatle...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Potrebno je prvo ukloniti stajalište
-STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}...tu nema stanice
+STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... ovde nema stanice
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Potrebno je prvo srušiti železničku stanicu
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Potrebno je prvo srušiti autobusku stanicu
@@ -3774,8 +3775,8 @@ STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Izgradnj
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Nemoguće je ukloniti železničku prugu odatle...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Nemoguće je ukloniti signalizaciju odatle...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Signalizacije se ovde ne može promeniti...
-STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}...tu nema železničke pruge
-STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}...tu nema signalizacije
+STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... ovde nema železničke pruge
+STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... ovde nema signalizacije
 
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Vrsta pruge se ovde ne može promeniti...
 
@@ -3786,8 +3787,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Izgradnj
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Izgradnja tramvajske pruge ovde nije moguća...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Nemoguće je ukloniti put odatle...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Nemoguće je ukloniti tramvajsku prugu odatle...
-STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}...tu nema puta
-STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}...tu nema tramvajske pruge
+STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... ovde nema puta
+STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... ovde nema tramvajske pruge
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Ovde je nemoguća izgradnja kanala...
