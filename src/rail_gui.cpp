@@ -644,7 +644,6 @@ struct BuildRailToolbarWindow : Window {
 		const RailtypeInfo *rti = GetRailTypeInfo(railtype);
 
 		assert(railtype < RAILTYPE_END);
-		this->GetWidget<NWidgetCore>(RTW_CAPTION)->widget_data      = rti->max_speed > 0 ? STR_TOOLBAR_RAILTYPE_VELOCITY : STR_JUST_STRING;
 		this->GetWidget<NWidgetCore>(RTW_BUILD_NS)->widget_data     = rti->gui_sprites.build_ns_rail;
 		this->GetWidget<NWidgetCore>(RTW_BUILD_X)->widget_data      = rti->gui_sprites.build_x_rail;
 		this->GetWidget<NWidgetCore>(RTW_BUILD_EW)->widget_data     = rti->gui_sprites.build_ew_rail;
@@ -698,8 +697,13 @@ struct BuildRailToolbarWindow : Window {
 	{
 		if (widget == RTW_CAPTION) {
 			const RailtypeInfo *rti = GetRailTypeInfo(this->railtype);
-			SetDParam(0, rti->strings.toolbar_caption);
-			SetDParam(1, rti->max_speed);
+			if (rti->max_speed > 0) {
+				SetDParam(0, STR_TOOLBAR_RAILTYPE_VELOCITY);
+				SetDParam(1, rti->strings.toolbar_caption);
+				SetDParam(2, rti->max_speed);
+			} else {
+				SetDParam(0, rti->strings.toolbar_caption);
+			}
 		}
 	}
 
@@ -846,7 +850,7 @@ Hotkey<BuildRailToolbarWindow> *_railtoolbar_hotkeys = BuildRailToolbarWindow::r
 static const NWidgetPart _nested_build_rail_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
-		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, RTW_CAPTION), SetDataTip(STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, RTW_CAPTION), SetDataTip(STR_WHITE_STRING, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 		NWidget(WWT_STICKYBOX, COLOUR_DARK_GREEN),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
