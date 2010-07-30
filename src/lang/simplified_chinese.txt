@@ -1886,10 +1886,10 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}合并�
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}建造分体路点
 
 # Rail construction toolbar
-STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}铁路建设
-STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}电气化铁路建设
-STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}单轨铁路建设
-STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}磁悬浮铁路建设
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :铁路建设
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :电气化铁路建设
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :单轨铁路建设
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :磁悬浮铁路建设
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}建设铁轨。按住 Ctrl 键切换建设/移除铁轨。
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}使用多向路轨工具铺设铁轨。按住 Ctrl 键切换建设/移除铁轨。
@@ -2743,15 +2743,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :移除所有车
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}移除分组
 
 # Build vehicle window
-STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}购买普通列车
-STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}购买电气化列车
-STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}购买单轨列车
-STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}购买磁悬浮列车
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :购买普通列车
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :购买电气化列车
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :购买单轨列车
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :购买磁悬浮列车
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}新列车
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}购买汽车
-STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}购买船只
-STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}购买飞机
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :新列车
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :购买汽车
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :购买船只
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :购买飞机
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}售价：{GOLD}{CURRENCY}{BLACK} 重量：{GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}速度：{GOLD}{VELOCITY}{BLACK} 功率：{GOLD}{POWER}

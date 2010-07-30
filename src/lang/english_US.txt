@@ -1874,10 +1874,10 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Join way
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Build a separate waypoint
 
 # Rail construction toolbar
-STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}Railroad Construction
-STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Electrified Railroad Construction
-STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Monorail Construction
-STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}MagLev Construction
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Railroad Construction
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Electrified Railroad Construction
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Monorail Construction
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :MagLev Construction
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Build railroad track. Ctrl toggles build/remove for railroad construction
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Build railroad track using the Autorail mode. Ctrl toggles build/remove for railroad construction
@@ -2693,15 +2693,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Remove all vehi
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Rename a group
 
 # Build vehicle window
-STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}New Rail Vehicles
-STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}New Electric Rail Vehicles
-STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}New Monorail Vehicles
-STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}New Maglev Vehicles
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :New Rail Vehicles
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :New Electric Rail Vehicles
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :New Monorail Vehicles
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :New Maglev Vehicles
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Rail Vehicles
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}New Road Vehicles
-STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}New Ships
-STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}New Aircraft
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Rail Vehicles
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :New Road Vehicles
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :New Ships
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :New Aircraft
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cost: {GOLD}{CURRENCY}{BLACK} Weight: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Speed: {GOLD}{VELOCITY}{BLACK} Power: {GOLD}{POWER}

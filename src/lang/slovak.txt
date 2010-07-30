@@ -1953,10 +1953,10 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Nasledov
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Postaviť oddelený navádzač
 
 # Rail construction toolbar
-STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}Železnica
-STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Elektrifikovana železnica
-STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Jednokoľajka - Monorail
-STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Magnetická dráha - MagLev
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Železnica
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Elektrifikovana železnica
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Jednokoľajka - Monorail
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Magnetická dráha - MagLev
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Postavit zeleznicne kolaje
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Automaticka stavba zeleznicnych kolaji
@@ -2821,15 +2821,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Odstrániť vš
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Premenovať skupinu
 
 # Build vehicle window
-STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Nove vlaky
-STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Nové elektrické lokomotívy a vagóny
-STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Nové jednokoľajové vlaky
-STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Nove magneticke vlaky
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Nove vlaky
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nové elektrické lokomotívy a vagóny
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Nové jednokoľajové vlaky
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nove magneticke vlaky
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Železnicne vozidlá
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Nove automobily
-STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Nove lode
-STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Nove Lietadlo
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Železnicne vozidlá
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nove automobily
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nove lode
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nove Lietadlo
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Hmotnost: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Rýchlosť: {GOLD}{VELOCITY}{BLACK} Výkon: {GOLD}{POWER}

@@ -2056,10 +2056,10 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Объе
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Поставить отдельную точку пути
 
 # Rail construction toolbar
-STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}Железные дороги
-STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Электрифицированные ж/д
-STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Монорельс
-STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Магнитные поезда
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Железные дороги
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Электрифицированные ж/д
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Монорельс
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Магнитные поезда
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Строительство железной дороги. При нажатом Ctrl - удаление путей.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Строительство ж/д путей в автоматическом режиме. При нажатом Ctrl - удаление путей.
@@ -2924,15 +2924,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Удалить 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Название группы
 
 # Build vehicle window
-STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Новый поезд
-STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Новый электропоезд
-STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Новый монорельсовый поезд
-STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Новый магниторельсовый поезд
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Новый поезд
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Новый электропоезд
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Новый монорельсовый поезд
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Новый магниторельсовый поезд
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Новый поезд
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Новый автомобиль
-STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Новый корабль
-STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Новый авиатранспорт
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Новый поезд
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Новый автомобиль
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :Новый корабль
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Новый авиатранспорт
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Цена: {GOLD}{CURRENCY}{BLACK} Вес: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Скорость: {GOLD}{VELOCITY}{BLACK} Мощность: {GOLD}{POWER}

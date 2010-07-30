@@ -1886,10 +1886,10 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Liitä r
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Rakenna erillinen reittipiste
 
 # Rail construction toolbar
-STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}Rautatien rakentaminen
-STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Sähköradan rakentaminen
-STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Yksiraiteisen rakentaminen
-STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}MagLevin rakentaminen
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Rautatien rakentaminen
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Sähköradan rakentaminen
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Yksiraiteisen rakentaminen
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :MagLevin rakentaminen
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Rakenna rautateitä. Ctrl vaihtaa rakennus/poistotilan välillä
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Rakenna rautatiet käyttäen Autorail-tilaa. Ctrl vaihtaa rakennus/poistotilan välillä
@@ -2754,15 +2754,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Poista kaikki a
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Nimeä ryhmä
 
 # Build vehicle window
-STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Uusi juna
-STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Uusi sähköjuna
-STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Uusi yksiraidejuna
-STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Uusi MagLev-juna
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Uusi juna
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Uusi sähköjuna
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Uusi yksiraidejuna
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Uusi MagLev-juna
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Uudet junat
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Uusia ajoneuvoja
-STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Uusia laivoja
-STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Uusi lentokone
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Uudet junat
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Uusia ajoneuvoja
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :Uusia laivoja
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Uusi lentokone
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Kulu: {GOLD}{CURRENCY}{BLACK} Paino: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Nopeus: {GOLD}{VELOCITY}{BLACK} Teho: {GOLD}{POWER}

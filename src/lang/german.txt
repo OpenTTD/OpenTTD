@@ -1887,10 +1887,10 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Verbinde
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Errichte einen getrennten Wegpunkt
 
 # Rail construction toolbar
-STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}Gleis- / Bahnhofsbau
-STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Bau elektrifizierter Strecken
-STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Einschienenbahnbau
-STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Magnetschwebebahnbau
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Gleis- / Bahnhofsbau
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Bau elektrifizierter Strecken
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Einschienenbahnbau
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Magnetschwebebahnbau
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Gleise legen. Strg halten, um zwischen Bauen und Entfernen umzuschalten
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Gleise legen mit automatischer Wahl der Ausrichtung. Strg halten, um zwischen Bauen und Entfernen umzuschalten
@@ -2755,15 +2755,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Liste leeren
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Gruppe umbenennen
 
 # Build vehicle window
-STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Neues Schienenfahrzeug
-STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Neue elektrische Schienenfahrzeuge
-STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Neues Einschienenbahn-Fahrzeug
-STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Neue Magnetzüge
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Neues Schienenfahrzeug
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Neue elektrische Schienenfahrzeuge
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Neues Einschienenbahn-Fahrzeug
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Neue Magnetzüge
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Neue Eisenbahnfahrzeuge
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Neue Fahrzeuge
-STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Neue Schiffe
-STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Neue Flugzeuge
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Neue Eisenbahnfahrzeuge
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Neue Fahrzeuge
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :Neue Schiffe
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Neue Flugzeuge
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Kosten: {GOLD}{CURRENCY}{BLACK} Gewicht: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Geschw.: {GOLD}{VELOCITY}{BLACK} Leistung: {GOLD}{POWER}

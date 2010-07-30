@@ -1886,10 +1886,10 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Nối đ
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Tạo một điểm mốc riêng rẽ
 
 # Rail construction toolbar
-STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}Xây dựng đường ray
-STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Xây dựng đường ray điện
-STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Xây dựng đường ray đơn
-STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Xây dựng ray đệm từ
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Xây dựng đường ray
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Xây dựng đường ray điện
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Xây dựng đường ray đơn
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Xây dựng ray đệm từ
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Xây dựng đường ray. Ctrl để đổi chế độ xây/phá đường ray
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Xây dựng đường ray dùng cơ chế tự xây. Ctrl để đổi chế độ xây/phá đường ray
@@ -2754,15 +2754,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Xoá tất cả
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Đổi tên nhóm
 
 # Build vehicle window
-STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Tàu Hỏa Mới
-STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Tàu Điện Mới
-STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Tàu Đơn Ray Mới
-STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Tàu Đệm Từ Mới
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Tàu Hỏa Mới
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Tàu Điện Mới
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Tàu Đơn Ray Mới
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Tàu Đệm Từ Mới
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Tàu Hỏa Mới
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Xe Cộ Mới
-STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Tàu Mới
-STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Máy Bay Mới
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Tàu Hỏa Mới
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Xe Cộ Mới
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :Tàu Mới
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Máy Bay Mới
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Chi phí: {GOLD}{CURRENCY}{BLACK} Tải trọng: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Tốc độ: {GOLD}{VELOCITY}{BLACK} Công suất: {GOLD}{POWER}

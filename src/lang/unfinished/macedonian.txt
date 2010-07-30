@@ -1014,8 +1014,8 @@ STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT                             :Испрати 
 
 # Build vehicle window
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Шински возила
-STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Нов авион
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Шински возила
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Нов авион
 
 
 STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Листа за селекција од авиони - кликни на авионот за информации

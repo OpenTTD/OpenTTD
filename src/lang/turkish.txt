@@ -1887,10 +1887,10 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Yerimini
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Ayrı bir yerimi yap
 
 # Rail construction toolbar
-STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}Demiryolu Yapımı
-STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Elektrikli Ray Yapımı
-STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Monoray Yapımı
-STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Maglev Yapımı
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Demiryolu Yapımı
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Elektrikli Ray Yapımı
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Monoray Yapımı
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Maglev Yapımı
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Demiryolu yap. Ctrl demiryolu inşa ederken silmeyi açar/kapatır
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Otoray modunda ray yap
@@ -2744,15 +2744,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Bütün araçla
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Grubun ismini değiştir
 
 # Build vehicle window
-STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Yeni Tren
-STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Yeni Elektrikli Trenler
-STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Yeni Monoray
-STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Yeni Maglev
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Yeni Tren
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Yeni Elektrikli Trenler
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Yeni Monoray
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Yeni Maglev
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Trenler
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Yeni Araba
-STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Yeni gemi
-STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Yeni Uçak
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Trenler
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Yeni Araba
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :Yeni gemi
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Yeni Uçak
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Fiyat: {GOLD}{CURRENCY}{BLACK} Ağırlık: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Hız: {GOLD}{VELOCITY}{BLACK} Güç: {GOLD}{POWER}

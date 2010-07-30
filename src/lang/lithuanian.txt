@@ -1959,10 +1959,10 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Jungti k
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Statyti atskirą kontrolės punktą
 
 # Rail construction toolbar
-STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}Geležinkelio statyba
-STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Elektrifikuoto Gelezinkelio Statyba
-STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Vienbėgio geležinkelio statyba
-STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}„Maglev“ statyba
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Geležinkelio statyba
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Elektrifikuoto Gelezinkelio Statyba
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Vienbėgio geležinkelio statyba
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :„Maglev“ statyba
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Statyti geležinkelio bėgius. Ctrl keičia tarp geležinkelio statymo/griovimo
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Statyti geležinkelio bėgius naudojant automatinį režimą. Ctrl keičia geležinkelio statymą/griovimą
@@ -2816,15 +2816,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Iškelti visas 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Pervadinti grupę
 
 # Build vehicle window
-STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Nauji Traukiniai
-STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Nauji Elektriniai Traukiniai
-STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Nauji Vienbegiai Traukiniai
-STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Nauji „Maglev“ traukiniai
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Nauji Traukiniai
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nauji Elektriniai Traukiniai
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Nauji Vienbegiai Traukiniai
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nauji „Maglev“ traukiniai
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Traukiniai
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Nauji automobiliai
-STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Nauji laivai
-STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Naujas lektuvas
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Traukiniai
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nauji automobiliai
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nauji laivai
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Naujas lektuvas
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Kaina: {GOLD}{CURRENCY}{BLACK} Svoris: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Greitis: {GOLD}{VELOCITY}{BLACK} Galia: {GOLD}{POWER}

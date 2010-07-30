@@ -2011,10 +2011,10 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}З'єд�
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Створити окрему точку маршруту
 
 # Rail construction toolbar
-STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}Будівництво залізниці
-STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Будувати електрифіковану колію
-STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Будівництво монорельса
-STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Будівництво магнітної подушки
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Будівництво залізниці
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Будувати електрифіковану колію
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Будівництво монорельса
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Будівництво магнітної подушки
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Будувати колію. Ctrl переключає побудову/знесення для будівництва колії
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Будувати колію, використовуючи авторежим. Ctrl переключає побудову/знесення для будівництва колії
@@ -2879,15 +2879,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Позбути�
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Перейменувати групу
 
 # Build vehicle window
-STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Новий залізничний транспорт
-STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Новий електрозалізничний транспорт
-STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Новий монорельсовий транспорт
-STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Новий транспорт на магнітній подушці
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Новий залізничний транспорт
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Новий електрозалізничний транспорт
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Новий монорельсовий транспорт
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Новий транспорт на магнітній подушці
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Потяги
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Нове авто
-STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Нові кораблі
-STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Нові літаки
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Потяги
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Нове авто
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :Нові кораблі
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Нові літаки
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Ціна: {GOLD}{CURRENCY}{BLACK} Вага: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Швидкість: {GOLD}{VELOCITY}{BLACK} Потужність: {GOLD}{POWER}

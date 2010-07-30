@@ -1886,10 +1886,10 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Slå sam
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Bygg separat kontrollpunkt
 
 # Rail construction toolbar
-STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}Bygg jernbane
-STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Bygg elektrisk jernbane
-STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Bygg monorail
-STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Bygg maglev
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Bygg jernbane
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Bygg elektrisk jernbane
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Bygg monorail
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Bygg maglev
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Bygg jernbanespor. CTRL veksler mellom å bygge/fjerne
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Bygg jernbane ved hjelp av autobanemodusen. CTRL veksler mellom bygg/fjern for jernbanekonstruksjon
@@ -2743,15 +2743,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Fjern alle kjø
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Endre navn på gruppe
 
 # Build vehicle window
-STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Nye tog/vogner for jernbane
-STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Nye tog/vogner for elektrisk jernbane
-STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Nye tog/vogner for monorail
-STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Nye tog/vogner for maglev
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Nye tog/vogner for jernbane
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nye tog/vogner for elektrisk jernbane
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Nye tog/vogner for monorail
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nye tog/vogner for maglev
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Nye tog/vogner
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Nye kjøretøy
-STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Nye skip
-STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Nye luftfartøy
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Nye tog/vogner
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nye kjøretøy
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nye skip
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nye luftfartøy
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Kostnad: {GOLD}{CURRENCY}{BLACK} Vekt: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Hastighet: {GOLD}{VELOCITY}{BLACK} Kraft: {GOLD}{POWER}

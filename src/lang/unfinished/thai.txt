@@ -1520,15 +1520,15 @@ STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :ส่งเข
 
 
 # Build vehicle window
-STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}รถไฟใหม่
-STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}รถไฟฟ้าใหม่
-STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}รถไฟฟ้ารางเดี่ยวใหม่
-STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Maglev (รถไฟพลังแม่เหล็ก) ใหม่
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :รถไฟใหม่
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :รถไฟฟ้าใหม่
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :รถไฟฟ้ารางเดี่ยวใหม่
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Maglev (รถไฟพลังแม่เหล็ก) ใหม่
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}รถไฟใหม่
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}รถใหม่
-STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}เรือใหม่
-STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}เครื่องบินใหม่
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :รถไฟใหม่
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :รถใหม่
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :เรือใหม่
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :เครื่องบินใหม่
 
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}รายการรถไฟ - คลิกที่รถไฟเพื่อดูรายละเอียด

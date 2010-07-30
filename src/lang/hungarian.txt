@@ -1950,10 +1950,10 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Ellenőr
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Különálló ellenőrző pont építése
 
 # Rail construction toolbar
-STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}Normál vasút építése
-STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Villamosított vasút építése
-STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Egysínű vasút építése
-STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}MagLev vasút építése
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Normál vasút építése
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Villamosított vasút építése
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Egysínű vasút építése
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :MagLev vasút építése
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Pályafektetés. A Ctrl billentyűvel válthatsz építés és rombolás között.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Vasúti pálya építése egyszerűsített módón. A Ctrl billentyű segítségével lehet váltani az építés/rombolás között.
@@ -2818,15 +2818,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Összes jármű
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Csoport átnevezése
 
 # Build vehicle window
-STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Új vasúti járművek
-STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Új villamos vasúti járművek
-STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Új egysínű járművek
-STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Új MagLev járművek
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Új vasúti járművek
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Új villamos vasúti járművek
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Új egysínű járművek
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Új MagLev járművek
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Új vasúti járművek
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Új közúti járművek
-STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Új hajók
-STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Új repülőgépek
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Új vasúti járművek
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Új közúti járművek
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :Új hajók
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Új repülőgépek
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Ár: {GOLD}{CURRENCY}{BLACK} Súly: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Sebesség: {GOLD}{VELOCITY}{BLACK} Telj.: {GOLD}{POWER}

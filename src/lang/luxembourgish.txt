@@ -1883,10 +1883,10 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Weepunkt
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Separaten Weepunkt bauen
 
 # Rail construction toolbar
-STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}Schinnenbau
-STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Élektrëschen Zuchbau
-STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Monorailbau
-STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Magnéitbahnbau
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Schinnenbau
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Élektrëschen Zuchbau
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Monorailbau
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Magnéitbahnbau
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Schinnen bauen. Ctrl wiesselt tëscht bauen/ofrappen
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Schinnen am automateschen Modus bauen. Ctrl wiesselt tëscht bauen/ofrappen
@@ -2740,15 +2740,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :All Gefierer we
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Eng Grupp ëmbenennen
 
 # Build vehicle window
-STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Nei Zich
-STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Nei Elektrozich
-STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Nei Monorailgefierer
-STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Nei Magnéitbunngefierer
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Nei Zich
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nei Elektrozich
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Nei Monorailgefierer
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nei Magnéitbunngefierer
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Zich
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Nei Stroossengefierer
-STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Nei Schëffer
-STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Neien Fliger
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Zich
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nei Stroossengefierer
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nei Schëffer
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Neien Fliger
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Käschten: {GOLD}{CURRENCY}{BLACK} Gewiicht: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Geschw.: {GOLD}{VELOCITY}{BLACK} Kraaft: {GOLD}{POWER}

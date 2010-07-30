@@ -1886,10 +1886,10 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Uneşte 
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Construieşte un punct de tranzit separat
 
 # Rail construction toolbar
-STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}Construcţie cale ferată
-STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Construcţie cale ferată electrificată
-STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Construcţie monoşină
-STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Construcţie pernă magnetică
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Construcţie cale ferată
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Construcţie cale ferată electrificată
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Construcţie monoşină
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Construcţie pernă magnetică
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Construieşte cale ferată. Ctrl comută construirea/eliminarea căii ferate
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construieşte cale ferată în modul automat. Ctrl comută construirea/eliminarea căii ferate
@@ -2754,15 +2754,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Elimina toate v
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Redenumeste un grup
 
 # Build vehicle window
-STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Noi vehicule feroviare
-STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Noi Vehicule Electrice pe Sine
-STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Noi vehicule monoşină
-STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Noi vehicule pe Pernă Magnetică
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Noi vehicule feroviare
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Noi Vehicule Electrice pe Sine
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Noi vehicule monoşină
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Noi vehicule pe Pernă Magnetică
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Vehicule pe şine
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Autovehicule noi
-STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Nave noi
-STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Aeronavă nouă
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Vehicule pe şine
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Autovehicule noi
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nave noi
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Aeronavă nouă
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cost: {GOLD}{CURRENCY}{BLACK} Greutate: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Viteză: {GOLD}{VELOCITY}{BLACK} Putere: {GOLD}{POWER}

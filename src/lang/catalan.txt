@@ -1884,10 +1884,10 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Uneix pu
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Construeix un punt de control separat
 
 # Rail construction toolbar
-STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}Construcció de Ferrocarril
-STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Construcció de Ferrocarril Elèctric
-STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Construcció de Monorail
-STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Construcció de Maglev
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Construcció de Ferrocarril
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Construcció de Ferrocarril Elèctric
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Construcció de Monorail
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Construcció de Maglev
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Construeix vies de tren. Ctrl canvia entre contrueix/treu la construcció de vies
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construeix vies de tren utilitzant el mode Autorail. Ctrl canvia entre construeix/treu la construcció de vies de tren
@@ -2729,15 +2729,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Treu tots els v
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Canvia de nom el grup
 
 # Build vehicle window
-STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Nous Trens
-STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Nous Trens de Via Electrificada
-STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Nous Trens Monorail
-STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Nous Trens Maglev
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Nous Trens
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nous Trens de Via Electrificada
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Nous Trens Monorail
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nous Trens Maglev
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Nous Vehicles sobre vies
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Nous Vehicles
-STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Nous Vaixells
-STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Nou Avió
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Nous Vehicles sobre vies
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nous Vehicles
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nous Vaixells
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nou Avió
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cost: {GOLD}{CURRENCY}{BLACK} Pes: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Velocitat: {GOLD}{VELOCITY}{BLACK} Potència: {GOLD}{POWER}

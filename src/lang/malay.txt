@@ -1872,10 +1872,10 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Sambungk
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Bina tandatuju yang berasingan
 
 # Rail construction toolbar
-STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}Pembinaan Landasan Keretapi
-STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Pembinaan Landasan Keretapi Berelektrik
-STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Pembinaan Landasan Monorel
-STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Pembinaan Landasan Maglev
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Pembinaan Landasan Keretapi
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Pembinaan Landasan Keretapi Berelektrik
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Pembinaan Landasan Monorel
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Pembinaan Landasan Maglev
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Bina landasan keretapi. Ctrl untuk bina atau buang untuk pembinaan landasan keretapi
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Bina landasan menggunakan mod Landasan Automatik. Ctrl untuk membina atau membuang pembinaan landasan
@@ -2726,15 +2726,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Buang semua ken
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Namakan semula kenderaan
 
 # Build vehicle window
-STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Keretapi Baru
-STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Keretapi Elektrik Baru
-STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Monorel Baru
-STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Maglev Baru
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Keretapi Baru
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Keretapi Elektrik Baru
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Monorel Baru
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Maglev Baru
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Keretapi Baru
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Kenderaan Jalanraya Baru
-STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Kapal Baru
-STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Pesawat Baru
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Keretapi Baru
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Kenderaan Jalanraya Baru
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :Kapal Baru
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Pesawat Baru
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Kos: {GOLD}{CURRENCY}{BLACK} Berat: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Kelajuan: {GOLD}{VELOCITY}{BLACK} Kuasa: {GOLD}{POWER}

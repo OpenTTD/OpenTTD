@@ -1879,10 +1879,10 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Съед
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Построи отделен пътеводител
 
 # Rail construction toolbar
-STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}Конструкции за Двурелсов път
-STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Строене на електрифицирана ЖП мрежа
-STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Конструкции за Еднорелсов път
-STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Конструкции за Магниторелсов път
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Конструкции за Двурелсов път
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Строене на електрифицирана ЖП мрежа
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Конструкции за Еднорелсов път
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Конструкции за Магниторелсов път
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Построй релсовия път. Ctrl показва възможните конструкции.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK} Строеж на жп линия в режим Автоматичен. Ctrl показва възможните конфигурации.
@@ -2711,15 +2711,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Премахн�
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Преименовай група
 
 # Build vehicle window
-STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Нови Машини за Двурелсов път
-STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Нови електрически влакове
-STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Нови Машини за Монорелсов път
-STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Нови Машини за Магниторелсов път
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Нови Машини за Двурелсов път
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Нови електрически влакове
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Нови Машини за Монорелсов път
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Нови Машини за Магниторелсов път
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Нови ЖП превозни средства
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Нова кола
-STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Нови Кораби
-STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Нова летателна машина
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Нови ЖП превозни средства
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Нова кола
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :Нови Кораби
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Нова летателна машина
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Цена: {GOLD}{CURRENCY}{BLACK} Тегло: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Скорост: {GOLD}{VELOCITY}{BLACK} Мощност: {GOLD}{POWER}

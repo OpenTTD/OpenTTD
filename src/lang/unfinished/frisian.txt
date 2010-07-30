@@ -1193,9 +1193,9 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Kontrôl
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}In apart kontrôlepost bouwe
 
 # Rail construction toolbar
-STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}Spoarwei Konstruksje
-STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Monorail Konstruksje
-STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}MagLev Konstruksje
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Spoarwei Konstruksje
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Monorail Konstruksje
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :MagLev Konstruksje
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Bou spoarwei
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Bou treindepot (foar bou en ûnderhâld fan treinen)

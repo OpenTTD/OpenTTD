@@ -1886,10 +1886,10 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Slå iho
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Bygg ett separat riktmärke
 
 # Rail construction toolbar
-STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}Bygg järnväg
-STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Elektrifierad järnvägskonstruktion
-STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Bygg monorail
-STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Bygg MagLev
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Bygg järnväg
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Elektrifierad järnvägskonstruktion
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Bygg monorail
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Bygg MagLev
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Bygg järnväg. Ctrl växlar mellan att bygga/ta bort järnväg
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Bygg järnvägspår genom att använda Autorail-funktionen. Ctrl växlar mellan att bygga/ta bort järnvägsspår
@@ -2743,15 +2743,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Ta bort alla fo
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Döp om en grupp
 
 # Build vehicle window
-STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Nytt tågfordon
-STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Nya elektriska järnvägsfordon
-STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Nytt monorailfordon
-STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Nytt maglevfordon
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Nytt tågfordon
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nya elektriska järnvägsfordon
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Nytt monorailfordon
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nytt maglevfordon
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Nya Rälsfordon
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Nytt Vägfordon
-STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Nytt skepp
-STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Nytt flygplan
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Nya Rälsfordon
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nytt Vägfordon
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nytt skepp
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nytt flygplan
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Kostnad: {GOLD}{CURRENCY}{BLACK} Vikt: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Hastighet: {GOLD}{VELOCITY}{BLACK} Kraft: {GOLD}{POWER}

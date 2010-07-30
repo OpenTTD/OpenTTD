@@ -1941,10 +1941,10 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Liida te
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Ehita eraldi teemärgis
 
 # Rail construction toolbar
-STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}Rööbasteede ehitamine
-STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Elektriraudtee ehitamine
-STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Monorelsi ehitamine
-STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Magnethõljuktee ehitamine
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Rööbasteede ehitamine
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Elektriraudtee ehitamine
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Monorelsi ehitamine
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Magnethõljuktee ehitamine
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Ehita raudteed. Ctrl vahetab ehitamise eemaldamise vastu
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Rööbaste ehitamine kasutades "lohistamist"
@@ -2798,15 +2798,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Eemalda kõik s
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Rühma nime vahetamine
 
 # Build vehicle window
-STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Uued rööbassõidukid
-STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Uus elektriraudteesõiduk
-STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Uus monorelsssõiduk
-STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Uus magnethõljuksõiduk
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Uued rööbassõidukid
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Uus elektriraudteesõiduk
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Uus monorelsssõiduk
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Uus magnethõljuksõiduk
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Rööbassõidukid
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Uued mootorsõidukid
-STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Uued laevad
-STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Uus lennuk
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Rööbassõidukid
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Uued mootorsõidukid
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :Uued laevad
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Uus lennuk
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Hind: {GOLD}{CURRENCY}{BLACK} Tühimass: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Tippkiirus: {GOLD}{VELOCITY}{BLACK} Võimsus: {GOLD}{POWER}

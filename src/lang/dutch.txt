@@ -1886,10 +1886,10 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Controle
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Bouw een losstaande controlepost
 
 # Rail construction toolbar
-STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}Bouw spoorwegen
-STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Bouw geëlektrificeerde spoorwegen
-STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Bouw monorail-spoorwegen
-STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Bouw magneetzweeftrein-spoorwegen
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Bouw spoorwegen
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Bouw geëlektrificeerde spoorwegen
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Bouw monorail-spoorwegen
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Bouw magneetzweeftrein-spoorwegen
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Plaats spoor. Ctrl wisselt tussen bouwen/verwijderen van het spoor
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Bouw spoor met de Autorail-methode. Ctrl wisselt tussen bouwen/verwijderen van het spoor
@@ -2754,15 +2754,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Verwijder alle 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Hernoem een groep
 
 # Build vehicle window
-STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Nieuwe railvoertuigen
-STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Nieuwe elektrische railvoertuigen
-STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Nieuwe monorailrailvoertuigen
-STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Nieuwe zweefrailvoertuigen
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Nieuwe railvoertuigen
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nieuwe elektrische railvoertuigen
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Nieuwe monorailrailvoertuigen
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nieuwe zweefrailvoertuigen
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Railvoertuigen
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Nieuwe wegvoertuigen
-STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Nieuwe schepen
-STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Nieuwe vliegtuigen
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Railvoertuigen
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nieuwe wegvoertuigen
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nieuwe schepen
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nieuwe vliegtuigen
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Kosten: {GOLD}{CURRENCY}{BLACK} Gewicht: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Snelheid: {GOLD}{VELOCITY}{BLACK} Kracht: {GOLD}{POWER}

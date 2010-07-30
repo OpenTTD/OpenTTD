@@ -1954,10 +1954,10 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Spojová
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Postavit samostatné směrování
 
 # Rail construction toolbar
-STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}Výstavba železnice
-STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Výstavba elektrifikované železnice
-STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Výstavba monorailu
-STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Výstavba maglevu
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Výstavba železnice
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Výstavba elektrifikované železnice
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Výstavba monorailu
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Výstavba maglevu
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Položit koleje. Pomocí Ctrl přehodíš režim stavba/odstraňování.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Pokládat koleje v libovolném směru. Pomocí Ctrl přehodíš režim stavba/odstraňování.
@@ -2811,15 +2811,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Odstranit všec
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Přejmenovat skupinu
 
 # Build vehicle window
-STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Nové lokomotivy a vagony
-STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Nové elektrické lokomotivy a vagony
-STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Nové lokomotivy a vagony pro monorail
-STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Nové lokomotivy a vagony Maglev
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Nové lokomotivy a vagony
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nové elektrické lokomotivy a vagony
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Nové lokomotivy a vagony pro monorail
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nové lokomotivy a vagony Maglev
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Nová železniční vozidla
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Nová silniční vozidla
-STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Nové lodě
-STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Nové letadlo
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Nová železniční vozidla
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nová silniční vozidla
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nové lodě
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nové letadlo
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Hmotnost: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Rychlost: {GOLD}{VELOCITY}{BLACK} Výkon: {GOLD}{POWER}

@@ -2081,10 +2081,10 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Spoji pu
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Napravi zasebnu putanju
 
 # Rail construction toolbar
-STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}Izgradnja železnice
-STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Izgradnja elektrifikovane železnice
-STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Izgradnja jednošinske železnice
-STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Izgradnja magnetne železnice
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Izgradnja železnice
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Izgradnja elektrifikovane železnice
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Izgradnja jednošinske železnice
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Izgradnja magnetne železnice
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Izgradnja železničke pruge. Ctrl uključuje izgradnju/uklanjanje
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Gradite prugu koristeći automatsko određivanje pravca. Ctrl uključuje izgradnju/uklanjanje
@@ -2949,15 +2949,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Ukloni sva vozi
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Preimenuj grupu
 
 # Build vehicle window
-STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Nova Železnička Vozila
-STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Nova Železnička Električna Vozila
-STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Nova Jenodšinska Vozila
-STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Nova Maglev Vozila
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Nova Železnička Vozila
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nova Železnička Električna Vozila
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Nova Jenodšinska Vozila
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nova Maglev Vozila
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Šinska Vozila
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Nova Drumska Vozila
-STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Novi Brodovi
-STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Nove Letilice
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Šinska Vozila
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nova Drumska Vozila
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :Novi Brodovi
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nove Letilice
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Težina: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Brzina: {GOLD}{VELOCITY}{BLACK} Snaga: {GOLD}{POWER}

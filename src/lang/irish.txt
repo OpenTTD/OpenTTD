@@ -1886,10 +1886,10 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Ceangail
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Tóg pointe bealaigh ar leithligh
 
 # Rail construction toolbar
-STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}Tógáil Iarnróid
-STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Tógáil Iarnróid Leicrithe
-STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Tógáil Iarnróid Aonráille
-STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Tógáil Maglev
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Tógáil Iarnróid
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Tógáil Iarnróid Leicrithe
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Tógáil Iarnróid Aonráille
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Tógáil Maglev
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Tóg ráillí iarnróid. Déanann Ctrl tóg/bain a scoránú agus tú ag tógáil iarnróid
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Tóg ráille iarnróid ag úsáid an mód Uathráillí. Déanann Ctrl tóg/bain a scoránú do thógail iarnróid
@@ -2754,15 +2754,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Bain gach feith
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Athainmnigh grúpa
 
 # Build vehicle window
-STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Feithiclí Iarnróid Nua
-STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Feithiclí Iarnróid Leictreacha Nua
-STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Feithiclí Aonráille Nua
-STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Feithiclí Maglev Nua
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Feithiclí Iarnróid Nua
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Feithiclí Iarnróid Leictreacha Nua
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Feithiclí Aonráille Nua
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Feithiclí Maglev Nua
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Feithiclí Iarnróid Nua
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Feithiclí Bóthair Nua
-STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Longa Nua
-STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Aerárthaigh Nua
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Feithiclí Iarnróid Nua
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Feithiclí Bóthair Nua
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :Longa Nua
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Aerárthaigh Nua
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Costas: {GOLD}{CURRENCY}{BLACK} Meáchan: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Luas: {GOLD}{VELOCITY}{BLACK} Cumhacht: {GOLD}{POWER}

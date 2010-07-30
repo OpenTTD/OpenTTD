@@ -1887,10 +1887,10 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}연결�
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}분리된 웨이포인트를 새로 만들기
 
 # Rail construction toolbar
-STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}철로 건설
-STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}전기철로 건설
-STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}모노레일 건설
-STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}자기부상열차 건설
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :철로 건설
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :전기철로 건설
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :모노레일 건설
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :자기부상열차 건설
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}철로를 건설합니다. Ctrl키는 철로의 건설/제거를 전환합니다.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}철로 자동건설 모드로 철로를 만듭니다. Ctrl키는 철로의 건설/제거를 전환합니다.
@@ -2755,15 +2755,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :모든 차량 �
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}그룹 이름 바꾸기
 
 # Build vehicle window
-STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}새 열차
-STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}새 전기 열차
-STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}새 모노레일
-STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}새 자기부상열차
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :새 열차
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :새 전기 열차
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :새 모노레일
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :새 자기부상열차
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}새 열차
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}새 자동차
-STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}새 선박
-STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}새 항공기
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :새 열차
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :새 자동차
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :새 선박
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :새 항공기
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}가격: {GOLD}{CURRENCY}{BLACK} 중량: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}속력: {GOLD}{VELOCITY}{BLACK} 힘: {GOLD}{POWER}

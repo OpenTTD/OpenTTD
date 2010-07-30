@@ -1806,10 +1806,10 @@ STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Adeilad
 
 
 # Rail construction toolbar
-STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}Adeiladu Rheilffyrdd
-STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Adeiladu Rheilffyrdd Trydan
-STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Adeiladu Monoreilffyrdd
-STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Adeiladu Maglef
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Adeiladu Rheilffyrdd
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Adeiladu Rheilffyrdd Trydan
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Adeiladu Monoreilffyrdd
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Adeiladu Maglef
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Adeiladu trac rheilffordd
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Adeiladu trac yn defnyddio'r modd Awtoreilffordd
@@ -2593,15 +2593,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Dileu pob cerby
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Ailenwi grw^p
 
 # Build vehicle window
-STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Cerbydau Rheilffordd Newydd
-STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Cerbydau Rheilffordd Trydan Newydd
-STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Cerbydau Monoreilffordd Newydd
-STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Cerbydau Maglef Newydd
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Cerbydau Rheilffordd Newydd
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Cerbydau Rheilffordd Trydan Newydd
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Cerbydau Monoreilffordd Newydd
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Cerbydau Maglef Newydd
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Cerbydau Rheilffordd
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Cerbydau Ffordd Newydd
-STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Llong  Newydd
-STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Awyrennau Newydd
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Cerbydau Rheilffordd
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Cerbydau Ffordd Newydd
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :Llong  Newydd
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Awyrennau Newydd
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Côst: {GOLD}{CURRENCY}{BLACK} Pwysau: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Cyflymder: {GOLD}{VELOCITY}{BLACK}   Pŵer: {GOLD}{POWER}

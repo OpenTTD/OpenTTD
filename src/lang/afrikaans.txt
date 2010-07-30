@@ -1875,10 +1875,10 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Verbind 
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Bou 'm aparte wegwyser
 
 # Rail construction toolbar
-STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}Spoorweg Kostruksie
-STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Elektrifiseerde Spoorweg Konstruksie
-STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Enkelspoor Konstruksie
-STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Magneetsweeftrein Konstruksie
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Spoorweg Kostruksie
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Elektrifiseerde Spoorweg Konstruksie
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Enkelspoor Konstruksie
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Magneetsweeftrein Konstruksie
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Bou spoore
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Bou spoorweg spoor met die Outospoor metode
@@ -2683,15 +2683,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Verwyder alle v
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Hernoem groep
 
 # Build vehicle window
-STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Nuwe Spoor Voertuie
-STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Nuwe Elektries Spoor Voertuie
-STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Nuwe Eenspoor Voertuie
-STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Nuwe Maglev Voertuie
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Nuwe Spoor Voertuie
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nuwe Elektries Spoor Voertuie
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Nuwe Eenspoor Voertuie
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nuwe Maglev Voertuie
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Spoorweg Voertuie
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Nuwe Pad Voertuie
-STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Nuwe Skepe
-STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Nuwe Vliegtuig
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Spoorweg Voertuie
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nuwe Pad Voertuie
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nuwe Skepe
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nuwe Vliegtuig
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Kos: {GOLD}{CURRENCY}{BLACK} Gewig: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Spoed: {GOLD}{VELOCITY}{BLACK}   Krag: {GOLD}{POWER}

@@ -1978,10 +1978,10 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Συνέ
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Χτήσιμο ενός ξεχωριστού σημείου καθοδήγησης
 
 # Rail construction toolbar
-STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}Κατασκευή Σιδηρόδρομου
-STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Κατασκευή Ηλεκτροδοτουμένου Σιδηρόδρομου
-STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Κατασκευή Monorail Σιδηροδρόμου
-STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Κατασκευή μαγνητικού σιδηροδρόμου
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Κατασκευή Σιδηρόδρομου
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Κατασκευή Ηλεκτροδοτουμένου Σιδηρόδρομου
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Κατασκευή Monorail Σιδηροδρόμου
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Κατασκευή μαγνητικού σιδηροδρόμου
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Κατασκευή σιδηρόδρομου. Ctrl εναλλάσει την κατασκευή/αφαίρεση σιδηρόδρομου
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Κατασκευή σιδηροδρομικής γραμμής χρησιμοποιώντας την Αυτόματη Σιδηροτροχία. Ctrl εναλλάσει την κατασκευή/αφαίρεση σιδηρόδρομου
@@ -2835,15 +2835,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Αφαίρεσ�
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Μετονομασία ενός γκρουπ
 
 # Build vehicle window
-STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Νέα Οχήματα Σιδηρόδρομου
-STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Νέα Οχήματα Ηλεκτροδοτούμενου Σιδηρόδρομου
-STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Νέα Οχήματα Monorail
-STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Νέα Οχήματα Μαγνητικής Αιώρησης
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Νέα Οχήματα Σιδηρόδρομου
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Νέα Οχήματα Ηλεκτροδοτούμενου Σιδηρόδρομου
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Νέα Οχήματα Monorail
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Νέα Οχήματα Μαγνητικής Αιώρησης
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Νέα Οχήματα Σιδηρόδρομου
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Νέα Οχήματα Δρόμου
-STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Νέα Πλοία
-STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Νέα Αεροπλάνα
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Νέα Οχήματα Σιδηρόδρομου
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Νέα Οχήματα Δρόμου
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :Νέα Πλοία
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Νέα Αεροπλάνα
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Κόστος: {GOLD}{CURRENCY}{BLACK} Βάρος: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Ταχύτητα: {GOLD}{VELOCITY}{BLACK} Ιπποδύναμη: {GOLD}{POWER}

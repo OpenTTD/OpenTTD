@@ -2266,10 +2266,10 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Połącz
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Zbuduj oddzielny pkt. orientacyjny
 
 # Rail construction toolbar
-STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}Konstrukcja torowiska
-STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Konstrukcja torowiska elektryfikowanego
-STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Konstrukcja torowiska jednoszynowego
-STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Konstrukcja torowiska MagLev
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Konstrukcja torowiska
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Konstrukcja torowiska elektryfikowanego
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Konstrukcja torowiska jednoszynowego
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Konstrukcja torowiska MagLev
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Budowa torów kolejowych. Ctrl przełącza buduj/usuń dla konstrukcji kolejowych
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Zbuduj tory kolejowe za pomocą trybu Autotory. Ctrl przełącza buduj/usuń dla konstrukcji kolejowych
@@ -3123,15 +3123,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Usuń wszystkie
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Zmień nazwę grupy
 
 # Build vehicle window
-STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Nowe pociągi
-STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Nowe elektryczne pojazdy szynowe
-STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Nowe pociągi jednoszynowe
-STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Nowe pociągi MagLev
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Nowe pociągi
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nowe elektryczne pojazdy szynowe
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Nowe pociągi jednoszynowe
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nowe pociągi MagLev
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Nowe Pojazdy Szynowe
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Nowy pojazd drogowy
-STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Nowe statki
-STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Nowy samolot
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Nowe Pojazdy Szynowe
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nowy pojazd drogowy
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nowe statki
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nowy samolot
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Koszt: {GOLD}{CURRENCY}{BLACK} Waga: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Prędkość: {GOLD}{VELOCITY}{BLACK} Moc: {GOLD}{POWER}
