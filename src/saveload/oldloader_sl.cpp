@@ -1479,7 +1479,7 @@ static bool LoadOldMapPart1(LoadgameState *ls, int num)
 		}
 	}
 
-	return !ls->failed;
+	return true;
 }
 
 static bool LoadOldMapPart2(LoadgameState *ls, int num)
@@ -1493,7 +1493,7 @@ static bool LoadOldMapPart2(LoadgameState *ls, int num)
 		_m[i].m5 = ReadByte(ls);
 	}
 
-	return !ls->failed;
+	return true;
 }
 
 static bool LoadTTDPatchExtraChunks(LoadgameState *ls, int num)
@@ -1548,7 +1548,7 @@ static bool LoadTTDPatchExtraChunks(LoadgameState *ls, int num)
 		}
 	}
 
-	return !ls->failed;
+	return true;
 }
 
 extern TileIndex _cur_tileloop_tile;
@@ -1734,11 +1734,17 @@ bool LoadTTDMain(LoadgameState *ls)
 	SmallStackSafeStackAlloc<byte, OLD_MAP_SIZE * 2> map3;
 	_old_map3 = map3.data;
 	_old_vehicle_names = NULL;
-	if (!LoadChunk(ls, NULL, main_chunk)) {
-		DEBUG(oldloader, 0, "Loading failed");
+	try {
+		if (!LoadChunk(ls, NULL, main_chunk)) {
+			DEBUG(oldloader, 0, "Loading failed");
+			free(_old_vehicle_names);
+			return false;
+		}
+	} catch (...) {
 		free(_old_vehicle_names);
-		return false;
+		throw;
 	}
+
 	DEBUG(oldloader, 3, "Done, converting game data...");
 
 	FixTTDMapArray();
