@@ -98,7 +98,7 @@ static const NWidgetPart _nested_group_widgets[] = {
 			EndContainer(),
 			NWidget(NWID_HORIZONTAL),
 				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, GRP_WIDGET_AVAILABLE_VEHICLES), SetMinimalSize(106, 12), SetFill(0, 1),
-						SetDataTip(0x0, STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP),
+						SetDataTip(STR_BLACK_STRING, STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP),
 				NWidget(WWT_DROPDOWN, COLOUR_GREY, GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN), SetMinimalSize(118, 12), SetFill(0, 1),
 						SetDataTip(STR_VEHICLE_LIST_MANAGE_LIST, STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP),
 				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, GRP_WIDGET_STOP_ALL), SetMinimalSize(12, 12), SetFill(0, 1),
@@ -197,7 +197,6 @@ public:
 
 		this->GetWidget<NWidgetCore>(GRP_WIDGET_CAPTION)->widget_data = STR_VEHICLE_LIST_TRAIN_CAPTION + this->vehicle_type;
 		this->GetWidget<NWidgetCore>(GRP_WIDGET_LIST_VEHICLE)->tool_tip = STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP + this->vehicle_type;
-		this->GetWidget<NWidgetCore>(GRP_WIDGET_AVAILABLE_VEHICLES)->widget_data = STR_VEHICLE_LIST_AVAILABLE_TRAINS + this->vehicle_type;
 
 		this->GetWidget<NWidgetCore>(GRP_WIDGET_CREATE_GROUP)->widget_data += this->vehicle_type;
 		this->GetWidget<NWidgetCore>(GRP_WIDGET_RENAME_GROUP)->widget_data += this->vehicle_type;
@@ -268,22 +267,28 @@ public:
 
 	virtual void SetStringParameters(int widget) const
 	{
-		if (widget != GRP_WIDGET_CAPTION) return;
+		switch (widget) {
+			case GRP_WIDGET_AVAILABLE_VEHICLES:
+				SetDParam(0, STR_VEHICLE_LIST_AVAILABLE_TRAINS + this->vehicle_type);
+				break;
 
-		/* If selected_group == DEFAULT_GROUP || ALL_GROUP, draw the standard caption
-		 * We list all vehicles or ungrouped vehicles */
-		if (IsDefaultGroupID(this->group_sel) || IsAllGroupID(this->group_sel)) {
-			SetDParam(0, STR_COMPANY_NAME);
-			SetDParam(1, GB(this->window_number, 0, 8));
-			SetDParam(2, this->vehicles.Length());
-			SetDParam(3, this->vehicles.Length());
-		} else {
-			const Group *g = Group::Get(this->group_sel);
+			case GRP_WIDGET_CAPTION:
+				/* If selected_group == DEFAULT_GROUP || ALL_GROUP, draw the standard caption
+				 * We list all vehicles or ungrouped vehicles */
+				if (IsDefaultGroupID(this->group_sel) || IsAllGroupID(this->group_sel)) {
+					SetDParam(0, STR_COMPANY_NAME);
+					SetDParam(1, GB(this->window_number, 0, 8));
+					SetDParam(2, this->vehicles.Length());
+					SetDParam(3, this->vehicles.Length());
+				} else {
+					const Group *g = Group::Get(this->group_sel);
 
-			SetDParam(0, STR_GROUP_NAME);
-			SetDParam(1, g->index);
-			SetDParam(2, g->num_vehicle);
-			SetDParam(3, g->num_vehicle);
+					SetDParam(0, STR_GROUP_NAME);
+					SetDParam(1, g->index);
+					SetDParam(2, g->num_vehicle);
+					SetDParam(3, g->num_vehicle);
+				}
+				break;
 		}
 	}
 

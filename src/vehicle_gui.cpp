@@ -868,7 +868,7 @@ static const NWidgetPart _nested_vehicle_list[] = {
 		NWidget(NWID_SELECTION, INVALID_COLOUR, VLW_WIDGET_HIDE_BUTTONS),
 			NWidget(NWID_HORIZONTAL),
 				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, VLW_WIDGET_AVAILABLE_VEHICLES), SetMinimalSize(106, 12), SetFill(0, 1),
-								SetDataTip(0x0, STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP),
+								SetDataTip(STR_BLACK_STRING, STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP),
 				NWidget(WWT_DROPDOWN, COLOUR_GREY, VLW_WIDGET_MANAGE_VEHICLES_DROPDOWN), SetMinimalSize(118, 12), SetFill(0, 1),
 								SetDataTip(STR_VEHICLE_LIST_MANAGE_LIST, STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP),
 				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, VLW_WIDGET_STOP_ALL), SetMinimalSize(12, 12), SetFill(0, 1),
@@ -1062,8 +1062,7 @@ public:
 		this->CreateNestedTree(desc);
 
 		/* Set up the window widgets */
-		this->GetWidget<NWidgetCore>(VLW_WIDGET_LIST)->tool_tip                  = STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP + this->vehicle_type;
-		this->GetWidget<NWidgetCore>(VLW_WIDGET_AVAILABLE_VEHICLES)->widget_data = STR_VEHICLE_LIST_AVAILABLE_TRAINS + this->vehicle_type;
+		this->GetWidget<NWidgetCore>(VLW_WIDGET_LIST)->tool_tip = STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP + this->vehicle_type;
 
 		if (window_type == VLW_SHARED_ORDERS) {
 			this->GetWidget<NWidgetCore>(VLW_WIDGET_CAPTION)->widget_data = STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION;
@@ -1113,38 +1112,44 @@ public:
 
 	virtual void SetStringParameters(int widget) const
 	{
-		if (widget != VLW_WIDGET_CAPTION) return;
+		switch (widget) {
+			case VLW_WIDGET_AVAILABLE_VEHICLES:
+				SetDParam(0, STR_VEHICLE_LIST_AVAILABLE_TRAINS + this->vehicle_type);
+				break;
 
-		const uint16 index = GB(this->window_number, 16, 16);
-		switch (this->window_number & VLW_MASK) {
-			case VLW_SHARED_ORDERS: // Shared Orders
-				if (this->vehicles.Length() == 0) {
-					/* We can't open this window without vehicles using this order
-					 * and we should close the window when deleting the order      */
-					NOT_REACHED();
+			case VLW_WIDGET_CAPTION: {
+				const uint16 index = GB(this->window_number, 16, 16);
+				switch (this->window_number & VLW_MASK) {
+					case VLW_SHARED_ORDERS: // Shared Orders
+						if (this->vehicles.Length() == 0) {
+							/* We can't open this window without vehicles using this order
+							* and we should close the window when deleting the order      */
+							NOT_REACHED();
+						}
+						SetDParam(0, this->vscroll.GetCount());
+						break;
+
+					case VLW_STANDARD: // Company Name
+						SetDParam(0, STR_COMPANY_NAME);
+						SetDParam(1, index);
+						SetDParam(3, this->vscroll.GetCount());
+						break;
+
+					case VLW_STATION_LIST: // Station/Waypoint Name
+						SetDParam(0, Station::IsExpected(BaseStation::Get(index)) ? STR_STATION_NAME : STR_WAYPOINT_NAME);
+						SetDParam(1, index);
+						SetDParam(3, this->vscroll.GetCount());
+						break;
+
+					case VLW_DEPOT_LIST:
+						SetDParam(0, STR_DEPOT_CAPTION);
+						SetDParam(1, this->vehicle_type);
+						SetDParam(2, index);
+						SetDParam(3, this->vscroll.GetCount());
+						break;
+					default: NOT_REACHED();
 				}
-				SetDParam(0, this->vscroll.GetCount());
-				break;
-
-			case VLW_STANDARD: // Company Name
-				SetDParam(0, STR_COMPANY_NAME);
-				SetDParam(1, index);
-				SetDParam(3, this->vscroll.GetCount());
-				break;
-
-			case VLW_STATION_LIST: // Station/Waypoint Name
-				SetDParam(0, Station::IsExpected(BaseStation::Get(index)) ? STR_STATION_NAME : STR_WAYPOINT_NAME);
-				SetDParam(1, index);
-				SetDParam(3, this->vscroll.GetCount());
-				break;
-
-			case VLW_DEPOT_LIST:
-				SetDParam(0, STR_DEPOT_CAPTION);
-				SetDParam(1, this->vehicle_type);
-				SetDParam(2, index);
-				SetDParam(3, this->vscroll.GetCount());
-				break;
-			default: NOT_REACHED();
+			} break;
 		}
 	}
 
