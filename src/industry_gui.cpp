@@ -458,12 +458,11 @@ public:
 	{
 		switch (widget) {
 			case DPIW_MATRIX_WIDGET: {
-				const IndustrySpec *indsp;
 				int y = this->vscroll.GetScrolledRowFromWidget(pt.y, this, DPIW_MATRIX_WIDGET);
 				if (y < this->count) { // Is it within the boundaries of available data?
 					this->selected_index = y;
 					this->selected_type = this->index[y];
-					indsp = (this->selected_type == INVALID_INDUSTRYTYPE) ? NULL : GetIndustrySpec(this->selected_type);
+					const IndustrySpec *indsp = (this->selected_type == INVALID_INDUSTRYTYPE) ? NULL : GetIndustrySpec(this->selected_type);
 
 					this->SetDirty();
 

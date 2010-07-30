@@ -1210,12 +1210,10 @@ public:
 				return;
 
 			case VLW_WIDGET_LIST: { // Matrix to show vehicles
-				const Vehicle *v;
 				uint id_v = this->vscroll.GetScrolledRowFromWidget(pt.y, this, VLW_WIDGET_LIST);
 				if (id_v >= this->vehicles.Length()) return; // click out of list bound
 
-				v = this->vehicles[id_v];
-
+				const Vehicle *v = this->vehicles[id_v];
 				ShowVehicleViewWindow(v);
 			} break;
 

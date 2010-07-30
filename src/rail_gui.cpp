@@ -1326,12 +1326,11 @@ public:
 				break;
 
 			case BRSW_NEWST_LIST: {
-				const StationSpec *statspec;
 				int y = this->vscroll.GetScrolledRowFromWidget(pt.y, this, BRSW_NEWST_LIST, 0, this->line_height);
 				if (y >= _railstation.station_count) return;
 
 				/* Check station availability callback */
-				statspec = GetCustomStationSpec(_railstation.station_class, y);
+				const StationSpec *statspec = GetCustomStationSpec(_railstation.station_class, y);
 				if (statspec != NULL && HasBit(statspec->callback_mask, CBM_STATION_AVAIL) &&
 						GB(GetStationCallback(CBID_STATION_AVAILABILITY, 0, 0, statspec, NULL, INVALID_TILE), 0, 8) == 0) return;
 

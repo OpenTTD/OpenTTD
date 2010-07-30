@@ -220,11 +220,9 @@ void Industry::PostDestructor(size_t index)
 
 static void IndustryDrawSugarMine(const TileInfo *ti)
 {
-	const DrawIndustryAnimationStruct *d;
-
 	if (!IsIndustryCompleted(ti->tile)) return;
 
-	d = &_draw_industry_spec1[GetIndustryAnimationState(ti->tile)];
+	const DrawIndustryAnimationStruct *d = &_draw_industry_spec1[GetIndustryAnimationState(ti->tile)];
 
 	AddChildSpriteScreen(SPR_IT_SUGAR_MINE_SIEVE + d->image_1, PAL_NONE, d->x, 0);
 
@@ -264,9 +262,7 @@ static void IndustryDrawBubbleGenerator( const TileInfo *ti)
 
 static void IndustryDrawToyFactory(const TileInfo *ti)
 {
-	const DrawIndustryAnimationStruct *d;
-
-	d = &_industry_anim_offs_toys[GetIndustryAnimationState(ti->tile)];
+	const DrawIndustryAnimationStruct *d = &_industry_anim_offs_toys[GetIndustryAnimationState(ti->tile)];
 
 	if (d->image_1 != 0xFF) {
 		AddChildSpriteScreen(SPR_IT_TOY_FACTORY_CLAY, PAL_NONE, d->x, 96 + d->image_1);
@@ -309,7 +305,6 @@ static void DrawTile_Industry(TileInfo *ti)
 	IndustryGfx gfx = GetIndustryGfx(ti->tile);
 	Industry *ind = Industry::GetByTile(ti->tile);
 	const IndustryTileSpec *indts = GetIndustryTileSpec(gfx);
-	const DrawBuildingsTileStruct *dits;
 
 	/* Retrieve pointer to the draw industry tile struct */
 	if (gfx >= NEW_INDUSTRYTILEOFFSET) {
@@ -330,7 +325,7 @@ static void DrawTile_Industry(TileInfo *ti)
 		}
 	}
 
-	dits = &_industry_draw_tile_data[gfx << 2 | (indts->anim_state ?
+	const DrawBuildingsTileStruct *dits = &_industry_draw_tile_data[gfx << 2 | (indts->anim_state ?
 			GetIndustryAnimationState(ti->tile) & INDUSTRY_COMPLETED :
 			GetIndustryConstructionStage(ti->tile))];
 
@@ -534,7 +529,6 @@ static void TransportIndustryGoods(TileIndex tile)
 
 static void AnimateTile_Industry(TileIndex tile)
 {
-	byte m;
 	IndustryGfx gfx = GetIndustryGfx(tile);
 
 	if (GetIndustryTileSpec(gfx)->animation_info != 0xFFFF) {
@@ -545,7 +539,7 @@ static void AnimateTile_Industry(TileIndex tile)
 	switch (gfx) {
 	case GFX_SUGAR_MINE_SIEVE:
 		if ((_tick_counter & 1) == 0) {
-			m = GetIndustryAnimationState(tile) + 1;
+			byte m = GetIndustryAnimationState(tile) + 1;
 
 			switch (m & 7) {
 			case 2: SndPlayTileFx(SND_2D_RIP_2, tile); break;
@@ -564,7 +558,7 @@ static void AnimateTile_Industry(TileIndex tile)
 
 	case GFX_TOFFEE_QUARY:
 		if ((_tick_counter & 3) == 0) {
-			m = GetIndustryAnimationState(tile);
+			byte m = GetIndustryAnimationState(tile);
 
 			if (_industry_anim_offs_toffee[m] == 0xFF) {
 				SndPlayTileFx(SND_30_CARTOON_SOUND, tile);
@@ -582,7 +576,7 @@ static void AnimateTile_Industry(TileIndex tile)
 
 	case GFX_BUBBLE_CATCHER:
 		if ((_tick_counter & 1) == 0) {
-			m = GetIndustryAnimationState(tile);
+			byte m = GetIndustryAnimationState(tile);
 
 			if (++m >= 40) {
 				m = 0;
@@ -597,7 +591,7 @@ static void AnimateTile_Industry(TileIndex tile)
 	/* Sparks on a coal plant */
 	case GFX_POWERPLANT_SPARKS:
 		if ((_tick_counter & 3) == 0) {
-			m = GetIndustryAnimationState(tile);
+			byte m = GetIndustryAnimationState(tile);
 			if (m == 6) {
 				SetIndustryAnimationState(tile, 0);
 				DeleteAnimatedTile(tile);
@@ -610,7 +604,7 @@ static void AnimateTile_Industry(TileIndex tile)
 
 	case GFX_TOY_FACTORY:
 		if ((_tick_counter & 1) == 0) {
-			m = GetIndustryAnimationState(tile) + 1;
+			byte m = GetIndustryAnimationState(tile) + 1;
 
 			switch (m) {
 				case  1: SndPlayTileFx(SND_2C_MACHINERY, tile); break;
@@ -653,7 +647,7 @@ static void AnimateTile_Industry(TileIndex tile)
 			bool b = Chance16(1, 7);
 			IndustryGfx gfx = GetIndustryGfx(tile);
 
-			m = GetIndustryAnimationState(tile) + 1;
+			byte m = GetIndustryAnimationState(tile) + 1;
 			if (m == 4 && (m = 0, ++gfx) == GFX_OILWELL_ANIMATED_3 + 1 && (gfx = GFX_OILWELL_ANIMATED_1, b)) {
 				SetIndustryGfx(tile, GFX_OILWELL_NOT_ANIMATED);
 				SetIndustryConstructionStage(tile, 3);
@@ -675,7 +669,7 @@ static void AnimateTile_Industry(TileIndex tile)
 
 			if (state < 0x1A0) {
 				if (state < 0x20 || state >= 0x180) {
-					m = GetIndustryAnimationState(tile);
+					byte m = GetIndustryAnimationState(tile);
 					if (!(m & 0x40)) {
 						SetIndustryAnimationState(tile, m | 0x40);
 						SndPlayTileFx(SND_0B_MINING_MACHINERY, tile);
@@ -684,16 +678,15 @@ static void AnimateTile_Industry(TileIndex tile)
 				} else {
 					if (state & 3) return;
 				}
-				m = (GetIndustryAnimationState(tile) + 1) | 0x40;
+				byte m = (GetIndustryAnimationState(tile) + 1) | 0x40;
 				if (m > 0xC2) m = 0xC0;
 				SetIndustryAnimationState(tile, m);
 				MarkTileDirtyByTile(tile);
 			} else if (state >= 0x200 && state < 0x3A0) {
-				int i;
-				i = (state < 0x220 || state >= 0x380) ? 7 : 3;
+				int i = (state < 0x220 || state >= 0x380) ? 7 : 3;
 				if (state & i) return;
 
-				m = (GetIndustryAnimationState(tile) & 0xBF) - 1;
+				byte m = (GetIndustryAnimationState(tile) & 0xBF) - 1;
 				if (m < 0x80) m = 0x82;
 				SetIndustryAnimationState(tile, m);
 				MarkTileDirtyByTile(tile);
@@ -714,14 +707,12 @@ static void CreateChimneySmoke(TileIndex tile)
 static void MakeIndustryTileBigger(TileIndex tile)
 {
 	byte cnt = GetIndustryConstructionCounter(tile) + 1;
-	byte stage;
-
 	if (cnt != 4) {
 		SetIndustryConstructionCounter(tile, cnt);
 		return;
 	}
 
-	stage = GetIndustryConstructionStage(tile) + 1;
+	byte stage = GetIndustryConstructionStage(tile) + 1;
 	SetIndustryConstructionCounter(tile, 0);
 	SetIndustryConstructionStage(tile, stage);
 	StartStopIndustryTileAnimation(tile, IAT_CONSTRUCTION_STATE_CHANGE);
@@ -796,9 +787,6 @@ static void TileLoopIndustry_BubbleGenerator(TileIndex tile)
 
 static void TileLoop_Industry(TileIndex tile)
 {
-	IndustryGfx newgfx;
-	IndustryGfx gfx;
-
 	if (IsIndustryTileOnWater(tile)) TileLoop_Water(tile);
 
 	TriggerIndustryTile(tile, INDTILE_TRIGGER_TILE_LOOP);
@@ -814,7 +802,7 @@ static void TileLoop_Industry(TileIndex tile)
 
 	if (StartStopIndustryTileAnimation(tile, IAT_TILELOOP)) return;
 
-	newgfx = GetIndustryTileSpec(GetIndustryGfx(tile))->anim_next;
+	IndustryGfx newgfx = GetIndustryTileSpec(GetIndustryGfx(tile))->anim_next;
 	if (newgfx != INDUSTRYTILE_NOANIM) {
 		ResetIndustryConstructionStage(tile);
 		SetIndustryGfx(tile, newgfx);
@@ -822,8 +810,7 @@ static void TileLoop_Industry(TileIndex tile)
 		return;
 	}
 
-	gfx = GetIndustryGfx(tile);
-
+	IndustryGfx gfx = GetIndustryGfx(tile);
 	switch (gfx) {
 	case GFX_COAL_MINE_TOWER_NOT_ANIMATED:
 	case GFX_COPPER_MINE_TOWER_NOT_ANIMATED:
@@ -961,22 +948,15 @@ static void SetupFarmFieldFence(TileIndex tile, int size, byte type, Axis direct
 
 static void PlantFarmField(TileIndex tile, IndustryID industry)
 {
-	uint size_x, size_y;
-	uint32 r;
-	uint count;
-	uint counter;
-	uint field_type;
-	int type;
-
 	if (_settings_game.game_creation.landscape == LT_ARCTIC) {
 		if (GetTileZ(tile) + TILE_HEIGHT * 2 >= GetSnowLine()) return;
 	}
 
 	/* determine field size */
-	r = (Random() & 0x303) + 0x404;
+	uint32 r = (Random() & 0x303) + 0x404;
 	if (_settings_game.game_creation.landscape == LT_ARCTIC) r += 0x404;
-	size_x = GB(r, 0, 8);
-	size_y = GB(r, 8, 8);
+	uint size_x = GB(r, 0, 8);
+	uint size_y = GB(r, 8, 8);
 
 	/* offset tile to match size */
 	tile -= TileDiffXY(size_x / 2, size_y / 2);
@@ -984,7 +964,7 @@ static void PlantFarmField(TileIndex tile, IndustryID industry)
 	if (TileX(tile) + size_x >= MapSizeX() || TileY(tile) + size_y >= MapSizeY()) return;
 
 	/* check the amount of bad tiles */
-	count = 0;
+	uint count = 0;
 	TILE_LOOP(cur_tile, size_x, size_y, tile) {
 		assert(cur_tile < MapSize());
 		count += IsBadFarmFieldTile(cur_tile);
@@ -993,8 +973,8 @@ static void PlantFarmField(TileIndex tile, IndustryID industry)
 
 	/* determine type of field */
 	r = Random();
-	counter = GB(r, 5, 3);
-	field_type = GB(r, 8, 8) * 9 >> 8;
+	uint counter = GB(r, 5, 3);
+	uint field_type = GB(r, 8, 8) * 9 >> 8;
 
 	/* make field */
 	TILE_LOOP(cur_tile, size_x, size_y, tile) {
@@ -1006,7 +986,7 @@ static void PlantFarmField(TileIndex tile, IndustryID industry)
 		}
 	}
 
-	type = 3;
+	int type = 3;
 	if (_settings_game.game_creation.landscape != LT_ARCTIC && _settings_game.game_creation.landscape != LT_TROPIC) {
 		type = _plantfarmfield_type[Random() & 0xF];
 	}
@@ -1069,12 +1049,12 @@ static void ChopLumberMillTrees(Industry *i)
 
 static void ProduceIndustryGoods(Industry *i)
 {
-	uint32 r;
-	uint num;
 	const IndustrySpec *indsp = GetIndustrySpec(i->type);
 
 	/* play a sound? */
 	if ((i->counter & 0x3F) == 0) {
+		uint32 r;
+		uint num;
 		if (Chance16R(1, 14, r) && (num = indsp->number_of_sounds) != 0) {
 			SndPlayTileFx(
 				(SoundFx)(indsp->random_sounds[((r >> 16) * num) >> 16]),
@@ -1118,8 +1098,6 @@ static void ProduceIndustryGoods(Industry *i)
 
 void OnTick_Industry()
 {
-	Industry *i;
-
 	if (_industry_sound_ctr != 0) {
 		_industry_sound_ctr++;
 
@@ -1133,6 +1111,7 @@ void OnTick_Industry()
 
 	if (_game_mode == GM_EDITOR) return;
 
+	Industry *i;
 	FOR_ALL_INDUSTRIES(i) {
 		ProduceIndustryGoods(i);
 	}
@@ -1414,18 +1393,15 @@ static CommandCost CheckIfIndustryIsAllowed(TileIndex tile, int type, const Town
 
 static bool CheckCanTerraformSurroundingTiles(TileIndex tile, uint height, int internal)
 {
-	int size_x, size_y;
-	uint curh;
-
-	size_x = 2;
-	size_y = 2;
+	int size_x = 2;
+	int size_y = 2;
 
 	/* Check if we don't leave the map */
 	if (TileX(tile) == 0 || TileY(tile) == 0 || GetTileType(tile) == MP_VOID) return false;
 
 	tile += TileDiffXY(-1, -1);
 	TILE_LOOP(tile_walk, size_x, size_y, tile) {
-		curh = TileHeight(tile_walk);
+		uint curh = TileHeight(tile_walk);
 		/* Is the tile clear? */
 		if ((GetTileType(tile_walk) != MP_CLEAR) && (GetTileType(tile_walk) != MP_TREES)) return false;
 
@@ -1454,9 +1430,6 @@ static bool CheckIfCanLevelIndustryPlatform(TileIndex tile, DoCommandFlag flags,
 	const int MKEND = -0x80;   // used for last element in an IndustryTileTable (see build_industry.h)
 	int max_x = 0;
 	int max_y = 0;
-	TileIndex cur_tile;
-	uint size_x, size_y;
-	uint h, curh;
 
 	/* Finds dimensions of largest variant of this industry */
 	do {
@@ -1466,14 +1439,14 @@ static bool CheckIfCanLevelIndustryPlatform(TileIndex tile, DoCommandFlag flags,
 	} while ((++it)->ti.x != MKEND);
 
 	/* Remember level height */
-	h = TileHeight(tile);
+	uint h = TileHeight(tile);
 
 	if (TileX(tile) <= 1 || TileY(tile) <= 1) return false;
 	/* Check that all tiles in area and surrounding are clear
 	 * this determines that there are no obstructing items */
-	cur_tile = tile + TileDiffXY(-1, -1);
-	size_x = max_x + 4;
-	size_y = max_y + 4;
+	TileIndex cur_tile = tile + TileDiffXY(-1, -1);
+	uint size_x = max_x + 4;
+	uint size_y = max_y + 4;
 
 	/* Check if we don't leave the map */
 	if (TileX(cur_tile) + size_x >= MapMaxX() || TileY(cur_tile) + size_y >= MapMaxY()) return false;
@@ -1483,7 +1456,7 @@ static bool CheckIfCanLevelIndustryPlatform(TileIndex tile, DoCommandFlag flags,
 	Backup<CompanyByte> cur_company(_current_company, OWNER_TOWN, FILE_LINE);
 
 	TILE_LOOP(tile_walk, size_x, size_y, cur_tile) {
-		curh = TileHeight(tile_walk);
+		uint curh = TileHeight(tile_walk);
 		if (curh != h) {
 			/* This tile needs terraforming. Check if we can do that without
 			 *  damaging the surroundings too much. */
@@ -1503,7 +1476,7 @@ static bool CheckIfCanLevelIndustryPlatform(TileIndex tile, DoCommandFlag flags,
 	if (flags & DC_EXEC) {
 		/* Terraform the land under the industry */
 		TILE_LOOP(tile_walk, size_x, size_y, cur_tile) {
-			curh = TileHeight(tile_walk);
+			uint curh = TileHeight(tile_walk);
 			while (curh != h) {
 				/* We give the terraforming for free here, because we can't calculate
 				 *  exact cost in the test-round, and as we all know, that will cause
@@ -1980,15 +1953,13 @@ struct ProbabilityHelper {
  */
 static void MaybeNewIndustry()
 {
-	Industry *ind;               // will receive the industry's creation pointer
-	IndustryType rndtype, j;     // Loop controlers
-	const IndustrySpec *ind_spc;
 	uint num = 0;
 	ProbabilityHelper cumulative_probs[NUM_INDUSTRYTYPES]; // probability collector
 	uint16 probability_max = 0;
 
 	/* Generate a list of all possible industries that can be built. */
-	for (j = 0; j < NUM_INDUSTRYTYPES; j++) {
+	const IndustrySpec *ind_spc;
+	for (IndustryType j = 0; j < NUM_INDUSTRYTYPES; j++) {
 		ind_spc = GetIndustrySpec(j);
 		byte chance = ind_spc->appear_ingame[_settings_game.game_creation.landscape];
 
@@ -2008,7 +1979,8 @@ static void MaybeNewIndustry()
 	if (probability_max == 0) return;
 
 	/* Find a random type, with maximum being what has been evaluate above*/
-	rndtype = RandomRange(probability_max);
+	IndustryType rndtype = RandomRange(probability_max);
+	IndustryType j;
 	for (j = 0; j < NUM_INDUSTRYTYPES; j++) {
 		/* and choose the index of the industry that matches as close as possible this random type */
 		if (cumulative_probs[j].prob >= rndtype) break;
@@ -2020,6 +1992,7 @@ static void MaybeNewIndustry()
 	if ((ind_spc->behaviour & INDUSTRYBEH_AFTER_1960) && _cur_year < 1960) return;
 
 	/* try to create 2000 times this industry */
+	Industry *ind; // Will receive the industry's creation pointer.
 	num = 2000;
 	for (;;) {
 		ind = CreateNewIndustry(RandomTile(), cumulative_probs[j].ind);
@@ -2435,9 +2408,9 @@ void IndustryDailyLoop()
 
 void IndustryMonthlyLoop()
 {
-	Industry *i;
 	Backup<CompanyByte> cur_company(_current_company, OWNER_NONE, FILE_LINE);
 
+	Industry *i;
 	FOR_ALL_INDUSTRIES(i) {
 		UpdateIndustryStatistics(i);
 		if (i->prod_level == PRODLEVEL_CLOSURE) {
