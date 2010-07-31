@@ -47,7 +47,7 @@ static void Load_NGRF_common(GRFConfig *&grfconfig)
 	while (SlIterateArray() != -1) {
 		GRFConfig *c = new GRFConfig();
 		SlObject(c, _grfconfig_desc);
-		if (CheckSavegameVersion(101)) c->windows_paletted = (_use_palette == PAL_WINDOWS);
+		if (CheckSavegameVersion(101)) c->SetSuitablePalette();
 		AppendToGRFConfigList(&grfconfig, c);
 	}
 }

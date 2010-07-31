@@ -85,6 +85,16 @@ const char *GRFConfig::GetDescription() const
 	return GetGRFStringFromGRFText(this->info);
 }
 
+/**
+ * Set the palette of this GRFConfig to something suitable.
+ * That is either the setting coming from the NewGRF or
+ * the globally used palette.
+ */
+void GRFConfig::SetSuitablePalette()
+{
+ this->windows_paletted = (_use_palette == PAL_WINDOWS);
+}
+
 GRFConfig *_all_grfs;
 GRFConfig *_grfconfig;
 GRFConfig *_grfconfig_newgame;
@@ -133,8 +143,8 @@ GRFError::~GRFError()
  */
 void UpdateNewGRFConfigPalette()
 {
-	for (GRFConfig *c = _grfconfig_newgame; c != NULL; c = c->next) c->windows_paletted = (_use_palette == PAL_WINDOWS);
-	for (GRFConfig *c = _grfconfig_static;  c != NULL; c = c->next) c->windows_paletted = (_use_palette == PAL_WINDOWS);
+	for (GRFConfig *c = _grfconfig_newgame; c != NULL; c = c->next) c->SetSuitablePalette();
+	for (GRFConfig *c = _grfconfig_static;  c != NULL; c = c->next) c->SetSuitablePalette();
 }
 
 /** Calculate the MD5 sum for a GRF, and store it in the config.
@@ -191,7 +201,7 @@ bool FillGRFDetails(GRFConfig *config, bool is_static)
 		if (HasBit(config->flags, GCF_UNSAFE)) return false;
 	}
 
-	config->windows_paletted = (_use_palette == PAL_WINDOWS);
+	config->SetSuitablePalette();
 
 	return CalcGRFMD5Sum(config);
 }

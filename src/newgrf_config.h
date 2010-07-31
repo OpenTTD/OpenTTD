@@ -108,6 +108,8 @@ struct GRFConfig : ZeroedMemoryAllocator {
 
 	const char *GetName() const;
 	const char *GetDescription() const;
+
+	void SetSuitablePalette();
 };
 
 extern GRFConfig *_all_grfs;          ///< First item in list of all scanned NewGRFs
