@@ -34,6 +34,7 @@ struct Economy {
 	uint16 old_max_loan_unround_fract;    ///< Old: Fraction of the unrounded max loan
 };
 
+/** Score categories in the detailed performance rating. */
 enum ScoreID {
 	SCORE_BEGIN      = 0,
 	SCORE_VEHICLES   = 0,
@@ -53,8 +54,8 @@ enum ScoreID {
 };
 DECLARE_POSTFIX_INCREMENT(ScoreID)
 
+/** Data structure for storing how the score is computed for a single score id. */
 struct ScoreInfo {
-	byte id;    ///< Unique ID of the score
 	int needed; ///< How much you need to get the perfect score
 	int score;  ///< How much score it will give
 };

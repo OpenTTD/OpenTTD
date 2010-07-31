@@ -92,18 +92,20 @@ static inline uint32 BigMulSU(const uint32 a, const uint32 b, const uint8 shift)
 
 typedef SmallVector<Industry *, 16> SmallIndustryList;
 
-/* Score info */
+/**
+ * Score info, values used for computing the detailed performance rating.
+ */
 const ScoreInfo _score_info[] = {
-	{ SCORE_VEHICLES,        120, 100 },
-	{ SCORE_STATIONS,         80, 100 },
-	{ SCORE_MIN_PROFIT,    10000, 100 },
-	{ SCORE_MIN_INCOME,    50000,  50 },
-	{ SCORE_MAX_INCOME,   100000, 100 },
-	{ SCORE_DELIVERED,     40000, 400 },
-	{ SCORE_CARGO,             8,  50 },
-	{ SCORE_MONEY,      10000000,  50 },
-	{ SCORE_LOAN,         250000,  50 },
-	{ SCORE_TOTAL,             0,   0 }
+	{     120, 100}, // SCORE_VEHICLES
+	{      80, 100}, // SCORE_STATIONS
+	{   10000, 100}, // SCORE_MIN_PROFIT
+	{   50000,  50}, // SCORE_MIN_INCOME
+	{  100000, 100}, // SCORE_MAX_INCOME
+	{   40000, 400}, // SCORE_DELIVERED
+	{       8,  50}, // SCORE_CARGO
+	{10000000,  50}, // SCORE_MONEY
+	{  250000,  50}, // SCORE_LOAN
+	{       0,   0}  // SCORE_TOTAL
 };
 
 int _score_part[MAX_COMPANIES][SCORE_END];
