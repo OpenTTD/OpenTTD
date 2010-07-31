@@ -18,6 +18,9 @@
 #include "ai.hpp"
 #include <map>
 
+/**
+ * Class that scans for available AIs.
+ */
 class AIScanner : public ScriptScanner {
 public:
 	AIScanner();

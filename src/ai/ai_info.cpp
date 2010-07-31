@@ -21,6 +21,7 @@
 #include "../debug.h"
 #include "../rev.h"
 
+/** Configuration for AI start date, every AI has this setting. */
 AIConfigItem _start_date_config = {
 	"start_date",
 	"The amount of days after the start of the last AI, this AI will start (give or take).",
@@ -50,6 +51,10 @@ AILibrary::~AILibrary()
 	return 0;
 }
 
+/**
+ * Check if the API version provided by the AI is supported.
+ * @param api_version The API version as provided by the AI.
+ */
 static bool CheckAPIVersion(const char *api_version)
 {
 	return strcmp(api_version, "0.7") == 0 || strcmp(api_version, "1.0") == 0 || strcmp(api_version, "1.1") == 0;

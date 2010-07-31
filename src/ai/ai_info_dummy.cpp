@@ -25,6 +25,7 @@
  *  to select manual. It is a fail-over in case no AIs are available.
  */
 
+/** info.nut for the dummy AI. */
 const SQChar _dummy_script_info[] = _SC("                                                       \n\
 class DummyAI extends AIInfo {                                                                  \n\
   function GetAuthor()      { return \"OpenTTD NoAI Developers Team\"; }                        \n\
@@ -39,6 +40,7 @@ class DummyAI extends AIInfo {                                                  
 RegisterDummyAI(DummyAI());                                                                     \n\
 ");
 
+/** Run the dummy info.nut. */
 void AI_CreateAIInfoDummy(HSQUIRRELVM vm)
 {
 	sq_pushroottable(vm);
@@ -54,6 +56,7 @@ void AI_CreateAIInfoDummy(HSQUIRRELVM vm)
 	NOT_REACHED();
 }
 
+/** Run the dummy AI and let it generate an error message. */
 void AI_CreateAIDummy(HSQUIRRELVM vm)
 {
 	/* We want to translate the error message.

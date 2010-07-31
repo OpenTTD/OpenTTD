@@ -87,6 +87,11 @@ AIStorage::~AIStorage()
 	if (log_data != NULL) AILog::FreeLogPointer();
 }
 
+/**
+ * Callback called by squirrel when an AI uses "print" and for error messages.
+ * @param error_msg Is this an error message?
+ * @param message The actual message text.
+ */
 static void PrintFunc(bool error_msg, const SQChar *message)
 {
 	/* Convert to OpenTTD internal capable string */
@@ -453,8 +458,9 @@ enum SQSaveLoadType {
 	SQSL_ARRAY_TABLE_END = 0xFF, ///< Marks the end of an array or table, no data follows.
 };
 
-static byte _ai_sl_byte;
+static byte _ai_sl_byte; //!< Used as source/target by the AI saveload code to store/load a single byte.
 
+/** SaveLoad array that saves/loads exactly one byte. */
 static const SaveLoad _ai_byte[] = {
 	SLEG_VAR(_ai_sl_byte, SLE_UINT8),
 	SLE_END()

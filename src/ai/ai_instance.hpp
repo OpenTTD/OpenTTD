@@ -29,12 +29,21 @@ public:
 		callback(callback)
 	{}
 
+	/**
+	 * Get the amount ot ticks the AI should be suspended.
+	 * @return The amount of AI ticks to suspend the AI.
+	 */
 	int GetSuspendTime() { return time; }
+
+	/**
+	 * Get the callback to call when the AI can run again.
+	 * @return The callback function to run.
+	 */
 	AISuspendCallbackProc *GetSuspendCallback() { return callback; }
 
 private:
-	int time;
-	AISuspendCallbackProc *callback;
+	int time;                        //!< Amount of ticks to suspend the AI.
+	AISuspendCallbackProc *callback; //!< Callback function to call when the AI can run again.
 };
 
 /**
@@ -52,6 +61,7 @@ private:
 	const char *msg;
 };
 
+/** Runtime information about an AI like a pointer to the squirrel vm and the current state. */
 class AIInstance {
 public:
 	friend class AIObject;
@@ -145,16 +155,16 @@ public:
 	 */
 	void Suspend();
 private:
-	class AIController *controller;
-	class AIStorage *storage;
-	class Squirrel *engine;
-	SQObject *instance;
+	class AIController *controller;  //!< The AI main class.
+	class AIStorage *storage;        //!< Some global information for each running AI.
+	class Squirrel *engine;          //!< A wrapper around the squirrel vm.
+	SQObject *instance;              //!< Squirrel-pointer to the AI main class.
 
-	bool is_started;
-	bool is_dead;
-	bool is_save_data_on_stack;
-	int suspend;
-	AISuspendCallbackProc *callback;
+	bool is_started;                 //!< Is the AIs constructor executed?
+	bool is_dead;                    //!< True if the AI has been stopped.
+	bool is_save_data_on_stack;      //!< Is the save data still on the squirrel stack?
+	int suspend;                     //!< The amount of ticks to suspend this AI before it's allowed to continue.
+	AISuspendCallbackProc *callback; //!< Callback that should be called in the next tick the AI runs.
 
 	/**
 	 * Register all API functions to the VM.

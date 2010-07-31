@@ -18,15 +18,17 @@
 #include "../core/smallmap_type.hpp"
 #include "../script/script_info.hpp"
 
+/** Bitmask of flags for AI settings. */
 enum AIConfigFlags {
-	AICONFIG_NONE    = 0x0,
+	AICONFIG_NONE    = 0x0, //!< No flags set.
 	AICONFIG_RANDOM  = 0x1, //!< When randomizing the AI, pick any value between min_value and max_value when on custom difficulty setting.
 	AICONFIG_BOOLEAN = 0x2, //!< This value is a boolean (either 0 (false) or 1 (true) ).
 	AICONFIG_INGAME  = 0x4, //!< This setting can be changed while the AI is running.
 };
 
-typedef SmallMap<int, char *> LabelMapping;
+typedef SmallMap<int, char *> LabelMapping; //!< Map-type used to map the setting numbers to labels.
 
+/** Info about a single AI setting. */
 struct AIConfigItem {
 	const char *name;        //!< The name of the configuration setting.
 	const char *description; //!< The description of the configuration setting.
@@ -44,8 +46,9 @@ struct AIConfigItem {
 
 extern AIConfigItem _start_date_config;
 
-typedef std::list<AIConfigItem> AIConfigItemList;
+typedef std::list<AIConfigItem> AIConfigItemList; //!< List of AIConfig items.
 
+/** Base class that holds some basic information about AIs and AI libraries. */
 class AIFileInfo : public ScriptFileInfo {
 public:
 	/**
@@ -54,9 +57,10 @@ public:
 	static SQInteger Constructor(HSQUIRRELVM vm, AIFileInfo *info);
 
 protected:
-	class AIScanner *base;
+	class AIScanner *base; //!< AIScanner object that was used to scan this AI (library) info.
 };
 
+/** All static information from an AI like name, version, etc. */
 class AIInfo : public AIFileInfo {
 public:
 	static const char *GetClassName() { return "AIInfo"; }
@@ -68,6 +72,10 @@ public:
 	 * Create an AI, using this AIInfo as start-template.
 	 */
 	static SQInteger Constructor(HSQUIRRELVM vm);
+
+	/**
+	 * Create a dummy-AI.
+	 */
 	static SQInteger DummyConstructor(HSQUIRRELVM vm);
 
 	/**
@@ -116,12 +124,13 @@ public:
 	const char *GetAPIVersion() const { return this->api_version; }
 
 private:
-	AIConfigItemList config_list;
-	int min_loadable_version;
-	bool use_as_random;
-	const char *api_version;
+	AIConfigItemList config_list; //!< List of settings from this AI.
+	int min_loadable_version;     //!< The AI can load savegame data if the version is equal or greater than this.
+	bool use_as_random;           //!< Should this AI be used when the user wants a "random AI"?
+	const char *api_version;      //!< API version used by this AI.
 };
 
+/** All static information from an AI library like name, version, etc. */
 class AILibrary : public AIFileInfo {
 public:
 	AILibrary() : AIFileInfo(), category(NULL) {};
@@ -132,6 +141,11 @@ public:
 	 */
 	static SQInteger Constructor(HSQUIRRELVM vm);
 
+	/**
+	 * Import a library in the current AI. This function can be used by AIs
+	 * by calling import.
+	 * @param vm The squirrel vm of the calling AI.
+	 */
 	static SQInteger Import(HSQUIRRELVM vm);
 
 	/**
@@ -140,7 +154,7 @@ public:
 	const char *GetCategory() const { return this->category; }
 
 private:
-	const char *category;
+	const char *category; //!< The category this library is in.
 };
 
 #endif /* ENABLE_AI */

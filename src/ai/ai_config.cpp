@@ -48,7 +48,6 @@ void AIConfig::ChangeAI(const char *name, int version, bool force_exact_match, b
 		}
 		this->AddRandomDeviation();
 	}
-
 }
 
 AIConfig::AIConfig(const AIConfig *config)

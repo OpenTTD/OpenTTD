@@ -18,8 +18,12 @@
 #include "../core/string_compare_type.hpp"
 #include "../company_type.h"
 
+/**
+ * AI settings for one company slot.
+ */
 class AIConfig {
 private:
+	/** List with name=>value pairs of all AI-specific settings */
 	typedef std::map<const char *, int, StringCompare> SettingValueList;
 
 public:
@@ -30,7 +34,14 @@ public:
 		config_list(NULL),
 		is_random_ai(false)
 	{}
+
+	/**
+	 * Create a new AI config that is a copy of an existing config.
+	 * @param config The object to copy.
+	 */
 	AIConfig(const AIConfig *config);
+
+	/** Delete an AI configuration. */
 	~AIConfig();
 
 	/**
@@ -61,8 +72,10 @@ public:
 	 */
 	const AIConfigItemList *GetConfigList();
 
-	/* Where to get the config from, either default (depends on current game
-	 * mode) or force either newgame or normal */
+	/**
+	 * Where to get the config from, either default (depends on current game
+	 * mode) or force either newgame or normal
+	 */
 	enum AISettingSource {
 		AISS_DEFAULT,       ///< Get the AI config from the current game mode
 		AISS_FORCE_NEWGAME, ///< Get the newgame AI config
@@ -131,12 +144,12 @@ public:
 	void SettingsToString(char *string, size_t size) const;
 
 private:
-	const char *name;
-	int version;
-	class AIInfo *info;
-	SettingValueList settings;
-	AIConfigItemList *config_list;
-	bool is_random_ai;
+	const char *name;              //!< Name of the AI
+	int version;                   //!< Version of the AI
+	class AIInfo *info;            //!< AIInfo object for related to this AI version
+	SettingValueList settings;     //!< List with all setting=>value pairs that are configure for this AI
+	AIConfigItemList *config_list; //!< List with all settings defined by this AI
+	bool is_random_ai;             //!< True if the AI in this slot was randomly chosen.
 };
 
 #endif /* ENABLE_AI */

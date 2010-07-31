@@ -695,8 +695,8 @@ enum AIDebugWindowWidgets {
  * Window with everything an AI prints via AILog.
  */
 struct AIDebugWindow : public QueryStringBaseWindow {
-	static const int top_offset;    ///< Offset of the text at the top of the #AID_WIDGET_LOG_PANEL.
-	static const int bottom_offset; ///< Offset of the text at the bottom of the #AID_WIDGET_LOG_PANEL.
+	static const int top_offset;    ///< Offset of the text at the top of the ::AID_WIDGET_LOG_PANEL.
+	static const int bottom_offset; ///< Offset of the text at the bottom of the ::AID_WIDGET_LOG_PANEL.
 
 	static const unsigned int MAX_BREAK_STR_STRING_LENGTH = 256;
 

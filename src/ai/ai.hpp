@@ -18,9 +18,12 @@
 #include "../core/string_compare_type.hpp"
 #include <map>
 
+/** A list that maps AI names to their AIInfo object. */
 typedef std::map<const char *, class AIInfo *, StringCompare> AIInfoList;
 
-
+/**
+ * Main AI class. Contains all functions needed to start, stop, save and load AIs.
+ */
 class AI {
 public:
 	/**
@@ -121,18 +124,29 @@ public:
 	 */
 	static int GetStartNextTime();
 
+	/** Wrapper function for AIScanner::GetAIConsoleList */
 	static char *GetConsoleList(char *p, const char *last);
+	/** Wrapper function for AIScanner::GetAIInfoList */
 	static const AIInfoList *GetInfoList();
+	/** Wrapper function for AIScanner::GetUniqueAIInfoList */
 	static const AIInfoList *GetUniqueInfoList();
+	/** Wrapper function for AIScanner::FindInfo */
 	static AIInfo *FindInfo(const char *name, int version, bool force_exact_match);
+	/** Wrapper function for AIScanner::ImportLibrary */
 	static bool ImportLibrary(const char *library, const char *class_name, int version, HSQUIRRELVM vm);
+
+	/**
+	 * Rescans all searchpaths for available AIs. If a used AI is no longer
+	 * found it is removed from the config.
+	 */
 	static void Rescan();
 #if defined(ENABLE_NETWORK)
+	/** Wrapper function for AIScanner::HasAI */
 	static bool HasAI(const struct ContentInfo *ci, bool md5sum);
 #endif
 private:
-	static uint frame_counter;
-	static class AIScanner *ai_scanner;
+	static uint frame_counter;          //!< Tick counter for the AI code
+	static class AIScanner *ai_scanner; //!< AIScanner instance that is used to find AIs
 };
 
 #else /* ENABLE_AI */
