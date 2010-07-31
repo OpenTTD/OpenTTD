@@ -1,3 +1,11 @@
+1.0.3 (2010-08-01)
+------------------------------------------------------------------------
+- Fix: Make it possible to properly assess the length of the rail toolbar caption, don't require '{WHITE}' control codes (r20242)
+- Fix: Check for disallowed level crossings also when converting rail (r20237)
+- Fix: Haiku uses a 'special' location for headers (r20219)
+- Fix: Desync due to (temporary) wrong railtype; when loading a savegame the railtype of some (high ID) trains could be wrong [FS#3945] (r20137)
+
+
 1.0.3-RC1 (2010-07-17)
 ------------------------------------------------------------------------
 - Feature: [NewGRF] Textstack support for CB 38 (r20086)
@@ -20,7 +28,7 @@
 - Fix: Crash when spectator tried to open a vehicle list without selecting any company [FS#3892] (r20041)
 - Fix: Instead of loading the intro game when loading a savegame fails on the dedicated server, generate a new game [FS#3907] (r20039)
 - Fix: Tram tracks did not show at level crossing with the new railtypes [FS#3911] (r20036)
-- Fix: Under some circumstances you could get into an infinite loop [FS#3909] (r20035)
+- Fix: Under some circumstances you could get into an infinite loop [CVE-2010-2534] [FS#3909] (r20035)
 - Fix: The 64 bits TortoiseSVN was not always properly detected (r20029)
 - Fix: Do not close the sort dropdown in the (original) vehicle list when there are no vehicles. That code is meant for the 'actions' dropdown [FS#3881] (r20014)
 - Fix: When joining a company with a password you could only enter 20 characters of the password (r20012)
