@@ -1,6 +1,6 @@
 OpenTTD's known bugs
-Last updated:    2010-04-01
-Release version: 1.0.0
+Last updated:    2010-08-01
+Release version: 1.0.3
 ------------------------------------------------------------------------
 
 
@@ -34,10 +34,9 @@ that you can find at: http://bugs.openttd.org
 If the bugs are closed but still listed here it means that the bug is fixed
 and that the nightlies and next major release will not have that bug.
 
-- 3725	[NewGRF] Incorrect handling of some house action0s
-- 3720	When refitting to a vehicle with more trailers, the details view is not made bigger
+- 3935	Under some circumstances two road vehicles can leave road stop simultaniously
+- 3746	Console output with right-to-left texts in left-to-right texts is not correct
 - 3714	Some corrupted savegames can cause crashes
-- 3695	Behaviour inconsistency building railway/road down towards water
 - 3651	[OSX] Crash when selecting full screen
 - 3648	[OSX] Crash when selecting music
 - 3637	Second highest competing station gets penalised twice

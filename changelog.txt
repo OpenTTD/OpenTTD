@@ -1,3 +1,47 @@
+1.0.3 (2010-08-01)
+------------------------------------------------------------------------
+- Fix: Make it possible to properly assess the length of the rail toolbar caption, don't require '{WHITE}' control codes (r20242)
+- Fix: Check for disallowed level crossings also when converting rail (r20237)
+- Fix: Haiku uses a 'special' location for headers (r20219)
+- Fix: Desync due to (temporary) wrong railtype; when loading a savegame the railtype of some (high ID) trains could be wrong [FS#3945] (r20137)
+
+
+1.0.3-RC1 (2010-07-17)
+------------------------------------------------------------------------
+- Feature: [NewGRF] Textstack support for CB 38 (r20086)
+- Feature: [NewGRF] Add a railtype flag to disallow level crossings per railtype (r20049)
+- Change: Improve desync debugging, crash log data and the Debian packaging (by making a debug symbols package) (r20138, r20136, r20129)
+- Fix: Do not scan /data and ~/data (if they happen to be your working directory). If it is the directory where your binary is located it will still scan them [FS#3949] (r20166)
+- Fix: Integer comparison failed in case the difference was more than 'MAX_UINT'/2 [FS#3954] (r20162)
+- Fix: [YAPP] Converting a one-way block to a path signal with trains on both sides could lead to a train crash [FS#3937] (r20156)
+- Fix: [NewGRF] Improve handling of snowing of railtypes and (infra)structures on foundations [FS#3883] (r20153, r20132, r20126, r20125)
+- Fix: Ships were not marked as dirty when stopping inside a depot [FS#3880] (r20142)
+- Fix: Some windows ignored all hotkeys [FS#3902] (r20141, r20140, r20139)
+- Fix: Do not allow building a rail track to the water using a tree-tile [FS#3695] (r20110)
+- Fix: [NoAI] AITown::GetRating() returned wrong values [FS#3934] (r20103)
+- Fix: Reading deleted memory when selecting a NewGRF in the content download window of which the data has not been acquired from the content server. The crash would occur after the content server's reply was processed and the ContentInfo object was replaced with another [FS#3899] (r20089, r20082)
+- Fix: If after loading a savegame (including intro game) one tried to save a game (including autosave) and that failed (very) early on because it could not open the file for writing all pointers would be converted to NULLs which then causes corrupted game states [FS#3876, FS#3887, FS#3920, FS#3923] (r20087)
+- Fix: gitignore and hgignore had more missing/wrong entries (r20078, r20033, r20031)
+- Fix: Remove the space between 'open' and 'ttd' in the title screen (r20077)
+- Fix: Road vehicles could get crashed twice in a tick [FS#3896] (r20053, r20034)
+- Fix: Coloured_news_year was stored in savegames while it should be a client setting [FS#3916] (r20051)
+- Fix: Crash when spectator tried to open a vehicle list without selecting any company [FS#3892] (r20041)
+- Fix: Instead of loading the intro game when loading a savegame fails on the dedicated server, generate a new game [FS#3907] (r20039)
+- Fix: Tram tracks did not show at level crossing with the new railtypes [FS#3911] (r20036)
+- Fix: Under some circumstances you could get into an infinite loop [CVE-2010-2534] [FS#3909] (r20035)
+- Fix: The 64 bits TortoiseSVN was not always properly detected (r20029)
+- Fix: Do not close the sort dropdown in the (original) vehicle list when there are no vehicles. That code is meant for the 'actions' dropdown [FS#3881] (r20014)
+- Fix: When joining a company with a password you could only enter 20 characters of the password (r20012)
+- Fix: Sign sorting was unstable [FS#3893] (r20009)
+- Fix: Trains should also have running cost while slowing down for stop (r20006)
+- Fix: [NewGRF] Stringcodes 82, 83 and 84 were not properly converted to openttd codes so they did not work (r20004)
+- Fix: Clear force_proceed when entering depots and when loading, resetting of force_proceed on manual stopping did not work [FS#3878] (r19992)
+- Fix: Do not show an error message when trying to start/stop a crashed plane [FS#3874] (r19953)
+- Fix: Allow turning of roadvehicles while waiting in a queue (r19945)
+- Fix: Disallow moving of vehicle news window [FS#3865] (r19943)
+- Fix: Under some (unlucky) circumstances the wrong company would be 'current company' when changing company colour or orders [FS#3903]
+
+
 1.0.2 (2010-06-19)
 ------------------------------------------------------------------------
 - Fix: Owner of the Waypoint View window was not properly set (r19990)
