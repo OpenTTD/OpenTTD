@@ -114,7 +114,7 @@ void CheckExternalFiles()
 	const char *last = lastof(error_msg);
 
 	if (used_set->GetNumInvalid() != 0) {
-		/* Not all files were loaded succesfully, see which ones */
+		/* Not all files were loaded successfully, see which ones */
 		add_pos += seprintf(add_pos, last, "Trying to load graphics set '%s', but it is incomplete. The game will probably not run correctly until you properly install this set or select another one. See section 4.1 of readme.txt.\n\nThe following files are corrupted or missing:\n", used_set->name);
 		for (uint i = 0; i < GraphicsSet::NUM_FILES; i++) {
 			MD5File::ChecksumResult res = used_set->files[i].CheckMD5(DATA_DIR);

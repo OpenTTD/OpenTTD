@@ -116,7 +116,7 @@ int8 SaveHighScoreValueNetwork()
 		}
 	}
 
-	/* Add top5 companys to highscore table */
+	/* Add top5 companies to highscore table */
 	return company;
 }
 

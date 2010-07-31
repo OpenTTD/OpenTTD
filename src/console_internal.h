@@ -21,7 +21,7 @@ static const uint ICON_MAX_STREAMSIZE = 2048; ///< maximum length of a totally e
 enum ConsoleHookResult {
 	CHR_ALLOW,    ///< Allow command execution.
 	CHR_DISALLOW, ///< Disallow command execution.
-	CHR_HIDE,     ///< Hide the existance of the command.
+	CHR_HIDE,     ///< Hide the existence of the command.
 };
 
 /** --Commands--

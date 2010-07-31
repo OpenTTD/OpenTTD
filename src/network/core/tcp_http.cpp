@@ -90,8 +90,8 @@ static const char * const LOCATION       = "Location: ";       ///< Header for l
  * @return amount of data to continue downloading.
  *         > 0: we need to download N bytes.
  *         = 0: we're being redirected.
- *         < 0: an error occured. Downloading failed.
- * @note if an error occured the header might not be in its
+ *         < 0: an error occurred. Downloading failed.
+ * @note if an error occurred the header might not be in its
  *       original state. No effort is undertaken to bring
  *       the header in its original state.
  */

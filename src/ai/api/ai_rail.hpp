@@ -194,7 +194,7 @@ public:
 	 * @pre AIMap::IsValidTile(end_tile).
 	 * @pre IsRailTypeAvailable(convert_to).
 	 * @exception AIRail::ERR_UNSUITABLE_TRACK
-	 * @return Whether at least some rail has been converted succesfully.
+	 * @return Whether at least some rail has been converted successfully.
 	 */
 	static bool ConvertRailType(TileIndex start_tile, TileIndex end_tile, AIRail::RailType convert_to);
 

@@ -77,7 +77,7 @@ void Company::PostDestructor(size_t index)
 	InvalidateWindowData(WC_GRAPH_LEGEND, 0, (int)index);
 	InvalidateWindowData(WC_PERFORMANCE_DETAIL, 0, (int)index);
 	InvalidateWindowData(WC_COMPANY_LEAGUE, 0, 0);
-	/* If the currently shown error message has this company in it, the close it. */
+	/* If the currently shown error message has this company in it, then close it. */
 	InvalidateWindowData(WC_ERRMSG, 0);
 }
 
@@ -461,7 +461,7 @@ void ResetCompanyLivery(Company *c)
 /**
  * Create a new company and sets all company variables default values
  *
- * @param is_ai is a ai company?
+ * @param is_ai is an AI company?
  * @param company CompanyID to use for the new company
  * @return the company struct
  */

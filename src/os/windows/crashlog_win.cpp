@@ -368,7 +368,7 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 
 	if (GamelogTestEmergency()) {
 		static const TCHAR _emergency_crash[] =
-			_T("A serious fault condition occured in the game. The game will shut down.\n")
+			_T("A serious fault condition occurred in the game. The game will shut down.\n")
 			_T("As you loaded an emergency savegame no crash information will be generated.\n");
 		MessageBox(NULL, _emergency_crash, _T("Fatal Application Failure"), MB_ICONERROR);
 		ExitProcess(3);
@@ -376,7 +376,7 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 
 	if (SaveloadCrashWithMissingNewGRFs()) {
 		static const TCHAR _saveload_crash[] =
-			_T("A serious fault condition occured in the game. The game will shut down.\n")
+			_T("A serious fault condition occurred in the game. The game will shut down.\n")
 			_T("As you loaded an savegame for which you do not have the required NewGRFs\n")
 			_T("no crash information will be generated.\n");
 		MessageBox(NULL, _saveload_crash, _T("Fatal Application Failure"), MB_ICONERROR);
@@ -445,7 +445,7 @@ static void CDECL CustomAbort(int signal)
 static bool _expanded;
 
 static const TCHAR _crash_desc[] =
-	_T("A serious fault condition occured in the game. The game will shut down.\n")
+	_T("A serious fault condition occurred in the game. The game will shut down.\n")
 	_T("Please send the crash information and the crash.dmp file (if any) to the developers.\n")
 	_T("This will greatly help debugging. The correct place to do this is http://bugs.openttd.org. ")
 	_T("The information contained in the report is displayed below.\n")

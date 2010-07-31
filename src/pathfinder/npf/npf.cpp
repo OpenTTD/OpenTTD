@@ -523,7 +523,7 @@ static int32 NPFRailPathCost(AyStar *as, AyStarNode *current, OpenListNode *pare
 	/* Check for reverse in depot */
 	if (IsRailDepotTile(tile) && as->EndNodeCheck(as, &new_node) != AYSTAR_FOUND_END_NODE) {
 		/* Penalise any depot tile that is not the last tile in the path. This
-		 * _should_ penalise every occurence of reversing in a depot (and only
+		 * _should_ penalise every occurrence of reversing in a depot (and only
 		 * that) */
 		cost += _settings_game.pf.npf.npf_rail_depot_reverse_penalty;
 	}

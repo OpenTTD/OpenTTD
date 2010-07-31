@@ -630,14 +630,14 @@ static bool MakeWorldScreenshot()
  * Make an actual screenshot.
  * @param t    the type of screenshot to make.
  * @param name the name to give to the screenshot.
- * @return true iff the screenshow was made succesfully
+ * @return true iff the screenshow was made successfully
  */
 bool MakeScreenshot(ScreenshotType t, const char *name)
 {
 	if (t == SC_VIEWPORT) {
 		/* First draw the dirty parts of the screen and only then change the name
 		 * of the screenshot. This way the screenshot will always show the name
-		 * of the previous screenshot in the 'succesful' message instead of the
+		 * of the previous screenshot in the 'successful' message instead of the
 		 * name of the new screenshot (or an empty name). */
 		UndrawMouseCursor();
 		DrawDirtyBlocks();

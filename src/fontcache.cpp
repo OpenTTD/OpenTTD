@@ -534,7 +534,7 @@ bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, i
 				ATSUSetAttributes(style, 1, &tag, &size, &val);
 				offset += run_len;
 			}
-			/* Exit if the end of the string is reached or some other error occured. */
+			/* Exit if the end of the string is reached or some other error occurred. */
 		} while (os_err == kATSUFontsMatched && offset < (UniCharArrayOffset)str_len);
 
 		if (os_err == noErr || os_err == kATSUFontsMatched) {

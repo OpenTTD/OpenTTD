@@ -228,12 +228,12 @@ const StationSpec *GetCustomStationSpecByGrf(uint32 grfid, byte localidx, int *i
 }
 
 
-/* Evaluate a tile's position within a station, and return the result a bitstuffed format.
- * if not centred: .TNLcCpP, if centred: .TNL..CP
- * T = Tile layout number (GetStationGfx), N = Number of platforms, L = Length of platforms
+/* Evaluate a tile's position within a station, and return the result a bit-stuffed format.
+ * if not centered: .TNLcCpP, if centered: .TNL..CP
+ * T = Tile layout number (#GetStationGfx), N = Number of platforms, L = Length of platforms
  * C = Current platform number from start, c = from end
  * P = Position along platform from start, p = from end
- * if centred, C/P start from the centre and c/p are not available.
+ * if centered, C/P start from the centre and c/p are not available.
  */
 uint32 GetPlatformInfo(Axis axis, byte tile, int platforms, int length, int x, int y, bool centred)
 {

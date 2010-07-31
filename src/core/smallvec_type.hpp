@@ -22,8 +22,8 @@
  *       to care about that you grab an item which is
  *       inside the list.
  *
- * @param T The type of the items stored
- * @param S The steps of allocation
+ * @tparam T The type of the items stored
+ * @tparam S The steps of allocation
  */
 template <typename T, uint S>
 class SmallVector {

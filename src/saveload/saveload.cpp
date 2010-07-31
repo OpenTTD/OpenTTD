@@ -2360,7 +2360,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb, boo
 				GamelogStartAction(GLAT_LOAD);
 
 				/* After loading fix up savegame for any internal changes that
-				 * might've occured since then. If it fails, load back the old game */
+				 * might have occurred since then. If it fails, load back the old game. */
 				if (!AfterLoadGame()) {
 					GamelogStopAction();
 					return SL_REINIT;

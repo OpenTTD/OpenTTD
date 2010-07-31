@@ -76,7 +76,7 @@ public:
 	enum ErrorMessages {
 		/** Initial error value */
 		ERR_NONE = ERR_CAT_NONE << ERR_CAT_BIT_SIZE,  // []
-		/** If an error occured and the error wasn't mapped */
+		/** If an error occurred and the error wasn't mapped */
 		ERR_UNKNOWN,                                  // []
 		/** If a precondition is not met */
 		ERR_PRECONDITION_FAILED,                      // []

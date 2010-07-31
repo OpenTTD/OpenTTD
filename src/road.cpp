@@ -56,7 +56,7 @@ RoadBits CleanUpRoadBits(const TileIndex tile, RoadBits org_rb)
 					connective = true;
 					break;
 
-				/* The conditionaly connective ones */
+				/* The conditionally connective ones */
 				case MP_TUNNELBRIDGE:
 				case MP_STATION:
 				case MP_ROAD: {

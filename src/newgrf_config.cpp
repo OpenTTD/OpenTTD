@@ -406,7 +406,7 @@ void ResetGRFConfig(bool defaults)
  * @param grfconfig GrfConfig to check
  * @return will return any of the following 3 values:<br>
  * <ul>
- * <li> GLC_ALL_GOOD: No problems occured, all GRF files were found and loaded
+ * <li> GLC_ALL_GOOD: No problems occurred, all GRF files were found and loaded
  * <li> GLC_COMPATIBLE: For one or more GRF's no exact match was found, but a
  *     compatible GRF with the same grfid was found and used instead
  * <li> GLC_NOT_FOUND: For one or more GRF's no match was found at all

@@ -196,7 +196,7 @@ public:
 	void DisplayCrashDialog() const
 	{
 		static const char crash_title[] =
-			"A serious fault condition occured in the game. The game will shut down.";
+			"A serious fault condition occurred in the game. The game will shut down.";
 
 		char message[1024];
 		seprintf(message, lastof(message),
@@ -225,14 +225,14 @@ void CDECL HandleCrash(int signum)
 	}
 
 	if (GamelogTestEmergency()) {
-		ShowMacDialog("A serious fault condition occured in the game. The game will shut down.",
+		ShowMacDialog("A serious fault condition occurred in the game. The game will shut down.",
 				"As you loaded an emergency savegame no crash information will be generated.\n",
 				"Quit");
 		abort();
 	}
 
 	if (SaveloadCrashWithMissingNewGRFs()) {
-		ShowMacDialog("A serious fault condition occured in the game. The game will shut down.",
+		ShowMacDialog("A serious fault condition occurred in the game. The game will shut down.",
 				"As you loaded an savegame for which you do not have the required NewGRFs no crash information will be generated.\n",
 				"Quit");
 		abort();

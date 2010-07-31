@@ -223,7 +223,7 @@ typedef std::map<GRFLocation, byte*> GRFLineToSpriteOverride;
 static GRFLineToSpriteOverride _grf_line_to_action6_sprite_override;
 
 /** DEBUG() function dedicated to newGRF debugging messages
- * Function is essentialy the same as DEBUG(grf, severity, ...) with the
+ * Function is essentially the same as DEBUG(grf, severity, ...) with the
  * addition of file:line information when parsing grf files.
  * NOTE: for the above reason(s) grfmsg() should ONLY be used for
  * loading/parsing grf files, not for runtime debug messages as there

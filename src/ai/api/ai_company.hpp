@@ -93,7 +93,7 @@ public:
 	 * @param gender The new gender for your president.
 	 * @pre GetPresidentGender(AICompany.COMPANY_SELF) != gender.
 	 * @return True if the gender was changed.
-	 * @note When succesfull a random face will be created.
+	 * @note When successful a random face will be created.
 	 */
 	static bool SetPresidentGender(Gender gender);
 

@@ -506,7 +506,7 @@ public:
 				this->SetDirty();
 				break;
 
-			case GRP_WIDGET_LIST_GROUP: { // Maxtrix group
+			case GRP_WIDGET_LIST_GROUP: { // Matrix group
 				const VehicleID vindex = this->vehicle_sel;
 				this->vehicle_sel = INVALID_VEHICLE;
 				this->SetDirty();
@@ -518,7 +518,7 @@ public:
 				break;
 			}
 
-			case GRP_WIDGET_LIST_VEHICLE: { // Maxtrix vehicle
+			case GRP_WIDGET_LIST_VEHICLE: { // Matrix vehicle
 				const VehicleID vindex = this->vehicle_sel;
 				this->vehicle_sel = INVALID_VEHICLE;
 				this->SetDirty();

@@ -998,7 +998,7 @@ static bool LoadOldCompany(LoadgameState *ls, int num)
 			}
 		} else {
 			/* Beside some multiplayer maps (1 on 1), which we don't official support,
-			 * all other companys are an AI.. mark them as such */
+			 * all other companies are an AI.. mark them as such */
 			c->is_ai = true;
 		}
 

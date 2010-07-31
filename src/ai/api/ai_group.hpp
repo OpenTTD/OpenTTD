@@ -54,7 +54,7 @@ public:
 	 *  given group will move to the GROUP_DEFAULT.
 	 * @param group_id The group to delete.
 	 * @pre IsValidGroup(group_id).
-	 * @return True if and only if the group was succesfully deleted.
+	 * @return True if and only if the group was successfully deleted.
 	 */
 	static bool DeleteGroup(GroupID group_id);
 
@@ -92,7 +92,7 @@ public:
 	 * @param group_id The group to change the protection for.
 	 * @param enable True if protection should be enabled.
 	 * @pre IsValidGroup(group_id).
-	 * @return True if and only if the protection was succesfully changed.
+	 * @return True if and only if the protection was successfully changed.
 	 */
 	static bool EnableAutoReplaceProtection(GroupID group_id, bool enable);
 
@@ -119,7 +119,7 @@ public:
 	 * @param vehicle_id The vehicle to move to the group.
 	 * @pre IsValidGroup(group_id) || group_id == GROUP_DEFAULT.
 	 * @pre AIVehicle::IsValidVehicle(vehicle_id).
-	 * @return True if and only if the vehicle was succesfully moved to the group.
+	 * @return True if and only if the vehicle was successfully moved to the group.
 	 * @note A vehicle can be in only one group at the same time. To remove it from
 	 *  a group, move it to another or to GROUP_DEFAULT. Moving the vehicle to the
 	 *  given group means removing it from another group.
@@ -132,7 +132,7 @@ public:
 	 *  If enabled, wagons are removed from the end of the vehicle until it
 	 *  fits in the same number of tiles as it did before.
 	 * @param keep_length If true, wagons will be removed if the a new engine is longer.
-	 * @return True if and only if the value was succesfully changed.
+	 * @return True if and only if the value was successfully changed.
 	 */
 	static bool EnableWagonRemoval(bool keep_length);
 
@@ -169,7 +169,7 @@ public:
 	 * @param group_id The group to stop replacing the engine in.
 	 * @param engine_id The engine id to stop replacing with another engine.
 	 * @pre IsValidGroup(group_id) || group_id == GROUP_DEFAULT || group_id == GROUP_ALL.
-	 * @return True if and if the replacing was succesfully stopped.
+	 * @return True if and if the replacing was successfully stopped.
 	 */
 	static bool StopAutoReplace(GroupID group_id, EngineID engine_id);
 };

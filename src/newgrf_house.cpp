@@ -142,7 +142,7 @@ uint32 GetNearbyTileInformation(byte parameter, TileIndex tile)
 
 /** Structure with user-data for SearchNearbyHouseXXX - functions */
 typedef struct {
-	const HouseSpec *hs;  ///< Specs of the house, that startet the search
+	const HouseSpec *hs;  ///< Specs of the house, that started the search
 	TileIndex north_tile; ///< Northern tile of the house.
 } SearchNearbyHouseData;
 

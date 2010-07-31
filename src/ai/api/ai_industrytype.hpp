@@ -114,7 +114,7 @@ public:
 	 * @param industry_type The type of the industry to build.
 	 * @param tile The tile to build the industry on.
 	 * @pre CanBuildIndustry(industry_type).
-	 * @return True if the industry was succesfully build.
+	 * @return True if the industry was successfully build.
 	 */
 	static bool BuildIndustry(IndustryType industry_type, TileIndex tile);
 
@@ -123,7 +123,7 @@ public:
 	 * an industry on a random place on the map.
 	 * @param industry_type The type of the industry.
 	 * @pre CanProspectIndustry(industry_type).
-	 * @return True if no error occured while trying to prospect.
+	 * @return True if no error occurred while trying to prospect.
 	 * @note Even if true is returned there is no guarantee a new industry is build.
 	 * @note If true is returned the money is paid, whether a new industry was build or not.
 	 */

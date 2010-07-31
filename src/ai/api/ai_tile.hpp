@@ -398,7 +398,7 @@ public:
 	 * @exception AIError::ERR_TOO_CLOSE_TO_EDGE
 	 * @return True if one or more tiles were leveled.
 	 * @note Even if leveling some part fails, some other part may have been
-	 *  succesfully leveled already.
+	 *  successfully leveled already.
 	 * @note This function may return true in AITestMode, although it fails in
 	 *  AIExecMode.
 	 */

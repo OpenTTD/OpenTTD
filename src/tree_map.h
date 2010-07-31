@@ -33,18 +33,17 @@ enum TreeType {
 	TREE_INVALID      = 0xFF, ///< An invalid tree
 };
 
-/*
- * Counts the number of treetypes for each landscape.
+/* Counts the number of tree types for each landscape.
  *
- * This list contains the counts of different treetypes for each landscape. This list contains
+ * This list contains the counts of different tree types for each landscape. This list contains
  * 5 entries instead of 4 (as there are only 4 landscape types) as the sub tropic landscape
  * has two types of area, one for normal trees and one only for cacti.
  */
-static const uint TREE_COUNT_TEMPERATE    = TREE_SUB_ARCTIC - TREE_TEMPERATE;    ///< number of treetypes on a temperate map
-static const uint TREE_COUNT_SUB_ARCTIC   = TREE_RAINFOREST - TREE_SUB_ARCTIC;   ///< number of treetypes on a sub arctic map
-static const uint TREE_COUNT_RAINFOREST   = TREE_CACTUS     - TREE_RAINFOREST;   ///< number of treetypes for the 'rainforest part' of a sub-tropic map
-static const uint TREE_COUNT_SUB_TROPICAL = TREE_TOYLAND    - TREE_SUB_TROPICAL; ///< number of treetypes for the 'sub-tropic part' of a sub-tropic map
-static const uint TREE_COUNT_TOYLAND      = 9;                                   ///< number of treetypes on a toyland map
+static const uint TREE_COUNT_TEMPERATE    = TREE_SUB_ARCTIC - TREE_TEMPERATE;    ///< number of tree types on a temperate map.
+static const uint TREE_COUNT_SUB_ARCTIC   = TREE_RAINFOREST - TREE_SUB_ARCTIC;   ///< number of tree types on a sub arctic map.
+static const uint TREE_COUNT_RAINFOREST   = TREE_CACTUS     - TREE_RAINFOREST;   ///< number of tree types for the 'rainforest part' of a sub-tropic map.
+static const uint TREE_COUNT_SUB_TROPICAL = TREE_TOYLAND    - TREE_SUB_TROPICAL; ///< number of tree types for the 'sub-tropic part' of a sub-tropic map.
+static const uint TREE_COUNT_TOYLAND      = 9;                                   ///< number of tree types on a toyland map.
 
 /**
  * Enumeration for ground types of tiles with trees.

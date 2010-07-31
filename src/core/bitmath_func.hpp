@@ -178,7 +178,7 @@ static FORCEINLINE T ToggleBit(T &x, const uint8 y)
 extern const uint8 _ffb_64[64];
 
 /**
- * Returns the first occure of a bit in a 6-bit value (from right).
+ * Returns the first non-zero bit in a 6-bit value (from right).
  *
  * Returns the position of the first bit that is not zero, counted from the
  * LSB. Ie, 110100 returns 2, 000001 returns 0, etc. When x == 0 returns
@@ -190,7 +190,7 @@ extern const uint8 _ffb_64[64];
 #define FIND_FIRST_BIT(x) _ffb_64[(x)]
 
 /**
- * Finds the position of the first bit in an integer.
+ * Finds the position of the first non-zero bit in an integer.
  *
  * This function returns the position of the first bit set in the
  * integer. It does only check the bits of the bitmask

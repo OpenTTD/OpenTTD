@@ -698,7 +698,7 @@ static void CompaniesPayInterest()
 		 * but... as that number is likely not dividable by 12 (pay each month),
 		 * one needs to account for that in the monthly fee calculations.
 		 * To easily calculate what one should pay "this" month, you calculate
-		 * what (total) should have been paid up to this month and you substract
+		 * what (total) should have been paid up to this month and you subtract
 		 * whatever has been paid in the previous months. This will mean one month
 		 * it'll be a bit more and the other it'll be a bit less than the average
 		 * monthly fee, but on average it will be exact. */
@@ -1306,7 +1306,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 		}
 	}
 
-	/* Only set completly_emptied, if we just unloaded all remaining cargo */
+	/* Only set completely_emptied, if we just unloaded all remaining cargo */
 	completely_emptied &= anything_unloaded;
 
 	/* We update these variables here, so gradual loading still fills
@@ -1340,7 +1340,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 				/* if the aircraft carries passengers and is NOT full, then
 				 * continue loading, no matter how much mail is in */
 				if ((v->type == VEH_AIRCRAFT && IsCargoInClass(v->cargo_type, CC_PASSENGERS) && v->cargo_cap > v->cargo.Count()) ||
-						(cargo_not_full && (cargo_full & ~cargo_not_full) == 0)) { // There are stull non-full cargos
+						(cargo_not_full && (cargo_full & ~cargo_not_full) == 0)) { // There are still non-full cargos
 					finished_loading = false;
 				}
 			} else if (cargo_not_full != 0) {

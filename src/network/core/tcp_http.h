@@ -21,7 +21,7 @@
 /** Callback for when the HTTP handler has something to tell us. */
 struct HTTPCallback {
 	/**
-	 * An error has occured and the connection has been closed.
+	 * An error has occurred and the connection has been closed.
 	 * @note HTTP socket handler is closed/freed.
 	 */
 	virtual void OnFailure() = 0;

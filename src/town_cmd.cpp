@@ -2448,7 +2448,7 @@ static CommandCost TownActionFundBuildings(Town *t, DoCommandFlag flags)
 
 static CommandCost TownActionBuyRights(Town *t, DoCommandFlag flags)
 {
-	/* Check if it's allowed to by the rights */
+	/* Check if it's allowed to buy the rights */
 	if (!_settings_game.economy.exclusive_rights) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {

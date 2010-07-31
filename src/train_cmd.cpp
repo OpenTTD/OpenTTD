@@ -1468,7 +1468,7 @@ static inline void SetLastSpeed(Train *v, int spd)
 static void MarkTrainAsStuck(Train *v)
 {
 	if (!HasBit(v->flags, VRF_TRAIN_STUCK)) {
-		/* It is the first time the problem occured, set the "train stuck" flag. */
+		/* It is the first time the problem occurred, set the "train stuck" flag. */
 		SetBit(v->flags, VRF_TRAIN_STUCK);
 
 		v->wait_counter = 0;
