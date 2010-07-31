@@ -111,6 +111,7 @@ struct GUISettings {
 	bool   show_date_in_logs;                ///< whether to show dates in console logs
 	bool   newgrf_developer_tools;           ///< activate NewGRF developer tools
 	bool   ai_developer_tools;               ///< activate AI developer tools
+	bool   newgrf_show_old_versions;         ///< whether to show old versions in the NewGRF list
 };
 
 /** Settings related to currency/unit systems. */

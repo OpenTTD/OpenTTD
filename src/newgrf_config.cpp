@@ -39,6 +39,7 @@ GRFConfig::GRFConfig(const char *filename) :
  */
 GRFConfig::GRFConfig(const GRFConfig &config) :
 	ident(config.ident),
+	version(config.version),
 	flags(config.flags & ~GCF_COPY),
 	status(config.status),
 	grf_bugs(config.grf_bugs),
@@ -579,11 +580,14 @@ void ScanNewGRFFiles()
  */
 const GRFConfig *FindGRFConfig(uint32 grfid, const uint8 *md5sum)
 {
+	const GRFConfig *best = NULL;
 	for (const GRFConfig *c = _all_grfs; c != NULL; c = c->next) {
-		if (c->ident.HasGrfIdentifier(grfid, md5sum)) return c;
+		if (!c->ident.HasGrfIdentifier(grfid, md5sum)) continue;
+		if (md5sum != NULL) return c;
+		if (best == NULL || c->version > best->version) best = c;
 	}
 
-	return NULL;
+	return best;
 }
 
 #ifdef ENABLE_NETWORK

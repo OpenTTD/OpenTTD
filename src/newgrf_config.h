@@ -139,6 +139,7 @@ struct GRFConfig : ZeroedMemoryAllocator {
 	struct GRFText *info;      ///< NOSAVE: GRF info (author, copyright, ...) (Action 0x08)
 	GRFError *error;           ///< NOSAVE: Error/Warning during GRF loading (Action 0x0B)
 
+	uint32 version;            ///< NOSAVE: Version a NewGRF can set so only the newest NewGRF is shown
 	uint8 flags;               ///< NOSAVE: GCF_Flags, bitset
 	GRFStatus status;          ///< NOSAVE: GRFStatus, enum
 	uint32 grf_bugs;           ///< NOSAVE: bugs in this GRF in this run, @see enum GRFBugs

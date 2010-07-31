@@ -4869,7 +4869,7 @@ static void GRFInfo(ByteReader *buf)
 	_cur_grfconfig->status = _cur_stage < GLS_RESERVE ? GCS_INITIALISED : GCS_ACTIVATED;
 
 	/* Do swap the GRFID for displaying purposes since people expect that */
-	DEBUG(grf, 1, "GRFInfo: Loaded GRFv%d set %08X - %s (palette: %s)", version, BSWAP32(grfid), name, (_cur_grfconfig->palette & GRFP_USE_MASK) ? "Windows" : "DOS");
+	DEBUG(grf, 1, "GRFInfo: Loaded GRFv%d set %08X - %s (palette: %s, version: %i)", version, BSWAP32(grfid), name, (_cur_grfconfig->palette & GRFP_USE_MASK) ? "Windows" : "DOS", _cur_grfconfig->version);
 }
 
 /* Action 0x0A */
@@ -5952,6 +5952,18 @@ static bool ChangeGRFPalette(size_t len, ByteReader *buf)
 	return true;
 }
 
+/** Callback function for 'INFO'->'VRSN' to the version of the NewGRF. */
+static bool ChangeGRFVersion(size_t len, ByteReader *buf)
+{
+	if (len != 4) {
+		grfmsg(2, "StaticGRFInfo: expected 4 bytes for 'INFO'->'VRSN' but got " PRINTF_SIZE ", ignoring this field", len);
+		buf->Skip(len);
+	} else {
+		_cur_grfconfig->version = buf->ReadDWord();
+	}
+	return true;
+}
+
 
 static GRFParameterInfo *_cur_parameter; ///< The parameter which info is currently changed by the newgrf.
 
@@ -6190,6 +6202,7 @@ AllowedSubtags _tags_info[] = {
 	AllowedSubtags('DESC', ChangeGRFDescription),
 	AllowedSubtags('NPAR', ChangeGRFNumUsedParams),
 	AllowedSubtags('PALS', ChangeGRFPalette),
+	AllowedSubtags('VRSN', ChangeGRFVersion),
 	AllowedSubtags('PARA', HandleParameterInfo),
 	AllowedSubtags()
 };

@@ -15,6 +15,7 @@
 #include "strings_func.h"
 #include "window_func.h"
 #include "gamelog.h"
+#include "settings_type.h"
 #include "settings_func.h"
 #include "widgets/dropdown_type.h"
 #include "network/network.h"
@@ -79,6 +80,11 @@ static void ShowNewGRFInfo(const GRFConfig *c, uint x, uint y, uint right, uint 
 	snprintf(buff, lengthof(buff), "%08X", BSWAP32(c->ident.grfid));
 	SetDParamStr(0, buff);
 	y = DrawStringMultiLine(x, right, y, bottom, STR_NEWGRF_SETTINGS_GRF_ID);
+
+	if (c->version != 0) {
+		SetDParam(0, c->version);
+		y = DrawStringMultiLine(x, right, y, bottom, STR_NEWGRF_SETTINGS_VERSION);
+	}
 
 	/* Prepare and draw MD5 sum */
 	md5sumToString(buff, lastof(buff), c->ident.md5sum);
@@ -617,8 +623,7 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 				uint min_index = this->vscroll2.GetPosition();
 				uint max_index = min(min_index + this->vscroll2.GetCapacity(), this->avails.Length());
 
-				for (uint i = min_index; i < max_index; i++)
-				{
+				for (uint i = min_index; i < max_index; i++) {
 					const GRFConfig *c = this->avails[i];
 					bool h = (c == this->avail_sel);
 					const char *text = c->GetName();
@@ -1072,7 +1077,13 @@ private:
 	/** Sort grfs by name. */
 	static int CDECL NameSorter(const GRFConfig * const *a, const GRFConfig * const *b)
 	{
-		return strcasecmp((*a)->GetName(), (*b)->GetName());
+		int i = strcasecmp((*a)->GetName(), (*b)->GetName());
+		if (i != 0) return i;
+
+		i = (*a)->version - (*b)->version;
+		if (i != 0) return i;
+
+		return memcmp((*a)->ident.md5sum, (*b)->ident.md5sum, lengthof((*b)->ident.md5sum));
 	}
 
 	/** Filter grfs by tags/name */
@@ -1093,7 +1104,23 @@ private:
 		for (const GRFConfig *c = _all_grfs; c != NULL; c = c->next) {
 			bool found = false;
 			for (const GRFConfig *grf = this->actives; grf != NULL && !found; grf = grf->next) found = grf->ident.HasGrfIdentifier(c->ident.grfid, c->ident.md5sum);
-			if (!found) *this->avails.Append() = c;
+			if (found) continue;
+
+			if (_settings_client.gui.newgrf_show_old_versions) {
+				*this->avails.Append() = c;
+			} else {
+				const GRFConfig *best = FindGRFConfig(c->ident.grfid, NULL);
+				/*
+				 * If the best version is 0, then all NewGRF with this GRF ID
+				 * have version 0, so for backward compatability reasons we
+				 * want to show them all.
+				 * If we are the best version, then we definitely want to
+				 * show that NewGRF!.
+				 */
+				if (best->version == 0 || best->ident.HasGrfIdentifier(c->ident.grfid, c->ident.md5sum)) {
+					*this->avails.Append() = c;
+				}
+			}
 		}
 
 		this->avails.Filter(this->edit_str_buf);
