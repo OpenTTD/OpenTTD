@@ -150,6 +150,7 @@ public:
 	 * @param engine_id_new The engine id to replace with.
 	 * @pre IsValidGroup(group_id) || group_id == GROUP_DEFAULT || group_id == GROUP_ALL.
 	 * @pre AIEngine.IsBuildable(engine_id_new).
+	 * @return True if and if the replacing was successfully started.
 	 * @note To stop autoreplacing engine_id_old, call StopAutoReplace(group_id, engine_id_old).
 	 */
 	static bool SetAutoReplace(GroupID group_id, EngineID engine_id_old, EngineID engine_id_new);
