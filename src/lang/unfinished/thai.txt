@@ -169,7 +169,7 @@ STR_PASSENGERS                                                  :คน
 STR_BAGS                                                        :ถุง
 STR_TONS                                                        :ตัน
 STR_LITERS                                                      :ลิตร
-STR_ITEMS                                                       :หน่วย
+STR_ITEMS                                                       :ชิ้น
 STR_CRATES                                                      :ลัง
 STR_RES_OTHER                                                   :อื่นๆ
 STR_NOTHING                                                     :
@@ -215,6 +215,7 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} ลู�
 
 STR_UNITS_FORCE_SI                                              :{COMMA} กิโลนิวตัน
 
+STR_UNITS_HEIGHT_SI                                             :{COMMA} ม.
 
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}ใส่คำกรอง
@@ -230,6 +231,7 @@ STR_BUTTON_RENAME                                               :{BLACK}เป�
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}ปิดหน้าต่าง
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}ชื่อของหน้าต่าง - คลิกค้างแล้วลากเพื่อเลื่อนหน้าต่าง
 STR_TOOLTIP_SHADE                                               :{BLACK}Shade window - แสดงเฉพาะที่ title bar
+STR_TOOLTIP_DEBUG                                               :{BLACK}แสดงข้อมูล debug NewGRF
 STR_TOOLTIP_STICKY                                              :{BLACK}ทำเครื่องหมายหน้าต่างนี้เพื่อตรึงไว้ป้องกันการปิดจากการกดปุ่ม 'ปิดทุกหน้าต่าง'
 STR_TOOLTIP_RESIZE                                              :{BLACK}คลิกค้างแล้วลากเพื่อเปลี่ยนขนาดของหน้าต่าง
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}เปลี่ยนขนาดหน้าต่าง ใหญ่/เล็ก
@@ -248,9 +250,9 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 
 # Measurement tooltip
 STR_MEASURE_LENGTH                                              :{BLACK}ความยาว: {NUM}
-STR_MEASURE_AREA                                                :{BLACK}ขอบเขต: {NUM} x {NUM}
-STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}ความยาว: {NUM}{}ความแตกต่างของคสามสูง: {HEIGHT}
-STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}ขอบเขต: {NUM} x {NUM}{}ความแตกต่างของคสามสูง: {HEIGHT}
+STR_MEASURE_AREA                                                :{BLACK}ขนาดพื้นที่: {NUM} x {NUM}
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}ความยาว: {NUM}{}ความแตกต่างของความสูง: {HEIGHT}
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}ขนาดพื้นที่: {NUM} x {NUM}{}ความแตกต่างของคสามสูง: {HEIGHT}
 
 
 # These are used in buttons
@@ -258,55 +260,55 @@ STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}ปร�
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}ชื่อ
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}วันที่
 # These are used in dropdowns
-STR_SORT_BY_POPULATION                                          :เรียงตามจำนวนประชากร
-STR_SORT_BY_NAME                                                :เรียงตามชื่อ
-STR_SORT_BY_PRODUCTION                                          :ผลิตภัณฑ์
+STR_SORT_BY_POPULATION                                          :จำนวนประชากร
+STR_SORT_BY_NAME                                                :ชื่อ
+STR_SORT_BY_PRODUCTION                                          :ผลผลิต
 STR_SORT_BY_TYPE                                                :ประเภท
-STR_SORT_BY_TRANSPORTED                                         :การขนส่ง
+STR_SORT_BY_TRANSPORTED                                         :จำนวนที่ขนส่ง
 STR_SORT_BY_NUMBER                                              :หมายเลข
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :กำไรปีที่แล้ว
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :กำไรปีนี้
 STR_SORT_BY_AGE                                                 :อายุ
-STR_SORT_BY_RELIABILITY                                         :ความเชื่อถือได้
-STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :การรวบรวมสินค้าแต่ละประเภท
+STR_SORT_BY_RELIABILITY                                         :เสถียรภาพ
+STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :ความจุรวมในแต่ละชนิดบรรทุก
 STR_SORT_BY_MAX_SPEED                                           :ความเร็วสูงสุด
 STR_SORT_BY_MODEL                                               :รุ่น
 STR_SORT_BY_VALUE                                               :มูลค่า
 STR_SORT_BY_LENGTH                                              :ความยาว
-STR_SORT_BY_LIFE_TIME                                           :อายุการใช้งานคงเหลือ
-STR_SORT_BY_TIMETABLE_DELAY                                     :เวลาอาจถูกทำให้ช้า
+STR_SORT_BY_LIFE_TIME                                           :อายุการใช้งาน
+STR_SORT_BY_TIMETABLE_DELAY                                     :ความล่าช้าจากตารางเวลา
 STR_SORT_BY_FACILITY                                            :ประเภทสถานี
-STR_SORT_BY_WAITING                                             :กำลังรอสินค้ามูลค่า
-STR_SORT_BY_RATING_MAX                                          :สินค้าคะแนนสูงสุด
-STR_SORT_BY_RATING_MIN                                          :สินค้าคะแนนต่ำสุด
+STR_SORT_BY_WAITING                                             :มูลค่าสินค้าที่ค้างอยู่
+STR_SORT_BY_RATING_MAX                                          :สินค้ายอดนิยม
+STR_SORT_BY_RATING_MIN                                          :สินค้านิยมน้อยสุด
 STR_SORT_BY_ENGINE_ID                                           :EngineID (classic sort)
 STR_SORT_BY_COST                                                :ราคา
-STR_SORT_BY_POWER                                               :พลังงาน
-STR_SORT_BY_INTRO_DATE                                          :วันเปิดตัวจำหน่าย
-STR_SORT_BY_RUNNING_COST                                        :ต้นทุน
-STR_SORT_BY_POWER_VS_RUNNING_COST                               :Power/Running Cost
-STR_SORT_BY_CARGO_CAPACITY                                      :ความสามารถของการบรรทุก
+STR_SORT_BY_POWER                                               :กำลัง
+STR_SORT_BY_INTRO_DATE                                          :วันเปิดตัว
+STR_SORT_BY_RUNNING_COST                                        :ค่าใช้จ่าย
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :อัตตราส่วน กำลัง/ค่าใช้จ่าย
+STR_SORT_BY_CARGO_CAPACITY                                      :ความจุการบรรทุก
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}หยุดเกมชั่วคราว
-STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}เร่งความเร็วเกมไปข้างหน้า
+STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}เร่งความเร็วเกมเดินหน้า
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}ตัวเลือก
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}บันทึกและออกจากเกม
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}แสดงจุดสังเกต, แผนที่และป้าย
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}แสดงทำเนียบชื่อเมือง
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}แสดงเงินสมทบ
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}แสดงรายการสถานีขนส่งของบริษัท
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}แสดงรายการสถานีของบริษัท
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}แสดงข้อมูลทางการเงินของบริษัท
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}แสดงข้อมูลทั่วไปของบริษัท
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}แสดงกราฟทั้งหลาย
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}แสดงตารางอันดับบริษัท
-STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}กองทุนอุตสาหกรรมก่อสร้างใหม่หรือรายการทั้งหมดอุตสาหกรรม
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}แสดงรายการรถไฟของบริษัท, Ctrl+Click เพื่อเลือกเปิดดูกลุ่มรายการ
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}แสดงรายการรถยนต์ของบริษัท, Ctrl+Click เพื่อเลือกเปิดดูกลุ่มรายการ
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}แสดงรายการเรือของบริษัท, Ctrl+Click เพื่อเลือกเปิดดูกลุ่มรายการ
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}แสดงรายการอากาศยานของบริษัท, Ctrl+Click เพื่อเลือกเปิดดูกลุ่มรายการ
-STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}ขยายภาพให้ใหญ่ขึ้น
-STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}ย่อภาพให้เล็กลง
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}ลงทุนก่อสร้างอุตสาหกรรมใหม่ หรือ แดงอุตสาหกรรมทั้งหมด
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}แสดงรายการรถไฟของบริษัท, Ctrl+คลิก เพื่อเปลี่ยนดู กลุ่ม/รายการ ยานพาหนะ
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}แสดงรายการรถยนต์ของบริษัท, Ctrl+คลิก เพื่อเปลี่ยนดู กลุ่ม/รายการ ยานพาหนะ
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}แสดงรายการเรือของบริษัท, Ctrl+คลิก เพื่อเปลี่ยนดู กลุ่ม/รายการ ยานพาหนะ
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}แสดงรายการอากาศยานของบริษัท, Ctrl+คลิก เพื่อเปลี่ยนดู กลุ่ม/รายการ ยานพาหนะ
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}ขยายภาพเข้าใกล้ขึ้น
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}ย่อภาพให้ไกลขึ้น
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}สร้างรางรถไฟ
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}สร้างถนน
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}สร้างท่าเรือ
@@ -315,27 +317,28 @@ STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}เป�
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}แสดงหน้าต่างเสียงและดนตรี
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}แสดงข้อความล่าสุด/รายงานข่าว, แสดงตัวเลือกข้อความ
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}ข้อมูลที่ดิน, console, AI debug, screenshots, เกี่ยวกับ OpenTTD
-STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}เปลี่ยนกล่องเครื่องมืิอ
+STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}เปลี่ยนกล่องเครื่องมือ
 
 # Extra tooltips for the scenario editor toolbar
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}บันทึกสถานการณ์,โหลดสถานการณ์,ละทิ้งสถานการณ์บรรณาธิการ,เลิก
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}บันทึกฉาก, โหลดฉาก, ยกเลิกการแก้ไขฉาก, ออก
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}โปรแกรมสร้างฉาก
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}ย้ายวันที่เริ่มต้นย้อนกลับ 1 ปี
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}ย้ายไปข้างหน้าวันที่เริ่มต้น 1 ปี
+STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}เลื่อนวันที่เริ่มต้นย้อนไป 1 ปี
+STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}เลือนวันที่เริ่มต้นไปอีก 1 ปี
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}คลิกเพื่อใส่ปีเริ่มต้น
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}แสดงแผนที่และทำเนียบชื่อเมือง
-STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}สร้างภูมิทัศน์
+STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}สร้างภูมิประเทศ
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}สร้างเมือง
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}สร้างอุตสาหกรรม
-STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}ก่อสร้างถนน
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}พืชไม้
-STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}สถานที่ลงชื่อ
+STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}สร้างถนน
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}ปลูกต้นไม้
+STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}ปักป้าย
 
 ############ range for SE file menu starts
-STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :บันทึกสถานการณ์
-STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :โหลดสถานการณ์
-STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :โหลด heightmap
-STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :ออกจากโปรแกรมแก้ไขแผนที่
+STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :บันทึกฉาก
+STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :โหลดฉาก
+STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :โหลดแผนที่ความสูง
+STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :ออกจากตัวแก้ไขฉาก
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :ออก
 ############ range for SE file menu starts
@@ -358,7 +361,7 @@ STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :ป้ายส
 
 ############ range for file menu starts
 STR_FILE_MENU_SAVE_GAME                                         :บันทึกเกม
-STR_FILE_MENU_LOAD_GAME                                         :เปิดเกมเดิม
+STR_FILE_MENU_LOAD_GAME                                         :โหลดเกม
 STR_FILE_MENU_QUIT_GAME                                         :เลิกเล่น
 STR_FILE_MENU_EXIT                                              :ออกจากเกม
 ############ range ends here
@@ -368,9 +371,9 @@ STR_MAP_MENU_MAP_OF_WORLD                                       :แผนที
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :มุมมองเพิ่มเติม
 STR_MAP_MENU_SIGN_LIST                                          :รายการป้าย
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
-STR_TOWN_MENU_TOWN_DIRECTORY                                    :รายชื่อเมือง
+STR_TOWN_MENU_TOWN_DIRECTORY                                    :ทำเนียบชื่อเมือง
 ############ end of the 'Display map' dropdown
-STR_TOWN_MENU_FOUND_TOWN                                        :ค้นหาเมือง
+STR_TOWN_MENU_FOUND_TOWN                                        :ตั้งเมือง
 ############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
@@ -380,7 +383,7 @@ STR_SUBSIDIES_MENU_SUBSIDIES                                    :การสน
 ############ range for graph menu starts
 STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :กราฟแสดงผลประกอบการ
 STR_GRAPH_MENU_INCOME_GRAPH                                     :กราฟแสดงรายได้
-STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :กราฟแสดงปริมาณการส่งสินค้า
+STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :กราฟแสดงปริมาณการขนส่งสินค้า
 STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :กราฟแสดงประวัติผลประกอบการ
 STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :กราฟแสดงมูลค่าบริษัท
 STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :อัตราผลตอบแทนของการส่งสินค้า
@@ -392,13 +395,13 @@ STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :การวั
 ############ range ends here
 
 ############ range for industry menu starts
-STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :รายชื่ออุตสาหกรรม
+STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :ทำเนียบอุตสาหกรรม
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :ลงทุนอุตสาหกรรมใหม่
 ############ range ends here
 
 ############ range for railway construction menu starts
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :การก่อสร้างทางรถไฟ
-STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :การก่อสร้างทางรถไฟฟ้า
+STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :การก่อสร้างทางรถไฟติดไฟฟ้า
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :การก่อสร้างทางรถไฟรางเดี่ยว
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :การก่อสร้างทางรถไฟพลังแม่เหล็ก
 ############ range ends here
@@ -423,12 +426,12 @@ STR_LANDSCAPING_MENU_PLACE_SIGN                                 :ปักป้
 ############ range ends here
 
 ############ range for music menu starts
-STR_TOOLBAR_SOUND_MUSIC                                         :ดนตรี
+STR_TOOLBAR_SOUND_MUSIC                                         :เสียงและดนตรี
 ############ range ends here
 
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :ข้อความล่าสุด/รายงานข่าว
-STR_NEWS_MENU_MESSAGE_SETTINGS                                  :กำหนดการแสดงข้อความ
+STR_NEWS_MENU_MESSAGE_SETTINGS                                  :กำหนดค่าการแสดงข้อความ
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :ูข้อความย้อนหลัง
 ############ range ends here
 
@@ -514,13 +517,17 @@ STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMM
 
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}กราฟแสดงผลประกอบการ
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}กราฟแสดงรายได้
-STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}หน่วยงานการจัดส่งสินค้า
-STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}คะแนนประสิทธิภาพของบริษัท (maximum rating=1000)
+STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}หน่วยของสินค้าที่ขนส่งแล้ว
+STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}คะแนนประสิทธิภาพของบริษัท (คะแนนสูงสุด=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}มูลค่าทรัพย์สินบริษัท
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}อัตราค่าตอบแทนการขนส่ง
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}วันในการเดินทาง
-STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}ค่าใช้จ่ายเพื่อขนส่งสินค้า 10 หน่วย(หรือ 10,000 ลิตร) ต่อ 20 ตาราง
+STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}ค่าใช้จ่ายเพื่อขนส่งสินค้า 10 หน่วย(หรือ 10,000 ลิตร) ต่อระยะทาง 20 ตาราง
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}เปิดทั้งหมด
+STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT}{BLACK}ปิดทั้งหมด all
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}แสดงสินค้าทั้งหมดในกราฟผลตอบแทนการขนส่งสินค้า
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}ไม่แสดงสินค้าทั้งหมดในกราฟผลตอบแทนการขนส่งสินค้า
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}เปิด/ปิด กราฟสำหรับประเภทของสินค้า
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 
@@ -1455,6 +1462,8 @@ STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}กร�
 
 
 
+# NewGRF parameters window
+
 # NewGRF inspect window
 
 
@@ -1735,6 +1744,7 @@ STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - สิ้�
 
 
 
+STR_INVALID_ORDER                                               :{RED} (คำสั่งไม่ถูกต้อง)
 
 # Time table window
 

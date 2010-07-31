@@ -215,6 +215,8 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
+STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} ft
+STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Sartu lokarri iragazkia
@@ -519,6 +521,8 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Konpania
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Karga Ordainketaren Tasa
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Iraganbide egunak
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Ordainketa 10 unitate entregatzeagatik (edo 10,000 litro) 20 karratuko distatziako karga bategatik
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}Dena gaitu
+STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT}{BLACK}Dena desgaitu
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Erakutsi performantzia balorazioak xehetasunekin
@@ -1177,6 +1181,8 @@ STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}Artxiboa
 
 
 
+# NewGRF parameters window
+
 # NewGRF inspect window
 
 
@@ -1303,6 +1309,7 @@ STR_INDUSTRY_VIEW_WAITING_STOCKPILE_CARGO                       :{YELLOW}{CARGO}
 
 
 # Depot window
+STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
 
 STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}Deposituaren izena aldatu
 
@@ -1352,6 +1359,10 @@ STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE
 
 
 # Vehicle stopped/started animations
+STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Geldituta
+STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Geldituta
+STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINYFONT}{GREEN}Hasita
+STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Hasita
 
 # Vehicle details
 
@@ -1398,6 +1409,7 @@ STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARG
 
 
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
+STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
@@ -1427,6 +1439,7 @@ STR_ORDER_GO_TO_STATION                                         :{STRING} {STATI
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}IA-ren Ezarpenak
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}IA-ren hautaketak aldatu
+STR_AI_DEBUG_CONTINUE                                           :{BLACK}Jarraitu
 
 
 
@@ -1644,6 +1657,7 @@ STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLAC
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
+STR_TINY_BLACK_HEIGHT                                           :{TINYFONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
@@ -1661,3 +1675,4 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
+STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})

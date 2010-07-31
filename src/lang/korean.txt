@@ -2384,6 +2384,11 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}사용안�
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}NewGRF 파라미터 입력
 
+# NewGRF parameters window
+STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}NewGRF 파라미터 바꾸기
+STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}닫기
+STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :파라미터 {NUM}
+
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}NEWGRF 검사 - {STRING}
 STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}상위 단계
@@ -3225,8 +3230,8 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}시간�
 
 STR_TIMETABLE_NO_TRAVEL                                         :운행정보 없음
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :여행 (시간표 없음)
-STR_TIMETABLE_TRAVEL_FOR                                        :{STRING}로 여행
-STR_TIMETABLE_STAY_FOR                                          :그리고 {STRING}에 머무름
+STR_TIMETABLE_TRAVEL_FOR                                        :{STRING} 동안 운행
+STR_TIMETABLE_STAY_FOR                                          :그리고 {STRING} 동안 머무름
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :그리고 {STRING}(으)로 이동
 STR_TIMETABLE_DAYS                                              :{COMMA} 일
 STR_TIMETABLE_TICKS                                             :{COMMA} 틱

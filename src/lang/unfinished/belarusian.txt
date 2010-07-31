@@ -229,7 +229,7 @@ STR_BUTTON_SORT_BY                                              :{BLACK}Сарт
 STR_BUTTON_LOCATION                                             :{BLACK}Агляд
 STR_BUTTON_RENAME                                               :{BLACK}Перайменаваць
 
-STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Зачыніць акно
+STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Закрыць акно
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Загаловак акна - цягнiце яго для перамяшчэння акна
 STR_TOOLTIP_SHADE                                               :{BLACK}Згарнуць акно, пакінуўшы загаловак
 STR_TOOLTIP_DEBUG                                               :{BLACK}Паказаць адладачную iнфармацыю NewGRF
@@ -314,6 +314,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Буда
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Будаўніцтва аўтамабільных дарог
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Будаўніцтва водных камунікацый
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Будаўніцтва аэрапортаў
+STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Наладка гуку і музыкі
 
 # Extra tooltips for the scenario editor toolbar
 
@@ -683,8 +684,14 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Буда
 
 
 
+STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Версiя: {SILVER}{NUM}
 
 
+
+# NewGRF parameters window
+STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Змянiць параметры NewGRF
+STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Закрыць
+STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Параметр {NUM}
 
 # NewGRF inspect window
 
@@ -724,6 +731,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Буда
 # Subsidies window
 
 # Station list window
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Націсніце і ўтрымлівайце Ctrl для выбару больш аднаго варыянту
 
 # Station view window
 
@@ -929,10 +937,20 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Буда
 # Error message titles
 
 # Generic construction errors
+STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Імя павінна быць унікальным
+STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{1:STRING} на шляху
 
 # Local authority errors
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}... адміністрацыя горада {TOWN} забараняе вам гэта рабіць
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}Адміністрацыя г.{NBSP}{TOWN} забараняе пабудову яшчэ аднаго аэрапорта ў горадзе
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}Адміністрацыя г.{NBSP}{TOWN} не дазваляе будаўніцтва аэрапорта з-за высокага ўзроўню шуму.
+STR_ERROR_BRIBE_FAILED                                          :{WHITE}Ваша спроба даць хабар была
+STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}знойдзена рэгіянальным следчым
 
 # Levelling errors
+STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Тут немагчыма павысіць узровень зямлі...
+STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Тут немагчыма панізіць узровень зямлі...
+STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Тут немагчыма выраўнаваць зямлю...
 
 # Company related errors
 
@@ -1004,21 +1022,317 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Буда
 
 ##id 0x2000
 # Town building names
+STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Свiння-Скарбонка
 
 ##id 0x4800
 # industry names
+STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :Шахта меднай руды
+STR_INDUSTRY_NAME_BANK                                          :Банк
+STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :Завод ежы
+STR_INDUSTRY_NAME_PAPER_MILL                                    :Папяровая фабрыка
+STR_INDUSTRY_NAME_GOLD_MINE                                     :Залатая шахта
+STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :Банк
+STR_INDUSTRY_NAME_DIAMOND_MINE                                  :Алмазныя копі
+STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :Шахта жалезнай руды
+STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :Плантацыя садавiны
+STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :Плантацыя гевеі
+STR_INDUSTRY_NAME_WATER_SUPPLY                                  :Водная свідравіна
+STR_INDUSTRY_NAME_WATER_TOWER                                   :Воданапорная вежа
+STR_INDUSTRY_NAME_FACTORY_2                                     :Завод
+STR_INDUSTRY_NAME_FARM_2                                        :Ферма
+STR_INDUSTRY_NAME_LUMBER_MILL                                   :Лесапілка
+STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :Лес цукровай ваты
+STR_INDUSTRY_NAME_CANDY_FACTORY                                 :Цукерачная фабрыка
+STR_INDUSTRY_NAME_BATTERY_FARM                                  :Поле батарэек
+STR_INDUSTRY_NAME_COLA_WELLS                                    :Калодзежы колы
+STR_INDUSTRY_NAME_TOY_SHOP                                      :Магазін цацак
+STR_INDUSTRY_NAME_TOY_FACTORY                                   :Завод цацак
+STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :Фантаны пластыка
+STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :Завод газiроўкi
+STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :Генератар бурбалак
+STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :Iрысавы кар'ер
+STR_INDUSTRY_NAME_SUGAR_MINE                                    :Цукровая шахта
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
 ############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
 STR_SV_EMPTY                                                    :
+STR_SV_UNNAMED                                                  :Без iмя
+STR_SV_TRAIN_NAME                                               :Цягнiк {COMMA}
+STR_SV_ROAD_VEHICLE_NAME                                        :Аўтамабiль {COMMA}
+STR_SV_SHIP_NAME                                                :Карабель {COMMA}
+STR_SV_AIRCRAFT_NAME                                            :Самалёт {COMMA}
 
 STR_SV_STNAME                                                   :{STRING}
+STR_SV_STNAME_NORTH                                             :Паўночная {STRING}
+STR_SV_STNAME_SOUTH                                             :Паўднёвая {STRING}
+STR_SV_STNAME_EAST                                              :Усходняя {STRING}
+STR_SV_STNAME_WEST                                              :Захадная {STRING}
+STR_SV_STNAME_WOODS                                             :Лясная {STRING}
+STR_SV_STNAME_LAKESIDE                                          :Азёрная {STRING}
+STR_SV_STNAME_EXCHANGE                                          :{STRING}-сартавальная
+STR_SV_STNAME_AIRPORT                                           :Аэрапорт {STRING}
+STR_SV_STNAME_OILFIELD                                          :Нафтавая вышка {STRING}
+STR_SV_STNAME_MINES                                             :Шахты {STRING}
+STR_SV_STNAME_DOCKS                                             :Прыстань {STRING}
+STR_SV_STNAME_BUOY                                              :{STRING}
+STR_SV_STNAME_WAYPOINT                                          :{STRING}
 ##id 0x6020
+STR_SV_STNAME_ANNEXE                                            :{STRING}-дадатковая
+STR_SV_STNAME_SIDINGS                                           :{STRING}-запасная
+STR_SV_STNAME_BRANCH                                            :{STRING}-галiнка
+STR_SV_STNAME_UPPER                                             :Верхняя {STRING}
+STR_SV_STNAME_LOWER                                             :Нiжняя {STRING}
+STR_SV_STNAME_HELIPORT                                          :Пляцоўка {STRING}
+STR_SV_STNAME_FOREST                                            :Лес {STRING}
+STR_SV_STNAME_FALLBACK                                          :г.{NBSP}{STRING}, станцыя #{NUM}
 ############ end of savegame specific region!
 
 ##id 0x8000
 # Vehicle names
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KIRBY_PAUL_TANK_STEAM        :Паравоз Kirby Paul Tank
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_250_DIESEL               :Цеплавоз MJS 250
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_CHOO_CHOO         :Паравоз Ploddyphut «Чу-Чу»
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_CHOO_CHOO          :Паравоз Powernaut «Чу-Чу»
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MIGHTYMOVER_CHOO_CHOO        :Паравоз Mightymover «Чу-Чу»
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_DIESEL            :Цеплавоз Ploddyphut
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_DIESEL             :Цеплавоз Powernaut
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_WILLS_2_8_0_STEAM            :Паравоз Wills 2-8-0
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CHANEY_JUBILEE_STEAM         :Паравоз Chaney «Юбiлей»
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_GINZU_A4_STEAM               :Паравоз Ginzu «A4»
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_8P_STEAM                  :Паравоз SH «8P»
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MANLEY_MOREL_DMU_DIESEL      :Дызель-цягнік «Manley-Morel DMU»
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_DASH_DIESEL                  :Дызель-цягнік «Dash»
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_HENDRY_25_DIESEL          :Цеплавоз SH/Hendry «25»
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_UU_37_DIESEL                 :Цеплавоз UU «37»
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_FLOSS_47_DIESEL              :Цеплавоз Floss «47»
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CS_4000_DIESEL               :Цеплавоз «CS 4000»
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CS_2400_DIESEL               :Цеплавоз «CS 2400»
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CENTENNIAL_DIESEL            :Цеплавоз «Centennial»
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KELLING_3100_DIESEL          :Цеплавоз «Kelling 3100»
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_TURNER_TURBO_DIESEL          :Цеплавоз «Turner Турба»
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_1000_DIESEL              :Цеплавоз MJS 1000
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_125_DIESEL                :Цеплавоз SH «125»
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_30_ELECTRIC               :Электравоз SH «30»
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_40_ELECTRIC               :Электравоз SH «40»
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_T_I_M_ELECTRIC               :Электравоз «T.I.M.»
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_ASIASTAR_ELECTRIC            :Электравоз «AsiaStar»
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PASSENGER_CAR                 :Пасажырскi вагон
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_MAIL_VAN                      :Паштовы вагон
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COAL_CAR                      :Вугальная платформа
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_OIL_TANKER                    :Нафтавая цыстэрна
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_LIVESTOCK_VAN                 :Вагон для жывёлы
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GOODS_VAN                     :Таварны вагон
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GRAIN_HOPPER                  :Хопер для зерня
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WOOD_TRUCK                    :Вагон для драўнiны
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_IRON_ORE_HOPPER               :Вагон для жалезнай руды
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_STEEL_TRUCK                   :Вагон для сталi
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_ARMORED_VAN                   :Бранiраваны вагон
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FOOD_VAN                      :Рэфрыжератар (ежа)
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PAPER_TRUCK                   :Вагон для паперы
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COPPER_ORE_HOPPER             :Хопер для меднай руды
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WATER_TANKER                  :Водная цыстэрна
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FRUIT_TRUCK                   :Рэфрыжератар (садавiна)
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_RUBBER_TRUCK                  :Вагон для каўчуку
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_SUGAR_TRUCK                   :Вагон для цукру
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COTTON_CANDY_HOPPER           :Хопер для цукровай ваты
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOFFEE_HOPPER                 :Хопер для iрысак
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BUBBLE_VAN                    :Вагон для бурбалак
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COLA_TANKER                   :Цыстэрна для колы
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_CANDY_VAN                     :Вагон для цукерак
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOY_VAN                       :Вагон для цацак
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BATTERY_TRUCK                 :Вагон для батарэек
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FIZZY_DRINK_TRUCK             :Вагон для газiроўкi
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PLASTIC_TRUCK                 :Вагон для пластыку
+STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :Электравоз «X2001»
+STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_MILLENNIUM_Z1_ELECTRIC   :Электравоз «Millennium Z1»
+STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_WIZZOWOW_Z99             :Wizzowow Z99
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PASSENGER_CAR             :Пасажырскi вагон
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_MAIL_VAN                  :Паштовы вагон
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COAL_CAR                  :Вугальная платформа
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_OIL_TANKER                :Нафтавая цыстэрна
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_LIVESTOCK_VAN             :Вагон для жывёлы
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GOODS_VAN                 :Таварны вагон
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GRAIN_HOPPER              :Хопер для зерня
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WOOD_TRUCK                :Вагон для драўнiны
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_IRON_ORE_HOPPER           :Вагон для жалезнай руды
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_STEEL_TRUCK               :Вагон для сталi
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_ARMORED_VAN               :Бранiраваны вагон
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FOOD_VAN                  :Рэфрыжератар (ежа)
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PAPER_TRUCK               :Вагон для паперы
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COPPER_ORE_HOPPER         :Хопер для меднай руды
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WATER_TANKER              :Водная цыстэрна
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FRUIT_TRUCK               :Рэфрыжератар (садавiна)
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_RUBBER_TRUCK              :Вагон для каўчуку
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_SUGAR_TRUCK               :Вагон для цукру
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COTTON_CANDY_HOPPER       :Хопер для цукровай ваты
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOFFEE_HOPPER             :Хопер для iрысак
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BUBBLE_VAN                :Вагон для бурбалак
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COLA_TANKER               :Цыстэрна для колы
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_CANDY_VAN                 :Вагон для цукерак
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOY_VAN                   :Вагон для цацак
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BATTERY_TRUCK             :Вагон для батарэек
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FIZZY_DRINK_TRUCK         :Вагон для газiроўкi
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PLASTIC_TRUCK             :Вагон для пластыку
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV1_LEVIATHAN_ELECTRIC    :Lev1 «Левияфан»
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV2_CYCLOPS_ELECTRIC      :Lev2 «Цыклоп»
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV3_PEGASUS_ELECTRIC      :Lev3 «Пегас»
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV4_CHIMAERA_ELECTRIC     :Lev4 «Хiмера»
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_WIZZOWOW_ROCKETEER         :Wizzowow «Ракета»
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PASSENGER_CAR               :Пасажырскi вагон
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_MAIL_VAN                    :Паштовы вагон
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COAL_CAR                    :Вугальная платформа
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_OIL_TANKER                  :Нафтавая цыстэрна
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_LIVESTOCK_VAN               :Вагон для жывёлы
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GOODS_VAN                   :Таварны вагон
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GRAIN_HOPPER                :Хопер для зерня
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WOOD_TRUCK                  :Вагон для драўнiны
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_IRON_ORE_HOPPER             :Вагон для жалезнай руды
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_STEEL_TRUCK                 :Вагон для сталi
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_ARMORED_VAN                 :Бранiраваны вагон
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FOOD_VAN                    :Рэфрыжератар (ежа)
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PAPER_TRUCK                 :Вагон для паперы
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COPPER_ORE_HOPPER           :Хопер для меднай руды
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WATER_TANKER                :Водная цыстэрна
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FRUIT_TRUCK                 :Рэфрыжератар (садавiна)
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_RUBBER_TRUCK                :Вагон для каўчуку
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_SUGAR_TRUCK                 :Вагон для цукру
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COTTON_CANDY_HOPPER         :Хопер для цукровай ваты
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOFFEE_HOPPER               :Хопер для iрысак
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BUBBLE_VAN                  :Вагон для бурбалак
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COLA_TANKER                 :Цыстэрна для колы
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_CANDY_VAN                   :Вагон для цукерак
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOY_VAN                     :Вагон для цацак
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BATTERY_TRUCK               :Вагон для батарэек
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FIZZY_DRINK_TRUCK           :Вагон для газiроўкi
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PLASTIC_TRUCK               :Вагон для пластыку
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_REGAL_BUS                     :Аўтобус MPS Regal
+STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_LEOPARD_BUS              :Аўтобус Hereford Leopard
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_BUS                        :Аўтобус Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_MKII_SUPERBUS              :Аўтобус Foster MkII
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKI_BUS                :Аўтобус Ploddyphut MkI
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKII_BUS               :Аўтобус Ploddyphut MkII
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKIII_BUS              :Аўтобус Ploddyphut MkIII
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_COAL_TRUCK                 :Грузавiк Balogh (вугаль)
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COAL_TRUCK                    :Грузавiк Uhl (вугаль)
+STR_VEHICLE_NAME_ROAD_VEHICLE_DW_COAL_TRUCK                     :Грузавiк DW (вугаль)
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_MAIL_TRUCK                    :Паштовы фургон MPS
+STR_VEHICLE_NAME_ROAD_VEHICLE_REYNARD_MAIL_TRUCK                :Паштовы фургон Reynard
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_MAIL_TRUCK                  :Паштовы фургон Perry
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_MAIL_TRUCK            :Паштовы фургон MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_MAIL_TRUCK            :Паштовы фургон Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_MAIL_TRUCK               :Паштовы фургон Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_OIL_TANKER               :Цыстэрна Witcombe (нафта)
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_OIL_TANKER                 :Цыстэрна Foster (нафта)
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_OIL_TANKER                  :Цыстэрна Perry (нафта)
+STR_VEHICLE_NAME_ROAD_VEHICLE_TALBOTT_LIVESTOCK_VAN             :Жывёлавозка Talbott
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_LIVESTOCK_VAN                 :Жывёлавозка Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_LIVESTOCK_VAN              :Жывёлавозка Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_GOODS_TRUCK                :Грузавiк Balogh (тавары)
+STR_VEHICLE_NAME_ROAD_VEHICLE_CRAIGHEAD_GOODS_TRUCK             :Грузавiк Craighead (тавары)
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GOODS_TRUCK                  :Грузавiк Goss (тавары)
+STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_GRAIN_TRUCK              :Зерневозка Hereford
+STR_VEHICLE_NAME_ROAD_VEHICLE_THOMAS_GRAIN_TRUCK                :Зерневозка Thomas
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GRAIN_TRUCK                  :Зерневозка Goss
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_WOOD_TRUCK               :Грузавiк Witcombe (драўнiна)
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_WOOD_TRUCK                 :Грузавiк Foster (драўнiна)
+STR_VEHICLE_NAME_ROAD_VEHICLE_MORELAND_WOOD_TRUCK               :Грузавiк Moreland (драўнiна)
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_IRON_ORE_TRUCK                :Грузавiк MPS (жал. руда)
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_IRON_ORE_TRUCK                :Грузавiк Uhl (жал. руда)
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_IRON_ORE_TRUCK             :Грузавiк Chippy (жал. руда)
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_STEEL_TRUCK                :Грузавiк Balogh (сталь)
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_STEEL_TRUCK                   :Грузавiк Uhl (сталь)
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_STEEL_TRUCK               :Грузавiк Kelling (сталь)
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_ARMORED_TRUCK              :Бранявiк Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_ARMORED_TRUCK                 :Бранявiк Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_ARMORED_TRUCK              :Бранявiк Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_FOOD_VAN                   :Рэфрыжэратар Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_FOOD_VAN                    :Рэфрыжэратар Perry
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_FOOD_VAN                   :Рэфрыжэратар Chippy
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_PAPER_TRUCK                   :Грузавiк Uhl (папера)
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_PAPER_TRUCK                :Грузавiк Balogh (папера)
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_PAPER_TRUCK                   :Грузавiк MPS (папера)
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_COPPER_ORE_TRUCK              :Грузавiк MPS (медн. руда)
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COPPER_ORE_TRUCK              :Грузавiк Uhl (медн. руда)
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_COPPER_ORE_TRUCK             :Грузавiк Goss (медн. руда)
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_WATER_TANKER                  :Водная цыстэрна Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_WATER_TANKER               :Водная цыстэрна Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_WATER_TANKER                  :Водная цыстэрна MPS
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_FRUIT_TRUCK                :Рэфрыжэратар Balogh (садавіна)
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_FRUIT_TRUCK                   :Рэфрыжэратар Uhl (садавіна)
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_FRUIT_TRUCK               :Рэфрыжэратар Kelling (садавіна)
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_RUBBER_TRUCK               :Грузавiк Balogh (каўчук)
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_RUBBER_TRUCK                  :Грузавiк Uhl (каўчук)
+STR_VEHICLE_NAME_ROAD_VEHICLE_RMT_RUBBER_TRUCK                  :Грузавiк RMT (каўчук)
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_SUGAR_TRUCK           :Грузавiк Powernaught (цукар)
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_SUGAR_TRUCK           :Грузавiк Powernaught (цукар)
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_SUGAR_TRUCK              :Грузавiк Wizzowow (цукар)
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COLA_TRUCK            :Цыстэрна MightyMover (кола)
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COLA_TRUCK            :Цыстэрна Powernaught (кола)
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COLA_TRUCK               :Цыстэрна Wizzowow (кола)
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COTTON_CANDY          :Грузавiк MightyMover (цук. вата)
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COTTON_CANDY          :Грузавiк Powernaught (цук. вата)
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COTTON_CANDY_TRUCK       :Грузавiк Wizzowow (цук. вата)
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOFFEE_TRUCK          :Грузавiк MightyMover (iрыскi)
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOFFEE_TRUCK          :Грузавiк Powernaught (iрыскi)
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOFFEE_TRUCK             :Грузавiк Wizzowow (iрыскi)
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOY_VAN               :Грузавiк MightyMover (цацкi)
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOY_VAN               :Грузавiк Powernaught (цацкi)
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOY_VAN                  :Грузавiк Wizzowow (цацкi)
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_CANDY_TRUCK           :Грузавiк MightyMover (цукеркi)
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_CANDY_TRUCK           :Грузавiк Powernaught (цукеркi)
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_CANDY_TRUCK              :Грузавiк Wizzowow (цукеркi)
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BATTERY_TRUCK         :Грузавiк MightyMover (батарэйкi)
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BATTERY_TRUCK         :Грузавiк Powernaught (батарэйкi)
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BATTERY_TRUCK            :Грузавiк Wizzowow (батарэйкi)
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_FIZZY_DRINK           :Грузавiк MightyMover (газiроўка)
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_FIZZY_DRINK           :Грузавiк Powernaught (газiроўка)
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_FIZZY_DRINK_TRUCK        :Грузавiк Wizzowow (газiроўка)
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_PLASTIC_TRUCK         :Грузавiк MightyMover (пластык)
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_PLASTIC_TRUCK         :Грузавiк Powernaught (пластык)
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_PLASTIC_TRUCK            :Грузавiк Wizzowow (пластык)
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BUBBLE_TRUCK          :Грузавiк MightyMover (бурбалкi)
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BUBBLE_TRUCK          :Грузавiк Powernaught (бурбалкi)
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BUBBLE_TRUCK             :Грузавiк Wizzowow (бурбалкi)
+STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER                            :Нафт. танкер MPS
+STR_VEHICLE_NAME_SHIP_CS_INC_OIL_TANKER                         :Нафт. танкер CS-Inc.
+STR_VEHICLE_NAME_SHIP_MPS_PASSENGER_FERRY                       :Пасажыр. судна MPS
+STR_VEHICLE_NAME_SHIP_FFP_PASSENGER_FERRY                       :Пасажыр. судна FFP
+STR_VEHICLE_NAME_SHIP_BAKEWELL_300_HOVERCRAFT                   :Судна на паветр. падушцы Bakewell 300
+STR_VEHICLE_NAME_SHIP_CHUGGER_CHUG_PASSENGER                    :Пасажыр. судна Chugger-Chug
+STR_VEHICLE_NAME_SHIP_SHIVERSHAKE_PASSENGER_FERRY               :Пасажыр. судна Shivershake
+STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :Сухагруз Yate
+STR_VEHICLE_NAME_SHIP_BAKEWELL_CARGO_SHIP                       :Сухагруз Bakewell
+STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :Сухагруз Mightymover
+STR_VEHICLE_NAME_SHIP_POWERNAUT_CARGO_SHIP                      :Сухагруз Powernaut
+STR_VEHICLE_NAME_AIRCRAFT_SAMPSON_U52                           :Sampson U52
+STR_VEHICLE_NAME_AIRCRAFT_COLEMAN_COUNT                         :Coleman Count
+STR_VEHICLE_NAME_AIRCRAFT_FFP_DART                              :FFP Dart
+STR_VEHICLE_NAME_AIRCRAFT_YATE_HAUGAN                           :Yate Haugan
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_COTSWALD_LB_3                :Bakewell Cotswald LB-3
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_8                 :Bakewell Luckett LB-8
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_9                 :Bakewell Luckett LB-9
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB80                 :Bakewell Luckett LB80
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_10                :Bakewell Luckett LB-10
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_11                :Bakewell Luckett LB-11
+STR_VEHICLE_NAME_AIRCRAFT_YATE_AEROSPACE_YAC_1_11               :Yate Aerospace YAC 1-11
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_100                            :Дарвiн 100
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_200                            :Дарвiн 200
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_300                            :Дарвiн 300
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_400                            :Дарвiн 400
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_500                            :Дарвiн 500
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_600                            :Дарвiн 600
+STR_VEHICLE_NAME_AIRCRAFT_GURU_GALAXY                           :Гуру «Галактыка»
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A21                           :Аэратаксi A21
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A31                           :Аэратаксi A31
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A32                           :Аэратаксi A32
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A33                           :Аэратаксi A33
+STR_VEHICLE_NAME_AIRCRAFT_YATE_AEROSPACE_YAE46                  :Yate Aerospace YAe46
+STR_VEHICLE_NAME_AIRCRAFT_DINGER_100                            :Dinger 100
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A34_1000                      :Аэратаксi A34-1000
+STR_VEHICLE_NAME_AIRCRAFT_YATE_Z_SHUTTLE                        :Yate Z-Шатл
+STR_VEHICLE_NAME_AIRCRAFT_KELLING_K1                            :Kelling K1
+STR_VEHICLE_NAME_AIRCRAFT_KELLING_K6                            :Kelling K6
 STR_VEHICLE_NAME_AIRCRAFT_KELLING_K7                            :Kelling K7
 STR_VEHICLE_NAME_AIRCRAFT_DARWIN_700                            :Дарвiн 700
 STR_VEHICLE_NAME_AIRCRAFT_FFP_HYPERDART_2                       :FFP Hyperdart 2

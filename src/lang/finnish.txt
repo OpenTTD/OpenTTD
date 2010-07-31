@@ -2383,6 +2383,11 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Ei käytö
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Anna NewGRF-parametrit
 
+# NewGRF parameters window
+STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Muuta NewGRF-parametrejä
+STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Sulje
+STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parametri {NUM}
+
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Tutki - {STRING}
 STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Vanhempi
