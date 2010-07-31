@@ -5905,6 +5905,199 @@ static void TranslateGRFStrings(ByteReader *buf)
 	}
 }
 
+/** Callback function for 'INFO'->'NAME' to add a translation to the newgrf name. */
+static bool ChangeGRFName(byte langid, const char *str)
+{
+	AddGRFTextToList(&_cur_grfconfig->name, langid, _cur_grfconfig->ident.grfid, str);
+	return true;
+}
+
+/** Callback function for 'INFO'->'DESC' to add a translation to the newgrf description. */
+static bool ChangeGRFDescription(byte langid, const char *str)
+{
+	AddGRFTextToList(&_cur_grfconfig->info, langid, _cur_grfconfig->ident.grfid, str);
+	return true;
+}
+
+typedef bool (*DataHandler)(size_t, ByteReader *);  ///< Type of callback function for binary nodes
+typedef bool (*TextHandler)(byte, const char *str); ///< Type of callback function for text nodes
+typedef bool (*BranchHandler)(ByteReader *);        ///< Type of callback function for branch nodes
+
+/**
+ * Data structure to store the allowed id/type combinations for action 14. The
+ * data can be represented as a tree with 3 types of nodes:
+ * 1. Branch nodes (identified by 'C' for choice).
+ * 2. Binary leaf nodes (identified by 'B').
+ * 3. Text leaf nodes (identified by 'T').
+ */
+struct AllowedSubtags {
+	/** Create empty subtags object used to identify the end of a list. */
+	AllowedSubtags() :
+		id(0),
+		type(0)
+	{}
+
+	/**
+	 * Create a binary leaf node.
+	 * @param id The id for this node.
+	 * @param handler The callback function to call.
+	 */
+	AllowedSubtags(uint32 id, DataHandler handler) :
+		id(id),
+		type('B')
+	{
+		this->handler.data = handler;
+	}
+
+	/**
+	 * Create a text leaf node.
+	 * @param id The id for this node.
+	 * @param handler The callback function to call.
+	 */
+	AllowedSubtags(uint32 id, TextHandler handler) :
+		id(id),
+		type('T')
+	{
+		this->handler.text = handler;
+	}
+
+	/**
+	 * Create a branch node with a callback handler
+	 * @param id The id for this node.
+	 * @param handler The callback function to call.
+	 */
+	AllowedSubtags(uint32 id, BranchHandler handler) :
+		id(id),
+		type('C')
+	{
+		this->handler.call_handler = true;
+		this->handler.u.branch = handler;
+	}
+
+	/**
+	 * Create a branch node with a list of sub-nodes.
+	 * @param id The id for this node.
+	 * @param subtags Array with all valid subtags.
+	 */
+	AllowedSubtags(uint32 id, AllowedSubtags *subtags) :
+		id(id),
+		type('C')
+	{
+		this->handler.call_handler = false;
+		this->handler.u.subtags = subtags;
+	}
+
+	uint32 id; ///< The identifier for this node
+	byte type; ///< The type of the node, must be one of 'C', 'B' or 'T'.
+	union {
+		DataHandler data; ///< Callback function for a binary node, only valid if type == 'B'.
+		TextHandler text; ///< Callback function for a text node, only valid if type == 'T'.
+		struct {
+			union {
+				BranchHandler branch;    ///< Callback function for a branch node, only valid if type == 'C' && call_handler.
+				AllowedSubtags *subtags; ///< Pointer to a list of subtags, only valid if type == 'C' && !call_handler.
+			} u;
+			bool call_handler; ///< True if there is a callback function for this node, false if there is a list of subnodes.
+		};
+	} handler;
+};
+
+AllowedSubtags _tags_info[] = {
+	AllowedSubtags('NAME', ChangeGRFName),
+	AllowedSubtags('DESC', ChangeGRFDescription),
+	AllowedSubtags()
+};
+
+AllowedSubtags _tags_root[] = {
+	AllowedSubtags('INFO', _tags_info),
+	AllowedSubtags()
+};
+
+
+/**
+ * Try to skip the current node and all subnodes (if it's a branch node).
+ * @return True if we could skip the node, false if an error occured.
+ */
+static bool SkipUnknownInfo(ByteReader *buf, byte type)
+{
+	/* type and id are already read */
+	switch (type) {
+		case 'C': {
+			byte new_type = buf->ReadByte();
+			while (new_type != 0) {
+				buf->ReadDWord(); // skip the id
+				if (!SkipUnknownInfo(buf, new_type)) return false;
+				new_type = buf->ReadByte();
+			}
+			break;
+		}
+
+		case 'T':
+			buf->ReadByte(); // lang
+			buf->ReadString(); // actual text
+			break;
+
+		case 'B': {
+			uint16 size = buf->ReadWord();
+			buf->Skip(size);
+			break;
+		}
+
+		default:
+			return false;
+	}
+
+	return true;
+}
+
+static bool HandleNode(byte type, uint32 id, ByteReader *buf, AllowedSubtags subtags[])
+{
+	uint i = 0;
+	AllowedSubtags *tag;
+	while ((tag = &subtags[i++])->type != 0) {
+		if (tag->id != BSWAP32(id) || tag->type != type) continue;
+		switch (type) {
+			default: NOT_REACHED();
+
+			case 'T': {
+				byte langid = buf->ReadByte();
+				return tag->handler.text(langid, buf->ReadString());
+			}
+
+			case 'B': {
+				size_t len = buf->ReadWord();
+				if (buf->Remaining() < len) return false;
+				return tag->handler.data(len, buf);
+			}
+
+			case 'C': {
+				if (tag->handler.call_handler) {
+					return tag->handler.u.branch(buf);
+				}
+				byte new_type = buf->ReadByte();
+				while (new_type != 0) {
+					uint32 new_id = buf->ReadDWord();
+					if (!HandleNode(new_type, new_id, buf, tag->handler.u.subtags)) return false;
+					new_type = buf->ReadByte();
+				}
+				return true;
+			}
+		}
+	}
+	grfmsg(2, "StaticGRFInfo: unkown type/id combination found, type=%c, id=%x", type, id);
+	return SkipUnknownInfo(buf, type);
+}
+
+/* Action 0x14 */
+static void StaticGRFInfo(ByteReader *buf)
+{
+	/* <14> <type> <id> <text/data...> */
+
+	byte type = buf->ReadByte();
+	uint32 id = buf->ReadDWord();
+	HandleNode(type, id, buf, _tags_root);
+}
+
 /* 'Action 0xFF' */
 static void GRFDataBlock(ByteReader *buf)
 {
@@ -6687,6 +6880,7 @@ static void DecodeSpecialSprite(byte *buf, uint num, GrfLoadingStage stage)
 		/* 0x11 */ { SkipAct11,GRFUnsafe, SkipAct11,       SkipAct11,      SkipAct11,         GRFSound, },
 		/* 0x12 */ { SkipAct12, SkipAct12, SkipAct12,      SkipAct12,      SkipAct12,         LoadFontGlyph, },
 		/* 0x13 */ { NULL,     NULL,      NULL,            NULL,           NULL,              TranslateGRFStrings, },
+		/* 0x14 */ { StaticGRFInfo, NULL, NULL,            NULL,           NULL,              NULL, },
 	};
 
 	GRFLocation location(_cur_grfconfig->ident.grfid, _nfo_line);
