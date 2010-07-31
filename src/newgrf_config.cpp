@@ -16,6 +16,7 @@
 #include "gamelog.h"
 #include "network/network_func.h"
 #include "gfx_func.h"
+#include "newgrf_text.h"
 
 #include "fileio_func.h"
 #include "fios.h"
@@ -45,21 +46,21 @@ GRFConfig::GRFConfig(const GRFConfig &config) :
 	MemCpyT<uint8>(this->original_md5sum, config.original_md5sum, lengthof(this->original_md5sum));
 	MemCpyT<uint32>(this->param, config.param, lengthof(this->param));
 	if (config.filename != NULL) this->filename = strdup(config.filename);
-	if (config.name     != NULL) this->name     = strdup(config.name);
-	if (config.info     != NULL) this->info     = strdup(config.info);
+	this->name = DuplicateGRFText(config.name);
+	this->info = DuplicateGRFText(config.info);
 	if (config.error    != NULL) this->error    = new GRFError(*config.error);
 }
 
 /** Cleanup a GRFConfig object. */
 GRFConfig::~GRFConfig()
 {
-	/* GCF_COPY as in NOT strdupped/alloced the filename, name and info */
+	/* GCF_COPY as in NOT strdupped/alloced the filename and info */
 	if (!HasBit(this->flags, GCF_COPY)) {
 		free(this->filename);
-		free(this->name);
-		free(this->info);
+		CleanUpGRFText(this->info);
 		delete this->error;
 	}
+	CleanUpGRFText(this->name);
 }
 
 /**
@@ -69,8 +70,8 @@ GRFConfig::~GRFConfig()
  */
 const char *GRFConfig::GetName() const
 {
-	if (StrEmpty(this->name)) return this->filename;
-	return this->name;
+	const char *name = GetGRFStringFromGRFText(this->name);
+	return StrEmpty(name) ? this->filename : name;
 }
 
 /**
@@ -79,7 +80,7 @@ const char *GRFConfig::GetName() const
  */
 const char *GRFConfig::GetDescription() const
 {
-	return this->info;
+	return GetGRFStringFromGRFText(this->info);
 }
 
 GRFConfig *_all_grfs;
@@ -349,8 +350,8 @@ compatible_grf:
 				free(c->filename);
 				c->filename = strdup(f->filename);
 				memcpy(c->ident.md5sum, f->ident.md5sum, sizeof(c->ident.md5sum));
-				if (c->name == NULL && f->name != NULL) c->name = strdup(f->name);
-				if (c->info == NULL && f->info != NULL) c->info = strdup(f->info);
+				if (c->name == NULL) c->name = DuplicateGRFText(f->name);
+				if (c->info == NULL) c->info = DuplicateGRFText(f->info);
 				c->error = NULL;
 			}
 		}

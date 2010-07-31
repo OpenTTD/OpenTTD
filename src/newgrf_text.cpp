@@ -126,6 +126,16 @@ public:
 	}
 
 	/**
+	 * Create a copy of this GRFText.
+	 * @param orig the grftext to copy
+	 * @return an exact copy of the given text
+	 */
+	static GRFText *Copy(GRFText *orig)
+	{
+		return GRFText::New(orig->langid, orig->text);
+	}
+
+	/**
 	 * Helper allocation function to disallow something.
 	 * Don't allow simple 'news'; they wouldn't have enough memory.
 	 * @param size the amount of space not to allocate
@@ -350,6 +360,50 @@ void AddGRFTextToList(GRFText **list, GRFText *text_to_add)
 
 	/* If a string wasn't replaced, then we must append the new string */
 	*ptext = text_to_add;
+}
+
+/**
+ * Add a string to a GRFText list.
+ * @param list The list where the text should be added to.
+ * @param langid The language of the new text.
+ * @param grfid The grfid where this string is defined.
+ * @param text_to_add The text to add to the list.
+ * @note All text-codes will be translated.
+ */
+void AddGRFTextToList(struct GRFText **list, byte langid, uint32 grfid, const char *text_to_add)
+{
+	char *translatedtext = TranslateTTDPatchCodes(grfid, text_to_add);
+	GRFText *newtext = GRFText::New(langid, translatedtext);
+	free(translatedtext);
+
+	AddGRFTextToList(list, newtext);
+}
+
+/**
+ * Add a GRFText to a GRFText list. The text should  not contain any text-codes.
+ * The text will be added as a 'default language'-text.
+ * @param list The list where the text should be added to.
+ * @param text_to_add The text to add to the list.
+ */
+void AddGRFTextToList(struct GRFText **list, const char *text_to_add)
+{
+	AddGRFTextToList(list, GRFText::New(0x7F, text_to_add));
+}
+
+/**
+ * Create a copy of this GRFText list.
+ * @param orig The GRFText list to copy.
+ * @return A duplicate of the given GRFText.
+ */
+GRFText *DuplicateGRFText(GRFText *orig)
+{
+	GRFText *newtext = NULL;
+	GRFText **ptext = &newtext;
+	for (; orig != NULL; orig = orig->next) {
+		*ptext = GRFText::Copy(orig);
+		ptext = &(*ptext)->next;
+	}
+	return newtext;
 }
 
 /**

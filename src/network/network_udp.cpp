@@ -28,6 +28,7 @@
 #include "../company_base.h"
 #include "../thread/thread.h"
 #include "../rev.h"
+#include "../newgrf_text.h"
 
 #include "core/udp.h"
 
@@ -366,11 +367,11 @@ void ClientNetworkUDPSocketHandler::HandleIncomingNetworkGameInfoGRFConfig(GRFCo
 		/* Don't know the GRF, so mark game incompatible and the (possibly)
 		 * already resolved name for this GRF (another server has sent the
 		 * name of the GRF already */
-		config->name   = FindUnknownGRFName(config->ident.grfid, config->ident.md5sum, true);
+		AddGRFTextToList(&config->name, FindUnknownGRFName(config->ident.grfid, config->ident.md5sum, true));
 		config->status = GCS_NOT_FOUND;
 	} else {
 		config->filename  = f->filename;
-		config->name      = f->name;
+		config->name      = DuplicateGRFText(f->name);
 		config->info      = f->info;
 	}
 	SetBit(config->flags, GCF_COPY);

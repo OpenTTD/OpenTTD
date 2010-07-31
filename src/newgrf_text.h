@@ -16,10 +16,16 @@
 
 StringID AddGRFString(uint32 grfid, uint16 stringid, byte langid, bool new_scheme, const char *text_to_add, StringID def_string);
 StringID GetGRFStringID(uint32 grfid, uint16 stringid);
+const char *GetGRFStringFromGRFText(const struct GRFText *text);
 const char *GetGRFStringPtr(uint16 stringid);
 void CleanUpStrings();
 void SetCurrentGrfLangID(byte language_id);
 char *TranslateTTDPatchCodes(uint32 grfid, const char *str);
+struct GRFText *DuplicateGRFText(struct GRFText *orig);
+void AddGRFTextToList(struct GRFText **list, struct GRFText *text_to_add);
+void AddGRFTextToList(struct GRFText **list, byte langid, uint32 grfid, const char *text_to_add);
+void AddGRFTextToList(struct GRFText **list, const char *text_to_add);
+void CleanUpGRFText(struct GRFText *grftext);
 
 bool CheckGrfLangID(byte lang_id, byte grf_version);
 

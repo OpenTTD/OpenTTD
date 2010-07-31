@@ -4830,11 +4830,11 @@ static void ScanInfo(ByteReader *buf)
 	if (GB(grfid, 24, 8) == 0xFF) SetBit(_cur_grfconfig->flags, GCF_SYSTEM);
 
 	const char *name = buf->ReadString();
-	_cur_grfconfig->name = TranslateTTDPatchCodes(grfid, name);
+	AddGRFTextToList(&_cur_grfconfig->name, 0x7F, grfid, name);
 
 	if (buf->HasData()) {
 		const char *info = buf->ReadString();
-		_cur_grfconfig->info = TranslateTTDPatchCodes(grfid, info);
+		AddGRFTextToList(&_cur_grfconfig->info, 0x7F, grfid, info);
 	}
 
 	/* GLS_INFOSCAN only looks for the action 8, so we can skip the rest of the file */
