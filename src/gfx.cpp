@@ -822,13 +822,14 @@ Dimension GetStringMultiLineBoundingBox(StringID str, const Dimension &suggestio
  * @param top    The top most position to draw on.
  * @param bottom The bottom most position to draw on.
  * @param str    String to draw.
+ * @param last   The end of the string buffer to draw.
  * @param colour Colour used for drawing the string, see DoDrawString() for details
  * @param align  The horizontal and vertical alignment of the string.
  * @param underline Whether to underline all strings
  *
  * @return If \a align is #SA_BOTTOM, the top to where we have written, else the bottom to where we have written.
  */
-int DrawStringMultiLine(int left, int right, int top, int bottom, StringID str, TextColour colour, StringAlignment align, bool underline)
+static int DrawStringMultiLine(int left, int right, int top, int bottom, char *str, const char *last, TextColour colour, StringAlignment align, bool underline)
 {
 	int maxw = right - left + 1;
 	int maxh = bottom - top + 1;
@@ -837,10 +838,7 @@ int DrawStringMultiLine(int left, int right, int top, int bottom, StringID str, 
 	 * do we really want to support fonts of 0 or less pixels high? */
 	if (maxh <= 0) return top;
 
-	char buffer[DRAW_STRING_BUFFER];
-	GetString(buffer, str, lastof(buffer));
-
-	uint32 tmp = FormatStringLinebreaks(buffer, lastof(buffer), maxw);
+	uint32 tmp = FormatStringLinebreaks(str, last, maxw);
 	int num = GB(tmp, 0, 16) + 1;
 
 	int mt = GetCharacterHeight((FontSize)GB(tmp, 16, 16));
@@ -876,7 +874,7 @@ int DrawStringMultiLine(int left, int right, int top, int bottom, StringID str, 
 		default: NOT_REACHED();
 	}
 
-	const char *src = buffer;
+	const char *src = str;
 	DrawStringParams params(colour);
 	int written_top = bottom; // Uppermost position of rendering a line of text
 	for (;;) {
@@ -914,6 +912,48 @@ int DrawStringMultiLine(int left, int right, int top, int bottom, StringID str, 
 		if (skip_lines > 0) skip_lines--;
 		if (num == 0) return ((align & SA_VERT_MASK) == SA_BOTTOM) ? written_top : y;
 	}
+}
+
+/**
+ * Draw string, possibly over multiple lines.
+ *
+ * @param left   The left most position to draw on.
+ * @param right  The right most position to draw on.
+ * @param top    The top most position to draw on.
+ * @param bottom The bottom most position to draw on.
+ * @param str    String to draw.
+ * @param colour Colour used for drawing the string, see DoDrawString() for details
+ * @param align  The horizontal and vertical alignment of the string.
+ * @param underline Whether to underline all strings
+ *
+ * @return If \a align is #SA_BOTTOM, the top to where we have written, else the bottom to where we have written.
+ */
+int DrawStringMultiLine(int left, int right, int top, int bottom, const char *str, TextColour colour, StringAlignment align, bool underline)
+{
+	char buffer[DRAW_STRING_BUFFER];
+	strecpy(buffer, str, lastof(buffer));
+	return DrawStringMultiLine(left, right, top, bottom, buffer, lastof(buffer), colour, align, underline);
+}
+
+/**
+ * Draw string, possibly over multiple lines.
+ *
+ * @param left   The left most position to draw on.
+ * @param right  The right most position to draw on.
+ * @param top    The top most position to draw on.
+ * @param bottom The bottom most position to draw on.
+ * @param str    String to draw.
+ * @param colour Colour used for drawing the string, see DoDrawString() for details
+ * @param align  The horizontal and vertical alignment of the string.
+ * @param underline Whether to underline all strings
+ *
+ * @return If \a align is #SA_BOTTOM, the top to where we have written, else the bottom to where we have written.
+ */
+int DrawStringMultiLine(int left, int right, int top, int bottom, StringID str, TextColour colour, StringAlignment align, bool underline)
+{
+	char buffer[DRAW_STRING_BUFFER];
+	GetString(buffer, str, lastof(buffer));
+	return DrawStringMultiLine(left, right, top, bottom, buffer, lastof(buffer), colour, align, underline);
 }
 
 /** Return the string dimension in pixels. The height and width are returned
