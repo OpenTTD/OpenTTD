@@ -4415,7 +4415,7 @@ bool GetGlobalVariable(byte param, uint32 *value)
 		}
 
 		case 0x0D: // TTD Version, 00=DOS, 01=Windows
-			*value = _cur_grfconfig->windows_paletted;
+			*value = _cur_grfconfig->palette & GRFP_USE_MASK;
 			return true;
 
 		case 0x0E: // Y-offset for train sprites
@@ -4869,7 +4869,7 @@ static void GRFInfo(ByteReader *buf)
 	_cur_grfconfig->status = _cur_stage < GLS_RESERVE ? GCS_INITIALISED : GCS_ACTIVATED;
 
 	/* Do swap the GRFID for displaying purposes since people expect that */
-	DEBUG(grf, 1, "GRFInfo: Loaded GRFv%d set %08X - %s (palette: %s)", version, BSWAP32(grfid), name, _cur_grfconfig->windows_paletted ? "Windows" : "DOS");
+	DEBUG(grf, 1, "GRFInfo: Loaded GRFv%d set %08X - %s (palette: %s)", version, BSWAP32(grfid), name, (_cur_grfconfig->palette & GRFP_USE_MASK) ? "Windows" : "DOS");
 }
 
 /* Action 0x0A */
@@ -6974,7 +6974,7 @@ void LoadNewGRFFile(GRFConfig *config, uint file_index, GrfLoadingStage stage)
 
 	FioOpenFile(file_index, filename);
 	_file_index = file_index; // XXX
-	_palette_remap_grf[_file_index] = (config->windows_paletted != (_use_palette == PAL_WINDOWS));
+	_palette_remap_grf[_file_index] = ((config->palette & GRFP_USE_MASK) != (_use_palette == PAL_WINDOWS));
 
 	_cur_grfconfig = config;
 

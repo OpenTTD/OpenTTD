@@ -180,7 +180,7 @@ static void LoadSpriteTables()
 	GRFConfig *top = _grfconfig;
 	GRFConfig *master = new GRFConfig(used_set->files[GFT_EXTRA].filename);
 	FillGRFDetails(master, false);
-	master->windows_paletted = (used_set->palette == PAL_WINDOWS);
+	master->palette = (used_set->palette == PAL_WINDOWS) ? GRFP_USE_WINDOWS : GRFP_USE_DOS;
 	ClrBit(master->flags, GCF_INIT_ONLY);
 	master->next = top;
 	_grfconfig = master;

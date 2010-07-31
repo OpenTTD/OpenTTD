@@ -96,7 +96,7 @@ static void ShowNewGRFInfo(const GRFConfig *c, uint x, uint y, uint right, uint 
 		y = DrawStringMultiLine(x, right, y, bottom, STR_NEWGRF_SETTINGS_PARAMETER);
 
 		/* Draw the palette of the NewGRF */
-		SetDParamStr(0, c->windows_paletted ? "Windows" : "DOS");
+		SetDParamStr(0, (c->palette & GRFP_USE_WINDOWS) ? "Windows" : "DOS");
 		y = DrawStringMultiLine(x, right, y, bottom, STR_NEWGRF_SETTINGS_PALETTE);
 	}
 
@@ -592,7 +592,7 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 
 			case SNGRFS_TOGGLE_PALETTE:
 				if (this->active_sel != NULL || !this->editable) {
-					this->active_sel->windows_paletted ^= true;
+					this->active_sel->palette ^= GRFP_USE_MASK;
 					this->SetDirty();
 				}
 				break;

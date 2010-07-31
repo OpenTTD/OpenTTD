@@ -43,7 +43,7 @@ GRFConfig::GRFConfig(const GRFConfig &config) :
 	grf_bugs(config.grf_bugs),
 	num_params(config.num_params),
 	num_valid_params(config.num_valid_params),
-	windows_paletted(config.windows_paletted)
+	palette(config.palette)
 {
 	MemCpyT<uint8>(this->original_md5sum, config.original_md5sum, lengthof(this->original_md5sum));
 	MemCpyT<uint32>(this->param, config.param, lengthof(this->param));
@@ -92,7 +92,8 @@ const char *GRFConfig::GetDescription() const
  */
 void GRFConfig::SetSuitablePalette()
 {
- this->windows_paletted = (_use_palette == PAL_WINDOWS);
+	PaletteType pal = _use_palette;
+	SB(this->palette, GRFP_USE_BIT, 1, pal == PAL_WINDOWS ? GRFP_USE_WINDOWS : GRFP_USE_DOS);
 }
 
 GRFConfig *_all_grfs;

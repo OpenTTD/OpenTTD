@@ -24,7 +24,7 @@ static const SaveLoad _grfconfig_desc[] = {
 	    SLE_ARR(GRFConfig, ident.md5sum,     SLE_UINT8,  16),
 	    SLE_ARR(GRFConfig, param,            SLE_UINT32, 0x80),
 	    SLE_VAR(GRFConfig, num_params,       SLE_UINT8),
-	SLE_CONDVAR(GRFConfig, windows_paletted, SLE_BOOL,   101, SL_MAX_VERSION),
+	SLE_CONDVAR(GRFConfig, palette,          SLE_UINT8,  101, SL_MAX_VERSION),
 	SLE_END()
 };
 

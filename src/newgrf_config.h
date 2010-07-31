@@ -49,6 +49,16 @@ enum GRFListCompatibility {
 	GLC_NOT_FOUND   ///< At least one GRF couldn't be found (higher priority than GLC_COMPATIBLE)
 };
 
+/** Information that can/has to be stored about a GRF's palette. */
+enum GRFPalette {
+	GRFP_USE_BIT     = 0,   ///< The bit used for storing the palette to use.
+
+	GRFP_USE_DOS     = 0x0, ///< The palette state is set to use the DOS palette.
+	GRFP_USE_WINDOWS = 0x1, ///< The palette state is set to use the Windows palette.
+	GRFP_USE_MASK    = 0x1, ///< Bitmask to get only the use palette use states.
+};
+
+
 /** Basic data to distinguish a GRF. Used in the server list window */
 struct GRFIdentifier {
 	uint32 grfid;     ///< GRF ID (defined by Action 0x08)
@@ -94,15 +104,15 @@ struct GRFConfig : ZeroedMemoryAllocator {
 	struct GRFText *info;      ///< NOSAVE: GRF info (author, copyright, ...) (Action 0x08)
 	GRFError *error;           ///< NOSAVE: Error/Warning during GRF loading (Action 0x0B)
 
-	uint8 flags;        ///< NOSAVE: GCF_Flags, bitset
-	GRFStatus status;   ///< NOSAVE: GRFStatus, enum
-	uint32 grf_bugs;    ///< NOSAVE: bugs in this GRF in this run, @see enum GRFBugs
-	uint32 param[0x80]; ///< GRF parameters
-	uint8 num_params;   ///< Number of used parameters
-	uint8 num_valid_params; ///< Number of valid parameters (action 0x14)
-	bool windows_paletted;  ///< Whether the NewGRF is Windows paletted or not
+	uint8 flags;               ///< NOSAVE: GCF_Flags, bitset
+	GRFStatus status;          ///< NOSAVE: GRFStatus, enum
+	uint32 grf_bugs;           ///< NOSAVE: bugs in this GRF in this run, @see enum GRFBugs
+	uint32 param[0x80];        ///< GRF parameters
+	uint8 num_params;          ///< Number of used parameters
+	uint8 num_valid_params;    ///< NOSAVE: Number of valid parameters (action 0x14)
+	uint8 palette;             ///< GRFPalette, bitset
 
-	struct GRFConfig *next; ///< NOSAVE: Next item in the linked list
+	struct GRFConfig *next;    ///< NOSAVE: Next item in the linked list
 
 	bool IsOpenTTDBaseGRF() const;
 
