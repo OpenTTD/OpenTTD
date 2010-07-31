@@ -1269,7 +1269,7 @@ void StateGameLoop()
 		cur_company.Restore();
 	}
 
-	assert(_current_company == _local_company);
+	assert(IsLocalCompany());
 }
 
 /** Create an autosave. The default name is "autosave#.sav". However with

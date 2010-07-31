@@ -1974,7 +1974,7 @@ void HandleKeypress(uint32 raw_key)
 {
 	/* World generation is multithreaded and messes with companies.
 	 * But there is no company related window open anyway, so _current_company is not used. */
-	assert(IsGeneratingWorld() || _local_company == _current_company);
+	assert(IsGeneratingWorld() || IsLocalCompany());
 
 	/* Setup event */
 	uint16 key     = GB(raw_key,  0, 16);
@@ -2135,7 +2135,7 @@ static void MouseLoop(MouseClick click, int mousewheel)
 {
 	/* World generation is multithreaded and messes with companies.
 	 * But there is no company related window open anyway, so _current_company is not used. */
-	assert(IsGeneratingWorld() || _local_company == _current_company);
+	assert(IsGeneratingWorld() || IsLocalCompany());
 
 	HandlePlacePresize();
 	UpdateTileSelection();
@@ -2241,7 +2241,7 @@ void HandleMouseEvents()
 {
 	/* World generation is multithreaded and messes with companies.
 	 * But there is no company related window open anyway, so _current_company is not used. */
-	assert(IsGeneratingWorld() || _local_company == _current_company);
+	assert(IsGeneratingWorld() || IsLocalCompany());
 
 	static int double_click_time = 0;
 	static Point double_click_pos = {0, 0};
@@ -2348,7 +2348,7 @@ void InputLoop()
 {
 	/* World generation is multithreaded and messes with companies.
 	 * But there is no company related window open anyway, so _current_company is not used. */
-	assert(IsGeneratingWorld() || _local_company == _current_company);
+	assert(IsGeneratingWorld() || IsLocalCompany());
 
 	CheckSoftLimit();
 	HandleKeyScrolling();

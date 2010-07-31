@@ -27,6 +27,10 @@ extern CompanyByte _current_company;
 extern Colours _company_colours[MAX_COMPANIES];  ///< NOSAVE: can be determined from company structs
 extern CompanyManagerFace _company_manager_face; ///< for company manager face storage in openttd.cfg
 
+/**
+ * Is the current company the local company?
+ * @return \c true of the current company is the local company, \c false otherwise.
+ */
 static inline bool IsLocalCompany()
 {
 	return _local_company == _current_company;

@@ -154,7 +154,7 @@ void NetworkSyncCommandQueue(NetworkClientSocket *cs)
  */
 void NetworkExecuteLocalCommandQueue()
 {
-	assert(_current_company == _local_company);
+	assert(IsLocalCompany());
 
 	while (_local_command_queue != NULL) {
 

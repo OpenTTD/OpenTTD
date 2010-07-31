@@ -39,8 +39,8 @@
 
 #include "table/strings.h"
 
-CompanyByte _local_company;
-CompanyByte _current_company;
+CompanyByte _local_company;   ///< Company controlled by the human player at this client. Can also be #COMPANY_SPECTATOR.
+CompanyByte _current_company; ///< Company currently doing an action.
 /* NOSAVE: can be determined from company structs */
 Colours _company_colours[MAX_COMPANIES];
 CompanyManagerFace _company_manager_face; ///< for company manager face storage in openttd.cfg
@@ -97,7 +97,7 @@ void SetLocalCompany(CompanyID new_company)
 	InvalidateWindowData(WC_SEND_NETWORK_MSG, DESTTYPE_TEAM, _local_company);
 #endif
 
-	assert(_current_company == _local_company);
+	assert(IsLocalCompany());
 
 	_current_company = _local_company = new_company;
 
