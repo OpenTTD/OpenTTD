@@ -51,6 +51,13 @@ GRFConfig::GRFConfig(const GRFConfig &config) :
 	this->name = DuplicateGRFText(config.name);
 	this->info = DuplicateGRFText(config.info);
 	if (config.error    != NULL) this->error    = new GRFError(*config.error);
+	for (uint i = 0; i < config.param_info.Length(); i++) {
+		if (config.param_info[i] == NULL) {
+			*this->param_info.Append() = NULL;
+		} else {
+			*this->param_info.Append() = new GRFParameterInfo(*config.param_info[i]);
+		}
+	}
 }
 
 /** Cleanup a GRFConfig object. */
@@ -63,6 +70,8 @@ GRFConfig::~GRFConfig()
 		delete this->error;
 	}
 	CleanUpGRFText(this->name);
+
+	for (uint i = 0; i < this->param_info.Length(); i++) delete this->param_info[i];
 }
 
 /**
@@ -137,6 +146,53 @@ GRFError::~GRFError()
 {
 	free(this->custom_message);
 	free(this->data);
+}
+
+/**
+ * Create a new empty GRFParameterInfo object.
+ * @param nr The newgrf parameter that is changed.
+ */
+GRFParameterInfo::GRFParameterInfo(uint nr) :
+	name(NULL),
+	desc(NULL),
+	type(PTYPE_UINT_ENUM),
+	min_value(0),
+	max_value(UINT32_MAX),
+	param_nr(nr),
+	first_bit(0),
+	num_bit(32)
+{}
+
+/**
+ * Create a new GRFParameterInfo object that is a deep copy of an existing
+ *   parameter info object.
+ * @param info The GRFParameterInfo object to make a copy of.
+ */
+GRFParameterInfo::GRFParameterInfo(GRFParameterInfo &info) :
+	name(DuplicateGRFText(info.name)),
+	desc(DuplicateGRFText(info.desc)),
+	type(info.type),
+	min_value(info.min_value),
+	max_value(info.max_value),
+	param_nr(info.param_nr),
+	first_bit(info.first_bit),
+	num_bit(info.num_bit)
+{
+	for (uint i = 0; i < info.value_names.Length(); i++) {
+		SmallPair<uint32, GRFText *> *data = info.value_names.Get(i);
+		this->value_names.Insert(data->first, DuplicateGRFText(data->second));
+	}
+}
+
+/** Cleanup all parameter info. */
+GRFParameterInfo::~GRFParameterInfo()
+{
+	CleanUpGRFText(this->name);
+	CleanUpGRFText(this->desc);
+	for (uint i = 0; i < this->value_names.Length(); i++) {
+		SmallPair<uint32, GRFText *> *data = this->value_names.Get(i);
+		CleanUpGRFText(data->second);
+	}
 }
 
 /**

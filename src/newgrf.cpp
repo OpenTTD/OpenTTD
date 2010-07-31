@@ -5952,6 +5952,78 @@ static bool ChangeGRFPalette(size_t len, ByteReader *buf)
 	return true;
 }
 
+
+static GRFParameterInfo *_cur_parameter; ///< The parameter which info is currently changed by the newgrf.
+
+/** Callback function for 'INFO'->'PARAM'->param_num->'NAME' to set the name of a parameter. */
+static bool ChangeGRFParamName(byte langid, const char *str)
+{
+	AddGRFTextToList(&_cur_parameter->name, langid, _cur_grfconfig->ident.grfid, str);
+	return true;
+}
+
+/** Callback function for 'INFO'->'PARAM'->param_num->'DESC' to set the description of a parameter. */
+static bool ChangeGRFParamDescription(byte langid, const char *str)
+{
+	AddGRFTextToList(&_cur_parameter->desc, langid, _cur_grfconfig->ident.grfid, str);
+	return true;
+}
+
+/** Callback function for 'INFO'->'PARAM'->param_num->'TYPE' to set the typeof a parameter. */
+static bool ChangeGRFParamType(size_t len, ByteReader *buf)
+{
+	if (len != 1) {
+		grfmsg(2, "StaticGRFInfo: expected 1 byte for 'INFO'->'PARA'->'TYPE' but got " PRINTF_SIZE ", ignoring this field", len);
+		buf->Skip(len);
+	} else {
+		GRFParameterType type = (GRFParameterType)buf->ReadByte();
+		if (type < PTYPE_END) {
+			_cur_parameter->type = type;
+		} else {
+			grfmsg(3, "StaticGRFInfo: unknown parameter type %d, ignoring this field", type);
+		}
+	}
+	return true;
+}
+
+/** Callback function for 'INFO'->'PARAM'->param_num->'LIMI' to set the min/max value of a parameter. */
+static bool ChangeGRFParamLimits(size_t len, ByteReader *buf)
+{
+	if (_cur_parameter->type != PTYPE_UINT_ENUM) {
+		grfmsg(2, "StaticGRFInfo: 'INFO'->'PARA'->'LIMI' is only valid for parameters with type uint/enum, ignoring this field");
+		buf->Skip(len);
+	} else if (len != 8) {
+		grfmsg(2, "StaticGRFInfo: expected 8 bytes for 'INFO'->'PARA'->'LIMI' but got " PRINTF_SIZE ", ignoring this field", len);
+		buf->Skip(len);
+	} else {
+		_cur_parameter->min_value = buf->ReadDWord();
+		_cur_parameter->max_value = buf->ReadDWord();
+	}
+	return true;
+}
+
+/** Callback function for 'INFO'->'PARAM'->param_num->'MASK' to set the parameter and bits to use. */
+static bool ChangeGRFParamMask(size_t len, ByteReader *buf)
+{
+	if (len < 1 || len > 3) {
+		grfmsg(2, "StaticGRFInfo: expected 1 to 3 bytes for 'INFO'->'PARA'->'MASK' but got " PRINTF_SIZE ", ignoring this field", len);
+		buf->Skip(len);
+	} else {
+		byte param_nr = buf->ReadByte();
+		if (param_nr >= lengthof(_cur_grfconfig->param)) {
+			grfmsg(2, "StaticGRFInfo: invalid parameter number in 'INFO'->'PARA'->'MASK', param %d, ignoring this field", param_nr);
+			buf->Skip(len - 1);
+		} else {
+			_cur_parameter->param_nr = param_nr;
+			if (len >= 2) _cur_parameter->first_bit = min(buf->ReadByte(), 31);
+			if (len >= 3) _cur_parameter->num_bit = min(buf->ReadByte(), 32 - _cur_parameter->first_bit);
+		}
+	}
+
+	return true;
+}
+
+
 typedef bool (*DataHandler)(size_t, ByteReader *);  ///< Type of callback function for binary nodes
 typedef bool (*TextHandler)(byte, const char *str); ///< Type of callback function for text nodes
 typedef bool (*BranchHandler)(ByteReader *);        ///< Type of callback function for branch nodes
@@ -6035,11 +6107,95 @@ struct AllowedSubtags {
 	} handler;
 };
 
+static bool SkipUnknownInfo(ByteReader *buf, byte type);
+static bool HandleNode(byte type, uint32 id, ByteReader *buf, AllowedSubtags *tags);
+
+/**
+ * Callback function for 'INFO'->'PARA'->param_num->'VALU' to set the names
+ * of some parameter values (type uint/enum) or the names of some bits
+ * (type bitmask). In both cases the format is the same:
+ * Each subnode should be a text node with the value/bit number as id.
+ */
+static bool ChangeGRFParamValueNames(ByteReader *buf)
+{
+	byte type = buf->ReadByte();
+	while (type != 0) {
+		uint32 id = buf->ReadDWord();
+		if (type != 'T' || id > _cur_parameter->max_value) {
+			grfmsg(2, "StaticGRFInfo: all child nodes of 'INFO'->'PARA'->param_num->'VALU' should have type 't' and the value/bit number as id");
+			if (!SkipUnknownInfo(buf, type)) return false;
+		}
+
+		byte langid = buf->ReadByte();
+		const char *name_string = buf->ReadString();
+
+		SmallPair<uint32, GRFText *> *val_name = _cur_parameter->value_names.Find(id);
+		if (val_name != _cur_parameter->value_names.End()) {
+			AddGRFTextToList(&val_name->second, langid, _cur_grfconfig->ident.grfid, name_string);
+		} else {
+			GRFText *list = NULL;
+			AddGRFTextToList(&list, langid, _cur_grfconfig->ident.grfid, name_string);
+			_cur_parameter->value_names.Insert(id, list);
+		}
+
+		type = buf->ReadByte();
+	}
+	return true;
+}
+
+AllowedSubtags _tags_parameters[] = {
+	AllowedSubtags('NAME', ChangeGRFParamName),
+	AllowedSubtags('DESC', ChangeGRFParamDescription),
+	AllowedSubtags('TYPE', ChangeGRFParamType),
+	AllowedSubtags('LIMI', ChangeGRFParamLimits),
+	AllowedSubtags('MASK', ChangeGRFParamMask),
+	AllowedSubtags('VALU', ChangeGRFParamValueNames),
+	AllowedSubtags()
+};
+
+/**
+ * Callback function for 'INFO'->'PARA' to set extra information about the
+ * parameters. Each subnode of 'INFO'->'PARA' should be a branch node with
+ * the parameter number as id. The first parameter has id 0. The maximum
+ * parameter that can be changed is set by 'INFO'->'NPAR' which defaults to 80.
+ */
+static bool HandleParameterInfo(ByteReader *buf)
+{
+	byte type = buf->ReadByte();
+	while (type != 0) {
+		uint32 id = buf->ReadDWord();
+		if (type != 'C' || id >= _cur_grfconfig->num_valid_params) {
+			grfmsg(2, "StaticGRFInfo: all child nodes of 'INFO'->'PARA' should have type 'C' and their parameter number as id");
+			if (!SkipUnknownInfo(buf, type)) return false;
+		}
+
+		if (id >= _cur_grfconfig->param_info.Length()) {
+			uint num_to_add = id - _cur_grfconfig->param_info.Length() + 1;
+			GRFParameterInfo **newdata = _cur_grfconfig->param_info.Append(num_to_add);
+			MemSetT<GRFParameterInfo *>(newdata, 0, num_to_add);
+		}
+		if (_cur_grfconfig->param_info[id] == NULL) {
+			_cur_grfconfig->param_info[id] = new GRFParameterInfo(id);
+		}
+		_cur_parameter = _cur_grfconfig->param_info[id];
+		/* Read all parameter-data and process each node. */
+		byte sub_type = buf->ReadByte();
+		while (sub_type != 0) {
+			uint32 sub_id = buf->ReadDWord();
+			if (!HandleNode(sub_type, sub_id, buf, _tags_parameters)) return false;
+			sub_type = buf->ReadByte();
+		}
+		type = buf->ReadByte();
+	}
+	return true;
+}
+
 AllowedSubtags _tags_info[] = {
 	AllowedSubtags('NAME', ChangeGRFName),
 	AllowedSubtags('DESC', ChangeGRFDescription),
 	AllowedSubtags('NPAR', ChangeGRFNumUsedParams),
 	AllowedSubtags('PALS', ChangeGRFPalette),
+	AllowedSubtags('PARA', HandleParameterInfo),
 	AllowedSubtags()
 };
 

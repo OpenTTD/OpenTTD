@@ -14,6 +14,7 @@
 
 #include "strings_type.h"
 #include "core/alloc_type.hpp"
+#include "core/smallmap_type.hpp"
 
 /** GRF config bit flags */
 enum GCF_Flags {
@@ -99,6 +100,29 @@ struct GRFError : ZeroedMemoryAllocator {
 	uint32 param_value[2]; ///< Values of GRF parameters to show for message and custom_message
 };
 
+/** The possible types of a newgrf parameter. */
+enum GRFParameterType {
+	PTYPE_UINT_ENUM, ///< The parameter allows a range of numbers, each of which can have a special name
+	PTYPE_BOOL,      ///< The parameter is either 0 or 1
+	PTYPE_END,       ///< Invalid parameter type
+};
+
+/** Information about one grf parameter. */
+struct GRFParameterInfo {
+	GRFParameterInfo(uint nr);
+	GRFParameterInfo(GRFParameterInfo &info);
+	~GRFParameterInfo();
+	struct GRFText *name;  ///< The name of this parameter
+	struct GRFText *desc;  ///< The description of this parameter
+	GRFParameterType type; ///< The type of this parameter
+	uint32 min_value;      ///< The minimal value this parameter can have
+	uint32 max_value;      ///< The maximal value of this parameter
+	byte param_nr;         ///< GRF parameter to store content in
+	byte first_bit;        ///< First bit to use in the GRF parameter
+	byte num_bit;          ///< Number of bits to use for this parameter
+	SmallMap<uint32, struct GRFText *, 8> value_names; ///< Names for each value.
+};
+
 /** Information about GRF, used in the game and (part of it) in savegames */
 struct GRFConfig : ZeroedMemoryAllocator {
 	GRFConfig(const char *filename = NULL);
@@ -119,6 +143,7 @@ struct GRFConfig : ZeroedMemoryAllocator {
 	uint8 num_params;          ///< Number of used parameters
 	uint8 num_valid_params;    ///< NOSAVE: Number of valid parameters (action 0x14)
 	uint8 palette;             ///< GRFPalette, bitset
+	SmallVector<GRFParameterInfo *, 4> param_info; ///< NOSAVE: extra information about the parameters
 
 	struct GRFConfig *next;    ///< NOSAVE: Next item in the linked list
 
