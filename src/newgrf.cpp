@@ -6108,7 +6108,7 @@ struct AllowedSubtags {
 };
 
 static bool SkipUnknownInfo(ByteReader *buf, byte type);
-static bool HandleNode(byte type, uint32 id, ByteReader *buf, AllowedSubtags *tags);
+static bool HandleNodes(ByteReader *buf, AllowedSubtags *tags);
 
 /**
  * Callback function for 'INFO'->'PARA'->param_num->'VALU' to set the names
@@ -6179,12 +6179,7 @@ static bool HandleParameterInfo(ByteReader *buf)
 		}
 		_cur_parameter = _cur_grfconfig->param_info[id];
 		/* Read all parameter-data and process each node. */
-		byte sub_type = buf->ReadByte();
-		while (sub_type != 0) {
-			uint32 sub_id = buf->ReadDWord();
-			if (!HandleNode(sub_type, sub_id, buf, _tags_parameters)) return false;
-			sub_type = buf->ReadByte();
-		}
+		if (!HandleNodes(buf, _tags_parameters)) return false;
 		type = buf->ReadByte();
 	}
 	return true;
@@ -6265,13 +6260,7 @@ static bool HandleNode(byte type, uint32 id, ByteReader *buf, AllowedSubtags sub
 				if (tag->handler.call_handler) {
 					return tag->handler.u.branch(buf);
 				}
-				byte new_type = buf->ReadByte();
-				while (new_type != 0) {
-					uint32 new_id = buf->ReadDWord();
-					if (!HandleNode(new_type, new_id, buf, tag->handler.u.subtags)) return false;
-					new_type = buf->ReadByte();
-				}
-				return true;
+				return HandleNodes(buf, tag->handler.u.subtags);
 			}
 		}
 	}
@@ -6279,14 +6268,22 @@ static bool HandleNode(byte type, uint32 id, ByteReader *buf, AllowedSubtags sub
 	return SkipUnknownInfo(buf, type);
 }
 
+static bool HandleNodes(ByteReader *buf, AllowedSubtags subtags[])
+{
+	byte type = buf->ReadByte();
+	while (type != 0) {
+		uint32 id = buf->ReadDWord();
+		if (!HandleNode(type, id, buf, subtags)) return false;
+		type = buf->ReadByte();
+	}
+	return true;
+}
+
 /* Action 0x14 */
 static void StaticGRFInfo(ByteReader *buf)
 {
 	/* <14> <type> <id> <text/data...> */
-
-	byte type = buf->ReadByte();
-	uint32 id = buf->ReadDWord();
-	HandleNode(type, id, buf, _tags_root);
+	HandleNodes(buf, _tags_root);
 }
 
 /* 'Action 0xFF' */
