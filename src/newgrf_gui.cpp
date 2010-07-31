@@ -81,7 +81,7 @@ static void ShowNewGRFInfo(const GRFConfig *c, uint x, uint y, uint right, uint 
 	SetDParamStr(0, buff);
 	y = DrawStringMultiLine(x, right, y, bottom, STR_NEWGRF_SETTINGS_GRF_ID);
 
-	if (c->version != 0) {
+	if (_settings_client.gui.newgrf_developer_tools && c->version != 0) {
 		SetDParam(0, c->version);
 		y = DrawStringMultiLine(x, right, y, bottom, STR_NEWGRF_SETTINGS_VERSION);
 	}
