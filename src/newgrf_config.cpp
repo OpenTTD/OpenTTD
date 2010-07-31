@@ -17,6 +17,7 @@
 #include "network/network_func.h"
 #include "gfx_func.h"
 #include "newgrf_text.h"
+#include "window_func.h"
 
 #include "fileio_func.h"
 #include "fios.h"
@@ -193,6 +194,35 @@ GRFParameterInfo::~GRFParameterInfo()
 		SmallPair<uint32, GRFText *> *data = this->value_names.Get(i);
 		CleanUpGRFText(data->second);
 	}
+}
+
+/**
+ * Get the value of this user-changeable parameter from the given config.
+ * @param config The GRFConfig to get the value from.
+ * @return The value of this parameter.
+ */
+uint32 GRFParameterInfo::GetValue(struct GRFConfig *config) const
+{
+	/* GB doesn't work correctly with nbits == 32, so handle that case here. */
+	if (this->num_bit == 32) return config->param[this->param_nr];
+	return GB(config->param[this->param_nr], this->first_bit, this->num_bit);
+}
+
+/**
+ * Set the value of this user-changeable parameter in the given config.
+ * @param config The GRFConfig to set the value in.
+ * @param value The new value.
+ */
+void GRFParameterInfo::SetValue(struct GRFConfig *config, uint32 value)
+{
+	/* SB doesn't work correctly with nbits == 32, so handle that case here. */
+	if (this->num_bit == 32) {
+		config->param[this->param_nr] = value;
+	} else {
+		SB(config->param[this->param_nr], this->first_bit, this->num_bit, value);
+	}
+	config->num_params = max<uint>(config->num_params, this->param_nr + 1);
+	SetWindowClassesDirty(WC_GAME_OPTIONS); // Is always the newgrf window
 }
 
 /**

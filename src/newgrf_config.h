@@ -121,6 +121,9 @@ struct GRFParameterInfo {
 	byte first_bit;        ///< First bit to use in the GRF parameter
 	byte num_bit;          ///< Number of bits to use for this parameter
 	SmallMap<uint32, struct GRFText *, 8> value_names; ///< Names for each value.
+
+	uint32 GetValue(struct GRFConfig *config) const;
+	void SetValue(struct GRFConfig *config, uint32 value);
 };
 
 /** Information about GRF, used in the game and (part of it) in savegames */

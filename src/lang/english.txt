@@ -2383,6 +2383,11 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Disabled
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Enter NewGRF parameters
 
+# NewGRF parameters window
+STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Change NewGRF parameters
+STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Close
+STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameter {NUM}
+
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspect - {STRING5}
 STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Parent

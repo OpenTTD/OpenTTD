@@ -22,6 +22,7 @@
 #include "sortlist_type.h"
 #include "querystring_gui.h"
 #include "core/geometry_func.hpp"
+#include "newgrf_text.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -115,6 +116,243 @@ static void ShowNewGRFInfo(const GRFConfig *c, uint x, uint y, uint right, uint 
 	}
 }
 
+
+/** Enum referring to the widgets of the NewGRF parameters window */
+enum ShowNewGRFParametersWidgets {
+	GRFPAR_WIDGET_BACKGROUND,  ///< Panel to draw the settings on
+	GRFPAR_WIDGET_SCROLLBAR,   ///< Scrollbar to scroll through all settings
+	GRFPAR_WIDGET_ACCEPT,      ///< Accept button
+	GRFPAR_WIDGET_DESCRIPTION, ///< Multi-line description of a parameter
+};
+
+/**
+ * Window for setting the parameters of a NewGRF.
+ */
+struct NewGRFParametersWindow : public Window {
+	static GRFParameterInfo dummy_parameter_info; ///< Dummy info in case a newgrf didn't provide info about some parameter.
+	GRFConfig *grf_config; ///< Set the parameters of this GRFConfig.
+	uint clicked_button;   ///< The row in which a button was clicked or UINT_MAX.
+	bool clicked_increase; ///< True if the increase button was clicked, false for the decrease button.
+	int timeout;           ///< How long before we unpress the last-pressed button?
+	uint clicked_row;      ///< The selected parameter
+	int line_height;       ///< Height of a row in the matrix widget.
+
+	NewGRFParametersWindow(const WindowDesc *desc, GRFConfig *c) : Window(),
+		grf_config(c),
+		clicked_button(UINT_MAX),
+		timeout(0),
+		clicked_row(UINT_MAX)
+	{
+		this->InitNested(desc);  // Initializes 'this->line_height' as side effect.
+
+		this->vscroll.SetCount(c->num_valid_params);
+	}
+
+	/**
+	 * Get a dummy parameter-info object with default information.
+	 * @param nr The param number that should be changed.
+	 * @return GRFParameterInfo with dummy information about the given parameter.
+	 */
+	static GRFParameterInfo *GetDummyParameterInfo(uint nr)
+	{
+		dummy_parameter_info.param_nr = nr;
+		return &dummy_parameter_info;
+	}
+
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
+	{
+		switch (widget) {
+			case GRFPAR_WIDGET_BACKGROUND:
+				this->line_height = FONT_HEIGHT_NORMAL + WD_MATRIX_TOP + WD_MATRIX_BOTTOM;
+
+				resize->width = 1;
+				resize->height = this->line_height;
+				size->height = GB(this->GetWidget<NWidgetCore>(widget)->widget_data, MAT_ROW_START, MAT_ROW_BITS) * this->line_height;
+				break;
+
+			case GRFPAR_WIDGET_DESCRIPTION:
+				size->height = max<uint>(size->height, FONT_HEIGHT_NORMAL * 4 + WD_TEXTPANEL_TOP + WD_TEXTPANEL_BOTTOM);
+				break;
+		}
+	}
+
+	virtual void OnPaint()
+	{
+		this->DrawWidgets();
+	}
+
+	virtual void DrawWidget(const Rect &r, int widget) const
+	{
+		if (widget == GRFPAR_WIDGET_DESCRIPTION) {
+			const GRFParameterInfo *par_info = (this->clicked_row < this->grf_config->param_info.Length()) ? this->grf_config->param_info[this->clicked_row] : NULL;
+			if (par_info == NULL) return;
+			const char *desc = GetGRFStringFromGRFText(par_info->desc);
+			if (desc == NULL) return;
+			DrawStringMultiLine(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_TEXTPANEL_TOP, r.bottom - WD_TEXTPANEL_BOTTOM, desc, TC_BLACK);
+			return;
+		} else if (widget != GRFPAR_WIDGET_BACKGROUND) {
+			return;
+		}
+
+		bool rtl = _dynlang.text_dir == TD_RTL;
+		uint buttons_left = rtl ? r.right - 23 : r.left + 4;
+		uint value_left   = r.left + (rtl ? WD_FRAMERECT_LEFT : 28);
+		uint value_right  = r.right - (rtl ? 28 : WD_FRAMERECT_RIGHT);
+		uint text_left    = r.left + (rtl ? WD_FRAMERECT_LEFT : 54);
+		uint text_right   = r.right - (rtl ? 54 : WD_FRAMERECT_RIGHT);
+
+		int y = r.top;
+		for (uint i = this->vscroll.GetPosition(); this->vscroll.IsVisible(i) && i < this->grf_config->num_valid_params; i++) {
+			GRFParameterInfo *par_info = (i < this->grf_config->param_info.Length()) ? this->grf_config->param_info[i] : NULL;
+			if (par_info == NULL) par_info = GetDummyParameterInfo(i);
+			uint32 current_value = par_info->GetValue(this->grf_config);
+			bool selected = (i == this->clicked_row);
+
+			uint x = rtl ? r.right : r.left;
+			if (par_info->type == PTYPE_BOOL) {
+				DrawFrameRect(buttons_left, y  + 2, buttons_left + 19, y + 10, (current_value != 0) ? COLOUR_GREEN : COLOUR_RED, (current_value != 0) ? FR_LOWERED : FR_NONE);
+			} else if (par_info->type == PTYPE_UINT_ENUM) {
+				DrawArrowButtons(buttons_left, y + 2, COLOUR_YELLOW, (this->clicked_button == i) ? 1 + (this->clicked_increase != rtl) : 0, current_value > par_info->min_value, current_value < par_info->max_value);
+				bool draw_numeric = true;
+				if (par_info->value_names.Find(current_value) != par_info->value_names.End()) {
+					const char *label = GetGRFStringFromGRFText(par_info->value_names.Find(current_value)->second);
+					if (label != NULL) {
+						x = DrawString(value_left, value_right, y + WD_MATRIX_TOP, label, TC_ORANGE);
+						draw_numeric = false;
+					}
+				}
+				if (draw_numeric) {
+					SetDParam(0, current_value);
+					x = DrawString(value_left, value_right, y + WD_MATRIX_TOP, STR_JUST_INT, TC_ORANGE);
+				}
+			}
+
+			const char *name = GetGRFStringFromGRFText(par_info->name);
+			if (name != NULL) {
+				DrawString(max(rtl ? 0U : x + 3, text_left), min(rtl ? x - 3 : r.right, text_right), y + WD_MATRIX_TOP, name, selected ? TC_WHITE : TC_LIGHT_BLUE);
+			} else {
+				SetDParam(0, i + 1);
+				DrawString(max(rtl ? 0U : x + 3, text_left), min(rtl ? x - 3 : r.right, text_right), y + WD_MATRIX_TOP, STR_NEWGRF_PARAMETERS_DEFAULT_NAME, selected ? TC_WHITE : TC_LIGHT_BLUE);
+			}
+			y += this->line_height;
+		}
+	}
+
+	virtual void OnClick(Point pt, int widget, int click_count)
+	{
+		switch (widget) {
+			case GRFPAR_WIDGET_BACKGROUND: {
+				uint num = this->vscroll.GetScrolledRowFromWidget(pt.y, this, GRFPAR_WIDGET_BACKGROUND);
+				if (num >= this->grf_config->num_valid_params) break;
+				if (this->clicked_row != num) {
+					DeleteChildWindows(WC_QUERY_STRING);
+					this->clicked_row = num;
+				}
+
+				const NWidgetBase *wid = this->GetWidget<NWidgetBase>(GRFPAR_WIDGET_BACKGROUND);
+				int x = pt.x - wid->pos_x;
+				if (_dynlang.text_dir == TD_RTL) x = wid->current_x - x;
+				x -= 4;
+
+				GRFParameterInfo *par_info = (num < this->grf_config->param_info.Length()) ? this->grf_config->param_info[num] : NULL;
+				if (par_info == NULL) par_info = GetDummyParameterInfo(num);
+
+				/* One of the arrows is clicked */
+				if (IsInsideMM(x, 0, 21)) {
+					uint32 val = par_info->GetValue(this->grf_config);
+					if (par_info->type == PTYPE_BOOL) {
+						val = !val;
+					} else {
+						if (x >= 10) {
+							/* Increase button clicked */
+							if (val < par_info->max_value) val++;
+							this->clicked_increase = true;
+						} else {
+							/* Decrease button clicked */
+							if (val > par_info->min_value) val--;
+							this->clicked_increase = false;
+						}
+					}
+					par_info->SetValue(this->grf_config, val);
+
+					this->clicked_button = num;
+					this->timeout = 5;
+				} else if (par_info->type == PTYPE_UINT_ENUM && click_count >= 2) {
+					/* Display a query box so users can enter a custom value. */
+					SetDParam(0, this->grf_config->param[num]);
+					ShowQueryString(STR_JUST_INT, STR_CONFIG_SETTING_QUERY_CAPTION, 10, 100, this, CS_NUMERAL, QSF_NONE);
+				}
+
+				this->SetDirty();
+				break;
+			}
+
+			case GRFPAR_WIDGET_ACCEPT:
+				delete this;
+				break;
+		}
+	}
+
+	virtual void OnQueryTextFinished(char *str)
+	{
+		if (StrEmpty(str)) return;
+		int32 value = atoi(str);
+		GRFParameterInfo *par_info = ((uint)this->clicked_row < this->grf_config->param_info.Length()) ? this->grf_config->param_info[this->clicked_row] : NULL;
+		if (par_info == NULL) par_info = GetDummyParameterInfo(this->clicked_row);
+		uint32 val = Clamp<uint32>(value, par_info->min_value, par_info->max_value);
+		par_info->SetValue(this->grf_config, val);
+		this->SetDirty();
+	}
+
+	virtual void OnResize()
+	{
+		NWidgetCore *nwi = this->GetWidget<NWidgetCore>(GRFPAR_WIDGET_BACKGROUND);
+		this->vscroll.SetCapacity(nwi->current_y / this->line_height);
+		nwi->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
+	}
+
+	virtual void OnTick()
+	{
+		if (--this->timeout == 0) {
+			this->clicked_button = UINT_MAX;
+			this->SetDirty();
+		}
+	}
+};
+GRFParameterInfo NewGRFParametersWindow::dummy_parameter_info(0);
+
+
+static const NWidgetPart _nested_newgrf_parameter_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_MAUVE),
+		NWidget(WWT_CAPTION, COLOUR_MAUVE), SetDataTip(STR_NEWGRF_PARAMETERS_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+	EndContainer(),
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_MATRIX, COLOUR_MAUVE, GRFPAR_WIDGET_BACKGROUND), SetMinimalSize(188, 182), SetResize(1, 1), SetFill(1, 0), SetDataTip(0x501, STR_NULL),
+		NWidget(WWT_SCROLLBAR, COLOUR_MAUVE, GRFPAR_WIDGET_SCROLLBAR),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_MAUVE, GRFPAR_WIDGET_DESCRIPTION), SetResize(1, 0), SetFill(1, 0),
+	EndContainer(),
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_MAUVE, GRFPAR_WIDGET_ACCEPT), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_NEWGRF_PARAMETERS_CLOSE, STR_NULL),
+		NWidget(WWT_RESIZEBOX, COLOUR_MAUVE),
+	EndContainer(),
+};
+
+/* Window definition for the change grf parameters window */
+static const WindowDesc _newgrf_parameters_desc(
+	WDP_CENTER, 500, 208,
+	WC_GRF_PARAMETERS, WC_NONE,
+	WDF_UNCLICK_BUTTONS,
+	_nested_newgrf_parameter_widgets, lengthof(_nested_newgrf_parameter_widgets)
+);
+
+void OpenGRFParameterWindow(GRFConfig *c)
+{
+	DeleteWindowByClass(WC_GRF_PARAMETERS);
+	new NewGRFParametersWindow(&_newgrf_parameters_desc, c);
+}
+
 static GRFPresetList _grf_preset_list;
 
 class DropDownListPresetItem : public DropDownListItem {
@@ -184,7 +422,6 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 	bool editable;              ///< Is the window editable?
 	bool show_params;           ///< Are the grf-parameters shown in the info-panel?
 	bool execute;               ///< On pressing 'apply changes' are grf changes applied immediately, or only list is updated.
-	int query_widget;           ///< Widget that opened the last query.
 	int preset;                 ///< Selected preset.
 
 	NewGRFWindow(const WindowDesc *desc, bool editable, bool show_params, bool execute, GRFConfig **orig_list) : QueryStringBaseWindow(EDITBOX_MAX_SIZE)
@@ -217,6 +454,8 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 
 	~NewGRFWindow()
 	{
+		DeleteWindowByClass(WC_GRF_PARAMETERS);
+
 		if (this->editable && !this->execute) {
 			CopyGRFConfigList(this->orig_list, this->actives, true);
 			ResetGRFConfig(false);
@@ -429,7 +668,6 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 			}
 
 			case SNGRFS_PRESET_SAVE:
-				this->query_widget = widget;
 				ShowQueryString(STR_EMPTY, STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY, 32, 100, this, CS_ALPHANUMERAL, QSF_NONE);
 				break;
 
@@ -487,7 +725,7 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 				GRFConfig *c;
 				for (c = this->actives; c != NULL && i > 0; c = c->next, i--) {}
 
-				if (this->active_sel != c) this->DeleteChildWindows(WC_QUERY_STRING); // Remove the parameter query window
+				if (this->active_sel != c) DeleteWindowByClass(WC_GRF_PARAMETERS);
 				this->active_sel = c;
 				this->avail_sel = NULL;
 				this->avail_pos = -1;
@@ -498,6 +736,7 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 			/* FALL THROUGH, with double click. */
 			case SNGRFS_REMOVE: { // Remove GRF
 				if (this->active_sel == NULL || !this->editable) break;
+				DeleteWindowByClass(WC_GRF_PARAMETERS);
 
 				/* Choose the next GRF file to be the selected file. */
 				GRFConfig *newsel = this->active_sel->next;
@@ -520,19 +759,18 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 				this->avail_sel = NULL;
 				this->avails.ForceRebuild();
 				this->InvalidateData(2);
-				this->DeleteChildWindows(WC_QUERY_STRING); // Remove the parameter query window
 				break;
 			}
 
 			case SNGRFS_AVAIL_LIST: { // Select a non-active GRF.
 				uint i = this->vscroll2.GetScrolledRowFromWidget(pt.y, this, SNGRFS_AVAIL_LIST);
 				this->active_sel = NULL;
+				DeleteWindowByClass(WC_GRF_PARAMETERS);
 				if (i < this->avails.Length()) {
 					this->avail_sel = this->avails[i];
 					this->avail_pos = i;
 				}
 				this->InvalidateData();
-				this->DeleteChildWindows(WC_QUERY_STRING); // Remove the parameter query window
 				if (click_count == 1) break;
 			}
 			/* FALL THROUGH, with double click. */
@@ -582,11 +820,7 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 			case SNGRFS_SET_PARAMETERS: { // Edit parameters
 				if (this->active_sel == NULL || !this->editable || !this->show_params) break;
 
-				this->query_widget = widget;
-				static char buff[512];
-				GRFBuildParamList(buff, this->active_sel, lastof(buff));
-				SetDParamStr(0, buff);
-				ShowQueryString(STR_JUST_RAW_STRING, STR_NEWGRF_SETTINGS_PARAMETER_QUERY, 63, 250, this, CS_NUMERAL_SPACE, QSF_NONE);
+				OpenGRFParameterWindow(this->active_sel);
 				break;
 			}
 
@@ -652,6 +886,7 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 			}
 		}
 
+		DeleteWindowByClass(WC_GRF_PARAMETERS);
 		this->active_sel = NULL;
 		this->InvalidateData(3);
 	}
@@ -660,33 +895,10 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 	{
 		if (str == NULL) return;
 
-		switch (this->query_widget) {
-			default: NOT_REACHED();
-
-			case SNGRFS_PRESET_SAVE:
-				SaveGRFPresetToConfig(str, this->actives);
-				GetGRFPresetList(&_grf_preset_list);
-
-				/* Switch to this preset */
-				for (uint i = 0; i < _grf_preset_list.Length(); i++) {
-					if (_grf_preset_list[i] != NULL && strcmp(_grf_preset_list[i], str) == 0) {
-						this->preset = i;
-						break;
-					}
-				}
-				break;
-
-			case SNGRFS_SET_PARAMETERS: {
-				if (this->active_sel == NULL || !this->editable || !this->show_params) return;
-
-				/* Parse our new "int list" */
-				GRFConfig *c = this->active_sel;
-				c->num_params = ParseIntList(str, (int*)c->param, lengthof(c->param));
-
-				/* ParseIntList() returns -1 on error */
-				if (c->num_params == (byte)-1) c->num_params = 0;
-
-				this->preset = -1;
+		/* Switch to this preset */
+		for (uint i = 0; i < _grf_preset_list.Length(); i++) {
+			if (_grf_preset_list[i] != NULL && strcmp(_grf_preset_list[i], str) == 0) {
+				this->preset = i;
 				break;
 			}
 		}
