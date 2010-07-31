@@ -5919,6 +5919,18 @@ static bool ChangeGRFDescription(byte langid, const char *str)
 	return true;
 }
 
+/** Callback function for 'INFO'->'NPAR' to set the number of valid parameters. */
+static bool ChangeGRFNumUsedParams(size_t len, ByteReader *buf)
+{
+	if (len != 1) {
+		grfmsg(2, "StaticGRFInfo: expected only 1 byte for 'INFO'->'NPAR' but got " PRINTF_SIZE ", ignoring this field", len);
+		buf->Skip(len);
+	} else {
+		_cur_grfconfig->num_valid_params = min(buf->ReadByte(), lengthof(_cur_grfconfig->param));
+	}
+	return true;
+}
+
 typedef bool (*DataHandler)(size_t, ByteReader *);  ///< Type of callback function for binary nodes
 typedef bool (*TextHandler)(byte, const char *str); ///< Type of callback function for text nodes
 typedef bool (*BranchHandler)(ByteReader *);        ///< Type of callback function for branch nodes
@@ -6005,6 +6017,7 @@ struct AllowedSubtags {
 AllowedSubtags _tags_info[] = {
 	AllowedSubtags('NAME', ChangeGRFName),
 	AllowedSubtags('DESC', ChangeGRFDescription),
+	AllowedSubtags('NPAR', ChangeGRFNumUsedParams),
 	AllowedSubtags()
 };
 

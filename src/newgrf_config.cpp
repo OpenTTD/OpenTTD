@@ -26,7 +26,8 @@
  * @param filename Set the filename of this GRFConfig to filename. The argument
  *   is copied so the original string isn't needed after the constructor.
  */
-GRFConfig::GRFConfig(const char *filename)
+GRFConfig::GRFConfig(const char *filename) :
+	num_valid_params(lengthof(param))
 {
 	if (filename != NULL) this->filename = strdup(filename);
 }
@@ -41,6 +42,7 @@ GRFConfig::GRFConfig(const GRFConfig &config) :
 	status(config.status),
 	grf_bugs(config.grf_bugs),
 	num_params(config.num_params),
+	num_valid_params(config.num_valid_params),
 	windows_paletted(config.windows_paletted)
 {
 	MemCpyT<uint8>(this->original_md5sum, config.original_md5sum, lengthof(this->original_md5sum));
