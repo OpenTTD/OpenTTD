@@ -69,14 +69,14 @@ static uint16 ParseCode(const char *start, const char *end)
 	assert(start <= end);
 	while (start < end && *start == ' ') start++;
 	while (end > start && *end == ' ') end--;
-	if (end - start == 1) {
-		if (*start >= 'a' && *start <= 'z') return *start - ('a' - 'A');
-		return *start;
-	}
 	for (uint i = 0; i < lengthof(_keycode_to_name); i++) {
 		if (strncasecmp(start, _keycode_to_name[i].name, end - start) == 0) {
 			return _keycode_to_name[i].keycode;
 		}
+	}
+	if (end - start == 1) {
+		if (*start >= 'a' && *start <= 'z') return *start - ('a' - 'A');
+		return *start;
 	}
 	return 0;
 }
