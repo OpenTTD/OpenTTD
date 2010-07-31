@@ -233,12 +233,20 @@ struct NewGRFParametersWindow : public Window {
 				}
 			}
 
+			int left  = max(rtl ? 0U : x + 3, text_left);
+			int right = min(rtl ? x - 3 : r.right, text_right);
 			const char *name = GetGRFStringFromGRFText(par_info->name);
 			if (name != NULL) {
-				DrawString(max(rtl ? 0U : x + 3, text_left), min(rtl ? x - 3 : r.right, text_right), y + WD_MATRIX_TOP, name, selected ? TC_WHITE : TC_LIGHT_BLUE);
+				x = DrawString(left, right, y + WD_MATRIX_TOP, name, selected ? TC_WHITE : TC_LIGHT_BLUE);
 			} else {
 				SetDParam(0, i + 1);
-				DrawString(max(rtl ? 0U : x + 3, text_left), min(rtl ? x - 3 : r.right, text_right), y + WD_MATRIX_TOP, STR_NEWGRF_PARAMETERS_DEFAULT_NAME, selected ? TC_WHITE : TC_LIGHT_BLUE);
+				x = DrawString(left, right, y + WD_MATRIX_TOP, STR_NEWGRF_PARAMETERS_DEFAULT_NAME, selected ? TC_WHITE : TC_LIGHT_BLUE);
+			}
+			if (par_info->type == PTYPE_BOOL) {
+				left  = max(rtl ? 0U : x + 3, text_left);
+				right = min(rtl ? x - 3 : r.right, text_right);
+				StringID str = par_info->GetValue(this->grf_config) == 0 ? STR_CONFIG_SETTING_OFF : STR_CONFIG_SETTING_ON;
+				DrawString(left, right, y + WD_MATRIX_TOP, str, selected ? TC_WHITE : TC_LIGHT_BLUE);
 			}
 			y += this->line_height;
 		}
