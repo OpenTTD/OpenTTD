@@ -900,6 +900,9 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 	{
 		if (str == NULL) return;
 
+		SaveGRFPresetToConfig(str, this->actives);
+		GetGRFPresetList(&_grf_preset_list);
+
 		/* Switch to this preset */
 		for (uint i = 0; i < _grf_preset_list.Length(); i++) {
 			if (_grf_preset_list[i] != NULL && strcmp(_grf_preset_list[i], str) == 0) {
