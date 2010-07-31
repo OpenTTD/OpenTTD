@@ -548,8 +548,7 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 					}
 				}
 
-				GRFConfig *c = DuplicateGRFConfig(this->avail_sel); // Copy GRF details from scanned list.
-				c->next = NULL;
+				GRFConfig *c = new GRFConfig(*this->avail_sel); // Copy GRF details from scanned list.
 				*list = c; // Append GRF config to configuration list.
 
 				/* Select next (or previous, if last one) item in the list. */
@@ -720,7 +719,7 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 					const GRFConfig *f = FindGRFConfig(c->ident.grfid, compatible ? c->original_md5sum : c->ident.md5sum);
 					if (f == NULL) continue;
 
-					*l = DuplicateGRFConfig(f);
+					*l = new GRFConfig(*f);
 					(*l)->next = c->next;
 
 					if (active_sel == c) active_sel = *l;

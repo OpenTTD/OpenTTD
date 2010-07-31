@@ -70,6 +70,7 @@ struct GRFIdentifier {
 /** Information about why GRF had problems during initialisation */
 struct GRFError : ZeroedMemoryAllocator {
 	GRFError(StringID severity, StringID message = 0);
+	GRFError(const GRFError &error);
 	~GRFError();
 
 	char *custom_message;  ///< Custom message (if present)
@@ -83,6 +84,7 @@ struct GRFError : ZeroedMemoryAllocator {
 /** Information about GRF, used in the game and (part of it) in savegames */
 struct GRFConfig : ZeroedMemoryAllocator {
 	GRFConfig(const char *filename = NULL);
+	GRFConfig(const GRFConfig &config);
 	~GRFConfig();
 
 	GRFIdentifier ident; ///< grfid and md5sum to uniquely identify newgrfs
@@ -123,7 +125,6 @@ void ResetGRFConfig(bool defaults);
 GRFListCompatibility IsGoodGRFConfigList(GRFConfig *grfconfig);
 bool FillGRFDetails(GRFConfig *config, bool is_static);
 char *GRFBuildParamList(char *dst, const GRFConfig *c, const char *last);
-GRFConfig *DuplicateGRFConfig(const GRFConfig *c);
 
 /* In newgrf_gui.cpp */
 void ShowNewGRFSettings(bool editable, bool show_params, bool exec_changes, GRFConfig **config);

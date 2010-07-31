@@ -20,11 +20,37 @@
 #include "fileio_func.h"
 #include "fios.h"
 
+/**
+ * Create a new GRFConfig.
+ * @param filename Set the filename of this GRFConfig to filename. The argument
+ *   is copied so the original string isn't needed after the constructor.
+ */
 GRFConfig::GRFConfig(const char *filename)
 {
 	if (filename != NULL) this->filename = strdup(filename);
 }
 
+/**
+ * Create a new GRFConfig that is a deep copy of an existing config.
+ * @param config The GRFConfig object to make a copy of.
+ */
+GRFConfig::GRFConfig(const GRFConfig &config) :
+	ident(config.ident),
+	flags(config.flags & ~GCF_COPY),
+	status(config.status),
+	grf_bugs(config.grf_bugs),
+	num_params(config.num_params),
+	windows_paletted(config.windows_paletted)
+{
+	MemCpyT<uint8>(this->original_md5sum, config.original_md5sum, lengthof(this->original_md5sum));
+	MemCpyT<uint32>(this->param, config.param, lengthof(this->param));
+	if (config.filename != NULL) this->filename = strdup(config.filename);
+	if (config.name     != NULL) this->name     = strdup(config.name);
+	if (config.info     != NULL) this->info     = strdup(config.info);
+	if (config.error    != NULL) this->error    = new GRFError(*config.error);
+}
+
+/** Cleanup a GRFConfig object. */
 GRFConfig::~GRFConfig()
 {
 	/* GCF_COPY as in NOT strdupped/alloced the filename, name and info */
@@ -61,10 +87,31 @@ GRFConfig *_grfconfig;
 GRFConfig *_grfconfig_newgame;
 GRFConfig *_grfconfig_static;
 
+/**
+ * Construct a new GRFError.
+ * @param severity The severity of this error.
+ * @param message The actual error-string.
+ */
 GRFError::GRFError(StringID severity, StringID message) :
 	message(message),
 	severity(severity)
 {
+}
+
+/**
+ * Create a new GRFError that is a deep copy of an existing error message.
+ * @param error The GRFError object to make a copy of.
+ */
+GRFError::GRFError(const GRFError &error) :
+	custom_message(error.custom_message),
+	data(error.data),
+	message(error.message),
+	severity(error.severity),
+	num_params(error.num_params)
+{
+	if (error.custom_message != NULL) this->custom_message = strdup(error.custom_message);
+	if (error.data           != NULL) this->data           = strdup(error.data);
+	memcpy(this->param_value, error.param_value, sizeof(this->param_value));
 }
 
 GRFError::~GRFError()
@@ -162,32 +209,6 @@ void ClearGRFConfigList(GRFConfig **config)
 }
 
 
-/**
- * Make a deep copy of a GRFConfig.
- * @param c the grfconfig to copy
- * @return A pointer to a new grfconfig that's a copy of the original
- */
-GRFConfig *DuplicateGRFConfig(const GRFConfig *c)
-{
-	GRFConfig *config = new GRFConfig();
-	*config = *c;
-
-	if (c->filename != NULL) config->filename = strdup(c->filename);
-	if (c->name     != NULL) config->name = strdup(c->name);
-	if (c->info     != NULL) config->info = strdup(c->info);
-	if (c->error    != NULL) {
-		config->error = new GRFError(c->error->severity, c->error->message);
-		config->error->num_params = c->error->num_params;
-		memcpy(config->error->param_value, c->error->param_value, sizeof(config->error->param_value));
-		if (c->error->data           != NULL) config->error->data = strdup(c->error->data);
-		if (c->error->custom_message != NULL) config->error->custom_message = strdup(c->error->custom_message);
-	}
-
-	ClrBit(config->flags, GCF_COPY);
-
-	return config;
-}
-
 /** Copy a GRF Config list
  * @param dst pointer to destination list
  * @param src pointer to source list values
@@ -198,7 +219,7 @@ GRFConfig **CopyGRFConfigList(GRFConfig **dst, const GRFConfig *src, bool init_o
 	/* Clear destination as it will be overwritten */
 	ClearGRFConfigList(dst);
 	for (; src != NULL; src = src->next) {
-		GRFConfig *c = DuplicateGRFConfig(src);
+		GRFConfig *c = new GRFConfig(*src);
 
 		ClrBit(c->flags, GCF_INIT_ONLY);
 		if (init_only) SetBit(c->flags, GCF_INIT_ONLY);
