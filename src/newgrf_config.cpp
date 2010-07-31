@@ -92,7 +92,12 @@ const char *GRFConfig::GetDescription() const
  */
 void GRFConfig::SetSuitablePalette()
 {
-	PaletteType pal = _use_palette;
+	PaletteType pal;
+	switch (this->palette & GRFP_GRF_MASK) {
+		case GRFP_GRF_DOS:     pal = PAL_DOS;      break;
+		case GRFP_GRF_WINDOWS: pal = PAL_WINDOWS;  break;
+		default:               pal = _use_palette; break;
+	}
 	SB(this->palette, GRFP_USE_BIT, 1, pal == PAL_WINDOWS ? GRFP_USE_WINDOWS : GRFP_USE_DOS);
 }
 

@@ -5931,6 +5931,27 @@ static bool ChangeGRFNumUsedParams(size_t len, ByteReader *buf)
 	return true;
 }
 
+/** Callback function for 'INFO'->'PALS' to set the number of valid parameters. */
+static bool ChangeGRFPalette(size_t len, ByteReader *buf)
+{
+	if (len != 1) {
+		grfmsg(2, "StaticGRFInfo: expected only 1 byte for 'INFO'->'PALS' but got " PRINTF_SIZE ", ignoring this field", len);
+		buf->Skip(len);
+	} else {
+		char data = buf->ReadByte();
+		switch (data) {
+			case '*':
+			case 'A': _cur_grfconfig->palette |= GRFP_GRF_ANY;     break;
+			case 'W': _cur_grfconfig->palette |= GRFP_GRF_WINDOWS; break;
+			case 'D': _cur_grfconfig->palette |= GRFP_GRF_DOS;     break;
+			default:
+				grfmsg(2, "StaticGRFInfo: unexpected value '%02x' for 'INFO'->'PALS', ignoring this field", data);
+				break;
+		}
+	}
+	return true;
+}
+
 typedef bool (*DataHandler)(size_t, ByteReader *);  ///< Type of callback function for binary nodes
 typedef bool (*TextHandler)(byte, const char *str); ///< Type of callback function for text nodes
 typedef bool (*BranchHandler)(ByteReader *);        ///< Type of callback function for branch nodes
@@ -6018,6 +6039,7 @@ AllowedSubtags _tags_info[] = {
 	AllowedSubtags('NAME', ChangeGRFName),
 	AllowedSubtags('DESC', ChangeGRFDescription),
 	AllowedSubtags('NPAR', ChangeGRFNumUsedParams),
+	AllowedSubtags('PALS', ChangeGRFPalette),
 	AllowedSubtags()
 };
 

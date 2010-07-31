@@ -52,10 +52,18 @@ enum GRFListCompatibility {
 /** Information that can/has to be stored about a GRF's palette. */
 enum GRFPalette {
 	GRFP_USE_BIT     = 0,   ///< The bit used for storing the palette to use.
+	GRFP_GRF_OFFSET  = 2,   ///< The offset of the GRFP_GRF data.
+	GRFP_GRF_SIZE    = 2,   ///< The size of the GRFP_GRF data.
 
 	GRFP_USE_DOS     = 0x0, ///< The palette state is set to use the DOS palette.
 	GRFP_USE_WINDOWS = 0x1, ///< The palette state is set to use the Windows palette.
 	GRFP_USE_MASK    = 0x1, ///< Bitmask to get only the use palette use states.
+
+	GRFP_GRF_UNSET   = 0x0 << GRFP_GRF_OFFSET,          ///< The NewGRF provided no information.
+	GRFP_GRF_DOS     = 0x1 << GRFP_GRF_OFFSET,          ///< The NewGRF says the DOS palette can be used.
+	GRFP_GRF_WINDOWS = 0x2 << GRFP_GRF_OFFSET,          ///< The NewGRF says the Windows palette can be used.
+	GRFP_GRF_ANY     = GRFP_GRF_DOS | GRFP_GRF_WINDOWS, ///< The NewGRF says any palette can be used.
+	GRFP_GRF_MASK    = GRFP_GRF_ANY,                    ///< Bitmask to get only the NewGRF supplied information.
 };
 
 
