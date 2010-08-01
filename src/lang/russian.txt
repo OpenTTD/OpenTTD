@@ -3582,7 +3582,7 @@ STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Недо
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Необходимо ровное место
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Неверный уклон земли
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Это невозможно...
-STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Сначала надо уничтожить здания
+STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Сначала снесите здания
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Невозможно расчистить данный участок...
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... неподходящее место
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... уже построено
@@ -3686,13 +3686,13 @@ STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Нево
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Нужно убрать остановку
 STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}...здесь нет станции
 
-STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Сначала нужно удалить ж/д станцию
-STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Сначала удалите автобусную остановку
-STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}Сначала удалите грузовой терминал
-STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Сначала надо уничтожить пассажирскую трамвайную остановку
-STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Сначала надо уничтожить грузовую трамвайную остановку
-STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Сначала удалите пристань
-STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Сначала удалите аэропорт
+STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Сначала снесите ж/д станцию
+STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Сначала снесите автобусную остановку
+STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}Сначала снесите грузовой терминал
+STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Сначала снесите пассажирскую трамвайную остановку
+STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Сначала снесите грузовую трамвайную остановку
+STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Сначала снесите пристань
+STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Сначала снесите аэропорт
 
 # Waypoint related errors
 STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Примыкает к нескольким точкам пути
@@ -3771,7 +3771,7 @@ STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Здес
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Здесь невозможно расположить реку...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... нужно строить в воде
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... нельзя строить в воде
-STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Сначала надо уничтожить канал
+STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Сначала снесите канал
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Здесь невозможно построить акведук...
 
 # Tree related errors
@@ -3781,9 +3781,9 @@ STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Нево
 
 # Bridge related errors
 STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}Здесь невозможно построить мост...
-STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Сначала удалите мост
+STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Сначала снесите мост
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Не может начинаться и заканчиваться в той же точке
-STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Опоры мостов должны быть на одном уровне
+STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Опоры моста должны быть на одном уровне
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Слишком низкий мост
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Начало и конец должны быть на одной линии
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... оба конца моста должны опираться на землю
@@ -3792,7 +3792,7 @@ STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... мо
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Здесь невозможно построить туннель...
 STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}Неподходящее место для строительства туннеля
-STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Сначала удалите туннель
+STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Сначала снесите туннель
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Другой туннель на пути
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Туннель заканчивается за пределами карты
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Невозможно поднять/опустить землю для другого конца туннеля
@@ -3848,7 +3848,7 @@ STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Нево
 STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Невозможно изменить название модели возд. судна...
 
 STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Не удалось продать поезд...
-STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Невозможно продать автомобиль...
+STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Не удалось продать автомобиль...
 STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Не удалось продать корабль...
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Не удалось продать самолёт...
 

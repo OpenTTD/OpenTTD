@@ -2469,6 +2469,7 @@ STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Provjeri
 
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Datoteka: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Verzija: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5 suma: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Paleta: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parametri: {SILVER}{STRING}
@@ -2478,6 +2479,11 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Nije prona
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Onemogućeno
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Unesite NewGRF parametre
+
+# NewGRF parameters window
+STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Promijeni NewGRF parametre
+STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Zatvori
+STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parametar {NUM}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Pregledaj - {STRING}

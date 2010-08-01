@@ -2373,6 +2373,7 @@ STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Verific�
 
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Nume fisier: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}ID GRF: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Versiune: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Paleta: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parametri: {SILVER}{STRING}
@@ -2382,6 +2383,11 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Nici un fi
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Dezactivat
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Introdu parametrii NewGRF
+
+# NewGRF parameters window
+STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Schimbă parametrii NewGRF
+STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Închide
+STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parametru {NUM}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspectează - {STRING}

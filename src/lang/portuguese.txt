@@ -2373,6 +2373,7 @@ STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Verifica
 
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Nome do ficheiro: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Versão: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Palete: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parâmetros: {SILVER}{STRING}
@@ -2382,6 +2383,11 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Ficheiro c
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Desactivado
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Insira parâmetros do NewGRF
+
+# NewGRF parameters window
+STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Alterar parâmetros NewGRF
+STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Fechar
+STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parâmetro {NUM}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspeccionar - {STRING}
@@ -3448,6 +3454,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... não
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}A cidade não construirá estradas. Pode-se permitir a construção de estradas por Opções Avançadas->Economia->Cidades.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Trabalhos na estrada em curso
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Não é possível eliminar esta cidade...{}Uma estação ou depósito refere-se à cidade ou não é possível remover terreno pertencente à cidade
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... não há um sítio adequado para uma estátua no centro desta cidade
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... demasiadas indústrias

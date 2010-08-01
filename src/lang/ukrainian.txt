@@ -2498,6 +2498,7 @@ STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Пере
 
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Ім'я файлу: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Версія: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5сума: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Палітра: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Параметри: {SILVER}{STRING}
@@ -2507,6 +2508,11 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Таких
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Вимкнено
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Введіть параметри NewGRF
+
+# NewGRF parameters window
+STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Змінити параметри NewGRF
+STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Закрити
+STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Параметр {NUM}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Перегляд - {STRING}

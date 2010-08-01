@@ -2373,6 +2373,7 @@ STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Seiceái
 
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Comhadainm: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}ID an GRF: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Leagan: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Pailéad: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Paraiméadair: {SILVER}{STRING}
@@ -2382,6 +2383,11 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Níor aims
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Díchumasaithe
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Iontráil paraiméadair NewGRF
+
+# NewGRF parameters window
+STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Athraigh na paraiméadair NewGRF
+STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Dún
+STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Paraiméadar{NUM}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Déan iniúchadh - {STRING}

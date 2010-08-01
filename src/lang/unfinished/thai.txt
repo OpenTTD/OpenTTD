@@ -215,6 +215,7 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} ลู�
 
 STR_UNITS_FORCE_SI                                              :{COMMA} กิโลนิวตัน
 
+STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} ฟุต
 STR_UNITS_HEIGHT_SI                                             :{COMMA} ม.
 
 # Common window strings
@@ -443,6 +444,7 @@ STR_ABOUT_MENU_AI_DEBUG                                         :AI debug
 STR_ABOUT_MENU_SCREENSHOT                                       :จับภาพหน้าจอ (Ctrl+S)
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :จับภาพหน้าจอขนาดใหญ่ (Ctrl+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :เกี่ยวกับ 'OpenTTD'
+STR_ABOUT_MENU_SPRITE_ALIGNER                                   :ตัวจัดแนว Sprite
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -755,7 +757,10 @@ STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIGFONT}{BLACK}บอลลูนระเบิดที่{STATION}!
 STR_NEWS_DISASTER_SMALL_UFO                                     :{BIGFONT}{BLACK}รถยนต์ถูกทำลายโดย UFO!
 STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIGFONT}{BLACK}โรงกลั่นน้ำมันระเบิดใกล้เมือง {TOWN}!
+STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIGFONT}{BLACK}โรงงานอุตสาหกรรมถูกทำลายอย่างไม่ทราบสาเหตุใกล้ {TOWN}!
 STR_NEWS_DISASTER_BIG_UFO                                       :{BIGFONT}{BLACK}'ยูเอฟโอ' มาลงใกล้ๆ{TOWN}!
+STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIGFONT}{BLACK}เหมืองถ่านหินถล่มเสียหายใกล้เมือง {TOWN}!
+STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIGFONT}{BLACK}น้ำท่วม!{}อย่างน้อย {COMMA} สูญหาย คาดว่าจะเสียชีวิตจากน้ำท่วมอย่างหนัก!
 
 STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIGFONT}{BLACK}บริษัทขนส่งมีปัญหา
 STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIGFONT}{BLACK}{STRING} จะถูกขายหรือประกาศล้มละลาย ยกเว้นเสียแต่จะฟื้นตัวได้ในเวลาอันสั้น
@@ -771,18 +776,36 @@ STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDE
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}{STRING} ผู้สนับสนุนก่อสร้างเมืองใหม่ในชื่อ {TOWN}!
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}{STRING}ใหม่ กำลังถูกสร้างใกล้ ๆ เมือง {TOWN}!
+STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK} {STRING}กำลังปลูกใหม่ใกล้ {TOWN}!
 
+STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}{STRING} ประกาศเลิกกิจการ!
+STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}เกิดปัญหาเกี่ยวกับวัตถุดิบทำให้ {STRING} ต้องประกาศเลิกกิจการ!
+STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}ต้นไม้บริเวณใกล้เคียงขาดแคลนทำให้ {STRING} ต้องประกาศเลิกกิจการ!
 
 STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}เงินสกุลยูโรเริ่มใช้แล้ว!{}{}สหภาพยุโรปได้เริ่มใช้เงินสกุลเดียวกันแล้ว นั่นคือเงินสกุลยูโร รวมถึงในประเทศนี้ตั้งแต่วันนี้เป็นต้นไป!
+STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}เกิดภาวะเศรฐกิจถดถอยทั่วโลก!{}{}ผู้เชี่ยวชาญทางการเงินต่างหวาดกลัวเนื่องจากเศรฐกิจตกต่ำ!
+STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}สิ้นสุดภาวะเศรฐกิจถดถอย!{}{}การค้าขายเริ่มเป็นบวกเกิดความเชื่อมั่นในอุตสาหกรรมต่างๆ จากการที่เศรฐกิจเข้มแข็งขึ้น!
 
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} เพิ่มกำลังการผลิต!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}พบสายแร่ถ่านหินใหม่ที่ {INDUSTRY}!คาดว่าผลผลิต{}จะเพิ่มขึ้นเท่าตัว!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}พบแหล่งน้ำมันใหม่ที่ {INDUSTRY}!คาดว่าผลผลิต{}จะเพิ่มขึ้นเท่าตัว!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}เกษตรกรรมที่ได้รับการปรับปรุงแล้วที่ {INDUSTRY} คาดว่าจะทำให้ผลผลิตเพิ่มขึ้นเท่าตัว!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK}{STRING} ผลผลิต {INDUSTRY} เพิ่มขึ้น {COMMA}%!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}ผลผลิต {INDUSTRY} ลดลง 50%
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}เกิดแมลงศัตรูพืชอย่างหนักที่ {INDUSTRY}!ผลผลิต{}ลงลง 50%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK}{STRING} ผลผลิตของ {INDUSTRY} ลดลง {COMMA}%!
 
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} กำลังรอในโรงซ่อมบำรุง
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} กำลังรออยู่ในอู่
 STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} กำลังรออยู่ในอู่
 STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} กำลังรออยู่ในโรงจอด
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
+STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} มีคำสั่งน้อยเกินไปในกำหนดการเดินทาง
+STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} มีคำสั่งว่าง
+STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} มีคำสั่งซ้ำซ้อน
+STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} มีสถานีที่ใช้ไม่ได้ในคำสั่ง
 # end of order system
 
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} เริ่มเก่าแล้ว
@@ -792,15 +815,34 @@ STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE
 STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} กำลังหลงทาง.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}กำไรของ {VEHICLE} เมื่อปีที่ผ่านมา {CURRENCY}
 
+STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} หยุดเนื่องจากการเปลี่ยนชนิดบรรทุกไม่สำเร็จ
+STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}เปลี่ยนใหม่อัตโนมัติไม่สำเร็จบน {VEHICLE}{}{STRING}
 
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}{STRING} ใหม่ขณะนี้มีให้ใช้งานแล้ว!
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIGFONT}{BLACK}{ENGINE}
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}ใหม่ {STRING} มีจำหน่ายแล้ว  -  {ENGINE}
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} ไม่ต้องการรับ {STRING} อีกต่อไป
+STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} ไม่รับ {STRING} หรือ {STRING} แล้ว
+STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} ขณะนี้ยอมรับ {STRING}
+STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} ขณะนี้ยอมรับ {STRING} และ {STRING}
 
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}การอุดหนุนสิ้นสุด:{}{}{STRING} จาก {STRING} ถึง {STRING} จะไม่ได้รับการอุดหนุนอีกต่อไป.
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}การอุดหนุนถูกถอดถอน:{}{}บริการ {STRING} จาก {STRING} ถึง {STRING} ไม่ได้รับการสนับสนุนอีกต่อไป.
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}ข้อเสนอการอุดหนุนบริการ:{}{}บริการ {STRING} แรกจาก {STRING} ถึง {STRING} จะได้รับเงินอุดหนุนรายปีจากองค์กรท้องถิ่น!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}การอุดหนุนบริการถูกมอบแก่ {STRING}!{}{}บริการ {STRING} จาก {STRING} ถึง {STRING} จะได้รับเงินอุดหนุนเพิ่มขึ้น 50% สำหรับปีหน้า!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}การอุดหนุนบริการถูกมอบแก่ {STRING}!{}{}บริการ {STRING} จาก {STRING} ถึง {STRING} จะได้รับเงินสองเท่าในปีหน้า!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}การอุดหนุนบริการถูกมอบแก่ {STRING}!{}{}บริการ {STRING} จาก {STRING} ถึง {STRING} จะได้รับเงินสามเท่าในปีหน้า!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}การอุดหนุนบริการถูกมอบแก่ {STRING}!{}{} บริการ {STRING} จาก {STRING} ถึง {STRING} จะได้รับเงินสี่เท่าในปีหน้า!
 
+STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}การจราจรยุ่งเหยิงใน {TOWN}!{}{}การสร้างถนนใหม่ที่ได้รับการสนับสนุนโดย {STRING} นำมาซึ่งหกเดือนแห่งความสงสัยแก่ผู้ใช้ถนน!
 
 # Extra view window
+STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}มุมมอง {COMMA}
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}คัดลองไปยังมุมมอง
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}คัดลอกตำแหน่งของมุมมองหลังมายังมุมมองนี้
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}วางจากมุมมอง
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}วางต่ำแหน่งจากมุมมองนี้ไปยังมุมมองหลัก
 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}ตัวเลือกเกม
@@ -874,10 +916,13 @@ STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :ออสเต
 STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :โรมาเนียน
 STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :เช็ค
 STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :สวิส
+STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :เดนมาร์ค
+STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :ตุรกี
 STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :อิตาเลียน
 ############ end of townname region
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}บันทึกเกมอัตโนมัติ
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}เลือกระยะห่างระหว่างการบันทึกเกมอัตโนมัติแต่ละครั้ง
 
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :ปิด
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :ทุกๆเดือน
@@ -1039,7 +1084,11 @@ STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}ยอ�
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}ต้นแบบการเร่งความเร็วของรถไฟ: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :ดั้งเดิม
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :เหมือนจริง
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}รูปแบบการเร่งของรถยนต์: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :ดั้งเดิม
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :เหมือนจริง
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}เนินสูงเกินไปสำหรับรถไฟ {ORANGE}{STRING}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}ความชันสำหรับรถยนต์ {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}ห้ามรถไฟและเรือเลี้ยวในมุม 90 องศา: {ORANGE}{STRING} {LTBLUE} (ใช้ไม่ได้กับ OPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}รวมสถานีรถไฟที่สร้างต่อกันเป็นสถานีเดียว: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}อนุญาตให้เป็นสถานีเดียวกันแม้ไม่ได้ติดกัน: {ORANGE}{STRING}
@@ -1129,9 +1178,11 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :สีม่ว
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}กลับทิศการเลื่อน: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}เลื่อนอย่างนิ่มนวลบนจอภาพ: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}แสดง tooltip วัดขนาดเมื่อใช่เครื่องมีสร้างต่าง ๆ: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}แสดงเครื่องแบบบริษัท: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LIVERIES_NONE                                :ไม่เลย
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :บริษัทของท่าน
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :ทุกบริษัท
+STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :{LTBLUE}ใช้การคุยระหว่างทีมด้วย <ENTER>: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :{LTBLUE}ความสามารถของปุ่มเลื่อน: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :ขยายแผนที่
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :เลื่อนแผนที่
@@ -1139,9 +1190,11 @@ STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :ปิด
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}ความเร็วการเลื่อนของแผนที่: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}จำลองคลิกขวา: {ORANGE}{STRING}
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command+คลิก
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+Click
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :ปิด
 
+STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}เลื่อนด้วยคลิกซ้าย: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}ใช้รูปแบบวันที่ {ORANGE}{STRING}{LTBLUE} เป็นชื่อเซฟของเกม
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :ยาว (31 ธ.ค. 2551)
@@ -1151,8 +1204,12 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :มาตรฐ
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}หยุดเกมอัตโนมัติเมื่อเริ่มเกมใหม่: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}ใช้รายการยานพาหนะขั้นสุง: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :ปิด
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :บริษัทที่เป็นเจ้าของ
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_ALL                   :บริษัททั้งหมด
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}ใช้ตัวบ่งบอกการบรรจุ: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :ปิด
+STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :บริษัทที่เป็นเจ้าของ
+STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :บริษัททั้งหมด
 STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}เปิดใช้งานตารางเวลาสำหรับยานพาหนะ: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}แสดงตารางเวลาในแบบติ๊กแทนแบบวัน: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}แสดงเวลามาถึงและออกไปในตารางเวลา: {ORANGE}{STRING}
@@ -1163,7 +1220,9 @@ STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :มีใช้
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :ใช้มากที่สุด
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}แสดงรางที่สำรองไว้: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}ให้คงการแสดงเครื่องมือการสร้างหลังการใช้: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}จัดกลุ่มรายจ่ายในหน้าต่างการเงินของบริษัท: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}แสดงเครื่องมือการสร้างเมื่อไม่มียานพาหนะที่นำมาใช้ได้: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}ขบวนรถไฟมากที่สุดต่อผู้เล่น: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}ยานพาหนะมากที่สุดต่อผู้เล่น: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}เครื่องบินมากที่สุดต่อผู้เล่น: {ORANGE}{STRING}
@@ -1175,7 +1234,19 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}ไม�
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}ไม่ยอมให้มีเรือสำหรับคอมพิวเตอร์: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}อนุญาตให้ใช้ปัญญาประดิษฐ์ (AI) สำหรับหลายผู้เล่น: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}#opcodes ก่อน AI จะหยุดทำงาน: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}ระยะเวลาซ่อมบำรุงเป็นเปอร์เซนต์: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}ระยะเวลาซ่อมบำรุงปกติของรถไฟ: {ORANGE}{STRING} วัน/%
+STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}ระยะเวลาซ่อมบำรุงปกติของรถไฟ: {ORANGE}ไม่ใช้งาน
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}ระยะเวลาซ่อมบำรุงปกติของรถยนต์: {ORANGE}{STRING} วัน/%
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}ระยะเวลาซ่อมบำรุงปกติของรถยนต์: {ORANGE}ไม่ใช้งาน
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}ระยะเวลาซ่อมบำรุงปกติของเครื่องบิน: {ORANGE}{STRING} วัน/%
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}ระยะเวลาซ่อมบำรุงปกติของเครื่องบิน: {ORANGE}ไม่ใช้งาน
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}ระยะเวลาซ่อมบำรุงปกติของเรือ: {ORANGE}{STRING} วัน/%
+STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Dระยะเวลาซ่อมบำรุงปกติของเรือ: {ORANGE}ไม่ใช้งาน
+STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}ไม่ใช้งานการซ่อมบำรุงเมื่อตั้งเป็นไม่มีการขัดข้อง: {ORANGE}{STRING}
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}เปิดใช้งานการจำกัดความเร็วของคันบรรทุก: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}ไม่ยอมให้มีรางไฟฟ้า: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}ข่าวที่เป็นสีปรากฎในปี: {ORANGE}{STRING}
@@ -1183,22 +1254,92 @@ STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}ปี�
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}ยอมให้มีเศรษฐกิจที่ราบรื่น (มากขึ้น, เปลี่ยนแปลงเล็กน้อย): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}อนุญาตให้ซื้อหุ้นจากบริษัทอื่นได้: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}เปอร์เซนต์ของฐานรายได้ที่ถูกส่งเข้าระบบป้อนข้อมูล: {ORANGE}{STRING}%
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}เมื่อลาก ปักสัญญาณทุก ๆ: {ORANGE}{STRING} ช่อง
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}สร้างสัญญาณธงโดยอัตโนมัติก่อน: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}เปิดใช้งาน GUI สำหรับอานัติสัญญาณ: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}ชนิดอานัติสัญญาณปริยายที่จะใช้: {ORANGE}{STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :{LTBLUE}วนชนิดอานัติสัญญาณ: {ORANGE}{STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :ทั้งหมด
 
+STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}รูปแบบถนนสำหรับเมืองใหม่: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :ดั้งเดิม
+STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :ถนนดีขึ้น
+STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :ตาราง 2x2
+STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :ตาราง 3x3
+STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :สุ่ม
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}ยอมให้เมืองสร้างถนนได้: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}ยอมให้เมืองสร้างทางข้ามระดับดินได้: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}ยอมให้เมืองควบคุมมลพิษทางเสียงของสนามบิน: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}ตั้งเมืองในเกม: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :ห้าม
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :ยอม
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :ยอม, รูปแบบเมืองสุ่ม
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}เปลี่ยนต้นไม้ในเกม: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :ไม่มี {RED}(breaks lumber mill)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :เฉพาะในป่าฝน
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :ทุกหนทุกแห่ง
 
+STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}ตำแหน่งแถบเครื่องมือหลัก: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :ซ้าย
+STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :กลาง
+STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :ขวา
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}ระยะ snap หน้าต่าง: {ORANGE}{STRING} px
+STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}ระยะ snap หน้าต่าง: {ORANGE}ไม่ใช้งาน
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}ขอบเขตหน้าต่างอย่างอ่อน (ไม่ติด): {ORANGE}{STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}ขอบเขตหน้าต่างอย่างอ่อน (ไม่ติด): {ORANGE}ไม่ใช้งาน
+STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}ความเร็วการเจริญเติบโตของเมือง: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :ไม่มี
+STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :ช้า
+STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :ปกติ
+STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :เร็ว
+STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :เร็วมาก
+STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}อัตราส่วนของเมืองที่จะกลายเป็นเมืองใหญ่: {ORANGE}1 ใน {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}อัตราส่วนของเมืองที่จะกลายเป็นเมืองใหญ่: {ORANGE}ไม่มี
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :{LTBLUE}ตัวคูณขนาดเมืองเริ่มต้น: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}นำสิ่งที่เป็นอุปสรรคของถนนออกระหว่างการก่อสร้างถนน: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_GUI                                          :{ORANGE}ส่วนเชื่อมต่อผู้ใช้
+STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}การก่อสร้าง
+STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}ยานพาหนะ
+STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}สถานี
+STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}เศรฐกิจ
+STR_CONFIG_SETTING_AI                                           :{ORANGE}คู่แข่ง
+STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}ตัวเลือกการแสดงผล
+STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}การโต้ตอบ
+STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}อานัติสัญญาณ
+STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}การจัดการบรรทุก
+STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}ผู้เล่นคอมพิวเตอร์
+STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}เปลี่ยนใหม่อัตโนมัติ
+STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}ซ่อมบำรุง
+STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}เลือกเส้นทาง
+STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}รถไฟ
+STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}เมือง
+STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}อุตสาหกรรม
 
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}ตัวค้นหาเส้นทางสำหรับรถไฟ: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(แนะนำ)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}ตัวค้นหาเส้นทางสำหรับรถยนต์: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_NPF             :NPF
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_YAPF            :YAPF {BLUE}(แนะนำ)
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}ตัวค้นหาเส้นทางสำหรับเรือ: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :ดั้งเดิม {BLUE}(แนะนำ)
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(ไม่แนะนำ)
 
+STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}ขนาดด้าน X ของแผนที่: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}ขนาดด้าน Y ของแผนที่: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}เปลี่ยนค่าการตั้งค่า
 
 # Intro window
+STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}เริ่มเกมใหม่
 STR_INTRO_LOAD_GAME                                             :{BLACK}เปิดเกมเดิม
+STR_INTRO_PLAY_SCENARIO                                         :{BLACK}เล่นฉาก
+STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}เลนแผนที่ความสูง
 STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}โปรแกรมแก้ฉาก
 STR_INTRO_MULTIPLAYER                                           :{BLACK}เล่นหลายคน
 
@@ -1207,13 +1348,27 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}คว�
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}การตั้งค่าของความก้าวหน้า
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}การตั้งค่า NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}ตรวจสอบเนื้อหาออนไลน์
+STR_INTRO_AI_SETTINGS                                           :{BLACK}การกำหนดค่า AI
 STR_INTRO_QUIT                                                  :{BLACK}ออก
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}เริ่มเกมใหม่, Ctrl+Click เพื่อข้ามการตั้งค่าแผนที่
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}เปิดเกมที่บันทึกไว้
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}เริ่มเกมใหม่โดยใช้ heightmap เป็นภูมิประเทศ
+STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}เริ่มเกมใหม่ โดยใช้ฉากที่กำหนดเอง
+STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}สร้างเกมที่มี โลก/ฉาก ที่กำหนดเอง
+STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}เริ่มเกมผู้เล่นหลายคน
 
+STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}เลือกรูปแบบภูมิประเทศ 'เขตอบอุ่น'
+STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}เลือกรูปแบบภูมิประเทศ 'เขตกึ่งขั้วโลก'
+STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}เลือกรูปแบบภูมิประเทศ 'เขตกึ่งมรสุม'
+STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}เลือกสภาพภูมิประเทศ 'เมืองของเล่น'
 
+STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}แสดงตัวเลือกเกม
+STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}แสดงตัวเลือกความยาก
+STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}แสดงการกำหนดค่าขั้นสูง
+STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}แสดงการกำหนดค่า NewGRF
+STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}ตรวจสอบเนื้อหาใหม่และการปรับปรุงสำหรับดาวโหลด
+STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}แสดงการกำหนดค่า AI
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}ออกจากเกม 'OpenTTD'
 
 # Quit window
@@ -1240,9 +1395,30 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}แน�
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}คุณแน่ใจหรือที่จะยกเลิกแผนที่นี้?
 
 # Cheat window
+STR_CHEATS                                                      :{WHITE}โกง
+STR_CHEATS_TOOLTIP                                              :{BLACK}กล่องตัวเลือกจะแสดงว่าคุณโกงมาก่อนหรือไม่
+STR_CHEAT_MONEY                                                 :{LTBLUE}เพิ่มเงิน {CURRENCY}
+STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}เล่นเป็นบริษัท: {ORANGE}{COMMA}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}รถไถเวทมนต์ (ทำลายอุตสาหกรรม, ของที่เอาออกไม่ได้): {ORANGE}{STRING}
+STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}อุโมงค์สามารถตัดกันได้: {ORANGE}{STRING}
+STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}สร้างขณะอยู่ในโหมดหยุดชั่วคราว: {ORANGE}{STRING}
+STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}เครื่องบินไอพ่นจะไม่ตก (บ่อย) บนสนามบินขนาดเล็ก: {ORANGE}{STRING}
+STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}เปลี่ยนสภาพอากาศ: {ORANGE}{STRING}
+STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :ภูมิประเทศเขตอบอุ่น
+STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :ภูมิประเทศเขตกึ่งขั้วโลก
+STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :ภูมิประเทศเขตกึ่งมรสุม
+STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :ภูมิประเทศเมืองของเล่น
+STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}เปลี่ยนวันที่: {ORANGE}{DATE_SHORT}
+STR_CHEAT_SETUP_PROD                                            :{LTBLUE}เปิดใช้งานการแก้ไขราคาผลผลิต: {ORANGE}{STRING}
 
 # Livery window
+STR_LIVERY_CAPTION                                              :{WHITE}สร้างแบบสีใหม่
 
+STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}แสดงแบบสีทั่วไป
+STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}แสดงแบบสีรถไฟ
+STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}แสดงแบบสีรถยนต์
+STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}แสดงแบบสีเรือ
+STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}แสดงแบบสีเครื่องบิน
 
 STR_LIVERY_BUS                                                  :รถบัส
 STR_LIVERY_TRUCK                                                :รถบรรทุก

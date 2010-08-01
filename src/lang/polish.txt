@@ -2753,6 +2753,7 @@ STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Sprawdź
 
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Nazwa pliku: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Wersja: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}suma MD5: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Paleta: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parametry: {SILVER}{STRING}
@@ -2762,6 +2763,11 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Nie znalez
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Niedostępny
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Wprowadź parametry NewGRF
+
+# NewGRF parameters window
+STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Zmień parametry NewGRF
+STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Zamknij
+STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parametr {NUM}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Zbadaj - {STRING}

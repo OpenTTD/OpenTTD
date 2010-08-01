@@ -2437,6 +2437,7 @@ STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Ellenőr
 
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Fájlnév: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Vezió: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Paletta: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Paraméterek: {SILVER}{STRING}
@@ -2446,6 +2447,11 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Fájl nem 
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Kikapcsolva
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Adj meg NewGRF paramétereket
+
+# NewGRF parameters window
+STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}NewGRF paraméterek megváltoztatása
+STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Bezárás
+STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Paraméter {NUM}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Megtekintés - {STRING}

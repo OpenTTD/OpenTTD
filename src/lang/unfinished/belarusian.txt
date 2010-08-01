@@ -29,112 +29,423 @@ STR_JUST_NOTHING                                                :Нiчога
 # Cargo related strings
 # Plural cargo name
 STR_CARGO_PLURAL_NOTHING                                        :
-STR_CARGO_PLURAL_PASSENGERS                                     :Пасажыры
-STR_CARGO_PLURAL_COAL                                           :Вугаль
-STR_CARGO_PLURAL_MAIL                                           :Пошта
-STR_CARGO_PLURAL_OIL                                            :Нафта
-STR_CARGO_PLURAL_LIVESTOCK                                      :Жывёла
-STR_CARGO_PLURAL_GOODS                                          :Тавары
-STR_CARGO_PLURAL_GRAIN                                          :Зерне
-STR_CARGO_PLURAL_WOOD                                           :Драўнiна
-STR_CARGO_PLURAL_IRON_ORE                                       :Жалезная руда
-STR_CARGO_PLURAL_STEEL                                          :Сталь
-STR_CARGO_PLURAL_VALUABLES                                      :Каштоўнасцi
-STR_CARGO_PLURAL_COPPER_ORE                                     :Медная руда
-STR_CARGO_PLURAL_MAIZE                                          :Кукуруза
-STR_CARGO_PLURAL_FRUIT                                          :Садавіна
-STR_CARGO_PLURAL_DIAMONDS                                       :Алмазы
-STR_CARGO_PLURAL_FOOD                                           :Ежа
-STR_CARGO_PLURAL_PAPER                                          :Папера
-STR_CARGO_PLURAL_GOLD                                           :Золата
-STR_CARGO_PLURAL_WATER                                          :Вада
-STR_CARGO_PLURAL_WHEAT                                          :Пшанiца
-STR_CARGO_PLURAL_RUBBER                                         :Каўчук
-STR_CARGO_PLURAL_SUGAR                                          :Цукар
-STR_CARGO_PLURAL_TOYS                                           :Цацкi
-STR_CARGO_PLURAL_CANDY                                          :Цукеркi
-STR_CARGO_PLURAL_COLA                                           :Кола
-STR_CARGO_PLURAL_COTTON_CANDY                                   :Цукровая вата
-STR_CARGO_PLURAL_BUBBLES                                        :Бурбалкi
-STR_CARGO_PLURAL_TOFFEE                                         :Iрыскi
-STR_CARGO_PLURAL_BATTERIES                                      :Батарэйкi
-STR_CARGO_PLURAL_PLASTIC                                        :Пластык
-STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Газiроўка
+STR_CARGO_PLURAL_PASSENGERS                                     :{G=p}Пасажыры
+STR_CARGO_PLURAL_PASSENGERS.nom                                 :Пасажыры
+STR_CARGO_PLURAL_PASSENGERS.gen                                 :пасажыраў
+STR_CARGO_PLURAL_PASSENGERS.dat                                 :пасажырам
+STR_CARGO_PLURAL_PASSENGERS.acc                                 :пасажыраў
+STR_CARGO_PLURAL_PASSENGERS.abl                                 :пасажырамі
+STR_CARGO_PLURAL_PASSENGERS.pre                                 :пасажырах
+STR_CARGO_PLURAL_COAL                                           :{G=m}Вугаль
+STR_CARGO_PLURAL_COAL.gen                                       :вугалю
+STR_CARGO_PLURAL_COAL.dat                                       :вугалю
+STR_CARGO_PLURAL_COAL.acc                                       :вугаль
+STR_CARGO_PLURAL_COAL.abl                                       :вугалем
+STR_CARGO_PLURAL_COAL.pre                                       :вугалі
+STR_CARGO_PLURAL_MAIL                                           :{G=f}Пошта
+STR_CARGO_PLURAL_MAIL.gen                                       :пошты
+STR_CARGO_PLURAL_MAIL.dat                                       :пошце
+STR_CARGO_PLURAL_MAIL.acc                                       :пошту
+STR_CARGO_PLURAL_MAIL.abl                                       :поштай
+STR_CARGO_PLURAL_MAIL.pre                                       :пошце
+STR_CARGO_PLURAL_OIL                                            :{G=f}Нафта
+STR_CARGO_PLURAL_OIL.gen                                        :нафты
+STR_CARGO_PLURAL_OIL.dat                                        :нафце
+STR_CARGO_PLURAL_OIL.acc                                        :нафту
+STR_CARGO_PLURAL_OIL.abl                                        :нафтай
+STR_CARGO_PLURAL_OIL.pre                                        :нафце
+STR_CARGO_PLURAL_LIVESTOCK                                      :{G=f}Жывёла
+STR_CARGO_PLURAL_LIVESTOCK.gen                                  :жывёлы
+STR_CARGO_PLURAL_LIVESTOCK.dat                                  :жывёле
+STR_CARGO_PLURAL_LIVESTOCK.acc                                  :жывёлу
+STR_CARGO_PLURAL_LIVESTOCK.abl                                  :жывёлай
+STR_CARGO_PLURAL_LIVESTOCK.pre                                  :жывёле
+STR_CARGO_PLURAL_GOODS                                          :{G=p}Тавары
+STR_CARGO_PLURAL_GOODS.gen                                      :тавараў
+STR_CARGO_PLURAL_GOODS.dat                                      :таварам
+STR_CARGO_PLURAL_GOODS.acc                                      :тавары
+STR_CARGO_PLURAL_GOODS.abl                                      :таварамі
+STR_CARGO_PLURAL_GOODS.pre                                      :таварах
+STR_CARGO_PLURAL_GRAIN                                          :{G=n}Зерне
+STR_CARGO_PLURAL_GRAIN.gen                                      :зерня
+STR_CARGO_PLURAL_GRAIN.dat                                      :зерню
+STR_CARGO_PLURAL_GRAIN.acc                                      :зерне
+STR_CARGO_PLURAL_GRAIN.abl                                      :зернем
+STR_CARGO_PLURAL_GRAIN.pre                                      :зерні
+STR_CARGO_PLURAL_WOOD                                           :{G=f}Драўнiна
+STR_CARGO_PLURAL_WOOD.gen                                       :драўніны
+STR_CARGO_PLURAL_WOOD.dat                                       :драўніне
+STR_CARGO_PLURAL_WOOD.acc                                       :драўніну
+STR_CARGO_PLURAL_WOOD.abl                                       :драўнінай
+STR_CARGO_PLURAL_WOOD.pre                                       :драўніне
+STR_CARGO_PLURAL_IRON_ORE                                       :{G=f}Жалезная руда
+STR_CARGO_PLURAL_IRON_ORE.gen                                   :жалезнай руды
+STR_CARGO_PLURAL_IRON_ORE.dat                                   :жалезнай рудзе
+STR_CARGO_PLURAL_IRON_ORE.acc                                   :жалезную руду
+STR_CARGO_PLURAL_IRON_ORE.abl                                   :жалезнай рудой
+STR_CARGO_PLURAL_IRON_ORE.pre                                   :жалезнай рудзе
+STR_CARGO_PLURAL_STEEL                                          :{G=f}Сталь
+STR_CARGO_PLURAL_STEEL.gen                                      :сталі
+STR_CARGO_PLURAL_STEEL.dat                                      :сталі
+STR_CARGO_PLURAL_STEEL.acc                                      :сталь
+STR_CARGO_PLURAL_STEEL.abl                                      :стальлю
+STR_CARGO_PLURAL_STEEL.pre                                      :сталі
+STR_CARGO_PLURAL_VALUABLES                                      :{G=p}Каштоўнасьцi
+STR_CARGO_PLURAL_VALUABLES.gen                                  :каштоўнасьцяў
+STR_CARGO_PLURAL_VALUABLES.dat                                  :каштоўнасьцям
+STR_CARGO_PLURAL_VALUABLES.acc                                  :каштоўнасьці
+STR_CARGO_PLURAL_VALUABLES.abl                                  :каштоўнасьцямі
+STR_CARGO_PLURAL_VALUABLES.pre                                  :каштоўнасьцях
+STR_CARGO_PLURAL_COPPER_ORE                                     :{G=f}Медная руда
+STR_CARGO_PLURAL_COPPER_ORE.gen                                 :меднай руды
+STR_CARGO_PLURAL_COPPER_ORE.dat                                 :меднай рудзе
+STR_CARGO_PLURAL_COPPER_ORE.acc                                 :медную руду
+STR_CARGO_PLURAL_COPPER_ORE.abl                                 :меднай рудой
+STR_CARGO_PLURAL_COPPER_ORE.pre                                 :меднай рудзе
+STR_CARGO_PLURAL_MAIZE                                          :{G=f}Кукуруза
+STR_CARGO_PLURAL_MAIZE.gen                                      :кукурузы
+STR_CARGO_PLURAL_MAIZE.dat                                      :кукурузе
+STR_CARGO_PLURAL_MAIZE.acc                                      :кукурузу
+STR_CARGO_PLURAL_MAIZE.abl                                      :кукурузай
+STR_CARGO_PLURAL_MAIZE.pre                                      :кукурузе
+STR_CARGO_PLURAL_FRUIT                                          :{G=f}Садавіна
+STR_CARGO_PLURAL_FRUIT.gen                                      :садавіны
+STR_CARGO_PLURAL_FRUIT.dat                                      :садавіне
+STR_CARGO_PLURAL_FRUIT.acc                                      :садавіну
+STR_CARGO_PLURAL_FRUIT.abl                                      :садавінай
+STR_CARGO_PLURAL_FRUIT.pre                                      :садавіне
+STR_CARGO_PLURAL_DIAMONDS                                       :{G=p}Алмазы
+STR_CARGO_PLURAL_DIAMONDS.gen                                   :алмазаў
+STR_CARGO_PLURAL_DIAMONDS.dat                                   :алмазам
+STR_CARGO_PLURAL_DIAMONDS.acc                                   :алмазы
+STR_CARGO_PLURAL_DIAMONDS.abl                                   :алмазамі
+STR_CARGO_PLURAL_DIAMONDS.pre                                   :алмазах
+STR_CARGO_PLURAL_FOOD                                           :{G=f}Ежа
+STR_CARGO_PLURAL_FOOD.gen                                       :ежы
+STR_CARGO_PLURAL_FOOD.dat                                       :ежы
+STR_CARGO_PLURAL_FOOD.acc                                       :ежу
+STR_CARGO_PLURAL_FOOD.abl                                       :ежай
+STR_CARGO_PLURAL_FOOD.pre                                       :ежы
+STR_CARGO_PLURAL_PAPER                                          :{G=f}Папера
+STR_CARGO_PLURAL_PAPER.gen                                      :паперы
+STR_CARGO_PLURAL_PAPER.dat                                      :паперы
+STR_CARGO_PLURAL_PAPER.acc                                      :паперу
+STR_CARGO_PLURAL_PAPER.abl                                      :паперай
+STR_CARGO_PLURAL_PAPER.pre                                      :паперы
+STR_CARGO_PLURAL_GOLD                                           :{G=n}Золата
+STR_CARGO_PLURAL_GOLD.gen                                       :золата
+STR_CARGO_PLURAL_GOLD.dat                                       :золату
+STR_CARGO_PLURAL_GOLD.acc                                       :золата
+STR_CARGO_PLURAL_GOLD.abl                                       :золатам
+STR_CARGO_PLURAL_GOLD.pre                                       :золаце
+STR_CARGO_PLURAL_WATER                                          :{G=f}Вада
+STR_CARGO_PLURAL_WATER.gen                                      :вады
+STR_CARGO_PLURAL_WATER.dat                                      :вадзе
+STR_CARGO_PLURAL_WATER.acc                                      :ваду
+STR_CARGO_PLURAL_WATER.abl                                      :вадой
+STR_CARGO_PLURAL_WATER.pre                                      :вадзе
+STR_CARGO_PLURAL_WHEAT                                          :{G=f}Пшанiца
+STR_CARGO_PLURAL_WHEAT.gen                                      :пшаніцы
+STR_CARGO_PLURAL_WHEAT.dat                                      :пшаніцы
+STR_CARGO_PLURAL_WHEAT.acc                                      :пшаніцу
+STR_CARGO_PLURAL_WHEAT.abl                                      :пшаніцай
+STR_CARGO_PLURAL_WHEAT.pre                                      :пшаніцы
+STR_CARGO_PLURAL_RUBBER                                         :{G=m}Каўчук
+STR_CARGO_PLURAL_RUBBER.gen                                     :каўчуку
+STR_CARGO_PLURAL_RUBBER.dat                                     :каўкучу
+STR_CARGO_PLURAL_RUBBER.acc                                     :каўчук
+STR_CARGO_PLURAL_RUBBER.abl                                     :каўчукам
+STR_CARGO_PLURAL_RUBBER.pre                                     :каўчуку
+STR_CARGO_PLURAL_SUGAR                                          :{G=m}Цукар
+STR_CARGO_PLURAL_SUGAR.gen                                      :цукру
+STR_CARGO_PLURAL_SUGAR.dat                                      :цукру
+STR_CARGO_PLURAL_SUGAR.acc                                      :цукар
+STR_CARGO_PLURAL_SUGAR.abl                                      :цукрам
+STR_CARGO_PLURAL_SUGAR.pre                                      :цукры
+STR_CARGO_PLURAL_TOYS                                           :{G=p}Цацкi
+STR_CARGO_PLURAL_TOYS.gen                                       :цацак
+STR_CARGO_PLURAL_TOYS.dat                                       :цацкам
+STR_CARGO_PLURAL_TOYS.acc                                       :цацкі
+STR_CARGO_PLURAL_TOYS.abl                                       :цацкамі
+STR_CARGO_PLURAL_TOYS.pre                                       :цацках
+STR_CARGO_PLURAL_CANDY                                          :{G=p}Цукеркi
+STR_CARGO_PLURAL_CANDY.gen                                      :цукерак
+STR_CARGO_PLURAL_CANDY.dat                                      :цукеркам
+STR_CARGO_PLURAL_CANDY.acc                                      :цукеркі
+STR_CARGO_PLURAL_CANDY.abl                                      :цукеркамі
+STR_CARGO_PLURAL_CANDY.pre                                      :цукерках
+STR_CARGO_PLURAL_COLA                                           :{G=f}Кола
+STR_CARGO_PLURAL_COLA.gen                                       :колы
+STR_CARGO_PLURAL_COLA.dat                                       :коле
+STR_CARGO_PLURAL_COLA.acc                                       :колу
+STR_CARGO_PLURAL_COLA.abl                                       :колай
+STR_CARGO_PLURAL_COLA.pre                                       :коле
+STR_CARGO_PLURAL_COTTON_CANDY                                   :{G=f}Цукровая баўна
+STR_CARGO_PLURAL_COTTON_CANDY.gen                               :цукровай баўны
+STR_CARGO_PLURAL_COTTON_CANDY.dat                               :цукровай баўне
+STR_CARGO_PLURAL_COTTON_CANDY.acc                               :цукровую баўну
+STR_CARGO_PLURAL_COTTON_CANDY.abl                               :цукровай баўнай
+STR_CARGO_PLURAL_COTTON_CANDY.pre                               :цукровай баўне
+STR_CARGO_PLURAL_BUBBLES                                        :{G=p}Бурбалкi
+STR_CARGO_PLURAL_BUBBLES.gen                                    :бурбалак
+STR_CARGO_PLURAL_BUBBLES.dat                                    :бурбалкам
+STR_CARGO_PLURAL_BUBBLES.acc                                    :бурбалкі
+STR_CARGO_PLURAL_BUBBLES.abl                                    :бурбалкамі
+STR_CARGO_PLURAL_BUBBLES.pre                                    :бурбалках
+STR_CARGO_PLURAL_TOFFEE                                         :{G=p}Iрыскi
+STR_CARGO_PLURAL_TOFFEE.gen                                     :ірысак
+STR_CARGO_PLURAL_TOFFEE.dat                                     :ірыскам
+STR_CARGO_PLURAL_TOFFEE.acc                                     :ірыскі
+STR_CARGO_PLURAL_TOFFEE.abl                                     :ірыскамі
+STR_CARGO_PLURAL_TOFFEE.pre                                     :ірысках
+STR_CARGO_PLURAL_BATTERIES                                      :{G=p}Батарэйкi
+STR_CARGO_PLURAL_BATTERIES.gen                                  :батарэек
+STR_CARGO_PLURAL_BATTERIES.dat                                  :батарэйкам
+STR_CARGO_PLURAL_BATTERIES.acc                                  :батарэйкі
+STR_CARGO_PLURAL_BATTERIES.abl                                  :батарэйкамі
+STR_CARGO_PLURAL_BATTERIES.pre                                  :батарэйках
+STR_CARGO_PLURAL_PLASTIC                                        :{G=m}Плястык
+STR_CARGO_PLURAL_PLASTIC.gen                                    :плястыку
+STR_CARGO_PLURAL_PLASTIC.dat                                    :плястыку
+STR_CARGO_PLURAL_PLASTIC.acc                                    :плястык
+STR_CARGO_PLURAL_PLASTIC.abl                                    :плястыкам
+STR_CARGO_PLURAL_PLASTIC.pre                                    :плястыку
+STR_CARGO_PLURAL_FIZZY_DRINKS                                   :{G=f}Газiроўка
+STR_CARGO_PLURAL_FIZZY_DRINKS.gen                               :газіроўкі
+STR_CARGO_PLURAL_FIZZY_DRINKS.dat                               :газіроўцы
+STR_CARGO_PLURAL_FIZZY_DRINKS.acc                               :газіроўку
+STR_CARGO_PLURAL_FIZZY_DRINKS.abl                               :газіроўкай
+STR_CARGO_PLURAL_FIZZY_DRINKS.pre                               :газіроўцы
 
 # Singular cargo name
 STR_CARGO_SINGULAR_NOTHING                                      :
-STR_CARGO_SINGULAR_PASSENGER                                    :Пасажыр
-STR_CARGO_SINGULAR_COAL                                         :Вугаль
-STR_CARGO_SINGULAR_MAIL                                         :Пошта
-STR_CARGO_SINGULAR_OIL                                          :Нафта
-STR_CARGO_SINGULAR_LIVESTOCK                                    :Жывёла
-STR_CARGO_SINGULAR_GOODS                                        :Тавары
-STR_CARGO_SINGULAR_GRAIN                                        :Зерне
-STR_CARGO_SINGULAR_WOOD                                         :Драўнiна
-STR_CARGO_SINGULAR_IRON_ORE                                     :Жалезная руда
-STR_CARGO_SINGULAR_STEEL                                        :Сталь
-STR_CARGO_SINGULAR_VALUABLES                                    :Каштоўнасцi
-STR_CARGO_SINGULAR_COPPER_ORE                                   :Медная руда
-STR_CARGO_SINGULAR_MAIZE                                        :Кукуруза
-STR_CARGO_SINGULAR_FRUIT                                        :Садавіна
-STR_CARGO_SINGULAR_DIAMOND                                      :Алмаз
-STR_CARGO_SINGULAR_FOOD                                         :Ежа
-STR_CARGO_SINGULAR_PAPER                                        :Папера
-STR_CARGO_SINGULAR_GOLD                                         :Золата
-STR_CARGO_SINGULAR_WATER                                        :Вада
-STR_CARGO_SINGULAR_WHEAT                                        :Пшанiца
-STR_CARGO_SINGULAR_RUBBER                                       :Каўчук
-STR_CARGO_SINGULAR_SUGAR                                        :Цукар
-STR_CARGO_SINGULAR_TOY                                          :Цацка
-STR_CARGO_SINGULAR_CANDY                                        :Цукерка
-STR_CARGO_SINGULAR_COLA                                         :Кола
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :Цукровая вата
-STR_CARGO_SINGULAR_BUBBLE                                       :Бурбалка
-STR_CARGO_SINGULAR_TOFFEE                                       :Iрыска
-STR_CARGO_SINGULAR_BATTERY                                      :Батарэйка
-STR_CARGO_SINGULAR_PLASTIC                                      :Пластык
-STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Газiроўка
+STR_CARGO_SINGULAR_PASSENGER                                    :{G=m}Пасажыр
+STR_CARGO_SINGULAR_PASSENGER.gen                                :пасажыра
+STR_CARGO_SINGULAR_PASSENGER.dat                                :пасажыру
+STR_CARGO_SINGULAR_PASSENGER.acc                                :пасажыра
+STR_CARGO_SINGULAR_PASSENGER.abl                                :пасажырам
+STR_CARGO_SINGULAR_PASSENGER.pre                                :пасажыру
+STR_CARGO_SINGULAR_COAL                                         :{G=m}Вугаль
+STR_CARGO_SINGULAR_COAL.gen                                     :вугалю
+STR_CARGO_SINGULAR_COAL.dat                                     :вугалю
+STR_CARGO_SINGULAR_COAL.acc                                     :вугаль
+STR_CARGO_SINGULAR_COAL.abl                                     :вугалем
+STR_CARGO_SINGULAR_COAL.pre                                     :вугалі
+STR_CARGO_SINGULAR_MAIL                                         :{G=f}Пошта
+STR_CARGO_SINGULAR_MAIL.gen                                     :пошты
+STR_CARGO_SINGULAR_MAIL.dat                                     :пошце
+STR_CARGO_SINGULAR_MAIL.acc                                     :пошту
+STR_CARGO_SINGULAR_MAIL.abl                                     :поштай
+STR_CARGO_SINGULAR_MAIL.pre                                     :пошце
+STR_CARGO_SINGULAR_OIL                                          :{G=f}Нафта
+STR_CARGO_SINGULAR_OIL.gen                                      :нафты
+STR_CARGO_SINGULAR_OIL.dat                                      :нафце
+STR_CARGO_SINGULAR_OIL.acc                                      :нафту
+STR_CARGO_SINGULAR_OIL.abl                                      :нафтай
+STR_CARGO_SINGULAR_OIL.pre                                      :нафце
+STR_CARGO_SINGULAR_LIVESTOCK                                    :{G=f}Жывёла
+STR_CARGO_SINGULAR_LIVESTOCK.gen                                :жывёлы
+STR_CARGO_SINGULAR_LIVESTOCK.dat                                :жывёле
+STR_CARGO_SINGULAR_LIVESTOCK.acc                                :жывёлу
+STR_CARGO_SINGULAR_LIVESTOCK.abl                                :жывёлай
+STR_CARGO_SINGULAR_LIVESTOCK.pre                                :жывёле
+STR_CARGO_SINGULAR_GOODS                                        :{G=p}Тавары
+STR_CARGO_SINGULAR_GOODS.gen                                    :тавараў
+STR_CARGO_SINGULAR_GOODS.dat                                    :таварам
+STR_CARGO_SINGULAR_GOODS.acc                                    :тавары
+STR_CARGO_SINGULAR_GOODS.abl                                    :таварамі
+STR_CARGO_SINGULAR_GOODS.pre                                    :таварах
+STR_CARGO_SINGULAR_GRAIN                                        :{G=n}Зерне
+STR_CARGO_SINGULAR_GRAIN.gen                                    :зерня
+STR_CARGO_SINGULAR_GRAIN.dat                                    :зерню
+STR_CARGO_SINGULAR_GRAIN.acc                                    :зерне
+STR_CARGO_SINGULAR_GRAIN.abl                                    :зернем
+STR_CARGO_SINGULAR_GRAIN.pre                                    :зерні
+STR_CARGO_SINGULAR_WOOD                                         :{G=f}Драўнiна
+STR_CARGO_SINGULAR_WOOD.gen                                     :драўніны
+STR_CARGO_SINGULAR_WOOD.dat                                     :драўніне
+STR_CARGO_SINGULAR_WOOD.acc                                     :драўніну
+STR_CARGO_SINGULAR_WOOD.abl                                     :драўнінай
+STR_CARGO_SINGULAR_WOOD.pre                                     :драўніне
+STR_CARGO_SINGULAR_IRON_ORE                                     :{G=f}Жалезная руда
+STR_CARGO_SINGULAR_IRON_ORE.gen                                 :жалезнай руды
+STR_CARGO_SINGULAR_IRON_ORE.dat                                 :жалезнай рудзе
+STR_CARGO_SINGULAR_IRON_ORE.acc                                 :жалезную руду
+STR_CARGO_SINGULAR_IRON_ORE.abl                                 :жалезнай рудой
+STR_CARGO_SINGULAR_IRON_ORE.pre                                 :жалезнай рудзе
+STR_CARGO_SINGULAR_STEEL                                        :{G=f}Сталь
+STR_CARGO_SINGULAR_STEEL.gen                                    :сталі
+STR_CARGO_SINGULAR_STEEL.dat                                    :сталі
+STR_CARGO_SINGULAR_STEEL.acc                                    :сталь
+STR_CARGO_SINGULAR_STEEL.abl                                    :стальлю
+STR_CARGO_SINGULAR_STEEL.pre                                    :сталі
+STR_CARGO_SINGULAR_VALUABLES                                    :{G=p}Каштоўнасьцi
+STR_CARGO_SINGULAR_VALUABLES.gen                                :каштоўнасьцяў
+STR_CARGO_SINGULAR_VALUABLES.dat                                :каштоўнасьцям
+STR_CARGO_SINGULAR_VALUABLES.acc                                :каштоўнасьці
+STR_CARGO_SINGULAR_VALUABLES.abl                                :каштоўнасьцямі
+STR_CARGO_SINGULAR_VALUABLES.pre                                :каштоўнасьцях
+STR_CARGO_SINGULAR_COPPER_ORE                                   :{G=f}Медная руда
+STR_CARGO_SINGULAR_COPPER_ORE.gen                               :меднай руды
+STR_CARGO_SINGULAR_COPPER_ORE.dat                               :меднай рудзе
+STR_CARGO_SINGULAR_COPPER_ORE.acc                               :медную руду
+STR_CARGO_SINGULAR_COPPER_ORE.abl                               :меднай рудой
+STR_CARGO_SINGULAR_COPPER_ORE.pre                               :меднай рудзе
+STR_CARGO_SINGULAR_MAIZE                                        :{G=f}Кукуруза
+STR_CARGO_SINGULAR_MAIZE.gen                                    :кукурузы
+STR_CARGO_SINGULAR_MAIZE.dat                                    :кукурузе
+STR_CARGO_SINGULAR_MAIZE.acc                                    :кукурузу
+STR_CARGO_SINGULAR_MAIZE.abl                                    :кукурузай
+STR_CARGO_SINGULAR_MAIZE.pre                                    :кукурузе
+STR_CARGO_SINGULAR_FRUIT                                        :{G=f}Садавіна
+STR_CARGO_SINGULAR_FRUIT.gen                                    :садавіны
+STR_CARGO_SINGULAR_FRUIT.dat                                    :садавіне
+STR_CARGO_SINGULAR_FRUIT.acc                                    :садавіну
+STR_CARGO_SINGULAR_FRUIT.abl                                    :садавінай
+STR_CARGO_SINGULAR_FRUIT.pre                                    :садавіне
+STR_CARGO_SINGULAR_DIAMOND                                      :{G=m}Алмаз
+STR_CARGO_SINGULAR_DIAMOND.gen                                  :алмаза
+STR_CARGO_SINGULAR_DIAMOND.dat                                  :алмазу
+STR_CARGO_SINGULAR_DIAMOND.acc                                  :алмаз
+STR_CARGO_SINGULAR_DIAMOND.abl                                  :алмазам
+STR_CARGO_SINGULAR_DIAMOND.pre                                  :алмазе
+STR_CARGO_SINGULAR_FOOD                                         :{G=f}Ежа
+STR_CARGO_SINGULAR_FOOD.gen                                     :ежы
+STR_CARGO_SINGULAR_FOOD.dat                                     :ежы
+STR_CARGO_SINGULAR_FOOD.acc                                     :ежу
+STR_CARGO_SINGULAR_FOOD.abl                                     :ежай
+STR_CARGO_SINGULAR_FOOD.pre                                     :ежы
+STR_CARGO_SINGULAR_PAPER                                        :{G=f}Папера
+STR_CARGO_SINGULAR_PAPER.gen                                    :паперы
+STR_CARGO_SINGULAR_PAPER.dat                                    :паперы
+STR_CARGO_SINGULAR_PAPER.acc                                    :паперу
+STR_CARGO_SINGULAR_PAPER.abl                                    :паперай
+STR_CARGO_SINGULAR_PAPER.pre                                    :паперы
+STR_CARGO_SINGULAR_GOLD                                         :{G=n}Золата
+STR_CARGO_SINGULAR_GOLD.gen                                     :золата
+STR_CARGO_SINGULAR_GOLD.dat                                     :золату
+STR_CARGO_SINGULAR_GOLD.acc                                     :золата
+STR_CARGO_SINGULAR_GOLD.abl                                     :золатам
+STR_CARGO_SINGULAR_GOLD.pre                                     :золаце
+STR_CARGO_SINGULAR_WATER                                        :{G=f}Вада
+STR_CARGO_SINGULAR_WATER.gen                                    :вады
+STR_CARGO_SINGULAR_WATER.dat                                    :вадзе
+STR_CARGO_SINGULAR_WATER.acc                                    :ваду
+STR_CARGO_SINGULAR_WATER.abl                                    :вадой
+STR_CARGO_SINGULAR_WATER.pre                                    :вадзе
+STR_CARGO_SINGULAR_WHEAT                                        :{G=f}Пшанiца
+STR_CARGO_SINGULAR_WHEAT.gen                                    :пшаніцы
+STR_CARGO_SINGULAR_WHEAT.dat                                    :пшаніцы
+STR_CARGO_SINGULAR_WHEAT.acc                                    :пшаніцу
+STR_CARGO_SINGULAR_WHEAT.abl                                    :пшаніцай
+STR_CARGO_SINGULAR_WHEAT.pre                                    :пшаніцы
+STR_CARGO_SINGULAR_RUBBER                                       :{G=m}Каўчук
+STR_CARGO_SINGULAR_RUBBER.gen                                   :каўчуку
+STR_CARGO_SINGULAR_RUBBER.dat                                   :каўчуку
+STR_CARGO_SINGULAR_RUBBER.acc                                   :каўчук
+STR_CARGO_SINGULAR_RUBBER.abl                                   :каўчукам
+STR_CARGO_SINGULAR_RUBBER.pre                                   :каўчуку
+STR_CARGO_SINGULAR_SUGAR                                        :{G=m}Цукар
+STR_CARGO_SINGULAR_SUGAR.gen                                    :цукру
+STR_CARGO_SINGULAR_SUGAR.dat                                    :цукру
+STR_CARGO_SINGULAR_SUGAR.acc                                    :цукар
+STR_CARGO_SINGULAR_SUGAR.abl                                    :цукрам
+STR_CARGO_SINGULAR_SUGAR.pre                                    :цукры
+STR_CARGO_SINGULAR_TOY                                          :{G=f}Цацка
+STR_CARGO_SINGULAR_TOY.gen                                      :цацкі
+STR_CARGO_SINGULAR_TOY.dat                                      :цаццы
+STR_CARGO_SINGULAR_TOY.acc                                      :цацку
+STR_CARGO_SINGULAR_TOY.abl                                      :цацкай
+STR_CARGO_SINGULAR_TOY.pre                                      :цаццы
+STR_CARGO_SINGULAR_CANDY                                        :{G=f}Цукерка
+STR_CARGO_SINGULAR_CANDY.gen                                    :цукеркі
+STR_CARGO_SINGULAR_CANDY.dat                                    :цукерцы
+STR_CARGO_SINGULAR_CANDY.acc                                    :цукерку
+STR_CARGO_SINGULAR_CANDY.abl                                    :цукеркай
+STR_CARGO_SINGULAR_CANDY.pre                                    :цукерцы
+STR_CARGO_SINGULAR_COLA                                         :{G=f}Кола
+STR_CARGO_SINGULAR_COLA.gen                                     :колы
+STR_CARGO_SINGULAR_COLA.dat                                     :коле
+STR_CARGO_SINGULAR_COLA.acc                                     :колу
+STR_CARGO_SINGULAR_COLA.abl                                     :колай
+STR_CARGO_SINGULAR_COLA.pre                                     :коле
+STR_CARGO_SINGULAR_COTTON_CANDY                                 :{G=f}Цукровая баўна
+STR_CARGO_SINGULAR_COTTON_CANDY.gen                             :цукровай баўны
+STR_CARGO_SINGULAR_COTTON_CANDY.dat                             :цукровай баўне
+STR_CARGO_SINGULAR_COTTON_CANDY.acc                             :цукровую баўну
+STR_CARGO_SINGULAR_COTTON_CANDY.abl                             :цукровай баўнай
+STR_CARGO_SINGULAR_COTTON_CANDY.pre                             :цукровай баўне
+STR_CARGO_SINGULAR_BUBBLE                                       :{G=f}Бурбалка
+STR_CARGO_SINGULAR_BUBBLE.gen                                   :бурбалкі
+STR_CARGO_SINGULAR_BUBBLE.dat                                   :бурбалцы
+STR_CARGO_SINGULAR_BUBBLE.acc                                   :бурбалку
+STR_CARGO_SINGULAR_BUBBLE.abl                                   :бурбалкай
+STR_CARGO_SINGULAR_BUBBLE.pre                                   :бурбалцы
+STR_CARGO_SINGULAR_TOFFEE                                       :{G=f}Iрыска
+STR_CARGO_SINGULAR_TOFFEE.gen                                   :ірыскі
+STR_CARGO_SINGULAR_TOFFEE.dat                                   :ірысцы
+STR_CARGO_SINGULAR_TOFFEE.acc                                   :ірыску
+STR_CARGO_SINGULAR_TOFFEE.abl                                   :ірыскай
+STR_CARGO_SINGULAR_TOFFEE.pre                                   :ірысцы
+STR_CARGO_SINGULAR_BATTERY                                      :{G=f}Батарэйка
+STR_CARGO_SINGULAR_BATTERY.gen                                  :батарэйкі
+STR_CARGO_SINGULAR_BATTERY.dat                                  :батарэйцы
+STR_CARGO_SINGULAR_BATTERY.acc                                  :батарэйку
+STR_CARGO_SINGULAR_BATTERY.abl                                  :батарэйкай
+STR_CARGO_SINGULAR_BATTERY.pre                                  :батарэйцы
+STR_CARGO_SINGULAR_PLASTIC                                      :{G=m}Плястык
+STR_CARGO_SINGULAR_PLASTIC.gen                                  :плястыку
+STR_CARGO_SINGULAR_PLASTIC.dat                                  :плястыку
+STR_CARGO_SINGULAR_PLASTIC.acc                                  :плястык
+STR_CARGO_SINGULAR_PLASTIC.abl                                  :плястыкам
+STR_CARGO_SINGULAR_PLASTIC.pre                                  :плястыку
+STR_CARGO_SINGULAR_FIZZY_DRINK                                  :{G=f}Газiроўка
+STR_CARGO_SINGULAR_FIZZY_DRINK.gen                              :газіроўкі
+STR_CARGO_SINGULAR_FIZZY_DRINK.dat                              :газіроўцы
+STR_CARGO_SINGULAR_FIZZY_DRINK.acc                              :газіроўку
+STR_CARGO_SINGULAR_FIZZY_DRINK.abl                              :газіроўкай
+STR_CARGO_SINGULAR_FIZZY_DRINK.pre                              :газіроўцы
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} пасажыр{P "" а аў}
-STR_QUANTITY_COAL                                               :{WEIGHT} вуглю
-STR_QUANTITY_MAIL                                               :{COMMA} мяш{P ок ка коў} пошты
+STR_QUANTITY_COAL                                               :{WEIGHT} вугалю
+STR_QUANTITY_MAIL                                               :{COMMA} мяш{P ок кi коў} пошты
 STR_QUANTITY_OIL                                                :{VOLUME} нафты
-STR_QUANTITY_LIVESTOCK                                          :{COMMA} гал{P ава авы оў} жывёлы
+STR_QUANTITY_LIVESTOCK                                          :{COMMA} гал{P ава авы оў} жывёлiн
 STR_QUANTITY_GOODS                                              :{COMMA} скрын{P ка кi ак} тавараў
 STR_QUANTITY_GRAIN                                              :{WEIGHT} зерня
 STR_QUANTITY_WOOD                                               :{WEIGHT} драўнiны
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT} жалезнай руды
 STR_QUANTITY_STEEL                                              :{WEIGHT} сталi
-STR_QUANTITY_VALUABLES                                          :{COMMA} мяш{P ок ка коў} каштоўнасцей
+STR_QUANTITY_VALUABLES                                          :{COMMA} мяш{P ок кi коў} каштоўнасьцяў
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} меднай руды
 STR_QUANTITY_MAIZE                                              :{WEIGHT} кукурузы
 STR_QUANTITY_FRUIT                                              :{WEIGHT} садавiны
-STR_QUANTITY_DIAMONDS                                           :{COMMA} мяш{P ок ка коў} алмазаў
+STR_QUANTITY_DIAMONDS                                           :{COMMA} мяш{P ок кi коў} алмазаў
 STR_QUANTITY_FOOD                                               :{WEIGHT} ежы
 STR_QUANTITY_PAPER                                              :{WEIGHT} паперы
-STR_QUANTITY_GOLD                                               :{COMMA} мяш{P ок ка коў} золата
+STR_QUANTITY_GOLD                                               :{COMMA} мяш{P ок кi коў} золата
 STR_QUANTITY_WATER                                              :{VOLUME} вады
 STR_QUANTITY_WHEAT                                              :{WEIGHT} пшанiцы
 STR_QUANTITY_RUBBER                                             :{VOLUME} каўчуку
 STR_QUANTITY_SUGAR                                              :{WEIGHT} цукру
 STR_QUANTITY_TOYS                                               :{COMMA} цац{P ка кi ак}
-STR_QUANTITY_SWEETS                                             :{COMMA} кароб{P ка кi ак} цукерак
+STR_QUANTITY_SWEETS                                             :{COMMA} скрын{P ка кi ак} цукерак
 STR_QUANTITY_COLA                                               :{VOLUME} колы
-STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} цукровай ваты
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} цукровай баўны
 STR_QUANTITY_BUBBLES                                            :{COMMA} бурбал{P ка кi ак}
 STR_QUANTITY_TOFFEE                                             :{WEIGHT} iрысак
 STR_QUANTITY_BATTERIES                                          :{COMMA} батарэ{P йка йкi ек}
-STR_QUANTITY_PLASTIC                                            :{VOLUME} пластыку
-STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} бан{P ка кi ак} газiроўкi
+STR_QUANTITY_PLASTIC                                            :{VOLUME} плястыку
+STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} слоi{P к кi каў} газiроўкi
 STR_QUANTITY_N_A                                                :адсутнiчае
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
 STR_ABBREV_PASSENGERS                                           :{TINYFONT}ПС
 STR_ABBREV_COAL                                                 :{TINYFONT}ВГ
-STR_ABBREV_MAIL                                                 :{TINYFONT}ПШ
+STR_ABBREV_MAIL                                                 :{TINYFONT}ПО
 STR_ABBREV_OIL                                                  :{TINYFONT}НФ
 STR_ABBREV_LIVESTOCK                                            :{TINYFONT}ЖВ
 STR_ABBREV_GOODS                                                :{TINYFONT}ТВ
@@ -157,28 +468,28 @@ STR_ABBREV_SUGAR                                                :{TINYFONT}ЦК
 STR_ABBREV_TOYS                                                 :{TINYFONT}ЦЦ
 STR_ABBREV_SWEETS                                               :{TINYFONT}ЦУ
 STR_ABBREV_COLA                                                 :{TINYFONT}КЛ
-STR_ABBREV_CANDYFLOSS                                           :{TINYFONT}СВ
+STR_ABBREV_CANDYFLOSS                                           :{TINYFONT}ЦВ
 STR_ABBREV_BUBBLES                                              :{TINYFONT}БУ
 STR_ABBREV_TOFFEE                                               :{TINYFONT}IР
 STR_ABBREV_BATTERIES                                            :{TINYFONT}БА
-STR_ABBREV_PLASTIC                                              :{TINYFONT}БТ
+STR_ABBREV_PLASTIC                                              :{TINYFONT}ПЛ
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}ГЗ
 STR_ABBREV_NONE                                                 :{TINYFONT}НЯМА
 STR_ABBREV_ALL                                                  :{TINYFONT}Усё
 
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :пасажыраў
-STR_BAGS                                                        :багажа
+STR_BAGS                                                        :мяшкоў
 STR_TONS                                                        :тон
 STR_LITERS                                                      :лiтраў
 STR_ITEMS                                                       :штук
-STR_CRATES                                                      :скрынак
+STR_CRATES                                                      :скрыняў
 STR_RES_OTHER                                                   :Iншае
 STR_NOTHING                                                     :
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Цёмна-сiнi
-STR_COLOUR_PALE_GREEN                                           :Светла-зялёны
+STR_COLOUR_PALE_GREEN                                           :Бледна-зялёны
 STR_COLOUR_PINK                                                 :Ружовы
 STR_COLOUR_YELLOW                                               :Жоўты
 STR_COLOUR_RED                                                  :Чырвоны
@@ -189,18 +500,18 @@ STR_COLOUR_BLUE                                                 :Сiнi
 STR_COLOUR_CREAM                                                :Крэмавы
 STR_COLOUR_MAUVE                                                :Лiловы
 STR_COLOUR_PURPLE                                               :Пурпурны
-STR_COLOUR_ORANGE                                               :Аранжавы
+STR_COLOUR_ORANGE                                               :Памаранчавы
 STR_COLOUR_BROWN                                                :Карычневы
-STR_COLOUR_GREY                                                 :Серы
+STR_COLOUR_GREY                                                 :Шэры
 STR_COLOUR_WHITE                                                :Белы
 
 # Units used in OpenTTD
-STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} мiл{P я i яў}/ч
-STR_UNITS_VELOCITY_METRIC                                       :{COMMA} км/ч
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} мiл{P я i яў}/г
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA} км/г
 STR_UNITS_VELOCITY_SI                                           :{COMMA} м/с
 
-STR_UNITS_POWER_IMPERIAL                                        :{COMMA} кс
-STR_UNITS_POWER_METRIC                                          :{COMMA} кс
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA} к.с.
+STR_UNITS_POWER_METRIC                                          :{COMMA} к.с.
 STR_UNITS_POWER_SI                                              :{COMMA} кВт
 
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA} т
@@ -212,39 +523,39 @@ STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} кг
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA} л
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA} м³
 
-STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} лiтр{P "" а аў}
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} лiтр{P "" ы аў}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} м³
 
 STR_UNITS_FORCE_SI                                              :{COMMA} кН
 
-STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} фут{P "" а аў}
+STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} фут{P "" ы аў}
 STR_UNITS_HEIGHT_SI                                             :{COMMA} м
 
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Увядзіце радок фільтра
-STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Увядзіце ключавое слова для фільтрацыі спісу
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Увядзіце ключавое слова для фільтрацыі сьпісу
 
-STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Змена напрамкі сартавання (змяньшэнне / ўзрастанне)
-STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Змена крытерыю сартавання
+STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Зьмена напрамку сартавання (зьмяньшэньне / ўзрастаньне)
+STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Зьмена крытэрыю сартаваньня
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Выберыце фiльтр
 STR_BUTTON_SORT_BY                                              :{BLACK}Сартаванне
 STR_BUTTON_LOCATION                                             :{BLACK}Агляд
 STR_BUTTON_RENAME                                               :{BLACK}Перайменаваць
 
-STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Закрыць акно
-STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Загаловак акна - цягнiце яго для перамяшчэння акна
-STR_TOOLTIP_SHADE                                               :{BLACK}Згарнуць акно, пакінуўшы загаловак
-STR_TOOLTIP_DEBUG                                               :{BLACK}Паказаць адладачную iнфармацыю NewGRF
-STR_TOOLTIP_STICKY                                              :{BLACK}Ігнараваць націск клавішы «Закрыць усе вокны»
-STR_TOOLTIP_RESIZE                                              :{BLACK}Націсніце і цягнiце для змянення памеру акна
-STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Вялікае/маленькае акно
+STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Закрыць вакно
+STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Загаловак вакна - цягнiце яго для перамяшчэньня вакна
+STR_TOOLTIP_SHADE                                               :{BLACK}Згарнуць вакно, пакінуўшы загаловак
+STR_TOOLTIP_DEBUG                                               :{BLACK}Паказаць наладачную iнфармацыю NewGRF
+STR_TOOLTIP_STICKY                                              :{BLACK}Ігнараваць націск клявішы «Закрыць усе вокны»
+STR_TOOLTIP_RESIZE                                              :{BLACK}Націсьніце ды цягнiце для змяненьня памеру вакна
+STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Вялікае/маленькае вакно
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Пракрутка ўверх/уніз
-STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Пракрутка ўлева/ўправа
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Поўная ачыстка прамавугольнага ўчастка зямлі
+STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Пракрутка налева/направа
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Поўная ачыстка квадрата зямлі
 
 # Query window
-STR_BUTTON_DEFAULT                                              :{BLACK}Па змоўчваннi
-STR_BUTTON_CANCEL                                               :{BLACK}Адмена
+STR_BUTTON_DEFAULT                                              :{BLACK}Па змоўчаньнi
+STR_BUTTON_CANCEL                                               :{BLACK}Скасаваньне
 STR_BUTTON_OK                                                   :{BLACK}OK
 
 # On screen keyboard window
@@ -254,8 +565,8 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 # Measurement tooltip
 STR_MEASURE_LENGTH                                              :{BLACK}Даўжыня: {NUM}
 STR_MEASURE_AREA                                                :{BLACK}Плошча: {NUM} x {NUM}
-STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Даўжыня: {NUM}{}Розніца вышынь: {HEIGHT}
-STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Плошча: {NUM} x {NUM}{}Рознiца вышынь: {HEIGHT}
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Даўжыня: {NUM}{}Розніца вышыняў: {HEIGHT}
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Плошча: {NUM} x {NUM}{}Рознiца вышыняў: {HEIGHT}
 
 
 # These are used in buttons
@@ -265,212 +576,764 @@ STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Дата
 # These are used in dropdowns
 STR_SORT_BY_POPULATION                                          :Насельнiцтва
 STR_SORT_BY_NAME                                                :Назва
-STR_SORT_BY_PRODUCTION                                          :Прадукцыйнасць
+STR_SORT_BY_PRODUCTION                                          :Вытворчасьць
 STR_SORT_BY_TYPE                                                :Тып
-STR_SORT_BY_TRANSPORTED                                         :Вываз
+STR_SORT_BY_TRANSPORTED                                         :Вывезена
 STR_SORT_BY_NUMBER                                              :Нумар
-STR_SORT_BY_PROFIT_LAST_YEAR                                    :Прыбытак у мінулым годзе
+STR_SORT_BY_PROFIT_LAST_YEAR                                    :Прыбытак летась
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Прыбытак у бягучым годзе
 STR_SORT_BY_AGE                                                 :Узрост
 STR_SORT_BY_RELIABILITY                                         :Надзейнасць
-STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Умяшчальнасць грузу
-STR_SORT_BY_MAX_SPEED                                           :Максімальная хуткасць
+STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Умяшчальнасьць грузу
+STR_SORT_BY_MAX_SPEED                                           :Максымальная хуткасць
 STR_SORT_BY_MODEL                                               :Мадэль
 STR_SORT_BY_VALUE                                               :Кошт
 STR_SORT_BY_LENGTH                                              :Даўжыня
 STR_SORT_BY_LIFE_TIME                                           :Астатні тэрмін службы
-STR_SORT_BY_TIMETABLE_DELAY                                     :Адставанне ад графіка
+STR_SORT_BY_TIMETABLE_DELAY                                     :Адставаньне ад графіка
 STR_SORT_BY_FACILITY                                            :Тып станцыі
-STR_SORT_BY_WAITING                                             :Коль-ць тавару на станцыі
+STR_SORT_BY_WAITING                                             :Коль-ць грузу на станцыі
 STR_SORT_BY_RATING_MAX                                          :Найвышэйшы рэйтынг
 STR_SORT_BY_RATING_MIN                                          :Ніжэйшы рэйтынг
-STR_SORT_BY_ENGINE_ID                                           :Назва
-STR_SORT_BY_COST                                                :Цана
-STR_SORT_BY_POWER                                               :Магутнасць
-STR_SORT_BY_INTRO_DATE                                          :Час пачатку вытворчасці
-STR_SORT_BY_RUNNING_COST                                        :Кошт абслугоўвання
+STR_SORT_BY_ENGINE_ID                                           :Назва, серыя
+STR_SORT_BY_COST                                                :Кошт
+STR_SORT_BY_POWER                                               :Магутнасьць
+STR_SORT_BY_INTRO_DATE                                          :Пачатак вытворчасьцi
+STR_SORT_BY_RUNNING_COST                                        :Кошт абслугоўваньня
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Магутнасць/кошт абслуг.
-STR_SORT_BY_CARGO_CAPACITY                                      :Умяшчальнасць
+STR_SORT_BY_CARGO_CAPACITY                                      :Ёмiстасьць
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Паўза
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Паскорыць гульню
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Наладкі
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Захаванне гульні{}Галоўнае меню{}Выхад
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Паказать карту
-STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Спiс гарадоў
-STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Паказаць субсідыі
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Спiс станцый
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Захаванне гульні{}Галоўнае мэню{}Выхад
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Паказаць мапу, вакно прагляду цi сьпiс знакаў
+STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Сьпiс гарадоў
+STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Паказаць субсыдыі
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Сьпiс станцыяў
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Паказаць фінансавую інфармацыю кампаніі
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Паказаць асноўную інфармацыю аб кампаніі
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Паказаць агульную інфармацыю аб кампаніі
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Паказаць графiкi
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Паказаць рэйтынгі кампаній
-STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Спіс існуючых прадпрыемстваў; стварэнне новых
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Спіс цягнікоў. Ctrl+клік пераключае адлюстраванне па групах.
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Спіс аўтатранспарту. Ctrl+клік пераключае адлюстраванне па групах.
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Спіс караблёў. Ctrl+клік пераключае адлюстраванне па групах.
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Спіс самалётаў. Ctrl+клік пераключае адлюстраванне па групах.
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Сьпіс існуючых прадпрыемстваў; заснаваньне новых
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Сьпіс цягнікоў. Ctrl+клік пераключае адлюстраваньне па групах
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Сьпіс аўтатранспарту. Ctrl+клік пераключае адлюстраваньне па групах
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Сьпіс караблёў. Ctrl+клік пераключае адлюстраваньне па групах
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Сьпіс самалётаў. Ctrl+клік пераключае адлюстраваньне па групах
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Наблізіць
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Аддаліць
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Будаўніцтва чыгунак
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Будаўніцтва аўтамабільных дарог
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Будаўніцтва водных камунікацый
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Будаўніцтва аэрапортаў
-STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Наладка гуку і музыкі
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Адкрыць панэль ляндшафту для змяненьня рэльефу, пасадкi дрэваў i г.д.
+STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Наладка гуку й музыкі
+STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Паказаць апошнiя паведамленьнi/навiны, паказаць наладкi паведамленьняў
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Iнфармацыя аб зямлi; кансоль; наладка штучнага інтэлекта (AI/ШI); скрыншоты; аб гульні
+STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Пераключыць панэлі інструмэнтаў
 
 # Extra tooltips for the scenario editor toolbar
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Захаваць сцэнар, загрузіць сцэнар, выхад з рэдактара
+STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
+STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Рэдактар сцэнараў
+STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Зьменшыць пачатковую дату гульні на 1 год
+STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Павялічыць пачатковую дату гульні на 1 год
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Клікніце, каб зьмяніць пачатковую дату гульні
+STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Паказаць мапу, сьпіс гарадоў
+STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Генэрацыя ляндшафту
+STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Генэрацыя гарадоў
+STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Генэрацыя прамысловасьці
+STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Будаўніцтва аўтамабільных дарог
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Пасадзіць дрэвы
+STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Паставіць знак
 
 ############ range for SE file menu starts
+STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Захаваць сцэнар
+STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Загрузіць сцэнар
+STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Загрузіць мапу вышыняў
+STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Выйсьці з рэдактара
+STR_SCENEDIT_FILE_MENU_QUIT                                     :Выхад
 ############ range for SE file menu starts
 
 ############ range for settings menu starts
+STR_SETTINGS_MENU_GAME_OPTIONS                                  :Наладкі гульні
+STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Наладкі цяжкасьці
+STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Пашыраныя наладкі
+STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Наладкі NewGRF
+STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Наладкі празрыстасьці
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Паказваць назвы гарадоў
+STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Паказваць назвы станцыяў
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Паказваць назвы пунктаў шляху
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Паказваць знакі
+STR_SETTINGS_MENU_FULL_ANIMATION                                :Поўная анімацыя
+STR_SETTINGS_MENU_FULL_DETAIL                                   :Поўная дэталізацыя
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Празрыстыя будынкі
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Празрыстыя назвы станцыяў
 ############ range ends here
 
 ############ range for file menu starts
+STR_FILE_MENU_SAVE_GAME                                         :Захаваць гульню
+STR_FILE_MENU_LOAD_GAME                                         :Загрузіць гульню
+STR_FILE_MENU_QUIT_GAME                                         :Пакінуць гульню
+STR_FILE_MENU_EXIT                                              :Выхад
 ############ range ends here
 
 ############ range for map menu starts
+STR_MAP_MENU_MAP_OF_WORLD                                       :Мапа сусьвету
+STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Дадатковае вакно прагляду
+STR_MAP_MENU_SIGN_LIST                                          :Сьпіс знакаў
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
+STR_TOWN_MENU_TOWN_DIRECTORY                                    :Сьпіс гарадоў
 ############ end of the 'Display map' dropdown
+STR_TOWN_MENU_FOUND_TOWN                                        :Заснаваць горад
 ############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
+STR_SUBSIDIES_MENU_SUBSIDIES                                    :Субсыдыі
 ############ range ends here
 
 ############ range for graph menu starts
+STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Графік прыбытку
+STR_GRAPH_MENU_INCOME_GRAPH                                     :Графік даходу
+STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Графік дастаўленага грузу
+STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :Графік рэйтынгу кампаніі
+STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Графік вартасьці кампаніі
+STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Графік аплаты перавозак
 ############ range ends here
 
 ############ range for company league menu starts
+STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Табліца фірмаў
+STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Дэталізаваны рэйтынг кампаніі
 ############ range ends here
 
 ############ range for industry menu starts
+STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Пералік прамысловасьці
+STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Заснаваць новае прадпрыемства
 ############ range ends here
 
 ############ range for railway construction menu starts
+STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Будаўніцтва чыгункі
+STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Будаўніцтва электрыфікаванай чыгункі
+STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Будаўніцтва монарэльса
+STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Будаўніцтва маглева
 ############ range ends here
 
 ############ range for road construction menu starts
+STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Будаўніцтва дарог
+STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Будаўніцтва трамвайных лініяў
 ############ range ends here
 
 ############ range for waterways construction menu starts
+STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Будаўніцтва водных камунікацый
 ############ range ends here
 
 ############ range for airport construction menu starts
+STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Будаўніцтва аэрапортаў
 ############ range ends here
 
 ############ range for landscaping menu starts
+STR_LANDSCAPING_MENU_LANDSCAPING                                :Ляндшафт
+STR_LANDSCAPING_MENU_PLANT_TREES                                :Пасадзіць дрэвы
+STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Паставіць знак
 ############ range ends here
 
 ############ range for music menu starts
+STR_TOOLBAR_SOUND_MUSIC                                         :Гукі/музыка
 ############ range ends here
 
 ############ range for message menu starts
+STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Апошняе паведамленьне
+STR_NEWS_MENU_MESSAGE_SETTINGS                                  :Наладки паведамленьняў
+STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Гісторыя паведамленьняў
 ############ range ends here
 
 ############ range for about menu starts
+STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Звесткі аб зямлі
+STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Кансоль
+STR_ABOUT_MENU_AI_DEBUG                                         :Наладка штучнага інтэлекта (AI)
+STR_ABOUT_MENU_SCREENSHOT                                       :Скрыншот (Ctrl+S)
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Велізарны скрыншот (Ctrl+G)
+STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Аб гульні OpenTTD
+STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Выраўноўваньне спрайтаў
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
+STR_ORDINAL_NUMBER_1ST                                          :1-е
+STR_ORDINAL_NUMBER_2ND                                          :2-е
+STR_ORDINAL_NUMBER_3RD                                          :3-е
+STR_ORDINAL_NUMBER_4TH                                          :4-е
+STR_ORDINAL_NUMBER_5TH                                          :5-е
+STR_ORDINAL_NUMBER_6TH                                          :6-е
+STR_ORDINAL_NUMBER_7TH                                          :7-е
+STR_ORDINAL_NUMBER_8TH                                          :8-е
+STR_ORDINAL_NUMBER_9TH                                          :9-е
+STR_ORDINAL_NUMBER_10TH                                         :10-е
+STR_ORDINAL_NUMBER_11TH                                         :11-е
+STR_ORDINAL_NUMBER_12TH                                         :12-е
+STR_ORDINAL_NUMBER_13TH                                         :13-е
+STR_ORDINAL_NUMBER_14TH                                         :14-е
+STR_ORDINAL_NUMBER_15TH                                         :15-е
+STR_ORDINAL_NUMBER_16TH                                         :16-е
+STR_ORDINAL_NUMBER_17TH                                         :17-е
+STR_ORDINAL_NUMBER_18TH                                         :18-е
+STR_ORDINAL_NUMBER_19TH                                         :19-е
+STR_ORDINAL_NUMBER_20TH                                         :20-е
+STR_ORDINAL_NUMBER_21ST                                         :21-е
+STR_ORDINAL_NUMBER_22ND                                         :22-е
+STR_ORDINAL_NUMBER_23RD                                         :23-е
+STR_ORDINAL_NUMBER_24TH                                         :24-е
+STR_ORDINAL_NUMBER_25TH                                         :25-е
+STR_ORDINAL_NUMBER_26TH                                         :26-е
+STR_ORDINAL_NUMBER_27TH                                         :27-е
+STR_ORDINAL_NUMBER_28TH                                         :28-е
+STR_ORDINAL_NUMBER_29TH                                         :29-е
+STR_ORDINAL_NUMBER_30TH                                         :30-е
+STR_ORDINAL_NUMBER_31ST                                         :31-е
 ############ range for days ends
 
 ############ range for months starts
+STR_MONTH_ABBREV_JAN                                            :Сту
+STR_MONTH_ABBREV_FEB                                            :Лют
+STR_MONTH_ABBREV_MAR                                            :Сак
+STR_MONTH_ABBREV_APR                                            :Крас
+STR_MONTH_ABBREV_MAY                                            :Тра
+STR_MONTH_ABBREV_JUN                                            :Чэр
+STR_MONTH_ABBREV_JUL                                            :Ліп
+STR_MONTH_ABBREV_AUG                                            :Жні
+STR_MONTH_ABBREV_SEP                                            :Вер
+STR_MONTH_ABBREV_OCT                                            :Кас
+STR_MONTH_ABBREV_NOV                                            :Ліс
+STR_MONTH_ABBREV_DEC                                            :Сьн
 
+STR_MONTH_JAN                                                   :Студзень
+STR_MONTH_FEB                                                   :Люты
+STR_MONTH_MAR                                                   :Сакавік
+STR_MONTH_APR                                                   :Красавік
+STR_MONTH_MAY                                                   :Травень
+STR_MONTH_JUN                                                   :Чэрвень
+STR_MONTH_JUL                                                   :Ліпень
+STR_MONTH_AUG                                                   :Жнівень
+STR_MONTH_SEP                                                   :Верасень
+STR_MONTH_OCT                                                   :Кастрычнік
+STR_MONTH_NOV                                                   :Лістапад
+STR_MONTH_DEC                                                   :Сьнежань
 ############ range for months ends
 
 # Graph window
+STR_GRAPH_KEY_BUTTON                                            :{BLACK}Лягенда
+STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}Паказаць лягенду да графікаў
+STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
+STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
+STR_GRAPH_Y_LABEL                                               :{TINYFONT}{STRING}
+STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
 
+STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Графік аперацыйнага прыбытку
+STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Графік даходу
+STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Колькасьць перавезеных грузаў
+STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Рэйтынг кампаніі (макс. = 1000)
+STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Вартасьць кампаніі
 
+STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Тарыфы на перавозку грузаў
+STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Дзён у дарозе
+STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Плата за дастаўку 10 адзінак (альбо 10.000 літраў) груза на адлегласьць ў 20 квадратаў
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}Паказаць усё
+STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT}{BLACK}Схаваць усё
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Паказаць усе грузы на графіку
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Схаваць усе грузы на графіку
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Уключыць/выключыць адлюстроўваньне груза на графіку
+STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 
+STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Паказаць складнікі рэйтынгу
 
 # Graph key window
+STR_GRAPH_KEY_CAPTION                                           :{WHITE}Лягенда
+STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Клікніце тут, каб паказаць/схаваць кампанію на графіку
 
 # Company league window
+STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Табліца фірмаў
+STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} «{STRING}»
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Інжынэр
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Рэгуліроўшчык
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Дыспетчар
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ROUTE_SUPERVISOR           :Начальнік дарогі
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_DIRECTOR                   :Дырэктар
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHIEF_EXECUTIVE            :Выканаўчы дырэктар
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHAIRMAN                   :Старшыня
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :Прэзідэнт
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Магнат
 
 # Performance detail window
+STR_PERFORMANCE_DETAIL                                          :{WHITE}Рэйтынг у дэталях
+STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Дэталі
+STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
+STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
+STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 ############ Those following lines need to be in this order!!
+STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Коль-ць ТС:
+STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Станцыі:
+STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Мін. прыбытак:
+STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Мін. даход:
+STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Макс. даход:
+STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}Дастаўлена:
+STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Груз:
+STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Грошы:
+STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Пазыка:
+STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Усяго:
 ############ End of order list
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Колькасьць транспартных сродкаў, якія летась прынеслі даход. У тым ліку аўтамабілі, цягнікі, караблі, самалёты.
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Колькасьць станцый, якія абслугоўваюцца. Асобна улічваецца кожная частка злучанай станцыі (чыгуначная, аўтамабільная, аэрапорт).
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Прыбытак ад транспартнага сродку з найніжэйшым даходам (сярод ТС старэйшых за два гады).
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Найменшы квартальны прыбытак за апошнія 4 гады (12 кварталаў).
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Найвялікшы квартальны прыбытак за апошнія 4 гады (12 кварталаў).
+STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Колькасьць грузаў, перавезеных за апошнія 4 кварталы
+STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Колькасьць тыпаў грузаў, перавезеных за апошні квартал
+STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Колькасьць грошай на банкаўскім рахунку кампаніі
+STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}Памер пазыкі, якая атрымана гэтай кампаніяй у банку
+STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Усяго пунктаў з агульнай колькасьці магчымых
 
 # Music window
+STR_MUSIC_JAZZ_JUKEBOX_CAPTION                                  :{WHITE}Музычны аўтамат
+STR_MUSIC_PLAYLIST_ALL                                          :{TINYFONT}{BLACK}Усё
+STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINYFONT}{BLACK}Стары стыль
+STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}{BLACK}Новы стыль
+STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINYFONT}{BLACK}Вулічны стыль
+STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}{BLACK}Уласны 1
+STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}{BLACK}Уласны 2
+STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}Гучнасьць музыкі
+STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Гучнасьць эфэктаў
+STR_MUSIC_RULER_MIN                                             :{TINYFONT}{BLACK}МІН
+STR_MUSIC_RULER_MAX                                             :{TINYFONT}{BLACK}МАКС
+STR_MUSIC_RULER_MARKER                                          :{TINYFONT}{BLACK}'
+STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
+STR_MUSIC_TRACK_DIGIT                                           :{TINYFONT}{DKGREEN}{ZEROFILL_NUM}
+STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
+STR_MUSIC_TITLE_NAME                                            :{TINYFONT}{DKGREEN}«{STRING}»
+STR_MUSIC_TRACK                                                 :{TINYFONT}{BLACK}Трэк
+STR_MUSIC_XTITLE                                                :{TINYFONT}{BLACK}Назва
+STR_MUSIC_SHUFFLE                                               :{TINYFONT}{BLACK}Выпадковы выбар
+STR_MUSIC_PROGRAM                                               :{TINYFONT}{BLACK}Праграма
+STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Перайсьці да папярэдняга трэка ў падборцы
+STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Перайсьці да наступнага трэка ў падборцы
+STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Спыніць музыку
+STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}Запусьціць музыку
+STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}Пасуньце паўзункі, каб наладзіць гучнасьць музыкі й гукавых эфэктаў
+STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM                     :{BLACK}Выбраць праграму «Усе трэкі»
+STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}Выбраць праграму «Стары стыль»
+STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}Выбраць праграму «Новы стыль»
+STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Выбраць праграму «Вулічны стыль»
+STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Выбраць праграму «Уласная 1» (вызначаную карыстальнікам)
+STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Выбраць праграму «Уласная 2» (вызначаную карыстальнікам)
+STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Уключыць/выключыць выпадковы выбар трэкаў
+STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Паказаць вакно выбару трэкаў
 
+STR_ERROR_NO_SONGS                                              :{WHITE}У выбранай праграме адсутнічае музыка
 
 # Playlist window
+STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Выбар музычнай праграмы
+STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBLUE}{ZEROFILL_NUM} «{STRING}»
+STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}Сьпіс трэкаў
+STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}Programme - «{STRING}»
+STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}Ачысьціць
+STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}Захаваць
+STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Ачысьціць сьпіс уласнай праграмы
+STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Захаваць наладкі музыкі
+STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Клікніце па назьве трэка, каб дадаць яго ва ўласную праграму
+STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Клікніце па назьве трэка, каб выдаліць яго з уласнай праграмы
 
 # Highscore window
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Найбуйнейшыя кампаніі, якія дасягнулі {NUM}{}({STRING} узроўня цяжкасьці)
+STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Табліца кампаній у {NUM}
+STR_HIGHSCORE_POSITION                                          :{BIGFONT}{BLACK}{COMMA}.
+STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Бізнэсоўца
+STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Прадпрымальнік
+STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Прамысловец
+STR_HIGHSCORE_PERFORMANCE_TITLE_CAPITALIST                      :Капіталіст
+STR_HIGHSCORE_PERFORMANCE_TITLE_MAGNATE                         :Магнат
+STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :Транспартны кароль
+STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Алігарх стагоддзя
+STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESIDENTNAME}, {COMPANY}
+STR_HIGHSCORE_STATS                                             :{BIGFONT}«{STRING}»   ({COMMA})
+STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIGFONT}{BLACK}Дырэктара кампаніі «{COMPANY}» называюць {STRING.abl}!
+STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIGFONT}{WHITE}{PRESIDENTNAME}, прэзідэнт кампаніі «{COMPANY}», заслужыў тытул «{STRING}»!
 
 # Smallmap window
+STR_SMALLMAP_CAPTION                                            :{WHITE}Мапа - {STRING}
 
+STR_SMALLMAP_TYPE_CONTOURS                                      :Рэльеф
+STR_SMALLMAP_TYPE_VEHICLES                                      :Транспарт
+STR_SMALLMAP_TYPE_INDUSTRIES                                    :Прамысловасьць
+STR_SMALLMAP_TYPE_ROUTES                                        :Маршруты
+STR_SMALLMAP_TYPE_VEGETATION                                    :Расьліннасьць
+STR_SMALLMAP_TYPE_OWNERS                                        :Уладальнікі
+STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP                  :{BLACK}Паказаць на мапе контуры зямлі
+STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}Паказаць на мапе транспарт
+STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Паказаць на мапе прамысловасьць
+STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Паказаць на мапе маршруты
+STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Паказаць на мапе расьліннасьць
+STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Паказаць на мапе уладальнікаў зямлі
 
+STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}Дарогі
+STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLACK}Чыгункі
+STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINYFONT}{BLACK}Станцыі/Аэрапорты/Прыстані
+STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINYFONT}{BLACK}Будынкі/Прадпрыемствы
+STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINYFONT}{BLACK}Транспарт
+STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINYFONT}{BLACK}Цыгнікі
+STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINYFONT}{BLACK}Аўтатранспарт
+STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINYFONT}{BLACK}Караблі
+STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINYFONT}{BLACK}Авіятранспарт
+STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINYFONT}{BLACK}Маршруты транспарту
+STR_SMALLMAP_LEGENDA_FOREST                                     :{TINYFONT}{BLACK}Лес
+STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINYFONT}{BLACK}Чыгуначная станцыя
+STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINYFONT}{BLACK}Грузавая аўтастанцыя
+STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINYFONT}{BLACK}Аўтобусная станцыя
+STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINYFONT}{BLACK}Аэрапорт/вертадром
+STR_SMALLMAP_LEGENDA_DOCK                                       :{TINYFONT}{BLACK}Прыстань
+STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINYFONT}{BLACK}Няроўная зямля
+STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINYFONT}{BLACK}Трава
+STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINYFONT}{BLACK}Голая зямля
+STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINYFONT}{BLACK}Палі
+STR_SMALLMAP_LEGENDA_TREES                                      :{TINYFONT}{BLACK}Дрэвы
+STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINYFONT}{BLACK}Камяні
+STR_SMALLMAP_LEGENDA_WATER                                      :{TINYFONT}{BLACK}Вада
+STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINYFONT}{BLACK}Няма ўласьніка
+STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINYFONT}{BLACK}Гарады
+STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINYFONT}{BLACK}Прадпрыемствы
+STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLACK}Пустэльня
+STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}Сьнег
 
+STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Паказаць/схаваць назвы гарадоў на мапе
+STR_SMALLMAP_CENTER                                             :{BLACK}Цэнтраваць мінімапу па гэтай пазыцыі
+STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
+STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
+STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Выключыць усё
+STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Уключыць усё
+STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Паказаць рэльеф
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL                                :{BLACK}Не паказваць прамысловасьць на мапе
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL                                 :{BLACK}Паказаць усе прадпрыемствы на мапе
+STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Адлюстроўваць рэльеф на мапе
 
 # Status bar messages
+STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Паказаць апошняе паведамленьне ці навіну
+STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
+STR_STATUSBAR_PAUSED                                            :{YELLOW}*  *  ПАЎЗА  *  *
+STR_STATUSBAR_AUTOSAVE                                          :{RED}Аўтазахаваньне
+STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  ЗАХАВАНЬНЕ ГУЛЬНІ  *  *
 
 # News message history
+STR_MESSAGE_HISTORY                                             :{WHITE}Гісторыя паведамленьняў
+STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Сьпіс нядаўніх навін
+STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 # Message settings window
+STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Паведамленьне
+STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}Наладкі паведамленьняў
+STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Усталяваць усе тыпы паведамленьняў на Выкл. / Сьцісла / Цалкам (падрабязна)
+STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Прайграваць гукі пры атрыманьні сьціслых паведамленьняў
+STR_NEWS_MESSAGES_OFF                                           :Выкл.
+STR_NEWS_MESSAGES_SUMMARY                                       :Сьцісла
+STR_NEWS_MESSAGES_FULL                                          :Цалкам
 
+STR_NEWS_MESSAGE_TYPES                                          :{BLACK}Тыпы паведамленьняў:
+STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Прыбыцьцё першага транспартнага сродку на станцыю гульца
+STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Першы транспартны сродак на станцыю канкурэнта
+STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Здарэньні й катастрофы
+STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}Інфармацыя аб Кампаніі
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}Адкрыцьцё новых прадпрыемстваў
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}Закрыцьцё прадпрыемстваў
+STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}Зьмены ў эканоміцы
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Зьмены ў прадукцыйнасьці прадпрыемстваў, якія абслугоўвае Кампанія
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Зьмены ў прадукцыйнасьці прадпрыемстваў, якія абслугоўвае канкурэнт(-ы)
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Зьмены ў прадукцыйнасьці прадпрыемстваў, якія ніхто не абслугоўвае
+STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Парады / зьвесткі аб транспартных сродках гульца
+STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Новы транспарт
+STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Зьмены ў сьпісах грузаў, якія прымаюцца станцыямі
+STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Субсыдыі
+STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Агульная інфармацыя
 
+STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIGFONT}{BLACK}Жыхары сьвяткуюць . . .{}Першы цягнік прыбыў на станцыю {STATION}!
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIGFONT}{BLACK}Жыхары сьвяткуюць . . .{}Першы аўтобус прыбыў на прыпынак {STATION}!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIGFONT}{BLACK}Жыхары сьвяткуюць . . .{}Першы грузавік прыбыў на {STATION}!
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIGFONT}{BLACK}Жыхары сьвяткуюць . . .{}Першы трамвай прыбыў на {STATION}!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIGFONT}{BLACK}Жыхары сьвяткуюць . . .{}Першы грузавы трамвай прыбыў на {STATION}!
+STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIGFONT}{BLACK}Жыхары сьвяткуюць . . .{}Першы карабель прычаліў да прыстані {STATION}!
+STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIGFONT}{BLACK}Жыхары сьвяткуюць . . .{}Першы самалёт прыбыў у {STATION}!
 
+STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK}Чыгуначная катастрофа!{}{COMMA} чалавек{P "" і ""} загіну{P ў лі ла} ў выніку крушеньня!
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}АВАРЫЯ!{} Кіроўца загінуў у выніку сутыкненьня машыны з цягніком!
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIGFONT}{BLACK}АВАРЫЯ!{}{COMMA} чалавек{P "" і ""} загіну{P ў лі ла} пры сутыкненьні з цягніком!
+STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK}Авіякатастрофа!{}{COMMA} чалавек{P "" і ""} загіну{P ў лі ла} ў вагні ў аэрапорце {STATION}!
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}Авіякатастрофа!{}У самалёце скончылася паліва, {COMMA} человек{P "" і ""} загіну{P ў лі ла} пры падзенні!
 
+STR_NEWS_DISASTER_ZEPPELIN                                      :{BIGFONT}{BLACK}Катастрофа цэпеліна над аэрадромам {STATION}!
+STR_NEWS_DISASTER_SMALL_UFO                                     :{BIGFONT}{BLACK}Аўтамабіль знішчаны пры сутыкненьні з НЛА!
+STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIGFONT}{BLACK}Выбух на нафтаперапрацоўчым заводзе каля г.{NBSP}{TOWN}!
+STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIGFONT}{BLACK}Выбух на фабрыцы пры падазроных абставінах каля г.{NBSP}{TOWN}!
+STR_NEWS_DISASTER_BIG_UFO                                       :{BIGFONT}{BLACK}НЛА прызямлілася каля г.{NBSP}{TOWN}!
+STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIGFONT}{BLACK}Абвал на вугальнай шахце выклікаў апоўзень у раёне г.{NBSP}{TOWN}!
+STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIGFONT}{BLACK}Патоп!{}По меншай меры {COMMA} человек{P "" і ""} прызнаны{P "" я я} загінуўшым{P "" і і} бяз вестак у выніку паводкі!
 
+STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIGFONT}{BLACK}Транспартная кампанія ў небясьпечным стане!
+STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIGFONT}{BLACK}{STRING} будзе прададзена альбо абвешчана банкрутам, калі не пачне прыносіць прыбытак!
+STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIGFONT}{BLACK}З'яднаньне транспартных кампаніяў!
+STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} была прададзена {STRING} за {CURRENCY}!
+STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIGFONT}{BLACK}Банкрут!
+STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIGFONT}{BLACK}{STRING} ліквідавана крэдыторамі, усе актывы прададзеныя!
+STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK}Заснавана новая транспартная кампанія!
+STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} распачынае будаўніцтва каля г. {TOWN}!
+STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} выкуплена {STRING}!
+STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Дырэктар)
 
+STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}Кампанія «{STRING}» сталася фундатарам новага горада {TOWN}!
 
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Новае прадпрыемства! {STRING} буду{G 0 е е е ю}цца каля г. {NBSP}{TOWN}!
+STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Новае прадпрыемства! {STRING} закладзен{G 0 ы а а ыя} каля г. {NBSP}{TOWN}!
 
+STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}Прадпрыемства «{STRING}» аб'яўляе аб хуткім закрыцьці!
+STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}«{STRING}» закрываецца з-за праблем з пастаўкамі сыравіны!
+STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}«{STRING}» аб'яўляе аб закрыцьці ў сувязі з адсутнасьцю дрэваў у навакольлі!
 
+STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}Эўрапейскі Валютны Зьвяз!{}{}Эўра прадстаўлена як адзіная валюта для ўсіх транзакцыяў у вашай краіне!
+STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}Сусьветная рэцэсія!!{}{}Фінансавыя экспэрты чакаюць горшага з нагоды крызісу ў эканоміцы!
+STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}Канец рэцэсіі!{}{}Пад'ём гандлю дае ўпэўненасьць прамыслоўцам дзякуючы ўмацаваньню эканомікі!
 
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}«{INDUSTRY}» павялічвае аб'ёмы вытворчасьці!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}«{INDUSTRY}» пачынае распрацоўку новага вугальнага пласта! Здабыча павялічана удвая!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}Выяўлены новыя запасы нафты!{}«{INDUSTRY}» павялічвае тэмпы здабычы удвая
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}Новыя сельскагаспадарчыя мэтады ў «{INDUSTRY}» мусяць падвоіць прадукцыйнасьць!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK}«{1:INDUSTRY}» павялічвае вытворчасьць {0:STRING.gen} на{NBSP}{2:COMMA}%!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}Вытворчасьць на «{INDUSTRY}» упала на 50%
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}Нашэсьце інсэктаў выклікала спусташэньне у «{INDUSTRY}»! Вытворчасьць упала на 50%!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK}«{1:INDUSTRY}» зьніжае вытворчасьць {0:STRING.gen} на{NBSP}{2:COMMA}%!
 
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} чакае ў дэпо
+STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} чакае ў дэпо
+STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} чакае ў дэпо
+STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} чакае ў самалётным ангары
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
+STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}У ТС «{VEHICLE}» не хапае заданьняў у раскладзе
+STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} не мае заданьняў
+STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} мае дубляваныя заданьні
+STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} мае няісную станцыю ў заданьнях
 # end of order system
 
+STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} састарэў
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} цалкам састарэў
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} цалкам састарэў і патрабуе безадкладнай замены
+STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} ня можа знайсьці шлях, каб працягнуць рух.
+STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} заблудзіў.
+STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}: леташні прыбытак склаў {CURRENCY}
 
+STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} спынены, паколькі пераабсталяваньне не ўдалося
+STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Памылка аўтаабнаўленьня для {VEHICLE}{}{STRING}
 
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}З'явіўся новы {STRING}!
+STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIGFONT}{BLACK}{ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}З'явіўся новы {STRING}!  -  {ENGINE}
 
+STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} больш не прымае {STRING.acc}
+STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} больш не прымае {STRING.acc} ды {STRING.acc}
+STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} цяпер прымае {STRING.acc}
+STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} цяпер прымае {STRING.acc} ды {STRING.acc}
 
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Прапанова субсыдыі мінула:{}{}Перавозка {STRING.gen} па маршруце {STRING} - {STRING} субсыдыявацца больш ня будзе.
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Тэрмін субсыдыі сышоў:{}{}Перавозка {STRING.gen} па маршруце {STRING} - {STRING} больш не субсыдуецца.
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Прапанова субсыдыі:{}{}Першая кампанія, якая павязе {STRING.acc} па маршруце {STRING} - {STRING}, атрымае гадавую субсыдыю ад мясцовых уладаў!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Кампанія «{STRING}» атрымала субсыдыю!{}{}Перавозка {STRING.gen} па маршруце {STRING} - {STRING} будзе аплочана ў паўтарачным памеры на працягу года!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Кампанія «{STRING}» атрымала субсыдыю!{}{}Перавозка {STRING.gen} па маршруце {STRING} - {STRING} будзе аплочана ў падвоеным памеры на працягу года!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Кампанія «{STRING}» атрымала субсыдыю!{}{}Перавозка {STRING.gen} па маршруце {STRING} - {STRING} будзе аплочана ў патроеным памеры на працягу года!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}Кампанія «{STRING}» атрымала субсыдыю!{}{}Перавозка {STRING.gen} па маршруце {STRING} - {STRING} будзе аплочана ў чатырохразовым памеры на працягу года!
 
+STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}Хаос на дарогах г. {NBSP}{TOWN}!{}{}Рэканструкцыя дарог, прафінансаваная {STRING}, прынясе кіроўцам 6 месяцаў пакут!
 
 # Extra view window
+STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Вакно прагляду {COMMA}
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Капіяваць у вакно прагляду
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Капіяваць месцазнаходжаньне з асноўнага экрана ў гэтае вакно
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Уставіць з акна прагляду
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Перайсьці да гэтага месца ў асноўным экране
 
 # Game options window
+STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Наладкі гульні
+STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Валюта
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Выбар валюты
 
 ############ start of currency region
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Брытанскі фунт (£)
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Даляр ЗША ($)
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Эўра (€)
+STR_GAME_OPTIONS_CURRENCY_YEN                                   :Японская ена (¥)
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :Аўстралійскі шылінг (ATS)
+STR_GAME_OPTIONS_CURRENCY_BEF                                   :Бэльгійскі франк (BEF)
+STR_GAME_OPTIONS_CURRENCY_CHF                                   :Швайцарскі франк (CHF)
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :Чэская крона (CZK)
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :Нямецкая марка (DEM)
+STR_GAME_OPTIONS_CURRENCY_DKK                                   :Дацкая крона (DKK)
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Гішпанская пэсэта (ESP)
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :Фінская марка (FIM)
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Францускі франк (FRF)
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :Грэцкая драхма (GRD)
+STR_GAME_OPTIONS_CURRENCY_HUF                                   :Вугорскі форынт (HUF)
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :Ісьляндзкая крона (ISK)
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :Італьянская ліра (ITL)
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :Нідэрляндзкі гульдэн (NLG)
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :Нарвэская крона (NOK)
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Польскі злоты (PLN)
+STR_GAME_OPTIONS_CURRENCY_RON                                   :Румынскі лей (RON)
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :Расейскі рубель (RUR)
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :Славенскі толар (SIT)
+STR_GAME_OPTIONS_CURRENCY_SEK                                   :Швэдзкая крона (SEK)
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :Турэцкая ліра (TRY)
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :Славацкая каруна (SKK)
+STR_GAME_OPTIONS_CURRENCY_BRL                                   :Бразыльскі рэал (BRL)
+STR_GAME_OPTIONS_CURRENCY_EEK                                   :Эстонская крона (EEK)
+STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Уласная...
 ############ end of currency region
 
+STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Адзінкі вымярэньня
+STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Выбар сістэмы адзінак вымярэньня
 
 ############ start of measuring units region
+STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :Брытанская
+STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :Мэтрычная
+STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :СІ
 ############ end of measuring units region
 
+STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Дарожны рух
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Па якім баку дарогі рухаецца аўтатранспарт
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Ездзіць па левым
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Ездзіць па правым
 
+STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Назвы гарадоў
+STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}У якім стылі будуць назвы населеных пунктаў
 
 ############ start of townname region
+STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Ангельскі (арыгінальны)
+STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Францускі
+STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Нямецкі
+STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Ангельскі (дадатковы)
+STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Лацінаамэрыканскі
+STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Ангельскі (жартоўны)
+STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Швэдзкі
+STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Нідэрляндзкі
+STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Фінскі
+STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Польскі
+STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Славацкі
+STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Нарвэскі
+STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Вугорскі
+STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Аўстрыйскі
+STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Румынскі
+STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Чэскі
+STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Швайцарскі
+STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Дацкі
+STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Турэцкі
+STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Італьянскі
+STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Каталёнскі
 ############ end of townname region
 
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Аўтазахаваньне
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Інтэрвал паміж аўтаматычнымі захаваньнямі гульні
 
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Выключана
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Штомесяц
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Кожныя 3 месяцы
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Кожныя 6 месяцаў
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Кожныя 12 месяцаў
 
+STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Мова
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Выбраць мову інтэрфэйсу
 
+STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Поўны экран
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Уключыць/выключыць поўнаэкранны рэжым
 
+STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Вырашэньне экрана
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Выбар вырашэньня экрана
 
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Фармат скрыншотаў
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Выбар фармата, у якім будуць захоўвацца здымкі экрана
 
+STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Набор базавай графікі
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Выбар базавага набору графічных аб'ектаў
+STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} адсутнічаюч{P ы ых ых}/пашкоджан{P ы ых ых} файл{P "" ы аў}
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Дадатковая інфармацыя аб базавым графічным наборы
 
+STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Базавы набор гукаў
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Выберыце базавы набор гукаў для выкарыстаньня
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Дадатковая інфармацыя аб базавым гукавым наборы
 
+STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Базавы набор музыкі
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Выберыце базавы музычны набор для выкарыстаньня
+STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} пашкоджан{P ы ых ых} файл{P 0 "" ы аў}
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Дадатковая інфармацыя аб базавым музычным наборы
 
+STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Памылка поўнаэкраннага рэжыму
 
 # Custom currency window
 
+STR_CURRENCY_WINDOW                                             :{WHITE}Уласная валюта
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Абменны курс: {ORANGE}{CURRENCY} = £{COMMA}
+STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Падвысіць курс вашае валюты ў адносінах да фунта (£)
+STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Зьнізіць курс вашае валюты ў адносінах да фунта (£)
+STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Усталяваць курс вашае валюты ў адносінах да фунта (£)
 
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Разьдзяляльнік: {ORANGE}{STRING}
+STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Усталяваць разьдзяляльнік разрадаў (тысяч) для вашае валюты
 
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Прэфікс: {ORANGE}{STRING}
+STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Усталяваць прэфікс для вашае валюты
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Суфікс: {ORANGE}{STRING}
+STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}Усталяваць суфікс для вашае валюты
 
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Перайсьці на Эўра: {ORANGE}у {NUM} годзе
+STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Перайсьці на Эўра: {ORANGE}ніколі
+STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Усталяваць год перахода на Эўра
+STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Перайсьці на Эўра раней
+STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Перайсьці на Эўра пазьней
 
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Узор: {ORANGE}{CURRENCY}
+STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 брыт. фунтаў (£) у вашай валюце
+STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Зьмяніць парамэтр уласнай валюты
 
 # Difficulty level window
+STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Узровень цяжкасьці
 
 ############ range for difficulty levels starts
+STR_DIFFICULTY_LEVEL_EASY                                       :{BLACK}Лёгкі
+STR_DIFFICULTY_LEVEL_MEDIUM                                     :{BLACK}Сярэдні
+STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}Цяжкі
+STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}Уласны
 ############ range for difficulty levels ends
 
+STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Паказаць табліцу рэкордаў
+STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Захаваць
 
 ############ range for difficulty settings starts
+STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Максымальная колькасьць канкурэнтаў: {ORANGE}{COMMA}
+STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}Колькасьць гарадоў: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}Колькасьць прадпрыемстваў: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Максымальная пачатковая пазыка: {ORANGE}{CURRENCY}
+STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}Пачатковая працэнтовая стаўка: {ORANGE}{COMMA}%
+STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}Выдаткі на ўтрыманне транспарту: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}Хуткасьць будаўніцтва канкурэнтаў: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_BREAKDOWNS                 :{LTBLUE}Паломкі транспарту: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_SUBSIDY_MULTIPLIER                 :{LTBLUE}Множнік даходу ад субсыдыяў: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_COST_OF_CONSTRUCTION               :{LTBLUE}Кошт будаўніцтва: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_TERRAIN_TYPE                       :{LTBLUE}Тып мясцовасьці: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_QUANTITY_OF_SEA_LAKES              :{LTBLUE}Колькасьць азёр/мораў: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_ECONOMY                            :{LTBLUE}Эканоміка: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_TRAIN_REVERSING                    :{LTBLUE}Разварот цягнікоў: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}Катастрофы: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Стаўленьне гарадскіх уладаў да зьмяненьня тэрыторыі: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
+STR_NONE                                                        :Няма
+STR_NUM_VERY_LOW                                                :Вельмі мала
+STR_NUM_LOW                                                     :Мала
+STR_NUM_NORMAL                                                  :Нармалёва
+STR_NUM_HIGH                                                    :Шмат
+STR_NUM_CUSTOM                                                  :Уласная
 
 
 
@@ -939,6 +1802,7 @@ STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Наці
 # Error message titles
 
 # Generic construction errors
+STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Спачатку знясiце будынкi
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Імя павінна быць унікальным
 STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{1:STRING} на шляху
 
@@ -966,6 +1830,13 @@ STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Тут �
 
 # Station destruction related errors
 
+STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Спачатку знясiце чыгуначную станцыю
+STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Спачатку знясiце аўтобусны прыпынак
+STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}Спачатку знясiце грузавы тэрмiнал
+STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Спачатку знясiце пасажырскi трамвайны прыпынак
+STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Спачатку знясiце грузавы трамвайны прыпынак
+STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Спачатку знясiце прыстань
+STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Спачатку знясiце аэрапорт
 
 # Waypoint related errors
 
@@ -986,49 +1857,188 @@ STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Тут �
 # Road construction errors
 
 # Waterway construction errors
+STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... нельга будаваць у вадзе
+STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Спачатку знясiце канал
+STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Тут немагчыма пабудаваць акведук...
 
 # Tree related errors
+STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... ўжо ёсць дрэва
+STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... гэтыя дрэвы тут не растуць
+STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Немагчыма высадзіць дрэвы...
 
 # Bridge related errors
+STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}Тут немагчыма пабудаваць мост...
+STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Спачатку знясiце мост
+STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Не можа пачынацца і заканчвацца ў той жа кропцы
+STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Апоры моста павінны быць на адным узроўні
+STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Занадта нізкі мост
+STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Пачатак і канец павінны быць на адной лініі
+STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... абодва канца моста павінны абапірацца на зямлю
+STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... мост занадта доўгі
 
 # Tunnel related errors
+STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Тут немагчыма пабудаваць тунэль...
+STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}Непрыдатнае месца для будаўніцтва тунэля
+STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Спачатку знясiце тунэль
+STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Іншы тунэль на шляху
+STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Тунэль заканчваецца за межамі карты
+STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Немагчыма падняць/апусціць зямлю для іншага канца тунэля
 
 # Unmovable related errors
+STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Аб'ект на шляху
+STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... штаб-кватэра кампаніі на шляху
+STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Немагчыма купіць гэтую зямлю...
+STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... вы і так ужо валодаеце гэтым!
 
 # Group related errors
+STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Не атрымалася стварыць групу...
+STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}Не атрымалася выдаліць групу...
+STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Не атрымалася перайменаваць групу...
+STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}Не атрымалася выдаліць увесь транспарт з групы...
+STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}Не атрымалася дадаць транспарт у групу...
+STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Не атрымалася дадаць транспарт з агульнымі заданнямі ў групу...
 
 # Generic vehicle errors
+STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Цягнiк на шляху
+STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Аўтамабiль на шляху
+STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Карабель на шляху
+STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}ЁН ЛЯЦIЦЬ!
 
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Не атрымалася пераабсталяваць цягнiк...
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Не атрымалася пераабсталяваць аўтамабiль...
+STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Не атрымалася пераабсталяваць карабель...
+STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Не атрымалася пераабсталяваць самалёт...
 
+STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Немагчыма перайменаваць цягнiк...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Немагчыма перайменаваць аўтамабiль...
+STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}Немагчыма перайменаваць карабель...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}Немагчыма перайменаваць паветранае судна...
 
+STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Не атрымалася спыніць/запусціць цягнiк...
+STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Не атрымалася спыніць/запусціць аўтамабiль...
+STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Не атрымалася спыніць/запусціць карабель...
+STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Не атрымалася спыніць/запусціць авiятранспарт...
 
+STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Не атрымалася адправіць цягнiк у дэпо...
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Не атрымалася адправіць аўтамабiль у гараж...
+STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Не атрымалася адправіць куарабель у док...
+STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Не атрымалася адправіць самалёт у ангар...
 
+STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Не атрымалася купіць цягнiк...
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Не атрымалася купіць аўтамабiль...
+STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Не атрымалася купіць карабель...
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Не атрымалася купіць паветр. транспарт...
 
+STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Немагчыма змяніць назву мадэлі цягніка...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Немагчыма змяніць назву мадэлі аўтамабіля...
+STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Немагчыма змяніць назву мадэлі карабля...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Немагчыма змяніць назву мадэлі паветр. судна ...
 
+STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Не атрымалася прадаць цягнік...
+STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Не атрымалася прадаць аўтамабiль...
+STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Не атрымалася прадаць карабель...
+STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Не атрымалася прадаць самалёт...
 
+STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :{WHITE}Лакаматыў недаступны
+STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :{WHITE}Аўтатранспарт недаступны
+STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}Карабель недаступны
+STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Авiятранспарт недаступны
 
+STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Занадта шмат транспарту ў гульне
+STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Не атрымалася змяніць частату абслугоўвання...
 
+STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... транспартны сродак знішчаны
 
 # Specific vehicle errors
+STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Немагчыма ігнараваць сігнал. Небяспечна...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Не атрымалася развярнуць цягнік...
+STR_ERROR_TRAIN_START_NO_CATENARY                               :На гэтых рэйках адсутнічае кантактная сетка, цягнік не можа ехаць.
 
+STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Немагчыма развярнуць аўтамабіль...
 
+STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}Самалёт у палёце
 
 # Order related errors
+STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}Спіс заданняў запоўнены
+STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}Занадта шмат заданняў
+STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}Немагчыма ўставіць новае заданне...
+STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :{WHITE}Немагчыма выдаліць гэтае заданне...
+STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}Немагчыма змяніць гэта заданне...
+STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Не атрымалася перамясьціць гэта заданне...
+STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Не атрымалася прапусціць бягучае заданне...
+STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Не атрымалася перайсці да выдзеленага задання...
+STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... ТС не можа дасягнуць усіх станцый
+STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... ТС не можа дасягнуць гэтай станцыі
+STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... ТС з агульным заданнем не можа дасягнуць гэтай станцыі
 
+STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Немагчыма выкарыстоўваць агульны спіс заданняў
+STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Немагчыма скапіраваць спіс заданняў
+STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... занадта далёка ад папярэдняй кропкі
 
 # Timetable related errors
+STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Не атрымалася скласці расклад для гэтага транспарту...
+STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Транспарт можа чакаць толькі на станцыі.
+STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Гэты транспарт не спыняецца на гэтай станцыі.
 
 # Sign related errors
+STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... занадта шмат знакаў
+STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Не атрымалася ўсталяваць знак...
+STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Не атрымалася змяніць надпіс на знаку...
+STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Не атрымалася выдаліць знак...
 
 # Translatable comment for OpenTTD's desktop shortcut
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Клон гульні «Transport Tycoon Deluxe»
 
 ##id 0x2000
 # Town building names
+STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1                      :Вышынны офісны будынак
+STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_1                           :Офісны будынак
+STR_TOWN_BUILDING_NAME_SMALL_BLOCK_OF_FLATS_1                   :Жылы дом
+STR_TOWN_BUILDING_NAME_CHURCH_1                                 :Царква
+STR_TOWN_BUILDING_NAME_LARGE_OFFICE_BLOCK_1                     :Вялікi офісны будынак
+STR_TOWN_BUILDING_NAME_TOWN_HOUSES_1                            :Гарадскія будынкі
+STR_TOWN_BUILDING_NAME_HOTEL_1                                  :Гатэль
+STR_TOWN_BUILDING_NAME_STATUE_1                                 :Статуя
+STR_TOWN_BUILDING_NAME_FOUNTAIN_1                               :Фантан
+STR_TOWN_BUILDING_NAME_PARK_1                                   :Парк
+STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_2                           :Офісны будынак
+STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_1                      :Гандлёва-офісны цэнтр
+STR_TOWN_BUILDING_NAME_MODERN_OFFICE_BUILDING_1                 :Сучасны дзелавы цэнтр
+STR_TOWN_BUILDING_NAME_WAREHOUSE_1                              :Склад
+STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_3                           :Офісны будынак
+STR_TOWN_BUILDING_NAME_STADIUM_1                                :Стадыён
+STR_TOWN_BUILDING_NAME_OLD_HOUSES_1                             :Старыя дамы
+STR_TOWN_BUILDING_NAME_COTTAGES_1                               :Катэджы
+STR_TOWN_BUILDING_NAME_HOUSES_1                                 :Дамы
+STR_TOWN_BUILDING_NAME_FLATS_1                                  :Шматкватэрны дом
+STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_2                      :Вышынны офісны будынак
+STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_2                      :Гандлёва-офісны цэнтр
+STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_3                      :Гандлёва-офісны цэнтр
+STR_TOWN_BUILDING_NAME_THEATER_1                                :Тэатр
+STR_TOWN_BUILDING_NAME_STADIUM_2                                :Стадыён
+STR_TOWN_BUILDING_NAME_OFFICES_1                                :Офiсы
+STR_TOWN_BUILDING_NAME_HOUSES_2                                 :Дамы
+STR_TOWN_BUILDING_NAME_CINEMA_1                                 :Кінатэатр
+STR_TOWN_BUILDING_NAME_SHOPPING_MALL_1                          :Тарговы цэнтр
+STR_TOWN_BUILDING_NAME_IGLOO_1                                  :Iглу
+STR_TOWN_BUILDING_NAME_TEPEES_1                                 :Халупы
+STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :Домік-Чайнік
 STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Свiння-Скарбонка
 
 ##id 0x4800
 # industry names
+STR_INDUSTRY_NAME_COAL_MINE                                     :Вугальная шахта
+STR_INDUSTRY_NAME_POWER_STATION                                 :Электрастанцыя
+STR_INDUSTRY_NAME_SAWMILL                                       :Лесапiлка
+STR_INDUSTRY_NAME_FOREST                                        :Лес
+STR_INDUSTRY_NAME_OIL_REFINERY                                  :Нафтазавод
+STR_INDUSTRY_NAME_OIL_RIG                                       :Нафтавая вышка
+STR_INDUSTRY_NAME_FACTORY                                       :Завод
+STR_INDUSTRY_NAME_PRINTING_WORKS                                :Тыпаграфiя
+STR_INDUSTRY_NAME_STEEL_MILL                                    :Сталелiцейны завод
+STR_INDUSTRY_NAME_FARM                                          :Ферма
 STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :Шахта меднай руды
+STR_INDUSTRY_NAME_OIL_WELLS                                     :Нафтавая свiдравiна
 STR_INDUSTRY_NAME_BANK                                          :Банк
 STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :Завод ежы
 STR_INDUSTRY_NAME_PAPER_MILL                                    :Папяровая фабрыка
@@ -1043,13 +2053,13 @@ STR_INDUSTRY_NAME_WATER_TOWER                                   :Воданап�
 STR_INDUSTRY_NAME_FACTORY_2                                     :Завод
 STR_INDUSTRY_NAME_FARM_2                                        :Ферма
 STR_INDUSTRY_NAME_LUMBER_MILL                                   :Лесапілка
-STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :Лес цукровай ваты
+STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :Лес цукровай баўны
 STR_INDUSTRY_NAME_CANDY_FACTORY                                 :Цукерачная фабрыка
 STR_INDUSTRY_NAME_BATTERY_FARM                                  :Поле батарэек
 STR_INDUSTRY_NAME_COLA_WELLS                                    :Калодзежы колы
 STR_INDUSTRY_NAME_TOY_SHOP                                      :Магазін цацак
 STR_INDUSTRY_NAME_TOY_FACTORY                                   :Завод цацак
-STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :Фантаны пластыка
+STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :Фантаны плястыка
 STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :Завод газiроўкi
 STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :Генератар бурбалак
 STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :Iрысавы кар'ер
@@ -1070,6 +2080,11 @@ STR_SV_STNAME_NORTH                                             :Паўночн�
 STR_SV_STNAME_SOUTH                                             :Паўднёвая {STRING}
 STR_SV_STNAME_EAST                                              :Усходняя {STRING}
 STR_SV_STNAME_WEST                                              :Захадная {STRING}
+STR_SV_STNAME_CENTRAL                                           :Цэнтральная {STRING}
+STR_SV_STNAME_TRANSFER                                          :Перагонная {STRING}
+STR_SV_STNAME_HALT                                              :{STRING}-прывал
+STR_SV_STNAME_VALLEY                                            :Дaлiна {STRING}
+STR_SV_STNAME_HEIGHTS                                           :{STRING}-вышынная
 STR_SV_STNAME_WOODS                                             :Лясная {STRING}
 STR_SV_STNAME_LAKESIDE                                          :Азёрная {STRING}
 STR_SV_STNAME_EXCHANGE                                          :{STRING}-сартавальная
@@ -1137,7 +2152,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WATER_TANKER                  :Водная ц
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FRUIT_TRUCK                   :Рэфрыжератар (садавiна)
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_RUBBER_TRUCK                  :Вагон для каўчуку
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_SUGAR_TRUCK                   :Вагон для цукру
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COTTON_CANDY_HOPPER           :Хопер для цукровай ваты
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COTTON_CANDY_HOPPER           :Хопер для цукровай баўны
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOFFEE_HOPPER                 :Хопер для iрысак
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BUBBLE_VAN                    :Вагон для бурбалак
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COLA_TANKER                   :Цыстэрна для колы
@@ -1145,7 +2160,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_CANDY_VAN                     :Вагон дл
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOY_VAN                       :Вагон для цацак
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BATTERY_TRUCK                 :Вагон для батарэек
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FIZZY_DRINK_TRUCK             :Вагон для газiроўкi
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PLASTIC_TRUCK                 :Вагон для пластыку
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PLASTIC_TRUCK                 :Вагон для плястыку
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :Электравоз «X2001»
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_MILLENNIUM_Z1_ELECTRIC   :Электравоз «Millennium Z1»
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_WIZZOWOW_Z99             :Wizzowow Z99
@@ -1167,7 +2182,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WATER_TANKER              :Водная ц
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FRUIT_TRUCK               :Рэфрыжератар (садавiна)
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_RUBBER_TRUCK              :Вагон для каўчуку
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_SUGAR_TRUCK               :Вагон для цукру
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COTTON_CANDY_HOPPER       :Хопер для цукровай ваты
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COTTON_CANDY_HOPPER       :Хопер для цукровай баўны
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOFFEE_HOPPER             :Хопер для iрысак
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BUBBLE_VAN                :Вагон для бурбалак
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COLA_TANKER               :Цыстэрна для колы
@@ -1199,7 +2214,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WATER_TANKER                :Водная ц
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FRUIT_TRUCK                 :Рэфрыжератар (садавiна)
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_RUBBER_TRUCK                :Вагон для каўчуку
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_SUGAR_TRUCK                 :Вагон для цукру
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COTTON_CANDY_HOPPER         :Хопер для цукровай ваты
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COTTON_CANDY_HOPPER         :Хопер для цукровай баўны
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOFFEE_HOPPER               :Хопер для iрысак
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BUBBLE_VAN                  :Вагон для бурбалак
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COLA_TANKER                 :Цыстэрна для колы
@@ -1272,9 +2287,9 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_SUGAR_TRUCK              :Грузавiк
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COLA_TRUCK            :Цыстэрна MightyMover (кола)
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COLA_TRUCK            :Цыстэрна Powernaught (кола)
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COLA_TRUCK               :Цыстэрна Wizzowow (кола)
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COTTON_CANDY          :Грузавiк MightyMover (цук. вата)
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COTTON_CANDY          :Грузавiк Powernaught (цук. вата)
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COTTON_CANDY_TRUCK       :Грузавiк Wizzowow (цук. вата)
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COTTON_CANDY          :Грузавiк MightyMover (цук. баўна)
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COTTON_CANDY          :Грузавiк Powernaught (цук. баўна)
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COTTON_CANDY_TRUCK       :Грузавiк Wizzowow (цук. баўна)
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOFFEE_TRUCK          :Грузавiк MightyMover (iрыскi)
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOFFEE_TRUCK          :Грузавiк Powernaught (iрыскi)
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOFFEE_TRUCK             :Грузавiк Wizzowow (iрыскi)

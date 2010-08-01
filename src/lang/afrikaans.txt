@@ -216,6 +216,7 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
+
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Sleutel 'n filter string
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Sleutel 'n sleutelwoord in om die lys te filter
@@ -399,7 +400,7 @@ STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Konsolideer nuw
 
 ############ range for railway construction menu starts
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Spoorweg konstruksie
-STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Elektrifiseerde Spoorweg konstruksie
+STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Elektrifiseerde spoorweg konstruksie
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Enkelspoor konstruksie
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Magneetsweeftrein konstruksie
 ############ range ends here
@@ -563,7 +564,7 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Lening:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Totaal:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Nommer van voertuie wat 'n profyt gemaak het laas jaar; dit sluit in pad voertuie, treine, skepe en vliegtuie
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Aantal van stasie parte. Elke deel van 'n stasie (b.v. trein stasie, bushalte, lughawe) is getel, selfs indien hulle is konnekteer as een stasie
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Aantal stasie parte wat onlangs regemaak was. Elke deel van 'n stasie (b.v. trein stasie, bushalte, lughawe) is getel, selfs as hulle as een stasie gekonnekteer is
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Die wins van die voertuig met die laagste inkomste (van alle voertuie ouer as 2 jaar)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Bedrag van kontant gemaak in die maand met die laagste profyt in die laaste 12 kwartiers
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Bedrag van kontant gemaak in die maand met die hoogste profyt in die laaste 12 kwartiers
@@ -1750,7 +1751,7 @@ STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :verbinding verl
 STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :protokol fout
 STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :NewGRF mispas
 STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :nie gemagtig nie
-STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :vreemde pakket aanvaar
+STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :vreemde of onverwagte pakket gekry
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :verkeerde hersiening
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :naam reeds in gebruik
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :verkeerde wagwoord
@@ -1768,7 +1769,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Spel nog steeds
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Spel nog steeds stilgehou ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Spel nog steeds stilgehou ({STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Spel gaan weer aan ({STRING})
-STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :nie genoeg spelers
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :hoeveelheid spelers
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :Verbind kliente
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :met die hand
 ############ End of leave-in-this-order
@@ -2051,7 +2052,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Beplant 
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Land Generasie
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Plaas rotse op landskap
 STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Plaas ligtoring
-STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Bepaal woestyn gebied.{}Druk en hou in CTRL om te verwyder
+STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Bepaal woestyn gebied.{}Hou Ctrl in om te verwyder
 STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Plaas sender
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Vergroot gebied wat verlaag/verhoog moet word
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Verminder gebied wat verlaag/verhoog moet word
@@ -2104,6 +2105,8 @@ STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Koste: {
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Prospek
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Bou
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Fonds
+
+# Industry cargoes window
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Land gebied informasie
@@ -2351,6 +2354,15 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Gestrem
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Invoer NewGRF parameters
 
+# NewGRF parameters window
+
+# NewGRF inspect window
+
+
+
+# Sprite aligner window
+
+
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Waarskuwing: {SILVER}{STRING}
@@ -2386,6 +2398,8 @@ STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Vermis G
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Vermis GRF leêr(s)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Unpausing kan veroorsaak dat OpenTTD bots. Moet nie daaropeenvolgende botsings verslae rapporteer nie. {}Will jy rêrig unpause?
 
+# NewGRF status
+
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Die gedrag van NewGRF '{0:STRING}' kan moontlik desinkroniesasies en/of program botsings veroorsaak.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Dit verander voertuig lengte vier '{1:ENGINE}' wanneer die nie in diensstasie is nie.
@@ -2394,6 +2408,8 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Trein '{
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' verskaf foutiewe inligting.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Vrag/herbou informasie vir '{1:ENGINE}' verskil van aankope lys na konstruksie. Dit mag veroorsaak dat die outo hernuwing/vervanging van die herbouing korrek faal.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' het 'n eindelose herhaling in die produksie callback veroorsaak.
+
+# 'User removed essential NewGRFs'-placeholders for stuff without specs.
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Teken Lys - {COMMA} Teken{P "" s}
@@ -2473,7 +2489,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Kliek op
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Stasie naame - Kliek naam om skerm op stasie te senter
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Hou in CTRL om meer as een item te selekteer
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Hou in Ctrl om meer as een item te selekteer
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Stasie{P "" s}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
@@ -2743,15 +2759,16 @@ STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Hernoem 
 
 # Depot window
 
+
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} voertuig{P "" s}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
 STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Treine - kliek op trein vir info., sleep voertuig om te bysit/verwyder van trein
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Voertuie - kliek op voertuig vir inligting
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Skepe - kliek op skeep vir inligting
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Vliegtuie - kliek op vliegtuig vir informasie
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Voertuie - regs-kliek op voertuig vir inligting
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Skepe - regs-kliek op skip vir inligting
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Vliegtuie - regs-kliek op vliegtuig vir informasie
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Sleep trein voertuig hier om dit te verkoop
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Sleep pad voertuig hier om dit te verkoop
@@ -2922,6 +2939,8 @@ STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Op pad 
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Op pad na {WAYPOINT}, {VELOCITY}
 
 
+
+# Vehicle stopped/started animations
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Aanwyse)
@@ -3430,6 +3449,7 @@ STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Kan nie 
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Kan nie trem voertuig depot hier bou nie...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Skip depot kan nie hier gebou word nie...
 
+
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Trein moet binne in 'n depot gestop word
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... moet gestop binne 'n pad voertuig depot wees
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Skip moet in 'n depot gestop wees
@@ -3605,6 +3625,8 @@ STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... te v
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Kan nie teken hier plaas nie...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Kan nie teken naam verander nie...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Kan nie teken verwyder nie
+
+# Translatable comment for OpenTTD's desktop shortcut
 
 ##id 0x2000
 # Town building names
@@ -3995,6 +4017,7 @@ STR_FORMAT_GROUP_NAME                                           :Groep {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 STR_FORMAT_WAYPOINT_NAME                                        :Wegpunt {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Wegpunt {TOWN} #{COMMA}
+
 
 STR_UNKNOWN_STATION                                             :onbekende stasie
 STR_DEFAULT_SIGN_NAME                                           :Teken

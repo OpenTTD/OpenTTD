@@ -2184,6 +2184,8 @@ STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Hledat
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Postavit
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Financovat
 
+# Industry cargoes window
+
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Informace o uzemí
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Cena za vyčištění: {LTBLUE}N/A
@@ -2430,6 +2432,7 @@ STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Pokusit 
 
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Jméno souboru: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}ID GRF: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Verze: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Paleta: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parametry: {SILVER}{STRING}
@@ -2439,6 +2442,11 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Nenalezen 
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Vypnuto
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Zadej parametry grafiky
+
+# NewGRF parameters window
+STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Úprava nastavení parametrů
+STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Zavřít
+STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parametr {NUM}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Zkoumání - {STRING}
@@ -3511,6 +3519,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... na m
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Město nebude stavět silnice. Můžete to změnit přes Pokročilé nastavení->Ekonomika->Města.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Silnice je v rekonstrukci
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Nelze vybourat město...{}Buď k němu patří stanice nebo depo, anebo se nedá odklidit políčko městem vlastněné.
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... není zde žádné vhodné místo pro umístění sochy v centru tohoto města
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... příliš mnoho průmyslu
@@ -3560,7 +3569,7 @@ STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Nelze od
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Nelze zbourat tramvajovou stanici pro cestující...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Nelze odstranit nákladní tramvajovou stanici...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Je nutné nejprve odstranit konec silnice
-STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}...není zde žádná stanice
+STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... není zde žádná stanice
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Je nutné nejprve zničit stanici
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Je nutné nejprve zničit autobusovou zastávku
@@ -3626,8 +3635,8 @@ STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Zde nelz
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Odsud nelze odstranit koleje...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Odsud nelze odstranit semafory...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Zde nelze změnit návěstidla...
-STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}...nejsou zde žádné koleje
-STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}...nejsou zde žádné semafory
+STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... nejsou zde žádné koleje
+STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... nejsou zde žádné semafory
 
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Zde nelze změnit typ kolejí...
 
@@ -3638,8 +3647,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Zde nelz
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Zde nelze postavit tramvajovou trať...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Odsud nelze odstranit silnici...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Odsud nelze odstranit tramvajovou trať...
-STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}...není zde žádná silnice
-STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}...není zde žádná tramvajová trať
+STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... není zde žádná silnice
+STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... není zde žádná tramvajová trať
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Zde nelze postavit průplav...
