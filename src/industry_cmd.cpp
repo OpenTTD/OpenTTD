@@ -1846,7 +1846,7 @@ static uint32 GetScaledIndustryProbability(IndustryType it, bool *force_at_least
 }
 
 /** Number of industries on a 256x256 map */
-static const byte _numof_industry_table[]= {
+static const byte _numof_industry_table[] = {
 	0,    // none
 	10,   // very low
 	25,   // low
