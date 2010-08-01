@@ -22,6 +22,7 @@
  */
 class AIEventVehicleCrashed : public AIEvent {
 public:
+	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AIEventVehicleCrashed"; }
 
 	/**
@@ -84,6 +85,7 @@ private:
  */
 class AIEventSubsidyOffer : public AIEvent {
 public:
+	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AIEventSubsidyOffer"; }
 
 	/**
@@ -116,6 +118,7 @@ private:
  */
 class AIEventSubsidyOfferExpired : public AIEvent {
 public:
+	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AIEventSubsidyOfferExpired"; }
 
 	/**
@@ -148,6 +151,7 @@ private:
  */
 class AIEventSubsidyAwarded : public AIEvent {
 public:
+	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AIEventSubsidyAwarded"; }
 
 	/**
@@ -180,6 +184,7 @@ private:
  */
 class AIEventSubsidyExpired : public AIEvent {
 public:
+	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AIEventSubsidyExpired"; }
 
 	/**
@@ -214,6 +219,7 @@ private:
  */
 class AIEventEnginePreview : public AIEvent {
 public:
+	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AIEventEnginePreview"; }
 
 	/**
@@ -298,6 +304,7 @@ private:
  */
 class AIEventCompanyNew : public AIEvent {
 public:
+	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AIEventCompanyNew"; }
 
 	/**
@@ -331,6 +338,7 @@ private:
  */
 class AIEventCompanyInTrouble : public AIEvent {
 public:
+	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AIEventCompanyInTrouble"; }
 
 	/**
@@ -363,6 +371,7 @@ private:
  */
 class AIEventCompanyAskMerger : public AIEvent {
 public:
+	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AIEventCompanyAskMerger"; }
 
 	/**
@@ -412,6 +421,7 @@ private:
  */
 class AIEventCompanyMerger : public AIEvent {
 public:
+	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AIEventCompanyMerger"; }
 
 	/**
@@ -456,6 +466,7 @@ private:
  */
 class AIEventCompanyBankrupt : public AIEvent {
 public:
+	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AIEventCompanyBankrupt"; }
 
 	/**
@@ -488,6 +499,7 @@ private:
  */
 class AIEventVehicleLost : public AIEvent {
 public:
+	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AIEventVehicleLost"; }
 
 	/**
@@ -520,6 +532,7 @@ private:
  */
 class AIEventVehicleWaitingInDepot : public AIEvent {
 public:
+	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AIEventVehicleWaitingInDepot"; }
 
 	/**
@@ -552,6 +565,7 @@ private:
  */
 class AIEventVehicleUnprofitable : public AIEvent {
 public:
+	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AIEventVehicleUnprofitable"; }
 
 	/**
@@ -584,6 +598,7 @@ private:
  */
 class AIEventIndustryOpen : public AIEvent {
 public:
+	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AIEventIndustryOpen"; }
 
 	/**
@@ -616,6 +631,7 @@ private:
  */
 class AIEventIndustryClose : public AIEvent {
 public:
+	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AIEventIndustryClose"; }
 
 	/**
@@ -648,6 +664,7 @@ private:
  */
 class AIEventEngineAvailable : public AIEvent {
 public:
+	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AIEventEngineAvailable"; }
 
 	/**
@@ -680,6 +697,7 @@ private:
  */
 class AIEventStationFirstVehicle : public AIEvent {
 public:
+	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AIEventStationFirstVehicle"; }
 
 	/**
@@ -721,6 +739,7 @@ private:
  */
 class AIEventDisasterZeppelinerCrashed : public AIEvent {
 public:
+	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AIEventDisasterZeppelinerCrashed"; }
 
 	/**
@@ -753,6 +772,7 @@ private:
  */
 class AIEventDisasterZeppelinerCleared : public AIEvent {
 public:
+	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AIEventDisasterZeppelinerCleared"; }
 
 	/**

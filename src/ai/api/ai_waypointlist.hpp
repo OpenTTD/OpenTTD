@@ -21,6 +21,7 @@
  */
 class AIWaypointList : public AIAbstractList {
 public:
+	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AIWaypointList"; }
 
 	/**
@@ -35,6 +36,7 @@ public:
  */
 class AIWaypointList_Vehicle : public AIAbstractList {
 public:
+	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AIWaypointList_Vehicle"; }
 
 	/**

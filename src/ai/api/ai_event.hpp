@@ -21,6 +21,7 @@
  */
 class AIEvent : public AIObject {
 public:
+	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AIEvent"; }
 
 	/**
@@ -81,6 +82,7 @@ public:
 	/**
 	 * The name of the class, needed by several sub-processes.
 	 */
+	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AIEventController"; }
 
 	/**

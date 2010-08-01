@@ -21,6 +21,7 @@
  */
 class AIStationList : public AIAbstractList {
 public:
+	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AIStationList"; }
 
 	/**
@@ -35,6 +36,7 @@ public:
  */
 class AIStationList_Vehicle : public AIAbstractList {
 public:
+	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AIStationList_Vehicle"; }
 
 	/**

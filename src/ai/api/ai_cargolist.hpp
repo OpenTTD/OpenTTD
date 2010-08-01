@@ -20,6 +20,7 @@
  */
 class AICargoList : public AIAbstractList {
 public:
+	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AICargoList"; }
 	AICargoList();
 };
@@ -30,6 +31,7 @@ public:
  */
 class AICargoList_IndustryAccepting : public AIAbstractList {
 public:
+	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AICargoList_IndustryAccepting"; }
 
 	/**
@@ -44,6 +46,7 @@ public:
  */
 class AICargoList_IndustryProducing : public AIAbstractList {
 public:
+	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AICargoList_IndustryProducing"; }
 
 	/**

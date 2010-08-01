@@ -21,6 +21,7 @@
  */
 class AIVehicleList : public AIAbstractList {
 public:
+	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AIVehicleList"; }
 	AIVehicleList();
 };
@@ -31,6 +32,7 @@ public:
  */
 class AIVehicleList_Station : public AIAbstractList {
 public:
+	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AIVehicleList_Station"; }
 
 	/**
@@ -50,6 +52,7 @@ public:
  */
 class AIVehicleList_Depot : public AIAbstractList {
 public:
+	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AIVehicleList_Depot"; }
 
 	/**
@@ -64,6 +67,7 @@ public:
  */
 class AIVehicleList_SharedOrders : public AIAbstractList {
 public:
+	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AIVehicleList_SharedOrders"; }
 
 	/**
@@ -78,6 +82,7 @@ public:
  */
 class AIVehicleList_Group : public AIAbstractList {
 public:
+	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AIVehicleList_Group"; }
 
 	/**
@@ -92,6 +97,7 @@ public:
  */
 class AIVehicleList_DefaultGroup : public AIAbstractList {
 public:
+	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AIVehicleList_DefaultGroup"; }
 
 	/**

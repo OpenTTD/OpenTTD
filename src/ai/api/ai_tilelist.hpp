@@ -21,6 +21,7 @@
  */
 class AITileList : public AIAbstractList {
 public:
+	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AITileList"; }
 
 	/**
@@ -63,6 +64,7 @@ public:
  */
 class AITileList_IndustryAccepting : public AITileList {
 public:
+	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AITileList_IndustryAccepting"; }
 
 	/**
@@ -81,6 +83,7 @@ public:
  */
 class AITileList_IndustryProducing : public AITileList {
 public:
+	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AITileList_IndustryProducing"; }
 
 	/**
@@ -99,6 +102,7 @@ public:
  */
 class AITileList_StationType : public AITileList {
 public:
+	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AITileList_StationType"; }
 
 	/**

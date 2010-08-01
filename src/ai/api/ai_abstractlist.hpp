@@ -24,6 +24,7 @@ class AIAbstractListSorter;
  */
 class AIAbstractList : public AIObject {
 public:
+	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AIAbstractList"; }
 
 	/** Type of sorter */
