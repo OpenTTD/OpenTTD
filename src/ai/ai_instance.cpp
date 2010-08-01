@@ -458,7 +458,7 @@ enum SQSaveLoadType {
 	SQSL_ARRAY_TABLE_END = 0xFF, ///< Marks the end of an array or table, no data follows.
 };
 
-static byte _ai_sl_byte; //!< Used as source/target by the AI saveload code to store/load a single byte.
+static byte _ai_sl_byte; ///< Used as source/target by the AI saveload code to store/load a single byte.
 
 /** SaveLoad array that saves/loads exactly one byte. */
 static const SaveLoad _ai_byte[] = {

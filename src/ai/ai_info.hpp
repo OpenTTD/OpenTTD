@@ -20,33 +20,33 @@
 
 /** Bitmask of flags for AI settings. */
 enum AIConfigFlags {
-	AICONFIG_NONE    = 0x0, //!< No flags set.
-	AICONFIG_RANDOM  = 0x1, //!< When randomizing the AI, pick any value between min_value and max_value when on custom difficulty setting.
-	AICONFIG_BOOLEAN = 0x2, //!< This value is a boolean (either 0 (false) or 1 (true) ).
-	AICONFIG_INGAME  = 0x4, //!< This setting can be changed while the AI is running.
+	AICONFIG_NONE    = 0x0, ///< No flags set.
+	AICONFIG_RANDOM  = 0x1, ///< When randomizing the AI, pick any value between min_value and max_value when on custom difficulty setting.
+	AICONFIG_BOOLEAN = 0x2, ///< This value is a boolean (either 0 (false) or 1 (true) ).
+	AICONFIG_INGAME  = 0x4, ///< This setting can be changed while the AI is running.
 };
 
-typedef SmallMap<int, char *> LabelMapping; //!< Map-type used to map the setting numbers to labels.
+typedef SmallMap<int, char *> LabelMapping; ///< Map-type used to map the setting numbers to labels.
 
 /** Info about a single AI setting. */
 struct AIConfigItem {
-	const char *name;        //!< The name of the configuration setting.
-	const char *description; //!< The description of the configuration setting.
-	int min_value;           //!< The minimal value this configuration setting can have.
-	int max_value;           //!< The maximal value this configuration setting can have.
-	int custom_value;        //!< The default value on custom difficulty setting.
-	int easy_value;          //!< The default value on easy difficulty setting.
-	int medium_value;        //!< The default value on medium difficulty setting.
-	int hard_value;          //!< The default value on hard difficulty setting.
-	int random_deviation;    //!< The maximum random deviation from the default value.
-	int step_size;           //!< The step size in the gui.
-	AIConfigFlags flags;     //!< Flags for the configuration setting.
-	LabelMapping *labels;    //!< Text labels for the integer values.
+	const char *name;        ///< The name of the configuration setting.
+	const char *description; ///< The description of the configuration setting.
+	int min_value;           ///< The minimal value this configuration setting can have.
+	int max_value;           ///< The maximal value this configuration setting can have.
+	int custom_value;        ///< The default value on custom difficulty setting.
+	int easy_value;          ///< The default value on easy difficulty setting.
+	int medium_value;        ///< The default value on medium difficulty setting.
+	int hard_value;          ///< The default value on hard difficulty setting.
+	int random_deviation;    ///< The maximum random deviation from the default value.
+	int step_size;           ///< The step size in the gui.
+	AIConfigFlags flags;     ///< Flags for the configuration setting.
+	LabelMapping *labels;    ///< Text labels for the integer values.
 };
 
 extern AIConfigItem _start_date_config;
 
-typedef std::list<AIConfigItem> AIConfigItemList; //!< List of AIConfig items.
+typedef std::list<AIConfigItem> AIConfigItemList; ///< List of AIConfig items.
 
 /** Base class that holds some basic information about AIs and AI libraries. */
 class AIFileInfo : public ScriptFileInfo {
@@ -57,7 +57,7 @@ public:
 	static SQInteger Constructor(HSQUIRRELVM vm, AIFileInfo *info);
 
 protected:
-	class AIScanner *base; //!< AIScanner object that was used to scan this AI (library) info.
+	class AIScanner *base; ///< AIScanner object that was used to scan this AI (library) info.
 };
 
 /** All static information from an AI like name, version, etc. */
@@ -124,10 +124,10 @@ public:
 	const char *GetAPIVersion() const { return this->api_version; }
 
 private:
-	AIConfigItemList config_list; //!< List of settings from this AI.
-	int min_loadable_version;     //!< The AI can load savegame data if the version is equal or greater than this.
-	bool use_as_random;           //!< Should this AI be used when the user wants a "random AI"?
-	const char *api_version;      //!< API version used by this AI.
+	AIConfigItemList config_list; ///< List of settings from this AI.
+	int min_loadable_version;     ///< The AI can load savegame data if the version is equal or greater than this.
+	bool use_as_random;           ///< Should this AI be used when the user wants a "random AI"?
+	const char *api_version;      ///< API version used by this AI.
 };
 
 /** All static information from an AI library like name, version, etc. */
@@ -154,7 +154,7 @@ public:
 	const char *GetCategory() const { return this->category; }
 
 private:
-	const char *category; //!< The category this library is in.
+	const char *category; ///< The category this library is in.
 };
 
 #endif /* ENABLE_AI */

@@ -145,8 +145,8 @@ public:
 	static bool HasAI(const struct ContentInfo *ci, bool md5sum);
 #endif
 private:
-	static uint frame_counter;          //!< Tick counter for the AI code
-	static class AIScanner *ai_scanner; //!< AIScanner instance that is used to find AIs
+	static uint frame_counter;          ///< Tick counter for the AI code
+	static class AIScanner *ai_scanner; ///< AIScanner instance that is used to find AIs
 };
 
 #else /* ENABLE_AI */

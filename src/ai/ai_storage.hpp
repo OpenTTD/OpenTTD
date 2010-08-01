@@ -36,29 +36,29 @@ typedef bool (AIModeProc)();
 class AIStorage {
 friend class AIObject;
 private:
-	AIModeProc *mode;                //!< The current build mode we are int.
-	class AIObject *mode_instance;   //!< The instance belonging to the current build mode.
+	AIModeProc *mode;                ///< The current build mode we are int.
+	class AIObject *mode_instance;   ///< The instance belonging to the current build mode.
 
-	uint delay;                      //!< The ticks of delay each DoCommand has.
-	bool allow_do_command;           //!< Is the usage of DoCommands restricted?
+	uint delay;                      ///< The ticks of delay each DoCommand has.
+	bool allow_do_command;           ///< Is the usage of DoCommands restricted?
 
-	CommandCost costs;               //!< The costs the AI is tracking.
-	Money last_cost;                 //!< The last cost of the command.
-	uint last_error;                 //!< The last error of the command.
-	bool last_command_res;           //!< The last result of the command.
+	CommandCost costs;               ///< The costs the AI is tracking.
+	Money last_cost;                 ///< The last cost of the command.
+	uint last_error;                 ///< The last error of the command.
+	bool last_command_res;           ///< The last result of the command.
 
-	VehicleID new_vehicle_id;        //!< The ID of the new Vehicle.
-	SignID new_sign_id;              //!< The ID of the new Sign.
-	TileIndex new_tunnel_endtile;    //!< The TileIndex of the new Tunnel.
-	GroupID new_group_id;            //!< The ID of the new Group.
+	VehicleID new_vehicle_id;        ///< The ID of the new Vehicle.
+	SignID new_sign_id;              ///< The ID of the new Sign.
+	TileIndex new_tunnel_endtile;    ///< The TileIndex of the new Tunnel.
+	GroupID new_group_id;            ///< The ID of the new Group.
 
-	std::vector<int> callback_value; //!< The values which need to survive a callback.
+	std::vector<int> callback_value; ///< The values which need to survive a callback.
 
-	RoadType road_type;              //!< The current roadtype we build.
-	RailType rail_type;              //!< The current railtype we build.
+	RoadType road_type;              ///< The current roadtype we build.
+	RailType rail_type;              ///< The current railtype we build.
 
-	void *event_data;                //!< Pointer to the event data storage.
-	void *log_data;                  //!< Pointer to the log data storage.
+	void *event_data;                ///< Pointer to the event data storage.
+	void *log_data;                  ///< Pointer to the log data storage.
 
 public:
 	AIStorage() :

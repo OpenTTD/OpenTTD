@@ -144,12 +144,12 @@ public:
 	void SettingsToString(char *string, size_t size) const;
 
 private:
-	const char *name;              //!< Name of the AI
-	int version;                   //!< Version of the AI
-	class AIInfo *info;            //!< AIInfo object for related to this AI version
-	SettingValueList settings;     //!< List with all setting=>value pairs that are configure for this AI
-	AIConfigItemList *config_list; //!< List with all settings defined by this AI
-	bool is_random_ai;             //!< True if the AI in this slot was randomly chosen.
+	const char *name;              ///< Name of the AI
+	int version;                   ///< Version of the AI
+	class AIInfo *info;            ///< AIInfo object for related to this AI version
+	SettingValueList settings;     ///< List with all setting=>value pairs that are configure for this AI
+	AIConfigItemList *config_list; ///< List with all settings defined by this AI
+	bool is_random_ai;             ///< True if the AI in this slot was randomly chosen.
 };
 
 #endif /* ENABLE_AI */

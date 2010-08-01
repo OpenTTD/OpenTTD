@@ -42,8 +42,8 @@ public:
 	AISuspendCallbackProc *GetSuspendCallback() { return callback; }
 
 private:
-	int time;                        //!< Amount of ticks to suspend the AI.
-	AISuspendCallbackProc *callback; //!< Callback function to call when the AI can run again.
+	int time;                        ///< Amount of ticks to suspend the AI.
+	AISuspendCallbackProc *callback; ///< Callback function to call when the AI can run again.
 };
 
 /**
@@ -155,16 +155,16 @@ public:
 	 */
 	void Suspend();
 private:
-	class AIController *controller;  //!< The AI main class.
-	class AIStorage *storage;        //!< Some global information for each running AI.
-	class Squirrel *engine;          //!< A wrapper around the squirrel vm.
-	SQObject *instance;              //!< Squirrel-pointer to the AI main class.
+	class AIController *controller;  ///< The AI main class.
+	class AIStorage *storage;        ///< Some global information for each running AI.
+	class Squirrel *engine;          ///< A wrapper around the squirrel vm.
+	SQObject *instance;              ///< Squirrel-pointer to the AI main class.
 
-	bool is_started;                 //!< Is the AIs constructor executed?
-	bool is_dead;                    //!< True if the AI has been stopped.
-	bool is_save_data_on_stack;      //!< Is the save data still on the squirrel stack?
-	int suspend;                     //!< The amount of ticks to suspend this AI before it's allowed to continue.
-	AISuspendCallbackProc *callback; //!< Callback that should be called in the next tick the AI runs.
+	bool is_started;                 ///< Is the AIs constructor executed?
+	bool is_dead;                    ///< True if the AI has been stopped.
+	bool is_save_data_on_stack;      ///< Is the save data still on the squirrel stack?
+	int suspend;                     ///< The amount of ticks to suspend this AI before it's allowed to continue.
+	AISuspendCallbackProc *callback; ///< Callback that should be called in the next tick the AI runs.
 
 	/**
 	 * Register all API functions to the VM.
