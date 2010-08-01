@@ -8,6 +8,8 @@
 ##decimalsep ,
 ##winlangid 0x0423
 ##grflangid 0x10
+##gender m f n p
+##case m f n p nom gen dat acc abl pre
 
 
 # $Id$
