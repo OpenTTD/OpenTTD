@@ -1152,8 +1152,8 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 				}
 			}
 		}
-		}
 		break;
+	}
 	default:
 		DEBUG(net, 0, "[server] received unknown chat destination type %d. Doing broadcast instead", desttype);
 		/* FALL THROUGH */

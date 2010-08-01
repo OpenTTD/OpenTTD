@@ -134,8 +134,8 @@ void DisplaySplashImage()
 
 				_pal_first_dirty = 0;
 				_pal_count_dirty = 256;
+				break;
 			}
-			break;
 		case 32: {
 				uint32 *dst_ptr = (uint32 *)_screen.dst_ptr;
 				/* Initialize buffer */
@@ -149,8 +149,8 @@ void DisplaySplashImage()
 						dst[x] = palette[src[x]].blue | (palette[src[x]].green << 8) | (palette[src[x]].red << 16) | 0xff000000;
 					}
 				}
+				break;
 			}
-			break;
 	}
 
 	png_destroy_read_struct(&png_ptr, &info_ptr, &end_info);
