@@ -507,14 +507,9 @@ static const WindowDesc _ai_config_desc(
  */
 struct AIConfigWindow : public Window {
 	CompanyID selected_slot;
-	bool clicked_button;
-	bool clicked_increase;
-	int timeout;
 	int line_height;
 
-	AIConfigWindow() : Window(),
-		clicked_button(false),
-		timeout(0)
+	AIConfigWindow() : Window()
 	{
 		this->InitNested(&_ai_config_desc); // Initializes 'this->line_height' as a side effect.
 		this->selected_slot = INVALID_COMPANY;
@@ -657,14 +652,6 @@ struct AIConfigWindow : public Window {
 		this->SetWidgetDisabledState(AIC_WIDGET_CONFIGURE, this->selected_slot == INVALID_COMPANY);
 		this->SetWidgetDisabledState(AIC_WIDGET_MOVE_UP, this->selected_slot == INVALID_COMPANY || this->selected_slot == 1);
 		this->SetWidgetDisabledState(AIC_WIDGET_MOVE_DOWN, this->selected_slot == INVALID_COMPANY || this->selected_slot == _settings_newgame.difficulty.max_no_competitors);
-	}
-
-	virtual void OnTick()
-	{
-		if (--this->timeout == 0) {
-			this->clicked_button = false;
-			this->SetDirty();
-		}
 	}
 };
 
