@@ -188,6 +188,7 @@ struct AIListWindow : public Window {
 	}
 };
 
+/** Widgets for the AI list window. */
 static const NWidgetPart _nested_ai_list_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_MAUVE),
@@ -208,7 +209,7 @@ static const NWidgetPart _nested_ai_list_widgets[] = {
 	EndContainer(),
 };
 
-/* Window definition for the ai list window. */
+/** Window definition for the ai list window. */
 static const WindowDesc _ai_list_desc(
 	WDP_CENTER, 200, 234,
 	WC_AI_LIST, WC_NONE,
@@ -216,6 +217,10 @@ static const WindowDesc _ai_list_desc(
 	_nested_ai_list_widgets, lengthof(_nested_ai_list_widgets)
 );
 
+/**
+ * Open the AI list window to chose an AI for the given company slot.
+ * @param slot The slot to change the AI of.
+ */
 static void ShowAIListWindow(CompanyID slot)
 {
 	DeleteWindowByClass(WC_AI_LIST);
@@ -413,6 +418,7 @@ struct AISettingsWindow : public Window {
 	}
 };
 
+/** Widgets for the AI settings window. */
 static const NWidgetPart _nested_ai_settings_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_MAUVE),
@@ -431,7 +437,7 @@ static const NWidgetPart _nested_ai_settings_widgets[] = {
 	EndContainer(),
 };
 
-/* Window definition for the AI settings window. */
+/** Window definition for the AI settings window. */
 static const WindowDesc _ai_settings_desc(
 	WDP_CENTER, 500, 208,
 	WC_AI_SETTINGS, WC_NONE,
@@ -439,6 +445,10 @@ static const WindowDesc _ai_settings_desc(
 	_nested_ai_settings_widgets, lengthof(_nested_ai_settings_widgets)
 );
 
+/**
+ * Open the AI settings window to change the AI settings for an AI.
+ * @param slot The CompanyID of the AI to change the settings.
+ */
 static void ShowAISettingsWindow(CompanyID slot)
 {
 	DeleteWindowByClass(WC_AI_LIST);
@@ -462,6 +472,7 @@ enum AIConfigWindowWidgets {
 	AIC_WIDGET_CONTENT_DOWNLOAD, ///< Download content button
 };
 
+/** Widgets for the configure AI window. */
 static const NWidgetPart _nested_ai_config_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_MAUVE),
@@ -494,7 +505,7 @@ static const NWidgetPart _nested_ai_config_widgets[] = {
 	EndContainer(),
 };
 
-/* Window definition for the configure AI window. */
+/** Window definition for the configure AI window. */
 static const WindowDesc _ai_config_desc(
 	WDP_CENTER, 0, 0,
 	WC_GAME_OPTIONS, WC_NONE,
@@ -506,8 +517,8 @@ static const WindowDesc _ai_config_desc(
  * Window to configure which AIs will start.
  */
 struct AIConfigWindow : public Window {
-	CompanyID selected_slot;
-	int line_height;
+	CompanyID selected_slot; ///< The currently selected AI slot or \c INVALID_COMPANY.
+	int line_height;         ///< Height of a single AI-name line.
 
 	AIConfigWindow() : Window()
 	{
@@ -655,6 +666,7 @@ struct AIConfigWindow : public Window {
 	}
 };
 
+/** Open the AI config window. */
 void ShowAIConfigWindow()
 {
 	DeleteWindowById(WC_GAME_OPTIONS, 0);
@@ -687,7 +699,7 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 
 	static const unsigned int MAX_BREAK_STR_STRING_LENGTH = 256;
 
-	static CompanyID ai_debug_company;
+	static CompanyID ai_debug_company;                     ///< The AI that is (was last) being debugged.
 	int redraw_timer;
 	int last_vscroll_pos;
 	bool autoscroll;
@@ -1033,6 +1045,7 @@ char AIDebugWindow::break_string[MAX_BREAK_STR_STRING_LENGTH] = "";
 bool AIDebugWindow::break_check_enabled = true;
 bool AIDebugWindow::case_sensitive_break_check = false;
 
+/** Widgets for the AI debug window. */
 static const NWidgetPart _nested_ai_debug_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
@@ -1113,6 +1126,7 @@ static const NWidgetPart _nested_ai_debug_widgets[] = {
 	EndContainer(),
 };
 
+/** Window definition for the AI debug window. */
 static const WindowDesc _ai_debug_desc(
 	WDP_AUTO, 600, 450,
 	WC_AI_DEBUG, WC_NONE,
@@ -1120,6 +1134,10 @@ static const WindowDesc _ai_debug_desc(
 	_nested_ai_debug_widgets, lengthof(_nested_ai_debug_widgets)
 );
 
+/**
+ * Open the AI debug window and select the given company.
+ * @param show_company Display debug information about this AI company.
+ */
 void ShowAIDebugWindow(CompanyID show_company)
 {
 	if (!_networking || _network_server) {
