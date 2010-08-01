@@ -153,7 +153,8 @@ void UpdateAllTownVirtCoords();
 void ShowTownViewWindow(TownID town);
 void ExpandTown(Town *t);
 
-/** Action types that a company must ask permission for to a town authority.
+/**
+ * Action types that a company must ask permission for to a town authority.
  * @see CheckforTownRating
  */
 enum TownRatingCheckType {
@@ -162,12 +163,14 @@ enum TownRatingCheckType {
 	TOWN_RATING_CHECK_TYPE_COUNT, ///< Number of town checking action types.
 };
 
-/** This is the number of ticks between towns being processed for building new
+/**
+ * This is the number of ticks between towns being processed for building new
  * houses or roads. This value originally came from the size of the town array
  * in TTD. */
 static const byte TOWN_GROWTH_FREQUENCY = 70;
 
-/** This enum is used in conjonction with town->flags.
+/**
+ * This enum is used in conjonction with town->flags.
  * IT simply states what bit is used for.
  * It is pretty unrealistic (IMHO) to only have one church/stadium
  * per town, NO MATTER the population of it.

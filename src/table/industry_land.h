@@ -862,7 +862,8 @@ static const DrawIndustryCoordinates _drawtile_proc1[5] = {
 	{ 8, 41},
 };
 
-/** this is ONLY used for Toy Factory.
+/**
+ * this is ONLY used for Toy Factory.
  * 255 means no drawing
  * @param img1 offset from base sprite SPR_IT_SUGAR_MINE_SIEVE
  * @param img2 offset from base sprite SPR_IT_SUGAR_MINE_CLOUDS

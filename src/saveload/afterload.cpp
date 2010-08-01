@@ -2153,7 +2153,8 @@ bool AfterLoadGame()
 	return true;
 }
 
-/** Reload all NewGRF files during a running game. This is a cut-down
+/**
+ * Reload all NewGRF files during a running game. This is a cut-down
  * version of AfterLoadGame().
  * XXX - We need to reset the vehicle position hash because with a non-empty
  * hash AfterLoadVehicles() will loop infinitely. We need AfterLoadVehicles()

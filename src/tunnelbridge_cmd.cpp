@@ -7,7 +7,8 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file tunnelbridge_cmd.cpp
+/**
+ * @file tunnelbridge_cmd.cpp
  * This file deals with tunnels and bridges (non-gui stuff)
  * @todo seperate this file into two
  */
@@ -66,7 +67,8 @@ void ResetBridges()
 	memcpy(&_bridge, &_orig_bridge, sizeof(_orig_bridge));
 }
 
-/** Calculate the price factor for building a long bridge.
+/**
+ * Calculate the price factor for building a long bridge.
  * Basically the cost delta is 1,1, 1, 2,2, 3,3,3, 4,4,4,4, 5,5,5,5,5, 6,6,6,6,6,6,  7,7,7,7,7,7,7,  8,8,8,8,8,8,8,8,
  * @param length Length of the bridge.
  * @return Price factor for the bridge.
@@ -163,7 +165,8 @@ static CommandCost CheckBridgeSlopeSouth(Axis axis, Slope *tileh, uint *z)
 	return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);
 }
 
-/** Is a bridge of the specified type and length available?
+/**
+ * Is a bridge of the specified type and length available?
  * @param bridge_type Wanted type of bridge.
  * @param bridge_len  Wanted length of the bridge.
  * @return A succeeded (the requested bridge is available) or failed (it cannot be built) command.
@@ -188,7 +191,8 @@ CommandCost CheckBridgeAvailability(BridgeType bridge_type, uint bridge_len, DoC
 	return_cmd_error(STR_ERROR_BRIDGE_TOO_LONG);
 }
 
-/** Build a Bridge
+/**
+ * Build a Bridge
  * @param end_tile end tile
  * @param flags type of operation
  * @param p1 packed start tile coords (~ dx)
@@ -486,7 +490,8 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 }
 
 
-/** Build Tunnel.
+/**
+ * Build Tunnel.
  * @param start_tile start tile of tunnel
  * @param flags type of operation
  * @param p1 bit 0-3 railtype or roadtypes
@@ -622,7 +627,8 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, DoCommandFlag flags, uint32 p1,
 }
 
 
-/** Are we allowed to remove the tunnel or bridge at \a tile?
+/**
+ * Are we allowed to remove the tunnel or bridge at \a tile?
  * @param tile End point of the tunnel or bridge.
  * @return A succeeded command if the tunnel or bridge may be removed, a failed command otherwise.
  */
@@ -660,7 +666,8 @@ static inline CommandCost CheckAllowRemoveTunnelBridge(TileIndex tile)
 	}
 }
 
-/** Remove a tunnel from the game, update town rating, etc.
+/**
+ * Remove a tunnel from the game, update town rating, etc.
  * @param tile Tile containing one of the endpoints of the tunnel.
  * @param flags Command flags.
  * @return Succeeded or failed command.
@@ -726,7 +733,8 @@ static CommandCost DoClearTunnel(TileIndex tile, DoCommandFlag flags)
 }
 
 
-/** Remove a bridge from the game, update town rating, etc.
+/**
+ * Remove a bridge from the game, update town rating, etc.
  * @param tile Tile containing one of the endpoints of the bridge.
  * @param flags Command flags.
  * @return Succeeded or failed command.
@@ -802,7 +810,8 @@ static CommandCost DoClearBridge(TileIndex tile, DoCommandFlag flags)
 	return CommandCost(EXPENSES_CONSTRUCTION, (GetTunnelBridgeLength(tile, endtile) + 2) * base_cost);
 }
 
-/** Remove a tunnel or a bridge from the game.
+/**
+ * Remove a tunnel or a bridge from the game.
  * @param tile Tile containing one of the endpoints.
  * @param flags Command flags.
  * @return Succeeded or failed command.
@@ -1119,7 +1128,8 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 }
 
 
-/** Compute bridge piece. Computes the bridge piece to display depending on the position inside the bridge.
+/**
+ * Compute bridge piece. Computes the bridge piece to display depending on the position inside the bridge.
  * bridges pieces sequence (middle parts).
  * Note that it is not covering the bridge heads, which are always referenced by the same sprite table.
  * bridge len 1: BRIDGE_PIECE_NORTH

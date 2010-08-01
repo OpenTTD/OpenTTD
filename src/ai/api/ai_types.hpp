@@ -7,7 +7,8 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file ai_types.hpp Defines all the types of the game, like IDs of various objects.
+/**
+ * @file ai_types.hpp Defines all the types of the game, like IDs of various objects.
  *
  * IDs are used to identify certain objects. They are only unique within the object type, so for example a vehicle may have VehicleID 2009,
  * while a station has StationID 2009 at the same time. Also IDs are assigned arbitrary, you cannot assume them to be consecutive.

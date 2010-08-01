@@ -1568,7 +1568,8 @@ static const IndustrySpec _origin_industry_specs[NEW_INDUSTRYOFFSET] = {
 };
 #undef MI
 
-/** Writes the properties of an industry tile into the IndustryTileSpec struct.
+/**
+ * Writes the properties of an industry tile into the IndustryTileSpec struct.
  * @param ca1 acceptance of first cargo
  * @param c1  first type of cargo accepted for this tile
  * @param ca2 acceptance of second cargo

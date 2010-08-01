@@ -240,7 +240,8 @@ void UpdateNewGRFConfigPalette()
 	for (GRFConfig *c = _grfconfig_static;  c != NULL; c = c->next) c->SetSuitablePalette();
 }
 
-/** Calculate the MD5 sum for a GRF, and store it in the config.
+/**
+ * Calculate the MD5 sum for a GRF, and store it in the config.
  * @param config GRF to compute.
  * @return MD5 sum was successfully computed
  */
@@ -268,7 +269,8 @@ static bool CalcGRFMD5Sum(GRFConfig *config)
 }
 
 
-/** Find the GRFID of a given grf, and calculate its md5sum.
+/**
+ * Find the GRFID of a given grf, and calculate its md5sum.
  * @param config    grf to fill.
  * @param is_static grf is static.
  * @return Operation was successfully completed.
@@ -300,7 +302,8 @@ bool FillGRFDetails(GRFConfig *config, bool is_static)
 }
 
 
-/** Clear a GRF Config list, freeing all nodes.
+/**
+ * Clear a GRF Config list, freeing all nodes.
  * @param config Start of the list.
  * @post \a config is set to \c NULL.
  */
@@ -315,7 +318,8 @@ void ClearGRFConfigList(GRFConfig **config)
 }
 
 
-/** Copy a GRF Config list
+/**
+ * Copy a GRF Config list
  * @param dst pointer to destination list
  * @param src pointer to source list values
  * @param init_only the copied GRF will be processed up to GLS_INIT
@@ -381,7 +385,8 @@ void AppendStaticGRFConfigs(GRFConfig **dst)
 	RemoveDuplicatesFromGRFConfigList(*dst);
 }
 
-/** Appends an element to a list of GRFs
+/**
+ * Appends an element to a list of GRFs
  * @param dst the head of the list to add to
  * @param el the new tail to be */
 void AppendToGRFConfigList(GRFConfig **dst, GRFConfig *el)
@@ -402,7 +407,8 @@ void ResetGRFConfig(bool defaults)
 }
 
 
-/** Check if all GRFs in the GRF config from a savegame can be loaded.
+/**
+ * Check if all GRFs in the GRF config from a savegame can be loaded.
  * @param grfconfig GrfConfig to check
  * @return will return any of the following 3 values:<br>
  * <ul>
@@ -573,7 +579,8 @@ void ScanNewGRFFiles()
 }
 
 
-/** Find a NewGRF in the scanned list.
+/**
+ * Find a NewGRF in the scanned list.
  * @param grfid GRFID to look for,
  * @param md5sum Expected MD5 sum (set to \c NULL if not relevant).
  * @return The matching grf, if it exists in #_all_grfs, else \c NULL.
@@ -641,7 +648,8 @@ char *FindUnknownGRFName(uint32 grfid, uint8 *md5sum, bool create)
 #endif /* ENABLE_NETWORK */
 
 
-/** Retrieve a NewGRF from the current config by its grfid.
+/**
+ * Retrieve a NewGRF from the current config by its grfid.
  * @param grfid grf to look for.
  * @param mask  GRFID mask to allow for partial matching.
  * @return The grf config, if it exists, else \c NULL.

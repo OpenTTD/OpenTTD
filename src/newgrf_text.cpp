@@ -7,7 +7,8 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file newgrf_text.cpp
+/**
+ * @file newgrf_text.cpp
  * Implementation of  Action 04 "universal holder" structure and functions.
  * This file implements a linked-lists of strings,
  * holding everything that the newgrf action 04 will send over to OpenTTD.

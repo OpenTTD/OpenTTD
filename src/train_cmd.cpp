@@ -78,7 +78,8 @@ static inline DiagDirection TrainExitDir(Direction direction, TrackBits track)
 }
 
 
-/** Return the cargo weight multiplier to use for a rail vehicle
+/**
+ * Return the cargo weight multiplier to use for a rail vehicle
  * @param cargo Cargo type to get multiplier for
  * @return Cargo weight multiplier
  */
@@ -88,7 +89,8 @@ byte FreightWagonMult(CargoID cargo)
 	return _settings_game.vehicle.freight_trains;
 }
 
-/** Logs a bug in GRF and shows a warning message if this
+/**
+ * Logs a bug in GRF and shows a warning message if this
  * is for the first time this happened.
  * @param u first vehicle of chain
  */
@@ -679,7 +681,8 @@ static void AddRearEngineToMultiheadedTrain(Train *v)
 	u->other_multiheaded_part = v;
 }
 
-/** Build a railroad vehicle.
+/**
+ * Build a railroad vehicle.
  * @param tile tile of the depot where rail-vehicle is built
  * @param flags type of operation
  * @param p1 engine type id
@@ -1153,7 +1156,8 @@ static void NormaliseTrainHead(Train *head)
 	head->unitnumber = GetFreeUnitNumber(VEH_TRAIN);
 }
 
-/** Move a rail vehicle around inside the depot.
+/**
+ * Move a rail vehicle around inside the depot.
  * @param tile unused
  * @param flags type of operation
  *              Note: DC_AUTOREPLACE is set when autoreplace tries to undo its modifications or moves vehicles to temporary locations inside the depot.
@@ -1333,7 +1337,8 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 	return CommandCost();
 }
 
-/** Sell a (single) train wagon/engine.
+/**
+ * Sell a (single) train wagon/engine.
  * @param tile unused
  * @param flags type of operation
  * @param p1 the wagon/engine index
@@ -1815,7 +1820,8 @@ static void ReverseTrainDirection(Train *v)
 	}
 }
 
-/** Reverse train.
+/**
+ * Reverse train.
  * @param tile unused
  * @param flags type of operation
  * @param p1 train to reverse
@@ -1885,7 +1891,8 @@ CommandCost CmdReverseTrainDirection(TileIndex tile, DoCommandFlag flags, uint32
 	return CommandCost();
 }
 
-/** Force a train through a red signal
+/**
+ * Force a train through a red signal
  * @param tile unused
  * @param flags type of operation
  * @param p1 train to ignore the red signal
@@ -1915,7 +1922,8 @@ CommandCost CmdForceTrainProceed(TileIndex tile, DoCommandFlag flags, uint32 p1,
 	return CommandCost();
 }
 
-/** Refits a train to the specified cargo type.
+/**
+ * Refits a train to the specified cargo type.
  * @param tile unused
  * @param flags type of operation
  * @param p1 vehicle ID of the train to refit
@@ -1960,7 +1968,8 @@ CommandCost CmdRefitRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 	return cost;
 }
 
-/** returns the tile of a depot to goto to. The given vehicle must not be
+/**
+ * returns the tile of a depot to goto to. The given vehicle must not be
  * crashed! */
 static FindDepotData FindClosestTrainDepot(Train *v, int max_distance)
 {
@@ -1991,7 +2000,8 @@ bool Train::FindClosestDepot(TileIndex *location, DestinationID *destination, bo
 	return true;
 }
 
-/** Send a train to a depot
+/**
+ * Send a train to a depot
  * @param tile unused
  * @param flags type of operation
  * @param p1 train to send to the depot
@@ -3436,7 +3446,8 @@ reverse_train_direction:
 	ReverseTrainDirection(v);
 }
 
-/** Collect trackbits of all crashed train vehicles on a tile
+/**
+ * Collect trackbits of all crashed train vehicles on a tile
  * @param v Vehicle passed from Find/HasVehicleOnPos()
  * @param data trackdirbits for the result
  * @return NULL to iterate over all vehicles on the tile.

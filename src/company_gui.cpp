@@ -141,7 +141,8 @@ enum CompanyFinancesWindowWidgets {
 	CFW_REPAY_LOAN,    ///< Decrease loan
 };
 
-/** Draw the expenses categories.
+/**
+ * Draw the expenses categories.
  * @param r Available space for drawing.
  * @note The environment must provide padding at the left and right of \a r.
  */
@@ -168,7 +169,8 @@ static void DrawCategories(const Rect &r)
 	DrawString(r.left, r.right, y + EXP_LINESPACE, STR_FINANCES_TOTAL_CAPTION, TC_FROMSTRING, SA_RIGHT);
 }
 
-/** Draw an amount of money.
+/**
+ * Draw an amount of money.
  * @param amount Amount of money to draw,
  * @param left   Left coordinate of the space to draw in.
  * @param right  Right coordinate of the space to draw in.
@@ -185,7 +187,8 @@ static void DrawPrice(Money amount, int left, int right, int top)
 	DrawString(left, right, top, str, TC_FROMSTRING, SA_RIGHT);
 }
 
-/** Draw a column with prices.
+/**
+ * Draw a column with prices.
  * @param r    Available space for drawing.
  * @param year Year being drawn.
  * @param tbl  Pointer to table of amounts for \a year.
@@ -278,7 +281,8 @@ static const NWidgetPart _nested_company_finances_widgets[] = {
 	EndContainer(),
 };
 
-/** Window class displaying the company finances.
+/**
+ * Window class displaying the company finances.
  * @todo #money_width should be calculated dynamically.
  */
 struct CompanyFinancesWindow : Window {
@@ -387,7 +391,8 @@ struct CompanyFinancesWindow : Window {
 		}
 	}
 
-	/** Setup the widgets in the nested tree, such that the finances window is displayed properly.
+	/**
+	 * Setup the widgets in the nested tree, such that the finances window is displayed properly.
 	 * @note After setup, the window must be (re-)initialized.
 	 */
 	void SetupWidgets()
@@ -477,7 +482,8 @@ static const WindowDesc _company_finances_desc(
 	_nested_company_finances_widgets, lengthof(_nested_company_finances_widgets)
 );
 
-/** Open the finances window of a company.
+/**
+ * Open the finances window of a company.
  * @param company Company to show finances of.
  * @pre is company a valid company.
  */
@@ -1145,7 +1151,8 @@ public:
 		this->UpdateData();
 	}
 
-	/** Select planes to display to the user with the #NWID_SELECTION widgets #SCMFW_WIDGET_SEL_LOADSAVE, #SCMFW_WIDGET_SEL_MALEFEMALE, and #SCMFW_WIDGET_SEL_PARTS.
+	/**
+	 * Select planes to display to the user with the #NWID_SELECTION widgets #SCMFW_WIDGET_SEL_LOADSAVE, #SCMFW_WIDGET_SEL_MALEFEMALE, and #SCMFW_WIDGET_SEL_PARTS.
 	 * @param advanced Display advanced face management window.
 	 */
 	void SelectDisplayPlanes(bool advanced)

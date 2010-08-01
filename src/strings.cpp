@@ -94,7 +94,8 @@ const char *GetStringPtr(StringID string)
 	}
 }
 
-/** The highest 8 bits of string contain the "case index".
+/**
+ * The highest 8 bits of string contain the "case index".
  * These 8 bits will only be set when FormatString wants to print
  * the string in a different case. No one else except FormatString
  * should set those bits, therefore string CANNOT be StringID, but uint32.
@@ -170,7 +171,8 @@ char *InlineString(char *buf, StringID string)
 }
 
 
-/** This function is used to "bind" a C string to a OpenTTD dparam slot.
+/**
+ * This function is used to "bind" a C string to a OpenTTD dparam slot.
  * @param n slot of the string
  * @param str string to bind
  */
@@ -1379,7 +1381,8 @@ bool ReadLanguagePack(int lang_index)
 /* Win32 implementation in win32.cpp.
  * OS X implementation in os/macosx/macos.mm. */
 #if !(defined(WIN32) || defined(__APPLE__))
-/** Determine the current charset based on the environment
+/**
+ * Determine the current charset based on the environment
  * First check some default values, after this one we passed ourselves
  * and if none exist return the value for $LANG
  * @param param environment variable to check conditionally if default ones are not

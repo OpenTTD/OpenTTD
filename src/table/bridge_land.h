@@ -7,7 +7,8 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file bridge_land.h This file contains all the sprites for bridges
+/**
+ * @file bridge_land.h This file contains all the sprites for bridges
  * It consists of a number of arrays.
  * <ul><li>_bridge_sprite_table_n_m. Defines all the sprites of a bridge besides the pylons.
  * n defines the number of the bridge type, m the number of the section. the highest m for
@@ -726,7 +727,8 @@ static const PalSpriteID * const * const _bridge_sprite_table[MAX_BRIDGES] = {
 	_bridge_sprite_table_12
 };
 
-/** Describes the data that defines each bridge in the game
+/**
+ * Describes the data that defines each bridge in the game
  * @param y   year of availablity
  * @param mnl minimum length (not counting bridge heads)
  * @param mxl maximum length (not counting bridge heads)

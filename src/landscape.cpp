@@ -45,7 +45,8 @@ extern const TileTypeProcs
 	_tile_type_tunnelbridge_procs,
 	_tile_type_unmovable_procs;
 
-/** Tile callback functions for each type of tile.
+/**
+ * Tile callback functions for each type of tile.
  * @ingroup TileCallbackGroup
  * @see TileType */
 const TileTypeProcs * const _tile_type_procs[16] = {
@@ -485,7 +486,8 @@ void DoClearSquare(TileIndex tile)
 	MarkTileDirtyByTile(tile);
 }
 
-/** Returns information about trackdirs and signal states.
+/**
+ * Returns information about trackdirs and signal states.
  * If there is any trackbit at 'side', return all trackdirbits.
  * For TRANSPORT_ROAD, return no trackbits if there is no roadbit (of given subtype) at given side.
  * @param tile tile to get info about
@@ -588,7 +590,8 @@ void ClearSnowLine()
 	_snow_line = NULL;
 }
 
-/** Clear a piece of landscape
+/**
+ * Clear a piece of landscape
  * @param tile tile to clear
  * @param flags of operation to conduct
  * @param p1 unused
@@ -601,7 +604,8 @@ CommandCost CmdLandscapeClear(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 	return _tile_type_procs[GetTileType(tile)]->clear_tile_proc(tile, flags);
 }
 
-/** Clear a big piece of landscape
+/**
+ * Clear a big piece of landscape
  * @param tile end tile of area dragging
  * @param flags of operation to conduct
  * @param p1 start tile of area dragging

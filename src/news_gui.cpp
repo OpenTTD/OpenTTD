@@ -41,7 +41,8 @@ static uint _total_news = 0;                ///< current number of news items
 static NewsItem *_oldest_news = NULL;       ///< head of news items queue
 static NewsItem *_latest_news = NULL;       ///< tail of news items queue
 
-/** Forced news item.
+/**
+ * Forced news item.
  * Users can force an item by accessing the history or "last message".
  * If the message being shown was forced by the user, a pointer is stored
  * in _forced_news. Otherwise, \a _forced_news variable is NULL. */
@@ -766,7 +767,8 @@ void DeleteVehicleNews(VehicleID vid, StringID news)
 	}
 }
 
-/** Remove news regarding given station so there are no 'unknown station now accepts Mail'
+/**
+ * Remove news regarding given station so there are no 'unknown station now accepts Mail'
  * or 'First train arrived at unknown station' news items.
  * @param sid station to remove news about
  */
@@ -783,7 +785,8 @@ void DeleteStationNews(StationID sid)
 	}
 }
 
-/** Remove news regarding given industry
+/**
+ * Remove news regarding given industry
  * @param iid industry to remove news about
  */
 void DeleteIndustryNews(IndustryID iid)

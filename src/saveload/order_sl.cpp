@@ -66,7 +66,8 @@ void Order::ConvertFromOldSavegame()
 	}
 }
 
-/** Unpacks a order from savegames with version 4 and lower
+/**
+ * Unpacks a order from savegames with version 4 and lower
  * @param packed packed order
  * @return unpacked order
  */
@@ -75,7 +76,8 @@ static Order UnpackVersion4Order(uint16 packed)
 	return Order(GB(packed, 8, 8) << 16 | GB(packed, 4, 4) << 8 | GB(packed, 0, 4));
 }
 
-/** Unpacks a order from savegames made with TTD(Patch)
+/**
+ * Unpacks a order from savegames made with TTD(Patch)
  * @param packed packed order
  * @return unpacked order
  */

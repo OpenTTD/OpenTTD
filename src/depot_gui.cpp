@@ -159,7 +159,8 @@ static void TrainDepotMoveVehicle(const Vehicle *wagon, VehicleID sel, const Veh
 	DoCommandP(v->tile, v->index + ((wagon == NULL ? INVALID_VEHICLE : wagon->index) << 16), _ctrl_pressed ? 1 : 0, CMD_MOVE_RAIL_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_MOVE_VEHICLE));
 }
 
-/** Array containing the cell size in pixels of the #DEPOT_WIDGET_MATRIX widget for each vehicle type.
+/**
+ * Array containing the cell size in pixels of the #DEPOT_WIDGET_MATRIX widget for each vehicle type.
  * @note The train vehicle type uses the entire row for each train. */
 static Dimension _base_block_sizes[4];
 
@@ -194,7 +195,8 @@ static void InitBlocksizeForShipAircraft(VehicleType type)
 	_base_block_sizes[type].height = max(GetVehicleHeight(type), max_height);
 }
 
-/** Set the size of the blocks in the window so we can be sure that they are big enough for the vehicle sprites in the current game.
+/**
+ * Set the size of the blocks in the window so we can be sure that they are big enough for the vehicle sprites in the current game.
  * @note Calling this function once for each game is enough. */
 void InitDepotWindowBlockSizes()
 {
@@ -244,7 +246,8 @@ struct DepotWindow : Window {
 		DeleteWindowById(WC_BUILD_VEHICLE, this->window_number);
 	}
 
-	/** Draw a vehicle in the depot window in the box with the top left corner at x,y.
+	/**
+	 * Draw a vehicle in the depot window in the box with the top left corner at x,y.
 	 * @param v     Vehicle to draw.
 	 * @param left  Left side of the box to draw in.
 	 * @param right Right side of the box to draw in.
@@ -457,7 +460,8 @@ struct DepotWindow : Window {
 		return MODE_DRAG_VEHICLE;
 	}
 
-	/** Handle click in the depot matrix.
+	/**
+	 * Handle click in the depot matrix.
 	 * @param x Horizontal position in the matrix widget in pixels.
 	 * @param y Vertical position in the matrix widget in pixels.
 	 */
@@ -1031,7 +1035,8 @@ static void DepotSellAllConfirmationCallback(Window *win, bool confirmed)
 	}
 }
 
-/** Opens a depot window
+/**
+ * Opens a depot window
  * @param tile The tile where the depot/hangar is located
  * @param type The type of vehicles in the depot
  */
@@ -1051,7 +1056,8 @@ void ShowDepotWindow(TileIndex tile, VehicleType type)
 	new DepotWindow(desc, tile, type);
 }
 
-/** Removes the highlight of a vehicle in a depot window
+/**
+ * Removes the highlight of a vehicle in a depot window
  * @param *v Vehicle to remove all highlights from
  */
 void DeleteDepotHighlightOfVehicle(const Vehicle *v)

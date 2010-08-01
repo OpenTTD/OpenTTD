@@ -370,7 +370,8 @@ static void BuildRefitList(const Vehicle *v, RefitList *refit_list)
 	} while ((v->type == VEH_TRAIN || v->type == VEH_ROAD) && (u = u->Next()) != NULL);
 }
 
-/** Draw the list of available refit options for a consist and highlight the selected refit option (if any).
+/**
+ * Draw the list of available refit options for a consist and highlight the selected refit option (if any).
  * @param *list First vehicle in consist to get the refit-options of
  * @param sel   Selected refit cargo-type in the window
  * @param pos   Position of the selected item in caller widow
@@ -580,7 +581,8 @@ static const WindowDesc _vehicle_refit_desc(
 	_nested_vehicle_refit_widgets, lengthof(_nested_vehicle_refit_widgets)
 );
 
-/** Show the refit window for a vehicle
+/**
+ * Show the refit window for a vehicle
  * @param *v The vehicle to show the refit window for
  * @param order of the vehicle ( ? )
  * @param parent the parent window of the refit window
@@ -1855,7 +1857,8 @@ static const WindowDesc _vehicle_view_desc(
 	_nested_vehicle_view_widgets, lengthof(_nested_vehicle_view_widgets)
 );
 
-/** Vehicle view window descriptor for trains. Only minimum_height and
+/**
+ * Vehicle view window descriptor for trains. Only minimum_height and
  *  default_height are different for train view.
  */
 static const WindowDesc _train_view_desc(
@@ -1972,7 +1975,8 @@ private:
 		SEL_RT_BASEPLANE = SEL_RT_REFIT,      ///< First plane of the #VVW_WIDGET_SELECT_REFIT_TURN stacked widget.
 	};
 
-	/** Display a plane in the window.
+	/**
+	 * Display a plane in the window.
 	 * @param plane Plane to show.
 	 */
 	void SelectPlane(PlaneSelections plane)

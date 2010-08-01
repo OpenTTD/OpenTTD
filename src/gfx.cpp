@@ -68,7 +68,8 @@ struct DrawStringParams {
 
 	DrawStringParams(TextColour colour) : fontsize(FS_NORMAL), cur_colour(colour), prev_colour(colour) {}
 
-	/** Switch to new colour \a c.
+	/**
+	 * Switch to new colour \a c.
 	 * @param c New colour to use.
 	 */
 	FORCEINLINE void SetColour(TextColour c)
@@ -84,7 +85,8 @@ struct DrawStringParams {
 		Swap(this->cur_colour, this->prev_colour);
 	}
 
-	/** Switch to using a new font \a f.
+	/**
+	 * Switch to using a new font \a f.
 	 * @param f New font to use.
 	 */
 	FORCEINLINE void SetFontSize(FontSize f)
@@ -358,7 +360,8 @@ static UChar *HandleBiDiAndArabicShapes(UChar *buffer)
 #endif /* WITH_ICU */
 
 
-/** Truncate a given string to a maximum width if neccessary.
+/**
+ * Truncate a given string to a maximum width if neccessary.
  * If the string is truncated, add three dots ('...') to show this.
  * @param *str string that is checked and possibly truncated
  * @param maxw maximum width in pixels of the string
@@ -758,7 +761,8 @@ end_of_inner_loop:
 }
 
 
-/** Calculates height of string (in pixels). Accepts multiline string with '\0' as separators.
+/**
+ * Calculates height of string (in pixels). Accepts multiline string with '\0' as separators.
  * @param src string to check
  * @param num number of extra lines (output of FormatStringLinebreaks())
  * @param start_fontsize Fontsize to start the text with
@@ -787,7 +791,8 @@ static int GetMultilineStringHeight(const char *src, int num, FontSize start_fon
 }
 
 
-/** Calculates height of string (in pixels). The string is changed to a multiline string if needed.
+/**
+ * Calculates height of string (in pixels). The string is changed to a multiline string if needed.
  * @param str string to check
  * @param maxw maximum string width
  * @return height of pixels of string when it is drawn
@@ -803,7 +808,8 @@ int GetStringHeight(StringID str, int maxw)
 	return GetMultilineStringHeight(buffer, GB(tmp, 0, 16), FS_NORMAL);
 }
 
-/** Calculate string bounding box for multi-line strings.
+/**
+ * Calculate string bounding box for multi-line strings.
  * @param str        String to check.
  * @param suggestion Suggested bounding box.
  * @return Bounding box for the multi-line string, may be bigger than \a suggestion.
@@ -956,7 +962,8 @@ int DrawStringMultiLine(int left, int right, int top, int bottom, StringID str, 
 	return DrawStringMultiLine(left, right, top, bottom, buffer, lastof(buffer), colour, align, underline);
 }
 
-/** Return the string dimension in pixels. The height and width are returned
+/**
+ * Return the string dimension in pixels. The height and width are returned
  * in a single Dimension value. TINYFONT, BIGFONT modifiers are only
  * supported as the first character of the string. The returned dimensions
  * are therefore a rough estimation correct for all the current strings
@@ -1027,7 +1034,8 @@ void DrawCharCentered(WChar c, int x, int y, TextColour colour)
 	GfxMainBlitter(GetGlyph(FS_NORMAL, c), x - GetCharacterWidth(FS_NORMAL, c) / 2, y, BM_COLOUR_REMAP);
 }
 
-/** Draw a string at the given coordinates with the given colour.
+/**
+ * Draw a string at the given coordinates with the given colour.
  *  While drawing the string, parse it in case some formatting is specified,
  *  like new colour, new size or even positionning.
  * @param string              The string to draw. This is already bidi reordered.
@@ -1706,7 +1714,8 @@ void MarkWholeScreenDirty()
 	SetDirtyBlocks(0, 0, _screen.width, _screen.height);
 }
 
-/** Set up a clipping area for only drawing into a certain area. To do this,
+/**
+ * Set up a clipping area for only drawing into a certain area. To do this,
  * Fill a DrawPixelInfo object with the supplied relative rectangle, backup
  * the original (calling) _cur_dpi and assign the just returned DrawPixelInfo
  * _cur_dpi. When you are done, give restore _cur_dpi's original value

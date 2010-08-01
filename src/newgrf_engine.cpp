@@ -881,7 +881,8 @@ static inline void NewVehicleResolver(ResolverObject *res, EngineID engine_type,
 }
 
 
-/** Retrieve the SpriteGroup for the specified vehicle.
+/**
+ * Retrieve the SpriteGroup for the specified vehicle.
  * If the vehicle is not specified, the purchase list group for the engine is
  * chosen. For trains, an additional engine override lookup is performed.
  * @param engine    Engine type of the vehicle.

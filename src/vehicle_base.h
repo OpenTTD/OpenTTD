@@ -739,7 +739,8 @@ struct FreeUnitIDGenerator {
 	UnitID maxid; ///< maximum ID at the moment of constructor call
 	UnitID curid; ///< last ID returned; 0 if none
 
-	/** Initializes the structure. Vehicle unit numbers are supposed not to change after
+	/**
+	 * Initializes the structure. Vehicle unit numbers are supposed not to change after
 	 * struct initialization, except after each call to this->NextID() the returned value
 	 * is assigned to a vehicle.
 	 * @param type type of vehicle

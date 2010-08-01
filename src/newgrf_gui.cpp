@@ -554,7 +554,8 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 		this->DrawEditBox(SNGRFS_FILTER);
 	}
 
-	/** Pick the palette for the sprite of the grf to display.
+	/**
+	 * Pick the palette for the sprite of the grf to display.
 	 * @param c grf to display.
 	 * @return Palette for the sprite.
 	 */
@@ -923,7 +924,8 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 		this->InvalidateData();
 	}
 
-	/** Calback to update internal data.
+	/**
+	 * Calback to update internal data.
 	 *  - 0: (optionally) build availables, update button status.
 	 *  - 1: build availables, Add newly found grfs, update button status.
 	 *  - 2: (optionally) build availables, Reset preset, + 3
@@ -1160,7 +1162,8 @@ NewGRFWindow::GUIGRFConfigList::FilterFunction * const NewGRFWindow::filter_func
 	&TagNameFilter,
 };
 
-/** Custom nested widget container for the NewGRF gui.
+/**
+ * Custom nested widget container for the NewGRF gui.
  * Depending on the space in the gui, it uses either
  * - two column mode, put the #acs and the #avs underneath each other and the #info next to it, or
  * - three column mode, put the #avs, #acs, and #info each in its own column.
@@ -1491,7 +1494,8 @@ static const WindowDesc _newgrf_desc(
 	_nested_newgrf_widgets, lengthof(_nested_newgrf_widgets)
 );
 
-/** Callback function for the newgrf 'apply changes' confirmation window
+/**
+ * Callback function for the newgrf 'apply changes' confirmation window
  * @param w Window which is calling this callback
  * @param confirmed boolean value, true when yes was clicked, false otherwise
  */
@@ -1521,7 +1525,8 @@ static void NewGRFConfirmationCallback(Window *w, bool confirmed)
 
 
 
-/** Setup the NewGRF gui
+/**
+ * Setup the NewGRF gui
  * @param editable allow the user to make changes to the grfconfig in the window
  * @param show_params show information about what parameters are set for the grf files
  * @param exec_changes if changes are made to the list (editable is true), apply these

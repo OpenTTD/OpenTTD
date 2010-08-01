@@ -44,7 +44,8 @@ void SoundDriver_Allegro::MainLoop()
 	free_audio_stream_buffer(_stream);
 }
 
-/** There are multiple modules that might be using Allegro and
+/**
+ * There are multiple modules that might be using Allegro and
  * Allegro can only be initiated once. */
 extern int _allegro_instance_count;
 

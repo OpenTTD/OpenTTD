@@ -149,7 +149,8 @@ static inline bool IsRoadOwner(TileIndex t, RoadType rt, Owner o)
 	return (GetRoadOwner(t, rt) == o);
 }
 
-/** Checks if given tile has town owned road
+/**
+ * Checks if given tile has town owned road
  * @param t tile to check
  * @return true iff tile has road and the road is owned by a town
  * @pre IsTileType(t, MP_ROAD)

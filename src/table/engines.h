@@ -7,14 +7,16 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file table/engines.h
+/**
+ * @file table/engines.h
  *  This file contains all the data for vehicles
  */
 
 #ifndef ENGINES_H
 #define ENGINES_H
 
-/** Writes the properties of a train or road vehicle into the EngineInfo struct.
+/**
+ * Writes the properties of a train or road vehicle into the EngineInfo struct.
  * @see EngineInfo
  * @param a base introduction date (days since 1920-01-01)
  * @param b decay speed
@@ -27,7 +29,8 @@
  */
 #define MK(a, b, c, d, e, f) { DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 5, f, e, 0, 8, 0, 0, 0, STR_EMPTY }
 
-/** Writes the properties of a train carriage into the EngineInfo struct.
+/**
+ * Writes the properties of a train carriage into the EngineInfo struct.
  * @param a base introduction date (days since 1920-01-01)
  * @param b decay speed
  * @param c life length (years)
@@ -39,7 +42,8 @@
  */
 #define MW(a, b, c, d, e, f) { DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 5, f, e, 0, 8, 0, 0, 0, STR_EMPTY }
 
-/** Writes the properties of a ship into the EngineInfo struct.
+/**
+ * Writes the properties of a ship into the EngineInfo struct.
  * @param a base introduction date (days since 1920-01-01)
  * @param b decay speed
  * @param c life length (years)
@@ -51,7 +55,8 @@
  */
 #define MS(a, b, c, d, e, f) { DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 10, f, e, 0, 8, 0, 0, 0, STR_EMPTY }
 
-/** Writes the properties of an aeroplane into the EngineInfo struct.
+/**
+ * Writes the properties of an aeroplane into the EngineInfo struct.
  * @param a base introduction date (days since 1920-01-01)
  * @param b decay speed
  * @param c life length (years)
@@ -342,7 +347,8 @@ static const EngineInfo _orig_engine_info[] = {
 #undef MS
 #undef MA
 
-/** Writes the properties of a rail vehicle into the RailVehicleInfo struct.
+/**
+ * Writes the properties of a rail vehicle into the RailVehicleInfo struct.
  * @see RailVehicleInfo
  * @param a image_index
  * @param b type
@@ -523,7 +529,8 @@ static const RailVehicleInfo _orig_rail_vehicle_info[] = {
 #undef M
 #undef RVI
 
-/** Writes the properties of a ship into the ShipVehicleInfo struct.
+/**
+ * Writes the properties of a ship into the ShipVehicleInfo struct.
  * @see ShipVehicleInfo
  * @param a image_index
  * @param b cost_factor
@@ -553,7 +560,8 @@ static const ShipVehicleInfo _orig_ship_vehicle_info[] = {
 };
 #undef SVI
 
-/** Writes the properties of an aircraft into the AircraftVehicleInfo struct.
+/**
+ * Writes the properties of an aircraft into the AircraftVehicleInfo struct.
  * @see AircraftVehicleInfo
  * @param a image_index
  * @param b cost_factor
@@ -622,7 +630,8 @@ static const AircraftVehicleInfo _orig_aircraft_vehicle_info[] = {
 #undef H
 #undef AVI
 
-/** Writes the properties of a road vehicle into the RoadVehicleInfo struct.
+/**
+ * Writes the properties of a road vehicle into the RoadVehicleInfo struct.
  * @see RoadVehicleInfo
  * @param a image_index
  * @param b cost_factor

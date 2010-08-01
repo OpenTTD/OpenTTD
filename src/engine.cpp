@@ -38,7 +38,8 @@ INSTANTIATE_POOL_METHODS(Engine)
 
 EngineOverrideManager _engine_mngr;
 
-/** Year that engine aging stops. Engines will not reduce in reliability
+/**
+ * Year that engine aging stops. Engines will not reduce in reliability
  * and no more engines will be introduced */
 static Year _year_engine_aging_stops;
 
@@ -399,7 +400,8 @@ EngineID EngineOverrideManager::GetID(VehicleType type, uint16 grf_local_id, uin
 	return INVALID_ENGINE;
 }
 
-/** Sets cached values in Company::num_vehicles and Group::num_vehicles
+/**
+ * Sets cached values in Company::num_vehicles and Group::num_vehicles
  */
 void SetCachedEngineCounts()
 {
@@ -653,7 +655,8 @@ void EnginesDailyLoop()
 	}
 }
 
-/** Accept an engine prototype. XXX - it is possible that the top-company
+/**
+ * Accept an engine prototype. XXX - it is possible that the top-company
  * changes while you are waiting to accept the offer? Then it becomes invalid
  * @param tile unused
  * @param flags operation to perfom
@@ -766,7 +769,8 @@ static bool IsUniqueEngineName(const char *name)
 	return true;
 }
 
-/** Rename an engine.
+/**
+ * Rename an engine.
  * @param tile unused
  * @param flags operation to perfom
  * @param p1 engine ID to rename
@@ -802,7 +806,8 @@ CommandCost CmdRenameEngine(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 }
 
 
-/** Check if an engine is buildable.
+/**
+ * Check if an engine is buildable.
  * @param engine  index of the engine to check.
  * @param type    the type the engine should be.
  * @param company index of the company.

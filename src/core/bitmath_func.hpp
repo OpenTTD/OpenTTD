@@ -34,7 +34,8 @@ static FORCEINLINE uint GB(const T x, const uint8 s, const uint8 n)
 	return (x >> s) & ((1U << n) - 1);
 }
 
-/** Set \a n bits in \a x starting at bit \a s to \a d
+/**
+ * Set \a n bits in \a x starting at bit \a s to \a d
  *
  * This function sets \a n bits from \a x which started as bit \a s to the value of
  * \a d. The parameters \a x, \a s and \a n works the same as the parameters of
@@ -59,7 +60,8 @@ static FORCEINLINE T SB(T &x, const uint8 s, const uint8 n, const U d)
 	return x;
 }
 
-/** Add i to n bits of x starting at bit s.
+/**
+ * Add i to n bits of x starting at bit s.
  *
  * This add the value of i on n bits of x starting at bit s. The parameters x,
  * s, i are similar to #GB besides x must be a variable as the result are

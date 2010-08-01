@@ -7,7 +7,8 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file string_func.h Functions related to low-level strings.
+/**
+ * @file string_func.h Functions related to low-level strings.
  *
  * @note Be aware of "dangerous" string functions; string functions that
  * have behaviour that could easily cause buffer overruns and such:
@@ -167,7 +168,8 @@ static inline WChar Utf8Consume(const char **s)
 }
 
 
-/** Return the length of a UTF-8 encoded character.
+/**
+ * Return the length of a UTF-8 encoded character.
  * @param c Unicode character.
  * @return Length of UTF-8 encoding for character.
  */

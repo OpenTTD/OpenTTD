@@ -72,7 +72,8 @@ CStrA TileStr(TileIndex tile)
 	return out.Transfer();
 }
 
-/** Keep track of the last assigned type_id. Used for anti-recursion.
+/**
+ * Keep track of the last assigned type_id. Used for anti-recursion.
  *static*/ size_t& DumpTarget::LastTypeId()
 {
 	static size_t last_type_id = 0;

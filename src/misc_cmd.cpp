@@ -25,7 +25,8 @@
 
 #include "table/strings.h"
 
-/** Increase the loan of your company.
+/**
+ * Increase the loan of your company.
  * @param tile unused
  * @param flags operation to perform
  * @param p1 amount to increase the loan with, multitude of LOAN_INTERVAL. Only used when p2 == 2.
@@ -71,7 +72,8 @@ CommandCost CmdIncreaseLoan(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	return CommandCost(EXPENSES_OTHER);
 }
 
-/** Decrease the loan of your company.
+/**
+ * Decrease the loan of your company.
  * @param tile unused
  * @param flags operation to perform
  * @param p1 amount to decrease the loan with, multitude of LOAN_INTERVAL. Only used when p2 == 2.
@@ -187,7 +189,8 @@ CommandCost CmdPause(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, 
 	return CommandCost();
 }
 
-/** Change the financial flow of your company.
+/**
+ * Change the financial flow of your company.
  * This is normally only enabled in offline mode, but if there is a debug
  * build, you can cheat (to test).
  * @param tile unused
@@ -205,7 +208,8 @@ CommandCost CmdMoneyCheat(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 	return CommandCost(EXPENSES_OTHER, -(int32)p1);
 }
 
-/** Transfer funds (money) from one company to another.
+/**
+ * Transfer funds (money) from one company to another.
  * To prevent abuse in multiplayer games you can only send money to other
  * companies if you have paid off your loan (either explicitely, or implicitely
  * given the fact that you have more money than loan).

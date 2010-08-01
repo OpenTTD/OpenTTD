@@ -884,7 +884,8 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_MAP_OK)
 	return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
 }
 
-/** The client has done a command and wants us to handle it
+/**
+ * The client has done a command and wants us to handle it
  * @param *cs the connected client that has sent the command
  * @param *p the packet in which the command was sent
  */
@@ -921,7 +922,8 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 		return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_KICKED);
 	}
 
-	/** Only CMD_COMPANY_CTRL is always allowed, for the rest, playas needs
+	/**
+	 * Only CMD_COMPANY_CTRL is always allowed, for the rest, playas needs
 	 * to match the company in the packet. If it doesn't, the client has done
 	 * something pretty naughty (or a bug), and will be kicked
 	 */
@@ -931,7 +933,8 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 		return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_COMPANY_MISMATCH);
 	}
 
-	/** @todo CMD_COMPANY_CTRL with p1 = 0 announces a new company to the server. To give the
+	/**
+	 * @todo CMD_COMPANY_CTRL with p1 = 0 announces a new company to the server. To give the
 	 * company the correct ID, the server injects p2 and executes the command. Any other p1
 	 * is prohibited. Pretty ugly and should be redone together with its function.
 	 * @see CmdCompanyCtrl()

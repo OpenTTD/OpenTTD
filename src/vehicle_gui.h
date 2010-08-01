@@ -88,7 +88,8 @@ static inline uint GetVehicleHeight(VehicleType type)
 	return (type == VEH_TRAIN || type == VEH_ROAD) ? 14 : 24;
 }
 
-/** Get WindowClass for vehicle list of given vehicle type
+/**
+ * Get WindowClass for vehicle list of given vehicle type
  * @param vt vehicle type to check
  * @return corresponding window class
  * @note works only for company buildable vehicle types

@@ -821,7 +821,8 @@ int AllocateSpecToStation(const StationSpec *statspec, BaseStation *st, bool exe
 }
 
 
-/** Deallocate a StationSpec from a Station. Called when removing a single station tile.
+/**
+ * Deallocate a StationSpec from a Station. Called when removing a single station tile.
  * @param st Station to work with.
  * @param specindex Index of the custom station within the Station's spec list.
  * @return Indicates whether the StationSpec was deallocated.
@@ -862,7 +863,8 @@ void DeallocateSpecFromStation(BaseStation *st, byte specindex)
 	StationUpdateAnimTriggers(st);
 }
 
-/** Draw representation of a station tile for GUI purposes.
+/**
+ * Draw representation of a station tile for GUI purposes.
  * @param x Position x of image.
  * @param y Position y of image.
  * @param axis Axis.

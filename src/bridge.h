@@ -15,7 +15,8 @@
 #include "gfx_type.h"
 #include "tile_cmd.h"
 
-/** This enum is related to the definition of bridge pieces,
+/**
+ * This enum is related to the definition of bridge pieces,
  * which is used to determine the proper sprite table to use
  * while drawing a given bridge part.
  */
@@ -36,7 +37,8 @@ static const uint MAX_BRIDGES = 13;
 
 typedef uint BridgeType;
 
-/** Struct containing information about a single bridge type
+/**
+ * Struct containing information about a single bridge type
  */
 struct BridgeSpec {
 	Year avail_year;             ///< the year where it becomes available

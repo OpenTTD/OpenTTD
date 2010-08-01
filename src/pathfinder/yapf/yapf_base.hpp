@@ -17,7 +17,8 @@
 
 extern int _total_pf_time_us;
 
-/** CYapfBaseT - A-star type path finder base class.
+/**
+ * CYapfBaseT - A-star type path finder base class.
  *  Derive your own pathfinder from it. You must provide the following template argument:
  *    Types      - used as collection of local types used in pathfinder
  *
@@ -108,7 +109,8 @@ public:
 		return *m_settings;
 	}
 
-	/** Main pathfinder routine:
+	/**
+	 * Main pathfinder routine:
 	 *   - set startup node(s)
 	 *   - main loop that stops if:
 	 *      - the destination was found
@@ -174,7 +176,8 @@ public:
 		return bDestFound;
 	}
 
-	/** If path was found return the best node that has reached the destination. Otherwise
+	/**
+	 * If path was found return the best node that has reached the destination. Otherwise
 	 *  return the best visited node (which was nearest to the destination).
 	 */
 	FORCEINLINE Node *GetBestNode()
@@ -182,7 +185,8 @@ public:
 		return (m_pBestDestNode != NULL) ? m_pBestDestNode : m_pBestIntermediateNode;
 	}
 
-	/** Calls NodeList::CreateNewNode() - allocates new node that can be filled and used
+	/**
+	 * Calls NodeList::CreateNewNode() - allocates new node that can be filled and used
 	 *  as argument for AddStartupNode() or AddNewNode()
 	 */
 	FORCEINLINE Node& CreateNewNode()
@@ -217,7 +221,8 @@ public:
 		}
 	}
 
-	/** AddNewNode() - called by Tderived::PfFollowNode() for each child node.
+	/**
+	 * AddNewNode() - called by Tderived::PfFollowNode() for each child node.
 	 *  Nodes are evaluated here and added into open list */
 	void AddNewNode(Node &n, const TrackFollower &tf)
 	{

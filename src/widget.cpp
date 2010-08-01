@@ -141,7 +141,8 @@ static void ScrollbarClickPositioning(Window *w, WidgetType wtp, int x, int y, i
 	w->SetDirty();
 }
 
-/** Special handling for the scrollbar widget type.
+/**
+ * Special handling for the scrollbar widget type.
  * Handles the special scrolling buttons and other scrolling.
  * @param w Window on which a scroll was performed.
  * @param nw Pointer to the scrollbar widget.
@@ -176,7 +177,8 @@ void ScrollbarClickHandler(Window *w, const NWidgetCore *nw, int x, int y)
 	ScrollbarClickPositioning(w, nw->type, x, y, mi, ma);
 }
 
-/** Returns the index for the widget located at the given position
+/**
+ * Returns the index for the widget located at the given position
  * relative to the window. It includes all widget-corner pixels as well.
  * @param *w Window to look inside
  * @param  x The Window client X coordinate
@@ -1033,7 +1035,8 @@ NWidgetCore *NWidgetStacked::GetWidgetFromPos(int x, int y)
 	return NULL;
 }
 
-/** Select which plane to show (for #NWID_SELECTION only).
+/**
+ * Select which plane to show (for #NWID_SELECTION only).
  * @param plane Plane number to display.
  */
 void NWidgetStacked::SetDisplayedPlane(int plane)
@@ -2355,7 +2358,8 @@ NWidgetContainer *MakeNWidgets(const NWidgetPart *parts, int count, int *biggest
 	return container;
 }
 
-/** Make a nested widget tree for a window from a parts array. Besides loading, it inserts a shading selection widget
+/**
+ * Make a nested widget tree for a window from a parts array. Besides loading, it inserts a shading selection widget
  * between the title bar and the window body if the first widget in the parts array looks like a title bar (it is a horizontal
  * container with a caption widget) and has a shade box widget.
  * @param parts Array with parts of the widgets.

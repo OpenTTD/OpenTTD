@@ -82,7 +82,8 @@ enum ViewportPlaceMethod {
 };
 DECLARE_ENUM_AS_BIT_SET(ViewportPlaceMethod)
 
-/** Drag and drop selection process, or, what to do with an area of land when
+/**
+ * Drag and drop selection process, or, what to do with an area of land when
  * you've selected it. */
 enum ViewportDragDropSelectionProcess {
 	DDSP_DEMOLISH_AREA,        ///< Clear area

@@ -7,7 +7,8 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file elrail.cpp
+/**
+ * @file elrail.cpp
  * This file deals with displaying wires and pylons for electric railways.
  * <h2>Basics</h2>
  *
@@ -182,7 +183,8 @@ static inline SpriteID GetPylonBase(TileIndex tile, bool upper_halftile = false)
 	return pylons == 0 ? SPR_PYLON_BASE : pylons;
 }
 
-/** Corrects the tileh for certain tile types. Returns an effective tileh for the track on the tile.
+/**
+ * Corrects the tileh for certain tile types. Returns an effective tileh for the track on the tile.
  * @param tile The tile to analyse
  * @param *tileh the tileh
  */
@@ -258,7 +260,8 @@ void DrawCatenaryOnTunnel(const TileInfo *ti)
 	);
 }
 
-/** Draws wires and, if required, pylons on a given tile
+/**
+ * Draws wires and, if required, pylons on a given tile
  * @param ti The Tileinfo to draw the tile for
  */
 static void DrawCatenaryRailway(const TileInfo *ti)

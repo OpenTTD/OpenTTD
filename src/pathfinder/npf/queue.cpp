@@ -435,7 +435,8 @@ void clear_Hash(Hash *h, bool free_values)
 	h->size = 0;
 }
 
-/** Finds the node that that saves this key pair. If it is not
+/**
+ * Finds the node that that saves this key pair. If it is not
  * found, returns NULL. If it is found, *prev is set to the
  * node before the one found, or if the node found was the first in the bucket
  * to NULL. If it is not found, *prev is set to the last HashNode in the

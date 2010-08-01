@@ -103,7 +103,8 @@ struct RoadVehicleInfo {
 	uint8 air_drag;          ///< Coefficient of air drag
 };
 
-/** Information about a vehicle
+/**
+ * Information about a vehicle
  *  @see table/engines.h
  */
 struct EngineInfo {

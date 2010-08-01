@@ -30,7 +30,8 @@ extern void ChangeVehicleViewports(VehicleID from_index, VehicleID to_index);
 extern void ChangeVehicleNews(VehicleID from_index, VehicleID to_index);
 extern void ChangeVehicleViewWindow(VehicleID from_index, VehicleID to_index);
 
-/** Figure out if two engines got at least one type of cargo in common (refitting if needed)
+/**
+ * Figure out if two engines got at least one type of cargo in common (refitting if needed)
  * @param engine_a one of the EngineIDs
  * @param engine_b the other EngineID
  * @param type the type of the engines
@@ -91,7 +92,8 @@ bool CheckAutoreplaceValidity(EngineID from, EngineID to, CompanyID company)
 	return EnginesHaveCargoInCommon(from, to);
 }
 
-/** Transfer cargo from a single (articulated )old vehicle to the new vehicle chain
+/**
+ * Transfer cargo from a single (articulated )old vehicle to the new vehicle chain
  * @param old_veh Old vehicle that will be sold
  * @param new_head Head of the completely constructed new vehicle chain
  * @param part_of_chain The vehicle is part of a train
@@ -210,7 +212,8 @@ static CargoID GetNewCargoTypeForReplace(Vehicle *v, EngineID engine_type, bool 
 	}
 }
 
-/** Get the EngineID of the replacement for a vehicle
+/**
+ * Get the EngineID of the replacement for a vehicle
  * @param v The vehicle to find a replacement for
  * @param c The vehicle's owner (it's faster to forward the pointer than refinding it)
  * @return the EngineID of the replacement. INVALID_ENGINE if no buildable replacement is found
@@ -238,7 +241,8 @@ static EngineID GetNewEngineType(const Vehicle *v, const Company *c)
 	return INVALID_ENGINE;
 }
 
-/** Builds and refits a replacement vehicle
+/**
+ * Builds and refits a replacement vehicle
  * Important: The old vehicle is still in the original vehicle chain (used for determining the cargo when the old vehicle did not carry anything, but the new one does)
  * @param old_veh A single (articulated/multiheaded) vehicle that shall be replaced.
  * @param new_vehicle Returns the newly build and refittet vehicle
@@ -284,7 +288,8 @@ static CommandCost BuildReplacementVehicle(Vehicle *old_veh, Vehicle **new_vehic
 	return cost;
 }
 
-/** Issue a start/stop command
+/**
+ * Issue a start/stop command
  * @param v a vehicle
  * @param evaluate_callback shall the start/stop callback be evaluated?
  * @return success or error
@@ -294,7 +299,8 @@ static inline CommandCost StartStopVehicle(const Vehicle *v, bool evaluate_callb
 	return DoCommand(0, v->index, evaluate_callback ? 1 : 0, DC_EXEC | DC_AUTOREPLACE, CMD_START_STOP_VEHICLE);
 }
 
-/** Issue a train vehicle move command
+/**
+ * Issue a train vehicle move command
  * @param v The vehicle to move
  * @param after The vehicle to insert 'v' after, or NULL to start new chain
  * @param flags the command flags to use
@@ -306,7 +312,8 @@ static inline CommandCost MoveVehicle(const Vehicle *v, const Vehicle *after, Do
 	return DoCommand(0, v->index | (after != NULL ? after->index : INVALID_VEHICLE) << 16, whole_chain ? 1 : 0, flags, CMD_MOVE_RAIL_VEHICLE);
 }
 
-/** Copy head specific things to the new vehicle chain after it was successfully constructed
+/**
+ * Copy head specific things to the new vehicle chain after it was successfully constructed
  * @param old_head The old front vehicle (no wagons attached anymore)
  * @param new_head The new head of the completely replaced vehicle chain
  * @param flags the command flags to use
@@ -350,7 +357,8 @@ static CommandCost CopyHeadSpecificThings(Vehicle *old_head, Vehicle *new_head, 
 	return cost;
 }
 
-/** Replace a single unit in a free wagon chain
+/**
+ * Replace a single unit in a free wagon chain
  * @param single_unit vehicle to let autoreplace/renew operator on
  * @param flags command flags
  * @param nothing_to_do is set to 'false' when something was done (only valid when not failed)
@@ -398,7 +406,8 @@ static CommandCost ReplaceFreeUnit(Vehicle **single_unit, DoCommandFlag flags, b
 	return cost;
 }
 
-/** Replace a whole vehicle chain
+/**
+ * Replace a whole vehicle chain
  * @param chain vehicle chain to let autoreplace/renew operator on
  * @param flags command flags
  * @param wagon_removal remove wagons when the resulting chain occupies more tiles than the old did
@@ -607,7 +616,8 @@ static CommandCost ReplaceChain(Vehicle **chain, DoCommandFlag flags, bool wagon
 	return cost;
 }
 
-/** Autoreplaces a vehicle
+/**
+ * Autoreplaces a vehicle
  * Trains are replaced as a whole chain, free wagons in depot are replaced on their own
  * @param tile not used
  * @param flags type of operation

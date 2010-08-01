@@ -204,7 +204,8 @@ static HeightMap _height_map = {NULL, 0, 0, 0, 0};
 /** Maximum index into array of noise amplitudes */
 static const int TGP_FREQUENCY_MAX = 6;
 
-/** Noise amplitudes (multiplied by 1024)
+/**
+ * Noise amplitudes (multiplied by 1024)
  * - indexed by "smoothness setting" and log2(frequency) */
 static const amplitude_t _amplitudes_by_smoothness_and_frequency[4][TGP_FREQUENCY_MAX + 1] = {
 	/* lowest frequncy....  ...highest (every corner) */
@@ -229,7 +230,8 @@ static const int8 _max_height[4] = {
 	15       ///< Mountainous
 };
 
-/** Check if a X/Y set are within the map.
+/**
+ * Check if a X/Y set are within the map.
  * @param x coordinate x
  * @param y coordinate y
  * @return true if within the map
@@ -835,7 +837,8 @@ static void HeightMapSmoothSlopes(height_t dh_max)
 	}
 }
 
-/** Height map terraform post processing:
+/**
+ * Height map terraform post processing:
  *  - water level adjusting
  *  - coast Smoothing
  *  - slope Smoothing

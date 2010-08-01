@@ -48,7 +48,8 @@ enum LockPart {
 	LOCK_END    = 0x1C
 };
 
-/** Get the water tile type at a tile.
+/**
+ * Get the water tile type at a tile.
  * @param t Water tile to query.
  * @return Water tile type at the tile.
  */
@@ -64,7 +65,8 @@ static inline WaterTileType GetWaterTileType(TileIndex t)
 	return WATER_TILE_DEPOT;
 }
 
-/** Get the water class at a tile.
+/**
+ * Get the water class at a tile.
  * @param t Water tile to query.
  * @return Water class at the tile.
  */
@@ -74,7 +76,8 @@ static inline WaterClass GetWaterClass(TileIndex t)
 	return (WaterClass)(IsTileType(t, MP_INDUSTRY) ? GB(_m[t].m1, 5, 2) : GB(_m[t].m3, 0, 2));
 }
 
-/** Set the water class at a tile.
+/**
+ * Set the water class at a tile.
  * @param t  Water tile to change.
  * @param wc New water class.
  */
@@ -88,7 +91,8 @@ static inline void SetWaterClass(TileIndex t, WaterClass wc)
 	}
 }
 
-/** Is it a plain water tile?
+/**
+ * Is it a plain water tile?
  * @param t Water tile to query.
  * @return \c true if any type of clear water like ocean, river, or canal.
  */
@@ -97,7 +101,8 @@ static inline bool IsWater(TileIndex t)
 	return GetWaterTileType(t) == WATER_TILE_CLEAR;
 }
 
-/** Is it a sea water tile?
+/**
+ * Is it a sea water tile?
  * @param t Water tile to query.
  * @return \c true if it is a sea water tile.
  */
@@ -106,7 +111,8 @@ static inline bool IsSea(TileIndex t)
 	return IsWater(t) && GetWaterClass(t) == WATER_CLASS_SEA;
 }
 
-/** Is it a canal tile?
+/**
+ * Is it a canal tile?
  * @param t Water tile to query.
  * @return \c true if it is a canal tile.
  */
@@ -115,7 +121,8 @@ static inline bool IsCanal(TileIndex t)
 	return IsWater(t) && GetWaterClass(t) == WATER_CLASS_CANAL;
 }
 
-/** Is it a river water tile?
+/**
+ * Is it a river water tile?
  * @param t Water tile to query.
  * @return \c true if it is a river water tile.
  */
@@ -124,7 +131,8 @@ static inline bool IsRiver(TileIndex t)
 	return IsWater(t) && GetWaterClass(t) == WATER_CLASS_RIVER;
 }
 
-/** Is it a water tile with plain water?
+/**
+ * Is it a water tile with plain water?
  * @param t Tile to query.
  * @return \c true if it is a plain water tile.
  */
@@ -133,7 +141,8 @@ static inline bool IsWaterTile(TileIndex t)
 	return IsTileType(t, MP_WATER) && IsWater(t);
 }
 
-/** Is it a coast tile?
+/**
+ * Is it a coast tile?
  * @param t Water tile to query.
  * @return \c true if it is a sea water tile.
  */
@@ -142,7 +151,8 @@ static inline bool IsCoast(TileIndex t)
 	return GetWaterTileType(t) == WATER_TILE_COAST;
 }
 
-/** Get the other tile of the ship depot.
+/**
+ * Get the other tile of the ship depot.
  * @param t Tile to query, containing one section of a ship depot.
  * @return Tile containing the other section of the depot.
  */
@@ -151,7 +161,8 @@ static inline TileIndex GetOtherShipDepotTile(TileIndex t)
 	return t + (HasBit(_m[t].m5, 0) ? -1 : 1) * (HasBit(_m[t].m5, 1) ? TileDiffXY(0, 1) : TileDiffXY(1, 0));
 }
 
-/** Is it a water tile with a ship depot on it?
+/**
+ * Is it a water tile with a ship depot on it?
  * @param t Water tile to query.
  * @return \c true if it is a ship depot tile.
  */
@@ -160,7 +171,8 @@ static inline bool IsShipDepot(TileIndex t)
 	return IsInsideMM(_m[t].m5, DEPOT_NORTH, DEPOT_END);
 }
 
-/** Is it a ship depot tile?
+/**
+ * Is it a ship depot tile?
  * @param t Tile to query.
  * @return \c true if it is a ship depot tile.
  */
@@ -169,7 +181,8 @@ static inline bool IsShipDepotTile(TileIndex t)
 	return IsTileType(t, MP_WATER) && IsShipDepot(t);
 }
 
-/** Get the axis of the ship depot.
+/**
+ * Get the axis of the ship depot.
  * @param t Water tile to query.
  * @return Axis of the depot.
  */
@@ -178,7 +191,8 @@ static inline Axis GetShipDepotAxis(TileIndex t)
 	return (Axis)GB(_m[t].m5, 1, 1);
 }
 
-/** Get the direction of the ship depot.
+/**
+ * Get the direction of the ship depot.
  * @param t Water tile to query.
  * @return Direction of the depot.
  */
@@ -187,7 +201,8 @@ static inline DiagDirection GetShipDepotDirection(TileIndex t)
 	return XYNSToDiagDir(GetShipDepotAxis(t), GB(_m[t].m5, 0, 1));
 }
 
-/** Is it a water lock tile?
+/**
+ * Is it a water lock tile?
  * @param t Water tile to query.
  * @return \c true if it is a water lock tile.
  */
@@ -196,7 +211,8 @@ static inline bool IsLock(TileIndex t)
 	return IsInsideMM(_m[t].m5, LOCK_MIDDLE, LOCK_END);
 }
 
-/** Get the direction of the water lock.
+/**
+ * Get the direction of the water lock.
  * @param t Water tile to query.
  * @return Direction of the lock.
  */
@@ -205,7 +221,8 @@ static inline DiagDirection GetLockDirection(TileIndex t)
 	return (DiagDirection)GB(_m[t].m5, 0, 2);
 }
 
-/** Get a section of a depot or a lock.
+/**
+ * Get a section of a depot or a lock.
  * @param t Water tile to query.
  * @return The section.
  */
@@ -215,7 +232,8 @@ static inline byte GetSection(TileIndex t)
 	return GB(_m[t].m5, 0, 4);
 }
 
-/** Get the random bits of the water tile.
+/**
+ * Get the random bits of the water tile.
  * @param t Water tile to query.
  * @return Random bits of the tile.
  */
@@ -312,7 +330,8 @@ static inline void MakeShipDepot(TileIndex t, Owner o, DepotID did, DepotPart ba
 	_me[t].m7 = 0;
 }
 
-/** Make a lock section.
+/**
+ * Make a lock section.
  * @param t Tile to place the water lock section.
  * @param o Owner of the lock.
  * @param section Section to place.

@@ -79,7 +79,8 @@ public:
 
 	virtual ~DriverFactoryBase();
 
-	/** Shuts down all active drivers
+	/**
+	 * Shuts down all active drivers
 	 */
 	static void ShutdownDrivers()
 	{

@@ -420,7 +420,8 @@ static void MakeSingleHouseBigger(TileIndex tile)
 	MarkTileDirtyByTile(tile);
 }
 
-/** Make the house advance in its construction stages until completion
+/**
+ * Make the house advance in its construction stages until completion
  * @param tile TileIndex of house
  */
 static void MakeTownHouseBigger(TileIndex tile)
@@ -1191,7 +1192,8 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 	GrowTownWithRoad(t1, tile, rcmd);
 }
 
-/** Returns "growth" if a house was built, or no if the build failed.
+/**
+ * Returns "growth" if a house was built, or no if the build failed.
  * @param t town to inquiry
  * @param tile to inquiry
  * @return something other than zero(0)if town expansion was possible
@@ -1275,7 +1277,8 @@ static RoadBits GenRandomRoadBits()
 	return (RoadBits)((ROAD_NW << a) + (ROAD_NW << b));
 }
 
-/** Grow the town
+/**
+ * Grow the town
  * @param t town to grow
  * @return true iff a house was built
  */
@@ -1761,7 +1764,8 @@ static Town *CreateRandomTown(uint attempts, uint32 townnameparts, TownSize size
 
 static const byte _num_initial_towns[4] = {5, 11, 23, 46};  // very low, low, normal, high
 
-/** This function will generate a certain amount of towns, with a certain layout
+/**
+ * This function will generate a certain amount of towns, with a certain layout
  * It can be called from the scenario editor (i.e.: generate Random Towns)
  * as well as from world creation.
  * @param layout which towns will be set to, when created
@@ -1807,7 +1811,8 @@ bool GenerateTowns(TownLayout layout)
 }
 
 
-/** Returns the bit corresponding to the town zone of the specified tile
+/**
+ * Returns the bit corresponding to the town zone of the specified tile
  * @param t Town on which town zone is to be found
  * @param tile TileIndex where town zone needs to be found
  * @return the bit position of the given zone, as defined in HouseZones
@@ -2278,7 +2283,8 @@ void ClearTownHouse(Town *t, TileIndex tile)
 	if (eflags & BUILDING_HAS_4_TILES) DoClearTownHouseHelper(tile + TileDiffXY(1, 1), t, ++house);
 }
 
-/** Rename a town (server-only).
+/**
+ * Rename a town (server-only).
  * @param tile unused
  * @param flags type of operation
  * @param p1 town ID to rename
@@ -2334,7 +2340,8 @@ void ExpandTown(Town *t)
 	UpdateTownMaxPass(t);
 }
 
-/** Factor in the cost of each town action.
+/**
+ * Factor in the cost of each town action.
  * @see TownActions
  */
 const byte _town_action_costs[TACT_COUNT] = {
@@ -2506,7 +2513,8 @@ static TownActionProc * const _town_action_proc[] = {
 	TownActionBribe
 };
 
-/** Get a list of available actions to do at a town.
+/**
+ * Get a list of available actions to do at a town.
  * @param nump if not NULL add put the number of available actions in it
  * @param cid the company that is querying the town
  * @param t the town that is queried
@@ -2548,7 +2556,8 @@ uint GetMaskOfTownActions(int *nump, CompanyID cid, const Town *t)
 	return buttons;
 }
 
-/** Do a town action.
+/**
+ * Do a town action.
  * This performs an action such as advertising, building a statue, funding buildings,
  * but also bribing the town-council
  * @param tile unused
@@ -2617,7 +2626,8 @@ static void UpdateTownGrowRate(Town *t)
 	ClrBit(t->flags, TOWN_IS_FUNDED);
 	if (_settings_game.economy.town_growth_rate == 0 && t->fund_buildings_months == 0) return;
 
-	/** Towns are processed every TOWN_GROWTH_FREQUENCY ticks, and this is the
+	/**
+	 * Towns are processed every TOWN_GROWTH_FREQUENCY ticks, and this is the
 	 * number of times towns are processed before a new building is built. */
 	static const uint16 _grow_count_values[2][6] = {
 		{ 120, 120, 120, 100,  80,  60 }, // Fund new buildings has been activated
@@ -2702,7 +2712,8 @@ CommandCost CheckIfAuthorityAllowsNewStation(TileIndex tile, DoCommandFlag flags
 	return_cmd_error(STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS);
 }
 
-/** Return the town closest to the given tile within \a threshold.
+/**
+ * Return the town closest to the given tile within \a threshold.
  * @param tile      Starting point of the search.
  * @param threshold Biggest allowed distance to the town.
  * @return Closest town to \a tile within \a threshold, or \c NULL if there is no such town.

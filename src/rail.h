@@ -80,7 +80,8 @@ enum RailTrackBridgeOffset {
 	RTBO_SLOPE, ///< Sloped rail pieces, in order NE, SE, SW, NW
 };
 
-/** Offsets from base sprite for fence sprites. These are in the order of
+/**
+ * Offsets from base sprite for fence sprites. These are in the order of
  *  the sprites in the original data files.
  */
 enum RailFenceOffset {
@@ -94,10 +95,12 @@ enum RailFenceOffset {
 	RFO_SLOPE_NW,
 };
 
-/** This struct contains all the info that is needed to draw and construct tracks.
+/**
+ * This struct contains all the info that is needed to draw and construct tracks.
  */
 struct RailtypeInfo {
-	/** Struct containing the main sprites. @note not all sprites are listed, but only
+	/**
+	 * Struct containing the main sprites. @note not all sprites are listed, but only
 	 *  the ones used directly in the code */
 	struct {
 		SpriteID track_y;      ///< single piece of rail in Y direction, with ground
@@ -114,7 +117,8 @@ struct RailtypeInfo {
 		SpriteID tunnel;       ///< tunnel sprites base
 	} base_sprites;
 
-	/** struct containing the sprites for the rail GUI. @note only sprites referred to
+	/**
+	 * struct containing the sprites for the rail GUI. @note only sprites referred to
 	 * directly in the code are listed */
 	struct {
 		SpriteID build_ns_rail;      ///< button for building single rail in N-S direction

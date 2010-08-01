@@ -136,7 +136,8 @@ extern const CargoSpec *_sorted_cargo_specs[NUM_CARGO];
 extern uint8 _sorted_cargo_specs_size;
 extern uint8 _sorted_standard_cargo_specs_size;
 
-/** Does cargo \a c have cargo class \a cc?
+/**
+ * Does cargo \a c have cargo class \a cc?
  * @param c  Cargo type.
  * @param cc Cargo class.
  * @return The type fits in the class.

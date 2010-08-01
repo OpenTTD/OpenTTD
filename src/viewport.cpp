@@ -7,7 +7,8 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file viewport.cpp Handling of all viewports.
+/**
+ * @file viewport.cpp Handling of all viewports.
  *
  * \verbatim
  * The in-game coordinate system looks like this *
@@ -108,7 +109,8 @@ enum FoundationPart {
 	FOUNDATION_PART_END
 };
 
-/** Mode of "sprite combining"
+/**
+ * Mode of "sprite combining"
  * @see StartSpriteCombine
  */
 enum SpriteCombineMode {
@@ -448,7 +450,8 @@ Point GetTileZoomCenterWindow(bool in, Window * w)
 	return GetTileFromScreenXY(_cursor.pos.x, _cursor.pos.y, x + vp->left, y + vp->top);
 }
 
-/** Update the status of the zoom-buttons according to the zoom-level
+/**
+ * Update the status of the zoom-buttons according to the zoom-level
  * of the viewport. This will update their status and invalidate accordingly
  * @param w Window pointer to the window that has the zoom buttons
  * @param vp pointer to the viewport whose zoom-level the buttons represent
@@ -611,7 +614,8 @@ static void AddCombinedSprite(SpriteID image, PaletteID pal, int x, int y, byte 
 	AddChildSpriteScreen(image, pal, pt.x - pstd->left, pt.y - pstd->top, false, sub);
 }
 
-/** Draw a (transparent) sprite at given coordinates with a given bounding box.
+/**
+ * Draw a (transparent) sprite at given coordinates with a given bounding box.
  * The bounding box extends from (x + bb_offset_x, y + bb_offset_y, z + bb_offset_z) to (x + w - 1, y + h - 1, z + dz - 1), both corners included.
  * Bounding boxes with bb_offset_x == w or bb_offset_y == h or bb_offset_z == dz are allowed and produce thin slices.
  *
@@ -1420,7 +1424,8 @@ void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom
 	_vd.child_screen_sprites_to_draw.Clear();
 }
 
-/** Make sure we don't draw a too big area at a time.
+/**
+ * Make sure we don't draw a too big area at a time.
  * If we do, the sprite memory will overflow. */
 static void ViewportDrawChk(const ViewPort *vp, int left, int top, int right, int bottom)
 {
@@ -1859,7 +1864,8 @@ void PlaceObject()
 }
 
 
-/** Scrolls the viewport in a window to a given location.
+/**
+ * Scrolls the viewport in a window to a given location.
  * @param x       Desired x location of the map to scroll to (world coordinate).
  * @param y       Desired y location of the map to scroll to (world coordinate).
  * @param z       Desired z location of the map to scroll to (world coordinate). Use \c -1 to scroll to the height of the map at the \a x, \a y location.
@@ -1905,7 +1911,8 @@ void SetRedErrorSquare(TileIndex tile)
 	}
 }
 
-/** Highlight \a w by \a h tiles at the cursor.
+/**
+ * Highlight \a w by \a h tiles at the cursor.
  * @param w Width of the highlighted tiles rectangle.
  * @param h Height of the highlighted tiles rectangle.
  */
@@ -2029,7 +2036,8 @@ void UpdateTileSelection()
 	}
 }
 
-/** Displays the measurement tooltips when selecting multiple tiles
+/**
+ * Displays the measurement tooltips when selecting multiple tiles
  * @param str String to be displayed
  * @param paramcount number of params to deal with
  * @param params (optional) up to 5 pieces of additional information that may be added to a tooltip
@@ -2102,7 +2110,8 @@ static void VpStartPreSizing()
 	_special_mouse_mode = WSM_PRESIZE;
 }
 
-/** returns information about the 2x1 piece to be build.
+/**
+ * returns information about the 2x1 piece to be build.
  * The lower bits (0-3) are the track type. */
 static HighLightStyle Check2x1AutoRail(int mode)
 {
@@ -2135,7 +2144,8 @@ static HighLightStyle Check2x1AutoRail(int mode)
 	}
 }
 
-/** Check if the direction of start and end tile should be swapped based on
+/**
+ * Check if the direction of start and end tile should be swapped based on
  * the dragging-style. Default directions are:
  * in the case of a line (HT_RAIL, HT_LINE):  DIR_NE, DIR_NW, DIR_N, DIR_E
  * in the case of a rect (HT_RECT, HT_POINT): DIR_S, DIR_E
@@ -2165,7 +2175,8 @@ static bool SwapDirection(HighLightStyle style, TileIndex start_tile, TileIndex 
 	return false;
 }
 
-/** Calculates height difference between one tile and another.
+/**
+ * Calculates height difference between one tile and another.
  * Multiplies the result to suit the standard given by #TILE_HEIGHT_STEP.
  *
  * To correctly get the height difference we need the direction we are dragging

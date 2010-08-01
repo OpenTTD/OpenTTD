@@ -17,7 +17,8 @@
 /** Writes an airport tile without animation in the AirportTile struct */
 #define AT_NOANIM {0xFFFF, 2, STR_NULL, 0, 0, 0, true, {INVALID_AIRPORTTILE, 0, NULL, NULL, INVALID_AIRPORTTILE}}
 
-/** All default airport tiles.
+/**
+ * All default airport tiles.
  * @see AirportTiles for a list of names. */
 static const AirportTileSpec _origin_airporttile_specs[] = {
 	/* 0..9 */

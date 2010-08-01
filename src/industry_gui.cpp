@@ -121,7 +121,8 @@ static int CDECL IndustryTypeNameSorter(const IndustryType *a, const IndustryTyp
 	return (r != 0) ? r : (*a - *b);
 }
 
-/** Initialize the list of sorted industry types.
+/**
+ * Initialize the list of sorted industry types.
  */
 void SortIndustryTypes()
 {
@@ -134,7 +135,8 @@ void SortIndustryTypes()
 	QSortT(_sorted_industry_types, NUM_INDUSTRYTYPES, &IndustryTypeNameSorter);
 }
 
-/** Command callback. In case of failure to build an industry, show an error message.
+/**
+ * Command callback. In case of failure to build an industry, show an error message.
  * @param result Result of the command.
  * @param tile   Tile where the industry is placed.
  * @param p1     Additional data of the #CMD_BUILD_INDUSTRY command.
@@ -665,7 +667,8 @@ public:
 		}
 	}
 
-	/** Draw the text in the #IVW_INFO panel.
+	/**
+	 * Draw the text in the #IVW_INFO panel.
 	 * @param left  Left edge of the panel.
 	 * @param right Right edge of the panel.
 	 * @param top   Top edge of the panel.

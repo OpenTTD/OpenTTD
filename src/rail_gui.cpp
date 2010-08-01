@@ -312,7 +312,8 @@ enum RailToolbarWidgets {
 };
 
 
-/** Toggles state of the Remove button of Build rail toolbar
+/**
+ * Toggles state of the Remove button of Build rail toolbar
  * @param w window the button belongs to
  */
 static void ToggleRailButton_Remove(Window *w)
@@ -324,7 +325,8 @@ static void ToggleRailButton_Remove(Window *w)
 	SetSelectionRed(_remove_button_clicked);
 }
 
-/** Updates the Remove button because of Ctrl state change
+/**
+ * Updates the Remove button because of Ctrl state change
  * @param w window the button belongs to
  * @return true iff the remove buton was changed
  */
@@ -635,7 +637,8 @@ struct BuildRailToolbarWindow : Window {
 		if (_settings_client.gui.link_terraform_toolbar) DeleteWindowById(WC_SCEN_LAND_GEN, 0, false);
 	}
 
-	/** Configures the rail toolbar for railtype given
+	/**
+	 * Configures the rail toolbar for railtype given
 	 * @param railtype the railtype to display
 	 */
 	void SetupRailToolbar(RailType railtype)
@@ -654,7 +657,8 @@ struct BuildRailToolbarWindow : Window {
 		this->GetWidget<NWidgetCore>(RTW_BUILD_TUNNEL)->widget_data = rti->gui_sprites.build_tunnel;
 	}
 
-	/** Switch to another rail type.
+	/**
+	 * Switch to another rail type.
 	 * @param railtype New rail type.
 	 */
 	void ModifyRailType(RailType railtype)
@@ -1939,7 +1943,8 @@ bool ResetSignalVariant(int32 p = 0)
 	return true;
 }
 
-/** Resets the rail GUI - sets default railtype to build
+/**
+ * Resets the rail GUI - sets default railtype to build
  * and resets the signal GUI
  */
 void InitializeRailGUI()

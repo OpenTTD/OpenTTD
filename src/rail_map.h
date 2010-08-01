@@ -345,7 +345,8 @@ static inline void SetSignalVariant(TileIndex t, Track track, SignalVariant v)
 	if (track == INVALID_TRACK) SB(_m[t].m2, 7, 1, v);
 }
 
-/** These are states in which a signal can be. Currently these are only two, so
+/**
+ * These are states in which a signal can be. Currently these are only two, so
  * simple boolean logic will do. But do try to compare to this enum instead of
  * normal boolean evaluation, since that will make future additions easier.
  */

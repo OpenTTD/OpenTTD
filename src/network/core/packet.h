@@ -34,7 +34,8 @@ typedef uint8  PacketType; ///< Identifier for the packet
 struct Packet {
 	/** The next packet. Used for queueing packets before sending. */
 	Packet *next;
-	/** The size of the whole packet for received packets. For packets
+	/**
+	 * The size of the whole packet for received packets. For packets
 	 * that will be sent, the value is filled in just before the
 	 * actual transmission. */
 	PacketSize size;

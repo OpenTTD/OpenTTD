@@ -573,7 +573,8 @@ void Window::SetDirty() const
 	SetDirtyBlocks(this->left, this->top, this->left + this->width, this->top + this->height);
 }
 
-/** Re-initialize a window, and optionally change its size.
+/**
+ * Re-initialize a window, and optionally change its size.
  * @param rx Horizontal resize of the window.
  * @param ry Vertical resize of the window.
  * @note For just resizing the window, use #ResizeWindow instead.
@@ -609,7 +610,8 @@ void Window::ReInit(int rx, int ry)
 	/* ResizeWindow() does this->SetDirty() already, no need to do it again here. */
 }
 
-/** Set the shaded state of the window to \a make_shaded.
+/**
+ * Set the shaded state of the window to \a make_shaded.
  * @param make_shaded If \c true, shade the window (roll up until just the title bar is visible), else unshade/unroll the window to its original size.
  * @note The method uses #Window::ReInit(), thus after the call, the whole window should be considered changed.
  */
@@ -633,7 +635,8 @@ void Window::SetShaded(bool make_shaded)
 	}
 }
 
-/** Find the Window whose parent pointer points to this window
+/**
+ * Find the Window whose parent pointer points to this window
  * @param w parent Window to find child of
  * @param wc Window class of the window to remove; WC_INVALID if class does not matter
  * @return a Window pointer that is the child of w, or NULL otherwise
@@ -757,7 +760,8 @@ restart_search:
 	}
 }
 
-/** Delete all windows of a company. We identify windows of a company
+/**
+ * Delete all windows of a company. We identify windows of a company
  * by looking at the caption colour. If it is equal to the company ID
  * then we say the window belongs to the company and should be deleted
  * @param id company identifier */
@@ -780,7 +784,8 @@ restart_search:
 	DeleteWindowById(WC_BUY_COMPANY, id);
 }
 
-/** Change the owner of all the windows one company can take over from another
+/**
+ * Change the owner of all the windows one company can take over from another
  * company in the case of a company merger. Do not change ownership of windows
  * that need to be deleted once takeover is complete
  * @param old_owner original owner of the window
@@ -812,7 +817,8 @@ void ChangeWindowOwner(Owner old_owner, Owner new_owner)
 
 static void BringWindowToFront(Window *w);
 
-/** Find a window and make it the top-window on the screen.
+/**
+ * Find a window and make it the top-window on the screen.
  * The window gets unshaded if it was shaded, and a white border is drawn at its edges for a brief period of time to visualize its "activation".
  * @param cls WindowClass of the window to activate
  * @param number WindowNumber of the window to activate
@@ -846,7 +852,8 @@ static inline bool IsVitalWindow(const Window *w)
 	}
 }
 
-/** On clicking on a window, make it the frontmost window of all. However
+/**
+ * On clicking on a window, make it the frontmost window of all. However
  * there are certain windows that always need to be on-top; these include
  * - Toolbar, Statusbar (always on)
  * - New window, Chatbar (only if open)
@@ -1310,7 +1317,8 @@ Window::Window() : hscroll(false), vscroll(true), vscroll2(true)
 {
 }
 
-/** Do a search for a window at specific coordinates. For this we start
+/**
+ * Do a search for a window at specific coordinates. For this we start
  * at the topmost window, obviously and work our way down to the bottom
  * @param x position x to query
  * @param y position y to query
@@ -1416,7 +1424,8 @@ static void HandlePlacePresize()
 	w->OnPlacePresize(pt, TileVirtXY(pt.x, pt.y));
 }
 
-/** Handle drop in mouse dragging mode (#WSM_DRAGDROP).
+/**
+ * Handle drop in mouse dragging mode (#WSM_DRAGDROP).
  * @return State of handling the event.
  */
 static EventState HandleDragDrop()
@@ -1439,7 +1448,8 @@ static EventState HandleDragDrop()
 	return ES_HANDLED;
 }
 
-/** Handle dragging in mouse dragging mode (#WSM_DRAGDROP).
+/**
+ * Handle dragging in mouse dragging mode (#WSM_DRAGDROP).
  * @return State of handling the event.
  */
 static EventState HandleMouseDrag()
@@ -1512,7 +1522,8 @@ void ResizeWindow(Window *w, int delta_x, int delta_y)
 	w->SetDirty();
 }
 
-/** Return the top of the main view available for general use.
+/**
+ * Return the top of the main view available for general use.
  * @return Uppermost vertical coordinate available.
  * @note Above the upper y coordinate is often the main toolbar.
  */
@@ -1522,7 +1533,8 @@ int GetMainViewTop()
 	return (w == NULL) ? 0 : w->top + w->height;
 }
 
-/** Return the bottom of the main view available for general use.
+/**
+ * Return the bottom of the main view available for general use.
  * @return The vertical coordinate of the first unusable row, so 'top + height <= bottom' gives the correct result.
  * @note At and below the bottom y coordinate is often the status bar.
  */
@@ -1584,7 +1596,8 @@ static void PreventHiding(int *nx, int *ny, const Rect &rect, const Window *v, i
 
 static bool _dragging_window; ///< A window is being dragged or resized.
 
-/** Handle dragging/resizing of a window.
+/**
+ * Handle dragging/resizing of a window.
  * @return State of handling the event.
  */
 static EventState HandleWindowDragging()
@@ -1809,7 +1822,8 @@ static void StartWindowSizing(Window *w, bool to_left)
 	DeleteWindowById(WC_DROPDOWN_MENU, 0);
 }
 
-/** handle scrollbar scrolling with the mouse.
+/**
+ * handle scrollbar scrolling with the mouse.
  * @return State of handling the event.
  */
 static EventState HandleScrollbarScrolling()
@@ -1860,7 +1874,8 @@ static EventState HandleScrollbarScrolling()
 	return ES_HANDLED;
 }
 
-/** Handle viewport scrolling with the mouse.
+/**
+ * Handle viewport scrolling with the mouse.
  * @return State of handling the event.
  */
 static EventState HandleViewportScroll()
@@ -1909,7 +1924,8 @@ static EventState HandleViewportScroll()
 	return ES_HANDLED;
 }
 
-/** Check if a window can be made top-most window, and if so do
+/**
+ * Check if a window can be made top-most window, and if so do
  * it. If a window does not obscure any other windows, it will not
  * be brought to the foreground. Also if the only obscuring windows
  * are so-called system-windows, the window will not be moved.
@@ -1967,7 +1983,8 @@ static bool MaybeBringWindowToFront(Window *w)
 	return true;
 }
 
-/** Handle keyboard input.
+/**
+ * Handle keyboard input.
  * @param raw_key Lower 8 bits contain the ASCII character, the higher 16 bits the keycode
  */
 void HandleKeypress(uint32 raw_key)
@@ -2542,7 +2559,8 @@ restart_search:
 	}
 }
 
-/** It is possible that a stickied window gets to a position where the
+/**
+ * It is possible that a stickied window gets to a position where the
  * 'close' button is outside the gaming area. You cannot close it then; except
  * with this function. It closes all windows calling the standard function,
  * then, does a little hacked loop of closing all stickied windows. Note
@@ -2738,7 +2756,8 @@ void RelocateAllWindows(int neww, int newh)
 	}
 }
 
-/** Destructor of the base class PickerWindowBase
+/**
+ * Destructor of the base class PickerWindowBase
  * Main utility is to stop the base Window destructor from triggering
  * a free while the child will already be free, in this case by the ResetObjectToPlace().
  */

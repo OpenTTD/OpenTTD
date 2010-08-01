@@ -63,7 +63,8 @@ public:
 		return bDest;
 	}
 
-	/** Called by YAPF to calculate cost estimate. Calculates distance to the destination
+	/**
+	 * Called by YAPF to calculate cost estimate. Calculates distance to the destination
 	 *  adds it to the actual cost from origin and stores the sum to the Node::m_estimate */
 	FORCEINLINE bool PfCalcEstimate(Node& n)
 	{
@@ -102,7 +103,8 @@ public:
 			IsWaitingPositionFree(Yapf().GetVehicle(), tile, td, !TrackFollower::Allow90degTurns());
 	}
 
-	/** Called by YAPF to calculate cost estimate. Calculates distance to the destination
+	/**
+	 * Called by YAPF to calculate cost estimate. Calculates distance to the destination
 	 *  adds it to the actual cost from origin and stores the sum to the Node::m_estimate. */
 	FORCEINLINE bool PfCalcEstimate(Node& n)
 	{
@@ -181,7 +183,8 @@ public:
 		return bDest;
 	}
 
-	/** Called by YAPF to calculate cost estimate. Calculates distance to the destination
+	/**
+	 * Called by YAPF to calculate cost estimate. Calculates distance to the destination
 	 *  adds it to the actual cost from origin and stores the sum to the Node::m_estimate */
 	FORCEINLINE bool PfCalcEstimate(Node& n)
 	{

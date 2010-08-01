@@ -696,7 +696,8 @@ static const WindowDesc _save_dialog_desc(
 	_nested_save_dialog_widgets, lengthof(_nested_save_dialog_widgets)
 );
 
-/** These values are used to convert the file/operations mode into a corresponding file type.
+/**
+ * These values are used to convert the file/operations mode into a corresponding file type.
  * So each entry, as expressed by the related comment, is based on the enum   */
 static const FileType _file_modetotype[] = {
 	FT_SAVEGAME,  ///< used for SLD_LOAD_GAME

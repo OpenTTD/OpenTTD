@@ -254,7 +254,8 @@ public:
 	void ConvertFromOldSavegame();
 };
 
-/** Shared order list linking together the linked list of orders and the list
+/**
+ * Shared order list linking together the linked list of orders and the list
  *  of vehicles sharing this order list.
  */
 struct OrderList : OrderListPool::PoolItem<&_orderlist_pool> {
@@ -275,7 +276,8 @@ public:
 		: first(NULL), num_orders(num_orders), num_vehicles(0), first_shared(NULL),
 		  timetable_duration(0) { }
 
-	/** Create an order list with the given order chain for the given vehicle.
+	/**
+	 * Create an order list with the given order chain for the given vehicle.
 	 *  @param chain pointer to the first order of the order chain
 	 *  @param v any vehicle using this orderlist
 	 */

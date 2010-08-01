@@ -68,7 +68,8 @@ byte _age_cargo_skip_counter; ///< Skip aging of cargo?
 VehiclePool _vehicle_pool("Vehicle");
 INSTANTIATE_POOL_METHODS(Vehicle)
 
-/** Function to tell if a vehicle needs to be autorenewed
+/**
+ * Function to tell if a vehicle needs to be autorenewed
  * @param *c The vehicle owner
  * @return true if the vehicle is old enough for replacement
  */
@@ -395,7 +396,8 @@ bool HasVehicleOnPos(TileIndex tile, void *data, VehicleFromPosProc *proc)
 	return VehicleFromPos(tile, data, proc, true) != NULL;
 }
 
-/** Callback that returns 'real' vehicles lower or at height \c *(byte*)data .
+/**
+ * Callback that returns 'real' vehicles lower or at height \c *(byte*)data .
  * @param v Vehicle to examine.
  * @param data Pointer to height data.
  * @return \a v if conditions are met, else \c NULL.
@@ -590,7 +592,8 @@ uint CountVehiclesInChain(const Vehicle *v)
 	return count;
 }
 
-/** Check if a vehicle is counted in num_engines in each company struct
+/**
+ * Check if a vehicle is counted in num_engines in each company struct
  * @return true if the vehicle is counted in num_engines
  */
 bool Vehicle::IsEngineCountable() const
@@ -689,7 +692,8 @@ Vehicle::~Vehicle()
 	DeleteNewGRFInspectWindow(GetGrfSpecFeature(this->type), this->index);
 }
 
-/** Adds a vehicle to the list of vehicles, that visited a depot this tick
+/**
+ * Adds a vehicle to the list of vehicles, that visited a depot this tick
  * @param *v vehicle to add
  */
 void VehicleEnteredDepotThisTick(Vehicle *v)

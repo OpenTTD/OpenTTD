@@ -217,7 +217,8 @@ static const WindowDesc _endgame_desc(
 	_nested_highscore_widgets, lengthof(_nested_highscore_widgets)
 );
 
-/** Show the highscore table for a given difficulty. When called from
+/**
+ * Show the highscore table for a given difficulty. When called from
  * endgame ranking is set to the top5 element that was newly added
  * and is thus highlighted */
 void ShowHighscoreTable(int difficulty, int8 ranking)
@@ -226,7 +227,8 @@ void ShowHighscoreTable(int difficulty, int8 ranking)
 	new HighScoreWindow(&_highscore_desc, difficulty, ranking);
 }
 
-/** Show the endgame victory screen in 2050. Update the new highscore
+/**
+ * Show the endgame victory screen in 2050. Update the new highscore
  * if it was high enough */
 void ShowEndGameChart()
 {

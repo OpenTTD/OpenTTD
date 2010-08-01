@@ -61,7 +61,8 @@ const uint32 _send_to_depot_proc_table[] = {
 	CMD_SEND_AIRCRAFT_TO_HANGAR | CMD_MSG(STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR),
 };
 
-/** Start/Stop a vehicle
+/**
+ * Start/Stop a vehicle
  * @param tile unused
  * @param flags type of operation
  * @param p1 vehicle to start/stop, don't forget to change CcStartStopVehicle if you modify this!
@@ -122,7 +123,8 @@ CommandCost CmdStartStopVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 	return CommandCost();
 }
 
-/** Starts or stops a lot of vehicles
+/**
+ * Starts or stops a lot of vehicles
  * @param tile Tile of the depot where the vehicles are started/stopped (only used for depots)
  * @param flags type of operation
  * @param p1 Station/Order/Depot ID (only used for vehicle list windows)
@@ -173,7 +175,8 @@ CommandCost CmdMassStartStopVehicle(TileIndex tile, DoCommandFlag flags, uint32 
 	return CommandCost();
 }
 
-/** Sells all vehicles in a depot
+/**
+ * Sells all vehicles in a depot
  * @param tile Tile of the depot where the depot is
  * @param flags type of operation
  * @param p1 Vehicle type
@@ -243,7 +246,8 @@ CommandCost CmdDepotMassAutoReplace(TileIndex tile, DoCommandFlag flags, uint32 
 	return cost;
 }
 
-/** Learn the price of refitting a certain engine
+/**
+ * Learn the price of refitting a certain engine
  * @param engine_type Which engine to refit
  * @return Price for refitting
  */
@@ -335,7 +339,8 @@ CommandCost RefitVehicle(Vehicle *v, bool only_this, CargoID new_cid, byte new_s
 	return cost;
 }
 
-/** Test if a name is unique among vehicle names.
+/**
+ * Test if a name is unique among vehicle names.
  * @param name Name to test.
  * @return True ifffffff the name is unique.
  */
@@ -350,7 +355,8 @@ static bool IsUniqueVehicleName(const char *name)
 	return true;
 }
 
-/** Clone the custom name of a vehicle, adding or incrementing a number.
+/**
+ * Clone the custom name of a vehicle, adding or incrementing a number.
  * @param src Source vehicle, with a custom name.
  * @param dst Destination vehicle.
  */
@@ -399,7 +405,8 @@ static void CloneVehicleName(const Vehicle *src, Vehicle *dst)
 	/* All done. If we didn't find a name, it'll just use its default. */
 }
 
-/** Clone a vehicle. If it is a train, it will clone all the cars too
+/**
+ * Clone a vehicle. If it is a train, it will clone all the cars too
  * @param tile tile of the depot where the cloned vehicle is build
  * @param flags type of operation
  * @param p1 the original vehicle's index
@@ -621,7 +628,8 @@ CommandCost SendAllVehiclesToDepot(VehicleType type, DoCommandFlag flags, bool s
 	return had_success ? CommandCost() : CMD_ERROR;
 }
 
-/** Give a custom name to your vehicle
+/**
+ * Give a custom name to your vehicle
  * @param tile unused
  * @param flags type of operation
  * @param p1 vehicle ID to name
@@ -655,7 +663,8 @@ CommandCost CmdRenameVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 }
 
 
-/** Change the service interval of a vehicle
+/**
+ * Change the service interval of a vehicle
  * @param tile unused
  * @param flags type of operation
  * @param p1 vehicle ID that is being service-interval-changed

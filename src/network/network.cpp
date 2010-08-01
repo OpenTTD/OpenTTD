@@ -471,7 +471,8 @@ static void CheckPauseOnJoin()
 	CheckPauseHelper(NetworkHasJoiningClient(), PM_PAUSED_JOIN);
 }
 
-/** Converts a string to ip/port/company
+/**
+ * Converts a string to ip/port/company
  *  Format: IP:port#company
  *
  * connection_string will be re-terminated to seperate out the hostname, and company and port will

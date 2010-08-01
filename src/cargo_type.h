@@ -87,7 +87,8 @@ public:
 		memset(this->amount, 0, sizeof(this->amount));
 	}
 
-	/** Read/write access to an amount of a specific cargo type.
+	/**
+	 * Read/write access to an amount of a specific cargo type.
 	 * @param cargo Cargo type to access.
 	 */
 	FORCEINLINE uint &operator[](CargoID cargo)
@@ -95,7 +96,8 @@ public:
 		return this->amount[cargo];
 	}
 
-	/** Read-only access to an amount of a specific cargo type.
+	/**
+	 * Read-only access to an amount of a specific cargo type.
 	 * @param cargo Cargo type to access.
 	 */
 	FORCEINLINE const uint &operator[](CargoID cargo) const

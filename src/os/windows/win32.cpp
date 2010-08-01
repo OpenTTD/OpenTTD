@@ -41,7 +41,8 @@ bool MyShowCursor(bool show)
 	return !show;
 }
 
-/** Helper function needed by dynamically loading libraries
+/**
+ * Helper function needed by dynamically loading libraries
  * XXX: Hurray for MS only having an ANSI GetProcAddress function
  * on normal windows and no Wide version except for in Windows Mobile/CE */
 bool LoadLibraryList(Function proc[], const char *dll)
@@ -631,7 +632,8 @@ const TCHAR *OTTD2FS(const char *name)
 }
 
 
-/** Convert to OpenTTD's encoding from that of the environment in
+/**
+ * Convert to OpenTTD's encoding from that of the environment in
  * UNICODE. OpenTTD encoding is UTF8, local is wide
  * @param name pointer to a valid string that will be converted
  * @param utf8_buf pointer to a valid buffer that will receive the converted string
@@ -649,7 +651,8 @@ char *convert_from_fs(const wchar_t *name, char *utf8_buf, size_t buflen)
 }
 
 
-/** Convert from OpenTTD's encoding to that of the environment in
+/**
+ * Convert from OpenTTD's encoding to that of the environment in
  * UNICODE. OpenTTD encoding is UTF8, local is wide
  * @param name pointer to a valid string that will be converted
  * @param utf16_buf pointer to a valid wide-char buffer that will receive the
@@ -667,7 +670,8 @@ wchar_t *convert_to_fs(const char *name, wchar_t *utf16_buf, size_t buflen)
 	return utf16_buf;
 }
 
-/** Our very own SHGetFolderPath function for support of windows operating
+/**
+ * Our very own SHGetFolderPath function for support of windows operating
  * systems that don't have this function (eg Win9x, etc.). We try using the
  * native function, and if that doesn't exist we will try a more crude approach
  * of environment variables and hope for the best */

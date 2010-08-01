@@ -334,7 +334,8 @@ void GenerateTrees()
 	}
 }
 
-/** Plant a tree.
+/**
+ * Plant a tree.
  * @param tile start tile of area-drag of tree plantation
  * @param flags type of operation
  * @param p1 tree type, TREE_INVALID means random.

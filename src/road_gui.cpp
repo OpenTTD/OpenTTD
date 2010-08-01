@@ -212,7 +212,8 @@ static void PlaceRoad_Depot(TileIndex tile)
 	DoCommandP(tile, _cur_roadtype << 2 | _road_depot_orientation, 0, CMD_BUILD_ROAD_DEPOT | CMD_MSG(_road_type_infos[_cur_roadtype].err_depot), CcRoadDepot);
 }
 
-/** Command callback for building road stops.
+/**
+ * Command callback for building road stops.
  * @param result Result of the build road stop command.
  * @param tile Start tile.
  * @param p1 bit 0..7: Width of the road stop.
@@ -312,7 +313,8 @@ enum RoadToolbarWidgets {
 typedef void OnButtonClick(Window *w);
 
 
-/** Toogles state of the Remove button of Build road toolbar
+/**
+ * Toogles state of the Remove button of Build road toolbar
  * @param w window the button belongs to
  */
 static void ToggleRoadButton_Remove(Window *w)
@@ -323,7 +325,8 @@ static void ToggleRoadButton_Remove(Window *w)
 	SetSelectionRed(_remove_button_clicked);
 }
 
-/** Updates the Remove button because of Ctrl state change
+/**
+ * Updates the Remove button because of Ctrl state change
  * @param w window the button belongs to
  * @return true iff the remove buton was changed
  */

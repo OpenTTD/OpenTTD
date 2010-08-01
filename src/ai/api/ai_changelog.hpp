@@ -7,7 +7,8 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file ai_changelog.hpp Lists all changes / additions to the API.
+/**
+ * @file ai_changelog.hpp Lists all changes / additions to the API.
  *
  * Only new / renamed / deleted api functions will be listed here. A list of
  * bug fixes can be found in the normal changelog. Note that removed API

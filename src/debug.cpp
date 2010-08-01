@@ -161,7 +161,8 @@ void SetDebugString(const char *s)
 	}
 }
 
-/** Print out the current debug-level
+/**
+ * Print out the current debug-level
  * Just return a string with the values of all the debug categorites
  * @return string with debug-levels
  */

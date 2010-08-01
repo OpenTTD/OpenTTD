@@ -515,7 +515,8 @@ static void CurrentScreenCallback(void *userdata, void *buf, uint y, uint pitch,
 	blitter->CopyImageToBuffer(src, buf, _screen.width, n, pitch);
 }
 
-/** generate a large piece of the world
+/**
+ * generate a large piece of the world
  * @param userdata Viewport area to draw
  * @param buf Videobuffer with same bitdepth as current blitter
  * @param y First line to render

@@ -62,7 +62,8 @@ CommandCost CmdPlaceSign(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	return CommandCost();
 }
 
-/** Rename a sign. If the new name of the sign is empty, we assume
+/**
+ * Rename a sign. If the new name of the sign is empty, we assume
  * the user wanted to delete it. So delete it. Ownership of signs
  * has no meaning/effect whatsoever except for eyecandy
  * @param tile unused

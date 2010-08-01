@@ -7,7 +7,8 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file animcursors.h
+/**
+ * @file animcursors.h
  * This file defines all the the animated cursors.
  * Animated cursors consist of the number of sprites that are
  * displayed in a round-robin manner. Each sprite also has a time
@@ -15,18 +16,21 @@
  * is to be displayed.
  */
 
-/** Creates two array entries that define one
+/**
+ * Creates two array entries that define one
  *  status of the cursor.
  *  @param Sprite The Sprite to be displayed
  *  @param display_time The Number of ticks to display the sprite
  */
 #define ANIM_CURSOR_LINE(Sprite, display_time) { Sprite, display_time },
 
-/** This indicates the termination of the cursor list
+/**
+ * This indicates the termination of the cursor list
  */
 #define ANIM_CURSOR_END() ANIM_CURSOR_LINE(AnimCursor::LAST, 0)
 
-/** Animated cursor elements for demolishion
+/**
+ * Animated cursor elements for demolishion
  */
 static const AnimCursor _demolish_animcursor[] = {
 	ANIM_CURSOR_LINE(0x2C0, 8)
@@ -36,7 +40,8 @@ static const AnimCursor _demolish_animcursor[] = {
 	ANIM_CURSOR_END()
 };
 
-/** Animated cursor elements for lower land
+/**
+ * Animated cursor elements for lower land
  */
 static const AnimCursor _lower_land_animcursor[] = {
 	ANIM_CURSOR_LINE(0x2BB, 10)
@@ -45,7 +50,8 @@ static const AnimCursor _lower_land_animcursor[] = {
 	ANIM_CURSOR_END()
 };
 
-/** Animated cursor elements for raise land
+/**
+ * Animated cursor elements for raise land
  */
 static const AnimCursor _raise_land_animcursor[] = {
 	ANIM_CURSOR_LINE(0x2B8, 10)
@@ -54,7 +60,8 @@ static const AnimCursor _raise_land_animcursor[] = {
 	ANIM_CURSOR_END()
 };
 
-/** Animated cursor elements for the goto icon
+/**
+ * Animated cursor elements for the goto icon
  */
 static const AnimCursor _order_goto_animcursor[] = {
 	ANIM_CURSOR_LINE(0x2CC, 10)
@@ -63,7 +70,8 @@ static const AnimCursor _order_goto_animcursor[] = {
 	ANIM_CURSOR_END()
 };
 
-/** Animated cursor elements for the build signal icon
+/**
+ * Animated cursor elements for the build signal icon
  */
 static const AnimCursor _build_signals_animcursor[] = {
 	ANIM_CURSOR_LINE(0x50C, 20)
@@ -71,7 +79,8 @@ static const AnimCursor _build_signals_animcursor[] = {
 	ANIM_CURSOR_END()
 };
 
-/** This is an array of pointers to all the animated cursor
+/**
+ * This is an array of pointers to all the animated cursor
  *  definitions we have above. This is the only thing that is
  *  accessed directly from other files
  */

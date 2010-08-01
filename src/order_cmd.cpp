@@ -450,7 +450,8 @@ static uint GetOrderDistance(const Order *prev, const Order *cur, const Vehicle 
 	return DistanceManhattan(prev_tile, cur_tile);
 }
 
-/** Add an order to the orderlist of a vehicle.
+/**
+ * Add an order to the orderlist of a vehicle.
  * @param tile unused
  * @param flags operation to perform
  * @param p1 various bitstuffed elements
@@ -718,7 +719,8 @@ CommandCost CmdInsertOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	return CommandCost();
 }
 
-/** Declone an order-list
+/**
+ * Declone an order-list
  * @param *dst delete the orders of this vehicle
  * @param flags execution flags
  */
@@ -732,7 +734,8 @@ static CommandCost DecloneOrder(Vehicle *dst, DoCommandFlag flags)
 	return CommandCost();
 }
 
-/** Delete an order from the orderlist of a vehicle.
+/**
+ * Delete an order from the orderlist of a vehicle.
  * @param tile unused
  * @param flags operation to perform
  * @param p1 the ID of the vehicle
@@ -800,7 +803,8 @@ CommandCost CmdDeleteOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	return CommandCost();
 }
 
-/** Goto order of order-list.
+/**
+ * Goto order of order-list.
  * @param tile unused
  * @param flags operation to perform
  * @param p1 The ID of the vehicle which order is skipped
@@ -914,7 +918,8 @@ CommandCost CmdMoveOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	return CommandCost();
 }
 
-/** Modify an order in the orderlist of a vehicle.
+/**
+ * Modify an order in the orderlist of a vehicle.
  * @param tile unused
  * @param flags operation to perform
  * @param p1 various bitstuffed elements
@@ -1150,7 +1155,8 @@ CommandCost CmdModifyOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	return CommandCost();
 }
 
-/** Clone/share/copy an order-list of another vehicle.
+/**
+ * Clone/share/copy an order-list of another vehicle.
  * @param tile unused
  * @param flags operation to perform
  * @param p1 various bitstuffed elements
@@ -1278,7 +1284,8 @@ CommandCost CmdCloneOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 	return CommandCost();
 }
 
-/** Add/remove refit orders from an order
+/**
+ * Add/remove refit orders from an order
  * @param tile Not used
  * @param flags operation to perform
  * @param p1 VehicleIndex of the vehicle having the order
@@ -1431,7 +1438,8 @@ void RestoreVehicleOrders(const Vehicle *v, const BackuppedOrders *bak)
 	DoCommandP(0, bak->group, v->index, CMD_ADD_VEHICLE_GROUP);
 }
 
-/** Restore the current order-index of a vehicle and sets service-interval.
+/**
+ * Restore the current order-index of a vehicle and sets service-interval.
  * @param tile unused
  * @param flags operation to perform
  * @param p1 the ID of the vehicle

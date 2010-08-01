@@ -9,7 +9,8 @@
 
 /** @file town_land.h Sprites to use and how to display them for town tiles. */
 
-/** Writes the data into the Town Tile Drawing Struct
+/**
+ * Writes the data into the Town Tile Drawing Struct
  * @param s1 The first sprite of the building, mostly the ground sprite
  * @param p1 The first sprite's palette of the building, mostly the ground sprite
  * @param s2 The second sprite of the building.
@@ -1790,7 +1791,8 @@ static const DrawBuildingsTileStruct _town_draw_tile_data[] = {
 /** Make sure we have the right number of elements: 4 variants * 4 build stages for each house */
 assert_compile(lengthof(_town_draw_tile_data) == (NEW_HOUSE_OFFSET) * 4 * 4);
 
-/** Describes the data that defines each house in the game
+/**
+ * Describes the data that defines each house in the game
  * @param mnd introduction year of the house
  * @param mxd last year it can be built
  * @param p   population

@@ -156,7 +156,8 @@ Money CalculateCompanyValue(const Company *c, bool including_loan)
 	return max(value, (Money)1);
 }
 
-/** if update is set to true, the economy is updated with this score
+/**
+ * if update is set to true, the economy is updated with this score
  *  (also the house is updated, should only be true in the on-tick event)
  * @param update the economy with calculated score
  * @param c company been evaluated
@@ -1485,7 +1486,8 @@ static void DoAcquireCompany(Company *c)
 
 extern int GetAmountOwnedBy(const Company *c, Owner owner);
 
-/** Acquire shares in an opposing company.
+/**
+ * Acquire shares in an opposing company.
  * @param tile unused
  * @param flags type of operation
  * @param p1 company to buy the shares from
@@ -1532,7 +1534,8 @@ CommandCost CmdBuyShareInCompany(TileIndex tile, DoCommandFlag flags, uint32 p1,
 	return cost;
 }
 
-/** Sell shares in an opposing company.
+/**
+ * Sell shares in an opposing company.
  * @param tile unused
  * @param flags type of operation
  * @param p1 company to sell the shares from
@@ -1565,7 +1568,8 @@ CommandCost CmdSellShareInCompany(TileIndex tile, DoCommandFlag flags, uint32 p1
 	return CommandCost(EXPENSES_OTHER, cost);
 }
 
-/** Buy up another company.
+/**
+ * Buy up another company.
  * When a competing company is gone bankrupt you get the chance to purchase
  * that company.
  * @todo currently this only works for AI companies

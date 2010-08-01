@@ -12,7 +12,8 @@
 #ifndef COUNTEDPTR_HPP
 #define COUNTEDPTR_HPP
 
-/** CCountedPtr - simple reference counting smart pointer.
+/**
+ * CCountedPtr - simple reference counting smart pointer.
  *
  *     One of the standard ways how to maintain object's lifetime.
  *
@@ -136,7 +137,8 @@ template <class T> struct AdaptT {
 };
 
 
-/** Simple counted object. Use it as base of your struct/class if you want to use
+/**
+ * Simple counted object. Use it as base of your struct/class if you want to use
  *  basic reference counting. Your struct/class will destroy and free itself when
  *  last reference to it is released (using Relese() method). The initial reference
  *  count (when it is created) is zero (don't forget AddRef() at least one time if

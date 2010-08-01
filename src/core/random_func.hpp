@@ -65,7 +65,8 @@ struct SavedRandomSeeds {
 	Randomizer interactive_random;
 };
 
-/** Saves the current seeds
+/**
+ * Saves the current seeds
  * @param storage Storage for saving
  */
 static inline void SaveRandomSeeds(SavedRandomSeeds *storage)
@@ -74,7 +75,8 @@ static inline void SaveRandomSeeds(SavedRandomSeeds *storage)
 	storage->interactive_random = _interactive_random;
 }
 
-/** Restores previously saved seeds
+/**
+ * Restores previously saved seeds
  * @param storage Storage where SaveRandomSeeds() stored th seeds
  */
 static inline void RestoreRandomSeeds(const SavedRandomSeeds &storage)

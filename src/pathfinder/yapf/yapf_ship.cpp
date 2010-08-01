@@ -32,7 +32,8 @@ protected:
 	}
 
 public:
-	/** Called by YAPF to move from the given node to the next tile. For each
+	/**
+	 * Called by YAPF to move from the given node to the next tile. For each
 	 *  reachable trackdir on the new tile creates new node, initializes it
 	 *  and adds it to the open list by calling Yapf().AddNewNode(n) */
 	inline void PfFollowNode(Node& old_node)
@@ -115,7 +116,8 @@ protected:
 	}
 
 public:
-	/** Called by YAPF to calculate the cost from the origin to the given node.
+	/**
+	 * Called by YAPF to calculate the cost from the origin to the given node.
 	 *  Calculates only the cost of given node, adds it to the parent node cost
 	 *  and stores the result into Node::m_cost member */
 	FORCEINLINE bool PfCalcCost(Node& n, const TrackFollower *tf)
@@ -136,7 +138,8 @@ public:
 	}
 };
 
-/** Config struct of YAPF for ships.
+/**
+ * Config struct of YAPF for ships.
  *  Defines all 6 base YAPF modules as classes providing services for CYapfBaseT.
  */
 template <class Tpf_, class Ttrack_follower, class Tnode_list>

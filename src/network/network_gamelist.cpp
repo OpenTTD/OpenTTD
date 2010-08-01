@@ -27,7 +27,8 @@ NetworkGameList *_network_game_list = NULL;
 static ThreadMutex *_network_game_list_mutex = ThreadMutex::New();
 static NetworkGameList *_network_game_delayed_insertion_list = NULL;
 
-/** Add a new item to the linked gamelist, but do it delayed in the next tick
+/**
+ * Add a new item to the linked gamelist, but do it delayed in the next tick
  * or so to prevent race conditions.
  * @param item the item to add. Will be freed once added.
  */
@@ -66,7 +67,8 @@ static void NetworkGameListHandleDelayedInsert()
 	_network_game_list_mutex->EndCritical();
 }
 
-/** Add a new item to the linked gamelist. If the IP and Port match
+/**
+ * Add a new item to the linked gamelist. If the IP and Port match
  * return the existing item instead of adding it again
  * @param address the address of the to-be added item
  * @param port the port the server is running on
@@ -106,7 +108,8 @@ NetworkGameList *NetworkGameListAddItem(NetworkAddress address)
 	return item;
 }
 
-/** Remove an item from the gamelist linked list
+/**
+ * Remove an item from the gamelist linked list
  * @param remove pointer to the item to be removed */
 void NetworkGameListRemoveItem(NetworkGameList *remove)
 {

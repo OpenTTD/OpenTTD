@@ -7,7 +7,8 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file aystar.h
+/**
+ * @file aystar.h
  * This file has the header for AyStar
  *  AyStar is a fast pathfinding routine and is used for things like
  *  AI_pathfinding and Train_pathfinding.

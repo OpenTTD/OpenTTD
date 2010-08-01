@@ -53,7 +53,8 @@ static bool UpdateClientConfigValues(int32 p1);
  * OTTD specific INI stuff
  ****************************/
 
-/** Settings-macro usage:
+/**
+ * Settings-macro usage:
  * The list might look daunting at first, but is in general easy to understand.
  * We have two types of list:
  * 1. SDTG_something

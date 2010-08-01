@@ -391,7 +391,8 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 	return order;
 }
 
-/** %Order window code for all vehicles.
+/**
+ * %Order window code for all vehicles.
  *
  * At the bottom of the window two button rows are located for changing the orders of the vehicle.
  *

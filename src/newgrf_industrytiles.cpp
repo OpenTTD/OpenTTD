@@ -45,7 +45,8 @@ uint32 GetNearbyIndustryTileInformation(byte parameter, TileIndex tile, Industry
 	return GetNearbyTileInformation(tile) | (is_same_industry ? 1 : 0) << 8;
 }
 
-/** This is the position of the tile relative to the northernmost tile of the industry.
+/**
+ * This is the position of the tile relative to the northernmost tile of the industry.
  * Format: 00yxYYXX
  * Variable  Content
  * x         the x offset from the northernmost tile
@@ -250,7 +251,8 @@ bool DrawNewIndustryTile(TileInfo *ti, Industry *i, IndustryGfx gfx, const Indus
 
 extern bool IsSlopeRefused(Slope current, Slope refused);
 
-/** Check the slope of a tile of a new industry.
+/**
+ * Check the slope of a tile of a new industry.
  * @param ind_base_tile Base tile of the industry.
  * @param ind_tile      Tile to check.
  * @param its           Tile specification.

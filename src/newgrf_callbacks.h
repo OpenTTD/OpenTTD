@@ -43,7 +43,8 @@ enum CallbackID {
 	/** Choose a sprite layout to draw, instead of the standard 0-7 range. */
 	CBID_STATION_SPRITE_LAYOUT           = 0x14,
 
-	/** Refit capacity, the passed vehicle needs to have its ->cargo_type set to
+	/**
+	 * Refit capacity, the passed vehicle needs to have its ->cargo_type set to
 	 * the cargo we are refitting to, returns the new cargo capacity. */
 	CBID_VEHICLE_REFIT_CAPACITY          = 0x15, // 15 bit callback
 
@@ -86,7 +87,8 @@ enum CallbackID {
 	/** Called to determine if the given industry type is available */
 	CBID_INDUSTRY_AVAILABLE              = 0x22, // 15 bit callback
 
-	/** This callback is called from vehicle purchase lists. It returns a value to be
+	/**
+	 * This callback is called from vehicle purchase lists. It returns a value to be
 	 * used as a custom string ID in the 0xD000 range. */
 	CBID_VEHICLE_ADDITIONAL_TEXT         = 0x23,
 
@@ -117,7 +119,8 @@ enum CallbackID {
 	/** Called to determine which cargoes an industry should accept. */
 	CBID_INDTILE_ACCEPT_CARGO            = 0x2C, // 15 bit callback
 
-	/** Called to determine if a specific colour map should be used for a vehicle
+	/**
+	 * Called to determine if a specific colour map should be used for a vehicle
 	 * instead of the default livery. */
 	CBID_VEHICLE_COLOUR_MAPPING          = 0x2D, // 15 bit callback
 
@@ -130,7 +133,8 @@ enum CallbackID {
 	/** Called to determine the type (if any) of foundation to draw for industry tile. */
 	CBID_INDTILE_DRAW_FOUNDATIONS        = 0x30, // 15 bit callback
 
-	/** Called when the company (or AI) tries to start or stop a vehicle. Mainly
+	/**
+	 * Called when the company (or AI) tries to start or stop a vehicle. Mainly
 	 * used for preventing a vehicle from leaving the depot. */
 	CBID_VEHICLE_START_STOP_CHECK        = 0x31, // 15 bit callback, but 0xFF test is done with 8 bit
 
@@ -146,7 +150,8 @@ enum CallbackID {
 	/** Called monthly on production changes, so it can be adjusted more frequently */
 	CBID_INDUSTRY_MONTHLYPROD_CHANGE     = 0x35, // 15 bit callback
 
-	/** Called to modify various vehicle properties. Callback parameter 1
+	/**
+	 * Called to modify various vehicle properties. Callback parameter 1
 	 * specifies the property index, as used in Action 0, to change. */
 	CBID_VEHICLE_MODIFY_PROPERTY         = 0x36, // 8/15 bit depends on queried property
 

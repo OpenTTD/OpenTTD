@@ -227,7 +227,8 @@ static CommandCost TerraformTileHeight(TerraformerState *ts, TileIndex tile, int
 	return total_cost;
 }
 
-/** Terraform land
+/**
+ * Terraform land
  * @param tile tile to terraform
  * @param flags for this command type
  * @param p1 corners to terraform (SLOPE_xxx)
@@ -354,7 +355,8 @@ CommandCost CmdTerraformLand(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 }
 
 
-/** Levels a selected (rectangle) area of land
+/**
+ * Levels a selected (rectangle) area of land
  * @param tile end tile of area-drag
  * @param flags for this command type
  * @param p1 start tile of area drag

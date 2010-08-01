@@ -405,7 +405,8 @@ void IncreaseSpriteLRU()
 	}
 }
 
-/** Called when holes in the sprite cache should be removed.
+/**
+ * Called when holes in the sprite cache should be removed.
  * That is accomplished by moving the cached data. */
 static void CompactSpriteCache()
 {
@@ -522,7 +523,8 @@ static void *AllocSprite(size_t mem_req)
 	}
 }
 
-/** Handles the case when a sprite of different type is requested than is present in the SpriteCache.
+/**
+ * Handles the case when a sprite of different type is requested than is present in the SpriteCache.
  * For ST_FONT sprites, it is normal. In other cases, default sprite is loaded instead.
  * @param sprite ID of loaded sprite
  * @param requested requested sprite type

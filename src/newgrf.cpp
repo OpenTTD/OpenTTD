@@ -222,7 +222,8 @@ static std::map<GRFLocation, SpriteID> _grm_sprites;
 typedef std::map<GRFLocation, byte*> GRFLineToSpriteOverride;
 static GRFLineToSpriteOverride _grf_line_to_action6_sprite_override;
 
-/** DEBUG() function dedicated to newGRF debugging messages
+/**
+ * DEBUG() function dedicated to newGRF debugging messages
  * Function is essentially the same as DEBUG(grf, severity, ...) with the
  * addition of file:line information when parsing grf files.
  * NOTE: for the above reason(s) grfmsg() should ONLY be used for
@@ -281,7 +282,8 @@ static void ClearTemporaryNewGRFData(GRFFile *gf)
 typedef std::map<StringID *, uint32> StringIDToGRFIDMapping;
 static StringIDToGRFIDMapping _string_to_grf_mapping;
 
-/** Used when setting an object's property to map to the GRF's strings
+/**
+ * Used when setting an object's property to map to the GRF's strings
  * while taking in consideration the "drift" between TTDPatch string system and OpenTTD's one
  * @param grfid Id of the grf file
  * @param str StringID that we want to have the equivalent in OoenTTD
@@ -423,7 +425,8 @@ EngineID GetNewEngineID(const GRFFile *file, VehicleType type, uint16 internal_i
 	return _engine_mngr.GetID(type, internal_id, scope_grfid);
 }
 
-/** Map the colour modifiers of TTDPatch to those that Open is using.
+/**
+ * Map the colour modifiers of TTDPatch to those that Open is using.
  * @param grf_sprite pointer to the structure been modified
  */
 static void MapSpriteMappingRecolour(PalSpriteID *grf_sprite)
@@ -6792,7 +6795,8 @@ static void InitNewGRFFile(const GRFConfig *config, int sprite_offset)
 }
 
 
-/** List of what cargo labels are refittable for the given the vehicle-type.
+/**
+ * List of what cargo labels are refittable for the given the vehicle-type.
  * Only currently active labels are applied. */
 static const CargoLabel _default_refitmasks_rail[] = {
 	'PASS', 'COAL', 'MAIL', 'LVST', 'GOOD', 'GRAI', 'WHEA', 'MAIZ', 'WOOD',
@@ -6925,7 +6929,8 @@ static void FinaliseCargoArray()
 	}
 }
 
-/** Add all new houses to the house array. House properties can be set at any
+/**
+ * Add all new houses to the house array. House properties can be set at any
  * time in the GRF file, so we can only add a house spec to the house array
  * after the file has finished loading. We also need to check the dates, due to
  * the TTDPatch behaviour described below that we need to emulate. */
@@ -6990,7 +6995,8 @@ static void FinaliseHouseArray()
 	}
 }
 
-/** Add all new industries to the industry array. Industry properties can be set at any
+/**
+ * Add all new industries to the industry array. Industry properties can be set at any
  * time in the GRF file, so we can only add a industry spec to the industry array
  * after the file has finished loading. */
 static void FinaliseIndustriesArray()

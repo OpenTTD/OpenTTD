@@ -191,7 +191,8 @@ void RoadVehUpdateCache(RoadVehicle *v)
 	}
 }
 
-/** Build a road vehicle.
+/**
+ * Build a road vehicle.
  * @param tile tile of depot where road vehicle is built
  * @param flags operation to perform
  * @param p1 bus/truck type being built (engine)
@@ -322,7 +323,8 @@ bool RoadVehicle::IsStoppedInDepot() const
 	return true;
 }
 
-/** Sell a road vehicle.
+/**
+ * Sell a road vehicle.
  * @param tile unused
  * @param flags operation to perform
  * @param p1 vehicle ID to be sold
@@ -376,7 +378,8 @@ bool RoadVehicle::FindClosestDepot(TileIndex *location, DestinationID *destinati
 	return true;
 }
 
-/** Send a road vehicle to the depot.
+/**
+ * Send a road vehicle to the depot.
  * @param tile unused
  * @param flags operation to perform
  * @param p1 vehicle ID to send to the depot
@@ -400,7 +403,8 @@ CommandCost CmdSendRoadVehToDepot(TileIndex tile, DoCommandFlag flags, uint32 p1
 	return v->SendToDepot(flags, (DepotCommand)(p2 & DEPOT_COMMAND_MASK));
 }
 
-/** Turn a roadvehicle around.
+/**
+ * Turn a roadvehicle around.
  * @param tile unused
  * @param flags operation to perform
  * @param p1 vehicle ID to turn
@@ -1751,7 +1755,8 @@ Trackdir RoadVehicle::GetVehicleTrackdir() const
 }
 
 
-/** Refit a road vehicle to the specified cargo type
+/**
+ * Refit a road vehicle to the specified cargo type
  * @param tile unused
  * @param flags operation to perform
  * @param p1 Vehicle ID of the vehicle to refit

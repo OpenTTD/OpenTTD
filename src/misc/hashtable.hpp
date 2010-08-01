@@ -106,7 +106,8 @@ struct CHashTableSlotT
 	}
 };
 
-/** class CHashTableT<Titem, Thash_bits> - simple hash table
+/**
+ * class CHashTableT<Titem, Thash_bits> - simple hash table
  *  of pointers allocated elsewhere.
  *
  *  Supports: Add/Find/Remove of Titems.
@@ -136,7 +137,8 @@ public:
 	static const int Tcapacity = 1 << Thash_bits; // and num of slots 2^bits
 
 protected:
-	/** each slot contains pointer to the first item in the list,
+	/**
+	 * each slot contains pointer to the first item in the list,
 	 *  Titem contains pointer to the next item - GetHashNext(), SetHashNext() */
 	typedef CHashTableSlotT<Titem_> Slot;
 

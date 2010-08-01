@@ -24,7 +24,8 @@ enum ConsoleHookResult {
 	CHR_HIDE,     ///< Hide the existence of the command.
 };
 
-/** --Commands--
+/**
+ * --Commands--
  * Commands are commands, or functions. They get executed once and any
  * effect they produce are carried out. The arguments to the commands
  * are given to them, each input word seperated by a double-quote (") is an argument
@@ -41,7 +42,8 @@ struct IConsoleCmd {
 	IConsoleHook *hook;       ///< any special trigger action that needs executing
 };
 
-/** --Aliases--
+/**
+ * --Aliases--
  * Aliases are like shortcuts for complex functions, variable assignments,
  * etc. You can use a simple alias to rename a longer command (eg 'set' for
  * 'setting' for example), or concatenate more commands into one

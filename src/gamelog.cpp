@@ -39,7 +39,8 @@ uint _gamelog_actions         = 0;           ///< number of actions
 static LoggedAction *_current_action = NULL; ///< current action we are logging, NULL when there is no action active
 
 
-/** Stores information about new action, but doesn't allocate it
+/**
+ * Stores information about new action, but doesn't allocate it
  * Action is allocated only when there is at least one change
  * @param at type of action
  */
@@ -49,7 +50,8 @@ void GamelogStartAction(GamelogActionType at)
 	_gamelog_action_type = at;
 }
 
-/** Stops logging of any changes
+/**
+ * Stops logging of any changes
  */
 void GamelogStopAction()
 {
@@ -63,7 +65,8 @@ void GamelogStopAction()
 	if (print) GamelogPrintDebug(5);
 }
 
-/** Resets and frees all memory allocated - used before loading or starting a new game
+/**
+ * Resets and frees all memory allocated - used before loading or starting a new game
  */
 void GamelogReset()
 {
@@ -103,7 +106,8 @@ static void AddDebugText(char *buf, const char *s, ...)
 }
 
 
-/** Prints GRF filename if found
+/**
+ * Prints GRF filename if found
  * @param buf The location in the _dbgofs buffer to draw
  * @param grfid GRF which filename to print
  */
@@ -116,7 +120,8 @@ static void PrintGrfFilename(char *buf, uint grfid)
 	AddDebugText(buf, ", filename: %s", gc->filename);
 }
 
-/** Prints GRF ID, checksum and filename if found
+/**
+ * Prints GRF ID, checksum and filename if found
  * @param buf The location in the _dbgofs buffer to draw
  * @param grfid GRF ID
  * @param md5sum array of md5sum to print
@@ -292,7 +297,8 @@ static void GamelogPrintDebugProc(const char *s)
 }
 
 
-/** Prints gamelog to debug output. Code is executed even when
+/**
+ * Prints gamelog to debug output. Code is executed even when
  * there will be no output. It is called very seldom, so it
  * doesn't matter that much. At least it gives more uniform code...
  * @param level debug level we need to print stuff
@@ -304,7 +310,8 @@ void GamelogPrintDebug(int level)
 }
 
 
-/** Allocates new LoggedChange and new LoggedAction if needed.
+/**
+ * Allocates new LoggedChange and new LoggedAction if needed.
  * If there is no action active, NULL is returned.
  * @param ct type of change
  * @return new LoggedChange, or NULL if there is no action active
@@ -332,7 +339,8 @@ static LoggedChange *GamelogChange(GamelogChangeType ct)
 }
 
 
-/** Logs a emergency savegame
+/**
+ * Logs a emergency savegame
  */
 void GamelogEmergency()
 {
@@ -343,7 +351,8 @@ void GamelogEmergency()
 	GamelogStopAction();
 }
 
-/** Finds out if current game is a loaded emergency savegame.
+/**
+ * Finds out if current game is a loaded emergency savegame.
  */
 bool GamelogTestEmergency()
 {
@@ -360,7 +369,8 @@ bool GamelogTestEmergency()
 	return (emergency != NULL);
 }
 
-/** Logs a change in game revision
+/**
+ * Logs a change in game revision
  */
 void GamelogRevision()
 {
@@ -376,7 +386,8 @@ void GamelogRevision()
 	lc->revision.newgrf = _openttd_newgrf_version;
 }
 
-/** Logs a change in game mode (scenario editor or game)
+/**
+ * Logs a change in game mode (scenario editor or game)
  */
 void GamelogMode()
 {
@@ -389,7 +400,8 @@ void GamelogMode()
 	lc->mode.landscape = _settings_game.game_creation.landscape;
 }
 
-/** Logs loading from savegame without gamelog
+/**
+ * Logs loading from savegame without gamelog
  */
 void GamelogOldver()
 {
@@ -402,7 +414,8 @@ void GamelogOldver()
 	lc->oldver.version = (_savegame_type == SGT_OTTD ? ((uint32)_sl_version << 8 | _sl_minor_version) : _ttdp_version);
 }
 
-/** Logs change in game settings. Only non-networksafe settings are logged
+/**
+ * Logs change in game settings. Only non-networksafe settings are logged
  * @param name setting name
  * @param oldval old setting value
  * @param newval new setting value
@@ -420,7 +433,8 @@ void GamelogSetting(const char *name, int32 oldval, int32 newval)
 }
 
 
-/** Finds out if current revision is different than last revision stored in the savegame.
+/**
+ * Finds out if current revision is different than last revision stored in the savegame.
  * Appends GLCT_REVISION when the revision string changed
  */
 void GamelogTestRevision()
@@ -442,7 +456,8 @@ void GamelogTestRevision()
 	}
 }
 
-/** Finds last stored game mode or landscape.
+/**
+ * Finds last stored game mode or landscape.
  * Any change is logged
  */
 void GamelogTestMode()
@@ -461,7 +476,8 @@ void GamelogTestMode()
 }
 
 
-/** Logs triggered GRF bug.
+/**
+ * Logs triggered GRF bug.
  * @param grfid ID of problematic GRF
  * @param bug type of bug, @see enum GRFBugs
  * @param data additional data
@@ -478,7 +494,8 @@ static void GamelogGRFBug(uint32 grfid, byte bug, uint64 data)
 	lc->grfbug.bug   = bug;
 }
 
-/** Logs GRF bug - rail vehicle has different length after reversing.
+/**
+ * Logs GRF bug - rail vehicle has different length after reversing.
  * Ensures this is logged only once for each GRF and engine type
  * This check takes some time, but it is called pretty seldom, so it
  * doesn't matter that much (ideally it shouldn't be called at all).
@@ -507,7 +524,8 @@ bool GamelogGRFBugReverse(uint32 grfid, uint16 internal_id)
 }
 
 
-/** Decides if GRF should be logged
+/**
+ * Decides if GRF should be logged
  * @param g grf to determine
  * @return true iff GRF is not static and is loaded
  */
@@ -516,7 +534,8 @@ static inline bool IsLoggableGrfConfig(const GRFConfig *g)
 	return !HasBit(g->flags, GCF_STATIC) && g->status != GCS_NOT_FOUND;
 }
 
-/** Logs removal of a GRF
+/**
+ * Logs removal of a GRF
  * @param grfid ID of removed GRF
  */
 void GamelogGRFRemove(uint32 grfid)
@@ -529,7 +548,8 @@ void GamelogGRFRemove(uint32 grfid)
 	lc->grfrem.grfid = grfid;
 }
 
-/** Logs adding of a GRF
+/**
+ * Logs adding of a GRF
  * @param newg added GRF
  */
 void GamelogGRFAdd(const GRFConfig *newg)
@@ -544,7 +564,8 @@ void GamelogGRFAdd(const GRFConfig *newg)
 	lc->grfadd = newg->ident;
 }
 
-/** Logs loading compatible GRF
+/**
+ * Logs loading compatible GRF
  * (the same ID, but different MD5 hash)
  * @param newg new (updated) GRF
  */
@@ -558,7 +579,8 @@ void GamelogGRFCompatible(const GRFIdentifier *newg)
 	lc->grfcompat = *newg;
 }
 
-/** Logs changing GRF order
+/**
+ * Logs changing GRF order
  * @param grfid GRF that is moved
  * @param offset how far it is moved, positive = moved down
  */
@@ -573,7 +595,8 @@ static void GamelogGRFMove(uint32 grfid, int32 offset)
 	lc->grfmove.offset = offset;
 }
 
-/** Logs change in GRF parameters.
+/**
+ * Logs change in GRF parameters.
  * Details about parameters changed are not stored
  * @param grfid ID of GRF to store
  */
@@ -587,7 +610,8 @@ static void GamelogGRFParameters(uint32 grfid)
 	lc->grfparam.grfid = grfid;
 }
 
-/** Logs adding of list of GRFs.
+/**
+ * Logs adding of list of GRFs.
  * Useful when old savegame is loaded or when new game is started
  * @param newg head of GRF linked list
  */
@@ -606,7 +630,8 @@ struct GRFList {
 	const GRFConfig *grf[];
 };
 
-/** Generates GRFList
+/**
+ * Generates GRFList
  * @param grfc head of GRF linked list
  */
 static GRFList *GenerateGRFList(const GRFConfig *grfc)
@@ -626,7 +651,8 @@ static GRFList *GenerateGRFList(const GRFConfig *grfc)
 	return list;
 }
 
-/** Compares two NewGRF lists and logs any change
+/**
+ * Compares two NewGRF lists and logs any change
  * @param oldc original GRF list
  * @param newc new GRF list
  */

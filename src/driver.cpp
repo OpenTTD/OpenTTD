@@ -195,7 +195,8 @@ char *DriverFactoryBase::GetDriversInfo(char *p, const char *last)
 	return p;
 }
 
-/** Frees memory used for this->name
+/**
+ * Frees memory used for this->name
  */
 DriverFactoryBase::~DriverFactoryBase()
 {

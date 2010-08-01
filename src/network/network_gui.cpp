@@ -64,7 +64,8 @@ void SortNetworkLanguages()
 	QSortT(_language_dropdown, NETLANG_COUNT - 1, &StringIDSorter);
 }
 
-/** Update the network new window because a new server is
+/**
+ * Update the network new window because a new server is
  * found on the network.
  * @param unselect unselect the currently selected item */
 void UpdateNetworkGameWindow(bool unselect)
@@ -279,7 +280,8 @@ protected:
 		return strcasecmp((*a)->info.server_name, (*b)->info.server_name);
 	}
 
-	/** Sort servers by the amount of clients online on a
+	/**
+	 * Sort servers by the amount of clients online on a
 	 * server. If the two servers have the same amount, the one with the
 	 * higher maximum is preferred. */
 	static int CDECL NGameClientSorter(NetworkGameList * const *a, NetworkGameList * const *b)
@@ -317,7 +319,8 @@ protected:
 		return (r != 0) ? r : NGameDateSorter(a, b);
 	}
 
-	/** Sort servers by joinability. If both servers are the
+	/**
+	 * Sort servers by joinability. If both servers are the
 	 * same, prefer the non-passworded server first. */
 	static int CDECL NGameAllowedSorter(NetworkGameList * const *a, NetworkGameList * const *b)
 	{

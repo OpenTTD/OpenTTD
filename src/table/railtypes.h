@@ -7,14 +7,16 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file railtypes.h
+/**
+ * @file railtypes.h
  * All the railtype-specific information is stored here.
  */
 
 #ifndef RAILTYPES_H
 #define RAILTYPES_H
 
-/** Global Railtype definition
+/**
+ * Global Railtype definition
  */
 static const RailtypeInfo _original_railtypes[] = {
 	/** Railway */

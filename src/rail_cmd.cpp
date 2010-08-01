@@ -160,7 +160,8 @@ static CommandCost EnsureNoTrainOnTrack(TileIndex tile, Track track)
 	return EnsureNoTrainOnTrackBits(tile, rail_bits);
 }
 
-/** Check that the new track bits may be built.
+/**
+ * Check that the new track bits may be built.
  * @param tile %Tile to build on.
  * @param to_build New track bits.
  * @param flags    Flags of the operation.
@@ -350,7 +351,8 @@ static inline bool ValParamTrackOrientation(Track track)
 	return IsValidTrack(track);
 }
 
-/** Build a single piece of rail
+/**
+ * Build a single piece of rail
  * @param tile tile  to build on
  * @param flags operation to perform
  * @param p1 railtype of being built piece (normal, mono, maglev)
@@ -489,7 +491,8 @@ CommandCost CmdBuildSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 	return cost;
 }
 
-/** Remove a single piece of track
+/**
+ * Remove a single piece of track
  * @param tile tile to remove track from
  * @param flags operation to perform
  * @param p1 unused
@@ -728,7 +731,8 @@ static CommandCost ValidateAutoDrag(Trackdir *trackdir, TileIndex start, TileInd
 	return CommandCost();
 }
 
-/** Build or remove a stretch of railroad tracks.
+/**
+ * Build or remove a stretch of railroad tracks.
  * @param tile start tile of drag
  * @param flags operation to perform
  * @param p1 end tile of drag
@@ -788,7 +792,8 @@ static CommandCost CmdRailTrackHelper(TileIndex tile, DoCommandFlag flags, uint3
 	return last_error;
 }
 
-/** Build rail on a stretch of track.
+/**
+ * Build rail on a stretch of track.
  * Stub for the unified rail builder/remover
  * @param tile start tile of drag
  * @param flags operation to perform
@@ -806,7 +811,8 @@ CommandCost CmdBuildRailroadTrack(TileIndex tile, DoCommandFlag flags, uint32 p1
 	return CmdRailTrackHelper(tile, flags, p1, ClrBit(p2, 7), text);
 }
 
-/** Build rail on a stretch of track.
+/**
+ * Build rail on a stretch of track.
  * Stub for the unified rail builder/remover
  * @param tile start tile of drag
  * @param flags operation to perform
@@ -824,7 +830,8 @@ CommandCost CmdRemoveRailroadTrack(TileIndex tile, DoCommandFlag flags, uint32 p
 	return CmdRailTrackHelper(tile, flags, p1, SetBit(p2, 7), text);
 }
 
-/** Build a train depot
+/**
+ * Build a train depot
  * @param tile position of the train depot
  * @param flags operation to perform
  * @param p1 rail type
@@ -884,7 +891,8 @@ CommandCost CmdBuildTrainDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 	return cost;
 }
 
-/** Build signals, alternate between double/single, signal/semaphore,
+/**
+ * Build signals, alternate between double/single, signal/semaphore,
  * pre/exit/combo-signals, and what-else not. If the rail piece does not
  * have any signals, bit 4 (cycle signal-type) is ignored
  * @param tile tile where to build the signals
@@ -1116,7 +1124,8 @@ static bool CheckSignalAutoFill(TileIndex &tile, Trackdir &trackdir, int &signal
 	}
 }
 
-/** Build many signals by dragging; AutoSignals
+/**
+ * Build many signals by dragging; AutoSignals
  * @param tile start tile of drag
  * @param flags operation to perform
  * @param p1  end tile of drag
@@ -1249,7 +1258,8 @@ static CommandCost CmdSignalTrackHelper(TileIndex tile, DoCommandFlag flags, uin
 	return had_success ? total_cost : last_error;
 }
 
-/** Build signals on a stretch of track.
+/**
+ * Build signals on a stretch of track.
  * Stub for the unified signal builder/remover
  * @param tile start tile of drag
  * @param flags operation to perform
@@ -1271,7 +1281,8 @@ CommandCost CmdBuildSignalTrack(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 	return CmdSignalTrackHelper(tile, flags, p1, p2, text);
 }
 
-/** Remove signals
+/**
+ * Remove signals
  * @param tile coordinates where signal is being deleted from
  * @param flags operation to perform
  * @param p1 various bitstuffed elements, only track information is used
@@ -1338,7 +1349,8 @@ CommandCost CmdRemoveSingleSignal(TileIndex tile, DoCommandFlag flags, uint32 p1
 	return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_CLEAR_SIGNALS]);
 }
 
-/** Remove signals on a stretch of track.
+/**
+ * Remove signals on a stretch of track.
  * Stub for the unified signal builder/remover
  * @param tile start tile of drag
  * @param flags operation to perform
@@ -1376,7 +1388,8 @@ static Vehicle *UpdateTrainPowerProc(Vehicle *v, void *data)
 	return NULL;
 }
 
-/** Convert one rail type to the other. You can convert normal rail to
+/**
+ * Convert one rail type to the other. You can convert normal rail to
  * monorail/maglev easily or vice-versa.
  * @param tile end tile of rail conversion drag
  * @param flags operation to perform
@@ -2140,7 +2153,8 @@ static void DrawTrackBits(TileInfo *ti, TrackBits track)
 	}
 }
 
-/** Enums holding the offsets from base signal sprite,
+/**
+ * Enums holding the offsets from base signal sprite,
  * according to the side it is representing.
  * The addtion of 2 per enum is necessary in order to "jump" over the
  * green state sprite, all signal sprites being in pair,
@@ -2682,7 +2696,8 @@ static const int8 _deltacoord_leaveoffset[8] = {
 };
 
 
-/** Compute number of ticks when next wagon will leave a depot.
+/**
+ * Compute number of ticks when next wagon will leave a depot.
  * Negative means next wagon should have left depot n ticks before.
  * @param v vehicle outside (leaving) the depot
  * @return number of ticks when the next wagon will leave
@@ -2703,7 +2718,8 @@ int TicksToLeaveDepot(const Train *v)
 	return 0; // make compilers happy
 }
 
-/** Tile callback routine when vehicle enters tile
+/**
+ * Tile callback routine when vehicle enters tile
  * @see vehicle_enter_tile_proc */
 static VehicleEnterTileStatus VehicleEnter_Track(Vehicle *u, TileIndex tile, int x, int y)
 {

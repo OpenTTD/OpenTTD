@@ -185,7 +185,8 @@ void str_strip_colours(char *str)
 	*dst = '\0';
 }
 
-/** Convert a given ASCII string to lowercase.
+/**
+ * Convert a given ASCII string to lowercase.
  * NOTE: only support ASCII characters, no UTF8 fancy. As currently
  * the function is only used to lowercase data-filenames if they are
  * not found, this is sufficient. If more, or general functionality is
@@ -290,7 +291,8 @@ int CDECL seprintf(char *str, const char *last, const char *format, ...)
 }
 
 
-/** Convert the md5sum to a hexadecimal string representation
+/**
+ * Convert the md5sum to a hexadecimal string representation
  * @param buf buffer to put the md5sum into
  * @param last last character of buffer (usually lastof(buf))
  * @param md5sum the md5sum itself

@@ -316,7 +316,8 @@ static void InitializeDynamicVariables()
 }
 
 
-/** Unitializes drivers, frees allocated memory, cleans pools, ...
+/**
+ * Unitializes drivers, frees allocated memory, cleans pools, ...
  * Generally, prepares the game for shutting down
  */
 static void ShutdownGame()
@@ -1273,7 +1274,8 @@ void StateGameLoop()
 	assert(IsLocalCompany());
 }
 
-/** Create an autosave. The default name is "autosave#.sav". However with
+/**
+ * Create an autosave. The default name is "autosave#.sav". However with
  * the setting 'keep_all_autosave' the name defaults to company-name + date */
 static void DoAutosave()
 {

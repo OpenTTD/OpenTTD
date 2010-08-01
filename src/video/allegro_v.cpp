@@ -406,7 +406,8 @@ static void PollEvent()
 	}
 }
 
-/** There are multiple modules that might be using Allegro and
+/**
+ * There are multiple modules that might be using Allegro and
  * Allegro can only be initiated once. */
 int _allegro_instance_count = 0;
 

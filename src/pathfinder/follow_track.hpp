@@ -21,7 +21,8 @@
 #include "../depot_map.h"
 #include "pf_performance_timer.hpp"
 
-/** Track follower helper template class (can serve pathfinders and vehicle
+/**
+ * Track follower helper template class (can serve pathfinders and vehicle
  *  controllers). See 6 different typedefs below for 3 different transport
  *  types w/ or w/o 90-deg turns allowed */
 template <TransportType Ttr_type_, typename VehicleType, bool T90deg_turns_allowed_ = true, bool Tmask_reserved_tracks = false>
@@ -110,7 +111,8 @@ struct CFollowTrackT
 		return INVALID_DIAGDIR;
 	}
 
-	/** main follower routine. Fills all members and return true on success.
+	/**
+	 * main follower routine. Fills all members and return true on success.
 	 *  Otherwise returns false if track can't be followed. */
 	inline bool Follow(TileIndex old_tile, Trackdir old_td)
 	{

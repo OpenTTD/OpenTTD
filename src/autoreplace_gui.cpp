@@ -63,7 +63,8 @@ static int CDECL EngineNumberSorter(const EngineID *a, const EngineID *b)
 	return r;
 }
 
-/** Rebuild the left autoreplace list if an engine is removed or added
+/**
+ * Rebuild the left autoreplace list if an engine is removed or added
  * @param e Engine to check if it is removed or added
  * @param id_g The group the engine belongs to
  *  Note: this function only works if it is called either
@@ -84,7 +85,8 @@ void InvalidateAutoreplaceWindow(EngineID e, GroupID id_g)
 	}
 }
 
-/** When an engine is made buildable or is removed from being buildable, add/remove it from the build/autoreplace lists
+/**
+ * When an engine is made buildable or is removed from being buildable, add/remove it from the build/autoreplace lists
  * @param type The type of engine
  */
 void AddRemoveEngineFromAutoreplaceAndBuildWindows(VehicleType type)
@@ -105,7 +107,8 @@ class ReplaceVehicleWindow : public Window {
 	int details_height;           ///< Minimal needed height of the details panels (found so far).
 	RailType sel_railtype;        ///< Type of rail tracks selected.
 
-	/** Figure out if an engine should be added to a list.
+	/**
+	 * Figure out if an engine should be added to a list.
 	 * @param e            The EngineID.
 	 * @param draw_left    If \c true, the left list is drawn (the engines specific to the railtype you selected).
 	 * @param show_engines If \c true, the locomotives are drawn, else the wagons are drawn (never both).
@@ -126,7 +129,8 @@ class ReplaceVehicleWindow : public Window {
 	}
 
 
-	/** Generate an engines list
+	/**
+	 * Generate an engines list
 	 * @param draw_left true if generating the left list, otherwise false
 	 */
 	void GenerateReplaceVehList(bool draw_left)

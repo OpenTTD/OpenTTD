@@ -7,7 +7,8 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file newgrf_commons.cpp Implementation of the class OverrideManagerBase
+/**
+ * @file newgrf_commons.cpp Implementation of the class OverrideManagerBase
  * and its descendance, present and futur
  */
 
@@ -23,7 +24,8 @@
 #include "tunnelbridge_map.h"
 #include "core/mem_func.hpp"
 
-/** Constructor of generic class
+/**
+ * Constructor of generic class
  * @param offset end of original data for this entity. i.e: houses = 110
  * @param maximum of entities this manager can deal with. i.e: houses = 512
  * @param invalid is the ID used to identify an invalid entity id
@@ -40,7 +42,8 @@ OverrideManagerBase::OverrideManagerBase(uint16 offset, uint16 maximum, uint16 i
 	grfid_overrides = CallocT<uint32>(max_offset);
 }
 
-/** Destructor of the generic class.
+/**
+ * Destructor of the generic class.
  * Frees allocated memory of constructor
  */
 OverrideManagerBase::~OverrideManagerBase()
@@ -50,7 +53,8 @@ OverrideManagerBase::~OverrideManagerBase()
 	free(grfid_overrides);
 }
 
-/** Since the entity IDs defined by the GRF file does not necessarily correlate
+/**
+ * Since the entity IDs defined by the GRF file does not necessarily correlate
  * to those used by the game, the IDs used for overriding old entities must be
  * translated when the entity spec is set.
  * @param local_id ID in grf file
@@ -81,7 +85,8 @@ void OverrideManagerBase::ResetOverride()
 	}
 }
 
-/** Return the ID (if ever available) of a previously inserted entity.
+/**
+ * Return the ID (if ever available) of a previously inserted entity.
  * @param grf_local_id ID of this enity withing the grfID
  * @param grfid ID of the grf file
  * @return the ID of the candidate, of the Invalid flag item ID
@@ -100,7 +105,8 @@ uint16 OverrideManagerBase::GetID(uint8 grf_local_id, uint32 grfid)
 	return invalid_ID;
 }
 
-/** Reserves a place in the mapping array for an entity to be installed
+/**
+ * Reserves a place in the mapping array for an entity to be installed
  * @param grf_local_id is an arbitrary id given by the grf's author.  Also known as setid
  * @param grfid is the id of the grf file itself
  * @param substitute_id is the original entity from which data is copied for the new one
@@ -134,7 +140,8 @@ uint16 OverrideManagerBase::AddEntityID(byte grf_local_id, uint32 grfid, byte su
 	return invalid_ID;
 }
 
-/** Gives the substitute of the entity, as specified by the grf file
+/**
+ * Gives the substitute of the entity, as specified by the grf file
  * @param entity_id of the entity being queried
  * @return mapped id
  */
@@ -143,7 +150,8 @@ uint16 OverrideManagerBase::GetSubstituteID(uint16 entity_id)
 	return mapping_ID[entity_id].substitute_id;
 }
 
-/** Install the specs into the HouseSpecs array
+/**
+ * Install the specs into the HouseSpecs array
  * It will find itself the proper slot onwhich it will go
  * @param hs HouseSpec read from the grf file, ready for inclusion
  */
@@ -170,7 +178,8 @@ void HouseOverrideManager::SetEntitySpec(const HouseSpec *hs)
 	}
 }
 
-/** Return the ID (if ever available) of a previously inserted entity.
+/**
+ * Return the ID (if ever available) of a previously inserted entity.
  * @param grf_local_id ID of this enity withing the grfID
  * @param grfid ID of the grf file
  * @return the ID of the candidate, of the Invalid flag item ID
@@ -188,7 +197,8 @@ uint16 IndustryOverrideManager::GetID(uint8 grf_local_id, uint32 grfid)
 	return invalid_ID;
 }
 
-/** Method to find an entity ID and to mark it as reserved for the Industry to be included.
+/**
+ * Method to find an entity ID and to mark it as reserved for the Industry to be included.
  * @param grf_local_id ID used by the grf file for pre-installation work (equivalent of TTDPatch's setid
  * @param grfid ID of the current grf file
  * @param substitute_id industry from which data has been copied
@@ -223,7 +233,8 @@ uint16 IndustryOverrideManager::AddEntityID(byte grf_local_id, uint32 grfid, byt
 	return invalid_ID;
 }
 
-/** Method to install the new indistry data in its proper slot
+/**
+ * Method to install the new indistry data in its proper slot
  * The slot assigment is internal of this method, since it requires
  * checking what is available
  * @param inds Industryspec that comes from the grf decoding process
@@ -277,7 +288,8 @@ void IndustryTileOverrideManager::SetEntitySpec(const IndustryTileSpec *its)
 	}
 }
 
-/** Function used by houses (and soon industries) to get information
+/**
+ * Function used by houses (and soon industries) to get information
  * on type of "terrain" the tile it is queries sits on.
  * @param tile TileIndex of the tile been queried
  * @param upper_halftile If true, query upper halftile in case of rail tiles.

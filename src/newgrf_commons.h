@@ -7,7 +7,8 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file newgrf_commons.h This file simplyfies and embeds a common mechanism of
+/**
+ * @file newgrf_commons.h This file simplyfies and embeds a common mechanism of
  * loading/saving and mapping of grf entities.
  */
 

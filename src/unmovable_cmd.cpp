@@ -49,7 +49,8 @@ static inline const UnmovableSpec *GetUnmovableSpec(UnmovableType type)
 	return &_original_unmovable[type];
 }
 
-/** Destroy a HQ.
+/**
+ * Destroy a HQ.
  * During normal gameplay you can only implicitely destroy a HQ when you are
  * rebuilding it. Otherwise, only water can destroy it.
  * @param cid Company requesting the destruction of his HQ
@@ -100,7 +101,8 @@ void UpdateCompanyHQ(Company *c, uint score)
 
 extern CommandCost CheckFlatLand(TileArea tile_area, DoCommandFlag flags);
 
-/** Build or relocate the HQ. This depends if the HQ is already built or not
+/**
+ * Build or relocate the HQ. This depends if the HQ is already built or not
  * @param tile tile where the HQ will be built or relocated to
  * @param flags type of operation
  * @param p1 unused
@@ -134,7 +136,8 @@ CommandCost CmdBuildCompanyHQ(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 	return cost;
 }
 
-/** Purchase a land area. Actually you only purchase one tile, so
+/**
+ * Purchase a land area. Actually you only purchase one tile, so
  * the name is a bit confusing ;p
  * @param tile the tile the company is purchasing
  * @param flags for this command type
@@ -163,7 +166,8 @@ CommandCost CmdPurchaseLandArea(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 	return cost;
 }
 
-/** Sell a land area. Actually you only sell one tile, so
+/**
+ * Sell a land area. Actually you only sell one tile, so
  * the name is a bit confusing ;p
  * @param tile the tile the company is selling
  * @param flags for this command type

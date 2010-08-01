@@ -718,7 +718,8 @@ void CompanyNewsInformation::FillData(const Company *c, const Company *other)
 
 }
 
-/** Control the companies: add, delete, etc.
+/**
+ * Control the companies: add, delete, etc.
  * @param tile unused
  * @param flags operation to perform
  * @param p1 various functionality
@@ -869,7 +870,8 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	return CommandCost();
 }
 
-/** Change the company manager's face.
+/**
+ * Change the company manager's face.
  * @param tile unused
  * @param flags operation to perform
  * @param p1 unused
@@ -890,7 +892,8 @@ CommandCost CmdSetCompanyManagerFace(TileIndex tile, DoCommandFlag flags, uint32
 	return CommandCost();
 }
 
-/** Change the company's company-colour
+/**
+ * Change the company's company-colour
  * @param tile unused
  * @param flags operation to perform
  * @param p1 bitstuffed:
@@ -999,7 +1002,8 @@ static bool IsUniqueCompanyName(const char *name)
 	return true;
 }
 
-/** Change the name of the company.
+/**
+ * Change the name of the company.
  * @param tile unused
  * @param flags operation to perform
  * @param p1 unused
@@ -1042,7 +1046,8 @@ static bool IsUniquePresidentName(const char *name)
 	return true;
 }
 
-/** Change the name of the president.
+/**
+ * Change the name of the president.
  * @param tile unused
  * @param flags operation to perform
  * @param p1 unused

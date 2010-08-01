@@ -146,7 +146,8 @@ typedef struct {
 	TileIndex north_tile; ///< Northern tile of the house.
 } SearchNearbyHouseData;
 
-/** Callback function to search a house by its HouseID
+/**
+ * Callback function to search a house by its HouseID
  * @param tile TileIndex to be examined
  * @param user_data SearchNearbyHouseData
  * @return true or false, if found or not
@@ -169,7 +170,8 @@ static bool SearchNearbyHouseID(TileIndex tile, void *user_data)
 	return false;
 }
 
-/** Callback function to search a house by its classID
+/**
+ * Callback function to search a house by its classID
  * @param tile TileIndex to be examined
  * @param user_data SearchNearbyHouseData
  * @return true or false, if found or not
@@ -192,7 +194,8 @@ static bool SearchNearbyHouseClass(TileIndex tile, void *user_data)
 	return false;
 }
 
-/** Callback function to search a house by its grfID
+/**
+ * Callback function to search a house by its grfID
  * @param tile TileIndex to be examined
  * @param user_data SearchNearbyHouseData
  * @return true or false, if found or not
@@ -214,7 +217,8 @@ static bool SearchNearbyHouseGRFID(TileIndex tile, void *user_data)
 	return false;
 }
 
-/** This function will activate a search around a central tile, looking for some houses
+/**
+ * This function will activate a search around a central tile, looking for some houses
  * that fit the requested characteristics
  * @param parameter that is given by the callback.
  *                  bits 0..6 radius of the search

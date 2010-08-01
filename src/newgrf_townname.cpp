@@ -7,7 +7,8 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file newgrf_townname.cpp
+/**
+ * @file newgrf_townname.cpp
  * Implementation of  Action 0F "universal holder" structure and functions.
  * This file implements a linked-lists of townname generators,
  * holding everything that the newgrf action 0F will send over to OpenTTD.

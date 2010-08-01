@@ -100,7 +100,8 @@ struct DropdownWindow : Window {
 	int scrolling;                ///< If non-zero, auto-scroll the item list (one time).
 	Point position;               ///< Position of the topleft corner of the window.
 
-	/** Create a dropdown menu.
+	/**
+	 * Create a dropdown menu.
 	 * @param parent        Parent window.
 	 * @param list          Dropdown item list.
 	 * @param selected      Index of the selected item in the list.
@@ -179,7 +180,8 @@ struct DropdownWindow : Window {
 		return this->position;
 	}
 
-	/** Find the dropdown item under the cursor.
+	/**
+	 * Find the dropdown item under the cursor.
 	 * @param value [out] Selected item, if function returns \c true.
 	 * @return Cursor points to a dropdown item.
 	 */
@@ -408,7 +410,8 @@ void ShowDropDownList(Window *w, DropDownList *list, int selected, int button, u
 	new DropdownWindow(w, list, selected, button, instant_close, dw_pos, dw_size, wi_colour, scroll);
 }
 
-/** Show a dropdown menu window near a widget of the parent window.
+/**
+ * Show a dropdown menu window near a widget of the parent window.
  * The result code of the items is their index in the #strings list.
  * @param w             Parent window that wants the dropdown menu.
  * @param strings       Menu list, end with #INVALID_STRING_ID

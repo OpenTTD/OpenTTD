@@ -34,7 +34,8 @@ enum IndustryLifeType {
 	INDUSTRYLIFE_PROCESSING = 1 << 2, ///< Like factories
 };
 
-/** Available procedures to check whether an industry may build at a given location.
+/**
+ * Available procedures to check whether an industry may build at a given location.
  * @see CheckNewIndustryProc, _check_new_industry_procs[]
  */
 enum CheckProc {

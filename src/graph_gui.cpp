@@ -261,7 +261,8 @@ protected:
 		return current_interval;
 	}
 
-	/** Get width for Y labels.
+	/**
+	 * Get width for Y labels.
 	 * @param current_interval Interval that contains all of the graph data.
 	 * @param num_hori_lines Number of horizontal lines to be drawn.
 	 */
@@ -1519,7 +1520,8 @@ struct PerformanceRatingDetailWindow : Window {
 
 CompanyID PerformanceRatingDetailWindow::company = INVALID_COMPANY;
 
-/** Make a vertical list of panels for outputting score details.
+/**
+ * Make a vertical list of panels for outputting score details.
  * @param biggest_index Storage for collecting the biggest index used in the returned tree.
  * @return Panel with performance details.
  * @post \c *biggest_index contains the largest used index in the tree.

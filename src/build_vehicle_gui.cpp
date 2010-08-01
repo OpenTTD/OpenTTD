@@ -711,7 +711,8 @@ int DrawVehiclePurchaseInfo(int left, int right, int y, EngineID engine_number)
 	return y;
 }
 
-/** Engine drawing loop
+/**
+ * Engine drawing loop
  * @param type Type of vehicle (VEH_*)
  * @param l The left most location of the list
  * @param r The right most location of the list

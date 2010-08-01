@@ -25,7 +25,8 @@ struct SmallPair {
 	FORCEINLINE SmallPair(const T &first, const U &second) : first(first), second(second) { }
 };
 
-/** Implementation of simple mapping class. Both types have to be POD ("Plain Old Data")!
+/**
+ * Implementation of simple mapping class. Both types have to be POD ("Plain Old Data")!
  * It has inherited accessors from SmallVector().
  * @see SmallVector
  */
@@ -40,7 +41,8 @@ struct SmallMap : SmallVector<SmallPair<T, U>, S> {
 	/** Data are freed in SmallVector destructor */
 	FORCEINLINE ~SmallMap() { }
 
-	/** Finds given key in this map
+	/**
+	 * Finds given key in this map
 	 * @param key key to find
 	 * @return &Pair(key, data) if found, this->End() if not
 	 */
@@ -52,7 +54,8 @@ struct SmallMap : SmallVector<SmallPair<T, U>, S> {
 		return this->End();
 	}
 
-	/** Removes given pair from this map
+	/**
+	 * Removes given pair from this map
 	 * @param pair pair to remove
 	 * @note it has to be pointer to pair in this map. It is overwritten by the last item.
 	 */
@@ -62,7 +65,8 @@ struct SmallMap : SmallVector<SmallPair<T, U>, S> {
 		*pair = this->data[--this->items];
 	}
 
-	/** Removes given key from this map
+	/**
+	 * Removes given key from this map
 	 * @param key key to remove
 	 * @return true iff the key was found
 	 * @note last item is moved to its place, so don't increase your iterator if true is returned!
@@ -78,7 +82,8 @@ struct SmallMap : SmallVector<SmallPair<T, U>, S> {
 		return false;
 	}
 
-	/** Adds new item to this map.
+	/**
+	 * Adds new item to this map.
 	 * @param key key
 	 * @param data data
 	 * @return true iff the key wasn't already present
@@ -92,7 +97,8 @@ struct SmallMap : SmallVector<SmallPair<T, U>, S> {
 		return true;
 	}
 
-	/** Returns data belonging to this key
+	/**
+	 * Returns data belonging to this key
 	 * @param key key
 	 * @return data belonging to this key
 	 * @note if this key wasn't present, new entry is created

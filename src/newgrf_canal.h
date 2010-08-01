@@ -16,7 +16,8 @@
 #include "tile_type.h"
 #include "newgrf_generic.h"
 
-/** List of different canal 'features'.
+/**
+ * List of different canal 'features'.
  * Each feature gets an entry in the canal spritegroup table */
 enum CanalFeature {
 	CF_WATERSLOPE,
@@ -42,7 +43,8 @@ struct WaterFeature {
 extern WaterFeature _water_feature[CF_END];
 
 
-/** Lookup the base sprite to use for a canal.
+/**
+ * Lookup the base sprite to use for a canal.
  * @param feature Which canal feature we want.
  * @param tile Tile index of canal, if appropriate.
  * @return Base sprite returned by GRF, or 0 if none.

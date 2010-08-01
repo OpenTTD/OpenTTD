@@ -813,7 +813,8 @@ public:
 	virtual void ShowNewGRFInspectWindow() const { NOT_REACHED(); }
 };
 
-/** Get the nested widget with number \a widnum from the nested widget tree.
+/**
+ * Get the nested widget with number \a widnum from the nested widget tree.
  * @tparam NWID Type of the nested widget.
  * @param widnum Widget number of the widget to retrieve.
  * @return The requested widget if it is instantiated, \c NULL otherwise.
@@ -835,7 +836,8 @@ inline const NWidgetBase *Window::GetWidget<NWidgetBase>(uint widnum) const
 	return this->nested_array[widnum];
 }
 
-/** Get the nested widget with number \a widnum from the nested widget tree.
+/**
+ * Get the nested widget with number \a widnum from the nested widget tree.
  * @tparam NWID Type of the nested widget.
  * @param widnum Widget number of the widget to retrieve.
  * @return The requested widget if it is instantiated, \c NULL otherwise.

@@ -134,7 +134,8 @@ static inline void NewGenericResolver(ResolverObject *res, const GRFFile *grffil
 }
 
 
-/** Follow a generic feature callback list and return the first successful
+/**
+ * Follow a generic feature callback list and return the first successful
  * answer
  * @param feature GRF Feature of callback
  * @param object  pre-populated resolver object

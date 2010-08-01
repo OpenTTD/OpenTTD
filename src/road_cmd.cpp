@@ -168,7 +168,8 @@ CommandCost CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, Owner owner, R
 }
 
 
-/** Delete a piece of road.
+/**
+ * Delete a piece of road.
  * @param tile tile where to remove road from
  * @param flags operation to perform
  * @param pieces roadbits to remove
@@ -438,7 +439,8 @@ static CommandCost CheckRoadSlope(Slope tileh, RoadBits *pieces, RoadBits existi
 	return CMD_ERROR;
 }
 
-/** Build a piece of road.
+/**
+ * Build a piece of road.
  * @param tile tile where to build road
  * @param flags operation to perform
  * @param p1 bit 0..3 road pieces to build (RoadBits)
@@ -723,7 +725,8 @@ do_clear:;
 	return cost;
 }
 
-/** Build a long piece of road.
+/**
+ * Build a long piece of road.
  * @param start_tile start tile of drag (the building cost will appear over this tile)
  * @param flags operation to perform
  * @param p1 end tile of drag
@@ -817,7 +820,8 @@ CommandCost CmdBuildLongRoad(TileIndex start_tile, DoCommandFlag flags, uint32 p
 	return had_success ? cost : last_error;
 }
 
-/** Remove a long piece of road.
+/**
+ * Remove a long piece of road.
  * @param start_tile start tile of drag
  * @param flags operation to perform
  * @param p1 end tile of drag
@@ -891,7 +895,8 @@ CommandCost CmdRemoveLongRoad(TileIndex start_tile, DoCommandFlag flags, uint32 
 	return had_success ? cost : last_error;
 }
 
-/** Build a road depot.
+/**
+ * Build a road depot.
  * @param tile tile where to build the depot
  * @param flags operation to perform
  * @param p1 bit 0..1 entrance direction (DiagDirection)

@@ -139,7 +139,8 @@ extern void GetStationLayout(byte *layout, int numtracks, int plat_len, const St
 extern CommandCost FindJoiningWaypoint(StationID existing_station, StationID station_to_join, bool adjacent, TileArea ta, Waypoint **wp);
 extern CommandCost CanExpandRailStation(const BaseStation *st, TileArea &new_ta, Axis axis);
 
-/** Convert existing rail to waypoint. Eg build a waypoint station over
+/**
+ * Convert existing rail to waypoint. Eg build a waypoint station over
  * piece of rail
  * @param start_tile northern most tile where waypoint will be built
  * @param flags type of operation
@@ -270,7 +271,8 @@ CommandCost CmdBuildRailWaypoint(TileIndex start_tile, DoCommandFlag flags, uint
 	return CommandCost(EXPENSES_CONSTRUCTION, count * _price[PR_BUILD_WAYPOINT_RAIL]);
 }
 
-/** Build a buoy.
+/**
+ * Build a buoy.
  * @param tile tile where to place the bouy
  * @param flags operation to perform
  * @param p1 unused

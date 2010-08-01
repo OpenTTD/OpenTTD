@@ -73,7 +73,8 @@ void DrawShipEngine(int left, int right, int preferred_x, int y, EngineID engine
 	DrawSprite(sprite, pal, preferred_x, y);
 }
 
-/** Get the size of the sprite of a ship sprite heading west (used for lists)
+/**
+ * Get the size of the sprite of a ship sprite heading west (used for lists)
  * @param engine The engine to get the sprite from
  * @param width The width of the sprite
  * @param height The height of the sprite
@@ -373,7 +374,8 @@ static void ShipArrivesAt(const Vehicle *v, Station *st)
 }
 
 
-/** returns the track to choose on the next tile, or -1 when it's better to
+/**
+ * returns the track to choose on the next tile, or -1 when it's better to
  * reverse. The tile given is the tile we are about to enter, enterdir is the
  * direction in which we are entering the tile */
 static Track ChooseShipTrack(const Ship *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks)
@@ -599,7 +601,8 @@ bool Ship::Tick()
 	return true;
 }
 
-/** Build a ship.
+/**
+ * Build a ship.
  * @param tile tile of depot where ship is built
  * @param flags type of operation
  * @param p1 ship type being built (engine)
@@ -696,7 +699,8 @@ CommandCost CmdBuildShip(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	return value;
 }
 
-/** Sell a ship.
+/**
+ * Sell a ship.
  * @param tile unused
  * @param flags type of operation
  * @param p1 vehicle ID to be sold
@@ -739,7 +743,8 @@ bool Ship::FindClosestDepot(TileIndex *location, DestinationID *destination, boo
 	return true;
 }
 
-/** Send a ship to the depot.
+/**
+ * Send a ship to the depot.
  * @param tile unused
  * @param flags type of operation
  * @param p1 vehicle ID to send to the depot
@@ -764,7 +769,8 @@ CommandCost CmdSendShipToDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 }
 
 
-/** Refits a ship to the specified cargo type.
+/**
+ * Refits a ship to the specified cargo type.
  * @param tile unused
  * @param flags type of operation
  * @param p1 vehicle ID of the ship to refit

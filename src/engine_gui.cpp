@@ -24,7 +24,8 @@
 
 #include "table/strings.h"
 
-/** Return the category of an engine.
+/**
+ * Return the category of an engine.
  * @param engine Engine to examine.
  * @return String describing the category ("road veh", "train". "airplane", or "ship") of the engine.
  */
@@ -292,7 +293,8 @@ void DrawVehicleEngine(int left, int right, int preferred_x, int y, EngineID eng
 	}
 }
 
-/** Sort all items using quick sort and given 'CompareItems' function
+/**
+ * Sort all items using quick sort and given 'CompareItems' function
  * @param el list to be sorted
  * @param compare function for evaluation of the quicksort
  */
@@ -305,7 +307,8 @@ void EngList_Sort(GUIEngineList *el, EngList_SortTypeFunction compare)
 	QSortT(el->Begin(), size, compare);
 }
 
-/** Sort selected range of items (on indices @ <begin, begin+num_items-1>)
+/**
+ * Sort selected range of items (on indices @ <begin, begin+num_items-1>)
  * @param el list to be sorted
  * @param compare function for evaluation of the quicksort
  * @param begin start of sorting

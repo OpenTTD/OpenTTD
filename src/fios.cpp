@@ -7,7 +7,8 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file fios.cpp
+/**
+ * @file fios.cpp
  * This file contains functions for building file lists for the save/load dialogs.
  */
 
@@ -262,7 +263,8 @@ bool FiosFileScanner::AddFile(const char *filename, size_t basepath_length)
 }
 
 
-/** Fill the list of the files in a directory, according to some arbitrary rule.
+/**
+ * Fill the list of the files in a directory, according to some arbitrary rule.
  *  @param mode The mode we are in. Some modes don't allow 'parent'.
  *  @param callback_proc The function that is called where you need to do the filtering.
  *  @param subdir The directory from where to start (global) searching.
