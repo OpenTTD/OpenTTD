@@ -70,7 +70,7 @@ static uint16 ParseCode(const char *start, const char *end)
 	while (start < end && *start == ' ') start++;
 	while (end > start && *end == ' ') end--;
 	for (uint i = 0; i < lengthof(_keycode_to_name); i++) {
-		if (strncasecmp(start, _keycode_to_name[i].name, end - start) == 0) {
+		if (strlen(_keycode_to_name[i].name) == end - start && strncasecmp(start, _keycode_to_name[i].name, end - start) == 0) {
 			return _keycode_to_name[i].keycode;
 		}
 	}
