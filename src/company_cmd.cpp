@@ -11,6 +11,7 @@
 
 #include "stdafx.h"
 #include "engine_base.h"
+#include "company_base.h"
 #include "company_func.h"
 #include "company_gui.h"
 #include "town.h"
@@ -22,14 +23,11 @@
 #include "network/network_base.h"
 #include "ai/ai.hpp"
 #include "company_manager_face.h"
-#include "group.h"
 #include "window_func.h"
 #include "strings_func.h"
 #include "gfx_func.h"
 #include "date_func.h"
 #include "sound_func.h"
-#include "autoreplace_func.h"
-#include "autoreplace_gui.h"
 #include "rail.h"
 #include "core/pool_func.hpp"
 #include "settings_func.h"
@@ -647,44 +645,6 @@ void CompaniesYearlyLoop()
 			SndPlayFx(SND_00_GOOD_YEAR);
 		}
 	}
-}
-
-/** Change engine renewal parameters
- * @param tile unused
- * @param flags operation to perform
- * @param p1 packed data
- *   - bits 16-31 = engine group
- * @param p2 packed data
- *   - bits  0-15 = old engine type
- *   - bits 16-31 = new engine type
- * @param text unused
- * @return the cost of this operation or an error
- */
-CommandCost CmdSetAutoReplace(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
-{
-	Company *c = Company::GetIfValid(_current_company);
-	if (c == NULL) return CMD_ERROR;
-
-	EngineID old_engine_type = GB(p2, 0, 16);
-	EngineID new_engine_type = GB(p2, 16, 16);
-	GroupID id_g = GB(p1, 16, 16);
-	CommandCost cost;
-
-	if (!Group::IsValidID(id_g) && !IsAllGroupID(id_g) && !IsDefaultGroupID(id_g)) return CMD_ERROR;
-	if (!Engine::IsValidID(old_engine_type)) return CMD_ERROR;
-
-	if (new_engine_type != INVALID_ENGINE) {
-		if (!Engine::IsValidID(new_engine_type)) return CMD_ERROR;
-		if (!CheckAutoreplaceValidity(old_engine_type, new_engine_type, _current_company)) return CMD_ERROR;
-
-		cost = AddEngineReplacementForCompany(c, old_engine_type, new_engine_type, id_g, flags);
-	} else {
-		cost = RemoveEngineReplacementForCompany(c, old_engine_type, id_g, flags);
-	}
-
-	if ((flags & DC_EXEC) && IsLocalCompany()) InvalidateAutoreplaceWindow(old_engine_type, id_g);
-
-	return cost;
 }
 
 /**
