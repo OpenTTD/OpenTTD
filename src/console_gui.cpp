@@ -344,6 +344,7 @@ struct IConsoleWindow : Window
 				} else {
 					return ES_NOT_HANDLED;
 				}
+				break;
 		}
 		return ES_HANDLED;
 	}

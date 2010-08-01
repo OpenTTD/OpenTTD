@@ -345,6 +345,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 					if (_ctrl_pressed) order.SetDepotOrderType((OrderDepotTypeFlags)(order.GetDepotOrderType() ^ ODTFB_SERVICE));
 					return order;
 				}
+				break;
 
 			default:
 				break;
