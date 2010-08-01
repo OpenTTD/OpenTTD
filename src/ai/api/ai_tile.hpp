@@ -48,10 +48,10 @@ public:
 	 * Enumeration for corners of tiles.
 	 */
 	enum Corner {
-		CORNER_W       = 0,      //!< West corner
-		CORNER_S       = 1,      //!< South corner
-		CORNER_E       = 2,      //!< East corner
-		CORNER_N       = 3,      //!< North corner
+		CORNER_W       = 0,      ///< West corner
+		CORNER_S       = 1,      ///< South corner
+		CORNER_E       = 2,      ///< East corner
+		CORNER_N       = 3,      ///< North corner
 
 		CORNER_INVALID = 0xFF,
 	};
@@ -65,29 +65,29 @@ public:
 	 */
 	enum Slope {
 		/* Values are important, as they represent the internal state of the game. */
-		SLOPE_FLAT     = 0x00,                                  //!< A flat tile
-		SLOPE_W        = 1 << CORNER_W,                         //!< The west corner of the tile is raised
-		SLOPE_S        = 1 << CORNER_S,                         //!< The south corner of the tile is raised
-		SLOPE_E        = 1 << CORNER_E,                         //!< The east corner of the tile is raised
-		SLOPE_N        = 1 << CORNER_N,                         //!< The north corner of the tile is raised
-		SLOPE_STEEP    = 0x10,                                  //!< Indicates the slope is steep (The corner opposite of the not-raised corner is raised two times)
-		SLOPE_NW       = SLOPE_N | SLOPE_W,                     //!< North and west corner are raised
-		SLOPE_SW       = SLOPE_S | SLOPE_W,                     //!< South and west corner are raised
-		SLOPE_SE       = SLOPE_S | SLOPE_E,                     //!< South and east corner are raised
-		SLOPE_NE       = SLOPE_N | SLOPE_E,                     //!< North and east corner are raised
-		SLOPE_EW       = SLOPE_E | SLOPE_W,                     //!< East and west corner are raised
-		SLOPE_NS       = SLOPE_N | SLOPE_S,                     //!< North and south corner are raised
-		SLOPE_ELEVATED = SLOPE_N | SLOPE_E | SLOPE_S | SLOPE_W, //!< Bit mask containing all 'simple' slopes. Does not appear as a slope.
-		SLOPE_NWS      = SLOPE_N | SLOPE_W | SLOPE_S,           //!< North, west and south corner are raised
-		SLOPE_WSE      = SLOPE_W | SLOPE_S | SLOPE_E,           //!< West, south and east corner are raised
-		SLOPE_SEN      = SLOPE_S | SLOPE_E | SLOPE_N,           //!< South, east and north corner are raised
-		SLOPE_ENW      = SLOPE_E | SLOPE_N | SLOPE_W,           //!< East, north and west corner are raised
-		SLOPE_STEEP_W  = SLOPE_STEEP | SLOPE_NWS,               //!< A steep slope falling to east (from west)
-		SLOPE_STEEP_S  = SLOPE_STEEP | SLOPE_WSE,               //!< A steep slope falling to north (from south)
-		SLOPE_STEEP_E  = SLOPE_STEEP | SLOPE_SEN,               //!< A steep slope falling to west (from east)
-		SLOPE_STEEP_N  = SLOPE_STEEP | SLOPE_ENW,               //!< A steep slope falling to south (from north)
+		SLOPE_FLAT     = 0x00,                                  ///< A flat tile
+		SLOPE_W        = 1 << CORNER_W,                         ///< The west corner of the tile is raised
+		SLOPE_S        = 1 << CORNER_S,                         ///< The south corner of the tile is raised
+		SLOPE_E        = 1 << CORNER_E,                         ///< The east corner of the tile is raised
+		SLOPE_N        = 1 << CORNER_N,                         ///< The north corner of the tile is raised
+		SLOPE_STEEP    = 0x10,                                  ///< Indicates the slope is steep (The corner opposite of the not-raised corner is raised two times)
+		SLOPE_NW       = SLOPE_N | SLOPE_W,                     ///< North and west corner are raised
+		SLOPE_SW       = SLOPE_S | SLOPE_W,                     ///< South and west corner are raised
+		SLOPE_SE       = SLOPE_S | SLOPE_E,                     ///< South and east corner are raised
+		SLOPE_NE       = SLOPE_N | SLOPE_E,                     ///< North and east corner are raised
+		SLOPE_EW       = SLOPE_E | SLOPE_W,                     ///< East and west corner are raised
+		SLOPE_NS       = SLOPE_N | SLOPE_S,                     ///< North and south corner are raised
+		SLOPE_ELEVATED = SLOPE_N | SLOPE_E | SLOPE_S | SLOPE_W, ///< Bit mask containing all 'simple' slopes. Does not appear as a slope.
+		SLOPE_NWS      = SLOPE_N | SLOPE_W | SLOPE_S,           ///< North, west and south corner are raised
+		SLOPE_WSE      = SLOPE_W | SLOPE_S | SLOPE_E,           ///< West, south and east corner are raised
+		SLOPE_SEN      = SLOPE_S | SLOPE_E | SLOPE_N,           ///< South, east and north corner are raised
+		SLOPE_ENW      = SLOPE_E | SLOPE_N | SLOPE_W,           ///< East, north and west corner are raised
+		SLOPE_STEEP_W  = SLOPE_STEEP | SLOPE_NWS,               ///< A steep slope falling to east (from west)
+		SLOPE_STEEP_S  = SLOPE_STEEP | SLOPE_WSE,               ///< A steep slope falling to north (from south)
+		SLOPE_STEEP_E  = SLOPE_STEEP | SLOPE_SEN,               ///< A steep slope falling to west (from east)
+		SLOPE_STEEP_N  = SLOPE_STEEP | SLOPE_ENW,               ///< A steep slope falling to south (from north)
 
-		SLOPE_INVALID  = 0xFFFF,                                //!< An invalid slope
+		SLOPE_INVALID  = 0xFFFF,                                ///< An invalid slope
 	};
 
 	/**
@@ -95,26 +95,26 @@ public:
 	 */
 	enum TransportType {
 		/* Values are important, as they represent the internal state of the game. */
-		TRANSPORT_RAIL    =  0, //!< Tile with rail.
-		TRANSPORT_ROAD    =  1, //!< Tile with road.
-		TRANSPORT_WATER   =  2, //!< Tile with navigable waterways.
-		TRANSPORT_AIR     =  3, //!< Tile with airport.
+		TRANSPORT_RAIL    =  0, ///< Tile with rail.
+		TRANSPORT_ROAD    =  1, ///< Tile with road.
+		TRANSPORT_WATER   =  2, ///< Tile with navigable waterways.
+		TRANSPORT_AIR     =  3, ///< Tile with airport.
 
-		TRANSPORT_INVALID = -1, //!< Tile without any transport type.
+		TRANSPORT_INVALID = -1, ///< Tile without any transport type.
 	};
 
 	/**
 	 * Get the base cost for building/clearing several things.
 	 */
 	enum BuildType {
-		BT_FOUNDATION,   //!< Build a foundation under something
-		BT_TERRAFORM,    //!< Terraform
-		BT_BUILD_TREES,  //!< Build trees
-		BT_CLEAR_GRASS,  //!< Clear a tile with just grass
-		BT_CLEAR_ROUGH,  //!< Clear a rough tile
-		BT_CLEAR_ROCKY,  //!< Clear a tile with rocks
-		BT_CLEAR_FIELDS, //!< Clear a tile with farm fields
-		BT_CLEAR_HOUSE,  //!< Clear a tile with a house
+		BT_FOUNDATION,   ///< Build a foundation under something
+		BT_TERRAFORM,    ///< Terraform
+		BT_BUILD_TREES,  ///< Build trees
+		BT_CLEAR_GRASS,  ///< Clear a tile with just grass
+		BT_CLEAR_ROUGH,  ///< Clear a rough tile
+		BT_CLEAR_ROCKY,  ///< Clear a tile with rocks
+		BT_CLEAR_FIELDS, ///< Clear a tile with farm fields
+		BT_CLEAR_HOUSE,  ///< Clear a tile with a house
 	};
 
 	/**

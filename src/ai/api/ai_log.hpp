@@ -31,11 +31,11 @@ public:
 	 *  This has no use for you, as AI writer.
 	 */
 	enum AILogType {
-		LOG_SQ_ERROR = 0, //!< Squirrel printed an error.
-		LOG_ERROR = 1,    //!< User printed an error.
-		LOG_SQ_INFO = 2,  //!< Squirrel printed some info.
-		LOG_WARNING = 3,  //!< User printed some warning.
-		LOG_INFO = 4,     //!< User printed some info.
+		LOG_SQ_ERROR = 0, ///< Squirrel printed an error.
+		LOG_ERROR = 1,    ///< User printed an error.
+		LOG_SQ_INFO = 2,  ///< Squirrel printed some info.
+		LOG_WARNING = 3,  ///< User printed some warning.
+		LOG_INFO = 4,     ///< User printed some info.
 	};
 
 	/**
@@ -43,11 +43,11 @@ public:
 	 *  This has no use for you, as AI writer.
 	 */
 	struct LogData {
-		char **lines;           //!< The log-lines.
-		AILog::AILogType *type; //!< Per line, which type of log it was.
-		int count;              //!< Total amount of log-lines possible.
-		int pos;                //!< Current position in lines.
-		int used;               //!< Total amount of used log-lines.
+		char **lines;           ///< The log-lines.
+		AILog::AILogType *type; ///< Per line, which type of log it was.
+		int count;              ///< Total amount of log-lines possible.
+		int pos;                ///< Current position in lines.
+		int used;               ///< Total amount of used log-lines.
 	};
 #endif /* EXPORT_SKIP */
 

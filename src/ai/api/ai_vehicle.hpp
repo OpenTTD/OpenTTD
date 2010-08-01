@@ -75,28 +75,28 @@ public:
 	 */
 	enum VehicleType {
 		/* Order IS important, as it now matches the internal state of the game for vehicle type */
-		VT_RAIL,           //!< Rail type vehicle.
-		VT_ROAD,           //!< Road type vehicle (bus / truck).
-		VT_WATER,          //!< Water type vehicle.
-		VT_AIR,            //!< Air type vehicle.
-		VT_INVALID = 0xFF, //!< Invalid vehicle type.
+		VT_RAIL,           ///< Rail type vehicle.
+		VT_ROAD,           ///< Road type vehicle (bus / truck).
+		VT_WATER,          ///< Water type vehicle.
+		VT_AIR,            ///< Air type vehicle.
+		VT_INVALID = 0xFF, ///< Invalid vehicle type.
 	};
 
 	/**
 	 * The different states a vehicle can be in.
 	 */
 	enum VehicleState {
-		VS_RUNNING,        //!< The vehicle is currently running.
-		VS_STOPPED,        //!< The vehicle is stopped manually.
-		VS_IN_DEPOT,       //!< The vehicle is stopped in the depot.
-		VS_AT_STATION,     //!< The vehicle is stopped at a station and is currently loading or unloading.
-		VS_BROKEN,         //!< The vehicle has broken down and will start running again in a while.
-		VS_CRASHED,        //!< The vehicle is crashed (and will never run again).
+		VS_RUNNING,        ///< The vehicle is currently running.
+		VS_STOPPED,        ///< The vehicle is stopped manually.
+		VS_IN_DEPOT,       ///< The vehicle is stopped in the depot.
+		VS_AT_STATION,     ///< The vehicle is stopped at a station and is currently loading or unloading.
+		VS_BROKEN,         ///< The vehicle has broken down and will start running again in a while.
+		VS_CRASHED,        ///< The vehicle is crashed (and will never run again).
 
-		VS_INVALID = 0xFF, //!< An invalid vehicle state.
+		VS_INVALID = 0xFF, ///< An invalid vehicle state.
 	};
 
-	static const int VEHICLE_INVALID = -1; //!< Invalid VehicleID.
+	static const int VEHICLE_INVALID = -1; ///< Invalid VehicleID.
 
 	/**
 	 * Checks whether the given vehicle is valid and owned by you.

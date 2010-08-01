@@ -20,7 +20,7 @@
  */
 class AIMap : public AIObject {
 public:
-	static const int TILE_INVALID = (int)INVALID_TILE; //!< Invalid TileIndex.
+	static const int TILE_INVALID = (int)INVALID_TILE; ///< Invalid TileIndex.
 
 	static const char *GetClassName() { return "AIMap"; }
 

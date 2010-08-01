@@ -28,8 +28,8 @@ public:
 
 	/** Type of sorter */
 	enum SorterType {
-		SORT_BY_VALUE, //!< Sort the list based on the value of the item.
-		SORT_BY_ITEM,  //!< Sort the list based on the item itself.
+		SORT_BY_VALUE, ///< Sort the list based on the value of the item.
+		SORT_BY_ITEM,  ///< Sort the list based on the item itself.
 	};
 
 	/** Sort ascending */
@@ -38,19 +38,19 @@ public:
 	static const bool SORT_DESCENDING = false;
 
 private:
-	AIAbstractListSorter *sorter; //!< Sorting algorithm
-	SorterType sorter_type;       //!< Sorting type
-	bool sort_ascending;          //!< Whether to sort ascending or descending
-	bool initialized;             //!< Whether an iteration has been started
-	int modifications;            //!< Number of modification that has been done. To prevent changing data while valuating.
+	AIAbstractListSorter *sorter; ///< Sorting algorithm
+	SorterType sorter_type;       ///< Sorting type
+	bool sort_ascending;          ///< Whether to sort ascending or descending
+	bool initialized;             ///< Whether an iteration has been started
+	int modifications;            ///< Number of modification that has been done. To prevent changing data while valuating.
 
 public:
-	typedef std::set<int32> AIItemList;                       //!< The list of items inside the bucket
-	typedef std::map<int32, AIItemList> AIAbstractListBucket; //!< The bucket list per value
-	typedef std::map<int32, int32> AIAbstractListMap;         //!< List per item
+	typedef std::set<int32> AIItemList;                       ///< The list of items inside the bucket
+	typedef std::map<int32, AIItemList> AIAbstractListBucket; ///< The bucket list per value
+	typedef std::map<int32, int32> AIAbstractListMap;         ///< List per item
 
-	AIAbstractListMap items;           //!< The items in the list
-	AIAbstractListBucket buckets;      //!< The items in the list, sorted by value
+	AIAbstractListMap items;           ///< The items in the list
+	AIAbstractListBucket buckets;      ///< The items in the list, sorted by value
 
 protected:
 	/**

@@ -361,12 +361,12 @@ static uint32 SimulateDrag(TileIndex from, TileIndex tile, TileIndex *to)
  *   from a specific direction.
  */
 struct AIRailSignalData {
-	Track track;        //!< The track that will be taken to travel.
-	Trackdir trackdir;  //!< The Trackdir belonging to that track.
-	uint signal_cycles; //!< How many times the signal should be cycled in order to build it in the correct direction.
+	Track track;        ///< The track that will be taken to travel.
+	Trackdir trackdir;  ///< The Trackdir belonging to that track.
+	uint signal_cycles; ///< How many times the signal should be cycled in order to build it in the correct direction.
 };
 
-static const int NUM_TRACK_DIRECTIONS = 3; //!< The number of directions you can go when entering a tile.
+static const int NUM_TRACK_DIRECTIONS = 3; ///< The number of directions you can go when entering a tile.
 
 /**
  * List information about the trackdir and number of needed cycles for building signals when

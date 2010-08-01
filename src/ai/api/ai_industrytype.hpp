@@ -27,8 +27,8 @@ public:
 	 * Special IndustryTypes.
 	 */
 	enum SpecialIndustryType {
-		INDUSTRYTYPE_UNKNOWN = 0xFE, //!< Unknown/unspecific industrytype. (Usable for AIRail::BuildNewGRFRailStation())
-		INDUSTRYTYPE_TOWN    = 0xFF, //!< No industry, but town. (Usable for AIRail::BuildNewGRFRailStation())
+		INDUSTRYTYPE_UNKNOWN = 0xFE, ///< Unknown/unspecific industrytype. (Usable for AIRail::BuildNewGRFRailStation())
+		INDUSTRYTYPE_TOWN    = 0xFF, ///< No industry, but town. (Usable for AIRail::BuildNewGRFRailStation())
 	};
 
 	/**

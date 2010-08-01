@@ -49,19 +49,19 @@ public:
 	 * All categories errors can be divided in.
 	 */
 	enum ErrorCategories {
-		ERR_CAT_NONE = 0, //!< Error messages not related to any category.
-		ERR_CAT_GENERAL,  //!< Error messages related to general things.
-		ERR_CAT_VEHICLE,  //!< Error messages related to building / maintaining vehicles.
-		ERR_CAT_STATION,  //!< Error messages related to building / maintaining stations.
-		ERR_CAT_BRIDGE,   //!< Error messages related to building / removing bridges.
-		ERR_CAT_TUNNEL,   //!< Error messages related to building / removing tunnels.
-		ERR_CAT_TILE,     //!< Error messages related to raising / lowering and demolishing tiles.
-		ERR_CAT_SIGN,     //!< Error messages related to building / removing signs.
-		ERR_CAT_RAIL,     //!< Error messages related to building / maintaining rails.
-		ERR_CAT_ROAD,     //!< Error messages related to building / maintaining roads.
-		ERR_CAT_ORDER,    //!< Error messages related to managing orders.
-		ERR_CAT_MARINE,   //!< Error messages related to building / removing ships, docks and channels.
-		ERR_CAT_WAYPOINT, //!< Error messages related to building / maintaining waypoints.
+		ERR_CAT_NONE = 0, ///< Error messages not related to any category.
+		ERR_CAT_GENERAL,  ///< Error messages related to general things.
+		ERR_CAT_VEHICLE,  ///< Error messages related to building / maintaining vehicles.
+		ERR_CAT_STATION,  ///< Error messages related to building / maintaining stations.
+		ERR_CAT_BRIDGE,   ///< Error messages related to building / removing bridges.
+		ERR_CAT_TUNNEL,   ///< Error messages related to building / removing tunnels.
+		ERR_CAT_TILE,     ///< Error messages related to raising / lowering and demolishing tiles.
+		ERR_CAT_SIGN,     ///< Error messages related to building / removing signs.
+		ERR_CAT_RAIL,     ///< Error messages related to building / maintaining rails.
+		ERR_CAT_ROAD,     ///< Error messages related to building / maintaining roads.
+		ERR_CAT_ORDER,    ///< Error messages related to managing orders.
+		ERR_CAT_MARINE,   ///< Error messages related to building / removing ships, docks and channels.
+		ERR_CAT_WAYPOINT, ///< Error messages related to building / maintaining waypoints.
 
 		/**
 		 * DO NOT USE! The error bitsize determines how many errors can be stored in
