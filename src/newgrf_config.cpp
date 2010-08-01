@@ -38,6 +38,7 @@ GRFConfig::GRFConfig(const char *filename) :
  * @param config The GRFConfig object to make a copy of.
  */
 GRFConfig::GRFConfig(const GRFConfig &config) :
+	ZeroedMemoryAllocator(),
 	ident(config.ident),
 	version(config.version),
 	flags(config.flags & ~GCF_COPY),
@@ -133,6 +134,7 @@ GRFError::GRFError(StringID severity, StringID message) :
  * @param error The GRFError object to make a copy of.
  */
 GRFError::GRFError(const GRFError &error) :
+	ZeroedMemoryAllocator(),
 	custom_message(error.custom_message),
 	data(error.data),
 	message(error.message),
