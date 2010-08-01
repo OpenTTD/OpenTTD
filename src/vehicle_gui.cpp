@@ -516,8 +516,8 @@ struct RefitWindow : public Window {
 				Vehicle *v = Vehicle::Get(this->window_number);
 				BuildRefitList(v, &this->list);
 				this->vscroll.SetCount(this->list.Length());
+				/* FALL THROUGH */
 			}
-			/* FALL THROUGH */
 
 			case 1: // A new cargo has been selected.
 				this->cargo = (this->sel >= 0 && this->sel < (int)this->list.Length()) ? &this->list[this->sel] : NULL;
@@ -533,8 +533,9 @@ struct RefitWindow : public Window {
 				this->InvalidateData(1);
 
 				if (click_count == 1) break;
+				/* FALL THROUGH */
 			}
-			/* FALL THROUGH */
+
 			case VRW_REFITBUTTON: // refit button
 				if (this->cargo != NULL) {
 					const Vehicle *v = Vehicle::Get(this->window_number);

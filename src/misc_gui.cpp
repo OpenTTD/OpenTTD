@@ -1368,7 +1368,7 @@ struct QueryStringWindow : public QueryStringBaseWindow
 				break;
 			}
 			case HEBR_CONFIRM: this->OnOk();
-			/* FALL THROUGH */
+				/* FALL THROUGH */
 			case HEBR_CANCEL: delete this; break; // close window, abandon changes
 			case HEBR_NOT_FOCUSED: break;
 		}

@@ -376,7 +376,7 @@ CommandCost CmdPlantTree(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 					msg = STR_ERROR_CAN_T_BUILD_ON_WATER;
 					continue;
 				}
-			/* FALL THROUGH */
+				/* FALL THROUGH */
 			case MP_CLEAR: {
 				if (IsBridgeAbove(tile)) {
 					msg = STR_ERROR_SITE_UNSUITABLE;

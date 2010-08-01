@@ -349,7 +349,8 @@ CommandCost CmdBuildCanal(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 						MakeSea(tile);
 						break;
 					}
-				/* FALL THROUGH */
+					/* FALL THROUGH */
+
 				default:
 					MakeCanal(tile, _current_company, Random());
 					break;
@@ -904,7 +905,8 @@ void DoFloodTile(TileIndex target)
 					flooded = true;
 					break;
 				}
-			/* FALL THROUGH */
+				/* FALL THROUGH */
+
 			case MP_CLEAR:
 				if (DoCommand(target, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR).Succeeded()) {
 					MakeShore(target);

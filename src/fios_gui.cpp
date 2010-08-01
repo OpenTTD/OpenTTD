@@ -658,7 +658,7 @@ public:
 				this->selected = NULL;
 				_load_check_data.Clear();
 				BuildFileList();
-			/* FALL THROUGH */
+				/* FALL THROUGH */
 			case 1:
 				/* Selection changes */
 				if (_saveload_mode == SLD_LOAD_GAME || _saveload_mode == SLD_LOAD_SCENARIO) {

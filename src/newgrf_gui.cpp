@@ -747,8 +747,9 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 
 				this->InvalidateData();
 				if (click_count == 1) break;
+				/* FALL THROUGH, with double click. */
 			}
-			/* FALL THROUGH, with double click. */
+
 			case SNGRFS_REMOVE: { // Remove GRF
 				if (this->active_sel == NULL || !this->editable) break;
 				DeleteWindowByClass(WC_GRF_PARAMETERS);
@@ -787,8 +788,9 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 				}
 				this->InvalidateData();
 				if (click_count == 1) break;
+				/* FALL THROUGH, with double click. */
 			}
-			/* FALL THROUGH, with double click. */
+
 			case SNGRFS_ADD: {
 				if (this->avail_sel == NULL || !this->editable) break;
 

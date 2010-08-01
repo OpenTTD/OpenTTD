@@ -2247,8 +2247,8 @@ static void MouseLoop(MouseClick click, int mousewheel)
 				if (!scrollwheel_scrolling || w == NULL || w->window_class != WC_SMALLMAP) break;
 				/* We try to use the scrollwheel to scroll since we didn't touch any of the buttons.
 				 * Simulate a right button click so we can get started. */
+				/* FALL THROUGH */
 
-				/* fallthough */
 			case MC_RIGHT: DispatchRightClickEvent(w, x - w->left, y - w->top); break;
 
 			case MC_HOVER: DispatchHoverEvent(w, x - w->left, y - w->top); break;

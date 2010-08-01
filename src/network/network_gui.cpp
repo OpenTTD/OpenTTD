@@ -2312,8 +2312,8 @@ struct NetworkCompanyPasswordWindow : public QueryStringBaseWindow {
 		switch (widget) {
 			case NCPWW_OK:
 				this->OnOk();
+				/* FALL THROUGH */
 
-			/* FALL THROUGH */
 			case NCPWW_CANCEL:
 				delete this;
 				break;
