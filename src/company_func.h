@@ -24,8 +24,8 @@ void ShowBuyCompanyDialog(CompanyID company);
 extern CompanyByte _local_company;
 extern CompanyByte _current_company;
 
-extern Colours _company_colours[MAX_COMPANIES];  ///< NOSAVE: can be determined from company structs
-extern CompanyManagerFace _company_manager_face; ///< for company manager face storage in openttd.cfg
+extern Colours _company_colours[MAX_COMPANIES];
+extern CompanyManagerFace _company_manager_face;
 
 /**
  * Is the current company the local company?
@@ -36,6 +36,11 @@ static inline bool IsLocalCompany()
 	return _local_company == _current_company;
 }
 
+/**
+ * Is the user representing \a company?
+ * @param company Company where interaction is needed with.
+ * @return Gives \c true if the user can answer questions interactively as representative of \a company, else \c false
+ */
 static inline bool IsInteractiveCompany(CompanyID company)
 {
 	return company == _local_company;

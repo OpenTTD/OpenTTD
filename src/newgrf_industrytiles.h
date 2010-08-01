@@ -17,6 +17,7 @@
 #include "newgrf_callbacks.h"
 #include "core/random_func.hpp"
 
+/** Animation triggers of the industries. */
 enum IndustryAnimationTrigger {
 	IAT_CONSTRUCTION_STATE_CHANGE,
 	IAT_TILELOOP,
@@ -34,13 +35,11 @@ bool StartStopIndustryTileAnimation(TileIndex tile, IndustryAnimationTrigger iat
 bool StartStopIndustryTileAnimation(const Industry *ind, IndustryAnimationTrigger iat);
 
 
+/** Available industry tile triggers. */
 enum IndustryTileTrigger {
-	/* The tile of the industry has been triggered during the tileloop. */
-	INDTILE_TRIGGER_TILE_LOOP       = 0x01,
-	/* The industry has been triggered via its tick. */
-	INDUSTRY_TRIGGER_INDUSTRY_TICK  = 0x02,
-	/* Cargo has been delivered. */
-	INDUSTRY_TRIGGER_RECEIVED_CARGO = 0x04,
+	INDTILE_TRIGGER_TILE_LOOP       = 0x01, ///< The tile of the industry has been triggered during the tileloop.
+	INDUSTRY_TRIGGER_INDUSTRY_TICK  = 0x02, ///< The industry has been triggered via its tick.
+	INDUSTRY_TRIGGER_RECEIVED_CARGO = 0x04, ///< Cargo has been delivered.
 };
 void TriggerIndustryTile(TileIndex t, IndustryTileTrigger trigger);
 void TriggerIndustry(Industry *ind, IndustryTileTrigger trigger);

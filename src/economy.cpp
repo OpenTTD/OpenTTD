@@ -1423,6 +1423,9 @@ void LoadUnloadStation(Station *st)
 	_cargo_delivery_destinations.Clear();
 }
 
+/**
+ * Monthly update of the economic data (of the companies as well as economic fluctuations).
+ */
 void CompaniesMonthlyLoop()
 {
 	CompaniesGenStatistics();

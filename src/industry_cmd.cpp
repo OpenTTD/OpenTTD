@@ -1922,6 +1922,10 @@ void GenerateIndustries()
 	}
 }
 
+/**
+ * Monthly update of industry statistics.
+ * @param i Industry to update.
+ */
 static void UpdateIndustryStatistics(Industry *i)
 {
 	for (byte j = 0; j < lengthof(i->produced_cargo); j++) {
@@ -2363,11 +2367,13 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 	}
 }
 
-/** Daily handler for the industry changes
+/**
+ * Daily handler for the industry changes
  * Taking the original map size of 256*256, the number of random changes was always of just one unit.
  * But it cannot be the same on smaller or bigger maps. That number has to be scaled up or down.
  * For small maps, it implies that less than one change per month is required, while on bigger maps,
- * it would be way more. The daily loop handles those changes. */
+ * it would be way more. The daily loop handles those changes.
+ */
 void IndustryDailyLoop()
 {
 	_economy.industry_daily_change_counter += _economy.industry_daily_increment;

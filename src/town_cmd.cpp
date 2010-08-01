@@ -2705,7 +2705,7 @@ CommandCost CheckIfAuthorityAllowsNewStation(TileIndex tile, DoCommandFlag flags
 /** Return the town closest to the given tile within \a threshold.
  * @param tile      Starting point of the search.
  * @param threshold Biggest allowed distance to the town.
- * @return Closest town to \a tile withinh \a threshold, or \c NULL if there is no such town.
+ * @return Closest town to \a tile within \a threshold, or \c NULL if there is no such town.
  *
  * @note This function only uses distance, the #ClosestTownFromTile function also takes town ownership into account.
  */
@@ -2726,7 +2726,14 @@ Town *CalcClosestTownFromTile(TileIndex tile, uint threshold)
 	return best_town;
 }
 
-
+/**
+ * Return the town closest (in distance or ownership) to a given tile, within a given threshold.
+ * @param tile      Starting point of the search.
+ * @param threshold Biggest allowed distance to the town.
+ * @return Closest town to \a tile within \a threshold, or \c NULL if there is no such town.
+ *
+ * @note If you only care about distance, you can use the #CalcClosestTownFromTile function.
+ */
 Town *ClosestTownFromTile(TileIndex tile, uint threshold)
 {
 	switch (GetTileType(tile)) {
@@ -2760,12 +2767,17 @@ Town *ClosestTownFromTile(TileIndex tile, uint threshold)
 	}
 }
 
-static bool _town_rating_test = false;
-static SmallMap<const Town *, int, 4> _town_test_ratings;
+static bool _town_rating_test = false; ///< If \c true, town rating is in test-mode.
+static SmallMap<const Town *, int, 4> _town_test_ratings; ///< Map of towns to modified ratings, while in town rating test-mode.
 
+/**
+ * Switch the town rating to test-mode, to allow commands to be tested without affecting current ratings.
+ * The function is safe to use in nested calls.
+ * @param mode Test mode switch (\c true means go to test-mode, \c false means leave test-mode).
+ */
 void SetTownRatingTestMode(bool mode)
 {
-	static int ref_count = 0;
+	static int ref_count = 0; // Number of times test-mode is switched on.
 	if (mode) {
 		if (ref_count == 0) {
 			_town_test_ratings.Clear();
@@ -2778,6 +2790,11 @@ void SetTownRatingTestMode(bool mode)
 	_town_rating_test = !(ref_count == 0);
 }
 
+/**
+ * Get the rating of a town for the #_current_company.
+ * @param t Town to get the rating from.
+ * @return Rating of the current company in the given town.
+ */
 static int GetRating(const Town *t)
 {
 	if (_town_rating_test) {

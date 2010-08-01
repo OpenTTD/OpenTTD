@@ -55,8 +55,8 @@ struct LanguagePack : public LanguagePackHeader {
 
 static char **_langpack_offs;
 static LanguagePack *_langpack;
-static uint _langtab_num[32];   // Offset into langpack offs
-static uint _langtab_start[32]; // Offset into langpack offs
+static uint _langtab_num[32];   ///< Offset into langpack offs
+static uint _langtab_start[32]; ///< Offset into langpack offs
 static bool _keep_gender_data = false;  ///< Should we retain the gender data in the current string?
 
 

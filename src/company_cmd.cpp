@@ -39,13 +39,12 @@
 
 CompanyByte _local_company;   ///< Company controlled by the human player at this client. Can also be #COMPANY_SPECTATOR.
 CompanyByte _current_company; ///< Company currently doing an action.
-/* NOSAVE: can be determined from company structs */
-Colours _company_colours[MAX_COMPANIES];
+Colours _company_colours[MAX_COMPANIES];  ///< NOSAVE: can be determined from company structs.
 CompanyManagerFace _company_manager_face; ///< for company manager face storage in openttd.cfg
 uint _next_competitor_start;              ///< the number of ticks before the next AI is started
 uint _cur_company_tick_index;             ///< used to generate a name for one company that doesn't have a name yet per tick
 
-CompanyPool _company_pool("Company");
+CompanyPool _company_pool("Company"); ///< Pool of companies.
 INSTANTIATE_POOL_METHODS(Company)
 
 Company::Company(uint16 name_1, bool is_ai)
@@ -106,14 +105,23 @@ void SetLocalCompany(CompanyID new_company)
 	MarkWholeScreenDirty();
 }
 
+/**
+ * Get the colour for DrawString-subroutines which matches the colour of the company.
+ * @param company Company to get the colour of.
+ * @return Colour of \a company.
+ */
 uint16 GetDrawStringCompanyColour(CompanyID company)
 {
-	/* Get the colour for DrawString-subroutines which matches the colour
-	 * of the company */
 	if (!Company::IsValidID(company)) return _colour_gradient[COLOUR_WHITE][4] | IS_PALETTE_COLOUR;
 	return (_colour_gradient[_company_colours[company]][4]) | IS_PALETTE_COLOUR;
 }
 
+/**
+ * Draw the icon of a company.
+ * @param c Company that needs its icon drawn.
+ * @param x Horizontal coordinate of the icon.
+ * @param y Vertical coordinate of the icon.
+ */
 void DrawCompanyIcon(CompanyID c, int x, int y)
 {
 	DrawSprite(SPR_COMPANY_ICON, COMPANY_SPRITE_COLOUR(c), x, y);
@@ -150,6 +158,10 @@ bool IsValidCompanyManagerFace(CompanyManagerFace cmf)
 	return true;
 }
 
+/**
+ * Refresh all windows owned by a company.
+ * @param company Company that changed, and needs its windows refreshed.
+ */
 void InvalidateCompanyWindows(const Company *company)
 {
 	CompanyID cid = company->index;
@@ -176,6 +188,11 @@ bool CheckCompanyHasMoney(CommandCost &cost)
 	return true;
 }
 
+/**
+ * Deduct costs of a command from the money of a company.
+ * @param c Company to pay the bill.
+ * @param cost Money to pay.
+ */
 static void SubtractMoneyFromAnyCompany(Company *c, CommandCost cost)
 {
 	if (cost.GetCost() == 0) return;
@@ -201,12 +218,21 @@ static void SubtractMoneyFromAnyCompany(Company *c, CommandCost cost)
 	InvalidateCompanyWindows(c);
 }
 
+/**
+ * Subtract money from the #_current_company, if the company is valid.
+ * @param cost Money to pay.
+ */
 void SubtractMoneyFromCompany(CommandCost cost)
 {
 	Company *c = Company::GetIfValid(_current_company);
 	if (c != NULL) SubtractMoneyFromAnyCompany(c, cost);
 }
 
+/**
+ * Subtract money from a company, including the money fraction.
+ * @param company Company paying the bill.
+ * @param cst     Cost of a command.
+ */
 void SubtractMoneyFromCompanyFract(CompanyID company, CommandCost cst)
 {
 	Company *c = Company::Get(company);
@@ -285,6 +311,10 @@ CommandCost CheckTileOwnership(TileIndex tile)
 	return_cmd_error(STR_ERROR_OWNED_BY);
 }
 
+/**
+ * Generate the name of a company from the last build coordinate.
+ * @param c Company to give a name.
+ */
 static void GenerateCompanyName(Company *c)
 {
 	TileIndex tile;
@@ -367,6 +397,10 @@ static const Colours _similar_colour[COLOUR_END][2] = {
 	{ COLOUR_GREY,       INVALID_COLOUR    }, // COLOUR_WHITE
 };
 
+/**
+ * Generate a company colour.
+ * @return Generated company colour.
+ */
 static Colours GenerateCompanyColour()
 {
 	Colours colours[COLOUR_END];
@@ -419,6 +453,10 @@ static Colours GenerateCompanyColour()
 	NOT_REACHED();
 }
 
+/**
+ * Generate a random president name of a company.
+ * @param c Company that needs a new president name.
+ */
 static void GeneratePresidentName(Company *c)
 {
 	for (;;) {
@@ -507,12 +545,14 @@ Company *DoStartupNewCompany(bool is_ai, CompanyID company = INVALID_COMPANY)
 	return c;
 }
 
+/** Start the next competitor now. */
 void StartupCompanies()
 {
 	_next_competitor_start = 0;
 }
 
 #ifdef ENABLE_AI
+/** Start a new competitor company if possible. */
 static void MaybeStartNewCompany()
 {
 #ifdef ENABLE_NETWORK
@@ -535,6 +575,7 @@ static void MaybeStartNewCompany()
 }
 #endif /* ENABLE_AI */
 
+/** Initialize the pool of companies. */
 void InitializeCompanies()
 {
 	_company_pool.CleanPool();
@@ -625,6 +666,10 @@ void OnTick_Companies()
 	_cur_company_tick_index = (_cur_company_tick_index + 1) % MAX_COMPANIES;
 }
 
+/**
+ * A year has passed, update the economic data of all companies, and perhaps show the
+ * financial overview window of the local company.
+ */
 void CompaniesYearlyLoop()
 {
 	Company *c;
@@ -650,7 +695,7 @@ void CompaniesYearlyLoop()
 /**
  * Fill the CompanyNewsInformation struct with the required data.
  * @param c the current company.
- * @param other the other company.
+ * @param other the other company (use \c NULL if not relevant).
  */
 void CompanyNewsInformation::FillData(const Company *c, const Company *other)
 {
@@ -936,6 +981,11 @@ CommandCost CmdSetCompanyColour(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 	return CommandCost();
 }
 
+/**
+ * Is the given name in use as name of a company?
+ * @param name Name to search.
+ * @return \c true if the name us unique (that is, not in use), else \c false.
+ */
 static bool IsUniqueCompanyName(const char *name)
 {
 	const Company *c;
@@ -974,6 +1024,11 @@ CommandCost CmdRenameCompany(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	return CommandCost();
 }
 
+/**
+ * Is the given name in use as president name of a company?
+ * @param name Name to search.
+ * @return \c true if the name us unique (that is, not in use), else \c false.
+ */
 static bool IsUniquePresidentName(const char *name)
 {
 	const Company *c;

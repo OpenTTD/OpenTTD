@@ -27,6 +27,10 @@ Date      _date;       ///< Current date in days (day counter)
 DateFract _date_fract;
 uint16 _tick_counter;  ///< Ever incrementing (and sometimes wrapping) tick counter for setting off various events
 
+/**
+ * Set the date.
+ * @param date New date
+ */
 void SetDate(Date date)
 {
 	YearMonthDay ymd;
@@ -69,6 +73,7 @@ enum DaysTillMonth {
 	ACCUM_DEC = ACCUM_NOV + 30,
 };
 
+/** Number of days to pass from the first day in the year before reaching the first of a month. */
 static const uint16 _accum_days_for_month[] = {
 	ACCUM_JAN, ACCUM_FEB, ACCUM_MAR, ACCUM_APR,
 	ACCUM_MAY, ACCUM_JUN, ACCUM_JUL, ACCUM_AUG,
@@ -82,8 +87,7 @@ static const uint16 _accum_days_for_month[] = {
  */
 void ConvertDateToYMD(Date date, YearMonthDay *ymd)
 {
-	/*
-	 * Year determination in multiple steps to account for leap
+	/* Year determination in multiple steps to account for leap
 	 * years. First do the large steps, then the smaller ones.
 	 */
 
@@ -152,6 +156,7 @@ Date ConvertYMDToDate(Year year, Month month, Day day)
 extern void EnginesDailyLoop();
 extern void DisasterDailyLoop();
 extern void IndustryDailyLoop();
+
 extern void CompaniesMonthlyLoop();
 extern void EnginesMonthlyLoop();
 extern void TownsMonthlyLoop();
@@ -166,6 +171,7 @@ extern void TownsYearlyLoop();
 extern void ShowEndGameChart();
 
 
+/** Available settings for autosave intervals. */
 static const Month _autosave_months[] = {
 	 0, ///< never
 	 1, ///< every month

@@ -32,6 +32,7 @@ static const uint INVALID_TOWN = 0xFFFF;
 typedef Pool<Town, TownID, 64, 64000> TownPool;
 extern TownPool _town_pool;
 
+/** Town data structure. */
 struct Town : TownPool::PoolItem<&_town_pool> {
 	TileIndex xy;
 
@@ -65,7 +66,7 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 	uint8 unwanted[MAX_COMPANIES]; ///< how many months companies aren't wanted by towns (bribe)
 	CompanyByte exclusivity;       ///< which company has exclusivity
 	uint8 exclusive_counter;       ///< months till the exclusivity expires
-	int16 ratings[MAX_COMPANIES];
+	int16 ratings[MAX_COMPANIES];  ///< Ratings of each company for this town.
 
 	/* Maximum amount of passengers and mail that can be transported. */
 	uint32 max_pass;
@@ -109,8 +110,7 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 	/* NOSAVE: UpdateTownRadius updates this given the house count. */
 	uint32 squared_town_zone_radius[HZB_END];
 
-	/* NOSAVE: The number of each type of building in the town. */
-	BuildingCounts<uint16> building_counts;
+	BuildingCounts<uint16> building_counts; ///< NOSAVE: The number of each type of building in the town.
 
 	/**
 	 * Creates a new town
@@ -122,17 +122,18 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 
 	void InitializeLayout(TownLayout layout);
 
-	/** Calculate the max town noise
+	/**
+	 * Calculate the max town noise.
 	 * The value is counted using the population divided by the content of the
-	 * entry in town_noise_population corespondig to the town's tolerance.
-	 * To this result, we add 3, which is the noise of the lowest airport.
-	 * So user can at least buld that airport
-	 * @return the maximum noise level the town will tolerate */
+	 * entry in town_noise_population corresponding to the town's tolerance.
+	 * @return the maximum noise level the town will tolerate.
+	 */
 	inline uint16 MaxTownNoise() const
 	{
 		if (this->population == 0) return 0; // no population? no noise
 
-		return ((this->population / _settings_game.economy.town_noise_population[_settings_game.difficulty.town_council_tolerance]) + 3);
+		/* 3 is added (the noise of the lowest airport), so the  user can at least build a small airfield. */
+		return (this->population / _settings_game.economy.town_noise_population[_settings_game.difficulty.town_council_tolerance]) + 3;
 	}
 
 	void UpdateVirtCoord();
