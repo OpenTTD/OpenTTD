@@ -1211,7 +1211,8 @@ void MarkSingleVehicleDirty(const Vehicle *v)
 /**
  * Get position information of a vehicle when moving one pixel in the direction it is facing
  * @param v Vehicle to move
- * @return Position information after the move */
+ * @return Position information after the move
+ */
 GetNewVehiclePosResult GetNewVehiclePos(const Vehicle *v)
 {
 	static const int8 _delta_coord[16] = {

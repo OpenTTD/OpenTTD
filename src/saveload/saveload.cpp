@@ -1252,7 +1252,8 @@ static inline bool SlIsObjectValidInSavegame(const SaveLoad *sld)
 /**
  * Are we going to load this variable when loading a savegame or not?
  * @note If the variable is skipped it is skipped in the savegame
- * bytestream itself as well, so there is no need to skip it somewhere else */
+ * bytestream itself as well, so there is no need to skip it somewhere else
+ */
 static inline bool SlSkipVariableOnLoad(const SaveLoad *sld)
 {
 	if ((sld->conv & SLF_NETWORK_NO) && _sl.action != SLA_SAVE && _networking && !_network_server) {
@@ -1893,7 +1894,7 @@ static void WriteZlibLoop(z_streamp z, byte *p, size_t len, int mode)
 		 * According to the author of zlib it is not a bug and it won't be fixed.
 		 * http://groups.google.com/group/comp.compression/browse_thread/thread/b154b8def8c2a3ef/cdf9b8729ce17ee2
 		 * [Mark Adler, Feb 24 2004, 'zlib-1.2.1 valgrind warnings' in the newgroup comp.compression]
-		 **/
+		 */
 		r = deflate(z, mode);
 
 		/* bytes were emitted? */

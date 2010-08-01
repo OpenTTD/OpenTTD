@@ -45,7 +45,8 @@ static NewsItem *_latest_news = NULL;       ///< tail of news items queue
  * Forced news item.
  * Users can force an item by accessing the history or "last message".
  * If the message being shown was forced by the user, a pointer is stored
- * in _forced_news. Otherwise, \a _forced_news variable is NULL. */
+ * in _forced_news. Otherwise, \a _forced_news variable is NULL.
+ */
 static const NewsItem *_forced_news = NULL;       ///< item the user has asked for
 
 /** Current news item (last item shown regularly). */

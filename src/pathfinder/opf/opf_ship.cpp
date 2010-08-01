@@ -181,7 +181,8 @@ bad:;
 /**
  * returns the track to choose on the next tile, or -1 when it's better to
  * reverse. The tile given is the tile we are about to enter, enterdir is the
- * direction in which we are entering the tile */
+ * direction in which we are entering the tile
+ */
 Track OPFShipChooseTrack(const Ship *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks)
 {
 	assert(IsValidDiagDirection(enterdir));

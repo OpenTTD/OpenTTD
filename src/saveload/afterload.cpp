@@ -2159,7 +2159,8 @@ bool AfterLoadGame()
  * XXX - We need to reset the vehicle position hash because with a non-empty
  * hash AfterLoadVehicles() will loop infinitely. We need AfterLoadVehicles()
  * to recalculate vehicle data as some NewGRF vehicle sets could have been
- * removed or added and changed statistics */
+ * removed or added and changed statistics
+ */
 void ReloadNewGRFData()
 {
 	/* reload grf data */

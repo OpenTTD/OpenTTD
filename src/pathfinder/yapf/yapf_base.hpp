@@ -116,7 +116,8 @@ public:
 	 *      - the destination was found
 	 *      - or the open list is empty (no route to destination).
 	 *      - or the maximum amount of loops reached - m_max_search_nodes (default = 10000)
-	 * @return true if the path was found */
+	 * @return true if the path was found
+	 */
 	inline bool FindPath(const VehicleType *v)
 	{
 		m_veh = v;
@@ -223,7 +224,8 @@ public:
 
 	/**
 	 * AddNewNode() - called by Tderived::PfFollowNode() for each child node.
-	 *  Nodes are evaluated here and added into open list */
+	 *  Nodes are evaluated here and added into open list
+	 */
 	void AddNewNode(Node &n, const TrackFollower &tf)
 	{
 		/* evaluate the node */

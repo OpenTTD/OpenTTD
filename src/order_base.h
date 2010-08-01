@@ -314,13 +314,15 @@ public:
 
 	/**
 	 * Get number of orders in the order list.
-	 * @return number of orders in the chain. */
+	 * @return number of orders in the chain.
+	 */
 	inline VehicleOrderID GetNumOrders() const { return this->num_orders; }
 
 	/**
 	 * Insert a new order into the order chain.
 	 * @param new_order is the order to insert into the chain.
-	 * @param index is the position where the order is supposed to be inserted. */
+	 * @param index is the position where the order is supposed to be inserted.
+	 */
 	void InsertOrderAt(Order *new_order, int index);
 
 	/**
@@ -332,7 +334,8 @@ public:
 	/**
 	 * Move an order to another position within the order list.
 	 * @param from is the zero-based position of the order to move.
-	 * @param to is the zero-based position where the order is moved to. */
+	 * @param to is the zero-based position where the order is moved to.
+	 */
 	void MoveOrder(int from, int to);
 
 	/**

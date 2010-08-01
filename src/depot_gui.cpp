@@ -161,7 +161,8 @@ static void TrainDepotMoveVehicle(const Vehicle *wagon, VehicleID sel, const Veh
 
 /**
  * Array containing the cell size in pixels of the #DEPOT_WIDGET_MATRIX widget for each vehicle type.
- * @note The train vehicle type uses the entire row for each train. */
+ * @note The train vehicle type uses the entire row for each train.
+ */
 static Dimension _base_block_sizes[4];
 
 static void InitBlocksizeForShipAircraft(VehicleType type)
@@ -197,7 +198,8 @@ static void InitBlocksizeForShipAircraft(VehicleType type)
 
 /**
  * Set the size of the blocks in the window so we can be sure that they are big enough for the vehicle sprites in the current game.
- * @note Calling this function once for each game is enough. */
+ * @note Calling this function once for each game is enough.
+ */
 void InitDepotWindowBlockSizes()
 {
 	_base_block_sizes[VEH_TRAIN].width = 0;

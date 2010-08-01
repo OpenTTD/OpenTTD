@@ -218,7 +218,7 @@ public:
 	/**
 	 * Keep all items with this value.
 	 * @param value the value to keep.
-	 **/
+	 */
 	void KeepValue(int32 value);
 
 	/**

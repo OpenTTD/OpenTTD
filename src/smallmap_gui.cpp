@@ -65,7 +65,8 @@ static int _smallmap_industry_count; ///< Number of used industries
 
 /**
  * Macro for break marker in arrays of LegendAndColour.
- * It will have valid data, though */
+ * It will have valid data, though
+ */
 #define MS(a, b) {a, b, {INVALID_INDUSTRYTYPE}, true, false, true}
 
 /** Structure for holding relevant data for legends in small map */
@@ -152,7 +153,8 @@ static const LegendAndColour _legend_land_owners[] = {
 
 /**
  * Allow room for all industries, plus a terminator entry
- * This is required in order to have the indutry slots all filled up */
+ * This is required in order to have the indutry slots all filled up
+ */
 static LegendAndColour _legend_from_industries[NUM_INDUSTRYTYPES + 1];
 /* For connecting industry type to position in industries list(small map legend) */
 static uint _industry_to_list_pos[NUM_INDUSTRYTYPES];

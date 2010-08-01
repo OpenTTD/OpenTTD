@@ -221,7 +221,8 @@ FORCEINLINE void NWidgetBase::StoreSizePosition(SizingType sizing, uint x, uint 
 
 /**
  * Base class for a resizable nested widget.
- * @ingroup NestedWidgets */
+ * @ingroup NestedWidgets
+ */
 class NWidgetResizeBase : public NWidgetBase {
 public:
 	NWidgetResizeBase(WidgetType tp, uint fill_x, uint fill_y);
@@ -260,7 +261,8 @@ DECLARE_ENUM_AS_BIT_SET(NWidgetDisplay)
 
 /**
  * Base class for a 'real' widget.
- * @ingroup NestedWidgets */
+ * @ingroup NestedWidgets
+ */
 class NWidgetCore : public NWidgetResizeBase {
 public:
 	NWidgetCore(WidgetType tp, Colours colour, uint fill_x, uint fill_y, uint16 widget_data, StringID tool_tip);
@@ -318,7 +320,8 @@ inline bool NWidgetCore::IsDisabled() const
 
 /**
  * Baseclass for container widgets.
- * @ingroup NestedWidgets */
+ * @ingroup NestedWidgets
+ */
 class NWidgetContainer : public NWidgetBase {
 public:
 	NWidgetContainer(WidgetType tp);
@@ -403,7 +406,8 @@ protected:
 
 /**
  * Horizontal container.
- * @ingroup NestedWidgets */
+ * @ingroup NestedWidgets
+ */
 class NWidgetHorizontal : public NWidgetPIPContainer {
 public:
 	NWidgetHorizontal(NWidContainerFlags flags = NC_NONE);
@@ -414,7 +418,8 @@ public:
 
 /**
  * Horizontal container that doesn't change the direction of the widgets for RTL languages.
- * @ingroup NestedWidgets */
+ * @ingroup NestedWidgets
+ */
 class NWidgetHorizontalLTR : public NWidgetHorizontal {
 public:
 	NWidgetHorizontalLTR(NWidContainerFlags flags = NC_NONE);
@@ -424,7 +429,8 @@ public:
 
 /**
  * Vertical container.
- * @ingroup NestedWidgets */
+ * @ingroup NestedWidgets
+ */
 class NWidgetVertical : public NWidgetPIPContainer {
 public:
 	NWidgetVertical(NWidContainerFlags flags = NC_NONE);
@@ -436,7 +442,8 @@ public:
 
 /**
  * Spacer widget.
- * @ingroup NestedWidgets */
+ * @ingroup NestedWidgets
+ */
 class NWidgetSpacer : public NWidgetResizeBase {
 public:
 	NWidgetSpacer(int length, int height);
@@ -451,7 +458,8 @@ public:
 
 /**
  * Nested widget with a child.
- * @ingroup NestedWidgets */
+ * @ingroup NestedWidgets
+ */
 class NWidgetBackground : public NWidgetCore {
 public:
 	NWidgetBackground(WidgetType tp, Colours colour, int index, NWidgetPIPContainer *child = NULL);
@@ -481,7 +489,8 @@ private:
  * If the #display_flags field contains the #ND_NO_TRANSPARENCY bit, the viewport will disable transparency.
  * Shading to grey-scale is controlled with the #ND_SHADE_GREY bit (used for B&W news papers), the #ND_SHADE_DIMMED gives dimmed colours (for colour news papers).
  * @todo Class derives from #NWidgetCore, but does not use #colour, #widget_data, or #tool_tip.
- * @ingroup NestedWidgets */
+ * @ingroup NestedWidgets
+ */
 class NWidgetViewport : public NWidgetCore {
 public:
 	NWidgetViewport(int index);
@@ -496,7 +505,8 @@ public:
 
 /**
  * Leaf widget.
- * @ingroup NestedWidgets */
+ * @ingroup NestedWidgets
+ */
 class NWidgetLeaf : public NWidgetCore {
 public:
 	NWidgetLeaf(WidgetType tp, Colours colour, int index, uint16 data, StringID tip);
@@ -581,7 +591,8 @@ static FORCEINLINE uint ComputeMaxSize(uint base, uint max_space, uint step)
 
 /**
  * Widget part for storing data and tooltip information.
- * @ingroup NestedWidgetParts */
+ * @ingroup NestedWidgetParts
+ */
 struct NWidgetPartDataTip {
 	uint16 data;      ///< Data value of the widget.
 	StringID tooltip; ///< Tooltip of the widget.
@@ -589,7 +600,8 @@ struct NWidgetPartDataTip {
 
 /**
  * Widget part for storing basic widget information.
- * @ingroup NestedWidgetParts */
+ * @ingroup NestedWidgetParts
+ */
 struct NWidgetPartWidget {
 	Colours colour; ///< Widget colour.
 	int16 index;    ///< Widget index in the widget array.
@@ -597,21 +609,24 @@ struct NWidgetPartWidget {
 
 /**
  * Widget part for storing padding.
- * @ingroup NestedWidgetParts */
+ * @ingroup NestedWidgetParts
+ */
 struct NWidgetPartPaddings {
 	uint8 top, right, bottom, left; ///< Paddings for all directions.
 };
 
 /**
  * Widget part for storing pre/inter/post spaces.
- * @ingroup NestedWidgetParts */
+ * @ingroup NestedWidgetParts
+ */
 struct NWidgetPartPIP {
 	uint8 pre, inter, post; ///< Amount of space before/between/after child widgets.
 };
 
 /**
  * Widget part for storing minimal text line data.
- * @ingroup NestedWidgetParts */
+ * @ingroup NestedWidgetParts
+ */
 struct NWidgetPartTextLines {
 	uint8 lines;   ///< Number of text lines.
 	uint8 spacing; ///< Extra spacing around lines.
@@ -628,7 +643,8 @@ typedef NWidgetBase *NWidgetFunctionType(int *biggest_index);
 
 /**
  * Partial widget specification to allow NWidgets to be written nested.
- * @ingroup NestedWidgetParts */
+ * @ingroup NestedWidgetParts
+ */
 struct NWidgetPart {
 	WidgetType type;                         ///< Type of the part. @see NWidgetPartType.
 	union {

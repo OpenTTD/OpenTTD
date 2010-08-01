@@ -62,7 +62,7 @@ CurrencySpec _currency_specs[NUM_CURRENCY];
  * out of the TTDPatch_To_OTTDIndex array that will follow
  * Every currency used by Ottd is there, just in case TTDPatch will
  * add those missing in its code
- **/
+ */
 enum Currencies {
 	CURR_GBP,
 	CURR_USD,
@@ -99,7 +99,7 @@ enum Currencies {
  * compared to TTDPatch's ones.
  * When a grf sends currencies, they are based on the order defined by TTDPatch.
  * So, we must reindex them to our own order.
- **/
+ */
 const byte TTDPatch_To_OTTDIndex[] =
 {
 	CURR_GBP,
@@ -130,7 +130,7 @@ const byte TTDPatch_To_OTTDIndex[] =
  * Only called from newgrf.cpp
  * @param grfcurr_id currency id coming from newgrf
  * @return the corrected index
- **/
+ */
 byte GetNewgrfCurrencyIdConverted(byte grfcurr_id)
 {
 	return (grfcurr_id >= lengthof(TTDPatch_To_OTTDIndex)) ? grfcurr_id : TTDPatch_To_OTTDIndex[grfcurr_id];
@@ -158,7 +158,7 @@ uint GetMaskOfAllowedCurrencies()
 
 /**
  * Verify if the currency chosen by the user is about to be converted to Euro
- **/
+ */
 void CheckSwitchToEuro()
 {
 	if (_currency_specs[_settings_game.locale.currency].to_euro != CF_NOEURO &&
@@ -177,7 +177,7 @@ void CheckSwitchToEuro()
  *        if ever it is flagged to true. In which case, the total size of the memory to move
  *        will be one currency spec less, thus preserving the custom curreny from been
  *        overwritten.
- **/
+ */
 void ResetCurrencies(bool preserve_custom)
 {
 	memcpy(&_currency_specs, &origin_currency_specs, sizeof(origin_currency_specs) - (preserve_custom ? sizeof(_custom_currency) : 0));

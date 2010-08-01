@@ -21,7 +21,8 @@ static MIDI *_midi = NULL;
 
 /**
  * There are multiple modules that might be using Allegro and
- * Allegro can only be initiated once. */
+ * Allegro can only be initiated once.
+ */
 extern int _allegro_instance_count;
 
 const char *MusicDriver_Allegro::Start(const char * const *param)

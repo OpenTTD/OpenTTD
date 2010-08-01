@@ -1773,7 +1773,7 @@ void NetworkServerUpdateCompanyPassworded(CompanyID company_id, bool passworded)
  * @param client_id id of the client we want to move.
  * @param company_id id of the company we want to move the client to.
  * @return void
- **/
+ */
 void NetworkServerDoMove(ClientID client_id, CompanyID company_id)
 {
 	/* Only allow non-dedicated servers and normal clients to be moved */

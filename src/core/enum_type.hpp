@@ -81,7 +81,8 @@ struct MakeEnumPropsT {
  *  compiler type - checking causes errors like:
  *     'HasPowerOnRail' : cannot convert parameter 1 from 'byte' to 'RailType' when
  *  u->u.rail.railtype is passed as argument or type RailType. In such cases it is better
- *  to teach the compiler that u->u.rail.railtype is to be treated as RailType. */
+ *  to teach the compiler that u->u.rail.railtype is to be treated as RailType.
+ */
 template <typename Tenum_t> struct TinyEnumT;
 
 /** The general declaration of TinyEnumT<> (above) */

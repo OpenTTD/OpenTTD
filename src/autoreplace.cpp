@@ -20,7 +20,8 @@ INSTANTIATE_POOL_METHODS(EngineRenew)
 
 /**
  * Retrieves the EngineRenew that specifies the replacement of the given
- * engine type from the given renewlist */
+ * engine type from the given renewlist
+ */
 static EngineRenew *GetEngineReplacement(EngineRenewList erl, EngineID engine, GroupID group)
 {
 	EngineRenew *er = (EngineRenew *)erl;

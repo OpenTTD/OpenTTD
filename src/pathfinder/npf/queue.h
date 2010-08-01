@@ -100,7 +100,8 @@ void init_InsSort(Queue *q);
 
 /**
  * Initializes a binary heap and allocates internal memory for maximum of
- * max_size elements */
+ * max_size elements
+ */
 void init_BinaryHeap(Queue *q, uint max_size);
 
 
@@ -137,22 +138,26 @@ struct Hash {
 /**
  * Deletes the value with the specified key pair from the hash and returns
  * that value. Returns NULL when the value was not present. The value returned
- * is _not_ free()'d! */
+ * is _not_ free()'d!
+ */
 void *Hash_Delete(Hash *h, uint key1, uint key2);
 /**
  * Sets the value associated with the given key pair to the given value.
- * Returns the old value if the value was replaced, NULL when it was not yet present. */
+ * Returns the old value if the value was replaced, NULL when it was not yet present.
+ */
 void *Hash_Set(Hash *h, uint key1, uint key2, void *value);
 /**
  * Gets the value associated with the given key pair, or NULL when it is not
- * present. */
+ * present.
+ */
 void *Hash_Get(const Hash *h, uint key1, uint key2);
 
 /* Call these function to create/destroy a hash */
 
 /**
  * Builds a new hash in an existing struct. Make sure that hash() always
- * returns a hash less than num_buckets! Call delete_hash after use */
+ * returns a hash less than num_buckets! Call delete_hash after use
+ */
 void init_Hash(Hash *h, Hash_HashProc *hash, uint num_buckets);
 /**
  * Deletes the hash and cleans up. Only cleans up memory allocated by new_Hash

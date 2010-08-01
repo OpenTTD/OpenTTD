@@ -45,7 +45,8 @@ enum CallbackID {
 
 	/**
 	 * Refit capacity, the passed vehicle needs to have its ->cargo_type set to
-	 * the cargo we are refitting to, returns the new cargo capacity. */
+	 * the cargo we are refitting to, returns the new cargo capacity.
+	 */
 	CBID_VEHICLE_REFIT_CAPACITY          = 0x15, // 15 bit callback
 
 	/** Builds articulated engines for trains and RVs. */
@@ -89,7 +90,8 @@ enum CallbackID {
 
 	/**
 	 * This callback is called from vehicle purchase lists. It returns a value to be
-	 * used as a custom string ID in the 0xD000 range. */
+	 * used as a custom string ID in the 0xD000 range.
+	 */
 	CBID_VEHICLE_ADDITIONAL_TEXT         = 0x23,
 
 	/** Called when building a station to customize the tile layout */
@@ -121,7 +123,8 @@ enum CallbackID {
 
 	/**
 	 * Called to determine if a specific colour map should be used for a vehicle
-	 * instead of the default livery. */
+	 * instead of the default livery.
+	 */
 	CBID_VEHICLE_COLOUR_MAPPING          = 0x2D, // 15 bit callback
 
 	/** Called to determine how much cargo a town building produces. */
@@ -135,7 +138,8 @@ enum CallbackID {
 
 	/**
 	 * Called when the company (or AI) tries to start or stop a vehicle. Mainly
-	 * used for preventing a vehicle from leaving the depot. */
+	 * used for preventing a vehicle from leaving the depot.
+	 */
 	CBID_VEHICLE_START_STOP_CHECK        = 0x31, // 15 bit callback, but 0xFF test is done with 8 bit
 
 	/** Called for every vehicle every 32 days (not all on same date though). */
@@ -152,7 +156,8 @@ enum CallbackID {
 
 	/**
 	 * Called to modify various vehicle properties. Callback parameter 1
-	 * specifies the property index, as used in Action 0, to change. */
+	 * specifies the property index, as used in Action 0, to change.
+	 */
 	CBID_VEHICLE_MODIFY_PROPERTY         = 0x36, // 8/15 bit depends on queried property
 
 	/** Called to determine text to display after cargo name */

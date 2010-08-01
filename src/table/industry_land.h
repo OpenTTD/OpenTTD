@@ -45,7 +45,8 @@ struct DrawIndustryCoordinates {
  * @param h height of the sprite
  * @param dz virtual height of the sprite
  * @param p this allows to specify a special drawing procedure.
- * @see DrawBuildingsTileStruct */
+ * @see DrawBuildingsTileStruct
+ */
 #define M(s1, p1, s2, p2, sx, sy, w, h, dz, p) { { s1, p1 }, { s2, p2 }, sx, sy, w, h, dz, p }
 
 /** Structure for industry tiles drawing */

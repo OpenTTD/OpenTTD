@@ -1281,7 +1281,7 @@ static bool AddNearbyStation(TileIndex tile, void *user_data)
  * @param distant_join Search for adjacent stations (false) or stations fully
  *                     within station spread
  * @tparam T the type of station to look for
- **/
+ */
 template <class T>
 static const T *FindStationsNearby(TileArea ta, bool distant_join)
 {

@@ -9,7 +9,8 @@
 
 /**
  * @file aircraft_cmd.cpp
- * This file deals with aircraft and airport movements functionalities */
+ * This file deals with aircraft and airport movements functionalities
+ */
 
 #include "stdafx.h"
 #include "aircraft.h"
@@ -73,7 +74,8 @@ void Aircraft::UpdateDeltaXY(Direction direction)
 
 /**
  * this maps the terminal to its corresponding state and block flag
- *  currently set for 10 terms, 4 helipads */
+ *  currently set for 10 terms, 4 helipads
+ */
 static const byte _airport_terminal_state[] = {2, 3, 4, 5, 6, 7, 19, 20, 0, 0, 8, 9, 21, 22};
 static const byte _airport_terminal_flag[] =  {0, 1, 2, 3, 4, 5, 22, 23, 0, 0, 6, 7, 24, 25};
 
@@ -143,7 +145,8 @@ static StationID FindNearestHangar(const Aircraft *v)
 /**
  * Check if given vehicle has a goto hangar in his orders
  * @param v vehicle to inquiry
- * @return true if vehicle v has an airport in the schedule, that has a hangar */
+ * @return true if vehicle v has an airport in the schedule, that has a hangar
+ */
 static bool HaveHangarInOrderList(Aircraft *v)
 {
 	const Order *order;

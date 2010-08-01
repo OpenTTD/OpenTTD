@@ -15,7 +15,8 @@
  *
  * After that it outputs the contents of an include files (endian.h)
  *  that says or TTD_LITTLE_ENDIAN, or TTD_BIG_ENDIAN. Makefile takes
- *  care of the real writing to the file. */
+ *  care of the real writing to the file.
+ */
 
 #include <stdio.h>
 #include <string.h>

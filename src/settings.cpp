@@ -100,7 +100,8 @@ static const char * const _list_group_names[] = {
  * @param many full domain of values the ONEofMANY setting can have
  * @param one the current value of the setting for which a value needs found
  * @param onelen force calculation of the *one parameter
- * @return the integer index of the full-list, or -1 if not found */
+ * @return the integer index of the full-list, or -1 if not found
+ */
 static int LookupOneOfMany(const char *many, const char *one, size_t onelen = 0)
 {
 	const char *s;
@@ -128,7 +129,8 @@ static int LookupOneOfMany(const char *many, const char *one, size_t onelen = 0)
  * @param many full domain of values the MANYofMANY setting can have
  * @param str the current string value of the setting, each individual
  * of seperated by a whitespace,tab or | character
- * @return the 'fully' set integer, or -1 if a set is not found */
+ * @return the 'fully' set integer, or -1 if a set is not found
+ */
 static uint32 LookupManyOfMany(const char *many, const char *str)
 {
 	const char *s;
@@ -159,7 +161,8 @@ static uint32 LookupManyOfMany(const char *many, const char *str)
  * comma or a space character
  * @param items pointer to the integerlist-array that will be filled with values
  * @param maxitems the maximum number of elements the integerlist-array has
- * @return returns the number of items found, or -1 on an error */
+ * @return returns the number of items found, or -1 on an error
+ */
 int ParseIntList(const char *p, int *items, int maxitems)
 {
 	int n = 0; // number of items read so far
@@ -203,7 +206,8 @@ int ParseIntList(const char *p, int *items, int maxitems)
  * @param array pointer to the integer-arrays that will be filled
  * @param nelems the number of elements the array holds. Maximum is 64 elements
  * @param type the type of elements the array holds (eg INT8, UINT16, etc.)
- * @return return true on success and false on error */
+ * @return return true on success and false on error
+ */
 static bool LoadIntList(const char *str, void *array, int nelems, VarType type)
 {
 	int items[64];
@@ -244,7 +248,8 @@ static bool LoadIntList(const char *str, void *array, int nelems, VarType type)
  * @param last last item to write to in the output buffer
  * @param array pointer to the integer-arrays that is read from
  * @param nelems the number of elements the array holds.
- * @param type the type of elements the array holds (eg INT8, UINT16, etc.) */
+ * @param type the type of elements the array holds (eg INT8, UINT16, etc.)
+ */
 static void MakeIntList(char *buf, const char *last, const void *array, int nelems, VarType type)
 {
 	int i, v = 0;
@@ -270,7 +275,8 @@ static void MakeIntList(char *buf, const char *last, const void *array, int nele
  * @param buf output buffer where the string-representation will be stored
  * @param last last item to write to in the output buffer
  * @param many the full-domain string of possible values
- * @param id the value of the variable and whose string-representation must be found */
+ * @param id the value of the variable and whose string-representation must be found
+ */
 static void MakeOneOfMany(char *buf, const char *last, const char *many, int id)
 {
 	int orig_id = id;
@@ -297,7 +303,8 @@ static void MakeOneOfMany(char *buf, const char *last, const char *many, int id)
  * @param last last item to write to in the output buffer
  * @param many the full-domain string of possible values
  * @param x the value of the variable and whose string-representation must
- *        be found in the bitmasked many string */
+ *        be found in the bitmasked many string
+ */
 static void MakeManyOfMany(char *buf, const char *last, const char *many, uint32 x)
 {
 	const char *start;
@@ -329,7 +336,8 @@ static void MakeManyOfMany(char *buf, const char *last, const char *many, uint32
  * Convert a string representation (external) of a setting to the internal rep.
  * @param desc SettingDesc struct that holds all information about the variable
  * @param orig_str input string that will be parsed based on the type of desc
- * @return return the parsed value of the setting */
+ * @return return the parsed value of the setting
+ */
 static const void *StringToVal(const SettingDescBase *desc, const char *orig_str)
 {
 	const char *str = orig_str == NULL ? "" : orig_str;
@@ -376,7 +384,8 @@ static const void *StringToVal(const SettingDescBase *desc, const char *orig_str
  * @param sd pointer to the 'information'-database of the variable
  * @param val signed long version of the new value
  * @pre SettingDesc is of type SDT_BOOLX, SDT_NUMX,
- * SDT_ONEOFMANY or SDT_MANYOFMANY. Other types are not supported as of now */
+ * SDT_ONEOFMANY or SDT_MANYOFMANY. Other types are not supported as of now
+ */
 static void Write_ValidateSetting(void *ptr, const SettingDesc *sd, int32 val)
 {
 	const SettingDescBase *sdb = &sd->desc;
@@ -428,7 +437,8 @@ static void Write_ValidateSetting(void *ptr, const SettingDesc *sd, int32 val)
  * @param sd pointer to SettingDesc structure whose internally pointed variables will
  *        be given values
  * @param grpname the group of the IniFile to search in for the new values
- * @param object pointer to the object been loaded */
+ * @param object pointer to the object been loaded
+ */
 static void IniLoadSettings(IniFile *ini, const SettingDesc *sd, const char *grpname, void *object)
 {
 	IniGroup *group;
@@ -1176,7 +1186,8 @@ static void HandleOldDiffCustom(bool savegame)
  * tries to convert newly introduced news settings based on old ones
  * @param name pointer to the string defining name of the old news config
  * @param value pointer to the string defining value of the old news config
- * @returns true if conversion could have been made */
+ * @returns true if conversion could have been made
+ */
 static bool ConvertOldNewsSetting(const char *name, const char *value)
 {
 	if (strcasecmp(name, "openclose") == 0) {
@@ -1920,7 +1931,8 @@ void IConsoleListSettings(const char *prefilter)
  * Save and load handler for settings
  * @param osd SettingDesc struct containing all information
  * @param object can be either NULL in which case we load global variables or
- * a pointer to a struct which is getting saved */
+ * a pointer to a struct which is getting saved
+ */
 static void LoadSettings(const SettingDesc *osd, void *object)
 {
 	for (; osd->save.cmd != SL_END; osd++) {
@@ -1936,7 +1948,8 @@ static void LoadSettings(const SettingDesc *osd, void *object)
  * Loadhandler for a list of global variables
  * @param sdg pointer for the global variable list SettingDescGlobVarList
  * @note this is actually a stub for LoadSettings with the
- * object pointer set to NULL */
+ * object pointer set to NULL
+ */
 static inline void LoadSettingsGlobList(const SettingDescGlobVarList *sdg)
 {
 	LoadSettings((const SettingDesc*)sdg, NULL);
@@ -1946,7 +1959,8 @@ static inline void LoadSettingsGlobList(const SettingDescGlobVarList *sdg)
  * Save and load handler for settings
  * @param sd SettingDesc struct containing all information
  * @param object can be either NULL in which case we load global variables or
- * a pointer to a struct which is getting saved */
+ * a pointer to a struct which is getting saved
+ */
 static void SaveSettings(const SettingDesc *sd, void *object)
 {
 	/* We need to write the CH_RIFF header, but unfortunately can't call
@@ -1967,7 +1981,8 @@ static void SaveSettings(const SettingDesc *sd, void *object)
 /**
  * Savehandler for a list of global variables
  * @note this is actually a stub for SaveSettings with the
- * object pointer set to NULL */
+ * object pointer set to NULL
+ */
 static inline void SaveSettingsGlobList(const SettingDescGlobVarList *sdg)
 {
 	SaveSettings((const SettingDesc*)sdg, NULL);

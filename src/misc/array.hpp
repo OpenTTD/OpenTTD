@@ -17,7 +17,8 @@
 
 /**
  * Flexible array with size limit. Implemented as fixed size
- *  array of fixed size arrays */
+ *  array of fixed size arrays
+ */
 template <class T, uint B = 1024, uint N = B>
 class SmallArray {
 protected:

@@ -101,7 +101,8 @@ enum RailFenceOffset {
 struct RailtypeInfo {
 	/**
 	 * Struct containing the main sprites. @note not all sprites are listed, but only
-	 *  the ones used directly in the code */
+	 *  the ones used directly in the code
+	 */
 	struct {
 		SpriteID track_y;      ///< single piece of rail in Y direction, with ground
 		SpriteID track_ns;     ///< two pieces of rail in North and South corner (East-West direction)
@@ -119,7 +120,8 @@ struct RailtypeInfo {
 
 	/**
 	 * struct containing the sprites for the rail GUI. @note only sprites referred to
-	 * directly in the code are listed */
+	 * directly in the code are listed
+	 */
 	struct {
 		SpriteID build_ns_rail;      ///< button for building single rail in N-S direction
 		SpriteID build_x_rail;       ///< button for building single rail in X direction

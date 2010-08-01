@@ -28,7 +28,8 @@ public:
 
 	/**
 	 * Called by YAPF to attach cached or local segment cost data to the given node.
-	 *  @return true if globally cached data were used or false if local data was used */
+	 *  @return true if globally cached data were used or false if local data was used
+	 */
 	FORCEINLINE bool PfNodeCacheFetch(Node& n)
 	{
 		return false;
@@ -36,7 +37,8 @@ public:
 
 	/**
 	 * Called by YAPF to flush the cached segment cost data back into cache storage.
-	 *  Current cache implementation doesn't use that. */
+	 *  Current cache implementation doesn't use that.
+	 */
 	FORCEINLINE void PfNodeCacheFlush(Node& n)
 	{
 	}
@@ -71,7 +73,8 @@ protected:
 public:
 	/**
 	 * Called by YAPF to attach cached or local segment cost data to the given node.
-	 *  @return true if globally cached data were used or false if local data was used */
+	 *  @return true if globally cached data were used or false if local data was used
+	 */
 	FORCEINLINE bool PfNodeCacheFetch(Node& n)
 	{
 		CacheKey key(n.GetKey());
@@ -81,7 +84,8 @@ public:
 
 	/**
 	 * Called by YAPF to flush the cached segment cost data back into cache storage.
-	 *  Current cache implementation doesn't use that. */
+	 *  Current cache implementation doesn't use that.
+	 */
 	FORCEINLINE void PfNodeCacheFlush(Node& n)
 	{
 	}
@@ -93,7 +97,8 @@ public:
  *  of track layout changes and static notification function called whenever
  *  the track layout changes. It is implemented as base class because it needs
  *  to be shared between all rail YAPF types (one shared counter, one notification
- *  function. */
+ *  function.
+ */
 struct CSegmentCostCacheBase
 {
 	static int   s_rail_change_counter;
@@ -113,7 +118,8 @@ struct CSegmentCostCacheBase
  *  be always the same (TileIndex + DiagDirection) that represent the beginning
  *  of the segment (origin tile and exit-dir from this tile).
  *  Different CYapfCachedCostT types can share the same type of CSegmentCostCacheT.
- *  Look at CYapfRailSegment (yapf_node_rail.hpp) for the segment example */
+ *  Look at CYapfRailSegment (yapf_node_rail.hpp) for the segment example
+ */
 template <class Tsegment>
 struct CSegmentCostCacheT
 	: public CSegmentCostCacheBase
@@ -203,7 +209,8 @@ protected:
 public:
 	/**
 	 * Called by YAPF to attach cached or local segment cost data to the given node.
-	 *  @return true if globally cached data were used or false if local data was used */
+	 *  @return true if globally cached data were used or false if local data was used
+	 */
 	FORCEINLINE bool PfNodeCacheFetch(Node& n)
 	{
 		if (!Yapf().CanUseGlobalCache(n)) {
@@ -218,7 +225,8 @@ public:
 
 	/**
 	 * Called by YAPF to flush the cached segment cost data back into cache storage.
-	 *  Current cache implementation doesn't use that. */
+	 *  Current cache implementation doesn't use that.
+	 */
 	FORCEINLINE void PfNodeCacheFlush(Node& n)
 	{
 	}

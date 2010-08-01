@@ -1096,7 +1096,8 @@ bool MoveTextBufferPos(Textbuf *tb, int navmode)
  * @param maxsize maximum size in bytes, including terminating '\0'
  * @param maxwidth maximum length in pixels of this buffer. If reached, buffer
  * cannot grow, even if maxsize would allow because there is space. Width
- * of zero '0' means the buffer is only restricted by maxsize */
+ * of zero '0' means the buffer is only restricted by maxsize
+ */
 void InitializeTextBuffer(Textbuf *tb, char *buf, uint16 maxsize, uint16 maxwidth)
 {
 	assert(maxsize != 0);

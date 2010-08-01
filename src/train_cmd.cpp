@@ -1970,7 +1970,8 @@ CommandCost CmdRefitRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 
 /**
  * returns the tile of a depot to goto to. The given vehicle must not be
- * crashed! */
+ * crashed!
+ */
 static FindDepotData FindClosestTrainDepot(Train *v, int max_distance)
 {
 	assert(!(v->vehstatus & VS_CRASHED));

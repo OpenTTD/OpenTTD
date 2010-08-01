@@ -20,7 +20,8 @@ static const uint SNOW_LINE_DAYS   = 32; ///< Number of days in each month in th
 
 /**
  * Structure describing the height of the snow line each day of the year
- * @ingroup SnowLineGroup */
+ * @ingroup SnowLineGroup
+ */
 struct SnowLine {
 	byte table[SNOW_LINE_MONTHS][SNOW_LINE_DAYS]; ///< Height of the snow line each day of the year
 	byte highest_value; ///< Highest snow line of the year

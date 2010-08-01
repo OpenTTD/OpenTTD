@@ -67,7 +67,8 @@ void SortNetworkLanguages()
 /**
  * Update the network new window because a new server is
  * found on the network.
- * @param unselect unselect the currently selected item */
+ * @param unselect unselect the currently selected item
+ */
 void UpdateNetworkGameWindow(bool unselect)
 {
 	InvalidateWindowData(WC_NETWORK_WINDOW, 0, unselect ? 1 : 0);
@@ -283,7 +284,8 @@ protected:
 	/**
 	 * Sort servers by the amount of clients online on a
 	 * server. If the two servers have the same amount, the one with the
-	 * higher maximum is preferred. */
+	 * higher maximum is preferred.
+	 */
 	static int CDECL NGameClientSorter(NetworkGameList * const *a, NetworkGameList * const *b)
 	{
 		/* Reverse as per default we are interested in most-clients first */
@@ -321,7 +323,8 @@ protected:
 
 	/**
 	 * Sort servers by joinability. If both servers are the
-	 * same, prefer the non-passworded server first. */
+	 * same, prefer the non-passworded server first.
+	 */
 	static int CDECL NGameAllowedSorter(NetworkGameList * const *a, NetworkGameList * const *b)
 	{
 		/* The servers we do not know anything about (the ones that did not reply) should be at the bottom) */

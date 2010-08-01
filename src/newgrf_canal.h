@@ -18,7 +18,8 @@
 
 /**
  * List of different canal 'features'.
- * Each feature gets an entry in the canal spritegroup table */
+ * Each feature gets an entry in the canal spritegroup table
+ */
 enum CanalFeature {
 	CF_WATERSLOPE,
 	CF_LOCKS,

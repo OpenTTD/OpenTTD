@@ -37,7 +37,8 @@ struct Packet {
 	/**
 	 * The size of the whole packet for received packets. For packets
 	 * that will be sent, the value is filled in just before the
-	 * actual transmission. */
+	 * actual transmission.
+	 */
 	PacketSize size;
 	/** The current read/write position in the packet */
 	PacketSize pos;

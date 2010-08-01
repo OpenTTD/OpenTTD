@@ -230,7 +230,8 @@ AirportFTAClass::~AirportFTAClass()
 /**
  * Get the number of elements of a source Airport state automata
  * Since it is actually just a big array of AirportFTA types, we only
- * know one element from the other by differing 'position' identifiers */
+ * know one element from the other by differing 'position' identifiers
+ */
 static uint16 AirportGetNofElements(const AirportFTAbuildup *apFA)
 {
 	uint16 nofelements = 0;
@@ -249,7 +250,8 @@ static uint16 AirportGetNofElements(const AirportFTAbuildup *apFA)
 /**
  * We calculate the terminal/helipod count based on the data passed to us
  * This data (terminals) contains an index as a first element as to how many
- * groups there are, and then the number of terminals for each group */
+ * groups there are, and then the number of terminals for each group
+ */
 static byte AirportGetTerminalCount(const byte *terminals, byte *groups)
 {
 	byte nof_terminals = 0;

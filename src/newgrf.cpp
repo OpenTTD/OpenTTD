@@ -230,7 +230,8 @@ static GRFLineToSpriteOverride _grf_line_to_action6_sprite_override;
  * loading/parsing grf files, not for runtime debug messages as there
  * is no file information available during that time.
  * @param severity debugging severity level, see debug.h
- * @param str message in printf() format */
+ * @param str message in printf() format
+ */
 void CDECL grfmsg(int severity, const char *str, ...)
 {
 	char buf[1024];
@@ -6797,7 +6798,8 @@ static void InitNewGRFFile(const GRFConfig *config, int sprite_offset)
 
 /**
  * List of what cargo labels are refittable for the given the vehicle-type.
- * Only currently active labels are applied. */
+ * Only currently active labels are applied.
+ */
 static const CargoLabel _default_refitmasks_rail[] = {
 	'PASS', 'COAL', 'MAIL', 'LVST', 'GOOD', 'GRAI', 'WHEA', 'MAIZ', 'WOOD',
 	'IORE', 'STEL', 'VALU', 'GOLD', 'DIAM', 'PAPR', 'FOOD', 'FRUT', 'CORE',
@@ -6933,7 +6935,8 @@ static void FinaliseCargoArray()
  * Add all new houses to the house array. House properties can be set at any
  * time in the GRF file, so we can only add a house spec to the house array
  * after the file has finished loading. We also need to check the dates, due to
- * the TTDPatch behaviour described below that we need to emulate. */
+ * the TTDPatch behaviour described below that we need to emulate.
+ */
 static void FinaliseHouseArray()
 {
 	/* If there are no houses with start dates before 1930, then all houses
@@ -6998,7 +7001,8 @@ static void FinaliseHouseArray()
 /**
  * Add all new industries to the industry array. Industry properties can be set at any
  * time in the GRF file, so we can only add a industry spec to the industry array
- * after the file has finished loading. */
+ * after the file has finished loading.
+ */
 static void FinaliseIndustriesArray()
 {
 	const GRFFile * const *end = _grf_files.End();

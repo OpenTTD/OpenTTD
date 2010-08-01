@@ -1387,7 +1387,8 @@ bool ReadLanguagePack(int lang_index)
  * and if none exist return the value for $LANG
  * @param param environment variable to check conditionally if default ones are not
  *        set. Pass NULL if you don't want additional checks.
- * @return return string containing current charset, or NULL if not-determinable */
+ * @return return string containing current charset, or NULL if not-determinable
+ */
 const char *GetCurrentLocale(const char *param)
 {
 	const char *env;

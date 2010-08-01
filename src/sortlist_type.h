@@ -252,7 +252,8 @@ public:
 	 *
 	 * @param compare The function to compare two list items
 	 * @return true if the list sequence has been altered
-	 * */
+	 *
+	 */
 	bool Sort(SortFunction *compare)
 	{
 		/* Do not sort if the resort bit is not set */

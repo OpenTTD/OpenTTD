@@ -408,7 +408,8 @@ static void PollEvent()
 
 /**
  * There are multiple modules that might be using Allegro and
- * Allegro can only be initiated once. */
+ * Allegro can only be initiated once.
+ */
 int _allegro_instance_count = 0;
 
 const char *VideoDriver_Allegro::Start(const char * const *parm)

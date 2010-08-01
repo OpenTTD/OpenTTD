@@ -100,7 +100,8 @@ enum ChunkType {
  * SLE_FILE_* gives the size(type) as it would be in the savegame and
  * SLE_VAR_* the size(type) as it is in memory during runtime. These are
  * the first 8 bits (0-3 SLE_FILE, 4-7 SLE_VAR).
- * Bits 8-15 are reserved for various flags as explained below */
+ * Bits 8-15 are reserved for various flags as explained below
+ */
 enum VarTypes {
 	/* 4 bits allocated a maximum of 16 types for NumberType */
 	SLE_FILE_I8       = 0,
@@ -273,7 +274,8 @@ static inline bool CheckSavegameVersion(uint16 version)
 
 /**
  * Checks if some version from/to combination falls within the range of the
- * active savegame version */
+ * active savegame version
+ */
 static inline bool SlIsObjectCurrentlyValid(uint16 version_from, uint16 version_to)
 {
 	extern const uint16 SAVEGAME_VERSION;
@@ -318,7 +320,8 @@ static inline bool IsNumericType(VarType conv)
  * Get the address of the variable. Which one to pick depends on the object
  * pointer. If it is NULL we are dealing with global variables so the address
  * is taken. If non-null only the offset is stored in the union and we need
- * to add this to the address of the object */
+ * to add this to the address of the object
+ */
 static inline void *GetVariableAddress(const void *object, const SaveLoad *sld)
 {
 	return (byte*)(sld->global ? NULL : object) + (ptrdiff_t)sld->address;

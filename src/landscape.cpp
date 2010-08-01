@@ -48,7 +48,8 @@ extern const TileTypeProcs
 /**
  * Tile callback functions for each type of tile.
  * @ingroup TileCallbackGroup
- * @see TileType */
+ * @see TileType
+ */
 const TileTypeProcs * const _tile_type_procs[16] = {
 	&_tile_type_clear_procs,        ///< Callback functions for MP_CLEAR tiles
 	&_tile_type_rail_procs,         ///< Callback functions for MP_RAILWAY tiles
@@ -75,7 +76,8 @@ extern const byte _slope_to_sprite_offset[32] = {
  * If it is \c NULL, a static snowline height is used, as set by \c _settings_game.game_creation.snow_line.
  * Otherwise it points to a table loaded from a newGRF file, that describes the variable snowline
  * @ingroup SnowLineGroup
- * @see GetSnowLine() GameCreationSettings */
+ * @see GetSnowLine() GameCreationSettings
+ */
 static SnowLine *_snow_line = NULL;
 
 /**

@@ -21,7 +21,8 @@
  * @param h the height of the sprite
  * @param dz the virtual height of the sprite
  * @param p set to 1 if a lift is present ()
- * @see DrawBuildingsTileStruct */
+ * @see DrawBuildingsTileStruct
+ */
 #define M(s1, p1, s2, p2, sx, sy, w, h, dz, p) { { s1, p1 }, { s2, p2 }, sx, sy, w, h, dz, p}
 
 /** structure of houses graphics*/
@@ -1828,7 +1829,8 @@ static const HouseSpec _original_house_specs[] = {
 	 * +-building_flags   |    |    |                                               |    |    |    |    |
 	 * +-building_availability |    |                                               |    |    |    |    |
 	 * +-cargoID accepted |    |    |                                               |    |    |    |    |
-	 * |   |         |    |    |    |                                               |    |    |    |    | */
+	 * |   |         |    |    |    |                                               |    |    |    |    |
+	 */
 	MS(1963, MAX_YEAR, 187, 150, STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1,      140,  70,   8,   3,   4,
 	   TILE_SIZE_1x1,
 	   HZ_TEMP | HZ_ZON5,

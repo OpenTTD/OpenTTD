@@ -18,7 +18,8 @@
  * fixed size array
  *  Upon construction it preallocates fixed size block of memory
  *  for all items, but doesn't construct them. Item's construction
- *  is delayed. */
+ *  is delayed.
+ */
 template <class T, uint C>
 struct FixedSizeArray {
 protected:
@@ -35,7 +36,8 @@ protected:
 
 	/**
 	 * the only member of fixed size array is pointer to the block
-	 *  of C array of items. Header can be found on the offset -sizeof(ArrayHeader). */
+	 *  of C array of items. Header can be found on the offset -sizeof(ArrayHeader).
+	 */
 	T *data;
 
 	/** return reference to the array header (non-const) */

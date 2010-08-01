@@ -407,7 +407,8 @@ void IncreaseSpriteLRU()
 
 /**
  * Called when holes in the sprite cache should be removed.
- * That is accomplished by moving the cached data. */
+ * That is accomplished by moving the cached data.
+ */
 static void CompactSpriteCache()
 {
 	MemBlock *s;
@@ -530,7 +531,8 @@ static void *AllocSprite(size_t mem_req)
  * @param requested requested sprite type
  * @param sc the currently known sprite cache for the requested sprite
  * @return fallback sprite
- * @note this function will do usererror() in the case the fallback sprite isn't available */
+ * @note this function will do usererror() in the case the fallback sprite isn't available
+ */
 static void *HandleInvalidSpriteRequest(SpriteID sprite, SpriteType requested, SpriteCache *sc)
 {
 	static const char * const sprite_types[] = {

@@ -98,7 +98,8 @@ public:
 	/**
 	 * Called by YAPF to calculate the cost from the origin to the given node.
 	 *  Calculates only the cost of given node, adds it to the parent node cost
-	 *  and stores the result into Node::m_cost member */
+	 *  and stores the result into Node::m_cost member
+	 */
 	FORCEINLINE bool PfCalcCost(Node& n, const TrackFollower *tf)
 	{
 		int segment_cost = 0;
@@ -189,7 +190,8 @@ public:
 
 	/**
 	 * Called by YAPF to calculate cost estimate. Calculates distance to the destination
-	 *  adds it to the actual cost from origin and stores the sum to the Node::m_estimate */
+	 *  adds it to the actual cost from origin and stores the sum to the Node::m_estimate
+	 */
 	FORCEINLINE bool PfCalcEstimate(Node& n)
 	{
 		n.m_estimate = n.m_cost;
@@ -258,7 +260,8 @@ public:
 
 	/**
 	 * Called by YAPF to calculate cost estimate. Calculates distance to the destination
-	 *  adds it to the actual cost from origin and stores the sum to the Node::m_estimate */
+	 *  adds it to the actual cost from origin and stores the sum to the Node::m_estimate
+	 */
 	inline bool PfCalcEstimate(Node& n)
 	{
 		static const int dg_dir_to_x_offs[] = {-1, 0, 1, 0};
@@ -308,7 +311,8 @@ public:
 	/**
 	 * Called by YAPF to move from the given node to the next tile. For each
 	 *  reachable trackdir on the new tile creates new node, initializes it
-	 *  and adds it to the open list by calling Yapf().AddNewNode(n) */
+	 *  and adds it to the open list by calling Yapf().AddNewNode(n)
+	 */
 	inline void PfFollowNode(Node& old_node)
 	{
 		TrackFollower F(Yapf().GetVehicle());

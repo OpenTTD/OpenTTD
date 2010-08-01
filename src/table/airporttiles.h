@@ -19,7 +19,8 @@
 
 /**
  * All default airport tiles.
- * @see AirportTiles for a list of names. */
+ * @see AirportTiles for a list of names.
+ */
 static const AirportTileSpec _origin_airporttile_specs[] = {
 	/* 0..9 */
 	AT_NOANIM,

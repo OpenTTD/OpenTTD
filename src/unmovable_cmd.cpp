@@ -42,7 +42,7 @@
  * @param type of unmovable (which is the index in _original_unmovable)
  * @pre type < UNMOVABLE_MAX
  * @return a pointer to the corresponding unmovable spec
- **/
+ */
 static inline const UnmovableSpec *GetUnmovableSpec(UnmovableType type)
 {
 	assert(type < UNMOVABLE_MAX);

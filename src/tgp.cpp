@@ -206,7 +206,8 @@ static const int TGP_FREQUENCY_MAX = 6;
 
 /**
  * Noise amplitudes (multiplied by 1024)
- * - indexed by "smoothness setting" and log2(frequency) */
+ * - indexed by "smoothness setting" and log2(frequency)
+ */
 static const amplitude_t _amplitudes_by_smoothness_and_frequency[4][TGP_FREQUENCY_MAX + 1] = {
 	/* lowest frequncy....  ...highest (every corner) */
 	/* Very smooth */
@@ -842,7 +843,8 @@ static void HeightMapSmoothSlopes(height_t dh_max)
  *  - water level adjusting
  *  - coast Smoothing
  *  - slope Smoothing
- *  - height histogram redistribution by sine wave transform */
+ *  - height histogram redistribution by sine wave transform
+ */
 static void HeightMapNormalize()
 {
 	const amplitude_t water_percent = _water_percent[_settings_game.difficulty.quantity_sea_lakes];

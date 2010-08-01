@@ -135,7 +135,8 @@ typedef CommandCost TerraformTileProc(TileIndex tile, DoCommandFlag flags, uint 
 
 /**
  * Set of callback functions for performing tile operations of a given tile type.
- * @see TileType */
+ * @see TileType
+ */
 struct TileTypeProcs {
 	DrawTileProc *draw_tile_proc;                  ///< Called to render the tile and its contents to the screen
 	GetSlopeZProc *get_slope_z_proc;

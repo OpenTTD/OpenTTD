@@ -162,7 +162,8 @@ Money CalculateCompanyValue(const Company *c, bool including_loan)
  * @param update the economy with calculated score
  * @param c company been evaluated
  * @return actual score of this company
- * */
+ *
+ */
 int UpdateCompanyRatingAndValue(Company *c, bool update)
 {
 	Owner owner = c->index;

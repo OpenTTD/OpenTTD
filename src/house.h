@@ -20,7 +20,8 @@
 
 /**
  * Simple value that indicates the house has reached the final stage of
- * construction. */
+ * construction.
+ */
 static const byte TOWN_HOUSE_COMPLETED = 3;
 
 static const uint HOUSE_NO_CLASS      = 0;
@@ -30,7 +31,8 @@ static const HouseID INVALID_HOUSE_ID = 0xFFFF;
 
 /**
  * There can only be as many classes as there are new houses, plus one for
- * NO_CLASS, as the original houses don't have classes. */
+ * NO_CLASS, as the original houses don't have classes.
+ */
 static const uint HOUSE_CLASS_MAX  = HOUSE_MAX - NEW_HOUSE_OFFSET + 1;
 
 enum BuildingFlags {

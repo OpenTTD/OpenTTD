@@ -131,7 +131,8 @@ static void DisasterVehicleUpdateImage(DisasterVehicle *v)
 
 /**
  * Initialize a disaster vehicle. These vehicles are of type VEH_DISASTER, are unclickable
- * and owned by nobody */
+ * and owned by nobody
+ */
 static void InitializeDisasterVehicle(DisasterVehicle *v, int x, int y, byte z, Direction direction, byte subtype)
 {
 	v->x_pos = x;
@@ -674,7 +675,8 @@ typedef void DisasterInitProc();
 
 /**
  * Zeppeliner which crashes on a small airport if one found,
- * otherwise crashes on a random tile */
+ * otherwise crashes on a random tile
+ */
 static void Disaster_Zeppeliner_Init()
 {
 	if (!Vehicle::CanAllocateItem(2)) return;
@@ -703,7 +705,8 @@ static void Disaster_Zeppeliner_Init()
 
 /**
  * Ufo which flies around aimlessly from the middle of the map a bit
- * until it locates a road vehicle which it targets and then destroys */
+ * until it locates a road vehicle which it targets and then destroys
+ */
 static void Disaster_Small_Ufo_Init()
 {
 	if (!Vehicle::CanAllocateItem(2)) return;
@@ -850,7 +853,8 @@ static void Disaster_Big_Submarine_Init()
 
 /**
  * Coal mine catastrophe, destroys a stretch of 30 tiles of
- * land in a certain direction */
+ * land in a certain direction
+ */
 static void Disaster_CoalMine_Init()
 {
 	int index = GB(Random(), 0, 4);

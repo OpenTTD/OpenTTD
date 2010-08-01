@@ -764,7 +764,8 @@ restart_search:
  * Delete all windows of a company. We identify windows of a company
  * by looking at the caption colour. If it is equal to the company ID
  * then we say the window belongs to the company and should be deleted
- * @param id company identifier */
+ * @param id company identifier
+ */
 void DeleteCompanyWindows(CompanyID id)
 {
 	Window *w;
@@ -789,7 +790,8 @@ restart_search:
  * company in the case of a company merger. Do not change ownership of windows
  * that need to be deleted once takeover is complete
  * @param old_owner original owner of the window
- * @param new_owner the new owner of the window */
+ * @param new_owner the new owner of the window
+ */
 void ChangeWindowOwner(Owner old_owner, Owner new_owner)
 {
 	Window *w;
@@ -822,7 +824,8 @@ static void BringWindowToFront(Window *w);
  * The window gets unshaded if it was shaded, and a white border is drawn at its edges for a brief period of time to visualize its "activation".
  * @param cls WindowClass of the window to activate
  * @param number WindowNumber of the window to activate
- * @return a pointer to the window thus activated */
+ * @return a pointer to the window thus activated
+ */
 Window *BringWindowToFrontById(WindowClass cls, WindowNumber number)
 {
 	Window *w = FindWindowById(cls, number);
@@ -1322,7 +1325,8 @@ Window::Window() : hscroll(false), vscroll(true), vscroll2(true)
  * at the topmost window, obviously and work our way down to the bottom
  * @param x position x to query
  * @param y position y to query
- * @return a pointer to the found window if any, NULL otherwise */
+ * @return a pointer to the found window if any, NULL otherwise
+ */
 Window *FindWindowFromPt(int x, int y)
 {
 	Window *w;
@@ -1932,7 +1936,8 @@ static EventState HandleViewportScroll()
  * The function will return false when a child window of this window is a
  * modal-popup; function returns a false and child window gets a white border
  * @param w Window to bring on-top
- * @return false if the window has an active modal child, true otherwise */
+ * @return false if the window has an active modal child, true otherwise
+ */
 static bool MaybeBringWindowToFront(Window *w)
 {
 	bool bring_to_front = false;
@@ -2564,7 +2569,8 @@ restart_search:
  * 'close' button is outside the gaming area. You cannot close it then; except
  * with this function. It closes all windows calling the standard function,
  * then, does a little hacked loop of closing all stickied windows. Note
- * that standard windows (status bar, etc.) are not stickied, so these aren't affected */
+ * that standard windows (status bar, etc.) are not stickied, so these aren't affected
+ */
 void DeleteAllNonVitalWindows()
 {
 	Window *w;

@@ -970,7 +970,8 @@ int DrawStringMultiLine(int left, int right, int top, int bottom, StringID str, 
  * but not every possible combination
  * @param str string to calculate pixel-width
  * @param start_fontsize Fontsize to start the text with
- * @return string width and height in pixels */
+ * @return string width and height in pixels
+ */
 Dimension GetStringBoundingBox(const char *str, FontSize start_fontsize)
 {
 	FontSize size = start_fontsize;
@@ -1726,7 +1727,8 @@ void MarkWholeScreenDirty()
  * offset from the calling window coordinates
  * @return return false if the requested rectangle is not possible with the
  * current dpi pointer. Only continue of the return value is true, or you'll
- * get some nasty results */
+ * get some nasty results
+ */
 bool FillDrawPixelInfo(DrawPixelInfo *n, int left, int top, int width, int height)
 {
 	Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();

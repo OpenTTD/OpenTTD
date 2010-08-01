@@ -72,7 +72,8 @@ static void NetworkGameListHandleDelayedInsert()
  * return the existing item instead of adding it again
  * @param address the address of the to-be added item
  * @param port the port the server is running on
- * @return a point to the newly added or already existing item */
+ * @return a point to the newly added or already existing item
+ */
 NetworkGameList *NetworkGameListAddItem(NetworkAddress address)
 {
 	const char *hostname = address.GetHostname();
@@ -110,7 +111,8 @@ NetworkGameList *NetworkGameListAddItem(NetworkAddress address)
 
 /**
  * Remove an item from the gamelist linked list
- * @param remove pointer to the item to be removed */
+ * @param remove pointer to the item to be removed
+ */
 void NetworkGameListRemoveItem(NetworkGameList *remove)
 {
 	NetworkGameList *prev_item = NULL;

@@ -1194,7 +1194,8 @@ static inline void ottd_mkdir(const char *directory)
 /**
  * Create a path consisting of an already existing path, a possible
  * path seperator and the filename. The seperator is only appended if the path
- * does not already end with a seperator */
+ * does not already end with a seperator
+ */
 static inline char *mkpath(char *buf, size_t buflen, const char *path, const char *file)
 {
 	ttd_strlcpy(buf, path, buflen); // copy directory into buffer

@@ -193,7 +193,8 @@ void str_strip_colours(char *str)
  * needed, look to r7271 where it was removed because it was broken when
  * using certain locales: eg in Turkish the uppercase 'I' was converted to
  * '?', so just revert to the old functionality
- * @param str string to convert */
+ * @param str string to convert
+ */
 void strtolower(char *str)
 {
 	for (; *str != '\0'; str++) *str = tolower(*str);
@@ -296,7 +297,8 @@ int CDECL seprintf(char *str, const char *last, const char *format, ...)
  * @param buf buffer to put the md5sum into
  * @param last last character of buffer (usually lastof(buf))
  * @param md5sum the md5sum itself
- * @return a pointer to the next character after the md5sum */
+ * @return a pointer to the next character after the md5sum
+ */
 char *md5sumToString(char *buf, const char *last, const uint8 md5sum[16])
 {
 	char *p = buf;

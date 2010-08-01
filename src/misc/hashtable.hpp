@@ -139,7 +139,8 @@ public:
 protected:
 	/**
 	 * each slot contains pointer to the first item in the list,
-	 *  Titem contains pointer to the next item - GetHashNext(), SetHashNext() */
+	 *  Titem contains pointer to the next item - GetHashNext(), SetHashNext()
+	 */
 	typedef CHashTableSlotT<Titem_> Slot;
 
 	Slot *m_slots;     // here we store our data (array of blobs)

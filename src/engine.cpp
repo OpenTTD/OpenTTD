@@ -40,7 +40,8 @@ EngineOverrideManager _engine_mngr;
 
 /**
  * Year that engine aging stops. Engines will not reduce in reliability
- * and no more engines will be introduced */
+ * and no more engines will be introduced
+ */
 static Year _year_engine_aging_stops;
 
 /** Number of engines of each vehicle type in original engine data */

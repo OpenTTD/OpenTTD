@@ -66,7 +66,8 @@ IndustryTileSpec _industry_tile_specs[NUM_INDUSTRYTILES];
  * This function initialize the spec arrays of both
  * industry and industry tiles.
  * It adjusts the enabling of the industry too, based on climate availability.
- * This will allow for clearer testings */
+ * This will allow for clearer testings
+ */
 void ResetIndustries()
 {
 	memset(&_industry_specs, 0, sizeof(_industry_specs));
@@ -93,7 +94,7 @@ void ResetIndustries()
  * @param tile that is queried
  * @pre IsTileType(tile, MP_INDUSTRY)
  * @return general type for this industry, as defined in industry.h
- **/
+ */
 IndustryType GetIndustryType(TileIndex tile)
 {
 	assert(IsTileType(tile, MP_INDUSTRY));
@@ -110,7 +111,7 @@ IndustryType GetIndustryType(TileIndex tile)
  * @param thistype of industry (which is the index in _industry_specs)
  * @pre thistype < NUM_INDUSTRYTYPES
  * @return a pointer to the corresponding industry spec
- **/
+ */
 const IndustrySpec *GetIndustrySpec(IndustryType thistype)
 {
 	assert(thistype < NUM_INDUSTRYTYPES);
@@ -124,7 +125,7 @@ const IndustrySpec *GetIndustrySpec(IndustryType thistype)
  * @param gfx of industrytile (which is the index in _industry_tile_specs)
  * @pre gfx < INVALID_INDUSTRYTILE
  * @return a pointer to the corresponding industrytile spec
- **/
+ */
 const IndustryTileSpec *GetIndustryTileSpec(IndustryGfx gfx)
 {
 	assert(gfx < INVALID_INDUSTRYTILE);
@@ -1535,7 +1536,8 @@ static CommandCost CheckIfFarEnoughFromConflictingIndustry(TileIndex tile, int t
 /**
  * Production level maximum, minimum and default values.
  * It is not a value been really used in order to change, but rather an indicator
- * of how the industry is behaving. */
+ * of how the industry is behaving.
+ */
 enum ProductionLevels {
 	PRODLEVEL_CLOSURE = 0x00,  ///< signal set to actually close the industry
 	PRODLEVEL_MINIMUM = 0x04,  ///< below this level, the industry is set to be closing

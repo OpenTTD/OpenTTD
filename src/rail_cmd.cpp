@@ -2158,7 +2158,8 @@ static void DrawTrackBits(TileInfo *ti, TrackBits track)
  * according to the side it is representing.
  * The addtion of 2 per enum is necessary in order to "jump" over the
  * green state sprite, all signal sprites being in pair,
- * starting with the off-red state */
+ * starting with the off-red state
+ */
 enum SignalOffsets {
 	SIGNAL_TO_SOUTHWEST =  0,
 	SIGNAL_TO_NORTHEAST =  2,
@@ -2720,7 +2721,8 @@ int TicksToLeaveDepot(const Train *v)
 
 /**
  * Tile callback routine when vehicle enters tile
- * @see vehicle_enter_tile_proc */
+ * @see vehicle_enter_tile_proc
+ */
 static VehicleEnterTileStatus VehicleEnter_Track(Vehicle *u, TileIndex tile, int x, int y)
 {
 	/* this routine applies only to trains in depot tiles */

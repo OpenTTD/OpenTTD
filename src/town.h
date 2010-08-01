@@ -166,7 +166,8 @@ enum TownRatingCheckType {
 /**
  * This is the number of ticks between towns being processed for building new
  * houses or roads. This value originally came from the size of the town array
- * in TTD. */
+ * in TTD.
+ */
 static const byte TOWN_GROWTH_FREQUENCY = 70;
 
 /**

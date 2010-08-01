@@ -16,7 +16,8 @@
 
 /**
  * Save and load the mapping between the airport id in the AirportSpec array
- * and the grf file it came from. */
+ * and the grf file it came from.
+ */
 static const SaveLoad _airport_id_mapping_desc[] = {
 	SLE_VAR(EntityIDMapping, grfid,         SLE_UINT32),
 	SLE_VAR(EntityIDMapping, entity_id,     SLE_UINT8),

@@ -105,7 +105,8 @@ protected:
 
 	/**
 	 * Return header pointer to the static BlobHeader with
-	 * both items and capacity containing zero */
+	 * both items and capacity containing zero
+	 */
 	static FORCEINLINE BlobHeader *Zero()
 	{
 		return const_cast<BlobHeader *>(&ByteBlob::hdrEmpty[1]);
@@ -235,7 +236,8 @@ public:
 
 	/**
 	 * Reallocate if there is no free space for num_bytes bytes.
-	 *  @return pointer to the new data to be added */
+	 *  @return pointer to the new data to be added
+	 */
 	FORCEINLINE byte *Prepare(size_t num_bytes)
 	{
 		size_t new_size = Length() + num_bytes;
@@ -245,7 +247,8 @@ public:
 
 	/**
 	 * Increase Length() by num_bytes.
-	 *  @return pointer to the new data added */
+	 *  @return pointer to the new data added
+	 */
 	FORCEINLINE byte *Append(size_t num_bytes)
 	{
 		byte *pNewData = Prepare(num_bytes);
@@ -297,7 +300,8 @@ public:
  *  1. When adding new item(s) it automatically grows capacity if needed.
  *  2. When variable of type Blob comes out of scope it automatically frees the data buffer.
  *  3. Takes care about the actual data size (number of used items).
- *  4. Dynamically constructs only used items (as opposite of static array which constructs all items) */
+ *  4. Dynamically constructs only used items (as opposite of static array which constructs all items)
+ */
 template <typename T>
 class CBlobT : public ByteBlob {
 	/* make template arguments public: */
@@ -387,7 +391,8 @@ public:
 
 	/**
 	 * Ensures that given number of items can be added to the end of Blob. Returns pointer to the
-	 *  first free (unused) item */
+	 *  first free (unused) item
+	 */
 	FORCEINLINE T *MakeFreeSpace(size_t num_items)
 	{
 		return (T*)base::Prepare(num_items * type_size);

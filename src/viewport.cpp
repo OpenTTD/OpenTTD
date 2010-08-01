@@ -365,7 +365,8 @@ ViewPort *IsPtInWindowViewport(const Window *w, int x, int y)
  * @param vp  Viewport that contains the (\a x, \a y) screen coordinate
  * @param x   Screen x coordinate
  * @param y   Screen y coordinate
- * @return Tile coordinate */
+ * @return Tile coordinate
+ */
 static Point TranslateXYToTileCoord(const ViewPort *vp, int x, int y)
 {
 	Point pt;
@@ -456,7 +457,8 @@ Point GetTileZoomCenterWindow(bool in, Window * w)
  * @param w Window pointer to the window that has the zoom buttons
  * @param vp pointer to the viewport whose zoom-level the buttons represent
  * @param widget_zoom_in widget index for window with zoom-in button
- * @param widget_zoom_out widget index for window with zoom-out button */
+ * @param widget_zoom_out widget index for window with zoom-out button
+ */
 void HandleZoomMessage(Window *w, const ViewPort *vp, byte widget_zoom_in, byte widget_zoom_out)
 {
 	w->SetWidgetDisabledState(widget_zoom_in, vp->zoom == ZOOM_LVL_MIN);
@@ -1426,7 +1428,8 @@ void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom
 
 /**
  * Make sure we don't draw a too big area at a time.
- * If we do, the sprite memory will overflow. */
+ * If we do, the sprite memory will overflow.
+ */
 static void ViewportDrawChk(const ViewPort *vp, int left, int top, int right, int bottom)
 {
 	if (ScaleByZoom(bottom - top, vp->zoom) * ScaleByZoom(right - left, vp->zoom) > 180000) {
@@ -2089,7 +2092,8 @@ void VpSetPlaceSizingLimit(int limit)
 /**
  * Highlights all tiles between a set of two tiles. Used in dock and tunnel placement
  * @param from TileIndex of the first tile to highlight
- * @param to TileIndex of the last tile to highlight */
+ * @param to TileIndex of the last tile to highlight
+ */
 void VpSetPresizeRange(TileIndex from, TileIndex to)
 {
 	uint64 distance = DistanceManhattan(from, to) + 1;
@@ -2112,7 +2116,8 @@ static void VpStartPreSizing()
 
 /**
  * returns information about the 2x1 piece to be build.
- * The lower bits (0-3) are the track type. */
+ * The lower bits (0-3) are the track type.
+ */
 static HighLightStyle Check2x1AutoRail(int mode)
 {
 	int fxpy = _tile_fract_coords.x + _tile_fract_coords.y;
@@ -2155,7 +2160,8 @@ static HighLightStyle Check2x1AutoRail(int mode)
  * @param style HighLightStyle dragging style
  * @param start_tile start tile of drag
  * @param end_tile end tile of drag
- * @return boolean value which when true means start/end should be swapped */
+ * @return boolean value which when true means start/end should be swapped
+ */
 static bool SwapDirection(HighLightStyle style, TileIndex start_tile, TileIndex end_tile)
 {
 	uint start_x = TileX(start_tile);
@@ -2511,7 +2517,8 @@ static void CalcRaildirsDrawstyle(TileHighlightData *thd, int x, int y, int meth
  * @param x X coordinate of end of selection
  * @param y Y coordinate of end of selection
  * @param method modifies the way tiles are selected. Possible
- * methods are VPM_* in viewport.h */
+ * methods are VPM_* in viewport.h
+ */
 void VpSelectTilesWithMethod(int x, int y, ViewportPlaceMethod method)
 {
 	int sx, sy;

@@ -1455,7 +1455,8 @@ enum Modifiers {
 /**
  * Masks needed for sprite operations.
  * @note Do not modify this enum. Alter SpriteSetup instead
- * @see SpriteSetup */
+ * @see SpriteSetup
+ */
 enum SpriteMasks {
 	/** Maximum number of sprites that can be loaded at a given time. */
 	MAX_SPRITES = 1 << SPRITE_WIDTH,

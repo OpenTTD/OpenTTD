@@ -1531,7 +1531,8 @@ static void NewGRFConfirmationCallback(Window *w, bool confirmed)
  * @param show_params show information about what parameters are set for the grf files
  * @param exec_changes if changes are made to the list (editable is true), apply these
  *        changes immediately or only update the list
- * @param config pointer to a linked-list of grfconfig's that will be shown */
+ * @param config pointer to a linked-list of grfconfig's that will be shown
+ */
 void ShowNewGRFSettings(bool editable, bool show_params, bool exec_changes, GRFConfig **config)
 {
 	DeleteWindowByClass(WC_GAME_OPTIONS);

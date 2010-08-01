@@ -2017,7 +2017,7 @@ static inline bool TownLayoutAllows2x2HouseHere(Town *t, TileIndex tile)
  * @param maxz all tiles should have the same height
  * @param noslope are slopes forbidden?
  * @param second diagdir from first tile to second tile
- **/
+ */
 static bool CheckTownBuild2House(TileIndex *tile, Town *t, uint maxz, bool noslope, DiagDirection second)
 {
 	/* 'tile' is already checked in BuildTownHouse() - CanBuildHouseHere() and slope test */
@@ -2042,7 +2042,7 @@ static bool CheckTownBuild2House(TileIndex *tile, Town *t, uint maxz, bool noslo
  * @param t town
  * @param maxz all tiles should have the same height
  * @param noslope are slopes forbidden?
- **/
+ */
 static bool CheckTownBuild2x2House(TileIndex *tile, Town *t, uint maxz, bool noslope)
 {
 	TileIndex tile2 = *tile;
@@ -2628,7 +2628,8 @@ static void UpdateTownGrowRate(Town *t)
 
 	/**
 	 * Towns are processed every TOWN_GROWTH_FREQUENCY ticks, and this is the
-	 * number of times towns are processed before a new building is built. */
+	 * number of times towns are processed before a new building is built.
+	 */
 	static const uint16 _grow_count_values[2][6] = {
 		{ 120, 120, 120, 100,  80,  60 }, // Fund new buildings has been activated
 		{ 320, 420, 300, 220, 160, 100 }  // Normal values

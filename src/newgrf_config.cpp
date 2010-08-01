@@ -323,7 +323,8 @@ void ClearGRFConfigList(GRFConfig **config)
  * @param dst pointer to destination list
  * @param src pointer to source list values
  * @param init_only the copied GRF will be processed up to GLS_INIT
- * @return pointer to the last value added to the destination list */
+ * @return pointer to the last value added to the destination list
+ */
 GRFConfig **CopyGRFConfigList(GRFConfig **dst, const GRFConfig *src, bool init_only)
 {
 	/* Clear destination as it will be overwritten */
@@ -388,7 +389,8 @@ void AppendStaticGRFConfigs(GRFConfig **dst)
 /**
  * Appends an element to a list of GRFs
  * @param dst the head of the list to add to
- * @param el the new tail to be */
+ * @param el the new tail to be
+ */
 void AppendToGRFConfigList(GRFConfig **dst, GRFConfig *el)
 {
 	GRFConfig **tail = dst;
@@ -416,7 +418,8 @@ void ResetGRFConfig(bool defaults)
  * <li> GLC_COMPATIBLE: For one or more GRF's no exact match was found, but a
  *     compatible GRF with the same grfid was found and used instead
  * <li> GLC_NOT_FOUND: For one or more GRF's no match was found at all
- * </ul> */
+ * </ul>
+ */
 GRFListCompatibility IsGoodGRFConfigList(GRFConfig *grfconfig)
 {
 	GRFListCompatibility res = GLC_ALL_GOOD;

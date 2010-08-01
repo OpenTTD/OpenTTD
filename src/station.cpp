@@ -142,7 +142,8 @@ RoadStop *Station::GetPrimaryRoadStop(const RoadVehicle *v) const
 
 /**
  * Called when new facility is built on the station. If it is the first facility
- * it initializes also 'xy' and 'random_bits' members */
+ * it initializes also 'xy' and 'random_bits' members
+ */
 void Station::AddFacility(StationFacility new_facility_bit, TileIndex facil_xy)
 {
 	if (this->facilities == FACIL_NONE) {

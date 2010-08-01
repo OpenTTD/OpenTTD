@@ -220,7 +220,8 @@ static const WindowDesc _endgame_desc(
 /**
  * Show the highscore table for a given difficulty. When called from
  * endgame ranking is set to the top5 element that was newly added
- * and is thus highlighted */
+ * and is thus highlighted
+ */
 void ShowHighscoreTable(int difficulty, int8 ranking)
 {
 	DeleteWindowByClass(WC_HIGHSCORE);
@@ -229,7 +230,8 @@ void ShowHighscoreTable(int difficulty, int8 ranking)
 
 /**
  * Show the endgame victory screen in 2050. Update the new highscore
- * if it was high enough */
+ * if it was high enough
+ */
 void ShowEndGameChart()
 {
 	/* Dedicated server doesn't need the highscore window and neither does -v null. */

@@ -1276,7 +1276,8 @@ void StateGameLoop()
 
 /**
  * Create an autosave. The default name is "autosave#.sav". However with
- * the setting 'keep_all_autosave' the name defaults to company-name + date */
+ * the setting 'keep_all_autosave' the name defaults to company-name + date
+ */
 static void DoAutosave()
 {
 	char buf[MAX_PATH];

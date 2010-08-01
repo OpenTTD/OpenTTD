@@ -95,7 +95,7 @@ static void GenerateRockyArea(TileIndex end, TileIndex start)
  * @return Returns true if the action was found and handled, and false otherwise. This
  * allows for additional implements that are more local. For example X_Y drag
  * of convertrail which belongs in rail_gui.cpp and not terraform_gui.cpp
- **/
+ */
 bool GUIPlaceProcDragXY(ViewportDragDropSelectionProcess proc, TileIndex start_tile, TileIndex end_tile)
 {
 	if (!_settings_game.construction.freeform_edges) {
@@ -590,7 +590,8 @@ static OnButtonClick * const _editor_terraform_button_proc[] = {
 /**
  * Callback function for the scenario editor 'reset landscape' confirmation window
  * @param w Window unused
- * @param confirmed boolean value, true when yes was clicked, false otherwise */
+ * @param confirmed boolean value, true when yes was clicked, false otherwise
+ */
 static void ResetLandscapeConfirmationCallback(Window *w, bool confirmed)
 {
 	if (confirmed) {
