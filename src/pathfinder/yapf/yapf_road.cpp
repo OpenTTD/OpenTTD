@@ -81,7 +81,8 @@ protected:
 						/* Increase cost for filled road stops */
 						cost += Yapf().PfGetSettings().road_stop_bay_occupied_penalty * (!rs->IsFreeBay(0) + !rs->IsFreeBay(1)) / 2;
 					}
-				} break;
+					break;
+				}
 
 				default:
 					break;

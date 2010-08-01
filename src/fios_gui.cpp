@@ -346,7 +346,8 @@ public:
 				if (str != STR_ERROR_UNABLE_TO_READ_DRIVE) SetDParam(0, tot);
 				DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + FONT_HEIGHT_NORMAL + WD_FRAMERECT_TOP, str);
 				DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, path, TC_BLACK);
-			} break;
+				break;
+			}
 
 			case SLWW_DRIVES_DIRECTORIES_LIST: {
 				GfxFillRect(r.left + 1, r.top + 1, r.right, r.bottom, 0xD7);
@@ -362,7 +363,8 @@ public:
 					y += this->resize.step_height;
 					if (y >= this->vscroll.GetCapacity() * this->resize.step_height + r.top + WD_FRAMERECT_TOP) break;
 				}
-			} break;
+				break;
+			}
 
 			case SLWW_DETAILS: {
 				GfxFillRect(r.left + WD_FRAMERECT_LEFT, r.top + WD_FRAMERECT_TOP,
@@ -455,7 +457,8 @@ public:
 						}
 					}
 				}
-			} break;
+				break;
+			}
 		}
 	}
 

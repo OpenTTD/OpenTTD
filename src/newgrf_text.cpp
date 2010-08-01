@@ -287,7 +287,8 @@ char *TranslateTTDPatchCodes(uint32 grfid, const char *str)
 						tmp        |= ((uint8)*str++) << 8;
 						d += Utf8Encode(d, SCC_NEWGRF_PUSH_WORD);
 						d += Utf8Encode(d, tmp);
-					} break;
+						break;
+					}
 					case 4:
 						d += Utf8Encode(d, SCC_NEWGRF_UNPRINT);
 						d += Utf8Encode(d, *str++);

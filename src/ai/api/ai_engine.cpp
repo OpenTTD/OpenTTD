@@ -95,7 +95,7 @@
 				return capacities[c];
 			}
 			return -1;
-		} break;
+		}
 
 		case VEH_SHIP:
 		case VEH_AIRCRAFT:

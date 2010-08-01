@@ -676,7 +676,8 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 
 					SndPlayFx(SND_15_BEEP);
 					this->SetDirty();
-				} break;
+					break;
+				}
 				case ETTW_NEW_SCENARIO: // gen random land
 					this->HandleButtonClick(widget);
 					ShowCreateScenario();

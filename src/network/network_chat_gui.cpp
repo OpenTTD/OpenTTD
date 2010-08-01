@@ -507,7 +507,8 @@ struct NetworkChatWindow : public QueryStringBaseWindow {
 				case HEBR_EDITING: {
 					Window *osk = FindWindowById(WC_OSK, 0);
 					if (osk != NULL && osk->parent == this) osk->InvalidateData();
-				} break;
+					break;
+				}
 				case HEBR_CONFIRM:
 					SendChat(this->text.buf, this->dtype, this->dest);
 					/* FALL THROUGH */

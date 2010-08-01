@@ -230,7 +230,8 @@ void DrawOrderString(const Vehicle *v, const Order *order, int order_index, int 
 					SetDParam(5, order->GetStopLocation() + STR_ORDER_STOP_LOCATION_NEAR_END);
 				}
 			}
-		} break;
+			break;
+		}
 
 		case OT_GOTO_DEPOT:
 			if (order->GetDepotActionType() & ODATFB_NEAREST_DEPOT) {
@@ -812,7 +813,8 @@ public:
 
 				/* Moving selected order */
 				this->selected_order = to;
-			} break;
+				break;
+			}
 		}
 
 		this->vscroll.SetCount(this->vehicle->GetNumOrders() + 1);
@@ -1069,7 +1071,8 @@ public:
 				}
 
 				this->UpdateButtonState();
-			} break;
+				break;
+			}
 
 			case ORDER_WIDGET_SKIP:
 				this->OrderClick_Skip(0);
@@ -1136,7 +1139,8 @@ public:
 			case ORDER_WIDGET_COND_COMPARATOR: {
 				const Order *o = this->vehicle->GetOrder(this->OrderGetSel());
 				ShowDropDownMenu(this, _order_conditional_condition, o->GetConditionComparator(), ORDER_WIDGET_COND_COMPARATOR, 0, (o->GetConditionVariable() == OCV_REQUIRES_SERVICE) ? 0x3F : 0xC0);
-			} break;
+				break;
+			}
 
 			case ORDER_WIDGET_COND_VALUE: {
 				const Order *order = this->vehicle->GetOrder(this->OrderGetSel());
@@ -1144,7 +1148,8 @@ public:
 				if (order->GetConditionVariable() == OCV_MAX_SPEED) value = ConvertSpeedToDisplaySpeed(value);
 				SetDParam(0, value);
 				ShowQueryString(STR_JUST_INT, STR_ORDER_CONDITIONAL_VALUE_CAPT, 5, 100, this, CS_NUMERAL, QSF_NONE);
-			} break;
+				break;
+			}
 
 			case ORDER_WIDGET_SHARED_ORDER_LIST:
 				ShowVehicleListWindow(this->vehicle);
@@ -1224,7 +1229,8 @@ public:
 					this->selected_order = -1;
 					this->UpdateButtonState();
 				}
-			} break;
+				break;
+			}
 
 			case ORDER_WIDGET_DELETE:
 				this->OrderClick_Delete(0);

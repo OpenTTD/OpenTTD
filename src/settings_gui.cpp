@@ -299,7 +299,8 @@ struct GameOptionsWindow : Window {
 				}
 
 				ShowDropDownMenu(this, _driveside_dropdown, this->opt->vehicle.road_side, GOW_ROADSIDE_DROPDOWN, i, 0);
-			} break;
+				break;
+			}
 
 			case GOW_TOWNNAME_DROPDOWN: // Setup townname dropdown
 				ShowTownnameDropdown(this, this->opt->game_creation.town_name);
@@ -322,7 +323,8 @@ struct GameOptionsWindow : Window {
 				}
 
 				ShowDropDownList(this, list, _dynlang.curr, GOW_LANG_DROPDOWN);
-			} break;
+				break;
+			}
 
 			case GOW_RESOLUTION_DROPDOWN: // Setup resolution dropdown
 				ShowDropDownMenu(this, BuildDynamicDropdown(SPECSTR_RESOLUTION_START, _num_resolutions), GetCurRes(), GOW_RESOLUTION_DROPDOWN, 0, 0);
@@ -1627,7 +1629,8 @@ struct GameSettingsWindow : Window {
 						this->flags4 |= WF_TIMEOUT_BEGIN;
 						_left_button_clicked = false;
 					}
-				} break;
+					break;
+				}
 
 				default: NOT_REACHED();
 			}

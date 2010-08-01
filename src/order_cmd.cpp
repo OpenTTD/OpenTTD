@@ -625,7 +625,8 @@ CommandCost CmdInsertOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 					if (occ == OCC_IS_TRUE || occ == OCC_IS_FALSE) return CMD_ERROR;
 					break;
 			}
-		} break;
+			break;
+		}
 
 		default: return CMD_ERROR;
 	}
@@ -1081,7 +1082,8 @@ CommandCost CmdModifyOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 					default:
 						NOT_REACHED();
 				}
-			} break;
+				break;
+			}
 
 			case MOF_COND_VARIABLE: {
 				order->SetConditionVariable((OrderConditionVariable)data);
@@ -1105,7 +1107,8 @@ CommandCost CmdModifyOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 						if (occ == OCC_IS_TRUE || occ == OCC_IS_FALSE) order->SetConditionComparator(OCC_EQUALS);
 						break;
 				}
-			} break;
+				break;
+			}
 
 			case MOF_COND_COMPARATOR:
 				order->SetConditionComparator((OrderConditionComparator)data);
@@ -1209,7 +1212,8 @@ CommandCost CmdCloneOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 
 				InvalidateWindowClassesData(GetWindowClassForVehicleType(dst->type), 0);
 			}
-		} break;
+			break;
+		}
 
 		case CO_COPY: {
 			Vehicle *src = Vehicle::GetIfValid(veh_src);
@@ -1264,7 +1268,8 @@ CommandCost CmdCloneOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 
 				InvalidateWindowClassesData(GetWindowClassForVehicleType(dst->type), 0);
 			}
-		} break;
+			break;
+		}
 
 		case CO_UNSHARE: return DecloneOrder(dst, flags);
 		default: return CMD_ERROR;

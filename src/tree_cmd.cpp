@@ -431,7 +431,8 @@ CommandCost CmdPlantTree(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 					}
 				}
 				cost.AddCost(_price[PR_BUILD_TREES]);
-			} break;
+				break;
+			}
 
 			default:
 				msg = STR_ERROR_SITE_UNSUITABLE;

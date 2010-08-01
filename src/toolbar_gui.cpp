@@ -1572,7 +1572,8 @@ public:
 				} else {
 					DrawString(r.left, r.right, (height - FONT_HEIGHT_NORMAL) / 2, STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR, TC_FROMSTRING, SA_HOR_CENTER);
 				}
-			} break;
+				break;
+			}
 		}
 	}
 

@@ -179,7 +179,8 @@ struct CheatWindow : Window {
 
 					DrawFrameRect(button_left, y + 1, button_left + 20 - 1, y + FONT_HEIGHT_NORMAL - 1, on ? COLOUR_GREEN : COLOUR_RED, on ? FR_LOWERED : FR_NONE);
 					SetDParam(0, on ? STR_CONFIG_SETTING_ON : STR_CONFIG_SETTING_OFF);
-				} break;
+					break;
+				}
 
 				default: {
 					int32 val = (int32)ReadValue(ce->variable, ce->type);
@@ -198,7 +199,8 @@ struct CheatWindow : Window {
 							GetString(buf, STR_CHEAT_CHANGE_COMPANY, lastof(buf));
 							uint offset = 10 + GetStringBoundingBox(buf).width;
 							DrawCompanyIcon(_local_company, rtl ? text_right - offset - 10 : text_left + offset, y + 2);
-						} break;
+							break;
+						}
 
 						/* Set correct string for switch climate cheat */
 						case STR_CHEAT_SWITCH_CLIMATE: val += STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE;
@@ -206,7 +208,8 @@ struct CheatWindow : Window {
 
 						default: SetDParam(0, val);
 					}
-				} break;
+					break;
+				}
 			}
 
 			DrawString(text_left, text_right, y + 1, ce->str);

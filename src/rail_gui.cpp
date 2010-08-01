@@ -1313,7 +1313,8 @@ public:
 				SndPlayFx(SND_15_BEEP);
 				this->SetDirty();
 				DeleteWindowById(WC_SELECT_STATION, 0);
-			} break;
+				break;
+			}
 
 			case BRSW_HIGHLIGHT_OFF:
 			case BRSW_HIGHLIGHT_ON:

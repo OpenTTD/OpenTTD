@@ -1067,7 +1067,8 @@ public:
 				DrawPixelInfo new_dpi;
 				if (!FillDrawPixelInfo(&new_dpi, r.left + 1, r.top + 1, r.right - r.left - 1, r.bottom - r.top - 1)) return;
 				this->DrawSmallMap(&new_dpi);
-			} break;
+				break;
+			}
 
 			case SM_WIDGET_LEGEND: {
 				uint columns = this->GetNumberColumnsLegend(r.right - r.left + 1);
@@ -1152,7 +1153,8 @@ public:
 				w->viewport->dest_scrollpos_y = pt.y - (w->viewport->virtual_height >> 1);
 
 				this->SetDirty();
-			} break;
+				break;
+			}
 
 			case SM_WIDGET_ZOOM_IN:
 			case SM_WIDGET_ZOOM_OUT: {

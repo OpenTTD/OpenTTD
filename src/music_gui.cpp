@@ -334,7 +334,8 @@ struct MusicTrackSelectionWindow : public Window {
 				d.width += padding.width;
 				d.height += padding.height;
 				*size = maxdim(*size, d);
-			} break;
+				break;
+			}
 
 			case MTSW_LIST_LEFT: case MTSW_LIST_RIGHT: {
 				Dimension d = {0, 0};
@@ -353,7 +354,8 @@ struct MusicTrackSelectionWindow : public Window {
 				d.width += padding.width;
 				d.height += padding.height;
 				*size = maxdim(*size, d);
-			} break;
+				break;
+			}
 		}
 	}
 
@@ -374,7 +376,8 @@ struct MusicTrackSelectionWindow : public Window {
 					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_PLAYLIST_TRACK_NAME);
 					y += FONT_HEIGHT_SMALL;
 				}
-			} break;
+				break;
+			}
 
 			case MTSW_LIST_RIGHT: {
 				GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, 0);
@@ -388,7 +391,8 @@ struct MusicTrackSelectionWindow : public Window {
 					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_PLAYLIST_TRACK_NAME);
 					y += FONT_HEIGHT_SMALL;
 				}
-			} break;
+				break;
+			}
 		}
 	}
 
@@ -422,7 +426,8 @@ struct MusicTrackSelectionWindow : public Window {
 						break;
 					}
 				}
-			} break;
+				break;
+			}
 
 			case MTSW_LIST_RIGHT: { // remove from playlist
 				int y = this->GetRowFromWidget(pt.y, widget, 0, FONT_HEIGHT_SMALL);
@@ -437,7 +442,8 @@ struct MusicTrackSelectionWindow : public Window {
 
 				this->SetDirty();
 				SelectSongToPlay();
-			} break;
+				break;
+			}
 
 			case MTSW_CLEAR: // clear
 				for (uint i = 0; _playlists[msf.playlist][i] != 0; i++) _playlists[msf.playlist][i] = 0;
@@ -549,14 +555,16 @@ struct MusicWindow : public Window {
 				d.width += padding.width;
 				d.height += padding.height;
 				*size = maxdim(*size, d);
-			} break;
+				break;
+			}
 
 			case MW_TRACK_NR: {
 				Dimension d = GetStringBoundingBox(STR_MUSIC_TRACK_NONE);
 				d.width += WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
 				d.height += WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
 				*size = maxdim(*size, d);
-			} break;
+				break;
+			}
 
 			case MW_TRACK_NAME: {
 				Dimension d = GetStringBoundingBox(STR_MUSIC_TITLE_NONE);
@@ -567,7 +575,8 @@ struct MusicWindow : public Window {
 				d.width += WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
 				d.height += WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
 				*size = maxdim(*size, d);
-			} break;
+				break;
+			}
 
 			/* Hack-ish: set the proper widget data; only needs to be done once
 			 * per (Re)Init as that's the only time the language changes. */
@@ -604,7 +613,8 @@ struct MusicWindow : public Window {
 					str = STR_MUSIC_TRACK_DIGIT;
 				}
 				DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, str);
-			} break;
+				break;
+			}
 
 			case MW_TRACK_NAME: {
 				GfxFillRect(r.left, r.top + 1, r.right - 1, r.bottom, 0);
@@ -614,7 +624,8 @@ struct MusicWindow : public Window {
 					SetDParamStr(0, GetSongName(_music_wnd_cursong - 1));
 				}
 				DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, str, TC_FROMSTRING, SA_HOR_CENTER);
-			} break;
+				break;
+			}
 
 			case MW_MUSIC_VOL: case MW_EFFECT_VOL: {
 				DrawFrameRect(r.left, r.top + 2, r.right, r.bottom - 2, COLOUR_GREY, FR_LOWERED);
@@ -626,7 +637,8 @@ struct MusicWindow : public Window {
 					x += r.left;
 				}
 				DrawFrameRect(x, r.top, x + slider_width, r.bottom, COLOUR_GREY, FR_NONE);
-			} break;
+				break;
+			}
 		}
 	}
 
@@ -680,7 +692,8 @@ struct MusicWindow : public Window {
 				}
 
 				_left_button_clicked = false;
-			} break;
+				break;
+			}
 
 			case MW_SHUFFLE: // toggle shuffle
 				msf.shuffle ^= 1;

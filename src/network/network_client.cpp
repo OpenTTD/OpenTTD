@@ -789,7 +789,8 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CHAT)
 
 				GetString(name, str, lastof(name));
 				ci = NetworkFindClientInfoFromClientID(_network_own_client_id);
-			} break;
+				break;
+			}
 
 			default: return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 		}

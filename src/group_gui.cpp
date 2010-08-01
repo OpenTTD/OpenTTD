@@ -239,7 +239,8 @@ public:
 				d.height += padding.height;
 				d.width  += padding.width;
 				*size = maxdim(*size, d);
-			} break;
+				break;
+			}
 		}
 	}
 

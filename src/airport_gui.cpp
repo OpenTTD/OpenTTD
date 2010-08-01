@@ -257,7 +257,8 @@ public:
 				d.width += padding.width;
 				d.height += padding.height;
 				*size = maxdim(*size, d);
-			} break;
+				break;
+			}
 
 			case BAIRW_AIRPORT_LIST: {
 				for (int i = 0; i < NUM_AIRPORTS; i++) {
@@ -269,7 +270,8 @@ public:
 
 				this->line_height = FONT_HEIGHT_NORMAL + WD_MATRIX_TOP + WD_MATRIX_BOTTOM;
 				size->height = this->vscroll.GetCapacity() * this->line_height;
-			} break;
+				break;
+			}
 
 			default: break;
 		}
@@ -356,7 +358,8 @@ public:
 				if (num_clicked >= this->vscroll.GetCount()) break;
 				const AirportSpec *as = GetAirportSpecFromClass(_selected_airport_class, num_clicked);
 				if (as->IsAvailable()) this->SelectOtherAirport(num_clicked);
-			} break;
+				break;
+			}
 
 			case BAIRW_BTN_DONTHILIGHT: case BAIRW_BTN_DOHILIGHT:
 				_settings_client.gui.station_show_coverage = (widget != BAIRW_BTN_DONTHILIGHT);

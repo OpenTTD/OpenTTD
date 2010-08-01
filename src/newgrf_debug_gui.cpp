@@ -415,7 +415,8 @@ struct NewGRFInspectWindow : Window {
 			case NIW_PARENT: {
 				uint index = GetFeatureHelper(this->window_number)->GetParent(GetFeatureIndex(this->window_number));
 				::ShowNewGRFInspectWindow((GrfSpecFeature)GB(index, 24, 8), GetFeatureIndex(index));
-			} break;
+				break;
+			}
 
 			case NIW_MAINPANEL: {
 				/* Does this feature have variables? */
@@ -580,7 +581,8 @@ struct SpriteAlignerWindow : Window {
 				const Sprite *spr = GetSprite(this->current_sprite, ST_NORMAL);
 				SetDParam(0, spr->x_offs);
 				SetDParam(1, spr->y_offs);
-			} break;
+				break;
+			}
 
 			default:
 				break;
@@ -711,7 +713,8 @@ struct SpriteAlignerWindow : Window {
 				/* Ofcourse, we need to redraw the sprite, but where is it used?
 				 * Everywhere is a safe bet. */
 				MarkWholeScreenDirty();
-			} break;
+				break;
+			}
 		}
 	}
 

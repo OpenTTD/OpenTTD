@@ -647,7 +647,8 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 					ChangeDisplaySettings(NULL, 0);
 				}
 			}
-		} break;
+			break;
+		}
 #endif
 	}
 

@@ -691,7 +691,8 @@ static void AnimateTile_Industry(TileIndex tile)
 				SetIndustryAnimationState(tile, m);
 				MarkTileDirtyByTile(tile);
 			}
-		} break;
+			break;
+		}
 	}
 }
 
@@ -745,7 +746,8 @@ static void MakeIndustryTileBigger(TileIndex tile)
 				GetIndustryIndex(tile) == GetIndustryIndex(other)) {
 			BuildOilRig(tile);
 		}
-	} break;
+		break;
+	}
 
 	case GFX_TOY_FACTORY:
 	case GFX_BUBBLE_CATCHER:

@@ -620,7 +620,8 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 						y += step_height;
 					}
 				}
-			} break;
+				break;
+			}
 
 			case SNGRFS_AVAIL_LIST: {
 				GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, 0xD7);

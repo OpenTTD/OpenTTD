@@ -603,7 +603,8 @@ public:
 				}
 
 				this->InvalidateData();
-			} break;
+				break;
+			}
 
 			case NCLWW_CHECKBOX:
 			case NCLWW_TYPE:

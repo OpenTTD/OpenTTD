@@ -1002,7 +1002,8 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 				}
 				this->UpdateLoweredWidgets();
 				this->SetDirty();
-			} break;
+				break;
+			}
 
 			default:
 				if (widget >= CPW_CARGO_FIRST) {

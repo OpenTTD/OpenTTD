@@ -1550,7 +1550,8 @@ static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex ti
 					t->track = TRACK_BIT_WORMHOLE;
 					ClrBit(t->gv_flags, GVF_GOINGUP_BIT);
 					ClrBit(t->gv_flags, GVF_GOINGDOWN_BIT);
-				} break;
+					break;
+				}
 
 				case VEH_ROAD: {
 					RoadVehicle *rv = RoadVehicle::From(v);
@@ -1558,7 +1559,8 @@ static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex ti
 					/* There are no slopes inside bridges / tunnels. */
 					ClrBit(rv->gv_flags, GVF_GOINGUP_BIT);
 					ClrBit(rv->gv_flags, GVF_GOINGDOWN_BIT);
-				} break;
+					break;
+				}
 
 				case VEH_SHIP:
 					Ship::From(v)->state = TRACK_BIT_WORMHOLE;
@@ -1576,7 +1578,8 @@ static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex ti
 						t->track = (DiagDirToAxis(dir) == AXIS_X ? TRACK_BIT_X : TRACK_BIT_Y);
 						return VETSB_ENTERED_WORMHOLE;
 					}
-				} break;
+					break;
+				}
 
 				case VEH_ROAD: {
 					RoadVehicle *rv = RoadVehicle::From(v);
@@ -1585,7 +1588,8 @@ static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex ti
 						rv->frame = 0;
 						return VETSB_ENTERED_WORMHOLE;
 					}
-				} break;
+					break;
+				}
 
 				case VEH_SHIP: {
 					Ship *ship = Ship::From(v);
@@ -1593,7 +1597,8 @@ static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex ti
 						ship->state = (DiagDirToAxis(dir) == AXIS_X ? TRACK_BIT_X : TRACK_BIT_Y);
 						return VETSB_ENTERED_WORMHOLE;
 					}
-				} break;
+					break;
+				}
 
 				default: NOT_REACHED();
 			}

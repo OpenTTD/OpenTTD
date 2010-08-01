@@ -281,7 +281,8 @@ struct DepotWindow : Window {
 				DrawAircraftImage(v, image_left, image_right,
 									y + max(spr->height + spr->y_offs - 14, 0), // tall sprites needs an y offset
 									this->sel);
-			} break;
+				break;
+			}
 			default: NOT_REACHED();
 		}
 
@@ -506,7 +507,8 @@ struct DepotWindow : Window {
 					}
 					_cursor.vehchain = _ctrl_pressed;
 				}
-			} break;
+				break;
+			}
 
 			case MODE_SHOW_VEHICLE: // show info window
 				ShowVehicleViewWindow(v);
@@ -654,7 +656,8 @@ struct DepotWindow : Window {
 				}
 				fill->width = resize->width;
 				fill->height = resize->height;
-			} break;
+				break;
+			}
 		}
 	}
 
@@ -736,7 +739,7 @@ struct DepotWindow : Window {
 				} else {
 					ResetObjectToPlace();
 				}
-					break;
+				break;
 
 			case DEPOT_WIDGET_LOCATION:
 				if (_ctrl_pressed) {
@@ -948,7 +951,8 @@ struct DepotWindow : Window {
 				} else if (this->GetVehicleFromDepotWndPt(pt.x - nwi->pos_x, pt.y - nwi->pos_y, &v, NULL) == MODE_DRAG_VEHICLE && v != NULL && sel == v->index) {
 					ShowVehicleViewWindow(v);
 				}
-			} break;
+				break;
+			}
 
 			case DEPOT_WIDGET_SELL: case DEPOT_WIDGET_SELL_CHAIN: {
 				if (this->IsWidgetDisabled(widget)) return;
@@ -970,7 +974,8 @@ struct DepotWindow : Window {
 				}
 
 				if (!DoCommandP(v->tile, v->index, sell_cmd, GetCmdSellVeh(v->type)) && is_engine) _backup_orders_tile = 0;
-			} break;
+				break;
+			}
 
 			default:
 				this->sel = INVALID_VEHICLE;

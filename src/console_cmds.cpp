@@ -300,7 +300,8 @@ DEF_CONSOLE_CMD(ConLoad)
 
 				strecpy(_file_to_saveload.name, FiosBrowseTo(item), lastof(_file_to_saveload.name));
 				strecpy(_file_to_saveload.title, item->title, lastof(_file_to_saveload.title));
-			} break;
+				break;
+			}
 			default: IConsolePrintF(CC_ERROR, "%s: Not a savegame.", file);
 		}
 	} else {

@@ -1547,7 +1547,8 @@ CommandCost CmdConvertRail(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 					}
 
 					cost.AddCost((GetTunnelBridgeLength(tile, endtile) + 2) * RailConvertCost(type, totype));
-				} break;
+					break;
+				}
 
 				default: // MP_STATION, MP_ROAD
 					if (flags & DC_EXEC) {

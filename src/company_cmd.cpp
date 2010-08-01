@@ -826,7 +826,8 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 				}
 			}
 #endif /* ENABLE_NETWORK */
-		} break;
+			break;
+		}
 
 		case 1: // Make a new AI company
 			if (!(flags & DC_EXEC)) return CommandCost();
@@ -859,7 +860,8 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			CompanyID c_index = c->index;
 			delete c;
 			AI::BroadcastNewEvent(new AIEventCompanyBankrupt(c_index));
-		} break;
+			break;
+		}
 
 		default: return CMD_ERROR;
 	}

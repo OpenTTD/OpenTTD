@@ -1530,7 +1530,8 @@ static bool LoadTTDPatchExtraChunks(LoadgameState *ls, int num)
 
 				/* Append static NewGRF configuration */
 				AppendStaticGRFConfigs(&_grfconfig);
-			} break;
+				break;
+			}
 
 			/* TTDPatch version and configuration */
 			case 0x3:

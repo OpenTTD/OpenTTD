@@ -672,7 +672,8 @@ static char *FormatString(char *buff, const char *str, int64 *argv, uint casei, 
 						}
 						break;
 				}
-			} break;
+				break;
+			}
 
 			case SCC_STRING1: { // {STRING1}
 				/* String that consumes ONE argument */
@@ -878,7 +879,8 @@ static char *FormatString(char *buff, const char *str, int64 *argv, uint casei, 
 			case SCC_ZEROFILL_NUM: { // {ZEROFILL_NUM}
 				int64 num = GetInt64(&argv);
 				buff = FormatZerofillNumber(buff, num, GetInt64(&argv), last);
-			} break;
+				break;
+			}
 
 			case SCC_HEX: // {HEX}
 				buff = FormatHexNumber(buff, (uint64)GetInt64(&argv), last);

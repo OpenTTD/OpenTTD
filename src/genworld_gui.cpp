@@ -515,7 +515,8 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 				 * outer most boundaries (left and right) as draw locations. */
 				const NWidgetBase *nwi_spacer = this->GetWidget<NWidgetBase>(GLAND_HEIGHTMAP_NAME_SPACER);
 				DrawString(min(r.left, nwi_spacer->pos_x), max<int>(r.right, nwi_spacer->pos_x + nwi_spacer->current_x), r.top, this->name, TC_ORANGE);
-			} break;
+				break;
+			}
 		}
 	}
 
@@ -1199,7 +1200,8 @@ struct GenerateProgressWindow : public Window {
 				/* We need some spacing for the 'border' */
 				size->height += 8;
 				size->width += 8;
-			} break;
+				break;
+			}
 
 			case GPWW_PROGRESS_TEXT:
 				for (uint i = 0; i < GWP_CLASS_COUNT; i++) {

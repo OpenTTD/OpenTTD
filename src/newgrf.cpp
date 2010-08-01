@@ -543,7 +543,8 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 						grfmsg(1, "RailVehicleChangeInfo: Invalid track type %d specified, ignoring", tracktype);
 						break;
 				}
-			} break;
+				break;
+			}
 
 			case 0x08: // AI passenger service
 				/* Tells the AI that this engine is designed for
@@ -556,7 +557,8 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 				if (speed == 0xFFFF) speed = 0;
 
 				rvi->max_speed = speed;
-			} break;
+				break;
+			}
 
 			case PROP_TRAIN_POWER: // 0x0B Power
 				rvi->power = buf->ReadWord();
@@ -587,7 +589,8 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 				if (spriteid < 0xFD) spriteid >>= 1;
 
 				rvi->image_index = spriteid;
-			} break;
+				break;
+			}
 
 			case 0x13: { // Dual-headed
 				uint8 dual = buf->ReadByte();
@@ -598,7 +601,8 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 					rvi->railveh_type = rvi->power == 0 ?
 						RAILVEH_WAGON : RAILVEH_SINGLEHEAD;
 				}
-			} break;
+				break;
+			}
 
 			case PROP_TRAIN_CARGO_CAPACITY: // 0x14 Cargo capacity
 				rvi->capacity = buf->ReadByte();
@@ -616,7 +620,8 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 					ei->cargo_type = CT_INVALID;
 					grfmsg(2, "RailVehicleChangeInfo: Invalid cargo type %d, using first refittable", ctype);
 				}
-			} break;
+				break;
+			}
 
 			case PROP_TRAIN_WEIGHT: // 0x16 Weight
 				SB(rvi->weight, 0, 8, buf->ReadByte());
@@ -664,7 +669,8 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 				}
 
 				rvi->engclass = engclass;
-			} break;
+				break;
+			}
 
 			case 0x1A: // Alter purchase list sort order
 				AlterVehicleListOrder(e->index, buf->ReadExtendedByte());
@@ -718,7 +724,8 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 				} else {
 					SB(rvi->weight, 8, 8, weight);
 				}
-			} break;
+				break;
+			}
 
 			case PROP_TRAIN_USER_DATA: // 0x25 User-defined bit mask to set when checking veh. var. 42
 				rvi->user_def_data = buf->ReadByte();
@@ -787,7 +794,8 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint engine, int numinfo, int prop
 				if (spriteid < 0xFD) spriteid >>= 1;
 
 				rvi->image_index = spriteid;
-			} break;
+				break;
+			}
 
 			case PROP_ROADVEH_CARGO_CAPACITY: // 0x0F Cargo capacity
 				rvi->capacity = buf->ReadByte();
@@ -804,7 +812,8 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint engine, int numinfo, int prop
 					ei->cargo_type = CT_INVALID;
 					grfmsg(2, "RoadVehicleChangeInfo: Invalid cargo type %d, using first refittable", cargo);
 				}
-			} break;
+				break;
+			}
 
 			case PROP_ROADVEH_COST_FACTOR: // 0x11 Cost factor
 				rvi->cost_factor = buf->ReadByte();
@@ -902,7 +911,8 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint engine, int numinfo, int prop
 				if (spriteid < 0xFD) spriteid >>= 1;
 
 				svi->image_index = spriteid;
-			} break;
+				break;
+			}
 
 			case 0x09: // Refittable
 				svi->old_refittable = (buf->ReadByte() != 0);
@@ -927,7 +937,8 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint engine, int numinfo, int prop
 					ei->cargo_type = CT_INVALID;
 					grfmsg(2, "ShipVehicleChangeInfo: Invalid cargo type %d, using first refittable", cargo);
 				}
-			} break;
+				break;
+			}
 
 			case PROP_SHIP_CARGO_CAPACITY: // 0x0D Cargo capacity
 				svi->capacity = buf->ReadWord();
@@ -1016,7 +1027,8 @@ static ChangeInfoResult AircraftVehicleChangeInfo(uint engine, int numinfo, int 
 				if (spriteid < 0xFD) spriteid >>= 1;
 
 				avi->image_index = spriteid;
-			} break;
+				break;
+			}
 
 			case 0x09: // Helicopter
 				if (buf->ReadByte() == 0) {
@@ -1138,7 +1150,8 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 				/* Swap classid because we read it in BE meaning WAYP or DFLT */
 				uint32 classid = buf->ReadDWord();
 				(*spec)->sclass = AllocateStationClass(BSWAP32(classid));
-			} break;
+				break;
+			}
 
 			case 0x09: // Define sprite layout
 				statspec->tiles = buf->ReadExtendedByte();
@@ -1200,7 +1213,8 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 				statspec->tiles = srcstatspec->tiles;
 				statspec->renderdata = srcstatspec->renderdata;
 				statspec->copied_renderdata = true;
-			} break;
+				break;
+			}
 
 			case 0x0B: // Callback mask
 				statspec->callback_mask = buf->ReadByte();
@@ -1279,7 +1293,8 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 				statspec->platforms = srcstatspec->platforms;
 				statspec->layouts   = srcstatspec->layouts;
 				statspec->copied_layouts = true;
-			} break;
+				break;
+			}
 
 			case 0x10: // Little/lots cargo threshold
 				statspec->cargo_threshold = buf->ReadWord();
@@ -1423,7 +1438,8 @@ static ChangeInfoResult BridgeChangeInfo(uint brid, int numinfo, int prop, ByteR
 						MapSpriteMappingRecolour(&bridge->sprite_table[tableid][sprite]);
 					}
 				}
-			} break;
+				break;
+			}
 
 			case 0x0E: // Flags; bit 0 - disable far pillars
 				bridge->flags = buf->ReadByte();
@@ -1436,13 +1452,15 @@ static ChangeInfoResult BridgeChangeInfo(uint brid, int numinfo, int prop, ByteR
 			case 0x10: { // purchase string
 				StringID newone = GetGRFStringID(_cur_grffile->grfid, buf->ReadWord());
 				if (newone != STR_UNDEFINED) bridge->material = newone;
-				} break;
+				break;
+			}
 
 			case 0x11: // description of bridge with rails or roads
 			case 0x12: {
 				StringID newone = GetGRFStringID(_cur_grffile->grfid, buf->ReadWord());
 				if (newone != STR_UNDEFINED) bridge->transport_name[prop - 0x11] = newone;
-				} break;
+				break;
+			}
 
 			case 0x13: // 16 bits cost multiplier
 				bridge->price = buf->ReadWord();
@@ -1503,7 +1521,8 @@ static ChangeInfoResult IgnoreTownHouseProperty(int prop, ByteReader *buf)
 			byte count = buf->ReadByte();
 			for (byte j = 0; j < count; j++) buf->ReadByte();
 			ret = CIR_UNHANDLED;
-		} break;
+			break;
+		}
 
 		default:
 			ret = CIR_UNKNOWN;
@@ -1584,7 +1603,8 @@ static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, Byt
 				if (housespec->min_year < 1930) housespec->min_year = 1930;
 
 				_loaded_newgrf_features.has_newhouses = true;
-			} break;
+				break;
+			}
 
 			case 0x09: // Building flags
 				housespec->building_flags = (BuildingFlags)buf->ReadByte();
@@ -1594,7 +1614,8 @@ static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, Byt
 				uint16 years = buf->ReadWord();
 				housespec->min_year = GB(years, 0, 8) > 150 ? MAX_YEAR : ORIGINAL_BASE_YEAR + GB(years, 0, 8);
 				housespec->max_year = GB(years, 8, 8) > 150 ? MAX_YEAR : ORIGINAL_BASE_YEAR + GB(years, 8, 8);
-			} break;
+				break;
+			}
 
 			case 0x0B: // Population
 				housespec->population = buf->ReadByte();
@@ -1622,7 +1643,8 @@ static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, Byt
 
 				housespec->accepts_cargo[2] = cid;
 				housespec->cargo_acceptance[2] = abs(goods); // but we do need positive value here
-			} break;
+				break;
+			}
 
 			case 0x10: // Local authority rating decrease on removal
 				housespec->remove_rating_decrease = buf->ReadWord();
@@ -1655,7 +1677,8 @@ static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, Byt
 				}
 
 				_house_mngr.Add(hid + i, _cur_grffile->grfid, override);
-			} break;
+				break;
+			}
 
 			case 0x16: // Periodic refresh multiplier
 				housespec->processing_time = buf->ReadByte();
@@ -1707,7 +1730,8 @@ static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, Byt
 						housespec->accepts_cargo[j] = cargo;
 					}
 				}
-			} break;
+				break;
+			}
 
 			case 0x1F: // Minimum life span
 				housespec->minimum_life = buf->ReadByte();
@@ -1717,7 +1741,8 @@ static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, Byt
 				byte count = buf->ReadByte();
 				for (byte j = 0; j < count; j++) buf->ReadByte();
 				ret = CIR_UNHANDLED;
-			} break;
+				break;
+			}
 
 			case 0x21: // long introduction year
 				housespec->min_year = buf->ReadWord();
@@ -1751,7 +1776,8 @@ static ChangeInfoResult GlobalVarChangeInfo(uint gvid, int numinfo, int prop, By
 				} else {
 					grfmsg(1, "GlobalVarChangeInfo: Price %d out of range, ignoring", price);
 				}
-			} break;
+				break;
+			}
 
 			case 0x09: // Cargo translation table
 				/* This is loaded during the reservation stage, so just skip it here. */
@@ -1766,7 +1792,8 @@ static ChangeInfoResult GlobalVarChangeInfo(uint gvid, int numinfo, int prop, By
 				if ((newone != STR_UNDEFINED) && (curidx < NUM_CURRENCY)) {
 					_currency_specs[curidx].name = newone;
 				}
-			} break;
+				break;
+			}
 
 			case 0x0B: { // Currency multipliers
 				uint curidx = GetNewgrfCurrencyIdConverted(gvid + i);
@@ -1780,7 +1807,8 @@ static ChangeInfoResult GlobalVarChangeInfo(uint gvid, int numinfo, int prop, By
 				} else {
 					grfmsg(1, "GlobalVarChangeInfo: Currency multipliers %d out of range, ignoring", curidx);
 				}
-			} break;
+				break;
+			}
 
 			case 0x0C: { // Currency options
 				uint curidx = GetNewgrfCurrencyIdConverted(gvid + i);
@@ -1795,7 +1823,8 @@ static ChangeInfoResult GlobalVarChangeInfo(uint gvid, int numinfo, int prop, By
 				} else {
 					grfmsg(1, "GlobalVarChangeInfo: Currency option %d out of range, ignoring", curidx);
 				}
-			} break;
+				break;
+			}
 
 			case 0x0D: { // Currency prefix symbol
 				uint curidx = GetNewgrfCurrencyIdConverted(gvid + i);
@@ -1807,7 +1836,8 @@ static ChangeInfoResult GlobalVarChangeInfo(uint gvid, int numinfo, int prop, By
 				} else {
 					grfmsg(1, "GlobalVarChangeInfo: Currency symbol %d out of range, ignoring", curidx);
 				}
-			} break;
+				break;
+			}
 
 			case 0x0E: { // Currency suffix symbol
 				uint curidx = GetNewgrfCurrencyIdConverted(gvid + i);
@@ -1819,7 +1849,8 @@ static ChangeInfoResult GlobalVarChangeInfo(uint gvid, int numinfo, int prop, By
 				} else {
 					grfmsg(1, "GlobalVarChangeInfo: Currency symbol %d out of range, ignoring", curidx);
 				}
-			} break;
+				break;
+			}
 
 			case 0x0F: { //  Euro introduction dates
 				uint curidx = GetNewgrfCurrencyIdConverted(gvid + i);
@@ -1830,7 +1861,8 @@ static ChangeInfoResult GlobalVarChangeInfo(uint gvid, int numinfo, int prop, By
 				} else {
 					grfmsg(1, "GlobalVarChangeInfo: Euro intro date %d out of range, ignoring", curidx);
 				}
-			} break;
+				break;
+			}
 
 			case 0x10: // Snow line height table
 				if (numinfo > 1 || IsSnowLineSet()) {
@@ -2051,7 +2083,8 @@ static ChangeInfoResult CargoChangeInfo(uint cid, int numinfo, int prop, ByteRea
 						grfmsg(1, "CargoChangeInfo: Unknown town growth substitute value %d, setting to none.", substitute_type);
 					case 0xFF: cs->town_effect = TE_NONE; break;
 				}
-			} break;
+				break;
+			}
 
 			case 0x19: // Town growth coefficient
 				cs->multipliertowngrowth = buf->ReadWord();
@@ -2108,7 +2141,8 @@ static ChangeInfoResult SoundEffectChangeInfo(uint sid, int numinfo, int prop, B
 					/* Literally copy the data of the new sound over the original */
 					*old_sound = *sound;
 				}
-			} break;
+				break;
+			}
 
 			default:
 				ret = CIR_UNKNOWN;
@@ -2200,7 +2234,8 @@ static ChangeInfoResult IndustrytilesChangeInfo(uint indtid, int numinfo, int pr
 					tsp->grf_prop.grffile = _cur_grffile;
 					_industile_mngr.AddEntityID(indtid + i, _cur_grffile->grfid, subs_id); // pre-reserve the tile slot
 				}
-			} break;
+				break;
+			}
 
 			case 0x09: { // Industry tile override
 				byte ovrid = buf->ReadByte();
@@ -2212,7 +2247,8 @@ static ChangeInfoResult IndustrytilesChangeInfo(uint indtid, int numinfo, int pr
 				}
 
 				_industile_mngr.Add(indtid + i, _cur_grffile->grfid, ovrid);
-			} break;
+				break;
+			}
 
 			case 0x0A: // Tile acceptance
 			case 0x0B:
@@ -2220,7 +2256,8 @@ static ChangeInfoResult IndustrytilesChangeInfo(uint indtid, int numinfo, int pr
 				uint16 acctp = buf->ReadWord();
 				tsp->accepts_cargo[prop - 0x0A] = GetCargoTranslation(GB(acctp, 0, 8), _cur_grffile);
 				tsp->acceptance[prop - 0x0A] = GB(acctp, 8, 8);
-			} break;
+				break;
+			}
 
 			case 0x0D: // Land shape flags
 				tsp->slopes_refused = (Slope)buf->ReadByte();
@@ -2311,7 +2348,8 @@ static ChangeInfoResult IgnoreIndustryProperty(int prop, ByteReader *buf)
 					if (gfx == 0xFE) buf->ReadWord();
 				}
 			}
-		} break;
+			break;
+		}
 
 		case 0x11:
 		case 0x16:
@@ -2323,7 +2361,8 @@ static ChangeInfoResult IgnoreIndustryProperty(int prop, ByteReader *buf)
 			for (uint8 j = 0; j < number_of_sounds; j++) {
 				buf->ReadByte();
 			}
-		} break;
+			break;
+		}
 
 		default:
 			ret = CIR_UNKNOWN;
@@ -2408,7 +2447,8 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 					 * rely on callbacks, not on the original placement functions */
 					indsp->check_proc = CHECK_NOTHING;
 				}
-			} break;
+				break;
+			}
 
 			case 0x09: { // Industry type override
 				byte ovrid = buf->ReadByte();
@@ -2420,7 +2460,8 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 				}
 				indsp->grf_prop.override = ovrid;
 				_industry_mngr.Add(indid + i, _cur_grffile->grfid, ovrid);
-			} break;
+				break;
+			}
 
 			case 0x0A: { // Set industry layout(s)
 				indsp->num_table = buf->ReadByte(); // Number of layaouts
@@ -2519,7 +2560,8 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 				indsp->table = tile_table;
 				SetBit(indsp->cleanup_flag, 1);
 				free(itt);
-			} break;
+				break;
+			}
 
 			case 0x0B: // Industry production flags
 				indsp->life_type = (IndustryLifeType)buf->ReadByte();
@@ -2581,7 +2623,8 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 
 				indsp->random_sounds = sounds;
 				SetBit(indsp->cleanup_flag, 0);
-			} break;
+				break;
+			}
 
 			case 0x16: // Conflicting industry types
 				for (byte j = 0; j < 3; j++) indsp->conflicting[j] = buf->ReadByte();
@@ -2614,7 +2657,8 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 					uint32 multiples = buf->ReadDWord();
 					indsp->input_cargo_multiplier[prop - 0x1C][0] = GB(multiples, 0, 16);
 					indsp->input_cargo_multiplier[prop - 0x1C][1] = GB(multiples, 16, 16);
-				} break;
+					break;
+				}
 
 			case 0x1F: // Industry name
 				indsp->name = buf->ReadWord();
@@ -2629,7 +2673,8 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 			case 0x22: { // Callback additional mask
 				byte aflag = buf->ReadByte();
 				SB(indsp->callback_mask, (prop - 0x21) * 8, 8, aflag);
-			} break;
+				break;
+			}
 
 			case 0x23: // removal cost multiplier
 				indsp->removal_cost_multiplier = buf->ReadDWord();
@@ -2729,7 +2774,8 @@ static ChangeInfoResult AirportChangeInfo(uint airport, int numinfo, int prop, B
 					/* Create a copy of the original tiletable so it can be freed later. */
 					DuplicateTileTable(as);
 				}
-			} break;
+				break;
+			}
 
 			case 0x0C:
 				as->min_year = buf->ReadWord();
@@ -2975,7 +3021,8 @@ static ChangeInfoResult AirportTilesChangeInfo(uint airtid, int numinfo, int pro
 					tsp->grf_prop.grffile = _cur_grffile;
 					_airporttile_mngr.AddEntityID(airtid + i, _cur_grffile->grfid, subs_id); // pre-reserve the tile slot
 				}
-			} break;
+				break;
+			}
 
 			case 0x09: { // Airport tile override
 				byte override = buf->ReadByte();
@@ -2987,7 +3034,8 @@ static ChangeInfoResult AirportTilesChangeInfo(uint airtid, int numinfo, int pro
 				}
 
 				_airporttile_mngr.Add(airtid + i, _cur_grffile->grfid, override);
-			} break;
+				break;
+			}
 
 			case 0x0E: // Callback flags
 				tsp->callback_flags = buf->ReadByte();

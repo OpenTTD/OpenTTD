@@ -699,7 +699,8 @@ bool AfterLoadGame()
 						return false;
 					}
 					SB(_m[t].m6, 3, 3, st);
-				} break;
+					break;
+				}
 			}
 		}
 	}

@@ -808,13 +808,15 @@ SQInteger AIAbstractList::Valuate(HSQUIRRELVM vm)
 		switch (sq_gettype(vm, -1)) {
 			case OT_INTEGER: {
 				sq_getinteger(vm, -1, &value);
-			} break;
+				break;
+			}
 
 			case OT_BOOL: {
 				SQBool v;
 				sq_getbool(vm, -1, &v);
 				value = v ? 1 : 0;
-			} break;
+				break;
+			}
 
 			default: {
 				/* See below for explanation. The extra pop is the return value. */

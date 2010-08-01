@@ -254,7 +254,8 @@ public:
 					this->BuildBridge(i);
 					delete this;
 				}
-			} break;
+				break;
+			}
 
 			case BBSW_DROPDOWN_ORDER:
 				this->bridges->ToggleSortOrder();

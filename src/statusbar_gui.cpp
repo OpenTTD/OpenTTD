@@ -123,7 +123,8 @@ struct StatusBarWindow : Window {
 				FOR_ALL_COMPANIES(c) max_money = max<int64>(c->money, max_money);
 				SetDParam(0, 100LL * max_money);
 				d = GetStringBoundingBox(STR_COMPANY_MONEY);
-			} break;
+				break;
+			}
 
 			default:
 				return;
@@ -150,7 +151,8 @@ struct StatusBarWindow : Window {
 					SetDParam(0, c->money);
 					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, STR_COMPANY_MONEY, TC_FROMSTRING, SA_HOR_CENTER);
 				}
-			} break;
+				break;
+			}
 
 			case SBW_MIDDLE:
 				/* Draw status bar */

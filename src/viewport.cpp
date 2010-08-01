@@ -2242,7 +2242,8 @@ static int CalcHeightdiff(HighLightStyle style, uint distance, TileIndex start_t
 			h1 = TileHeight(TILE_ADD(end_tile, ToTileIndexDiff(heightdiff_line_by_dir[12 + style_t])));
 			ht = TileHeight(TILE_ADD(end_tile, ToTileIndexDiff(heightdiff_line_by_dir[12 + style_t + 1])));
 			h1 = max(h1, ht);
-		} break;
+			break;
+		}
 	}
 
 	if (swap) Swap(h0, h1);
@@ -2582,7 +2583,8 @@ calc_heightdiff_single_direction:;
 				}
 
 				ShowMeasurementTooltips(measure_strings_length[index], index, params);
-			} break;
+				break;
+			}
 
 		case VPM_X_AND_Y_LIMITED: // Drag an X by Y constrained rect area.
 			limit = (_thd.sizelimit - 1) * TILE_SIZE;

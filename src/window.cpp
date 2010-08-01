@@ -2724,7 +2724,8 @@ void RelocateAllWindows(int neww, int newh)
 				} else {
 					if (top < 0) top = 0;
 				}
-			} break;
+				break;
+			}
 		}
 
 		if (w->viewport != NULL) {

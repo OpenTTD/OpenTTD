@@ -186,20 +186,23 @@ static CommandCost RemoveRoad(TileIndex tile, DoCommandFlag flags, RoadBits piec
 		case MP_ROAD: {
 			CommandCost ret = EnsureNoVehicleOnGround(tile);
 			if (ret.Failed()) return ret;
-		} break;
+			break;
+		}
 
 		case MP_STATION: {
 			if (!IsDriveThroughStopTile(tile)) return CMD_ERROR;
 
 			CommandCost ret = EnsureNoVehicleOnGround(tile);
 			if (ret.Failed()) return ret;
-		} break;
+			break;
+		}
 
 		case MP_TUNNELBRIDGE: {
 			if (GetTunnelBridgeTransportType(tile) != TRANSPORT_ROAD) return CMD_ERROR;
 			CommandCost ret = TunnelBridgeIsFree(tile, GetOtherTunnelBridgeEnd(tile));
 			if (ret.Failed()) return ret;
-		} break;
+			break;
+		}
 
 		default:
 			return CMD_ERROR;
@@ -520,7 +523,8 @@ CommandCost CmdBuildRoad(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 						}
 						return_cmd_error(STR_ERROR_ALREADY_BUILT);
 					}
-				} break;
+					break;
+				}
 
 				case ROAD_TILE_CROSSING:
 					other_bits = GetCrossingRoadBits(tile);
@@ -594,7 +598,8 @@ CommandCost CmdBuildRoad(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 			pieces = curbits; // we need to pay for both roadbits
 
 			if (HasTileRoadType(tile, rt)) return_cmd_error(STR_ERROR_ALREADY_BUILT);
-		} break;
+			break;
+		}
 
 		case MP_TUNNELBRIDGE: {
 			if (GetTunnelBridgeTransportType(tile) != TRANSPORT_ROAD) goto do_clear;
@@ -603,7 +608,8 @@ CommandCost CmdBuildRoad(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 			/* Don't allow adding roadtype to the bridge/tunnel when vehicles are already driving on it */
 			CommandCost ret = TunnelBridgeIsFree(tile, GetOtherTunnelBridgeEnd(tile));
 			if (ret.Failed()) return ret;
-		} break;
+			break;
+		}
 
 		default: {
 do_clear:;
@@ -611,7 +617,8 @@ do_clear:;
 			if (ret.Failed()) return ret;
 			cost.AddCost(ret);
 			tile_cleared = true;
-		} break;
+			break;
+		}
 	}
 
 	if (other_bits != pieces) {
@@ -672,7 +679,8 @@ do_clear:;
 					if (rt == ROADTYPE_ROAD) SetTownIndex(tile, p2);
 				}
 				if (rtt != ROAD_TILE_CROSSING) SetRoadBits(tile, existing | pieces, rt);
-			} break;
+				break;
+			}
 
 			case MP_TUNNELBRIDGE: {
 				TileIndex other_end = GetOtherTunnelBridgeEnd(tile);
@@ -690,7 +698,8 @@ do_clear:;
 
 					for (TileIndex t = tile + delta; t != other_end; t += delta) MarkTileDirtyByTile(t);
 				}
-			} break;
+				break;
+			}
 
 			case MP_STATION:
 				assert(IsDriveThroughStopTile(tile));
@@ -1601,7 +1610,8 @@ static VehicleEnterTileStatus VehicleEnter_Road(Vehicle *v, TileIndex tile, int 
 				InvalidateWindowData(WC_VEHICLE_DEPOT, rv->tile);
 				return VETSB_ENTERED_WORMHOLE;
 			}
-		} break;
+			break;
+		}
 
 		default: break;
 	}

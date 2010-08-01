@@ -395,7 +395,8 @@ static void Write_ValidateSetting(void *ptr, const SettingDesc *sd, int32 val)
 			case SLE_VAR_I32: {
 				/* Override the minimum value. No value below sdb->min, except special value 0 */
 				if (!(sdb->flags & SGF_0ISDISABLED) || val != 0) val = Clamp(val, sdb->min, sdb->max);
-			} break;
+				break;
+			}
 			case SLE_VAR_U32: {
 				/* Override the minimum value. No value below sdb->min, except special value 0 */
 				uint min = ((sdb->flags & SGF_0ISDISABLED) && (uint)val <= (uint)sdb->min) ? 0 : sdb->min;
@@ -585,7 +586,8 @@ static void IniSaveSettings(IniFile *ini, const SettingDesc *sd, const char *grp
 			case SDT_MANYOFMANY: MakeManyOfMany(buf, lastof(buf), sdb->many, i); break;
 			default: NOT_REACHED();
 			}
-		} break;
+			break;
+		}
 
 		case SDT_STRING:
 			switch (GetVarMemType(sld->conv)) {

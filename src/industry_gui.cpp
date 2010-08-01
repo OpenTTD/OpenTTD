@@ -329,7 +329,8 @@ public:
 				/* Set it to something more sane :) */
 				size->height = height * FONT_HEIGHT_NORMAL + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
 				size->width  = d.width + WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
-			} break;
+				break;
+			}
 
 			case DPIW_FUND_WIDGET: {
 				Dimension d = GetStringBoundingBox(STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY);
@@ -445,7 +446,8 @@ public:
 						}
 					}
 				}
-			} break;
+				break;
+			}
 		}
 	}
 
@@ -478,7 +480,8 @@ public:
 					this->SetWidgetsDisabledState(!this->enabled[this->selected_index], DPIW_DISPLAY_WIDGET, DPIW_FUND_WIDGET, WIDGET_LIST_END);
 					if (this->enabled[this->selected_index] && click_count > 1) this->OnClick(pt, DPIW_FUND_WIDGET, 1);
 				}
-			} break;
+				break;
+			}
 
 			case DPIW_DISPLAY_WIDGET:
 				if (this->selected_type != INVALID_INDUSTRYTYPE) ShowIndustryCargoesWindow(this->selected_type);
@@ -502,7 +505,8 @@ public:
 				} else {
 					HandlePlacePushButton(this, DPIW_FUND_WIDGET, SPR_CURSOR_INDUSTRY, HT_RECT, NULL);
 				}
-			} break;
+				break;
+			}
 		}
 	}
 
@@ -803,7 +807,8 @@ public:
 						ShowQueryString(STR_JUST_INT, STR_CONFIG_GAME_PRODUCTION, 10, 100, this, CS_ALPHANUMERAL, QSF_NONE);
 					}
 				}
-			} break;
+				break;
+			}
 
 			case IVW_GOTO: {
 				Industry *i = Industry::Get(this->window_number);
@@ -1138,7 +1143,8 @@ public:
 					y += this->resize.step_height;
 					if (++n == this->vscroll.GetCapacity()) break; // max number of industries in 1 window
 				}
-			} break;
+				break;
+			}
 		}
 	}
 
@@ -1200,7 +1206,8 @@ public:
 						ScrollMainWindowToTile(this->industries[p]->location.tile);
 					}
 				}
-			} break;
+				break;
+			}
 		}
 	}
 

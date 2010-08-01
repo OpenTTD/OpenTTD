@@ -288,7 +288,8 @@ public:
 				d.width += padding.width;
 				d.height += padding.height;
 				*size = maxdim(*size, d);
-			} break;
+				break;
+			}
 		}
 	}
 
@@ -433,13 +434,15 @@ public:
 				EngineID veh_to = this->sel_engine[1];
 				DoCommandP(0, this->sel_group << 16, veh_from + (veh_to << 16), CMD_SET_AUTOREPLACE);
 				this->SetDirty();
-			} break;
+				break;
+			}
 
 			case RVW_WIDGET_STOP_REPLACE: { // Stop replacing
 				EngineID veh_from = this->sel_engine[0];
 				DoCommandP(0, this->sel_group << 16, veh_from + (INVALID_ENGINE << 16), CMD_SET_AUTOREPLACE);
 				this->SetDirty();
-			} break;
+				break;
+			}
 
 			case RVW_WIDGET_LEFT_MATRIX:
 			case RVW_WIDGET_RIGHT_MATRIX: {

@@ -507,7 +507,8 @@ int ttd_main(int argc, char *argv[])
 				CreateConsole();
 #endif
 				if (mgo.opt != NULL) SetDebugString(mgo.opt);
-			} break;
+				break;
+			}
 		case 'e': _switch_mode = SM_EDITOR; break;
 		case 'i':
 			/* there is an argument, it is not empty, and it is exactly 1 char long */

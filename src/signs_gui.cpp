@@ -170,7 +170,8 @@ struct SignListWindow : Window, SignList {
 				resize->height = max<uint>(FONT_HEIGHT_NORMAL, GetSpriteSize(SPR_COMPANY_ICON).height);
 				Dimension d = {this->text_offset + MAX_LENGTH_SIGN_NAME_PIXELS + WD_FRAMETEXT_RIGHT, WD_FRAMERECT_TOP + 5 * resize->height + WD_FRAMERECT_BOTTOM};
 				*size = maxdim(*size, d);
-			} break;
+				break;
+			}
 
 			case SLW_CAPTION:
 				SetDParam(0, max<size_t>(1000, Sign::GetPoolSize()));

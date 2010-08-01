@@ -396,7 +396,8 @@ static inline const Vehicle *GRV(const ResolverObject *object)
 						}
 					}
 					if (v == NULL) v = self;
-				} break;
+					break;
+				}
 			}
 			uint32 count = GB(object->count, 0, 4);
 			if (count == 0) count = GetRegister(0x100);
@@ -793,7 +794,8 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 				case 0x7D: return GB(t->First()->index, 8, 8);
 				case 0x7F: return 0; // Used for vehicle reversing hack in TTDP
 			}
-		} break;
+			break;
+		}
 
 		case VEH_ROAD: {
 			RoadVehicle *rv = RoadVehicle::From(v);
@@ -806,7 +808,8 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 				case 0x68: return rv->crashed_ctr;
 				case 0x69: return GB(rv->crashed_ctr, 8, 8);
 			}
-		} break;
+			break;
+		}
 
 		case VEH_AIRCRAFT: {
 			Aircraft *a = Aircraft::From(v);
@@ -815,7 +818,8 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 				case 0x63: return a->targetairport;             // Airport to which the action refers
 				case 0x66: return MapAircraftMovementAction(a); // Current movement action
 			}
-		} break;
+			break;
+		}
 
 		default: break;
 	}

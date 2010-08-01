@@ -540,7 +540,8 @@ public:
 					this->DrawServerLine(ngl, y, ngl == this->server);
 					y += this->resize.step_height;
 				}
-			} break;
+				break;
+			}
 
 			case NGWW_LASTJOINED:
 				/* Draw the last joined server, if any */
@@ -696,7 +697,8 @@ public:
 
 				/* FIXME the disabling should go into some InvalidateData, which is called instead of the SetDirty */
 				if (click_count > 1 && !this->IsWidgetDisabled(NGWW_JOIN)) this->OnClick(pt, NGWW_JOIN, 1);
-			} break;
+				break;
+			}
 
 			case NGWW_LASTJOINED: {
 				NetworkGameList *last_joined = NetworkGameListAddItem(NetworkAddress(_settings_client.network.last_host, _settings_client.network.last_port));
@@ -716,7 +718,8 @@ public:
 					/* FIXME the disabling should go into some InvalidateData, which is called instead of the SetDirty */
 					if (click_count > 1 && !this->IsWidgetDisabled(NGWW_JOIN)) this->OnClick(pt, NGWW_JOIN, 1);
 				}
-			} break;
+				break;
+			}
 
 			case NGWW_FIND: // Find server automatically
 				switch (_settings_client.network.lan_internet) {
@@ -1171,7 +1174,8 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 
 				this->map = (y == 0) ? NULL : _fios_items.Get(y - 1);
 				this->SetDirty();
-			} break;
+				break;
+			}
 
 			case NSSW_CONNTYPE_BTN: // Connection type
 				ShowDropDownMenu(this, _connection_types_dropdown, _settings_client.network.server_advertise, NSSW_CONNTYPE_BTN, 0, 0); // do it for widget NSSW_CONNTYPE_BTN
@@ -1227,7 +1231,8 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 					}
 				}
 				ShowDropDownMenu(this, _language_dropdown, sel, NSSW_LANGUAGE_BTN, 0, 0);
-			} break;
+				break;
+			}
 
 			case NSSW_START: // Start game
 				_is_network_server = true;
@@ -1631,7 +1636,8 @@ struct NetworkLobbyWindow : public Window {
 
 				/* FIXME the disabling should go into some InvalidateData, which is called instead of the SetDirty */
 				if (click_count > 1 && !this->IsWidgetDisabled(NLWW_JOIN)) this->OnClick(pt, NLWW_JOIN, 1);
-			} break;
+				break;
+			}
 
 			case NLWW_JOIN:     // Join company
 				/* Button can be clicked only when it is enabled */

@@ -298,7 +298,8 @@ struct TimetableWindow : Window {
 				this->sel_index = 2 * selected_order - (int)travel;
 				/* travel time of first order needs special handling */
 				if (this->sel_index == -1) this->sel_index = this->vehicle->GetNumOrders() * 2 - 1;
-			} break;
+				break;
+			}
 		}
 	}
 
@@ -454,7 +455,8 @@ struct TimetableWindow : Window {
 					}
 					y += FONT_HEIGHT_NORMAL;
 				}
-			} break;
+				break;
+			}
 
 			case TTV_SUMMARY_PANEL: {
 				int y = r.top + WD_FRAMERECT_TOP;
@@ -511,7 +513,8 @@ struct TimetableWindow : Window {
 
 				this->DeleteChildWindows();
 				this->sel_index = (selected == INVALID_ORDER || selected == this->sel_index) ? -1 : selected;
-			} break;
+				break;
+			}
 
 			case TTV_START_DATE: // Change the date that the timetable starts.
 				ShowSetDateWindow(this, v->index, _date, _cur_year, _cur_year + 15, ChangeTimetableStartCallback);
@@ -537,12 +540,14 @@ struct TimetableWindow : Window {
 				}
 
 				ShowQueryString(current, STR_TIMETABLE_CHANGE_TIME, 31, 150, this, CS_NUMERAL, QSF_NONE);
-			} break;
+				break;
+			}
 
 			case TTV_CLEAR_TIME: { // Clear waiting time button.
 				uint32 p1 = PackTimetableArgs(v, this->sel_index);
 				DoCommandP(0, p1, 0, CMD_CHANGE_TIMETABLE | CMD_MSG(STR_ERROR_CAN_T_TIMETABLE_VEHICLE));
-			} break;
+				break;
+			}
 
 			case TTV_RESET_LATENESS: // Reset the vehicle's late counter.
 				DoCommandP(0, v->index, 0, CMD_SET_VEHICLE_ON_TIME | CMD_MSG(STR_ERROR_CAN_T_TIMETABLE_VEHICLE));
@@ -553,7 +558,8 @@ struct TimetableWindow : Window {
 				if (!HasBit(v->vehicle_flags, VF_AUTOFILL_TIMETABLE)) SetBit(p2, 0);
 				if (_ctrl_pressed) SetBit(p2, 1);
 				DoCommandP(0, v->index, p2, CMD_AUTOFILL_TIMETABLE | CMD_MSG(STR_ERROR_CAN_T_TIMETABLE_VEHICLE));
-			} break;
+				break;
+			}
 
 			case TTV_EXPECTED:
 				this->show_expected = !this->show_expected;

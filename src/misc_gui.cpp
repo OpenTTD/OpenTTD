@@ -1363,7 +1363,8 @@ struct QueryStringWindow : public QueryStringBaseWindow
 			case HEBR_EDITING: {
 				Window *osk = FindWindowById(WC_OSK, 0);
 				if (osk != NULL && osk->parent == this) osk->InvalidateData();
-			} break;
+				break;
+			}
 			case HEBR_CONFIRM: this->OnOk();
 			/* FALL THROUGH */
 			case HEBR_CANCEL: delete this; break; // close window, abandon changes
@@ -1515,7 +1516,8 @@ struct QueryWindow : public Window {
 					proc(parent, true);
 					proc = NULL;
 				}
-			} break;
+				break;
+			}
 			case QUERY_WIDGET_NO:
 				delete this;
 				break;

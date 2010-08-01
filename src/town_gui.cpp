@@ -806,7 +806,8 @@ public:
 					y += this->resize.step_height;
 					if (++n == this->vscroll.GetCapacity()) break; // max number of towns in 1 window
 				}
-			} break;
+				break;
+			}
 		}
 	}
 

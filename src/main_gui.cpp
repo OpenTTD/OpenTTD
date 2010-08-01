@@ -74,7 +74,8 @@ void HandleOnEditText(const char *str)
 
 		/* Give 'id' the money, and substract it from ourself */
 		DoCommandP(0, money_c, _rename_id, CMD_GIVE_MONEY | CMD_MSG(STR_ERROR_INSUFFICIENT_FUNDS), CcGiveMoney, str);
-	} break;
+		break;
+	}
 #endif /* ENABLE_NETWORK */
 		default: NOT_REACHED();
 	}

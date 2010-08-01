@@ -901,7 +901,8 @@ void GenerateLandscape(byte mode)
 				for (uint i = ScaleByMapSize(GB(r, 9, 7) + 450); i != 0; --i) {
 					GenerateTerrain(4, flag);
 				}
-			} break;
+				break;
+			}
 
 			case LT_TROPIC: {
 				uint32 r = Random();
@@ -920,7 +921,8 @@ void GenerateLandscape(byte mode)
 				for (uint i = ScaleByMapSize(GB(r, 17, 7) + 410); i != 0; --i) {
 					GenerateTerrain(3, flag);
 				}
-			} break;
+				break;
+			}
 
 			default: {
 				uint32 r = Random();
@@ -929,7 +931,8 @@ void GenerateLandscape(byte mode)
 				for (; i != 0; --i) {
 					GenerateTerrain(_settings_game.difficulty.terrain_type, 0);
 				}
-			} break;
+				break;
+			}
 		}
 	}
 

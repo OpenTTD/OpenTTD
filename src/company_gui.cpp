@@ -645,7 +645,8 @@ public:
 				for (const StringID *id = _colour_dropdown; id != endof(_colour_dropdown); id++) {
 					size->width = max(size->width, GetStringBoundingBox(*id).width + 34);
 				}
-			} break;
+				break;
+			}
 		}
 	}
 
@@ -1814,7 +1815,8 @@ struct CompanyWindow : Window
 
 					size->width = max(size->width, GetStringBoundingBox(STR_COMPANY_VIEW_SHARES_OWNED_BY).width);
 				}
-			} break;
+				break;
+			}
 
 #ifdef ENABLE_NETWORK
 			case CW_WIDGET_HAS_PASSWORD:
@@ -1868,7 +1870,8 @@ struct CompanyWindow : Window
 						}
 					}
 				}
-			} break;
+				break;
+			}
 
 			case CW_WIDGET_DESC_OWNERS: {
 				const Company *c2;
@@ -1884,7 +1887,8 @@ struct CompanyWindow : Window
 						y += FONT_HEIGHT_NORMAL;
 					}
 				}
-			} break;
+				break;
+			}
 
 #ifdef ENABLE_NETWORK
 			case CW_WIDGET_HAS_PASSWORD:
@@ -2102,14 +2106,16 @@ struct BuyCompanyWindow : Window {
 			case BCW_FACE: {
 				const Company *c = Company::Get((CompanyID)this->window_number);
 				DrawCompanyManagerFace(c->face, c->colour, r.left, r.top);
-			} break;
+				break;
+			}
 
 			case BCW_QUESTION: {
 				const Company *c = Company::Get((CompanyID)this->window_number);
 				SetDParam(0, c->index);
 				SetDParam(1, c->bankrupt_value);
 				DrawStringMultiLine(r.left, r.right, r.top, r.bottom, STR_BUY_COMPANY_MESSAGE, TC_FROMSTRING, SA_CENTER);
-			} break;
+				break;
+			}
 		}
 	}
 

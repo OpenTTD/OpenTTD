@@ -66,7 +66,8 @@ RoadBits CleanUpRoadBits(const TileIndex tile, RoadBits org_rb)
 					connective = (neighbor_rb & mirrored_rb) || // Neighbor has got the fitting RoadBit
 							HasExactlyOneBit(neighbor_rb); // Neighbor has got only one Roadbit
 
-				} break;
+					break;
+				}
 
 				case MP_RAILWAY:
 					connective = IsPossibleCrossing(neighbor_tile, DiagDirToAxis(dir));

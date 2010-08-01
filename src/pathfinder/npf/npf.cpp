@@ -363,7 +363,8 @@ static int32 NPFRoadPathCost(AyStar *as, AyStarNode *current, OpenListNode *pare
 				/* Increase cost for filled road stops */
 				cost += _settings_game.pf.npf.npf_road_bay_occupied_penalty * (!rs->IsFreeBay(0) + !rs->IsFreeBay(1)) / 2;
 			}
-		} break;
+			break;
+		}
 
 		default:
 			break;

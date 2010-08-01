@@ -340,7 +340,8 @@ void AddArticulatedParts(Vehicle *first)
 				}
 
 				t->SetArticulatedPart();
-			} break;
+				break;
+			}
 
 			case VEH_ROAD: {
 				RoadVehicle *front = RoadVehicle::From(first);
@@ -366,7 +367,8 @@ void AddArticulatedParts(Vehicle *first)
 				}
 
 				rv->SetArticulatedPart();
-			} break;
+				break;
+			}
 		}
 
 		/* get common values from first engine */
