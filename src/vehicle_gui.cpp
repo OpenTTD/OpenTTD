@@ -2066,8 +2066,8 @@ public:
 				if (v->type != VEH_TRAIN) {
 					size->height = 0;
 					size->width = 0;
-					break;
 				}
+				break;
 
 			case VVW_WIDGET_VIEWPORT:
 				size->width = VV_INITIAL_VIEWPORT_WIDTH;
