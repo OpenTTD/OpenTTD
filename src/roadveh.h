@@ -262,7 +262,8 @@ protected: // These functions should not be called outside acceleration code.
 	 */
 	FORCEINLINE uint16 GetInitialMaxSpeed() const
 	{
-		return this->max_speed;
+		/* Road vehicles use a *2 conversion factor. */
+		return this->max_speed / 2;
 	}
 
 	/**
