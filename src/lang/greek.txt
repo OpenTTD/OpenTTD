@@ -1240,6 +1240,8 @@ STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Αυτ�
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Αυτόματη Ανανέωση όταν ένα όχημα είναι {ORANGE}{STRING}{LTBLUE} μήνες πρίν/μετά την μέγιστη ηληκία
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Αυτόματη Ανανέωση με τα ελάχιστα απαιτούμενα χρήματα: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Διάρκεια μηνύματος σφάλματος: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Καθυστέρηση για αναδυόμενα γεγονότα: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Καθυστέρηση για αναδυόμενα γεγονότα: {ORANGE}απενεργοποιημένο
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Εμφάνιση πληθυσμού πόλης στο όνομα της πόλης: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Γεννήτρια Γης: {ORANGE}{STRING}
@@ -1369,6 +1371,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :Πλέγμα 2x
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :Πλέγμα 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :τυχαίο
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Οι πόλεις επιτρέπεται να χτίσουν δρόμους: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}Οι πόλεις επιτρέπουν το χτίσιμο ισοπέδων διασταυρώσεων: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Επιτρεπεται η πόλη να ελέγχει το επίπεδο θορύβου των αεροδρομίων: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Ιδρύση πολέων στο παιχνίδι: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :δεν επιτρέπεται
@@ -2208,6 +2211,17 @@ STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Προβ
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Κατασκευή
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Χρηματοδότηση
 
+# Industry cargoes window
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Αλυσίδα βιομηχανιών για τη βιομηχανία {STRING}
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Αλυσίδα βιομηχανιών για το εμπόρευμα {STRING}
+STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Βιομηχανίες που παράγουν
+STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Βιομηχανίες που δέχονται
+STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Σπιτιά
+STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Κάντε κλικ στη βιομηχανία για να δείτε τους προμηθεύτες και τους πελάτες της
+STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Κάντε κλικ στο εμπόρευμα για να δείτε τους προμηθεύτες και τους πελάτες
+STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Εμφάνιση αλυσίδας
+STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Εμφάνιση βιομηχανιών προμήθειας και αποδοχής εμπορευμάτων
+
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Πληροφορίες Περιοχής Εδάφους
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Κόστος καθαρισμού: {LTBLUE}Μ/Δ
@@ -2454,6 +2468,7 @@ STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Έλεγ
 
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Όνομα αρχείου: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Έκδοση: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Παλέτα: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Παράμετροι: {SILVER}{STRING}
@@ -2463,6 +2478,11 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Δεν β�
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Απενεργοποιημένο
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Εισαγώγη παραμέτρων NewGRF
+
+# NewGRF parameters window
+STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Αλλαγή παραμέτρων NewGRF
+STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Κλείσιμο
+STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Παράμετρος {NUM}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Επιθεώρηση - {STRING}
@@ -3535,6 +3555,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... δε
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Η πόλη δεν θα οικοδομεί δρόμους. Μπορείτε να ενεργοποιήσετε την κατασκευή οδών μέσω των Προχωρημένων Επιλογών->Οικονομία->Πόλεις.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Έργα οδοποιϊας σε εξέλιξη
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Δεν γίνεται να διαγραφεί η πόλη...{}Ένας σταθμός ή ένα αμαξοστάσιο αναφέρεται στην πόλη ή ένα κομμάτι της πόλης δεν μπορεί να αφαιρεθεί
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... δεν υπάρχει κατάλληλο μέρος για άγαλμα στο κέντρο αυτής της πόλης
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... πάρα πολλές βιομηχανίες
@@ -3644,6 +3665,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Πρέπ
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Μη συμβατή σιδηροτροχιά
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Πρέπει να αφαιρεθεί ο σιδηρόδρομος πρώτα
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Η δρόμος είναι μονόδρομος ή μπλοκαρισμένος
+STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Δεν επιτρέπεται ισόπεδες διασταυρώσεις για αυτόν το τύπο σιδηροτροχιάς
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Δεν μπορούν να χτιστούν σηματοδότες εδώ...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Δεν μπορεί να χτιστεί σιδηρόδρομος εδώ...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Δεν μπορεί να αφαιρεθεί σιδηρόδρομος από εδώ...

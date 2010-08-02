@@ -2116,6 +2116,17 @@ STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Prospekt
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Bygga
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Grunda
 
+# Industry cargoes window
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Industrikedja för {STRING} industrin
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Industrikedja för {STRING} godset
+STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Producerande industrier
+STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Accepterande industrier
+STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Hus
+STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Klicka på industrin för att se dess leverantörer och kunder
+STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Klicka på godset för att se dess leverantörer och kunder
+STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Visa kedja
+STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Visa industrier som levererar och accepterar gods
+
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Markområdesinformation
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Kostnad att röja: {LTBLUE}N/A
@@ -2362,6 +2373,7 @@ STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Kontroll
 
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Filnamn: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Version: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Palett: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Paramerar: {SILVER}{STRING}
@@ -2371,6 +2383,11 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Matchande 
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Avstängd
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Skriv NewGRF parameterar
+
+# NewGRF parameters window
+STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Ändra NewGRF parametrar
+STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Stäng
+STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameter {NUM}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspektera - {STRING}
@@ -3437,6 +3454,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... det 
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Staden kommer inte bygga vägar. Du kan tillåta att staden bygger vägar via Avancerade Inställningar -> Ekonomi -> Städer.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Vägarbete pågår
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kan inte ta bort den här staden...{}En station eller depå refererar till staden eller så kan inte en stadsägd ruta tas bort.
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... det finns ingen lämplig plats för en staty i stadens centrum
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... för många industrier

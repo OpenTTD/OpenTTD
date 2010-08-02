@@ -2117,6 +2117,17 @@ STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Prosperi
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Construir
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Fundar
 
+# Industry cargoes window
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Cadeia de indústrias para a indústria: {STRING}
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Cadeia de indústrias para a carga: {STRING}
+STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Indústrias produtoras
+STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Indústrias aceptoras
+STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Casas
+STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Clique na indústria para ver seus fornecedores e clientes
+STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Clique na carga para ver seus fornecedores e clientes
+STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Exibir cadeia
+STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Exibe indústrias que suprem e aceitam carga
+
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Informações do Terreno
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Custo para limpar: {LTBLUE}N/D
@@ -2363,6 +2374,7 @@ STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Checa se
 
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Nome do arquivo: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Versão: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}SomaMD5 (verf. de segurança): {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Paleta: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parâmetros: {SILVER}{STRING}
@@ -2372,6 +2384,11 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Arquivo co
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Desativado
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Insira novos parâmetros de NewGRF
+
+# NewGRF parameters window
+STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Alterar parâmetros NewGRF
+STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Fechar
+STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parãmetro {NUM}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspecionar - {STRING}
@@ -3438,6 +3455,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... não
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}A cidade não irá construir estradas. Você pode ativar essa opção através de Config. Avançadas>Economia>Cidades.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Recapeamento rodoviário em progresso
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Impossível remover cidade... {}Uma estação ou depósito referente à essa cidade não pode ser removido
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... não há local para uma estátua no centro dessa cidade
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... existem indústrias demais
@@ -3487,7 +3505,7 @@ STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Impossí
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Impossível remover estação de bonde...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Impossível remover estação de bonde...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Remova o ponto antes
-STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}...não há estações aqui
+STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}...não há estação aqui
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Remova a estação antes
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Remova o ponto de ônubis antes

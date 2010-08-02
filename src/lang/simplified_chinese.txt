@@ -2116,6 +2116,8 @@ STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}勘探
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}建设
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}建设
 
+# Industry cargoes window
+
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}地块信息
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}清除费用：{LTBLUE}N/A 不能清除
@@ -2362,6 +2364,7 @@ STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}看看�
 
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}文件名：{SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID：{SILVER}{STRING}
+STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}版本: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5 码：{SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}调色板: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}参数：{SILVER}{STRING}
@@ -2371,6 +2374,11 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}没有找�
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}禁用
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}输入 NewGRF 参数
+
+# NewGRF parameters window
+STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}调整 NewGRF 参数
+STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}关闭
+STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :参数 {NUM}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}检查 - {STRING}
@@ -3437,6 +3445,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}地图�
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}这个城镇不能建造道路{}你可以在"高级设置->经济->城镇"处{}设置允许城镇建设道路
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}正在进行道路工程
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}无法删除城镇...{}城镇范围内还有车站、车库或无法移除的区块
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... 城镇中心没有合适的地方放置公司雕像
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}…… 游戏中的工业过多

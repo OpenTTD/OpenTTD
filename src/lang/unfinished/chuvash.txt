@@ -655,9 +655,26 @@ STR_ABANDON_GAME_CAPTION                                        :{WHITE}Вӑйй
 
 STR_LIVERY_DMU                                                  :DMU
 STR_LIVERY_EMU                                                  :EMU
+STR_LIVERY_BUS                                                  :Автобус
+STR_LIVERY_TRUCK                                                :Ҫӑк машинаи
+STR_LIVERY_PASSENGER_SHIP                                       :Пассажирсем карап
+STR_LIVERY_FREIGHT_SHIP                                         :Ҫӑк карап
+STR_LIVERY_HELICOPTER                                           :Вертолёт
+STR_LIVERY_SMALL_PLANE                                          :Шӑрчӑк(Пӗчӗк самолёт)
+STR_LIVERY_LARGE_PLANE                                          :Сывлӑш карап(Пысӑк самолёт)
+STR_LIVERY_PASSENGER_TRAM                                       :Пасажир трамвай
+STR_LIVERY_FREIGHT_TRAM                                         :Ҫӑк трамвай
 
 # Face selection window
+STR_FACE_CAPTION                                                :{WHITE}Кап
 
+STR_FACE_MALE_BUTTON                                            :{BLACK}Арҫын
+STR_FACE_FEMALE_BUTTON                                          :{BLACK}Хӗрарӑм
+STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Ҫӗнӗ Ят
+STR_FACE_ADVANCED                                               :{BLACK}Хушма
+STR_FACE_SIMPLE                                                 :{BLACK}Ансат
+STR_FACE_LOAD                                                   :{BLACK}Тие
+STR_FACE_SAVE                                                   :{BLACK}Упра
 
 # Network server list
 
@@ -819,6 +836,8 @@ STR_LIVERY_EMU                                                  :EMU
 
 
 
+
+# NewGRF parameters window
 
 # NewGRF inspect window
 

@@ -366,7 +366,7 @@ STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Смуг
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Зруйнувати будинки, дороги і т.п.
 
 # Query window
-STR_BUTTON_DEFAULT                                              :{BLACK}За замовч.
+STR_BUTTON_DEFAULT                                              :{BLACK}За промовчанням
 STR_BUTTON_CANCEL                                               :{BLACK}Відміна
 STR_BUTTON_OK                                                   :{BLACK}Так
 
@@ -1156,11 +1156,11 @@ STR_VARIETY_MEDIUM                                              :Середня
 STR_VARIETY_HIGH                                                :Велика
 STR_VARIETY_VERY_HIGH                                           :Дуже велика
 
-STR_AI_SPEED_VERY_SLOW                                          :Дуже повільно
-STR_AI_SPEED_SLOW                                               :Повільно
-STR_AI_SPEED_MEDIUM                                             :середньо
-STR_AI_SPEED_FAST                                               :швидко
-STR_AI_SPEED_VERY_FAST                                          :дуже швидко
+STR_AI_SPEED_VERY_SLOW                                          :дуже повільна
+STR_AI_SPEED_SLOW                                               :повільна
+STR_AI_SPEED_MEDIUM                                             :середня
+STR_AI_SPEED_FAST                                               :швидка
+STR_AI_SPEED_VERY_FAST                                          :дуже швидка
 
 STR_SEA_LEVEL_VERY_LOW                                          :дуже мало
 STR_SEA_LEVEL_LOW                                               :мало
@@ -1342,7 +1342,7 @@ STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Доз�
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Показувати розклад в одиницях, а не в днях: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Показувати прибуття та відправлення у розкладах: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Швидке створення списку завдань: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Тип колії за замовчанням (при новій грі/завантаженні): {ORANGE}{STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Тип колії за промовчанням (при новій грі/завантаженні): {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Перша з доступних
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Остання з доступних
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Найчастіше використовувана
@@ -1836,8 +1836,8 @@ STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Введ
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Не запам'ятовувати введений пароль
 STR_COMPANY_PASSWORD_OK                                         :{BLACK}Дати компанії новий пароль
 STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Пароль компанії
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Пароль компанії за замовчуванням
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Використовувати цей пароль компанії за замовчуванням для нових компаній
+STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Пароль компанії за промовчанням
+STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Використовувати цей пароль компанії як пароль за промовчанням для нових компаній
 
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Приєднатись
@@ -3629,7 +3629,7 @@ STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Не м�
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Не можна знести пасажирську трамвайну станцію...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Не можна знести вантажну трамвайну станцію...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Спочатку приберіть зупинку
-STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}...тут немає станції
+STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... тут немає станції
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Спочатку зруйнуйте залізничну станцію
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Спочатку зруйнуйте зупинку
@@ -3695,8 +3695,8 @@ STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Немо
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Неможливо прибрати колію звідси...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Неможливо прибрати сигнали звідси...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Не можна конвертувати сигнали тут...
-STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}...тут немає залізничних шляхів
-STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}...тут немає сигналів
+STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... тут немає залізничних шляхів
+STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... тут немає сигналів
 
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Тут не можна модернізувати колію...
 
@@ -3707,8 +3707,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Немо
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Тут не можна побудувати трамвайну колію...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Неможливо прибрати дорогу звідси...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Не можна прибрати трамвайну колію звідси...
-STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}...тут немає дороги
-STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}...тут немає трамвайних шляхів
+STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... тут немає дороги
+STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... тут немає трамвайних шляхів
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Неможливо будувати канал тут...

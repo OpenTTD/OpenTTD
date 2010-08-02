@@ -932,6 +932,7 @@ STR_SUBSIDY_X4                                                  :x4
 
 # Advanced settings window
 
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Originala
 STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Hegazkinen akzidente kopurua : {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :bat ere ez
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :txikitua
@@ -940,6 +941,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normal
 
 
 
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Berdea
 
 
 
@@ -999,6 +1001,7 @@ STR_NETWORK_SERVER_LIST_GENERAL_ONLINE                          :{BLACK}{COMMA}/
 STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x{COMMA}
 
 
+STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Paisaia: {WHITE}{STRING}
 
 
 
@@ -1096,7 +1099,11 @@ STR_CONTENT_TYPE_BASE_MUSIC                                     :Base musika
 # Airport toolbar
 
 # Airport construction window
+STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Aireportu klasea
 
+STR_AIRPORT_INTERNATIONAL                                       :Internazionala
+STR_AIRPORT_INTERCONTINENTAL                                    :Interkontinentala
+STR_AIRPORT_HELIPORT                                            :Heliportua
 
 
 
@@ -1491,6 +1498,7 @@ STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<ez dago baliag
 # Town related errors
 
 # Industry related errors
+STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... industria gehiegi
 
 # Station construction related errors
 

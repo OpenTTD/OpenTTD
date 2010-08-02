@@ -412,7 +412,7 @@ STR_QUANTITY_PASSENGERS                                         :{COMMA} пас�
 STR_QUANTITY_COAL                                               :{WEIGHT} вугалю
 STR_QUANTITY_MAIL                                               :{COMMA} мяш{P ок кi коў} пошты
 STR_QUANTITY_OIL                                                :{VOLUME} нафты
-STR_QUANTITY_LIVESTOCK                                          :{COMMA} гал{P ава авы оў} жывёлiн
+STR_QUANTITY_LIVESTOCK                                          :{COMMA} гал{P ава авы оў} жывёлы
 STR_QUANTITY_GOODS                                              :{COMMA} скрын{P ка кi ак} тавараў
 STR_QUANTITY_GRAIN                                              :{WEIGHT} зерня
 STR_QUANTITY_WOOD                                               :{WEIGHT} драўнiны
@@ -653,12 +653,13 @@ STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Захавац�
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Загрузіць сцэнар
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Загрузіць мапу вышыняў
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Выйсьці з рэдактара
+STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Выхад
 ############ range for SE file menu starts
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Наладкі гульні
-STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Наладкі цяжкасьці
+STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Наладкі складанасцi
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Пашыраныя наладкі
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Наладкі NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Наладкі празрыстасьці
@@ -675,7 +676,7 @@ STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Празрыс�
 ############ range for file menu starts
 STR_FILE_MENU_SAVE_GAME                                         :Захаваць гульню
 STR_FILE_MENU_LOAD_GAME                                         :Загрузіць гульню
-STR_FILE_MENU_QUIT_GAME                                         :Пакінуць гульню
+STR_FILE_MENU_QUIT_GAME                                         :У галоўнае меню
 STR_FILE_MENU_EXIT                                              :Выхад
 ############ range ends here
 
@@ -721,7 +722,7 @@ STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Будаўні�
 
 ############ range for road construction menu starts
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Будаўніцтва дарог
-STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Будаўніцтва трамвайных лініяў
+STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Будаўніцтва трамвайных пуцёў
 ############ range ends here
 
 ############ range for waterways construction menu starts
@@ -744,12 +745,13 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Гукі/муз
 
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Апошняе паведамленьне
-STR_NEWS_MENU_MESSAGE_SETTINGS                                  :Наладки паведамленьняў
+STR_NEWS_MENU_MESSAGE_SETTINGS                                  :Наладкi паведамленьняў
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Гісторыя паведамленьняў
 ############ range ends here
 
 ############ range for about menu starts
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Звесткі аб зямлі
+STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Кансоль
 STR_ABOUT_MENU_AI_DEBUG                                         :Наладка штучнага інтэлекта (AI)
 STR_ABOUT_MENU_SCREENSHOT                                       :Скрыншот (Ctrl+S)
@@ -985,7 +987,7 @@ STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINYFONT}{BLAC
 STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINYFONT}{BLACK}Маршруты транспарту
 STR_SMALLMAP_LEGENDA_FOREST                                     :{TINYFONT}{BLACK}Лес
 STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINYFONT}{BLACK}Чыгуначная станцыя
-STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINYFONT}{BLACK}Грузавая аўтастанцыя
+STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINYFONT}{BLACK}Грузавы тэрмінал
 STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINYFONT}{BLACK}Аўтобусная станцыя
 STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINYFONT}{BLACK}Аэрапорт/вертадром
 STR_SMALLMAP_LEGENDA_DOCK                                       :{TINYFONT}{BLACK}Прыстань
@@ -1053,7 +1055,7 @@ STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Агу�
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIGFONT}{BLACK}Жыхары сьвяткуюць . . .{}Першы цягнік прыбыў на станцыю {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIGFONT}{BLACK}Жыхары сьвяткуюць . . .{}Першы аўтобус прыбыў на прыпынак {STATION}!
-STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIGFONT}{BLACK}Жыхары сьвяткуюць . . .{}Першы грузавік прыбыў на {STATION}!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIGFONT}{BLACK}Жыхары сьвяткуюць . . .{}Першы грузавік прыбыў на тэрмiнал {STATION}!
 STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIGFONT}{BLACK}Жыхары сьвяткуюць . . .{}Першы трамвай прыбыў на {STATION}!
 STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIGFONT}{BLACK}Жыхары сьвяткуюць . . .{}Першы грузавы трамвай прыбыў на {STATION}!
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIGFONT}{BLACK}Жыхары сьвяткуюць . . .{}Першы карабель прычаліў да прыстані {STATION}!
@@ -1297,13 +1299,17 @@ STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 б
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Зьмяніць парамэтр уласнай валюты
 
 # Difficulty level window
-STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Узровень цяжкасьці
+STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Узровень складанасцi
 
 ############ range for difficulty levels starts
 STR_DIFFICULTY_LEVEL_EASY                                       :{BLACK}Лёгкі
+STR_DIFFICULTY_LEVEL_EASY.f                                     :{BLACK}лёгкая
 STR_DIFFICULTY_LEVEL_MEDIUM                                     :{BLACK}Сярэдні
+STR_DIFFICULTY_LEVEL_MEDIUM.f                                   :{BLACK}сярэдняя
 STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}Цяжкі
+STR_DIFFICULTY_LEVEL_HARD.f                                     :{BLACK}цяжкая
 STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}Уласны
+STR_DIFFICULTY_LEVEL_CUSTOM.f                                   :{BLACK}уласная
 ############ range for difficulty levels ends
 
 STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Паказаць табліцу рэкордаў
@@ -1315,11 +1321,11 @@ STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}Кол�
 STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}Колькасьць прадпрыемстваў: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Максымальная пачатковая пазыка: {ORANGE}{CURRENCY}
 STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}Пачатковая працэнтовая стаўка: {ORANGE}{COMMA}%
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}Выдаткі на ўтрыманне транспарту: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}Хуткасьць будаўніцтва канкурэнтаў: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_BREAKDOWNS                 :{LTBLUE}Паломкі транспарту: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}Выдаткі на ўтрыманне транспарту: {ORANGE}{STRING.p}
+STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}Хуткасьць будаўніцтва канкурэнтаў: {ORANGE}{STRING.f}
+STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_BREAKDOWNS                 :{LTBLUE}Паломкі транспарту: {ORANGE}{STRING.p}
 STR_DIFFICULTY_LEVEL_SETTING_SUBSIDY_MULTIPLIER                 :{LTBLUE}Множнік даходу ад субсыдыяў: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_COST_OF_CONSTRUCTION               :{LTBLUE}Кошт будаўніцтва: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_COST_OF_CONSTRUCTION               :{LTBLUE}Кошт будаўніцтва: {ORANGE}{STRING.m}
 STR_DIFFICULTY_LEVEL_SETTING_TERRAIN_TYPE                       :{LTBLUE}Тып мясцовасьці: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_QUANTITY_OF_SEA_LAKES              :{LTBLUE}Колькасьць азёр/мораў: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_ECONOMY                            :{LTBLUE}Эканоміка: {ORANGE}{STRING}
@@ -1335,18 +1341,102 @@ STR_NUM_NORMAL                                                  :Нармалё�
 STR_NUM_HIGH                                                    :Шмат
 STR_NUM_CUSTOM                                                  :Уласная
 
+STR_VARIETY_NONE                                                :Няма
+STR_VARIETY_VERY_LOW                                            :Вельмі нізкае
+STR_VARIETY_LOW                                                 :Нiзкае
+STR_VARIETY_MEDIUM                                              :Сярэдняе
+STR_VARIETY_HIGH                                                :Шмат
+STR_VARIETY_VERY_HIGH                                           :Вельмі дужа
 
+STR_AI_SPEED_VERY_SLOW                                          :Вельмі павольная
+STR_AI_SPEED_SLOW                                               :Павольная
+STR_AI_SPEED_MEDIUM                                             :Сярэдняя
+STR_AI_SPEED_FAST                                               :Шпаркая
+STR_AI_SPEED_VERY_FAST                                          :Дужа шпаркая
 
+STR_SEA_LEVEL_VERY_LOW                                          :Вельмi малая
+STR_SEA_LEVEL_LOW                                               :Малая
+STR_SEA_LEVEL_MEDIUM                                            :Сярэдняя
+STR_SEA_LEVEL_HIGH                                              :Вялiкая
 
+STR_DISASTER_NONE                                               :Выключана
+STR_DISASTER_REDUCED                                            :Умераная
+STR_DISASTER_NORMAL                                             :Звычайная
 
+STR_SUBSIDY_X1_5                                                :x1.5
+STR_SUBSIDY_X2                                                  :x2
+STR_SUBSIDY_X3                                                  :x3
+STR_SUBSIDY_X4                                                  :x4
 
+STR_TERRAIN_TYPE_VERY_FLAT                                      :Вельмі плоскі
+STR_TERRAIN_TYPE_FLAT                                           :Плоскі
+STR_TERRAIN_TYPE_HILLY                                          :Узгорасты
+STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Гарысты
 
+STR_ECONOMY_STEADY                                              :Стабiльная
+STR_ECONOMY_FLUCTUATING                                         :Няўстойлiвая
 
+STR_REVERSE_AT_END_OF_LINE_AND_AT_STATIONS                      :У канцы ліній і на станцыях
+STR_REVERSE_AT_END_OF_LINE_ONLY                                 :Толькi ў канцы ліній
 
+STR_DISASTERS_OFF                                               :Выключаны
+STR_DISASTERS_ON                                                :Уключаны
 
+STR_CITY_APPROVAL_PERMISSIVE                                    :Дазваляючае
+STR_CITY_APPROVAL_TOLERANT                                      :Памяркоўнае
+STR_CITY_APPROVAL_HOSTILE                                       :Варожае
 
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Модулі ШI адсутнічаюць.{}Іх можна спампаваць праз сістэму праверкі анлайн-кантэнту.
+STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Вашы дзеянні змянілі ўзровень складанасці на ўласны
 
 # Advanced settings window
+STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Пашыраныя наладкі
+
+STR_CONFIG_SETTING_OFF                                          :не
+STR_CONFIG_SETTING_ON                                           :так
+STR_CONFIG_SETTING_DISABLED                                     :адключана
+STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Паказваць хуткасць транспарту ў панэлі статусу: {ORANGE}{STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Дазволіць будаўніцтва на схілах і на беразе: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Дазволіць тэррафарм. пад будынкамі, дарогамі і г.д. (аўтаспускi): {ORANGE}{STRING}
+STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Зона пакрыцця залежыць ад тыпу станцыі: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Дазволіць знос (амаль) усіх гарадскіх аб'ектаў: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Дазволіць вельмі доўгія цягнікі: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Мадэль паскарэння цягнікоў: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :арыгінальная
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :рэалістычная
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Мадэль паскарэння аўтатранспарту: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :арыгінальная
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :рэалістычная
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Крутасць схілаў (для цягнікоў): {ORANGE}{STRING}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Крутасць схілаў (для аўтатранспарту): {ORANGE}{STRING}%
+STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Забараніць 90-градусныя павароты на чыгунцы і моры: {ORANGE}{STRING} {LTBLUE} (не для OPF)
+STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Аб'ядноўваць пабудаваныя побач чыгуначныя станцыі: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Дазволіць аб'яднанне не прымыкаючых адна да адной станцый: {ORANGE}{STRING}
+STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Выкарыстоўваць палепшаны алгарытм загрузкі: {ORANGE}{STRING}
+STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Паступовая загрузка транспарту: {ORANGE}{STRING}
+STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Уключыць інфляцыю: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Пастаўляць груз на станцыю, толькі калі на яго быў попыт: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Дазволіць будаўніцтва вельмі доўгіх мастоў: {ORANGE}{STRING}
+STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}Дэпо можна дадаць у маршрут: {ORANGE}{STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Спосаб стварэння сыравінных прадпрыемстваў: {ORANGE}{STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :не ствараць
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :як i iншыя
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :геолагаразведка
+STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Дазволіць некалькі прадпрыемстваў аднаго тыпу на горад: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Заўсёды поўная дата ў панэлі стану: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Паказваць сігналы на баку руху: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Паказваць фінансавую статыстыку кожны год: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Ствараць заданні з пазнакай «без прыпынкаў»: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Па змоўчванні цягнікі спыняюцца {ORANGE}{STRING}{LTBLUE} станцыі
+STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :на пачатку
+STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :ў сярэдзіне
+STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :ў канцы
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Аўтатранспарт збiраецца ў чаргу каля прыпынку: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Перамяшчаць агляд, калі курсор знаходзіцца ў краю экрана: {ORANGE}{STRING}
+STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Дазволіць падкупляць муніцыпальную ўладу: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Дазволіць купляць эксклюзіўныя трансп. правы: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Дазволіць перадачу грошай іншым кампаніям: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Станцыі могуць быць адвольнай формы: {ORANGE}{STRING}
 
 
 
@@ -1363,26 +1453,83 @@ STR_NUM_CUSTOM                                                  :Уласная
 
 
 
-
+STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Хуткасць росту гарадоў: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :няма
+STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :павольная
+STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :звычайная
+STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :шпаркая
+STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :дужа шпаркая
 
 
 
 
 
 # Intro window
+STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
+
+STR_INTRO_NEW_GAME                                              :{BLACK}Новая гульня
+STR_INTRO_LOAD_GAME                                             :{BLACK}Загрузiць гульню
+STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Гуляць сцэнарый
+STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Загрузiць карту вышынь
+STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Рэдактар сцэнарыяў
+STR_INTRO_MULTIPLAYER                                           :{BLACK}Сеткавая гульня
+
+STR_INTRO_GAME_OPTIONS                                          :{BLACK}Наладкі гульні
+STR_INTRO_DIFFICULTY                                            :{BLACK}Складанасць ({STRING.f})
+STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Пашыраныя наладкі
+STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Наладкi NewGRF
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Праверыць анлайн-кантэнт
+STR_INTRO_AI_SETTINGS                                           :{BLACK}Наладкi ШI
+STR_INTRO_QUIT                                                  :{BLACK}Выхад
 
 
 
-
-
+STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Наладзiць складанасць гульнi
+STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Паказаць пашыраныя наладкі
+STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Паказаць наладкі NewGRF
+STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Паказаць наладкi ШI
+STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Выйсці з OpenTTD
 
 # Quit window
+STR_QUIT_CAPTION                                                :{WHITE}Выхад
+STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Вы ўпэўнены, што жадаеце перапыніць гульню і вярнуцца ў {STRING}?
+STR_QUIT_YES                                                    :{BLACK}Так
+STR_QUIT_NO                                                     :{BLACK}Не
 
 # Supported OSes
+STR_OSNAME_WINDOWS                                              :Windows
+STR_OSNAME_DOS                                                  :DOS
+STR_OSNAME_UNIX                                                 :Unix
+STR_OSNAME_OSX                                                  :OS{NBSP}X
+STR_OSNAME_BEOS                                                 :BeOS
+STR_OSNAME_HAIKU                                                :Haiku
+STR_OSNAME_MORPHOS                                              :MorphOS
+STR_OSNAME_AMIGAOS                                              :AmigaOS
+STR_OSNAME_OS2                                                  :OS/2
+STR_OSNAME_SUNOS                                                :SunOS
 
 # Abandon game
+STR_ABANDON_GAME_CAPTION                                        :{WHITE}У галоўнае меню
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}Вы сапраўды жадаеце выйсці з гульні?
+STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Вы ўпэўнены, што хочаце выйсці з гэтага сцэнарыя?
 
 # Cheat window
+STR_CHEATS                                                      :{WHITE}Чыты
+STR_CHEATS_TOOLTIP                                              :{BLACK}Галачкі паказваюць, ці выкарыстоўвалі Вы гэты чыт раней
+STR_CHEATS_WARNING                                              :{BLACK}Увага, Вы зьбіраецеся здрадзіць сваіх супернікаў! Гэтага вам ніколі не даруюць!
+STR_CHEAT_MONEY                                                 :{LTBLUE}Дадаць {CURRENCY}
+STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Гульня за кампанію: {ORANGE}{COMMA}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Чароўны дынамiт (знос УСЯГО): {ORANGE}{STRING}
+STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Тунэлi могуць перасякацца: {ORANGE}{STRING}
+STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Будаваць ў рэжыме паўзы: {ORANGE}{STRING}
+STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Вялікія самалёты радзей разбіваюцца ў малых аэрапортах: {ORANGE}{STRING}
+STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Змяніць клімат на: {ORANGE}{STRING}
+STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Умераны ландшафт
+STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Субарктычны ландшафт
+STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Субтрапічны ландшафт
+STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Цацачны ландшафт
+STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Змяненне даты: {ORANGE}{DATE_SHORT}
+STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Дазволіць змяненне прадукцыйнасці: {ORANGE}{STRING}
 
 # Livery window
 
@@ -1477,10 +1624,13 @@ STR_NUM_CUSTOM                                                  :Уласная
 
 
 # Road construction toolbar
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Будаўніцтва грузавых тэрміналаў. Націск Ctrl дазваляе аб'ядноўваць станцыі.
 
 # Road depot construction window
 
 # Road vehicle station construction window
+STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Арыентацыя тэрмінала
+STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Выберыце кірунак грузавога тэрмінала
 
 # Waterways toolbar (last two for SE only)
 
@@ -1516,14 +1666,28 @@ STR_NUM_CUSTOM                                                  :Уласная
 # Description of land area of different tiles
 
 
+STR_LAI_ROAD_DESCRIPTION_TRAMWAY                                :Трамвайныя пуцi
 
 # Houses come directly from their building names
 
 
+STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Грузавы тэрмінал
+STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :Аўтобусны прыпынак
+STR_LAI_STATION_DESCRIPTION_SHIP_DOCK                           :Прыстань
+STR_LAI_STATION_DESCRIPTION_BUOY                                :Буй
+STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :Пункт шляху
 
+STR_LAI_WATER_DESCRIPTION_WATER                                 :Вада
+STR_LAI_WATER_DESCRIPTION_CANAL                                 :Канал
+STR_LAI_WATER_DESCRIPTION_LOCK                                  :Шлюз
+STR_LAI_WATER_DESCRIPTION_RIVER                                 :Рака
+STR_LAI_WATER_DESCRIPTION_COAST_OR_RIVERBANK                    :Бераг
+STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT                            :Док
 
 # Industries come directly from their industry names
 
+STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :Чыгуначны тунэль
+STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :Аўтамабiльны тунэль
 
 
 
@@ -1535,6 +1699,7 @@ STR_NUM_CUSTOM                                                  :Уласная
 
 
 # World generation
+STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Колькасьць азёр/мораў:
 
 # Strings for map borders at game generation
 
@@ -1566,6 +1731,7 @@ STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Парамет�
 
 
 # NewGRF (self) generated warnings/errors
+STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Загружана занадта шмат новай графікі.
 
 # NewGRF related 'general' warnings
 
@@ -1577,6 +1743,7 @@ STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Парамет�
 
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs.
+STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 
 # Sign list window
 
@@ -1634,6 +1801,10 @@ STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Наці
 
 # Vehicle lists
 
+STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Цягнiкi - клікніце для атрымання даведкі
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Аўтамабілі - клікніце для атрымання даведкі
+STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Караблi - клікніце для атрымання даведкі
+STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Самалёты - клікніце для атрымання даведкі
 
 
 
@@ -1650,7 +1821,13 @@ STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Наці
 # Build vehicle window
 
 
+STR_PURCHASE_INFO_REFITTABLE                                    :(пераабст.)
+STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Пераабст. для: {GOLD}
+STR_PURCHASE_INFO_ALL_TYPES                                     :Усе тыпы грузаў
+STR_PURCHASE_INFO_ALL_BUT                                       :Усё, акрамя {GOLD}
+STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Макс. цягавае намаганне: {GOLD}{FORCE}
 
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Выбар вагонаў - клікніце для даведкі
 
 
 
@@ -1765,6 +1942,8 @@ STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Наці
 
 
 
+STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :П:
+STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :А:
 
 
 # Date window (for timetable)
@@ -1772,6 +1951,7 @@ STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Наці
 
 # AI debug window
 
+STR_ERROR_NO_AI_SUB                                             :{WHITE}... адсутнічаюць модулі ШI!
 
 
 # AI configuration window
@@ -1783,10 +1963,27 @@ STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Наці
 
 
 # AI Parameters
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}Параметры Штучнага Iнтэлекту
+STR_AI_SETTINGS_CLOSE                                           :{BLACK}Закрыць
+STR_AI_SETTINGS_RESET                                           :{BLACK}Скiд
 
 # Vehicle loading indicators
+STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_DOWN_SMALL                                          :{TINYFONT}{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHITE}{NUM}%{UPARROW}{DOWNARROW}
+STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
 
 # Income 'floats'
+STR_INCOME_FLOAT_COST_SMALL                                     :{TINYFONT}{RED}Расход: {CURRENCY}
+STR_INCOME_FLOAT_COST                                           :{RED}Расход: {CURRENCY}
+STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINYFONT}{GREEN}Даход: {CURRENCY}
+STR_INCOME_FLOAT_INCOME                                         :{GREEN}Даход: {CURRENCY}
+STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Трансфер: {CURRENCY}
+STR_FEEDER                                                      :{YELLOW}Трансфер: {CURRENCY}
+STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Меркаваная цана: {CURRENCY}
+STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Меркаваны даход: {CURRENCY}
 
 # Saveload messages
 
@@ -1802,7 +1999,18 @@ STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Наці
 # Error message titles
 
 # Generic construction errors
+STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}За краем карты
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Занадта блізка да краю карты
+STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Недастаткова грошай - патрабуецца {CURRENCY}
+STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Неабходна роўнае месца
+STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Няправільны ўхіл зямлі
+STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Гэта немагчыма...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Спачатку знясiце будынкi
+STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Немагчыма расчысьціць дадзены ўчастак...
+STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... непрыдатнае месца
+STR_ERROR_ALREADY_BUILT                                         :{WHITE}... ужо пабудавана
+STR_ERROR_OWNED_BY                                              :{WHITE}... належыць {STRING}
+STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... участак належыць іншай кампаніі
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Імя павінна быць унікальным
 STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{1:STRING} на шляху
 
@@ -1817,18 +2025,88 @@ STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}зной
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Тут немагчыма павысіць узровень зямлі...
 STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Тут немагчыма панізіць узровень зямлі...
 STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Тут немагчыма выраўнаваць зямлю...
+STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}Земляныя работы пашкодзяць тунэль
+STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}Ужо на ўзроўні мора
+STR_ERROR_TOO_HIGH                                              :{WHITE}Занадта высока
+STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... ужо роўна
 
 # Company related errors
+STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Немагчыма змяніць назву кампаніі...
+STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Немагчыма змяніць імя дырэктара...
 
+STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... больш за {CURRENCY} пазыкі Вам не дадуць.
+STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Немагчыма заняць больш грошай...
+STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... пазыка цалкам пагашана
+STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... патрабуецца {CURRENCY}
+STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Немагчыма пагасіць пазыку...
+STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Немагчыма аддаць пазычаныя банкам грошы...
+STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Немагчыма набыць кампанію...
+STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Тут немагчыма пабудаваць штаб-кватэру кампанii...
+STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Немагчыма купіць 25% акцый гэтай кампаніі...
+STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Немагчыма прадаць 25% акцый гэтай кампаніі...
+STR_ERROR_PROTECTED                                             :{WHITE}Гэтая кампанія яшчэ не выпускае акцыі...
 
 # Town related errors
+STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Немагчыма пабудаваць гарады...
+STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Немагчыма перайменаваць горад...
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... занадта блізка да краю карты
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... занадта блізка да іншага гораду
+STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... занадта шмат гарадоў
+STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... няма месца на карце
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Гарады не будуюць дарог. Вы можаце ўключыць будаўнiцтва дарог у Паш. наладкі-> Эканоміка-> Гарады.
+STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Ідуць дарожныя работы...
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Немагчыма знішчыць горад:{}да яго тычыцца станцыя або дэпо, альбо немагчыма ачысціць адну з займаных ім клетак.
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... у цэнтры горада няма месца для статуі
 
 # Industry related errors
+STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... занадта шмат прадпрыемстваў
+STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Немагчыма стварыць прамысловасць...
+STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Тут нельга стварыць {STRING}...
+STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Пабудаваць гэтае прадпрыемства немагчыма...
+STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... занадта блізка да іншага прадпрыемства
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... спачатку пабудуйце горад
+STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... такі аб'ект ужо ёсць у горадзе
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... можна пабудаваць у гарадах з насельніцтвам не менш 1200 жыхароў
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... можна будаваць толькі ў тропіках
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... можна будаваць толькі ў пустынi
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... можна будаваць толькі ў гарадах
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... можна будаваць толькі ў нізінах
+STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... можа знаходзіцца толькі каля краю карты
+STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... лес можна саджаць толькі вышэй лініі снегу
 
 # Station construction related errors
+STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Тут немагчыма пабудаваць чыгуначную станцыю...
+STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Тут немагчыма пабудаваць аўтобусны прыпынак...
+STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}Тут немагчыма пабудаваць грузавы тэрмiнал...
+STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}Тут немагчыма пабудаваць пасажырскi трамвайны прыпынак...
+STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}Тут немагчыма пабудаваць грузавы трамвайны прыпынак...
+STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Тут немагчыма пабудаваць прыстань...
+STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Тут немагчыма пабудаваць аэрапорт...
 
+STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Далучаецца больш чым да адной існуючай станцыі
+STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... станцыя занадта вялікая
+STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... выкарыстанне непрамавугольных станцый забаронена
+STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Занадта шмат станцый і прыпынкаў
+STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Занадта вялікая чыгуначная станцыя
+STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Занадта шмат аўтобусных прыпынкаў
+STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Занадта шмат грузавых тэрмiналаў
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Занадта блізка да іншай чыгуначнай станцыі
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Занадта блізка да іншай станцыі
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Занадта блізка да іншай прыстані
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Занадта блізка да іншага аэрапорту
+STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Немагчыма перайменаваць станцыю...
+STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... гэтая дарога належыць гораду
+STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... няправільны кірунак дарогі
 
 # Station destruction related errors
+STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Немагчыма выдаліць частку станцыi...
+STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}Спачатку выдаліце чыгуначную станцыю
+STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Немагчыма выдаліць аўтобусны прыпынак...
+STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Немагчыма выдаліць грузавы тэрмiнал...
+STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Немагчыма выдаліць пасажырскi трамвайны прыпынак...
+STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Немагчыма выдаліць грузавы трамвайны прыпынак...
+STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Спачатку выдаліце прыпынак
+STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}...тут няма станцыі
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Спачатку знясiце чыгуначную станцыю
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Спачатку знясiце аўтобусны прыпынак
@@ -1839,24 +2117,81 @@ STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Спач
 STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Спачатку знясiце аэрапорт
 
 # Waypoint related errors
+STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Прымыкае да некалькіх пунктаў шляху
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Занадта блізка да іншага пункту шляху
 
+STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Тут немагчыма пабудаваць пункт шляху...
+STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Не атрымалася ўсталяваць тут буй...
+STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Немагчыма перайменаваць пункт шляху...
 
+STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Немагчыма выдаліць пункт шляху...
+STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Спачатку выдаліце пункт шляху
+STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... буй на шляху
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... гэты буй выкарыстоўваецца!
 
 # Depot related errors
+STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Тут немагчыма пабудаваць дэпо...
+STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Тут немагчыма пабудаваць гараж...
+STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Тут немагчыма пабудаваць трамвайнае дэпо...
+STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Тут немагчыма пабудаваць док...
 
+STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Не атрымалася перайменаваць дэпо...
 
+STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Цягнік павінен быць спынены ў дэпо
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... павінен быць спынены ў гаражы
+STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Карабель павінен быць спынены ў доке
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Самалёт павінен быць спынены ў ангары
 
+STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Структуру цягніка можна мяняць толькі ў дэпо
+STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Цягнiк занадта доўгi
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Не атрымалася развярнуць цягнік...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Немагчыма развярнуць шматсастаўны транспарт
+STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Несумяшчальны тып рэек
 
+STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Немагчыма перамясьціць трансп. сродак...
+STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}Тылавы лакаматыў заўсёды iдзе за яго пярэдняй часткай
+STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Немагчыма знайсці маршрут да дэпо
+STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Немагчыма знайсці гараж
 
+STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Няправільны тып дэпо
 
 # Autoreplace related errors
+STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}ТС «{VEHICLE}» занадта доўгае пасля замены
+STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Нельга прымяніць правілы аўтазамены/абнаўлення.
+STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(мала грошаў)
 
 # Rail construction errors
+STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Недапушчальная камбінацыя пуцёў
+STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Спачатку выдаліце сігналы
+STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Няма прыдатных рэек
+STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Спачатку выдаліце чыгунку
+STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Дарога аднабаковая або блакаваная
+STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Праз гэты від рэек забаронена будаваць пераезды
+STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Тут немагчыма паставiць светлафор...
+STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Тут немагчыма пракласцi рэйкi...
+STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Не атрымалася выдаліць чыгунку...
+STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Не атрымалася выдаліць светлафор...
+STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Немагчыма пераўтварыць тут сігнал...
+STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}...тут няма чыгункi
+STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... сігналы адсутнічаюць
 
+STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Тут немагчыма пераўтварыць тып рэйкі...
 
 # Road construction errors
+STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}Спачатку выдаліце дарогу
+STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}... аднабаковыя дарогі не могуць мець такое скрыжаванне
+STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Тут немагчыма пабудаваць дарогу...
+STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Тут немагчыма пракласцi трамвайныя пуцi...
+STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Не атрымалася выдаліць дарогу...
+STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Не атрымалася выдаліць трамвайныя пуцi...
+STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}...тут няма дарогi
+STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}...тут няма трамвайных пуцёў
 
 # Waterway construction errors
+STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Тут немагчыма пабудаваць канал...
+STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Тут немагчыма пабудаваць шлюз...
+STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Тут немагчыма размясціць раку...
+STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... трэба будаваць у вадзе
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... нельга будаваць у вадзе
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Спачатку знясiце канал
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Тут немагчыма пабудаваць акведук...
@@ -2102,7 +2437,7 @@ STR_SV_STNAME_UPPER                                             :Верхняя 
 STR_SV_STNAME_LOWER                                             :Нiжняя {STRING}
 STR_SV_STNAME_HELIPORT                                          :Пляцоўка {STRING}
 STR_SV_STNAME_FOREST                                            :Лес {STRING}
-STR_SV_STNAME_FALLBACK                                          :г.{NBSP}{STRING}, станцыя #{NUM}
+STR_SV_STNAME_FALLBACK                                          :г.{NBSP}{STRING}, станцыя №{NUM}
 ############ end of savegame specific region!
 
 ##id 0x8000
@@ -2372,19 +2707,19 @@ STR_FORMAT_DATE_LONG                                            :{STRING} {STRIN
 STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
 
 STR_FORMAT_BUOY_NAME                                            :Буй {TOWN}
-STR_FORMAT_BUOY_NAME_SERIAL                                     :Буй {TOWN} #{COMMA}
+STR_FORMAT_BUOY_NAME_SERIAL                                     :Буй {TOWN} №{COMMA}
 STR_FORMAT_COMPANY_NUM                                          :(Кампанiя {COMMA})
 STR_FORMAT_GROUP_NAME                                           :Група {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING} {0:TOWN}
-STR_FORMAT_WAYPOINT_NAME                                        :Кропка шляху {TOWN}
-STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Кропка шляху {TOWN} #{COMMA}
+STR_FORMAT_WAYPOINT_NAME                                        :Пункт шляху {TOWN}
+STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Пункт шляху {TOWN} №{COMMA}
 
 STR_FORMAT_DEPOT_NAME_TRAIN                                     :Дэпо {TOWN}
-STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :Дэпо {TOWN} #{COMMA}
+STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :Дэпо {TOWN} №{COMMA}
 STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :Гараж {TOWN}
-STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :Гараж {TOWN} #{COMMA}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :Гараж {TOWN} №{COMMA}
 STR_FORMAT_DEPOT_NAME_SHIP                                      :Док {TOWN}
-STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :Док {TOWN} #{COMMA}
+STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :Док {TOWN} №{COMMA}
 STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :Ангар ({STATION})
 
 STR_UNKNOWN_STATION                                             :невядомая станцыя

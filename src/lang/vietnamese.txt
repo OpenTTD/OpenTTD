@@ -2373,6 +2373,7 @@ STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Kiểm t
 
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Tên file: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Phiên bản: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Bảng màu: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Tham số: {SILVER}{STRING}
@@ -2382,6 +2383,11 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}File hợp
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Tắt
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Nhập NewGRF tham số
+
+# NewGRF parameters window
+STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Thay đổi tham số NewGRF
+STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Đóng
+STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Tham số {NUM}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Phân tích - {STRING}
@@ -2463,7 +2469,7 @@ STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRI
 STR_NEWGRF_INVALID_CARGO                                        :<sai kiểu hàng>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} hàng hoá bất hợp lệ
-STR_NEWGRF_INVALID_ENGINE                                       :<sai engine>
+STR_NEWGRF_INVALID_ENGINE                                       :<sai mẫu xe>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<sai nhà máy>
 
 # Sign list window
@@ -2823,10 +2829,10 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} phương tiện{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Tàu hoả - nháy vào đoàn tàu để xem chi tiết, kéo thả để thêm/bớt toa tàu
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Ôtô - nháy vào ôtô để xem chi tiết
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Tàu thuỷ - nháy vào tàu thuỷ để xem chi tiết
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Máy bay - nháy vào máy bay để xem chi tiết
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Tàu hoả - kéo thả để thêm/bớt toa tàu, nháy chuột phải để xem chi tiết.Giữ Ctrl để thực hiện cả chuỗi hành động nêu trên
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Ôtô - nháy chuột phải vào ôtô để xem chi tiết
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Tàu thuỷ - nháy chuột phải vào tàu thuỷ để xem chi tiết
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Máy bay - nháy chuột phải vào máy bay để xem chi tiết
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Thả toa tàu vào đây để bán nó đi
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Thả ôtô vào đây để bán nó đi

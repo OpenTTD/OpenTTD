@@ -819,7 +819,7 @@ STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINYFONT}{BLAC
 STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINYFONT}{BLACK}Маршруты транспорта
 STR_SMALLMAP_LEGENDA_FOREST                                     :{TINYFONT}{BLACK}Лес
 STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINYFONT}{BLACK}Ж/д станция
-STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINYFONT}{BLACK}Автостанция
+STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINYFONT}{BLACK}Грузовой терминал
 STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINYFONT}{BLACK}Автобусная станция
 STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINYFONT}{BLACK}Аэропорт/Вертодром
 STR_SMALLMAP_LEGENDA_DOCK                                       :{TINYFONT}{BLACK}Пристань
@@ -887,7 +887,7 @@ STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Общ�
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIGFONT}{BLACK}Жители празднуют!{}Первый поезд прибыл на станцию {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIGFONT}{BLACK}Жители празднуют!{}Первый автобус прибыл на остановку {STATION}!
-STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIGFONT}{BLACK}Жители празднуют!{}Первый грузовик прибыл на станцию {STATION}!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIGFONT}{BLACK}Жители празднуют!{}Первый грузовик прибыл на терминал {STATION}!
 STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIGFONT}{BLACK}Жители празднуют!{}Первый трамвай прибыл на {STATION}!
 STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIGFONT}{BLACK}Жители празднуют!{}Первый грузовой трамвай прибыл на {STATION}!
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIGFONT}{BLACK}Жители празднуют!{}Первый корабль причалил к {STATION}!
@@ -1261,7 +1261,7 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :как и ос�
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :геологоразведка
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Разрешить несколько предприятий одного типа на город: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Всегда полная дата в панели состояния: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Показывать светофоры на стороне движения: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Показывать сигналы на стороне движения: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Показывать финансовую статистику каждый год: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Создавать задания с меткой «без остановок»: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}По умолчанию поезда останавливаются {ORANGE}{STRING}{LTBLUE} станции
@@ -1411,9 +1411,9 @@ STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Год 
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Включить плавную экономику (частые, небольшие изменения): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Разрешить торговлю акциями других компаний: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Часть прибыли, начисляемая за частичную перевозку: {ORANGE}{STRING}%
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}При установке светофоров линией, ставить кажд{P 0 ую ые ые}: {ORANGE}{STRING} клет{P ку ки ок}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}При установке сигналов линией, ставить кажд{P 0 ую ые ые}: {ORANGE}{STRING} клет{P ку ки ок}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Строить семафоры старого стиля: {ORANGE}до {STRING} года
-STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Включить меню выбора сигналов: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Включить меню сигналов: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Тип сигналов по умолчанию: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :обычные
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :маршрутные
@@ -2142,7 +2142,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Стро
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Строительство трамвайных депо (для приобретения и обслуживания трамваев)
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Строительство автобусных остановок. Нажатие Ctrl позволяет объединять станции.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Строительство трамвайных остановок. Нажатие Ctrl позволяет объединять станции.
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Строительство погрузочных станций. Нажатие Ctrl позволяет объединять станции.
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Строительство грузовых терминалов. Нажатие Ctrl позволяет объединять станции.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Строительство грузовых трамвайных станций. Нажатие Ctrl позволяет объединять станции.
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Включить/отключить односторонние дороги
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Строительство автомобильных мостов
@@ -2161,8 +2161,8 @@ STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Выбо
 # Road vehicle station construction window
 STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Направление остановки
 STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Выберите направление автобусной остановки
-STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Ориентация станции
-STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Выберите направление погрузочной станции
+STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Ориентация терминала
+STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Выберите направление грузового терминала
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Направление пассажирской трамвайной остановки
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Выберите направление пассажирской трамвайной остановки
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Направление грузовой трамвайной остановки
@@ -2357,7 +2357,7 @@ STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Дорога с
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Дорога с озеленением
 STR_LAI_ROAD_DESCRIPTION_ROAD_VEHICLE_DEPOT                     :Гараж
 STR_LAI_ROAD_DESCRIPTION_ROAD_RAIL_LEVEL_CROSSING               :Железнодорожный переезд
-STR_LAI_ROAD_DESCRIPTION_TRAMWAY                                :Трамвайные рельсы
+STR_LAI_ROAD_DESCRIPTION_TRAMWAY                                :Трамвайные пути
 
 # Houses come directly from their building names
 STR_LAI_TOWN_INDUSTRY_DESCRIPTION_UNDER_CONSTRUCTION            :{STRING} (на реконструкции)
@@ -2369,7 +2369,7 @@ STR_LAI_TREE_NAME_CACTUS_PLANTS                                 :Кактусы
 STR_LAI_STATION_DESCRIPTION_RAILROAD_STATION                    :Ж/д станция
 STR_LAI_STATION_DESCRIPTION_AIRCRAFT_HANGAR                     :Ангар
 STR_LAI_STATION_DESCRIPTION_AIRPORT                             :Аэропорт
-STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Погрузочная платформа
+STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Грузовой терминал
 STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :Автобусная остановка
 STR_LAI_STATION_DESCRIPTION_SHIP_DOCK                           :Пристань
 STR_LAI_STATION_DESCRIPTION_BUOY                                :Буй
@@ -2456,7 +2456,7 @@ STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Изме
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Генератор ландш.:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Генератор лесов:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Тип ландшафта:
-STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Количество воды:
+STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Количество морей и озёр:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Гладкость:
 STR_MAPGEN_VARIETY                                              :{BLACK}Разнообразие ландшафта:
 STR_MAPGEN_GENERATE                                             :{WHITE}Создать
@@ -2880,7 +2880,7 @@ STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING}
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} единиц{P а ы ""} авиатранспорта
 
 STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Поезда - нажмите для получения справки
-STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Автомобили - кликните для получения подробной информации
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Автомобили - кликните для получения справки
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Корабли - нажмите для получения справки
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Авиатранспорт - нажмите для получения справки
 
@@ -3631,7 +3631,7 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... сл
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... слишком близко к другому городу
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... слишком много городов
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... нет места на карте
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Города не строят дорог. Вы можете включить стоительство дорог в Расш. настройки->Экономика->Города.
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Города не строят дорог. Вы можете включить строительство дорог в Расш. настройки->Экономика->Города.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Идут дорожные работы...
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Невозможно уничтожить город:{}к нему относится станция или депо, либо невозможно очистить одну из занимаемых им клеток.
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}...в центре города нет места для статуи
@@ -3655,7 +3655,7 @@ STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... ле
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Здесь невозможно построить станцию...
 STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Здесь невозможно построить остановку...
-STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}Невозможно построить грузовую станцию...
+STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}Невозможно построить грузовой терминал...
 STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}Невозможно построить пассажирскую трамвайную остановку...
 STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}Невозможно построить грузовую трамвайную остановку...
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Здесь невозможно построить пристань...
@@ -3667,7 +3667,7 @@ STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... ис
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Слишком много станций и остановок
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Слишком большая ж/д станция
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Слишком много автобусных остановок
-STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Слишком много погрузочных станций
+STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Слишком много грузовых терминалов
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Слишком близко к другой ж/д станции
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Слишком близко к другой станции
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Слишком близко к другой пристани
@@ -3683,7 +3683,7 @@ STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Нево
 STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Невозможно удалить грузовой терминал...
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Невозможно удалить пассажирскую трамвайную остановку...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Невозможно удалить грузовую трамвайную остановку...
-STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Нужно убрать остановку
+STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Сначала удалите остановку
 STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}...здесь нет станции
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Сначала снесите ж/д станцию
@@ -3702,8 +3702,8 @@ STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Здес
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Не удалось установить здесь буй...
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Невозможно переименовать точку пути...
 
-STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Не удалось удалить точку пути...
-STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Сначала нужно убрать точку пути
+STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Невозможно удалить точку пути...
+STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Сначала удалите точку пути
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... буй на пути
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... этот буй используется!
 
@@ -3724,11 +3724,11 @@ STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Стру
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Поезд слишком длинный
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Не удалось развернуть поезд...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Невозможно развернуть многосоставный транспорт
-STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :IНесовместимый тип рельс
+STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Несовместимый тип рельс
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Невозможно переместить трансп. средство...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}Тыловой локомотив всегда следует за его передней частью
-STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Невозможно найти дорогу к депо
+STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Невозможно найти маршрут к депо
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Невозможно найти гараж
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Неверный тип депо
@@ -3740,15 +3740,15 @@ STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(денег м�
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Недопустимая комбинация путей
-STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Нужно убрать сигналы
+STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Сначала удалите сигналы
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Нет подходящих рельсов
-STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Сначала надо удалить рельсы
+STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Сначала удалите рельсы
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Дорога односторонняя или блокирована
 STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Через этот вид рельсов запрещено строить переезды
-STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Здесь невозможно поставить светофор...
+STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Здесь невозможно поставить сигнал...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Здесь невозможно проложить рельсы...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Не удалось удалить рельсы...
-STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Не удалось удалить светофор...
+STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Не удалось удалить сигнал...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Невозможно преобразовать здесь сигнал...
 STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}...здесь нет железной дороги
 STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}...сигналы отсутствуют
@@ -3758,10 +3758,10 @@ STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Здес
 # Road construction errors
 STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}Сначала удалите дорогу
 STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}... односторонние дороги не могут иметь такое пересечение
-STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Не удалось построить дорогу здесь...
-STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Не удалось проложить трамвайные рельсы...
+STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Здесь невозможно построить дорогу...
+STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Здесь невозможно проложить трамвайные пути...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Не удалось удалить дорогу...
-STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Не удалось удалить трамвайные рельсы...
+STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Не удалось удалить трамвайные пути...
 STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}...здесь нет дороги
 STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}...здесь нет трамвайных путей
 
@@ -3863,7 +3863,7 @@ STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Не у�
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... транспортное средство уничтожено
 
 # Specific vehicle errors
-STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Невозможно игнорировать сигнал. Опасно...
+STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Невозможно игнорировать светофор. Опасно...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Не удалось развернуть поезд...
 STR_ERROR_TRAIN_START_NO_CATENARY                               :На этих рельсах отсутствует контактная сеть, поезд не может ехать.
 
