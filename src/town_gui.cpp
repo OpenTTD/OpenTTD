@@ -451,7 +451,7 @@ public:
 				ShowQueryString(STR_TOWN_NAME, STR_TOWN_VIEW_RENAME_TOWN_BUTTON, MAX_LENGTH_TOWN_NAME_BYTES, MAX_LENGTH_TOWN_NAME_PIXELS, this, CS_ALPHANUMERAL, QSF_ENABLE_DEFAULT);
 				break;
 
-			case TVW_EXPAND: // expand town - only available on Scenario editor
+			case TVW_EXPAND: { // expand town - only available on Scenario editor
 				/* Warn the user if towns are not allowed to build roads, but do this only once per OpenTTD run. */
 				static bool _warn_town_no_roads = false;
 
@@ -462,6 +462,7 @@ public:
 
 				DoCommandP(0, this->window_number, 0, CMD_EXPAND_TOWN | CMD_MSG(STR_ERROR_CAN_T_EXPAND_TOWN));
 				break;
+			}
 
 			case TVW_DELETE: // delete town - only available on Scenario editor
 				DoCommandP(0, this->window_number, 0, CMD_DELETE_TOWN | CMD_MSG(STR_ERROR_TOWN_CAN_T_DELETE));
