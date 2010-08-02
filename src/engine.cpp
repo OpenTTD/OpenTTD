@@ -524,7 +524,6 @@ void SetYearEngineAgingStops()
 void StartupOneEngine(Engine *e, Date aging_date)
 {
 	const EngineInfo *ei = &e->info;
-	uint32 r;
 
 	e->age = 0;
 	e->flags = 0;
@@ -533,7 +532,7 @@ void StartupOneEngine(Engine *e, Date aging_date)
 	/* Don't randomise the start-date in the first two years after gamestart to ensure availability
 	 * of engines in early starting games.
 	 * Note: TTDP uses fixed 1922 */
-	r = Random();
+	uint32 r = Random();
 	e->intro_date = ei->base_intro <= ConvertYMDToDate(_settings_game.game_creation.starting_year + 2, 0, 1) ? ei->base_intro : (Date)GB(r, 0, 9) + ei->base_intro;
 	if (e->intro_date <= _date) {
 		e->age = (aging_date - e->intro_date) >> 5;
@@ -601,14 +600,14 @@ static void AcceptEnginePreview(EngineID eid, CompanyID company)
 
 static CompanyID GetBestCompany(uint8 pp)
 {
-	const Company *c;
-	int32 best_hist;
 	CompanyID best_company;
 	CompanyMask mask = 0;
 
 	do {
-		best_hist = -1;
+		int32 best_hist = -1;
 		best_company = INVALID_COMPANY;
+
+		const Company *c;
 		FOR_ALL_COMPANIES(c) {
 			if (c->block_preview == 0 && !HasBit(mask, c->index) &&
 					c->old_economy[0].performance_history > best_hist) {

@@ -126,7 +126,6 @@ static PriceMultipliers _price_base_multiplier;
 Money CalculateCompanyValue(const Company *c, bool including_loan)
 {
 	Owner owner = c->index;
-	Money value = 0;
 
 	Station *st;
 	uint num = 0;
@@ -135,7 +134,7 @@ Money CalculateCompanyValue(const Company *c, bool including_loan)
 		if (st->owner == owner) num += CountBits((byte)st->facilities);
 	}
 
-	value += num * _price[PR_STATION_VALUE] * 25;
+	Money value = num * _price[PR_STATION_VALUE] * 25;
 
 	Vehicle *v;
 	FOR_ALL_VEHICLES(v) {
@@ -556,7 +555,6 @@ static void CompanyCheckBankrupt(Company *c)
 static void CompaniesGenStatistics()
 {
 	Station *st;
-	Company *c;
 
 	Backup<CompanyByte> cur_company(_current_company, FILE_LINE);
 	FOR_ALL_STATIONS(st) {
@@ -568,6 +566,7 @@ static void CompaniesGenStatistics()
 
 	if (!HasBit(1 << 0 | 1 << 3 | 1 << 6 | 1 << 9, _cur_month)) return;
 
+	Company *c;
 	FOR_ALL_COMPANIES(c) {
 		memmove(&c->old_economy[1], &c->old_economy[0], sizeof(c->old_economy) - sizeof(c->old_economy[0]));
 		c->old_economy[0] = c->cur_economy;
@@ -1441,9 +1440,6 @@ void CompaniesMonthlyLoop()
 
 static void DoAcquireCompany(Company *c)
 {
-	Company *owner;
-	int i;
-	Money value;
 	CompanyID ci = c->index;
 
 	CompanyNewsInformation *cni = MallocT<CompanyNewsInformation>(1);
@@ -1460,13 +1456,13 @@ static void DoAcquireCompany(Company *c)
 	ChangeOwnershipOfCompanyItems(ci, _current_company);
 
 	if (c->bankrupt_value == 0) {
-		owner = Company::Get(_current_company);
+		Company *owner = Company::Get(_current_company);
 		owner->current_loan += c->current_loan;
 	}
 
-	value = CalculateCompanyValue(c) >> 2;
+	Money value = CalculateCompanyValue(c) >> 2;
 	Backup<CompanyByte> cur_company(_current_company, FILE_LINE);
-	for (i = 0; i != 4; i++) {
+	for (int i = 0; i != 4; i++) {
 		if (c->share_owners[i] != COMPANY_SPECTATOR) {
 			cur_company.Change(c->share_owners[i]);
 			SubtractMoneyFromCompany(CommandCost(EXPENSES_OTHER, -value));
@@ -1518,12 +1514,11 @@ CommandCost CmdBuyShareInCompany(TileIndex tile, DoCommandFlag flags, uint32 p1,
 	cost.AddCost(CalculateCompanyValue(c) >> 2);
 	if (flags & DC_EXEC) {
 		OwnerByte *b = c->share_owners;
-		int i;
 
 		while (*b != COMPANY_SPECTATOR) b++; // share owners is guaranteed to contain at least one COMPANY_SPECTATOR
 		*b = _current_company;
 
-		for (i = 0; c->share_owners[i] == _current_company;) {
+		for (int i = 0; c->share_owners[i] == _current_company;) {
 			if (++i == 4) {
 				c->bankrupt_value = 0;
 				DoAcquireCompany(c);

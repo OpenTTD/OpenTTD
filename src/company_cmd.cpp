@@ -317,28 +317,24 @@ CommandCost CheckTileOwnership(TileIndex tile)
  */
 static void GenerateCompanyName(Company *c)
 {
-	TileIndex tile;
-	Town *t;
-	StringID str;
-	Company *cc;
-	uint32 strp;
 	/* Reserve space for extra unicode character. We need to do this to be able
 	 * to detect too long company name. */
 	char buffer[MAX_LENGTH_COMPANY_NAME_BYTES + MAX_CHAR_LENGTH];
 
 	if (c->name_1 != STR_SV_UNNAMED) return;
+	if (c->last_build_coordinate == 0) return;
 
-	tile = c->last_build_coordinate;
-	if (tile == 0) return;
+	Town *t = ClosestTownFromTile(c->last_build_coordinate, UINT_MAX);
 
-	t = ClosestTownFromTile(tile, UINT_MAX);
-
+	StringID str;
+	uint32 strp;
 	if (t->name == NULL && IsInsideMM(t->townnametype, SPECSTR_TOWNNAME_START, SPECSTR_TOWNNAME_LAST + 1)) {
 		str = t->townnametype - SPECSTR_TOWNNAME_START + SPECSTR_PLAYERNAME_START;
 		strp = t->townnameparts;
 
 verify_name:;
 		/* No companies must have this name already */
+		Company *cc;
 		FOR_ALL_COMPANIES(cc) {
 			if (cc->name_1 == str && cc->name_2 == strp) goto bad_town_name;
 		}
