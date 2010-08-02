@@ -286,6 +286,7 @@ bool FillGRFDetails(GRFConfig *config, bool is_static)
 
 	/* Find and load the Action 8 information */
 	LoadNewGRFFile(config, CONFIG_SLOT, GLS_FILESCAN);
+	config->SetSuitablePalette();
 
 	/* Skip if the grfid is 0 (not read) or 0xFFFFFFFF (ttdp system grf) */
 	if (config->ident.grfid == 0 || config->ident.grfid == 0xFFFFFFFF || config->IsOpenTTDBaseGRF()) return false;
@@ -297,8 +298,6 @@ bool FillGRFDetails(GRFConfig *config, bool is_static)
 		/* GCF_UNSAFE is set if GLS_SAFETYSCAN finds unsafe actions */
 		if (HasBit(config->flags, GCF_UNSAFE)) return false;
 	}
-
-	config->SetSuitablePalette();
 
 	return CalcGRFMD5Sum(config);
 }
