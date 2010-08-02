@@ -55,6 +55,7 @@ struct RailVehicleInfo {
 	byte visual_effect;             ///< Bitstuffed NewGRF visual effect data
 	byte shorten_factor;            ///< length on main map for this type is 8 - shorten_factor
 	byte tractive_effort;           ///< Tractive effort coefficient
+	byte air_drag;                  ///< Coefficient of air drag
 	byte user_def_data;             ///< Property 0x25: "User-defined bit mask" Used only for (very few) NewGRF vehicles
 };
 
