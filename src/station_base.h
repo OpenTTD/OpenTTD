@@ -49,25 +49,43 @@ struct GoodsEntry {
 struct Airport : public TileArea {
 	Airport() : TileArea(INVALID_TILE, 0, 0) {}
 
-	uint64 flags;       ///< stores which blocks on the airport are taken. was 16 bit earlier on, then 32
-	byte type;
+	uint64 flags; ///< stores which blocks on the airport are taken. was 16 bit earlier on, then 32
+	byte type;    ///< Type of this airport, @see AirportTypes.
 
+	/**
+	 * Get the AirportSpec that from the airport type of this airport. If there
+	 * is no airport (\c tile == INVALID_TILE) then return the dummy AirportSpec.
+	 * @return The AirportSpec for this airport.
+	 */
 	const AirportSpec *GetSpec() const
 	{
 		if (this->tile == INVALID_TILE) return &AirportSpec::dummy;
 		return AirportSpec::Get(this->type);
 	}
 
+	/**
+	 * Get the finite-state machine for this airport or the finite-state machine
+	 * for the dummy airport in case this isn't an airport.
+	 * @pre this->type < NEW_AIRPORT_OFFSET.
+	 * @return The state machine for this airport.
+	 */
 	const AirportFTAClass *GetFTA() const
 	{
 		return this->GetSpec()->fsm;
 	}
 
+	/** Check if this airport has at least one hangar. */
 	FORCEINLINE bool HasHangar() const
 	{
 		return this->GetSpec()->nof_depots > 0;
 	}
 
+	/**
+	 * Get the first tile of the given hangar.
+	 * @param hangar_num The hangar to get the location of.
+	 * @pre hangar_num < GetNumHangars().
+	 * @return A tile with the given hangar.
+	 */
 	FORCEINLINE TileIndex GetHangarTile(uint hangar_num) const
 	{
 		const AirportSpec *as = this->GetSpec();
@@ -79,6 +97,12 @@ struct Airport : public TileArea {
 		NOT_REACHED();
 	}
 
+	/**
+	 * Get the hangar number of the hangar on a specific tile.
+	 * @param tile The tile to query.
+	 * @pre IsHangarTile(tile).
+	 * @return The hangar number of the hangar at the given tile.
+	 */
 	FORCEINLINE uint GetHangarNum(TileIndex tile) const
 	{
 		const AirportSpec *as = this->GetSpec();
@@ -90,6 +114,7 @@ struct Airport : public TileArea {
 		NOT_REACHED();
 	}
 
+	/** Get the number of hangars on this airport. */
 	FORCEINLINE uint GetNumHangars() const
 	{
 		uint num = 0;
