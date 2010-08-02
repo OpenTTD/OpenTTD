@@ -236,6 +236,7 @@ enum Commands {
 	CMD_RENAME_TOWN,                  ///< rename a town
 	CMD_DO_TOWN_ACTION,               ///< do a action from the town detail window (like advertises or bribe)
 	CMD_EXPAND_TOWN,                  ///< expand a town
+	CMD_DELETE_TOWN,                  ///< delete a town
 
 	CMD_SELL_SHIP,                    ///< sell a ship
 	CMD_BUILD_SHIP,                   ///< build a new ship

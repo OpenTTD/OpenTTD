@@ -45,6 +45,7 @@
 #include "townname_type.h"
 #include "core/random_func.hpp"
 #include "core/backup_type.hpp"
+#include "depot_base.h"
 
 #include "table/strings.h"
 #include "table/town_land.h"
@@ -2344,6 +2345,70 @@ CommandCost CmdExpandTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 
 		UpdateTownMaxPass(t);
 	}
+
+	return CommandCost();
+}
+
+/**
+ * Delete a town (scenario editor only).
+ * @param tile Unused.
+ * @param flags Type of operation.
+ * @param p1 Town ID to delete.
+ * @param p2 Unused.
+ * @param text Unused.
+ * @return Empty cost or an error.
+ */
+CommandCost CmdDeleteTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+{
+	if (_game_mode != GM_EDITOR) return CMD_ERROR;
+	Town *t = Town::GetIfValid(p1);
+	if (t == NULL) return CMD_ERROR;
+
+	/* Stations refer to towns. */
+	const Station *st;
+	FOR_ALL_STATIONS(st) {
+		if (st->town == t) {
+			/* Non-oil rig stations are always a problem. */
+			if (!(st->facilities & FACIL_AIRPORT) || st->airport.type != AT_OILRIG) return CMD_ERROR;
+			/* We can only automatically delete oil rigs *if* there's no vehicle on them. */
+			CommandCost ret = DoCommand(st->airport.tile, 0, 0, DC_NONE, CMD_LANDSCAPE_CLEAR);
+			if (ret.Failed()) return ret;
+		}
+	}
+
+	/* Depots refer to towns. */
+	const Depot *d;
+	FOR_ALL_DEPOTS(d) {
+		if (d->town == t) return CMD_ERROR;
+	}
+
+	/* Check all tiles for town ownership. */
+	for (TileIndex tile = 0; tile < MapSize(); ++tile) {
+		switch (GetTileType(tile)) {
+			case MP_ROAD:
+				if (HasTownOwnedRoad(tile) && GetTownIndex(tile) == t->index) {
+					/* Can we clear this tile? */
+					CommandCost ret = DoCommand(tile, 0, 0, DC_NONE, CMD_LANDSCAPE_CLEAR);
+					if (ret.Failed()) return ret;
+				}
+				break;
+
+			case MP_TUNNELBRIDGE:
+				if (IsTileOwner(tile, OWNER_TOWN) &&
+						ClosestTownFromTile(tile, UINT_MAX) == t) {
+					/* Can we clear this bridge? */
+					CommandCost ret = DoCommand(tile, 0, 0, DC_NONE, CMD_LANDSCAPE_CLEAR);
+					if (ret.Failed()) return ret;
+				}
+				break;
+
+			default:
+				break;
+		}
+	}
+
+	/* The town destructor will delete everything related to the town. */
+	if (flags & DC_EXEC) delete t;
 
 	return CommandCost();
 }
