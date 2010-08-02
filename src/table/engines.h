@@ -641,6 +641,7 @@ static const AircraftVehicleInfo _orig_aircraft_vehicle_info[] = {
  * @param f capacity (persons, bags, tons, pieces, items, cubic metres, ...)
  * @param g weight (1/4 ton)
  * @param h power (10 hp)
+ * Tractive effort coefficient by default is the same as TTDPatch, 0.30*256=76
  */
 #define ROV(a, b, c, d, e, f, g, h) { a, b, c, PR_RUNNING_ROADVEH, d, e, f, g, h, 76, 0 }
 static const RoadVehicleInfo _orig_road_vehicle_info[] = {
