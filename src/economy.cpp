@@ -1084,11 +1084,11 @@ void CargoPayment::PayFinalDelivery(const CargoPacket *cp, uint count)
 Money CargoPayment::PayTransfer(const CargoPacket *cp, uint count)
 {
 	Money profit = GetTransportedGoodsIncome(
-		count,
-		/* pay transfer vehicle for only the part of transfer it has done: ie. cargo_loaded_at_xy to here */
-		DistanceManhattan(cp->LoadedAtXY(), Station::Get(this->current_station)->xy),
-		cp->DaysInTransit(),
-		this->ct);
+			count,
+			/* pay transfer vehicle for only the part of transfer it has done: ie. cargo_loaded_at_xy to here */
+			DistanceManhattan(cp->LoadedAtXY(), Station::Get(this->current_station)->xy),
+			cp->DaysInTransit(),
+			this->ct);
 
 	profit = profit * _settings_game.economy.feeder_payment_share / 100;
 

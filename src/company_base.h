@@ -35,18 +35,18 @@ extern CompanyPool _company_pool;
 
 /** Statically loadable part of Company pool item */
 struct CompanyProperties {
-	uint32 name_2; ///< Parameter of #name_1.
-	uint16 name_1; ///< Name of the company
-	char *name;    ///< Name of the company if the user changed it.
+	uint32 name_2;                   ///< Parameter of #name_1.
+	uint16 name_1;                   ///< Name of the company
+	char *name;                      ///< Name of the company if the user changed it.
 
-	uint16 president_name_1; ///< Name of the president.
-	uint32 president_name_2; ///< Parameter of #president_name_1
-	char *president_name;    ///< Name of the president if the user changed it.
+	uint16 president_name_1;         ///< Name of the president.
+	uint32 president_name_2;         ///< Parameter of #president_name_1
+	char *president_name;            ///< Name of the president if the user changed it.
 
 	CompanyManagerFace face;         ///< Face description of the president.
 
-	Money money;         ///< Money owned by the company.
-	byte money_fraction; ///< Fraction of money of the company, too small to represent in \a money.
+	Money money;                     ///< Money owned by the company.
+	byte money_fraction;             ///< Fraction of money of the company, too small to represent in \a money.
 	Money current_loan;              ///< Amount of money borrowed from the bank.
 
 	byte colour;                     ///< Company colour.
@@ -55,17 +55,17 @@ struct CompanyProperties {
 
 	byte block_preview;              ///< Number of months that the company is not allowed to get new exclusive engine previews.
 
-	uint32 cargo_types; ///< which cargo types were transported the last year
+	uint32 cargo_types;              ///< which cargo types were transported the last year
 
-	TileIndex location_of_HQ; ///< northern tile of HQ; INVALID_TILE when there is none
+	TileIndex location_of_HQ;        ///< northern tile of HQ; INVALID_TILE when there is none
 	TileIndex last_build_coordinate; ///< Coordinate of the last build thing by this company.
 
-	OwnerByte share_owners[4]; ///< Owners of the 4 shares of the company. #INVALID_OWNER if nobody has bought them yet.
+	OwnerByte share_owners[4];       ///< Owners of the 4 shares of the company. #INVALID_OWNER if nobody has bought them yet.
 
-	Year inaugurated_year;     ///< Year of starting the company.
+	Year inaugurated_year;           ///< Year of starting the company.
 
 	byte quarters_of_bankruptcy;     ///< Number of quarters (a quarter is 3 months) that the company has a negative balance.
-	CompanyMask bankrupt_asked; ///< which companies were asked about buying it?
+	CompanyMask bankrupt_asked;      ///< which companies were asked about buying it?
 	int16 bankrupt_timeout;          ///< If bigger than \c 0, amount of time to wait for an answer on an offer to buy this company.
 	Money bankrupt_value;
 
