@@ -105,7 +105,7 @@ Function DetermineSVNVersion()
 	If sTortoise <> "" Then
 		Dim SubWCRev
 		Set SubWCRev = WScript.CreateObject("SubWCRev.object")
-		SubWCRev.GetWCInfo FSO.GetAbsolutePathName("../src"), 0, 0
+		SubWCRev.GetWCInfo FSO.GetAbsolutePathName("../"), 0, 0
 		revision = SubWCRev.Revision
 		version = "r" & revision
 		modified = 0
@@ -124,7 +124,7 @@ Function DetermineSVNVersion()
 		WshShell.Environment("PROCESS")("LANG") = "en"
 
 		' Do we have subversion installed? Check immediatelly whether we've got a modified WC.
-		Set oExec = WshShell.Exec("svnversion ../src")
+		Set oExec = WshShell.Exec("svnversion ../")
 		If Err.Number = 0 Then
 			' Wait till the application is finished ...
 			Do While oExec.Status = 0
@@ -137,7 +137,7 @@ Function DetermineSVNVersion()
 				End If
 
 				' And use svn info to get the correct revision and branch information.
-				Set oExec = WshShell.Exec("svn info ../src")
+				Set oExec = WshShell.Exec("svn info ../")
 				If Err.Number = 0 Then
 					Do
 						line = OExec.StdOut.ReadLine()
@@ -179,7 +179,7 @@ Function DetermineSVNVersion()
 						WScript.Sleep 10
 					Loop
 				End If
-				Set oExec = WshShell.Exec("git diff-index --exit-code --quiet HEAD ../src")
+				Set oExec = WshShell.Exec("git diff-index --exit-code --quiet HEAD ../")
 				If Err.Number = 0 Then
 					' Wait till the application is finished ...
 					Do While oExec.Status = 0
@@ -198,7 +198,7 @@ Function DetermineSVNVersion()
 						End If ' line <> "master"
 					End If ' Err.Number = 0
 
-					Set oExec = WshShell.Exec("git log --pretty=format:%s --grep=" & Chr(34) & "^(svn r[0-9]*)" & Chr(34) & " -1 ../src")
+					Set oExec = WshShell.Exec("git log --pretty=format:%s --grep=" & Chr(34) & "^(svn r[0-9]*)" & Chr(34) & " -1 ../")
 					if Err.Number = 0 Then
 						revision = Mid(oExec.StdOut.ReadLine(), 7)
 						revision = Mid(revision, 1, InStr(revision, ")") - 1)
@@ -207,7 +207,7 @@ Function DetermineSVNVersion()
 						' No revision? Maybe it is a custom git-svn clone
 						' Reset error number as WshShell.Exec will not do that on success
 						Err.Clear
-						Set oExec = WshShell.Exec("git log --pretty=format:%b --grep=" & Chr(34) & "git-svn-id:.*@[0-9]*" & Chr(34) & " -1 ../src")
+						Set oExec = WshShell.Exec("git log --pretty=format:%b --grep=" & Chr(34) & "git-svn-id:.*@[0-9]*" & Chr(34) & " -1 ../")
 						If Err.Number = 0 Then
 							revision = oExec.StdOut.ReadLine()
 							revision = Mid(revision, InStr(revision, "@") + 1)
@@ -231,7 +231,7 @@ Function DetermineSVNVersion()
 					line = OExec.StdOut.ReadLine()
 					hash = Mid(line, InStrRev(line, ":") + 1)
 					version = "h" & Mid(hash, 1, 8)
-					Set oExec = WshShell.Exec("hg status ../src")
+					Set oExec = WshShell.Exec("hg status ../")
 					If Err.Number = 0 Then
 						Do
 							line = OExec.StdOut.ReadLine()
@@ -249,7 +249,7 @@ Function DetermineSVNVersion()
 							End If ' line <> "default"
 						End If ' Err.Number = 0
 
-						Set oExec = WshShell.Exec("hg log -r " & hash & ":0 -k " & Chr(34) & "svn" & Chr(34) & " -l 1 --template " & Chr(34) & "{desc}\n" & Chr(34) & " ../src")
+						Set oExec = WshShell.Exec("hg log -r " & hash & ":0 -k " & Chr(34) & "svn" & Chr(34) & " -l 1 --template " & Chr(34) & "{desc}\n" & Chr(34) & " ../")
 						If Err.Number = 0 Then
 							revision = Mid(OExec.StdOut.ReadLine(), 7)
 							revision = Mid(revision, 1, InStr(revision, ")") - 1)

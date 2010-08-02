@@ -66,20 +66,19 @@ fi
 # Find out some dirs
 cd `dirname "$0"`
 ROOT_DIR=`pwd`
-SRC_DIR=src
 
 # Determine if we are using a modified version
 # Assume the dir is not modified
 MODIFIED="0"
 if [ -d "$ROOT_DIR/.svn" ]; then
 	# We are an svn checkout
-	if [ -n "`svnversion \"$SRC_DIR\" | grep 'M'`" ]; then
+	if [ -n "`svnversion | grep 'M'`" ]; then
 		MODIFIED="2"
 	fi
 	# Find the revision like: rXXXXM-branch
-	BRANCH=`LC_ALL=C svn info "$SRC_DIR" | "$AWK" '/^URL:.*branches/ { split($2, a, "/"); for(i in a) if (a[i]=="branches") { print a[i+1]; break } }'`
-	TAG=`LC_ALL=C svn info "$SRC_DIR" | "$AWK" '/^URL:.*tags/ { split($2, a, "/"); for(i in a) if (a[i]=="tags") { print a[i+1]; break } }'`
-	REV_NR=`LC_ALL=C svn info "$SRC_DIR" | "$AWK" '/^Last Changed Rev:/ { print $4 }'`
+	BRANCH=`LC_ALL=C svn info | "$AWK" '/^URL:.*branches/ { split($2, a, "/"); for(i in a) if (a[i]=="branches") { print a[i+1]; break } }'`
+	TAG=`LC_ALL=C svn info | "$AWK" '/^URL:.*tags/ { split($2, a, "/"); for(i in a) if (a[i]=="tags") { print a[i+1]; break } }'`
+	REV_NR=`LC_ALL=C svn info | "$AWK" '/^Last Changed Rev:/ { print $4 }'`
 	if [ -n "$TAG" ]; then
 		REV=$TAG
 	else
@@ -89,26 +88,26 @@ elif [ -d "$ROOT_DIR/.git" ]; then
 	# We are a git checkout
 	# Refresh the index to make sure file stat info is in sync, then look for modifications
 	git update-index --refresh >/dev/null
-	if [ -n "`git diff-index HEAD \"$SRC_DIR\"`" ]; then
+	if [ -n "`git diff-index HEAD`" ]; then
 		MODIFIED="2"
 	fi
 	HASH=`LC_ALL=C git rev-parse --verify HEAD 2>/dev/null`
 	REV="g`echo $HASH | cut -c1-8`"
 	BRANCH=`git symbolic-ref -q HEAD 2>/dev/null | sed 's@.*/@@;s@^master$@@'`
-	REV_NR=`LC_ALL=C git log --pretty=format:%s --grep="^(svn r[0-9]*)" -1 -- "$SRC_DIR" | sed "s@.*(svn r\([0-9]*\)).*@\1@"`
+	REV_NR=`LC_ALL=C git log --pretty=format:%s --grep="^(svn r[0-9]*)" -1 | sed "s@.*(svn r\([0-9]*\)).*@\1@"`
 	if [ -z "$REV_NR" ]; then
 		# No rev? Maybe it is a custom git-svn clone
-		REV_NR=`LC_ALL=C git log --pretty=format:%b --grep="git-svn-id:.*@[0-9]*" -1 -- "$SRC_DIR" | sed "s@.*\@\([0-9]*\).*@\1@"`
+		REV_NR=`LC_ALL=C git log --pretty=format:%b --grep="git-svn-id:.*@[0-9]*" -1 | sed "s@.*\@\([0-9]*\).*@\1@"`
 	fi
 elif [ -d "$ROOT_DIR/.hg" ]; then
 	# We are a hg checkout
-	if [ -n "`hg status \"$SRC_DIR\" | grep -v '^?'`" ]; then
+	if [ -n "`hg status | grep -v '^?'`" ]; then
 		MODIFIED="2"
 	fi
 	HASH=`LC_ALL=C hg id -i | cut -c1-12`
 	REV="h`echo $HASH | cut -c1-8`"
 	BRANCH=`hg branch | sed 's@^default$@@'`
-	REV_NR=`LC_ALL=C hg log -r $HASH:0 -k "svn" -l 1 --template "{desc}\n" "$SRC_DIR" | grep "^(svn r[0-9]*)" | head -n 1 | sed "s@.*(svn r\([0-9]*\)).*@\1@"`
+	REV_NR=`LC_ALL=C hg log -r $HASH:0 -k "svn" -l 1 --template "{desc}\n" | grep "^(svn r[0-9]*)" | head -n 1 | sed "s@.*(svn r\([0-9]*\)).*@\1@"`
 else
 	# We don't know
 	MODIFIED="1"
