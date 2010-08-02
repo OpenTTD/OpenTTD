@@ -124,6 +124,9 @@ static U EvalAdjustT(const DeterministicSpriteGroupAdjust *adjust, ResolverObjec
 		case DSGA_OP_ROR:  return RotateRight(last_value, value);
 		case DSGA_OP_SCMP: return ((S)last_value == (S)value) ? 1 : ((S)last_value < (S)value ? 0 : 2);
 		case DSGA_OP_UCMP: return ((U)last_value == (U)value) ? 1 : ((U)last_value < (U)value ? 0 : 2);
+		case DSGA_OP_SHL:  return (U)last_value << (U)value;
+		case DSGA_OP_SHR:  return (U)last_value >> (U)value;
+		case DSGA_OP_SAR:  return (S)last_value >> (U)value;
 		default:           return value;
 	}
 }
