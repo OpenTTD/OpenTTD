@@ -1573,6 +1573,38 @@ const char *GetCurrentLanguageIsoCode()
 }
 
 /**
+ * Check whether there are glyphs missing in the current language.
+ * @param Pointer to an address for storing the text pointer.
+ * @return If glyphs are missing, return \c true, else return \false.
+ * @pre  *str must not be \c NULL.
+ * @post If \c true is returned, *str points to a string that is found to contain at least one missing glyph.
+ */
+static bool FindMissingGlyphs(const char **str)
+{
+	const Sprite *question_mark = GetGlyph(FS_NORMAL, '?');
+	for (uint i = 0; i != 32; i++) {
+		for (uint j = 0; j < _langtab_num[i]; j++) {
+			const char *text = _langpack_offs[_langtab_start[i] + j];
+			*str = text;
+			for (WChar c = Utf8Consume(&text); c != '\0'; c = Utf8Consume(&text)) {
+				if (c == SCC_SETX) {
+					/* SetX is, together with SetXY as special character that
+					 * uses the next (two) characters as data points. We have
+					 * to skip those, otherwise the UTF8 reading will go haywire. */
+					text++;
+				} else if (c == SCC_SETXY) {
+					text += 2;
+				} else if (IsPrintable(c) && c != '?' && GetGlyph(FS_NORMAL, c) == question_mark) {
+					/* The character is printable, but not in the normal font. This is the case we were testing for. */
+					return true;
+				}
+			}
+		}
+	}
+	return false;
+}
+
+/**
  * Check whether the currently loaded language pack
  * uses characters that the currently loaded font
  * does not support. If this is the case an error
@@ -1589,81 +1621,52 @@ void CheckForMissingGlyphsInLoadedLanguagePack()
 	 * automatically choose another font. This resets that choice. */
 	UninitFreeType();
 	InitFreeType();
-	bool retry = false;
 #endif
 
-	for (;;) {
-		const Sprite *question_mark = GetGlyph(FS_NORMAL, '?');
-
-		for (uint i = 0; i != 32; i++) {
-			for (uint j = 0; j < _langtab_num[i]; j++) {
-				const char *string = _langpack_offs[_langtab_start[i] + j];
-				WChar c;
-				while ((c = Utf8Consume(&string)) != '\0') {
-					if (c == SCC_SETX) {
-						/*
-						 * SetX is, together with SetXY as special character that
-						 * uses the next (two) characters as data points. We have
-						 * to skip those, otherwise the UTF8 reading will go
-						 * haywire.
-						 */
-						string++;
-					} else if (c == SCC_SETXY) {
-						string += 2;
-					} else if (IsPrintable(c) && c != '?' && GetGlyph(FS_NORMAL, c) == question_mark) {
+	const char *str;
+	bool bad_font = FindMissingGlyphs(&str);
 #ifdef WITH_FREETYPE
-						if (!retry) {
-							/* We found an unprintable character... lets try whether we can
-							 * find a fallback font that can print the characters in the
-							 * current language. */
-							retry = true;
+	if (bad_font) {
+		/* We found an unprintable character... lets try whether we can find
+		 * a fallback font that can print the characters in the current language. */
+		FreeTypeSettings backup;
+		memcpy(&backup, &_freetype, sizeof(backup));
 
-							FreeTypeSettings backup;
-							memcpy(&backup, &_freetype, sizeof(backup));
+		bool success = SetFallbackFont(&_freetype, _langpack->isocode, _langpack->winlangid, str);
+		if (success) {
+			UninitFreeType();
+			InitFreeType();
+		}
 
-							bool success = SetFallbackFont(&_freetype, _langpack->isocode, _langpack->winlangid, string);
-							if (success) {
-								UninitFreeType();
-								InitFreeType();
-							}
+		memcpy(&_freetype, &backup, sizeof(backup));
 
-							memcpy(&_freetype, &backup, sizeof(backup));
-
-							if (success) continue;
-						} else {
-							/* Our fallback font does miss characters too, so keep the
-							 * user chosen font as that is more likely to be any good than
-							 * the wild guess we made */
-							UninitFreeType();
-							InitFreeType();
-						}
-#endif
-						/*
-						 * The character is printable, but not in the normal font.
-						 * This is the case we were testing for. In this case we
-						 * have to show the error. As we do not want the string to
-						 * be translated by the translators, we 'force' it into the
-						 * binary and 'load' it via a BindCString. To do this
-						 * properly we have to set the colour of the string,
-						 * otherwise we end up with a lot of artefacts. The colour
-						 * 'character' might change in the future, so for safety
-						 * we just Utf8 Encode it into the string, which takes
-						 * exactly three characters, so it replaces the "XXX" with
-						 * the colour marker.
-						 */
-						static char *err_str = strdup("XXXThe current font is missing some of the characters used in the texts for this language. Read the readme to see how to solve this.");
-						Utf8Encode(err_str, SCC_YELLOW);
-						SetDParamStr(0, err_str);
-						ShowErrorMessage(STR_JUST_RAW_STRING, INVALID_STRING_ID, WL_WARNING);
-
-						/* Reset the font width */
-						LoadStringWidthTable();
-						return;
-					}
-				}
+		if (success) {
+			bad_font = FindMissingGlyphs(&str);
+			if (bad_font) {
+				/* Our fallback font does miss characters too, so keep the
+				 * user chosen font as that is more likely to be any good than
+				 * the wild guess we made */
+				UninitFreeType();
+				InitFreeType();
 			}
 		}
-		break;
+	}
+#endif
+
+	if (bad_font) {
+		/* All attempts have failed. Display an error. As we do not want the string to be translated by
+		 * the translators, we 'force' it into the binary and 'load' it via a BindCString. To do this
+		 * properly we have to set the colour of the string, otherwise we end up with a lot of artefacts.
+		 * The colour 'character' might change in the future, so for safety we just Utf8 Encode it into
+		 * the string, which takes exactly three characters, so it replaces the "XXX" with the colour marker. */
+		static char *err_str = strdup("XXXThe current font is missing some of the characters used in the texts for this language. Read the readme to see how to solve this.");
+		Utf8Encode(err_str, SCC_YELLOW);
+		SetDParamStr(0, err_str);
+		ShowErrorMessage(STR_JUST_RAW_STRING, INVALID_STRING_ID, WL_WARNING);
+
+		/* Reset the font width */
+		LoadStringWidthTable();
+		return;
 	}
 
 	/* Update the font with cache */
