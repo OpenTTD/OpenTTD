@@ -30,6 +30,7 @@
 #include "sprite.h"
 #include "company_base.h"
 #include "core/geometry_func.hpp"
+#include "unmovable.h"
 
 #include "table/strings.h"
 
@@ -2012,7 +2013,7 @@ struct CompanyWindow : Window
 
 	virtual void OnPlaceObject(Point pt, TileIndex tile)
 	{
-		if (DoCommandP(tile, 0, 0, CMD_BUILD_COMPANY_HQ | CMD_MSG(STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS))) {
+		if (DoCommandP(tile, UNMOVABLE_HQ, 0, CMD_BUILD_UNMOVABLE | CMD_MSG(STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS))) {
 			ResetObjectToPlace();
 			this->RaiseButtons();
 		}

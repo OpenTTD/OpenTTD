@@ -48,7 +48,7 @@ CommandProc CmdRemoveSingleSignal;
 
 CommandProc CmdTerraformLand;
 
-CommandProc CmdPurchaseLandArea;
+CommandProc CmdBuildUnmovable;
 CommandProc CmdSellLandArea;
 
 CommandProc CmdBuildTunnel;
@@ -95,7 +95,6 @@ CommandProc CmdRestoreOrderIndex;
 
 CommandProc CmdBuildIndustry;
 
-CommandProc CmdBuildCompanyHQ;
 CommandProc CmdSetCompanyManagerFace;
 CommandProc CmdSetCompanyColour;
 
@@ -210,8 +209,7 @@ static const Command _command_proc_table[] = {
 	DEF_CMD(CmdBuildSingleSignal,                       CMD_AUTO), // CMD_BUILD_SIGNALS
 	DEF_CMD(CmdRemoveSingleSignal,                      CMD_AUTO), // CMD_REMOVE_SIGNALS
 	DEF_CMD(CmdTerraformLand,           CMD_ALL_TILES | CMD_AUTO), // CMD_TERRAFORM_LAND
-	DEF_CMD(CmdPurchaseLandArea,         CMD_NO_WATER | CMD_AUTO), // CMD_PURCHASE_LAND_AREA
-	DEF_CMD(CmdSellLandArea,                                   0), // CMD_SELL_LAND_AREA
+	DEF_CMD(CmdBuildUnmovable,           CMD_NO_WATER | CMD_AUTO), // CMD_BUILD_UNMOVABLE
 	DEF_CMD(CmdBuildTunnel,                             CMD_AUTO), // CMD_BUILD_TUNNEL
 	DEF_CMD(CmdRemoveFromRailStation,                          0), // CMD_REMOVE_FROM_RAIL_STATION
 	DEF_CMD(CmdConvertRail,                                    0), // CMD_CONVERT_RAILD
@@ -247,7 +245,6 @@ static const Command _command_proc_table[] = {
 	DEF_CMD(CmdChangeServiceInt,                               0), // CMD_CHANGE_SERVICE_INT
 
 	DEF_CMD(CmdBuildIndustry,                                  0), // CMD_BUILD_INDUSTRY
-	DEF_CMD(CmdBuildCompanyHQ,           CMD_NO_WATER | CMD_AUTO), // CMD_BUILD_COMPANY_HQ
 	DEF_CMD(CmdSetCompanyManagerFace,                          0), // CMD_SET_COMPANY_MANAGER_FACE
 	DEF_CMD(CmdSetCompanyColour,                               0), // CMD_SET_COMPANY_COLOUR
 

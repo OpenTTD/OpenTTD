@@ -20,6 +20,7 @@
 #include "../../tile_map.h"
 #include "../../string_func.h"
 #include "../../settings_func.h"
+#include "../../unmovable_type.h"
 #include "table/strings.h"
 
 /* static */ AICompany::CompanyID AICompany::ResolveCompanyID(AICompany::CompanyID company)
@@ -162,7 +163,7 @@
 {
 	EnforcePrecondition(false, ::IsValidTile(tile));
 
-	return AIObject::DoCommand(tile, 0, 0, CMD_BUILD_COMPANY_HQ);
+	return AIObject::DoCommand(tile, UNMOVABLE_HQ, 0, CMD_BUILD_UNMOVABLE);
 }
 
 /* static */ TileIndex AICompany::GetCompanyHQ(CompanyID company)

@@ -135,7 +135,7 @@ typedef void OnButtonClick(Window *w);
 
 static void PlaceProc_BuyLand(TileIndex tile)
 {
-	DoCommandP(tile, 0, 0, CMD_PURCHASE_LAND_AREA | CMD_MSG(STR_ERROR_CAN_T_PURCHASE_THIS_LAND), CcPlaySound1E);
+	DoCommandP(tile, UNMOVABLE_OWNED_LAND, 0, CMD_BUILD_UNMOVABLE | CMD_MSG(STR_ERROR_CAN_T_PURCHASE_THIS_LAND), CcPlaySound1E);
 }
 
 void PlaceProc_DemolishArea(TileIndex tile)
@@ -433,26 +433,12 @@ static void PlaceProc_RockyArea(TileIndex tile)
 
 static void PlaceProc_LightHouse(TileIndex tile)
 {
-	/* not flat || not(trees || clear without bridge above) */
-	if (GetTileSlope(tile, NULL) != SLOPE_FLAT || !(IsTileType(tile, MP_TREES) || (IsTileType(tile, MP_CLEAR) && !IsBridgeAbove(tile)))) {
-		return;
-	}
-
-	MakeLighthouse(tile);
-	MarkTileDirtyByTile(tile);
-	SndPlayTileFx(SND_1F_SPLAT, tile);
+	DoCommandP(tile, UNMOVABLE_LIGHTHOUSE, 0, CMD_BUILD_UNMOVABLE | CMD_MSG(STR_ERROR_CAN_T_BUILD_OBJECT), CcTerraform);
 }
 
 static void PlaceProc_Transmitter(TileIndex tile)
 {
-	/* not flat || not(trees || clear without bridge above) */
-	if (GetTileSlope(tile, NULL) != SLOPE_FLAT || !(IsTileType(tile, MP_TREES) || (IsTileType(tile, MP_CLEAR) && !IsBridgeAbove(tile)))) {
-		return;
-	}
-
-	MakeTransmitter(tile);
-	MarkTileDirtyByTile(tile);
-	SndPlayTileFx(SND_1F_SPLAT, tile);
+	DoCommandP(tile, UNMOVABLE_TRANSMITTER, 0, CMD_BUILD_UNMOVABLE | CMD_MSG(STR_ERROR_CAN_T_BUILD_OBJECT), CcTerraform);
 }
 
 static void PlaceProc_DesertArea(TileIndex tile)

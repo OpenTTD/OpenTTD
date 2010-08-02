@@ -107,7 +107,7 @@ extern CommandCost CheckFlatLand(TileArea tile_area, DoCommandFlag flags);
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdBuildCompanyHQ(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+static CommandCost CmdBuildCompanyHQ(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	Company *c = Company::Get(_current_company);
 	CommandCost cost(EXPENSES_PROPERTY);
@@ -143,7 +143,7 @@ CommandCost CmdBuildCompanyHQ(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdPurchaseLandArea(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+static CommandCost CmdPurchaseLandArea(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 
@@ -164,6 +164,52 @@ CommandCost CmdPurchaseLandArea(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 }
 
 /**
+ * Build an unmovable object
+ * @param tile tile where the object will be located
+ * @param flags type of operation
+ * @param p1 the object type to build
+ * @param p2 unused
+ * @param text unused
+ * @return the cost of this operation or an error
+ */
+CommandCost CmdBuildUnmovable(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+{
+	CommandCost cost(EXPENSES_PROPERTY);
+
+	UnmovableType type = (UnmovableType)GB(p1, 0, 8);
+	switch (type) {
+		case UNMOVABLE_LIGHTHOUSE:
+		case UNMOVABLE_TRANSMITTER:
+			if (GetTileSlope(tile, NULL) != SLOPE_FLAT) return_cmd_error(STR_ERROR_FLAT_LAND_REQUIRED);
+			cost = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+			if (cost.Failed()) return cost;
+
+			if (_game_mode != GM_EDITOR) return CMD_ERROR;
+
+			if (flags & DC_EXEC) {
+				MakeUnmovable(tile, type, OWNER_NONE);
+				MarkTileDirtyByTile(tile);
+			}
+			break;
+
+		case UNMOVABLE_OWNED_LAND:
+			cost = CmdPurchaseLandArea(tile, flags, 0, 0, NULL);
+			break;
+
+		case UNMOVABLE_HQ: {
+			cost = CmdBuildCompanyHQ(tile, flags, 0, 0, NULL);
+			break;
+		}
+
+		case UNMOVABLE_STATUE: // Statues have their own construction due to their town reference.
+		default: return CMD_ERROR;
+	}
+
+	return cost;
+}
+
+
+/**
  * Sell a land area. Actually you only sell one tile, so
  * the name is a bit confusing ;p
  * @param tile the tile the company is selling
@@ -173,7 +219,7 @@ CommandCost CmdPurchaseLandArea(TileIndex tile, DoCommandFlag flags, uint32 p1, 
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdSellLandArea(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+static CommandCost CmdSellLandArea(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	if (!IsOwnedLandTile(tile)) return CMD_ERROR;
 	if (_current_company != OWNER_WATER) {
@@ -283,7 +329,7 @@ static CommandCost ClearTile_Unmovable(TileIndex tile, DoCommandFlag flags)
 	}
 
 	if (IsOwnedLand(tile)) {
-		return DoCommand(tile, 0, 0, flags, CMD_SELL_LAND_AREA);
+		return CmdSellLandArea(tile, flags, 0, 0, NULL);
 	}
 
 	/* Water can remove everything! */
