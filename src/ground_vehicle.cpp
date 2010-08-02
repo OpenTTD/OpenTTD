@@ -46,7 +46,20 @@ void GroundVehicle<T, Type>::PowerChanged()
 	}
 
 	this->acc_cache.cached_axle_resistance = 60 * number_of_parts;
-	this->acc_cache.cached_air_drag = 20 + 3 * number_of_parts;
+
+	byte air_drag;
+	byte air_drag_value = v->GetAirDrag();
+
+	/* If air drag is set to zero (default), the resulting air drag coefficient is dependent on max speed. */
+	if (air_drag_value == 0) {
+		/* Simplification of the method used in TTDPatch. It uses <= 10 to change more steadily from 128 to 196. */
+		air_drag = (max_track_speed <= 10) ? 192 : max(2048 / max_track_speed, 1);
+	} else {
+		/* According to the specs, a value of 0x01 in the air drag property means "no air drag". */
+		air_drag = (air_drag_value == 1) ? 0 : air_drag_value;
+	}
+
+	this->acc_cache.cached_air_drag = air_drag + 3 * air_drag * number_of_parts / 20;
 
 	max_te *= 10000; // Tractive effort in (tonnes * 1000 * 10 =) N.
 	max_te /= 256;   // Tractive effort is a [0-255] coefficient.
