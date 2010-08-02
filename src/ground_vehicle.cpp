@@ -107,7 +107,7 @@ int GroundVehicle<T, Type>::GetAcceleration() const
 
 	bool maglev = v->GetAccelerationType() == 2;
 
-	const int area = 120;
+	const int area = v->GetAirDragArea();
 	if (!maglev) {
 		resistance = (13 * mass) / 10;
 		resistance += this->acc_cache.cached_axle_resistance;

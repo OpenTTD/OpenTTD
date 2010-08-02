@@ -210,6 +210,15 @@ protected: // These functions should not be called outside acceleration code.
 		return RoadVehInfo(this->engine_type)->tractive_effort;
 	}
 
+ 	/**
+	 * Gets the area used for calculating air drag.
+	 * @return Area of the engine.
+	 */
+	FORCEINLINE byte GetAirDragArea() const
+	{
+		return 60;
+	}
+
 	/**
 	 * Checks the current acceleration status of this vehicle.
 	 * @return Acceleration status.
