@@ -107,7 +107,7 @@ elif [ -d "$ROOT_DIR/.hg" ]; then
 	HASH=`LC_ALL=C hg id -i | cut -c1-12`
 	REV="h`echo $HASH | cut -c1-8`"
 	BRANCH=`hg branch | sed 's@^default$@@'`
-	REV_NR=`LC_ALL=C hg log -f -k "(svn r" -l 1 --template "{desc}\n" | sed "s@.*(svn r\([0-9]*\)).*@\1@"`
+	REV_NR=`LC_ALL=C hg log -f -k "(svn r" -l 1 --template "{desc}\n" | head -n 1 | sed "s@.*(svn r\([0-9]*\)).*@\1@"`
 else
 	# We don't know
 	MODIFIED="1"
