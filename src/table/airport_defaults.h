@@ -392,15 +392,15 @@ static AirportTileTable *_tile_table_helistation[] = {
 
 /* The helidepot and helistation have ATP_TTDP_SMALL because they are at ground level */
 extern const AirportSpec _origin_airport_specs[] = {
-	AS(country, 4, 3, 0, 1959, 4, 3, ATP_TTDP_SMALL, APC_SMALL, STR_AIRPORT_SMALL),
-	AS(city, 6, 6, 1955, MAX_YEAR, 5, 5, ATP_TTDP_LARGE, APC_LARGE, STR_AIRPORT_CITY),
-	AS_ND(heliport, 1, 1, 1963, MAX_YEAR, 4, 1, ATP_TTDP_HELIPORT, APC_HELIPORT, STR_AIRPORT_HELIPORT),
-	AS(metropolitan, 6, 6, 1980, MAX_YEAR, 6, 8, ATP_TTDP_LARGE, APC_LARGE, STR_AIRPORT_METRO),
-	AS(international, 7, 7, 1990, MAX_YEAR, 8, 17, ATP_TTDP_LARGE, APC_HUB, STR_AIRPORT_INTERNATIONAL),
-	AS(commuter, 5, 4, 1983, MAX_YEAR, 4, 4, ATP_TTDP_SMALL, APC_SMALL, STR_AIRPORT_COMMUTER),
-	AS(helidepot, 2, 2, 1976, MAX_YEAR, 4, 2, ATP_TTDP_SMALL, APC_HELIPORT, STR_AIRPORT_HELIDEPOT),
-	AS(intercontinental, 9, 11, 2002, MAX_YEAR, 10, 25, ATP_TTDP_LARGE, APC_HUB, STR_AIRPORT_INTERCONTINENTAL),
-	AS(helistation, 4, 2, 1980, MAX_YEAR, 4, 3, ATP_TTDP_SMALL, APC_HELIPORT, STR_AIRPORT_HELISTATION),
+	AS(country,          4, 3,     0,     1959,  4,  3, ATP_TTDP_SMALL,    APC_SMALL,    STR_AIRPORT_SMALL),
+	AS(city,             6, 6,  1955, MAX_YEAR,  5,  5, ATP_TTDP_LARGE,    APC_LARGE,    STR_AIRPORT_CITY),
+	AS_ND(heliport,      1, 1,  1963, MAX_YEAR,  4,  1, ATP_TTDP_HELIPORT, APC_HELIPORT, STR_AIRPORT_HELIPORT),
+	AS(metropolitan,     6, 6,  1980, MAX_YEAR,  6,  8, ATP_TTDP_LARGE,    APC_LARGE,    STR_AIRPORT_METRO),
+	AS(international,    7, 7,  1990, MAX_YEAR,  8, 17, ATP_TTDP_LARGE,    APC_HUB,      STR_AIRPORT_INTERNATIONAL),
+	AS(commuter,         5, 4,  1983, MAX_YEAR,  4,  4, ATP_TTDP_SMALL,    APC_SMALL,    STR_AIRPORT_COMMUTER),
+	AS(helidepot,        2, 2,  1976, MAX_YEAR,  4,  2, ATP_TTDP_SMALL,    APC_HELIPORT, STR_AIRPORT_HELIDEPOT),
+	AS(intercontinental, 9, 11, 2002, MAX_YEAR, 10, 25, ATP_TTDP_LARGE,    APC_HUB,      STR_AIRPORT_INTERCONTINENTAL),
+	AS(helistation,      4, 2,  1980, MAX_YEAR,  4,  3, ATP_TTDP_SMALL,    APC_HELIPORT, STR_AIRPORT_HELISTATION),
 	AS_GENERIC(&_airportfta_oilrig, NULL, 0, NULL, 0, 1, 1, 0, 4, 0, 0, ATP_TTDP_OILRIG, APC_HELIPORT, STR_NULL, false),
 };
 
