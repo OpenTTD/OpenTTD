@@ -34,6 +34,20 @@ struct UnmovableSpec {
 	 * @return The cost for clearing.
 	 */
 	Money GetClearCost() const { return (_price[PR_CLEAR_UNMOVABLE] * this->clear_cost_multiplier); }
+
+	/**
+	 * Get the specification associated with a specific UnmovableType.
+	 * @param index The unmovable type to fetch.
+	 * @return The specification.
+	 */
+	static const UnmovableSpec *Get(int index);
+
+	/**
+	 * Get the specification associated with a tile.
+	 * @param tile The tile to fetch the data for.
+	 * @return The specification.
+	 */
+	static const UnmovableSpec *GetByTile(TileIndex tile);
 };
 
 

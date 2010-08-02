@@ -35,18 +35,15 @@
 #include "table/sprites.h"
 #include "table/unmovable_land.h"
 
-/**
- * Accessor for array _original_unmovable.
- * This will ensure at once : proper access and
- * not allowing modifications of it.
- * @param type of unmovable (which is the index in _original_unmovable)
- * @pre type < UNMOVABLE_MAX
- * @return a pointer to the corresponding unmovable spec
- */
-static inline const UnmovableSpec *GetUnmovableSpec(UnmovableType type)
+/* static */ const UnmovableSpec *UnmovableSpec::Get(int index)
 {
-	assert(type < UNMOVABLE_MAX);
-	return &_original_unmovable[type];
+	assert(index < UNMOVABLE_MAX);
+	return &_original_unmovable[index];
+}
+
+/* static */ const UnmovableSpec *UnmovableSpec::GetByTile(TileIndex tile)
+{
+	return UnmovableSpec::Get(GetUnmovableType(tile));
 }
 
 /**
@@ -162,7 +159,7 @@ CommandCost CmdPurchaseLandArea(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 		MarkTileDirtyByTile(tile);
 	}
 
-	cost.AddCost(GetUnmovableSpec(UNMOVABLE_OWNED_LAND)->GetBuildCost());
+	cost.AddCost(UnmovableSpec::Get(UNMOVABLE_OWNED_LAND)->GetBuildCost());
 	return cost;
 }
 
@@ -189,7 +186,7 @@ CommandCost CmdSellLandArea(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 	if (flags & DC_EXEC) DoClearSquare(tile);
 
-	return CommandCost(EXPENSES_CONSTRUCTION, -GetUnmovableSpec(UNMOVABLE_OWNED_LAND)->GetClearCost());
+	return CommandCost(EXPENSES_CONSTRUCTION, -UnmovableSpec::Get(UNMOVABLE_OWNED_LAND)->GetClearCost());
 }
 
 static Foundation GetFoundation_Unmovable(TileIndex tile, Slope tileh);
@@ -337,7 +334,7 @@ static void AddAcceptedCargo_Unmovable(TileIndex tile, CargoArray &acceptance, u
 
 static void GetTileDesc_Unmovable(TileIndex tile, TileDesc *td)
 {
-	td->str = GetUnmovableSpec(GetUnmovableType(tile))->name;
+	td->str = UnmovableSpec::GetByTile(tile)->name;
 	td->owner[0] = GetTileOwner(tile);
 }
 
