@@ -702,9 +702,7 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 				break;
 
 			case 0x20: // Air drag
-				/** @todo Air drag for trains. */
-				buf->ReadByte();
-				ret = CIR_UNHANDLED;
+				rvi->air_drag = buf->ReadByte();
 				break;
 
 			case 0x21: // Shorter vehicle
