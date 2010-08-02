@@ -2315,29 +2315,37 @@ CommandCost CmdRenameTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 	return CommandCost();
 }
 
-/** Called from GUI */
-void ExpandTown(Town *t)
+/**
+ * Expand a town (scenario editor only).
+ * @param tile Unused.
+ * @param flags Type of operation.
+ * @param p1 Town ID to expand.
+ * @param p2 Unused.
+ * @param text Unused.
+ * @return Empty cost or an error.
+ */
+CommandCost CmdExpandTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	/* Warn the users if towns are not allowed to build roads,
-	 * but do this only onces per openttd run. */
-	static bool warned_no_roads = false;
-	if (!_settings_game.economy.allow_town_roads && !warned_no_roads) {
-		ShowErrorMessage(STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS, INVALID_STRING_ID, WL_WARNING);
-		warned_no_roads = true;
+	if (_game_mode != GM_EDITOR) return CMD_ERROR;
+	Town *t = Town::GetIfValid(p1);
+	if (t == NULL) return CMD_ERROR;
+
+	if (flags & DC_EXEC) {
+		/* The more houses, the faster we grow */
+		uint amount = RandomRange(ClampToU16(t->num_houses / 10)) + 3;
+		t->num_houses += amount;
+		UpdateTownRadius(t);
+
+		uint n = amount * 10;
+		do GrowTown(t); while (--n);
+
+		t->num_houses -= amount;
+		UpdateTownRadius(t);
+
+		UpdateTownMaxPass(t);
 	}
 
-	/* The more houses, the faster we grow */
-	uint amount = RandomRange(ClampToU16(t->num_houses / 10)) + 3;
-	t->num_houses += amount;
-	UpdateTownRadius(t);
-
-	uint n = amount * 10;
-	do GrowTown(t); while (--n);
-
-	t->num_houses -= amount;
-	UpdateTownRadius(t);
-
-	UpdateTownMaxPass(t);
+	return CommandCost();
 }
 
 /**
