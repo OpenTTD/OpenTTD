@@ -286,9 +286,15 @@ static CommandCost ClearTile_Unmovable(TileIndex tile, DoCommandFlag flags)
 		return DoCommand(tile, 0, 0, flags, CMD_SELL_LAND_AREA);
 	}
 
-	/* checks if you're allowed to remove unmovable things */
-	if (_game_mode != GM_EDITOR && _current_company != OWNER_WATER && ((flags & DC_AUTO) || !_cheats.magic_bulldozer.value)) {
-		return_cmd_error((flags & DC_AUTO) ? STR_ERROR_OBJECT_IN_THE_WAY : INVALID_STRING_ID);
+	/* Water can remove everything! */
+	if (_current_company != OWNER_WATER) {
+		if (flags & DC_AUTO) {
+			/* No automatic removal by overbuilding stuff. */
+			return_cmd_error(STR_ERROR_OBJECT_IN_THE_WAY);
+		} else if (_game_mode != GM_EDITOR && !_cheats.magic_bulldozer.value) {
+			/* In the game editor or with cheats we can remove, otherwise we can't. */
+			return CMD_ERROR;
+		}
 	}
 
 	if (IsStatue(tile)) {
