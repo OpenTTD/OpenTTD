@@ -171,7 +171,7 @@ enum TownRatingCheckType {
 static const byte TOWN_GROWTH_FREQUENCY = 70;
 
 /**
- * This enum is used in conjonction with town->flags.
+ * This enum is used in conjunction with town->flags.
  * IT simply states what bit is used for.
  * It is pretty unrealistic (IMHO) to only have one church/stadium
  * per town, NO MATTER the population of it.

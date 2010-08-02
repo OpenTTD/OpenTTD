@@ -36,17 +36,17 @@ extern CompanyPool _company_pool;
 /** Statically loadable part of Company pool item */
 struct CompanyProperties {
 	uint32 name_2;                   ///< Parameter of #name_1.
-	uint16 name_1;                   ///< Name of the company
+	uint16 name_1;                   ///< Name of the company if the user did not change it.
 	char *name;                      ///< Name of the company if the user changed it.
 
-	uint16 president_name_1;         ///< Name of the president.
+	uint16 president_name_1;         ///< Name of the president if the user did not change it.
 	uint32 president_name_2;         ///< Parameter of #president_name_1
 	char *president_name;            ///< Name of the president if the user changed it.
 
 	CompanyManagerFace face;         ///< Face description of the president.
 
 	Money money;                     ///< Money owned by the company.
-	byte money_fraction;             ///< Fraction of money of the company, too small to represent in \a money.
+	byte money_fraction;             ///< Fraction of money of the company, too small to represent in #money.
 	Money current_loan;              ///< Amount of money borrowed from the bank.
 
 	byte colour;                     ///< Company colour.
@@ -55,9 +55,9 @@ struct CompanyProperties {
 
 	byte block_preview;              ///< Number of months that the company is not allowed to get new exclusive engine previews.
 
-	uint32 cargo_types;              ///< which cargo types were transported the last year
+	uint32 cargo_types;              ///< Which cargo types were transported the last year.
 
-	TileIndex location_of_HQ;        ///< northern tile of HQ; INVALID_TILE when there is none
+	TileIndex location_of_HQ;        ///< Northern tile of HQ; #INVALID_TILE when there is none.
 	TileIndex last_build_coordinate; ///< Coordinate of the last build thing by this company.
 
 	OwnerByte share_owners[4];       ///< Owners of the 4 shares of the company. #INVALID_OWNER if nobody has bought them yet.
@@ -69,10 +69,14 @@ struct CompanyProperties {
 	int16 bankrupt_timeout;          ///< If bigger than \c 0, amount of time to wait for an answer on an offer to buy this company.
 	Money bankrupt_value;
 
-	bool is_ai; ///< If \c true, the company is controlled by the computer (a NoAI program).
+	/**
+	 * If \c true, the company is (also) controlled by the computer (a NoAI program).
+	 * @note It is possible that the user is also participating in such a company.
+	 */
+	bool is_ai;
 
 	Money yearly_expenses[3][EXPENSES_END];              ///< Expenses of the company for the last three years, in every #Expenses category.
-	CompanyEconomyEntry cur_economy;                     ///< Economic data of the company of this year.
+	CompanyEconomyEntry cur_economy;                     ///< Economic data of the company of this quarter.
 	CompanyEconomyEntry old_economy[MAX_HISTORY_MONTHS]; ///< Economic data of the company of the last #MAX_HISTORY_MONTHS months.
 	byte num_valid_stat_ent;                             ///< Number of valid statistical entries in #old_economy.
 
@@ -111,7 +115,7 @@ struct Company : CompanyPool::PoolItem<&_company_pool>, CompanyProperties {
 	}
 
 	/**
-	 * Is this company a valid company, controlled by a human (possibly another one than the user)?
+	 * Is this company a valid company, not controlled by a NoAI program?
 	 * @param index Index in the pool.
 	 * @return \c true if it is a valid, human controlled company, else \c false.
 	 * @note If you know that \a index refers to a valid company, you can use #IsHumanID() instead.
@@ -123,7 +127,7 @@ struct Company : CompanyPool::PoolItem<&_company_pool>, CompanyProperties {
 	}
 
 	/**
-	 * Is this company a company controlled by a human (possibly another one than the user)?
+	 * Is this company a company not controlled by a NoAI program?
 	 * @param index Index in the pool.
 	 * @return \c true if it is a human controlled company, else \c false.
 	 * @pre \a index must be a valid CompanyID.

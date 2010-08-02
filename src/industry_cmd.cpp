@@ -1689,7 +1689,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
  * @param seed random seed (possibly) used by industries
  * @param initial_random_bits The random bits the industry is going to have after construction.
  * @param founder Founder of the industry
- * @param ip Pointer to store newly created industry.
+ * @param [out] ip Pointer to store newly created industry.
  * @return Succeeded or failed command.
  *
  * @post \c *ip contains the newly created industry if all checks are successful and the \a flags request actual creation, else it contains \c NULL afterwards.
@@ -1971,7 +1971,7 @@ static void UpdateIndustryStatistics(Industry *i)
 /** Simple helper that will collect data for the generation of industries */
 struct ProbabilityHelper {
 	uint16 prob;      ///< probability
-	IndustryType ind; ///< industry id correcponding
+	IndustryType ind; ///< Industry id.
 };
 
 /**

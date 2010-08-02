@@ -523,7 +523,7 @@ static void CompanyCheckBankrupt(Company *c)
 				free(cni);
 				break;
 			}
-			/* Else, falltrue to case 4... */
+			/* FALL THROUGH to case 4... */
 		}
 		default:
 		case 4:
@@ -695,6 +695,7 @@ void RecomputePrices()
 	SetWindowDirty(WC_PAYMENT_RATES, 0);
 }
 
+/** Let all companies pay the monthly interest on their loan. */
 static void CompaniesPayInterest()
 {
 	const Company *c;
@@ -1349,7 +1350,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 				/* if the aircraft carries passengers and is NOT full, then
 				 * continue loading, no matter how much mail is in */
 				if ((v->type == VEH_AIRCRAFT && IsCargoInClass(v->cargo_type, CC_PASSENGERS) && v->cargo_cap > v->cargo.Count()) ||
-						(cargo_not_full && (cargo_full & ~cargo_not_full) == 0)) { // There are still non-full cargos
+						(cargo_not_full && (cargo_full & ~cargo_not_full) == 0)) { // There are still non-full cargoes
 					finished_loading = false;
 				}
 			} else if (cargo_not_full != 0) {

@@ -2822,12 +2822,12 @@ static int GetRating(const Town *t)
  * Changes town rating of the current company
  * @param t Town to affect
  * @param add Value to add
- * @param max Minimum (add < 0) resp. maximum (add > 0) rating that should be archievable with this change
+ * @param max Minimum (add < 0) resp. maximum (add > 0) rating that should be achievable with this change.
  * @param flags Command flags, especially DC_NO_MODIFY_TOWN_RATING is tested
  */
 void ChangeTownRating(Town *t, int add, int max, DoCommandFlag flags)
 {
-	/* if magic_bulldozer cheat is active, town doesn't penaltize for removing stuff */
+	/* if magic_bulldozer cheat is active, town doesn't penalize for removing stuff */
 	if (t == NULL || (flags & DC_NO_MODIFY_TOWN_RATING) ||
 			!Company::IsValidID(_current_company) ||
 			(_cheats.magic_bulldozer.value && add < 0)) {

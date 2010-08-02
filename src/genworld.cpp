@@ -74,8 +74,8 @@ bool IsGenerateWorldThreaded()
 }
 
 /**
- * Clean up the 'mess' of generation. That is show windows again, reset
- * thread variables and delete the progress window.
+ * Clean up the 'mess' of generation. That is, show windows again, reset
+ * thread variables, and delete the progress window.
  */
 static void CleanupGeneration()
 {
