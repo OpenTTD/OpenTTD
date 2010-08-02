@@ -37,8 +37,7 @@ static const SaveLoad _engine_desc[] = {
 	 SLE_CONDVAR(Engine, company_avail,       SLE_UINT16,                104, SL_MAX_VERSION),
 	 SLE_CONDSTR(Engine, name,                SLE_STR, 0,                 84, SL_MAX_VERSION),
 
-	/* reserve extra space in savegame here. (currently 16 bytes) */
-	SLE_CONDNULL(16,                                                       2, SL_MAX_VERSION),
+	SLE_CONDNULL(16,                                                       2, 143), // old reserved space
 
 	SLE_END()
 };

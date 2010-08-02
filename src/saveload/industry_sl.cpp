@@ -55,8 +55,7 @@ static const SaveLoad _industry_desc[] = {
 	SLE_CONDVAR(Industry, random_triggers,            SLE_UINT8,                 82, SL_MAX_VERSION),
 	SLE_CONDVAR(Industry, random,                     SLE_UINT16,                82, SL_MAX_VERSION),
 
-	/* reserve extra space in savegame here. (currently 32 bytes) */
-	SLE_CONDNULL(32, 2, SL_MAX_VERSION),
+	SLE_CONDNULL(32, 2, 143), // old reserved space
 
 	SLE_END()
 };

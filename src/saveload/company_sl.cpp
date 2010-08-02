@@ -160,8 +160,7 @@ static const SaveLoad _company_settings_desc[] = {
 	SLE_CONDVAR(Company, settings.vehicle.servint_aircraft,  SLE_UINT16,     120, SL_MAX_VERSION),
 	SLE_CONDVAR(Company, settings.vehicle.servint_ships,     SLE_UINT16,     120, SL_MAX_VERSION),
 
-	/* Reserve extra space in savegame here. (currently 63 bytes) */
-	SLE_CONDNULL(63, 2, SL_MAX_VERSION),
+	SLE_CONDNULL(63, 2, 143), // old reserved space
 
 	SLE_END()
 };
@@ -183,8 +182,7 @@ static const SaveLoad _company_settings_skip_desc[] = {
 	SLE_CONDNULL(2, 120, SL_MAX_VERSION),    // settings.vehicle.servint_aircraft
 	SLE_CONDNULL(2, 120, SL_MAX_VERSION),    // settings.vehicle.servint_ships
 
-	/* Reserve extra space in savegame here. (currently 63 bytes) */
-	SLE_CONDNULL(63, 2, SL_MAX_VERSION),
+	SLE_CONDNULL(63, 2, 143), // old reserved space
 
 	SLE_END()
 };
