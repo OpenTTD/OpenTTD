@@ -35,7 +35,7 @@
 #include "table/sprites.h"
 #include "table/unmovable_land.h"
 
-/* static */ const UnmovableSpec *UnmovableSpec::Get(int index)
+/* static */ const UnmovableSpec *UnmovableSpec::Get(UnmovableType index)
 {
 	assert(index < UNMOVABLE_MAX);
 	return &_original_unmovable[index];

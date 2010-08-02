@@ -304,6 +304,7 @@ transparency_gui.h
 transport_type.h
 tunnelbridge.h
 unmovable.h
+unmovable_type.h
 vehicle_base.h
 vehicle_func.h
 vehicle_gui.h

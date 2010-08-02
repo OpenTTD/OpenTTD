@@ -937,6 +937,9 @@
     <ClInclude Include="..\src\unmovable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\unmovable_type.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\vehicle_base.h">
       <Filter>Header Files</Filter>
     </ClInclude>

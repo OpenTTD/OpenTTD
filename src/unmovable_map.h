@@ -13,16 +13,7 @@
 #define UNMOVABLE_MAP_H
 
 #include "tile_map.h"
-
-/** Types of unmovable structure */
-enum UnmovableType {
-	UNMOVABLE_TRANSMITTER = 0,    ///< The large antenna
-	UNMOVABLE_LIGHTHOUSE  = 1,    ///< The nice lighthouse
-	UNMOVABLE_STATUE      = 2,    ///< Statue in towns
-	UNMOVABLE_OWNED_LAND  = 3,    ///< Owned land 'flag'
-	UNMOVABLE_HQ          = 4,    ///< HeadQuarter of a player
-	UNMOVABLE_MAX,
-};
+#include "unmovable_type.h"
 
 /**
  * Gets the UnmovableType of the given unmovable tile

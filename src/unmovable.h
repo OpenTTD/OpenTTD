@@ -14,6 +14,7 @@
 
 #include "economy_func.h"
 #include "strings_type.h"
+#include "unmovable_type.h"
 
 void UpdateCompanyHQ(Company *c, uint score);
 
@@ -40,7 +41,7 @@ struct UnmovableSpec {
 	 * @param index The unmovable type to fetch.
 	 * @return The specification.
 	 */
-	static const UnmovableSpec *Get(int index);
+	static const UnmovableSpec *Get(UnmovableType index);
 
 	/**
 	 * Get the specification associated with a tile.
