@@ -128,11 +128,12 @@ static const uint64
 
 	NOTHING_block            = 1ULL << 30;
 
+/** A single location on an airport where aircraft can move to. */
 struct AirportMovingData {
-	int16 x;
-	int16 y;
-	uint16 flag;
-	DirectionByte direction;
+	int16 x;                 ///< x-coordinate of this position
+	int16 y;                 ///< y-coordinate of this position
+	uint16 flag;             ///< special flags when moving towards this position
+	DirectionByte direction; ///< Direction to turn the aircraft after reaching this position.
 };
 
 struct AirportFTAbuildup;
@@ -140,11 +141,12 @@ struct AirportFTAbuildup;
 /** Finite sTate mAchine --> FTA */
 struct AirportFTAClass {
 public:
+	/** Bitmask of airport flags. */
 	enum Flags {
-		AIRPLANES   = 0x1,
-		HELICOPTERS = 0x2,
-		ALL         = AIRPLANES | HELICOPTERS,
-		SHORT_STRIP = 0x4
+		AIRPLANES   = 0x1,                     ///< Can planes land on this airport type?
+		HELICOPTERS = 0x2,                     ///< Can helicopters land on this airport type?
+		ALL         = AIRPLANES | HELICOPTERS, ///< Mask to check for both planes and helicopters.
+		SHORT_STRIP = 0x4                      ///< This airport has a short landing strip, dangerous for fast aircraft.
 	};
 
 	AirportFTAClass(

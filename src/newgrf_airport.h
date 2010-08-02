@@ -20,9 +20,10 @@
 /* Copy from station_map.h */
 typedef byte StationGfx;
 
+/** Tile-offset / AirportTileID pair. */
 struct AirportTileTable {
-	TileIndexDiffC ti;
-	StationGfx gfx;
+	TileIndexDiffC ti; ///< Tile offset from  the top-most airport tile.
+	StationGfx gfx;    ///< AirportTile to use for this tile.
 };
 
 /** List of default airport classes. */
@@ -48,8 +49,8 @@ enum TTDPAirportType {
 
 /** A list of all hangar tiles in an airport */
 struct HangarTileTable {
-	TileIndexDiffC ti;
-	byte hangar_num;
+	TileIndexDiffC ti; ///< Tile offset from the top-most airport tile.
+	byte hangar_num;   ///< The hanger to which this tile belongs.
 };
 
 /**
