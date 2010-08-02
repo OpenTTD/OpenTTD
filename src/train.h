@@ -442,6 +442,15 @@ protected: // These functions should not be called outside acceleration code.
 	}
 
 	/**
+	 * Gets the air drag coefficient of this vehicle.
+	 * @return Air drag value from the engine.
+	 */
+	FORCEINLINE byte GetAirDrag() const
+	{
+		return RailVehInfo(this->engine_type)->air_drag;
+	}
+
+	/**
 	 * Checks the current acceleration status of this vehicle.
 	 * @return Acceleration status.
 	 */

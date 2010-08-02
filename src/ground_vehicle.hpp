@@ -54,6 +54,7 @@ enum GroundVehicleFlags {
  * virtual uint16      GetPoweredPartPower(const T *head) const = 0;
  * virtual uint16      GetWeight() const = 0;
  * virtual byte        GetTractiveEffort() const = 0;
+ * virtual byte        GetAirDrag() const = 0;
  * virtual byte        GetAirDragArea() const = 0;
  * virtual AccelStatus GetAccelerationStatus() const = 0;
  * virtual uint16      GetCurrentSpeed() const = 0;
