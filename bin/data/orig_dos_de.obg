@@ -47,7 +47,7 @@ logos        = TRGI.GRF
 arctic       = TRGC.GRF
 tropical     = TRGH.GRF
 toyland      = TRGT.GRF
-extra        = OPENTTDD.GRF
+extra        = OPENTTD.GRF
 
 [md5s]
 TRG1.GRF     = 9311676280e5b14077a8ee41c1b42192
@@ -55,7 +55,7 @@ TRGI.GRF     = da6a6c9dcc451eec88d79211437b76a8
 TRGC.GRF     = ed446637e034104c5559b32c18afe78d
 TRGH.GRF     = ee6616fb0e6ef6b24892c58c93d86fc9
 TRGT.GRF     = fcde1d7e8a74197d72a62695884b909e
-OPENTTDD.GRF = 177d3eeda710bb6f1b93955fdd3754fa
+OPENTTD.GRF  = fd012338722d33a311cfbaf1d1ad2ef5
 
 [origin]
 default      = You can find it on your Transport Tycoon Deluxe CD-ROM.

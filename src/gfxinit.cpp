@@ -179,8 +179,15 @@ static void LoadSpriteTables()
 	 */
 	GRFConfig *top = _grfconfig;
 	GRFConfig *master = new GRFConfig(used_set->files[GFT_EXTRA].filename);
+
+	/* We know the palette of the base set, so if the base NewGRF is not
+	 * setting one, use the palette of the base set and not the global
+	 * one which might be the wrong palette for this base NewGRF. */
+	PaletteType old_palette_type = _use_palette;
+	_use_palette = used_set->palette;
 	FillGRFDetails(master, false);
-	master->palette = (used_set->palette == PAL_WINDOWS) ? GRFP_USE_WINDOWS : GRFP_USE_DOS;
+	_use_palette = old_palette_type;
+
 	ClrBit(master->flags, GCF_INIT_ONLY);
 	master->next = top;
 	_grfconfig = master;
