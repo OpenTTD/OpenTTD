@@ -584,6 +584,7 @@ static inline void MakeRoadNormal(TileIndex t, RoadBits bits, RoadTypes rot, Tow
  * @param tram    New owner of tram tracks.
  * @param rail    New owner of the rail track.
  * @param roaddir Axis of the road.
+ * @param rat     New rail type.
  * @param rot     New present road types.
  * @param town    Town ID if the road is a town-owned road.
  */
