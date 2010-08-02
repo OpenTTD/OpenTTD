@@ -17,14 +17,23 @@
 
 void UpdateCompanyHQ(Company *c, uint score);
 
+/** An (unmovable) object that isn't use for transport, industries or houses. */
 struct UnmovableSpec {
-	StringID name;
-	uint8 buy_cost_multiplier;
-	uint8 sell_cost_multiplier;
+	StringID name;               ///< The name for this object.
+	uint8 build_cost_multiplier; ///< Build cost multiplier per tile.
+	uint8 clear_cost_multiplier; ///< Clear cost multiplier per tile.
 
-	Money GetRemovalCost() const { return (_price[PR_CLEAR_UNMOVABLE] * this->sell_cost_multiplier); }
-	Money GetBuildingCost() const { return (_price[PR_BUILD_UNMOVABLE] * this->buy_cost_multiplier); }
+	/**
+	 * Get the cost for building a structure of this type.
+	 * @return The cost for building.
+	 */
+	Money GetBuildCost() const { return (_price[PR_BUILD_UNMOVABLE] * this->build_cost_multiplier); }
 
+	/**
+	 * Get the cost for clearing a structure of this type.
+	 * @return The cost for clearing.
+	 */
+	Money GetClearCost() const { return (_price[PR_CLEAR_UNMOVABLE] * this->clear_cost_multiplier); }
 };
 
 

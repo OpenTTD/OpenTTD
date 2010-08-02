@@ -162,7 +162,7 @@ CommandCost CmdPurchaseLandArea(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 		MarkTileDirtyByTile(tile);
 	}
 
-	cost.AddCost(GetUnmovableSpec(UNMOVABLE_OWNED_LAND)->GetBuildingCost());
+	cost.AddCost(GetUnmovableSpec(UNMOVABLE_OWNED_LAND)->GetBuildCost());
 	return cost;
 }
 
@@ -189,7 +189,7 @@ CommandCost CmdSellLandArea(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 	if (flags & DC_EXEC) DoClearSquare(tile);
 
-	return CommandCost(EXPENSES_CONSTRUCTION, - GetUnmovableSpec(UNMOVABLE_OWNED_LAND)->GetRemovalCost());
+	return CommandCost(EXPENSES_CONSTRUCTION, -GetUnmovableSpec(UNMOVABLE_OWNED_LAND)->GetClearCost());
 }
 
 static Foundation GetFoundation_Unmovable(TileIndex tile, Slope tileh);
