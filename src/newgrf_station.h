@@ -44,6 +44,7 @@ enum StationSpecFlags {
  * where index is computed as (x * platforms) + platform. */
 typedef byte *StationLayout;
 
+/** Station specification. */
 struct StationSpec {
 	const struct GRFFile *grffile; ///< ID of GRF file station belongs to.
 	int localidx; ///< Index within GRF file of station.

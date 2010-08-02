@@ -481,6 +481,10 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 	MarkWholeScreenDirty();
 }
 
+/**
+ * Check for bankruptcy of a company. Called every three months.
+ * @param c Company to check.
+ */
 static void CompanyCheckBankrupt(Company *c)
 {
 	/*  If the company has money again, it does not go bankrupt */
@@ -552,6 +556,10 @@ static void CompanyCheckBankrupt(Company *c)
 	}
 }
 
+/**
+ * Update the finances of all companies.
+ * Pay for the stations, update the history graph, update ratings and company values, and deal with bankruptcy.
+ */
 static void CompaniesGenStatistics()
 {
 	Station *st;

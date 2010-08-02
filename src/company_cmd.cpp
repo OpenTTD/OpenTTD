@@ -47,6 +47,11 @@ uint _cur_company_tick_index;             ///< used to generate a name for one c
 CompanyPool _company_pool("Company"); ///< Pool of companies.
 INSTANTIATE_POOL_METHODS(Company)
 
+/**
+ * Constructor.
+ * @param name_1 Name of the company.
+ * @param is_ai  A computer program is running for this company.
+ */
 Company::Company(uint16 name_1, bool is_ai)
 {
 	this->name_1 = name_1;
@@ -56,6 +61,7 @@ Company::Company(uint16 name_1, bool is_ai)
 	InvalidateWindowData(WC_PERFORMANCE_DETAIL, 0, INVALID_COMPANY);
 }
 
+/** Destructor. */
 Company::~Company()
 {
 	free(this->num_engines);

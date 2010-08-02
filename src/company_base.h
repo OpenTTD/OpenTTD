@@ -43,30 +43,30 @@ struct CompanyProperties {
 	uint32 president_name_2; ///< Parameter of #president_name_1
 	char *president_name;    ///< Name of the president if the user changed it.
 
-	CompanyManagerFace face;
+	CompanyManagerFace face;         ///< Face description of the president.
 
 	Money money;         ///< Money owned by the company.
 	byte money_fraction; ///< Fraction of money of the company, too small to represent in \a money.
-	Money current_loan;
+	Money current_loan;              ///< Amount of money borrowed from the bank.
 
-	byte colour;
+	byte colour;                     ///< Company colour.
 
-	RailTypes avail_railtypes;
+	RailTypes avail_railtypes;       ///< Rail types available to the company.
 
-	byte block_preview;
+	byte block_preview;              ///< Number of months that the company is not allowed to get new exclusive engine previews.
 
 	uint32 cargo_types; ///< which cargo types were transported the last year
 
 	TileIndex location_of_HQ; ///< northern tile of HQ; INVALID_TILE when there is none
-	TileIndex last_build_coordinate;
+	TileIndex last_build_coordinate; ///< Coordinate of the last build thing by this company.
 
 	OwnerByte share_owners[4]; ///< Owners of the 4 shares of the company. #INVALID_OWNER if nobody has bought them yet.
 
 	Year inaugurated_year;     ///< Year of starting the company.
 
-	byte quarters_of_bankruptcy;
+	byte quarters_of_bankruptcy;     ///< Number of quarters (a quarter is 3 months) that the company has a negative balance.
 	CompanyMask bankrupt_asked; ///< which companies were asked about buying it?
-	int16 bankrupt_timeout;
+	int16 bankrupt_timeout;          ///< If bigger than \c 0, amount of time to wait for an answer on an offer to buy this company.
 	Money bankrupt_value;
 
 	bool is_ai; ///< If \c true, the company is controlled by the computer (a NoAI program).
@@ -90,12 +90,12 @@ struct Company : CompanyPool::PoolItem<&_company_pool>, CompanyProperties {
 	~Company();
 
 	Livery livery[LS_END];
-	RoadTypes avail_roadtypes;
+	RoadTypes avail_roadtypes;         ///< Road types available to this company.
 
 	class AIInstance *ai_instance;
 	class AIInfo *ai_info;
 
-	EngineRenewList engine_renew_list;
+	EngineRenewList engine_renew_list; ///< Engine renewals of this company.
 	CompanySettings settings;          ///< settings specific for each company
 	uint16 *num_engines;               ///< caches the number of engines of each type the company owns (no need to save this)
 

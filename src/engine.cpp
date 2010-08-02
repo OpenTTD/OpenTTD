@@ -207,6 +207,10 @@ uint Engine::GetDisplayDefaultCapacity(uint16 *mail_capacity) const
 	}
 }
 
+/**
+ * Return how much the running costs of this engine are.
+ * @return Yearly running cost of the engine.
+ */
 Money Engine::GetRunningCost() const
 {
 	Price base_price;
@@ -240,6 +244,10 @@ Money Engine::GetRunningCost() const
 	return GetPrice(base_price, cost_factor, this->grffile, -8);
 }
 
+/**
+ * Return how much a new engine costs.
+ * @return Cost of the engine.
+ */
 Money Engine::GetCost() const
 {
 	Price base_price;
@@ -500,6 +508,7 @@ static void CalcEngineReliability(Engine *e)
 	SetWindowClassesDirty(WC_REPLACE_VEHICLE);
 }
 
+/** Compute the value for #_year_engine_aging_stops. */
 void SetYearEngineAgingStops()
 {
 	/* Determine last engine aging year, default to 2050 as previously. */
@@ -598,6 +607,11 @@ static void AcceptEnginePreview(EngineID eid, CompanyID company)
 	}
 }
 
+/**
+ * Get the N-th best company.
+ * @param pp Value N, 1 means best, 2 means second best, etc.
+ * @return N-th best company if it exists, #INVALID_COMPANY otherwise.
+ */
 static CompanyID GetBestCompany(uint8 pp)
 {
 	CompanyID best_company;
@@ -624,6 +638,7 @@ static CompanyID GetBestCompany(uint8 pp)
 	return best_company;
 }
 
+/** Daily check to offer an exclusive engine preview to the companies. */
 void EnginesDailyLoop()
 {
 	if (_cur_year >= _year_engine_aging_stops) return;
@@ -675,6 +690,11 @@ CommandCost CmdWantEnginePreview(TileIndex tile, DoCommandFlag flags, uint32 p1,
 	return CommandCost();
 }
 
+/**
+ * An engine has become available for general use.
+ * Also handle the exclusive engine preview contract.
+ * @param e Engine generally available as of now.
+ */
 static void NewVehicleAvailable(Engine *e)
 {
 	Vehicle *v;

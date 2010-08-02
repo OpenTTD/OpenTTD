@@ -387,7 +387,7 @@ static struct {
 	uint32 v46;
 	uint32 v47;
 	uint32 v49;
-	uint8 valid;
+	uint8 valid; ///< Bits indicating what variable is valid (for each bit, \c 0 is invalid, \c 1 is valid).
 } _svc;
 
 static uint32 StationGetVariable(const ResolverObject *object, byte variable, byte parameter, bool *available)
