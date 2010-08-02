@@ -209,32 +209,6 @@ CommandCost CmdBuildUnmovable(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 }
 
 
-/**
- * Sell a land area. Actually you only sell one tile, so
- * the name is a bit confusing ;p
- * @param tile the tile the company is selling
- * @param flags for this command type
- * @param p1 unused
- * @param p2 unused
- * @param text unused
- * @return the cost of this operation or an error
- */
-static CommandCost CmdSellLandArea(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
-{
-	if (!IsOwnedLandTile(tile)) return CMD_ERROR;
-	if (_current_company != OWNER_WATER) {
-		CommandCost ret = CheckTileOwnership(tile);
-		if (ret.Failed()) return ret;
-	}
-
-	CommandCost ret = EnsureNoVehicleOnGround(tile);
-	if (ret.Failed()) return ret;
-
-	if (flags & DC_EXEC) DoClearSquare(tile);
-
-	return CommandCost(EXPENSES_CONSTRUCTION, -UnmovableSpec::Get(UNMOVABLE_OWNED_LAND)->GetClearCost());
-}
-
 static Foundation GetFoundation_Unmovable(TileIndex tile, Slope tileh);
 
 static void DrawTile_Unmovable(TileInfo *ti)
@@ -320,44 +294,51 @@ static Foundation GetFoundation_Unmovable(TileIndex tile, Slope tileh)
 
 static CommandCost ClearTile_Unmovable(TileIndex tile, DoCommandFlag flags)
 {
-	if (IsCompanyHQ(tile)) {
-		if (_current_company == OWNER_WATER) {
-			return DestroyCompanyHQ(GetTileOwner(tile), DC_EXEC);
-		} else {
-			return_cmd_error(flags & DC_AUTO ? STR_ERROR_COMPANY_HEADQUARTERS_IN : INVALID_STRING_ID);
-		}
-	}
-
-	if (IsOwnedLand(tile)) {
-		return CmdSellLandArea(tile, flags, 0, 0, NULL);
-	}
+	UnmovableType type = GetUnmovableType(tile);
+	const UnmovableSpec *spec = UnmovableSpec::Get(type);
 
 	/* Water can remove everything! */
 	if (_current_company != OWNER_WATER) {
-		if (flags & DC_AUTO) {
+		if (type != UNMOVABLE_OWNED_LAND && flags & DC_AUTO) {
 			/* No automatic removal by overbuilding stuff. */
-			return_cmd_error(STR_ERROR_OBJECT_IN_THE_WAY);
-		} else if (_game_mode != GM_EDITOR && !_cheats.magic_bulldozer.value) {
+			return_cmd_error(type == UNMOVABLE_HQ ? STR_ERROR_COMPANY_HEADQUARTERS_IN : STR_ERROR_OBJECT_IN_THE_WAY);
+		} else if (_game_mode == GM_EDITOR) {
+			/* No further limitations for the editor. */
+		} else if (GetTileOwner(tile) == OWNER_NONE) {
+			/* Owned by nobody, so we can only remove it with brute force! */
+			if (!_cheats.magic_bulldozer.value) return CMD_ERROR;
+		} else if (CheckTileOwnership(tile).Failed()) {
+			/* We don't own it!. */
+			return_cmd_error(STR_ERROR_OWNED_BY);
+		} else if (type != UNMOVABLE_OWNED_LAND && !_cheats.magic_bulldozer.value) {
 			/* In the game editor or with cheats we can remove, otherwise we can't. */
 			return CMD_ERROR;
 		}
 	}
 
-	if (IsStatue(tile)) {
-		if (flags & DC_AUTO) return_cmd_error(STR_ERROR_OBJECT_IN_THE_WAY);
+	switch (type) {
+		case UNMOVABLE_HQ:
+			return DestroyCompanyHQ(GetTileOwner(tile), flags);
 
-		if (flags & DC_EXEC) {
-			TownID town = GetStatueTownID(tile);
-			ClrBit(Town::Get(town)->statues, GetTileOwner(tile));
-			SetWindowDirty(WC_TOWN_AUTHORITY, town);
-		}
+		case UNMOVABLE_STATUE:
+			if (flags & DC_EXEC) {
+				TownID town = GetStatueTownID(tile);
+				ClrBit(Town::Get(town)->statues, GetTileOwner(tile));
+				SetWindowDirty(WC_TOWN_AUTHORITY, town);
+			}
+			break;
+
+		default:
+			break;
 	}
 
 	if (flags & DC_EXEC) {
 		DoClearSquare(tile);
 	}
 
-	return CommandCost();
+	CommandCost cost(EXPENSES_CONSTRUCTION, spec->GetClearCost());
+	if (type == UNMOVABLE_OWNED_LAND) cost.MultiplyCost(-1); // They get an income!
+	return cost;
 }
 
 static void AddAcceptedCargo_Unmovable(TileIndex tile, CargoArray &acceptance, uint32 *always_accepted)
