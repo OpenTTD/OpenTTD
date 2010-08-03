@@ -77,7 +77,7 @@
 	EnforcePrecondition(false, ::IsValidTile(front));
 	EnforcePrecondition(false, (::TileX(front) == ::TileX(tile)) != (::TileY(front) == ::TileY(tile)));
 
-	return AIObject::DoCommand(tile, ::TileY(front) == ::TileY(tile), 0, CMD_BUILD_SHIP_DEPOT);
+	return AIObject::DoCommand(tile, ::TileX(front) == ::TileX(tile), 0, CMD_BUILD_SHIP_DEPOT);
 }
 
 /* static */ bool AIMarine::BuildDock(TileIndex tile, StationID station_id)

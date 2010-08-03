@@ -107,6 +107,7 @@ public:
 	 * @exception AIMarine::ERR_MARINE_MUST_BE_BUILT_ON_WATER
 	 * @return Whether the water depot has been/can be build or not.
 	 * @note A WaterDepot is 1 tile in width, and 2 tiles in length.
+	 * @note The depot will be built towards the south from 'tile', not necessarily towards 'front'.
 	 */
 	static bool BuildWaterDepot(TileIndex tile, TileIndex front);
 
