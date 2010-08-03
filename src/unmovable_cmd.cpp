@@ -109,13 +109,11 @@ static CommandCost DestroyCompanyHQ(CompanyID cid, DoCommandFlag flags)
 	return CommandCost(EXPENSES_PROPERTY, CalculateCompanyValue(c) / 100);
 }
 
-void UpdateCompanyHQ(Company *c, uint score)
+void UpdateCompanyHQ(TileIndex tile, uint score)
 {
-	byte val;
-	TileIndex tile = c->location_of_HQ;
-
 	if (tile == INVALID_TILE) return;
 
+	byte val;
 	(val = 0, score < 170) ||
 	(val++, score < 350) ||
 	(val++, score < 520) ||
@@ -157,7 +155,7 @@ static CommandCost CmdBuildCompanyHQ(TileIndex tile, DoCommandFlag flags, uint32
 
 		BuildUnmovable(UNMOVABLE_HQ, tile, _current_company);
 
-		UpdateCompanyHQ(c, score);
+		UpdateCompanyHQ(tile, score);
 		SetWindowDirty(WC_COMPANY, c->index);
 	}
 

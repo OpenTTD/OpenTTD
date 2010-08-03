@@ -292,7 +292,7 @@ int UpdateCompanyRatingAndValue(Company *c, bool update)
 
 	if (update) {
 		c->old_economy[0].performance_history = score;
-		UpdateCompanyHQ(c, score);
+		UpdateCompanyHQ(c->location_of_HQ, score);
 		c->old_economy[0].company_value = CalculateCompanyValue(c);
 	}
 

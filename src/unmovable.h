@@ -18,11 +18,10 @@
 
 /**
  * Update the CompanyHQ to the state associated with the given score
- * @param c     The company to (possibly) update the HQ of.
+ * @param tile  The (northern) tile of the company HQ, or INVALID_TILE.
  * @param score The current (performance) score of the company.
- * @pre c != NULL
  */
-void UpdateCompanyHQ(Company *c, uint score);
+void UpdateCompanyHQ(TileIndex tile, uint score);
 
 /**
  * Actually build the unmovable object.
