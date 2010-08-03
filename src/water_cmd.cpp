@@ -573,35 +573,61 @@ struct LocksDrawTileStruct {
 
 #include "table/water_land.h"
 
-static void DrawWaterStuff(const TileInfo *ti, const WaterDrawTileStruct *wdts,
-	PaletteID palette, uint base, bool draw_ground)
+/**
+ * Draw a build sprite sequence for water tiles.
+ * If buildings are invisible, nothing will be drawn.
+ * @param ti      Tile info.
+ * @param wdts    Sprite sequence to draw.
+ * @param base    Base sprite.
+ * @param offset  Additional sprite offset.
+ * @param palette Palette to use.
+ */
+static void DrawWaterTileStruct(const TileInfo *ti, const WaterDrawTileStruct *wdts, SpriteID base, uint offset, PaletteID palette)
 {
-	SpriteID water_base = GetCanalSprite(CF_WATERSLOPE, ti->tile);
-	SpriteID locks_base = GetCanalSprite(CF_LOCKS, ti->tile);
-
-	/* If no custom graphics, use defaults */
-	if (water_base == 0) water_base = SPR_CANALS_BASE;
-	if (locks_base == 0) {
-		locks_base = SPR_LOCK_BASE;
-	} else {
-		/* If using custom graphics, ignore the variation on height */
-		base = 0;
-	}
-
-	SpriteID image = wdts++->image;
-	if (image < 4) image += water_base;
-	if (draw_ground) DrawGroundSprite(image, PAL_NONE);
-
-	/* End now if buildings are invisible */
+	/* Don't draw if buildings are invisible. */
 	if (IsInvisibilitySet(TO_BUILDINGS)) return;
 
 	for (; wdts->delta_x != 0x80; wdts++) {
-		AddSortableSpriteToDraw(wdts->image + base + ((wdts->image < 24) ? locks_base : 0), palette,
+		AddSortableSpriteToDraw(base + wdts->image + offset, palette,
 			ti->x + wdts->delta_x, ti->y + wdts->delta_y,
 			wdts->size_x, wdts->size_y,
 			wdts->size_z, ti->z + wdts->delta_z,
 			IsTransparencySet(TO_BUILDINGS));
 	}
+}
+
+/** Draw a lock tile. */
+static void DrawWaterLock(const TileInfo *ti)
+{
+	const WaterDrawTileStruct *wdts = _lock_display_seq[GetSection(ti->tile)];
+
+	/* Draw ground sprite. */
+	SpriteID water_base = GetCanalSprite(CF_WATERSLOPE, ti->tile);
+	if (water_base == 0) water_base = SPR_CANALS_BASE;
+
+	SpriteID image = wdts++->image;
+	if (image < 4) image += water_base;
+	DrawGroundSprite(image, PAL_NONE);
+
+	/* Draw structures. */
+	uint     zoffs = 0;
+	SpriteID base  = GetCanalSprite(CF_LOCKS, ti->tile);
+
+	if (base == 0) {
+		/* If no custom graphics, use defaults. */
+		base = SPR_LOCK_BASE;
+		zoffs = ti->z > wdts[3].delta_y ? 24 : 0;
+	}
+
+	DrawWaterTileStruct(ti, wdts, base, zoffs, PAL_NONE);
+}
+
+/** Draw a ship depot tile. */
+static void DrawWaterDepot(const TileInfo *ti)
+{
+	DrawWaterClassGround(ti);
+	/* Skip first entry in _shipdepot_display_seq as this is the ground sprite. */
+	DrawWaterTileStruct(ti, _shipdepot_display_seq[GetSection(ti->tile)] + 1, 0, 0, COMPANY_SPRITE_COLOUR(GetTileOwner(ti->tile)));
 }
 
 static void DrawRiverWater(const TileInfo *ti)
@@ -677,15 +703,12 @@ static void DrawTile_Water(TileInfo *ti)
 			break;
 		}
 
-		case WATER_TILE_LOCK: {
-			const WaterDrawTileStruct *t = _lock_display_seq[GetSection(ti->tile)];
-			DrawWaterStuff(ti, t, 0, ti->z > t[3].delta_y ? 24 : 0, true);
+		case WATER_TILE_LOCK:
+			DrawWaterLock(ti);
 			break;
-		}
 
 		case WATER_TILE_DEPOT:
-			DrawWaterClassGround(ti);
-			DrawWaterStuff(ti, _shipdepot_display_seq[GetSection(ti->tile)], COMPANY_SPRITE_COLOUR(GetTileOwner(ti->tile)), 0, false);
+			DrawWaterDepot(ti);
 			break;
 	}
 }
