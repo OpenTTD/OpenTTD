@@ -128,71 +128,6 @@ void UpdateCompanyHQ(TileIndex tile, uint score)
 extern CommandCost CheckFlatLand(TileArea tile_area, DoCommandFlag flags);
 
 /**
- * Build or relocate the HQ. This depends if the HQ is already built or not
- * @param tile tile where the HQ will be built or relocated to
- * @param flags type of operation
- * @param p1 unused
- * @param p2 unused
- * @param text unused
- * @return the cost of this operation or an error
- */
-static CommandCost CmdBuildCompanyHQ(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
-{
-	Company *c = Company::Get(_current_company);
-	CommandCost cost(EXPENSES_PROPERTY);
-
-	cost = CheckFlatLand(TileArea(tile, 2, 2), flags);
-	if (cost.Failed()) return cost;
-
-	if (c->location_of_HQ != INVALID_TILE) { // Moving HQ
-		cost.AddCost(DestroyCompanyHQ(_current_company, flags));
-	}
-
-	if (flags & DC_EXEC) {
-		int score = UpdateCompanyRatingAndValue(c, false);
-
-		c->location_of_HQ = tile;
-
-		BuildUnmovable(UNMOVABLE_HQ, tile, _current_company);
-
-		UpdateCompanyHQ(tile, score);
-		SetWindowDirty(WC_COMPANY, c->index);
-	}
-
-	return cost;
-}
-
-/**
- * Purchase a land area. Actually you only purchase one tile, so
- * the name is a bit confusing ;p
- * @param tile the tile the company is purchasing
- * @param flags for this command type
- * @param p1 unused
- * @param p2 unused
- * @param text unused
- * @return the cost of this operation or an error
- */
-static CommandCost CmdPurchaseLandArea(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
-{
-	CommandCost cost(EXPENSES_CONSTRUCTION);
-
-	if (IsOwnedLandTile(tile) && IsTileOwner(tile, _current_company)) {
-		return_cmd_error(STR_ERROR_YOU_ALREADY_OWN_IT);
-	}
-
-	cost = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-	if (cost.Failed()) return cost;
-
-	if (flags & DC_EXEC) {
-		BuildUnmovable(UNMOVABLE_OWNED_LAND, tile, _current_company);
-		MarkTileDirtyByTile(tile);
-	}
-
-	cost.AddCost(UnmovableSpec::Get(UNMOVABLE_OWNED_LAND)->GetBuildCost());
-	return cost;
-}
-
-/**
  * Build an unmovable object
  * @param tile tile where the object will be located
  * @param flags type of operation
@@ -206,34 +141,68 @@ CommandCost CmdBuildUnmovable(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 	CommandCost cost(EXPENSES_PROPERTY);
 
 	UnmovableType type = (UnmovableType)GB(p1, 0, 8);
-	switch (type) {
-		case UNMOVABLE_LIGHTHOUSE:
-		case UNMOVABLE_TRANSMITTER:
+	if (type >= UNMOVABLE_MAX) return CMD_ERROR;
+
+	const UnmovableSpec *spec = UnmovableSpec::Get(type);
+	if (spec->flags & OBJECT_FLAG_ONLY_IN_SCENEDIT && _game_mode != GM_EDITOR) return CMD_ERROR;
+	if (spec->flags & OBJECT_FLAG_ONLY_IN_GAME && (_game_mode != GM_NORMAL || _current_company > MAX_COMPANIES)) return CMD_ERROR;
+
+	int size_x = GB(spec->size, 0, 4);
+	int size_y = GB(spec->size, 4, 4);
+	TileArea ta(tile, size_x, size_y);
+
+	if (spec->flags & OBJECT_FLAG_REQUIRE_FLAT) {
+		TILE_AREA_LOOP(tile_cur, ta) {
 			if (GetTileSlope(tile, NULL) != SLOPE_FLAT) return_cmd_error(STR_ERROR_FLAT_LAND_REQUIRED);
-			cost = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-			if (cost.Failed()) return cost;
+		}
+	}
 
-			if (_game_mode != GM_EDITOR) return CMD_ERROR;
+	/* If we require flat land, we've already tested that.
+	 * So we only need to check for clear land. */
+	if (spec->flags & (OBJECT_FLAG_HAS_NO_FOUNDATION | OBJECT_FLAG_REQUIRE_FLAT)) {
+		TILE_AREA_LOOP(tile_cur, ta) {
+			cost.AddCost(DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR));
+		}
+	} else {
+		cost.AddCost(CheckFlatLand(ta, flags));
+	}
+	if (cost.Failed()) return cost;
 
-			if (flags & DC_EXEC) {
-				BuildUnmovable(type, tile);
-				MarkTileDirtyByTile(tile);
+	int hq_score = 0;
+	switch (type) {
+		case UNMOVABLE_OWNED_LAND:
+			if (IsTileType(tile, MP_UNMOVABLE) &&
+					IsTileOwner(tile, _current_company) &&
+					IsOwnedLand(tile)) {
+				return_cmd_error(STR_ERROR_YOU_ALREADY_OWN_IT);
 			}
 			break;
 
-		case UNMOVABLE_OWNED_LAND:
-			cost = CmdPurchaseLandArea(tile, flags, 0, 0, NULL);
-			break;
-
 		case UNMOVABLE_HQ: {
-			cost = CmdBuildCompanyHQ(tile, flags, 0, 0, NULL);
+			Company *c = Company::Get(_current_company);
+			if (c->location_of_HQ != INVALID_TILE) { // Moving HQ
+				cost.AddCost(DestroyCompanyHQ(_current_company, flags));
+			}
+
+			if (flags & DC_EXEC) {
+				hq_score = UpdateCompanyRatingAndValue(c, false);
+				c->location_of_HQ = tile;
+				SetWindowDirty(WC_COMPANY, c->index);
+			}
 			break;
 		}
 
-		case UNMOVABLE_STATUE: // Statues have their own construction due to their town reference.
-		default: return CMD_ERROR;
+		default: break;
 	}
 
+	if (flags & DC_EXEC) {
+		BuildUnmovable(type, tile);
+
+		/* Make sure the HQ starts at the right size. */
+		if (type == UNMOVABLE_HQ) UpdateCompanyHQ(tile, hq_score);
+	}
+
+	cost.AddCost(UnmovableSpec::Get(type)->GetBuildCost() * size_x * size_y);
 	return cost;
 }
 
