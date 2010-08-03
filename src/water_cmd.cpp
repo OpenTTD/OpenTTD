@@ -556,7 +556,13 @@ static void DrawSeaWater(TileIndex tile)
 /** draw a canal styled water tile with dikes around */
 static void DrawCanalWater(TileIndex tile)
 {
-	DrawGroundSprite(SPR_FLAT_WATER_TILE, PAL_NONE);
+	SpriteID image = SPR_FLAT_WATER_TILE;
+	if (HasBit(_water_feature[CF_WATERSLOPE].flags, CFF_HAS_FLAT_SPRITE)) {
+		/* First water slope sprite is flat water. */
+		image = GetCanalSprite(CF_WATERSLOPE, tile);
+		if (image == 0) image = SPR_FLAT_WATER_TILE;
+	}
+	DrawGroundSprite(image, PAL_NONE);
 
 	/* Test for custom graphics, else use the default */
 	SpriteID dikes_base = GetCanalSprite(CF_DIKES, tile);
@@ -602,11 +608,22 @@ static void DrawWaterLock(const TileInfo *ti)
 	const WaterDrawTileStruct *wdts = _lock_display_seq[GetSection(ti->tile)];
 
 	/* Draw ground sprite. */
-	SpriteID water_base = GetCanalSprite(CF_WATERSLOPE, ti->tile);
-	if (water_base == 0) water_base = SPR_CANALS_BASE;
-
 	SpriteID image = wdts++->image;
-	if (image < 4) image += water_base;
+
+	SpriteID water_base = GetCanalSprite(CF_WATERSLOPE, ti->tile);
+	if (water_base == 0) {
+		/* Use default sprites. */
+		water_base = SPR_CANALS_BASE;
+	} else if (HasBit(_water_feature[CF_WATERSLOPE].flags, CFF_HAS_FLAT_SPRITE)) {
+		/* NewGRF supplies a flat sprite as first sprite. */
+		if (image == SPR_FLAT_WATER_TILE) {
+			image = water_base;
+		} else {
+			image++;
+		}
+	}
+
+	if (image < 5) image += water_base;
 	DrawGroundSprite(image, PAL_NONE);
 
 	/* Draw structures. */
@@ -635,7 +652,7 @@ static void DrawRiverWater(const TileInfo *ti)
 	SpriteID image = SPR_FLAT_WATER_TILE;
 	SpriteID edges_base = GetCanalSprite(CF_RIVER_EDGE, ti->tile);
 
-	if (ti->tileh != SLOPE_FLAT) {
+	if (ti->tileh != SLOPE_FLAT || HasBit(_water_feature[CF_RIVER_SLOPE].flags, CFF_HAS_FLAT_SPRITE)) {
 		image = GetCanalSprite(CF_RIVER_SLOPE, ti->tile);
 		if (image == 0) {
 			switch (ti->tileh) {
@@ -646,13 +663,18 @@ static void DrawRiverWater(const TileInfo *ti)
 				default:       image = SPR_FLAT_WATER_TILE;    break;
 			}
 		} else {
+			/* Flag bit 0 indicates that the first sprite is flat water. */
+			uint offset = HasBit(_water_feature[CF_RIVER_SLOPE].flags, CFF_HAS_FLAT_SPRITE) ? 1 : 0;
+
 			switch (ti->tileh) {
-				default: NOT_REACHED();
-				case SLOPE_SE:             edges_base += 12; break;
-				case SLOPE_NE: image += 1; edges_base += 24; break;
-				case SLOPE_SW: image += 2; edges_base += 36; break;
-				case SLOPE_NW: image += 3; edges_base += 48; break;
+				case SLOPE_SE:              edges_base += 12; break;
+				case SLOPE_NE: offset += 1; edges_base += 24; break;
+				case SLOPE_SW: offset += 2; edges_base += 36; break;
+				case SLOPE_NW: offset += 3; edges_base += 48; break;
+				default:       offset  = 0; break;
 			}
+
+			image += offset;
 		}
 	}
 
