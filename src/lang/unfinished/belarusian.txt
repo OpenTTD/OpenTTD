@@ -1997,7 +1997,7 @@ STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Р
 STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Здабываньне зьвестак аб гульні...
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Збадываньне зьвестак аб кампаніі...
 ############ End of leave-in-this-order
-STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} кліент{P "" ы аў} рыхту{G 0 е е е ю}цца далучыцца
+STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} кліент{P "" ы аў} рыхтуецца далучыцца
 STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}Запампована {BYTES} / {BYTES}
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Адлучыцца

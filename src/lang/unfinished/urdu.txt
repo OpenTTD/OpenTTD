@@ -100,25 +100,25 @@ STR_QUANTITY_COAL                                               :{WEIGHT} کوی
 STR_QUANTITY_MAIL                                               :{COMMA} ڈاک ک{P ا ے} تھیل{P ا ے}
 STR_QUANTITY_OIL                                                :{VOLUME}خام تیل
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} عدد مویشی
-STR_QUANTITY_GOODS                                              :سامان ک{P ا ے} {COMMA} کریٹ
+STR_QUANTITY_GOODS                                              :سامان ک{P 0 ا ے} {COMMA} کریٹ
 STR_QUANTITY_GRAIN                                              :انآج کا {WEIGHT} وزن
 STR_QUANTITY_WOOD                                               :لکڑی کا {WEIGHT} وزن
 STR_QUANTITY_IRON_ORE                                           :خام دھات لوھے کا {WEIGHT} وزن
 STR_QUANTITY_STEEL                                              :اسٹیل کا {WEIGHT} وزن
-STR_QUANTITY_VALUABLES                                          :قیمتی سامان ک{P ا ے} {COMMA} تھیل{P ا ے}
+STR_QUANTITY_VALUABLES                                          :قیمتی سامان ک{P 0 ا ے} {COMMA} تھیل{P ا ے}
 STR_QUANTITY_COPPER_ORE                                         :خام دھات تانبے کا {WEIGHT} وزن
 STR_QUANTITY_MAIZE                                              :مکئی کا {WEIGHT} وزن
 STR_QUANTITY_FRUIT                                              :پھل کا {WEIGHT} وزن
 STR_QUANTITY_DIAMONDS                                           :ھیرے کے {COMMA} تھیل{P ا ے}
 STR_QUANTITY_FOOD                                               :خوراک کا {WEIGHT} وزن
 STR_QUANTITY_PAPER                                              :کاغز کا {WEIGHT} وزن
-STR_QUANTITY_GOLD                                               :سونے ک{P ا ے} {COMMA} تھیل{P ا ے}
+STR_QUANTITY_GOLD                                               :سونے ک{P 0 ا ے} {COMMA} تھیل{P ا ے}
 STR_QUANTITY_WATER                                              :{VOLUME} پانی
 STR_QUANTITY_WHEAT                                              :گندم کا {WEIGHT} وزن
 STR_QUANTITY_RUBBER                                             :{VOLUME} ربڑ
 STR_QUANTITY_SUGAR                                              :چینی کا {WEIGHT} وزن
 STR_QUANTITY_TOYS                                               :{COMMA} کھلون{P ا ے}
-STR_QUANTITY_SWEETS                                             :مٹھائی ک{P ا ے} {COMMA} تھیل{P ا ے}
+STR_QUANTITY_SWEETS                                             :مٹھائی ک{P 0 ا ے} {COMMA} تھیل{P ا ے}
 STR_QUANTITY_COLA                                               :{VOLUME} کولا
 STR_QUANTITY_CANDYFLOSS                                         :گڑیا کے بالوں کا {WEIGHT} وزن
 STR_QUANTITY_BUBBLES                                            :{COMMA} ببل
@@ -413,37 +413,37 @@ STR_ABOUT_MENU_SPRITE_ALIGNER                                   :sprite صف ب�
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
-STR_ORDINAL_NUMBER_1ST                                          :پھل{G ا ی}
-STR_ORDINAL_NUMBER_2ND                                          :دوسر{G ا ی}
-STR_ORDINAL_NUMBER_3RD                                          :تیسر{G ا ی}
-STR_ORDINAL_NUMBER_4TH                                          :چوتھ{G ا ی}
-STR_ORDINAL_NUMBER_5TH                                          :پانچھو{G اں یں}
-STR_ORDINAL_NUMBER_6TH                                          :چھٹ{G ا ی}
-STR_ORDINAL_NUMBER_7TH                                          :ساتو{G اں یں}
-STR_ORDINAL_NUMBER_8TH                                          :آٹھو{G اں یں}
-STR_ORDINAL_NUMBER_9TH                                          :نو{G اں یں}
-STR_ORDINAL_NUMBER_10TH                                         :دسو{G اں یں}
-STR_ORDINAL_NUMBER_11TH                                         :گیارھو{G اں یں}
-STR_ORDINAL_NUMBER_12TH                                         :بارھو{G اں یں}
-STR_ORDINAL_NUMBER_13TH                                         :تیرھو{G اں یں}
-STR_ORDINAL_NUMBER_14TH                                         :چودھو{G اں یں}
-STR_ORDINAL_NUMBER_15TH                                         :پندھرو{G اں یں}
-STR_ORDINAL_NUMBER_16TH                                         :سولھو{G اں یں}
-STR_ORDINAL_NUMBER_17TH                                         :سترھو{G اں یں}
-STR_ORDINAL_NUMBER_18TH                                         :اٹھارو{G اں یں}
-STR_ORDINAL_NUMBER_19TH                                         :انیسو{G اں یں}
-STR_ORDINAL_NUMBER_20TH                                         :بیسو{G اں یں}
-STR_ORDINAL_NUMBER_21ST                                         :اکیسو{G اں یں}
-STR_ORDINAL_NUMBER_22ND                                         :بایئسو{G اں یں}
-STR_ORDINAL_NUMBER_23RD                                         :تیئسو{G اں یں}
-STR_ORDINAL_NUMBER_24TH                                         :چوبیسو{G اں یں}
-STR_ORDINAL_NUMBER_25TH                                         :پچیسو{G اں یں}
-STR_ORDINAL_NUMBER_26TH                                         :چھبیسو{G اں یں}
-STR_ORDINAL_NUMBER_27TH                                         :ستایئسو{G اں یں}
-STR_ORDINAL_NUMBER_28TH                                         :اٹھایئسو{G اں یں}
-STR_ORDINAL_NUMBER_29TH                                         :انتیسو{G اں یں}
-STR_ORDINAL_NUMBER_30TH                                         :تیسو{G اں یں}
-STR_ORDINAL_NUMBER_31ST                                         :اکتیسو{G اں یں}
+STR_ORDINAL_NUMBER_1ST                                          :پھل
+STR_ORDINAL_NUMBER_2ND                                          :دوسر
+STR_ORDINAL_NUMBER_3RD                                          :تیسر
+STR_ORDINAL_NUMBER_4TH                                          :چوتھ
+STR_ORDINAL_NUMBER_5TH                                          :پانچھو
+STR_ORDINAL_NUMBER_6TH                                          :چھٹ
+STR_ORDINAL_NUMBER_7TH                                          :ساتو
+STR_ORDINAL_NUMBER_8TH                                          :آٹھو
+STR_ORDINAL_NUMBER_9TH                                          :نو
+STR_ORDINAL_NUMBER_10TH                                         :دسو
+STR_ORDINAL_NUMBER_11TH                                         :گیارھو
+STR_ORDINAL_NUMBER_12TH                                         :بارھو
+STR_ORDINAL_NUMBER_13TH                                         :تیرھو
+STR_ORDINAL_NUMBER_14TH                                         :چودھو
+STR_ORDINAL_NUMBER_15TH                                         :پندھرو
+STR_ORDINAL_NUMBER_16TH                                         :سولھو
+STR_ORDINAL_NUMBER_17TH                                         :سترھو
+STR_ORDINAL_NUMBER_18TH                                         :اٹھارو
+STR_ORDINAL_NUMBER_19TH                                         :انیسو
+STR_ORDINAL_NUMBER_20TH                                         :بیسو
+STR_ORDINAL_NUMBER_21ST                                         :اکیسو
+STR_ORDINAL_NUMBER_22ND                                         :بایئسو
+STR_ORDINAL_NUMBER_23RD                                         :تیئسو
+STR_ORDINAL_NUMBER_24TH                                         :چوبیسو
+STR_ORDINAL_NUMBER_25TH                                         :پچیسو
+STR_ORDINAL_NUMBER_26TH                                         :چھبیسو
+STR_ORDINAL_NUMBER_27TH                                         :ستایئسو
+STR_ORDINAL_NUMBER_28TH                                         :اٹھایئسو
+STR_ORDINAL_NUMBER_29TH                                         :انتیسو
+STR_ORDINAL_NUMBER_30TH                                         :تیسو
+STR_ORDINAL_NUMBER_31ST                                         :اکتیسو
 ############ range for days ends
 
 ############ range for months starts
