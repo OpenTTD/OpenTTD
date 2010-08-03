@@ -507,8 +507,42 @@ static bool IsWateredTile(TileIndex tile, Direction from)
 	}
 }
 
-static void DrawWaterEdges(SpriteID base, TileIndex tile)
+/**
+ * Draw a water sprite, potentially with a NewGRF-modified sprite offset.
+ * @param base    Sprite base.
+ * @param offset  Sprite offset.
+ * @param feature The type of sprite that is drawn.
+ * @param tile    Tile index to draw.
+ */
+static void DrawWaterSprite(SpriteID base, uint offset, CanalFeature feature, TileIndex tile)
 {
+	if (base != SPR_FLAT_WATER_TILE) {
+		/* Only call offset callback if the sprite is NewGRF-provided. */
+		offset = GetCanalSpriteOffset(feature, tile, offset);
+	}
+	DrawGroundSprite(base + offset, PAL_NONE);
+}
+
+/**
+ * Draw canal or river edges.
+ * @param canal  True if canal edges should be drawn, false for river edges.
+ * @param offset Sprite offset.
+ * @param tile   Tile to draw.
+ */
+static void DrawWaterEdges(bool canal, uint offset, TileIndex tile)
+{
+	CanalFeature feature;
+	SpriteID base = 0;
+	if (canal) {
+		feature = CF_DIKES;
+		base = GetCanalSprite(CF_DIKES, tile);
+		if (base == 0) base = SPR_CANAL_DIKES_BASE;
+	} else {
+		feature = CF_RIVER_EDGE;
+		base = GetCanalSprite(CF_RIVER_EDGE, tile);
+		if (base == 0) return; // Don't draw if no sprites provided.
+	}
+
 	uint wa;
 
 	/* determine the edges around with water. */
@@ -517,33 +551,33 @@ static void DrawWaterEdges(SpriteID base, TileIndex tile)
 	wa += IsWateredTile(TILE_ADDXY(tile,  1,  0), DIR_NE) << 2;
 	wa += IsWateredTile(TILE_ADDXY(tile,  0, -1), DIR_SE) << 3;
 
-	if (!(wa & 1)) DrawGroundSprite(base,     PAL_NONE);
-	if (!(wa & 2)) DrawGroundSprite(base + 1, PAL_NONE);
-	if (!(wa & 4)) DrawGroundSprite(base + 2, PAL_NONE);
-	if (!(wa & 8)) DrawGroundSprite(base + 3, PAL_NONE);
+	if (!(wa & 1)) DrawWaterSprite(base, offset,     feature, tile);
+	if (!(wa & 2)) DrawWaterSprite(base, offset + 1, feature, tile);
+	if (!(wa & 4)) DrawWaterSprite(base, offset + 2, feature, tile);
+	if (!(wa & 8)) DrawWaterSprite(base, offset + 3, feature, tile);
 
 	/* right corner */
 	switch (wa & 0x03) {
-		case 0: DrawGroundSprite(base + 4, PAL_NONE); break;
-		case 3: if (!IsWateredTile(TILE_ADDXY(tile, -1, 1), DIR_W)) DrawGroundSprite(base + 8, PAL_NONE); break;
+		case 0: DrawWaterSprite(base, offset + 4, feature, tile); break;
+		case 3: if (!IsWateredTile(TILE_ADDXY(tile, -1, 1), DIR_W)) DrawWaterSprite(base, offset + 8, feature, tile); break;
 	}
 
 	/* bottom corner */
 	switch (wa & 0x06) {
-		case 0: DrawGroundSprite(base + 5, PAL_NONE); break;
-		case 6: if (!IsWateredTile(TILE_ADDXY(tile, 1, 1), DIR_N)) DrawGroundSprite(base + 9, PAL_NONE); break;
+		case 0: DrawWaterSprite(base, offset + 5, feature, tile); break;
+		case 6: if (!IsWateredTile(TILE_ADDXY(tile, 1, 1), DIR_N)) DrawWaterSprite(base, offset + 9, feature, tile); break;
 	}
 
 	/* left corner */
 	switch (wa & 0x0C) {
-		case  0: DrawGroundSprite(base + 6, PAL_NONE); break;
-		case 12: if (!IsWateredTile(TILE_ADDXY(tile, 1, -1), DIR_E)) DrawGroundSprite(base + 10, PAL_NONE); break;
+		case  0: DrawWaterSprite(base, offset + 6, feature, tile); break;
+		case 12: if (!IsWateredTile(TILE_ADDXY(tile, 1, -1), DIR_E)) DrawWaterSprite(base, offset + 10, feature, tile); break;
 	}
 
 	/* upper corner */
 	switch (wa & 0x09) {
-		case 0: DrawGroundSprite(base + 7, PAL_NONE); break;
-		case 9: if (!IsWateredTile(TILE_ADDXY(tile, -1, -1), DIR_S)) DrawGroundSprite(base + 11, PAL_NONE); break;
+		case 0: DrawWaterSprite(base, offset + 7, feature, tile); break;
+		case 9: if (!IsWateredTile(TILE_ADDXY(tile, -1, -1), DIR_S)) DrawWaterSprite(base, offset + 11, feature, tile); break;
 	}
 }
 
@@ -562,13 +596,9 @@ static void DrawCanalWater(TileIndex tile)
 		image = GetCanalSprite(CF_WATERSLOPE, tile);
 		if (image == 0) image = SPR_FLAT_WATER_TILE;
 	}
-	DrawGroundSprite(image, PAL_NONE);
+	DrawWaterSprite(image, 0, CF_WATERSLOPE, tile);
 
-	/* Test for custom graphics, else use the default */
-	SpriteID dikes_base = GetCanalSprite(CF_DIKES, tile);
-	if (dikes_base == 0) dikes_base = SPR_CANAL_DIKES_BASE;
-
-	DrawWaterEdges(dikes_base, tile);
+	DrawWaterEdges(true, 0, tile);
 }
 
 struct LocksDrawTileStruct {
@@ -588,13 +618,15 @@ struct LocksDrawTileStruct {
  * @param offset  Additional sprite offset.
  * @param palette Palette to use.
  */
-static void DrawWaterTileStruct(const TileInfo *ti, const WaterDrawTileStruct *wdts, SpriteID base, uint offset, PaletteID palette)
+static void DrawWaterTileStruct(const TileInfo *ti, const WaterDrawTileStruct *wdts, SpriteID base, uint offset, PaletteID palette, CanalFeature feature)
 {
 	/* Don't draw if buildings are invisible. */
 	if (IsInvisibilitySet(TO_BUILDINGS)) return;
 
 	for (; wdts->delta_x != 0x80; wdts++) {
-		AddSortableSpriteToDraw(base + wdts->image + offset, palette,
+		uint tile_offs = offset + wdts->image;
+		if (feature < CF_END) tile_offs = GetCanalSpriteOffset(feature, ti->tile, tile_offs);
+		AddSortableSpriteToDraw(base + tile_offs, palette,
 			ti->x + wdts->delta_x, ti->y + wdts->delta_y,
 			wdts->size_x, wdts->size_y,
 			wdts->size_z, ti->z + wdts->delta_z,
@@ -636,7 +668,7 @@ static void DrawWaterLock(const TileInfo *ti)
 		zoffs = ti->z > wdts[3].delta_y ? 24 : 0;
 	}
 
-	DrawWaterTileStruct(ti, wdts, base, zoffs, PAL_NONE);
+	DrawWaterTileStruct(ti, wdts, base, zoffs, PAL_NONE, CF_LOCKS);
 }
 
 /** Draw a ship depot tile. */
@@ -644,13 +676,14 @@ static void DrawWaterDepot(const TileInfo *ti)
 {
 	DrawWaterClassGround(ti);
 	/* Skip first entry in _shipdepot_display_seq as this is the ground sprite. */
-	DrawWaterTileStruct(ti, _shipdepot_display_seq[GetSection(ti->tile)] + 1, 0, 0, COMPANY_SPRITE_COLOUR(GetTileOwner(ti->tile)));
+	DrawWaterTileStruct(ti, _shipdepot_display_seq[GetSection(ti->tile)] + 1, 0, 0, COMPANY_SPRITE_COLOUR(GetTileOwner(ti->tile)), CF_END);
 }
 
 static void DrawRiverWater(const TileInfo *ti)
 {
 	SpriteID image = SPR_FLAT_WATER_TILE;
-	SpriteID edges_base = GetCanalSprite(CF_RIVER_EDGE, ti->tile);
+	uint     offset = 0;
+	uint     edges_offset = 0;
 
 	if (ti->tileh != SLOPE_FLAT || HasBit(_water_feature[CF_RIVER_SLOPE].flags, CFF_HAS_FLAT_SPRITE)) {
 		image = GetCanalSprite(CF_RIVER_SLOPE, ti->tile);
@@ -664,24 +697,24 @@ static void DrawRiverWater(const TileInfo *ti)
 			}
 		} else {
 			/* Flag bit 0 indicates that the first sprite is flat water. */
-			uint offset = HasBit(_water_feature[CF_RIVER_SLOPE].flags, CFF_HAS_FLAT_SPRITE) ? 1 : 0;
+			offset = HasBit(_water_feature[CF_RIVER_SLOPE].flags, CFF_HAS_FLAT_SPRITE) ? 1 : 0;
 
 			switch (ti->tileh) {
-				case SLOPE_SE:              edges_base += 12; break;
-				case SLOPE_NE: offset += 1; edges_base += 24; break;
-				case SLOPE_SW: offset += 2; edges_base += 36; break;
-				case SLOPE_NW: offset += 3; edges_base += 48; break;
+				case SLOPE_SE:              edges_offset += 12; break;
+				case SLOPE_NE: offset += 1; edges_offset += 24; break;
+				case SLOPE_SW: offset += 2; edges_offset += 36; break;
+				case SLOPE_NW: offset += 3; edges_offset += 48; break;
 				default:       offset  = 0; break;
 			}
 
-			image += offset;
+			offset = GetCanalSpriteOffset(CF_RIVER_SLOPE, ti->tile, offset);
 		}
 	}
 
-	DrawGroundSprite(image, PAL_NONE);
+	DrawGroundSprite(image + offset, PAL_NONE);
 
 	/* Draw river edges if available. */
-	if (edges_base > 48) DrawWaterEdges(edges_base, ti->tile);
+	DrawWaterEdges(false, edges_offset, ti->tile);
 }
 
 void DrawShoreTile(Slope tileh)

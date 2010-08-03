@@ -105,3 +105,45 @@ SpriteID GetCanalSprite(CanalFeature feature, TileIndex tile)
 
 	return group->GetResult();
 }
+
+/**
+ * Run a specific callback for canals.
+ * @param callback Callback ID.
+ * @param param1   Callback parameter 1.
+ * @param param2   Callback parameter 2.
+ * @param feature  For which feature to run the callback.
+ * @param tile     Tile index of canal.
+ * @return Callback result or CALLBACK_FAILED if the callback failed.
+ */
+uint16 GetCanalCallback(CallbackID callback, uint32 param1, uint32 param2, CanalFeature feature, TileIndex tile)
+{
+	ResolverObject object;
+	const SpriteGroup *group;
+
+	NewCanalResolver(&object, tile, _water_feature[feature].grffile);
+
+	object.callback = callback;
+	object.callback_param1 = param1;
+	object.callback_param2 = param2;
+
+	group = SpriteGroup::Resolve(_water_feature[feature].group, &object);
+	if (group == NULL) return CALLBACK_FAILED;
+
+	return group->GetCallbackResult();
+}
+
+/**
+ * Get the new sprite offset for a water tile.
+ * @param tile       Tile index of the canal/water tile.
+ * @param feature    For which feature to get the new sprite offset.
+ * @param cur_offset Current sprite offset.
+ * @return New sprite offset.
+ */
+uint GetCanalSpriteOffset(CanalFeature feature, TileIndex tile, uint cur_offset)
+{
+	if (HasBit(_water_feature[feature].callback_mask, CBM_CANAL_SPRITE_OFFSET)) {
+		uint16 cb = GetCanalCallback(CBID_CANALS_SPRITE_OFFSET, cur_offset, 0, feature, tile);
+		if (cb != CALLBACK_FAILED) return cur_offset + cb;
+	}
+	return cur_offset;
+}

@@ -15,6 +15,7 @@
 #include "gfx_type.h"
 #include "tile_type.h"
 #include "newgrf_generic.h"
+#include "newgrf_callbacks.h"
 
 /**
  * List of different canal 'features'.
@@ -56,5 +57,8 @@ extern WaterFeature _water_feature[CF_END];
  * @return Base sprite returned by GRF, or 0 if none.
  */
 SpriteID GetCanalSprite(CanalFeature feature, TileIndex tile);
+
+uint16 GetCanalCallback(CallbackID callback, uint32 param1, uint32 param2, CanalFeature feature, TileIndex tile);
+uint GetCanalSpriteOffset(CanalFeature feature, TileIndex tile, uint cur_offset);
 
 #endif /* NEWGRF_CANAL_H */
