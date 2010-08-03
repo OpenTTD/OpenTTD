@@ -205,7 +205,7 @@ enum CallbackID {
 	CBID_NEW_SIGNALS_SPRITE_DRAW         = 0x146, // 15 bit callback, not implemented
 
 	/** Add an offset to the default sprite numbers to show another sprite. */
-	CBID_CANALS_SPRITE_OFFSET            = 0x147, // 15 bit callback, not implemented
+	CBID_CANALS_SPRITE_OFFSET            = 0x147, // 15 bit callback
 
 	/** Called when a cargo type specified in property 20 is accepted. */
 	CBID_HOUSE_WATCHED_CARGO_ACCEPTED    = 0x148, // 15 bit callback, not implemented
