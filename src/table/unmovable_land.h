@@ -96,28 +96,28 @@ static const DrawTileSeqStruct _unmovable_hq_huge_west[] = {
 
 static const DrawTileSprites _unmovable_hq[] = {
 	TILE_SPRITE_LINE(SPR_TINYHQ_NORTH,         _unmovable_nothing)
-	TILE_SPRITE_LINE(SPR_TINYHQ_EAST,          _unmovable_nothing)
 	TILE_SPRITE_LINE(SPR_TINYHQ_WEST,          _unmovable_nothing)
+	TILE_SPRITE_LINE(SPR_TINYHQ_EAST,          _unmovable_nothing)
 	TILE_SPRITE_LINE(SPR_TINYHQ_SOUTH,         _unmovable_nothing)
 
 	TILE_SPRITE_LINE(SPR_SMALLHQ_NORTH,        _unmovable_nothing)
-	TILE_SPRITE_LINE(SPR_SMALLHQ_EAST,         _unmovable_nothing)
 	TILE_SPRITE_LINE(SPR_SMALLHQ_WEST,         _unmovable_nothing)
+	TILE_SPRITE_LINE(SPR_SMALLHQ_EAST,         _unmovable_nothing)
 	TILE_SPRITE_LINE(SPR_SMALLHQ_SOUTH,        _unmovable_nothing)
 
 	TILE_SPRITE_LINE(SPR_MEDIUMHQ_NORTH,       _unmovable_hq_medium_north)
-	TILE_SPRITE_LINE(SPR_MEDIUMHQ_EAST,        _unmovable_hq_medium_east)
 	TILE_SPRITE_LINE(SPR_MEDIUMHQ_WEST,        _unmovable_hq_medium_west)
+	TILE_SPRITE_LINE(SPR_MEDIUMHQ_EAST,        _unmovable_hq_medium_east)
 	TILE_SPRITE_LINE(SPR_MEDIUMHQ_SOUTH,       _unmovable_nothing)
 
 	TILE_SPRITE_LINE(SPR_LARGEHQ_NORTH_GROUND, _unmovable_hq_large_north)
-	TILE_SPRITE_LINE(SPR_LARGEHQ_EAST_GROUND,  _unmovable_hq_large_east)
 	TILE_SPRITE_LINE(SPR_LARGEHQ_WEST_GROUND,  _unmovable_hq_large_west)
+	TILE_SPRITE_LINE(SPR_LARGEHQ_EAST_GROUND,  _unmovable_hq_large_east)
 	TILE_SPRITE_LINE(SPR_LARGEHQ_SOUTH,        _unmovable_nothing)
 
 	TILE_SPRITE_LINE(SPR_HUGEHQ_NORTH_GROUND,  _unmovable_hq_huge_north)
-	TILE_SPRITE_LINE(SPR_HUGEHQ_EAST_GROUND,   _unmovable_hq_huge_east)
 	TILE_SPRITE_LINE(SPR_HUGEHQ_WEST_GROUND,   _unmovable_hq_huge_west)
+	TILE_SPRITE_LINE(SPR_HUGEHQ_EAST_GROUND,   _unmovable_hq_huge_east)
 	TILE_SPRITE_LINE(SPR_HUGEHQ_SOUTH,         _unmovable_nothing)
 };
 

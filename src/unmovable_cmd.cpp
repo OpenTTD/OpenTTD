@@ -253,7 +253,7 @@ static void DrawTile_Unmovable(TileInfo *ti)
 
 	if (type == UNMOVABLE_HQ) {
 		uint8 offset = GetUnmovableOffset(ti->tile);
-		dts = &_unmovable_hq[GetCompanyHQSize(ti->tile) << 2 | GB(offset, 4, 1) | GB(offset, 0, 1) << 1];
+		dts = &_unmovable_hq[GetCompanyHQSize(ti->tile) << 2 | GB(offset, 4, 1) << 1 | GB(offset, 0, 1)];
 	} else {
 		dts = &_unmovables[type];
 	}
