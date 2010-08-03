@@ -46,6 +46,9 @@
 	return UnmovableSpec::Get(GetUnmovableType(tile));
 }
 
+/** We encode the company HQ size in the animation stage. */
+#define GetCompanyHQSize GetUnmovableAnimationStage
+
 /**
  * Destroy a HQ.
  * During normal gameplay you can only implicitely destroy a HQ when you are
@@ -255,7 +258,7 @@ static void DrawTile_Unmovable(TileInfo *ti)
 
 			PaletteID palette = COMPANY_SPRITE_COLOUR(GetTileOwner(ti->tile));
 
-			uint8 offset = GetCompanyHQSection(ti->tile);
+			uint8 offset = GetUnmovableOffset(ti->tile);
 			const DrawTileSprites *t = &_unmovable_display_datas[GetCompanyHQSize(ti->tile) << 2 | GB(offset, 4, 1) << 1 | GB(offset, 0, 1)];
 			DrawGroundSprite(t->ground.sprite, palette);
 

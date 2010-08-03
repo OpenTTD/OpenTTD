@@ -1803,8 +1803,8 @@ bool AfterLoadGame()
 
 			/* Reordering/generalisation of the unmovable bits. */
 			UnmovableType type = GetUnmovableType(t);
-			SetCompanyHQSize(t, type == UNMOVABLE_HQ ? GB(_m[t].m3, 2, 3) : 0);
-			SetCompanyHQSection(t, type == UNMOVABLE_HQ ? GB(_m[t].m3, 1, 1) << 4 | GB(_m[t].m3, 0, 1) : 0);
+			SetUnmovableAnimationStage(t, type == UNMOVABLE_HQ ? GB(_m[t].m3, 2, 3) : 0);
+			SetUnmovableOffset(t, type == UNMOVABLE_HQ ? GB(_m[t].m3, 1, 1) << 4 | GB(_m[t].m3, 0, 1) : 0);
 
 			/* Make sure those bits are clear as well! */
 			_m[t].m4 = 0;

@@ -106,52 +106,51 @@ static inline TownID GetStatueTownID(TileIndex t)
 }
 
 /**
- * Get the 'stage' of the HQ.
- * @param t a tile of the HQ.
+ * Get animation stage/counter of this tile.
+ * @param t The tile to query.
  * @pre IsTileType(t, MP_UNMOVABLE)
- * @return the 'stage' of the HQ.
+ * @return The animation 'stage' of the tile.
  */
-static inline byte GetCompanyHQSize(TileIndex t)
+static inline byte GetUnmovableAnimationStage(TileIndex t)
 {
 	assert(IsTileType(t, MP_UNMOVABLE));
 	return GB(_m[t].m6, 2, 4);
 }
 
 /**
- * Set the 'stage' of the HQ.
- * @param t a tile of the HQ.
- * @param size the actual stage of the HQ
+ * Set animation stage/counter of this tile.
+ * @param t     The tile to query.
+ * @param stage The stage of this tile.
  * @pre IsTileType(t, MP_UNMOVABLE)
  */
-static inline void SetCompanyHQSize(TileIndex t, uint8 size)
+static inline void SetUnmovableAnimationStage(TileIndex t, uint8 stage)
 {
 	assert(IsTileType(t, MP_UNMOVABLE));
-	SB(_m[t].m6, 2, 4, size);
+	SB(_m[t].m6, 2, 4, stage);
 }
 
 /**
- * Get the 'section' of the HQ.
- * The scetion is in fact which side of teh HQ the tile represent
- * @param t a tile of the HQ.
+ * Get offset to the northern most tile.
+ * @param t The tile to get the offset from.
+ * @return The offset to the northern most tile of this structure.
  * @pre IsTileType(t, MP_UNMOVABLE)
- * @return the 'section' of the HQ.
  */
-static inline byte GetCompanyHQSection(TileIndex t)
+static inline byte GetUnmovableOffset(TileIndex t)
 {
 	assert(IsTileType(t, MP_UNMOVABLE));
 	return _m[t].m3;
 }
 
 /**
- * Set the 'section' of the HQ.
- * @param t a tile of the HQ.
- * @param section to be set.
+ * Set offset to the northern most tile.
+ * @param t      The tile to set the offset of.
+ * @param offset The offset to the northern most tile of this structure.
  * @pre IsTileType(t, MP_UNMOVABLE)
  */
-static inline void SetCompanyHQSection(TileIndex t, uint8 section)
+static inline void SetUnmovableOffset(TileIndex t, uint8 offset)
 {
 	assert(IsTileType(t, MP_UNMOVABLE));
-	_m[t].m3 = section;
+	_m[t].m3 = offset;
 }
 
 /**
@@ -163,14 +162,14 @@ static inline void SetCompanyHQSection(TileIndex t, uint8 section)
  */
 static inline void EnlargeCompanyHQ(TileIndex t, byte size)
 {
-	assert(GetCompanyHQSection(t) == 0);
+	assert(GetUnmovableOffset(t) == 0);
 	assert(size <= 4);
-	if (size <= GetCompanyHQSize(t)) return;
+	if (size <= GetUnmovableAnimationStage(t)) return;
 
-	SetCompanyHQSize(t,                    size);
-	SetCompanyHQSize(t + TileDiffXY(0, 1), size);
-	SetCompanyHQSize(t + TileDiffXY(1, 0), size);
-	SetCompanyHQSize(t + TileDiffXY(1, 1), size);
+	SetUnmovableAnimationStage(t,                    size);
+	SetUnmovableAnimationStage(t + TileDiffXY(0, 1), size);
+	SetUnmovableAnimationStage(t + TileDiffXY(1, 0), size);
+	SetUnmovableAnimationStage(t + TileDiffXY(1, 1), size);
 }
 
 
