@@ -3134,9 +3134,9 @@ STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Отпр
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Послать авиатранспорт в ангар. Ctrl+клик - только для обслуживания.
 
 STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Создать копию состава. Ctrl+щелчок создаст поезд с общими заданиями.
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Создать копию автомобиля. Control+щелчок создаст автомобиль с общими заданиями.
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Создать копию корабля. Control+щелчок создаст корабль с общими заданиями.
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Создать копию возд. судна. Control+щелчок создаст копию с общими заданиями.
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Создать копию автомобиля. Ctrl+щелчок создаст автомобиль с общими заданиями.
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Создать копию корабля. Ctrl+щелчок создаст корабль с общими заданиями.
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Создать копию возд. судна. Ctrl+щелчок создаст копию с общими заданиями.
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Заставить поезд проехать на красный сигнал светофора
 
@@ -3224,7 +3224,7 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Ёмко
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Выручка перевозки: {LTBLUE}{CURRENCY}
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Осмотр каждые {LTBLUE}{COMMA} дней{BLACK}   Последний раз: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Интервал обслуж.: {LTBLUE}{COMMA}%{BLACK}   Последний раз: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Осмотр каждые {LTBLUE}{COMMA}%{BLACK}   Последний раз: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Увеличить интервал обслуживания на 10. Ctrl+щелчок увеличивает интервал обслуживания на 5.
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Уменьшить интервал обслуживания на 10. Ctrl+щелчок уменьшает интервал обслуживания на 5.
 
@@ -3389,7 +3389,7 @@ STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Передат
 STR_ORDER_TRANSFER_NO_LOAD                                      :(Передать и уйти пустым)
 STR_ORDER_NO_UNLOAD                                             :(Не разгружаться и забрать груз)
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Не разгружаться и ждать полной загрузки)
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Не разгружать и ждать полной загрузки любым грузом)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Не разгружаться и ждать полной загрузки любым грузом)
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[начало станции]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[середина станции]
@@ -3547,7 +3547,7 @@ STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Файл не �
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Незаписываемый файл
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Нарушена целостность
 STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<недоступно>
-STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Игра была сохранена в игре без поддержки трамваев. Все трамваи были отключены.
+STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Игра была сохранена в версии без поддержки трамваев. Все трамваи удалены.
 
 # Map generation messages
 STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Генерация карты остановлена...{}... нет доступных мест для размещения городов
@@ -3627,6 +3627,7 @@ STR_ERROR_PROTECTED                                             :{WHITE}Эта �
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Невозможно построить города...
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Невозможно переименовать город...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Здесь невозможно построить город...
+STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Невозможно расширить город...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... слишком близко к краю карты
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... слишком близко к другому городу
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... слишком много городов
@@ -3798,6 +3799,7 @@ STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Тунн
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Невозможно поднять/опустить землю для другого конца туннеля
 
 # Unmovable related errors
+STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Невозможно построить объект...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Объект на пути
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... штаб-квартира компании на пути
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Невозможно купить эту землю...

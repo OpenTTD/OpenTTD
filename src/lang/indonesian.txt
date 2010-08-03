@@ -2373,6 +2373,7 @@ STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Memeriks
 
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Nama File: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Versi: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Palet/warna: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parameter: {SILVER}{STRING}
@@ -2382,6 +2383,11 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Berkas yan
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Non-aktifkan
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Masukkan Parameter NewGRF
+
+# NewGRF parameters window
+STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Ubah parameter NewGRF
+STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Tutup
+STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameter {NUM}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Memeriksa - {STRING}
@@ -3441,6 +3447,7 @@ STR_ERROR_PROTECTED                                             :{WHITE}Perusaha
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Tidak dapat membuat satu kota pun
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Tidak dapat mengubah nama kota...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Tidak dapat membangun kota disini
+STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Tidak dapat memperluas kota...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... terlalu dekat dengan batas tepi peta
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... terlalu dekat dengan kota lain
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... terlalu banyak kota
@@ -3612,6 +3619,7 @@ STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Terowong
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Tidak dapat menyesuaikan kemiringan tanah di ujung terowongan
 
 # Unmovable related errors
+STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Tidak dapat membuat objek...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}terhalang obyek
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... terhalang kantor pusat perusahaan
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Tidak dapat membeli area ini

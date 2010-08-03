@@ -50,7 +50,7 @@ STR_CARGO_PLURAL_WATER                                          :{G=n}Wasser
 STR_CARGO_PLURAL_WHEAT                                          :{G=m}Weizen
 STR_CARGO_PLURAL_RUBBER                                         :{G=m}Kautschuk
 STR_CARGO_PLURAL_SUGAR                                          :{G=m}Zucker
-STR_CARGO_PLURAL_TOYS                                           :{G=p}Spielwaren
+STR_CARGO_PLURAL_TOYS                                           :{G=p}Spielzeuge
 STR_CARGO_PLURAL_CANDY                                          :{G=p}Bonbons
 STR_CARGO_PLURAL_COLA                                           :{G=w}Cola
 STR_CARGO_PLURAL_COTTON_CANDY                                   :{G=w}Zuckerwatte
@@ -84,7 +84,7 @@ STR_CARGO_SINGULAR_WATER                                        :{G=n}Wasser
 STR_CARGO_SINGULAR_WHEAT                                        :{G=n}Weizen
 STR_CARGO_SINGULAR_RUBBER                                       :{G=m}Kautschuk
 STR_CARGO_SINGULAR_SUGAR                                        :{G=m}Zucker
-STR_CARGO_SINGULAR_TOY                                          :{G=n}Spielware
+STR_CARGO_SINGULAR_TOY                                          :{G=n}Spielzeug
 STR_CARGO_SINGULAR_CANDY                                        :{G=m}Bonbon
 STR_CARGO_SINGULAR_COLA                                         :{G=w}Cola
 STR_CARGO_SINGULAR_COTTON_CANDY                                 :{G=w}Zuckerwatte
@@ -216,7 +216,7 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
-STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} ft
+STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} Fuß
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
@@ -226,7 +226,7 @@ STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Stichwor
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Sortierreihenfolge auswählen (absteigend/aufsteigend)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Sortierkriterium auswählen
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Filterkriterien auswählen
-STR_BUTTON_SORT_BY                                              :{BLACK}Sortieren
+STR_BUTTON_SORT_BY                                              :{BLACK}Sortieren nach
 STR_BUTTON_LOCATION                                             :{BLACK}Standort
 STR_BUTTON_RENAME                                               :{BLACK}Umbenennen
 
@@ -1851,10 +1851,10 @@ STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Herunter
 STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} von {BYTES} heruntergeladen ({NUM} %)
 
 # Content downloading error messages
-STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Kann nicht zum Inhalts-Server verbinden...
+STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Kann keine Verbindung mit dem Inhalts-Server verbinden...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Herunterladen fehlgeschlagen...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... Verbindung verloren
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... Datei nicht schreibbar
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... kann Datei nicht auf Festplatte schreiben
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Kann heruntergeladene Datei nicht entpacken
 
 # Transparency settings window
@@ -1880,14 +1880,14 @@ STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Akzeptie
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Liefert: {GOLD}{STRING}
 
 # Join station window
-STR_JOIN_STATION_CAPTION                                        :{WHITE}Verbinde die Station
+STR_JOIN_STATION_CAPTION                                        :{WHITE}Verbinde mit Station
 STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Errichte eine getrennte Station
 
-STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Verbinde den Wegpunkt
+STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Verbinde mit Wegpunkt
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Errichte einen getrennten Wegpunkt
 
 # Rail construction toolbar
-STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Gleis- / Bahnhofsbau
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Eisenbahnbau
 STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Bau elektrifizierter Strecken
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Einschienenbahnbau
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Magnetschwebebahnbau
@@ -1901,7 +1901,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Signale 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Eisenbahnbrücke bauen
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Eisenbahntunnel bauen
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Umschalter für Bau/Abriss mit aktuellem Bauwerkzeug. Strg+Klick um die Gleise von Wegpunkten und Bahnhöfen ebenfalls zu entfernen.
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}In aktuellen Gleistyp umwandeln
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Gleistyp in den ausgewählten umwandeln
 
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Ausrichtung Zugdepot
@@ -1920,7 +1920,7 @@ STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}Anzahl d
 STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Bahnsteiglänge
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Bahnsteiglänge wählen
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Drag & Drop
-STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Bahnhof mittels 'Drag & Drop' bauen
+STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Bahnhof durch Klicken, Ziehen und Loslassen bauen
 
 STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Wähle eine Stationsart zum anzeigen
 STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Wähle die Stationsart aus, die gebaut werden soll
@@ -1934,16 +1934,16 @@ STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Blocksig
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Einfahrsignal (Formsignal){}Zeigt grün, wenn im nächsten Block mindestens ein Ausfahrsignal grün zeigt. Andernfalls zeigt es rot.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Ausfahrsignal (Formsignal){}Verhält sich wie ein Blocksignal, wird jedoch benötigt, um den Einfahr- oder Kombinationssignalen des Blockes "frei" zu melden.
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Kombinationssignal (Formsignal){}Das Kombinationssignal ist gleichzeitig Aus- und Einfahrsignal. Somit werden umfangreiche Signalverschaltungen möglich.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Pfadsignal (Formsignal){}Erlaubt mehreren Zügen gleichzeitig, einen Signalabschnitt zu befahren, sofern der Bremsweg genügend lang ist. Pfadsignale können von hinten durchfahren werden.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Einseitiges Pfadsignal (Formsignal):{}Erlaubt mehreren Zügen, einen Signalabschnitt zu befahren, sofern der Bremsweg genügend lang ist. Einseitige Pfadsignale können nicht von hinten durchfahren werden.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Pfadsignal (Formsignal){}Erlaubt mehreren Zügen gleichzeitig, einen Signalabschnitt zu befahren, sofern sie separate Gleisabschnitte belegen können. Pfadsignale können von hinten durchfahren werden.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Einseitiges Pfadsignal (Formsignal):{}Erlaubt mehreren Zügen, einen Signalabschnitt zu befahren, sofern sie separate Gleisabschnitte belegen können. Einseitige Pfadsignale können nicht von hinten durchfahren werden.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Blocksignal (Lichtsignal){}Signale ermöglichen den unfallfreien Betrieb mehrerer Züge in einem Gleissystem.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Einfahrsignal (Lichtsignal){}Zeigt grün, wenn im folgenden Block mindestens ein Ausfahrsignal grün zeigt. Andernfalls zeigt es rot.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Ausfahrsignal (Lichtsignal){}Verhält sich wie ein Blocksignal, gibt jedoch das Signal an Einfahr- und Kombinationssignale im vorherliegenden Block weiter.
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Kombinationssignal (Lichtsignal){}Das Kombinationssignal ist gleichzeitig Aus- und Einfahrsignal. Somit werden umfangreiche Signalverschaltungen möglich.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Pfadsignal (Lichtsignal){}Erlaubt mehreren Zügen gleichzeitig, einen Signalbereich zu befahren, sofern ein Pfad zum nächsten Signal reserviert werden kann. Normale Pfadsignale können von hinten durchfahren werden.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Einseitiges Pfadsignal (Lichtsignal):{}Erlaubt mehreren Zügen, einen Signalbereich zu befahren, sofern ein Pfad reserviert werden kann. Einseitige Pfadsignale können nicht von hinten durchfahren werden.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Pfadsignal (Lichtsignal){}Erlaubt mehreren Zügen gleichzeitig, einen Signalbereich zu befahren, sofern sie separate Gleisabschnitte belegen können. Normale Pfadsignale können von hinten durchfahren werden.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Einseitiges Pfadsignal (Lichtsignal):{}Erlaubt mehreren Zügen, einen Signalbereich zu befahren, sofern sie separate Gleisabschnitte belegen können. Einseitige Pfadsignale können nicht von hinten durchfahren werden.
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Signalumbau{}Wenn ausgewählt, werden bestehende Signale durch Anklicken zum ausgewählten Signaltyp umgebaut. Strg+Klick ändert die bestehende Bauform.
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Abstand der Signale beim automatischen Bau durch Ziehen
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Signalabstand beim automatischen Bau durch Ziehen
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Signalabstand verringern
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Signalabstand erhöhen
 
@@ -1958,7 +1958,7 @@ STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Auslegerbrücke
 STR_BRIDGE_NAME_SUSPENSION_CONCRETE                             :Betonhängebrücke
 STR_BRIDGE_NAME_WOODEN                                          :Holzbrücke
 STR_BRIDGE_NAME_CONCRETE                                        :Betonbrücke
-STR_BRIDGE_NAME_TUBULAR_STEEL                                   :Rundstahlbrücke
+STR_BRIDGE_NAME_TUBULAR_STEEL                                   :Stahlrundbrücke
 STR_BRIDGE_TUBULAR_SILICON                                      :Siliziumrundbrücke
 
 
@@ -1966,22 +1966,22 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Siliziumrundbr�
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Straßenbau
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Straßenbahnbau
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Straße bauen. Strg halten, um zwischen Bauen und Entfernen umzuschalten
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Straßenbahnabschnitt bauen. Strg halten, um zwischen Bauen und Entfernen umzuschalten
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Straße bauen mit automatischer Wahl der Ausrichtung. Strg halten, um zwischen Bauen und Entfernen umzuschalten
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Staßenbahnabschnitt bauen mit automatischer Wahl der Ausrichtung. Strg halten, um zwischen Bauen und Entfernen umzuschalten
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Fahrzeugdepot bauen (zum Kauf und zur Wartung von Fahrzeugen)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Straßenbahndepot bauen (zum Kauf und zur Wartung von Straßenbahnen)
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Straßenbahngleis bauen. Strg halten, um zwischen Bauen und Entfernen umzuschalten
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Straße mit automatischer Wahl der Ausrichtung bauen. Strg halten, um zwischen Bauen und Entfernen umzuschalten
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Straßenbahngleis mit automatischer Wahl der Ausrichtung bauen. Strg halten, um zwischen Bauen und Entfernen umzuschalten
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Fahrzeugdepot bauen (zum Kauf und zur Wartung von Fahrzeugen benötigt)
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Straßenbahndepot bauen (zum Kauf und zur Wartung von Straßenbahnen benötigt)
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Busbahnhof bauen. Strg+Klick, um Stationen zu verbinden
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Straßenbahnhaltestelle bauen. Strg+Klick, um Stationen zu verbinden
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Lkw-Ladeplatz bauen. Strg+Klick, um Stationen zu verbinden
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Güterverladestelle bauen. Strg+Klick, um Stationen zu verbinden
-STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Aktiviere/Deaktiviere Einbahnstraßen
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Güterstraßenbahnhaltestelle bauen. Strg+Klick, um Stationen zu verbinden
+STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Aktiviere/Deaktiviere Einbahnstraßenbau
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Straßenbrücke bauen
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Straßenbahnbrücke bauen
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Straßentunnel bauen
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Straßenbahntunnel bauen
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Zwischen Bau/Abriss der Straße umschalten
-STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Umschalten zwischen Bauen/Entfernen für Straßenbahnbau
+STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Zwischen Bau und Abriss von Straßenbahngleisen umschalten
 
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Ausrichtung Depot
@@ -1996,20 +1996,20 @@ STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Ausricht
 STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Ausrichtung des Lkw-Ladeplatzes auswählen
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Ausrichtung der Straßenbahnhaltestelle
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Ausrichtung für die Straßenbahnhaltestelle wählen
-STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Ausrichtung der Güterverladestelle
-STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Ausrichtung der Güterverladestelle auswählen
+STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Ausrichtung der Güterstraßenbahnhaltestelle
+STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Ausrichtung der Güterstraßenbahnhaltestelle auswählen
 
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Wasserwegebau
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Wasserwege
-STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Kanäle bauen.
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Kanäle bauen
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Schleusen bauen
-STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Werft bauen (für den Kauf und die Wartung von Schiffen)
+STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Werft bauen (für den Kauf und die Wartung von Schiffen benötigt)
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Hafen bauen. Strg+Klick, um Stationen zu verbinden
-STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Positionsboje, wird als Wegpunkt benötigt
+STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Positionsboje, wird als Wegmarkierung benötigt
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Aquädukt bauen
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Wasser erzeugen.{}Baut einen Kanal. Auf Meereshöhe wird bei gedrückter Strg-Taste ein Wasserfeld erzeugt, welches umliegendes Land flutet.
-STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Flüsse platzieren.
+STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Flüsse platzieren
 
 # Ship depot construction window
 STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Ausrichtung der Werft
@@ -2034,8 +2034,8 @@ STR_AIRPORT_INTERNATIONAL                                       :International
 STR_AIRPORT_COMMUTER                                            :Nahverkehr
 STR_AIRPORT_INTERCONTINENTAL                                    :Interkontinental
 STR_AIRPORT_HELIPORT                                            :Hubschrauberlandeplatz
-STR_AIRPORT_HELIDEPOT                                           :Hubschrauberhalle
-STR_AIRPORT_HELISTATION                                         :Hubschrauberstation
+STR_AIRPORT_HELIDEPOT                                           :Hubschrauberlandepl. + Depot
+STR_AIRPORT_HELISTATION                                         :Hubschrauberflughafen
 
 STR_AIRPORT_CLASS_SMALL                                         :Kleine Flughäfen
 STR_AIRPORT_CLASS_LARGE                                         :Große Flughäfen
@@ -2045,10 +2045,10 @@ STR_AIRPORT_CLASS_HELIPORTS                                     :Flughäfen für
 STR_STATION_BUILD_NOISE                                         :{BLACK}Lärmbelastung: {GOLD}{COMMA}
 
 # Landscaping toolbar
-STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Landschaftsbau
+STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Landschaftsveränderung
 STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Land absenken
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Land anheben
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Land ausgleichen
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Höhe ausgleichen
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Land für künftige Nutzung kaufen
 
 # Tree planting window (last two for SE only)
@@ -2383,6 +2383,8 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Zugehörig
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Deaktiviert
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}NewGRF-Parameter eingeben
+
+# NewGRF parameters window
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspiziere - {STRING}
@@ -3498,7 +3500,7 @@ STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}LKW-Lade
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Straßenbahnhaltestelle kann nicht entfernt werden...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Güterverladestelle kann nicht entfernt werden...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Haltestelle muß erst entfernt werden
-STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}...da ist kein Bahnhof
+STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}...hier ist kein Bahnhof
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Bahnhof muss erst abgerissen werden
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Der Busbahnhof muss erst abgerissen werden
@@ -3564,8 +3566,8 @@ STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Gleise k
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Gleise können nicht abgerissen werden...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Signale können hier nicht entfernt werden...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Kann Signale hier nicht umbauen...
-STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}...da sind keine Schienen
-STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}...da sind keine Signale
+STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... hier ist kein Gleis
+STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... hier sind keine Signale
 
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Gleistyp kann hier nicht verändert werden...
 
@@ -3573,20 +3575,20 @@ STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Gleistyp
 STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}Straße muss erst entfernt werden
 STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}... Einbahnstraßen können keine Abzweigung haben
 STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Straße kann hier nicht gebaut werden...
-STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Straßenbahn kann hier nicht gebaut werden...
+STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Straßenbahngleise können hier nicht gebaut werden...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Diese Straße kann nicht entfernt werden...
-STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Straßenbahn kann hier nicht entfernt werden...
-STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}...da ist keine Straße
-STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}...da sind keine Straßenbahnschienen
+STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Straßenbahngleise können hier nicht entfernt werden...
+STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}...hier ist keine Straße
+STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}...hier ist kein Straßenbahngleis
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Kanal kann hier nicht gebaut werden...
 STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Schleuse kann hier nicht gebaut werden...
-STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Kann hier keine Flüsse platzieren...
+STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Flüsse können hier nicht platziert werden...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... muss auf Wasser gebaut werden
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... kann nicht auf Wasser gebaut werden
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Kanal muss erst abgerissen werden
-STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Kann hier kein Aquädukt bauen...
+STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Aquädukt kann hier nicht gebaut werden...
 
 # Tree related errors
 STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... hier sind bereits Bäume

@@ -2117,6 +2117,13 @@ STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}建设
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}建设
 
 # Industry cargoes window
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}{STRING} 的产业链
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}{STRING} 的产业链
+STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}房屋
+STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}点該工业可显示其上下游工业
+STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}点该货物可显示其上下游工业
+STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}显示产业链
+STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}显示货物的上下游工业
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}地块信息

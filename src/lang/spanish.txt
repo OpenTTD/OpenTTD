@@ -2374,6 +2374,7 @@ STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Comproba
 
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Fichero: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}ID GRF: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Versión: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Paleta: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parámetros: {SILVER}{STRING}
@@ -2383,6 +2384,11 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Fichero no
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Desactivado
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Introduce los parámetros del NewGRF
+
+# NewGRF parameters window
+STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Cambiar parámetros NewGRF
+STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Cerrar
+STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parámetro {NUM}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspeccionar - {STRING}
@@ -3442,6 +3448,7 @@ STR_ERROR_PROTECTED                                             :{WHITE}Esta emp
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}No se puede construir ningún pueblo
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}No se puede renombrar pueblo...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}No se puede construir pueblo aquí...
+STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}No se puede expandir pueblo...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... demasiado cercano al borde del mapa
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... demasiado cercano a otro pueblo
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... demasiados pueblos
@@ -3613,6 +3620,7 @@ STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}El túne
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}No se puede excavar en la tierra al otro lado del túnel
 
 # Unmovable related errors
+STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}No se puede construir objeto...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Objeto en medio
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... sede de empresa está en medio
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}No es posible comprar este terreno...
