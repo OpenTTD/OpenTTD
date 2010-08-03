@@ -144,7 +144,7 @@ CommandCost CmdBuildUnmovable(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 	if (type >= UNMOVABLE_MAX) return CMD_ERROR;
 
 	const UnmovableSpec *spec = UnmovableSpec::Get(type);
-	if (spec->flags & OBJECT_FLAG_ONLY_IN_SCENEDIT && _game_mode != GM_EDITOR) return CMD_ERROR;
+	if (spec->flags & OBJECT_FLAG_ONLY_IN_SCENEDIT && (_game_mode != GM_EDITOR || _current_company != OWNER_NONE)) return CMD_ERROR;
 	if (spec->flags & OBJECT_FLAG_ONLY_IN_GAME && (_game_mode != GM_NORMAL || _current_company > MAX_COMPANIES)) return CMD_ERROR;
 
 	int size_x = GB(spec->size, 0, 4);
@@ -196,7 +196,7 @@ CommandCost CmdBuildUnmovable(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 	}
 
 	if (flags & DC_EXEC) {
-		BuildUnmovable(type, tile);
+		BuildUnmovable(type, tile, _current_company);
 
 		/* Make sure the HQ starts at the right size. */
 		if (type == UNMOVABLE_HQ) UpdateCompanyHQ(tile, hq_score);
