@@ -36,12 +36,33 @@ void UpdateCompanyHQ(Company *c, uint score);
 void BuildUnmovable(UnmovableType type, TileIndex tile, CompanyID owner = OWNER_NONE, uint index = 0);
 
 
+/** Various object behaviours. */
+enum ObjectFlags {
+	OBJECT_FLAG_NONE               =       0, ///< Just nothing.
+	OBJECT_FLAG_ONLY_IN_SCENEDIT   = 1 <<  0, ///< Object can only be constructed in the scenario editor.
+	OBJECT_FLAG_CANNOT_REMOVE      = 1 <<  1, ///< Object can not be removed.
+	OBJECT_FLAG_AUTOREMOVE         = 1 <<  2, ///< Object get automatically removed (like "owned land").
+	OBJECT_FLAG_BUILT_ON_WATER     = 1 <<  3, ///< Object can be built on water (not required).
+	OBJECT_FLAG_CLEAR_INCOME       = 1 <<  4, ///< When object is cleared a positive income is generated instead of a cost.
+	OBJECT_FLAG_HAS_NO_FOUNDATION  = 1 <<  5, ///< Do not display foundations when on a slope.
+	OBJECT_FLAG_ANIMATION          = 1 <<  6, ///< Object has animated tiles.
+	OBJECT_FLAG_ONLY_IN_GAME       = 1 <<  7, ///< Object can only be built in game.
+	OBJECT_FLAG_2CC_COLOUR         = 1 <<  8, ///< Object wants 2CC colour mapping.
+	OBJECT_FLAG_NOT_ON_LAND        = 1 <<  9, ///< Object can not be on land, implicitly sets #OBJECT_FLAG_BUILT_ON_WATER.
+	OBJECT_FLAG_DRAW_WATER         = 1 << 10, ///< Object wants to be drawn on water.
+	OBJECT_FLAG_ALLOW_UNDER_BRIDGE = 1 << 11, ///< Object can built under a bridge.
+	OBJECT_FLAG_REQUIRE_FLAT       = 1 << 12, ///< Object can only be build of flat land, i.e. not on foundations!
+};
+DECLARE_ENUM_AS_BIT_SET(ObjectFlags)
+
+
 /** An (unmovable) object that isn't use for transport, industries or houses. */
 struct UnmovableSpec {
 	StringID name;               ///< The name for this object.
 	uint8 size;                  ///< The size of this objects; low nibble for X, high nibble for Y.
 	uint8 build_cost_multiplier; ///< Build cost multiplier per tile.
 	uint8 clear_cost_multiplier; ///< Clear cost multiplier per tile.
+	ObjectFlags flags;           ///< Flags/settings related to the object.
 
 	/**
 	 * Get the cost for building a structure of this type.

@@ -245,7 +245,8 @@ static Foundation GetFoundation_Unmovable(TileIndex tile, Slope tileh);
 static void DrawTile_Unmovable(TileInfo *ti)
 {
 	UnmovableType type = GetUnmovableType(ti->tile);
-	if (type != UNMOVABLE_OWNED_LAND) DrawFoundation(ti, GetFoundation_Unmovable(ti->tile, ti->tileh));
+	const UnmovableSpec *spec = UnmovableSpec::Get(type);
+	if ((spec->flags & OBJECT_FLAG_HAS_NO_FOUNDATION) == 0) DrawFoundation(ti, GetFoundation_Unmovable(ti->tile, ti->tileh));
 
 	const DrawTileSprites *dts = NULL;
 	Owner to = GetTileOwner(ti->tile);
@@ -258,7 +259,19 @@ static void DrawTile_Unmovable(TileInfo *ti)
 		dts = &_unmovables[type];
 	}
 
-	DrawGroundSprite(dts->ground.sprite, palette);
+	if (spec->flags & OBJECT_FLAG_HAS_NO_FOUNDATION) {
+		/* If an object has no foundation, but tries to draw a (flat) ground
+		 * type... we have to be nice and convert that for them. */
+		switch (dts->ground.sprite) {
+			case SPR_FLAT_BARE_LAND:          DrawClearLandTile(ti, 0); break;
+			case SPR_FLAT_1_THIRD_GRASS_TILE: DrawClearLandTile(ti, 1); break;
+			case SPR_FLAT_2_THIRD_GRASS_TILE: DrawClearLandTile(ti, 2); break;
+			case SPR_FLAT_GRASS_TILE:         DrawClearLandTile(ti, 3); break;
+			default: DrawGroundSprite(dts->ground.sprite, palette);     break;
+		}
+	} else {
+		DrawGroundSprite(dts->ground.sprite, palette);
+	}
 
 	if (!IsInvisibilitySet(TO_STRUCTURES)) {
 		const DrawTileSeqStruct *dtss;
@@ -273,7 +286,7 @@ static void DrawTile_Unmovable(TileInfo *ti)
 		}
 	}
 
-	if (type == UNMOVABLE_OWNED_LAND) DrawBridgeMiddle(ti);
+	if (spec->flags & OBJECT_FLAG_ALLOW_UNDER_BRIDGE) DrawBridgeMiddle(ti);
 }
 
 static uint GetSlopeZ_Unmovable(TileIndex tile, uint x, uint y)
@@ -537,13 +550,19 @@ static void ChangeTileOwner_Unmovable(TileIndex tile, Owner old_owner, Owner new
 
 static CommandCost TerraformTile_Unmovable(TileIndex tile, DoCommandFlag flags, uint z_new, Slope tileh_new)
 {
-	/* Owned land remains unsold */
-	if (IsOwnedLand(tile)) {
-		CommandCost ret = CheckTileOwnership(tile);
-		if (ret.Succeeded()) return CommandCost();
+	UnmovableType type = GetUnmovableType(tile);
+	const UnmovableSpec *spec = UnmovableSpec::Get(type);
+
+	if (spec->flags & OBJECT_FLAG_REQUIRE_FLAT) {
+		/* If a flat tile is required by the object, then terraforming is never good. */
+		return DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 	}
 
-	if (AutoslopeEnabled() && (IsStatue(tile) || IsCompanyHQ(tile))) {
+	if (IsOwnedLand(tile)) {
+		/* Owned land remains unsold */
+		CommandCost ret = CheckTileOwnership(tile);
+		if (ret.Succeeded()) return CommandCost();
+	} else if (AutoslopeEnabled()) {
 		if (!IsSteepSlope(tileh_new) && (z_new + GetSlopeMaxZ(tileh_new) == GetTileMaxZ(tile))) return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);
 	}
 
