@@ -80,35 +80,6 @@ void IncreaseAnimationStage(TileIndex northern)
 /** We encode the company HQ size in the animation stage. */
 #define IncreaseCompanyHQSize IncreaseAnimationStage
 
-/**
- * Destroy a HQ.
- * During normal gameplay you can only implicitely destroy a HQ when you are
- * rebuilding it. Otherwise, only water can destroy it.
- * @param cid Company requesting the destruction of his HQ
- * @param flags docommand flags of calling function
- * @return cost of the operation
- */
-static CommandCost DestroyCompanyHQ(CompanyID cid, DoCommandFlag flags)
-{
-	Company *c = Company::Get(cid);
-
-	if (flags & DC_EXEC) {
-		TileIndex t = c->location_of_HQ;
-
-		DoClearSquare(t);
-		DoClearSquare(t + TileDiffXY(0, 1));
-		DoClearSquare(t + TileDiffXY(1, 0));
-		DoClearSquare(t + TileDiffXY(1, 1));
-		c->location_of_HQ = INVALID_TILE; // reset HQ position
-		SetWindowDirty(WC_COMPANY, cid);
-
-		CargoPacket::InvalidateAllFrom(ST_HEADQUARTERS, cid);
-	}
-
-	/* cost of relocating company is 1% of company value */
-	return CommandCost(EXPENSES_PROPERTY, CalculateCompanyValue(c) / 100);
-}
-
 void UpdateCompanyHQ(TileIndex tile, uint score)
 {
 	if (tile == INVALID_TILE) return;
@@ -126,6 +97,7 @@ void UpdateCompanyHQ(TileIndex tile, uint score)
 }
 
 extern CommandCost CheckFlatLand(TileArea tile_area, DoCommandFlag flags);
+static CommandCost ClearTile_Unmovable(TileIndex tile, DoCommandFlag flags);
 
 /**
  * Build an unmovable object
@@ -180,8 +152,11 @@ CommandCost CmdBuildUnmovable(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 
 		case UNMOVABLE_HQ: {
 			Company *c = Company::Get(_current_company);
-			if (c->location_of_HQ != INVALID_TILE) { // Moving HQ
-				cost.AddCost(DestroyCompanyHQ(_current_company, flags));
+			if (c->location_of_HQ != INVALID_TILE) {
+				/* We need to persuade a bit harder to remove the old HQ. */
+				_current_company = OWNER_WATER;
+				cost.AddCost(ClearTile_Unmovable(c->location_of_HQ, flags));
+				_current_company = c->index;
 			}
 
 			if (flags & DC_EXEC) {
@@ -278,9 +253,12 @@ static CommandCost ClearTile_Unmovable(TileIndex tile, DoCommandFlag flags)
 	UnmovableType type = GetUnmovableType(tile);
 	const UnmovableSpec *spec = UnmovableSpec::Get(type);
 
+	/* Get to the northern most tile. */
+	tile -= GetUnmovableOffset(tile);
+
 	/* Water can remove everything! */
 	if (_current_company != OWNER_WATER) {
-		if (type != UNMOVABLE_OWNED_LAND && flags & DC_AUTO) {
+		if ((spec->flags & OBJECT_FLAG_AUTOREMOVE) == 0 && flags & DC_AUTO) {
 			/* No automatic removal by overbuilding stuff. */
 			return_cmd_error(type == UNMOVABLE_HQ ? STR_ERROR_COMPANY_HEADQUARTERS_IN : STR_ERROR_OBJECT_IN_THE_WAY);
 		} else if (_game_mode == GM_EDITOR) {
@@ -291,15 +269,32 @@ static CommandCost ClearTile_Unmovable(TileIndex tile, DoCommandFlag flags)
 		} else if (CheckTileOwnership(tile).Failed()) {
 			/* We don't own it!. */
 			return_cmd_error(STR_ERROR_OWNED_BY);
-		} else if (type != UNMOVABLE_OWNED_LAND && !_cheats.magic_bulldozer.value) {
+		} else if ((spec->flags & OBJECT_FLAG_AUTOREMOVE) == 0 && !_cheats.magic_bulldozer.value) {
 			/* In the game editor or with cheats we can remove, otherwise we can't. */
 			return CMD_ERROR;
 		}
 	}
 
+	int size_x = GB(spec->size, 0, 4);
+	int size_y = GB(spec->size, 4, 4);
+	TileArea ta(tile, size_x, size_y);
+
+	CommandCost cost(EXPENSES_CONSTRUCTION, spec->GetClearCost() * size_x * size_y);
+	if (spec->flags & OBJECT_FLAG_CLEAR_INCOME) cost.MultiplyCost(-1); // They get an income!
+
 	switch (type) {
-		case UNMOVABLE_HQ:
-			return DestroyCompanyHQ(GetTileOwner(tile), flags);
+		case UNMOVABLE_HQ: {
+			Company *c = Company::Get(GetTileOwner(tile));
+			if (flags & DC_EXEC) {
+				c->location_of_HQ = INVALID_TILE; // reset HQ position
+				SetWindowDirty(WC_COMPANY, c->index);
+				CargoPacket::InvalidateAllFrom(ST_HEADQUARTERS, c->index);
+			}
+
+			/* cost of relocating company is 1% of company value */
+			cost = CommandCost(EXPENSES_PROPERTY, CalculateCompanyValue(c) / 100);
+			break;
+		}
 
 		case UNMOVABLE_STATUE:
 			if (flags & DC_EXEC) {
@@ -314,11 +309,9 @@ static CommandCost ClearTile_Unmovable(TileIndex tile, DoCommandFlag flags)
 	}
 
 	if (flags & DC_EXEC) {
-		DoClearSquare(tile);
+		TILE_AREA_LOOP(tile_cur, ta) DoClearSquare(tile_cur);
 	}
 
-	CommandCost cost(EXPENSES_CONSTRUCTION, spec->GetClearCost());
-	if (type == UNMOVABLE_OWNED_LAND) cost.MultiplyCost(-1); // They get an income!
 	return cost;
 }
 
