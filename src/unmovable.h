@@ -16,7 +16,25 @@
 #include "strings_type.h"
 #include "unmovable_type.h"
 
+/**
+ * Update the CompanyHQ to the state associated with the given score
+ * @param c     The company to (possibly) update the HQ of.
+ * @param score The current (performance) score of the company.
+ * @pre c != NULL
+ */
 void UpdateCompanyHQ(Company *c, uint score);
+
+/**
+ * Actually build the unmovable object.
+ * @param type  The type of object to build.
+ * @param tile  The tile to build the northern tile of the object on.
+ * @param owner The owner of the object.
+ * @param index A (generic) index to be stored on the tile, e.g. TownID for statues.
+ * @pre All preconditions for building the object at that location
+ *      are met, e.g. slope and clearness of tiles are checked.
+ */
+void BuildUnmovable(UnmovableType type, TileIndex tile, CompanyID owner = OWNER_NONE, uint index = 0);
+
 
 /** An (unmovable) object that isn't use for transport, industries or houses. */
 struct UnmovableSpec {

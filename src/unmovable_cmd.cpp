@@ -46,6 +46,18 @@
 	return UnmovableSpec::Get(GetUnmovableType(tile));
 }
 
+void BuildUnmovable(UnmovableType type, TileIndex tile, CompanyID owner, uint index)
+{
+	const UnmovableSpec *spec = UnmovableSpec::Get(type);
+
+	TileArea ta(tile, GB(spec->size, 0, 4), GB(spec->size, 4, 4));
+	TILE_AREA_LOOP(t, ta) {
+		TileIndex offset = t - tile;
+		MakeUnmovable(t, type, owner, TileY(offset) << 4 | TileX(offset), index);
+		MarkTileDirtyByTile(t);
+	}
+}
+
 /**
  * Increase the animation stage of a whole structure.
  * @param northern The northern tile of the structure.
@@ -143,7 +155,7 @@ static CommandCost CmdBuildCompanyHQ(TileIndex tile, DoCommandFlag flags, uint32
 
 		c->location_of_HQ = tile;
 
-		MakeCompanyHQ(tile, _current_company);
+		BuildUnmovable(UNMOVABLE_HQ, tile, _current_company);
 
 		UpdateCompanyHQ(c, score);
 		SetWindowDirty(WC_COMPANY, c->index);
@@ -174,7 +186,7 @@ static CommandCost CmdPurchaseLandArea(TileIndex tile, DoCommandFlag flags, uint
 	if (cost.Failed()) return cost;
 
 	if (flags & DC_EXEC) {
-		MakeOwnedLand(tile, _current_company);
+		BuildUnmovable(UNMOVABLE_OWNED_LAND, tile, _current_company);
 		MarkTileDirtyByTile(tile);
 	}
 
@@ -206,7 +218,7 @@ CommandCost CmdBuildUnmovable(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 			if (_game_mode != GM_EDITOR) return CMD_ERROR;
 
 			if (flags & DC_EXEC) {
-				MakeUnmovable(tile, type, OWNER_NONE);
+				BuildUnmovable(type, tile);
 				MarkTileDirtyByTile(tile);
 			}
 			break;
@@ -275,7 +287,7 @@ static void DrawTile_Unmovable(TileInfo *ti)
 			PaletteID palette = COMPANY_SPRITE_COLOUR(GetTileOwner(ti->tile));
 
 			uint8 offset = GetUnmovableOffset(ti->tile);
-			const DrawTileSprites *t = &_unmovable_display_datas[GetCompanyHQSize(ti->tile) << 2 | GB(offset, 4, 1) << 1 | GB(offset, 0, 1)];
+			const DrawTileSprites *t = &_unmovable_display_datas[GetCompanyHQSize(ti->tile) << 2 | GB(offset, 4, 1) | GB(offset, 0, 1) << 1];
 			DrawGroundSprite(t->ground.sprite, palette);
 
 			if (IsInvisibilitySet(TO_STRUCTURES)) break;
@@ -484,7 +496,7 @@ void GenerateUnmovables()
 		if (IsTileType(tile, MP_CLEAR) && GetTileSlope(tile, &h) == SLOPE_FLAT && h >= TILE_HEIGHT * 4 && !IsBridgeAbove(tile)) {
 			if (IsRadioTowerNearby(tile)) continue;
 
-			MakeTransmitter(tile);
+			BuildUnmovable(UNMOVABLE_TRANSMITTER, tile);
 			IncreaseGeneratingWorldProgress(GWP_UNMOVABLE);
 			if (--radiotower_to_build == 0) break;
 		}
@@ -518,7 +530,7 @@ void GenerateUnmovables()
 		for (int j = 0; j < 19; j++) {
 			uint h;
 			if (IsTileType(tile, MP_CLEAR) && GetTileSlope(tile, &h) == SLOPE_FLAT && h <= TILE_HEIGHT * 2 && !IsBridgeAbove(tile)) {
-				MakeLighthouse(tile);
+				BuildUnmovable(UNMOVABLE_LIGHTHOUSE, tile);
 				IncreaseGeneratingWorldProgress(GWP_UNMOVABLE);
 				lighthouses_to_build--;
 				assert(tile < MapSize());

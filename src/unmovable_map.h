@@ -160,83 +160,19 @@ static inline void SetUnmovableOffset(TileIndex t, uint8 offset)
  * @param t      The tile to make unmovable.
  * @param u      The unmovable type of the tile.
  * @param o      The new owner of the tile.
- * @param offset The offset to the northern tile of this object
+ * @param offset The offset to the northern tile of this object.
+ * @param index  Generic index associated with the object type.
  */
-static inline void MakeUnmovable(TileIndex t, UnmovableType u, Owner o, uint8 offset = 0)
+static inline void MakeUnmovable(TileIndex t, UnmovableType u, Owner o, uint8 offset, uint index)
 {
 	SetTileType(t, MP_UNMOVABLE);
 	SetTileOwner(t, o);
-	_m[t].m2 = 0;
+	_m[t].m2 = index;
 	_m[t].m3 = offset;
 	_m[t].m4 = 0;
 	_m[t].m5 = u;
 	SB(_m[t].m6, 2, 4, 0);
 	_me[t].m7 = 0;
-}
-
-
-/**
- * Make a transmitter tile.
- * @param t the tile to make a transmitter.
- */
-static inline void MakeTransmitter(TileIndex t)
-{
-	MakeUnmovable(t, UNMOVABLE_TRANSMITTER, OWNER_NONE);
-}
-
-/**
- * Make a lighthouse tile.
- * @param t the tile to make a transmitter.
- */
-static inline void MakeLighthouse(TileIndex t)
-{
-	MakeUnmovable(t, UNMOVABLE_LIGHTHOUSE, OWNER_NONE);
-}
-
-/**
- * Make a statue tile.
- * @param t the tile to make a statue.
- * @param o the owner of the statue.
- * @param town_id the town the statue was built in.
- */
-static inline void MakeStatue(TileIndex t, Owner o, TownID town_id)
-{
-	MakeUnmovable(t, UNMOVABLE_STATUE, o);
-	_m[t].m2 = town_id;
-}
-
-/**
- * Make an 'owned land' tile.
- * @param t the tile to make an 'owned land' tile.
- * @param o the owner of the land.
- */
-static inline void MakeOwnedLand(TileIndex t, Owner o)
-{
-	MakeUnmovable(t, UNMOVABLE_OWNED_LAND, o);
-}
-
-/**
- * Make a HeadQuarter tile after making it an Unmovable
- * @param t the tile to make an HQ.
- * @param section the part of the HQ this one will be.
- * @param o the new owner of the tile.
- */
-static inline void MakeUnmovableHQHelper(TileIndex t, uint8 section, Owner o)
-{
-	MakeUnmovable(t, UNMOVABLE_HQ, o, section);
-}
-
-/**
- * Make an HQ with the given tile as its northern tile.
- * @param t the tile to make the northern tile of a HQ.
- * @param o the owner of the HQ.
- */
-static inline void MakeCompanyHQ(TileIndex t, Owner o)
-{
-	MakeUnmovableHQHelper(t,                    0x00, o);
-	MakeUnmovableHQHelper(t + TileDiffXY(0, 1), 0x01, o);
-	MakeUnmovableHQHelper(t + TileDiffXY(1, 0), 0x10, o);
-	MakeUnmovableHQHelper(t + TileDiffXY(1, 1), 0x11, o);
 }
 
 #endif /* UNMOVABLE_MAP_H */
