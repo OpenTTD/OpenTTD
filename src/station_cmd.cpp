@@ -862,7 +862,21 @@ static CommandCost CheckFlatLandRoadStop(TileArea tile_area, DoCommandFlag flags
 		} else {
 			bool build_over_road = is_drive_through && IsNormalRoadTile(cur_tile);
 			/* Road bits in the wrong direction. */
-			if (build_over_road && (GetAllRoadBits(cur_tile) & (axis == AXIS_X ? ROAD_Y : ROAD_X)) != 0) return_cmd_error(STR_ERROR_DRIVE_THROUGH_DIRECTION);
+			RoadBits rb = GetAllRoadBits(cur_tile);
+			if (build_over_road && (rb & (axis == AXIS_X ? ROAD_Y : ROAD_X)) != 0) {
+				/* Someone was pedantic and *NEEDED* three fracking different error messages. */
+				switch (CountBits(rb)) {
+					case 1:
+						return_cmd_error(STR_ERROR_DRIVE_THROUGH_DIRECTION);
+
+					case 2:
+						if (rb == ROAD_X || rb == ROAD_Y) return_cmd_error(STR_ERROR_DRIVE_THROUGH_DIRECTION);
+						return_cmd_error(STR_ERROR_DRIVE_THROUGH_CORNER);
+
+					default: // 3 or 4
+						return_cmd_error(STR_ERROR_DRIVE_THROUGH_JUNCTION);
+				}
+			}
 
 			RoadTypes cur_rts = IsNormalRoadTile(cur_tile) ? GetRoadTypes(cur_tile) : ROADTYPES_NONE;
 			uint num_roadbits = 0;
