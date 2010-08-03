@@ -549,6 +549,8 @@ void ScanNewGRFFiles()
 {
 	ClearGRFConfigList(&_all_grfs);
 
+	TarScanner::DoScan();
+
 	DEBUG(grf, 1, "Scanning for NewGRFs");
 	uint num = GRFFileScanner::DoScan();
 

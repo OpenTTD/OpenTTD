@@ -25,6 +25,7 @@
 
 void AIScanner::RescanAIDir()
 {
+	TarScanner::DoScan();
 	this->ScanScriptDir("info.nut", AI_DIR);
 	this->ScanScriptDir("library.nut", AI_LIBRARY_DIR);
 }
