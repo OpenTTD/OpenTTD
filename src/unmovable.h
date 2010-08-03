@@ -21,6 +21,7 @@ void UpdateCompanyHQ(Company *c, uint score);
 /** An (unmovable) object that isn't use for transport, industries or houses. */
 struct UnmovableSpec {
 	StringID name;               ///< The name for this object.
+	uint8 size;                  ///< The size of this objects; low nibble for X, high nibble for Y.
 	uint8 build_cost_multiplier; ///< Build cost multiplier per tile.
 	uint8 clear_cost_multiplier; ///< Clear cost multiplier per tile.
 

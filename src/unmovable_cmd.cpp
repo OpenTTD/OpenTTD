@@ -46,8 +46,27 @@
 	return UnmovableSpec::Get(GetUnmovableType(tile));
 }
 
+/**
+ * Increase the animation stage of a whole structure.
+ * @param northern The northern tile of the structure.
+ * @pre GetUnmovableOffset(northern) == 0
+ */
+void IncreaseAnimationStage(TileIndex northern)
+{
+	assert(GetUnmovableOffset(northern) == 0);
+	const UnmovableSpec *spec = UnmovableSpec::GetByTile(northern);
+
+	TileArea ta(northern, GB(spec->size, 0, 4), GB(spec->size, 4, 4));
+	TILE_AREA_LOOP(t, ta) {
+		SetUnmovableAnimationStage(t, GetUnmovableAnimationStage(t) + 1);
+		MarkTileDirtyByTile(t);
+	}
+}
+
 /** We encode the company HQ size in the animation stage. */
 #define GetCompanyHQSize GetUnmovableAnimationStage
+/** We encode the company HQ size in the animation stage. */
+#define IncreaseCompanyHQSize IncreaseAnimationStage
 
 /**
  * Destroy a HQ.
@@ -91,12 +110,9 @@ void UpdateCompanyHQ(Company *c, uint score)
 	(val++, score < 720) ||
 	(val++, true);
 
-	EnlargeCompanyHQ(tile, val);
-
-	MarkTileDirtyByTile(tile);
-	MarkTileDirtyByTile(tile + TileDiffXY(0, 1));
-	MarkTileDirtyByTile(tile + TileDiffXY(1, 0));
-	MarkTileDirtyByTile(tile + TileDiffXY(1, 1));
+	while (GetCompanyHQSize(tile) < val) {
+		IncreaseCompanyHQSize(tile);
+	}
 }
 
 extern CommandCost CheckFlatLand(TileArea tile_area, DoCommandFlag flags);

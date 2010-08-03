@@ -153,25 +153,6 @@ static inline void SetUnmovableOffset(TileIndex t, uint8 offset)
 	_m[t].m3 = offset;
 }
 
-/**
- * Enlarge the given HQ to the given size. If the new size
- * is larger than the current size, nothing happens.
- * @param t the tile of the HQ.
- * @param size the new size of the HQ.
- * @pre t is the northern tile of the HQ
- */
-static inline void EnlargeCompanyHQ(TileIndex t, byte size)
-{
-	assert(GetUnmovableOffset(t) == 0);
-	assert(size <= 4);
-	if (size <= GetUnmovableAnimationStage(t)) return;
-
-	SetUnmovableAnimationStage(t,                    size);
-	SetUnmovableAnimationStage(t + TileDiffXY(0, 1), size);
-	SetUnmovableAnimationStage(t + TileDiffXY(1, 0), size);
-	SetUnmovableAnimationStage(t + TileDiffXY(1, 1), size);
-}
-
 
 /**
  * Make an Unmovable tile.
