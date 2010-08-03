@@ -108,50 +108,50 @@ static inline TownID GetStatueTownID(TileIndex t)
 /**
  * Get the 'stage' of the HQ.
  * @param t a tile of the HQ.
- * @pre IsTileType(t, MP_UNMOVABLE) && IsCompanyHQ(t)
+ * @pre IsTileType(t, MP_UNMOVABLE)
  * @return the 'stage' of the HQ.
  */
 static inline byte GetCompanyHQSize(TileIndex t)
 {
-	assert(IsTileType(t, MP_UNMOVABLE) && IsCompanyHQ(t));
-	return GB(_m[t].m3, 2, 3);
+	assert(IsTileType(t, MP_UNMOVABLE));
+	return GB(_m[t].m6, 2, 4);
 }
 
 /**
  * Set the 'stage' of the HQ.
  * @param t a tile of the HQ.
  * @param size the actual stage of the HQ
- * @pre IsTileType(t, MP_UNMOVABLE) && IsCompanyHQ(t)
+ * @pre IsTileType(t, MP_UNMOVABLE)
  */
 static inline void SetCompanyHQSize(TileIndex t, uint8 size)
 {
-	assert(IsTileType(t, MP_UNMOVABLE) && IsCompanyHQ(t));
-	SB(_m[t].m3, 2, 3, size);
+	assert(IsTileType(t, MP_UNMOVABLE));
+	SB(_m[t].m6, 2, 4, size);
 }
 
 /**
  * Get the 'section' of the HQ.
  * The scetion is in fact which side of teh HQ the tile represent
  * @param t a tile of the HQ.
- * @pre IsTileType(t, MP_UNMOVABLE) && IsCompanyHQ(t)
+ * @pre IsTileType(t, MP_UNMOVABLE)
  * @return the 'section' of the HQ.
  */
 static inline byte GetCompanyHQSection(TileIndex t)
 {
-	assert(IsTileType(t, MP_UNMOVABLE) && IsCompanyHQ(t));
-	return GB(_m[t].m3, 0, 2);
+	assert(IsTileType(t, MP_UNMOVABLE));
+	return _m[t].m3;
 }
 
 /**
  * Set the 'section' of the HQ.
  * @param t a tile of the HQ.
  * @param section to be set.
- * @pre IsTileType(t, MP_UNMOVABLE) && IsCompanyHQ(t)
+ * @pre IsTileType(t, MP_UNMOVABLE)
  */
 static inline void SetCompanyHQSection(TileIndex t, uint8 section)
 {
-	assert(IsTileType(t, MP_UNMOVABLE) && IsCompanyHQ(t));
-	SB(_m[t].m3, 0, 2, section);
+	assert(IsTileType(t, MP_UNMOVABLE));
+	_m[t].m3 = section;
 }
 
 /**
@@ -177,16 +177,17 @@ static inline void EnlargeCompanyHQ(TileIndex t, byte size)
 /**
  * Make an Unmovable tile.
  * @note do not use this function directly. Use one of the other Make* functions.
- * @param t the tile to make unmovable.
- * @param u the unmovable type of the tile.
- * @param o the new owner of the tile.
+ * @param t      The tile to make unmovable.
+ * @param u      The unmovable type of the tile.
+ * @param o      The new owner of the tile.
+ * @param offset The offset to the northern tile of this object
  */
-static inline void MakeUnmovable(TileIndex t, UnmovableType u, Owner o)
+static inline void MakeUnmovable(TileIndex t, UnmovableType u, Owner o, uint8 offset = 0)
 {
 	SetTileType(t, MP_UNMOVABLE);
 	SetTileOwner(t, o);
 	_m[t].m2 = 0;
-	_m[t].m3 = 0;
+	_m[t].m3 = offset;
 	_m[t].m4 = 0;
 	_m[t].m5 = u;
 	SB(_m[t].m6, 2, 4, 0);
@@ -242,8 +243,7 @@ static inline void MakeOwnedLand(TileIndex t, Owner o)
  */
 static inline void MakeUnmovableHQHelper(TileIndex t, uint8 section, Owner o)
 {
-	MakeUnmovable(t, UNMOVABLE_HQ, o);
-	SetCompanyHQSection(t, section);
+	MakeUnmovable(t, UNMOVABLE_HQ, o, section);
 }
 
 /**
@@ -253,10 +253,10 @@ static inline void MakeUnmovableHQHelper(TileIndex t, uint8 section, Owner o)
  */
 static inline void MakeCompanyHQ(TileIndex t, Owner o)
 {
-	MakeUnmovableHQHelper(t,                    0, o);
-	MakeUnmovableHQHelper(t + TileDiffXY(0, 1), 1, o);
-	MakeUnmovableHQHelper(t + TileDiffXY(1, 0), 2, o);
-	MakeUnmovableHQHelper(t + TileDiffXY(1, 1), 3, o);
+	MakeUnmovableHQHelper(t,                    0x00, o);
+	MakeUnmovableHQHelper(t + TileDiffXY(0, 1), 0x01, o);
+	MakeUnmovableHQHelper(t + TileDiffXY(1, 0), 0x10, o);
+	MakeUnmovableHQHelper(t + TileDiffXY(1, 1), 0x11, o);
 }
 
 #endif /* UNMOVABLE_MAP_H */

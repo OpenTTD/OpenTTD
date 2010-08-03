@@ -255,7 +255,8 @@ static void DrawTile_Unmovable(TileInfo *ti)
 
 			PaletteID palette = COMPANY_SPRITE_COLOUR(GetTileOwner(ti->tile));
 
-			const DrawTileSprites *t = &_unmovable_display_datas[GetCompanyHQSize(ti->tile) << 2 | GetCompanyHQSection(ti->tile)];
+			uint8 offset = GetCompanyHQSection(ti->tile);
+			const DrawTileSprites *t = &_unmovable_display_datas[GetCompanyHQSize(ti->tile) << 2 | GB(offset, 4, 1) << 1 | GB(offset, 0, 1)];
 			DrawGroundSprite(t->ground.sprite, palette);
 
 			if (IsInvisibilitySet(TO_STRUCTURES)) break;

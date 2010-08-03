@@ -1568,8 +1568,7 @@
     <ul>
      <li>m1: <a href="#OwnershipInfo">owner</a> of the object (for lighthouses and transmitters normally <tt>10</tt>)</li>
      <li>m2: see company statue
-     <li>m3 bits 4..2: size of HQ
-     <li>m3 bits 1..0: section identification of the HQ
+     <li>m3: offset to northern most tile
      <li>m5: tile type:
       <table>
        <tr>
@@ -1603,6 +1602,7 @@
       </table>
      </li>
      <li>m6 bits 7..6 : Possibility of a bridge above, in the <a href="#bridge_direction">direction specified</a></li>
+     <li>m6 bits 2..5 : Animation counter</li>
      <li>m6 bits 1..0 : <a href="#tropic_zone">Tropic zone definition</a></li>
     </ul>
    </td>
