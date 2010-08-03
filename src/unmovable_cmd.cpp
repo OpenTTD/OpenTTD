@@ -244,67 +244,36 @@ static Foundation GetFoundation_Unmovable(TileIndex tile, Slope tileh);
 
 static void DrawTile_Unmovable(TileInfo *ti)
 {
-	DrawFoundation(ti, GetFoundation_Unmovable(ti->tile, ti->tileh));
-	switch (GetUnmovableType(ti->tile)) {
-		default: NOT_REACHED();
-		case UNMOVABLE_TRANSMITTER:
-		case UNMOVABLE_LIGHTHOUSE: {
-			const DrawTileSeqStruct *dtu = &_draw_tile_transmitterlighthouse_data[GetUnmovableType(ti->tile)];
+	UnmovableType type = GetUnmovableType(ti->tile);
+	if (type != UNMOVABLE_OWNED_LAND) DrawFoundation(ti, GetFoundation_Unmovable(ti->tile, ti->tileh));
 
-			DrawClearLandTile(ti, 2);
+	const DrawTileSprites *dts = NULL;
+	Owner to = GetTileOwner(ti->tile);
+	PaletteID palette = to == OWNER_NONE ? PAL_NONE : COMPANY_SPRITE_COLOUR(to);
 
-			if (IsInvisibilitySet(TO_STRUCTURES)) break;
+	if (type == UNMOVABLE_HQ) {
+		uint8 offset = GetUnmovableOffset(ti->tile);
+		dts = &_unmovable_hq[GetCompanyHQSize(ti->tile) << 2 | GB(offset, 4, 1) | GB(offset, 0, 1) << 1];
+	} else {
+		dts = &_unmovables[type];
+	}
 
+	DrawGroundSprite(dts->ground.sprite, palette);
+
+	if (!IsInvisibilitySet(TO_STRUCTURES)) {
+		const DrawTileSeqStruct *dtss;
+		foreach_draw_tile_seq(dtss, dts->seq) {
 			AddSortableSpriteToDraw(
-				dtu->image.sprite, PAL_NONE, ti->x | dtu->delta_x, ti->y | dtu->delta_y,
-				dtu->size_x, dtu->size_y, dtu->size_z, ti->z,
+				dtss->image.sprite, palette,
+				ti->x + dtss->delta_x, ti->y + dtss->delta_y,
+				dtss->size_x, dtss->size_y,
+				dtss->size_z, ti->z + dtss->delta_z,
 				IsTransparencySet(TO_STRUCTURES)
 			);
-			break;
-		}
-
-		case UNMOVABLE_STATUE:
-			DrawGroundSprite(SPR_CONCRETE_GROUND, PAL_NONE);
-
-			if (IsInvisibilitySet(TO_STRUCTURES)) break;
-
-			AddSortableSpriteToDraw(SPR_STATUE_COMPANY, COMPANY_SPRITE_COLOUR(GetTileOwner(ti->tile)), ti->x, ti->y, 16, 16, 25, ti->z, IsTransparencySet(TO_STRUCTURES));
-			break;
-
-		case UNMOVABLE_OWNED_LAND:
-			DrawClearLandTile(ti, 0);
-
-			AddSortableSpriteToDraw(
-				SPR_BOUGHT_LAND, COMPANY_SPRITE_COLOUR(GetTileOwner(ti->tile)),
-				ti->x + TILE_SIZE / 2, ti->y + TILE_SIZE / 2, 1, 1, BB_HEIGHT_UNDER_BRIDGE, GetSlopeZ(ti->x + TILE_SIZE / 2, ti->y + TILE_SIZE / 2)
-			);
-			DrawBridgeMiddle(ti);
-			break;
-
-		case UNMOVABLE_HQ: {
-			assert(IsCompanyHQ(ti->tile));
-
-			PaletteID palette = COMPANY_SPRITE_COLOUR(GetTileOwner(ti->tile));
-
-			uint8 offset = GetUnmovableOffset(ti->tile);
-			const DrawTileSprites *t = &_unmovable_display_datas[GetCompanyHQSize(ti->tile) << 2 | GB(offset, 4, 1) | GB(offset, 0, 1) << 1];
-			DrawGroundSprite(t->ground.sprite, palette);
-
-			if (IsInvisibilitySet(TO_STRUCTURES)) break;
-
-			const DrawTileSeqStruct *dtss;
-			foreach_draw_tile_seq(dtss, t->seq) {
-				AddSortableSpriteToDraw(
-					dtss->image.sprite, palette,
-					ti->x + dtss->delta_x, ti->y + dtss->delta_y,
-					dtss->size_x, dtss->size_y,
-					dtss->size_z, ti->z + dtss->delta_z,
-					IsTransparencySet(TO_STRUCTURES)
-				);
-			}
-			break;
 		}
 	}
+
+	if (type == UNMOVABLE_OWNED_LAND) DrawBridgeMiddle(ti);
 }
 
 static uint GetSlopeZ_Unmovable(TileIndex tile, uint x, uint y)

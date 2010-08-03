@@ -9,59 +9,82 @@
 
 /** @file unmovable_land.h Sprites to use and how to display them for unmovable tiles. */
 
-static const DrawTileSeqStruct _draw_tile_transmitterlighthouse_data[] = {
-	{   7,  7,  0,  2,  2, 70, {SPR_UNMOVABLE_TRANSMITTER, PAL_NONE}},
-	{   4,  4,  0,  7,  7, 61, {SPR_UNMOVABLE_LIGHTHOUSE, PAL_NONE}},
-};
-
 #define TILE_SEQ_LINE(sz, img) { 0, 0, 0, 16, 16, sz, {img, PAL_NONE} },
 #define TILE_SEQ_END() { (int8)0x80, 0, 0, 0, 0, 0, {0, 0} }
 
-static const DrawTileSeqStruct _unmovable_display_nothing[] = {
+static const DrawTileSeqStruct _unmovable_nothing[] = {
 	TILE_SEQ_END()
 };
 
-static const DrawTileSeqStruct _unmovable_display_datas_8[] = {
+static const DrawTileSeqStruct _unmovable_transmitter_seq[] = {
+	{   7,  7,  0,  2,  2, 70, {SPR_UNMOVABLE_TRANSMITTER, PAL_NONE}},
+	TILE_SEQ_END()
+};
+
+static const DrawTileSeqStruct _unmovable_lighthouse_seq[] = {
+	{   4,  4,  0,  7,  7, 61, {SPR_UNMOVABLE_LIGHTHOUSE, PAL_NONE}},
+	TILE_SEQ_END()
+};
+
+static const DrawTileSeqStruct _unmovable_statue_seq[] = {
+	{   0,  0,  0, 16, 16, 25, {SPR_STATUE_COMPANY | (1 << PALETTE_MODIFIER_COLOUR), PAL_NONE}},
+	TILE_SEQ_END()
+};
+
+static const DrawTileSeqStruct _unmovable_owned_land_seq[] = {
+	{   8,  8,  0,  1,  1,  6, {SPR_BOUGHT_LAND    | (1 << PALETTE_MODIFIER_COLOUR), PAL_NONE}},
+	TILE_SEQ_END()
+};
+
+static const DrawTileSprites _unmovables[] = {
+	{ { SPR_FLAT_2_THIRD_GRASS_TILE, PAL_NONE }, _unmovable_transmitter_seq },
+	{ { SPR_FLAT_2_THIRD_GRASS_TILE, PAL_NONE }, _unmovable_lighthouse_seq  },
+	{ { SPR_CONCRETE_GROUND,         PAL_NONE }, _unmovable_statue_seq      },
+	{ { SPR_FLAT_BARE_LAND,          PAL_NONE }, _unmovable_owned_land_seq  },
+};
+
+
+static const DrawTileSeqStruct _unmovable_hq_medium_north[] = {
 	TILE_SEQ_LINE(20, SPR_MEDIUMHQ_NORTH_WALL | (1 << PALETTE_MODIFIER_COLOUR))
 	TILE_SEQ_END()
 };
 
-static const DrawTileSeqStruct _unmovable_display_datas_9[] = {
+static const DrawTileSeqStruct _unmovable_hq_medium_east[] = {
 	TILE_SEQ_LINE(20, SPR_MEDIUMHQ_EAST_WALL  | (1 << PALETTE_MODIFIER_COLOUR))
 	TILE_SEQ_END()
 };
 
-static const DrawTileSeqStruct _unmovable_display_datas_10[] = {
+static const DrawTileSeqStruct _unmovable_hq_medium_west[] = {
 	TILE_SEQ_LINE(20, SPR_MEDIUMHQ_WEST_WALL  | (1 << PALETTE_MODIFIER_COLOUR))
 	TILE_SEQ_END()
 };
 
-static const DrawTileSeqStruct _unmovable_display_datas_12[] = {
+static const DrawTileSeqStruct _unmovable_hq_large_north[] = {
 	TILE_SEQ_LINE(50, SPR_LARGEHQ_NORTH_BUILD | (1 << PALETTE_MODIFIER_COLOUR))
 	TILE_SEQ_END()
 };
 
-static const DrawTileSeqStruct _unmovable_display_datas_13[] = {
+static const DrawTileSeqStruct _unmovable_hq_large_east[] = {
 	TILE_SEQ_LINE(50, SPR_LARGEHQ_EAST_BUILD  | (1 << PALETTE_MODIFIER_COLOUR))
 	TILE_SEQ_END()
 };
 
-static const DrawTileSeqStruct _unmovable_display_datas_14[] = {
+static const DrawTileSeqStruct _unmovable_hq_large_west[] = {
 	TILE_SEQ_LINE(50, SPR_LARGEHQ_WEST_BUILD  | (1 << PALETTE_MODIFIER_COLOUR))
 	TILE_SEQ_END()
 };
 
-static const DrawTileSeqStruct _unmovable_display_datas_16[] = {
+static const DrawTileSeqStruct _unmovable_hq_huge_north[] = {
 	TILE_SEQ_LINE(60, SPR_HUGEHQ_NORTH_BUILD  | (1 << PALETTE_MODIFIER_COLOUR))
 	TILE_SEQ_END()
 };
 
-static const DrawTileSeqStruct _unmovable_display_datas_17[] = {
+static const DrawTileSeqStruct _unmovable_hq_huge_east[] = {
 	TILE_SEQ_LINE(60, SPR_HUGEHQ_EAST_BUILD   | (1 << PALETTE_MODIFIER_COLOUR))
 	TILE_SEQ_END()
 };
 
-static const DrawTileSeqStruct _unmovable_display_datas_18[] = {
+static const DrawTileSeqStruct _unmovable_hq_huge_west[] = {
 	TILE_SEQ_LINE(60, SPR_HUGEHQ_WEST_BUILD   | (1 << PALETTE_MODIFIER_COLOUR))
 	TILE_SEQ_END()
 };
@@ -71,39 +94,40 @@ static const DrawTileSeqStruct _unmovable_display_datas_18[] = {
 
 #define TILE_SPRITE_LINE(img, dtss) { {img | (1 << PALETTE_MODIFIER_COLOUR), PAL_NONE}, dtss },
 
-static const DrawTileSprites _unmovable_display_datas[] = {
-	TILE_SPRITE_LINE(SPR_TINYHQ_NORTH,         _unmovable_display_nothing)
-	TILE_SPRITE_LINE(SPR_TINYHQ_EAST,          _unmovable_display_nothing)
-	TILE_SPRITE_LINE(SPR_TINYHQ_WEST,          _unmovable_display_nothing)
-	TILE_SPRITE_LINE(SPR_TINYHQ_SOUTH,         _unmovable_display_nothing)
+static const DrawTileSprites _unmovable_hq[] = {
+	TILE_SPRITE_LINE(SPR_TINYHQ_NORTH,         _unmovable_nothing)
+	TILE_SPRITE_LINE(SPR_TINYHQ_EAST,          _unmovable_nothing)
+	TILE_SPRITE_LINE(SPR_TINYHQ_WEST,          _unmovable_nothing)
+	TILE_SPRITE_LINE(SPR_TINYHQ_SOUTH,         _unmovable_nothing)
 
-	TILE_SPRITE_LINE(SPR_SMALLHQ_NORTH,        _unmovable_display_nothing)
-	TILE_SPRITE_LINE(SPR_SMALLHQ_EAST,         _unmovable_display_nothing)
-	TILE_SPRITE_LINE(SPR_SMALLHQ_WEST,         _unmovable_display_nothing)
-	TILE_SPRITE_LINE(SPR_SMALLHQ_SOUTH,        _unmovable_display_nothing)
+	TILE_SPRITE_LINE(SPR_SMALLHQ_NORTH,        _unmovable_nothing)
+	TILE_SPRITE_LINE(SPR_SMALLHQ_EAST,         _unmovable_nothing)
+	TILE_SPRITE_LINE(SPR_SMALLHQ_WEST,         _unmovable_nothing)
+	TILE_SPRITE_LINE(SPR_SMALLHQ_SOUTH,        _unmovable_nothing)
 
-	TILE_SPRITE_LINE(SPR_MEDIUMHQ_NORTH,       _unmovable_display_datas_8)
-	TILE_SPRITE_LINE(SPR_MEDIUMHQ_EAST,        _unmovable_display_datas_9)
-	TILE_SPRITE_LINE(SPR_MEDIUMHQ_WEST,        _unmovable_display_datas_10)
-	TILE_SPRITE_LINE(SPR_MEDIUMHQ_SOUTH,       _unmovable_display_nothing)
+	TILE_SPRITE_LINE(SPR_MEDIUMHQ_NORTH,       _unmovable_hq_medium_north)
+	TILE_SPRITE_LINE(SPR_MEDIUMHQ_EAST,        _unmovable_hq_medium_east)
+	TILE_SPRITE_LINE(SPR_MEDIUMHQ_WEST,        _unmovable_hq_medium_west)
+	TILE_SPRITE_LINE(SPR_MEDIUMHQ_SOUTH,       _unmovable_nothing)
 
-	TILE_SPRITE_LINE(SPR_LARGEHQ_NORTH_GROUND, _unmovable_display_datas_12)
-	TILE_SPRITE_LINE(SPR_LARGEHQ_EAST_GROUND,  _unmovable_display_datas_13)
-	TILE_SPRITE_LINE(SPR_LARGEHQ_WEST_GROUND,  _unmovable_display_datas_14)
-	TILE_SPRITE_LINE(SPR_LARGEHQ_SOUTH,        _unmovable_display_nothing)
+	TILE_SPRITE_LINE(SPR_LARGEHQ_NORTH_GROUND, _unmovable_hq_large_north)
+	TILE_SPRITE_LINE(SPR_LARGEHQ_EAST_GROUND,  _unmovable_hq_large_east)
+	TILE_SPRITE_LINE(SPR_LARGEHQ_WEST_GROUND,  _unmovable_hq_large_west)
+	TILE_SPRITE_LINE(SPR_LARGEHQ_SOUTH,        _unmovable_nothing)
 
-	TILE_SPRITE_LINE(SPR_HUGEHQ_NORTH_GROUND,  _unmovable_display_datas_16)
-	TILE_SPRITE_LINE(SPR_HUGEHQ_EAST_GROUND,   _unmovable_display_datas_17)
-	TILE_SPRITE_LINE(SPR_HUGEHQ_WEST_GROUND,   _unmovable_display_datas_18)
-	TILE_SPRITE_LINE(SPR_HUGEHQ_SOUTH,         _unmovable_display_nothing)
+	TILE_SPRITE_LINE(SPR_HUGEHQ_NORTH_GROUND,  _unmovable_hq_huge_north)
+	TILE_SPRITE_LINE(SPR_HUGEHQ_EAST_GROUND,   _unmovable_hq_huge_east)
+	TILE_SPRITE_LINE(SPR_HUGEHQ_WEST_GROUND,   _unmovable_hq_huge_west)
+	TILE_SPRITE_LINE(SPR_HUGEHQ_SOUTH,         _unmovable_nothing)
 };
 
 #undef TILE_SPRITE_LINE
 
+/** Specification of the original unmovable structures. */
 static const UnmovableSpec _original_unmovable[] = {
-	{STR_LAI_UNMOVABLE_DESCRIPTION_TRANSMITTER,          0x11,   1,   1},
-	{STR_LAI_UNMOVABLE_DESCRIPTION_LIGHTHOUSE,           0x11,   1,   1},
-	{STR_TOWN_BUILDING_NAME_STATUE_1,                    0x11,   1,   1},
-	{STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_OWNED_LAND,   0x11,  10,   2},
-	{STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_HEADQUARTERS, 0x22,   1,   1},
+	{ STR_LAI_UNMOVABLE_DESCRIPTION_TRANSMITTER,          0x11,   1,   1 },
+	{ STR_LAI_UNMOVABLE_DESCRIPTION_LIGHTHOUSE,           0x11,   1,   1 },
+	{ STR_TOWN_BUILDING_NAME_STATUE_1,                    0x11,   1,   1 },
+	{ STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_OWNED_LAND,   0x11,  10,   2 },
+	{ STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_HEADQUARTERS, 0x22,   1,   1 },
 };
