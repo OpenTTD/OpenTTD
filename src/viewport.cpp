@@ -2602,8 +2602,8 @@ calc_heightdiff_single_direction:;
 				}
 
 				ShowMeasurementTooltips(measure_strings_length[index], index, params);
-				break;
 			}
+			break;
 
 		case VPM_X_AND_Y_LIMITED: // Drag an X by Y constrained rect area.
 			limit = (_thd.sizelimit - 1) * TILE_SIZE;
@@ -2611,7 +2611,7 @@ calc_heightdiff_single_direction:;
 			y = sy + Clamp(y - sy, -limit, limit);
 			/* FALL THROUGH */
 
-		case VPM_X_AND_Y: { // drag an X by Y area
+		case VPM_X_AND_Y: // drag an X by Y area
 			if (_settings_client.gui.measure_tooltip) {
 				static const StringID measure_strings_area[] = {
 					STR_NULL, STR_NULL, STR_MEASURE_AREA, STR_MEASURE_AREA_HEIGHTDIFF
@@ -2645,9 +2645,8 @@ calc_heightdiff_single_direction:;
 
 				ShowMeasurementTooltips(measure_strings_area[index], index, params);
 			}
-		break;
+			break;
 
-		}
 		default: NOT_REACHED();
 	}
 
