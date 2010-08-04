@@ -2339,23 +2339,65 @@ STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Буда
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Будаўніцтва прыстаняў. Націснуты Ctrl дазваляе аб'ядноўваць прыстані.
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Разьмясьціць буй, які можа быць выкарыстаны як пункт шляху
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Будаўніцтва аквэдукаў
+STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Пазначыць, дзе будзе вада.{}Падубаваць канал, а пры націснутым Ctrl клетка на ўзрозні мора запаўняецца вадой.
+STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Разьмясціць рэкі
 
 # Ship depot construction window
+STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Кірунак дока
+STR_DEPOT_BUILD_SHIP_ORIENTATION_TOOLTIP                        :{BLACK}Выберыце кірунак сухога дока
 
 # Dock construction window
+STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Док
 
 # Airport toolbar
+STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Aэрапорты
+STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Будаўніцтва аэрапортаў. Націснуты Ctrl дазваляе аб'ядноўваць аэрапорты.
 
 # Airport construction window
+STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Выбар аэрапорта
+STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Выберыце памер/тып аэрапорта
+STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Тып аэрапорта
 
+STR_AIRPORT_SMALL                                               :Малы
+STR_AIRPORT_CITY                                                :Гарадскі
+STR_AIRPORT_METRO                                               :Сталічны
+STR_AIRPORT_INTERNATIONAL                                       :Міжнародны
+STR_AIRPORT_COMMUTER                                            :Прыгарадны
+STR_AIRPORT_INTERCONTINENTAL                                    :Міжкантынентальны
+STR_AIRPORT_HELIPORT                                            :Верталётная пляцоўка
+STR_AIRPORT_HELIDEPOT                                           :Верталётны ангар
+STR_AIRPORT_HELISTATION                                         :Верталётная база
 
+STR_AIRPORT_CLASS_SMALL                                         :Малыя аэрапорты
+STR_AIRPORT_CLASS_LARGE                                         :Вялікія аэрапорты
+STR_AIRPORT_CLASS_HUB                                           :Хабы (вузлавыя аэрапорты)
+STR_AIRPORT_CLASS_HELIPORTS                                     :Верталётныя пляцоўкі
 
+STR_STATION_BUILD_NOISE                                         :{BLACK}Узровень шуму: {GOLD}{COMMA}
 
 # Landscaping toolbar
+STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Земляныя работы
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Панізіць вугал зямлі
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Падвысіць вугал зямлі
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Выраўнаваць зямлю
+STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Выкупіць зямлю для выкарыстаньня ў будучым
 
 # Tree planting window (last two for SE only)
+STR_PLANT_TREE_CAPTION                                          :{WHITE}Дрэвы
+STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Выберыце від дрэваў для пасадкі
+STR_TREES_RANDOM_TYPE                                           :{BLACK}Дрэвы розных відаў
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Пасадзіць дрэвы розных, выпадкова выбраных відаў
+STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Расставіць па мапе
+STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Пасадзіць дрэвы розных выпадковых відаў па усёй мапе
 
 # Land generation window (SE)
+STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Стварэньне ляндшафту
+STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Разьмясціць камяні па мапе
+STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Пабудаваць маяк
+STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Разьмясціць пустэльню.{}Націсьніце Ctrl, каб выдаліць яе.
+STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Пабудаваць перадатчык
+STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Павелічыць плошчу змяненьня рэльефу
+STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Паменшыць плошчу змяненьня рэльефу
 
 
 # Town generation window (SE)
